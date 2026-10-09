@@ -1,0 +1,46 @@
+{
+  "status": "passed_with_documented_limitations",
+  "video": "BV1aThi6AEAC:p1",
+  "duration_seconds": 2816,
+  "asr": {
+    "model": "large-v3",
+    "device": "cpu",
+    "segments": 65,
+    "last_segment_end": 2815.2799999999997,
+    "decoder_runs": [
+      {
+        "start": 0,
+        "beam_size": 5
+      },
+      {
+        "start": 289.58,
+        "beam_size": 1
+      }
+    ]
+  },
+  "notes": 3,
+  "entities": {
+    "players": 20,
+    "heroes": 171,
+    "equipment": 90,
+    "talents": 325,
+    "derivatives": 11,
+    "effect-cards": 100,
+    "player-skills": 228
+  },
+  "tests_passed": 17,
+  "skill_validator": "passed",
+  "repeat_import": {
+    "hashes_unchanged": true,
+    "mtimes_unchanged": true,
+    "cached_prepare": true
+  },
+  "media_cleanup": "completed; retained ASR, corrections and frames",
+  "limitations": [
+    "yt-dlp及B站元数据接口返回412；真实测试通过浏览器观察公开DASH完成下载，后续视频可能需同样降级",
+    "635–653秒附近ASR缺口，转移先后顺序未补写",
+    "鸡爪与军队盾正式装备名待核实",
+    "具体补丁版本未知；视频冰心领域30%与官网35%并列保留",
+    "CPU使用int8及贪心解码加速，关键结论已通过画面核对；并非逐字无误转写"
+  ]
+}

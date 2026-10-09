@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "notes": [
+    {
+      "id": "zhaojun-high-tier-dahe",
+      "type": "lineup",
+      "title": "昭君高阶大河（龙蛇）",
+      "topic": "昭君高阶大河运营",
+      "core": [
+        "card:1871",
+        "card:5191"
+      ],
+      "entities": [
+        "card:1561",
+        "card:1741",
+        "card:1861",
+        "card:1871",
+        "card:1891",
+        "card:5171",
+        "card:5191",
+        "card:5211",
+        "card:5371",
+        "card:5771",
+        "card:636507",
+        "card:636516",
+        "card:643205",
+        "card:643208",
+        "card:643703",
+        "card:7121",
+        "card:93416",
+        "player:34"
+      ],
+      "claims": [
+        {
+          "section": "阵容组成",
+          "text": "选择昭君作为棋手，以东皇太一和敖隐为主要输出英雄，搭配鬼谷子、少司缘和大司命。虞姬、张良负责过渡；后期根据获得的英雄加入司空震或海月。需要替换张良时，可转移其永久等级，再上太乙真人并让其附身东皇太一。阵容以大河英雄和图腾为基础，具体成员随获得的英雄调整。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 895,
+              "end": 1040,
+              "frame": "frames/1039-0.jpg"
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "核心机制",
+          "text": "持续冻结英雄，使其转换为更高品阶的英雄，尽早获得核心英雄。第5、第8回合通过深度冻结选择关键技能分支。提高上场英雄的品阶总和，配合冰心领域增加永久等级；利用图腾和东皇太一的控制，为敖隐及其他输出英雄争取攻击时间。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 0,
+              "end": 145,
+              "frame": "frames/90-0.jpg"
+            }
+          ],
+          "kind": "mechanic"
+        },
+        {
+          "section": "前期运营及应变",
+          "text": "开局使用弈星和孙尚香，持续冻结孙尚香，利用她提供的经济和免费刷新机会；也可使用苏烈，利用其阵亡后增加的等级，让冻结后的英雄继承。\n\n- 如果己方阵容难以战胜当前对手，可以只保留弈星和用于冻结的过渡英雄，卖掉其他英雄，把金币用于提升棋手等阶。过渡英雄被冻结并转换后，继续冻结该位置的新英雄。\n\n- 如果对手阵容较弱、补一个英雄就有机会获胜，可以加入干将莫邪，争取连胜并减少掉血。寻找普通三品阶英雄时，优先使用免费刷新，不额外花金币刷新商店。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 753.5,
+              "end": 894.7
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "中期运营及应变",
+          "text": "第5回合优先选择霜寒进化或冰封结晶，帮助获取高品阶英雄。选择霜寒进化时，可以保留四品阶的大河英雄刘邦或韩信，冻结后定向寻找东皇太一或敖隐。\n\n- 尽快将棋手升到五阶，再花金币刷新商店寻找核心英雄。东皇太一到场但人口已满时，可以卖掉弈星腾出位置。\n\n- 购买商店里的三、四品阶英雄继续冻结；若冻结得到的五品阶英雄不是东皇太一或敖隐，可以继续冻结，寻找所需核心。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 85.1,
+              "end": 174.8
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "中期运营及应变",
+          "text": "如果迟迟没有获得虞姬，不必一直等待：可以先用司空震或海月承担输出，再寻找东皇太一和敖隐。同时保留能提供图腾的英雄。第8回合选择冰心领域，增加全队永久等级。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1543.6,
+              "end": 1933.4,
+              "frame": "frames/1840-0.jpg"
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "后期运营及应变",
+          "text": "核心英雄和图腾体系齐备后，利用每回合自动增长的等级继续发育，积攒金币将棋手升到六阶并选择不朽坚冰。虞姬等级较低且已获得司空震时，可以直接替换虞姬。张良积累较多永久等级后，可以用传承、遗志将等级转给后续输出英雄或太乙真人，再让太乙真人附身东皇太一。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1097.8
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "成型后提升思路",
+          "text": "阵容成型后，优先增加人口上限、全队等级和装备。司空震可以利用队友的临时等级，适合装备金色圣剑。随后重点保护图腾、完成核心英雄觉醒，并根据对手阵容决定用众星拱月强化谁；核心齐备后，无需为寻找英雄而反复冻结。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1038.7
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "第一轮拍卖",
+          "text": "第一轮拍卖优先少司缘、鬼谷子等能提供图腾的英雄；没有合适的图腾英雄时，可选择虞姬、张良、云中君或瑶等大河英雄。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 836.5,
+              "end": 894.7
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "第二轮拍卖",
+          "text": "第二轮拍卖时，如果还缺核心英雄，优先补东皇太一或敖隐。敖隐本身已有吸血能力，不必重复配置吸血装备。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1693.5,
+              "end": 1853.9
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "第三轮拍卖",
+          "text": "优先选择新生力量，增加人口上限。如果缺少主要输出英雄，可以选择神兵天降；破境之证、众星拱月、众星闪耀也可根据阵容需要选择。\n\n- 如果当前阵容能够继续赢下对局，可以暂不使用众星闪耀，让其持有收益继续增长。\n\n- 天籁琴音帮助英雄觉醒；一线生机用于获得名刀·司命。\n\n- 狂飙三倍速、展翅腾飞可以等待其他玩家结束竞价后，再尝试低价竞拍。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 663,
+              "end": 753.2,
+              "frame": "frames/680-0.jpg"
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "推荐天赋及原因",
+          "text": "优先考虑增加人口的天赋：扩编名额、战术模组、扩编高峰、战略中枢。上场英雄更多，可以提高品阶总和，并让更多高品阶英雄受益。\n\n- 荆棘牢笼补充控制；命运图腾适合针对依赖一个主要输出英雄的对手；虚妄转生辅助图腾体系。\n\n- 始祖熊灵可承担前排，受益于全队等级增长和双方上场单位数量差；化为熊灵可利用大河英雄的总等级。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 407.3,
+              "end": 547.5,
+              "frame": "frames/500-0.jpg"
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "推荐天赋及原因",
+          "text": "棋手升到六阶后，优先考虑不朽坚冰，为全队增加500生命和60物理、法术攻击。寒潮之势只强化等级最高的单个英雄；本阵容有多个重要英雄，因此更适合全队强化。是否先选经济或减少掉血的天赋，应结合金币和剩余生命判断。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 347.4,
+              "end": 435.2,
+              "frame": "frames/395-0.jpg"
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "站位技巧",
+          "text": "对手有范围伤害、容易顺带清除图腾时，将图腾分散放在己方后侧或角落，避免集中被击毁。前中期可以让图腾靠前参与控制；后期对手范围伤害增强时，再调整到后方。具体格位需结合对手站位决定。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1450.2,
+              "end": 1693,
+              "frame": "frames/1770-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1450.2,
+              "end": 1775.3,
+              "frame": "frames/1770-0.jpg"
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "推荐装备",
+          "text": "敖隐：寒霜侵袭用于减速并叠加易伤，自然法杖提供变猪控制，炽热支配者抵御一般控制。\n\n- 东皇太一：名刀·司命延长存活和咬住目标的时间，不死鸟之眼、霸者重铠提高生存能力。\n\n- 司空震：优先金色圣剑，有多余装备时可补痛苦面具。\n\n- 海月：可装备护命灵珠。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1098.5,
+              "end": 1217.6,
+              "frame": "frames/1120-0.jpg"
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "终局技巧",
+          "text": "面对能快速清除图腾的对手时，敖隐的作用会下降。使用众星拱月时，应结合对手阵容考虑强化东皇太一或司空震，而不是固定将等级集中给敖隐。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 2510.8,
+              "end": 2794.5
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "克制手段",
+          "text": "嬴政配有解除控制的手段时，大河阵容较难应对。姜子牙能快速清除图腾，也会削弱敖隐的输出效果。遇到这些对手，应保护图腾、提高生存能力，并更多依靠东皇太一的控制和司空震的输出。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 2139.3,
+              "end": 2344.2
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "克制手段",
+          "text": "本阵容适合对付依赖近战单个核心英雄的对手。张良的压制不能通过机器头、炽热支配者、纯净苍穹等一般解除控制的方式处理，因此面对这类对手时，可以保留张良，不必固定替换他。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 605.9,
+              "end": 635.1
+            }
+          ],
+          "kind": "conditional_strategy"
+        }
+      ],
+      "related": [
+        {
+          "id": "player-zhaojun",
+          "type": "player",
+          "title": "昭君：冻结升阶与大河运营"
+        },
+        {
+          "id": "zhaojun-version-and-asr-review",
+          "type": "other",
+          "title": "昭君：冰心领域版本差异"
+        }
+      ]
+    },
+    {
+      "id": "player-zhaojun",
+      "type": "player",
+      "title": "昭君：冻结升阶与大河运营",
+      "topic": "昭君高阶大河运营",
+      "core": [],
+      "entities": [
+        "card:663401",
+        "card:93412",
+        "card:93415",
+        "card:93416",
+        "card:93418",
+        "card:93419",
+        "card:93499",
+        "player:34"
+      ],
+      "claims": [
+        {
+          "section": "技能",
+          "text": "冰之心：冻结英雄，将其转换为随机更高品阶的英雄，并继承英雄等级。极寒冰冻：第5、第8回合提供深度冻结，选择后续技能分支。\n\n- 升华增加觉醒进度；霜寒进化让英雄沿同阵营升阶；破冰裂变让英雄跨两个品阶转换。\n\n- 冰封结晶根据解冻英雄的品阶提供对应兑换券。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 0,
+              "end": 204.7,
+              "frame": "frames/20-0.jpg"
+            }
+          ],
+          "kind": "mechanic"
+        },
+        {
+          "section": "技能",
+          "text": "寒冰觉醒：保留原英雄并增加觉醒进度，不能帮助换出高品阶英雄，需要自行刷新商店寻找核心。\n\n- 寒潮共振的收益与觉醒英雄有关；冰心领域按上场英雄的品阶总和增加等级。冰心领域存在30%与35%的不同资料记录，具体差异见关联知识。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 205,
+              "end": 346.8,
+              "frame": "frames/240-0.jpg"
+            }
+          ],
+          "kind": "mechanic"
+        },
+        {
+          "section": "使用技巧",
+          "text": "高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。\n\n- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。\n\n- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 234.6,
+              "end": 376.7
+            }
+          ],
+          "kind": "conditional_strategy"
+        },
+        {
+          "section": "使用技巧",
+          "text": "开局持续冻结用于过渡、能提供经济收益的英雄。核心英雄齐备后，无需为了寻找核心而继续冻结。保留遗志、传承，准备将过渡英雄积累的永久等级转给后期英雄，避免等级留在即将被替换的单位上。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 576.1,
+              "end": 635.1
+            }
+          ],
+          "kind": "general_strategy"
+        },
+        {
+          "section": "适配阵容",
+          "text": "适合高阶大河（龙蛇）阵容。升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 57.1,
+              "end": 84.7
+            }
+          ],
+          "kind": "general_strategy"
+        }
+      ],
+      "related": [
+        {
+          "id": "zhaojun-high-tier-dahe",
+          "type": "lineup",
+          "title": "昭君高阶大河（龙蛇）"
+        },
+        {
+          "id": "zhaojun-version-and-asr-review",
+          "type": "other",
+          "title": "昭君：冰心领域版本差异"
+        }
+      ]
+    },
+    {
+      "id": "zhaojun-version-and-asr-review",
+      "type": "other",
+      "title": "昭君：冰心领域版本差异",
+      "topic": "昭君高阶大河运营",
+      "core": [],
+      "entities": [
+        "card:93416",
+        "player:34"
+      ],
+      "claims": [
+        {
+          "section": "版本差异",
+          "text": "冰心领域有两组不同日期的数值：2026年9月的攻略资料为上场英雄品阶总和的30%，2026年10月9日采集的官方资料为35%。尚未确认具体修改版本和生效日期，使用时应核对当前游戏中的技能描述。",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 261.9,
+              "end": 346.8
+            }
+          ],
+          "kind": "mechanic"
+        }
+      ],
+      "related": [
+        {
+          "id": "zhaojun-high-tier-dahe",
+          "type": "lineup",
+          "title": "昭君高阶大河（龙蛇）"
+        },
+        {
+          "id": "player-zhaojun",
+          "type": "player",
+          "title": "昭君：冻结升阶与大河运营"
+        }
+      ]
+    }
+  ]
+}

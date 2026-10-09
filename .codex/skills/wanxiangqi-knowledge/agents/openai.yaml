@@ -1,0 +1,6 @@
+interface:
+  display_name: "王者万象棋知识整理"
+  short_description: "通过本地ASR与关键帧整理攻略视频，纠正术语并更新关联知识与实体库"
+  default_prompt: "使用 $wanxiangqi-knowledge 整理这些王者万象棋攻略视频，更新项目知识库和实体库。"
+policy:
+  allow_implicit_invocation: true
