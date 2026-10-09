@@ -1,0 +1,9 @@
+export type Entity = {id:string;name:string;category?:string;aliases?:string[];properties?:{type?:number}};
+export type Member = {hero:string;necessity:'required'|'optional';role:string;replaces:string;replacement_note:string};
+export type Ban = {faction:string;status:'playable'|'unplayable'|'unknown';reason:string};
+export type Matchup = {target:string;condition:string;text:string};
+export type Meta = {required_factions:string[];players:string[];core_heroes:string[];compositions:{early:Member[];middle:Member[];late:Member[]};ban_conditions:Ban[];matchups:Matchup[]};
+export type Claim = {section:string;text:string;kind:string;origin?:string;condition?:string;inference?:boolean;evidence?:unknown[]};
+export type Note = {id:string;type:'lineup'|'player'|'other';title:string;path:string;aliases:string[];revision:string;entities:string[];core:string[];claims:Claim[];meta?:Meta;manual_sections:string[];conflicts:unknown[];related:{id:string;title:string}[]};
+export type Options = {entities:Entity[];factions:Entity[];sections:Record<string,string[]>};
+export type Source = {id:string;url:string;title?:string;notes?:string;author?:string;stage:string;error?:string;knowledge_status:string;linked_notes:{id:string;title:string}[]};

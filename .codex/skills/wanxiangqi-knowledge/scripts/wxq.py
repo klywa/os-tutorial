@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[4]
 CATEGORIES = ['players', 'heroes', 'equipment', 'talents', 'derivatives', 'effect-cards', 'player-skills']
 FOLDERS = {'lineup': 'lineups', 'player': 'players', 'other': 'other'}
 SECTIONS = {
-    'lineup': ['阵容组成', '核心机制', '前期运营及应变', '中期运营及应变', '后期运营及应变',
+    'lineup': ['阵容组成', '禁用阵营适用情况', '核心机制', '前期运营及应变', '中期运营及应变', '后期运营及应变',
                '成型后提升思路', '第一轮拍卖', '第二轮拍卖', '第三轮拍卖', '推荐天赋及原因',
                '站位技巧', '推荐装备', '终局技巧', '克制手段'],
     'player': ['技能', '使用技巧', '适配阵容'], 'other': ['知识内容']}
@@ -137,6 +137,32 @@ def related(root, entity_ids, core=None, topic=None):
 
 def render_note(note, sources):
     lines = ['# ' + note['title'], '']
+    if note.get('meta'):
+        from workspace import FACTIONS
+        names = {f['id']: f['name'] for f in FACTIONS}
+        names.update(note.get('entity_names', {}))
+        meta = note['meta']
+        lines += ['## 阵容信息', '', '必须阵营：' + ('、'.join(names.get(x, x.removeprefix('pending:')) for x in meta.get('required_factions', [])) or '待确认'), '']
+        lines += ['适用棋手：' + ('、'.join(names.get(x, x) for x in meta.get('players', [])) or '待确认'), '',
+                  '核心英雄：' + ('、'.join(names.get(x, x) for x in meta.get('core_heroes', [])) or '待确认'), '']
+        for stage, label in [('early', '前期'), ('middle', '中期'), ('late', '后期')]:
+            members = meta.get('compositions', {}).get(stage, [])
+            lines += [label + '英雄组成：', '']
+            if not members:
+                lines += ['待确认', '']
+            for member in members:
+                necessity = '必需' if member['necessity'] == 'required' else '可选'
+                text = f"- {names.get(member['hero'], member['hero'])}（{necessity}）：{member.get('role', '')}"
+                if member.get('replaces'):
+                    text += '；替换' + names.get(member['replaces'], member['replaces'])
+                if member.get('replacement_note'):
+                    text += '；' + member['replacement_note']
+                lines += [text, '']
+        for condition in meta.get('ban_conditions', []):
+            status = {'playable': '可玩', 'unplayable': '不可玩', 'unknown': '待确认'}[condition['status']]
+            lines += [f"- {names.get(condition['faction'], condition['faction'])}被禁：{status}。{condition.get('reason', '')}", '']
+        for matchup in meta.get('matchups', []):
+            lines += [f"- 针对{names.get(matchup['target'], matchup['target'])}：{matchup.get('condition', '')} {matchup['text']}", '']
     claims = [c for c in note.get('claims', []) if c.get('kind') in KNOWLEDGE_KINDS]
     sections = SECTIONS[note['type']] + sorted({c['section'] for c in claims} - set(SECTIONS[note['type']]))
     if note['type'] == 'other' and claims:
@@ -157,13 +183,22 @@ def render_note(note, sources):
             lines += ['']
     lines += ['## 关联知识', '']
     for link in note.get('related', []):
-        lines.append(f"- [{link['title']}](../{FOLDERS[link['type']]}/{link['id']}.md)")
+        path = link.get('path', f"knowledge/{FOLDERS[link['type']]}/{link['id']}.md")
+        lines.append(f"- [{link['title']}](../{Path(path).parent.name}/{Path(path).name})")
     if not note.get('related'):
         lines.append('暂无')
     return '\n'.join(lines) + '\n'
 
 
 def commit_notes(root, incoming):
+    from workspace import store_lock, recover
+    with store_lock(root):
+        recover(root)
+        return _commit_notes(root, incoming)
+
+
+def _commit_notes(root, incoming):
+    from workspace import merge_note, persist, validate_meta
     root = Path(root)
     init_store(root)
     sources = {}
@@ -183,7 +218,14 @@ def commit_notes(root, incoming):
             raise ValueError('Unmanaged Markdown exists; migrate it before committing')
         if (set(note.get('entities', [])) | set(note.get('core', []))) - known_entities:
             raise ValueError('Unknown entity reference; register pending entity first')
+        if 'meta' in note:
+            validate_meta(root, note['meta'])
         for claim in note.get('claims', []):
+            if claim.get('origin') == 'manual':
+                old = notes.get(note['id'], {})
+                if claim in old.get('claims', []) and claim['section'] in old.get('manual_sections', []):
+                    continue
+                raise ValueError('Manual revisions must originate from the web editor; unchanged existing revisions may be replayed')
             if claim.get('kind') not in KNOWLEDGE_KINDS:
                 raise ValueError('Knowledge requires mechanic/general_strategy/conditional_strategy kind; match_action belongs in internal reports')
             if not claim.get('section') or not claim.get('text') or not claim.get('evidence'):
@@ -205,10 +247,10 @@ def commit_notes(root, incoming):
             raise ValueError('Cannot change existing note type')
     for note in incoming:
         previous = notes.get(note['id'], {})
-        notes[note['id']] = {**previous, **note,
+        notes[note['id']] = {**merge_note(previous, note),
                              'entities': sorted(set(previous.get('entities', []) + note.get('entities', []))),
                              'core': sorted(set(previous.get('core', []) + note.get('core', []))),
-                             'claims': merge_claims(previous.get('claims', []), note.get('claims', []))}
+                             }
     for note in notes.values():
         linked = [n for n in notes.values() if n['id'] != note['id'] and (
             set(note.get('entities', [])) & set(n.get('entities', [])) or
@@ -216,9 +258,8 @@ def commit_notes(root, incoming):
             note.get('topic') and note.get('topic') == n.get('topic'))]
         note['related'] = [{'id': n['id'], 'type': n['type'], 'title': n['title']} for n in linked]
     atomic_json(root / 'knowledge/pending-commit.json', {'notes': incoming})
-    for note in notes.values():
-        atomic_text(root / 'knowledge' / FOLDERS[note['type']] / (note['id'] + '.md'), render_note(note, sources))
-    atomic_json(index_path, {'schema_version': 1, 'notes': list(notes.values())})
+    obsolete = [f"knowledge/{FOLDERS[n['type']]}/{n['id']}.md" for n in notes.values() if not n.get('path')]
+    persist(root, list(notes.values()), obsolete)
     (root / 'knowledge/pending-commit.json').unlink(missing_ok=True)
     return {'notes': len(notes), 'updated_input': len(incoming)}
 
@@ -243,9 +284,19 @@ def validate_store(root):
         if n['id'] in note_ids:
             errors.append('Duplicate note: ' + n['id'])
         note_ids.add(n['id'])
-        target = root / 'knowledge' / FOLDERS[n['type']] / (safe_id(n['id']) + '.md')
+        target = root / n.get('path', f"knowledge/{FOLDERS[n['type']]}/{safe_id(n['id'])}.md")
         if not target.exists():
             errors.append('Missing note file: ' + str(target))
+        elif n.get('path') and target.read_text(encoding='utf-8') != render_note(n, {}):
+            errors.append('Markdown differs from index: ' + n['id'])
+        if n['type'] == 'lineup' and n.get('path'):
+            if read_json(target.with_suffix('.json')) != n:
+                errors.append('Lineup archive differs from index: ' + n['id'])
+            try:
+                from workspace import validate_meta
+                validate_meta(root, n.get('meta', {}))
+            except (ValueError, KeyError, TypeError) as exc:
+                errors.append('Invalid meta: ' + str(exc))
         for eid in n.get('entities', []) + n.get('core', []):
             if eid not in seen:
                 errors.append('Unknown entity: ' + eid)
@@ -270,6 +321,7 @@ def main():
     sub.add_parser('init')
     sub.add_parser('sync-entities')
     sub.add_parser('validate')
+    sub.add_parser('migrate')
     p = sub.add_parser('prepare')
     p.add_argument('urls', nargs='+')
     p.add_argument('--model', default='large-v3')
@@ -301,6 +353,9 @@ def main():
         result = sync_official(args.root)
     elif args.command == 'validate':
         result = validate_store(args.root)
+    elif args.command == 'migrate':
+        from workspace import migrate
+        result = migrate(args.root)
     elif args.command == 'prepare':
         from media import prepare
         init_store(args.root)
@@ -322,7 +377,9 @@ def main():
         result = download_observed(args.url, folder / (args.kind + '.m4s'))
     else:
         from media import finish
-        result = finish(args.root, args.source)
+        from workspace import store_lock
+        with store_lock(args.root):
+            result = finish(args.root, args.source)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     failed = isinstance(result, dict) and result.get('errors')
     if isinstance(result, list):

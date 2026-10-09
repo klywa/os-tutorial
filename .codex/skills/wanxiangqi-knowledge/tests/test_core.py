@@ -13,9 +13,8 @@ class CoreTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         if SCRIPT.exists():
-            spec = importlib.util.spec_from_file_location('wxq', SCRIPT)
-            cls.core = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(cls.core)
+            import wxq
+            cls.core = wxq
 
     def setUp(self):
         self.assertTrue(SCRIPT.exists(), 'The skill pipeline has not been implemented')
@@ -78,7 +77,7 @@ class CoreTests(unittest.TestCase):
                 'core': ['hero:1'], 'claims': [{'kind': 'general_strategy', 'section': '核心机制', 'text': '测试机制',
                 'version': None, 'condition': '', 'evidence': [{'source': 'BV1:p1', 'start': 2, 'end': 5}]}]}
         self.core.commit_notes(self.root, [note])
-        path = self.root / 'knowledge/lineups/test.md'
+        path = self.root / 'knowledge/lineups/测试.md'
         before = path.stat().st_mtime_ns
         self.core.commit_notes(self.root, [note])
         self.assertEqual(path.stat().st_mtime_ns, before)

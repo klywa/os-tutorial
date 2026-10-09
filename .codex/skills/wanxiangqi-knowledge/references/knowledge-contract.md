@@ -39,6 +39,33 @@
 - 改写已有攻略时替换索引中的原结论文本，并同步维护用于重放的导入数据，不以新增结论追加。原有证据与条件完整保留；技术识别问题放内部报告。
 - 未知实体先录入实体库再引用；索引储存所有结构化结论，不能只改 Markdown 而不更新索引。已有手写笔记需要读后按证据迁移；不得覆盖未迁移内容。
 
+## 阵容 meta 与人工编辑契约（schema_version=2）
+
+稳定 ID 与路径分离：`path` 为 `knowledge/类型目录/中文标题.md`，重名采用持久中文序号；关联条目保存 `path`。每套阵容在同目录生成同名 `.json`，内容与索引对应记录一致。路径一经分配保持稳定，标题改动不破坏链接。
+
+阵容 `meta` 格式：
+
+```json
+{
+  "required_factions": ["faction:dahe"],
+  "players": ["player:34"],
+  "core_heroes": ["card:1871"],
+  "compositions": {
+    "early": [{"hero":"card:1871","necessity":"optional","role":"作用","replaces":"","replacement_note":"替换说明"}],
+    "middle": [],
+    "late": []
+  },
+  "ban_conditions": [{"faction":"faction:sanfen","status":"unknown","reason":"待确认"}],
+  "matchups": [{"target":"card:1871","condition":"适用情境","text":"经确认的针对策略"}]
+}
+```
+
+示例只说明格式，不表示真实打法。禁用状态为 `playable`、`unplayable`、`unknown`；必须阵营被禁优先判不可玩。多个禁用条件须全部已确认可玩，否则待确认；任一不可玩则不可玩。无证据时保存空列表或 unknown，不根据出现英雄反推必须阵营。实体引用使用实体 ID，未知名称显式 `pending:名称`。针对目标可为英雄 ID 或阵容笔记 ID。
+
+网页 PUT 笔记包含 `revision`、按名称映射的 `sections` 和可选 `meta/title/aliases`。旧 revision 返回冲突，不覆盖；章节修改以 origin=manual 结论替换，原结论与证据进入 history，不附假视频依据。manual_sections 保护人工章节，manual_meta 保护人工 meta；CLI 新输入冲突进入 conflicts。人工修订不经普通视频导入校验，但必须经网页统一入口校验保存，CLI 不接受伪造的人工证据。
+
+索引是唯一知识源。所有保存通过共享操作系统写锁及 pending-save.json 恢复事务生成 Markdown/阵容存档/索引；禁止直接编辑生成物。
+
 ## 实体记录
 
 结论分类 `kind` 必填：`mechanic`、`general_strategy`、`conditional_strategy` 可进入知识索引；`match_action` 仅保存在内部筛选报告，commit 拒绝。条件策略需在正文明确适用情境。混合段落由 Codex 按转写语义拆分，脚本不以关键词自动推断通用性。被移出项保存完整原结论、原因及原证据。
