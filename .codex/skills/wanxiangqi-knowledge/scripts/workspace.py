@@ -180,6 +180,8 @@ def apply_transaction(root, transaction):
 
 
 def recover(root):
+    from reference_store import recover_cards
+    recover_cards(root)
     transaction = wxq.read_json(Path(root) / 'knowledge/pending-save.json')
     if transaction:
         apply_transaction(root, transaction)
@@ -419,7 +421,7 @@ def sources(root):
             for claim in history.get('previous', {}).get('claims', []):
                 for evidence in claim.get('evidence', []):
                     linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
-    for path in (root / 'knowledge/sources').glob('*/metadata.json'):
+    for path in (root / 'raw/sources').glob('*/metadata.json'):
         metadata = wxq.read_json(path)
         sid = metadata['id']
         url, registry_id = canonical_url(metadata['url'])
@@ -437,7 +439,7 @@ def sources(root):
             any(a <= e['start'] and b >= e['end'] for a, b in intervals) for e in referenced)
         rows[sid] = row
     # Acquisition failures that happened before metadata existed remain visible.
-    for result in wxq.read_json(root / 'knowledge/reports/last-prepare.json', {}).get('results', []):
+    for result in wxq.read_json(root / 'raw/reports/last-prepare.json', {}).get('results', []):
         if result.get('status') != 'failed' or not result.get('url'):
             continue
         try:

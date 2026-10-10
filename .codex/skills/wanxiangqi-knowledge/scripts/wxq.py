@@ -56,12 +56,12 @@ def safe_id(value):
 
 
 def source_dir(root, sid):
-    return Path(root) / 'knowledge/sources' / safe_id(sid.replace(':', '_'))
+    return Path(root) / 'raw/sources' / safe_id(sid.replace(':', '_'))
 
 
 def init_store(root):
     root = Path(root)
-    for folder in ['knowledge/sources', 'knowledge/reports', 'knowledge/lineups',
+    for folder in ['raw/sources', 'raw/reports', 'knowledge/lineups',
                    'knowledge/players', 'knowledge/other', 'entities/raw']:
         (root / folder).mkdir(parents=True, exist_ok=True)
     for c in CATEGORIES:
@@ -202,7 +202,7 @@ def _commit_notes(root, incoming):
     root = Path(root)
     init_store(root)
     sources = {}
-    for p in (root / 'knowledge/sources').glob('*/metadata.json'):
+    for p in (root / 'raw/sources').glob('*/metadata.json'):
         data = read_json(p)
         sources[data['id']] = data
     index_path = root / 'knowledge/index.json'
@@ -251,6 +251,10 @@ def _commit_notes(root, incoming):
                              'entities': sorted(set(previous.get('entities', []) + note.get('entities', []))),
                              'core': sorted(set(previous.get('core', []) + note.get('core', []))),
                              }
+        if note['type'] == 'lineup' and not notes[note['id']].get('manual_meta'):
+            from reference_store import enrich_meta
+            from workspace import default_meta
+            notes[note['id']]['meta'] = enrich_meta(notes[note['id']].get('meta') or default_meta(notes[note['id']]), entities(root))
     for note in notes.values():
         linked = [n for n in notes.values() if n['id'] != note['id'] and (
             set(note.get('entities', [])) & set(n.get('entities', [])) or
@@ -311,7 +315,22 @@ def validate_store(root):
                     errors.append('Missing metadata: ' + evidence['source'])
                 if evidence.get('frame') and not (folder / evidence['frame']).exists():
                     errors.append('Missing cited frame: ' + evidence['frame'])
-    return {'entities': counts, 'notes': len(index['notes']), 'errors': errors}
+    from reference_store import transcript_errors
+    for folder in (root / 'raw/sources').glob('*'):
+        if read_json(folder / 'state.json', {}).get('stage') == 'complete':
+            metadata = read_json(folder / 'metadata.json', {})
+            if metadata.get('id'): errors += transcript_errors(root, metadata['id'])
+    cards = read_json(root / 'knowledge/cards/index.json', {}).get('cards', [])
+    card_ids = set()
+    for card in cards:
+        if card['id'] in card_ids: errors.append('Duplicate reference card: ' + card['id'])
+        card_ids.add(card['id'])
+        from reference_store import render_card
+        path = (root / card['path']).resolve()
+        if not path.is_relative_to((root / 'knowledge/cards').resolve()) or not path.exists():
+            errors.append('Missing card reference: ' + card['id'])
+        elif path.read_text('utf8') != render_card(card): errors.append('Card Markdown differs: ' + card['id'])
+    return {'entities': counts, 'notes': len(index['notes']), 'cards': len(cards), 'errors': errors}
 
 
 def main():
@@ -322,6 +341,8 @@ def main():
     sub.add_parser('sync-entities')
     sub.add_parser('validate')
     sub.add_parser('migrate')
+    p = sub.add_parser('export-transcripts')
+    p.add_argument('sources', nargs='*')
     p = sub.add_parser('prepare')
     p.add_argument('urls', nargs='+')
     p.add_argument('--model', default='large-v3')
@@ -356,11 +377,14 @@ def main():
     elif args.command == 'migrate':
         from workspace import migrate
         result = migrate(args.root)
+    elif args.command == 'export-transcripts':
+        from reference_store import export_transcripts
+        result = export_transcripts(args.root, args.sources or None)
     elif args.command == 'prepare':
         from media import prepare
         init_store(args.root)
         result = run_batch(args.urls, lambda u: prepare(args.root, u, args.model, args.cookies))
-        atomic_json(args.root / 'knowledge/reports/last-prepare.json', {'at': now(), 'results': result})
+        atomic_json(args.root / 'raw/reports/last-prepare.json', {'at': now(), 'results': result})
     elif args.command == 'frames':
         from media import extract_frames
         result = extract_frames(args.root, args.source, source_dir(args.root, args.source) / 'media.mp4', args.times)

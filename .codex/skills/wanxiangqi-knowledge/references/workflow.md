@@ -8,6 +8,36 @@
 
 转写使用同一 `large-v3` 的批量推理，batch_size=4、中文、逐词时间戳；CPU 使用 int8、8线程和 greedy decoding（beam_size=1），CUDA 使用float16与beam_size=5。CPU模式用后续术语及画面核对补足识别误差。`asr.progress.json` 是未完成预览，不能冒充完整原始 ASR；相同模型可从已保存的最后一段时间恢复，完整生成后才写 `asr.raw.json`。`decoder_runs` 记录恢复区间和解码配置。PyAV 固定为16.0.1，以兼容 faster-whisper 1.2.1 的音频解码参数。
 
+## 默认外部内容登记
+
+所有收到的攻略链接默认进入网页“外部内容”，不是只有用户要求同步时才登记。先恢复事务，再在下载前登记；已有登记保留人工标题和备注，不用空字符串覆盖。以下代码在项目根目录执行，输入为实际收到的链接：
+
+```powershell
+@'
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path('.codex/skills/wanxiangqi-knowledge/scripts').resolve()))
+import workspace, wxq
+root = Path.cwd()
+with workspace.store_lock(root):
+    workspace.recover(root)
+    pending = wxq.read_json(root / 'knowledge/pending-commit.json')
+    if pending:
+        wxq._commit_notes(root, pending['notes'])
+url = 'https://www.bilibili.com/video/BV实际编号'
+canonical, _ = workspace.canonical_url(url)
+existing = next((r for r in workspace.sources(root)
+                 if workspace.canonical_url(r['url'])[0] == canonical), None)
+if existing is None:
+    workspace.register_source(root, {'url': url})
+print(workspace.sources(root))
+'@ | & .\.wxq-runtime\Scripts\python.exe -
+```
+
+`register_source` 共用链接规范化、分 P 身份、去重、操作系统写锁和原子保存。获取真实元数据后，对实际发现的各分 P 重复检查：无登记则登记，已有空标题可用元数据标题补充；更新时传入原有 `notes` 和非空 `title`，保留人工信息。不要猜测标题，也不要覆盖非空人工标题。已有元数据的来源由网页聚合展示，登记表保存其注释。
+
+成功或失败结束时调用 `workspace.sources(root)`，检查本次来源的 `stage`、`error`、`knowledge_status` 和 `linked_notes`。状态由元数据、处理状态、审核及知识引用共同推导，不直接写入登记表。`deposited` 必须满足 `complete`、有效核对记录、已关联提交知识；仅登记、仅获取素材或仅提交均不能宣称已沉淀。获取元数据前失败仍保留登记及失败报告，供网页显示及后续恢复。
+
 ## 常用命令
 
 ```powershell
@@ -18,7 +48,8 @@ $wxqScript = '.codex/skills/wanxiangqi-knowledge/scripts/wxq.py'
 & $wxqPython $wxqScript process-local 'BV实际编号:p1'
 & $wxqPython $wxqScript related 'card:1941' --core 'card:1941'
 & $wxqPython $wxqScript frames 'BV实际编号:p1' 30 35 40
-& $wxqPython $wxqScript commit knowledge/reports/import.json
+& $wxqPython $wxqScript commit raw/reports/import.json
+& $wxqPython $wxqScript export-transcripts 'BV实际编号:p1'
 & $wxqPython $wxqScript finish 'BV实际编号:p1'
 & $wxqPython $wxqScript validate
 & $wxqPython -m unittest discover -s .codex/skills/wanxiangqi-knowledge/tests -v
@@ -26,11 +57,11 @@ $wxqScript = '.codex/skills/wanxiangqi-knowledge/scripts/wxq.py'
 
 ## 来源文件与人工语义步骤
 
-`knowledge/sources/BV编号_pN/` 保存 `metadata.json`、`state.json`、`asr.raw.json`、`asr.corrected.json`、`corrections.json`、`frames.json`、`review.json`。原始 ASR 含时间戳、逐词概率和段落平均概率，概率只用作辅助判断。自动纠错只应用已确认的唯一别名；拼音相同的词生成待核对候选，Codex 需用上下文及画面确认后更改修正版。保留未解决项。
+`raw/sources/BV编号_pN/` 保存 `metadata.json`、`state.json`、`asr.raw.json`、`asr.corrected.json`、`corrections.json`、`frames.json`、`review.json`。原始 ASR 含时间戳、逐词概率和段落平均概率，概率只用作辅助判断。自动纠错只应用已确认的唯一别名；拼音相同的词生成待核对候选，Codex 需用上下文及画面确认后更改修正版。保留未解决项。
 
 `review.json` 示例：`{"approved":true,"checked_intervals":[[12,25]],"unresolved":[],"notes":"核对核心机制与拍卖画面；其余缺失字段未补写"}`。不把未看过的帧标为已核对；需要补帧应在 `finish` 前完成。
 
-来源状态：downloading → transcribing → prepared → complete；任一错误进入 failed，但已成功文件保留。重新运行 `prepare` 会跳过原始 ASR及既有帧。`complete` 来源不再下载；要补新画面时明确重新获取素材。元数据获取前的失败记录在 `knowledge/reports/last-prepare.json`。
+来源状态：downloading → transcribing → prepared → complete；任一错误进入 failed，但已成功文件保留。重新运行 `prepare` 会跳过原始 ASR及既有帧。`complete` 来源不再下载；要补新画面时明确重新获取素材。元数据获取前的失败记录在 `raw/reports/last-prepare.json`。
 
 仅拿到字幕或简介不能达到 prepared。无关视频记录失败或无相关知识，不伪造条目，也不调用要求已提交知识的 finish。
 
@@ -49,6 +80,14 @@ $wxqScript = '.codex/skills/wanxiangqi-knowledge/scripts/wxq.py'
 启动 `frontend/start.ps1` 使用本机服务，编辑器同时写索引、Markdown、阵容存档。网页与 commit/finish 共用写锁，读请求短暂排队。`pending-save.json` 优先重放；其次重放 `pending-commit.json`。单文件来源登记使用原子替换和恢复副本。
 
 来源登记不启动下载；从网页复制待整理链接，通过技能执行原流程。准备失败、转写失败和待核对保持对应阶段。已提交但未 finish 或未核对的来源不可显示为已沉淀。人工编辑的知识不应重新伪装为视频确认内容。
+
+## 卡牌资料与全文导出
+
+官网同步后自动生成卡牌目录和分类Markdown。`reference_store.export_cards` 共用项目写锁，`knowledge/pending-cards.json` 支持中断恢复；网页使用只读 `/api/cards` 摘要及 `/api/cards/{id}` 详情。保留官方原始属性，展示字段缺失不补造。
+
+`wxq.py export-transcripts [SOURCE_ID...]` 指定ID可导出待finish来源；不指定时补录全部complete来源。导出前逐段复核纠正版和候选，完整保留讲解、实战。疑词及超过20秒的转写间隔明确标注，间隔不等同确认缺失语音。合法解码边界重叠保留，禁止段落起点倒序或越界。`raw/index.json` 记录文件摘要，重复导出幂等，人工差异不覆盖并产生冲突报告。先导出再finish，validate核对已完成来源的文字稿与摘要。
+
+补阵容依赖先核对核心及中后期必需成员，再按官网relationID映射阵营。禁用说明列出缺失成员和作用；过渡、可选及无阵营成员排除。不可替代的辅助与输出同等参与推导。人工meta保持保护；旧知识改写通过共享persist事务及commit校验，同时更新重放输入，不能追加另一份改写结论。
 
 ## 三轮拍卖
 

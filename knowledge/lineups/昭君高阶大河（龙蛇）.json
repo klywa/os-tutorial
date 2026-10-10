@@ -310,6 +310,18 @@
       "type": "other",
       "title": "昭君：冰心领域版本差异",
       "path": "knowledge/other/昭君－冰心领域版本差异.md"
+    },
+    {
+      "id": "angela-liubang-totems",
+      "type": "lineup",
+      "title": "安琪拉养刘邦（图腾成长）",
+      "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+    },
+    {
+      "id": "player-angela",
+      "type": "player",
+      "title": "安琪拉－飞行器与模块选择",
+      "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
     }
   ],
   "history": [
@@ -322,25 +334,185 @@
   "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md",
   "aliases": [],
   "meta": {
-    "required_factions": [],
-    "players": [],
+    "required_factions": [
+      "faction:dahe"
+    ],
+    "players": [
+      "player:34"
+    ],
     "core_heroes": [
       "card:1871",
       "card:5191"
     ],
     "compositions": {
-      "early": [],
-      "middle": [],
-      "late": []
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "过渡",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "role": "冻结及经济",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1941",
+          "necessity": "optional",
+          "role": "孙尚香缺少时冻结替代",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1871",
+          "necessity": "required",
+          "role": "控制核心",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5191",
+          "necessity": "required",
+          "role": "持续输出核心",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "图腾",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required",
+          "role": "图腾",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": "图腾",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1561",
+          "necessity": "optional",
+          "role": "过渡控制",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1741",
+          "necessity": "optional",
+          "role": "过渡成长",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1871",
+          "necessity": "required",
+          "role": "控制与承伤",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5191",
+          "necessity": "required",
+          "role": "持续输出",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "图腾",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required",
+          "role": "图腾",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": "图腾",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5371",
+          "necessity": "optional",
+          "role": "可选补充输出",
+          "replaces": "card:1741",
+          "replacement_note": "有圣剑或需要补输出时使用；不是必须成员"
+        },
+        {
+          "hero": "card:5211",
+          "necessity": "optional",
+          "role": "司空震的可选替代",
+          "replaces": "card:5371",
+          "replacement_note": "按获得英雄和护命灵珠情况选择"
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "终局复生",
+          "replaces": "card:1561",
+          "replacement_note": "转移张良永久等级后替换，附身东皇太一"
+        }
+      ]
     },
-    "ban_conditions": [],
+    "ban_conditions": [
+      {
+        "faction": "faction:heluo",
+        "status": "playable",
+        "reason": "司空震为可选补输出，河洛被禁时不能获取司空震；按原攻略可用无阵营海月替代，不依赖司空震的针对手段仍需结合对手判断。"
+      },
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：东皇太一（控制与承伤）、敖隐（持续输出）、鬼谷子（图腾）、少司缘（图腾）、大司命（图腾）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
     "matchups": []
   },
   "entity_names": {
+    "faction:dahe": "大河",
+    "player:34": "昭君",
     "card:1871": "东皇太一",
-    "card:5191": "敖隐"
+    "card:5191": "敖隐",
+    "card:1971": "弈星",
+    "card:1111": "孙尚香",
+    "card:1941": "苏烈",
+    "card:1891": "鬼谷子",
+    "card:5771": "少司缘",
+    "card:5171": "大司命",
+    "card:1561": "张良",
+    "card:1741": "虞姬",
+    "card:5371": "司空震",
+    "card:5211": "海月",
+    "card:1861": "太乙真人"
   },
   "manual_sections": [],
   "conflicts": [],
-  "revision": "47342dabece461254619"
+  "revision": "87bfad672b2265d3a913"
 }

@@ -7,3 +7,6 @@ export type Claim = {section:string;text:string;kind:string;origin?:string;condi
 export type Note = {id:string;type:'lineup'|'player'|'other';title:string;path:string;aliases:string[];revision:string;entities:string[];core:string[];claims:Claim[];meta?:Meta;manual_sections:string[];conflicts:unknown[];related:{id:string;title:string}[]};
 export type Options = {entities:Entity[];factions:Entity[];sections:Record<string,string[]>};
 export type Source = {id:string;url:string;title?:string;notes?:string;author?:string;stage:string;error?:string;knowledge_status:string;linked_notes:{id:string;title:string}[]};
+export type CardSummary = {id:string;name:string;category:string;aliases:string[];effect:string;faction:{id:string;name:string;official_id?:number};tier:number|null;awakened:boolean};
+export type CardDetail = CardSummary & {skills:{id:number;name:string;effect:string;enhancements:{level:number;effect:string}[]}[];skills_source:string|null;stats:Record<string,string|number>;attributes:Record<string,unknown>;sources:string[];retrieved_at:string|null;version:string|null};
+export type CardFilters = {query:string;category:string;faction:string;tier:string;awakened:string};

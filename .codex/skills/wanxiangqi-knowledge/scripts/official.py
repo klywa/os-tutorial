@@ -156,4 +156,7 @@ def sync_official(root):
         if not records:
             report['missing'].append(category)
     atomic_json(root / 'entities/sync-report.json', report)
+    from reference_store import export_cards
+    report['card_reference'] = export_cards(root)
+    atomic_json(root / 'entities/sync-report.json', report)
     return report

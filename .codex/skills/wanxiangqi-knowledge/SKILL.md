@@ -9,7 +9,7 @@ description: 将王者万象棋的B站攻略视频或其他可下载社媒视频
 
 ## 路径与命令
 
-以本技能所在的 `.codex/skills` 的项目根目录为默认目的地，不以当前终端目录猜测。`knowledge/` 和 `entities/` 与 `.codex/` 同级。允许显式 `--root` 指定其他项目。不要写到个人全局知识库。
+以本技能所在的 `.codex/skills` 的项目根目录为默认目的地，不以当前终端目录猜测。`knowledge/`、`entities/`、`raw/` 与 `.codex/` 同级。视频处理档案放在 `raw/sources/BV编号_pN/`，全文文字稿仍放在 `raw/BV编号_pN.md`；`raw/` 不纳入 Git。`knowledge/` 保存整理后的知识与来源登记。允许显式 `--root` 指定其他项目。不要写到个人全局知识库。
 
 以下 PowerShell 命令在项目根目录执行；其他目录使用完整路径。首次或环境缺失时运行安装脚本（会安装依赖并下载模型）：
 
@@ -24,7 +24,7 @@ powershell -NoProfile -File .codex/skills/wanxiangqi-knowledge/scripts/setup.ps1
 
 ## 整理流程
 
-1. 读取 [references/workflow.md](references/workflow.md)。检查上次失败报告、`knowledge/pending-commit.json` 及相关来源状态。有待提交事务时先用 `commit` 重放恢复，再处理新输入。
+1. 读取 [references/workflow.md](references/workflow.md)。检查上次失败报告及相关来源状态，先通过共享恢复入口恢复 `pending-save.json`，再恢复 `pending-commit.json`。收到视频链接后默认通过 `workspace.register_source` 登记到 `knowledge/source-registry.json`，无需用户额外要求同步“外部内容”；按规范化链接去重，保留已有人工标题和备注，未知标题留空，获取元数据后仅补充空标题。登记后再获取素材，失败也保留记录。具体调用见 workflow 的“默认外部内容登记”。
 2. 实体为空时先同步官网；用户要求更新实体或遇到未知术语时再次同步。查看 `entities/sync-report.json`：缺失类别不能表述为已完整同步。公开页面结构变化时读取保存的 HTML/JS，或用浏览器查找页面实际加载数据，再修正导入器；不要猜测接口或实体内容。
 3. 用 `prepare` 获取每个分 P 的元数据、原始 ASR、修正版、纠错记录和关键帧。失败时保留报告并继续其他链接；来源失败不能标为完成。同一命令可重新执行恢复已有阶段。
 4. 逐段读取转写与纠错候选，结合实体描述、前后文和对应关键帧处理同音及口语。原始 ASR 不可改写。更改修正版时在 `corrections.json` 记录原词、标准词、实体 ID、时间戳、判断理由和证据。歧义保留原文及候选。只有经证据确认的映射才能写入实体 `aliases`；不要将可疑词加入全局映射。
@@ -33,7 +33,7 @@ powershell -NoProfile -File .codex/skills/wanxiangqi-knowledge/scripts/setup.ps1
 6. 自动判断阵容、棋手、其他，可一视频多条知识。读取 [references/knowledge-contract.md](references/knowledge-contract.md)，按照下文通用策略规则筛选，在索引中为结论保存准确来源和时间段。没有可靠通用内容的必需字段写“暂无已确认的通用策略”；只有明确通用讲解依据才能写具体回合。推断用自然语言说明。发布日期不等于游戏版本。
 7. **写入前必须扫描关联知识**：使用 `related` 按涉及实体、阵容核心及主题检索，并读取候选 Markdown 与索引结论。同一阵容/棋手主题复用已有条目 ID。检查实体提及全文以发现未索引旧笔记。补充本次证据确实影响的旧条目，所有新增和旧条目更新放入同一提交文件。仅增加关联链接不能替代语义补充。
 8. 用 `commit FILE.json` 校验并合并。同文同版本同条件合并来源；不同版本、条件和无法解释的冲突并存，必要时增加“冲突与适用条件”结论。新视频不能覆盖旧结论。提交自动更新双向关联链接、索引、Markdown，修改前保留 `.bak`，中断时重放待提交文件。
-9. 检查所有输出、来源、版本与引用。创建来源目录中的 `review.json`：`approved=true`、实际核对的时间段、未解决问题和说明。调用 `finish SOURCE_ID`：要求已提交知识、ASR 和被引用帧核对记录；成功后删除临时音视频，保留转写和帧。`approved` 是 Codex 完成核对的记录，不要求用户逐条批准。
+9. 检查所有输出、来源、版本与引用。先运行 `export-transcripts SOURCE_ID`，检查项目根 `raw/` 的完整纠正文字稿及待核实项。创建来源目录中的 `review.json`：`approved=true`、实际核对的时间段、未解决问题和说明。调用 `finish SOURCE_ID`：要求已提交知识、ASR、有效文字稿及被引用帧核对记录；成功后删除临时音视频，保留转写和帧。`approved` 是 Codex 完成核对的记录，不要求用户逐条批准。
 
 ## 中文知识与网页共同维护
 
@@ -43,7 +43,7 @@ powershell -NoProfile -File .codex/skills/wanxiangqi-knowledge/scripts/setup.ps1
 
 网页可编辑正文和 meta。修改正文的章节列在 `manual_sections`，人工修改 meta 标记 `manual_meta=true`；人工结论 `origin=manual` 且不附视频证据，原结论与证据保留在 `history`。提交前必须读取人工修订：相同结论不产生重复；不同结论进入 `conflicts` 待核对，不自动覆盖人工内容或把旧来源当作修改后的依据。需要解决冲突时，核对新证据与人工意图，通过统一保存入口维护知识，再显式移除已解决冲突。不要直接修改生成的 Markdown/JSON，也不要通过重放旧导入绕过保护。
 
-前端来源清单位于 `knowledge/source-registry.json`，手动添加仅代表待整理。处理时结合清单链接和备注，沿用既有 prepare/commit/finish 流程；关联笔记从证据及历史推导。`complete`、核对记录有效、已经提交关联知识三者齐备才显示已沉淀。网页不负责下载或 ASR。
+前端来源清单位于 `knowledge/source-registry.json`，技能默认登记与网页手动添加共用入口，登记仅代表待整理。处理时结合清单链接和备注，沿用既有 prepare/commit/finish 流程；关联笔记从证据及历史推导。每次成功或失败结束时，用 `workspace.sources` 核对本次各分 P 的阶段、错误、沉淀状态和关联笔记，不手工填写成功状态。`complete`、核对记录有效、已经提交关联知识三者齐备才显示已沉淀。网页不负责下载或 ASR。
 
 网页与 CLI 提交共享操作系统写锁；遇到占用稍后重试。启动时先重放 `pending-save.json` 恢复，再处理 `pending-commit.json`。`frontend/start.ps1` 构建并启动本机网页；默认仅 127.0.0.1。
 
@@ -54,6 +54,14 @@ powershell -NoProfile -File .codex/skills/wanxiangqi-knowledge/scripts/setup.ps1
 逐条区分讲解中的规则与当局选择。混合段落先拆开，再分别处理。实战操作只有讲解明确给出可复用理由、适用条件清楚时才能入库；不能凭一次操作或获胜结果泛化。具体竞拍结果、当局装备优先级、等级转移目标和等待回合数，未经通用讲解支持不得保留。未确认简称、操作顺序与识别问题放内部报告。没有可靠通用内容的必要字段写“暂无已确认的通用策略”。
 
 重新筛选旧知识时，保存移出内容、原证据及移出原因；替换索引与重放导入数据并更新关联链接。保留人工修改，核查依据，不根据旧导入覆盖手写修订。
+
+## 官网卡牌知识、阵营依赖与全文存档
+
+`sync-entities` 在保留 `entities/` 原始属性、来源和历史的同时生成 `knowledge/cards/index.json` 与分类中文 Markdown，供网页“卡牌库”查阅。卡牌效果、阵营、英雄品阶、普通／觉醒、技能、等级强化及基础属性按官网实际字段整理；单位按保存的官网展示代码转换。缺失字段明确未提供，不猜测；觉醒卡借用普通英雄技能时说明来源，不当作独立觉醒强化。卡牌资料与视频攻略结论分开维护，官网部分失败保留既有数据。
+
+先依据攻略确定核心及关键输出、成长、控制和辅助成员，再查询其官网阵营。必须阵营从核心及中后期 `necessity=required` 成员推导；前期过渡、可选及无阵营英雄不纳入。关键辅助不因其不是主要输出而被排除。必须阵营被禁判完整推荐不可玩，说明缺失英雄与作用；有证据的替代路线另述，其他无证据条件保留待确认。此规则补充上文的meta要求，不根据全文提及或官网标签擅自确定必需英雄。
+
+逐段核对纠正版后，先执行 `wxq.py export-transcripts SOURCE_ID` 并检查输出，再执行 `finish`。完整文字稿存项目根 `raw/BV编号_pN.md`，保留讲解与实战、原时序、时间戳和待核实项，不能用知识摘要替代。`raw/index.json` 记录原始、修正及输出摘要；人工修改不得覆盖，差异保存在 `raw/reports/transcript-conflicts/`。无参数 `export-transcripts` 补录全部已完成来源。确认漏识别时独立保存补转写记录后合入纠正版，不修改原始ASR；无法补核则标待核实，不伪造原话。官网新数值不替换旧视频数值。finish和validate要求有效文字稿及摘要。
 
 ## 输出给用户
 

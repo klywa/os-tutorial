@@ -53,6 +53,14 @@ class Handler(BaseHTTPRequestHandler):
                     return self.response(200, {'entities': entities, 'factions': workspace.factions(self.server.root), 'sections': wxq.SECTIONS})
                 if path == '/api/sources':
                     return self.response(200, workspace.sources(self.server.root))
+                if path == '/api/cards' or path.startswith('/api/cards/'):
+                    cards = wxq.read_json(self.server.root / 'knowledge/cards/index.json', {}).get('cards', [])
+                    if path == '/api/cards':
+                        return self.response(200, [{k: c.get(k) for k in
+                            ['id', 'name', 'category', 'aliases', 'effect', 'faction', 'tier', 'awakened']}
+                            for c in cards])
+                    card = next((c for c in cards if c['id'] == path.removeprefix('/api/cards/')), None)
+                    return self.response(200 if card else 404, card or {'error': '卡牌不存在'})
             if path.startswith('/api/'):
                 return self.response(404, {'error': '接口不存在'})
             target = (ROOT / 'frontend/dist' / path.lstrip('/')).resolve()

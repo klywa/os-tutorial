@@ -67,14 +67,14 @@ class WorkspaceTests(unittest.TestCase):
         b = workspace.register_source(self.root, {'url': 'https://www.bilibili.com/video/BV123?p=2', 'title': '测试'})
         self.assertEqual(a['id'], b['id'])
         self.assertEqual(len(workspace.sources(self.root)), 1)
-        folder = self.root / 'knowledge/sources/BV123_p2'
+        folder = self.root / 'raw/sources/BV123_p2'
         wxq.atomic_json(folder / 'metadata.json', {'id': 'BV123:p2', 'url': a['url'], 'title': '测试'})
         wxq.atomic_json(folder / 'state.json', {'stage': 'complete'})
         self.assertEqual(workspace.sources(self.root)[0]['knowledge_status'], 'unprocessed')
 
     def test_generic_registry_links_to_imported_platform_id(self):
         workspace.register_source(self.root, {'url': 'https://example.com/video', 'title': '待整理内容', 'notes': '关心后期'})
-        folder = self.root / 'knowledge/sources/platform123_p1'
+        folder = self.root / 'raw/sources/platform123_p1'
         wxq.atomic_json(folder / 'metadata.json', {'id':'platform123:p1','url':'https://example.com/video','title':'下载后的标题'})
         rows = workspace.sources(self.root)
         self.assertEqual(len(rows), 1)
@@ -88,7 +88,7 @@ class WorkspaceTests(unittest.TestCase):
         note['claims'] = [{'section':'核心机制','text':'已确认建议','kind':'mechanic',
                           'evidence':[{'source':'BV123:p1','start':10,'end':20}]}]
         wxq.atomic_json(self.root / 'knowledge/index.json', {'schema_version':2,'notes':[note]})
-        folder=self.root / 'knowledge/sources/BV123_p1'
+        folder=self.root / 'raw/sources/BV123_p1'
         wxq.atomic_json(folder / 'metadata.json', {'id':'BV123:p1','url':'https://www.bilibili.com/video/BV123?p=1','title':'来源'})
         wxq.atomic_json(folder / 'state.json', {'stage':'complete'})
         wxq.atomic_json(folder / 'review.json', {'approved':True,'checked_intervals':[[0,5]]})

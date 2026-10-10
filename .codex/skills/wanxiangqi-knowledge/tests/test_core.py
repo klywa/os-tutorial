@@ -24,6 +24,17 @@ class CoreTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
 
+    def test_source_archives_live_under_raw(self):
+        self.core.init_store(self.root)
+        self.assertEqual(self.core.source_dir(self.root, 'BV1:p1'), self.root / 'raw/sources/BV1_p1')
+        self.assertTrue((self.root / 'raw/sources').is_dir())
+        self.assertFalse((self.root / 'knowledge/sources').exists())
+
+    def test_processing_reports_live_under_raw(self):
+        self.core.init_store(self.root)
+        self.assertTrue((self.root / 'raw/reports').is_dir())
+        self.assertFalse((self.root / 'knowledge/reports').exists())
+
     def test_ambiguous_alias_is_not_replaced(self):
         entities = [{'id': 'hero:1', 'name': '甲', 'aliases': ['同音']},
                     {'id': 'hero:2', 'name': '乙', 'aliases': ['同音']}]
@@ -69,10 +80,10 @@ class CoreTests(unittest.TestCase):
     def test_related_notes_found_and_repeat_commit_unchanged(self):
         self.core.init_store(self.root)
         source = {'id': 'BV1:p1', 'url': 'https://example.com', 'duration': 20}
-        self.core.atomic_json(self.root / 'knowledge/sources/BV1_p1/metadata.json', source)
+        self.core.atomic_json(self.root / 'raw/sources/BV1_p1/metadata.json', source)
         self.core.atomic_json(self.root / 'entities/heroes.json', [{'id': 'hero:1', 'name': '测试英雄'}])
-        self.core.atomic_json(self.root / 'knowledge/sources/BV1_p1/asr.raw.json', {'segments': [{'start': 0, 'end': 20, 'text': '测试'}]})
-        self.core.atomic_json(self.root / 'knowledge/sources/BV1_p1/asr.corrected.json', {'segments': [{'start': 0, 'end': 20, 'text': '测试'}]})
+        self.core.atomic_json(self.root / 'raw/sources/BV1_p1/asr.raw.json', {'segments': [{'start': 0, 'end': 20, 'text': '测试'}]})
+        self.core.atomic_json(self.root / 'raw/sources/BV1_p1/asr.corrected.json', {'segments': [{'start': 0, 'end': 20, 'text': '测试'}]})
         note = {'id': 'test', 'type': 'lineup', 'title': '测试', 'entities': ['hero:1'],
                 'core': ['hero:1'], 'claims': [{'kind': 'general_strategy', 'section': '核心机制', 'text': '测试机制',
                 'version': None, 'condition': '', 'evidence': [{'source': 'BV1:p1', 'start': 2, 'end': 5}]}]}
@@ -166,7 +177,7 @@ class CoreTests(unittest.TestCase):
 
     def test_source_without_asr_cannot_be_committed(self):
         self.core.init_store(self.root)
-        self.core.atomic_json(self.root / 'knowledge/sources/BV1_p1/metadata.json', {'id': 'BV1:p1'})
+        self.core.atomic_json(self.root / 'raw/sources/BV1_p1/metadata.json', {'id': 'BV1:p1'})
         note = {'id': 'no-asr', 'type': 'other', 'title': 'x', 'entities': [], 'claims': [{
             'section': '知识内容', 'text': 'x', 'evidence': [{'source': 'BV1:p1', 'start': 0, 'end': 1}]}]}
         with self.assertRaises(ValueError):
@@ -175,7 +186,7 @@ class CoreTests(unittest.TestCase):
     def test_finished_bv_uses_local_cache_without_network(self):
         from media import prepare
         self.core.init_store(self.root)
-        folder = self.root / 'knowledge/sources/BV1test_p1'
+        folder = self.root / 'raw/sources/BV1test_p1'
         self.core.atomic_json(folder / 'metadata.json', {'id': 'BV1test:p1'})
         self.core.atomic_json(folder / 'state.json', {'stage': 'complete'})
         result = prepare(self.root, 'https://www.bilibili.com/video/BV1test/?p=1')
@@ -184,7 +195,7 @@ class CoreTests(unittest.TestCase):
     def test_finish_rejects_empty_review_intervals(self):
         from media import finish
         self.core.init_store(self.root)
-        folder = self.root / 'knowledge/sources/BV1_p1'
+        folder = self.root / 'raw/sources/BV1_p1'
         self.core.atomic_json(folder / 'review.json', {'approved': True})
         self.core.atomic_json(folder / 'asr.raw.json', {'segments': [1]})
         self.core.atomic_json(folder / 'asr.corrected.json', {'segments': [1]})
@@ -196,7 +207,7 @@ class CoreTests(unittest.TestCase):
     def test_resumes_correction_from_existing_raw_asr(self):
         from media import transcribe
         self.core.init_store(self.root)
-        folder = self.root / 'knowledge/sources/BV1_p1'
+        folder = self.root / 'raw/sources/BV1_p1'
         self.core.atomic_json(self.root / 'entities/heroes.json', [{'id': 'card:1', 'name': '苏烈', 'aliases': ['苏列']}])
         raw = {'segments': [{'id': 0, 'start': 0, 'end': 1, 'text': '苏列'}]}
         self.core.atomic_json(folder / 'asr.raw.json', raw)

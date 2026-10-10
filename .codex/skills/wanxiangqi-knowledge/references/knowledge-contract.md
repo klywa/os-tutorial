@@ -2,7 +2,7 @@
 
 ## 提交知识
 
-将提交 JSON 放到 `knowledge/reports/`。脚本不负责猜阵容或语义改写：Codex 生成提交文件后运行 `commit`，文件格式为 `{"notes": [...]}`。
+将提交 JSON 放到 `raw/reports/`。脚本不负责猜阵容或语义改写：Codex 生成提交文件后运行 `commit`，文件格式为 `{"notes": [...]}`。
 
 ```json
 {
@@ -65,6 +65,14 @@
 网页 PUT 笔记包含 `revision`、按名称映射的 `sections` 和可选 `meta/title/aliases`。旧 revision 返回冲突，不覆盖；章节修改以 origin=manual 结论替换，原结论与证据进入 history，不附假视频依据。manual_sections 保护人工章节，manual_meta 保护人工 meta；CLI 新输入冲突进入 conflicts。人工修订不经普通视频导入校验，但必须经网页统一入口校验保存，CLI 不接受伪造的人工证据。
 
 索引是唯一知识源。所有保存通过共享操作系统写锁及 pending-save.json 恢复事务生成 Markdown/阵容存档/索引；禁止直接编辑生成物。
+
+## 卡牌与文字稿存档
+
+`knowledge/cards/index.json` 的 `cards` 为实体派生资料，包含稳定ID、类别、别名、效果、阵营（官方relationID及项目ID）、英雄品阶、觉醒状态、skills及强化节点、skills_source、按官网展示换算的stats、中文attributes、raw_attributes、来源、同步日期和版本。分类中文Markdown与目录一致，不编造视频证据。普通与觉醒ID分开；借用普通英雄技能必须声明来源。
+
+`raw/BV编号_pN.md` 保存带时间戳的纠正版全文；`raw/index.json` 的sources记录来源ID、路径、raw_sha256、corrected_sha256和output_sha256。原始ASR不可改写，旧视频数值不可更新为现版本；人工全文修改保留并产生差异。全文不纳入攻略claims，实战操作不自动泛化。
+
+阵容必须阵营由核心和中后期必需成员推导，包括关键辅助；前期过渡、可选与无阵营成员排除。成员的必要性先依据攻略确定，不能因全文出现或官方标签而擅自判定。完整阵容被禁与有条件替代路线分别说明；人工meta仍按原保护契约处理。
 
 ## 实体记录
 

@@ -1,4 +1,12 @@
-import type { Entity, Note } from './types';
+import type { Entity, Note, CardSummary, CardFilters } from './types';
+export function cardMatches(card:CardSummary,filters:CardFilters){
+  const text=[card.name,...card.aliases,card.effect,card.faction.name].join(' ').toLowerCase();
+  return filters.query.trim().toLowerCase().split(/\s+/).every(q=>text.includes(q))
+    &&(!filters.category||card.category===filters.category)
+    &&(!filters.faction||(card.faction.id||'none')===filters.faction)
+    &&(!filters.tier||(card.category==='heroes'&&String(card.tier)===filters.tier))
+    &&(!filters.awakened||(card.category==='heroes'&&card.awakened===(filters.awakened==='awakened')));
+}
 export function entityLabel(entity:Entity){return entity.name+(entity.properties?.type===9?'（觉醒）':'');}
 export function availability(note:Note,banned:string[]):'playable'|'unplayable'|'unknown'{
   if(!banned.length)return 'playable';

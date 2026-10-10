@@ -185,7 +185,7 @@ def prepare(root, url, model='large-v3', cookies=None):
     if match:
         requested_part = urllib_part(url)
         cached = []
-        for folder in (root / 'knowledge/sources').glob(match.group() + '_p*'):
+        for folder in (root / 'raw/sources').glob(match.group() + '_p*'):
             meta = read_json(folder / 'metadata.json', {})
             if requested_part and meta.get('id') != match.group() + ':p' + requested_part:
                 continue
@@ -313,6 +313,10 @@ def finish(root, sid):
                     raise ValueError('Cited frame not reviewed')
     if not (folder / 'asr.raw.json').exists() or not (folder / 'asr.corrected.json').exists():
         raise ValueError('ASR artifacts required')
+    from reference_store import transcript_errors
+    errors = transcript_errors(root, sid)
+    if errors:
+        raise ValueError('; '.join(errors))
     atomic_json(folder / 'state.json', {'stage': 'complete', 'at': now()})
     for filename in ['media.mp4', 'audio.wav', 'video.m4s', 'audio.m4s']:
         (folder / filename).unlink(missing_ok=True)

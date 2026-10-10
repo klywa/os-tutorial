@@ -41,6 +41,22 @@ class ServerTests(unittest.TestCase):
             self.assertEqual(source['knowledge_status'], 'unprocessed')
             self.assertEqual(source['notes'], '提取后期策略')
 
+    def test_cards_summary_detail_and_unknown_id(self):
+        from reference_store import export_cards
+        wxq.atomic_json(self.root / 'entities/equipment.json', [{
+            'id': 'card:10', 'name': '装备', 'category': 'equipment',
+            'description': '回复生命', 'properties': {'type': 5}, 'sources': []}])
+        export_cards(self.root)
+        with urlopen(self.url + 'cards') as response:
+            summaries = json.load(response)
+            self.assertEqual(summaries[0]['effect'], '回复生命')
+            self.assertNotIn('raw_attributes', summaries[0])
+        with urlopen(self.url + 'cards/card%3A10') as response:
+            self.assertEqual(json.load(response)['stats'], {})
+        with self.assertRaises(HTTPError) as error:
+            urlopen(self.url + 'cards/card%3Amissing')
+        self.assertEqual(error.exception.code, 404)
+
     def test_parallel_reads_do_not_compete_for_write_lock(self):
         def read(path):
             with urlopen(self.url + path) as response:
