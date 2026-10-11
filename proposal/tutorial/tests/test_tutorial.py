@@ -135,6 +135,114 @@ class TutorialTests(unittest.TestCase):
         self.assertEqual(d['templates'][0]['event_count'], 2)
         self.assertEqual(d['templates'][0]['video_count'], 1)
 
+    def test_template_organization_orders_groups_phases_and_cards_without_changing_events(self):
+        r = copy.deepcopy(self.record)
+        for index, tid in enumerate(('a-last', 'z-first', 'b-middle', 'c-second'), 1):
+            e = copy.deepcopy(self.record['events'][0])
+            e.update(id=self.source['id'] + ':e' + str(index), template_id=tid)
+            if index == 1:
+                r['events'] = []
+            r['events'].append(e)
+        tutorial.save_record(self.root, r)
+        definitions = [{'id': tid, 'organization': {
+            'group_id': group, 'group_title': group, 'group_order': group_order,
+            'phase_id': phase, 'phase_title': phase, 'phase_order': phase_order,
+            'goal': '学习目标', 'order': order, 'related': [], 'applicability': '跨阶段适用',
+        }} for tid, group, group_order, phase, phase_order, order in (
+            ('a-last', 'special', 3, 'threat', 1, 1),
+            ('b-middle', 'game', 1, 'growth', 2, 1),
+            ('c-second', 'game', 1, 'opening', 1, 2),
+            ('z-first', 'game', 1, 'opening', 1, 1),
+        )]
+        original = tutorial.aggregate(self.root, [self.source], [])
+        organized = tutorial.aggregate(self.root, [self.source], definitions)
+        self.assertEqual([t['id'] for t in organized['templates']],
+                         ['z-first', 'c-second', 'b-middle', 'a-last'])
+        self.assertEqual(organized['events'], original['events'])
+        self.assertEqual(organized['stats'], original['stats'])
+
+    def test_organization_rejects_duplicate_templates_and_broken_cross_links(self):
+        tutorial.save_record(self.root, self.record)
+        with self.assertRaisesRegex(ValueError, 'Duplicate template'):
+            tutorial.aggregate(self.root, [self.source], [{'id': 'talent-fit'}, {'id': 'talent-fit'}])
+        with self.assertRaisesRegex(ValueError, 'related template'):
+            tutorial.aggregate(self.root, [self.source], [{'id': 'talent-fit', 'organization': {
+                'group_id': 'game', 'group_title': '整局推进', 'group_order': 1,
+                'phase_id': 'forming', 'phase_title': '成型', 'phase_order': 2,
+                'goal': '补齐条件', 'order': 1, 'related': ['missing'], 'applicability': '选项出现时',
+            }}])
+
+    def test_mixed_video_keeps_only_live_events_and_recounts_templates(self):
+        r = copy.deepcopy(self.record)
+        for index, scene in enumerate(('前置讲解', '模拟演示'), 2):
+            event = copy.deepcopy(r['events'][0])
+            event.update(id=self.source['id'] + ':e00' + str(index),
+                         scene=scene, template_id='static-only')
+            r['events'].append(event)
+        tutorial.save_record(self.root, r)
+        data = tutorial.aggregate(self.root, [self.source], [])
+        self.assertEqual([e['id'] for e in data['events']], [self.record['events'][0]['id']])
+        self.assertEqual(data['stats']['scenes'], {'实战': 1})
+        self.assertEqual(data['stats']['templates'], 1)
+        self.assertEqual(data['templates'][0]['event_ids'], [self.record['events'][0]['id']])
+        self.assertEqual(data['stats']['duration'], 100)
+
+    def test_special_mode_and_static_only_sources_leave_no_report_rows_or_issues(self):
+        tutorial.save_record(self.root, self.record)
+        extra = []
+        for bvid, title, scene in (('BV1wZH66GEdA', '已改名的模式视频', '实战'),
+                                   ('BV1tkHS6VECD', '机制介绍', '前置讲解')):
+            r = copy.deepcopy(self.record)
+            sid = bvid + ':p1'
+            r['source'].update(id=sid, title=title, url='https://www.bilibili.com/video/' + bvid + '/?p=1')
+            r['events'][0].update(id=sid + ':e001', scene=scene)
+            r['unresolved'] = ['不应出现在报告的疑问']
+            tutorial.write(self.root / 'raw/sources' / (bvid + '_p1') / 'asr.corrected.json',
+                           tutorial.read(self.asr))
+            tutorial.save_record(self.root, r)
+            extra.append(r['source'])
+        before = {p: p.read_bytes() for p in (self.root / 'proposal/tutorial/records').glob('*.json')}
+        data = tutorial.aggregate(self.root, [self.source, *extra], [])
+        self.assertEqual([s['id'] for s in data['sources']], [self.source['id']])
+        self.assertEqual(data['stats']['planned'], 1)
+        self.assertEqual(data['stats']['authors'], {'老师': 1})
+        self.assertEqual(data['issues'], [])
+        self.assertEqual(before, {p: p.read_bytes() for p in before})
+
+    def test_principles_must_reference_retained_live_evidence(self):
+        tutorial.save_record(self.root, self.record)
+        summary = {'principles': [{'title': '解释因果', 'principle': '讲清条件',
+                    'rationale': '帮助判断', 'expression': '结合当前状态',
+                    'event_ids': ['missing-event']}]}
+        tutorial.write(self.root / 'proposal/tutorial/synthesis.json', summary)
+        with self.assertRaisesRegex(ValueError, 'Principle'):
+            tutorial.aggregate(self.root, [self.source], [])
+        summary['principles'][0]['event_ids'] = [self.record['events'][0]['id']]
+        tutorial.write(self.root / 'proposal/tutorial/synthesis.json', summary)
+        self.assertEqual(tutorial.aggregate(self.root, [self.source], [])['synthesis'], summary)
+
+    def test_preamble_only_issues_are_removed_without_discarding_live_uncertainty(self):
+        excluded = (
+            ('BV1hRem66EMw', '前置段的机制数值及固定回合属于当时讲解；未核实版本。'),
+            ('BV1yMeq6wEGc', '随机单屏障和刺客跳点属于模拟演示，独立统计，不冒充实战验证。'),
+            ('BV1Xkhe6hEK7', '大河香香阵容的场外有效说明单列前置讲解，聊天与响应本身不计教学。'),
+        )
+        for bvid, static_issue in excluded:
+            with self.subTest(bvid=bvid):
+                r = copy.deepcopy(self.record)
+                sid = bvid + ':p1'
+                r['source'].update(id=sid, url='https://www.bilibili.com/video/' + bvid + '/?p=1')
+                r['events'][0]['id'] = sid + ':e001'
+                r['unresolved'] = [static_issue, '实战数值未核实，不保证当前版本。']
+                tutorial.write(self.root / 'raw/sources' / (bvid + '_p1') / 'asr.corrected.json',
+                               tutorial.read(self.asr))
+                path = tutorial.save_record(self.root, r)
+                before = path.read_bytes()
+                data = tutorial.aggregate(self.root, [r['source']], [])
+                self.assertEqual(data['sources'][0]['issues'], ['实战数值未核实，不保证当前版本。'])
+                self.assertEqual(data['issues'], [{'source_id': sid, 'text': '实战数值未核实，不保证当前版本。'}])
+                self.assertEqual(path.read_bytes(), before)
+
     def test_report_escapes_script_and_is_deterministic(self):
         self.record['source']['title'] = '</script><script>alert(1)</script>'
         tutorial.save_record(self.root, self.record)

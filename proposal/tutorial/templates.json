@@ -1,65 +1,5 @@
 [
   {
-    "id": "mechanic-model",
-    "title": "首次接触机制：先建立因果模型",
-    "trigger": "新棋手、技能、模块或成长机制首次出现",
-    "teach": "解释资源如何转化为战力，以及生效条件和代价。",
-    "goal": "能够预测机制在不同局势下的效果。",
-    "conditions": "前置讲解与模拟演示用于准备知识；实战首次出现时再提示关键关系。",
-    "priority": "基础知识",
-    "recommendation": "用当前可见单位或效果演示因果关系；数字与名称须来自当时版本证据。"
-  },
-  {
-    "id": "position-binding",
-    "title": "开战前站位：说明绑定和目标选择",
-    "trigger": "关键单位需要绑定、保护或调整攻击目标",
-    "teach": "用位置关系解释机制为何会作用到指定单位。",
-    "goal": "能主动排查站位导致的效果错配。",
-    "conditions": "已确认目标选择机制且仍有操作时间。",
-    "priority": "决策前提示",
-    "recommendation": "指出目标单位与当前位置，解释调整后效果；不只报一个站位坐标。"
-  },
-  {
-    "id": "talent-fit",
-    "title": "成长选项出现：比较能否兑现收益",
-    "trigger": "棋手成长路径、天赋或多选一奖励出现",
-    "teach": "对照阵容、出牌频率和成型时间，比较触发条件、收益与机会成本。",
-    "goal": "学会根据局势评估选项，而非记固定优先级。",
-    "conditions": "有选项文本和当前阵容、资源等可见信息。",
-    "priority": "决策前提示",
-    "recommendation": "先回答哪些条件已经满足，再解释推荐和放弃其他选项的理由。"
-  },
-  {
-    "id": "module-fit",
-    "title": "模块选择：把效果接到阵容需求",
-    "trigger": "可选择强化模块或需要理解模块配合",
-    "teach": "判断阵容需要生存、伤害、成长或特定攻击方式，排除不适配效果。",
-    "goal": "理解模块适配和组合，避免只按稀有度选择。",
-    "conditions": "阵容核心与模块效果有可靠证据。",
-    "priority": "决策前提示",
-    "recommendation": "推荐一个可兑现的作用，同时说明不选另一项的具体原因。"
-  },
-  {
-    "id": "counter-target",
-    "title": "对手威胁明确：讲有目标的针对手段",
-    "trigger": "发现回血、风筝、关键输出等具体威胁",
-    "teach": "解释对手威胁及己方可用反制之间的因果联系。",
-    "goal": "会识别问题并选择针对单位、装备或模块。",
-    "conditions": "威胁从讲解或清晰画面确认；没有确认就不猜对手配置。",
-    "priority": "决策前提示",
-    "recommendation": "说明针对谁、解决什么、何时有效；避免泛称最强克制。"
-  },
-  {
-    "id": "version-change",
-    "title": "旧经验冲突：解释机制变化",
-    "trigger": "讲者明确指出机制削弱、改动或旧玩法失效",
-    "teach": "对照原机制与视频所处规则解释收益变化。",
-    "goal": "避免机械沿用旧攻略。",
-    "conditions": "只按视频明确说出的变化归纳，发布日期不作为游戏版本。",
-    "priority": "条件提醒",
-    "recommendation": "提醒改变的是哪条因果关系；未确认当前版本时保留版本限制。"
-  },
-  {
     "id": "opening-plan",
     "title": "开局：解释过渡阵容分工",
     "trigger": "选择初始阵容或安排前几回合行动",
@@ -67,17 +7,20 @@
     "goal": "理解开局结构，并能判断何时改变。",
     "conditions": "不把单局好开局当成所有条件下必选的公式。",
     "priority": "阶段提示",
-    "recommendation": "用职责和下一阶段目标解释配置。"
-  },
-  {
-    "id": "resource-order",
-    "title": "资源兑现前：检查门槛、目标与操作顺序",
-    "trigger": "觉醒、首个效果、随机目标或核心资源即将兑现",
-    "teach": "检查生效门槛、收益对象和执行顺序，避免浪费一次性效果或拆掉成长工具。",
-    "goal": "能在关键操作前确认条件与机会成本。",
-    "conditions": "已确认相关机制与本局资源；不从疑词推断具体目标。",
-    "priority": "决策前提示",
-    "recommendation": "给出最小操作顺序，并说明错误顺序会损失什么。"
+    "recommendation": "用职责和下一阶段目标解释配置。",
+    "organization": {
+      "group_id": "game",
+      "group_title": "整局推进",
+      "group_order": 1,
+      "group_description": "开局 → 成型 → 成长 → 终局",
+      "phase_id": "opening",
+      "phase_title": "开局：建立过渡结构",
+      "phase_order": 1,
+      "goal": "理解承伤、输出与过渡分工，建立能够进入下一阶段的开局结构。",
+      "order": 1,
+      "related": [],
+      "applicability": "主要用于开局；之后重新搭建过渡结构时，也可复用功能分工的判断。"
+    }
   },
   {
     "id": "level-transition",
@@ -87,27 +30,78 @@
     "goal": "理解升级时机，而非死记某回合必须升级。",
     "conditions": "具体等待回合只作为该视频条件下的说明。",
     "priority": "决策前提示",
-    "recommendation": "说明当前条件为何允许升级，以及升级后立即能得到什么。"
+    "recommendation": "说明当前条件为何允许升级，以及升级后立即能得到什么。",
+    "organization": {
+      "group_id": "game",
+      "group_title": "整局推进",
+      "group_order": 1,
+      "group_description": "开局 → 成型 → 成长 → 终局",
+      "phase_id": "forming",
+      "phase_title": "成型：确定路线、补齐条件",
+      "phase_order": 2,
+      "goal": "根据已有牌、可选成长路径和升级收益确定方向，检查体系能否真正启动。",
+      "order": 1,
+      "related": [
+        "economy-budget",
+        "resource-order",
+        "fallback-plan"
+      ],
+      "applicability": "贯穿成型与成长；任何阶段遇到等级限制或升级窗口时都要结合局势判断。"
+    }
   },
   {
-    "id": "fallback-plan",
-    "title": "关键条件缺失：提供替代路径",
-    "trigger": "禁用阵营、关键牌缺失或原定方案无法成立",
-    "teach": "区分失去的功能与仍能利用的成长来源，说明替代的收益和局限。",
-    "goal": "学会应变而非僵化照抄完整阵容。",
-    "conditions": "替代建议保留讲者所述来牌、资源与伤害条件。",
-    "priority": "高优先级提醒",
-    "recommendation": "先说明缺少什么功能，再给出有证据的替代路径。"
-  },
-  {
-    "id": "equipment-role",
-    "title": "装备分配：从伤害与生存需求推导",
-    "trigger": "装备、神器或伤害来源需要选择与分配",
-    "teach": "把实际伤害构成、生存瓶颈和触发频率接到装备效果。",
-    "goal": "能够解释装备为何适合，以及局势变化后为何调整。",
-    "conditions": "不把法术伤害与单位法术攻击面板混为一谈。",
+    "id": "talent-fit",
+    "title": "成长选项出现：比较能否兑现收益",
+    "trigger": "棋手成长路径、天赋或多选一奖励出现",
+    "teach": "对照阵容、出牌频率和成型时间，比较触发条件、收益与机会成本。",
+    "goal": "学会根据局势评估选项，而非记固定优先级。",
+    "conditions": "有选项文本和当前阵容、资源等可见信息。",
     "priority": "决策前提示",
-    "recommendation": "用具体需求解释装备选择，避免仅列三件套。"
+    "recommendation": "先回答哪些条件已经满足，再解释推荐和放弃其他选项的理由。",
+    "organization": {
+      "group_id": "game",
+      "group_title": "整局推进",
+      "group_order": 1,
+      "group_description": "开局 → 成型 → 成长 → 终局",
+      "phase_id": "forming",
+      "phase_title": "成型：确定路线、补齐条件",
+      "phase_order": 2,
+      "goal": "根据已有牌、可选成长路径和升级收益确定方向，检查体系能否真正启动。",
+      "order": 2,
+      "related": [
+        "economy-budget",
+        "resource-order",
+        "fallback-plan"
+      ],
+      "applicability": "贯穿整局；成长选项实际出现时处理，不必等到某个固定阶段。"
+    }
+  },
+  {
+    "id": "module-fit",
+    "title": "模块选择：把效果接到阵容需求",
+    "trigger": "可选择强化模块或需要理解模块配合",
+    "teach": "判断阵容需要生存、伤害、成长或特定攻击方式，排除不适配效果。",
+    "goal": "理解模块适配和组合，避免只按稀有度选择。",
+    "conditions": "阵容核心与模块效果有可靠证据。",
+    "priority": "决策前提示",
+    "recommendation": "推荐一个可兑现的作用，同时说明不选另一项的具体原因。",
+    "organization": {
+      "group_id": "game",
+      "group_title": "整局推进",
+      "group_order": 1,
+      "group_description": "开局 → 成型 → 成长 → 终局",
+      "phase_id": "forming",
+      "phase_title": "成型：确定路线、补齐条件",
+      "phase_order": 2,
+      "goal": "根据已有牌、可选成长路径和升级收益确定方向，检查体系能否真正启动。",
+      "order": 3,
+      "related": [
+        "economy-budget",
+        "resource-order",
+        "fallback-plan"
+      ],
+      "applicability": "贯穿整局；模块选项实际出现或阵容需求改变时重新判断。"
+    }
   },
   {
     "id": "growth-combo",
@@ -117,7 +111,23 @@
     "goal": "理解成长引擎并识别关键限制。",
     "conditions": "仅保留视频明确说明或画面可核对的组合。",
     "priority": "机会提示",
-    "recommendation": "先讲资源如何流动，再说明当前能否执行。"
+    "recommendation": "先讲资源如何流动，再说明当前能否执行。",
+    "organization": {
+      "group_id": "game",
+      "group_title": "整局推进",
+      "group_order": 1,
+      "group_description": "开局 → 成型 → 成长 → 终局",
+      "phase_id": "growth",
+      "phase_title": "成长：形成资源循环",
+      "phase_order": 3,
+      "goal": "理解资源从哪里来、如何转化、由谁获得收益，并识别循环的限制。",
+      "order": 1,
+      "related": [
+        "resource-order",
+        "mechanic-model"
+      ],
+      "applicability": "成型后持续使用；开局已有配合或终局仍有收益时，也需检查循环条件。"
+    }
   },
   {
     "id": "late-transition",
@@ -127,27 +137,26 @@
     "goal": "识别阶段目标变化，完成终局阵容调整。",
     "conditions": "阶段依据讲解及当局状况，不强制统一回合。",
     "priority": "阶段提示",
-    "recommendation": "说明继续成长的价值与当前生存价值如何变化。"
-  },
-  {
-    "id": "combat-review",
-    "title": "战斗反馈出现：用结果复核机制",
-    "trigger": "胜负、伤害不足或战斗耗时暴露问题",
-    "teach": "把战斗结果连回伤害、生存或启动机制，明确下一步调整。",
-    "goal": "会从战斗反馈修正判断。",
-    "conditions": "单次胜利只能说明当局结果，不证明普遍有效或学习效果。",
-    "priority": "战后复盘",
-    "recommendation": "用可见反馈解释原因；结果不明确时不补造因果。"
-  },
-  {
-    "id": "auction-choice",
-    "title": "拍卖出现：比较即时需求与报价",
-    "trigger": "可竞价资源出现，需要分配有限金币",
-    "teach": "比较资源能解决的当前瓶颈、替代来源与报价。",
-    "goal": "根据局势判断值得争取什么，避免只按稀有度出价。",
-    "conditions": "普通对局与钻石狂潮分别理解，报价只代表该局。",
-    "priority": "决策前提示",
-    "recommendation": "先说明买到后立即解决什么，再交代竞价代价。"
+    "recommendation": "说明继续成长的价值与当前生存价值如何变化。",
+    "organization": {
+      "group_id": "game",
+      "group_title": "整局推进",
+      "group_order": 1,
+      "group_description": "开局 → 成型 → 成长 → 终局",
+      "phase_id": "endgame",
+      "phase_title": "终局：兑现即时战力",
+      "phase_order": 4,
+      "goal": "比较继续成长与本轮生存、输出的价值，把资源转为决战所需的战力。",
+      "order": 1,
+      "related": [
+        "equipment-cause",
+        "equipment-role",
+        "position-binding",
+        "position-cause",
+        "counter-target"
+      ],
+      "applicability": "主要用于临近终局；提前遭遇生存压力时，也可先将成长工具换为战力。"
+    }
   },
   {
     "id": "economy-budget",
@@ -155,9 +164,97 @@
     "trigger": "刷新、购买、留钱或额外出牌之间需要取舍",
     "teach": "根据触发收益、费用、血量和后续需求比较投入。",
     "goal": "能够估算资源效率并保留必要预算。",
-    "conditions": "具体价格与收益来自该局证据，不推广特殊模式规则。",
+    "conditions": "具体价格与收益来自该局证据，同时保留血量、成长窗口与后续投入条件。",
     "priority": "决策前提示",
-    "recommendation": "展示本次成本、可兑现收益和暂缓投入的条件。"
+    "recommendation": "展示本次成本、可兑现收益和暂缓投入的条件。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "buy",
+      "phase_title": "预算与购买",
+      "phase_order": 1,
+      "goal": "先确认本轮必须保留的预算，再比较刷新、购买和拍卖资源能解决的问题。",
+      "order": 1,
+      "related": [],
+      "applicability": "贯穿整局与每个整备回合，预算随阶段目标和血量压力变化。"
+    }
+  },
+  {
+    "id": "auction-choice",
+    "title": "拍卖出现：比较即时需求与报价",
+    "trigger": "可竞价资源出现，需要分配有限金币",
+    "teach": "比较资源能解决的当前瓶颈、替代来源与报价。",
+    "goal": "根据局势判断值得争取什么，避免只按稀有度出价。",
+    "conditions": "依据当前对局的资源需求与预算比较，报价只代表该局。",
+    "priority": "决策前提示",
+    "recommendation": "先说明买到后立即解决什么，再交代竞价代价。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "buy",
+      "phase_title": "预算与购买",
+      "phase_order": 1,
+      "goal": "先确认本轮必须保留的预算，再比较刷新、购买和拍卖资源能解决的问题。",
+      "order": 2,
+      "related": [],
+      "applicability": "拍卖实际出现时使用，依据当局需求与后续预算判断。"
+    }
+  },
+  {
+    "id": "mechanic-model",
+    "title": "对局机制出现：结合当前状态解释因果",
+    "trigger": "当前对局中的技能、模块或成长机制影响下一步判断",
+    "teach": "解释资源如何转化为战力，以及生效条件和代价。",
+    "goal": "能够预测机制在不同局势下的效果。",
+    "conditions": "机制与实际对局中的可见状态或操作相关；仅在当前信息足以解释作用关系时提示。",
+    "priority": "基础知识",
+    "recommendation": "用当前可见单位或已发生效果解释因果关系；数字与名称须来自当时版本证据。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "play",
+      "phase_title": "上牌与效果兑现",
+      "phase_order": 2,
+      "goal": "结合当前机制检查上牌、觉醒和效果使用的门槛、收益对象与执行顺序。",
+      "order": 1,
+      "related": [
+        "talent-fit",
+        "module-fit"
+      ],
+      "applicability": "贯穿整局；当前机制影响下一步判断时，结合实际状态解释。"
+    }
+  },
+  {
+    "id": "resource-order",
+    "title": "资源兑现前：检查门槛、目标与操作顺序",
+    "trigger": "觉醒、首个效果、随机目标或核心资源即将兑现",
+    "teach": "检查生效门槛、收益对象和执行顺序，避免浪费一次性效果或拆掉成长工具。",
+    "goal": "能在关键操作前确认条件与机会成本。",
+    "conditions": "已确认相关机制与本局资源；不从疑词推断具体目标。",
+    "priority": "决策前提示",
+    "recommendation": "给出最小操作顺序，并说明错误顺序会损失什么。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "play",
+      "phase_title": "上牌与效果兑现",
+      "phase_order": 2,
+      "goal": "结合当前机制检查上牌、觉醒和效果使用的门槛、收益对象与执行顺序。",
+      "order": 2,
+      "related": [
+        "talent-fit",
+        "module-fit"
+      ],
+      "applicability": "贯穿整局；上牌、觉醒、卖出或兑现一次性效果前检查。"
+    }
   },
   {
     "id": "equipment-cause",
@@ -167,7 +264,66 @@
     "goal": "能按机制判断装备是否真正生效。",
     "conditions": "区别英雄面板属性、实际伤害与装备触发机制；疑词保留。",
     "priority": "机制解释",
-    "recommendation": "用当前技能与装备效果解释完整因果链。"
+    "recommendation": "用当前技能与装备效果解释完整因果链。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "equipment",
+      "phase_title": "装备选择与分配",
+      "phase_order": 3,
+      "goal": "从实际伤害、施法循环和生存需求出发，判断装备是否生效以及应该给谁。",
+      "order": 1,
+      "related": [],
+      "applicability": "贯穿整局；获得装备或技能、输出方式变化时重新核对。"
+    }
+  },
+  {
+    "id": "equipment-role",
+    "title": "装备分配：从伤害与生存需求推导",
+    "trigger": "装备、神器或伤害来源需要选择与分配",
+    "teach": "把实际伤害构成、生存瓶颈和触发频率接到装备效果。",
+    "goal": "能够解释装备为何适合，以及局势变化后为何调整。",
+    "conditions": "不把法术伤害与单位法术攻击面板混为一谈。",
+    "priority": "决策前提示",
+    "recommendation": "用具体需求解释装备选择，避免仅列三件套。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "equipment",
+      "phase_title": "装备选择与分配",
+      "phase_order": 3,
+      "goal": "从实际伤害、施法循环和生存需求出发，判断装备是否生效以及应该给谁。",
+      "order": 2,
+      "related": [],
+      "applicability": "贯穿整局；装备到手、单位分工或生存瓶颈变化时调整分配。"
+    }
+  },
+  {
+    "id": "position-binding",
+    "title": "开战前站位：说明绑定和目标选择",
+    "trigger": "关键单位需要绑定、保护或调整攻击目标",
+    "teach": "用位置关系解释机制为何会作用到指定单位。",
+    "goal": "能主动排查站位导致的效果错配。",
+    "conditions": "已确认目标选择机制且仍有操作时间。",
+    "priority": "决策前提示",
+    "recommendation": "指出目标单位与当前位置，解释调整后效果；不只报一个站位坐标。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "position",
+      "phase_title": "开战前调整站位",
+      "phase_order": 4,
+      "goal": "确认绑定与攻击目标，并根据对手和接敌方式调整保护、承伤与覆盖。",
+      "order": 1,
+      "related": [],
+      "applicability": "每次开战前检查；关键单位或目标选择条件变化时重新确认。"
+    }
   },
   {
     "id": "position-cause",
@@ -177,6 +333,123 @@
     "goal": "能根据对手与战斗反馈调整站位。",
     "conditions": "不同于固定绑定关系；需要可确认的当前威胁。",
     "priority": "开战前提示",
-    "recommendation": "指明移动对象、预期接敌变化与需要观察的反馈。"
+    "recommendation": "指明移动对象、预期接敌变化与需要观察的反馈。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "position",
+      "phase_title": "开战前调整站位",
+      "phase_order": 4,
+      "goal": "确认绑定与攻击目标，并根据对手和接敌方式调整保护、承伤与覆盖。",
+      "order": 2,
+      "related": [],
+      "applicability": "每次开战前检查；接敌反馈或对手阵容变化时调整。"
+    }
+  },
+  {
+    "id": "combat-review",
+    "title": "战斗反馈出现：用结果复核机制",
+    "trigger": "胜负、伤害不足或战斗耗时暴露问题",
+    "teach": "把战斗结果连回伤害、生存或启动机制，明确下一步调整。",
+    "goal": "会从战斗反馈修正判断。",
+    "conditions": "单次胜利只能说明当局结果，不证明普遍有效或学习效果。",
+    "priority": "战后复盘",
+    "recommendation": "用可见反馈解释原因；结果不明确时不补造因果。",
+    "organization": {
+      "group_id": "round",
+      "group_title": "回合内流程",
+      "group_order": 2,
+      "group_description": "预算与购买 → 上牌与效果兑现 → 配装 → 站位 → 战后复盘",
+      "phase_id": "review",
+      "phase_title": "战后复盘",
+      "phase_order": 5,
+      "goal": "把实际战斗反馈与行动前的预期对照，确定下一轮需要调整的环节。",
+      "order": 1,
+      "related": [],
+      "applicability": "每轮战后使用；出现异常反馈时，优先解释偏差并修正下一轮行动。"
+    }
+  },
+  {
+    "id": "fallback-plan",
+    "title": "关键条件缺失：提供替代路径",
+    "trigger": "禁用阵营、关键牌缺失或原定方案无法成立",
+    "teach": "区分失去的功能与仍能利用的成长来源，说明替代的收益和局限。",
+    "goal": "学会应变而非僵化照抄完整阵容。",
+    "conditions": "替代建议保留讲者所述来牌、资源与伤害条件。",
+    "priority": "高优先级提醒",
+    "recommendation": "先说明缺少什么功能，再给出有证据的替代路径。",
+    "organization": {
+      "group_id": "special",
+      "group_title": "特殊情况",
+      "group_order": 3,
+      "group_description": "条件缺失、对手威胁或旧经验冲突出现时，随时进入对应检查。",
+      "phase_id": "missing",
+      "phase_title": "关键条件缺失",
+      "phase_order": 1,
+      "goal": "先识别缺失的功能，再结合已有资源选择替代或转型路径。",
+      "order": 1,
+      "related": [
+        "mechanic-model",
+        "resource-order",
+        "combat-review"
+      ],
+      "applicability": "任何阶段都可能触发；关键牌、禁用阵营或资源条件不支持原方案时使用。"
+    }
+  },
+  {
+    "id": "counter-target",
+    "title": "对手威胁明确：讲有目标的针对手段",
+    "trigger": "发现回血、风筝、关键输出等具体威胁",
+    "teach": "解释对手威胁及己方可用反制之间的因果联系。",
+    "goal": "会识别问题并选择针对单位、装备或模块。",
+    "conditions": "威胁从讲解或清晰画面确认；没有确认就不猜对手配置。",
+    "priority": "决策前提示",
+    "recommendation": "说明针对谁、解决什么、何时有效；避免泛称最强克制。",
+    "organization": {
+      "group_id": "special",
+      "group_title": "特殊情况",
+      "group_order": 3,
+      "group_description": "条件缺失、对手威胁或旧经验冲突出现时，随时进入对应检查。",
+      "phase_id": "threat",
+      "phase_title": "对手威胁出现",
+      "phase_order": 2,
+      "goal": "确认威胁来自哪里，再选择能解决该问题的单位、装备或站位。",
+      "order": 1,
+      "related": [
+        "equipment-role",
+        "position-binding",
+        "position-cause",
+        "combat-review"
+      ],
+      "applicability": "任何阶段都可能触发；确认具体威胁后，连同配装和站位一起检查。"
+    }
+  },
+  {
+    "id": "version-change",
+    "title": "旧经验冲突：解释机制变化",
+    "trigger": "讲者明确指出机制削弱、改动或旧玩法失效",
+    "teach": "对照原机制与视频所处规则解释收益变化。",
+    "goal": "避免机械沿用旧攻略。",
+    "conditions": "只按视频明确说出的变化归纳，发布日期不作为游戏版本。",
+    "priority": "条件提醒",
+    "recommendation": "提醒改变的是哪条因果关系；未确认当前版本时保留版本限制。",
+    "organization": {
+      "group_id": "special",
+      "group_title": "特殊情况",
+      "group_order": 3,
+      "group_description": "条件缺失、对手威胁或旧经验冲突出现时，随时进入对应检查。",
+      "phase_id": "rules",
+      "phase_title": "旧经验与现象冲突",
+      "phase_order": 3,
+      "goal": "核对机制与适用条件的变化，避免继续照搬已经失效的经验。",
+      "order": 1,
+      "related": [
+        "mechanic-model",
+        "combat-review"
+      ],
+      "applicability": "任何阶段都可能触发；讲者明确指出规则变化或旧经验失效时使用。"
+    }
   }
 ]

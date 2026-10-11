@@ -13,6 +13,21 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[3]
 SCENES = ('前置讲解', '模拟演示', '实战')
 BASES = ('明确说明', '分析推断')
+EXCLUDED_REPORT_BVIDS = {'BV1wZH66GEdA'}
+# Audited record-level notes that concern only removed scenes. Match exact notes
+# rather than dropping live uncertainty whenever it mentions a different scene.
+EXCLUDED_REPORT_ISSUES = {
+    ('BV1hRem66EMw:p1', '前置段的机制数值及固定回合属于当时讲解；未核实版本。'),
+    ('BV1yMeq6wEGc:p1', '随机单屏障和刺客跳点属于模拟演示，独立统计，不冒充实战验证。'),
+    ('BV1Xkhe6hEK7:p1', '大河香香阵容的场外有效说明单列前置讲解，聊天与响应本身不计教学。'),
+}
+
+
+def report_source_allowed(source):
+    """Keep acquisition records intact while limiting this report to regular play."""
+    return (source['id'].split(':')[0] not in EXCLUDED_REPORT_BVIDS
+            and '钻石狂潮' not in source.get('title', '')
+            and '钻石狂潮' not in source.get('requested_title', ''))
 
 
 def read(path, default=None):
@@ -270,7 +285,43 @@ def prepare_source(root, source, acquire=None, reuse_root=None, model='large-v3'
         return state(root, sid, 'failed', stage='acquisition', error=str(exc), material_reused=cached) | {'id': sid}
 
 
+def template_order(template):
+    organization = template.get('organization', {})
+    return (*(organization.get(key, math.inf) for key in ('group_order', 'phase_order', 'order')),
+            template['id'])
+
+
+def validate_template_organization(templates):
+    ids = {t['id'] for t in templates}
+    if len(ids) != len(templates):
+        raise ValueError('Duplicate template definitions')
+    groups, phases = {}, {}
+    for template in templates:
+        organization = template.get('organization')
+        if organization is None:
+            continue
+        for key in ('group_id', 'group_title', 'phase_id', 'phase_title', 'goal', 'applicability'):
+            if not isinstance(organization.get(key), str) or not organization[key].strip():
+                raise ValueError('Missing template organization field: ' + key)
+        for key in ('group_order', 'phase_order', 'order'):
+            if not number(organization.get(key)):
+                raise ValueError('Invalid template organization order: ' + key)
+        related = organization.get('related', [])
+        if not isinstance(related, list) or any(ref not in ids for ref in related):
+            raise ValueError('Unknown related template in organization')
+        group = organization['group_id']
+        group_metadata = (organization['group_title'], organization['group_order'])
+        phase = (group, organization['phase_id'])
+        phase_metadata = (organization['phase_title'], organization['phase_order'],
+                          organization['goal'], related)
+        if groups.setdefault(group, group_metadata) != group_metadata:
+            raise ValueError('Inconsistent template group metadata: ' + group)
+        if phases.setdefault(phase, phase_metadata) != phase_metadata:
+            raise ValueError('Inconsistent template phase metadata: ' + str(phase))
+
+
 def aggregate(root, sources, templates):
+    validate_template_organization(templates)
     saved = records(root)
     states = read(Path(root) / 'proposal/tutorial/status.json', {})
     output, events, issues = [], [], []
@@ -278,16 +329,24 @@ def aggregate(root, sources, templates):
         sid = source['id']
         row = {**source, **states.get(sid, {'status': 'pending'})}
         if sid in saved:
+            row.update(saved[sid][1]['source'])
+        if not report_source_allowed(row):
+            continue
+        if sid in saved:
             path, r = saved[sid]
             problems = validate_record(root, r)
             row.update(r['source'])
             row.update(status=r.get('status', 'pending'), record_path=path.relative_to(Path(root) / 'proposal').as_posix())
-            row['issues'] = problems + r.get('unresolved', [])
+            row['issues'] = problems + [note for note in r.get('unresolved', [])
+                                       if (sid, note) not in EXCLUDED_REPORT_ISSUES]
             if problems:
                 row['status'] = 'invalid_record'
             elif row['status'] == 'completed':
+                live_events = [e for e in r['events'] if e['scene'] == '实战']
+                if not live_events:
+                    continue
                 events += [{**e, 'source_id': sid, 'title': row['title'], 'author': row.get('author', '未知')}
-                           for e in r['events']]
+                           for e in live_events]
             issues += [{'source_id': sid, 'text': str(p)} for p in row['issues']]
         else:
             legacy = Path(root) / 'proposal/tutorial/records' / (safe_title(source['title']) + '.md')
@@ -309,6 +368,7 @@ def aggregate(root, sources, templates):
                        'event_count': len(examples), 'video_count': len({e['source_id'].split(':')[0] for e in examples}),
                        'author_count': len({e['author'] for e in examples}),
                        'scenes': dict(Counter(e['scene'] for e in examples))})
+    result.sort(key=template_order)
     completed = [s for s in output if s['status'] == 'completed']
     stats = {'planned': len(output), 'planned_videos': len({s['id'].split(':')[0] for s in output}),
              'completed': len(completed), 'failed': sum(s['status'] == 'failed' for s in output),
@@ -319,12 +379,12 @@ def aggregate(root, sources, templates):
              'duration': sum(s.get('duration', 0) for s in completed),
              'scenes': dict(Counter(e['scene'] for e in events)),
              'authors': dict(Counter(s.get('author', '未知') for s in completed))}
-    summary = read(Path(root) / 'proposal/tutorial/synthesis.json', {'conclusions': [], 'limitations': []})
+    summary = read(Path(root) / 'proposal/tutorial/synthesis.json', {'principles': [], 'limitations': []})
     valid_ids = {e['id'] for e in events}
-    for conclusion in summary.get('conclusions', []):
-        refs = conclusion.get('event_ids', [])
+    for principle in summary.get('principles', []):
+        refs = principle.get('event_ids', [])
         if not refs or any(ref not in valid_ids for ref in refs):
-            raise ValueError('Conclusion must reference validated completed events')
+            raise ValueError('Principle must reference validated retained live events')
     return {'stats': stats, 'sources': output, 'events': events, 'templates': result,
             'issues': issues, 'synthesis': summary}
 
