@@ -1,0 +1,833 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1TPej65ECC:p1",
+    "bvid": "BV1TPej65ECC",
+    "part": 1,
+    "title": "嫦娥CP天赋几乎都是强的！兽决+猴毛吊打小鹿李信",
+    "requested_title": "嫦娥CP天赋几乎都是强的！兽决+猴毛吊打小鹿李信",
+    "url": "https://www.bilibili.com/video/BV1TPej65ECC/?p=1",
+    "author": "王者万象棋奇妙",
+    "duration": 1702,
+    "published": "2026-09-15 03:25:20"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1702
+      ]
+    ],
+    "notes": "完整阅读50段原始ASR，实际核对26张教学截图；本次不修正ASR，结论附有适用条件。"
+  },
+  "events": [
+    {
+      "id": "BV1TPej65ECC:p1:e001",
+      "start": 39.42,
+      "end": 105.38,
+      "scene": "实战",
+      "timing": "开局观察敌方人口和质量时",
+      "content": "对手强先觉醒苏烈保血，同行多且弱才单苏烈速升级",
+      "background": {
+        "text": "两种开局由外部压力决定，不以公式棋手掩盖条件。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别快速成长与保血的取舍。",
+        "basis": "分析推断"
+      },
+      "quote": "如果外面压力不大",
+      "segment_ids": [
+        2,
+        3,
+        4
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/80-0.jpg",
+          "time": 80,
+          "reviewed": true,
+          "observation": "实际早期战斗显示苏烈承伤，觉醒保血与外部压力的解释来自前后文，关注主播宣传排除。",
+          "sha256": "d5f378aa5ba16e49a08bbf6f08451071b1c9b646bd2f6e81a1ef71db7a34b51d"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e002",
+      "start": 137.65,
+      "end": 169.83,
+      "scene": "实战",
+      "timing": "升级前等商店自然刷新时",
+      "content": "拿经验推进六级，下一轮自然刷新找弈星可省刷新费用",
+      "background": {
+        "text": "当前目标是速六，但单苏烈最快路线有暴毙风险。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在不危及生存时复用免费刷新。",
+        "basis": "分析推断"
+      },
+      "quote": "下一轮商店会自动刷新",
+      "segment_ids": [
+        5
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/150-0.jpg",
+          "time": 150,
+          "reviewed": true,
+          "observation": "整备商店显示且手中保留资源，字幕与原话讨论自然刷新省钱，不推断未显示的数值。",
+          "sha256": "6b85ec5fd020e96a40e53ee1064d3d26eed41098bbfb5d8cea098d7c1afb02b7"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e003",
+      "start": 170.09,
+      "end": 199.93,
+      "scene": "实战",
+      "timing": "考虑未到司空震的替代单位时",
+      "content": "海月、姜子牙易于搭配，玉环需特定施法装备，猴子是次选",
+      "background": {
+        "text": "替代不是随便上人，比较装备依赖和可兑现的功能。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按当前资源评估替代核心。",
+        "basis": "分析推断"
+      },
+      "quote": "玉环必须得特定的装备",
+      "segment_ids": [
+        6
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/185-0.jpg",
+          "time": 185,
+          "reviewed": true,
+          "observation": "拍卖场入场动画与存活玩家列表显示，替代核心的装备依赖比较来自讲者。",
+          "sha256": "e6f8f39dc36d5546d909ca81ab3e7d79214a8ac2cae4d809b351ee9784acc5a7"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e004",
+      "start": 202.96,
+      "end": 237.33,
+      "scene": "实战",
+      "timing": "准备交随机小兔助力时",
+      "content": "先不上其他人交助力，再上弈星作为工具",
+      "background": {
+        "text": "先锁目标再使用工具，避免随机资源错配。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "控制随机助力的目标集合。",
+        "basis": "分析推断"
+      },
+      "quote": "不要上人先丢小兔助力",
+      "segment_ids": [
+        7
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/220-0.jpg",
+          "time": 220,
+          "reviewed": true,
+          "observation": "拍卖阵容候选显示，字幕列举苏烈、瑶、司空震、老虎；小兔顺序来自同段原话。",
+          "sha256": "777921946b35f9a9421d8713c1d5058cf81059b49a0cc36e76995e466c2da9f9"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e005",
+      "start": 238.09,
+      "end": 267.32,
+      "scene": "实战",
+      "timing": "铜天赋无法吃到当前动作时",
+      "content": "已完成觉醒导致部分选项失去收益，但保留刷新机会给后续金天赋",
+      "background": {
+        "text": "讲者选择接受低收益铜天赋，避免后面关键选择无刷新。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "比较当前天赋与未来刷新机会成本。",
+        "basis": "分析推断"
+      },
+      "quote": "同天赋刷的话很亏",
+      "segment_ids": [
+        8
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/255-0.jpg",
+          "time": 255,
+          "reviewed": true,
+          "observation": "圣者法典详情与天赋栏同屏，字幕说明铜天赋刷新的机会成本。",
+          "sha256": "6de375130463654fc2312903d776ee9dfe1c994f247d28820901df61d0c1820c"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e006",
+      "start": 267.79,
+      "end": 297.64,
+      "scene": "实战",
+      "timing": "预计打不过时寻找能杀的单位时",
+      "content": "即使不能赢，击杀部分敌人仍可减少掉血，用战斗反馈看减损目标",
+      "background": {
+        "text": "苏烈击杀顺序的实际结果与最初预测不同；阶段扣血口述不独立重算。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "将失败局也转化为可执行的减损目标。",
+        "basis": "分析推断"
+      },
+      "quote": "杀两个能少掉血",
+      "segment_ids": [
+        9
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/287-0.jpg",
+          "time": 287,
+          "reviewed": true,
+          "observation": "实战战斗显示苏烈正在接敌，字幕先打程咬金，与减损目标相符。",
+          "sha256": "40d338f0b32b4a6b5a65dd0c01b481dc75abf9b7db103699cf276bb3ce725bea"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e007",
+      "start": 297.96,
+      "end": 369.48999999999995,
+      "scene": "实战",
+      "timing": "拿兽决准备增加队友时",
+      "content": "先把苏烈喂到四十级获得复生门槛，再上其他单位分装备",
+      "background": {
+        "text": "没有达到门槛时随机助力应继续锁定苏烈。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "先完成生存阈值再扩展阵容。",
+        "basis": "分析推断"
+      },
+      "quote": "他先喂到40级才能上其他人",
+      "segment_ids": [
+        10,
+        11
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/350-0.jpg",
+          "time": 350,
+          "reviewed": true,
+          "observation": "阵容整备与苏烈在场，字幕明确兽决暂不能上而需再喂一轮兔子。",
+          "sha256": "e0ac1e4ff9eff4f46a6d9547238fefe2ece3797e66d42f73af89dc48ad16dc9e"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e008",
+      "start": 369.48999999999995,
+      "end": 405.04999999999995,
+      "scene": "实战",
+      "timing": "瑶分装备与云中君共同上场时",
+      "content": "分装备联动群体升级，场上等级成长更快让大兔资源更早可用",
+      "background": {
+        "text": "来牌组成的循环可以改变原计划挂司空震。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解群体等级与棋手资源之间的联动。",
+        "basis": "分析推断"
+      },
+      "quote": "她这个兔子是怎么开的",
+      "segment_ids": [
+        12
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/390-0.jpg",
+          "time": 390,
+          "reviewed": true,
+          "observation": "兔飞猛进任务卡面展开，字幕说明任务按场上等级开启。",
+          "sha256": "9442deff9af76cbc75f8c7f87483a319196db451bbf7a1ecde121aa839c8fe86"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e009",
+      "start": 405.17999999999995,
+      "end": 474.53,
+      "scene": "实战",
+      "timing": "观察瑶是否获得兔子成长时",
+      "content": "瑶能吃到成长则保留，不吃则换司空震；也可用传承转移苏烈等级",
+      "background": {
+        "text": "设置观察条件而不是盲等原阵容。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用资源归属和转移可用性判断转型。",
+        "basis": "分析推断"
+      },
+      "quote": "要是不吃兔子的话",
+      "segment_ids": [
+        13,
+        14
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/455-0.jpg",
+          "time": 455,
+          "reviewed": true,
+          "observation": "双方正在战斗，瑶保留或换核心的条件来自讲者，不从模糊头像判断成长归属。",
+          "sha256": "1f22382b6ab9a1cfead2f33feb5906cb77120d2653cac4bff3149833e0a2addb"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e010",
+      "start": 474.53,
+      "end": 544.3499999999999,
+      "scene": "实战",
+      "timing": "苏烈已经四十级时",
+      "content": "复生门槛已满足，此后更多助力给其他成长单位价值可能更高",
+      "background": {
+        "text": "苏烈四十到一百的差别未必是本路线瓶颈。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别达到门槛后的边际收益变化。",
+        "basis": "分析推断"
+      },
+      "quote": "他只要40级就够了",
+      "segment_ids": [
+        15,
+        16
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/495-0.jpg",
+          "time": 495,
+          "reviewed": true,
+          "observation": "整备苏烈与其他主力在场，字幕明确兔子再给苏烈反而不好。",
+          "sha256": "5c20331b3633000763a7d92ac1c0a78f26d9e104ddc7443d1966b56ce3609518"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e011",
+      "start": 545.8199999999999,
+      "end": 587.0699999999999,
+      "scene": "实战",
+      "timing": "临时多买嬴政导致升级慢时",
+      "content": "承认额外购牌拖慢升级；干将前期有效但不能无限代替后期角色",
+      "background": {
+        "text": "同段还解释瑶百级分属性与兔子属性联动，突出购买需服务路线。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别看似有用的牌带来的时间和经济成本。",
+        "basis": "分析推断"
+      },
+      "quote": "这一买我升级慢了",
+      "segment_ids": [
+        17
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/565-0.jpg",
+          "time": 565,
+          "reviewed": true,
+          "observation": "实战战斗中苏烈承伤，额外买嬴政拖慢升级的反思来自原话。",
+          "sha256": "85e3f96021c05ea7f0ea44ebd9c3b5a3e04698ef4c4fe04b94fe41d0dd6a99a3"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e012",
+      "start": 591.0999999999999,
+      "end": 654.65,
+      "scene": "实战",
+      "timing": "拍卖玉环用于老虎觉醒时",
+      "content": "玉环卖出资源可支持老虎觉醒；海月虽强但本局无人口位置",
+      "background": {
+        "text": "按当局功能与人口限制选择，而非照推荐榜全买。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把竞拍收益与合成缺口相连。",
+        "basis": "分析推断"
+      },
+      "quote": "老虎觉醒还挺重要",
+      "segment_ids": [
+        18,
+        19
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/610-0.jpg",
+          "time": 610,
+          "reviewed": true,
+          "observation": "拍卖海月与杨玉环候选卡面显示，字幕比较候选，卖玉环资源用途来自讲解。",
+          "sha256": "375ec682be570ebbcf7b51362c04e8db6f2af379963dac9894bef12b4506053c"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e013",
+      "start": 655.3599999999999,
+      "end": 735.71,
+      "scene": "实战",
+      "timing": "兽决老虎依赖首次击杀时",
+      "content": "先杀一个后排才能叠物理伤害，跳到难杀目标则循环失效",
+      "background": {
+        "text": "同时检查大斧子等装备与挂瑶的收益冲突，不能默认所有组合叠加。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别触发链启动条件和组合冲突。",
+        "basis": "分析推断"
+      },
+      "quote": "得先杀一个才行",
+      "segment_ids": [
+        20,
+        21
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/700-0.jpg",
+          "time": 700,
+          "reviewed": true,
+          "observation": "兽决相关单位正在战斗，第一击杀启动与装备冲突来自前后文。",
+          "sha256": "13b9b5bc1d28814d909d4ec20fb2c024e67ae54d6daa1e9a7f9676cbfc449c63"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e014",
+      "start": 735.71,
+      "end": 809.92,
+      "scene": "实战",
+      "timing": "遇到明确打不过的一家时",
+      "content": "停止贪契约瓶，交保命资源；原核心不来时专属天赋路线可替代",
+      "background": {
+        "text": "贪资源只适用于仍能打过的阶段，生命风险改变使用时机。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在生存临界点停止等待。",
+        "basis": "分析推断"
+      },
+      "quote": "这一家不丢瓶子死球了",
+      "segment_ids": [
+        22,
+        23
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/760-0.jpg",
+          "time": 760,
+          "reviewed": true,
+          "observation": "金天赋三个选项显示，停贪契约瓶和保命选择来自同段原话。",
+          "sha256": "6aee0281d90031f5c9df42e079e9025f2616b977c2883f7994c56d22d5bcda83"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e015",
+      "start": 810.3,
+      "end": 842.8,
+      "scene": "实战",
+      "timing": "反思六级启动比预期慢时",
+      "content": "觉醒苏烈会拖慢升级，但不觉醒又持续掉血，承认这是保血的成本",
+      "background": {
+        "text": "缺少经济天赋也影响速度，不把慢启动只归咎单一操作。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分合理取舍与错误操作。",
+        "basis": "分析推断"
+      },
+      "quote": "但是不觉醒苏烈开的话",
+      "segment_ids": [
+        24
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/830-0.jpg",
+          "time": 830,
+          "reviewed": true,
+          "observation": "己方战斗画面与没有经济天赋字幕同屏，启动成本比较来自讲解。",
+          "sha256": "7063d9d3855e0f37116aa077a9eed00d340f2011e700da37dfe1dfff120490ee"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e016",
+      "start": 842.8,
+      "end": 905.4100000000001,
+      "scene": "实战",
+      "timing": "五级输了但持有大兔时",
+      "content": "通常留到六级获得属性，再先大后小，提高小兔触发月之词条的次数",
+      "background": {
+        "text": "总等级相近不代表词条进度一致；口述十一十五十九层仅作讲者示例。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分直接收益与间接触发收益。",
+        "basis": "分析推断"
+      },
+      "quote": "总体加的等级是一样的",
+      "segment_ids": [
+        25,
+        26
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/885-0.jpg",
+          "time": 885,
+          "reviewed": true,
+          "observation": "等级提升动画与月之特调详情显示，字幕指出触发特别多，未另算原话数字。",
+          "sha256": "1a316bc6c23b305f72d1c2422526e11e96af8c4c113499ad290283aa77e94890"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e017",
+      "start": 905.4100000000001,
+      "end": 964.77,
+      "scene": "实战",
+      "timing": "老虎随机偷到低等级时",
+      "content": "达到百级技能门槛更重要，可用成长资源补足或传承调整",
+      "background": {
+        "text": "十级四十级百级门槛来自讲者解释，未独立验证版本数值。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在随机结果不好时补关键能力阈值。",
+        "basis": "分析推断"
+      },
+      "quote": "100级挺重要的",
+      "segment_ids": [
+        27,
+        28
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/940-0.jpg",
+          "time": 940,
+          "reviewed": true,
+          "observation": "整备高等级主力与装备在场，老虎关键百级与补等级用途来自原话。",
+          "sha256": "994cff006359042d7f4cac0dc7617b6c924d24743ed07e99b4327969fba17127"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e018",
+      "start": 931.6800000000001,
+      "end": 998.72,
+      "scene": "实战",
+      "timing": "五级即将死亡且无法升六时",
+      "content": "通常六级交大兔，但一滴血升不了六时可提前交以多活一轮争名次",
+      "background": {
+        "text": "明确通常规则的生存例外，不能将六级前绝不交写成硬规则。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在无法实现长期收益时优先生存。",
+        "basis": "分析推断"
+      },
+      "quote": "不丢就要死了",
+      "segment_ids": [
+        28,
+        29
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/975-0.jpg",
+          "time": 975,
+          "reviewed": true,
+          "observation": "整备成长特效正在生效，提前大兔的生存例外来自前后文而非画面推断。",
+          "sha256": "2d4e59e73c6c2f7532e14a1545a80bc992e33e5aeeacfb685583e39f9d83ad3e"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e019",
+      "start": 964.77,
+      "end": 1039.1299999999999,
+      "scene": "实战",
+      "timing": "离三百七十五等级门槛差一点时",
+      "content": "用便宜等级工具和无阵营单位补门槛，随后卖工具让大兔只给四名主力",
+      "background": {
+        "text": "花钱加少量等级不划算的选项应跳过。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "以成本和目标集合安排阈值补齐。",
+        "basis": "分析推断"
+      },
+      "quote": "其他杂鱼一律别吃",
+      "segment_ids": [
+        29,
+        30
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1020-0.jpg",
+          "time": 1020,
+          "reviewed": true,
+          "observation": "逍遥自在卡面展开，字幕解释无阵营越多收益越高，与凑等级工具相符。",
+          "sha256": "800340f7acd943b8fa64f0b21447e9d6b0c7d7fac1a96edcb14b6a596593ecc1"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e020",
+      "start": 1103.6,
+      "end": 1140.45,
+      "scene": "实战",
+      "timing": "低血拍卖遇到保命资源时",
+      "content": "低血争一线生机，血零免死与当前生命压力配合评价",
+      "background": {
+        "text": "讲者同时认为自己暂不易死，最终选择不等于一般最佳。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按真实生存缺口比较竞拍功能。",
+        "basis": "分析推断"
+      },
+      "quote": "血量少就去抢一线生机",
+      "segment_ids": [
+        33
+      ],
+      "template_id": "auction-choice",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1120-0.jpg",
+          "time": 1120,
+          "reviewed": true,
+          "observation": "拍卖栏显示保命资源和一线生机选项，讲者同时认为当前不易死亡。",
+          "sha256": "b68c4c7c51e96c14571365f6ef092ac108e51a772736a1e40f294e4a5a65ced1"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e021",
+      "start": 1140.7,
+      "end": 1178.3,
+      "scene": "实战",
+      "timing": "词条进度停在六十四时",
+      "content": "差一层未到六十五就不能得到大兔，提示提前检查临界阈值",
+      "background": {
+        "text": "口述等级与词条用语混用，按语义记为进度不修原ASR。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在操作前核对临界值而非大致够了。",
+        "basis": "分析推断"
+      },
+      "quote": "我要65的话他给个大兔子",
+      "segment_ids": [
+        34
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1160-0.jpg",
+          "time": 1160,
+          "reviewed": true,
+          "observation": "整备棋盘和任务栏显示，进度差一层的解释来自原话，不独立读取小字数值。",
+          "sha256": "76d73adf0a8956f5f919b97264476480fbdebdfd347ad8b4db0b9ad5f1e8a1ba"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e022",
+      "start": 1179.07,
+      "end": 1325.5,
+      "scene": "实战",
+      "timing": "开局苏烈完成保血与凑等级后时",
+      "content": "用传承换成瑶等更会兑现攻速吸血的单位，苏烈后期主要吃防御",
+      "background": {
+        "text": "原先强的过渡单位到了后期可能吸走成长，未找到传承前仍被迫保留。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按照阶段和属性利用率替换过渡单位。",
+        "basis": "分析推断"
+      },
+      "quote": "凑够375级他就没用了",
+      "segment_ids": [
+        35,
+        36,
+        37,
+        38
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1225-0.jpg",
+          "time": 1225,
+          "reviewed": true,
+          "observation": "战斗中月之特调卡面展开，苏烈作为过渡单位的属性利用率来自讲者。",
+          "sha256": "95d38fbd1da940c90a31c6bfc87afd3e5e140c1871057d516f9f7a43ebc0316a"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e023",
+      "start": 1391.4199999999998,
+      "end": 1494.53,
+      "scene": "实战",
+      "timing": "战斗后太乙还在而老虎即将偷等级时",
+      "content": "太乙战斗提供复活，下一轮整备触发前立刻卖掉，避免老虎偷七级而非高等级苏烈",
+      "background": {
+        "text": "操作有真实时间窗口，不能只说下一轮卖而忽视触发顺序。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别阶段交界时的目标控制与操作时限。",
+        "basis": "分析推断"
+      },
+      "quote": "在老虎他触发整备这个特效生效之前",
+      "segment_ids": [
+        41,
+        42,
+        43
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1450-0.jpg",
+          "time": 1450,
+          "reviewed": true,
+          "observation": "下一轮整备商店与偷等级连线显示，字幕在回答其他问题，关键移除太乙顺序来自同段前后文。",
+          "sha256": "d201d3c1a28e7661df758ca9da8078dc547d9780e738dcdd8694533ba064e878"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e024",
+      "start": 1529.33,
+      "end": 1562.51,
+      "scene": "实战",
+      "timing": "有人问青莲剑谱能否给木兰时",
+      "content": "仅在面对蒙恬时考虑换技能，其他对局木兰自身技能更适合",
+      "background": {
+        "text": "限定敌方条件，泛化换技能会丢失原角色优势。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按照对手决定是否替换核心技能。",
+        "basis": "分析推断"
+      },
+      "quote": "打其他人都是自己的技能厉害",
+      "segment_ids": [
+        45
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1550-0.jpg",
+          "time": 1550,
+          "reviewed": true,
+          "observation": "实际棋盘和主力站位显示，针对蒙恬才换木兰技能的限定来自同段原话。",
+          "sha256": "9349e46f2fa3548453c91c6999d1d3fc6c3865dc37e297588afe5bd8af09ef9f"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e025",
+      "start": 1562.51,
+      "end": 1632.56,
+      "scene": "实战",
+      "timing": "全军动员可能改变最高等级目标时",
+      "content": "交资源前确认老虎偷等级对象，苏烈当前最高时加给别的单位可能反而降低偷取收益",
+      "background": {
+        "text": "更强的牌并不总是更好，随机目标与相对等级共同决定收益。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别资源动作对目标选择的间接影响。",
+        "basis": "分析推断"
+      },
+      "quote": "全军动员不能交",
+      "segment_ids": [
+        46,
+        47
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1610-0.jpg",
+          "time": 1610,
+          "reviewed": true,
+          "observation": "整备主力与全军动员字幕同屏，讲者解释不能交的相对等级原因。",
+          "sha256": "6d6ef0fc4c42af19021a383dd595c1d17230fd1b604438bf0fad42c86c0eba09"
+        }
+      ]
+    },
+    {
+      "id": "BV1TPej65ECC:p1:e026",
+      "start": 1632.56,
+      "end": 1694.32,
+      "scene": "实战",
+      "timing": "终局战斗伤害统计与原先预期不同时",
+      "content": "猴子和云中君实际伤害突出，利用结果重新评估工具的战斗作用",
+      "background": {
+        "text": "口述一万多及胜利不作为普遍强度验证，排除娱乐闲聊。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用实际战斗反馈更新对辅助和输出的认识。",
+        "basis": "分析推断"
+      },
+      "quote": "这鸟还打了一万多伤害",
+      "segment_ids": [
+        48,
+        49
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1TPej65ECC_p1/1650-0.jpg",
+          "time": 1650,
+          "reviewed": true,
+          "observation": "战斗统计面板显示，字幕比较老虎复活后的伤害；不把一次统计当通用强度验证。",
+          "sha256": "0ec31932faae1f3c426f3b1e10a8bad61c8e7a278d111e86797f056ec057ed6a"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "本次不修正ASR，人物、装备和天赋同音误识保留；时间和原话来自原始分段。",
+    "部分口述等级与词条进度混用、伤害数字只为讲者当局估计。",
+    "专属天赋普遍强、随便阵容可赢等绝对宣传不作为验证；闲聊辱骂感谢观众排除。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "a32849029b8039d0de6f37c6feeb2bba4ac7286c9838775575d35709795ce7c4"
+}

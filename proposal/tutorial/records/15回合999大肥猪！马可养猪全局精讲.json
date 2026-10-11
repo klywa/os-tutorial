@@ -1,0 +1,899 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1cYac6pEn8:p1",
+    "bvid": "BV1cYac6pEn8",
+    "part": 1,
+    "title": "15回合999大肥猪！马可养猪全局精讲",
+    "requested_title": "15回合999大肥猪！马可养猪全局精讲",
+    "url": "https://www.bilibili.com/video/BV1cYac6pEn8/?p=1",
+    "author": "王者万象棋奇妙",
+    "duration": 1961,
+    "published": "2026-09-24 18:40:00"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1961
+      ]
+    ],
+    "notes": "全文阅读原始ASR；不修正ASR。排除闲聊、吐槽和无教学意义操作；实际核对事件截图后保存。目的为预期学习效果。"
+  },
+  "events": [
+    {
+      "id": "BV1cYac6pEn8:p1:e001",
+      "start": 26.74,
+      "end": 86.67,
+      "scene": "实战",
+      "timing": "开局说明马可技能时",
+      "content": "四张低费牌得宝藏，复制手牌宝藏能直接推进成长。",
+      "background": {
+        "text": "早期先打能赢的嫦娥单人局，再解释资源路线。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解低费出牌与宝藏反馈。",
+        "basis": "分析推断"
+      },
+      "quote": "能复制一张手牌",
+      "segment_ids": [
+        2,
+        3
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/65-0.jpg",
+          "time": 65.0,
+          "reviewed": true,
+          "observation": "第1回合2/5布阵，马可宝藏与效果卡在手中，复制收益由语音说明。",
+          "sha256": "85f5e6e85fa27c5239b294bbf35246c6dc392d712a3f7a02933de8534fc8d80b"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e002",
+      "start": 86.67,
+      "end": 153.68,
+      "scene": "实战",
+      "timing": "猪与镜尚未确定时",
+      "content": "按随机三选一与小明来牌摇摆，必要时拍卖补猪。",
+      "background": {
+        "text": "不能在主核没到前锁死路线。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "让关键配件决定主核。",
+        "basis": "分析推断"
+      },
+      "quote": "来个猪就直接是猪,来个镜就是镜",
+      "segment_ids": [
+        4,
+        5
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/140-0.jpg",
+          "time": 140.0,
+          "reviewed": true,
+          "observation": "高级人才、研讨会与兑换券选择界面，字幕明确来猪就走猪。",
+          "sha256": "bddc99a9a5c9ffe0cc01dfefb1f3908905df4695e11a7b454c3f7884e6f594d5"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e003",
+      "start": 153.84,
+      "end": 218.22,
+      "scene": "实战",
+      "timing": "对手过强时",
+      "content": "增益交了仍打不过则保留，尽量换后排减少损血。",
+      "background": {
+        "text": "当前临时投入不能改变战斗结果。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "评估能否改变结果再花资源。",
+        "basis": "分析推断"
+      },
+      "quote": "交了好像也打不过,不交了。",
+      "segment_ids": [
+        6,
+        7
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/170-0.jpg",
+          "time": 170.0,
+          "reviewed": true,
+          "observation": "第3回合战斗仍有多个敌人，语音认为交增益也打不过而保留。",
+          "sha256": "919b1348f2c5ba489ebb1ed06617e86089bdb7376bc514384ccb71a081e8e8f8"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e004",
+      "start": 218.22,
+      "end": 319.15,
+      "scene": "实战",
+      "timing": "等赢律全体决策后",
+      "content": "观察装备奖励的排名条件；匹配更强对手导致奖励落空。",
+      "background": {
+        "text": "事前想拿第一第二，但实际输而对方赢。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "将奖励预期与随机对局压力区分。",
+        "basis": "分析推断"
+      },
+      "quote": "吃不到了装备了",
+      "segment_ids": [
+        8,
+        9,
+        10
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/300-0.jpg",
+          "time": 300.0,
+          "reviewed": true,
+          "observation": "第4回合战斗末期敌方剩余少量单位，字幕说杀剩一个；排名奖励实际落空由语音确认。",
+          "sha256": "f91a138155b9404643a1be614846405db3e254dc1c8c4150640d4a5ce91a2f63"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e005",
+      "start": 319.57,
+      "end": 354.74,
+      "scene": "实战",
+      "timing": "确定养猪路线时",
+      "content": "关注整套阵容以降低漏牌，蛇灵吸引波与猪成长结合。",
+      "background": {
+        "text": "功能配件多，识牌负担影响循环。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "借界面工具减少记忆错误。",
+        "basis": "分析推断"
+      },
+      "quote": "直接关注,省得漏牌",
+      "segment_ids": [
+        11
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/340-0.jpg",
+          "time": 340.0,
+          "reviewed": true,
+          "observation": "左侧阵容收藏面板打开，字幕指明阵容位置，提供降低漏牌的界面操作证据。",
+          "sha256": "ff24cbc53f6fab569aba745ea8068244cbba266a527fb99477ddc380d27290d4"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e006",
+      "start": 391.14,
+      "end": 450.77,
+      "scene": "实战",
+      "timing": "重复使用老夫子与孙尚香时",
+      "content": "换新单位再合成，已兑现的工具卖出再上新。",
+      "background": {
+        "text": "不是只报操作，解释新工具重置资源获取。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "组织可循环触发顺序。",
+        "basis": "分析推断"
+      },
+      "quote": "先上个新孙尚香,再打一次合成",
+      "segment_ids": [
+        13,
+        14
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/435-0.jpg",
+          "time": 435.0,
+          "reviewed": true,
+          "observation": "第6回合商店与多个工具单位，字幕提示刷新老夫子，换新合成顺序由语音说明。",
+          "sha256": "694183a749ad77c4d3b0b58729158e88eaf939565d2b6bf4a6bd7af65f29296f"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e007",
+      "start": 451.38,
+      "end": 513.28,
+      "scene": "实战",
+      "timing": "建议升四级后发现永不独行时",
+      "content": "一般猪可升级，但本局有永不独行应延后，经验先存。",
+      "background": {
+        "text": "讲者主动承认此前升级建议忽略天赋。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用已选天赋修正通用升级建议。",
+        "basis": "分析推断"
+      },
+      "quote": "我是永不独行的话我得晚点升级",
+      "segment_ids": [
+        15,
+        16
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/500-0.jpg",
+          "time": 500.0,
+          "reviewed": true,
+          "observation": "第7回合升级动效及商店，字幕明确不该打经验，对应永不独行纠偏。",
+          "sha256": "59bc80af8e0d0231a124ce9c75e9555bc4c38028f5bb230148f9e9c43519735c"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e008",
+      "start": 543.62,
+      "end": 620.78,
+      "scene": "实战",
+      "timing": "等待经验奖励时",
+      "content": "估算每轮经验后能停留多久，拍卖三块卡赚但四块放弃。",
+      "background": {
+        "text": "低等级停留服务既有奖励窗口，价格影响净收益。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用资源窗口约束搜索和拍卖。",
+        "basis": "分析推断"
+      },
+      "quote": "三块钱拿,四块钱就不要了。",
+      "segment_ids": [
+        18,
+        19
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/600-0.jpg",
+          "time": 600.0,
+          "reviewed": true,
+          "observation": "拍卖转场界面，延迟升级经验预算和竞价三四块差异由同期语音解释。",
+          "sha256": "a241cc2ad24babf502e16c5d0a54e40cf42b98cd9ead6e7717e6daf4131ab525"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e009",
+      "start": 621.1,
+      "end": 689.34,
+      "scene": "实战",
+      "timing": "准备合成和吸取前",
+      "content": "先上瑶等受益工具，再兑现；猪牌可暂不打等组合。",
+      "background": {
+        "text": "已有目标池需要控制，避免资源落给未准备对象。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "执行前确认成长对象。",
+        "basis": "分析推断"
+      },
+      "quote": "先上个瑶妹",
+      "segment_ids": [
+        20,
+        21
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/675-0.jpg",
+          "time": 675.0,
+          "reviewed": true,
+          "observation": "第8回合商店，场上猪与支撑已在，字幕说双人同行很亏，成长顺序来自语音。",
+          "sha256": "7e3445fb1df5f698e81a078c12ba545a0310929aecbbce0153535d511b66b641"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e010",
+      "start": 689.34,
+      "end": 760.98,
+      "scene": "实战",
+      "timing": "太乙过早上场时",
+      "content": "太乙是终局保命，但此时上会占掉成长出牌位置。",
+      "background": {
+        "text": "讲者明确前局没太乙输过，本局先保留成长位。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分手中储备和立即占场。",
+        "basis": "分析推断"
+      },
+      "quote": "上了这个太一我就没有打足位了。",
+      "segment_ids": [
+        22,
+        23
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/735-0.jpg",
+          "time": 735.0,
+          "reviewed": true,
+          "observation": "第8回合战斗且大量牌在手，太乙现在占成长位的判断由语音说明。",
+          "sha256": "8c474874330d2251a6ff5c6f4c2999b13875bbeea03e84ab348e47058db61f23"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e011",
+      "start": 761.01,
+      "end": 823.1,
+      "scene": "实战",
+      "timing": "宝石镜随机给猪或太乙时",
+      "content": "给太乙就存金太乙，给猪则继续成长，用随机结果两用。",
+      "background": {
+        "text": "为未来保命提前储备而不影响当前循环。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按随机结果设计可接受分支。",
+        "basis": "分析推断"
+      },
+      "quote": "太乙觉醒就回手。",
+      "segment_ids": [
+        24,
+        25
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/805-0.jpg",
+          "time": 805.0,
+          "reviewed": true,
+          "observation": "第9回合任务达成弹窗，字幕说开到猪就用猪，宝石镜分支有同期依据。",
+          "sha256": "1e944369442079b5715cd7a42df639993d7f0457c06eb630e8bfb0700b26efb0"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e012",
+      "start": 823.1,
+      "end": 921.25,
+      "scene": "实战",
+      "timing": "猪无装备且刷新不足时",
+      "content": "补孙尚香免费刷新，并重新决定太乙必须储备。",
+      "background": {
+        "text": "讲者回想此前关键牌不放导致失利。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "从资源短缺与失败经验调优购买。",
+        "basis": "分析推断"
+      },
+      "quote": "这个太乙还真得拿",
+      "segment_ids": [
+        26,
+        27,
+        28
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/905-0.jpg",
+          "time": 905.0,
+          "reviewed": true,
+          "observation": "第10回合商店与猪升级动效，字幕说准备觉醒太乙。",
+          "sha256": "fc3fe7fd114d06fb447102fdb6f27e247b8f6db335f11301ab0035d6bdd02a13"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e013",
+      "start": 921.25,
+      "end": 989.68,
+      "scene": "实战",
+      "timing": "选择循环购买时",
+      "content": "优先厂商或给两张牌的单位，以持续触发马可宝藏。",
+      "background": {
+        "text": "钱花完仍可由资源返还维持出牌。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "以净返还能力筛牌。",
+        "basis": "分析推断"
+      },
+      "quote": "比如老夫子他都给两张",
+      "segment_ids": [
+        29,
+        30
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/970-0.jpg",
+          "time": 970.0,
+          "reviewed": true,
+          "observation": "第10回合猪信息展开，字幕显示蛇灵吸39级，手牌有多张厂商与返牌单位。",
+          "sha256": "10af93539ca089716f83d7fce3dc8ef64640c608f7770d461dc4270bb962ba50"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e014",
+      "start": 989.68,
+      "end": 1052.64,
+      "scene": "实战",
+      "timing": "强化宝石镜到来时",
+      "content": "双卡返还配合多猪同时吸取，扩大成长效率。",
+      "background": {
+        "text": "核心资源发动机到位后循环加速。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别组合启动前后收益差。",
+        "basis": "分析推断"
+      },
+      "quote": "强化宝石镜舒服终于来了",
+      "segment_ids": [
+        31,
+        32
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1040-0.jpg",
+          "time": 1040.0,
+          "reviewed": true,
+          "observation": "第11回合商店翻牌，多张猪牌在手；强化宝石镜已到由语音确认。",
+          "sha256": "d38527e3aa4ee43749336006c0d058091467a46a800e54692b9f169d9568d7cb"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e015",
+      "start": 1052.64,
+      "end": 1086.75,
+      "scene": "实战",
+      "timing": "吸取对象快耗尽时",
+      "content": "及时换人吸，避免在已经枯竭的目标上继续投入。",
+      "background": {
+        "text": "已有对象快走；高阶卡产出规则还有版本差异。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "检查每次操作是否仍有收益。",
+        "basis": "分析推断"
+      },
+      "quote": "这个人快没了。换个人袭。",
+      "segment_ids": [
+        33
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1070-0.jpg",
+          "time": 1070.0,
+          "reviewed": true,
+          "observation": "第11回合商店与选择提示，字幕催消费，吸取对象更换由语音解释。",
+          "sha256": "2d704888ed9cdc7dd94ec38581e7b6e43667ff068444aec2b094a90739099db6"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e016",
+      "start": 1052.64,
+      "end": 1086.75,
+      "scene": "实战",
+      "timing": "升级后产出高阶牌时",
+      "content": "讲者指出狼牙图腾与过去不同，升四五级会给高阶，影响低费循环。",
+      "background": {
+        "text": "这是版本差异说法，发布日期不能确定版本。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "不要照搬旧视频资源规则。",
+        "basis": "分析推断"
+      },
+      "quote": "现在你要是升到四级五级以后他会给高阶了",
+      "segment_ids": [
+        33
+      ],
+      "template_id": "version-change",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1080-0.jpg",
+          "time": 1080.0,
+          "reviewed": true,
+          "observation": "第11回合战斗，字幕说现在规则砍了，高阶产出差异是讲者版本说法。",
+          "sha256": "e394c438b657d17467c074c6e1bdd4c1c8479b5b0a9a6b3cc9b15b13d19b5532"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e017",
+      "start": 1086.75,
+      "end": 1186.74,
+      "scene": "实战",
+      "timing": "准备结束永不独行停留时",
+      "content": "把升级资源或超新星纳入预算，连续跨级前先兑现剩余奖励。",
+      "background": {
+        "text": "本局停三级后计划跨四五六级。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "协调奖励结束与升级转段。",
+        "basis": "分析推断"
+      },
+      "quote": "从四级升到五级,然后再从五级直接拉到六级",
+      "segment_ids": [
+        34,
+        35,
+        36
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1110-0.jpg",
+          "time": 1110.0,
+          "reviewed": true,
+          "observation": "拍卖转场，字幕明确本轮拍卖可拿升级；跨级计划由语音解释。",
+          "sha256": "269e5b3485089a2ab64119ddde54e15cfd017026463fad5ffee9f26d9d35a72e"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e018",
+      "start": 1122.5,
+      "end": 1157.12,
+      "scene": "实战",
+      "timing": "猪装备很差时",
+      "content": "四级后马可效果宝藏可能提供敲装备，不必拍特定装备库。",
+      "background": {
+        "text": "成长路线自己有补装备渠道。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "比较已有技能渠道与外部竞价。",
+        "basis": "分析推断"
+      },
+      "quote": "很大概率能开到乔装备的",
+      "segment_ids": [
+        35
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1140-0.jpg",
+          "time": 1140.0,
+          "reviewed": true,
+          "observation": "拍卖列表多卡已售，四级效果卡补装备的概率主张来自语音。",
+          "sha256": "68baec6b32d9bc8d04faca32033da4bff31efd809016b6d1b54ea0484c529dc1"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e019",
+      "start": 1186.74,
+      "end": 1217.76,
+      "scene": "实战",
+      "timing": "宝石镜能给两张卡时",
+      "content": "优先两个宝藏，把返还倍数与资源选择连接；目标吸干后换人。",
+      "background": {
+        "text": "当前资源循环已经成立。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用实际返还条件选资源。",
+        "basis": "分析推断"
+      },
+      "quote": "只要能给两张卡",
+      "segment_ids": [
+        37
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1200-0.jpg",
+          "time": 1200.0,
+          "reviewed": true,
+          "observation": "第12回合商店与多张猪牌，返两张卡时优先双宝藏由语音说明。",
+          "sha256": "826d130bb968dd553ffa2886cbb5c9323dc4a52cd1ccef040cdc9c2bc1efd7f8"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e020",
+      "start": 1246.51,
+      "end": 1333.44,
+      "scene": "实战",
+      "timing": "持续刷牌后整装时",
+      "content": "装备重构补反甲免控等战斗功能，不再只追成长卡。",
+      "background": {
+        "text": "高等级猪仍曾因装备差失利。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "将成长兑现为战斗属性。",
+        "basis": "分析推断"
+      },
+      "quote": "装备太臭了重购一下",
+      "segment_ids": [
+        39,
+        40,
+        41
+      ],
+      "template_id": "equipment-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1320-0.jpg",
+          "time": 1320.0,
+          "reviewed": true,
+          "observation": "第13回合武装重构等选择界面，装备改造与战斗功能对应。",
+          "sha256": "ec807af4ec517958e0fe0090b34d8d85dd7702f064250f064a448056eb0136f6"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e021",
+      "start": 1333.44,
+      "end": 1365.92,
+      "scene": "实战",
+      "timing": "回顾上一轮被控死时",
+      "content": "明确缺免控才输，本轮补免控并上太乙。",
+      "background": {
+        "text": "针对实际失败原因，而非高等级不足。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按战斗反馈调整装备和辅助。",
+        "basis": "分析推断"
+      },
+      "quote": "没有免控被控死了",
+      "segment_ids": [
+        42
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1350-0.jpg",
+          "time": 1350.0,
+          "reviewed": true,
+          "observation": "第13回合保命天赋选择界面，缺免控导致上一轮失利由语音复盘。",
+          "sha256": "5d4d42d266f9ceb73c68a8f8944e4e5f424640ec881bfc33a1edeb09fc4cfeee"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e022",
+      "start": 1365.92,
+      "end": 1405.23,
+      "scene": "实战",
+      "timing": "考虑能否养到999时",
+      "content": "对手血量高给更多循环回合，达上限依赖可用时间。",
+      "background": {
+        "text": "讲者认为此局有机会，不作为固定15回合保证。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "估算剩余成长窗口。",
+        "basis": "分析推断"
+      },
+      "quote": "因为他们血量很高",
+      "segment_ids": [
+        43
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1385-0.jpg",
+          "time": 1385.0,
+          "reviewed": true,
+          "observation": "第13回合战斗，对手多人仍有血量，剩余成长时间由语音判断。",
+          "sha256": "a70bc69f6ceac49cb19996c72d355b3e3c79dcff8de96ac1ab1df74e0020464d"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e023",
+      "start": 1435.44,
+      "end": 1525.65,
+      "scene": "实战",
+      "timing": "是否立刻升六级时",
+      "content": "先用完本轮钱和刷新，返回资源不是所需时可延迟升级。",
+      "background": {
+        "text": "有经验与人鱼资源不等于现在必须升级。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "先兑现本轮资源再换阶段。",
+        "basis": "分析推断"
+      },
+      "quote": "先把手里的钱花完",
+      "segment_ids": [
+        45,
+        46,
+        47
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1510-0.jpg",
+          "time": 1510.0,
+          "reviewed": true,
+          "observation": "第14回合商店翻牌及多项资源，字幕问钱数，先消费再升级来自语音。",
+          "sha256": "ad4ca9bfb4d1c03f2ed901db4c375a02734e2a2d75f54c858398fff1f90c2794"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e024",
+      "start": 1588.0,
+      "end": 1679.39,
+      "scene": "实战",
+      "timing": "猪达到999时",
+      "content": "停止继续吸成长，改给辅助升级，使用传承移花转战斗功能。",
+      "background": {
+        "text": "满级后原成长投入边际收益为零。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别上限并改变资源目标。",
+        "basis": "分析推断"
+      },
+      "quote": "这猪999了,还吸谁呀?",
+      "segment_ids": [
+        50,
+        51,
+        52
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1665-0.jpg",
+          "time": 1665.0,
+          "reviewed": true,
+          "observation": "第15回合商店与己方辅助升级，猪满级后停止吸取由语音明确。",
+          "sha256": "06682d7893c0889b258287288d74bbee62265834d7e09b556461174a717c1c7f"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e025",
+      "start": 1679.39,
+      "end": 1737.01,
+      "scene": "实战",
+      "timing": "面对海月换命时",
+      "content": "比较明刀与磐石之心对单次高伤的保护，读取海月词条。",
+      "background": {
+        "text": "讲者按伤害上限解释换命难以带走猪，具体数值待核。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按敌方伤害机制选择保命。",
+        "basis": "分析推断"
+      },
+      "quote": "受到伤害不会超过15",
+      "segment_ids": [
+        53,
+        54
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1720-0.jpg",
+          "time": 1720.0,
+          "reviewed": true,
+          "observation": "第16回合海月信息展开，字幕解释磐石之心，伤害限制用于对抗换命。",
+          "sha256": "59919cfd0f236295ad5316960f617d55fcd31c0548db2a1e0e2dc8a5db1b4a2a"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e026",
+      "start": 1765.97,
+      "end": 1824.19,
+      "scene": "实战",
+      "timing": "观察海月多条命仍换不掉猪时",
+      "content": "检查实际受伤与回复，再停止给满级猪投成长。",
+      "background": {
+        "text": "机制已在战斗中兑现，但小明死亡也被讲者及时指出。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用实时效果校准防护判断。",
+        "basis": "分析推断"
+      },
+      "quote": "他两条命甚至换不掉我一条命",
+      "segment_ids": [
+        56,
+        57
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1805-0.jpg",
+          "time": 1805.0,
+          "reviewed": true,
+          "observation": "第17回合己方辅助升级，字幕明确不吸了，转移成长目标由语音说明。",
+          "sha256": "19ad04dd8ec2ad5691c6dca0286667cf2d84e451d68b3087c23c585dd794210e"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e027",
+      "start": 1824.19,
+      "end": 1885.46,
+      "scene": "实战",
+      "timing": "解释重点照顾为什么少于镜时",
+      "content": "镜配蒙犽可双触发，猪路线触发结构不同，不能按同一数值目标评价。",
+      "background": {
+        "text": "重点照顾150是当局说法，核心上限已达。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按触发结构比较阵容成长速度。",
+        "basis": "分析推断"
+      },
+      "quote": "因为晶是要打梦奇的",
+      "segment_ids": [
+        58,
+        59
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1870-0.jpg",
+          "time": 1870.0,
+          "reviewed": true,
+          "observation": "第17回合6/7布阵，满级猪与高等级辅助，重点照顾与镜路线差异由语音解释。",
+          "sha256": "682f93afa3f97997b4c74673bf6d50480ca061c69d8d5c71bbe639de02e8e9cd"
+        }
+      ]
+    },
+    {
+      "id": "BV1cYac6pEn8:p1:e028",
+      "start": 1885.68,
+      "end": 1943.1,
+      "scene": "实战",
+      "timing": "终局有驱雷时",
+      "content": "百分比伤害与伤害上限防护共同处理海月，不是仅靠999。",
+      "background": {
+        "text": "最终获胜依赖攻防机制组合。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "解释等级之外的胜负原因。",
+        "basis": "分析推断"
+      },
+      "quote": "猪头劈一下劈30%的血",
+      "segment_ids": [
+        60,
+        61
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1cYac6pEn8_p1/1900-0.jpg",
+          "time": 1900.0,
+          "reviewed": true,
+          "observation": "第17回合海月技能覆盖场地，百分比驱雷与磐石防护联动来自语音及最终获胜反馈。",
+          "sha256": "aa0b697318d68b5b2fbec36723974df33b8c05ac1dee9190ed759c767a6c2e81"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "原始ASR术语和数值可能有误；未经画面确认者不作为精确机制结论。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "1552c1bdc700a4ce70942e22231479fce879db074a60531c292f790865e9401f"
+}

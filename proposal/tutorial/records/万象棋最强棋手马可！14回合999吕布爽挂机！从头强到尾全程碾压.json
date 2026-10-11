@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1JGpM62EC5:p1",
+    "bvid": "BV1JGpM62EC5",
+    "part": 1,
+    "title": "万象棋最强棋手马可！14回合999吕布爽挂机！从头强到尾全程碾压",
+    "author": "王者万象棋奇妙",
+    "duration": 1557,
+    "published": "2026-10-07T15:51:23+08:00",
+    "url": "https://www.bilibili.com/video/BV1JGpM62EC5/?p=1",
+    "version": null,
+    "acquisition": "browser-observed-public-DASH"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1557
+      ]
+    ],
+    "notes": "完整阅读large-v3的31段转写并查看10张教学候选帧。多数片段为回应弹幕、吐槽或操作陈述，不进入事件与统计。仅提取具有机制、选择理由或条件对照的讲解。"
+  },
+  "events": [
+    {
+      "id": "BV1JGpM62EC5:p1:e001",
+      "start": 548.87,
+      "end": 636.26,
+      "scene": "实战",
+      "timing": "观众问为何不养镜、正在利用重复英雄合成成长时",
+      "content": "解释春风化雨与曜的合成成长比镜的效果牌成长更匹配",
+      "background": {
+        "text": "讲者在这局利用合成，面对养镜建议时明确对照了两个英雄的成长触发方式。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按当前资源的触发行为选择成长核心，而非固定选择某个英雄。",
+        "basis": "分析推断"
+      },
+      "quote": "春风化雨的话养曜屌。曜是打合成的。",
+      "segment_ids": [
+        12,
+        13
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1JGpM62EC5_p1/580-0.jpg",
+          "time": 580,
+          "reviewed": true,
+          "observation": "实战棋盘与多张重复英雄手牌，字幕说明不想复制老夫子；配合前后语音理解合成路径。",
+          "sha256": "b3ccf19dde37ce0388c4fed840fbccc3175e0612e1e34a077b02f27d46ede0d5"
+        }
+      ]
+    },
+    {
+      "id": "BV1JGpM62EC5:p1:e002",
+      "start": 922.25,
+      "end": 973.69,
+      "scene": "实战",
+      "timing": "经济已明显富余后连续刷新购买时",
+      "content": "对照经济紧张与富余时的买牌取舍",
+      "background": {
+        "text": "讲者明确对比穷的时候会挑选和有钱时购买更多牌；适用范围仅限这局能从出牌持续获益的组合。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解操作优先级随资源约束变化，不把少买牌当作永远正确。",
+        "basis": "分析推断"
+      },
+      "quote": "反正,带颜色的全都买",
+      "segment_ids": [
+        18
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1JGpM62EC5_p1/940-0.jpg",
+          "time": 940,
+          "reviewed": true,
+          "observation": "实战商店打开，手牌较多，仍在连续购买；不把一次金币显示当成无限经济的证明。",
+          "sha256": "ed4565954b9e77d0ba2dc342a378260417f1ee5c2e152e28100a995853a6a24c"
+        }
+      ]
+    },
+    {
+      "id": "BV1JGpM62EC5:p1:e003",
+      "start": 1082.09,
+      "end": 1145.68,
+      "scene": "实战",
+      "timing": "解释这局钱不断增加时",
+      "content": "把宝石镜的成长组合与当前经济表现联系",
+      "background": {
+        "text": "讲者用宝石镜解释为何本局能够持续刷新；该段没有完整讲清所有经济环节。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "知道经济表现需要追溯到具体组合，并识别解释不足之处。",
+        "basis": "分析推断"
+      },
+      "quote": "有宝石镜就会有钱啊。",
+      "segment_ids": [
+        21
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1JGpM62EC5_p1/1115-0.jpg",
+          "time": 1115,
+          "reviewed": true,
+          "observation": "实战商店界面，字幕明确说有宝石镜；经济链未完整演示，不能补造公式。",
+          "sha256": "0a4c2b3c1e8efe1d55cc0fc481217356a0b0ddf6d0d933612613f8b3defa1e4d"
+        }
+      ]
+    },
+    {
+      "id": "BV1JGpM62EC5:p1:e004",
+      "start": 1082.09,
+      "end": 1145.68,
+      "scene": "实战",
+      "timing": "核心成长较高、仍未做免控时",
+      "content": "提醒及时补免控，避免高等级核心被控制影响输出",
+      "background": {
+        "text": "讲者明确说不做免控之后可能成为失误，提醒补齐核心功能需求。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "在资源富余时仍检查核心的关键功能短板。",
+        "basis": "分析推断"
+      },
+      "quote": "虽然做个免控吧,不做免控一会儿伏笔了。",
+      "segment_ids": [
+        21
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1JGpM62EC5_p1/1115-0.jpg",
+          "time": 1115,
+          "reviewed": true,
+          "observation": "实战商店与场上英雄、装备图标可见；具体控制威胁未说明，作为风险提醒保留。",
+          "sha256": "0a4c2b3c1e8efe1d55cc0fc481217356a0b0ddf6d0d933612613f8b3defa1e4d"
+        }
+      ]
+    },
+    {
+      "id": "BV1JGpM62EC5:p1:e005",
+      "start": 1240.43,
+      "end": 1291.62,
+      "scene": "实战",
+      "timing": "升级后发现出牌成长变慢时",
+      "content": "解释五费卡不能触发马可宝藏，说明操作节奏下降的机制",
+      "background": {
+        "text": "讲者观察到升级后的卡牌结构变化，指出五费卡与宝藏触发之间的限制。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "知道等级或商店卡池变化会影响成长引擎，能排查速度下降原因。",
+        "basis": "分析推断"
+      },
+      "quote": "因为现在全五费卡。五费卡触发不了马可的宝藏。",
+      "segment_ids": [
+        24
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1JGpM62EC5_p1/1260-0.jpg",
+          "time": 1260,
+          "reviewed": true,
+          "observation": "实战已切到效果牌选择画面并开始转核心；五费触发限制来自讲者原话。",
+          "sha256": "c2dcdda45e3c4b56b587cb0f697f56c158cde15d657ea87dae517588d7de3b42"
+        }
+      ]
+    },
+    {
+      "id": "BV1JGpM62EC5:p1:e006",
+      "start": 1292.52,
+      "end": 1387.83,
+      "scene": "实战",
+      "timing": "在吕布与海月之间考虑等级转型时",
+      "content": "比较不同转型目标的等级要求，不凭当前等级总和直接判断可转",
+      "background": {
+        "text": "讲者认为当前条件可让吕布到999，但海月还需要曜自身达到相应等级；没有完整讲明转化公式。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "转型前检查目标条件，不把不同转型路线视为同一操作。",
+        "basis": "分析推断"
+      },
+      "quote": "海月等级有点不够,海月得曜的等级到999,海月才够。",
+      "segment_ids": [
+        25,
+        26
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1JGpM62EC5_p1/1350-0.jpg",
+          "time": 1350,
+          "reviewed": true,
+          "observation": "实战场上仍在准备转型，字幕为要不然不太够；不由截图推断等级转移公式。",
+          "sha256": "fc4ad14cab5859e90347177dd39490801b08cb8dfb9d5eed545ab789cfe931a9"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "136–199秒、443–491秒等转写间隔需要保留，尚未确认是否缺少语音。",
+    "末段坦克面板与装备针对的目标昵称未确认，因此不据此建立英雄克制结论。",
+    "经济富余下购买方式来自本局特定成长组合，不推广到其他棋手或无相同收益机制的情况。"
+  ],
+  "transcript_sha256": "92ec42ada21bc3df05aa1c5b95d831fce5215f7571b992af4639127edc0b04d6"
+}

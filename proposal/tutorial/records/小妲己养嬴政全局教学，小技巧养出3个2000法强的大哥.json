@@ -1,0 +1,707 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1Wwec68E7u:p1",
+    "bvid": "BV1Wwec68E7u",
+    "part": 1,
+    "title": "小妲己养嬴政全局教学，小技巧养出3个2000法强的大哥",
+    "requested_title": "小妲己养嬴政全局教学，小技巧养出3个2000法强的大哥",
+    "url": "https://www.bilibili.com/video/BV1Wwec68E7u/?p=1",
+    "author": "王者万象棋奇妙",
+    "duration": 1641,
+    "published": "2026-09-16 11:03:48"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1641
+      ]
+    ],
+    "notes": "完整阅读51段原始ASR，逐条核对22张实际截图；实验猜想与后续否定作为同一学习目标记录，不做ASR修正。"
+  },
+  "events": [
+    {
+      "id": "BV1Wwec68E7u:p1:e001",
+      "start": 35.98,
+      "end": 65.17,
+      "scene": "实战",
+      "timing": "介绍妲己购物技能",
+      "content": "有用的牌以购买触发奖励与临时刷新，少把钱耗在主动刷新",
+      "background": {
+        "text": "购买次数是技能收益触发条件，不是无条件所有牌都买",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "比较买牌与刷新对循环的不同收益",
+        "basis": "分析推断"
+      },
+      "quote": "买下来才会出发这个怦然心动",
+      "segment_ids": [
+        2
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/50-0.jpg",
+          "time": 50,
+          "reviewed": true,
+          "observation": "整备商店与看到商店卡字幕可见；购买触发依据原话。",
+          "sha256": "ead8dab32cf51e62a230b8552d2c48f7ba5173301cf6fb23ff63518c64fedf7f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e002",
+      "start": 138.61,
+      "end": 246.03,
+      "scene": "实战",
+      "timing": "先未定阵容再看到天赋",
+      "content": "先等天赋结构，看到复印机和对手阵容后确定嬴政并觉醒芈月",
+      "background": {
+        "text": "金银算盘可能走独苗，本局最后选择逐鹿路线；不是开局必须锁死",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用天赋与对手约束确定路线",
+        "basis": "分析推断"
+      },
+      "quote": "我们这把已经确定阵容了",
+      "segment_ids": [
+        5,
+        6,
+        7
+      ],
+      "template_id": "opening-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/220-0.jpg",
+          "time": 220,
+          "reviewed": true,
+          "observation": "整备对手与自身单位可见，天赋后选择路线依据讲解。",
+          "sha256": "1b7335b672c2b270170a1eee6a9936eab98d25c7257d9943110bc22969ed9917"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e003",
+      "start": 246.03,
+      "end": 309.68,
+      "scene": "实战",
+      "timing": "同路人天赋出现",
+      "content": "同阵营出牌奖励支持买牌循环，当前未凑足时不能声称已兑现",
+      "background": {
+        "text": "血量与资源仍限制循环，无限钱为夸张说法",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "核查奖励条件是否满足",
+        "basis": "分析推断"
+      },
+      "quote": "这个同路人是上四个人",
+      "segment_ids": [
+        8,
+        9
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/285-0.jpg",
+          "time": 285,
+          "reviewed": true,
+          "observation": "本局血量35、人口不足与上不到四个人字幕可见，奖励尚未凑足。",
+          "sha256": "d9c441bcdd6fb112f276a708cde0ad4accc613bb09ba58ed036664f1e76dc77a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e004",
+      "start": 367.63,
+      "end": 402.11,
+      "scene": "实战",
+      "timing": "当前无法启动输出",
+      "content": "此时先补攻速启动而非仅追求后期法穿",
+      "background": {
+        "text": "当前施法启动尚未满足，即时需求优先于理论上限",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "比较启动与伤害装备的边际价值",
+        "basis": "分析推断"
+      },
+      "quote": "我现在没有启动",
+      "segment_ids": [
+        12
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/390-0.jpg",
+          "time": 390,
+          "reviewed": true,
+          "observation": "嬴政卡面和装备栏可见，字幕现在装备更重要。",
+          "sha256": "1518275e36d44a27b7230373b078d5ee000011f3d33ae8988eacc01c91a083cc"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e005",
+      "start": 466.58,
+      "end": 569.17,
+      "scene": "实战",
+      "timing": "买牌却没钱后复盘",
+      "content": "核对花费与是否实际打出同阵营牌，未上芈月导致奖励未兑现",
+      "background": {
+        "text": "讲者复盘买两张耗六块，只打一个同路人；不把抱怨本身计教学",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "从经济异常查漏触发的条件",
+        "basis": "分析推断"
+      },
+      "quote": "这个敏玥我没有上",
+      "segment_ids": [
+        15,
+        16,
+        17
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/550-0.jpg",
+          "time": 550,
+          "reviewed": true,
+          "observation": "拍卖候选与低资源背景可见，消费与未上牌复盘依据前后文。",
+          "sha256": "4833350a8130677b84f0347077a58b574e9f19548a56352719c9e3b7371c1515"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e006",
+      "start": 536.05,
+      "end": 569.17,
+      "scene": "实战",
+      "timing": "决定是否买鲁班七号",
+      "content": "合成获得战术卡，加速成长并增加白起援护护盾",
+      "background": {
+        "text": "本局不养鲁班作为核心，仍有工具用途",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按资源链而非核心身份评估工具",
+        "basis": "分析推断"
+      },
+      "quote": "他打合成他会给战术卡",
+      "segment_ids": [
+        17
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/558-0.jpg",
+          "time": 558,
+          "reviewed": true,
+          "observation": "战斗结束与工具单位可见，字幕升级更快，战术卡来源依讲解。",
+          "sha256": "392407a9fa0f78818de3a4f8479b399bd91cb95033302a89bc9dcddf67fc5163"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e007",
+      "start": 569.17,
+      "end": 603.07,
+      "scene": "实战",
+      "timing": "芈月觉醒资源到来",
+      "content": "先觉醒提高效果牌触发后的成长",
+      "background": {
+        "text": "芈月是逐鹿成长工具，觉醒影响循环效率",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别工具觉醒优先级",
+        "basis": "分析推断"
+      },
+      "quote": "觉醒之后他打那个效果卡升级更快",
+      "segment_ids": [
+        18
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/585-0.jpg",
+          "time": 585,
+          "reviewed": true,
+          "observation": "整备商店与觉醒资源可见，芈月用途依据讲解。",
+          "sha256": "d0cf30b892f9a97820699488b60562ba019f25d3c9f67d1a2e06b2e8450df43c"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e008",
+      "start": 631.6,
+      "end": 692.62,
+      "scene": "实战",
+      "timing": "安排弹簧跳跃对象",
+      "content": "对刺客时将嬴政转到另一侧，否则前排跳后排干扰",
+      "background": {
+        "text": "不固定由核心跳，取决于对手接敌结构",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按威胁决定位移对象",
+        "basis": "分析推断"
+      },
+      "quote": "对面是刺客的话我就把嬴政跳过去",
+      "segment_ids": [
+        20,
+        21
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/680-0.jpg",
+          "time": 680,
+          "reviewed": true,
+          "observation": "弹簧与整备不同位置单位可见，刺客条件下位移对象选择依讲解。",
+          "sha256": "d928e0b5d6fcf3d422a0d2b9aec3927dbfe6b81fbef9bba6fc7c4d6f74bfb39f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e009",
+      "start": 692.82,
+      "end": 723.68,
+      "scene": "实战",
+      "timing": "受到控制而选装备",
+      "content": "真免控与间歇解控不同，后者技能仍可能打断",
+      "background": {
+        "text": "长施法需要免疫控制，不等同装备名称含解控即可",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分免控与解除控制",
+        "basis": "分析推断"
+      },
+      "quote": "他技能还是会被打断",
+      "segment_ids": [
+        22
+      ],
+      "template_id": "equipment-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/710-0.jpg",
+          "time": 710,
+          "reviewed": true,
+          "observation": "整备装备与免控是假的字幕可见，不根据含混原ASR猜具体装备名。",
+          "sha256": "2f844ebc5ed1aa5c58678628c6650324d63feac0840ebdc5db70e7e083b664d6"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e010",
+      "start": 752.14,
+      "end": 790.8,
+      "scene": "实战",
+      "timing": "看似用不着的效果卡是否打",
+      "content": "效果牌仍触发芈月，给装备最多逐鹿单位加等级",
+      "background": {
+        "text": "嬴政装备最多，技能收益对象受配装分布影响",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别卡自身效果与额外触发收益",
+        "basis": "分析推断"
+      },
+      "quote": "它算效果卡",
+      "segment_ids": [
+        24
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/770-0.jpg",
+          "time": 770,
+          "reviewed": true,
+          "observation": "战斗中嬴政施法及效果卡可见，芈月额外触发依据口述。",
+          "sha256": "51e419b933b387de6213f25697c09fc20b7b6f9d43bb3424b2b801dcd7ed8cba"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e011",
+      "start": 911.25,
+      "end": 942.61,
+      "scene": "实战",
+      "timing": "获得免控装备来源",
+      "content": "补免控避免核心施法被打断",
+      "background": {
+        "text": "当前控制威胁存在，装备需要解决具体失败原因",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "将装备选择接到输出稳定性",
+        "basis": "分析推断"
+      },
+      "quote": "要不然技能被打断就坏菜了",
+      "segment_ids": [
+        29
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/925-0.jpg",
+          "time": 925,
+          "reviewed": true,
+          "observation": "嬴政装备栏与商店可见，免控必要性依口述。",
+          "sha256": "afb977533ab7b41823e5dd657982bba3f315c2433cae0da10de6c728ddc2e0de"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e012",
+      "start": 942.61,
+      "end": 974.0,
+      "scene": "实战",
+      "timing": "留干将等待装备重构分解",
+      "content": "保留干将自带装作为后续资源来源",
+      "background": {
+        "text": "工具不是终局成员，等待对应效果出现再兑现",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "提前准备资源而不浪费手牌功能",
+        "basis": "分析推断"
+      },
+      "quote": "可以分解干将的装备",
+      "segment_ids": [
+        30
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/955-0.jpg",
+          "time": 955,
+          "reviewed": true,
+          "observation": "干将商店候选与留工具手牌背景可见，分解来源依据口述。",
+          "sha256": "603bf6a1fe7093f3824da464ace27f42982e3b92b037e75ff941baaa8a8adf25"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e013",
+      "start": 975.25,
+      "end": 1015.44,
+      "scene": "实战",
+      "timing": "嬴政弹到后排后的表现",
+      "content": "位移有偷后排收益，也可能增加技能转向时间",
+      "background": {
+        "text": "两种影响并存，单次位移有效不等于总是更好",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "观察位移的副作用与收益",
+        "basis": "分析推断"
+      },
+      "quote": "他好像技能要大转弯啊",
+      "segment_ids": [
+        31
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/990-0.jpg",
+          "time": 990,
+          "reviewed": true,
+          "observation": "位移后的异方战斗，字幕后排位移，转向代价依据讲解。",
+          "sha256": "933e410b4f8fb1fbc99747f7160c928cb26a1a1a770da0264f2c640c87effdda"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e014",
+      "start": 1021.01,
+      "end": 1083.22,
+      "scene": "实战",
+      "timing": "六级费用高但当前能赢",
+      "content": "先留钱，呼风唤雨等六级双倍效果再开",
+      "background": {
+        "text": "当前战力足以维持，升级后增加资源兑现收益",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "结合当前强度和升级收益判断时机",
+        "basis": "分析推断"
+      },
+      "quote": "能打过他的话,我就先",
+      "segment_ids": [
+        32,
+        33
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1070-0.jpg",
+          "time": 1070,
+          "reviewed": true,
+          "observation": "整备血量、经济与能打过他的字幕可见，不从静帧验证未来胜局。",
+          "sha256": "ee62869671a493e6803c787b34c3dafa2df9cd16c89cf873980bb6ef2abbd7ad"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e015",
+      "start": 1083.57,
+      "end": 1143.95,
+      "scene": "实战",
+      "timing": "白起跳到多人后排",
+      "content": "观察敌方站位，把白起弹到人群中心嘲讽，给嬴政输出窗口",
+      "background": {
+        "text": "白起周围一格嘲讽，落点价值依敌阵分布",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用技能范围推导位移落点",
+        "basis": "分析推断"
+      },
+      "quote": "弹到他们五个人正中间",
+      "segment_ids": [
+        34,
+        35
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1130-0.jpg",
+          "time": 1130,
+          "reviewed": true,
+          "observation": "观察对手场面和站位，字幕此处看不到；隐藏信息不补猜。",
+          "sha256": "3552b5f19d798eaaa97fc5d73f5b2e018fab62d7e7a1c0ab89a407e604f25cdf"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e016",
+      "start": 1114.35,
+      "end": 1182.69,
+      "scene": "实战",
+      "timing": "即将升六开双倍",
+      "content": "本轮暂缓效果，升级后先用高价值效果占用首个双倍",
+      "background": {
+        "text": "技能首个使用效果获得双倍，其他卡先用会消耗机会",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "保护一次性倍增机会",
+        "basis": "分析推断"
+      },
+      "quote": "升完级先开乌风关羽",
+      "segment_ids": [
+        35,
+        36
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1160-0.jpg",
+          "time": 1160,
+          "reviewed": true,
+          "observation": "异方战斗与升六附近画面可见，首倍顺序依上下文而非已执行截图。",
+          "sha256": "d45327606ea0a0fab99b7d15f1f8333ed3fe8221ebb42802167d4ee42b9dd44f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e017",
+      "start": 1246.8,
+      "end": 1282.26,
+      "scene": "实战",
+      "timing": "开团与偷法强结算",
+      "content": "先开团加法强，再吸取形成多个高法强输出",
+      "background": {
+        "text": "开战结算先后决定被复制数值，具体装备名称待证据",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解临时加成与复制顺序",
+        "basis": "分析推断"
+      },
+      "quote": "然后再吸一口",
+      "segment_ids": [
+        39
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1260-0.jpg",
+          "time": 1260,
+          "reviewed": true,
+          "observation": "开战前队伍与嬴政详情，字幕触发开团；法强结算依据讲解。",
+          "sha256": "1e4b9d73e44d5ad1d9b1f0370d974747add6f3cc87a34693799bf646cd817ae5"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e018",
+      "start": 1282.35,
+      "end": 1313.04,
+      "scene": "实战",
+      "timing": "推演战术与多核输出",
+      "content": "缩蓝提高嬴政与西施施法频率，低等级不等同低技能伤害",
+      "background": {
+        "text": "法强来源与英雄等级可以分开提高",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "比较等级、法强与施法频率",
+        "basis": "分析推断"
+      },
+      "quote": "嬴政一给,直接蓝条就变成死了",
+      "segment_ids": [
+        40
+      ],
+      "template_id": "equipment-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1295-0.jpg",
+          "time": 1295,
+          "reviewed": true,
+          "observation": "整备队伍与推演资源可见，缩蓝用途依据讲解，模糊数字不确认。",
+          "sha256": "c544683d0bc3d3f32a736c01e2192d0464f507ab75cf6f3b9f1344a8e06ac58a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e019",
+      "start": 1313.14,
+      "end": 1342.98,
+      "scene": "实战",
+      "timing": "重构出现且干将已预留",
+      "content": "上干将再重构其自带装备",
+      "background": {
+        "text": "此前保留工具在资源窗口到来时兑现，操作有明确缘由",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把准备动作与后续收益连接",
+        "basis": "分析推断"
+      },
+      "quote": "干将自带一个装备",
+      "segment_ids": [
+        41
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1325-0.jpg",
+          "time": 1325,
+          "reviewed": true,
+          "observation": "商店干将可见，字幕新的找东西资源；自带装备收益依据口述。",
+          "sha256": "e5f73246b2c37352314b5a4a610a43a10b0db13a1c4b076fc69a7574aef2f1d2"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e020",
+      "start": 1342.98,
+      "end": 1435.04,
+      "scene": "实战",
+      "timing": "分解后宝箱首个双倍",
+      "content": "本轮分解，宝箱留到下一轮作为首个双倍效果",
+      "background": {
+        "text": "奖励顺序比立即开箱更重要，不给每张卡都宣称双倍",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "规划跨回合一次性资源收益",
+        "basis": "分析推断"
+      },
+      "quote": "第一个使用的,是双倍效果",
+      "segment_ids": [
+        42,
+        43,
+        44
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1410-0.jpg",
+          "time": 1410,
+          "reviewed": true,
+          "observation": "对战与效果资源可见，双倍宝箱跨回合顺序依据前后文。",
+          "sha256": "51f23b7dee9a4e9792c53fa695b44bf88eb2c6a8f831fd872c577f8b368c362d"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e021",
+      "start": 1435.04,
+      "end": 1527.6,
+      "scene": "实战",
+      "timing": "测试法强能否循环互偷",
+      "content": "测试后发现不能无限互偷，改让嬴政居中供两侧吸取",
+      "background": {
+        "text": "假设被实际试验否定，保留纠正而非把猜想写机制",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用反馈检验假设并调整站位",
+        "basis": "分析推断"
+      },
+      "quote": "不能一直这样偷",
+      "segment_ids": [
+        45,
+        47
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1510-0.jpg",
+          "time": 1510,
+          "reviewed": true,
+          "observation": "嬴政居中与两側单位可见，字幕偷2100；不将猜想循环视作已成立。",
+          "sha256": "cc183bb181416e07e74c5a13b44bac50e353adcf512517be19d79fa9d8794113"
+        }
+      ]
+    },
+    {
+      "id": "BV1Wwec68E7u:p1:e022",
+      "start": 1558.78,
+      "end": 1589.42,
+      "scene": "实战",
+      "timing": "最后回合或遇到强敌",
+      "content": "最后阶段补钟馗，而非长期保留全套成长工具",
+      "background": {
+        "text": "讲者只说明补强时机，未给出详细机制不补造",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别终局工具与战力目标切换",
+        "basis": "分析推断"
+      },
+      "quote": "或者遇到打不过的人",
+      "segment_ids": [
+        49
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Wwec68E7u_p1/1565-0.jpg",
+          "time": 1565,
+          "reviewed": true,
+          "observation": "终局整备与钟馗补强说明同步，具体功能未充分解释保留限制。",
+          "sha256": "47e8bba55ab418ab033a580fe1881eda261abaa72920efb025cb052ae4e4c539"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "本次不修正ASR，效果名称与同音英雄保留原话，四蓝等数值由截图能确认时另记。",
+    "第48段长重复卖牌及大量聊天、喊口号、无解释买卖均不计教学。",
+    "无限钱、无敌等夸张词不作为事实或学习效果验证。",
+    "法强互偷在本局测试后被讲者否定，不能只截早先猜想冒充机制。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "50a04fc95105d75a9356240e9cc3733647344fd8f1b4890afd762ef9e380c3fb"
+}

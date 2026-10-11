@@ -22,17 +22,21 @@ def shell(args):
     subprocess.run([str(x) for x in args], check=True)
 
 
-def download_observed(url, path):
+def download_observed(url, path, chunk_bytes=2 * 1024 * 1024):
     """Resume a public observed DASH stream and reject silently truncated responses."""
     if urllib.parse.urlparse(url).scheme != 'https':
         raise ValueError('Use an observed HTTPS media URL')
+    if not isinstance(chunk_bytes, int) or chunk_bytes < 1:
+        raise ValueError('Chunk size must be positive')
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     last_error = None
-    for attempt in range(3):
+    failures = 0
+    total = None
+    while failures < 3:
         offset = path.stat().st_size if path.exists() else 0
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0',
-            'Referer': 'https://www.bilibili.com/', 'Range': f'bytes={offset}-'})
+            'Referer': 'https://www.bilibili.com/', 'Range': f'bytes={offset}-{offset + chunk_bytes - 1}'})
         try:
             with urllib.request.urlopen(req, timeout=60) as response:
                 content_range = response.headers.get('Content-Range', '')
@@ -40,9 +44,10 @@ def download_observed(url, path):
                 mode = 'wb'
                 if response.status == 206:
                     match = re.fullmatch(r'bytes (\d+)-(\d+)/(\d+)', content_range)
-                    if not match or int(match[1]) != offset:
+                    if not match or int(match[1]) != offset or not offset <= int(match[2]) < offset + chunk_bytes:
                         raise ValueError('Response does not match requested range')
                     expected = int(match[3])
+                    response_end = int(match[2]) + 1
                     mode = 'ab'
                 elif response.status == 200:
                     expected = int(response.headers['Content-Length']) if response.headers.get('Content-Length') else None
@@ -50,20 +55,40 @@ def download_observed(url, path):
                     raise ValueError('Unexpected HTTP status')
                 if expected is None:
                     raise ValueError('Cannot validate full media length')
+                if total is not None and total != expected:
+                    raise ValueError('Media length changed during transfer')
+                total = expected
                 with path.open(mode) as output:
-                    while chunk := response.read(1024 * 1024):
+                    while chunk := response.read(64 * 1024):
                         output.write(chunk)
                 if path.stat().st_size == expected:
                     return {'path': str(path), 'bytes': expected, 'complete': True}
+                if response.status == 206 and path.stat().st_size == response_end:
+                    failures = 0
+                    continue
                 last_error = f'Truncated media: {path.stat().st_size}/{expected} bytes'
         except urllib.error.HTTPError as exc:
             if exc.code == 416:
                 match = re.search(r'bytes \*/(\d+)', exc.headers.get('Content-Range', ''))
                 if match and offset == int(match[1]):
                     return {'path': str(path), 'bytes': offset, 'complete': True}
+                if not match and offset:
+                    probe = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0',
+                        'Referer': 'https://www.bilibili.com/', 'Range': 'bytes=0-0'})
+                    try:
+                        with urllib.request.urlopen(probe, timeout=60) as response:
+                            total_match = re.fullmatch(r'bytes 0-0/(\d+)', response.headers.get('Content-Range', ''))
+                            first = response.read(1)
+                            with path.open('rb') as local:
+                                same_head = first == local.read(1)
+                            if response.status == 206 and total_match and offset == int(total_match[1]) and same_head:
+                                return {'path': str(path), 'bytes': offset, 'complete': True}
+                    except OSError:
+                        pass
             last_error = str(exc)
         except (OSError, ValueError) as exc:
             last_error = str(exc)
+        failures += 1
     raise RuntimeError(last_error or 'Media transfer failed')
 
 
@@ -99,7 +124,14 @@ def phonetic_candidates(text, records):
     return result
 
 
-def transcribe(root, sid, audio, model_name='large-v3'):
+def validate_audio_duration(root, sid, decoded_seconds):
+    expected = read_json(source_dir(root, sid) / 'metadata.json', {}).get('duration')
+    if isinstance(expected, (int, float)) and expected > 0:
+        if abs(decoded_seconds - expected) > max(3, expected * 0.001):
+            raise RuntimeError(f'Decoded audio duration {decoded_seconds:.2f}s differs from source {expected}s; inspect or repair media before ASR')
+
+
+def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True):
     folder = source_dir(root, sid)
     raw_path = folder / 'asr.raw.json'
     if not raw_path.exists():
@@ -129,9 +161,12 @@ def transcribe(root, sid, audio, model_name='large-v3'):
         beam = 1 if device == 'cpu' else 5
         waveform = decode_audio(str(audio))[int(offset * 16000):] if offset else str(audio)
         segments, info = pipeline.transcribe(waveform, language='zh', vad_filter=True,
-                                             beam_size=beam, initial_prompt=prompt, word_timestamps=True, batch_size=4)
+                                             beam_size=beam, initial_prompt=prompt,
+                                             word_timestamps=apply_corrections, batch_size=4)
+        validate_audio_duration(root, sid, info.duration + offset)
         print(f'VAD complete: {info.duration_after_vad:.1f}s speech / {info.duration:.1f}s total', flush=True)
         raw = {'model': model_name, 'device': device, 'language': info.language, 'batch_size': 4,
+               'word_timestamps': apply_corrections,
                'decoder_runs': progress.get('decoder_runs', []) + [{'start': offset, 'beam_size': beam}],
                'segments': prior_segments}
         for s in segments:
@@ -143,6 +178,8 @@ def transcribe(root, sid, audio, model_name='large-v3'):
                 atomic_json(folder / 'asr.progress.json', raw)
                 print(f'ASR: {s.end + offset:.1f}s / {info.duration + offset:.1f}s', flush=True)
         atomic_json(raw_path, raw)
+    if not apply_corrections:
+        return read_json(raw_path)
     if not (folder / 'asr.corrected.json').exists():
         corrected = json.loads(json.dumps(read_json(raw_path)))
         changes = []
