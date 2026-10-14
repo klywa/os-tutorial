@@ -74,3 +74,10 @@ powershell -NoProfile -File .codex/skills/wanxiangqi-knowledge/scripts/setup.ps1
 给出本次新增/更新的知识文件链接、各类实体同步数量、主要纠错和仍需核实的问题。链接失败、识别失败、官网缺失类别要明确说明。测试没有获得真实音视频时，不能生成虚构攻略或声称 ASR 测试通过。
 
 修改或验收本技能时读取 [references/acceptance.md](references/acceptance.md)，运行单元测试、skill-creator格式校验、`wxq.py validate`，并区分模拟测试与真实视频结果。
+
+
+## 灵活阵容知识
+
+导入同一棋手的通用打法时，保持 type=lineup 和原阵容章节；根据视频证据在 meta.operation_routes 保存各运营节奏的条件、优势、风险、转向条件及阶段结论引用，在 meta.late_variants 保存全部已确认推荐的后期组合。使用 schema_version=3 契约，不将不同组合的成员拼成一套固定阵容。只在来源明确支持时建立节奏与组合适配关系。全局依赖与组合依赖分别维护，多个阵营同时被禁的可玩情况需要联合证据。
+
+融合时先区分条件与真实版本差异，无法解释的冲突列出双方结论、来源时间段和操作影响，请用户裁决；未裁决前不得写成确定推荐。正文沿用来源隐藏规则，完整证据保留在 claims 和 raw 内部报告。

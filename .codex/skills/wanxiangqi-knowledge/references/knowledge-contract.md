@@ -87,3 +87,20 @@
 `properties` 保存官方原始字段，`description` 去除富文本标签但保留数值与单位；`history` 保存实际变更前内容。觉醒英雄作为独立卡牌记录，区分同名不同卡 ID；衍生物由卡牌类型与英雄 `actorType` 等官方字段判定，不凭名称猜。棋手牌通过其所属棋手记录关联。未知官方类型保留并在同步报告中说明待分类。
 
 新增确认别名要记录依据到来源 `corrections.json`。写实体文件使用 `wxq.atomic_json` 保留恢复副本，校验同一 ID 不重复、类别与目标文件一致。
+
+
+## 灵活阵容扩展（schema_version=3）
+
+保留 v2 的全部 meta 字段，新增可选 `operation_routes` 与 `late_variants`。缺失字段按空列表读取，不将旧阵容自动拆成多套组合。索引迁移为阵容 claims 增加稳定 `id`；未指定 ID 时按结论语义生成，来源证据不参与 ID。路径、笔记 ID 与人工内容保持稳定。
+
+`operation_routes` 每项包含 `id/name/condition/advantages/risks/transition`、`phases: {early:结论ID列表,middle:结论ID列表,late:结论ID列表}`、`claim_refs:结论ID列表`、`variant_ids:已确认适配的组合ID列表`。
+
+`late_variants` 每项包含 `id/name/condition/members/core_heroes/required_factions/ban_conditions/ban_combinations/claim_refs`。`members` 使用既有 Member 格式；`ban_combinations` 为 `{factions:同时禁用阵营ID列表,status:playable|unplayable|unknown,reason:说明}` 列表。名称、描述、成员必要性和适配关系都必须有 `claim_refs` 所指结论的证据支持，网页人工编辑沿用 manual_meta 保护，不冒充视频确认。
+
+全局核心、全局中后期必需成员只表达所有路线共同依赖，不将所有组合合并进 compositions.late。组合依赖独立由其核心及必需成员推导。共同必需阵营被禁时整篇不可玩；组合必需阵营被禁只排除该组合。至少一套完整组合在当前全部禁用条件下已确认可玩，整篇才为可玩；全不可玩为不可玩；其他为待确认。多个禁用阵营必须有匹配全部禁用集合的联合条件，不能由单个阵营的可玩记录推导。
+
+沿用 GET/PUT notes、commit、persist 事务和 revision。删除组合同步移除节奏适配引用；修改或清空章节时将相关引用指向新人工结论或移除，并保护相应 meta。导入拒绝重复 ID、悬空结论/组合/实体引用。Markdown 导出运营节奏及推荐组合，省略内部 ID 与来源证据。
+
+既有显式结论ID允许同一已引用来源的文案核对修正，旧文案与证据存入history；不同版本、条件、推断标志或仅有新来源的策略不能复用旧ID覆盖，须另建结论。人工章节与meta仍优先保护。
+
+灵活阵容记录一旦存在，必须填写契约字段：节奏包含 condition/advantages/risks/transition/phases/claim_refs/variant_ids，组合包含 condition/members/core_heroes/required_factions/ban_conditions/ban_combinations/claim_refs；未知说明可为空、无引用可为 []，不可省略导致前端数据形状不完整。旧阵容可继续省略两类记录。

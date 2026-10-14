@@ -354,7 +354,7 @@ def finish(root, sid):
     errors = transcript_errors(root, sid)
     if errors:
         raise ValueError('; '.join(errors))
-    atomic_json(folder / 'state.json', {'stage': 'complete', 'at': now()})
     for filename in ['media.mp4', 'audio.wav', 'video.m4s', 'audio.m4s']:
         (folder / filename).unlink(missing_ok=True)
+    atomic_json(folder / 'state.json', {'stage': 'complete', 'at': now()})
     return {'id': sid, 'stage': 'complete'}

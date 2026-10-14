@@ -142,14 +142,16 @@ def render_note(note, sources):
         names = {f['id']: f['name'] for f in FACTIONS}
         names.update(note.get('entity_names', {}))
         meta = note['meta']
-        lines += ['## 阵容信息', '', '必须阵营：' + ('、'.join(names.get(x, x.removeprefix('pending:')) for x in meta.get('required_factions', [])) or '待确认'), '']
+        flexible = bool(meta.get('late_variants'))
+        empty_dependency = '随组合查看，无全局共同要求' if flexible else '待确认'
+        lines += ['## 阵容信息', '', '必须阵营：' + ('、'.join(names.get(x, x.removeprefix('pending:')) for x in meta.get('required_factions', [])) or empty_dependency), '']
         lines += ['适用棋手：' + ('、'.join(names.get(x, x) for x in meta.get('players', [])) or '待确认'), '',
-                  '核心英雄：' + ('、'.join(names.get(x, x) for x in meta.get('core_heroes', [])) or '待确认'), '']
+                  '核心英雄：' + ('、'.join(names.get(x, x) for x in meta.get('core_heroes', [])) or empty_dependency), '']
         for stage, label in [('early', '前期'), ('middle', '中期'), ('late', '后期')]:
             members = meta.get('compositions', {}).get(stage, [])
             lines += [label + '英雄组成：', '']
             if not members:
-                lines += ['待确认', '']
+                lines += [('按运营节奏及后期组合选择，见下文' if flexible else '待确认'), '']
             for member in members:
                 necessity = '必需' if member['necessity'] == 'required' else '可选'
                 text = f"- {names.get(member['hero'], member['hero'])}（{necessity}）：{member.get('role', '')}"
@@ -176,11 +178,14 @@ def render_note(note, sources):
             text = c['text']
             condition = c.get('condition', '').strip()
             if condition and condition not in text:
-                text = f'当{condition}时，{text}'
+                text = f"当{condition}{'' if condition.endswith('时') else '时'}，{text}"
             if c.get('inference'):
                 text = '推测：' + text
             lines += ['- ' + text]
             lines += ['']
+    if note.get('meta'):
+        from tactics import render as render_tactics
+        lines += render_tactics(note['meta'], claims, names)
     lines += ['## 关联知识', '']
     for link in note.get('related', []):
         path = link.get('path', f"knowledge/{FOLDERS[link['type']]}/{link['id']}.md")
@@ -220,6 +225,8 @@ def _commit_notes(root, incoming):
             raise ValueError('Unknown entity reference; register pending entity first')
         if 'meta' in note:
             validate_meta(root, note['meta'])
+            from tactics import validate as validate_tactics
+            validate_tactics(note['meta'], lambda value: None, note.get('claims', []))
         for claim in note.get('claims', []):
             if claim.get('origin') == 'manual':
                 old = notes.get(note['id'], {})
@@ -255,6 +262,14 @@ def _commit_notes(root, incoming):
             from reference_store import enrich_meta
             from workspace import default_meta
             notes[note['id']]['meta'] = enrich_meta(notes[note['id']].get('meta') or default_meta(notes[note['id']]), entities(root))
+    from workspace import prepare as prepare_notes
+    prepare_notes(root, list(notes.values()))
+    for merged in notes.values():
+        if merged['type'] == 'lineup':
+            from workspace import validate_meta
+            from tactics import validate as validate_tactics
+            validate_meta(root, merged['meta'])
+            validate_tactics(merged['meta'], lambda ref: None, merged.get('claims', []))
     for note in notes.values():
         linked = [n for n in notes.values() if n['id'] != note['id'] and (
             set(note.get('entities', [])) & set(n.get('entities', [])) or
@@ -299,6 +314,8 @@ def validate_store(root):
             try:
                 from workspace import validate_meta
                 validate_meta(root, n.get('meta', {}))
+                from tactics import validate as validate_tactics
+                validate_tactics(n.get('meta', {}), lambda value: None, n.get('claims', []))
             except (ValueError, KeyError, TypeError) as exc:
                 errors.append('Invalid meta: ' + str(exc))
         for eid in n.get('entities', []) + n.get('core', []):

@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "notes": [
     {
       "id": "zhaojun-high-tier-dahe",
@@ -45,7 +45,8 @@
               "frame": "frames/1039-0.jpg"
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-4c5fb188552a343f023e"
         },
         {
           "section": "核心机制",
@@ -61,7 +62,8 @@
               "frame": "frames/90-0.jpg"
             }
           ],
-          "kind": "mechanic"
+          "kind": "mechanic",
+          "id": "claim-1f3bb9e4f6b4bdbb5d52"
         },
         {
           "section": "前期运营及应变",
@@ -76,7 +78,8 @@
               "end": 894.7
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-6e5677597b91d6042038"
         },
         {
           "section": "中期运营及应变",
@@ -91,7 +94,8 @@
               "end": 174.8
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-01efb21eac616296f20c"
         },
         {
           "section": "中期运营及应变",
@@ -107,7 +111,8 @@
               "frame": "frames/1840-0.jpg"
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-163e42c476a496c5bbe8"
         },
         {
           "section": "后期运营及应变",
@@ -122,7 +127,8 @@
               "end": 1097.8
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-bf3ad0a0c80d84f2d6d4"
         },
         {
           "section": "成型后提升思路",
@@ -137,7 +143,8 @@
               "end": 1038.7
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-4bfc796afce05484f9b4"
         },
         {
           "section": "第一轮拍卖",
@@ -152,7 +159,8 @@
               "end": 894.7
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-4ac9d8be77d0ba110133"
         },
         {
           "section": "第二轮拍卖",
@@ -167,7 +175,8 @@
               "end": 1853.9
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-1b44c1f7c9fc4ee0f126"
         },
         {
           "section": "第三轮拍卖",
@@ -183,7 +192,8 @@
               "frame": "frames/680-0.jpg"
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-c631b4e7b118dfd5b802"
         },
         {
           "section": "推荐天赋及原因",
@@ -199,7 +209,8 @@
               "frame": "frames/500-0.jpg"
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-0d7d5f63e90253f255b0"
         },
         {
           "section": "推荐天赋及原因",
@@ -215,7 +226,8 @@
               "frame": "frames/395-0.jpg"
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-26b1737815308a1c1579"
         },
         {
           "section": "站位技巧",
@@ -237,7 +249,8 @@
               "frame": "frames/1770-0.jpg"
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-10c4269679c4cb14e425"
         },
         {
           "section": "推荐装备",
@@ -253,7 +266,8 @@
               "frame": "frames/1120-0.jpg"
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-0a30e80f1d802b846e26"
         },
         {
           "section": "终局技巧",
@@ -268,7 +282,8 @@
               "end": 2794.5
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-29c3973e29784ed330cf"
         },
         {
           "section": "克制手段",
@@ -283,7 +298,8 @@
               "end": 2344.2
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-22b460bd4a7bae574bc0"
         },
         {
           "section": "克制手段",
@@ -298,7 +314,8 @@
               "end": 635.1
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-b82928f477526044c068"
         }
       ],
       "related": [
@@ -325,6 +342,12 @@
           "type": "player",
           "title": "安琪拉－飞行器与模块选择",
           "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+        },
+        {
+          "id": "changxiaoe-general-play",
+          "type": "lineup",
+          "title": "常小娥通用打法",
+          "path": "knowledge/lineups/常小娥通用打法.md"
         }
       ],
       "history": [
@@ -513,11 +536,12 @@
         "card:1741": "虞姬",
         "card:5371": "司空震",
         "card:5211": "海月",
-        "card:1861": "太乙真人"
+        "card:1861": "太乙真人",
+        "faction:heluo": "河洛"
       },
       "manual_sections": [],
       "conflicts": [],
-      "revision": "87bfad672b2265d3a913"
+      "revision": "0693f63040a3faf2e4bd"
     },
     {
       "id": "player-zhaojun",
@@ -921,7 +945,8 @@
               "end": 1273.85,
               "frame": "frames/1255-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-ca41a6fe1cd653becafa"
         },
         {
           "section": "禁用阵营适用情况",
@@ -936,7 +961,8 @@
               "start": 2481.7,
               "end": 2691.7
             }
-          ]
+          ],
+          "id": "claim-71d24f7eedf6711ca743"
         },
         {
           "section": "核心机制",
@@ -952,7 +978,8 @@
               "end": 1273.85,
               "frame": "frames/1255-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-b33183c05dd0de57e317"
         },
         {
           "section": "核心机制",
@@ -968,7 +995,8 @@
               "end": 1796.08,
               "frame": "frames/1790-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-9393479509a53e516912"
         },
         {
           "section": "前期运营及应变",
@@ -984,7 +1012,8 @@
               "end": 1162.85,
               "frame": "frames/1115-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-c4c4113df9b0d149d5f9"
         },
         {
           "section": "中期运营及应变",
@@ -1000,7 +1029,8 @@
               "end": 1220.32,
               "frame": "frames/1180-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-36a64baf419544118526"
         },
         {
           "section": "中期运营及应变",
@@ -1015,7 +1045,8 @@
               "start": 1193.39,
               "end": 1332.45
             }
-          ]
+          ],
+          "id": "claim-34ce45f76864349fb218"
         },
         {
           "section": "后期运营及应变",
@@ -1031,7 +1062,8 @@
               "end": 1304.71,
               "frame": "frames/1265-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-4047c5c02ecf461d3be8"
         },
         {
           "section": "后期运营及应变",
@@ -1046,7 +1078,8 @@
               "start": 3104.3,
               "end": 3256.6
             }
-          ]
+          ],
+          "id": "claim-7d8d9b36fdf5e419a58b"
         },
         {
           "section": "成型后提升思路",
@@ -1061,7 +1094,8 @@
               "start": 1054.76,
               "end": 1104.9
             }
-          ]
+          ],
+          "id": "claim-422443c0323fc3e782b9"
         },
         {
           "section": "成型后提升思路",
@@ -1077,7 +1111,8 @@
               "end": 1825.01,
               "frame": "frames/1755-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-41e5ef7849bdfc174252"
         },
         {
           "section": "第一轮拍卖",
@@ -1093,7 +1128,8 @@
               "end": 1162.85,
               "frame": "frames/1145-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-371431ceb961c099b5fa"
         },
         {
           "section": "第三轮拍卖",
@@ -1109,7 +1145,8 @@
               "end": 1911.45,
               "frame": "frames/1828-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-497378e542de10f8933a"
         },
         {
           "section": "第三轮拍卖",
@@ -1125,7 +1162,8 @@
               "end": 1875.85,
               "frame": "frames/1860-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-685504a25a7a55cff1f9"
         },
         {
           "section": "推荐天赋及原因",
@@ -1141,7 +1179,8 @@
               "end": 1480.42,
               "frame": "frames/1440-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-182e13c316d447e06110"
         },
         {
           "section": "推荐天赋及原因",
@@ -1157,7 +1196,8 @@
               "end": 1536.5,
               "frame": "frames/1530-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-b9ddfd8d8cd44f071c6d"
         },
         {
           "section": "推荐天赋及原因",
@@ -1173,7 +1213,8 @@
               "end": 1766.46,
               "frame": "frames/1650-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-45d58082b000f6fd2682"
         },
         {
           "section": "推荐天赋及原因",
@@ -1189,7 +1230,8 @@
               "end": 1592.6,
               "frame": "frames/1550-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-5c086ef3897f8e4fb4b4"
         },
         {
           "section": "站位技巧",
@@ -1211,7 +1253,8 @@
               "end": 1273.85,
               "frame": "frames/1255-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-3157c19df415c25c6e44"
         },
         {
           "section": "推荐装备",
@@ -1227,7 +1270,8 @@
               "end": 1362.73,
               "frame": "frames/1338-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-150485ad5573069ae9fb"
         },
         {
           "section": "推荐装备",
@@ -1243,7 +1287,8 @@
               "end": 1393.7,
               "frame": "frames/1383-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-e19971f0e1dae1fc6893"
         },
         {
           "section": "推荐装备",
@@ -1258,7 +1303,8 @@
               "start": 1421.74,
               "end": 1451.0
             }
-          ]
+          ],
+          "id": "claim-42c89fc0cf03228d250c"
         },
         {
           "section": "推荐装备",
@@ -1273,7 +1319,8 @@
               "start": 1650.46,
               "end": 1731.6
             }
-          ]
+          ],
+          "id": "claim-fec3d9a0cf114714eaaf"
         },
         {
           "section": "终局技巧",
@@ -1288,7 +1335,8 @@
               "start": 3283.6,
               "end": 3373.9
             }
-          ]
+          ],
+          "id": "claim-a22ab3c5d01be66f2a35"
         },
         {
           "section": "克制手段",
@@ -1304,7 +1352,8 @@
               "end": 624.5,
               "frame": "frames/605-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-3865b39670c64eb701a4"
         }
       ],
       "related": [
@@ -1319,6 +1368,12 @@
           "type": "player",
           "title": "安琪拉－飞行器与模块选择",
           "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+        },
+        {
+          "id": "changxiaoe-general-play",
+          "type": "lineup",
+          "title": "常小娥通用打法",
+          "path": "knowledge/lineups/常小娥通用打法.md"
         }
       ],
       "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md",
@@ -1344,7 +1399,7 @@
       "manual_sections": [],
       "history": [],
       "conflicts": [],
-      "revision": "ef32d84a123a347a6757"
+      "revision": "e875a8287e56f7b7d4eb"
     },
     {
       "id": "player-angela",
@@ -1573,6 +1628,12 @@
           "type": "lineup",
           "title": "安琪拉养刘邦（图腾成长）",
           "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+        },
+        {
+          "id": "changxiaoe-general-play",
+          "type": "lineup",
+          "title": "常小娥通用打法",
+          "path": "knowledge/lineups/常小娥通用打法.md"
         }
       ],
       "path": "knowledge/players/安琪拉－飞行器与模块选择.md",
@@ -1580,7 +1641,2647 @@
       "manual_sections": [],
       "history": [],
       "conflicts": [],
-      "revision": "b0c778f829bb01b02f53"
+      "revision": "f29994cb9cca58af33ad"
+    },
+    {
+      "id": "changxiaoe-general-play",
+      "type": "lineup",
+      "title": "常小娥通用打法",
+      "topic": "常小娥灵活四人体系",
+      "entities": [
+        "card:1141",
+        "card:1181",
+        "card:1231",
+        "card:1241",
+        "card:1461",
+        "card:1481",
+        "card:1501",
+        "card:1541",
+        "card:1591",
+        "card:1761",
+        "card:1821",
+        "card:1831",
+        "card:1861",
+        "card:1901",
+        "card:1931",
+        "card:1941",
+        "card:1951",
+        "card:1971",
+        "card:3551",
+        "card:5011",
+        "card:5021",
+        "card:5031",
+        "card:5051",
+        "card:5061",
+        "card:5071",
+        "card:5091",
+        "card:5171",
+        "card:5181",
+        "card:5211",
+        "card:5371",
+        "player:24"
+      ],
+      "core": [],
+      "claims": [
+        {
+          "id": "flex-four",
+          "section": "阵容组成",
+          "text": "以四个主要受益英雄为框架，根据来牌选择前排、持续输出与控制／续航；大招前先收起不希望分到等级的临时英雄。后期组合见组合库，不要求所有备选英雄同时上场。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 560.9,
+              "end": 616.2
+            },
+            {
+              "source": "BV12Ba16dEmw:p1",
+              "start": 56.9,
+              "end": 114.1
+            }
+          ]
+        },
+        {
+          "id": "special-growth",
+          "section": "核心机制",
+          "text": "六本领取月之特调后，通过小菟助力增加的等级累计 65 级可再获得小菟送福；大招增加的等级不计入这 65 级进度。通常先打大招，再用当回合的小菟助力。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 103,
+              "end": 150.8
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 141,
+              "end": 218
+            }
+          ]
+        },
+        {
+          "id": "opening-tank",
+          "section": "前期运营及应变",
+          "text": "苏烈或狂铁单挂过渡，把小菟助力集中给前排；第三回合用免费刷新争取觉醒。前期装备优先服务当前保血英雄，不必为了终局装备放弃眼前战力。",
+          "version": null,
+          "condition": "采用苏烈或狂铁单挂开局时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 49.8,
+              "end": 123.1
+            },
+            {
+              "source": "BV1Aahk6gEnp:p1",
+              "start": 0.2,
+              "end": 29.2
+            }
+          ]
+        },
+        {
+          "id": "yixing-economy",
+          "section": "前期运营及应变",
+          "text": "有弈星时，先给前排使用小菟助力，再让弈星参与棋手升级、获取经验；下一轮继续利用升级效果后卖掉，再使用小菟助力，避免临时工分走加级。觉醒锦囊的经验奖励可帮助升本。",
+          "version": null,
+          "condition": "准备利用弈星压低升级成本时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 206.3,
+              "end": 323.1
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 820,
+              "end": 989
+            },
+            {
+              "source": "BV1X4ht6jEvk:p1",
+              "start": 58.9,
+              "end": 88.4
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 134.6,
+              "end": 189.3
+            },
+            {
+              "source": "BV12qae6oEhd:p1",
+              "start": 82.4,
+              "end": 137.2
+            }
+          ]
+        },
+        {
+          "id": "pressure-workers",
+          "section": "中期运营及应变",
+          "text": "对手前中期铺场强、血量压力大时，补充有即时战力的打工英雄。关于第二次小菟送福是否必须留到六本，来源存在分歧，尚待裁决；本条不统一规定第二次大招时机。",
+          "version": null,
+          "condition": "高压局或当前阵容已能集中吃到大招时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 150.8,
+              "end": 177.8
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 506.5,
+              "end": 560.9
+            },
+            {
+              "source": "BV1jVhU62EZg:p1",
+              "start": 62.1,
+              "end": 91.2
+            }
+          ]
+        },
+        {
+          "id": "early-six",
+          "section": "中期运营及应变",
+          "text": "第 8–10 回合提前六本需要足够经济、经验或支援。相比常规节奏能更早启动月之特调，但裸单英雄、不觉醒省钱硬冲会增加暴毙风险；准备升本前要算上找齐组合与使用小菟助力的预算。",
+          "version": null,
+          "condition": "经济与支援充足、场上压力较低，或当前战力能撑住时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 404.9,
+              "end": 560.9
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 310,
+              "end": 395
+            }
+          ]
+        },
+        {
+          "id": "eleven-six",
+          "section": "中期运营及应变",
+          "text": "第 11 回合六本能提前保护这一回合，但经济紧时可能没有余钱补齐成型英雄。优先在升本前准备好后期成员，不能只看升本回合。",
+          "version": null,
+          "condition": "采用第 11 回合六本节奏时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 206.3,
+              "end": 404.9
+            }
+          ]
+        },
+        {
+          "id": "twelve-six",
+          "section": "中期运营及应变",
+          "text": "一份讲解提出：经济紧或高压时，靠打工英雄与大招保血，第三轮拍卖后于第12回合上六；另一份讲解要求无论如何第11回合上六。两者尚未确认能否按条件合并，12回合路线暂作待裁决方案，不作为确定的通用建议。",
+          "version": null,
+          "condition": "高压或经济不足，但有足够保血能力撑到第三轮拍卖后时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 323.1,
+              "end": 404.9
+            },
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 243,
+              "end": 260
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 564.4,
+              "end": 592.2
+            }
+          ]
+        },
+        {
+          "id": "six-launch",
+          "section": "后期运营及应变",
+          "text": "领取月之特调后，先确认四个受益英雄，再依次使用小菟送福、小菟助力。不要让临时太乙真人、钟馗等分走随机等级；有备用卡时，技能后再上场发挥控制或保护作用。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 7.1,
+              "end": 58.7
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 1183,
+              "end": 1316
+            },
+            {
+              "source": "BV1jVhU62EZg:p1",
+              "start": 119.5,
+              "end": 148.1
+            }
+          ]
+        },
+        {
+          "id": "auction-one",
+          "section": "第一轮拍卖",
+          "text": "优先少花钱拿到能提供即时战力的英雄。瑶、裴擒虎是通用辅助方向；孟奇可作临时过渡。若计划司空震体系，裴擒虎优先级更高；不要为了辅助过早觉醒、挤占升本与主力预算。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 616.2,
+              "end": 666.8
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 820,
+              "end": 989
+            }
+          ]
+        },
+        {
+          "id": "auction-two",
+          "section": "第二轮拍卖",
+          "text": "按已有英雄与战斗压力选后期主力：韩信在中期已有战力；艾琳更依赖后续等级成长。司空震＋裴擒虎体系优先补司空震，再考虑海月或可用五费替代；五费混搭路线可拿合适五费，但避免明显过高的成交价。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 723.8,
+              "end": 779.7
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 989,
+              "end": 1073
+            },
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 190.8,
+              "end": 216.3
+            }
+          ]
+        },
+        {
+          "id": "auction-three",
+          "section": "第三轮拍卖",
+          "text": "一线生机可提供保命与后续启动资源；呼风唤雨有机会给传承，便于把前排积累的等级转给新主力；扶摇直上、超新星可补经济或找牌。觉醒类奖励优先服务真正需要觉醒的组合，不为无关英雄浪费选择。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 901.6,
+              "end": 954.7
+            }
+          ]
+        },
+        {
+          "id": "talent-hp",
+          "section": "推荐天赋及原因",
+          "text": "血量、防损、减伤与回合支援能帮助弱势前中期撑到六本；泉水、紧急救援等按当局保血需求选择。经验、能量或提前获得英雄的天赋，适合缩短升本与成型等待。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 1308.5,
+              "end": 1365.4
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 217,
+              "end": 310
+            },
+            {
+              "source": "BV1Aahk6gEnp:p1",
+              "start": 29.5,
+              "end": 85.4
+            },
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 164.8,
+              "end": 307.5
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 164.1,
+              "end": 189.3
+            }
+          ]
+        },
+        {
+          "id": "talent-levels",
+          "section": "推荐天赋及原因",
+          "text": "随机成长／随机进化等等级收益，在单挂高价值前排或四个受益英雄都已确定时更容易集中兑现；大明星等提前给五费英雄的机会，可围绕实际拿到的司空震、海月或其他有用五费转型。",
+          "version": null,
+          "condition": "等级收益能集中给有用英雄时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 395,
+              "end": 592
+            }
+          ]
+        },
+        {
+          "id": "position-target",
+          "section": "站位技巧",
+          "text": "对手前排过肉时，调整主输出位置以尽量先接触较脆的目标；面对刺客，可用其他英雄围住后排、压缩落点。站位随对手阵型调整，暂无已确认适用于所有组合的固定格位。",
+          "version": null,
+          "condition": "需要绕开肉前排或保护后排免受刺客切入时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 190.8,
+              "end": 216.3
+            },
+            {
+              "source": "BV1SreE6dEW1:p1",
+              "start": 148.9,
+              "end": 181.4
+            }
+          ]
+        },
+        {
+          "id": "equip-sikong",
+          "section": "推荐装备",
+          "text": "司空震输出方向重视金色圣剑，并考虑痛苦面具与炽热支配者等输出／保护装备。该海陆空讲解优先炽热支配者，具体保护装仍需结合敌方控制与爆发。",
+          "version": null,
+          "condition": "司空震作为主要输出时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 1318,
+              "end": 1395
+            }
+          ]
+        },
+        {
+          "id": "equip-other",
+          "section": "推荐装备",
+          "text": "杨玉环的治疗方向重视贤者之书；花木兰承担输出时重视无尽巨剑，承担控制时可用回蓝装备。吕布作为控制点可用百锻刀；露娜打高生命目标时可用回蓝装备、百锻刀等支持技能循环。",
+          "version": null,
+          "condition": "已确定对应英雄的职责时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 723.8,
+              "end": 901.6
+            }
+          ]
+        },
+        {
+          "id": "end-utility",
+          "section": "终局技巧",
+          "text": "太乙真人可临时上场发挥保护效果，下一轮小菟技能前收起；有备用卡再重新上场。最后一轮不再需要为后续等级分配留位时，可以增加钟馗等即时控制单位。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 1259,
+              "end": 1316
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 621.2,
+              "end": 677.1
+            }
+          ]
+        },
+        {
+          "id": "counter-health",
+          "section": "克制手段",
+          "text": "面对花木兰、三分高肉前排或高生命养猪方向，可以考虑露娜的百分比伤害与技能循环；艾琳配瑶也属于应对高等级目标的方向。替换前仍需核对当前等级、装备和辅助是否到位。",
+          "version": null,
+          "condition": "敌方依赖高生命、高等级前排时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 843.8,
+              "end": 901.6
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 954.7,
+              "end": 1125.7
+            }
+          ]
+        },
+        {
+          "id": "combo-sikong",
+          "section": "阵容组成",
+          "text": "海陆空的关键是司空震＋裴擒虎：裴擒虎帮助司空震获得临时等级，苏烈负责承接前期积累并站前排，海月提供对高生命目标的处理。海月并非不可替代，可按来牌换姜子牙、杨玉环或瑶；司空震与裴擒虎是这一组合的核心依赖。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 989,
+              "end": 1182
+            }
+          ]
+        },
+        {
+          "id": "combo-jiang",
+          "section": "阵容组成",
+          "text": "姜子牙混搭以不同阵营的主要受益英雄配合无阵营姜子牙，打出不在场阵营或无阵营英雄时触发加级，帮助提前达到大招门槛。讲解给出苏烈＋姜子牙＋吕布＋艾琳这一可复用示例；苏烈传承后可改变可利用的阵营，临时触发牌不要抢走主力的随机加级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV12Ba16dEmw:p1",
+              "start": 85.7,
+              "end": 259.7
+            }
+          ]
+        },
+        {
+          "id": "combo-ailin",
+          "section": "阵容组成",
+          "text": "狂铁＋朵莉亚积累等级后，可接艾琳＋雅典娜或露娜等日落海方向。艾琳在低等级时偏弱，需考虑达到关键等级前的保血；有合适高等级核心时，明世隐也可提供辅助。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 560.9,
+              "end": 616.2
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 723.8,
+              "end": 779.7
+            }
+          ]
+        },
+        {
+          "id": "combo-machao",
+          "section": "阵容组成",
+          "text": "马超＋瑶需要双方的等级与觉醒投资；已有早期瑶、多张马超或决定采用慢速节奏时可考虑。中期压力大或经济紧时不要为了这套组合硬投入，先使用能立即提供战力的英雄。",
+          "version": null,
+          "condition": "早期瑶与马超来牌合适，或慢速节奏有足够成长时间时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 666.8,
+              "end": 723.8
+            }
+          ]
+        },
+        {
+          "id": "combo-five",
+          "section": "阵容组成",
+          "text": "五费混搭沿用苏烈／狂铁的前排积累，再补有用五费。该讲解优先海月、吕布、姜子牙、杨玉环，司空震需注意裴擒虎搭配；花木兰、露娜、周瑜等按来牌补充。这里是职责互补的选择库，不代表任何四张五费都能无条件成型。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 0,
+              "end": 49.5
+            }
+          ]
+        },
+        {
+          "id": "combo-zhuge",
+          "section": "阵容组成",
+          "text": "诸葛亮＋杨玉环＋吕布属于有配套讲解的技能方向：杨玉环提供续航，吕布提供控制与三分英雄吸血，诸葛亮利用队友施法发挥作用；第四位保留已有高等级前排或按当前战况选择。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 56.1,
+              "end": 96.2
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 560.93,
+              "end": 616.16
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 843.82,
+              "end": 872.21
+            }
+          ]
+        },
+        {
+          "id": "combo-hanxin",
+          "section": "阵容组成",
+          "text": "韩信＋瑶是需要搭配辅助的输出方向。韩信可作为较早提供战力的主力，配已有高等级前排及合适控制／续航；不因其他通用英雄强行拆掉已能发挥作用的配套。",
+          "version": null,
+          "condition": "已拿到韩信、瑶并具备前排保护时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 56.1,
+              "end": 96.2
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 560.9,
+              "end": 616.2
+            }
+          ]
+        },
+        {
+          "id": "equip-polymorph",
+          "section": "克制手段",
+          "text": "以诸葛亮等频繁施法的远程输出面对李信时，可考虑自然法杖的变猪控制；是否投入找装备，要结合当前生存能力与已有装备缺口。",
+          "version": null,
+          "condition": "频繁施法的远程输出需要限制李信时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 546.5,
+              "end": 618.4
+            },
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 847.4,
+              "end": 924.7
+            }
+          ]
+        },
+        {
+          "id": "skill-opening",
+          "section": "前期运营及应变",
+          "text": "找不到合适苏烈／狂铁、但孙膑与回蓝装备来牌合适时，可采用孙膑技能开局：小菟助力照常使用，争取早觉醒；优先法源之杯、贤者之书等回蓝装备，并找刘禅承担前排。刘禅可从首次拍卖或四本免费刷新寻找，没拿到时用现有英雄暂时过渡。",
+          "version": null,
+          "condition": "孙膑与回蓝装备来牌合适，准备接技能体系时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1HdH765ERW:p1",
+              "start": 14.8,
+              "end": 98.6,
+              "frame": "frames/40-66.jpg"
+            }
+          ]
+        },
+        {
+          "id": "skill-middle",
+          "section": "中期运营及应变",
+          "text": "孙膑＋刘禅技能路线不必一直单挂：刘禅到手即可补前排，让队伍通过频繁施法获得永久／临时等级收益。刻舟减蓝可降低达到 20 级英雄的法力上限，人才市场等找牌收益可帮助寻找诸葛亮与后续杨玉环。",
+          "version": null,
+          "condition": "采用孙膑＋刘禅技能路线时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1HdH765ERW:p1",
+              "start": 98.7,
+              "end": 156.8,
+              "frame": "frames/113-48.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-skill",
+          "section": "阵容组成",
+          "text": "孙膑＋刘禅＋诸葛亮＋杨玉环构成技能流：孙膑让多次施法带来永久等级，刘禅提供前排并让施法产生临时等级，诸葛亮与杨玉环承担输出／续航。有传承时可将刘禅积累转给吕布；没有传承时，讲解也允许临时上吕布提供三分吸血。",
+          "version": null,
+          "condition": "技能循环与四名成员已就绪时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1HdH765ERW:p1",
+              "start": 187.6,
+              "end": 239.4,
+              "frame": "frames/201-97.jpg"
+            },
+            {
+              "source": "BV1HdH765ERW:p1",
+              "start": 40.7,
+              "end": 98.6
+            }
+          ]
+        },
+        {
+          "id": "second-buff-dispute",
+          "section": "中期运营及应变",
+          "text": "第二次小菟送福时机待裁决：一份讲解要求一定六本后使用，另一份讲解允许在高压保血时提前使用前两次奖励。等待收益与当前生存风险的处理规则尚未统一。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 808.5,
+              "end": 838.2
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 150.8,
+              "end": 177.8
+            }
+          ]
+        },
+        {
+          "id": "ganjiang-opening-dispute",
+          "section": "前期运营及应变",
+          "text": "干将莫邪开局尚有分歧：部分讲解允许在没有苏烈／狂铁时使用干将，另一份讲解一概不考虑干将开局。这里保留待确认，不将其列为统一开局推荐；后期技能组合另有配套依据。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 258.1,
+              "end": 287.5
+            },
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 49.8,
+              "end": 73
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 78.3,
+              "end": 134.3
+            },
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 183.08,
+              "end": 324.57
+            }
+          ]
+        },
+        {
+          "id": "combo-ailin-ming",
+          "section": "阵容组成",
+          "text": "狂铁＋艾琳＋明世隐＋瑶：狂铁积累日落海等级，明世隐把临时等级转为永久等级并辅助艾琳，瑶提供护盾、属性与眩晕，艾琳成长后承担持续输出。艾琳攻速已到上限时优先减防等有效收益，金色圣剑的法伤价值另行考虑。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 288.2,
+              "end": 345.8,
+              "frame": "frames/305-0.jpg"
+            },
+            {
+              "source": "BV1Y9Ya6wEVA:p1",
+              "start": 36.7,
+              "end": 70.2
+            }
+          ]
+        },
+        {
+          "id": "combo-machao-four",
+          "section": "阵容组成",
+          "text": "苏烈＋马超＋瑶＋吕布：苏烈承接前排积累，马超与瑶构成输出及保护配套，吕布提供三分吸血与控制。找不到吕布时，可用海月补功能位。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 374.4,
+              "end": 432.2,
+              "frame": "frames/420-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-lixin-mulan",
+          "section": "阵容组成",
+          "text": "苏烈＋李信＋花木兰＋海月是讲解给出的灵活组合；花木兰和李信配合前排，海月补功能位，没有海月时可用瑶。应结合来牌与已有等级选择，不要求凑满固定复生体系。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 405.8,
+              "end": 432.2,
+              "frame": "frames/420-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-ganjiang-skill",
+          "section": "阵容组成",
+          "text": "干将莫邪＋刘禅＋诸葛亮＋杨玉环利用频繁施法获取临时等级并持续输出、续航；干将可换孙膑。组合成型后有较强循环，但杨玉环等成员难找，不因已有干将就视为完整成型。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 433.3,
+              "end": 486.4,
+              "frame": "frames/453-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-hanxin-cloud",
+          "section": "阵容组成",
+          "text": "干将莫邪＋瑶＋云中君＋韩信：韩信提供单体输出和击飞，对单核目标有针对作用；瑶提供护盾、属性与眩晕，云中君提高全队等级。这是配套讲解的后期组合，开局方式仍需另行核对。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Y9Ya6wEVA:p1",
+              "start": 95,
+              "end": 127.1,
+              "frame": "frames/99-0.jpg"
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 189.6,
+              "end": 247.5
+            }
+          ]
+        },
+        {
+          "id": "pressure-free-search",
+          "section": "中期运营及应变",
+          "text": "第9回合五本后，血量低于35且四人仍未齐时，优先用已存免费刷新寻找能立即上场的主力，适应实际来牌；目标是先活到第三轮拍卖。这个条件性保血建议不等于要求额外花能量强搜。",
+          "version": null,
+          "condition": "采用该保血思路，五本后血量低于35且组合未齐时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 448,
+              "end": 506.1
+            }
+          ]
+        },
+        {
+          "id": "threshold-effects",
+          "section": "成型后提升思路",
+          "text": "全场等级离 50／150／375 门槛只差少量时，可先用协作等加级手段凑出下一次大招，再打小菟助力。升本前不要为无关效果牌耗尽经济；成型后的司空震＋裴擒虎路线，再把加级与装备集中到司空震。",
+          "version": null,
+          "condition": "已确定主力，且加级门槛或主输出强化有明确收益时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 592,
+              "end": 724
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 1183,
+              "end": 1258
+            },
+            {
+              "source": "BV1tU8q6FEkw:p1",
+              "start": 564.4,
+              "end": 620.9
+            }
+          ]
+        },
+        {
+          "id": "generic-auction-pairs",
+          "section": "第二轮拍卖",
+          "text": "灵活混搭可优先海月、吕布、杨玉环、姜子牙、东皇太一等通用功能英雄；司空震、诸葛亮、韩信等输出应同时考虑配套辅助。司空震配裴擒虎，诸葛亮配杨玉环，并考虑吕布配套，韩信配瑶。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 26.8,
+              "end": 96.2
+            },
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 640.56,
+              "end": 688.44
+            }
+          ]
+        },
+        {
+          "id": "combo-reborn",
+          "section": "阵容组成",
+          "text": "李信＋苏烈＋铠构成牺牲方向的骨架，第四位根据需求选盾山过渡，或海月、花木兰、大司命等后期功能英雄；大司命需要两次牺牲触发三鬼。花木兰也可作为其他组合中的独立控制／输出点，不必强行凑完整复生。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 779.7,
+              "end": 843.8
+            }
+          ]
+        },
+        {
+          "id": "mengqi-auction-economy",
+          "section": "第一轮拍卖",
+          "text": "孟奇上场后，根据该回合胜负可在后续卖出时获得对应品阶的英雄兑换券；可作为少花能量拿过渡英雄的方式。不要把兑换券当成已经拿到所需核心，按实际英雄和资源安排后续操作。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV12qae6oEhd:p1",
+              "start": 56.1,
+              "end": 82.2
+            }
+          ]
+        },
+        {
+          "id": "combo-dusk-sikong",
+          "section": "阵容组成",
+          "text": "狂铁＋雅典娜＋司空震＋海月是有机制讲解的日落海司空震方向：狂铁积累阿科米亚核心等级，雅典娜触发日落海整备，司空震承接核心的临时等级并输出，海月补控制与牺牲功能。适用于狂铁日落海过渡、有金色圣剑且相关成员来牌齐备时；它与依赖裴擒虎的海陆空采用不同的等级来源。",
+          "version": null,
+          "condition": "狂铁日落海成长、雅典娜与金色圣剑已具备，司空震及海月到位时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV12qae6oEhd:p1",
+              "start": 137.5,
+              "end": 219.7,
+              "frame": "frames/210-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "position-airship",
+          "section": "站位技巧",
+          "text": "面对安琪拉的自爆模式飞行器时，开打前检查敌方配置，可把单挂苏烈放到最后一排较远处，争取先处理更多敌方单位、减少前期掉血。该站位仅针对对应飞行器模式，不固定套用到其他对手。",
+          "version": null,
+          "condition": "单挂苏烈面对自爆模式飞行器时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1V8pG6DEmC:p1",
+              "start": 60.4,
+              "end": 88.5,
+              "frame": "frames/70-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "artifact-opening",
+          "section": "推荐装备",
+          "text": "青莲剑谱、驱雷等神器有明确的前期保血讲解，可优先服务当前过渡英雄；是否需要它们取决于当局是否有相应神器选择，不要求普通装备局强找。",
+          "version": null,
+          "condition": "当局有相应神器选择且需要保血时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1V8pG6DEmC:p1",
+              "start": 118.4,
+              "end": 146.8,
+              "frame": "frames/130-0.jpg"
+            },
+            {
+              "source": "BV1YUh46VEPo:p1",
+              "start": 0,
+              "end": 26.8
+            },
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1628.35,
+              "end": 1655.69
+            }
+          ]
+        },
+        {
+          "id": "switch-for-survival",
+          "section": "中期运营及应变",
+          "text": "血量已不健康、原定组合还缺辅助且资源有限时，不要为了固定海陆空迟迟不开大招；根据当前来牌改成可立即受益的四人。此来源举例卖掉缺虎的司空震、使用姜子牙与现有输出启动，例子只说明应变原则，不推广为必选四人组合。",
+          "version": null,
+          "condition": "低血量、原计划未齐且无法承担继续找牌成本时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1V8pG6DEmC:p1",
+              "start": 177.2,
+              "end": 233.7,
+              "frame": "frames/190-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "skill-growth",
+          "section": "核心机制",
+          "text": "每回合使用小菟助力，积累递增的加级次数；小菟送福会对随机四名英雄分别触发一次小菟助力。全场英雄等级总和达到 50、150、375 时各获得一次小菟送福。 双养路线首回合有条件性保血例外，见前期运营。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 7.1,
+              "end": 150.8
+            },
+            {
+              "source": "BV12Ba16dEmw:p1",
+              "start": 0,
+              "end": 56.5
+            }
+          ]
+        },
+        {
+          "id": "equip-tank",
+          "section": "推荐装备",
+          "text": "单挂路线的讲解推荐苏烈／狂铁过渡使用红莲炎甲、反伤重甲等即时保血装备；红莲与双养路线的选择仍有分歧，见本章待裁决说明，暂不作为全路线固定优先级。针对未取得吸血书的嬴政，讲解给出苏烈反伤重甲＋魔女斗篷的针对性配置，不推广为全部法伤对局的固定出装。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 73,
+              "end": 96.6
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 1395,
+              "end": 1451
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 1039.23,
+              "end": 1095.86
+            }
+          ]
+        },
+        {
+          "id": "double-growth-opening",
+          "section": "前期运营及应变",
+          "text": "双养思路先让干将莫邪觉醒，苏烈取得一张负责挡伤害即可，不把苏烈觉醒当作启动前提；把即时等级收益优先给干将，争取达到讲解强调的40级连续收割节点。随后补赵云、马超；马超优先于缺少装备和等级投资的裴擒虎。",
+          "condition": "采用干将莫邪＋苏烈双养、相关英雄可用时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 183.08,
+              "end": 402.27,
+              "frame": "frames/300-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "opening-skill-exception",
+          "section": "前期运营及应变",
+          "text": "第一回合面对孙尚香等有额外开局战力的棋手，商店同时给出干将莫邪与苏烈时，可先买两张上场、暂不使用小菟助力，换取当回合少掉血；这是首回合的条件性例外，之后恢复每回合使用技能。对瑶的特定前排配置，讲解改用角落单干将，并要求有生存装备、等级或敌方前排较弱，不能直接照搬双人站位。",
+          "condition": "首回合对手额外战力较强，且两张开局英雄同时可买时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 28.22,
+              "end": 158.49,
+              "frame": "frames/150-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "double-growth-switch",
+          "section": "后期运营及应变",
+          "text": "双养三分方向后期优先考虑吕布，赵云的等级可用换帅等已获得的转移手段交给吕布；诸葛亮来得早且马超未到时，可以提前改技能输出方向。需要诸葛亮时补杨玉环，并在有传承或遗志时处理干将的等级，不凭一张五费牌就拆掉前排。",
+          "condition": "双养过渡已经积累等级，且有对应后期英雄与转移手段",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 640.56,
+              "end": 688.44
+            },
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1079.6,
+              "end": 1136.7,
+              "frame": "frames/1125-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "double-growth-ban-switch",
+          "section": "禁用阵营适用情况",
+          "text": "双养路线遇到河洛被禁，无法使用苏烈时，可让牛魔暂时顶前排并培养干将，随后寻找刘禅或赵云承接前排；三分被禁时则缺少赵云、马超和吕布的原配套，可用干将＋苏烈＋裴擒虎过渡，再从拍卖寻找可培养五费。这里只确认转向思路，未确认的最终四人及多个阵营同时被禁保留待确认。",
+          "condition": "双养路线单独遇到河洛或三分被禁时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 718.54,
+              "end": 958.67,
+              "frame": "frames/820-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "double-growth-assassin",
+          "section": "站位技巧",
+          "text": "双养过渡面对刺客时，干将莫邪靠角落，苏烈及赵云、马超等近战成员围住入口，使跳入的敌人先攻击保护成员。根据敌方跳跃位置调整，不把同一角落用于所有对局。",
+          "condition": "双养四人过渡面对跳后排刺客时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 989.46,
+              "end": 1049.55,
+              "frame": "frames/1000-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "double-growth-equipment",
+          "section": "推荐装备",
+          "text": "双养干将路线的大剑可考虑铸梦·逐风，强化前期击杀与等级成长，不必为了后期马超或吕布的无尽战刃放弃当前保血。后期吕布需要考虑解控装备炽热支配者；神器局有驱雷或青莲剑谱时，可改由李元芳持续给苏烈古币，把资源转向有神器的前排。",
+          "condition": "采用双养干将路线时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1214.93,
+              "end": 1387.36
+            },
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1628.35,
+              "end": 1655.69,
+              "frame": "frames/1650-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "double-growth-talents",
+          "section": "可用天赋",
+          "text": "双养路线仍优先能提供即时等级、血量或关键装备的天赋。承担较大前期压力时，慎选以扣15点生命值换经济或要求持续获胜回血的天赋；该路线还认为人才市场出牌偏晚、三十而立有机会成本，不能直接套用孙膑路线的优先级。",
+          "condition": "双养路线且需要当前保血时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 2295.05,
+              "end": 2470.62,
+              "frame": "frames/2470-0.jpg"
+            },
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 2721.45,
+              "end": 2809.34
+            }
+          ]
+        },
+        {
+          "id": "double-growth-equipment-dispute",
+          "section": "推荐装备",
+          "text": "红莲炎甲的优先级尚有分歧：单挂过渡讲解推荐它用于前期保血，双养讲解认为力量腰带不应优先做红莲。尚未确认这是路线、环境还是版本差异，先保留分歧，不把任一说法作为全路线固定出装。",
+          "condition": "比较单挂与双养的力量腰带选择时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1160.22,
+              "end": 1214.02,
+              "frame": "frames/1180-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-sulie-skill",
+          "section": "阵容组成",
+          "text": "双养干将过渡后，可在诸葛亮与杨玉环就绪、具有等级转移手段时，处理干将的等级，留下苏烈＋刘禅＋诸葛亮＋杨玉环。苏烈承接原前排积累，刘禅提供施法临时等级，诸葛亮持续输出，杨玉环提供高频施法与续航。",
+          "version": null,
+          "condition": "双养过渡后，技能成员齐备且能够处理干将等级时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1079.6,
+              "end": 1136.7,
+              "frame": "frames/1125-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "double-growth-middle",
+          "section": "中期运营及应变",
+          "text": "双养路线在三本用完免费刷新、补三分成员，再持续升本。环境压力低时可等第二轮拍卖补诸葛亮或吕布；高压局先凑四名能够受益的英雄、启动第一张小菟送福，再根据拍卖来牌调整，不把等待拍卖作为硬规则。",
+          "condition": "采用双养路线，按当前血量和环境压力选择启动时机",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 494.24,
+              "end": 717.93,
+              "frame": "frames/540-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-spring-flash",
+          "section": "阵容组成",
+          "text": "大河被禁且开局获得灵泉法杖时，可以把法杖给苏烈，用李元芳先把苏烈培养到讲解强调的100级，再培养百里玄策，并用裴擒虎组成闪现培养分支；后期用传承或遗志处理李元芳，接苏烈＋裴擒虎＋百里玄策＋露娜。继续转型时，可处理百里玄策等级并挂太乙真人补保护。没有灵泉法杖时，不直接照搬这套组合。",
+          "version": null,
+          "condition": "单独禁大河、获得灵泉法杖并有对应闪现成员时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1417.52,
+              "end": 1573.87,
+              "frame": "frames/1540-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "auction-budget-dispute",
+          "section": "第一轮拍卖",
+          "text": "前期拍卖预算仍有分歧：一份讲解要求前期拍卖超过2点能量就放弃；另一份讲解按辅助、升本预算与保血需求允许灵活投入。尚待裁决，暂不制定前期统一上限；不要把这个前期限制扩展到第三轮的终局启动收益。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 177.1,
+              "end": 201.4
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 206.3,
+              "end": 323.1
+            }
+          ]
+        },
+        {
+          "id": "double-growth-final-auction",
+          "section": "第三轮拍卖",
+          "text": "双养路线第三轮拍卖可优先关注扶摇之上或超新星等等级启动收益。讲解愿意为扶摇投入十余能量；价格过高时改抢超新星，没有其他合适选项时再集中预算竞争扶摇。该投入只适用于双养的终局启动需求，不把它推广为前两轮拍卖的统一出价。",
+          "condition": "双养后期需要等级启动收益时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 2148.12,
+              "end": 2173.58,
+              "frame": "frames/2160-0.jpg"
+            }
+          ]
+        }
+      ],
+      "meta": {
+        "required_factions": [],
+        "players": [
+          "player:24"
+        ],
+        "core_heroes": [],
+        "compositions": {
+          "early": [
+            {
+              "hero": "card:1941",
+              "role": "集中小菟助力、觉醒保血",
+              "necessity": "optional",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5031",
+              "role": "苏烈替代开局",
+              "necessity": "optional",
+              "replaces": "card:1941",
+              "replacement_note": "来牌合适时使用"
+            },
+            {
+              "hero": "card:1971",
+              "role": "升级经验过渡，技能前卖掉",
+              "necessity": "optional",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "middle": [],
+          "late": []
+        },
+        "ban_conditions": [],
+        "matchups": [
+          {
+            "target": "card:5071",
+            "condition": "远程技能输出需要限制李信",
+            "text": "考虑自然法杖的变猪控制，并核对当前输出与生存装备是否齐备。"
+          }
+        ],
+        "operation_routes": [
+          {
+            "id": "early-six",
+            "name": "提前六本（8–10 回合）",
+            "condition": "经济、经验或支援充足，当前战力能撑住。",
+            "advantages": "更早获得月之特调并启动持续加级。",
+            "risks": "硬冲会留下找牌缺口；裸单前排可能被强势铺场淘汰。",
+            "transition": "升本后无法凑齐主力或血量下降过快时，先补战力保血。",
+            "phases": {
+              "early": [
+                "opening-tank",
+                "yixing-economy"
+              ],
+              "middle": [
+                "early-six"
+              ],
+              "late": [
+                "six-launch",
+                "threshold-effects"
+              ]
+            },
+            "claim_refs": [
+              "early-six"
+            ],
+            "variant_ids": []
+          },
+          {
+            "id": "eleven-six",
+            "name": "11 回合六本",
+            "condition": "已有后期成员，升本后仍有启动预算。",
+            "advantages": "比第三轮拍卖后启动更早保护第 11 回合。",
+            "risks": "余钱紧时可能上六却找不齐阵容；是否必须 11 回合仍有来源分歧待裁决。",
+            "transition": "余钱不足或当前四人缺口过大时，优先保血并核算下一回合资源。",
+            "phases": {
+              "early": [
+                "opening-tank",
+                "yixing-economy"
+              ],
+              "middle": [
+                "eleven-six"
+              ],
+              "late": [
+                "six-launch",
+                "threshold-effects"
+              ]
+            },
+            "claim_refs": [
+              "eleven-six"
+            ],
+            "variant_ids": []
+          },
+          {
+            "id": "twelve-six",
+            "name": "12回合六本（待裁决）",
+            "condition": "高压或经济不足，打工阵容能撑过第 11 回合。",
+            "advantages": "保留找牌与启动余钱，利用第三轮拍卖后资源。",
+            "risks": "必须活过第 11 回合；与另一来源的硬性 11 回合建议存在分歧，暂保留条件说明。",
+            "transition": "血量无法承受等待时，优先补即时战力并重新核算资源；第二次大招是否提前使用仍待裁决。",
+            "phases": {
+              "early": [
+                "opening-tank",
+                "yixing-economy"
+              ],
+              "middle": [
+                "twelve-six",
+                "pressure-workers"
+              ],
+              "late": [
+                "six-launch",
+                "threshold-effects"
+              ]
+            },
+            "claim_refs": [
+              "twelve-six",
+              "pressure-workers"
+            ],
+            "variant_ids": []
+          },
+          {
+            "id": "skill-cycle",
+            "name": "孙膑技能铺场",
+            "condition": "孙膑与回蓝装来牌合适，能寻找刘禅及技能主力。",
+            "advantages": "不必单挂；靠频繁施法叠等级和前排保护，前期可提供较强保血能力。",
+            "risks": "需要回蓝装备与刘禅、诸葛亮、杨玉环等配套，不能只拿孙膑就视为成型。",
+            "transition": "四名技能成员齐备后启动；有传承时可把刘禅积累转给吕布，血量紧急时优先保命。",
+            "phases": {
+              "early": [
+                "skill-opening"
+              ],
+              "middle": [
+                "skill-middle"
+              ],
+              "late": [
+                "combo-skill",
+                "six-launch"
+              ]
+            },
+            "claim_refs": [
+              "skill-opening",
+              "skill-middle",
+              "combo-skill"
+            ],
+            "variant_ids": [
+              "sunbin-skill"
+            ]
+          },
+          {
+            "id": "double-growth",
+            "name": "干将＋苏烈双养（开局待裁决）",
+            "condition": "干将与苏烈来牌合适，能持续为干将投入等级；干将开局与其他讲解有分歧。",
+            "advantages": "两名英雄提供前期伤害与挡伤害；可按赵云、马超、吕布或诸葛亮来牌转向。",
+            "risks": "养两名英雄与技能开销使经济更紧；没有配套时不能强留原四人，首回合与装备取舍也有条件。",
+            "transition": "三分或河洛被禁时更换配套；有后期英雄与等级转移手段时转型；前期是否优先干将仍待裁决。",
+            "phases": {
+              "early": [
+                "double-growth-opening",
+                "opening-skill-exception"
+              ],
+              "middle": [
+                "double-growth-middle",
+                "double-growth-ban-switch"
+              ],
+              "late": [
+                "double-growth-switch",
+                "double-growth-final-auction"
+              ]
+            },
+            "claim_refs": [
+              "double-growth-opening",
+              "double-growth-middle",
+              "double-growth-switch",
+              "double-growth-talents"
+            ],
+            "variant_ids": [
+              "sulie-skill"
+            ]
+          }
+        ],
+        "late_variants": [
+          {
+            "id": "sikong-tiger",
+            "name": "苏烈＋裴擒虎＋司空震＋海月",
+            "condition": "已拿到司空震与裴擒虎，前排能承接等级；海月或替代功能位就绪。",
+            "members": [
+              {
+                "hero": "card:5371",
+                "role": "主要输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5021",
+                "role": "向司空震提供临时等级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1941",
+                "role": "承接前期等级、前排",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "role": "高生命目标处理",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1481",
+                "role": "触发加级",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": "按来牌替代海月"
+              },
+              {
+                "hero": "card:1761",
+                "role": "续航",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": "按来牌替代海月"
+              },
+              {
+                "hero": "card:5051",
+                "role": "辅助主输出",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": "按来牌替代海月"
+              }
+            ],
+            "core_heroes": [
+              "card:5371",
+              "card:5021"
+            ],
+            "required_factions": [
+              "faction:heluo"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：司空震（主要输出）、苏烈（承接前期等级、前排）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-sikong",
+              "equip-sikong"
+            ]
+          },
+          {
+            "id": "jiang-cross",
+            "name": "苏烈＋姜子牙＋吕布＋艾琳",
+            "condition": "主要英雄来自不同阵营，有经济反复使用不在场阵营／无阵营英雄触发加级。",
+            "members": [
+              {
+                "hero": "card:1481",
+                "role": "加级发动机",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1941",
+                "role": "河洛前排",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1231",
+                "role": "三分控制／输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:3551",
+                "role": "日落海持续输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:1481"
+            ],
+            "required_factions": [
+              "faction:heluo",
+              "faction:riluohai",
+              "faction:sanfen"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：苏烈（河洛前排）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:sanfen",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：吕布（三分控制／输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：艾琳（日落海持续输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-jiang"
+            ]
+          },
+          {
+            "id": "lixin-sacrifice",
+            "name": "苏烈＋铠＋李信＋海月",
+            "condition": "李信、苏烈与铠齐备，第四位按来牌与对手选择。",
+            "members": [
+              {
+                "hero": "card:5071",
+                "role": "牺牲方向主力",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1941",
+                "role": "前排与牺牲配合",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1931",
+                "role": "牺牲配合",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5091",
+                "role": "早期保护",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "role": "后期功能位",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1541",
+                "role": "控制／输出",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "role": "三鬼方向的后期功能替代",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": "能够两次牺牲触发三鬼时才选，不在其他组合随意加入"
+              }
+            ],
+            "core_heroes": [
+              "card:5071",
+              "card:1941",
+              "card:1931"
+            ],
+            "required_factions": [
+              "faction:heluo"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：李信（牺牲方向主力）、苏烈（前排与牺牲配合）、铠（牺牲配合）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-reborn"
+            ]
+          },
+          {
+            "id": "machao-yao",
+            "name": "苏烈＋马超＋瑶＋吕布",
+            "condition": "来牌与等级投资合适、能承担较慢成型。",
+            "members": [
+              {
+                "hero": "card:1941",
+                "role": "前排积累",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5181",
+                "role": "持续输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "role": "保护与控制",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1231",
+                "role": "三分吸血与控制",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "role": "功能位替代",
+                "necessity": "optional",
+                "replaces": "card:1231",
+                "replacement_note": "没有吕布时补海月"
+              }
+            ],
+            "core_heroes": [
+              "card:5181",
+              "card:5051"
+            ],
+            "required_factions": [
+              "faction:dahe",
+              "faction:heluo",
+              "faction:sanfen"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:sanfen",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：马超（持续输出）、吕布（三分吸血与控制）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:dahe",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：瑶（保护与控制）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：苏烈（前排积累）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-machao",
+              "combo-machao-four"
+            ]
+          },
+          {
+            "id": "sunbin-skill",
+            "name": "孙膑＋刘禅＋诸葛亮＋杨玉环",
+            "condition": "孙膑开局、有回蓝装备，刘禅与两名技能主力齐备。",
+            "members": [
+              {
+                "hero": "card:1181",
+                "role": "施法永久加级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1141",
+                "role": "前排与施法临时加级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1901",
+                "role": "技能输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "role": "续航与施法",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1231",
+                "role": "后期传承替代刘禅",
+                "necessity": "optional",
+                "replaces": "card:1141",
+                "replacement_note": "有传承与合适等级时转型"
+              }
+            ],
+            "core_heroes": [
+              "card:1181",
+              "card:1141",
+              "card:1901",
+              "card:1761"
+            ],
+            "required_factions": [
+              "faction:sanfen",
+              "faction:zhulu"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:zhulu",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：孙膑（施法永久加级）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:sanfen",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：刘禅（前排与施法临时加级）、诸葛亮（技能输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "skill-opening",
+              "skill-middle",
+              "combo-skill"
+            ]
+          },
+          {
+            "id": "ailin-ming",
+            "name": "狂铁＋艾琳＋明世隐＋瑶",
+            "condition": "狂铁积累等级，辅助与艾琳成长条件到位。",
+            "members": [
+              {
+                "hero": "card:5031",
+                "role": "前排与日落海成长",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:3551",
+                "role": "持续输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "role": "临时转永久、续航",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "role": "护盾、属性与眩晕",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:3551",
+              "card:5011",
+              "card:5051"
+            ],
+            "required_factions": [
+              "faction:dahe",
+              "faction:riluohai"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：艾琳（持续输出）、狂铁（前排与日落海成长）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:dahe",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：瑶（护盾、属性与眩晕）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-ailin-ming"
+            ]
+          },
+          {
+            "id": "ailin-athena",
+            "name": "狂铁＋朵莉亚＋艾琳＋雅典娜",
+            "condition": "狂铁与朵莉亚已积累等级，艾琳及第四位就绪。",
+            "members": [
+              {
+                "hero": "card:5031",
+                "role": "前排与等级积累",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1591",
+                "role": "整备成长",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:3551",
+                "role": "持续输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1831",
+                "role": "触发日落海整备",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:3551"
+            ],
+            "required_factions": [
+              "faction:riluohai"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：艾琳（持续输出）、狂铁（前排与等级积累）、朵莉亚（整备成长）、雅典娜（触发日落海整备）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-ailin"
+            ]
+          },
+          {
+            "id": "ailin-luna",
+            "name": "狂铁＋朵莉亚＋艾琳＋露娜",
+            "condition": "狂铁与朵莉亚已积累等级，艾琳及第四位就绪。",
+            "members": [
+              {
+                "hero": "card:5031",
+                "role": "前排与等级积累",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1591",
+                "role": "整备成长",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:3551",
+                "role": "持续输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1461",
+                "role": "百分比伤害与技能循环",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:3551"
+            ],
+            "required_factions": [
+              "faction:riluohai"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：艾琳（持续输出）、狂铁（前排与等级积累）、朵莉亚（整备成长）、露娜（百分比伤害与技能循环）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-ailin"
+            ]
+          },
+          {
+            "id": "lixin-mulan",
+            "name": "苏烈＋李信＋花木兰＋海月",
+            "condition": "已有李信、花木兰及苏烈积累，第四位功能配套就绪。",
+            "members": [
+              {
+                "hero": "card:1941",
+                "role": "前排积累",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5071",
+                "role": "牺牲成长输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1541",
+                "role": "输出或控制",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "role": "功能位",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "role": "辅助替代",
+                "necessity": "optional",
+                "replaces": "card:5211",
+                "replacement_note": "无海月时用瑶"
+              }
+            ],
+            "core_heroes": [
+              "card:5071",
+              "card:1541"
+            ],
+            "required_factions": [
+              "faction:heluo"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：李信（牺牲成长输出）、花木兰（输出或控制）、苏烈（前排积累）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-lixin-mulan"
+            ]
+          },
+          {
+            "id": "ganjiang-skill",
+            "name": "干将莫邪＋刘禅＋诸葛亮＋杨玉环",
+            "condition": "四名技能成员齐备；杨玉环较难获取。",
+            "members": [
+              {
+                "hero": "card:1821",
+                "role": "技能施法",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1141",
+                "role": "前排及施法临时等级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1901",
+                "role": "技能输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "role": "续航与施法",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1181",
+                "role": "施法成长替代",
+                "necessity": "optional",
+                "replaces": "card:1821",
+                "replacement_note": "干将不合适时换孙膑"
+              }
+            ],
+            "core_heroes": [
+              "card:1141",
+              "card:1901",
+              "card:1761"
+            ],
+            "required_factions": [
+              "faction:dahe",
+              "faction:sanfen"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:sanfen",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：刘禅（前排及施法临时等级）、诸葛亮（技能输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:dahe",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：干将莫邪（技能施法）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-ganjiang-skill"
+            ]
+          },
+          {
+            "id": "hanxin-cloud",
+            "name": "干将莫邪＋瑶＋云中君＋韩信",
+            "condition": "成员配套到位，需要针对单核输出目标时。",
+            "members": [
+              {
+                "hero": "card:1821",
+                "role": "技能输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "role": "保护与控制",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5061",
+                "role": "提高全队等级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1501",
+                "role": "单体输出与击飞",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:1501",
+              "card:5051"
+            ],
+            "required_factions": [
+              "faction:dahe"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:dahe",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：韩信（单体输出与击飞）、瑶（保护与控制）、干将莫邪（技能输出）、云中君（提高全队等级）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-hanxin-cloud"
+            ]
+          },
+          {
+            "id": "dusk-sikong",
+            "name": "狂铁＋雅典娜＋司空震＋海月",
+            "condition": "狂铁已积累日落海核心等级，雅典娜、司空震、海月和金色圣剑配套就绪。",
+            "members": [
+              {
+                "hero": "card:5031",
+                "role": "前排与核心等级积累",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1831",
+                "role": "触发日落海整备",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5371",
+                "role": "承接核心临时等级、输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "role": "控制与牺牲功能",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:5031",
+              "card:1831",
+              "card:5371"
+            ],
+            "required_factions": [
+              "faction:heluo",
+              "faction:riluohai"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：狂铁（前排与核心等级积累）、雅典娜（触发日落海整备）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：司空震（承接核心临时等级、输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-dusk-sikong",
+              "equip-sikong"
+            ]
+          },
+          {
+            "id": "sulie-skill",
+            "name": "苏烈＋刘禅＋诸葛亮＋杨玉环",
+            "condition": "双养过渡后，诸葛亮及杨玉环齐备，可处理干将等级并保留苏烈前排。",
+            "members": [
+              {
+                "hero": "card:1941",
+                "role": "承接原前排积累",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1141",
+                "role": "前排与施法临时加级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1901",
+                "role": "技能输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "role": "续航与高频施法",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:1941",
+              "card:1141",
+              "card:1901",
+              "card:1761"
+            ],
+            "required_factions": [
+              "faction:heluo",
+              "faction:sanfen"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：苏烈（承接原前排积累）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:sanfen",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：刘禅（前排与施法临时加级）、诸葛亮（技能输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-sulie-skill",
+              "double-growth-switch"
+            ]
+          },
+          {
+            "id": "spring-flash",
+            "name": "苏烈＋裴擒虎＋百里玄策＋露娜",
+            "condition": "单独禁大河、苏烈持灵泉法杖；完成李元芳过渡与等级转移，闪现培养成员齐备。",
+            "members": [
+              {
+                "hero": "card:1941",
+                "role": "持灵泉法杖获得闪现并承担前排",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5021",
+                "role": "闪现与临时等级配套",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1951",
+                "role": "按闪现击杀积累等级",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1461",
+                "role": "后期闪现输出",
+                "necessity": "required",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "role": "后续保护替代",
+                "necessity": "optional",
+                "replaces": "card:1951",
+                "replacement_note": "能够处理玄策等级且需要复生保护时"
+              }
+            ],
+            "core_heroes": [
+              "card:1941",
+              "card:5021",
+              "card:1951",
+              "card:1461"
+            ],
+            "required_factions": [
+              "faction:heluo",
+              "faction:riluohai"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:dahe",
+                "status": "playable",
+                "reason": "视频明确讲解单独禁大河、持灵泉法杖的闪现转型分支。其他禁用组合尚待确认。"
+              },
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：苏烈（持灵泉法杖获得闪现并承担前排）、百里玄策（按闪现击杀积累等级）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              },
+              {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：露娜（后期闪现输出）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "combo-spring-flash"
+            ]
+          }
+        ]
+      },
+      "path": "knowledge/lineups/常小娥通用打法.md",
+      "aliases": [],
+      "entity_names": {
+        "player:24": "常小娥",
+        "card:1941": "苏烈",
+        "card:5031": "狂铁",
+        "card:1971": "弈星",
+        "card:5071": "李信",
+        "faction:heluo": "河洛",
+        "faction:riluohai": "日落海",
+        "faction:sanfen": "三分",
+        "faction:dahe": "大河",
+        "faction:zhulu": "逐鹿",
+        "card:5371": "司空震",
+        "card:5021": "裴擒虎",
+        "card:5211": "海月",
+        "card:1481": "姜子牙",
+        "card:1761": "杨玉环",
+        "card:5051": "瑶",
+        "card:1231": "吕布",
+        "card:3551": "艾琳",
+        "card:1931": "铠",
+        "card:5091": "盾山",
+        "card:1541": "花木兰",
+        "card:5171": "大司命",
+        "card:5181": "马超",
+        "card:1181": "孙膑",
+        "card:1141": "刘禅",
+        "card:1901": "诸葛亮",
+        "card:5011": "明世隐",
+        "card:1591": "朵莉亚",
+        "card:1831": "雅典娜",
+        "card:1461": "露娜",
+        "card:1821": "干将莫邪",
+        "card:1501": "韩信",
+        "card:5061": "云中君",
+        "card:1951": "百里玄策",
+        "card:1861": "太乙真人"
+      },
+      "manual_sections": [],
+      "history": [
+        {
+          "at": "2026-10-11T17:13:29.528687+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "skill-growth",
+                "section": "核心机制",
+                "text": "每回合使用小菟助力，积累递增的加级次数；小菟送福会对随机四名英雄分别触发一次小菟助力。全场英雄等级总和达到 50、150、375 时各获得一次小菟送福。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "source": "BV1WPap6DEa9:p1",
+                    "start": 7.1,
+                    "end": 150.8
+                  },
+                  {
+                    "source": "BV12Ba16dEmw:p1",
+                    "start": 0,
+                    "end": 56.5
+                  }
+                ]
+              },
+              {
+                "id": "equip-tank",
+                "section": "推荐装备",
+                "text": "苏烈／狂铁过渡优先红莲炎甲、反伤重甲等即时保血装备。针对未取得吸血书的嬴政，讲解给出苏烈反伤重甲＋魔女斗篷的针对性配置，不将其直接推广为全部法伤对局的固定出装。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "general_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1n5af6SE4F:p1",
+                    "start": 73,
+                    "end": 96.6
+                  },
+                  {
+                    "source": "BV1xaY169EM3:p1",
+                    "start": 1395,
+                    "end": 1451
+                  },
+                  {
+                    "source": "BV1WPap6DEa9:p1",
+                    "start": 1039.23,
+                    "end": 1095.86
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-11T17:16:17.984292+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "double-growth-middle",
+                "section": "中期运营及应变",
+                "text": "双养路线在三本用完免费刷新、补三分成员，再持续升本。环境压力低时可等第二轮拍卖补诸葛亮或吕布；高压局先凑四名能够受益的英雄、启动已有小菟送福，再根据拍卖来牌调整，不把等待拍卖作为硬规则。",
+                "condition": "采用双养路线，按当前血量和环境压力选择启动时机",
+                "version": null,
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1ydeE6jEE8:p1",
+                    "start": 494.24,
+                    "end": 717.93,
+                    "frame": "frames/540-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "combo-spring-flash",
+                "section": "阵容组成",
+                "text": "大河被禁且开局获得灵泉法杖时，可以把法杖给苏烈，用李元芳先养苏烈，再通过百里玄策与裴擒虎组成闪现培养分支；后期用传承或遗志处理李元芳，接苏烈＋裴擒虎＋百里玄策＋露娜。继续转型时，可处理百里玄策等级并挂太乙真人补保护。没有灵泉法杖时，不直接照搬这套组合。",
+                "version": null,
+                "condition": "单独禁大河、获得灵泉法杖并有对应闪现成员时",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1ydeE6jEE8:p1",
+                    "start": 1417.52,
+                    "end": 1573.87,
+                    "frame": "frames/1540-0.jpg"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-11T17:17:11.783615+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-budget-dispute",
+                "section": "第一轮拍卖",
+                "text": "一份讲解要求拍卖超过2点能量一律放弃；另一份讲解根据辅助、升本预算与保血需求允许灵活投入。两者尚待裁决，暂不制定统一出价上限。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "general_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1Rsai6CEYT:p1",
+                    "start": 177.1,
+                    "end": 201.4
+                  },
+                  {
+                    "source": "BV1WPap6DEa9:p1",
+                    "start": 206.3,
+                    "end": 323.1
+                  }
+                ]
+              },
+              {
+                "id": "double-growth-final-auction",
+                "section": "第三轮拍卖",
+                "text": "双养路线优先关注扶摇之上或超新星等等级启动收益；一份讲解愿意为此投入十余能量，另一份讲解主张拍卖超过两能量就放弃。该投入上限仍待裁决，先区分双养的终局启动需求与省钱升本路线，不给统一出价。",
+                "condition": "双养后期需要等级启动收益时",
+                "version": null,
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1ydeE6jEE8:p1",
+                    "start": 2148.12,
+                    "end": 2173.58,
+                    "frame": "frames/2160-0.jpg"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "conflicts": [],
+      "related": [
+        {
+          "id": "zhaojun-high-tier-dahe",
+          "type": "lineup",
+          "title": "昭君高阶大河（龙蛇）",
+          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+        },
+        {
+          "id": "angela-liubang-totems",
+          "type": "lineup",
+          "title": "安琪拉养刘邦（图腾成长）",
+          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+        },
+        {
+          "id": "player-angela",
+          "type": "player",
+          "title": "安琪拉－飞行器与模块选择",
+          "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+        }
+      ],
+      "revision": "b5936f7aa8660311b78f"
     }
   ]
 }
