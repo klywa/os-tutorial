@@ -1,0 +1,686 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1LCew6HEhT:p1",
+    "bvid": "BV1LCew6HEhT",
+    "part": 1,
+    "title": "【王者万象棋】胜率95%逐鹿倒转流，全流程保姆级对战教学解说！赢政一个大招清屏？",
+    "requested_title": "【王者万象棋】胜率95%逐鹿倒转流，全流程保姆级对战教学解说！赢政一个大招清屏",
+    "url": "https://www.bilibili.com/video/BV1LCew6HEhT/?p=1",
+    "author": "歪掰掰",
+    "duration": 1502,
+    "published": "2026-09-16 15:07:07"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1502
+      ]
+    ],
+    "notes": "全文阅读原始ASR；不修正ASR。排除闲聊、吐槽和无教学意义操作；实际核对事件截图后保存。目的为预期学习效果。"
+  },
+  "events": [
+    {
+      "id": "BV1LCew6HEhT:p1:e001",
+      "start": 23.5,
+      "end": 105.46,
+      "scene": "实战",
+      "timing": "闹闹选逐鹿路线时",
+      "content": "每回合开同阵营牌，嬴政靠效果牌累计开团攻击。",
+      "background": {
+        "text": "棋手稳定供牌与主核触发机制共同构成路线。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解资源来源与核心收益。",
+        "basis": "分析推断"
+      },
+      "quote": "以银阵为核心",
+      "segment_ids": [
+        1,
+        2
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/85-0.jpg",
+          "time": 85.0,
+          "reviewed": true,
+          "observation": "首回合狂铁战斗可见，字幕说明其强度，闹闹供牌机制由语音介绍。",
+          "sha256": "1ad39f90d5abb559bbcf503a6da69554ff7708ea0da45a21605313d6b4f8eb0d"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e002",
+      "start": 105.46,
+      "end": 171.95,
+      "scene": "实战",
+      "timing": "早期合成前",
+      "content": "先上老夫子等首轮合成产牌工具，兑现后可移除。",
+      "background": {
+        "text": "先合成再上会错过首个触发。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别工具牌的有限触发窗口。",
+        "basis": "分析推断"
+      },
+      "quote": "打牌的间隙呢去上",
+      "segment_ids": [
+        3,
+        4
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/155-0.jpg",
+          "time": 155.0,
+          "reviewed": true,
+          "observation": "早期商店与老夫子手牌同屏，先上再合成的触发顺序由语音解释。",
+          "sha256": "ea7cf4b45e3f70770672b3b8205f7336388dae535cef38ef0d2068c5fc8ec484"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e003",
+      "start": 138.45,
+      "end": 214.75,
+      "scene": "实战",
+      "timing": "用芈月过渡成长时",
+      "content": "把装备集中给预期成长目标，芈月按装备最多者加等级。",
+      "background": {
+        "text": "早期芈月可自养，主核到后需重新指定。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用装备数量控制成长归属。",
+        "basis": "分析推断"
+      },
+      "quote": "带装备最多的一个角色呢加等级",
+      "segment_ids": [
+        4,
+        5
+      ],
+      "template_id": "position-binding",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/190-0.jpg",
+          "time": 190.0,
+          "reviewed": true,
+          "observation": "战斗字幕说明装备给芈月，装备最多者的机制由前后文提供。",
+          "sha256": "c58408c5691d90e4389fe979ecbd75671fe6f2e73ed3238deec3a0e0d74054b8"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e004",
+      "start": 214.75,
+      "end": 334.54,
+      "scene": "实战",
+      "timing": "前期武器为后期准备时",
+      "content": "拿解控武器留给嬴政，镜与芈月可组合过渡。",
+      "background": {
+        "text": "中期替代角色不改变后期防控制需求。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "跨阶段规划关键装备。",
+        "basis": "分析推断"
+      },
+      "quote": "一定要选择一个解控的",
+      "segment_ids": [
+        6,
+        8
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/235-0.jpg",
+          "time": 235.0,
+          "reviewed": true,
+          "observation": "复印机等天赋三选一展开，解控装备规划由此前语音说明。",
+          "sha256": "50a145a6585262453d1ce8539d07083be0ec66fa52e2d48be6328eca2497fc56"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e005",
+      "start": 295.73,
+      "end": 386.51,
+      "scene": "实战",
+      "timing": "当前战力高时选胜利天赋",
+      "content": "选胜利产最高等级同名牌，用战斗优势推动觉醒。",
+      "background": {
+        "text": "先能赢才有供牌收益，后面等级目标需要匹配主核。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "核对收益条件和触发对象。",
+        "basis": "分析推断"
+      },
+      "quote": "战斗胜利获得一张",
+      "segment_ids": [
+        8,
+        9
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/330-0.jpg",
+          "time": 330.0,
+          "reviewed": true,
+          "observation": "战斗画面字幕说明当前战力高，胜利天赋选择依据来自语音。",
+          "sha256": "345e4a7ac5965524700751b409c1a530363d4e6b1d9058faeb647f79b7c3ffb2"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e006",
+      "start": 386.51,
+      "end": 524.48,
+      "scene": "实战",
+      "timing": "四本嬴政迟来时",
+      "content": "留芈月过渡，补蒙犽西施与庄周产效果牌，并留一个操作空位。",
+      "background": {
+        "text": "发动工具先到能支持后续核心，镜后期需求降低。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按资源功能补组件。",
+        "basis": "分析推断"
+      },
+      "quote": "留一个位置去打buff",
+      "segment_ids": [
+        10,
+        11,
+        12
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/495-0.jpg",
+          "time": 495.0,
+          "reviewed": true,
+          "observation": "中期双方战斗与效果手牌同屏，嬴政等组件由前后文解释。",
+          "sha256": "2d88f9f6f34575390498f80d82847847135bdfe01f861467a3ac5f3b4965dc0c"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e007",
+      "start": 524.48,
+      "end": 600.59,
+      "scene": "实战",
+      "timing": "嬴政到后仍养错芈月时",
+      "content": "及时把两件装备转给嬴政，否则芈月继续吃成长和同名奖励。",
+      "background": {
+        "text": "讲者明确承认操作失误，错误同时影响等级与胜利天赋目标。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "检查耦合的目标选择条件。",
+        "basis": "分析推断"
+      },
+      "quote": "确实是一个很大的失误",
+      "segment_ids": [
+        13,
+        14
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/585-0.jpg",
+          "time": 585.0,
+          "reviewed": true,
+          "observation": "特训战术卡面展开，装备目标错误由讲者明确复盘。",
+          "sha256": "7e936e0992922b1dae18840ca8b725b411a560705a75fa4fcdf75683d57076ec"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e008",
+      "start": 600.59,
+      "end": 661.18,
+      "scene": "实战",
+      "timing": "纠正装备归属后",
+      "content": "先把装备集中嬴政，再打法术兑现等级。",
+      "background": {
+        "text": "上一轮目标错误被修正，先后顺序决定主核收益。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用可检查步骤纠错。",
+        "basis": "分析推断"
+      },
+      "quote": "把装备全部给了嬴政了",
+      "segment_ids": [
+        15,
+        16
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/640-0.jpg",
+          "time": 640.0,
+          "reviewed": true,
+          "observation": "准备阶段核心阵容与手牌同屏，转装备再打法术由语音说明。",
+          "sha256": "c9fc6669fee2b87196dc7baaad6a01de7630a2d2109f00dbfeb13f4e7e3403b1"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e009",
+      "start": 628.18,
+      "end": 688.82,
+      "scene": "实战",
+      "timing": "范围炮一枪打倒密集阵容后",
+      "content": "看对手强度再跳本，站位被范围伤害惩罚后补血量容错。",
+      "background": {
+        "text": "本局失利揭示集中站位风险，回血用于多争取成长回合。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把战斗结果接入升级和生存预算。",
+        "basis": "分析推断"
+      },
+      "quote": "一枪被他直接全部爆死了",
+      "segment_ids": [
+        16,
+        17
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/675-0.jpg",
+          "time": 675.0,
+          "reviewed": true,
+          "observation": "战斗结算与嬴政相关字幕可见，范围炮损失由前后文提供。",
+          "sha256": "70c9431eb5de43cca7cbab5fc3fc09816964492dcc3cc0f15b282028c19c2bc3"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e010",
+      "start": 688.88,
+      "end": 752.69,
+      "scene": "实战",
+      "timing": "鲁班加入循环前",
+      "content": "先上鲁班再做同名合成，庄周让位以触发产战术牌。",
+      "background": {
+        "text": "讲者承认少处理了合成细节；错序丢资源。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "让工具先到位再兑现触发。",
+        "basis": "分析推断"
+      },
+      "quote": "应该先把鲁班打上去",
+      "segment_ids": [
+        18,
+        19
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/710-0.jpg",
+          "time": 710.0,
+          "reviewed": true,
+          "observation": "司空震海诺等升阶选项展开，字幕说明三次合成送战术牌。",
+          "sha256": "518c59613aa5618a00cf0077055c7e1517172cc17fcbb23cd55a3c4a6ab5c326"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e011",
+      "start": 719.34,
+      "end": 784.74,
+      "scene": "实战",
+      "timing": "拍卖升本牌时",
+      "content": "与直接升级成本比较，二十元以下是本局上限，不无限追价。",
+      "background": {
+        "text": "十一十二回合的升级与拍卖预算需要提前计划。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "比较替代成本设竞价边界。",
+        "basis": "分析推断"
+      },
+      "quote": "如果超过20块钱那就亏了",
+      "segment_ids": [
+        19,
+        20
+      ],
+      "template_id": "auction-choice",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/765-0.jpg",
+          "time": 765.0,
+          "reviewed": true,
+          "observation": "准备阶段字幕提醒经济要注意，拍卖上限由讲者解释。",
+          "sha256": "fef1e643527563857dd1c41edf610dd9290f53cd671235f1f99e70208f0a3b8b"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e012",
+      "start": 784.74,
+      "end": 851.86,
+      "scene": "实战",
+      "timing": "嬴政觉醒与战术牌循环时",
+      "content": "保留空位，登场与合成产战术牌持续打出，推动攻击与等级。",
+      "background": {
+        "text": "胜利天赋持续补核心，工具牌服务循环。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把多组件串成稳定行动循环。",
+        "basis": "分析推断"
+      },
+      "quote": "留一个空位去打这个buff",
+      "segment_ids": [
+        21,
+        22
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/830-0.jpg",
+          "time": 830.0,
+          "reviewed": true,
+          "observation": "商店与较多手牌同屏，工具循环和留空位由语音说明。",
+          "sha256": "89f66bb4ff6ec2f8d70d8b12cfdb9b1781ba53757baafc64fdd875f80dd27ef7"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e013",
+      "start": 820.78,
+      "end": 907.23,
+      "scene": "实战",
+      "timing": "是否上瑶太乙时",
+      "content": "按对手威胁补装备或复活，弱敌可暂不上；提前抬走时补即时战力。",
+      "background": {
+        "text": "辅助上场会改变操作空间，取舍由战斗目标决定。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按敌方压力决定辅助优先级。",
+        "basis": "分析推断"
+      },
+      "quote": "根据对,就是你的对手的一个情况",
+      "segment_ids": [
+        22,
+        23
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/875-0.jpg",
+          "time": 875.0,
+          "reviewed": true,
+          "observation": "同一准备阶段的阵容与手牌可见，辅助选择条件由语音解释。",
+          "sha256": "5f53613f214e2ec706cffcfc82b45b6f164fea368e959c68a0ded1de8eb1f500"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e014",
+      "start": 907.23,
+      "end": 981.65,
+      "scene": "实战",
+      "timing": "低价扶摇升级六本后",
+      "content": "比较省下的金币，再选提升法术牌阶级的分支强化循环。",
+      "background": {
+        "text": "本局五元无人竞争，不能视为稳定价格。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "连接升级成本与体系收益。",
+        "basis": "分析推断"
+      },
+      "quote": "你的法术牌变得高阶了",
+      "segment_ids": [
+        24,
+        25
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/955-0.jpg",
+          "time": 955.0,
+          "reviewed": true,
+          "observation": "闹闹六本分支包含升阶选项，字幕提示法术牌五级收益。",
+          "sha256": "ffaf3dd982efd484bc7020fcd304ed96f9be94f2c80a3dcedc23234552ede375"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e015",
+      "start": 984.91,
+      "end": 1063.25,
+      "scene": "实战",
+      "timing": "回顾嬴政或鲁班迟来时",
+      "content": "嬴政未到可养镜，鲁班中期非绝对必需，后期加强经济循环。",
+      "background": {
+        "text": "闹闹供牌缓解断牌，但不保证任何局都必到核心。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分必需核心与加速组件。",
+        "basis": "分析推断"
+      },
+      "quote": "鲁班不是说必须的",
+      "segment_ids": [
+        26,
+        27
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1035-0.jpg",
+          "time": 1035.0,
+          "reviewed": true,
+          "observation": "核心已高等级且多张工具手牌可见，鲁班必要性由讲者总结。",
+          "sha256": "22c310ab2a52c960f2cb42361c50122c56bb37fd01198b9893aa77ad4f8c62fb"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e016",
+      "start": 1013.62,
+      "end": 1106.16,
+      "scene": "实战",
+      "timing": "攻击已足够且操作繁忙时",
+      "content": "优先补齐嬴政装备，打不完的次要牌可留下一轮。",
+      "background": {
+        "text": "资源很多不代表继续刷比补装重要。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "转向真实瓶颈而非追操作量。",
+        "basis": "分析推断"
+      },
+      "quote": "比刷牌更关键的一件事情",
+      "segment_ids": [
+        27,
+        28
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1080-0.jpg",
+          "time": 1080.0,
+          "reviewed": true,
+          "observation": "商店和大量效果手牌同屏，补装优先于刷牌由语音解释。",
+          "sha256": "06f06164db7e42bd6d3d473a44b602a4e4d3560b28db3b124536be6a186dc05d"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e017",
+      "start": 1112.53,
+      "end": 1185.86,
+      "scene": "实战",
+      "timing": "后期芈月作用降低时",
+      "content": "可转走其等级给有效单位，但本局只是锦上添花。",
+      "background": {
+        "text": "对手长期受压，不能从单局优势推导必胜。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "评估转移收益与必要性。",
+        "basis": "分析推断"
+      },
+      "quote": "只是锦上添花了现在",
+      "segment_ids": [
+        29,
+        30
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1160-0.jpg",
+          "time": 1160.0,
+          "reviewed": true,
+          "observation": "强效冰甲卡面与阵容同屏，芈月等级转移价值由前后文说明。",
+          "sha256": "d6903da6f948ee303f0452c2d8ab1dca5f6cd0c3072f310e9e2a9f371f5762af"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e018",
+      "start": 1185.86,
+      "end": 1276.21,
+      "scene": "实战",
+      "timing": "手速慢且准备时间有限时",
+      "content": "先打现成法术保证嬴政攻击，再处理庄周等登场牌，次要牌可延后。",
+      "background": {
+        "text": "先处理角色可能到时间仍剩大量关键法术。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按关键收益排序有限操作时间。",
+        "basis": "分析推断"
+      },
+      "quote": "先把法术全部打完",
+      "segment_ids": [
+        31,
+        32
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1220-0.jpg",
+          "time": 1220.0,
+          "reviewed": true,
+          "observation": "高阶推演战术卡面展开，优先法术的时间预算由语音解释。",
+          "sha256": "8196073aab37310a1c2cbebaed1bdbddbc58fba7c71f7f1ee6d3722d94c1a06c"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e019",
+      "start": 1244.59,
+      "end": 1310.54,
+      "scene": "实战",
+      "timing": "后排威胁与法防前排出现时",
+      "content": "敌方能切后排则上太乙，不能则瑶补装；高法防坦克仍是风险。",
+      "background": {
+        "text": "单核攻击高不消除克制，需要读敌方接触路径与防御。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "选择针对辅助并保留策略局限。",
+        "basis": "分析推断"
+      },
+      "quote": "能够切到这个后排",
+      "segment_ids": [
+        32,
+        33
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1290-0.jpg",
+          "time": 1290.0,
+          "reviewed": true,
+          "observation": "战斗结果可见，后排威胁与高法防前排的条件由语音说明。",
+          "sha256": "21ba89fd4f9bf728cd26cf021cfed0c0844e8fccc2d720835e2ad91f7d7641b5"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e020",
+      "start": 1310.74,
+      "end": 1457.42,
+      "scene": "实战",
+      "timing": "终局资源兑现时",
+      "content": "先兑现已有资源，再用剩钱补战术牌和临时等级。",
+      "background": {
+        "text": "后期等级增量来自多项触发，具体数值不作普遍保证。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "组织终战资源顺序。",
+        "basis": "分析推断"
+      },
+      "quote": "最后把钱用完就可以了",
+      "segment_ids": [
+        34,
+        35,
+        36
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1435-0.jpg",
+          "time": 1435.0,
+          "reviewed": true,
+          "observation": "终战棋盘与护盾阵容同屏，金币已用尽，等级增量不从画面泛化。",
+          "sha256": "1bd5ddb1d37a1db5a159400aa5c5d5c2110dcedbfd13444d3769797a29e9d3ea"
+        }
+      ]
+    },
+    {
+      "id": "BV1LCew6HEhT:p1:e021",
+      "start": 1421.26,
+      "end": 1500.37,
+      "scene": "实战",
+      "timing": "遇额外百级反打单位时",
+      "content": "移除不能继续配合的低等级工具，转为保护主核的太乙瑶。",
+      "background": {
+        "text": "主核循环完成后工具与战斗辅助价值倒转；本局仅钻石段位示范。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按终局威胁更换功能位。",
+        "basis": "分析推断"
+      },
+      "quote": "已经没办法再配合的全卖掉",
+      "segment_ids": [
+        36,
+        37,
+        38
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1LCew6HEhT_p1/1470-0.jpg",
+          "time": 1470.0,
+          "reviewed": true,
+          "observation": "结算卡片过渡字幕明确补太乙瑶，低级工具退场是针对反打单位的复盘分支。",
+          "sha256": "91126a3333aed6f39e38ad96d5b39fc8985715eabeab9ad56902341b44fd712b"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "原始ASR术语和数值可能有误；未经画面确认者不作为精确机制结论。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "949e0fbe0655f63b79f40385d88cab8f00bf607cd94ba540bee4761f6c6957d7"
+}

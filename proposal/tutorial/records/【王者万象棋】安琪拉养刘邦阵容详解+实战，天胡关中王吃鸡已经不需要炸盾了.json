@@ -1,0 +1,1533 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1Jjao66ELh:p1",
+    "bvid": "BV1Jjao66ELh",
+    "part": 1,
+    "url": "https://www.bilibili.com/video/BV1Jjao66ELh/?p=1",
+    "title": "【王者万象棋】安琪拉养刘邦阵容详解+实战，天胡关中王吃鸡已经不需要炸盾了",
+    "author": "不玩游戏的老贼",
+    "published": "2026-09-30T19:45:20+08:00",
+    "duration": 3513,
+    "version": null,
+    "collected_at": "2026-10-10T02:53:42.726858+00:00",
+    "acquisition": "browser-observed-public-DASH"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        3513
+      ]
+    ],
+    "notes": "完整阅读88段纠正版；查看46张联系表截图。截图片段只证实可见界面，不以缩略小字补造数字或单位。按决策目标记录有效讲解；连续枚举机制在相同学习目标下合并。"
+  },
+  "events": [
+    {
+      "id": "BV1Jjao66ELh:p1:e001",
+      "start": 0.0,
+      "end": 86.98,
+      "scene": "模拟演示",
+      "timing": "首次介绍安琪拉技能并演示飞行器时",
+      "content": "建立神秘力量、飞行器伤害和连接英雄临时等级的关系",
+      "background": {
+        "text": "讲者用对战模拟演示新棋手，解释飞行器能够持续输出且附加等级。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "能理解资源成长如何同时影响输出与连接英雄，而非只记技能名称。",
+        "basis": "分析推断"
+      },
+      "quote": "等级的支撑这样的话呢既强化了这个飞行器的伤害也能强化这个棋子",
+      "segment_ids": [
+        1,
+        2,
+        3
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/45-0.jpg",
+          "time": 45,
+          "reviewed": true,
+          "observation": "模拟棋盘中可见英雄与飞行器；字幕说明连接绑定。",
+          "sha256": "a39af7341aa3f0cde2c728dfdc9280b6ca33ef7c4dc356c44e0edaeabbdaf07d"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e002",
+      "start": 28.89,
+      "end": 57.92,
+      "scene": "模拟演示",
+      "timing": "演示飞行器连接目标时",
+      "content": "利用重合站位避免飞行器连接错单位",
+      "background": {
+        "text": "飞行器连接距离最近的棋子，需要把效果稳定给指定单位。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会用位置关系排查技能作用对象错误。",
+        "basis": "分析推断"
+      },
+      "quote": "为了防止连接错的话,你可以把这两个重合站,这样的话肯定就绑定在他身上。",
+      "segment_ids": [
+        2
+      ],
+      "template_id": "position-binding",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/45-0.jpg",
+          "time": 45,
+          "reviewed": true,
+          "observation": "模拟棋盘展示连接示意，字幕为这样的话肯定就绑定在他身上。",
+          "sha256": "a39af7341aa3f0cde2c728dfdc9280b6ca33ef7c4dc356c44e0edaeabbdaf07d"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e003",
+      "start": 88.37,
+      "end": 259.05,
+      "scene": "前置讲解",
+      "timing": "介绍顿悟时刻及各成长方式时",
+      "content": "按阵容触发条件与成型速度比较成长方式",
+      "background": {
+        "text": "同类成长选项存在英雄数量、品阶、阵营、胜负和出牌等不同条件，高阶条件前期不能兑现。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "能比较触发难度与兑现时间，不只选择面板收益最高的选项。",
+        "basis": "分析推断"
+      },
+      "quote": "这个获得比较多,但是他条件也相对苛刻一点,前期你是出发不了的,会丢几回合的这个力量。",
+      "segment_ids": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/156-25.jpg",
+          "time": 156.25,
+          "reviewed": true,
+          "observation": "棋手技能百科右侧展开奇想高阶牌，字幕说明至少两名五阶英雄。",
+          "sha256": "f03ef94cafd6040cc8dbe23b6dcaf162fae62c95ede031a44dbb3885f2cbd40f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e004",
+      "start": 230.11,
+      "end": 315.44,
+      "scene": "前置讲解",
+      "timing": "把各成长选项应用到刘邦阵容时",
+      "content": "根据阵容预计出牌和掉血方式选择成长路径",
+      "background": {
+        "text": "讲者预期前期可能承受速攻压力，效果牌使用少，英雄牌与消耗能量更容易触发。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "用阵容实际行为评估成长收益，理解顺风与逆风选择差异。",
+        "basis": "分析推断"
+      },
+      "quote": "因为咱们这套阵容在前期是需要掉血的啊",
+      "segment_ids": [
+        9,
+        10,
+        11
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/273-91.jpg",
+          "time": 273.91,
+          "reviewed": true,
+          "observation": "技能百科右侧展开奇想补给；字幕将其与本阵容前期情况联系。",
+          "sha256": "5ca11b2a5351bb94c1f99c7a2de55349a174d7989656e892eeb057f2a3d0e631"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e005",
+      "start": 315.69,
+      "end": 371.4,
+      "scene": "前置讲解",
+      "timing": "解释秘技获得大改装并介绍二号机时",
+      "content": "解释多飞行器与瑶的配合及临时等级代价",
+      "background": {
+        "text": "本阵容带瑶，讲者说明多个飞行器能配合连接英雄持续输出，但也有等级转换的代价。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "认识组合成立条件及取舍，而非把新增数量当成无代价收益。",
+        "basis": "分析推断"
+      },
+      "quote": "这个东西主要是给这个瑶妹来使用的",
+      "segment_ids": [
+        12,
+        13
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/325-0.jpg",
+          "time": 325,
+          "reviewed": true,
+          "observation": "技能百科展示驱鬼加大力度与多个改装模块入口。",
+          "sha256": "edb976dcbb68e17d6986cb3219f6fa15892d703309af6bf6068eb8a1d7e7c48d"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e006",
+      "start": 385.18,
+      "end": 454.92,
+      "scene": "前置讲解",
+      "timing": "介绍飞行器攻击模式模块时",
+      "content": "区分范围攻击、自爆和持续输出，解释为何刘邦不选自爆路线",
+      "background": {
+        "text": "讲者介绍模块效果，同时强调刘邦这套阵容需要持续输出，自爆后飞行器本回合不再持续攻击。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会判断改装是否破坏原阵容的输出方式。",
+        "basis": "分析推断"
+      },
+      "quote": "但是一旦炸了之后,这个飞行器在本回合就没有了,它就不会再进行持续性的输出了",
+      "segment_ids": [
+        14,
+        15,
+        16
+      ],
+      "template_id": "module-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/413-73.jpg",
+          "time": 413.73,
+          "reviewed": true,
+          "observation": "百科右侧为定向毁灭模块，字幕说明刘邦不太适合自爆流。",
+          "sha256": "9a3adb4ba67056f6c7eb4c6b81e348f805fd4f1f20ca5703ce7b9242a207a35f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e007",
+      "start": 455.25,
+      "end": 513.18,
+      "scene": "前置讲解",
+      "timing": "介绍防御、保命与等级模块时",
+      "content": "将双抗、致命伤保护和等级模块对应到核心生存及质变需求",
+      "background": {
+        "text": "核心能存活才有持续输出，某些英雄还需要达到等级节点。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "区分抗性、紧急保命和等级提升分别解决的问题。",
+        "basis": "分析推断"
+      },
+      "quote": "所以说点这个保送升级的话能让这个主C等级更高,是一个比较普适的模块。",
+      "segment_ids": [
+        17,
+        18
+      ],
+      "template_id": "module-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/490-0.jpg",
+          "time": 490,
+          "reviewed": true,
+          "observation": "百科展开紧急救命模块，字幕将效果类比为名刀。",
+          "sha256": "cd4042f19706256337e56b7633c2f608277d72a955e5a08571a33d4b3b5def8f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e008",
+      "start": 514.28,
+      "end": 564.8,
+      "scene": "前置讲解",
+      "timing": "介绍持续打同一目标的增伤时",
+      "content": "把持续增伤和降低法防与肉盾内战、风筝目标联系",
+      "background": {
+        "text": "敌方目标可能很肉或持续拉扯，需要长时间保持输出。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按具体威胁判断增伤模块价值。",
+        "basis": "分析推断"
+      },
+      "quote": "尤其在大肉进行内战的时候,这个杠上的效果比较明显",
+      "segment_ids": [
+        19,
+        20
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/515-0.jpg",
+          "time": 515,
+          "reviewed": true,
+          "observation": "百科右侧展开杠上了，字幕说明连续攻击同一目标。",
+          "sha256": "06c04762cd2e9196b490fada91c74ddc6f4ad8a1cf3172b37e9c404cdf8f97c0"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e009",
+      "start": 565.25,
+      "end": 624.53,
+      "scene": "前置讲解",
+      "timing": "介绍减治疗模块时",
+      "content": "面对回血多的单位时选择针对治疗的模块",
+      "background": {
+        "text": "讲者举出回血英雄和内战作为减治疗效果更有价值的场景。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会从对手恢复能力识别针对性选择。",
+        "basis": "分析推断"
+      },
+      "quote": "打内战的时候啊,比较好用。",
+      "segment_ids": [
+        21,
+        22
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/605-0.jpg",
+          "time": 605,
+          "reviewed": true,
+          "observation": "右侧展开使绊子模块，画面字幕明确治疗效果下降。",
+          "sha256": "f41813509bf53b894944ed671e6d6ebb6b5404b2e069de38ffce0355e3e38a2f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e010",
+      "start": 625.05,
+      "end": 859.32,
+      "scene": "前置讲解",
+      "timing": "模块枚举中指出拿来吧你被削弱时",
+      "content": "解释偷等级从双向变化变为单方获得后收益降低",
+      "background": {
+        "text": "旧机制同时降低对方并提高己方；视频所述机制仅提高己方，因此旧经验需要调整。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解机制变化怎样改变选择价值。",
+        "basis": "分析推断"
+      },
+      "quote": "现在只是单纯的你获得别人不减少,所以说就不如原来那么好用了",
+      "segment_ids": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "template_id": "version-change",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/820-0.jpg",
+          "time": 820,
+          "reviewed": true,
+          "observation": "百科右侧展开拿来吧你，字幕说明仍是可拿选项；不据此确认当前官网版本。",
+          "sha256": "dca21fdfba5e62b4d337d00525f8d8779ae85ecc049685ed070b47df75cdf513"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e011",
+      "start": 859.84,
+      "end": 907.92,
+      "scene": "前置讲解",
+      "timing": "说明继承法术攻击面板的模块适配时",
+      "content": "区分法术伤害来源与英雄自身法术攻击面板",
+      "background": {
+        "text": "讲者对比刘邦、芈月和廉颇，指出伤害类型不等于可以继承的面板属性。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "避免用法术伤害这一标签错误推导装备或模块适配。",
+        "basis": "分析推断"
+      },
+      "quote": "他虽然说炸盾伤害是法术伤害,但那是扁鹊给他的",
+      "segment_ids": [
+        31,
+        32
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/900-0.jpg",
+          "time": 900,
+          "reviewed": true,
+          "observation": "百科展示模块列表；画面右侧已切换坐火箭，不作为法术面板数值证明。",
+          "sha256": "b55bd974968fd51e99bff1ca3f450bb5b9bae5b93bd6d49f3f2b932e4e37f699"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e012",
+      "start": 908.28,
+      "end": 1078.56,
+      "scene": "前置讲解",
+      "timing": "完成模块介绍后汇总本阵容可选项时",
+      "content": "按刘邦生存、等级、伤害和工具人特征建立模块优先级",
+      "background": {
+        "text": "讲者不再逐项读效果，而是回到刘邦与瑶及脆皮工具人的阵容构筑，排除自爆并比较优先级。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会把机制资料转换成阵容内的选择规则。",
+        "basis": "分析推断"
+      },
+      "quote": "壮胆的话优先要考虑拿给这个刘邦提供一个抗击让他更肉",
+      "segment_ids": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "template_id": "module-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/923-14.jpg",
+          "time": 923.14,
+          "reviewed": true,
+          "observation": "百科右侧展开壮胆，字幕为给刘邦提供抗性。",
+          "sha256": "3ef29324cb16a2079976494d81aef47b95db74402f9167031df5dc5349efbe8c"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e013",
+      "start": 1054.76,
+      "end": 1115,
+      "scene": "前置讲解",
+      "timing": "说明六级大招并转入基本流程时",
+      "content": "解释速六能同时获得改装和核心临时等级",
+      "background": {
+        "text": "大招带来额外模块，并随真实等级提供临时等级，升级能够直接增强核心战力。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解升阶的战力理由，不把速六当成无条件口令。",
+        "basis": "分析推断"
+      },
+      "quote": "加一个大改装,你的战斗力会更强一些。",
+      "segment_ids": [
+        38,
+        39
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1115-0.jpg",
+          "time": 1115,
+          "reviewed": true,
+          "observation": "画面已切到阵容编辑的前期页；用于展示该段转入流程，技能数字仅依照原话。",
+          "sha256": "272e4f0e59c0881221b4b0ffe4880014feea8d70e5dc4362cffbec896e22f801"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e014",
+      "start": 1105.19,
+      "end": 1132.83,
+      "scene": "前置讲解",
+      "timing": "介绍开局与前几回合过渡时",
+      "content": "用牛魔承伤、干将和飞行器输出解释开局分工",
+      "background": {
+        "text": "初期需要稳定战力，再补过渡英雄并向下一阶段升级。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按承伤与输出职责理解开局结构。",
+        "basis": "分析推断"
+      },
+      "quote": "牛魔在前面扛,然后把这个飞行器挂给干将",
+      "segment_ids": [
+        40
+      ],
+      "template_id": "opening-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1115-0.jpg",
+          "time": 1115,
+          "reviewed": true,
+          "observation": "阵容编辑前期页展示牛魔与后排英雄分布；字幕说明牛魔在前面扛。",
+          "sha256": "272e4f0e59c0881221b4b0ffe4880014feea8d70e5dc4362cffbec896e22f801"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e015",
+      "start": 1133.78,
+      "end": 1162.85,
+      "scene": "前置讲解",
+      "timing": "规划第一轮拍卖时",
+      "content": "按关键英雄获取难度安排第一轮拍卖优先级",
+      "background": {
+        "text": "讲者认为升到高等级后鬼谷子更难刷新获得，因此拍卖要提前解决关键构筑。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "把拍卖资源用于后续最难补齐的瓶颈。",
+        "basis": "分析推断"
+      },
+      "quote": "鬼谷子的优先级更高一点,因为咱们升到高级的话,地这个鬼谷子不太好地。",
+      "segment_ids": [
+        41
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1145-0.jpg",
+          "time": 1145,
+          "reviewed": true,
+          "observation": "阵容编辑前期页右侧显示明世隐，字幕继续介绍辅助英雄顺序。",
+          "sha256": "aad2db5e5b5e0f6e84f7f50d1a23cc2fc53fb8414510b6512346114cee902cd0"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e016",
+      "start": 1164.37,
+      "end": 1220.32,
+      "scene": "前置讲解",
+      "timing": "介绍首张刘邦与觉醒前后的买牌顺序时",
+      "content": "按核心到手和觉醒节点控制辅助牌投入",
+      "background": {
+        "text": "没有核心时辅助成长未能有效兑现，讲者要求保留钱，不在辅助重复买牌上乱花。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会依核心成型节点调整资源优先级。",
+        "basis": "分析推断"
+      },
+      "quote": "在他觉醒之前尽量不要乱花钱除了这个明世隐以外,不要乱拿",
+      "segment_ids": [
+        42,
+        43
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1180-0.jpg",
+          "time": 1180,
+          "reviewed": true,
+          "observation": "阵容编辑中期页，字幕说明明世隐多多益善。",
+          "sha256": "1efd4443b5998f4fc40ad41a1c53385c6dbbebac8f6340f8b2b84e486c77fc65"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e017",
+      "start": 1193.39,
+      "end": 1248.08,
+      "scene": "前置讲解",
+      "timing": "四级获得首张刘邦后判断升五时",
+      "content": "核心开始吃图腾等级且场面可稳时升级获取额外人口与找牌条件",
+      "background": {
+        "text": "刘邦到手使图腾和等级转化开始兑现；升五还可增加辅助与改善找牌。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "用战力和新增收益判断升级窗口。",
+        "basis": "分析推断"
+      },
+      "quote": "咱们升到五级之后,首先能多一个人口挂上扁鹊",
+      "segment_ids": [
+        43,
+        44
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1235-0.jpg",
+          "time": 1235,
+          "reviewed": true,
+          "observation": "阵容编辑后期页展示辅助位置，字幕说明稳住质量与稳血。",
+          "sha256": "cb28333486e3f6b2d65bdf714d2ee2ba5b824ea66a006dcea9e3ae546f29b03f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e018",
+      "start": 1249.38,
+      "end": 1273.85,
+      "scene": "前置讲解",
+      "timing": "核心辅助来得晚或少时",
+      "content": "明世隐不足时用云中君补稳定等级成长",
+      "background": {
+        "text": "原定转化辅助可能不足，需要替代成长来源。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按缺失的功能找替代，而非只记英雄名单。",
+        "basis": "分析推断"
+      },
+      "quote": "明世隐这个地方如果来的晚来的少,咱们用云中君代替他。",
+      "segment_ids": [
+        45
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1255-0.jpg",
+          "time": 1255,
+          "reviewed": true,
+          "observation": "后期阵容编辑页，字幕为明世隐这个地方，画面示意辅助位置。",
+          "sha256": "a6bd1a7f99f7e91f7e489c6fd66428f73cffe92b0942bb89f7619a1e56cb8315"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e019",
+      "start": 1249.38,
+      "end": 1304.71,
+      "scene": "前置讲解",
+      "timing": "刷等级接近完成、准备终局时",
+      "content": "后期把成长位置换成太乙真人以应对决战",
+      "background": {
+        "text": "人口有限时，持续成长辅助与终局复活单位存在位置竞争。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "识别从发育目标切换到即时战力的阶段。",
+        "basis": "分析推断"
+      },
+      "quote": "已经开始进入决赛圈了,准备打决战的时候,换成太乙真人。",
+      "segment_ids": [
+        45,
+        46
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1265-0.jpg",
+          "time": 1265,
+          "reviewed": true,
+          "observation": "后期阵容编辑中一个英雄位置被调整，字幕强调这两个人的位置。",
+          "sha256": "4d64ff863316c55585d8f72afa4b8d32097290bbe439613788cc2db610401f80"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e020",
+      "start": 1265,
+      "end": 1332.45,
+      "scene": "前置讲解",
+      "timing": "五级刷新几次仍不来刘邦时",
+      "content": "停止低收益死刷，存钱升六再找牌",
+      "background": {
+        "text": "升六同时提供大招战力与更好的找牌条件，能够缓解当前阶段不来核心的问题。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会在找牌受阻时比较刷新和升级的机会成本。",
+        "basis": "分析推断"
+      },
+      "quote": "不要在5级的时候玩命死递,如果实在递不出来的话,咱们就存两拨钱直接拉6啊",
+      "segment_ids": [
+        46,
+        47
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1265-0.jpg",
+          "time": 1265,
+          "reviewed": true,
+          "observation": "画面仍在后期阵容编辑演示；截图不证明实战有固定刷新次数。",
+          "sha256": "4d64ff863316c55585d8f72afa4b8d32097290bbe439613788cc2db610401f80"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e021",
+      "start": 1305.23,
+      "end": 1362.73,
+      "scene": "前置讲解",
+      "timing": "解释刘邦常规装备组合时",
+      "content": "将输出、免控、法术成长和盾爆需求对应到装备",
+      "background": {
+        "text": "讲者先说明刘邦有普攻与盾爆等伤害来源，再解释不同装备的作用。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解装备如何解决不同需求。",
+        "basis": "分析推断"
+      },
+      "quote": "纯净苍穹给他提供一个免控,同时每两秒能获得法术攻击力。",
+      "segment_ids": [
+        47,
+        48
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1338-0.jpg",
+          "time": 1338,
+          "reviewed": true,
+          "observation": "阵容编辑页展开纯净苍穹提示，右侧展示刘邦。",
+          "sha256": "d775ba8501d061616eec5be4568837b1e4ad24e91ef192095c89003d119f235d"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e022",
+      "start": 1332.83,
+      "end": 1393.65,
+      "scene": "前置讲解",
+      "timing": "给瑶等辅助分配装备时",
+      "content": "辅助等级不足以分享属性时，优先提供保命和团队作用",
+      "background": {
+        "text": "讲者认为本构筑瑶的等级上限不易提高，不应按照高等级属性分享思路配装。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按辅助实际能发挥的作用分配装备。",
+        "basis": "分析推断"
+      },
+      "quote": "所以说咱们不考虑她分香属性的问题给她做装备的时候",
+      "segment_ids": [
+        48,
+        49,
+        50
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1383-0.jpg",
+          "time": 1383,
+          "reviewed": true,
+          "observation": "阵容编辑页展开近卫荣耀提示，右侧展示瑶，字幕说明增加双抗。",
+          "sha256": "62182c9c755c0aa79eceb23fab0646e16f1ba75ffef5c6edb78e7f41e63e760c"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e023",
+      "start": 1421.74,
+      "end": 1480.44,
+      "scene": "前置讲解",
+      "timing": "说明铜色天赋与阵容构筑关系时",
+      "content": "优先考虑能覆盖多张必需卡或在合适等级找核心的奖励",
+      "background": {
+        "text": "大河新援能对应多个构筑英雄，定向资源要在适合找刘邦的阶段使用。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "以有效覆盖和使用时机评估经济奖励。",
+        "basis": "分析推断"
+      },
+      "quote": "因为咱们有四张卡啊,就是鬼谷子、少司缘、瑶妹、云中君啊,都是咱们的购注卡",
+      "segment_ids": [
+        51,
+        52
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1440-0.jpg",
+          "time": 1440,
+          "reviewed": true,
+          "observation": "天赋百科右侧显示大河新援，字幕列出本阵容构筑成员。",
+          "sha256": "ae6892832fd8ce998c3a6b158c02ae2e60342e4136f527315f36215b104746f1"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e024",
+      "start": 1451.41,
+      "end": 1507.43,
+      "scene": "前置讲解",
+      "timing": "解释复印机配合等级辅助时",
+      "content": "复制云中君或明世隐以重复兑现等级成长",
+      "background": {
+        "text": "飞行器提供临时等级，明世隐可转化；云中君也能提供稳定成长。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解复制资源为什么要投向成长链的关键节点。",
+        "basis": "分析推断"
+      },
+      "quote": "咱们可以用复印机去复印小明,然后多次打出。",
+      "segment_ids": [
+        52,
+        53
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1465-93.jpg",
+          "time": 1465.93,
+          "reviewed": true,
+          "observation": "天赋百科展开复印机，字幕说明每回合能多加等级。",
+          "sha256": "0ee203517f9c7f502e0f706868875c856fbfb9beea1a68d3c90aec4d754ac3b1"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e025",
+      "start": 1480.8,
+      "end": 1536.51,
+      "scene": "前置讲解",
+      "timing": "评估整装待发经济天赋时",
+      "content": "把暂不上辅助牌的运营顺序与经济天赋收益结合",
+      "background": {
+        "text": "刘邦到手前辅助可以留在手里，契合若干回合不上牌的条件。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "从实际行动计划判断天赋收益是否可兑现。",
+        "basis": "分析推断"
+      },
+      "quote": "所以说整装待发能吃很多回合啊",
+      "segment_ids": [
+        53,
+        54
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1530-0.jpg",
+          "time": 1530,
+          "reviewed": true,
+          "observation": "天赋百科右侧展开整装待发，字幕明确多回合收益。",
+          "sha256": "4fc3df20ee22ecfeefa5455ac27edfca4b926611fe497cb72513c5af9b5c17fb"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e026",
+      "start": 1536.92,
+      "end": 1562.88,
+      "scene": "前置讲解",
+      "timing": "识别刘邦难接近后排的缺点时",
+      "content": "选择能接近后排的效果解决近战被风筝问题",
+      "background": {
+        "text": "刘邦输出距离短，难威胁后排射手和法师。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按核心的攻击距离瓶颈寻找针对手段。",
+        "basis": "分析推断"
+      },
+      "quote": "他是很难威胁到对方后排的,容易被射手、法师封整。",
+      "segment_ids": [
+        55
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1550-0.jpg",
+          "time": 1550,
+          "reviewed": true,
+          "observation": "天赋百科右侧展示班叔的遗留物；字幕谈射手和法师的风筝问题。",
+          "sha256": "01a2964445d07f00dd31fe84c10e20d8797ae39028b00c51d64309eaa70cb6c4"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e027",
+      "start": 1563.11,
+      "end": 1621.98,
+      "scene": "前置讲解",
+      "timing": "判断额外人口的价值时",
+      "content": "区分人口是否增加核心成长与是否提供功能位置",
+      "background": {
+        "text": "核心主要依靠已有图腾成长，额外人口不一定显著增加等级，但可容纳辅助和打出位。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "用功能而非人口数量本身评估收益。",
+        "basis": "分析推断"
+      },
+      "quote": "你额外的人口也给他加不了太多的等级",
+      "segment_ids": [
+        56,
+        57
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1577-84.jpg",
+          "time": 1577.84,
+          "reviewed": true,
+          "observation": "天赋百科显示人口类选项，字幕说明三个图腾。",
+          "sha256": "6a26438e99afc552cb7ef453e1c0193f4b299638a615ed75ca54f3d14eb1d057"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e028",
+      "start": 1593.17,
+      "end": 1649.59,
+      "scene": "前置讲解",
+      "timing": "根据敌方风筝射手选天赋时",
+      "content": "针对风筝目标考虑追击能力，并按对手阵容选择",
+      "background": {
+        "text": "敌方射手可能让近战核心无法持续攻击。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学习把对手阵容转化为具体反制需求。",
+        "basis": "分析推断"
+      },
+      "quote": "首先根据这个对方阵容来进行一个选择",
+      "segment_ids": [
+        57,
+        58
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1607-58.jpg",
+          "time": 1607.58,
+          "reviewed": true,
+          "observation": "天赋百科右侧展开破妄之刃，字幕明确风筝流射手。",
+          "sha256": "e312b9bc3a39f8b5b7f67bc9b942b5aac0403bd80e70af7f763ead4655f14d11"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e029",
+      "start": 1622.38,
+      "end": 1676.52,
+      "scene": "前置讲解",
+      "timing": "解释图腾相关天赋时",
+      "content": "增加图腾个数能够放大刘邦的等级成长来源",
+      "background": {
+        "text": "刘邦主要通过摧毁图腾获得等级，多一个有效图腾意味着增加可兑现成长。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会识别能增强核心成长引擎的资源。",
+        "basis": "分析推断"
+      },
+      "quote": "刘邦这个加等级的主要方式就是来摧毁图腾",
+      "segment_ids": [
+        58,
+        59
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1650-0.jpg",
+          "time": 1650,
+          "reviewed": true,
+          "observation": "天赋百科字幕为图腾起灵，画面展示银色天赋列表。",
+          "sha256": "f5162a7de586bfa99cd89a2d257e6e1b121030360a0d72178adc136289971669"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e030",
+      "start": 1677.12,
+      "end": 1731.62,
+      "scene": "前置讲解",
+      "timing": "比较末世、征服之剑等回复来源时",
+      "content": "根据普攻频率与伤害构成选择能实际回血的效果",
+      "background": {
+        "text": "刘邦有频繁普攻，但讲者指出主要伤害构成与某些物理吸血装备并不匹配。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "区分攻击行为、伤害类型和吸血触发条件。",
+        "basis": "分析推断"
+      },
+      "quote": "他普攻的次数比较多,能很好触发他的吸血效果。",
+      "segment_ids": [
+        60,
+        61
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/repair-1705-browser.jpg",
+          "time": 1724.771276,
+          "reviewed": true,
+          "observation": "原视频暂停在28:45附近，天赋列表与右侧效果说明可见，字幕讨论回血难度；普攻频次与吸血关系依同期原话。",
+          "sha256": "99c76b5a7c87cc2550e7b559ace4f91f35c76e80c0b2d89e6c2d85081eabcc2f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e031",
+      "start": 1736.62,
+      "end": 1796.08,
+      "scene": "前置讲解",
+      "timing": "解释虚妄转生为何适配单核心刘邦时",
+      "content": "将额外图腾成长和高等级核心复制联系起来",
+      "background": {
+        "text": "图腾可被核心开场摧毁并提供等级，召唤出的单位又能复制已有核心优势。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解一项资源为什么能同时加强成长与战场数量。",
+        "basis": "分析推断"
+      },
+      "quote": "相当于你有一个双倍的刘邦",
+      "segment_ids": [
+        62,
+        63
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1755-0.jpg",
+          "time": 1755,
+          "reviewed": true,
+          "observation": "金色天赋列表右侧展开虚妄转生，字幕说明开场摧毁图腾。",
+          "sha256": "a2d2ed9ca577d79e4757ea82f5efb544b90fd2b0278082b0d6b9b182b134fc37"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e032",
+      "start": 1767.1,
+      "end": 1796.08,
+      "scene": "前置讲解",
+      "timing": "效果牌讲解中比较明世隐与云中君时",
+      "content": "结合唤醒和临时等级转化判断成长辅助价值",
+      "background": {
+        "text": "明世隐多且唤醒多时转化效率更好，来牌不足时仍可使用稳定替代。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解辅助强度取决于组合资源，而非固定排名。",
+        "basis": "分析推断"
+      },
+      "quote": "如果来的多,然后唤醒也多,这个时候呢,小明的效果是完爆云中君的。",
+      "segment_ids": [
+        63
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1790-0.jpg",
+          "time": 1790,
+          "reviewed": true,
+          "observation": "效果牌百科右侧展开唤醒。",
+          "sha256": "a6e9df023e98b16a0cab11e5d0ea9227d6d54f2793e1b27fec9713aa20cea654"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e033",
+      "start": 1798.16,
+      "end": 1875.85,
+      "scene": "前置讲解",
+      "timing": "规划第三轮拍卖且刘邦尚未觉醒时",
+      "content": "优先解决核心觉醒瓶颈，再考虑其他成长资源",
+      "background": {
+        "text": "讲者认为觉醒早晚决定成长启动，若已觉醒则拍卖优先级不同。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会根据成型状态动态排序拍卖奖励。",
+        "basis": "分析推断"
+      },
+      "quote": "除非你在第三轮拍卖前已经觉醒了,否则看见这个天籁琴音一定要拿。",
+      "segment_ids": [
+        64,
+        65,
+        66
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1828-0.jpg",
+          "time": 1828,
+          "reviewed": true,
+          "observation": "效果牌百科右侧展示天籁琴音，字幕明确已觉醒这一例外条件。",
+          "sha256": "1759f6369f5e8e58c52d8fd71819f99efaad371628fa75edd3ed0cc147e01dca"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e034",
+      "start": 1849.29,
+      "end": 1911.45,
+      "scene": "前置讲解",
+      "timing": "缺核心觉醒进度但有复制资源时",
+      "content": "必要时集中资源觉醒核心，再补回功能辅助",
+      "background": {
+        "text": "核心不觉醒时成长无法跟上，讲者提出卖辅助再复制核心的有条件备选。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解关键瓶颈优先于维持完整辅助阵容的情况。",
+        "basis": "分析推断"
+      },
+      "quote": "然后用这个超级复印机去觉醒刘邦,再把那些图腾子递回来也是可以考虑的啊。",
+      "segment_ids": [
+        66,
+        67
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1860-0.jpg",
+          "time": 1860,
+          "reviewed": true,
+          "observation": "效果牌百科展开超级复印机，字幕强调刘邦不觉醒的风险。",
+          "sha256": "b22b156abb9b103fdb8b87126e3d663ebaf67f188d0ffda1476ea7299ac04abf"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e035",
+      "start": 1914.16,
+      "end": 2087.64,
+      "scene": "实战",
+      "timing": "实战模块决策后补充解释旧机制时",
+      "content": "说明被削弱的等级模块仍可在接近等级质变时使用",
+      "background": {
+        "text": "讲者把模块变化关联到廉颇等需要跨等级节点的英雄，指出削弱不等于完全无效。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按当前需求重估旧强势选项。",
+        "basis": "分析推断"
+      },
+      "quote": "他有可能在战斗中吸着吸着就已经过100级了这样的话就形成一个质变",
+      "segment_ids": [
+        68,
+        69
+      ],
+      "template_id": "version-change",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/1958-59.jpg",
+          "time": 1958.59,
+          "reviewed": true,
+          "observation": "实战早期棋盘战斗；这里只证明当时实战场景，廉颇为讲者举例。",
+          "sha256": "eb2355f95d6c24a8103a528b6b234f67e195d2a8ced105a41845516354a52648"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e036",
+      "start": 2089.22,
+      "end": 2278.88,
+      "scene": "实战",
+      "timing": "拍卖奖励与构筑选择出现时",
+      "content": "优先确定的组合收益，比较赌核心来牌的替代奖励",
+      "background": {
+        "text": "虚妄转生适配当前阵容，讲者只在没有该选项时考虑猎头赌刘邦。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "比较确定收益与概率收益，并保留替代条件。",
+        "basis": "分析推断"
+      },
+      "quote": "如果没有这个虚妄转生的话,我还真想拿那个。",
+      "segment_ids": [
+        70,
+        71
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2105-0.jpg",
+          "time": 2105,
+          "reviewed": true,
+          "observation": "实战奖励选择的红色过渡画面；不从过渡画面补造奖励数值。",
+          "sha256": "d356048f652a5e9e4022dd47517a9c298c0c07e29306877d0c4696c26c4a7ca7"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e037",
+      "start": 2135.83,
+      "end": 2313.75,
+      "scene": "实战",
+      "timing": "实战获得缩短刘邦觉醒进度的奖励时",
+      "content": "利用觉醒进度奖励减少需要找到的核心数量",
+      "background": {
+        "text": "讲者明确说明奖励能减少所需刘邦张数，随后集中找核心与构筑成员。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会把奖励效果转换为当前找牌目标。",
+        "basis": "分析推断"
+      },
+      "quote": "这样咱们找三张刘邦就够了。",
+      "segment_ids": [
+        71,
+        72
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2296-82.jpg",
+          "time": 2296.82,
+          "reviewed": true,
+          "observation": "实战商店展开英雄牌，场上已有核心与辅助。",
+          "sha256": "a5f7266bb798541fad74d404526f50f32b7fbb047286afd6a9c0769853767572"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e038",
+      "start": 2360.75,
+      "end": 2537.01,
+      "scene": "实战",
+      "timing": "已有首张刘邦但还在补关键辅助时",
+      "content": "核心已到手时可考虑升五，继续刷新需有明确补牌目标",
+      "background": {
+        "text": "讲者说明刷新主要为了少司缘，刘邦只顺手找，不将所有资源耗在同一等级。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "区分核心已达升级条件与仍需解决的辅助瓶颈。",
+        "basis": "分析推断"
+      },
+      "quote": "有一张的话咱们其实已经可以考虑拉五了,主要是想递一个少司缘",
+      "segment_ids": [
+        73,
+        74
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2495-0.jpg",
+          "time": 2495,
+          "reviewed": true,
+          "observation": "实战棋盘可见多名辅助和核心；画面没有明确保证所有英雄名称。",
+          "sha256": "259703f754dee322981cdaf4cef91eed050c9de9bcf9e9aaadf622163738a960"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e039",
+      "start": 2481.74,
+      "end": 2578.78,
+      "scene": "实战",
+      "timing": "发现逐鹿被禁、找不到扁鹊后",
+      "content": "确认缺少炸盾，并改用等级成长与普攻承接伤害",
+      "background": {
+        "text": "原构筑需要扁鹊提供炸盾，但讲者在实战发现禁逐鹿。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解失去的功能和仍成立的替代伤害来源。",
+        "basis": "分析推断"
+      },
+      "quote": "禁逐鹿就是没有炸盾了嘛,对吧,也行咱依靠咱那个高等级加上一个普攻伤害",
+      "segment_ids": [
+        74,
+        75
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2545-0.jpg",
+          "time": 2545,
+          "reviewed": true,
+          "observation": "实战战斗画面；禁用信息依据前后原话，截图不单独证明被禁阵营。",
+          "sha256": "239982481da2079b9a4b84b24743f9b491da92c84de340f6016f66f06d7ad3e3"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e040",
+      "start": 2581.57,
+      "end": 2691.7,
+      "scene": "实战",
+      "timing": "缺少炸盾后重新评估护命灵珠时",
+      "content": "原用途受影响时，按保命与补伤重新评估装备价值",
+      "background": {
+        "text": "没有炸盾降低部分配合收益，但保命效果和其他伤害补充仍可发挥作用。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "掌握条件变化后重新审视装备的办法。",
+        "basis": "分析推断"
+      },
+      "quote": "但是现在的话也可以考虑拿啊,提升一个容错",
+      "segment_ids": [
+        76,
+        77
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2625-0.jpg",
+          "time": 2625,
+          "reviewed": true,
+          "observation": "实战棋盘仍围绕核心和辅助展开，装备具体效果以讲解为依据。",
+          "sha256": "e69a26adac2921ac614fa5172a6f7643d4ac7c6bfb3aea849da00ac8ba10d064"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e041",
+      "start": 2618.45,
+      "end": 2759.26,
+      "scene": "实战",
+      "timing": "调整禁逐鹿条件下的后续发育时",
+      "content": "增加成长辅助并利用飞行器弥补缺少炸盾",
+      "background": {
+        "text": "失去扁鹊后释放辅助位置，核心来牌较顺，仍可提高等级并补输出。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "把缺失功能拆成可补偿的资源需求。",
+        "basis": "分析推断"
+      },
+      "quote": "我们现在依靠这个飞行器补充一点伤害",
+      "segment_ids": [
+        77,
+        78
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2720-0.jpg",
+          "time": 2720,
+          "reviewed": true,
+          "observation": "实战棋盘中核心与多个辅助同场，存在飞行器；具体英雄配置以原话为准。",
+          "sha256": "273a34031bcf3a2dee75cf975e099d4df7b921510f0c40cc9a1880dbaa86aa9a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e042",
+      "start": 2759.63,
+      "end": 2957.82,
+      "scene": "实战",
+      "timing": "核心觉醒启动后准备存钱升级时",
+      "content": "由找觉醒核心切换到存钱升六，解释启动快的战力价值",
+      "background": {
+        "text": "刘邦已经觉醒，讲者回顾早觉醒为何能更快形成等级优势。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "识别瓶颈解除后的目标切换。",
+        "basis": "分析推断"
+      },
+      "quote": "咱直接可以存钱了,准备上溜了",
+      "segment_ids": [
+        79,
+        80
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2900-0.jpg",
+          "time": 2900,
+          "reviewed": true,
+          "observation": "实战进入拍卖会，字幕没有显示；升级意图依据前后讲解。",
+          "sha256": "dcdfa558b6bbcba64699e2593a4c4648aa8dd8f73727280f4778d43a3b2998e3"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e043",
+      "start": 2958.18,
+      "end": 3006.85,
+      "scene": "实战",
+      "timing": "技能加持与秒变脆皮二选一时",
+      "content": "即使没有炸盾，也按现有技能伤害选择降低法防的模块",
+      "background": {
+        "text": "实际对局缺炸盾，但核心仍有技能法术伤害，不能因此把降法防认定为无效。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按当前真实伤害构成判断模块适配。",
+        "basis": "分析推断"
+      },
+      "quote": "但是咱那个技能是有一定法伤的啊。",
+      "segment_ids": [
+        81
+      ],
+      "template_id": "module-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/2982-51.jpg",
+          "time": 2982.51,
+          "reviewed": true,
+          "observation": "画面明确显示技能加持和秒变脆皮两个模块选择。",
+          "sha256": "b8d3f1a9adba11825dfa193c2bbe68a54b8a903b8aa211a6909b8c2afb777839"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e044",
+      "start": 3013.78,
+      "end": 3098.02,
+      "scene": "实战",
+      "timing": "一场战斗伤害差一点未能结束时",
+      "content": "用战斗反馈复核缺少炸盾造成的伤害差距",
+      "background": {
+        "text": "讲者判断缺少炸盾使收尾伤害不足，同时看到飞行器争取到更多输出时间。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "把战斗结果连回伤害结构，而非只归因运气。",
+        "basis": "分析推断"
+      },
+      "quote": "差两刀吧没有那个炸盾啊,有炸盾的话早赢了",
+      "segment_ids": [
+        82
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/repair-3050-browser.jpg",
+          "time": 3069.474615,
+          "reviewed": true,
+          "observation": "原视频暂停在51:10附近，战斗伤害与回复数字可见；缺少炸盾造成差距为讲者对该战斗的复盘，不由单帧推算伤害。",
+          "sha256": "a5bc1526339bb4b3f7379614c010bb0cc2fb194388a02cfc5dde8571b3330597"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e045",
+      "start": 3104.33,
+      "end": 3256.64,
+      "scene": "实战",
+      "timing": "追太乙真人并说明刷等级与终局切换时",
+      "content": "成长阶段保留成长配置，最后几回合再换复活辅助",
+      "background": {
+        "text": "人口有限，早上终局单位可能占用成长位置；是否有扁鹊也影响配置。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "理解阶段目标对辅助取舍的影响。",
+        "basis": "分析推断"
+      },
+      "quote": "就是差不多最后几回合的时候就可以换了",
+      "segment_ids": [
+        83,
+        84
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/3226-68.jpg",
+          "time": 3226.68,
+          "reviewed": true,
+          "observation": "实战商店显示不同英雄，仍在补充后期辅助。",
+          "sha256": "a90d38cfbacca3022a3927a0f22287a8aebfaeaa4c2247e5d8113b2686c69908"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e046",
+      "start": 3283.6,
+      "end": 3373.88,
+      "scene": "实战",
+      "timing": "后期再次复核装备需求时",
+      "content": "无炸盾时降低不死鸟之眼需求，把剩余资源投入等级成长",
+      "background": {
+        "text": "原盾爆配装理由已变化，现有保命装备能工作，讲者认为继续找成长更有价值。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "按实际瓶颈调整后期装备和资源优先级。",
+        "basis": "分析推断"
+      },
+      "quote": "感觉咱们如果没有炸盾的话不太需要那个不死鸟之眼了",
+      "segment_ids": [
+        85
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/repair-3300-browser.jpg",
+          "time": 3332.657327,
+          "reviewed": true,
+          "observation": "原视频暂停在无炸盾装备取舍讲解时，场上阵容、战斗与手牌可见；不死鸟之眼需求降低依讲者说明，装备收益数值不从截图推测。",
+          "sha256": "276cb8d217b4d207d71b0bb59c66354a2d4a63b41fe8e9be35ffdbd9b79d2154"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e047",
+      "start": 3380.62,
+      "end": 3488.49,
+      "scene": "实战",
+      "timing": "对手转出吕布后安排应对时",
+      "content": "观察对手关键输出变化，考虑用钟馗降低等级",
+      "background": {
+        "text": "讲者指出对手转成吕布，随后明确提出钟馗作为针对对象的手段。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "学会在对手调整后重新确定针对目标。",
+        "basis": "分析推断"
+      },
+      "quote": "我来个钟馗。我降你吕布等级。",
+      "segment_ids": [
+        86,
+        87
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/3400-0.jpg",
+          "time": 3400,
+          "reviewed": true,
+          "observation": "双方战斗前棋盘，敌方阵容与己方核心可见；吕布身份依据讲者识别，不从小头像猜测。",
+          "sha256": "dc2ab46469b12a5854f4cb53150a1caebe3ac6340d9b333f491f9d3b02d6e59a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Jjao66ELh:p1:e048",
+      "start": 3439.25,
+      "end": 3507.6,
+      "scene": "实战",
+      "timing": "终局战斗结束并总结时",
+      "content": "结合护盾、复活和加时解释这局生存优势，同时保留来牌条件",
+      "background": {
+        "text": "讲者认为对方难破护盾，而己方仍有复活，最终获胜后强调拍卖奖励和来牌需要给力。",
+        "basis": "明确说明"
+      },
+      "goal": {
+        "text": "把获胜原因与适用条件一起记住，不泛化为固定必胜阵容。",
+        "basis": "分析推断"
+      },
+      "quote": "但是前提是发拍员得给力点。",
+      "segment_ids": [
+        87,
+        88
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Jjao66ELh_p1/3490-0.jpg",
+          "time": 3490,
+          "reviewed": true,
+          "observation": "战斗结束后的空棋盘与残留效果可见；胜负依据本段讲解，不凭空棋盘单独判断。",
+          "sha256": "8c78a98cedb57772f025bc15282e23b8591f73f4a6d1290854a04c71aed52c1c"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "部分口语卡名仍有误识别候选，事件避用不能确认的卡名；学习目标为分析推断。",
+    "视频所述禁逐鹿应变依赖这局刘邦来牌顺利，不推导为所有禁逐鹿情况下都适合该完整阵容。",
+    "1393.65–1421.74等转写间隔保留在全文，未确认其中是否存在漏语音。"
+  ],
+  "transcript_sha256": "65aedaf1a940c1ea396ee342f428866c204d43ecf47a00abbefb4835ac7c24e8"
+}

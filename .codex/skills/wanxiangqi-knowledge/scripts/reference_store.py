@@ -175,6 +175,9 @@ def enrich_meta(meta, rows):
                          'derived_dependency': True, 'explicit_required': f in explicit_required,
                          'explicit_condition': previous or None}
     result['ban_conditions'] = list(conditions.values())
+    if result.get('late_variants'):
+        from tactics import enrich
+        result = enrich(result, rows)
     return result
 
 

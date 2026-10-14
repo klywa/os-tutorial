@@ -1,0 +1,842 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1wihk6qEHK:p1",
+    "bvid": "BV1wihk6qEHK",
+    "part": 1,
+    "title": "昭君也是公式棋手，公式化吃鸡流程",
+    "requested_title": "昭君也是公式棋手，公式化吃鸡流程",
+    "url": "https://www.bilibili.com/video/BV1wihk6qEHK/?p=1",
+    "author": "王者万象棋奇妙",
+    "duration": 1656,
+    "published": "2026-09-22 11:53:35"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1656
+      ]
+    ],
+    "notes": "44段完整阅读，26有效教学事件逐条核对真实截图；向下变换的错误及当场撤回均保留；不做ASR修正。"
+  },
+  "events": [
+    {
+      "id": "BV1wihk6qEHK:p1:e001",
+      "start": 60.86,
+      "end": 126.22,
+      "scene": "实战",
+      "timing": "前期选择冻结目标",
+      "content": "冻苏烈白嫖等级，冻孙尚香白嫖刷新，优先有退场收益的英雄",
+      "background": {
+        "text": "昭君会冻走单位，冻谁决定能否额外得到资源",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "让棋手被动与英雄退场机制联动",
+        "basis": "分析推断"
+      },
+      "quote": "一个白嫖两级一个白嫖刷新",
+      "segment_ids": [
+        2,
+        3
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/90-0.jpg",
+          "time": 90,
+          "reviewed": true,
+          "observation": "第一回合战斗，前排已冻结，字幕说明冻结孙尚香白嫖免费刷新。",
+          "sha256": "067778a70e598e43f640dac79cc2f703a74d75e8288e690f65605cf9c6968c5b"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e002",
+      "start": 92.27,
+      "end": 173.26,
+      "scene": "实战",
+      "timing": "前期可能输时拿先苦后甜",
+      "content": "先苦后甜让早期输战转成资源，选择按预期胜负评估",
+      "background": {
+        "text": "讲者拿天赋后担心自己反而赢，说明需要符合触发条件",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据实际触发概率评价经济天赋",
+        "basis": "分析推断"
+      },
+      "quote": "输了是先苦后甜",
+      "segment_ids": [
+        3,
+        4
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/150-0.jpg",
+          "time": 150,
+          "reviewed": true,
+          "observation": "第二回合战斗与伤害统计可见，先苦后甜经济条件由语音说明。",
+          "sha256": "d3b5c08d1c3a0e8d5c4caaf4f5c3cbbf66a4e0e7b0642d249b9738a0a2b6978b"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e003",
+      "start": 126.22,
+      "end": 217.68,
+      "scene": "实战",
+      "timing": "盾山冻结退场前尝试喂古币失败",
+      "content": "古币未赶上冻结，不能把极限手速收益视作可靠操作",
+      "background": {
+        "text": "讲者多次指出手快也没给到盾山，理想额外两级没兑现",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别时序不可稳定执行的贪收益操作",
+        "basis": "分析推断"
+      },
+      "quote": "手速再快也给不上",
+      "segment_ids": [
+        4,
+        5
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/185-0.jpg",
+          "time": 185,
+          "reviewed": true,
+          "observation": "第三回合开战过渡，盾山相关冻结尝试后只剩后排，失败时序依据原话。",
+          "sha256": "089ee75be6c92b4cdb61babc3de253bc263617db4a24d7acb70fdc1e890368f2"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e004",
+      "start": 173.49,
+      "end": 249.02,
+      "scene": "实战",
+      "timing": "拍卖按阵营颜色拿组件",
+      "content": "本局只抢绿色相关阵营组件，被抬价时换另一个绿色",
+      "background": {
+        "text": "昭君大河路线需要阵营组件，拍卖按当前需求而非单卡强度",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按阵容功能筛选拍卖候选",
+        "basis": "分析推断"
+      },
+      "quote": "谁是绿的抢谁",
+      "segment_ids": [
+        5,
+        6
+      ],
+      "template_id": "auction-choice",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/230-0.jpg",
+          "time": 230,
+          "reviewed": true,
+          "observation": "拍卖中鬼谷子和张良等绿色阵营候选可见，字幕说明被顶可拿另一绿色。",
+          "sha256": "d7dbcb87d466a0f5fed6e926d652388ac06dba5761aa27473e57f32d0e433de1"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e005",
+      "start": 217.68,
+      "end": 249.02,
+      "scene": "实战",
+      "timing": "解释香香和本局需要不同组件",
+      "content": "香香更需要张良开团加级，鬼谷子图腾适合龙人（讲者俗称）东皇等主核",
+      "background": {
+        "text": "讲者比较拍卖竞争者需求，不能把自己要的牌推给所有阵容",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按主核机制判断同阵营工具位价值",
+        "basis": "分析推断"
+      },
+      "quote": "他要张良这个开团效果加等级是有用的",
+      "segment_ids": [
+        6
+      ],
+      "template_id": "module-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/242-0.jpg",
+          "time": 242,
+          "reviewed": true,
+          "observation": "拍卖结果展示张良，字幕比较孙尚香拿鬼谷子的功能收益。",
+          "sha256": "3124bf3b83f02e2d2335ce07b41d55eb2e2ad288faa490dff97b8bba4678921a"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e006",
+      "start": 249.02,
+      "end": 325.36,
+      "scene": "实战",
+      "timing": "拿破败神威和人才搜寻后",
+      "content": "破败神威适合大河，人才搜寻与图腾路径使鬼谷子重要",
+      "background": {
+        "text": "当前准备通过大河组件过渡并建立终局核心",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把天赋路径与缺失组件关联",
+        "basis": "分析推断"
+      },
+      "quote": "我反而是要三根图腾的",
+      "segment_ids": [
+        7,
+        8
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/310-0.jpg",
+          "time": 310,
+          "reviewed": true,
+          "observation": "第四回合战斗，人才搜寻手牌可见，图腾目标由语音解释。",
+          "sha256": "57f37969dd0585542b662615474085635197d95c0dcec6c76a2101b7d590aac3"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e007",
+      "start": 325.36,
+      "end": 480.11,
+      "scene": "实战",
+      "timing": "还没有最终龙人（讲者俗称）时先稳血",
+      "content": "虞姬能先锁血，阵容从前排承伤到后排输出逐步启动",
+      "background": {
+        "text": "核心尚未出现，讲者指出虞姬及破败神威让低等级单位也能过渡",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用阶段主核替代空等终局主核",
+        "basis": "分析推断"
+      },
+      "quote": "鱼简锁血老牛逼了",
+      "segment_ids": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/400-0.jpg",
+          "time": 400,
+          "reviewed": true,
+          "observation": "第五回合整备，多名虞姬等在场，主核尚处冻结，过渡选择依据原话。",
+          "sha256": "01dea1fac05143ec266627f96ed077cc57f33bb3f5b4695bc73839153de809bb"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e008",
+      "start": 402.5,
+      "end": 442.16,
+      "scene": "实战",
+      "timing": "评价当前过渡阵容对手",
+      "content": "逐鹿、蒙恬等较好打，萌芽嬴政等要更警惕",
+      "background": {
+        "text": "讲者按当前阵容讨论不同敌方输出特征，非普遍克制表",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在看到敌方主核后判断当前阵容风险",
+        "basis": "分析推断"
+      },
+      "quote": "打萌芽和嬴政不好打",
+      "segment_ids": [
+        11
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/430-0.jpg",
+          "time": 430,
+          "reviewed": true,
+          "observation": "第五回合整备，字幕明确萌芽和嬴政不好打。",
+          "sha256": "241239eacc0145d3f4ef4e78bfe3567837780ed73cf56f7a9f86a0775cc2b326"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e009",
+      "start": 480.11,
+      "end": 558.58,
+      "scene": "实战",
+      "timing": "龙人（讲者俗称）到场后布置挡枪",
+      "content": "两侧工具位挡枪，龙人（讲者俗称）稳居中间减少被打",
+      "background": {
+        "text": "新主核到手但仍脆弱，需要前排和两侧保护",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据主核生存需要安排保护位",
+        "basis": "分析推断"
+      },
+      "quote": "我龙人就稳居中间",
+      "segment_ids": [
+        13,
+        14
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/510-0.jpg",
+          "time": 510,
+          "reviewed": true,
+          "observation": "第七回合整备，主核置中，工具位分居两侧保护。",
+          "sha256": "59d84b8acce2454f557506e83ff0cca235cebf5921eb53e3095a6c4adb7f4fe6"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e010",
+      "start": 524.3,
+      "end": 558.58,
+      "scene": "实战",
+      "timing": "交狂飙后只掉一血",
+      "content": "承认当轮狂飙仅保到少掉血，不把八回合刚启动当成完全成型",
+      "background": {
+        "text": "对手持续施压，昭君阵容才开始启动",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分过渡生存与成型强度",
+        "basis": "分析推断"
+      },
+      "quote": "昭君八回合的时候才刚刚启动",
+      "segment_ids": [
+        14
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/545-0.jpg",
+          "time": 545,
+          "reviewed": true,
+          "observation": "第七回合战斗结算，字幕说明狂飙只保到掉一滴血。",
+          "sha256": "b7cde625c814cb4f58e159dac7a2cb59b98fb0b92250cbab6f6625469260898f"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e011",
+      "start": 560.34,
+      "end": 676.05,
+      "scene": "实战",
+      "timing": "东皇迟迟未出",
+      "content": "先用可用组件、合成与装备顶住，东皇到手后再补关键控制",
+      "background": {
+        "text": "核心抽不到并不妨碍继续寻找和维持过渡",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把阵容构建拆成可先执行的步骤",
+        "basis": "分析推断"
+      },
+      "quote": "东黄没有来不着急",
+      "segment_ids": [
+        15,
+        16,
+        17
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/650-0.jpg",
+          "time": 650,
+          "reviewed": true,
+          "observation": "第八回合整备，东皇手牌与前排可见，仍在补核心。",
+          "sha256": "dfb11621bab3b1aee91fb5aa09cfb7dff53ad753fdbaa198bf62eb888808da1b"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e012",
+      "start": 676.05,
+      "end": 764.21,
+      "scene": "实战",
+      "timing": "过渡虞姬准备替换",
+      "content": "虞姬后期换鬼谷子，终局图腾组件优先于前期过渡英雄",
+      "background": {
+        "text": "龙人（讲者俗称）东皇已进入阵容，原过渡位不再是必要主核",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据阶段目标替换功能位",
+        "basis": "分析推断"
+      },
+      "quote": "于姐一会儿要换鬼谷子的",
+      "segment_ids": [
+        18,
+        19
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/745-0.jpg",
+          "time": 745,
+          "reviewed": true,
+          "observation": "第九回合整备，虞姬等过渡位还在，字幕说明明刀司命候选。",
+          "sha256": "63e1a7d957e772e86139c1ecd6e785756f8c462cd2e809b4ca47daed8033a1d7"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e013",
+      "start": 764.21,
+      "end": 827.78,
+      "scene": "实战",
+      "timing": "解释冰心领域的成长",
+      "content": "按棋手冻结机制每轮持续成长，当前不需要反复购入主核升级",
+      "background": {
+        "text": "讲者说明阵容可挂机升级，资源更多用于功能和装备",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解被动成长路径与操作需求",
+        "basis": "分析推断"
+      },
+      "quote": "这个玩意儿就一直动人",
+      "segment_ids": [
+        20,
+        21
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/810-0.jpg",
+          "time": 810,
+          "reviewed": true,
+          "observation": "第十回合整备，冻结过程及多个英雄可见，持续成长规则来自语音。",
+          "sha256": "8c2bb811dcd9af248d71928b2ef2fa9240057cf54d2b248ae4bf103216c737af"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e014",
+      "start": 796.88,
+      "end": 858.98,
+      "scene": "实战",
+      "timing": "尝试将虞姬变鬼谷子后纠正",
+      "content": "变换向上阶，不能寄望高费虞姬向低费鬼谷子变",
+      "background": {
+        "text": "讲者先说能变，随后立刻承认记错方向",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在实际机制限制出现时撤回错误方案",
+        "basis": "分析推断"
+      },
+      "quote": "是往上变的",
+      "segment_ids": [
+        21,
+        22
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/840-0.jpg",
+          "time": 840,
+          "reviewed": true,
+          "observation": "技能升级面板与冻结英雄可见，向上变换方向的纠正来自连续语音，不能采用先前向下变的猜测。",
+          "sha256": "f09725a4e8b794278c0e9ff0a33dc959d88730ec2d56c17b8e8660244e377bb7"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e015",
+      "start": 827.78,
+      "end": 892.11,
+      "scene": "实战",
+      "timing": "终局只抓两种关键装备",
+      "content": "龙人（讲者俗称）配变猪与明刀，东皇配明刀；其他装备次要",
+      "background": {
+        "text": "明刀保障关键英雄输出或控制，变猪控制敌方核心",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按关键功能集中装备而不是平均分",
+        "basis": "分析推断"
+      },
+      "quote": "只有俩装备重要",
+      "segment_ids": [
+        22,
+        23
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/875-0.jpg",
+          "time": 875,
+          "reviewed": true,
+          "observation": "第十一回合整备，字幕指出只有两件装备重要，手中核心组件和装备可见。",
+          "sha256": "4eb1cbb9d2e826642b1ac2ee9d4b17a4a67be12717a079c52cc77da8d6986322"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e016",
+      "start": 895.89,
+      "end": 926.83,
+      "scene": "实战",
+      "timing": "解释五回合三号与八回合一号选择",
+      "content": "这套大河路线偏向对应变换或兑换效果，选项序号只属本局公式",
+      "background": {
+        "text": "讲者说明五回合三号存在两种效果，向同阶上变更好，兑换券未必给到目标",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解固定公式背后的效果与不确定性",
+        "basis": "分析推断"
+      },
+      "quote": "这个是给那个兑换券不一定能给到",
+      "segment_ids": [
+        24
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/910-0.jpg",
+          "time": 910,
+          "reviewed": true,
+          "observation": "第十一回合整备，技能公式选择依据讲者说明，当前帧未展开五八回合候选。",
+          "sha256": "59e8e32f5c59200f7e233a02b6ac52ade98123c3964599a1bdac1adaa20f9a69"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e017",
+      "start": 928.72,
+      "end": 976.61,
+      "scene": "实战",
+      "timing": "连续被狂飙针对时克制反击消费",
+      "content": "按原计划去拿展翅腾飞，不因生气抢狂飙",
+      "background": {
+        "text": "讲者明确遭多次针对后仍不能为报复偏离核心觉醒目标",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "保持拍卖目标与长期阵容一致",
+        "basis": "分析推断"
+      },
+      "quote": "受气我也不能抢这个狂飙",
+      "segment_ids": [
+        25
+      ],
+      "template_id": "auction-choice",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/960-0.jpg",
+          "time": 960,
+          "reviewed": true,
+          "observation": "拍卖入场画面，偏离计划抢狂飙的反思依据语音；本帧未展开候选。",
+          "sha256": "4291816933f50778f15b18b1a49843f28768baad8785808ae2332e0996801f7c"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e018",
+      "start": 1018.46,
+      "end": 1111.26,
+      "scene": "实战",
+      "timing": "在鬼谷子和龙人（讲者俗称）之间决定搜牌优先级",
+      "content": "只买场上需要的组件，缺鬼谷子时先补它，龙人（讲者俗称）可由技能开出",
+      "background": {
+        "text": "当前核心基本已有，图腾组件是更紧迫缺口",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按缺失功能而非大核知名度排列搜牌顺序",
+        "basis": "分析推断"
+      },
+      "quote": "鬼谷子更重要啊",
+      "segment_ids": [
+        27,
+        28
+      ],
+      "template_id": "module-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1085-0.jpg",
+          "time": 1085,
+          "reviewed": true,
+          "observation": "第十二回合战斗，字幕明确鬼谷子更重要，冻结后的阵容在场。",
+          "sha256": "d07b39f5db662ad985629590224df548ec89a53470fc2c0cf8ec368fa27dc260"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e019",
+      "start": 1155.82,
+      "end": 1231.97,
+      "scene": "实战",
+      "timing": "对手远程能摸到主核时",
+      "content": "阵容缩拢并让司空震站内侧，用被勾后的落点避开攻击",
+      "background": {
+        "text": "已基本觉醒后减少冻结，转向终局站位；聚集可能与不同对手冲突",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按敌方攻击和位移路径调整站位",
+        "basis": "分析推断"
+      },
+      "quote": "站位的艺术",
+      "segment_ids": [
+        30,
+        31
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1205-0.jpg",
+          "time": 1205,
+          "reviewed": true,
+          "observation": "第十三回合整备，多名英雄向右侧缩拢，司空震站在内侧。",
+          "sha256": "573860bb38ac0f0aee66d206ac28df642fc2cb671c3d31bd3989d0fffb167dfb"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e020",
+      "start": 1231.97,
+      "end": 1298.13,
+      "scene": "实战",
+      "timing": "聚集站位面对大炮的例外",
+      "content": "有大炮时不宜聚在一起，威胁消失再按剩余敌方布置",
+      "background": {
+        "text": "讲者明确说站一起齐不好，随后发现大炮已经死",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把站位方案限定到当前对手威胁",
+        "basis": "分析推断"
+      },
+      "quote": "三一起齐不太好",
+      "segment_ids": [
+        32,
+        33
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1275-0.jpg",
+          "time": 1275,
+          "reviewed": true,
+          "observation": "第十四回合整备，敌方阵容仍显示在棋盘，字幕说明未死时抽不到目标。",
+          "sha256": "53303388388688ebfcdd73ceb102550dea73243d940879d7b4f903715f3c2630"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e021",
+      "start": 1266.8,
+      "end": 1334.9,
+      "scene": "实战",
+      "timing": "等持有鬼谷子的对手真正淘汰",
+      "content": "等战斗结束死亡后再搜鬼谷子，避免提前浪费刷新",
+      "background": {
+        "text": "外部对手仍持有所需牌，讲者等其死透再刷新",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把卡池释放时点纳入搜牌效率",
+        "basis": "分析推断"
+      },
+      "quote": "结束了死透了,鬼谷子出来了",
+      "segment_ids": [
+        33,
+        34
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1315-0.jpg",
+          "time": 1315,
+          "reviewed": true,
+          "observation": "第十五回合整备，候选与图腾组件在场，等待卡池释放后搜牌依据语音。",
+          "sha256": "5bcfa1a8779aab0d727abf370647fbab42de363ec1b228a4267e54eb28c92bf7"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e022",
+      "start": 1303.09,
+      "end": 1365.84,
+      "scene": "实战",
+      "timing": "补鬼谷子觉醒并调整装备",
+      "content": "鬼谷子优先觉醒，瑶无所谓；面对当前对手面具可换冰刀变猪",
+      "background": {
+        "text": "关键图腾组件到手后，升级和装备都转向终局功能",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按当前瓶颈重新分配觉醒与装备资源",
+        "basis": "分析推断"
+      },
+      "quote": "瑶妹觉不觉醒无所谓的",
+      "segment_ids": [
+        34,
+        35
+      ],
+      "template_id": "late-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1350-0.jpg",
+          "time": 1350,
+          "reviewed": true,
+          "observation": "第十五回合整备，鬼谷子等已成型，英雄正在调整，手中返装备技能可见。",
+          "sha256": "8b2d05c732e54ac31938c2c6ddeb05d7db198deb3e83d37a5ff70495758c30b2"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e023",
+      "start": 1335.02,
+      "end": 1437.84,
+      "scene": "实战",
+      "timing": "面对高等级近战李信",
+      "content": "用变猪与冰刀轮流控制，让李信走不到主核面前",
+      "background": {
+        "text": "敌方高等级不代表可接近输出，当前主核具远程与连续控制",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按能否接近和输出判断战斗而非只比等级",
+        "basis": "分析推断"
+      },
+      "quote": "变完猪冰刀接着动",
+      "segment_ids": [
+        35,
+        36,
+        37
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1420-0.jpg",
+          "time": 1420,
+          "reviewed": true,
+          "observation": "敌方近战受到战斗控制，龙形弹道、变猪和技能效果可见；控制循环解释依原话，不推断必胜。",
+          "sha256": "83f8bc9ec46b28fa20576c70e8fd493b0f72b181d3687223c03e107b01e3c5e8"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e024",
+      "start": 1366.9,
+      "end": 1405.65,
+      "scene": "实战",
+      "timing": "瑶的明刀按敌方目标决定",
+      "content": "打守约时瑶带明刀，打当前对手则未必重要",
+      "background": {
+        "text": "关键防守装备对不同敌方伤害形态的价值变化",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "避免把某件装备固定给同一英雄",
+        "basis": "分析推断"
+      },
+      "quote": "打那个守约的话,瑶妹带个明刀的",
+      "segment_ids": [
+        36
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1390-0.jpg",
+          "time": 1390,
+          "reviewed": true,
+          "observation": "第十五回合整备，两侧站位调整可见，瑶明刀针对守约的条件来自语音。",
+          "sha256": "dad1faf04dedfffa9a411c9671763b5b8fe389d91e9c80a9170e8659f5321f9f"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e025",
+      "start": 1504.72,
+      "end": 1603.86,
+      "scene": "实战",
+      "timing": "发现装备分配错误后修正",
+      "content": "先承认分错，修正明刀相关分配并重新做白盾与变猪",
+      "background": {
+        "text": "本轮差点出问题，不能因先前觉得稳赢就忽略装备错误",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用险情反馈复核装备分配",
+        "basis": "分析推断"
+      },
+      "quote": "小失误了",
+      "segment_ids": [
+        40,
+        41,
+        42
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1555-0.jpg",
+          "time": 1555,
+          "reviewed": true,
+          "observation": "第十七回合整备，装备与英雄分配正在修改，之前失误与修正目标依据语音。",
+          "sha256": "de801b8fd00edf6ea92ddf824c94f79d577b00b4408b3956f4e2b2af16fd44a4"
+        }
+      ]
+    },
+    {
+      "id": "BV1wihk6qEHK:p1:e026",
+      "start": 1604.21,
+      "end": 1655.93,
+      "scene": "实战",
+      "timing": "终局再次解释东皇明刀价值",
+      "content": "东皇触发明刀后短暂无敌，提供第二次控制或生存窗口",
+      "background": {
+        "text": "敌方守约打东皇很痛，保住控制链关键人物重要",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "将装备无敌窗口与技能持续效果联系起来",
+        "basis": "分析推断"
+      },
+      "quote": "东皇带明刀的话等于两条命",
+      "segment_ids": [
+        43,
+        44
+      ],
+      "template_id": "equipment-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1wihk6qEHK_p1/1645-0.jpg",
+          "time": 1645,
+          "reviewed": true,
+          "observation": "终局获胜动画，明刀东皇机制由视频最后讲解说明，动画本身不证明无敌比例或两条命。",
+          "sha256": "c05bfe175d294444721dabf811b0a90c49c2e94f3abcb30a9e9a2a76e74aa68b"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "不做ASR修正；龙人俗称保留，现有知识候选为敖隐，但本次所引截图未展开正式名牌，需核实后映射。",
+    "大量狂飙抱怨、礼物感谢与第27段重复鬼字符排除，仍保留有明确取舍的教学。",
+    "五八回合选项序号属于视频条件与版本，不能做当前通用按钮指引。",
+    "讲者向下变鬼谷子的错误随后撤回，保留纠正链不采用错误规则。",
+    "变猪加冰刀持续控制需敌方解控与射程条件；不据一局推出999必败。",
+    "末尾技能机制讲解随视频结束截断，仅记录明确说出的明刀无敌收益。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "bd644b6a692d4133ab1c72fe22f5b37f0debfa985be985e69b5beb4a0535cecc"
+}

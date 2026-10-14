@@ -42,7 +42,8 @@
           "frame": "frames/1039-0.jpg"
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-4c5fb188552a343f023e"
     },
     {
       "section": "核心机制",
@@ -58,7 +59,8 @@
           "frame": "frames/90-0.jpg"
         }
       ],
-      "kind": "mechanic"
+      "kind": "mechanic",
+      "id": "claim-1f3bb9e4f6b4bdbb5d52"
     },
     {
       "section": "前期运营及应变",
@@ -73,7 +75,8 @@
           "end": 894.7
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-6e5677597b91d6042038"
     },
     {
       "section": "中期运营及应变",
@@ -88,7 +91,8 @@
           "end": 174.8
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-01efb21eac616296f20c"
     },
     {
       "section": "中期运营及应变",
@@ -104,7 +108,8 @@
           "frame": "frames/1840-0.jpg"
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-163e42c476a496c5bbe8"
     },
     {
       "section": "后期运营及应变",
@@ -119,7 +124,8 @@
           "end": 1097.8
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-bf3ad0a0c80d84f2d6d4"
     },
     {
       "section": "成型后提升思路",
@@ -134,7 +140,8 @@
           "end": 1038.7
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-4bfc796afce05484f9b4"
     },
     {
       "section": "第一轮拍卖",
@@ -149,7 +156,8 @@
           "end": 894.7
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-4ac9d8be77d0ba110133"
     },
     {
       "section": "第二轮拍卖",
@@ -164,7 +172,8 @@
           "end": 1853.9
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-1b44c1f7c9fc4ee0f126"
     },
     {
       "section": "第三轮拍卖",
@@ -180,7 +189,8 @@
           "frame": "frames/680-0.jpg"
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-c631b4e7b118dfd5b802"
     },
     {
       "section": "推荐天赋及原因",
@@ -196,7 +206,8 @@
           "frame": "frames/500-0.jpg"
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-0d7d5f63e90253f255b0"
     },
     {
       "section": "推荐天赋及原因",
@@ -212,7 +223,8 @@
           "frame": "frames/395-0.jpg"
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-26b1737815308a1c1579"
     },
     {
       "section": "站位技巧",
@@ -234,7 +246,8 @@
           "frame": "frames/1770-0.jpg"
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-10c4269679c4cb14e425"
     },
     {
       "section": "推荐装备",
@@ -250,7 +263,8 @@
           "frame": "frames/1120-0.jpg"
         }
       ],
-      "kind": "general_strategy"
+      "kind": "general_strategy",
+      "id": "claim-0a30e80f1d802b846e26"
     },
     {
       "section": "终局技巧",
@@ -265,7 +279,8 @@
           "end": 2794.5
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-29c3973e29784ed330cf"
     },
     {
       "section": "克制手段",
@@ -280,7 +295,8 @@
           "end": 2344.2
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-22b460bd4a7bae574bc0"
     },
     {
       "section": "克制手段",
@@ -295,7 +311,8 @@
           "end": 635.1
         }
       ],
-      "kind": "conditional_strategy"
+      "kind": "conditional_strategy",
+      "id": "claim-b82928f477526044c068"
     }
   ],
   "related": [
@@ -322,6 +339,12 @@
       "type": "player",
       "title": "安琪拉－飞行器与模块选择",
       "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+    },
+    {
+      "id": "changxiaoe-general-play",
+      "type": "lineup",
+      "title": "常小娥通用打法",
+      "path": "knowledge/lineups/常小娥通用打法.md"
     }
   ],
   "history": [
@@ -510,9 +533,10 @@
     "card:1741": "虞姬",
     "card:5371": "司空震",
     "card:5211": "海月",
-    "card:1861": "太乙真人"
+    "card:1861": "太乙真人",
+    "faction:heluo": "河洛"
   },
   "manual_sections": [],
   "conflicts": [],
-  "revision": "87bfad672b2265d3a913"
+  "revision": "0693f63040a3faf2e4bd"
 }

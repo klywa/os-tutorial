@@ -1,0 +1,832 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1YweC68EuA:p1",
+    "bvid": "BV1YweC68EuA",
+    "part": 1,
+    "title": "嫦小鹅单苏烈开，顶住压力999司空震全局",
+    "requested_title": "嫦小鹅单苏烈开，顶住压力999司空震全局",
+    "url": "https://www.bilibili.com/video/BV1YweC68EuA/?p=1",
+    "author": "王者万象棋奇妙",
+    "duration": 1583,
+    "published": "2026-09-18 03:44:54"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        1583
+      ]
+    ],
+    "notes": "完整阅读45段原始ASR，实际查看26张截图；保留误操作与纠正，不改ASR。条件建议不泛化成固定公式。"
+  },
+  "events": [
+    {
+      "id": "BV1YweC68EuA:p1:e001",
+      "start": 1.78,
+      "end": 40.66,
+      "scene": "实战",
+      "timing": "选择棋手",
+      "content": "缺姬小满露娜不沿用马可倒转",
+      "background": {
+        "text": "日落海缺关键组件",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按可用卡池选择路线",
+        "basis": "分析推断"
+      },
+      "quote": "机枪满和露娜都没有了",
+      "segment_ids": [
+        1
+      ],
+      "template_id": "opening-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/20-0.jpg",
+          "time": 20,
+          "reviewed": true,
+          "observation": "开局苏烈在场，候选阵营界面可见，字幕都没有的话；组件缺失依据口述。",
+          "sha256": "67113c2fbeb2e96045905d6d0ff52aad0f1b59ecc5f1500f81f5aaa7176d2233"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e002",
+      "start": 40.69,
+      "end": 71.15,
+      "scene": "实战",
+      "timing": "开局考虑空城",
+      "content": "比较一人两人与空城失血",
+      "background": {
+        "text": "技能收益与失血存在权衡",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "计算技能收益与血量代价",
+        "basis": "分析推断"
+      },
+      "quote": "直接入5滴血",
+      "segment_ids": [
+        2
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/55-0.jpg",
+          "time": 55,
+          "reviewed": true,
+          "observation": "苏烈单人整备，字幕对空气丢一手；血量代价依据讲解。",
+          "sha256": "502c2182063bf01aaef2993d0caef074cba0a6aa2d7b60e8e5b9eb6010247435"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e003",
+      "start": 71.15,
+      "end": 140.02,
+      "scene": "实战",
+      "timing": "苏烈未觉醒",
+      "content": "第三回合弈星升级，按胜率选预言",
+      "background": {
+        "text": "本局压力低",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "联系升级与过渡强度",
+        "basis": "分析推断"
+      },
+      "quote": "三回合上一张异星直接升级",
+      "segment_ids": [
+        3,
+        4
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/120-0.jpg",
+          "time": 120,
+          "reviewed": true,
+          "observation": "前期战斗预言效果图标，字幕直接开；升级时点由口述确认。",
+          "sha256": "ab2cd54358efe7d27b7c81d5e08684a2ea8ca77db48e22096f98bbe5ce4a427e"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e004",
+      "start": 177.95,
+      "end": 225.3,
+      "scene": "实战",
+      "timing": "拍卖后",
+      "content": "先升级，云中君五级开",
+      "background": {
+        "text": "资金优先到成长卡池",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别卡池窗口",
+        "basis": "分析推断"
+      },
+      "quote": "这个五级开吧",
+      "segment_ids": [
+        6
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/210-0.jpg",
+          "time": 210,
+          "reviewed": true,
+          "observation": "苏烈单前排、手持人才雷达等牌，资源留用由口述解释。",
+          "sha256": "b42ab58035c33e48d7c48c914a56cad5a155a05ecbb59d93a9b2d81fc456b820"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e005",
+      "start": 225.3,
+      "end": 258.4,
+      "scene": "实战",
+      "timing": "当前可赢",
+      "content": "先不上额外牌，下轮丢兔后看对手",
+      "background": {
+        "text": "无必要战力延误升六",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按压力投资过渡",
+        "basis": "分析推断"
+      },
+      "quote": "下一轮我碰到个猛男我再上一车",
+      "segment_ids": [
+        7
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/240-0.jpg",
+          "time": 240,
+          "reviewed": true,
+          "observation": "对战苏烈单前排，字幕下一轮碰猛男再上一车。",
+          "sha256": "0925b3b13b5dd68867c444fd85b7dfe58e27f9846eeaf3811fe7803e7bbc38d1"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e006",
+      "start": 258.4,
+      "end": 328.27,
+      "scene": "实战",
+      "timing": "全军列阵可用",
+      "content": "五级多人口再招提高核心机会",
+      "background": {
+        "text": "升级多召一人",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "将人口与随机候选数联系",
+        "basis": "分析推断"
+      },
+      "quote": "多一个人口能招6个",
+      "segment_ids": [
+        8,
+        9
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/285-0.jpg",
+          "time": 285,
+          "reviewed": true,
+          "observation": "数量上限1/6清晰显示，字幕上限六；未猜随机概率数值。",
+          "sha256": "a0c8de6a35d826c635b4be2f2bb28cf5e657b8a751c9534e39e0d7144fbd0e04"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e007",
+      "start": 328.27,
+      "end": 368.66,
+      "scene": "实战",
+      "timing": "云中君过渡",
+      "content": "每回合登场一次加级再卖",
+      "background": {
+        "text": "不是一直挂场",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分登场与留场收益",
+        "basis": "分析推断"
+      },
+      "quote": "一个回合上一张",
+      "segment_ids": [
+        10
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/355-0.jpg",
+          "time": 355,
+          "reviewed": true,
+          "observation": "三单位整备与云中君卡，登场频率由讲解说明。",
+          "sha256": "71af5937e1b62f1a2e60d70b4b643e34b01c50001b836768e812c1968e74b955"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e008",
+      "start": 438.59,
+      "end": 471.81,
+      "scene": "实战",
+      "timing": "苏烈40级",
+      "content": "复活可两次牺牲，适合上裴擒虎",
+      "background": {
+        "text": "已有复活门槛",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按阈值选择辅助",
+        "basis": "分析推断"
+      },
+      "quote": "因为苏联40级就能给一次复活",
+      "segment_ids": [
+        13
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/455-0.jpg",
+          "time": 455,
+          "reviewed": true,
+          "observation": "苏烈整备与云中君在场，商店裴擒虎候选；复活门槛依据口述。",
+          "sha256": "724894734b48b9539149d187cab94747254650891ac87eb389fbfca9ce886f53"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e009",
+      "start": 471.81,
+      "end": 549.46,
+      "scene": "实战",
+      "timing": "觉醒或抢六",
+      "content": "压力小不觉醒，活不下来就觉醒；六级前少合成",
+      "background": {
+        "text": "合成耗钱会延误六级",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按生存条件分配钱",
+        "basis": "分析推断"
+      },
+      "quote": "你看你本局压力大不大",
+      "segment_ids": [
+        14,
+        15
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/515-0.jpg",
+          "time": 515,
+          "reviewed": true,
+          "observation": "拍卖动画，字幕如果压力特别大；觉醒条件是跨局判断，不是已觉醒事实。",
+          "sha256": "d1c72400c83ebff76be3588ba604ab8ca6ee13fbcffa06d4493022ef5ab1808f"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e010",
+      "start": 549.46,
+      "end": 632.56,
+      "scene": "实战",
+      "timing": "单海月误操作",
+      "content": "记录上单张海月亏钱，王牌仅有限补偿",
+      "background": {
+        "text": "讲者承认错误",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "从反馈识别成本",
+        "basis": "分析推断"
+      },
+      "quote": "我上个单的海月我是傻子",
+      "segment_ids": [
+        16,
+        17
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/605-0.jpg",
+          "time": 605,
+          "reviewed": true,
+          "observation": "海月等多辅助在场，商店与手牌可见；误操作损失由当事人说明。",
+          "sha256": "86e0655038325930b393729a6fd25057a1e55acd14dff45d03046c1201a2c64d"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e011",
+      "start": 673.74,
+      "end": 741.5,
+      "scene": "实战",
+      "timing": "连用兔子",
+      "content": "先大后小，即使王牌吃不到",
+      "background": {
+        "text": "差一元迫使卖玉环",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分主顺序与附加收益",
+        "basis": "分析推断"
+      },
+      "quote": "先大后小",
+      "segment_ids": [
+        19,
+        20
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/705-0.jpg",
+          "time": 705,
+          "reviewed": true,
+          "observation": "王牌部队面板显示开局触发条件，字幕玉环就不用卖了。",
+          "sha256": "3407d0d5afb7e76d12154c1405cb8ede2b56a7e14e1f9310580e4e017bab327e"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e012",
+      "start": 710.38,
+      "end": 780.91,
+      "scene": "实战",
+      "timing": "面对嬴政掉血",
+      "content": "缺反甲导致承伤方案不完整",
+      "background": {
+        "text": "现有等级无法替代防守功能",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "定位装备缺口",
+        "basis": "分析推断"
+      },
+      "quote": "没反甲掉血掉太多了",
+      "segment_ids": [
+        20,
+        21
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/740-0.jpg",
+          "time": 740,
+          "reviewed": true,
+          "observation": "战斗多项技能动画，字幕有反甲不会掉这么多血；属反事实推断。",
+          "sha256": "235552fec17015a8b15bf88ba692cd5a7e7ff9beedcaa4f86e43893d11a4ff31"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e013",
+      "start": 784.37,
+      "end": 851.82,
+      "scene": "实战",
+      "timing": "移植前",
+      "content": "先找司空震，大兔人数开局计算",
+      "background": {
+        "text": "过早移植可能无目标",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "核查触发时点目标",
+        "basis": "分析推断"
+      },
+      "quote": "这东西是开局算的",
+      "segment_ids": [
+        22,
+        23
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/835-0.jpg",
+          "time": 835,
+          "reviewed": true,
+          "observation": "王牌面板与技能手牌，字幕开局算的；不混同所有技能时点。",
+          "sha256": "f328f6133ac0663d566eaa18ab8bbca680e450a2639dcb42cc80255ac2382928"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e014",
+      "start": 891.12,
+      "end": 1000.53,
+      "scene": "实战",
+      "timing": "随机移植",
+      "content": "备传承，移到老虎可补救",
+      "background": {
+        "text": "老虎自身等级非关键",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "为随机目标准备补救",
+        "basis": "分析推断"
+      },
+      "quote": "我留了个传承没毛病",
+      "segment_ids": [
+        25,
+        27
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/980-0.jpg",
+          "time": 980,
+          "reviewed": true,
+          "observation": "司空震到来时移植牌在手，字幕司空震来了先移植；后续随机结果依据口述。",
+          "sha256": "659ab1e40b54578f76c6399993de12695093edd622fe7254cf3cecded5a76b6c"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e015",
+      "start": 929.94,
+      "end": 1000.53,
+      "scene": "实战",
+      "timing": "老虎偷级前",
+      "content": "伸手前卖太乙防止偷一级",
+      "background": {
+        "text": "短暂工具污染偷级来源",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "触发前移除不合格目标",
+        "basis": "分析推断"
+      },
+      "quote": "老虎伸手之前把它卖了",
+      "segment_ids": [
+        26,
+        27
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/970-0.jpg",
+          "time": 970,
+          "reviewed": true,
+          "observation": "商店太乙手牌与老虎在场，字幕偷到太乙就炸；偷级前卖出理由来自讲解。",
+          "sha256": "4767f93ac46f3c3d065d353ff3c41c04882da834815daec664e4dcd24f77d740"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e016",
+      "start": 1000.53,
+      "end": 1096.1,
+      "scene": "实战",
+      "timing": "敌嬴政无名刀",
+      "content": "海月单顶挨打换命，太乙第二次机会",
+      "background": {
+        "text": "血量仍影响换命是否成功",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按敌方防守选承伤者",
+        "basis": "分析推断"
+      },
+      "quote": "一定要让海月去挨打",
+      "segment_ids": [
+        28,
+        29,
+        30
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1060-0.jpg",
+          "time": 1060,
+          "reviewed": true,
+          "observation": "敌方与海月两队交战，字幕把海月打死；未把换命预期写成保证成功。",
+          "sha256": "a7a5d7e7a7388f9531b3c4885c192fd179deee76ae96c8546657de48901ed293"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e017",
+      "start": 1070.13,
+      "end": 1127.68,
+      "scene": "实战",
+      "timing": "复盘太乙晚卖",
+      "content": "偷一级连带损害司空震临时等级",
+      "background": {
+        "text": "共享等级核心受损",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别连带后果",
+        "basis": "分析推断"
+      },
+      "quote": "偷成一级了",
+      "segment_ids": [
+        30,
+        31
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1100-0.jpg",
+          "time": 1100,
+          "reviewed": true,
+          "observation": "整备司空震与老虎，字幕133等级偷不到；临时等级原因由口述说明。",
+          "sha256": "884523374e469a01813667dff1b988e378a9d6d95dd3331305fe97def65a525c"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e018",
+      "start": 1096.1,
+      "end": 1159.62,
+      "scene": "实战",
+      "timing": "核心成为唯一目标",
+      "content": "工具登场卖出触发姜子牙加级",
+      "background": {
+        "text": "在场配置决定归属",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "保持正确目标",
+        "basis": "分析推断"
+      },
+      "quote": "四公镇加等级了",
+      "segment_ids": [
+        31,
+        32
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1145-0.jpg",
+          "time": 1145,
+          "reviewed": true,
+          "observation": "整备多张蒙犽与成长牌，具体触发条件由上下文确认。",
+          "sha256": "ba27a3ccd21ad571ad305b622cbbdbdf5c4f7f31b71ba729d4a52e549518a5dd"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e019",
+      "start": 1159.62,
+      "end": 1225.62,
+      "scene": "实战",
+      "timing": "猴子跳后排",
+      "content": "姜子牙承伤满蓝，保护司空震",
+      "background": {
+        "text": "预测猴子跳入格子",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "用站位启动辅助技能",
+        "basis": "分析推断"
+      },
+      "quote": "一挨打直接秒杀他",
+      "segment_ids": [
+        33,
+        34
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1190-0.jpg",
+          "time": 1190,
+          "reviewed": true,
+          "observation": "后排站位同时可见，字幕老虎吃一点就吃一点；猴子目标推断依据讲者解释。",
+          "sha256": "6824bd1eb95b7d899bb78547972179789ab3bee7fdadfd8db4880eec8a278426"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e020",
+      "start": 1225.62,
+      "end": 1257.2,
+      "scene": "实战",
+      "timing": "循环异阵营牌",
+      "content": "只留司空震阵营让其他牌加级",
+      "background": {
+        "text": "要求单一正确目标",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "掌握在场条件",
+        "basis": "分析推断"
+      },
+      "quote": "我们在场的阵营就一个死红阵",
+      "segment_ids": [
+        35
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1240-0.jpg",
+          "time": 1240,
+          "reviewed": true,
+          "observation": "司空震与其他阵营辅助整备，字幕打他的话；单一目标条件由讲解说明。",
+          "sha256": "4d0028f724a05336197fa73671290e05c32f565d7b2de47781cbdf4c33979941"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e021",
+      "start": 1257.58,
+      "end": 1328.05,
+      "scene": "实战",
+      "timing": "敌依赖蒙犽",
+      "content": "暂留同名牌卡共享牌库，敌死则停止",
+      "background": {
+        "text": "需牌稀缺且敌尚在",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "随对手状态解除限制",
+        "basis": "分析推断"
+      },
+      "quote": "我们牌库是共享的",
+      "segment_ids": [
+        36,
+        37
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1285-0.jpg",
+          "time": 1285,
+          "reviewed": true,
+          "observation": "商店及多张蒙犽手牌，字幕想觉醒司空震；共享池影响未用画面猜数值。",
+          "sha256": "10c63005a1377fed9e8da63633f32773d55e26cf4f13a1bfd27da9b6645a29d1"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e022",
+      "start": 1289.15,
+      "end": 1328.05,
+      "scene": "实战",
+      "timing": "换命没秒杀",
+      "content": "补复活甲增加换命机会",
+      "background": {
+        "text": "不能把预期当结果",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "观察后补保障",
+        "basis": "分析推断"
+      },
+      "quote": "我应该上个佛甲的",
+      "segment_ids": [
+        37
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1310-0.jpg",
+          "time": 1310,
+          "reviewed": true,
+          "observation": "战斗尾声仍有敌方单位存活；需复活甲判断来自复盘口述。",
+          "sha256": "b920d056757cb71c85a056d2a77b67b94c82dc8bc4960218b8c993f1a46ff7a8"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e023",
+      "start": 1328.05,
+      "end": 1361.3,
+      "scene": "实战",
+      "timing": "缺露娜想倒转",
+      "content": "改蔡文姬配成长组件",
+      "background": {
+        "text": "传统组件缺失",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "给有条件替代",
+        "basis": "分析推断"
+      },
+      "quote": "就没有露娜的话就没法玩导转",
+      "segment_ids": [
+        38
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1345-0.jpg",
+          "time": 1345,
+          "reviewed": true,
+          "observation": "日落海阵营相关上下文，字幕升不了等级；替代组合未在本局直接执行。",
+          "sha256": "c22aa90b17e98ff1381f699d1fa508a88cbf20f03405d07b081e21f79dd37db3"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e024",
+      "start": 1361.3,
+      "end": 1396.26,
+      "scene": "实战",
+      "timing": "集体唤醒前",
+      "content": "先三个登场再唤醒",
+      "background": {
+        "text": "批量目标要备齐",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "检查奖励前置条件",
+        "basis": "分析推断"
+      },
+      "quote": "细节上三个登场",
+      "segment_ids": [
+        39
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1390-0.jpg",
+          "time": 1390,
+          "reviewed": true,
+          "observation": "多个登场单位排后方，字幕有三个登场，左侧甄姬面板。",
+          "sha256": "330bc87beb7f09c93b7c0481bdb0fa0bb920afc9bb554d6d825ec878a9fd3f79"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e025",
+      "start": 1421.42,
+      "end": 1531.28,
+      "scene": "实战",
+      "timing": "拆装备换觉醒",
+      "content": "先保装备，确认苍穹冰刀无用后拆",
+      "background": {
+        "text": "威胁与999门槛改变价值",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "重新评价装备机会成本",
+        "basis": "分析推断"
+      },
+      "quote": "苍穹没有用了",
+      "segment_ids": [
+        41,
+        42,
+        43
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1505-0.jpg",
+          "time": 1505,
+          "reviewed": true,
+          "observation": "整备保留装备与分解相关手牌，字幕分解两个装备；对手条件来自前后讲解。",
+          "sha256": "5a54dceb4aa2e5484561fbdc3d9e9cf74b2e98c5cb5cc8fbb057d483fa5cce47"
+        }
+      ]
+    },
+    {
+      "id": "BV1YweC68EuA:p1:e026",
+      "start": 1498.06,
+      "end": 1563.87,
+      "scene": "实战",
+      "timing": "999核心前排",
+      "content": "御灵之纱护盾支持承伤",
+      "background": {
+        "text": "已有高等级护盾",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "限定站位耐久条件",
+        "basis": "分析推断"
+      },
+      "quote": "一万五的护盾",
+      "segment_ids": [
+        43,
+        44
+      ],
+      "template_id": "combat-review",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1YweC68EuA_p1/1545-0.jpg",
+          "time": 1545,
+          "reviewed": true,
+          "observation": "司空震战斗大型技能与护盾特效可见；具体一万五数值来自字幕及口述。",
+          "sha256": "4019e07eb2cc82567b588845c9f11b4dbb6ff37919c7bf17e0fb304bebbacdbc"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "原始ASR不修正；同音名称需画面补证。",
+    "卡池共享词条数值属视频版本，未核对当前版本。",
+    "保留错误与当场修正，排除闲聊。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "9ec6a45dcbe0dc41bc375acbb79b31140db81774d4150fca4e3400f836478f49"
+}

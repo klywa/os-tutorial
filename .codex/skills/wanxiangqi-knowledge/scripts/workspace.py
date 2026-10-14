@@ -69,7 +69,8 @@ def factions(root):
     result = {f['id']: dict(f) for f in FACTIONS}
     for note in notes(root):
         meta = note.get('meta', {})
-        refs = meta.get('required_factions', []) + [c['faction'] for c in meta.get('ban_conditions', [])]
+        from tactics import faction_references
+        refs = faction_references(meta)
         for ref in refs:
             if ref.startswith('pending:'):
                 result[ref] = {'id': ref, 'name': ref.removeprefix('pending:') + '（待确认）'}
@@ -123,6 +124,7 @@ def assign_paths(root, items):
 def prepare(root, items):
     assign_paths(root, items)
     names = {e['id']: e['name'] for e in wxq.entities(root)}
+    known_entities = set(names)
     names.update({f['id']: f['name'] for f in FACTIONS})
     names.update({n['id']: n['title'] for n in items})
     for note in items:
@@ -135,12 +137,22 @@ def prepare(root, items):
                 for member in members:
                     refs += [member['hero'], member.get('replaces', '')]
             refs += [m['target'] for m in note['meta']['matchups']]
+            from tactics import references, claim_id
+            refs += references(note['meta'])
+            if note['meta'].get('late_variants') and 'entities' not in note.get('manual_fields', []):
+                note['entities'] = sorted(set(note.get('entities', [])) | {r for r in refs if r in known_entities})
+            for claim in note.get('claims', []):
+                claim.setdefault('id', claim_id(claim))
             note['entity_names'] = {r: names.get(r, r.removeprefix('pending:')) for r in refs if r}
         note.setdefault('manual_sections', [])
         note.setdefault('history', [])
         note.setdefault('conflicts', [])
     by_id = {n['id']: n for n in items}
     for note in items:
+        existing_links = {link['id'] for link in note.get('related', [])}
+        for target in items:
+            if target['id'] != note['id'] and target['id'] not in existing_links and (note.get('meta', {}).get('late_variants') or target.get('meta', {}).get('late_variants')) and set(note.get('entities', [])) & set(target.get('entities', [])):
+                note.setdefault('related', []).append({'id': target['id'], 'type': target['type'], 'title': target['title']})
         for link in note.get('related', []):
             if link['id'] in by_id:
                 link['path'] = by_id[link['id']]['path']
@@ -152,7 +164,7 @@ def prepare(root, items):
 def persist(root, items, obsolete=None):
     root = Path(root)
     prepare(root, items)
-    transaction = {'index': {'schema_version': 2, 'notes': items}, 'obsolete': obsolete or []}
+    transaction = {'index': {'schema_version': 3, 'notes': items}, 'obsolete': obsolete or []}
     wxq.atomic_json(root / 'knowledge/pending-save.json', transaction)
     apply_transaction(root, transaction)
 
@@ -251,13 +263,41 @@ def merge_note(previous, incoming):
                     result['conflicts'].append(conflict)
         else:
             accepted.append(claim)
-    result['claims'] = wxq.merge_claims(previous.get('claims', []), accepted)
+    # An explicit stable ID identifies a corrected conclusion. Its old evidence
+    # describes the old wording; retain it only for a semantic duplicate.
+    fields = ('section', 'text', 'version', 'condition', 'inference', 'kind')
+    revised = {c['id']: c for c in accepted if c.get('id')}
+    prior_by_id = {c.get('id'): c for c in previous.get('claims', []) if c.get('id')}
+    corrections = []
+    for cid, claim in revised.items():
+        old = prior_by_id.get(cid)
+        if not old or old['section'] in protected or all(old.get(k) == claim.get(k) for k in fields):
+            continue
+        if any(old.get(k) != claim.get(k) for k in fields if k != 'text') or not (
+                {e['source'] for e in old.get('evidence', [])} & {e['source'] for e in claim.get('evidence', [])}):
+            raise ValueError('新版本、条件或新来源策略需要独立结论 ID，不能覆盖旧结论')
+        corrections.append(old)
+    if corrections:
+        result.setdefault('history', []).append({'at': wxq.now(), 'origin': 'import_correction',
+                                                'previous': {'claims': deepcopy(corrections)}})
+    old_claims = [c for c in previous.get('claims', [])
+                  if c['section'] in protected or c.get('id') not in revised
+                  or all(c.get(k) == revised[c['id']].get(k) for k in fields)]
+    result['claims'] = wxq.merge_claims(old_claims, accepted)
     if previous.get('manual_meta'):
         result['meta'] = deepcopy(previous['meta'])
         if 'meta' in incoming and incoming['meta'] != previous['meta']:
             conflict = {'kind': 'meta', 'incoming': incoming['meta']}
             if conflict not in result.setdefault('conflicts', []):
                 result['conflicts'].append(conflict)
+    if not previous.get('manual_meta'):
+        from tactics import claim_id, remap_claims
+        fields = ('section', 'text', 'version', 'condition', 'inference', 'kind')
+        retained = {tuple(c.get(k) for k in fields): claim_id(c) for c in result['claims']}
+        for claim in accepted:
+            target = retained[tuple(claim.get(k) for k in fields)]
+            if claim_id(claim) != target:
+                remap_claims(result.get('meta', {}), {claim_id(claim)}, target)
     return result
 
 
@@ -265,7 +305,7 @@ def validate_meta(root, meta):
     if not isinstance(meta, dict):
         raise ValueError('阵容信息必须为对象')
     expected = {'required_factions', 'players', 'core_heroes', 'compositions', 'ban_conditions', 'matchups'}
-    if set(meta) != expected or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
+    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
         raise ValueError('阵容信息缺失必需字段或阶段')
     if not isinstance(meta['ban_conditions'], list) or not isinstance(meta['matchups'], list):
         raise ValueError('适用条件和针对策略须为列表')
@@ -275,6 +315,8 @@ def validate_meta(root, meta):
             raise ValueError('实体引用无效')
         if value not in known and not value.startswith('pending:') and value not in {f['id'] for f in FACTIONS}:
             raise ValueError('未知实体，请选择已有实体或以 pending: 标记待确认名称')
+    from tactics import validate as validate_tactics
+    validate_tactics(meta, reference)
     for field in ['required_factions', 'players', 'core_heroes']:
         if not isinstance(meta.get(field, []), list):
             raise ValueError('实体选择应为列表')
@@ -326,14 +368,32 @@ def edit(root, nid, payload):
             current = '\n\n'.join(c['text'] for c in note['claims'] if c['section'] == section)
             if current == text.strip():
                 continue
+            from tactics import claim_id, remap_claims
+            old_ids = {claim_id(c) for c in note['claims'] if c['section'] == section}
             note['claims'] = [c for c in note['claims'] if c['section'] != section]
-            if text.strip():
-                note['claims'].append(manual_claim(section, text.strip()))
+            new_claim = manual_claim(section, text.strip()) if text.strip() else None
+            if new_claim:
+                new_claim['id'] = claim_id(new_claim)
+                note['claims'].append(new_claim)
+            if note.get('meta'):
+                prior_meta = deepcopy(note['meta'])
+                remap_claims(note['meta'], old_ids, new_claim['id'] if new_claim else None)
+                if note['meta'] != prior_meta:
+                    note['manual_meta'] = True
             note['manual_sections'] = sorted(set(note.get('manual_sections', []) + [section]))
         if note['type'] == 'lineup' and 'meta' in payload and payload['meta'] != note['meta']:
             validate_meta(root, payload['meta'])
-            note['meta'] = payload['meta']
+            note['meta'] = deepcopy(payload['meta'])
+            from tactics import claim_id, remap_claims
+            for section, text in sections.items():
+                old_claims = [c for c in before['claims'] if c['section'] == section]
+                if '\n\n'.join(c['text'] for c in old_claims) != text.strip():
+                    new_claim = next((c for c in note['claims'] if c['section'] == section), None)
+                    remap_claims(note['meta'], {claim_id(c) for c in old_claims}, claim_id(new_claim) if new_claim else None)
             note['manual_meta'] = True
+        if note.get('meta'):
+            from tactics import validate as validate_tactics
+            validate_tactics(note['meta'], lambda value: None, note['claims'])
         for key in ['title', 'aliases']:
             if key in payload:
                 if key == 'title':
@@ -355,6 +415,9 @@ def availability(note, banned):
     if not banned:
         return 'playable'
     meta = note.get('meta', {})
+    if meta.get('late_variants'):
+        from tactics import availability as flexible_availability
+        return flexible_availability(meta, banned)
     if set(banned) & set(meta.get('required_factions', [])):
         return 'unplayable'
     states = {c['faction']: c['status'] for c in meta.get('ban_conditions', [])}

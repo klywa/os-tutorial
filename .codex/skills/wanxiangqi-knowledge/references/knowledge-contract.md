@@ -30,7 +30,8 @@
 该示例是格式说明，不能作为真实知识导入。`frame` 仅在实际存在并核对过时填写。时间是视频秒数，不是游戏回合。ID 使用字母、数字、下划线或短横线，不包含路径或冒号。来源 ID 含冒号，落盘目录将冒号换成下划线。
 
 - `type`：`lineup`、`player`、`other`，分别输出到 `lineups/`、`players/`、`other/`。
-- 阵容固定字段：阵容组成、核心机制、前期运营及应变、中期运营及应变、后期运营及应变、成型后提升思路、第一轮拍卖、第二轮拍卖、第三轮拍卖、推荐天赋及原因、站位技巧、推荐装备、终局技巧、克制手段。
+- 阵容固定字段：阵容组成、禁用阵营适用情况、核心机制、前期运营及应变、中期运营及应变、后期运营及应变、成型后提升思路、第一轮拍卖、第二轮拍卖、第三轮拍卖、推荐天赋及原因、站位技巧、推荐装备、终局技巧、克制手段。
+- 阵容整理还需按 [教学主题覆盖检查](teaching-coverage.md) 扫描关键牌判断、经济与竞价取舍、关键操作顺序、新手步骤、战后诊断及操作时间不足。主题可由既有章节或 meta 中的明确策略覆盖，不要求模板与章节一一对应。有独立可靠内容时，可用现有 `claim.section` 追加“关键牌判断”“战后复盘”“操作时间不足”等自定义章节；无证据时不新增空结论、不迁移固定字段或扩展 meta schema。
 - 棋手固定字段：技能、使用技巧、适配阵容。其他默认“知识内容”，可追加自定义章节。
 - 回合描述写在结论正文，例如“第5–7回合”；来源没说具体回合时只能写前期等原始阶段。
 - 每条结论需要一个或多个来源时间段。版本与条件是结论级字段；相同文本但版本或条件不同不能合并。
@@ -87,3 +88,20 @@
 `properties` 保存官方原始字段，`description` 去除富文本标签但保留数值与单位；`history` 保存实际变更前内容。觉醒英雄作为独立卡牌记录，区分同名不同卡 ID；衍生物由卡牌类型与英雄 `actorType` 等官方字段判定，不凭名称猜。棋手牌通过其所属棋手记录关联。未知官方类型保留并在同步报告中说明待分类。
 
 新增确认别名要记录依据到来源 `corrections.json`。写实体文件使用 `wxq.atomic_json` 保留恢复副本，校验同一 ID 不重复、类别与目标文件一致。
+
+
+## 灵活阵容扩展（schema_version=3）
+
+保留 v2 的全部 meta 字段，新增可选 `operation_routes` 与 `late_variants`。缺失字段按空列表读取，不将旧阵容自动拆成多套组合。索引迁移为阵容 claims 增加稳定 `id`；未指定 ID 时按结论语义生成，来源证据不参与 ID。路径、笔记 ID 与人工内容保持稳定。
+
+`operation_routes` 每项包含 `id/name/condition/advantages/risks/transition`、`phases: {early:结论ID列表,middle:结论ID列表,late:结论ID列表}`、`claim_refs:结论ID列表`、`variant_ids:已确认适配的组合ID列表`。
+
+`late_variants` 每项包含 `id/name/condition/members/core_heroes/required_factions/ban_conditions/ban_combinations/claim_refs`。`members` 使用既有 Member 格式；`ban_combinations` 为 `{factions:同时禁用阵营ID列表,status:playable|unplayable|unknown,reason:说明}` 列表。名称、描述、成员必要性和适配关系都必须有 `claim_refs` 所指结论的证据支持，网页人工编辑沿用 manual_meta 保护，不冒充视频确认。
+
+全局核心、全局中后期必需成员只表达所有路线共同依赖，不将所有组合合并进 compositions.late。组合依赖独立由其核心及必需成员推导。共同必需阵营被禁时整篇不可玩；组合必需阵营被禁只排除该组合。至少一套完整组合在当前全部禁用条件下已确认可玩，整篇才为可玩；全不可玩为不可玩；其他为待确认。多个禁用阵营必须有匹配全部禁用集合的联合条件，不能由单个阵营的可玩记录推导。
+
+沿用 GET/PUT notes、commit、persist 事务和 revision。删除组合同步移除节奏适配引用；修改或清空章节时将相关引用指向新人工结论或移除，并保护相应 meta。导入拒绝重复 ID、悬空结论/组合/实体引用。Markdown 导出运营节奏及推荐组合，省略内部 ID 与来源证据。
+
+既有显式结论ID允许同一已引用来源的文案核对修正，旧文案与证据存入history；不同版本、条件、推断标志或仅有新来源的策略不能复用旧ID覆盖，须另建结论。人工章节与meta仍优先保护。
+
+灵活阵容记录一旦存在，必须填写契约字段：节奏包含 condition/advantages/risks/transition/phases/claim_refs/variant_ids，组合包含 condition/members/core_heroes/required_factions/ban_conditions/ban_combinations/claim_refs；未知说明可为空、无引用可为 []，不可省略导致前端数据形状不完整。旧阵容可继续省略两类记录。

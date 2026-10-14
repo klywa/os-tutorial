@@ -1,0 +1,1133 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "BV1Mseb6EEMq:p1",
+    "bvid": "BV1Mseb6EEMq",
+    "part": 1,
+    "title": "【王者万象棋】马可养猪八戒阵容详解+实战，养出超级无敌大肥猪",
+    "requested_title": "【王者万象棋】马可养猪八戒阵容详解+实战，养出超级无敌大肥猪",
+    "url": "https://www.bilibili.com/video/BV1Mseb6EEMq/?p=1",
+    "author": "不玩游戏的老贼",
+    "duration": 3457,
+    "published": "2026-09-19 17:39:43"
+  },
+  "status": "completed",
+  "review": {
+    "full_transcript_read": true,
+    "checked_intervals": [
+      [
+        0,
+        3457
+      ]
+    ],
+    "notes": "完整阅读82段原始ASR并逐条核对35张教学截图；截图通过公开媒体定位获取，未做人工修正。模拟流程与实战分开记录。"
+  },
+  "events": [
+    {
+      "id": "BV1Mseb6EEMq:p1:e001",
+      "start": 0.0,
+      "end": 58.28,
+      "scene": "前置讲解",
+      "timing": "理解马可刷牌循环时",
+      "content": "停留低阶打出再卖出，用宝藏奖励构成资源循环",
+      "background": {
+        "text": "被动对打出低阶英雄计数，购买并非同一触发动作。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解循环资源来源。",
+        "basis": "分析推断"
+      },
+      "quote": "打牌卖牌就能不停的获得",
+      "segment_ids": [
+        1,
+        2
+      ],
+      "template_id": "mechanic-model",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/40-0.jpg",
+          "time": 40,
+          "reviewed": true,
+          "observation": "棋手百科展示六种宝藏牌，红缣锦鲤符说明展开",
+          "sha256": "459fd7d66b649d04d9fee8cbf6881e9218eacb5d7b3f5c80ea8181183f9a1739"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e002",
+      "start": 58.62,
+      "end": 115.14,
+      "scene": "前置讲解",
+      "timing": "用随机镜子复制猪八戒时",
+      "content": "清理其他非觉醒手牌，只留目标，让随机复制集中到目标",
+      "background": {
+        "text": "镜子从手牌随机选取，手牌构成决定结果。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "操作前控制随机目标集合。",
+        "basis": "分析推断"
+      },
+      "quote": "手上只留猪八戒",
+      "segment_ids": [
+        3,
+        4
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/80-0.jpg",
+          "time": 80,
+          "reviewed": true,
+          "observation": "棋手百科展开冰曜宝石镜，清空其他手牌由讲解说明",
+          "sha256": "cbbaf5faed3772f7a3584b713fde104cfa79bcd8de1fe0624cbfdfac76c1fe11"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e003",
+      "start": 115.44,
+      "end": 177.14,
+      "scene": "前置讲解",
+      "timing": "选择终极宝藏奖励时",
+      "content": "吸睛自拍可拿目标或合成资源，同时联动等级、锦囊与被动",
+      "background": {
+        "text": "场上五人留打出位，随机复制不到主输出也可能有循环收益。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "评价奖励的多层资源联动。",
+        "basis": "分析推断"
+      },
+      "quote": "加三个进度",
+      "segment_ids": [
+        5,
+        6,
+        7
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/155-0.jpg",
+          "time": 155,
+          "reviewed": true,
+          "observation": "棋手百科展开吸睛自拍，字幕说明复制概率",
+          "sha256": "93c345cd37e3d6412cf2857a1c24530bba6028ba70f9037cf80f3864326c156c"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e004",
+      "start": 206.79,
+      "end": 257.57,
+      "scene": "前置讲解",
+      "timing": "镜子强化已经完成时",
+      "content": "早期争取强化镜子，完成后改选增加宝藏数量的奖励",
+      "background": {
+        "text": "奖励优先级随强化状态变化。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据已完成的成长步骤调整选择。",
+        "basis": "分析推断"
+      },
+      "quote": "一旦强化出宝石镜",
+      "segment_ids": [
+        8,
+        9
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/220-0.jpg",
+          "time": 220,
+          "reviewed": true,
+          "observation": "棋手百科展开时差薪金，字幕说明随机两张宝藏",
+          "sha256": "089eea4e508cbb92a0b938379b55c33f221e817cc3095c7b14916a5a1dc6ad2a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e005",
+      "start": 258.2,
+      "end": 314.72,
+      "scene": "前置讲解",
+      "timing": "准备升六开启大招时",
+      "content": "先积累宝藏数量，再确保主输出品阶在场人数最多以利用重点照顾",
+      "background": {
+        "text": "数量与场上品阶分布共同影响增伤；视频数值未独立校验。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "开技能前检查收益条件。",
+        "basis": "分析推断"
+      },
+      "quote": "三阶英雄是场上人数最多的",
+      "segment_ids": [
+        10,
+        11
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/295-0.jpg",
+          "time": 295,
+          "reviewed": true,
+          "observation": "棋手百科展开重点照顾，品阶多数条件来自讲解",
+          "sha256": "930f2a3844c3cea6bf3b6f6faf379dbaff0fd0179fec1efc8f61fcf86575c3a6"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e006",
+      "start": 316.66,
+      "end": 372.89,
+      "scene": "前置讲解",
+      "timing": "高频刷新路线选择早期天赋时",
+      "content": "刷新减费因操作次数获得较高累计收益，额外低阶牌加速被动与成型",
+      "background": {
+        "text": "同样单次优惠在高频操作中总价值更大。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按使用次数评价资源天赋。",
+        "basis": "分析推断"
+      },
+      "quote": "他的总收益都会非常高",
+      "segment_ids": [
+        12,
+        13
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/350-0.jpg",
+          "time": 350,
+          "reviewed": true,
+          "observation": "天赋页展开五福临门，额外牌触发收益由讲解说明",
+          "sha256": "697ff31ff04cdcaddd83a95c386221c1c6d45dfa3704ba366e63a8610e434c2e"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e007",
+      "start": 344.52,
+      "end": 398.96,
+      "scene": "前置讲解",
+      "timing": "一直没有镜子但需要主输出上场时",
+      "content": "复制机可提供种猪替代，随机等级给转移工具也不必然浪费",
+      "background": {
+        "text": "启动缺口是保留可复制主输出，替代资源解决同一缺口。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别资源的功能替代。",
+        "basis": "分析推断"
+      },
+      "quote": "复印机是非常优质的选择",
+      "segment_ids": [
+        13,
+        14
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/385-0.jpg",
+          "time": 385,
+          "reviewed": true,
+          "observation": "天赋页展开复印机，字幕讨论银算盘补充成长",
+          "sha256": "05f5922609bdf01efe35c690a3df6a2ceaa124fdde155358ddc877d6f73428fa"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e008",
+      "start": 431.65,
+      "end": 485.34,
+      "scene": "前置讲解",
+      "timing": "考虑连胜积累天赋时",
+      "content": "只有对局压力低且能赢时才考虑瓶中人",
+      "background": {
+        "text": "对手后期发力可给前中期连续获胜窗口。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "基于实际连胜概率评估天赋。",
+        "basis": "分析推断"
+      },
+      "quote": "对局压力不大的情况下",
+      "segment_ids": [
+        16,
+        17
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/470-0.jpg",
+          "time": 470,
+          "reviewed": true,
+          "observation": "天赋页展开瓶中人，字幕说明累积随机英雄牌",
+          "sha256": "ae579c262e26741b2f3606f5a1ef6247a7afe945d936ec398f0e7d9f639d2468"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e009",
+      "start": 510.32,
+      "end": 567.36,
+      "scene": "前置讲解",
+      "timing": "刷牌流遇到同路人时",
+      "content": "反复打卖触发额外英雄牌，再触发马可宝藏，扩展循环",
+      "background": {
+        "text": "收益来自牌与被动的双向联动，而非天赋名称本身。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解反馈式资源循环。",
+        "basis": "分析推断"
+      },
+      "quote": "它就形成一个倒转的效果",
+      "segment_ids": [
+        19,
+        20
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/550-0.jpg",
+          "time": 550,
+          "reviewed": true,
+          "observation": "天赋页展开保持进步，同路人循环来自相邻语音",
+          "sha256": "129bb32438119db5fcec32a208a97cb1791bd42ba8d306fa5ee19bd4be2b2495"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e010",
+      "start": 582.09,
+      "end": 624.8,
+      "scene": "前置讲解",
+      "timing": "凯旋征兆出现时",
+      "content": "猪八戒等级和装备足以继续赢时才把连胜转化为更多主输出牌",
+      "background": {
+        "text": "输赢把握是收益兑现的前提。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "判断有条件奖励是否能兑现。",
+        "basis": "分析推断"
+      },
+      "quote": "根据情况判定你这局能不能赢",
+      "segment_ids": [
+        21,
+        22
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/610-0.jpg",
+          "time": 610,
+          "reviewed": true,
+          "observation": "天赋页展开凯旋征兆，字幕说明猪八戒成长",
+          "sha256": "2585c1685ff9a1e4f2ddd749f662f5378cf70c4ee9be6c7a7aef4f0fc79082a3"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e011",
+      "start": 626.3,
+      "end": 706.67,
+      "scene": "前置讲解",
+      "timing": "后期可能用高阶辅助但当前是低阶构筑时",
+      "content": "小咖秀与永不独行可在长期停三期间回本，未来失效不等于当前无价值",
+      "background": {
+        "text": "太乙到场较晚且不是立即必须，评估实际生效时长。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按生效阶段评价天赋。",
+        "basis": "分析推断"
+      },
+      "quote": "那个时候早就已经回本了",
+      "segment_ids": [
+        23,
+        24,
+        25
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/690-0.jpg",
+          "time": 690,
+          "reviewed": true,
+          "observation": "天赋页展开永不独行，停三条件来自语音",
+          "sha256": "6eedf0a3a397969be6d8b1da718b4ef78bd8c5388fac0041ae942a5662bd35ac"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e012",
+      "start": 716.37,
+      "end": 795.17,
+      "scene": "前置讲解",
+      "timing": "给猪八戒选护盾与吸血资源时",
+      "content": "护盾损失也能触发成长；扣大量生命的吸血装备需考虑被秒风险",
+      "background": {
+        "text": "高生命主输出对扣半生命损失敏感。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "同时评估增益与代价。",
+        "basis": "分析推断"
+      },
+      "quote": "扣这50的损失太大",
+      "segment_ids": [
+        26,
+        27,
+        28
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/760-0.jpg",
+          "time": 760,
+          "reviewed": true,
+          "observation": "天赋页展开魂祭绝刃，字幕说明生命扣除代价",
+          "sha256": "3c0235a6063c7982fc9f49f474933e2ef8d5e0ec6ccc183d40a66830b43adce6"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e013",
+      "start": 765.31,
+      "end": 824.66,
+      "scene": "前置讲解",
+      "timing": "考虑全员觉醒奖励时",
+      "content": "较少单位与镜子降低全员觉醒难度，提高强者恒强的可兑现性",
+      "background": {
+        "text": "奖励条件是否能完成取决于构筑工具。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "判断条件型增益的达成难度。",
+        "basis": "分析推断"
+      },
+      "quote": "想复制出全员觉醒是很简单的",
+      "segment_ids": [
+        28,
+        29
+      ],
+      "template_id": "talent-fit",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/810-0.jpg",
+          "time": 810,
+          "reviewed": true,
+          "observation": "效果牌页展开夺取之术，强者恒强的条件来自同段前文",
+          "sha256": "126974080f0953a09799124b3c1ee539fcb0c6447049bd945edc478878a46f40"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e014",
+      "start": 826.0,
+      "end": 941.69,
+      "scene": "前置讲解",
+      "timing": "合成锦囊三选一时",
+      "content": "优先两张体系英雄牌，再一张目标，最后刷新或升级资源",
+      "background": {
+        "text": "每张牌同时提供回收经济与宝藏进度。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "从循环收益排序奖励。",
+        "basis": "分析推断"
+      },
+      "quote": "有两张的就拿两张",
+      "segment_ids": [
+        30,
+        31,
+        32,
+        33
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/910-0.jpg",
+          "time": 910,
+          "reviewed": true,
+          "observation": "效果牌页展开超级补贴，奖励数量排序来自语音",
+          "sha256": "1a67dfc2daae153fbfe5eed15d8afea3e6fa9f368b627e624beb7d4bee27d579"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e015",
+      "start": 914.53,
+      "end": 995.64,
+      "scene": "前置讲解",
+      "timing": "第三轮拍卖时",
+      "content": "按速六、肉装、复制或太乙觉醒缺口选择，救命牌并非固定最高",
+      "background": {
+        "text": "太乙被抢空而仅一张时，觉醒资源价值上升。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据当前缺口而非固定表格竞拍。",
+        "basis": "分析推断"
+      },
+      "quote": "根据情况来选择",
+      "segment_ids": [
+        33,
+        34,
+        35
+      ],
+      "template_id": "auction-choice",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/980-0.jpg",
+          "time": 980,
+          "reviewed": true,
+          "observation": "效果牌页展开天籁琴音，字幕说明太乙仅一张时的用途",
+          "sha256": "bb01f92062c0dc06296bd2e781d8b9c9a80f9b29f4c3cabd22be615d7f2b44a3"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e016",
+      "start": 996.3,
+      "end": 1082.73,
+      "scene": "模拟演示",
+      "timing": "规划开局五人口时",
+      "content": "用孙尚香合成奖励找曹操或梦奇，没找到也可补两名二阶稳血",
+      "background": {
+        "text": "梦奇失败后品阶变化提供目标兑换与后续刷牌价值。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把开局稳血和后续资源计划相连。",
+        "basis": "分析推断"
+      },
+      "quote": "前期形成一个很好的战力",
+      "segment_ids": [
+        36,
+        37,
+        38
+      ],
+      "template_id": "opening-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1040-0.jpg",
+          "time": 1040,
+          "reviewed": true,
+          "observation": "阵容编辑展示梦奇退场与登场说明",
+          "sha256": "cee52e3a84fada61f07edf11ccfded54b59c727390a1b966ba2ec0dd58f8bc5a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e017",
+      "start": 1083.55,
+      "end": 1141.79,
+      "scene": "模拟演示",
+      "timing": "升三更换过渡阵容时",
+      "content": "不在二级额外搜曹操，三级成型时顺带找；先有姬小满再卖工具兑现刷新",
+      "background": {
+        "text": "替换顺序影响可获得的刷新次数。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在换人前保留退出收益。",
+        "basis": "分析推断"
+      },
+      "quote": "先下这个曹老板",
+      "segment_ids": [
+        39,
+        40
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1120-0.jpg",
+          "time": 1120,
+          "reviewed": true,
+          "observation": "编辑棋盘，字幕提示先下曹操",
+          "sha256": "7ff05e0d4a75dc32182bc2e72c5db8ae5cdbed1b9006cbad7ca9b3cc1e3390e6"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e018",
+      "start": 1141.79,
+      "end": 1229.99,
+      "scene": "模拟演示",
+      "timing": "第一次获得猪八戒时",
+      "content": "通常留种猪等待镜子；独家时可先上第一张，同行多须先复制",
+      "background": {
+        "text": "牌库竞争影响留手与立即上场的风险。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "按竞争程度调整主输出保留策略。",
+        "basis": "分析推断"
+      },
+      "quote": "如果猪八戒同行比较多",
+      "segment_ids": [
+        41,
+        42,
+        43
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1190-0.jpg",
+          "time": 1190,
+          "reviewed": true,
+          "observation": "编辑棋盘，字幕说明独家时第二张留种",
+          "sha256": "9e80d7d225afa3b21141162eeaa7644965289141c9f7d44d8d12c349a6b945ab"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e019",
+      "start": 1202.17,
+      "end": 1285.17,
+      "scene": "模拟演示",
+      "timing": "执行打卖与吸等级操作时",
+      "content": "必须先上场再卖；电脑可用快捷键提高操作效率；优先吸工具而保留瑶等级",
+      "background": {
+        "text": "触发被动与单位功能同时约束操作。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "掌握正确操作顺序并减少机械负担。",
+        "basis": "分析推断"
+      },
+      "quote": "一定要先打到场上再卖",
+      "segment_ids": [
+        43,
+        44,
+        45
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1245-0.jpg",
+          "time": 1245,
+          "reviewed": true,
+          "observation": "编辑棋盘，字幕说明优先吸刘禅，卖牌顺序由语音说明",
+          "sha256": "3e59a671b9d12d8f9342f45f7e1193a97b9b937682218c37fdfc8ae023c92b74"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e020",
+      "start": 1259.69,
+      "end": 1343.57,
+      "scene": "模拟演示",
+      "timing": "挑选刷牌材料时",
+      "content": "优先能额外给牌、金币或刷新的单位；老夫子可跨回合再触发",
+      "background": {
+        "text": "不是任意同价英雄收益都相等。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别复合收益的工具卡。",
+        "basis": "分析推断"
+      },
+      "quote": "这些有额外收益的这些牌",
+      "segment_ids": [
+        45,
+        46,
+        47
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1300-0.jpg",
+          "time": 1300,
+          "reviewed": true,
+          "observation": "编辑页展开老夫子，字幕说明额外一张牌",
+          "sha256": "38ec991c342886ad955049c962bd843fc9d26f5027844846eb55785dda4a69d6"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e021",
+      "start": 1314.22,
+      "end": 1371.45,
+      "scene": "前置讲解",
+      "timing": "检查禁用阵营是否适合路线时",
+      "content": "比较体系需要的阵营和老夫子工具可用性，缺工具时收益上限较低",
+      "background": {
+        "text": "讲者区分可玩与最适合；原始ASR禁字误识未修正。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "区分核心依赖和效率工具。",
+        "basis": "分析推断"
+      },
+      "quote": "上限会低一点",
+      "segment_ids": [
+        47,
+        48
+      ],
+      "template_id": "opening-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1360-0.jpg",
+          "time": 1360,
+          "reviewed": true,
+          "observation": "编辑棋盘字幕说明没有老夫子时的替代路线",
+          "sha256": "b194716a75d2552bd22261f23381711d3ee36c5c9fe7323e2153fd39515d7887"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e022",
+      "start": 1371.6,
+      "end": 1456.9099999999999,
+      "scene": "模拟演示",
+      "timing": "第三轮拍卖后其他路线发力时",
+      "content": "结束低阶刷牌；太乙库存少先四级抢，再连续升六，否则可直接六级找",
+      "background": {
+        "text": "阶段战力压力与关键牌剩余库存共同决定升级路径。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "把升级时机与对手压力、牌库信息相连。",
+        "basis": "分析推断"
+      },
+      "quote": "咱们只升四级",
+      "segment_ids": [
+        49,
+        50,
+        51
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1435-0.jpg",
+          "time": 1435,
+          "reviewed": true,
+          "observation": "编辑棋盘新增辅助，字幕说明先取得仅剩太乙",
+          "sha256": "45243ad0d396ac569fa9edb602db3e2d03d70ed574c881a128dd37d48d27db4a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e023",
+      "start": 1486.9,
+      "end": 1597.81,
+      "scene": "前置讲解",
+      "timing": "理解猪八戒成长与装备时",
+      "content": "回血延长承伤并积累生命，反甲利用高坦度应对射手",
+      "background": {
+        "text": "技能按生命造成法伤，不能只依据普攻外观配装。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "从技能与承伤机制推导装备。",
+        "basis": "分析推断"
+      },
+      "quote": "给他出回血,他就能承受更多的伤害",
+      "segment_ids": [
+        53,
+        54,
+        55,
+        56
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1578-0.jpg",
+          "time": 1578,
+          "reviewed": true,
+          "observation": "编辑页展开不死鸟之眼与猪八戒",
+          "sha256": "376a4c507ed98070bd353547b05710f2c104a08bc53402c1f1e1ba8a061ce458"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e024",
+      "start": 1598.58,
+      "end": 1685.96,
+      "scene": "前置讲解",
+      "timing": "给瑶分配防具时",
+      "content": "辅助自身属性可回馈主输出，附身状态仍可利用部分装备功能",
+      "background": {
+        "text": "视频说明属性返还与附身的组合收益，比例未独立校验。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "理解辅助装备也能服务核心。",
+        "basis": "分析推断"
+      },
+      "quote": "返还给这个猪八戒",
+      "segment_ids": [
+        57,
+        58,
+        59
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1620-0.jpg",
+          "time": 1620,
+          "reviewed": true,
+          "observation": "编辑页展开瑶与不死鸟之眼，属性返还由语音说明",
+          "sha256": "72efc37cadc7984fd4527bc4fd0c217688c96715c62b9bd816707e7eeaee1bc3"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e025",
+      "start": 1658.6599999999999,
+      "end": 1743.44,
+      "scene": "前置讲解",
+      "timing": "神器替代普通恢复装时",
+      "content": "比较恢复频率、回蓝、护盾、控制与法术吸血，替换同功能位置",
+      "background": {
+        "text": "神器优先级由实际功能和单位伤害机制决定。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "进行有依据的装备替代。",
+        "basis": "分析推断"
+      },
+      "quote": "帮助它能更快地进行砸地板",
+      "segment_ids": [
+        59,
+        60,
+        61
+      ],
+      "template_id": "equipment-role",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1720-0.jpg",
+          "time": 1720,
+          "reviewed": true,
+          "observation": "编辑页展开生命魔典，字幕比较冷却",
+          "sha256": "8ac62331f3616a4d769e9a4f8d81950d1382b3d8e1f9d79c5e6084df33ef402b"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e026",
+      "start": 1714.55,
+      "end": 1813.54,
+      "scene": "前置讲解",
+      "timing": "控制影响猪八戒释放技能时",
+      "content": "考虑免控输出装备，但会占防御位；射手威胁小才更适合换反甲",
+      "background": {
+        "text": "免控提高输出而损失坦度，不是无条件升级。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在针对收益与生存代价之间取舍。",
+        "basis": "分析推断"
+      },
+      "quote": "会少一件防御类装备",
+      "segment_ids": [
+        61,
+        62,
+        63
+      ],
+      "template_id": "counter-target",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1785-0.jpg",
+          "time": 1785,
+          "reviewed": true,
+          "observation": "编辑页展开反伤甲，字幕说明机器头可考虑",
+          "sha256": "40b6d8361913a47f56d000f33ebe9734758c4abaf44be6339127f1dd77b63fab"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e027",
+      "start": 1818.59,
+      "end": 1893.13,
+      "scene": "实战",
+      "timing": "开局需要过渡稳血时",
+      "content": "暂把等级给孙尚香，后续可转猪；让牛魔承担前排保护后排",
+      "background": {
+        "text": "资源可回收转移减少过渡投入损失。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "结合站位与可转移资源稳血。",
+        "basis": "分析推断"
+      },
+      "quote": "确保打这个牛魔",
+      "segment_ids": [
+        64
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1850-0.jpg",
+          "time": 1850,
+          "reviewed": true,
+          "observation": "第二回合战斗展开牛魔，前排承担伤害的思路由讲解说明",
+          "sha256": "076a5e38b9e83a5f025c3cd69d246365d014e37573a19d920058cd6b3e03d8fe"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e028",
+      "start": 1895.82,
+      "end": 2005.98,
+      "scene": "实战",
+      "timing": "开局自然牌未觉醒时",
+      "content": "不花额外费用和刷新追孙尚香，拍卖先主输出，再工具；避免同行竞争",
+      "background": {
+        "text": "路线更依赖三级后成型与刷牌，开局过渡不宜挤占预算。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别过渡投入的合理上限。",
+        "basis": "分析推断"
+      },
+      "quote": "咱们不花钱去那个找",
+      "segment_ids": [
+        65,
+        66
+      ],
+      "template_id": "economy-budget",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/1980-0.jpg",
+          "time": 1980,
+          "reviewed": true,
+          "observation": "第一轮拍卖界面展示猪八戒等候选",
+          "sha256": "ff0301c95790b87a30954d52472345ef40f544e40dc38663cd1f024b98265537"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e029",
+      "start": 2051.98,
+      "end": 2110.83,
+      "scene": "实战",
+      "timing": "已有复制机准备上猪八戒时",
+      "content": "复制机承担留种功能，可不用额外保留种猪",
+      "background": {
+        "text": "同一留牌规则随着替代功能到位改变。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据现有资源调整保留要求。",
+        "basis": "分析推断"
+      },
+      "quote": "复印机就是种猪",
+      "segment_ids": [
+        67
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/2060-0.jpg",
+          "time": 2060,
+          "reviewed": true,
+          "observation": "前期战斗，已持有复制机而调整保留种猪规则的依据来自语音；不从缩略图确认具体回合。",
+          "sha256": "236c6b665fb35a05ead3dc447ff3124e8a051fa609973c88974b9db47f3a84c4"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e030",
+      "start": 2117.35,
+      "end": 2388.19,
+      "scene": "实战",
+      "timing": "等级集中与自拍之前时",
+      "content": "吸走孙尚香等级后下场，避免多余单位干扰自拍目标",
+      "background": {
+        "text": "临时贪等级与复制范围存在冲突。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "兑现工具收益后及时撤下。",
+        "basis": "分析推断"
+      },
+      "quote": "别影响那个影响那个自拍",
+      "segment_ids": [
+        68,
+        69,
+        70
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/2340-0.jpg",
+          "time": 2340,
+          "reviewed": true,
+          "observation": "第七回合战斗，前述撤孙尚香与自拍范围由语音说明",
+          "sha256": "45512ea875b577270611973e910aa4bcc7cb0674f1d25b079eb0abde72edf69b"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e031",
+      "start": 2490.29,
+      "end": 2686.24,
+      "scene": "实战",
+      "timing": "镜子强化终于成功时",
+      "content": "保留两张种猪以利用强化复制；老夫子可留下一轮再触发",
+      "background": {
+        "text": "强化状态改变可复制数量与最佳手牌配置。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "在关键成长完成后更新操作方式。",
+        "basis": "分析推断"
+      },
+      "quote": "一下能复制两个",
+      "segment_ids": [
+        72,
+        73
+      ],
+      "template_id": "growth-combo",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/2580-0.jpg",
+          "time": 2580,
+          "reviewed": true,
+          "observation": "第九回合整备展开老夫子，字幕与手牌显示循环工具",
+          "sha256": "7f5a4b4505376f702663167c8c624bf354fb20fdb4b71f19965d5c6d407bf86f"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e032",
+      "start": 2819.23,
+      "end": 2859.7200000000003,
+      "scene": "实战",
+      "timing": "倒计时操作来不及时",
+      "content": "想先挂老夫子再打猪以多得牌，但因时间不足舍弃额外收益",
+      "background": {
+        "text": "明确展示手速约束；不能要求玩家无条件照做完整组合。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "根据时间预算优先完成关键操作。",
+        "basis": "分析推断"
+      },
+      "quote": "操作有点来不及了",
+      "segment_ids": [
+        75
+      ],
+      "template_id": "resource-order",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/2840-0.jpg",
+          "time": 2840,
+          "reviewed": true,
+          "observation": "第十一回合战斗，额外组合来不及的限制来自讲解",
+          "sha256": "9fb4464c4ed11379a92ed0a94a4ebed2641ac3a5657a1e83ceab07b4888cec8a"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e033",
+      "start": 2861.26,
+      "end": 3016.04,
+      "scene": "实战",
+      "timing": "拍卖后准备从停三转速六时",
+      "content": "争取升级资源并补回血书，为高等级阶段准备战力",
+      "background": {
+        "text": "讲者指出装备缺防御，启动资源与生存缺口同时存在。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "升级前补齐阶段最紧迫的功能。",
+        "basis": "分析推断"
+      },
+      "quote": "优先拿回血书",
+      "segment_ids": [
+        76,
+        77
+      ],
+      "template_id": "level-transition",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/2940-0.jpg",
+          "time": 2940,
+          "reviewed": true,
+          "observation": "第十二回合天赋选择，升级准备与回血书取舍来自同段语音",
+          "sha256": "d864731e4e40619965053bc21c3bf85a42070a63a470b9de0638b04eadaa0031"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e034",
+      "start": 2934.4700000000003,
+      "end": 3124.05,
+      "scene": "实战",
+      "timing": "观察敌方屏障防线战斗时",
+      "content": "屏障未铺满最后一排，让猪八戒能跳进去；站位应回应敌人突进机制",
+      "background": {
+        "text": "讲者对对手布局做机制解释，不以单次输赢推广所有站位。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别防线布局如何影响敌方技能路径。",
+        "basis": "分析推断"
+      },
+      "quote": "这让我跳进去了",
+      "segment_ids": [
+        77,
+        78
+      ],
+      "template_id": "position-cause",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/3025-0.jpg",
+          "time": 3025,
+          "reviewed": true,
+          "observation": "第十二回合战斗，屏障与猪八戒跳跃反馈由讲者观察",
+          "sha256": "6a9c9329e60d3456ca57454ebd6290b0ec5e909bd8867adec310f2610d19802b"
+        }
+      ]
+    },
+    {
+      "id": "BV1Mseb6EEMq:p1:e035",
+      "start": 3016.8999999999996,
+      "end": 3182.3599999999997,
+      "scene": "实战",
+      "timing": "进入决赛但仅一条命时",
+      "content": "紧急找太乙复活提高容错；高等级刷牌量下降，不能仍按停三阶段预期",
+      "background": {
+        "text": "残局需求从循环积累转为保护当前战力。",
+        "basis": "分析推断"
+      },
+      "goal": {
+        "text": "识别阶段变化后的核心缺口。",
+        "basis": "分析推断"
+      },
+      "quote": "这一条命还是有点悬",
+      "segment_ids": [
+        78,
+        79
+      ],
+      "template_id": "fallback-plan",
+      "screenshots": [
+        {
+          "path": "tutorial/assets/BV1Mseb6EEMq_p1/3150-0.jpg",
+          "time": 3150,
+          "reviewed": true,
+          "observation": "第十四回合整备，手中牌与单条命的复活缺口来自语音",
+          "sha256": "d91f48250eb229304d55de6bb179390cd30801654ae1982a2b9b794dea46d152"
+        }
+      ]
+    }
+  ],
+  "unresolved": [
+    "段18与19起点有0.31秒倒退，原始时间戳保留未修正。",
+    "转写存在静音或缺口，尤其终局长间隔，不补写缺失解释。",
+    "卡名、禁用阵营同音误识保留，机制和数值仅据视频版本讲解。"
+  ],
+  "transcript_file": "asr.raw.json",
+  "transcript_sha256": "8f5ec1684d423501d68667f529375041ff8e73fdd83903d778cf7dee860d52d2"
+}
