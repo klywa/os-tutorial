@@ -1277,6 +1277,23 @@
           "frame": "frames/2160-0.jpg"
         }
       ]
+    },
+    {
+      "id": "hold-luna-for-competing-mulan",
+      "section": "关键牌判断",
+      "text": "当场上有多家花木兰、且这些对手需要露娜，顺路获得该牌时，可以暂将露娜留在手中，限制同行获取关键牌。",
+      "version": null,
+      "condition": "场上有多家花木兰、且这些对手需要露娜，顺路获得该牌",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1WPap6DEa9:p1",
+          "start": 1095.86,
+          "end": 1125.66,
+          "frame": "frames/1100-0.jpg"
+        }
+      ]
     }
   ],
   "meta": {
@@ -2613,6 +2630,31 @@
           }
         ]
       }
+    },
+    {
+      "at": "2026-10-14T08:37:34.505474+00:00",
+      "origin": "import_correction",
+      "previous": {
+        "claims": [
+          {
+            "id": "hold-luna-for-competing-mulan",
+            "section": "关键牌判断",
+            "text": "场上有多家花木兰、且这些对手需要露娜时，顺路获得的露娜可以暂留手中，限制同行获取关键牌。",
+            "version": null,
+            "condition": "场上有多家花木兰、且这些对手需要露娜，顺路获得该牌",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1WPap6DEa9:p1",
+                "start": 1095.86,
+                "end": 1125.66,
+                "frame": "frames/1100-0.jpg"
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "conflicts": [],
@@ -2636,5 +2678,5 @@
       "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
     }
   ],
-  "revision": "b5936f7aa8660311b78f"
+  "revision": "f8deb7413d2817bfd9c3"
 }

@@ -323,11 +323,26 @@ def validate_template_organization(templates):
 def aggregate(root, sources, templates):
     validate_template_organization(templates)
     saved = records(root)
+    expansion_ids = set(read(Path(root) / 'proposal/tutorial/expansion-batch.json', {}).get('ids', []))
     states = read(Path(root) / 'proposal/tutorial/status.json', {})
+    transport_outcomes = {r['id']: r for r in read(Path(root) / 'proposal/tutorial/expansion-progress.json', [])}
+    # A later successful acquisition supersedes an earlier transient failure,
+    # but remains pending until the independently reviewed record exists.
+    for retry in read(Path(root) / 'proposal/tutorial/expansion-retry-progress.json', []):
+        if retry.get('status') in ('evidence_stream_ready', 'downloaded', 'awaiting_analysis', 'failed', 'reused'):
+            transport_outcomes[retry['id']] = retry
+    transport_failures = {sid: r for sid, r in transport_outcomes.items() if r.get('status') == 'failed'}
     output, events, issues = [], [], []
     for source in sources:
         sid = source['id']
-        row = {**source, **states.get(sid, {'status': 'pending'})}
+        metadata = read(Path(root) / 'raw/sources' / sid.replace(':', '_') / 'metadata.json', {})
+        if metadata.get('id') != sid:
+            metadata = {}
+        row = {**source, **metadata, **states.get(sid, {'status': 'pending'})}
+        if sid in transport_failures and sid not in saved:
+            row.update(status='failed', error=transport_failures[sid].get('error', '素材传输失败；转写完成不代表视频画面已可核对'))
+        elif sid not in saved and row.get('status') == 'failed' and transport_outcomes.get(sid, {}).get('status') in ('evidence_stream_ready', 'downloaded', 'awaiting_analysis'):
+            row.update(status='in_progress', error=None, note='素材已恢复；等待原始ASR与人工证据核对')
         if sid in saved:
             row.update(saved[sid][1]['source'])
         if not report_source_allowed(row):
@@ -342,18 +357,39 @@ def aggregate(root, sources, templates):
             if problems:
                 row['status'] = 'invalid_record'
             elif row['status'] == 'completed':
-                live_events = [e for e in r['events'] if e['scene'] == '实战']
-                if not live_events:
+                live_events = [e for e in r['events'] if e['scene'] == '实战' and e['template_id'] != 'version-change']
+                if not live_events and sid.split(':')[0] not in expansion_ids:
                     continue
                 events += [{**e, 'source_id': sid, 'title': row['title'], 'author': row.get('author', '未知')}
                            for e in live_events]
             issues += [{'source_id': sid, 'text': str(p)} for p in row['issues']]
         else:
-            legacy = Path(root) / 'proposal/tutorial/records' / (safe_title(source['title']) + '.md')
+            legacy = Path(root) / 'proposal/tutorial/records' / (safe_title(row.get('title', source['title'])) + '.md')
             if legacy.exists():
                 row['issues'] = ['已有 Markdown 记录缺结构化数据，保留且不重新分析']
                 issues.append({'source_id': sid, 'text': row['issues'][0]})
         output.append(row)
+    review = read(Path(root) / 'proposal/tutorial/report-review.json', {})
+    featured = read(Path(root) / 'proposal/tutorial/featured-examples.json', {}).get('templates', {})
+    excluded_events = []
+    if review:
+        decisions = review['events']
+        allowed = {t['id'] for t in templates}
+        retained = []
+        for event in events:
+            decision = decisions.get(event['id'])
+            if not decision or not decision.get('reviewed'):
+                raise ValueError('Event needs report classification review: ' + event['id'])
+            if decision['original_template_id'] != event['template_id']:
+                raise ValueError('Report review does not match original record: ' + event['id'])
+            target = decision['template_id']
+            if target is None:
+                excluded_events.append({'id': event['id'], 'reason': decision['reason']})
+                continue
+            if target not in allowed:
+                raise ValueError('Unknown reviewed template: ' + str(target))
+            retained.append({**event, 'original_template_id': event['template_id'], 'template_id': target})
+        events = retained
     grouped = defaultdict(list)
     for e in events:
         grouped[e['template_id']].append(e)
@@ -368,6 +404,14 @@ def aggregate(root, sources, templates):
                        'event_count': len(examples), 'video_count': len({e['source_id'].split(':')[0] for e in examples}),
                        'author_count': len({e['author'] for e in examples}),
                        'scenes': dict(Counter(e['scene'] for e in examples))})
+    if featured:
+        if set(featured) != {t['id'] for t in result}:
+            raise ValueError('Featured template coverage does not match report')
+        for template in result:
+            ids = featured[template['id']]
+            if len(ids) != 3 or len(set(ids)) != 3 or not set(ids) <= set(template['event_ids']):
+                raise ValueError('Each template needs three retained featured examples')
+            template['featured_event_ids'] = ids
     result.sort(key=template_order)
     completed = [s for s in output if s['status'] == 'completed']
     stats = {'planned': len(output), 'planned_videos': len({s['id'].split(':')[0] for s in output}),
@@ -375,7 +419,9 @@ def aggregate(root, sources, templates):
              'pending': sum(s['status'] in ('pending', 'in_progress') for s in output),
              'invalid_records': sum(s['status'] == 'invalid_record' for s in output),
              'material_reused': sum(bool(s.get('material_reused')) for s in output),
-             'events': len(events), 'templates': len(result),
+             'evidence_issues': len(issues),
+             'sources_with_issues': len({i['source_id'] for i in issues}),
+             'events': len(events), 'templates': len(result), 'excluded_events': len(excluded_events),
              'duration': sum(s.get('duration', 0) for s in completed),
              'scenes': dict(Counter(e['scene'] for e in events)),
              'authors': dict(Counter(s.get('author', '未知') for s in completed))}
@@ -385,8 +431,30 @@ def aggregate(root, sources, templates):
         refs = principle.get('event_ids', [])
         if not refs or any(ref not in valid_ids for ref in refs):
             raise ValueError('Principle must reference validated retained live events')
+    # Plain-language display copy; never transform verbatim ASR or evidence metadata.
+    display_replacements = {'局势条件': '当前血量、金币、来牌和对手阵容', '最小可执行流程': '先后要做的几步操作', '第一阶段操作框架': '前几回合该买谁、升不升本', '最小必要检查': '最要紧的几项检查', '资源兑现前': '出牌、合成、卖牌前', '资源兑现': '出牌、合成或卖牌', '机会成本': '这样做会放弃的其他收益', '可兑现收益': '这回合能拿到的收益', '兑现收益': '拿到收益', '可兑现': '当前能生效', '兑现即时战力': '换成这轮能打的战力', '成长引擎': '加级配合', '成长链': '加级配合', '成长窗口': '还能安心养等级的回合', '阶段目标': '这一阶段的目标', '生存瓶颈': '扛不住的原因', '当前瓶颈': '眼前最缺的东西', '效果错配': '技能作用到了错误目标', '模块适配和组合': '英雄、技能和强化的搭配', '强化模块': '强化效果', '模块效果': '英雄、技能或强化效果', '模块配合': '英雄、技能和强化的配合', '终局': '决赛', '可观察条件': '来牌、金币和血量等能看见的条件', '最小操作顺序': '先后要做的几步操作', '并行处理负担': '同时看牌、操作和观察对手的压力', '边际收益': '多养一轮能增加的战力', '收益对象': '谁能拿到加级或增益', '执行顺序': '操作顺序', '过渡结构': '打工阵容', '功能分工': '前排、输出和辅助的分工', '下一阶段目标': '下一步要做什么'}
+    def display_text(text):
+        for old, new in display_replacements.items():
+            text = text.replace(old, new)
+        return text
+    for event in events:
+        for key in ('content', 'timing'):
+            event[key] = display_text(event[key])
+        for key in ('background', 'goal'):
+            event[key] = {**event[key], 'text': display_text(event[key]['text'])}
+    for event in events:
+        if event['id'] == 'BV1fBa26yERu:p1:e021':
+            event['goal'] = {**event['goal'], 'text': '升到六本后，能把原本留给升本的钱用于竞拍；竞拍预算要随已经完成的升本目标调整。'}
+    # Editorial summaries retain the original ASR, times, screenshots and basis labels.
+    editorial = read(Path(root) / 'proposal/tutorial/display-copy.json', {}).get('events', {})
+    for event in events:
+        copy = editorial.get(event['id'], {})
+        if 'content' in copy:
+            event['content'] = copy['content']
+        if 'goal' in copy:
+            event['goal'] = {**event['goal'], 'text': copy['goal']}
     return {'stats': stats, 'sources': output, 'events': events, 'templates': result,
-            'issues': issues, 'synthesis': summary}
+            'issues': issues, 'synthesis': summary, 'report_exclusions': excluded_events}
 
 
 def render_report(data):

@@ -5,9 +5,11 @@
   "topic": "刘邦图腾永久等级与安琪拉持续输出",
   "entities": [
     "card:1191",
+    "card:1231",
     "card:1491",
     "card:1493",
     "card:1681",
+    "card:1751",
     "card:1821",
     "card:1861",
     "card:1891",
@@ -645,6 +647,23 @@
         }
       ],
       "id": "claim-3865b39670c64eb701a4"
+    },
+    {
+      "id": "utility-zhongkui-versus-lvbu",
+      "section": "关键牌判断",
+      "text": "对手换帅补入吕布、需要压低其等级时，可考虑使用钟馗作为针对工具，降低吕布的等级。",
+      "version": null,
+      "condition": "对手换帅补入吕布、需要压低其等级",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 3380.62,
+          "end": 3435.01,
+          "frame": "frames/3400-0.jpg"
+        }
+      ]
     }
   ],
   "related": [
@@ -690,5 +709,5 @@
   "manual_sections": [],
   "history": [],
   "conflicts": [],
-  "revision": "e875a8287e56f7b7d4eb"
+  "revision": "d95299f58c13fce9c6c3"
 }

@@ -714,9 +714,11 @@
       "topic": "刘邦图腾永久等级与安琪拉持续输出",
       "entities": [
         "card:1191",
+        "card:1231",
         "card:1491",
         "card:1493",
         "card:1681",
+        "card:1751",
         "card:1821",
         "card:1861",
         "card:1891",
@@ -1354,6 +1356,23 @@
             }
           ],
           "id": "claim-3865b39670c64eb701a4"
+        },
+        {
+          "id": "utility-zhongkui-versus-lvbu",
+          "section": "关键牌判断",
+          "text": "对手换帅补入吕布、需要压低其等级时，可考虑使用钟馗作为针对工具，降低吕布的等级。",
+          "version": null,
+          "condition": "对手换帅补入吕布、需要压低其等级",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 3380.62,
+              "end": 3435.01,
+              "frame": "frames/3400-0.jpg"
+            }
+          ]
         }
       ],
       "related": [
@@ -1399,7 +1418,7 @@
       "manual_sections": [],
       "history": [],
       "conflicts": [],
-      "revision": "e875a8287e56f7b7d4eb"
+      "revision": "d95299f58c13fce9c6c3"
     },
     {
       "id": "player-angela",
@@ -2922,6 +2941,23 @@
               "frame": "frames/2160-0.jpg"
             }
           ]
+        },
+        {
+          "id": "hold-luna-for-competing-mulan",
+          "section": "关键牌判断",
+          "text": "当场上有多家花木兰、且这些对手需要露娜，顺路获得该牌时，可以暂将露娜留在手中，限制同行获取关键牌。",
+          "version": null,
+          "condition": "场上有多家花木兰、且这些对手需要露娜，顺路获得该牌",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 1095.86,
+              "end": 1125.66,
+              "frame": "frames/1100-0.jpg"
+            }
+          ]
         }
       ],
       "meta": {
@@ -4258,6 +4294,31 @@
               }
             ]
           }
+        },
+        {
+          "at": "2026-10-14T08:37:34.505474+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "hold-luna-for-competing-mulan",
+                "section": "关键牌判断",
+                "text": "场上有多家花木兰、且这些对手需要露娜时，顺路获得的露娜可以暂留手中，限制同行获取关键牌。",
+                "version": null,
+                "condition": "场上有多家花木兰、且这些对手需要露娜，顺路获得该牌",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1WPap6DEa9:p1",
+                    "start": 1095.86,
+                    "end": 1125.66,
+                    "frame": "frames/1100-0.jpg"
+                  }
+                ]
+              }
+            ]
+          }
         }
       ],
       "conflicts": [],
@@ -4281,7 +4342,7 @@
           "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
         }
       ],
-      "revision": "b5936f7aa8660311b78f"
+      "revision": "f8deb7413d2817bfd9c3"
     }
   ]
 }

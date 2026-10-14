@@ -115,6 +115,55 @@ class TutorialTests(unittest.TestCase):
             r['review'] = review
             self.assertTrue(tutorial.validate_record(self.root, r))
 
+    def test_expansion_zero_event_source_remains_completed(self):
+        self.record['events'] = []
+        tutorial.write(self.root / 'proposal/tutorial/expansion-batch.json',
+                       {'ids': [self.source['id'].split(':')[0]]})
+        tutorial.save_record(self.root, self.record)
+        data = tutorial.aggregate(self.root, [self.source], [])
+        self.assertEqual(data['stats']['completed'], 1)
+        self.assertEqual(data['stats']['events'], 0)
+        self.assertEqual(data['sources'][0]['status'], 'completed')
+
+    def test_recovered_source_is_pending_and_latest_failure_reason_is_retained(self):
+        sid = self.source['id']
+        tutorial.write(self.root / 'proposal/tutorial/expansion-progress.json',
+                       [{'id': sid, 'status': 'failed', 'error': 'HTTP 503'}])
+        tutorial.write(self.root / 'proposal/tutorial/status.json',
+                       {sid: {'status': 'failed', 'stage': 'acquisition'}})
+        tutorial.write(self.root / 'proposal/tutorial/expansion-retry-progress.json',
+                       [{'id': sid, 'status': 'evidence_stream_ready'}])
+        data = tutorial.aggregate(self.root, [self.source], [])
+        self.assertEqual(data['stats']['failed'], 0)
+        self.assertEqual(data['stats']['pending'], 1)
+        self.assertEqual(data['stats']['events'], 0)
+        tutorial.write(self.root / 'proposal/tutorial/expansion-retry-progress.json',
+                       [{'id': sid, 'status': 'failed', 'error': 'ASR unavailable'}])
+        data = tutorial.aggregate(self.root, [self.source], [])
+        self.assertEqual(data['stats']['failed'], 1)
+        self.assertEqual(data['sources'][0]['error'], 'ASR unavailable')
+
+    def test_transport_failure_is_visible_without_record(self):
+        tutorial.write(self.root / 'proposal/tutorial/expansion-progress.json',
+                       [{'id': self.source['id'], 'status': 'failed', 'error': 'video truncated'}])
+        tutorial.write(self.root / 'proposal/tutorial/status.json',
+                       {self.source['id']: {'status': 'in_progress', 'stage': 'awaiting_analysis'}})
+        data = tutorial.aggregate(self.root, [self.source], [])
+        self.assertEqual(data['stats']['failed'], 1)
+        self.assertEqual(data['stats']['events'], 0)
+        self.assertEqual(data['sources'][0]['error'], 'video truncated')
+
+    def test_failed_source_keeps_observed_metadata_without_counting_events(self):
+        tutorial.write(self.root / 'raw/sources/BV1JGpM62EC5_p1/metadata.json',
+                       {**self.source, 'title': '真实视频标题', 'author': '真实作者'})
+        tutorial.write(self.root / 'proposal/tutorial/expansion-progress.json',
+                       [{'id': self.source['id'], 'status': 'failed', 'error': 'audio unavailable'}])
+        data = tutorial.aggregate(self.root, [{**self.source, 'title': ''}], [])
+        self.assertEqual(data['sources'][0]['title'], '真实视频标题')
+        self.assertEqual(data['sources'][0]['author'], '真实作者')
+        self.assertEqual(data['stats']['completed'], 0)
+        self.assertEqual(data['stats']['events'], 0)
+
     def test_stats_exclude_failed_pending_and_unrelated_sources(self):
         tutorial.save_record(self.root, self.record)
         sources = [self.source, {'id': 'BV1tkHS6VECD:p1', 'title': '待处理', 'status': 'pending'}]
@@ -242,6 +291,16 @@ class TutorialTests(unittest.TestCase):
                 self.assertEqual(data['sources'][0]['issues'], ['实战数值未核实，不保证当前版本。'])
                 self.assertEqual(data['issues'], [{'source_id': sid, 'text': '实战数值未核实，不保证当前版本。'}])
                 self.assertEqual(path.read_bytes(), before)
+
+    def test_uncertainty_counts_do_not_invalidate_verified_teaching(self):
+        r = copy.deepcopy(self.record)
+        r['unresolved'] = ['数字未核实', '效果尚无对照']
+        tutorial.save_record(self.root, r)
+        d = tutorial.aggregate(self.root, [self.source], [])
+        self.assertEqual(d['stats']['evidence_issues'], 2)
+        self.assertEqual(d['stats']['sources_with_issues'], 1)
+        self.assertEqual(d['stats']['invalid_records'], 0)
+        self.assertEqual(d['stats']['events'], 1)
 
     def test_report_escapes_script_and_is_deterministic(self):
         self.record['source']['title'] = '</script><script>alert(1)</script>'
