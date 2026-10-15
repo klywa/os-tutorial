@@ -13,6 +13,7 @@
     "card:1501",
     "card:1541",
     "card:1591",
+    "card:1751",
     "card:1761",
     "card:1821",
     "card:1831",
@@ -1294,6 +1295,44 @@
           "frame": "frames/1100-0.jpg"
         }
       ]
+    },
+    {
+      "id": "counter-lixin-haiyue",
+      "section": "克制手段",
+      "text": "对手以复生李信为主要输出时，可加入钟馗让附近功能英雄获得牺牲、降低击败者等级，再用太乙给海月复生，重复触发海月牺牲的最高等级目标控制及生命值相关真实伤害。让兔子等级先集中给成长核心，钟馗作为针对位不必提前参与等级均分；能否取胜仍取决于海月生命值、复生次数和对方防护。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1TMeu6bEVM:p1",
+          "start": 901.71,
+          "end": 984.24
+        },
+        {
+          "source": "BV1TMeu6bEVM:p1",
+          "start": 1353.38,
+          "end": 1393.25,
+          "frame": "frames/1365-0.jpg"
+        },
+        {
+          "source": "BV1TMeu6bEVM:p1",
+          "start": 1450.23,
+          "end": 1484.0
+        },
+        {
+          "source": "BV1TMeu6bEVM:p1",
+          "start": 1512.4,
+          "end": 1569.67
+        },
+        {
+          "source": "BV1TMeu6bEVM:p1",
+          "start": 1696.81,
+          "end": 1740.6,
+          "frame": "frames/1710-0.jpg"
+        }
+      ]
     }
   ],
   "meta": {
@@ -1335,6 +1374,11 @@
         "target": "card:5071",
         "condition": "远程技能输出需要限制李信",
         "text": "考虑自然法杖的变猪控制，并核对当前输出与生存装备是否齐备。"
+      },
+      {
+        "target": "card:5071",
+        "condition": "复生单核李信，已取得海月、太乙和钟馗的针对配套。",
+        "text": "钟馗降击败者等级，太乙复生海月重复牺牲，控制最高等级目标并造成真实伤害。"
       }
     ],
     "operation_routes": [
@@ -2676,7 +2720,13 @@
       "type": "player",
       "title": "安琪拉－飞行器与模块选择",
       "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+    },
+    {
+      "id": "yaomei-sacrifice-lixin",
+      "type": "lineup",
+      "title": "瑶妹牺牲流李信",
+      "path": "knowledge/lineups/瑶妹牺牲流李信.md"
     }
   ],
-  "revision": "f8deb7413d2817bfd9c3"
+  "revision": "0a26d10c51f7005ac02c"
 }

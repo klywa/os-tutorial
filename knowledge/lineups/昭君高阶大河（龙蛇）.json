@@ -10,9 +10,11 @@
   "entities": [
     "card:1561",
     "card:1741",
+    "card:1751",
     "card:1861",
     "card:1871",
     "card:1891",
+    "card:5071",
     "card:5171",
     "card:5191",
     "card:5211",
@@ -313,6 +315,57 @@
       ],
       "kind": "conditional_strategy",
       "id": "claim-b82928f477526044c068"
+    },
+    {
+      "id": "position-divine-cover",
+      "section": "站位技巧",
+      "text": "取得神明庇护、需要让敖隐同时享受攻速与两处回复时，可围绕敖隐安排图腾；东皇太一、海月分别利用回复位置，三种增益重叠的核心格位按敖隐或海月的需求取舍。遇到能直接勾走敖隐的对手时，先调整保护位，再检查太乙复生目标；不能为增益覆盖放任敖隐暴露。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1zCYe62Ern:p1",
+          "start": 1283.68,
+          "end": 1369.28,
+          "frame": "frames/1335-0.jpg"
+        },
+        {
+          "source": "BV1zCYe62Ern:p1",
+          "start": 1441.0,
+          "end": 1524.0,
+          "frame": "frames/1485-0.jpg"
+        }
+      ]
+    },
+    {
+      "id": "counter-lixin-sustain",
+      "section": "克制手段",
+      "text": "面对牺牲李信，高阶大河可利用敖隐的回复与吸血减少被反甲反死的风险，配前排、图腾增益和复生争取持续输出。保护敖隐不被勾走比只堆输出更重要；图腾聚集享受增益的摆法需要神明庇护等条件，仍要结合敌方范围伤害调整。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1zCYe62Ern:p1",
+          "start": 1084.0,
+          "end": 1156.0
+        },
+        {
+          "source": "BV1zCYe62Ern:p1",
+          "start": 1283.68,
+          "end": 1369.28,
+          "frame": "frames/1335-0.jpg"
+        },
+        {
+          "source": "BV1zCYe62Ern:p1",
+          "start": 1441.0,
+          "end": 1524.0,
+          "frame": "frames/1485-0.jpg"
+        }
+      ]
     }
   ],
   "related": [
@@ -345,6 +398,12 @@
       "type": "lineup",
       "title": "常小娥通用打法",
       "path": "knowledge/lineups/常小娥通用打法.md"
+    },
+    {
+      "id": "yaomei-sacrifice-lixin",
+      "type": "lineup",
+      "title": "瑶妹牺牲流李信",
+      "path": "knowledge/lineups/瑶妹牺牲流李信.md"
     }
   ],
   "history": [
@@ -516,7 +575,13 @@
         "explicit_condition": null
       }
     ],
-    "matchups": []
+    "matchups": [
+      {
+        "target": "card:5071",
+        "condition": "敖隐与前排、回复图腾、复生配套成型。",
+        "text": "利用回复与吸血应对反甲，保护敖隐不被勾走，按增益条件与范围伤害调整图腾。"
+      }
+    ]
   },
   "entity_names": {
     "faction:dahe": "大河",
@@ -534,9 +599,10 @@
     "card:5371": "司空震",
     "card:5211": "海月",
     "card:1861": "太乙真人",
+    "card:5071": "李信",
     "faction:heluo": "河洛"
   },
   "manual_sections": [],
   "conflicts": [],
-  "revision": "0693f63040a3faf2e4bd"
+  "revision": "3e1c663b2523bddfcf82"
 }

@@ -13,9 +13,11 @@
       "entities": [
         "card:1561",
         "card:1741",
+        "card:1751",
         "card:1861",
         "card:1871",
         "card:1891",
+        "card:5071",
         "card:5171",
         "card:5191",
         "card:5211",
@@ -316,6 +318,57 @@
           ],
           "kind": "conditional_strategy",
           "id": "claim-b82928f477526044c068"
+        },
+        {
+          "id": "position-divine-cover",
+          "section": "站位技巧",
+          "text": "取得神明庇护、需要让敖隐同时享受攻速与两处回复时，可围绕敖隐安排图腾；东皇太一、海月分别利用回复位置，三种增益重叠的核心格位按敖隐或海月的需求取舍。遇到能直接勾走敖隐的对手时，先调整保护位，再检查太乙复生目标；不能为增益覆盖放任敖隐暴露。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1zCYe62Ern:p1",
+              "start": 1283.68,
+              "end": 1369.28,
+              "frame": "frames/1335-0.jpg"
+            },
+            {
+              "source": "BV1zCYe62Ern:p1",
+              "start": 1441.0,
+              "end": 1524.0,
+              "frame": "frames/1485-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "counter-lixin-sustain",
+          "section": "克制手段",
+          "text": "面对牺牲李信，高阶大河可利用敖隐的回复与吸血减少被反甲反死的风险，配前排、图腾增益和复生争取持续输出。保护敖隐不被勾走比只堆输出更重要；图腾聚集享受增益的摆法需要神明庇护等条件，仍要结合敌方范围伤害调整。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1zCYe62Ern:p1",
+              "start": 1084.0,
+              "end": 1156.0
+            },
+            {
+              "source": "BV1zCYe62Ern:p1",
+              "start": 1283.68,
+              "end": 1369.28,
+              "frame": "frames/1335-0.jpg"
+            },
+            {
+              "source": "BV1zCYe62Ern:p1",
+              "start": 1441.0,
+              "end": 1524.0,
+              "frame": "frames/1485-0.jpg"
+            }
+          ]
         }
       ],
       "related": [
@@ -348,6 +401,12 @@
           "type": "lineup",
           "title": "常小娥通用打法",
           "path": "knowledge/lineups/常小娥通用打法.md"
+        },
+        {
+          "id": "yaomei-sacrifice-lixin",
+          "type": "lineup",
+          "title": "瑶妹牺牲流李信",
+          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
         }
       ],
       "history": [
@@ -519,7 +578,13 @@
             "explicit_condition": null
           }
         ],
-        "matchups": []
+        "matchups": [
+          {
+            "target": "card:5071",
+            "condition": "敖隐与前排、回复图腾、复生配套成型。",
+            "text": "利用回复与吸血应对反甲，保护敖隐不被勾走，按增益条件与范围伤害调整图腾。"
+          }
+        ]
       },
       "entity_names": {
         "faction:dahe": "大河",
@@ -537,11 +602,12 @@
         "card:5371": "司空震",
         "card:5211": "海月",
         "card:1861": "太乙真人",
+        "card:5071": "李信",
         "faction:heluo": "河洛"
       },
       "manual_sections": [],
       "conflicts": [],
-      "revision": "0693f63040a3faf2e4bd"
+      "revision": "3e1c663b2523bddfcf82"
     },
     {
       "id": "player-zhaojun",
@@ -1393,6 +1459,12 @@
           "type": "lineup",
           "title": "常小娥通用打法",
           "path": "knowledge/lineups/常小娥通用打法.md"
+        },
+        {
+          "id": "yaomei-sacrifice-lixin",
+          "type": "lineup",
+          "title": "瑶妹牺牲流李信",
+          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
         }
       ],
       "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md",
@@ -1418,7 +1490,7 @@
       "manual_sections": [],
       "history": [],
       "conflicts": [],
-      "revision": "d95299f58c13fce9c6c3"
+      "revision": "2179b1054b621dcc3aac"
     },
     {
       "id": "player-angela",
@@ -1653,6 +1725,12 @@
           "type": "lineup",
           "title": "常小娥通用打法",
           "path": "knowledge/lineups/常小娥通用打法.md"
+        },
+        {
+          "id": "yaomei-sacrifice-lixin",
+          "type": "lineup",
+          "title": "瑶妹牺牲流李信",
+          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
         }
       ],
       "path": "knowledge/players/安琪拉－飞行器与模块选择.md",
@@ -1660,7 +1738,7 @@
       "manual_sections": [],
       "history": [],
       "conflicts": [],
-      "revision": "f29994cb9cca58af33ad"
+      "revision": "9623383866a06e48b21b"
     },
     {
       "id": "changxiaoe-general-play",
@@ -1677,6 +1755,7 @@
         "card:1501",
         "card:1541",
         "card:1591",
+        "card:1751",
         "card:1761",
         "card:1821",
         "card:1831",
@@ -2958,6 +3037,44 @@
               "frame": "frames/1100-0.jpg"
             }
           ]
+        },
+        {
+          "id": "counter-lixin-haiyue",
+          "section": "克制手段",
+          "text": "对手以复生李信为主要输出时，可加入钟馗让附近功能英雄获得牺牲、降低击败者等级，再用太乙给海月复生，重复触发海月牺牲的最高等级目标控制及生命值相关真实伤害。让兔子等级先集中给成长核心，钟馗作为针对位不必提前参与等级均分；能否取胜仍取决于海月生命值、复生次数和对方防护。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 901.71,
+              "end": 984.24
+            },
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1353.38,
+              "end": 1393.25,
+              "frame": "frames/1365-0.jpg"
+            },
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1450.23,
+              "end": 1484.0
+            },
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1512.4,
+              "end": 1569.67
+            },
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1696.81,
+              "end": 1740.6,
+              "frame": "frames/1710-0.jpg"
+            }
+          ]
         }
       ],
       "meta": {
@@ -2999,6 +3116,11 @@
             "target": "card:5071",
             "condition": "远程技能输出需要限制李信",
             "text": "考虑自然法杖的变猪控制，并核对当前输出与生存装备是否齐备。"
+          },
+          {
+            "target": "card:5071",
+            "condition": "复生单核李信，已取得海月、太乙和钟馗的针对配套。",
+            "text": "钟馗降击败者等级，太乙复生海月重复牺牲，控制最高等级目标并造成真实伤害。"
           }
         ],
         "operation_routes": [
@@ -4340,9 +4462,4458 @@
           "type": "player",
           "title": "安琪拉－飞行器与模块选择",
           "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+        },
+        {
+          "id": "yaomei-sacrifice-lixin",
+          "type": "lineup",
+          "title": "瑶妹牺牲流李信",
+          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
         }
       ],
-      "revision": "f8deb7413d2817bfd9c3"
+      "revision": "0a26d10c51f7005ac02c"
+    },
+    {
+      "id": "yaomei-sacrifice-lixin",
+      "type": "lineup",
+      "title": "瑶妹牺牲流李信",
+      "aliases": [
+        "瑶妹李信牺牲流",
+        "小鹿李信献祭流"
+      ],
+      "topic": "瑶妹牺牲流李信",
+      "entities": [
+        "card:10404",
+        "card:1101",
+        "card:1111",
+        "card:1141",
+        "card:1161",
+        "card:1311",
+        "card:1331",
+        "card:1361",
+        "card:1441",
+        "card:1501",
+        "card:1541",
+        "card:1671",
+        "card:1681",
+        "card:1731",
+        "card:1751",
+        "card:1761",
+        "card:1821",
+        "card:1861",
+        "card:1871",
+        "card:1901",
+        "card:1931",
+        "card:1941",
+        "card:1961",
+        "card:1971",
+        "card:311002",
+        "card:311003",
+        "card:31280",
+        "card:3551",
+        "card:5011",
+        "card:5021",
+        "card:5031",
+        "card:5071",
+        "card:5073",
+        "card:5091",
+        "card:5131",
+        "card:5181",
+        "card:5191",
+        "card:5211",
+        "card:5241",
+        "card:5271",
+        "card:634013",
+        "card:635012",
+        "card:636217",
+        "card:636220",
+        "card:6363141",
+        "card:641008",
+        "card:641009",
+        "card:641010",
+        "card:641016",
+        "card:643103",
+        "card:643105",
+        "card:643208",
+        "card:643501",
+        "card:643503",
+        "card:643504",
+        "card:643602",
+        "card:643604",
+        "card:643703",
+        "card:643705",
+        "card:643801",
+        "card:643803",
+        "card:643805",
+        "card:644101",
+        "card:644105",
+        "card:644113",
+        "card:644114",
+        "card:644116",
+        "card:644119",
+        "card:646001",
+        "card:646005",
+        "card:652003",
+        "card:7040",
+        "card:7062",
+        "card:7074",
+        "card:7081",
+        "card:7120",
+        "card:7533",
+        "card:7537",
+        "card:91113",
+        "card:91115",
+        "card:91199",
+        "card:93503",
+        "card:94304",
+        "player:11",
+        "player:25",
+        "player:35",
+        "player:36",
+        "player:50"
+      ],
+      "core": [
+        "card:5071"
+      ],
+      "claims": [
+        {
+          "id": "growth-sacrifice",
+          "section": "核心机制",
+          "text": "李信依靠具有牺牲效果的队友阵亡获得临时等级。普通李信每次获得7级，觉醒后获得14级；临时等级在战斗结束时清除，不能把一次战斗中的高等级当作下一回合的基础等级。",
+          "kind": "mechanic",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1joY46RE4g:p1",
+              "start": 80.94,
+              "end": 139.35,
+              "frame": "frames/95-05.jpg"
+            },
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 497.63,
+              "end": 556.93,
+              "frame": "frames/510-0.jpg"
+            },
+            {
+              "source": "BV13QYr6sE4J:p1",
+              "start": 81.85,
+              "end": 111.11
+            },
+            {
+              "source": "BV13QYr6sE4J:p1",
+              "start": 81.85,
+              "end": 111.11,
+              "frame": "frames/95-0.jpg"
+            },
+            {
+              "source": "BV14MYv68EMb:p1",
+              "start": 879.52,
+              "end": 908.36
+            },
+            {
+              "source": "BV11oHH6FE4V:p1",
+              "start": 0.0,
+              "end": 26.96
+            },
+            {
+              "source": "BV1REaa6wEup:p1",
+              "start": 392.62,
+              "end": 422.55
+            }
+          ]
+        },
+        {
+          "id": "growth-deer",
+          "section": "核心机制",
+          "text": "小鹿获得奉献后，阵亡时把自身等级以临时等级均分给仍存活的英雄。要让李信集中获得这份等级，就让其他英雄先牺牲，李信活到小鹿阵亡；复生后仍存活的队友也会分走收益。",
+          "kind": "mechanic",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 617.5,
+              "end": 647.3
+            },
+            {
+              "source": "BV1hMes6CEqS:p1",
+              "start": 105.82,
+              "end": 159.54
+            },
+            {
+              "source": "BV1jvY56HEc5:p1",
+              "start": 89.0,
+              "end": 134.8
+            },
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 184.38,
+              "end": 226.21
+            },
+            {
+              "source": "BV1Qbae6AEgF:p1",
+              "start": 1060.52,
+              "end": 1092.18
+            }
+          ]
+        },
+        {
+          "id": "growth-zhongkui",
+          "section": "核心机制",
+          "text": "钟馗能让自身及左右1格的英雄获得牺牲。明世隐、太乙真人或程咬金需要获得牺牲时，放入钟馗左右1格的覆盖位置，让它们阵亡也能为李信增加临时等级；这不是全场覆盖。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1joY46RE4g:p1",
+              "start": 80.94,
+              "end": 109.16,
+              "frame": "frames/95-05.jpg"
+            },
+            {
+              "source": "BV1UWeM6tEaT:p1",
+              "start": 15.68,
+              "end": 40.28
+            },
+            {
+              "source": "BV11oHH6FE4V:p1",
+              "start": 27.42,
+              "end": 56.66
+            }
+          ]
+        },
+        {
+          "id": "growth-ming",
+          "section": "核心机制",
+          "text": "明世隐把最近英雄的一部分临时等级转为永久等级。让最近目标始终是李信，通过购买多张明世隐、合成觉醒及使用唤醒提高固定量，避免连线误落到钟馗、程咬金或盾山。未觉醒时是否立即使用唤醒，见“尚待裁决”。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1hMYT6dEY5:p1",
+              "start": 162.52,
+              "end": 191.62
+            },
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 1588.77,
+              "end": 1614.11
+            },
+            {
+              "source": "BV1UWeM6tEaT:p1",
+              "start": 15.68,
+              "end": 40.28
+            },
+            {
+              "source": "BV1VPag6AEaH:p1",
+              "start": 198.8,
+              "end": 232.97,
+              "frame": "frames/198-8.jpg"
+            },
+            {
+              "source": "BV11oHH6FE4V:p1",
+              "start": 56.88,
+              "end": 81.08
+            }
+          ]
+        },
+        {
+          "id": "growth-taiyi",
+          "section": "成型后提升思路",
+          "text": "太乙真人负责给李信补复生，摆放时先确认最近目标是李信。需要重复利用光信技能时，优先完成太乙真人觉醒：普通太乙真人提供复生，觉醒太乙真人提供完美复生，两者不能混为一谈。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 556.93,
+              "end": 617.5
+            },
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1590.0,
+              "end": 1626.03
+            }
+          ]
+        },
+        {
+          "id": "opening-four",
+          "section": "前期运营及应变",
+          "text": "前两回合优先凑苏烈、李元芳、弈星、牛魔，借小鹿的前期战力争取胜场。首回合优先苏烈配李元芳；对手战力不足时可用李元芳配牛魔争取额外经济，第二回合再补弈星等成员。面对同行瑶妹或强势孙尚香时，用干将莫邪替代牛魔增强即时战力。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 31.3,
+              "end": 61.46
+            }
+          ]
+        },
+        {
+          "id": "opening-missing",
+          "section": "前期运营及应变",
+          "text": "开局关键打工牌缺失时，可用免费刷新查找并锁住下一回合需要的牌，避免反复花钱搜一阶牌。牛魔没有及时拿到时，可用干将莫邪或狂铁打工；先保战力与升本预算，不为补齐固定开局耗尽经济。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 198.86,
+              "end": 253.08
+            }
+          ]
+        },
+        {
+          "id": "middle-budget",
+          "section": "中期运营及应变",
+          "text": "金币优先留给李信、钟馗、太乙真人，以及所选路线需要的明世隐，再安排升本。升本指提升棋手与商店等阶。李元芳只是前期过渡，不要为其觉醒花掉寻找李信和升本的预算。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 92.02,
+              "end": 151.17
+            }
+          ]
+        },
+        {
+          "id": "middle-fast-five",
+          "section": "中期运营及应变",
+          "text": "四本未取得李信、当前战力难以保血时，可继续升五本，再找李信，并用已经获得的花木兰等英雄补即时战力；不要在四本把金币刷空。D牌即花金币刷新商店找英雄，投入前先留下升本、购买李信及补钟馗和太乙真人的金币。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1Qbae6AEgF:p1",
+              "start": 238.09,
+              "end": 261.04
+            },
+            {
+              "source": "BV1xWYC6HEz2:p1",
+              "start": 181.97,
+              "end": 223.23,
+              "frame": "frames/190-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "middle-ming-choice",
+          "section": "关键牌判断",
+          "text": "明世隐不是每局固定保留。到第10回合仍只能固定约4级、同时对手战力很强时，可卖掉明世隐腾出位置，按缺口补钟馗的牺牲覆盖、铠的复生牺牲，或已经取得的花木兰即时战力；不是要求同时补齐这些英雄。较早能固定6级及以上、还能继续提高固定量时，可保留明世隐。判断时同时看固定收益、人口和钟馗左右1格的位置。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 182.67,
+              "end": 297.59
+            }
+          ]
+        },
+        {
+          "id": "late-play-slot",
+          "section": "后期运营及应变",
+          "text": "后期留一个打出英雄牌的位置，用武则天的精致古币、蒙犽的登场特训增加李信等级。明世隐固定量低，或程咬金、盾山的古币收益已不足时，不必让它们永久占住操作位。打出结束后补回本局使用的钟馗、铠、盾山或程咬金，并检查它们是否会在小鹿奉献时仍然存活。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 302.15,
+              "end": 356.89
+            },
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 410.14,
+              "end": 436.92
+            },
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 455.64,
+              "end": 483.16
+            }
+          ]
+        },
+        {
+          "id": "late-revive-dilution",
+          "section": "终局技巧",
+          "text": "以李信独享小鹿等级为目标时，检查铠、花木兰等复生成员是否会在奉献时仍然存活。若它们分走关键等级而又不能提供所需战力，可以下掉；按实际战力需求与死亡顺序决定去留。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 586.75,
+              "end": 647.3
+            },
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1479.57,
+              "end": 1522.83
+            },
+            {
+              "source": "BV1UWeM6tEaT:p1",
+              "start": 45.1,
+              "end": 68.98
+            },
+            {
+              "source": "BV14MYv68EMb:p1",
+              "start": 1409.46,
+              "end": 1472.33,
+              "frame": "frames/1443-32.jpg"
+            },
+            {
+              "source": "BV1REaa6wEup:p1",
+              "start": 709.23,
+              "end": 754.47
+            }
+          ]
+        },
+        {
+          "id": "auction-one-budget",
+          "section": "第一轮拍卖",
+          "text": "前期拍卖按缺口补程咬金、铠、盾山或明世隐，优先能立即打工或参与本阵容的牌。快速升本路线中，程咬金、铠超过4金币，盾山、明世隐超过3金币时可放弃，把预算留给升本；这些是该路线的建议上限，不是所有对局必须出到的价格。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 61.93,
+              "end": 91.57
+            }
+          ]
+        },
+        {
+          "id": "auction-two-lixin",
+          "section": "第二轮拍卖",
+          "text": "第二轮还没有李信时，优先补李信；已有李信后，按阵容缺口选择钟馗、铠、盾山或程咬金。钟馗负责给左右1格英雄赋予牺牲，铠补复生与牺牲触发，盾山、程咬金补古币收益，后三者是可选成员，不必全部上场。太乙真人与明世隐另按复生和等级固定需求购买，不把它们算作河洛英雄。需要的英雄已齐时停止竞价，保留刷新、升本和购买李信的金币。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1hMYT6dEY5:p1",
+              "start": 162.52,
+              "end": 191.62
+            },
+            {
+              "source": "BV1hMYT6dEY5:p1",
+              "start": 132.72,
+              "end": 162.52
+            }
+          ]
+        },
+        {
+          "id": "talent-tyrant",
+          "section": "推荐天赋及原因",
+          "text": "暴君归来适合李信多次复生：复生时的攻速、暴击率和短暂无敌帮助重新输出。李信已到100级、又有太乙真人提供复生时可优先考虑；后期取得河洛专属装备贤者的庇护，也能补充一次复生。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 256.38,
+              "end": 336.27
+            },
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 437.8,
+              "end": 465.32
+            }
+          ]
+        },
+        {
+          "id": "talent-economy",
+          "section": "推荐天赋及原因",
+          "text": "未拿到李信时，先看天赋能否直接提供李信、帮助取得李信或增加购买李信与升本的金币；有李信后再比较等级与战力收益。这部分教学没有确认一份可逐名推荐的经济天赋清单，暂无已确认的通用名称列表，不把所有经济天赋都当作必选。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 437.8,
+              "end": 465.32
+            },
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 58.8,
+              "end": 115.79
+            }
+          ]
+        },
+        {
+          "id": "equipment-rebuild",
+          "section": "推荐装备",
+          "text": "留取武装重构等换装手段，根据敌方主要输出、控制和追击需求调整李信及小鹿装备。高等级只是成长结果，不能替代合适装备；不要为一套固定三件套放弃针对性。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 116.14,
+              "end": 169.27
+            },
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1922.48,
+              "end": 1960.02
+            }
+          ]
+        },
+        {
+          "id": "equipment-deer-pressure",
+          "section": "推荐装备",
+          "text": "面对嬴政等高输出或大范围伤害，小鹿需要抗压装备来帮助李信存活，可考虑御灵之纱；对方治疗和杂兵较多时，红莲炎甲兼顾伤害与降低治疗。不要只因希望小鹿阵亡，就在它必须承担压力时完全放弃保护。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 524.22,
+              "end": 607.38
+            }
+          ]
+        },
+        {
+          "id": "level-without-ming",
+          "section": "成型后提升思路",
+          "text": "不带明世隐时，可用武则天的精致古币、蒙犽的登场特训，以及简易协作、精密协作、八方来援、武装之力等等级效果牌，把李信培养到100级。找李信、太乙真人、钟馗时顺手购买能增加李信等级的牌，不另外大量刷新追求只能固定少量等级的明世隐。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 89.17,
+              "end": 201.09
+            },
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 427.48,
+              "end": 483.16
+            }
+          ]
+        },
+        {
+          "id": "level-play-batch",
+          "section": "关键操作顺序",
+          "text": "领先且当前不急需战力时，可留多张武则天或蒙犽，再批量打出，取得精致古币、登场特训及锦囊；唤醒可让已上场的武则天或蒙犽再次触发登场。正在大幅掉血时直接使用，不为凑多张继续等待。先腾出一个打出位置，结束后补回本局使用的钟馗、铠、盾山或程咬金，并复查牺牲覆盖。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 116.24,
+              "end": 201.09
+            },
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 317.32,
+              "end": 346.1
+            },
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 455.64,
+              "end": 483.16
+            }
+          ]
+        },
+        {
+          "id": "level-effect-cards",
+          "section": "关键牌判断",
+          "text": "寻找李信时遇到简易协作、精密协作、八方来援、武装之力，可按李信能获得的确定等级与剩余金币判断是否购买。随机增加等级的牌不保证作用于李信；八方来援看场上实际阵营数量，武装之力看装备数量。李信临近100级时，少量等级也可能补出自身复生。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 230.2,
+              "end": 287.9
+            },
+            {
+              "source": "BV11xHt6yEPB:p1",
+              "start": 175.27,
+              "end": 201.09
+            }
+          ]
+        },
+        {
+          "id": "equipment-current-default",
+          "section": "推荐装备",
+          "text": "李信的普通装备可从自然法杖、凝渊，加霸者重铠、护命灵珠或御灵之纱中的一件起步。自然法杖提供变猪控制，凝渊补暴击率和追击；第三件按需要减伤、护盾或分担伤害选择，不要求同时装备三件防护装备。具体敌方英雄的换装见“对局威胁与应对”。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 30.11,
+              "end": 96.58
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 466.95,
+              "end": 552.51
+            }
+          ]
+        },
+        {
+          "id": "equipment-armor-lives",
+          "section": "推荐装备",
+          "text": "需要延长每次满血复生后的输出时间时，可考虑霸者重铠的高生命值减伤；有护命灵珠、御灵之纱等装备时，也可按护盾和生存需求选择。装备是否有用要看李信实际倒下的原因，而非只看输出面板。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 58.62,
+              "end": 96.58
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 291.15,
+              "end": 317.36
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 525.37,
+              "end": 552.51
+            }
+          ]
+        },
+        {
+          "id": "equipment-double-reflect",
+          "section": "推荐装备",
+          "text": "面对没有吸血的艾琳风筝输出，可考虑让小鹿和李信同时携带反伤重甲，用承受普攻时的反伤施压；对手有吸血时不能照搬这一判断。若有破妄之刃，可针对艾琳的减速追击需求考虑使用。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 115.05,
+              "end": 143.6
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 437.04,
+              "end": 495.82
+            }
+          ]
+        },
+        {
+          "id": "equipment-burst-counter",
+          "section": "推荐装备",
+          "text": "对手用海月牺牲，或百里守约闪现接近后快速击败李信时，可用磐石之心限制单次受伤；必要时将李信的凝渊换成磐石之心。不能只依赖小鹿刚好挡住爆发。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 231.78,
+              "end": 289.18
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 350.58,
+              "end": 389.59
+            }
+          ]
+        },
+        {
+          "id": "equipment-mingdao-conditional",
+          "section": "推荐装备",
+          "text": "名刀·司命不是固定必带。通常把装备位置留给自然法杖、凝渊，或霸者重铠等防护装备；对手孙尚香优先狙击李信、可能在小鹿奉献前击败李信时，再考虑名刀·司命争取时间。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 174.45,
+              "end": 231.44
+            }
+          ]
+        },
+        {
+          "id": "equipment-thunder",
+          "section": "推荐装备",
+          "text": "后期取得驱雷、对手没有海月牺牲等关键威胁时，可让李信携带驱雷，再按当前缺口搭配自然法杖控制或霸者重铠等防护。驱雷可能命中己方英雄，穿戴前要复查钟馗等队友与小鹿的死亡顺序，不能当作无条件安全的输出装备。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 203.22,
+              "end": 259.89
+            }
+          ]
+        },
+        {
+          "id": "composition-ming",
+          "section": "阵容组成",
+          "text": "较早取得多张明世隐、能够提高固定量时，采用李信、明世隐、钟馗、太乙真人的成长骨架。可选程咬金、盾山增加古币，或铠、花木兰增加复生与牺牲触发；按当前人口、获得的英雄和死亡顺序选用，不要求全部上场。后期检查这些英雄是否在小鹿奉献时仍存活、分走李信的等级。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1hMes6CEqS:p1",
+              "start": 0,
+              "end": 29.4
+            },
+            {
+              "source": "BV1hMYT6dEY5:p1",
+              "start": 132.72,
+              "end": 220.12
+            },
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 497.63,
+              "end": 647.3
+            },
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 252.57,
+              "end": 297.59
+            }
+          ]
+        },
+        {
+          "id": "ban-core",
+          "section": "禁用阵营适用情况",
+          "text": "根据核心李信、钟馗的河洛阵营，河洛被禁时无法取得这套阵容的核心，完整推荐不可玩。其他禁用阵营及同时禁用多个阵营的替代路线，暂无已确认的通用策略。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1joY46RE4g:p1",
+              "start": 80.94,
+              "end": 109.16,
+              "frame": "frames/95-05.jpg"
+            }
+          ]
+        },
+        {
+          "id": "growth-hundred",
+          "section": "核心机制",
+          "text": "李信到100级会解锁自身复生，阵亡后以狂暴形态继续战斗。中期要在他被击败前补到这一关键门槛，太乙真人再提供额外复生；英雄到100级与合成觉醒是两件事，不能用觉醒替代等级门槛。",
+          "kind": "mechanic",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 364.83,
+              "end": 427.82
+            }
+          ]
+        },
+        {
+          "id": "opening-level-plan",
+          "section": "前期运营及应变",
+          "text": "需要尽快进入四本寻找李信时，从第3回合开始以升本为主，先进入三本、四本。商店自然出现钟馗、明世隐、铠、盾山、程咬金时按缺口购买，不为凑齐全部可选英雄停下升本。四本仍没有李信时，按掉血情况决定是否继续升五本。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 61.93,
+              "end": 91.57
+            },
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 495.15,
+              "end": 550.98
+            }
+          ]
+        },
+        {
+          "id": "opening-wins",
+          "section": "前期运营及应变",
+          "text": "前期胜场同时帮助保血和养小鹿，尽量利用强势开局赢下前几轮，并争取累计五次胜利，获得双生牌的额外等级收益。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 144.99,
+              "end": 198.57
+            }
+          ]
+        },
+        {
+          "id": "taiyi-by-target",
+          "section": "成型后提升思路",
+          "text": "太乙真人的觉醒按终局目标决定：对手多名英雄等级都高、需要反复用光信技能清场时优先觉醒，取得完美复生；对手集中培养一个输出英雄、需要暗信追击时，可保留普通太乙真人。同时检查李信是否已有自身复生，不把两种形态当作完全相同的额外生命。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 98.08,
+              "end": 136.69,
+              "frame": "frames/125-0.jpg"
+            },
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 224.11,
+              "end": 249.59,
+              "frame": "frames/233-0.jpg"
+            },
+            {
+              "source": "BV1Qbae6AEgF:p1",
+              "start": 886.85,
+              "end": 954.94
+            }
+          ]
+        },
+        {
+          "id": "route-four-core",
+          "section": "中期运营及应变",
+          "text": "选择四本找牌节奏时，先找李信、明世隐、钟馗、铠；取得这组英雄后减少刷新，开始为升本存钱。第8回合仍无李信时，已有李白且能取得上官婉儿，可考虑改由李白输出、用上官婉儿替换钟馗；李白完整转阵名单暂无已确认的通用策略，不把这两个名字当成完整阵容。第14回合预留升六本预算，第15回合先升六本再用共鸣。严重掉血时不能无限等牌。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1gDYN6JEyq:p1",
+              "start": 247.8,
+              "end": 303.72
+            },
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 307.79,
+              "end": 359.46,
+              "frame": "frames/325-0.jpg"
+            },
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 441.23,
+              "end": 498.0
+            },
+            {
+              "source": "BV1gDYN6JEyq:p1",
+              "start": 274.44,
+              "end": 303.72,
+              "frame": "frames/274-44.jpg"
+            }
+          ]
+        },
+        {
+          "id": "middle-item-holder",
+          "section": "中期运营及应变",
+          "text": "李信未到手时，可让狄仁杰或百里守约临时携带给李信准备的装备补战力；取得李信后再移交。前期缺李元芳时也可用干将莫邪保血，不为固定名单放弃即时战力。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1gDYN6JEyq:p1",
+              "start": 247.8,
+              "end": 274.2
+            }
+          ]
+        },
+        {
+          "id": "equip-warplane",
+          "section": "推荐装备",
+          "text": "对手以嬴政组成雷霆战机远程单核时，李信可用反伤重甲、魔女斗篷、自然法杖应对远程伤害。嬴政携带机器头、难以控制时，可把自然法杖换成凝渊追击；嬴政携带噬神之书时，反伤重甲收益下降，可换无尽巨剑或魔律之刃。此处保留未觉醒的太乙真人，是为了让李信复生后以暗信形态接近嬴政。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 136.88,
+              "end": 163.26,
+              "frame": "frames/137-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "equip-dahe-front",
+          "section": "推荐装备",
+          "text": "对手用东皇太一挡住李信、敖隐在后方输出时，反伤重甲也可通过反伤处理东皇太一。李信可用反伤重甲、自然法杖配魔律之刃或无尽巨剑；敖隐有吸血、反伤效果不足时，将反伤重甲换成无尽巨剑或魔律之刃。李信被自然法杖持续控制、无法接近敖隐时，考虑机器头保证行动。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 81.84,
+              "end": 127.34
+            }
+          ]
+        },
+        {
+          "id": "equip-milk-bell",
+          "section": "克制手段",
+          "text": "班叔的等离子屏障、杨玉环回复、诸葛亮连续施法同时到位时，可能拖住李信。可考虑让李信携带静谧之铃，限制这组英雄的回蓝；能否突破仍取决于李信输出、自然法杖控制、太乙真人复生及敌方成型程度。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 56.96,
+              "end": 81.52
+            },
+            {
+              "source": "BV1wWep6RE9c:p1",
+              "start": 29.87,
+              "end": 53.09,
+              "frame": "frames/35-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "counter-haiyue-zhong",
+          "section": "克制手段",
+          "text": "对手用钟馗给左右1格英雄赋予牺牲，再让太乙真人复生海月，可反复触发海月牺牲：控制敌方最高等级英雄进入水月幻境，并造成与海月生命值相关的真实伤害。李信等级最高时会成为目标。可考虑给李信穿磐石之心防爆发，同时检查自然法杖等控制是否阻断其行动；磐石之心不能保证免于控制。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1353.38,
+              "end": 1393.25,
+              "frame": "frames/1365-0.jpg"
+            },
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1512.4,
+              "end": 1569.67
+            },
+            {
+              "source": "BV1TMeu6bEVM:p1",
+              "start": 1696.81,
+              "end": 1740.6,
+              "frame": "frames/1710-0.jpg"
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 257.62,
+              "end": 287.62,
+              "frame": "frames/270-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "equipment-time-stage",
+          "section": "推荐装备",
+          "text": "李信刚到100级、需要改善中期续战时，可考虑怒莲之刺等当前已取得的续战装备；终局再按对手控制、爆发与回复换装。怒莲之刺可兼顾前中后期；机器头属于应对负面效果的后期选择，不应仅因第3回合出现就固定优先。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 30.72,
+              "end": 56.74
+            }
+          ]
+        },
+        {
+          "id": "position-hook-bait",
+          "section": "站位技巧",
+          "text": "对手钟馗能直接勾走李信时，调整李信位置，可让明世隐处在更外侧，避免李信开局被拉走。移动后重新确认太乙真人最近复生目标是李信、明世隐连线指向李信，以及钟馗能覆盖需要牺牲的太乙真人、明世隐或程咬金。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 417.15,
+              "end": 440.97
+            }
+          ]
+        },
+        {
+          "id": "equipment-kite",
+          "section": "推荐装备",
+          "text": "对手艾琳通过减速和移动让李信难以接近时，可把无尽巨剑等纯输出装备换成凝渊补移动速度，并考虑极寒风暴限制远程普攻。先解决接近不了艾琳的问题，再追求无尽巨剑的爆发。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 442.08,
+              "end": 468.24
+            },
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1352.85,
+              "end": 1445.76
+            },
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1922.48,
+              "end": 1953.26
+            },
+            {
+              "source": "BV1LoeH6VEbE:p1",
+              "start": 175.86,
+              "end": 185.46
+            },
+            {
+              "source": "BV1vBpE6zEru:p1",
+              "start": 649.6,
+              "end": 781.78,
+              "frame": "frames/675-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "equipment-control-duration",
+          "section": "推荐装备",
+          "text": "炽热支配者触发后的免控持续15秒，不是全程免控。李信确实因控制无法输出时再考虑它；若触发过早、接近敌方主要输出英雄时已失效，可按缺口换成霸者重铠防护、凝渊追击或无尽巨剑增加伤害。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 0.88,
+              "end": 96.58
+            },
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 437.04,
+              "end": 525.02
+            },
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1626.03,
+              "end": 1663.63
+            }
+          ]
+        },
+        {
+          "id": "six-budget-pressure",
+          "section": "中期运营及应变",
+          "text": "当前血量或战力不足、升六本会让下一轮难以存活时，先购买李信、钟馗、太乙真人的缺牌，或能立即改善李信战力的自然法杖、凝渊等装备，不为小鹿的庇护强行升六本。能够撑到第15回合共鸣、预算足够时，再先升六本后用共鸣。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1ksew6YEf5:p1",
+              "start": 114.41,
+              "end": 141.57
+            }
+          ]
+        },
+        {
+          "id": "opening-blood-cushion",
+          "section": "前期运营及应变",
+          "text": "前期先让苏烈、李元芳、弈星、牛魔，或替代牛魔的干将莫邪保血，为寻找李信和第15回合共鸣留容错。只存钱而连续大幅掉血，可能提前出局；李信的装备可先给狄仁杰、百里守约打工，李信到手后移交。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1b6Y96nEfv:p1",
+              "start": 1021.92,
+              "end": 1058.82
+            },
+            {
+              "source": "BV1ksew6YEf5:p1",
+              "start": 42.2,
+              "end": 69.48
+            },
+            {
+              "source": "BV1gDYN6JEyq:p1",
+              "start": 247.8,
+              "end": 274.2
+            }
+          ]
+        },
+        {
+          "id": "talent-final-guard",
+          "section": "推荐天赋及原因",
+          "text": "最后存活的河洛英雄预期是李信、队伍能多次触发牺牲时，可考虑最终守卫：致命伤害时的无敌和攻速帮助最后的李信继续输出，多次牺牲还会延长无敌时间。若其他河洛队友存活得更久，要先检查实际受益对象。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 368.51,
+              "end": 416.68,
+              "frame": "frames/395-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "ming-wakeup-conflict",
+          "section": "条件与待裁决",
+          "text": "明世隐未觉醒时，唤醒牌的使用时机尚有两种建议：立即用以增加当前固定量，避免等待期间少转化等级；或留到明世隐觉醒后再用，以取得觉醒后的登场收益。现有依据没有给出统一的等待回合与收益判断标准，暂不确定推荐其中一种。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 556.29,
+              "end": 612.05,
+              "frame": "frames/603-0.jpg"
+            },
+            {
+              "source": "BV1jvY56HEc5:p1",
+              "start": 89.0,
+              "end": 118.36
+            }
+          ]
+        },
+        {
+          "id": "equipment-cleanse-choice",
+          "section": "推荐装备",
+          "text": "需要免控且战斗可能拖到加时赛时，可比较纯净苍穹与炽热支配者：纯净苍穹间歇清除控制，覆盖较长战斗但中间仍可能被控；炽热支配者保障触发后15秒的连续免控。按实际被控时间选择，不能把任一装备等同于始终不会被控。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 1041.28,
+              "end": 1121.3
+            }
+          ]
+        },
+        {
+          "id": "equipment-deer-cover",
+          "section": "推荐装备",
+          "text": "对手能绕过小鹿直接击败李信、导致奉献尚未转移时，可保留小鹿的庇护给李信分摊伤害。若李信已能稳定活到奉献、关键装备槽更紧张，再考虑替换或分解；不要只为了小鹿更快阵亡就先移除必要保护。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 2782.54,
+              "end": 2872.15,
+              "frame": "frames/2815-0.jpg"
+            },
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 280.24,
+              "end": 287.32
+            },
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 2317.22,
+              "end": 2358.7
+            }
+          ]
+        },
+        {
+          "id": "ming-first-lixin",
+          "section": "关键牌判断",
+          "text": "已建立高固定量明世隐时，先取得第一张李信让每回合等级转化开始运转，再追李信觉醒；不要把所有收益暂停到三张李信齐全才开始。后续根据保血和升本预算继续补牌，固定量低时则按快节奏路线决定是否退出明世隐。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1VPag6AEaH:p1",
+              "start": 799.83,
+              "end": 869.08
+            }
+          ]
+        },
+        {
+          "id": "combat-reborn-form",
+          "section": "战后复盘",
+          "text": "需要再次用光信技能清场，实际复生后却进入暗信时，先检查太乙真人是否觉醒、最近复生目标是否指向李信。普通太乙真人与觉醒太乙真人提供的复生形态不同；要保留光信清场能力时补太乙真人觉醒，要追单核则另按暗信路线判断，不把形态差别误认为复生失效。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1REaa6wEup:p1",
+              "start": 944.08,
+              "end": 1001.54
+            },
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 98.08,
+              "end": 136.69,
+              "frame": "frames/125-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "growth-deer-timeline",
+          "section": "核心机制",
+          "text": "瑶妹开局召唤小鹿，每回合等级增加2，上一回合获胜再额外增加4；每3回合获得一张小鹿秘技牌。第3回合嘲讽、第6回合重装可穿普通装备、第9回合双生复制小鹿，帮助前中期保血；第12回合奉献开始向存活英雄均分等级，第15回合共鸣翻倍，是后期集中养李信的重要节点。",
+          "kind": "mechanic",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 0,
+              "end": 58.43
+            },
+            {
+              "source": "BV1jvY56HEc5:p1",
+              "start": 41.68,
+              "end": 134.8
+            },
+            {
+              "source": "BV11oHH6FE4V:p1",
+              "start": 81.45,
+              "end": 110.19,
+              "frame": "frames/81-45.jpg"
+            }
+          ]
+        },
+        {
+          "id": "late-bank-six",
+          "section": "后期运营及应变",
+          "text": "采用存钱升六本的路线时，李信、明世隐、钟馗及本局使用的铠等成员已取得后，就减少找牌；即使李信未觉醒，也先留共鸣前升六本的金币。六本后优先觉醒李信，再补明世隐、太乙真人、钟馗的觉醒；其余金币按缺口购买简易协作、精密协作、八方来援、武装之力等等级牌，以及自然法杖、凝渊或防护装备。这是存钱路线，不适用于下一轮急需补战力保命的局面。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LoeH6VEbE:p1",
+              "start": 88.84,
+              "end": 175.57,
+              "frame": "frames/117-35.jpg"
+            }
+          ]
+        },
+        {
+          "id": "talent-guardian-reinforcement",
+          "section": "终局技巧",
+          "text": "希望在最后的李信身边补临时战力时，可考虑守护灵：场上只剩1名英雄时，随机召唤满装备的五阶英雄，其等级随回合数提高，且没有卡牌效果。它是有触发条件的援军补强，不是一张可以提前按固定名单摆好的队友。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LoeH6VEbE:p1",
+              "start": 38.34,
+              "end": 67.16
+            },
+            {
+              "source": "BV1Qbae6AEgF:p1",
+              "start": 375.6,
+              "end": 406.14,
+              "frame": "frames/375-6.jpg"
+            }
+          ]
+        },
+        {
+          "id": "middle-no-lixin",
+          "section": "中期运营及应变",
+          "text": "一直没有李信时，可用狄仁杰、百里守约临时携带其装备保血，避免刷空金币。已取得花木兰，或已取得李白并能换入上官婉儿时，可考虑改变输出英雄；但本批资料没有确认花木兰、李白转阵后的完整通用名单，不能只换一个输出英雄就视为转阵完成。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 667.79,
+              "end": 724.17
+            }
+          ]
+        },
+        {
+          "id": "middle-hold-four",
+          "section": "中期运营及应变",
+          "text": "选择四本持续培养明世隐、暂不急需五阶战力的节奏时，第8至11回合继续找李信和明世隐，不急着升五本；第11回合开始存钱，第三轮拍卖后升五本，第14回合再预留六本预算。第15回合仍按先升六本、再用共鸣执行。此节奏把四本成长放在优先位，与缺核心或中期压力大时快速升五本的路线分别选择。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1U8aa69EEx:p1",
+              "start": 23.69,
+              "end": 75.66,
+              "frame": "frames/49-34.jpg"
+            },
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 495.15,
+              "end": 550.98
+            }
+          ]
+        },
+        {
+          "id": "position-deer-back",
+          "section": "站位技巧",
+          "text": "小鹿取得奉献后，目标是让钟馗、明世隐、太乙真人及选用的铠、盾山、程咬金先阵亡，小鹿随后阵亡，李信继续输出。这些英雄放在李信前方，李信和小鹿靠后；确认太乙真人最近目标及明世隐连线指向李信，同时维持钟馗左右1格的牺牲覆盖。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1hMes6CEqS:p1",
+              "start": 105.82,
+              "end": 187.79
+            },
+            {
+              "source": "BV1DVh76LEV6:p1",
+              "start": 1018.43,
+              "end": 1049.55
+            },
+            {
+              "source": "BV11oHH6FE4V:p1",
+              "start": 132.51,
+              "end": 145.69
+            },
+            {
+              "source": "BV1nLY96BEZU:p1",
+              "start": 285.15,
+              "end": 369.47,
+              "frame": "frames/340-41.jpg"
+            },
+            {
+              "source": "BV1U8aa69EEx:p1",
+              "start": 49.34,
+              "end": 75.66,
+              "frame": "frames/49-34.jpg"
+            },
+            {
+              "source": "BV1sCY76kE5g:p1",
+              "start": 124.86,
+              "end": 149.92,
+              "frame": "frames/124-86.jpg"
+            }
+          ]
+        },
+        {
+          "id": "equip-sanfen-support",
+          "section": "推荐装备",
+          "text": "对手以刘禅、马超帮助诸葛亮启动时，李信若能迅速击败刘禅、马超，可选无尽巨剑或魔律之刃增加输出，再配自然法杖，减少诸葛亮连续施法。等级不足、无法迅速击败刘禅和马超时，用机器头或炽热支配者改善行动；对手有孙悟空单次高爆发时可考虑磐石之心。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 56.96,
+              "end": 81.52
+            },
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 166.16,
+              "end": 195.16
+            }
+          ]
+        },
+        {
+          "id": "counter-barrier",
+          "section": "克制手段",
+          "text": "对手用班叔的二级等离子屏障限制单次承伤、杨玉环给屏障回复，再让队友连续施法推动诸葛亮回蓝和临时等级成长，可拖住李信的高额单次伤害。三级屏障强化、太乙真人提供复生也会延长消耗。威胁成立需要等离子屏障、杨玉环与诸葛亮同时到位；“侧边复生”的具体卡牌名称未确认，暂无已确认的逐名建议。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1wWep6RE9c:p1",
+              "start": 0.27,
+              "end": 53.09,
+              "frame": "frames/35-0.jpg"
+            },
+            {
+              "source": "BV1wWep6RE9c:p1",
+              "start": 82.63,
+              "end": 141.33,
+              "frame": "frames/115-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "equipment-ailin-pending",
+          "section": "条件与待裁决",
+          "text": "针对艾琳，反伤重甲施压与极寒风暴加凝渊追击是两种思路。无吸血艾琳已有反伤重甲方案；另一种讲解主张放弃反伤重甲、用冻结创造接近机会。双方没有给出同等等级、吸血和解控配置下的完整比较，暂不把某一套写成所有艾琳局的确定装备。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV14daY6dEyP:p1",
+              "start": 109.67,
+              "end": 151.1,
+              "frame": "frames/125-0.jpg"
+            },
+            {
+              "source": "BV1vBpE6zEru:p1",
+              "start": 649.6,
+              "end": 781.78,
+              "frame": "frames/675-0.jpg"
+            },
+            {
+              "source": "BV1vBpE6zEru:p1",
+              "start": 1678.73,
+              "end": 1749.71,
+              "frame": "frames/1680-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "order-six-before-double",
+          "section": "关键操作顺序",
+          "text": "准备使用小鹿等级翻倍的共鸣牌时，先检查棋手能否升到六阶。需要利用六阶提供的小鹿等级增益时，先升六阶再使用共鸣，避免先翻倍后才取得等级增益。第15回合使用第一张共鸣时尤其要检查这一步。",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1e8HS6HEPk:p1",
+              "start": 1417.58,
+              "end": 1478.74
+            },
+            {
+              "source": "BV1LfaC6eEwi:p1",
+              "start": 441.23,
+              "end": 498.0
+            },
+            {
+              "source": "BV1mVY56iEN8:p1",
+              "start": 227.03,
+              "end": 252.88
+            },
+            {
+              "source": "BV1Qbae6AEgF:p1",
+              "start": 1248.19,
+              "end": 1277.65
+            },
+            {
+              "source": "BV1xWYC6HEz2:p1",
+              "start": 1489.16,
+              "end": 1520.84,
+              "frame": "frames/1495-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "auction-three-growth",
+          "section": "第三轮拍卖",
+          "text": "第三轮按缺口选择众星拱月或扶摇直上：前者用于等级强化，后者用于升阶。需要其他等级或经济选项时，本批教学暂无已确认的具体名称与通用价格，不补成固定清单；以能否提高李信战力或完成六阶为判断依据。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1hMYT6dEY5:p1",
+              "start": 221.04,
+              "end": 255.59
+            }
+          ]
+        }
+      ],
+      "meta": {
+        "required_factions": [
+          "faction:heluo"
+        ],
+        "players": [
+          "player:11"
+        ],
+        "core_heroes": [
+          "card:5071"
+        ],
+        "compositions": {
+          "early": [
+            {
+              "hero": "card:1941",
+              "necessity": "optional",
+              "role": "前期前排，配小鹿保血",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1731",
+              "necessity": "optional",
+              "role": "前期战力和河洛古币成长",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1971",
+              "necessity": "optional",
+              "role": "补升级经验",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1681",
+              "necessity": "optional",
+              "role": "胜场经济；强势对手前改用即时战力",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1821",
+              "necessity": "optional",
+              "role": "补开局战力",
+              "replaces": "card:1681",
+              "replacement_note": "面对同行瑶妹或强势孙尚香时考虑"
+            },
+            {
+              "hero": "card:5031",
+              "necessity": "optional",
+              "role": "缺少开局牌时的打工替代",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "middle": [
+            {
+              "hero": "card:5071",
+              "necessity": "required",
+              "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1751",
+              "necessity": "required",
+              "role": "让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1861",
+              "necessity": "required",
+              "role": "为李信补复生，觉醒后提供完美复生",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1931",
+              "necessity": "optional",
+              "role": "复生和牺牲临时等级",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5011",
+              "necessity": "optional",
+              "role": "固定临时等级收益足够时保留",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1541",
+              "necessity": "optional",
+              "role": "升五本后的战力替补或缺李信转向",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "late": [
+            {
+              "hero": "card:5071",
+              "necessity": "required",
+              "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1751",
+              "necessity": "required",
+              "role": "让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1861",
+              "necessity": "required",
+              "role": "为李信补复生，觉醒后提供完美复生",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ]
+        },
+        "ban_conditions": [
+          {
+            "faction": "faction:heluo",
+            "status": "unplayable",
+            "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级）。 原条件说明：核心李信和钟馗无法获取。",
+            "derived_dependency": true,
+            "explicit_required": true,
+            "explicit_condition": {
+              "faction": "faction:heluo",
+              "status": "unplayable",
+              "reason": "核心李信和钟馗无法获取。"
+            }
+          }
+        ],
+        "matchups": [
+          {
+            "target": "card:5211",
+            "condition": "高等级李信成为最高等级目标，海月有太乙真人提供复生。",
+            "text": "对手用钟馗给左右1格英雄赋予牺牲，再让太乙真人复生海月，可反复触发海月牺牲：控制敌方最高等级英雄进入水月幻境，并造成与海月生命值相关的真实伤害。李信等级最高时会成为目标。可考虑给李信穿磐石之心防爆发，同时检查自然法杖等控制是否阻断其行动；磐石之心不能保证免于控制。"
+          },
+          {
+            "target": "card:1901",
+            "condition": "班叔屏障、杨玉环回复和诸葛亮连续施法。",
+            "text": "班叔的等离子屏障、杨玉环回复、诸葛亮连续施法同时到位时，可能拖住李信。可考虑让李信携带静谧之铃，限制这组英雄的回蓝；能否突破仍取决于李信输出、自然法杖控制、太乙真人复生及敌方成型程度。"
+          },
+          {
+            "target": "card:1101",
+            "condition": "雷霆战机远程单核。",
+            "text": "对手以嬴政组成雷霆战机远程单核时，李信可用反伤重甲、魔女斗篷、自然法杖应对远程伤害。嬴政携带机器头、难以控制时，可把自然法杖换成凝渊追击；嬴政携带噬神之书时，反伤重甲收益下降，可换无尽巨剑或魔律之刃。此处保留未觉醒的太乙真人，是为了让李信复生后以暗信形态接近嬴政。"
+          },
+          {
+            "target": "card:1751",
+            "condition": "对方能开局勾走李信。",
+            "text": "对手钟馗能直接勾走李信时，调整李信位置，可让明世隐处在更外侧，避免李信开局被拉走。移动后重新确认太乙真人最近复生目标是李信、明世隐连线指向李信，以及钟馗能覆盖需要牺牲的太乙真人、明世隐或程咬金。"
+          }
+        ],
+        "operation_routes": [
+          {
+            "id": "ming-growth",
+            "name": "明世隐固定等级成长",
+            "condition": "较早取得多张明世隐或较高固定等级，外部压力允许继续培养。",
+            "advantages": "把李信战中临时等级保留到后续回合。",
+            "risks": "明世隐固定量低时占人口与钟馗覆盖格；铠、花木兰复生后仍存活会分走小鹿等级。",
+            "transition": "明世隐固定量跟不上对手战力时退出，改用武则天、蒙犽登场及简易协作、精密协作等等级牌；终局检查铠、花木兰是否分走奉献。",
+            "phases": {
+              "early": [
+                "opening-four",
+                "opening-wins"
+              ],
+              "middle": [
+                "growth-ming",
+                "middle-ming-choice"
+              ],
+              "late": [
+                "late-revive-dilution",
+                "order-six-before-double"
+              ]
+            },
+            "claim_refs": [
+              "growth-ming",
+              "middle-ming-choice",
+              "composition-ming",
+              "late-revive-dilution"
+            ],
+            "variant_ids": [
+              "ming-sacrifice"
+            ]
+          },
+          {
+            "id": "four-core",
+            "name": "四本找齐核心后存钱升本",
+            "condition": "中期仍能保血，愿意先组成明世隐固定等级骨架。",
+            "advantages": "先取得李信、明世隐、钟馗、铠，再将刷新开支转向升本。",
+            "risks": "四本找李信会消耗预算；大幅掉血时不能无限等待。",
+            "transition": "第8回合仍无李信，已有李白且能换入上官婉儿时可考虑转向；完整李白转阵名单未确认。",
+            "phases": {
+              "early": [
+                "opening-four",
+                "opening-wins"
+              ],
+              "middle": [
+                "route-four-core",
+                "middle-item-holder"
+              ],
+              "late": [
+                "order-six-before-double",
+                "taiyi-by-target"
+              ]
+            },
+            "claim_refs": [
+              "route-four-core",
+              "middle-item-holder",
+              "taiyi-by-target"
+            ],
+            "variant_ids": [
+              "ming-sacrifice"
+            ]
+          },
+          {
+            "id": "four-hold",
+            "name": "四本培养至第11回合",
+            "condition": "选择持续培养明世隐，暂不急需五阶战力。",
+            "advantages": "先投入四本的李信和明世隐成长，再安排共鸣前升六本。",
+            "risks": "延迟五阶战力；对手成型快、当前阵容无法保血时不能照搬停留回合。",
+            "transition": "中期难以保血时停止四本久留、考虑升五本补战力。第11回合后为升本留钱。",
+            "phases": {
+              "early": [
+                "opening-four",
+                "opening-wins"
+              ],
+              "middle": [
+                "middle-hold-four",
+                "growth-ming"
+              ],
+              "late": [
+                "order-six-before-double",
+                "late-revive-dilution"
+              ]
+            },
+            "claim_refs": [
+              "middle-hold-four",
+              "growth-ming",
+              "late-revive-dilution"
+            ],
+            "variant_ids": [
+              "ming-sacrifice"
+            ]
+          }
+        ],
+        "late_variants": [
+          {
+            "id": "ming-sacrifice",
+            "name": "明世隐与低等级牺牲配套",
+            "condition": "明世隐固定量较高，能够继续成长；以集中小鹿奉献等级为目标。",
+            "members": [
+              {
+                "hero": "card:5071",
+                "necessity": "required",
+                "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "required",
+                "role": "让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "required",
+                "role": "为李信补复生，觉醒后提供完美复生",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "最近目标指向李信，固定部分临时等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1441",
+                "necessity": "optional",
+                "role": "提供古币，需钟馗赋予牺牲",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5091",
+                "necessity": "optional",
+                "role": "牺牲古币收益",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1931",
+                "necessity": "optional",
+                "role": "增加牺牲触发，终局按死亡顺序决定去留",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1541",
+                "necessity": "optional",
+                "role": "战力与复生牺牲，终局避免分走关键奉献收益",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:5071",
+              "card:5011"
+            ],
+            "required_factions": [
+              "faction:heluo"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级）。 原条件说明：李信和钟馗无法获取。",
+                "derived_dependency": true,
+                "explicit_required": true,
+                "explicit_condition": {
+                  "faction": "faction:heluo",
+                  "status": "unplayable",
+                  "reason": "李信和钟馗无法获取。"
+                }
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "composition-ming",
+              "growth-ming",
+              "late-revive-dilution",
+              "middle-ming-choice",
+              "ban-core"
+            ]
+          }
+        ]
+      },
+      "path": "knowledge/lineups/瑶妹牺牲流李信.md",
+      "entity_names": {
+        "faction:heluo": "河洛",
+        "player:11": "瑶妹",
+        "card:5071": "李信",
+        "card:1941": "苏烈",
+        "card:1731": "李元芳",
+        "card:1971": "弈星",
+        "card:1681": "牛魔",
+        "card:1821": "干将莫邪",
+        "card:5031": "狂铁",
+        "card:1751": "钟馗",
+        "card:1861": "太乙真人",
+        "card:1931": "铠",
+        "card:5011": "明世隐",
+        "card:1541": "花木兰",
+        "card:5211": "海月",
+        "card:1901": "诸葛亮",
+        "card:1101": "嬴政",
+        "card:1441": "程咬金",
+        "card:5091": "盾山"
+      },
+      "manual_sections": [],
+      "history": [
+        {
+          "at": "2026-10-14T09:51:16.424874+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇之上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据；来源未确认通用的固定出价，不套用前两轮挂件价格。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T10:20:08.604197+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "opening-wins",
+                "section": "前期运营及应变",
+                "text": "前期胜场同时帮助保血和养小鹿，尽量利用强势开局赢下前几轮，并争取累计五次胜利，获得双生牌的额外等级收益。不能把某局连胜或视频宣传胜率当作每局保证。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 144.99,
+                    "end": 198.57
+                  }
+                ]
+              },
+              {
+                "id": "position-shangui-assassin",
+                "section": "站位技巧",
+                "text": "山鬼配套面对韩信、裴擒虎、阿轲等刺客时，让小鹿靠李信后方挡接敌，并把图腾布在保护李信的位置；面对嬴政等非刺客时，可让小鹿在李信旁侧、牺牲英雄在前。教学用盾山卡面代指小鹿演示，不能因此误把盾山写成这套后期站位的必需成员。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 551.68,
+                    "end": 581.75,
+                    "frame": "frames/580-0.jpg"
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 610.24,
+                    "end": 672.53,
+                    "frame": "frames/640-0.jpg"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T10:23:24.714209+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据；来源未确认通用的固定出价，不套用前两轮挂件价格。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              },
+              {
+                "id": "equipment-kite",
+                "section": "推荐装备",
+                "text": "面对艾琳等减速、移动风筝输出时，可把纯输出位换成凝渊补移动速度，并考虑极寒风暴限制远程普攻。先解决接近不了目标的问题，再追求无尽的爆发；不要把某场两刀击败当作稳定伤害结论。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 442.08,
+                    "end": 468.24
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1352.85,
+                    "end": 1445.76
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1922.48,
+                    "end": 1953.26
+                  }
+                ]
+              },
+              {
+                "id": "equipment-control-duration",
+                "section": "推荐装备",
+                "text": "炽热支配者的免控有15秒时限，不是全程免控。敌方控制确实阻断输出时再考虑解控装；若免控很早触发、关键交战时已失效，可以把该位置改为生存或输出装备。不要把早期教学的固定炽热三件套当作所有后期对局的唯一答案。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 0.88,
+                    "end": 96.58
+                  },
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 437.04,
+                    "end": 525.02
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1626.03,
+                    "end": 1663.63
+                  }
+                ]
+              },
+              {
+                "id": "position-shangui-assassin",
+                "section": "站位技巧",
+                "text": "山鬼配套面对韩信、裴擒虎、阿轲等刺客时，让小鹿靠李信后方挡接敌，并把图腾布在保护李信的位置；面对嬴政等非刺客时，可让小鹿在李信旁侧、牺牲英雄在前。教学用盾山卡面代指小鹿演示，不能因此误把盾山写成这套后期站位的必需成员。。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 551.68,
+                    "end": 581.75,
+                    "frame": "frames/580-0.jpg"
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 610.24,
+                    "end": 672.53,
+                    "frame": "frames/640-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equip-sanfen-support",
+                "section": "推荐装备",
+                "text": "面对三分控制阵容，能快速击败刘禅、马超等启动辅助时，优先输出与自然法杖，减少诸葛亮连续施法；等级不足、无法快速清掉这些单位时，用机械头或炽热之羽改善被控后的行动。面对猴子单次高爆发可考虑磐石之心，不能只按敌方等级给出必胜阈值。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 56.96,
+                    "end": 81.52
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 166.16,
+                    "end": 195.16
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T10:31:44.204816+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              },
+              {
+                "id": "position-shangui-assassin",
+                "section": "站位技巧",
+                "text": "山鬼配套面对韩信、裴擒虎、阿轲等刺客时，让小鹿靠李信后方挡接敌，并把图腾布在保护李信的位置；面对嬴政等非刺客时，可让小鹿在李信旁侧、牺牲英雄在前。。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 551.68,
+                    "end": 581.75,
+                    "frame": "frames/580-0.jpg"
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 610.24,
+                    "end": 672.53,
+                    "frame": "frames/640-0.jpg"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T10:36:47.887288+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T10:51:45.125033+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。。。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T11:01:01.923450+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。。。。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T11:04:52.082853+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "middle-no-lixin",
+                "section": "中期运营及应变",
+                "text": "李信持续不来时，不要把整局预算都押在等一张牌上。先用来牌提供的战力保血，花木兰或李白等方向有配套时可考虑转向；这里只确认转向思路，不把一张替补输出当作完整转阵方案。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 667.79,
+                    "end": 724.17
+                  },
+                  {
+                    "source": "BV1nLY96BEZU:p1",
+                    "start": 196.7,
+                    "end": 213.68
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T11:24:31.634642+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。。。。。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              },
+              {
+                "id": "position-deer-back",
+                "section": "站位技巧",
+                "text": "小鹿获得奉献后，站位目标从单纯前排抗伤转为让其他挂件先阵亡、小鹿随后倒下、李信继续输出。其他英雄放在李信前方，李信和小鹿靠后；太乙与明世隐采用时要确认最近目标及连线指向李信。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMes6CEqS:p1",
+                    "start": 105.82,
+                    "end": 187.79
+                  },
+                  {
+                    "source": "BV1DVh76LEV6:p1",
+                    "start": 1018.43,
+                    "end": 1049.55
+                  },
+                  {
+                    "source": "BV11oHH6FE4V:p1",
+                    "start": 132.51,
+                    "end": 145.69
+                  },
+                  {
+                    "source": "BV1nLY96BEZU:p1",
+                    "start": 285.15,
+                    "end": 339.64,
+                    "frame": "frames/340-41.jpg"
+                  },
+                  {
+                    "source": "BV1U8aa69EEx:p1",
+                    "start": 49.34,
+                    "end": 75.66,
+                    "frame": "frames/49-34.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equip-sanfen-support",
+                "section": "推荐装备",
+                "text": "面对三分控制阵容，能快速击败刘禅、马超等启动辅助时，优先输出与自然法杖，减少诸葛亮连续施法；等级不足、无法快速清掉这些单位时，用机械头或炽热支配者改善被控后的行动。面对猴子单次高爆发可考虑磐石之心，不能只按敌方等级给出必胜阈值。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 56.96,
+                    "end": 81.52
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 166.16,
+                    "end": 195.16
+                  }
+                ]
+              },
+              {
+                "id": "counter-barrier",
+                "section": "克制手段",
+                "text": "克制李信的一种机制是二级等离子屏障限制单次承伤，配杨玉环为屏障回复，拖住李信的高额伤害；队友连续施法再推动诸葛亮回蓝与临时等级成长。三级屏障强化、侧边复生和太乙能进一步增加消耗时间。此威胁依赖班叔机关和辅助配套，不能把一场击败999李信推广为无条件克制。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1wWep6RE9c:p1",
+                    "start": 0.27,
+                    "end": 53.09,
+                    "frame": "frames/35-0.jpg"
+                  },
+                  {
+                    "source": "BV1wWep6RE9c:p1",
+                    "start": 82.63,
+                    "end": 141.33,
+                    "frame": "frames/115-0.jpg"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T11:33:44.457262+00:00",
+          "origin": "import_correction",
+          "previous": {
+            "claims": [
+              {
+                "id": "order-six-before-double",
+                "section": "关键操作顺序",
+                "text": "准备使用小鹿等级翻倍的共鸣牌时，先检查棋手能否升到六阶。需要利用六阶提供的小鹿等级增益时，先升六阶再使用共鸣，避免先翻倍后才取得等级增益。教学特别强调第15回合的这一顺序；不要把英雄等级、棋手等阶和人口混称为等级。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1417.58,
+                    "end": 1478.74
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 441.23,
+                    "end": 498.0
+                  },
+                  {
+                    "source": "BV1mVY56iEN8:p1",
+                    "start": 227.03,
+                    "end": 252.88
+                  },
+                  {
+                    "source": "BV1Qbae6AEgF:p1",
+                    "start": 1248.19,
+                    "end": 1277.65
+                  },
+                  {
+                    "source": "BV1xWYC6HEz2:p1",
+                    "start": 1489.16,
+                    "end": 1520.84,
+                    "frame": "frames/1495-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。。。。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-14T11:45:11.891403+00:00",
+          "origin": "user_scope_exclusion",
+          "reason": "用户要求排除山鬼李信整套打法及相关知识",
+          "previous": {
+            "claims": [
+              {
+                "id": "middle-budget",
+                "section": "中期运营及应变",
+                "text": "经济优先用于本阵容需要的英雄和升本，升本指提升棋手与商店等阶。不要把大量金币投入李元芳等后续会退出的英雄觉醒；已有大司命、铠等配套成员时，可为其即时战力考虑觉醒。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 92.02,
+                    "end": 151.17
+                  }
+                ]
+              },
+              {
+                "id": "middle-fast-five",
+                "section": "中期运营及应变",
+                "text": "采用快速升本路线时，四本先用免费刷新寻找李信、大司命和需要的配套牌；未出关键牌就继续升五本，不在四本把金币刷空。五本增加人口与天赋选择，也有机会用花木兰等英雄补战力。D牌即花金币刷新商店找英雄，应在保留升本与买牌预算后再决定投入。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 495.15,
+                    "end": 550.98
+                  },
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 86.83,
+                    "end": 115.79
+                  },
+                  {
+                    "source": "BV1Qbae6AEgF:p1",
+                    "start": 238.09,
+                    "end": 261.04
+                  },
+                  {
+                    "source": "BV1xWYC6HEz2:p1",
+                    "start": 181.97,
+                    "end": 223.23,
+                    "frame": "frames/190-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "middle-shangui",
+                "section": "中期运营及应变",
+                "text": "大司命来得比李信早时，可先养往生图腾的山鬼形态保中期，再接李信。已有大司命后才重点补项羽、蒙恬等相关牺牲牌；不要在没有大司命时仅为未来配套囤低即时战力英雄。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 121.2,
+                    "end": 210.78
+                  }
+                ]
+              },
+              {
+                "id": "late-shangui",
+                "section": "后期运营及应变",
+                "text": "大司命加项羽的配套既补中期战力，也为后期提供山鬼输出与承伤。山鬼不参与小鹿给英雄的等级均分，因此可以作为额外战力，避免用一个活得太久的普通英雄分走李信的奉献收益。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 386.67,
+                    "end": 436.92
+                  }
+                ]
+              },
+              {
+                "id": "late-revive-dilution",
+                "section": "终局技巧",
+                "text": "以李信独享小鹿等级为目标时，检查铠、花木兰等复生成员是否会在奉献时仍然存活。若它们分走关键等级而又不能提供所需战力，可以下掉；采用山鬼保血配套时，则按该路线的战力需求决定保留，不能把所有复生队友一概禁用。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1DVh76LEV6:p1",
+                    "start": 586.75,
+                    "end": 647.3
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1479.57,
+                    "end": 1522.83
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 302.15,
+                    "end": 356.89
+                  },
+                  {
+                    "source": "BV1UWeM6tEaT:p1",
+                    "start": 45.1,
+                    "end": 68.98
+                  },
+                  {
+                    "source": "BV14MYv68EMb:p1",
+                    "start": 1409.46,
+                    "end": 1472.33,
+                    "frame": "frames/1443-32.jpg"
+                  },
+                  {
+                    "source": "BV1REaa6wEup:p1",
+                    "start": 709.23,
+                    "end": 754.47
+                  }
+                ]
+              },
+              {
+                "id": "composition-shangui",
+                "section": "阵容组成",
+                "text": "推荐以李信、钟馗、太乙真人为共同骨架。大司命＋项羽＋铠的山鬼配套负责牺牲成长、中期战力和额外承伤，蒙恬可作为牺牲成员或腾出打出位；小鹿由棋手技能提供。明世隐按固定等级收益决定是否加入，不是这条快节奏路线的固定必需成员。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 302.15,
+                    "end": 436.92,
+                    "frame": "frames/315-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "ban-core",
+                "section": "禁用阵营适用情况",
+                "text": "根据核心李信、钟馗的河洛阵营，河洛被禁时无法取得这套阵容的核心，完整推荐不可玩。山鬼配套还需要大河的大司命、项羽，大河被禁时该组合不可玩。其他禁用阵营及同时禁用多个阵营的替代路线，暂无已确认的通用策略。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 302.15,
+                    "end": 436.92,
+                    "frame": "frames/315-0.jpg"
+                  },
+                  {
+                    "source": "BV1joY46RE4g:p1",
+                    "start": 80.94,
+                    "end": 109.16,
+                    "frame": "frames/95-05.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "position-shangui-assassin",
+                "section": "站位技巧",
+                "text": "山鬼配套面对韩信、裴擒虎、阿轲等刺客时，让小鹿靠李信后方挡接敌，并把图腾布在保护李信的位置；面对嬴政等非刺客时，可让小鹿在李信旁侧、牺牲英雄在前。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 551.68,
+                    "end": 581.75,
+                    "frame": "frames/580-0.jpg"
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 610.24,
+                    "end": 672.53,
+                    "frame": "frames/640-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。。。。。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "required_factions": [
+                "faction:heluo"
+              ],
+              "players": [
+                "player:11"
+              ],
+              "core_heroes": [
+                "card:5071"
+              ],
+              "compositions": {
+                "early": [
+                  {
+                    "hero": "card:1941",
+                    "necessity": "optional",
+                    "role": "前期前排，配小鹿保血",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1731",
+                    "necessity": "optional",
+                    "role": "前期战力和河洛古币成长",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1971",
+                    "necessity": "optional",
+                    "role": "补升级经验",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1681",
+                    "necessity": "optional",
+                    "role": "胜场经济；强势对手前改用即时战力",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1821",
+                    "necessity": "optional",
+                    "role": "补开局战力",
+                    "replaces": "card:1681",
+                    "replacement_note": "面对同行瑶妹或强势香香时考虑"
+                  },
+                  {
+                    "hero": "card:5031",
+                    "necessity": "optional",
+                    "role": "缺少开局牌时的打工替代",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ],
+                "middle": [
+                  {
+                    "hero": "card:5071",
+                    "necessity": "required",
+                    "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1751",
+                    "necessity": "required",
+                    "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1861",
+                    "necessity": "required",
+                    "role": "为李信补复生，觉醒后提供完美复生",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1931",
+                    "necessity": "optional",
+                    "role": "复生和牺牲临时等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:5171",
+                    "necessity": "optional",
+                    "role": "先养山鬼保中期，再接李信",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1351",
+                    "necessity": "optional",
+                    "role": "已有大司命时补图腾成长",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:5011",
+                    "necessity": "optional",
+                    "role": "固定临时等级收益足够时保留",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1541",
+                    "necessity": "optional",
+                    "role": "升五本后的战力替补或缺李信转向",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ],
+                "late": [
+                  {
+                    "hero": "card:5071",
+                    "necessity": "required",
+                    "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1751",
+                    "necessity": "required",
+                    "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1861",
+                    "necessity": "required",
+                    "role": "为李信补复生，觉醒后提供完美复生",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ]
+              },
+              "ban_conditions": [
+                {
+                  "faction": "faction:heluo",
+                  "status": "unplayable",
+                  "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让附近功能英雄获得牺牲，并降低击败者等级）。 原条件说明：核心李信和钟馗无法获取。",
+                  "derived_dependency": true,
+                  "explicit_required": true,
+                  "explicit_condition": {
+                    "faction": "faction:heluo",
+                    "status": "unplayable",
+                    "reason": "核心李信和钟馗无法获取。"
+                  }
+                }
+              ],
+              "matchups": [
+                {
+                  "target": "card:5211",
+                  "condition": "高等级李信成为最高等级目标，海月有复生配套。",
+                  "text": "海月牺牲真实伤害及水月幻境构成威胁，磐石之心防爆发，仍需检查控制。"
+                },
+                {
+                  "target": "card:1901",
+                  "condition": "班叔屏障、杨玉环回复和连续施法配套。",
+                  "text": "屏障拖延高额单次伤害，诸葛亮持续成长；可考虑静谧之铃限制回蓝。"
+                },
+                {
+                  "target": "card:1101",
+                  "condition": "雷霆战机远程单核。",
+                  "text": "按机械头、吸血装备调整自然法杖、反甲、凝渊和输出，普通太乙让暗信追击。"
+                },
+                {
+                  "target": "card:1751",
+                  "condition": "对方能开局勾走李信。",
+                  "text": "调整李信与外围功能英雄的位置，同时保持成长及复生目标。"
+                }
+              ],
+              "operation_routes": [
+                {
+                  "id": "fast-five",
+                  "name": "快速升五本保战力",
+                  "condition": "中期对手成型快、四本未拿到李信，或明世隐固定收益低。",
+                  "advantages": "五本多人口、天赋及高品阶战力；大司命可先保中期。",
+                  "risks": "经济紧，非必要觉醒和过量刷新会耽误升本；仍需来牌补核心。",
+                  "transition": "李信到手后补牺牲和太乙；已有高收益明世隐可保留，否则用等级牌与登场英雄成长。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-missing",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "middle-budget",
+                      "middle-fast-five",
+                      "middle-shangui",
+                      "middle-ming-choice"
+                    ],
+                    "late": [
+                      "late-shangui",
+                      "late-play-slot",
+                      "level-without-ming"
+                    ]
+                  },
+                  "claim_refs": [
+                    "middle-fast-five",
+                    "middle-shangui",
+                    "middle-ming-choice",
+                    "level-without-ming",
+                    "level-play-batch",
+                    "composition-shangui"
+                  ],
+                  "variant_ids": [
+                    "shangui-support"
+                  ]
+                },
+                {
+                  "id": "ming-growth",
+                  "name": "明世隐固定等级成长",
+                  "condition": "较早取得多张明世隐或较高固定等级，外部压力允许继续培养。",
+                  "advantages": "把李信战中临时等级保留到后续回合。",
+                  "risks": "低固定量会拖战力并占人口和钟馗覆盖位置；复生挂件可能分走小鹿等级。",
+                  "transition": "固定收益跟不上中期压力时退出明世隐，改用等级牌与登场成长；终局检查奉献分配。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "growth-ming",
+                      "middle-ming-choice"
+                    ],
+                    "late": [
+                      "late-revive-dilution",
+                      "order-six-before-double"
+                    ]
+                  },
+                  "claim_refs": [
+                    "growth-ming",
+                    "middle-ming-choice",
+                    "composition-ming",
+                    "late-revive-dilution"
+                  ],
+                  "variant_ids": [
+                    "ming-sacrifice"
+                  ]
+                },
+                {
+                  "id": "four-core",
+                  "name": "四本找齐核心后存钱升本",
+                  "condition": "中期仍能保血，愿意先组成明世隐固定等级骨架。",
+                  "advantages": "先补李信及牺牲成长成员，再把找牌开支转向升本。",
+                  "risks": "找不到核心会消耗预算；不能把某次暴君归来战绩当作稳定天赋概率。",
+                  "transition": "第8回合仍无李信、已有李白配套时，考虑李白加上官婉儿；掉血加快时调整找牌投入。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "route-four-core",
+                      "middle-item-holder"
+                    ],
+                    "late": [
+                      "order-six-before-double",
+                      "taiyi-by-target"
+                    ]
+                  },
+                  "claim_refs": [
+                    "route-four-core",
+                    "middle-item-holder",
+                    "taiyi-by-target"
+                  ],
+                  "variant_ids": [
+                    "ming-sacrifice"
+                  ]
+                },
+                {
+                  "id": "four-hold",
+                  "name": "四本培养至第11回合",
+                  "condition": "选择持续培养明世隐，暂不急需五阶战力。",
+                  "advantages": "先投入四本的李信和明世隐成长，再安排共鸣前升六本。",
+                  "risks": "延迟五阶战力；对手成型快、当前阵容无法保血时不能照搬停留回合。",
+                  "transition": "中期压力大时改用快速升五本路线；第11回合后为升本留钱。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "middle-hold-four",
+                      "growth-ming"
+                    ],
+                    "late": [
+                      "order-six-before-double",
+                      "late-revive-dilution"
+                    ]
+                  },
+                  "claim_refs": [
+                    "middle-hold-four",
+                    "growth-ming",
+                    "late-revive-dilution"
+                  ],
+                  "variant_ids": [
+                    "ming-sacrifice"
+                  ]
+                }
+              ],
+              "late_variants": [
+                {
+                  "id": "shangui-support",
+                  "name": "大司命、项羽山鬼配套",
+                  "condition": "大司命与项羽到位，需要保中期及额外输出、承伤；明世隐不强行保留。",
+                  "members": [
+                    {
+                      "hero": "card:5071",
+                      "necessity": "required",
+                      "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1751",
+                      "necessity": "required",
+                      "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1861",
+                      "necessity": "required",
+                      "role": "为李信补复生，觉醒后提供完美复生",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1931",
+                      "necessity": "required",
+                      "role": "牺牲提供河洛临时等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5171",
+                      "necessity": "required",
+                      "role": "往生图腾、山鬼成长与额外战力",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1351",
+                      "necessity": "required",
+                      "role": "牺牲提高图腾等级与召唤物能力",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5271",
+                      "necessity": "optional",
+                      "role": "牺牲召唤或腾出英雄打出位",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5011",
+                      "necessity": "optional",
+                      "role": "固定等级收益高且有合适位置时加入",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ],
+                  "core_heroes": [
+                    "card:5071",
+                    "card:5171",
+                    "card:1351"
+                  ],
+                  "required_factions": [
+                    "faction:dahe",
+                    "faction:heluo"
+                  ],
+                  "ban_conditions": [
+                    {
+                      "faction": "faction:heluo",
+                      "status": "unplayable",
+                      "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让附近功能英雄获得牺牲，并降低击败者等级）、铠（牺牲提供河洛临时等级）。 原条件说明：李信、钟馗、铠无法获取。",
+                      "derived_dependency": true,
+                      "explicit_required": true,
+                      "explicit_condition": {
+                        "faction": "faction:heluo",
+                        "status": "unplayable",
+                        "reason": "李信、钟馗、铠无法获取。"
+                      }
+                    },
+                    {
+                      "faction": "faction:dahe",
+                      "status": "unplayable",
+                      "reason": "完整阵容无法获取：大司命（往生图腾、山鬼成长与额外战力）、项羽（牺牲提高图腾等级与召唤物能力）。 原条件说明：大司命和项羽无法获取，失去山鬼配套。",
+                      "derived_dependency": true,
+                      "explicit_required": true,
+                      "explicit_condition": {
+                        "faction": "faction:dahe",
+                        "status": "unplayable",
+                        "reason": "大司命和项羽无法获取，失去山鬼配套。"
+                      }
+                    }
+                  ],
+                  "ban_combinations": [],
+                  "claim_refs": [
+                    "composition-shangui",
+                    "late-shangui",
+                    "late-play-slot",
+                    "middle-ming-choice",
+                    "ban-core"
+                  ]
+                },
+                {
+                  "id": "ming-sacrifice",
+                  "name": "明世隐与低等级牺牲配套",
+                  "condition": "明世隐固定量较高，能够继续成长；以集中小鹿奉献等级为目标。",
+                  "members": [
+                    {
+                      "hero": "card:5071",
+                      "necessity": "required",
+                      "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1751",
+                      "necessity": "required",
+                      "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1861",
+                      "necessity": "required",
+                      "role": "为李信补复生，觉醒后提供完美复生",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5011",
+                      "necessity": "required",
+                      "role": "最近目标指向李信，固定部分临时等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1441",
+                      "necessity": "optional",
+                      "role": "提供古币，需钟馗赋予牺牲",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5091",
+                      "necessity": "optional",
+                      "role": "牺牲古币收益",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1931",
+                      "necessity": "optional",
+                      "role": "增加牺牲触发，终局按死亡顺序决定去留",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1541",
+                      "necessity": "optional",
+                      "role": "战力与复生牺牲，终局避免分走关键奉献收益",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ],
+                  "core_heroes": [
+                    "card:5071",
+                    "card:5011"
+                  ],
+                  "required_factions": [
+                    "faction:heluo"
+                  ],
+                  "ban_conditions": [
+                    {
+                      "faction": "faction:heluo",
+                      "status": "unplayable",
+                      "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让附近功能英雄获得牺牲，并降低击败者等级）。 原条件说明：李信和钟馗无法获取。",
+                      "derived_dependency": true,
+                      "explicit_required": true,
+                      "explicit_condition": {
+                        "faction": "faction:heluo",
+                        "status": "unplayable",
+                        "reason": "李信和钟馗无法获取。"
+                      }
+                    }
+                  ],
+                  "ban_combinations": [],
+                  "claim_refs": [
+                    "composition-ming",
+                    "growth-ming",
+                    "late-revive-dilution",
+                    "middle-ming-choice",
+                    "ban-core"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "at": "2026-10-15T02:32:48.788533+00:00",
+          "origin": "editorial_clarity",
+          "reason": "用户要求内容归位、消除重复与名称具体化",
+          "previous": {
+            "claims": [
+              {
+                "id": "growth-zhongkui",
+                "section": "核心机制",
+                "text": "钟馗能让自身及左右1格的英雄获得牺牲。把缺少牺牲词条的功能英雄放到覆盖位置，既保留其作用，也让阵亡为李信提供临时等级；不要把钟馗的左右覆盖误当作全场覆盖。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1joY46RE4g:p1",
+                    "start": 80.94,
+                    "end": 109.16,
+                    "frame": "frames/95-05.jpg"
+                  },
+                  {
+                    "source": "BV1UWeM6tEaT:p1",
+                    "start": 15.68,
+                    "end": 40.28
+                  },
+                  {
+                    "source": "BV11oHH6FE4V:p1",
+                    "start": 27.42,
+                    "end": 56.66
+                  }
+                ]
+              },
+              {
+                "id": "growth-ming",
+                "section": "核心机制",
+                "text": "明世隐把最近英雄的一部分临时等级转为永久等级。采用固定等级路线时，确保他的连线指向李信，再通过同名牌、觉醒及唤醒等已有手段提高可固定的等级；不要让连线落到牺牲挂件身上。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 162.52,
+                    "end": 191.62
+                  },
+                  {
+                    "source": "BV1DVh76LEV6:p1",
+                    "start": 1588.77,
+                    "end": 1614.11
+                  },
+                  {
+                    "source": "BV1UWeM6tEaT:p1",
+                    "start": 15.68,
+                    "end": 40.28
+                  },
+                  {
+                    "source": "BV1VPag6AEaH:p1",
+                    "start": 198.8,
+                    "end": 232.97,
+                    "frame": "frames/198-8.jpg"
+                  },
+                  {
+                    "source": "BV11oHH6FE4V:p1",
+                    "start": 56.88,
+                    "end": 81.08
+                  }
+                ]
+              },
+              {
+                "id": "growth-taiyi",
+                "section": "成型后提升思路",
+                "text": "太乙真人负责给李信补复生，摆放时先确认最近目标是李信。需要重复利用光信技能时，优先完成太乙觉醒：普通太乙提供复生，觉醒太乙提供完美复生，两者不能混为一谈。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1DVh76LEV6:p1",
+                    "start": 556.93,
+                    "end": 617.5
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1590.0,
+                    "end": 1626.03
+                  }
+                ]
+              },
+              {
+                "id": "opening-four",
+                "section": "前期运营及应变",
+                "text": "前两回合优先凑苏烈、李元芳、弈星、牛魔，借小鹿的前期战力争取胜场。首回合优先苏烈配李元芳；对手战力不足时可用李元芳配牛魔争取额外经济，第二回合再补弈星等成员。面对同行瑶妹或强势香香时，用干将莫邪替代牛魔增强即时战力。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 31.3,
+                    "end": 61.46
+                  }
+                ]
+              },
+              {
+                "id": "middle-budget",
+                "section": "中期运营及应变",
+                "text": "经济优先用于本阵容需要的英雄和升本，升本指提升棋手与商店等阶。不要把大量金币投入李元芳等后续会退出的英雄觉醒。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 92.02,
+                    "end": 151.17
+                  }
+                ]
+              },
+              {
+                "id": "middle-fast-five",
+                "section": "中期运营及应变",
+                "text": "四本未取得李信、当前战力难以保血时，可继续升五本，再寻找核心并补即时战力；不要在四本把金币刷空。D牌即花金币刷新商店找英雄，应在保留升本与买牌预算后再决定投入。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1Qbae6AEgF:p1",
+                    "start": 238.09,
+                    "end": 261.04
+                  },
+                  {
+                    "source": "BV1xWYC6HEz2:p1",
+                    "start": 181.97,
+                    "end": 223.23,
+                    "frame": "frames/190-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "middle-ming-choice",
+                "section": "关键牌判断",
+                "text": "明世隐是条件位，不能每局固定占人口。到第10回合仍只能固定约4级、同时外部战力很强时，可以卖掉他换牺牲或战力位；较早已能固定6级及以上、能够继续提高固定量时，可保留成长路线。判断时同时看固定收益、占用人口和钟馗覆盖位置。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 182.67,
+                    "end": 297.59
+                  }
+                ]
+              },
+              {
+                "id": "late-play-slot",
+                "section": "后期运营及应变",
+                "text": "后期保留一个打出英雄牌的操作位置，用武则天等登场收益补李信等级；需要提高基础等级时，不必把位置永久锁死在低收益明世隐或古币挂件上。使用后补回牺牲成员，避免操作位变成分走小鹿等级的存活单位。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 302.15,
+                    "end": 356.89
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 410.14,
+                    "end": 436.92
+                  },
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 455.64,
+                    "end": 483.16
+                  }
+                ]
+              },
+              {
+                "id": "auction-two-lixin",
+                "section": "第二轮拍卖",
+                "text": "第二轮还没有李信时，优先补李信；其次补当前确实缺少的河洛配套。需要的牌已齐时，不为重复挂件继续竞价，保留刷新、升本和买核心牌的金币。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 162.52,
+                    "end": 191.62
+                  }
+                ]
+              },
+              {
+                "id": "talent-tyrant",
+                "section": "推荐天赋及原因",
+                "text": "暴君归来适合李信的多次复生路线：复生时的攻速、暴击率和短暂无敌帮助复活后重新输出。已具备太乙及李信的复生配套时优先考虑，后续河洛专属复生装备可以进一步补强。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 256.38,
+                    "end": 336.27
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 437.8,
+                    "end": 465.32
+                  }
+                ]
+              },
+              {
+                "id": "talent-economy",
+                "section": "推荐天赋及原因",
+                "text": "未拿到李信时，优先考虑直接给李信、帮助获取英雄或提供经济的天赋；已有核心后再看等级成长与战力。瑶妹中期经济紧，不把天赋重选和非必要买牌开销挤占升本预算。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 437.8,
+                    "end": 465.32
+                  },
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 58.8,
+                    "end": 115.79
+                  }
+                ]
+              },
+              {
+                "id": "level-without-ming",
+                "section": "成型后提升思路",
+                "text": "不带明世隐时，用升五本后的英雄登场收益和等级效果牌把李信培养到100级门槛。优先在找李信、太乙和牺牲配套的过程中顺手买有效等级牌，不另花大量经济追低固定量的明世隐。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 89.17,
+                    "end": 201.09
+                  },
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 427.48,
+                    "end": 483.16
+                  }
+                ]
+              },
+              {
+                "id": "level-play-batch",
+                "section": "关键操作顺序",
+                "text": "局面有优势且压力不大时，可以集中留取多张武则天、蒙犽等同名牌，再批量打出取得登场收益和锦囊；用唤醒等牌再次触发已上场英雄的登场。敌方压力很大、需要马上提高李信战力时直接使用，不为凑一批牌继续掉血。操作前先腾出打出位，结束后补回牺牲成员。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 116.24,
+                    "end": 201.09
+                  },
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 317.32,
+                    "end": 346.1
+                  },
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 455.64,
+                    "end": 483.16
+                  }
+                ]
+              },
+              {
+                "id": "level-effect-cards",
+                "section": "关键牌判断",
+                "text": "刷核心时遇到简易协作、精密协作、八方来援、武装之力等等级牌，可按李信能获得的确定收益和当前金币余量判断是否购买。随机加级不能保证落到李信；八方来援看实际阵营数量，武装之力看装备数量。临近100级时，少量有效等级也可能补出复生门槛。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 230.2,
+                    "end": 287.9
+                  },
+                  {
+                    "source": "BV11xHt6yEPB:p1",
+                    "start": 175.27,
+                    "end": 201.09
+                  }
+                ]
+              },
+              {
+                "id": "equipment-current-default",
+                "section": "推荐装备",
+                "text": "普通装备可从自然法杖、凝渊和一件生存装起步，再按敌方改装。自然法杖提供变猪控制，凝渊补暴击率和追击能力；当李信的输出已经够用、主要问题是活不久时，生存装比继续堆输出更有价值。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 30.11,
+                    "end": 96.58
+                  },
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 466.95,
+                    "end": 552.51
+                  }
+                ]
+              },
+              {
+                "id": "equipment-burst-counter",
+                "section": "推荐装备",
+                "text": "面对海月或闪现百里守约等可能快速击败李信的对手，有磐石之心时可优先考虑，限制单次受伤幅度；必要时让凝渊等位置给关键生存装备。不要只赌小鹿刚好挡住爆发。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 231.78,
+                    "end": 289.18
+                  },
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 350.58,
+                    "end": 389.59
+                  }
+                ]
+              },
+              {
+                "id": "equipment-mingdao-conditional",
+                "section": "推荐装备",
+                "text": "名刀·司命不是固定必带。常规局面可把位置留给持续输出或生存；面对香香优先狙击李信、李信可能在小鹿前被秒的特定情况，再考虑用名刀争取时间。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 174.45,
+                    "end": 231.44
+                  }
+                ]
+              },
+              {
+                "id": "equipment-thunder",
+                "section": "推荐装备",
+                "text": "后期拿到驱雷、对面没有海月等关键威胁时，可以考虑驱雷配控制或生存的路线，利用百分比伤害处理战斗。它也可能命中己方队友，使用前要结合牺牲与小鹿奉献顺序；不要把它当作无条件安全的输出装。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 203.22,
+                    "end": 259.89
+                  }
+                ]
+              },
+              {
+                "id": "composition-ming",
+                "section": "阵容组成",
+                "text": "较早拿到多张明世隐、能够提高其固定临时等级收益时，可采用李信＋明世隐＋钟馗＋太乙真人的成长骨架，其他位置按来牌补低等级牺牲英雄。程咬金、盾山可提供古币，铠、花木兰能多次触发牺牲；后期是否保留，要检查奉献时谁还存活。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMes6CEqS:p1",
+                    "start": 0,
+                    "end": 29.4
+                  },
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 132.72,
+                    "end": 220.12
+                  },
+                  {
+                    "source": "BV1DVh76LEV6:p1",
+                    "start": 497.63,
+                    "end": 647.3
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 252.57,
+                    "end": 297.59
+                  }
+                ]
+              },
+              {
+                "id": "growth-hundred",
+                "section": "核心机制",
+                "text": "李信到100级会解锁自身复生，阵亡后以狂暴形态继续战斗。中期要在他被击败前补到这一关键门槛，太乙再提供额外复生；英雄到100级与合成觉醒是两件事，不能用觉醒替代等级门槛。",
+                "kind": "mechanic",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 364.83,
+                    "end": 427.82
+                  }
+                ]
+              },
+              {
+                "id": "opening-level-plan",
+                "section": "前期运营及应变",
+                "text": "快速升本路线从第三回合开始把金币主要留给升本，先进入三本、四本。商店自然出现的本阵容牌可按缺口购买，不为了补齐所有挂件停下升本；四本拿不到核心时，按中期压力继续升五本。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 61.93,
+                    "end": 91.57
+                  },
+                  {
+                    "source": "BV1pmap6HELz:p1",
+                    "start": 495.15,
+                    "end": 550.98
+                  }
+                ]
+              },
+              {
+                "id": "taiyi-by-target",
+                "section": "成型后提升思路",
+                "text": "太乙的觉醒按终局目标决定：对手多名英雄等级都高、需要反复用光信技能清场时优先觉醒，取得完美复生；对手集中培养一个输出英雄、需要暗信追击时，可保留普通太乙。同时检查李信是否已有自身复生，不把两种形态当作完全相同的额外生命。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 98.08,
+                    "end": 136.69,
+                    "frame": "frames/125-0.jpg"
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 224.11,
+                    "end": 249.59,
+                    "frame": "frames/233-0.jpg"
+                  },
+                  {
+                    "source": "BV1Qbae6AEgF:p1",
+                    "start": 886.85,
+                    "end": 954.94
+                  }
+                ]
+              },
+              {
+                "id": "route-four-core",
+                "section": "中期运营及应变",
+                "text": "四本找齐核心是另一条运营路线：到四本后投入刷新找李信、明世隐、钟馗、铠，齐牌后收住找牌开支，存钱升本。若第8回合仍没李信，可按已有配套转李白，并把钟馗换成上官婉儿；第14回合预留升六本的钱，第15回合先升本再使用共鸣。这条路线要结合保血能力选择，不能在严重掉血时无限等待。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1gDYN6JEyq:p1",
+                    "start": 247.8,
+                    "end": 303.72
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 307.79,
+                    "end": 359.46,
+                    "frame": "frames/325-0.jpg"
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 441.23,
+                    "end": 498.0
+                  },
+                  {
+                    "source": "BV1gDYN6JEyq:p1",
+                    "start": 274.44,
+                    "end": 303.72,
+                    "frame": "frames/274-44.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equip-warplane",
+                "section": "推荐装备",
+                "text": "面对嬴政雷霆战机，可用反伤重甲、魔女斗篷、自然法杖处理远程伤害与控制。嬴政有机械头而难以控制时，可将自然法杖换成凝渊追击；对方有吸血书时，反甲收益下降，可换无尽巨剑或魔律之刃。保留普通太乙是为了暗信快速接近单一核心。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 136.88,
+                    "end": 163.26,
+                    "frame": "frames/137-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equip-dahe-front",
+                "section": "推荐装备",
+                "text": "面对大河输出时，反甲不只针对敖隐：当东皇太一挡住李信时，反伤可帮助越过前排。基础方案可用反伤重甲、自然法杖配魔律之刃或无尽巨剑；敖隐有吸血、反伤效果不足时可换输出装。被自然法杖等控制锁住、无法接近敖隐时，考虑机械头保证行动。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 81.84,
+                    "end": 127.34
+                  }
+                ]
+              },
+              {
+                "id": "equip-milk-bell",
+                "section": "克制手段",
+                "text": "班叔屏障配杨玉环回血、诸葛亮持续成长，会把李信拖进长战斗。面对这种持续施法与回复组合，可考虑静谧之铃限制关键英雄回蓝；是否能突破仍取决于输出、控制、复生和对方成型程度。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 56.96,
+                    "end": 81.52
+                  },
+                  {
+                    "source": "BV1wWep6RE9c:p1",
+                    "start": 29.87,
+                    "end": 53.09,
+                    "frame": "frames/35-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "counter-haiyue-zhong",
+                "section": "克制手段",
+                "text": "对手可用钟馗给附近单位牺牲，降低击败者等级，再用太乙等复生手段让海月重复触发牺牲。海月牺牲时针对敌方最高等级英雄施加水月幻境，并造成与自身生命值相关的真实伤害，因此单核李信需要同时检查爆发防护和被控风险；磐石之心是已确认的防爆发选项，不能据此保证免于所有控制。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1TMeu6bEVM:p1",
+                    "start": 1353.38,
+                    "end": 1393.25,
+                    "frame": "frames/1365-0.jpg"
+                  },
+                  {
+                    "source": "BV1TMeu6bEVM:p1",
+                    "start": 1512.4,
+                    "end": 1569.67
+                  },
+                  {
+                    "source": "BV1TMeu6bEVM:p1",
+                    "start": 1696.81,
+                    "end": 1740.6,
+                    "frame": "frames/1710-0.jpg"
+                  },
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 257.62,
+                    "end": 287.62,
+                    "frame": "frames/270-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equipment-time-stage",
+                "section": "推荐装备",
+                "text": "吸血装备在李信刚到100级等中期阶段能改善续战，但终局应按敌方控制、爆发和回复重新换装，不把前期装备一直穿到结束。怒莲之刺可兼顾前中后期；机械头属于针对特定控制的后期选择，不应仅因第3回合出现就固定优先。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 30.72,
+                    "end": 56.74
+                  }
+                ]
+              },
+              {
+                "id": "position-hook-bait",
+                "section": "站位技巧",
+                "text": "对手有能直接勾走后排的钟馗时，调整李信的位置，把明世隐等功能单位留作更外侧的目标，避免李信开局被拉出保护范围。移动后重新检查太乙最近目标、明世隐连线与钟馗牺牲覆盖，不能为防钩破坏成长配套。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 417.15,
+                    "end": 440.97
+                  }
+                ]
+              },
+              {
+                "id": "equipment-kite",
+                "section": "推荐装备",
+                "text": "面对艾琳等减速、移动风筝输出时，可把纯输出位换成凝渊补移动速度，并考虑极寒风暴限制远程普攻。先解决接近不了目标的问题，再追求无尽的爆发。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 442.08,
+                    "end": 468.24
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1352.85,
+                    "end": 1445.76
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1922.48,
+                    "end": 1953.26
+                  },
+                  {
+                    "source": "BV1LoeH6VEbE:p1",
+                    "start": 175.86,
+                    "end": 185.46
+                  },
+                  {
+                    "source": "BV1vBpE6zEru:p1",
+                    "start": 649.6,
+                    "end": 781.78,
+                    "frame": "frames/675-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equipment-control-duration",
+                "section": "推荐装备",
+                "text": "炽热支配者的免控有15秒时限，不是全程免控。敌方控制确实阻断输出时再考虑解控装；若免控很早触发、关键交战时已失效，可以把该位置改为生存或输出装备。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 0.88,
+                    "end": 96.58
+                  },
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 437.04,
+                    "end": 525.02
+                  },
+                  {
+                    "source": "BV1e8HS6HEPk:p1",
+                    "start": 1626.03,
+                    "end": 1663.63
+                  }
+                ]
+              },
+              {
+                "id": "six-budget-pressure",
+                "section": "中期运营及应变",
+                "text": "当前血量或战力不足、升六本的投入会让下一轮难以存活时，先把金币用于找牌、装备和李信即时战力，不为小鹿庇护强行升六本。能够撑到共鸣强势期、预算足够时，再采用先升六本后共鸣的路线。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1ksew6YEf5:p1",
+                    "start": 114.41,
+                    "end": 141.57
+                  }
+                ]
+              },
+              {
+                "id": "opening-blood-cushion",
+                "section": "前期运营及应变",
+                "text": "前期先用即时战力保住血量，为中期找李信和后期小鹿共鸣留容错。若只存金币而连续大幅掉血，可能在成长阶段前出局；前期装备可先给打工英雄使用，之后再移交李信。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1b6Y96nEfv:p1",
+                    "start": 1021.92,
+                    "end": 1058.82
+                  },
+                  {
+                    "source": "BV1ksew6YEf5:p1",
+                    "start": 42.2,
+                    "end": 69.48
+                  },
+                  {
+                    "source": "BV1gDYN6JEyq:p1",
+                    "start": 247.8,
+                    "end": 274.2
+                  }
+                ]
+              },
+              {
+                "id": "equipment-cleanse-choice",
+                "section": "推荐装备",
+                "text": "需要免控且战斗可能拖到加时赛时，可比较纯净苍穹与炽热支配者：纯净苍穹间歇清除控制，覆盖较长战斗但中间仍可能被控；炽热保障触发后15秒的连续免控。按实际被控时间选择，不能把任一装备等同于始终不会被控。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1mVY56iEN8:p1",
+                    "start": 1041.28,
+                    "end": 1121.3
+                  }
+                ]
+              },
+              {
+                "id": "combat-reborn-form",
+                "section": "战后复盘",
+                "text": "需要再次用光信技能清场，实际复生后却进入暗信时，先检查太乙是否觉醒、最近复生目标是否指向李信。普通太乙与觉醒太乙提供的复生形态不同；要保留光信清场能力时补太乙觉醒，要追单核则另按暗信路线判断，不把形态差别误认为复生失效。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1REaa6wEup:p1",
+                    "start": 944.08,
+                    "end": 1001.54
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 98.08,
+                    "end": 136.69,
+                    "frame": "frames/125-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "late-bank-six",
+                "section": "后期运营及应变",
+                "text": "采用先存钱升六本的路线时，所需阵容成员找齐后停止搜牌，即使李信还未觉醒也不强求先合成；把预算留给共鸣前升六本。六本之后再优先觉醒李信，功能位重点补明世隐、太乙、钟馗的觉醒，其余金币用于李信等级效果牌及需要的装备。此取舍属于该存钱路线，不能套在必须立刻补战力保血的局面。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LoeH6VEbE:p1",
+                    "start": 88.84,
+                    "end": 175.57,
+                    "frame": "frames/117-35.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "middle-no-lixin",
+                "section": "中期运营及应变",
+                "text": "李信持续不来时，先用现有英雄与装备保血，避免耗尽预算等一张牌。已有花木兰或李白所需配套时可考虑转向；替补输出到手后，还要检查该方向的成长与辅助成员是否齐全。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1xdYq6KEnA:p1",
+                    "start": 667.79,
+                    "end": 724.17
+                  }
+                ]
+              },
+              {
+                "id": "position-deer-back",
+                "section": "站位技巧",
+                "text": "小鹿获得奉献后，站位目标从单纯前排抗伤转为让功能队友先阵亡、小鹿随后倒下、李信继续输出。其他英雄放在李信前方，李信和小鹿靠后；太乙与明世隐采用时要确认最近目标及连线指向李信。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMes6CEqS:p1",
+                    "start": 105.82,
+                    "end": 187.79
+                  },
+                  {
+                    "source": "BV1DVh76LEV6:p1",
+                    "start": 1018.43,
+                    "end": 1049.55
+                  },
+                  {
+                    "source": "BV11oHH6FE4V:p1",
+                    "start": 132.51,
+                    "end": 145.69
+                  },
+                  {
+                    "source": "BV1nLY96BEZU:p1",
+                    "start": 285.15,
+                    "end": 369.47,
+                    "frame": "frames/340-41.jpg"
+                  },
+                  {
+                    "source": "BV1U8aa69EEx:p1",
+                    "start": 49.34,
+                    "end": 75.66,
+                    "frame": "frames/49-34.jpg"
+                  },
+                  {
+                    "source": "BV1sCY76kE5g:p1",
+                    "start": 124.86,
+                    "end": 149.92,
+                    "frame": "frames/124-86.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equip-sanfen-support",
+                "section": "推荐装备",
+                "text": "面对三分控制阵容，能快速击败刘禅、马超等启动辅助时，优先输出与自然法杖，减少诸葛亮连续施法；等级不足、无法快速清掉这些单位时，用机械头或炽热支配者改善被控后的行动。面对猴子单次高爆发可考虑磐石之心。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 56.96,
+                    "end": 81.52
+                  },
+                  {
+                    "source": "BV1LfaC6eEwi:p1",
+                    "start": 166.16,
+                    "end": 195.16
+                  }
+                ]
+              },
+              {
+                "id": "counter-barrier",
+                "section": "克制手段",
+                "text": "克制李信的一种机制是二级等离子屏障限制单次承伤，配杨玉环为屏障回复，拖住李信的高额伤害；队友连续施法再推动诸葛亮回蓝与临时等级成长。三级屏障强化、侧边复生和太乙能进一步增加消耗时间。这类威胁需要班叔机关、杨玉环回复和诸葛亮成长配套同时到位。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1wWep6RE9c:p1",
+                    "start": 0.27,
+                    "end": 53.09,
+                    "frame": "frames/35-0.jpg"
+                  },
+                  {
+                    "source": "BV1wWep6RE9c:p1",
+                    "start": 82.63,
+                    "end": 141.33,
+                    "frame": "frames/115-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "equipment-ailin-pending",
+                "section": "条件与待裁决",
+                "text": "针对艾琳，反伤重甲施压与极寒风暴加凝渊追击是两种思路。无吸血艾琳已有反甲方案；另一种讲解主张放弃反甲、用冻结创造接近机会。双方没有给出同等等级、吸血和解控配置下的完整比较，暂不把某一套写成所有艾琳局的确定装备。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14daY6dEyP:p1",
+                    "start": 109.67,
+                    "end": 151.1,
+                    "frame": "frames/125-0.jpg"
+                  },
+                  {
+                    "source": "BV1vBpE6zEru:p1",
+                    "start": 649.6,
+                    "end": 781.78,
+                    "frame": "frames/675-0.jpg"
+                  },
+                  {
+                    "source": "BV1vBpE6zEru:p1",
+                    "start": 1678.73,
+                    "end": 1749.71,
+                    "frame": "frames/1680-0.jpg"
+                  }
+                ]
+              },
+              {
+                "id": "auction-three-growth",
+                "section": "第三轮拍卖",
+                "text": "第三轮按后期缺口考虑众星拱月、扶摇直上等强化或升阶手段，也可补等级与经济。以能够实际改善李信战力或完成六阶为判断依据。",
+                "kind": "general_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1hMYT6dEY5:p1",
+                    "start": 221.04,
+                    "end": 255.59
+                  }
+                ]
+              }
+            ],
+            "meta": {
+              "required_factions": [
+                "faction:heluo"
+              ],
+              "players": [
+                "player:11"
+              ],
+              "core_heroes": [
+                "card:5071"
+              ],
+              "compositions": {
+                "early": [
+                  {
+                    "hero": "card:1941",
+                    "necessity": "optional",
+                    "role": "前期前排，配小鹿保血",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1731",
+                    "necessity": "optional",
+                    "role": "前期战力和河洛古币成长",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1971",
+                    "necessity": "optional",
+                    "role": "补升级经验",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1681",
+                    "necessity": "optional",
+                    "role": "胜场经济；强势对手前改用即时战力",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1821",
+                    "necessity": "optional",
+                    "role": "补开局战力",
+                    "replaces": "card:1681",
+                    "replacement_note": "面对同行瑶妹或强势香香时考虑"
+                  },
+                  {
+                    "hero": "card:5031",
+                    "necessity": "optional",
+                    "role": "缺少开局牌时的打工替代",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ],
+                "middle": [
+                  {
+                    "hero": "card:5071",
+                    "necessity": "required",
+                    "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1751",
+                    "necessity": "required",
+                    "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1861",
+                    "necessity": "required",
+                    "role": "为李信补复生，觉醒后提供完美复生",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1931",
+                    "necessity": "optional",
+                    "role": "复生和牺牲临时等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:5011",
+                    "necessity": "optional",
+                    "role": "固定临时等级收益足够时保留",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1541",
+                    "necessity": "optional",
+                    "role": "升五本后的战力替补或缺李信转向",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ],
+                "late": [
+                  {
+                    "hero": "card:5071",
+                    "necessity": "required",
+                    "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1751",
+                    "necessity": "required",
+                    "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1861",
+                    "necessity": "required",
+                    "role": "为李信补复生，觉醒后提供完美复生",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ]
+              },
+              "ban_conditions": [
+                {
+                  "faction": "faction:heluo",
+                  "status": "unplayable",
+                  "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让附近功能英雄获得牺牲，并降低击败者等级）。 原条件说明：核心李信和钟馗无法获取。",
+                  "derived_dependency": true,
+                  "explicit_required": true,
+                  "explicit_condition": {
+                    "faction": "faction:heluo",
+                    "status": "unplayable",
+                    "reason": "核心李信和钟馗无法获取。"
+                  }
+                }
+              ],
+              "matchups": [
+                {
+                  "target": "card:5211",
+                  "condition": "高等级李信成为最高等级目标，海月有复生配套。",
+                  "text": "海月牺牲真实伤害及水月幻境构成威胁，磐石之心防爆发，仍需检查控制。"
+                },
+                {
+                  "target": "card:1901",
+                  "condition": "班叔屏障、杨玉环回复和连续施法配套。",
+                  "text": "屏障拖延高额单次伤害，诸葛亮持续成长；可考虑静谧之铃限制回蓝。"
+                },
+                {
+                  "target": "card:1101",
+                  "condition": "雷霆战机远程单核。",
+                  "text": "按机械头、吸血装备调整自然法杖、反甲、凝渊和输出，普通太乙让暗信追击。"
+                },
+                {
+                  "target": "card:1751",
+                  "condition": "对方能开局勾走李信。",
+                  "text": "调整李信与外围功能英雄的位置，同时保持成长及复生目标。"
+                }
+              ],
+              "operation_routes": [
+                {
+                  "id": "ming-growth",
+                  "name": "明世隐固定等级成长",
+                  "condition": "较早取得多张明世隐或较高固定等级，外部压力允许继续培养。",
+                  "advantages": "把李信战中临时等级保留到后续回合。",
+                  "risks": "低固定量会拖战力并占人口和钟馗覆盖位置；复生挂件可能分走小鹿等级。",
+                  "transition": "固定收益跟不上中期压力时退出明世隐，改用等级牌与登场成长；终局检查奉献分配。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "growth-ming",
+                      "middle-ming-choice"
+                    ],
+                    "late": [
+                      "late-revive-dilution",
+                      "order-six-before-double"
+                    ]
+                  },
+                  "claim_refs": [
+                    "growth-ming",
+                    "middle-ming-choice",
+                    "composition-ming",
+                    "late-revive-dilution"
+                  ],
+                  "variant_ids": [
+                    "ming-sacrifice"
+                  ]
+                },
+                {
+                  "id": "four-core",
+                  "name": "四本找齐核心后存钱升本",
+                  "condition": "中期仍能保血，愿意先组成明世隐固定等级骨架。",
+                  "advantages": "先补李信及牺牲成长成员，再把找牌开支转向升本。",
+                  "risks": "找不到核心会消耗预算；不能把某次暴君归来战绩当作稳定天赋概率。",
+                  "transition": "第8回合仍无李信、已有李白配套时，考虑李白加上官婉儿；掉血加快时调整找牌投入。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "route-four-core",
+                      "middle-item-holder"
+                    ],
+                    "late": [
+                      "order-six-before-double",
+                      "taiyi-by-target"
+                    ]
+                  },
+                  "claim_refs": [
+                    "route-four-core",
+                    "middle-item-holder",
+                    "taiyi-by-target"
+                  ],
+                  "variant_ids": [
+                    "ming-sacrifice"
+                  ]
+                },
+                {
+                  "id": "four-hold",
+                  "name": "四本培养至第11回合",
+                  "condition": "选择持续培养明世隐，暂不急需五阶战力。",
+                  "advantages": "先投入四本的李信和明世隐成长，再安排共鸣前升六本。",
+                  "risks": "延迟五阶战力；对手成型快、当前阵容无法保血时不能照搬停留回合。",
+                  "transition": "中期压力大时改用快速升五本路线；第11回合后为升本留钱。",
+                  "phases": {
+                    "early": [
+                      "opening-four",
+                      "opening-wins"
+                    ],
+                    "middle": [
+                      "middle-hold-four",
+                      "growth-ming"
+                    ],
+                    "late": [
+                      "order-six-before-double",
+                      "late-revive-dilution"
+                    ]
+                  },
+                  "claim_refs": [
+                    "middle-hold-four",
+                    "growth-ming",
+                    "late-revive-dilution"
+                  ],
+                  "variant_ids": [
+                    "ming-sacrifice"
+                  ]
+                }
+              ],
+              "late_variants": [
+                {
+                  "id": "ming-sacrifice",
+                  "name": "明世隐与低等级牺牲配套",
+                  "condition": "明世隐固定量较高，能够继续成长；以集中小鹿奉献等级为目标。",
+                  "members": [
+                    {
+                      "hero": "card:5071",
+                      "necessity": "required",
+                      "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1751",
+                      "necessity": "required",
+                      "role": "让附近功能英雄获得牺牲，并降低击败者等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1861",
+                      "necessity": "required",
+                      "role": "为李信补复生，觉醒后提供完美复生",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5011",
+                      "necessity": "required",
+                      "role": "最近目标指向李信，固定部分临时等级",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1441",
+                      "necessity": "optional",
+                      "role": "提供古币，需钟馗赋予牺牲",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5091",
+                      "necessity": "optional",
+                      "role": "牺牲古币收益",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1931",
+                      "necessity": "optional",
+                      "role": "增加牺牲触发，终局按死亡顺序决定去留",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1541",
+                      "necessity": "optional",
+                      "role": "战力与复生牺牲，终局避免分走关键奉献收益",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ],
+                  "core_heroes": [
+                    "card:5071",
+                    "card:5011"
+                  ],
+                  "required_factions": [
+                    "faction:heluo"
+                  ],
+                  "ban_conditions": [
+                    {
+                      "faction": "faction:heluo",
+                      "status": "unplayable",
+                      "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让附近功能英雄获得牺牲，并降低击败者等级）。 原条件说明：李信和钟馗无法获取。",
+                      "derived_dependency": true,
+                      "explicit_required": true,
+                      "explicit_condition": {
+                        "faction": "faction:heluo",
+                        "status": "unplayable",
+                        "reason": "李信和钟馗无法获取。"
+                      }
+                    }
+                  ],
+                  "ban_combinations": [],
+                  "claim_refs": [
+                    "composition-ming",
+                    "growth-ming",
+                    "late-revive-dilution",
+                    "middle-ming-choice",
+                    "ban-core"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "conflicts": [],
+      "related": [
+        {
+          "id": "zhaojun-high-tier-dahe",
+          "type": "lineup",
+          "title": "昭君高阶大河（龙蛇）",
+          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+        },
+        {
+          "id": "angela-liubang-totems",
+          "type": "lineup",
+          "title": "安琪拉养刘邦（图腾成长）",
+          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+        },
+        {
+          "id": "player-angela",
+          "type": "player",
+          "title": "安琪拉－飞行器与模块选择",
+          "path": "knowledge/players/安琪拉－飞行器与模块选择.md"
+        },
+        {
+          "id": "changxiaoe-general-play",
+          "type": "lineup",
+          "title": "常小娥通用打法",
+          "path": "knowledge/lineups/常小娥通用打法.md"
+        }
+      ],
+      "revision": "841045c42083a76c259d"
     }
   ]
 }
