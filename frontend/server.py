@@ -44,6 +44,11 @@ class Handler(BaseHTTPRequestHandler):
                 workspace.recover(self.server.root)
                 if path == '/api/notes':
                     return self.response(200, workspace.notes(self.server.root))
+                if path.startswith('/api/notes/') and path.endswith('/reading'):
+                    from lineup_layout import reading_document
+                    parts = path.split('/')
+                    note = next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None) if len(parts) == 5 else None
+                    return self.response(200, reading_document(note)) if note else self.response(404, {'error': '笔记不存在'})
                 if path.startswith('/api/notes/'):
                     note = next((n for n in workspace.notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
                     return self.response(200 if note else 404, note or {'error': '笔记不存在'})
@@ -77,6 +82,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header('Content-Type', mimetypes.guess_type(target.name)[0] or 'application/octet-stream')
             self.send_header('Content-Length', str(len(body)))
             self.send_header('X-Content-Type-Options', 'nosniff')
+            if target.suffix == '.html':
+                self.send_header('Cache-Control', 'no-cache')
             self.end_headers()
             self.wfile.write(body)
         except workspace.Busy as exc:

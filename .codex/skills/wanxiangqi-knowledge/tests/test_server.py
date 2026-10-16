@@ -41,6 +41,25 @@ class ServerTests(unittest.TestCase):
             self.assertEqual(source['knowledge_status'], 'unprocessed')
             self.assertEqual(source['notes'], '提取后期策略')
 
+    def test_reading_endpoint_uses_current_revision_and_preserves_legacy_notes(self):
+        wxq.commit_notes(self.root, [{'id':'yaomei-sacrifice-lixin','type':'lineup','title':'李信','claims':[],'entities':[]},
+                                     {'id':'legacy','type':'other','title':'旧笔记','claims':[],'entities':[]}])
+        with urlopen(self.url + 'notes/yaomei-sacrifice-lixin/reading') as response:
+            reading = json.load(response)
+        note = next(n for n in workspace.notes(self.root) if n['id']=='yaomei-sacrifice-lixin')
+        self.assertEqual(reading['revision'],note['revision'])
+        self.assertEqual(len(reading['sections']),10)
+        workspace.edit(self.root,note['id'],{'revision':note['revision'],'sections':{'新修订':'新的人工建议'}})
+        with urlopen(self.url + 'notes/yaomei-sacrifice-lixin/reading') as response:
+            updated=json.load(response)
+        self.assertNotEqual(updated['revision'],reading['revision'])
+        self.assertIn('新的人工建议',''.join(s['markdown'] for s in updated['sections']))
+        with urlopen(self.url + 'notes/legacy/reading') as response:
+            self.assertIsNone(json.load(response)['profile'])
+        with self.assertRaises(HTTPError) as error:
+            urlopen(self.url + 'notes/missing/reading')
+        self.assertEqual(error.exception.code,404)
+
     def test_cards_summary_detail_and_unknown_id(self):
         from reference_store import export_cards
         wxq.atomic_json(self.root / 'entities/equipment.json', [{

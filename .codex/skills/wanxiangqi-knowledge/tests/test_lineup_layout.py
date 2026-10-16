@@ -8,6 +8,17 @@ import wxq
 
 
 class LineupLayoutTests(unittest.TestCase):
+    def test_shared_reading_matches_markdown_and_migrates_old_sections(self):
+        from lineup_layout import reading_document, render
+        note = {'id': 'yaomei-sacrifice-lixin', 'type': 'lineup', 'title': '李信', 'revision':'r1', 'meta':{}, 'claims':[]}
+        result = reading_document(note)
+        self.assertEqual(result['revision'], 'r1')
+        self.assertEqual(len(result['sections']), 10)
+        rebuilt = '# 李信\n\n' + ''.join('## ' + s['title'] + '\n\n' + s['markdown'] for s in result['sections'])
+        self.assertEqual(rebuilt, render(note))
+        self.assertEqual(result['section_aliases']['推荐装备'], '装备与站位')
+        self.assertIsNone(reading_document({'id':'other','revision':'r2'})['profile'])
+
     def test_lixin_places_each_claim_once_and_keeps_unmapped_claims(self):
         note = {'id': 'yaomei-sacrifice-lixin', 'type': 'lineup', 'title': '瑶妹牺牲流李信',
                 'meta': {}, 'claims': [

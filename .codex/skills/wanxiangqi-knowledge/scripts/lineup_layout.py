@@ -1,5 +1,6 @@
 """Reader layout profiles. These do not change the knowledge data contract."""
 from pathlib import Path
+import re
 
 PROFILE_ID = 'yaomei-sacrifice-lixin'
 # Each claim has exactly one primary location. Route references remain data,
@@ -40,7 +41,7 @@ ROUTE_DETAILS = {
 }
 
 
-def render(note):
+def _render_markdown(note):
     meta = note.get('meta', {})
     names = note.get('entity_names', {})
     label = lambda ref: names.get(ref, ref.removeprefix('pending:'))
@@ -113,3 +114,35 @@ def render(note):
     if not note.get('related'):
         lines.append('暂无')
     return '\n'.join(lines) + '\n'
+
+
+def reading_document(note):
+    """Read-only presentation projection shared with the exported Markdown."""
+    result = {'note_id': note['id'], 'revision': note.get('revision', ''),
+              'profile': None, 'sections': [], 'section_aliases': {}}
+    if note['id'] != PROFILE_ID or note.get('type') != 'lineup':
+        return result
+    markdown = _render_markdown(note)
+    headings = list(re.finditer(r'^## (.+)\n', markdown, re.M))
+    for i, match in enumerate(headings):
+        end = headings[i + 1].start() if i + 1 < len(headings) else len(markdown)
+        result['sections'].append({'id': f'chapter-{i+1}', 'title': match.group(1),
+                                   'markdown': markdown[match.end():end].lstrip('\n')})
+    aliases = result['section_aliases']
+    by_id = {c.get('id'): c for c in note.get('claims', [])}
+    for title, groups in GROUPS:
+        for _, ids in groups:
+            for cid in ids:
+                if cid in by_id:
+                    aliases.setdefault(by_id[cid]['section'], title)
+    aliases.update({'阵容组成':'阵容概览与成员清单','运营节奏':'运营路线选择',
+                    '推荐后期组合':'阵容概览与成员清单','推荐装备':'装备与站位',
+                    '站位技巧':'装备与站位','克制手段':'对局威胁与应对'})
+    result['profile'] = PROFILE_ID
+    return result
+
+
+def render(note):
+    document = reading_document(note)
+    return '# ' + note['title'] + '\n\n' + ''.join(
+        '## ' + section['title'] + '\n\n' + section['markdown'] for section in document['sections'])
