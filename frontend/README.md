@@ -10,6 +10,42 @@ powershell -NoProfile -File frontend/start.ps1
 
 开发：先运行 `..\.wxq-runtime\Scripts\python.exe server.py`，另开终端在此目录运行 `npm run dev`。生产使用同源页面，开发端口 5173 通过 Vite 代理 API。
 
-笔记编辑会同步索引、中文 Markdown 和阵容 JSON。人工修订保留，技能导入冲突显示待核对。meta 缺失是待确认，禁用条件缺失不会被当作可玩。来源登记不启动下载或 ASR，继续通过技能整理。
+笔记编辑会同步索引、中文 Markdown 和阵容 JSON。人工修订保留，技能导入冲突显示待核对。meta 缺失是待确认，禁用条件缺失不会被当作可玩。
+
+“爬取”支持B站多关键词搜索、日期（北京时间，含起止日）、播放量及秒数时长筛选。默认自动处理；切换预览模式后勾选结果再处理。搜索条件可保存，默认每个关键词扫描100条、每批处理50个新视频；搜索覆盖范围以B站实际返回与扫描上限为准。重复视频合并关键词与批次，投稿全部分P分别导出文字稿。
+
+“UP主监听”配置名称、空间URL、起始日期与可选关键词。UID去重；可停用、编辑、单个或全部立即检查。默认每天北京时间09:00检查，可修改；本地服务需运行，关闭网页不影响，服务重启后补查，任务忙时顺序执行。失败检查不推进成功时间；界面可重试失败任务或恢复停止的任务。
+
+任务队列保存在 `raw/crawler/queue.sqlite3`。搜索扫描使用独立的2路线程池，不等待下载或转写；视频在独立工作进程并行处理，默认2个，可在“同时处理视频数”设置为1–4个。不同批次公平派发，同一BV仍只处理一次；降低上限不打断已开始的视频。搜索接口请求全局限速。服务重启恢复中断任务，CLI和网页共享BV处理锁；多个视频同时导出文字稿时短暂等待共享写锁。
+
+每个任务旁有“删除”按钮：任务从列表移除并停止继续扫描和派发；不再被其他任务引用的运行视频会取消，恢复素材保留，已采集内容和文字稿不删除。共用视频继续为其他任务处理。删除采用内部墓碑保留采集审计信息，已删除任务不能被迟到的后台结果或重试复活。
+
+转写成功并确认文字稿有效后清理临时音视频，保留原始ASR、修正版、元数据、纠错记录和关键帧；失败保留恢复素材。网页自动处理止于文字稿，不调用知识沉淀finish，也不覆盖人工标题、备注和文字稿。手动添加链接仅登记；通过“爬取”启动自动处理，核对与知识整理仍使用技能。
+
+“外部内容”支持筛选、跨页选择、选择全部筛选结果、文字稿预览和“监听此UP主”。复制路径仅复制实际存在的文字稿绝对路径，每个文件一行，缺失文件计数跳过。修改筛选条件会清空选择；剪贴板失败时展示路径供手动复制。
+
+匿名访问遇到B站登录或风控错误时，在“B站连接设置”填写本机Netscape格式cookies文件路径后重试；文件内容不进入数据库或API。请勿同时运行多个不同版本的服务；默认端口占用时先关闭旧版工具。
+
+API：`GET/PUT /api/crawler/settings`；`GET/PUT/POST /api/crawler/searches`（读取/保存条件/启动）；`GET /api/crawler/jobs[/ID]`；`POST /api/crawler/jobs/ID/start|stop|resume|retry`（start/retry可带bvids）；`GET/POST /api/crawler/creators`；`POST /api/crawler/creators[/UID]/check`；`GET /api/sources/ID/transcript`；`POST /api/sources/paths`（ids）；`POST /api/sources/ID/creator`。服务限本机同源访问；文字稿只按登记ID读取raw目录内文件。
+
+删除接口：`DELETE /api/crawler/jobs/ID`（JSON请求体 `{}`），幂等；删除后详情返回404。`PUT /api/crawler/settings` 接受整数 `parallelism: 1..4`，旧配置自动默认2，无需迁移用户输入。
 
 验证：`npm test`、`npm run build`；项目根目录运行 `.wxq-runtime\Scripts\python.exe -m unittest discover -s .codex/skills/wanxiangqi-knowledge/tests` 与 `wxq.py validate`。
+
+全局任务栏位于主导航下方，在所有页面展示正在下载、正在转录、整理中、排队和已停止数量，支持收起及显示排队视频，每2秒更新。视频支持“停止下载”“停止转录”“继续处理”和“删除视频任务”；不在对应阶段的停止按钮置灰。停止立即中断工作进程树并保留文件及ASR检查点；恢复按检查点继续，最近尚未落盘的少量分段会重算。共用视频操作影响所有关联批次。
+
+采集任务改为纵向列表，删除任务始终在每行操作区可见；选中详情另有“删除当前任务”。批次阶段停止同时停止后续派发；继续时先恢复批次派发，再继续对应已停止视频。视频删除只取消处理，保留来源和已生成文字稿。
+
+全局接口：`GET /api/crawler/activity`。视频操作：`POST /api/crawler/tasks/BVID/stop-download|stop-transcribe|resume|delete`；批次阶段停止：`POST /api/crawler/jobs/ID/stop-download|stop-transcribe`，请求体 `{}`。停止与派发递增运行编号，旧进度和结束回调无法覆盖恢复后的运行。FFmpeg使用临时文件，成功后原子替换，避免恢复复用中断输出。
+
+## 卡牌图片、实体 chip 与阵容概览
+
+在项目根目录运行 `.wxq-runtime/Scripts/python.exe .codex/skills/wanxiangqi-knowledge/scripts/wxq.py sync-card-images`，按实体已有官网URL增量缓存缩略图与卡面到 `entities/assets/`。`sync-entities` 也同步图片。失败保留旧图，可重复命令重试；无需在网页运行时访问官网图片。
+
+卡牌接口返回 `thumb_url`、`image_url`、`image_status`。`GET /api/cards/实体ID/images/thumb` 或 `/images/image` 仅返回清单内登记文件。卡牌库、文字chip和阵容概览共用本地图片与详情缓存。
+
+笔记正文正式名称按最长匹配渲染chip，别称不命中（如“瑶妹”保持原文），代码与链接不改写。结构化成员按实体ID显示；同名普通/觉醒不默认选择，先选择具体卡牌。悬浮/键盘聚焦打开，点击固定、Esc/关闭按钮关闭，手机点击操作。卡牌候选仅影响当前浮层，不写回笔记。
+
+“编辑笔记→阵容概览与站位”配置方案、四行七列站位、装备、备选、阶段说明与结论引用、天赋、效果牌及棋手能力。先点击格子，再选英雄；在另一格选择已有英雄即移动，装备保留。成员名单仍来自阶段组成与后期组合，未知站位不自动安排。
+
+`meta.overview` 为可选版本1结构，包含 `presets`；每个方案通过 `variant_id` 引用现有后期组合，存展示补充和实体/结论ID。旧笔记使用只读默认投影；保存后才写入JSON与索引，受修订号和人工元数据保护。路线及组合的选择按笔记ID在两个阅读页面间保留。本轮不改变独立HTML导出。

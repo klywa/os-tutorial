@@ -359,6 +359,7 @@ def main():
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('init')
     sub.add_parser('sync-entities')
+    sub.add_parser('sync-card-images')
     sub.add_parser('validate')
     sub.add_parser('migrate')
     p = sub.add_parser('export-transcripts')
@@ -392,6 +393,9 @@ def main():
     elif args.command == 'sync-entities':
         from official import sync_official
         result = sync_official(args.root)
+    elif args.command == 'sync-card-images':
+        from card_images import sync_images
+        result = sync_images(args.root)
     elif args.command == 'validate':
         result = validate_store(args.root)
     elif args.command == 'migrate':

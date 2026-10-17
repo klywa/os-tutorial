@@ -192,7 +192,10 @@ def stamp(seconds):
 
 def render_transcript(metadata, asr, corrections):
     segments = asr.get('segments', [])
-    if not segments: raise ValueError('Missing corrected ASR segments')
+    if not segments:
+        if 'segments' not in asr or not asr.get('model'):
+            raise ValueError('Missing corrected ASR segments')
+        return f"# {metadata['title']}\n\n来源：{metadata['url']}\n\n未检测到语音。\n"
     lines = [f"# {metadata['title']}", '', f"来源：{metadata['url']}", '',
              f"分 P：{metadata.get('part', 1)}", '',
              '全文按纠正后的转写顺序保留讲解和实战；待核实词不替换为猜测，转写间隔不补写内容。', '']
@@ -215,7 +218,7 @@ def render_transcript(metadata, asr, corrections):
 def export_transcripts(root, ids=None):
     from workspace import store_lock, recover
     root = Path(root); results = []; errors = []
-    with store_lock(root):
+    with store_lock(root, wait=True):
         recover(root)
         manifest = wxq.read_json(root / 'raw/index.json', {'schema_version': 1, 'sources': {}})
         folders = [wxq.source_dir(root, sid) for sid in ids] if ids else [

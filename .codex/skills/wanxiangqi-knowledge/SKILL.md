@@ -45,7 +45,13 @@ powershell -NoProfile -File .codex/skills/wanxiangqi-knowledge/scripts/setup.ps1
 
 网页可编辑正文和 meta。修改正文的章节列在 `manual_sections`，人工修改 meta 标记 `manual_meta=true`；人工结论 `origin=manual` 且不附视频证据，原结论与证据保留在 `history`。提交前必须读取人工修订：相同结论不产生重复；不同结论进入 `conflicts` 待核对，不自动覆盖人工内容或把旧来源当作修改后的依据。需要解决冲突时，核对新证据与人工意图，通过统一保存入口维护知识，再显式移除已解决冲突。不要直接修改生成的 Markdown/JSON，也不要通过重放旧导入绕过保护。
 
-前端来源清单位于 `knowledge/source-registry.json`，技能默认登记与网页手动添加共用入口，登记仅代表待整理。处理时结合清单链接和备注，沿用既有 prepare/commit/finish 流程；关联笔记从证据及历史推导。每次成功或失败结束时，用 `workspace.sources` 核对本次各分 P 的阶段、错误、沉淀状态和关联笔记，不手工填写成功状态。`complete`、核对记录有效、已经提交关联知识三者齐备才显示已沉淀。网页不负责下载或 ASR。
+前端来源清单位于 `knowledge/source-registry.json`，技能默认登记与网页手动添加共用入口，登记仅代表待整理。处理时结合清单链接和备注，沿用既有 prepare/commit/finish 流程；关联笔记从证据及历史推导。每次成功或失败结束时，用 `workspace.sources` 核对本次各分 P 的阶段、错误、沉淀状态和关联笔记，不手工填写成功状态。`complete`、核对记录有效、已经提交关联知识三者齐备才显示已沉淀。
+
+网页“爬取”支持B站关键词搜索及UP主每日/手动监听，经SQLite持久化队列调用同一prepare和large-v3转写，自动导出各分P文字稿。手动登记仍只登记，不自动处理。网页采集完成只代表文字稿已生成／待核对，不能自动commit或finish；后续仍逐段核对、关联扫描和提交。网页与CLI共用BV处理锁，避免同时写同一来源；自动登记使用 `register_source(..., preserve_annotations=True)` 原子保留人工标题/备注。文字稿存在时复用并保留人工修订，不强制重导出。
+
+搜索扫描独立于下载转写，视频默认并行2个、可配置1–4个，不同批次公平派发。导出文字稿短暂等待共享写锁。删除网页任务会停止其独占处理，共用视频继续，已采集内容/文字稿和恢复素材保留，不等同删除知识来源。墓碑任务不能被后台迟到结果复活。
+
+采集队列与日志位于 `raw/crawler/`，搜索及UP主元数据通过前端sources投影展示，不写入知识结论。网页转写成功、文字稿有效后清理临时音视频，保留ASR/元数据/纠错/关键帧；需要回放音视频时可重新获取。原始ASR未检测到语音时导出明确的无语音文字稿，不能据此生成结论。具体运行与接口见项目 `frontend/README.md`。
 
 网页与 CLI 提交共享操作系统写锁；遇到占用稍后重试。启动时先重放 `pending-save.json` 恢复，再处理 `pending-commit.json`。`frontend/start.ps1` 构建并启动本机网页；默认仅 127.0.0.1。
 

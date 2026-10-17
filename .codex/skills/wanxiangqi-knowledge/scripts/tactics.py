@@ -22,6 +22,8 @@ def faction_references(meta):
 
 def references(meta):
     result = faction_references(meta)
+    from overview import entity_refs
+    result += entity_refs(meta.get('overview', {}))
     for variant in meta.get('late_variants', []):
         result += variant.get('core_heroes', []) + variant.get('required_factions', [])
         result += [b['faction'] for b in variant.get('ban_conditions', [])]
@@ -30,6 +32,14 @@ def references(meta):
     return [r for r in result if r]
 
 def validate(meta, reference, claims=None):
+    if 'overview' in meta:
+        from overview import entity_refs
+        for value in entity_refs(meta['overview']): reference(value)
+        if claims is not None:
+            known = {claim_id(c) for c in claims}
+            for preset in meta['overview'].get('presets', []):
+                for stage in preset.get('stages', {}).values():
+                    if set(stage.get('claim_refs', [])) - known: raise ValueError('概览引用了不存在的结论')
     routes, variants = meta.get('operation_routes', []), meta.get('late_variants', [])
     def records(rows):
         if not isinstance(rows,list): raise ValueError('运营节奏与后期组合须为列表')
@@ -102,6 +112,8 @@ def availability(meta, banned):
     return 'playable' if 'playable' in statuses else 'unknown' if 'unknown' in statuses else 'unplayable'
 
 def remap_claims(meta, old_ids, new_id):
+    from overview import remap
+    remap(meta.get('overview', {}), old_ids, new_id)
     for row in meta.get('operation_routes',[]) + meta.get('late_variants',[]):
         keys = [row]
         if 'phases' in row:

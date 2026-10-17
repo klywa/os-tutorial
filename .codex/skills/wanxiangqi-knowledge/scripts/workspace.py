@@ -139,7 +139,7 @@ def prepare(root, items):
             refs += [m['target'] for m in note['meta']['matchups']]
             from tactics import references, claim_id
             refs += references(note['meta'])
-            if note['meta'].get('late_variants') and 'entities' not in note.get('manual_fields', []):
+            if (note['meta'].get('late_variants') or note['meta'].get('overview')) and 'entities' not in note.get('manual_fields', []):
                 note['entities'] = sorted(set(note.get('entities', [])) | {r for r in refs if r in known_entities})
             for claim in note.get('claims', []):
                 claim.setdefault('id', claim_id(claim))
@@ -305,7 +305,7 @@ def validate_meta(root, meta):
     if not isinstance(meta, dict):
         raise ValueError('阵容信息必须为对象')
     expected = {'required_factions', 'players', 'core_heroes', 'compositions', 'ban_conditions', 'matchups'}
-    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
+    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants', 'overview'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
         raise ValueError('阵容信息缺失必需字段或阶段')
     if not isinstance(meta['ban_conditions'], list) or not isinstance(meta['matchups'], list):
         raise ValueError('适用条件和针对策略须为列表')
@@ -316,6 +316,8 @@ def validate_meta(root, meta):
         if value not in known and not value.startswith('pending:') and value not in {f['id'] for f in FACTIONS}:
             raise ValueError('未知实体，请选择已有实体或以 pending: 标记待确认名称')
     from tactics import validate as validate_tactics
+    from overview import validate as validate_overview
+    validate_overview(meta, wxq.entities(root))
     validate_tactics(meta, reference)
     for field in ['required_factions', 'players', 'core_heroes']:
         if not isinstance(meta.get(field, []), list):
@@ -440,9 +442,9 @@ def canonical_url(value):
     return normalized, 'link-' + hashlib.sha256(normalized.encode()).hexdigest()[:20]
 
 
-def register_source(root, payload, sid=None):
+def register_source(root, payload, sid=None, preserve_annotations=False, wait=False):
     url, canonical_id = canonical_url(payload.get('url', ''))
-    with store_lock(root):
+    with store_lock(root, wait=wait):
         path = Path(root) / 'knowledge/source-registry.json'
         rows = wxq.read_json(path, [])
         imported = next((r for r in sources(root) if canonical_url(r['url'])[0] == url), None)
@@ -467,7 +469,10 @@ def register_source(root, payload, sid=None):
         for key in ['title', 'notes']:
             if not isinstance(payload.get(key, ''), str):
                 raise ValueError('标题和备注须为文字')
-        row.update({'url': url, 'title': payload.get('title', ''), 'notes': payload.get('notes', ''), 'updated_at': wxq.now()})
+        row.update({'url': url,
+                    'title': (row.get('title') or (imported or {}).get('title') or payload.get('title', '')) if preserve_annotations else payload.get('title', ''),
+                    'notes': (row.get('notes') or (imported or {}).get('notes') or payload.get('notes', '')) if preserve_annotations else payload.get('notes', ''),
+                    'updated_at': wxq.now()})
         wxq.atomic_json(path, rows)
         return row
 

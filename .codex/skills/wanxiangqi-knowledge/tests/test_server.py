@@ -41,6 +41,99 @@ class ServerTests(unittest.TestCase):
             self.assertEqual(source['knowledge_status'], 'unprocessed')
             self.assertEqual(source['notes'], '提取后期策略')
 
+    def test_crawler_search_preview_stop_resume_and_creators(self):
+        def send(path,payload,method='POST'):
+            request=Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)
+            with urlopen(request) as response:
+                return json.load(response)
+        job=send('crawler/searches',{'keywords':['李信'],'mode':'preview','min_views':10})
+        self.assertEqual(job['config']['mode'],'preview')
+        self.server.crawler.store.discover(job['id'],{'bvid':'BV1234567890'},'李信',False)
+        result=send('crawler/jobs/'+job['id']+'/start',{'bvids':['BV1234567890']})
+        self.assertEqual(result['counts']['queued'],1)
+        self.assertEqual(send('crawler/jobs/'+job['id']+'/stop',{})['state'],'stopped')
+        self.assertEqual(send('crawler/jobs/'+job['id']+'/resume',{})['state'],'pending')
+        creator=send('crawler/creators',{'name':'UP主','url':'https://space.bilibili.com/123','date_from':'2026-10-01'})
+        self.assertEqual(creator['uid'],'123')
+        one=send('crawler/creators/123/check',{})
+        two=send('crawler/creators/123/check',{})
+        self.assertEqual(one['id'],two['id'])
+        with urlopen(self.url+'crawler/settings') as response:
+            self.assertEqual(json.load(response)['search']['keywords'],['李信'])
+
+    def test_transcript_api_missing_files_and_escape_are_rejected(self):
+        wxq.atomic_text(self.root/'raw/valid.md','完整文字稿')
+        wxq.atomic_json(self.root/'raw/index.json',{'sources':{'good':{'path':'raw/valid.md'},'escape':{'path':'../secret.txt'}}})
+        with urlopen(self.url+'sources/good/transcript') as response:
+            self.assertEqual(json.load(response)['text'],'完整文字稿')
+        for sid in ['missing','escape']:
+            with self.assertRaises(HTTPError) as error:
+                urlopen(self.url+'sources/'+sid+'/transcript')
+            self.assertEqual(error.exception.code,404)
+        request=Request(self.url+'sources/paths',json.dumps({'ids':['good','good','missing']}).encode(),{'Content-Type':'application/json'})
+        with urlopen(request) as response:
+            result=json.load(response)
+        self.assertEqual(len(result['paths']),1)
+        self.assertEqual(result['skipped'],1)
+
+    def test_delete_crawler_job_preserves_content_and_validates_parallelism(self):
+        job=self.server.crawler.store.new_job({'keywords':['delete']})
+        self.server.crawler.store.discover(job['id'],{'bvid':'BV1234567890'},'delete',True)
+        path='crawler/jobs/'+job['id']
+        with urlopen(Request(self.url+path,b'{}',{'Content-Type':'application/json'},method='DELETE')) as response:
+            self.assertTrue(json.load(response)['deleted'])
+        with self.assertRaises(HTTPError) as error:
+            urlopen(self.url+path)
+        self.assertEqual(error.exception.code,404)
+        with urlopen(self.url+'crawler/jobs') as response:
+            self.assertNotIn(job['id'],[j['id'] for j in json.load(response)])
+        self.assertIn('BV1234567890',self.server.crawler.store.projections())
+        with urlopen(Request(self.url+'crawler/settings',b'{"parallelism":3}',{'Content-Type':'application/json'},method='PUT')) as response:
+            self.assertEqual(json.load(response)['parallelism'],3)
+        with self.assertRaises(HTTPError) as error:
+            urlopen(Request(self.url+'crawler/settings',b'{"parallelism":0}',{'Content-Type':'application/json'},method='PUT'))
+        self.assertEqual(error.exception.code,400)
+
+    def test_card_image_route_reads_only_registered_assets(self):
+        from card_images import sync_images
+        from reference_store import export_cards
+        from unittest.mock import patch
+        wxq.atomic_json(self.root/'entities/equipment.json', [{'id':'card:10','name':'装备','category':'equipment','description':'测试','properties':{'thumb':'https://game.gtimg.cn/a.png'},'sources':[]}])
+        export_cards(self.root)
+        with patch('card_images.fetch_image',return_value=b'\x89PNG\r\n\x1a\nfixture'):
+            sync_images(self.root)
+        with urlopen(self.url+'cards') as response:
+            card=json.load(response)[0]
+        self.assertEqual(card['image_status'],'ready')
+        with urlopen(self.url.removesuffix('api/')+card['thumb_url'].lstrip('/')) as response:
+            self.assertEqual(response.headers['Content-Type'],'image/png')
+            self.assertTrue(response.read().startswith(b'\x89PNG'))
+        with self.assertRaises(HTTPError) as error:
+            urlopen(self.url+'cards/card%3A10/images/../../secrets')
+        self.assertEqual(error.exception.code,404)
+
+    def test_global_activity_and_phase_stop_routes(self):
+        store = self.server.crawler.store
+        job = store.new_job({'keywords': ['control']})
+        store.discover(job['id'], {'bvid': 'BV1234567890', 'title': 'control'}, '', True)
+        store.claim()
+        store.finish_task('BV1234567890', 'running', progress={'phase': 'downloading', 'downloaded_bytes': 12})
+        with urlopen(self.url+'crawler/activity') as response:
+            self.assertEqual(json.load(response)[0]['progress']['downloaded_bytes'], 12)
+        def post(path):
+            with urlopen(Request(self.url+path, b'{}', {'Content-Type':'application/json'}, method='POST')) as response:
+                return json.load(response)
+        self.assertEqual(post('crawler/tasks/BV1234567890/stop-download')['state'], 'paused')
+        self.assertEqual(post('crawler/tasks/BV1234567890/resume')['state'], 'queued')
+        store.claim()
+        store.finish_task('BV1234567890', 'running', progress={'phase': 'transcribing'})
+        result = post('crawler/jobs/'+job['id']+'/stop-transcribe')
+        self.assertEqual(result['state'], 'stopped')
+        self.assertEqual(result['items'][0]['state'], 'paused')
+        self.assertEqual(post('crawler/tasks/BV1234567890/delete')['state'], 'cancelled')
+        with urlopen(self.url+'crawler/activity') as response:
+            self.assertEqual(json.load(response), [])
+
     def test_reading_endpoint_uses_current_revision_and_preserves_legacy_notes(self):
         wxq.commit_notes(self.root, [{'id':'yaomei-sacrifice-lixin','type':'lineup','title':'李信','claims':[],'entities':[]},
                                      {'id':'legacy','type':'other','title':'旧笔记','claims':[],'entities':[]}])

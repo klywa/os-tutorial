@@ -6,8 +6,10 @@ import shutil
 import subprocess
 import urllib.request
 import urllib.parse
+from datetime import datetime, timezone, timedelta
 from functools import lru_cache
 from wxq import atomic_json, correct_text, entities, init_store, now, read_json, source_dir
+from processing_lock import locked_video
 
 
 def ffmpeg():
@@ -131,7 +133,7 @@ def validate_audio_duration(root, sid, decoded_seconds):
             raise RuntimeError(f'Decoded audio duration {decoded_seconds:.2f}s differs from source {expected}s; inspect or repair media before ASR')
 
 
-def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True):
+def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True, progress_callback=None):
     folder = source_dir(root, sid)
     raw_path = folder / 'asr.raw.json'
     if not raw_path.exists():
@@ -174,6 +176,9 @@ def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True):
                                     'avg_logprob': s.avg_logprob, 'no_speech_prob': s.no_speech_prob,
                                     'words': [{'start': w.start + offset, 'end': w.end + offset, 'word': w.word,
                                                'probability': w.probability} for w in (s.words or [])]})
+            if progress_callback:
+                progress_callback({'phase': 'transcribing', 'source': sid, 'processed_seconds': s.end + offset,
+                                   'total_seconds': info.duration + offset})
             if len(raw['segments']) % 10 == 0:
                 atomic_json(folder / 'asr.progress.json', raw)
                 print(f'ASR: {s.end + offset:.1f}s / {info.duration + offset:.1f}s', flush=True)
@@ -214,7 +219,16 @@ def extract_frames(root, sid, video, times):
     return manifest
 
 
-def prepare(root, url, model='large-v3', cookies=None):
+def convert_media(arguments, target):
+    """Publish only complete FFmpeg output; interrupted work is safe to repeat."""
+    target = Path(target)
+    temporary = target.with_name(target.stem + '.processing' + target.suffix)
+    shell([ffmpeg(), '-hide_banner', '-loglevel', 'error', *arguments, '-y', temporary])
+    temporary.replace(target)
+
+
+@locked_video
+def prepare(root, url, model='large-v3', cookies=None, progress_callback=None):
     import yt_dlp
     root = Path(root)
     init_store(root)
@@ -226,13 +240,22 @@ def prepare(root, url, model='large-v3', cookies=None):
             meta = read_json(folder / 'metadata.json', {})
             if requested_part and meta.get('id') != match.group() + ':p' + requested_part:
                 continue
-            if read_json(folder / 'state.json', {}).get('stage') == 'complete':
-                cached.append({'id': meta['id'], 'stage': 'complete', 'cached': True})
+            stage = read_json(folder / 'state.json', {}).get('stage')
+            exported = read_json(root / 'raw/index.json', {}).get('sources', {}).get(meta.get('id'), {})
+            if stage == 'complete' or (stage == 'prepared' and exported and
+                    (root / exported['path']).is_file() and (folder / 'asr.raw.json').is_file() and
+                    (folder / 'asr.corrected.json').is_file()):
+                cached.append({'id': meta['id'], 'stage': stage, 'cached': True})
         # A bare BV URL can contain multiple parts: only skip lookup when cached part_count is known.
         if cached and (requested_part or len(cached) == read_json(source_dir(root, cached[0]['id']) / 'metadata.json', {}).get('part_count')):
             return cached
     options = {'quiet': True, 'socket_timeout': 30, 'retries': 2, 'noplaylist': False,
                'ffmpeg_location': ffmpeg()}
+    if progress_callback:
+        def download_progress(event):
+            progress_callback({'phase': 'downloading', 'downloaded_bytes': event.get('downloaded_bytes'),
+                               'total_bytes': event.get('total_bytes') or event.get('total_bytes_estimate')})
+        options['progress_hooks'] = [download_progress]
     if cookies:
         options['cookiefile'] = cookies
     with yt_dlp.YoutubeDL(options) as downloader:
@@ -255,7 +278,8 @@ def prepare(root, url, model='large-v3', cookies=None):
                 entry_url = 'https://www.bilibili.com/video/' + match.group() + '/?p=' + str(part)
             metadata = {'id': sid, 'bvid': match.group() if match else None, 'part': part,
                         'url': entry_url, 'title': entry.get('title'), 'author': entry.get('uploader'),
-                        'published': entry.get('upload_date'), 'duration': entry.get('duration'),
+                        'published': datetime.fromtimestamp(entry['timestamp'], timezone(timedelta(hours=8))).strftime('%Y%m%d') if entry.get('timestamp') else entry.get('upload_date'),
+                        'duration': entry.get('duration'),
                         'collected_at': now(), 'version': None, 'part_count': len(entries)}
             if not (folder / 'metadata.json').exists():
                 atomic_json(folder / 'metadata.json', metadata)
@@ -265,21 +289,24 @@ def prepare(root, url, model='large-v3', cookies=None):
                     atomic_json(folder / 'state.json', {'stage': 'downloading'})
                     opts = {**options, 'noplaylist': True, 'format': 'bestvideo[height<=720]+bestaudio/best',
                             'merge_output_format': 'mp4',
-                            'outtmpl': str(folder / 'media.%(ext)s'), 'writesubtitles': True,
+                            'outtmpl': str(folder / 'download.%(ext)s'), 'writesubtitles': True,
                             'writeautomaticsub': True, 'subtitleslangs': ['zh.*'], 'subtitlesformat': 'srt/best'}
                     with yt_dlp.YoutubeDL(opts) as downloader:
                         downloaded = downloader.extract_info(entry_url, download=True)
                         actual = Path(downloader.prepare_filename(downloaded))
-                        if video.exists():
-                            actual = video
+                        if (folder / 'download.mp4').exists():
+                            actual = folder / 'download.mp4'
                     if actual != video:
-                        shell([ffmpeg(), '-hide_banner', '-loglevel', 'error', '-i', actual, '-c', 'copy', '-y', video])
+                        convert_media(['-i', actual, '-c', 'copy'], video)
                         actual.unlink()
                 if not audio.exists() and not (folder / 'asr.raw.json').exists():
-                    shell([ffmpeg(), '-hide_banner', '-loglevel', 'error', '-i', video,
-                           '-vn', '-ac', '1', '-ar', '16000', '-y', audio])
+                    convert_media(['-i', video, '-vn', '-ac', '1', '-ar', '16000'], audio)
             atomic_json(folder / 'state.json', {'stage': 'transcribing'})
-            transcript = transcribe(root, sid, audio, model)
+            if progress_callback:
+                progress_callback({'phase': 'transcribing', 'source': sid})
+            transcript = transcribe(root, sid, audio, model, progress_callback=progress_callback)
+            if progress_callback:
+                progress_callback({'phase': 'frames', 'source': sid})
             times = [0]
             for s in transcript['segments']:
                 if any(word in s['text'] for word in ['阵容', '拍卖', '站位', '装备', '看这里', '天赋', '决赛']):
@@ -299,6 +326,7 @@ def urllib_part(url):
     return parse_qs(urlparse(url).query).get('p', [None])[0]
 
 
+@locked_video
 def process_local(root, sid, model='large-v3'):
     """Process browser-downloaded source media, retaining the same provenance contract."""
     folder = source_dir(root, sid)

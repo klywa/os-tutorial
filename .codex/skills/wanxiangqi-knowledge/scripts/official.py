@@ -158,5 +158,7 @@ def sync_official(root):
     atomic_json(root / 'entities/sync-report.json', report)
     from reference_store import export_cards
     report['card_reference'] = export_cards(root)
+    from card_images import sync_images
+    report['images'] = sync_images(root)
     atomic_json(root / 'entities/sync-report.json', report)
     return report
