@@ -232,6 +232,10 @@ def export_transcripts(root, ids=None):
                 text = render_transcript(metadata, wxq.read_json(corrected, {}), wxq.read_json(folder / 'corrections.json', []))
                 path = f'raw/{folder.name}.md'; target = root / path
                 previous = manifest['sources'].get(sid, {})
+                if previous.get('manual_edit'):
+                    if not target.is_file():raise ValueError('人工文字稿文件缺失，保留索引等待恢复')
+                    results.append({'source':sid,'path':previous['path'],'manual_edit':True})
+                    continue
                 if target.exists() and digest(target.read_bytes()) != previous.get('output_sha256') and target.read_text('utf8') != text:
                     difference = ''.join(difflib.unified_diff(target.read_text('utf8').splitlines(True),
                                         text.splitlines(True), fromfile='现有文字稿', tofile='新生成文字稿'))
@@ -249,17 +253,62 @@ def export_transcripts(root, ids=None):
     return report
 
 
+def repair_transcript_index(root, sid):
+    """Upgrade legacy provenance only when the existing output can be verified."""
+    from workspace import store_lock
+    root = Path(root)
+    with store_lock(root, wait=True):
+        path = root / 'raw/index.json'
+        manifest = wxq.read_json(path, {})
+        row = manifest.get('sources', {}).get(sid)
+        if not row:
+            return False
+        folder = wxq.source_dir(root, sid)
+        target = (root / row.get('path', '')).resolve()
+        if not target.is_relative_to((root / 'raw').resolve()) or not target.is_file():
+            return False
+        try:
+            hashes = {'raw_sha256': digest((folder / 'asr.raw.json').read_bytes()),
+                      'corrected_sha256': digest((folder / 'asr.corrected.json').read_bytes()),
+                      'output_sha256': digest(target.read_bytes())}
+            if any(row.get(k) and row[k] != v for k, v in hashes.items()):
+                return False
+            legacy_raw = row.get('transcript_file') == 'asr.raw.json' and row.get('raw_sha256') == hashes['raw_sha256'] and row.get('output_sha256') == hashes['output_sha256']
+            if not legacy_raw:
+                expected = render_transcript(wxq.read_json(folder / 'metadata.json'),
+                    wxq.read_json(folder / 'asr.corrected.json'), wxq.read_json(folder / 'corrections.json', []))
+                if target.read_text('utf8') != expected:
+                    return False
+        except (OSError, ValueError, KeyError, TypeError):
+            return False
+        backup = root / 'raw/reports/index-upgrades' / (folder.name + '.json')
+        if not backup.exists():
+            wxq.atomic_json(backup, row)
+        row.update(hashes)
+        if legacy_raw:
+            row['export_format'] = 'legacy_raw'
+        wxq.atomic_json(path, manifest)
+        return True
+
+
 def transcript_errors(root, sid):
     root = Path(root); row = wxq.read_json(root / 'raw/index.json', {}).get('sources', {}).get(sid)
     if not row: return ['Missing exported transcript: ' + sid]
-    target = (root / row['path']).resolve()
+    target = (root / row.get('path', '')).resolve()
     if not target.is_relative_to((root / 'raw').resolve()) or not target.exists():
         return ['Invalid/missing transcript file: ' + sid]
     folder = wxq.source_dir(root, sid)
     for filename, key in [('asr.raw.json', 'raw_sha256'), ('asr.corrected.json', 'corrected_sha256')]:
+        if row.get('export_format') == 'legacy_raw' and filename == 'asr.corrected.json':
+            continue  # This registered export explicitly uses original ASR, not corrected ASR.
+        if not row.get(key):
+            return ['Transcript index needs verification: ' + sid]
         if not (folder / filename).exists() or digest((folder / filename).read_bytes()) != row[key]:
             return ['Transcript is stale: ' + sid]
+    if not row.get('output_sha256'): return ['Transcript index needs verification: ' + sid]
     if digest(target.read_bytes()) != row['output_sha256']: return ['Transcript was manually edited: ' + sid]
+    if row.get('manual_edit'): return []
+    if row.get('export_format') == 'legacy_raw': return []
     try:
         expected = render_transcript(wxq.read_json(folder / 'metadata.json'),
             wxq.read_json(folder / 'asr.corrected.json'), wxq.read_json(folder / 'corrections.json', []))
@@ -267,3 +316,61 @@ def transcript_errors(root, sid):
     except (ValueError, KeyError, TypeError, OSError):
         return ['Invalid transcript rendering inputs: ' + sid]
     return []
+
+
+def transcript_target(root, sid, manifest):
+    row=manifest.get('sources',{}).get(sid)
+    if not row:raise KeyError('文字稿尚未生成')
+    path=(Path(root)/row.get('path','')).resolve()
+    if not path.is_relative_to((Path(root)/'raw').resolve()) or not path.is_file():raise KeyError('文字稿文件不存在或路径无效')
+    return row,path
+
+
+def recover_transcript_edits(root):
+    """Caller owns the workspace lock. Roll back an interrupted two-file save."""
+    root=Path(root);journal=root/'raw/transcript-edit-pending.json'
+    pending=wxq.read_json(journal)
+    if not pending:return
+    row,path=transcript_target(root,pending['source'],pending['manifest'])
+    if str(path.relative_to(root.resolve()))!=pending['path']:raise ValueError('文字稿恢复路径不一致')
+    wxq.atomic_text(path,pending['text'])
+    wxq.atomic_json(root/'raw/index.json',pending['manifest'])
+    journal.unlink()
+
+
+def transcript_snapshot(root, sid):
+    from workspace import store_lock
+    root=Path(root)
+    with store_lock(root,wait=True):
+        recover_transcript_edits(root)
+        row,path=transcript_target(root,sid,wxq.read_json(root/'raw/index.json',{}))
+        text=path.read_text('utf-8')
+        return {'source':sid,'path':str(path),'text':text,'revision':digest(text.encode('utf-8')),'manual_edit':bool(row.get('manual_edit'))}
+
+
+def save_transcript(root, sid, payload):
+    from workspace import store_lock, Conflict
+    import copy
+    import uuid
+    root=Path(root).resolve()
+    if set(payload)-{'text','revision'}:raise ValueError('文字稿仅允许通过来源ID编辑正文')
+    if not isinstance(payload.get('text'),str) or not payload['text'].strip():raise ValueError('文字稿正文不能为空')
+    with store_lock(root,wait=True):
+        recover_transcript_edits(root)
+        index=root/'raw/index.json';manifest=wxq.read_json(index,{})
+        row,path=transcript_target(root,sid,manifest);old=path.read_text('utf-8')
+        if payload.get('revision')!=digest(old.encode('utf-8')):raise Conflict('文字稿已被修改，请刷新后重新编辑；草稿仍保留')
+        previous=copy.deepcopy(manifest)
+        backup=root/'raw/reports/transcript-edits'/wxq.safe_id(sid.replace(':','_'))/(uuid.uuid4().hex+'.md')
+        wxq.atomic_text(backup,old)
+        journal=root/'raw/transcript-edit-pending.json'
+        wxq.atomic_json(journal,{'source':sid,'path':str(path.relative_to(root)),'text':old,'manifest':previous})
+        row.update(output_sha256=digest(payload['text'].encode('utf-8')),manual_edit={'at':wxq.now(),'backup':str(backup.relative_to(root))})
+        try:
+            wxq.atomic_text(path,payload['text'])
+            wxq.atomic_json(index,manifest)
+            journal.unlink()
+        except Exception:
+            recover_transcript_edits(root)
+            raise
+        return {'source':sid,'path':str(path),'text':payload['text'],'revision':row['output_sha256'],'manual_edit':True}

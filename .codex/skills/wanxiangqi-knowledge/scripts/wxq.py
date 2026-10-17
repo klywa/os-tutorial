@@ -3,11 +3,14 @@ import argparse
 from collections import defaultdict
 from datetime import datetime, timezone
 import json
+import os
+import errno
 from pathlib import Path
 import re
 import shutil
 import sys
 import tempfile
+import time
 
 ROOT = Path(__file__).resolve().parents[4]
 CATEGORIES = ['players', 'heroes', 'equipment', 'talents', 'derivatives', 'effect-cards', 'player-skills']
@@ -23,30 +26,48 @@ def now():
     return datetime.now(timezone.utc).isoformat()
 
 
+def retry_file_access(operation, cancelled=None, crt_access=False):
+    delays = [.05, .1, .2, .4, .8]
+    for attempt in range(len(delays) + 1):
+        if cancelled and cancelled():
+            raise InterruptedError('保存已取消')
+        try:
+            return operation()
+        except OSError as exc:
+            # Windows CRT open() used by reads/backups can discard winerror and report EACCES.
+            windows_crt_denied = crt_access and os.name == 'nt' and getattr(exc, 'winerror', None) is None and exc.errno == errno.EACCES
+            if (getattr(exc, 'winerror', None) not in (5, 32, 33) and not windows_crt_denied) or attempt == len(delays):
+                raise
+            time.sleep(delays[attempt])
+
+
 def read_json(path, default=None):
-    return json.loads(Path(path).read_text(encoding='utf-8-sig')) if Path(path).exists() else default
+    return json.loads(retry_file_access(lambda: Path(path).read_text(encoding='utf-8-sig'), crt_access=True)) if Path(path).exists() else default
 
 
-def atomic_text(path, text):
+def atomic_text(path, text, cancelled=None):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    if path.exists() and path.read_text(encoding='utf-8') == text:
+    if path.exists() and retry_file_access(lambda: path.read_text(encoding='utf-8'), cancelled, crt_access=True) == text:
         return False
     with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent,
                                      delete=False, suffix='.tmp', newline='\n') as f:
         f.write(text)
         temporary = Path(f.name)
     try:
-        if path.exists():
-            shutil.copy2(path, path.with_suffix(path.suffix + '.bak'))
-        temporary.replace(path)
+        def replace():
+            if path.exists():
+                shutil.copy2(path, path.with_suffix(path.suffix + '.bak'))
+            temporary.replace(path)
+        retry_file_access(replace, cancelled, crt_access=True)
     finally:
         temporary.unlink(missing_ok=True)
     return True
 
 
-def atomic_json(path, value):
-    return atomic_text(path, json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+def atomic_json(path, value, cancelled=None):
+    text = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+    return atomic_text(path, text, cancelled=cancelled) if cancelled is not None else atomic_text(path, text)
 
 
 def safe_id(value):

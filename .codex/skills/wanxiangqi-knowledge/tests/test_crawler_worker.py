@@ -16,6 +16,42 @@ from processing_lock import file_lock
 
 
 class WorkerTests(unittest.TestCase):
+    def test_web_frame_failure_keeps_transcript_and_media_cli_remains_strict(self):
+        import media,subprocess
+        from unittest.mock import MagicMock
+        outcome,folder=self.seed()
+        context=MagicMock();context.__enter__.return_value.extract_info.return_value={'id':'123','title':'测试','duration':3}
+        for required,stage in [(False,'prepared'),(True,'failed')]:
+            with patch('yt_dlp.YoutubeDL',return_value=context),patch('media.extract_frames',side_effect=subprocess.CalledProcessError(1,['ffmpeg'])):
+                result=media.prepare(self.root,'https://www.bilibili.com/video/BV1234567890',require_frames=required)
+            self.assertEqual(result[0]['stage'],stage)
+            self.assertTrue((folder/'media.mp4').exists())
+            if not required:
+                self.assertTrue(wxq.read_json(folder/'state.json')['warnings'])
+                self.assertFalse(export_transcripts(self.root,[outcome['id']])['errors'])
+                # Remove only the fixture export index so the strict CLI path is exercised next.
+                wxq.atomic_json(self.root/'raw/index.json',{'sources':{}})
+
+    def test_verified_artifacts_reconcile_only_old_frame_failure(self):
+        import media
+        outcome,folder=self.seed()
+        export_transcripts(self.root,[outcome['id']])
+        frame=folder/'frames/verified.jpg';frame.parent.mkdir();frame.write_bytes(b'\xff\xd8\xfffixture')
+        wxq.atomic_json(folder/'frames.json',[{'time':10,'path':'frames/verified.jpg','reviewed':True,'observation':'已核对'}])
+        old={'stage':'failed','error':"Command ['ffmpeg', '-frames:v', '1'] returned non-zero exit status 1"}
+        wxq.atomic_json(folder/'state.json',old)
+        self.assertTrue(media.reconcile_frame_failure(self.root,outcome['id']))
+        self.assertEqual(wxq.read_json(folder/'state.json')['stage'],'prepared')
+        self.assertNotIn('error',wxq.read_json(folder/'state.json'))
+        self.assertEqual(wxq.read_json(folder/'frames.json')[0]['observation'],'已核对')
+        self.assertEqual(wxq.read_json(folder/'recovered-frame-error.json'),old)
+        wxq.atomic_json(folder/'state.json',old)
+        manifest=wxq.read_json(folder/'frames.json');manifest[0]['reviewed']=False;wxq.atomic_json(folder/'frames.json',manifest)
+        self.assertFalse(media.reconcile_frame_failure(self.root,outcome['id']))
+        manifest[0]['reviewed']=True;wxq.atomic_json(folder/'frames.json',manifest);frame.unlink()
+        self.assertFalse(media.reconcile_frame_failure(self.root,outcome['id']))
+        self.assertEqual(wxq.read_json(folder/'state.json'),old)
+
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'.wxq-runtime/test-temp')
         self.addCleanup(self.tmp.cleanup)

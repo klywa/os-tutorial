@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import re
 import shutil
+import time
 import subprocess
 import urllib.request
 import urllib.parse
@@ -133,6 +134,60 @@ def validate_audio_duration(root, sid, decoded_seconds):
             raise RuntimeError(f'Decoded audio duration {decoded_seconds:.2f}s differs from source {expected}s; inspect or repair media before ASR')
 
 
+def audio_seconds(audio):
+    import wave
+    try:
+        with wave.open(str(audio), 'rb') as stream:
+            return stream.getnframes() / stream.getframerate()
+    except wave.Error as exc:
+        raise RuntimeError('Invalid audio file header; recover audio before ASR') from exc
+
+
+def download_entry(url, options, attempts=3):
+    import yt_dlp
+    for attempt in range(attempts):
+        try:
+            with yt_dlp.YoutubeDL({**options, 'retries': 0, 'fragment_retries': 0}) as downloader:
+                info = downloader.extract_info(url, download=True)
+                return info, Path(downloader.prepare_filename(info))
+        except Exception as exc:
+            if attempt == attempts - 1 or re.search(r'-352|-401|\b412\b|login|sign in', str(exc), re.I):
+                raise
+            time.sleep(2 ** attempt)
+
+
+def repair_audio(root, sid, entry_url, options):
+    """Keep corrupt inputs for diagnosis; fetch a fresh audio-only stream."""
+    import yt_dlp
+    folder = source_dir(root, sid)
+    quarantine = folder / 'failed-media' / datetime.now().strftime('%Y%m%d%H%M%S%f')
+    quarantine.mkdir(parents=True)
+    for name in ['audio.wav', 'asr.progress.json']:
+        path = folder / name
+        if path.exists():
+            path.replace(quarantine / name)
+    audio = folder / 'audio.wav'
+    for attempt in range(3):
+        try:
+            opts = {**options, 'noplaylist': True, 'format': 'bestaudio/best',
+                    'outtmpl': str(folder / 'repair-audio.%(ext)s'), 'continuedl': True}
+            info, source = download_entry(entry_url, opts, attempts=1)
+            convert_media(['-i', source, '-vn', '-ac', '1', '-ar', '16000'], audio)
+            validate_audio_duration(root, sid, audio_seconds(audio))
+            source.unlink(missing_ok=True)
+            return
+        except Exception as exc:
+            if audio.exists():
+                audio.replace(quarantine / f'attempt-{attempt}.wav')
+            # A completed corrupt download must not be reused on the next attempt.
+            for path in folder.glob('repair-audio.*'):
+                if path.suffix not in ['.part', '.ytdl']:
+                    path.replace(quarantine / f'{attempt}-{path.name}')
+            if attempt == 2 or re.search(r'-352|-401|\b412\b|login|sign in', str(exc), re.I):
+                raise
+            time.sleep(2 ** attempt)
+
+
 def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True, progress_callback=None):
     folder = source_dir(root, sid)
     raw_path = folder / 'asr.raw.json'
@@ -215,8 +270,37 @@ def extract_frames(root, sid, video, times):
         if destination.exists():
             manifest = [f for f in manifest if f['time'] != t]
             manifest.append({'time': t, 'path': relative, 'reviewed': False, 'observation': None})
+            atomic_json(folder / 'frames.json', manifest)
     atomic_json(folder / 'frames.json', manifest)
     return manifest
+
+
+def reconcile_frame_failure(root, sid):
+    """Clear a historical extraction failure only after verified replacement artifacts exist."""
+    from workspace import store_lock
+    from reference_store import transcript_errors
+    root = Path(root); folder = source_dir(root, sid)
+    with store_lock(root, wait=True):
+        state = read_json(folder / 'state.json', {})
+        error = state.get('error', '')
+        if state.get('stage') != 'failed' or '-frames:v' not in error or 'returned non-zero' not in error:
+            return False
+        if transcript_errors(root, sid):
+            return False
+        frames = read_json(folder / 'frames.json', [])
+        if not frames or not all(frame.get('reviewed') is True and frame.get('observation') for frame in frames):
+            return False
+        for frame in frames:
+            image = (folder / frame.get('path', '')).resolve()
+            if not image.is_relative_to(folder.resolve()) or not image.is_file():
+                return False
+            with image.open('rb') as file:
+                if not file.read(3).startswith(b'\xff\xd8\xff'):
+                    return False
+        atomic_json(folder / 'recovered-frame-error.json', state)
+        atomic_json(folder / 'state.json', {'stage': 'prepared', 'needs_review': True,
+                    'recovered_at': now(), 'recovery': 'verified_transcript_and_existing_frames'})
+        return True
 
 
 def convert_media(arguments, target):
@@ -228,7 +312,7 @@ def convert_media(arguments, target):
 
 
 @locked_video
-def prepare(root, url, model='large-v3', cookies=None, progress_callback=None):
+def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, require_frames=True):
     import yt_dlp
     root = Path(root)
     init_store(root)
@@ -240,6 +324,8 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None):
             meta = read_json(folder / 'metadata.json', {})
             if requested_part and meta.get('id') != match.group() + ':p' + requested_part:
                 continue
+            if meta.get('id'):
+                reconcile_frame_failure(root, meta['id'])
             stage = read_json(folder / 'state.json', {}).get('stage')
             exported = read_json(root / 'raw/index.json', {}).get('sources', {}).get(meta.get('id'), {})
             if stage == 'complete' or (stage == 'prepared' and exported and
@@ -249,7 +335,7 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None):
         # A bare BV URL can contain multiple parts: only skip lookup when cached part_count is known.
         if cached and (requested_part or len(cached) == read_json(source_dir(root, cached[0]['id']) / 'metadata.json', {}).get('part_count')):
             return cached
-    options = {'quiet': True, 'socket_timeout': 30, 'retries': 2, 'noplaylist': False,
+    options = {'quiet': True, 'socket_timeout': 30, 'retries': 2, 'fragment_retries': 2, 'continuedl': True, 'noplaylist': False,
                'ffmpeg_location': ffmpeg()}
     if progress_callback:
         def download_progress(event):
@@ -291,16 +377,22 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None):
                             'merge_output_format': 'mp4',
                             'outtmpl': str(folder / 'download.%(ext)s'), 'writesubtitles': True,
                             'writeautomaticsub': True, 'subtitleslangs': ['zh.*'], 'subtitlesformat': 'srt/best'}
-                    with yt_dlp.YoutubeDL(opts) as downloader:
-                        downloaded = downloader.extract_info(entry_url, download=True)
-                        actual = Path(downloader.prepare_filename(downloaded))
-                        if (folder / 'download.mp4').exists():
-                            actual = folder / 'download.mp4'
+                    downloaded, actual = download_entry(entry_url, opts)
+                    if (folder / 'download.mp4').exists():
+                        actual = folder / 'download.mp4'
                     if actual != video:
                         convert_media(['-i', actual, '-c', 'copy'], video)
                         actual.unlink()
                 if not audio.exists() and not (folder / 'asr.raw.json').exists():
-                    convert_media(['-i', video, '-vn', '-ac', '1', '-ar', '16000'], audio)
+                    try:
+                        convert_media(['-i', video, '-vn', '-ac', '1', '-ar', '16000'], audio)
+                    except subprocess.CalledProcessError:
+                        repair_audio(root, sid, entry_url, options)
+            if not (folder / 'asr.raw.json').exists():
+                try:
+                    validate_audio_duration(root, sid, audio_seconds(audio))
+                except (RuntimeError, OSError, EOFError):
+                    repair_audio(root, sid, entry_url, options)
             atomic_json(folder / 'state.json', {'stage': 'transcribing'})
             if progress_callback:
                 progress_callback({'phase': 'transcribing', 'source': sid})
@@ -311,9 +403,16 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None):
             for s in transcript['segments']:
                 if any(word in s['text'] for word in ['阵容', '拍卖', '站位', '装备', '看这里', '天赋', '决赛']):
                     times += [s['start'], (s['start'] + s['end']) / 2]
+            warnings = []
             if video.exists():
-                extract_frames(root, sid, video, times[:80])
-            atomic_json(folder / 'state.json', {'stage': 'prepared', 'needs_review': True})
+                try:
+                    extract_frames(root, sid, video, times[:80])
+                except (subprocess.CalledProcessError, OSError) as exc:
+                    if require_frames:
+                        raise
+                    warnings.append('关键帧提取失败，文字稿可用；保留视频待补取画面')
+                    atomic_json(folder / 'frame-extraction-error.json', {'error': str(exc), 'at': now()})
+            atomic_json(folder / 'state.json', {'stage': 'prepared', 'needs_review': True, 'warnings': warnings})
             outcomes.append({'id': sid, 'stage': 'prepared'})
         except Exception as exc:
             atomic_json(folder / 'state.json', {'stage': 'failed', 'error': str(exc), 'at': now()})

@@ -19,6 +19,69 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_source_edit_revision_and_transcript_api(self):
+        def send(path,payload,method='POST'):
+            with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)
+        source=send('sources',{'url':'https://example.com/edit','title':'原标题'})
+        with urlopen(self.url+'sources') as response:row=json.load(response)[0]
+        sid=source['id']
+        saved=send('sources/'+sid,{'revision':row['revision'],'title':'人工题','author':'','keywords':['标签']},'PUT')
+        self.assertEqual(saved['title'],'人工题')
+        with self.assertRaises(HTTPError) as stale:send('sources/'+sid,{'revision':row['revision'],'title':'过期'},'PUT')
+        self.assertEqual(stale.exception.code,409)
+        wxq.atomic_text(self.root/'raw/api-transcript.md','原文')
+        wxq.atomic_json(self.root/'raw/index.json',{'sources':{sid:{'path':'raw/api-transcript.md'}}})
+        with urlopen(self.url+'sources/'+sid+'/transcript') as response:before=json.load(response)
+        text=send('sources/'+sid+'/transcript',{'revision':before['revision'],'text':'人工文字稿'},'PUT')
+        self.assertTrue(text['manual_edit'])
+        with self.assertRaises(HTTPError) as conflict:send('sources/'+sid+'/transcript',{'revision':before['revision'],'text':'过期'},'PUT')
+        self.assertEqual(conflict.exception.code,409)
+
+    def test_creator_edit_delete_and_late_save(self):
+        def request(path, data=None, method='POST'):
+            return urlopen(Request(self.url+path, json.dumps(data or {}).encode(), {'Content-Type':'application/json'},method=method))
+        with request('crawler/creators',{'url':'https://space.bilibili.com/123','name':'test','date_from':'2026-09-10'}) as response:
+            creator=json.load(response)
+        with request('crawler/creators/123',{**creator,'name':'edited'},'PUT') as response:
+            self.assertEqual(json.load(response)['name'],'edited')
+        with request('crawler/creators/123',method='DELETE') as response:
+            self.assertEqual(json.load(response)['deleted'],'123')
+        with self.assertRaises(HTTPError) as caught:
+            request('crawler/creators/123',creator,'PUT')
+        self.assertEqual(caught.exception.code,404)
+
+    def test_creator_create_is_unique_and_does_not_overwrite(self):
+        def send(payload, method='POST', suffix=''):
+            req=Request(self.url+'crawler/creators'+suffix,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)
+            with urlopen(req) as response:
+                return json.load(response)
+        original={'url':'https://space.bilibili.com/3632302133348552','name':'同名','date_from':'2026-09-10','keywords':['李信'],'enabled':False}
+        creator=send(original)
+        self.assertIsInstance(creator['uid'],str)
+        with self.assertRaises(HTTPError) as caught:
+            send({**creator,'name':'不能覆盖','enabled':True})
+        self.assertEqual(caught.exception.code,409)
+        self.assertEqual(json.load(caught.exception)['uid'],creator['uid'])
+        send({**original,'url':'https://space.bilibili.com/456'})
+        with urlopen(self.url+'crawler/creators') as response:
+            rows=json.load(response)
+        self.assertEqual(len(rows),2)
+        self.assertEqual(len(server_module.crawler.Store(self.root).creators()),2)
+        self.assertEqual(next(r for r in rows if r['uid']==creator['uid'])['name'],'同名')
+        self.assertFalse(next(r for r in rows if r['uid']==creator['uid'])['enabled'])
+        with self.assertRaises(HTTPError) as changed:
+            send({**creator,'url':'https://space.bilibili.com/456'},'PUT','/'+creator['uid'])
+        self.assertEqual(changed.exception.code,400)
+
+    def test_concurrent_creator_create_has_one_winner(self):
+        def create(_):
+            req=Request(self.url+'crawler/creators',json.dumps({'url':'https://space.bilibili.com/123','name':'并发','date_from':'2026-09-10'}).encode(),{'Content-Type':'application/json'})
+            try:
+                with urlopen(req) as response:return response.status
+            except HTTPError as exc:return exc.code
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            self.assertEqual(sorted(pool.map(create,range(2))),[200,409])
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory(dir=ROOT / '.wxq-runtime/test-temp')
         self.addCleanup(self.tmp.cleanup)

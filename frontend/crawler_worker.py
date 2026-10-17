@@ -10,7 +10,7 @@ from crawler import Store, register_discovered
 import wxq
 import media
 import workspace
-from reference_store import export_transcripts, transcript_errors
+from reference_store import export_transcripts, transcript_errors, repair_transcript_index
 from processing_lock import locked_video
 
 
@@ -43,7 +43,7 @@ def run(root, bvid, generation=None):
             last[1] = value.get('phase')
     # prepare shares a BV-level cross-process lock with the CLI.
     outcomes = media.prepare.__wrapped__(root, f'https://www.bilibili.com/video/{bvid}',
-                             cookies=store.settings()['cookies'] or None, progress_callback=progress)
+                             cookies=store.settings()['cookies'] or None, progress_callback=progress, require_frames=False)
     failed = [r for r in outcomes if r.get('stage') == 'failed']
     if failed:
         raise RuntimeError('; '.join(r.get('error', '') for r in failed))
@@ -65,12 +65,14 @@ def run(root, bvid, generation=None):
             if report['errors']:
                 raise RuntimeError(report['errors'][0]['error'])
         else:
+            repair_transcript_index(root, sid)
             # Stale ASR is not safe to discard; manual output edits are deliberately preserved.
             errors = [e for e in transcript_errors(root, sid) if not e.startswith('Transcript was manually edited')]
             if errors:
                 raise RuntimeError('; '.join(errors))
-        for name in ['media.mp4', 'audio.wav', 'video.m4s', 'audio.m4s']:
-            (folder / name).unlink(missing_ok=True)
+        if not wxq.read_json(folder / 'state.json', {}).get('warnings'):
+            for name in ['media.mp4', 'audio.wav', 'video.m4s', 'audio.m4s']:
+                (folder / name).unlink(missing_ok=True)
     return outcomes
 
 

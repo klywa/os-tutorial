@@ -160,8 +160,14 @@ class Handler(BaseHTTPRequestHandler):
                     raise ValueError('请填写搜索关键词')
                 store.settings({'search': payload})
                 result = store.new_job(payload)
-            elif path == '/api/crawler/creators':
-                result = store.save_creator(payload)
+            elif self.command == 'DELETE' and path.startswith('/api/crawler/creators/'):
+                result = store.delete_creator(path.split('/')[-1])
+            elif path == '/api/crawler/creators' and self.command == 'POST':
+                result = store.create_creator(payload)
+            elif path.startswith('/api/crawler/creators/') and len(path.split('/')) == 5 and self.command == 'PUT':
+                if payload.get('uid') and payload['uid'] != path.split('/')[-1]:
+                    raise ValueError('编辑时不可更换UP主UID')
+                result = store.update_creator(path.split('/')[-1], payload)
             elif path == '/api/crawler/creators/check':
                 result = [store.check_creator(r['uid']) for r in store.creators() if r.get('enabled', True)]
             elif path.startswith('/api/crawler/creators/') and path.endswith('/check'):
@@ -207,13 +213,17 @@ class Handler(BaseHTTPRequestHandler):
                 result = workspace.edit(self.server.root, path.split('/')[-1], payload)
             elif self.command == 'POST' and path == '/api/sources':
                 result = workspace.register_source(self.server.root, payload)
+            elif self.command == 'PUT' and path.startswith('/api/sources/') and path.endswith('/transcript'):
+                from reference_store import save_transcript
+                result = save_transcript(self.server.root, path.split('/')[-2], payload)
             elif self.command == 'PUT' and path.startswith('/api/sources/'):
-                result = workspace.register_source(self.server.root, payload, path.split('/')[-1])
+                from source_edit import save_metadata
+                result = save_metadata(self.server.root, path.split('/')[-1], payload, store)
             else:
                 return self.response(404, {'error': '接口不存在'})
             self.response(200, result)
         except workspace.Conflict as exc:
-            self.response(409, {'error': str(exc)})
+            self.response(409, {'error': str(exc), **({'uid': exc.uid} if hasattr(exc, 'uid') else {})})
         except workspace.Busy as exc:
             self.response(423, {'error': str(exc)})
         except KeyError as exc:

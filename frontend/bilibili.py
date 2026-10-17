@@ -3,11 +3,18 @@ import html
 import re
 import time
 import threading
-import uuid
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urlsplit
 
 BJ = timezone(timedelta(hours=8))
+
+
+class BilibiliError(RuntimeError):
+    def __init__(self, code, message):
+        self.code = code
+        self.category = 'risk' if code in (-352, -401, 403, 412, 429) else 'login' if code in (-101, -111) else 'remote'
+        hint = '等待解除风控；请在浏览器确认能访问空间，检查本机cookies后重新检查' if self.category == 'risk' else '请检查本机cookies并重新检查' if self.category == 'login' else '请稍后重试'
+        super().__init__(f'B站请求失败（{code}）：{message}。{hint}')
 
 
 def creator_uid(url):
@@ -49,31 +56,48 @@ class Bilibili:
     _rate_lock = threading.Lock()
     _last_request = 0
 
-    def __init__(self, cookies=''):
+    def __init__(self, cookies='', refresh=False):
         import yt_dlp
         from yt_dlp.extractor.bilibili import BiliBiliIE
+        self.request_interval = 3 if refresh else 1
         self.ydl = yt_dlp.YoutubeDL({'quiet': True, 'no_warnings': True, 'socket_timeout': 20,
                                   'retries': 2, **({'cookiefile': cookies} if cookies else {})})
         self.ie = BiliBiliIE(self.ydl)
         self.ie.initialize()
-        if not self.ie._get_cookies('https://api.bilibili.com').get('buvid3'):
-            self.ie._set_cookie('.bilibili.com', 'buvid3', f'{uuid.uuid4()}infoc')
+        # A retry reloads the configured cookies and fetches fresh signing material.
+        self.ie._wbi_key_cache = {}
+        if refresh or not self.ie._get_cookies('https://api.bilibili.com').get('buvid3'):
+            self.refresh_session()
         self.last_request = 0
 
-    def request(self, path, query, signed=False, referer='https://www.bilibili.com/'):
+    def refresh_session(self):
+        self.ie._wbi_key_cache = {}
+        self.ie._download_webpage('https://www.bilibili.com/', 'crawler', fatal=False, note=False)
+        session = self.request('x/frontend/finger/spi', {})
+        current = self.ie._get_cookies('https://api.bilibili.com')
+        for key, field in [('buvid3','b_3'),('buvid4','b_4')]:
+            if not current.get(key) and session.get(field):
+                self.ie._set_cookie('.bilibili.com',key,session[field])
+
+    def request(self, path, query, signed=False, referer='https://www.bilibili.com/', headers=None):
         for attempt in range(3):
             # Parallel scans share one request-start limiter instead of multiplying the rate.
             with Bilibili._rate_lock:
-                time.sleep(max(0, 1 - (time.monotonic() - Bilibili._last_request)))
+                time.sleep(max(0, getattr(self, 'request_interval', 1) - (time.monotonic() - Bilibili._last_request)))
                 Bilibili._last_request = time.monotonic()
             try:
                 args = self.ie._sign_wbi(dict(query), 'crawler') if signed else query
                 result = self.ie._download_json('https://api.bilibili.com/' + path, 'crawler',
-                                                query=args, headers={'Referer': referer})
+                                                query=args, headers={'Referer': referer, **(headers or {})})
                 if result.get('code', 0) != 0:
-                    raise RuntimeError(f"B站请求失败（{result.get('code')}）：{result.get('message', '请稍后重试或配置cookies')}")
+                    raise BilibiliError(result.get('code'), result.get('message', '请求失败'))
                 return result.get('data') or {}
-            except Exception:
+            except BilibiliError:
+                raise
+            except Exception as exc:
+                status = getattr(getattr(exc, 'cause', None), 'status', None)
+                if status == 412:
+                    raise BilibiliError(412, '访问被限制') from exc
                 if attempt == 2:
                     raise
                 time.sleep(2 ** attempt)
@@ -86,14 +110,18 @@ class Bilibili:
 
     def creator_page(self, uid, page):
         query = {'mid': uid, 'pn': page, 'ps': 30, 'order': 'pubdate', 'keyword': '',
-                 'platform': 'web', 'web_location': '333.1387', **self.ie._dm_params}
-        data = self.request('x/space/wbi/arc/search', query, True, f'https://space.bilibili.com/{uid}/video')
+                 'platform': 'web', 'web_location': '333.1387', 'order_avoided': 'true',
+                 'tid': 0, 'special_type': '', 'index': 0, **self.ie._dm_params}
+        data = self.request('x/space/wbi/arc/search', query, True, f'https://space.bilibili.com/{uid}/video',
+                            {'Origin': 'https://space.bilibili.com', 'Accept-Language': 'en,zh-CN;q=0.9,zh;q=0.8'})
         rows = [v for r in data.get('list', {}).get('vlist', []) if (v := normalize({**r, 'mid': uid}))]
         return rows, page * 30 < int(data.get('page', {}).get('count') or 0)
 
     def detail(self, bvid):
         try:
             data = self.request('x/web-interface/view', {'bvid': bvid})
+        except BilibiliError:
+            raise
         except Exception:
             # yt-dlp also supports extracting the public watch-page metadata when this API is unavailable.
             info = self.ydl.extract_info(f'https://www.bilibili.com/video/{bvid}', download=False)

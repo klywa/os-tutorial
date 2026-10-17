@@ -27,6 +27,21 @@ def encode(value):
     return json.dumps(value, ensure_ascii=False)
 
 
+def is_risk(error):
+    return bool(re.search(r'-352|-401|\b412\b|风控|HTTP(?: Error)?[ :]+(?:403|429)\b|B站请求失败[（(](?:403|429)[）)]', str(error), re.I))
+
+
+def error_info(error, phase=None):
+    if not error:
+        return None
+    if re.search(r'WinError (?:5|32|33)\b|PermissionError|拒绝访问|Permission denied', str(error), re.I):
+        return {'category':'storage', 'phase':phase or 'registration', 'recoverable':True,
+                'hint':'自动重试后仍无法保存，请检查文件占用或目录权限'}
+    category = 'risk' if is_risk(error) else 'login' if re.search(r'-101|登录', error) else 'transcript' if re.search(r'corrected_sha256|Transcript|文字稿', error) else 'audio' if re.search(r'Decoded audio|Invalid data|音频', error) else 'network' if re.search(r'HTTP|connection|timed? ?out|Downloaded.*expected', error, re.I) else 'processing'
+    return {'category': category, 'phase': phase or ('exporting' if category == 'transcript' else 'downloading' if category in ['network','audio'] else 'discovery' if category in ['risk','login'] else 'unknown'),
+            'recoverable': category != 'login', 'hint': '自动冷却并刷新会话后重试' if category == 'risk' else '更新登录信息后重新检查' if category == 'login' else '保留已有材料，可重试恢复'}
+
+
 def matches_filters(row, filters):
     date = row.get('published')
     for field, operator in [('date_from', lambda a, b: a >= b), ('date_to', lambda a, b: a <= b)]:
@@ -99,6 +114,8 @@ class Store:
                     error TEXT DEFAULT '', progress TEXT DEFAULT '{}', updated TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS dispatch(job TEXT, bvid TEXT, charged INTEGER DEFAULT 1, PRIMARY KEY(job,bvid));
                 CREATE TABLE IF NOT EXISTS creators(uid TEXT PRIMARY KEY, data TEXT NOT NULL);
+                CREATE TABLE IF NOT EXISTS risk_retries(kind TEXT, target TEXT, attempt INTEGER NOT NULL,
+                    next_retry_at TEXT NOT NULL, error TEXT NOT NULL, PRIMARY KEY(kind,target));
             ''')
             if 'charged' not in [r['name'] for r in db.execute('PRAGMA table_info(dispatch)')]:
                 db.execute('ALTER TABLE dispatch ADD COLUMN charged INTEGER DEFAULT 1')
@@ -106,6 +123,52 @@ class Store:
                 db.execute('ALTER TABLE tasks ADD COLUMN generation INTEGER NOT NULL DEFAULT 0')
             if 'last_dispatched' not in [r['name'] for r in db.execute('PRAGMA table_info(jobs)')]:
                 db.execute("ALTER TABLE jobs ADD COLUMN last_dispatched TEXT NOT NULL DEFAULT ''")
+            if 'scan_cancelled' not in [r['name'] for r in db.execute('PRAGMA table_info(jobs)')]:
+                db.execute('ALTER TABLE jobs ADD COLUMN scan_cancelled INTEGER NOT NULL DEFAULT 0')
+
+    def risk_retry(self, kind, target):
+        with self.db() as db:
+            row = db.execute('SELECT attempt,next_retry_at FROM risk_retries WHERE kind=? AND target=?', (kind,target)).fetchone()
+            return dict(row) if row else None
+
+    def defer_risk(self, kind, target, error):
+        if kind not in ['job','task'] or not is_risk(error):
+            return None
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if kind == 'job':
+                row = db.execute("SELECT * FROM jobs WHERE id=? AND state='failed' AND scan_cancelled=0", (target,)).fetchone()
+                if not row:
+                    return None
+                if row['creator']:
+                    creator = db.execute('SELECT data FROM creators WHERE uid=?', (row['creator'],)).fetchone()
+                    if not creator or not json.loads(creator['data']).get('enabled', True):
+                        return None
+            else:
+                row = db.execute("SELECT 1 FROM tasks WHERE bvid=? AND state='failed' AND EXISTS(SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=tasks.bvid AND j.state NOT IN ('stopped','deleted'))", (target,)).fetchone()
+                if not row:
+                    return None
+            previous = db.execute('SELECT attempt FROM risk_retries WHERE kind=? AND target=?', (kind,target)).fetchone()
+            attempt = previous['attempt'] + 1 if previous else 1
+            delay = [60,300,900,1800,3600][min(attempt-1,4)]
+            next_at = (datetime.fromisoformat(now()) + timedelta(seconds=delay)).isoformat(timespec='seconds')
+            db.execute('INSERT OR REPLACE INTO risk_retries VALUES(?,?,?,?,?)', (kind,target,attempt,next_at,str(error)))
+            if kind == 'job':
+                db.execute("UPDATE jobs SET state='pending',error=? WHERE id=?", (str(error),target))
+            else:
+                db.execute("UPDATE tasks SET state='queued',error=?,progress=?,generation=generation+1,updated=? WHERE bvid=?", (str(error),encode({'phase':'retry_wait','next_retry_at':next_at,'attempt':attempt}),now(),target))
+        return {'attempt':attempt,'next_retry_at':next_at}
+
+    def adopt_risk_failures(self, scanning=(), working=()):
+        with self.db() as db:
+            jobs = db.execute("SELECT id,error FROM jobs WHERE state='failed' AND scan_cancelled=0").fetchall()
+            tasks = db.execute("SELECT bvid,error FROM tasks WHERE state='failed'").fetchall()
+        for row in jobs:
+            if row['id'] not in scanning:
+                self.defer_risk('job',row['id'],row['error'])
+        for row in tasks:
+            if row['bvid'] not in working:
+                self.defer_risk('task',row['bvid'],row['error'])
 
     @contextmanager
     def db(self):
@@ -138,6 +201,8 @@ class Store:
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
             if creator:
+                if not db.execute('SELECT 1 FROM creators WHERE uid=?', (creator,)).fetchone():
+                    raise KeyError('UP主监听已删除')
                 existing = db.execute("SELECT id FROM jobs WHERE creator=? AND state IN ('pending','scanning')", (creator,)).fetchone()
                 if existing:
                     job_id = existing['id']
@@ -159,12 +224,12 @@ class Store:
     def next_pending(self, exclude=()):
         with self.db() as db:
             condition = ' AND id NOT IN (' + ','.join('?' for _ in exclude) + ')' if exclude else ''
-            row = db.execute("SELECT id FROM jobs WHERE state='pending'" + condition + ' ORDER BY created,id LIMIT 1', tuple(exclude)).fetchone()
+            row = db.execute("SELECT id FROM jobs WHERE state='pending' AND scan_cancelled=0 AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id AND r.next_retry_at>?)" + condition + ' ORDER BY created,id LIMIT 1', (now(),*exclude)).fetchone()
         return self.job(row['id'], False) if row else None
 
     def begin_scan(self, jid):
         with self.db() as db:
-            return bool(db.execute("UPDATE jobs SET state='scanning',error='' WHERE id=? AND state='pending'", (jid,)).rowcount)
+            return bool(db.execute("UPDATE jobs SET state='scanning',error='' WHERE id=? AND state='pending' AND scan_cancelled=0 AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id AND r.next_retry_at>?)", (jid,now())).rowcount)
 
     def job(self, jid, items=True):
         with self.db() as db:
@@ -188,7 +253,11 @@ class Store:
         for phase in ['downloading', 'transcribing']:
             result['counts'][phase] = sum(v['state'] == 'running' and v['progress'].get('phase') == phase for v in grouped.values())
         if items:
+            for item in grouped.values():
+                item['error_info'] = error_info(item['error'], item['progress'].get('phase'))
             result['items'] = list(grouped.values())
+        result['error_info'] = error_info(result['error'], 'discovery')
+        result['retry'] = self.risk_retry('job',jid) if result['state'] == 'pending' else None
         return result
 
     def update_job(self, jid, **values):
@@ -196,14 +265,17 @@ class Store:
         if not set(values) <= allowed:
             raise ValueError('Invalid job update')
         with self.db() as db:
-            condition = " AND state!='stopped'" if values.get('state') in ['scanning', 'scanned', 'failed'] else ''
-            return bool(db.execute('UPDATE jobs SET ' + ','.join(k + '=?' for k in values) + " WHERE id=? AND state!='deleted'" + condition, (*values.values(), jid)).rowcount)
+            condition = " AND state!='stopped' AND scan_cancelled=0" if values.get('state') in ['scanning', 'scanned', 'failed'] else ''
+            updated = bool(db.execute('UPDATE jobs SET ' + ','.join(k + '=?' for k in values) + " WHERE id=? AND state!='deleted'" + condition, (*values.values(), jid)).rowcount)
+            if updated and values.get('state') == 'scanned':
+                db.execute("DELETE FROM risk_retries WHERE kind='job' AND target=?", (jid,))
+            return updated
 
     def discover(self, jid, row, keyword, enqueue):
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
-            job = db.execute('SELECT state FROM jobs WHERE id=?', (jid,)).fetchone()
-            if not job or job['state'] in ['deleted', 'stopped']:
+            job = db.execute('SELECT state,scan_cancelled FROM jobs WHERE id=?', (jid,)).fetchone()
+            if not job or job['state'] in ['deleted', 'stopped'] or job['scan_cancelled']:
                 return False
             db.execute('INSERT OR REPLACE INTO videos VALUES(?,?)', (row['bvid'], encode({**row, 'collected_at': now()})))
             db.execute('INSERT OR IGNORE INTO hits VALUES(?,?,?)', (jid, row['bvid'], keyword))
@@ -239,8 +311,8 @@ class Store:
         self.update_job(jid, state='stopped')
 
     def resume(self, jid):
-        self.job(jid, False)
-        self.update_job(jid, state='pending')
+        job = self.job(jid, False)
+        self.update_job(jid, state='scanned' if job.get('scan_cancelled') else 'pending')
 
     def delete_job(self, jid):
         with self.db() as db:
@@ -336,20 +408,23 @@ class Store:
             db.execute('BEGIN IMMEDIATE')
             condition = ' AND t.bvid NOT IN (' + ','.join('?' for _ in exclude) + ')' if exclude else ''
             row = db.execute('''SELECT t.*,j.id AS owner FROM tasks t JOIN dispatch d ON d.bvid=t.bvid
-                JOIN jobs j ON j.id=d.job WHERE t.state='queued' AND j.state NOT IN ('stopped','deleted')''' + condition + '''
+                JOIN jobs j ON j.id=d.job WHERE t.state='queued' AND j.state NOT IN ('stopped','deleted')
+                AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='task' AND r.target=t.bvid AND r.next_retry_at>?)''' + condition + '''
                 ORDER BY (SELECT COUNT(*) FROM tasks r JOIN dispatch rd ON rd.bvid=r.bvid
                           WHERE rd.job=j.id AND r.state='running'),
-                         j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', tuple(exclude)).fetchone()
+                         j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', (now(),*exclude)).fetchone()
             if not row:
                 return None
-            db.execute("UPDATE tasks SET state='running',error='',updated=?,generation=generation+1 WHERE bvid=?", (now(), row['bvid']))
+            db.execute("UPDATE tasks SET state='running',error='',progress='{}',updated=?,generation=generation+1 WHERE bvid=?", (now(), row['bvid']))
             db.execute('UPDATE jobs SET last_dispatched=? WHERE id=?', (datetime.now(BJ).isoformat(), row['owner']))
             return {**dict(row), 'state': 'running', 'generation': row['generation'] + 1}
 
     def finish_task(self, bvid, state, error='', progress=None, generation=None):
         with self.db() as db:
-            db.execute("UPDATE tasks SET state=?,error=?,progress=?,updated=? WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",
-                       (state, error, encode(progress or {}), now(), bvid, generation, generation))
+            changed = db.execute("UPDATE tasks SET state=?,error=?,progress=?,updated=? WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",
+                       (state, error, encode(progress or {}), now(), bvid, generation, generation)).rowcount
+            if changed and state == 'succeeded':
+                db.execute("DELETE FROM risk_retries WHERE kind='task' AND target=?", (bvid,))
 
     def retry(self, jid, bvids=None):
         with self.db() as db:
@@ -358,7 +433,7 @@ class Store:
             db.execute("UPDATE tasks SET state='queued',error='',updated=? WHERE state='failed' AND bvid IN (SELECT bvid FROM dispatch WHERE job=?)" +
                        (' AND bvid IN (' + ','.join('?' for _ in bvids) + ')' if bvids else ''),
                        (now(), jid, *(bvids or [])))
-            db.execute("UPDATE jobs SET state=CASE WHEN state IN ('failed','stopped') THEN 'pending' ELSE state END,error='' WHERE id=?", (jid,))
+            db.execute("UPDATE jobs SET state=CASE WHEN scan_cancelled=1 THEN 'scanned' WHEN state IN ('failed','stopped') THEN 'pending' ELSE state END,error='' WHERE id=?", (jid,))
 
     def recover_tasks(self, exclude=()):
         from processing_lock import file_lock
@@ -378,8 +453,18 @@ class Store:
         with self.db() as db:
             db.execute("UPDATE jobs SET state='pending' WHERE state='scanning'")
 
-    def save_creator(self, payload):
+    def create_creator(self, payload):
+        return self.save_creator(payload, create=True)
+
+    def update_creator(self, uid, payload):
+        return self.save_creator({**payload, 'uid': uid}, create=False)
+
+    def save_creator(self, payload, create=None):
+        if create is None:
+            create = not bool(payload.get('uid'))
         uid = creator_uid(payload.get('url', ''))
+        if payload.get('uid') and payload['uid'] != uid:
+            raise ValueError('编辑时不可更换UP主UID，请添加新的监听')
         if not payload.get('date_from'):
             raise ValueError('请选择拉取起始日期')
         datetime.strptime(payload['date_from'], '%Y-%m-%d')
@@ -388,22 +473,49 @@ class Store:
         if any(not isinstance(k, str) for k in payload.get('keywords', [])):
             raise ValueError('关键词须为文字')
         with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
             old = db.execute('SELECT data FROM creators WHERE uid=?', (uid,)).fetchone()
+            if create and old:
+                error = workspace.Conflict('该UP主已在监听列表中，请编辑已有配置')
+                error.uid = uid
+                raise error
+            if not create and not old:
+                raise KeyError('UP主监听已删除，请刷新列表')
             row = {**(json.loads(old['data']) if old else {}), **{k: payload[k] for k in
                    ['name', 'date_from', 'enabled', 'keywords'] if k in payload},
                    'uid': uid, 'url': f'https://space.bilibili.com/{uid}'}
             row.setdefault('enabled', True)
             row.setdefault('keywords', [])
             row['keywords'] = list(dict.fromkeys(k.strip() for k in row['keywords'] if k.strip()))
-            db.execute('INSERT OR REPLACE INTO creators VALUES(?,?)', (uid, encode(row)))
+            if create:
+                db.execute('INSERT INTO creators VALUES(?,?)', (uid, encode(row)))
+            else:
+                db.execute('UPDATE creators SET data=? WHERE uid=?', (encode(row), uid))
+            if not row['enabled']:
+                db.execute("UPDATE jobs SET state='scanned',scan_cancelled=1 WHERE creator=? AND state='pending' AND EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id)", (uid,))
         return row
+
+    def delete_creator(self, uid):
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if not db.execute('DELETE FROM creators WHERE uid=?', (uid,)).rowcount:
+                raise KeyError('UP主不存在')
+            # Keep dispatch rows: already discovered videos continue. Stopped jobs reject late discoveries.
+            db.execute("UPDATE jobs SET scan_cancelled=1,state=CASE WHEN state IN ('pending','scanning') THEN 'scanned' ELSE state END WHERE creator=?", (uid,))
+        return {'deleted': uid}
 
     def creators(self):
         with self.db() as db:
-            return [json.loads(r['data']) for r in db.execute('SELECT data FROM creators')]
+            rows = [json.loads(r['data']) for r in db.execute('SELECT data FROM creators')]
+            for row in rows:
+                active = db.execute("SELECT j.state,r.attempt,r.next_retry_at FROM jobs j LEFT JOIN risk_retries r ON r.kind='job' AND r.target=j.id WHERE j.creator=? AND j.state IN ('pending','scanning') AND j.scan_cancelled=0 ORDER BY j.created DESC LIMIT 1", (row['uid'],)).fetchone()
+                row['checking'] = bool(active and active['state']=='scanning')
+                row['retry'] = {'attempt':active['attempt'],'next_retry_at':active['next_retry_at']} if active and active['attempt'] and active['state']=='pending' else None
+            return rows
 
     def creator_result(self, uid, error=''):
         with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
             found = db.execute('SELECT data FROM creators WHERE uid=?', (uid,)).fetchone()
             if not found:
                 return
@@ -422,12 +534,13 @@ class Store:
 
     def projections(self):
         with self.db() as db:
-            rows = db.execute('''SELECT v.bvid,v.data,h.keyword,h.job,t.state,t.error FROM videos v
+            rows = db.execute('''SELECT v.bvid,v.data,h.keyword,h.job,t.state,t.error,t.progress FROM videos v
                 JOIN hits h ON h.bvid=v.bvid LEFT JOIN tasks t ON t.bvid=v.bvid''').fetchall()
         result = {}
         for r in rows:
             item = result.setdefault(r['bvid'], {**json.loads(r['data']), 'keywords': [], 'batches': [],
-                'acquisition_state': r['state'] or 'preview', 'acquisition_error': r['error']})
+                'acquisition_state': r['state'] or 'preview', 'acquisition_error': r['error'],
+                'acquisition_retry': self.risk_retry('task',r['bvid']) if r['state']=='queued' and json.loads(r['progress'] or '{}').get('phase')=='retry_wait' else None})
             if r['keyword'] and r['keyword'] not in item['keywords']:
                 item['keywords'].append(r['keyword'])
             if r['job'] not in item['batches']:
@@ -442,7 +555,7 @@ def source_rows(root, store):
     for row in rows:
         bv = row.get('bvid') or row['id'].split(':')[0]
         extra = projections.get(bv, {})
-        for k in ['keywords', 'batches', 'uid', 'space_url', 'view_count', 'collected_at', 'acquisition_state', 'acquisition_error']:
+        for k in ['keywords', 'batches', 'uid', 'space_url', 'view_count', 'collected_at', 'acquisition_state', 'acquisition_error', 'acquisition_retry']:
             if k in extra:
                 row[k] = extra[k]
         for k in ['author', 'title', 'published', 'duration']:
@@ -465,6 +578,9 @@ def source_rows(root, store):
         row['transcript_status'] = 'ready' if valid else 'missing'
         if valid and not wxq.read_json(wxq.source_dir(root, row['id']) / 'asr.raw.json', {}).get('segments'):
             row['transcript_status'] = 'no_speech'
+        row['transcript_manual'] = bool(entry.get('manual_edit'))
+        row.update(row.get('manual_values', {}))
+        row['revision'] = row.get('manual_revision', '')
     return rows
 
 
@@ -492,13 +608,8 @@ def cached_video(root, bvid):
 
 
 def transcript(root, sid):
-    row = wxq.read_json(Path(root) / 'raw/index.json', {}).get('sources', {}).get(sid)
-    if not row:
-        raise KeyError('文字稿尚未生成')
-    path = (Path(root) / row['path']).resolve()
-    if not path.is_relative_to((Path(root) / 'raw').resolve()) or not path.is_file():
-        raise KeyError('文字稿文件不存在')
-    return {'source': sid, 'path': str(path), 'text': path.read_text('utf-8')}
+    from reference_store import transcript_snapshot
+    return transcript_snapshot(root, sid)
 
 
 def batch_paths(root, ids):
@@ -577,6 +688,7 @@ class Runtime:
             self.store.recover_tasks(exclude=self.workers)
             self.last_recovery = time.monotonic()
         settings = self.store.settings()
+        self.store.adopt_risk_failures(scanning=self.scans, working=self.workers)
         current = datetime.now(BJ)
         for creator in due_creators(self.store.creators(), settings['clock'], current):
             if creator.get('last_checked') and current - datetime.fromisoformat(creator['last_checked']) < timedelta(hours=1):
@@ -606,16 +718,18 @@ class Runtime:
         scanned = matched = duplicates = 0
         seen = set()
         try:
-            adapter = Bilibili(self.store.settings()['cookies'])
+            adapter = Bilibili(self.store.settings()['cookies'], refresh=True) if self.store.risk_retry('job',jid) else Bilibili(self.store.settings()['cookies'])
             for keyword in filters['keywords'] if not job['creator'] else ['']:
                 page, count = 1, 0
                 while count < filters['scan_limit'] and not self.closed.is_set():
-                    if self.store.job(jid, False)['state'] in ['stopped', 'deleted']:
+                    snapshot = self.store.job(jid, False)
+                    if snapshot['state'] in ['stopped', 'deleted'] or snapshot.get('scan_cancelled'):
                         return
                     rows, more = adapter.creator_page(job['creator'], page) if job['creator'] else adapter.search_page(keyword, page, filters['order'])
                     older = bool(rows) and all(r.get('published') and filters.get('date_from') and r['published'] < filters['date_from'] for r in rows)
                     for row in rows:
-                        if count >= filters['scan_limit'] or self.store.job(jid, False)['state'] in ['stopped', 'deleted'] or self.closed.is_set():
+                        snapshot = self.store.job(jid, False)
+                        if count >= filters['scan_limit'] or snapshot['state'] in ['stopped', 'deleted'] or snapshot.get('scan_cancelled') or self.closed.is_set():
                             break
                         count += 1
                         scanned += 1
@@ -636,7 +750,7 @@ class Runtime:
                                 return
                         # Discovery registration must preserve manual annotations.
                         self.store.update_job(jid, scanned=scanned, matched=matched, duplicates=duplicates)
-                        register_discovered(self.root, row)
+                        register_discovered(self.root, row, cancelled=lambda: self.closed.is_set() or self.store.job(jid, False)['state'] in ['stopped', 'deleted'] or bool(self.store.job(jid, False).get('scan_cancelled')))
                     self.store.update_job(jid, scanned=scanned, matched=matched, duplicates=duplicates)
                     if count >= filters['scan_limit'] and (more or len(rows) > count):
                         self.store.update_job(jid, limited=1)
@@ -647,6 +761,9 @@ class Runtime:
                 if job['creator']:
                     self.store.creator_result(job['creator'])
         except Exception as exc:
+            snapshot = self.store.job(jid, False)
+            if self.closed.is_set() or snapshot['state'] in ['stopped', 'deleted'] or snapshot.get('scan_cancelled'):
+                return
             updated = self.store.update_job(jid, state='failed', error=str(exc))
             if updated and job['creator']:
                 self.store.creator_result(job['creator'], str(exc))
@@ -727,6 +844,6 @@ def terminate_worker(process):
 
 
 
-def register_discovered(root, row):
+def register_discovered(root, row, cancelled=None):
     # Existing CLI registry identity is p1 for an unqualified BV URL.
-    workspace.register_source(root, {'url': row['url'], 'title': row.get('title', ''), 'notes': ''}, preserve_annotations=True, wait=True)
+    workspace.register_source(root, {'url': row['url'], 'title': row.get('title', ''), 'notes': ''}, preserve_annotations=True, wait=True, cancelled=cancelled)

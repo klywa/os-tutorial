@@ -192,7 +192,8 @@ def apply_transaction(root, transaction):
 
 
 def recover(root):
-    from reference_store import recover_cards
+    from reference_store import recover_cards, recover_transcript_edits
+    recover_transcript_edits(root)
     recover_cards(root)
     transaction = wxq.read_json(Path(root) / 'knowledge/pending-save.json')
     if transaction:
@@ -442,7 +443,7 @@ def canonical_url(value):
     return normalized, 'link-' + hashlib.sha256(normalized.encode()).hexdigest()[:20]
 
 
-def register_source(root, payload, sid=None, preserve_annotations=False, wait=False):
+def register_source(root, payload, sid=None, preserve_annotations=False, wait=False, cancelled=None):
     url, canonical_id = canonical_url(payload.get('url', ''))
     with store_lock(root, wait=wait):
         path = Path(root) / 'knowledge/source-registry.json'
@@ -473,7 +474,7 @@ def register_source(root, payload, sid=None, preserve_annotations=False, wait=Fa
                     'title': (row.get('title') or (imported or {}).get('title') or payload.get('title', '')) if preserve_annotations else payload.get('title', ''),
                     'notes': (row.get('notes') or (imported or {}).get('notes') or payload.get('notes', '')) if preserve_annotations else payload.get('notes', ''),
                     'updated_at': wxq.now()})
-        wxq.atomic_json(path, rows)
+        wxq.atomic_json(path, rows, cancelled=cancelled)
         return row
 
 
@@ -499,6 +500,7 @@ def sources(root):
         review = wxq.read_json(path.parent / 'review.json', {})
         row['stage'] = state.get('stage', 'registered')
         row['error'] = state.get('error', '')
+        row['processing_warning'] = '；'.join(state.get('warnings', []))
         all_claims = [c for n in notes(root) for c in n.get('claims', [])]
         all_claims += [c for n in notes(root) for h in n.get('history', []) for c in h.get('previous', {}).get('claims', [])]
         referenced = [e for c in all_claims for e in c.get('evidence', []) if e['source'] == sid]

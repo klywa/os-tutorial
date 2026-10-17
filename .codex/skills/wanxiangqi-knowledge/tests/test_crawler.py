@@ -59,7 +59,7 @@ class CrawlerTests(unittest.TestCase):
 
     def test_uid_identity_and_daily_catchup(self):
         a = self.store.save_creator({'name': '甲', 'url': 'https://space.bilibili.com/123/video', 'date_from': '2026-10-01'})
-        b = self.store.save_creator({'name': '乙', 'url': 'https://space.bilibili.com/123', 'date_from': '2026-10-01'})
+        b = self.store.update_creator('123', {'name': '乙', 'url': 'https://space.bilibili.com/123', 'date_from': '2026-10-01'})
         self.assertEqual(a['uid'], b['uid'])
         self.assertEqual(len(self.store.creators()), 1)
         now = datetime(2026, 10, 16, 10, tzinfo=BJ)
