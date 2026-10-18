@@ -67,3 +67,49 @@ B站-352/-401/403/412/429会自动进入持久化冷却：1、5、15、30、60�
 编辑内容弹窗包含资料和文字稿两个独立保存页签。资料通过来源ID保存人工覆盖值，明确清空也会保留；后续采集不覆盖。链接只能指向同一来源，展示批次与实际任务归属分开。PUT /api/sources/{id} 携带列表revision，冲突返回409。
 
 GET/PUT /api/sources/{id}/transcript 使用独立revision，路径仅从登记索引读取。保存人工文字稿前在raw/reports/transcript-edits/保留原文，短暂写锁内更新文字稿与索引，失败回滚，中断事务在启动或下次访问时恢复。人工版本受自动导出保护，列表标明人工编辑/待核对，不自动更改知识结论。
+
+
+### 外部内容主题
+
+外部内容 → 编辑内容可维护主题棋手、阵容、英雄、卡牌及忽略状态。主题选择器可搜索并多选；更多筛选中，同字段任一命中、跨字段同时满足。已忽略内容从正常列表、全选及路径复制中排除，可在“已忽略”恢复。不会停止已派发视频。
+
+“主题提取与阵容名单”提供独立队列进度、暂停/继续、失败重试、正式阵容名导入、名称/确认别称编辑和停用。名单为空时只填写棋手，阵容候选进入待确认；导入或确认别称后直接重新匹配已有候选。停用保留历史ID。单条内容支持重新提取；人工值包括明确清空优先于自动值，棋手/阵容可恢复自动值。
+
+本机运行 `frontend/topic_worker.py --root <项目绝对路径>`，服务启动时自动启动，独立进程锁避免重复。每20秒补查有效文字稿，采集导出后也即时入队。输入变化以标题及全文SHA256识别；分P分别处理。队列存放 `raw/crawler/topics.sqlite3`，原ASR和知识状态不变。
+
+本地模型位于忽略目录 `.wxq-runtime/llm/`：官方 Qwen3-1.7B Q8_0 + llama.cpp b11712 Windows CPU运行时。manifest.json记录来源及SHA256；运行 `python frontend/install_topic_model.py` 可断点补装，`--verify-only` 离线核验全部文件；CPU四线程、GPU零层、禁用思考，仅127.0.0.1随机端口及随机API密钥，空闲5分钟释放。完整文本按实际token分块、覆盖所有分块后归并主要话题；没有语音不凭标题打标签。模型失败最多校验重试一次，旧有效主题保留。
+
+接口：`GET /api/topics/catalog|queue|lineups|candidates`；`POST /api/topics/control`（pause/resume/retry/extract，单条source可选）；`POST /api/topics/lineups`导入names；`PUT /api/topics/lineups`按ID更新；`PUT /api/topics/candidates/{id}`确认target/remember_alias或reject。来源PUT沿用revision，支持四类主题数组、ignored和restore_topics。自动主题结果与人工覆盖独立保存。
+
+正式批量运行先通过20条真实样本验收；队列门禁与模型/提示版本绑定。详细样本、速度和剩余工作见 `docs/source-topics-progress.md`。
+
+### 分类目录与预设阵容
+
+全部笔记按阵容、棋手、其他折叠分组。阵容目录使用共享名单，展示成员与关联笔记数量；无笔记项显示占位，不生成笔记。现有阵容笔记保留在未归类区，管理员在“管理阵容名单”确认关联，一套阵容和一篇笔记均可多重关联。对局助手仍只列有实际攻略的打法。
+
+名单可新增、改名、修改英雄成员/确认别称、排序、停用和明确合并。修改携带条目revision，冲突409保留草稿；合并以稳定重定向保留人工主题与历史引用，同步不恢复已合并项。成员修改会重新核验自动组成映射，人工确认不被覆盖。
+
+网站同步从datawxq.com当前默认版本、万象大赛、最近7天和最少50场获取全部分页。完整英雄集合相同才合并，按登场率、场次、名称确定来源正式名。网站标题由其公开展示规则生成，保留原响应；同名但组成不同的条目分别保存，有歧义时不自动映射。同步先预览差异，应用后保留人工值，不删除缺失项。
+
+接口增加 `POST /api/topics/lineups/preview|apply|merge`、`PUT /api/topics/lineups/bind`、`GET /api/topics/lineup-suggestions`；GET notes返回lineup_ids。名单GET返回heroes/note_ids/sources/sort_order/revision/merged_into；POST/PUT新增或更新完整资料。主题control新增reextract，返回批次与名单修订。
+
+主题提取先识别主要话题，再用名单核对已有阵容候选及完整成员证据；后一步不能新增棋手或阵容主题。名称/确认别称唯一命中，或完整且可核验英雄集合唯一对应，才自动映射；其他保留待确认。全量重提取在新版真实样本通过后启动，缺稿等待，忽略跳过，人工值与知识正文不改动。详见 `docs/lineup-directory-progress.md`。
+
+### 常用名与变阵
+
+名单保留原名及稳定ID，`common_name`非空时作为`display_name`统一展示。原名、常用名和已确认别名均可搜索；共享名称不自动合并。明确清空或人工修改受同步保护。
+
+网站同步同时获取主列表全部分页及每套主阵容的详情变阵，使用相同版本/模式/7天/50场门槛，保存原响应和统计。重复页、缺失详情、数量不符或身份异常均拒绝应用。变阵按完整成员集合去重，可关联多个主阵容；只在阵容内部展开，不生成笔记、目录项或独立主题。已有人工说明和路线继续沿用正文。
+
+“管理阵容名单”可维护常用名、多别名及变阵关联；“命名待确认”提供公开来源、引文、成员对照和归属选择，确认常用名、收为别名或驳回均检查修订号。名单变化优先重匹配已保存的原文证据；只有组成证据不足时才重新分析文字稿。
+
+新增`GET /api/topics/lineups/{id}/variants`、`PUT /api/topics/lineups/variants`及`GET /api/topics/lineups/naming-candidates`、`PUT /api/topics/lineups/naming-candidates/{id}`。主阵容返回common_name/display_name/variants；命名裁决携带主阵容revision和candidate_revision。外部内容仍以主阵容ID保存主题，支持棋手/阵容/英雄/卡牌四类筛选，同字段任一命中、跨字段同时满足。
+
+
+### 阵容名单快速编辑
+
+在“全部笔记 → 管理阵容名单”直接修改常用名、别名；别名支持回车、逗号和换行粘贴去重。多行草稿统一“保存全部”，筛选不清草稿。原名、英雄组成、排序和笔记关联使用“详细编辑”；阵容占位页可直接打开当前项。网站同步与命名建议折叠在下方。
+
+批量接口 `PUT /api/topics/lineups/batch` 接收 `{items:[{id,revision,common_name,aliases}]}`，一次事务保存；任一修订冲突返回409和lineup_ids，整批不变，网页保留草稿。刷新服务器资料后核对冲突行，再显式重试或放弃。
+
+`DELETE /api/topics/lineups/{id}` 接收 `{revision}`，仅移入“已删除”；`POST /api/topics/lineups/{id}/restore` 接收 `{revision}` 恢复删除前启用状态。历史ID、主题、笔记与文件保留，已删除项不进入新匹配及目录，网站同步不复活。管理确认使用页内弹窗。

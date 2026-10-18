@@ -19,6 +19,15 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_lineup_batch_delete_restore_api(self):
+        def send(path,payload,method='POST'):
+            with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)
+        rows=send('topics/lineups',{'name':'测试阵容','heroes':[]});row=rows[0]
+        saved=send('topics/lineups/batch',{'items':[{'id':row['id'],'revision':row['revision'],'common_name':'常用名','aliases':['别名']}]},'PUT')[0]
+        with self.assertRaises(HTTPError) as conflict:send('topics/lineups/batch',{'items':[{'id':row['id'],'revision':row['revision'],'common_name':'旧修改'}]},'PUT')
+        self.assertEqual(conflict.exception.code,409);self.assertEqual(json.load(conflict.exception)['lineup_ids'],[row['id']])
+        deleted=send('topics/lineups/'+row['id'],{'revision':saved['revision']},'DELETE')[0];self.assertTrue(deleted['deleted_at'])
+        restored=send('topics/lineups/'+row['id']+'/restore',{'revision':deleted['revision']})[0];self.assertFalse(restored['deleted_at']);self.assertEqual(restored['common_name'],'常用名')
     def test_source_edit_revision_and_transcript_api(self):
         def send(path,payload,method='POST'):
             with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)
@@ -204,7 +213,7 @@ class ServerTests(unittest.TestCase):
             reading = json.load(response)
         note = next(n for n in workspace.notes(self.root) if n['id']=='yaomei-sacrifice-lixin')
         self.assertEqual(reading['revision'],note['revision'])
-        self.assertEqual(len(reading['sections']),10)
+        self.assertEqual(len(reading['sections']),11)
         workspace.edit(self.root,note['id'],{'revision':note['revision'],'sections':{'新修订':'新的人工建议'}})
         with urlopen(self.url + 'notes/yaomei-sacrifice-lixin/reading') as response:
             updated=json.load(response)

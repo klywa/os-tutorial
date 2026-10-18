@@ -1869,7 +1869,8 @@
           "ban-core"
         ]
       }
-    ]
+    ],
+    "major_variants": []
   },
   "path": "knowledge/lineups/瑶妹牺牲流李信.md",
   "entity_names": {
@@ -4410,6 +4411,361 @@
           ]
         }
       }
+    },
+    {
+      "at": "2026-10-18T08:14:42.173994+00:00",
+      "origin": "major_variants_evidence_review",
+      "previous": {
+        "meta": {
+          "required_factions": [
+            "faction:heluo"
+          ],
+          "players": [
+            "player:11"
+          ],
+          "core_heroes": [
+            "card:5071"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1941",
+                "necessity": "optional",
+                "role": "前期前排，配小鹿保血",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1731",
+                "necessity": "optional",
+                "role": "前期战力和河洛古币成长",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "补升级经验",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "胜场经济；强势对手前改用即时战力",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "补开局战力",
+                "replaces": "card:1681",
+                "replacement_note": "面对同行瑶妹或强势孙尚香时考虑"
+              },
+              {
+                "hero": "card:5031",
+                "necessity": "optional",
+                "role": "缺少开局牌时的打工替代",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:5071",
+                "necessity": "required",
+                "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "required",
+                "role": "让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "required",
+                "role": "为李信补复生，觉醒后提供完美复生",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1931",
+                "necessity": "optional",
+                "role": "复生和牺牲临时等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "固定临时等级收益足够时保留",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1541",
+                "necessity": "optional",
+                "role": "升五本后的战力替补或缺李信转向",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5071",
+                "necessity": "required",
+                "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "required",
+                "role": "让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "required",
+                "role": "为李信补复生，觉醒后提供完美复生",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          },
+          "ban_conditions": [
+            {
+              "faction": "faction:heluo",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级）。 原条件说明：核心李信和钟馗无法获取。",
+              "derived_dependency": true,
+              "explicit_required": true,
+              "explicit_condition": {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "核心李信和钟馗无法获取。"
+              }
+            }
+          ],
+          "matchups": [
+            {
+              "target": "card:5211",
+              "condition": "高等级李信成为最高等级目标，海月有太乙真人提供复生。",
+              "text": "对手用钟馗给左右1格英雄赋予牺牲，再让太乙真人复生海月，可反复触发海月牺牲：控制敌方最高等级英雄进入水月幻境，并造成与海月生命值相关的真实伤害。李信等级最高时会成为目标。可考虑给李信穿磐石之心防爆发，同时检查自然法杖等控制是否阻断其行动；磐石之心不能保证免于控制。"
+            },
+            {
+              "target": "card:1901",
+              "condition": "班叔屏障、杨玉环回复和诸葛亮连续施法。",
+              "text": "班叔的等离子屏障、杨玉环回复、诸葛亮连续施法同时到位时，可能拖住李信。可考虑让李信携带静谧之铃，限制这组英雄的回蓝；能否突破仍取决于李信输出、自然法杖控制、太乙真人复生及敌方成型程度。"
+            },
+            {
+              "target": "card:1101",
+              "condition": "雷霆战机远程单核。",
+              "text": "对手以嬴政组成雷霆战机远程单核时，李信可用反伤重甲、魔女斗篷、自然法杖应对远程伤害。嬴政携带机器头、难以控制时，可把自然法杖换成凝渊追击；嬴政携带噬神之书时，反伤重甲收益下降，可换无尽巨剑或魔律之刃。此处保留未觉醒的太乙真人，是为了让李信复生后以暗信形态接近嬴政。"
+            },
+            {
+              "target": "card:1751",
+              "condition": "对方能开局勾走李信。",
+              "text": "对手钟馗能直接勾走李信时，调整李信位置，可让明世隐处在更外侧，避免李信开局被拉走。移动后重新确认太乙真人最近复生目标是李信、明世隐连线指向李信，以及钟馗能覆盖需要牺牲的太乙真人、明世隐或程咬金。"
+            }
+          ],
+          "operation_routes": [
+            {
+              "id": "ming-growth",
+              "name": "明世隐固定等级成长",
+              "condition": "较早取得多张明世隐或较高固定等级，外部压力允许继续培养。",
+              "advantages": "把李信战中临时等级保留到后续回合。",
+              "risks": "明世隐固定量低时占人口与钟馗覆盖格；铠、花木兰复生后仍存活会分走小鹿等级。",
+              "transition": "明世隐固定量跟不上对手战力时退出，改用武则天、蒙犽登场及简易协作、精密协作等等级牌；终局检查铠、花木兰是否分走奉献。",
+              "phases": {
+                "early": [
+                  "opening-four",
+                  "opening-wins"
+                ],
+                "middle": [
+                  "growth-ming",
+                  "middle-ming-choice"
+                ],
+                "late": [
+                  "late-revive-dilution",
+                  "order-six-before-double"
+                ]
+              },
+              "claim_refs": [
+                "growth-ming",
+                "middle-ming-choice",
+                "composition-ming",
+                "late-revive-dilution"
+              ],
+              "variant_ids": [
+                "ming-sacrifice"
+              ]
+            },
+            {
+              "id": "four-core",
+              "name": "四本找齐核心后存钱升本",
+              "condition": "中期仍能保血，愿意先组成明世隐固定等级骨架。",
+              "advantages": "先取得李信、明世隐、钟馗、铠，再将刷新开支转向升本。",
+              "risks": "四本找李信会消耗预算；大幅掉血时不能无限等待。",
+              "transition": "第8回合仍无李信，已有李白且能换入上官婉儿时可考虑转向；完整李白转阵名单未确认。",
+              "phases": {
+                "early": [
+                  "opening-four",
+                  "opening-wins"
+                ],
+                "middle": [
+                  "route-four-core",
+                  "middle-item-holder"
+                ],
+                "late": [
+                  "order-six-before-double",
+                  "taiyi-by-target"
+                ]
+              },
+              "claim_refs": [
+                "route-four-core",
+                "middle-item-holder",
+                "taiyi-by-target"
+              ],
+              "variant_ids": [
+                "ming-sacrifice"
+              ]
+            },
+            {
+              "id": "four-hold",
+              "name": "四本培养至第11回合",
+              "condition": "选择持续培养明世隐，暂不急需五阶战力。",
+              "advantages": "先投入四本的李信和明世隐成长，再安排共鸣前升六本。",
+              "risks": "延迟五阶战力；对手成型快、当前阵容无法保血时不能照搬停留回合。",
+              "transition": "中期难以保血时停止四本久留、考虑升五本补战力。第11回合后为升本留钱。",
+              "phases": {
+                "early": [
+                  "opening-four",
+                  "opening-wins"
+                ],
+                "middle": [
+                  "middle-hold-four",
+                  "growth-ming"
+                ],
+                "late": [
+                  "order-six-before-double",
+                  "late-revive-dilution"
+                ]
+              },
+              "claim_refs": [
+                "middle-hold-four",
+                "growth-ming",
+                "late-revive-dilution"
+              ],
+              "variant_ids": [
+                "ming-sacrifice"
+              ]
+            }
+          ],
+          "late_variants": [
+            {
+              "id": "ming-sacrifice",
+              "name": "明世隐与低等级牺牲配套",
+              "condition": "明世隐固定量较高，能够继续成长；以集中小鹿奉献等级为目标。",
+              "members": [
+                {
+                  "hero": "card:5071",
+                  "necessity": "required",
+                  "role": "主要输出，承接牺牲与小鹿奉献的临时等级",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1751",
+                  "necessity": "required",
+                  "role": "让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1861",
+                  "necessity": "required",
+                  "role": "为李信补复生，觉醒后提供完美复生",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:5011",
+                  "necessity": "required",
+                  "role": "最近目标指向李信，固定部分临时等级",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1441",
+                  "necessity": "optional",
+                  "role": "提供古币，需钟馗赋予牺牲",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:5091",
+                  "necessity": "optional",
+                  "role": "牺牲古币收益",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1931",
+                  "necessity": "optional",
+                  "role": "增加牺牲触发，终局按死亡顺序决定去留",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1541",
+                  "necessity": "optional",
+                  "role": "战力与复生牺牲，终局避免分走关键奉献收益",
+                  "replaces": "",
+                  "replacement_note": ""
+                }
+              ],
+              "core_heroes": [
+                "card:5071",
+                "card:5011"
+              ],
+              "required_factions": [
+                "faction:heluo"
+              ],
+              "ban_conditions": [
+                {
+                  "faction": "faction:heluo",
+                  "status": "unplayable",
+                  "reason": "完整阵容无法获取：李信（主要输出，承接牺牲与小鹿奉献的临时等级）、钟馗（让左右1格的太乙真人、明世隐或程咬金获得牺牲，并降低击败者等级）。 原条件说明：李信和钟馗无法获取。",
+                  "derived_dependency": true,
+                  "explicit_required": true,
+                  "explicit_condition": {
+                    "faction": "faction:heluo",
+                    "status": "unplayable",
+                    "reason": "李信和钟馗无法获取。"
+                  }
+                }
+              ],
+              "ban_combinations": [],
+              "claim_refs": [
+                "composition-ming",
+                "growth-ming",
+                "late-revive-dilution",
+                "middle-ming-choice",
+                "ban-core"
+              ]
+            }
+          ]
+        },
+        "revision": "841045c42083a76c259d"
+      },
+      "note": "按已有证据区分完整打法分支、运营节奏及工具位；原结论和来源不改写。"
     }
   ],
   "conflicts": [],
@@ -4439,5 +4795,5 @@
       "path": "knowledge/lineups/常小娥通用打法.md"
     }
   ],
-  "revision": "841045c42083a76c259d"
+  "revision": "91ffd054766be7faf1dd"
 }

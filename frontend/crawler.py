@@ -581,7 +581,8 @@ def source_rows(root, store):
         row['transcript_manual'] = bool(entry.get('manual_edit'))
         row.update(row.get('manual_values', {}))
         row['revision'] = row.get('manual_revision', '')
-    return rows
+    from topics import TopicStore
+    return TopicStore(root).project(rows)
 
 
 def cached_video(root, bvid):
@@ -616,7 +617,11 @@ def batch_paths(root, ids):
     if not isinstance(ids, list) or len(ids) > 10000 or any(not isinstance(s, str) for s in ids):
         raise ValueError('请选择最多10000条内容')
     paths, skipped = [], 0
+    ignored={r['id'] for r in workspace.sources(root) if r.get('manual_values',{}).get('ignored')}
     for sid in dict.fromkeys(ids):
+        if sid in ignored:
+            skipped += 1
+            continue
         try:
             path = transcript(root, sid)['path']
             if path not in paths:
@@ -641,6 +646,9 @@ class Runtime:
         self.last_recovery = time.monotonic()
 
     def start(self):
+        # The topic worker owns a separate cross-process lock and never delays ASR completion.
+        subprocess.Popen([sys.executable,'-X','utf8',str(Path(__file__).with_name('topic_worker.py')),'--root',str(self.root.resolve())],
+                         stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
         self.thread = threading.Thread(target=self.loop, daemon=True)
         self.thread.start()
 

@@ -73,6 +73,14 @@ def run(root, bvid, generation=None):
         if not wxq.read_json(folder / 'state.json', {}).get('warnings'):
             for name in ['media.mp4', 'audio.wav', 'video.m4s', 'audio.m4s']:
                 (folder / name).unlink(missing_ok=True)
+    # Topic enrichment is independent: queue failures never turn a valid ASR into failure.
+    try:
+        from topics import TopicStore
+        from crawler import source_rows
+        TopicStore(root).sync(source_rows(root, store))
+    except Exception as exc:
+        import logging
+        logging.getLogger(__name__).warning('文字稿已完成，主题入队等待后台补查：%s', exc)
     return outcomes
 
 

@@ -269,11 +269,12 @@ def repair_transcript_index(root, sid):
             return False
         try:
             hashes = {'raw_sha256': digest((folder / 'asr.raw.json').read_bytes()),
-                      'corrected_sha256': digest((folder / 'asr.corrected.json').read_bytes()),
                       'output_sha256': digest(target.read_bytes())}
+            legacy_raw = row.get('transcript_file') == 'asr.raw.json' and row.get('raw_sha256') == hashes['raw_sha256'] and row.get('output_sha256') == hashes['output_sha256']
+            if not legacy_raw:
+                hashes['corrected_sha256'] = digest((folder / 'asr.corrected.json').read_bytes())
             if any(row.get(k) and row[k] != v for k, v in hashes.items()):
                 return False
-            legacy_raw = row.get('transcript_file') == 'asr.raw.json' and row.get('raw_sha256') == hashes['raw_sha256'] and row.get('output_sha256') == hashes['output_sha256']
             if not legacy_raw:
                 expected = render_transcript(wxq.read_json(folder / 'metadata.json'),
                     wxq.read_json(folder / 'asr.corrected.json'), wxq.read_json(folder / 'corrections.json', []))

@@ -32,6 +32,8 @@ def references(meta):
     return [r for r in result if r]
 
 def validate(meta, reference, claims=None):
+    from major_variants import validate as validate_major
+    validate_major(meta, claims)
     if 'overview' in meta:
         from overview import entity_refs
         for value in entity_refs(meta['overview']): reference(value)
@@ -112,6 +114,8 @@ def availability(meta, banned):
     return 'playable' if 'playable' in statuses else 'unknown' if 'unknown' in statuses else 'unplayable'
 
 def remap_claims(meta, old_ids, new_id):
+    from major_variants import remap as remap_major
+    remap_major(meta, old_ids, new_id)
     from overview import remap
     remap(meta.get('overview', {}), old_ids, new_id)
     for row in meta.get('operation_routes',[]) + meta.get('late_variants',[]):
@@ -134,11 +138,12 @@ def enrich(meta, rows):
         variant['ban_conditions'] = enriched['ban_conditions']
     return result
 
-def render(meta, claims, names):
+def render(meta, claims, names, link_refs=None):
     lines = []
     by_id = {claim_id(c):c for c in claims}
     def label(ref): return names.get(ref,ref.removeprefix('pending:'))
     def text_refs(refs):
+        if link_refs:return [link_refs(refs)] if refs else []
         return [('推测：' if by_id[r].get('inference') else '') + by_id[r]['text'] + ('（适用条件：' + by_id[r]['condition'] + '）' if by_id[r].get('condition') else '') for r in refs if r in by_id]
     if meta.get('operation_routes'):
         lines += ['## 运营节奏','']

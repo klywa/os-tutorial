@@ -42,3 +42,15 @@ HTML导出已完成并通过桌面、手机及打印检查：exports/瑶妹牺�
 UP主监听列表与弹窗管理：complete。防覆盖POST/PUT、320px侧栏列表、共用弹窗、任务过滤已上线；142项Python/23项前端及桌面/420px验收通过。
 本地保存拒绝访问修复：代码与153项Python/24项前端/构建及正式来源保存验证complete；原失败监听已恢复，B站自动重试后扫描进行中。
 隐藏风控提示、压缩外部内容并扩展编辑：complete；161项Python/24项前端、构建及桌面/420px验收通过。
+
+外部内容主题字段与本地自动提取：实现与验收complete；186项Python、26项前端、生产构建及桌面/420px通过。官方Qwen3-1.7B Q8_0与llama.cpp CPU运行时已安装校验，21条真实样本误填0、保守漏填1，质量门禁已开启，正式批量in_progress（已完成23/456，183条待稿，3条零语音）。正式阵容名单待提供，候选保留待确认，不阻塞棋手提取。见docs/source-topics-progress.md与docs/source-topics-samples.md。
+
+笔记分类目录、预设阵容与主题重新提取：实现、导入与验收complete；正式全量提取后台in_progress。网站3页33条去重后33套，5条笔记关联建议待人工确认；205项Python、28项前端、构建及桌面/420px通过。21条真实验收棋手误填0、失败0、保守漏填1，27个未匹配阵容候选保留待确认；门禁已开启并复用21条结果，队列自动继续。详见docs/lineup-directory-progress.md及docs/lineup-topic-samples.md。
+阵容常用名、变阵归属与完整采集：实现与上线complete；32主列表/347详情变阵/265合格组成，原33主ID保留；采用3常用名/1别名、30命名裁决待用户确认。216项Python、30项前端、构建及桌面/420px通过；21条既有真实分析重新匹配3成功/24待确认。后台主题与下载继续，历史主题失败仍保留。见docs/lineup-name-decisions.md。
+
+主要变阵与技能规范升级：complete。四篇笔记、schema4、共享阅读编辑、HTML及技能规范已更新；170条结论不变，227Python/33前端/构建/validate/桌面420px验收通过。详见docs/major-variants-progress.md。
+
+阵容列表快速编辑：代码和自动验证 complete，隔离桌面部分通过；420px和页内删除恢复验收 pending（旧浏览器原生确认框阻塞，已请求用户取消）。正式数据保留，8765新版运行。
+
+
+2026-10-18阵容快速编辑交付complete：234项Python、39项前端、生产构建及桌面/420px验收通过。页内删除恢复、草稿保护、新增刷新持久化均补验完成，取代此前UI pending。正式33条阵容与知识正文保留，临时8766副本服务已清理。见docs/lineup-edit-progress.md。

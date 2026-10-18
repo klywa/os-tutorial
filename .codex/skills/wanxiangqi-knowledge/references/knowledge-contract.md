@@ -92,6 +92,8 @@
 
 ## 灵活阵容扩展（schema_version=3）
 
+新写入使用下述schema4，并保留本节全部字段与含义。
+
 保留 v2 的全部 meta 字段，新增可选 `operation_routes` 与 `late_variants`。缺失字段按空列表读取，不将旧阵容自动拆成多套组合。索引迁移为阵容 claims 增加稳定 `id`；未指定 ID 时按结论语义生成，来源证据不参与 ID。路径、笔记 ID 与人工内容保持稳定。
 
 `operation_routes` 每项包含 `id/name/condition/advantages/risks/transition`、`phases: {early:结论ID列表,middle:结论ID列表,late:结论ID列表}`、`claim_refs:结论ID列表`、`variant_ids:已确认适配的组合ID列表`。
@@ -105,3 +107,9 @@
 既有显式结论ID允许同一已引用来源的文案核对修正，旧文案与证据存入history；不同版本、条件、推断标志或仅有新来源的策略不能复用旧ID覆盖，须另建结论。人工章节与meta仍优先保护。
 
 灵活阵容记录一旦存在，必须填写契约字段：节奏包含 condition/advantages/risks/transition/phases/claim_refs/variant_ids，组合包含 condition/members/core_heroes/required_factions/ban_conditions/ban_combinations/claim_refs；未知说明可为空、无引用可为 []，不可省略导致前端数据形状不完整。旧阵容可继续省略两类记录。
+
+## 主要变阵扩展（schema_version=4）
+
+旧数据缺少`meta.major_variants`按空列表读取。每项固定字段：`id/name/condition_refs/baseline_refs/claim_refs/late_variant_ids/operation_route_ids/differences`。前三个refs对应采用条件与转入限制、共同主干和变阵依据，引用稳定结论ID。`differences`包含`heroes/mechanism/tempo/equipment/talents/skills`，各项固定`status: different|same|unknown`与`claim_refs: []`；有差异和沿用主干均须有效依据。已确认条目需有条件、主干、变阵依据及至少一项有据差异；缺失时显示待确认。
+
+后两个ID列表引用现有组合／路线，不复制英雄名单、不创建额外适配。禁止重复ID及悬空引用，删除被引用对象前先解除关联。嵌套结论参与重映射、合并校验、人工保护和依赖扫描；旧导入不传新字段时保留已有值，显式空列表才清空。统一事务写schema4并同步生成物。分类与编辑规则见[major-variants.md](major-variants.md)。

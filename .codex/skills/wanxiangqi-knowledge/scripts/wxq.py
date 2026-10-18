@@ -158,7 +158,7 @@ def related(root, entity_ids, core=None, topic=None):
 
 def render_note(note, sources):
     from lineup_layout import PROFILE_ID, render as render_profile
-    if note['id'] == PROFILE_ID and note['type'] == 'lineup':
+    if note['type'] == 'lineup':
         return render_profile(note)
     lines = ['# ' + note['title'], '']
     if note.get('meta'):

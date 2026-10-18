@@ -1,0 +1,7 @@
+import {lineupLabel,lineupSearch} from './lineupNames';
+import {useState} from 'react';
+import type {TopicChoice} from './types';
+export default function TopicPicker({label,choices,value,onChange,includeInactive=false}:{label:string;choices:TopicChoice[];value:string[];onChange:(ids:string[])=>void;includeInactive?:boolean}){
+ const [query,setQuery]=useState('');const matched=choices.filter(c=>(includeInactive||c.enabled!==false)&&lineupSearch(c).toLowerCase().includes(query.toLowerCase()));
+ return <details className="topic-picker"><summary>{label}{value.length?` (${value.length})`:''}</summary><div className="topic-selected">{value.map(id=><button type="button" title={choices.find(c=>c.id===id)?.description} key={id} onClick={()=>onChange(value.filter(v=>v!==id))}>{(choices.find(c=>c.id===id)?lineupLabel(choices.find(c=>c.id===id)!):id)} ×</button>)}</div><input aria-label={'搜索'+label} placeholder="搜索正式名称或别称" value={query} onChange={e=>setQuery(e.target.value)}/><div className="topic-options">{matched.slice(0,60).map(c=><label className="check-label" key={c.id}><input type="checkbox" checked={value.includes(c.id)} onChange={e=>onChange(e.target.checked?[...value,c.id]:value.filter(v=>v!==c.id))}/>{lineupLabel(c)}{c.common_name&&<small>（{c.name}）</small>}{c.description&&<small> {c.description}</small>}</label>)}{matched.length>60&&<small>匹配{matched.length}项，请搜索缩小范围。</small>}{!matched.length&&<small>暂无匹配项；阵容可先在名单管理中添加。</small>}</div></details>;
+}

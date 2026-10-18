@@ -1,6 +1,8 @@
-import type {Source,Progress} from './types';
-export type SourceFilters=Partial<Record<'query'|'keyword'|'author'|'batch'|'stage'|'deposit'|'date_from'|'date_to'|'min_views'|'max_views'|'min_duration'|'max_duration'|'collected_from'|'collected_to',string>>;
+import type {Source,Progress,TopicKey} from './types';
+export type SourceFilters=Partial<Record<'query'|'keyword'|'author'|'batch'|'stage'|'deposit'|'date_from'|'date_to'|'min_views'|'max_views'|'min_duration'|'max_duration'|'collected_from'|'collected_to',string>>&Partial<Record<TopicKey,string[]>>;
 export function sourceMatches(s:Source,f:SourceFilters){
+  if(s.ignored)return false;
+  for(const key of ['topic_players','topic_lineups','topic_heroes','topic_cards'] as const){if(f[key]?.length&&!f[key]!.some(id=>s[key]?.includes(id)))return false;}
   if(f.query&&![s.title,s.author,s.notes,s.url,...s.keywords??[]].join(' ').toLowerCase().includes(f.query.toLowerCase()))return false;
   if(f.keyword&&!s.keywords?.includes(f.keyword))return false;
   if(f.author&&s.author!==f.author)return false;
@@ -17,7 +19,7 @@ export function sourceMatches(s:Source,f:SourceFilters){
   }
   return true;
 }
-export function visibleSelection(selected:string[],rows:Source[]){return [...new Set([...selected,...rows.map(s=>s.id)])];}
+export function visibleSelection(selected:string[],rows:Source[]){return [...new Set([...selected,...rows.filter(s=>!s.ignored).map(s=>s.id)])];}
 export const taskNames:Record<string,string>={retry_wait:'排队中',paused:'已停止，可继续',exporting:'整理文字稿',frames:'提取关键帧',pending:'等待采集',scanning:'采集中',scanned:'采集结束',stopped:'已停止派发',deleted:'已删除',cancelled:'已取消',failed:'失败',preview:'待选择',queued:'排队中',running:'处理中',succeeded:'文字稿已生成',registered:'待整理',downloading:'下载中',transcribing:'转写中',prepared:'待核对',complete:'处理完成',ready:'文字稿已生成'};
 export function progressLabel(p:Progress){
   const base=taskNames[p.phase??'']??p.phase??'处理中';

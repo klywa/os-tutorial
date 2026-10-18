@@ -8,6 +8,7 @@ import workspace
 from bilibili import BJ, creator_uid
 
 FIELDS={'title','url','author','uid','space_url','published','view_count','duration','collected_at','keywords','batches','notes'}
+FIELDS.update({'topic_players','topic_lineups','topic_heroes','topic_cards','ignored'})
 
 def save_metadata(root, sid, payload, store):
     from crawler import source_rows
@@ -16,10 +17,17 @@ def save_metadata(root, sid, payload, store):
         current=next((s for s in source_rows(root,store) if s['id']==sid),None)
         if current is None:raise KeyError('来源不存在')
         if payload.get('revision')!=current['revision']:raise workspace.Conflict('资料已被修改，请刷新后重新编辑；草稿仍保留')
-        if set(payload)-FIELDS-{'revision'}:raise ValueError('包含不可编辑的系统字段')
+        if set(payload)-FIELDS-{'revision','restore_topics'}:raise ValueError('包含不可编辑的系统字段')
+        from topics import catalog, TOPIC_FIELDS
+        choices=catalog(root) if set(payload)&set(TOPIC_FIELDS) else {}
         changes={k:v for k,v in payload.items() if k in FIELDS}
         for k,v in list(changes.items()):
-            if k in ['view_count','duration']:
+            if k=='ignored':
+                if not isinstance(v,bool):raise ValueError('忽略状态须为布尔值')
+            elif k in TOPIC_FIELDS:
+                if not isinstance(v,list) or any(not isinstance(x,str) or x not in {e['id'] for e in choices[k]} for x in v):raise ValueError('主题实体或阵容不在名单中')
+                changes[k]=list(dict.fromkeys(v))
+            elif k in ['view_count','duration']:
                 if v is not None and (isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or v<0):raise ValueError('播放量和时长必须为非负数字')
                 if k=='view_count' and v is not None and int(v)!=v:raise ValueError('播放量必须为整数')
             elif k in ['keywords','batches']:
@@ -44,7 +52,18 @@ def save_metadata(root, sid, payload, store):
         if row is None:
             row={'id':sid,'url':current['url']};rows.append(row)
         row['manual_values']={**row.get('manual_values',{}),**changes}
+        restore=payload.get('restore_topics',[])
+        if not isinstance(restore,list) or any(k not in ['topic_players','topic_lineups'] for k in restore):raise ValueError('只可恢复棋手和阵容自动值')
+        for k in restore:row['manual_values'].pop(k,None)
         row['manual_revision']=uuid.uuid4().hex
         row['manual_updated_at']=wxq.now()
         wxq.atomic_json(path,rows)
-        return {**current,**row['manual_values'],'revision':row['manual_revision']}
+        updated=next(s for s in source_rows(root,store) if s['id']==sid)
+        # Invalidate in-flight chunks promptly; periodic worker scans recover an enqueue failure.
+        try:
+            from topics import TopicStore
+            TopicStore(root).sync([updated])
+        except Exception:
+            import logging
+            logging.getLogger(__name__).exception('资料已保存，主题队列等待后台补查')
+        return updated

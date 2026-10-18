@@ -221,7 +221,8 @@
         "condition": "回复强的芈月对手",
         "text": "考虑使绊子限制治疗和生命上限"
       }
-    ]
+    ],
+    "major_variants": []
   },
   "claims": [
     {
@@ -713,7 +714,202 @@
     "card:1211": "芈月"
   },
   "manual_sections": [],
-  "history": [],
+  "history": [
+    {
+      "at": "2026-10-18T08:14:41.766177+00:00",
+      "origin": "major_variants_evidence_review",
+      "previous": {
+        "meta": {
+          "required_factions": [
+            "faction:dahe",
+            "faction:zhulu"
+          ],
+          "players": [
+            "player:51"
+          ],
+          "core_heroes": [
+            "card:1491"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "连接飞行器的过渡输出",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "前排承伤",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "第二回合补充",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1491",
+                "necessity": "required",
+                "role": "成长核心",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "图腾来源",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "required",
+                "role": "图腾来源",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "required",
+                "role": "图腾来源",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "临时等级转永久",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "optional",
+                "role": "装备及辅助",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1191",
+                "necessity": "required",
+                "role": "完整推荐阵容的关键炸盾辅助；逐鹿被禁时无法获取",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1491",
+                "necessity": "required",
+                "role": "尽早觉醒的成长核心",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "图腾来源",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "required",
+                "role": "图腾来源",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "required",
+                "role": "图腾来源",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "optional",
+                "role": "辅助",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1191",
+                "necessity": "required",
+                "role": "完整推荐阵容的关键炸盾辅助；逐鹿被禁时无法获取",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "继续积累等级",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "optional",
+                "role": "替代缺少的明世隐",
+                "replaces": "card:5011",
+                "replacement_note": "明世隐少或晚时，争取觉醒并配装备"
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "终局复生",
+                "replaces": "card:5011",
+                "replacement_note": "七人口决赛、成长已充分时替换；人口多可同时保留"
+              }
+            ]
+          },
+          "ban_conditions": [
+            {
+              "faction": "faction:dahe",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：刘邦（尽早觉醒的成长核心）、鬼谷子（图腾来源）、少司缘（图腾来源）、大司命（图腾来源）。 原条件说明：缺少核心及大河图腾体系",
+              "derived_dependency": true,
+              "explicit_required": false,
+              "explicit_condition": {
+                "faction": "faction:dahe",
+                "status": "unknown",
+                "reason": "缺少核心及大河图腾体系"
+              }
+            },
+            {
+              "faction": "faction:zhulu",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：扁鹊（完整推荐阵容的关键炸盾辅助；逐鹿被禁时无法获取）。 原条件说明：无法使用扁鹊炸盾；仅顺利来牌示范局，稳定性待确认",
+              "derived_dependency": true,
+              "explicit_required": false,
+              "explicit_condition": {
+                "faction": "faction:zhulu",
+                "status": "unknown",
+                "reason": "无法使用扁鹊炸盾；仅顺利来牌示范局，稳定性待确认"
+              }
+            }
+          ],
+          "matchups": [
+            {
+              "target": "card:1211",
+              "condition": "回复强的芈月对手",
+              "text": "考虑使绊子限制治疗和生命上限"
+            }
+          ]
+        },
+        "revision": "2179b1054b621dcc3aac"
+      },
+      "note": "按已有证据区分完整打法分支、运营节奏及工具位；原结论和来源不改写。"
+    }
+  ],
   "conflicts": [],
-  "revision": "2179b1054b621dcc3aac"
+  "revision": "5e469fc1d4697d13b145"
 }

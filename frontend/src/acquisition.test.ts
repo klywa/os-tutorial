@@ -23,3 +23,11 @@ describe('acquisition interactions',()=>{
     expect(sourceMatches(running,{stage:'running'})).toBe(true);
   });
 });
+
+it('combines topic OR within a field and AND across fields, excluding ignored',()=>{
+ const tagged={...row,topic_players:['player:1'],topic_lineups:['lineup:a']};
+ expect(sourceMatches(tagged,{topic_players:['player:2','player:1'],topic_lineups:['lineup:a']})).toBe(true);
+ expect(sourceMatches(tagged,{topic_players:['player:1'],topic_lineups:['lineup:b']})).toBe(false);
+ expect(sourceMatches({...tagged,ignored:true},{})).toBe(false);
+ expect(visibleSelection([], [{...tagged,ignored:true},tagged])).toEqual([row.id]);
+});

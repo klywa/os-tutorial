@@ -1,0 +1,12 @@
+import {useEffect,useState} from 'react';
+import {api} from './model';
+import {lineupLabel} from './lineupNames';
+import type {Lineup} from './types';
+type Candidate={id:string;lineup:string;name:string;reason:string;revision:number;evidence:{url:string;quote:string;title?:string;fetched_at?:string}[]};
+export default function LineupNaming({roster,onChanged}:{roster:Lineup[];onChanged:()=>Promise<void>}){
+ const [rows,setRows]=useState<Candidate[]>([]),[targets,setTargets]=useState<Record<string,string>>({}),[names,setNames]=useState<Record<string,string>>({}),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+ async function refresh(){setRows(await api<Candidate[]>('topics/lineups/naming-candidates'));}
+ useEffect(()=>{void refresh().catch(e=>setError(e.message));},[]);
+ async function act(c:Candidate,action:string){setBusy(true);setError('');try{const target=targets[c.id]||c.lineup;await api(`topics/lineups/naming-candidates/${c.id}`,'PUT',{action,target,revision:roster.find(r=>r.id===target)?.revision,candidate_revision:c.revision,name:names[c.id]??c.name});await refresh();await onChanged();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
+ return <details className="lineup-naming"><summary>命名待确认 ({rows.length})</summary>{error&&<p role="alert" className="error">{error}</p>}{!rows.length&&<p className="muted">暂无待裁决名称。</p>}{rows.map(c=><article className="naming-candidate" key={c.id}><strong>{roster.find(r=>r.id===c.lineup)?.name}</strong><p>{roster.find(r=>r.id===c.lineup)?.description}</p><p className="muted">{c.reason}</p><input aria-label={'候选常用名 '+c.name} value={names[c.id]??c.name} onChange={e=>setNames({...names,[c.id]:e.target.value})}/><select aria-label={'名称归属 '+c.name} value={targets[c.id]||c.lineup} onChange={e=>setTargets({...targets,[c.id]:e.target.value})}>{roster.filter(r=>!r.merged_into).map(r=><option key={r.id} value={r.id}>{lineupLabel(r)}（{r.description}）</option>)}</select><details><summary>来源与原文 ({c.evidence.length})</summary>{c.evidence.map((e,i)=><div key={i}><a href={e.url} target="_blank" rel="noreferrer">{e.title||e.url}</a><blockquote>{e.quote}</blockquote>{e.fetched_at&&<small>{e.fetched_at}</small>}</div>)}</details><div className="action-line"><button disabled={busy} onClick={()=>void act(c,'common')}>确认为常用名</button><button disabled={busy} onClick={()=>void act(c,'alias')}>收为别名</button><button disabled={busy} onClick={()=>void act(c,'reject')}>驳回</button></div></article>)}</details>;
+}

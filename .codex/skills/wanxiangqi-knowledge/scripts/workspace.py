@@ -164,7 +164,7 @@ def prepare(root, items):
 def persist(root, items, obsolete=None):
     root = Path(root)
     prepare(root, items)
-    transaction = {'index': {'schema_version': 3, 'notes': items}, 'obsolete': obsolete or []}
+    transaction = {'index': {'schema_version': 4, 'notes': items}, 'obsolete': obsolete or []}
     wxq.atomic_json(root / 'knowledge/pending-save.json', transaction)
     apply_transaction(root, transaction)
 
@@ -248,6 +248,8 @@ def manual_claim(section, text):
 
 def merge_note(previous, incoming):
     result = {**deepcopy(previous), **deepcopy(incoming)}
+    if isinstance(incoming.get('meta'),dict) and 'major_variants' not in incoming['meta'] and 'major_variants' in previous.get('meta',{}):
+        result['meta']['major_variants']=deepcopy(previous['meta']['major_variants'])
     for key in ['path', 'history', 'manual_sections', 'manual_meta', 'manual_fields', 'conflicts']:
         if key in previous:
             result[key] = deepcopy(previous[key])
@@ -306,7 +308,7 @@ def validate_meta(root, meta):
     if not isinstance(meta, dict):
         raise ValueError('阵容信息必须为对象')
     expected = {'required_factions', 'players', 'core_heroes', 'compositions', 'ban_conditions', 'matchups'}
-    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants', 'overview'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
+    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants', 'overview', 'major_variants'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
         raise ValueError('阵容信息缺失必需字段或阶段')
     if not isinstance(meta['ban_conditions'], list) or not isinstance(meta['matchups'], list):
         raise ValueError('适用条件和针对策略须为列表')

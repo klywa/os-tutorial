@@ -1,0 +1,15 @@
+import {lineupLabel,lineupSearch} from './lineupNames';
+import {useCards,CardImage} from './EntityCards';
+import type {Note,Lineup} from './types';
+export function directoryLineups(roster:Lineup[],notes:Note[],query:string,hero:string,labels:Map<string,string>=new Map()){
+ const words=query.trim().toLowerCase().split(/\s+/);return roster.filter(r=>r.enabled&&!r.merged_into&&(!hero||r.heroes.includes(hero))).filter(r=>words.every(w=>[lineupSearch(r),...r.heroes.map(id=>labels.get(id)||id),...notes.filter(n=>r.note_ids.includes(n.id)).flatMap(n=>[n.title,...n.claims.map(c=>c.text)])].join(' ').toLowerCase().includes(w)));
+}
+export default function NoteDirectory({notes,roster,query,hero,player,type,active,onSelect,onLineup,onManage}:{notes:Note[];roster:Lineup[];query:string;hero:string;player:string;type:string;active:string;onSelect:(id:string)=>void;onLineup:(id:string)=>void;onManage:()=>void}){
+ const cards=useCards();const labels=new Map(cards.map(c=>[c.id,c.name]));
+ const text=(n:Note)=>[n.title,...n.aliases,...n.claims.map(c=>c.text),...n.entities.map(id=>labels.get(id)||id)].join(' ').toLowerCase();
+ const matches=(n:Note,ignoreQuery=false)=>(ignoreQuery||query.trim().toLowerCase().split(/\s+/).every(q=>text(n).includes(q)))&&(!player||n.meta?.players.includes(player)||n.entities.includes(player))&&(!hero||n.entities.includes(hero));
+ const shown=notes.filter(n=>matches(n));const lineups=directoryLineups(roster,notes,query,hero,labels).filter(r=>!player||r.note_ids.some(id=>notes.find(n=>n.id===id)?.meta?.players.includes(player)));
+ const list=(items:Note[])=>items.map(n=><button key={n.id} className={'note-option '+(active===n.id?'active':'')} onClick={()=>onSelect(n.id)}><span><strong>{n.title}</strong></span></button>);
+ const linked=new Set(roster.filter(r=>r.enabled&&!r.merged_into).flatMap(r=>r.note_ids));
+ return <div className="classified-directory"><button className="manage-lineups" onClick={onManage}>管理阵容名单</button>{(!type||type==='lineup')&&<details open className="directory-group"><summary>阵容 <small>{lineups.length} 套</small></summary>{lineups.map(r=><details key={r.id} className={'directory-lineup '+(active===r.id?'active':'')}><summary><button onClick={()=>onLineup(r.id)}><strong>{lineupLabel(r)}</strong><small>{r.note_ids.length?`${r.note_ids.length} 篇笔记`:'暂无笔记'}</small><span className="directory-portraits">{r.heroes.map(id=><CardImage key={id} card={cards.find(c=>c.id===id)}/>)}</span></button></summary>{list(notes.filter(n=>r.note_ids.includes(n.id)&&matches(n,query.trim().toLowerCase().split(/\s+/).every(q=>[lineupSearch(r),...r.heroes.map(id=>labels.get(id)||id)].join(' ').toLowerCase().includes(q)))))}</details>)}{shown.some(n=>n.type==='lineup'&&!linked.has(n.id))&&<details open><summary>未归类阵容笔记</summary>{list(shown.filter(n=>n.type==='lineup'&&!linked.has(n.id)))}</details>}</details>}{(['player','other'] as const).map(kind=>(!type||type===kind)&&<details open className="directory-group" key={kind}><summary>{kind==='player'?'棋手':'其他'} <small>{shown.filter(n=>n.type===kind).length} 篇</small></summary>{list(shown.filter(n=>n.type===kind))}</details>)}</div>;
+}

@@ -61,6 +61,19 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(404, {'error': '接口不存在'})
             if path.startswith('/api/sources/') and path.endswith('/transcript'):
                 return self.response(200, crawler.transcript(self.server.root, path.split('/')[-2]))
+            if path.startswith('/api/topics/'):
+                from topics import TopicStore, catalog
+                topics=TopicStore(self.server.root)
+                suffix=path.removeprefix('/api/topics/')
+                from lineup_catalog import LineupCatalog
+                if suffix=='lineup-suggestions':return self.response(200,LineupCatalog(self.server.root).suggestions())
+                if suffix=='catalog':return self.response(200,catalog(self.server.root))
+                if suffix=='queue':return self.response(200,topics.snapshot())
+                if suffix=='lineups':return self.response(200,topics.roster())
+                if suffix=='lineups/naming-candidates':return self.response(200,LineupCatalog(self.server.root).naming())
+                if suffix.startswith('lineups/') and suffix.endswith('/variants'):return self.response(200,LineupCatalog(self.server.root).variants(suffix.split('/')[1]))
+                if suffix=='candidates':return self.response(200,topics.pending())
+                return self.response(404,{'error':'主题接口不存在'})
             if path == '/api/cards' or path.startswith('/api/cards/'):
                 from card_images import image_fields, image_file
                 if '/images/' in path:
@@ -92,7 +105,9 @@ class Handler(BaseHTTPRequestHandler):
             with workspace.store_lock(self.server.root, wait=True):
                 workspace.recover(self.server.root)
                 if path == '/api/notes':
-                    return self.response(200, workspace.notes(self.server.root))
+                    from lineup_catalog import LineupCatalog
+                    links=LineupCatalog(self.server.root).links()
+                    return self.response(200, [{**n,'lineup_ids':[uid for uid,ids in links.items() if n['id'] in ids]} for n in workspace.notes(self.server.root)])
                 if path.startswith('/api/notes/') and path.endswith('/reading'):
                     from lineup_layout import reading_document
                     parts = path.split('/')
@@ -153,6 +168,30 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError('请求应为对象')
             path = unquote(urlsplit(self.path).path)
             store = self.server.crawler.store
+            if path.startswith('/api/topics/'):
+                from topics import TopicStore
+                topics=TopicStore(self.server.root)
+                from lineup_catalog import LineupCatalog
+                catalog=LineupCatalog(self.server.root)
+                if path=='/api/topics/lineups':
+                    if 'names' in payload:result=topics.save_roster(payload)
+                    else:result=catalog.save(payload)
+                elif path=='/api/topics/lineups/batch' and self.command=='PUT':result=catalog.save_batch(payload)
+                elif path.startswith('/api/topics/lineups/') and path.endswith('/restore') and self.command=='POST':result=catalog.restore(path.split('/')[-2],payload)
+                elif path.startswith('/api/topics/lineups/') and len(path.split('/'))==5 and self.command=='DELETE':result=catalog.delete(path.split('/')[-1],payload)
+                elif path=='/api/topics/lineups/preview':result=catalog.preview()
+                elif path=='/api/topics/lineups/apply':result=catalog.apply(payload.get('token'))
+                elif path=='/api/topics/lineups/merge':result=catalog.merge(payload)
+                elif path=='/api/topics/lineups/variants':result=catalog.save_variants(payload)
+                elif path.startswith('/api/topics/lineups/naming-candidates/'):result=catalog.resolve_naming(path.split('/')[-1],payload)
+                elif path=='/api/topics/lineups/bind':result=catalog.bind(payload)
+                elif path=='/api/topics/control':
+                    if payload.get('action') in ['retry','extract','reextract']:topics.sync(crawler.source_rows(self.server.root,store))
+                    result=topics.control(payload.get('action'),payload.get('source'))
+                elif path.startswith('/api/topics/candidates/'):
+                    result=topics.resolve(path.split('/')[-1],payload)
+                else:return self.response(404,{'error':'主题接口不存在'})
+                return self.response(200,result)
             if path == '/api/crawler/settings' or (path == '/api/crawler/searches' and self.command == 'PUT'):
                 result = store.settings(payload if path.endswith('settings') else {'search': payload})
             elif path == '/api/crawler/searches' and self.command == 'POST':
@@ -223,7 +262,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(404, {'error': '接口不存在'})
             self.response(200, result)
         except workspace.Conflict as exc:
-            self.response(409, {'error': str(exc), **({'uid': exc.uid} if hasattr(exc, 'uid') else {})})
+            self.response(409, {'error': str(exc), **({'uid': exc.uid} if hasattr(exc, 'uid') else {}), **({'lineup_ids': exc.lineup_ids} if hasattr(exc, 'lineup_ids') else {})})
         except workspace.Busy as exc:
             self.response(423, {'error': str(exc)})
         except KeyError as exc:

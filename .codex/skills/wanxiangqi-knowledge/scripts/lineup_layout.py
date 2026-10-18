@@ -1,6 +1,11 @@
 """Reader layout profiles. These do not change the knowledge data contract."""
 from pathlib import Path
 import re
+from major_variants import render as render_major, containers
+
+def major_refs(meta):
+    baseline={cid for row in meta.get('major_variants',[]) for cid in row['baseline_refs']}
+    return {cid for row in meta.get('major_variants',[]) for box in containers(row) for key in ('condition_refs','claim_refs') for cid in box.get(key,[])}-baseline
 
 PROFILE_ID = 'yaomei-sacrifice-lixin'
 # Each claim has exactly one primary location. Route references remain data,
@@ -9,6 +14,7 @@ GROUPS = [
  ('阵容概览与成员清单', [('阵容选择', ['composition-ming'])]),
  ('禁用阵营与适用条件', [('', ['ban-core'])]),
  ('成长机制与关键节点', [('', ['growth-sacrifice','growth-deer','growth-zhongkui','growth-ming','growth-hundred','growth-deer-timeline','growth-taiyi'])]),
+ ('主要变阵', []),
  ('运营路线选择', []),
  ('前中后期共通流程', [
   ('前期：保血与升本', ['opening-four','opening-missing','opening-level-plan','opening-wins','opening-blood-cushion']),
@@ -48,11 +54,17 @@ def _render_markdown(note):
     claims = [c for c in note.get('claims', []) if c.get('kind') in {'mechanic','general_strategy','conditional_strategy'}]
     by_id = {c.get('id'): c for c in claims}
     used = set()
+    reserved=major_refs(meta)
+    locations={cid:title for title,groups in GROUPS for _,ids in groups for cid in ids}
+    locations.update({cid:'主要变阵' for cid in reserved})
+    def links(ids):
+        titles=list(dict.fromkeys(locations.get(cid,'终局检查与待裁决') for cid in ids if cid in by_id))
+        return ['参见'+ '、'.join('['+title+'](#chapter-'+str([g[0] for g in GROUPS].index(title)+1)+')' for title in titles)] if titles else ['待确认']
     lines = ['# ' + note['title'], '']
 
-    def emit(ids):
+    def emit(ids,force=False):
         for cid in ids:
-            if cid not in by_id or cid in used:
+            if cid not in by_id or cid in used or cid in reserved and not force:
                 continue
             c = by_id[cid]
             text = c['text']
@@ -78,6 +90,11 @@ def _render_markdown(note):
         lines.append('')
 
     for title, groups in GROUPS:
+        if title=='主要变阵':
+            def take(ids):
+                before=len(lines);emit([cid for cid in ids if cid in reserved],True);result=lines[before:];del lines[before:]
+                return result or links(ids)
+            lines.extend(render_major(meta,take,links));continue
         lines.extend(['## ' + title, ''])
         if title == '阵容概览与成员清单':
             for field, heading in [('players','适用棋手'),('core_heroes','核心输出'),('required_factions','必须阵营')]:
@@ -116,13 +133,66 @@ def _render_markdown(note):
     return '\n'.join(lines) + '\n'
 
 
+def _render_generic(note):
+    import wxq
+    from tactics import claim_id,render as render_tactics
+    from workspace import FACTIONS
+    meta=note.get('meta',{});names={f['id']:f['name'] for f in FACTIONS};names.update(note.get('entity_names',{}))
+    label=lambda ref:names.get(ref,ref.removeprefix('pending:'))
+    claims=[{**c,'id':claim_id(c)} for c in note.get('claims',[]) if c.get('kind') in wxq.KNOWLEDGE_KINDS]
+    by_id={c['id']:c for c in claims};used=set();reserved=major_refs(meta)
+    sections=['阵容信息',*wxq.SECTIONS['lineup']]
+    sections.insert(sections.index('核心机制')+1,'主要变阵')
+    sections.insert(sections.index('主要变阵')+1,'运营路线与后期组合')
+    sections += sorted({c['section'] for c in claims}-set(sections))+['关联知识']
+    locations={c['id']:'主要变阵' if c['id'] in reserved else c['section'] for c in claims}
+    def links(ids):
+        titles=list(dict.fromkeys(locations[cid] for cid in ids if cid in locations))
+        return ['参见'+'、'.join('['+title+'](#chapter-'+str(sections.index(title)+1)+')' for title in titles)] if titles else ['待确认']
+    def emit(ids):
+        out=[]
+        for cid in ids:
+            if cid not in by_id:continue
+            if cid in used:out+=links([cid]);continue
+            used.add(cid);c=by_id[cid];text=c['text'];condition=c.get('condition','').strip()
+            if condition and condition not in text:text=f'当{condition}{"" if condition.endswith("时") else "时"}，{text}'
+            out+=['- '+('推测：' if c.get('inference') else '')+text,'']
+        return out
+    lines=['# '+note['title'],'']
+    def major_emit(ids):
+        primary=[cid for cid in ids if cid in reserved]
+        baseline=[cid for cid in ids if cid not in reserved]
+        return emit(primary)+(links(baseline) if baseline else [])
+    for section in sections:
+        if section=='主要变阵':lines+=render_major(meta,major_emit,links);continue
+        lines+=['## '+section,'']
+        if section=='阵容信息':
+            for field,title in [('players','适用棋手'),('core_heroes','核心英雄'),('required_factions','必须阵营')]:lines += [title+'：'+('、'.join(label(x) for x in meta.get(field,[])) or ('随组合查看，无全局共同要求' if meta.get('late_variants') and field!='players' else '待确认')),'']
+            for stage,title in [('early','前期'),('middle','中期'),('late','后期')]:
+                lines += ['### '+title+'英雄组成','']
+                for m in meta.get('compositions',{}).get(stage,[]):lines += ['- '+label(m['hero'])+('（必需）' if m['necessity']=='required' else '（可选）')+'：'+m.get('role','')+('；替换'+label(m['replaces']) if m.get('replaces') else '')+('；'+m['replacement_note'] if m.get('replacement_note') else ''),'']
+        elif section=='运营路线与后期组合':
+            lines+=[('#'+line if line.startswith('##') else line) for line in render_tactics(meta,claims,names,link_refs=lambda ids:'；'.join(links(ids)))]
+        elif section=='关联知识':
+            for r in note.get('related',[]):
+                path=Path(r.get('path','knowledge/'+('lineups' if r.get('type')=='lineup' else 'players')+'/'+r['id']+'.md'));lines+=['- ['+r['title']+'](../'+path.parent.name+'/'+path.name+')','']
+            if not note.get('related'):lines+=['暂无','']
+        else:
+            ids=[c['id'] for c in claims if c['section']==section and c['id'] not in reserved]
+            content=emit(ids);lines+=content or ['暂无已确认的通用策略','']
+            if section=='禁用阵营适用情况':
+                for c in meta.get('ban_conditions',[]):lines+=['- '+label(c['faction'])+'被禁：'+{'playable':'可玩','unplayable':'不可玩','unknown':'待确认'}[c['status']]+'。'+c.get('reason',''),'']
+            if section=='克制手段':
+                for m in meta.get('matchups',[]):lines+=['- 针对'+label(m['target'])+'：'+m.get('condition','')+' '+m['text'],'']
+    return '\n'.join(lines)+'\n'
+
 def reading_document(note):
     """Read-only presentation projection shared with the exported Markdown."""
     result = {'note_id': note['id'], 'revision': note.get('revision', ''),
               'profile': None, 'sections': [], 'section_aliases': {}}
-    if note['id'] != PROFILE_ID or note.get('type') != 'lineup':
+    if note.get('type') != 'lineup':
         return result
-    markdown = _render_markdown(note)
+    markdown = _render_markdown(note) if note['id']==PROFILE_ID else _render_generic(note)
     headings = list(re.finditer(r'^## (.+)\n', markdown, re.M))
     for i, match in enumerate(headings):
         end = headings[i + 1].start() if i + 1 < len(headings) else len(markdown)
@@ -138,7 +208,11 @@ def reading_document(note):
     aliases.update({'阵容组成':'阵容概览与成员清单','运营节奏':'运营路线选择',
                     '推荐后期组合':'阵容概览与成员清单','推荐装备':'装备与站位',
                     '站位技巧':'装备与站位','克制手段':'对局威胁与应对'})
-    result['profile'] = PROFILE_ID
+    if note['id']!=PROFILE_ID:
+        result['section_aliases']={'运营节奏':'运营路线与后期组合','推荐后期组合':'运营路线与后期组合'}
+    result['profile'] = PROFILE_ID if note['id']==PROFILE_ID else 'lineup-v4'
+    if result['sections']:
+        result['sections'][-1]['markdown']=result['sections'][-1]['markdown'].rstrip()+'\n'
     return result
 
 

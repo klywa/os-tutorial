@@ -13,7 +13,8 @@ class LineupLayoutTests(unittest.TestCase):
         note = {'id': 'yaomei-sacrifice-lixin', 'type': 'lineup', 'title': '李信', 'revision':'r1', 'meta':{}, 'claims':[]}
         result = reading_document(note)
         self.assertEqual(result['revision'], 'r1')
-        self.assertEqual(len(result['sections']), 10)
+        self.assertEqual(len(result['sections']), 11)
+        self.assertIn('主要变阵',[s['title'] for s in result['sections']])
         rebuilt = '# 李信\n\n' + ''.join('## ' + s['title'] + '\n\n' + s['markdown'] for s in result['sections'])
         self.assertEqual(rebuilt, render(note))
         self.assertEqual(result['section_aliases']['推荐装备'], '装备与站位')
