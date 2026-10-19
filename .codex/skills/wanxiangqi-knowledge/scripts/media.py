@@ -315,7 +315,7 @@ def convert_media(arguments, target):
 
 
 @locked_video
-def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, require_frames=True, subtitle_fetcher=None, entry_fetcher=None, download_callback=None):
+def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, require_frames=True, subtitle_fetcher=None, entry_fetcher=None, download_callback=None, part_filter=None):
     import yt_dlp
     root = Path(root)
     init_store(root)
@@ -325,6 +325,8 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
         cached = []
         for folder in (root / 'raw/sources').glob(match.group() + '_p*'):
             meta = read_json(folder / 'metadata.json', {})
+            if part_filter and not part_filter(int(meta.get('part') or 1)):
+                continue
             if requested_part and meta.get('id') != match.group() + ':p' + requested_part:
                 continue
             if meta.get('id'):
@@ -369,11 +371,19 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
         entries = list(info.get('entries') or [info])
     if not entries:
         raise RuntimeError('未获取到视频分P')
+    part_count = max([int(r.get('part_count') or len(entries)) for r in entries])
+    requested_part = urllib_part(url)
+    if requested_part:
+        entries = [r for i,r in enumerate(entries,1) if int(r.get('playlist_index') or i) == int(requested_part)]
+        if not entries:
+            raise ValueError('指定分P不存在')
     outcomes = []
     for number, entry in enumerate(entries, 1):
         match = re.search(r'BV[0-9A-Za-z]+', url)
         # BV + actual part index is stable across playlist and single-part URLs.
         part = entry.get('playlist_index') or int(urllib_part(url) or number)
+        if part_filter and not part_filter(int(part)):
+            continue
         sid = (match.group() if match else str(entry['id'])) + ':p' + str(part)
         folder = source_dir(root, sid)
         folder.mkdir(parents=True, exist_ok=True)
@@ -390,7 +400,7 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
                         'url': entry_url, 'title': entry.get('title'), 'author': entry.get('uploader'),
                         'published': datetime.fromtimestamp(entry['timestamp'], timezone(timedelta(hours=8))).strftime('%Y%m%d') if entry.get('timestamp') else entry.get('upload_date'),
                         'duration': entry.get('duration'),
-                        'collected_at': now(), 'version': None, 'part_count': len(entries)}
+                        'collected_at': now(), 'version': None, 'part_count': part_count}
             if not (folder / 'metadata.json').exists():
                 atomic_json(folder / 'metadata.json', metadata)
             # A later CLI review may need pictures, but never substitutes ASR for valid subtitles.

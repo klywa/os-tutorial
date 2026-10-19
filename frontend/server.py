@@ -98,6 +98,9 @@ class Handler(BaseHTTPRequestHandler):
                         for c in cards])
                 card = next((c for c in cards if c['id'] == path.removeprefix('/api/cards/')), None)
                 return self.response(200 if card else 404, card or {'error': '卡牌不存在'})
+            if path == '/api/sources/staging':
+                from source_staging import Staging
+                return self.response(200,Staging(self.server.root).get())
             if path == '/api/sources':
                 with workspace.store_lock(self.server.root, wait=True):
                     workspace.recover(self.server.root)
@@ -174,7 +177,13 @@ class Handler(BaseHTTPRequestHandler):
                 topics=TopicStore(self.server.root)
                 from lineup_catalog import LineupCatalog
                 catalog=LineupCatalog(self.server.root)
-                if path=='/api/topics/lineups':
+                if path=='/api/topics/lineups/cleanup/preview':
+                    from lineup_cleanup import Cleanup
+                    result=Cleanup(self.server.root).preview()
+                elif path=='/api/topics/lineups/cleanup/apply':
+                    from lineup_cleanup import Cleanup
+                    result=Cleanup(self.server.root).apply(payload.get('token'))
+                elif path=='/api/topics/lineups':
                     if 'names' in payload:result=topics.save_roster(payload)
                     else:result=catalog.save(payload)
                 elif path=='/api/topics/lineups/batch' and self.command=='PUT':result=catalog.save_batch(payload)
@@ -198,6 +207,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200,result)
             if path == '/api/crawler/settings' or (path == '/api/crawler/searches' and self.command == 'PUT'):
                 result = store.settings(payload if path.endswith('settings') else {'search': payload})
+            elif path == '/api/crawler/links' and self.command == 'POST':
+                from link_jobs import start_links,parse_links
+                result=parse_links(payload.get('text','')) if payload.get('preview') else start_links(store,payload.get('text',''))
             elif path == '/api/crawler/searches' and self.command == 'POST':
                 if not payload.get('keywords'):
                     raise ValueError('请填写搜索关键词')
@@ -237,6 +249,13 @@ class Handler(BaseHTTPRequestHandler):
                 else:
                     return self.response(404, {'error': '接口不存在'})
                 result = store.job(jid)
+            elif path.startswith('/api/sources/staging'):
+                from source_staging import Staging
+                basket=Staging(self.server.root)
+                if path.endswith('/paths'):result=basket.paths()
+                elif path.endswith('/clear'):result=basket.clear(payload.get('revision'))
+                elif self.command=='DELETE':result=basket.remove(path.split('/')[-1])
+                else:result=basket.add(payload.get('ids',[]))
             elif path == '/api/sources/paths':
                 result = crawler.batch_paths(self.server.root, payload.get('ids'))
             elif path.startswith('/api/sources/') and path.endswith('/creator'):
@@ -264,6 +283,8 @@ class Handler(BaseHTTPRequestHandler):
             elif self.command == 'PUT' and path.startswith('/api/sources/'):
                 from source_edit import save_metadata
                 result = save_metadata(self.server.root, path.split('/')[-1], payload, store)
+                from source_staging import Staging
+                Staging(self.server.root).prune()
             else:
                 return self.response(404, {'error': '接口不存在'})
             self.response(200, result)
@@ -292,6 +313,8 @@ def create_server(root=ROOT, port=8765, start_worker=False):
     server = LocalServer(('127.0.0.1', port), Handler)
     server.root = Path(root)
     server.crawler = crawler.Runtime(root)
+    from source_staging import Staging
+    Staging(root).prune()
     if start_worker:
         from note_links import auto_link
         auto_link(root)

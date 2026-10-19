@@ -62,3 +62,6 @@ B站关键词或条件/严格匹配 complete：新搜索默认标题各词全部
 阵容笔记关联、自动匹配与变体选择 complete：265Python/44前端/构建/知识validate及桌面420px通过。8765已更新，李信主笔记关联已核验；正式正文哈希不变，隔离8766清理。详见docs/note-links-progress.md。
 
 2026-10-19 B站采集受限与任务恢复修复 complete：281Python/47前端/构建/validate/skill及桌面420px通过。截图视频和第二条真实视频已通过音频回退large-v3生成正式文字稿；60条历史任务恢复，剩余后台in_progress。知识与人工资料保持不变，8765已更新、隔离8766清理。见docs/acquisition-recovery-progress.md。
+
+
+阵容清理、链接采集与外部内容暂存：实现/上线/验收complete；292Python、50前端、构建、validate及桌面420px通过。31套可恢复删除，李信与7篇知识原文保留。截图音频39,150,901字节/1539.008秒已校验并复用，原队列ASR pending，详情接口仍412。详见docs/staging-links-progress.md。

@@ -115,6 +115,7 @@ class Store:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.db() as db:
             db.executescript('''
+                CREATE TABLE IF NOT EXISTS network_retries(bvid TEXT PRIMARY KEY,attempt INTEGER,next_retry_at TEXT,error TEXT);
                 CREATE TABLE IF NOT EXISTS task_recoveries(bvid TEXT PRIMARY KEY,at TEXT);
                 CREATE TABLE IF NOT EXISTS task_diagnostics(bvid TEXT,generation INTEGER,data TEXT,at TEXT);
                 CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -130,6 +131,8 @@ class Store:
                 CREATE TABLE IF NOT EXISTS risk_retries(kind TEXT, target TEXT, attempt INTEGER NOT NULL,
                     next_retry_at TEXT NOT NULL, error TEXT NOT NULL, PRIMARY KEY(kind,target));
             ''')
+            from link_jobs import schema
+            schema(db)
             for field, declaration in [('scan_counts', "TEXT NOT NULL DEFAULT '{}'"), ('title_skipped', 'INTEGER NOT NULL DEFAULT 0')]:
                 if field not in [r['name'] for r in db.execute('PRAGMA table_info(jobs)')]:
                     db.execute(f'ALTER TABLE jobs ADD COLUMN {field} {declaration}')
@@ -176,6 +179,22 @@ class Store:
             else:
                 db.execute("UPDATE tasks SET state='queued',error=?,progress=?,generation=generation+1,updated=? WHERE bvid=?", (str(error),encode({'phase':'retry_wait','next_retry_at':next_at,'attempt':attempt}),now(),target))
         return {'attempt':attempt,'next_retry_at':next_at}
+
+    def adopt_network_failures(self):
+        from acquisition_errors import describe_error
+        for task in self.tasks():
+            if task['state']!='failed' or describe_error(task['error'])['category']!='network':continue
+            with self.db() as db:
+                db.execute('BEGIN IMMEDIATE')
+                if not db.execute("SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=? AND j.state NOT IN ('stopped','deleted')",(task['bvid'],)).fetchone():continue
+                old=db.execute('SELECT attempt FROM network_retries WHERE bvid=?',(task['bvid'],)).fetchone();attempt=(old['attempt'] if old else 0)+1
+                if attempt>3:continue
+                when=(datetime.fromisoformat(now())+timedelta(seconds=[60,300,900][attempt-1])).isoformat(timespec='seconds')
+                changed=db.execute("UPDATE tasks SET state='queued',error='',error_data='{}',progress=?,generation=generation+1 WHERE bvid=? AND generation=? AND state='failed'",(encode({'phase':'retry_wait'}),task['bvid'],task['generation'])).rowcount
+                if changed:
+                    detail=describe_error(task['error'],json.loads(task['progress'] or '{}').get('phase') or 'downloading',f'raw/crawler/{task["bvid"]}.log')
+                    db.execute('INSERT INTO task_diagnostics VALUES(?,?,?,?)',(task['bvid'],task['generation'],encode(detail),now()))
+                    db.execute('INSERT OR REPLACE INTO network_retries VALUES(?,?,?,?)',(task['bvid'],attempt,when,task['error']))
 
     def adopt_risk_failures(self, scanning=(), working=()):
         with self.db() as db:
@@ -233,7 +252,7 @@ class Store:
             if not job_id:
                 job_id = uuid.uuid4().hex[:12]
                 db.execute('INSERT INTO jobs(id,config,state,created,creator) VALUES(?,?,?,?,?)',
-                           (job_id, encode(payload), 'pending', now(), creator))
+                           (job_id, encode(payload), 'scanned' if payload.get('kind')=='links' else 'pending', now(), creator))
         return self.job(job_id)
 
     def jobs(self):
@@ -257,14 +276,15 @@ class Store:
             if not r:
                 raise KeyError('任务不存在')
             result = {**dict(r), 'config': json.loads(r['config']), 'scan_counts': json.loads(r['scan_counts'])}
-            rows = db.execute('''SELECT v.bvid,v.data,t.state,t.error,t.progress,t.error_data,h.keyword,
+            rows = db.execute('''SELECT v.bvid,v.data,t.state,t.error,t.progress,t.error_data,h.keyword,l.parts AS requested_parts,
                 EXISTS(SELECT 1 FROM dispatch d WHERE d.bvid=v.bvid AND d.job=h.job) AS selected
-                FROM hits h JOIN videos v ON v.bvid=h.bvid LEFT JOIN tasks t ON t.bvid=v.bvid
+                FROM hits h JOIN videos v ON v.bvid=h.bvid LEFT JOIN tasks t ON t.bvid=v.bvid LEFT JOIN link_demands l ON l.job=h.job AND l.bvid=v.bvid
                 WHERE h.job=? ORDER BY v.bvid''', (jid,)).fetchall()
+        from link_jobs import state_for
         grouped = {}
         for row in rows:
-            entry = grouped.setdefault(row['bvid'], {**json.loads(row['data']), 'keywords': [],
-                'state': row['state'] if row['selected'] else 'preview', 'error': row['error'] or '',
+            entry = grouped.setdefault(row['bvid'], {**json.loads(row['data']), 'keywords': [],'requested_parts':json.loads(row['requested_parts']) if row['requested_parts'] else None,
+                'state': state_for(self,jid,row['bvid'],row['state']) if row['selected'] else 'preview', 'error': row['error'] or '',
                 'error_info':json.loads(row['error_data'] or '{}') or None, 'progress': json.loads(row['progress'] or '{}')})
             if row['keyword']:
                 entry['keywords'].append(row['keyword'])
@@ -274,6 +294,7 @@ class Store:
             result['counts'][phase] = sum(v['state'] == 'running' and v['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]) for v in grouped.values())
         if items:
             for item in grouped.values():
+                if item['state']=='succeeded':item['error']='';item['error_info']=None
                 item['error_info'] = item.get('error_info') or error_info(item['error'], item['progress'].get('phase'))
             result['items'] = list(grouped.values())
         result['error_info'] = error_info(result['error'], 'discovery')
@@ -318,7 +339,10 @@ class Store:
                 if db.execute('SELECT 1 FROM dispatch WHERE job=? AND bvid=?', (jid, bvid)).fetchone():
                     continue
                 existing = db.execute('SELECT state FROM tasks WHERE bvid=?', (bvid,)).fetchone()
-                cached = cached_video(self.root, bvid)
+                from link_jobs import refresh_artifacts,demand_done,scope_for
+                refresh_artifacts(self,db,bvid)
+                demand=db.execute('SELECT parts FROM link_demands WHERE job=? AND bvid=?',(jid,bvid)).fetchone()
+                cached = demand_done(self,bvid,json.loads(demand['parts']),db) if demand else cached_video(self.root,bvid)
                 charged = int(not existing and not cached)
                 if charged and db.execute('SELECT COALESCE(SUM(charged),0) FROM dispatch WHERE job=?', (jid,)).fetchone()[0] >= limit:
                     db.execute('UPDATE jobs SET limited=1 WHERE id=?', (jid,))
@@ -326,13 +350,16 @@ class Store:
                 db.execute('INSERT OR IGNORE INTO tasks(bvid,state,updated) VALUES(?,?,?)', (bvid, 'succeeded' if cached else 'queued', now()))
                 db.execute("UPDATE tasks SET state='queued',error='' WHERE bvid=? AND state='cancelled'", (bvid,))
                 db.execute('INSERT OR IGNORE INTO dispatch(job,bvid,charged) VALUES(?,?,?)', (jid, bvid, charged))
+                if not cached:
+                    db.execute("UPDATE tasks SET state='queued',error='',error_data='{}' WHERE bvid=? AND state IN ('succeeded','failed')",(bvid,))
+                    if existing and existing['state']=='failed':db.execute('DELETE FROM network_retries WHERE bvid=?',(bvid,))
 
     def stop(self, jid):
         self.update_job(jid, state='stopped')
 
     def resume(self, jid):
         job = self.job(jid, False)
-        self.update_job(jid, state='scanned' if job.get('scan_cancelled') else 'pending')
+        self.update_job(jid, state='scanned' if job.get('scan_cancelled') or job['config'].get('kind')=='links' else 'pending')
 
     def delete_job(self, jid):
         with self.db() as db:
@@ -369,7 +396,7 @@ class Store:
                     WHERE d.bvid=? AND j.state!='deleted' ORDER BY j.created""", (row['bvid'],)).fetchall()
                 result.append({**json.loads(row['data']), 'bvid': row['bvid'], 'state': row['state'],
                     'error': row['error'], 'progress': json.loads(row['progress']),
-                    'jobs': [{'id': j['id'], 'name': j['creator'] or '、'.join(json.loads(j['config'])['keywords'])} for j in jobs]})
+                    'jobs': [{'id': j['id'], 'name': j['creator'] or ('链接采集' if json.loads(j['config']).get('kind')=='links' else '、'.join(json.loads(j['config'])['keywords']))} for j in jobs]})
             return result
 
     def control_task(self, bvid, action):
@@ -402,6 +429,9 @@ class Store:
         self.stop(jid)
         phase = 'downloading' if action == 'stop-download' else 'transcribing'
         for item in self.job(jid)['items']:
+            with self.db() as db:
+                shared=db.execute("SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=? AND d.job!=? AND j.state NOT IN ('stopped','deleted')",(item['bvid'],jid)).fetchone()
+            if shared:continue
             if item['state'] == 'running' and item['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]):
                 try:
                     self.control_task(item['bvid'], action)
@@ -429,10 +459,11 @@ class Store:
             condition = ' AND t.bvid NOT IN (' + ','.join('?' for _ in exclude) + ')' if exclude else ''
             row = db.execute('''SELECT t.*,j.id AS owner FROM tasks t JOIN dispatch d ON d.bvid=t.bvid
                 JOIN jobs j ON j.id=d.job WHERE t.state='queued' AND j.state NOT IN ('stopped','deleted')
+                AND NOT EXISTS(SELECT 1 FROM network_retries n WHERE n.bvid=t.bvid AND n.next_retry_at>?)
                 AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='task' AND r.target=t.bvid AND r.next_retry_at>?)''' + condition + '''
                 ORDER BY (SELECT COUNT(*) FROM tasks r JOIN dispatch rd ON rd.bvid=r.bvid
                           WHERE rd.job=j.id AND r.state='running'),
-                         j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', (now(),*exclude)).fetchone()
+                         j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', (now(),now(),*exclude)).fetchone()
             if not row:
                 return None
             db.execute("UPDATE tasks SET state='running',error='',error_data='{}',progress='{}',updated=?,generation=generation+1 WHERE bvid=?", (now(), row['bvid']))
@@ -443,21 +474,30 @@ class Store:
         from acquisition_errors import describe_error
         detail=describe_error(error,(progress or {}).get('phase'),f'raw/crawler/{bvid}.log') if error else None
         with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            if state=='succeeded' and db.execute('SELECT 1 FROM link_demands WHERE bvid=?',(bvid,)).fetchone():
+                from link_jobs import refresh_artifacts,demand_done,scope_for
+                refresh_artifacts(self,db,bvid)
+                scope=scope_for(self,bvid,db)
+                if scope!=[] and not demand_done(self,bvid,scope,db):state='queued';progress={}
             changed = db.execute("UPDATE tasks SET state=?,error=?,progress=?,updated=?,error_data=? WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",
                        (state, str(error), encode(progress or {}), now(), encode(detail or {}), bvid, generation, generation)).rowcount
             if changed and detail:
                 db.execute("INSERT INTO task_diagnostics VALUES(?,?,?,?)",(bvid,generation,encode(detail),now()))
             if changed and state == 'succeeded':
                 db.execute("DELETE FROM risk_retries WHERE kind='task' AND target=?", (bvid,))
+                db.execute('DELETE FROM network_retries WHERE bvid=?',(bvid,))
 
     def retry(self, jid, bvids=None):
         with self.db() as db:
             if not db.execute("SELECT 1 FROM jobs WHERE id=? AND state!='deleted'", (jid,)).fetchone():
                 raise KeyError('任务已删除或不存在')
+            targets=[r['bvid'] for r in db.execute("SELECT bvid FROM tasks WHERE state='failed' AND bvid IN (SELECT bvid FROM dispatch WHERE job=?)",(jid,)) if not bvids or r['bvid'] in bvids]
+            for target in targets:db.execute('DELETE FROM network_retries WHERE bvid=?',(target,))
             db.execute("UPDATE tasks SET state='queued',error='',updated=? WHERE state='failed' AND bvid IN (SELECT bvid FROM dispatch WHERE job=?)" +
                        (' AND bvid IN (' + ','.join('?' for _ in bvids) + ')' if bvids else ''),
                        (now(), jid, *(bvids or [])))
-            db.execute("UPDATE jobs SET state=CASE WHEN scan_cancelled=1 THEN 'scanned' WHEN state IN ('failed','stopped') THEN 'pending' ELSE state END,error='' WHERE id=?", (jid,))
+            db.execute("UPDATE jobs SET state=CASE WHEN scan_cancelled=1 THEN 'scanned' WHEN state IN ('failed','stopped') THEN CASE WHEN json_extract(config,'$.kind')='links' THEN 'scanned' ELSE 'pending' END ELSE state END,error='' WHERE id=?", (jid,))
 
     def recover_tasks(self, exclude=()):
         from processing_lock import file_lock
@@ -746,9 +786,12 @@ class Runtime:
         # Also reap a surviving worker that subsequently died after an HTTP-service restart.
         if time.monotonic() - self.last_recovery >= 30:
             self.store.recover_tasks(exclude=self.workers)
+            from link_jobs import reconcile
+            reconcile(self.store)
             self.last_recovery = time.monotonic()
         settings = self.store.settings()
         self.store.adopt_risk_failures(scanning=self.scans, working=self.workers)
+        self.store.adopt_network_failures()
         current = datetime.now(BJ)
         for creator in due_creators(self.store.creators(), settings['clock'], current):
             if creator.get('last_checked') and current - datetime.fromisoformat(creator['last_checked']) < timedelta(hours=1):
@@ -856,6 +899,10 @@ class Runtime:
             if self.closed.is_set():
                 finish('queued')
                 return
+            if output.is_file():
+                import shutil
+                archive=output.parent/'logs';archive.mkdir(exist_ok=True)
+                shutil.copy2(output,archive/(bvid+'-'+str(generation)+'-'+uuid.uuid4().hex[:8]+'.log'))
             with output.open('w', encoding='utf8') as log:
                 process = subprocess.Popen([sys.executable, '-X', 'utf8', str(Path(__file__).with_name('crawler_worker.py')),
                     '--root', str(self.root), '--bvid', bvid, '--generation', str(generation)], stdout=log, stderr=subprocess.STDOUT,

@@ -195,11 +195,14 @@ class Bilibili:
     def download(self,url,options,attempts=3):
         import yt_dlp
         from pathlib import Path
+        from download_resume import ResumeGuard,guarded_downloader
+        guard=ResumeGuard(options)
+        Downloader=guarded_downloader(yt_dlp.YoutubeDL,guard)
         for attempt in range(attempts):
             if getattr(self,'gate',None):self.gate.wait('media')
             # The refreshed cookie jar is shared with discovery and subtitles.
             try:
-                with yt_dlp.YoutubeDL({**options,'retries':0,'fragment_retries':0}) as downloader:
+                with Downloader({**options,'retries':0,'fragment_retries':0}) as downloader:
                     downloader.cookiejar=self.ydl.cookiejar
                     info=downloader.extract_info(url,download=True)
                     return info,Path(downloader.prepare_filename(info))

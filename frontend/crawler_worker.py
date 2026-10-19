@@ -48,7 +48,7 @@ def run(root, bvid, generation=None):
     def client():
         if adapter[0] is None:adapter[0]=Bilibili(store.settings()['cookies'],refresh=bool(store.risk_retry('task',bvid)),root=root)
         return adapter[0]
-    def entries():
+    def discover_entries():
         try:return client().entries(bvid)
         except Exception as exc:
             detail=describe_error(exc,'discovery')
@@ -62,7 +62,10 @@ def run(root, bvid, generation=None):
                         'title':meta.get('title',''),'duration':meta.get('duration'),'uploader':meta.get('author',''),
                         'upload_date':meta.get('published'),'webpage_url':f'https://www.bilibili.com/video/{bvid}/?p={part}',
                         'part_count':meta.get('part_count')})
-            if cached and cached[0].get('part_count')==len(cached) and len({r['playlist_index'] for r in cached})==len(cached):
+            with store.db() as db:
+                verified=db.execute('SELECT 1 FROM part_discoveries WHERE bvid=?',(bvid,)).fetchone()
+                known_parts={r[0] for r in db.execute('SELECT part FROM video_parts WHERE bvid=?',(bvid,))}
+            if verified and {r['playlist_index'] for r in cached}==known_parts and cached and cached[0].get('part_count')==len(cached) and len({r['playlist_index'] for r in cached})==len(cached):
                 wxq.atomic_json(Path(root)/'raw/crawler'/f'{bvid}-discovery-fallback.json',{'at':wxq.now(),**detail})
                 return cached
             return client().metadata_entries(bvid)
@@ -83,19 +86,39 @@ def run(root, bvid, generation=None):
                     except Exception:break
                 else:break
         return None  # Explicit recorded fallback, never reported as absence of subtitles.
-    outcomes = media.prepare.__wrapped__(root, f'https://www.bilibili.com/video/{bvid}',
-        cookies=store.settings()['cookies'] or None, progress_callback=progress, require_frames=False,
-        subtitle_fetcher=fetch_subtitle,entry_fetcher=entries,
-        download_callback=lambda url,options,attempts:client().download(url,options,attempts))
+    from link_jobs import scope_for,record_parts,mark_part,part_requested
+    cached_entries=[None]
+    def entries():
+        if cached_entries[0] is None:
+            cached_entries[0]=discover_entries();record_parts(store,bvid,cached_entries[0])
+        return cached_entries[0]
+    requested=scope_for(store,bvid) if generation is not None else None
+    if generation is not None and requested is None:
+        with store.db() as db:
+            explicit=db.execute('SELECT 1 FROM link_demands WHERE bvid=?',(bvid,)).fetchone()
+            known=db.execute('SELECT 1 FROM part_discoveries WHERE bvid=?',(bvid,)).fetchone()
+        if explicit:
+            if not known:entries()
+            with store.db() as db:requested=[r[0] for r in db.execute('SELECT part FROM video_parts WHERE bvid=? ORDER BY part',(bvid,))]
+    urls=([f'https://www.bilibili.com/video/{bvid}?p={r.get("playlist_index") or i}' for i,r in enumerate(cached_entries[0],1)] if cached_entries[0] is not None else [f'https://www.bilibili.com/video/{bvid}']) if requested is None else [f'https://www.bilibili.com/video/{bvid}?p={part}' for part in requested]
+    outcomes=[]
+    for url in urls:
+        if generation is not None and (store.halted(bvid) or not store.requested(bvid,generation)):break
+        result=media.prepare.__wrapped__(root,url,
+            cookies=store.settings()['cookies'] or None,progress_callback=progress,require_frames=False,
+            subtitle_fetcher=fetch_subtitle,entry_fetcher=entries,
+            part_filter=(lambda part:part_requested(store,bvid,part,generation)) if generation is not None else None,
+            download_callback=lambda url,options,attempts:client().download(url,options,attempts))
+        outcomes.extend(result)
     failed = [r for r in outcomes if r.get('stage') == 'failed']
-    if failed:
-        from acquisition_errors import AcquisitionFailure
-        raise AcquisitionFailure(failed)
     if not outcomes:
         raise RuntimeError('未获取到视频分P')
     progress({'phase': 'exporting'})
     for result in outcomes:
         sid = result['id']
+        if result.get('stage')=='failed':
+            mark_part(store,bvid,int(sid.rsplit(':p',1)[1]),'failed',result.get('error',''),generation=generation)
+            continue
         folder = wxq.source_dir(root, sid)
         metadata = wxq.read_json(folder / 'metadata.json', {})
         with workspace.store_lock(root, wait=True):
@@ -114,6 +137,7 @@ def run(root, bvid, generation=None):
             errors = [e for e in transcript_errors(root, sid) if not e.startswith('Transcript was manually edited')]
             if errors:
                 raise RuntimeError('; '.join(errors))
+        mark_part(store,bvid,int(sid.rsplit(':p',1)[1]),'succeeded',generation=generation)
         if not wxq.read_json(folder / 'state.json', {}).get('warnings'):
             for name in ['media.mp4', 'audio.wav', 'video.m4s', 'audio.m4s']:
                 (folder / name).unlink(missing_ok=True)
@@ -125,6 +149,9 @@ def run(root, bvid, generation=None):
     except Exception as exc:
         import logging
         logging.getLogger(__name__).warning('文字稿已完成，主题入队等待后台补查：%s', exc)
+    if failed:
+        from acquisition_errors import AcquisitionFailure
+        raise AcquisitionFailure(failed)
     return outcomes
 
 

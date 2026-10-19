@@ -18,7 +18,7 @@ def describe_error(error,phase=None,log=None):
   elif code in [-404,404,410] or re.search(r'video.*(?:removed|deleted)|视频.*(?:删除|不存在)',text,re.I):category='unavailable'
   elif re.search(r'No video formats|requested format.*not available',text,re.I):category='formats'
   elif re.search(r'WinError (?:5|32|33)|PermissionError|拒绝访问',text):category='storage'
-  elif re.search(r'HTTP|connection|timed? ?out|网络',text,re.I):category='network'
+  elif re.search(r'HTTP|connection|timed? ?out|网络|Downloaded.*bytes.*expected|ConnectionReset|RemoteDisconnected',text,re.I):category='network'
   else:category='processing'
  return {'category':category,'code':code,'phase':getattr(error,'phase',None) or phase or 'unknown','reason':text,'recoverable':category not in ['login','unavailable'],'log':log,'hint':'更新登录信息后重试' if category=='login' else '保留材料，可恢复处理'}
 
