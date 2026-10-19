@@ -176,13 +176,29 @@ class Watcher:
         except Exception as exc:self.last_error=str(exc)
         self.thread=threading.Thread(target=self.run,name='knowledge-markdown-sync',daemon=True);self.thread.start()
     def run(self):
-        previous=None
+        previous=None;processed=None
         while not self.stop_event.wait(1):
             try:
-                state=status(self.root);fingerprint=tuple((p,(self.root/p).stat().st_mtime_ns,(self.root/p).stat().st_size) if (self.root/p).exists() else (p,None) for p in state['files'])
-                if fingerprint==previous:scan(self.root)
+                fingerprint=self.fingerprint()
+                if fingerprint==previous and fingerprint!=processed:
+                    scan(self.root)
+                    processed=fingerprint
                 previous=fingerprint;self.last_error=None
             except Exception as exc:self.last_error=str(exc)
+    def fingerprint(self):
+        state=status(self.root)
+        paths=[*state['files'],'knowledge/index.json',
+               'knowledge/pending-save.json','knowledge/pending-cards.json',
+               'knowledge/pending-note-link.json','raw/transcript-edit-pending.json']
+        def stamp(path):
+            try:
+                stat=(self.root/path).stat()
+                return path,stat.st_mtime_ns,stat.st_size
+            except FileNotFoundError:return path,None
+        # Compare baseline identity, not its mtime: scan itself rewrites that
+        # manifest. A document changed during scan must still be seen next poll.
+        baseline=tuple((p,b['hash'],b.get('revision')) for p,b in state['files'].items())
+        return baseline,tuple(stamp(p) for p in paths)
     def close(self):
         self.stop_event.set()
         if self.thread:self.thread.join(timeout=3)

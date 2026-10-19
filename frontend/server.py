@@ -1,6 +1,5 @@
 """Local-only API and static frontend; run using the project's Python runtime."""
 import argparse
-from contextlib import nullcontext
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
@@ -13,6 +12,24 @@ sys.path.insert(0, str(ROOT / 'frontend'))
 import wxq
 import workspace
 import crawler
+
+
+def recover_before_read(root):
+    """Replay abandoned journals when idle; never wait on a live writer.
+
+    Reader projections use the self-contained, atomically replaced index. A
+    writer may be updating derived files, but readers can still use its previous
+    committed index. Recovery and every actual mutation retain the writer lock.
+    """
+    journals=('knowledge/pending-save.json','knowledge/pending-cards.json',
+              'knowledge/pending-note-link.json','raw/transcript-edit-pending.json')
+    if not any((root/path).is_file() for path in journals):
+        return
+    try:
+        with workspace.store_lock(root):
+            workspace.recover(root)
+    except workspace.Busy:
+        pass  # Active save: read the last complete atomic index, without replay.
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -104,11 +121,10 @@ class Handler(BaseHTTPRequestHandler):
                 from source_staging import Staging
                 return self.response(200,Staging(self.server.root).get())
             if path == '/api/sources':
-                with workspace.store_lock(self.server.root, wait=True):
-                    workspace.recover(self.server.root)
+                recover_before_read(self.server.root)
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
-            with workspace.store_lock(self.server.root, wait=True) if path.startswith('/api/') else nullcontext():
-                if path.startswith('/api/'):workspace.recover(self.server.root)
+            if path.startswith('/api/'):
+                recover_before_read(self.server.root)
                 if path == '/api/markdown-sync':
                     import markdown_sync
                     state=markdown_sync.status(self.server.root)

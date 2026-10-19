@@ -1,11 +1,20 @@
 import {describe,it,expect} from 'vitest';
-import {resolveReadingSection,loadReaderData} from './reading';
+import {resolveReadingSection,loadReaderData,claimMarkdown} from './reading';
 import type {ReadingDocument} from './types';
 import type {Note} from './types';
 import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import Reading from './KnowledgeReader';
+import EntityMarkdown from './EntityMarkdown';
 describe('shared reading navigation',()=>{
+ it('renders Chinese condition and card labels as emphasis, without literal stars',()=>{
+  const html=renderToStaticMarkup(createElement(EntityMarkdown,{children:claimMarkdown({text:'补控制。',condition:'决赛需要降级时'})+'\n\n'+claimMarkdown({text:'- **唤醒：**补资源。'})}));
+  expect(html).toContain('<strong>决赛需要降级时：</strong>');expect(html).toContain('<strong>唤醒：</strong>');expect(html).not.toContain('**');
+ });
+ it('keeps conditions and uncertainty visible in overview claims',()=>{
+  expect(claimMarkdown({text:'补控制。',condition:'决赛需要降级时',inference:true})).toBe('推测：**决赛需要降级时：** 补控制。');
+  expect(claimMarkdown({text:'- **唤醒：**补资源。',condition:'',inference:false})).toBe('- **唤醒：** 补资源。');
+ });
  it('can open knowledge even when the external source service never completes',async()=>{
   const paths:string[]=[];
   const request=<T,>(path:string):Promise<T>=>{paths.push(path);return path==='sources'?new Promise(()=>{}):Promise.resolve((path==='notes'?[]:{entities:[],factions:[],sections:{}}) as T);};

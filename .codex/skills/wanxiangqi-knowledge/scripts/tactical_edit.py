@@ -35,7 +35,7 @@ def apply(note,scope,section,text):
     if row is None:raise ValueError('未知运营路线或后期组合')
     updated=deepcopy(row);names=note.get('entity_names',{})
     def ref(name,kind):
-        hits=[r for r,v in names.items() if v==name.strip() and r.startswith(kind+':')]
+        hits=[r for r,v in names.items() if v==name.strip() and (r.startswith(kind+':') or r.startswith('pending:'))]
         if len(hits)!=1:raise ValueError('名称未知或不唯一：'+name)
         return hits[0]
     for k,title in [('condition','适用条件'),('advantages','优势'),('risks','风险'),('transition','转向条件')]:

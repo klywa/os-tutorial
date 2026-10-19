@@ -19,6 +19,48 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_idle_read_recovers_abandoned_save_but_active_writer_is_not_replayed(self):
+        self.server.markdown_watcher.close()
+        wxq.commit_notes(self.root, [{'id':'readable','type':'other','title':'旧标题','claims':[],'entities':[]}])
+        items=workspace.notes(self.root);items[0]['title']='新标题'
+        transaction=workspace.make_transaction(self.root,items)
+        wxq.atomic_json(self.root/'knowledge/pending-save.json',transaction)
+        with workspace.store_lock(self.root):
+            with urlopen(self.url+'notes/readable',timeout=3) as response:
+                self.assertEqual(json.load(response)['title'],'旧标题')
+            self.assertTrue((self.root/'knowledge/pending-save.json').exists())
+        with urlopen(self.url+'notes/readable',timeout=3) as response:
+            self.assertEqual(json.load(response)['title'],'新标题')
+        self.assertFalse((self.root/'knowledge/pending-save.json').exists())
+
+    def test_reading_endpoints_remain_available_while_writer_owns_lock(self):
+        wxq.commit_notes(self.root, [{'id':'readable','type':'other','title':'已保存笔记','claims':[],'entities':[]}])
+        with workspace.store_lock(self.root):
+            paths=['notes','notes/readable','notes/readable/reading','notes/readable/revision','options','markdown-sync','sources']
+            def read(path):
+                with urlopen(self.url+path,timeout=5) as response:
+                    return response.status,json.load(response)
+            with ThreadPoolExecutor(max_workers=len(paths)) as pool:
+                results=list(pool.map(read,paths))
+        self.assertTrue(all(status==200 for status,_ in results))
+        self.assertEqual(results[1][1]['title'],'已保存笔记')
+
+    def test_slow_read_projection_does_not_block_a_writer(self):
+        from unittest.mock import patch
+        import note_links
+        entered=threading.Event();release=threading.Event()
+        original=note_links.project_notes
+        def slow(root):
+            entered.set();release.wait(5)
+            return original(root)
+        with patch.object(note_links,'project_notes',slow),ThreadPoolExecutor(max_workers=1) as pool:
+            pending=pool.submit(lambda:urlopen(self.url+'notes').read())
+            self.assertTrue(entered.wait(3))
+            try:
+                with workspace.store_lock(self.root):pass
+            finally:release.set()
+            pending.result(timeout=5)
+
     def test_static_preview_remains_available_during_knowledge_save(self):
         with workspace.store_lock(self.root,wait=True):
             with urlopen(self.url.removesuffix('api/'),timeout=5) as response:

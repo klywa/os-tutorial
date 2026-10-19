@@ -211,11 +211,11 @@ def reading_document(note, player=None):
         result['scope_sections']=parse_document(documents(note)[document_path(note,b)],note,b['id'])
         note = project(note,player)
         result['projected_note']=note
-        if note.get('reading_layout',{}).get('version')==2:
+        if note.get('reading_layout',{}).get('version') in (2,3):
             import guide_layout
             from original_layout import split_chapters
             text=guide_layout.render(_family,b['id']);body=split_chapters(text)
-            result['profile']='lineup-v5';result['layout_version']=2
+            result['profile']='lineup-v5';result['layout_version']=note['reading_layout']['version']
             result['opening']=text.split('\n\n',1)[1].split('\n## ',1)[0].strip()
             result['sections']=[{'id':f'chapter-{i+1}','title':s,'markdown':value+'\n'} for i,(s,value) in enumerate(body.items())]
             result['section_aliases']=guide_layout.ALIASES

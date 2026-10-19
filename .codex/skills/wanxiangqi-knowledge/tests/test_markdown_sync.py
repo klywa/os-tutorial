@@ -120,5 +120,31 @@ class MarkdownSyncTests(unittest.TestCase):
         self.assertIn('重启同步',self.b.read_text('utf8'))
         before=deepcopy(workspace.notes(self.root));sync.scan(self.root);self.assertEqual(before,workspace.notes(self.root))
 
+    def test_watcher_does_not_rescan_unchanged_files_every_second(self):
+        from unittest.mock import patch
+        watcher=sync.Watcher(self.root)
+        with patch.object(watcher.stop_event,'wait',side_effect=[False]*5+[True]),patch.object(sync,'scan',return_value=sync.status(self.root)) as scan:
+            watcher.run()
+        self.assertEqual(scan.call_count,1)
+
+    def test_watcher_retries_busy_scan_and_imports_subsequent_stable_edit(self):
+        from unittest.mock import patch
+        watcher=sync.Watcher(self.root);ticks=iter(range(8))
+        def tick(_):
+            n=next(ticks)
+            if n==4:self.a.write_text(self.a.read_text('utf8').replace('共同机制','后台新内容'),encoding='utf8')
+            return n==7
+        original=sync.scan;calls=[]
+        def scan(root,*args,**kwargs):
+            if not args and not kwargs:
+                calls.append(root)
+                if len(calls)==1:raise workspace.Busy('busy')
+            return original(root,*args,**kwargs)
+        with patch.object(watcher.stop_event,'wait',side_effect=tick),patch.object(sync,'scan',side_effect=scan):
+            watcher.run()
+        self.assertGreaterEqual(len(calls),3)
+        self.assertIn('后台新内容',self.b.read_text('utf8'))
+        self.assertIsNone(watcher.last_error)
+
 
 if __name__=='__main__':unittest.main()

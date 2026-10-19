@@ -133,7 +133,7 @@ def project(note, player=None):
     if 'guide_related' in result:
         result['guide_related']=[x for x in result['guide_related'] if x.get('branch',b['id'])==b['id'] and x.get('exclude_branch')!=b['id']]
         result['related']=[x for x in result.get('related',[]) if x.get('player',b['player'])==b['player']]
-    if result.get('reading_layout',{}).get('version')==2:
+    if result.get('reading_layout',{}).get('version') in (2,3):
         from guide_layout import project_matchups
         project_matchups(result)
     return result
@@ -148,13 +148,19 @@ def document_path(note, b):
     return str(Path(note['path']).parent / (filename(note['title']) + '-' + filename(player_name(note,b)) + '.md')).replace('\\','/')
 
 
+def editable_claim_text(note,c):
+    if note.get('reading_layout',{}).get('version')==3:
+        from guide_layout import claim_text
+        return claim_text(c,3)
+    return c['text']
+
 def sections_for(note, scope):
     b = None if scope == 'common' else branch(note, scope)
     ids = note['meta']['common_claim_refs'] if b is None else b['claim_refs']
     result = {}
     for c in note['claims']:
         if c['id'] in ids:
-            result.setdefault(c['section'], []).append(c['text'])
+            result.setdefault(c['section'], []).append(editable_claim_text(note,c))
     return {s:'\n\n'.join(texts) for s,texts in result.items()}
 
 
@@ -253,7 +259,7 @@ def selection_markdown(selection):
 def documents(note):
     if not enabled(note):
         return {}
-    if note.get('reading_layout',{}).get('version')==2:
+    if note.get('reading_layout',{}).get('version') in (2,3):
         from guide_layout import render
         return {document_path(note,b):render(note,b['id']) for b in note['meta']['player_branches']}
     if note.get('reading_layout',{}).get('preserve_original'):
@@ -303,7 +309,7 @@ def render_adaptations(note):
 
 
 def parse_document(text, note, bid):
-    if note.get('reading_layout',{}).get('version')==2:
+    if note.get('reading_layout',{}).get('version') in (2,3):
         from guide_layout import parse
         return parse(text,note,bid)
     if note.get('reading_layout',{}).get('preserve_original'):
@@ -406,7 +412,7 @@ def apply_sections(note, scope, sections):
             changed = True;continue
         old = [c for c in note['claims'] if c['id'] in owned and c['section'] == section]
         if not old and text.strip()=='暂无已确认的'+('通用' if scope=='common' else '本棋手专属')+'策略。':continue
-        if '\n\n'.join(c['text'] for c in old).strip() == text.strip():continue
+        if '\n\n'.join(editable_claim_text(note,c) for c in old).strip() == text.strip():continue
         # Copy-on-write: two players may cite one conclusion until one of them
         # edits it. That player's edit must never mutate the other's text/refs.
         elsewhere=set(x for b in note['meta']['player_branches'] if b is not target for x in b['claim_refs'])
@@ -432,13 +438,16 @@ def apply_sections(note, scope, sections):
         blocks = [p.strip() for p in re.split(r'\n\s*\n',text.strip()) if p.strip()]
         locations=note.get('reading_layout',{}).get('claim_locations',{})
         fallback=next((locations[c['id']] for c in old if c['id'] in locations),None)
-        matcher = SequenceMatcher(None,[c['text'] for c in old],blocks,autojunk=False)
+        matcher = SequenceMatcher(None,[editable_claim_text(note,c) for c in old],blocks,autojunk=False)
         replacement = [];removed = set();old_ids = {c['id'] for c in old}
         for op,a0,a1,b0,b1 in matcher.get_opcodes():
             if op == 'equal':replacement.extend(deepcopy(old[a0:a1]));continue
             for offset, block in enumerate(blocks[b0:b1]):
                 cid = old[a0+offset]['id'] if a0+offset < a1 else 'manual-' + uuid.uuid4().hex[:16]
                 replacement.append({'id':cid,'section':section,'text':block,'origin':'manual','kind':'general_strategy','condition':'','version':None,'inference':False,'evidence':[]})
+                if note.get('reading_layout',{}).get('version')==3:
+                    from guide_layout import parse_claim_text
+                    replacement[-1].update(parse_claim_text(block))
                 if fallback and cid not in locations:locations[cid]=deepcopy(fallback)
             removed |= {c['id'] for c in old[a0:a1]} - {c['id'] for c in replacement}
         at = next((i for i,c in enumerate(note['claims']) if c['id'] in old_ids), len(note['claims']))
