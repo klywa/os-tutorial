@@ -24,6 +24,15 @@ def references(meta):
     result = faction_references(meta)
     from overview import entity_refs
     result += entity_refs(meta.get('overview', {}))
+    for branch in meta.get('player_branches', []):
+        result.append(branch['player'])
+        overrides=branch.get('overrides',{})
+        from overview import entity_refs
+        result+=entity_refs(overrides.get('overview',{}))
+        result+=overrides.get('core_heroes',[])+overrides.get('required_factions',[])
+        for members in overrides.get('compositions',{}).values():
+            for member in members:result += [member['hero'],member.get('replaces','')]
+        result += [m['target'] for m in overrides.get('matchups',[])]
     for variant in meta.get('late_variants', []):
         result += variant.get('core_heroes', []) + variant.get('required_factions', [])
         result += [b['faction'] for b in variant.get('ban_conditions', [])]
@@ -114,10 +123,17 @@ def availability(meta, banned):
     return 'playable' if 'playable' in statuses else 'unknown' if 'unknown' in statuses else 'unplayable'
 
 def remap_claims(meta, old_ids, new_id):
+    for owner in [meta] + meta.get('player_branches', []):
+        for key in ('common_claim_refs','claim_refs','condition_refs'):
+            if key in owner:owner[key] = list(dict.fromkeys(new_id if x in old_ids else x for x in owner[key] if x not in old_ids or new_id))
+        for row in owner.get('assessment', []):
+            row['claim_refs'] = list(dict.fromkeys(new_id if x in old_ids else x for x in row.get('claim_refs',[]) if x not in old_ids or new_id))
     from major_variants import remap as remap_major
     remap_major(meta, old_ids, new_id)
     from overview import remap
     remap(meta.get('overview', {}), old_ids, new_id)
+    for branch in meta.get('player_branches',[]):
+        remap(branch.get('overrides',{}).get('overview',{}),old_ids,new_id)
     for row in meta.get('operation_routes',[]) + meta.get('late_variants',[]):
         keys = [row]
         if 'phases' in row:

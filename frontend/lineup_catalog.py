@@ -158,6 +158,54 @@ class LineupCatalog:
    if old and set(old['heroes'])!=set(heroes):db.execute("UPDATE topic_candidates SET state='pending',target=NULL WHERE target=? AND resolution='auto'",(uid,))
    self.bump(db,bool(old and set(old['heroes'])!=set(heroes)))
   return self.roster()
+ def save_quick_batch(self,payload):
+  items=payload.get('items');request=payload.get('request_id')
+  if not isinstance(request,str) or not request.strip() or len(request)>150:raise ValueError('缺少批量请求标识')
+  if not isinstance(items,list) or not 0<len(items)<=1000:raise ValueError('请提交1至1000行')
+  fingerprint=hashlib.sha256(encode(items).encode()).hexdigest()
+  with self.topics.db() as db:
+   db.execute('BEGIN IMMEDIATE')
+   db.execute('CREATE TABLE IF NOT EXISTS lineup_batch_requests(id TEXT PRIMARY KEY,fingerprint TEXT,result TEXT)')
+   prior=db.execute('SELECT * FROM lineup_batch_requests WHERE id=?',(request,)).fetchone()
+   if prior:
+    if prior['fingerprint']!=fingerprint:raise workspace.Conflict('同一请求标识的内容已变化')
+    return json.loads(prior['result'])
+   rows={r['id']:r for r in self.roster(db)};seen=set();names={n.strip() for r in rows.values() if not r['deleted_at'] and not r['merged_into'] for n in (r['name'],r['common_name']) if n.strip()};prepared=[];errors=[];stale=[];warnings=[]
+   for index,item in enumerate(items):
+    try:
+     if not isinstance(item,dict) or set(item)-{'id','client_id','revision','common_name','aliases'}:raise ValueError('只允许常用命名和别名')
+     uid=item.get('id');key=uid or item.get('client_id')
+     if not isinstance(key,str) or not key or key in seen:raise ValueError('行标识缺失或重复')
+     seen.add(key);name=item.get('common_name','');aliases=item.get('aliases',[])
+     if not isinstance(name,str) or not isinstance(aliases,list) or any(not isinstance(a,str) for a in aliases):raise ValueError('名称与别名格式无效')
+     name=name.strip();aliases=list(dict.fromkeys(a.strip() for a in aliases if a.strip()))
+     if uid:
+      old=rows.get(uid)
+      if not old or old['deleted_at'] or old['merged_into']:raise ValueError('阵容不存在或已删除')
+      if item.get('revision')!=old['revision']:stale.append(uid)
+     else:
+      if not name and not aliases:continue
+      if not name:raise ValueError('请补齐常用命名')
+      if name in names:warnings.append({'client_id':key,'name':name,'message':'同名阵容已存在，保留为独立条目'})
+      names.add(name)
+     prepared.append((uid,key,name,aliases))
+    except ValueError as e:errors.append({'index':index,'client_id':item.get('client_id') if isinstance(item,dict) else None,'error':str(e)})
+   if errors:
+    e=ValueError('整批未保存，请检查标记行');e.row_errors=errors;raise e
+   if stale:
+    e=workspace.Conflict('阵容已更新，草稿保留');e.lineup_ids=stale;raise e
+   created={}
+   for uid,key,name,aliases in prepared:
+    if uid:
+     fields=encode(sorted(set(rows[uid]['manual_fields'])|{'common_name','aliases'}))
+     db.execute('UPDATE topic_lineups SET common_name=?,aliases=?,manual_fields=?,revision=revision+1 WHERE id=?',(name,encode(aliases),fields,uid))
+    else:
+     uid='lineup:'+uuid.uuid4().hex;created[key]=uid
+     db.execute('INSERT INTO topic_lineups(id,name,common_name,aliases,heroes,enabled,sort_order,manual_fields) VALUES(?,?,?,?,?,1,?,?)',(uid,name,name,encode(aliases),encode([]),len(rows)+len(created),encode(['name','common_name','aliases'])))
+   if prepared:self.bump(db)
+   result={'roster':self.roster(db),'created':created,'warnings':warnings}
+   db.execute('INSERT INTO lineup_batch_requests VALUES(?,?,?)',(request,fingerprint,encode(result)))
+  return result
  def save_batch(self,payload):
   items=payload.get('items')
   if not isinstance(items,list) or not items or len(items)>1000:raise ValueError('请提交1至1000条名称修改')

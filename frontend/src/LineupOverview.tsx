@@ -6,7 +6,7 @@ import {overviewFor,membersFor,stages,compatibleRoute} from './overview';
 function Cards({ids}:{ids:string[]}){return <div className="overview-cards">{[...new Set(ids)].map(id=><EntityChip key={id} ids={[id]} portrait/>)}{!ids.length&&<span className="muted">未配置</span>}</div>;}
 export default function LineupOverview({note}:{note:Note}){
  const meta=note.meta!,data=overviewFor(meta);
- const key='wxq.overview.'+note.id;
+ const key='wxq.overview.'+note.id+'.'+meta.players.join(',');
  const [selection,setSelection]=useState<{preset:string;route:string}>(()=>{try{return JSON.parse(localStorage.getItem(key)??'null')??{preset:data.presets[0]?.id,route:''};}catch{return {preset:data.presets[0]?.id,route:''};}});
  const p=data.presets.find(p=>p.id===selection.preset)??data.presets[0];if(!p)return null;
  const route=meta.operation_routes?.find(r=>r.id===selection.route),compatible=compatibleRoute(meta,p,selection.route);

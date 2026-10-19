@@ -1,10 +1,11 @@
 """Local-only API and static frontend; run using the project's Python runtime."""
 import argparse
+from contextlib import nullcontext
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 from pathlib import Path
 import sys
-from urllib.parse import urlsplit, unquote
+from urllib.parse import urlsplit, unquote, parse_qs
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.codex/skills/wanxiangqi-knowledge/scripts'))
@@ -41,6 +42,7 @@ class Handler(BaseHTTPRequestHandler):
         if not self.trusted():
             return self.response(403, {'error': '只允许本机页面访问'})
         path = unquote(urlsplit(self.path).path)
+        player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
             if path.startswith('/api/crawler/'):
                 suffix = path.removeprefix('/api/crawler/')
@@ -105,8 +107,15 @@ class Handler(BaseHTTPRequestHandler):
                 with workspace.store_lock(self.server.root, wait=True):
                     workspace.recover(self.server.root)
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
-            with workspace.store_lock(self.server.root, wait=True):
-                workspace.recover(self.server.root)
+            with workspace.store_lock(self.server.root, wait=True) if path.startswith('/api/') else nullcontext():
+                if path.startswith('/api/'):workspace.recover(self.server.root)
+                if path == '/api/markdown-sync':
+                    import markdown_sync
+                    state=markdown_sync.status(self.server.root)
+                    return self.response(200, {'issues':state['issues'],'files':{p:{k:b[k] for k in ('note','branch','revision','hash')} for p,b in state['files'].items()}})
+                if path.startswith('/api/notes/') and path.endswith('/revision'):
+                    note=next((n for n in workspace.notes(self.server.root) if n['id']==path.split('/')[-2]),None)
+                    return self.response(200,{'revision':note['revision']}) if note else self.response(404,{'error':'笔记不存在'})
                 if path == '/api/notes':
                     from lineup_catalog import LineupCatalog
                     from note_links import project_notes
@@ -115,10 +124,13 @@ class Handler(BaseHTTPRequestHandler):
                     from lineup_layout import reading_document
                     parts = path.split('/')
                     note = next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None) if len(parts) == 5 else None
-                    return self.response(200, reading_document(note)) if note else self.response(404, {'error': '笔记不存在'})
+                    return self.response(200, reading_document(note,player)) if note else self.response(404, {'error': '笔记不存在'})
                 if path.startswith('/api/notes/'):
                     from note_links import project_notes
                     note = next((n for n in project_notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
+                    if note and player:
+                        import player_branches
+                        note = player_branches.project(note, player)
                     return self.response(200 if note else 404, note or {'error': '笔记不存在'})
                 if path == '/api/options':
                     entities = [{**{k: e.get(k) for k in ['id', 'name', 'category', 'aliases']},
@@ -149,7 +161,7 @@ class Handler(BaseHTTPRequestHandler):
         except KeyError as exc:
             self.response(404, {'error': str(exc)})
         except (ValueError, TypeError) as exc:
-            self.response(400, {'error': str(exc)})
+            self.response(400, {'error': str(exc), **({'row_errors':exc.row_errors} if hasattr(exc,'row_errors') else {})})
 
     def do_POST(self):
         self.mutate()
@@ -172,6 +184,9 @@ class Handler(BaseHTTPRequestHandler):
                 raise ValueError('请求应为对象')
             path = unquote(urlsplit(self.path).path)
             store = self.server.crawler.store
+            if path.startswith('/api/markdown-sync/'):
+                import markdown_sync
+                return self.response(200,markdown_sync.resolve(self.server.root,path.split('/')[-1],payload))
             if path.startswith('/api/topics/'):
                 from topics import TopicStore
                 topics=TopicStore(self.server.root)
@@ -187,6 +202,7 @@ class Handler(BaseHTTPRequestHandler):
                     if 'names' in payload:result=topics.save_roster(payload)
                     else:result=catalog.save(payload)
                 elif path=='/api/topics/lineups/batch' and self.command=='PUT':result=catalog.save_batch(payload)
+                elif path=='/api/topics/lineups/batch' and self.command=='POST':result=catalog.save_quick_batch(payload)
                 elif path.startswith('/api/topics/lineups/') and path.endswith('/restore') and self.command=='POST':result=catalog.restore(path.split('/')[-2],payload)
                 elif path.startswith('/api/topics/lineups/') and len(path.split('/'))==5 and self.command=='DELETE':result=catalog.delete(path.split('/')[-1],payload)
                 elif path=='/api/topics/lineups/preview':result=catalog.preview()
@@ -295,7 +311,7 @@ class Handler(BaseHTTPRequestHandler):
         except KeyError as exc:
             self.response(404, {'error': str(exc)})
         except (ValueError, TypeError) as exc:
-            self.response(400, {'error': str(exc)})
+            self.response(400, {'error': str(exc), **({'row_errors':exc.row_errors} if hasattr(exc,'row_errors') else {})})
         except OSError:
             self.response(500, {'error': '保存失败，草稿已保留；请检查文件权限并重试'})
 
@@ -304,6 +320,8 @@ class LocalServer(ThreadingHTTPServer):
     allow_reuse_address = False
 
     def server_close(self):
+        if hasattr(self, 'markdown_watcher'):
+            self.markdown_watcher.close()
         if hasattr(self, 'crawler'):
             self.crawler.close()
         super().server_close()
@@ -313,6 +331,9 @@ def create_server(root=ROOT, port=8765, start_worker=False):
     server = LocalServer(('127.0.0.1', port), Handler)
     server.root = Path(root)
     server.crawler = crawler.Runtime(root)
+    import markdown_sync
+    server.markdown_watcher = markdown_sync.Watcher(root)
+    server.markdown_watcher.start()
     from source_staging import Staging
     Staging(root).prune()
     if start_worker:

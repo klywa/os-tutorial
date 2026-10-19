@@ -1,0 +1,11 @@
+import {useEffect,useState} from 'react';
+import {api} from './model';
+import type {Note} from './types';
+type Issue={id:string;note:string;path?:string;message:string;base?:string;external?:string;saved?:string};
+export default function MarkdownSyncPanel({note,onResolved}:{note:Note;onResolved:()=>void}){
+ const [issues,setIssues]=useState<Issue[]>([]),[error,setError]=useState(''),[changes,setChanges]=useState(''),[path,setPath]=useState(''),[busy,setBusy]=useState(false);
+ useEffect(()=>{let live=true;async function read(){try{const state=await api<{issues:Issue[]}>('markdown-sync');if(live)setIssues(state.issues.filter(i=>i.note===note.id));}catch(e){if(live)setError((e as Error).message);}}void read();const timer=setInterval(()=>void read(),3000);return()=>{live=false;clearInterval(timer);};},[note.id,note.revision]);
+ if(!issues.length)return null;
+ async function resolve(action:string){setBusy(true);setError('');try{await api('markdown-sync/'+note.id,'POST',{revision:note.revision,issue_ids:issues.map(i=>i.id),action,...(action==='apply'?{document:{path,text:changes}}:{})});setIssues([]);onResolved();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
+ return <details className="conflict"><summary>Markdown 同步有 {issues.length} 项问题，此打法暂停覆盖写入</summary>{issues.map(i=><section key={i.id}><h3>{i.path}</h3><p>{i.message}</p><div className="sync-comparison">{(['base','saved','external'] as const).map((k,j)=><details key={k}><summary>{['同步基线','结构化当前内容','外部文件内容'][j]}</summary><pre>{i[k]??'文件缺失或格式无法解析'}</pre></details>)}</div></section>)}<button disabled={busy} onClick={()=>void resolve('use_saved')}>保留当前知识并恢复文件（外部原文留存历史）</button><details><summary>编辑合并内容</summary><p>选择文件后修改完整 Markdown。采用该文件的通用部分和当前棋手专属部分；其他棋手专属内容保留。</p><select aria-label="选择冲突文件" value={path} onChange={e=>{setPath(e.target.value);const issue=issues.find(i=>i.path===e.target.value);setChanges(issue?.external??issue?.saved??'');}}><option value="">选择文件</option>{issues.filter(i=>i.path).map(i=><option key={i.id} value={i.path}>{i.path}</option>)}</select><textarea aria-label="同步冲突合并内容" value={changes} onChange={e=>setChanges(e.target.value)} rows={8}/><button disabled={busy||!path||!changes} onClick={()=>void resolve('apply')}>应用合并并保留历史</button></details>{error&&<p className="error">{error}</p>}</details>;
+}

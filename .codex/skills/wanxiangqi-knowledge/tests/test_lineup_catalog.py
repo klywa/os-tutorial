@@ -19,6 +19,22 @@ class LineupCatalogTests(unittest.TestCase):
   first=next(r for r in result['items'] if r['name']=='主名');self.assertEqual(first['heroes'],['card:1','card:2']);self.assertIn('低热名',first['aliases'])
  def pair(self):
   self.store.save({'name':'甲阵','heroes':['card:1']});self.store.save({'name':'乙阵','heroes':['card:2']});return self.store.roster()
+ def test_quick_batch_create_update_retry_and_atomic_errors(self):
+  a,b=self.pair()
+  payload={'request_id':'request-1','items':[{'id':a['id'],'revision':a['revision'],'common_name':'甲的新名','aliases':[]},{'client_id':'new-1','common_name':'新阵','aliases':['别称']}]}
+  result=self.store.save_quick_batch(payload)
+  self.assertEqual(len(result['roster']),3)
+  new=next(r for r in result['roster'] if r['name']=='新阵')
+  self.assertEqual(new['heroes'],[]);self.assertEqual(new['note_ids'],[])
+  self.assertEqual(self.store.save_quick_batch(payload),result)
+  before=self.store.roster()
+  with self.assertRaises(ValueError):self.store.save_quick_batch({'request_id':'bad','items':[{'client_id':'n2','common_name':'另一个','aliases':[]},{'client_id':'n3','common_name':'','aliases':['缺名']}]})
+  self.assertEqual(self.store.roster(),before)
+  with self.assertRaises(workspace.Conflict):self.store.save_quick_batch({'request_id':'stale','items':[{'id':b['id'],'revision':0,'common_name':'不可存'},{'client_id':'n4','common_name':'不可新增'}]})
+  self.assertEqual(self.store.roster(),before)
+ def test_quick_duplicate_name_warns_and_keeps_two_independent_records(self):
+  result=self.store.save_quick_batch({'request_id':'duplicate','items':[{'client_id':'one','common_name':'同名'},{'client_id':'two','common_name':'同名'}]})
+  self.assertEqual(len(result['roster']),2);self.assertNotEqual(result['created']['one'],result['created']['two']);self.assertEqual(len(result['warnings']),1)
  def test_batch_names_are_atomic_manual_and_allow_shared_display(self):
   a,b=self.pair();revision=self.store.revision()
   self.store.save_batch({'items':[{'id':r['id'],'revision':r['revision'],'common_name':'共享常用名','aliases':[' 别名 ','别名','']} for r in (a,b)]})

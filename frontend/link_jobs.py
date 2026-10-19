@@ -37,7 +37,7 @@ def parse_links(text):
    if old:
     duplicates+=1
     old['parts']=None if old['parts'] is None or parts is None else sorted(set(old['parts']+parts))
-   else:videos[bvid]={'bvid':bvid,'url':'https://www.bilibili.com/video/'+bvid,'title':bvid,'parts':parts}
+   else:videos[bvid]={'bvid':bvid,'url':'https://www.bilibili.com/video/'+bvid,'title':'','parts':parts}
    lines.append({'line':number,'input':raw,'bvid':bvid,'parts':parts,'valid':True})
   except (ValueError,OSError) as exc:
    item={'line':number,'input':raw,'error':str(exc),'valid':False};invalid.append(item);lines.append(item)
@@ -85,8 +85,17 @@ def start_links(store,text):
    db.execute('INSERT INTO link_demands VALUES(?,?,?)',(jid,video['bvid'],json.dumps(video['parts'])))
    db.execute('INSERT OR IGNORE INTO videos VALUES(?,?)',(video['bvid'],encode({**video,'collected_at':now()})))
    db.execute("INSERT INTO hits VALUES(?,?,'')",(jid,video['bvid']))
+ from video_titles import sync_cached
+ import workspace
+ for video in report['videos']:
+  sync_cached(store.root,store,video['bvid'],video['parts'])
+  for part in video['parts'] or [1]:
+   url=video['url']+'?p='+str(part)
+   workspace.register_source(store.root,{'url':url,'title':'','notes':''},preserve_annotations=True,wait=True,_metadata={})
  store.enqueue(jid,[v['bvid'] for v in report['videos']])
  result=store.job(jid);done=result['counts']['succeeded']
+ titles={r['bvid']:r.get('title','') for r in result.get('items',[])}
+ for row in report['videos']:row['title']=titles.get(row['bvid'],'')
  return {**report,'job':result, 'accepted':len(report['videos']),'completed':done,'added':len(report['videos'])-done}
 
 def refresh_artifacts(store,db,bvid):

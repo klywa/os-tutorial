@@ -91,8 +91,12 @@ def run(root, bvid, generation=None):
     def entries():
         if cached_entries[0] is None:
             cached_entries[0]=discover_entries();record_parts(store,bvid,cached_entries[0])
+            from video_titles import sync_entries
+            sync_entries(root,store,bvid,cached_entries[0],scope_for(store,bvid) if generation is not None else None)
         return cached_entries[0]
     requested=scope_for(store,bvid) if generation is not None else None
+    from video_titles import sync_cached
+    sync_cached(root,store,bvid,requested)
     if generation is not None and requested is None:
         with store.db() as db:
             explicit=db.execute('SELECT 1 FROM link_demands WHERE bvid=?',(bvid,)).fetchone()

@@ -145,6 +145,8 @@ def _render_generic(note):
     sections.insert(sections.index('核心机制')+1,'主要变阵')
     sections.insert(sections.index('主要变阵')+1,'运营路线与后期组合')
     sections += sorted({c['section'] for c in claims}-set(sections))+['关联知识']
+    if note.get('reading_layout',{}).get('preserve_original'):
+        sections=note['reading_layout']['sections']
     locations={c['id']:'主要变阵' if c['id'] in reserved else c['section'] for c in claims}
     def links(ids):
         titles=list(dict.fromkeys(locations[cid] for cid in ids if cid in locations))
@@ -186,13 +188,59 @@ def _render_generic(note):
                 for m in meta.get('matchups',[]):lines+=['- 针对'+label(m['target'])+'：'+m.get('condition','')+' '+m['text'],'']
     return '\n'.join(lines)+'\n'
 
-def reading_document(note):
+def reading_document(note, player=None):
     """Read-only presentation projection shared with the exported Markdown."""
     result = {'note_id': note['id'], 'revision': note.get('revision', ''),
               'profile': None, 'sections': [], 'section_aliases': {}}
-    if note.get('type') != 'lineup':
+    if note.get('type') != 'lineup' and not note.get('lineup_adaptations'):
         return result
-    markdown = _render_markdown(note) if note['id']==PROFILE_ID else _render_generic(note)
+    if note.get('type') != 'lineup':
+        import wxq
+        markdown=wxq.render_note(note,{})
+        headings=list(re.finditer(r'^## (.+)\n',markdown,re.M))
+        result['profile']='player-v5'
+        result['sections']=[{'id':f'chapter-{i+1}','title':m[1],'markdown':markdown[m.end():headings[i+1].start() if i+1<len(headings) else len(markdown)].strip()+'\n'} for i,m in enumerate(headings)]
+        return result
+    from player_branches import enabled, project, branch, player_name, assessment_markdown
+    is_branch = enabled(note)
+    if is_branch:
+        _family=note
+        b = branch(note,player)
+        result.update(player=b['player'],branch=b['id'],player_options=[{'id':x['player'],'name':player_name(note,x)} for x in note['meta']['player_branches']])
+        from player_branches import documents, document_path, parse_document
+        result['scope_sections']=parse_document(documents(note)[document_path(note,b)],note,b['id'])
+        note = project(note,player)
+        result['projected_note']=note
+        if note.get('reading_layout',{}).get('version')==2:
+            import guide_layout
+            from original_layout import split_chapters
+            text=guide_layout.render(_family,b['id']);body=split_chapters(text)
+            result['profile']='lineup-v5';result['layout_version']=2
+            result['opening']=text.split('\n\n',1)[1].split('\n## ',1)[0].strip()
+            result['sections']=[{'id':f'chapter-{i+1}','title':s,'markdown':value+'\n'} for i,(s,value) in enumerate(body.items())]
+            result['section_aliases']=guide_layout.ALIASES
+            result['coverage']=guide_layout.coverage(_family,b['id'])
+            return result
+        if note.get('reading_layout',{}).get('preserve_original'):
+            from original_layout import render,split_chapters
+            body=split_chapters(render(_family,b['id']))
+            result['profile']='lineup-v5'
+            result['sections']=[{'id':f'chapter-{i+1}','title':s,'markdown':text+'\n'} for i,(s,text) in enumerate(body.items())]
+            result['section_aliases']={}
+            return result
+        # The website and Markdown use the same section projection, including
+        # editable member tables and the selected player's own conditions.
+        sections=result['scope_sections']
+        result['profile']='lineup-v5'
+        ordered=[('common',s,t) for s,t in sections['common'].items()]+[('branch',s,t) for s,t in sections['branch'].items()]
+        result['sections']=[{'id':f'chapter-{i+1}','title':('通用·' if scope=='common' else '')+title,'markdown':text+'\n'} for i,(scope,title,text) in enumerate(ordered)]
+        result['section_aliases']={s:'通用·'+s for s in sections['common']}
+        return result
+    markdown = _render_markdown(note) if note['id']==PROFILE_ID and not is_branch else _render_generic(note)
+    if is_branch:
+        assessment = assessment_markdown(note['meta'].get('assessment',[]))
+        heading_end = markdown.index('\n\n')+2
+        markdown = markdown[:heading_end] + '## 采用条件与优势短板\n\n' + assessment + '\n\n' + markdown[heading_end:]
     headings = list(re.finditer(r'^## (.+)\n', markdown, re.M))
     for i, match in enumerate(headings):
         end = headings[i + 1].start() if i + 1 < len(headings) else len(markdown)
@@ -208,9 +256,9 @@ def reading_document(note):
     aliases.update({'阵容组成':'阵容概览与成员清单','运营节奏':'运营路线选择',
                     '推荐后期组合':'阵容概览与成员清单','推荐装备':'装备与站位',
                     '站位技巧':'装备与站位','克制手段':'对局威胁与应对'})
-    if note['id']!=PROFILE_ID:
+    if note['id']!=PROFILE_ID or is_branch:
         result['section_aliases']={'运营节奏':'运营路线与后期组合','推荐后期组合':'运营路线与后期组合'}
-    result['profile'] = PROFILE_ID if note['id']==PROFILE_ID else 'lineup-v4'
+    result['profile'] = 'lineup-v5' if is_branch else PROFILE_ID if note['id']==PROFILE_ID else 'lineup-v4'
     if result['sections']:
         result['sections'][-1]['markdown']=result['sections'][-1]['markdown'].rstrip()+'\n'
     return result

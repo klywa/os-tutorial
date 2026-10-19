@@ -1,5 +1,11 @@
 # 知识及实体数据契约
 
+## 当前扩展：schema5
+
+阵容—棋手阅读采用语义布局版本2（完整目录见[player-branches.md](player-branches.md)）。顶层`reading_layout.version=2`及`claim_locations`明确结论位置；`coverage`按分支保存教学字段状态及审核引用。阅读API保留`sections/section_aliases`，增加`opening/layout_version/coverage`；网页、Markdown、概览及导出使用相同棋手投影。`explicit_relationships`启用明确关系，`guide_related`保存目标note/player、关系及href，不按实体交集推导相关性。旧版布局继续兼容。
+
+有棋手分支的记录使用schema5，旧schema4无分支记录保持兼容。完整规则见[player-branches.md](player-branches.md)。新增`meta.common_claim_refs/player_branches/assessment`；分支通过明确ID关联棋手与结论、路线、组合和主要变阵。原稳定笔记ID、结论ID、证据和人工历史保留。成员按阶段完整替换；统计比例须同时具备样本量、口径、时间范围与来源。网页、skill和固定格式Markdown都通过共享事务同步；不能只更新正文或只更新结构化信息。
+
 ## 提交知识
 
 将提交 JSON 放到 `raw/reports/`。脚本不负责猜阵容或语义改写：Codex 生成提交文件后运行 `commit`，文件格式为 `{"notes": [...]}`。
@@ -30,7 +36,7 @@
 该示例是格式说明，不能作为真实知识导入。`frame` 仅在实际存在并核对过时填写。时间是视频秒数，不是游戏回合。ID 使用字母、数字、下划线或短横线，不包含路径或冒号。来源 ID 含冒号，落盘目录将冒号换成下划线。
 
 - `type`：`lineup`、`player`、`other`，分别输出到 `lineups/`、`players/`、`other/`。
-- 阵容固定字段：阵容组成、禁用阵营适用情况、核心机制、前期运营及应变、中期运营及应变、后期运营及应变、成型后提升思路、第一轮拍卖、第二轮拍卖、第三轮拍卖、推荐天赋及原因、站位技巧、推荐装备、终局技巧、克制手段。
+- 旧版阵容字段：阵容组成、禁用阵营适用情况、核心机制、前期运营及应变、中期运营及应变、后期运营及应变、成型后提升思路、第一轮拍卖、第二轮拍卖、第三轮拍卖、推荐天赋及原因、站位技巧、推荐装备、终局技巧、克制手段。无分支记录保持兼容；schema5分支按版本2语义目录投影，旧“克制手段”必须逐段分辨制敌和被克制方向。
 - 阵容整理还需按 [教学主题覆盖检查](teaching-coverage.md) 扫描关键牌判断、经济与竞价取舍、关键操作顺序、新手步骤、战后诊断及操作时间不足。主题可由既有章节或 meta 中的明确策略覆盖，不要求模板与章节一一对应。有独立可靠内容时，可用现有 `claim.section` 追加“关键牌判断”“战后复盘”“操作时间不足”等自定义章节；无证据时不新增空结论、不迁移固定字段或扩展 meta schema。
 - 棋手固定字段：技能、使用技巧、适配阵容。其他默认“知识内容”，可追加自定义章节。
 - 回合描述写在结论正文，例如“第5–7回合”；来源没说具体回合时只能写前期等原始阶段。
@@ -65,7 +71,7 @@
 
 网页 PUT 笔记包含 `revision`、按名称映射的 `sections` 和可选 `meta/title/aliases`。旧 revision 返回冲突，不覆盖；章节修改以 origin=manual 结论替换，原结论与证据进入 history，不附假视频依据。manual_sections 保护人工章节，manual_meta 保护人工 meta；CLI 新输入冲突进入 conflicts。人工修订不经普通视频导入校验，但必须经网页统一入口校验保存，CLI 不接受伪造的人工证据。
 
-索引是唯一知识源。所有保存通过共享操作系统写锁及 pending-save.json 恢复事务生成 Markdown/阵容存档/索引；禁止直接编辑生成物。
+索引保存结构化知识。所有保存通过共享操作系统写锁及 pending-save.json 恢复事务同步 Markdown/阵容存档/索引。schema5固定格式棋手Markdown允许直接编辑，必须经sync-markdown或本地服务读回后再提交；其他生成物不单独手改。
 
 ## 卡牌与文字稿存档
 

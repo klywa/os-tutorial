@@ -176,7 +176,8 @@ class Bilibili:
         pages=view.get('pages')
         if not isinstance(pages,list) or not pages:raise BilibiliError(-404,'视频分P不可访问')
         return [{'id':str(p['cid']),'cid':p['cid'],'playlist_index':p['page'],
-                 'title':view.get('title',''),'uploader':view.get('owner',{}).get('name',''),
+            'title':(f"{view.get('title','')} p{int(p['page']):02d} {p.get('part','')}".strip() if len(pages)>1 else view.get('title','')),
+            'video_title':view.get('title',''),'uploader':view.get('owner',{}).get('name',''),
                  'timestamp':view.get('pubdate'),'duration':p.get('duration'),
                  'webpage_url':f'https://www.bilibili.com/video/{bvid}/?p={p["page"]}'} for p in pages]
 

@@ -1,9 +1,14 @@
 import {describe,it,expect} from 'vitest';
-import {sourceMatches,visibleSelection,progressLabel} from './acquisition';
+import {sourceMatches,visibleSelection,progressLabel,contentTitle} from './acquisition';
 import type {Source} from './types';
 
 const row:Source={id:'BV1:p1',url:'https://www.bilibili.com/video/BV1',title:'教学',stage:'prepared',knowledge_status:'unprocessed',linked_notes:[],published:'2026-10-16',view_count:100,keywords:['李信'],batches:['batch1'],transcript_status:'ready'};
 describe('acquisition interactions',()=>{
+  it('distinguishes pending metadata from an actual content title',()=>{
+    expect(contentTitle('', 'BV1234567891')).toBe('标题待获取 · BV1234567891');
+    expect(contentTitle('BV1234567891','BV1234567891:p2')).toBe('标题待获取 · BV1234567891');
+    expect(contentTitle('真实标题','BV1234567891')).toBe('真实标题');
+  });
   it('filters date boundaries, keywords, batch and numeric unknowns',()=>{
     expect(sourceMatches(row,{date_from:'2026-10-16',date_to:'2026-10-16',keyword:'李信',batch:'batch1',min_views:'100'})).toBe(true);
     expect(sourceMatches({...row,view_count:undefined},{min_views:'100'})).toBe(false);

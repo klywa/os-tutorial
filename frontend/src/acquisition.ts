@@ -26,3 +26,5 @@ export function progressLabel(p:Progress){
   const [value,total]=p.phase==='downloading'?[p.downloaded_bytes,p.total_bytes]:[p.processed_seconds,p.total_seconds];
   return value!=null&&total&&total>0?`${base} ${Math.min(100,Math.round(value/total*100))}%`:base;
 }
+
+export function contentTitle(title:string|undefined,id:string){const bv=id.split(':p')[0],text=title?.trim();return !text||text===bv||text===id?'标题待获取 · '+bv:title!;}

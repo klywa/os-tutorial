@@ -19,6 +19,12 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_static_preview_remains_available_during_knowledge_save(self):
+        with workspace.store_lock(self.root,wait=True):
+            with urlopen(self.url.removesuffix('api/'),timeout=5) as response:
+                self.assertEqual(response.status,200)
+                self.assertIn(b'<html',response.read())
+
     def test_lineup_batch_delete_restore_api(self):
         def send(path,payload,method='POST'):
             with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)

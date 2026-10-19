@@ -158,13 +158,23 @@ def prepare(root, items):
             for claim in note.get('claims', []):
                 claim.setdefault('id', claim_id(claim))
             note['entity_names'] = {r: names.get(r, r.removeprefix('pending:')) for r in refs if r}
+            from player_branches import validate as validate_branches
+            validate_branches(note)
+            if note['meta'].get('player_branches') and not note.get('reading_layout'):
+                from lineup_layout import _render_generic,_render_markdown,PROFILE_ID
+                markdown=_render_markdown(note) if note['id']==PROFILE_ID else _render_generic(note)
+                note['reading_layout']={'preserve_original':True,'sections':re.findall(r'^## (.+)$',markdown,re.M)}
         note.setdefault('manual_sections', [])
         note.setdefault('history', [])
         note.setdefault('conflicts', [])
+    from player_branches import update_player_adaptations
+    update_player_adaptations(items)
     by_id = {n['id']: n for n in items}
     for note in items:
         existing_links = {link['id'] for link in note.get('related', [])}
         for target in items:
+            if note.get('explicit_relationships'):continue
+            if target['type']=='player' and target['id'] not in existing_links:continue
             if target['id'] != note['id'] and target['id'] not in existing_links and (note.get('meta', {}).get('late_variants') or target.get('meta', {}).get('late_variants')) and set(note.get('entities', [])) & set(target.get('entities', [])):
                 note.setdefault('related', []).append({'id': target['id'], 'type': target['type'], 'title': target['title']})
         for link in note.get('related', []):
@@ -175,10 +185,27 @@ def prepare(root, items):
     return items
 
 
-def persist(root, items, obsolete=None):
+def make_transaction(root, items, obsolete=None, ignore_issues=(), expected_markdown=None):
     root = Path(root)
     prepare(root, items)
-    transaction = {'index': {'schema_version': 4, 'notes': items}, 'obsolete': obsolete or []}
+    from markdown_sync import outputs
+    from player_branches import enabled
+    from markdown_sync import status
+    before_sync=status(root)
+    files, sync_state, blocked = outputs(root, items, ignore_issues)
+    expected={p:before_sync['files'].get(p,{}).get('hash') for p in files}
+    expected.update(expected_markdown or {})
+    return {'index': {'schema_version': 5 if any(enabled(n) for n in items) else 4, 'notes': items},
+            'obsolete': obsolete or [], 'branch_files': files, 'sync_state': sync_state, 'blocked_notes': sorted(blocked),
+            'expected_markdown':expected,'before_sync_state':before_sync}
+
+
+def persist(root, items, obsolete=None, _sync=True, _ignore_issues=(), _expected_markdown=None):
+    root = Path(root)
+    if _sync:
+        from markdown_sync import assert_clean
+        assert_clean(root)
+    transaction = make_transaction(root, items, obsolete, _ignore_issues, _expected_markdown)
     wxq.atomic_json(root / 'knowledge/pending-save.json', transaction)
     apply_transaction(root, transaction)
 
@@ -186,13 +213,37 @@ def persist(root, items, obsolete=None):
 def apply_transaction(root, transaction):
     root = Path(root)
     items = transaction['index']['notes']
+    from markdown_sync import digest
+    skip_files=set()
+    for path,text in transaction.get('branch_files',{}).items():
+        actual=digest((root/path).read_text('utf-8-sig')) if (root/path).exists() else None
+        if path in transaction.get('expected_markdown',{}) and actual not in (transaction['expected_markdown'][path],digest(text)):
+            state=transaction['sync_state'];base=state['files'][path];nid=base['note']
+            skip_files.update(p for p,b in state['files'].items() if b['note']==nid)
+            issue={'note':nid,'path':path,'kind':'conflict','message':'保存事务期间Markdown被外部修改，已保留文件','base':transaction.get('before_sync_state',{}).get('files',{}).get(path,{}).get('document',''),'saved':text,'external':(root/path).read_text('utf-8-sig') if actual else None}
+            issue['id']=digest(str(issue))[:20];state['issues'].append(issue)
+    for path in skip_files:
+        prior=transaction.get('before_sync_state',{}).get('files',{}).get(path)
+        if prior:transaction['sync_state']['files'][path]=prior
     # Validate paths before replaying a recovery record.
     assign_paths(root, items)
     for note in items:
+        if note['id'] in transaction.get('blocked_notes', []):continue
         wxq.atomic_text(root / note['path'], wxq.render_note(note, {}))
         if note['type'] == 'lineup':
             wxq.atomic_json((root / note['path']).with_suffix('.json'), note)
+    for path, text in transaction.get('branch_files', {}).items():
+        if path in skip_files:continue
+        target = (root / path).resolve()
+        if not target.is_relative_to((root / 'knowledge/lineups').resolve()) or target.suffix != '.md':
+            raise ValueError('非法棋手笔记路径')
+        wxq.atomic_text(target, text)
     wxq.atomic_json(root / 'knowledge/index.json', transaction['index'])
+    if transaction['index'].get('schema_version')==5:
+        from player_branches import enabled
+        wxq.atomic_json(root/'knowledge/replays/schema5-player-branches.json',{'schema_version':5,'notes':[n for n in items if enabled(n) or n.get('lineup_adaptations')]})
+    if 'sync_state' in transaction:
+        wxq.atomic_json(root / 'knowledge/markdown-sync.json', transaction['sync_state'])
     active = {n['path'] for n in items}
     for path in transaction.get('obsolete', []):
         target = (root / path).resolve()
@@ -264,10 +315,34 @@ def manual_claim(section, text):
 
 
 def merge_note(previous, incoming):
+    from player_branches import enabled
+    if enabled(previous):
+        protected_ids=set()
+        for scope,sections in previous.get('manual_scopes',{}).items():
+            owner=previous['meta'] if scope=='common' else next(b for b in previous['meta']['player_branches'] if b['id']==scope)
+            ids=owner.get('common_claim_refs',owner.get('claim_refs',[]))
+            protected_ids.update(c['id'] for c in previous['claims'] if c['id'] in ids and c['section'] in sections)
+        old={c['id']:c for c in previous['claims']}
+        protected_meta=False
+        for scope,sections in previous.get('manual_scopes',{}).items():
+            prior=previous['meta'] if scope=='common' else next(b for b in previous['meta']['player_branches'] if b['id']==scope)
+            supplied=incoming.get('meta',{}) if scope=='common' else next((b for b in incoming.get('meta',{}).get('player_branches',[]) if b['id']==scope),{})
+            fields=set()
+            if '采用与转向信号' in sections:fields.add('selection')
+            if '打法评价' in sections:fields.add('assessment')
+            if '成员配置' in sections:fields.update(('compositions','required_factions','core_heroes','ban_conditions','matchups') if scope=='common' else ('overrides',))
+            if any(s.startswith(('运营路线：','后期组合：')) for s in sections):
+                if incoming.get('meta',{}).get('operation_routes')!=previous['meta'].get('operation_routes') or incoming.get('meta',{}).get('late_variants')!=previous['meta'].get('late_variants'):protected_meta=True
+            if any(prior.get(f)!=supplied.get(f) for f in fields):protected_meta=True
+        if not enabled(incoming) or protected_meta or not protected_ids<={c.get('id') for c in incoming.get('claims',[])} or any(c.get('id') in protected_ids and c!=old[c['id']] for c in incoming.get('claims',[])):
+            result=deepcopy(previous)
+            conflict={'kind':'player_scope','incoming':deepcopy(incoming)}
+            if conflict not in result.setdefault('conflicts',[]):result['conflicts'].append(conflict)
+            return result
     result = {**deepcopy(previous), **deepcopy(incoming)}
     if isinstance(incoming.get('meta'),dict) and 'major_variants' not in incoming['meta'] and 'major_variants' in previous.get('meta',{}):
         result['meta']['major_variants']=deepcopy(previous['meta']['major_variants'])
-    for key in ['path', 'history', 'manual_sections', 'manual_meta', 'manual_fields', 'conflicts']:
+    for key in ['path', 'history', 'manual_sections', 'manual_scopes', 'manual_meta', 'manual_fields', 'conflicts']:
         if key in previous:
             result[key] = deepcopy(previous[key])
     for key in previous.get('manual_fields', []):
@@ -325,7 +400,7 @@ def validate_meta(root, meta):
     if not isinstance(meta, dict):
         raise ValueError('阵容信息必须为对象')
     expected = {'required_factions', 'players', 'core_heroes', 'compositions', 'ban_conditions', 'matchups'}
-    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants', 'overview', 'major_variants'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
+    if not expected.issubset(meta) or set(meta) - expected - {'operation_routes', 'late_variants', 'overview', 'major_variants','common_claim_refs','player_branches','assessment'} or not isinstance(meta['compositions'], dict) or set(meta['compositions']) != {'early', 'middle', 'late'}:
         raise ValueError('阵容信息缺失必需字段或阶段')
     if not isinstance(meta['ban_conditions'], list) or not isinstance(meta['matchups'], list):
         raise ValueError('适用条件和针对策略须为列表')
@@ -339,6 +414,13 @@ def validate_meta(root, meta):
     from overview import validate as validate_overview
     validate_overview(meta, wxq.entities(root))
     validate_tactics(meta, reference)
+    for b in meta.get('player_branches',[]):
+        local={k:deepcopy(meta[k]) for k in expected};local['players']=[b['player']]
+        if 'late_variants' in meta:local['late_variants']=[deepcopy(v) for v in meta['late_variants'] if v['id'] in b.get('late_variant_ids',[])]
+        for key,value in b.get('overrides',{}).items():
+            if key=='compositions':local[key].update(deepcopy(value))
+            else:local[key]=deepcopy(value)
+        validate_meta(root,local)
     for field in ['required_factions', 'players', 'core_heroes']:
         if not isinstance(meta.get(field, []), list):
             raise ValueError('实体选择应为列表')
@@ -378,6 +460,8 @@ def edit_locked(root, nid, payload, recover_first=True):
 def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False):
     with nullcontext() if _locked else store_lock(root):
         if _recover_first: recover(root)
+        from markdown_sync import scan
+        scan(root, _locked=True)
         items = deepcopy(notes(root))
         note = next((n for n in items if n['id'] == nid), None)
         if note is None:
@@ -388,6 +472,31 @@ def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False)
         sections = payload.get('sections', {})
         if not isinstance(sections, dict):
             raise ValueError('章节格式无效')
+        from player_branches import enabled, apply_sections, validate as validate_branches
+        if enabled(note):
+            note['entity_names'].update({e['id']:e['name'] for e in wxq.entities(root)})
+            updates=payload.get('scopes',[{'scope':payload.get('scope','common'),'sections':sections}])
+            if not isinstance(updates,list) or not updates:raise ValueError('缺少编辑范围')
+            for update in updates:
+                if not isinstance(update,dict) or not isinstance(update.get('sections'),dict):raise ValueError('编辑范围格式无效')
+                apply_sections(note,update['scope'],update['sections'])
+            note['entity_names']=deepcopy(before.get('entity_names',{}))
+            if 'meta' in payload and payload['meta'] != note['meta']:
+                validate_meta(root,payload['meta']);note['meta'] = deepcopy(payload['meta']);note['manual_meta'] = True
+            validate_branches(note)
+            validate_meta(root,note['meta'])
+            from tactics import validate as validate_tactics
+            validate_tactics(note['meta'],lambda value:None,note['claims'])
+            if payload.get('title',note['title']) != note['title']:
+                raise ValueError('棋手文件标题请通过打法重命名入口修改')
+            if 'aliases' in payload:
+                if not isinstance(payload['aliases'],list) or not all(isinstance(v,str) for v in payload['aliases']):raise ValueError('别名格式无效')
+                note['aliases'] = payload['aliases']
+            if note != before:
+                note.setdefault('history',[]).append({'at':wxq.now(),'origin':'manual','previous':{k:before.get(k) for k in ['claims','meta','revision']}})
+                if not _dry_run:persist(root,items)
+                else:prepare(root,items)
+            return note
         for section, text in sections.items():
             if not isinstance(text, str) or not isinstance(section, str) or not section.strip() or section == '关联知识':
                 raise ValueError('章节名称或正文无效')
@@ -469,12 +578,15 @@ def canonical_url(value):
     return normalized, 'link-' + hashlib.sha256(normalized.encode()).hexdigest()[:20]
 
 
-def register_source(root, payload, sid=None, preserve_annotations=False, wait=False, cancelled=None):
+def register_source(root, payload, sid=None, preserve_annotations=False, wait=False, cancelled=None, _metadata=None):
     url, canonical_id = canonical_url(payload.get('url', ''))
     with store_lock(root, wait=wait):
         path = Path(root) / 'knowledge/source-registry.json'
         rows = wxq.read_json(path, [])
-        imported = next((r for r in sources(root) if canonical_url(r['url'])[0] == url), None)
+        if _metadata is not None:
+            if _metadata and canonical_url(_metadata.get('url',''))[0]!=url:raise ValueError('元数据与来源链接不一致')
+            imported=_metadata or None
+        else:imported = next((r for r in sources(root) if canonical_url(r['url'])[0] == url), None)
         if imported:
             canonical_id = imported['id']
         if sid:
@@ -496,8 +608,18 @@ def register_source(root, payload, sid=None, preserve_annotations=False, wait=Fa
         for key in ['title', 'notes']:
             if not isinstance(payload.get(key, ''), str):
                 raise ValueError('标题和备注须为文字')
+        title=payload.get('title','')
+        if preserve_annotations:
+            bvid=canonical_id.split(':p')[0]
+            missing=lambda t:not t or (isinstance(t,str) and t.strip() in (bvid,bvid+':p1'))
+            previous=row.get('title','')
+            if row.get('title_origin')=='manual' or 'title' in row.get('manual_values',{}) or not missing(previous):title=previous
+            else:
+                title=next((t for t in [(imported or {}).get('title'),title] if not missing(t)),'')
+                if title:row['title_origin']='metadata'
+        else:row['title_origin']='manual' if title else 'unset'
         row.update({'url': url,
-                    'title': (row.get('title') or (imported or {}).get('title') or payload.get('title', '')) if preserve_annotations else payload.get('title', ''),
+                    'title': title,
                     'notes': (row.get('notes') or (imported or {}).get('notes') or payload.get('notes', '')) if preserve_annotations else payload.get('notes', ''),
                     'updated_at': wxq.now()})
         wxq.atomic_json(path, rows, cancelled=cancelled)

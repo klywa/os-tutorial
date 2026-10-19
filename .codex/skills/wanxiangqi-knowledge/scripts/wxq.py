@@ -157,6 +157,8 @@ def related(root, entity_ids, core=None, topic=None):
 
 
 def render_note(note, sources):
+    from player_branches import enabled, entry_markdown
+    if enabled(note):return entry_markdown(note)
     from lineup_layout import PROFILE_ID, render as render_profile
     if note['type'] == 'lineup':
         return render_profile(note)
@@ -210,6 +212,8 @@ def render_note(note, sources):
     if note.get('meta'):
         from tactics import render as render_tactics
         lines += render_tactics(note['meta'], claims, names)
+    from player_branches import render_adaptations
+    lines += render_adaptations(note)
     lines += ['## 关联知识', '']
     for link in note.get('related', []):
         path = link.get('path', f"knowledge/{FOLDERS[link['type']]}/{link['id']}.md")
@@ -223,6 +227,8 @@ def commit_notes(root, incoming):
     from workspace import store_lock, recover
     with store_lock(root):
         recover(root)
+        from markdown_sync import scan
+        scan(root,_locked=True)
         return _commit_notes(root, incoming)
 
 
@@ -337,6 +343,11 @@ def validate_store(root):
             if read_json(target.with_suffix('.json')) != n:
                 errors.append('Lineup archive differs from index: ' + n['id'])
             try:
+                from player_branches import validate as validate_branches, documents
+                validate_branches(n)
+                for path, expected in documents(n).items():
+                    if not (root/path).exists() or (root/path).read_text('utf-8') != expected:
+                        errors.append('Player Markdown differs: ' + path)
                 from workspace import validate_meta
                 validate_meta(root, n.get('meta', {}))
                 from tactics import validate as validate_tactics
@@ -384,6 +395,7 @@ def main():
     sub.add_parser('sync-entities')
     sub.add_parser('sync-card-images')
     sub.add_parser('validate')
+    sub.add_parser('sync-markdown')
     sub.add_parser('migrate')
     p = sub.add_parser('export-transcripts')
     p.add_argument('sources', nargs='*')
@@ -419,6 +431,9 @@ def main():
     elif args.command == 'sync-card-images':
         from card_images import sync_images
         result = sync_images(args.root)
+    elif args.command == 'sync-markdown':
+        from markdown_sync import scan
+        result = scan(args.root)
     elif args.command == 'validate':
         result = validate_store(args.root)
     elif args.command == 'migrate':

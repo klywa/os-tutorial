@@ -6,6 +6,7 @@ import {useEffect,useRef,useState} from 'react';
 import {api} from './model';
 import TopicPicker from './TopicPicker';
 import LineupQuickList from './LineupQuickList';
+import QuickCreateRows,{blankLineupRow} from './QuickCreateRows';
 import {useLineupConfirm} from './LineupConfirm';
 import {changeNameDraft,filterManagedLineups,namePayload,detailAfterSave,prefillDetail} from './lineupEditing';
 import type {NameDrafts,NameDraft,ListStatus} from './lineupEditing';
@@ -23,7 +24,11 @@ export default function LineupManager({onChanged,onDirty,initialId}:{onChanged:(
  const {ask,confirmation}=useLineupConfirm();
  const [drafts,setDrafts]=useState<NameDrafts>({}),[status,setStatus]=useState<ListStatus>('all'),[conflicts,setConflicts]=useState<string[]>([]),[notice,setNotice]=useState(''),[editBase,setEditBase]=useState('');
  const detailDirty=!!edit&&JSON.stringify({edit,aliases})!==editBase;
- const dirty=!!Object.keys(drafts).length||detailDirty;
+ const [newRows,setNewRows]=useState([blankLineupRow()]),[rowErrors,setRowErrors]=useState<Record<string,string>>({});
+ const requestRef=useRef<{body:string;id:string}>({body:'',id:''});
+ const newCount=newRows.filter(r=>r.common_name.trim()||r.aliases.trim()).length;
+ const listDirty=!!Object.keys(drafts).length||newCount>0;
+ const dirty=listDirty||detailDirty;
  useEffect(()=>onDirty?.(dirty),[dirty,onDirty]);
  useEffect(()=>{if(!dirty)return;const handler=(e:BeforeUnloadEvent)=>{e.preventDefault();e.returnValue='';};window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler);},[dirty]);
  const seedUsed=useRef(false),detailForm=useRef<HTMLFormElement>(null);
@@ -44,9 +49,11 @@ export default function LineupManager({onChanged,onDirty,initialId}:{onChanged:(
   if(detailDirty){setError('请先保存或取消详细编辑，再批量保存名称。');return;}
   setBusy(true);setError('');setConflicts([]);
   try{
-   const response=await fetch('/api/topics/lineups/batch',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:namePayload(drafts)})});const data=await response.json();
-   if(!response.ok){setConflicts(data.lineup_ids??[]);throw new Error(data.error??'保存失败，草稿保留');}
-   setDrafts({});setRoster(data);setNotice('全部名称修改已保存');if(edit){const r=(data as Lineup[]).find(r=>r.id===edit.id);if(r)choose(r,true);}await onChanged();
+   const items=[...namePayload(drafts),...newRows.filter(r=>r.common_name.trim()||r.aliases.trim()).map(r=>({client_id:r.client_id,common_name:r.common_name,aliases:r.aliases.split(/[、,，;；]/).map(a=>a.trim()).filter(Boolean)}))];
+   const body=JSON.stringify(items);if(requestRef.current.body!==body)requestRef.current={body,id:crypto.randomUUID()};
+   const response=await fetch('/api/topics/lineups/batch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,request_id:requestRef.current.id})});const data=await response.json();
+   if(!response.ok){setConflicts(data.lineup_ids??[]);const errors:Record<string,string>={};for(const r of data.row_errors??[])if(r.client_id)errors[r.client_id]=r.error;setRowErrors(errors);requestAnimationFrame(()=>document.querySelector('[data-new-lineup="'+Object.keys(errors)[0]+'"] input')?.scrollIntoView({block:'center'}));throw new Error(data.error??'保存失败，草稿保留');}
+   setDrafts({});setNewRows([blankLineupRow()]);setRowErrors({});setRoster(data.roster);setNotice('全部新增与修改已保存'+(data.warnings?.length?'；'+data.warnings.map((w:{name:string})=>w.name+'：同名项已保留为独立条目').join('；'):''));if(edit){const r=(data.roster as Lineup[]).find(r=>r.id===edit.id);if(r)choose(r,true);}await onChanged();
   }catch(e){setError((e as Error).message);}finally{setBusy(false);}
  }
  async function trash(r:Lineup,restore=false){
@@ -58,10 +65,11 @@ export default function LineupManager({onChanged,onDirty,initialId}:{onChanged:(
  const commonCounts=new Map<string,number>();for(const r of roster.filter(r=>!r.deleted_at&&!r.merged_into)){const n=(drafts[r.id]?.common_name??r.common_name??'').trim();if(n)commonCounts.set(n,(commonCounts.get(n)??0)+1);}
  const duplicates=[...commonCounts].filter(([,n])=>n>1).map(([n])=>n);
  return <div className="lineup-manager">{confirmation}<p className="muted">直接填写常用名与别名，修改多行后统一保存。常用名为空时显示原名。</p>{error&&<p className="error" role="alert">{error}{conflicts.length>0&&<><br/>{conflicts.map(id=>roster.find(r=>r.id===id)?.name||id).join('、')}<button disabled={busy} onClick={()=>void act(async()=>{const rows=await api<Lineup[]>('topics/lineups');setRoster(rows);})}>刷新服务器资料，保留草稿</button>{conflicts.map(id=><button key={id} disabled={busy} onClick={async()=>{const latest=roster.find(r=>r.id===id);if(latest&&await ask('保留本行草稿，使用刚刷新的修订号再次提交？请先核对服务器资料。'))setDrafts(d=>({...d,[id]:{...d[id],revision:latest.revision}}));}}>核对后重试：{roster.find(r=>r.id===id)?.name||id}</button>)}</>}</p>}{notice&&<p role="status" className="jade">{notice}</p>}
- <div className="lineup-manager-toolbar"><input aria-label="搜索阵容名单" placeholder="搜索原名、常用名、别名或英雄" value={query} onChange={e=>setQuery(e.target.value)}/><select aria-label="阵容状态" value={status} onChange={e=>setStatus(e.target.value as ListStatus)}><option value="all">全部未删除</option><option value="enabled">启用</option><option value="disabled">停用</option><option value="deleted">已删除</option></select><button disabled={busy} onClick={()=>choose({id:'',name:'',heroes:[],note_ids:[],enabled:true,sort_order:roster.length})}>新增阵容</button></div>
+ <div className="lineup-manager-toolbar"><input aria-label="搜索阵容名单" placeholder="搜索原名、常用名、别名或英雄" value={query} onChange={e=>setQuery(e.target.value)}/><select aria-label="阵容状态" value={status} onChange={e=>setStatus(e.target.value as ListStatus)}><option value="all">全部未删除</option><option value="enabled">启用</option><option value="disabled">停用</option><option value="deleted">已删除</option></select><button disabled={busy} onClick={()=>document.querySelector('.quick-create input')?.scrollIntoView({block:'center'})}>新增阵容</button></div>
  <button disabled={busy||dirty} onClick={()=>void act(async()=>{const preview=await api<{token:string;remove:{name:string}[];keep:{name:string}[]}>('topics/lineups/cleanup/preview','POST',{});if(await ask(`保留 ${preview.keep.length} 套已关联笔记阵容，将 ${preview.remove.length} 套无笔记阵容移入已删除？备份和历史内容保留，可恢复。`)){await api('topics/lineups/cleanup/apply','POST',{token:preview.token});setNotice('无笔记阵容已移入已删除，已关联笔记的阵容保留。');}})}>清理无笔记阵容</button>
- <div className="lineup-batch-bar"><span>{Object.keys(drafts).length?`已修改 ${Object.keys(drafts).length} 套`:`${visible.length} 套阵容`}</span><button className="primary" disabled={busy||!Object.keys(drafts).length||detailDirty} onClick={()=>void saveAll()}>保存全部</button><button disabled={busy||!Object.keys(drafts).length} onClick={async()=>{if(await ask('放弃所有列表名称草稿？')){setDrafts({});setConflicts([]);}}}>放弃修改</button></div>
+ <div className="lineup-batch-bar"><span>{Object.keys(drafts).length?`已修改 ${Object.keys(drafts).length} 套`:`${visible.length} 套阵容`}</span><button className="primary" disabled={busy||!listDirty||detailDirty} onClick={()=>void saveAll()}>保存全部</button><button disabled={busy||!listDirty} onClick={async()=>{if(await ask('放弃所有列表名称草稿？')){setDrafts({});setNewRows([blankLineupRow()]);setRowErrors({});setConflicts([]);}}}>放弃修改</button></div>
  {duplicates.length>0&&<p className="lineup-name-warning">同名提示：{duplicates.join('、')}。不同组成保留独立阵容，主题匹配有歧义时需确认。</p>}
+ <QuickCreateRows rows={newRows} onChange={setNewRows} busy={busy} errors={rowErrors}/>
  <LineupQuickList rows={visible} drafts={drafts} conflicts={conflicts} busy={busy} editingId={edit?.id} onDraft={updateDraft} onEdit={r=>choose(r)} onDelete={r=>void trash(r)} onRestore={r=>void trash(r,true)}/>
  <details className="lineup-advanced"><summary>网站同步与命名建议</summary><button disabled={busy||dirty} onClick={()=>void act(async()=>setPreview(await api<Preview>('topics/lineups/preview','POST',{})))}>从网站同步／预览</button>
  {preview&&<section className="lineup-import-preview"><h3>同步预览</h3><p>{preview.scope.version} · 最近{preview.scope.time}天 · 扫描{preview.scanned}，合并{preview.merged}，异常{preview.errors.length}，主阵容{preview.items.length}；变阵扫描{preview.variant_scanned??0}，有效关联{preview.variant_links??0}，去重组成{preview.variant_unique??0}</p><details><summary>查看差异与异常</summary>{preview.changes.map((c,i)=><p key={i}>{c.action}：{c.name}</p>)}{preview.errors.map((e,i)=><p key={i}>{e.error}</p>)}</details><button disabled={busy} onClick={()=>void act(async()=>{await api('topics/lineups/apply','POST',{token:preview.token});setPreview(null);})}>应用导入，保留人工值</button><button disabled={busy} onClick={()=>setPreview(null)}>取消</button></section>}
