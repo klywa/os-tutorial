@@ -106,15 +106,16 @@ class Handler(BaseHTTPRequestHandler):
                 workspace.recover(self.server.root)
                 if path == '/api/notes':
                     from lineup_catalog import LineupCatalog
-                    links=LineupCatalog(self.server.root).links()
-                    return self.response(200, [{**n,'lineup_ids':[uid for uid,ids in links.items() if n['id'] in ids]} for n in workspace.notes(self.server.root)])
+                    from note_links import project_notes
+                    return self.response(200, project_notes(self.server.root))
                 if path.startswith('/api/notes/') and path.endswith('/reading'):
                     from lineup_layout import reading_document
                     parts = path.split('/')
                     note = next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None) if len(parts) == 5 else None
                     return self.response(200, reading_document(note)) if note else self.response(404, {'error': '笔记不存在'})
                 if path.startswith('/api/notes/'):
-                    note = next((n for n in workspace.notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
+                    from note_links import project_notes
+                    note = next((n for n in project_notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
                     return self.response(200 if note else 404, note or {'error': '笔记不存在'})
                 if path == '/api/options':
                     entities = [{**{k: e.get(k) for k in ['id', 'name', 'category', 'aliases']},
@@ -184,6 +185,9 @@ class Handler(BaseHTTPRequestHandler):
                 elif path=='/api/topics/lineups/merge':result=catalog.merge(payload)
                 elif path=='/api/topics/lineups/variants':result=catalog.save_variants(payload)
                 elif path.startswith('/api/topics/lineups/naming-candidates/'):result=catalog.resolve_naming(path.split('/')[-1],payload)
+                elif path=='/api/topics/lineups/associate':
+                    from note_links import associate
+                    result=associate(self.server.root,payload)
                 elif path=='/api/topics/lineups/bind':result=catalog.bind(payload)
                 elif path=='/api/topics/control':
                     if payload.get('action') in ['retry','extract','reextract']:topics.sync(crawler.source_rows(self.server.root,store))
@@ -244,12 +248,14 @@ class Handler(BaseHTTPRequestHandler):
                 match = re.search(r'BV[a-zA-Z0-9]+', source['url'])
                 if not match:
                     raise ValueError('仅支持B站视频的UP主')
-                detail = crawler.Bilibili(store.settings()['cookies']).detail(match.group())
+                detail = crawler.Bilibili(store.settings()['cookies'],root=self.server.root).detail(match.group())
                 if not detail or not detail.get('space_url'):
                     raise ValueError('无法获取该视频UP主，请重试')
                 result = {'name': detail['author'], 'url': detail['space_url']}
             elif self.command == 'PUT' and path.startswith('/api/notes/'):
-                result = workspace.edit(self.server.root, path.split('/')[-1], payload)
+                workspace.edit(self.server.root, path.split('/')[-1], payload)
+                from note_links import project_notes
+                result=next(n for n in project_notes(self.server.root) if n['id']==path.split('/')[-1])
             elif self.command == 'POST' and path == '/api/sources':
                 result = workspace.register_source(self.server.root, payload)
             elif self.command == 'PUT' and path.startswith('/api/sources/') and path.endswith('/transcript'):
@@ -287,6 +293,8 @@ def create_server(root=ROOT, port=8765, start_worker=False):
     server.root = Path(root)
     server.crawler = crawler.Runtime(root)
     if start_worker:
+        from note_links import auto_link
+        auto_link(root)
         server.crawler.start()
     return server
 

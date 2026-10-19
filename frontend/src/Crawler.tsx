@@ -1,3 +1,4 @@
+import SearchConditions,{searchKeywords} from './SearchConditions';
 import {creatorUID,newCreator,creatorMatches,creatorJobs,creatorStatus} from './creators';
 import RetryStatus from './RetryStatus';
 import TaskIcon from './TaskIcon';
@@ -9,11 +10,11 @@ import TaskControls from './TaskControls';
 import {progressLabel,taskNames} from './acquisition';
 import type {Creator,CrawlJob,CrawlSettings,SearchConfig} from './types';
 
-const defaults:SearchConfig={keywords:[],order:'totalrank',mode:'auto',scan_limit:100,process_limit:50};
+const defaults:SearchConfig={keywords:[],strict_match:true,order:'totalrank',mode:'auto',scan_limit:100,process_limit:50};
 export default function Crawler({seed,onSeedUsed}:{seed?:Partial<Creator>;onSeedUsed:()=>void}){
   const [editingCreator,setEditingCreator]=useState<Creator|null>(null);
   const [tab,setTab]=useState(seed?'creators':'search');
-  const [form,setForm]=useState<SearchConfig>(defaults),[keywords,setKeywords]=useState('');
+  const [form,setForm]=useState<SearchConfig>(defaults),[keywords,setKeywords]=useState<string[]>(['']);
   const [settings,setSettings]=useState<CrawlSettings>({clock:'09:00',cookies:'',search:defaults,parallelism:2});
   const [creators,setCreators]=useState<Creator[]>([]),[creatorFilter,setCreatorFilter]=useState(''),[creatorQuery,setCreatorQuery]=useState('');
   const [jobs,setJobs]=useState<CrawlJob[]>([]),[active,setActive]=useState(''),[detail,setDetail]=useState<CrawlJob|null>(null),[selected,setSelected]=useState<string[]>([]);
@@ -23,7 +24,7 @@ export default function Crawler({seed,onSeedUsed}:{seed?:Partial<Creator>;onSeed
   async function refresh(){const [j,c]=await Promise.all([api<CrawlJob[]>('crawler/jobs'),api<Creator[]>('crawler/creators')]);setJobs(j);setCreators(c);}
   useEffect(()=>{
     let alive=true;
-    void api<CrawlSettings>('crawler/settings').then(s=>{if(alive){setSettings(s);setForm(s.search);setKeywords(s.search.keywords.join('\n'));}}).catch(e=>setError(e.message));
+    void api<CrawlSettings>('crawler/settings').then(s=>{if(alive){setSettings(s);setForm({...s.search,strict_match:s.search.strict_match??true});setKeywords(s.search.keywords.length?s.search.keywords:['']);}}).catch(e=>setError(e.message));
     void refresh().catch(e=>setError(e.message));
     const timer=setInterval(()=>void refresh().catch(e=>setError(e.message)),2000);
     return()=>{alive=false;clearInterval(timer);};
@@ -48,7 +49,7 @@ export default function Crawler({seed,onSeedUsed}:{seed?:Partial<Creator>;onSeed
     return()=>{alive=false;clearInterval(timer);};
   },[active]);
   async function act(action:()=>Promise<void>){setBusy(true);setError('');setMessage('');try{await action();await refresh();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
-  const config=()=>({...form,keywords:keywords.split('\n').map(s=>s.trim()).filter(Boolean)});
+  const config=()=>({...form,keywords:searchKeywords(keywords)});
   async function start(){await act(async()=>{const job=await api<CrawlJob>('crawler/searches','POST',config());setActive(job.id);setMessage('采集任务已创建，关闭网页后服务会继续处理。');});}
   async function jobAction(op:string,bvids?:string[]){await act(async()=>{const job=await api<CrawlJob>(`crawler/jobs/${active}/${op}`,'POST',{bvids});showDetail(job);if(activeRef.current===job.id)setSelected([]);});}
   async function deleteJob(id:string){await act(async()=>{await api(`crawler/jobs/${id}`,'DELETE',{});if(active===id){setActive('');setDetail(null);setSelected([]);}setMessage('任务已删除；已采集内容和文字稿保留，共用视频继续处理。');});}
@@ -60,11 +61,11 @@ export default function Crawler({seed,onSeedUsed}:{seed?:Partial<Creator>;onSeed
     <div className="acquisition-tabs" role="tablist" aria-label="采集方式"><button role="tab" aria-selected={tab==='search'} className={tab==='search'?'selected':''} onClick={()=>selectTab('search')}>关键词搜索</button><button role="tab" aria-selected={tab==='creators'} className={tab==='creators'?'selected':''} onClick={()=>selectTab('creators')}>UP主监听</button></div>
     {error&&<p className="error" role="alert">{error}</p>}{message&&<p className="notice" role="status">{message}</p>}
     <div className={"acquisition-layout "+(tab==='creators'?'creator-layout':'')}><section className={"acquisition-config "+(tab==='creators'?'creator-sidebar':'')}>
-      {tab==='search'?<form onSubmit={e=>{e.preventDefault();void start();}}><h2>搜索条件</h2><label>关键词，每行一个<textarea aria-label="关键词，每行一个" rows={3} value={keywords} onChange={e=>setKeywords(e.target.value)} placeholder={'王者万象棋 李信\n王者万象棋 新手教学'} required/></label>
+      {tab==='search'?<form onSubmit={e=>{e.preventDefault();void start();}}><h2>搜索条件</h2><SearchConditions rows={keywords} strict={form.strict_match??true} onRows={setKeywords} onStrict={strict_match=>setForm({...form,strict_match})}/>
         <div className="field-pair"><label>发布起始日期<input type="date" value={form.date_from??''} onChange={e=>setForm({...form,date_from:e.target.value})}/></label><label>发布结束日期<input type="date" value={form.date_to??''} onChange={e=>setForm({...form,date_to:e.target.value})}/></label></div>
         <div className="field-pair">{searchNumber('min_views','最低播放量')}{searchNumber('max_views','最高播放量')}{searchNumber('min_duration','最短时长（秒）')}{searchNumber('max_duration','最长时长（秒）')}</div>
         <div className="field-pair"><label>排序<select value={form.order} onChange={e=>setForm({...form,order:e.target.value})}><option value="totalrank">综合排序</option><option value="pubdate">最新发布</option><option value="click">最多播放</option></select></label><label>处理方式<select value={form.mode} onChange={e=>setForm({...form,mode:e.target.value})}><option value="auto">自动处理命中视频</option><option value="preview">预览后勾选处理</option></select></label>{searchNumber('scan_limit','每个关键词扫描上限')}{searchNumber('process_limit','本次处理视频上限')}</div>
-        <p className="muted">日期包含当天，按北京时间筛选。多个关键词独立查询，重复视频只处理一次。</p><div className="action-line"><button className="primary" disabled={busy||!keywords.trim()}>开始采集</button><button type="button" disabled={busy} onClick={()=>void act(async()=>{await api('crawler/searches','PUT',config());setMessage('搜索条件已保存');})}>保存条件</button></div>
+        <p className="muted">日期包含当天，按北京时间筛选。每条“或”条件独享扫描额度，处理上限由本批次共享，重复视频只处理一次。</p><div className="action-line"><button className="primary" disabled={busy||!searchKeywords(keywords).length}>开始采集</button><button type="button" disabled={busy} onClick={()=>void act(async()=>{await api('crawler/searches','PUT',config());setMessage('搜索条件已保存');})}>保存条件</button></div>
       </form>:<>
         <div className="creator-list-heading"><h2>UP主监听（{creators.length}）</h2><button className="primary" disabled={busy} onClick={()=>setEditingCreator(newCreator())}>添加UP主</button></div>
         <label>搜索UP主<input type="search" placeholder="名称或UID" value={creatorQuery} onChange={e=>setCreatorQuery(e.target.value)}/></label>
@@ -89,7 +90,8 @@ export default function Crawler({seed,onSeedUsed}:{seed?:Partial<Creator>;onSeed
       <div className="job-history" aria-label="采集任务列表">{visibleJobs.map(j=><article className={'job-history-item '+(active===j.id?'active':'')} key={j.id}><button className={active===j.id?'selected':''} onClick={()=>setActive(j.id)}><strong>{j.creator?(creators.find(c=>c.uid===j.creator)?.name||'UP主 '+j.creator):j.config.keywords.join('、')}</strong>{j.creator&&<small>UID {j.creator}</small>}<small>{j.created.replace('T',' ').slice(0,19)} · {taskNames[j.state]||j.state}</small><small>处理中 {j.counts.running} · 排队 {j.counts.queued} · 已停止 {j.counts.paused??0}</small></button><RetryStatus retry={j.retry}/><div className="task-controls"><TaskIcon icon="download" label="停止下载" disabled={busy||!j.counts.downloading} onClick={()=>void phaseAction(j.id,'stop-download')}/><TaskIcon icon="transcribe" label="停止转录" disabled={busy||!j.counts.transcribing} onClick={()=>void phaseAction(j.id,'stop-transcribe')}/><TaskIcon icon="delete" label={`删除任务 ${j.id}`} className="danger-quiet" disabled={busy} onClick={()=>void deleteJob(j.id)}/></div></article>)}</div>
       {!visibleJobs.length&&<div className="empty">配置搜索条件或添加UP主，开始收集文字稿。</div>}
       {!active&&!!visibleJobs.length&&<p className="muted">选择任务查看结果与处理进度。</p>}
-      {detail&&visibleJobs.some(j=>j.id===detail.id)&&<><div className="job-summary" aria-live="polite"><span>已扫描 <b>{detail.scanned}</b></span><span>符合条件 <b>{detail.matched}</b></span><span>重复跳过 <b>{detail.duplicates}</b></span><span>待处理 <b>{detail.counts.queued}</b></span><span>已生成 <b>{detail.counts.succeeded}</b></span><span>失败 <b>{detail.counts.failed}</b></span></div>
+      {detail&&visibleJobs.some(j=>j.id===detail.id)&&<><div className="job-summary" aria-live="polite"><span>已扫描 <b>{detail.scanned}</b></span><span>符合条件 <b>{detail.matched}</b></span><span>重复跳过 <b>{detail.duplicates}</b></span>{!detail.creator&&<span>标题不匹配 <b>{detail.title_skipped??0}</b></span>}<span>待处理 <b>{detail.counts.queued}</b></span><span>已生成 <b>{detail.counts.succeeded}</b></span><span>失败 <b>{detail.counts.failed}</b></span></div>
+        {!detail.creator&&detail.scan_counts&&<div className="keyword-progress" aria-label="各条件扫描进度">{Object.entries(detail.scan_counts).map(([keyword,count])=><span key={keyword}>{keyword}：{count} / {detail.config.scan_limit}</span>)}</div>}
         <p className="muted">{taskNames[detail.state]||detail.state} · 仅覆盖本次实际扫描结果{detail.limited?'；已达到扫描或处理上限':''}</p><TaskError error={detail.error} retry={detail.retry}/>
         <div className="batch-toolbar"><span>已选 {selected.length}</span><button className="danger-quiet" disabled={busy} onClick={()=>void deleteJob(detail.id)}>删除当前任务</button><button onClick={()=>setSelected((detail.items??[]).filter(i=>i.state==='preview').map(i=>i.bvid))}>选择待处理结果</button><button disabled={busy||!selected.length||detail.state==='stopped'} onClick={()=>void jobAction('start',selected)}>处理所选</button><button disabled={busy||(!detail.counts.failed&&detail.state!=='failed')} onClick={()=>void jobAction('retry')}>重试失败项</button><button disabled={busy} onClick={()=>void jobAction(detail.state==='stopped'?'resume':'stop')}>{detail.state==='stopped'?'恢复采集与派发':'停止继续采集与派发'}</button></div>
         <div className="crawl-results">{detail.items?.map(i=><article className="crawl-result" key={i.bvid}><input type="checkbox" aria-label={'选择 '+(i.title||i.bvid)} checked={selected.includes(i.bvid)} onChange={e=>setSelected(e.target.checked?[...selected,i.bvid]:selected.filter(v=>v!==i.bvid))}/><div><a href={i.url} target="_blank" rel="noreferrer">{i.title||i.bvid}</a><p className="muted">{i.author||'UP主未知'} · {i.published||'发布日期未知'} · {i.view_count?.toLocaleString()??'未知'}次播放</p><div className="chips">{i.keywords.map(k=><span className="badge" key={k}>{k}</span>)}<span className="badge">{i.state==='running'?progressLabel(i.progress):taskNames[i.state]||i.state}</span></div><TaskError error={i.error} retry={i.progress.next_retry_at?{attempt:i.progress.attempt??1,next_retry_at:i.progress.next_retry_at}:null}/>{i.state!=='preview'&&<TaskControls item={i} busy={busy} onAction={a=>void videoAction(i.bvid,a)} onRetry={()=>void jobAction('retry',[i.bvid])}/>}</div></article>)}</div>

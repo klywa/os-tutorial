@@ -54,3 +54,11 @@ UP主监听列表与弹窗管理：complete。防覆盖POST/PUT、320px侧栏列
 
 
 2026-10-18阵容快速编辑交付complete：234项Python、39项前端、生产构建及桌面/420px验收通过。页内删除恢复、草稿保护、新增刷新持久化均补验完成，取代此前UI pending。正式33条阵容与知识正文保留，临时8766副本服务已清理。见docs/lineup-edit-progress.md。
+
+B站关键词或条件/严格匹配 complete：新搜索默认标题各词全部包含、或条件独立额度与进度，旧27批次配置保留。242Python/41前端/构建及桌面420px通过；真实预览10扫描/7符合/3标题跳过。8765已加载，正式后台继续，隔离8766已清理。见docs/search-strict-progress.md。
+
+任务统计单行/字幕优先实现与上线complete：254Python/42前端/构建/知识validate/skill格式及桌面420px通过，模拟字幕无下载/ASR、编辑/知识提交/CLI画面兼容已验证。真实字幕请求及刷新后均B站412，真实成功验收受限，未宣称恢复。8765已加载、隔离8766清理。见docs/subtitle-priority-progress.md。
+
+阵容笔记关联、自动匹配与变体选择 complete：265Python/44前端/构建/知识validate及桌面420px通过。8765已更新，李信主笔记关联已核验；正式正文哈希不变，隔离8766清理。详见docs/note-links-progress.md。
+
+2026-10-19 B站采集受限与任务恢复修复 complete：281Python/47前端/构建/validate/skill及桌面420px通过。截图视频和第二条真实视频已通过音频回退large-v3生成正式文字稿；60条历史任务恢复，剩余后台in_progress。知识与人工资料保持不变，8765已更新、隔离8766清理。见docs/acquisition-recovery-progress.md。

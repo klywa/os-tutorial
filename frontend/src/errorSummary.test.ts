@@ -12,3 +12,7 @@ it('本地保存错误隐藏路径并提示文件占用',()=>{
  expect(result.summary).toBe('来源登记文件暂时无法保存');
  expect(result.hint).toContain('占用');
 });
+
+it('格式缺失不归类为风控',()=>{expect(taskError('No video formats found!').category).toBe('formats');});
+
+it('视频不可访问不归类为网络中断',()=>{expect(taskError('B站请求失败（-404）：视频不存在').category).toBe('unavailable');});

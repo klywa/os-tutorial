@@ -74,7 +74,7 @@ class RiskRetryTests(unittest.TestCase):
         with patch('crawler.now',return_value=retry['next_retry_at']),patch('crawler.Bilibili') as adapter:
             adapter.return_value.creator_page.return_value=([],False)
             runtime.scan(self.store.job(job['id']))
-            adapter.assert_called_once_with('',refresh=True)
+            adapter.assert_called_once_with('',refresh=True,root=self.root)
         self.assertEqual(self.store.job(job['id'])['state'],'scanned')
         self.assertIsNone(self.store.risk_retry('job',job['id']))
         self.assertTrue(self.store.creators()[0]['last_success'])

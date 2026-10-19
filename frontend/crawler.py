@@ -1,5 +1,6 @@
 """Durable local acquisition queue, shared source projection, and scheduler."""
 import json
+import html
 import re
 import sqlite3
 import subprocess
@@ -17,6 +18,7 @@ sys.path.insert(0, str(SCRIPTS))
 import wxq
 import workspace
 from bilibili import Bilibili, BJ, creator_uid
+from reference_store import transcript_artifacts
 
 
 def now():
@@ -57,12 +59,21 @@ def matches_filters(row, filters):
     return True
 
 
+def title_keywords(title, keywords):
+    """Return actual OR clauses whose every word occurs in the plain title."""
+    title = html.unescape(re.sub('<[^>]*>', '', title or '')).casefold()
+    return [k for k in keywords if k.split() and all(word.casefold() in title for word in k.split())]
+
+
 def config(payload):
     result = {**payload}
     keywords = payload.get('keywords', [])
     if not isinstance(keywords, list) or any(not isinstance(k, str) for k in keywords):
         raise ValueError('关键词须为文字列表')
     result['keywords'] = list(dict.fromkeys(k.strip() for k in keywords if k.strip()))
+    result.setdefault('strict_match', True)
+    if type(result['strict_match']) is not bool:
+        raise ValueError('严格匹配须为布尔值')
     for key, default in [('scan_limit', 100), ('process_limit', 50)]:
         result[key] = int(payload.get(key, default))
         if not 1 <= result[key] <= 10000:
@@ -104,6 +115,8 @@ class Store:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.db() as db:
             db.executescript('''
+                CREATE TABLE IF NOT EXISTS task_recoveries(bvid TEXT PRIMARY KEY,at TEXT);
+                CREATE TABLE IF NOT EXISTS task_diagnostics(bvid TEXT,generation INTEGER,data TEXT,at TEXT);
                 CREATE TABLE IF NOT EXISTS settings(key TEXT PRIMARY KEY, value TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS jobs(id TEXT PRIMARY KEY, config TEXT NOT NULL, state TEXT NOT NULL,
                     created TEXT NOT NULL, scanned INTEGER DEFAULT 0, matched INTEGER DEFAULT 0,
@@ -117,8 +130,13 @@ class Store:
                 CREATE TABLE IF NOT EXISTS risk_retries(kind TEXT, target TEXT, attempt INTEGER NOT NULL,
                     next_retry_at TEXT NOT NULL, error TEXT NOT NULL, PRIMARY KEY(kind,target));
             ''')
+            for field, declaration in [('scan_counts', "TEXT NOT NULL DEFAULT '{}'"), ('title_skipped', 'INTEGER NOT NULL DEFAULT 0')]:
+                if field not in [r['name'] for r in db.execute('PRAGMA table_info(jobs)')]:
+                    db.execute(f'ALTER TABLE jobs ADD COLUMN {field} {declaration}')
             if 'charged' not in [r['name'] for r in db.execute('PRAGMA table_info(dispatch)')]:
                 db.execute('ALTER TABLE dispatch ADD COLUMN charged INTEGER DEFAULT 1')
+            if 'error_data' not in [r['name'] for r in db.execute('PRAGMA table_info(tasks)')]:
+                db.execute("ALTER TABLE tasks ADD COLUMN error_data TEXT NOT NULL DEFAULT '{}'")
             if 'generation' not in [r['name'] for r in db.execute('PRAGMA table_info(tasks)')]:
                 db.execute('ALTER TABLE tasks ADD COLUMN generation INTEGER NOT NULL DEFAULT 0')
             if 'last_dispatched' not in [r['name'] for r in db.execute('PRAGMA table_info(jobs)')]:
@@ -193,8 +211,10 @@ class Store:
                     if k in value:
                         v = config(value[k]) if k == 'search' else value[k]
                         db.execute('INSERT OR REPLACE INTO settings VALUES(?,?)', (k, encode(v)))
-            return {'clock': '09:00', 'cookies': '', 'search': config({}), 'parallelism': 2,
-                    **{r['key']: json.loads(r['value']) for r in db.execute('SELECT * FROM settings')}}
+            result = {'clock': '09:00', 'cookies': '', 'search': config({}), 'parallelism': 2,
+                      **{r['key']: json.loads(r['value']) for r in db.execute('SELECT * FROM settings')}}
+            result['search'] = config(result['search'])
+            return result
 
     def new_job(self, payload, creator=None):
         payload = config(payload)
@@ -236,8 +256,8 @@ class Store:
             r = db.execute('SELECT * FROM jobs WHERE id=?', (jid,)).fetchone()
             if not r:
                 raise KeyError('任务不存在')
-            result = {**dict(r), 'config': json.loads(r['config'])}
-            rows = db.execute('''SELECT v.bvid,v.data,t.state,t.error,t.progress,h.keyword,
+            result = {**dict(r), 'config': json.loads(r['config']), 'scan_counts': json.loads(r['scan_counts'])}
+            rows = db.execute('''SELECT v.bvid,v.data,t.state,t.error,t.progress,t.error_data,h.keyword,
                 EXISTS(SELECT 1 FROM dispatch d WHERE d.bvid=v.bvid AND d.job=h.job) AS selected
                 FROM hits h JOIN videos v ON v.bvid=h.bvid LEFT JOIN tasks t ON t.bvid=v.bvid
                 WHERE h.job=? ORDER BY v.bvid''', (jid,)).fetchall()
@@ -245,23 +265,23 @@ class Store:
         for row in rows:
             entry = grouped.setdefault(row['bvid'], {**json.loads(row['data']), 'keywords': [],
                 'state': row['state'] if row['selected'] else 'preview', 'error': row['error'] or '',
-                'progress': json.loads(row['progress'] or '{}')})
+                'error_info':json.loads(row['error_data'] or '{}') or None, 'progress': json.loads(row['progress'] or '{}')})
             if row['keyword']:
                 entry['keywords'].append(row['keyword'])
         result['counts'] = {state: sum(v['state'] == state for v in grouped.values())
                             for state in ['preview', 'queued', 'running', 'paused', 'cancelled', 'succeeded', 'failed']}
         for phase in ['downloading', 'transcribing']:
-            result['counts'][phase] = sum(v['state'] == 'running' and v['progress'].get('phase') == phase for v in grouped.values())
+            result['counts'][phase] = sum(v['state'] == 'running' and v['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]) for v in grouped.values())
         if items:
             for item in grouped.values():
-                item['error_info'] = error_info(item['error'], item['progress'].get('phase'))
+                item['error_info'] = item.get('error_info') or error_info(item['error'], item['progress'].get('phase'))
             result['items'] = list(grouped.values())
         result['error_info'] = error_info(result['error'], 'discovery')
         result['retry'] = self.risk_retry('job',jid) if result['state'] == 'pending' else None
         return result
 
     def update_job(self, jid, **values):
-        allowed = {'state', 'scanned', 'matched', 'duplicates', 'limited', 'error'}
+        allowed = {'state', 'scanned', 'matched', 'duplicates', 'limited', 'error', 'scan_counts', 'title_skipped'}
         if not set(values) <= allowed:
             raise ValueError('Invalid job update')
         with self.db() as db:
@@ -371,7 +391,7 @@ class Store:
                 raise KeyError('视频任务不存在')
             if action != 'delete':
                 phase = 'downloading' if action == 'stop-download' else 'transcribing'
-                if row['state'] != 'running' or json.loads(row['progress']).get('phase') != phase:
+                if row['state'] != 'running' or json.loads(row['progress']).get('phase') not in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]):
                     raise ValueError('视频已不在对应阶段，请刷新任务状态')
             state = 'cancelled' if action == 'delete' else 'paused'
             db.execute('UPDATE tasks SET state=?,error=?,updated=?,generation=generation+1 WHERE bvid=?',
@@ -382,7 +402,7 @@ class Store:
         self.stop(jid)
         phase = 'downloading' if action == 'stop-download' else 'transcribing'
         for item in self.job(jid)['items']:
-            if item['state'] == 'running' and item['progress'].get('phase') == phase:
+            if item['state'] == 'running' and item['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]):
                 try:
                     self.control_task(item['bvid'], action)
                 except ValueError:
@@ -401,7 +421,7 @@ class Store:
 
     def tasks(self):
         with self.db() as db:
-            return [dict(r) for r in db.execute('SELECT * FROM tasks')]
+            return [{**dict(r),'error_info':(json.loads(r['error_data']) or error_info(r['error'],json.loads(r['progress']).get('phase'))) if r['error'] else None} for r in db.execute('SELECT * FROM tasks')]
 
     def claim(self, exclude=()):
         with self.db() as db:
@@ -415,14 +435,18 @@ class Store:
                          j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', (now(),*exclude)).fetchone()
             if not row:
                 return None
-            db.execute("UPDATE tasks SET state='running',error='',progress='{}',updated=?,generation=generation+1 WHERE bvid=?", (now(), row['bvid']))
+            db.execute("UPDATE tasks SET state='running',error='',error_data='{}',progress='{}',updated=?,generation=generation+1 WHERE bvid=?", (now(), row['bvid']))
             db.execute('UPDATE jobs SET last_dispatched=? WHERE id=?', (datetime.now(BJ).isoformat(), row['owner']))
             return {**dict(row), 'state': 'running', 'generation': row['generation'] + 1}
 
     def finish_task(self, bvid, state, error='', progress=None, generation=None):
+        from acquisition_errors import describe_error
+        detail=describe_error(error,(progress or {}).get('phase'),f'raw/crawler/{bvid}.log') if error else None
         with self.db() as db:
-            changed = db.execute("UPDATE tasks SET state=?,error=?,progress=?,updated=? WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",
-                       (state, error, encode(progress or {}), now(), bvid, generation, generation)).rowcount
+            changed = db.execute("UPDATE tasks SET state=?,error=?,progress=?,updated=?,error_data=? WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",
+                       (state, str(error), encode(progress or {}), now(), encode(detail or {}), bvid, generation, generation)).rowcount
+            if changed and detail:
+                db.execute("INSERT INTO task_diagnostics VALUES(?,?,?,?)",(bvid,generation,encode(detail),now()))
             if changed and state == 'succeeded':
                 db.execute("DELETE FROM risk_retries WHERE kind='task' AND target=?", (bvid,))
 
@@ -447,6 +471,25 @@ class Store:
                         db.execute("UPDATE tasks SET state='queued' WHERE bvid=? AND state='running'", (task['bvid'],))
             except workspace.Busy:
                 continue
+
+    def restore_recoverable(self):
+        from acquisition_errors import describe_error
+        from reference_store import transcript_errors
+        restored=[]
+        for task in self.tasks():
+            if task['state'] not in ['failed','queued']:continue
+            if not self.requested(task['bvid']):continue
+            detail=task['error_info'] or describe_error(task['error'])
+            if detail['category'] not in ['risk','network','formats']:continue
+            with self.db() as db:
+                db.execute('BEGIN IMMEDIATE')
+                if db.execute('SELECT 1 FROM task_recoveries WHERE bvid=?',(task['bvid'],)).fetchone():continue
+                db.execute('INSERT INTO task_recoveries VALUES(?,?)',(task['bvid'],now()))
+                db.execute('INSERT INTO task_diagnostics VALUES(?,?,?,?)',(task['bvid'],task['generation'],encode(detail),now()))
+                changed=db.execute("UPDATE tasks SET state='queued',error='',error_data='{}',progress='{}',generation=generation+1,updated=? WHERE bvid=? AND generation=? AND state IN ('failed','queued') AND EXISTS(SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=tasks.bvid AND j.state NOT IN ('stopped','deleted'))",(now(),task['bvid'],task['generation'])).rowcount
+                if changed:
+                    db.execute("DELETE FROM risk_retries WHERE kind='task' AND target=?",(task['bvid'],));restored.append(task['bvid'])
+        return restored
 
     def recover(self):
         self.recover_tasks()
@@ -534,12 +577,13 @@ class Store:
 
     def projections(self):
         with self.db() as db:
-            rows = db.execute('''SELECT v.bvid,v.data,h.keyword,h.job,t.state,t.error,t.progress FROM videos v
+            rows = db.execute('''SELECT v.bvid,v.data,h.keyword,h.job,t.state,t.error,t.progress,t.error_data FROM videos v
                 JOIN hits h ON h.bvid=v.bvid LEFT JOIN tasks t ON t.bvid=v.bvid''').fetchall()
         result = {}
         for r in rows:
             item = result.setdefault(r['bvid'], {**json.loads(r['data']), 'keywords': [], 'batches': [],
-                'acquisition_state': r['state'] or 'preview', 'acquisition_error': r['error'],
+                'acquisition_state': r['state'] or 'preview', 'acquisition_error': r['error'] if r['state']=='failed' else '',
+                'acquisition_error_info': json.loads(r['error_data'] or '{}') or None,
                 'acquisition_retry': self.risk_retry('task',r['bvid']) if r['state']=='queued' and json.loads(r['progress'] or '{}').get('phase')=='retry_wait' else None})
             if r['keyword'] and r['keyword'] not in item['keywords']:
                 item['keywords'].append(r['keyword'])
@@ -555,7 +599,7 @@ def source_rows(root, store):
     for row in rows:
         bv = row.get('bvid') or row['id'].split(':')[0]
         extra = projections.get(bv, {})
-        for k in ['keywords', 'batches', 'uid', 'space_url', 'view_count', 'collected_at', 'acquisition_state', 'acquisition_error', 'acquisition_retry']:
+        for k in ['keywords', 'batches', 'uid', 'space_url', 'view_count', 'collected_at', 'acquisition_state', 'acquisition_error', 'acquisition_error_info', 'acquisition_retry']:
             if k in extra:
                 row[k] = extra[k]
         for k in ['author', 'title', 'published', 'duration']:
@@ -574,10 +618,17 @@ def source_rows(root, store):
         entry = manifest.get(row['id'], {})
         target = (Path(root) / entry.get('path', '__missing__')).resolve()
         valid = target.is_relative_to((Path(root) / 'raw').resolve()) and target.is_file()
+        if extra.get('acquisition_state'):
+            row['error']=extra.get('acquisition_error','') if extra['acquisition_state']=='failed' else ''
+        if valid or extra.get('acquisition_state') in ['queued','running','succeeded']:
+            row['error']='';row['acquisition_error']=''
         row['transcript_path'] = str(target) if valid else None
         row['transcript_status'] = 'ready' if valid else 'missing'
-        if valid and not wxq.read_json(wxq.source_dir(root, row['id']) / 'asr.raw.json', {}).get('segments'):
+        raw_input, _ = transcript_artifacts(wxq.source_dir(root, row['id']))
+        row['transcript_origin'] = entry.get('transcript_origin', 'local_asr') if valid else None
+        if valid and not wxq.read_json(transcript_artifacts(wxq.source_dir(root, row['id']))[1], {}).get('segments'):
             row['transcript_status'] = 'no_speech'
+        row['subtitle_fallback'] = wxq.read_json(wxq.source_dir(root,row['id'])/'subtitle-fallback.json')
         row['transcript_manual'] = bool(entry.get('manual_edit'))
         row.update(row.get('manual_values', {}))
         row['revision'] = row.get('manual_revision', '')
@@ -598,7 +649,7 @@ def cached_video(root, bvid):
     for folder in folders:
         sid = wxq.read_json(folder / 'metadata.json', {}).get('id')
         target = (root / manifest.get(sid, {}).get('path', '__missing__')).resolve()
-        if not target.is_relative_to((root / 'raw').resolve()) or not target.is_file() or not (folder / 'asr.raw.json').is_file() or not (folder / 'asr.corrected.json').is_file():
+        if not target.is_relative_to((root / 'raw').resolve()) or not target.is_file() or not all(p.is_file() for p in transcript_artifacts(folder)):
             return False
         try:
             if any(not error.startswith('Transcript was manually edited') for error in transcript_errors(root, sid)):
@@ -668,6 +719,7 @@ class Runtime:
         try:
             with file_lock(self.root / 'raw/crawler/runtime.lock'):
                 self.store.recover()
+                self.store.restore_recoverable()
                 while not self.closed.is_set():
                     try:
                         self.tick()
@@ -723,27 +775,41 @@ class Runtime:
                 return
         elif state != 'scanning':
             return
-        scanned = matched = duplicates = 0
+        scanned = matched = duplicates = title_skipped = 0
+        scan_counts = {}
         seen = set()
+        def progress():
+            self.store.update_job(jid, scanned=scanned, matched=matched, duplicates=duplicates,
+                                  title_skipped=title_skipped, scan_counts=encode(scan_counts))
         try:
-            adapter = Bilibili(self.store.settings()['cookies'], refresh=True) if self.store.risk_retry('job',jid) else Bilibili(self.store.settings()['cookies'])
+            adapter = Bilibili(self.store.settings()['cookies'], refresh=bool(self.store.risk_retry('job',jid)), root=self.root)
             for keyword in filters['keywords'] if not job['creator'] else ['']:
                 page, count = 1, 0
+                scan_counts[keyword] = 0
                 while count < filters['scan_limit'] and not self.closed.is_set():
                     snapshot = self.store.job(jid, False)
                     if snapshot['state'] in ['stopped', 'deleted'] or snapshot.get('scan_cancelled'):
                         return
                     rows, more = adapter.creator_page(job['creator'], page) if job['creator'] else adapter.search_page(keyword, page, filters['order'])
                     older = bool(rows) and all(r.get('published') and filters.get('date_from') and r['published'] < filters['date_from'] for r in rows)
+                    page_start = count
                     for row in rows:
                         snapshot = self.store.job(jid, False)
                         if count >= filters['scan_limit'] or snapshot['state'] in ['stopped', 'deleted'] or snapshot.get('scan_cancelled') or self.closed.is_set():
                             break
                         count += 1
                         scanned += 1
-                        if any(row.get(k) is None for k in ['published', 'view_count', 'duration']):
+                        scan_counts[keyword] = count
+                        strict = not job['creator'] and filters.get('strict_match', False)
+                        if any(row.get(k) is None for k in ['published', 'view_count', 'duration']) or (strict and not row.get('title')):
                             row = {**row, **adapter.detail(row['bvid'])}
+                        actual = title_keywords(row.get('title'), filters['keywords']) if strict else [keyword]
+                        if strict and not actual:
+                            title_skipped += 1
+                            progress()
+                            continue
                         if not matches_filters(row, filters):
+                            progress()
                             continue
                         if job['creator'] and filters['keywords'] and not any(k.casefold() in (row['title'] + ' ' + row['description']).casefold() for k in filters['keywords']):
                             continue
@@ -752,15 +818,15 @@ class Runtime:
                         if not repeated:
                             matched += 1
                             seen.add(row['bvid'])
-                        keywords = [keyword] if not job['creator'] else [k for k in filters['keywords'] if k.casefold() in (row['title'] + ' ' + row['description']).casefold()] or ['']
+                        keywords = actual if not job['creator'] else [k for k in filters['keywords'] if k.casefold() in (row['title'] + ' ' + row['description']).casefold()] or ['']
                         for k in keywords:
                             if not self.store.discover(jid, row, k, filters['mode'] == 'auto'):
                                 return
                         # Discovery registration must preserve manual annotations.
-                        self.store.update_job(jid, scanned=scanned, matched=matched, duplicates=duplicates)
+                        progress()
                         register_discovered(self.root, row, cancelled=lambda: self.closed.is_set() or self.store.job(jid, False)['state'] in ['stopped', 'deleted'] or bool(self.store.job(jid, False).get('scan_cancelled')))
-                    self.store.update_job(jid, scanned=scanned, matched=matched, duplicates=duplicates)
-                    if count >= filters['scan_limit'] and (more or len(rows) > count):
+                    progress()
+                    if count >= filters['scan_limit'] and (more or len(rows) > count - page_start):
                         self.store.update_job(jid, limited=1)
                     if not rows or not more or (job['creator'] and older):
                         break
@@ -791,7 +857,7 @@ class Runtime:
                 finish('queued')
                 return
             with output.open('w', encoding='utf8') as log:
-                process = subprocess.Popen([sys.executable, str(Path(__file__).with_name('crawler_worker.py')),
+                process = subprocess.Popen([sys.executable, '-X', 'utf8', str(Path(__file__).with_name('crawler_worker.py')),
                     '--root', str(self.root), '--bvid', bvid, '--generation', str(generation)], stdout=log, stderr=subprocess.STDOUT,
                     creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0), start_new_session=sys.platform != 'win32')
                 with self.process_lock:
@@ -808,11 +874,16 @@ class Runtime:
                 if not self.store.requested(bvid, generation):
                     self.store.cancel_orphan(bvid)
                     return
+                current = next((r for r in self.store.tasks() if r['bvid']==bvid),None)
+                if not current or current['generation']!=generation:return
+                if current['state']!='running':
+                    if process.returncode==75:self.closed.wait(2)
+                    return
                 if process.returncode == 75:
                     finish('queued', '来源正在处理，稍后自动重试')
                     self.closed.wait(2)
                 elif process.returncode:
-                    finish('failed', '处理失败，可重试。' + output.read_text('utf8', errors='replace')[-1200:])
+                    finish('failed', f'工作进程异常退出（退出码{process.returncode}），完整诊断见 raw/crawler/{bvid}.log')
                 else:
                     finish('succeeded', progress={'phase': 'ready'})
         except Exception as exc:

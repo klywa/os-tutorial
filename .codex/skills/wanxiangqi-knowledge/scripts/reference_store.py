@@ -190,6 +190,20 @@ def stamp(seconds):
     return f'{minutes:02d}:{seconds % 60:05.2f}'
 
 
+def transcript_artifacts(folder):
+    folder = Path(folder)
+    subtitle = wxq.read_json(folder / 'metadata.json', {}).get('transcript_origin') == 'bilibili_subtitle'
+    prefix = 'subtitle' if subtitle else 'asr'
+    return folder / (prefix + '.raw.json'), folder / (prefix + '.corrected.json')
+
+
+def transcript_has_evidence(folder):
+    raw, corrected = transcript_artifacts(folder)
+    original = wxq.read_json(raw, {})
+    return bool(original.get('body' if raw.name == 'subtitle.raw.json' else 'segments') and
+                wxq.read_json(corrected, {}).get('segments'))
+
+
 def render_transcript(metadata, asr, corrections):
     segments = asr.get('segments', [])
     if not segments:
@@ -199,6 +213,8 @@ def render_transcript(metadata, asr, corrections):
     lines = [f"# {metadata['title']}", '', f"来源：{metadata['url']}", '',
              f"分 P：{metadata.get('part', 1)}", '',
              '全文按纠正后的转写顺序保留讲解和实战；待核实词不替换为猜测，转写间隔不补写内容。', '']
+    if metadata.get('transcript_origin') == 'bilibili_subtitle':
+        lines[6:6] = ['文字稿来源：B站字幕（' + ('自动生成' if asr.get('automatic') else '人工提供') + '，' + asr.get('language', '中文') + '），待核对。', '']
     previous = 0; previous_start = -1
     for s in segments:
         a, b = s['start'], s['end']
@@ -227,7 +243,7 @@ def export_transcripts(root, ids=None):
         for folder in folders:
             try:
                 metadata = wxq.read_json(folder / 'metadata.json'); sid = metadata['id']
-                raw = folder / 'asr.raw.json'; corrected = folder / 'asr.corrected.json'
+                raw, corrected = transcript_artifacts(folder)
                 if not raw.exists(): raise ValueError('Missing original ASR')
                 text = render_transcript(metadata, wxq.read_json(corrected, {}), wxq.read_json(folder / 'corrections.json', []))
                 path = f'raw/{folder.name}.md'; target = root / path
@@ -242,7 +258,7 @@ def export_transcripts(root, ids=None):
                     wxq.atomic_text(root / f'raw/reports/transcript-conflicts/{folder.name}.diff', difference)
                     raise ValueError('文字稿含人工修改，保留原文；差异见transcript-conflicts')
                 wxq.atomic_text(target, text)
-                manifest['sources'][sid] = {'path': path, 'raw_sha256': digest(raw.read_bytes()),
+                manifest['sources'][sid] = {'path': path, 'transcript_origin': metadata.get('transcript_origin', 'local_asr'), 'raw_sha256': digest(raw.read_bytes()),
                     'corrected_sha256': digest(corrected.read_bytes()), 'output_sha256': digest(target.read_bytes())}
                 results.append({'source': sid, 'path': path, 'segments': len(wxq.read_json(corrected)['segments'])})
             except (ValueError, KeyError, TypeError, OSError) as exc:
@@ -268,16 +284,17 @@ def repair_transcript_index(root, sid):
         if not target.is_relative_to((root / 'raw').resolve()) or not target.is_file():
             return False
         try:
-            hashes = {'raw_sha256': digest((folder / 'asr.raw.json').read_bytes()),
+            raw, corrected = transcript_artifacts(folder)
+            hashes = {'raw_sha256': digest(raw.read_bytes()),
                       'output_sha256': digest(target.read_bytes())}
             legacy_raw = row.get('transcript_file') == 'asr.raw.json' and row.get('raw_sha256') == hashes['raw_sha256'] and row.get('output_sha256') == hashes['output_sha256']
             if not legacy_raw:
-                hashes['corrected_sha256'] = digest((folder / 'asr.corrected.json').read_bytes())
+                hashes['corrected_sha256'] = digest(corrected.read_bytes())
             if any(row.get(k) and row[k] != v for k, v in hashes.items()):
                 return False
             if not legacy_raw:
                 expected = render_transcript(wxq.read_json(folder / 'metadata.json'),
-                    wxq.read_json(folder / 'asr.corrected.json'), wxq.read_json(folder / 'corrections.json', []))
+                    wxq.read_json(corrected), wxq.read_json(folder / 'corrections.json', []))
                 if target.read_text('utf8') != expected:
                     return False
         except (OSError, ValueError, KeyError, TypeError):
@@ -299,7 +316,8 @@ def transcript_errors(root, sid):
     if not target.is_relative_to((root / 'raw').resolve()) or not target.exists():
         return ['Invalid/missing transcript file: ' + sid]
     folder = wxq.source_dir(root, sid)
-    for filename, key in [('asr.raw.json', 'raw_sha256'), ('asr.corrected.json', 'corrected_sha256')]:
+    raw, corrected = transcript_artifacts(folder)
+    for filename, key in [(raw.name, 'raw_sha256'), (corrected.name, 'corrected_sha256')]:
         if row.get('export_format') == 'legacy_raw' and filename == 'asr.corrected.json':
             continue  # This registered export explicitly uses original ASR, not corrected ASR.
         if not row.get(key):
@@ -312,7 +330,7 @@ def transcript_errors(root, sid):
     if row.get('export_format') == 'legacy_raw': return []
     try:
         expected = render_transcript(wxq.read_json(folder / 'metadata.json'),
-            wxq.read_json(folder / 'asr.corrected.json'), wxq.read_json(folder / 'corrections.json', []))
+            wxq.read_json(corrected), wxq.read_json(folder / 'corrections.json', []))
         if target.read_text('utf8') != expected: return ['Transcript is stale: ' + sid]
     except (ValueError, KeyError, TypeError, OSError):
         return ['Invalid transcript rendering inputs: ' + sid]

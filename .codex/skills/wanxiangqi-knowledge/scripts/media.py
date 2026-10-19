@@ -144,6 +144,9 @@ def audio_seconds(audio):
 
 
 def download_entry(url, options, attempts=3):
+    if options.get('_acquisition_download'):
+        clean = {k:v for k,v in options.items() if k != '_acquisition_download'}
+        return options['_acquisition_download'](url, clean, attempts)
     import yt_dlp
     for attempt in range(attempts):
         try:
@@ -312,7 +315,7 @@ def convert_media(arguments, target):
 
 
 @locked_video
-def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, require_frames=True):
+def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, require_frames=True, subtitle_fetcher=None, entry_fetcher=None, download_callback=None):
     import yt_dlp
     root = Path(root)
     init_store(root)
@@ -328,9 +331,21 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
                 reconcile_frame_failure(root, meta['id'])
             stage = read_json(folder / 'state.json', {}).get('stage')
             exported = read_json(root / 'raw/index.json', {}).get('sources', {}).get(meta.get('id'), {})
+            from reference_store import transcript_artifacts
+            raw_input, corrected_input = transcript_artifacts(folder)
+            # Export recovery must not require another request or media lookup.
+            if stage != 'complete' and not require_frames and raw_input.is_file() and corrected_input.is_file():
+                original = read_json(raw_input, {})
+                corrected = read_json(corrected_input, {})
+                if isinstance(corrected.get('segments'), list) and (
+                        isinstance(original.get('body'), list) if raw_input.name == 'subtitle.raw.json'
+                        else isinstance(original.get('segments'), list) and original.get('model')):
+                    atomic_json(folder / 'state.json', {'stage':'prepared','needs_review':True,'warnings':[]})
+                    cached.append({'id':meta['id'],'stage':'prepared','cached':True})
+                    continue
             if stage == 'complete' or (stage == 'prepared' and exported and
-                    (root / exported['path']).is_file() and (folder / 'asr.raw.json').is_file() and
-                    (folder / 'asr.corrected.json').is_file()):
+                    (root / exported['path']).is_file() and raw_input.is_file() and
+                    corrected_input.is_file() and (not require_frames or raw_input.name != 'subtitle.raw.json' or (folder / 'frames.json').is_file())):
                 cached.append({'id': meta['id'], 'stage': stage, 'cached': True})
         # A bare BV URL can contain multiple parts: only skip lookup when cached part_count is known.
         if cached and (requested_part or len(cached) == read_json(source_dir(root, cached[0]['id']) / 'metadata.json', {}).get('part_count')):
@@ -344,9 +359,16 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
         options['progress_hooks'] = [download_progress]
     if cookies:
         options['cookiefile'] = cookies
-    with yt_dlp.YoutubeDL(options) as downloader:
-        info = downloader.extract_info(url, download=False)
-    entries = list(info.get('entries') or [info])
+    if download_callback:
+        options['_acquisition_download'] = download_callback
+    if entry_fetcher:
+        entries = entry_fetcher()
+    else:
+        with yt_dlp.YoutubeDL(options) as downloader:
+            info = downloader.extract_info(url, download=False)
+        entries = list(info.get('entries') or [info])
+    if not entries:
+        raise RuntimeError('未获取到视频分P')
     outcomes = []
     for number, entry in enumerate(entries, 1):
         match = re.search(r'BV[0-9A-Za-z]+', url)
@@ -358,19 +380,71 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
         if read_json(folder / 'state.json', {}).get('stage') == 'complete':
             outcomes.append({'id': sid, 'stage': 'complete', 'cached': True})
             continue
+        phase = 'discovery'
         try:
             entry_url = entry.get('webpage_url') or url
             if match:
                 entry_url = 'https://www.bilibili.com/video/' + match.group() + '/?p=' + str(part)
             metadata = {'id': sid, 'bvid': match.group() if match else None, 'part': part,
+                        'cid': entry.get('cid'),
                         'url': entry_url, 'title': entry.get('title'), 'author': entry.get('uploader'),
                         'published': datetime.fromtimestamp(entry['timestamp'], timezone(timedelta(hours=8))).strftime('%Y%m%d') if entry.get('timestamp') else entry.get('upload_date'),
                         'duration': entry.get('duration'),
                         'collected_at': now(), 'version': None, 'part_count': len(entries)}
             if not (folder / 'metadata.json').exists():
                 atomic_json(folder / 'metadata.json', metadata)
+            # A later CLI review may need pictures, but never substitutes ASR for valid subtitles.
+            from reference_store import transcript_artifacts, transcript_has_evidence
+            if require_frames and transcript_artifacts(folder)[0].name == 'subtitle.raw.json' and transcript_has_evidence(folder):
+                video = folder / 'media.mp4'
+                if not video.exists():
+                    opts = {**options, 'noplaylist':True, 'format':'bestvideo[height<=720]/best',
+                            'outtmpl':str(folder / 'download.%(ext)s')}
+                    _, actual = download_entry(entry_url, opts)
+                    if actual != video:
+                        convert_media(['-i', actual, '-c', 'copy'], video)
+                        actual.unlink()
+                segments = read_json(transcript_artifacts(folder)[1], {})['segments']
+                times = [0] + [s['start'] for s in segments if any(word in s['text'] for word in ['阵容','站位','装备','天赋','决赛'])]
+                extract_frames(root, sid, video, times[:80])
+                atomic_json(folder / 'state.json', {'stage':'prepared','needs_review':True})
+                outcomes.append({'id':sid,'stage':'prepared','transcript_origin':'bilibili_subtitle'})
+                continue
+            # Web-only subtitle fast path; existing ASR and human exports retain priority.
+            if subtitle_fetcher and not require_frames and not (folder / 'asr.raw.json').exists():
+                from reference_store import transcript_artifacts
+                raw_input, corrected_input = transcript_artifacts(folder)
+                if raw_input.name == 'subtitle.raw.json' and raw_input.is_file() and corrected_input.is_file():
+                    atomic_json(folder / 'state.json', {'stage':'prepared', 'needs_review':True, 'warnings':[]})
+                    outcomes.append({'id':sid, 'stage':'prepared', 'cached':True})
+                    continue
+                if progress_callback:progress_callback({'phase':'checking_subtitles', 'source':sid})
+                phase = 'checking_subtitles'
+                subtitle = subtitle_fetcher(match.group(), part, metadata.get('duration')) if match else None
+                if subtitle:
+                    # Write source before switching metadata, so interrupted writes can safely resume.
+                    atomic_json(folder / 'subtitle.raw.json', subtitle['raw'])
+                    atomic_json(folder / 'subtitle.corrected.json', {
+                        'segments':subtitle['segments'], 'language':subtitle['language'],
+                        'automatic':subtitle['automatic'], 'origin':'bilibili_subtitle'})
+                    atomic_json(folder / 'subtitle-source.json', {k:v for k,v in subtitle.items() if k not in ['raw','segments']} | {'retrieved_at':now()})
+                    saved_meta = read_json(folder / 'metadata.json', metadata)
+                    saved_meta['transcript_origin'] = 'bilibili_subtitle'
+                    atomic_json(folder / 'metadata.json', saved_meta)
+                    atomic_json(folder / 'state.json', {'stage':'prepared', 'needs_review':True, 'warnings':[]})
+                    outcomes.append({'id':sid, 'stage':'prepared', 'transcript_origin':'bilibili_subtitle'})
+                    continue
             video, audio = folder / 'media.mp4', folder / 'audio.wav'
-            if not (folder / 'asr.raw.json').exists() or not (folder / 'frames.json').exists():
+            phase = 'downloading'
+            if progress_callback:progress_callback({'phase':phase,'source':sid})
+            if not require_frames and not (folder / 'asr.raw.json').exists() and not audio.exists():
+                atomic_json(folder / 'state.json', {'stage':'downloading'})
+                opts = {**options, 'noplaylist':True, 'format':'bestaudio/best',
+                        'outtmpl':str(folder / 'download-audio.%(ext)s')}
+                _, actual = download_entry(entry_url, opts)
+                convert_media(['-i', actual, '-vn', '-ac', '1', '-ar', '16000'], audio)
+                actual.unlink(missing_ok=True)
+            if require_frames and (not (folder / 'asr.raw.json').exists() or not (folder / 'frames.json').exists()):
                 if not video.exists():
                     atomic_json(folder / 'state.json', {'stage': 'downloading'})
                     opts = {**options, 'noplaylist': True, 'format': 'bestvideo[height<=720]+bestaudio/best',
@@ -394,6 +468,7 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
                 except (RuntimeError, OSError, EOFError):
                     repair_audio(root, sid, entry_url, options)
             atomic_json(folder / 'state.json', {'stage': 'transcribing'})
+            phase = 'transcribing'
             if progress_callback:
                 progress_callback({'phase': 'transcribing', 'source': sid})
             transcript = transcribe(root, sid, audio, model, progress_callback=progress_callback)
@@ -404,7 +479,7 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
                 if any(word in s['text'] for word in ['阵容', '拍卖', '站位', '装备', '看这里', '天赋', '决赛']):
                     times += [s['start'], (s['start'] + s['end']) / 2]
             warnings = []
-            if video.exists():
+            if require_frames and video.exists():
                 try:
                     extract_frames(root, sid, video, times[:80])
                 except (subprocess.CalledProcessError, OSError) as exc:
@@ -415,8 +490,10 @@ def prepare(root, url, model='large-v3', cookies=None, progress_callback=None, r
             atomic_json(folder / 'state.json', {'stage': 'prepared', 'needs_review': True, 'warnings': warnings})
             outcomes.append({'id': sid, 'stage': 'prepared'})
         except Exception as exc:
-            atomic_json(folder / 'state.json', {'stage': 'failed', 'error': str(exc), 'at': now()})
-            outcomes.append({'id': sid, 'stage': 'failed', 'error': str(exc)})
+            detail = {'category':getattr(exc,'category',None),'code':getattr(exc,'code',None),
+                      'phase':phase,'reason':str(exc)}
+            atomic_json(folder / 'state.json', {'stage': 'failed', 'error': str(exc), 'error_info':detail,'at': now()})
+            outcomes.append({'id': sid, 'stage': 'failed', 'error': str(exc),'error_info':detail})
     return outcomes
 
 
@@ -475,7 +552,8 @@ def finish(root, sid):
                 if not any(f['path'] == e['frame'] and f.get('reviewed') and f.get('observation')
                            for f in read_json(folder / 'frames.json', [])):
                     raise ValueError('Cited frame not reviewed')
-    if not (folder / 'asr.raw.json').exists() or not (folder / 'asr.corrected.json').exists():
+    from reference_store import transcript_artifacts
+    if not all(path.is_file() for path in transcript_artifacts(folder)):
         raise ValueError('ASR artifacts required')
     from reference_store import transcript_errors
     errors = transcript_errors(root, sid)

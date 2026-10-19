@@ -265,7 +265,8 @@ def _commit_notes(root, incoming):
                 if e['source'] not in sources or not 0 <= e['start'] <= e['end']:
                     raise ValueError('Unknown source or invalid timestamp')
                 folder = source_dir(root, e['source'])
-                if not read_json(folder / 'asr.raw.json', {}).get('segments') or not read_json(folder / 'asr.corrected.json', {}).get('segments'):
+                from reference_store import transcript_has_evidence
+                if not transcript_has_evidence(folder):
                     raise ValueError('Source requires real ASR artifacts before knowledge commit')
                 duration = sources[e['source']].get('duration')
                 if duration and e['end'] > duration + 1:
@@ -350,7 +351,8 @@ def validate_store(root):
                 errors.append('Unclassified or match-specific claim: ' + n['id'])
             for evidence in claim.get('evidence', []):
                 folder = source_dir(root, evidence['source'])
-                if not (folder / 'asr.raw.json').exists():
+                from reference_store import transcript_artifacts
+                if not transcript_artifacts(folder)[0].exists():
                     errors.append('Missing ASR: ' + evidence['source'])
                 if not (folder / 'metadata.json').exists():
                     errors.append('Missing metadata: ' + evidence['source'])

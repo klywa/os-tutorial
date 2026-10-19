@@ -27,7 +27,7 @@ class WorkerTests(unittest.TestCase):
             self.assertEqual(result[0]['stage'],stage)
             self.assertTrue((folder/'media.mp4').exists())
             if not required:
-                self.assertTrue(wxq.read_json(folder/'state.json')['warnings'])
+                self.assertFalse(wxq.read_json(folder/'state.json')['warnings'])
                 self.assertFalse(export_transcripts(self.root,[outcome['id']])['errors'])
                 # Remove only the fixture export index so the strict CLI path is exercised next.
                 wxq.atomic_json(self.root/'raw/index.json',{'sources':{}})

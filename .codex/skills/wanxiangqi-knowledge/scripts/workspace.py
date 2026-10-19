@@ -1,5 +1,5 @@
 """Single-writer knowledge workspace shared by the CLI and local web UI."""
-from contextlib import contextmanager
+from contextlib import contextmanager, nullcontext
 from copy import deepcopy
 import hashlib
 import json
@@ -57,6 +57,20 @@ def store_lock(root, wait=False):
 
 def notes(root):
     return wxq.read_json(Path(root) / 'knowledge/index.json', {'notes': []})['notes']
+
+
+def note_link_event(root, recovery=False):
+    # Standalone copies of this skill need not have the optional web catalog.
+    import sys
+    frontend = Path(__file__).resolve().parents[4] / 'frontend'
+    if not (frontend / 'note_links.py').is_file() or not (Path(root) / 'raw/crawler/topics.sqlite3').is_file():
+        return
+    if str(frontend) not in sys.path: sys.path.insert(0, str(frontend))
+    from note_links import recover_links_locked, after_knowledge_save
+    if recovery:
+        recover_links_locked(root)
+    else:
+        after_knowledge_save(root)
 
 
 def default_meta(note):
@@ -189,6 +203,7 @@ def apply_transaction(root, transaction):
             wxq.atomic_text(target.with_suffix('.md.bak'), target.read_text(encoding='utf-8'))
             target.unlink()
     (root / 'knowledge/pending-save.json').unlink(missing_ok=True)
+    note_link_event(root)
 
 
 def recover(root):
@@ -198,6 +213,8 @@ def recover(root):
     transaction = wxq.read_json(Path(root) / 'knowledge/pending-save.json')
     if transaction:
         apply_transaction(root, transaction)
+    if (Path(root) / 'knowledge/pending-note-link.json').is_file():
+        note_link_event(root, recovery=True)
 
 
 def migrate(root):
@@ -354,9 +371,13 @@ def validate_meta(root, meta):
             raise ValueError('针对策略需要正文')
 
 
-def edit(root, nid, payload):
-    with store_lock(root):
-        recover(root)
+def edit_locked(root, nid, payload, recover_first=True):
+    return edit(root, nid, payload, _locked=True, _recover_first=recover_first)
+
+
+def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False):
+    with nullcontext() if _locked else store_lock(root):
+        if _recover_first: recover(root)
         items = deepcopy(notes(root))
         note = next((n for n in items if n['id'] == nid), None)
         if note is None:
@@ -412,6 +433,9 @@ def edit(root, nid, payload):
             return note
         note['history'].append({'at': wxq.now(), 'origin': 'manual', 'previous': {
             k: before.get(k) for k in ['title', 'aliases', 'claims', 'meta', 'revision']}})
+        if _dry_run:
+            prepare(root, items)
+            return note
         persist(root, items)
         return note
 

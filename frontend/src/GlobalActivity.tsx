@@ -9,9 +9,9 @@ export default function GlobalActivity(){
   async function refresh(){setItems(await api<Activity[]>('crawler/activity'));}
   useEffect(()=>{let alive=true;const load=()=>void api<Activity[]>('crawler/activity').then(rows=>{if(alive)setItems(rows);}).catch(e=>{if(alive)setError(e.message);});load();const timer=setInterval(load,2000);return()=>{alive=false;clearInterval(timer);};},[]);
   async function control(item:Activity,action:string){setBusy(true);setError('');try{await api(`crawler/tasks/${item.bvid}/${action}`,'POST',{});await refresh();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
-  const downloading=items.filter(i=>i.state==='running'&&i.progress.phase==='downloading').length;
+  const downloading=items.filter(i=>i.state==='running'&&['downloading','checking_subtitles','fetching_subtitles'].includes(i.progress.phase??'')).length;
   const transcribing=items.filter(i=>i.state==='running'&&i.progress.phase==='transcribing').length;
-  const other=items.filter(i=>i.state==='running'&&!['downloading','transcribing'].includes(i.progress.phase??'')).length;
+  const other=items.filter(i=>i.state==='running'&&!['downloading','checking_subtitles','fetching_subtitles','transcribing'].includes(i.progress.phase??'')).length;
   const open=expanded??items.some(i=>i.state==='running');
   const setOpen=(value:boolean)=>setExpanded(value);
   const visible=items.filter(i=>queued||i.state!=='queued');

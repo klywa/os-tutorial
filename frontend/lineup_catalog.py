@@ -45,6 +45,8 @@ class LineupCatalog:
     if name not in columns:db.execute(f'ALTER TABLE topic_lineups ADD COLUMN {name} {kind}')
    db.executescript('CREATE TABLE IF NOT EXISTS lineup_imports(token TEXT PRIMARY KEY,revision INTEGER,payload TEXT); CREATE TABLE IF NOT EXISTS lineup_notes(lineup TEXT,note TEXT,PRIMARY KEY(lineup,note));')
    db.executescript("CREATE TABLE IF NOT EXISTS lineup_variants(id TEXT PRIMARY KEY,heroes TEXT); CREATE TABLE IF NOT EXISTS lineup_variant_links(lineup TEXT,variant TEXT,sources TEXT DEFAULT '[]',manual INTEGER DEFAULT 0,PRIMARY KEY(lineup,variant)); CREATE TABLE IF NOT EXISTS lineup_naming(id TEXT PRIMARY KEY,lineup TEXT,payload TEXT,state TEXT DEFAULT 'pending',revision INTEGER DEFAULT 1);")
+   from note_links import schema
+   schema(db)
  def revision(self,db=None):
   if db is None:return int(self.topics.setting('catalog_revision') or 0)
   r=db.execute("SELECT value FROM topic_settings WHERE key='catalog_revision'").fetchone();return int(json.loads(r[0])) if r else 0
@@ -67,6 +69,8 @@ class LineupCatalog:
    r=dict(r)
    for k in ['heroes','aliases','sources','manual_fields','naming_sources']:r[k]=json.loads(r[k])
    r['display_name']=r['common_name'] or r['name'];r['variants']=self.variants(r['id'],db)
+   from note_links import links
+   r['note_links']=links(db,r['id']);r['primary_note_id']=next((x['note'] for x in r['note_links'] if x['role']=='primary'),None)
    r['enabled']=bool(r['enabled']);r['description']='、'.join(hero_names.get(h,h) for h in r['heroes']);r['note_ids']=[x[0] for x in db.execute('SELECT note FROM lineup_notes WHERE lineup=?',(r['id'],))];rows.append(r)
   return rows
  def variants(self,uid,db=None):
@@ -257,6 +261,10 @@ class LineupCatalog:
    if not row:raise KeyError('阵容不存在')
    if payload.get('revision')!=row['revision']:raise workspace.Conflict('阵容已更新，请刷新后重试')
    if row['merged_into'] or row['deleted_at']:raise ValueError('阵容已合并或删除')
+   previous=set(x['note'] for x in __import__('note_links').links(db,uid))
+   if previous and set(ids)-previous:raise workspace.Conflict('请通过关联弹窗选择主笔记或变体，不能批量覆盖')
+   for old in previous-set(ids):db.execute('INSERT OR IGNORE INTO lineup_note_exclusions VALUES(?,?)',(uid,old))
+   db.execute('DELETE FROM lineup_note_roles WHERE lineup=? AND note NOT IN ('+','.join('?' for _ in ids)+')',(uid,*ids)) if ids else db.execute('DELETE FROM lineup_note_roles WHERE lineup=?',(uid,))
    db.execute('DELETE FROM lineup_notes WHERE lineup=?',(uid,));db.executemany('INSERT INTO lineup_notes VALUES(?,?)',[(uid,i) for i in set(ids)])
    db.execute('UPDATE topic_lineups SET revision=revision+1 WHERE id=?',(uid,));self.bump(db)
   return self.roster()
@@ -268,13 +276,40 @@ class LineupCatalog:
    a,b=rows[source],rows[target]
    if payload.get('source_revision')!=a['revision'] or payload.get('target_revision')!=b['revision']:raise workspace.Conflict('阵容已变化，请刷新后合并')
    if a['merged_into'] or b['merged_into'] or a['deleted_at'] or b['deleted_at'] or not b['enabled']:raise ValueError('不能合并到已合并或停用阵容')
+   # Resolve legacy single-note primaries before moving rows; losing this
+   # projection would turn a known primary + variant into ambiguous legacy links.
+   primary_ids={link['note'] for r in (a,b) for link in r['note_links'] if link['role']=='primary'}
+   if len(primary_ids)>1:raise workspace.Conflict('两个阵容已有不同主笔记，请先通过关联弹窗解除其中一个主笔记关联，再合并')
+   roles={}
+   priority={'legacy':0,'variant':1,'primary':2}
+   for r in (b,a):
+    for link in r['note_links']:
+     old=roles.get(link['note'])
+     if old is None or priority[link['role']]>priority[old]:roles[link['note']]=link['role']
    db.execute('UPDATE topic_lineups SET enabled=0,merged_into=?,revision=revision+1 WHERE id=?',(target,source))
    db.execute('UPDATE topic_lineups SET merged_into=? WHERE merged_into=?',(target,source))
    db.execute('UPDATE topic_candidates SET target=? WHERE target=?',(target,source))
    db.execute('INSERT OR IGNORE INTO lineup_variant_links SELECT ?,variant,sources,manual FROM lineup_variant_links WHERE lineup=?',(target,source));db.execute('DELETE FROM lineup_variant_links WHERE lineup=?',(source,))
    db.execute('INSERT OR IGNORE INTO lineup_notes SELECT ?,note FROM lineup_notes WHERE lineup=?',(target,source));db.execute('DELETE FROM lineup_notes WHERE lineup=?',(source,))
+   db.execute('DELETE FROM lineup_note_roles WHERE lineup IN (?,?)',(source,target))
+   db.executemany('INSERT INTO lineup_note_roles VALUES(?,?,?)',[(target,note,role) for note,role in roles.items()])
+   db.execute('INSERT OR IGNORE INTO lineup_note_exclusions SELECT ?,note FROM lineup_note_exclusions WHERE lineup=?',(target,source))
+   db.execute('DELETE FROM lineup_note_exclusions WHERE lineup=?',(source,))
    db.execute('UPDATE topic_lineups SET revision=revision+1 WHERE id=?',(target,));self.bump(db)
   return self.roster()
+
+def _link_mutation(method):
+ def run(self,*args,**kwargs):
+  from note_links import recover_links,auto_link
+  recover_links(self.root)
+  result=method(self,*args,**kwargs)
+  auto_link(self.root)
+  if isinstance(result,list):return self.roster()
+  if isinstance(result,dict) and 'roster' in result:result['roster']=self.roster()
+  return result
+ return run
+for _method in ['save','save_batch','resolve_naming','apply','restore','delete','save_variants','bind','merge']:
+ setattr(LineupCatalog,_method,_link_mutation(getattr(LineupCatalog,_method)))
 
 def fetch_variants(read,scope,row):
  pages=[];items=[];seen=set();key=row.get('lineupKey')

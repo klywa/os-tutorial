@@ -1,5 +1,6 @@
 """One acquisition per process: release ASR memory and keep the HTTP server responsive."""
 import argparse
+import json
 import sys
 import time
 import threading
@@ -41,12 +42,55 @@ def run(root, bvid, generation=None):
             store.finish_task(bvid, 'running', progress=value, generation=generation)
             last[0] = time.monotonic()
             last[1] = value.get('phase')
-    # prepare shares a BV-level cross-process lock with the CLI.
+    adapter = [None]
+    from bilibili import Bilibili
+    from acquisition_errors import describe_error
+    def client():
+        if adapter[0] is None:adapter[0]=Bilibili(store.settings()['cookies'],refresh=bool(store.risk_retry('task',bvid)),root=root)
+        return adapter[0]
+    def entries():
+        try:return client().entries(bvid)
+        except Exception as exc:
+            detail=describe_error(exc,'discovery')
+            if detail['category'] not in ['risk','network']:raise
+            cached=[]
+            for folder in sorted((Path(root)/'raw/sources').glob(bvid+'_p*')):
+                meta=wxq.read_json(folder/'metadata.json',{})
+                part=meta.get('part')
+                if meta.get('bvid')==bvid and type(part) is int and part>0 and meta.get('id')==f'{bvid}:p{part}':
+                    cached.append({'id':str(meta.get('cid') or part),'cid':meta.get('cid'),'playlist_index':part,
+                        'title':meta.get('title',''),'duration':meta.get('duration'),'uploader':meta.get('author',''),
+                        'upload_date':meta.get('published'),'webpage_url':f'https://www.bilibili.com/video/{bvid}/?p={part}',
+                        'part_count':meta.get('part_count')})
+            if cached and cached[0].get('part_count')==len(cached) and len({r['playlist_index'] for r in cached})==len(cached):
+                wxq.atomic_json(Path(root)/'raw/crawler'/f'{bvid}-discovery-fallback.json',{'at':wxq.now(),**detail})
+                return cached
+            return client().metadata_entries(bvid)
+
+    def fetch_subtitle(video, part, duration):
+        for attempt in range(2):
+            try:return client().subtitles(video,part,duration,progress=progress)
+            except Exception as exc:
+                detail=describe_error(exc,'fetching_subtitles')
+                folder=wxq.source_dir(root,f'{video}:p{part}');folder.mkdir(parents=True,exist_ok=True)
+                history=wxq.read_json(folder/'subtitle-fallback.json',{}).get('attempts',[])
+                history.append({'at':wxq.now(),**detail})
+                wxq.atomic_json(folder/'subtitle-fallback.json',{'at':wxq.now(),**detail,'attempts':history[-20:]})
+                if attempt==0:
+                    try:
+                        client().refresh_session()
+                        if getattr(client(),'gate',None):client().gate.probe('subtitles');client().gate.probe('subtitle_file')
+                    except Exception:break
+                else:break
+        return None  # Explicit recorded fallback, never reported as absence of subtitles.
     outcomes = media.prepare.__wrapped__(root, f'https://www.bilibili.com/video/{bvid}',
-                             cookies=store.settings()['cookies'] or None, progress_callback=progress, require_frames=False)
+        cookies=store.settings()['cookies'] or None, progress_callback=progress, require_frames=False,
+        subtitle_fetcher=fetch_subtitle,entry_fetcher=entries,
+        download_callback=lambda url,options,attempts:client().download(url,options,attempts))
     failed = [r for r in outcomes if r.get('stage') == 'failed']
     if failed:
-        raise RuntimeError('; '.join(r.get('error', '') for r in failed))
+        from acquisition_errors import AcquisitionFailure
+        raise AcquisitionFailure(failed)
     if not outcomes:
         raise RuntimeError('未获取到视频分P')
     progress({'phase': 'exporting'})
@@ -100,7 +144,8 @@ if __name__ == '__main__':
         store.finish_task(args.bvid, 'queued', '来源正在处理，稍后自动重试', generation=args.generation)
         sys.exit(75)
     except Exception as exc:
-        store.finish_task(args.bvid, 'failed', str(exc), generation=args.generation)
+        current=next((t for t in store.tasks() if t['bvid']==args.bvid),{})
+        store.finish_task(args.bvid, 'failed', exc, progress=json.loads(current.get('progress') or '{}'), generation=args.generation)
         raise
     else:
         # Persist completion even if the HTTP service was restarted during ASR.

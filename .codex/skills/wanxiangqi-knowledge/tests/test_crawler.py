@@ -92,7 +92,7 @@ class CrawlerTests(unittest.TestCase):
     def test_scan_cap_and_duplicate_keywords(self):
         runtime = Runtime(self.store.root)
         wxq.init_store(self.store.root)
-        job = runtime.store.new_job({'keywords':['甲','乙'],'mode':'preview','scan_limit':1})
+        job = runtime.store.new_job({'keywords':['甲','乙'],'mode':'preview','scan_limit':1,'strict_match':False})
         video={'bvid':'BV1234567890','url':'https://www.bilibili.com/video/BV1234567890','title':'教学','published':'2026-10-16','view_count':100,'duration':60}
         with patch('crawler.Bilibili') as adapter:
             adapter.return_value.search_page.return_value=([video,{**video,'bvid':'BV2345678901'}],True)
