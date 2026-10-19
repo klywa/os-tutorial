@@ -303,6 +303,8 @@ class Handler(BaseHTTPRequestHandler):
                 if not detail or not detail.get('space_url'):
                     raise ValueError('无法获取该视频UP主，请重试')
                 result = {'name': detail['author'], 'url': detail['space_url']}
+            elif self.command == 'POST' and path == '/api/notes':
+                result = workspace.create_note(self.server.root, payload)
             elif self.command == 'PUT' and path.startswith('/api/notes/'):
                 workspace.edit(self.server.root, path.split('/')[-1], payload)
                 from note_links import project_notes

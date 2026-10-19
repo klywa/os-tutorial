@@ -19,7 +19,8 @@ SECTIONS = {
     'lineup': ['阵容组成', '禁用阵营适用情况', '核心机制', '前期运营及应变', '中期运营及应变', '后期运营及应变',
                '成型后提升思路', '第一轮拍卖', '第二轮拍卖', '第三轮拍卖', '推荐天赋及原因',
                '站位技巧', '推荐装备', '终局技巧', '克制手段'],
-    'player': ['技能', '使用技巧', '适配阵容'], 'other': ['知识内容']}
+    'player': ['技能', '前期思路', '适用打法与选择', '适用技巧'], 'other': ['知识内容']}
+PLAYER_SECTION_ALIASES = {'使用技巧':'适用技巧','适配阵容':'适用打法与选择'}
 
 
 def now():
@@ -192,14 +193,20 @@ def render_note(note, sources):
         for matchup in meta.get('matchups', []):
             lines += [f"- 针对{names.get(matchup['target'], matchup['target'])}：{matchup.get('condition', '')} {matchup['text']}", '']
     claims = [c for c in note.get('claims', []) if c.get('kind') in KNOWLEDGE_KINDS]
+    if note['type']=='player':
+        claims=[{**c,'section':PLAYER_SECTION_ALIASES.get(c['section'],c['section'])} for c in claims]
     sections = SECTIONS[note['type']] + sorted({c['section'] for c in claims} - set(SECTIONS[note['type']]))
     if note['type'] == 'other' and claims:
         sections = list(dict.fromkeys(c['section'] for c in claims))
     for section in sections:
         lines += ['## ' + section, '']
         selected = [c for c in claims if c['section'] == section]
-        if not selected:
-            lines += ['暂无已确认的通用策略', '']
+        if note['type']=='player' and section=='适用打法与选择':
+            from player_branches import render_adaptations
+            lines += render_adaptations(note,heading=False)
+            if selected:lines+=['### 其他选阵说明','']
+        if not selected and not (note['type']=='player' and section=='适用打法与选择' and note.get('lineup_adaptations')):
+            lines += [('未确定阵容时的通用开局尚待确认。' if note['type']=='player' and section=='前期思路' else '暂无已确认的通用策略'), '']
         for c in selected:
             text = c['text']
             condition = c.get('condition', '').strip()
@@ -207,13 +214,13 @@ def render_note(note, sources):
                 text = f"当{condition}{'' if condition.endswith('时') else '时'}，{text}"
             if c.get('inference'):
                 text = '推测：' + text
-            lines += ['- ' + text]
+            lines += [text if note['type']=='player' and text.startswith('### ') else '- ' + text]
             lines += ['']
     if note.get('meta'):
         from tactics import render as render_tactics
         lines += render_tactics(note['meta'], claims, names)
     from player_branches import render_adaptations
-    lines += render_adaptations(note)
+    if note['type']!='player':lines += render_adaptations(note)
     lines += ['## 关联知识', '']
     for link in note.get('related', []):
         path = link.get('path', f"knowledge/{FOLDERS[link['type']]}/{link['id']}.md")

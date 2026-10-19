@@ -4305,6 +4305,36 @@
           "signals": {
             "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
             "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          },
+          "stage_strength": {
+            "early": {
+              "text": "卦象·节主要提供升本资源，单挂弈星节约开销的同时会压低场上战力；只有补牛魔有机会取胜时才兼顾其产币。这个阶段的重点是控制掉血和升本成本，不能视为默认强势期。",
+              "claim_refs": [
+                "ming-economy",
+                "ming-opening-yixing"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "五本转卦象·丰集中找花木兰、上官婉儿后，取得核心与觉醒进度才逐步补起战力；找牌不顺而只有刷新时存在空窗。李信、李白和现有装备可承担过渡，升六需保留本轮买牌与保血预算。",
+              "claim_refs": [
+                "ming-five",
+                "ming-economy",
+                "missing-mulan"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "产币成员、婉儿觉醒与露娜整备循环齐备后，复生和等级收益逐步完整；卦象带来的资源仍需转成有效战力。对手控制、风筝及本轮复生预算会限制上限，不能只凭已经成型判断强弱。",
+              "claim_refs": [
+                "coin-loop",
+                "wanner-awaken",
+                "revive-budget",
+                "anti-burst",
+                "ailin-chase"
+              ],
+              "inference": true
+            }
           }
         }
       },
@@ -4535,6 +4565,36 @@
           "signals": {
             "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
             "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          },
+          "stage_strength": {
+            "early": {
+              "text": "保血过渡与精简速五有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+              "claim_refs": [
+                "zhuang-opening-dispute",
+                "opening-fighters"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "五本第一次如梦能集中补体系，是启动窗口；收益取决于场上有用河洛成员、核心来牌和合成安排。技能未补到核心、婉儿未觉醒或为凑人数塞无用牌时，仍有明显空窗。",
+              "claim_refs": [
+                "zhuang-three-five",
+                "zhuang-delayed-dispute",
+                "save-search",
+                "guide-middle-awakening"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "六本第二次如梦和满足条件的梦幻商店可继续补觉醒、露娜，支持后续循环；低血量失败触发资源的同时也意味着淘汰风险。强敌前仍需预留整备与复生预算，不为追求后续商店主动丢掉关键血量。",
+              "claim_refs": [
+                "zhuang-second-cast",
+                "zhuang-dream-trigger",
+                "zhuang-dream-luna",
+                "revive-budget"
+              ],
+              "inference": true
+            }
           }
         }
       },
@@ -4716,6 +4776,33 @@
           "signals": {
             "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
             "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          },
+          "stage_strength": {
+            "early": {
+              "text": "前期围绕苏烈、李元芳等经济过渡，少花能量刷新并保留升本资源；这一阶段对不同对手的实际相对强度尚待确认，不能仅凭升本节奏认定占优。",
+              "claim_refs": [
+                "n-opening"
+              ],
+              "inference": false
+            },
+            "middle": {
+              "text": "五本使用朋友多多是集中启动窗口，但随机牌不保证得到花木兰；缺核心时继续升本会延长空窗。启动回合还要及时处理手牌与转瞬古币，技能收益只有转为场上质量才算战力。",
+              "claim_refs": [
+                "n-opening",
+                "n-five-missing",
+                "n-time"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "核心稳住后再升六取得专属强化，配合觉醒和整备资源继续提升；不能把技能参考升本回合当作固定强势期。最终强弱仍取决于核心质量、复生预算及对手威胁。",
+              "claim_refs": [
+                "guide-skills-naonao",
+                "wanner-awaken",
+                "revive-budget"
+              ],
+              "inference": true
+            }
           }
         }
       },
@@ -4851,6 +4938,31 @@
           "signals": {
             "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
             "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          },
+          "stage_strength": {
+            "early": {
+              "text": "",
+              "claim_refs": [],
+              "inference": false
+            },
+            "middle": {
+              "text": "需要较早取得花木兰及适合的冻结强化才有启动条件；同阵营进化不保证出核心，因此有条件未满足的空窗。已有持续成长司空震时可保留双输出，不应为照搬双核硬追缺牌。",
+              "claim_refs": [
+                "q-start",
+                "q-double"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+              "claim_refs": [
+                "q-double",
+                "q-luna",
+                "wanner-awaken",
+                "revive-budget"
+              ],
+              "inference": true
+            }
           }
         }
       },
@@ -5096,6 +5208,37 @@
           "signals": {
             "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
             "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          },
+          "stage_strength": {
+            "early": {
+              "text": "低压运营需要保血争胜维持等级收益，风险对冲的精简连败开局则承担更高掉血风险；两者不能混用。沉淀收益配资本杠杆偏向积累资源，并不直接代表场上占优，仍要买必要战力。",
+              "claim_refs": [
+                "ying-lowpressure",
+                "ying-first-second-skill",
+                "ying-capital-timing"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "从过渡输出换到花木兰、补婉儿觉醒时有战力衔接风险。空降人才、首购激励等需要匹配来牌与决策条件；逐步替换原有输出，不能为换阵或等复制一次卖空战力。",
+              "claim_refs": [
+                "ying-early-auction",
+                "ying-first-second-skill",
+                "ying-first-purchase",
+                "ying-contract-bottle"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "体系齐备后，古币出牌循环更容易兑现投资回报，首购可补关键资源；等待淘汰收益或升六仍要先保证自己能存活。决策可能同时帮助对手，资源更多不等于本轮战力必然更强。",
+              "claim_refs": [
+                "ying-return-timing",
+                "ying-six-redistribution",
+                "ying-resource",
+                "revive-budget"
+              ],
+              "inference": true
+            }
           }
         }
       }
@@ -53175,6 +53318,91 @@
           ]
         }
       ]
+    },
+    {
+      "at": "2026-10-19T13:13:42.760208+00:00",
+      "origin": "editorial",
+      "reason": "棋手选阵阶段强度整理",
+      "previous": {
+        "branch": "ming",
+        "selection": {
+          "adopt": "已有保血过渡战力、卦象·节支持到五本，并能保留购买核心的资源时考虑。",
+          "avoid": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+          "signals": {
+            "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          }
+        },
+        "revision": "7a9dcb9c1c12f4aa47d7"
+      }
+    },
+    {
+      "at": "2026-10-19T13:13:42.760208+00:00",
+      "origin": "editorial",
+      "reason": "棋手选阵阶段强度整理",
+      "previous": {
+        "branch": "zhuang",
+        "selection": {
+          "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+          "avoid": "凑入无用河洛牌、升本后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+          "signals": {
+            "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          }
+        },
+        "revision": "7a9dcb9c1c12f4aa47d7"
+      }
+    },
+    {
+      "at": "2026-10-19T13:13:42.760208+00:00",
+      "origin": "editorial",
+      "reason": "棋手选阵阶段强度整理",
+      "previous": {
+        "branch": "naonao",
+        "selection": {
+          "adopt": "可按派对牌和经济升本、五本启动朋友多多找体系时考虑。",
+          "avoid": "五本仍无花木兰时先补核心；古币数量多但等级不足时补李白或永久成长。",
+          "signals": {
+            "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          }
+        },
+        "revision": "7a9dcb9c1c12f4aa47d7"
+      }
+    },
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手选阵阶段强度整理",
+      "previous": {
+        "branch": "zhaojun",
+        "selection": {
+          "adopt": "较早取得花木兰、有适合的冻结强化时考虑；已有持续冻结成长的司空震时可双输出。",
+          "avoid": "无法较早取得花木兰时保留当前高阶战力，比较高阶大河；不为双输出硬追司空震。",
+          "signals": {
+            "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          }
+        },
+        "revision": "7a9dcb9c1c12f4aa47d7"
+      }
+    },
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手选阵阶段强度整理",
+      "previous": {
+        "branch": "ying",
+        "selection": {
+          "adopt": "能结合所选战略保血，并能观察全场资源与同行露娜需求时考虑。",
+          "avoid": "开放决策会让同行先拿核心，或升本会导致当轮淘汰时，先保质量和自身获取资源。",
+          "signals": {
+            "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+          }
+        },
+        "revision": "7a9dcb9c1c12f4aa47d7"
+      }
     }
   ],
   "conflicts": [],
@@ -53220,7 +53448,7 @@
       "path": "knowledge/players/嬴律－适用打法与选择.md"
     }
   ],
-  "revision": "7a9dcb9c1c12f4aa47d7",
+  "revision": "3275a4089bce0d70ecd8",
   "reading_layout": {
     "version": 3,
     "claim_locations": {

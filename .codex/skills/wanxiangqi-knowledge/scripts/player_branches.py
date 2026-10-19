@@ -11,6 +11,22 @@ DIMENSIONS = {'formation':'成型难度','ceiling':'上限','floor':'下限','op
 LINK_FIELDS = {'operation_route_ids':'operation_routes','late_variant_ids':'late_variants',
                'major_variant_ids':'major_variants'}
 OVERRIDES = {'required_factions','core_heroes','compositions','ban_conditions','matchups','overview'}
+STRENGTH_STAGES = {'early':'前期','middle':'中期','late':'后期'}
+
+
+def validate_stage_strength(selection, claim_ids):
+    if not isinstance(selection,dict):raise ValueError('选阵资料必须为对象')
+    stages=selection.get('stage_strength',{})
+    if not isinstance(stages,dict) or set(stages)-set(STRENGTH_STAGES):
+        raise ValueError('阶段强度必须按前中后期保存')
+    for row in stages.values():
+        if not isinstance(row,dict) or not isinstance(row.get('text',''),str) or type(row.get('inference',False)) is not bool:
+            raise ValueError('阶段强度说明无效')
+        refs(row.get('claim_refs',[]),claim_ids,'阶段强度依据')
+
+
+def strength_text(row):
+    return ('推测：' if row.get('inference') else '')+row['text'] if row.get('text','').strip() else '待补充：暂无已确认的阶段强度。'
 
 
 def enabled(note):
@@ -79,6 +95,7 @@ def validate(note):
             raise ValueError('同一结论不能同时属于共通与棋手专属')
         owned |= private
         available = common | private
+        validate_stage_strength(b.get('selection',{}), available)
         refs(b.get('condition_refs', []), available, '采用条件')
         overrides = b.get('overrides', {})
         if not isinstance(overrides, dict) or set(overrides) - OVERRIDES:
@@ -253,6 +270,8 @@ def scope_markdown(note, scope):
 
 def selection_markdown(selection):
     rows=[('采用',selection.get('adopt','')),('转向',selection.get('avoid','')),*selection.get('signals',{}).items()]
+    if 'stage_strength' in selection:
+        rows += [(label+'强度',strength_text(selection['stage_strength'].get(stage,{}))) for stage,label in STRENGTH_STAGES.items()]
     return '| 判断 | 内容 |\n|---|---|\n'+'\n'.join('| '+str(k).replace('|','\\|')+' | '+str(v).replace('|','\\|').replace('\n','<br>')+' |' for k,v in rows)
 
 
@@ -293,10 +312,10 @@ def update_player_adaptations(items):
         if adaptations:note['lineup_adaptations']=adaptations
 
 
-def render_adaptations(note):
+def render_adaptations(note, heading=True):
     rows=note.get('lineup_adaptations',[])
     if not rows:return []
-    lines=['## 适用打法与选择','']
+    lines=['## 适用打法与选择',''] if heading else []
     for row in rows:
         selection=row.get('selection',{})
         lines+=['### ['+row['title']+'](../lineups/'+Path(row['path']).name+')','',
@@ -305,6 +324,9 @@ def render_adaptations(note):
                 '必须阵营：'+('、'.join(row['required_factions']) or '暂无已确认条件')+'。','',
                 '优势：'+row['advantages'],'','短板：'+row['disadvantages'],'']
         for label,value in selection.get('signals',{}).items():lines+=[label+'：'+value,'']
+        lines+=['#### 阶段强度','']
+        for stage,label in STRENGTH_STAGES.items():
+            lines+=['- **'+label+'：** '+strength_text(selection.get('stage_strength',{}).get(stage,{})),'']
     return lines
 
 
@@ -383,7 +405,15 @@ def apply_sections(note, scope, sections):
                 rows.append(cells)
             values=dict(rows)
             if len(values)!=len(rows) or not {'采用','转向'}<=values.keys():raise ValueError('采用与转向信号缺失或重复')
-            target['selection']={'adopt':values.pop('采用'),'avoid':values.pop('转向'),'signals':values,'origin':'manual'}
+            selection=deepcopy(target.get('selection',{}))
+            for stage,label in STRENGTH_STAGES.items():
+                key=label+'强度'
+                if key not in values:continue  # Old editors must retain newer fields.
+                value=values.pop(key);old=selection.get('stage_strength',{}).get(stage,{})
+                if value==strength_text(old):continue
+                selection.setdefault('stage_strength',{})[stage]={'text':value.removeprefix('推测：'),'claim_refs':[],'inference':value.startswith('推测：'),'origin':'manual'}
+            selection.update(adopt=values.pop('采用'),avoid=values.pop('转向'),signals=values,origin='manual')
+            target['selection']=selection
             note.setdefault('manual_scopes',{}).setdefault(scope,[]).append(section);changed=True;continue
         if section == '打法评价':
             old = assessment_markdown(target.get('assessment', [])) if target.get('assessment') else ''

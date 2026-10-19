@@ -19,6 +19,15 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_create_note_api_is_idempotent_and_reports_same_type_name_conflict(self):
+        body={'type':'lineup','title':'直接新建阵容','aliases':['简称'],'request_id':'http-create-request'}
+        def create(value):
+            with urlopen(Request(self.url+'notes',json.dumps(value).encode(),{'Content-Type':'application/json'},method='POST')) as r:return json.load(r)
+        first=create(body);self.assertEqual(create(body)['id'],first['id'])
+        self.assertEqual(first['claims'],[]);self.assertTrue(first['revision'])
+        with self.assertRaises(HTTPError) as caught:create({**body,'request_id':'another-request'})
+        self.assertEqual(caught.exception.code,409)
+
     def test_idle_read_recovers_abandoned_save_but_active_writer_is_not_replayed(self):
         self.server.markdown_watcher.close()
         wxq.commit_notes(self.root, [{'id':'readable','type':'other','title':'旧标题','claims':[],'entities':[]}])

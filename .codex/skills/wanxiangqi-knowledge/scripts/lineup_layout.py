@@ -192,13 +192,14 @@ def reading_document(note, player=None):
     """Read-only presentation projection shared with the exported Markdown."""
     result = {'note_id': note['id'], 'revision': note.get('revision', ''),
               'profile': None, 'sections': [], 'section_aliases': {}}
-    if note.get('type') != 'lineup' and not note.get('lineup_adaptations'):
+    if note.get('type') not in ('lineup','player') and not note.get('lineup_adaptations'):
         return result
     if note.get('type') != 'lineup':
         import wxq
         markdown=wxq.render_note(note,{})
         headings=list(re.finditer(r'^## (.+)\n',markdown,re.M))
         result['profile']='player-v5'
+        result['section_aliases']=dict(wxq.PLAYER_SECTION_ALIASES)
         result['sections']=[{'id':f'chapter-{i+1}','title':m[1],'markdown':markdown[m.end():headings[i+1].start() if i+1<len(headings) else len(markdown)].strip()+'\n'} for i,m in enumerate(headings)]
         return result
     from player_branches import enabled, project, branch, player_name, assessment_markdown

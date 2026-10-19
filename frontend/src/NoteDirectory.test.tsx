@@ -1,19 +1,18 @@
 import {renderToStaticMarkup} from 'react-dom/server';
 import {describe,it,expect,vi} from 'vitest';
 import NoteDirectory from './NoteDirectory';
+import type {Note} from './types';
 vi.mock('./EntityCards',()=>({useCards:()=>[],CardImage:()=>null}));
-describe('classified directory',()=>{
- it('searches and displays the common name without promoting variants to entries',()=>{
-  const html=renderToStaticMarkup(<NoteDirectory notes={[]} roster={[{id:'l',name:'网站原名',common_name:'大河龙蛇',heroes:[],variants:[{id:'v',heroes:['card:1']}],note_ids:[],enabled:true}]} query="大河龙蛇" hero="" player="" type="" active="" onSelect={()=>{}} onLineup={()=>{}} onManage={()=>{}}/>);
-  expect(html).toContain('大河龙蛇');expect(html).toContain('1 套');expect(html).not.toContain('card:1');
+const note=(id:string,title:string,type:Note['type']='lineup')=>({id,title,type,aliases:[],claims:[],entities:[],revision:'',path:'',core:[],manual_sections:[],conflicts:[],related:[]}) as Note;
+describe('note directory',()=>{
+ it('opens actual notes directly without roster groups or management',()=>{
+  const html=renderToStaticMarkup(<NoteDirectory notes={[note('a','河洛花木兰'),note('b','明先生','player')]} active="a" onSelect={()=>{}}/>);
+  expect(html).toContain('河洛花木兰');expect(html).toContain('明先生');
+  for(const absent of ['管理阵容名单','未归类阵容笔记','暂无笔记','<details'])expect(html).not.toContain(absent);
+  expect(html).toContain('aria-current="page"');
  });
- it('shows roster placeholders without manufacturing notes',()=>{
-  const html=renderToStaticMarkup(<NoteDirectory notes={[]} roster={[{id:'lineup:a',name:'甲阵容',heroes:['card:1'],note_ids:[],enabled:true}]} query="" hero="" player="" type="" active="" onSelect={()=>{}} onLineup={()=>{}} onManage={()=>{}}/>);
-  expect(html).toContain('甲阵容');expect(html).toContain('暂无笔记');expect(html).toContain('棋手');
- });
- it('keeps linked notes visible when searching the lineup name',()=>{
-  const note={id:'n',title:'已有攻略',type:'lineup' as const,aliases:[],claims:[],entities:[],revision:'',path:'',core:[],manual_sections:[],conflicts:[],related:[]};
-  const html=renderToStaticMarkup(<NoteDirectory notes={[note]} roster={[{id:'l',name:'甲阵容',heroes:[],note_ids:['n'],enabled:true}]} query="甲阵容" hero="" player="" type="" active="" onSelect={()=>{}} onLineup={()=>{}} onManage={()=>{}}/>);
-  expect(html).toContain('已有攻略');
+ it('has an explicit empty result without fabricating lineup entries',()=>{
+  const html=renderToStaticMarkup(<NoteDirectory notes={[]} active="" onSelect={()=>{}}/>);
+  expect(html).toContain('没有符合条件的笔记');expect(html).not.toContain('阵容名单');
  });
 });

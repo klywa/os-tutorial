@@ -314,6 +314,42 @@ def manual_claim(section, text):
             'condition': '', 'inference': False, 'version': None, 'evidence': []}
 
 
+def create_note(root, payload):
+    """Create an empty, retry-safe knowledge note through the shared transaction."""
+    if not isinstance(payload,dict) or set(payload)-{'type','title','aliases','request_id'}:
+        raise ValueError('新建笔记字段无效')
+    kind=payload.get('type');title=payload.get('title');aliases=payload.get('aliases',[]);request=payload.get('request_id')
+    if kind not in wxq.FOLDERS:raise ValueError('请选择有效的笔记类型')
+    if not isinstance(title,str) or not title.strip():raise ValueError('请填写笔记名称')
+    title=title.strip();filename(title)
+    if not isinstance(aliases,list) or not all(isinstance(a,str) for a in aliases):raise ValueError('别名须为文字列表')
+    aliases=list(dict.fromkeys(a.strip() for a in aliases if a.strip()))
+    if not isinstance(request,str) or not re.fullmatch(r'[A-Za-z0-9_-]{8,128}',request):raise ValueError('新建请求标识无效')
+    normalized={'type':kind,'title':title,'aliases':aliases}
+    fingerprint=hashlib.sha256(json.dumps(normalized,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+    root=Path(root)
+    with store_lock(root,wait=True):
+        recover(root)
+        items=deepcopy(notes(root))
+        prior=next((n for n in items if n.get('creation',{}).get('request_id')==request),None)
+        if prior:
+            if prior['creation']['payload_hash']!=fingerprint:raise Conflict('请求标识已用于其他新建内容，草稿已保留')
+            return prior
+        if any(n['type']==kind and n['title'].strip().casefold()==title.casefold() for n in items):
+            raise Conflict('已有同类型同名笔记，请打开已有笔记或修改名称；草稿已保留')
+        from markdown_sync import scan
+        scan(root,_locked=True)
+        # Reconcile external edits before adding a record, rather than persisting
+        # an index captured before scan imported them.
+        items=deepcopy(notes(root))
+        nid='note-'+hashlib.sha256(request.encode()).hexdigest()[:24]
+        if any(n['id']==nid for n in items):raise Conflict('笔记标识已存在，请重新发起新建')
+        note={'id':nid,**normalized,'entities':[],'core':[],'claims':[],'related':[],
+              'creation':{'request_id':request,'payload_hash':fingerprint}}
+        items.append(note);persist(root,items)
+        return note
+
+
 def merge_note(previous, incoming):
     from player_branches import enabled
     if enabled(previous):
@@ -497,15 +533,22 @@ def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False)
                 if not _dry_run:persist(root,items)
                 else:prepare(root,items)
             return note
-        for section, text in sections.items():
+        canonical=lambda section:wxq.PLAYER_SECTION_ALIASES.get(section,section) if note['type']=='player' else section
+        normalized={}
+        for section,text in sections.items():
+            if not isinstance(section,str):raise ValueError('章节名称无效')
+            key=canonical(section)
+            if key in normalized and normalized[key]!=text:raise ValueError('新旧章节名的内容冲突，请刷新后合并；草稿已保留')
+            normalized[key]=text
+        for section, text in normalized.items():
             if not isinstance(text, str) or not isinstance(section, str) or not section.strip() or section == '关联知识':
                 raise ValueError('章节名称或正文无效')
-            current = '\n\n'.join(c['text'] for c in note['claims'] if c['section'] == section)
+            current = '\n\n'.join(c['text'] for c in note['claims'] if canonical(c['section']) == section)
             if current == text.strip():
                 continue
             from tactics import claim_id, remap_claims
-            old_ids = {claim_id(c) for c in note['claims'] if c['section'] == section}
-            note['claims'] = [c for c in note['claims'] if c['section'] != section]
+            old_ids = {claim_id(c) for c in note['claims'] if canonical(c['section']) == section}
+            note['claims'] = [c for c in note['claims'] if canonical(c['section']) != section]
             new_claim = manual_claim(section, text.strip()) if text.strip() else None
             if new_claim:
                 new_claim['id'] = claim_id(new_claim)

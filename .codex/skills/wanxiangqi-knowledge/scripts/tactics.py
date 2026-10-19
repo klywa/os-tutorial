@@ -128,6 +128,8 @@ def remap_claims(meta, old_ids, new_id):
             if key in owner:owner[key] = list(dict.fromkeys(new_id if x in old_ids else x for x in owner[key] if x not in old_ids or new_id))
         for row in owner.get('assessment', []):
             row['claim_refs'] = list(dict.fromkeys(new_id if x in old_ids else x for x in row.get('claim_refs',[]) if x not in old_ids or new_id))
+        for row in owner.get('selection',{}).get('stage_strength',{}).values():
+            row['claim_refs'] = list(dict.fromkeys(new_id if x in old_ids else x for x in row.get('claim_refs',[]) if x not in old_ids or new_id))
     from major_variants import remap as remap_major
     remap_major(meta, old_ids, new_id)
     from overview import remap

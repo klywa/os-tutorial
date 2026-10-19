@@ -1,16 +1,8 @@
-import {linkRoleLabel} from './NoteLinks';
-import {lineupLabel,lineupSearch} from './lineupNames';
 import {useCards,CardImage} from './EntityCards';
-import type {Note,Lineup} from './types';
-export function directoryLineups(roster:Lineup[],notes:Note[],query:string,hero:string,labels:Map<string,string>=new Map()){
- const words=query.trim().toLowerCase().split(/\s+/);return roster.filter(r=>r.enabled&&!r.deleted_at&&!r.merged_into&&(!hero||r.heroes.includes(hero))).filter(r=>words.every(w=>[lineupSearch(r),...r.heroes.map(id=>labels.get(id)||id),...notes.filter(n=>r.note_ids.includes(n.id)).flatMap(n=>[n.title,...n.claims.map(c=>c.text)])].join(' ').toLowerCase().includes(w)));
-}
-export default function NoteDirectory({notes,roster,query,hero,player,type,active,onSelect,onLineup,onManage}:{notes:Note[];roster:Lineup[];query:string;hero:string;player:string;type:string;active:string;onSelect:(id:string)=>void;onLineup:(id:string)=>void;onManage:()=>void}){
- const cards=useCards();const labels=new Map(cards.map(c=>[c.id,c.name]));
- const text=(n:Note)=>[n.title,...n.aliases,...n.claims.map(c=>c.text),...n.entities.map(id=>labels.get(id)||id)].join(' ').toLowerCase();
- const matches=(n:Note,ignoreQuery=false)=>(ignoreQuery||query.trim().toLowerCase().split(/\s+/).every(q=>text(n).includes(q)))&&(!player||n.meta?.players.includes(player)||n.entities.includes(player))&&(!hero||n.entities.includes(hero));
- const shown=notes.filter(n=>matches(n));const lineups=directoryLineups(roster,notes,query,hero,labels).filter(r=>!player||r.note_ids.some(id=>notes.find(n=>n.id===id)?.meta?.players.includes(player)));
- const list=(items:Note[],lineup?:Lineup)=>items.map(n=><button key={n.id} className={'note-option '+(active===n.id?'active':'')} onClick={()=>onSelect(n.id)}><span><strong>{n.title}</strong>{lineup&&<small>{linkRoleLabel(lineup.note_links?.find(x=>x.note===n.id)?.role??'legacy')}</small>}</span></button>);
- const linked=new Set(roster.filter(r=>r.enabled&&!r.deleted_at&&!r.merged_into).flatMap(r=>r.note_ids));
- return <div className="classified-directory"><button className="manage-lineups" onClick={onManage}>管理阵容名单</button>{(!type||type==='lineup')&&<details open className="directory-group"><summary>阵容 <small>{lineups.length} 套</small></summary>{lineups.map(r=><details key={r.id} className={'directory-lineup '+(active===r.id?'active':'')}><summary><button onClick={()=>onLineup(r.id)}><strong>{lineupLabel(r)}</strong><small>{r.note_ids.length?`${r.note_ids.length} 篇笔记`:'暂无笔记'}{r.note_ids.length&&!r.primary_note_id?' · 主笔记未指定':''}</small><span className="directory-portraits">{r.heroes.map(id=><CardImage key={id} card={cards.find(c=>c.id===id)}/>)}</span></button></summary>{list(notes.filter(n=>r.note_ids.includes(n.id)&&matches(n,query.trim().toLowerCase().split(/\s+/).every(q=>[lineupSearch(r),...r.heroes.map(id=>labels.get(id)||id)].join(' ').toLowerCase().includes(q)))),r)}</details>)}{shown.some(n=>n.type==='lineup'&&!linked.has(n.id))&&<details open><summary>未归类阵容笔记</summary>{list(shown.filter(n=>n.type==='lineup'&&!linked.has(n.id)))}</details>}</details>}{(['player','other'] as const).map(kind=>(!type||type===kind)&&<details open className="directory-group" key={kind}><summary>{kind==='player'?'棋手':'其他'} <small>{shown.filter(n=>n.type===kind).length} 篇</small></summary>{list(shown.filter(n=>n.type===kind))}</details>)}</div>;
+import {lineupHeroes} from './model';
+import type {Note} from './types';
+export default function NoteDirectory({notes,active,onSelect}:{notes:Note[];active:string;onSelect:(id:string)=>void}){
+ const cards=useCards();
+ if(!notes.length)return <p className="empty directory-empty">没有符合条件的笔记</p>;
+ return <div className="note-directory" aria-label="笔记列表">{notes.map(n=><button key={n.id} aria-label={n.title} aria-current={active===n.id?'page':undefined} className={'note-option directory-note '+(active===n.id?'active':'')} onClick={()=>onSelect(n.id)}><span className="note-icon" aria-hidden="true">{({lineup:'◈',player:'♙',other:'▤'})[n.type]}</span><span className="directory-note-body"><strong>{n.title}</strong>{n.type==='lineup'&&<span className="directory-portraits">{[...new Set(lineupHeroes(n))].map(id=>cards.find(c=>c.id===id)).filter(c=>!!c).map(card=><CardImage key={card.id} card={card}/>)}</span>}</span></button>)}</div>;
 }

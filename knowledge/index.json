@@ -9157,6 +9157,24 @@
             ]
           },
           "merged_duplicates": []
+        },
+        {
+          "at": "2026-10-19T13:13:42.760208+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "zhaojun",
+            "selection": {
+              "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
+              "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
+              "signals": {
+                "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
+                "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              }
+            },
+            "revision": "839449748a25893206d3"
+          }
         }
       ],
       "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md",
@@ -9606,6 +9624,32 @@
                 "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
                 "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
                 "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "前期主要靠弈星及被冻结的过渡英雄支撑。对手质量低、补干将莫邪有机会取胜时可保血；对手明显更强时精简场面升本，不能把冻结的后续收益当成本轮战力。",
+                  "claim_refs": [
+                    "claim-6e5677597b91d6042038"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "五本取得东皇太一、敖隐和图腾后，控制、回复与输出才逐步衔接。核心或虞姬未到时有过渡空窗，可按来牌用司空震、海月承担输出；第8回合冰心领域提供后续成长，不保证当轮压制所有对手。",
+                  "claim_refs": [
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "核心与图腾齐备后，可依靠全队等级、人口和不朽坚冰继续提升；等级转移及保护图腾是兑现成长的条件。图腾被范围伤害快速清除时，后期潜力不能自动转为胜势。",
+                  "claim_refs": [
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "guide-counter-totem"
+                  ],
+                  "inference": true
+                }
               }
             }
           }
@@ -9650,7 +9694,7 @@
       },
       "manual_sections": [],
       "conflicts": [],
-      "revision": "839449748a25893206d3",
+      "revision": "55ac5836adae06b705cf",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -10006,7 +10050,8 @@
               "frame": "frames/20-0.jpg"
             }
           ],
-          "kind": "mechanic"
+          "kind": "mechanic",
+          "id": "claim-0e35d83a4b627634a9f2"
         },
         {
           "section": "技能",
@@ -10022,10 +10067,11 @@
               "frame": "frames/240-0.jpg"
             }
           ],
-          "kind": "mechanic"
+          "kind": "mechanic",
+          "id": "claim-2f8236061f81588d616c"
         },
         {
-          "section": "使用技巧",
+          "section": "适用技巧",
           "text": "高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。\n\n- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。\n\n- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
           "version": "视频发布于2026-09-21；具体游戏版本未确认",
           "condition": "",
@@ -10037,26 +10083,28 @@
               "end": 376.7
             }
           ],
-          "kind": "conditional_strategy"
+          "kind": "conditional_strategy",
+          "id": "claim-67dd23cb53842ea9129c"
         },
         {
-          "section": "使用技巧",
-          "text": "开局持续冻结用于过渡、能提供经济收益的英雄。核心英雄齐备后，无需为了寻找核心而继续冻结。保留遗志、传承，准备将过渡英雄积累的永久等级转给后期英雄，避免等级留在即将被替换的单位上。",
+          "section": "前期思路",
+          "text": "开局尚未确定最终阵容时，可围绕能够提供经济或保留成长等级的过渡英雄进行冻结；检查冻结转换后的英雄是否仍能承担本轮战力。不同体系采用精简场面或升本的具体时机尚待确认。",
           "version": "视频发布于2026-09-21；具体游戏版本未确认",
           "condition": "",
-          "inference": false,
+          "inference": true,
           "evidence": [
             {
               "source": "BV1aThi6AEAC:p1",
-              "start": 576.1,
-              "end": 635.1
+              "start": 753.54,
+              "end": 834.81
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-e6fe65953f8dd1bbbfd8"
         },
         {
-          "section": "适配阵容",
-          "text": "适合高阶大河（龙蛇）阵容。升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+          "section": "适用打法与选择",
+          "text": "### 其他已知方向\n\n升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
           "version": "视频发布于2026-09-21；具体游戏版本未确认",
           "condition": "",
           "inference": false,
@@ -10067,11 +10115,12 @@
               "end": 84.7
             }
           ],
-          "kind": "general_strategy"
+          "kind": "general_strategy",
+          "id": "claim-fa635815cc71be704796"
         },
         {
           "id": "zhaojun-heluo-fit",
-          "section": "适配阵容",
+          "section": "适用打法与选择",
           "text": "较早取得花木兰及合适冻结强化时，昭君也能采用河洛古币复生体系，并在已有持续成长司空震时保留双输出。该方向围绕上官婉儿和露娜补复生，不沿用高阶大河的图腾成员。",
           "kind": "conditional_strategy",
           "condition": "",
@@ -10132,7 +10181,7 @@
         },
         {
           "id": "zhaojun-freeze-luna",
-          "section": "使用技巧",
+          "section": "适用技巧",
           "text": "河洛花木兰的核心齐备后，冻结仍可用于补露娜等关键资源。露娜冻结后是否仍变回露娜取决于强化及公共牌库情况；不能把卡住海诺的一次实战当成无条件循环。",
           "kind": "conditional_strategy",
           "condition": "",
@@ -10160,6 +10209,26 @@
               "end": 1586.13
             }
           ]
+        },
+        {
+          "id": "claim-e6fe65953f8dd1bbbfd8-transfer",
+          "section": "适用技巧",
+          "text": "需要换下积累等级的过渡英雄时，先保留并使用遗志、传承，将其永久等级转给后续英雄，避免成长留在即将被替换的单位上；高阶大河核心齐备后，无需仅为寻找核心继续冻结。",
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 576.1,
+              "end": 635.1
+            }
+          ],
+          "derived_from": [
+            "claim-e6fe65953f8dd1bbbfd8"
+          ]
         }
       ],
       "related": [
@@ -10181,9 +10250,190 @@
       "path": "knowledge/players/昭君－冻结升阶与大河运营.md",
       "aliases": [],
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [
+              {
+                "section": "技能",
+                "text": "冰之心：冻结英雄，将其转换为随机更高品阶的英雄，并继承英雄等级。极寒冰冻：第5、第8回合提供深度冻结，选择后续技能分支。\n\n- 升华增加觉醒进度；霜寒进化让英雄沿同阵营升阶；破冰裂变让英雄跨两个品阶转换。\n\n- 冰封结晶根据解冻英雄的品阶提供对应兑换券。",
+                "version": "视频发布于2026-09-21；具体游戏版本未确认",
+                "condition": "",
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1aThi6AEAC:p1",
+                    "start": 0,
+                    "end": 204.7,
+                    "frame": "frames/20-0.jpg"
+                  }
+                ],
+                "kind": "mechanic"
+              },
+              {
+                "section": "技能",
+                "text": "寒冰觉醒：保留原英雄并增加觉醒进度，不能帮助换出高品阶英雄，需要自行刷新商店寻找核心。\n\n- 寒潮共振的收益与觉醒英雄有关；冰心领域按上场英雄的品阶总和增加等级。冰心领域存在30%与35%的不同资料记录，具体差异见关联知识。",
+                "version": "视频发布于2026-09-21；具体游戏版本未确认",
+                "condition": "",
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1aThi6AEAC:p1",
+                    "start": 205,
+                    "end": 346.8,
+                    "frame": "frames/240-0.jpg"
+                  }
+                ],
+                "kind": "mechanic"
+              },
+              {
+                "section": "使用技巧",
+                "text": "高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。\n\n- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。\n\n- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
+                "version": "视频发布于2026-09-21；具体游戏版本未确认",
+                "condition": "",
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1aThi6AEAC:p1",
+                    "start": 234.6,
+                    "end": 376.7
+                  }
+                ],
+                "kind": "conditional_strategy"
+              },
+              {
+                "section": "使用技巧",
+                "text": "开局持续冻结用于过渡、能提供经济收益的英雄。核心英雄齐备后，无需为了寻找核心而继续冻结。保留遗志、传承，准备将过渡英雄积累的永久等级转给后期英雄，避免等级留在即将被替换的单位上。",
+                "version": "视频发布于2026-09-21；具体游戏版本未确认",
+                "condition": "",
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1aThi6AEAC:p1",
+                    "start": 576.1,
+                    "end": 635.1
+                  }
+                ],
+                "kind": "general_strategy"
+              },
+              {
+                "section": "适配阵容",
+                "text": "适合高阶大河（龙蛇）阵容。升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+                "version": "视频发布于2026-09-21；具体游戏版本未确认",
+                "condition": "",
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV1aThi6AEAC:p1",
+                    "start": 57.1,
+                    "end": 84.7
+                  }
+                ],
+                "kind": "general_strategy"
+              },
+              {
+                "id": "zhaojun-heluo-fit",
+                "section": "适配阵容",
+                "text": "较早取得花木兰及合适冻结强化时，昭君也能采用河洛古币复生体系，并在已有持续成长司空震时保留双输出。该方向围绕上官婉儿和露娜补复生，不沿用高阶大河的图腾成员。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 164.53,
+                    "end": 198.86
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 199.44,
+                    "end": 239.07
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 313.58,
+                    "end": 344.43
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 348.02,
+                    "end": 382.08
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 427.98,
+                    "end": 466.29
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 470.03,
+                    "end": 503.39
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1107.97,
+                    "end": 1141.42
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1337.07,
+                    "end": 1365.33
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1365.33,
+                    "end": 1395.42
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1395.42,
+                    "end": 1434.88
+                  }
+                ]
+              },
+              {
+                "id": "zhaojun-freeze-luna",
+                "section": "使用技巧",
+                "text": "河洛花木兰的核心齐备后，冻结仍可用于补露娜等关键资源。露娜冻结后是否仍变回露娜取决于强化及公共牌库情况；不能把卡住海诺的一次实战当成无条件循环。",
+                "kind": "conditional_strategy",
+                "condition": "",
+                "version": null,
+                "inference": false,
+                "evidence": [
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1434.88,
+                    "end": 1467.6
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1468.94,
+                    "end": 1505.84
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1509.04,
+                    "end": 1550.18
+                  },
+                  {
+                    "source": "BV14Jh46AEpR:p1",
+                    "start": 1550.18,
+                    "end": 1586.13
+                  }
+                ]
+              }
+            ],
+            "manual_sections": [],
+            "revision": "1e76f0bbeffcdd7d3e45"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "1e76f0bbeffcdd7d3e45",
+      "revision": "0487de12dd274327483a",
       "lineup_adaptations": [
         {
           "lineup": "zhaojun-high-tier-dahe",
@@ -10197,6 +10447,32 @@
               "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
               "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
               "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "前期主要靠弈星及被冻结的过渡英雄支撑。对手质量低、补干将莫邪有机会取胜时可保血；对手明显更强时精简场面升本，不能把冻结的后续收益当成本轮战力。",
+                "claim_refs": [
+                  "claim-6e5677597b91d6042038"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "五本取得东皇太一、敖隐和图腾后，控制、回复与输出才逐步衔接。核心或虞姬未到时有过渡空窗，可按来牌用司空震、海月承担输出；第8回合冰心领域提供后续成长，不保证当轮压制所有对手。",
+                "claim_refs": [
+                  "claim-01efb21eac616296f20c",
+                  "claim-163e42c476a496c5bbe8"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "核心与图腾齐备后，可依靠全队等级、人口和不朽坚冰继续提升；等级转移及保护图腾是兑现成长的条件。图腾被范围伤害快速清除时，后期潜力不能自动转为胜势。",
+                "claim_refs": [
+                  "claim-bf3ad0a0c80d84f2d6d4",
+                  "claim-4bfc796afce05484f9b4",
+                  "guide-counter-totem"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -10216,6 +10492,31 @@
             "signals": {
               "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
               "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "",
+                "claim_refs": [],
+                "inference": false
+              },
+              "middle": {
+                "text": "需要较早取得花木兰及适合的冻结强化才有启动条件；同阵营进化不保证出核心，因此有条件未满足的空窗。已有持续成长司空震时可保留双输出，不应为照搬双核硬追缺牌。",
+                "claim_refs": [
+                  "q-start",
+                  "q-double"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+                "claim_refs": [
+                  "q-double",
+                  "q-luna",
+                  "wanner-awaken",
+                  "revive-budget"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -10226,7 +10527,10 @@
           "disadvantages": "变化不保证花木兰，露娜循环受强化与公共牌库限制。"
         }
       ],
-      "explicit_relationships": true
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     },
     {
       "id": "zhaojun-version-and-asr-review",
@@ -10823,6 +11127,33 @@
                 "来牌": "首张刘邦到场前工具英雄各留一张；先补刘邦觉醒，明世隐来得少或晚时可用云中君替代。",
                 "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
                 "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "干将莫邪配牛魔、飞行器连接干将莫邪的开局，在前几轮有争胜能力；遇到更强速攻仍可能掉血。需要及时升本找刘邦，不能因开局赢过就长时间停留低本。",
+                  "claim_refs": [
+                    "claim-c4c4113df9b0d149d5f9"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "首张刘邦到场后开始承接图腾等级与飞行器收益，五本补扁鹊可进一步稳血；刘邦未到或迟迟不觉醒时是明显风险窗口。连续刷新无进展时，应保留升六资源，而非耗尽金币追质量。",
+                  "claim_refs": [
+                    "claim-36a64baf419544118526",
+                    "claim-34ce45f76864349fb218"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "刘邦觉醒、图腾等级积累及六阶超级连接齐备后，持续输出和临时等级收益更完整；终局可用太乙真人或等级集中继续提升。成长工具替换过早、被风筝或连接英雄难以存活，都会妨碍兑现后期战力。",
+                  "claim_refs": [
+                    "claim-422443c0323fc3e782b9",
+                    "claim-4047c5c02ecf461d3be8",
+                    "claim-41e5ef7849bdfc174252",
+                    "claim-9393479509a53e516912"
+                  ],
+                  "inference": true
+                }
               }
             }
           }
@@ -21773,10 +22104,28 @@
             ]
           },
           "merged_duplicates": []
+        },
+        {
+          "at": "2026-10-19T13:13:42.760208+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "angela",
+            "selection": {
+              "adopt": "大河、逐鹿开放，能够取得刘邦及图腾、扁鹊时考虑。",
+              "avoid": "刘邦未到手不追工具觉醒；持续不来时保留资源升六，禁逐鹿无法照搬完整炸盾体系。",
+              "signals": {
+                "来牌": "首张刘邦到场前工具英雄各留一张；先补刘邦觉醒，明世隐来得少或晚时可用云中君替代。",
+                "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              }
+            },
+            "revision": "0bcb84e547b4a3b2989b"
+          }
         }
       ],
       "conflicts": [],
-      "revision": "0bcb84e547b4a3b2989b",
+      "revision": "9bf262877b40cf5d862a",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -22166,7 +22515,8 @@
               "end": 57.92,
               "frame": "frames/20-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-45b9cd8d8a983da83712"
         },
         {
           "section": "技能",
@@ -22193,10 +22543,11 @@
               "start": 1054.76,
               "end": 1104.9
             }
-          ]
+          ],
+          "id": "claim-53e27f8e0cdd5f6e01ce"
         },
         {
-          "section": "使用技巧",
+          "section": "前期思路",
           "text": "按实际阵容选择奇想：频繁使用英雄牌的图腾体系可优先英雄牌，频繁花能量可考虑奖励；预期前期掉血时补给有价值，能连胜时考虑胜利。效果牌选项不适合本来就很少使用效果牌的路线。",
           "version": null,
           "condition": "频繁使用英雄牌",
@@ -22208,10 +22559,11 @@
               "start": 259.8,
               "end": 315.4
             }
-          ]
+          ],
+          "id": "claim-f49e7024b047dc06ce12"
         },
         {
-          "section": "使用技巧",
+          "section": "适用技巧",
           "text": "刘邦持续输出路线通常不选一次性自爆模块。优先考虑壮胆、保送升级、上强度、打扫战场、坐火箭；变胖、杠上了、秒变脆皮、技能加持、复仇者等结合对手和工具英雄情况选择。低调、重拳及蓄力痛击不是刘邦的常规优先项。",
           "version": null,
           "condition": "",
@@ -22223,7 +22575,8 @@
               "start": 908.28,
               "end": 1104.9
             }
-          ]
+          ],
+          "id": "claim-5c781501dfba6bfc8c1f"
         },
         {
           "section": "技能",
@@ -22239,7 +22592,8 @@
               "end": 513.2,
               "frame": "frames/490-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-6c536872f059d24f3d67"
         },
         {
           "section": "技能",
@@ -22261,10 +22615,11 @@
               "end": 907.9,
               "frame": "frames/900-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-9191028c80541374607c"
         },
         {
-          "section": "使用技巧",
+          "section": "适用技巧",
           "text": "拿来吧你配秒变脆皮可提高攻击频率，加快临时等级积累；打扫战场继承连接英雄法攻，适合刘邦、芈月等有法攻的核心。廉颇的扁鹊炸盾伤害不能直接当作廉颇自身法攻继承。",
           "version": null,
           "condition": "打扫战场继承连接英雄法攻",
@@ -22276,7 +22631,8 @@
               "start": 800.36,
               "end": 907.9
             }
-          ]
+          ],
+          "id": "claim-caed9aa45807e556035e"
         },
         {
           "section": "技能",
@@ -22291,10 +22647,11 @@
               "start": 625,
               "end": 652.3
             }
-          ]
+          ],
+          "id": "claim-b2a8d9e16237b6a903b4"
         },
         {
-          "section": "适配阵容",
+          "section": "适用打法与选择",
           "text": "适合以刘邦为核心的图腾成长体系，利用持续法伤、临时等级以及明世隐的等级转化。",
           "version": null,
           "condition": "",
@@ -22307,10 +22664,11 @@
               "end": 1273.85,
               "frame": "frames/1255-0.jpg"
             }
-          ]
+          ],
+          "id": "claim-f8b0a9dfa764251ad7b2"
         },
         {
-          "section": "使用技巧",
+          "section": "适用技巧",
           "text": "瑶附身主核心时可以考虑二号机，以双飞行器持续输出，但需权衡临时等级转化效果的降低。",
           "version": null,
           "condition": "瑶附身主核心时",
@@ -22322,6 +22680,28 @@
               "start": 342.29,
               "end": 371.4
             }
+          ],
+          "id": "claim-749e29857eb640125172"
+        },
+        {
+          "id": "player-opening-aircraft",
+          "section": "前期思路",
+          "text": "尚未定阵时，可先按当前英雄的存活能力和持续作战需要选择飞行器连接对象，让飞行器与目标重合以避免连错。连接英雄存活是持续输出的前提；暂未定阵时无需提前固定最终核心。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 0,
+              "end": 57.92,
+              "frame": "frames/20-0.jpg"
+            }
+          ],
+          "derived_from": [
+            "claim-45b9cd8d8a983da83712"
           ]
         }
       ],
@@ -22337,9 +22717,193 @@
       "path": "knowledge/players/安琪拉－飞行器与模块选择.md",
       "aliases": [],
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [
+              {
+                "section": "技能",
+                "text": "特制灵异追踪器初始拥有3点神秘力量，每回合自动获得3点；每点神秘力量提供2点飞行器法术攻击。飞行器连接最近英雄，连接英雄存活时持续输出；开战为连接英雄提供神秘力量值30%的临时等级。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 0,
+                    "end": 57.92,
+                    "frame": "frames/20-0.jpg"
+                  }
+                ]
+              },
+              {
+                "section": "技能",
+                "text": "三阶获得顿悟时刻，从三项候选中选择神秘力量获取方式。累计获得5、10、20、35点神秘力量时，驱鬼!加大力度!分别提供灵异探测大改装；六阶超级连接额外提供一次大改装，并随机给予连接英雄自身等级10%–30%的临时等级。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 59.04,
+                    "end": 86.98,
+                    "frame": "frames/80-0.jpg"
+                  },
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 315.7,
+                    "end": 341.8,
+                    "frame": "frames/325-0.jpg"
+                  },
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 1054.76,
+                    "end": 1104.9
+                  }
+                ]
+              },
+              {
+                "section": "使用技巧",
+                "text": "按实际阵容选择奇想：频繁使用英雄牌的图腾体系可优先英雄牌，频繁花能量可考虑奖励；预期前期掉血时补给有价值，能连胜时考虑胜利。效果牌选项不适合本来就很少使用效果牌的路线。",
+                "version": null,
+                "condition": "频繁使用英雄牌",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 259.8,
+                    "end": 315.4
+                  }
+                ]
+              },
+              {
+                "section": "使用技巧",
+                "text": "刘邦持续输出路线通常不选一次性自爆模块。优先考虑壮胆、保送升级、上强度、打扫战场、坐火箭；变胖、杠上了、秒变脆皮、技能加持、复仇者等结合对手和工具英雄情况选择。低调、重拳及蓄力痛击不是刘邦的常规优先项。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "general_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 908.28,
+                    "end": 1104.9
+                  }
+                ]
+              },
+              {
+                "section": "技能",
+                "text": "壮胆给连接英雄15点双抗；紧急救命在连接英雄受到致命伤时提供1.5秒无敌且不可选中。这是两个不同模块，紧急救命不额外提供壮胆的15点双抗。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 455.25,
+                    "end": 513.2,
+                    "frame": "frames/490-0.jpg"
+                  }
+                ]
+              },
+              {
+                "section": "技能",
+                "text": "拿来吧你每次命中将目标等级的1.5%临时继承给连接英雄，至少1级；本视频展示的版本已经不再降低对方等级。坐火箭使神秘力量转化临时等级的效果值增加60%。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 800.36,
+                    "end": 859.3,
+                    "frame": "frames/820-0.jpg"
+                  },
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 859.84,
+                    "end": 907.9,
+                    "frame": "frames/900-0.jpg"
+                  }
+                ]
+              },
+              {
+                "section": "使用技巧",
+                "text": "拿来吧你配秒变脆皮可提高攻击频率，加快临时等级积累；打扫战场继承连接英雄法攻，适合刘邦、芈月等有法攻的核心。廉颇的扁鹊炸盾伤害不能直接当作廉颇自身法攻继承。",
+                "version": null,
+                "condition": "打扫战场继承连接英雄法攻",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 800.36,
+                    "end": 907.9
+                  }
+                ]
+              },
+              {
+                "section": "技能",
+                "text": "让你嘚瑟在本视频展示的版本中从等级最高的三个敌人里随机选一个，可能打到工具英雄；不能沿用旧版固定针对最高等级核心的预期。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 625,
+                    "end": 652.3
+                  }
+                ]
+              },
+              {
+                "section": "适配阵容",
+                "text": "适合以刘邦为核心的图腾成长体系，利用持续法伤、临时等级以及明世隐的等级转化。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "general_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 1105.19,
+                    "end": 1273.85,
+                    "frame": "frames/1255-0.jpg"
+                  }
+                ]
+              },
+              {
+                "section": "使用技巧",
+                "text": "瑶附身主核心时可以考虑二号机，以双飞行器持续输出，但需权衡临时等级转化效果的降低。",
+                "version": null,
+                "condition": "瑶附身主核心时",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "source": "BV1Jjao66ELh:p1",
+                    "start": 342.29,
+                    "end": 371.4
+                  }
+                ]
+              }
+            ],
+            "manual_sections": [],
+            "revision": "31a49000e41d5a5f33a4"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "31a49000e41d5a5f33a4",
+      "revision": "dc69f2d7c7abeaa6accb",
       "lineup_adaptations": [
         {
           "lineup": "angela-liubang-totems",
@@ -22353,6 +22917,33 @@
               "来牌": "首张刘邦到场前工具英雄各留一张；先补刘邦觉醒，明世隐来得少或晚时可用云中君替代。",
               "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
               "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "干将莫邪配牛魔、飞行器连接干将莫邪的开局，在前几轮有争胜能力；遇到更强速攻仍可能掉血。需要及时升本找刘邦，不能因开局赢过就长时间停留低本。",
+                "claim_refs": [
+                  "claim-c4c4113df9b0d149d5f9"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "首张刘邦到场后开始承接图腾等级与飞行器收益，五本补扁鹊可进一步稳血；刘邦未到或迟迟不觉醒时是明显风险窗口。连续刷新无进展时，应保留升六资源，而非耗尽金币追质量。",
+                "claim_refs": [
+                  "claim-36a64baf419544118526",
+                  "claim-34ce45f76864349fb218"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "刘邦觉醒、图腾等级积累及六阶超级连接齐备后，持续输出和临时等级收益更完整；终局可用太乙真人或等级集中继续提升。成长工具替换过早、被风筝或连接英雄难以存活，都会妨碍兑现后期战力。",
+                "claim_refs": [
+                  "claim-422443c0323fc3e782b9",
+                  "claim-4047c5c02ecf461d3be8",
+                  "claim-41e5ef7849bdfc174252",
+                  "claim-9393479509a53e516912"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -22363,7 +22954,10 @@
           "disadvantages": "近战易被风筝，缺扁鹊时炸盾路线受损；工具位与人口取舍影响成长。"
         }
       ],
-      "explicit_relationships": true
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     },
     {
       "id": "changxiaoe-general-play",
@@ -29420,6 +30014,36 @@
                 "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
                 "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
                 "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "小鹿配过渡英雄有争取前期胜场的能力，胜场同时帮助保血和养小鹿；面对强势孙尚香或同行仍需补即时战力，不能只凭棋手认定必胜。",
+                  "claim_refs": [
+                    "opening-four",
+                    "opening-wins"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "没有李信、等级和复生配套未成时，是需要重点防守的空窗；不能将小鹿前期优势延续理解为中期也强。取得李信后才开始兑现成长，缺牌时靠装备承接者保血并避免刷空金币。",
+                  "claim_refs": [
+                    "middle-no-lixin",
+                    "middle-fast-five",
+                    "middle-item-holder"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "李信达到关键等级、牺牲与复生衔接后可持续输出；共鸣前安全升六可进一步放大收益。是否形成优势取决于等级、死亡顺序、复生形式及对手，不能忽略共鸣前被淘汰的风险。",
+                  "claim_refs": [
+                    "growth-hundred",
+                    "growth-zhongkui",
+                    "taiyi-by-target",
+                    "six-budget-pressure",
+                    "order-six-before-double"
+                  ],
+                  "inference": true
+                }
               }
             }
           }
@@ -73977,6 +74601,24 @@
             ]
           },
           "merged_duplicates": []
+        },
+        {
+          "at": "2026-10-19T13:13:42.760208+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "yaomei",
+            "selection": {
+              "adopt": "能保前期胜场养小鹿，河洛开放，且能取得李信、钟馗和复生工具时考虑。",
+              "avoid": "持续掉血或缺李信时先补过渡战力；共鸣前不能安全升六时不硬升。",
+              "signals": {
+                "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
+                "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              }
+            },
+            "revision": "b5336a2b532770030075"
+          }
         }
       ],
       "conflicts": [],
@@ -73990,7 +74632,7 @@
           "path": "knowledge/players/瑶妹－适用打法与选择.md"
         }
       ],
-      "revision": "b5336a2b532770030075",
+      "revision": "c1ecd2769099bba80444",
       "manual_fields": [
         "title"
       ],
@@ -78958,6 +79600,36 @@
               "signals": {
                 "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
                 "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "卦象·节主要提供升本资源，单挂弈星节约开销的同时会压低场上战力；只有补牛魔有机会取胜时才兼顾其产币。这个阶段的重点是控制掉血和升本成本，不能视为默认强势期。",
+                  "claim_refs": [
+                    "ming-economy",
+                    "ming-opening-yixing"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "五本转卦象·丰集中找花木兰、上官婉儿后，取得核心与觉醒进度才逐步补起战力；找牌不顺而只有刷新时存在空窗。李信、李白和现有装备可承担过渡，升六需保留本轮买牌与保血预算。",
+                  "claim_refs": [
+                    "ming-five",
+                    "ming-economy",
+                    "missing-mulan"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "产币成员、婉儿觉醒与露娜整备循环齐备后，复生和等级收益逐步完整；卦象带来的资源仍需转成有效战力。对手控制、风筝及本轮复生预算会限制上限，不能只凭已经成型判断强弱。",
+                  "claim_refs": [
+                    "coin-loop",
+                    "wanner-awaken",
+                    "revive-budget",
+                    "anti-burst",
+                    "ailin-chase"
+                  ],
+                  "inference": true
+                }
               }
             }
           },
@@ -79188,6 +79860,36 @@
               "signals": {
                 "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
                 "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "保血过渡与精简速五有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                  "claim_refs": [
+                    "zhuang-opening-dispute",
+                    "opening-fighters"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "五本第一次如梦能集中补体系，是启动窗口；收益取决于场上有用河洛成员、核心来牌和合成安排。技能未补到核心、婉儿未觉醒或为凑人数塞无用牌时，仍有明显空窗。",
+                  "claim_refs": [
+                    "zhuang-three-five",
+                    "zhuang-delayed-dispute",
+                    "save-search",
+                    "guide-middle-awakening"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "六本第二次如梦和满足条件的梦幻商店可继续补觉醒、露娜，支持后续循环；低血量失败触发资源的同时也意味着淘汰风险。强敌前仍需预留整备与复生预算，不为追求后续商店主动丢掉关键血量。",
+                  "claim_refs": [
+                    "zhuang-second-cast",
+                    "zhuang-dream-trigger",
+                    "zhuang-dream-luna",
+                    "revive-budget"
+                  ],
+                  "inference": true
+                }
               }
             }
           },
@@ -79369,6 +80071,33 @@
               "signals": {
                 "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
                 "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "前期围绕苏烈、李元芳等经济过渡，少花能量刷新并保留升本资源；这一阶段对不同对手的实际相对强度尚待确认，不能仅凭升本节奏认定占优。",
+                  "claim_refs": [
+                    "n-opening"
+                  ],
+                  "inference": false
+                },
+                "middle": {
+                  "text": "五本使用朋友多多是集中启动窗口，但随机牌不保证得到花木兰；缺核心时继续升本会延长空窗。启动回合还要及时处理手牌与转瞬古币，技能收益只有转为场上质量才算战力。",
+                  "claim_refs": [
+                    "n-opening",
+                    "n-five-missing",
+                    "n-time"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "核心稳住后再升六取得专属强化，配合觉醒和整备资源继续提升；不能把技能参考升本回合当作固定强势期。最终强弱仍取决于核心质量、复生预算及对手威胁。",
+                  "claim_refs": [
+                    "guide-skills-naonao",
+                    "wanner-awaken",
+                    "revive-budget"
+                  ],
+                  "inference": true
+                }
               }
             }
           },
@@ -79504,6 +80233,31 @@
               "signals": {
                 "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
                 "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "",
+                  "claim_refs": [],
+                  "inference": false
+                },
+                "middle": {
+                  "text": "需要较早取得花木兰及适合的冻结强化才有启动条件；同阵营进化不保证出核心，因此有条件未满足的空窗。已有持续成长司空震时可保留双输出，不应为照搬双核硬追缺牌。",
+                  "claim_refs": [
+                    "q-start",
+                    "q-double"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+                  "claim_refs": [
+                    "q-double",
+                    "q-luna",
+                    "wanner-awaken",
+                    "revive-budget"
+                  ],
+                  "inference": true
+                }
               }
             }
           },
@@ -79749,6 +80503,37 @@
               "signals": {
                 "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
                 "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "低压运营需要保血争胜维持等级收益，风险对冲的精简连败开局则承担更高掉血风险；两者不能混用。沉淀收益配资本杠杆偏向积累资源，并不直接代表场上占优，仍要买必要战力。",
+                  "claim_refs": [
+                    "ying-lowpressure",
+                    "ying-first-second-skill",
+                    "ying-capital-timing"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "从过渡输出换到花木兰、补婉儿觉醒时有战力衔接风险。空降人才、首购激励等需要匹配来牌与决策条件；逐步替换原有输出，不能为换阵或等复制一次卖空战力。",
+                  "claim_refs": [
+                    "ying-early-auction",
+                    "ying-first-second-skill",
+                    "ying-first-purchase",
+                    "ying-contract-bottle"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "体系齐备后，古币出牌循环更容易兑现投资回报，首购可补关键资源；等待淘汰收益或升六仍要先保证自己能存活。决策可能同时帮助对手，资源更多不等于本轮战力必然更强。",
+                  "claim_refs": [
+                    "ying-return-timing",
+                    "ying-six-redistribution",
+                    "ying-resource",
+                    "revive-budget"
+                  ],
+                  "inference": true
+                }
               }
             }
           }
@@ -127828,6 +128613,91 @@
               ]
             }
           ]
+        },
+        {
+          "at": "2026-10-19T13:13:42.760208+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "ming",
+            "selection": {
+              "adopt": "已有保血过渡战力、卦象·节支持到五本，并能保留购买核心的资源时考虑。",
+              "avoid": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              }
+            },
+            "revision": "7a9dcb9c1c12f4aa47d7"
+          }
+        },
+        {
+          "at": "2026-10-19T13:13:42.760208+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "zhuang",
+            "selection": {
+              "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+              "avoid": "凑入无用河洛牌、升本后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              }
+            },
+            "revision": "7a9dcb9c1c12f4aa47d7"
+          }
+        },
+        {
+          "at": "2026-10-19T13:13:42.760208+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "naonao",
+            "selection": {
+              "adopt": "可按派对牌和经济升本、五本启动朋友多多找体系时考虑。",
+              "avoid": "五本仍无花木兰时先补核心；古币数量多但等级不足时补李白或永久成长。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              }
+            },
+            "revision": "7a9dcb9c1c12f4aa47d7"
+          }
+        },
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "zhaojun",
+            "selection": {
+              "adopt": "较早取得花木兰、有适合的冻结强化时考虑；已有持续冻结成长的司空震时可双输出。",
+              "avoid": "无法较早取得花木兰时保留当前高阶战力，比较高阶大河；不为双输出硬追司空震。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              }
+            },
+            "revision": "7a9dcb9c1c12f4aa47d7"
+          }
+        },
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手选阵阶段强度整理",
+          "previous": {
+            "branch": "ying",
+            "selection": {
+              "adopt": "能结合所选战略保血，并能观察全场资源与同行露娜需求时考虑。",
+              "avoid": "开放决策会让同行先拿核心，或升本会导致当轮淘汰时，先保质量和自身获取资源。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              }
+            },
+            "revision": "7a9dcb9c1c12f4aa47d7"
+          }
         }
       ],
       "conflicts": [],
@@ -127873,7 +128743,7 @@
           "path": "knowledge/players/嬴律－适用打法与选择.md"
         }
       ],
-      "revision": "7a9dcb9c1c12f4aa47d7",
+      "revision": "3275a4089bce0d70ecd8",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -129574,7 +130444,54 @@
         "player:11"
       ],
       "core": [],
-      "claims": [],
+      "claims": [
+        {
+          "id": "player-opening-deer-wins",
+          "section": "前期思路",
+          "text": "需要靠小鹿胜场发育时，前期应同时争取保血和累计胜利，利用已有过渡战力为后续定阵留容错。小鹿的额外等级收益与胜场条件有关，不要在未定阵时就把主动连败当作默认选择；这不代表任何对手都能打赢。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 144.99,
+              "end": 198.57
+            }
+          ],
+          "derived_from": [
+            "opening-wins"
+          ]
+        },
+        {
+          "id": "player-opening-deer-opponent",
+          "section": "前期思路",
+          "text": "需要争取前期胜场时，按对手质量选择过渡英雄：对手较弱、牛魔能够取胜时可补经济；面对同行瑶妹或强势孙尚香时，比较用干将莫邪替代牛魔补即时战力。保留用于后续升本和购买核心的预算，不为凑齐过渡名单刷空金币。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 31.3,
+              "end": 61.46
+            },
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 198.86,
+              "end": 253.08
+            }
+          ],
+          "derived_from": [
+            "opening-four",
+            "opening-missing"
+          ]
+        }
+      ],
       "related": [
         {
           "id": "yaomei-sacrifice-lixin",
@@ -129586,7 +130503,18 @@
       ],
       "path": "knowledge/players/瑶妹－适用打法与选择.md",
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [],
+            "manual_sections": [],
+            "revision": "74348670a53b9df13969"
+          }
+        }
+      ],
       "conflicts": [],
       "lineup_adaptations": [
         {
@@ -129601,6 +130529,36 @@
               "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
               "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
               "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "小鹿配过渡英雄有争取前期胜场的能力，胜场同时帮助保血和养小鹿；面对强势孙尚香或同行仍需补即时战力，不能只凭棋手认定必胜。",
+                "claim_refs": [
+                  "opening-four",
+                  "opening-wins"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "没有李信、等级和复生配套未成时，是需要重点防守的空窗；不能将小鹿前期优势延续理解为中期也强。取得李信后才开始兑现成长，缺牌时靠装备承接者保血并避免刷空金币。",
+                "claim_refs": [
+                  "middle-no-lixin",
+                  "middle-fast-five",
+                  "middle-item-holder"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "李信达到关键等级、牺牲与复生衔接后可持续输出；共鸣前安全升六可进一步放大收益。是否形成优势取决于等级、死亡顺序、复生形式及对手，不能忽略共鸣前被淘汰的风险。",
+                "claim_refs": [
+                  "growth-hundred",
+                  "growth-zhongkui",
+                  "taiyi-by-target",
+                  "six-budget-pressure",
+                  "order-six-before-double"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -129610,8 +130568,11 @@
           "disadvantages": "依赖死亡顺序、连线与100级门槛；复生成员可能分走奉献收益。"
         }
       ],
-      "revision": "74348670a53b9df13969",
-      "explicit_relationships": true
+      "revision": "e167c2bf437b3e74e314",
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     },
     {
       "id": "player-ming",
@@ -129634,7 +130595,18 @@
       ],
       "path": "knowledge/players/明先生－适用打法与选择.md",
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [],
+            "manual_sections": [],
+            "revision": "fa1d4886d4a45735c410"
+          }
+        }
+      ],
       "conflicts": [],
       "lineup_adaptations": [
         {
@@ -129648,6 +130620,36 @@
             "signals": {
               "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
               "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "卦象·节主要提供升本资源，单挂弈星节约开销的同时会压低场上战力；只有补牛魔有机会取胜时才兼顾其产币。这个阶段的重点是控制掉血和升本成本，不能视为默认强势期。",
+                "claim_refs": [
+                  "ming-economy",
+                  "ming-opening-yixing"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "五本转卦象·丰集中找花木兰、上官婉儿后，取得核心与觉醒进度才逐步补起战力；找牌不顺而只有刷新时存在空窗。李信、李白和现有装备可承担过渡，升六需保留本轮买牌与保血预算。",
+                "claim_refs": [
+                  "ming-five",
+                  "ming-economy",
+                  "missing-mulan"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "产币成员、婉儿觉醒与露娜整备循环齐备后，复生和等级收益逐步完整；卦象带来的资源仍需转成有效战力。对手控制、风筝及本轮复生预算会限制上限，不能只凭已经成型判断强弱。",
+                "claim_refs": [
+                  "coin-loop",
+                  "wanner-awaken",
+                  "revive-budget",
+                  "anti-burst",
+                  "ailin-chase"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -129658,8 +130660,11 @@
           "disadvantages": "核心未到手时战力空窗；留五与升六的收益边界尚不明确。"
         }
       ],
-      "revision": "fa1d4886d4a45735c410",
-      "explicit_relationships": true
+      "revision": "009337cf64e122222261",
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     },
     {
       "id": "player-zhuang",
@@ -129682,7 +130687,18 @@
       ],
       "path": "knowledge/players/庄小鱼－适用打法与选择.md",
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [],
+            "manual_sections": [],
+            "revision": "42a58d368b742dd6ce01"
+          }
+        }
+      ],
       "conflicts": [],
       "lineup_adaptations": [
         {
@@ -129696,6 +130712,36 @@
             "signals": {
               "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
               "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "保血过渡与精简速五有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                "claim_refs": [
+                  "zhuang-opening-dispute",
+                  "opening-fighters"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "五本第一次如梦能集中补体系，是启动窗口；收益取决于场上有用河洛成员、核心来牌和合成安排。技能未补到核心、婉儿未觉醒或为凑人数塞无用牌时，仍有明显空窗。",
+                "claim_refs": [
+                  "zhuang-three-five",
+                  "zhuang-delayed-dispute",
+                  "save-search",
+                  "guide-middle-awakening"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "六本第二次如梦和满足条件的梦幻商店可继续补觉醒、露娜，支持后续循环；低血量失败触发资源的同时也意味着淘汰风险。强敌前仍需预留整备与复生预算，不为追求后续商店主动丢掉关键血量。",
+                "claim_refs": [
+                  "zhuang-second-cast",
+                  "zhuang-dream-trigger",
+                  "zhuang-dream-luna",
+                  "revive-budget"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -129706,8 +130752,11 @@
           "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
         }
       ],
-      "revision": "42a58d368b742dd6ce01",
-      "explicit_relationships": true
+      "revision": "da8344309becfe0c2121",
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     },
     {
       "id": "player-naonao",
@@ -129730,7 +130779,18 @@
       ],
       "path": "knowledge/players/闹闹－适用打法与选择.md",
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [],
+            "manual_sections": [],
+            "revision": "f3da7e81c8f50ba3fb90"
+          }
+        }
+      ],
       "conflicts": [],
       "lineup_adaptations": [
         {
@@ -129744,6 +130804,33 @@
             "signals": {
               "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
               "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "前期围绕苏烈、李元芳等经济过渡，少花能量刷新并保留升本资源；这一阶段对不同对手的实际相对强度尚待确认，不能仅凭升本节奏认定占优。",
+                "claim_refs": [
+                  "n-opening"
+                ],
+                "inference": false
+              },
+              "middle": {
+                "text": "五本使用朋友多多是集中启动窗口，但随机牌不保证得到花木兰；缺核心时继续升本会延长空窗。启动回合还要及时处理手牌与转瞬古币，技能收益只有转为场上质量才算战力。",
+                "claim_refs": [
+                  "n-opening",
+                  "n-five-missing",
+                  "n-time"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "核心稳住后再升六取得专属强化，配合觉醒和整备资源继续提升；不能把技能参考升本回合当作固定强势期。最终强弱仍取决于核心质量、复生预算及对手威胁。",
+                "claim_refs": [
+                  "guide-skills-naonao",
+                  "wanner-awaken",
+                  "revive-budget"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -129754,8 +130841,11 @@
           "disadvantages": "破损古币不提供等级；集中启动回合操作密集。"
         }
       ],
-      "revision": "f3da7e81c8f50ba3fb90",
-      "explicit_relationships": true
+      "revision": "7f07b59d721c9a05f215",
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     },
     {
       "id": "player-ying",
@@ -129766,7 +130856,95 @@
         "player:43"
       ],
       "core": [],
-      "claims": [],
+      "claims": [
+        {
+          "id": "player-opening-lowpressure",
+          "section": "前期思路",
+          "text": "已经选择低压运营时，优先用现有过渡战力争胜、保住血量，以维持全体等级收益；不要把风险对冲的连败起手套入低压运营。先根据已选战略判断本轮目标，再观察来牌决定最终阵容。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 219.2,
+              "end": 242.8,
+              "frame": "frames/280-0.jpg"
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 274.5,
+              "end": 299.98
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 555.42,
+              "end": 588.5
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 799.51,
+              "end": 828.89
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1.42,
+              "end": 31.6
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 32.31,
+              "end": 62.61
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 64.28,
+              "end": 98.08
+            }
+          ],
+          "derived_from": [
+            "ying-lowpressure"
+          ]
+        },
+        {
+          "id": "player-opening-capital",
+          "section": "前期思路",
+          "text": "选择沉淀收益且早期能量充足、能兼顾必要战力时，可比较资本杠杆的存量收益；决策影响全场，可等其他玩家花掉能量后再生效。不能为保利息而不补保命战力，也不能把这一早期条件推广成中后期通用选择。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1051.99,
+              "end": 1081.1100000000001,
+              "frame": "frames/1089-0.jpg"
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1081.38,
+              "end": 1107.6
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1107.8600000000001,
+              "end": 1137.4
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1137.83,
+              "end": 1167.19
+            }
+          ],
+          "derived_from": [
+            "ying-capital-timing"
+          ]
+        }
+      ],
       "related": [
         {
           "id": "heluo-huamulan",
@@ -129778,7 +130956,18 @@
       ],
       "path": "knowledge/players/嬴律－适用打法与选择.md",
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-19T13:13:42.761249+00:00",
+          "origin": "editorial",
+          "reason": "棋手五章节与未定阵开局整理",
+          "previous": {
+            "claims": [],
+            "manual_sections": [],
+            "revision": "c72ec4c5680bd1d00aaf"
+          }
+        }
+      ],
       "conflicts": [],
       "lineup_adaptations": [
         {
@@ -129792,6 +130981,37 @@
             "signals": {
               "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
               "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "低压运营需要保血争胜维持等级收益，风险对冲的精简连败开局则承担更高掉血风险；两者不能混用。沉淀收益配资本杠杆偏向积累资源，并不直接代表场上占优，仍要买必要战力。",
+                "claim_refs": [
+                  "ying-lowpressure",
+                  "ying-first-second-skill",
+                  "ying-capital-timing"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "从过渡输出换到花木兰、补婉儿觉醒时有战力衔接风险。空降人才、首购激励等需要匹配来牌与决策条件；逐步替换原有输出，不能为换阵或等复制一次卖空战力。",
+                "claim_refs": [
+                  "ying-early-auction",
+                  "ying-first-second-skill",
+                  "ying-first-purchase",
+                  "ying-contract-bottle"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "体系齐备后，古币出牌循环更容易兑现投资回报，首购可补关键资源；等待淘汰收益或升六仍要先保证自己能存活。决策可能同时帮助对手，资源更多不等于本轮战力必然更强。",
+                "claim_refs": [
+                  "ying-return-timing",
+                  "ying-six-redistribution",
+                  "ying-resource",
+                  "revive-budget"
+                ],
+                "inference": true
+              }
             }
           },
           "required_factions": [
@@ -129802,8 +131022,11 @@
           "disadvantages": "全场决策也会帮助对手，操作与资源时机判断较复杂。"
         }
       ],
-      "revision": "c72ec4c5680bd1d00aaf",
-      "explicit_relationships": true
+      "revision": "cff0f43bcda112780637",
+      "explicit_relationships": true,
+      "player_reading_layout": {
+        "version": 1
+      }
     }
   ]
 }

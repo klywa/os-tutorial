@@ -2815,6 +2815,36 @@
             "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
             "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
             "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+          },
+          "stage_strength": {
+            "early": {
+              "text": "小鹿配过渡英雄有争取前期胜场的能力，胜场同时帮助保血和养小鹿；面对强势孙尚香或同行仍需补即时战力，不能只凭棋手认定必胜。",
+              "claim_refs": [
+                "opening-four",
+                "opening-wins"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "没有李信、等级和复生配套未成时，是需要重点防守的空窗；不能将小鹿前期优势延续理解为中期也强。取得李信后才开始兑现成长，缺牌时靠装备承接者保血并避免刷空金币。",
+              "claim_refs": [
+                "middle-no-lixin",
+                "middle-fast-five",
+                "middle-item-holder"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "李信达到关键等级、牺牲与复生衔接后可持续输出；共鸣前安全升六可进一步放大收益。是否形成优势取决于等级、死亡顺序、复生形式及对手，不能忽略共鸣前被淘汰的风险。",
+              "claim_refs": [
+                "growth-hundred",
+                "growth-zhongkui",
+                "taiyi-by-target",
+                "six-budget-pressure",
+                "order-six-before-double"
+              ],
+              "inference": true
+            }
           }
         }
       }
@@ -47372,6 +47402,24 @@
         ]
       },
       "merged_duplicates": []
+    },
+    {
+      "at": "2026-10-19T13:13:42.760208+00:00",
+      "origin": "editorial",
+      "reason": "棋手选阵阶段强度整理",
+      "previous": {
+        "branch": "yaomei",
+        "selection": {
+          "adopt": "能保前期胜场养小鹿，河洛开放，且能取得李信、钟馗和复生工具时考虑。",
+          "avoid": "持续掉血或缺李信时先补过渡战力；共鸣前不能安全升六时不硬升。",
+          "signals": {
+            "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
+            "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+            "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+          }
+        },
+        "revision": "b5336a2b532770030075"
+      }
     }
   ],
   "conflicts": [],
@@ -47385,7 +47433,7 @@
       "path": "knowledge/players/瑶妹－适用打法与选择.md"
     }
   ],
-  "revision": "b5336a2b532770030075",
+  "revision": "c1ecd2769099bba80444",
   "manual_fields": [
     "title"
   ],
