@@ -17,6 +17,7 @@
     "card:1331",
     "card:1361",
     "card:1441",
+    "card:1461",
     "card:1501",
     "card:1541",
     "card:1671",
@@ -1520,6 +1521,139 @@
           "source": "BV1hMYT6dEY5:p1",
           "start": 221.04,
           "end": 255.59
+        }
+      ]
+    },
+    {
+      "id": "lixin-to-mulan-modules",
+      "section": "中期运营及应变",
+      "text": "考虑由李信转向花木兰多次复生时，要另外检查上官婉儿、李白、武则天、程咬金以及露娜打出位置。依据古币体系的成长机制，仅取得花木兰并不能替代这些作用；瑶妹是否能完整转入、何时转入，仍需单独核实，不套用其他棋手的技能流程。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 618.27,
+          "end": 644.28
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 645.21,
+          "end": 670.87
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 671.34,
+          "end": 699.1
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 700.44,
+          "end": 726.16
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 642.09,
+          "end": 669.99
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 1132.17,
+          "end": 1180.47
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 1181.24,
+          "end": 1220.39
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 1220.85,
+          "end": 1227.31
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 27.2,
+          "end": 56.76
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 297.0,
+          "end": 326.4
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 442.84,
+          "end": 471.97
+        },
+        {
+          "source": "BV1mwHS66EUa:p1",
+          "start": 325.07,
+          "end": 353.98
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1204.19,
+          "end": 1230.53
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1232.33,
+          "end": 1256.21
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1256.73,
+          "end": 1293.26
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 888.74,
+          "end": 918.88
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1175.96,
+          "end": 1203.98
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1293.88,
+          "end": 1323.5
+        }
+      ]
+    },
+    {
+      "id": "lixin-vs-mulan-taunt",
+      "section": "针对对手：河洛花木兰",
+      "text": "面对缺乏免控的河洛花木兰，小鹿的嘲讽和承伤能让她较难接近李信，并消耗复生次数。这个优势以小鹿能承担压力、李信已成型为前提；仍要检查双方等级、装备和小鹿奉献的死亡顺序，不把对方缺免控时的威胁写成所有花木兰配置都被无条件克制。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 985.18,
+          "end": 1013.59,
+          "frame": "frames/1060-0.jpg"
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1014.69,
+          "end": 1041.05
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1042.29,
+          "end": 1070.47
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1070.73,
+          "end": 1102.92
         }
       ]
     }
@@ -6561,6 +6695,12 @@
       "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
     },
     {
+      "id": "player-zhaojun",
+      "type": "player",
+      "title": "昭君：冻结升阶与大河运营",
+      "path": "knowledge/players/昭君－冻结升阶与大河运营.md"
+    },
+    {
       "id": "angela-liubang-totems",
       "type": "lineup",
       "title": "安琪拉养刘邦（图腾成长）",
@@ -6577,9 +6717,15 @@
       "type": "lineup",
       "title": "常小娥通用打法",
       "path": "knowledge/lineups/常小娥通用打法.md"
+    },
+    {
+      "id": "heluo-huamulan",
+      "type": "lineup",
+      "title": "河洛花木兰",
+      "path": "knowledge/lineups/河洛花木兰.md"
     }
   ],
-  "revision": "5dfcd2f1df6edf40562f",
+  "revision": "039a23bb0fb9c2f3df7e",
   "manual_fields": [
     "title"
   ]
