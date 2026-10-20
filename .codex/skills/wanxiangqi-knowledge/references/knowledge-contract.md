@@ -60,7 +60,7 @@
   "players": ["player:34"],
   "core_heroes": ["card:1871"],
   "compositions": {
-    "early": [{"hero":"card:1871","necessity":"optional","role":"作用","replaces":"","replacement_note":"替换说明"}],
+    "early": [{"hero":"card:1871","necessity":"optional","role":"具体机制、受益对象与职责；觉醒：档位、原因及条件（后期另含等级投入）","replaces":"","replacement_note":"替换说明"}],
     "middle": [],
     "late": []
   },

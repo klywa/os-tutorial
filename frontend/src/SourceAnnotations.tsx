@@ -45,16 +45,16 @@ function useField(source:Source,field:Field,save:SaveSource){
  }
  return {value,editing,pending,error,begin,change,cancel,commit};
 }
-export function TagInput({value,choices,onChange}:{value:string[];choices:string[];onChange:(value:string[])=>void}){
+export function TagInput({value,choices,onChange,autoFocus=true,hint='可多选；点击区域外自动保存，Esc 取消。'}:{value:string[];choices:string[];onChange:(value:string[])=>void;autoFocus?:boolean;hint?:string}){
  const [query,setQuery]=useState('');const input=useRef<HTMLInputElement>(null);const text=query.trim();
  const options=normalizeTags([...value,...choices]).filter(tag=>tag.toLocaleLowerCase().includes(text.toLocaleLowerCase()));
  function create(){if(text){onChange(normalizeTags([...value,text]));setQuery('');input.current?.focus();}}
  return <div className="annotation-tags-editor" role="group" aria-label="标签编辑">
   <div className="annotation-tag-chips">{value.map(tag=><button type="button" key={tag} aria-label={'移除标签 '+tag} onMouseDown={e=>e.preventDefault()} onClick={()=>{onChange(value.filter(v=>v!==tag));input.current?.focus();}}>{tag} ×</button>)}</div>
-  <input ref={input} autoFocus aria-label="搜索或创建标签" placeholder="搜索标签，输入新标签后回车创建" value={query} onChange={e=>setQuery(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.nativeEvent.isComposing){e.preventDefault();create();}}}/>
+  <input ref={input} autoFocus={autoFocus} aria-label="搜索或创建标签" placeholder="搜索标签，输入新标签后回车创建" value={query} onChange={e=>setQuery(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'&&!e.nativeEvent.isComposing){e.preventDefault();create();}}}/>
   <div className="annotation-tag-options">{options.slice(0,60).map(tag=><label key={tag}><input type="checkbox" checked={value.includes(tag)} onChange={e=>onChange(e.target.checked?[...value,tag]:value.filter(v=>v!==tag))}/>{tag}</label>)}</div>
   {text&&!value.includes(text)&&<button type="button" onMouseDown={e=>e.preventDefault()} onClick={create}>添加“{text}”</button>}
-  <small className="muted">可多选；点击区域外自动保存，Esc 取消。</small>
+  <small className="muted">{hint}</small>
  </div>;
 }
 export default function SourceAnnotations({source,choices,onSave}:{source:Source;choices:string[];onSave:SaveSource}){

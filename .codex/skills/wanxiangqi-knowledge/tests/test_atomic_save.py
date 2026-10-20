@@ -169,7 +169,9 @@ class AtomicSaveTests(unittest.TestCase):
         row = {'bvid':'BV1234567890','url':'https://www.bilibili.com/video/BV1234567890','title':'视频','description':'','published':'2026-10-01','view_count':10,'duration':60}
         adapter = Mock(); adapter.creator_page.return_value = ([row], False)
         for operation in ['stop','delete']:
-            job = runtime.store.check_creator('123')
+            # Persistent UP tasks are removed via their listener; ordinary search jobs remain deletable.
+            job = runtime.store.check_creator('123') if operation=='stop' else runtime.store.new_job({'keywords':['视频'],'mode':'preview'})
+            adapter.search_page.return_value = ([row], False)
             control = runtime.store.stop if operation=='stop' else runtime.store.delete_job
             with patch('crawler.Bilibili', return_value=adapter), patch.object(Path, 'replace', side_effect=denied()), patch.object(wxq.time, 'sleep', side_effect=lambda _:control(job['id'])):
                 runtime.scan(job)

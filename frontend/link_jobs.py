@@ -71,7 +71,7 @@ def demand_done(store,bvid,parts,db):
  completed={r[0] for r in db.execute("SELECT part FROM part_results WHERE bvid=? AND state='succeeded'",(bvid,))}
  return set(wanted)<=completed
 
-def start_links(store,text):
+def start_links(store,text,tags=None):
  from crawler import now,encode
  report=parse_links(text)
  if not report['videos']:raise ValueError('没有有效的视频链接')
@@ -80,11 +80,12 @@ def start_links(store,text):
  jid=uuid.uuid4().hex[:12]
  with store.db() as db:
   db.execute('BEGIN IMMEDIATE')
-  db.execute('INSERT INTO jobs(id,config,state,created,scanned,matched,duplicates) VALUES(?,?,?,?,?,?,?)',(jid,encode(config({'kind':'links','keywords':[],'process_limit':10000})),'scanned',now(),len(report['lines']),len(report['videos']),report['duplicates']))
+  db.execute('INSERT INTO jobs(id,config,state,created,scanned,matched,duplicates) VALUES(?,?,?,?,?,?,?)',(jid,encode(config({'kind':'links','keywords':[],'process_limit':10000,'tags':tags if tags is not None else []})),'scanned',now(),len(report['lines']),len(report['videos']),report['duplicates']))
   for video in report['videos']:
    db.execute('INSERT INTO link_demands VALUES(?,?,?)',(jid,video['bvid'],json.dumps(video['parts'])))
    db.execute('INSERT OR IGNORE INTO videos VALUES(?,?)',(video['bvid'],encode({**video,'collected_at':now()})))
    db.execute("INSERT INTO hits VALUES(?,?,'')",(jid,video['bvid']))
+   store.queue_job_tags(jid,video['bvid'],db)
  from video_titles import sync_cached
  import workspace
  for video in report['videos']:

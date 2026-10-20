@@ -19,6 +19,18 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_monitor_resume_and_tags_http(self):
+        def send(path,payload,method='POST'):
+            with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)
+        creator=send('crawler/creators',{'url':'https://space.bilibili.com/123','name':'测试UP','date_from':'2026-10-01','tags':[' 甲 ','甲']})
+        first=send('crawler/creators/123/check',{})
+        self.assertEqual(first['config']['tags'],['甲'])
+        send('crawler/jobs/'+first['id']+'/stop',{})
+        resumed=send('crawler/creators/resume',{})
+        self.assertEqual(resumed[0]['job_id'],first['id']);self.assertEqual(resumed[0]['monitor_state'],'pending')
+        send('crawler/creators/123/retry-tags',{})
+        self.assertEqual(send('crawler/creators/123/check',{})['id'],first['id'])
+
     def test_source_tags_and_prompt_snapshot_http(self):
         def send(path,payload,method='POST'):
             with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)

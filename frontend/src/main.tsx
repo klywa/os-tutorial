@@ -46,7 +46,7 @@ function App(){
     saved=>{sourceEpoch.current++;setSources(rows=>rows.map(row=>row.id===saved.id?saved:row));});
   async function refreshSources(){const epoch=sourceEpoch.current;const rows=await api<Source[]>('sources');if(epoch===sourceEpoch.current)setSources(rows);}
   async function load(){setLoading(true);setError('');try{const [n,o]=await loadReaderData(api);setNotes(n);setOptions(o);void refreshSources().catch(()=>{});setReadingReload(v=>v+1);const selected=restoreNoteSelection(n,prefs.selected);if(selected!==prefs.selected)patch({selected});}catch(e){setError((e as Error).message);}finally{setLoading(false);}}
-  useEffect(()=>{void load();},[]);
+  useEffect(()=>{void load();void api('crawler/creators/resume','POST',{}).catch(e=>setToast('UP监听恢复失败：'+e.message));},[]);
   useEffect(()=>localStorage.setItem('wxq.preferences',JSON.stringify(prefs)),[prefs]);
   useEffect(()=>{const handler=(e:BeforeUnloadEvent)=>{if(dirty){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler);},[dirty]);
   useEffect(()=>{if(!toast)return;const timer=setTimeout(()=>setToast(''),3500);return()=>clearTimeout(timer);},[toast]);

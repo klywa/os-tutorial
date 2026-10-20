@@ -1,5 +1,5 @@
 import {expect,it} from 'vitest';
-import {creatorUID,newCreator,creatorMatches,creatorJobs} from './creators';
+import {creatorUID,newCreator,creatorMatches,creatorJobs,creatorStatus} from './creators';
 import type {CrawlJob} from './types';
 it('keeps UID strings and resets add drafts',()=>{
  expect(creatorUID('https://space.bilibili.com/3632302133348552')).toBe('3632302133348552');
@@ -13,4 +13,10 @@ it('filters listener history including deleted listeners',()=>{
  expect(creatorJobs(jobs,'creators','').map(j=>j.id)).toEqual(['a','b']);
  expect(creatorJobs(jobs,'creators','123').map(j=>j.id)).toEqual(['a']);
  expect(creatorJobs(jobs,'search','').map(j=>j.id)).toEqual(['c']);
+});
+it('shows durable listener states and starts independent tag drafts',()=>{
+ expect(newCreator().tags).toEqual([]);
+ expect(creatorStatus({...newCreator(),monitor_state:'paused'})).toBe('已暂停');
+ expect(creatorStatus({...newCreator(),monitor_state:'waiting'})).toBe('等待下次检查');
+ expect(creatorStatus({...newCreator(),monitor_state:'disabled'})).toBe('已停用');
 });

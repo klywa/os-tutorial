@@ -491,6 +491,55 @@
       "derived_from": [
         "guide-effect-transfer"
       ]
+    },
+    {
+      "id": "hero-quality-zhaojun",
+      "section": "核心机制",
+      "text": "按冻结过渡与图腾联动推导：前期不追冻结替代卡觉醒；中后期先补东皇太一、敖隐与真实输出质量，再比较持续保留的图腾和成长组件。等级不是平均分配：司空震承接上限看真实等级，敖隐仍需图腾存活，压制工具达到技能节点后可把额外资源留给输出。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 895,
+          "end": 1040,
+          "frame": "frames/1039-0.jpg"
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 0,
+          "end": 145,
+          "frame": "frames/90-0.jpg"
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 753.5,
+          "end": 894.7
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 85.1,
+          "end": 174.8
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 1543.6,
+          "end": 1933.4,
+          "frame": "frames/1840-0.jpg"
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 951,
+          "end": 1097.8
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 951,
+          "end": 1038.7
+        }
+      ]
     }
   ],
   "related": [
@@ -9172,6 +9221,506 @@
         },
         "revision": "839449748a25893206d3"
       }
+    },
+    {
+      "at": "2026-10-20T03:54:44.772665+00:00",
+      "origin": "editorial",
+      "reason": "逐英雄作用、阶段觉醒与后期等级投入提质；有据机制推导",
+      "previous": {
+        "meta": {
+          "required_factions": [
+            "faction:dahe"
+          ],
+          "players": [
+            "player:34"
+          ],
+          "core_heroes": [
+            "card:1871",
+            "card:5191"
+          ],
+          "compositions": {
+            "early": [],
+            "middle": [],
+            "late": []
+          },
+          "ban_conditions": [
+            {
+              "faction": "faction:heluo",
+              "status": "playable",
+              "reason": "司空震为可选补输出，河洛被禁时不能获取司空震；按原攻略可用无阵营海月替代，不依赖司空震的针对手段仍需结合对手判断。"
+            },
+            {
+              "faction": "faction:dahe",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：东皇太一（控制与承伤）、敖隐（持续输出）、鬼谷子（图腾）、少司缘（图腾）、大司命（图腾）。",
+              "derived_dependency": true,
+              "explicit_required": false,
+              "explicit_condition": null
+            }
+          ],
+          "matchups": [
+            {
+              "target": "card:5071",
+              "condition": "敖隐与前排、回复图腾、复生配套成型。",
+              "text": "利用回复与吸血应对反甲，保护敖隐不被勾走，按增益条件与范围伤害调整图腾。"
+            }
+          ],
+          "major_variants": [],
+          "common_claim_refs": [],
+          "player_branches": [
+            {
+              "id": "zhaojun",
+              "player": "player:34",
+              "name": "昭君",
+              "claim_refs": [
+                "claim-4c5fb188552a343f023e",
+                "claim-1f3bb9e4f6b4bdbb5d52",
+                "claim-6e5677597b91d6042038",
+                "claim-01efb21eac616296f20c",
+                "claim-163e42c476a496c5bbe8",
+                "claim-bf3ad0a0c80d84f2d6d4",
+                "claim-4bfc796afce05484f9b4",
+                "claim-4ac9d8be77d0ba110133",
+                "claim-1b44c1f7c9fc4ee0f126",
+                "claim-c631b4e7b118dfd5b802",
+                "claim-0d7d5f63e90253f255b0",
+                "claim-26b1737815308a1c1579",
+                "claim-10c4269679c4cb14e425",
+                "claim-0a30e80f1d802b846e26",
+                "claim-29c3973e29784ed330cf",
+                "claim-22b460bd4a7bae574bc0",
+                "claim-b82928f477526044c068",
+                "position-divine-cover",
+                "counter-lixin-sustain",
+                "guide-effect-transfer",
+                "guide-skills-freezing",
+                "guide-counter-totem",
+                "guide-effect-transfer-card-2",
+                "guide-effect-transfer-card-3"
+              ],
+              "condition_refs": [
+                "claim-4c5fb188552a343f023e",
+                "claim-1f3bb9e4f6b4bdbb5d52"
+              ],
+              "operation_route_ids": [],
+              "late_variant_ids": [],
+              "major_variant_ids": [],
+              "overrides": {
+                "compositions": {
+                  "early": [
+                    {
+                      "hero": "card:1971",
+                      "necessity": "optional",
+                      "role": "过渡",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1111",
+                      "necessity": "optional",
+                      "role": "冻结及经济",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1941",
+                      "necessity": "optional",
+                      "role": "孙尚香缺少时冻结替代",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ],
+                  "middle": [
+                    {
+                      "hero": "card:1871",
+                      "necessity": "required",
+                      "role": "控制核心",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5191",
+                      "necessity": "required",
+                      "role": "持续输出核心",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1891",
+                      "necessity": "required",
+                      "role": "图腾",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5771",
+                      "necessity": "required",
+                      "role": "图腾",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5171",
+                      "necessity": "required",
+                      "role": "图腾",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1561",
+                      "necessity": "optional",
+                      "role": "过渡控制",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1741",
+                      "necessity": "optional",
+                      "role": "过渡成长",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ],
+                  "late": [
+                    {
+                      "hero": "card:1871",
+                      "necessity": "required",
+                      "role": "控制与承伤",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5191",
+                      "necessity": "required",
+                      "role": "持续输出",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1891",
+                      "necessity": "required",
+                      "role": "图腾",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5771",
+                      "necessity": "required",
+                      "role": "图腾",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5171",
+                      "necessity": "required",
+                      "role": "图腾",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:5371",
+                      "necessity": "optional",
+                      "role": "可选补充输出",
+                      "replaces": "card:1741",
+                      "replacement_note": "有圣剑或需要补输出时使用；不是必须成员"
+                    },
+                    {
+                      "hero": "card:5211",
+                      "necessity": "optional",
+                      "role": "司空震的可选替代",
+                      "replaces": "card:5371",
+                      "replacement_note": "按获得英雄和护命灵珠情况选择"
+                    },
+                    {
+                      "hero": "card:1861",
+                      "necessity": "optional",
+                      "role": "终局复生",
+                      "replaces": "card:1561",
+                      "replacement_note": "转移张良永久等级后替换，附身东皇太一"
+                    }
+                  ]
+                },
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "default",
+                      "name": "默认阵容",
+                      "variant_id": "",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:634019",
+                        "card:634030",
+                        "card:636504",
+                        "card:636507",
+                        "card:636509",
+                        "card:636511",
+                        "card:636516",
+                        "card:663402",
+                        "card:663403",
+                        "card:681010",
+                        "card:681011"
+                      ],
+                      "effect_cards": [
+                        "card:10404",
+                        "card:7041",
+                        "card:7083"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:34",
+                          "skills": [
+                            "card:93412",
+                            "card:93415",
+                            "card:93416"
+                          ],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "控制与回复为高阶英雄争取输出时间，多人口可提高合成品阶。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "怕图腾被范围伤害清掉；等级转移、冻结和站位需要配合。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要核心与对应成长组件，缺牌时按来牌和压力选择替代路线；无可靠成型概率统计。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需兼顾成长工具、升本预算、站位与针对换装，操作时间不足时先保证关键步骤。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "ceiling",
+                  "text": "等级成长与成型装备可提高后期战力，上限受对手控制、爆发和组件完整度影响。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "floor",
+                  "text": "核心缺失或成长未启动时依赖过渡质量，不能按顺风示范局估计下限。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
+                "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
+                "signals": {
+                  "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
+                  "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                  "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "前期主要靠弈星及被冻结的过渡英雄支撑。对手质量低、补干将莫邪有机会取胜时可保血；对手明显更强时精简场面升本，不能把冻结的后续收益当成本轮战力。",
+                    "claim_refs": [
+                      "claim-6e5677597b91d6042038"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "五本取得东皇太一、敖隐和图腾后，控制、回复与输出才逐步衔接。核心或虞姬未到时有过渡空窗，可按来牌用司空震、海月承担输出；第8回合冰心领域提供后续成长，不保证当轮压制所有对手。",
+                    "claim_refs": [
+                      "claim-01efb21eac616296f20c",
+                      "claim-163e42c476a496c5bbe8"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "核心与图腾齐备后，可依靠全队等级、人口和不朽坚冰继续提升；等级转移及保护图腾是兑现成长的条件。图腾被范围伤害快速清除时，后期潜力不能自动转为胜势。",
+                    "claim_refs": [
+                      "claim-bf3ad0a0c80d84f2d6d4",
+                      "claim-4bfc796afce05484f9b4",
+                      "guide-counter-totem"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            }
+          ],
+          "assessment": []
+        }
+      },
+      "evidence_report": "knowledge/reviews/英雄投入提质-2026-10-20.json",
+      "inference_basis": [
+        {
+          "claim_id": "hero-quality-zhaojun",
+          "supporting_claim_refs": [
+            "claim-4c5fb188552a343f023e",
+            "claim-1f3bb9e4f6b4bdbb5d52",
+            "claim-6e5677597b91d6042038",
+            "claim-01efb21eac616296f20c",
+            "claim-163e42c476a496c5bbe8",
+            "claim-bf3ad0a0c80d84f2d6d4",
+            "claim-4bfc796afce05484f9b4"
+          ],
+          "cards_snapshot": "knowledge/reviews/英雄投入提质-2026-10-20.json"
+        }
+      ]
     }
   ],
   "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md",
@@ -9245,7 +9794,8 @@
           "guide-skills-freezing",
           "guide-counter-totem",
           "guide-effect-transfer-card-2",
-          "guide-effect-transfer-card-3"
+          "guide-effect-transfer-card-3",
+          "hero-quality-zhaojun"
         ],
         "condition_refs": [
           "claim-4c5fb188552a343f023e",
@@ -9260,21 +9810,21 @@
               {
                 "hero": "card:1971",
                 "necessity": "optional",
-                "role": "过渡",
+                "role": "利用棋手升级时增加经验缩短升本等待；人口紧张或升级收益用完后换下，不承担后期输出。觉醒：无需觉醒；当前只借升级经验过渡，不为重复牌挤占升本预算。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:1111",
                 "necessity": "optional",
-                "role": "冻结及经济",
+                "role": "登场提供免费刷新，作为冻结位置向高品阶核心转换，保留刷新资源找阵容牌。觉醒：无需觉醒；当前目标是继续冻结进化，不为过渡卡合成占用找核心预算。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:1941",
                 "necessity": "optional",
-                "role": "孙尚香缺少时冻结替代",
+                "role": "无孙尚香时作为冻结替代，前排阵亡积累的永久等级由冻结后的英雄继承。觉醒：无需觉醒；只作冻结过渡，不为单独追觉醒拖慢升本与核心获取。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               }
@@ -9283,49 +9833,49 @@
               {
                 "hero": "card:1871",
                 "necessity": "required",
-                "role": "控制核心",
+                "role": "让图腾不被优先攻击，开团借图腾等级取得临时等级，以压制锁住关键敌人，为敖隐持续攻击争取时间。觉醒：优先觉醒；提高开团取得图腾临时等级的比例，普通卡已能保护图腾和施加压制。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5191",
                 "necessity": "required",
-                "role": "持续输出核心",
+                "role": "在图腾存活期间每4秒取得攻速和临时等级，承担持续普攻输出；保护其免受钩锁和爆发，不能让图腾被快速清光。觉醒：优先觉醒；图腾提供的攻速和临时等级翻倍，显著改善主要输出成长。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:1891",
                 "necessity": "required",
-                "role": "图腾",
+                "role": "在场召唤先知图腾，技能给友军临时等级；图腾既是体系组件，也为东皇太一和敖隐提供增益基础。觉醒：优先觉醒；强化先知图腾，普通卡先满足图腾数量，核心未齐时不抢预算。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5771",
                 "necessity": "required",
-                "role": "图腾",
+                "role": "召唤因缘图腾并为沿途友军回血，延长前排与输出存活时间，摆位兼顾增益覆盖和防范围伤害。觉醒：优先觉醒；强化因缘图腾，普通卡可先补图腾和回复，不为追觉醒延误核心。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5171",
                 "necessity": "required",
-                "role": "图腾",
+                "role": "召唤往生图腾；发生牺牲时提高图腾等级并补法力，本体可补持续伤害与回复。觉醒：不强求觉醒；普通卡已有图腾，觉醒提高牺牲后的图腾成长，须确有牺牲触发才有相应收益。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:1561",
                 "necessity": "optional",
-                "role": "过渡控制",
+                "role": "把开团触发转为全队永久成长，以压制控制单个威胁；替换时先用传承或遗志处理已积累等级。觉醒：优先觉醒；持续保留时把随机3名成长扩大为全体，准备立即替换时无需追。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:1741",
                 "necessity": "optional",
-                "role": "过渡成长",
+                "role": "利用图腾数量在开团时增加自己及其他大河英雄的永久等级，并承担过渡输出；核心齐备且自身积累少时可换司空震。觉醒：不强求觉醒；普通卡先提供成长，觉醒扩大受益人数；即将替换时不追。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               }
@@ -9334,56 +9884,56 @@
               {
                 "hero": "card:1871",
                 "necessity": "required",
-                "role": "控制与承伤",
+                "role": "让图腾不被优先攻击，开团借图腾等级取得临时等级，以压制锁住关键敌人，为敖隐持续攻击争取时间。觉醒：优先觉醒；提高开团取得图腾临时等级的比例，普通卡已能保护图腾和施加压制。后期等级投入：越高越好；提高自身承伤与持续压制容错，100级压制持续到一方阵亡；临时等级可参与节点判断。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5191",
                 "necessity": "required",
-                "role": "持续输出",
+                "role": "在图腾存活期间每4秒取得攻速和临时等级，承担持续普攻输出；保护其免受钩锁和爆发，不能让图腾被快速清光。觉醒：优先觉醒；图腾提供的攻速和临时等级翻倍，显著改善主要输出成长。后期等级投入：越高越好；提高输出与生存，100级同时取得两种武器；图腾清除后须重新评估等级集中目标。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:1891",
                 "necessity": "required",
-                "role": "图腾",
+                "role": "在场召唤先知图腾，技能给友军临时等级；图腾既是体系组件，也为东皇太一和敖隐提供增益基础。觉醒：优先觉醒；强化先知图腾，普通卡先满足图腾数量，核心未齐时不抢预算。后期等级投入：越高越好；此路线保留图腾且图腾等级影响核心收益，技能40级增加目标、100级提高增益与持续时间；先保证核心资源。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5771",
                 "necessity": "required",
-                "role": "图腾",
+                "role": "召唤因缘图腾并为沿途友军回血，延长前排与输出存活时间，摆位兼顾增益覆盖和防范围伤害。觉醒：优先觉醒；强化因缘图腾，普通卡可先补图腾和回复，不为追觉醒延误核心。后期等级投入：越高越好；图腾成长配合核心，40级技能额外给攻速、100级补减伤；不压过主要输出的投入。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5171",
                 "necessity": "required",
-                "role": "图腾",
+                "role": "召唤往生图腾；发生牺牲时提高图腾等级并补法力，本体可补持续伤害与回复。觉醒：不强求觉醒；普通卡已有图腾，觉醒提高牺牲后的图腾成长，须确有牺牲触发才有相应收益。后期等级投入：越高越好；作为保留的战斗成员提高承伤与伤害，100级提高灵体数量；若仅借其工具效果则不必专门分等级。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "",
                 "replacement_note": ""
               },
               {
                 "hero": "card:5371",
                 "necessity": "optional",
-                "role": "可选补充输出",
+                "role": "承接队友临时等级补充法术输出，以金色圣剑等兑现普攻与闪电链伤害，需真实等级支撑承接上限。觉醒：优先觉醒；从承接一半临时等级提高为全部，并提高以真实等级计算的承接上限。后期等级投入：越高越好；真实等级决定临时等级承接上限，100级开战即变身；不是达到100级就不再成长。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "card:1741",
                 "replacement_note": "有圣剑或需要补输出时使用；不是必须成员"
               },
               {
                 "hero": "card:5211",
                 "necessity": "optional",
-                "role": "司空震的可选替代",
+                "role": "以牺牲控制敌方最高等级英雄并造成与自身生命值相关的真实伤害；需要她先阵亡时调整承伤顺序。觉醒：不强求觉醒；普通卡已有4秒牺牲控制，觉醒提高生命值相关伤害，按是否缺伤害再投入。后期等级投入：越高越好；作为高生命威胁处理位时，生命值提高牺牲伤害，100级水月幻境另有全队收益；仍需确保能按计划阵亡。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "card:5371",
                 "replacement_note": "按获得英雄和护命灵珠情况选择"
               },
               {
                 "hero": "card:1861",
                 "necessity": "optional",
-                "role": "终局复生",
+                "role": "开团给最近的目标补复生，站位优先保证保护对象正确；只作临时保护时不要分走主力随机等级。觉醒：优先觉醒；普通卡提供复生，觉醒提供完美复生，需恢复完整状态再战时价值更高。后期等级投入：等级不重要（无需投入资源提升等级）；仅借开团复生保护核心，是否提供完美复生由觉醒决定，不靠自身等级。以上投入取舍按当前职责与普通／觉醒机制推导。",
                 "replaces": "card:1561",
                 "replacement_note": "转移张良永久等级后替换，附身东皇太一"
               }
@@ -9691,7 +10241,7 @@
   },
   "manual_sections": [],
   "conflicts": [],
-  "revision": "55ac5836adae06b705cf",
+  "revision": "3eb2561cf0c9e9d665be",
   "reading_layout": {
     "version": 3,
     "claim_locations": {
@@ -9772,6 +10322,9 @@
       ],
       "guide-effect-transfer-card-3": [
         "关键效果牌"
+      ],
+      "hero-quality-zhaojun": [
+        "核心机制"
       ]
     },
     "coverage": {
@@ -9987,6 +10540,36 @@
           "claim_hashes": {
             "claim-c631b4e7b118dfd5b802": "1764ce5ce5442f88757c35046fd851f26c696c35d5818c4988aed08d9597b801"
           }
+        },
+        "early.awakening": {
+          "status": "covered",
+          "claim_refs": [
+            "hero-quality-zhaojun"
+          ],
+          "claim_hashes": {
+            "hero-quality-zhaojun": "028c8af4f1baa071fc13228fdd39b0b377916b6641cfbfecee642ccfd420f1cb"
+          },
+          "detail": "逐成员档位、条件及理由见当前阶段成员；机制推导。"
+        },
+        "middle.awakening": {
+          "status": "covered",
+          "claim_refs": [
+            "hero-quality-zhaojun"
+          ],
+          "claim_hashes": {
+            "hero-quality-zhaojun": "028c8af4f1baa071fc13228fdd39b0b377916b6641cfbfecee642ccfd420f1cb"
+          },
+          "detail": "逐成员档位、条件及理由见当前阶段成员；机制推导。"
+        },
+        "late.awakening": {
+          "status": "covered",
+          "claim_refs": [
+            "hero-quality-zhaojun"
+          ],
+          "claim_hashes": {
+            "hero-quality-zhaojun": "028c8af4f1baa071fc13228fdd39b0b377916b6641cfbfecee642ccfd420f1cb"
+          },
+          "detail": "逐成员档位、条件及理由见当前阶段成员；机制推导。"
         }
       }
     }

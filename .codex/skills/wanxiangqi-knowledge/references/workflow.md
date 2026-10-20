@@ -38,6 +38,18 @@ print(workspace.sources(root))
 
 成功或失败结束时调用 `workspace.sources(root)`，检查本次来源的 `stage`、`error`、`knowledge_status` 和 `linked_notes`。状态由元数据、处理状态、审核及知识引用共同推导，不直接写入登记表。`deposited` 必须满足 `complete`、有效核对记录、已关联提交知识；仅登记、仅获取素材或仅提交均不能宣称已沉淀。获取元数据前失败仍保留登记及失败报告，供网页显示及后续恢复。
 
+## 文字稿优先分流
+
+登记链接后先确定BV和分P，读取 `raw/index.json` 对应来源、metadata及其全文；不能把P1全文当成其他分P。未指定P时按已发现的各分P分别检查，不能因P1存在就认为全视频齐备。
+
+- 有完整、可读、对应正确的ASR或字幕文字稿：直接逐段读取并提取知识，沿用时间轴及原始来源档案，不重复下载、ASR或导出。可用 `reference_store.transcript_snapshot` 稳定读取，结合 `transcript_errors` 核对摘要和档案。
+- 人工修订稿：以当前人工全文为阅读材料。已登记manual_edit的有效全文直接复用；未登记的外部修改保留原文并记录差异，不通过重导出覆盖或伪造摘要。提交引用仍须回查可定位的原始时间段，实际改动的推荐不冒充原视频证据。
+- 仅有asr.progress预览、截断或不可读全文、身份不符：不能作为完整教学；先恢复既有档案，缺少素材时才获取。无语音记录只证明本次转写无语音，不能据此生成策略，也不无条件反复转写。
+- 全文可读但底层档案缺失／摘要过期：仍可先阅读、拟稿，提交前恢复或核实真实档案，不把它当成需要重跑ASR的充分理由，不绕过commit/finish校验。
+- 只缺画面依据：按实际结论补已有或新取关键帧，不因缺帧重跑全文ASR。无法补核时留下具体缺口。
+
+复用全文不等于prepared、complete或deposited。核对、证据、提交和finish仍按各自校验处理；仅修订旧知识不重复finish。新导出或纠正版更新时才执行export-transcripts，人工全文始终保留。
+
 ## 常用命令
 
 ```powershell
@@ -63,7 +75,7 @@ $wxqScript = '.codex/skills/wanxiangqi-knowledge/scripts/wxq.py'
 
 来源状态：downloading → transcribing → prepared → complete；任一错误进入 failed，但已成功文件保留。重新运行 `prepare` 会跳过原始 ASR及既有帧。`complete` 来源不再下载；要补新画面时明确重新获取素材。元数据获取前的失败记录在 `raw/reports/last-prepare.json`。
 
-仅拿到字幕或简介不能达到 prepared。无关视频记录失败或无相关知识，不伪造条目，也不调用要求已提交知识的 finish。
+已保存原始字幕、修正版、元数据并导出有效全文的字幕来源可作为待核对材料；仅有网页零散字幕或简介不能冒充完整转写档案。无关视频记录失败或无相关知识，不伪造条目，也不调用要求已提交知识的 finish。
 
 ## 网络、恢复与保护
 

@@ -244,7 +244,7 @@ class Handler(BaseHTTPRequestHandler):
                 result = store.settings(payload if path.endswith('settings') else {'search': payload})
             elif path == '/api/crawler/links' and self.command == 'POST':
                 from link_jobs import start_links,parse_links
-                result=parse_links(payload.get('text','')) if payload.get('preview') else start_links(store,payload.get('text',''))
+                result=parse_links(payload.get('text','')) if payload.get('preview') else start_links(store,payload.get('text',''),payload.get('tags',[]))
             elif path == '/api/crawler/searches' and self.command == 'POST':
                 if not payload.get('keywords'):
                     raise ValueError('请填写搜索关键词')
@@ -258,6 +258,10 @@ class Handler(BaseHTTPRequestHandler):
                 if payload.get('uid') and payload['uid'] != path.split('/')[-1]:
                     raise ValueError('编辑时不可更换UP主UID')
                 result = store.update_creator(path.split('/')[-1], payload)
+            elif path == '/api/crawler/creators/resume':
+                result = store.resume_creators()
+            elif path.startswith('/api/crawler/creators/') and path.endswith('/retry-tags'):
+                result = store.retry_tags(path.split('/')[-2])
             elif path == '/api/crawler/creators/check':
                 result = [store.check_creator(r['uid']) for r in store.creators() if r.get('enabled', True)]
             elif path.startswith('/api/crawler/creators/') and path.endswith('/check'):
