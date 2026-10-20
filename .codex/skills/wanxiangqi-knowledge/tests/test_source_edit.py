@@ -1,6 +1,8 @@
 import sys
 import tempfile
 import unittest
+import threading
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from unittest.mock import patch
 
@@ -35,6 +37,34 @@ class SourceEditTests(unittest.TestCase):
         for changes in [{'view_count':-1},{'duration':float('nan')},{'published':'2026-02-31'},{'uid':123},{'space_url':'https://example.com/123'},{'url':'https://www.bilibili.com/video/BV0000000000'}]:
             with self.assertRaises(ValueError):save_metadata(self.root,self.sid,{'revision':revision,**changes},self.store)
         save_metadata(self.root,self.sid,{'revision':revision,'url':self.url+'?p=1'},self.store)
+
+    def test_ignore_does_not_scan_unrelated_source_files(self):
+        other=wxq.source_dir(self.root,'BV1234567891:p1')/'metadata.json'
+        wxq.atomic_json(other,{'id':'BV1234567891:p1','url':'https://www.bilibili.com/video/BV1234567891'})
+        read=wxq.read_json
+        def guarded(path,*args,**kwargs):
+            if Path(path)==other:raise AssertionError('single-source save scanned unrelated metadata')
+            return read(path,*args,**kwargs)
+        with patch.object(wxq,'read_json',side_effect=guarded):
+            updated=save_metadata(self.root,self.sid,{'revision':'','ignored':True},self.store)
+        self.assertTrue(updated['ignored'])
+
+    def test_transcript_can_be_read_while_ignore_is_saving(self):
+        expected=self.prepare_transcript();entered=threading.Event();release=threading.Event()
+        write=wxq.atomic_json
+        def slow(path,*args,**kwargs):
+            if Path(path)==self.root/'knowledge/source-registry.json':
+                entered.set()
+                if not release.wait(5):raise TimeoutError('ignore save blocked')
+            return write(path,*args,**kwargs)
+        with ThreadPoolExecutor(max_workers=2) as pool,patch.object(wxq,'atomic_json',side_effect=slow):
+            save=pool.submit(save_metadata,self.root,self.sid,{'revision':'','ignored':True},self.store)
+            try:
+                self.assertTrue(entered.wait(2))
+                reading=pool.submit(transcript,self.root,self.sid)
+                self.assertEqual(reading.result(timeout=1)['text'],expected['text'])
+            finally:release.set()
+            self.assertTrue(save.result(timeout=5)['ignored'])
 
     def prepare_transcript(self):
         folder=wxq.source_dir(self.root,self.sid);folder.mkdir(parents=True,exist_ok=True)

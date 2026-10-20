@@ -98,15 +98,24 @@ def start_links(store,text):
  for row in report['videos']:row['title']=titles.get(row['bvid'],'')
  return {**report,'job':result, 'accepted':len(report['videos']),'completed':done,'added':len(report['videos'])-done}
 
-def refresh_artifacts(store,db,bvid):
+def inspect_artifacts(store,bvid):
+ """Read/hash transcript files before taking the queue's write lock."""
  import wxq
  from reference_store import transcript_errors
+ artifacts=[]
  for folder in (store.root/'raw/sources').glob(bvid+'_p*'):
   meta=wxq.read_json(folder/'metadata.json',{});part=meta.get('part');sid=meta.get('id')
   if not isinstance(part,int) or not sid:continue
   count=meta.get('part_count')
+  valid=not any(not e.startswith('Transcript was manually edited') for e in transcript_errors(store.root,sid))
+  artifacts.append((part,count,valid))
+ return artifacts
+
+def refresh_artifacts(db,bvid,artifacts):
+ """Apply a previously inspected snapshot using SQL only."""
+ for part,count,valid in artifacts:
   if isinstance(count,int) and 0<count<=10000:db.executemany('INSERT OR IGNORE INTO video_parts VALUES(?,?)',[(bvid,i) for i in range(1,count+1)])
-  if [e for e in transcript_errors(store.root,sid) if not e.startswith('Transcript was manually edited')]:
+  if not valid:
    db.execute('DELETE FROM part_results WHERE bvid=? AND part=?',(bvid,part));continue
   db.execute("INSERT OR REPLACE INTO part_results VALUES(?,?,'succeeded','')",(bvid,part))
 
@@ -130,9 +139,13 @@ def reconcile(store):
   pending=db.execute("SELECT l.job,l.bvid FROM link_demands l JOIN jobs j ON j.id=l.job LEFT JOIN dispatch d ON d.job=l.job AND d.bvid=l.bvid WHERE d.job IS NULL AND j.state NOT IN ('stopped','deleted')").fetchall()
  for row in pending:store.enqueue(row['job'],[row['bvid']])
  with store.db() as db:
-  db.execute('BEGIN IMMEDIATE')
-  for row in db.execute("SELECT DISTINCT t.bvid FROM tasks t JOIN link_demands l ON l.bvid=t.bvid WHERE t.state='succeeded'").fetchall():
+  completed=db.execute("SELECT DISTINCT t.bvid,t.generation FROM tasks t JOIN link_demands l ON l.bvid=t.bvid WHERE t.state='succeeded'").fetchall()
+ for row in completed:
+  artifacts=inspect_artifacts(store,row['bvid'])
+  with store.db() as db:
+   db.execute('BEGIN IMMEDIATE')
+   if not db.execute("SELECT 1 FROM tasks WHERE bvid=? AND generation=? AND state='succeeded'",(row['bvid'],row['generation'])).fetchone():continue
    bvid=row['bvid'];scope=scope_for(store,bvid,db)
    if scope==[]:continue
-   refresh_artifacts(store,db,bvid)
+   refresh_artifacts(db,bvid,artifacts)
    if not demand_done(store,bvid,scope,db):db.execute("UPDATE tasks SET state='queued',progress='{}',error='',error_data='{}' WHERE bvid=? AND state='succeeded'",(bvid,))

@@ -9,6 +9,7 @@ import threading
 import time
 import uuid
 from contextlib import contextmanager
+from functools import lru_cache
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -325,6 +326,13 @@ class Store:
         return True
 
     def enqueue(self, jid, bvids):
+        from link_jobs import inspect_artifacts,refresh_artifacts,demand_done
+        bvids = list(bvids)
+        with self.db() as db:
+            observed = {bvid: db.execute('SELECT state,generation FROM tasks WHERE bvid=?',(bvid,)).fetchone() for bvid in bvids}
+            linked = {bvid for bvid in bvids if db.execute('SELECT 1 FROM link_demands WHERE job=? AND bvid=?',(jid,bvid)).fetchone()}
+        artifacts = {bvid: inspect_artifacts(self,bvid) for bvid in bvids}
+        cached_videos = {bvid: cached_video(self.root,bvid) for bvid in bvids if bvid not in linked}
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
             job = db.execute('SELECT config,state FROM jobs WHERE id=?', (jid,)).fetchone()
@@ -338,11 +346,14 @@ class Store:
                     raise ValueError('视频不属于该任务')
                 if db.execute('SELECT 1 FROM dispatch WHERE job=? AND bvid=?', (jid, bvid)).fetchone():
                     continue
-                existing = db.execute('SELECT state FROM tasks WHERE bvid=?', (bvid,)).fetchone()
-                from link_jobs import refresh_artifacts,demand_done,scope_for
-                refresh_artifacts(self,db,bvid)
+                existing = db.execute('SELECT state,generation FROM tasks WHERE bvid=?', (bvid,)).fetchone()
+                unchanged = (tuple(existing) if existing else None) == (tuple(observed[bvid]) if observed[bvid] else None)
+                # A worker may have recorded newer part results while files were read.
+                if unchanged and (not existing or existing['state'] != 'running'):
+                    refresh_artifacts(db,bvid,artifacts[bvid])
                 demand=db.execute('SELECT parts FROM link_demands WHERE job=? AND bvid=?',(jid,bvid)).fetchone()
-                cached = demand_done(self,bvid,json.loads(demand['parts']),db) if demand else cached_video(self.root,bvid)
+                cached = demand_done(self,bvid,json.loads(demand['parts']),db) if demand else (
+                    demand_done(self,bvid,None,db) if not unchanged and existing and existing['state']=='succeeded' else cached_videos.get(bvid,False))
                 charged = int(not existing and not cached)
                 if charged and db.execute('SELECT COALESCE(SUM(charged),0) FROM dispatch WHERE job=?', (jid,)).fetchone()[0] >= limit:
                     db.execute('UPDATE jobs SET limited=1 WHERE id=?', (jid,))
@@ -473,11 +484,14 @@ class Store:
     def finish_task(self, bvid, state, error='', progress=None, generation=None):
         from acquisition_errors import describe_error
         detail=describe_error(error,(progress or {}).get('phase'),f'raw/crawler/{bvid}.log') if error else None
+        from link_jobs import inspect_artifacts,refresh_artifacts,demand_done,scope_for
+        artifacts = inspect_artifacts(self,bvid) if state=='succeeded' else []
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
+            if not db.execute("SELECT 1 FROM tasks WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",(bvid,generation,generation)).fetchone():
+                return
             if state=='succeeded' and db.execute('SELECT 1 FROM link_demands WHERE bvid=?',(bvid,)).fetchone():
-                from link_jobs import refresh_artifacts,demand_done,scope_for
-                refresh_artifacts(self,db,bvid)
+                refresh_artifacts(db,bvid,artifacts)
                 scope=scope_for(self,bvid,db)
                 if scope!=[] and not demand_done(self,bvid,scope,db):state='queued';progress={}
             changed = db.execute("UPDATE tasks SET state=?,error=?,progress=?,updated=?,error_data=? WHERE bvid=? AND state NOT IN ('cancelled','paused') AND (? IS NULL OR generation=?)",
@@ -632,9 +646,15 @@ class Store:
         return result
 
 
-def source_rows(root, store):
+@lru_cache(maxsize=2048)
+def _transcript_has_segments(path, modified_ns, size):
+    # Cache only the boolean; the file signature invalidates completed or edited ASR.
+    return bool(wxq.read_json(Path(path), {}).get('segments'))
+
+
+def source_rows(root, store, source_ids=None):
     projections = store.projections()
-    rows = workspace.sources(root)
+    rows = workspace.sources(root, source_ids=source_ids)
     manifest = wxq.read_json(Path(root) / 'raw/index.json', {}).get('sources', {})
     for row in rows:
         bv = row.get('bvid') or row['id'].split(':')[0]
@@ -664,13 +684,19 @@ def source_rows(root, store):
             row['error']='';row['acquisition_error']=''
         row['transcript_path'] = str(target) if valid else None
         row['transcript_status'] = 'ready' if valid else 'missing'
-        raw_input, _ = transcript_artifacts(wxq.source_dir(root, row['id']))
         row['transcript_origin'] = entry.get('transcript_origin', 'local_asr') if valid else None
-        if valid and not wxq.read_json(transcript_artifacts(wxq.source_dir(root, row['id']))[1], {}).get('segments'):
-            row['transcript_status'] = 'no_speech'
+        if valid:
+            corrected = transcript_artifacts(wxq.source_dir(root, row['id']))[1]
+            try:
+                signature = corrected.stat()
+                speech = _transcript_has_segments(str(corrected.resolve()), signature.st_mtime_ns, signature.st_size)
+            except FileNotFoundError:
+                speech = False
+            if not speech:row['transcript_status'] = 'no_speech'
         row['subtitle_fallback'] = wxq.read_json(wxq.source_dir(root,row['id'])/'subtitle-fallback.json')
         row['transcript_manual'] = bool(entry.get('manual_edit'))
         row.update(row.get('manual_values', {}))
+        row.setdefault('tags', [])
         row['revision'] = row.get('manual_revision', '')
     from topics import TopicStore
     return TopicStore(root).project(rows)

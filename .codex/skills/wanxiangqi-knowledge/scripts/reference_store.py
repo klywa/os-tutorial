@@ -360,6 +360,15 @@ def recover_transcript_edits(root):
 def transcript_snapshot(root, sid):
     from workspace import store_lock
     root=Path(root)
+    journal=root/'raw/transcript-edit-pending.json'
+    index=root/'raw/index.json'
+    # Unrelated source saves need not block an atomic, stable transcript read.
+    for _ in range(3):
+        if journal.is_file():break
+        row,path=transcript_target(root,sid,wxq.read_json(index,{}))
+        text=path.read_text('utf-8')
+        if not journal.is_file() and wxq.read_json(index,{}).get('sources',{}).get(sid)==row:
+            return {'source':sid,'path':str(path),'text':text,'revision':digest(text.encode('utf-8')),'manual_edit':bool(row.get('manual_edit'))}
     with store_lock(root,wait=True):
         recover_transcript_edits(root)
         row,path=transcript_target(root,sid,wxq.read_json(root/'raw/index.json',{}))

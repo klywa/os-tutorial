@@ -8,13 +8,20 @@ import workspace
 from bilibili import BJ, creator_uid
 
 FIELDS={'title','url','author','uid','space_url','published','view_count','duration','collected_at','keywords','batches','notes'}
-FIELDS.update({'topic_players','topic_lineups','topic_heroes','topic_cards','ignored'})
+FIELDS.update({'topic_players','topic_lineups','topic_heroes','topic_cards','ignored','tags'})
+
+def tag_catalog(root):
+    tags=[]
+    for row in wxq.read_json(Path(root)/'knowledge/source-registry.json',[]):
+        for tag in row.get('manual_values',{}).get('tags',row.get('tags',[])):
+            if isinstance(tag,str) and tag.strip() and tag.strip() not in tags:tags.append(tag.strip())
+    return sorted(tags)
 
 def save_metadata(root, sid, payload, store):
     from crawler import source_rows
     root=Path(root)
     with workspace.store_lock(root, wait=True):
-        current=next((s for s in source_rows(root,store) if s['id']==sid),None)
+        current=next(iter(source_rows(root,store,source_ids=[sid])),None)
         if current is None:raise KeyError('来源不存在')
         if payload.get('revision')!=current['revision']:raise workspace.Conflict('资料已被修改，请刷新后重新编辑；草稿仍保留')
         if set(payload)-FIELDS-{'revision','restore_topics'}:raise ValueError('包含不可编辑的系统字段')
@@ -30,7 +37,7 @@ def save_metadata(root, sid, payload, store):
             elif k in ['view_count','duration']:
                 if v is not None and (isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or v<0):raise ValueError('播放量和时长必须为非负数字')
                 if k=='view_count' and v is not None and int(v)!=v:raise ValueError('播放量必须为整数')
-            elif k in ['keywords','batches']:
+            elif k in ['keywords','batches','tags']:
                 if not isinstance(v,list) or any(not isinstance(x,str) for x in v):raise ValueError('关键词和批次必须为文字列表')
                 changes[k]=list(dict.fromkeys(x.strip() for x in v if x.strip()))
             elif not isinstance(v,str):raise ValueError('资料字段必须为文字')
@@ -58,11 +65,12 @@ def save_metadata(root, sid, payload, store):
         row['manual_revision']=uuid.uuid4().hex
         row['manual_updated_at']=wxq.now()
         wxq.atomic_json(path,rows)
-        updated=next(s for s in source_rows(root,store) if s['id']==sid)
+        updated=next(iter(source_rows(root,store,source_ids=[sid])))
         # Invalidate in-flight chunks promptly; periodic worker scans recover an enqueue failure.
         try:
-            from topics import TopicStore
-            TopicStore(root).sync([updated])
+            if set(changes)-{'tags','notes'} or restore:
+                from topics import TopicStore
+                TopicStore(root).sync([updated])
         except Exception:
             import logging
             logging.getLogger(__name__).exception('资料已保存，主题队列等待后台补查')

@@ -39,3 +39,5 @@ HTML导出完成：exports/瑶妹牺牲流李信.html，沿用常小娥参考页
 河洛花木兰：现有索引无独立同主题笔记；常小娥和李信包含相关提及。BV1vTeS6nE9c含2P，开头ASR出现疑似幻觉，必须排除或回听，不作为依据。无日期限制，不沿用李信排除规则。
 
 河洛花木兰关键核对：BV1vTeS6nE9c:p1 656.04秒卡面每4张古币，BV1oQJ66tESA:p1 763.59秒卡面每5张；非同音纠错，分别记录历史数值，具体补丁日期未知。P2仅识别508秒“比赛开始”，不能当完整有声教学或据此finish。
+
+采集锁故障：BV1PRhC65E9t在transcribing阶段database is locked，保留state/checkpoint。BV1ErJ46ZEbm已generation5运行。queue/topics/network均delete journal。enqueue与link_jobs.reconcile在BEGIN IMMEDIATE内执行transcript_errors全文件校验，疑似阻塞进度更新；需隔离复现。现有4个crawler worker，不可中断。

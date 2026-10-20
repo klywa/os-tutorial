@@ -120,6 +120,9 @@ class Handler(BaseHTTPRequestHandler):
             if path == '/api/sources/staging':
                 from source_staging import Staging
                 return self.response(200,Staging(self.server.root).get())
+            if path == '/api/sources/tags':
+                from source_edit import tag_catalog
+                return self.response(200,tag_catalog(self.server.root))
             if path == '/api/sources':
                 recover_before_read(self.server.root)
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
@@ -285,6 +288,7 @@ class Handler(BaseHTTPRequestHandler):
                 from source_staging import Staging
                 basket=Staging(self.server.root)
                 if path.endswith('/paths'):result=basket.paths()
+                elif path.endswith('/prompt'):result=basket.prompt()
                 elif path.endswith('/clear'):result=basket.clear(payload.get('revision'))
                 elif self.command=='DELETE':result=basket.remove(path.split('/')[-1])
                 else:result=basket.add(payload.get('ids',[]))

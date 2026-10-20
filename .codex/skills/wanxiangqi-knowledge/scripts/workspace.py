@@ -669,19 +669,31 @@ def register_source(root, payload, sid=None, preserve_annotations=False, wait=Fa
         return row
 
 
-def sources(root):
+def sources(root, source_ids=None):
     root = Path(root)
+    selected = set(source_ids) if source_ids is not None else None
+    if selected == set():
+        return []
+    if selected is not None and any(sid.startswith('link-') for sid in selected):
+        # Generic URL IDs may have been replaced by an imported platform ID.
+        return [row for row in sources(root) if row['id'] in selected]
     rows = {r['id']: dict(r) for r in wxq.read_json(root / 'knowledge/source-registry.json', [])}
+    selected_folders = {sid.replace(':', '_') for sid in selected} if selected is not None else None
     linked = {}
+    references = {}
     for note in notes(root):
         for claim in note.get('claims', []):
             for evidence in claim.get('evidence', []):
                 linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
+                references.setdefault(evidence['source'], []).append(evidence)
         for history in note.get('history', []):
             for claim in history.get('previous', {}).get('claims', []):
                 for evidence in claim.get('evidence', []):
                     linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
+                    references.setdefault(evidence['source'], []).append(evidence)
     for path in (root / 'raw/sources').glob('*/metadata.json'):
+        if selected_folders is not None and path.parent.name not in selected_folders:
+            continue
         metadata = wxq.read_json(path)
         sid = metadata['id']
         url, registry_id = canonical_url(metadata['url'])
@@ -692,9 +704,7 @@ def sources(root):
         row['stage'] = state.get('stage', 'registered')
         row['error'] = state.get('error', '')
         row['processing_warning'] = '；'.join(state.get('warnings', []))
-        all_claims = [c for n in notes(root) for c in n.get('claims', [])]
-        all_claims += [c for n in notes(root) for h in n.get('history', []) for c in h.get('previous', {}).get('claims', [])]
-        referenced = [e for c in all_claims for e in c.get('evidence', []) if e['source'] == sid]
+        referenced = references.get(sid, [])
         intervals = review.get('checked_intervals', [])
         row['reviewed'] = review.get('approved') is True and bool(intervals) and all(
             any(a <= e['start'] and b >= e['end'] for a, b in intervals) for e in referenced)
@@ -707,8 +717,12 @@ def sources(root):
             url, sid = canonical_url(result['url'])
         except ValueError:
             continue
+        if selected is not None and sid not in selected:
+            continue
         if sid not in rows or rows[sid].get('stage', 'registered') == 'registered':
             rows[sid] = {**rows.get(sid, {}), 'id': sid, 'url': url, 'stage': 'failed', 'error': result.get('error', '')}
+    if selected is not None:
+        rows = {sid: row for sid, row in rows.items() if sid in selected}
     for sid, row in rows.items():
         row.setdefault('stage', 'registered')
         row['linked_notes'] = list(linked.get(sid, {}).values())

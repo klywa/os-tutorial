@@ -1,8 +1,13 @@
 import {expect,it} from 'vitest';
 import {buildSourcePrompt,keepSelection,copyOrFallback} from './sourceTools';
-it('prompt preserves user rules and uses Markdown absolute paths',()=>{
- const value=buildSourcePrompt('李信牺牲流',['D:\\raw\\one.md','D:\\raw\\two.md']);
- expect(value).toContain('整理【李信牺牲流】');expect(value).toContain('若有冲突，则让用户裁决');expect(value).toContain('- D:\\raw\\one.md\n- D:\\raw\\two.md');
+it('prompt keeps every staged item with title, local path or URL and optional single-line notes',()=>{
+ const value=buildSourcePrompt('李信牺牲流',[
+  {id:'a',title:'教学甲',location:'D:\\raw\\one.md',notes:'  关注前期\n转阵  '},
+  {id:'b',title:'教学乙',location:'https://example.com/video',notes:''},
+  {id:'c',title:'',location:'https://example.com/other',notes:'  '},
+ ]);
+ expect(value).toContain('整理【李信牺牲流】');expect(value).toContain('若有冲突，则让用户裁决');
+ expect(value).toContain('- 教学甲：D:\\raw\\one.md（关注前期 转阵）\n- 教学乙：https://example.com/video\n- c：https://example.com/other');
 });
 it('selection survives page slicing and drops only ignored or absent IDs',()=>{
  expect(keepSelection(['a','b','a'],[{id:'a'},{id:'b'},{id:'c',ignored:true}])).toEqual(['a','b']);

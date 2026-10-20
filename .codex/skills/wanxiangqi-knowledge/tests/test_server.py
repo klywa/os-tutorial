@@ -19,6 +19,18 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_source_tags_and_prompt_snapshot_http(self):
+        def send(path,payload,method='POST'):
+            with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)
+        source=send('sources',{'url':'https://example.com/annotation','title':'教学','notes':'备注'})
+        saved=send('sources/'+source['id'],{'revision':'','tags':[' 教学 ','教学','进阶']},'PUT')
+        self.assertEqual(saved['tags'],['教学','进阶'])
+        with urlopen(self.url+'sources/tags') as response:self.assertEqual(json.load(response),['教学','进阶'])
+        send('sources/staging',{'ids':[source['id']]})
+        prompt=send('sources/staging/prompt',{})
+        self.assertEqual(prompt['items'],[{'id':source['id'],'title':'教学','location':'https://example.com/annotation','notes':'备注'}])
+        self.assertTrue(prompt['fingerprint'])
+
     def test_create_note_api_is_idempotent_and_reports_same_type_name_conflict(self):
         body={'type':'lineup','title':'直接新建阵容','aliases':['简称'],'request_id':'http-create-request'}
         def create(value):
