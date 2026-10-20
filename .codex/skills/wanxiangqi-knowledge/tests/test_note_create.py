@@ -10,9 +10,10 @@ class CreateNoteTests(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.root=Path(self.tmp.name);wxq.init_store(self.root)
+        wxq.atomic_json(self.root/'entities/players.json',[{'id':'player:1','name':'测试棋手','category':'players','aliases':[]}])
 
     def payload(self,kind='lineup',title='测试阵容',request='request-123'):
-        return {'type':kind,'title':title,'aliases':[' 别名 ','别名'],'request_id':request}
+        return {'type':kind,'title':'测试棋手' if kind=='player' else title,'aliases':[' 别名 ','别名'],'request_id':request,**({'player_id':'player:1'} if kind=='player' else {})}
 
     def test_all_types_create_complete_files_without_inventing_claims(self):
         for kind in ('lineup','player','other'):
@@ -20,7 +21,7 @@ class CreateNoteTests(unittest.TestCase):
                 n=workspace.create_note(self.root,self.payload(kind,request='request-'+kind))
                 self.assertEqual(n['claims'],[]);self.assertEqual(n['aliases'],['别名'])
                 self.assertTrue((self.root/n['path']).is_file());self.assertTrue(n['revision'])
-                self.assertEqual(n['entities'],[])
+                self.assertEqual(n['entities'],['player:1'] if kind=='player' else [])
                 if kind=='lineup':
                     self.assertEqual(n['meta']['players'],[])
                     self.assertTrue((self.root/n['path']).with_suffix('.json').exists())

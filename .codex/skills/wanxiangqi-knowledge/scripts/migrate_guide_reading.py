@@ -64,12 +64,12 @@ def migrate(items,entities):
             # Explicit card names established by existing player-skill entities.
             for field in ('claims','meta'):n[field]=standardize(n[field])
             c=next(c for c in n['claims'] if c['id']=='ming-five')
-            c['text']=c['text'].split('；留五本持续刷新')[0]+'；五本持续刷新时集中补花木兰、上官婉儿及过渡战力。若考虑升六本改善后续高阶牌机会，先确认升本后仍有买牌与保血预算，不能只有刷新而没有当轮战力。'
+            c['text']=c['text'].split('；留棋手五阶持续刷新')[0]+'；棋手五阶持续刷新时集中补花木兰、上官婉儿及过渡战力。若考虑将棋手升至六阶改善后续高阶牌机会，先确认棋手升级后仍有买牌与保血预算，不能只有刷新而没有当轮战力。'
             derive(n,'guide-effect-wake','唤醒用于已在场的露娜，临阵磨枪用于上官婉儿：前者借露娜再次触发整备，后者直接触发婉儿整备。使用前确认目标、河洛产币成员和露娜打出位置已经就绪。',['wake-targets','luna-slot'],['关键效果牌'])
             derive(n,'guide-counter-lixin','已成型的瑶妹牺牲李信可以借小鹿嘲讽和承伤，让缺少免控的花木兰难以接近李信，并消耗其复生次数。成立条件是小鹿能承压、李信已有战力且花木兰免控不足；不能泛化成任何花木兰配置都被克制。',['mulan-vs-yaomei-lixin'],['克制手段'])
-            derive(n,'guide-skills-ming','明先生前期优先卦象·节积累升本资源；进入找花木兰、上官婉儿的阶段后比较卦象·丰。切换时看是否已经需要集中找牌，并保留过渡战力；第7回合是材料中的找牌节奏，不是所有对局的固定切换回合。',['ming-economy','ming-five'],['棋手技能推荐'])
-            derive(n,'guide-skills-zhuang','庄小鱼五本、六本各用一次如梦似幻补体系和觉醒。第一次如梦按有用河洛成员选择3名或5名方案；等待更多成员会失去当轮战力时先保血。第二次体系齐备可按7名结算，仍缺关键组件时可用6名继续补牌；后续梦幻引擎需满足低血量且当轮失败条件，不能当成无条件资源。',['zhuang-dream-trigger','zhuang-three-five','zhuang-second-cast'],['棋手技能推荐'])
-            derive(n,'guide-skills-naonao','闹闹先保留升本资源，升级后用派对牌找对应等阶英雄。材料参考第8回合五本使用朋友多多；用后仍缺花木兰时，可在五本多留一回合用免费刷新补核心，稳定后再升六拿专属强化。五本启动要提前留出处理手牌和转瞬古币的时间。',['n-opening','n-five-missing','n-time'],['棋手技能推荐'])
+            derive(n,'guide-skills-ming','明先生前期优先卦象·节积累棋手升级资源；进入找花木兰、上官婉儿的阶段后比较卦象·丰。切换时看是否已经需要集中找牌，并保留过渡战力；第7回合是材料中的找牌节奏，不是所有对局的固定切换回合。',['ming-economy','ming-five'],['棋手技能推荐'])
+            derive(n,'guide-skills-zhuang','庄小鱼棋手五阶、棋手六阶各用一次如梦似幻补体系和觉醒。第一次如梦按有用河洛成员选择3名或5名方案；等待更多成员会失去当轮战力时先保血。第二次体系齐备可按7名结算，仍缺关键组件时可用6名继续补牌；后续梦幻引擎需满足低血量且当轮失败条件，不能当成无条件资源。',['zhuang-dream-trigger','zhuang-three-five','zhuang-second-cast'],['棋手技能推荐'])
+            derive(n,'guide-skills-naonao','闹闹先保留棋手升级资源，升级后用派对牌找对应等阶英雄。材料参考第8回合棋手五阶使用朋友多多；用后仍缺花木兰时，可在棋手五阶多留一回合用免费刷新补核心，稳定后再将棋手升至六阶拿专属强化。棋手五阶启动要提前留出处理手牌和转瞬古币的时间。',['n-opening','n-five-missing','n-time'],['棋手技能推荐'])
             derive(n,'guide-skills-zhaojun','昭君需较早取得花木兰及适合的冻结强化，再以冻结补高阶体系；同阵营向上变化不保证得到花木兰。已有持续冻结成长的司空震时可保留第二输出；冻结露娜补露娜仍受强化与公共牌库限制，不把单次成功当成必成循环。',['q-start','q-double','q-luna'],['棋手技能推荐'])
             derive(n,'guide-middle-awakening','中期优先补上官婉儿觉醒，提高每次整备覆盖的河洛人数；完整产币时保留6名河洛，避免为工具位挤掉产币成员。只有程咬金和婉儿两名整备英雄时，普通露娜随机触发两名已能覆盖两者，露娜觉醒不是循环启动前提。',['wanner-awaken','luna-awakening-context'],['阵容组成与运营节奏',guide.STAGES['middle']])
             # Late members inherit the reviewed common skeleton; tool is conditional.
@@ -94,7 +94,7 @@ def migrate(items,entities):
             derive(n,'guide-counter-totem','带解控的嬴政会增加本阵容控制难度；姜子牙能快速清除图腾，削弱敖隐输出。针对图腾体系时，应看是否能及时解除关键控制或清除图腾，不能仅凭持有英雄名就认定稳定克制。',['claim-22b460bd4a7bae574bc0'],['克制手段'])
         elif n['id']=='angela-liubang-totems':
             derive(n,'guide-effect-growth','唤醒配合明世隐再次触发登场，把飞行器提供的临时等级转为永久等级；明世隐与唤醒来得多时使用该成长路线，来得少或晚时可用云中君替代。夺取之术可在后期把工具英雄的等级集中给刘邦，投入前确认当前还需要哪些成长位置。',['claim-9393479509a53e516912','claim-41e5ef7849bdfc174252'],['关键效果牌'])
-            derive(n,'guide-skills-connect','飞行器前期连接干将莫邪，刘邦到场后改连刘邦。将飞行器与目标重合以避免连接最近的其他英雄。五阶久刷不来刘邦觉醒时，停止耗尽金币，考虑升六用超级连接的临时等级与额外模块稳住，再继续找觉醒。',['claim-3157c19df415c25c6e44','claim-34ce45f76864349fb218'],['棋手技能推荐'])
+            derive(n,'guide-skills-connect','飞行器前期连接干将莫邪，刘邦到场后改连刘邦。将飞行器与目标重合以避免连接最近的其他英雄。五阶久刷不来刘邦觉醒时，停止耗尽金币，考虑将棋手升至六阶用超级连接的临时等级与额外模块稳住，再继续找觉醒。',['claim-3157c19df415c25c6e44','claim-34ce45f76864349fb218'],['棋手技能推荐'])
         # No inferred entity-overlap relationships in these guides.
         n['explicit_relationships']=True;n['related']=[];n['guide_related']=[]
         # A player's branch must not inherit another player's opening list.

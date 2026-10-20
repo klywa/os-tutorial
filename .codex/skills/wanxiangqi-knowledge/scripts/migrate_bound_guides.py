@@ -72,13 +72,13 @@ def clean_context(note):
 def heluo(note):
     retired=retire_duplicate(note,'guide-effect-wake','wake-targets')
     c=claim(note,'ming-economy')
-    c.update(condition='',text='开局以弈星过渡，优先使用卦象·节积累升本资源；第一轮拍卖结束后再用一次卦象·节，第二次收益结算后争取升到五本。到五本、需要集中寻找花木兰和上官婉儿时转用卦象·丰。能否按此节奏升本仍受额外买牌开销影响；找牌不顺且掉血压力增大时，先补能承接装备的李信或李白保血。')
+    c.update(condition='',text='开局以弈星过渡，优先使用卦象·节积累棋手升级资源；第一轮拍卖结束后再用一次卦象·节，第二次收益结算后争取将棋手升至五阶。到棋手五阶、需要集中寻找花木兰和上官婉儿时转用卦象·丰。能否按此节奏棋手升级仍受额外买牌开销影响；找牌不顺且掉血压力增大时，先补能承接装备的李信或李白保血。')
     c['evidence'].append({'source':SOURCE,'start':658.35,'end':710.13,'frame':'frames/700-0.jpg'})
-    add_derived(note,'ming-economy','ming-opening-yixing','开局可以只上弈星，把资源优先用于升本；对手质量低、补牛魔有机会取胜并触发产币时，可补牛魔兼顾经济与保血。对手已经补足战力、没有取胜机会时，不为追牛魔收益挤占升本预算；进入找核心阶段后，不能继续单挂弈星承担持续掉血。',['阵容组成与运营节奏',guide.STAGES['early']],['ming'],[{'source':SOURCE,'start':658.35,'end':710.13,'frame':'frames/700-0.jpg'}])
-    add_derived(note,'ming-economy','ming-first-auction','第一轮拍卖出现程咬金时，按升本预算考虑拿一张补后续整备产币，不为前期堆重复程咬金耽误升本。没有程咬金时，可以考虑盾山暂时代替产币位置；升五后取得程咬金再调整。拍卖和升级途中商店的体系牌都要与升本预算比较，现有证据没有统一出价上限；程咬金、盾山都没出现时，其他竞拍替代尚缺可靠说明。',['第一轮拍卖'],['ming'],[{'source':SOURCE,'start':710.81,'end':737.91,'frame':'frames/730-0.jpg'},{'source':SOURCE,'start':1580.3,'end':1626.69,'frame':'frames/1605-0.jpg'}])
+    add_derived(note,'ming-economy','ming-opening-yixing','开局可以只上弈星，把资源优先用于棋手升级；对手质量低、补牛魔有机会取胜并触发产币时，可补牛魔兼顾经济与保血。对手已经补足战力、没有取胜机会时，不为追牛魔收益挤占棋手升级预算；进入找核心阶段后，不能继续单挂弈星承担持续掉血。',['阵容组成与运营节奏',guide.STAGES['early']],['ming'],[{'source':SOURCE,'start':658.35,'end':710.13,'frame':'frames/700-0.jpg'}])
+    add_derived(note,'ming-economy','ming-first-auction','第一轮拍卖出现程咬金时，按棋手升级预算考虑拿一张补后续整备产币，不为前期堆重复程咬金耽误棋手升级。没有程咬金时，可以考虑盾山暂时代替产币位置；将棋手升至五阶后取得程咬金再调整。拍卖和升级途中商店的体系牌都要与棋手升级预算比较，现有证据没有统一出价上限；程咬金、盾山都没出现时，其他竞拍替代尚缺可靠说明。',['第一轮拍卖'],['ming'],[{'source':SOURCE,'start':710.81,'end':737.91,'frame':'frames/730-0.jpg'},{'source':SOURCE,'start':1580.3,'end':1626.69,'frame':'frames/1605-0.jpg'}])
     b=branches.branch(note,'ming')
     b['overrides']['compositions']['early']=[
-        {'hero':'card:1971','necessity':'required','role':'速五开局可单挂；把主要资源用于升本','replaces':'','replacement_note':''},
+        {'hero':'card:1971','necessity':'required','role':'尽快将棋手升至五阶开局可单挂；把主要资源用于棋手升级','replaces':'','replacement_note':''},
         {'hero':'card:1681','necessity':'optional','role':'对手质量低、补入后有机会取胜产币时使用','replaces':'','replacement_note':''}]
     # The prior record promoted a final-round tool to every late-game board.
     v=note['meta']['late_variants'][0];v['name']='古币复生基础组合';v['condition']='古币组件齐备，并预留露娜打出位置'
@@ -93,15 +93,15 @@ def heluo(note):
     replacements={
         'red-demon-underworld-choice':('按敌方伤害类型补第三件装备','在凝渊和所需解控之外'),
         'ming-second-auction-stock':('第二轮按核心和露娜库存选择','第二轮'),
-        'ming-survival-talents':('升本找核心期间场上战力不足','尚未找到花木兰'),
+        'ming-survival-talents':('棋手升级找核心期间场上战力不足','尚未找到花木兰'),
     }
     for cid,(condition,_) in replacements.items():claim(note,cid)['condition']=condition
     c=claim(note,'red-demon-underworld-choice');c['text']=c['text'].replace('教学在','在')
     claim(note,'ming-second-auction-stock')['condition']=''
     c=claim(note,'mingshiyin-optional');c.update(condition='有额外功能位置，且花木兰已能获得临时等级',text='可让明世隐连线花木兰，将最近英雄的一部分临时等级转为永久等级；其登场还能增加可转化额度。先确认最近目标是花木兰，不能挤掉露娜打出位置。')
     c=claim(note,'luna-awakening-context');c.update(condition='场上只有程咬金和上官婉儿两名整备英雄',text='普通露娜随机触发两名整备英雄，已能覆盖两者，露娜觉醒不是循环启动前提。凑齐合成后觉醒牌回手再打出、或腾空公共牌库，是另一个资源决策；是否合成、重打、卖回仍看手牌和下一轮需要。')
-    c=claim(note,'ming-first-auction');c['text']=c['text'].replace('没有程咬金时，可以考虑盾山暂时代替产币位置；','明世隐有助于后续固定临时等级，升级途中顺路出现时可以留重复牌，但仍须保留升本预算。没有程咬金时，可以考虑盾山暂时代替产币位置；')
-    c=claim(note,'zhuang-high-talent');c.update(text='- **高级人才：**可补高阶体系英雄。速五过程中取得时，可优先留到四本使用，争取随机获得花木兰、露娜或武则天；不保证命中目标，拿取价格边界尚缺依据。',condition='')
+    c=claim(note,'ming-first-auction');c['text']=c['text'].replace('没有程咬金时，可以考虑盾山暂时代替产币位置；','明世隐有助于后续固定临时等级，升级途中顺路出现时可以留重复牌，但仍须保留棋手升级预算。没有程咬金时，可以考虑盾山暂时代替产币位置；')
+    c=claim(note,'zhuang-high-talent');c.update(text='- **高级人才：**可补高阶体系英雄。尽快将棋手升至五阶过程中取得时，可优先留到棋手四阶使用，争取随机获得花木兰、露娜或武则天；不保证命中目标，拿取价格边界尚缺依据。',condition='')
     note['reading_layout']['claim_locations']['ying-contract-bottle']=['推荐天赋']
     effects(note,'wake-targets',[
         ('唤醒','通过已上场的露娜再次触发整备，增加本轮古币与复生次数。需要为强敌准备资源时保留，投入本轮战力时指定露娜；先确认露娜在场和产币成员就位，拿取价格上限尚缺依据。'),

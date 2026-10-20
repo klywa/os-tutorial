@@ -77,7 +77,8 @@ class PlayerNoteTests(unittest.TestCase):
         import tempfile,workspace
         with tempfile.TemporaryDirectory() as folder:
             root=Path(folder);wxq.init_store(root)
-            workspace.persist(root,[{'id':'p','type':'player','title':'棋手','entities':[],'core':[],
+            wxq.atomic_json(root/'entities/players.json',[{'id':'player:1','name':'棋手','category':'players','aliases':[]}])
+            workspace.persist(root,[{'id':'p','type':'player','title':'棋手','entities':['player:1'],'core':[],
                 'claims':[{'id':'tip','section':'适用技巧','text':'旧操作','kind':'general_strategy','evidence':[]}]}])
             n=workspace.notes(root)[0]
             result=workspace.edit(root,'p',{'revision':n['revision'],'sections':{'使用技巧':'新操作'}})

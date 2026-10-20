@@ -376,6 +376,8 @@ if __name__ == '__main__':
     parser.add_argument('--open-browser', action='store_true')
     args = parser.parse_args()
     workspace.migrate(args.root)
+    from player_identity import migrate as migrate_players
+    migrate_players(args.root)
     server = create_server(args.root, args.port, start_worker=True)
     print(f'万象棋工具：http://127.0.0.1:{args.port}', flush=True)
     if args.open_browser:

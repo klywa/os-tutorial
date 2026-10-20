@@ -136,6 +136,8 @@ def assign_paths(root, items):
 
 
 def prepare(root, items):
+    from player_identity import normalize
+    normalize(root,items)
     assign_paths(root, items)
     names = {e['id']: e['name'] for e in wxq.entities(root)}
     known_entities = set(names)
@@ -181,13 +183,19 @@ def prepare(root, items):
             if link['id'] in by_id:
                 link['path'] = by_id[link['id']]['path']
                 link['title'] = by_id[link['id']]['title']
+        for link in note.get('guide_related',[]):
+            target=by_id.get(link.get('note'))
+            if target and target['type']=='player':
+                link.update(title=target['title'],href='../players/'+Path(target['path']).name)
         note['revision'] = revision(note)
     return items
 
 
 def make_transaction(root, items, obsolete=None, ignore_issues=(), expected_markdown=None):
     root = Path(root)
+    old_paths={n['id']:n.get('path') for n in notes(root) if n['type']=='player'}
     prepare(root, items)
+    obsolete=list(dict.fromkeys([*(obsolete or []),*(old_paths[n['id']] for n in items if n['type']=='player' and old_paths.get(n['id']) and old_paths[n['id']]!=n['path'])]))
     from markdown_sync import outputs
     from player_branches import enabled
     from markdown_sync import status
@@ -316,7 +324,7 @@ def manual_claim(section, text):
 
 def create_note(root, payload):
     """Create an empty, retry-safe knowledge note through the shared transaction."""
-    if not isinstance(payload,dict) or set(payload)-{'type','title','aliases','request_id'}:
+    if not isinstance(payload,dict) or set(payload)-{'type','title','aliases','request_id','player_id'}:
         raise ValueError('新建笔记字段无效')
     kind=payload.get('type');title=payload.get('title');aliases=payload.get('aliases',[]);request=payload.get('request_id')
     if kind not in wxq.FOLDERS:raise ValueError('请选择有效的笔记类型')
@@ -326,6 +334,13 @@ def create_note(root, payload):
     aliases=list(dict.fromkeys(a.strip() for a in aliases if a.strip()))
     if not isinstance(request,str) or not re.fullmatch(r'[A-Za-z0-9_-]{8,128}',request):raise ValueError('新建请求标识无效')
     normalized={'type':kind,'title':title,'aliases':aliases}
+    if kind=='player':
+        from player_identity import bind,catalog
+        if not payload.get('player_id'):raise ValueError('请选择棋手')
+        normalized['player_id']=payload['player_id']
+        bind(normalized,catalog(root))
+        title=normalized['title'];aliases=normalized['aliases']
+    elif payload.get('player_id'):raise ValueError('只有棋手笔记可绑定棋手身份')
     fingerprint=hashlib.sha256(json.dumps(normalized,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
     root=Path(root)
     with store_lock(root,wait=True):
@@ -335,6 +350,12 @@ def create_note(root, payload):
         if prior:
             if prior['creation']['payload_hash']!=fingerprint:raise Conflict('请求标识已用于其他新建内容，草稿已保留')
             return prior
+        if kind=='player':
+            from player_identity import bind,catalog
+            players=catalog(root)
+            for existing in items:
+                if existing['type']=='player' and bind(deepcopy(existing),players)==normalized['player_id']:
+                    raise Conflict('该棋手已有笔记，请打开已有笔记：'+existing['title'])
         if any(n['type']==kind and n['title'].strip().casefold()==title.casefold() for n in items):
             raise Conflict('已有同类型同名笔记，请打开已有笔记或修改名称；草稿已保留')
         from markdown_sync import scan
@@ -344,7 +365,7 @@ def create_note(root, payload):
         items=deepcopy(notes(root))
         nid='note-'+hashlib.sha256(request.encode()).hexdigest()[:24]
         if any(n['id']==nid for n in items):raise Conflict('笔记标识已存在，请重新发起新建')
-        note={'id':nid,**normalized,'entities':[],'core':[],'claims':[],'related':[],
+        note={'id':nid,**normalized,'entities':[normalized['player_id']] if kind=='player' else [],'core':[],'claims':[],'related':[],
               'creation':{'request_id':request,'payload_hash':fingerprint}}
         items.append(note);persist(root,items)
         return note
@@ -505,6 +526,13 @@ def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False)
         if payload.get('revision') != note.get('revision'):
             raise Conflict('笔记已被其他操作更新，请重新载入后合并你的草稿')
         before = deepcopy(note)
+        if note['type']=='player':
+            from player_identity import bind,catalog
+            bind(note,catalog(root))
+            if payload.get('player_id',note['player_id'])!=note['player_id']:
+                raise ValueError('棋手笔记不能改绑其他棋手')
+            if payload.get('title',note['title'])!=note['title']:
+                raise ValueError('棋手笔记只能以棋手名命名')
         sections = payload.get('sections', {})
         if not isinstance(sections, dict):
             raise ValueError('章节格式无效')

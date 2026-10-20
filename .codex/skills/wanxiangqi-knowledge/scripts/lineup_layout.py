@@ -17,7 +17,7 @@ GROUPS = [
  ('主要变阵', []),
  ('运营路线选择', []),
  ('前中后期共通流程', [
-  ('前期：保血与升本', ['opening-four','opening-missing','opening-level-plan','opening-wins','opening-blood-cushion']),
+  ('前期：保血与棋手升级', ['opening-four','opening-missing','opening-level-plan','opening-wins','opening-blood-cushion']),
   ('中期：找李信与缺牌应变', ['middle-budget','middle-fast-five','route-four-core','middle-item-holder','six-budget-pressure','middle-no-lixin','middle-hold-four','middle-ming-choice','ming-first-lixin']),
   ('后期：等级培养与操作顺序', ['late-play-slot','late-bank-six','level-without-ming','level-effect-cards','level-play-batch','order-six-before-double'])]),
  ('三轮拍卖与天赋选择', [
@@ -41,9 +41,9 @@ GROUPS = [
 ]
 
 ROUTE_DETAILS = {
- 'ming-growth': ('李信、明世隐、钟馗、太乙真人；铠、盾山、程咬金按缺口选', '以明世隐固定量和保血能力决定升本，不固定停留回合'),
- 'four-core': ('四本先找李信、明世隐、钟馗、铠；太乙真人补复生', '四本齐牌后存钱；第14回合预留六本预算，第15回合先升六本再用共鸣'),
- 'four-hold': ('李信、明世隐；钟馗、太乙真人补牺牲和复生', '第8—11回合四本培养；第三轮拍卖后升五本；第14回合预留六本预算'),
+ 'ming-growth': ('李信、明世隐、钟馗、太乙真人；铠、盾山、程咬金按缺口选', '以明世隐固定量和保血能力决定棋手升级，不固定停留回合'),
+ 'four-core': ('棋手四阶先找李信、明世隐、钟馗、铠；太乙真人补复生', '棋手四阶齐牌后存钱；第14回合预留棋手六阶预算，第15回合先将棋手升至六阶再用共鸣'),
+ 'four-hold': ('李信、明世隐；钟馗、太乙真人补牺牲和复生', '第8—11回合棋手四阶培养；第三轮拍卖后将棋手升至五阶；第14回合预留棋手六阶预算'),
 }
 
 
@@ -107,8 +107,8 @@ def _render_markdown(note):
                 lines.extend(['### 后期：' + variant['name'], '', '适用条件：' + (variant.get('condition') or '待确认'), ''])
                 members(variant['members'])
         if title == '运营路线选择':
-            lines.extend(['三条路线共用下文的保血、站位和装备规则；这里比较找牌与升本的差异。', '',
-                          '| 路线 | 适用条件 | 找牌目标 | 升本节点 | 优势 | 风险与转向 |', '|---|---|---|---|---|---|'])
+            lines.extend(['三条路线共用下文的保血、站位和装备规则；这里比较找牌与棋手升级的差异。', '',
+                          '| 路线 | 适用条件 | 找牌目标 | 棋手升级节点 | 优势 | 风险与转向 |', '|---|---|---|---|---|---|'])
             for route in meta.get('operation_routes', []):
                 targets, timing = ROUTE_DETAILS.get(route['id'], ('暂无已确认的通用策略','暂无已确认的通用策略'))
                 cells = [route['name'], route.get('condition','待确认'), targets, timing, route.get('advantages','待确认'), route.get('risks','待确认').rstrip('。；') + '；' + route.get('transition','待确认')]

@@ -298,7 +298,7 @@ def entry_markdown(note):
 def update_player_adaptations(items):
     for note in items:
         if note['type']!='player':continue
-        players=set(note.get('entities',[]));adaptations=[]
+        players={note['player_id']} if note.get('player_id') else set(note.get('entities',[]));adaptations=[]
         for lineup in items:
             for b in lineup.get('meta',{}).get('player_branches',[]):
                 if b['player'] not in players:continue

@@ -249,6 +249,8 @@ def _commit_notes(root, incoming):
         sources[data['id']] = data
     index_path = root / 'knowledge/index.json'
     notes = {n['id']: n for n in read_json(index_path)['notes']}
+    from player_identity import import_notes
+    incoming=import_notes(root,incoming,list(notes.values()))
     known_entities = {e['id'] for e in entities(root)}
     for note in incoming:
         safe_id(note['id'])
@@ -336,6 +338,15 @@ def validate_store(root):
             if e.get('category') != c or not e.get('name'):
                 errors.append('Invalid entity category/name: ' + str(e.get('id')))
     index = read_json(root / 'knowledge/index.json', {'notes': []})
+    try:
+        from copy import deepcopy
+        from player_identity import normalize
+        normalized=normalize(root,deepcopy(index['notes']))
+        for old,new in zip(index['notes'],normalized):
+            if old['type']=='player' and any(old.get(k)!=new.get(k) for k in ('title','player_id')):
+                errors.append('Player identity migration required: '+old['id'])
+    except (ValueError,TypeError,KeyError) as exc:
+        errors.append('Invalid player identity: '+str(exc))
     note_ids = set()
     for n in index['notes']:
         if n['id'] in note_ids:
@@ -404,6 +415,7 @@ def main():
     sub.add_parser('validate')
     sub.add_parser('sync-markdown')
     sub.add_parser('migrate')
+    sub.add_parser('migrate-player-identities')
     p = sub.add_parser('export-transcripts')
     p.add_argument('sources', nargs='*')
     p = sub.add_parser('prepare')
@@ -443,9 +455,14 @@ def main():
         result = scan(args.root)
     elif args.command == 'validate':
         result = validate_store(args.root)
+    elif args.command == 'migrate-player-identities':
+        from player_identity import migrate
+        result = migrate(args.root)
     elif args.command == 'migrate':
         from workspace import migrate
         result = migrate(args.root)
+        from player_identity import migrate as migrate_players
+        result['player_identity']=migrate_players(args.root)
     elif args.command == 'export-transcripts':
         from reference_store import export_transcripts
         result = export_transcripts(args.root, args.sources or None)
