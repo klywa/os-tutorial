@@ -277,6 +277,10 @@ def _commit_notes(root, incoming):
             if not claim.get('section') or not claim.get('text') or not claim.get('evidence'):
                 raise ValueError('Every claim requires section, text and evidence')
             for e in claim['evidence']:
+                if e.get('type') == 'document':
+                    from document_sources import validate_evidence
+                    validate_evidence(root,e)
+                    continue
                 if e['source'] not in sources or not 0 <= e['start'] <= e['end']:
                     raise ValueError('Unknown source or invalid timestamp')
                 folder = source_dir(root, e['source'])
@@ -379,6 +383,11 @@ def validate_store(root):
             if claim.get('kind') not in KNOWLEDGE_KINDS:
                 errors.append('Unclassified or match-specific claim: ' + n['id'])
             for evidence in claim.get('evidence', []):
+                if evidence.get('type') == 'document':
+                    from document_sources import validate_evidence
+                    try:validate_evidence(root,evidence)
+                    except (ValueError,OSError,KeyError,TypeError) as exc:errors.append(str(exc))
+                    continue
                 folder = source_dir(root, evidence['source'])
                 from reference_store import transcript_artifacts
                 if not transcript_artifacts(folder)[0].exists():

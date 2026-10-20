@@ -2621,6 +2621,36 @@
           "frame": "frames/117-35.jpg"
         }
       ]
+    },
+    {
+      "id": "doc-93f942cf53fa2df4e63d5d",
+      "section": "关键操作顺序",
+      "text": "前期先用有效过渡战力争取小鹿胜场成长；确定河洛方向后，升级前可考虑保留对应阵营英雄。李信与明世隐优先觉醒，唤醒留给确有临时等级可转化的明世隐。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        }
+      ],
+      "origin": "document"
     }
   ],
   "meta": {
@@ -3024,7 +3054,8 @@
           "tier-guide-yaomei-late-four-core",
           "tier-guide-yaomei-early-four-hold",
           "tier-guide-yaomei-middle-four-hold",
-          "tier-guide-yaomei-late-four-hold"
+          "tier-guide-yaomei-late-four-hold",
+          "doc-93f942cf53fa2df4e63d5d"
         ],
         "condition_refs": [
           "growth-deer",
@@ -52499,6 +52530,12 @@
         "lineup_adaptations": null
       },
       "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.703967+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
     }
   ],
   "conflicts": [],
@@ -52512,7 +52549,7 @@
       "path": "knowledge/players/瑶妹.md"
     }
   ],
-  "revision": "1808497dc1644e3bbcfa",
+  "revision": "8273e3d755c63a195dc7",
   "manual_fields": [
     "title"
   ],
@@ -52790,6 +52827,9 @@
       "tier-guide-yaomei-late-four-hold": [
         "阵容组成与运营节奏",
         "后期英雄组成与运营"
+      ],
+      "doc-93f942cf53fa2df4e63d5d": [
+        "关键操作顺序"
       ]
     },
     "coverage": {

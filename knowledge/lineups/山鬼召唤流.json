@@ -1,0 +1,544 @@
+{
+  "id": "document-lineup-6",
+  "type": "lineup",
+  "title": "山鬼召唤流",
+  "aliases": [
+    "山鬼召唤流"
+  ],
+  "entities": [
+    "card:1351",
+    "card:1861",
+    "card:1891",
+    "card:5041",
+    "card:5171",
+    "card:5251",
+    "card:5271"
+  ],
+  "core": [
+    "card:5171"
+  ],
+  "topic": "山鬼召唤流",
+  "claims": [
+    {
+      "id": "doc-46ef05a3c819beb35374f9",
+      "section": "前期运营及应变",
+      "text": "1-3回合：1级只拿弈星走连败，3回合竞拍米莱狄 > 蒙恬 > 项羽 > 鬼谷子。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-a9fadf5d14f830f171a68a",
+      "section": "中期运营及应变",
+      "text": "4-7回合：棋手升4级后，开始搜牌，凑齐阵容中的米莱狄、项羽、蒙恬、鬼谷子、大司命、太乙真人，压力不大可以升5级再找大司命，概率更高。7回合竞拍大司命 > 鲁班大师 > 太乙真人。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-336ba86bacd3efb43d5457",
+      "section": "后期运营及应变",
+      "text": "8回合以后：棋手升5级找鲁班大师，凑齐阵容中的所有英雄，阵容成型，后续就是慢慢觉醒阵容中的所有英雄，遇到加等级的效果牌可以拿，优先给大司命，例如阵营祝福、八方来援、精密协作等。11回合竞拍可以拿扶摇直上、众星闪耀、破境之证、能量超新星。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-c90bff18dbb6a1c6109822",
+      "section": "核心机制",
+      "text": "这套阵容总体思路围绕大司命这张牌构筑：大司命的效果是召唤往生图腾，并且在触发牺牲效果时往生图腾等级永久+2并获得50点法力值（往生图腾法力值满时变成山鬼）。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-ef22c6f2dcc423ed5a4b8e",
+      "section": "核心机制",
+      "text": "项羽、蒙恬、鬼谷子的玄微之种提供牺牲效果，项羽牺牲不仅能增加图腾等级还能让召唤物免疫控制。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-50a7d8f1fe54b47148953b",
+      "section": "核心机制",
+      "text": "往生图腾会吸收1-3阶己方召唤物，每吸收一个山鬼等级永久+1并获得法力值，米莱狄和蒙恬提供召唤物。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-0b27a02a3aa2ef4afb8630",
+      "section": "核心机制",
+      "text": "鲁班大师的机关傀儡会获得召唤单位最高等级的一半作为临时等级，觉醒会获得召唤单位全部等级作为临时等级，当山鬼999级时，觉醒的鲁班大师的机关傀儡也会达到999级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-6c9559d8d767e9f3d73d71",
+      "section": "关键操作顺序",
+      "text": "玩山鬼如果拿到升格，山鬼存活8s后会变成大司命，但是本体大司命不会再召唤往生图腾变成山鬼了，山鬼变成的大司命会继承山鬼等级，释放技能时会召唤敌人的灵体协助战斗，最多可以召唤5个大司命，但强度不如山鬼。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-9ca71f767ca7fa2760d68f",
+      "section": "关键操作顺序",
+      "text": "如果拿到巨像，山鬼无法吸收巨像召唤的红蓝buff怪，红蓝buff属于4阶召唤物。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-4a44f56502a133f4740939",
+      "section": "关键操作顺序",
+      "text": "有机关秘典可以拿，机关匣可以召唤2个1阶故障机器人，视为召唤物，山鬼会吸收故障机器人并获得法力值。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-5237137b953a81f4ae2a1c",
+      "section": "关键操作顺序",
+      "text": "太乙真人复活效果最好给项羽，每回合可以增加两次图腾的等级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-5644b13abd14ab2eb106e1",
+      "section": "推荐天赋及原因",
+      "text": "金色天赋灵祭升华和生生不息优先获取，往生图腾变成山鬼时会触发灵祭升华效果；生生不息能让山鬼和机关傀儡获得复生效果。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-294186d8ed48eee21f5ada",
+      "section": "推荐天赋及原因",
+      "text": "优先选择增加能量，图腾相关或者找牌的天赋，优先选择大河精兵（4-5阶大河流域英雄3选1）、灵祭升华、命运图腾（召唤一个图腾和击败图腾的敌方英雄1换1）、熊魂附甲（穿戴2件装备的大河英雄阵亡召唤一个和自身等级相同的熊灵）。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-8994a52861f270be5dbadb",
+      "section": "推荐装备",
+      "text": "大司命装备推荐：铸梦·逐风、名刀·司命、不死鸟之眼；米莱狄装备推荐：法源之杯、自然法杖、破茧之衣。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-8c4787226d17ee1b676191",
+      "section": "定阵条件",
+      "text": "材料没有明确绑定棋手，本篇只保存已讲清的阵容共通操作；棋手专属技能与升级差异待确认，不把正文提及的英雄当成棋手。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-443c04c88cfcfa5415696e",
+      "section": "后期运营及应变",
+      "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        },
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-9b1edfde23390c66ae032c02084dd02d2cf10471db12ae99c1f050ffce438090",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document"
+    }
+  ],
+  "related": [],
+  "explicit_relationships": true,
+  "meta": {
+    "required_factions": [
+      "faction:dahe",
+      "faction:riluohai",
+      "faction:zhulu"
+    ],
+    "players": [],
+    "core_heroes": [
+      "card:5171"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5041",
+          "necessity": "required",
+          "role": "整备提高召唤物成长并提供低阶召唤物；山鬼可吸收，泳池路线可反复触发整备。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5271",
+          "necessity": "required",
+          "role": "持续召唤低阶单位供往生图腾吸收，牺牲也推进山鬼成长。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1351",
+          "necessity": "required",
+          "role": "牺牲为召唤物提供免控并推动往生图腾成长，复活可再触发牺牲。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "召唤先知图腾；海月自爆路线补受击单位，山鬼路线提供可用牺牲资源。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": "召唤往生图腾，山鬼路线以牺牲和吸收召唤物累积等级及法力值，转成主要召唤战力。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "required",
+          "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5041",
+          "necessity": "required",
+          "role": "整备提高召唤物成长并提供低阶召唤物；山鬼可吸收，泳池路线可反复触发整备。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5271",
+          "necessity": "required",
+          "role": "持续召唤低阶单位供往生图腾吸收，牺牲也推进山鬼成长。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1351",
+          "necessity": "required",
+          "role": "牺牲为召唤物提供免控并推动往生图腾成长，复活可再触发牺牲。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "召唤先知图腾；海月自爆路线补受击单位，山鬼路线提供可用牺牲资源。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": "召唤往生图腾，山鬼路线以牺牲和吸收召唤物累积等级及法力值，转成主要召唤战力。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "required",
+          "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5251",
+          "necessity": "required",
+          "role": "机关傀儡继承高等级队友或召唤物的临时等级，承担后期第二输出来源。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：大司命（召唤往生图腾，山鬼路线以牺牲和吸收召唤物累积等级及法力值，转成主要召唤战力。）、项羽（牺牲为召唤物提供免控并推动往生图腾成长，复活可再触发牺牲。）、鬼谷子（召唤先知图腾；海月自爆路线补受击单位，山鬼路线提供可用牺牲资源。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:riluohai",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：米莱狄（整备提高召唤物成长并提供低阶召唤物；山鬼可吸收，泳池路线可反复触发整备。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:zhulu",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：蒙恬（持续召唤低阶单位供往生图腾吸收，牺牲也推进山鬼成长。）、鲁班大师（机关傀儡继承高等级队友或召唤物的临时等级，承担后期第二输出来源。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": []
+  },
+  "reading_layout": {
+    "version": 3,
+    "claim_locations": {
+      "doc-46ef05a3c819beb35374f9": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-a9fadf5d14f830f171a68a": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-336ba86bacd3efb43d5457": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-c90bff18dbb6a1c6109822": [
+        "核心机制"
+      ],
+      "doc-ef22c6f2dcc423ed5a4b8e": [
+        "核心机制"
+      ],
+      "doc-50a7d8f1fe54b47148953b": [
+        "核心机制"
+      ],
+      "doc-0b27a02a3aa2ef4afb8630": [
+        "核心机制"
+      ],
+      "doc-6c9559d8d767e9f3d73d71": [
+        "关键操作顺序"
+      ],
+      "doc-9ca71f767ca7fa2760d68f": [
+        "关键操作顺序"
+      ],
+      "doc-4a44f56502a133f4740939": [
+        "关键操作顺序"
+      ],
+      "doc-5237137b953a81f4ae2a1c": [
+        "关键操作顺序"
+      ],
+      "doc-5644b13abd14ab2eb106e1": [
+        "推荐天赋"
+      ],
+      "doc-294186d8ed48eee21f5ada": [
+        "推荐天赋"
+      ],
+      "doc-8994a52861f270be5dbadb": [
+        "推荐装备"
+      ],
+      "doc-8c4787226d17ee1b676191": [
+        "定阵条件"
+      ],
+      "doc-443c04c88cfcfa5415696e": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ]
+    }
+  },
+  "path": "knowledge/lineups/山鬼召唤流.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "faction:riluohai": "日落海",
+    "faction:zhulu": "逐鹿",
+    "card:5171": "大司命",
+    "card:1971": "弈星",
+    "card:5041": "米莱狄",
+    "card:5271": "蒙恬",
+    "card:1351": "项羽",
+    "card:1891": "鬼谷子",
+    "card:1861": "太乙真人",
+    "card:5251": "鲁班大师"
+  },
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "revision": "30c90d54c515916ebc68"
+}

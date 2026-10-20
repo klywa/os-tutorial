@@ -1,0 +1,624 @@
+{
+  "id": "document-lineup-15",
+  "type": "lineup",
+  "title": "炸盾曜",
+  "aliases": [
+    "阿离炸盾曜"
+  ],
+  "entities": [
+    "card:1081",
+    "card:1181",
+    "card:1191",
+    "card:1211",
+    "card:1861",
+    "card:5221",
+    "card:5231",
+    "player:20"
+  ],
+  "core": [
+    "card:5221"
+  ],
+  "topic": "炸盾曜",
+  "claims": [
+    {
+      "id": "doc-ca80e7780b993628ebc3a8",
+      "section": "前期运营及应变",
+      "text": "1-3回合：1级拿孙膑和曜，可以等孙膑和曜都觉醒了再升二级，3回合竞拍墨子＞芈月＞西施",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-65c89b530b8059e3e6b006",
+      "section": "中期运营及应变",
+      "text": "4-7回合：棋手升3级，找齐阵容中的芈月、墨子、西施，觉醒阵容中的所有的英雄，曜有多少拿多少，7回合竞拍可以选择扁鹊和太乙真人",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-32a0e43f78026adf4db87d",
+      "section": "后期运营及应变",
+      "text": "8回合以后：棋手升5级补齐扁鹊和太乙真人，期间有加等级的效果牌也可以拿，英雄牌比如蒙犽也可以拿，后期操作就是不停的打合成和效果牌来提升曜的等级，11回合竞拍可以拿破镜之境、众星闪耀、众星拱月，缺装备可以拿军械库",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-e18e561d6c79adebd342bc",
+      "section": "核心机制",
+      "text": "这套阵容总体思路是孙膑在曜释放技能时可以为曜增加永久等级，曜合成时额外增加等级，芈月在使用效果牌时给曜增加等级，墨子在曜的护盾被击破时提供永久生命上限，西施的效果牌每回合减少曜的法力值上限，扁鹊在曜的护盾被击破时提供伤害，太乙真人提供复活。这一套阵容的其他6张英雄牌都能为曜提供强化",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-5622465d44b80d5a8f8b67",
+      "section": "关键操作顺序",
+      "text": "有青莲剑谱优先获取，对曜的提升很大，优先青莲剑谱 > 护命灵珠",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-f3b3ef4fdf210dc075ea7f",
+      "section": "关键操作顺序",
+      "text": "有天赋牌逐星优先获取，曜和李白同时上场，李白释放三次技能后可以卖掉，曜就学会了李白的技能，大幅提高曜的上限。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-65007c08485db35df7b8a7",
+      "section": "关键操作顺序",
+      "text": "前期锦囊牌如果有遗志，可以先拿着，在拿到遗志的情况下可以选择红叶染锋，后期如果打不赢也可以遗志曜转海月，博一手上限，打得赢就不转；没有遗志就不选择红叶染锋。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-c0846b7a299cfc236ce77f",
+      "section": "推荐天赋及原因",
+      "text": "优先选择给曜提供等级和伤害的的天赋，如逐鹿新援、破妄之刃、逐星。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-d6f9c290342a1bdc976a5b",
+      "section": "推荐装备",
+      "text": "曜装备推荐：不死鸟之眼、凝渊、红魔，特殊装备推荐青莲剑谱、护命灵珠。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-560cda7b905c496c5b4681",
+      "section": "推荐装备",
+      "text": "其他肉装给墨子，输出装给孙膑。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-d48be8cd4e099781740ea0",
+      "section": "棋手技能推荐",
+      "text": "阿离，技能要记得主动释放，曜大量击杀英雄解锁秘技牌，优先选择枫华之刃、一叶双生等增加伤害的秘技天赋，6级棋手天赋三选一，可以选择落英汲取。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-83fd6918ebf9ae0951093b",
+      "section": "后期运营及应变",
+      "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        },
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        },
+        {
+          "type": "document",
+          "source": "doc-25f57284a72a040d4e72508a3d2c4c4937ce4158463acc805209c1788131606a",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-b5835c0e777ae1b2c08a9e",
+      "section": "棋手技能推荐",
+      "text": "将枫叶舞给曜，更换主要输出后重新指定，利用其击杀推进秘技；强化选择与该英雄的普攻或技能伤害方式相符，不把所有强化优先级照搬给不同核心。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e10a283cb6a24e340879751d01626da7739c9f768e698862830f8113d29a4f2e",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        },
+        {
+          "type": "document",
+          "source": "doc-e10a283cb6a24e340879751d01626da7739c9f768e698862830f8113d29a4f2e",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "type": "document",
+          "source": "doc-e10a283cb6a24e340879751d01626da7739c9f768e698862830f8113d29a4f2e",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "origin": "document"
+    }
+  ],
+  "related": [
+    {
+      "id": "player-20",
+      "type": "player",
+      "title": "阿离",
+      "path": "knowledge/players/阿离.md"
+    }
+  ],
+  "explicit_relationships": true,
+  "meta": {
+    "required_factions": [
+      "faction:zhulu"
+    ],
+    "players": [
+      "player:20"
+    ],
+    "core_heroes": [
+      "card:5221"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1181",
+          "necessity": "optional",
+          "role": "用施法与效果牌养成提供持续伤害；在炸盾曜中以队友施法帮助曜成长。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5221",
+          "necessity": "optional",
+          "role": "通过同名合成增长等级，在芈月、西施、墨子和扁鹊配合下形成高频护盾与破盾伤害。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1181",
+          "necessity": "required",
+          "role": "用施法与效果牌养成提供持续伤害；在炸盾曜中以队友施法帮助曜成长。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5221",
+          "necessity": "required",
+          "role": "通过同名合成增长等级，在芈月、西施、墨子和扁鹊配合下形成高频护盾与破盾伤害。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": "效果牌触发时为装备目标提供等级，承担低阶养成核心的增长来源。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1081",
+          "necessity": "required",
+          "role": "曜护盾被击破时提高永久生命上限，放大持续站场与炸盾收益。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required",
+          "role": "以推演战术压低主要输出的法力值上限，提高施法频率。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1181",
+          "necessity": "required",
+          "role": "用施法与效果牌养成提供持续伤害；在炸盾曜中以队友施法帮助曜成长。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5221",
+          "necessity": "required",
+          "role": "通过同名合成增长等级，在芈月、西施、墨子和扁鹊配合下形成高频护盾与破盾伤害。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：越高越好；本路线持续以效果牌或合成提高核心输出，不设材料未支持的停级数字。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": "效果牌触发时为装备目标提供等级，承担低阶养成核心的增长来源。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1081",
+          "necessity": "required",
+          "role": "曜护盾被击破时提高永久生命上限，放大持续站场与炸盾收益。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required",
+          "role": "以推演战术压低主要输出的法力值上限，提高施法频率。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "required",
+          "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1191",
+          "necessity": "required",
+          "role": "队友护盾被击破时按生命上限造成范围法伤，把护盾循环转换成输出。 觉醒：优先觉醒；材料要求中后期补齐本体系质量，未齐前优先曜和孙膑。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:zhulu",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：曜（通过同名合成增长等级，在芈月、西施、墨子和扁鹊配合下形成高频护盾与破盾伤害。）、孙膑（用施法与效果牌养成提供持续伤害；在炸盾曜中以队友施法帮助曜成长。）、芈月（效果牌触发时为装备目标提供等级，承担低阶养成核心的增长来源。）、墨子（曜护盾被击破时提高永久生命上限，放大持续站场与炸盾收益。）、西施（以推演战术压低主要输出的法力值上限，提高施法频率。）、扁鹊（队友护盾被击破时按生命上限造成范围法伤，把护盾循环转换成输出。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "common_claim_refs": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:20",
+        "claim_refs": [
+          "doc-ca80e7780b993628ebc3a8",
+          "doc-65c89b530b8059e3e6b006",
+          "doc-32a0e43f78026adf4db87d",
+          "doc-e18e561d6c79adebd342bc",
+          "doc-5622465d44b80d5a8f8b67",
+          "doc-f3b3ef4fdf210dc075ea7f",
+          "doc-65007c08485db35df7b8a7",
+          "doc-c0846b7a299cfc236ce77f",
+          "doc-d6f9c290342a1bdc976a5b",
+          "doc-560cda7b905c496c5b4681",
+          "doc-d48be8cd4e099781740ea0",
+          "doc-83fd6918ebf9ae0951093b",
+          "doc-b5835c0e777ae1b2c08a9e"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {},
+        "assessment": [],
+        "selection": {}
+      }
+    ]
+  },
+  "reading_layout": {
+    "version": 3,
+    "claim_locations": {
+      "doc-ca80e7780b993628ebc3a8": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-65c89b530b8059e3e6b006": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-32a0e43f78026adf4db87d": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-e18e561d6c79adebd342bc": [
+        "核心机制"
+      ],
+      "doc-5622465d44b80d5a8f8b67": [
+        "关键操作顺序"
+      ],
+      "doc-f3b3ef4fdf210dc075ea7f": [
+        "关键操作顺序"
+      ],
+      "doc-65007c08485db35df7b8a7": [
+        "关键操作顺序"
+      ],
+      "doc-c0846b7a299cfc236ce77f": [
+        "推荐天赋"
+      ],
+      "doc-d6f9c290342a1bdc976a5b": [
+        "推荐装备"
+      ],
+      "doc-560cda7b905c496c5b4681": [
+        "推荐装备"
+      ],
+      "doc-d48be8cd4e099781740ea0": [
+        "棋手技能推荐"
+      ],
+      "doc-83fd6918ebf9ae0951093b": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-b5835c0e777ae1b2c08a9e": [
+        "棋手技能推荐"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "early.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-ca80e7780b993628ebc3a8"
+          ],
+          "claim_hashes": {
+            "doc-ca80e7780b993628ebc3a8": "8edf38d52280c2f6cc6a166fef53b694b9a8ce49a7e9268eb27d43a93a93fe40"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "early.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-ca80e7780b993628ebc3a8"
+          ],
+          "claim_hashes": {
+            "doc-ca80e7780b993628ebc3a8": "8edf38d52280c2f6cc6a166fef53b694b9a8ce49a7e9268eb27d43a93a93fe40"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-65c89b530b8059e3e6b006"
+          ],
+          "claim_hashes": {
+            "doc-65c89b530b8059e3e6b006": "27d6738737f2450d63519ad6ae262b1357063236a525b31b920a6d91ba77dd6e"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-65c89b530b8059e3e6b006"
+          ],
+          "claim_hashes": {
+            "doc-65c89b530b8059e3e6b006": "27d6738737f2450d63519ad6ae262b1357063236a525b31b920a6d91ba77dd6e"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-32a0e43f78026adf4db87d",
+            "doc-83fd6918ebf9ae0951093b"
+          ],
+          "claim_hashes": {
+            "doc-32a0e43f78026adf4db87d": "38e2d9945e1cc9509f97ded27f06b42d836b482c0a9cdcecefded5c0fb579d98",
+            "doc-83fd6918ebf9ae0951093b": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-83fd6918ebf9ae0951093b"
+          ],
+          "claim_hashes": {
+            "doc-83fd6918ebf9ae0951093b": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-83fd6918ebf9ae0951093b"
+          ],
+          "claim_hashes": {
+            "doc-83fd6918ebf9ae0951093b": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "equipment": {
+          "claim_refs": [
+            "doc-d6f9c290342a1bdc976a5b",
+            "doc-560cda7b905c496c5b4681"
+          ],
+          "claim_hashes": {
+            "doc-d6f9c290342a1bdc976a5b": "7e54ab6e1431945aa97229088cd9f630fff7fbc812543d7b051a92bfc82dbc4c",
+            "doc-560cda7b905c496c5b4681": "9b589fadb26c7dfc34942f5f4c81359546c5820b0ee16f77cb5c823f2a166288"
+          }
+        },
+        "talents": {
+          "claim_refs": [
+            "doc-c0846b7a299cfc236ce77f"
+          ],
+          "claim_hashes": {
+            "doc-c0846b7a299cfc236ce77f": "bef286fe11a0a4d006cdc87528075b459e6c30342576fc11084b241fbd9f63fa"
+          }
+        },
+        "skills": {
+          "claim_refs": [
+            "doc-d48be8cd4e099781740ea0",
+            "doc-b5835c0e777ae1b2c08a9e"
+          ],
+          "claim_hashes": {
+            "doc-d48be8cd4e099781740ea0": "5cdfdf8d445db9036b360465bd2b37e9b33b119359a9fd3646392090b9ca6587",
+            "doc-b5835c0e777ae1b2c08a9e": "090c95cd831d3fbeea124d90297fce5a276a00e2d1dbb9e49dfe6788bdf1a337"
+          }
+        }
+      }
+    }
+  },
+  "guide_related": [
+    {
+      "note": "player-20",
+      "title": "阿离",
+      "href": "../players/阿离.md",
+      "relation": "applicable_player"
+    }
+  ],
+  "path": "knowledge/lineups/炸盾曜.md",
+  "entity_names": {
+    "faction:zhulu": "逐鹿",
+    "player:20": "阿离",
+    "card:5221": "曜",
+    "card:1181": "孙膑",
+    "card:1211": "芈月",
+    "card:1081": "墨子",
+    "card:5231": "西施",
+    "card:1861": "太乙真人",
+    "card:1191": "扁鹊"
+  },
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "revision": "6b8f0996530f12ecb0e7"
+}

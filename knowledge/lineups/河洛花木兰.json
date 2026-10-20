@@ -7037,6 +7037,84 @@
           "end": 1167.19
         }
       ]
+    },
+    {
+      "id": "doc-cf0449227bc65878ddf81a",
+      "section": "棋手技能推荐",
+      "text": "朋友多多按使用时棋手等阶限制英雄品阶；已经取得奖励但花木兰等高阶核心尚不在奖励范围时，比较升阶后使用与眼前补牌保血，不机械固定同一回合开启。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        },
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-f77b32c29f7d7f9eb69e4c",
+      "section": "关键操作顺序",
+      "text": "使用如梦似幻前先核对河洛主体和当前缺牌；梦幻商店尽量服务于尚未觉醒的关键英雄，避免为无用过渡牌消耗寻找花木兰、上官婉儿及露娜的机会。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        },
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-e0719d1a657d2c384638e7",
+      "section": "关键操作顺序",
+      "text": "开局先选择战略再打英雄，基层提拔才能及时增益；拿到空降人才后，把高阶首张名额留给实际体系核心。至高决策可先打开，结合第二张战略与当前场面再确定选项。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+          "paragraph_start": 23,
+          "paragraph_end": 23
+        },
+        {
+          "type": "document",
+          "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        },
+        {
+          "type": "document",
+          "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        }
+      ],
+      "origin": "document"
     }
   ],
   "meta": {
@@ -7866,7 +7944,8 @@
           "hero-quality-zhuang",
           "tier-guide-zhuang-early",
           "tier-guide-zhuang-middle",
-          "tier-guide-zhuang-late"
+          "tier-guide-zhuang-late",
+          "doc-f77b32c29f7d7f9eb69e4c"
         ],
         "condition_refs": [
           "save-search"
@@ -8121,7 +8200,8 @@
           "hero-quality-naonao",
           "tier-guide-naonao-early",
           "tier-guide-naonao-middle",
-          "tier-guide-naonao-late"
+          "tier-guide-naonao-late",
+          "doc-cf0449227bc65878ddf81a"
         ],
         "condition_refs": [
           "n-opening"
@@ -8505,7 +8585,8 @@
           "hero-quality-ying",
           "tier-guide-ying-early",
           "tier-guide-ying-middle",
-          "tier-guide-ying-late"
+          "tier-guide-ying-late",
+          "doc-e0719d1a657d2c384638e7"
         ],
         "condition_refs": [
           "ying-resource"
@@ -65869,6 +65950,12 @@
         "lineup_adaptations": null
       },
       "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.725602+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
     }
   ],
   "conflicts": [],
@@ -65914,7 +66001,7 @@
       "path": "knowledge/players/嬴律.md"
     }
   ],
-  "revision": "6b8f43b1fcad346be8c2",
+  "revision": "193aed4a65f3e6302a7f",
   "reading_layout": {
     "version": 3,
     "claim_locations": {
@@ -66346,6 +66433,15 @@
       "tier-guide-ying-late": [
         "阵容组成与运营节奏",
         "后期英雄组成与运营"
+      ],
+      "doc-cf0449227bc65878ddf81a": [
+        "棋手技能推荐"
+      ],
+      "doc-f77b32c29f7d7f9eb69e4c": [
+        "关键操作顺序"
+      ],
+      "doc-e0719d1a657d2c384638e7": [
+        "关键操作顺序"
       ]
     },
     "coverage": {

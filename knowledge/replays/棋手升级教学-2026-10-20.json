@@ -10820,6 +10820,12 @@
             "lineup_adaptations": null
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.677967+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md",
@@ -11343,7 +11349,7 @@
       },
       "manual_sections": [],
       "conflicts": [],
-      "revision": "dc689118f16682b0438b",
+      "revision": "640ca2bf30cb8a2c2b8b",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -11742,6 +11748,18 @@
               "start": 0,
               "end": 204.7,
               "frame": "frames/20-0.jpg"
+            },
+            {
+              "type": "document",
+              "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+              "paragraph_start": 2,
+              "paragraph_end": 2
+            },
+            {
+              "type": "document",
+              "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+              "paragraph_start": 3,
+              "paragraph_end": 3
             }
           ],
           "kind": "mechanic",
@@ -11944,6 +11962,60 @@
               "end": 174.8
             }
           ]
+        },
+        {
+          "id": "doc-2f4bc04958026a50ab4f00",
+          "section": "适用技巧",
+          "text": "开局冰之心可以指定苏烈，阵亡等级+2，指定孙尚香可以获得一次免费刷新。每回合都用技能冰冻英雄，5回合之后根据第一张深度冻结选择后续冰冻对象。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+              "paragraph_start": 23,
+              "paragraph_end": 23
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-239b394e85beffe59a54f3",
+          "section": "适用打法与选择",
+          "text": "昭君大河敖隐的核心是快速寻找阵容体系卡。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-2c33c214cf84a3e18a763d",
+          "section": "适用打法与选择",
+          "text": "全五阶阵容尽量不使用敖隐、武则天，敖隐依赖图腾牌提升战力，武则天偏功能型卡牌，推荐使用海月、姜子牙、杨玉环、吕布，也可以根据装备选择适合的五阶主要输出英雄.",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+              "paragraph_start": 25,
+              "paragraph_end": 25
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -11960,6 +12032,18 @@
           "title": "河洛花木兰",
           "relation": "recommended_lineup",
           "path": "knowledge/lineups/河洛花木兰.md"
+        },
+        {
+          "id": "document-lineup-9",
+          "type": "lineup",
+          "title": "七五高阶组合",
+          "path": "knowledge/lineups/七五高阶组合.md"
+        },
+        {
+          "id": "document-lineup-10",
+          "type": "lineup",
+          "title": "冻结全五阶",
+          "path": "knowledge/lineups/冻结全五阶.md"
         }
       ],
       "path": "knowledge/players/昭君.md",
@@ -12456,10 +12540,16 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.677967+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
-      "revision": "2bb203b4a631344f47c2",
+      "revision": "52ed1b9cc9a511f56d75",
       "lineup_adaptations": [
         {
           "lineup": "zhaojun-high-tier-dahe",
@@ -12551,6 +12641,28 @@
           ],
           "advantages": "冻结补高阶牌与成长，条件到位时保留第二输出。",
           "disadvantages": "变化不保证花木兰，露娜循环受强化与公共牌库限制。"
+        },
+        {
+          "lineup": "document-lineup-9",
+          "branch": "owner",
+          "title": "七五高阶组合",
+          "path": "knowledge/lineups/七五高阶组合-昭君.md",
+          "selection": {},
+          "required_factions": [
+            "三分"
+          ],
+          "advantages": "暂无已确认结论",
+          "disadvantages": "暂无已确认结论"
+        },
+        {
+          "lineup": "document-lineup-10",
+          "branch": "owner",
+          "title": "冻结全五阶",
+          "path": "knowledge/lineups/冻结全五阶-昭君.md",
+          "selection": {},
+          "required_factions": [],
+          "advantages": "暂无已确认结论",
+          "disadvantages": "暂无已确认结论"
         }
       ],
       "explicit_relationships": true,
@@ -12636,10 +12748,16 @@
             "lineup_adaptations": null
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.677967+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
-      "revision": "bcb8051d64bf4f2d928a"
+      "revision": "7e9a3f326478cec8a389"
     },
     {
       "id": "angela-liubang-totems",
@@ -26071,10 +26189,16 @@
             "lineup_adaptations": null
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.681966+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
-      "revision": "85e590380848218cf17f",
+      "revision": "deb5c67290852b601949",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -26484,6 +26608,30 @@
               "start": 0,
               "end": 57.92,
               "frame": "frames/20-0.jpg"
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 4,
+              "paragraph_end": 4
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 5,
+              "paragraph_end": 5
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 8,
+              "paragraph_end": 8
             }
           ],
           "id": "claim-45b9cd8d8a983da83712"
@@ -26512,6 +26660,24 @@
               "source": "BV1Jjao66ELh:p1",
               "start": 1054.76,
               "end": 1104.9
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 10,
+              "paragraph_end": 10
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 12,
+              "paragraph_end": 12
+            },
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 36,
+              "paragraph_end": 36
             }
           ],
           "id": "claim-53e27f8e0cdd5f6e01ce"
@@ -26701,6 +26867,276 @@
               "end": 1332.45
             }
           ]
+        },
+        {
+          "id": "doc-f81f3d7db5a89e8bceeb12",
+          "section": "适用技巧",
+          "text": "【奇想·效果牌】每使用3张效果牌获得1点神秘力量，适配逐鹿阵容或河洛，古币属于效果牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-9bddc9c2369b92a64f785e",
+          "section": "适用技巧",
+          "text": "【奇想·英雄牌】每使用3张英雄牌获得1点神秘力量，适配三分倒转等不断刷牌打牌的阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-eca39b0b257c6812534df2",
+          "section": "适用技巧",
+          "text": "【奇想·低阶牌】拥有至少4张1-3阶牌，每回合之后获得2点神秘力量，适配低价大河或者日落后低阶阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 18,
+              "paragraph_end": 18
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-964257edde3ec0ee805726",
+          "section": "适用技巧",
+          "text": "【奇想·高阶牌】拥有至少2张5阶牌，每回合获得5点神秘力量，适配有5阶英雄的阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-7acbba287384128c621b40",
+          "section": "适用技巧",
+          "text": "【奇想·联合】拥有至少4个阵营，每回合获得4点神秘力量，适配多阵营的阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 20,
+              "paragraph_end": 20
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-c88f223ddd1bd4bc7ec279",
+          "section": "适用技巧",
+          "text": "【奇想·阵营】拥有至少4名同阵营英雄，每回合获得2点神秘力量，适配同阵营的阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 21,
+              "paragraph_end": 21
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-8924141a9255d84365155f",
+          "section": "适用技巧",
+          "text": "【奇想·进化】每名英雄的等级达到10/40/100时，各获得2点神秘力量，适配全员等级要提升的阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 22,
+              "paragraph_end": 22
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-3d778e1ca2ceade7fa6ba6",
+          "section": "适用技巧",
+          "text": "【奇想·胜利】每次胜利获得3点神秘力量，这个适配任何阵容，只要胜利即可，但是不稳定，一旦输了就恶性循环。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 23,
+              "paragraph_end": 23
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-036616524a83acf3e002e9",
+          "section": "适用技巧",
+          "text": "【奇想·补给】棋手生命值低于50/25时，分别获得10/20点神秘力量，一共可以获得30点神秘力量，但是上限较低。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-80cd7bbfb915b681da963e",
+          "section": "适用技巧",
+          "text": "【奇想·奖励】每使用6点能量，奖励1点神秘力量，通用均适配。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 25,
+              "paragraph_end": 25
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-a8b494ec34b1cc7d1e6689",
+          "section": "适用技巧",
+          "text": "【奇想·灵活】场上至少有4名无阵营英雄，每回合获得4点神秘力量。适配无阵营阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 26,
+              "paragraph_end": 26
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-850f259eafa8be132565b4",
+          "section": "适用技巧",
+          "text": "【奇想·精锐】场上英雄少于5名英雄，每回合获得4点神秘力量。适配4人组阵容。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 27,
+              "paragraph_end": 27
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-fdaf7ea42363f93e002657",
+          "section": "适用技巧",
+          "text": "当第一次选择强化的方向后，后续的强化就延续这个方向，比如玩自爆后续就选相关的，如果没刷新到自爆，强化和削弱都是备选不错的，能与自爆联动更好。选择强化方向的原则是要与想要玩的阵容相关的，如炸盾廉颇，应该优先选择强化链接英雄类，放大廉颇的自身强度。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 33,
+              "paragraph_end": 33
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-a371e8c470c5ec4ed194fe",
+          "section": "适用打法与选择",
+          "text": "安琪拉的秘技强化模块除了削弱敌方类以外，另外三类都是可以构建阵容的方向。但是经过测试强化飞行器相关的模块强度一般，与自爆类和强化英雄类的模块相差较多。所以目前主流的安琪拉玩法都是围绕着自爆流和强化英雄的。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 38,
+              "paragraph_end": 38
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-7365c502a5a396b03003ef",
+          "section": "适用打法与选择",
+          "text": "强化模块选择【拿来吧你】【坐火箭】【变胖】【节能】【壮胆】都是不错的。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+              "paragraph_start": 40,
+              "paragraph_end": 40
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -26710,6 +27146,12 @@
           "title": "安琪拉养刘邦（图腾成长）",
           "relation": "recommended_lineup",
           "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+        },
+        {
+          "id": "document-lineup-5",
+          "type": "lineup",
+          "title": "飞行器自爆海月",
+          "path": "knowledge/lineups/飞行器自爆海月.md"
         }
       ],
       "path": "knowledge/players/安琪拉.md",
@@ -27175,10 +27617,16 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.681966+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
-      "revision": "3fedf403cd1d6d718bc8",
+      "revision": "2fccdc96ceb604c35443",
       "lineup_adaptations": [
         {
           "lineup": "angela-liubang-totems",
@@ -27227,6 +27675,18 @@
           ],
           "advantages": "刘邦图腾永久成长，飞行器与明世隐支持等级转化。",
           "disadvantages": "近战易被风筝，缺扁鹊时炸盾路线受损；工具位与人口取舍影响成长。"
+        },
+        {
+          "lineup": "document-lineup-5",
+          "branch": "owner",
+          "title": "飞行器自爆海月",
+          "path": "knowledge/lineups/飞行器自爆海月-安琪拉.md",
+          "selection": {},
+          "required_factions": [
+            "大河"
+          ],
+          "advantages": "暂无已确认结论",
+          "disadvantages": "暂无已确认结论"
         }
       ],
       "explicit_relationships": true,
@@ -30016,6 +30476,348 @@
               "end": 148.1
             }
           ]
+        },
+        {
+          "id": "doc-a2657e4e51a0b10aa4709c",
+          "section": "前期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 常小娥棋手前期不需要刷新也不需要升级，只需要用免费刷新来购买需要的牌，前期挂机到五回合，然后先使用小菟助力，再上阵弈星连续升级棋手至3级。（前期锦囊如果有研读会，不要立刻使用，会打乱升级节奏）",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 5,
+              "paragraph_end": 5
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-79274a14d5196d9f9ec005",
+          "section": "前期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 1-3回合，前期单挂干将，装备有法源之杯优先合成法源之杯更快释放技能。每回合使用小菟助力，只有3能量可以锁商店不要着急购买英雄导致用不了小菟助力，非常拖节奏。期间不主动升级，有弈星可以买一张留在手牌里。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-09490a43bc861e8dd214be",
+          "section": "中期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 这套阵容的难点在于常小娥棋手前期强度较低，前期天赋优先选择提升当下战力的，其次选择经济天赋，如果有回血天赋优先拿。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-b1bbb37c76a3a56707604e",
+          "section": "中期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 中期的目标是继续稳血，能量够了就直接升级，遇到体系牌只拿一张，不必觉醒。优先任务是升到六级，解锁月之特调，之后才能获得更多小菟送福提升战力。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 7,
+              "paragraph_end": 7
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-2ce0ce02609a6e5cb5d4e3",
+          "section": "中期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 这是一套后期发力的阵容，9回合大部分阵容成型，如果此时血量低于35，可以用攒下来的免费刷新搜牌，先搜到能暂时用的牌，不必强求阵容预先定好的棋子，等后期开出遗志或者换帅再转移等级。记住：阵容的主要目标是活到后期，棋手六级后才会迎来质变。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-882475d7fccb96d9db3724",
+          "section": "中期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 4-8回合，先使用小菟助力再上阵拍卖棋子，五回合上阵一张弈星，连续升级棋手至棋手三阶，然后再卖掉弈星，防止等级加在弈星身上。后续每回合使用小菟助力即可。第二次拍卖优先诸葛亮其次杨玉环，四级可以利用免费刷新寻找诸葛亮，找到诸葛亮，可以根据场面质量和自身血量决定使不使用小菟送福，如果场上质量够或血量健康可以先留着，四人组集齐后再使用效果最大化。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-80cac48ebc4125b495befc",
+          "section": "后期运营及应变",
+          "text": "**干将过渡诸葛亮施法：** 9回合后，主要任务是升棋手六阶。搜齐阵容后使用小菟送福，每回合只需要先打出金色的小菟送福再打出蓝色的小菟助力即可（先用小菟送福可以给小菟助力叠加更多等级）。棋手六级后可以在商店购买提升等级类的卡，加快等级积累。（小菟送福需要场上英雄达到一定等级才能获取）。决赛圈看情况上太乙、钟馗、瑶。由于嫦娥棋手的特性，可以多留几张在手上，用完技能之后再上场，也可以利用杨玉环觉醒钟馗，对决战回合的提升会非常大。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-8f6d627f9ad1e118338c90",
+          "section": "推荐装备",
+          "text": "**干将过渡诸葛亮施法：** 诸葛亮：法强装贤者之书，自然法杖、魔律之刃。（诸葛亮无需回蓝，蓝量靠干将和杨玉环施法叠加，回蓝装优先给干将或杨玉环。）",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 10,
+              "paragraph_end": 10
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-2deac05766ad411c5bd296",
+          "section": "推荐装备",
+          "text": "**干将过渡诸葛亮施法：** 杨玉环、干将：优先圣杯，其次是提供法力值的装备。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 11,
+              "paragraph_end": 11
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-258fb9ae8412f79559dac0",
+          "section": "推荐装备",
+          "text": "**干将过渡诸葛亮施法：** 刘禅：阵容主坦，优先提升坦度，霸者重铠、不祥征兆。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ef76f6b61f33d6d9a253ebf4b60d1552f19426a01cc561a2f24220536f5a0b94",
+              "paragraph_start": 12,
+              "paragraph_end": 12
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-4e6122c723f4ed149cfe2f",
+          "section": "前期运营及应变",
+          "text": "**狂铁转艾琳：** 开局只需要单挂狂铁，常小娥每回合丢小兔子给狂铁叠等级，优先觉醒狂铁，稳住前期血量，后续如果开到遗志或传承直接把狂铁的全部等级传给艾琳，之后狂铁下场，换雅典娜/海月当前排，保障艾琳输出环境。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 4,
+              "paragraph_end": 4
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-d31eca23cf03549c55cd33",
+          "section": "前期运营及应变",
+          "text": "**狂铁转艾琳：** 前期1‑3回合（蓄力过渡）场上只上单狂铁，每回合必须释放小菟助力，全部喂狂铁，尽快合成觉醒狂铁。不D商店，不主动升级，攒够升三级的钱，买张弈星再直接连升到三级然后卖掉，避免弈星吃到等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-76794ae81ba6b2456b342b",
+          "section": "中期运营及应变",
+          "text": "**狂铁转艾琳：** 中期搜到艾琳、瑶直接上场，艾琳身板较脆，瑶套盾保护艾琳，避免被海月、爆发卡直接秒杀，这个阶段瑶不必追觉醒，中期的主要任务是升级棋手，棋手升到6级，解锁大招月之特调之后，阵容才会迎来质变。（原因：解锁月之特调会进一步放大等级、属性加成，棋手6级后提供等级时，英雄属性会同步增强。）",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 5,
+              "paragraph_end": 5
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-b8f7e7f537025cf0b0b764",
+          "section": "中期运营及应变",
+          "text": "**狂铁转艾琳：** 月之特调（棋手6级大招）：进一步放大等级、属性加成，是阵容真正的爆发节点，中期在保证战力的情况下优先升级棋手到6级。（前中期可以看情况选择战力类天赋让棋手少掉血，确保棋手能升到6级）。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 10,
+              "paragraph_end": 10
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-3f7d362ae4d57434c65bb1",
+          "section": "中期运营及应变",
+          "text": "**狂铁转艾琳：** 中期4‑10回合（蓄力，冲棋手6级）6级是阵容真正的爆发节点，解锁月之特调进一步放大等级、属性加成。不要疯狂刷新商店，继续升级。四级后有免费刷新可以点，遇到明世隐、瑶直接拿，但无需觉醒。严格保持上场4个人之内，全力冲棋手等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-a2d822afd9641b01556ed1",
+          "section": "后期运营及应变",
+          "text": "**狂铁转艾琳：** 艾琳100级后解锁全场飞行，在地图游走输出，拉扯敌方所有单位，高等级后攻速拉满，持续输出清场，克制近战阵容。（这套阵容惧怕高额反伤，遇到反甲阵容，艾琳装备一定要补吸血。）",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-4c20ae4f8eb436aca4aa38",
+          "section": "后期运营及应变",
+          "text": "**狂铁转艾琳：** 决赛圈11回合以后（终极成型）6级开始大D，补齐体系卡。每回合扔技能即可，先扔金色的（小菟送福）再扔蓝色的（小菟助力），等艾琳等级突破100级，就可以锁血。大决战可以存一个太乙给艾琳挂复活。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-fab9a277d216d8e65a2526",
+          "section": "推荐装备",
+          "text": "**狂铁转艾琳：** 主要输出英雄艾琳（输出核心，装备优先全部给到艾琳）：核心三件套：炽热支配者 + 寒霜侵袭 + 纯净苍穹",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 12,
+              "paragraph_end": 12
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-890b06398cfa49dd4f8be1",
+          "section": "推荐装备",
+          "text": "**狂铁转艾琳：** 功能核心瑶（开局控制对方核心）：破茧之衣",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ca2090433f9ef01ef346ae39ff7cc2a8327adafa8709e266a1736c3e391385d2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            }
+          ],
+          "origin": "document"
         }
       ],
       "meta": {
@@ -30243,6 +31045,60 @@
             ],
             "variant_ids": [
               "sulie-skill"
+            ]
+          },
+          {
+            "id": "doc-cast-zhuge",
+            "name": "干将过渡诸葛亮施法",
+            "condition": "采用对应开局与核心；血量压力先处理即时战力",
+            "advantages": "分别保留单核成长与施法联动",
+            "risks": "六阶前有战力空窗，不保证固定回合能启动",
+            "transition": "关键牌缺失时保留等级转移牌，不硬等固定名单",
+            "phases": {
+              "early": [
+                "doc-a2657e4e51a0b10aa4709c",
+                "doc-79274a14d5196d9f9ec005"
+              ],
+              "middle": [
+                "doc-09490a43bc861e8dd214be",
+                "doc-b1bbb37c76a3a56707604e",
+                "doc-2ce0ce02609a6e5cb5d4e3",
+                "doc-882475d7fccb96d9db3724"
+              ],
+              "late": [
+                "doc-80cac48ebc4125b495befc"
+              ]
+            },
+            "claim_refs": [],
+            "variant_ids": [
+              "doc-cast-zhuge-late"
+            ]
+          },
+          {
+            "id": "doc-ailin",
+            "name": "狂铁转艾琳",
+            "condition": "采用对应开局与核心；血量压力先处理即时战力",
+            "advantages": "分别保留单核成长与施法联动",
+            "risks": "六阶前有战力空窗，不保证固定回合能启动",
+            "transition": "关键牌缺失时保留等级转移牌，不硬等固定名单",
+            "phases": {
+              "early": [
+                "doc-4e6122c723f4ed149cfe2f",
+                "doc-d31eca23cf03549c55cd33"
+              ],
+              "middle": [
+                "doc-76794ae81ba6b2456b342b",
+                "doc-b8f7e7f537025cf0b0b764",
+                "doc-3f7d362ae4d57434c65bb1"
+              ],
+              "late": [
+                "doc-a2d822afd9641b01556ed1",
+                "doc-4c20ae4f8eb436aca4aa38"
+              ]
+            },
+            "claim_refs": [],
+            "variant_ids": [
+              "doc-ailin-late"
             ]
           }
         ],
@@ -31228,6 +32084,95 @@
             "claim_refs": [
               "combo-spring-flash",
               "hero-quality-four-member-investment"
+            ]
+          },
+          {
+            "id": "doc-cast-zhuge-late",
+            "name": "干将过渡诸葛亮施法",
+            "condition": "按过渡、来牌和等级转移条件采用，不能与其他四人组合拼接",
+            "members": [
+              {
+                "hero": "card:1901",
+                "necessity": "required",
+                "role": "通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "施法给队友提供临时等级并承担前排，为高频法术核心增加战斗成长。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1821",
+                "necessity": "required",
+                "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:1901"
+            ],
+            "required_factions": [],
+            "ban_conditions": [],
+            "ban_combinations": [],
+            "claim_refs": [
+              "doc-80cac48ebc4125b495befc"
+            ]
+          },
+          {
+            "id": "doc-ailin-late",
+            "name": "狂铁转艾琳",
+            "condition": "按过渡、来牌和等级转移条件采用，不能与其他四人组合拼接",
+            "members": [
+              {
+                "hero": "card:3551",
+                "necessity": "required",
+                "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "required",
+                "role": "附身保护主要输出，提供护盾、属性及控制；普通装备分享按目标与装备顺序安排。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "连线实际成长核心，将战斗临时等级转成永久等级；登场与唤醒增加转化额度。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "necessity": "required",
+                "role": "承接等级与护盾收益，以技能和牺牲打范围伤害；在飞行器路线中承担连接目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:3551"
+            ],
+            "required_factions": [],
+            "ban_conditions": [],
+            "ban_combinations": [],
+            "claim_refs": [
+              "doc-a2d822afd9641b01556ed1",
+              "doc-4c20ae4f8eb436aca4aa38"
             ]
           }
         ],
@@ -37801,6 +38746,12 @@
             "lineup_adaptations": null
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.683967+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -37840,9 +38791,119 @@
           "type": "lineup",
           "title": "河洛花木兰",
           "path": "knowledge/lineups/河洛花木兰.md"
+        },
+        {
+          "id": "player-24",
+          "type": "player",
+          "title": "常小娥",
+          "path": "knowledge/players/常小娥.md"
+        },
+        {
+          "id": "document-lineup-1",
+          "type": "lineup",
+          "title": "三分频繁施法诸葛亮",
+          "path": "knowledge/lineups/三分频繁施法诸葛亮.md"
+        },
+        {
+          "id": "document-lineup-2",
+          "type": "lineup",
+          "title": "古币镜",
+          "path": "knowledge/lineups/古币镜.md"
+        },
+        {
+          "id": "document-lineup-3",
+          "type": "lineup",
+          "title": "效果牌养成孙膑",
+          "path": "knowledge/lineups/效果牌养成孙膑.md"
+        },
+        {
+          "id": "document-lineup-4",
+          "type": "lineup",
+          "title": "开团整备韩信",
+          "path": "knowledge/lineups/开团整备韩信.md"
+        },
+        {
+          "id": "document-lineup-5",
+          "type": "lineup",
+          "title": "飞行器自爆海月",
+          "path": "knowledge/lineups/飞行器自爆海月.md"
+        },
+        {
+          "id": "document-lineup-6",
+          "type": "lineup",
+          "title": "山鬼召唤流",
+          "path": "knowledge/lineups/山鬼召唤流.md"
+        },
+        {
+          "id": "document-lineup-7",
+          "type": "lineup",
+          "title": "庄小鱼无阵营",
+          "path": "knowledge/lineups/庄小鱼无阵营.md"
+        },
+        {
+          "id": "document-lineup-8",
+          "type": "lineup",
+          "title": "泳池召唤流",
+          "path": "knowledge/lineups/泳池召唤流.md"
+        },
+        {
+          "id": "document-lineup-9",
+          "type": "lineup",
+          "title": "七五高阶组合",
+          "path": "knowledge/lineups/七五高阶组合.md"
+        },
+        {
+          "id": "document-lineup-10",
+          "type": "lineup",
+          "title": "冻结全五阶",
+          "path": "knowledge/lineups/冻结全五阶.md"
+        },
+        {
+          "id": "document-lineup-11",
+          "type": "lineup",
+          "title": "虎轲夺取流",
+          "path": "knowledge/lineups/虎轲夺取流.md"
+        },
+        {
+          "id": "document-lineup-12",
+          "type": "lineup",
+          "title": "纸伞守约",
+          "path": "knowledge/lineups/纸伞守约.md"
+        },
+        {
+          "id": "document-lineup-13",
+          "type": "lineup",
+          "title": "纸伞狄仁杰",
+          "path": "knowledge/lineups/纸伞狄仁杰.md"
+        },
+        {
+          "id": "document-lineup-14",
+          "type": "lineup",
+          "title": "纸伞猫",
+          "path": "knowledge/lineups/纸伞猫.md"
+        },
+        {
+          "id": "document-lineup-15",
+          "type": "lineup",
+          "title": "炸盾曜",
+          "path": "knowledge/lineups/炸盾曜.md"
+        },
+        {
+          "id": "document-lineup-16",
+          "type": "lineup",
+          "title": "大河开团射",
+          "path": "knowledge/lineups/大河开团射.md"
         }
       ],
-      "revision": "c5b5a4c80dd01d8db208"
+      "revision": "decbc3aab6cd8b588304",
+      "guide_related": [
+        {
+          "note": "player-24",
+          "title": "常小娥",
+          "href": "../players/常小娥.md",
+          "relation": "applicable_player"
+        }
+      ]
     },
     {
       "id": "yaomei-sacrifice-lixin",
@@ -40467,6 +41528,36 @@
               "frame": "frames/117-35.jpg"
             }
           ]
+        },
+        {
+          "id": "doc-93f942cf53fa2df4e63d5d",
+          "section": "关键操作顺序",
+          "text": "前期先用有效过渡战力争取小鹿胜场成长；确定河洛方向后，升级前可考虑保留对应阵营英雄。李信与明世隐优先觉醒，唤醒留给确有临时等级可转化的明世隐。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 22,
+              "paragraph_end": 22
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 27,
+              "paragraph_end": 27
+            }
+          ],
+          "origin": "document"
         }
       ],
       "meta": {
@@ -40870,7 +41961,8 @@
               "tier-guide-yaomei-late-four-core",
               "tier-guide-yaomei-early-four-hold",
               "tier-guide-yaomei-middle-four-hold",
-              "tier-guide-yaomei-late-four-hold"
+              "tier-guide-yaomei-late-four-hold",
+              "doc-93f942cf53fa2df4e63d5d"
             ],
             "condition_refs": [
               "growth-deer",
@@ -90345,6 +91437,12 @@
             "lineup_adaptations": null
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.703967+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -90358,7 +91456,7 @@
           "path": "knowledge/players/瑶妹.md"
         }
       ],
-      "revision": "1808497dc1644e3bbcfa",
+      "revision": "8273e3d755c63a195dc7",
       "manual_fields": [
         "title"
       ],
@@ -90636,6 +91734,9 @@
           "tier-guide-yaomei-late-four-hold": [
             "阵容组成与运营节奏",
             "后期英雄组成与运营"
+          ],
+          "doc-93f942cf53fa2df4e63d5d": [
+            "关键操作顺序"
           ]
         },
         "coverage": {
@@ -98103,6 +99204,84 @@
               "end": 1167.19
             }
           ]
+        },
+        {
+          "id": "doc-cf0449227bc65878ddf81a",
+          "section": "棋手技能推荐",
+          "text": "朋友多多按使用时棋手等阶限制英雄品阶；已经取得奖励但花木兰等高阶核心尚不在奖励范围时，比较升阶后使用与眼前补牌保血，不机械固定同一回合开启。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            },
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-f77b32c29f7d7f9eb69e4c",
+          "section": "关键操作顺序",
+          "text": "使用如梦似幻前先核对河洛主体和当前缺牌；梦幻商店尽量服务于尚未觉醒的关键英雄，避免为无用过渡牌消耗寻找花木兰、上官婉儿及露娜的机会。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            },
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-e0719d1a657d2c384638e7",
+          "section": "关键操作顺序",
+          "text": "开局先选择战略再打英雄，基层提拔才能及时增益；拿到空降人才后，把高阶首张名额留给实际体系核心。至高决策可先打开，结合第二张战略与当前场面再确定选项。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 23,
+              "paragraph_end": 23
+            },
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            },
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 25,
+              "paragraph_end": 25
+            }
+          ],
+          "origin": "document"
         }
       ],
       "meta": {
@@ -98932,7 +100111,8 @@
               "hero-quality-zhuang",
               "tier-guide-zhuang-early",
               "tier-guide-zhuang-middle",
-              "tier-guide-zhuang-late"
+              "tier-guide-zhuang-late",
+              "doc-f77b32c29f7d7f9eb69e4c"
             ],
             "condition_refs": [
               "save-search"
@@ -99187,7 +100367,8 @@
               "hero-quality-naonao",
               "tier-guide-naonao-early",
               "tier-guide-naonao-middle",
-              "tier-guide-naonao-late"
+              "tier-guide-naonao-late",
+              "doc-cf0449227bc65878ddf81a"
             ],
             "condition_refs": [
               "n-opening"
@@ -99571,7 +100752,8 @@
               "hero-quality-ying",
               "tier-guide-ying-early",
               "tier-guide-ying-middle",
-              "tier-guide-ying-late"
+              "tier-guide-ying-late",
+              "doc-e0719d1a657d2c384638e7"
             ],
             "condition_refs": [
               "ying-resource"
@@ -156935,6 +158117,12 @@
             "lineup_adaptations": null
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.725602+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -156980,7 +158168,7 @@
           "path": "knowledge/players/嬴律.md"
         }
       ],
-      "revision": "6b8f43b1fcad346be8c2",
+      "revision": "193aed4a65f3e6302a7f",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -157412,6 +158600,15 @@
           "tier-guide-ying-late": [
             "阵容组成与运营节奏",
             "后期英雄组成与运营"
+          ],
+          "doc-cf0449227bc65878ddf81a": [
+            "棋手技能推荐"
+          ],
+          "doc-f77b32c29f7d7f9eb69e4c": [
+            "关键操作顺序"
+          ],
+          "doc-e0719d1a657d2c384638e7": [
+            "关键操作顺序"
           ]
         },
         "coverage": {
@@ -158892,6 +160089,240 @@
               "frame": "frames/1495-0.jpg"
             }
           ]
+        },
+        {
+          "id": "doc-783a6b71f1b480cf88ff0a",
+          "section": "技能",
+          "text": "棋手技能：游戏开始时，召唤一只小鹿前来助阵，小鹿每回合等级+2，上回合战斗胜利则+4。开局就能给予玩家一个高质量前排，帮助玩家稳定过渡。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 2,
+              "paragraph_end": 2
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-ed182f416fac3dd421b9e0",
+          "section": "技能",
+          "text": "棋手秘技：每经过3个回合，自动获得1张秘笈牌神奇小鹿。瑶妹的秘技是棋手的灵魂技能，能给予小鹿新的能力：嘲讽周围一格的敌人只攻击小鹿、携带装备、召唤分身、分享等级、等级翻倍。其中最关键的是分享等级和等级翻倍，只要站位得当，C位后期可以吃满小鹿分享的等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 3,
+              "paragraph_end": 3
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-8c2f98873a4524e27f9633",
+          "section": "技能",
+          "text": "专属天赋：专属天赋是棋手后期上限所在，既能提升小鹿的等级，还可以获得一件特殊装备，配合小鹿自身的坦度可以更好的保护C位的安全。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 4,
+              "paragraph_end": 4
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-5d59de3417dbd20dd9d761",
+          "section": "前期思路",
+          "text": "注：如果没有以上天赋的话，优先选择以下天赋，如全军列阵、援军、无影手。这些天赋可以帮助我们快速找到阵容核心卡牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-c236294da89f2770ef4525",
+          "section": "前期思路",
+          "text": "玩瑶妹最关键的点在于前期一定要保证连胜，这样既能多提升小鹿的等级，还能有足够的血量撑到获得瑶妹所有的秘技，所以前几回合不要着急提升棋手等级，多花费能量购买英雄上满人口。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 22,
+              "paragraph_end": 22
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-beea16f1bc07d8d1e3f1e9",
+          "section": "前期思路",
+          "text": "可以上场牛魔和干将等英雄牌，保证前期强度的同时还能获得额外的能量收益。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 23,
+              "paragraph_end": 23
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-d6ecdc17483820716b239f",
+          "section": "前期思路",
+          "text": "在确定要玩哪套阵容的情况下，可以上场相关阵营的英雄牌，再提升棋手等级，可以开到其阵营的相关天赋拔高上限。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-4bee9051cf8d0e3edb8660",
+          "section": "适用技巧",
+          "text": "后期可以选择将肉装给小鹿佩戴，让小鹿扛更久的伤害最后再阵亡。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 26,
+              "paragraph_end": 26
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-572e916c2535e25f255671",
+          "section": "适用打法与选择",
+          "text": "**已知打法方向：** 牺牲李信\n\n主要输出英雄为李信，他的卡牌效果能在己方英雄触发牺牲时提升临时等级。盾山、铠、钟馗、花木兰提供牺牲效果，明世隐将临时等级转换为真实等级，最后补上太乙真人提供容错。\n\n高阶大河\n\n鬼谷子、少司缘、大司命提供图腾，虞姬、张良的卡牌效果提升整体等级。主要输出英雄为敖隐，主坦为东皇太一，其中图腾为主要输出英雄和主坦提供临时等级。\n\n两套阵容都是以高阶英雄牌为主要输出英雄的阵容，其运营思路一致。前期上高质量低阶英雄牌配合瑶妹的小鹿稳定过渡。中期提升棋手等级后通过商店刷新来找寻阵容的关键卡牌，逐步替换打工卡补齐阵容。其中李信自带复生效果、敖隐和东皇太一自带高回复能够稳定生存到最后。极其适合小鹿分享等级的特性。后期阵容成型后，只要保证C位的生存，吃满小鹿分享的等级，就能获得一个超高等级的主要输出英雄。\n\n如果河洛阵营被ban则选择高阶大河；如果大河阵营被ban则选择牺牲李信。\n\n当出现古币契约、献祭之赐、补给线牺牲、暴君归来等天赋选择牺牲李信；当出现因缘际会、图腾启灵、望梅止渴、灵祭升华等大河专属天赋时选择走高阶大河。\n\n当我们过渡的时候来了盾山、铠、钟馗等英雄牌可以选择玩牺牲李信；当过渡中来了虞姬、鬼谷子、少司缘等英雄牌可以选择玩高阶大河。\n\n注：牺牲李信可以在棋手四级启动，更容易找到核心C位李信稳住血量；高阶大河需要棋手升至五级来找核心C位敖隐和东皇太一，血量低则推荐玩牺牲李信，高阶大河容易因为找不到牌导致暴毙。\n\n在玩牺牲李信的时候，优先觉醒明世隐和李信。其次多购买明世隐和效果牌唤醒，能让明世隐转化的临时等级更多。\n\n在玩高阶大河的时候，可以将虞姬或者张良替换成太乙真人，保证C位的生存。能够活到最后吃满小鹿分享的等级。\n\n装备方面：牺牲李信优先李信的装备。如无尽巨剑、凝渊；高阶大河优先保证敖隐和东皇的装备。如破晓、名刀司命。\n\n在玩高阶大河阵容时，如果怕敖隐暴毙可以优先将小鹿的庇护给其佩戴。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 7,
+              "paragraph_end": 7
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 10,
+              "paragraph_end": 10
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 18,
+              "paragraph_end": 18
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 27,
+              "paragraph_end": 27
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 28,
+              "paragraph_end": 28
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 30,
+              "paragraph_end": 30
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -159035,6 +160466,12 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.725602+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -159090,7 +160527,7 @@
           "disadvantages": "依赖死亡顺序、连线与100级门槛；复生成员可能分走奉献收益。"
         }
       ],
-      "revision": "08c351739210dd71b6ee",
+      "revision": "5925ab55b8abb08fd0f9",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -159190,6 +160627,24 @@
               "end": 198.96
             }
           ]
+        },
+        {
+          "id": "doc-384b95ca42679855e70e9c",
+          "section": "适用技巧",
+          "text": "选择卦象·丰前先核算临时刷新后的购买预算；能量不足以购买目标时比较延后使用，不能把刷新次数本身当成战力。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ad422be659dd9358c3aaba3c3beefa992e63b34e74b0daa71f875254f0c33106",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -159199,6 +160654,12 @@
           "title": "河洛花木兰",
           "relation": "recommended_lineup",
           "path": "knowledge/lineups/河洛花木兰.md"
+        },
+        {
+          "id": "document-lineup-8",
+          "type": "lineup",
+          "title": "泳池召唤流",
+          "path": "knowledge/lineups/泳池召唤流.md"
         }
       ],
       "path": "knowledge/players/明先生.md",
@@ -159286,6 +160747,12 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.725602+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -159339,9 +160806,23 @@
           ],
           "advantages": "能量与卦象·丰支持找体系。",
           "disadvantages": "核心未到手时战力空窗；留五与将棋手升至六阶的收益边界尚不明确。"
+        },
+        {
+          "lineup": "document-lineup-8",
+          "branch": "owner",
+          "title": "泳池召唤流",
+          "path": "knowledge/lineups/泳池召唤流-明先生.md",
+          "selection": {},
+          "required_factions": [
+            "大河",
+            "日落海",
+            "逐鹿"
+          ],
+          "advantages": "暂无已确认结论",
+          "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "97f4027a052d78906a38",
+      "revision": "69295717f7e75b21d000",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -159456,6 +160937,186 @@
               "end": 644.28
             }
           ]
+        },
+        {
+          "id": "doc-9c25b7d48b3156b925e1d7",
+          "section": "技能",
+          "text": "技能：梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 3,
+              "paragraph_end": 3
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-bad7a0bb3800a3179ad2e3",
+          "section": "技能",
+          "text": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 4,
+              "paragraph_end": 4
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-2a75b717da595796d7b4c5",
+          "section": "技能",
+          "text": "主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-4ee5d79328ad7ecc741cd7",
+          "section": "技能",
+          "text": "专属天赋：获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 7,
+              "paragraph_end": 7
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-c989e1562c1af28a5ab0cf",
+          "section": "前期思路",
+          "text": "优先选择能加快棋手升级的天赋，例如先苦后甜：输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-946e25fd91a11bc125f7f7",
+          "section": "前期思路",
+          "text": "庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-984b3e6def42ad1d0f3613",
+          "section": "前期思路",
+          "text": "后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-6a4fd645c697f53b07730c",
+          "section": "适用技巧",
+          "text": "庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 11,
+              "paragraph_end": 11
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-a54354980431318eecaf68",
+          "section": "适用技巧",
+          "text": "后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 12,
+              "paragraph_end": 12
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-e66d6d2ba8eafb019eeafb",
+          "section": "适用技巧",
+          "text": "梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -159465,6 +161126,12 @@
           "title": "河洛花木兰",
           "relation": "recommended_lineup",
           "path": "knowledge/lineups/河洛花木兰.md"
+        },
+        {
+          "id": "document-lineup-7",
+          "type": "lineup",
+          "title": "庄小鱼无阵营",
+          "path": "knowledge/lineups/庄小鱼无阵营.md"
         }
       ],
       "path": "knowledge/players/庄小鱼.md",
@@ -159552,6 +161219,12 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.725602+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -159605,9 +161278,19 @@
           ],
           "advantages": "如梦与梦幻商店补组件、觉醒和露娜。",
           "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
+        },
+        {
+          "lineup": "document-lineup-7",
+          "branch": "owner",
+          "title": "庄小鱼无阵营",
+          "path": "knowledge/lineups/庄小鱼无阵营-庄小鱼.md",
+          "selection": {},
+          "required_factions": [],
+          "advantages": "暂无已确认结论",
+          "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "255f97f2c000f7417fca",
+      "revision": "d91f609b0ac8d89e45a6",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -159676,6 +161359,216 @@
               "end": 347.01
             }
           ]
+        },
+        {
+          "id": "doc-e2056c066a26289f0caeee",
+          "section": "技能",
+          "text": "闹闹的棋手技能为”派对泡泡”：游戏第一回合使用，效果为从随机两个阵容中选择一个，之后技能变为每回合可以花费1点能量，获得一张确定阵容的牌（禁用的阵营不在随机选择之列）。英雄牌的品阶不会超过当前棋手等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 5,
+              "paragraph_end": 5
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-05718c1ba8fd7d6cc20092",
+          "section": "技能",
+          "text": "闹闹的棋手秘技“快乐集结”：技能效果为当场上上阵6名确定的阵营英雄卡牌，则会获得一张卡牌“朋友多多”，其效果为从确定的阵容里随机抽取5张英雄卡牌（获得的英雄牌品阶不会超过当前棋手等级）。上阵6名英雄需要棋手3级即可，阵容成型的速度是非常快的。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-c8c27add22be77e82fc758",
+          "section": "技能",
+          "text": "当闹闹棋手的等级升到6级后，可以领取闹闹属的天赋牌，获得一张天赋牌【打成一片】，效果为从确定的阵营专属天赋3个选择其中一个。阵容专属天赋都是很强的，比如日落海的能量改造，都是让阵容强度大幅提高的天赋。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 10,
+              "paragraph_end": 10
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-dd8dc35a0f5f44bda29764",
+          "section": "前期思路",
+          "text": "闹闹的技能使用后会选择一个阵营获得该阵营的英雄牌，不建议再玩其余阵容，否则闹闹棋手就成了白板，对本局就毫无作用了。不过不用担心的是，闹闹指定阵容来牌，整个队伍的战力并不会很低。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-f38c1d2dae2709bc86e605",
+          "section": "前期思路",
+          "text": "优先选择增加上阵人数的天赋，如扩编高峰、战术模组或所选阵营的专属天赋。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 12,
+              "paragraph_end": 12
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-dbca9a051127169c43850c",
+          "section": "适用技巧",
+          "text": "使用秘技牌朋友多多时可以根据自己想获取的阵容英雄牌，或缺少的核心牌品阶在棋手对应等级后再使用。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-5d7604e529be3da2787b5e",
+          "section": "适用技巧",
+          "text": "六级专属天赋打成一片三选一天赋推荐：能量改造、双重分配、能量汲取、定向传输。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-b4115f7a48befe1dc820d0",
+          "section": "适用技巧",
+          "text": "能量改造天赋需要上阵露娜、定向传输天赋后期可以上阵艾琳提高整套阵容上限。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 20,
+              "paragraph_end": 20
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-2ac9b8098ebdc664e0e87d",
+          "section": "适用技巧",
+          "text": "六级专属天赋打成一片三选一天赋推荐：化为熊灵、始祖熊灵、熊魂附甲。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 23,
+              "paragraph_end": 23
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-60f5364f24d47dca9cf2ec",
+          "section": "适用技巧",
+          "text": "大河图腾流对输出能力慢的阵容有优势，例如蒙恬召唤、河洛牺牲李信、炸盾廉颇等阵容；被爆发阵容或出伤快的阵容克制，例如姜子牙等阵容，原因是敖隐的等级需要时间叠加。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-159e6fee183facb485d208",
+          "section": "适用打法与选择",
+          "text": "**已知打法方向：** 闹闹适配的阵容排序：推荐日落海，其次大河、河洛，适配度低的阵容有三分和逐鹿，原因是三分和逐鹿阵营的玩法偏向刷牌流。\n\n推荐日落海安琪拉，利用日落海英雄“整备”关键词，快速提升阿科米亚核心的等级。开战时，核心等级会转化为场上日落海英雄的临时等级。朵莉亚是绝对功能核心，能在队友触发整备时提升真实等级。\n\n围绕鬼谷子、少司缘、大司命召唤图腾提升全队战力。前期虞姬承担主要输出英雄输出，东皇提供坦度和控制，后期敖隐输出。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 18,
+              "paragraph_end": 18
+            },
+            {
+              "type": "document",
+              "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+              "paragraph_start": 22,
+              "paragraph_end": 22
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -159769,6 +161662,12 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.725602+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -159821,7 +161720,7 @@
           "disadvantages": "破损古币不提供等级；集中启动回合操作密集。"
         }
       ],
-      "revision": "4b755a5fd86a61fc0cc0",
+      "revision": "5debfa47b334ca8eacca",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -160029,6 +161928,294 @@
               "end": 600.6700000000001
             }
           ]
+        },
+        {
+          "id": "doc-a2a80637f85c23e92d35c9",
+          "section": "技能",
+          "text": "技能：最高决策者。开局可以获得一张战略决策，第一次发布至高决策后可以再获得一张。嬴律的战略决策全局只对自己生效。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 2,
+              "paragraph_end": 2
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-b41596d62163534b73d067",
+          "section": "技能",
+          "text": "秘技：至高之主。每四回合自动获得一张秘技牌至高决策，从其中4个决策中选择1个颁布，持续3回合，对全场玩家生效。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 3,
+              "paragraph_end": 3
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-37669b0ed4ff9439d433ba",
+          "section": "技能",
+          "text": "专属天赋：绝对压制、贷款协议、资源再分配三选一，对全场玩家生效，但嬴律自己会获得额外加成。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 4,
+              "paragraph_end": 4
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-503668e4a9facee4735d59",
+          "section": "前期思路",
+          "text": "第一张战略决策选择后基本决定本局的玩法思路，可以根据场上棋手来判断选择哪张。若场上棋手偏后期（如常小娥、白歌等棋手），可拿低压运营和基层提拔打前期优势局，也可以拿沉淀收益打后期阵容；如果场上棋手偏前期（如香香、瑶妹等棋手），建议选择低压运营打前期连胜，或者基层提拔快速构筑阵容，不建议选择沉淀收益，容易暴毙出局。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-f4840cdb94acbdaa33d5f2",
+          "section": "前期思路",
+          "text": "第二张战略决策会在第一次使用棋手秘技至高决策后获得，可以根据场面优劣进行选择，如果场面处于优势，可以选择乘胜追击或者低压运营继续滚雪球；场面处于劣势或玩的是高阶阵容则可以选择风险对冲或空降人才。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-fbbb4252a902fcc851c144",
+          "section": "适用技巧",
+          "text": "资本杠杆和战略性收缩需要存钱或战斗失败获得收益，建议只在前期拿，后期拿容错率较低。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 18,
+              "paragraph_end": 18
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-e3e5897a9b1f73fdaf044a",
+          "section": "适用技巧",
+          "text": "协同增效和基层强化建议在后期拿，协同增效需要有足够经济合成，基层强化则对低阶英雄牌才生效，可以在场上大部分阵容都转成高阶阵容时再打出。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-84665e76e873df9a94fdf5",
+          "section": "适用技巧",
+          "text": "首购激励配合空降人才，可以只买一张牌就觉醒体系的核心高阶牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 20,
+              "paragraph_end": 20
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-248d6d14b80fe59135ae4a",
+          "section": "适用技巧",
+          "text": "猎头挖角在前期连败时打出，可以复制其余棋手的高等级棋子，减少前期掉血。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 21,
+              "paragraph_end": 21
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-9cc8fc92e0ef23b50a35f4",
+          "section": "适用技巧",
+          "text": "投资回报需要在回合内打出八张英雄或效果牌时才获得收益，可以在对手打完牌后再开。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 22,
+              "paragraph_end": 22
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-0da63135a0d5bc3d2c3f39",
+          "section": "适用技巧",
+          "text": "拿了空降人才要注意先不打非体系高阶牌，空降人才的名额只有一张，需要留给体系核心牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 23,
+              "paragraph_end": 23
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-6357c0b3655c22b5b14fab",
+          "section": "适用技巧",
+          "text": "开局需要先用技能再打牌，如果选到基层提拔，上阵英雄会有额外等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 24,
+              "paragraph_end": 24
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-4550fd5b5b9083b61f2d93",
+          "section": "适用技巧",
+          "text": "获得第一张至高决策后，先使用至高决策但不选择，继续使用战略决策，在选择完战略决策后再选择最适合自己的至高决策。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 25,
+              "paragraph_end": 25
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-f6af1265788d4b42158206",
+          "section": "适用技巧",
+          "text": "拿到并购红利，中期钱不多可以留合成棋子在手牌里，保证每回合吃满3次合成的3能量。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 26,
+              "paragraph_end": 26
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-4da0346098b39760b22aff",
+          "section": "适用技巧",
+          "text": "玩嬴律可以在搜到牌后再开秘技，开到首购激励可以多拿一张牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-777477d99f4a1f6f963365bd5459fd0a80acb1212325218d81ddd60c116a6136",
+              "paragraph_start": 27,
+              "paragraph_end": 27
+            }
+          ],
+          "origin": "document"
+        },
+        {
+          "id": "doc-453d72bf9b18a0a5ce0d02",
+          "section": "适用技巧",
+          "text": "嬴律的至高决策使用后当回合可以不选，例如开局的战略决策选择了沉淀收益，四回合的至高决策开出管理进修但需要继续停留在当前等级时，可以在需要升级时再选。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dd71495178b7d058501c45164d260dfaebacc7c4c527df51935f5261e42c02b",
+              "paragraph_start": 10,
+              "paragraph_end": 10
+            }
+          ],
+          "origin": "document"
         }
       ],
       "related": [
@@ -160214,6 +162401,12 @@
             ]
           },
           "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T06:20:35.725602+00:00",
+          "origin": "document-fusion",
+          "reason": "本地文档融合，旧结论和人工内容保留",
+          "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
         }
       ],
       "conflicts": [],
@@ -160270,7 +162463,7 @@
           "disadvantages": "全场决策也会帮助对手，操作与资源时机判断较复杂。"
         }
       ],
-      "revision": "1a0ae103da2c493de2f7",
+      "revision": "7fd18ad2b9f7daec7ca0",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1

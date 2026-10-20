@@ -1,0 +1,568 @@
+{
+  "id": "document-lineup-16",
+  "type": "lineup",
+  "title": "大河开团射",
+  "aliases": [
+    "香香开团射"
+  ],
+  "entities": [
+    "card:1561",
+    "card:1741",
+    "card:1891",
+    "card:1991",
+    "card:5051",
+    "card:5061",
+    "card:5771",
+    "player:50"
+  ],
+  "core": [
+    "card:1991"
+  ],
+  "topic": "大河开团射",
+  "claims": [
+    {
+      "id": "doc-b35005a90a3da47e365c52",
+      "section": "前期运营及应变",
+      "text": "第1、2回合不升级，上阵牛魔、孙尚香等，若对面战力较高，也可以考虑上苏烈干将，优先保证胜利，3回合升2级，这个时候不要刷牌，再购买一个英雄上满5个。第一次拍卖环节，优先选择体系牌，虞姬、少司缘、张良，次选公孙离、鬼谷子、云中君。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-737f45f743804cac7615a7",
+      "section": "中期运营及应变",
+      "text": "这套阵容要觉醒所有的英雄牌。棋手3级开始搜牌，遇到阵容牌优先获取。（原因：场上觉醒英雄越多，公孙离获得的攻速越多。）这个阶段适当的搜一下即可，不要上头一直搜，优先保证队伍的战力。在场面持续占优后，再给棋手升级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-de4a43889e87601f731784",
+      "section": "中期运营及应变",
+      "text": "4回合人口是上满的，此时不能优先刷新商店找阵容牌，优先保证当前场上战力，（不用担心养这些英雄的等级是浪费，公孙离的夺取不会浪费一点等级。）商店遇到阵容牌优先获取。在第2次拍卖前，要保证凑齐阵容。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-21275311ce526562507171",
+      "section": "后期运营及应变",
+      "text": "决战回合可以根据场上情况，把功能牌张良换成钟馗或者太乙。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-ee02f7b98a90a2c4d9a4c9",
+      "section": "后期运营及应变",
+      "text": "后期根据情况换东皇或者太乙上场，若主要输出英雄装备不好，可以看情况选择武装重构优化装备。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-08770dde8627a15757ba4e",
+      "section": "核心机制",
+      "text": "阵容的英雄主要由大河流域构成，原因在于以开团效果为核心，开战时增加队伍等级在战斗中也会增加等级，属于全自动提升队伍战力的阵容。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 2,
+          "paragraph_end": 2
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-e75e48ece9276f2b541993",
+      "section": "关键操作顺序",
+      "text": "公孙离不要夺取瑶等级，瑶100级时可以给公孙离提供大量属性，尽量夺取张良等级，每次打出公孙离，就把公孙离和张良单独拿出来，他们两放一起，打完后公孙离再放回原位。（原因：张良是功能牌，无需提升等级，公孙离身板较脆，瑶需要给公孙离提供护盾和属性加成。）",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-941845dabb9499d67f7895",
+      "section": "推荐装备",
+      "text": "公孙离：公孙离作为主力输出无尽、日渊必备，另外一件装备在名刀、寒霜侵袭之间选择，对面是近战主要输出英雄那么选寒霜侵袭减速后对面基本是摸不到的，纯靶子。对面有高爆发需要选名刀；天赋装备末世非常适合公孙离。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-af775f4c86233583edca21",
+      "section": "推荐装备",
+      "text": "瑶：瑶在正常情况下需要做一件破茧之衣，可以分给三个英雄，眩晕对面三次，若场上控制多也可以给瑶做炽热支配者，甚至面对高爆发阵容也可以选择做名刀。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-f1fce24e32abbc53df9b59",
+      "section": "后期运营及应变",
+      "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-a43ed00b9dfb5aaa19c38c34e9ca4bb9f4925520526e7a7f9197ef6e4b0d6a6e",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        }
+      ],
+      "origin": "document"
+    }
+  ],
+  "related": [
+    {
+      "id": "player-50",
+      "type": "player",
+      "title": "香香",
+      "path": "knowledge/players/香香.md"
+    }
+  ],
+  "explicit_relationships": true,
+  "meta": {
+    "required_factions": [
+      "faction:dahe"
+    ],
+    "players": [
+      "player:50"
+    ],
+    "core_heroes": [
+      "card:1991"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1941",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1991",
+          "necessity": "required",
+          "role": "夺取过渡英雄等级并承担普攻输出，觉醒成员增加其攻速；保留瑶等级用于保护。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1741",
+          "necessity": "optional",
+          "role": "开团及大河图腾体系补全队等级与输出，作为前中期战力。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        },
+        {
+          "hero": "card:1561",
+          "necessity": "required",
+          "role": "大河开团提供全队成长，后期可向公孙离转移等级，决赛按控制需求换下。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "optional",
+          "role": "开团按装备条件增加英雄等级，为养成核心提供额外增长。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": "附身保护主要输出，提供护盾、属性及控制；普通装备分享按目标与装备顺序安排。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "optional",
+          "role": "提供因缘图腾及对应开团资源，支撑大河成长与自爆受击计数。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "optional",
+          "role": "召唤先知图腾；海月自爆路线补受击单位，山鬼路线提供可用牺牲资源。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1991",
+          "necessity": "required",
+          "role": "夺取过渡英雄等级并承担普攻输出，觉醒成员增加其攻速；保留瑶等级用于保护。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1741",
+          "necessity": "optional",
+          "role": "开团及大河图腾体系补全队等级与输出，作为前中期战力。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        },
+        {
+          "hero": "card:1561",
+          "necessity": "required",
+          "role": "大河开团提供全队成长，后期可向公孙离转移等级，决赛按控制需求换下。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "optional",
+          "role": "开团按装备条件增加英雄等级，为养成核心提供额外增长。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": "附身保护主要输出，提供护盾、属性及控制；普通装备分享按目标与装备顺序安排。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "optional",
+          "role": "提供因缘图腾及对应开团资源，支撑大河成长与自爆受击计数。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "optional",
+          "role": "召唤先知图腾；海月自爆路线补受击单位，山鬼路线提供可用牺牲资源。 觉醒：优先觉醒；已觉醒成员数量能提高公孙离攻速，先兼顾当前战力再追全队质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": "按当前缺口与打出位置保留，不与其他选项同时固定上场。"
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：张良（大河开团提供全队成长，后期可向公孙离转移等级，决赛按控制需求换下。）、瑶（附身保护主要输出，提供护盾、属性及控制；普通装备分享按目标与装备顺序安排。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "common_claim_refs": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:50",
+        "claim_refs": [
+          "doc-b35005a90a3da47e365c52",
+          "doc-737f45f743804cac7615a7",
+          "doc-de4a43889e87601f731784",
+          "doc-21275311ce526562507171",
+          "doc-ee02f7b98a90a2c4d9a4c9",
+          "doc-08770dde8627a15757ba4e",
+          "doc-e75e48ece9276f2b541993",
+          "doc-941845dabb9499d67f7895",
+          "doc-af775f4c86233583edca21",
+          "doc-f1fce24e32abbc53df9b59"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {},
+        "assessment": [],
+        "selection": {}
+      }
+    ]
+  },
+  "reading_layout": {
+    "version": 3,
+    "claim_locations": {
+      "doc-b35005a90a3da47e365c52": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-737f45f743804cac7615a7": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-de4a43889e87601f731784": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-21275311ce526562507171": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-ee02f7b98a90a2c4d9a4c9": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-08770dde8627a15757ba4e": [
+        "核心机制"
+      ],
+      "doc-e75e48ece9276f2b541993": [
+        "关键操作顺序"
+      ],
+      "doc-941845dabb9499d67f7895": [
+        "推荐装备"
+      ],
+      "doc-af775f4c86233583edca21": [
+        "推荐装备"
+      ],
+      "doc-f1fce24e32abbc53df9b59": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "early.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-b35005a90a3da47e365c52"
+          ],
+          "claim_hashes": {
+            "doc-b35005a90a3da47e365c52": "96b5cf95ae50ab1ebd7ee87ce4380c696bfd75f5adb626c264a7848b9dd55665"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-737f45f743804cac7615a7",
+            "doc-de4a43889e87601f731784"
+          ],
+          "claim_hashes": {
+            "doc-737f45f743804cac7615a7": "c8a4e607b8332cea9f47b8429a11492834350724ebff943889c0949f357555ec",
+            "doc-de4a43889e87601f731784": "d545c728e1f7e18ab61296580b59b550025bbd24139fb18d1973540015c01d4a"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-737f45f743804cac7615a7"
+          ],
+          "claim_hashes": {
+            "doc-737f45f743804cac7615a7": "c8a4e607b8332cea9f47b8429a11492834350724ebff943889c0949f357555ec"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-21275311ce526562507171",
+            "doc-ee02f7b98a90a2c4d9a4c9",
+            "doc-f1fce24e32abbc53df9b59"
+          ],
+          "claim_hashes": {
+            "doc-21275311ce526562507171": "760e5b81cfe483328238b9efc1c9f131b43e67643ca8063657eba28e1cfebe14",
+            "doc-ee02f7b98a90a2c4d9a4c9": "afb9c34f5630d22155ee315380f88c86881d58ab6c4a9f644bfdb571bad1af7b",
+            "doc-f1fce24e32abbc53df9b59": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-f1fce24e32abbc53df9b59"
+          ],
+          "claim_hashes": {
+            "doc-f1fce24e32abbc53df9b59": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-f1fce24e32abbc53df9b59"
+          ],
+          "claim_hashes": {
+            "doc-f1fce24e32abbc53df9b59": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "equipment": {
+          "claim_refs": [
+            "doc-941845dabb9499d67f7895",
+            "doc-af775f4c86233583edca21"
+          ],
+          "claim_hashes": {
+            "doc-941845dabb9499d67f7895": "804080c81e82e5de9be5ba57fa0ac0630899c77f8cb2573bac7cebb8c06a3666",
+            "doc-af775f4c86233583edca21": "431cfd20b9c6d31126e587f92db67e7c65610242f5fe8b1b28004474376bf9ad"
+          }
+        }
+      }
+    }
+  },
+  "guide_related": [
+    {
+      "note": "player-50",
+      "title": "香香",
+      "href": "../players/香香.md",
+      "relation": "applicable_player"
+    }
+  ],
+  "path": "knowledge/lineups/大河开团射.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "player:50": "香香",
+    "card:1991": "公孙离",
+    "card:1681": "牛魔",
+    "card:1111": "孙尚香",
+    "card:1941": "苏烈",
+    "card:1821": "干将莫邪",
+    "card:1741": "虞姬",
+    "card:1561": "张良",
+    "card:5061": "云中君",
+    "card:5051": "瑶",
+    "card:5771": "少司缘",
+    "card:1891": "鬼谷子"
+  },
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "revision": "e732c1f3f05e65341280"
+}

@@ -1,0 +1,736 @@
+{
+  "id": "document-lineup-2",
+  "type": "lineup",
+  "title": "古币镜",
+  "aliases": [
+    "姜导古币镜"
+  ],
+  "entities": [
+    "card:1211",
+    "card:1441",
+    "card:5091",
+    "card:5131",
+    "card:5231",
+    "card:5311",
+    "player:41"
+  ],
+  "core": [
+    "card:5311"
+  ],
+  "topic": "古币镜",
+  "claims": [
+    {
+      "id": "doc-6998af41d413178e21b306",
+      "section": "前期运营及应变",
+      "text": "单挂弈星，先将棋手升到3级，再开始刷新商店，找到芈月、镜并优先觉醒，西施、盾山、程咬金各买一张即可。第1次拍卖：镜 > 芈月 > 程咬金。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-42a2f24de2b8a5a56ad130",
+      "section": "中期运营及应变",
+      "text": "婉儿、盾山的作用是提供古币，觉醒之后也不会提供更多的古币，所以没必要觉醒；程咬金作为主坦，后期可以考虑觉醒，前期资源优先用于觉醒芈月、镜。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-8b99f1a80bc8d5dc997151",
+      "section": "中期运营及应变",
+      "text": "留一个打出位，用来上庄周，蒙犽，露娜这些英雄。打露娜的登场可以触发婉儿，程咬金的整备，获得古币，提升镜的等级。蒙犽的特训战术可帮我们快速升级，庄周的招募战术则是帮我们构建阵容。后期也可以用来上太乙真人给复活，或钟馗减对面等级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-7a3709046311ca50fdf922",
+      "section": "中期运营及应变",
+      "text": "前中期镜的蓝量无法降到10点，可以在商店购买临阵磨枪/全军动员，触发西施的整备效果给镜减蓝量。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-b81a38ab659a0b2c1ab6ee",
+      "section": "中期运营及应变",
+      "text": "梦奇可以作为打出位，上阵梦奇以及出售后开出的英雄兑换券均可以触发姜导的钦定主角提升等级，英雄兑换券还能同步触发芈月词条。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-39e07c0413ab704fee2c0e",
+      "section": "中期运营及应变",
+      "text": "镜来以后对镜使用姜导的技能，所有装备都给镜，构建好阵容就可以慢慢提升镜的等级，镜等级高能稳血就考虑上棋手4阶找上官婉儿，上官婉儿有1张即可。第2次拍卖：上官婉儿 > 太乙真人。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-def8612283f08a2d399730",
+      "section": "后期运营及应变",
+      "text": "没有青莲剑谱的镜后期输出较为乏力，可以存遗志传承转成海月，配合钟馗、瑶、太乙、扁鹊，提高阵容后期上限。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-c3c6da927ac22c853933c7",
+      "section": "后期运营及应变",
+      "text": "后期镜/芈月未觉醒可以用杨玉环觉醒，上阵后立刻卖出腾出位置。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-976324e426f6d63f34ed83",
+      "section": "后期运营及应变",
+      "text": "后期装备溢出可以购买武装分解寻找特殊装备，开出青莲剑谱可以提升镜的上限。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-2955a784d3ec4158da2a7d",
+      "section": "后期运营及应变",
+      "text": "后期战力高了之后考虑存钱提升棋手等阶，这套阵容需要上棋手6阶，给镜提供吸血和免控。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-89be61ec446122c2d2c7d9",
+      "section": "推荐装备",
+      "text": "镜装备推荐：无尽、凝渊、炽热，特殊装备推荐青莲剑谱，配合镜的低蓝量可以频繁释放技能，有青莲剑谱的镜100级后释放技能无法选中；姜导六级专属天赋可以给镜免控，不用选免控装备，可以选纯净苍穹清除负面效果，如减速；镜100级后技能有回血加上姜导的双吸，本身不缺续航，吸血装备也不用准备。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-d76c8bbad0028f972cbc55",
+      "section": "推荐天赋及原因",
+      "text": "天赋：可以选逐鹿和河洛的天赋，河洛的天赋要适配，不适配的不要选。不知道选什么天赋也可以选给装备，给减伤，免伤的天赋。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-d3450de8eed34363c935bc",
+      "section": "关键效果牌",
+      "text": "效果牌：可以拿古币，唤醒，临阵磨枪等。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-7929072f856e9052c65d4f",
+      "section": "后期运营及应变",
+      "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        },
+        {
+          "type": "document",
+          "source": "doc-6b2a5427204395ecd13b41e1ab2bf4c137a9f8ebe86e50cdb49f460a0dfc4aa7",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-8309030fc84ea50139d846",
+      "section": "核心机制",
+      "text": "镜作为钦定主角后，封神一瞬留给镜；当回合被动供级达到上限且暂不缺战力时，部分牌可留到下回合，避免浪费后续出牌成长。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e19531bf74e613acbbc1d3945a7cf65e1b58dbed01bed083d7a84a0b2c3e176",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        },
+        {
+          "type": "document",
+          "source": "doc-0e19531bf74e613acbbc1d3945a7cf65e1b58dbed01bed083d7a84a0b2c3e176",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "type": "document",
+          "source": "doc-0e19531bf74e613acbbc1d3945a7cf65e1b58dbed01bed083d7a84a0b2c3e176",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "origin": "document"
+    }
+  ],
+  "related": [
+    {
+      "id": "player-41",
+      "type": "player",
+      "title": "姜导",
+      "path": "knowledge/players/姜导.md"
+    }
+  ],
+  "explicit_relationships": true,
+  "meta": {
+    "required_factions": [
+      "faction:heluo",
+      "faction:zhulu"
+    ],
+    "players": [
+      "player:41"
+    ],
+    "core_heroes": [
+      "card:5311"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5311",
+          "necessity": "required",
+          "role": "用芈月及古币反复触发永久成长，西施压低法力值上限后持续施法；缺青莲剑谱且输出不足时保留转核条件。 觉醒：优先觉醒；核心施法与养成收益优先。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": "效果牌触发时为装备目标提供等级，承担低阶养成核心的增长来源。 觉醒：优先觉醒；效果牌供级是该路线成长来源。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required",
+          "role": "以推演战术压低主要输出的法力值上限，提高施法频率。 觉醒：待确认；材料未明确投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required",
+          "role": "整备获得古币，供核心成长；临阵磨枪或露娜可补触发次数，并承担前排。 觉醒：不强求觉醒；前期先保证镜和芈月，后期再比较前排收益。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5091",
+          "necessity": "required",
+          "role": "通过牺牲产生古币；安排在前排先阵亡，避免古币到得太晚。 觉醒：无需觉醒；觉醒不增加当前用途的古币。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5311",
+          "necessity": "required",
+          "role": "用芈月及古币反复触发永久成长，西施压低法力值上限后持续施法；缺青莲剑谱且输出不足时保留转核条件。 觉醒：优先觉醒；核心施法与养成收益优先。 等级投入：越高越好；本路线持续以效果牌或合成提高核心输出，不设材料未支持的停级数字。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": "效果牌触发时为装备目标提供等级，承担低阶养成核心的增长来源。 觉醒：优先觉醒；效果牌供级是该路线成长来源。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required",
+          "role": "以推演战术压低主要输出的法力值上限，提高施法频率。 觉醒：待确认；材料未明确投入边界。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required",
+          "role": "整备获得古币，供核心成长；临阵磨枪或露娜可补触发次数，并承担前排。 觉醒：不强求觉醒；前期先保证镜和芈月，后期再比较前排收益。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5131",
+          "necessity": "required",
+          "role": "整备提供古币，配合露娜反复获取，支撑主要输出成长。 觉醒：无需觉醒；普通卡已经提供所需古币。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5091",
+          "necessity": "required",
+          "role": "通过牺牲产生古币；安排在前排先阵亡，避免古币到得太晚。 觉醒：无需觉醒；觉醒不增加当前用途的古币。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:zhulu",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：镜（用芈月及古币反复触发永久成长，西施压低法力值上限后持续施法；缺青莲剑谱且输出不足时保留转核条件。）、芈月（效果牌触发时为装备目标提供等级，承担低阶养成核心的增长来源。）、西施（以推演战术压低主要输出的法力值上限，提高施法频率。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:heluo",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：程咬金（整备获得古币，供核心成长；临阵磨枪或露娜可补触发次数，并承担前排。）、上官婉儿（整备提供古币，配合露娜反复获取，支撑主要输出成长。）、盾山（通过牺牲产生古币；安排在前排先阵亡，避免古币到得太晚。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "common_claim_refs": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:41",
+        "claim_refs": [
+          "doc-6998af41d413178e21b306",
+          "doc-42a2f24de2b8a5a56ad130",
+          "doc-8b99f1a80bc8d5dc997151",
+          "doc-7a3709046311ca50fdf922",
+          "doc-b81a38ab659a0b2c1ab6ee",
+          "doc-39e07c0413ab704fee2c0e",
+          "doc-def8612283f08a2d399730",
+          "doc-c3c6da927ac22c853933c7",
+          "doc-976324e426f6d63f34ed83",
+          "doc-2955a784d3ec4158da2a7d",
+          "doc-89be61ec446122c2d2c7d9",
+          "doc-d76c8bbad0028f972cbc55",
+          "doc-d3450de8eed34363c935bc",
+          "doc-7929072f856e9052c65d4f",
+          "doc-8309030fc84ea50139d846"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {},
+        "assessment": [],
+        "selection": {}
+      }
+    ]
+  },
+  "reading_layout": {
+    "version": 3,
+    "claim_locations": {
+      "doc-6998af41d413178e21b306": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-42a2f24de2b8a5a56ad130": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-8b99f1a80bc8d5dc997151": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-7a3709046311ca50fdf922": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-b81a38ab659a0b2c1ab6ee": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-39e07c0413ab704fee2c0e": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-def8612283f08a2d399730": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-c3c6da927ac22c853933c7": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-976324e426f6d63f34ed83": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-2955a784d3ec4158da2a7d": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-89be61ec446122c2d2c7d9": [
+        "推荐装备"
+      ],
+      "doc-d76c8bbad0028f972cbc55": [
+        "推荐天赋"
+      ],
+      "doc-d3450de8eed34363c935bc": [
+        "关键效果牌"
+      ],
+      "doc-7929072f856e9052c65d4f": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-8309030fc84ea50139d846": [
+        "核心机制"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "early.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-6998af41d413178e21b306"
+          ],
+          "claim_hashes": {
+            "doc-6998af41d413178e21b306": "d7880f8248c4c37d78719dfacac0fafe5f204959dd5b20ce2a3d3755bcb2e45f"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "early.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-6998af41d413178e21b306"
+          ],
+          "claim_hashes": {
+            "doc-6998af41d413178e21b306": "d7880f8248c4c37d78719dfacac0fafe5f204959dd5b20ce2a3d3755bcb2e45f"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-42a2f24de2b8a5a56ad130",
+            "doc-8b99f1a80bc8d5dc997151",
+            "doc-7a3709046311ca50fdf922",
+            "doc-b81a38ab659a0b2c1ab6ee",
+            "doc-39e07c0413ab704fee2c0e"
+          ],
+          "claim_hashes": {
+            "doc-42a2f24de2b8a5a56ad130": "a16b6467a7f20f9957f26834d545bf8a974d06034b7486f0c559a5b8bd8d7f47",
+            "doc-8b99f1a80bc8d5dc997151": "cb5203bc05429106b2c1236759d6c3da214104dbd7caa6ea17fa253a00e5318c",
+            "doc-7a3709046311ca50fdf922": "6e40f0218438ad0860ef8e7264c0f62efc03681d23989e3e328d7ae0a8d88758",
+            "doc-b81a38ab659a0b2c1ab6ee": "33c09ccc74cc40e077caab3b924432c759a6a86c38db0f75f5013e8b5f468d33",
+            "doc-39e07c0413ab704fee2c0e": "b0ae45e61ba9148945485fa3737d0c0b2118256ea2e05641a354be80d549833c"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-42a2f24de2b8a5a56ad130"
+          ],
+          "claim_hashes": {
+            "doc-42a2f24de2b8a5a56ad130": "a16b6467a7f20f9957f26834d545bf8a974d06034b7486f0c559a5b8bd8d7f47"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-def8612283f08a2d399730",
+            "doc-c3c6da927ac22c853933c7",
+            "doc-976324e426f6d63f34ed83",
+            "doc-2955a784d3ec4158da2a7d",
+            "doc-7929072f856e9052c65d4f"
+          ],
+          "claim_hashes": {
+            "doc-def8612283f08a2d399730": "c0d1c6d63bdba301409b6d6504016c395de765215d65a4ec06fc6e001d1f17da",
+            "doc-c3c6da927ac22c853933c7": "6c3b67777a9795e994ab986f5092dfd390cb323c021105ff9faa68bda181925e",
+            "doc-976324e426f6d63f34ed83": "509b6db8d764f86b3795d0423a94317616afbb27839d0b42163f0baecd3b6957",
+            "doc-2955a784d3ec4158da2a7d": "27f8874cfb79690f635e83e82a15319db64333cc0e731857a38ba5fb95307999",
+            "doc-7929072f856e9052c65d4f": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-c3c6da927ac22c853933c7",
+            "doc-7929072f856e9052c65d4f"
+          ],
+          "claim_hashes": {
+            "doc-c3c6da927ac22c853933c7": "6c3b67777a9795e994ab986f5092dfd390cb323c021105ff9faa68bda181925e",
+            "doc-7929072f856e9052c65d4f": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-2955a784d3ec4158da2a7d",
+            "doc-7929072f856e9052c65d4f"
+          ],
+          "claim_hashes": {
+            "doc-2955a784d3ec4158da2a7d": "27f8874cfb79690f635e83e82a15319db64333cc0e731857a38ba5fb95307999",
+            "doc-7929072f856e9052c65d4f": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.missing": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-def8612283f08a2d399730"
+          ],
+          "claim_hashes": {
+            "doc-def8612283f08a2d399730": "c0d1c6d63bdba301409b6d6504016c395de765215d65a4ec06fc6e001d1f17da"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "equipment": {
+          "claim_refs": [
+            "doc-89be61ec446122c2d2c7d9"
+          ],
+          "claim_hashes": {
+            "doc-89be61ec446122c2d2c7d9": "f9476f4ca4aafbb053cc431e27c4ceca1d6fc5fb50565e83d392676fafedb5fb"
+          }
+        },
+        "talents": {
+          "claim_refs": [
+            "doc-d76c8bbad0028f972cbc55"
+          ],
+          "claim_hashes": {
+            "doc-d76c8bbad0028f972cbc55": "7024f5454e69090877e02555c639f965fcee878109d811bb4183298f2540b91e"
+          }
+        },
+        "effect_cards": {
+          "claim_refs": [
+            "doc-d3450de8eed34363c935bc"
+          ],
+          "claim_hashes": {
+            "doc-d3450de8eed34363c935bc": "3787c5260931a7cef05f4e01ba1130fda6bff3c9a2237752418e3fcb85374129"
+          }
+        }
+      }
+    }
+  },
+  "guide_related": [
+    {
+      "note": "player-41",
+      "title": "姜导",
+      "href": "../players/姜导.md",
+      "relation": "applicable_player"
+    }
+  ],
+  "path": "knowledge/lineups/古币镜.md",
+  "entity_names": {
+    "faction:heluo": "河洛",
+    "faction:zhulu": "逐鹿",
+    "player:41": "姜导",
+    "card:5311": "镜",
+    "card:1971": "弈星",
+    "card:1211": "芈月",
+    "card:5231": "西施",
+    "card:1441": "程咬金",
+    "card:5091": "盾山",
+    "card:5131": "上官婉儿"
+  },
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "revision": "7996e0163b51f0dff306"
+}

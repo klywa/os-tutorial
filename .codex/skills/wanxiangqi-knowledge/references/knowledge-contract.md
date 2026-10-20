@@ -8,6 +8,8 @@
 
 ## 提交知识
 
+本地文档证据使用`type=document, source=doc-SHA256, paragraph_start, paragraph_end`，不填视频start/end/frame；真实文件及段落快照由document_sources登记和校验。与原视频证据可共存，原时间轴校验不放宽。详细流程见[本地文档融合](local-documents.md)。
+
 棋手笔记以`player_id`绑定唯一官方棋手，标题及文件名仅为棋手名。`POST /api/notes`创建player类型时提供player_id，服务端确定规范名称并校验唯一身份；lineup与other仍沿用原字段。已有棋手禁止改绑或加标题后缀。旧导入缺身份时可由既有绑定或唯一明确实体补齐，身份不明拒绝；不同导入ID指向同一棋手时复用既有笔记ID。路径迁移、别名和关联更新按[player-notes.md](player-notes.md)处理。
 
 网页可用`POST /api/notes`直接创建空笔记：`type/title/aliases/request_id`；类型为lineup/player/other，标题按现有中文文件名规则校验。`workspace.create_note`经过共享写锁、事务恢复和统一生成保存，不写入虚构结论或证据。同类型同名报冲突，不自动合并；相同请求标识和内容重试返回同一笔记（即使后来人工改名），标识复用于不同内容报冲突。正文及棋手分支继续通过既有统一编辑或skill提交补充。已有笔记ID与文件路径不因目录改版而迁移；旧阵容名单与采集标签保留兼容。
