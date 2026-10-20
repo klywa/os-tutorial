@@ -4,8 +4,8 @@
     {
       "id": "zhaojun-high-tier-dahe",
       "type": "lineup",
-      "title": "昭君高阶大河（龙蛇）",
-      "topic": "昭君高阶大河运营",
+      "title": "大河龙蛇",
+      "topic": "大河龙蛇运营",
       "core": [
         "card:1871",
         "card:5191"
@@ -10826,10 +10826,21 @@
           "origin": "document-fusion",
           "reason": "本地文档融合，旧结论和人工内容保留",
           "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "昭君高阶大河（龙蛇）",
+            "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          }
         }
       ],
-      "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md",
-      "aliases": [],
+      "path": "knowledge/lineups/大河龙蛇.md",
+      "aliases": [
+        "昭君高阶大河（龙蛇）"
+      ],
       "meta": {
         "required_factions": [
           "faction:dahe"
@@ -11349,7 +11360,7 @@
       },
       "manual_sections": [],
       "conflicts": [],
-      "revision": "640ca2bf30cb8a2c2b8b",
+      "revision": "518d4a63d33606c80cef",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -11702,14 +11713,6 @@
           "note": "player-zhaojun",
           "branch": "zhaojun",
           "relation": "applicable_player"
-        },
-        {
-          "title": "昭君高阶大河（龙蛇）-昭君",
-          "href": "昭君高阶大河（龙蛇）-昭君.md",
-          "note": "zhaojun-high-tier-dahe",
-          "player": "player:34",
-          "exclude_branch": "zhaojun",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -11717,7 +11720,7 @@
       "id": "player-zhaojun",
       "type": "player",
       "title": "昭君",
-      "topic": "昭君高阶大河运营",
+      "topic": "大河龙蛇运营",
       "core": [],
       "entities": [
         "card:1311",
@@ -12022,9 +12025,9 @@
         {
           "id": "zhaojun-high-tier-dahe",
           "type": "lineup",
-          "title": "昭君高阶大河（龙蛇）",
+          "title": "大河龙蛇",
           "relation": "recommended_lineup",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          "path": "knowledge/lineups/大河龙蛇.md"
         },
         {
           "id": "heluo-huamulan",
@@ -12036,14 +12039,8 @@
         {
           "id": "document-lineup-9",
           "type": "lineup",
-          "title": "七五高阶组合",
-          "path": "knowledge/lineups/七五高阶组合.md"
-        },
-        {
-          "id": "document-lineup-10",
-          "type": "lineup",
-          "title": "冻结全五阶",
-          "path": "knowledge/lineups/冻结全五阶.md"
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五.md"
         }
       ],
       "path": "knowledge/players/昭君.md",
@@ -12549,13 +12546,13 @@
         }
       ],
       "conflicts": [],
-      "revision": "52ed1b9cc9a511f56d75",
+      "revision": "fa1fb8c70c3721d61df4",
       "lineup_adaptations": [
         {
           "lineup": "zhaojun-high-tier-dahe",
           "branch": "zhaojun",
-          "title": "昭君高阶大河（龙蛇）",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）-昭君.md",
+          "title": "大河龙蛇",
+          "path": "knowledge/lineups/大河龙蛇-昭君.md",
           "selection": {
             "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
             "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
@@ -12645,20 +12642,8 @@
         {
           "lineup": "document-lineup-9",
           "branch": "owner",
-          "title": "七五高阶组合",
-          "path": "knowledge/lineups/七五高阶组合-昭君.md",
-          "selection": {},
-          "required_factions": [
-            "三分"
-          ],
-          "advantages": "暂无已确认结论",
-          "disadvantages": "暂无已确认结论"
-        },
-        {
-          "lineup": "document-lineup-10",
-          "branch": "owner",
-          "title": "冻结全五阶",
-          "path": "knowledge/lineups/冻结全五阶-昭君.md",
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五-昭君.md",
           "selection": {},
           "required_factions": [],
           "advantages": "暂无已确认结论",
@@ -12675,7 +12660,7 @@
       "id": "zhaojun-version-and-asr-review",
       "type": "other",
       "title": "昭君：冰心领域版本差异",
-      "topic": "昭君高阶大河运营",
+      "topic": "大河龙蛇运营",
       "core": [],
       "entities": [
         "card:93416",
@@ -12702,8 +12687,8 @@
         {
           "id": "zhaojun-high-tier-dahe",
           "type": "lineup",
-          "title": "昭君高阶大河（龙蛇）",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          "title": "大河龙蛇",
+          "path": "knowledge/lineups/大河龙蛇.md"
         },
         {
           "id": "player-zhaojun",
@@ -12716,6 +12701,12 @@
           "type": "lineup",
           "title": "河洛花木兰",
           "path": "knowledge/lineups/河洛花木兰.md"
+        },
+        {
+          "id": "document-lineup-9",
+          "type": "lineup",
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五.md"
         }
       ],
       "path": "knowledge/other/昭君－冰心领域版本差异.md",
@@ -12757,12 +12748,12 @@
         }
       ],
       "conflicts": [],
-      "revision": "7e9a3f326478cec8a389"
+      "revision": "6bb104aad4d2dc8caa0f"
     },
     {
       "id": "angela-liubang-totems",
       "type": "lineup",
-      "title": "安琪拉养刘邦（图腾成长）",
+      "title": "炸盾刘邦",
       "topic": "刘邦图腾永久等级与安琪拉持续输出",
       "entities": [
         "card:1191",
@@ -14063,8 +14054,10 @@
           "path": "knowledge/players/安琪拉.md"
         }
       ],
-      "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md",
-      "aliases": [],
+      "path": "knowledge/lineups/炸盾刘邦.md",
+      "aliases": [
+        "安琪拉养刘邦（图腾成长）"
+      ],
       "entity_names": {
         "faction:dahe": "大河",
         "faction:zhulu": "逐鹿",
@@ -26195,10 +26188,19 @@
           "origin": "document-fusion",
           "reason": "本地文档融合，旧结论和人工内容保留",
           "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "安琪拉养刘邦（图腾成长）",
+            "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+          }
         }
       ],
       "conflicts": [],
-      "revision": "deb5c67290852b601949",
+      "revision": "040bbdd34a2a0e462734",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -26542,14 +26544,6 @@
           "note": "player-angela",
           "branch": "angela",
           "relation": "applicable_player"
-        },
-        {
-          "title": "安琪拉养刘邦（图腾成长）-安琪拉",
-          "href": "安琪拉养刘邦（图腾成长）-安琪拉.md",
-          "note": "angela-liubang-totems",
-          "player": "player:51",
-          "exclude_branch": "angela",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -27143,9 +27137,9 @@
         {
           "id": "angela-liubang-totems",
           "type": "lineup",
-          "title": "安琪拉养刘邦（图腾成长）",
+          "title": "炸盾刘邦",
           "relation": "recommended_lineup",
-          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+          "path": "knowledge/lineups/炸盾刘邦.md"
         },
         {
           "id": "document-lineup-5",
@@ -27626,13 +27620,13 @@
         }
       ],
       "conflicts": [],
-      "revision": "2fccdc96ceb604c35443",
+      "revision": "253f98416615115b5df8",
       "lineup_adaptations": [
         {
           "lineup": "angela-liubang-totems",
           "branch": "angela",
-          "title": "安琪拉养刘邦（图腾成长）",
-          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）-安琪拉.md",
+          "title": "炸盾刘邦",
+          "path": "knowledge/lineups/炸盾刘邦-安琪拉.md",
           "selection": {
             "adopt": "大河、逐鹿开放，能够取得刘邦及图腾、扁鹊时考虑。",
             "avoid": "刘邦未到手不追工具觉醒；持续不来时保留资源将棋手升至六阶，禁逐鹿无法照搬完整炸盾体系。",
@@ -38759,8 +38753,8 @@
         {
           "id": "zhaojun-high-tier-dahe",
           "type": "lineup",
-          "title": "昭君高阶大河（龙蛇）",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          "title": "大河龙蛇",
+          "path": "knowledge/lineups/大河龙蛇.md"
         },
         {
           "id": "player-zhaojun",
@@ -38771,8 +38765,8 @@
         {
           "id": "angela-liubang-totems",
           "type": "lineup",
-          "title": "安琪拉养刘邦（图腾成长）",
-          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+          "title": "炸盾刘邦",
+          "path": "knowledge/lineups/炸盾刘邦.md"
         },
         {
           "id": "player-angela",
@@ -38783,8 +38777,8 @@
         {
           "id": "yaomei-sacrifice-lixin",
           "type": "lineup",
-          "title": "李信牺牲流",
-          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
+          "title": "牺牲李信",
+          "path": "knowledge/lineups/牺牲李信.md"
         },
         {
           "id": "heluo-huamulan",
@@ -38813,8 +38807,8 @@
         {
           "id": "document-lineup-3",
           "type": "lineup",
-          "title": "效果牌养成孙膑",
-          "path": "knowledge/lineups/效果牌养成孙膑.md"
+          "title": "逐鹿孙膑",
+          "path": "knowledge/lineups/逐鹿孙膑.md"
         },
         {
           "id": "document-lineup-4",
@@ -38831,8 +38825,8 @@
         {
           "id": "document-lineup-6",
           "type": "lineup",
-          "title": "山鬼召唤流",
-          "path": "knowledge/lineups/山鬼召唤流.md"
+          "title": "山鬼召唤",
+          "path": "knowledge/lineups/山鬼召唤.md"
         },
         {
           "id": "document-lineup-7",
@@ -38843,44 +38837,38 @@
         {
           "id": "document-lineup-8",
           "type": "lineup",
-          "title": "泳池召唤流",
-          "path": "knowledge/lineups/泳池召唤流.md"
+          "title": "泳池派对",
+          "path": "knowledge/lineups/泳池派对.md"
         },
         {
           "id": "document-lineup-9",
           "type": "lineup",
-          "title": "七五高阶组合",
-          "path": "knowledge/lineups/七五高阶组合.md"
-        },
-        {
-          "id": "document-lineup-10",
-          "type": "lineup",
-          "title": "冻结全五阶",
-          "path": "knowledge/lineups/冻结全五阶.md"
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五.md"
         },
         {
           "id": "document-lineup-11",
           "type": "lineup",
-          "title": "虎轲夺取流",
-          "path": "knowledge/lineups/虎轲夺取流.md"
+          "title": "猪虎轲",
+          "path": "knowledge/lineups/猪虎轲.md"
         },
         {
           "id": "document-lineup-12",
           "type": "lineup",
-          "title": "纸伞守约",
-          "path": "knowledge/lineups/纸伞守约.md"
+          "title": "伞守约",
+          "path": "knowledge/lineups/伞守约.md"
         },
         {
           "id": "document-lineup-13",
           "type": "lineup",
-          "title": "纸伞狄仁杰",
-          "path": "knowledge/lineups/纸伞狄仁杰.md"
+          "title": "伞狄仁杰",
+          "path": "knowledge/lineups/伞狄仁杰.md"
         },
         {
           "id": "document-lineup-14",
           "type": "lineup",
-          "title": "纸伞猫",
-          "path": "knowledge/lineups/纸伞猫.md"
+          "title": "伞炸弹猫",
+          "path": "knowledge/lineups/伞炸弹猫.md"
         },
         {
           "id": "document-lineup-15",
@@ -38895,7 +38883,7 @@
           "path": "knowledge/lineups/大河开团射.md"
         }
       ],
-      "revision": "decbc3aab6cd8b588304",
+      "revision": "d2526011b5c7405814ea",
       "guide_related": [
         {
           "note": "player-24",
@@ -38908,12 +38896,13 @@
     {
       "id": "yaomei-sacrifice-lixin",
       "type": "lineup",
-      "title": "李信牺牲流",
+      "title": "牺牲李信",
       "aliases": [
         "瑶妹李信牺牲流",
-        "小鹿李信献祭流"
+        "小鹿李信献祭流",
+        "李信牺牲流"
       ],
-      "topic": "瑶妹牺牲流李信",
+      "topic": "牺牲李信",
       "entities": [
         "card:10404",
         "card:1101",
@@ -42631,7 +42620,7 @@
         ],
         "assessment": []
       },
-      "path": "knowledge/lineups/瑶妹牺牲流李信.md",
+      "path": "knowledge/lineups/牺牲李信.md",
       "entity_names": {
         "faction:heluo": "河洛",
         "player:11": "瑶妹",
@@ -91443,6 +91432,15 @@
           "origin": "document-fusion",
           "reason": "本地文档融合，旧结论和人工内容保留",
           "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "李信牺牲流",
+            "path": "knowledge/lineups/瑶妹牺牲流李信.md"
+          }
         }
       ],
       "conflicts": [],
@@ -91456,7 +91454,7 @@
           "path": "knowledge/players/瑶妹.md"
         }
       ],
-      "revision": "8273e3d755c63a195dc7",
+      "revision": "da390049d0e75f985108",
       "manual_fields": [
         "title"
       ],
@@ -92154,14 +92152,6 @@
           "note": "player-yaomei",
           "branch": "yaomei",
           "relation": "applicable_player"
-        },
-        {
-          "title": "李信牺牲流-瑶妹",
-          "href": "李信牺牲流-瑶妹.md",
-          "note": "yaomei-sacrifice-lixin",
-          "player": "player:11",
-          "exclude_branch": "yaomei",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -158168,7 +158158,7 @@
           "path": "knowledge/players/嬴律.md"
         }
       ],
-      "revision": "193aed4a65f3e6302a7f",
+      "revision": "24f22d0da8db6495b7a1",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -159921,27 +159911,11 @@
           "relation": "applicable_player"
         },
         {
-          "title": "河洛花木兰-明先生",
-          "href": "河洛花木兰-明先生.md",
-          "note": "heluo-huamulan",
-          "player": "player:39",
-          "exclude_branch": "ming",
-          "relation": "same_lineup_player"
-        },
-        {
           "title": "庄小鱼",
           "href": "../players/庄小鱼.md",
           "note": "player-zhuang",
           "branch": "zhuang",
           "relation": "applicable_player"
-        },
-        {
-          "title": "河洛花木兰-庄小鱼",
-          "href": "河洛花木兰-庄小鱼.md",
-          "note": "heluo-huamulan",
-          "player": "player:31",
-          "exclude_branch": "zhuang",
-          "relation": "same_lineup_player"
         },
         {
           "title": "闹闹",
@@ -159951,14 +159925,6 @@
           "relation": "applicable_player"
         },
         {
-          "title": "河洛花木兰-闹闹",
-          "href": "河洛花木兰-闹闹.md",
-          "note": "heluo-huamulan",
-          "player": "player:40",
-          "exclude_branch": "naonao",
-          "relation": "same_lineup_player"
-        },
-        {
           "title": "昭君",
           "href": "../players/昭君.md",
           "note": "player-zhaojun",
@@ -159966,27 +159932,11 @@
           "relation": "applicable_player"
         },
         {
-          "title": "河洛花木兰-昭君",
-          "href": "河洛花木兰-昭君.md",
-          "note": "heluo-huamulan",
-          "player": "player:34",
-          "exclude_branch": "zhaojun",
-          "relation": "same_lineup_player"
-        },
-        {
           "title": "嬴律",
           "href": "../players/嬴律.md",
           "note": "player-ying",
           "branch": "ying",
           "relation": "applicable_player"
-        },
-        {
-          "title": "河洛花木兰-嬴律",
-          "href": "河洛花木兰-嬴律.md",
-          "note": "heluo-huamulan",
-          "player": "player:43",
-          "exclude_branch": "ying",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -160329,9 +160279,9 @@
         {
           "id": "yaomei-sacrifice-lixin",
           "type": "lineup",
-          "title": "李信牺牲流",
+          "title": "牺牲李信",
           "relation": "recommended_lineup",
-          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
+          "path": "knowledge/lineups/牺牲李信.md"
         }
       ],
       "path": "knowledge/players/瑶妹.md",
@@ -160479,8 +160429,8 @@
         {
           "lineup": "yaomei-sacrifice-lixin",
           "branch": "yaomei",
-          "title": "李信牺牲流",
-          "path": "knowledge/lineups/李信牺牲流-瑶妹.md",
+          "title": "牺牲李信",
+          "path": "knowledge/lineups/牺牲李信-瑶妹.md",
           "selection": {
             "adopt": "能保前期胜场养小鹿，河洛开放，且能取得李信、钟馗和复生工具时考虑。",
             "avoid": "持续掉血或缺李信时先补过渡战力；共鸣前不能安全将棋手升至六阶时不硬升。",
@@ -160527,7 +160477,7 @@
           "disadvantages": "依赖死亡顺序、连线与100级门槛；复生成员可能分走奉献收益。"
         }
       ],
-      "revision": "5925ab55b8abb08fd0f9",
+      "revision": "d7e4cd45d48017f8cea3",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -160658,8 +160608,8 @@
         {
           "id": "document-lineup-8",
           "type": "lineup",
-          "title": "泳池召唤流",
-          "path": "knowledge/lineups/泳池召唤流.md"
+          "title": "泳池派对",
+          "path": "knowledge/lineups/泳池派对.md"
         }
       ],
       "path": "knowledge/players/明先生.md",
@@ -160810,8 +160760,8 @@
         {
           "lineup": "document-lineup-8",
           "branch": "owner",
-          "title": "泳池召唤流",
-          "path": "knowledge/lineups/泳池召唤流-明先生.md",
+          "title": "泳池派对",
+          "path": "knowledge/lineups/泳池派对-明先生.md",
           "selection": {},
           "required_factions": [
             "大河",
@@ -160822,7 +160772,7 @@
           "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "69295717f7e75b21d000",
+      "revision": "806f4f854225d7a19a0a",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1

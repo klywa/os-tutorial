@@ -1,0 +1,842 @@
+{
+  "id": "document-lineup-14",
+  "type": "lineup",
+  "title": "伞炸弹猫",
+  "aliases": [
+    "阿离伞猫",
+    "纸伞猫"
+  ],
+  "entities": [
+    "card:1141",
+    "card:1441",
+    "card:1861",
+    "card:3121",
+    "card:5011",
+    "card:5091",
+    "player:20"
+  ],
+  "core": [
+    "card:3121"
+  ],
+  "topic": "伞炸弹猫",
+  "claims": [
+    {
+      "id": "doc-9baef6b212bca18b203482",
+      "section": "前期运营及应变",
+      "text": "开局上阵：苏烈、李元芳、干将，走连胜。把阿离的伞给干将打工，升级前可以补个弈星。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-e95ba5b0607cc7dcc98ed9",
+      "section": "前期运营及应变",
+      "text": "拍卖优先拿沈梦溪>程咬金>刘禅>明世隐",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-fdb8eac3195e84793c6f02",
+      "section": "中期运营及应变",
+      "text": "棋手升至3级，刷出阵容牌。有一定战力后即可存钱升级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-3149a3a7bef8aab47522fc",
+      "section": "中期运营及应变",
+      "text": "优先觉醒沈梦溪。凑盾山、程咬金产古币，看见古币类效果牌优先获取，喂沈梦溪。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-7abc6f86b98a60fb76ceda",
+      "section": "中期运营及应变",
+      "text": "拍卖优先拿太乙真人>武则天>阵容牌",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 26,
+          "paragraph_end": 26
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-30e1a350fc250b51a88f05",
+      "section": "后期运营及应变",
+      "text": "血量健康升棋手到6级，配合阿离的伞强化炸弹猫提升上限，棋手6级后，阿离技能选择\"枫之洪流“，首次转移后3秒内技能无限放。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-446b0a9d006896e516d512",
+      "section": "后期运营及应变",
+      "text": "拍卖未满六级优先拿扶摇直上>能量超新星，其次缺装备选择装备合成卡、一线生机。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-b4d04f34d50bb6beca262b",
+      "section": "核心机制",
+      "text": "钟馗降低敌方英雄等级；程咬金回合开始获得古币；盾山牺牲时获得古币；刘禅使英雄释放技能获得临时等级；明世隐将临时等级转为真实等级；太乙真人提供复活；每对沈梦溪使用1张效果牌，沈梦溪本回合减少蓝条，得到无限技能效果，阿离6级技能选“枫之洪流”首次转移后3秒内技能无限放。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-d4bdbd174f39727afcc14e",
+      "section": "核心机制",
+      "text": "沈梦溪通过效果牌在当回合压低法力值上限；打出古币后检查实际法力值，再判断是否达到10点循环，所需古币张数依实际卡面及其他减蓝效果确认。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 32,
+          "paragraph_end": 32
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-e9c7dab4bc4f8412a1ed11",
+      "section": "推荐装备",
+      "text": "普通装备：法源之杯、贤者之书、虚无法杖",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-1da2b0b4ca9fe970826e45",
+      "section": "推荐装备",
+      "text": "神器：噬神之书、机器头",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-33e8dd25753682f45d9f5b",
+      "section": "推荐装备",
+      "text": "沈梦溪百级大招带群体眩晕，AOE伤害爆炸，刚需圣杯，沈梦溪没圣杯很难无限循环技能。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 36,
+          "paragraph_end": 36
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-fec9f746ae872c534f458e",
+      "section": "推荐天赋及原因",
+      "text": "全副武装：获得1张基础装备牌。战斗开始时，你至少穿戴2件装备的英雄获得15%伤害加成和减免。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-dbc1710a0d16829b53c30e",
+      "section": "推荐天赋及原因",
+      "text": "强者恒强：战斗开始时你的已觉醒英雄获得50点物理攻击力和50点法术攻击力。若所有己方英雄已觉醒，则再获得20%物理及法术吸血。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-00905c3d078dbce73ebf20",
+      "section": "推荐天赋及原因",
+      "text": "古币翻新：获得1张古币。古币牌会额外提供2级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-dcc88d7a4e90d0d9481240",
+      "section": "关键操作顺序",
+      "text": "任何加等级效果牌和古币都可喂给沈梦溪，加等级和减蓝。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 33,
+          "paragraph_end": 33
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-b3cf472988379206490c4d",
+      "section": "关键操作顺序",
+      "text": "效果卡“唤醒“必给明世隐，有”临阵磨枪“给程咬金。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 34,
+          "paragraph_end": 34
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-84334b54592943cd9c5d4f",
+      "section": "关键操作顺序",
+      "text": "决赛圈可补钟馗降低敌方核心等级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 35,
+          "paragraph_end": 35
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-cedfa3531284adc20659af",
+      "section": "后期运营及应变",
+      "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        },
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        },
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 26,
+          "paragraph_end": 26
+        },
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-2c907134472f9147744ab05b5c31f77e06389e3c48cc7e80f39126642ffed65c",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-98000438126fcb9a519bb7",
+      "section": "棋手技能推荐",
+      "text": "将枫叶舞给沈梦溪，更换主要输出后重新指定，利用其击杀推进秘技；强化选择与该英雄的普攻或技能伤害方式相符，不把所有强化优先级照搬给不同核心。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e10a283cb6a24e340879751d01626da7739c9f768e698862830f8113d29a4f2e",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        },
+        {
+          "type": "document",
+          "source": "doc-e10a283cb6a24e340879751d01626da7739c9f768e698862830f8113d29a4f2e",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "type": "document",
+          "source": "doc-e10a283cb6a24e340879751d01626da7739c9f768e698862830f8113d29a4f2e",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "origin": "document"
+    }
+  ],
+  "related": [
+    {
+      "id": "player-20",
+      "type": "player",
+      "title": "阿离",
+      "path": "knowledge/players/阿离.md"
+    }
+  ],
+  "explicit_relationships": true,
+  "meta": {
+    "required_factions": [
+      "faction:heluo",
+      "faction:sanfen"
+    ],
+    "players": [
+      "player:20"
+    ],
+    "core_heroes": [
+      "card:3121"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1941",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "role": "连接成长目标并使用古币，保证古币进入指定核心；决赛可按威胁替换钟馗。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:3121",
+          "necessity": "required",
+          "role": "效果牌在当回合压低法力值上限，高频施法造成范围伤害与控制。 觉醒：优先觉醒；提高核心技能循环质量。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "施法给队友提供临时等级并承担前排，为高频法术核心增加战斗成长。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required",
+          "role": "整备获得古币，供核心成长；临阵磨枪或露娜可补触发次数，并承担前排。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5091",
+          "necessity": "required",
+          "role": "通过牺牲产生古币；安排在前排先阵亡，避免古币到得太晚。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "连线实际成长核心，将战斗临时等级转成永久等级；登场与唤醒增加转化额度。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:3121",
+          "necessity": "required",
+          "role": "效果牌在当回合压低法力值上限，高频施法造成范围伤害与控制。 觉醒：优先觉醒；提高核心技能循环质量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "施法给队友提供临时等级并承担前排，为高频法术核心增加战斗成长。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required",
+          "role": "整备获得古币，供核心成长；临阵磨枪或露娜可补触发次数，并承担前排。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5091",
+          "necessity": "required",
+          "role": "通过牺牲产生古币；安排在前排先阵亡，避免古币到得太晚。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "连线实际成长核心，将战斗临时等级转成永久等级；登场与唤醒增加转化额度。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "required",
+          "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:heluo",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：沈梦溪（效果牌在当回合压低法力值上限，高频施法造成范围伤害与控制。）、程咬金（整备获得古币，供核心成长；临阵磨枪或露娜可补触发次数，并承担前排。）、盾山（通过牺牲产生古币；安排在前排先阵亡，避免古币到得太晚。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:sanfen",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：刘禅（施法给队友提供临时等级并承担前排，为高频法术核心增加战斗成长。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "common_claim_refs": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:20",
+        "claim_refs": [
+          "doc-9baef6b212bca18b203482",
+          "doc-e95ba5b0607cc7dcc98ed9",
+          "doc-fdb8eac3195e84793c6f02",
+          "doc-3149a3a7bef8aab47522fc",
+          "doc-7abc6f86b98a60fb76ceda",
+          "doc-30e1a350fc250b51a88f05",
+          "doc-446b0a9d006896e516d512",
+          "doc-b4d04f34d50bb6beca262b",
+          "doc-d4bdbd174f39727afcc14e",
+          "doc-e9c7dab4bc4f8412a1ed11",
+          "doc-1da2b0b4ca9fe970826e45",
+          "doc-33e8dd25753682f45d9f5b",
+          "doc-fec9f746ae872c534f458e",
+          "doc-dbc1710a0d16829b53c30e",
+          "doc-00905c3d078dbce73ebf20",
+          "doc-dcc88d7a4e90d0d9481240",
+          "doc-b3cf472988379206490c4d",
+          "doc-84334b54592943cd9c5d4f",
+          "doc-cedfa3531284adc20659af",
+          "doc-98000438126fcb9a519bb7"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {},
+        "assessment": [],
+        "selection": {}
+      }
+    ]
+  },
+  "reading_layout": {
+    "version": 3,
+    "claim_locations": {
+      "doc-9baef6b212bca18b203482": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-e95ba5b0607cc7dcc98ed9": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-fdb8eac3195e84793c6f02": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-3149a3a7bef8aab47522fc": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-7abc6f86b98a60fb76ceda": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-30e1a350fc250b51a88f05": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-446b0a9d006896e516d512": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-b4d04f34d50bb6beca262b": [
+        "核心机制"
+      ],
+      "doc-d4bdbd174f39727afcc14e": [
+        "核心机制"
+      ],
+      "doc-e9c7dab4bc4f8412a1ed11": [
+        "推荐装备"
+      ],
+      "doc-1da2b0b4ca9fe970826e45": [
+        "推荐装备"
+      ],
+      "doc-33e8dd25753682f45d9f5b": [
+        "推荐装备"
+      ],
+      "doc-fec9f746ae872c534f458e": [
+        "推荐天赋"
+      ],
+      "doc-dbc1710a0d16829b53c30e": [
+        "推荐天赋"
+      ],
+      "doc-00905c3d078dbce73ebf20": [
+        "推荐天赋"
+      ],
+      "doc-dcc88d7a4e90d0d9481240": [
+        "关键操作顺序"
+      ],
+      "doc-b3cf472988379206490c4d": [
+        "关键操作顺序"
+      ],
+      "doc-84334b54592943cd9c5d4f": [
+        "关键操作顺序"
+      ],
+      "doc-cedfa3531284adc20659af": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-98000438126fcb9a519bb7": [
+        "棋手技能推荐"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "early.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-9baef6b212bca18b203482",
+            "doc-e95ba5b0607cc7dcc98ed9"
+          ],
+          "claim_hashes": {
+            "doc-9baef6b212bca18b203482": "2b9cba3e982866f3b22b3de14492c6c297f3f3525b2f7f032217b445f01ce29a",
+            "doc-e95ba5b0607cc7dcc98ed9": "98155f4c65e3326939d3f0b8fee8237943b939ddc48cf4f2dd5c955c383b6c5a"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-fdb8eac3195e84793c6f02",
+            "doc-3149a3a7bef8aab47522fc",
+            "doc-7abc6f86b98a60fb76ceda"
+          ],
+          "claim_hashes": {
+            "doc-fdb8eac3195e84793c6f02": "ecb8c138208de80bcf8492e5f07febc1ad5a0756311c435bc8cc9a3389ee1e59",
+            "doc-3149a3a7bef8aab47522fc": "03261aef758f51a885d18cbcd3cff5ccb974b671c6234e85fe460b22d34a99d0",
+            "doc-7abc6f86b98a60fb76ceda": "eca80f40b58ec82dae50fd53828506a6417ba6983c8362df91a793310ae451ad"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-3149a3a7bef8aab47522fc"
+          ],
+          "claim_hashes": {
+            "doc-3149a3a7bef8aab47522fc": "03261aef758f51a885d18cbcd3cff5ccb974b671c6234e85fe460b22d34a99d0"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-fdb8eac3195e84793c6f02"
+          ],
+          "claim_hashes": {
+            "doc-fdb8eac3195e84793c6f02": "ecb8c138208de80bcf8492e5f07febc1ad5a0756311c435bc8cc9a3389ee1e59"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-30e1a350fc250b51a88f05",
+            "doc-446b0a9d006896e516d512",
+            "doc-cedfa3531284adc20659af"
+          ],
+          "claim_hashes": {
+            "doc-30e1a350fc250b51a88f05": "7375b13a384bef4588dce719a7e705d91c6c426908eb2cd72cdb1b0dd417d841",
+            "doc-446b0a9d006896e516d512": "91b4f99e8be008de5d6622933d29f35cb34a4660a27d6bda47f32752d8f31dc0",
+            "doc-cedfa3531284adc20659af": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-cedfa3531284adc20659af"
+          ],
+          "claim_hashes": {
+            "doc-cedfa3531284adc20659af": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-446b0a9d006896e516d512",
+            "doc-cedfa3531284adc20659af"
+          ],
+          "claim_hashes": {
+            "doc-446b0a9d006896e516d512": "91b4f99e8be008de5d6622933d29f35cb34a4660a27d6bda47f32752d8f31dc0",
+            "doc-cedfa3531284adc20659af": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "equipment": {
+          "claim_refs": [
+            "doc-e9c7dab4bc4f8412a1ed11",
+            "doc-1da2b0b4ca9fe970826e45",
+            "doc-33e8dd25753682f45d9f5b"
+          ],
+          "claim_hashes": {
+            "doc-e9c7dab4bc4f8412a1ed11": "f2d6978e15da9893345b2beb5d8072697cc50ac39e02725d3fb4efe21675f624",
+            "doc-1da2b0b4ca9fe970826e45": "b433d660d2b229c141c87284a31fd4c5bf71665b3527009497e314963c9e2dbc",
+            "doc-33e8dd25753682f45d9f5b": "ed4ace6ecdeca2f8db0b501431d177d52500e528e42dca13bc97734e32952a07"
+          }
+        },
+        "talents": {
+          "claim_refs": [
+            "doc-fec9f746ae872c534f458e",
+            "doc-dbc1710a0d16829b53c30e",
+            "doc-00905c3d078dbce73ebf20"
+          ],
+          "claim_hashes": {
+            "doc-fec9f746ae872c534f458e": "efe7c2afe1e451065d847fc215cb1531a8c1043944e0dbdee0deaaa152f2f436",
+            "doc-dbc1710a0d16829b53c30e": "a91569c2d45aab023486da1c02268e367788673f504d923c0f826c82f002d031",
+            "doc-00905c3d078dbce73ebf20": "0a29ae8855538ed3fb9ba2b96293e0aac5108c8ced420fc6cd1a179395163054"
+          }
+        },
+        "skills": {
+          "claim_refs": [
+            "doc-98000438126fcb9a519bb7"
+          ],
+          "claim_hashes": {
+            "doc-98000438126fcb9a519bb7": "1e74fe3fb6dfd72cb632509883973cf8f0d5b845a04c0ea933f7401cdf44001a"
+          }
+        }
+      }
+    }
+  },
+  "guide_related": [
+    {
+      "note": "player-20",
+      "title": "阿离",
+      "href": "../players/阿离.md",
+      "relation": "applicable_player"
+    }
+  ],
+  "path": "knowledge/lineups/伞炸弹猫.md",
+  "entity_names": {
+    "faction:heluo": "河洛",
+    "faction:sanfen": "三分",
+    "player:20": "阿离",
+    "card:3121": "沈梦溪",
+    "card:1941": "苏烈",
+    "card:1731": "李元芳",
+    "card:1821": "干将莫邪",
+    "card:1141": "刘禅",
+    "card:1441": "程咬金",
+    "card:5091": "盾山",
+    "card:5011": "明世隐",
+    "card:1861": "太乙真人"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-20T07:21:51.126704+00:00",
+      "origin": "user",
+      "reason": "用户指定阵容改名",
+      "previous": {
+        "title": "纸伞猫",
+        "path": "knowledge/lineups/纸伞猫.md"
+      }
+    }
+  ],
+  "conflicts": [],
+  "revision": "d315cd44ba9ff867021a"
+}

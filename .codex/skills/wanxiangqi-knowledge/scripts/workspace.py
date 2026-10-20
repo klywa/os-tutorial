@@ -259,7 +259,7 @@ def apply_transaction(root, transaction):
             raise ValueError('非法迁移路径')
         if path not in active and target.exists():
             # Keep the complete original for recovery before removing the old filename.
-            wxq.atomic_text(target.with_suffix('.md.bak'), target.read_text(encoding='utf-8'))
+            wxq.atomic_text(target.with_suffix(target.suffix + '.bak'), target.read_text(encoding='utf-8'))
             target.unlink()
     (root / 'knowledge/pending-save.json').unlink(missing_ok=True)
     note_link_event(root)

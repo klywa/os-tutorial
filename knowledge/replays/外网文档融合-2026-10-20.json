@@ -4,8 +4,8 @@
     {
       "id": "zhaojun-high-tier-dahe",
       "type": "lineup",
-      "title": "昭君高阶大河（龙蛇）",
-      "topic": "昭君高阶大河运营",
+      "title": "大河龙蛇",
+      "topic": "大河龙蛇运营",
       "core": [
         "card:1871",
         "card:5191"
@@ -10826,10 +10826,21 @@
           "origin": "document-fusion",
           "reason": "本地文档融合，旧结论和人工内容保留",
           "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "昭君高阶大河（龙蛇）",
+            "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          }
         }
       ],
-      "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md",
-      "aliases": [],
+      "path": "knowledge/lineups/大河龙蛇.md",
+      "aliases": [
+        "昭君高阶大河（龙蛇）"
+      ],
       "meta": {
         "required_factions": [
           "faction:dahe"
@@ -11349,7 +11360,7 @@
       },
       "manual_sections": [],
       "conflicts": [],
-      "revision": "640ca2bf30cb8a2c2b8b",
+      "revision": "518d4a63d33606c80cef",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -11702,14 +11713,6 @@
           "note": "player-zhaojun",
           "branch": "zhaojun",
           "relation": "applicable_player"
-        },
-        {
-          "title": "昭君高阶大河（龙蛇）-昭君",
-          "href": "昭君高阶大河（龙蛇）-昭君.md",
-          "note": "zhaojun-high-tier-dahe",
-          "player": "player:34",
-          "exclude_branch": "zhaojun",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -11717,7 +11720,7 @@
       "id": "player-zhaojun",
       "type": "player",
       "title": "昭君",
-      "topic": "昭君高阶大河运营",
+      "topic": "大河龙蛇运营",
       "core": [],
       "entities": [
         "card:1311",
@@ -12022,9 +12025,9 @@
         {
           "id": "zhaojun-high-tier-dahe",
           "type": "lineup",
-          "title": "昭君高阶大河（龙蛇）",
+          "title": "大河龙蛇",
           "relation": "recommended_lineup",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          "path": "knowledge/lineups/大河龙蛇.md"
         },
         {
           "id": "heluo-huamulan",
@@ -12036,14 +12039,8 @@
         {
           "id": "document-lineup-9",
           "type": "lineup",
-          "title": "七五高阶组合",
-          "path": "knowledge/lineups/七五高阶组合.md"
-        },
-        {
-          "id": "document-lineup-10",
-          "type": "lineup",
-          "title": "冻结全五阶",
-          "path": "knowledge/lineups/冻结全五阶.md"
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五.md"
         }
       ],
       "path": "knowledge/players/昭君.md",
@@ -12549,13 +12546,13 @@
         }
       ],
       "conflicts": [],
-      "revision": "52ed1b9cc9a511f56d75",
+      "revision": "fa1fb8c70c3721d61df4",
       "lineup_adaptations": [
         {
           "lineup": "zhaojun-high-tier-dahe",
           "branch": "zhaojun",
-          "title": "昭君高阶大河（龙蛇）",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）-昭君.md",
+          "title": "大河龙蛇",
+          "path": "knowledge/lineups/大河龙蛇-昭君.md",
           "selection": {
             "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
             "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
@@ -12645,20 +12642,8 @@
         {
           "lineup": "document-lineup-9",
           "branch": "owner",
-          "title": "七五高阶组合",
-          "path": "knowledge/lineups/七五高阶组合-昭君.md",
-          "selection": {},
-          "required_factions": [
-            "三分"
-          ],
-          "advantages": "暂无已确认结论",
-          "disadvantages": "暂无已确认结论"
-        },
-        {
-          "lineup": "document-lineup-10",
-          "branch": "owner",
-          "title": "冻结全五阶",
-          "path": "knowledge/lineups/冻结全五阶-昭君.md",
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五-昭君.md",
           "selection": {},
           "required_factions": [],
           "advantages": "暂无已确认结论",
@@ -12675,7 +12660,7 @@
       "id": "zhaojun-version-and-asr-review",
       "type": "other",
       "title": "昭君：冰心领域版本差异",
-      "topic": "昭君高阶大河运营",
+      "topic": "大河龙蛇运营",
       "core": [],
       "entities": [
         "card:93416",
@@ -12702,8 +12687,8 @@
         {
           "id": "zhaojun-high-tier-dahe",
           "type": "lineup",
-          "title": "昭君高阶大河（龙蛇）",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          "title": "大河龙蛇",
+          "path": "knowledge/lineups/大河龙蛇.md"
         },
         {
           "id": "player-zhaojun",
@@ -12716,6 +12701,12 @@
           "type": "lineup",
           "title": "河洛花木兰",
           "path": "knowledge/lineups/河洛花木兰.md"
+        },
+        {
+          "id": "document-lineup-9",
+          "type": "lineup",
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五.md"
         }
       ],
       "path": "knowledge/other/昭君－冰心领域版本差异.md",
@@ -12757,12 +12748,12 @@
         }
       ],
       "conflicts": [],
-      "revision": "7e9a3f326478cec8a389"
+      "revision": "6bb104aad4d2dc8caa0f"
     },
     {
       "id": "angela-liubang-totems",
       "type": "lineup",
-      "title": "安琪拉养刘邦（图腾成长）",
+      "title": "炸盾刘邦",
       "topic": "刘邦图腾永久等级与安琪拉持续输出",
       "entities": [
         "card:1191",
@@ -14063,8 +14054,10 @@
           "path": "knowledge/players/安琪拉.md"
         }
       ],
-      "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md",
-      "aliases": [],
+      "path": "knowledge/lineups/炸盾刘邦.md",
+      "aliases": [
+        "安琪拉养刘邦（图腾成长）"
+      ],
       "entity_names": {
         "faction:dahe": "大河",
         "faction:zhulu": "逐鹿",
@@ -26195,10 +26188,19 @@
           "origin": "document-fusion",
           "reason": "本地文档融合，旧结论和人工内容保留",
           "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "安琪拉养刘邦（图腾成长）",
+            "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+          }
         }
       ],
       "conflicts": [],
-      "revision": "deb5c67290852b601949",
+      "revision": "040bbdd34a2a0e462734",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -26542,14 +26544,6 @@
           "note": "player-angela",
           "branch": "angela",
           "relation": "applicable_player"
-        },
-        {
-          "title": "安琪拉养刘邦（图腾成长）-安琪拉",
-          "href": "安琪拉养刘邦（图腾成长）-安琪拉.md",
-          "note": "angela-liubang-totems",
-          "player": "player:51",
-          "exclude_branch": "angela",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -27143,9 +27137,9 @@
         {
           "id": "angela-liubang-totems",
           "type": "lineup",
-          "title": "安琪拉养刘邦（图腾成长）",
+          "title": "炸盾刘邦",
           "relation": "recommended_lineup",
-          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+          "path": "knowledge/lineups/炸盾刘邦.md"
         },
         {
           "id": "document-lineup-5",
@@ -27626,13 +27620,13 @@
         }
       ],
       "conflicts": [],
-      "revision": "2fccdc96ceb604c35443",
+      "revision": "253f98416615115b5df8",
       "lineup_adaptations": [
         {
           "lineup": "angela-liubang-totems",
           "branch": "angela",
-          "title": "安琪拉养刘邦（图腾成长）",
-          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）-安琪拉.md",
+          "title": "炸盾刘邦",
+          "path": "knowledge/lineups/炸盾刘邦-安琪拉.md",
           "selection": {
             "adopt": "大河、逐鹿开放，能够取得刘邦及图腾、扁鹊时考虑。",
             "avoid": "刘邦未到手不追工具觉醒；持续不来时保留资源将棋手升至六阶，禁逐鹿无法照搬完整炸盾体系。",
@@ -38759,8 +38753,8 @@
         {
           "id": "zhaojun-high-tier-dahe",
           "type": "lineup",
-          "title": "昭君高阶大河（龙蛇）",
-          "path": "knowledge/lineups/昭君高阶大河（龙蛇）.md"
+          "title": "大河龙蛇",
+          "path": "knowledge/lineups/大河龙蛇.md"
         },
         {
           "id": "player-zhaojun",
@@ -38771,8 +38765,8 @@
         {
           "id": "angela-liubang-totems",
           "type": "lineup",
-          "title": "安琪拉养刘邦（图腾成长）",
-          "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）.md"
+          "title": "炸盾刘邦",
+          "path": "knowledge/lineups/炸盾刘邦.md"
         },
         {
           "id": "player-angela",
@@ -38783,8 +38777,8 @@
         {
           "id": "yaomei-sacrifice-lixin",
           "type": "lineup",
-          "title": "李信牺牲流",
-          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
+          "title": "牺牲李信",
+          "path": "knowledge/lineups/牺牲李信.md"
         },
         {
           "id": "heluo-huamulan",
@@ -38813,8 +38807,8 @@
         {
           "id": "document-lineup-3",
           "type": "lineup",
-          "title": "效果牌养成孙膑",
-          "path": "knowledge/lineups/效果牌养成孙膑.md"
+          "title": "逐鹿孙膑",
+          "path": "knowledge/lineups/逐鹿孙膑.md"
         },
         {
           "id": "document-lineup-4",
@@ -38831,8 +38825,8 @@
         {
           "id": "document-lineup-6",
           "type": "lineup",
-          "title": "山鬼召唤流",
-          "path": "knowledge/lineups/山鬼召唤流.md"
+          "title": "山鬼召唤",
+          "path": "knowledge/lineups/山鬼召唤.md"
         },
         {
           "id": "document-lineup-7",
@@ -38843,44 +38837,38 @@
         {
           "id": "document-lineup-8",
           "type": "lineup",
-          "title": "泳池召唤流",
-          "path": "knowledge/lineups/泳池召唤流.md"
+          "title": "泳池派对",
+          "path": "knowledge/lineups/泳池派对.md"
         },
         {
           "id": "document-lineup-9",
           "type": "lineup",
-          "title": "七五高阶组合",
-          "path": "knowledge/lineups/七五高阶组合.md"
-        },
-        {
-          "id": "document-lineup-10",
-          "type": "lineup",
-          "title": "冻结全五阶",
-          "path": "knowledge/lineups/冻结全五阶.md"
+          "title": "昭君七五",
+          "path": "knowledge/lineups/昭君七五.md"
         },
         {
           "id": "document-lineup-11",
           "type": "lineup",
-          "title": "虎轲夺取流",
-          "path": "knowledge/lineups/虎轲夺取流.md"
+          "title": "猪虎轲",
+          "path": "knowledge/lineups/猪虎轲.md"
         },
         {
           "id": "document-lineup-12",
           "type": "lineup",
-          "title": "纸伞守约",
-          "path": "knowledge/lineups/纸伞守约.md"
+          "title": "伞守约",
+          "path": "knowledge/lineups/伞守约.md"
         },
         {
           "id": "document-lineup-13",
           "type": "lineup",
-          "title": "纸伞狄仁杰",
-          "path": "knowledge/lineups/纸伞狄仁杰.md"
+          "title": "伞狄仁杰",
+          "path": "knowledge/lineups/伞狄仁杰.md"
         },
         {
           "id": "document-lineup-14",
           "type": "lineup",
-          "title": "纸伞猫",
-          "path": "knowledge/lineups/纸伞猫.md"
+          "title": "伞炸弹猫",
+          "path": "knowledge/lineups/伞炸弹猫.md"
         },
         {
           "id": "document-lineup-15",
@@ -38895,7 +38883,7 @@
           "path": "knowledge/lineups/大河开团射.md"
         }
       ],
-      "revision": "decbc3aab6cd8b588304",
+      "revision": "d2526011b5c7405814ea",
       "guide_related": [
         {
           "note": "player-24",
@@ -38908,12 +38896,13 @@
     {
       "id": "yaomei-sacrifice-lixin",
       "type": "lineup",
-      "title": "李信牺牲流",
+      "title": "牺牲李信",
       "aliases": [
         "瑶妹李信牺牲流",
-        "小鹿李信献祭流"
+        "小鹿李信献祭流",
+        "李信牺牲流"
       ],
-      "topic": "瑶妹牺牲流李信",
+      "topic": "牺牲李信",
       "entities": [
         "card:10404",
         "card:1101",
@@ -42631,7 +42620,7 @@
         ],
         "assessment": []
       },
-      "path": "knowledge/lineups/瑶妹牺牲流李信.md",
+      "path": "knowledge/lineups/牺牲李信.md",
       "entity_names": {
         "faction:heluo": "河洛",
         "player:11": "瑶妹",
@@ -91443,6 +91432,15 @@
           "origin": "document-fusion",
           "reason": "本地文档融合，旧结论和人工内容保留",
           "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "李信牺牲流",
+            "path": "knowledge/lineups/瑶妹牺牲流李信.md"
+          }
         }
       ],
       "conflicts": [],
@@ -91456,7 +91454,7 @@
           "path": "knowledge/players/瑶妹.md"
         }
       ],
-      "revision": "8273e3d755c63a195dc7",
+      "revision": "da390049d0e75f985108",
       "manual_fields": [
         "title"
       ],
@@ -92154,14 +92152,6 @@
           "note": "player-yaomei",
           "branch": "yaomei",
           "relation": "applicable_player"
-        },
-        {
-          "title": "李信牺牲流-瑶妹",
-          "href": "李信牺牲流-瑶妹.md",
-          "note": "yaomei-sacrifice-lixin",
-          "player": "player:11",
-          "exclude_branch": "yaomei",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -158168,7 +158158,7 @@
           "path": "knowledge/players/嬴律.md"
         }
       ],
-      "revision": "193aed4a65f3e6302a7f",
+      "revision": "24f22d0da8db6495b7a1",
       "reading_layout": {
         "version": 3,
         "claim_locations": {
@@ -159921,27 +159911,11 @@
           "relation": "applicable_player"
         },
         {
-          "title": "河洛花木兰-明先生",
-          "href": "河洛花木兰-明先生.md",
-          "note": "heluo-huamulan",
-          "player": "player:39",
-          "exclude_branch": "ming",
-          "relation": "same_lineup_player"
-        },
-        {
           "title": "庄小鱼",
           "href": "../players/庄小鱼.md",
           "note": "player-zhuang",
           "branch": "zhuang",
           "relation": "applicable_player"
-        },
-        {
-          "title": "河洛花木兰-庄小鱼",
-          "href": "河洛花木兰-庄小鱼.md",
-          "note": "heluo-huamulan",
-          "player": "player:31",
-          "exclude_branch": "zhuang",
-          "relation": "same_lineup_player"
         },
         {
           "title": "闹闹",
@@ -159951,14 +159925,6 @@
           "relation": "applicable_player"
         },
         {
-          "title": "河洛花木兰-闹闹",
-          "href": "河洛花木兰-闹闹.md",
-          "note": "heluo-huamulan",
-          "player": "player:40",
-          "exclude_branch": "naonao",
-          "relation": "same_lineup_player"
-        },
-        {
           "title": "昭君",
           "href": "../players/昭君.md",
           "note": "player-zhaojun",
@@ -159966,27 +159932,11 @@
           "relation": "applicable_player"
         },
         {
-          "title": "河洛花木兰-昭君",
-          "href": "河洛花木兰-昭君.md",
-          "note": "heluo-huamulan",
-          "player": "player:34",
-          "exclude_branch": "zhaojun",
-          "relation": "same_lineup_player"
-        },
-        {
           "title": "嬴律",
           "href": "../players/嬴律.md",
           "note": "player-ying",
           "branch": "ying",
           "relation": "applicable_player"
-        },
-        {
-          "title": "河洛花木兰-嬴律",
-          "href": "河洛花木兰-嬴律.md",
-          "note": "heluo-huamulan",
-          "player": "player:43",
-          "exclude_branch": "ying",
-          "relation": "same_lineup_player"
         }
       ]
     },
@@ -160329,9 +160279,9 @@
         {
           "id": "yaomei-sacrifice-lixin",
           "type": "lineup",
-          "title": "李信牺牲流",
+          "title": "牺牲李信",
           "relation": "recommended_lineup",
-          "path": "knowledge/lineups/瑶妹牺牲流李信.md"
+          "path": "knowledge/lineups/牺牲李信.md"
         }
       ],
       "path": "knowledge/players/瑶妹.md",
@@ -160479,8 +160429,8 @@
         {
           "lineup": "yaomei-sacrifice-lixin",
           "branch": "yaomei",
-          "title": "李信牺牲流",
-          "path": "knowledge/lineups/李信牺牲流-瑶妹.md",
+          "title": "牺牲李信",
+          "path": "knowledge/lineups/牺牲李信-瑶妹.md",
           "selection": {
             "adopt": "能保前期胜场养小鹿，河洛开放，且能取得李信、钟馗和复生工具时考虑。",
             "avoid": "持续掉血或缺李信时先补过渡战力；共鸣前不能安全将棋手升至六阶时不硬升。",
@@ -160527,7 +160477,7 @@
           "disadvantages": "依赖死亡顺序、连线与100级门槛；复生成员可能分走奉献收益。"
         }
       ],
-      "revision": "5925ab55b8abb08fd0f9",
+      "revision": "d7e4cd45d48017f8cea3",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -160658,8 +160608,8 @@
         {
           "id": "document-lineup-8",
           "type": "lineup",
-          "title": "泳池召唤流",
-          "path": "knowledge/lineups/泳池召唤流.md"
+          "title": "泳池派对",
+          "path": "knowledge/lineups/泳池派对.md"
         }
       ],
       "path": "knowledge/players/明先生.md",
@@ -160810,8 +160760,8 @@
         {
           "lineup": "document-lineup-8",
           "branch": "owner",
-          "title": "泳池召唤流",
-          "path": "knowledge/lineups/泳池召唤流-明先生.md",
+          "title": "泳池派对",
+          "path": "knowledge/lineups/泳池派对-明先生.md",
           "selection": {},
           "required_factions": [
             "大河",
@@ -160822,7 +160772,7 @@
           "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "69295717f7e75b21d000",
+      "revision": "806f4f854225d7a19a0a",
       "explicit_relationships": true,
       "player_reading_layout": {
         "version": 1
@@ -162981,8 +162931,8 @@
         {
           "id": "document-lineup-3",
           "type": "lineup",
-          "title": "效果牌养成孙膑",
-          "path": "knowledge/lineups/效果牌养成孙膑.md"
+          "title": "逐鹿孙膑",
+          "path": "knowledge/lineups/逐鹿孙膑.md"
         },
         {
           "id": "document-lineup-4",
@@ -163014,8 +162964,8 @@
         {
           "lineup": "document-lineup-3",
           "branch": "owner",
-          "title": "效果牌养成孙膑",
-          "path": "knowledge/lineups/效果牌养成孙膑-姜导.md",
+          "title": "逐鹿孙膑",
+          "path": "knowledge/lineups/逐鹿孙膑-姜导.md",
           "selection": {},
           "required_factions": [
             "逐鹿"
@@ -163037,7 +162987,7 @@
           "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "c667976ec44ebd340aad"
+      "revision": "cc51d2a180674b2b4390"
     },
     {
       "id": "player-38",
@@ -164430,8 +164380,8 @@
         {
           "id": "document-lineup-11",
           "type": "lineup",
-          "title": "虎轲夺取流",
-          "path": "knowledge/lineups/虎轲夺取流.md"
+          "title": "猪虎轲",
+          "path": "knowledge/lineups/猪虎轲.md"
         }
       ],
       "explicit_relationships": true,
@@ -164444,15 +164394,15 @@
         {
           "lineup": "document-lineup-11",
           "branch": "owner",
-          "title": "虎轲夺取流",
-          "path": "knowledge/lineups/虎轲夺取流-镜.md",
+          "title": "猪虎轲",
+          "path": "knowledge/lineups/猪虎轲-镜.md",
           "selection": {},
           "required_factions": [],
           "advantages": "暂无已确认结论",
           "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "89a9261fbb1357c23d47"
+      "revision": "319faea93fa44c7e0496"
     },
     {
       "id": "player-20",
@@ -164728,20 +164678,20 @@
         {
           "id": "document-lineup-12",
           "type": "lineup",
-          "title": "纸伞守约",
-          "path": "knowledge/lineups/纸伞守约.md"
+          "title": "伞守约",
+          "path": "knowledge/lineups/伞守约.md"
         },
         {
           "id": "document-lineup-13",
           "type": "lineup",
-          "title": "纸伞狄仁杰",
-          "path": "knowledge/lineups/纸伞狄仁杰.md"
+          "title": "伞狄仁杰",
+          "path": "knowledge/lineups/伞狄仁杰.md"
         },
         {
           "id": "document-lineup-14",
           "type": "lineup",
-          "title": "纸伞猫",
-          "path": "knowledge/lineups/纸伞猫.md"
+          "title": "伞炸弹猫",
+          "path": "knowledge/lineups/伞炸弹猫.md"
         },
         {
           "id": "document-lineup-15",
@@ -164760,8 +164710,8 @@
         {
           "lineup": "document-lineup-12",
           "branch": "owner",
-          "title": "纸伞守约",
-          "path": "knowledge/lineups/纸伞守约-阿离.md",
+          "title": "伞守约",
+          "path": "knowledge/lineups/伞守约-阿离.md",
           "selection": {},
           "required_factions": [
             "河洛"
@@ -164772,8 +164722,8 @@
         {
           "lineup": "document-lineup-13",
           "branch": "owner",
-          "title": "纸伞狄仁杰",
-          "path": "knowledge/lineups/纸伞狄仁杰-阿离.md",
+          "title": "伞狄仁杰",
+          "path": "knowledge/lineups/伞狄仁杰-阿离.md",
           "selection": {},
           "required_factions": [
             "河洛"
@@ -164784,8 +164734,8 @@
         {
           "lineup": "document-lineup-14",
           "branch": "owner",
-          "title": "纸伞猫",
-          "path": "knowledge/lineups/纸伞猫-阿离.md",
+          "title": "伞炸弹猫",
+          "path": "knowledge/lineups/伞炸弹猫-阿离.md",
           "selection": {},
           "required_factions": [
             "河洛",
@@ -164807,7 +164757,7 @@
           "disadvantages": "暂无已确认结论"
         }
       ],
-      "revision": "c2d266862e95d34a87c8"
+      "revision": "019b45bce6464ddd615e"
     },
     {
       "id": "player-50",
@@ -169128,9 +169078,10 @@
     {
       "id": "document-lineup-3",
       "type": "lineup",
-      "title": "效果牌养成孙膑",
+      "title": "逐鹿孙膑",
       "aliases": [
-        "姜导孙膑"
+        "姜导孙膑",
+        "效果牌养成孙膑"
       ],
       "entities": [
         "card:1131",
@@ -169145,7 +169096,7 @@
       "core": [
         "card:1181"
       ],
-      "topic": "效果牌养成孙膑",
+      "topic": "逐鹿孙膑",
       "claims": [
         {
           "id": "doc-6dbc22985a53fab1572ba5",
@@ -169908,7 +169859,7 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/效果牌养成孙膑.md",
+      "path": "knowledge/lineups/逐鹿孙膑.md",
       "entity_names": {
         "faction:zhulu": "逐鹿",
         "player:41": "姜导",
@@ -169922,9 +169873,19 @@
         "card:1131": "庄周"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "效果牌养成孙膑",
+            "path": "knowledge/lineups/效果牌养成孙膑.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "9d7f5bf0b0db3988d33d"
+      "revision": "6d6258c3c2e34e0d9125"
     },
     {
       "id": "document-lineup-4",
@@ -171545,7 +171506,7 @@
     {
       "id": "document-lineup-6",
       "type": "lineup",
-      "title": "山鬼召唤流",
+      "title": "山鬼召唤",
       "aliases": [
         "山鬼召唤流"
       ],
@@ -171561,7 +171522,7 @@
       "core": [
         "card:5171"
       ],
-      "topic": "山鬼召唤流",
+      "topic": "山鬼召唤",
       "claims": [
         {
           "id": "doc-46ef05a3c819beb35374f9",
@@ -172067,7 +172028,7 @@
           ]
         }
       },
-      "path": "knowledge/lineups/山鬼召唤流.md",
+      "path": "knowledge/lineups/山鬼召唤.md",
       "entity_names": {
         "faction:dahe": "大河",
         "faction:riluohai": "日落海",
@@ -172082,9 +172043,19 @@
         "card:5251": "鲁班大师"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "山鬼召唤流",
+            "path": "knowledge/lineups/山鬼召唤流.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "30c90d54c515916ebc68"
+      "revision": "f55903c2f04d73d82904"
     },
     {
       "id": "document-lineup-7",
@@ -172735,9 +172706,10 @@
     {
       "id": "document-lineup-8",
       "type": "lineup",
-      "title": "泳池召唤流",
+      "title": "泳池派对",
       "aliases": [
-        "明世隐泳池派对"
+        "明世隐泳池派对",
+        "泳池召唤流"
       ],
       "entities": [
         "card:1421",
@@ -172752,7 +172724,7 @@
       "core": [
         "card:5251"
       ],
-      "topic": "泳池召唤流",
+      "topic": "泳池派对",
       "claims": [
         {
           "id": "doc-fabe393def40f0a691f14d",
@@ -173405,7 +173377,7 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/泳池召唤流.md",
+      "path": "knowledge/lineups/泳池派对.md",
       "entity_names": {
         "faction:dahe": "大河",
         "faction:riluohai": "日落海",
@@ -173421,16 +173393,29 @@
         "card:1831": "雅典娜"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "泳池召唤流",
+            "path": "knowledge/lineups/泳池召唤流.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "aae5fa031a623bc5a381"
+      "revision": "02664be2eab4c37d357a"
     },
     {
       "id": "document-lineup-9",
       "type": "lineup",
-      "title": "七五高阶组合",
+      "title": "昭君七五",
       "aliases": [
-        "昭君七五"
+        "昭君七五",
+        "昭君全五阶",
+        "七五高阶组合",
+        "冻结全五阶"
       ],
       "entities": [
         "card:1481",
@@ -173438,19 +173423,18 @@
         "card:1861",
         "card:1901",
         "card:5211",
+        "card:5371",
         "player:34"
       ],
-      "core": [
-        "card:5211"
-      ],
-      "topic": "七五高阶组合",
+      "core": [],
+      "topic": "昭君七五",
       "claims": [
         {
           "id": "doc-f60bb993d0448e58da69a5",
           "section": "前期运营及应变",
           "text": "前3回合：优先保血，冻会影响输赢就不冻，拍卖拿一张三阶冻就好。（最好是第一回合不冻后面两回合都冻）",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173468,7 +173452,7 @@
           "section": "前期运营及应变",
           "text": "1回合：上干将+牛魔；2回合：上弈星+冻位（香香/苏烈白嫖免费刷新和牺牲加等级，影响输赢就不冻）；3回合：升棋手2阶，拍卖拿有战力的三阶，没有就随便拿个三阶；4回合：升棋手3阶，手上两个三阶，冻一个没用的。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173486,7 +173470,7 @@
           "section": "中期运营及应变",
           "text": "4回合之后：必须冻（决赛除外）。优先级两条：①只冻三阶及以上的卡②冻可冻卡里战力最弱的，优先保血。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173504,7 +173488,7 @@
           "section": "中期运营及应变",
           "text": "5回合：开秘技，必选兑换券；没兑换券就选同阵营的霜寒进化转大河（牛魔大多能回本）。冻出诸葛就留着，是过渡强力卡，其他直接冻上去；6回合：冻出第一个五阶，开兑换券。优先级：海月＞玉环＞子牙，接着冻另一个3阶；7回合：冻一个四阶。卖人顺序：先干将再牛魔，弈星棋手5阶前别卖。拍卖优先级：诸葛＞海月＞玉环＞子牙＞其他五阶，有一只就先不用拿了。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173522,7 +173506,7 @@
           "section": "后期运营及应变",
           "text": "8回合：升棋手5阶，手握6只4/5阶。没诸葛就商店免费刷新找一下，没找到就存钱上棋手6阶。秘技优先选左边第一个冰心领域；9回合：有经济天赋可上棋手6阶，选中间的不朽坚冰。棋手6阶后有战力可以稍微保血了。场上还剩1阶的，用兑换券开新5阶替换掉。之后一直冻最没战力的5阶；10-11回合：商店找合成牌+效果牌：加等级的效果牌全要、装备重构、四选一装备也要、太乙找一只，前面没诸葛的话换帅也可以拿。拍卖：人口/装备/众星拱月/众星闪耀/名刀/呼风唤雨，都可以拿；12回合之后，商店有合成打合成，用子牙被动刷等级。决赛圈：传承遗志冻位之后上太乙（高压局提前上），太乙给海月。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173540,7 +173524,7 @@
           "section": "后期运营及应变",
           "text": "三个优先获取大哥：海月、玉环、子牙，不管怎样都要。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173558,7 +173542,7 @@
           "section": "后期运营及应变",
           "text": "为什么要加诸葛？——昭君75的5阶大哥全是AOE，缺单体爆发。诸葛配合玉环无限开炮，输出直接拉满。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173576,7 +173560,7 @@
           "section": "后期运营及应变",
           "text": "固定5人：诸葛 + 玉环 + 海月 + 子牙 + 太乙剩两个位置有啥用啥：东皇 / 鲁大 / 吕布，牢大（有临时等级天赋必留）、钟馗（决赛圈上）。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173594,7 +173578,7 @@
           "section": "后期运营及应变",
           "text": "选了呼风唤雨或者这把传承多：只留诸葛/玉环/海月/子牙的等级，其他全传承掉，上太乙+钟馗，配刘禅或瑶打决赛也很猛。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173612,7 +173596,7 @@
           "section": "棋手技能推荐",
           "text": "秘技选择：稳上分推荐选冰封结晶获得兑换券，因为兑换券可以稳定找到海月、杨玉环和姜子牙。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173630,7 +173614,7 @@
           "section": "推荐装备",
           "text": "刚需四件（有没有强度差一个档次）：玉环：大书 + 圣杯；诸葛：变猪；海月：不死鸟。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173648,7 +173632,7 @@
           "section": "推荐装备",
           "text": "装备多的话：玉环再补个变猪；诸葛补大书+法穿；海月补御灵之纱+反甲；子牙补名刀+魔律之刃。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173666,7 +173650,7 @@
           "section": "推荐装备",
           "text": "开局拿法：大棒就合成圣剑（影响胜负先拿，否则拿变猪）；破碎圣杯就合成法源之杯；腰带就合不死鸟；守护者之铠合反甲；速击枪合日渊；法典先不选（转大河做回血，75选大书）。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173684,7 +173668,7 @@
           "section": "推荐装备",
           "text": "昭君锦囊不多，装备能拿就拿，装备到位战力翻倍。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173702,7 +173686,7 @@
           "section": "推荐天赋及原因",
           "text": "四重奏 ＞ 多彩古币 ＞ 混沌裂隙 ＞ 群星璀璨 ＞ 人口天赋 ＞ 即时战力 ＞ 经济天赋 ＞ 血量类 ＞ 功能类 ＞ 给牌类。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173720,7 +173704,7 @@
           "section": "定阵条件",
           "text": "高压棋手超过3个就别玩75了，容易暴毙（当然活下来的话吃鸡率也不低）",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173738,7 +173722,7 @@
           "section": "定阵条件",
           "text": "ban日落海75非常强，对手基本只剩高阶逐鹿和三分登场。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173756,7 +173740,7 @@
           "section": "定阵条件",
           "text": "ban三分不建议玩75。没诸葛了，单体持续伤害只能靠牢大，条件太苛刻，缺诸葛的75单体伤害差非常多。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173774,7 +173758,7 @@
           "section": "后期运营及应变",
           "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
           "version": null,
-          "condition": "",
+          "condition": "采用兑换券高阶路线",
           "inference": true,
           "kind": "conditional_strategy",
           "evidence": [
@@ -173834,367 +173818,13 @@
             }
           ],
           "origin": "document"
-        }
-      ],
-      "related": [
-        {
-          "id": "player-zhaojun",
-          "type": "player",
-          "title": "昭君",
-          "path": "knowledge/players/昭君.md"
-        }
-      ],
-      "explicit_relationships": true,
-      "meta": {
-        "required_factions": [
-          "faction:sanfen"
-        ],
-        "players": [
-          "player:34"
-        ],
-        "core_heroes": [
-          "card:5211"
-        ],
-        "compositions": {
-          "early": [
-            {
-              "hero": "card:1821",
-              "necessity": "optional",
-              "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1681",
-              "necessity": "optional",
-              "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1971",
-              "necessity": "optional",
-              "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
-              "replaces": "",
-              "replacement_note": ""
-            }
-          ],
-          "middle": [],
-          "late": [
-            {
-              "hero": "card:1901",
-              "necessity": "required",
-              "role": "通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1761",
-              "necessity": "required",
-              "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:5211",
-              "necessity": "required",
-              "role": "承接等级与护盾收益，以技能和牺牲打范围伤害；在飞行器路线中承担连接目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1481",
-              "necessity": "required",
-              "role": "高阶清场核心；通过不同阵营英雄的登场、合成等配合增长，装备先保住释放技能。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1861",
-              "necessity": "required",
-              "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            }
-          ]
         },
-        "ban_conditions": [
-          {
-            "faction": "faction:sanfen",
-            "status": "unplayable",
-            "reason": "完整阵容无法获取：诸葛亮（通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。）。",
-            "derived_dependency": true,
-            "explicit_required": false,
-            "explicit_condition": null
-          }
-        ],
-        "matchups": [],
-        "common_claim_refs": [],
-        "player_branches": [
-          {
-            "id": "owner",
-            "player": "player:34",
-            "claim_refs": [
-              "doc-f60bb993d0448e58da69a5",
-              "doc-79cb31f35c5d5c2f497ce5",
-              "doc-3a4e6ee02ab6611de693cf",
-              "doc-ee6c1706b296bb0ac99727",
-              "doc-1d0677db9275b536cb854e",
-              "doc-e5a402ae43ec3bbff07825",
-              "doc-1bf8e2db3bdf9932da49e5",
-              "doc-b7ea73af2dd9282335aaa2",
-              "doc-5223337dc1d6847af47c3c",
-              "doc-0a2e49f008d25045d6cc75",
-              "doc-11ca47564ffd7a0dcf91f7",
-              "doc-e72f7d93cb4edfe8097a15",
-              "doc-916435a562906ba6689b11",
-              "doc-324b47b74b4cb0d3b4402a",
-              "doc-518a4f0c365951cb26cade",
-              "doc-dc67abeb111b9dcd456842",
-              "doc-78de8b8424eff95def7555",
-              "doc-d8fcf6159e897f2576f56f",
-              "doc-fd9f1af24b99839504b8ad"
-            ],
-            "condition_refs": [],
-            "operation_route_ids": [],
-            "late_variant_ids": [],
-            "major_variant_ids": [],
-            "overrides": {},
-            "assessment": [],
-            "selection": {}
-          }
-        ]
-      },
-      "reading_layout": {
-        "version": 3,
-        "claim_locations": {
-          "doc-f60bb993d0448e58da69a5": [
-            "阵容组成与运营节奏",
-            "前期英雄组成与运营"
-          ],
-          "doc-79cb31f35c5d5c2f497ce5": [
-            "阵容组成与运营节奏",
-            "前期英雄组成与运营"
-          ],
-          "doc-3a4e6ee02ab6611de693cf": [
-            "阵容组成与运营节奏",
-            "中期英雄组成与运营"
-          ],
-          "doc-ee6c1706b296bb0ac99727": [
-            "阵容组成与运营节奏",
-            "中期英雄组成与运营"
-          ],
-          "doc-1d0677db9275b536cb854e": [
-            "阵容组成与运营节奏",
-            "后期英雄组成与运营"
-          ],
-          "doc-e5a402ae43ec3bbff07825": [
-            "阵容组成与运营节奏",
-            "后期英雄组成与运营"
-          ],
-          "doc-1bf8e2db3bdf9932da49e5": [
-            "阵容组成与运营节奏",
-            "后期英雄组成与运营"
-          ],
-          "doc-b7ea73af2dd9282335aaa2": [
-            "阵容组成与运营节奏",
-            "后期英雄组成与运营"
-          ],
-          "doc-5223337dc1d6847af47c3c": [
-            "阵容组成与运营节奏",
-            "后期英雄组成与运营"
-          ],
-          "doc-0a2e49f008d25045d6cc75": [
-            "棋手技能推荐"
-          ],
-          "doc-11ca47564ffd7a0dcf91f7": [
-            "推荐装备"
-          ],
-          "doc-e72f7d93cb4edfe8097a15": [
-            "推荐装备"
-          ],
-          "doc-916435a562906ba6689b11": [
-            "推荐装备"
-          ],
-          "doc-324b47b74b4cb0d3b4402a": [
-            "推荐装备"
-          ],
-          "doc-518a4f0c365951cb26cade": [
-            "推荐天赋"
-          ],
-          "doc-dc67abeb111b9dcd456842": [
-            "定阵条件"
-          ],
-          "doc-78de8b8424eff95def7555": [
-            "定阵条件"
-          ],
-          "doc-d8fcf6159e897f2576f56f": [
-            "定阵条件"
-          ],
-          "doc-fd9f1af24b99839504b8ad": [
-            "阵容组成与运营节奏",
-            "后期英雄组成与运营"
-          ]
-        },
-        "coverage": {
-          "owner": {
-            "early.operation": {
-              "status": "covered",
-              "claim_refs": [
-                "doc-f60bb993d0448e58da69a5",
-                "doc-79cb31f35c5d5c2f497ce5"
-              ],
-              "claim_hashes": {
-                "doc-f60bb993d0448e58da69a5": "810787ee218307ab13381b0044a67469ff9a0d857576a2746ce705ae868a08f1",
-                "doc-79cb31f35c5d5c2f497ce5": "5559e86c5c00fa4c47e7081c23ecca0d283ddcf211952a9b70a7e2b9c03b568f"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "early.missing": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-79cb31f35c5d5c2f497ce5"
-              ],
-              "claim_hashes": {
-                "doc-79cb31f35c5d5c2f497ce5": "5559e86c5c00fa4c47e7081c23ecca0d283ddcf211952a9b70a7e2b9c03b568f"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "middle.operation": {
-              "status": "covered",
-              "claim_refs": [
-                "doc-3a4e6ee02ab6611de693cf",
-                "doc-ee6c1706b296bb0ac99727"
-              ],
-              "claim_hashes": {
-                "doc-3a4e6ee02ab6611de693cf": "33362a0836304f3561ec17b40965b950bfc3ef00e7cbc85a3705d40318b750d2",
-                "doc-ee6c1706b296bb0ac99727": "43eb845210fc501ac3b72886125f9c7b4b7b6b066a26d4e16a1d2f5237d22156"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "late.operation": {
-              "status": "covered",
-              "claim_refs": [
-                "doc-1d0677db9275b536cb854e",
-                "doc-e5a402ae43ec3bbff07825",
-                "doc-1bf8e2db3bdf9932da49e5",
-                "doc-b7ea73af2dd9282335aaa2",
-                "doc-5223337dc1d6847af47c3c",
-                "doc-fd9f1af24b99839504b8ad"
-              ],
-              "claim_hashes": {
-                "doc-1d0677db9275b536cb854e": "19c57cf2744d86fffb437290d8373cf919aec3c555a1e94e479fd9db38ae0ac0",
-                "doc-e5a402ae43ec3bbff07825": "ff4b9d07fb25a1e311eb7324e92f579ea0ae3d50db42d02d3f522963be4abe54",
-                "doc-1bf8e2db3bdf9932da49e5": "9ebd26ae531c532c07b0b7d3b413853213ab9e77b982b6c188ea188ecd4abd6a",
-                "doc-b7ea73af2dd9282335aaa2": "b635b74130b4f754ffdd068e72cdf5030215e04631c234a6a1076f379f36cbaa",
-                "doc-5223337dc1d6847af47c3c": "f1d3625beee1eaede47dd96f39b887ec360de8625cd80a3b33fde343def8a8ef",
-                "doc-fd9f1af24b99839504b8ad": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "late.awakening": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-fd9f1af24b99839504b8ad"
-              ],
-              "claim_hashes": {
-                "doc-fd9f1af24b99839504b8ad": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "late.budget": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-1d0677db9275b536cb854e",
-                "doc-fd9f1af24b99839504b8ad"
-              ],
-              "claim_hashes": {
-                "doc-1d0677db9275b536cb854e": "19c57cf2744d86fffb437290d8373cf919aec3c555a1e94e479fd9db38ae0ac0",
-                "doc-fd9f1af24b99839504b8ad": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "equipment": {
-              "claim_refs": [
-                "doc-11ca47564ffd7a0dcf91f7",
-                "doc-e72f7d93cb4edfe8097a15",
-                "doc-916435a562906ba6689b11",
-                "doc-324b47b74b4cb0d3b4402a"
-              ],
-              "claim_hashes": {
-                "doc-11ca47564ffd7a0dcf91f7": "443d2ae014e967003c726a410a660f38a1a698f5d9e06610c716aba065a784b0",
-                "doc-e72f7d93cb4edfe8097a15": "808e2b83ad34edc2d5b867aff6246ac210c587b1b35fc4aaacc71c121a06b069",
-                "doc-916435a562906ba6689b11": "e62815744d190646c45d08e1d6604a4ce30227a67dba9f3afca74f049c1ca9fc",
-                "doc-324b47b74b4cb0d3b4402a": "39186141c0088218ebb1ba65aa6af0336ce7e2d991da11ad015f115afe47d059"
-              }
-            },
-            "talents": {
-              "claim_refs": [
-                "doc-518a4f0c365951cb26cade"
-              ],
-              "claim_hashes": {
-                "doc-518a4f0c365951cb26cade": "89c337da4213158267b8bb5464076a1e5ba68a5d6d260e2d604b5a5b87eba85d"
-              }
-            },
-            "skills": {
-              "claim_refs": [
-                "doc-0a2e49f008d25045d6cc75"
-              ],
-              "claim_hashes": {
-                "doc-0a2e49f008d25045d6cc75": "2f5d1387aae5a55fe9c29ab81c429805fca5e4f1176232156c1d1b75c4372dee"
-              }
-            }
-          }
-        }
-      },
-      "guide_related": [
-        {
-          "note": "player-zhaojun",
-          "title": "昭君",
-          "href": "../players/昭君.md",
-          "relation": "applicable_player"
-        }
-      ],
-      "path": "knowledge/lineups/七五高阶组合.md",
-      "entity_names": {
-        "faction:sanfen": "三分",
-        "player:34": "昭君",
-        "card:5211": "海月",
-        "card:1821": "干将莫邪",
-        "card:1681": "牛魔",
-        "card:1971": "弈星",
-        "card:1901": "诸葛亮",
-        "card:1761": "杨玉环",
-        "card:1481": "姜子牙",
-        "card:1861": "太乙真人"
-      },
-      "manual_sections": [],
-      "history": [],
-      "conflicts": [],
-      "revision": "a292da59867d67c81f44"
-    },
-    {
-      "id": "document-lineup-10",
-      "type": "lineup",
-      "title": "冻结全五阶",
-      "aliases": [
-        "昭君全五阶"
-      ],
-      "entities": [
-        "card:1481",
-        "card:1761",
-        "card:5371",
-        "player:34"
-      ],
-      "core": [],
-      "topic": "冻结全五阶",
-      "claims": [
         {
           "id": "doc-c9098f31a0724afad6c3fc",
           "section": "前期运营及应变",
           "text": "开局：优先牛魔、曜、苏烈等容易获取的一阶牌，谁更容易觉醒就围绕谁做第一轮冻结。可以接受适度连败，用最低成本的一阶牌完成觉醒和冻结准备，不要为了保血刷新商店。第一次强化后再决定是否继续留在低级商店寻找低阶单位。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174212,7 +173842,7 @@
           "section": "中期运营及应变",
           "text": "昭君的第一张冰冻强化优先选择寒冰王座直接把觉醒单位推向五阶，其次选择破冰裂变提高升阶效率或者冰封结晶，获得解冻英雄品阶的兑换券。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174230,7 +173860,7 @@
           "section": "中期运营及应变",
           "text": "冻结目标优先选已经有等级，但继续留在当前品阶价值不高的单位，让它在战后升阶并继承原有等级。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174248,7 +173878,7 @@
           "section": "中期运营及应变",
           "text": "同一张低阶牌不要同时承担太多功能，确定要冻结升阶后，就减少继续为它投入无法转移的临时资源。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174266,7 +173896,7 @@
           "section": "中期运营及应变",
           "text": "第一次强化决定整局路线，如果拿到寒冰王座（英雄解冻后直接变成5阶随机英雄），则可以继续卡低级商店找便宜觉醒牌，否则根据选择的强化来决定升级棋手，昭君棋手至多只需要升到棋手四阶就可以启动。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174284,7 +173914,7 @@
           "section": "中期运营及应变",
           "text": "第二张深度冻结如果选择寒潮共振（场上英雄获得觉醒英雄数量1.5倍的等级），就要主动提高低费觉醒数量，而不是只养一张核心牌。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174302,7 +173932,7 @@
           "section": "中期运营及应变",
           "text": "中期：中期可以上阵公孙离摄灵吸取等级，消化多余等级和战力过渡，把已经积累等级的低阶牌送去冻结，逐渐形成高阶战力。冰之心最好集中在某个英雄身上，先寻找到第一张五阶英雄，防止资源分散。五阶姜子牙或其余高质量核心出现后，再直接把资源和等级集中在主要输出英雄身上，停止无意义的随机换核。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174320,7 +173950,7 @@
           "section": "后期运营及应变",
           "text": "冻结出来的五阶牌先看质量再决定是否常驻场上，不合适的可以继续冰冻，合适的核心才接完整装备和资源。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174338,7 +173968,7 @@
           "section": "后期运营及应变",
           "text": "最终目标是把一次次低成本冻结变成多张高阶牌，再从中挑出一到两个最适合当对局的终局核心。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174356,7 +173986,7 @@
           "section": "后期运营及应变",
           "text": "后期：姜子牙可以作为高价值终局核心之一，司空震、杨玉环等高质量五阶也能根据来牌和装备接管资源。血量健康，就继续提高五阶密度；血量已经危险，就别再贪升阶，直接把冻出来的高阶牌拉上去锁血。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174374,7 +174004,7 @@
           "section": "核心机制",
           "text": "这套没有固定七人名单，核心是王昭君棋手的冻结升阶机制：低阶牌先承担过渡和等级，再通过冻结逐步升到高阶终局单位，把前期养出来的等级完整带进后期。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "mechanic",
           "evidence": [
@@ -174392,7 +174022,7 @@
           "section": "核心机制",
           "text": "这套阵容不需要搜五阶英雄，而是让低阶牌自己“长成”五阶，从而省下后期商店的大量刷新成本，五阶主要输出英雄按照冰冻结果决定，可以选择姜子牙，其次司空震、杨玉环也可以接管资源。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": false,
           "kind": "mechanic",
           "evidence": [
@@ -174410,7 +174040,7 @@
           "section": "后期运营及应变",
           "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
           "version": null,
-          "condition": "",
+          "condition": "采用低阶觉醒冻结路线",
           "inference": true,
           "kind": "conditional_strategy",
           "evidence": [
@@ -174494,53 +174124,9 @@
         ],
         "core_heroes": [],
         "compositions": {
-          "early": [
-            {
-              "hero": "card:1681",
-              "necessity": "optional",
-              "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:5221",
-              "necessity": "optional",
-              "role": "通过同名合成增长等级，在芈月、西施、墨子和扁鹊配合下形成高频护盾与破盾伤害。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1941",
-              "necessity": "optional",
-              "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
-              "replaces": "",
-              "replacement_note": ""
-            }
-          ],
+          "early": [],
           "middle": [],
-          "late": [
-            {
-              "hero": "card:1481",
-              "necessity": "optional",
-              "role": "高阶清场核心；通过不同阵营英雄的登场、合成等配合增长，装备先保住释放技能。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:5371",
-              "necessity": "optional",
-              "role": "以自身永久等级放大可获得的临时等级，接管冻结出的高质量五阶战力。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            },
-            {
-              "hero": "card:1761",
-              "necessity": "optional",
-              "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
-              "replaces": "",
-              "replacement_note": ""
-            }
-          ]
+          "late": []
         },
         "ban_conditions": [],
         "matchups": [],
@@ -174550,6 +174136,25 @@
             "id": "owner",
             "player": "player:34",
             "claim_refs": [
+              "doc-f60bb993d0448e58da69a5",
+              "doc-79cb31f35c5d5c2f497ce5",
+              "doc-3a4e6ee02ab6611de693cf",
+              "doc-ee6c1706b296bb0ac99727",
+              "doc-1d0677db9275b536cb854e",
+              "doc-e5a402ae43ec3bbff07825",
+              "doc-1bf8e2db3bdf9932da49e5",
+              "doc-b7ea73af2dd9282335aaa2",
+              "doc-5223337dc1d6847af47c3c",
+              "doc-0a2e49f008d25045d6cc75",
+              "doc-11ca47564ffd7a0dcf91f7",
+              "doc-e72f7d93cb4edfe8097a15",
+              "doc-916435a562906ba6689b11",
+              "doc-324b47b74b4cb0d3b4402a",
+              "doc-518a4f0c365951cb26cade",
+              "doc-dc67abeb111b9dcd456842",
+              "doc-78de8b8424eff95def7555",
+              "doc-d8fcf6159e897f2576f56f",
+              "doc-fd9f1af24b99839504b8ad",
               "doc-c9098f31a0724afad6c3fc",
               "doc-f160e3a1beea21dfbfa0a6",
               "doc-bfed3cfeaf47f8e67d87f4",
@@ -174565,18 +174170,397 @@
               "doc-9657c48877d972a877e82d"
             ],
             "condition_refs": [],
-            "operation_route_ids": [],
-            "late_variant_ids": [],
+            "operation_route_ids": [
+              "q75-high",
+              "q75-freeze"
+            ],
+            "late_variant_ids": [
+              "q75-high-members",
+              "q75-freeze-members"
+            ],
             "major_variant_ids": [],
             "overrides": {},
             "assessment": [],
             "selection": {}
           }
-        ]
+        ],
+        "operation_routes": [
+          {
+            "id": "q75-high",
+            "name": "兑换券高阶",
+            "condition": "选择冰封结晶补高阶核心，按实际战力及预算向五、六阶推进；三分被禁时本组合缺诸葛亮",
+            "advantages": "沿用本路线已保存的成员、技能与运营依据",
+            "risks": "冻结或找牌仍会影响当前战力，保留原路线的保血及转向条件",
+            "transition": "按本路线实际来牌、冻结强化与掉血判断，不合并两条路线的固定回合",
+            "phases": {
+              "early": [
+                "doc-f60bb993d0448e58da69a5",
+                "doc-79cb31f35c5d5c2f497ce5"
+              ],
+              "middle": [
+                "doc-3a4e6ee02ab6611de693cf",
+                "doc-ee6c1706b296bb0ac99727"
+              ],
+              "late": [
+                "doc-1d0677db9275b536cb854e",
+                "doc-e5a402ae43ec3bbff07825",
+                "doc-1bf8e2db3bdf9932da49e5",
+                "doc-b7ea73af2dd9282335aaa2",
+                "doc-5223337dc1d6847af47c3c",
+                "doc-fd9f1af24b99839504b8ad"
+              ]
+            },
+            "claim_refs": [],
+            "variant_ids": [
+              "q75-high-members"
+            ]
+          },
+          {
+            "id": "q75-freeze",
+            "name": "低阶觉醒冻结",
+            "condition": "围绕低阶觉醒及已选冻结强化成长；不以商店搜五阶为固定前提，不强制套用六阶时间表",
+            "advantages": "沿用本路线已保存的成员、技能与运营依据",
+            "risks": "冻结或找牌仍会影响当前战力，保留原路线的保血及转向条件",
+            "transition": "按本路线实际来牌、冻结强化与掉血判断，不合并两条路线的固定回合",
+            "phases": {
+              "early": [
+                "doc-c9098f31a0724afad6c3fc"
+              ],
+              "middle": [
+                "doc-f160e3a1beea21dfbfa0a6",
+                "doc-bfed3cfeaf47f8e67d87f4",
+                "doc-17ea21de373730818802f2",
+                "doc-c65c284fae6cca5fe5349a",
+                "doc-15598460b8a9902040f751",
+                "doc-c06d3db62956680e3705ca"
+              ],
+              "late": [
+                "doc-83c12716f70b5e6fb89246",
+                "doc-4c6c67a48cc6c784124127",
+                "doc-016985de7dfbe3f11f0155",
+                "doc-9657c48877d972a877e82d"
+              ]
+            },
+            "claim_refs": [],
+            "variant_ids": [
+              "q75-freeze-members"
+            ]
+          }
+        ],
+        "late_variants": [
+          {
+            "id": "q75-high-members",
+            "name": "兑换券高阶组合",
+            "condition": "选择冰封结晶补高阶核心，按实际战力及预算向五、六阶推进；三分被禁时本组合缺诸葛亮",
+            "members": [
+              {
+                "hero": "card:1901",
+                "necessity": "required",
+                "role": "通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "necessity": "required",
+                "role": "承接等级与护盾收益，以技能和牺牲打范围伤害；在飞行器路线中承担连接目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1481",
+                "necessity": "required",
+                "role": "高阶清场核心；通过不同阵营英雄的登场、合成等配合增长，装备先保住释放技能。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "required",
+                "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [
+              "card:5211"
+            ],
+            "required_factions": [
+              "faction:sanfen"
+            ],
+            "ban_conditions": [
+              {
+                "faction": "faction:sanfen",
+                "status": "unplayable",
+                "reason": "完整阵容无法获取：诸葛亮（通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。）。",
+                "derived_dependency": true,
+                "explicit_required": false,
+                "explicit_condition": null
+              }
+            ],
+            "ban_combinations": [],
+            "claim_refs": [
+              "doc-f60bb993d0448e58da69a5",
+              "doc-79cb31f35c5d5c2f497ce5",
+              "doc-3a4e6ee02ab6611de693cf",
+              "doc-ee6c1706b296bb0ac99727",
+              "doc-1d0677db9275b536cb854e",
+              "doc-e5a402ae43ec3bbff07825",
+              "doc-1bf8e2db3bdf9932da49e5",
+              "doc-b7ea73af2dd9282335aaa2",
+              "doc-5223337dc1d6847af47c3c",
+              "doc-0a2e49f008d25045d6cc75",
+              "doc-11ca47564ffd7a0dcf91f7",
+              "doc-e72f7d93cb4edfe8097a15",
+              "doc-916435a562906ba6689b11",
+              "doc-324b47b74b4cb0d3b4402a",
+              "doc-518a4f0c365951cb26cade",
+              "doc-dc67abeb111b9dcd456842",
+              "doc-78de8b8424eff95def7555",
+              "doc-d8fcf6159e897f2576f56f",
+              "doc-fd9f1af24b99839504b8ad"
+            ]
+          },
+          {
+            "id": "q75-freeze-members",
+            "name": "低阶觉醒冻结组合",
+            "condition": "围绕低阶觉醒及已选冻结强化成长；不以商店搜五阶为固定前提，不强制套用六阶时间表",
+            "members": [
+              {
+                "hero": "card:1481",
+                "necessity": "optional",
+                "role": "高阶清场核心；通过不同阵营英雄的登场、合成等配合增长，装备先保住释放技能。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5371",
+                "necessity": "optional",
+                "role": "以自身永久等级放大可获得的临时等级，接管冻结出的高质量五阶战力。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "optional",
+                "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "core_heroes": [],
+            "required_factions": [],
+            "ban_conditions": [],
+            "ban_combinations": [],
+            "claim_refs": [
+              "doc-c9098f31a0724afad6c3fc",
+              "doc-f160e3a1beea21dfbfa0a6",
+              "doc-bfed3cfeaf47f8e67d87f4",
+              "doc-17ea21de373730818802f2",
+              "doc-c65c284fae6cca5fe5349a",
+              "doc-15598460b8a9902040f751",
+              "doc-c06d3db62956680e3705ca",
+              "doc-83c12716f70b5e6fb89246",
+              "doc-4c6c67a48cc6c784124127",
+              "doc-016985de7dfbe3f11f0155",
+              "doc-606226527f60491277ae93",
+              "doc-076e17dca17df47d7d0f12",
+              "doc-9657c48877d972a877e82d"
+            ]
+          }
+        ],
+        "overview": {
+          "version": 1,
+          "presets": [
+            {
+              "id": "q75-high-members",
+              "name": "兑换券高阶组合",
+              "variant_id": "q75-high-members",
+              "description": "选择冰封结晶补高阶核心，按实际战力及预算向五、六阶推进；三分被禁时本组合缺诸葛亮",
+              "placements": [],
+              "reserves": [],
+              "talents": [],
+              "effect_cards": [],
+              "talent_note": "",
+              "effect_note": "",
+              "stages": {
+                "early": {
+                  "rounds": "",
+                  "description": "原阶段成员：干将莫邪、牛魔、弈星",
+                  "claim_refs": [
+                    "doc-f60bb993d0448e58da69a5",
+                    "doc-79cb31f35c5d5c2f497ce5"
+                  ],
+                  "reserves": []
+                },
+                "middle": {
+                  "rounds": "",
+                  "description": "原阶段成员：未确认固定清单；按本路线正文",
+                  "claim_refs": [
+                    "doc-3a4e6ee02ab6611de693cf",
+                    "doc-ee6c1706b296bb0ac99727"
+                  ],
+                  "reserves": []
+                },
+                "late": {
+                  "rounds": "",
+                  "description": "原阶段成员：诸葛亮、杨玉环、海月、姜子牙、太乙真人",
+                  "claim_refs": [
+                    "doc-1d0677db9275b536cb854e",
+                    "doc-e5a402ae43ec3bbff07825",
+                    "doc-1bf8e2db3bdf9932da49e5",
+                    "doc-b7ea73af2dd9282335aaa2",
+                    "doc-5223337dc1d6847af47c3c",
+                    "doc-fd9f1af24b99839504b8ad"
+                  ],
+                  "reserves": []
+                }
+              },
+              "players": [
+                {
+                  "player": "player:34",
+                  "skills": [],
+                  "secret": [],
+                  "exclusive": [],
+                  "description": ""
+                }
+              ]
+            },
+            {
+              "id": "q75-freeze-members",
+              "name": "低阶觉醒冻结组合",
+              "variant_id": "q75-freeze-members",
+              "description": "围绕低阶觉醒及已选冻结强化成长；不以商店搜五阶为固定前提，不强制套用六阶时间表",
+              "placements": [],
+              "reserves": [],
+              "talents": [],
+              "effect_cards": [],
+              "talent_note": "",
+              "effect_note": "",
+              "stages": {
+                "early": {
+                  "rounds": "",
+                  "description": "原阶段成员：牛魔、曜、苏烈",
+                  "claim_refs": [
+                    "doc-c9098f31a0724afad6c3fc"
+                  ],
+                  "reserves": []
+                },
+                "middle": {
+                  "rounds": "",
+                  "description": "原阶段成员：未确认固定清单；按本路线正文",
+                  "claim_refs": [
+                    "doc-f160e3a1beea21dfbfa0a6",
+                    "doc-bfed3cfeaf47f8e67d87f4",
+                    "doc-17ea21de373730818802f2",
+                    "doc-c65c284fae6cca5fe5349a",
+                    "doc-15598460b8a9902040f751",
+                    "doc-c06d3db62956680e3705ca"
+                  ],
+                  "reserves": []
+                },
+                "late": {
+                  "rounds": "",
+                  "description": "原阶段成员：姜子牙、司空震、杨玉环",
+                  "claim_refs": [
+                    "doc-83c12716f70b5e6fb89246",
+                    "doc-4c6c67a48cc6c784124127",
+                    "doc-016985de7dfbe3f11f0155",
+                    "doc-9657c48877d972a877e82d"
+                  ],
+                  "reserves": []
+                }
+              },
+              "players": [
+                {
+                  "player": "player:34",
+                  "skills": [],
+                  "secret": [],
+                  "exclusive": [],
+                  "description": ""
+                }
+              ]
+            }
+          ]
+        }
       },
       "reading_layout": {
         "version": 3,
         "claim_locations": {
+          "doc-f60bb993d0448e58da69a5": [
+            "阵容组成与运营节奏",
+            "前期英雄组成与运营"
+          ],
+          "doc-79cb31f35c5d5c2f497ce5": [
+            "阵容组成与运营节奏",
+            "前期英雄组成与运营"
+          ],
+          "doc-3a4e6ee02ab6611de693cf": [
+            "阵容组成与运营节奏",
+            "中期英雄组成与运营"
+          ],
+          "doc-ee6c1706b296bb0ac99727": [
+            "阵容组成与运营节奏",
+            "中期英雄组成与运营"
+          ],
+          "doc-1d0677db9275b536cb854e": [
+            "阵容组成与运营节奏",
+            "后期英雄组成与运营"
+          ],
+          "doc-e5a402ae43ec3bbff07825": [
+            "阵容组成与运营节奏",
+            "后期英雄组成与运营"
+          ],
+          "doc-1bf8e2db3bdf9932da49e5": [
+            "阵容组成与运营节奏",
+            "后期英雄组成与运营"
+          ],
+          "doc-b7ea73af2dd9282335aaa2": [
+            "阵容组成与运营节奏",
+            "后期英雄组成与运营"
+          ],
+          "doc-5223337dc1d6847af47c3c": [
+            "阵容组成与运营节奏",
+            "后期英雄组成与运营"
+          ],
+          "doc-0a2e49f008d25045d6cc75": [
+            "棋手技能推荐"
+          ],
+          "doc-11ca47564ffd7a0dcf91f7": [
+            "推荐装备"
+          ],
+          "doc-e72f7d93cb4edfe8097a15": [
+            "推荐装备"
+          ],
+          "doc-916435a562906ba6689b11": [
+            "推荐装备"
+          ],
+          "doc-324b47b74b4cb0d3b4402a": [
+            "推荐装备"
+          ],
+          "doc-518a4f0c365951cb26cade": [
+            "推荐天赋"
+          ],
+          "doc-dc67abeb111b9dcd456842": [
+            "定阵条件"
+          ],
+          "doc-78de8b8424eff95def7555": [
+            "定阵条件"
+          ],
+          "doc-d8fcf6159e897f2576f56f": [
+            "定阵条件"
+          ],
+          "doc-fd9f1af24b99839504b8ad": [
+            "阵容组成与运营节奏",
+            "后期英雄组成与运营"
+          ],
           "doc-c9098f31a0724afad6c3fc": [
             "阵容组成与运营节奏",
             "前期英雄组成与运营"
@@ -174633,26 +174617,21 @@
             "early.operation": {
               "status": "covered",
               "claim_refs": [
+                "doc-f60bb993d0448e58da69a5",
+                "doc-79cb31f35c5d5c2f497ce5",
                 "doc-c9098f31a0724afad6c3fc"
               ],
               "claim_hashes": {
-                "doc-c9098f31a0724afad6c3fc": "0c0157cd985462c6588cc7056ab3c9e6c64669fb0f90b5b96d5755d1ecb7557a"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "early.awakening": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-c9098f31a0724afad6c3fc"
-              ],
-              "claim_hashes": {
-                "doc-c9098f31a0724afad6c3fc": "0c0157cd985462c6588cc7056ab3c9e6c64669fb0f90b5b96d5755d1ecb7557a"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                "doc-f60bb993d0448e58da69a5": "34141da96183b57a420a525377f712352b64d6f6e18b4e506f000cf80501c5a8",
+                "doc-79cb31f35c5d5c2f497ce5": "780ac219a6e2eec9fa8934ef8eb1482526df03e698ac2eba8b6d6d6300a9d3d3",
+                "doc-c9098f31a0724afad6c3fc": "d66458e7709dc78e594ee1feee2d2cff3a95e28f7d8bfb26d15e5306ee0df997"
+              }
             },
             "middle.operation": {
               "status": "covered",
               "claim_refs": [
+                "doc-3a4e6ee02ab6611de693cf",
+                "doc-ee6c1706b296bb0ac99727",
                 "doc-f160e3a1beea21dfbfa0a6",
                 "doc-bfed3cfeaf47f8e67d87f4",
                 "doc-17ea21de373730818802f2",
@@ -174661,64 +174640,42 @@
                 "doc-c06d3db62956680e3705ca"
               ],
               "claim_hashes": {
-                "doc-f160e3a1beea21dfbfa0a6": "0ae506dea6bfc843731d1d2ec2648b30277d6cbaf65b466ae705cf9eaabd0422",
-                "doc-bfed3cfeaf47f8e67d87f4": "d4c45ed0801f90c567f5b057996f4b9fca0d682f73e9e66243d957939e88f6fc",
-                "doc-17ea21de373730818802f2": "0a02b2782002cab64b612daef02d1728641e145a346dc7db7a8722d4383d6468",
-                "doc-c65c284fae6cca5fe5349a": "7d7f66ef0821bdee03665180ac2474e7417f38d87750d5cd7b8e1323c4c87cb9",
-                "doc-15598460b8a9902040f751": "bfcde285d0c7c8d5ec3fac87482b2ea50f19647531455ce53854eb9ceb6c8709",
-                "doc-c06d3db62956680e3705ca": "7faf9239d288fd017708c8dfffb726954fe4c60fffc0c5360fb7a302136bb455"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "middle.awakening": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-f160e3a1beea21dfbfa0a6",
-                "doc-c65c284fae6cca5fe5349a",
-                "doc-15598460b8a9902040f751"
-              ],
-              "claim_hashes": {
-                "doc-f160e3a1beea21dfbfa0a6": "0ae506dea6bfc843731d1d2ec2648b30277d6cbaf65b466ae705cf9eaabd0422",
-                "doc-c65c284fae6cca5fe5349a": "7d7f66ef0821bdee03665180ac2474e7417f38d87750d5cd7b8e1323c4c87cb9",
-                "doc-15598460b8a9902040f751": "bfcde285d0c7c8d5ec3fac87482b2ea50f19647531455ce53854eb9ceb6c8709"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                "doc-3a4e6ee02ab6611de693cf": "90839a46bd6a252e6f22adb29f49d6ce7a15d055f4785bf6c99f8bbeb1705b64",
+                "doc-ee6c1706b296bb0ac99727": "b50bfa4e9d4d0cda45426a57da49b44cfe345eb3c5e70f884dbc79f33325eb82",
+                "doc-f160e3a1beea21dfbfa0a6": "4bcc30bd8ad708509232e29992385cbee84eb9ac73181b49e434f93545f0979f",
+                "doc-bfed3cfeaf47f8e67d87f4": "0ade6a84cb2bc2cfbf6da5929f86aed410734ceb99f1155b1ed0464159f01849",
+                "doc-17ea21de373730818802f2": "060a539b9074b38dd3fd048521f16ff7a7e9c1b12f49a4985bf8f6bf02a454d6",
+                "doc-c65c284fae6cca5fe5349a": "1c76faac0e335c473df22bd8136c7d3b369e6f232870447c372caf984183b8c5",
+                "doc-15598460b8a9902040f751": "0b07c8bd2a26788dd14a29112e324edd3ac501e6e32b5a377a239a129b65bbcc",
+                "doc-c06d3db62956680e3705ca": "db1bf6f89fc56dd2535332b1ddfc8721ab95881b46608822ad620569138e79d3"
+              }
             },
             "late.operation": {
               "status": "covered",
               "claim_refs": [
+                "doc-1d0677db9275b536cb854e",
+                "doc-e5a402ae43ec3bbff07825",
+                "doc-1bf8e2db3bdf9932da49e5",
+                "doc-b7ea73af2dd9282335aaa2",
+                "doc-5223337dc1d6847af47c3c",
+                "doc-fd9f1af24b99839504b8ad",
                 "doc-83c12716f70b5e6fb89246",
                 "doc-4c6c67a48cc6c784124127",
                 "doc-016985de7dfbe3f11f0155",
                 "doc-9657c48877d972a877e82d"
               ],
               "claim_hashes": {
-                "doc-83c12716f70b5e6fb89246": "cd6a39558078451c77d905baf52f405d27c050fc3a6ccaefe59a5564dd7133cd",
-                "doc-4c6c67a48cc6c784124127": "f3ba2408a554ce984d4608634724267b7dea827c028e211ec747dc6164cf438a",
-                "doc-016985de7dfbe3f11f0155": "6ea2dea163a37b1bcfec33f0284b5437f1648b7a52b976a32ea7d541d98339b1",
-                "doc-9657c48877d972a877e82d": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "late.awakening": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-9657c48877d972a877e82d"
-              ],
-              "claim_hashes": {
-                "doc-9657c48877d972a877e82d": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
-            },
-            "late.budget": {
-              "status": "partial",
-              "claim_refs": [
-                "doc-9657c48877d972a877e82d"
-              ],
-              "claim_hashes": {
-                "doc-9657c48877d972a877e82d": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
-              },
-              "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                "doc-1d0677db9275b536cb854e": "0e3a63a13556d30c079f5e81c3cd62dfeceb7a4868a746e51578f6df10f817a6",
+                "doc-e5a402ae43ec3bbff07825": "71014b76dd96fde455002a584b32bb9fa4f2bb827a3205287acead64850c4271",
+                "doc-1bf8e2db3bdf9932da49e5": "bb9026072ea1a1cd9fe57208f19438a817f79af7fee39c45eebd11d2d1741b88",
+                "doc-b7ea73af2dd9282335aaa2": "fa854a9b47f0cea40e5e553f39888ce31867ab83b5bcb61d20c1a7ac67f77334",
+                "doc-5223337dc1d6847af47c3c": "2e778c49c5b34ce1715dea389ac1898a8ecbfa214e81edf7415394e063cdac34",
+                "doc-fd9f1af24b99839504b8ad": "9c3c1c2bebb16135f3aa4185bb348c84bd6e05c2ec9784e265189a2c11b75d85",
+                "doc-83c12716f70b5e6fb89246": "50db889c0905df08e3c3e32c64894b623504e45ecfef18e91df525b02abfbe7d",
+                "doc-4c6c67a48cc6c784124127": "0218157b90b882ca39bdd079bac674336ea0ee4699a15482f5dd646aac58e289",
+                "doc-016985de7dfbe3f11f0155": "51475594aa20a6da3e38eb1d98ba760c35cbd019ee7ac49d83c14c9f3166d74a",
+                "doc-9657c48877d972a877e82d": "3e12ecfab128bbb712ec3ba3727fd1d00ba5293dfd409365843d06700b19498f"
+              }
             }
           }
         }
@@ -174731,27 +174688,1365 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/冻结全五阶.md",
+      "path": "knowledge/lineups/昭君七五.md",
       "entity_names": {
         "player:34": "昭君",
-        "card:1681": "牛魔",
-        "card:5221": "曜",
-        "card:1941": "苏烈",
+        "faction:sanfen": "三分",
+        "card:5211": "海月",
+        "card:1901": "诸葛亮",
+        "card:1761": "杨玉环",
         "card:1481": "姜子牙",
-        "card:5371": "司空震",
-        "card:1761": "杨玉环"
+        "card:1861": "太乙真人",
+        "card:5371": "司空震"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.124722+00:00",
+          "origin": "user",
+          "reason": "按用户要求合并为昭君七五，保留两条路线；被合并条目完整快照",
+          "previous": {
+            "id": "document-lineup-10",
+            "type": "lineup",
+            "title": "冻结全五阶",
+            "aliases": [
+              "昭君全五阶"
+            ],
+            "entities": [
+              "card:1481",
+              "card:1761",
+              "card:5371",
+              "player:34"
+            ],
+            "core": [],
+            "topic": "冻结全五阶",
+            "claims": [
+              {
+                "id": "doc-c9098f31a0724afad6c3fc",
+                "section": "前期运营及应变",
+                "text": "开局：优先牛魔、曜、苏烈等容易获取的一阶牌，谁更容易觉醒就围绕谁做第一轮冻结。可以接受适度连败，用最低成本的一阶牌完成觉醒和冻结准备，不要为了保血刷新商店。第一次强化后再决定是否继续留在低级商店寻找低阶单位。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 13,
+                    "paragraph_end": 13
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-f160e3a1beea21dfbfa0a6",
+                "section": "中期运营及应变",
+                "text": "昭君的第一张冰冻强化优先选择寒冰王座直接把觉醒单位推向五阶，其次选择破冰裂变提高升阶效率或者冰封结晶，获得解冻英雄品阶的兑换券。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 5,
+                    "paragraph_end": 5
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-bfed3cfeaf47f8e67d87f4",
+                "section": "中期运营及应变",
+                "text": "冻结目标优先选已经有等级，但继续留在当前品阶价值不高的单位，让它在战后升阶并继承原有等级。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 6,
+                    "paragraph_end": 6
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-17ea21de373730818802f2",
+                "section": "中期运营及应变",
+                "text": "同一张低阶牌不要同时承担太多功能，确定要冻结升阶后，就减少继续为它投入无法转移的临时资源。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 7,
+                    "paragraph_end": 7
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-c65c284fae6cca5fe5349a",
+                "section": "中期运营及应变",
+                "text": "第一次强化决定整局路线，如果拿到寒冰王座（英雄解冻后直接变成5阶随机英雄），则可以继续卡低级商店找便宜觉醒牌，否则根据选择的强化来决定升级棋手，昭君棋手至多只需要升到棋手四阶就可以启动。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 8,
+                    "paragraph_end": 8
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-15598460b8a9902040f751",
+                "section": "中期运营及应变",
+                "text": "第二张深度冻结如果选择寒潮共振（场上英雄获得觉醒英雄数量1.5倍的等级），就要主动提高低费觉醒数量，而不是只养一张核心牌。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 9,
+                    "paragraph_end": 9
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-c06d3db62956680e3705ca",
+                "section": "中期运营及应变",
+                "text": "中期：中期可以上阵公孙离摄灵吸取等级，消化多余等级和战力过渡，把已经积累等级的低阶牌送去冻结，逐渐形成高阶战力。冰之心最好集中在某个英雄身上，先寻找到第一张五阶英雄，防止资源分散。五阶姜子牙或其余高质量核心出现后，再直接把资源和等级集中在主要输出英雄身上，停止无意义的随机换核。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 14,
+                    "paragraph_end": 14
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-83c12716f70b5e6fb89246",
+                "section": "后期运营及应变",
+                "text": "冻结出来的五阶牌先看质量再决定是否常驻场上，不合适的可以继续冰冻，合适的核心才接完整装备和资源。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 10,
+                    "paragraph_end": 10
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-4c6c67a48cc6c784124127",
+                "section": "后期运营及应变",
+                "text": "最终目标是把一次次低成本冻结变成多张高阶牌，再从中挑出一到两个最适合当对局的终局核心。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 11,
+                    "paragraph_end": 11
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-016985de7dfbe3f11f0155",
+                "section": "后期运营及应变",
+                "text": "后期：姜子牙可以作为高价值终局核心之一，司空震、杨玉环等高质量五阶也能根据来牌和装备接管资源。血量健康，就继续提高五阶密度；血量已经危险，就别再贪升阶，直接把冻出来的高阶牌拉上去锁血。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 15,
+                    "paragraph_end": 15
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-606226527f60491277ae93",
+                "section": "核心机制",
+                "text": "这套没有固定七人名单，核心是王昭君棋手的冻结升阶机制：低阶牌先承担过渡和等级，再通过冻结逐步升到高阶终局单位，把前期养出来的等级完整带进后期。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 2,
+                    "paragraph_end": 2
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-076e17dca17df47d7d0f12",
+                "section": "核心机制",
+                "text": "这套阵容不需要搜五阶英雄，而是让低阶牌自己“长成”五阶，从而省下后期商店的大量刷新成本，五阶主要输出英雄按照冰冻结果决定，可以选择姜子牙，其次司空震、杨玉环也可以接管资源。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": false,
+                "kind": "mechanic",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 3,
+                    "paragraph_end": 3
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-9657c48877d972a877e82d",
+                "section": "后期运营及应变",
+                "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+                "version": null,
+                "condition": "采用低阶觉醒冻结路线",
+                "inference": true,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 13,
+                    "paragraph_end": 13
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 5,
+                    "paragraph_end": 5
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 6,
+                    "paragraph_end": 6
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 7,
+                    "paragraph_end": 7
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 8,
+                    "paragraph_end": 8
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 9,
+                    "paragraph_end": 9
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 14,
+                    "paragraph_end": 14
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 10,
+                    "paragraph_end": 10
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 11,
+                    "paragraph_end": 11
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-7cfe17b3d73fbef79e43ee43a2e50b6a2d6eea8fa277439b29aa65f234d12eb2",
+                    "paragraph_start": 15,
+                    "paragraph_end": 15
+                  }
+                ],
+                "origin": "document"
+              }
+            ],
+            "related": [
+              {
+                "id": "player-zhaojun",
+                "type": "player",
+                "title": "昭君",
+                "path": "knowledge/players/昭君.md"
+              }
+            ],
+            "explicit_relationships": true,
+            "meta": {
+              "required_factions": [],
+              "players": [
+                "player:34"
+              ],
+              "core_heroes": [],
+              "compositions": {
+                "early": [
+                  {
+                    "hero": "card:1681",
+                    "necessity": "optional",
+                    "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:5221",
+                    "necessity": "optional",
+                    "role": "通过同名合成增长等级，在芈月、西施、墨子和扁鹊配合下形成高频护盾与破盾伤害。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1941",
+                    "necessity": "optional",
+                    "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ],
+                "middle": [],
+                "late": [
+                  {
+                    "hero": "card:1481",
+                    "necessity": "optional",
+                    "role": "高阶清场核心；通过不同阵营英雄的登场、合成等配合增长，装备先保住释放技能。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:5371",
+                    "necessity": "optional",
+                    "role": "以自身永久等级放大可获得的临时等级，接管冻结出的高质量五阶战力。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1761",
+                    "necessity": "optional",
+                    "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ]
+              },
+              "ban_conditions": [],
+              "matchups": [],
+              "common_claim_refs": [],
+              "player_branches": [
+                {
+                  "id": "owner",
+                  "player": "player:34",
+                  "claim_refs": [
+                    "doc-c9098f31a0724afad6c3fc",
+                    "doc-f160e3a1beea21dfbfa0a6",
+                    "doc-bfed3cfeaf47f8e67d87f4",
+                    "doc-17ea21de373730818802f2",
+                    "doc-c65c284fae6cca5fe5349a",
+                    "doc-15598460b8a9902040f751",
+                    "doc-c06d3db62956680e3705ca",
+                    "doc-83c12716f70b5e6fb89246",
+                    "doc-4c6c67a48cc6c784124127",
+                    "doc-016985de7dfbe3f11f0155",
+                    "doc-606226527f60491277ae93",
+                    "doc-076e17dca17df47d7d0f12",
+                    "doc-9657c48877d972a877e82d"
+                  ],
+                  "condition_refs": [],
+                  "operation_route_ids": [],
+                  "late_variant_ids": [],
+                  "major_variant_ids": [],
+                  "overrides": {},
+                  "assessment": [],
+                  "selection": {}
+                }
+              ]
+            },
+            "reading_layout": {
+              "version": 3,
+              "claim_locations": {
+                "doc-c9098f31a0724afad6c3fc": [
+                  "阵容组成与运营节奏",
+                  "前期英雄组成与运营"
+                ],
+                "doc-f160e3a1beea21dfbfa0a6": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-bfed3cfeaf47f8e67d87f4": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-17ea21de373730818802f2": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-c65c284fae6cca5fe5349a": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-15598460b8a9902040f751": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-c06d3db62956680e3705ca": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-83c12716f70b5e6fb89246": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-4c6c67a48cc6c784124127": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-016985de7dfbe3f11f0155": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-606226527f60491277ae93": [
+                  "核心机制"
+                ],
+                "doc-076e17dca17df47d7d0f12": [
+                  "核心机制"
+                ],
+                "doc-9657c48877d972a877e82d": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ]
+              },
+              "coverage": {
+                "owner": {
+                  "early.operation": {
+                    "status": "covered",
+                    "claim_refs": [
+                      "doc-c9098f31a0724afad6c3fc"
+                    ],
+                    "claim_hashes": {
+                      "doc-c9098f31a0724afad6c3fc": "0c0157cd985462c6588cc7056ab3c9e6c64669fb0f90b5b96d5755d1ecb7557a"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "early.awakening": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-c9098f31a0724afad6c3fc"
+                    ],
+                    "claim_hashes": {
+                      "doc-c9098f31a0724afad6c3fc": "0c0157cd985462c6588cc7056ab3c9e6c64669fb0f90b5b96d5755d1ecb7557a"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "middle.operation": {
+                    "status": "covered",
+                    "claim_refs": [
+                      "doc-f160e3a1beea21dfbfa0a6",
+                      "doc-bfed3cfeaf47f8e67d87f4",
+                      "doc-17ea21de373730818802f2",
+                      "doc-c65c284fae6cca5fe5349a",
+                      "doc-15598460b8a9902040f751",
+                      "doc-c06d3db62956680e3705ca"
+                    ],
+                    "claim_hashes": {
+                      "doc-f160e3a1beea21dfbfa0a6": "0ae506dea6bfc843731d1d2ec2648b30277d6cbaf65b466ae705cf9eaabd0422",
+                      "doc-bfed3cfeaf47f8e67d87f4": "d4c45ed0801f90c567f5b057996f4b9fca0d682f73e9e66243d957939e88f6fc",
+                      "doc-17ea21de373730818802f2": "0a02b2782002cab64b612daef02d1728641e145a346dc7db7a8722d4383d6468",
+                      "doc-c65c284fae6cca5fe5349a": "7d7f66ef0821bdee03665180ac2474e7417f38d87750d5cd7b8e1323c4c87cb9",
+                      "doc-15598460b8a9902040f751": "bfcde285d0c7c8d5ec3fac87482b2ea50f19647531455ce53854eb9ceb6c8709",
+                      "doc-c06d3db62956680e3705ca": "7faf9239d288fd017708c8dfffb726954fe4c60fffc0c5360fb7a302136bb455"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "middle.awakening": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-f160e3a1beea21dfbfa0a6",
+                      "doc-c65c284fae6cca5fe5349a",
+                      "doc-15598460b8a9902040f751"
+                    ],
+                    "claim_hashes": {
+                      "doc-f160e3a1beea21dfbfa0a6": "0ae506dea6bfc843731d1d2ec2648b30277d6cbaf65b466ae705cf9eaabd0422",
+                      "doc-c65c284fae6cca5fe5349a": "7d7f66ef0821bdee03665180ac2474e7417f38d87750d5cd7b8e1323c4c87cb9",
+                      "doc-15598460b8a9902040f751": "bfcde285d0c7c8d5ec3fac87482b2ea50f19647531455ce53854eb9ceb6c8709"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "late.operation": {
+                    "status": "covered",
+                    "claim_refs": [
+                      "doc-83c12716f70b5e6fb89246",
+                      "doc-4c6c67a48cc6c784124127",
+                      "doc-016985de7dfbe3f11f0155",
+                      "doc-9657c48877d972a877e82d"
+                    ],
+                    "claim_hashes": {
+                      "doc-83c12716f70b5e6fb89246": "cd6a39558078451c77d905baf52f405d27c050fc3a6ccaefe59a5564dd7133cd",
+                      "doc-4c6c67a48cc6c784124127": "f3ba2408a554ce984d4608634724267b7dea827c028e211ec747dc6164cf438a",
+                      "doc-016985de7dfbe3f11f0155": "6ea2dea163a37b1bcfec33f0284b5437f1648b7a52b976a32ea7d541d98339b1",
+                      "doc-9657c48877d972a877e82d": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "late.awakening": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-9657c48877d972a877e82d"
+                    ],
+                    "claim_hashes": {
+                      "doc-9657c48877d972a877e82d": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "late.budget": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-9657c48877d972a877e82d"
+                    ],
+                    "claim_hashes": {
+                      "doc-9657c48877d972a877e82d": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  }
+                }
+              }
+            },
+            "guide_related": [
+              {
+                "note": "player-zhaojun",
+                "title": "昭君",
+                "href": "../players/昭君.md",
+                "relation": "applicable_player"
+              }
+            ],
+            "path": "knowledge/lineups/冻结全五阶.md",
+            "entity_names": {
+              "player:34": "昭君",
+              "card:1681": "牛魔",
+              "card:5221": "曜",
+              "card:1941": "苏烈",
+              "card:1481": "姜子牙",
+              "card:5371": "司空震",
+              "card:1761": "杨玉环"
+            },
+            "manual_sections": [],
+            "history": [],
+            "conflicts": [],
+            "revision": "59a1c5182efb49024ba6"
+          },
+          "target_previous": {
+            "id": "document-lineup-9",
+            "type": "lineup",
+            "title": "七五高阶组合",
+            "aliases": [
+              "昭君七五"
+            ],
+            "entities": [
+              "card:1481",
+              "card:1761",
+              "card:1861",
+              "card:1901",
+              "card:5211",
+              "player:34"
+            ],
+            "core": [
+              "card:5211"
+            ],
+            "topic": "七五高阶组合",
+            "claims": [
+              {
+                "id": "doc-f60bb993d0448e58da69a5",
+                "section": "前期运营及应变",
+                "text": "前3回合：优先保血，冻会影响输赢就不冻，拍卖拿一张三阶冻就好。（最好是第一回合不冻后面两回合都冻）",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 3,
+                    "paragraph_end": 3
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-79cb31f35c5d5c2f497ce5",
+                "section": "前期运营及应变",
+                "text": "1回合：上干将+牛魔；2回合：上弈星+冻位（香香/苏烈白嫖免费刷新和牺牲加等级，影响输赢就不冻）；3回合：升棋手2阶，拍卖拿有战力的三阶，没有就随便拿个三阶；4回合：升棋手3阶，手上两个三阶，冻一个没用的。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 7,
+                    "paragraph_end": 7
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-3a4e6ee02ab6611de693cf",
+                "section": "中期运营及应变",
+                "text": "4回合之后：必须冻（决赛除外）。优先级两条：①只冻三阶及以上的卡②冻可冻卡里战力最弱的，优先保血。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 4,
+                    "paragraph_end": 4
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-ee6c1706b296bb0ac99727",
+                "section": "中期运营及应变",
+                "text": "5回合：开秘技，必选兑换券；没兑换券就选同阵营的霜寒进化转大河（牛魔大多能回本）。冻出诸葛就留着，是过渡强力卡，其他直接冻上去；6回合：冻出第一个五阶，开兑换券。优先级：海月＞玉环＞子牙，接着冻另一个3阶；7回合：冻一个四阶。卖人顺序：先干将再牛魔，弈星棋手5阶前别卖。拍卖优先级：诸葛＞海月＞玉环＞子牙＞其他五阶，有一只就先不用拿了。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 9,
+                    "paragraph_end": 9
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-1d0677db9275b536cb854e",
+                "section": "后期运营及应变",
+                "text": "8回合：升棋手5阶，手握6只4/5阶。没诸葛就商店免费刷新找一下，没找到就存钱上棋手6阶。秘技优先选左边第一个冰心领域；9回合：有经济天赋可上棋手6阶，选中间的不朽坚冰。棋手6阶后有战力可以稍微保血了。场上还剩1阶的，用兑换券开新5阶替换掉。之后一直冻最没战力的5阶；10-11回合：商店找合成牌+效果牌：加等级的效果牌全要、装备重构、四选一装备也要、太乙找一只，前面没诸葛的话换帅也可以拿。拍卖：人口/装备/众星拱月/众星闪耀/名刀/呼风唤雨，都可以拿；12回合之后，商店有合成打合成，用子牙被动刷等级。决赛圈：传承遗志冻位之后上太乙（高压局提前上），太乙给海月。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 11,
+                    "paragraph_end": 11
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-e5a402ae43ec3bbff07825",
+                "section": "后期运营及应变",
+                "text": "三个优先获取大哥：海月、玉环、子牙，不管怎样都要。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 13,
+                    "paragraph_end": 13
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-1bf8e2db3bdf9932da49e5",
+                "section": "后期运营及应变",
+                "text": "为什么要加诸葛？——昭君75的5阶大哥全是AOE，缺单体爆发。诸葛配合玉环无限开炮，输出直接拉满。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 14,
+                    "paragraph_end": 14
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-b7ea73af2dd9282335aaa2",
+                "section": "后期运营及应变",
+                "text": "固定5人：诸葛 + 玉环 + 海月 + 子牙 + 太乙剩两个位置有啥用啥：东皇 / 鲁大 / 吕布，牢大（有临时等级天赋必留）、钟馗（决赛圈上）。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 15,
+                    "paragraph_end": 15
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-5223337dc1d6847af47c3c",
+                "section": "后期运营及应变",
+                "text": "选了呼风唤雨或者这把传承多：只留诸葛/玉环/海月/子牙的等级，其他全传承掉，上太乙+钟馗，配刘禅或瑶打决赛也很猛。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 16,
+                    "paragraph_end": 16
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-0a2e49f008d25045d6cc75",
+                "section": "棋手技能推荐",
+                "text": "秘技选择：稳上分推荐选冰封结晶获得兑换券，因为兑换券可以稳定找到海月、杨玉环和姜子牙。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 1,
+                    "paragraph_end": 1
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-11ca47564ffd7a0dcf91f7",
+                "section": "推荐装备",
+                "text": "刚需四件（有没有强度差一个档次）：玉环：大书 + 圣杯；诸葛：变猪；海月：不死鸟。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 20,
+                    "paragraph_end": 20
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-e72f7d93cb4edfe8097a15",
+                "section": "推荐装备",
+                "text": "装备多的话：玉环再补个变猪；诸葛补大书+法穿；海月补御灵之纱+反甲；子牙补名刀+魔律之刃。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 21,
+                    "paragraph_end": 21
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-916435a562906ba6689b11",
+                "section": "推荐装备",
+                "text": "开局拿法：大棒就合成圣剑（影响胜负先拿，否则拿变猪）；破碎圣杯就合成法源之杯；腰带就合不死鸟；守护者之铠合反甲；速击枪合日渊；法典先不选（转大河做回血，75选大书）。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 22,
+                    "paragraph_end": 22
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-324b47b74b4cb0d3b4402a",
+                "section": "推荐装备",
+                "text": "昭君锦囊不多，装备能拿就拿，装备到位战力翻倍。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 23,
+                    "paragraph_end": 23
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-518a4f0c365951cb26cade",
+                "section": "推荐天赋及原因",
+                "text": "四重奏 ＞ 多彩古币 ＞ 混沌裂隙 ＞ 群星璀璨 ＞ 人口天赋 ＞ 即时战力 ＞ 经济天赋 ＞ 血量类 ＞ 功能类 ＞ 给牌类。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 18,
+                    "paragraph_end": 18
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-dc67abeb111b9dcd456842",
+                "section": "定阵条件",
+                "text": "高压棋手超过3个就别玩75了，容易暴毙（当然活下来的话吃鸡率也不低）",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 25,
+                    "paragraph_end": 25
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-78de8b8424eff95def7555",
+                "section": "定阵条件",
+                "text": "ban日落海75非常强，对手基本只剩高阶逐鹿和三分登场。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 26,
+                    "paragraph_end": 26
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-d8fcf6159e897f2576f56f",
+                "section": "定阵条件",
+                "text": "ban三分不建议玩75。没诸葛了，单体持续伤害只能靠牢大，条件太苛刻，缺诸葛的75单体伤害差非常多。",
+                "version": null,
+                "condition": "",
+                "inference": false,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 27,
+                    "paragraph_end": 27
+                  }
+                ],
+                "origin": "document"
+              },
+              {
+                "id": "doc-fd9f1af24b99839504b8ad",
+                "section": "后期运营及应变",
+                "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确各中间等阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+                "version": null,
+                "condition": "",
+                "inference": true,
+                "kind": "conditional_strategy",
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 3,
+                    "paragraph_end": 3
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 7,
+                    "paragraph_end": 7
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 4,
+                    "paragraph_end": 4
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 9,
+                    "paragraph_end": 9
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 11,
+                    "paragraph_end": 11
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 13,
+                    "paragraph_end": 13
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 14,
+                    "paragraph_end": 14
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 15,
+                    "paragraph_end": 15
+                  },
+                  {
+                    "type": "document",
+                    "source": "doc-f4ebbcf48b20979999a3d854f8952e0fb730adc1a84184d9716ac270730cb86c",
+                    "paragraph_start": 16,
+                    "paragraph_end": 16
+                  }
+                ],
+                "origin": "document"
+              }
+            ],
+            "related": [
+              {
+                "id": "player-zhaojun",
+                "type": "player",
+                "title": "昭君",
+                "path": "knowledge/players/昭君.md"
+              }
+            ],
+            "explicit_relationships": true,
+            "meta": {
+              "required_factions": [
+                "faction:sanfen"
+              ],
+              "players": [
+                "player:34"
+              ],
+              "core_heroes": [
+                "card:5211"
+              ],
+              "compositions": {
+                "early": [
+                  {
+                    "hero": "card:1821",
+                    "necessity": "optional",
+                    "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1681",
+                    "necessity": "optional",
+                    "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1971",
+                    "necessity": "optional",
+                    "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ],
+                "middle": [],
+                "late": [
+                  {
+                    "hero": "card:1901",
+                    "necessity": "required",
+                    "role": "通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1761",
+                    "necessity": "required",
+                    "role": "提供治疗与施法，配合诸葛亮连续输出，并以弦音／妙音补觉醒。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:5211",
+                    "necessity": "required",
+                    "role": "承接等级与护盾收益，以技能和牺牲打范围伤害；在飞行器路线中承担连接目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1481",
+                    "necessity": "required",
+                    "role": "高阶清场核心；通过不同阵营英雄的登场、合成等配合增长，装备先保住释放技能。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  },
+                  {
+                    "hero": "card:1861",
+                    "necessity": "required",
+                    "role": "让当前关键英雄复活，延长施法、输出或关键牺牲链；上阵后检查复活目标。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+                    "replaces": "",
+                    "replacement_note": ""
+                  }
+                ]
+              },
+              "ban_conditions": [
+                {
+                  "faction": "faction:sanfen",
+                  "status": "unplayable",
+                  "reason": "完整阵容无法获取：诸葛亮（通过友军施法压低自身技能成本，承担高频单体爆发；与杨玉环等持续施法单位配合。）。",
+                  "derived_dependency": true,
+                  "explicit_required": false,
+                  "explicit_condition": null
+                }
+              ],
+              "matchups": [],
+              "common_claim_refs": [],
+              "player_branches": [
+                {
+                  "id": "owner",
+                  "player": "player:34",
+                  "claim_refs": [
+                    "doc-f60bb993d0448e58da69a5",
+                    "doc-79cb31f35c5d5c2f497ce5",
+                    "doc-3a4e6ee02ab6611de693cf",
+                    "doc-ee6c1706b296bb0ac99727",
+                    "doc-1d0677db9275b536cb854e",
+                    "doc-e5a402ae43ec3bbff07825",
+                    "doc-1bf8e2db3bdf9932da49e5",
+                    "doc-b7ea73af2dd9282335aaa2",
+                    "doc-5223337dc1d6847af47c3c",
+                    "doc-0a2e49f008d25045d6cc75",
+                    "doc-11ca47564ffd7a0dcf91f7",
+                    "doc-e72f7d93cb4edfe8097a15",
+                    "doc-916435a562906ba6689b11",
+                    "doc-324b47b74b4cb0d3b4402a",
+                    "doc-518a4f0c365951cb26cade",
+                    "doc-dc67abeb111b9dcd456842",
+                    "doc-78de8b8424eff95def7555",
+                    "doc-d8fcf6159e897f2576f56f",
+                    "doc-fd9f1af24b99839504b8ad"
+                  ],
+                  "condition_refs": [],
+                  "operation_route_ids": [],
+                  "late_variant_ids": [],
+                  "major_variant_ids": [],
+                  "overrides": {},
+                  "assessment": [],
+                  "selection": {}
+                }
+              ]
+            },
+            "reading_layout": {
+              "version": 3,
+              "claim_locations": {
+                "doc-f60bb993d0448e58da69a5": [
+                  "阵容组成与运营节奏",
+                  "前期英雄组成与运营"
+                ],
+                "doc-79cb31f35c5d5c2f497ce5": [
+                  "阵容组成与运营节奏",
+                  "前期英雄组成与运营"
+                ],
+                "doc-3a4e6ee02ab6611de693cf": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-ee6c1706b296bb0ac99727": [
+                  "阵容组成与运营节奏",
+                  "中期英雄组成与运营"
+                ],
+                "doc-1d0677db9275b536cb854e": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-e5a402ae43ec3bbff07825": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-1bf8e2db3bdf9932da49e5": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-b7ea73af2dd9282335aaa2": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-5223337dc1d6847af47c3c": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ],
+                "doc-0a2e49f008d25045d6cc75": [
+                  "棋手技能推荐"
+                ],
+                "doc-11ca47564ffd7a0dcf91f7": [
+                  "推荐装备"
+                ],
+                "doc-e72f7d93cb4edfe8097a15": [
+                  "推荐装备"
+                ],
+                "doc-916435a562906ba6689b11": [
+                  "推荐装备"
+                ],
+                "doc-324b47b74b4cb0d3b4402a": [
+                  "推荐装备"
+                ],
+                "doc-518a4f0c365951cb26cade": [
+                  "推荐天赋"
+                ],
+                "doc-dc67abeb111b9dcd456842": [
+                  "定阵条件"
+                ],
+                "doc-78de8b8424eff95def7555": [
+                  "定阵条件"
+                ],
+                "doc-d8fcf6159e897f2576f56f": [
+                  "定阵条件"
+                ],
+                "doc-fd9f1af24b99839504b8ad": [
+                  "阵容组成与运营节奏",
+                  "后期英雄组成与运营"
+                ]
+              },
+              "coverage": {
+                "owner": {
+                  "early.operation": {
+                    "status": "covered",
+                    "claim_refs": [
+                      "doc-f60bb993d0448e58da69a5",
+                      "doc-79cb31f35c5d5c2f497ce5"
+                    ],
+                    "claim_hashes": {
+                      "doc-f60bb993d0448e58da69a5": "810787ee218307ab13381b0044a67469ff9a0d857576a2746ce705ae868a08f1",
+                      "doc-79cb31f35c5d5c2f497ce5": "5559e86c5c00fa4c47e7081c23ecca0d283ddcf211952a9b70a7e2b9c03b568f"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "early.missing": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-79cb31f35c5d5c2f497ce5"
+                    ],
+                    "claim_hashes": {
+                      "doc-79cb31f35c5d5c2f497ce5": "5559e86c5c00fa4c47e7081c23ecca0d283ddcf211952a9b70a7e2b9c03b568f"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "middle.operation": {
+                    "status": "covered",
+                    "claim_refs": [
+                      "doc-3a4e6ee02ab6611de693cf",
+                      "doc-ee6c1706b296bb0ac99727"
+                    ],
+                    "claim_hashes": {
+                      "doc-3a4e6ee02ab6611de693cf": "33362a0836304f3561ec17b40965b950bfc3ef00e7cbc85a3705d40318b750d2",
+                      "doc-ee6c1706b296bb0ac99727": "43eb845210fc501ac3b72886125f9c7b4b7b6b066a26d4e16a1d2f5237d22156"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "late.operation": {
+                    "status": "covered",
+                    "claim_refs": [
+                      "doc-1d0677db9275b536cb854e",
+                      "doc-e5a402ae43ec3bbff07825",
+                      "doc-1bf8e2db3bdf9932da49e5",
+                      "doc-b7ea73af2dd9282335aaa2",
+                      "doc-5223337dc1d6847af47c3c",
+                      "doc-fd9f1af24b99839504b8ad"
+                    ],
+                    "claim_hashes": {
+                      "doc-1d0677db9275b536cb854e": "19c57cf2744d86fffb437290d8373cf919aec3c555a1e94e479fd9db38ae0ac0",
+                      "doc-e5a402ae43ec3bbff07825": "ff4b9d07fb25a1e311eb7324e92f579ea0ae3d50db42d02d3f522963be4abe54",
+                      "doc-1bf8e2db3bdf9932da49e5": "9ebd26ae531c532c07b0b7d3b413853213ab9e77b982b6c188ea188ecd4abd6a",
+                      "doc-b7ea73af2dd9282335aaa2": "b635b74130b4f754ffdd068e72cdf5030215e04631c234a6a1076f379f36cbaa",
+                      "doc-5223337dc1d6847af47c3c": "f1d3625beee1eaede47dd96f39b887ec360de8625cd80a3b33fde343def8a8ef",
+                      "doc-fd9f1af24b99839504b8ad": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "late.awakening": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-fd9f1af24b99839504b8ad"
+                    ],
+                    "claim_hashes": {
+                      "doc-fd9f1af24b99839504b8ad": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "late.budget": {
+                    "status": "partial",
+                    "claim_refs": [
+                      "doc-1d0677db9275b536cb854e",
+                      "doc-fd9f1af24b99839504b8ad"
+                    ],
+                    "claim_hashes": {
+                      "doc-1d0677db9275b536cb854e": "19c57cf2744d86fffb437290d8373cf919aec3c555a1e94e479fd9db38ae0ac0",
+                      "doc-fd9f1af24b99839504b8ad": "b03d4f842f32d7d2ac769700bbc274e13d7772696c046ab12c0bb8bd18806305"
+                    },
+                    "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+                  },
+                  "equipment": {
+                    "claim_refs": [
+                      "doc-11ca47564ffd7a0dcf91f7",
+                      "doc-e72f7d93cb4edfe8097a15",
+                      "doc-916435a562906ba6689b11",
+                      "doc-324b47b74b4cb0d3b4402a"
+                    ],
+                    "claim_hashes": {
+                      "doc-11ca47564ffd7a0dcf91f7": "443d2ae014e967003c726a410a660f38a1a698f5d9e06610c716aba065a784b0",
+                      "doc-e72f7d93cb4edfe8097a15": "808e2b83ad34edc2d5b867aff6246ac210c587b1b35fc4aaacc71c121a06b069",
+                      "doc-916435a562906ba6689b11": "e62815744d190646c45d08e1d6604a4ce30227a67dba9f3afca74f049c1ca9fc",
+                      "doc-324b47b74b4cb0d3b4402a": "39186141c0088218ebb1ba65aa6af0336ce7e2d991da11ad015f115afe47d059"
+                    }
+                  },
+                  "talents": {
+                    "claim_refs": [
+                      "doc-518a4f0c365951cb26cade"
+                    ],
+                    "claim_hashes": {
+                      "doc-518a4f0c365951cb26cade": "89c337da4213158267b8bb5464076a1e5ba68a5d6d260e2d604b5a5b87eba85d"
+                    }
+                  },
+                  "skills": {
+                    "claim_refs": [
+                      "doc-0a2e49f008d25045d6cc75"
+                    ],
+                    "claim_hashes": {
+                      "doc-0a2e49f008d25045d6cc75": "2f5d1387aae5a55fe9c29ab81c429805fca5e4f1176232156c1d1b75c4372dee"
+                    }
+                  }
+                }
+              }
+            },
+            "guide_related": [
+              {
+                "note": "player-zhaojun",
+                "title": "昭君",
+                "href": "../players/昭君.md",
+                "relation": "applicable_player"
+              }
+            ],
+            "path": "knowledge/lineups/七五高阶组合.md",
+            "entity_names": {
+              "faction:sanfen": "三分",
+              "player:34": "昭君",
+              "card:5211": "海月",
+              "card:1821": "干将莫邪",
+              "card:1681": "牛魔",
+              "card:1971": "弈星",
+              "card:1901": "诸葛亮",
+              "card:1761": "杨玉环",
+              "card:1481": "姜子牙",
+              "card:1861": "太乙真人"
+            },
+            "manual_sections": [],
+            "history": [],
+            "conflicts": [],
+            "revision": "a292da59867d67c81f44"
+          }
+        },
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "七五高阶组合",
+            "path": "knowledge/lineups/七五高阶组合.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "59a1c5182efb49024ba6"
+      "revision": "f1c232926f30476ff360"
     },
     {
       "id": "document-lineup-11",
       "type": "lineup",
-      "title": "虎轲夺取流",
+      "title": "猪虎轲",
       "aliases": [
-        "镜虎轲"
+        "镜虎轲",
+        "虎轲夺取流"
       ],
       "entities": [
         "card:1161",
@@ -174763,7 +176058,7 @@
       "core": [
         "card:5021"
       ],
-      "topic": "虎轲夺取流",
+      "topic": "猪虎轲",
       "claims": [
         {
           "id": "doc-dbb3295697a842680dc424",
@@ -175351,7 +176646,7 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/虎轲夺取流.md",
+      "path": "knowledge/lineups/猪虎轲.md",
       "entity_names": {
         "player:21": "镜",
         "card:5021": "裴擒虎",
@@ -175361,16 +176656,27 @@
         "card:1161": "阿轲"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "虎轲夺取流",
+            "path": "knowledge/lineups/虎轲夺取流.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "9c9c4918c05015195728"
+      "revision": "e2d2defc921182410f00"
     },
     {
       "id": "document-lineup-12",
       "type": "lineup",
-      "title": "纸伞守约",
+      "title": "伞守约",
       "aliases": [
-        "阿离伞守约"
+        "阿离伞守约",
+        "纸伞守约"
       ],
       "entities": [
         "card:1441",
@@ -175385,7 +176691,7 @@
       "core": [
         "card:1961"
       ],
-      "topic": "纸伞守约",
+      "topic": "伞守约",
       "claims": [
         {
           "id": "doc-03d82c5bcdd6ca60a93334",
@@ -176120,7 +177426,7 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/纸伞守约.md",
+      "path": "knowledge/lineups/伞守约.md",
       "entity_names": {
         "faction:heluo": "河洛",
         "player:20": "阿离",
@@ -176135,16 +177441,27 @@
         "card:1861": "太乙真人"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "纸伞守约",
+            "path": "knowledge/lineups/纸伞守约.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "fc9283acf94817c04207"
+      "revision": "69c8b15c865440f69277"
     },
     {
       "id": "document-lineup-13",
       "type": "lineup",
-      "title": "纸伞狄仁杰",
+      "title": "伞狄仁杰",
       "aliases": [
-        "阿离伞狄仁杰"
+        "阿离伞狄仁杰",
+        "纸伞狄仁杰"
       ],
       "entities": [
         "card:1331",
@@ -176159,7 +177476,7 @@
       "core": [
         "card:1331"
       ],
-      "topic": "纸伞狄仁杰",
+      "topic": "伞狄仁杰",
       "claims": [
         {
           "id": "doc-615b2b6d8a1fd2f64a8c6a",
@@ -176943,7 +178260,7 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/纸伞狄仁杰.md",
+      "path": "knowledge/lineups/伞狄仁杰.md",
       "entity_names": {
         "faction:heluo": "河洛",
         "player:20": "阿离",
@@ -176958,16 +178275,27 @@
         "card:1861": "太乙真人"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "纸伞狄仁杰",
+            "path": "knowledge/lineups/纸伞狄仁杰.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "d67861049d61b8a5cec4"
+      "revision": "837203bdbb1a1a054f17"
     },
     {
       "id": "document-lineup-14",
       "type": "lineup",
-      "title": "纸伞猫",
+      "title": "伞炸弹猫",
       "aliases": [
-        "阿离伞猫"
+        "阿离伞猫",
+        "纸伞猫"
       ],
       "entities": [
         "card:1141",
@@ -176981,7 +178309,7 @@
       "core": [
         "card:3121"
       ],
-      "topic": "纸伞猫",
+      "topic": "伞炸弹猫",
       "claims": [
         {
           "id": "doc-9baef6b212bca18b203482",
@@ -177773,7 +179101,7 @@
           "relation": "applicable_player"
         }
       ],
-      "path": "knowledge/lineups/纸伞猫.md",
+      "path": "knowledge/lineups/伞炸弹猫.md",
       "entity_names": {
         "faction:heluo": "河洛",
         "faction:sanfen": "三分",
@@ -177789,9 +179117,19 @@
         "card:1861": "太乙真人"
       },
       "manual_sections": [],
-      "history": [],
+      "history": [
+        {
+          "at": "2026-10-20T07:21:51.126704+00:00",
+          "origin": "user",
+          "reason": "用户指定阵容改名",
+          "previous": {
+            "title": "纸伞猫",
+            "path": "knowledge/lineups/纸伞猫.md"
+          }
+        }
+      ],
       "conflicts": [],
-      "revision": "cdfaf91a3fe4b67c312a"
+      "revision": "d315cd44ba9ff867021a"
     },
     {
       "id": "document-lineup-15",

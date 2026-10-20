@@ -1,0 +1,630 @@
+{
+  "id": "document-lineup-11",
+  "type": "lineup",
+  "title": "猪虎轲",
+  "aliases": [
+    "镜虎轲",
+    "虎轲夺取流"
+  ],
+  "entities": [
+    "card:1161",
+    "card:5011",
+    "card:5021",
+    "card:5111",
+    "player:21"
+  ],
+  "core": [
+    "card:5021"
+  ],
+  "topic": "猪虎轲",
+  "claims": [
+    {
+      "id": "doc-dbb3295697a842680dc424",
+      "section": "前期运营及应变",
+      "text": "单挂弈星连败开局，每回合都使用镜像，镜像需要留在手牌里。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-2fb22fc9e205d46d5ab059",
+      "section": "中期运营及应变",
+      "text": "猪八戒除了裴擒虎以外都可以夺取，不要夺取低于10级的英雄，场上英雄10级以下，可以先把猪八戒留在手牌，等场上英雄10级之后再上场。（原因：猪八戒每次最多可以夺取10级，10级之后再夺取，可以更快升级猪八戒）",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-a0720a18ee15debe94cb8f",
+      "section": "中期运营及应变",
+      "text": "万镜在使用4张镜像之后解锁，卖掉除了体系牌之外的所有牌，场上只有4个体系牌的时候使用万镜。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-e1ba46d967a3838f36f862",
+      "section": "中期运营及应变",
+      "text": "锦囊牌优先拿遗志和唤醒，商店里有唤醒也要买，等明世隐觉醒后再对他使用唤醒（明世隐觉醒前使用唤醒每次等级转化+2级，觉醒后再使用每次等级转化+4级）。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-33d59f355ae970a4d52f86",
+      "section": "中期运营及应变",
+      "text": "镜像每回合都要使用，搜卡前先使用镜像，防止没有能量使用，镜像用于快速合成和觉醒体系牌，利用猪八戒的效果抬等级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-d5c59ed5a1f3dd9d4f48a0",
+      "section": "中期运营及应变",
+      "text": "棋手四级后，商店刷出的逍遥自在都买，买了直接使用，看见同名卡都买来合成，这个阶段大概率全员觉醒，镜像只用来复制明世隐其次猪八戒，拿到明世隐和猪八戒可以留着等买了镜像再打出用来复制，优先觉醒明世隐和猪八戒。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-662d5609a3df1df6702f19",
+      "section": "中期运营及应变",
+      "text": "血量高的时候打裴擒虎、明世隐、猪八戒、血量低再打阿轲，阿轲的词条会在登场时棋手血量每降低十点重复触发一次登场效果。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-46164efaa23503c01493bd",
+      "section": "中期运营及应变",
+      "text": "四回合购买镜像再上阵拍卖英雄，然后升三级开始搜牌，每次均先购买镜像再打体系牌然后打出相同英雄的镜像牌，可以让英雄快速觉醒。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-1199eed2e69a8f13fa9121",
+      "section": "后期运营及应变",
+      "text": "终局可以囤四张裴擒虎、一张临阵磨枪、以及传承遗志，后续把等级集中在猪八戒身上，再打出手牌里的觉醒裴擒虎，对裴擒虎使用临阵磨枪可以获得猪八戒的全部等级作为自己的临时等级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-de3b3ff6ed4ffef5cef4c7",
+      "section": "后期运营及应变",
+      "text": "第三次拍卖后棋手升五级。镜像还是优先明世隐，其次猪八戒。后期可以对除了裴擒虎以外的等级最高的英雄使用传承/遗志后卖掉。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-500c36602211cef80d4328",
+      "section": "定阵条件",
+      "text": "5-7回合不要夺取低于10级的英雄，8-11回合不要夺取低于30级的英雄，12回合之后不要夺取低于40级的英雄，防止裴擒虎整备获得低等级棋子的等级。",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-b95efa33fbb536281adb0d",
+      "section": "后期运营及应变",
+      "text": "材料已给出的棋手升级操作按前、中、后期执行；未明确二阶、五阶的独立找牌目标、停留边界或六阶后资源安排时，仍待确认。升级前同时比较当前战力、掉血风险、核心与觉醒进度，以及升级后买牌预算；不能仅因到达某回合就忽略保命战力。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-5e22f091a7b3f34c51cbf41ab9ad47c9f73c3650b35690fa36260844365cb75e",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ],
+      "origin": "document"
+    },
+    {
+      "id": "doc-4f3bd8f786336424b7af0a",
+      "section": "核心机制",
+      "text": "万镜前只保留猪八戒、裴擒虎、明世隐、阿轲这组目标，避免无用过渡牌稀释随机复制；备好镜像后再打需要复制的核心英雄。",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-58135cbfd625b268ac0f3742db7bfa207eb9e6a399cb83fd4d323e5e97106ec7",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-58135cbfd625b268ac0f3742db7bfa207eb9e6a399cb83fd4d323e5e97106ec7",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document"
+    }
+  ],
+  "related": [
+    {
+      "id": "player-21",
+      "type": "player",
+      "title": "镜",
+      "path": "knowledge/players/镜.md"
+    }
+  ],
+  "explicit_relationships": true,
+  "meta": {
+    "required_factions": [],
+    "players": [
+      "player:21"
+    ],
+    "core_heroes": [
+      "card:5021"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "用于当前阶段过渡；保留或替换以是否能减少掉血和是否占用核心资源为条件。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "夺取邻近工具英雄等级并集中养成，避免夺取应保留的裴擒虎等级。 觉醒：优先觉醒；作为集中等级的成长核心。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "required",
+          "role": "整备承接高等级队友作为临时等级，后期集中等级后补出爆发回合。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "连线实际成长核心，将战斗临时等级转成永久等级；登场与唤醒增加转化额度。 觉醒：优先觉醒；先觉醒再用唤醒提高转化增量。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1161",
+          "necessity": "required",
+          "role": "按棋手已损生命提高登场收益，低血启动时补出，避免过早稀释养成。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "夺取邻近工具英雄等级并集中养成，避免夺取应保留的裴擒虎等级。 觉醒：优先觉醒；作为集中等级的成长核心。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "required",
+          "role": "整备承接高等级队友作为临时等级，后期集中等级后补出爆发回合。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "连线实际成长核心，将战斗临时等级转成永久等级；登场与唤醒增加转化额度。 觉醒：优先觉醒；先觉醒再用唤醒提高转化增量。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1161",
+          "necessity": "required",
+          "role": "按棋手已损生命提高登场收益，低血启动时补出，避免过早稀释养成。 觉醒：待确认；按对应阶段正文已有依据选择，未明确者不强行归档。 等级投入：待确认；尚缺可靠停级或继续投入边界。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "common_claim_refs": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:21",
+        "claim_refs": [
+          "doc-dbb3295697a842680dc424",
+          "doc-2fb22fc9e205d46d5ab059",
+          "doc-a0720a18ee15debe94cb8f",
+          "doc-e1ba46d967a3838f36f862",
+          "doc-33d59f355ae970a4d52f86",
+          "doc-d5c59ed5a1f3dd9d4f48a0",
+          "doc-662d5609a3df1df6702f19",
+          "doc-46164efaa23503c01493bd",
+          "doc-1199eed2e69a8f13fa9121",
+          "doc-de3b3ff6ed4ffef5cef4c7",
+          "doc-500c36602211cef80d4328",
+          "doc-b95efa33fbb536281adb0d",
+          "doc-4f3bd8f786336424b7af0a"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {},
+        "assessment": [],
+        "selection": {}
+      }
+    ]
+  },
+  "reading_layout": {
+    "version": 3,
+    "claim_locations": {
+      "doc-dbb3295697a842680dc424": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "doc-2fb22fc9e205d46d5ab059": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-a0720a18ee15debe94cb8f": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-e1ba46d967a3838f36f862": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-33d59f355ae970a4d52f86": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-d5c59ed5a1f3dd9d4f48a0": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-662d5609a3df1df6702f19": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-46164efaa23503c01493bd": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "doc-1199eed2e69a8f13fa9121": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-de3b3ff6ed4ffef5cef4c7": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-500c36602211cef80d4328": [
+        "定阵条件"
+      ],
+      "doc-b95efa33fbb536281adb0d": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "doc-4f3bd8f786336424b7af0a": [
+        "核心机制"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "early.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-dbb3295697a842680dc424"
+          ],
+          "claim_hashes": {
+            "doc-dbb3295697a842680dc424": "6a0e63e03d5ae346eb26769c2d2a71b64f2e1ce41726ce5f495d1e475fd448b7"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-2fb22fc9e205d46d5ab059",
+            "doc-a0720a18ee15debe94cb8f",
+            "doc-e1ba46d967a3838f36f862",
+            "doc-33d59f355ae970a4d52f86",
+            "doc-d5c59ed5a1f3dd9d4f48a0",
+            "doc-662d5609a3df1df6702f19",
+            "doc-46164efaa23503c01493bd"
+          ],
+          "claim_hashes": {
+            "doc-2fb22fc9e205d46d5ab059": "9c966990047b3d31eb3cfe322b443b3838136435bbcfaac98ac5b600d01c40f1",
+            "doc-a0720a18ee15debe94cb8f": "e6a112c611d0b3f8bab4cae0ab1c966999de21231e164c48b67df78d8ecdcbe6",
+            "doc-e1ba46d967a3838f36f862": "5e69552723a310b5b957d2bbe95ce3f2008dfcef75f8e9406e9dbc467913d908",
+            "doc-33d59f355ae970a4d52f86": "6f4b0ffa94df47dd2d230095435450532a9f3c83b6b802a42fd4ef9aa181839a",
+            "doc-d5c59ed5a1f3dd9d4f48a0": "635d15e8f65786f80acdd9f41ad60c85c752c0fc04516ae4ee62575d93373933",
+            "doc-662d5609a3df1df6702f19": "3b405edd616cc04ac2d7bf0d69f046db27b101981834f5a72cc61c71e7b99c55",
+            "doc-46164efaa23503c01493bd": "e3169612ce8ec081bbd0326c2941b134db03a7b9bedf4e4b8f624dac76c6a563"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-e1ba46d967a3838f36f862",
+            "doc-33d59f355ae970a4d52f86",
+            "doc-d5c59ed5a1f3dd9d4f48a0",
+            "doc-46164efaa23503c01493bd"
+          ],
+          "claim_hashes": {
+            "doc-e1ba46d967a3838f36f862": "5e69552723a310b5b957d2bbe95ce3f2008dfcef75f8e9406e9dbc467913d908",
+            "doc-33d59f355ae970a4d52f86": "6f4b0ffa94df47dd2d230095435450532a9f3c83b6b802a42fd4ef9aa181839a",
+            "doc-d5c59ed5a1f3dd9d4f48a0": "635d15e8f65786f80acdd9f41ad60c85c752c0fc04516ae4ee62575d93373933",
+            "doc-46164efaa23503c01493bd": "e3169612ce8ec081bbd0326c2941b134db03a7b9bedf4e4b8f624dac76c6a563"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-33d59f355ae970a4d52f86"
+          ],
+          "claim_hashes": {
+            "doc-33d59f355ae970a4d52f86": "6f4b0ffa94df47dd2d230095435450532a9f3c83b6b802a42fd4ef9aa181839a"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "middle.missing": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-33d59f355ae970a4d52f86"
+          ],
+          "claim_hashes": {
+            "doc-33d59f355ae970a4d52f86": "6f4b0ffa94df47dd2d230095435450532a9f3c83b6b802a42fd4ef9aa181839a"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.operation": {
+          "status": "covered",
+          "claim_refs": [
+            "doc-1199eed2e69a8f13fa9121",
+            "doc-de3b3ff6ed4ffef5cef4c7",
+            "doc-b95efa33fbb536281adb0d"
+          ],
+          "claim_hashes": {
+            "doc-1199eed2e69a8f13fa9121": "0e2b9895b170d16ba17b36a3e286e23633b89ffbd3f11dde8720e68c19467c3d",
+            "doc-de3b3ff6ed4ffef5cef4c7": "dc6ac92032933174bcdb0aee444bbe9ce9c5acd3f0cf4a21014740a6c07a572a",
+            "doc-b95efa33fbb536281adb0d": "009612224fb9e46d3af88e508fad89ae170ff110caee64276193aa03c1c6bfd0"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.awakening": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-1199eed2e69a8f13fa9121",
+            "doc-b95efa33fbb536281adb0d"
+          ],
+          "claim_hashes": {
+            "doc-1199eed2e69a8f13fa9121": "0e2b9895b170d16ba17b36a3e286e23633b89ffbd3f11dde8720e68c19467c3d",
+            "doc-b95efa33fbb536281adb0d": "009612224fb9e46d3af88e508fad89ae170ff110caee64276193aa03c1c6bfd0"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        },
+        "late.budget": {
+          "status": "partial",
+          "claim_refs": [
+            "doc-b95efa33fbb536281adb0d"
+          ],
+          "claim_hashes": {
+            "doc-b95efa33fbb536281adb0d": "009612224fb9e46d3af88e508fad89ae170ff110caee64276193aa03c1c6bfd0"
+          },
+          "detail": "依据文档已明确部分操作；其余精确边界见正文待确认项。"
+        }
+      }
+    }
+  },
+  "guide_related": [
+    {
+      "note": "player-21",
+      "title": "镜",
+      "href": "../players/镜.md",
+      "relation": "applicable_player"
+    }
+  ],
+  "path": "knowledge/lineups/猪虎轲.md",
+  "entity_names": {
+    "player:21": "镜",
+    "card:5021": "裴擒虎",
+    "card:1971": "弈星",
+    "card:5111": "猪八戒",
+    "card:5011": "明世隐",
+    "card:1161": "阿轲"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-20T07:21:51.126704+00:00",
+      "origin": "user",
+      "reason": "用户指定阵容改名",
+      "previous": {
+        "title": "虎轲夺取流",
+        "path": "knowledge/lineups/虎轲夺取流.md"
+      }
+    }
+  ],
+  "conflicts": [],
+  "revision": "e2d2defc921182410f00"
+}

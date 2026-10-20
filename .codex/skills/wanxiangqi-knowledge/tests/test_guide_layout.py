@@ -95,6 +95,13 @@ class GuideLayoutTests(unittest.TestCase):
         items,_=migrate(workspace.notes(root),wxq.entities(root))
         for n in items:
             if not guide.enabled(n):continue
+            if not branches.enabled(n):
+                # Imported common lineups may use the semantic reader without binding a player.
+                from lineup_layout import reading_document
+                document=reading_document(n)
+                self.assertEqual(document['note_id'],n['id'])
+                self.assertTrue(document['sections'])
+                continue
             headings=[]
             for b in n['meta']['player_branches']:
                 text=guide.render(n,b['id']);guide.parse(text,n,b['id'])
