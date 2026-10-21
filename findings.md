@@ -1,5 +1,7 @@
 # 整理发现
 
+河洛花木兰教学v4：原130条结论ID/证据/inference守恒，当前273条内部结论；阶段摘要显式关联细粒度依据，原文内部保留。第一、二轮缺省采用用户明确默认，不冒充来源。来源配方读取entities/equipment.json的properties.sourceCards，特殊渠道读取cardGetDesc。双入口5分支各21章同修订；513个非目标正文/实体/文字稿哈希不变。独立审查指出露娜获取与回流、嬴律搏命和契约瓶被摘要遗漏，已恢复。最终报告docs/reports/河洛花木兰教学提质.md。
+
 - knowledge/index.json无瑶妹牺牲流李信条目；常小娥通用打法包含李信相关策略，更新前需扫描。
 - 实体库2026-10-10同步：20棋手、171英雄、90装备、325天赋、11衍生物、100效果牌、228棋手牌；报告无缺失。不是本次新同步。
 - large-v3模型与本地运行环境已存在。
@@ -41,3 +43,5 @@ HTML导出完成：exports/瑶妹牺牲流李信.html，沿用常小娥参考页
 河洛花木兰关键核对：BV1vTeS6nE9c:p1 656.04秒卡面每4张古币，BV1oQJ66tESA:p1 763.59秒卡面每5张；非同音纠错，分别记录历史数值，具体补丁日期未知。P2仅识别508秒“比赛开始”，不能当完整有声教学或据此finish。
 
 采集锁故障：BV1PRhC65E9t在transcribing阶段database is locked，保留state/checkpoint。BV1ErJ46ZEbm已generation5运行。queue/topics/network均delete journal。enqueue与link_jobs.reconcile在BEGIN IMMEDIATE内执行transcript_errors全文件校验，疑似阻塞进度更新；需隔离复现。现有4个crawler worker，不可中断。
+
+2026-10-21开发启动：frontend/.env.development.local属于本机忽略配置，曾为临时双入口验收设WXQ_API_TARGET=8767；当前仅8765后端运行，导致5173代理502/ECONNREFUSED。已改为8765，全部4接口经代理恢复200。

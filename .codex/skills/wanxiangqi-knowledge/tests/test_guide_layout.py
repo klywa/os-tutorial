@@ -107,7 +107,12 @@ class GuideLayoutTests(unittest.TestCase):
                 text=guide.render(n,b['id']);guide.parse(text,n,b['id'])
                 headings.append(re.findall(r'^## .+$',text,re.M))
                 ids=[x['claim'] for x in guide.blocks(n,b['id']) if x.get('claim')]
-                self.assertCountEqual(ids,[c['id'] for c in branches.project(n,b['id'])['claims']])
+                available={c['id'] for c in branches.project(n,b['id'])['claims']}
+                supporting=n.get('reading_layout',{}).get('supporting_claim_refs',{})
+                hidden={cid for cid,refs in supporting.items() if available.intersection([refs] if isinstance(refs,str) else refs)}
+                # v4 retains fine-grained evidence internally and renders its explicit summary once.
+                self.assertCountEqual(ids,available-hidden)
+                self.assertTrue(set(ids).isdisjoint(hidden))
                 self.assertNotRegex(text,r'见[“本]|参见|## (?:路线与装备取舍|运营路线选择|棋手决策选择)')
             self.assertTrue(all(x==headings[0] for x in headings))
 

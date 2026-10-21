@@ -1,7 +1,7 @@
 import type {ReadingDocument} from './types';
 import type {Note,Options} from './types';
-export function claimMarkdown(c:{text:string;condition?:string;inference?:boolean}){
- return (c.inference?'推测：':'')+(c.condition?'**'+c.condition.replace(/[。；：]+$/,'')+'：** ':'')+c.text.replace(/(\*\*[^*\n]+：\*\*)(?=\S)/g,'$1 ');
+export function claimMarkdown(c:{text:string;condition?:string;inference?:boolean},layoutVersion?:number){
+ return (c.inference&&layoutVersion!==4?'推测：':'')+(c.condition?'**'+c.condition.replace(/[。；：]+$/,'')+'：** ':'')+c.text.replace(/(\*\*[^*\n]+：\*\*)(?=\S)/g,'$1 ');
 }
 export function loadReaderData(request:<T>(path:string)=>Promise<T>){
  return Promise.all([request<Note[]>('notes'),request<Options>('options')]);

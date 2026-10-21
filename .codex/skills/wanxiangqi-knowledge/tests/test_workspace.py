@@ -9,6 +9,20 @@ import workspace
 
 
 class WorkspaceTests(unittest.TestCase):
+    def test_replay_updates_recover_with_save_transaction(self):
+        from unittest.mock import patch
+        note=self.seed();path='knowledge/replays/reviewed.json'
+        original=wxq.atomic_json
+        def fail_replay(target,value):
+            if Path(target)==self.root/path:raise OSError('interrupted replay')
+            return original(target,value)
+        with patch.object(wxq,'atomic_json',side_effect=fail_replay):
+            with self.assertRaises(OSError):workspace.persist(self.root,[note],_replay_updates={path:{'notes':[note]}})
+        self.assertTrue((self.root/'knowledge/pending-save.json').exists())
+        workspace.recover(self.root)
+        self.assertEqual(wxq.read_json(self.root/path)['notes'],workspace.notes(self.root))
+        self.assertFalse((self.root/'knowledge/pending-save.json').exists())
+
     def setUp(self):
         temp_root = Path(__file__).parents[4] / '.wxq-runtime/test-temp'
         temp_root.mkdir(parents=True, exist_ok=True)

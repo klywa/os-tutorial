@@ -109,6 +109,8 @@ def validate(note):
         raise ValueError('存在尚未指定共通或棋手归属的结论：' + '、'.join(sorted(known-owned)))
     if players != set(meta.get('players', [])):
         raise ValueError('每个适用棋手必须有完整分支')
+    from guide_v4 import validate_principles
+    validate_principles(note)
 
 
 def project(note, player=None):
@@ -150,7 +152,7 @@ def project(note, player=None):
     if 'guide_related' in result:
         result['guide_related']=[x for x in result['guide_related'] if x.get('branch',b['id'])==b['id'] and x.get('exclude_branch')!=b['id']]
         result['related']=[x for x in result.get('related',[]) if x.get('player',b['player'])==b['player']]
-    if result.get('reading_layout',{}).get('version') in (2,3):
+    if result.get('reading_layout',{}).get('version') in (2,3,4):
         from guide_layout import project_matchups
         project_matchups(result)
     return result
@@ -166,7 +168,7 @@ def document_path(note, b):
 
 
 def editable_claim_text(note,c):
-    if note.get('reading_layout',{}).get('version')==3:
+    if note.get('reading_layout',{}).get('version') in (3,4):
         from guide_layout import claim_text
         return claim_text(c,3)
     return c['text']
@@ -278,7 +280,7 @@ def selection_markdown(selection):
 def documents(note):
     if not enabled(note):
         return {}
-    if note.get('reading_layout',{}).get('version') in (2,3):
+    if note.get('reading_layout',{}).get('version') in (2,3,4):
         from guide_layout import render
         return {document_path(note,b):render(note,b['id']) for b in note['meta']['player_branches']}
     if note.get('reading_layout',{}).get('preserve_original'):
@@ -331,7 +333,7 @@ def render_adaptations(note, heading=True):
 
 
 def parse_document(text, note, bid):
-    if note.get('reading_layout',{}).get('version') in (2,3):
+    if note.get('reading_layout',{}).get('version') in (2,3,4):
         from guide_layout import parse
         return parse(text,note,bid)
     if note.get('reading_layout',{}).get('preserve_original'):
@@ -475,7 +477,7 @@ def apply_sections(note, scope, sections):
             for offset, block in enumerate(blocks[b0:b1]):
                 cid = old[a0+offset]['id'] if a0+offset < a1 else 'manual-' + uuid.uuid4().hex[:16]
                 replacement.append({'id':cid,'section':section,'text':block,'origin':'manual','kind':'general_strategy','condition':'','version':None,'inference':False,'evidence':[]})
-                if note.get('reading_layout',{}).get('version')==3:
+                if note.get('reading_layout',{}).get('version') in (3,4):
                     from guide_layout import parse_claim_text
                     replacement[-1].update(parse_claim_text(block))
                 if fallback and cid not in locations:locations[cid]=deepcopy(fallback)

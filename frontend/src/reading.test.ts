@@ -7,6 +7,12 @@ import {renderToStaticMarkup} from 'react-dom/server';
 import Reading from './KnowledgeReader';
 import EntityMarkdown from './EntityMarkdown';
 describe('shared reading navigation',()=>{
+ it('hides internal inference labels only for v4 and keeps the factual condition',()=>{
+  const c={text:'用古币提升花木兰等级。',condition:'古币体系已启动',inference:true};
+  expect(claimMarkdown(c,4)).toBe('**古币体系已启动：** 用古币提升花木兰等级。');
+  expect(c.inference).toBe(true);
+  expect(claimMarkdown(c,3)).toContain('推测：');
+ });
  it('renders Chinese condition and card labels as emphasis, without literal stars',()=>{
   const html=renderToStaticMarkup(createElement(EntityMarkdown,{children:claimMarkdown({text:'补控制。',condition:'决赛需要降级时'})+'\n\n'+claimMarkdown({text:'- **唤醒：**补资源。'})}));
   expect(html).toContain('<strong>决赛需要降级时：</strong>');expect(html).toContain('<strong>唤醒：</strong>');expect(html).not.toContain('**');

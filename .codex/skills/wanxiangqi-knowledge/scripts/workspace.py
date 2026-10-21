@@ -208,18 +208,23 @@ def make_transaction(root, items, obsolete=None, ignore_issues=(), expected_mark
             'expected_markdown':expected,'before_sync_state':before_sync}
 
 
-def persist(root, items, obsolete=None, _sync=True, _ignore_issues=(), _expected_markdown=None):
+def persist(root, items, obsolete=None, _sync=True, _ignore_issues=(), _expected_markdown=None, _replay_updates=None):
     root = Path(root)
     if _sync:
         from markdown_sync import assert_clean
         assert_clean(root)
     transaction = make_transaction(root, items, obsolete, _ignore_issues, _expected_markdown)
+    if _replay_updates:transaction['replay_updates']=deepcopy(_replay_updates)
     wxq.atomic_json(root / 'knowledge/pending-save.json', transaction)
     apply_transaction(root, transaction)
 
 
 def apply_transaction(root, transaction):
     root = Path(root)
+    for path in transaction.get('replay_updates',{}):
+        target=(root/path).resolve()
+        if not target.is_relative_to((root/'knowledge/replays').resolve()) or target.suffix!='.json':
+            raise ValueError('非法重放路径')
     items = transaction['index']['notes']
     from markdown_sync import digest
     skip_files=set()
@@ -261,6 +266,7 @@ def apply_transaction(root, transaction):
             # Keep the complete original for recovery before removing the old filename.
             wxq.atomic_text(target.with_suffix(target.suffix + '.bak'), target.read_text(encoding='utf-8'))
             target.unlink()
+    for path,data in transaction.get('replay_updates',{}).items():wxq.atomic_json(root/path,data)
     (root / 'knowledge/pending-save.json').unlink(missing_ok=True)
     note_link_event(root)
 

@@ -10,6 +10,8 @@ powershell -NoProfile -File frontend/start.ps1
 
 开发：先运行 `..\.wxq-runtime\Scripts\python.exe server.py`，另开终端在此目录运行 `npm run dev`。生产使用同源页面，开发端口 5173 通过 Vite 代理 API。
 
+Vite 默认代理到 `http://127.0.0.1:8765`。若本机 `frontend/.env.development.local` 配置了 `WXQ_API_TARGET`，会覆盖默认地址，须与后端实际 `--port` 一致。出现 `ECONNREFUSED 127.0.0.1:8767` 时，检查是否遗留临时端口配置；使用默认后端时将其改为 `WXQ_API_TARGET=http://127.0.0.1:8765`。修改环境文件后 Vite 会自动重启并重新加载配置。
+
 笔记编辑会同步索引、中文 Markdown 和阵容 JSON。人工修订保留，技能导入冲突显示待核对。meta 缺失是待确认，禁用条件缺失不会被当作可玩。
 
 “爬取”支持B站多关键词搜索、日期（北京时间，含起止日）、播放量及秒数时长筛选。默认自动处理；切换预览模式后勾选结果再处理。搜索条件可保存，默认每个关键词扫描100条、每批处理50个新视频；搜索覆盖范围以B站实际返回与扫描上限为准。重复视频合并关键词与批次，投稿全部分P分别导出文字稿。

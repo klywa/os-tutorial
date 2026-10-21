@@ -9,15 +9,15 @@ EXTRA = ['主要变阵','关键操作顺序','终局技巧','战后复盘','操�
 STAGES = {'early':'前期英雄组成与运营','middle':'中期英雄组成与运营','late':'后期英雄组成与运营'}
 ALIASES = {'阵容信息':'打法评价','阵容概览与成员清单':'阵容组成与运营节奏','阵容组成':'阵容组成与运营节奏','运营路线与后期组合':'阵容组成与运营节奏','运营路线选择':'阵容组成与运营节奏','前中后期共通流程':'阵容组成与运营节奏','前期运营及应变':'阵容组成与运营节奏','中期运营及应变':'阵容组成与运营节奏','后期运营及应变':'阵容组成与运营节奏','成型后提升思路':'阵容组成与运营节奏','推荐天赋及原因':'推荐天赋','路线与装备取舍':'推荐装备','棋手决策选择':'棋手技能推荐','版本差异':'附录','尚待裁决':'附录','禁用阵营适用情况':'定阵条件','对局威胁与应对':'制敌手段','装备与站位':'推荐装备','三轮拍卖与天赋选择':'第一轮拍卖'}
 
-def enabled(note):return note.get('reading_layout',{}).get('version') in (2,3)
+def enabled(note):return note.get('reading_layout',{}).get('version') in (2,3,4)
 
 def claim_hash(claim):
     return hashlib.sha256(json.dumps({k:claim.get(k) for k in ('text','condition','inference')},sort_keys=True,ensure_ascii=False).encode()).hexdigest()
 
 def claim_text(claim,version=2):
-    prefix=('推测：' if claim.get('inference') else '')
+    prefix=('推测：' if claim.get('inference') and version!=4 else '')
     condition=claim.get('condition','')
-    if version==3:
+    if version in (3,4):
         text=re.sub(r'(\*\*[^*\n]+：\*\*)(?=\S)',r'\1 ',claim['text'])
         return prefix+('**'+condition.rstrip('。；：')+'：** ' if condition else '')+text
     return prefix+('适用前提：'+condition+'。\n\n' if condition and condition not in claim['text'] else '')+claim['text']
@@ -78,6 +78,9 @@ def coverage(note,bid):
     return result
 
 def blocks(note,bid):
+    if note.get('reading_layout',{}).get('version')==4:
+        from guide_v4 import blocks as v4_blocks
+        return v4_blocks(note,bid)
     selected=branches.project(note,bid);b=branches.branch(note,bid);meta=selected['meta'];names=note.get('entity_names',{})
     name=lambda x:names.get(x,x.removeprefix('pending:'))
     out=[];version=note.get('reading_layout',{}).get('version',2)
@@ -198,7 +201,10 @@ def parse(text,note,bid):
     member_updates={}
     for i,body in updated.items():
         block=source[i]
-        if block['kind']=='claim':claim_text[block['claim']]=body;changed_sections.add(next(c['section'] for c in note['claims'] if c['id']==block['claim']))
+        if block['kind']=='claim':
+            original=next(c for c in note['claims'] if c['id']==block['claim'])
+            if note.get('reading_layout',{}).get('version')==4 and original.get('inference'):body='推测：'+body
+            claim_text[block['claim']]=body;changed_sections.add(original['section'])
         elif block['kind']=='meta':pass
         elif block['kind']=='member':member_updates[(block['stage'],block['index'])]=body
         elif block['kind']=='tactical':

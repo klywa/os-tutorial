@@ -1,5 +1,13 @@
 # 知识及实体数据契约
 
+## 阅读布局v4
+
+核心原理沿用普通结论及章节位置机制，作为正文首章、单段且不超过500字；不新增专用API字段。五类卡牌／技能说明逐段自包含，英雄和效果牌购买、继续与停止条件先于上场／使用。通用生成逻辑不绑定具体阵容名称，详见教学表达v4；只在新建或明确整体刷新时应用，既有笔记不自动补造内容。
+
+完成新规范整理后设置`reading_layout.requires_principle=true`，保证各棋手分支核心原理恰好一段，不能删除后绕过校验；未整理旧笔记保持兼容。只有显式审核阶段摘要完整承接路线及组合条件后，才将对应分支的摘要ID登记到`compact_operation_refs`，渲染时须全部在该分支可见才隐藏旧展开块；无登记保留旧内容。带重放更新的保存使用`workspace.persist(..., _replay_updates=...)`，重放与正文共用pending-save恢复事务。
+
+schema5保持不变，目标笔记可设置`reading_layout.version=4`，表达见[教学表达v4](teaching-v4.md)。保留既有API结构，新章节为英雄、关键装备、拍卖，旧章节通过别名定位。可选`reading_layout.supporting_claim_refs`为旧结论ID到阅读摘要结论ID列表的映射，单个ID也兼容；两者都保留原归属和证据，只有当前分支可见摘要时才省略依据原文。新摘要内部保存真实证据与推导依赖，不把改写文本冒充直接引文；人工编辑与历史保护不变。旧v2/v3继续读取，未升级笔记不改变。
+
 ## 当前扩展：schema5
 
 阵容—棋手阅读采用语义布局版本2（完整目录见[player-branches.md](player-branches.md)）。顶层`reading_layout.version=2`及`claim_locations`明确结论位置；`coverage`按分支保存教学字段状态及审核引用。阅读API保留`sections/section_aliases`，增加`opening/layout_version/coverage`；网页、Markdown、概览及导出使用相同棋手投影。`explicit_relationships`启用明确关系，`guide_related`保存目标note/player、关系及href，不按实体交集推导相关性。旧版布局继续兼容。

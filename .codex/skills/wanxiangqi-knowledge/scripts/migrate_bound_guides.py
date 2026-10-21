@@ -144,7 +144,7 @@ def migrate(items,entities):
     from migrate_guide_reading import populate_coverage
     items=deepcopy(items);audit={}
     for note in items:
-        if note['id'] not in TARGETS or note.get('reading_layout',{}).get('version')==3:continue
+        if note['id'] not in TARGETS or note.get('reading_layout',{}).get('version') in (3,4):continue
         before=deepcopy(note);retired=[]
         note['reading_layout']['version']=3
         clean_context(note)
