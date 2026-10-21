@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-21",
+  "purpose": "关键操作章节与八分支补充",
+  "notes": [
+    "document-lineup-16",
+    "heluo-huamulan",
+    "sanfen-reversal",
+    "zhaojun-high-tier-dahe"
+  ],
+  "changes": {
+    "modified": [
+      "xx-principle",
+      "xx-early",
+      "sf-principle",
+      "sf-chain",
+      "ls-principle",
+      "ls-early",
+      "luna-slot",
+      "sf-hero-1281"
+    ],
+    "added": [
+      "op-xx-level-threshold",
+      "op-xx-survival-check",
+      "op-sf-loop",
+      "sf-effect-7505",
+      "op-sf-final-levels",
+      "sf-final-concentration",
+      "op-ls-freeze-route",
+      "op-flower-effect-order"
+    ]
+  },
+  "validation": {
+    "sha256": "64af958c7f4c7506b1de49b0de69b037ef3e3365e668801c19a8fa0b1d798cf7",
+    "checks": [
+      "commit-three-evidence-backed-lineups",
+      "roundtrip",
+      "repeat-persist",
+      "recovery",
+      "evidence",
+      "scope"
+    ]
+  },
+  "user_decisions": [
+    "关键操作顺序合并并前移为关键操作，位于站位之前",
+    "三分沿用白歌分支；两套运营节奏并列"
+  ],
+  "independent_review": "raw/reports/key-operations/final-review.md",
+  "resolved_draft_issue": "孙悟空、阿轲为无阵营，不能换帅；换帅改为吕布与其他三分英雄交换，悟空阿轲用传承/遗志。",
+  "opening_evidence": [
+    {
+      "source": "BV1MqhE6UEe2:p1",
+      "start": 71.72,
+      "end": 95.02
+    },
+    {
+      "source": "BV1jBJR6eE5f:p1",
+      "start": 0,
+      "end": 27.81
+    }
+  ],
+  "entity_sync": {
+    "reused": 949,
+    "downloaded": 0
+  },
+  "scope": "保持来源、版本、人工与历史；仅四篇阵容及必要衍生摘要。没有重新采集。",
+  "supplement": {
+    "claim": "sf-hero-1281",
+    "before": "**曹操：** 循环的补牌发动机。整备时随机触发一名三分英雄的登场效果，让甄姬提供英雄牌，或让周瑜、阿轲增加等级；露娜登场可再次触发他的整备。觉醒：普通卡即可启动，觉醒后触发对象增加为2名；早期先补组件，循环运转后再补觉醒。等级投入：无需专门培养。购买：自然商店出现就先拿，棋手4级再集中找其他组件，后续重复牌用于觉醒和合成。循环阶段持续留场。",
+    "after": "**曹操：** 循环的补牌发动机。整备时随机触发一名三分英雄的登场效果，让甄姬提供英雄牌，或让周瑜增加等级；露娜登场可再次触发他的整备。觉醒：普通卡即可启动，觉醒后触发对象增加为2名；早期先补组件，循环运转后再补觉醒。等级投入：无需专门培养。购买：自然商店出现就先拿，棋手4级再集中找其他组件，后续重复牌用于觉醒和合成。循环阶段持续留场。",
+    "non_target_notes": 44,
+    "replay_updates": 4,
+    "checks": [
+      "prior-draft-equality",
+      "only-one-note-changed",
+      "roundtrip",
+      "persist-readback"
+    ],
+    "sha256": "b86610e0b55259a42dfe353614d67e480993cb2fbc9437e83f5a83b03f8095b1"
+  }
+}

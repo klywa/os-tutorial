@@ -648,7 +648,7 @@
     {
       "id": "ls-principle",
       "section": "核心原理",
-      "text": "这套阵容由敖隐持续普攻输出，东皇太一承伤、压制敌人并保护图腾，为敖隐争取输出时间。鬼谷子、少司缘和大司命召唤图腾；东皇太一根据图腾等级取得临时等级，敖隐则在图腾存活期间不断提高攻速和临时等级，战斗拖得越久，敖隐越强。昭君用冻结把过渡英雄变成高品阶核心，并通过回合成长强化提高全队等级。图腾提供的成长、回复和召唤物，使队伍能够持续作战，放大敖隐的后续伤害。",
+      "text": "这是一套以敖隐和东皇太一两名5阶英雄为核心的高阶阵容。昭君每回合冻结材料，使其解冻后变为高一阶英雄并继承等级；霜寒进化能用大河材料寻找5阶大河核心，冰封结晶则补兑换券，配合商店加快取得敖隐、东皇太一，缩短高阶阵容的成型过程。成型后敖隐持续普攻输出，东皇太一承伤、压制敌人并保护图腾；鬼谷子、少司缘、大司命提供的图腾让东皇太一取得临时等级，让敖隐在图腾存活期间持续提高攻速和临时等级。冻结找核心与回合成长帮助队伍尽早形成战力，图腾、回复和保护则把战斗拖长，放大敖隐的后续伤害。",
       "version": null,
       "condition": "",
       "inference": true,
@@ -1481,7 +1481,7 @@
     {
       "id": "ls-early",
       "section": "前期运营及应变",
-      "text": "前1—3回合用牛魔承伤、干将莫邪输出，再留一个冻结材料位；弈星顺路帮助升级，孙尚香提供刷新，苏烈积累的永久等级可由冻结后的英雄继承。棋手3级后按战力补鬼谷子、虞姬，缺输出时继续保留虞姬，缺团队成长时补张良；第一轮拍卖可补少司缘。当前战力足够时加快升级，持续掉血时先买能改善下一场的英雄。",
+      "text": "第一回合就开始冻结前排材料，前1—3回合继续利用冻结升品阶，不漏掉找高阶核心的进度。对手压力低时，可用弈星加一个冻结前排精简开局，尽量升级、少花资源刷新；需要保血时，改用牛魔、干将莫邪加冻结位，战力仍不足且资源允许时再补弈星等成员，不固定把所有过渡英雄同时上场。孙尚香可提供刷新并作冻结材料，苏烈已有永久等级可由解冻英雄继承。棋手3级后补鬼谷子、虞姬，虞姬承担敖隐到手前的输出，压力较大时补张良；第一轮拍卖补图腾组件。",
       "version": null,
       "condition": "",
       "inference": true,
@@ -1517,6 +1517,16 @@
           "source": "BV1jBJR6eE5f:p1",
           "start": 0,
           "end": 87.37
+        },
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 71.72,
+          "end": 95.02
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 0,
+          "end": 27.81
         }
       ],
       "derived_from": [
@@ -3466,6 +3476,104 @@
       ],
       "review_basis": {
         "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+      }
+    },
+    {
+      "id": "op-ls-freeze-route",
+      "section": "关键操作",
+      "text": "**开局及核心未齐时：** 第一回合先选冻结材料，随后逐回合继续解冻、换材料。选霜寒进化后，用四品阶大河材料找敖隐、东皇太一，也可把非关键三品阶大河逐步升上去；仍靠虞姬输出时不要冻结她。选冰封结晶后，结合冻结取得的兑换券和棋手5级商店找两名核心。冻结出的牌已是所需体系成员就保留，换其他材料继续冻；刘邦未被冻结时会开团摧毁图腾，已有敖隐时不要让他参与战斗。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 753.5,
+          "end": 894.7
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 85.1,
+          "end": 174.8
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 1543.6,
+          "end": 1933.4,
+          "frame": "frames/1840-0.jpg"
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 951,
+          "end": 1097.8
+        },
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 71.72,
+          "end": 103.5
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 0,
+          "end": 87.37
+        },
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 71.72,
+          "end": 95.02
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 0,
+          "end": 27.81
+        },
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 103.69,
+          "end": 192.46
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 87.64,
+          "end": 257.28
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 517,
+          "end": 544.94
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 87.64,
+          "end": 200.17
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 87.64,
+          "end": 170.45
+        },
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 103.69,
+          "end": 162.95
+        },
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 103.69,
+          "end": 137.93
+        }
+      ],
+      "derivation": {
+        "claim_refs": [
+          "ls-early",
+          "ls-middle",
+          "ls-skill-93412",
+          "ls-skill-93415",
+          "ls-hero-1491"
+        ],
+        "card_snapshots": [],
+        "reason": "依据原教学与本地卡面组织可执行操作，非新增视频引文"
       }
     }
   ],
@@ -18730,6 +18838,707 @@
           }
         }
       }
+    },
+    {
+      "at": "2026-10-21",
+      "origin": "knowledge_revision",
+      "reason": "按已批准关键操作方案补充步骤、循环和早期运营；底层来源章节不改",
+      "previous": {
+        "claims": [
+          {
+            "id": "ls-principle",
+            "section": "核心原理",
+            "text": "这套阵容由敖隐持续普攻输出，东皇太一承伤、压制敌人并保护图腾，为敖隐争取输出时间。鬼谷子、少司缘和大司命召唤图腾；东皇太一根据图腾等级取得临时等级，敖隐则在图腾存活期间不断提高攻速和临时等级，战斗拖得越久，敖隐越强。昭君用冻结把过渡英雄变成高品阶核心，并通过回合成长强化提高全队等级。图腾提供的成长、回复和召唤物，使队伍能够持续作战，放大敖隐的后续伤害。",
+            "condition": "",
+            "version": null,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 0,
+                "end": 145,
+                "frame": "frames/90-0.jpg"
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 895,
+                "end": 1040,
+                "frame": "frames/1039-0.jpg"
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 753.5,
+                "end": 894.7
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 85.1,
+                "end": 174.8
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 1543.6,
+                "end": 1933.4,
+                "frame": "frames/1840-0.jpg"
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 951,
+                "end": 1097.8
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 951,
+                "end": 1038.7
+              },
+              {
+                "source": "BV1MqhE6UEe2:p1",
+                "start": 0,
+                "end": 29
+              },
+              {
+                "source": "BV1MqhE6UEe2:p1",
+                "start": 58.48,
+                "end": 71.36
+              },
+              {
+                "source": "BV1MqhE6UEe2:p1",
+                "start": 163.28,
+                "end": 192.46
+              }
+            ]
+          },
+          {
+            "id": "ls-early",
+            "section": "前期运营及应变",
+            "text": "前1—3回合用牛魔承伤、干将莫邪输出，再留一个冻结材料位；弈星顺路帮助升级，孙尚香提供刷新，苏烈积累的永久等级可由冻结后的英雄继承。棋手3级后按战力补鬼谷子、虞姬，缺输出时继续保留虞姬，缺团队成长时补张良；第一轮拍卖可补少司缘。当前战力足够时加快升级，持续掉血时先买能改善下一场的英雄。",
+            "condition": "",
+            "version": null,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 753.5,
+                "end": 894.7
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 85.1,
+                "end": 174.8
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 1543.6,
+                "end": 1933.4,
+                "frame": "frames/1840-0.jpg"
+              },
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 951,
+                "end": 1097.8
+              },
+              {
+                "source": "BV1MqhE6UEe2:p1",
+                "start": 71.72,
+                "end": 103.5
+              },
+              {
+                "source": "BV1jBJR6eE5f:p1",
+                "start": 0,
+                "end": 87.37
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "required_factions": [
+            "faction:dahe"
+          ],
+          "players": [
+            "player:34"
+          ],
+          "core_heroes": [
+            "card:1871",
+            "card:5191"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "开局顺路加入；开始补鬼谷子、虞姬或核心到手、人口紧张时换下，已有等级先按冻结继承或转移方式处理。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "optional",
+                "role": "前期补刷新，按合成或冻结用途购买。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1941",
+                "necessity": "optional",
+                "role": "缺孙尚香等过渡英雄时顺路补入；核心到手后处理已有等级再换下。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "开局缺前排时补一张，与输出及冻结材料搭配；核心和图腾到齐后处理等级再换下。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "开局缺即时伤害时补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1871",
+                "necessity": "required",
+                "role": "先补首张，再补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5191",
+                "necessity": "required",
+                "role": "取得敖隐，且图腾、等级和装备足以接替当前输出时，再转移可用等级、装备并替换虞姬；继续补觉醒；站位避开钟馗钩取，并保护图腾。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "先补首张与图腾，需要时继续补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "required",
+                "role": "有图腾成长和回复需求时补首张，核心齐备后补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "required",
+                "role": "敖隐、东皇太一到位后补齐图腾组件。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1561",
+                "necessity": "optional",
+                "role": "缺团队成长或控制时补首张，继续使用再补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1741",
+                "necessity": "optional",
+                "role": "棋手3级起按战力需要补入，搭配鬼谷子等图腾英雄；敖隐到手后可直接接替主要输出。已有合适等级、装备的司空震也可用于后续替换。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1871",
+                "necessity": "required",
+                "role": "先补首张，再补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5191",
+                "necessity": "required",
+                "role": "取得敖隐，且图腾、等级和装备足以接替当前输出时，再转移可用等级、装备并替换虞姬；继续补觉醒；站位避开钟馗钩取，并保护图腾。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "先补首张与图腾，需要时继续补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "required",
+                "role": "有图腾成长和回复需求时补首张，核心齐备后补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "required",
+                "role": "敖隐、东皇太一到位后补齐图腾组件。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5371",
+                "necessity": "optional",
+                "role": "已有等级或金色圣剑等配套时保留；从零补位、缺装备时，优先比较杨玉环治疗、吕布控制或姜子牙范围伤害。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5211",
+                "necessity": "optional",
+                "role": "需要针对高等级英雄的牺牲控制时补首张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "核心需要再战机会时补入；可先转移张良的永久等级，再换太乙真人，并核对复生给到的最近目标。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "optional",
+                "role": "核心齐备、有额外位置且需要回复时加入，可替代海月的条件位置。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1231",
+                "necessity": "optional",
+                "role": "先保证敖隐、东皇太一和图腾，再补吕布解决控制需求。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1481",
+                "necessity": "optional",
+                "role": "有额外人口、核心和保护已经到位后补入。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          },
+          "ban_conditions": [
+            {
+              "faction": "faction:heluo",
+              "status": "playable",
+              "reason": "司空震为可选补输出，河洛被禁时不能获取司空震；按原攻略可用无阵营海月替代，不依赖司空震的针对手段仍需结合对手判断。"
+            },
+            {
+              "faction": "faction:dahe",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：东皇太一（控制与承伤）、敖隐（持续输出）、鬼谷子（图腾）、少司缘（图腾）、大司命（图腾）。",
+              "derived_dependency": true,
+              "explicit_required": false,
+              "explicit_condition": null
+            }
+          ],
+          "matchups": [
+            {
+              "target": "card:5071",
+              "condition": "敖隐与前排、回复图腾、复生配套成型。",
+              "text": "利用回复与吸血应对反甲，保护敖隐不被勾走，按增益条件与范围伤害调整图腾。"
+            }
+          ],
+          "major_variants": [],
+          "common_claim_refs": [],
+          "player_branches": [
+            {
+              "id": "zhaojun",
+              "player": "player:34",
+              "name": "昭君",
+              "claim_refs": [
+                "claim-4c5fb188552a343f023e",
+                "claim-1f3bb9e4f6b4bdbb5d52",
+                "claim-6e5677597b91d6042038",
+                "claim-01efb21eac616296f20c",
+                "claim-163e42c476a496c5bbe8",
+                "claim-bf3ad0a0c80d84f2d6d4",
+                "claim-4bfc796afce05484f9b4",
+                "claim-4ac9d8be77d0ba110133",
+                "claim-1b44c1f7c9fc4ee0f126",
+                "claim-c631b4e7b118dfd5b802",
+                "claim-0d7d5f63e90253f255b0",
+                "claim-26b1737815308a1c1579",
+                "claim-10c4269679c4cb14e425",
+                "claim-0a30e80f1d802b846e26",
+                "claim-29c3973e29784ed330cf",
+                "claim-22b460bd4a7bae574bc0",
+                "claim-b82928f477526044c068",
+                "position-divine-cover",
+                "counter-lixin-sustain",
+                "guide-effect-transfer",
+                "guide-skills-freezing",
+                "guide-counter-totem",
+                "guide-effect-transfer-card-2",
+                "guide-effect-transfer-card-3",
+                "hero-quality-zhaojun",
+                "tier-guide-zhaojun-early",
+                "tier-guide-zhaojun-middle",
+                "tier-guide-zhaojun-late",
+                "ls-principle",
+                "ls-liubang",
+                "ls-hero-1971",
+                "ls-hero-1111",
+                "ls-hero-1941",
+                "ls-hero-1871",
+                "ls-hero-5191",
+                "ls-hero-1891",
+                "ls-hero-5771",
+                "ls-hero-5171",
+                "ls-hero-1561",
+                "ls-hero-1741",
+                "ls-hero-5371",
+                "ls-hero-5211",
+                "ls-hero-1861",
+                "ls-hero-1491",
+                "ls-early",
+                "ls-middle",
+                "ls-late",
+                "ls-improve",
+                "ls-hero-1681",
+                "ls-hero-1821",
+                "ls-hero-1761",
+                "ls-hero-1231",
+                "ls-hero-1481",
+                "ls-totem-sacrifice",
+                "ls-position-vs-assassin",
+                "ls-protect-totems",
+                "ls-upgrade-conditions",
+                "ls-skills",
+                "ls-skill-93412",
+                "ls-skill-93415",
+                "ls-skill-93416",
+                "ls-skill-93417",
+                "ls-skill-93418",
+                "ls-versions",
+                "ls-growth-version",
+                "ls-aoyin-control",
+                "ls-freeze-finish",
+                "ls-sikong-conditional",
+                "ls-auction1",
+                "ls-auction2",
+                "ls-auction3",
+                "ls-equip-643205",
+                "ls-equip-643208",
+                "ls-equip-643803",
+                "ls-equip-643703",
+                "ls-equip-643502",
+                "ls-equip-643501",
+                "ls-equip-643207",
+                "ls-equip-643401",
+                "ls-equip-644105",
+                "ls-equip-641015",
+                "ls-equip-643604",
+                "ls-equip-643801",
+                "ls-equip-644119",
+                "ls-equip-643304",
+                "ls-talents",
+                "ls-talent-663403",
+                "ls-talent-663402",
+                "ls-talent-636516",
+                "ls-talent-636504",
+                "ls-talent-636513",
+                "ls-talent-636512",
+                "ls-talent-681010",
+                "ls-talent-634019",
+                "ls-talent-681011",
+                "ls-talent-634030",
+                "ls-talent-636507",
+                "ls-talent-636509",
+                "ls-talent-636511",
+                "ls-effect-7083",
+                "ls-effect-7041",
+                "ls-effect-10404",
+                "ls-effect-7102",
+                "ls-effect-7107",
+                "ls-effect-7120",
+                "ls-effect-7116",
+                "ls-freeze-stop",
+                "ls-diagnose"
+              ],
+              "condition_refs": [
+                "claim-4c5fb188552a343f023e",
+                "claim-1f3bb9e4f6b4bdbb5d52"
+              ],
+              "operation_route_ids": [],
+              "late_variant_ids": [],
+              "major_variant_ids": [],
+              "overrides": {
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "default",
+                      "name": "默认阵容",
+                      "variant_id": "",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:634019",
+                        "card:634030",
+                        "card:636504",
+                        "card:636507",
+                        "card:636509",
+                        "card:636511",
+                        "card:636516",
+                        "card:663402",
+                        "card:663403",
+                        "card:681010",
+                        "card:681011"
+                      ],
+                      "effect_cards": [
+                        "card:10404",
+                        "card:7041",
+                        "card:7083"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:34",
+                          "skills": [
+                            "card:93412",
+                            "card:93415",
+                            "card:93416"
+                          ],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "控制与回复为高阶英雄争取输出时间，多人口可提高合成品阶。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "怕图腾被范围伤害清掉；等级转移、冻结和站位需要配合。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要东皇太一、敖隐和图腾；缺核心时先保留元流之子、虞姬等过渡成员。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需兼顾成长工具、棋手升级预算、站位与针对换装，操作时间不足时先保证关键步骤。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "ceiling",
+                  "text": "等级成长与成型装备可提高后期战力，上限受对手控制、爆发和组件完整度影响。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "floor",
+                  "text": "核心未到或成长未启动时，依靠过渡英雄保血。",
+                  "claim_refs": [
+                    "claim-4c5fb188552a343f023e",
+                    "claim-1f3bb9e4f6b4bdbb5d52",
+                    "claim-6e5677597b91d6042038",
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8",
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "claim-4ac9d8be77d0ba110133",
+                    "claim-1b44c1f7c9fc4ee0f126",
+                    "claim-c631b4e7b118dfd5b802",
+                    "claim-0d7d5f63e90253f255b0",
+                    "claim-26b1737815308a1c1579",
+                    "claim-10c4269679c4cb14e425",
+                    "claim-0a30e80f1d802b846e26",
+                    "claim-29c3973e29784ed330cf",
+                    "claim-22b460bd4a7bae574bc0",
+                    "claim-b82928f477526044c068",
+                    "position-divine-cover",
+                    "counter-lixin-sustain"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
+                "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
+                "signals": {
+                  "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
+                  "同行与对手": "同行持有核心较多时，保留现有战力继续找牌；敌方控制、爆发或范围伤害较强时，提前准备保护敖隐与图腾。",
+                  "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再棋手升级。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "冻结为后续核心积累等级，当前战斗依靠前排和过渡输出；掉血较快时先补战力，再投入升级。",
+                    "claim_refs": [
+                      "ls-early"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "东皇太一、敖隐和图腾到齐后，控制、回复及持续成长逐渐衔接；缺核心或回合成长强化时仍有空窗。",
+                    "claim_refs": [
+                      "ls-middle"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "核心和图腾齐备后，持续成长增强敖隐与东皇太一；保护图腾存活、避免敖隐被勾走，才能保持输出。",
+                    "claim_refs": [
+                      "ls-late"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            }
+          ],
+          "assessment": [],
+          "operation_routes": [],
+          "late_variants": []
+        }
+      }
     }
   ],
   "path": "knowledge/lineups/大河龙蛇.md",
@@ -18752,35 +19561,35 @@
         {
           "hero": "card:1971",
           "necessity": "optional",
-          "role": "开局顺路加入；开始补鬼谷子、虞姬或核心到手、人口紧张时换下，已有等级先按冻结继承或转移方式处理。",
+          "role": "低压力精简开局可先用弈星；保血阵容仍需补强、且资源允许时再加。",
           "replaces": "",
           "replacement_note": ""
         },
         {
           "hero": "card:1111",
           "necessity": "optional",
-          "role": "前期补刷新，按合成或冻结用途购买。",
+          "role": "可提供刷新并作首轮冻结材料，顺路购买。",
           "replaces": "",
           "replacement_note": ""
         },
         {
           "hero": "card:1941",
           "necessity": "optional",
-          "role": "缺孙尚香等过渡英雄时顺路补入；核心到手后处理已有等级再换下。",
+          "role": "可作冻结前排材料，已有永久等级由解冻英雄继承。",
           "replaces": "",
           "replacement_note": ""
         },
         {
           "hero": "card:1681",
           "necessity": "optional",
-          "role": "开局缺前排时补一张，与输出及冻结材料搭配；核心和图腾到齐后处理等级再换下。",
+          "role": "需要保血时，与干将莫邪、冻结位一起补入。",
           "replaces": "",
           "replacement_note": ""
         },
         {
           "hero": "card:1821",
           "necessity": "optional",
-          "role": "开局缺即时伤害时补一张。",
+          "role": "冻结材料外仍缺即时伤害时补入，与牛魔配合保血。",
           "replaces": "",
           "replacement_note": ""
         }
@@ -19053,7 +19862,8 @@
           "ls-effect-7120",
           "ls-effect-7116",
           "ls-freeze-stop",
-          "ls-diagnose"
+          "ls-diagnose",
+          "op-ls-freeze-route"
         ],
         "condition_refs": [
           "claim-4c5fb188552a343f023e",
@@ -19298,7 +20108,7 @@
           },
           "stage_strength": {
             "early": {
-              "text": "冻结为后续核心积累等级，当前战斗依靠前排和过渡输出；掉血较快时先补战力，再投入升级。",
+              "text": "从第一回合冻结材料，逐步取得高阶牌；低压力时精简英雄加快升级，压力较大时用牛魔、干将和冻结位保血，再按需要补人。",
               "claim_refs": [
                 "ls-early"
               ],
@@ -19369,7 +20179,7 @@
   },
   "manual_sections": [],
   "conflicts": [],
-  "revision": "f1fcf0a99d7d837c8340",
+  "revision": "f3a50261006ba3451e86",
   "reading_layout": {
     "version": 4,
     "requires_principle": true,

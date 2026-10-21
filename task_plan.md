@@ -97,3 +97,8 @@
 - skill统一与独立试写：complete
 - 八分支逐段改写与同源同步：complete
 - 语义核查、回归与网页验收：complete
+
+# 关键操作与八分支补充（2026-10-21）
+- v4规范、投影与兼容：complete
+- 来源核对与八分支补充：complete
+- 同源保存、回归与网页：complete

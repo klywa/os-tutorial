@@ -240,7 +240,7 @@
     {
       "id": "xx-principle",
       "section": "核心原理",
-      "text": "这套阵容依靠棋手香香的武器造成大量伤害，公孙离补充远程物理输出并收割残血。张良、虞姬和云中君通过开团效果提高全队等级：1—3阶英雄达到10级后会增加香香的基础攻击力，棋手6级的火力全开又根据全队等级总和提高她的攻击力，因此培养全队也在增强香香的武器。鬼谷子等英雄提供图腾和承伤，让香香有时间打完武器；公孙离通过夺取取得过渡英雄的等级，并根据己方觉醒英雄数提高攻速。前期争取胜利、推进武器改造，随后用低阶组件的持续成长同时提高香香和公孙离的伤害。",
+      "text": "香香会在战斗中使用武器直接攻击敌人，是这套阵容的主要伤害来源；公孙离负责场上的远程物理输出与收割。运营同时推进队伍成型和香香的武器伤害：张良、虞姬、云中君给队伍加级，让尽可能多的1—3阶英雄达到10级，每名达标英雄都能提高香香基础攻击力；前期用即时战力争取连胜，并让更多己方棋子存活，对敌方棋手造成更多伤害，尽早解锁加攻击和改装模块的武器强化，再用增强的武器继续赢下战斗。棋手6级解锁火力全开后，全队等级总和还会进一步提高香香攻击力。因此既要培养公孙离和成长英雄，也要维持低阶英雄的等级门槛、武器进度和足够承伤，让香香把伤害打完。",
       "version": null,
       "condition": "",
       "inference": true,
@@ -907,7 +907,7 @@
     {
       "id": "xx-early",
       "section": "前期运营及应变",
-      "text": "前1—3回合先争取胜利并保留更多存活英雄，尽快取得武器改造。前排用牛魔、狂铁，或能触发牺牲的苏烈；后排用干将莫邪，李元芳暂穿公孙离的装备。免费刷新先找能改善当前战斗的英雄，其余成员足以取胜时再带弈星帮助升级。第一次拍卖后向棋手3级推进，花金币刷新商店找英雄（D牌），补张良、鬼谷子、虞姬和公孙离；先让公孙离夺取准备替换的过渡英雄等级，再卖出该英雄。",
+      "text": "前1—3回合尽量保连胜，并争取满入对手：不仅要赢，还要让更多己方棋子存活，增加对敌方棋手造成的伤害，更早取得武器改造、继续扩大优势。先用牛魔、狂铁或能触发牺牲的苏烈承伤，干将莫邪补即时伤害，李元芳暂穿公孙离的装备；先补会改变当前胜负的英雄，其余成员已能取胜时再带弈星帮助升级。第一次拍卖后向棋手3级推进，集中找张良、鬼谷子、虞姬和公孙离；逐个替换较弱过渡成员，先让公孙离夺取准备换下英雄的等级，再转移装备、卖出该英雄。",
       "version": null,
       "condition": "",
       "inference": true,
@@ -2147,6 +2147,147 @@
       "derived_from": [
         "xx-gaps"
       ]
+    },
+    {
+      "id": "op-xx-level-threshold",
+      "section": "关键操作",
+      "text": "**低阶英雄还未到10级时：** 先检查每名1—3阶英雄的等级，把跳级、协作等指定成长用于缺口，让更多英雄达到香香的基础攻击门槛。打出公孙离前，单独把她放在准备替换的李元芳、苏烈旁，先夺取等级，再转移装备和卖出目标；避开仍需保持10级的队友，以及正在保护公孙离的高等级瑶。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 87,
+          "end": 223
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 404,
+          "end": 514
+        },
+        {
+          "source": "BV1cUeH6SEAZ:p1",
+          "start": 0,
+          "end": 142
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 0,
+          "end": 343
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1830,
+          "end": 2036
+        },
+        {
+          "source": "BV1cUeH6SEAZ:p1",
+          "start": 27,
+          "end": 57
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 439,
+          "end": 529
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 854,
+          "end": 885
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1962,
+          "end": 2007
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 3298,
+          "end": 3338
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1641,
+          "end": 1670
+        }
+      ],
+      "derivation": {
+        "claim_refs": [
+          "xx-principle",
+          "xx-early",
+          "xx-hero-1991",
+          "xx-effect-7541"
+        ],
+        "card_snapshots": [],
+        "reason": "依据原教学与本地卡面组织可执行操作，非新增视频引文"
+      }
+    },
+    {
+      "id": "op-xx-survival-check",
+      "section": "关键操作",
+      "text": "**换人、换装后开战前：** 检查公孙离是否拿回输出装备，瑶是否保护公孙离、要分享的装备是否位于首件普通装备，太乙真人是否把复生给到预定目标。再按对手调整前排和图腾；香香的武器还需要时间输出，缺承伤时先补保护，不为了多放一个成长英雄撤掉必要前排。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 2108,
+          "end": 2204
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 694,
+          "end": 755
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 122,
+          "end": 185
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1858,
+          "end": 1917
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1962,
+          "end": 2036
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 281,
+          "end": 386
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 821,
+          "end": 960
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 3129,
+          "end": 3153
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 31,
+          "end": 90
+        }
+      ],
+      "derivation": {
+        "claim_refs": [
+          "xx-position",
+          "xx-hero-1731",
+          "xx-review"
+        ],
+        "card_snapshots": [],
+        "reason": "依据原教学与本地卡面组织可执行操作，非新增视频引文"
+      }
     }
   ],
   "related": [
@@ -2464,7 +2605,9 @@
           "xx-talent-limit",
           "xx-talent-convert",
           "xx-talent-company",
-          "xx-version-upgrades"
+          "xx-version-upgrades",
+          "op-xx-level-threshold",
+          "op-xx-survival-check"
         ],
         "condition_refs": [],
         "operation_route_ids": [],
@@ -2497,7 +2640,7 @@
           ],
           "stage_strength": {
             "early": {
-              "text": "先靠干将等即时战力取得武器；强前排和足够存活人数有利起势，武器被延迟时容易失去滚雪球节奏。",
+              "text": "用即时战力争取连胜并保留更多存活棋子，提高对敌棋手伤害，尽快取得武器改造后继续扩大优势。",
               "claim_refs": [
                 "xx-early",
                 "xx-selection"
@@ -5529,8 +5672,435 @@
           "purchase_lists_first": true
         }
       }
+    },
+    {
+      "at": "2026-10-21",
+      "origin": "knowledge_revision",
+      "reason": "按已批准关键操作方案补充步骤、循环和早期运营；底层来源章节不改",
+      "previous": {
+        "claims": [
+          {
+            "id": "xx-principle",
+            "section": "核心原理",
+            "text": "这套阵容依靠棋手香香的武器造成大量伤害，公孙离补充远程物理输出并收割残血。张良、虞姬和云中君通过开团效果提高全队等级：1—3阶英雄达到10级后会增加香香的基础攻击力，棋手6级的火力全开又根据全队等级总和提高她的攻击力，因此培养全队也在增强香香的武器。鬼谷子等英雄提供图腾和承伤，让香香有时间打完武器；公孙离通过夺取取得过渡英雄的等级，并根据己方觉醒英雄数提高攻速。前期争取胜利、推进武器改造，随后用低阶组件的持续成长同时提高香香和公孙离的伤害。",
+            "condition": "",
+            "version": null,
+            "evidence": [
+              {
+                "source": "BV1gBYh6WEPE:p1",
+                "start": 87,
+                "end": 223
+              },
+              {
+                "source": "BV1gBYh6WEPE:p1",
+                "start": 404,
+                "end": 514
+              },
+              {
+                "source": "BV1cUeH6SEAZ:p1",
+                "start": 0,
+                "end": 142
+              }
+            ]
+          },
+          {
+            "id": "xx-early",
+            "section": "前期运营及应变",
+            "text": "前1—3回合先争取胜利并保留更多存活英雄，尽快取得武器改造。前排用牛魔、狂铁，或能触发牺牲的苏烈；后排用干将莫邪，李元芳暂穿公孙离的装备。免费刷新先找能改善当前战斗的英雄，其余成员足以取胜时再带弈星帮助升级。第一次拍卖后向棋手3级推进，花金币刷新商店找英雄（D牌），补张良、鬼谷子、虞姬和公孙离；先让公孙离夺取准备替换的过渡英雄等级，再卖出该英雄。",
+            "condition": "",
+            "version": null,
+            "evidence": [
+              {
+                "source": "BV1Fghz6ZEiN:p1",
+                "start": 0,
+                "end": 343
+              },
+              {
+                "source": "BV1gBYh6WEPE:p1",
+                "start": 1830,
+                "end": 2036
+              },
+              {
+                "source": "BV1cUeH6SEAZ:p1",
+                "start": 27,
+                "end": 57
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "required_factions": [
+            "faction:dahe"
+          ],
+          "players": [
+            "player:50"
+          ],
+          "core_heroes": [
+            "card:1991"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "开局缺承伤时补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5031",
+                "necessity": "optional",
+                "role": "开局缺前排与核心成长时顺路补首张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "开局缺伤害时补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1731",
+                "necessity": "optional",
+                "role": "开局缺输出或河洛成长时顺路补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1941",
+                "necessity": "optional",
+                "role": "缺过渡前排或冻结材料时顺路拿牌。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "其他英雄已经能赢下战斗时加入，借经验加快升级；需要即时伤害保胜时换干将莫邪等输出，避免延迟武器改造。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": "有足够等级可夺取时继续买牌；前期先补一张，再补张良等成长组件。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1741",
+                "necessity": "required",
+                "role": "有鬼谷子等图腾英雄后补入；缺图腾时先找图腾组件。终局需要更强控制或复生时，可转移已有等级后替换。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1561",
+                "necessity": "required",
+                "role": "尽早补首张和觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "尽早补首张和觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "optional",
+                "role": "已有装备或临时装备供应后补入，装备稀少时先补张良、虞姬和鬼谷子。后期要换太乙真人或钟馗时，可先用传承分配等级。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "optional",
+                "role": "需要保护且有可分享装备时补入，再按保护需求补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "optional",
+                "role": "已有虞姬、缺图腾且能腾出人口时加入，六人口阶段可以暂缓。终局少司缘等级较低、成长来不及发挥时可换太乙真人。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": "有足够等级可夺取时继续买牌；前期先补一张，再补张良等成长组件。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1741",
+                "necessity": "required",
+                "role": "有鬼谷子等图腾英雄后补入；缺图腾时先找图腾组件。终局需要更强控制或复生时，可转移已有等级后替换。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1561",
+                "necessity": "required",
+                "role": "尽早补首张和觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "尽早补首张和觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "optional",
+                "role": "已有装备或临时装备供应后补入，装备稀少时先补张良、虞姬和鬼谷子。后期要换太乙真人或钟馗时，可先用传承分配等级。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "optional",
+                "role": "需要保护且有可分享装备时补入，再按保护需求补觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "optional",
+                "role": "已有虞姬、缺图腾且能腾出人口时加入，六人口阶段可以暂缓。终局少司缘等级较低、成长来不及发挥时可换太乙真人。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "公孙离已经发育、需要复生且有额外人口时加入，也可替换低等级瑶或少司缘；站位保证复生给到公孙离。替换10级低阶成员会降低香香基础攻击，香香仍承担主要伤害时应优先保留这些成员。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "optional",
+                "role": "面对嫦娥等高等级威胁时补入，按接敌目标安排牺牲覆盖；先处理被替换英雄的已有等级和装备。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "optional",
+                "role": "额外人口和猪八戒较早到手时加入；临近决战才有空位，则优先考虑钟馗等能立即发挥作用的英雄。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "optional",
+                "role": "有额外位置、需要承伤，且猪八戒或钟馗等更合适成员未到时补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5021",
+                "necessity": "optional",
+                "role": "有高等级英雄和额外位置时补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1161",
+                "necessity": "optional",
+                "role": "棋手生命值较低、有打出位置时使用；按当轮需要反复打出，再决定是否留场。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "optional",
+                "role": "高阶选牌中出现，且当前关键英雄缺觉醒时拿取；取得妙音后优先补团队成长覆盖或公孙离攻速。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          },
+          "ban_conditions": [
+            {
+              "faction": "faction:dahe",
+              "status": "unplayable",
+              "reason": "缺失张良、虞姬、鬼谷子等成长联动，不能按完整开团射执行。"
+            }
+          ],
+          "matchups": [],
+          "common_claim_refs": [],
+          "player_branches": [
+            {
+              "id": "owner",
+              "player": "player:50",
+              "claim_refs": [
+                "doc-b35005a90a3da47e365c52",
+                "doc-737f45f743804cac7615a7",
+                "doc-de4a43889e87601f731784",
+                "doc-21275311ce526562507171",
+                "doc-ee02f7b98a90a2c4d9a4c9",
+                "doc-08770dde8627a15757ba4e",
+                "doc-e75e48ece9276f2b541993",
+                "doc-941845dabb9499d67f7895",
+                "doc-af775f4c86233583edca21",
+                "doc-f1fce24e32abbc53df9b59",
+                "xx-principle",
+                "xx-growth",
+                "xx-selection",
+                "xx-hero-1991",
+                "xx-hero-1561",
+                "xx-hero-1741",
+                "xx-hero-1891",
+                "xx-hero-5061",
+                "xx-hero-5051",
+                "xx-hero-5771",
+                "xx-hero-1681",
+                "xx-hero-5031",
+                "xx-hero-1731",
+                "xx-hero-1821",
+                "xx-hero-1941",
+                "xx-hero-1971",
+                "xx-hero-1861",
+                "xx-hero-1751",
+                "xx-hero-1761",
+                "xx-hero-5111",
+                "xx-hero-5171",
+                "xx-hero-5021",
+                "xx-hero-1161",
+                "xx-early",
+                "xx-middle",
+                "xx-late",
+                "xx-improve",
+                "xx-auction1",
+                "xx-auction2",
+                "xx-auction3",
+                "xx-talent-principles",
+                "xx-talent-feint",
+                "xx-talent-bottle",
+                "xx-talent-population",
+                "xx-talent-bears",
+                "xx-talent-show",
+                "xx-talent-control",
+                "xx-equip-641015",
+                "xx-equip-643103",
+                "xx-equip-643302",
+                "xx-equip-643205",
+                "xx-equip-643703",
+                "xx-equip-643403",
+                "xx-equip-643803",
+                "xx-equip-moshi",
+                "xx-effect-7541",
+                "xx-effect-7040",
+                "xx-effect-7062",
+                "xx-effect-7537",
+                "xx-effect-7081",
+                "xx-effect-7120",
+                "xx-effect-7115",
+                "xx-effect-7123",
+                "xx-effect-7107",
+                "xx-effect-inherit",
+                "xx-position",
+                "xx-counter",
+                "xx-weakness",
+                "xx-review",
+                "xx-gaps",
+                "xx-skill-doc-ef049288be4c13dbf92539",
+                "xx-skill-doc-03fb4874843dad9e7bf111",
+                "xx-skill-doc-5025e3770204a348a0525b",
+                "xx-skill-doc-cc7dc96c40c1c57b8fc5a6",
+                "xx-skill-doc-b78a15c5f51df0a0a2a10a",
+                "xx-skill-doc-c94953894e8168297e5df4",
+                "xx-skill-doc-d3b02b9e75afbdd303e6e5",
+                "xx-skill-xx-player-weapon",
+                "xx-skill-xx-player-tactical",
+                "xx-talent-ancestor",
+                "xx-talent-fate",
+                "xx-talent-bet",
+                "xx-talent-limit",
+                "xx-talent-convert",
+                "xx-talent-company",
+                "xx-version-upgrades"
+              ],
+              "condition_refs": [],
+              "operation_route_ids": [],
+              "late_variant_ids": [],
+              "major_variant_ids": [],
+              "overrides": {},
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "低阶成长组件能较早形成开团联动，团队等级同时强化英雄与香香，过渡等级可由公孙离回收。",
+                  "claim_refs": [
+                    "xx-growth",
+                    "xx-early"
+                  ]
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "依赖前期武器进度和足够承伤；被压制、缺续弹或缺收割时容易失去成长节奏。",
+                  "claim_refs": [
+                    "xx-weakness",
+                    "xx-review"
+                  ]
+                }
+              ],
+              "selection": {
+                "adopt": "前期可保胜、武器进度顺利且大河成长组件逐步到手。",
+                "avoid": "武器改造受阻、成长英雄未齐且连续失利时，先补能改善当前战斗的输出和前排。",
+                "claim_refs": [
+                  "xx-selection"
+                ],
+                "stage_strength": {
+                  "early": {
+                    "text": "先靠干将等即时战力取得武器；强前排和足够存活人数有利起势，武器被延迟时容易失去滚雪球节奏。",
+                    "claim_refs": [
+                      "xx-early",
+                      "xx-selection"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "成长组件与关键觉醒到位可当场提升团队等级和公孙离攻速；只存升级钱、挂件先占位而成长核心未到时会有明显战力空窗。",
+                    "claim_refs": [
+                      "xx-middle",
+                      "xx-growth"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "6级火力全开把团队等级转成香香攻击，仍需足够承伤与公孙离补刀；对方名刀、复生及控制会放大武器与保护配置的短板。",
+                    "claim_refs": [
+                      "xx-late",
+                      "xx-weakness"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            }
+          ],
+          "operation_routes": [],
+          "late_variants": [],
+          "major_variants": []
+        }
+      }
     }
   ],
   "conflicts": [],
-  "revision": "e437cd0f2d155111e069"
+  "revision": "e7e0c820a034a6f61877"
 }

@@ -3,7 +3,8 @@ from copy import deepcopy
 import re
 
 ALIASES = {'第一轮拍卖':'拍卖', '第二轮拍卖':'拍卖', '第三轮拍卖':'拍卖',
-           '推荐装备':'关键装备', '阵容组成':'英雄', '阵容概览与成员清单':'英雄'}
+           '推荐装备':'关键装备', '阵容组成':'英雄', '阵容概览与成员清单':'英雄',
+           '关键操作顺序':'关键操作'}
 
 
 def validate_principles(note):
@@ -41,7 +42,9 @@ def blocks(note, bid):
     for block in old:
         text = block['text']
         if text.startswith('## '):
-            current = text[3:]; chapters.setdefault(current, [])
+            current = text[3:]
+            if current == '关键操作顺序':current = '关键操作'
+            chapters.setdefault(current, [])
             skip_route = False
             continue
         if current is None:
@@ -62,7 +65,7 @@ def blocks(note, bid):
         for start,end in reversed(list(zip(starts,starts[1:]))):
             body=rows[start+1:end]
             rows[start+1:end]=[b for b in body if b.get('kind')=='member']+[b for b in body if b.get('kind')!='member']
-    order = (['核心原理'] if '核心原理' in chapters else []) + ['打法评价','定阵条件','核心机制','英雄','阵容组成与运营节奏','拍卖','关键装备','推荐天赋','棋手技能推荐','关键效果牌','站位技巧','制敌手段','克制手段']
+    order = (['核心原理'] if '核心原理' in chapters else []) + ['打法评价','定阵条件','核心机制','英雄','阵容组成与运营节奏','拍卖','关键装备','推荐天赋','棋手技能推荐','关键效果牌','关键操作','站位技巧','制敌手段','克制手段']
     extras = [x for x in chapters if x not in order+['第一轮拍卖','第二轮拍卖','第三轮拍卖','推荐装备','附录','关联知识']]
     out = opening
     for title in [*order,*extras,'附录','关联知识']:

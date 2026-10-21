@@ -980,7 +980,7 @@
     {
       "id": "luna-slot",
       "section": "关键操作顺序",
-      "text": "使用唤醒前，先确认场上有露娜并预留可打出露娜的位置。人口紧张时优先保护古币体系，不为常驻太乙真人妨碍露娜操作；有额外人口后再考虑同时保留太乙真人。手中尽量留一张可用露娜，避免唤醒牌没有合适对象。",
+      "text": "本轮需要给花木兰补复生时，先让上官婉儿、程咬金在场，保留足够河洛成员，并腾出露娜的打出位。打出露娜，她的登场会随机触发2名英雄整备；场上只有上官婉儿、程咬金两名整备英雄时，能同时触发两者。程咬金产出并使用古币，上官婉儿给多名河洛英雄使用古币，再把手牌古币用于花木兰，增加等级和复生。已有露娜留场时，可对她使用唤醒再次触发登场。按本轮对手补到需要的复生次数，留存后续露娜和触发牌；人口紧张时先给露娜留操作空间，再考虑常驻太乙真人。",
       "kind": "conditional_strategy",
       "condition": "依靠露娜和唤醒触发整备",
       "version": null,
@@ -113531,6 +113531,100 @@
           }
         ]
       }
+    },
+    {
+      "id": "op-flower-effect-order",
+      "section": "关键操作",
+      "text": "**手里有登场、整备触发牌时：** 先上武则天、露娜以及上官婉儿、程咬金。集体唤醒触发武则天产出精致古币，也触发露娜再次带动整备；之后使用全军动员，让程咬金、上官婉儿再整备一次。只有唤醒时对露娜使用，只有临阵磨枪时对上官婉儿使用。处理新取得的古币，再检查花木兰本轮复生次数，够用时保留剩余牌；上官婉儿未觉醒时只给3名河洛用币，觉醒后给6名，场上人数也要相应足够。",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 645.21,
+          "end": 670.87
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 671.34,
+          "end": 699.1
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 700.44,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 224.22,
+          "end": 253.58
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 254.01,
+          "end": 283.43
+        },
+        {
+          "source": "BV15kpn6yERf:p1",
+          "start": 1334.64,
+          "end": 1383.44
+        },
+        {
+          "source": "BV1g9a26vEdU:p1",
+          "start": 144.05,
+          "end": 171.49,
+          "frame": "frames/157-77.jpg"
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 85.9,
+          "end": 115.42
+        },
+        {
+          "source": "BV1jvJX6ZELy:p1",
+          "start": 75.5,
+          "end": 102.38
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 342.19,
+          "end": 370.11
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1070.73,
+          "end": 1102.92,
+          "frame": "frames/1130-0.jpg"
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1103.84,
+          "end": 1144.5
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1145.23,
+          "end": 1175.26
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1175.96,
+          "end": 1203.98
+        }
+      ],
+      "derivation": {
+        "claim_refs": [
+          "luna-slot",
+          "wake-targets",
+          "enter-before-prep",
+          "wake-targets-card-2",
+          "enter-before-prep-card-2"
+        ],
+        "card_snapshots": [],
+        "reason": "依据原教学与本地卡面组织可执行操作，非新增视频引文"
+      }
     }
   ],
   "meta": {
@@ -114085,7 +114179,8 @@
       "v4-equipment-644119",
       "v4-equipment-644101",
       "v4-equipment-643703",
-      "v4-equipment-641021"
+      "v4-equipment-641021",
+      "op-flower-effect-order"
     ],
     "player_branches": [
       {
@@ -614686,6 +614781,1957 @@
           "content_revision": "principle-purchase-2026-10-21"
         }
       }
+    },
+    {
+      "at": "2026-10-21",
+      "origin": "knowledge_revision",
+      "reason": "按已批准关键操作方案补充步骤、循环和早期运营；底层来源章节不改",
+      "previous": {
+        "claims": [
+          {
+            "id": "luna-slot",
+            "section": "关键操作顺序",
+            "text": "使用唤醒前，先确认场上有露娜并预留可打出露娜的位置。人口紧张时优先保护古币体系，不为常驻太乙真人妨碍露娜操作；有额外人口后再考虑同时保留太乙真人。手中尽量留一张可用露娜，避免唤醒牌没有合适对象。",
+            "condition": "依靠露娜和唤醒触发整备",
+            "version": null,
+            "evidence": [
+              {
+                "source": "BV1oQJ66tESA:p1",
+                "start": 645.21,
+                "end": 670.87
+              },
+              {
+                "source": "BV1oQJ66tESA:p1",
+                "start": 671.34,
+                "end": 699.1
+              },
+              {
+                "source": "BV1oQJ66tESA:p1",
+                "start": 700.44,
+                "end": 726.16
+              },
+              {
+                "source": "BV1Jzp36REg6:p1",
+                "start": 224.22,
+                "end": 253.58
+              },
+              {
+                "source": "BV1Jzp36REg6:p1",
+                "start": 254.01,
+                "end": 283.43
+              },
+              {
+                "source": "BV15kpn6yERf:p1",
+                "start": 1334.64,
+                "end": 1383.44
+              }
+            ]
+          }
+        ],
+        "meta": {
+          "required_factions": [
+            "faction:heluo",
+            "faction:riluohai"
+          ],
+          "players": [
+            "player:39",
+            "player:31",
+            "player:40",
+            "player:34",
+            "player:43"
+          ],
+          "core_heroes": [
+            "card:1541",
+            "card:5131"
+          ],
+          "compositions": {
+            "early": [],
+            "middle": [
+              {
+                "hero": "card:1541",
+                "necessity": "required",
+                "role": "先拿首张启动阵容，再补觉醒；觉醒后把资源用于古币、等级和装备。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5131",
+                "necessity": "required",
+                "role": "尽早补首张与觉醒，之后把找牌资源留给露娜和触发整备的效果牌。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1311",
+                "necessity": "required",
+                "role": "先拿一张，关键组件齐备后补觉醒；零钱兑换会把古币变成不加永久等级的破损古币，此时李白提供的临时等级尤其有用。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1361",
+                "necessity": "required",
+                "role": "先补首张；有打出位置、仍需古币时，可以继续购买重复牌触发登场。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1441",
+                "necessity": "required",
+                "role": "顺路拿首张，按精致古币需求补重复牌。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1461",
+                "necessity": "required",
+                "role": "两名整备英雄就位后，按本轮需要的复生次数反复购买和打出露娜。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5091",
+                "necessity": "optional",
+                "role": "缺手牌古币时补一张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "有额外位置时补一张，仍需提高转化额度时可重复购买触发登场。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1541",
+                "necessity": "required",
+                "role": "先拿首张启动阵容，再补觉醒；觉醒后把资源用于古币、等级和装备。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5131",
+                "necessity": "required",
+                "role": "尽早补首张与觉醒，之后把找牌资源留给露娜和触发整备的效果牌。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1311",
+                "necessity": "required",
+                "role": "先拿一张，关键组件齐备后补觉醒；零钱兑换会把古币变成不加永久等级的破损古币，此时李白提供的临时等级尤其有用。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1361",
+                "necessity": "required",
+                "role": "先补首张；有打出位置、仍需古币时，可以继续购买重复牌触发登场。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1441",
+                "necessity": "required",
+                "role": "顺路拿首张，按精致古币需求补重复牌。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "optional",
+                "role": "遇到高等级威胁时补首张。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1461",
+                "necessity": "required",
+                "role": "两名整备英雄就位后，按本轮需要的复生次数反复购买和打出露娜。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          },
+          "ban_conditions": [
+            {
+              "faction": "faction:heluo",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：花木兰（主要输出，承接古币复生与等级）、上官婉儿（整备自动使用古币，优先觉醒）、李白（古币临时等级）、武则天（古币等级增益与登场精致古币）、程咬金（整备产币）。 核心花木兰及古币体系均依赖河洛。",
+              "derived_dependency": true,
+              "explicit_required": true,
+              "explicit_condition": {
+                "faction": "faction:heluo",
+                "status": "unplayable",
+                "reason": "核心花木兰及古币体系均依赖河洛。"
+              }
+            },
+            {
+              "faction": "faction:riluohai",
+              "status": "unplayable",
+              "reason": "完整阵容无法获取：露娜（登场触发整备；保留打出位置，不要求每次战斗常驻）。 完整体系需要露娜登场触发整备。",
+              "derived_dependency": true,
+              "explicit_required": true,
+              "explicit_condition": {
+                "faction": "faction:riluohai",
+                "status": "unplayable",
+                "reason": "完整体系需要露娜登场触发整备。"
+              }
+            }
+          ],
+          "matchups": [
+            {
+              "target": "card:1671",
+              "condition": "高爆发威胁",
+              "text": "适用前提：高爆发孙悟空威胁，且考虑防护与伤害取舍。\n\n面对高爆发孙悟空时，可考虑磐石之心限制单次受伤，但占用装备位也会降低输出。要结合对手当前等级及自身剩余伤害判断，不能只按复生次数认定必胜。"
+            },
+            {
+              "target": "card:3551",
+              "condition": "远程普攻持续风筝",
+              "text": "适用前提：艾琳持续风筝且需控制与追击。\n\n艾琳通过远程普攻减速、不断拉开距离时，可用极寒风暴限制她的连续普攻，并用凝渊补追击。对方用炽热支配者时，要考虑其免控持续时间；机器头等其他免控效果不能一概当成15秒，需另看实际装备。凝渊的移速收益需要满足卡面暴击条件，不能只装上就当作始终有追击加速。"
+            },
+            {
+              "target": "card:1101",
+              "condition": "考虑反伤重甲换装",
+              "text": "面对嬴政需要反伤重甲时，保留两种换装方案：对手控制少、自己仍需要凝渊追击时，可换掉第三件解控装；仍需要解控维持启动、且追击缺口较小时，可考虑凝渊换反伤重甲。先检查控制与追击缺口，不设唯一替换位置；材料没有同等等级和装备条件下的定量比较。"
+            },
+            {
+              "target": "card:5071",
+              "condition": "瑶妹复生李信成型且花木兰免控不足",
+              "text": "适用前提：对手瑶妹复生李信成型且花木兰免控不足。\n\n面对已成型的瑶妹复生李信，花木兰缺少免控时容易被小鹿嘲讽牵引，难以迅速击败小鹿，复生次数可能先被消耗。先查自己是否能持续行动、接近并击败李信，再决定投入资源；不能只因己方复生次数多就认定有优势，也不能把该条件下的困难泛化成所有配置必输。"
+            }
+          ],
+          "operation_routes": [
+            {
+              "id": "ming",
+              "name": "能量棋手升级与刷新找牌",
+              "condition": "先靠过渡战力保血",
+              "advantages": "卦象·节支持棋手升级，刷新补体系",
+              "risks": "只刷新不买过渡英雄会丢血；棋手五级刷新与将棋手升至六级分别看买牌和保血预算",
+              "transition": "进入棋手五级后按关键牌与保血需求找牌",
+              "phases": {
+                "early": [
+                  "v4-operation-ming-early"
+                ],
+                "middle": [
+                  "v4-operation-ming-middle"
+                ],
+                "late": [
+                  "v4-operation-ming-late"
+                ]
+              },
+              "claim_refs": [
+                "ming-economy",
+                "ming-five",
+                "missing-mulan",
+                "ming-survival-talents",
+                "ming-second-auction-stock",
+                "ming-six-dispute",
+                "tier-guide-ming-early",
+                "tier-guide-ming-middle",
+                "tier-guide-ming-late"
+              ],
+              "variant_ids": []
+            },
+            {
+              "id": "zhuang",
+              "name": "如梦似幻补体系",
+              "condition": "具备启动技能的金币和河洛人数",
+              "advantages": "通过梦幻手牌及梦幻商店补组件与觉醒",
+              "risks": "套牌不保证给花木兰；凑无用牌会浪费金币和技能",
+              "transition": "先形成体系，再通过第二次技能补觉醒",
+              "phases": {
+                "early": [
+                  "v4-operation-zhuang-early"
+                ],
+                "middle": [
+                  "v4-operation-zhuang-middle"
+                ],
+                "late": [
+                  "v4-operation-zhuang-late"
+                ]
+              },
+              "claim_refs": [
+                "save-search",
+                "zhuang-three-five",
+                "zhuang-six",
+                "zhuang-second-cast",
+                "zhuang-dream-luna",
+                "zhuang-high-talent",
+                "zhuang-talent-speed",
+                "first-auction",
+                "zhuang-dream-trigger",
+                "zhuang-ace-army",
+                "zhuang-second-auction",
+                "zhuang-opening-dispute",
+                "zhuang-delayed-dispute",
+                "tier-guide-zhuang-early",
+                "tier-guide-zhuang-middle",
+                "tier-guide-zhuang-late"
+              ],
+              "variant_ids": []
+            },
+            {
+              "id": "naonao",
+              "name": "朋友多多与阵营天赋",
+              "condition": "按派对牌与经济棋手升级",
+              "advantages": "通过技能找河洛牌与天赋联动",
+              "risks": "破损古币不直接增加永久等级；棋手五级启动手牌多",
+              "transition": "核心不来先在棋手五级补牌，稳定后再棋手六级",
+              "phases": {
+                "early": [
+                  "v4-operation-naonao-early"
+                ],
+                "middle": [
+                  "v4-operation-naonao-middle"
+                ],
+                "late": [
+                  "v4-operation-naonao-late"
+                ]
+              },
+              "claim_refs": [
+                "n-opening",
+                "n-five-missing",
+                "n-time",
+                "n-small-change",
+                "coin-machine",
+                "tier-guide-naonao-early",
+                "tier-guide-naonao-middle",
+                "tier-guide-naonao-late"
+              ],
+              "variant_ids": []
+            },
+            {
+              "id": "zhaojun",
+              "name": "冻结补核心与成长",
+              "condition": "较早取得花木兰及合适冻结强化",
+              "advantages": "冻结补高阶卡与等级，可支持双输出",
+              "risks": "变化结果并非必定花木兰，牌库会影响循环",
+              "transition": "保留已有可用高阶战力，花木兰到手后补古币体系",
+              "phases": {
+                "early": [
+                  "v4-operation-zhaojun-early"
+                ],
+                "middle": [
+                  "v4-operation-zhaojun-middle"
+                ],
+                "late": [
+                  "v4-operation-zhaojun-late"
+                ]
+              },
+              "claim_refs": [
+                "q-start",
+                "q-double",
+                "q-luna",
+                "tier-guide-zhaojun-early",
+                "tier-guide-zhaojun-middle",
+                "tier-guide-zhaojun-late"
+              ],
+              "variant_ids": []
+            },
+            {
+              "id": "ying",
+              "name": "至高决策控制全场资源",
+              "condition": "能观察其他玩家资源",
+              "advantages": "决策与资源分配支持启动",
+              "risks": "全场受益可能让同行先拿走露娜，不宜机械照抄",
+              "transition": "先确保自身核心与找牌条件，再开放全场资源",
+              "phases": {
+                "early": [
+                  "v4-operation-ying-early"
+                ],
+                "middle": [
+                  "v4-operation-ying-middle"
+                ],
+                "late": [
+                  "v4-operation-ying-late"
+                ]
+              },
+              "claim_refs": [
+                "ying-resource",
+                "ying-luna-competition",
+                "ying-lowpressure",
+                "ying-first-purchase",
+                "ying-first-second-skill",
+                "ying-early-auction",
+                "ying-avoid-decisions",
+                "ying-combat-decisions",
+                "ying-outcome-decisions",
+                "ying-capital-timing",
+                "ying-six-redistribution",
+                "ying-return-timing",
+                "ying-boming-tradeoff",
+                "ying-contract-bottle",
+                "ying-auction-buy-budget",
+                "luna-elimination-pool",
+                "tier-guide-ying-early",
+                "tier-guide-ying-middle",
+                "tier-guide-ying-late"
+              ],
+              "variant_ids": []
+            }
+          ],
+          "late_variants": [
+            {
+              "id": "coin-revive",
+              "name": "古币复生基础组合",
+              "condition": "古币组件齐备，并预留露娜打出位置",
+              "members": [
+                {
+                  "hero": "card:1541",
+                  "necessity": "required",
+                  "role": "先拿首张启动阵容，再补觉醒；觉醒后把资源用于古币、等级和装备。",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:5131",
+                  "necessity": "required",
+                  "role": "尽早补首张与觉醒，之后把找牌资源留给露娜和触发整备的效果牌。",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1311",
+                  "necessity": "required",
+                  "role": "先拿一张，关键组件齐备后补觉醒；零钱兑换会把古币变成不加永久等级的破损古币，此时李白提供的临时等级尤其有用。",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1361",
+                  "necessity": "required",
+                  "role": "先补首张；有打出位置、仍需古币时，可以继续购买重复牌触发登场。",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1441",
+                  "necessity": "required",
+                  "role": "顺路拿首张，按精致古币需求补重复牌。",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1751",
+                  "necessity": "optional",
+                  "role": "遇到高等级威胁时补首张。",
+                  "replaces": "",
+                  "replacement_note": ""
+                },
+                {
+                  "hero": "card:1461",
+                  "necessity": "required",
+                  "role": "两名整备英雄就位后，按本轮需要的复生次数反复购买和打出露娜。",
+                  "replaces": "",
+                  "replacement_note": ""
+                }
+              ],
+              "core_heroes": [
+                "card:1541",
+                "card:5131"
+              ],
+              "required_factions": [
+                "faction:heluo",
+                "faction:riluohai"
+              ],
+              "ban_conditions": [
+                {
+                  "faction": "faction:heluo",
+                  "status": "unplayable",
+                  "reason": "完整阵容无法获取：花木兰（主要输出，承接古币复生与等级）、上官婉儿（整备自动使用古币，优先觉醒）、李白（古币临时等级）、武则天（古币等级增益与登场精致古币）、程咬金（整备产币）、钟馗（决赛牺牲降级）。",
+                  "derived_dependency": true,
+                  "explicit_required": false,
+                  "explicit_condition": null
+                },
+                {
+                  "faction": "faction:riluohai",
+                  "status": "unplayable",
+                  "reason": "完整阵容无法获取：露娜（登场触发整备，保留打出位）。",
+                  "derived_dependency": true,
+                  "explicit_required": false,
+                  "explicit_condition": null
+                }
+              ],
+              "ban_combinations": [],
+              "claim_refs": [
+                "shared-core",
+                "luna-slot",
+                "zhong-position"
+              ]
+            }
+          ],
+          "major_variants": [
+            {
+              "id": "zhaojun-double",
+              "name": "昭君冻结成长双输出",
+              "condition_refs": [
+                "q-start",
+                "q-double"
+              ],
+              "baseline_refs": [
+                "coin-loop",
+                "shared-core"
+              ],
+              "claim_refs": [
+                "q-double",
+                "q-luna"
+              ],
+              "late_variant_ids": [],
+              "operation_route_ids": [
+                "zhaojun"
+              ],
+              "differences": {
+                "heroes": {
+                  "status": "different",
+                  "claim_refs": [
+                    "q-double"
+                  ]
+                },
+                "mechanism": {
+                  "status": "different",
+                  "claim_refs": [
+                    "q-double"
+                  ]
+                },
+                "tempo": {
+                  "status": "unknown",
+                  "claim_refs": []
+                },
+                "equipment": {
+                  "status": "unknown",
+                  "claim_refs": []
+                },
+                "talents": {
+                  "status": "unknown",
+                  "claim_refs": []
+                },
+                "skills": {
+                  "status": "different",
+                  "claim_refs": [
+                    "q-start",
+                    "q-luna"
+                  ]
+                }
+              }
+            }
+          ],
+          "common_claim_refs": [
+            "coin-loop",
+            "wanner-awaken",
+            "revive-budget",
+            "shared-core",
+            "ban-luna",
+            "luna-slot",
+            "reserve-resources",
+            "scout-final-opponent",
+            "final-allin",
+            "artifact-choice",
+            "antiheal",
+            "late-scaling-equipment",
+            "anti-burst",
+            "review-short-revives",
+            "review-cost",
+            "historical-four",
+            "newer-five",
+            "wake-targets",
+            "position-tools",
+            "ying-equipment-dispute",
+            "death-growth",
+            "zhong-once",
+            "machine-tyrant-tradeoff",
+            "find-luna-alternatives",
+            "hold-coin-effect",
+            "ailin-chase",
+            "revive-cap-pending",
+            "luna-recycle",
+            "zhong-position",
+            "libai-awaken-before-coins",
+            "luna-elimination-pool",
+            "mingshiyin-optional",
+            "battle-resource-diagnosis",
+            "wanner-extra-equipment",
+            "talent-core",
+            "mulan-skill-breakpoints",
+            "luna-awakening-context",
+            "mulan-vs-yaomei-lixin",
+            "capture-glove-resource",
+            "sword-replaces-chase",
+            "avoid-qinglian-replacement",
+            "enter-before-prep",
+            "guide-counter-lixin",
+            "guide-middle-awakening",
+            "wake-targets-card-2",
+            "enter-before-prep-card-2",
+            "shared-late-tools",
+            "v4-equipment-643103",
+            "v4-equipment-641010",
+            "v4-equipment-643803",
+            "v4-equipment-643604",
+            "v4-equipment-643602",
+            "v4-equipment-643104",
+            "v4-equipment-644110",
+            "v4-equipment-644116",
+            "v4-equipment-641002",
+            "v4-equipment-641005",
+            "v4-equipment-644119",
+            "v4-equipment-644101",
+            "v4-equipment-643703",
+            "v4-equipment-641021"
+          ],
+          "player_branches": [
+            {
+              "id": "ming",
+              "player": "player:39",
+              "name": "明先生",
+              "claim_refs": [
+                "ming-economy",
+                "ming-six-dispute",
+                "ming-five",
+                "transition-talents",
+                "transition-wuzhuang",
+                "third-auction",
+                "missing-mulan",
+                "ming-survival-talents",
+                "ming-second-auction-stock",
+                "red-demon-underworld-choice",
+                "lifesteal-dispute",
+                "guide-skills-ming",
+                "ming-opening-yixing",
+                "ming-first-auction",
+                "hero-quality-ming",
+                "tier-guide-ming-early",
+                "tier-guide-ming-middle",
+                "tier-guide-ming-late",
+                "v4-hero-ming-aa16d85e",
+                "v4-hero-ming-33015694",
+                "v4-hero-ming-b23f840f",
+                "v4-hero-ming-08b61c17",
+                "v4-hero-ming-8db1cc1d",
+                "v4-hero-ming-ba3bf325",
+                "v4-hero-ming-8f7bdbb4",
+                "v4-hero-ming-2d4bb89f",
+                "v4-hero-ming-e5291a0e",
+                "v4-hero-ming-990005f8",
+                "v4-hero-ming-81e70001",
+                "v4-hero-ming-4a469f4c",
+                "v4-hero-ming-69e1dc54",
+                "v4-operation-ming-early",
+                "v4-operation-ming-middle",
+                "v4-operation-ming-late",
+                "v4-improvement-ming",
+                "v4-equipment-643704",
+                "v4-equipment-643702",
+                "v4-talents-ming",
+                "v4-talent-ming-636220",
+                "v4-talent-ming-636215",
+                "v4-talent-ming-636221",
+                "v4-talent-ming-632012",
+                "v4-talent-ming-613007",
+                "v4-talent-ming-671003",
+                "v4-talent-ming-671013",
+                "v4-talent-ming-634028",
+                "v4-effect-ming-7123",
+                "v4-effect-ming-7084",
+                "principle-ming",
+                "skill-profile-ming-93999",
+                "skill-profile-ming-663901"
+              ],
+              "condition_refs": [
+                "ming-economy"
+              ],
+              "operation_route_ids": [
+                "ming"
+              ],
+              "late_variant_ids": [
+                "coin-revive"
+              ],
+              "major_variant_ids": [],
+              "overrides": {
+                "compositions": {
+                  "early": [
+                    {
+                      "hero": "card:1971",
+                      "necessity": "required",
+                      "role": "当前战力能够过渡时顺路补一张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1681",
+                      "necessity": "optional",
+                      "role": "补一张能改善当前战斗、争取胜利时购买。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ]
+                },
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "coin-revive",
+                      "name": "古币复生基础组合",
+                      "variant_id": "coin-revive",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:613007",
+                        "card:632012",
+                        "card:634028",
+                        "card:636215",
+                        "card:636220",
+                        "card:636221",
+                        "card:671003",
+                        "card:671013"
+                      ],
+                      "effect_cards": [
+                        "card:311002",
+                        "card:7073",
+                        "card:7074",
+                        "card:7079",
+                        "card:7080",
+                        "card:7502"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-ming-early"
+                          ],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-ming-middle"
+                          ],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-ming-late"
+                          ],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:39",
+                          "skills": [
+                            "card:93997",
+                            "card:93998"
+                          ],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "能量与卦象·丰支持找体系。",
+                  "claim_refs": [
+                    "ming-economy",
+                    "ming-six-dispute",
+                    "ming-five",
+                    "transition-talents",
+                    "transition-wuzhuang",
+                    "third-auction",
+                    "missing-mulan",
+                    "ming-survival-talents",
+                    "ming-second-auction-stock",
+                    "red-demon-underworld-choice",
+                    "lifesteal-dispute"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "核心未到手时战力空窗；留五与将棋手升至六级的收益边界尚不明确。",
+                  "claim_refs": [
+                    "ming-economy",
+                    "ming-five",
+                    "missing-mulan",
+                    "ming-survival-talents",
+                    "ming-second-auction-stock",
+                    "ming-six-dispute"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要花木兰、上官婉儿和古币来源；核心迟迟不到时，继续用李信或李白过渡。",
+                  "claim_refs": [
+                    "ming-economy",
+                    "ming-five",
+                    "missing-mulan",
+                    "ming-survival-talents",
+                    "ming-second-auction-stock",
+                    "ming-six-dispute"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需要管理露娜打出位置、资源预算和技能时机。",
+                  "claim_refs": [
+                    "ming-economy",
+                    "ming-five",
+                    "missing-mulan",
+                    "ming-survival-talents",
+                    "ming-second-auction-stock",
+                    "ming-six-dispute"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "已有保血过渡战力、卦象·节支持到棋手五级，并能保留购买核心的资源时考虑。",
+                "avoid": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+                "signals": {
+                  "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                  "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "卦象·节提供升级能量；只留弈星时前排和伤害较少，需要控制掉血，牛魔能帮助赢下战斗时再补。",
+                    "claim_refs": [
+                      "ming-economy",
+                      "ming-opening-yixing"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "棋手5级用卦象·丰集中找花木兰和上官婉儿；核心未到时靠李信、李白过渡，取得核心和觉醒后逐步提高战力。",
+                    "claim_refs": [
+                      "ming-five",
+                      "ming-economy",
+                      "missing-mulan"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                    "claim_refs": [
+                      "coin-loop",
+                      "wanner-awaken",
+                      "revive-budget",
+                      "anti-burst",
+                      "ailin-chase"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            },
+            {
+              "id": "zhuang",
+              "player": "player:31",
+              "name": "庄小鱼",
+              "claim_refs": [
+                "first-auction",
+                "save-search",
+                "zhuang-six",
+                "zhuang-second-cast",
+                "zhuang-dream-luna",
+                "zhuang-opening-dispute",
+                "zhuang-delayed-dispute",
+                "zhuang-three-five",
+                "opening-fighters",
+                "zhuang-dream-trigger",
+                "zhuang-high-talent",
+                "zhuang-talent-speed",
+                "zhuang-ace-army",
+                "zhuang-second-auction",
+                "missing-mulan",
+                "crit-basic",
+                "zhuang-coin-machine-choice",
+                "guide-skills-zhuang",
+                "hero-quality-zhuang",
+                "tier-guide-zhuang-early",
+                "tier-guide-zhuang-middle",
+                "tier-guide-zhuang-late",
+                "doc-f77b32c29f7d7f9eb69e4c",
+                "v4-hero-zhuang-aa16d85e",
+                "v4-hero-zhuang-33015694",
+                "v4-hero-zhuang-b23f840f",
+                "v4-hero-zhuang-08b61c17",
+                "v4-hero-zhuang-8db1cc1d",
+                "v4-hero-zhuang-ba3bf325",
+                "v4-hero-zhuang-8f7bdbb4",
+                "v4-hero-zhuang-2d4bb89f",
+                "v4-hero-zhuang-e5291a0e",
+                "v4-hero-zhuang-990005f8",
+                "v4-hero-zhuang-57f013db",
+                "v4-hero-zhuang-076eedda",
+                "v4-hero-zhuang-81e70001",
+                "v4-hero-zhuang-4a469f4c",
+                "v4-hero-zhuang-69e1dc54",
+                "v4-operation-zhuang-early",
+                "v4-operation-zhuang-middle",
+                "v4-operation-zhuang-late",
+                "v4-improvement-zhuang",
+                "v4-talents-zhuang",
+                "v4-talent-zhuang-636220",
+                "v4-talent-zhuang-636215",
+                "v4-talent-zhuang-636221",
+                "v4-talent-zhuang-614008",
+                "v4-talent-zhuang-63700801",
+                "v4-talent-zhuang-636219",
+                "v4-talent-zhuang-614007",
+                "v4-talent-zhuang-636204",
+                "principle-zhuang",
+                "skill-profile-zhuang-93199",
+                "skill-profile-zhuang-663101",
+                "skill-profile-zhuang-663108"
+              ],
+              "condition_refs": [
+                "save-search"
+              ],
+              "operation_route_ids": [
+                "zhuang"
+              ],
+              "late_variant_ids": [
+                "coin-revive"
+              ],
+              "major_variant_ids": [],
+              "overrides": {
+                "compositions": {
+                  "early": [
+                    {
+                      "hero": "card:1941",
+                      "necessity": "optional",
+                      "role": "开局缺前排时顺路补一张，不专门追40级。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1731",
+                      "necessity": "optional",
+                      "role": "已有苏烈等河洛前排时顺路补首张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1971",
+                      "necessity": "optional",
+                      "role": "当前战力能够过渡时顺路补一张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1681",
+                      "necessity": "optional",
+                      "role": "补一张能改善当前战斗、争取胜利时购买。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ]
+                },
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "coin-revive",
+                      "name": "古币复生基础组合",
+                      "variant_id": "coin-revive",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:614007",
+                        "card:614008",
+                        "card:636204",
+                        "card:636215",
+                        "card:636219",
+                        "card:636220",
+                        "card:636221",
+                        "card:6363141",
+                        "card:63700801"
+                      ],
+                      "effect_cards": [
+                        "card:311002",
+                        "card:7002",
+                        "card:7073",
+                        "card:7074",
+                        "card:7079",
+                        "card:7080",
+                        "card:7502"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-zhuang-early"
+                          ],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-zhuang-middle"
+                          ],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-zhuang-late"
+                          ],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:31",
+                          "skills": [
+                            "card:663109",
+                            "card:93110"
+                          ],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "如梦与梦幻商店补组件、觉醒和露娜。",
+                  "claim_refs": [
+                    "first-auction",
+                    "save-search",
+                    "zhuang-six",
+                    "zhuang-second-cast",
+                    "zhuang-dream-luna",
+                    "zhuang-opening-dispute",
+                    "zhuang-delayed-dispute",
+                    "zhuang-three-five",
+                    "opening-fighters",
+                    "zhuang-dream-trigger",
+                    "zhuang-high-talent",
+                    "zhuang-talent-speed",
+                    "zhuang-ace-army",
+                    "zhuang-second-auction",
+                    "missing-mulan",
+                    "crit-basic",
+                    "zhuang-coin-machine-choice"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "技能不保证命中核心；人数、合成和保血需要协同。",
+                  "claim_refs": [
+                    "save-search",
+                    "zhuang-three-five",
+                    "zhuang-six",
+                    "zhuang-second-cast",
+                    "zhuang-dream-luna",
+                    "zhuang-high-talent",
+                    "zhuang-talent-speed",
+                    "first-auction",
+                    "zhuang-dream-trigger",
+                    "zhuang-ace-army",
+                    "zhuang-second-auction",
+                    "zhuang-opening-dispute",
+                    "zhuang-delayed-dispute"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要花木兰、上官婉儿和古币来源；核心迟迟不到时，继续用李信或李白过渡。",
+                  "claim_refs": [
+                    "save-search",
+                    "zhuang-three-five",
+                    "zhuang-six",
+                    "zhuang-second-cast",
+                    "zhuang-dream-luna",
+                    "zhuang-high-talent",
+                    "zhuang-talent-speed",
+                    "first-auction",
+                    "zhuang-dream-trigger",
+                    "zhuang-ace-army",
+                    "zhuang-second-auction",
+                    "zhuang-opening-dispute",
+                    "zhuang-delayed-dispute"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需要管理露娜打出位置、资源预算和技能时机。",
+                  "claim_refs": [
+                    "save-search",
+                    "zhuang-three-five",
+                    "zhuang-six",
+                    "zhuang-second-cast",
+                    "zhuang-dream-luna",
+                    "zhuang-high-talent",
+                    "zhuang-talent-speed",
+                    "first-auction",
+                    "zhuang-dream-trigger",
+                    "zhuang-ace-army",
+                    "zhuang-second-auction",
+                    "zhuang-opening-dispute",
+                    "zhuang-delayed-dispute"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+                "avoid": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+                "signals": {
+                  "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                  "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                    "claim_refs": [
+                      "zhuang-opening-dispute",
+                      "opening-fighters"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+                    "claim_refs": [
+                      "zhuang-three-five",
+                      "zhuang-delayed-dispute",
+                      "save-search",
+                      "guide-middle-awakening"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                    "claim_refs": [
+                      "zhuang-second-cast",
+                      "zhuang-dream-trigger",
+                      "zhuang-dream-luna",
+                      "revive-budget"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            },
+            {
+              "id": "naonao",
+              "player": "player:40",
+              "name": "闹闹",
+              "claim_refs": [
+                "n-opening",
+                "n-five-missing",
+                "n-time",
+                "n-small-change",
+                "n-coins-manual",
+                "coin-machine",
+                "second-auction",
+                "third-auction",
+                "guide-skills-naonao",
+                "hero-quality-naonao",
+                "tier-guide-naonao-early",
+                "tier-guide-naonao-middle",
+                "tier-guide-naonao-late",
+                "doc-cf0449227bc65878ddf81a",
+                "v4-hero-naonao-aa16d85e",
+                "v4-hero-naonao-33015694",
+                "v4-hero-naonao-b23f840f",
+                "v4-hero-naonao-08b61c17",
+                "v4-hero-naonao-8db1cc1d",
+                "v4-hero-naonao-ba3bf325",
+                "v4-hero-naonao-8f7bdbb4",
+                "v4-hero-naonao-2d4bb89f",
+                "v4-hero-naonao-e5291a0e",
+                "v4-hero-naonao-990005f8",
+                "v4-hero-naonao-57f013db",
+                "v4-hero-naonao-076eedda",
+                "v4-hero-naonao-81e70001",
+                "v4-hero-naonao-4a469f4c",
+                "v4-operation-naonao-early",
+                "v4-operation-naonao-middle",
+                "v4-operation-naonao-late",
+                "v4-improvement-naonao",
+                "v4-talents-naonao",
+                "v4-talent-naonao-636220",
+                "v4-talent-naonao-636215",
+                "v4-talent-naonao-636221",
+                "v4-talent-naonao-671003",
+                "v4-talent-naonao-636219",
+                "v4-talent-naonao-614007",
+                "v4-talent-naonao-636204",
+                "v4-effect-naonao-7123",
+                "v4-effect-naonao-7084",
+                "principle-naonao",
+                "skill-profile-naonao-94099",
+                "skill-profile-naonao-664001",
+                "skill-profile-naonao-664005"
+              ],
+              "condition_refs": [
+                "n-opening"
+              ],
+              "operation_route_ids": [
+                "naonao"
+              ],
+              "late_variant_ids": [
+                "coin-revive"
+              ],
+              "major_variant_ids": [],
+              "overrides": {
+                "compositions": {
+                  "early": [
+                    {
+                      "hero": "card:1941",
+                      "necessity": "optional",
+                      "role": "开局缺前排时顺路补一张，不专门追40级。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1731",
+                      "necessity": "optional",
+                      "role": "已有苏烈等河洛前排时顺路补首张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1971",
+                      "necessity": "optional",
+                      "role": "当前战力能够过渡时顺路补一张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1681",
+                      "necessity": "optional",
+                      "role": "补一张能改善当前战斗、争取胜利时购买。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ]
+                },
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "coin-revive",
+                      "name": "古币复生基础组合",
+                      "variant_id": "coin-revive",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:636204",
+                        "card:636215",
+                        "card:636220",
+                        "card:636221"
+                      ],
+                      "effect_cards": [
+                        "card:311002",
+                        "card:7073",
+                        "card:7074",
+                        "card:7079",
+                        "card:7080",
+                        "card:7502"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-naonao-early"
+                          ],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-naonao-middle"
+                          ],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-naonao-late"
+                          ],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:40",
+                          "skills": [
+                            "card:94010"
+                          ],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "朋友多多找体系，零钱兑换放大古币使用张数。",
+                  "claim_refs": [
+                    "n-opening",
+                    "n-five-missing",
+                    "n-time",
+                    "n-small-change",
+                    "n-coins-manual",
+                    "coin-machine",
+                    "second-auction",
+                    "third-auction"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "破损古币不提供等级；集中启动回合操作密集。",
+                  "claim_refs": [
+                    "n-opening",
+                    "n-five-missing",
+                    "n-time",
+                    "n-small-change",
+                    "coin-machine"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要花木兰、上官婉儿和古币来源；核心迟迟不到时，继续用李信或李白过渡。",
+                  "claim_refs": [
+                    "n-opening",
+                    "n-five-missing",
+                    "n-time",
+                    "n-small-change",
+                    "coin-machine"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需要管理露娜打出位置、资源预算和技能时机。",
+                  "claim_refs": [
+                    "n-opening",
+                    "n-five-missing",
+                    "n-time",
+                    "n-small-change",
+                    "coin-machine"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "可按派对牌和经济棋手升级、棋手五级启动朋友多多找体系时考虑。",
+                "avoid": "棋手五级仍无花木兰时先补核心；古币数量多但等级不足时补李白或永久成长。",
+                "signals": {
+                  "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                  "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "以苏烈、李元芳等英雄过渡，减少付费刷新，为升棋手5级和购买核心保留资源。",
+                    "claim_refs": [
+                      "n-opening"
+                    ],
+                    "inference": false
+                  },
+                  "middle": {
+                    "text": "棋手5级用朋友多多集中补牌，花木兰到手后转入古币复生；仍缺花木兰时可留5级继续找，启动回合提前留时间处理手牌。",
+                    "claim_refs": [
+                      "n-opening",
+                      "n-five-missing",
+                      "n-time"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                    "claim_refs": [
+                      "guide-skills-naonao",
+                      "wanner-awaken",
+                      "revive-budget"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            },
+            {
+              "id": "zhaojun",
+              "player": "player:34",
+              "name": "昭君",
+              "claim_refs": [
+                "q-start",
+                "q-double",
+                "q-luna",
+                "guide-skills-zhaojun",
+                "hero-quality-zhaojun",
+                "tier-guide-zhaojun-early",
+                "tier-guide-zhaojun-middle",
+                "tier-guide-zhaojun-late",
+                "v4-hero-zhaojun-aa16d85e",
+                "v4-hero-zhaojun-33015694",
+                "v4-hero-zhaojun-b23f840f",
+                "v4-hero-zhaojun-08b61c17",
+                "v4-hero-zhaojun-8db1cc1d",
+                "v4-hero-zhaojun-ba3bf325",
+                "v4-hero-zhaojun-8f7bdbb4",
+                "v4-hero-zhaojun-2d4bb89f",
+                "v4-hero-zhaojun-e5291a0e",
+                "v4-hero-zhaojun-990005f8",
+                "v4-hero-zhaojun-8b8f79fa",
+                "v4-operation-zhaojun-early",
+                "v4-operation-zhaojun-middle",
+                "v4-operation-zhaojun-late",
+                "v4-improvement-zhaojun",
+                "v4-talents-zhaojun",
+                "v4-talent-zhaojun-636220",
+                "v4-talent-zhaojun-636215",
+                "v4-talent-zhaojun-636221",
+                "principle-zhaojun",
+                "skill-profile-zhaojun-93499",
+                "skill-profile-zhaojun-663401"
+              ],
+              "condition_refs": [
+                "q-start"
+              ],
+              "operation_route_ids": [
+                "zhaojun"
+              ],
+              "late_variant_ids": [
+                "coin-revive"
+              ],
+              "major_variant_ids": [
+                "zhaojun-double"
+              ],
+              "overrides": {
+                "compositions": {
+                  "early": []
+                },
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "coin-revive",
+                      "name": "古币复生基础组合",
+                      "variant_id": "coin-revive",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:636215",
+                        "card:636220",
+                        "card:636221"
+                      ],
+                      "effect_cards": [
+                        "card:311002",
+                        "card:7073",
+                        "card:7074",
+                        "card:7079",
+                        "card:7080",
+                        "card:7502"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-zhaojun-early"
+                          ],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-zhaojun-middle"
+                          ],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-zhaojun-late"
+                          ],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:34",
+                          "skills": [],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "冻结补高阶牌与成长，条件到位时保留第二输出。",
+                  "claim_refs": [
+                    "q-start",
+                    "q-double",
+                    "q-luna"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "变化不保证花木兰，露娜循环受强化与公共牌库限制。",
+                  "claim_refs": [
+                    "q-start",
+                    "q-double",
+                    "q-luna"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要花木兰、上官婉儿和古币来源；核心迟迟不到时，继续用李信或李白过渡。",
+                  "claim_refs": [
+                    "q-start",
+                    "q-double",
+                    "q-luna"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需要管理露娜打出位置、资源预算和技能时机。",
+                  "claim_refs": [
+                    "q-start",
+                    "q-double",
+                    "q-luna"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "较早取得花木兰、有适合的冻结强化时考虑；已有持续冻结成长的司空震时可双输出。",
+                "avoid": "无法较早取得花木兰时保留当前高阶战力，比较高阶大河；不为双输出硬追司空震。",
+                "signals": {
+                  "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                  "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "",
+                    "claim_refs": [],
+                    "inference": false
+                  },
+                  "middle": {
+                    "text": "较早取得花木兰并有合适冻结强化时启动；已有持续冻结成长的司空震，可与花木兰一起输出。",
+                    "claim_refs": [
+                      "q-start",
+                      "q-double"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+                    "claim_refs": [
+                      "q-double",
+                      "q-luna",
+                      "wanner-awaken",
+                      "revive-budget"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            },
+            {
+              "id": "ying",
+              "player": "player:43",
+              "name": "嬴律",
+              "claim_refs": [
+                "ying-resource",
+                "ying-luna-competition",
+                "ying-lowpressure",
+                "ying-first-second-skill",
+                "ying-early-auction",
+                "ying-six-redistribution",
+                "ying-avoid-decisions",
+                "ying-combat-decisions",
+                "ying-outcome-decisions",
+                "ying-capital-timing",
+                "ying-return-timing",
+                "ying-first-purchase",
+                "ying-boming-tradeoff",
+                "ying-contract-bottle",
+                "zhong-fast-death-tools",
+                "ying-auction-buy-budget",
+                "ying-lifesteal-sustain",
+                "hero-quality-ying",
+                "tier-guide-ying-early",
+                "tier-guide-ying-middle",
+                "tier-guide-ying-late",
+                "doc-e0719d1a657d2c384638e7",
+                "v4-hero-ying-aa16d85e",
+                "v4-hero-ying-33015694",
+                "v4-hero-ying-b23f840f",
+                "v4-hero-ying-08b61c17",
+                "v4-hero-ying-8db1cc1d",
+                "v4-hero-ying-ba3bf325",
+                "v4-hero-ying-8f7bdbb4",
+                "v4-hero-ying-2d4bb89f",
+                "v4-hero-ying-e5291a0e",
+                "v4-hero-ying-990005f8",
+                "v4-hero-ying-57f013db",
+                "v4-hero-ying-076eedda",
+                "v4-hero-ying-81e70001",
+                "v4-hero-ying-4a469f4c",
+                "v4-operation-ying-early",
+                "v4-operation-ying-middle",
+                "v4-operation-ying-late",
+                "v4-improvement-ying",
+                "v4-talents-ying",
+                "v4-talent-ying-636220",
+                "v4-talent-ying-636215",
+                "v4-talent-ying-636221",
+                "v4-effect-ying-7123",
+                "v4-effect-ying-7084",
+                "principle-ying",
+                "skill-profile-ying-94399",
+                "skill-profile-ying-664301"
+              ],
+              "condition_refs": [
+                "ying-resource"
+              ],
+              "operation_route_ids": [
+                "ying"
+              ],
+              "late_variant_ids": [
+                "coin-revive"
+              ],
+              "major_variant_ids": [],
+              "overrides": {
+                "compositions": {
+                  "early": [
+                    {
+                      "hero": "card:1941",
+                      "necessity": "optional",
+                      "role": "开局缺前排时顺路补一张，不专门追40级。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1731",
+                      "necessity": "optional",
+                      "role": "已有苏烈等河洛前排时顺路补首张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1971",
+                      "necessity": "optional",
+                      "role": "当前战力能够过渡时顺路补一张。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    },
+                    {
+                      "hero": "card:1681",
+                      "necessity": "optional",
+                      "role": "补一张能改善当前战斗、争取胜利时购买。",
+                      "replaces": "",
+                      "replacement_note": ""
+                    }
+                  ]
+                },
+                "overview": {
+                  "version": 1,
+                  "presets": [
+                    {
+                      "id": "coin-revive",
+                      "name": "古币复生基础组合",
+                      "variant_id": "coin-revive",
+                      "description": "",
+                      "placements": [],
+                      "reserves": [],
+                      "talents": [
+                        "card:615006",
+                        "card:636215",
+                        "card:636220",
+                        "card:636221"
+                      ],
+                      "effect_cards": [
+                        "card:311002",
+                        "card:7073",
+                        "card:7074",
+                        "card:7079",
+                        "card:7080",
+                        "card:7502"
+                      ],
+                      "talent_note": "按当轮保血、成长和资源缺口选择，不要求全部取得。",
+                      "effect_note": "按目标、打出位置和本轮资源需求使用；各牌不能互相替代全部作用。",
+                      "stages": {
+                        "early": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-ying-early"
+                          ],
+                          "reserves": []
+                        },
+                        "middle": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-ying-middle"
+                          ],
+                          "reserves": []
+                        },
+                        "late": {
+                          "rounds": "",
+                          "description": "",
+                          "claim_refs": [
+                            "v4-operation-ying-late"
+                          ],
+                          "reserves": []
+                        }
+                      },
+                      "players": [
+                        {
+                          "player": "player:43",
+                          "skills": [
+                            "card:94303",
+                            "card:94304",
+                            "card:94305",
+                            "card:94307",
+                            "card:94309",
+                            "card:94311",
+                            "card:94313",
+                            "card:94314",
+                            "card:94315",
+                            "card:94319",
+                            "card:94322",
+                            "card:94323",
+                            "card:94325",
+                            "card:94351",
+                            "card:94353"
+                          ],
+                          "secret": [],
+                          "exclusive": [],
+                          "description": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "assessment": [
+                {
+                  "dimension": "advantages",
+                  "text": "战略与决策提供资源、首购复制和体系补强。",
+                  "claim_refs": [
+                    "ying-resource",
+                    "ying-luna-competition",
+                    "ying-lowpressure",
+                    "ying-first-second-skill",
+                    "ying-early-auction",
+                    "ying-six-redistribution",
+                    "ying-avoid-decisions",
+                    "ying-combat-decisions",
+                    "ying-outcome-decisions",
+                    "ying-capital-timing",
+                    "ying-return-timing",
+                    "ying-first-purchase",
+                    "ying-boming-tradeoff",
+                    "ying-contract-bottle",
+                    "zhong-fast-death-tools",
+                    "ying-auction-buy-budget",
+                    "ying-lifesteal-sustain"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "disadvantages",
+                  "text": "全场决策也会帮助对手，操作与资源时机判断较复杂。",
+                  "claim_refs": [
+                    "ying-resource",
+                    "ying-luna-competition",
+                    "ying-lowpressure",
+                    "ying-first-purchase",
+                    "ying-first-second-skill",
+                    "ying-early-auction",
+                    "ying-avoid-decisions",
+                    "ying-combat-decisions",
+                    "ying-outcome-decisions",
+                    "ying-capital-timing",
+                    "ying-six-redistribution",
+                    "ying-return-timing",
+                    "ying-boming-tradeoff",
+                    "ying-contract-bottle",
+                    "ying-auction-buy-budget",
+                    "luna-elimination-pool"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "formation",
+                  "text": "需要花木兰、上官婉儿和古币来源；核心迟迟不到时，继续用李信或李白过渡。",
+                  "claim_refs": [
+                    "ying-resource",
+                    "ying-luna-competition",
+                    "ying-lowpressure",
+                    "ying-first-purchase",
+                    "ying-first-second-skill",
+                    "ying-early-auction",
+                    "ying-avoid-decisions",
+                    "ying-combat-decisions",
+                    "ying-outcome-decisions",
+                    "ying-capital-timing",
+                    "ying-six-redistribution",
+                    "ying-return-timing",
+                    "ying-boming-tradeoff",
+                    "ying-contract-bottle",
+                    "ying-auction-buy-budget",
+                    "luna-elimination-pool"
+                  ],
+                  "inference": true
+                },
+                {
+                  "dimension": "operation",
+                  "text": "需要管理露娜打出位置、资源预算和技能时机。",
+                  "claim_refs": [
+                    "ying-resource",
+                    "ying-luna-competition",
+                    "ying-lowpressure",
+                    "ying-first-purchase",
+                    "ying-first-second-skill",
+                    "ying-early-auction",
+                    "ying-avoid-decisions",
+                    "ying-combat-decisions",
+                    "ying-outcome-decisions",
+                    "ying-capital-timing",
+                    "ying-six-redistribution",
+                    "ying-return-timing",
+                    "ying-boming-tradeoff",
+                    "ying-contract-bottle",
+                    "ying-auction-buy-budget",
+                    "luna-elimination-pool"
+                  ],
+                  "inference": true
+                }
+              ],
+              "selection": {
+                "adopt": "能结合所选战略保血，并能观察全场资源与同行露娜需求时考虑。",
+                "avoid": "开放决策会让同行先拿核心，或棋手升级会导致当轮淘汰时，先保质量和自身获取资源。",
+                "signals": {
+                  "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                  "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "低压运营需要保血争胜维持等级收益，风险对冲的精简连败开局则承担更高掉血风险；两者不能混用。沉淀收益配资本杠杆偏向积累资源，并不直接代表场上占优，仍要买必要战力。",
+                    "claim_refs": [
+                      "ying-lowpressure",
+                      "ying-first-second-skill",
+                      "ying-capital-timing"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "取得花木兰后逐步换下过渡输出，补上官婉儿觉醒；空降人才、首购激励帮助补牌，决策开放时同时观察同行获取露娜的机会。",
+                    "claim_refs": [
+                      "ying-early-auction",
+                      "ying-first-second-skill",
+                      "ying-first-purchase",
+                      "ying-contract-bottle"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                    "claim_refs": [
+                      "ying-return-timing",
+                      "ying-six-redistribution",
+                      "ying-resource",
+                      "revive-budget"
+                    ],
+                    "inference": true
+                  }
+                }
+              }
+            }
+          ],
+          "assessment": [
+            {
+              "dimension": "ceiling",
+              "text": "完整产币与复生循环可持续提高本轮输出；仍受复生上限、装备和对手控制限制。",
+              "claim_refs": [
+                "coin-loop",
+                "revive-cap-pending",
+                "mulan-vs-yaomei-lixin"
+              ],
+              "inference": true
+            },
+            {
+              "dimension": "floor",
+              "text": "核心与婉儿觉醒不足时，复生预算与保血能力会下降。",
+              "claim_refs": [
+                "review-short-revives",
+                "review-cost"
+              ],
+              "inference": true
+            },
+            {
+              "dimension": "environment",
+              "text": "同行持有露娜、强控制及风筝会改变资源与装备选择，缺少统一版本胜率统计。",
+              "claim_refs": [
+                "luna-elimination-pool",
+                "ailin-chase"
+              ],
+              "inference": true
+            }
+          ]
+        }
+      }
     }
   ],
   "conflicts": [],
@@ -614731,7 +616777,7 @@
       "path": "knowledge/players/嬴律.md"
     }
   ],
-  "revision": "d7bc431b9d5ed330b89c",
+  "revision": "9eea68a82402ac0589a7",
   "reading_layout": {
     "version": 4,
     "claim_locations": {

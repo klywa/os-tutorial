@@ -9,6 +9,34 @@ from lineup_layout import reading_document
 
 
 class GuideV4Tests(unittest.TestCase):
+    def test_operation_chapters_merge_before_positions_without_changing_ownership(self):
+        n=self.note()
+        for cid,section,scope in [('op-old','关键操作顺序','common'),('op-new','关键操作','one')]:
+            n['claims'].append({'id':cid,'section':section,'text':cid,'kind':'general_strategy','evidence':[]})
+            owner=n['meta'] if scope=='common' else n['meta']['player_branches'][0]
+            owner.setdefault('common_claim_refs' if scope=='common' else 'claim_refs',[]).append(cid)
+        baseline=deepcopy(n)
+        text=guide.render(n,'one')
+        self.assertEqual(text.count('## 关键操作\n'),1)
+        self.assertNotIn('## 关键操作顺序\n',text)
+        self.assertLess(text.index('## 关键操作\n'),text.index('## 站位技巧\n'))
+        doc=reading_document(n,'one')
+        self.assertEqual(doc['section_aliases']['关键操作顺序'],'关键操作')
+        parsed=guide.parse(text.replace('op-old','edited operation'),n,'one')
+        branches.apply_sections(n,'common',parsed['common'])
+        self.assertEqual(next(c for c in n['claims'] if c['id']=='op-old')['section'],'关键操作顺序')
+        self.assertEqual(next(c for c in n['claims'] if c['id']=='op-new'),baseline['claims'][-1])
+        self.assertNotIn('op-new',guide.render(n,'two'))
+
+    def test_legacy_operation_chapter_remains_in_original_layouts(self):
+        for version in (2,3):
+            n=self.note();n['reading_layout']['version']=version
+            n['claims'].append({'id':'op','section':'关键操作顺序','text':'operation','kind':'general_strategy','evidence':[]})
+            n['meta']['common_claim_refs'].append('op')
+            text=guide.render(n,'one')
+            self.assertIn('## 关键操作顺序\n',text)
+            self.assertGreater(text.index('## 关键操作顺序\n'),text.index('## 站位技巧\n'))
+
     def test_principle_first_for_different_win_conditions_and_roundtrip(self):
         for text in ('甲承担输出，资源优先提升甲的等级，以持续伤害建立优势。',
                      '甲乙共同输出，靠经济技能更快补齐阵容，保留工具牌反复触发收益。'):
