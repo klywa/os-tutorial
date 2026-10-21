@@ -56,6 +56,12 @@ def blocks(note, bid):
         if block.get('claim'):
             block = {**block, 'text':guide.claim_text(claims[block['claim']],4)}
         chapters[current].append(block)
+    if note['reading_layout'].get('purchase_lists_first'):
+        rows=chapters.get('阵容组成与运营节奏',[])
+        starts=[i for i,b in enumerate(rows) if b['text'].startswith('### ')]+[len(rows)]
+        for start,end in reversed(list(zip(starts,starts[1:]))):
+            body=rows[start+1:end]
+            rows[start+1:end]=[b for b in body if b.get('kind')=='member']+[b for b in body if b.get('kind')!='member']
     order = (['核心原理'] if '核心原理' in chapters else []) + ['打法评价','定阵条件','核心机制','英雄','阵容组成与运营节奏','拍卖','关键装备','推荐天赋','棋手技能推荐','关键效果牌','站位技巧','制敌手段','克制手段']
     extras = [x for x in chapters if x not in order+['第一轮拍卖','第二轮拍卖','第三轮拍卖','推荐装备','附录','关联知识']]
     out = opening

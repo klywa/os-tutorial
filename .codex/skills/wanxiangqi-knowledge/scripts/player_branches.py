@@ -328,7 +328,9 @@ def render_adaptations(note, heading=True):
         for label,value in selection.get('signals',{}).items():lines+=[label+'：'+value,'']
         lines+=['#### 阶段强度','']
         for stage,label in STRENGTH_STAGES.items():
-            lines+=['- **'+label+'：** '+strength_text(selection.get('stage_strength',{}).get(stage,{})),'']
+            text=strength_text(selection.get('stage_strength',{}).get(stage,{}))
+            if note.get('reading_layout',{}).get('version')==4:text=text.removeprefix('推测：')
+            lines+=['- **'+label+'：** '+text,'']
     return lines
 
 

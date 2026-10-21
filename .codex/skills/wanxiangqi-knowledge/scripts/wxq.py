@@ -212,7 +212,7 @@ def render_note(note, sources):
             condition = c.get('condition', '').strip()
             if condition and condition not in text:
                 text = f"当{condition}{'' if condition.endswith('时') else '时'}，{text}"
-            if c.get('inference'):
+            if c.get('inference') and not (note['type']=='player' and note.get('reading_layout',{}).get('version')==4):
                 text = '推测：' + text
             lines += [text if note['type']=='player' and text.startswith('### ') else '- ' + text]
             lines += ['']

@@ -45,3 +45,7 @@ HTML导出完成：exports/瑶妹牺牲流李信.html，沿用常小娥参考页
 采集锁故障：BV1PRhC65E9t在transcribing阶段database is locked，保留state/checkpoint。BV1ErJ46ZEbm已generation5运行。queue/topics/network均delete journal。enqueue与link_jobs.reconcile在BEGIN IMMEDIATE内执行transcript_errors全文件校验，疑似阻塞进度更新；需隔离复现。现有4个crawler worker，不可中断。
 
 2026-10-21开发启动：frontend/.env.development.local属于本机忽略配置，曾为临时双入口验收设WXQ_API_TARGET=8767；当前仅8765后端运行，导致5173代理502/ECONNREFUSED。已改为8765，全部4接口经代理恢复200。
+
+香香：旧doc将10/15/20/30四档直接推为整局4次；官网卡牌只有四档文字，未写总上限。老贼03:45-04:40明确第五次起仍给战术，62:04后拿到50档。需区分当时体验服与现版本；搜索结果18183有多处明显机制/算术错误，不作裁决依据。
+
+武器次数裁决依据已补：从未完成但可解码的公开视频下载片段提取3730/3750/3770/3785秒画面，实际看到手中武器改造和5/50计数，3785秒字幕选择追击，证明老贼视频版本四次后仍可改造。只记录已核对画面，不声称全视频重新下载完成。

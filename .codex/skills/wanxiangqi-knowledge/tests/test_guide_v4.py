@@ -88,6 +88,16 @@ class GuideV4Tests(unittest.TestCase):
         n = self.note(); n['reading_layout']['version'] = 3
         self.assertIn('推测：', guide.render(n, 'one'))
 
+    def test_reviewed_purchase_list_precedes_late_operation_and_roundtrips(self):
+        n=self.note()
+        n['reading_layout']['purchase_lists_first']=True
+        n['meta']['compositions']['late']=[{'hero':'card:a','necessity':'required','role':'先买关键牌。','replaces':'','replacement_note':''},{'hero':'card:b','necessity':'optional','role':'有位置再买工具。','replaces':'','replacement_note':''}]
+        n['claims'].append({'id':'late-operation','section':'后期运营','text':'成型后再升级。','kind':'conditional_strategy','evidence':[]})
+        n['meta']['common_claim_refs'].append('late-operation')
+        text=guide.render(n,'one')
+        self.assertLess(text.index('有位置再买工具。'),text.index('成型后再升级。'))
+        self.assertEqual(guide.parse(text,n,'one'),guide.initial_sections(n,'one'))
+
     def test_other_player_summary_cannot_hide_this_players_source(self):
         n=self.note()
         n['reading_layout']['supporting_claim_refs']={'one':['two']}

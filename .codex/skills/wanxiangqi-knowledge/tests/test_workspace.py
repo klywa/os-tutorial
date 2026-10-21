@@ -9,6 +9,22 @@ import workspace
 
 
 class WorkspaceTests(unittest.TestCase):
+    def test_explicit_target_does_not_create_reverse_overlap_links(self):
+        from copy import deepcopy
+        flexible={'id':'flexible','type':'lineup','title':'组合库','entities':['pending:共同英雄'],
+                  'claims':[],'related':[],'meta':{'late_variants':[{'id':'late'}]}}
+        explicit={'id':'explicit','type':'lineup','title':'明确关系攻略','entities':['pending:共同英雄'],
+                  'claims':[],'related':[],'explicit_relationships':True}
+        items=[deepcopy(flexible),deepcopy(explicit)]
+        workspace.prepare(self.root,items)
+        self.assertEqual(items[0]['related'],[])
+        self.assertEqual(items[1]['related'],[])
+        # Legacy overlap linking remains available when both notes opt into it.
+        legacy=deepcopy(explicit);legacy.pop('explicit_relationships')
+        items=[deepcopy(flexible),legacy]
+        workspace.prepare(self.root,items)
+        self.assertEqual([link['id'] for link in items[0]['related']],['explicit'])
+
     def test_replay_updates_recover_with_save_transaction(self):
         from unittest.mock import patch
         note=self.seed();path='knowledge/replays/reviewed.json'

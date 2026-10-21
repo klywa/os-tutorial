@@ -38,6 +38,20 @@ class PlayerNoteTests(unittest.TestCase):
         _,p=self.sample()
         self.assertEqual(len(reading_document(p)['sections']),5)
 
+    def test_v4_player_reading_hides_editorial_prefix_without_losing_inference(self):
+        n,p=self.sample()
+        p['claims'][0]['inference']=True
+        n['meta']['player_branches'][0]['selection']['stage_strength']['early']['inference']=True
+        branches.update_player_adaptations([n,p])
+        self.assertIn('推测：',wxq.render_note(p,{}))
+        p['reading_layout']={'version':4}
+        before=deepcopy(p)
+        text=wxq.render_note(p,{})
+        self.assertNotIn('推测：',text)
+        self.assertEqual(p,before)
+        self.assertTrue(p['claims'][0]['inference'])
+        self.assertTrue(p['lineup_adaptations'][0]['selection']['stage_strength']['early']['inference'])
+
     def test_old_selection_edit_retains_stage_strength_and_new_edit_is_local(self):
         n,_=self.sample();before=deepcopy(n['meta']['player_branches'][0]['selection']['stage_strength'])
         legacy='| 判断 | 内容 |\n|---|---|\n| 采用 | 新采用 |\n| 转向 | 旧转向 |'

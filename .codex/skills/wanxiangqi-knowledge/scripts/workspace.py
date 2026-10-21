@@ -176,6 +176,7 @@ def prepare(root, items):
         existing_links = {link['id'] for link in note.get('related', [])}
         for target in items:
             if note.get('explicit_relationships'):continue
+            if target.get('explicit_relationships'):continue
             if target['type']=='player' and target['id'] not in existing_links:continue
             if target['id'] != note['id'] and target['id'] not in existing_links and (note.get('meta', {}).get('late_variants') or target.get('meta', {}).get('late_variants')) and set(note.get('entities', [])) & set(target.get('entities', [])):
                 note.setdefault('related', []).append({'id': target['id'], 'type': target['type'], 'title': target['title']})
