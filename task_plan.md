@@ -92,3 +92,8 @@
 - 来源登记、材料恢复与核查：complete
 - 语义融合与双向同步：complete
 - 校验、来源finish与网页验收：complete
+
+# 话术规范与八份阵容笔记提质（2026-10-21）
+- skill统一与独立试写：complete
+- 八分支逐段改写与同源同步：complete
+- 语义核查、回归与网页验收：complete
