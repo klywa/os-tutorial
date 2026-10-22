@@ -311,7 +311,7 @@ def update_player_adaptations(items):
                     'selection':deepcopy(b.get('selection',{})),
                     'required_factions':[names.get(f,f) for f in meta['required_factions']],
                     'advantages':rows.get('advantages','暂无已确认结论'), 'disadvantages':rows.get('disadvantages','暂无已确认结论')})
-        if adaptations:note['lineup_adaptations']=adaptations
+        if adaptations or 'lineup_adaptations' in note:note['lineup_adaptations']=adaptations
 
 
 def render_adaptations(note, heading=True):

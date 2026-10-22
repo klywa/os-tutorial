@@ -291,7 +291,7 @@ def apply_transaction(root, transaction):
             raise ValueError('非法迁移路径')
         if path not in active and target.exists():
             # Keep the complete original for recovery before removing the old filename.
-            wxq.atomic_text(target.with_suffix(target.suffix + '.bak'), target.read_text(encoding='utf-8'))
+            wxq.retry_file_access(lambda: wxq.backup_file(target), crt_access=True)
             target.unlink()
     for path,data in transaction.get('replay_updates',{}).items():wxq.atomic_json(root/path,data)
     (root / 'knowledge/pending-save.json').unlink(missing_ok=True)

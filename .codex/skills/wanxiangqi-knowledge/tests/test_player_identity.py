@@ -92,7 +92,7 @@ class PlayerIdentityTests(unittest.TestCase):
         self.assertEqual(first[0]['path'],'knowledge/players/昭君.md')
         self.assertIn('昭君：冻结教学',first[0]['aliases'])
         self.assertFalse((self.root/old['path']).exists())
-        self.assertTrue((self.root/(old['path']+'.bak')).exists())
+        self.assertTrue(list((self.root/'raw/backups'/Path(old['path']).parent).glob(Path(old['path']).name+'.*.bak')))
         migrate(self.root);self.assertEqual(workspace.notes(self.root),first)
 
 if __name__=='__main__':unittest.main()

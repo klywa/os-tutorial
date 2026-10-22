@@ -11,6 +11,7 @@ import shutil
 import sys
 import tempfile
 import time
+import uuid
 
 ROOT = Path(__file__).resolve().parents[4]
 CATEGORIES = ['players', 'heroes', 'equipment', 'talents', 'derivatives', 'effect-cards', 'player-skills']
@@ -46,6 +47,21 @@ def read_json(path, default=None):
     return json.loads(retry_file_access(lambda: Path(path).read_text(encoding='utf-8-sig'), crt_access=True)) if Path(path).exists() else default
 
 
+def backup_file(path):
+    """Keep knowledge recovery copies outside the live knowledge tree."""
+    path = Path(path).resolve()
+    knowledge = next((parent for parent in path.parents if parent.name == 'knowledge'), None)
+    if knowledge is None:
+        target = path.with_suffix(path.suffix + '.bak')
+    else:
+        relative = path.relative_to(knowledge)
+        folder = knowledge.parent / 'raw/backups/knowledge' / relative.parent
+        folder.mkdir(parents=True, exist_ok=True)
+        target = folder / (relative.name + '.' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ') + '.' + uuid.uuid4().hex + '.bak')
+    shutil.copy2(path, target)
+    return target
+
+
 def atomic_text(path, text, cancelled=None):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -58,7 +74,7 @@ def atomic_text(path, text, cancelled=None):
     try:
         def replace():
             if path.exists():
-                shutil.copy2(path, path.with_suffix(path.suffix + '.bak'))
+                backup_file(path)
             temporary.replace(path)
         retry_file_access(replace, cancelled, crt_access=True)
     finally:

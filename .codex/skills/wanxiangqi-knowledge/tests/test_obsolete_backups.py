@@ -11,7 +11,8 @@ class ObsoleteBackupTests(unittest.TestCase):
             md.write_text('# 原正文\n','utf-8');data.write_text('{"original":true}\n','utf-8')
             with workspace.store_lock(root):workspace.persist(root,[],[md.relative_to(root).as_posix(),data.relative_to(root).as_posix()])
             self.assertFalse(md.exists());self.assertFalse(data.exists())
-            self.assertEqual(md.with_suffix('.md.bak').read_text('utf-8'),'# 原正文\n')
-            self.assertEqual(data.with_suffix('.json.bak').read_text('utf-8'),'{"original":true}\n')
+            self.assertEqual(next((root/'raw/backups/knowledge/lineups').glob('旧名称.md.*.bak')).read_text('utf-8'),'# 原正文\n')
+            self.assertEqual(next((root/'raw/backups/knowledge/lineups').glob('旧名称.json.*.bak')).read_text('utf-8'),'{"original":true}\n')
+            self.assertFalse(list((root/'knowledge').rglob('*.bak*')))
 
 if __name__=='__main__':unittest.main()
