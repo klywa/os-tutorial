@@ -189,6 +189,39 @@ def _render_generic(note):
     return '\n'.join(lines)+'\n'
 
 def reading_document(note, player=None):
+    result=_reading_document(note,player)
+    if note.get('type')=='lineup':
+        result['overview_operations']=overview_operations(note,result)
+    return result
+
+
+def overview_operations(note, document):
+    """Read-only reuse of visible teaching paragraphs; never edit source locations."""
+    import player_branches as branches
+    import guide_layout as guide
+    selected=document.get('projected_note',note)
+    claims={c.get('id'):c for c in selected.get('claims',[])}
+    version=note.get('reading_layout',{}).get('version')
+    rows={key:[] for key in ('early','middle','late','improvement')}
+    if branches.enabled(note) and version in (2,3,4):
+        blocks=document.pop('_overview_blocks',None)
+        if blocks is None:blocks=guide.blocks(note,document['branch'])
+    else:
+        blocks=[{'claim':cid,'text':guide.claim_text(c,version)} for cid,c in claims.items()]
+    for block in blocks:
+        cid=block.get('claim');claim=claims.get(cid)
+        if not claim:continue
+        loc=guide.location(note,claim)
+        target=next((key for key,label in guide.STAGES.items() if label in loc),None)
+        if '后期提升思路' in loc or claim['section']=='后期提升思路':target='improvement'
+        if not target:continue
+        routes=[r for r in selected.get('meta',{}).get('operation_routes',[]) if cid in r.get('phases',{}).get(target,[])]
+        rows[target].append({'markdown':block['text'],'claim_refs':[cid],
+                             'route_ids':[r['id'] for r in routes],'route_names':[r['name'] for r in routes]})
+    return rows
+
+
+def _reading_document(note, player=None):
     """Read-only presentation projection shared with the exported Markdown."""
     result = {'note_id': note['id'], 'revision': note.get('revision', ''),
               'profile': None, 'sections': [], 'section_aliases': {}}
@@ -215,7 +248,8 @@ def reading_document(note, player=None):
         if note.get('reading_layout',{}).get('version') in (2,3,4):
             import guide_layout
             from original_layout import split_chapters
-            text=guide_layout.render(_family,b['id']);body=split_chapters(text)
+            result['_overview_blocks']=guide_layout.blocks(_family,b['id'])
+            text='\n\n'.join(block['text'] for block in result['_overview_blocks'])+'\n';body=split_chapters(text)
             result['profile']='lineup-v5';result['layout_version']=note['reading_layout']['version']
             result['opening']=text.split('\n\n',1)[1].split('\n## ',1)[0].strip()
             result['sections']=[{'id':f'chapter-{i+1}','title':s,'markdown':value+'\n'} for i,(s,value) in enumerate(body.items())]

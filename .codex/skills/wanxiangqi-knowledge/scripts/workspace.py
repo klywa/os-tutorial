@@ -198,11 +198,24 @@ def make_transaction(root, items, obsolete=None, ignore_issues=(), expected_mark
     prepare(root, items)
     obsolete=list(dict.fromkeys([*(obsolete or []),*(old_paths[n['id']] for n in items if n['type']=='player' and old_paths.get(n['id']) and old_paths[n['id']]!=n['path'])]))
     from markdown_sync import outputs
-    from player_branches import enabled
+    from player_branches import enabled,document_path
     from markdown_sync import status
     before_sync=status(root)
+    occupied={n['path'].casefold() for n in items}
+    for note in items:
+        if not enabled(note):continue
+        for branch in note['meta']['player_branches']:
+            path=document_path(note,branch).casefold()
+            if path in occupied:raise Conflict('棋手文件名与其他笔记冲突，请使用其他标题')
+            occupied.add(path)
     files, sync_state, blocked = outputs(root, items, ignore_issues)
+    retired=[p for p,base in before_sync['files'].items() if p not in files and base['note'] not in blocked]
+    for path in files:
+        if path not in before_sync['files'] and (root/path).exists():
+            raise Conflict('改名后的棋手文件已存在，请使用其他笔记标题')
+    obsolete=list(dict.fromkeys([*obsolete,*retired]))
     expected={p:before_sync['files'].get(p,{}).get('hash') for p in files}
+    expected.update({p:before_sync['files'][p]['hash'] for p in retired})
     expected.update(expected_markdown or {})
     return {'index': {'schema_version': 5 if any(enabled(n) for n in items) else 4, 'notes': items},
             'obsolete': obsolete or [], 'branch_files': files, 'sync_state': sync_state, 'blocked_notes': sorted(blocked),
@@ -229,6 +242,18 @@ def apply_transaction(root, transaction):
     items = transaction['index']['notes']
     from markdown_sync import digest
     skip_files=set()
+    preserved_obsolete=set()
+    for path in transaction.get('obsolete',[]):
+        base=transaction.get('before_sync_state',{}).get('files',{}).get(path)
+        if not base or not (root/path).exists():continue
+        external=(root/path).read_text('utf-8-sig')
+        if digest(external)==transaction.get('expected_markdown',{}).get(path):continue
+        preserved_obsolete.add(path)
+        state=transaction['sync_state'];state['files'][path]=base
+        issue={'note':base['note'],'path':path,'kind':'conflict','message':'改名期间旧Markdown被外部修改，已保留文件，请合并或恢复已保存内容',
+               'base':base['document'],'saved':base['document'],'external':external}
+        issue['id']=digest(str(issue))[:20]
+        if not any(i.get('id')==issue['id'] for i in state['issues']):state['issues'].append(issue)
     for path,text in transaction.get('branch_files',{}).items():
         actual=digest((root/path).read_text('utf-8-sig')) if (root/path).exists() else None
         if path in transaction.get('expected_markdown',{}) and actual not in (transaction['expected_markdown'][path],digest(text)):
@@ -260,6 +285,7 @@ def apply_transaction(root, transaction):
         wxq.atomic_json(root / 'knowledge/markdown-sync.json', transaction['sync_state'])
     active = {n['path'] for n in items}
     for path in transaction.get('obsolete', []):
+        if path in preserved_obsolete:continue
         target = (root / path).resolve()
         if not target.is_relative_to((root / 'knowledge').resolve()):
             raise ValueError('非法迁移路径')
@@ -533,6 +559,13 @@ def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False)
         if payload.get('revision') != note.get('revision'):
             raise Conflict('笔记已被其他操作更新，请重新载入后合并你的草稿')
         before = deepcopy(note)
+        if 'title' in payload:
+            title=payload['title']
+            if not isinstance(title,str) or not title.strip():raise ValueError('请填写笔记标题')
+            title=title.strip();filename(title)
+            if any(n['id']!=nid and n['type']==note['type'] and n['title'].strip().casefold()==title.casefold() for n in items):
+                raise ValueError('同类型笔记标题已存在，请使用其他标题')
+            payload={**payload,'title':title}
         if note['type']=='player':
             from player_identity import bind,catalog
             bind(note,catalog(root))
@@ -547,7 +580,7 @@ def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False)
         if enabled(note):
             note['entity_names'].update({e['id']:e['name'] for e in wxq.entities(root)})
             updates=payload.get('scopes',[{'scope':payload.get('scope','common'),'sections':sections}])
-            if not isinstance(updates,list) or not updates:raise ValueError('缺少编辑范围')
+            if not isinstance(updates,list) or (not updates and 'title' not in payload):raise ValueError('缺少编辑范围')
             for update in updates:
                 if not isinstance(update,dict) or not isinstance(update.get('sections'),dict):raise ValueError('编辑范围格式无效')
                 apply_sections(note,update['scope'],update['sections'])
@@ -558,13 +591,14 @@ def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False)
             validate_meta(root,note['meta'])
             from tactics import validate as validate_tactics
             validate_tactics(note['meta'],lambda value:None,note['claims'])
-            if payload.get('title',note['title']) != note['title']:
-                raise ValueError('棋手文件标题请通过打法重命名入口修改')
+            if 'title' in payload and payload['title']!=note['title']:
+                note['title']=payload['title']
+                note['manual_fields']=sorted(set(note.get('manual_fields',[])+['title']))
             if 'aliases' in payload:
                 if not isinstance(payload['aliases'],list) or not all(isinstance(v,str) for v in payload['aliases']):raise ValueError('别名格式无效')
                 note['aliases'] = payload['aliases']
             if note != before:
-                note.setdefault('history',[]).append({'at':wxq.now(),'origin':'manual','previous':{k:before.get(k) for k in ['claims','meta','revision']}})
+                note.setdefault('history',[]).append({'at':wxq.now(),'origin':'manual','previous':{k:before.get(k) for k in ['title','aliases','claims','meta','revision']}})
                 if not _dry_run:persist(root,items)
                 else:prepare(root,items)
             return note
