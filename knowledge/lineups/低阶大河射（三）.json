@@ -1,0 +1,3521 @@
+{
+  "id": "b22-low-dahe-shoot",
+  "type": "lineup",
+  "title": "低阶大河射",
+  "topic": "低阶大河射",
+  "aliases": [],
+  "entities": [
+    "card:1561",
+    "card:1563",
+    "card:1681",
+    "card:1683",
+    "card:1731",
+    "card:1733",
+    "card:1741",
+    "card:1743",
+    "card:1751",
+    "card:1753",
+    "card:1761",
+    "card:1763",
+    "card:1821",
+    "card:1823",
+    "card:1861",
+    "card:1863",
+    "card:1891",
+    "card:1893",
+    "card:1941",
+    "card:1943",
+    "card:1971",
+    "card:1973",
+    "card:1991",
+    "card:1993",
+    "card:5031",
+    "card:5033",
+    "card:5051",
+    "card:5053",
+    "card:5061",
+    "card:5063",
+    "card:5111",
+    "card:5113",
+    "card:5771",
+    "card:5773",
+    "card:622008",
+    "card:641015",
+    "card:643205",
+    "card:643502",
+    "card:643604",
+    "card:643703",
+    "card:643803",
+    "card:643804",
+    "card:7032",
+    "card:7041",
+    "card:7081",
+    "card:7083",
+    "card:94300",
+    "card:94304",
+    "card:94305",
+    "card:94306",
+    "card:94309",
+    "card:94352",
+    "card:94353",
+    "player:43"
+  ],
+  "core": [
+    "card:5111",
+    "card:1991"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-principle",
+      "section": "核心原理",
+      "text": "猪八戒在前排承伤成长，公孙离利用击退和远程普攻输出，形成双核。嬴律以低压运营的团队等级或基层提拔的低阶英雄等级帮助前中期取得质量优势，随后用合成与夺取把过渡英雄等级集中给双核。云中君配合瑶、鬼谷子的装备分发定向增加成长，张良补压制；这套打法依赖双核实际战力，区别于靠全队等级强化棋手火力的香香开团射。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1348.83
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1434.5,
+          "end": 1493.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1704.35
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1551.88
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1608.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1408.14,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1582.87,
+          "end": 1608.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1375.89
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1524.62,
+          "end": 1581.65
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-early",
+        "b22-b22-low-dahe-shoot-owner-middle",
+        "b22-b22-low-dahe-shoot-owner-late",
+        "b22-b22-low-dahe-shoot-owner-hero-5111",
+        "b22-b22-low-dahe-shoot-owner-hero-1991",
+        "b22-b22-low-dahe-shoot-owner-hero-1561",
+        "b22-b22-low-dahe-shoot-owner-hero-5051",
+        "b22-b22-low-dahe-shoot-owner-hero-1891",
+        "b22-b22-low-dahe-shoot-owner-hero-5061",
+        "b22-b22-low-dahe-shoot-owner-hero-1861",
+        "b22-b22-low-dahe-shoot-owner-hero-1751"
+      ]
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-early",
+      "section": "前期运营及应变",
+      "text": "首回合低压成长尚未结算，优先购买能赢当前对手的前排与干将等输出，不能把低压视为开局必胜。后续按对手质量补弈星及承伤，过渡等级可由双核夺取回收。第一轮拍卖优先猪八戒，其次公孙离，再比较张良、瑶、云中君、鬼谷子。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1348.83
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-middle",
+      "section": "中期运营及应变",
+      "text": "3级找猪八戒、公孙离及低阶配套并打合成；鬼谷子优先在低阶阶段补觉醒。双核觉醒、关键低阶成员基本到位后升5级，缺少的少量低阶觉醒再用杨玉环补，不为理想全员状态耗尽保血空间。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1434.5,
+          "end": 1493.56
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-late",
+      "section": "后期运营及应变",
+      "text": "5级找太乙真人保护猪八戒，并继续打合成；后期资源可向猪八戒承伤倾斜，为公孙离争取输出时间。需要钟馗时，先用传承或遗志处理云中君等退场工具的等级。6级绝对压制会给其他玩家也提供减伤，先核对己方最高等级英雄有解控，并比较能否承受对手获得的收益。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1704.35
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-5111",
+      "section": "英雄",
+      "text": "**猪八戒：** 前排核心，以承伤提高生命上限并用范围技能输出。优先补觉醒与生存装备，后期资源倾斜有助于给公孙离争取时间；太乙真人第二条命能延长承伤成长。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1551.88
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-1991",
+      "section": "英雄",
+      "text": "**公孙离：** 远程主要输出与击退风筝核心，夺取回收退场工具等级。优先觉醒提高输出质量；免控、冰霜法杖和日渊按对手近身与收割需求选择。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1608.56
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-1561",
+      "section": "英雄",
+      "text": "**张良：** 提供压制控制，等级达到技能节点后进一步增强控制效果；压制不能用普通免控和驱散解除，保留其有用等级而非一概夺取。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1408.14,
+          "end": 1464.15
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-5051",
+      "section": "英雄",
+      "text": "**瑶：** 附身保护并分发装备，100级属性分享可回馈主力；名刀·司命与近卫荣耀等按实际威胁分配。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1582.87,
+          "end": 1608.56
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-1891",
+      "section": "英雄",
+      "text": "**鬼谷子：** 图腾与装备分发配合云中君，让装备较多的核心获得更多等级；优先补关键觉醒，后期工具位等级可按需要回收。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1375.89
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-5061",
+      "section": "英雄",
+      "text": "**云中君：** 按实际装备数量提供成长，瑶与鬼谷子的分发提高有效装备覆盖；升5级后补首张，决赛需要其他工具时再回收其等级。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1464.15
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 后期保护猪八戒，争取承伤和反伤继续生效的时间；牌库紧张时及时比较升级找牌，不能只等理想商店。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1551.88
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-hero-1751",
+      "section": "英雄",
+      "text": "**钟馗：** 决赛工具位，在处理退场工具等级后补入；不是开局固定占位。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1524.62,
+          "end": 1581.65
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-skills",
+      "section": "棋手技能推荐",
+      "text": "战略决策只对自身生效，至高决策对全场生效。低压运营与基层提拔服务前期质量，后续按实际连胜比较乘胜追击，或选固定收益、并购红利补找牌与合成资源。发布全场决策前比较对手同样得到的收益；首购激励可在其他玩家已花完资源时再发布。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 0.4,
+          "end": 416.54
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "经济与供牌收益用于频繁合成，战力与吸血帮助双核延续输出。人口只需补实际缺口，不为昂贵人口挤占合成资源；多个低阶英雄已在场时可比较小咖秀。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 799.79,
+          "end": 1034.37
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-equipment",
+      "section": "推荐装备",
+      "text": "公孙离先保证免控，再用冰霜法杖配击退限制近战，日渊补伤害和收割；猪八戒比较不死鸟之眼、生命魔典、反伤重甲。瑶分发名刀提高全队容错。云中君仍依赖装备成长时，不为随机神器过早分解全部普通装备。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-effects",
+      "section": "关键效果牌",
+      "text": "照影复制到双核时有价值；锦囊可找无阵营英雄补双核，传承与遗志留作后期工具退场。成长阶段重视供牌和打合成，装备重构服务双核多件装备，不以一局随机神器结果定优先级。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1008.69,
+          "end": 1121.85
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-low-dahe-shoot-owner-auction3",
+      "section": "第三轮拍卖",
+      "text": "新生力量补人口，一线生机同时提供棋手容错和名刀；天籁琴音可补后期太乙真人觉醒。缺装备用军械库，破境之证与众星拱月优先比较猪八戒收益。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1122.33,
+          "end": 1215.11
+        }
+      ]
+    },
+    {
+      "id": "fmt24-owner-1c619f6870a0",
+      "section": "关键装备",
+      "text": "**炽热支配者：** 唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。 先给公孙离免控，保证攻击和风筝动作。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 681.74,
+          "end": 709.73
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1408.14,
+          "end": 1434.08
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1581.65
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e15cedad54fc",
+      "section": "关键装备",
+      "text": "**寒霜侵袭：** 唯一。普通攻击减少目标15%移速，持续5秒，最多叠加5层。叠满后目标受到的伤害提高20%，持续5秒，冷却时间10秒。 给公孙离以普攻减速配合击退，限制近战接近。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8f2277daffb5",
+      "section": "关键装备",
+      "text": "**日渊：** 唯一，限定远程英雄。普通攻击会释放飞箭，对生命值最低的2名敌人造成55%物理攻击力的物理伤害。 给公孙离补多目标伤害和收割。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1582.87,
+          "end": 1608.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 2945.61,
+          "end": 3010.24
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 3011.42,
+          "end": 3073.33
+        },
+        {
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "type": "document",
+          "paragraph_start": 157,
+          "paragraph_end": 159
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-4afe4a5787a7",
+      "section": "关键装备",
+      "text": "**不死鸟之眼：** 唯一。增加15%基础生命值，生命恢复和护盾效果提升30%。 提高猪八戒生命与恢复，支撑前排。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8339ef03fe73",
+      "section": "关键装备",
+      "text": "**生命魔典：** 唯一。受到伤害时会为自身和周围1格的己方单位恢复5%最大生命值，冷却2秒。 猪八戒承伤时恢复自身及邻近友军。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-fa05eb378903",
+      "section": "关键装备",
+      "text": "**反伤重甲：** 唯一。将受到伤害的30%以真实伤害回敬给目标。 给猪八戒补承伤反击。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e27ca02f5979",
+      "section": "关键装备",
+      "text": "**名刀·司命：** 唯一。穿戴者首次受到致命伤害时会进入无敌和不可选中状态，持续1.5秒。 瑶分发保护，提高双核与其他成员容错。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-47e23b21118e",
+      "section": "推荐天赋",
+      "text": "优先保证阵容成型与当前战力，再按等级、装备和生存缺口比较以下天赋；具体优先级随各项所列条件调整。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 799.79,
+          "end": 1034.37
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-b186712084ce",
+      "section": "推荐天赋",
+      "text": "**小咖秀：** 多个低阶英雄常驻时增加合成收益，继续养成双核。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 888.52,
+          "end": 918.72
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-d17e0530734a",
+      "section": "棋手技能选择",
+      "text": "**战略决策：** 只对自身生效，按公孙离、猪八戒的合成与找牌需求发布。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 0.4,
+          "end": 29.73
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 30.01,
+          "end": 57.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 207.91,
+          "end": 237.11
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-263da845a137",
+      "section": "棋手技能选择",
+      "text": "**至高决策：** 影响全场，发布前同时比较对手收益；首购激励可在其他玩家已花完资源时再发布。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 267.82,
+          "end": 296.92
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-46f602392c1f",
+      "section": "棋手技能选择",
+      "text": "**低压运营：** 前期建立额外资源与质量优势，帮助补齐低阶组件。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 148.41,
+          "end": 177.37
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 207.91,
+          "end": 237.11
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 238.06,
+          "end": 267.62
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-cfde2f492973",
+      "section": "棋手技能选择",
+      "text": "**基层提拔：** 服务低阶英雄质量和合成成长。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 0.4,
+          "end": 416.54
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-2894394052dd",
+      "section": "棋手技能选择",
+      "text": "**乘胜追击：** 已有连胜战力时比较收益，不能预设一定连胜。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 238.06,
+          "end": 267.62
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 267.82,
+          "end": 296.92
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-9e7c354abbc6",
+      "section": "棋手技能选择",
+      "text": "**固定收益：** 在需要稳定资源补合成和找牌时比较。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 267.82,
+          "end": 296.92
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-d2d45480eede",
+      "section": "棋手技能选择",
+      "text": "**并购红利：** 围绕实际合成频率取得资源，不挤占当前买牌。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 148.41,
+          "end": 177.37
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 267.82,
+          "end": 296.92
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-skills"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-7acb3b00a26e",
+      "section": "关键效果牌",
+      "text": "**照影：** 复制到公孙离或猪八戒时补核心同名牌，使用前核对场上候选。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1008.69,
+          "end": 1121.85
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e2115b4d15d2",
+      "section": "关键效果牌",
+      "text": "**传承：** 工具准备退场时回收等级，先核对最低等级接收者。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1035.95,
+          "end": 1063.99
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1064.54,
+          "end": 1093.96
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1524.62,
+          "end": 1551.88
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-f6818ca7290c",
+      "section": "关键效果牌",
+      "text": "**遗志：** 后期工具退场时转移永久等级，先整理随机接收候选。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1008.69,
+          "end": 1121.85
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e7e7811bf433",
+      "section": "关键效果牌",
+      "text": "**武装重构：** 双核均需要多件装备时调整无效装备，不为随机神器过早拆光普通装备。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1008.69,
+          "end": 1121.85
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-aff126683b9a",
+      "section": "英雄",
+      "text": "**猪八戒：** 低阶合成成长引擎兼前排，公孙离可吸等级，将低本合成转为输出战力。觉醒需求：普通同阶+1醒后+2，成长循环优先追醒；等级投入：作为工具接受合成自然成长，养猪条件成立才额外当副C，不强制单独养100；购买策略：3级找首张与觉醒，醒后不为同名无收益重买；合成牌量与主C保护优先。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：合成成长链要运作时先上，打出三阶及以下合成前保留；出售时机：保留合成成长期间不卖；终局停止成长可先公孙离吸永久等级再比较换位；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 597.52,
+          "end": 622.37
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 948.35,
+          "end": 977.71
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1035.95,
+          "end": 1063.99
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1177.93,
+          "end": 1205.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1207.8,
+          "end": 1215.11
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 597.5,
+          "end": 622.4
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 948.4,
+          "end": 977.7
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1036.0,
+          "end": 1064.0
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1177.9,
+          "end": 1205.2
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-5111"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5111"
+    },
+    {
+      "id": "fmt24-owner-6c5bc4ac44b4",
+      "section": "英雄",
+      "text": "**公孙离：** 主C夺取旧工具永久等级，随场上觉醒人数获得攻速，靠普攻与纸伞清场。觉醒需求：普通每已醒15%攻速，醒后30%，主C优先追醒但不等醒才进场；等级投入：集中永久等级和攻击装备，40攻速100控制为节点，继续吸收可退出工具，不吸走100瑶关键等级；购买策略：首张有可吸等级时取，重复补醒与夺取；3级体系搜牌有条件付费，但低压先保战力，不能无脑刷新。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：等级与装备足以接过渡输出时上，未有等级可先留手而非零战力硬换；出售时机：公孙离是主要输出，通常保留，不为了补辅助而出售；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1008.69,
+          "end": 1034.37
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1290.62,
+          "end": 1318.14
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1465.05,
+          "end": 1493.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1609.41,
+          "end": 1639.2
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 2004.65,
+          "end": 2062.07
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 567.0,
+          "end": 597.1
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 829.0,
+          "end": 858.8
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1008.7,
+          "end": 1034.4
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1177.9,
+          "end": 1205.2
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-1991"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1991"
+    },
+    {
+      "id": "fmt24-owner-0c5b3d3910a4",
+      "section": "英雄",
+      "text": "**张良：** 开团给团队永久等级，压制为公孙离创造安全输出。觉醒需求：普通随机3人醒后全体，成长频繁时补；不是主要输出，不必优先分配定向等级资源；等级投入：自然成长，100压制清蓝可提高单核对局质量；不需要其节点时等级可给公孙离；购买策略：首张优先建立开团成长，重复补醒；公孙离、猪八戒已觉醒，关键辅助也至少有一名觉醒时可升棋手5级，不必停在低等级刷新到全员觉醒。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：开团组件已在场且有控制需求时上；出售时机：仍需要张良100级压制时保留，优先比较换下云中君、虞姬补钟馗或太乙真人；张良控制已无实际作用时才考虑换掉他。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1064.54,
+          "end": 1093.96
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1290.62,
+          "end": 1318.14
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1408.14,
+          "end": 1434.08
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1434.5,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1465.05,
+          "end": 1493.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1064.5,
+          "end": 1094.0
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-1561"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1561"
+    },
+    {
+      "id": "fmt24-owner-1137deed4ae1",
+      "section": "英雄",
+      "text": "**瑶：** 附身给公孙离盾，100分享主要属性解决主C脆弱问题。觉醒需求：普通分享15秒可用，醒后永久；先补首张保护再按资源补；等级投入：优先保100属性分享节点，不让公孙离夺走关键等级；云中君装备可定向养瑶；购买策略：首张保护高优先，重复随猪合成/觉醒投入，不能为工具醒拖主C；确需100才追加等级。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：把要分享的装备放在首件普通装备位置，并让公孙离成为最近目标时上；出售时机：通常保留瑶的护盾与100级属性分享，不为腾位置直接撤掉核心保护；仅在已有更合适保护且可承受失去这些效果时换下。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1151.87,
+          "end": 1177.46
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1264.74
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1290.62,
+          "end": 1318.14
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1375.89
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1582.87,
+          "end": 1608.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1151.9,
+          "end": 1177.5
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-5051"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5051"
+    },
+    {
+      "id": "fmt24-owner-660dd52b0ea3",
+      "section": "英雄",
+      "text": "**鬼谷子：** 先知图腾增加开团/图腾成长与临时等级，供公孙离承伤输出体系运作。觉醒需求：普通可用，最好补醒强化，但不等全员醒才拉高阶；等级投入：自然成长，不抢公孙和瑶定向资源；购买策略：首张补图腾，重复按醒与合成收益，核心齐醒后停止低本无度D。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有图腾受益者或开团成长链时上；出售时机：通常保留鬼谷子，不随意拆掉图腾与开团成长；确实需要终局保护时，先比较失去图腾后的团队成长和战力。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1318.64,
+          "end": 1348.83
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1465.05,
+          "end": 1493.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1318.6,
+          "end": 1348.8
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1375.9
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1465.0,
+          "end": 1493.6
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-1891"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1891"
+    },
+    {
+      "id": "fmt24-owner-20412c3cb1fb",
+      "section": "英雄",
+      "text": "**云中君：** 按装备定向给核心与瑶永久等级，优于无定向的乱分等级。觉醒需求：普通每件1级醒后2，成长路线有价值再补；等级投入：自身自然成长，三装优先公孙或瑶等实际培养者；购买策略：首张优质成长工具，重复按觉醒和猪同阶合成收益；不为单张强付高价。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：已有装备再上，确定需要养瑶100时把装备给瑶；出售时机：确认停止成长、需要钟馗时，可以用传承分给最低等级的3名其他英雄，再卖云中君；遗志则直接移除云中君，随机把永久等级给1名其他英雄。普通装备重新分配，不能保证转级全给公孙离；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1375.89
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1465.05,
+          "end": 1493.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1036.0,
+          "end": 1064.0
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1094.5,
+          "end": 1121.8
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-5061"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5061"
+    },
+    {
+      "id": "fmt24-owner-85eea5d917d3",
+      "section": "英雄",
+      "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生保护时保留；确实要腾位置打牌时，先有备用太乙真人或确认本轮能补回，再出售旧太乙真人，操作完成后重新上场并检查复生目标；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1524.23
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 2378.24,
+          "end": 2425.58
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 2565.03,
+          "end": 2639.64
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 954.0,
+          "end": 982.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 982.7,
+          "end": 1010.1
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-1861"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1861"
+    },
+    {
+      "id": "fmt24-owner-e772cbd434eb",
+      "section": "英雄",
+      "text": "**钟馗：** 给关键单位附加牺牲降级，削弱敌方高等级主C并创造集火机会。觉醒需求：普通10%可用，觉醒20%更强；按终局需求补，不是所有开局必追；等级投入：功能为主；需要开场钩则10级是启动点，其他等级不优先专养；购买策略：接近关键对局按需取首张，重复补觉醒；没有降级或钩人需求时不付费专找。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：关键操作完成后按左右一格设置牺牲；需要钩人时达10级并检查最远目标；出售时机：仍需钩人或牺牲降级时保留；有其他保护方案、或有备用钟馗能在打牌后补回时才考虑出售。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 2062.43,
+          "end": 2130.69
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 875.2,
+          "end": 899.7
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-hero-1751"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1751"
+    },
+    {
+      "id": "fmt24-owner-e27b4cdf79c3",
+      "section": "前期运营",
+      "text": "【前期运营思路：】首回合低压成长尚未结算，优先购买能赢当前对手的前排与干将等输出，不能把低压视为开局必胜。后续按对手质量补弈星及承伤，过渡等级可由双核夺取回收。第一轮拍卖优先猪八戒，其次公孙离，再比较张良、瑶、云中君、鬼谷子。 ",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1348.83
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-early"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-38713054751b",
+      "section": "中期运营",
+      "text": "【中期运营思路：】3级找猪八戒、公孙离及低阶配套并打合成；鬼谷子优先在低阶阶段补觉醒。双核觉醒、关键低阶成员基本到位后升5级，缺少的少量低阶觉醒再用杨玉环补，不为理想全员状态耗尽保血空间。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1434.5,
+          "end": 1493.56
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-middle"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-98c13f1a34fb",
+      "section": "后期运营",
+      "text": "【后期运营思路：】5级找太乙真人保护猪八戒，并继续打合成；后期资源可向猪八戒承伤倾斜，为公孙离争取输出时间。需要钟馗时，先用传承或遗志处理云中君等退场工具的等级。6级绝对压制会给其他玩家也提供减伤，先核对己方最高等级英雄有解控，并比较能否承受对手获得的收益。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1704.35
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-late"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-04651bb0c9a0",
+      "section": "后期提升思路",
+      "text": "【后期提升思路：】后期资源向猪八戒承伤、恢复及太乙真人保护倾斜，为公孙离创造持续输出时间；公孙离按敌方接近、控制与残血收割需要补炽热、寒霜侵袭和日渊。需要钟馗等终局工具时，先用传承或遗志处理云中君等退场成员等级。6级绝对压制同时给对手减伤，己方最高等级英雄需有解控，不能只看自身收益。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1235.54,
+          "end": 1348.83
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1434.5,
+          "end": 1493.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1704.35
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1494.94,
+          "end": 1551.88
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1608.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1408.14,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1582.87,
+          "end": 1608.56
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1375.89
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1349.1,
+          "end": 1464.15
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1524.62,
+          "end": 1581.65
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1552.42,
+          "end": 1667.17
+        },
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1122.33,
+          "end": 1215.11
+        }
+      ],
+      "derived_from": [
+        "b22-b22-low-dahe-shoot-owner-principle",
+        "b22-b22-low-dahe-shoot-owner-late",
+        "b22-b22-low-dahe-shoot-owner-equipment",
+        "b22-b22-low-dahe-shoot-owner-auction3"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "hero5-owner-card-1821",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1265.7,
+          "end": 1302.6
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**干将莫邪：** 前期快速施法清杂保血，为后续阵容争取成型时间。觉醒需求：短期过渡普通可用；需要持续靠击杀成长的路线优先觉醒双剑；等级投入：接受击杀及现有成长，40额外飞剑为战力节点，不为纯过渡强养到100；购买策略：开局缺输出时自然买首张；重复仅在前期保血与觉醒收益成立时买，不为已退出的过渡重新付费找。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有前排和相应装备时早上，不能为凑最终阵容先拆仍有战力的干将；出售时机：后续输出已经能接替时再出售，不能先拆掉唯一能保血的输出；普通装备重新分配，自带双剑会随干将莫邪离场消失。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1821"
+    },
+    {
+      "id": "hero5-owner-card-1971",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509.5,
+          "end": 538.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1303.0,
+          "end": 1343.0
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**弈星：** 升级经验工具，节约升本资源，尽早取得核心提高成型战力。觉醒需求：普通卡已可提供经验，不专门为过渡觉醒；等级投入：接受自然等级，不专门培养；购买策略：开局取首张，重复与付费追牌不优先；升级收益结束后停止投入。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前需在场；核心到来后不占关键人口；出售时机：计划中的棋手升级完成、不再需要弈星的经验加成，或确实要腾位置给核心时再出售；不要先卖弈星再进行本来需要其加成的升级。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1971"
+    },
+    {
+      "id": "hero5-owner-card-1731",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1667.8,
+          "end": 1704.3
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**李元芳：** 整备给最近河洛用古币，提高最近河洛英雄的等级，帮助前期保血。觉醒需求：普通已能供币，觉醒按v1.7.1为2张普通古币，不沿用旧精致币表述；等级投入：自然成长，不占用本阵容主要输出的定向等级资源；自身输出仅过渡；购买策略：开局缺成长工具时买首张，重复按能否自然成醒及保血收益取舍，不为他长期滞留低本。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先核对最近河洛目标，让古币给实际承伤或输出者；出售时机：已经不需要李元芳的整备供币，且后续输出能接替时可售。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1731"
+    },
+    {
+      "id": "hero5-owner-card-1681",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509.5,
+          "end": 538.0
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**牛魔：** 前排兼胜利经济，保血并把胜场换成后续核心资源。觉醒需求：普通卡即可工作，不以觉醒为进阵前提；等级投入：自然成长，专门等级优先主C；购买策略：开局自然首张且能赢或明显少掉血时买，不付费追觉醒；无胜利可能时不为经济追加。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要前排并能发挥当前战力时上，非只因有空位就长期保留；出售时机：接替的前排已经能承伤后再出售；牛魔的胜场经济已无明显价值时，不必继续占位。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1681"
+    },
+    {
+      "id": "hero5-owner-card-5031",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1265.2,
+          "end": 1290.1
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1641.9,
+          "end": 1669.4
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1687.5,
+          "end": 1714.5
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**狂铁：** 开局强前排，承接成长后为公孙离提供可夺取永久等级。觉醒需求：普通可承伤，醒后整备触发更多，不为过渡长追；等级投入：自然成长，10盾40叠盾改善保血，非单独冲100；购买策略：需要可靠前排时自然首张，重复按当下保血，不为过渡单卡付费D。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：早期已有位置即可顶前，不在公孙离未接输出前拆前排；出售时机：更强前排或保护到位后先让公孙离吸永久等级、转装备再换，当前承伤不足时，按牛魔、狂铁的实际等级与装备选择保留的前排；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5031"
+    },
+    {
+      "id": "hero5-owner-card-1941",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 1265.2,
+          "end": 1290.1
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**苏烈：** 前期河洛承伤，牺牲自养等级，为后续主力成型争取时间。觉醒需求：普通可过渡，觉醒加强自养，不为短暂过渡强追；等级投入：接受自然牺牲成长；40有复生，不把达到40视为必须继续投资的理由；购买策略：开局顺路首张，重复只在前期保血或自然成醒有收益时买，不单独付费追至高等级。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：早期缺前排时即可上，安排先承伤以发挥牺牲成长；出售时机：后续主力和前排已经能接替时才卖苏烈；不能只因新核心首张到手，就先拆掉仍能保血的前排。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1941"
+    },
+    {
+      "id": "hero5-owner-card-1741",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 978.3,
+          "end": 1007.8
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**虞姬：** 图腾开团成长兼过渡输出，替主C未成型时保血。觉醒需求：普通可用，醒后扩大受益；v1.7.1可给任意己方英雄；等级投入：自然成长，有高永久等级后交公孙离，不与瑶争定向资源；购买策略：已有鬼谷子图腾且便宜首张可补，重复按合成与成长收益；不为支线耽误核心。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：图腾在场、需要即时输出才上，不能无图腾强凑；出售时机：公孙离已能承担输出、终局需要太乙真人或钟馗时才考虑换下虞姬；有较高永久等级时，先用传承分给其他英雄中等级最低的3名，再出售，不能保证等级全给公孙离。输出装备交给公孙离；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1741"
+    },
+    {
+      "id": "hero5-owner-card-5771",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 2291.7,
+          "end": 2377.3
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**少司缘：** 因缘图腾和回复的条件成长补位，帮助低阶射过渡。觉醒需求：普通可给图腾，醒后强化；先看当前战力再追；等级投入：自然成长，不为低等级少司缘抢输出资源；购买策略：鬼谷子与虞姬的图腾成长已经运转、便宜自然首张可取；重复不优先于主C，已醒不为同卡D。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有图腾受益或虞姬时再考虑，不把一级少司缘当无条件保血卡；出售时机：已有更合适的核心或需要太乙真人保护时才换下少司缘；若还要利用猪八戒的同阶合成成长，先完成本轮相关合成再出售。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5771"
+    },
+    {
+      "id": "hero5-owner-card-1761",
+      "section": "英雄",
+      "text": "**杨玉环：** 升5后给残余低阶组件补觉醒，增加公孙离开团攻速，必要时治疗保血。觉醒需求：普通弦音已可补低阶，醒后妙音补高阶；不为工具先追醒；等级投入：接受自然成长，不抢公孙离和100瑶的资源；购买策略：主C和关键工具已大致觉醒、升5后仍缺少量醒时取首张，重复按实际缺口，不付费只为玉环追醒；拍卖出价上限未确认；上阵时机：补醒目标已明确且有位置时上，可用周期产牌或退场兑现，不影响已成核心；出售时机：只借杨玉环补觉醒时，可出售领取弦音后换所需保护；仍靠她治疗时保留。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1cZhE6NE4t:p1",
+          "start": 829.0,
+          "end": 858.8
+        }
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1761"
+    }
+  ],
+  "meta": {
+    "required_factions": [
+      "faction:dahe"
+    ],
+    "players": [
+      "player:43"
+    ],
+    "core_heroes": [
+      "card:5111",
+      "card:1991"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1821"
+          ]
+        },
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1681"
+          ]
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1971"
+          ]
+        },
+        {
+          "hero": "card:5031",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-5031"
+          ]
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1731"
+          ]
+        },
+        {
+          "hero": "card:1941",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1941"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "优先补觉醒与生存装备，后期资源倾斜有助于给公孙离争取时间；太乙真人第二条命能延长承伤成长。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a"
+          ]
+        },
+        {
+          "hero": "card:1991",
+          "necessity": "required",
+          "role": "优先觉醒提高输出质量；免控、冰霜法杖和日渊按对手近身与收割需求选择。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6c5bc4ac44b4"
+          ]
+        },
+        {
+          "hero": "card:1561",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-0c5b3d3910a4"
+          ]
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1137deed4ae1"
+          ]
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-660dd52b0ea3"
+          ]
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "required",
+          "role": "补首张，决赛需要其他工具时再回收其等级。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-20412c3cb1fb"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "优先补觉醒与生存装备，后期资源倾斜有助于给公孙离争取时间；太乙真人第二条命能延长承伤成长。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a"
+          ]
+        },
+        {
+          "hero": "card:1991",
+          "necessity": "required",
+          "role": "优先觉醒提高输出质量；免控、冰霜法杖和日渊按对手近身与收割需求选择。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6c5bc4ac44b4"
+          ]
+        },
+        {
+          "hero": "card:1561",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-0c5b3d3910a4"
+          ]
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1137deed4ae1"
+          ]
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-660dd52b0ea3"
+          ]
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "required",
+          "role": "补首张，决赛需要其他工具时再回收其等级。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-20412c3cb1fb"
+          ]
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-85eea5d917d3"
+          ]
+        },
+        {
+          "hero": "card:1751",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-e772cbd434eb"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：张良（先取得首张，投入按本阶段运营判断。）、瑶（先取得首张，投入按本阶段运营判断。）、鬼谷子（先取得首张，投入按本阶段运营判断。）、云中君（补首张，决赛需要其他工具时再回收其等级。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:43",
+        "claim_refs": [
+          "b22-b22-low-dahe-shoot-owner-principle",
+          "b22-b22-low-dahe-shoot-owner-early",
+          "b22-b22-low-dahe-shoot-owner-middle",
+          "b22-b22-low-dahe-shoot-owner-late",
+          "b22-b22-low-dahe-shoot-owner-hero-5111",
+          "b22-b22-low-dahe-shoot-owner-hero-1991",
+          "b22-b22-low-dahe-shoot-owner-hero-1561",
+          "b22-b22-low-dahe-shoot-owner-hero-5051",
+          "b22-b22-low-dahe-shoot-owner-hero-1891",
+          "b22-b22-low-dahe-shoot-owner-hero-5061",
+          "b22-b22-low-dahe-shoot-owner-hero-1861",
+          "b22-b22-low-dahe-shoot-owner-hero-1751",
+          "b22-b22-low-dahe-shoot-owner-skills",
+          "b22-b22-low-dahe-shoot-owner-talents",
+          "b22-b22-low-dahe-shoot-owner-equipment",
+          "b22-b22-low-dahe-shoot-owner-effects",
+          "b22-b22-low-dahe-shoot-owner-auction3",
+          "fmt24-owner-1c619f6870a0",
+          "fmt24-owner-e15cedad54fc",
+          "fmt24-owner-8f2277daffb5",
+          "fmt24-owner-4afe4a5787a7",
+          "fmt24-owner-8339ef03fe73",
+          "fmt24-owner-fa05eb378903",
+          "fmt24-owner-e27ca02f5979",
+          "fmt24-owner-47e23b21118e",
+          "fmt24-owner-b186712084ce",
+          "fmt24-owner-d17e0530734a",
+          "fmt24-owner-263da845a137",
+          "fmt24-owner-46f602392c1f",
+          "fmt24-owner-cfde2f492973",
+          "fmt24-owner-2894394052dd",
+          "fmt24-owner-9e7c354abbc6",
+          "fmt24-owner-d2d45480eede",
+          "fmt24-owner-7acb3b00a26e",
+          "fmt24-owner-e2115b4d15d2",
+          "fmt24-owner-f6818ca7290c",
+          "fmt24-owner-e7e7811bf433",
+          "fmt24-owner-aff126683b9a",
+          "fmt24-owner-6c5bc4ac44b4",
+          "fmt24-owner-0c5b3d3910a4",
+          "fmt24-owner-1137deed4ae1",
+          "fmt24-owner-660dd52b0ea3",
+          "fmt24-owner-20412c3cb1fb",
+          "fmt24-owner-85eea5d917d3",
+          "fmt24-owner-e772cbd434eb",
+          "fmt24-owner-e27b4cdf79c3",
+          "fmt24-owner-38713054751b",
+          "fmt24-owner-98c13f1a34fb",
+          "fmt24-owner-04651bb0c9a0",
+          "hero5-owner-card-1821",
+          "hero5-owner-card-1971",
+          "hero5-owner-card-1731",
+          "hero5-owner-card-1681",
+          "hero5-owner-card-5031",
+          "hero5-owner-card-1941",
+          "hero5-owner-card-1741",
+          "hero5-owner-card-5771",
+          "hero5-owner-card-1761"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1821"
+                ]
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1681"
+                ]
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1971"
+                ]
+              },
+              {
+                "hero": "card:5031",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-5031"
+                ]
+              },
+              {
+                "hero": "card:1731",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1731"
+                ]
+              },
+              {
+                "hero": "card:1941",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1941"
+                ]
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": "优先补觉醒与生存装备，后期资源倾斜有助于给公孙离争取时间；太乙真人第二条命能延长承伤成长。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-aff126683b9a"
+                ]
+              },
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": "优先觉醒提高输出质量；免控、冰霜法杖和日渊按对手近身与收割需求选择。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6c5bc4ac44b4"
+                ]
+              },
+              {
+                "hero": "card:1561",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-0c5b3d3910a4"
+                ]
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1137deed4ae1"
+                ]
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-660dd52b0ea3"
+                ]
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "required",
+                "role": "补首张，决赛需要其他工具时再回收其等级。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-20412c3cb1fb"
+                ]
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": "优先补觉醒与生存装备，后期资源倾斜有助于给公孙离争取时间；太乙真人第二条命能延长承伤成长。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-aff126683b9a"
+                ]
+              },
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": "优先觉醒提高输出质量；免控、冰霜法杖和日渊按对手近身与收割需求选择。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6c5bc4ac44b4"
+                ]
+              },
+              {
+                "hero": "card:1561",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-0c5b3d3910a4"
+                ]
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1137deed4ae1"
+                ]
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-660dd52b0ea3"
+                ]
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "required",
+                "role": "补首张，决赛需要其他工具时再回收其等级。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-20412c3cb1fb"
+                ]
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-85eea5d917d3"
+                ]
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-e772cbd434eb"
+                ]
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "首回合尚未享受低压成长，需认真补战力保血。",
+              "claim_refs": [
+                "fmt24-owner-e27b4cdf79c3"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "低压、基层提拔与低阶合成成长兑现后可形成双核质量优势。",
+              "claim_refs": [
+                "fmt24-owner-38713054751b"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "猪八戒承伤和公孙离输出相互依赖，不能只凭连胜推断后期必胜。",
+              "claim_refs": [
+                "fmt24-owner-98c13f1a34fb"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "大河核心可获得，能保持前中期质量并持续合成。",
+          "avoid": "低压被早期强敌压制后，按真实血量与战力调整，不沿用满血成长预算。",
+          "signals": {
+            "英雄投入": "公孙离集中夺取，保留瑶100属性节点；低压先保当轮战力，香香还需比较10级低费枪伤，功能位替换先转永久等级。"
+          }
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-ying",
+      "relation": "applicable_player",
+      "title": "嬴律",
+      "href": "../players/嬴律.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-low-dahe-shoot-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-low-dahe-shoot-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-low-dahe-shoot-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-low-dahe-shoot-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-5111": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1991": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1561": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-5051": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1891": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-5061": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1751": [
+        "英雄"
+      ],
+      "b22-b22-low-dahe-shoot-owner-skills": [
+        "棋手技能推荐"
+      ],
+      "b22-b22-low-dahe-shoot-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-low-dahe-shoot-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-low-dahe-shoot-owner-effects": [
+        "关键效果牌"
+      ],
+      "b22-b22-low-dahe-shoot-owner-auction3": [
+        "第三轮拍卖"
+      ],
+      "fmt24-owner-1c619f6870a0": [
+        "关键装备"
+      ],
+      "fmt24-owner-e15cedad54fc": [
+        "关键装备"
+      ],
+      "fmt24-owner-8f2277daffb5": [
+        "关键装备"
+      ],
+      "fmt24-owner-4afe4a5787a7": [
+        "关键装备"
+      ],
+      "fmt24-owner-8339ef03fe73": [
+        "关键装备"
+      ],
+      "fmt24-owner-fa05eb378903": [
+        "关键装备"
+      ],
+      "fmt24-owner-e27ca02f5979": [
+        "关键装备"
+      ],
+      "fmt24-owner-47e23b21118e": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-b186712084ce": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-d17e0530734a": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-263da845a137": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-46f602392c1f": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-cfde2f492973": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-2894394052dd": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-9e7c354abbc6": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-d2d45480eede": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-7acb3b00a26e": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-e2115b4d15d2": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-f6818ca7290c": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-e7e7811bf433": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-aff126683b9a": [
+        "英雄"
+      ],
+      "fmt24-owner-6c5bc4ac44b4": [
+        "英雄"
+      ],
+      "fmt24-owner-0c5b3d3910a4": [
+        "英雄"
+      ],
+      "fmt24-owner-1137deed4ae1": [
+        "英雄"
+      ],
+      "fmt24-owner-660dd52b0ea3": [
+        "英雄"
+      ],
+      "fmt24-owner-20412c3cb1fb": [
+        "英雄"
+      ],
+      "fmt24-owner-85eea5d917d3": [
+        "英雄"
+      ],
+      "fmt24-owner-e772cbd434eb": [
+        "英雄"
+      ],
+      "fmt24-owner-e27b4cdf79c3": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "fmt24-owner-38713054751b": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "fmt24-owner-98c13f1a34fb": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "fmt24-owner-04651bb0c9a0": [
+        "阵容组成与运营节奏",
+        "后期提升思路"
+      ],
+      "hero5-owner-card-1821": [
+        "英雄"
+      ],
+      "hero5-owner-card-1971": [
+        "英雄"
+      ],
+      "hero5-owner-card-1731": [
+        "英雄"
+      ],
+      "hero5-owner-card-1681": [
+        "英雄"
+      ],
+      "hero5-owner-card-5031": [
+        "英雄"
+      ],
+      "hero5-owner-card-1941": [
+        "英雄"
+      ],
+      "hero5-owner-card-1741": [
+        "英雄"
+      ],
+      "hero5-owner-card-5771": [
+        "英雄"
+      ],
+      "hero5-owner-card-1761": [
+        "英雄"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        },
+        "hero_fields": {
+          "status": "partial",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a",
+            "fmt24-owner-6c5bc4ac44b4",
+            "fmt24-owner-0c5b3d3910a4",
+            "fmt24-owner-1137deed4ae1",
+            "fmt24-owner-660dd52b0ea3",
+            "fmt24-owner-20412c3cb1fb",
+            "fmt24-owner-85eea5d917d3",
+            "fmt24-owner-e772cbd434eb",
+            "hero5-owner-card-1821",
+            "hero5-owner-card-1971",
+            "hero5-owner-card-1731",
+            "hero5-owner-card-1681",
+            "hero5-owner-card-5031",
+            "hero5-owner-card-1941",
+            "hero5-owner-card-1741",
+            "hero5-owner-card-5771",
+            "hero5-owner-card-1761"
+          ],
+          "detail": "五字段格式全部覆盖；逐字段证据审核见review。通用拍卖价格等缺证据，不计为内容完整。"
+        }
+      }
+    },
+    "supporting_claim_refs": {
+      "b22-b22-low-dahe-shoot-owner-equipment": [
+        "fmt24-owner-1c619f6870a0",
+        "fmt24-owner-e15cedad54fc",
+        "fmt24-owner-8f2277daffb5",
+        "fmt24-owner-4afe4a5787a7",
+        "fmt24-owner-8339ef03fe73",
+        "fmt24-owner-fa05eb378903",
+        "fmt24-owner-e27ca02f5979"
+      ],
+      "b22-b22-low-dahe-shoot-owner-talents": [
+        "fmt24-owner-47e23b21118e",
+        "fmt24-owner-b186712084ce"
+      ],
+      "b22-b22-low-dahe-shoot-owner-skills": [
+        "fmt24-owner-d17e0530734a",
+        "fmt24-owner-263da845a137",
+        "fmt24-owner-46f602392c1f",
+        "fmt24-owner-cfde2f492973",
+        "fmt24-owner-2894394052dd",
+        "fmt24-owner-9e7c354abbc6",
+        "fmt24-owner-d2d45480eede"
+      ],
+      "b22-b22-low-dahe-shoot-owner-effects": [
+        "fmt24-owner-7acb3b00a26e",
+        "fmt24-owner-e2115b4d15d2",
+        "fmt24-owner-f6818ca7290c",
+        "fmt24-owner-e7e7811bf433"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-5111": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1991": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1561": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-5051": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1891": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-5061": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1861": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-hero-1751": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-0c5b3d3910a4",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-660dd52b0ea3",
+        "fmt24-owner-20412c3cb1fb",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e772cbd434eb"
+      ],
+      "b22-b22-low-dahe-shoot-owner-early": [
+        "fmt24-owner-e27b4cdf79c3"
+      ],
+      "b22-b22-low-dahe-shoot-owner-middle": [
+        "fmt24-owner-38713054751b"
+      ],
+      "b22-b22-low-dahe-shoot-owner-late": [
+        "fmt24-owner-98c13f1a34fb"
+      ]
+    },
+    "compact_operation_refs": {
+      "owner": [
+        "fmt24-owner-e27b4cdf79c3",
+        "fmt24-owner-38713054751b",
+        "fmt24-owner-98c13f1a34fb",
+        "fmt24-owner-04651bb0c9a0"
+      ]
+    },
+    "entity_paragraphs": true,
+    "hero_fields_required": true
+  },
+  "path": "knowledge/lineups/低阶大河射（三）.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "player:43": "嬴律",
+    "card:5111": "猪八戒",
+    "card:1991": "公孙离",
+    "card:1821": "干将莫邪",
+    "card:1681": "牛魔",
+    "card:1971": "弈星",
+    "card:5031": "狂铁",
+    "card:1731": "李元芳",
+    "card:1941": "苏烈",
+    "card:1561": "张良",
+    "card:5051": "瑶",
+    "card:1891": "鬼谷子",
+    "card:5061": "云中君",
+    "card:1861": "太乙真人",
+    "card:1751": "钟馗",
+    "card:1563": "张良",
+    "card:1683": "牛魔",
+    "card:1733": "李元芳",
+    "card:1741": "虞姬",
+    "card:1743": "虞姬",
+    "card:1753": "钟馗",
+    "card:1761": "杨玉环",
+    "card:1763": "杨玉环",
+    "card:1823": "干将莫邪",
+    "card:1863": "太乙真人",
+    "card:1893": "鬼谷子",
+    "card:1943": "苏烈",
+    "card:1973": "弈星",
+    "card:1993": "公孙离",
+    "card:5033": "狂铁",
+    "card:5053": "瑶",
+    "card:5063": "云中君",
+    "card:5113": "猪八戒",
+    "card:5771": "少司缘",
+    "card:5773": "少司缘",
+    "card:622008": "小咖秀",
+    "card:641015": "日渊",
+    "card:643205": "寒霜侵袭",
+    "card:643502": "不死鸟之眼",
+    "card:643604": "反伤重甲",
+    "card:643703": "名刀·司命",
+    "card:643803": "炽热支配者",
+    "card:643804": "生命魔典",
+    "card:7032": "照影",
+    "card:7041": "遗志",
+    "card:7081": "武装重构",
+    "card:7083": "传承",
+    "card:94300": "战略决策",
+    "card:94304": "固定收益",
+    "card:94305": "乘胜追击",
+    "card:94306": "基层提拔",
+    "card:94309": "至高决策",
+    "card:94352": "并购红利",
+    "card:94353": "低压运营"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-23T02:35:07.028333+00:00",
+      "reason": "真实网页查漏：来源已有后期建议，替换模板缺项",
+      "claims": [
+        {
+          "id": "fmt24-owner-04651bb0c9a0",
+          "section": "后期提升思路",
+          "text": "【后期提升思路：】暂无已确认的完整运营策略。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1235.54,
+              "end": 1464.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1235.54,
+              "end": 1348.83
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1434.5,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1494.94,
+              "end": 1704.35
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1494.94,
+              "end": 1551.88
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1552.42,
+              "end": 1608.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1408.14,
+              "end": 1464.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1582.87,
+              "end": 1608.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1375.89
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1464.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1524.62,
+              "end": 1581.65
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 0.4,
+              "end": 416.54
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 799.79,
+              "end": 1034.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1552.42,
+              "end": 1667.17
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1008.69,
+              "end": 1121.85
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1122.33,
+              "end": 1215.11
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 681.74,
+              "end": 709.73
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1408.14,
+              "end": 1434.08
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1552.42,
+              "end": 1581.65
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2945.61,
+              "end": 3010.24
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 3011.42,
+              "end": 3073.33
+            },
+            {
+              "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+              "type": "document",
+              "paragraph_start": 157,
+              "paragraph_end": 159
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 888.52,
+              "end": 918.72
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 0.4,
+              "end": 29.73
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 30.01,
+              "end": 57.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 207.91,
+              "end": 237.11
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 267.82,
+              "end": 296.92
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 148.41,
+              "end": 177.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 238.06,
+              "end": 267.62
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1035.95,
+              "end": 1063.99
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1064.54,
+              "end": 1093.96
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1524.62,
+              "end": 1551.88
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 597.52,
+              "end": 622.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 948.35,
+              "end": 977.71
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1177.93,
+              "end": 1205.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1207.8,
+              "end": 1215.11
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1008.69,
+              "end": 1034.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1609.41,
+              "end": 1639.2
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2004.65,
+              "end": 2062.07
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1434.5,
+              "end": 1464.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1151.87,
+              "end": 1177.46
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1235.54,
+              "end": 1264.74
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1318.64,
+              "end": 1348.83
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1494.94,
+              "end": 1524.23
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2378.24,
+              "end": 2425.58
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2565.03,
+              "end": 2639.64
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2062.43,
+              "end": 2130.69
+            }
+          ],
+          "derived_from": [],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T12:00:00+00:00",
+      "origin": "hero5_source_review",
+      "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+      "claims": [
+        {
+          "id": "fmt24-owner-aff126683b9a",
+          "section": "英雄",
+          "text": "**猪八戒：** 前排核心，以承伤提高生命上限并用范围技能输出。优先补觉醒与生存装备，后期资源倾斜有助于给公孙离争取时间；太乙真人第二条命能延长承伤成长。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 597.52,
+              "end": 622.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 948.35,
+              "end": 977.71
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1035.95,
+              "end": 1063.99
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1177.93,
+              "end": 1205.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1207.8,
+              "end": 1215.11
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-5111"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-6c5bc4ac44b4",
+          "section": "英雄",
+          "text": "**公孙离：** 远程主要输出与击退风筝核心，夺取回收退场工具等级。优先觉醒提高输出质量；免控、冰霜法杖和日渊按对手近身与收割需求选择。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1008.69,
+              "end": 1034.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1609.41,
+              "end": 1639.2
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2004.65,
+              "end": 2062.07
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1991"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-0c5b3d3910a4",
+          "section": "英雄",
+          "text": "**张良：** 提供压制控制，等级达到技能节点后进一步增强控制效果；压制不能用普通免控和驱散解除，保留其有用等级而非一概夺取。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1064.54,
+              "end": 1093.96
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1408.14,
+              "end": 1434.08
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1434.5,
+              "end": 1464.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1561"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-1137deed4ae1",
+          "section": "英雄",
+          "text": "**瑶：** 附身保护并分发装备，100级属性分享可回馈主力；名刀·司命与近卫荣耀等按实际威胁分配。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1151.87,
+              "end": 1177.46
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1235.54,
+              "end": 1264.74
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1375.89
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1582.87,
+              "end": 1608.56
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-5051"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-660dd52b0ea3",
+          "section": "英雄",
+          "text": "**鬼谷子：** 图腾与装备分发配合云中君，让装备较多的核心获得更多等级；优先补关键觉醒，后期工具位等级可按需要回收。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1318.64,
+              "end": 1348.83
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1891"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-20412c3cb1fb",
+          "section": "英雄",
+          "text": "**云中君：** 按实际装备数量提供成长，瑶与鬼谷子的分发提高有效装备覆盖；升5级后补首张，决赛需要其他工具时再回收其等级。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1375.89
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-5061"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 后期保护猪八戒，争取承伤和反伤继续生效的时间；牌库紧张时及时比较升级找牌，不能只等理想商店。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1494.94,
+              "end": 1524.23
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2378.24,
+              "end": 2425.58
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2565.03,
+              "end": 2639.64
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1861"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-e772cbd434eb",
+          "section": "英雄",
+          "text": "**钟馗：** 决赛工具位，在处理退场工具等级后补入；不是开局固定占位。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2062.43,
+              "end": 2130.69
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1751"
+          ],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T04:41:14.662287+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "fmt24-owner-6c5bc4ac44b4",
+          "section": "英雄",
+          "text": "**公孙离：** 主C夺取旧工具永久等级，随场上觉醒人数获得攻速，靠普攻与纸伞清场。觉醒需求：普通每已醒15%攻速，醒后30%，主C优先追醒但不等醒才进场；等级投入：集中永久等级和攻击装备，40攻速100控制为节点，继续吸收可退出工具，不吸走100瑶关键等级；购买策略：首张有可吸等级时取，重复补醒与夺取；3级体系搜牌有条件付费，但低压先保战力，不能无脑刷新。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：等级与装备足以接过渡输出时上，未有等级可先留手而非零战力硬换；出售时机：主C保留，不为功能位卖；转线须先处理永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1008.69,
+              "end": 1034.37
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1609.41,
+              "end": 1639.2
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2004.65,
+              "end": 2062.07
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 567.0,
+              "end": 597.1
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 829.0,
+              "end": 858.8
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1008.7,
+              "end": 1034.4
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1177.9,
+              "end": 1205.2
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1991"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1991"
+        },
+        {
+          "id": "fmt24-owner-0c5b3d3910a4",
+          "section": "英雄",
+          "text": "**张良：** 开团给团队永久等级，压制为公孙离创造安全输出。觉醒需求：普通随机3人醒后全体，成长频繁时补；不是主C必须吃定向资源；等级投入：自然成长，100压制清蓝可提高单核对局质量；不需要其节点时等级可给公孙离；购买策略：首张优先建立开团成长，重复补醒；公孙与猪醒、关键工具有一醒后可升5，别低本死D全员。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：开团组件已在场且有控制需求时上；出售时机：低压终局常先保留100控制，云/虞转等级换功能；若已无需控制，可先转永久等级装备后替；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1064.54,
+              "end": 1093.96
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1408.14,
+              "end": 1434.08
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1434.5,
+              "end": 1464.15
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1064.5,
+              "end": 1094.0
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1561"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1561"
+        },
+        {
+          "id": "fmt24-owner-1137deed4ae1",
+          "section": "英雄",
+          "text": "**瑶：** 附身给公孙离盾，100分享主要属性解决主C脆弱问题。觉醒需求：普通分享15秒可用，醒后永久；先补首张保护再按资源补；等级投入：优先保100属性分享节点，不让公孙离夺走关键等级；云中君装备可定向养瑶；购买策略：首张保护高优先，重复随猪合成/觉醒投入，不能为工具醒拖主C；确需100才追加等级。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先件普通装备设好、公孙为最近目标时上；出售时机：通常保留，换前确认不会丢关键盾和100属性；转装备及永久等级后再换；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1151.87,
+              "end": 1177.46
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1235.54,
+              "end": 1264.74
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1290.62,
+              "end": 1318.14
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1375.89
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1582.87,
+              "end": 1608.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1151.9,
+              "end": 1177.5
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-5051"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5051"
+        },
+        {
+          "id": "fmt24-owner-660dd52b0ea3",
+          "section": "英雄",
+          "text": "**鬼谷子：** 先知图腾增加开团/图腾成长与临时等级，供公孙离承伤输出体系运作。觉醒需求：普通可用，最好补醒强化，但不等全员醒才拉高阶；等级投入：自然成长，不抢公孙和瑶定向资源；购买策略：首张补图腾，重复按醒与合成收益，核心齐醒后停止低本无度D。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有图腾受益者或开团成长链时上；出售时机：终局改功能前先核对图腾与开团收益，转有效永久等级装备，不随意拆完整成长链；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1318.64,
+              "end": 1348.83
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1318.6,
+              "end": 1348.8
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1375.9
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.0,
+              "end": 1493.6
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1891"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1891"
+        },
+        {
+          "id": "fmt24-owner-20412c3cb1fb",
+          "section": "英雄",
+          "text": "**云中君：** 按装备定向给核心与瑶永久等级，优于无定向的乱分等级。觉醒需求：普通每件1级醒后2，成长路线有价值再补；等级投入：自身自然成长，三装优先公孙或瑶等实际培养者；购买策略：首张优质成长工具，重复按觉醒和猪同阶合成收益；不为单张强付高价。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：已有装备再上，确定需要养瑶100时把装备给瑶；出售时机：低压终局等级已够可传承/移植后换钟馗，别直接售掉较高永久等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1349.1,
+              "end": 1375.89
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1465.05,
+              "end": 1493.56
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1036.0,
+              "end": 1064.0
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1094.5,
+              "end": 1121.8
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-5061"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5061"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生则保留；腾打出位前确认有备份或当轮可补回，先卸有用装备和转有效等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1494.94,
+              "end": 1524.23
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2378.24,
+              "end": 2425.58
+            },
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2565.03,
+              "end": 2639.64
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1861"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1861"
+        },
+        {
+          "id": "fmt24-owner-e772cbd434eb",
+          "section": "英雄",
+          "text": "**钟馗：** 给关键单位附加牺牲降级，削弱敌方高等级主C并创造集火机会。觉醒需求：普通10%可用，觉醒20%更强；按终局需求补，不是所有开局必追；等级投入：功能为主；需要开场钩则10级是启动点，其他等级不优先专养；购买策略：接近关键对局按需取首张，重复补觉醒；没有降级或钩人需求时不付费专找。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：关键操作完成后按左右一格设置牺牲；需要钩人时达10级并检查最远目标；出售时机：对局功能仍必要时不卖；若换保护或腾打出位，先处理有效等级装备，出售会失去其施加的牺牲；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2062.43,
+              "end": 2130.69
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 875.2,
+              "end": 899.7
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-low-dahe-shoot-owner-hero-1751"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1751"
+        },
+        {
+          "id": "hero5-owner-card-1821",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1265.7,
+              "end": 1302.6
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**干将莫邪：** 前期快速施法清杂保血，为后续阵容争取成型时间。觉醒需求：短期过渡普通可用；需要持续靠击杀成长的路线优先觉醒双剑；等级投入：接受击杀及现有成长，40额外飞剑为战力节点，不为纯过渡强养到100；购买策略：开局缺输出时自然买首张；重复仅在前期保血与觉醒收益成立时买，不为已退出的过渡重新付费找。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有前排和相应装备时早上，不能为凑最终阵容先拆仍有战力的干将；出售时机：最终输出足以接替后售，先转可用永久等级与普通装备，卡牌附带双剑离场会消失；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1821"
+        },
+        {
+          "id": "hero5-owner-card-1971",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509.5,
+              "end": 538.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1303.0,
+              "end": 1343.0
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**弈星：** 升级经验工具，节约升本资源，尽早取得核心提高成型战力。觉醒需求：普通卡已可提供经验，不专门为过渡觉醒；等级投入：接受自然等级，不专门培养；购买策略：开局取首张，重复与付费追牌不优先；升级收益结束后停止投入。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前需在场；核心到来后不占关键人口；出售时机：升本收益用完或核心需要位置时售，有可转移永久等级先处理，不能先卖再升级；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1971"
+        },
+        {
+          "id": "hero5-owner-card-1731",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1667.8,
+              "end": 1704.3
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**李元芳：** 整备给最近河洛用古币，提供前期等级并为木兰补币。觉醒需求：普通已能供币，觉醒按v1.7.1为2张普通古币，不沿用旧精致币表述；等级投入：自然成长，不抢木兰等级；自身输出仅过渡；购买策略：开局缺成长工具时买首张，重复按能否自然成醒及保血收益取舍，不为他长期滞留低本。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先核对最近河洛目标，让古币给实际承伤或输出者；出售时机：有更好供币者或武则天等接替时可售，先转其永久等级装备，确认不再需整备供币；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1731"
+        },
+        {
+          "id": "hero5-owner-card-1681",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509.5,
+              "end": 538.0
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**牛魔：** 前排兼胜利经济，保血并把胜场换成后续核心资源。觉醒需求：普通卡即可工作，不以觉醒为进阵前提；等级投入：自然成长，专门等级优先主C；购买策略：开局自然首张且能赢或明显少掉血时买，不付费追觉醒；无胜利可能时不为经济追加。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要前排并能发挥当前战力时上，非只因有空位就长期保留；出售时机：核心前排接替后可售，先转有价值等级和装备，失去胜利经济后不占核心位置；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1681"
+        },
+        {
+          "id": "hero5-owner-card-5031",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1265.2,
+              "end": 1290.1
+            },
+            {
+              "source": "BV1gBYh6WEPE:p1",
+              "start": 1641.9,
+              "end": 1669.4
+            },
+            {
+              "source": "BV1gBYh6WEPE:p1",
+              "start": 1687.5,
+              "end": 1714.5
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**狂铁：** 开局强前排，承接成长后为公孙离提供可夺取永久等级。觉醒需求：普通可承伤，醒后整备触发更多，不为过渡长追；等级投入：自然成长，10盾40叠盾改善保血，非单独冲100；购买策略：需要可靠前排时自然首张，重复按当下保血，不为过渡单卡付费D。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：早期已有位置即可顶前，不在公孙离未接输出前拆前排；出售时机：更强前排或保护到位后先让公孙离吸永久等级、转装备再换，保血差时先牛后狂按实际质量；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5031"
+        },
+        {
+          "id": "hero5-owner-card-1941",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 1265.2,
+              "end": 1290.1
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**苏烈：** 前期河洛承伤，牺牲自养等级，支持平稳进入高阶。觉醒需求：普通可过渡，觉醒加强自养，不为短暂过渡强追；等级投入：接受自然牺牲成长；40有复生，不把达到40视为必须继续投资的理由；购买策略：开局顺路首张，重复只在前期保血或自然成醒有收益时买，不单独付费追至高等级。嬴律低压先保证当轮战力和胜场，弈星只在质量足时补，强敌优先双前排，不固定卖血。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：早期缺前排时即可上，安排先承伤以发挥牺牲成长；出售时机：木兰体系前排足够时可替，先移交永久等级与装备；不因首张木兰到手就拆掉仍能保血的苏烈；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1941"
+        },
+        {
+          "id": "hero5-owner-card-1741",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 978.3,
+              "end": 1007.8
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**虞姬：** 图腾开团成长兼过渡输出，替主C未成型时保血。觉醒需求：普通可用，醒后扩大受益；v1.7.1可给任意己方英雄；等级投入：自然成长，有高永久等级后交公孙离，不与瑶争定向资源；购买策略：已有鬼谷子图腾且便宜首张可补，重复按合成与成长收益；不为支线耽误核心。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：图腾在场、需要即时输出才上，不能无图腾强凑；出售时机：公孙或终局功能可接后先转永久等级装备再换，低等级可以直接替；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1741"
+        },
+        {
+          "id": "hero5-owner-card-5771",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 2291.7,
+              "end": 2377.3
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**少司缘：** 因缘图腾和回复的条件成长补位，帮助低阶射过渡。觉醒需求：普通可给图腾，醒后强化；先看当前战力再追；等级投入：自然成长，不为低等级少司缘抢输出资源；购买策略：鬼/虞等图腾路线成立、便宜自然首张可取；重复不优先于主C，已醒不为同卡D。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有图腾受益或虞姬时再考虑，不把一级少司缘当无条件保血卡；出售时机：需要更强核心/终局保护时先转有效等级再售；若有猪，合成打出收益先结算；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:5771"
+        },
+        {
+          "id": "hero5-owner-card-1761",
+          "section": "英雄",
+          "text": "**杨玉环：** 升5后给残余低阶组件补觉醒，增加公孙离开团攻速，必要时治疗保血。觉醒需求：普通弦音已可补低阶，醒后妙音补高阶；不为工具先追醒；等级投入：接受自然成长，不抢公孙离和100瑶的资源；购买策略：主C和关键工具已大致觉醒、升5后仍缺少量醒时取首张，重复按实际缺口，不付费只为玉环追醒；拍卖出价上限未确认；上阵时机：补醒目标已明确且有位置时上，可用周期产牌或退场兑现，不影响已成核心；出售时机：补醒完成可退场领取弦音再换功能，若仍靠她治疗则比较续航；先转有效永久等级和装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1cZhE6NE4t:p1",
+              "start": 829.0,
+              "end": 858.8
+            }
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-low-dahe-shoot/owner/card:1761"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "revision": "4304c7ae6c01f8a88cd6"
+}

@@ -1,0 +1,913 @@
+{
+  "id": "b22-heal-wall-zhuge",
+  "type": "lineup",
+  "title": "奶屏诸葛亮",
+  "topic": "奶屏诸葛亮",
+  "aliases": [],
+  "entities": [
+    "player:35",
+    "card:1761",
+    "card:1901",
+    "card:1821",
+    "card:1681",
+    "card:1181",
+    "card:1971",
+    "card:1141",
+    "card:5011",
+    "card:1861",
+    "card:1231"
+  ],
+  "core": [
+    "card:1761",
+    "card:1901"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-principle",
+      "section": "核心原理",
+      "text": "杨玉环高频治疗维持等离子屏障，多个远程英雄持续施法为诸葛亮提供法力和临时等级，诸葛亮再以频繁技能输出。班叔的机关阻挡接敌和弹道，争取治疗与施法时间；通过陷阱、弹簧和屏障取得螺丝升级机关，6级屏障强化再为杨玉环、诸葛亮提供复生，形成保护、治疗与输出的循环。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 143.73,
+          "end": 202.62
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 737.38,
+          "end": 957.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1220.99
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1191.07
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.56,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1275.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.51,
+          "end": 1275.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-early",
+        "b22-b22-heal-wall-zhuge-owner-middle",
+        "b22-b22-heal-wall-zhuge-owner-late",
+        "b22-b22-heal-wall-zhuge-owner-hero-1761",
+        "b22-b22-heal-wall-zhuge-owner-hero-1901",
+        "b22-b22-heal-wall-zhuge-owner-hero-1181",
+        "b22-b22-heal-wall-zhuge-owner-hero-1821",
+        "b22-b22-heal-wall-zhuge-owner-hero-1141",
+        "b22-b22-heal-wall-zhuge-owner-hero-5011",
+        "b22-b22-heal-wall-zhuge-owner-hero-1861",
+        "b22-b22-heal-wall-zhuge-owner-hero-1231"
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-early",
+      "section": "前期运营及应变",
+      "text": "开局自选等离子屏障，用干将莫邪、牛魔、孙膑、弈星过渡；第一轮拍卖前优先补干将觉醒，再补孙膑觉醒。第一轮拍卖优先刘禅，其次明世隐，建立临时等级转化配套。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-middle",
+      "section": "中期运营及应变",
+      "text": "干将和孙膑觉醒、基本工具到手后积累升5级资源；自然刷新遇刘禅、明世隐可补，刘禅觉醒后不为无关重复牌停留。5级优先杨玉环，再补诸葛亮与保护位；明世隐连接目标从干将改为杨玉环。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-late",
+      "section": "后期运营及应变",
+      "text": "先保证屏障与杨玉环治疗能稳住场面，再升6级点等离子屏障强化。多个屏障先普遍升2级，之后比较一个3级圆形屏障给双核复生；只有一个屏障时，不急于失去2级横向阻挡，需结合6级强化和现有治疗再升3级。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 737.38,
+          "end": 957.9
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1761",
+      "section": "英雄",
+      "text": "**杨玉环：** 主要治疗与等级投入对象，治疗屏障并维持队伍。贤者之书缩蓝、法源之杯回蓝、魔律之刃增加施法次数；觉醒主要改善供牌，当前只需维持治疗时不把觉醒当作必需启动条件。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1220.99
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1901",
+      "section": "英雄",
+      "text": "**诸葛亮：** 主要输出，其他英雄施法为其增加临时等级与法力。无需把所有永久等级资源集中给诸葛亮；贤者之书、自然法杖和解控保障频繁技能输出，回蓝由队友施法提供。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1191.07
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1181",
+      "section": "英雄",
+      "text": "**孙膑：** 全队施法后的永久成长来源，优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.56,
+          "end": 1014.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1821",
+      "section": "英雄",
+      "text": "**干将莫邪：** 觉醒后承担前期输出与击败成长，后期仍可作为高频施法的远程成员，为诸葛亮提供触发；剩余回蓝装备可分给干将。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1014.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1141",
+      "section": "英雄",
+      "text": "**刘禅：** 提供团队临时等级，与明世隐配合养杨玉环；补出觉醒后不以继续搜同名牌挤占核心找牌资源。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-5011",
+      "section": "英雄",
+      "text": "**明世隐：** 连接杨玉环转永久等级，重复登场、唤醒继续提高转化额度；前期连接干将，核心到场后及时换目标。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 条件保护位，常规优先保护杨玉环；屏障复生已经有效且太乙紧缺时可比较吕布，不因没有太乙就认定完全不能作战。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1275.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1231",
+      "section": "英雄",
+      "text": "**吕布：** 太乙真人紧缺时的替代选择，可为高等级三分英雄提供法术吸血；只需当前职责所需投入，不作为基础名单固定必需。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.51,
+          "end": 1275.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-machinery",
+      "section": "关键操作",
+      "text": "让敌人先触发陷阱、弹簧再拆屏障，以取得螺丝。2级屏障能阻挡弹道，1级主要限制近战路线；多个屏障横向展开堵住绕行，先普遍升2级。敌方有刺客时预留诱导落点配弹簧，避免刺客直接进入核心群。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 558.72,
+          "end": 842.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-position",
+      "section": "站位技巧",
+      "text": "双屏障时，3级屏障左右一格放杨玉环、诸葛亮，另一个横向屏障挡在前方；陷阱和弹簧保护屏障两端。太乙真人放在能连到杨玉环的位置，不让远程成员走出整体保护。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 786.51,
+          "end": 957.9
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-equipment",
+      "section": "推荐装备",
+      "text": "优先给杨玉环和其他远程法师补回蓝、缩蓝、双重施法与解控，诸葛亮可用自然法杖控制未免控目标。多人缺普通装备时优先精选武装、武装重构；不把武装分解当作固定首选。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 436.62,
+          "end": 497.23
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "刻舟减蓝有利于全队频繁施法，班叔的遗留物补机关及螺丝渠道。经济帮助升5级，装备天赋补多个施法位的需求；保血提高容错。已有杨玉环与屏障时，不优先拿吸血替代核心保护。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 436.5
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-auction2",
+      "section": "第二轮拍卖",
+      "text": "优先杨玉环，其次诸葛亮，再比较太乙真人、吕布；五阶治疗核心更难补时先确保其到手。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.08,
+          "end": 1101.1
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-counter",
+      "section": "制敌手段",
+      "text": "对远程弹道输出，依靠2级以上屏障先拦伤害并用治疗维持。对近战和刺客则用横向封路、弹簧与陷阱延缓接敌；保护被突破后，单靠额外吸血未必能维持原循环。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 558.72,
+          "end": 737.38
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-current-machines",
+      "section": "棋手技能推荐",
+      "text": "v1.7.1班叔开局和5级获得便携式机关，可选择所需机关；2、3、4级仍为三种机关随机。奶屏路线到5级可借可选机会补等离子屏障，但不能把中间每级都视为定向给屏障。旧视频5级随机的风险已发生变化。",
+      "condition": "",
+      "version": "v1.7.1",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 14,
+          "paragraph_end": 17
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    }
+  ],
+  "meta": {
+    "required_factions": [
+      "faction:dahe",
+      "faction:sanfen",
+      "faction:zhulu"
+    ],
+    "players": [
+      "player:35"
+    ],
+    "core_heroes": [
+      "card:1761",
+      "card:1901"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1821",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "required",
+          "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1901",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1821",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "required",
+          "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1901",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:sanfen",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：诸葛亮（先取得首张，投入按本阶段运营判断。）、刘禅（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：干将莫邪（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:zhulu",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：孙膑（优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:35",
+        "claim_refs": [
+          "b22-b22-heal-wall-zhuge-owner-principle",
+          "b22-b22-heal-wall-zhuge-owner-early",
+          "b22-b22-heal-wall-zhuge-owner-middle",
+          "b22-b22-heal-wall-zhuge-owner-late",
+          "b22-b22-heal-wall-zhuge-owner-hero-1761",
+          "b22-b22-heal-wall-zhuge-owner-hero-1901",
+          "b22-b22-heal-wall-zhuge-owner-hero-1181",
+          "b22-b22-heal-wall-zhuge-owner-hero-1821",
+          "b22-b22-heal-wall-zhuge-owner-hero-1141",
+          "b22-b22-heal-wall-zhuge-owner-hero-5011",
+          "b22-b22-heal-wall-zhuge-owner-hero-1861",
+          "b22-b22-heal-wall-zhuge-owner-hero-1231",
+          "b22-b22-heal-wall-zhuge-owner-machinery",
+          "b22-b22-heal-wall-zhuge-owner-position",
+          "b22-b22-heal-wall-zhuge-owner-equipment",
+          "b22-b22-heal-wall-zhuge-owner-talents",
+          "b22-b22-heal-wall-zhuge-owner-auction2",
+          "b22-b22-heal-wall-zhuge-owner-counter",
+          "b22-b22-heal-wall-zhuge-owner-current-machines"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1181",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1821",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1181",
+                "necessity": "required",
+                "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1901",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1821",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1181",
+                "necessity": "required",
+                "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1901",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1231",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "觉醒干将和机关可保血，但强前期对手仍会施压。",
+              "claim_refs": [
+                "b22-b22-heal-wall-zhuge-owner-early"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "升5级补杨玉环、诸葛亮及明世隐后才形成完整治疗施法循环。",
+              "claim_refs": [
+                "b22-b22-heal-wall-zhuge-owner-middle"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "屏障升级、杨玉环治疗与全队存活共同决定能否持续输出，单屏障局需独立取舍。",
+              "claim_refs": [
+                "b22-b22-heal-wall-zhuge-owner-late"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "能取得杨玉环、诸葛亮和足够机关保护，队伍可维持远程施法。",
+          "avoid": "缺治疗或屏障被绕过时先解决保护，不只增加诸葛亮理论等级。"
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-35",
+      "relation": "applicable_player",
+      "title": "班叔",
+      "href": "../players/班叔.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-heal-wall-zhuge-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1761": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1901": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1181": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1821": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1141": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-5011": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1231": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-machinery": [
+        "关键操作"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-position": [
+        "站位技巧"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-auction2": [
+        "第二轮拍卖"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-counter": [
+        "制敌手段"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-current-machines": [
+        "棋手技能推荐"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        }
+      }
+    }
+  },
+  "path": "knowledge/lineups/奶屏诸葛亮（二）.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "faction:sanfen": "三分",
+    "faction:zhulu": "逐鹿",
+    "player:35": "班叔",
+    "card:1761": "杨玉环",
+    "card:1901": "诸葛亮",
+    "card:1821": "干将莫邪",
+    "card:1681": "牛魔",
+    "card:1181": "孙膑",
+    "card:1971": "弈星",
+    "card:1141": "刘禅",
+    "card:5011": "明世隐",
+    "card:1861": "太乙真人",
+    "card:1231": "吕布"
+  },
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "revision": "02b01c0540562df2681b"
+}

@@ -1,0 +1,2848 @@
+{
+  "id": "b22-zhuang-no-faction",
+  "type": "lineup",
+  "title": "庄小鱼无阵营",
+  "topic": "庄小鱼无阵营",
+  "aliases": [],
+  "entities": [
+    "card:1161",
+    "card:1163",
+    "card:1481",
+    "card:1483",
+    "card:1671",
+    "card:1673",
+    "card:1681",
+    "card:1683",
+    "card:1761",
+    "card:1763",
+    "card:1861",
+    "card:1863",
+    "card:1971",
+    "card:1973",
+    "card:1981",
+    "card:1983",
+    "card:5011",
+    "card:5013",
+    "card:5021",
+    "card:5023",
+    "card:5211",
+    "card:5213",
+    "card:636503",
+    "card:636601",
+    "card:636603",
+    "card:643103",
+    "card:643402",
+    "card:643404",
+    "card:643501",
+    "card:643502",
+    "card:643603",
+    "card:643703",
+    "card:643705",
+    "card:643802",
+    "card:643803",
+    "card:644105",
+    "card:7535",
+    "card:93110",
+    "player:31"
+  ],
+  "core": [
+    "card:1671",
+    "card:5211"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-principle",
+      "section": "核心原理",
+      "text": "孙悟空、海月承担主要输出，姜子牙清杂兵，杨玉环维持续航。庄小鱼升到5级和6级取得如梦似幻，补齐无阵营英雄与专属效果牌，再靠逍遥自在同步提升多个英雄的永久等级。孙悟空回收退场过渡英雄的等级，使早期投入继续服务输出；这套打法的上限来自全队成长，成型速度则受逍遥自在获取影响。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 727.31
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 0,
+          "end": 54.95
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 563.24,
+          "end": 645.79
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 675.55
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.08,
+          "end": 699.86
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.53,
+          "end": 395.35
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1897.19,
+          "end": 1949.87
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-early",
+        "b22-b22-zhuang-no-faction-owner-middle",
+        "b22-b22-zhuang-no-faction-owner-late",
+        "b22-b22-zhuang-no-faction-owner-hero-1671",
+        "b22-b22-zhuang-no-faction-owner-hero-5211",
+        "b22-b22-zhuang-no-faction-owner-hero-1481",
+        "b22-b22-zhuang-no-faction-owner-hero-1761",
+        "b22-b22-zhuang-no-faction-owner-hero-5021",
+        "b22-b22-zhuang-no-faction-owner-hero-5011",
+        "b22-b22-zhuang-no-faction-owner-hero-1861"
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-early",
+      "section": "前期运营及应变",
+      "text": "用牛魔、弈星过渡并积累升5级的资源，第一轮拍卖补无阵营英雄；梦奇可随失败提高品阶，裴擒虎、明世隐、阿轲也可按来牌补当前战力。无阵营人数用于如梦似幻启动，不能只存升级钱而放弃当轮保血。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 0,
+          "end": 54.95
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-middle",
+      "section": "中期运营及应变",
+      "text": "棋手5级有两种启动方式：三名无阵营即可开如梦似幻，以较低找牌成本补英雄；场面允许时先补到五名，争取专属效果牌。五人模板也可能只给夺取之术，不能预设能拿到逍遥自在。先用新英雄和实际得到的成长稳住战斗，再准备升6级。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-late",
+      "section": "后期运营及应变",
+      "text": "需要专属效果牌时，第二张如梦似幻可按六名无阵营模板使用；需要原样复制场上七名英雄补觉醒时才比较七人模板。开启梦幻商店前凑齐合适人数并留购买资源，之后持续找逍遥自在及关键觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 563.24,
+          "end": 645.79
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-engine",
+      "section": "关键效果牌",
+      "text": "逍遥自在按场上无阵营人数给每名无阵营英雄增加等级，七人时每人增加14级。先上齐可用无阵营再打，随后让孙悟空回收准备退场者的等级。主要从普通商店、梦幻商店获取，不把锦囊视为已确认渠道。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 926.13,
+          "end": 1014.81
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-1671",
+      "section": "英雄",
+      "text": "**孙悟空：** 前中期主要物理输出，夺取可回收附近退场英雄的永久等级。先安排牛魔、弈星等目标的位置再打出孙悟空；前期优先分配输出装备，后期与海月分担输出。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 675.55
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-5211",
+      "section": "英雄",
+      "text": "**海月：** 后期主要输出与牺牲威胁，享受逍遥自在的全队成长。用不死鸟之眼、霸者重铠补生存，贤者之书服务法术输出和启动，神器比较护命灵珠；需要重复触发牺牲时再由太乙真人保护。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-1481",
+      "section": "英雄",
+      "text": "**姜子牙：** 用范围技能清杂兵，为孙悟空和海月解决敌方核心创造条件。魔律之刃增加技能次数，承受开场爆发时比较名刀·司命，先保证技能能打出来。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-1761",
+      "section": "英雄",
+      "text": "**杨玉环：** 在中央位置治疗队友并补伤害，法源之杯、魔律之刃提高施法频率和次数；同名牌与弦音帮助补觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.08,
+          "end": 699.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-5021",
+      "section": "英雄",
+      "text": "**裴擒虎：** 借整备承接其他英雄的临时等级并补单体输出；可与明世隐搭配。全队等级已高时不只围绕单个目标整备；临时等级不能当作夺取的永久等级。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-5011",
+      "section": "英雄",
+      "text": "**明世隐：** 向裴擒虎提供临时等级并治疗，达到技能节点后治疗增强。全队成长能帮助达到节点，决赛需腾位置或集中等级时再考虑替换。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.53,
+          "end": 395.35
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 保护实际战斗核心，后期海月承担牺牲输出时可挂给海月；不因一场实战把复活对象固定为孙悟空。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1897.19,
+          "end": 1949.87
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "协同一致按棋手等级给无阵营英雄成长；四海来援让阵亡者召出同品阶同等级英雄；千里相聚在继续打出无阵营英雄时提高全队等级。经济服务升5、升6，人口扩大逍遥自在收益，保血帮助撑到多核成长兑现。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.31,
+          "end": 924.54
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-equipment",
+      "section": "推荐装备",
+      "text": "优先为孙悟空做无尽巨剑、炽热支配者、聚灵水晶，再按海月、杨玉环、姜子牙的职责分配法装。多人需要普通装备时，不为随机神器过早分解全部装备；主要神器目标是海月的护命灵珠。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-auction3",
+      "section": "第三轮拍卖",
+      "text": "优先比较展翅腾飞继续刷新找逍遥自在；能量超新星、棋手5级时的扶摇直上补资源。缺人口、装备、五阶英雄或关键觉醒时，分别比较新生力量、军械库、神兵天降、天籁琴音，不沿用当局低价作固定预算。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 954.8,
+          "end": 1079.62
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-zhuang-no-faction-owner-final",
+      "section": "终局技巧",
+      "text": "全队已能赢时继续保留多核和四海来援收益；决赛确需集中等级时再处理传承、遗志与替换位，明确实际接收者。裴擒虎整备可重新承接等级，但集中会改变多名阵亡者的等级分布，不无条件把全队拆成单核。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2571.7,
+          "end": 2713.64
+        }
+      ]
+    },
+    {
+      "id": "fmt24-owner-943949742f8a",
+      "section": "关键装备",
+      "text": "**无尽巨剑：** 暴击率+30%，暴击效果+60%。暴击效果不可叠加。 优先给孙悟空补暴击爆发。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 675.55
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-1c619f6870a0",
+      "section": "关键装备",
+      "text": "**炽热支配者：** 唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。 给孙悟空保护启动与输出，避免普通控制打断。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-28b68b5a8981",
+      "section": "关键装备",
+      "text": "**聚灵水晶：** 唯一。受击时额外获得10点法力值，最多100点。达到上限后恢复20%最大生命值。 给孙悟空受击回蓝，帮助更快施法。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 675.55
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-9e0011d2a0ad",
+      "section": "关键装备",
+      "text": "**护命灵珠：** 唯一。每4秒获得基础生命值25%的护盾。拥有护盾时伤害提升25%，护盾被击破则移除。 海月的主要神器目标，依靠周期护盾和持盾增伤补承伤、输出；普通装备仍缺时不提前全部分解。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.31,
+          "end": 751.23
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 896.28,
+          "end": 924.54
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2535.55,
+          "end": 2571.29
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-4afe4a5787a7",
+      "section": "关键装备",
+      "text": "**不死鸟之眼：** 唯一。增加15%基础生命值，生命恢复和护盾效果提升30%。 海月需要生命上限与护盾收益时选择。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 675.55
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-a358e4f9b8f2",
+      "section": "关键装备",
+      "text": "**霸者重铠：** 唯一。生命值高于70%时获得40%伤害减免。 海月高生命值时取得减伤，延长承伤。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-91c71f10ad80",
+      "section": "关键装备",
+      "text": "**贤者之书：** 唯一。法力值上限-10。释放技能后获得20%基础法术攻击力，最多叠加6层。 海月缩蓝并随施法提高法术攻击，杨玉环也可用来缩短法力条、提高治疗。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-fa837202f7a1",
+      "section": "关键装备",
+      "text": "**近卫荣耀：** 唯一。战斗开始时，周围1格己方单位获得10点物理和法术防御，穿戴者获得双倍效果，不可叠加。 杨玉环为邻近主力补抗性。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-974e5f61fbe3",
+      "section": "关键装备",
+      "text": "**魔律之刃：** 唯一。释放技能时，35%概率重复释放一次。每有7级，额外提升1%概率。近战英雄总概率上限70%。 杨玉环增加治疗施法，姜子牙清理杂兵时比较重复施法收益。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        },
+        {
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "type": "document",
+          "paragraph_start": 154,
+          "paragraph_end": 156
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-63ed62902ffe",
+      "section": "关键装备",
+      "text": "**法源之杯：** 唯一。每秒回复5点法力值。 给杨玉环回蓝维持治疗循环。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.08,
+          "end": 699.86
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e27ca02f5979",
+      "section": "关键装备",
+      "text": "**名刀·司命：** 唯一。穿戴者首次受到致命伤害时会进入无敌和不可选中状态，持续1.5秒。 姜子牙需要额外施法窗口时保命。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-47e23b21118e",
+      "section": "推荐天赋",
+      "text": "优先保证阵容成型与当前战力，再按等级、装备和生存缺口比较以下天赋；具体优先级随各项所列条件调整。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.31,
+          "end": 924.54
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ac2399dfff97",
+      "section": "推荐天赋",
+      "text": "**协同一致：** 按棋手等级给无阵营英雄成长，配合多个无阵营成员同步培养。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 808.11,
+          "end": 837.18
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-cac0f28b1369",
+      "section": "推荐天赋",
+      "text": "**四海来援：** 无阵营英雄阵亡后召唤同品阶、同等级英雄，延续多核战力。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.31,
+          "end": 924.54
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-96200d4d0ee4",
+      "section": "推荐天赋",
+      "text": "**千里相聚：** 继续打出无阵营英雄时提高全队等级，配合梦幻商店和供牌成长。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 867.17,
+          "end": 894.7
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1411.44,
+          "end": 1461.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-d1aa6c4cee3a",
+      "section": "关键效果牌",
+      "text": "**逍遥自在：** 按场上无阵营人数给无阵营英雄加等级，七人时每人14级。先上齐可用无阵营再打，之后让孙悟空回收准备退场者的等级；主要从普通商店和梦幻商店获取，不将锦囊当作已确认渠道。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 230.68,
+          "end": 257.63
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.53,
+          "end": 395.35
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 396.76,
+          "end": 424.44
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 451.98,
+          "end": 480.16
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 536.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-engine"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ac0ad7627d64",
+      "section": "英雄",
+      "text": "**孙悟空：** 早期夺取牛魔弈星等级承接战力，后期换海月形成无阵营多核。觉醒需求：普通可夺取，醒后强化闪现整备，作为短期过渡不强追；等级投入：吸收旧打工者永久等级，不能误夺仍需成长的核心；购买策略：已有牛弈等级且缺即时战力时首张，重复按过渡需求，不另开倒转刷猴路线。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先吸可退出工具再卖旧位，模板与后续海月安排清楚；出售时机：海月已经能承担前排和输出时才考虑换孙悟空；先有能保留其永久等级的手段，再拆掉过渡输出。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 536.17
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1501.74,
+          "end": 1547.32
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.5,
+          "end": 536.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.6,
+          "end": 675.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.2
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-1671"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1671"
+    },
+    {
+      "id": "fmt24-owner-13e8a1cfa033",
+      "section": "英雄",
+      "text": "**海月：** 后期前排与牺牲针对单核，和太乙复生形成再次换命。觉醒需求：普通能牺牲控制与真伤，觉醒提高比例，成型后补质量；等级投入：接受队伍成长，40产盾100幻境为节点，幻境仍按法伤，不把旧真伤表述泛化；购买策略：5/6秘技与梦幻引擎补首张和醒；猴过渡后找海月，不为缺牌死D忘升级第二秘技。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：能承接猴位置且保护配套时上，太乙就近挂海月；出售时机：通常保留海月参与多核作战，出售会失去牺牲控制；尚未确认需要换掉她的固定路线；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.23,
+          "end": 366.76
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 675.55
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.31,
+          "end": 751.23
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 751.56,
+          "end": 778.49
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.6,
+          "end": 675.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.3,
+          "end": 751.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 751.6,
+          "end": 778.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 896.3,
+          "end": 924.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1015.2,
+          "end": 1044.3
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1083.3,
+          "end": 1127.8
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-5211"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:5211"
+    },
+    {
+      "id": "fmt24-owner-6d19c54c44ea",
+      "section": "英雄",
+      "text": "**姜子牙：** 打不同阵营/无阵营英雄带队成长，范围伤害清杂补多核战力。觉醒需求：普通每次1，醒后2，循环频繁值得补；等级投入：100八向冲击波为范围节点，接受全队成长不孤立只养一个；购买策略：秘技/引擎形成后首张，重复补醒，打出资源先确认不会破坏主模板。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：队伍不同阵营受益者准备好后上，再打牌成长；出售时机：通常保留姜子牙的成长与范围输出；仅在确认终局需要集中等级时，才按实际转级牌和接收者另作取舍，不能把反复卖工具的规则套在姜子牙上；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.23,
+          "end": 366.76
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1609.77,
+          "end": 1651.47
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2121.74,
+          "end": 2189.84
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.2
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-1481"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1481"
+    },
+    {
+      "id": "fmt24-owner-6cef48f9e392",
+      "section": "英雄",
+      "text": "**杨玉环：** 周期补醒及团队治疗，让多核持续战斗。觉醒需求：普通弦音补低阶，醒后妙音补高阶，按未醒高费数量补；等级投入：接受团队成长，奶量有实际战力，不因全员醒就自动卖治疗主力；购买策略：秘技/引擎取首张，重复按高阶补醒需求，不为她单卡干扰模板。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要治疗与补醒时上，注意阵营模板人数关系；出售时机：仍需治疗时保留；确认其他英雄能承担生存、而位置更紧要时，可以出售领取弦音或妙音。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.23,
+          "end": 366.76
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.08,
+          "end": 699.86
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1015.2,
+          "end": 1044.3
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1083.32,
+          "end": 1127.83
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1462.53,
+          "end": 1501.14
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.1,
+          "end": 699.9
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1083.3,
+          "end": 1127.8
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-1761"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1761"
+    },
+    {
+      "id": "fmt24-owner-4845a9632bcf",
+      "section": "英雄",
+      "text": "**裴擒虎：** 无阵营早期战力与临时等级来源，明世隐将其固化，后期多核之一。觉醒需求：普通吸一半临时，醒后吸全额，提高成长和战斗上限，值得优先补；等级投入：接受队伍永久成长并吸临时，不能把吸到的临时当可直接转永久资产；购买策略：开5级秘技形成模板时首张，重复补醒；先3/4人速启动或5/6赌模板按血量选，非每局硬等6人。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有可吸等级对象且主模板成立时上，不为独立虎耽误秘技；出售时机：通常保留多核；极难终局才用传承或遗志集中，先让明世隐离场、减少不希望接收等级的候选；传承分给最低等级的3名其他英雄，遗志随机给1名其他英雄，并非任意指定目标，不能常规拆掉四海多核；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.2,
+          "end": 366.8
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.7,
+          "end": 2319.1
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-5021"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:5021"
+    },
+    {
+      "id": "fmt24-owner-db9a87220df6",
+      "section": "英雄",
+      "text": "**明世隐：** 把虎临时等级固化，100级治疗补团队续航，支持多核长期战力。觉醒需求：普通可转化，醒后提高登场上限，成长频繁时补；等级投入：接受团队成长，100百分比治疗有价值，不把工具永远低级规则套本路线；购买策略：模板成型取首张，重复登场叠上限，临时来源成立才投入，不为单卡耗尽启动资源。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：连虎等实际临时等级主力后上，100治疗配合团队；出售时机：通常保留明世隐转化等级与治疗；仅在极难终局必须集中等级时才考虑出售，提前离场会中断后续转化。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.23,
+          "end": 366.76
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.53,
+          "end": 395.35
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.5,
+          "end": 395.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-5011"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:5011"
+    },
+    {
+      "id": "fmt24-owner-85eea5d917d3",
+      "section": "英雄",
+      "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生保护时保留；确实要腾位置打牌时，先有备用太乙真人或确认本轮能补回，再出售旧太乙真人，操作完成后重新上场并检查复生目标；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.23,
+          "end": 366.76
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1653.04,
+          "end": 1701.02
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1897.19,
+          "end": 1949.87
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2121.74,
+          "end": 2189.84
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 954.0,
+          "end": 982.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 982.7,
+          "end": 1010.1
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-hero-1861"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1861"
+    },
+    {
+      "id": "fmt24-owner-e27b4cdf79c3",
+      "section": "前期运营",
+      "text": "【前期运营思路：】用牛魔、弈星过渡并积累升5级的资源，第一轮拍卖补无阵营英雄；梦奇可随失败提高品阶，裴擒虎、明世隐、阿轲也可按来牌补当前战力。无阵营人数用于如梦似幻启动，不能只存升级钱而放弃当轮保血。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 0,
+          "end": 54.95
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-early"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-38713054751b",
+      "section": "中期运营",
+      "text": "【中期运营思路：】棋手5级有两种启动方式：三名无阵营即可开如梦似幻，以较低找牌成本补英雄；场面允许时先补到五名，争取专属效果牌。五人模板也可能只给夺取之术，不能预设能拿到逍遥自在。先用新英雄和实际得到的成长稳住战斗，再准备升6级。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-middle"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-98c13f1a34fb",
+      "section": "后期运营",
+      "text": "【后期运营思路：】需要专属效果牌时，第二张如梦似幻可按六名无阵营模板使用；需要原样复制场上七名英雄补觉醒时才比较七人模板。开启梦幻商店前凑齐合适人数并留购买资源，之后持续找逍遥自在及关键觉醒。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 563.24,
+          "end": 645.79
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-late"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-04651bb0c9a0",
+      "section": "后期提升思路",
+      "text": "【后期提升思路：】全队已能赢时继续保留多核和四海来援收益；决赛确需集中等级时再处理传承、遗志与替换位，明确实际接收者。裴擒虎整备可重新承接等级，但集中会改变多名阵亡者的等级分布，不无条件把全队拆成单核。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2571.7,
+          "end": 2713.64
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-final"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-2625a4e57644",
+      "section": "棋手技能选择",
+      "text": "**如梦似幻：** 棋手5级、6级各取得一次如梦似幻，用于生成梦幻手牌；梦幻商店另由6级的梦幻引擎提供；三人低成本补英雄、五人争取专属牌，第二次需要专属牌可用六人模板，七人用于复制现有七名成员。模板不保证逍遥自在。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 727.31
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 0,
+          "end": 54.95
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 563.24,
+          "end": 645.79
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 675.55
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.08,
+          "end": 699.86
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.53,
+          "end": 395.35
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1897.19,
+          "end": 1949.87
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-principle",
+        "b22-b22-zhuang-no-faction-owner-early",
+        "b22-b22-zhuang-no-faction-owner-middle",
+        "b22-b22-zhuang-no-faction-owner-late"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "hero5-owner-card-1971",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.2,
+          "end": 451.4
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.5,
+          "end": 536.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1045.8,
+          "end": 1079.6
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**弈星：** 开局经验与后续可转出的永久等级，帮助尽快触发5/6级秘技。觉醒需求：普通可工作，不为模板路线专门追醒；等级投入：自然成长，后续可猴夺取；购买策略：首张开局买，重复不优先，不为低费工具耽误5级秘技。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前在场；出售时机：升级与模板功能结束后先猴吸等级再售，别提前清掉经济来源；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1971"
+    },
+    {
+      "id": "hero5-owner-card-1981",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 314.9,
+          "end": 340.9
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1221.8,
+          "end": 1269.5
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**梦奇：** 退场换兑换券，败阵提高券品阶，转为找核心与打牌资源。觉醒需求：普通退场已有券，醒后两张；工具用途不专门付费追醒；等级投入：不专门养等级，主要取资源而非战斗节点；购买策略：需要兑换券或打出触发收益且不耽误核心时首张，重复按打出循环价值买，不空刷梦奇。拍卖选择方面，首拍优先梦奇经济。拍卖出价上限未确认；上阵时机：为拿退场券可在打出位上后出售；准备败阵提品阶时才保留过战斗；出售时机：需要兑现券时可售，先确认券品阶和本轮操作目标；退场是用途，不保留占核心人口；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1981"
+    },
+    {
+      "id": "hero5-owner-card-1681",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.2,
+          "end": 451.4
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.5,
+          "end": 536.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1045.8,
+          "end": 1079.6
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**牛魔：** 前期开局前排经济，同时补无阵营秘技模板人数。觉醒需求：普通可供凯旋和模板，不以能否赢作为唯一购买条件；等级投入：自然成长，后续供猴夺取；购买策略：首张开局即可取，即使不连胜也可为模板留；重复不为无收益单独D。拍卖选择方面，首拍无阵营模板可用，不要求强抢高价。拍卖出价上限未确认；上阵时机：前期承伤且需要无阵营模板时上；出售时机：猴吸完永久等级且模板已有替代再售，先卸装备，不先卖导致秘技人数不够；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1681"
+    },
+    {
+      "id": "hero5-owner-card-1161",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 202.2,
+          "end": 230.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.2,
+          "end": 366.8
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.2,
+          "end": 451.4
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**阿轲：** 低血量时登场多次加等级，可把来牌资源转为核心输出与承伤。觉醒需求：普通有登场收益，醒后每次加等级翻倍；按实际血量和打出频率补；等级投入：主要利用登场自然成长，不在纯工具路线专门养战斗等级；购买策略：低血量且核心在场时买首张及重复打出；高血量或未启动不抢资源，不单独重刷。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：确认成长受益对象和场面人数后打出，避免等级分给不保留工具；出售时机：仅借阿轲登场成长、且有后续副本时可以出售后重上；仍承担战斗输出时保留。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1161"
+    }
+  ],
+  "meta": {
+    "required_factions": [],
+    "players": [
+      "player:31"
+    ],
+    "core_heroes": [
+      "card:1671",
+      "card:5211"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1681"
+          ]
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1971"
+          ]
+        },
+        {
+          "hero": "card:1981",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1981"
+          ]
+        },
+        {
+          "hero": "card:1161",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1161"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1671",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-ac0ad7627d64"
+          ]
+        },
+        {
+          "hero": "card:5211",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-13e8a1cfa033"
+          ]
+        },
+        {
+          "hero": "card:1481",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6d19c54c44ea"
+          ]
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6cef48f9e392"
+          ]
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-4845a9632bcf"
+          ]
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-db9a87220df6"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1671",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-ac0ad7627d64"
+          ]
+        },
+        {
+          "hero": "card:5211",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-13e8a1cfa033"
+          ]
+        },
+        {
+          "hero": "card:1481",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6d19c54c44ea"
+          ]
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6cef48f9e392"
+          ]
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-4845a9632bcf"
+          ]
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-db9a87220df6"
+          ]
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-85eea5d917d3"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:31",
+        "claim_refs": [
+          "b22-b22-zhuang-no-faction-owner-principle",
+          "b22-b22-zhuang-no-faction-owner-early",
+          "b22-b22-zhuang-no-faction-owner-middle",
+          "b22-b22-zhuang-no-faction-owner-late",
+          "b22-b22-zhuang-no-faction-owner-engine",
+          "b22-b22-zhuang-no-faction-owner-hero-1671",
+          "b22-b22-zhuang-no-faction-owner-hero-5211",
+          "b22-b22-zhuang-no-faction-owner-hero-1481",
+          "b22-b22-zhuang-no-faction-owner-hero-1761",
+          "b22-b22-zhuang-no-faction-owner-hero-5021",
+          "b22-b22-zhuang-no-faction-owner-hero-5011",
+          "b22-b22-zhuang-no-faction-owner-hero-1861",
+          "b22-b22-zhuang-no-faction-owner-talents",
+          "b22-b22-zhuang-no-faction-owner-equipment",
+          "b22-b22-zhuang-no-faction-owner-auction3",
+          "b22-b22-zhuang-no-faction-owner-final",
+          "fmt24-owner-943949742f8a",
+          "fmt24-owner-1c619f6870a0",
+          "fmt24-owner-28b68b5a8981",
+          "fmt24-owner-9e0011d2a0ad",
+          "fmt24-owner-4afe4a5787a7",
+          "fmt24-owner-a358e4f9b8f2",
+          "fmt24-owner-91c71f10ad80",
+          "fmt24-owner-fa837202f7a1",
+          "fmt24-owner-974e5f61fbe3",
+          "fmt24-owner-63ed62902ffe",
+          "fmt24-owner-e27ca02f5979",
+          "fmt24-owner-47e23b21118e",
+          "fmt24-owner-ac2399dfff97",
+          "fmt24-owner-cac0f28b1369",
+          "fmt24-owner-96200d4d0ee4",
+          "fmt24-owner-d1aa6c4cee3a",
+          "fmt24-owner-ac0ad7627d64",
+          "fmt24-owner-13e8a1cfa033",
+          "fmt24-owner-6d19c54c44ea",
+          "fmt24-owner-6cef48f9e392",
+          "fmt24-owner-4845a9632bcf",
+          "fmt24-owner-db9a87220df6",
+          "fmt24-owner-85eea5d917d3",
+          "fmt24-owner-e27b4cdf79c3",
+          "fmt24-owner-38713054751b",
+          "fmt24-owner-98c13f1a34fb",
+          "fmt24-owner-04651bb0c9a0",
+          "fmt24-owner-2625a4e57644",
+          "hero5-owner-card-1971",
+          "hero5-owner-card-1981",
+          "hero5-owner-card-1681",
+          "hero5-owner-card-1161"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [
+          "zhuang-three-first",
+          "zhuang-five-first"
+        ],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1681"
+                ]
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1971"
+                ]
+              },
+              {
+                "hero": "card:1981",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1981"
+                ]
+              },
+              {
+                "hero": "card:1161",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1161"
+                ]
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1671",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-ac0ad7627d64"
+                ]
+              },
+              {
+                "hero": "card:5211",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-13e8a1cfa033"
+                ]
+              },
+              {
+                "hero": "card:1481",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6d19c54c44ea"
+                ]
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6cef48f9e392"
+                ]
+              },
+              {
+                "hero": "card:5021",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-4845a9632bcf"
+                ]
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-db9a87220df6"
+                ]
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1671",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-ac0ad7627d64"
+                ]
+              },
+              {
+                "hero": "card:5211",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-13e8a1cfa033"
+                ]
+              },
+              {
+                "hero": "card:1481",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6d19c54c44ea"
+                ]
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6cef48f9e392"
+                ]
+              },
+              {
+                "hero": "card:5021",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-4845a9632bcf"
+                ]
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-db9a87220df6"
+                ]
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-85eea5d917d3"
+                ]
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "升级过渡需实际承伤与输出保血。",
+              "claim_refs": [
+                "fmt24-owner-e27b4cdf79c3"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+              "claim_refs": [
+                "fmt24-owner-38713054751b"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+              "claim_refs": [
+                "fmt24-owner-98c13f1a34fb"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+          "avoid": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+          "signals": {
+            "英雄投入": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。"
+          }
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [
+      {
+        "id": "zhuang-three-first",
+        "name": "三名无阵营先启动",
+        "condition": "找牌预算较紧，先取得可用三人模板",
+        "advantages": "较低成本补充组件",
+        "risks": "不保证给专属成长牌",
+        "transition": "场面稳定后准备下一发六人或七人模板",
+        "phases": {
+          "early": [
+            "b22-b22-zhuang-no-faction-owner-early"
+          ],
+          "middle": [
+            "b22-b22-zhuang-no-faction-owner-middle"
+          ],
+          "late": [
+            "b22-b22-zhuang-no-faction-owner-late"
+          ]
+        },
+        "claim_refs": [
+          "b22-b22-zhuang-no-faction-owner-principle",
+          "b22-b22-zhuang-no-faction-owner-early",
+          "b22-b22-zhuang-no-faction-owner-middle",
+          "b22-b22-zhuang-no-faction-owner-late"
+        ],
+        "variant_ids": []
+      },
+      {
+        "id": "zhuang-five-first",
+        "name": "五名无阵营争取专属牌",
+        "condition": "过渡能保血，已有足够无阵营成员",
+        "advantages": "有机会较早取得专属效果牌",
+        "risks": "可能只得到夺取之术，不能保证逍遥自在",
+        "transition": "缺关键成长牌时先用实际来牌补战力",
+        "phases": {
+          "early": [
+            "b22-b22-zhuang-no-faction-owner-early"
+          ],
+          "middle": [
+            "b22-b22-zhuang-no-faction-owner-middle"
+          ],
+          "late": [
+            "b22-b22-zhuang-no-faction-owner-late"
+          ]
+        },
+        "claim_refs": [
+          "b22-b22-zhuang-no-faction-owner-principle",
+          "b22-b22-zhuang-no-faction-owner-early",
+          "b22-b22-zhuang-no-faction-owner-middle",
+          "b22-b22-zhuang-no-faction-owner-late"
+        ],
+        "variant_ids": []
+      }
+    ],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-zhuang",
+      "relation": "applicable_player",
+      "title": "庄小鱼",
+      "href": "../players/庄小鱼.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-zhuang-no-faction-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-zhuang-no-faction-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-zhuang-no-faction-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-zhuang-no-faction-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-zhuang-no-faction-owner-engine": [
+        "关键效果牌"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1671": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-5211": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1481": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1761": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-5021": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-5011": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-zhuang-no-faction-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-zhuang-no-faction-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-zhuang-no-faction-owner-auction3": [
+        "第三轮拍卖"
+      ],
+      "b22-b22-zhuang-no-faction-owner-final": [
+        "终局技巧"
+      ],
+      "fmt24-owner-943949742f8a": [
+        "关键装备"
+      ],
+      "fmt24-owner-1c619f6870a0": [
+        "关键装备"
+      ],
+      "fmt24-owner-28b68b5a8981": [
+        "关键装备"
+      ],
+      "fmt24-owner-9e0011d2a0ad": [
+        "关键装备"
+      ],
+      "fmt24-owner-4afe4a5787a7": [
+        "关键装备"
+      ],
+      "fmt24-owner-a358e4f9b8f2": [
+        "关键装备"
+      ],
+      "fmt24-owner-91c71f10ad80": [
+        "关键装备"
+      ],
+      "fmt24-owner-fa837202f7a1": [
+        "关键装备"
+      ],
+      "fmt24-owner-974e5f61fbe3": [
+        "关键装备"
+      ],
+      "fmt24-owner-63ed62902ffe": [
+        "关键装备"
+      ],
+      "fmt24-owner-e27ca02f5979": [
+        "关键装备"
+      ],
+      "fmt24-owner-47e23b21118e": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-ac2399dfff97": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-cac0f28b1369": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-96200d4d0ee4": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-d1aa6c4cee3a": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-ac0ad7627d64": [
+        "英雄"
+      ],
+      "fmt24-owner-13e8a1cfa033": [
+        "英雄"
+      ],
+      "fmt24-owner-6d19c54c44ea": [
+        "英雄"
+      ],
+      "fmt24-owner-6cef48f9e392": [
+        "英雄"
+      ],
+      "fmt24-owner-4845a9632bcf": [
+        "英雄"
+      ],
+      "fmt24-owner-db9a87220df6": [
+        "英雄"
+      ],
+      "fmt24-owner-85eea5d917d3": [
+        "英雄"
+      ],
+      "fmt24-owner-e27b4cdf79c3": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "fmt24-owner-38713054751b": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "fmt24-owner-98c13f1a34fb": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "fmt24-owner-04651bb0c9a0": [
+        "阵容组成与运营节奏",
+        "后期提升思路"
+      ],
+      "fmt24-owner-2625a4e57644": [
+        "棋手技能选择"
+      ],
+      "hero5-owner-card-1971": [
+        "英雄"
+      ],
+      "hero5-owner-card-1981": [
+        "英雄"
+      ],
+      "hero5-owner-card-1681": [
+        "英雄"
+      ],
+      "hero5-owner-card-1161": [
+        "英雄"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        },
+        "hero_fields": {
+          "status": "partial",
+          "claim_refs": [
+            "fmt24-owner-ac0ad7627d64",
+            "fmt24-owner-13e8a1cfa033",
+            "fmt24-owner-6d19c54c44ea",
+            "fmt24-owner-6cef48f9e392",
+            "fmt24-owner-4845a9632bcf",
+            "fmt24-owner-db9a87220df6",
+            "fmt24-owner-85eea5d917d3",
+            "hero5-owner-card-1971",
+            "hero5-owner-card-1981",
+            "hero5-owner-card-1681",
+            "hero5-owner-card-1161"
+          ],
+          "detail": "五字段格式全部覆盖；逐字段证据审核见review。通用拍卖价格等缺证据，不计为内容完整。"
+        }
+      }
+    },
+    "supporting_claim_refs": {
+      "b22-b22-zhuang-no-faction-owner-equipment": [
+        "fmt24-owner-943949742f8a",
+        "fmt24-owner-1c619f6870a0",
+        "fmt24-owner-28b68b5a8981",
+        "fmt24-owner-9e0011d2a0ad",
+        "fmt24-owner-4afe4a5787a7",
+        "fmt24-owner-a358e4f9b8f2",
+        "fmt24-owner-91c71f10ad80",
+        "fmt24-owner-fa837202f7a1",
+        "fmt24-owner-974e5f61fbe3",
+        "fmt24-owner-63ed62902ffe",
+        "fmt24-owner-e27ca02f5979"
+      ],
+      "b22-b22-zhuang-no-faction-owner-talents": [
+        "fmt24-owner-47e23b21118e",
+        "fmt24-owner-ac2399dfff97",
+        "fmt24-owner-cac0f28b1369",
+        "fmt24-owner-96200d4d0ee4"
+      ],
+      "b22-b22-zhuang-no-faction-owner-engine": [
+        "fmt24-owner-d1aa6c4cee3a"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1671": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-5211": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1481": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1761": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-5021": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-5011": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-hero-1861": [
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-early": [
+        "fmt24-owner-e27b4cdf79c3"
+      ],
+      "b22-b22-zhuang-no-faction-owner-middle": [
+        "fmt24-owner-38713054751b"
+      ],
+      "b22-b22-zhuang-no-faction-owner-late": [
+        "fmt24-owner-98c13f1a34fb"
+      ]
+    },
+    "compact_operation_refs": {
+      "owner": [
+        "fmt24-owner-e27b4cdf79c3",
+        "fmt24-owner-38713054751b",
+        "fmt24-owner-98c13f1a34fb",
+        "fmt24-owner-04651bb0c9a0"
+      ]
+    },
+    "entity_paragraphs": true,
+    "hero_fields_required": true
+  },
+  "path": "knowledge/lineups/庄小鱼无阵营（三）.md",
+  "entity_names": {
+    "player:31": "庄小鱼",
+    "card:1671": "孙悟空",
+    "card:5211": "海月",
+    "card:1681": "牛魔",
+    "card:1971": "弈星",
+    "card:1981": "梦奇",
+    "card:1161": "阿轲",
+    "card:1481": "姜子牙",
+    "card:1761": "杨玉环",
+    "card:5021": "裴擒虎",
+    "card:5011": "明世隐",
+    "card:1861": "太乙真人",
+    "card:1163": "阿轲",
+    "card:1483": "姜子牙",
+    "card:1673": "孙悟空",
+    "card:1683": "牛魔",
+    "card:1763": "杨玉环",
+    "card:1863": "太乙真人",
+    "card:1973": "弈星",
+    "card:1983": "梦奇",
+    "card:5013": "明世隐",
+    "card:5023": "裴擒虎",
+    "card:5213": "海月",
+    "card:636503": "四海来援",
+    "card:636601": "协同一致",
+    "card:636603": "千里相聚",
+    "card:643103": "无尽巨剑",
+    "card:643402": "法源之杯",
+    "card:643404": "聚灵水晶",
+    "card:643501": "霸者重铠",
+    "card:643502": "不死鸟之眼",
+    "card:643603": "近卫荣耀",
+    "card:643703": "名刀·司命",
+    "card:643705": "魔律之刃",
+    "card:643802": "贤者之书",
+    "card:643803": "炽热支配者",
+    "card:644105": "护命灵珠",
+    "card:7535": "逍遥自在",
+    "card:93110": "如梦似幻"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-23T12:00:00+00:00",
+      "origin": "hero5_source_review",
+      "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+      "claims": [
+        {
+          "id": "fmt24-owner-ac0ad7627d64",
+          "section": "英雄",
+          "text": "**孙悟空：** 前中期主要物理输出，夺取可回收附近退场英雄的永久等级。先安排牛魔、弈星等目标的位置再打出孙悟空；前期优先分配输出装备，后期与海月分担输出。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 536.17
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1501.74,
+              "end": 1547.32
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1671"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-13e8a1cfa033",
+          "section": "英雄",
+          "text": "**海月：** 后期主要输出与牺牲威胁，享受逍遥自在的全队成长。用不死鸟之眼、霸者重铠补生存，贤者之书服务法术输出和启动，神器比较护命灵珠；需要重复触发牺牲时再由太乙真人保护。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.31,
+              "end": 751.23
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.56,
+              "end": 778.49
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-5211"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-6d19c54c44ea",
+          "section": "英雄",
+          "text": "**姜子牙：** 用范围技能清杂兵，为孙悟空和海月解决敌方核心创造条件。魔律之刃增加技能次数，承受开场爆发时比较名刀·司命，先保证技能能打出来。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1609.77,
+              "end": 1651.47
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2121.74,
+              "end": 2189.84
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1481"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-6cef48f9e392",
+          "section": "英雄",
+          "text": "**杨玉环：** 在中央位置治疗队友并补伤害，法源之杯、魔律之刃提高施法频率和次数；同名牌与弦音帮助补觉醒。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.08,
+              "end": 699.86
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1015.2,
+              "end": 1044.3
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.32,
+              "end": 1127.83
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1462.53,
+              "end": 1501.14
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1761"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-4845a9632bcf",
+          "section": "英雄",
+          "text": "**裴擒虎：** 借整备承接其他英雄的临时等级并补单体输出；可与明世隐搭配。全队等级已高时不只围绕单个目标整备；临时等级不能当作夺取的永久等级。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-5021"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-db9a87220df6",
+          "section": "英雄",
+          "text": "**明世隐：** 向裴擒虎提供临时等级并治疗，达到技能节点后治疗增强。全队成长能帮助达到节点，决赛需腾位置或集中等级时再考虑替换。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.53,
+              "end": 395.35
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-5011"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 保护实际战斗核心，后期海月承担牺牲输出时可挂给海月；不因一场实战把复活对象固定为孙悟空。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1653.04,
+              "end": 1701.02
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1897.19,
+              "end": 1949.87
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2121.74,
+              "end": 2189.84
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1861"
+          ],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T04:41:14.615017+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "fmt24-owner-ac0ad7627d64",
+          "section": "英雄",
+          "text": "**孙悟空：** 早期夺取牛魔弈星等级承接战力，后期换海月形成无阵营多核。觉醒需求：普通可夺取，醒后强化闪现整备，作为短期过渡不强追；等级投入：吸收旧打工者永久等级，不能误夺仍需成长的核心；购买策略：已有牛弈等级且缺即时战力时首张，重复按过渡需求，不另开倒转刷猴路线。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先吸可退出工具再卖旧位，模板与后续海月安排清楚；出售时机：海月能接战力时先转永久等级与装备再换，不能直接丢掉此前吸收资产；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 536.17
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1501.74,
+              "end": 1547.32
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.5,
+              "end": 536.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.6,
+              "end": 675.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.2
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1671"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1671"
+        },
+        {
+          "id": "fmt24-owner-13e8a1cfa033",
+          "section": "英雄",
+          "text": "**海月：** 后期前排与牺牲针对单核，和太乙复生形成再次换命。觉醒需求：普通能牺牲控制与真伤，觉醒提高比例，成型后补质量；等级投入：接受队伍成长，40产盾100幻境为节点，幻境仍按法伤，不把旧真伤表述泛化；购买策略：5/6秘技与梦幻引擎补首张和醒；猴过渡后找海月，不为缺牌死D忘升级第二秘技。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：能承接猴位置且保护配套时上，太乙就近挂海月；出售时机：终局多核保留，换线前转永久等级装备，出售失去换命控制；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.31,
+              "end": 751.23
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.56,
+              "end": 778.49
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.6,
+              "end": 675.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.3,
+              "end": 751.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.6,
+              "end": 778.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 896.3,
+              "end": 924.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1015.2,
+              "end": 1044.3
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.3,
+              "end": 1127.8
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-5211"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:5211"
+        },
+        {
+          "id": "fmt24-owner-6d19c54c44ea",
+          "section": "英雄",
+          "text": "**姜子牙：** 打不同阵营/无阵营英雄带队成长，范围伤害清杂补多核战力。觉醒需求：普通每次1，醒后2，循环频繁值得补；等级投入：100八向冲击波为范围节点，接受全队成长不孤立只养一个；购买策略：秘技/引擎形成后首张，重复补醒，打出资源先确认不会破坏主模板。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：队伍不同阵营受益者准备好后上，再打牌成长；出售时机：通常保留成长与范围输出，真正终局集中才比较转永久等级后换，不把反复卖工具规则套姜核心；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1609.77,
+              "end": 1651.47
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2121.74,
+              "end": 2189.84
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.2
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1481"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1481"
+        },
+        {
+          "id": "fmt24-owner-6cef48f9e392",
+          "section": "英雄",
+          "text": "**杨玉环：** 周期补醒及团队治疗，让多核持续战斗。觉醒需求：普通弦音补低阶，醒后妙音补高阶，按未醒高费数量补；等级投入：接受团队成长，奶量有实际战力，不因全员醒就自动卖治疗主力；购买策略：秘技/引擎取首张，重复按高阶补醒需求，不为她单卡干扰模板。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要治疗与补醒时上，注意阵营模板人数关系；出售时机：终局是否留看治疗价值，若更换先领退场资源、转永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.08,
+              "end": 699.86
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1015.2,
+              "end": 1044.3
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.32,
+              "end": 1127.83
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1462.53,
+              "end": 1501.14
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.1,
+              "end": 699.9
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.3,
+              "end": 1127.8
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1761"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1761"
+        },
+        {
+          "id": "fmt24-owner-4845a9632bcf",
+          "section": "英雄",
+          "text": "**裴擒虎：** 无阵营早期战力与临时等级来源，明世隐将其固化，后期多核之一。觉醒需求：普通吸一半临时，醒后吸全额，提高成长和战斗上限，值得优先补；等级投入：接受队伍永久成长并吸临时，不能把吸到的临时当可直接转永久资产；购买策略：开5级秘技形成模板时首张，重复补醒；先3/4人速启动或5/6赌模板按血量选，非每局硬等6人。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有可吸等级对象且主模板成立时上，不为独立虎耽误秘技；出售时机：通常保留多核；极难终局才用传承/移植集中，先明世隐离场再定向转，不能常规拆掉四海多核；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.2,
+              "end": 366.8
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.7,
+              "end": 2319.1
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-5021"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:5021"
+        },
+        {
+          "id": "fmt24-owner-db9a87220df6",
+          "section": "英雄",
+          "text": "**明世隐：** 把虎临时等级固化，100级治疗补团队续航，支持多核长期战力。觉醒需求：普通可转化，醒后提高登场上限，成长频繁时补；等级投入：接受团队成长，100百分比治疗有价值，不把工具永远低级规则套本路线；购买策略：模板成型取首张，重复登场叠上限，临时来源成立才投入，不为单卡耗尽启动资源。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：连虎等实际临时等级主力后上，100治疗配合团队；出售时机：通常保留转化与治疗，极难终局集中等级才先换，先处理永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.53,
+              "end": 395.35
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.5,
+              "end": 395.4
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-5011"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:5011"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生则保留；腾打出位前确认有备份或当轮可补回，先卸有用装备和转有效等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1653.04,
+              "end": 1701.02
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1897.19,
+              "end": 1949.87
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2121.74,
+              "end": 2189.84
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-hero-1861"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1861"
+        },
+        {
+          "id": "fmt24-owner-2625a4e57644",
+          "section": "棋手技能选择",
+          "text": "**如梦似幻：** 5、6级取得梦幻商店资源；三人低成本补英雄、五人争取专属牌，第二次需要专属牌可用六人模板，七人用于复制现有七名成员。模板不保证逍遥自在。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 727.31
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 0,
+              "end": 54.95
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 619.94
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 563.24,
+              "end": 645.79
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 727.31
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.08,
+              "end": 699.86
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.53,
+              "end": 395.35
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1897.19,
+              "end": 1949.87
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-principle",
+            "b22-b22-zhuang-no-faction-owner-early",
+            "b22-b22-zhuang-no-faction-owner-middle",
+            "b22-b22-zhuang-no-faction-owner-late"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "hero5-owner-card-1161",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 202.2,
+              "end": 230.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.2,
+              "end": 366.8
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.2,
+              "end": 451.4
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**阿轲：** 低血量时登场多次加等级，可把来牌资源转为核心输出与承伤。觉醒需求：普通有登场收益，醒后每次加等级翻倍；按实际血量和打出频率补；等级投入：主要利用登场自然成长，不在纯工具路线专门养战斗等级；购买策略：低血量且核心在场时买首张及重复打出；高血量或未启动不抢资源，不单独重刷。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：确认成长受益对象和场面人数后打出，避免等级分给不保留工具；出售时机：需要循环登场可售后再买，先转已有高永久等级；如果仍担任战斗输出则不能当低级耗材卖；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-zhuang-no-faction/owner/card:1161"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "revision": "42467e10714b4faf6525"
+}

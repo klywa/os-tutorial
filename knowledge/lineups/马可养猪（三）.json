@@ -1,0 +1,3416 @@
+{
+  "id": "b22-marco-pig",
+  "type": "lineup",
+  "title": "马可养猪",
+  "topic": "马可养猪",
+  "aliases": [],
+  "entities": [
+    "card:1111",
+    "card:1113",
+    "card:1141",
+    "card:1143",
+    "card:1391",
+    "card:1393",
+    "card:1681",
+    "card:1683",
+    "card:1861",
+    "card:1863",
+    "card:1971",
+    "card:1973",
+    "card:1981",
+    "card:1983",
+    "card:5011",
+    "card:5013",
+    "card:5051",
+    "card:5053",
+    "card:5111",
+    "card:5113",
+    "card:5641",
+    "card:5643",
+    "card:622005",
+    "card:622008",
+    "card:623002",
+    "card:633013",
+    "card:643502",
+    "card:643604",
+    "card:643804",
+    "card:644105",
+    "card:644106",
+    "card:644116",
+    "card:644117",
+    "card:646005",
+    "card:646007",
+    "card:663207",
+    "card:663208",
+    "card:681022",
+    "card:7074",
+    "card:7079",
+    "card:93205",
+    "card:93211",
+    "card:93212",
+    "card:93215",
+    "player:32"
+  ],
+  "core": [
+    "card:5111"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-marco-pig-owner-principle",
+      "section": "核心原理",
+      "text": "猪八戒靠承受伤害积累永久生命上限，再以最大生命值相关的范围法术伤害输出。马可大量打出低阶英雄获得宝藏，冰曜宝石镜复制猪八戒，合成又提升同阶队友等级；姬小满补临时刷新，明世隐转永久等级，瑶提供护盾与属性，形成刷牌、成长、承伤的循环。棋手6级再用宝藏次数增伤放大已经养成的猪八戒。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 0,
+          "end": 177.14
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1111.19
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1371.6,
+          "end": 1486.42
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 716.37,
+          "end": 795.17
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1141.79
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.49,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 855.83
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1598.58,
+          "end": 1658.23
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 942.19,
+          "end": 995.64
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.69,
+          "end": 1343.57
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-marco-pig-owner-early",
+        "b22-b22-marco-pig-owner-middle",
+        "b22-b22-marco-pig-owner-late",
+        "b22-b22-marco-pig-owner-hero-5111",
+        "b22-b22-marco-pig-owner-hero-5641",
+        "b22-b22-marco-pig-owner-hero-1141",
+        "b22-b22-marco-pig-owner-hero-5011",
+        "b22-b22-marco-pig-owner-hero-5051",
+        "b22-b22-marco-pig-owner-hero-1861",
+        "b22-b22-marco-pig-owner-hero-1111"
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-early",
+      "section": "前期运营及应变",
+      "text": "牛魔、弈星过渡，顺路补觉醒孙尚香。合成锦囊优先比较能给两张英雄的选择，或三阶兑换券找猪八戒和组件；不在2级花钱专找曹操。第一轮拍卖优先猪八戒，再比较姬小满、明世隐、瑶、刘禅。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1111.19
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-middle",
+      "section": "中期运营及应变",
+      "text": "3级取得姬小满后再出售退场的过渡英雄，利用临时刷新继续找牌。手里优先保留一张猪八戒作为复制种子；有复印机，或确认无同行且牌库充足时，首张可先上场，随后补种子。每张英雄先打上场再出售，才能触发打牌与卖场上英雄的收益。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1259.35
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-late",
+      "section": "后期运营及应变",
+      "text": "3级持续打牌、合成与宝藏，准备后期时检查太乙真人库存：紧缺则可先升4级抢首张，再向6级升级；库存充裕则比较直接升6级后找。保留打出位置，6级按三阶英雄是否人数最多选择重点照顾，不能为升级而放弃当轮能活下来的战力。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1371.6,
+          "end": 1486.42
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-5111",
+      "section": "英雄",
+      "text": "**猪八戒：** 主要承伤与法术输出，100级后移除总层数上限但仍有单轮限制，不能把高血量理解成无条件无限成长。优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 716.37,
+          "end": 795.17
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-5641",
+      "section": "英雄",
+      "text": "**姬小满：** 出售场上英雄提供临时刷新，持续刷牌时优先补其效果；更换过渡英雄前先让其在场，避免漏掉出售进度。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1141.79
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-1141",
+      "section": "英雄",
+      "text": "**刘禅：** 提供团队临时等级，配合明世隐转成永久等级；夺取时可以优先处理其可回收的永久等级，不误把临时等级直接夺走。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.49,
+          "end": 1259.35
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-5011",
+      "section": "英雄",
+      "text": "**明世隐：** 把猪八戒的临时等级转为永久等级，重复登场和唤醒有价值；不把所有重复牌都视为仅补觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 855.83
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-5051",
+      "section": "英雄",
+      "text": "**瑶：** 给猪八戒护盾，100级属性分享时自身等级和属性有价值，因此夺取不优先抽走瑶的等级。近卫荣耀、不死鸟之眼等可按其节点服务属性共享。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1598.58,
+          "end": 1658.23
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 后期保护猪八戒，第二条命提供继续承伤与叠生命的机会；根据牌库竞争决定获取时机，必要时借天籁琴音补觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 942.19,
+          "end": 995.64
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-hero-1111",
+      "section": "英雄",
+      "text": "**孙尚香：** 前期输出与刷新来源，退场前让猪八戒回收有用等级；成型后刷到也可作为有额外收益的打出出售牌。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.69,
+          "end": 1343.57
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-treasure",
+      "section": "棋手技能推荐",
+      "text": "冰曜宝石镜随机复制手牌非觉醒英雄，复制前清理其他非目标英雄，只留猪八戒。吸睛自拍复制场上三名不同英雄；招牌微笑随机强化宝藏，较早强化到镜子后可改选时差信笺增加宝藏次数。不保证随机强化必然命中镜子。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 58.62,
+          "end": 257.57
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "节能商店、同路人与供牌天赋提高刷牌收益，复印机帮助保留猪八戒种子。小咖秀在低阶场面生效，挂上高阶太乙真人后需重新核对条件；凯旋征召仅在已有连胜战力时比较。护命灵珠为猪八戒提供护盾，魂祭绝刃扣除大量生命的代价不适合作固定推荐。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 316.66,
+          "end": 824.66
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-equipment",
+      "section": "推荐装备",
+      "text": "猪八戒以不死鸟之眼、生命魔典和反伤重甲为基础，恢复与承伤帮助继续积累血量；法术吸血装备可替换恢复位。护命灵珠、阿科米亚之子、光辉圣铠按恢复与护盾缺口比较；控制频繁时可用机器头，但要承担少一件防装的代价。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1486.9,
+          "end": 1797.81
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-effects",
+      "section": "关键效果牌",
+      "text": "唤醒、集体唤醒用于明世隐增加转永久等级收益；锦囊优先比较两张可用英雄，增加打牌及宝藏进度，随后考虑三阶兑换券、超级补贴和用于后续升级的研读会。梦奇、老夫子、孙尚香有额外供牌或刷新收益。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 941.69
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-operation",
+      "section": "关键操作",
+      "text": "复制猪八戒前先整理手牌；打牌出售时保留一个上场位置。夺取优先回收刘禅、姬小满等工具位的永久等级，瑶仍需承担属性与护盾职责时保留其等级。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1141.79,
+          "end": 1285.17
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-ban",
+      "section": "禁用阵营适用情况",
+      "text": "基础成员依赖三分、日落海和大河；河洛被禁时仍可使用老夫子补供牌。逐鹿被禁时没有老夫子，可改以梦奇、孙尚香等供牌渠道继续刷，但循环效率与可选资源不同。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1314.22,
+          "end": 1371.45
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-marco-pig-owner-current-split",
+      "section": "棋手技能推荐",
+      "text": "v1.7.1中重点照顾每张宝藏1%、阳光普照0.7%。猪八戒若与人数最多的品阶不一致，就不能只比较两个比例大小；按当前受益成员和主力分工选择。旧教学1.5%与1%的比较仅属当时规则。",
+      "condition": "",
+      "version": "v1.7.1",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 25,
+          "paragraph_end": 31
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 178,
+          "end": 314
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "fmt24-owner-4afe4a5787a7",
+      "section": "关键装备",
+      "text": "**不死鸟之眼：** 唯一。增加15%基础生命值，生命恢复和护盾效果提升30%。 给猪八戒提高生命上限与恢复，维持成长后的血量。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1574.0,
+          "end": 1597.81
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 2934.4700000000003,
+          "end": 3016.04
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8339ef03fe73",
+      "section": "关键装备",
+      "text": "**生命魔典：** 唯一。受到伤害时会为自身和周围1格的己方单位恢复5%最大生命值，冷却2秒。 受伤时恢复自身及周围友军，配合猪八戒承伤。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1486.9,
+          "end": 1797.81
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-fa05eb378903",
+      "section": "关键装备",
+      "text": "**反伤重甲：** 唯一。将受到伤害的30%以真实伤害回敬给目标。 把猪八戒承受的伤害返还敌方，补反击输出。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1486.9,
+          "end": 1797.81
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-9e0011d2a0ad",
+      "section": "关键装备",
+      "text": "**护命灵珠：** 唯一。每4秒获得基础生命值25%的护盾。拥有护盾时伤害提升25%，护盾被击破则移除。 以护盾及持盾增伤补猪八戒容错。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1687.3600000000001,
+          "end": 1713.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-18c2db53ff44",
+      "section": "关键装备",
+      "text": "**阿科米亚之子：** 唯一。参与阿科米亚核心的等级分配。穿戴者及周围1格单位每秒恢复4法力值与2%最大生命值。友军经过时获得同等效果，持续8秒。 按当前等级分配和恢复缺口比较，不作为固定必带。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1486.9,
+          "end": 1797.81
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-0f1af6db11d9",
+      "section": "关键装备",
+      "text": "**光辉圣铠：** 唯一。每秒恢复50+4%最大生命值。 持续恢复生命，配合高血量猪八戒续战。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1486.9,
+          "end": 1797.81
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-765845dd1421",
+      "section": "关键装备",
+      "text": "**机器头：** 唯一。战斗开始，英雄固定0.4的攻击速度，获得60%伤害加成。免疫负面效果。 控制频繁时用免疫负面效果保证行动，但要承担占用一件防装的代价。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1714.55,
+          "end": 1743.44
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1743.77,
+          "end": 1771.9699999999998
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1772.98,
+          "end": 1813.54
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-47e23b21118e",
+      "section": "推荐天赋",
+      "text": "优先保证阵容成型与当前战力，再按等级、装备和生存缺口比较以下天赋；具体优先级随各项所列条件调整。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 316.66,
+          "end": 824.66
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-4a9cf4813d36",
+      "section": "推荐天赋",
+      "text": "**节能商店：** 频繁刷新买牌时降低总运营成本。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 286.05,
+          "end": 314.72
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 316.66,
+          "end": 343.8
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-c70a4954a2ce",
+      "section": "推荐天赋",
+      "text": "**同路人：** 补英雄牌，增加合成、宝藏和成长资源。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 538.86,
+          "end": 567.36
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-119b50fe709d",
+      "section": "推荐天赋",
+      "text": "**复印机：** 复制猪八戒保留种子，减少冰曜宝石镜未到手造成的停滞。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 344.52,
+          "end": 372.89
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 373.25,
+          "end": 398.96
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 582.09,
+          "end": 596.93
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 942.19,
+          "end": 968.58
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1141.79,
+          "end": 1171.71
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-b186712084ce",
+      "section": "推荐天赋",
+      "text": "**小咖秀：** 低阶场面时帮助合成，挂高阶太乙真人后重新核对生效条件。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 626.3,
+          "end": 649.61
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 651.36,
+          "end": 678.53
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e8ebbb2a8855",
+      "section": "推荐天赋",
+      "text": "**凯旋征召：** 已有连胜战力时比较供牌收益，不在缺战力时预支胜利。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 316.66,
+          "end": 824.66
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-2c715aac24ac",
+      "section": "推荐天赋",
+      "text": "**护命灵珠：** 取得同名护盾装备，增强猪八戒生存。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1687.3600000000001,
+          "end": 1713.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-a2b69834bd25",
+      "section": "推荐天赋",
+      "text": "**魂祭绝刃：** 同名装备会扣除大量生命，本路线不作为固定推荐。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 736.23,
+          "end": 764.94
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 765.31,
+          "end": 795.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-5a2869b6c220",
+      "section": "棋手技能选择",
+      "text": "**冰曜宝石镜：** 随机复制手牌非觉醒英雄；先清理其他非目标英雄，只留猪八戒，保证复制种子。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 58.62,
+          "end": 257.57
+        },
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 25,
+          "paragraph_end": 31
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 178,
+          "end": 314
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-treasure",
+        "b22-b22-marco-pig-owner-current-split"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-fec084f25c0e",
+      "section": "棋手技能选择",
+      "text": "**马可的吸睛自拍：** 随机复制场上三名不同英雄，场面精简时更容易取得猪八戒，也可用其他复制牌继续合成。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 115.44,
+          "end": 146.11
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-treasure",
+        "b22-b22-marco-pig-owner-current-split"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ac7680fc225a",
+      "section": "棋手技能选择",
+      "text": "**马可的招牌微笑：** 随机强化宝藏，越早强化到宝石镜越好，但不能保证命中。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 86.52,
+          "end": 115.14
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-treasure",
+        "b22-b22-marco-pig-owner-current-split"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-5de8152e2867",
+      "section": "棋手技能选择",
+      "text": "**马可的时差信笺：** 宝石镜已强化后增加宝藏次数，继续积累宝藏及伤害强化进度。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 58.62,
+          "end": 257.57
+        },
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 25,
+          "paragraph_end": 31
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 178,
+          "end": 314
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-treasure",
+        "b22-b22-marco-pig-owner-current-split"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-df4081534966",
+      "section": "棋手技能选择",
+      "text": "**重点照顾：** v1.7.1每张宝藏提高1%伤害，只强化场上人数最多品阶的英雄；选前确认猪八戒属于该品阶。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 231.1,
+          "end": 257.57
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 286.05,
+          "end": 314.72
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 3016.8999999999996,
+          "end": 3124.05
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-treasure",
+        "b22-b22-marco-pig-owner-current-split"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-04e2a05a54c3",
+      "section": "棋手技能选择",
+      "text": "**阳光普照：** v1.7.1每张宝藏提高全队0.7%伤害，主力无法满足重点照顾条件时比较其覆盖。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 231.1,
+          "end": 257.57
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 286.05,
+          "end": 314.72
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-treasure",
+        "b22-b22-marco-pig-owner-current-split"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ff110c8d761a",
+      "section": "关键效果牌",
+      "text": "**唤醒：** 触发明世隐登场，把当前临时等级转为永久成长。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 824.66
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 2559.09,
+          "end": 2686.24
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 2861.26,
+          "end": 2934.2799999999997
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ea1247130afb",
+      "section": "关键效果牌",
+      "text": "**集体唤醒：** 明世隐等登场成员在场时集中触发收益，使用前整理场面与接牌空间。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 941.69
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-aff126683b9a",
+      "section": "英雄",
+      "text": "**猪八戒：** 主C承伤叠永久生命，再以最大生命范围伤害反打，宝藏增伤放大输出。觉醒需求：普通可启动合成成长和夺取，醒后同阶成长翻倍，优先补主C质量；等级投入：先到100取消总叠层限制，仍每回合最多100层；继续成长与承伤，永久生命层数不是等级；购买策略：首拍优先首张；同行多先镜像留种，重复用于夺取与醒，4级形成刷牌循环后继续买成长资源而非盲追单卡。拍卖选择方面，首拍最高优先。拍卖出价上限未确认；上阵时机：无同行可首张吸孙香启动，同行留种后再打；承伤装备给足才稳定叠生命；出售时机：猪八戒是主要承伤和输出核心，成型后保留；永久生命上限增益不是等级，不能随着等级转移一并交给其他英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 58.62,
+          "end": 86.02
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 86.52,
+          "end": 115.14
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 146.53,
+          "end": 175.98
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 286.05,
+          "end": 314.72
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 316.66,
+          "end": 343.8
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 373.2,
+          "end": 399.0
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 582.1,
+          "end": 596.9
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 597.3,
+          "end": 624.8
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 678.9,
+          "end": 706.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 716.4,
+          "end": 735.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 736.2,
+          "end": 764.9
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 824.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 826.0,
+          "end": 855.8
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 856.2,
+          "end": 882.5
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 914.5,
+          "end": 941.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 942.2,
+          "end": 968.6
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.1,
+          "end": 1082.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1083.5,
+          "end": 1111.2
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1141.8,
+          "end": 1171.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1172.1,
+          "end": 1201.6
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1202.2,
+          "end": 1230.0
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.5,
+          "end": 1259.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-5111"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:5111"
+    },
+    {
+      "id": "fmt24-owner-1a8c3234e8fc",
+      "section": "英雄",
+      "text": "**姬小满：** 出售卡转临时刷新，降低养猪循环成本，让更多合成和宝藏转换为战力。觉醒需求：普通每4售1刷，醒后每2售1刷，循环频繁时高优先醒；等级投入：自然成长，随后可把永久等级交猪，不专养战斗节点；购买策略：首拍猪后优先首张，重复补醒；不要为醒工具耽误猪成型，成循环后停止无收益囤牌。拍卖选择方面，猪之后优先。拍卖出价上限未确认；上阵时机：先上姬小满再卖旧工具，才能得到出售刷新收益；出售时机：猪需要夺取时可先吸等级，但运营未完不卖掉唯一刷新引擎；终局不刷后再腾位；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.13,
+          "end": 1082.73
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.49,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.1,
+          "end": 1082.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.9,
+          "end": 1141.8
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.5,
+          "end": 1259.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-5641"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:5641"
+    },
+    {
+      "id": "fmt24-owner-ef3058df087f",
+      "section": "英雄",
+      "text": "**刘禅：** 给猪施法后的临时等级，配明世隐固化，补承伤与控制。觉醒需求：普通可用，醒后每施法4临时，按成长链补醒；等级投入：自然成长，猪夺取优先可先吸刘禅，再姬小满明世隐，不吸瑶关键等级；购买策略：首张构成临时成长链，重复按觉醒与宝藏/合成收益，不为单个工具大D。拍卖选择方面，前述均无时比较。拍卖出价上限未确认；上阵时机：猪已可施法、明世隐可转化时上；出售时机：已停止临时等级转化、而更需太乙真人等保护时才换刘禅；可以先让猪八戒通过夺取拿走刘禅的永久等级，再出售，单次最多夺取10级。普通装备给猪八戒或仍在场的主力；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.49,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 856.2,
+          "end": 882.5
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.1,
+          "end": 1082.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.5,
+          "end": 1259.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-1141"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1141"
+    },
+    {
+      "id": "fmt24-owner-db9a87220df6",
+      "section": "英雄",
+      "text": "**明世隐：** 把猪临时等级转永久，重复登场提高转化上限，增强长期承伤输出。觉醒需求：普通加2上限，醒后4，多次登场价值高于只追醒标记；等级投入：自然成长，等级定向资源给猪和瑶；转化不超过实际临时来源；购买策略：猪与临时来源已齐后首张，重复登场持续成长，有宝藏合成收益时继续买；临时量已饱和时降低优先。拍卖选择方面，姬小满之后比较。拍卖出价上限未确认；上阵时机：最近连猪并核对临时来源；出售时机：终局不再成长或需保护可换，先让猪吸永久等级、卸装备；提前卖会中断转化；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 373.25,
+          "end": 398.96
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.13,
+          "end": 1082.73
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1895.82,
+          "end": 1996.48
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 373.2,
+          "end": 399.0
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 824.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 856.2,
+          "end": 882.5
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.1,
+          "end": 1082.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.5,
+          "end": 1259.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-5011"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:5011"
+    },
+    {
+      "id": "fmt24-owner-1137deed4ae1",
+      "section": "英雄",
+      "text": "**瑶：** 给猪盾和100级属性分享，使猪更耐打并延长叠生命的时间。觉醒需求：普通15秒装备分享已可用，醒后永久；不只为分享时长强制觉醒；等级投入：该路线需要重视100级属性分享，与韩信路线只补40控制不同，不被猪夺取关键等级；购买策略：首张补保护，重复按觉醒/合成收益，等级资源保留给瑶；猪未形成前不为瑶觉醒过度D。拍卖选择方面，明世隐之后比较。拍卖出价上限未确认；上阵时机：猪可作为附身目标、共享首件普通装设好后上；出售时机：通常保留瑶的护盾与100级属性分享，不为腾位置直接卖掉；换人前须确认猪八戒失去这些保护后仍能生存；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 373.25,
+          "end": 398.96
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 716.37,
+          "end": 735.68
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.13,
+          "end": 1082.73
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.49,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1598.58,
+          "end": 1626.67
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 373.2,
+          "end": 399.0
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 716.4,
+          "end": 735.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1054.1,
+          "end": 1082.7
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.5,
+          "end": 1259.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-5051"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:5051"
+    },
+    {
+      "id": "fmt24-owner-85eea5d917d3",
+      "section": "英雄",
+      "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生保护时保留；确实要腾位置打牌时，先有备用太乙真人或确认本轮能补回，再出售旧太乙真人，操作完成后重新上场并检查复生目标；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 651.36,
+          "end": 678.53
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 971.82,
+          "end": 995.64
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1400.24,
+          "end": 1429.9
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 3124.52,
+          "end": 3182.3599999999997
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 954.0,
+          "end": 982.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 982.7,
+          "end": 1010.1
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-1861"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1861"
+    },
+    {
+      "id": "fmt24-owner-3d638af60f3d",
+      "section": "英雄",
+      "text": "**孙尚香：** 登场刷新与前期保血，觉醒后反复打出为养猪提供牌量。觉醒需求：普通1刷，醒后2刷，前期自然追醒后停止额外专买；等级投入：自然成长可让猪夺取，用过渡资产启动猪而非独立养高等级；购买策略：开局自然牌与重复可取，不付费刷新找香，不预留付费刷次数；循环启动后作为优质合成对象。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：前期即时战力需要或循环要刷新时打出；出售时机：猪接手时可吸等级再售；有姬小满先上姬小满再出售旧英雄，避免漏刷新；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 856.21,
+          "end": 882.53
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1023.85
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1141.79
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1172.1399999999999,
+          "end": 1201.61
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.69,
+          "end": 1285.17
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 856.2,
+          "end": 882.5
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1023.9
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1083.5,
+          "end": 1111.2
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.9,
+          "end": 1141.8
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1172.1,
+          "end": 1201.6
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.7,
+          "end": 1285.2
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-hero-1111"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1111"
+    },
+    {
+      "id": "fmt24-owner-e27b4cdf79c3",
+      "section": "前期运营",
+      "text": "【前期运营思路：】牛魔、弈星过渡，顺路补觉醒孙尚香。合成锦囊优先比较能给两张英雄的选择，或三阶兑换券找猪八戒和组件；不在2级花钱专找曹操。第一轮拍卖优先猪八戒，再比较姬小满、明世隐、瑶、刘禅。 ",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1111.19
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-early"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-38713054751b",
+      "section": "中期运营",
+      "text": "【中期运营思路：】3级取得姬小满后再出售退场的过渡英雄，利用临时刷新继续找牌。手里优先保留一张猪八戒作为复制种子；有复印机，或确认无同行且牌库充足时，首张可先上场，随后补种子。每张英雄先打上场再出售，才能触发打牌与卖场上英雄的收益。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1259.35
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-middle"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-98c13f1a34fb",
+      "section": "后期运营",
+      "text": "【后期运营思路：】3级持续打牌、合成与宝藏，准备后期时检查太乙真人库存：紧缺则可先升4级抢首张，再向6级升级；库存充裕则比较直接升6级后找。保留打出位置，6级按三阶英雄是否人数最多选择重点照顾，不能为升级而放弃当轮能活下来的战力。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1371.6,
+          "end": 1486.42
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-late"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-04651bb0c9a0",
+      "section": "后期提升思路",
+      "text": "【后期提升思路：】持续打出出售英雄、宝藏和合成，保留猪八戒复制种子与打出位置。后期先补太乙真人保护猪八戒，再按三阶人数是否最多选择重点照顾或阳光普照；v1.7.1分别按每张宝藏1%和0.7%增伤计算。等级回收优先刘禅、姬小满等工具，瑶仍承担100级属性分享时保留其成长，装备继续解决承伤恢复与控制。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 0,
+          "end": 177.14
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1111.19
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1371.6,
+          "end": 1486.42
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 716.37,
+          "end": 795.17
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1111.88,
+          "end": 1141.79
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1230.49,
+          "end": 1259.35
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 795.5,
+          "end": 855.83
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1598.58,
+          "end": 1658.23
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 942.19,
+          "end": 995.64
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.69,
+          "end": 1343.57
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1486.9,
+          "end": 1797.81
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1141.79,
+          "end": 1285.17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-marco-pig-owner-principle",
+        "b22-b22-marco-pig-owner-late",
+        "b22-b22-marco-pig-owner-equipment",
+        "b22-b22-marco-pig-owner-operation"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "hero5-owner-card-1971",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509.5,
+          "end": 538.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1303.0,
+          "end": 1343.0
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**弈星：** 升级经验工具，节约升本资源，尽早取得核心提高成型战力。觉醒需求：普通卡已可提供经验，不专门为过渡觉醒；等级投入：接受自然等级，不专门培养；购买策略：开局取首张，重复与付费追牌不优先；升级收益结束后停止投入。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前需在场；核心到来后不占关键人口；出售时机：计划中的棋手升级完成、不再需要弈星的经验加成，或确实要腾位置给核心时再出售；不要先卖弈星再进行本来需要其加成的升级。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1971"
+    },
+    {
+      "id": "hero5-owner-card-1681",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509.5,
+          "end": 538.0
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**牛魔：** 前排兼胜利经济，保血并把胜场换成后续核心资源。觉醒需求：普通卡即可工作，不以觉醒为进阵前提；等级投入：自然成长，专门等级优先主C；购买策略：开局自然首张且能赢或明显少掉血时买，不付费追觉醒；无胜利可能时不为经济追加。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要前排并能发挥当前战力时上，非只因有空位就长期保留；出售时机：接替的前排已经能承伤后再出售；牛魔的胜场经济已无明显价值时，不必继续占位。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1681"
+    },
+    {
+      "id": "hero5-owner-card-1391",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.7,
+          "end": 1285.2
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**老夫子：** 通过合成获得招募战术，为宝藏与合成循环补牌。觉醒需求：普通招募已有效，醒后三选一质量提高，不要求先觉醒；等级投入：自然成长，不单独堆等级；购买策略：循环启动后免费/自然取首张和可盈利重复；不为工具停本大刷。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：合成前先上，已有老夫子可留过回合取得下一次首次合成收益；出售时机：本轮首次合成收益已触发，且已有下一张老夫子可打出时，可以卖旧卡再上新卡；下一回合还需要这项收益、又没备用卡时保留。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1391"
+    },
+    {
+      "id": "hero5-owner-card-1981",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 996.3,
+          "end": 1023.9
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1024.3,
+          "end": 1053.3
+        },
+        {
+          "source": "BV1Mseb6EEMq:p1",
+          "start": 1259.7,
+          "end": 1285.2
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**梦奇：** 退场换兑换券，败阵提高券品阶，转为找核心与打牌资源。觉醒需求：普通退场已有券，醒后两张；工具用途不专门付费追醒；等级投入：不专门养等级，主要取资源而非战斗节点；购买策略：需要兑换券或打出触发收益且不耽误核心时首张，重复按打出循环价值买，不空刷梦奇。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：为拿退场券可在打出位上后出售；准备败阵提品阶时才保留过战斗；出售时机：需要兑现券时可售，先确认券品阶和本轮操作目标；退场是用途，不保留占核心人口；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1981"
+    }
+  ],
+  "meta": {
+    "required_factions": [
+      "faction:dahe",
+      "faction:riluohai",
+      "faction:sanfen"
+    ],
+    "players": [
+      "player:32"
+    ],
+    "core_heroes": [
+      "card:5111"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1681"
+          ]
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1971"
+          ]
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-3d638af60f3d"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a"
+          ]
+        },
+        {
+          "hero": "card:5641",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1a8c3234e8fc"
+          ]
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-ef3058df087f"
+          ]
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-db9a87220df6"
+          ]
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1137deed4ae1"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a"
+          ]
+        },
+        {
+          "hero": "card:5641",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1a8c3234e8fc"
+          ]
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-ef3058df087f"
+          ]
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-db9a87220df6"
+          ]
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1137deed4ae1"
+          ]
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-85eea5d917d3"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:riluohai",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：姬小满（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:sanfen",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：刘禅（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：瑶（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:32",
+        "claim_refs": [
+          "b22-b22-marco-pig-owner-principle",
+          "b22-b22-marco-pig-owner-early",
+          "b22-b22-marco-pig-owner-middle",
+          "b22-b22-marco-pig-owner-late",
+          "b22-b22-marco-pig-owner-hero-5111",
+          "b22-b22-marco-pig-owner-hero-5641",
+          "b22-b22-marco-pig-owner-hero-1141",
+          "b22-b22-marco-pig-owner-hero-5011",
+          "b22-b22-marco-pig-owner-hero-5051",
+          "b22-b22-marco-pig-owner-hero-1861",
+          "b22-b22-marco-pig-owner-hero-1111",
+          "b22-b22-marco-pig-owner-treasure",
+          "b22-b22-marco-pig-owner-talents",
+          "b22-b22-marco-pig-owner-equipment",
+          "b22-b22-marco-pig-owner-effects",
+          "b22-b22-marco-pig-owner-operation",
+          "b22-b22-marco-pig-owner-ban",
+          "b22-b22-marco-pig-owner-current-split",
+          "fmt24-owner-4afe4a5787a7",
+          "fmt24-owner-8339ef03fe73",
+          "fmt24-owner-fa05eb378903",
+          "fmt24-owner-9e0011d2a0ad",
+          "fmt24-owner-18c2db53ff44",
+          "fmt24-owner-0f1af6db11d9",
+          "fmt24-owner-765845dd1421",
+          "fmt24-owner-47e23b21118e",
+          "fmt24-owner-4a9cf4813d36",
+          "fmt24-owner-c70a4954a2ce",
+          "fmt24-owner-119b50fe709d",
+          "fmt24-owner-b186712084ce",
+          "fmt24-owner-e8ebbb2a8855",
+          "fmt24-owner-2c715aac24ac",
+          "fmt24-owner-a2b69834bd25",
+          "fmt24-owner-5a2869b6c220",
+          "fmt24-owner-fec084f25c0e",
+          "fmt24-owner-ac7680fc225a",
+          "fmt24-owner-5de8152e2867",
+          "fmt24-owner-df4081534966",
+          "fmt24-owner-04e2a05a54c3",
+          "fmt24-owner-ff110c8d761a",
+          "fmt24-owner-ea1247130afb",
+          "fmt24-owner-aff126683b9a",
+          "fmt24-owner-1a8c3234e8fc",
+          "fmt24-owner-ef3058df087f",
+          "fmt24-owner-db9a87220df6",
+          "fmt24-owner-1137deed4ae1",
+          "fmt24-owner-85eea5d917d3",
+          "fmt24-owner-3d638af60f3d",
+          "fmt24-owner-e27b4cdf79c3",
+          "fmt24-owner-38713054751b",
+          "fmt24-owner-98c13f1a34fb",
+          "fmt24-owner-04651bb0c9a0",
+          "hero5-owner-card-1971",
+          "hero5-owner-card-1681",
+          "hero5-owner-card-1391",
+          "hero5-owner-card-1981"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1681"
+                ]
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1971"
+                ]
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-3d638af60f3d"
+                ]
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": "优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-aff126683b9a"
+                ]
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1a8c3234e8fc"
+                ]
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-ef3058df087f"
+                ]
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-db9a87220df6"
+                ]
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1137deed4ae1"
+                ]
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": "优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-aff126683b9a"
+                ]
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1a8c3234e8fc"
+                ]
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-ef3058df087f"
+                ]
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-db9a87220df6"
+                ]
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1137deed4ae1"
+                ]
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-85eea5d917d3"
+                ]
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "孙尚香和过渡质量决定前期保血，不预设自然觉醒必然及时到来。",
+              "claim_refs": [
+                "fmt24-owner-e27b4cdf79c3"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "猪八戒、种子复制与刷新组件到齐后，持续合成提升同阶队友等级。",
+              "claim_refs": [
+                "fmt24-owner-38713054751b"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "100级猪八戒的生命成长与复活可继续兑现，棋手增伤按当前版本宝藏系数计算。",
+              "claim_refs": [
+                "fmt24-owner-98c13f1a34fb"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "猪八戒有可用复制渠道，三分、日落海及大河组件可获得。",
+          "avoid": "同行挤压猪八戒库存、缺种子或买牌空间时先解决循环，不只花钱刷新。",
+          "signals": {
+            "英雄投入": "猪八戒先争取100级强化，再持续通过承伤积累永久生命；先上姬小满，再出售旧工具取得刷新；瑶100等级保留，其他工具永久等级可被猪夺取。"
+          }
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-32",
+      "relation": "applicable_player",
+      "title": "马可",
+      "href": "../players/马可.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-marco-pig-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-marco-pig-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-marco-pig-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-marco-pig-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-marco-pig-owner-hero-5111": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-hero-5641": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-hero-1141": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-hero-5011": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-hero-5051": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-hero-1111": [
+        "英雄"
+      ],
+      "b22-b22-marco-pig-owner-treasure": [
+        "棋手技能推荐"
+      ],
+      "b22-b22-marco-pig-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-marco-pig-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-marco-pig-owner-effects": [
+        "关键效果牌"
+      ],
+      "b22-b22-marco-pig-owner-operation": [
+        "关键操作"
+      ],
+      "b22-b22-marco-pig-owner-ban": [
+        "定阵条件"
+      ],
+      "b22-b22-marco-pig-owner-current-split": [
+        "棋手技能推荐"
+      ],
+      "fmt24-owner-4afe4a5787a7": [
+        "关键装备"
+      ],
+      "fmt24-owner-8339ef03fe73": [
+        "关键装备"
+      ],
+      "fmt24-owner-fa05eb378903": [
+        "关键装备"
+      ],
+      "fmt24-owner-9e0011d2a0ad": [
+        "关键装备"
+      ],
+      "fmt24-owner-18c2db53ff44": [
+        "关键装备"
+      ],
+      "fmt24-owner-0f1af6db11d9": [
+        "关键装备"
+      ],
+      "fmt24-owner-765845dd1421": [
+        "关键装备"
+      ],
+      "fmt24-owner-47e23b21118e": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-4a9cf4813d36": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-c70a4954a2ce": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-119b50fe709d": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-b186712084ce": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-e8ebbb2a8855": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-2c715aac24ac": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-a2b69834bd25": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-5a2869b6c220": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-fec084f25c0e": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-ac7680fc225a": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-5de8152e2867": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-df4081534966": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-04e2a05a54c3": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-ff110c8d761a": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-ea1247130afb": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-aff126683b9a": [
+        "英雄"
+      ],
+      "fmt24-owner-1a8c3234e8fc": [
+        "英雄"
+      ],
+      "fmt24-owner-ef3058df087f": [
+        "英雄"
+      ],
+      "fmt24-owner-db9a87220df6": [
+        "英雄"
+      ],
+      "fmt24-owner-1137deed4ae1": [
+        "英雄"
+      ],
+      "fmt24-owner-85eea5d917d3": [
+        "英雄"
+      ],
+      "fmt24-owner-3d638af60f3d": [
+        "英雄"
+      ],
+      "fmt24-owner-e27b4cdf79c3": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "fmt24-owner-38713054751b": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "fmt24-owner-98c13f1a34fb": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "fmt24-owner-04651bb0c9a0": [
+        "阵容组成与运营节奏",
+        "后期提升思路"
+      ],
+      "hero5-owner-card-1971": [
+        "英雄"
+      ],
+      "hero5-owner-card-1681": [
+        "英雄"
+      ],
+      "hero5-owner-card-1391": [
+        "英雄"
+      ],
+      "hero5-owner-card-1981": [
+        "英雄"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        },
+        "hero_fields": {
+          "status": "partial",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a",
+            "fmt24-owner-1a8c3234e8fc",
+            "fmt24-owner-ef3058df087f",
+            "fmt24-owner-db9a87220df6",
+            "fmt24-owner-1137deed4ae1",
+            "fmt24-owner-85eea5d917d3",
+            "fmt24-owner-3d638af60f3d",
+            "hero5-owner-card-1971",
+            "hero5-owner-card-1681",
+            "hero5-owner-card-1391",
+            "hero5-owner-card-1981"
+          ],
+          "detail": "五字段格式全部覆盖；逐字段证据审核见review。通用拍卖价格等缺证据，不计为内容完整。"
+        }
+      }
+    },
+    "supporting_claim_refs": {
+      "b22-b22-marco-pig-owner-equipment": [
+        "fmt24-owner-4afe4a5787a7",
+        "fmt24-owner-8339ef03fe73",
+        "fmt24-owner-fa05eb378903",
+        "fmt24-owner-9e0011d2a0ad",
+        "fmt24-owner-18c2db53ff44",
+        "fmt24-owner-0f1af6db11d9",
+        "fmt24-owner-765845dd1421"
+      ],
+      "b22-b22-marco-pig-owner-talents": [
+        "fmt24-owner-47e23b21118e",
+        "fmt24-owner-4a9cf4813d36",
+        "fmt24-owner-c70a4954a2ce",
+        "fmt24-owner-119b50fe709d",
+        "fmt24-owner-b186712084ce",
+        "fmt24-owner-e8ebbb2a8855",
+        "fmt24-owner-2c715aac24ac",
+        "fmt24-owner-a2b69834bd25"
+      ],
+      "b22-b22-marco-pig-owner-treasure": [
+        "fmt24-owner-5a2869b6c220",
+        "fmt24-owner-fec084f25c0e",
+        "fmt24-owner-ac7680fc225a",
+        "fmt24-owner-5de8152e2867",
+        "fmt24-owner-df4081534966",
+        "fmt24-owner-04e2a05a54c3"
+      ],
+      "b22-b22-marco-pig-owner-current-split": [
+        "fmt24-owner-5a2869b6c220",
+        "fmt24-owner-fec084f25c0e",
+        "fmt24-owner-ac7680fc225a",
+        "fmt24-owner-5de8152e2867",
+        "fmt24-owner-df4081534966",
+        "fmt24-owner-04e2a05a54c3"
+      ],
+      "b22-b22-marco-pig-owner-effects": [
+        "fmt24-owner-ff110c8d761a",
+        "fmt24-owner-ea1247130afb"
+      ],
+      "b22-b22-marco-pig-owner-hero-5111": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-hero-5641": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-hero-1141": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-hero-5011": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-hero-5051": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-hero-1861": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-hero-1111": [
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-1a8c3234e8fc",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-1137deed4ae1",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-3d638af60f3d"
+      ],
+      "b22-b22-marco-pig-owner-early": [
+        "fmt24-owner-e27b4cdf79c3"
+      ],
+      "b22-b22-marco-pig-owner-middle": [
+        "fmt24-owner-38713054751b"
+      ],
+      "b22-b22-marco-pig-owner-late": [
+        "fmt24-owner-98c13f1a34fb"
+      ]
+    },
+    "compact_operation_refs": {
+      "owner": [
+        "fmt24-owner-e27b4cdf79c3",
+        "fmt24-owner-38713054751b",
+        "fmt24-owner-98c13f1a34fb",
+        "fmt24-owner-04651bb0c9a0"
+      ]
+    },
+    "entity_paragraphs": true,
+    "hero_fields_required": true
+  },
+  "path": "knowledge/lineups/马可养猪（三）.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "faction:riluohai": "日落海",
+    "faction:sanfen": "三分",
+    "player:32": "马可",
+    "card:5111": "猪八戒",
+    "card:1681": "牛魔",
+    "card:1971": "弈星",
+    "card:1111": "孙尚香",
+    "card:5641": "姬小满",
+    "card:1141": "刘禅",
+    "card:5011": "明世隐",
+    "card:5051": "瑶",
+    "card:1861": "太乙真人",
+    "card:1113": "孙尚香",
+    "card:1143": "刘禅",
+    "card:1391": "老夫子",
+    "card:1393": "老夫子",
+    "card:1683": "牛魔",
+    "card:1863": "太乙真人",
+    "card:1973": "弈星",
+    "card:1981": "梦奇",
+    "card:1983": "梦奇",
+    "card:5013": "明世隐",
+    "card:5053": "瑶",
+    "card:5113": "猪八戒",
+    "card:5643": "姬小满",
+    "card:622005": "凯旋征召",
+    "card:622008": "小咖秀",
+    "card:623002": "复印机",
+    "card:633013": "同路人",
+    "card:643502": "不死鸟之眼",
+    "card:643604": "反伤重甲",
+    "card:643804": "生命魔典",
+    "card:644105": "护命灵珠",
+    "card:644106": "光辉圣铠",
+    "card:644116": "机器头",
+    "card:644117": "阿科米亚之子",
+    "card:646005": "护命灵珠",
+    "card:646007": "魂祭绝刃",
+    "card:663207": "阳光普照",
+    "card:663208": "重点照顾",
+    "card:681022": "节能商店",
+    "card:7074": "唤醒",
+    "card:7079": "集体唤醒",
+    "card:93205": "冰曜宝石镜",
+    "card:93211": "马可的招牌微笑",
+    "card:93212": "马可的吸睛自拍",
+    "card:93215": "马可的时差信笺"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-23T02:35:07.026331+00:00",
+      "reason": "真实网页查漏：来源已有后期建议，替换模板缺项",
+      "claims": [
+        {
+          "id": "fmt24-owner-04651bb0c9a0",
+          "section": "后期提升思路",
+          "text": "【后期提升思路：】暂无已确认的完整运营策略。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 0,
+              "end": 177.14
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 996.3,
+              "end": 1111.19
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1111.88,
+              "end": 1259.35
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1371.6,
+              "end": 1486.42
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 716.37,
+              "end": 795.17
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1111.88,
+              "end": 1141.79
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.49,
+              "end": 1259.35
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 795.5,
+              "end": 855.83
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1598.58,
+              "end": 1658.23
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 942.19,
+              "end": 995.64
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1259.69,
+              "end": 1343.57
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 58.62,
+              "end": 257.57
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 316.66,
+              "end": 824.66
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1486.9,
+              "end": 1797.81
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 795.5,
+              "end": 941.69
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1141.79,
+              "end": 1285.17
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1314.22,
+              "end": 1371.45
+            },
+            {
+              "type": "document",
+              "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+              "paragraph_start": 25,
+              "paragraph_end": 31
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 178,
+              "end": 314
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1574.0,
+              "end": 1597.81
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 2934.4700000000003,
+              "end": 3016.04
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1687.3600000000001,
+              "end": 1713.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1714.55,
+              "end": 1743.44
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1743.77,
+              "end": 1771.9699999999998
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1772.98,
+              "end": 1813.54
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 286.05,
+              "end": 314.72
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 316.66,
+              "end": 343.8
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 538.86,
+              "end": 567.36
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 344.52,
+              "end": 372.89
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 373.25,
+              "end": 398.96
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 582.09,
+              "end": 596.93
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 942.19,
+              "end": 968.58
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1141.79,
+              "end": 1171.71
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 626.3,
+              "end": 649.61
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 651.36,
+              "end": 678.53
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 736.23,
+              "end": 764.94
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 765.31,
+              "end": 795.17
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 115.44,
+              "end": 146.11
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 86.52,
+              "end": 115.14
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 231.1,
+              "end": 257.57
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 3016.8999999999996,
+              "end": 3124.05
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 795.5,
+              "end": 824.66
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 2559.09,
+              "end": 2686.24
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 2861.26,
+              "end": 2934.2799999999997
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 58.62,
+              "end": 86.02
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 146.53,
+              "end": 175.98
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.13,
+              "end": 1082.73
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1895.82,
+              "end": 1996.48
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 716.37,
+              "end": 735.68
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1598.58,
+              "end": 1626.67
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 971.82,
+              "end": 995.64
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1400.24,
+              "end": 1429.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 3124.52,
+              "end": 3182.3599999999997
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 856.21,
+              "end": 882.53
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 996.3,
+              "end": 1023.85
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1172.1399999999999,
+              "end": 1201.61
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1259.69,
+              "end": 1285.17
+            }
+          ],
+          "derived_from": [],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T12:00:00+00:00",
+      "origin": "hero5_source_review",
+      "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+      "claims": [
+        {
+          "id": "fmt24-owner-aff126683b9a",
+          "section": "英雄",
+          "text": "**猪八戒：** 主要承伤与法术输出，100级后移除总层数上限但仍有单轮限制，不能把高血量理解成无条件无限成长。优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 58.62,
+              "end": 86.02
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 86.52,
+              "end": 115.14
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 146.53,
+              "end": 175.98
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 286.05,
+              "end": 314.72
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 316.66,
+              "end": 343.8
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-5111"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-1a8c3234e8fc",
+          "section": "英雄",
+          "text": "**姬小满：** 出售场上英雄提供临时刷新，持续刷牌时优先补其效果；更换过渡英雄前先让其在场，避免漏掉出售进度。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.13,
+              "end": 1082.73
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.49,
+              "end": 1259.35
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-5641"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-ef3058df087f",
+          "section": "英雄",
+          "text": "**刘禅：** 提供团队临时等级，配合明世隐转成永久等级；夺取时可以优先处理其可回收的永久等级，不误把临时等级直接夺走。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.49,
+              "end": 1259.35
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-1141"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-db9a87220df6",
+          "section": "英雄",
+          "text": "**明世隐：** 把猪八戒的临时等级转为永久等级，重复登场和唤醒有价值；不把所有重复牌都视为仅补觉醒。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 373.25,
+              "end": 398.96
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.13,
+              "end": 1082.73
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1895.82,
+              "end": 1996.48
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-5011"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-1137deed4ae1",
+          "section": "英雄",
+          "text": "**瑶：** 给猪八戒护盾，100级属性分享时自身等级和属性有价值，因此夺取不优先抽走瑶的等级。近卫荣耀、不死鸟之眼等可按其节点服务属性共享。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 373.25,
+              "end": 398.96
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 716.37,
+              "end": 735.68
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.13,
+              "end": 1082.73
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.49,
+              "end": 1259.35
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1598.58,
+              "end": 1626.67
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-5051"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 后期保护猪八戒，第二条命提供继续承伤与叠生命的机会；根据牌库竞争决定获取时机，必要时借天籁琴音补觉醒。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 651.36,
+              "end": 678.53
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 971.82,
+              "end": 995.64
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1400.24,
+              "end": 1429.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 3124.52,
+              "end": 3182.3599999999997
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-1861"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-3d638af60f3d",
+          "section": "英雄",
+          "text": "**孙尚香：** 前期输出与刷新来源，退场前让猪八戒回收有用等级；成型后刷到也可作为有额外收益的打出出售牌。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 856.21,
+              "end": 882.53
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 996.3,
+              "end": 1023.85
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1111.88,
+              "end": 1141.79
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1172.1399999999999,
+              "end": 1201.61
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1259.69,
+              "end": 1285.17
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-1111"
+          ],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T04:41:14.644681+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "fmt24-owner-aff126683b9a",
+          "section": "英雄",
+          "text": "**猪八戒：** 主C承伤叠永久生命，再以最大生命范围伤害反打，宝藏增伤放大输出。觉醒需求：普通可启动合成成长和夺取，醒后同阶成长翻倍，优先补主C质量；等级投入：先到100取消总叠层限制，仍每回合最多100层；继续成长与承伤，永久生命层数不是等级；购买策略：首拍优先首张；同行多先镜像留种，重复用于夺取与醒，4级形成刷牌循环后继续买成长资源而非盲追单卡。拍卖选择方面，首拍最高优先。拍卖出价上限未确认；上阵时机：无同行可首张吸孙香启动，同行留种后再打；承伤装备给足才稳定叠生命；出售时机：成型主C不卖，转线须先处理永久等级装备，永久生命增益不能当等级转移量；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 58.62,
+              "end": 86.02
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 86.52,
+              "end": 115.14
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 146.53,
+              "end": 175.98
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 286.05,
+              "end": 314.72
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 316.66,
+              "end": 343.8
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 373.2,
+              "end": 399.0
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 582.1,
+              "end": 596.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 597.3,
+              "end": 624.8
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 678.9,
+              "end": 706.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 716.4,
+              "end": 735.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 736.2,
+              "end": 764.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 795.5,
+              "end": 824.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 826.0,
+              "end": 855.8
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 856.2,
+              "end": 882.5
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 914.5,
+              "end": 941.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 942.2,
+              "end": 968.6
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.1,
+              "end": 1082.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1083.5,
+              "end": 1111.2
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1141.8,
+              "end": 1171.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1172.1,
+              "end": 1201.6
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1202.2,
+              "end": 1230.0
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.5,
+              "end": 1259.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-5111"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:5111"
+        },
+        {
+          "id": "fmt24-owner-ef3058df087f",
+          "section": "英雄",
+          "text": "**刘禅：** 给猪施法后的临时等级，配明世隐固化，补承伤与控制。觉醒需求：普通可用，醒后每施法4临时，按成长链补醒；等级投入：自然成长，猪夺取优先可先吸刘禅，再姬小满明世隐，不吸瑶关键等级；购买策略：首张构成临时成长链，重复按觉醒与宝藏/合成收益，不为单个工具大D。拍卖选择方面，前述均无时比较。拍卖出价上限未确认；上阵时机：猪已可施法、明世隐可转化时上；出售时机：核心已成且停止转化需要保护位时可换，先让猪夺取永久等级并转装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.49,
+              "end": 1259.35
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 856.2,
+              "end": 882.5
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.1,
+              "end": 1082.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.5,
+              "end": 1259.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-1141"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1141"
+        },
+        {
+          "id": "fmt24-owner-1137deed4ae1",
+          "section": "英雄",
+          "text": "**瑶：** 给猪盾和100级属性分享，使猪更耐打并延长叠生命的时间。觉醒需求：普通15秒装备分享已可用，醒后永久；不只为分享时长强制觉醒；等级投入：该路线需要重视100级属性分享，与韩信路线只补40控制不同，不被猪夺取关键等级；购买策略：首张补保护，重复按觉醒/合成收益，等级资源保留给瑶；猪未形成前不为瑶觉醒过度D。拍卖选择方面，明世隐之后比较。拍卖出价上限未确认；上阵时机：猪可作为附身目标、共享首件普通装设好后上；出售时机：通常保留保护，换位前检查猪是否会失去盾与属性，先转有效永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 373.25,
+              "end": 398.96
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 716.37,
+              "end": 735.68
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.13,
+              "end": 1082.73
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.49,
+              "end": 1259.35
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1598.58,
+              "end": 1626.67
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 373.2,
+              "end": 399.0
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 716.4,
+              "end": 735.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1054.1,
+              "end": 1082.7
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1230.5,
+              "end": 1259.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-5051"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:5051"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生则保留；腾打出位前确认有备份或当轮可补回，先卸有用装备和转有效等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 651.36,
+              "end": 678.53
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 971.82,
+              "end": 995.64
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1400.24,
+              "end": 1429.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 3124.52,
+              "end": 3182.3599999999997
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-1861"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1861"
+        },
+        {
+          "id": "fmt24-owner-3d638af60f3d",
+          "section": "英雄",
+          "text": "**孙尚香：** 登场刷新与前期保血，觉醒后反复打出为养猪提供牌量。觉醒需求：普通1刷，醒后2刷，前期自然追醒后停止额外专买；等级投入：自然成长可让猪夺取，用过渡资产启动猪而非独立养高等级；购买策略：开局自然牌与重复可取，不付费刷新找香，不预留付费刷次数；循环启动后作为优质合成对象。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：前期即时战力需要或循环要刷新时打出；出售时机：猪接手时可吸等级再售；有姬小满先上姬再卖，避免漏刷新；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 856.21,
+              "end": 882.53
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 996.3,
+              "end": 1023.85
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1111.88,
+              "end": 1141.79
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1172.1399999999999,
+              "end": 1201.61
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1259.69,
+              "end": 1285.17
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 856.2,
+              "end": 882.5
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 996.3,
+              "end": 1023.9
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1083.5,
+              "end": 1111.2
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1111.9,
+              "end": 1141.8
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1172.1,
+              "end": 1201.6
+            },
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1259.7,
+              "end": 1285.2
+            }
+          ],
+          "derived_from": [
+            "b22-b22-marco-pig-owner-hero-1111"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1111"
+        },
+        {
+          "id": "hero5-owner-card-1971",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509.5,
+              "end": 538.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1303.0,
+              "end": 1343.0
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**弈星：** 升级经验工具，节约升本资源，尽早取得核心提高成型战力。觉醒需求：普通卡已可提供经验，不专门为过渡觉醒；等级投入：接受自然等级，不专门培养；购买策略：开局取首张，重复与付费追牌不优先；升级收益结束后停止投入。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前需在场；核心到来后不占关键人口；出售时机：升本收益用完或核心需要位置时售，有可转移永久等级先处理，不能先卖再升级；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1971"
+        },
+        {
+          "id": "hero5-owner-card-1681",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509.5,
+              "end": 538.0
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**牛魔：** 前排兼胜利经济，保血并把胜场换成后续核心资源。觉醒需求：普通卡即可工作，不以觉醒为进阵前提；等级投入：自然成长，专门等级优先主C；购买策略：开局自然首张且能赢或明显少掉血时买，不付费追觉醒；无胜利可能时不为经济追加。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要前排并能发挥当前战力时上，非只因有空位就长期保留；出售时机：核心前排接替后可售，先转有价值等级和装备，失去胜利经济后不占核心位置；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1681"
+        },
+        {
+          "id": "hero5-owner-card-1391",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1Mseb6EEMq:p1",
+              "start": 1259.7,
+              "end": 1285.2
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**老夫子：** 通过合成获得招募战术，为宝藏与合成循环补牌。觉醒需求：普通招募已有效，醒后三选一质量提高，不要求先觉醒；等级投入：自然成长，不单独堆等级；购买策略：循环启动后免费/自然取首张和可盈利重复；不为工具停本大刷。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：合成前先上，已有老夫子可留过回合取得下一次首次合成收益；出售时机：本轮触发完且有备用时可卖重上，先转有价值永久等级；不在下一回合触发前误售唯一引擎；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-marco-pig/owner/card:1391"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "revision": "2c52c2b2bfeb1b65a0fc"
+}

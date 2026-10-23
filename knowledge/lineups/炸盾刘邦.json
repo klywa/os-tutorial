@@ -1,0 +1,916 @@
+{
+  "id": "b22-shield-liubang",
+  "type": "lineup",
+  "title": "炸盾刘邦",
+  "topic": "炸盾刘邦",
+  "aliases": [],
+  "entities": [
+    "player:51",
+    "card:1491",
+    "card:1821",
+    "card:1681",
+    "card:1971",
+    "card:1891",
+    "card:5771",
+    "card:5171",
+    "card:5011",
+    "card:5061",
+    "card:1191",
+    "card:5051",
+    "card:1861"
+  ],
+  "core": [
+    "card:1491"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-shield-liubang-owner-principle",
+      "section": "核心原理",
+      "text": "刘邦开团摧毁图腾取得临时等级，再靠高面板普攻、技能及扁鹊破盾补伤害。安琪拉飞行器持续输出，并把神秘力量转为连接英雄临时等级，明世隐可将部分临时等级变为永久等级；这让刘邦在取得首张后即可启动成长。飞行器需要连接对象存活，模块优先服务承伤、等级与持续输出，区别于一次性自爆路线。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1105.19,
+          "end": 1332.45
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1105.19,
+          "end": 1162.85
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1273.85
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1274.81,
+          "end": 1332.45
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1332.45
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1133.78,
+          "end": 1192.9
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1192.9
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1220.32
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1767.1,
+          "end": 1796.08
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1249.38,
+          "end": 1273.85
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 2539.94,
+          "end": 2578.78
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1332.83,
+          "end": 1391.93
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 3104.33,
+          "end": 3256.64
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-shield-liubang-owner-early",
+        "b22-b22-shield-liubang-owner-middle",
+        "b22-b22-shield-liubang-owner-late",
+        "b22-b22-shield-liubang-owner-hero-1491",
+        "b22-b22-shield-liubang-owner-hero-1891",
+        "b22-b22-shield-liubang-owner-hero-5771",
+        "b22-b22-shield-liubang-owner-hero-5171",
+        "b22-b22-shield-liubang-owner-hero-5011",
+        "b22-b22-shield-liubang-owner-hero-5061",
+        "b22-b22-shield-liubang-owner-hero-1191",
+        "b22-b22-shield-liubang-owner-hero-5051",
+        "b22-b22-shield-liubang-owner-hero-1861"
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-early",
+      "section": "前期运营及应变",
+      "text": "干将莫邪、牛魔过渡，飞行器连干将，补弈星后向4级升级。第一轮拍卖优先鬼谷子，再比较少司缘、明世隐、云中君、瑶；核心未到时不追无关重复组件。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1105.19,
+          "end": 1162.85
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-middle",
+      "section": "中期运营及应变",
+      "text": "4级先找首张刘邦，鬼谷子、少司缘、大司命等图腾英雄各一张即可；刘邦到手后可向5级升级并继续找觉醒，明世隐重复牌有转化价值。5级补扁鹊，不在刘邦未觉醒时花光资源追全部工具觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1273.85
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-late",
+      "section": "后期运营及应变",
+      "text": "5级迟迟补不出刘邦时，按生存预算比较升6级，用超级连接增加模块和临时等级，而非死守商店。养成期保留明世隐或云中君与打出位置，后期战斗需要时换太乙真人。刘邦觉醒明显提高成长，应优先补齐；余下图腾工具无需一律追觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1274.81,
+          "end": 1332.45
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-1491",
+      "section": "英雄",
+      "text": "**刘邦：** 主要输出和承伤，开团利用图腾成长，优先觉醒以提高长期等级收益。以金色圣剑、解控和生存配置保障普攻与持续作战；主力未到前不把资源分给无关觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1332.45
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-1891",
+      "section": "英雄",
+      "text": "**鬼谷子：** 提供图腾供刘邦开团摧毁，首张即可承担主要用途；高等级找低阶牌更难，第一轮拍卖较优先。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1133.78,
+          "end": 1192.9
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-5771",
+      "section": "英雄",
+      "text": "**少司缘：** 提供因缘图腾参与刘邦成长，当前用途先补首张，不必等觉醒才启动。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1192.9
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-5171",
+      "section": "英雄",
+      "text": "**大司命：** 提供往生图腾作为开团资源，与山鬼打法的长期存活图腾用途不同；当前职责不强求觉醒。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1164.37,
+          "end": 1220.32
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-5011",
+      "section": "英雄",
+      "text": "**明世隐：** 连接刘邦把飞行器等来源的临时等级变成永久等级，重复登场、唤醒可继续增加转化额度；来得少或晚时可暂用云中君。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1767.1,
+          "end": 1796.08
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-5061",
+      "section": "英雄",
+      "text": "**云中君：** 按装备提供稳定成长，优先比较觉醒提高每轮收益；与明世隐是按来牌和人口选择的成长工具，不全部固定必带。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1249.38,
+          "end": 1273.85
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-1191",
+      "section": "英雄",
+      "text": "**扁鹊：** 完整炸盾方案的输出组件，破盾提供范围法术伤害；逐鹿被禁时该方案失去炸盾，不把无扁鹊实战的顺利胜利当作稳定替代证明。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 2539.94,
+          "end": 2578.78
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-5051",
+      "section": "英雄",
+      "text": "**瑶：** 附身保护，二号机模块可让飞行器借附身维持双机输出。未到100级时不依赖属性共享，装备侧重分发名刀、近卫荣耀和降疗。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1332.83,
+          "end": 1391.93
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 终局保护位，缺人口时不在成长阶段过早挤掉扁鹊或打出位置；准备结束养成再按敌方输出决定替换。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 3104.33,
+          "end": 3256.64
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-skills",
+      "section": "棋手技能推荐",
+      "text": "持续输出刘邦不主动选一次性自爆方向。壮胆、变胖提高承伤，保送升级、坐火箭补等级，上强度、打扫战场、杠上了按持续输出需求比较；拿来吧你不再降低敌方等级。二号机需配合瑶并权衡临时等级转化代价，不能单纯当作无损翻倍。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 908.28,
+          "end": 1104.9
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-equipment",
+      "section": "推荐装备",
+      "text": "刘邦以金色圣剑提高普攻法术输出，纯净苍穹处理控制，不死鸟之眼服务生命、恢复和炸盾。末世与法术吸血装备按输出构成比较，魂祭绝刃大幅扣血的代价较高。瑶未到100级时以附身降疗、分发与保护装备为主。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1332.83,
+          "end": 1393.65
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "增加图腾数量的因缘际会、图腾启灵与虚妄转生直接服务刘邦成长；虚妄转生可在刘邦摧毁图腾后形成额外核心。班叔的遗留物和破妄之刃用于短腿刘邦接近风筝目标，按对手选择，不无条件增加人口。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1536.92,
+          "end": 1766.46
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-effects",
+      "section": "关键效果牌",
+      "text": "明世隐较多时重视唤醒及集体唤醒，后期夺取之术回收工具等级。第三轮刘邦尚未觉醒时优先比较天籁琴音，已经觉醒后再按等级、装备、升级和人口缺口选择其他效果牌。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1767.1,
+          "end": 1911.45
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-ban",
+      "section": "禁用阵营适用情况",
+      "text": "完整图腾炸盾推荐需要大河图腾与逐鹿的扁鹊。逐鹿被禁时可讨论依靠刘邦与飞行器持续输出的方向，但这份实战依赖顺利来牌，不能证明其与完整炸盾方案同样稳定；缺少完整替代运营与装备边界时保留待确认。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 2481.74,
+          "end": 2691.7
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-shield-liubang-owner-first-module",
+      "section": "棋手技能推荐",
+      "text": "v1.7.1安琪拉首次秘技仅从上强度、坐火箭、定向毁灭随机提供其中2个。持续输出刘邦需按实际出现的选项启动，旧教学不能解释为第一轮一定能拿壮胆或变胖。",
+      "condition": "",
+      "version": "v1.7.1",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 12,
+          "paragraph_end": 13
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    }
+  ],
+  "meta": {
+    "required_factions": [
+      "faction:dahe",
+      "faction:zhulu"
+    ],
+    "players": [
+      "player:51"
+    ],
+    "core_heroes": [
+      "card:1491"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1491",
+          "necessity": "required",
+          "role": "优先觉醒以提高长期等级收益。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required",
+          "role": "先补首张，不必等觉醒才启动。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": "不强求觉醒。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1491",
+          "necessity": "required",
+          "role": "优先觉醒以提高长期等级收益。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required",
+          "role": "先补首张，不必等觉醒才启动。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": "不强求觉醒。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1191",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": ""
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：刘邦（优先觉醒以提高长期等级收益。）、鬼谷子（先取得首张，投入按本阶段运营判断。）、少司缘（先补首张，不必等觉醒才启动。）、大司命（不强求觉醒。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:zhulu",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：扁鹊（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:51",
+        "claim_refs": [
+          "b22-b22-shield-liubang-owner-principle",
+          "b22-b22-shield-liubang-owner-early",
+          "b22-b22-shield-liubang-owner-middle",
+          "b22-b22-shield-liubang-owner-late",
+          "b22-b22-shield-liubang-owner-hero-1491",
+          "b22-b22-shield-liubang-owner-hero-1891",
+          "b22-b22-shield-liubang-owner-hero-5771",
+          "b22-b22-shield-liubang-owner-hero-5171",
+          "b22-b22-shield-liubang-owner-hero-5011",
+          "b22-b22-shield-liubang-owner-hero-5061",
+          "b22-b22-shield-liubang-owner-hero-1191",
+          "b22-b22-shield-liubang-owner-hero-5051",
+          "b22-b22-shield-liubang-owner-hero-1861",
+          "b22-b22-shield-liubang-owner-skills",
+          "b22-b22-shield-liubang-owner-equipment",
+          "b22-b22-shield-liubang-owner-talents",
+          "b22-b22-shield-liubang-owner-effects",
+          "b22-b22-shield-liubang-owner-ban",
+          "b22-b22-shield-liubang-owner-first-module"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1491",
+                "necessity": "required",
+                "role": "优先觉醒以提高长期等级收益。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "required",
+                "role": "先补首张，不必等觉醒才启动。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "required",
+                "role": "不强求觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1491",
+                "necessity": "required",
+                "role": "优先觉醒以提高长期等级收益。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1891",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5771",
+                "necessity": "required",
+                "role": "先补首张，不必等觉醒才启动。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5171",
+                "necessity": "required",
+                "role": "不强求觉醒。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5061",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1191",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5051",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "干将与飞行器可共同过渡，强前期对手仍会造成掉血。",
+              "claim_refs": [
+                "b22-b22-shield-liubang-owner-early"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "刘邦首张和图腾启动后可稳场，觉醒速度决定成长质量。",
+              "claim_refs": [
+                "b22-b22-shield-liubang-owner-middle"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "6级临时等级与持续飞行器加强核心，接敌与实际承伤决定能否兑现。",
+              "claim_refs": [
+                "b22-b22-shield-liubang-owner-late"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "能取得刘邦和大河图腾，完整炸盾时还需扁鹊。",
+          "avoid": "未觉醒且难以承受下一轮时先补战力与资源，不把速6写成无条件。"
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-angela",
+      "relation": "applicable_player",
+      "title": "安琪拉",
+      "href": "../players/安琪拉.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-shield-liubang-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-shield-liubang-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-shield-liubang-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-shield-liubang-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-shield-liubang-owner-hero-1491": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-1891": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-5771": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-5171": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-5011": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-5061": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-1191": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-5051": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-shield-liubang-owner-skills": [
+        "棋手技能推荐"
+      ],
+      "b22-b22-shield-liubang-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-shield-liubang-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-shield-liubang-owner-effects": [
+        "关键效果牌"
+      ],
+      "b22-b22-shield-liubang-owner-ban": [
+        "定阵条件"
+      ],
+      "b22-b22-shield-liubang-owner-first-module": [
+        "棋手技能推荐"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        }
+      }
+    }
+  },
+  "path": "knowledge/lineups/炸盾刘邦.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "faction:zhulu": "逐鹿",
+    "player:51": "安琪拉",
+    "card:1491": "刘邦",
+    "card:1821": "干将莫邪",
+    "card:1681": "牛魔",
+    "card:1971": "弈星",
+    "card:1891": "鬼谷子",
+    "card:5771": "少司缘",
+    "card:5171": "大司命",
+    "card:5011": "明世隐",
+    "card:5061": "云中君",
+    "card:1191": "扁鹊",
+    "card:5051": "瑶",
+    "card:1861": "太乙真人"
+  },
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "revision": "af664e6bf66060dd3671"
+}

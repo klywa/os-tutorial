@@ -9,6 +9,22 @@ import workspace
 
 
 class WorkspaceTests(unittest.TestCase):
+    def test_reviewed_entity_paragraph_names_survive_shared_prepare(self):
+        from unittest.mock import patch
+        from copy import deepcopy
+        note=self.seed()
+        note['entities']=['card:extra']
+        note['reading_layout']={'version':4,'entity_paragraphs':True}
+        with patch.object(wxq,'entities',return_value=[{'id':'card:extra','name':'说明用实体'}]):
+            workspace.prepare(self.root,[note])
+            self.assertEqual(note['entity_names']['card:extra'],'说明用实体')
+            first=deepcopy(note)
+            workspace.prepare(self.root,[note])
+            self.assertEqual(note,first)
+            note['reading_layout'].pop('entity_paragraphs')
+            workspace.prepare(self.root,[note])
+            self.assertNotIn('card:extra',note['entity_names'])
+
     def test_explicit_target_does_not_create_reverse_overlap_links(self):
         from copy import deepcopy
         flexible={'id':'flexible','type':'lineup','title':'组合库','entities':['pending:共同英雄'],

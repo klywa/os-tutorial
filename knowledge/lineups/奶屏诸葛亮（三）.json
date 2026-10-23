@@ -1,0 +1,3256 @@
+{
+  "id": "b22-heal-wall-zhuge",
+  "type": "lineup",
+  "title": "奶屏诸葛亮",
+  "topic": "奶屏诸葛亮",
+  "aliases": [],
+  "entities": [
+    "card:1141",
+    "card:1143",
+    "card:1181",
+    "card:1183",
+    "card:1231",
+    "card:1233",
+    "card:1681",
+    "card:1683",
+    "card:1761",
+    "card:1763",
+    "card:1821",
+    "card:1823",
+    "card:1861",
+    "card:1863",
+    "card:1901",
+    "card:1903",
+    "card:1971",
+    "card:1973",
+    "card:5011",
+    "card:5013",
+    "card:613007",
+    "card:623002",
+    "card:634015",
+    "card:643105",
+    "card:643208",
+    "card:643402",
+    "card:643705",
+    "card:643802",
+    "card:671020",
+    "card:681018",
+    "card:681020",
+    "card:7074",
+    "card:7079",
+    "card:93507",
+    "card:93599",
+    "player:35"
+  ],
+  "core": [
+    "card:1761",
+    "card:1901"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-principle",
+      "section": "核心原理",
+      "text": "杨玉环高频治疗维持等离子屏障，多个远程英雄持续施法为诸葛亮提供法力和临时等级，诸葛亮再以频繁技能输出。班叔的机关阻挡接敌和弹道，争取治疗与施法时间；通过陷阱、弹簧和屏障取得螺丝升级机关，6级屏障强化再为杨玉环、诸葛亮提供复生，形成保护、治疗与输出的循环。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 143.73,
+          "end": 202.62
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 737.38,
+          "end": 957.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1220.99
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1191.07
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.56,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1275.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.51,
+          "end": 1275.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-early",
+        "b22-b22-heal-wall-zhuge-owner-middle",
+        "b22-b22-heal-wall-zhuge-owner-late",
+        "b22-b22-heal-wall-zhuge-owner-hero-1761",
+        "b22-b22-heal-wall-zhuge-owner-hero-1901",
+        "b22-b22-heal-wall-zhuge-owner-hero-1181",
+        "b22-b22-heal-wall-zhuge-owner-hero-1821",
+        "b22-b22-heal-wall-zhuge-owner-hero-1141",
+        "b22-b22-heal-wall-zhuge-owner-hero-5011",
+        "b22-b22-heal-wall-zhuge-owner-hero-1861",
+        "b22-b22-heal-wall-zhuge-owner-hero-1231"
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-early",
+      "section": "前期运营及应变",
+      "text": "开局自选等离子屏障，用干将莫邪、牛魔、孙膑、弈星过渡；第一轮拍卖前优先补干将觉醒，再补孙膑觉醒。第一轮拍卖优先刘禅，其次明世隐，建立临时等级转化配套。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-middle",
+      "section": "中期运营及应变",
+      "text": "干将和孙膑觉醒、基本工具到手后积累升5级资源；自然刷新遇刘禅、明世隐可补，刘禅觉醒后不为无关重复牌停留。5级优先杨玉环，再补诸葛亮与保护位；明世隐连接目标从干将改为杨玉环。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-late",
+      "section": "后期运营及应变",
+      "text": "先保证屏障与杨玉环治疗能稳住场面，再升6级点等离子屏障强化。多个屏障先普遍升2级，之后比较一个3级圆形屏障给双核复生；只有一个屏障时，不急于失去2级横向阻挡，需结合6级强化和现有治疗再升3级。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 737.38,
+          "end": 957.9
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1761",
+      "section": "英雄",
+      "text": "**杨玉环：** 主要治疗与等级投入对象，治疗屏障并维持队伍。贤者之书缩蓝、法源之杯回蓝、魔律之刃增加施法次数；觉醒主要改善供牌，当前只需维持治疗时不把觉醒当作必需启动条件。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1220.99
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1901",
+      "section": "英雄",
+      "text": "**诸葛亮：** 主要输出，其他英雄施法为其增加临时等级与法力。无需把所有永久等级资源集中给诸葛亮；贤者之书、自然法杖和解控保障频繁技能输出，回蓝由队友施法提供。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1191.07
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1181",
+      "section": "英雄",
+      "text": "**孙膑：** 全队施法后的永久成长来源，优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.56,
+          "end": 1014.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1821",
+      "section": "英雄",
+      "text": "**干将莫邪：** 觉醒后承担前期输出与击败成长，后期仍可作为高频施法的远程成员，为诸葛亮提供触发；剩余回蓝装备可分给干将。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1014.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1141",
+      "section": "英雄",
+      "text": "**刘禅：** 提供团队临时等级，与明世隐配合养杨玉环；补出觉醒后不以继续搜同名牌挤占核心找牌资源。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-5011",
+      "section": "英雄",
+      "text": "**明世隐：** 连接杨玉环转永久等级，重复登场、唤醒继续提高转化额度；前期连接干将，核心到场后及时换目标。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 条件保护位，常规优先保护杨玉环；屏障复生已经有效且太乙紧缺时可比较吕布，不因没有太乙就认定完全不能作战。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1275.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-hero-1231",
+      "section": "英雄",
+      "text": "**吕布：** 太乙真人紧缺时的替代选择，可为高等级三分英雄提供法术吸血；只需当前职责所需投入，不作为基础名单固定必需。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.51,
+          "end": 1275.86
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-machinery",
+      "section": "关键操作",
+      "text": "让敌人先触发陷阱、弹簧再拆屏障，以取得螺丝。2级屏障能阻挡弹道，1级主要限制近战路线；多个屏障横向展开堵住绕行，先普遍升2级。敌方有刺客时预留诱导落点配弹簧，避免刺客直接进入核心群。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 558.72,
+          "end": 842.16
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-position",
+      "section": "站位技巧",
+      "text": "双屏障时，3级屏障左右一格放杨玉环、诸葛亮，另一个横向屏障挡在前方；陷阱和弹簧保护屏障两端。太乙真人放在能连到杨玉环的位置，不让远程成员走出整体保护。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 786.51,
+          "end": 957.9
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-equipment",
+      "section": "推荐装备",
+      "text": "优先给杨玉环和其他远程法师补回蓝、缩蓝、双重施法与解控，诸葛亮可用自然法杖控制未免控目标。多人缺普通装备时优先精选武装、武装重构；不把武装分解当作固定首选。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 436.62,
+          "end": 497.23
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "刻舟减蓝有利于全队频繁施法，班叔的遗留物补机关及螺丝渠道。经济帮助升5级，装备天赋补多个施法位的需求；保血提高容错。已有杨玉环与屏障时，不优先拿吸血替代核心保护。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 436.5
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-auction2",
+      "section": "第二轮拍卖",
+      "text": "优先杨玉环，其次诸葛亮，再比较太乙真人、吕布；五阶治疗核心更难补时先确保其到手。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.08,
+          "end": 1101.1
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-counter",
+      "section": "制敌手段",
+      "text": "对远程弹道输出，依靠2级以上屏障先拦伤害并用治疗维持。对近战和刺客则用横向封路、弹簧与陷阱延缓接敌；保护被突破后，单靠额外吸血未必能维持原循环。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 558.72,
+          "end": 737.38
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-heal-wall-zhuge-owner-current-machines",
+      "section": "棋手技能推荐",
+      "text": "v1.7.1班叔开局和5级获得便携式机关，可选择所需机关；2、3、4级仍为三种机关随机。奶屏路线到5级可借可选机会补等离子屏障，但不能把中间每级都视为定向给屏障。旧视频5级随机的风险已发生变化。",
+      "condition": "",
+      "version": "v1.7.1",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 14,
+          "paragraph_end": 17
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "fmt24-owner-63ed62902ffe",
+      "section": "关键装备",
+      "text": "**法源之杯：** 唯一。每秒回复5点法力值。 优先给干将莫邪、杨玉环等持续施法位回蓝，增加诸葛亮被动成长。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 261.57,
+          "end": 290.72
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1161.12
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1191.07
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-974e5f61fbe3",
+      "section": "关键装备",
+      "text": "**魔律之刃：** 唯一。释放技能时，35%概率重复释放一次。每有7级，额外提升1%概率。近战英雄总概率上限70%。 给远程法师增加重复施法机会，让施法体系更快运转。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 290.72,
+          "end": 320.22
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1191.07,
+          "end": 1220.99
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1675.6,
+          "end": 1759.76
+        },
+        {
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "type": "document",
+          "paragraph_start": 154,
+          "paragraph_end": 156
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-0f0910e7dc79",
+      "section": "关键装备",
+      "text": "**纯净苍穹：** 唯一。每2秒获得10点法术攻击力，同时清除自身负面状态。 给需要持续施法的法师清除负面状态，维持治疗与输出。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 290.72,
+          "end": 320.22
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1675.6,
+          "end": 1759.76
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1846.37,
+          "end": 1910.03
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 2323.95,
+          "end": 2386.96
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-d0ab17452876",
+      "section": "关键装备",
+      "text": "**自然法杖：** 唯一。法术攻击力+20%，远程穿戴者每消耗40点法力值（近战80点法力值）会将随机1名敌人变成小猪，持续2秒。 诸葛亮持续施法时补变形控制，对未免控目标延长压制。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1161.12
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1191.07
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 2567.06,
+          "end": 2673.84
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 2674.19,
+          "end": 2760.98
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 2760.98,
+          "end": 2811.89
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-91c71f10ad80",
+      "section": "关键装备",
+      "text": "**贤者之书：** 唯一。法力值上限-10。释放技能后获得20%基础法术攻击力，最多叠加6层。 杨玉环用减蓝缩到10法力、配法源之杯频繁治疗；诸葛亮主要利用减蓝与法强，不把圣杯优先分给他。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 436.62,
+          "end": 497.23
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-47e23b21118e",
+      "section": "推荐天赋",
+      "text": "优先保证阵容成型与当前战力，再按等级、装备和生存缺口比较以下天赋；具体优先级随各项所列条件调整。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 436.5
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-5592658cd4c8",
+      "section": "推荐天赋",
+      "text": "**刻舟减蓝：** 降低法力需求，支持全队频繁施法，带动诸葛亮成长。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 436.5
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8c6c190a7e75",
+      "section": "推荐天赋",
+      "text": "**班叔的遗留物：** 取得电磁弹簧保护屏障柱子，触发后也能给班叔螺丝。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 231.34,
+          "end": 261.57
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-119b50fe709d",
+      "section": "推荐天赋",
+      "text": "**复印机：** 复制明世隐继续提高杨玉环等级，增强治疗与屏障续航。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 202.62
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1538.29,
+          "end": 1591.86
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-3624b4d6e73c",
+      "section": "推荐天赋",
+      "text": "**防御领域：** 过渡和等待杨玉环期间减少棋手掉血。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 202.62,
+          "end": 231.34
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-809a6518f68a",
+      "section": "推荐天赋",
+      "text": "**自适应武装：** 补多个施法位的装备需求，给歪后可用武装重构调整。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 261.57,
+          "end": 290.72
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-10669923f586",
+      "section": "推荐天赋",
+      "text": "**厉兵秣马：** 补装备资源，优先解决回蓝、解控与施法需求。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 436.5
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-57c6a9dee357",
+      "section": "棋手技能选择",
+      "text": "**神匠：** v1.7.1开局与5级获得便携式机关，可选等离子屏障；2、3、4级仍随机取得机关，不能按每级定向给屏障运营。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 14,
+          "paragraph_end": 17
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-current-machines"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8ded1d231ade",
+      "section": "棋手技能选择",
+      "text": "**等离子屏障强化：** 6级提高屏障生命，三级屏障为附近主力提供复生，配合杨玉环治疗延长保护。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 143.73,
+          "end": 173.57
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 786.51,
+          "end": 814.82
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-current-machines"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-6cef48f9e392",
+      "section": "英雄",
+      "text": "**杨玉环：** 核心治疗，用高频施法持续修复屏障，让诸葛亮能长时间输出。觉醒需求：普通弦音足补低阶，醒后妙音补高阶，本体治疗不要求醒；不为妙音强抢等级；等级投入：本路线永久等级与资源集中玉环，奶量能否撑住屏障决定战力，不把工具补醒用途套来放养；购买策略：二拍优先于诸葛，5级付费搜首张，重复补质量；装备与等级不足优先补奶量，不单纯追醒。拍卖选择方面，二拍优先杨玉环再诸葛亮。拍卖出价上限未确认；上阵时机：到手即可接奶位，最多成长资源与明世隐连线转给她，先准备缩蓝回蓝装备；出售时机：治疗主力保留，不能因全员已醒就出售；她离场会断奶导致屏障和输出崩溃；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 173.57,
+          "end": 202.62
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 202.62,
+          "end": 231.34
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 349.46,
+          "end": 376.38
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 376.38,
+          "end": 406.19
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 497.23,
+          "end": 527.73
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 928.2,
+          "end": 957.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.6,
+          "end": 1072.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.1,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1101.1,
+          "end": 1130.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.1,
+          "end": 1191.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1221.0,
+          "end": 1246.5
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1761"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1761"
+    },
+    {
+      "id": "fmt24-owner-b613514b87c9",
+      "section": "英雄",
+      "text": "**诸葛亮：** 主输出，其他队友施法提供蓝与临时等级，高频元气弹和变猪限制敌人。觉醒需求：普通每次15蓝4临时，醒后30蓝8临时，优先补输出质量；等级投入：可放养依队友施法成长，定向永久资源先玉环；40击杀回蓝100多弹为节点而非必须先专养100；购买策略：5级搜阵容时首张与重复补醒，二拍玉优先因为5费难D；不为额外回蓝装挤占玉环奶装。拍卖选择方面，二拍杨玉环未得再选诸葛亮。拍卖出价上限未确认；上阵时机：多名队友已能施法并有屏障保护时上，孤立诸葛不等于完整战力；出售时机：主C保留，不能为工具位出售；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 231.34,
+          "end": 261.57
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 320.22,
+          "end": 349.46
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 376.38,
+          "end": 406.19
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 786.51,
+          "end": 814.82
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 900.83,
+          "end": 928.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.6,
+          "end": 1014.2
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.1,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1101.1,
+          "end": 1130.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.9,
+          "end": 1161.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.5,
+          "end": 1275.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1901"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1901"
+    },
+    {
+      "id": "fmt24-owner-1cf25f143229",
+      "section": "英雄",
+      "text": "**孙膑：** 队友高频施法转永久等级，使玉环奶量与诸葛输出随回合增强。觉醒需求：拍卖后优先觉醒，三次施法永久1变2，成长效率关键；等级投入：自然成长，队友自我施法成长，定向资源不投入孙膑；购买策略：前期首张追醒，醒后停止专门买重复；干将孙膑醒后其他各一张就可升本。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：开局可上，后期应保住施法存活，不能让其先死损失成长和回蓝链；出售时机：仍需施法成长时保留孙膑；终局确需换人时，先比较少一次施法来源对诸葛亮回蓝的影响。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.56,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.9,
+          "end": 984.6
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.6,
+          "end": 1014.2
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1014.2,
+          "end": 1042.6
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1191.1,
+          "end": 1221.0
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1181"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1181"
+    },
+    {
+      "id": "fmt24-owner-8ca7fe2ff5a2",
+      "section": "英雄",
+      "text": "**干将莫邪：** 前期击杀保血，后期短蓝条施法给诸葛回蓝临时等级。觉醒需求：前三回合优先觉醒双剑，提高击杀和施法，拍卖后再补孙膑；等级投入：自然击杀成长，40额外飞剑是保血提升；后期永久资源优先玉环；购买策略：开局首张及重复追醒，觉醒后停止额外专买，存钱直5；不是一直低本养干将。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：开局上且用屏障保护，后期仍留施法而非见诸葛就卖；出售时机：仍需要干将莫邪持续施法帮助诸葛亮回蓝时保留；替换前确认其余队友仍能维持回蓝，普通装备可重新分配，自带双剑离场消失。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 290.72,
+          "end": 320.22
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 618.83,
+          "end": 648.37
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 984.56
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.08,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1101.1,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.1,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1101.1,
+          "end": 1130.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.1,
+          "end": 1191.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1191.1,
+          "end": 1221.0
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1275.9,
+          "end": 1334.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1821"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1821"
+    },
+    {
+      "id": "fmt24-owner-ef3058df087f",
+      "section": "英雄",
+      "text": "**刘禅：** 给施法者临时等级，为明世隐转永久提供来源，补前期承伤。觉醒需求：普通每施法2临时，醒后4；最多买到觉醒后停；等级投入：自然成长，永久资源给玉环，临时等级不可当永久转移；购买策略：首拍优先于明世隐，因无刘无临时；自然刷新拿重复，醒后不再专买，存钱升5。拍卖选择方面，首拍先刘禅再明世隐。拍卖出价上限未确认；上阵时机：干将已有施法链时上；其近战走位可能离屏障，要调整而非盲目肉装投入；出售时机：明世隐仍需要刘禅提供临时等级时保留；杨玉环成长已足、临时来源不再必要时才考虑换人。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1014.2,
+          "end": 1042.6
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.6,
+          "end": 1072.1
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1141"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1141"
+    },
+    {
+      "id": "fmt24-owner-db9a87220df6",
+      "section": "英雄",
+      "text": "**明世隐：** 把干将/玉环临时等级固化，强化前期输出与后期奶屏能力。觉醒需求：普通已能固化，醒后登场上限加4，多打重复仍有收益；等级投入：不专养自身，连线给实际被培养者；购买策略：刘禅等临时来源存在后首张，自然重复多多益善；别为单独小明耽误速5，后期可复制。拍卖选择方面，首拍有刘禅支撑后比较。拍卖出价上限未确认；上阵时机：前期连干将，玉环到后换连玉环，目标不能仍留在旧打工者；出售时机：杨玉环仍需要永久等级成长时保留明世隐；不再需要转化、且终局保护更紧急时才换。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 202.62,
+          "end": 231.34
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 436.62,
+          "end": 466.88
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1101.1,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1846.37,
+          "end": 1910.03
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1014.2,
+          "end": 1042.6
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.6,
+          "end": 1072.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1101.1,
+          "end": 1130.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1191.1,
+          "end": 1221.0
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-5011"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:5011"
+    },
+    {
+      "id": "fmt24-owner-85eea5d917d3",
+      "section": "英雄",
+      "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生保护时保留；确实要腾位置打牌时，先有备用太乙真人或确认本轮能补回，再出售旧太乙真人，操作完成后重新上场并检查复生目标；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 814.82,
+          "end": 842.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.08,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1191.07,
+          "end": 1220.99
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1246.51
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 2269.74,
+          "end": 2313.33
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 954.0,
+          "end": 982.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 982.7,
+          "end": 1010.1
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1861"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1861"
+    },
+    {
+      "id": "fmt24-owner-60be7845956c",
+      "section": "英雄",
+      "text": "**吕布：** 无太乙时条件替代，为高等级三分诸葛提供吸血并补控制。觉醒需求：普通覆盖最高3名三分已够单诸葛，单张即可，不为覆盖人数强追醒；等级投入：自然成长，不争玉环等级；购买策略：太乙紧缺且已有三级屏障复生时首张替代，不专门刷新追醒。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：保证诸葛在吸血受益目标内，再上；不是奶屏固定第八人；出售时机：太乙真人已到手、复生比吕布吸血控制更重要时才换；先确认诸葛亮失去吸血后仍能生存。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.08,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1246.51
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.51,
+          "end": 1275.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1977.36,
+          "end": 2054.83
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 2503.04,
+          "end": 2565.84
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1072.1,
+          "end": 1101.1
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1221.0,
+          "end": 1246.5
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.5,
+          "end": 1275.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-hero-1231"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1231"
+    },
+    {
+      "id": "fmt24-owner-e27b4cdf79c3",
+      "section": "前期运营",
+      "text": "【前期运营思路：】开局自选等离子屏障，用干将莫邪、牛魔、孙膑、弈星过渡；第一轮拍卖前优先补干将觉醒，再补孙膑觉醒。第一轮拍卖优先刘禅，其次明世隐，建立临时等级转化配套。 ",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-early"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-38713054751b",
+      "section": "中期运营",
+      "text": "【中期运营思路：】干将和孙膑觉醒、基本工具到手后积累升5级资源；自然刷新遇刘禅、明世隐可补，刘禅觉醒后不为无关重复牌停留。5级优先杨玉环，再补诸葛亮与保护位；明世隐连接目标从干将改为杨玉环。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-middle"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-98c13f1a34fb",
+      "section": "后期运营",
+      "text": "【后期运营思路：】先保证屏障与杨玉环治疗能稳住场面，再升6级点等离子屏障强化。多个屏障先普遍升2级，之后比较一个3级圆形屏障给双核复生；只有一个屏障时，不急于失去2级横向阻挡，需结合6级强化和现有治疗再升3级。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 737.38,
+          "end": 957.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-late"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-04651bb0c9a0",
+      "section": "后期提升思路",
+      "text": "【后期提升思路：】先确保杨玉环能连续治疗，再用明世隐登场增加永久等级转化，补孙膑觉醒提高施法成长。6级选择等离子屏障强化，多屏障先普遍升2级，再按双核站位升级3级屏障提供复生；只有一个屏障时需比较升级后失去横向阻挡的代价。诸葛亮主要靠队友施法回蓝，回蓝装备优先干将、杨玉环。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 143.73,
+          "end": 202.62
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 737.38,
+          "end": 957.9
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1161.12,
+          "end": 1220.99
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1130.86,
+          "end": 1191.07
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 984.56,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1014.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1220.99,
+          "end": 1275.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1246.51,
+          "end": 1275.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 558.72,
+          "end": 842.16
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 436.62,
+          "end": 497.23
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-principle",
+        "b22-b22-heal-wall-zhuge-owner-late",
+        "b22-b22-heal-wall-zhuge-owner-machinery",
+        "b22-b22-heal-wall-zhuge-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ff110c8d761a",
+      "section": "关键效果牌",
+      "text": "**唤醒：** 重复触发明世隐登场，提高杨玉环可转成永久等级的额度；先确认临时等级来源和连线。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-early",
+        "b22-b22-heal-wall-zhuge-owner-middle",
+        "b22-b22-heal-wall-zhuge-owner-hero-1141",
+        "b22-b22-heal-wall-zhuge-owner-hero-5011"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ea1247130afb",
+      "section": "关键效果牌",
+      "text": "**集体唤醒：** 登场成员在场时一起触发，提高明世隐等成员的收益；关键英雄未齐时先留资源找核心。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 957.94,
+          "end": 1042.56
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1130.86
+        },
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 1042.56,
+          "end": 1072.08
+        }
+      ],
+      "derived_from": [
+        "b22-b22-heal-wall-zhuge-owner-early",
+        "b22-b22-heal-wall-zhuge-owner-middle",
+        "b22-b22-heal-wall-zhuge-owner-hero-1141",
+        "b22-b22-heal-wall-zhuge-owner-hero-5011"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "hero5-owner-card-1971",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509.5,
+          "end": 538.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1303.0,
+          "end": 1343.0
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**弈星：** 升级经验工具，节约升本资源，尽早取得核心提高成型战力。觉醒需求：普通卡已可提供经验，不专门为过渡觉醒；等级投入：接受自然等级，不专门培养；购买策略：开局取首张，重复与付费追牌不优先；升级收益结束后停止投入。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前需在场；核心到来后不占关键人口；出售时机：计划中的棋手升级完成、不再需要弈星的经验加成，或确实要腾位置给核心时再出售；不要先卖弈星再进行本来需要其加成的升级。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1971"
+    },
+    {
+      "id": "hero5-owner-card-1681",
+      "section": "英雄",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509.5,
+          "end": 538.0
+        }
+      ],
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "text": "**牛魔：** 前排兼胜利经济，保血并把胜场换成后续核心资源。觉醒需求：普通卡即可工作，不以觉醒为进阵前提；等级投入：自然成长，专门等级优先主C；购买策略：开局自然首张且能赢或明显少掉血时买，不付费追觉醒；无胜利可能时不为经济追加。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要前排并能发挥当前战力时上，非只因有空位就长期保留；出售时机：接替的前排已经能承伤后再出售；牛魔的胜场经济已无明显价值时，不必继续占位。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1681"
+    }
+  ],
+  "meta": {
+    "required_factions": [
+      "faction:dahe",
+      "faction:sanfen",
+      "faction:zhulu"
+    ],
+    "players": [
+      "player:35"
+    ],
+    "core_heroes": [
+      "card:1761",
+      "card:1901"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-8ca7fe2ff5a2"
+          ]
+        },
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1681"
+          ]
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1cf25f143229"
+          ]
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "hero5-owner-card-1971"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1821",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-8ca7fe2ff5a2"
+          ]
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "required",
+          "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1cf25f143229"
+          ]
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-ef3058df087f"
+          ]
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-db9a87220df6"
+          ]
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6cef48f9e392"
+          ]
+        },
+        {
+          "hero": "card:1901",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-b613514b87c9"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1821",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-8ca7fe2ff5a2"
+          ]
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "required",
+          "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1cf25f143229"
+          ]
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-ef3058df087f"
+          ]
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-db9a87220df6"
+          ]
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6cef48f9e392"
+          ]
+        },
+        {
+          "hero": "card:1901",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-b613514b87c9"
+          ]
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-85eea5d917d3"
+          ]
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-60be7845956c"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:sanfen",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：诸葛亮（先取得首张，投入按本阶段运营判断。）、刘禅（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:dahe",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：干将莫邪（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      },
+      {
+        "faction": "faction:zhulu",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：孙膑（优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:35",
+        "claim_refs": [
+          "b22-b22-heal-wall-zhuge-owner-principle",
+          "b22-b22-heal-wall-zhuge-owner-early",
+          "b22-b22-heal-wall-zhuge-owner-middle",
+          "b22-b22-heal-wall-zhuge-owner-late",
+          "b22-b22-heal-wall-zhuge-owner-hero-1761",
+          "b22-b22-heal-wall-zhuge-owner-hero-1901",
+          "b22-b22-heal-wall-zhuge-owner-hero-1181",
+          "b22-b22-heal-wall-zhuge-owner-hero-1821",
+          "b22-b22-heal-wall-zhuge-owner-hero-1141",
+          "b22-b22-heal-wall-zhuge-owner-hero-5011",
+          "b22-b22-heal-wall-zhuge-owner-hero-1861",
+          "b22-b22-heal-wall-zhuge-owner-hero-1231",
+          "b22-b22-heal-wall-zhuge-owner-machinery",
+          "b22-b22-heal-wall-zhuge-owner-position",
+          "b22-b22-heal-wall-zhuge-owner-equipment",
+          "b22-b22-heal-wall-zhuge-owner-talents",
+          "b22-b22-heal-wall-zhuge-owner-auction2",
+          "b22-b22-heal-wall-zhuge-owner-counter",
+          "b22-b22-heal-wall-zhuge-owner-current-machines",
+          "fmt24-owner-63ed62902ffe",
+          "fmt24-owner-974e5f61fbe3",
+          "fmt24-owner-0f0910e7dc79",
+          "fmt24-owner-d0ab17452876",
+          "fmt24-owner-91c71f10ad80",
+          "fmt24-owner-47e23b21118e",
+          "fmt24-owner-5592658cd4c8",
+          "fmt24-owner-8c6c190a7e75",
+          "fmt24-owner-119b50fe709d",
+          "fmt24-owner-3624b4d6e73c",
+          "fmt24-owner-809a6518f68a",
+          "fmt24-owner-10669923f586",
+          "fmt24-owner-57c6a9dee357",
+          "fmt24-owner-8ded1d231ade",
+          "fmt24-owner-6cef48f9e392",
+          "fmt24-owner-b613514b87c9",
+          "fmt24-owner-1cf25f143229",
+          "fmt24-owner-8ca7fe2ff5a2",
+          "fmt24-owner-ef3058df087f",
+          "fmt24-owner-db9a87220df6",
+          "fmt24-owner-85eea5d917d3",
+          "fmt24-owner-60be7845956c",
+          "fmt24-owner-e27b4cdf79c3",
+          "fmt24-owner-38713054751b",
+          "fmt24-owner-98c13f1a34fb",
+          "fmt24-owner-04651bb0c9a0",
+          "fmt24-owner-ff110c8d761a",
+          "fmt24-owner-ea1247130afb",
+          "hero5-owner-card-1971",
+          "hero5-owner-card-1681"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1821",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-8ca7fe2ff5a2"
+                ]
+              },
+              {
+                "hero": "card:1681",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1681"
+                ]
+              },
+              {
+                "hero": "card:1181",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1cf25f143229"
+                ]
+              },
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "hero5-owner-card-1971"
+                ]
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1821",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-8ca7fe2ff5a2"
+                ]
+              },
+              {
+                "hero": "card:1181",
+                "necessity": "required",
+                "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1cf25f143229"
+                ]
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-ef3058df087f"
+                ]
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-db9a87220df6"
+                ]
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6cef48f9e392"
+                ]
+              },
+              {
+                "hero": "card:1901",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-b613514b87c9"
+                ]
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1821",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-8ca7fe2ff5a2"
+                ]
+              },
+              {
+                "hero": "card:1181",
+                "necessity": "required",
+                "role": "优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1cf25f143229"
+                ]
+              },
+              {
+                "hero": "card:1141",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-ef3058df087f"
+                ]
+              },
+              {
+                "hero": "card:5011",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-db9a87220df6"
+                ]
+              },
+              {
+                "hero": "card:1761",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6cef48f9e392"
+                ]
+              },
+              {
+                "hero": "card:1901",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-b613514b87c9"
+                ]
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-85eea5d917d3"
+                ]
+              },
+              {
+                "hero": "card:1231",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-60be7845956c"
+                ]
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "觉醒干将和机关可保血，但强前期对手仍会施压。",
+              "claim_refs": [
+                "fmt24-owner-e27b4cdf79c3"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "升5级补杨玉环、诸葛亮及明世隐后才形成完整治疗施法循环。",
+              "claim_refs": [
+                "fmt24-owner-38713054751b"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "屏障升级、杨玉环治疗与全队存活共同决定能否持续输出，单屏障局需独立取舍。",
+              "claim_refs": [
+                "fmt24-owner-98c13f1a34fb"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "能取得杨玉环、诸葛亮和足够机关保护，队伍可维持远程施法。",
+          "avoid": "缺治疗或屏障被绕过时先解决保护，不只增加诸葛亮理论等级。",
+          "signals": {
+            "英雄投入": "永久等级优先给杨玉环，提高治疗量、维持屏障；诸葛亮主要借队友施法获得临时等级；刘禅醒后停买，明世隐按有效转化空间续买。"
+          }
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-35",
+      "relation": "applicable_player",
+      "title": "班叔",
+      "href": "../players/班叔.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-heal-wall-zhuge-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1761": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1901": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1181": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1821": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1141": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-5011": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1231": [
+        "英雄"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-machinery": [
+        "关键操作"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-position": [
+        "站位技巧"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-auction2": [
+        "第二轮拍卖"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-counter": [
+        "制敌手段"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-current-machines": [
+        "棋手技能推荐"
+      ],
+      "fmt24-owner-63ed62902ffe": [
+        "关键装备"
+      ],
+      "fmt24-owner-974e5f61fbe3": [
+        "关键装备"
+      ],
+      "fmt24-owner-0f0910e7dc79": [
+        "关键装备"
+      ],
+      "fmt24-owner-d0ab17452876": [
+        "关键装备"
+      ],
+      "fmt24-owner-91c71f10ad80": [
+        "关键装备"
+      ],
+      "fmt24-owner-47e23b21118e": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-5592658cd4c8": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-8c6c190a7e75": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-119b50fe709d": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-3624b4d6e73c": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-809a6518f68a": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-10669923f586": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-57c6a9dee357": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-8ded1d231ade": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-6cef48f9e392": [
+        "英雄"
+      ],
+      "fmt24-owner-b613514b87c9": [
+        "英雄"
+      ],
+      "fmt24-owner-1cf25f143229": [
+        "英雄"
+      ],
+      "fmt24-owner-8ca7fe2ff5a2": [
+        "英雄"
+      ],
+      "fmt24-owner-ef3058df087f": [
+        "英雄"
+      ],
+      "fmt24-owner-db9a87220df6": [
+        "英雄"
+      ],
+      "fmt24-owner-85eea5d917d3": [
+        "英雄"
+      ],
+      "fmt24-owner-60be7845956c": [
+        "英雄"
+      ],
+      "fmt24-owner-e27b4cdf79c3": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "fmt24-owner-38713054751b": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "fmt24-owner-98c13f1a34fb": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "fmt24-owner-04651bb0c9a0": [
+        "阵容组成与运营节奏",
+        "后期提升思路"
+      ],
+      "fmt24-owner-ff110c8d761a": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-ea1247130afb": [
+        "关键效果牌"
+      ],
+      "hero5-owner-card-1971": [
+        "英雄"
+      ],
+      "hero5-owner-card-1681": [
+        "英雄"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        },
+        "hero_fields": {
+          "status": "partial",
+          "claim_refs": [
+            "fmt24-owner-6cef48f9e392",
+            "fmt24-owner-b613514b87c9",
+            "fmt24-owner-1cf25f143229",
+            "fmt24-owner-8ca7fe2ff5a2",
+            "fmt24-owner-ef3058df087f",
+            "fmt24-owner-db9a87220df6",
+            "fmt24-owner-85eea5d917d3",
+            "fmt24-owner-60be7845956c",
+            "hero5-owner-card-1971",
+            "hero5-owner-card-1681"
+          ],
+          "detail": "五字段格式全部覆盖；逐字段证据审核见review。通用拍卖价格等缺证据，不计为内容完整。"
+        }
+      }
+    },
+    "supporting_claim_refs": {
+      "b22-b22-heal-wall-zhuge-owner-equipment": [
+        "fmt24-owner-63ed62902ffe",
+        "fmt24-owner-974e5f61fbe3",
+        "fmt24-owner-0f0910e7dc79",
+        "fmt24-owner-d0ab17452876",
+        "fmt24-owner-91c71f10ad80"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-talents": [
+        "fmt24-owner-47e23b21118e",
+        "fmt24-owner-5592658cd4c8",
+        "fmt24-owner-8c6c190a7e75",
+        "fmt24-owner-119b50fe709d",
+        "fmt24-owner-3624b4d6e73c",
+        "fmt24-owner-809a6518f68a",
+        "fmt24-owner-10669923f586"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-current-machines": [
+        "fmt24-owner-57c6a9dee357",
+        "fmt24-owner-8ded1d231ade"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1761": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1901": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1181": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1821": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1141": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-5011": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1861": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-hero-1231": [
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-b613514b87c9",
+        "fmt24-owner-1cf25f143229",
+        "fmt24-owner-8ca7fe2ff5a2",
+        "fmt24-owner-ef3058df087f",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-60be7845956c"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-early": [
+        "fmt24-owner-e27b4cdf79c3"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-middle": [
+        "fmt24-owner-38713054751b"
+      ],
+      "b22-b22-heal-wall-zhuge-owner-late": [
+        "fmt24-owner-98c13f1a34fb"
+      ]
+    },
+    "compact_operation_refs": {
+      "owner": [
+        "fmt24-owner-e27b4cdf79c3",
+        "fmt24-owner-38713054751b",
+        "fmt24-owner-98c13f1a34fb",
+        "fmt24-owner-04651bb0c9a0"
+      ]
+    },
+    "entity_paragraphs": true,
+    "hero_fields_required": true
+  },
+  "path": "knowledge/lineups/奶屏诸葛亮（三）.md",
+  "entity_names": {
+    "faction:dahe": "大河",
+    "faction:sanfen": "三分",
+    "faction:zhulu": "逐鹿",
+    "player:35": "班叔",
+    "card:1761": "杨玉环",
+    "card:1901": "诸葛亮",
+    "card:1821": "干将莫邪",
+    "card:1681": "牛魔",
+    "card:1181": "孙膑",
+    "card:1971": "弈星",
+    "card:1141": "刘禅",
+    "card:5011": "明世隐",
+    "card:1861": "太乙真人",
+    "card:1231": "吕布",
+    "card:1143": "刘禅",
+    "card:1183": "孙膑",
+    "card:1233": "吕布",
+    "card:1683": "牛魔",
+    "card:1763": "杨玉环",
+    "card:1823": "干将莫邪",
+    "card:1863": "太乙真人",
+    "card:1903": "诸葛亮",
+    "card:1973": "弈星",
+    "card:5013": "明世隐",
+    "card:613007": "防御领域",
+    "card:623002": "复印机",
+    "card:634015": "自适应武装",
+    "card:643105": "纯净苍穹",
+    "card:643208": "自然法杖",
+    "card:643402": "法源之杯",
+    "card:643705": "魔律之刃",
+    "card:643802": "贤者之书",
+    "card:671020": "厉兵秣马",
+    "card:681018": "班叔的遗留物",
+    "card:681020": "刻舟减蓝",
+    "card:7074": "唤醒",
+    "card:7079": "集体唤醒",
+    "card:93507": "等离子屏障强化",
+    "card:93599": "神匠"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-23T02:35:07.027333+00:00",
+      "reason": "真实网页查漏：来源已有后期建议，替换模板缺项",
+      "claims": [
+        {
+          "id": "fmt24-owner-04651bb0c9a0",
+          "section": "后期提升思路",
+          "text": "【后期提升思路：】暂无已确认的完整运营策略。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 143.73,
+              "end": 202.62
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 957.94,
+              "end": 1042.56
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.56,
+              "end": 1130.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 737.38,
+              "end": 957.9
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1161.12,
+              "end": 1220.99
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1130.86,
+              "end": 1191.07
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 984.56,
+              "end": 1014.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 957.94,
+              "end": 1014.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.56,
+              "end": 1072.08
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1220.99,
+              "end": 1275.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1246.51,
+              "end": 1275.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 558.72,
+              "end": 842.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 786.51,
+              "end": 957.9
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 436.62,
+              "end": 497.23
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 173.57,
+              "end": 436.5
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 558.72,
+              "end": 737.38
+            },
+            {
+              "type": "document",
+              "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+              "paragraph_start": 14,
+              "paragraph_end": 17
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 261.57,
+              "end": 290.72
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1130.86,
+              "end": 1161.12
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1161.12,
+              "end": 1191.07
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 290.72,
+              "end": 320.22
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1191.07,
+              "end": 1220.99
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1675.6,
+              "end": 1759.76
+            },
+            {
+              "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+              "type": "document",
+              "paragraph_start": 154,
+              "paragraph_end": 156
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1846.37,
+              "end": 1910.03
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2323.95,
+              "end": 2386.96
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2567.06,
+              "end": 2673.84
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2674.19,
+              "end": 2760.98
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2760.98,
+              "end": 2811.89
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 231.34,
+              "end": 261.57
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 173.57,
+              "end": 202.62
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1538.29,
+              "end": 1591.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 202.62,
+              "end": 231.34
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 143.73,
+              "end": 173.57
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 786.51,
+              "end": 814.82
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 349.46,
+              "end": 376.38
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 376.38,
+              "end": 406.19
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 497.23,
+              "end": 527.73
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 320.22,
+              "end": 349.46
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 900.83,
+              "end": 928.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 618.83,
+              "end": 648.37
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 957.94,
+              "end": 984.56
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 436.62,
+              "end": 466.88
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 814.82,
+              "end": 842.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1220.99,
+              "end": 1246.51
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2269.74,
+              "end": 2313.33
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1977.36,
+              "end": 2054.83
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2503.04,
+              "end": 2565.84
+            }
+          ],
+          "derived_from": [],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T12:00:00+00:00",
+      "origin": "hero5_source_review",
+      "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+      "claims": [
+        {
+          "id": "fmt24-owner-6cef48f9e392",
+          "section": "英雄",
+          "text": "**杨玉环：** 主要治疗与等级投入对象，治疗屏障并维持队伍。贤者之书缩蓝、法源之杯回蓝、魔律之刃增加施法次数；觉醒主要改善供牌，当前只需维持治疗时不把觉醒当作必需启动条件。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 173.57,
+              "end": 202.62
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 202.62,
+              "end": 231.34
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 349.46,
+              "end": 376.38
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 376.38,
+              "end": 406.19
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 497.23,
+              "end": 527.73
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1761"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-b613514b87c9",
+          "section": "英雄",
+          "text": "**诸葛亮：** 主要输出，其他英雄施法为其增加临时等级与法力。无需把所有永久等级资源集中给诸葛亮；贤者之书、自然法杖和解控保障频繁技能输出，回蓝由队友施法提供。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 231.34,
+              "end": 261.57
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 320.22,
+              "end": 349.46
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 376.38,
+              "end": 406.19
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 786.51,
+              "end": 814.82
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 900.83,
+              "end": 928.16
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1901"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-1cf25f143229",
+          "section": "英雄",
+          "text": "**孙膑：** 全队施法后的永久成长来源，优先觉醒提高每次结算的等级收益；也是需要存活并施法的远程成员。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 984.56,
+              "end": 1014.16
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1181"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-8ca7fe2ff5a2",
+          "section": "英雄",
+          "text": "**干将莫邪：** 觉醒后承担前期输出与击败成长，后期仍可作为高频施法的远程成员，为诸葛亮提供触发；剩余回蓝装备可分给干将。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 290.72,
+              "end": 320.22
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 618.83,
+              "end": 648.37
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 957.94,
+              "end": 984.56
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.86
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1821"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-ef3058df087f",
+          "section": "英雄",
+          "text": "**刘禅：** 提供团队临时等级，与明世隐配合养杨玉环；补出觉醒后不以继续搜同名牌挤占核心找牌资源。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.56,
+              "end": 1072.08
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1141"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-db9a87220df6",
+          "section": "英雄",
+          "text": "**明世隐：** 连接杨玉环转永久等级，重复登场、唤醒继续提高转化额度；前期连接干将，核心到场后及时换目标。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 202.62,
+              "end": 231.34
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 436.62,
+              "end": 466.88
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.56,
+              "end": 1072.08
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1846.37,
+              "end": 1910.03
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-5011"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 条件保护位，常规优先保护杨玉环；屏障复生已经有效且太乙紧缺时可比较吕布，不因没有太乙就认定完全不能作战。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 814.82,
+              "end": 842.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1191.07,
+              "end": 1220.99
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1220.99,
+              "end": 1246.51
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2269.74,
+              "end": 2313.33
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1861"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-60be7845956c",
+          "section": "英雄",
+          "text": "**吕布：** 太乙真人紧缺时的替代选择，可为高等级三分英雄提供法术吸血；只需当前职责所需投入，不作为基础名单固定必需。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1220.99,
+              "end": 1246.51
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1246.51,
+              "end": 1275.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1977.36,
+              "end": 2054.83
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2503.04,
+              "end": 2565.84
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1231"
+          ],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T04:41:14.652518+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "fmt24-owner-1cf25f143229",
+          "section": "英雄",
+          "text": "**孙膑：** 队友高频施法转永久等级，使玉环奶量与诸葛输出随回合增强。觉醒需求：拍卖后优先觉醒，三次施法永久1变2，成长效率关键；等级投入：自然成长，队友自我施法成长，定向资源不投入孙膑；购买策略：前期首张追醒，醒后停止专门买重复；干将孙膑醒后其他各一张就可升本。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：开局可上，后期应保住施法存活，不能让其先死损失成长和回蓝链；出售时机：主要成长链保留；终局确需替换先评估失去施法次数，处理永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 984.56,
+              "end": 1014.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 957.9,
+              "end": 984.6
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 984.6,
+              "end": 1014.2
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1014.2,
+              "end": 1042.6
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1191.1,
+              "end": 1221.0
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1181"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1181"
+        },
+        {
+          "id": "fmt24-owner-8ca7fe2ff5a2",
+          "section": "英雄",
+          "text": "**干将莫邪：** 前期击杀保血，后期短蓝条施法给诸葛回蓝临时等级。觉醒需求：前三回合优先觉醒双剑，提高击杀和施法，拍卖后再补孙膑；等级投入：自然击杀成长，40额外飞剑是保血提升；后期永久资源优先玉环；购买策略：开局首张及重复追醒，觉醒后停止额外专买，存钱直5；不是一直低本养干将。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：开局上且用屏障保护，后期仍留施法而非见诸葛就卖；出售时机：奶屏路线仍需多施法者时保留；替换前核对诸葛回蓝不会断，转有效等级装备，双剑离场消失；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 290.72,
+              "end": 320.22
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 618.83,
+              "end": 648.37
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 957.94,
+              "end": 984.56
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.1,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.9
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1161.1,
+              "end": 1191.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1191.1,
+              "end": 1221.0
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1275.9,
+              "end": 1334.9
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1821"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1821"
+        },
+        {
+          "id": "fmt24-owner-ef3058df087f",
+          "section": "英雄",
+          "text": "**刘禅：** 给施法者临时等级，为明世隐转永久提供来源，补前期承伤。觉醒需求：普通每施法2临时，醒后4；最多买到觉醒后停；等级投入：自然成长，永久资源给玉环，临时等级不可当永久转移；购买策略：首拍优先于明世隐，因无刘无临时；自然刷新拿重复，醒后不再专买，存钱升5。拍卖选择方面，首拍先刘禅再明世隐。拍卖出价上限未确认；上阵时机：干将已有施法链时上；其近战走位可能离屏障，要调整而非盲目肉装投入；出售时机：主要转化来源仍需则留，终局替换先确认玉环成长已足，转永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.56,
+              "end": 1072.08
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1014.2,
+              "end": 1042.6
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.6,
+              "end": 1072.1
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1141"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1141"
+        },
+        {
+          "id": "fmt24-owner-db9a87220df6",
+          "section": "英雄",
+          "text": "**明世隐：** 把干将/玉环临时等级固化，强化前期输出与后期奶屏能力。觉醒需求：普通已能固化，醒后登场上限加4，多打重复仍有收益；等级投入：不专养自身，连线给实际被培养者；购买策略：刘禅等临时来源存在后首张，自然重复多多益善；别为单独小明耽误速5，后期可复制。拍卖选择方面，首拍有刘禅支撑后比较。拍卖出价上限未确认；上阵时机：前期连干将，玉环到后换连玉环，目标不能仍留在旧打工者；出售时机：成长未完不卖；终局换位前先转永久等级装备，不能无来源徒留工具；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 202.62,
+              "end": 231.34
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 436.62,
+              "end": 466.88
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.56,
+              "end": 1072.08
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1846.37,
+              "end": 1910.03
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1014.2,
+              "end": 1042.6
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1042.6,
+              "end": 1072.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1101.1,
+              "end": 1130.9
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1191.1,
+              "end": 1221.0
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-5011"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:5011"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生则保留；腾打出位前确认有备份或当轮可补回，先卸有用装备和转有效等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 814.82,
+              "end": 842.16
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1191.07,
+              "end": 1220.99
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1220.99,
+              "end": 1246.51
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2269.74,
+              "end": 2313.33
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1861"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1861"
+        },
+        {
+          "id": "fmt24-owner-60be7845956c",
+          "section": "英雄",
+          "text": "**吕布：** 无太乙时条件替代，为高等级三分诸葛提供吸血并补控制。觉醒需求：普通覆盖最高3名三分已够单诸葛，单张即可，不为覆盖人数强追醒；等级投入：自然成长，不争玉环等级；购买策略：太乙紧缺且已有三级屏障复生时首张替代，不专门刷新追醒。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：保证诸葛在吸血受益目标内，再上；不是奶屏固定第八人；出售时机：太乙到且复活更有用时可换，先转永久等级装备，失去吸血要检查主C生存；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.08,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1220.99,
+              "end": 1246.51
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1246.51,
+              "end": 1275.86
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1977.36,
+              "end": 2054.83
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 2503.04,
+              "end": 2565.84
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1072.1,
+              "end": 1101.1
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1221.0,
+              "end": 1246.5
+            },
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 1246.5,
+              "end": 1275.9
+            }
+          ],
+          "derived_from": [
+            "b22-b22-heal-wall-zhuge-owner-hero-1231"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1231"
+        },
+        {
+          "id": "hero5-owner-card-1971",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509.5,
+              "end": 538.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1303.0,
+              "end": 1343.0
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**弈星：** 升级经验工具，节约升本资源，尽早取得核心提高成型战力。觉醒需求：普通卡已可提供经验，不专门为过渡觉醒；等级投入：接受自然等级，不专门培养；购买策略：开局取首张，重复与付费追牌不优先；升级收益结束后停止投入。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：棋手升级前需在场；核心到来后不占关键人口；出售时机：升本收益用完或核心需要位置时售，有可转移永久等级先处理，不能先卖再升级；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1971"
+        },
+        {
+          "id": "hero5-owner-card-1681",
+          "section": "英雄",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509.5,
+              "end": 538.0
+            }
+          ],
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "text": "**牛魔：** 前排兼胜利经济，保血并把胜场换成后续核心资源。觉醒需求：普通卡即可工作，不以觉醒为进阵前提；等级投入：自然成长，专门等级优先主C；购买策略：开局自然首张且能赢或明显少掉血时买，不付费追觉醒；无胜利可能时不为经济追加。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：需要前排并能发挥当前战力时上，非只因有空位就长期保留；出售时机：核心前排接替后可售，先转有价值等级和装备，失去胜利经济后不占核心位置；",
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-heal-wall-zhuge/owner/card:1681"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "revision": "82b0cb67e1aef8e1c19e"
+}

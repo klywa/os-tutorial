@@ -1,0 +1,3053 @@
+{
+  "id": "b22-sanfen-shoot",
+  "type": "lineup",
+  "title": "三分射",
+  "topic": "三分射",
+  "aliases": [],
+  "entities": [
+    "card:1071",
+    "card:1073",
+    "card:1111",
+    "card:1113",
+    "card:1231",
+    "card:1233",
+    "card:1281",
+    "card:1283",
+    "card:1841",
+    "card:1843",
+    "card:1861",
+    "card:1863",
+    "card:1981",
+    "card:1983",
+    "card:1991",
+    "card:1993",
+    "card:5111",
+    "card:5113",
+    "card:622003",
+    "card:622008",
+    "card:636301",
+    "card:636306",
+    "card:636317",
+    "card:641002",
+    "card:641015",
+    "card:643205",
+    "card:643303",
+    "card:643404",
+    "card:643502",
+    "card:643703",
+    "card:643803",
+    "card:663308",
+    "card:7073",
+    "card:7074",
+    "card:7505",
+    "card:93300",
+    "card:93310",
+    "player:33"
+  ],
+  "core": [
+    "card:1991",
+    "card:1071",
+    "card:1281"
+  ],
+  "claims": [
+    {
+      "id": "b22-b22-sanfen-shoot-owner-principle",
+      "section": "核心原理",
+      "text": "赵云、曹操承伤，公孙离利用团队觉醒数提高攻速并承担远程输出。曹操触发孙尚香和赵云的登场，补刷新与等级；蔡文姬、猪八戒和低阶合成继续提供成长，等级再由公孙离夺取回收。白歌把合成转成即兴创作和灵感爆发，增加关键低阶牌与觉醒进度，因此重点是持续兑现二阶合成，不把猪八戒当成另一名主力来养。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 0,
+          "end": 55.08
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 192.64,
+          "end": 366.19
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 511.17,
+          "end": 861.41
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.07,
+          "end": 776.52
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 889.28,
+          "end": 946.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 426.31
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 976.18
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 482.57
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 807.92,
+          "end": 861.41
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-early",
+        "b22-b22-sanfen-shoot-owner-middle",
+        "b22-b22-sanfen-shoot-owner-late",
+        "b22-b22-sanfen-shoot-owner-hero-1991",
+        "b22-b22-sanfen-shoot-owner-hero-1071",
+        "b22-b22-sanfen-shoot-owner-hero-1281",
+        "b22-b22-sanfen-shoot-owner-hero-1841",
+        "b22-b22-sanfen-shoot-owner-hero-1111",
+        "b22-b22-sanfen-shoot-owner-hero-5111",
+        "b22-b22-sanfen-shoot-owner-hero-1231",
+        "b22-b22-sanfen-shoot-owner-hero-1861"
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-early",
+      "section": "前期运营及应变",
+      "text": "开局可拿孙尚香并尽早升2级找曹操、蔡文姬、赵云、公孙离；本路线不强求弈星占位。曹操未觉醒时避免多上登场目标分走孙尚香的刷新触发，质量与保血需要时仍要及时补赵云。第一轮拍卖优先猪八戒，其次曹操及二阶组件。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 192.64,
+          "end": 366.19
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-middle",
+      "section": "中期运营及应变",
+      "text": "二阶基础成员齐后升3级找猪八戒，主要继续打二阶合成。公孙离优先夺取孙尚香、猪八戒等工具等级，猪八戒登场不要夺走留给公孙离的等级；猪八戒觉醒后不继续为其三阶合成投入。灵感爆发优先整理公孙离、赵云等当前需要的手牌。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 510.75
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-late",
+      "section": "后期运营及应变",
+      "text": "3级停留时长按对手、血量和战力判断，没有固定结束回合。出现淘汰风险时提前准备升5级取得天赋、太乙真人及换帅方向；6级不是固定目标。终局换吕布或集中等级前，核对减少觉醒人数会损失多少公孙离攻速，再决定保留多少低阶成员。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 511.17,
+          "end": 861.41
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1991",
+      "section": "英雄",
+      "text": "**公孙离：** 主要远程输出，夺取集中工具等级；场上觉醒英雄数量影响攻速，终局撤掉低阶成员后需实际补足攻速。优先把二阶合成与灵感爆发资源兑现给当前输出。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.07,
+          "end": 776.52
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1071",
+      "section": "英雄",
+      "text": "**赵云：** 主要前排与输出补充，低生命阶段恢复和护盾提高存活；优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 889.28,
+          "end": 946.8
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1281",
+      "section": "英雄",
+      "text": "**曹操：** 整备触发三分登场，未觉醒时减少无关目标干扰，觉醒后同时触发孙尚香与赵云。等级可按后期集中方案回收，但过早拆掉会削弱循环。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 426.31
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1841",
+      "section": "英雄",
+      "text": "**蔡文姬：** 团队成长与续航工具，主要资源仍服务二阶合成；近卫荣耀与控制装备按后排安全程度配置。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 976.18
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1111",
+      "section": "英雄",
+      "text": "**孙尚香：** 登场补刷新，曹操重复触发为低阶循环提供资源；其等级最终可由公孙离回收。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 510.75
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-5111",
+      "section": "英雄",
+      "text": "**猪八戒：** 此路线的合成等级工具，不是养猪主坦；首张不夺取留给公孙离的等级，觉醒后停止追其无效重复合成。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 482.57
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1231",
+      "section": "英雄",
+      "text": "**吕布：** 条件终局换帅目标，增加前排与范围控制；不能因为吕布高等级就忽略公孙离攻速下降及单体输出损失。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-hero-1861",
+      "section": "英雄",
+      "text": "**太乙真人：** 5级以后保护公孙离的工具；取得奇才时可比较补其觉醒，不强求升6级只为多打几张低价值牌。",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 807.92,
+          "end": 861.41
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-equipment",
+      "section": "推荐装备",
+      "text": "公孙离优先炽热支配者保证输出，冰霜法杖配风筝，日渊补范围与收割；赵云比较名刀·司命、聚灵水晶、不死鸟之眼。公孙离神器可比较末世、百锻刀等，按实际输出和生存缺口替换。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 835.29,
+          "end": 1005.05
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-talents",
+      "section": "推荐天赋及原因",
+      "text": "以战力强化为主，一身是胆增强赵云技能与低血量恢复，膨化生命改善三分前排。小咖秀在长期低阶场面中增加合成；永不独行给的三阶牌不都属于本路线，不能直接等同两张核心。鬼神降临需要保留相应三分成员。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1005.68,
+          "end": 1211.42
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-effects",
+      "section": "关键效果牌",
+      "text": "临阵磨枪触发曹操，唤醒按缺口触发孙尚香或赵云，但商店资源主要留给二阶合成。锦囊优先比较两张二阶、登场、三分等英雄；后期再补装备牌，换帅可预留一张供终局使用。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1211.84,
+          "end": 1325.29
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-final",
+      "section": "终局技巧",
+      "text": "可保留六名觉醒成员，或只转移部分工具等级，再按需补吕布、太乙真人；大量撤掉觉醒英雄会降低公孙离攻速。使用传承、遗志、换帅前先确定接收者与后续成员，预留恢复觉醒数的英雄牌，不以最高等级代替整体战力判断。",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        }
+      ]
+    },
+    {
+      "id": "b22-b22-sanfen-shoot-owner-doll-current",
+      "section": "版本差异",
+      "text": "旧教学曾按套娃枪下架讨论；v1.7.1公告重新新增该特殊装备，普攻有概率生成不能施法的短时分身。取得条件与伤害收益应按当前装备判断，不能继续把“已下架”当作本局结论，也不据公告单独断言必拿。",
+      "condition": "",
+      "version": "v1.7.1",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 146,
+          "paragraph_end": 147
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      }
+    },
+    {
+      "id": "fmt24-owner-1c619f6870a0",
+      "section": "关键装备",
+      "text": "**炽热支配者：** 唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。 公孙离优先保证免控，维持攻击和风筝。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1706.58,
+          "end": 1761.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e15cedad54fc",
+      "section": "关键装备",
+      "text": "**寒霜侵袭：** 唯一。普通攻击减少目标15%移速，持续5秒，最多叠加5层。叠满后目标受到的伤害提高20%，持续5秒，冷却时间10秒。 公孙离用普攻减速限制近战接近。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 835.29,
+          "end": 1005.05
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8f2277daffb5",
+      "section": "关键装备",
+      "text": "**日渊：** 唯一，限定远程英雄。普通攻击会释放飞箭，对生命值最低的2名敌人造成55%物理攻击力的物理伤害。 给公孙离补多目标伤害与收割。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 862.06,
+          "end": 888.68
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 2497.4,
+          "end": 2508.47
+        },
+        {
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "type": "document",
+          "paragraph_start": 157,
+          "paragraph_end": 159
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-e27ca02f5979",
+      "section": "关键装备",
+      "text": "**名刀·司命：** 唯一。穿戴者首次受到致命伤害时会进入无敌和不可选中状态，持续1.5秒。 给赵云应对致命伤害，争取下一轮技能。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 835.29,
+          "end": 1005.05
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-28b68b5a8981",
+      "section": "关键装备",
+      "text": "**聚灵水晶：** 唯一。受击时额外获得10点法力值，最多100点。达到上限后恢复20%最大生命值。 赵云受击回蓝，增强技能衔接。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 946.8
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-4afe4a5787a7",
+      "section": "关键装备",
+      "text": "**不死鸟之眼：** 唯一。增加15%基础生命值，生命恢复和护盾效果提升30%。 给赵云提高生命与恢复，维持前排。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 946.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 2735.11,
+          "end": 2797.54
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-5e6562578c13",
+      "section": "关键装备",
+      "text": "**末世：** 唯一。普通攻击会减少目标2%最大生命值并恢复等量生命值。穿戴者为近战英雄时，效果翻倍。 公孙离有神器机会时，按普攻与回复缺口比较。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 947.24,
+          "end": 976.18
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1761.91,
+          "end": 1835.89
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-7a04fba3f1e0",
+      "section": "关键装备",
+      "text": "**百锻刀：** 唯一，无法拆卸。物理攻击力+30。每击败1名英雄，永久获得5点物理攻击力，战斗胜利翻倍（已击败：0）。 较早给公孙离积累击杀攻击力，临近终局比较即时收益。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 835.29,
+          "end": 1005.05
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-equipment"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-47e23b21118e",
+      "section": "推荐天赋",
+      "text": "优先保证阵容成型与当前战力，再按等级、装备和生存缺口比较以下天赋；具体优先级随各项所列条件调整。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1005.68,
+          "end": 1211.42
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-4869b2f75c54",
+      "section": "推荐天赋",
+      "text": "**一身是胆：** 增强赵云技能和低血量时的法力恢复，帮助前排保血。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1035.79,
+          "end": 1064.86
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 2644.29,
+          "end": 2689.21
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-19c15506de9b",
+      "section": "推荐天赋",
+      "text": "**膨化生命：** 提高三分前排生命，延长承伤时间。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1005.68,
+          "end": 1211.42
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-b186712084ce",
+      "section": "推荐天赋",
+      "text": "**小咖秀：** 长期低阶场面增加合成资源。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1124.15,
+          "end": 1152.16
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-6bc829556387",
+      "section": "推荐天赋",
+      "text": "**永不独行：** 提供三阶牌但不保证属于本阵容，不等同两张核心。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1124.15,
+          "end": 1152.16
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-6621ba7df604",
+      "section": "推荐天赋",
+      "text": "**鬼神降临：** 采用时保留相应三分成员，不能只拿天赋而卖掉配套。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.62,
+          "end": 1211.42
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-talents"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-f2fa6fde4bb5",
+      "section": "关键效果牌",
+      "text": "**临阵磨枪：** 触发曹操整备，商店资源仍主要留给二阶合成。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1211.84,
+          "end": 1238.6
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ff110c8d761a",
+      "section": "关键效果牌",
+      "text": "**唤醒：** 按缺口触发孙尚香或赵云登场，补资源或成长。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1211.84,
+          "end": 1238.6
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-8e65d709ac0b",
+      "section": "关键效果牌",
+      "text": "**换帅：** 可预留终局交换三分英雄等级，先整理预定接收者和距离。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 218.02,
+          "end": 242.97
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 541.15,
+          "end": 571.09
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 629.22
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 629.45,
+          "end": 656.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 776.95,
+          "end": 806.75
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-effects"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-6c5bc4ac44b4",
+      "section": "英雄",
+      "text": "**公孙离：** 主C把香猪曹等工具永久等级夺取，利用全场觉醒攻速稳定清场。觉醒需求：普通已有觉醒攻速，醒后翻倍，优先补质量；等级投入：优先夺香猪后曹的可用等级，40攻速100控制后继续成长，不吸走仍需抗伤的赵云；购买策略：首张有可夺等级时取，重复补醒与成长，低本循环有资源再付费D，不能急6错失合成效率。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：过渡等级装备足够转给她后上，先吸工具再把装备到位；出售时机：主C保留，不为功能位售；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 249.22,
+          "end": 278.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 279.37,
+          "end": 307.37
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 426.31
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 455.98,
+          "end": 482.57
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 482.99,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.1,
+          "end": 426.3
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 455.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 456.0,
+          "end": 482.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 483.0,
+          "end": 510.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 629.5,
+          "end": 656.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.1,
+          "end": 689.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 690.1,
+          "end": 719.5
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 947.2,
+          "end": 976.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 976.8,
+          "end": 1005.0
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.6,
+          "end": 1211.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1991"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1991"
+    },
+    {
+      "id": "fmt24-owner-9a385b5a15b7",
+      "section": "英雄",
+      "text": "**赵云：** 前排吸血回血承伤，延长公孙离输出，登场也参与三分成长。觉醒需求：普通可前排，醒后登场加等级翻倍；已有三分攻速条件时质量有额外价值；等级投入：吃自然成长，40/100低血爆发和回血节点，不抢主C定向夺取；购买策略：首张凑前排，重复随三分循环补醒；曹未醒且希望稳定香刷新时可暂留手，危急保血例外。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：曹操已醒或需要紧急前排时上，避免早稀释想要的香登场；出售时机：后期需要吕布承伤控制时，可以用换帅把赵云与附近吕布的等级交换，再换下赵云；换帅只适用于两名三分英雄。普通装备交吕布，还要核对减少觉醒成员后公孙离的攻速损失，不要同时拆掉多名三分成员；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 279.37,
+          "end": 307.37
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 366.19
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 455.98,
+          "end": 482.57
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 482.99,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 571.48,
+          "end": 599.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 456.0,
+          "end": 482.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 483.0,
+          "end": 510.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 571.5,
+          "end": 599.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 629.5,
+          "end": 656.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 862.1,
+          "end": 888.7
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 947.2,
+          "end": 976.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1035.8,
+          "end": 1064.9
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1065.3,
+          "end": 1092.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1152.7,
+          "end": 1181.9
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.6,
+          "end": 1211.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1071"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1071"
+    },
+    {
+      "id": "fmt24-owner-eee972943fc2",
+      "section": "英雄",
+      "text": "**曹操：** 整备触发香刷新和三分登场，给主C成长循环提供牌量。觉醒需求：普通可启动，醒后多触发1人，优先补醒；等级投入：自然成长，后续可由公孙离夺取，不专养输出；购买策略：首拍猪后优质首张，重复补醒；不在2级为曹单独死D，队伍稳后资源用于循环。拍卖选择方面，猪后优先，其他三分/公孙离再后。拍卖出价上限未确认；上阵时机：前期与香配合，未醒时减少不必要三分登场目标；出售时机：还需曹操触发孙尚香刷新时保留，公孙离夺取过等级也不等于要立刻卖曹操；终局确定停止循环后才换保护。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 279.37,
+          "end": 307.37
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 366.19
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 426.31
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 482.99,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 629.22
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.1,
+          "end": 426.3
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 483.0,
+          "end": 510.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.3,
+          "end": 629.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1005.7,
+          "end": 1035.5
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1065.3,
+          "end": 1092.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.6,
+          "end": 1211.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1281"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1281"
+    },
+    {
+      "id": "fmt24-owner-1c59c9d8e9f5",
+      "section": "英雄",
+      "text": "**蔡文姬：** 补三分低等级工具成长和前排续航，让公孙离有稳定输出时间。觉醒需求：普通加1醒加2，回复也随等级节点提升，按循环质量补；等级投入：自然成长，终局高等级可传承；本任务不扩大毒奶等已削版本推荐；购买策略：首拍与自然牌补首张，重复随循环醒，不在吕布未需时无度花钱。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：三分循环已成立且前排需续航时上；出售时机：终局不再刷成长时可传承等级后替功能位，先检查失去奶量与三分觉醒条件影响；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 976.18
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.1,
+          "end": 426.3
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 483.0,
+          "end": 510.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.3,
+          "end": 629.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.9,
+          "end": 946.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1065.3,
+          "end": 1092.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.6,
+          "end": 1211.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1841"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1841"
+    },
+    {
+      "id": "fmt24-owner-3d638af60f3d",
+      "section": "英雄",
+      "text": "**孙尚香：** 登场免费刷新，是低本牌量和猪成长的重要发动机，前期兼输出。觉醒需求：普通1刷醒后2，优先自然觉醒增强循环；等级投入：接受自然成长后让公孙离夺取，不单独主养；购买策略：开局可单香，缺牌时也可空场速升2级，重复优质循环牌；不单为香耗尽付费刷新预算。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有曹时让触发尽量到香，未醒曹不急上无关三分；出售时机：公孙离可吸等级后按循环需要保留或打卖，先转装备，不提前破坏免费刷新；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 366.19
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 455.58
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1152.7,
+          "end": 1181.9
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1239.0,
+          "end": 1267.22
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 2367.07,
+          "end": 2439.13
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.1,
+          "end": 426.3
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 455.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 483.0,
+          "end": 510.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1005.7,
+          "end": 1035.5
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1111"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1111"
+    },
+    {
+      "id": "fmt24-owner-aff126683b9a",
+      "section": "英雄",
+      "text": "**猪八戒：** 纯合成等级工具，强化二阶工具与主C，非本路线前排主C。觉醒需求：优先补醒让同阶+1变+2，醒后停止专门买重复；等级投入：不夺取等级、不喂成肉坦，资源以二阶合成为主；购买策略：首拍优先首张，重复只到醒，随后为有效合成买牌而非继续独追猪。拍卖选择方面，首拍最高优先。拍卖出价上限未确认；上阵时机：循环启动前上场，保证合成提升有效；出售时机：停止循环时可给公孙离夺取永久等级后换，别把养猪主C不出售规则套这里；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 279.37,
+          "end": 307.37
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 426.31
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 455.58
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 455.98,
+          "end": 482.57
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 862.06,
+          "end": 888.68
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.1,
+          "end": 426.3
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 455.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 456.0,
+          "end": 482.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 862.1,
+          "end": 888.7
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 947.2,
+          "end": 976.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1152.7,
+          "end": 1181.9
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-5111"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:5111"
+    },
+    {
+      "id": "fmt24-owner-60be7845956c",
+      "section": "英雄",
+      "text": "**吕布：** 大后期承接等级的控制前排，换帅可提升团战但有三分攻速代价。觉醒需求：普通单张已有吸血控制，觉醒按资源，不先追而挤占循环；等级投入：需要可转移等级才有前排战力，100全场控制有用但不固定强求；购买策略：后期确需换赵时再买首张，过早买会卡灵感复制与经济；重复不抢主C资源。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先让吕布上场，再按传承、遗志或换帅的真实接收规则安排等级；不要假定尚未上场的英雄能接收场上转级效果，同时最多替换一名重要三分位并核对攻速；出售时机：吕布已成为主要前排后保留，不为腾位置直接撤掉唯一承伤英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 218.02,
+          "end": 242.97
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 629.45,
+          "end": 656.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.07,
+          "end": 689.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 690.15,
+          "end": 719.45
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.62,
+          "end": 1211.42
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 629.5,
+          "end": 656.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.1,
+          "end": 689.2
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 690.1,
+          "end": 719.5
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 1182.6,
+          "end": 1211.4
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1231"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1231"
+    },
+    {
+      "id": "fmt24-owner-85eea5d917d3",
+      "section": "英雄",
+      "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生保护时保留；确实要腾位置打牌时，先有备用太乙真人或确认本轮能补回，再出售旧太乙真人，操作完成后重新上场并检查复生目标；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 629.45,
+          "end": 656.6
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 776.95,
+          "end": 806.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 807.92,
+          "end": 834.48
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 954.0,
+          "end": 982.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 982.7,
+          "end": 1010.1
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-hero-1861"
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1861"
+    },
+    {
+      "id": "fmt24-owner-e27b4cdf79c3",
+      "section": "前期运营",
+      "text": "【前期运营思路：】开局可拿孙尚香并尽早升2级找曹操、蔡文姬、赵云、公孙离；本路线不强求弈星占位。曹操未觉醒时避免多上登场目标分走孙尚香的刷新触发，质量与保血需要时仍要及时补赵云。第一轮拍卖优先猪八戒，其次曹操及二阶组件。 ",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 192.64,
+          "end": 366.19
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-early"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-38713054751b",
+      "section": "中期运营",
+      "text": "【中期运营思路：】二阶基础成员齐后升3级找猪八戒，主要继续打二阶合成。公孙离优先夺取孙尚香、猪八戒等工具等级，猪八戒登场不要夺走留给公孙离的等级；猪八戒觉醒后不继续为其三阶合成投入。灵感爆发优先整理公孙离、赵云等当前需要的手牌。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 510.75
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-middle"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-98c13f1a34fb",
+      "section": "后期运营",
+      "text": "【后期运营思路：】3级停留时长按对手、血量和战力判断，没有固定结束回合。出现淘汰风险时提前准备升5级取得天赋、太乙真人及换帅方向；6级不是固定目标。终局换吕布或集中等级前，核对减少觉醒人数会损失多少公孙离攻速，再决定保留多少低阶成员。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 511.17,
+          "end": 861.41
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-late"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-04651bb0c9a0",
+      "section": "后期提升思路",
+      "text": "【后期提升思路：】可保留六名觉醒成员，或只转移部分工具等级，再按需补吕布、太乙真人；大量撤掉觉醒英雄会降低公孙离攻速。使用传承、遗志、换帅前先确定接收者与后续成员，预留恢复觉醒数的英雄牌，不以最高等级代替整体战力判断。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-final"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-37016fdc85f8",
+      "section": "棋手技能选择",
+      "text": "**即兴创作：** 用合成积累的资源复制场上英雄，继续补二阶核心和觉醒；复制前确认场上候选。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 0,
+          "end": 55.08
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 192.64,
+          "end": 366.19
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 511.17,
+          "end": 861.41
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.07,
+          "end": 776.52
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 889.28,
+          "end": 946.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 426.31
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 976.18
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 482.57
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 807.92,
+          "end": 861.41
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-principle"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-1a008f9ac828",
+      "section": "棋手技能选择",
+      "text": "**灵感爆发：** 复制手牌中非觉醒英雄，提前整理公孙离、赵云等当前需要材料；不让无关手牌分走目标。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 0,
+          "end": 55.08
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 192.64,
+          "end": 366.19
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 397.05,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 511.17,
+          "end": 861.41
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 660.07,
+          "end": 776.52
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 889.28,
+          "end": 946.8
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 426.31
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 918.85,
+          "end": 976.18
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 337.55,
+          "end": 510.75
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 426.8,
+          "end": 482.57
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 807.92,
+          "end": 861.41
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-principle",
+        "b22-b22-sanfen-shoot-owner-middle",
+        "b22-b22-sanfen-shoot-owner-hero-1991"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "fmt24-owner-ce418695234e",
+      "section": "棋手技能选择",
+      "text": "**奇才：** 6级取得的定向补牌可用于太乙真人等关键觉醒，但本路线不为此固定升6，先比较当前生存与升级成本。",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 511.17,
+          "end": 861.41
+        },
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 807.92,
+          "end": 861.41
+        }
+      ],
+      "derived_from": [
+        "b22-b22-sanfen-shoot-owner-late",
+        "b22-b22-sanfen-shoot-owner-hero-1861"
+      ],
+      "editorial_review": "format24"
+    },
+    {
+      "id": "hero5-owner-card-1981",
+      "section": "英雄",
+      "text": "**梦奇：** 首拍核心都没有时的兑换券备选，转成二阶工具卡帮助射手体系成型。觉醒需求：普通退场一张券即可，醒后两张，本路线不专门追醒；等级投入：不培养战斗等级，以兑现券找二阶组件为主；购买策略：首拍猪、曹操及其他三分/公孙离都没有时才考虑首张，不付费专找或追重复；拍卖出价上限未确认；上阵时机：需要输一回合提升券到二阶时暂上，不破坏已能保血的完整阵容；出售时机：兑换券达到所需品阶后出售梦奇领取，用来补二阶成员；不把梦奇长期留作输出或前排。若等级值得保留且已有传承，可先把该英雄的等级分给其他英雄中等级最低的3名，再卖出；不能保证给指定主力。普通装备另按用途交给仍参战的英雄；",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 279.4,
+          "end": 307.4
+        }
+      ],
+      "editorial_review": "hero5-2026-10-23",
+      "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1981"
+    }
+  ],
+  "meta": {
+    "required_factions": [
+      "faction:sanfen"
+    ],
+    "players": [
+      "player:33"
+    ],
+    "core_heroes": [
+      "card:1991",
+      "card:1071",
+      "card:1281"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "role": "按保血需要过渡，顺路购买。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-3d638af60f3d"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1991",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6c5bc4ac44b4"
+          ]
+        },
+        {
+          "hero": "card:1071",
+          "necessity": "required",
+          "role": "优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-9a385b5a15b7"
+          ]
+        },
+        {
+          "hero": "card:1281",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-eee972943fc2"
+          ]
+        },
+        {
+          "hero": "card:1841",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1c59c9d8e9f5"
+          ]
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-3d638af60f3d"
+          ]
+        },
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1991",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-6c5bc4ac44b4"
+          ]
+        },
+        {
+          "hero": "card:1071",
+          "necessity": "required",
+          "role": "优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-9a385b5a15b7"
+          ]
+        },
+        {
+          "hero": "card:1281",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-eee972943fc2"
+          ]
+        },
+        {
+          "hero": "card:1841",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-1c59c9d8e9f5"
+          ]
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-3d638af60f3d"
+          ]
+        },
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-aff126683b9a"
+          ]
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-60be7845956c"
+          ]
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": "先取得首张，投入按本阶段运营判断。",
+          "replaces": "",
+          "replacement_note": "",
+          "claim_refs": [
+            "fmt24-owner-85eea5d917d3"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:sanfen",
+        "status": "unplayable",
+        "reason": "完整阵容无法获取：赵云（优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。）、曹操（先取得首张，投入按本阶段运营判断。）、蔡文姬（先取得首张，投入按本阶段运营判断。）、孙尚香（先取得首张，投入按本阶段运营判断。）。",
+        "derived_dependency": true,
+        "explicit_required": false,
+        "explicit_condition": null
+      }
+    ],
+    "matchups": [],
+    "player_branches": [
+      {
+        "id": "owner",
+        "player": "player:33",
+        "claim_refs": [
+          "b22-b22-sanfen-shoot-owner-principle",
+          "b22-b22-sanfen-shoot-owner-early",
+          "b22-b22-sanfen-shoot-owner-middle",
+          "b22-b22-sanfen-shoot-owner-late",
+          "b22-b22-sanfen-shoot-owner-hero-1991",
+          "b22-b22-sanfen-shoot-owner-hero-1071",
+          "b22-b22-sanfen-shoot-owner-hero-1281",
+          "b22-b22-sanfen-shoot-owner-hero-1841",
+          "b22-b22-sanfen-shoot-owner-hero-1111",
+          "b22-b22-sanfen-shoot-owner-hero-5111",
+          "b22-b22-sanfen-shoot-owner-hero-1231",
+          "b22-b22-sanfen-shoot-owner-hero-1861",
+          "b22-b22-sanfen-shoot-owner-equipment",
+          "b22-b22-sanfen-shoot-owner-talents",
+          "b22-b22-sanfen-shoot-owner-effects",
+          "b22-b22-sanfen-shoot-owner-final",
+          "b22-b22-sanfen-shoot-owner-doll-current",
+          "fmt24-owner-1c619f6870a0",
+          "fmt24-owner-e15cedad54fc",
+          "fmt24-owner-8f2277daffb5",
+          "fmt24-owner-e27ca02f5979",
+          "fmt24-owner-28b68b5a8981",
+          "fmt24-owner-4afe4a5787a7",
+          "fmt24-owner-5e6562578c13",
+          "fmt24-owner-7a04fba3f1e0",
+          "fmt24-owner-47e23b21118e",
+          "fmt24-owner-4869b2f75c54",
+          "fmt24-owner-19c15506de9b",
+          "fmt24-owner-b186712084ce",
+          "fmt24-owner-6bc829556387",
+          "fmt24-owner-6621ba7df604",
+          "fmt24-owner-f2fa6fde4bb5",
+          "fmt24-owner-ff110c8d761a",
+          "fmt24-owner-8e65d709ac0b",
+          "fmt24-owner-6c5bc4ac44b4",
+          "fmt24-owner-9a385b5a15b7",
+          "fmt24-owner-eee972943fc2",
+          "fmt24-owner-1c59c9d8e9f5",
+          "fmt24-owner-3d638af60f3d",
+          "fmt24-owner-aff126683b9a",
+          "fmt24-owner-60be7845956c",
+          "fmt24-owner-85eea5d917d3",
+          "fmt24-owner-e27b4cdf79c3",
+          "fmt24-owner-38713054751b",
+          "fmt24-owner-98c13f1a34fb",
+          "fmt24-owner-04651bb0c9a0",
+          "fmt24-owner-37016fdc85f8",
+          "fmt24-owner-1a008f9ac828",
+          "fmt24-owner-ce418695234e",
+          "hero5-owner-card-1981"
+        ],
+        "condition_refs": [],
+        "operation_route_ids": [],
+        "late_variant_ids": [],
+        "major_variant_ids": [],
+        "overrides": {
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1111",
+                "necessity": "optional",
+                "role": "按保血需要过渡，顺路购买。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-3d638af60f3d"
+                ]
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6c5bc4ac44b4"
+                ]
+              },
+              {
+                "hero": "card:1071",
+                "necessity": "required",
+                "role": "优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-9a385b5a15b7"
+                ]
+              },
+              {
+                "hero": "card:1281",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-eee972943fc2"
+                ]
+              },
+              {
+                "hero": "card:1841",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1c59c9d8e9f5"
+                ]
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-3d638af60f3d"
+                ]
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-aff126683b9a"
+                ]
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-6c5bc4ac44b4"
+                ]
+              },
+              {
+                "hero": "card:1071",
+                "necessity": "required",
+                "role": "优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-9a385b5a15b7"
+                ]
+              },
+              {
+                "hero": "card:1281",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-eee972943fc2"
+                ]
+              },
+              {
+                "hero": "card:1841",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-1c59c9d8e9f5"
+                ]
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-3d638af60f3d"
+                ]
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-aff126683b9a"
+                ]
+              },
+              {
+                "hero": "card:1231",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-60be7845956c"
+                ]
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": "先取得首张，投入按本阶段运营判断。",
+                "replaces": "",
+                "replacement_note": "",
+                "claim_refs": [
+                  "fmt24-owner-85eea5d917d3"
+                ]
+              }
+            ]
+          }
+        },
+        "assessment": [],
+        "selection": {
+          "stage_strength": {
+            "early": {
+              "text": "2级找牌及曹操触发质量决定能否早期保血。",
+              "claim_refs": [
+                "fmt24-owner-e27b4cdf79c3"
+              ],
+              "inference": true
+            },
+            "middle": {
+              "text": "持续二阶合成与公孙离夺取集中后进入主要发力窗口。",
+              "claim_refs": [
+                "fmt24-owner-38713054751b"
+              ],
+              "inference": true
+            },
+            "late": {
+              "text": "低阶天花板与对手成型压力增加，需要兼顾升级补战力和保留觉醒攻速。",
+              "claim_refs": [
+                "fmt24-owner-98c13f1a34fb"
+              ],
+              "inference": true
+            }
+          },
+          "adopt": "三分供牌与低阶合成链可建立，赵云能保护公孙离输出。",
+          "avoid": "前期公孙离大量卡手而缺可夺取等级时，先修正前排、供级与生存。",
+          "signals": {
+            "英雄投入": "猪八戒只用于合成成长，打出时不夺走队友等级，觉醒后停止专门找他的重复牌；公孙离吸可退出工具，赵云转吕布前核对三分觉醒攻速条件。"
+          }
+        }
+      }
+    ],
+    "common_claim_refs": [],
+    "operation_routes": [],
+    "late_variants": [],
+    "major_variants": []
+  },
+  "schema_version": 5,
+  "explicit_relationships": true,
+  "guide_related": [
+    {
+      "note": "player-33",
+      "relation": "applicable_player",
+      "title": "白歌",
+      "href": "../players/白歌.md"
+    }
+  ],
+  "reading_layout": {
+    "version": 4,
+    "requires_principle": true,
+    "purchase_lists_first": true,
+    "claim_locations": {
+      "b22-b22-sanfen-shoot-owner-principle": [
+        "核心原理"
+      ],
+      "b22-b22-sanfen-shoot-owner-early": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "b22-b22-sanfen-shoot-owner-middle": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "b22-b22-sanfen-shoot-owner-late": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1991": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1071": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1281": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1841": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1111": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-5111": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1231": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1861": [
+        "英雄"
+      ],
+      "b22-b22-sanfen-shoot-owner-equipment": [
+        "推荐装备"
+      ],
+      "b22-b22-sanfen-shoot-owner-talents": [
+        "推荐天赋"
+      ],
+      "b22-b22-sanfen-shoot-owner-effects": [
+        "关键效果牌"
+      ],
+      "b22-b22-sanfen-shoot-owner-final": [
+        "终局技巧"
+      ],
+      "b22-b22-sanfen-shoot-owner-doll-current": [
+        "附录",
+        "版本差异"
+      ],
+      "fmt24-owner-1c619f6870a0": [
+        "关键装备"
+      ],
+      "fmt24-owner-e15cedad54fc": [
+        "关键装备"
+      ],
+      "fmt24-owner-8f2277daffb5": [
+        "关键装备"
+      ],
+      "fmt24-owner-e27ca02f5979": [
+        "关键装备"
+      ],
+      "fmt24-owner-28b68b5a8981": [
+        "关键装备"
+      ],
+      "fmt24-owner-4afe4a5787a7": [
+        "关键装备"
+      ],
+      "fmt24-owner-5e6562578c13": [
+        "关键装备"
+      ],
+      "fmt24-owner-7a04fba3f1e0": [
+        "关键装备"
+      ],
+      "fmt24-owner-47e23b21118e": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-4869b2f75c54": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-19c15506de9b": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-b186712084ce": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-6bc829556387": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-6621ba7df604": [
+        "推荐天赋"
+      ],
+      "fmt24-owner-f2fa6fde4bb5": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-ff110c8d761a": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-8e65d709ac0b": [
+        "关键效果牌"
+      ],
+      "fmt24-owner-6c5bc4ac44b4": [
+        "英雄"
+      ],
+      "fmt24-owner-9a385b5a15b7": [
+        "英雄"
+      ],
+      "fmt24-owner-eee972943fc2": [
+        "英雄"
+      ],
+      "fmt24-owner-1c59c9d8e9f5": [
+        "英雄"
+      ],
+      "fmt24-owner-3d638af60f3d": [
+        "英雄"
+      ],
+      "fmt24-owner-aff126683b9a": [
+        "英雄"
+      ],
+      "fmt24-owner-60be7845956c": [
+        "英雄"
+      ],
+      "fmt24-owner-85eea5d917d3": [
+        "英雄"
+      ],
+      "fmt24-owner-e27b4cdf79c3": [
+        "阵容组成与运营节奏",
+        "前期英雄组成与运营"
+      ],
+      "fmt24-owner-38713054751b": [
+        "阵容组成与运营节奏",
+        "中期英雄组成与运营"
+      ],
+      "fmt24-owner-98c13f1a34fb": [
+        "阵容组成与运营节奏",
+        "后期英雄组成与运营"
+      ],
+      "fmt24-owner-04651bb0c9a0": [
+        "阵容组成与运营节奏",
+        "后期提升思路"
+      ],
+      "fmt24-owner-37016fdc85f8": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-1a008f9ac828": [
+        "棋手技能选择"
+      ],
+      "fmt24-owner-ce418695234e": [
+        "棋手技能选择"
+      ],
+      "hero5-owner-card-1981": [
+        "英雄"
+      ]
+    },
+    "coverage": {
+      "owner": {
+        "evidence_limits": {
+          "status": "partial",
+          "detail": "已记录本批可确认机制与条件策略；未确认固定金币阈值、所有替代英雄和全局装备排名，不用单局操作补齐。"
+        },
+        "hero_fields": {
+          "status": "partial",
+          "claim_refs": [
+            "fmt24-owner-6c5bc4ac44b4",
+            "fmt24-owner-9a385b5a15b7",
+            "fmt24-owner-eee972943fc2",
+            "fmt24-owner-1c59c9d8e9f5",
+            "fmt24-owner-3d638af60f3d",
+            "fmt24-owner-aff126683b9a",
+            "fmt24-owner-60be7845956c",
+            "fmt24-owner-85eea5d917d3",
+            "hero5-owner-card-1981"
+          ],
+          "detail": "五字段格式全部覆盖；逐字段证据审核见review。通用拍卖价格等缺证据，不计为内容完整。"
+        }
+      }
+    },
+    "supporting_claim_refs": {
+      "b22-b22-sanfen-shoot-owner-equipment": [
+        "fmt24-owner-1c619f6870a0",
+        "fmt24-owner-e15cedad54fc",
+        "fmt24-owner-8f2277daffb5",
+        "fmt24-owner-e27ca02f5979",
+        "fmt24-owner-28b68b5a8981",
+        "fmt24-owner-4afe4a5787a7",
+        "fmt24-owner-5e6562578c13",
+        "fmt24-owner-7a04fba3f1e0"
+      ],
+      "b22-b22-sanfen-shoot-owner-talents": [
+        "fmt24-owner-47e23b21118e",
+        "fmt24-owner-4869b2f75c54",
+        "fmt24-owner-19c15506de9b",
+        "fmt24-owner-b186712084ce",
+        "fmt24-owner-6bc829556387",
+        "fmt24-owner-6621ba7df604"
+      ],
+      "b22-b22-sanfen-shoot-owner-effects": [
+        "fmt24-owner-f2fa6fde4bb5",
+        "fmt24-owner-ff110c8d761a",
+        "fmt24-owner-8e65d709ac0b"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1991": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1071": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1281": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1841": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1111": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-5111": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1231": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-hero-1861": [
+        "fmt24-owner-6c5bc4ac44b4",
+        "fmt24-owner-9a385b5a15b7",
+        "fmt24-owner-eee972943fc2",
+        "fmt24-owner-1c59c9d8e9f5",
+        "fmt24-owner-3d638af60f3d",
+        "fmt24-owner-aff126683b9a",
+        "fmt24-owner-60be7845956c",
+        "fmt24-owner-85eea5d917d3"
+      ],
+      "b22-b22-sanfen-shoot-owner-early": [
+        "fmt24-owner-e27b4cdf79c3"
+      ],
+      "b22-b22-sanfen-shoot-owner-middle": [
+        "fmt24-owner-38713054751b"
+      ],
+      "b22-b22-sanfen-shoot-owner-late": [
+        "fmt24-owner-98c13f1a34fb"
+      ]
+    },
+    "compact_operation_refs": {
+      "owner": [
+        "fmt24-owner-e27b4cdf79c3",
+        "fmt24-owner-38713054751b",
+        "fmt24-owner-98c13f1a34fb",
+        "fmt24-owner-04651bb0c9a0"
+      ]
+    },
+    "entity_paragraphs": true,
+    "hero_fields_required": true
+  },
+  "path": "knowledge/lineups/三分射（三）.md",
+  "entity_names": {
+    "faction:sanfen": "三分",
+    "player:33": "白歌",
+    "card:1991": "公孙离",
+    "card:1071": "赵云",
+    "card:1281": "曹操",
+    "card:1111": "孙尚香",
+    "card:1841": "蔡文姬",
+    "card:5111": "猪八戒",
+    "card:1231": "吕布",
+    "card:1861": "太乙真人",
+    "card:1073": "赵云",
+    "card:1113": "孙尚香",
+    "card:1233": "吕布",
+    "card:1283": "曹操",
+    "card:1843": "蔡文姬",
+    "card:1863": "太乙真人",
+    "card:1981": "梦奇",
+    "card:1983": "梦奇",
+    "card:1993": "公孙离",
+    "card:5113": "猪八戒",
+    "card:622003": "永不独行",
+    "card:622008": "小咖秀",
+    "card:636301": "鬼神降临",
+    "card:636306": "一身是胆",
+    "card:636317": "膨化生命",
+    "card:641002": "百锻刀",
+    "card:641015": "日渊",
+    "card:643205": "寒霜侵袭",
+    "card:643303": "末世",
+    "card:643404": "聚灵水晶",
+    "card:643502": "不死鸟之眼",
+    "card:643703": "名刀·司命",
+    "card:643803": "炽热支配者",
+    "card:663308": "奇才",
+    "card:7073": "临阵磨枪",
+    "card:7074": "唤醒",
+    "card:7505": "换帅",
+    "card:93300": "即兴创作",
+    "card:93310": "灵感爆发"
+  },
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-23T12:00:00+00:00",
+      "origin": "hero5_source_review",
+      "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+      "claims": [
+        {
+          "id": "fmt24-owner-6c5bc4ac44b4",
+          "section": "英雄",
+          "text": "**公孙离：** 主要远程输出，夺取集中工具等级；场上觉醒英雄数量影响攻速，终局撤掉低阶成员后需实际补足攻速。优先把二阶合成与灵感爆发资源兑现给当前输出。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 249.22,
+              "end": 278.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.37,
+              "end": 307.37
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 397.05,
+              "end": 426.31
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 455.98,
+              "end": 482.57
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 482.99,
+              "end": 510.75
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1991"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-9a385b5a15b7",
+          "section": "英雄",
+          "text": "**赵云：** 主要前排与输出补充，低生命阶段恢复和护盾提高存活；优先补觉醒及能撑住爆发的装备，不能只为曹操触发经济而永久不上赵云。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.37,
+              "end": 307.37
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 337.55,
+              "end": 366.19
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 455.98,
+              "end": 482.57
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 482.99,
+              "end": 510.75
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 571.48,
+              "end": 599.6
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1071"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-eee972943fc2",
+          "section": "英雄",
+          "text": "**曹操：** 整备触发三分登场，未觉醒时减少无关目标干扰，觉醒后同时触发孙尚香与赵云。等级可按后期集中方案回收，但过早拆掉会削弱循环。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.37,
+              "end": 307.37
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 337.55,
+              "end": 366.19
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 397.05,
+              "end": 426.31
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 482.99,
+              "end": 510.75
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 600.33,
+              "end": 629.22
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1281"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-1c59c9d8e9f5",
+          "section": "英雄",
+          "text": "**蔡文姬：** 团队成长与续航工具，主要资源仍服务二阶合成；近卫荣耀与控制装备按后排安全程度配置。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 918.85,
+              "end": 976.18
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1841"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-3d638af60f3d",
+          "section": "英雄",
+          "text": "**孙尚香：** 登场补刷新，曹操重复触发为低阶循环提供资源；其等级最终可由公孙离回收。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 337.55,
+              "end": 366.19
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 426.8,
+              "end": 455.58
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1152.7,
+              "end": 1181.9
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1239.0,
+              "end": 1267.22
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 2367.07,
+              "end": 2439.13
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1111"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-aff126683b9a",
+          "section": "英雄",
+          "text": "**猪八戒：** 此路线的合成等级工具，不是养猪主坦；首张不夺取留给公孙离的等级，觉醒后停止追其无效重复合成。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.37,
+              "end": 307.37
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 397.05,
+              "end": 426.31
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 426.8,
+              "end": 455.58
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 455.98,
+              "end": 482.57
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 862.06,
+              "end": 888.68
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-5111"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-60be7845956c",
+          "section": "英雄",
+          "text": "**吕布：** 条件终局换帅目标，增加前排与范围控制；不能因为吕布高等级就忽略公孙离攻速下降及单体输出损失。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 218.02,
+              "end": 242.97
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 629.45,
+              "end": 656.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 660.07,
+              "end": 689.2
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 690.15,
+              "end": 719.45
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1182.62,
+              "end": 1211.42
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1231"
+          ],
+          "editorial_review": "format24"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 5级以后保护公孙离的工具；取得奇才时可比较补其觉醒，不强求升6级只为多打几张低价值牌。",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 629.45,
+              "end": 656.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 776.95,
+              "end": 806.75
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 807.92,
+              "end": 834.48
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1861"
+          ],
+          "editorial_review": "format24"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T04:01:46.364305+00:00",
+      "origin": "hero5_source_readback",
+      "reason": "按该路线原教学去掉无依据的通用开局套用。",
+      "claims": [
+        {
+          "id": "fmt24-owner-3d638af60f3d",
+          "section": "英雄",
+          "text": "**孙尚香：** 登场免费刷新，是低本牌量和猪成长的重要发动机，前期兼输出。觉醒需求：普通1刷醒后2，优先自然觉醒增强循环；等级投入：接受自然成长后让公孙离夺取，不单独主养；购买策略：开局可单香或与牛保血，重复优质循环牌；不单为香耗尽付费刷新预算。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：有曹时让触发尽量到香，未醒曹不急上无关三分；出售时机：公孙离可吸等级后按循环需要保留或打卖，先转装备，不提前破坏免费刷新；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 337.55,
+              "end": 366.19
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 426.8,
+              "end": 455.58
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1152.7,
+              "end": 1181.9
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1239.0,
+              "end": 1267.22
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 2367.07,
+              "end": 2439.13
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 397.1,
+              "end": 426.3
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 426.8,
+              "end": 455.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 483.0,
+              "end": 510.8
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1005.7,
+              "end": 1035.5
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1111"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1111"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-23T04:41:14.697298+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "fmt24-owner-9a385b5a15b7",
+          "section": "英雄",
+          "text": "**赵云：** 前排吸血回血承伤，延长公孙离输出，登场也参与三分成长。觉醒需求：普通可前排，醒后登场加等级翻倍；已有三分攻速条件时质量有额外价值；等级投入：吃自然成长，40/100低血爆发和回血节点，不抢主C定向夺取；购买策略：首张凑前排，重复随三分循环补醒；曹未醒且希望稳定香刷新时可暂留手，危急保血例外。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：曹操已醒或需要紧急前排时上，避免早稀释想要的香登场；出售时机：后期可转等级换吕布，但会少一名觉醒三分攻速受益条件，不能与其他三分同时全换；先转装备等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.37,
+              "end": 307.37
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 337.55,
+              "end": 366.19
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 455.98,
+              "end": 482.57
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 482.99,
+              "end": 510.75
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 571.48,
+              "end": 599.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 456.0,
+              "end": 482.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 483.0,
+              "end": 510.8
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 571.5,
+              "end": 599.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 629.5,
+              "end": 656.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 862.1,
+              "end": 888.7
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 947.2,
+              "end": 976.2
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1035.8,
+              "end": 1064.9
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1065.3,
+              "end": 1092.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1152.7,
+              "end": 1181.9
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1182.6,
+              "end": 1211.4
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1071"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1071"
+        },
+        {
+          "id": "fmt24-owner-eee972943fc2",
+          "section": "英雄",
+          "text": "**曹操：** 整备触发香刷新和三分登场，给主C成长循环提供牌量。觉醒需求：普通可启动，醒后多触发1人，优先补醒；等级投入：自然成长，后续可由公孙离夺取，不专养输出；购买策略：首拍猪后优质首张，重复补醒；不在2级为曹单独死D，队伍稳后资源用于循环。拍卖选择方面，猪后优先，其他三分/公孙离再后。拍卖出价上限未确认；上阵时机：前期与香配合，未醒时减少不必要三分登场目标；出售时机：公孙离吸等级后仍保留引擎；终局停循环再先转永久等级装备比较换位；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.37,
+              "end": 307.37
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 337.55,
+              "end": 366.19
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 397.05,
+              "end": 426.31
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 482.99,
+              "end": 510.75
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 600.33,
+              "end": 629.22
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 397.1,
+              "end": 426.3
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 483.0,
+              "end": 510.8
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 600.3,
+              "end": 629.2
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1005.7,
+              "end": 1035.5
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1065.3,
+              "end": 1092.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1182.6,
+              "end": 1211.4
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1281"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1281"
+        },
+        {
+          "id": "fmt24-owner-60be7845956c",
+          "section": "英雄",
+          "text": "**吕布：** 大后期承接等级的控制前排，换帅可提升团战但有三分攻速代价。觉醒需求：普通单张已有吸血控制，觉醒按资源，不先追而挤占循环；等级投入：需要可转移等级才有前排战力，100全场控制有用但不固定强求；购买策略：后期确需换赵时再买首张，过早买会卡灵感复制与经济；重复不抢主C资源。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：先传承/移植或换帅到位再上，同时最多替换一名重要三分位并核对攻速；出售时机：成为主要前排后留，继续换位先处理永久等级装备；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 218.02,
+              "end": 242.97
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 629.45,
+              "end": 656.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 660.07,
+              "end": 689.2
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 690.15,
+              "end": 719.45
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1182.62,
+              "end": 1211.42
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 629.5,
+              "end": 656.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 660.1,
+              "end": 689.2
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 690.1,
+              "end": 719.5
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 1182.6,
+              "end": 1211.4
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1231"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1231"
+        },
+        {
+          "id": "fmt24-owner-85eea5d917d3",
+          "section": "英雄",
+          "text": "**太乙真人：** 给核心复生，提高抗爆发能力并延长有效输出时间。觉醒需求：普通可给复生，醒后完美复生；先取首张保护，不因未醒拒绝使用；等级投入：功能用途接受自然成长，不争核心定向等级；购买策略：核心已具战力且确需复活时首张，重复按觉醒或备用需要；不为功能牌耽误找主C。未确认本分支必须专门竞拍的优先级，先保核心成型预算。拍卖出价上限未确认；上阵时机：成长和打牌操作完成后上，检查最近目标正确，保护核心而非临时工具；出售时机：仍需复生则保留；腾打出位前确认有备份或当轮可补回，先卸有用装备和转有效等级；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 629.45,
+              "end": 656.6
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 776.95,
+              "end": 806.75
+            },
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 807.92,
+              "end": 834.48
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-sanfen-shoot-owner-hero-1861"
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1861"
+        },
+        {
+          "id": "hero5-owner-card-1981",
+          "section": "英雄",
+          "text": "**梦奇：** 首拍核心都没有时的兑换券备选，转成二阶工具卡帮助射手体系成型。觉醒需求：普通退场一张券即可，醒后两张，本路线不专门追醒；等级投入：不培养战斗等级，以兑现券找二阶组件为主；购买策略：首拍猪、曹操及其他三分/公孙离都没有时才考虑首张，不付费专找或追重复；拍卖出价上限未确认；上阵时机：需要输一回合提升券到二阶时暂上，不破坏已能保血的完整阵容；出售时机：券达到所需品阶后出售兑现，用来找二阶体系，别长期留占输出或前排；已有有效等级装备先处理；",
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1akH96fEPp:p1",
+              "start": 279.4,
+              "end": 307.4
+            }
+          ],
+          "editorial_review": "hero5-2026-10-23",
+          "hero_review_ref": "knowledge/reviews/英雄五字段来源复核-2026-10-23.json#b22-sanfen-shoot/owner/card:1981"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "revision": "f1aa31657e13b09552a2"
+}

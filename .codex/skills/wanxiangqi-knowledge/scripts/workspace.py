@@ -159,6 +159,8 @@ def prepare(root, items):
                 note['entities'] = sorted(set(note.get('entities', [])) | {r for r in refs if r in known_entities})
             for claim in note.get('claims', []):
                 claim.setdefault('id', claim_id(claim))
+            if note.get('reading_layout', {}).get('entity_paragraphs'):
+                refs += note.get('entities', [])
             note['entity_names'] = {r: names.get(r, r.removeprefix('pending:')) for r in refs if r}
             from player_branches import validate as validate_branches
             validate_branches(note)
