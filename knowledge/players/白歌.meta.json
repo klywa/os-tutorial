@@ -1,0 +1,545 @@
+{
+  "id": "player-33",
+  "type": "player",
+  "title": "白歌",
+  "aliases": [],
+  "entities": [
+    "player:33"
+  ],
+  "related": [
+    {
+      "id": "sanfen-reversal--baige",
+      "type": "lineup",
+      "title": "三分倒转-白歌",
+      "path": "knowledge/lineups/三分倒转-白歌.json"
+    }
+  ],
+  "explicit_relationships": true,
+  "player_id": "player:33",
+  "path": "knowledge/players/白歌.json",
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-21T11:40:43.187942+00:00",
+      "reason": "三分专属流程归入显式阵容分支；保留逐鹿知识与旧完整原文",
+      "previous": {
+        "claims": [
+          {
+            "id": "doc-9b2c118ba18913787c84f9",
+            "section": "适用打法与选择",
+            "text": "**已知打法方向：** 根据白歌的棋手特点，需要玩的都是刷牌流。目前万象棋里的可以刷牌的阵营就是三分和逐鹿，以甄姬和庄周为代表的英雄，通过登场获得英雄牌来打合成，获得即兴创作。所以最适合白歌的阵容就是三分倒转，其次就是高阶逐鹿。\n\n白歌的技能用于复制露娜，露娜登场触发曹操的整备效果，曹操整备触发场上登场英雄的登场效果，实现循环来牌和等级提升。\n\n使用灵感爆发前先将手牌里其余英雄清掉然后再用灵感爆发斩击手牌里的露娜（如果场上有露娜可以先用奇才指定露娜，理想情况是手牌里的三张非觉醒英雄牌均为露娜然后再使用灵感爆发），然后再打出露娜实现登场-整备-登场循环。\n\n白歌的技能用于复制庄周，用于效果牌的高频产出，庄周的招募战术有几率再次开出庄周，实现循环合成。所有效果牌均会增加嬴政的法强，以及触发芈月的被动。\n\n先将手牌里的英雄清掉再用灵感爆发斩击手牌里的庄周，（如果场上有庄周可以先用奇才指定庄周，理想情况是手牌里的三张非觉醒英雄牌均为庄周然后再使用灵感爆发）获得大量招募战术并打出，后续的灵感爆发全都用于斩击庄周。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+                "paragraph_start": 18,
+                "paragraph_end": 18
+              },
+              {
+                "type": "document",
+                "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+                "paragraph_start": 20,
+                "paragraph_end": 20
+              },
+              {
+                "type": "document",
+                "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+                "paragraph_start": 21,
+                "paragraph_end": 21
+              },
+              {
+                "type": "document",
+                "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+                "paragraph_start": 23,
+                "paragraph_end": 23
+              },
+              {
+                "type": "document",
+                "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+                "paragraph_start": 24,
+                "paragraph_end": 24
+              }
+            ],
+            "origin": "document"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-21T11:40:43.187942+00:00",
+      "reason": "按组件与即时战力表达阶段强弱，避免把6级写成统一分界",
+      "previous": {
+        "claims": [
+          {
+            "id": "doc-a1e485530bcdf34e1fe2ff",
+            "section": "前期思路",
+            "text": "白歌不是站场型棋手，核心作用是加速核心英雄觉醒。需要不断搜牌、合成来触发技能循环，前中期偏弱，6级才是主场。适合中后期运营阵容，不适合速攻局。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+                "paragraph_start": 15,
+                "paragraph_end": 15
+              }
+            ],
+            "origin": "document"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-23T04:41:14.497118+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "sl-player-33-empty-slots",
+          "section": "适用技巧",
+          "text": "即兴创作与照影的目标来自场上英雄，灵感爆发的目标来自手牌非觉醒英雄，两者候选范围不同。使用前分别检查场上复制候选、手牌剩余空间与非觉醒牌种类；临时收起英雄后还要在开战前把必要战力放回去。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 880,
+              "end": 920
+            },
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 1149,
+              "end": 1295
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "doc-18dd7512550f269b27a8bf",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-18dd7512550f269b27a8bf"
+    },
+    {
+      "id": "doc-3c78af7d37330e22e007cf",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-3c78af7d37330e22e007cf"
+    },
+    {
+      "id": "doc-f649e5aedf1c0c085d7dc7",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-f649e5aedf1c0c085d7dc7"
+    },
+    {
+      "id": "doc-3682ac2c60f74f62b40af3",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-3682ac2c60f74f62b40af3"
+    },
+    {
+      "id": "doc-34a90b6491a8358da560a2",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-34a90b6491a8358da560a2"
+    },
+    {
+      "id": "doc-a1e485530bcdf34e1fe2ff",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 34,
+          "end": 152
+        },
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 1078,
+          "end": 1215.5
+        }
+      ],
+      "origin": "document",
+      "review_basis": {
+        "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+      },
+      "text_ref": "support-doc-a1e485530bcdf34e1fe2ff"
+    },
+    {
+      "id": "doc-8f05f5917b5cbafe0487ac",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-8f05f5917b5cbafe0487ac"
+    },
+    {
+      "id": "doc-c2ede512c4151e911b80af",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-c2ede512c4151e911b80af"
+    },
+    {
+      "id": "doc-fceb6b658d191687af35d5",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-fceb6b658d191687af35d5"
+    },
+    {
+      "id": "doc-0df199ff99e6ee1b048e53",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-0df199ff99e6ee1b048e53"
+    },
+    {
+      "id": "doc-9b2c118ba18913787c84f9",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        },
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        },
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 23,
+          "paragraph_end": 23
+        },
+        {
+          "type": "document",
+          "source": "doc-dbfc118327a4b002ccddbaede695cf34a198054fd43db95c01b421e8e2b052ef",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        }
+      ],
+      "origin": "document",
+      "review_basis": {
+        "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+      },
+      "text_ref": "support-doc-9b2c118ba18913787c84f9"
+    },
+    {
+      "id": "sl-player-33-opening",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 34,
+          "end": 152
+        },
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 391,
+          "end": 464
+        }
+      ],
+      "text_ref": "support-sl-player-33-opening"
+    },
+    {
+      "id": "sl-player-33-empty-slots",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 880,
+          "end": 920
+        },
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 1149,
+          "end": 1295
+        }
+      ],
+      "text_ref": "support-sl-player-33-empty-slots"
+    },
+    {
+      "id": "sl-player-33-upgrade",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 1078,
+          "end": 1179
+        }
+      ],
+      "text_ref": "support-sl-player-33-upgrade"
+    },
+    {
+      "id": "sl-player-33-qicai-options",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV16cpm64E3K:p1",
+          "start": 512.16,
+          "end": 732.41
+        },
+        {
+          "source": "BV1R7hx6yEVK:p1",
+          "start": 1109.33,
+          "end": 1215.5
+        },
+        {
+          "source": "BV1KkhE6LER3:p1",
+          "start": 1103.76,
+          "end": 1189.3
+        }
+      ],
+      "text_ref": "support-sl-player-33-qicai-options"
+    },
+    {
+      "id": "six-player-33-keycard-first",
+      "section": "前期思路",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1rUhx6WEe5:p1",
+          "start": 32.57,
+          "end": 123.02
+        }
+      ],
+      "text_ref": "support-six-player-33-keycard-first"
+    },
+    {
+      "id": "six-player-33-copy-goal",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1rUhx6WEe5:p1",
+          "start": 332.85,
+          "end": 405.26
+        }
+      ],
+      "text_ref": "support-six-player-33-copy-goal"
+    },
+    {
+      "id": "six-player-33-skill-chain",
+      "section": "技能",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1dYeX6FEqW:p1",
+          "start": 6.72,
+          "end": 61.04
+        }
+      ],
+      "text_ref": "support-six-player-33-skill-chain"
+    },
+    {
+      "id": "six-player-33-hand-speed",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1dYeX6FEqW:p1",
+          "start": 390.7,
+          "end": 489.95
+        },
+        {
+          "source": "BV1dYeX6FEqW:p1",
+          "start": 557.84,
+          "end": 642.18
+        }
+      ],
+      "text_ref": "support-six-player-33-hand-speed"
+    },
+    {
+      "id": "b22-player-33-shoot-endgame",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1akH96fEPp:p1",
+          "start": 600.33,
+          "end": 834.48
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "text_ref": "support-b22-player-33-shoot-endgame"
+    }
+  ],
+  "body_sha256": "ea5b7e018333afaabc54795383ec0e1853defa901b1d7fed3ab97bf5ec4bac48",
+  "revision": "c8eacf4c101332f07e01",
+  "legacy_layout": {
+    "version": 4
+  }
+}

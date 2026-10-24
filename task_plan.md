@@ -201,3 +201,9 @@
 - 固定基线并逐篇审读实际正文：complete
 - 回查模糊操作、逐条改写及技能规则：complete
 - 统一保存、回读与验收交付：complete
+
+# 纯JSON知识库改造（2026-10-24）
+- 基线与无损正文：complete
+- JSON事务存储与迁移：complete
+- 前端结构化编辑、复制、棋手树：complete
+- skill及完整验收：complete

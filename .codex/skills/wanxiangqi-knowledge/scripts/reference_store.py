@@ -102,7 +102,50 @@ def render_card(card):
     return '\n'.join(lines) + '\n'
 
 
+def save_json_cards(root, cards):
+    import json_document, json_store
+    root = Path(root); rows = []
+    for card in cards:
+        name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', '－', card['name'])[:90]
+        path = f"knowledge/cards/{card['category']}/{name}－{card['id'].replace(':', '-')}.json"
+        body = json_document.parse(render_card(card))
+        texts = {n['value']: n['id'] for n in body['nodes'] if n['type'] == 'entry'}
+        def intern(value):
+            if isinstance(value, str) and value in texts:return {'$text': texts[value]}
+            if isinstance(value, dict):return {k: intern(v) for k, v in value.items()}
+            if isinstance(value, list):return [intern(v) for v in value]
+            return value
+        body['semantics'] = intern({k: v for k, v in card.items() if k not in ('sources', 'retrieved_at', 'version', 'path')})
+        meta = {k: card.get(k) for k in ('id', 'sources', 'retrieved_at', 'version')}
+        meta.update(path=path, body_sha256=json_store.digest(body))
+        json_store.write_file(root / path, body)
+        json_store.write_file(root / json_store.meta_path(path), meta)
+        rows.append({'id': card['id'], 'path': path})
+    json_store.write_file(root / 'knowledge/cards/index.meta.json', {'schema_version': 6, 'cards': rows})
+
+
+def json_cards(root):
+    import json_store
+    root = Path(root); result = []
+    pending = json_store.read(root / 'raw/knowledge/pending-cards.json')
+    if pending:return pending['cards']
+    for row in json_store.read(root / 'knowledge/cards/index.meta.json', {'cards': []})['cards']:
+        path = json_store.target(root, row['path'])
+        body = json_store.read(path)
+        meta = json_store.read(root / json_store.meta_path(row['path']))
+        if not body or not meta or json_store.digest(body) != meta['body_sha256']:
+            raise ValueError('卡牌正文与附件不一致：' + row['id'])
+        texts = {n['id']: n.get('value', n.get('title', '')) for n in body['nodes']}
+        card = json_store.resolve_value(body['semantics'], texts)
+        card.update({k: v for k, v in meta.items() if k != 'body_sha256'})
+        result.append(card)
+    return result
+
+
 def _save_cards(root, cards):
+    import json_store
+    if json_store.enabled(root):
+        return save_json_cards(root, cards)
     for card in cards:
         name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', '－', card['name'])[:90]
         ident = card['id'].replace(':', '-')
@@ -112,7 +155,7 @@ def _save_cards(root, cards):
 
 
 def recover_cards(root):
-    root = Path(root); pending = root / 'knowledge/pending-cards.json'
+    root = Path(root); pending = wxq.storage_path(root / 'knowledge/pending-cards.json')
     data = wxq.read_json(pending)
     if data:
         validate_cards(data['cards'])

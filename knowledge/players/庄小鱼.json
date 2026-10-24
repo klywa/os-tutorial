@@ -1,0 +1,632 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "庄小鱼",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-3755bd442141d66a1874"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "技能",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-3cc74abe48119da9ebbb"
+    },
+    {
+      "type": "entry",
+      "key": "技能",
+      "show_key": true,
+      "value": "梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-c6e0f4ffc3247f64470c"
+    },
+    {
+      "type": "entry",
+      "key": "秘技",
+      "show_key": true,
+      "value": "棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-048ff87ac1bbbbb5a095"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+      "separator": "\n\n",
+      "id": "n-43fba5f7f12639bc9930"
+    },
+    {
+      "type": "entry",
+      "key": "专属天赋",
+      "show_key": true,
+      "value": "获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6c4130a7ac1576f48aaf"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+      "separator": "\n\n",
+      "id": "n-bd819f6b66d36dc9feb2"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "前期思路",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-1ae250dbd39c81c50749"
+    },
+    {
+      "type": "entry",
+      "key": "棋手升级判断",
+      "show_key": true,
+      "value": "先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-3b82d3e8d0a17594a228"
+    },
+    {
+      "type": "entry",
+      "key": "优先选择能加快棋手升级的天赋，例如先苦后甜",
+      "show_key": true,
+      "value": "输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-175ebec71436f6d70b43"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+      "separator": "\n\n",
+      "id": "n-a5b6a2e2fd978aa2d051"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+      "separator": "\n\n",
+      "id": "n-ffc95410ff9c3d6cabf3"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用打法与选择",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-e9d39a6a8987e03170d4"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[河洛花木兰](../lineups/河洛花木兰-庄小鱼.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-9dc3b0d957406cbf7d83"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-a908abb029f70671558a"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-3e2077e7a15687e54001"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛、日落海。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6545ee06e9bc32cb7769"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "如梦与梦幻商店补组件、觉醒和露娜。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-67feeacd2604e06550f7"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "技能不保证命中核心；人数、合成和保血需要协同。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-267d76b89f99848e106b"
+    },
+    {
+      "type": "entry",
+      "key": "来牌与同行",
+      "show_key": true,
+      "value": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-d51a03f0801216933dd0"
+    },
+    {
+      "type": "entry",
+      "key": "对手与压力",
+      "show_key": true,
+      "value": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-defb22d03cf47086ff41"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-78c0470f6aabf19afe62"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-2d7c7cf14dc1c554edf2"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-ef91e52f48187bef00cf"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-b64de566915a53cdea66"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-ec9566f7284913eca2d5"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[庄小鱼无阵营](../lineups/庄小鱼无阵营-庄小鱼.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-6d1b0262bd1fa99d604f"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-2658ca2d237b1dc15fd3"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-ea5274cbd3af3236e601"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "暂无已确认条件。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6bfdc24fb8b924a6a2b4"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-1060acde86954274d235"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-1b3954e803d052011e72"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-c11d04e8ecabc72e9790"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-78ae6063d1bccd2e93a5"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "升级过渡需实际承伤与输出保血。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-9870cdffb24f6aa3ff86"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-0948d169794200230c3a"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-b873e4ed4144f08a756c"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用技巧",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-0cd63f4d8b7e3a0ef63c"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+      "separator": "\n\n",
+      "id": "n-31d6c038a6facfca73b7"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+      "separator": "\n\n",
+      "id": "n-261fdec0c0201972bacb"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+      "separator": "\n\n",
+      "id": "n-07fc0b137cd482d979cd"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+      "separator": "\n\n",
+      "id": "n-c61394ec4d3f69211aeb"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+      "separator": "\n\n",
+      "id": "n-6455eb54b35a8de14a3d"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+      "separator": "\n\n",
+      "id": "n-2999ed65e527ecb249ea"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-44ceb266bede60e56f72"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+      "separator": "\n",
+      "id": "n-36cc13a3d009ddf36583"
+    }
+  ],
+  "adaptations": [
+    {
+      "lineup": "heluo-huamulan",
+      "branch": "zhuang",
+      "title": "河洛花木兰",
+      "path": "knowledge/lineups/河洛花木兰-庄小鱼.md",
+      "selection": {
+        "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+        "avoid": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+        "signals": {
+          "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+          "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+          "英雄投入": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。"
+        },
+        "stage_strength": {
+          "early": {
+            "text": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+            "claim_refs": [
+              "fmt24-zhuang-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+            "claim_refs": [
+              "fmt24-zhuang-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+            "claim_refs": [
+              "fmt24-zhuang-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [
+        "河洛",
+        "日落海"
+      ],
+      "advantages": "如梦与梦幻商店补组件、觉醒和露娜。",
+      "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
+    },
+    {
+      "lineup": "b22-zhuang-no-faction",
+      "branch": "owner",
+      "title": "庄小鱼无阵营",
+      "path": "knowledge/lineups/庄小鱼无阵营-庄小鱼.md",
+      "selection": {
+        "stage_strength": {
+          "early": {
+            "text": "升级过渡需实际承伤与输出保血。",
+            "claim_refs": [
+              "fmt24-owner-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+            "claim_refs": [
+              "fmt24-owner-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+            "claim_refs": [
+              "fmt24-owner-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        },
+        "adopt": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+        "avoid": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+        "signals": {
+          "英雄投入": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。"
+        }
+      },
+      "required_factions": [],
+      "advantages": "暂无已确认结论",
+      "disadvantages": "暂无已确认结论"
+    }
+  ],
+  "supporting_nodes": [
+    {
+      "id": "support-tier-guide-general-player-zhuang",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手升级判断：先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-9c25b7d48b3156b925e1d7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "技能：梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-bad7a0bb3800a3179ad2e3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-2a75b717da595796d7b4c5",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-4ee5d79328ad7ecc741cd7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "专属天赋：获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-c989e1562c1af28a5ab0cf",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先选择能加快棋手升级的天赋，例如先苦后甜：输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-946e25fd91a11bc125f7f7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-984b3e6def42ad1d0f3613",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-6a4fd645c697f53b07730c",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-a54354980431318eecaf68",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-e66d6d2ba8eafb019eeafb",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-31-opening-effects",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-31-three-template",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-31-dream-random",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+      "separator": ""
+    },
+    {
+      "id": "support-b22-player-31-mulan-rumeng",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

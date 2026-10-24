@@ -5,10 +5,11 @@ import type {Note} from './types';
 vi.mock('./EntityCards',()=>({useCards:()=>[],CardImage:()=>null}));
 const note=(id:string,title:string,type:Note['type']='lineup')=>({id,title,type,aliases:[],claims:[],entities:[],revision:'',path:'',core:[],manual_sections:[],conflicts:[],related:[]}) as Note;
 describe('note directory',()=>{
- it('opens actual notes directly without roster groups or management',()=>{
+ it('opens actual notes in knowledge groups without roster management',()=>{
   const html=renderToStaticMarkup(<NoteDirectory notes={[note('a','河洛花木兰'),note('b','明先生','player')]} active="a" onSelect={()=>{}}/>);
   expect(html).toContain('河洛花木兰');expect(html).toContain('明先生');
-  for(const absent of ['管理阵容名单','未归类阵容笔记','暂无笔记','<details'])expect(html).not.toContain(absent);
+  for(const absent of ['管理阵容名单','未归类阵容笔记','暂无笔记'])expect(html).not.toContain(absent);
+  expect(html).toContain('<details');expect(html).toContain('其他知识');
   expect(html).toContain('aria-current="page"');
  });
  it('has an explicit empty result without fabricating lineup entries',()=>{

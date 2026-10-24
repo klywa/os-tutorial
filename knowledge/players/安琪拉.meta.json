@@ -1,0 +1,1085 @@
+{
+  "id": "player-angela",
+  "type": "player",
+  "title": "安琪拉",
+  "entities": [
+    "card:1191",
+    "card:1491",
+    "card:1493",
+    "card:1681",
+    "card:1821",
+    "card:1861",
+    "card:1891",
+    "card:1971",
+    "card:5011",
+    "card:5051",
+    "card:5061",
+    "card:5171",
+    "card:5771",
+    "card:613005",
+    "card:635031",
+    "card:636510",
+    "card:636514",
+    "card:641001",
+    "card:643105",
+    "card:643207",
+    "card:643303",
+    "card:643502",
+    "card:643504",
+    "card:643603",
+    "card:643801",
+    "card:665101",
+    "card:665104",
+    "card:665105",
+    "card:681018",
+    "card:95158",
+    "card:95164",
+    "card:95199",
+    "player:51"
+  ],
+  "related": [],
+  "path": "knowledge/players/安琪拉.json",
+  "aliases": [
+    "安琪拉－飞行器与模块选择"
+  ],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手五章节与未定阵开局整理",
+      "previous": {
+        "claims": [
+          {
+            "section": "技能",
+            "text": "特制灵异追踪器初始拥有3点神秘力量，每回合自动获得3点；每点神秘力量提供2点飞行器法术攻击。飞行器连接最近英雄，连接英雄存活时持续输出；开战为连接英雄提供神秘力量值30%的临时等级。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 0,
+                "end": 57.92,
+                "frame": "frames/20-0.jpg"
+              }
+            ]
+          },
+          {
+            "section": "技能",
+            "text": "三阶获得顿悟时刻，从三项候选中选择神秘力量获取方式。累计获得5、10、20、35点神秘力量时，驱鬼!加大力度!分别提供灵异探测大改装；六阶超级连接额外提供一次大改装，并随机给予连接英雄自身等级10%–30%的临时等级。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 59.04,
+                "end": 86.98,
+                "frame": "frames/80-0.jpg"
+              },
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 315.7,
+                "end": 341.8,
+                "frame": "frames/325-0.jpg"
+              },
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 1054.76,
+                "end": 1104.9
+              }
+            ]
+          },
+          {
+            "section": "使用技巧",
+            "text": "按实际阵容选择奇想：频繁使用英雄牌的图腾体系可优先英雄牌，频繁花能量可考虑奖励；预期前期掉血时补给有价值，能连胜时考虑胜利。效果牌选项不适合本来就很少使用效果牌的路线。",
+            "version": null,
+            "condition": "频繁使用英雄牌",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 259.8,
+                "end": 315.4
+              }
+            ]
+          },
+          {
+            "section": "使用技巧",
+            "text": "刘邦持续输出路线通常不选一次性自爆模块。优先考虑壮胆、保送升级、上强度、打扫战场、坐火箭；变胖、杠上了、秒变脆皮、技能加持、复仇者等结合对手和工具英雄情况选择。低调、重拳及蓄力痛击不是刘邦的常规优先项。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "general_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 908.28,
+                "end": 1104.9
+              }
+            ]
+          },
+          {
+            "section": "技能",
+            "text": "壮胆给连接英雄15点双抗；紧急救命在连接英雄受到致命伤时提供1.5秒无敌且不可选中。这是两个不同模块，紧急救命不额外提供壮胆的15点双抗。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 455.25,
+                "end": 513.2,
+                "frame": "frames/490-0.jpg"
+              }
+            ]
+          },
+          {
+            "section": "技能",
+            "text": "拿来吧你每次命中将目标等级的1.5%临时继承给连接英雄，至少1级；本视频展示的版本已经不再降低对方等级。坐火箭使神秘力量转化临时等级的效果值增加60%。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 800.36,
+                "end": 859.3,
+                "frame": "frames/820-0.jpg"
+              },
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 859.84,
+                "end": 907.9,
+                "frame": "frames/900-0.jpg"
+              }
+            ]
+          },
+          {
+            "section": "使用技巧",
+            "text": "拿来吧你配秒变脆皮可提高攻击频率，加快临时等级积累；打扫战场继承连接英雄法攻，适合刘邦、芈月等有法攻的核心。廉颇的扁鹊炸盾伤害不能直接当作廉颇自身法攻继承。",
+            "version": null,
+            "condition": "打扫战场继承连接英雄法攻",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 800.36,
+                "end": 907.9
+              }
+            ]
+          },
+          {
+            "section": "技能",
+            "text": "让你嘚瑟在本视频展示的版本中从等级最高的三个敌人里随机选一个，可能打到工具英雄；不能沿用旧版固定针对最高等级核心的预期。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 625,
+                "end": 652.3
+              }
+            ]
+          },
+          {
+            "section": "适配阵容",
+            "text": "适合以刘邦为核心的图腾成长体系，利用持续法伤、临时等级以及明世隐的等级转化。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "general_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 1105.19,
+                "end": 1273.85,
+                "frame": "frames/1255-0.jpg"
+              }
+            ]
+          },
+          {
+            "section": "使用技巧",
+            "text": "瑶附身主核心时可以考虑二号机，以双飞行器持续输出，但需权衡临时等级转化效果的降低。",
+            "version": null,
+            "condition": "瑶附身主核心时",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 342.29,
+                "end": 371.4
+              }
+            ]
+          }
+        ],
+        "manual_sections": [],
+        "revision": "31a49000e41d5a5f33a4"
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.683866+00:00",
+      "origin": "editorial",
+      "reason": "棋手唯一身份与纯棋手名迁移",
+      "previous": {
+        "title": "安琪拉－飞行器与模块选择",
+        "path": "knowledge/players/安琪拉－飞行器与模块选择.md",
+        "player_id": null,
+        "aliases": []
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.697871+00:00",
+      "origin": "editorial",
+      "reason": "棋手升级术语统一与逐阶教学补充",
+      "previous": {
+        "claims": [
+          {
+            "section": "技能",
+            "text": "特制灵异追踪器初始拥有3点神秘力量，每回合自动获得3点；每点神秘力量提供2点飞行器法术攻击。飞行器连接最近英雄，连接英雄存活时持续输出；开战为连接英雄提供神秘力量值30%的临时等级。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 0,
+                "end": 57.92,
+                "frame": "frames/20-0.jpg"
+              }
+            ],
+            "id": "claim-45b9cd8d8a983da83712"
+          },
+          {
+            "section": "技能",
+            "text": "三阶获得顿悟时刻，从三项候选中选择神秘力量获取方式。累计获得5、10、20、35点神秘力量时，驱鬼!加大力度!分别提供灵异探测大改装；六阶超级连接额外提供一次大改装，并随机给予连接英雄自身等级10%–30%的临时等级。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 59.04,
+                "end": 86.98,
+                "frame": "frames/80-0.jpg"
+              },
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 315.7,
+                "end": 341.8,
+                "frame": "frames/325-0.jpg"
+              },
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 1054.76,
+                "end": 1104.9
+              }
+            ],
+            "id": "claim-53e27f8e0cdd5f6e01ce"
+          },
+          {
+            "section": "前期思路",
+            "text": "按实际阵容选择奇想：频繁使用英雄牌的图腾体系可优先英雄牌，频繁花能量可考虑奖励；预期前期掉血时补给有价值，能连胜时考虑胜利。效果牌选项不适合本来就很少使用效果牌的路线。",
+            "version": null,
+            "condition": "频繁使用英雄牌",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 259.8,
+                "end": 315.4
+              }
+            ],
+            "id": "claim-f49e7024b047dc06ce12"
+          },
+          {
+            "section": "适用技巧",
+            "text": "刘邦持续输出路线通常不选一次性自爆模块。优先考虑壮胆、保送升级、上强度、打扫战场、坐火箭；变胖、杠上了、秒变脆皮、技能加持、复仇者等结合对手和工具英雄情况选择。低调、重拳及蓄力痛击不是刘邦的常规优先项。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "general_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 908.28,
+                "end": 1104.9
+              }
+            ],
+            "id": "claim-5c781501dfba6bfc8c1f"
+          },
+          {
+            "section": "技能",
+            "text": "壮胆给连接英雄15点双抗；紧急救命在连接英雄受到致命伤时提供1.5秒无敌且不可选中。这是两个不同模块，紧急救命不额外提供壮胆的15点双抗。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 455.25,
+                "end": 513.2,
+                "frame": "frames/490-0.jpg"
+              }
+            ],
+            "id": "claim-6c536872f059d24f3d67"
+          },
+          {
+            "section": "技能",
+            "text": "拿来吧你每次命中将目标等级的1.5%临时继承给连接英雄，至少1级；本视频展示的版本已经不再降低对方等级。坐火箭使神秘力量转化临时等级的效果值增加60%。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 800.36,
+                "end": 859.3,
+                "frame": "frames/820-0.jpg"
+              },
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 859.84,
+                "end": 907.9,
+                "frame": "frames/900-0.jpg"
+              }
+            ],
+            "id": "claim-9191028c80541374607c"
+          },
+          {
+            "section": "适用技巧",
+            "text": "拿来吧你配秒变脆皮可提高攻击频率，加快临时等级积累；打扫战场继承连接英雄法攻，适合刘邦、芈月等有法攻的核心。廉颇的扁鹊炸盾伤害不能直接当作廉颇自身法攻继承。",
+            "version": null,
+            "condition": "打扫战场继承连接英雄法攻",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 800.36,
+                "end": 907.9
+              }
+            ],
+            "id": "claim-caed9aa45807e556035e"
+          },
+          {
+            "section": "技能",
+            "text": "让你嘚瑟在本视频展示的版本中从等级最高的三个敌人里随机选一个，可能打到工具英雄；不能沿用旧版固定针对最高等级核心的预期。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 625,
+                "end": 652.3
+              }
+            ],
+            "id": "claim-b2a8d9e16237b6a903b4"
+          },
+          {
+            "section": "适用打法与选择",
+            "text": "适合以刘邦为核心的图腾成长体系，利用持续法伤、临时等级以及明世隐的等级转化。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "general_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 1105.19,
+                "end": 1273.85,
+                "frame": "frames/1255-0.jpg"
+              }
+            ],
+            "id": "claim-f8b0a9dfa764251ad7b2"
+          },
+          {
+            "section": "适用技巧",
+            "text": "瑶附身主核心时可以考虑二号机，以双飞行器持续输出，但需权衡临时等级转化效果的降低。",
+            "version": null,
+            "condition": "瑶附身主核心时",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 342.29,
+                "end": 371.4
+              }
+            ],
+            "id": "claim-749e29857eb640125172"
+          },
+          {
+            "id": "player-opening-aircraft",
+            "section": "前期思路",
+            "text": "尚未定阵时，可先按当前英雄的存活能力和持续作战需要选择飞行器连接对象，让飞行器与目标重合以避免连错。连接英雄存活是持续输出的前提；暂未定阵时无需提前固定最终核心。",
+            "condition": "",
+            "inference": true,
+            "kind": "general_strategy",
+            "version": null,
+            "origin": "editorial",
+            "evidence": [
+              {
+                "source": "BV1Jjao66ELh:p1",
+                "start": 0,
+                "end": 57.92,
+                "frame": "frames/20-0.jpg"
+              }
+            ],
+            "derived_from": [
+              "claim-45b9cd8d8a983da83712"
+            ]
+          }
+        ],
+        "meta": null,
+        "lineup_adaptations": [
+          {
+            "lineup": "angela-liubang-totems",
+            "branch": "angela",
+            "title": "安琪拉养刘邦（图腾成长）",
+            "path": "knowledge/lineups/安琪拉养刘邦（图腾成长）-安琪拉.md",
+            "selection": {
+              "adopt": "大河、逐鹿开放，能够取得刘邦及图腾、扁鹊时考虑。",
+              "avoid": "刘邦未到手不追工具觉醒；持续不来时保留资源升六，禁逐鹿无法照搬完整炸盾体系。",
+              "signals": {
+                "来牌": "首张刘邦到场前工具英雄各留一张；先补刘邦觉醒，明世隐来得少或晚时可用云中君替代。",
+                "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "干将莫邪配牛魔、飞行器连接干将莫邪的开局，在前几轮有争胜能力；遇到更强速攻仍可能掉血。需要及时升本找刘邦，不能因开局赢过就长时间停留低本。",
+                  "claim_refs": [
+                    "claim-c4c4113df9b0d149d5f9"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "首张刘邦到场后开始承接图腾等级与飞行器收益，五本补扁鹊可进一步稳血；刘邦未到或迟迟不觉醒时是明显风险窗口。连续刷新无进展时，应保留升六资源，而非耗尽金币追质量。",
+                  "claim_refs": [
+                    "claim-36a64baf419544118526",
+                    "claim-34ce45f76864349fb218"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "刘邦觉醒、图腾等级积累及六阶超级连接齐备后，持续输出和临时等级收益更完整；终局可用太乙真人或等级集中继续提升。成长工具替换过早、被风筝或连接英雄难以存活，都会妨碍兑现后期战力。",
+                  "claim_refs": [
+                    "claim-422443c0323fc3e782b9",
+                    "claim-4047c5c02ecf461d3be8",
+                    "claim-41e5ef7849bdfc174252",
+                    "claim-9393479509a53e516912"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "大河",
+              "逐鹿"
+            ],
+            "advantages": "刘邦图腾永久成长，飞行器与明世隐支持等级转化。",
+            "disadvantages": "近战易被风筝，缺扁鹊时炸盾路线受损；工具位与人口取舍影响成长。"
+          }
+        ]
+      },
+      "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.681966+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    }
+  ],
+  "conflicts": [],
+  "explicit_relationships": true,
+  "player_reading_layout": {
+    "version": 1
+  },
+  "player_id": "player:51",
+  "claim_annotations": [
+    {
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 0,
+          "end": 57.92,
+          "frame": "frames/20-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "id": "claim-45b9cd8d8a983da83712",
+      "text_ref": "support-claim-45b9cd8d8a983da83712"
+    },
+    {
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 59.04,
+          "end": 86.98,
+          "frame": "frames/80-0.jpg"
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 315.7,
+          "end": 341.8,
+          "frame": "frames/325-0.jpg"
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1054.76,
+          "end": 1104.9
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        },
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 36,
+          "paragraph_end": 36
+        }
+      ],
+      "id": "claim-53e27f8e0cdd5f6e01ce",
+      "text_ref": "support-claim-53e27f8e0cdd5f6e01ce"
+    },
+    {
+      "section": "前期思路",
+      "version": null,
+      "condition": "频繁使用英雄牌",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 259.8,
+          "end": 315.4
+        }
+      ],
+      "id": "claim-f49e7024b047dc06ce12",
+      "text_ref": "support-claim-f49e7024b047dc06ce12"
+    },
+    {
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "general_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 908.28,
+          "end": 1104.9
+        }
+      ],
+      "id": "claim-5c781501dfba6bfc8c1f",
+      "text_ref": "support-claim-5c781501dfba6bfc8c1f"
+    },
+    {
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 455.25,
+          "end": 513.2,
+          "frame": "frames/490-0.jpg"
+        }
+      ],
+      "id": "claim-6c536872f059d24f3d67",
+      "text_ref": "support-claim-6c536872f059d24f3d67"
+    },
+    {
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 800.36,
+          "end": 859.3,
+          "frame": "frames/820-0.jpg"
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 859.84,
+          "end": 907.9,
+          "frame": "frames/900-0.jpg"
+        }
+      ],
+      "id": "claim-9191028c80541374607c",
+      "text_ref": "support-claim-9191028c80541374607c"
+    },
+    {
+      "section": "适用技巧",
+      "version": null,
+      "condition": "打扫战场继承连接英雄法攻",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 800.36,
+          "end": 907.9
+        }
+      ],
+      "id": "claim-caed9aa45807e556035e",
+      "text_ref": "support-claim-caed9aa45807e556035e"
+    },
+    {
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 625,
+          "end": 652.3
+        }
+      ],
+      "id": "claim-b2a8d9e16237b6a903b4",
+      "text_ref": "support-claim-b2a8d9e16237b6a903b4"
+    },
+    {
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "general_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1105.19,
+          "end": 1273.85,
+          "frame": "frames/1255-0.jpg"
+        }
+      ],
+      "id": "claim-f8b0a9dfa764251ad7b2",
+      "text_ref": "support-claim-f8b0a9dfa764251ad7b2"
+    },
+    {
+      "section": "适用技巧",
+      "version": null,
+      "condition": "瑶附身主核心时",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 342.29,
+          "end": 371.4
+        }
+      ],
+      "id": "claim-749e29857eb640125172",
+      "text_ref": "support-claim-749e29857eb640125172"
+    },
+    {
+      "id": "player-opening-aircraft",
+      "section": "前期思路",
+      "condition": "",
+      "inference": true,
+      "kind": "general_strategy",
+      "version": null,
+      "origin": "editorial",
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 0,
+          "end": 57.92,
+          "frame": "frames/20-0.jpg"
+        }
+      ],
+      "derived_from": [
+        "claim-45b9cd8d8a983da83712"
+      ],
+      "text_ref": "support-player-opening-aircraft"
+    },
+    {
+      "id": "tier-guide-general-player-angela",
+      "section": "前期思路",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "condition": "",
+      "version": null,
+      "evidence": [
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 28.89,
+          "end": 57.92,
+          "frame": "frames/45-0.jpg"
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1105.19,
+          "end": 1273.85,
+          "frame": "frames/1255-0.jpg"
+        },
+        {
+          "source": "BV1Jjao66ELh:p1",
+          "start": 1193.39,
+          "end": 1332.45
+        }
+      ],
+      "text_ref": "support-tier-guide-general-player-angela"
+    },
+    {
+      "id": "doc-f81f3d7db5a89e8bceeb12",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-f81f3d7db5a89e8bceeb12"
+    },
+    {
+      "id": "doc-9bddc9c2369b92a64f785e",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-9bddc9c2369b92a64f785e"
+    },
+    {
+      "id": "doc-eca39b0b257c6812534df2",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-eca39b0b257c6812534df2"
+    },
+    {
+      "id": "doc-964257edde3ec0ee805726",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-964257edde3ec0ee805726"
+    },
+    {
+      "id": "doc-7acbba287384128c621b40",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-7acbba287384128c621b40"
+    },
+    {
+      "id": "doc-c88f223ddd1bd4bc7ec279",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-c88f223ddd1bd4bc7ec279"
+    },
+    {
+      "id": "doc-8924141a9255d84365155f",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-8924141a9255d84365155f"
+    },
+    {
+      "id": "doc-3d778e1ca2ceade7fa6ba6",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 23,
+          "paragraph_end": 23
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-3d778e1ca2ceade7fa6ba6"
+    },
+    {
+      "id": "doc-036616524a83acf3e002e9",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-036616524a83acf3e002e9"
+    },
+    {
+      "id": "doc-80cd7bbfb915b681da963e",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-80cd7bbfb915b681da963e"
+    },
+    {
+      "id": "doc-a8b494ec34b1cc7d1e6689",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 26,
+          "paragraph_end": 26
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-a8b494ec34b1cc7d1e6689"
+    },
+    {
+      "id": "doc-850f259eafa8be132565b4",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-850f259eafa8be132565b4"
+    },
+    {
+      "id": "doc-fdaf7ea42363f93e002657",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 33,
+          "paragraph_end": 33
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-fdaf7ea42363f93e002657"
+    },
+    {
+      "id": "doc-a371e8c470c5ec4ed194fe",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 38,
+          "paragraph_end": 38
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-a371e8c470c5ec4ed194fe"
+    },
+    {
+      "id": "doc-7365c502a5a396b03003ef",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-9e665cfdfbafd82d25b964bef7f31f153ed5a1cdb881e7c940b08f808a5b0df9",
+          "paragraph_start": 40,
+          "paragraph_end": 40
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-7365c502a5a396b03003ef"
+    },
+    {
+      "id": "b22-player-51-first-module-current",
+      "section": "技能",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 12,
+          "paragraph_end": 13
+        }
+      ],
+      "text_ref": "support-b22-player-51-first-module-current"
+    }
+  ],
+  "body_sha256": "c1c811fe30bfc9d09f2b3887a59a87330533b854d3e921823be7a98f0a640621",
+  "revision": "9ee8cf167054c2bf86b2",
+  "legacy_layout": {
+    "version": 4
+  }
+}

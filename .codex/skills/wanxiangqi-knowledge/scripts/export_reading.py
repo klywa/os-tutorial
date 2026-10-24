@@ -58,7 +58,8 @@ def main():
     match=re.search(r'<style>(.*?)</style>',reference.read_text(encoding='utf-8'),re.S) if reference.exists() else None
     css=match[1] if match else 'body{margin:0;background:#18283a;color:#e5edf2;font:16px/1.8 sans-serif}.masthead,.main,.contents{padding:24px}.layout{display:grid;grid-template-columns:240px 1fr}nav a{display:block;color:#8fd6bf}.main{min-width:0}table{border-collapse:collapse}td,th{padding:10px;border:1px solid #425469}'
     (root/'exports').mkdir(exist_ok=True)
-    for note in json.loads((root/'knowledge/index.json').read_text(encoding='utf-8'))['notes']:
+    from workspace import notes
+    for note in notes(root):
         if note['type']!='lineup':continue
         path=root/'exports'/(note['title']+'.html')
         path.write_text(render_html(note,css),encoding='utf-8');print(path)

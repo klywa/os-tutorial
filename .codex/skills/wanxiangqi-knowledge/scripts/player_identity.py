@@ -95,6 +95,9 @@ def migration_items(root, items):
     return [replace(n) for n in items],obsolete
 
 def migrate(root):
+    import json_store
+    if json_store.enabled(root):
+        return {'schema_version': 6, 'notes': len(json_store.notes(root))}
     import workspace,wxq
     from markdown_sync import scan
     with workspace.store_lock(root,wait=True):

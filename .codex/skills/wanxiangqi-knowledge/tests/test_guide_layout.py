@@ -92,6 +92,15 @@ class GuideLayoutTests(unittest.TestCase):
     def test_real_migration_preserves_primary_claims_and_common_chapters(self):
         from migrate_guide_reading import migrate
         root=Path(__file__).resolve().parents[4]
+        import json_store, json_document
+        if json_store.enabled(root):
+            items=workspace.notes(root)
+            self.assertTrue(items)
+            for note in items:
+                text=json_document.markdown(note['document'])
+                self.assertEqual(json_document.markdown(json_document.parse(text)),text)
+                self.assertEqual(len({n['id'] for n in note['document']['nodes']}),len(note['document']['nodes']))
+            return
         items,_=migrate(workspace.notes(root),wxq.entities(root))
         for n in items:
             if not guide.enabled(n):continue

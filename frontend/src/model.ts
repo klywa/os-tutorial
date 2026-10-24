@@ -1,4 +1,5 @@
 import type { Entity, Note, CardSummary, CardFilters, Meta, LateVariant } from './types';
+import {documentMarkdown} from './jsonDocument';
 export function cardMatches(card:CardSummary,filters:CardFilters){
   const text=[card.name,...card.aliases,card.effect,card.faction.name].join(' ').toLowerCase();
   return filters.query.trim().toLowerCase().split(/\s+/).every(q=>text.includes(q))
@@ -29,7 +30,7 @@ export function availability(note:Note,banned:string[]):'playable'|'unplayable'|
 }
 export function matches(note:Note,query:string,entities:Entity[]){
   const refs=[...note.entities,...note.core,...(note.meta?.core_heroes??[]),...(note.meta?.players??[]),...(note.meta?.late_variants??[]).flatMap(v=>[...v.core_heroes,...v.members.flatMap(m=>[m.hero,m.replaces])]),...Object.values(note.meta?.compositions??{}).flat().map(m=>m.hero)];
-  const text=[note.title,...refs.filter((r):r is string=>typeof r==='string'&&r.startsWith('pending:')).map(r=>r.slice(8)),...(note.meta?.operation_routes??[]).flatMap(r=>[r.name,r.condition,r.advantages,r.risks,r.transition]),...(note.meta?.late_variants??[]).flatMap(v=>[v.name,v.condition,...v.members.map(m=>m.role+' '+m.replacement_note)]),...(note.aliases??[]),...note.claims.map(c=>c.text),...entities.filter(e=>refs.includes(e.id)).flatMap(e=>[e.name,...(e.aliases??[])])].join(' ').toLowerCase();
+  const text=[note.title,note.document?documentMarkdown(note.document):'',...refs.filter((r):r is string=>typeof r==='string'&&r.startsWith('pending:')).map(r=>r.slice(8)),...(note.meta?.operation_routes??[]).flatMap(r=>[r.name,r.condition,r.advantages,r.risks,r.transition]),...(note.meta?.late_variants??[]).flatMap(v=>[v.name,v.condition,...v.members.map(m=>m.role+' '+m.replacement_note)]),...(note.aliases??[]),...note.claims.map(c=>c.text),...entities.filter(e=>refs.includes(e.id)).flatMap(e=>[e.name,...(e.aliases??[])])].join(' ').toLowerCase();
   return query.trim().toLowerCase().split(/\s+/).every(q=>text.includes(q));
 }
 export function sectionText(note:Note,section:string){return note.claims.filter(c=>c.section===section).map(c=>c.text).join('\n\n');}

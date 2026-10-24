@@ -1,0 +1,728 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "昭君",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-7ff07d3aa79f7d74e160"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "技能",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-3cc74abe48119da9ebbb"
+    },
+    {
+      "type": "entry",
+      "key": "冰之心",
+      "show_key": true,
+      "value": "冻结英雄，将其转换为随机更高品阶的英雄，并继承英雄等级。极寒冰冻：第5、第8回合提供深度冻结，选择后续技能分支。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-b307b12aa81c1af281bb"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 升华增加觉醒进度；霜寒进化让英雄沿同阵营升阶；破冰裂变让英雄跨两个品阶转换。",
+      "separator": "\n\n",
+      "id": "n-f9ed58bceb575368294b"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 冰封结晶根据解冻英雄的品阶提供对应兑换券。",
+      "separator": "\n\n",
+      "id": "n-1c3c782f720311f7bc6a"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 寒冰觉醒保留原英雄并增加觉醒进度，找高阶核心仍需其他渠道。v1.7.1冰心领域按5阶英雄数量×2成长，寒雨凝结按主要阵营人数+2成长；寒潮共振另按觉醒数量计算，三者计数不同。旧品阶总和30%／35%记录保留历史，不以旧公式选择当前技能。",
+      "separator": "\n\n",
+      "id": "n-276b644afbbf49d88688"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "前期思路",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-4434ef9ee0749a2c795d"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 开局尚未确定最终阵容时，可围绕能够提供经济或保留成长等级的过渡英雄进行冻结；检查冻结转换后的英雄是否仍能承担本轮战力。不同体系采用精简场面或棋手升级的具体时机尚待确认。",
+      "separator": "\n\n",
+      "id": "n-a970c91d405046eb086b"
+    },
+    {
+      "type": "entry",
+      "key": "棋手升级判断",
+      "show_key": true,
+      "value": "冻结、变化带来的是后续获取机会，不能当成本轮已经到手的战力。升级前确认场上是否能承受当前对手、升级后是否还买得起有用英雄；有机会补一张牌明显减少掉血时，比较即时保血与升级收益。具体找谁、在哪一阶停留由所选阵容决定，不把高阶大河的五阶目标照搬到其他打法。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-db963abe4608e011215a"
+    },
+    {
+      "type": "entry",
+      "key": "棋手升级要看冻结强化的资源渠道",
+      "show_key": true,
+      "value": "依赖商店和兑换券获取核心时，更需要比较5级收益；同阵营进化已有合适材料时，可以先利用4级商店。6级收益须与省下升级资源期间的掉血风险一起判断；不能稳住血量时先买能改变当轮战斗的牌，不预设拍卖一定能补升级资源。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-c5a670a6ad03649132d5"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用打法与选择",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-74ddabd11fefdf002757"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[大河龙蛇](../lineups/大河龙蛇-昭君.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-e84c59234cc2e6ad2ad3"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-588b1d8805c2d21d380f"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-d8c11c106c3d815d66ba"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "大河。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-3346f7c66860ff6c6537"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "控制与回复为高阶英雄争取输出时间，多人口可提高合成品阶。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-e3d0f0237c117457f303"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "怕图腾被范围伤害清掉；等级转移、冻结和站位需要配合。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-91497e53365ecbbfa8f2"
+    },
+    {
+      "type": "entry",
+      "key": "来牌",
+      "show_key": true,
+      "value": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-f94cd129db346ddc85ba"
+    },
+    {
+      "type": "entry",
+      "key": "同行与对手",
+      "show_key": true,
+      "value": "同行持有核心较多时，保留现有战力继续找牌；敌方控制、爆发或范围伤害较强时，提前准备保护敖隐与图腾。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-373a9ccf2d38f0397de8"
+    },
+    {
+      "type": "entry",
+      "key": "经济和掉血压力",
+      "show_key": true,
+      "value": "保留当轮必要战力与核心预算，能稳定过渡再棋手升级。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-18bea91df3b177950c1a"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "敖隐、东皇与图腾先形成战力；虞姬等过渡换下前先转永久等级，刘邦吃图腾路线不能混作龙蛇固定主线。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-082dcbfb148c519ac614"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-80480e7a4f831ec7f76a"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "从第一回合冻结材料，逐步取得高阶牌；低压力时精简英雄加快升级，压力较大时用牛魔、干将和冻结位保血，再按需要补人。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-be9e4d3b383bf224aae3"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "东皇太一、敖隐和图腾到齐后，控制、回复及持续成长逐渐衔接；缺核心或回合成长强化时仍有空窗。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-d9c714b66ee75a41c035"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "核心和图腾齐备后，持续成长增强敖隐与东皇太一；保护图腾存活、避免敖隐被勾走，才能保持输出。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-4c518b68d5fcc6da6f25"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[河洛花木兰](../lineups/河洛花木兰-昭君.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-ea0b1e9cd76ac3d483ab"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "较早取得花木兰、有适合的冻结强化时考虑；已有持续冻结成长的司空震时可双输出。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-b14169adb2d16a8ae520"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "无法较早取得花木兰时保留当前高阶战力，比较高阶大河；不为双输出硬追司空震。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-4f4a9983e24bce4b9972"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛、日落海。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-f11fc61402fef298c52d"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "冻结补高阶牌与成长，条件到位时保留第二输出。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-3f023c392758feb53153"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "变化不保证花木兰，露娜循环受强化与公共牌库限制。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-1d5a8d4773b901bc1268"
+    },
+    {
+      "type": "entry",
+      "key": "来牌与同行",
+      "show_key": true,
+      "value": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-d4ff83f39cd9e5275fa2"
+    },
+    {
+      "type": "entry",
+      "key": "对手与压力",
+      "show_key": true,
+      "value": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-194d9de90552b45340a7"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-b4c540807914563b45b8"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-347967471fc1e024d387"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "待补充：暂无已确认的阶段强度。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-66a7046fe0062d16138b"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "较早取得花木兰并有合适冻结强化时启动；已有持续冻结成长的司空震，可与花木兰一起输出。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-cf3cbbe0937fb9403f9c"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-c70ec19bc5d72de90779"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "其他选阵说明",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-7600cad7d684603bf65d"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "其他已知方向",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-eda8de81f4dc71840ff9"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+      "separator": "\n\n",
+      "id": "n-af9152bcfed9e51d2464"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 较早取得花木兰及合适冻结强化时，昭君也能采用河洛古币复生体系，并在已有持续成长司空震时保留双输出。该方向围绕上官婉儿和露娜补复生，不沿用高阶大河的图腾成员。",
+      "separator": "\n\n",
+      "id": "n-23e30656aa824b95d6af"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 昭君大河敖隐的核心是快速寻找阵容体系卡。",
+      "separator": "\n\n",
+      "id": "n-5c1c79939fafa7b0d0dd"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 全五阶阵容尽量不使用敖隐、武则天，敖隐依赖图腾牌提升战力，武则天偏功能型卡牌，推荐使用海月、姜子牙、杨玉环、吕布，也可以根据装备选择适合的五阶主要输出英雄.",
+      "separator": "\n\n",
+      "id": "n-36c226cfe78c0d947876"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用技巧",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-04c4074c1bedf3be14a2"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。",
+      "separator": "\n\n",
+      "id": "n-875f545d36874950f54c"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。",
+      "separator": "\n\n",
+      "id": "n-9db08799f27d3ea7f3bd"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
+      "separator": "\n\n",
+      "id": "n-936d4b6caf93eb383da3"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 河洛花木兰的核心齐备后，冻结仍可用于补露娜等关键资源。露娜冻结后是否仍变回露娜取决于强化及公共牌库情况；不能把卡住海诺的一次实战当成无条件循环。",
+      "separator": "\n\n",
+      "id": "n-d4a5534e4ff0b262f1f8"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 需要换下积累等级的过渡英雄时，先保留并使用遗志、传承，将其永久等级转给后续英雄，避免成长留在即将被替换的单位上；高阶大河核心齐备后，无需仅为寻找核心继续冻结。",
+      "separator": "\n\n",
+      "id": "n-9058cd7058a0285effc0"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 开局冰之心可以指定苏烈，阵亡等级+2，指定孙尚香可以获得一次免费刷新。每回合都用技能冰冻英雄，5回合之后根据第一张深度冻结选择后续冰冻对象。",
+      "separator": "\n\n",
+      "id": "n-ac8c681da69d39c28c75"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 霜寒进化用于取得同阵营高品阶核心时，把暂时的冻结材料与常驻战斗成员分开；冰封结晶则结合解冻兑换券和商店补牌。已获得需要的体系牌应保留，再换其他非核心英雄冻结；冰冻正在承担本轮输出或承伤的英雄会损失即时战力。",
+      "separator": "\n\n",
+      "id": "n-b85a3fcb8ef05c926d90"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 冻结转换需要的英雄，不一定适合与最终阵容同时作战。例如大河龙蛇可借刘邦作为霜寒进化材料，但刘邦开团会摧毁己方图腾，敖隐则依赖存活图腾增加战斗等级与攻速；取得材料后要核对本轮是否仍会触发冲突。",
+      "separator": "\n\n",
+      "id": "n-355e3e46f7b3036b20d4"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- v1.7.1冰心领域按5阶英雄数量×2成长，寒雨凝结按主要阵营人数+2成长；寒潮共振另按觉醒数量计算，三者计数不同。旧品阶总和30%／35%记录保留历史，不以旧公式选择当前技能。",
+      "separator": "\n\n",
+      "id": "n-5bb55fab226a77e431f1"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-ac331b435d3804b22b8d"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- [大河龙蛇](../lineups/大河龙蛇-昭君.json)\n- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+      "separator": "\n",
+      "id": "n-0c2523b1c419d98fa5a9"
+    }
+  ],
+  "adaptations": [
+    {
+      "lineup": "zhaojun-high-tier-dahe",
+      "branch": "zhaojun",
+      "title": "大河龙蛇",
+      "path": "knowledge/lineups/大河龙蛇-昭君.md",
+      "selection": {
+        "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
+        "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
+        "signals": {
+          "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
+          "同行与对手": "同行持有核心较多时，保留现有战力继续找牌；敌方控制、爆发或范围伤害较强时，提前准备保护敖隐与图腾。",
+          "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再棋手升级。",
+          "英雄投入": "敖隐、东皇与图腾先形成战力；虞姬等过渡换下前先转永久等级，刘邦吃图腾路线不能混作龙蛇固定主线。"
+        },
+        "stage_strength": {
+          "early": {
+            "text": "从第一回合冻结材料，逐步取得高阶牌；低压力时精简英雄加快升级，压力较大时用牛魔、干将和冻结位保血，再按需要补人。",
+            "claim_refs": [
+              "fmt24-zhaojun-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "东皇太一、敖隐和图腾到齐后，控制、回复及持续成长逐渐衔接；缺核心或回合成长强化时仍有空窗。",
+            "claim_refs": [
+              "fmt24-zhaojun-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "核心和图腾齐备后，持续成长增强敖隐与东皇太一；保护图腾存活、避免敖隐被勾走，才能保持输出。",
+            "claim_refs": [
+              "fmt24-zhaojun-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [
+        "大河"
+      ],
+      "advantages": "控制与回复为高阶英雄争取输出时间，多人口可提高合成品阶。",
+      "disadvantages": "怕图腾被范围伤害清掉；等级转移、冻结和站位需要配合。"
+    },
+    {
+      "lineup": "heluo-huamulan",
+      "branch": "zhaojun",
+      "title": "河洛花木兰",
+      "path": "knowledge/lineups/河洛花木兰-昭君.md",
+      "selection": {
+        "adopt": "较早取得花木兰、有适合的冻结强化时考虑；已有持续冻结成长的司空震时可双输出。",
+        "avoid": "无法较早取得花木兰时保留当前高阶战力，比较高阶大河；不为双输出硬追司空震。",
+        "signals": {
+          "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+          "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+          "英雄投入": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。"
+        },
+        "stage_strength": {
+          "early": {
+            "text": "",
+            "claim_refs": [
+              "fmt24-zhaojun-e27b4cdf79c3"
+            ],
+            "inference": false
+          },
+          "middle": {
+            "text": "较早取得花木兰并有合适冻结强化时启动；已有持续冻结成长的司空震，可与花木兰一起输出。",
+            "claim_refs": [
+              "fmt24-zhaojun-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+            "claim_refs": [
+              "fmt24-zhaojun-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [
+        "河洛",
+        "日落海"
+      ],
+      "advantages": "冻结补高阶牌与成长，条件到位时保留第二输出。",
+      "disadvantages": "变化不保证花木兰，露娜循环受强化与公共牌库限制。"
+    }
+  ],
+  "topic": "大河龙蛇运营",
+  "supporting_nodes": [
+    {
+      "id": "support-claim-0e35d83a4b627634a9f2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "冰之心：冻结英雄，将其转换为随机更高品阶的英雄，并继承英雄等级。极寒冰冻：第5、第8回合提供深度冻结，选择后续技能分支。\n\n- 升华增加觉醒进度；霜寒进化让英雄沿同阵营升阶；破冰裂变让英雄跨两个品阶转换。\n\n- 冰封结晶根据解冻英雄的品阶提供对应兑换券。",
+      "separator": ""
+    },
+    {
+      "id": "support-claim-2f8236061f81588d616c",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "寒冰觉醒保留原英雄并增加觉醒进度，找高阶核心仍需其他渠道。v1.7.1冰心领域按5阶英雄数量×2成长，寒雨凝结按主要阵营人数+2成长；寒潮共振另按觉醒数量计算，三者计数不同。旧品阶总和30%／35%记录保留历史，不以旧公式选择当前技能。",
+      "separator": ""
+    },
+    {
+      "id": "support-claim-67dd23cb53842ea9129c",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。\n\n- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。\n\n- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
+      "separator": ""
+    },
+    {
+      "id": "support-claim-e6fe65953f8dd1bbbfd8",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "开局尚未确定最终阵容时，可围绕能够提供经济或保留成长等级的过渡英雄进行冻结；检查冻结转换后的英雄是否仍能承担本轮战力。不同体系采用精简场面或棋手升级的具体时机尚待确认。",
+      "separator": ""
+    },
+    {
+      "id": "support-claim-fa635815cc71be704796",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "### 其他已知方向\n\n升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+      "separator": ""
+    },
+    {
+      "id": "support-zhaojun-heluo-fit",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "较早取得花木兰及合适冻结强化时，昭君也能采用河洛古币复生体系，并在已有持续成长司空震时保留双输出。该方向围绕上官婉儿和露娜补复生，不沿用高阶大河的图腾成员。",
+      "separator": ""
+    },
+    {
+      "id": "support-zhaojun-freeze-luna",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "河洛花木兰的核心齐备后，冻结仍可用于补露娜等关键资源。露娜冻结后是否仍变回露娜取决于强化及公共牌库情况；不能把卡住海诺的一次实战当成无条件循环。",
+      "separator": ""
+    },
+    {
+      "id": "support-claim-e6fe65953f8dd1bbbfd8-transfer",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "需要换下积累等级的过渡英雄时，先保留并使用遗志、传承，将其永久等级转给后续英雄，避免成长留在即将被替换的单位上；高阶大河核心齐备后，无需仅为寻找核心继续冻结。",
+      "separator": ""
+    },
+    {
+      "id": "support-tier-guide-general-player-zhaojun",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手升级判断：冻结、变化带来的是后续获取机会，不能当成本轮已经到手的战力。升级前确认场上是否能承受当前对手、升级后是否还买得起有用英雄；有机会补一张牌明显减少掉血时，比较即时保血与升级收益。具体找谁、在哪一阶停留由所选阵容决定，不把高阶大河的五阶目标照搬到其他打法。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-2f4bc04958026a50ab4f00",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "开局冰之心可以指定苏烈，阵亡等级+2，指定孙尚香可以获得一次免费刷新。每回合都用技能冰冻英雄，5回合之后根据第一张深度冻结选择后续冰冻对象。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-239b394e85beffe59a54f3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "昭君大河敖隐的核心是快速寻找阵容体系卡。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-2c33c214cf84a3e18a763d",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "全五阶阵容尽量不使用敖隐、武则天，敖隐依赖图腾牌提升战力，武则天偏功能型卡牌，推荐使用海月、姜子牙、杨玉环、吕布，也可以根据装备选择适合的五阶主要输出英雄.",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-zhaojun-freeze-material",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "霜寒进化用于取得同阵营高品阶核心时，把暂时的冻结材料与常驻战斗成员分开；冰封结晶则结合解冻兑换券和商店补牌。已获得需要的体系牌应保留，再换其他非核心英雄冻结；冰冻正在承担本轮输出或承伤的英雄会损失即时战力。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-zhaojun-upgrade-boundary",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手升级要看冻结强化的资源渠道：依赖商店和兑换券获取核心时，更需要比较5级收益；同阵营进化已有合适材料时，可以先利用4级商店。6级收益须与省下升级资源期间的掉血风险一起判断；不能稳住血量时先买能改变当轮战斗的牌，不预设拍卖一定能补升级资源。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-zhaojun-liubang-warning",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "冻结转换需要的英雄，不一定适合与最终阵容同时作战。例如大河龙蛇可借刘邦作为霜寒进化材料，但刘邦开团会摧毁己方图腾，敖隐则依赖存活图腾增加战斗等级与攻速；取得材料后要核对本轮是否仍会触发冲突。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-zhaojun-growth-options",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "v1.7.1冰心领域按5阶英雄数量×2成长，寒雨凝结按主要阵营人数+2成长；寒潮共振另按觉醒数量计算，三者计数不同。旧品阶总和30%／35%记录保留历史，不以旧公式选择当前技能。",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

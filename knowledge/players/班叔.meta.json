@@ -1,0 +1,89 @@
+{
+  "id": "player-35",
+  "type": "player",
+  "title": "班叔",
+  "player_id": "player:35",
+  "entities": [
+    "player:35"
+  ],
+  "aliases": [],
+  "path": "knowledge/players/班叔.json",
+  "manual_sections": [],
+  "history": [],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "b22-player-35-skill",
+      "section": "技能",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 0.18,
+          "end": 115.06
+        }
+      ],
+      "text_ref": "support-b22-player-35-skill"
+    },
+    {
+      "id": "b22-player-35-opening",
+      "section": "前期思路",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 558.72,
+          "end": 737.38
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "text_ref": "support-b22-player-35-opening"
+    },
+    {
+      "id": "b22-player-35-single-wall",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1yMeq6wEGc:p1",
+          "start": 842.32,
+          "end": 957.9
+        }
+      ],
+      "text_ref": "support-b22-player-35-single-wall"
+    },
+    {
+      "id": "b22-player-35-official-five",
+      "section": "技能",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 14,
+          "paragraph_end": 17
+        }
+      ],
+      "text_ref": "support-b22-player-35-official-five"
+    }
+  ],
+  "body_sha256": "f9f2e12e5b5496a3f876ee9830adf49041a2c10784cee3aa9c8ff3bd36fca8d2",
+  "revision": "03b96926aa8f4fce3808",
+  "legacy_layout": {
+    "version": 4
+  }
+}

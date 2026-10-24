@@ -1,0 +1,418 @@
+{
+  "id": "player-naonao",
+  "type": "player",
+  "title": "闹闹",
+  "aliases": [
+    "闹闹：适用打法与选择"
+  ],
+  "entities": [
+    "player:40"
+  ],
+  "related": [
+    {
+      "id": "heluo-huamulan--ming",
+      "type": "lineup",
+      "title": "河洛花木兰-明先生",
+      "relation": "recommended_lineup",
+      "path": "knowledge/lineups/河洛花木兰-明先生.json"
+    }
+  ],
+  "path": "knowledge/players/闹闹.json",
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手五章节与未定阵开局整理",
+      "previous": {
+        "claims": [],
+        "manual_sections": [],
+        "revision": "f3da7e81c8f50ba3fb90"
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.683866+00:00",
+      "origin": "editorial",
+      "reason": "棋手唯一身份与纯棋手名迁移",
+      "previous": {
+        "title": "闹闹：适用打法与选择",
+        "path": "knowledge/players/闹闹－适用打法与选择.md",
+        "player_id": null,
+        "aliases": []
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.700372+00:00",
+      "origin": "editorial",
+      "reason": "棋手升级术语统一与逐阶教学补充",
+      "previous": {
+        "claims": [],
+        "meta": null,
+        "lineup_adaptations": [
+          {
+            "lineup": "heluo-huamulan",
+            "branch": "naonao",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-闹闹.md",
+            "selection": {
+              "adopt": "可按派对牌和经济升本、五本启动朋友多多找体系时考虑。",
+              "avoid": "五本仍无花木兰时先补核心；古币数量多但等级不足时补李白或永久成长。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "前期围绕苏烈、李元芳等经济过渡，少花能量刷新并保留升本资源；这一阶段对不同对手的实际相对强度尚待确认，不能仅凭升本节奏认定占优。",
+                  "claim_refs": [
+                    "n-opening"
+                  ],
+                  "inference": false
+                },
+                "middle": {
+                  "text": "五本使用朋友多多是集中启动窗口，但随机牌不保证得到花木兰；缺核心时继续升本会延长空窗。启动回合还要及时处理手牌与转瞬古币，技能收益只有转为场上质量才算战力。",
+                  "claim_refs": [
+                    "n-opening",
+                    "n-five-missing",
+                    "n-time"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "核心稳住后再升六取得专属强化，配合觉醒和整备资源继续提升；不能把技能参考升本回合当作固定强势期。最终强弱仍取决于核心质量、复生预算及对手威胁。",
+                  "claim_refs": [
+                    "guide-skills-naonao",
+                    "wanner-awaken",
+                    "revive-budget"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛",
+              "日落海"
+            ],
+            "advantages": "朋友多多找体系，零钱兑换放大古币使用张数。",
+            "disadvantages": "破损古币不提供等级；集中启动回合操作密集。"
+          }
+        ]
+      },
+      "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.725602+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    }
+  ],
+  "conflicts": [],
+  "explicit_relationships": true,
+  "player_reading_layout": {
+    "version": 1
+  },
+  "player_id": "player:40",
+  "claim_annotations": [
+    {
+      "id": "tier-guide-general-player-naonao",
+      "section": "前期思路",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "condition": "",
+      "version": null,
+      "evidence": [
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 64.62,
+          "end": 93.18
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 94.94,
+          "end": 122.94
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 152.88,
+          "end": 181.5
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 213.42,
+          "end": 240.26
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 269.9,
+          "end": 298.96
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 377.39,
+          "end": 406.05
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 299.12,
+          "end": 318.5
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 318.81,
+          "end": 347.01
+        }
+      ],
+      "text_ref": "support-tier-guide-general-player-naonao"
+    },
+    {
+      "id": "doc-e2056c066a26289f0caeee",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-e2056c066a26289f0caeee"
+    },
+    {
+      "id": "doc-05718c1ba8fd7d6cc20092",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-05718c1ba8fd7d6cc20092"
+    },
+    {
+      "id": "doc-c8c27add22be77e82fc758",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-c8c27add22be77e82fc758"
+    },
+    {
+      "id": "doc-dd8dc35a0f5f44bda29764",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-dd8dc35a0f5f44bda29764"
+    },
+    {
+      "id": "doc-f38c1d2dae2709bc86e605",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-f38c1d2dae2709bc86e605"
+    },
+    {
+      "id": "doc-dbca9a051127169c43850c",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-dbca9a051127169c43850c"
+    },
+    {
+      "id": "doc-5d7604e529be3da2787b5e",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-5d7604e529be3da2787b5e"
+    },
+    {
+      "id": "doc-b4115f7a48befe1dc820d0",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-b4115f7a48befe1dc820d0"
+    },
+    {
+      "id": "doc-2ac9b8098ebdc664e0e87d",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 23,
+          "paragraph_end": 23
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-2ac9b8098ebdc664e0e87d"
+    },
+    {
+      "id": "doc-60f5364f24d47dca9cf2ec",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-60f5364f24d47dca9cf2ec"
+    },
+    {
+      "id": "doc-159e6fee183facb485d208",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        },
+        {
+          "type": "document",
+          "source": "doc-614a1c27cdad9b8f18828e70d4451209e4f0ae2c9a1db66d7cd4b75aef75cd95",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-159e6fee183facb485d208"
+    },
+    {
+      "id": "six-player-40-bubble-first",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1gyYA61EYy:p1",
+          "start": 66.51,
+          "end": 123.84
+        },
+        {
+          "source": "BV1gyYA61EYy:p1",
+          "start": 137.32,
+          "end": 188.01
+        }
+      ],
+      "text_ref": "support-six-player-40-bubble-first"
+    },
+    {
+      "id": "six-player-40-late-faction-levels",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1ayaJ6dEGY:p1",
+          "start": 616.51,
+          "end": 648.98
+        }
+      ],
+      "text_ref": "support-six-player-40-late-faction-levels"
+    }
+  ],
+  "body_sha256": "5819bc1b3619c1e45ea2ac1f6406d75f90784680e2fd357cf54f3c0519871d0d",
+  "revision": "0b066758cdbd3a7121b8"
+}

@@ -21,7 +21,7 @@ def recover_before_read(root):
     writer may be updating derived files, but readers can still use its previous
     committed index. Recovery and every actual mutation retain the writer lock.
     """
-    journals=('knowledge/pending-save.json','knowledge/pending-cards.json',
+    journals=('raw/knowledge/pending-json-save.json','raw/knowledge/pending-cards.json','knowledge/pending-save.json','knowledge/pending-cards.json',
               'knowledge/pending-note-link.json','raw/transcript-edit-pending.json')
     if not any((root/path).is_file() for path in journals):
         return
@@ -133,6 +133,13 @@ class Handler(BaseHTTPRequestHandler):
                     state=markdown_sync.status(self.server.root)
                     return self.response(200, {'issues':state['issues'],'files':{p:{k:b[k] for k in ('note','branch','revision','hash')} for p,b in state['files'].items()}})
                 if path.startswith('/api/notes/') and path.endswith('/revision'):
+                    import json_store
+                    if json_store.enabled(self.server.root):
+                        index=json_store.read(self.server.root/json_store.INDEX,{})
+                        nid=path.split('/')[-2]
+                        nid=index.get('aliases',{}).get(nid,nid)
+                        row=next((n for n in index.get('notes',[]) if n['id']==nid),None)
+                        return self.response(200,{'revision':row['revision']}) if row else self.response(404,{'error':'笔记不存在'})
                     note=next((n for n in workspace.notes(self.server.root) if n['id']==path.split('/')[-2]),None)
                     return self.response(200,{'revision':note['revision']}) if note else self.response(404,{'error':'笔记不存在'})
                 if path == '/api/notes':
@@ -142,9 +149,14 @@ class Handler(BaseHTTPRequestHandler):
                 if path.startswith('/api/notes/') and path.endswith('/reading'):
                     from lineup_layout import reading_document
                     parts = path.split('/')
-                    note = next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None) if len(parts) == 5 else None
+                    import json_store
+                    note = (json_store.resolve_note(self.server.root, parts[-2], player) if json_store.enabled(self.server.root) else next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None)) if len(parts) == 5 else None
                     return self.response(200, reading_document(note,player)) if note else self.response(404, {'error': '笔记不存在'})
                 if path.startswith('/api/notes/'):
+                    import json_store
+                    if json_store.enabled(self.server.root):
+                        note=json_store.resolve_note(self.server.root,path.split('/')[-1],player)
+                        return self.response(200 if note else 404,note or {'error':'笔记不存在'})
                     from note_links import project_notes
                     note = next((n for n in project_notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
                     if note and player:
@@ -357,9 +369,11 @@ def create_server(root=ROOT, port=8765, start_worker=False):
     server = LocalServer(('127.0.0.1', port), Handler)
     server.root = Path(root)
     server.crawler = crawler.Runtime(root)
-    import markdown_sync
-    server.markdown_watcher = markdown_sync.Watcher(root)
-    server.markdown_watcher.start()
+    import json_store
+    if not json_store.enabled(root):
+        import markdown_sync
+        server.markdown_watcher = markdown_sync.Watcher(root)
+        server.markdown_watcher.start()
     from source_staging import Staging
     Staging(root).prune()
     if start_worker:

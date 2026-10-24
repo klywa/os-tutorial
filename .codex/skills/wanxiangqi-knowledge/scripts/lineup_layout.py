@@ -189,6 +189,9 @@ def _render_generic(note):
     return '\n'.join(lines)+'\n'
 
 def reading_document(note, player=None):
+    if 'document' in note:
+        import json_document
+        return json_document.reading(note['document'], note)
     result=_reading_document(note,player)
     if note.get('type')=='lineup':
         result['overview_operations']=overview_operations(note,result)

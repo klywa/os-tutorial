@@ -1,0 +1,875 @@
+{
+  "id": "player-50",
+  "type": "player",
+  "title": "香香",
+  "aliases": [],
+  "entities": [
+    "player:50"
+  ],
+  "related": [
+    {
+      "id": "document-lineup-16",
+      "type": "lineup",
+      "title": "大河开团射-香香",
+      "path": "knowledge/lineups/大河开团射-香香.json"
+    }
+  ],
+  "explicit_relationships": true,
+  "player_id": "player:50",
+  "path": "knowledge/players/香香.json",
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-21T10:01:49.979581+00:00",
+      "reason": "用户要求分析武器模块优劣与选择条件；旧固定最佳组合保留历史",
+      "previous": {
+        "claims": [
+          {
+            "id": "doc-f71cd1c13d81c96de6f07b",
+            "section": "技能",
+            "text": "技能“究极弩炮”：开局自动武器攻击敌方场上的棋子；场上每1只大于等于10级的1/2/3费卡，香香攻击力+20；",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 2,
+                "paragraph_end": 2
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-8a3e08da35f04f946fe23a",
+            "section": "技能",
+            "text": "秘技“枪炮艺术”：根据造成的棋手血量，每造成10/15/20/30获取1张武器改造牌，一局共4次武器改造，每次改造会+20%攻击力，并二选一武器强化；武器强化一共有4种模式可选，分别为炮击模式、机枪模式、狙击模式、激光模式，第一次武器改造会从四种模式中二选一，选择后会决定香香本局比赛使用的武器形态；不同的武器形态下共同有11种战术模式可选，第二次武器改造方案会从这11中通用武器改造中二选一；同时根据选择的武器形态不同，各有4个特色模式选择，第三第四次武器改造会从专用改造方案中二选一来强化香香的武器。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 3,
+                "paragraph_end": 3
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-59b3b9f2a3a6fa74e8c5d1",
+            "section": "技能",
+            "text": "专属天赋“火力全开”：棋手6级解锁，按己方全部英雄等级总和百分比增伤，等级堆越高伤害越爆炸。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "mechanic",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 4,
+                "paragraph_end": 4
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-7d0a7d70dce84b1f7fcf69",
+            "section": "适用打法与选择",
+            "text": "低费（1-3）阶阵容，推荐大河开团射。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 6,
+                "paragraph_end": 6
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-ef049288be4c13dbf92539",
+            "section": "适用技巧",
+            "text": "战术·砺刃：每造成500伤害，下回合开始随机一名英雄+ 3级（TOP1，万能强），造成伤害增加英雄等级，六级后场上英雄的等级可以反过来提升香香的伤害；",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 11,
+                "paragraph_end": 11
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-03fb4874843dad9e7bf111",
+            "section": "适用技巧",
+            "text": "战术·蓄势：战斗开始，每秒香香攻击力+10%（香香武器选择的是狙击则优先度拉高）；",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 12,
+                "paragraph_end": 12
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-5025e3770204a348a0525b",
+            "section": "适用技巧",
+            "text": "战术·歼灭：击败敌人，全体英雄+ 4级（联动香香被动滚全队等级，场上英雄迅速到10级，持续扩大优势）；",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 13,
+                "paragraph_end": 13
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-ad4a0dd996b9c085e9f186",
+            "section": "适用技巧",
+            "text": "战术·暴击：50%概率暴击200%伤害。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 14,
+                "paragraph_end": 14
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-53233e6248c63679e15956",
+            "section": "适用技巧",
+            "text": "战术·追击：每次攻击附加额外物理伤害，选择炮击和狙击则不选，需要一定攻击频率。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 15,
+                "paragraph_end": 15
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-70d2b9a8e7f7975057b15e",
+            "section": "适用技巧",
+            "text": "专用改造方案最佳组合：高能激发 + 超级电池",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 19,
+                "paragraph_end": 19
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-1235cf0c89ccbcc577d0d2",
+            "section": "适用技巧",
+            "text": "备选：高能激发+殉爆/聚焦光束+超级电池",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 20,
+                "paragraph_end": 20
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-cc7dc96c40c1c57b8fc5a6",
+            "section": "适用技巧",
+            "text": "高能激发：伤害大幅提升，激光核心，优先获取；超级电池：延长激光持续输出时间；殉爆：击杀触发 AOE，清杂好用。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 21,
+                "paragraph_end": 21
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-cae9a62833a814698ff356",
+            "section": "适用技巧",
+            "text": "专用改造方案最佳组合：贯穿弹头 + 凝固弹头",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 23,
+                "paragraph_end": 23
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-e863bad7ebe3daf9e42fa1",
+            "section": "适用技巧",
+            "text": "备选：贯穿弹头 + 歼灭补给",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 24,
+                "paragraph_end": 24
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-b78a15c5f51df0a0a2a10a",
+            "section": "适用技巧",
+            "text": "贯穿弹头：狙击灵魂，优先获取，穿透伤害打后排；凝固弹头：减速凝滞，限制对方输出；歼灭补给：击杀回弹药，持续输出。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 25,
+                "paragraph_end": 25
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-609e766bab0b7615400fbd",
+            "section": "适用技巧",
+            "text": "专用改造方案最佳组合：补给弹匣 + 裂伤弹",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 27,
+                "paragraph_end": 27
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-e2fa927f20090ca6590ad9",
+            "section": "适用技巧",
+            "text": "备选：补给弹匣 + 连锁跳弹",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 28,
+                "paragraph_end": 28
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-c94953894e8168297e5df4",
+            "section": "适用技巧",
+            "text": "补给弹匣：机枪最重要改造，补充子弹；裂伤弹：持续流血伤害；连锁跳弹：子弹弹射，打多单位。",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 29,
+                "paragraph_end": 29
+              }
+            ],
+            "origin": "document"
+          },
+          {
+            "id": "doc-d3b02b9e75afbdd303e6e5",
+            "section": "适用技巧",
+            "text": "选的话专用改造方案推荐选择额外弹匣（提升伤害）+燃烧弹头（克制对面的名刀）",
+            "version": null,
+            "condition": "",
+            "inference": false,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "type": "document",
+                "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+                "paragraph_start": 31,
+                "paragraph_end": 31
+              }
+            ],
+            "origin": "document"
+          }
+        ]
+      }
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "doc-f71cd1c13d81c96de6f07b",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 2,
+          "paragraph_end": 2
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-f71cd1c13d81c96de6f07b"
+    },
+    {
+      "id": "doc-8a3e08da35f04f946fe23a",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 168,
+          "end": 281
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 3724,
+          "end": 3790,
+          "frame": "frames/3730-0.jpg"
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-8a3e08da35f04f946fe23a"
+    },
+    {
+      "id": "doc-59b3b9f2a3a6fa74e8c5d1",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 486,
+          "end": 514
+        }
+      ],
+      "origin": "document",
+      "review_basis": {
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-59b3b9f2a3a6fa74e8c5d1"
+    },
+    {
+      "id": "doc-7d0a7d70dce84b1f7fcf69",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-7d0a7d70dce84b1f7fcf69"
+    },
+    {
+      "id": "doc-ef049288be4c13dbf92539",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 404,
+          "end": 514
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-ef049288be4c13dbf92539"
+    },
+    {
+      "id": "doc-03fb4874843dad9e7bf111",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 514,
+          "end": 541
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-03fb4874843dad9e7bf111"
+    },
+    {
+      "id": "doc-5025e3770204a348a0525b",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 431,
+          "end": 514
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-5025e3770204a348a0525b"
+    },
+    {
+      "id": "doc-ad4a0dd996b9c085e9f186",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-ad4a0dd996b9c085e9f186"
+    },
+    {
+      "id": "doc-53233e6248c63679e15956",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 597,
+          "end": 625
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-53233e6248c63679e15956"
+    },
+    {
+      "id": "doc-cc7dc96c40c1c57b8fc5a6",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 793,
+          "end": 988
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-cc7dc96c40c1c57b8fc5a6"
+    },
+    {
+      "id": "doc-b78a15c5f51df0a0a2a10a",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 960,
+          "end": 1049
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-b78a15c5f51df0a0a2a10a"
+    },
+    {
+      "id": "doc-c94953894e8168297e5df4",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1017,
+          "end": 1136
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-c94953894e8168297e5df4"
+    },
+    {
+      "id": "doc-d3b02b9e75afbdd303e6e5",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e96e88e6d4178796bf3cc82ef22f6ac2a2734fa1dd4eb0086f97fdf3c2d818af",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 1116,
+          "end": 1201
+        }
+      ],
+      "origin": "reviewed_synthesis",
+      "review_basis": {
+        "cards": [
+          "card:665001",
+          "card:95015",
+          "card:95016",
+          "card:95033",
+          "card:95034",
+          "card:95038"
+        ],
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-doc-d3b02b9e75afbdd303e6e5"
+    },
+    {
+      "id": "xx-player-opening",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 0,
+          "end": 87
+        },
+        {
+          "source": "BV1Fghz6ZEiN:p1",
+          "start": 31,
+          "end": 278
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-xx-player-opening"
+    },
+    {
+      "id": "xx-player-weapon",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 244,
+          "end": 404
+        },
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 960,
+          "end": 1200
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-xx-player-weapon"
+    },
+    {
+      "id": "xx-player-tactical",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1gBYh6WEPE:p1",
+          "start": 541,
+          "end": 821
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/大河开团射-香香-2026-10-21.json"
+      },
+      "text_ref": "support-xx-player-tactical"
+    },
+    {
+      "id": "b22-player-50-weapon-test",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1iGHC6zEqd:p1",
+          "start": 25.09,
+          "end": 109.26
+        }
+      ],
+      "text_ref": "support-b22-player-50-weapon-test"
+    },
+    {
+      "id": "b22-player-50-weapon-compare",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1iGHC6zEqd:p1",
+          "start": 167.65,
+          "end": 412.62
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "text_ref": "support-b22-player-50-weapon-compare"
+    }
+  ],
+  "body_sha256": "fc7b8171f9593d510ab0e81ced318bf9c5e285a2c25acf5d6ab9e334b407a080",
+  "revision": "66842f161051b149ce80",
+  "legacy_layout": {
+    "version": 4
+  }
+}

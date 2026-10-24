@@ -14,6 +14,9 @@ def digest(text):
 
 
 def status(root):
+    import json_store
+    if json_store.enabled(root):
+        return {'version': 6, 'files': {}, 'issues': [], 'message': '知识库已使用JSON，Markdown仅用于导出'}
     return wxq.read_json(Path(root)/'knowledge/markdown-sync.json', {'version':1,'files':{},'issues':[]})
 
 
@@ -61,6 +64,9 @@ def current_sections(note, bid):
 
 
 def scan(root, _locked=False):
+    import json_store
+    if json_store.enabled(root):
+        return status(root)
     import workspace
     if not _locked:
         with workspace.store_lock(root):

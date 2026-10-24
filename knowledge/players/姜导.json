@@ -1,0 +1,658 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "姜导",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-02b80c46f6b7a4fcc277"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "技能",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-3cc74abe48119da9ebbb"
+    },
+    {
+      "type": "entry",
+      "key": "棋手技能",
+      "show_key": true,
+      "value": "钦定主角，指定英雄成为主角，每打出2张英雄/效果牌，主角等级+1，每回合上限+5",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-9d3aacb9e314014d08c8"
+    },
+    {
+      "type": "entry",
+      "key": "棋手秘技",
+      "show_key": true,
+      "value": "封神一瞬，己方英雄首次升到25级获得，可以指定1名英雄立刻获得品阶×5的等级，且每次等级永久提升时，都额外+1级。拿到封神一瞬后，把它给钦定主角本人，形成双重升级联动。提升等级的次数越频繁，封神一瞬额外提升的等级也越多。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6734d72af275ff974383"
+    },
+    {
+      "type": "entry",
+      "key": "注意",
+      "show_key": true,
+      "value": "钦定主角每回合可以重新指定，更换后等级会加成在新的主角身上，封神一瞬只能使用一次，所以需要等主要输出英雄来了再使用。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-18633b96d9453d606ec7"
+    },
+    {
+      "type": "entry",
+      "key": "专属天赋",
+      "show_key": true,
+      "value": "完美演出，封神一瞬指定的英雄在开局获得30%双吸血、15秒免控（压制无效）。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-219828526bd9fa8c4520"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "前期思路",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-4434ef9ee0749a2c795d"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 优先选择自带升级/帮助队伍升级、高频出牌的英雄，低阶核心适合百里玄策、孙膑、干将莫邪等自带升级的英雄；辅助升级的英雄可以选择亚连、云中君；刷牌流可以选择姜子牙。",
+      "separator": "\n\n",
+      "id": "n-8fc1db245664d67204f3"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 尽量每回合打出偶数张牌，最大化姜导升级被动。",
+      "separator": "\n\n",
+      "id": "n-81bf14cdff3b8d2849f5"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 钦定主角每回合提升的等级上限为5级，当回合等级提升达上限后如果不着急提升战力，可以留出部分牌在下回合打出，避免下回合无牌可打。",
+      "separator": "\n\n",
+      "id": "n-6a0bf0297a7f679dfbad"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 灵活利用打出位高频刷牌，快速堆叠核心等级。",
+      "separator": "\n\n",
+      "id": "n-54a38b96eff20eced3b7"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 己方英雄越早到25级能触发封神质变，拉开等级差持续压制，核心是封神一瞬到手后，快速找到养成核心封神。",
+      "separator": "\n\n",
+      "id": "n-be2e1bc1c45b4ab6275c"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用打法与选择",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-e9d39a6a8987e03170d4"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[开备韩信](../lineups/开备韩信-姜导.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-68231d561d767696e89e"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "能取得韩信与开团、整备组件，并留有找牌和打牌资源。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-195b2f3c761f76971c93"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "首张韩信缺失时不为工具与效果牌耗尽资源。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6d518f63fdaffe8c9391"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "大河、日落海。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-61aa4d5c6ba7cf36b695"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-21f27c96e7a82f0acf47"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-dc341bbded42ec45a860"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "韩信到场后先指定钦定主角、使用封神一瞬，再打牌成长，亚连定向成长；主角进度打满再上雅典娜，瑶偏40控制，孙悟空只借整备触发成长，打出时避开韩信，不夺走他的等级。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-7b38d90e621fef9596b1"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-a8b958a43a9d1a709858"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "觉醒狂铁可承担过渡，姜导本身没有额外经济保证。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-4c181855bc6717bf40e8"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "韩信首张、封神一瞬和成长组件到齐后开始积累，未觉醒时速度较慢。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-f03a661e177ebb8e02d6"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "6级吸血与免控改善输出环境，高等级韩信依赖攻速启动和追击能力。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-211cd53d29e0ac8f2c9e"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[逐鹿芈月](../lineups/逐鹿芈月-姜导.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-39741c9e35859bbc538a"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "逐鹿可用，能取得芈月、西施并安排前排保护启动。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-0c9c01a37802b25d6d3d"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "对手能在施法前击杀芈月时，优先补承伤、启动和复活。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-7c43e14bd554241bd924"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛、逐鹿。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-aef76066a98f136726ae"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-3b523a2f010228e2110b"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-faaff90694675aa9dbd8"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "芈月集中等级装备，西施缩蓝；程咬金承伤供币，成型后白起常驻高阶盾，终局再比较功能替换。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-11abd8fcc0d88b10ecda"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-eb09b4248a1122b81910"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "过渡依靠孙膑与现有前排，芈月首张未到时不能按成型强度估计。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-c558320cd9d4974177f6"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "100级、缩蓝和承伤齐备后进入持续作战窗口。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-d6127a5c2cfc1d6158e1"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "6级吸血与免控提高容错，仍怕启动前击杀及强降疗。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-0808a76c82662f19fde5"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "其他选阵说明",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-0caf9aa265d50e2d74f8"
+    },
+    {
+      "type": "entry",
+      "key": "已知打法方向",
+      "show_key": true,
+      "value": "姜导炸盾廉颇",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-6898c12cbaba09167811"
+    },
+    {
+      "type": "entry",
+      "key": "核心思路",
+      "show_key": true,
+      "value": "芈月触发效果让廉颇升级的时候，姜导的封神一瞬也会触发，并且使用的效果牌也会被钦定主角记录，可以说一张效果卡就能同时联动多重，这也是这套体系能够快速提升高等级的核心玩法。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-01dd9c949c08dd909032"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "阵容必备扁鹊，扁鹊的卡牌效果是破盾会对周围造成生命值最大的百分比法术伤害，廉颇本身技能伤害是不高的，但他本身在拥有西施推演减蓝的情况下，可以高频的利用技能触发自身效果来刷盾，再用此来触发扁鹊的破盾AOE效果，既能扛输出又高。",
+      "separator": "\n\n",
+      "id": "n-1b2b120ebb77623268a2"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "姜导飞升韩信",
+      "separator": "\n\n",
+      "id": "n-dafe206e9a56840ea4e5"
+    },
+    {
+      "type": "entry",
+      "key": "核心思路",
+      "show_key": true,
+      "value": "韩信的词条效果是通过触发整备、开团效果自身等级获得提升，其他英雄的选择以整备和开团效果为主，每回合触发效果提升韩信等级，同时触发封神一瞬效果让韩信的等级额外提升。阵容齐备后，一个回合韩信的等级就会飞涨。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-7cf2af2ce058236cce10"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "辅助英雄选择云中君、亚连，云中君/亚连不仅是开团/整备英雄，且自身的卡牌效果能让穿戴装备的英雄获得等级提升。",
+      "separator": "\n\n",
+      "id": "n-11e23aaa539a288c18ab"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "选择露娜作为打出位，触发整备效果可以加快韩信升级。",
+      "separator": "\n\n",
+      "id": "n-64852f10142d78ba61ee"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用技巧",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-28d32304e76dc12f7f71"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 天赋推荐强化单体核心的天赋，如自适应武装、全副武装；或等级增益类天赋如超速成长、消费返利。",
+      "separator": "\n\n",
+      "id": "n-56b874101ae02edd9e24"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 需要出牌触发钦定主角时，可以用梦奇登场与退场兑换券补出牌次数；先留出打出位置和处理兑换券的时间，具体是否买入仍看核心预算。",
+      "separator": "\n\n",
+      "id": "n-5cf6f982fe0d83316919"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 钦定主角计算打出的英雄与效果牌，二者可混搭；装备和合成锦囊本体不计入。非急需战力的手牌可在当轮成长到顶后留给下一轮，但不能因等计数而错过保血。",
+      "separator": "\n\n",
+      "id": "n-2bf9bc21380caaeb8310"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 逐鹿芈月的效果牌不仅是直接收益，也服务姜导与芈月的成长。养成阶段留打出位置给供牌英雄，5级先补关键觉醒与保护，再升6级兑现吸血和免控；过早用终局工具占满位置会减少循环。",
+      "separator": "\n\n",
+      "id": "n-4ef4a794fd5ff1ad20b3"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-72fe029432b1e2eb7af0"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无",
+      "separator": "\n",
+      "id": "n-7ab18cd61b9bfd21b83f"
+    }
+  ],
+  "adaptations": [
+    {
+      "lineup": "b22-prep-hanxin",
+      "branch": "owner",
+      "title": "开备韩信",
+      "path": "knowledge/lineups/开备韩信-姜导.md",
+      "selection": {
+        "stage_strength": {
+          "early": {
+            "text": "觉醒狂铁可承担过渡，姜导本身没有额外经济保证。",
+            "claim_refs": [
+              "fmt24-owner-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "韩信首张、封神一瞬和成长组件到齐后开始积累，未觉醒时速度较慢。",
+            "claim_refs": [
+              "fmt24-owner-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "6级吸血与免控改善输出环境，高等级韩信依赖攻速启动和追击能力。",
+            "claim_refs": [
+              "fmt24-owner-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        },
+        "adopt": "能取得韩信与开团、整备组件，并留有找牌和打牌资源。",
+        "avoid": "首张韩信缺失时不为工具与效果牌耗尽资源。",
+        "signals": {
+          "英雄投入": "韩信到场后先指定钦定主角、使用封神一瞬，再打牌成长，亚连定向成长；主角进度打满再上雅典娜，瑶偏40控制，孙悟空只借整备触发成长，打出时避开韩信，不夺走他的等级。"
+        }
+      },
+      "required_factions": [
+        "大河",
+        "日落海"
+      ],
+      "advantages": "暂无已确认结论",
+      "disadvantages": "暂无已确认结论"
+    },
+    {
+      "lineup": "b22-zhulu-miyue",
+      "branch": "owner",
+      "title": "逐鹿芈月",
+      "path": "knowledge/lineups/逐鹿芈月-姜导.md",
+      "selection": {
+        "stage_strength": {
+          "early": {
+            "text": "过渡依靠孙膑与现有前排，芈月首张未到时不能按成型强度估计。",
+            "claim_refs": [
+              "fmt24-owner-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "100级、缩蓝和承伤齐备后进入持续作战窗口。",
+            "claim_refs": [
+              "fmt24-owner-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "6级吸血与免控提高容错，仍怕启动前击杀及强降疗。",
+            "claim_refs": [
+              "fmt24-owner-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        },
+        "adopt": "逐鹿可用，能取得芈月、西施并安排前排保护启动。",
+        "avoid": "对手能在施法前击杀芈月时，优先补承伤、启动和复活。",
+        "signals": {
+          "英雄投入": "芈月集中等级装备，西施缩蓝；程咬金承伤供币，成型后白起常驻高阶盾，终局再比较功能替换。"
+        }
+      },
+      "required_factions": [
+        "河洛",
+        "逐鹿"
+      ],
+      "advantages": "暂无已确认结论",
+      "disadvantages": "暂无已确认结论"
+    }
+  ],
+  "topic": "姜导",
+  "supporting_nodes": [
+    {
+      "id": "support-doc-9eb7e78bb30d9c7753bf36",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手技能：钦定主角，指定英雄成为主角，每打出2张英雄/效果牌，主角等级+1，每回合上限+5",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-5ffb058e10ffee25127faf",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手秘技：封神一瞬，己方英雄首次升到25级获得，可以指定1名英雄立刻获得品阶×5的等级，且每次等级永久提升时，都额外+1级。拿到封神一瞬后，把它给钦定主角本人，形成双重升级联动。提升等级的次数越频繁，封神一瞬额外提升的等级也越多。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-0cdf12830e9accecca8b1f",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "注意：钦定主角每回合可以重新指定，更换后等级会加成在新的主角身上，封神一瞬只能使用一次，所以需要等主要输出英雄来了再使用。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-98736c131e97988564c8b0",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "专属天赋：完美演出，封神一瞬指定的英雄在开局获得30%双吸血、15秒免控（压制无效）。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-a9f18255b4d06e348b27ea",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先选择自带升级/帮助队伍升级、高频出牌的英雄，低阶核心适合百里玄策、孙膑、干将莫邪等自带升级的英雄；辅助升级的英雄可以选择亚连、云中君；刷牌流可以选择姜子牙。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-5d115517555a83f3b3ab6d",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "尽量每回合打出偶数张牌，最大化姜导升级被动。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-d83b70a0bba59d2b162ef4",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "钦定主角每回合提升的等级上限为5级，当回合等级提升达上限后如果不着急提升战力，可以留出部分牌在下回合打出，避免下回合无牌可打。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-fb185bf1ea8625b1d09d21",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "灵活利用打出位高频刷牌，快速堆叠核心等级。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-a9d6a8aa1aad76e842f5d7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "己方英雄越早到25级能触发封神质变，拉开等级差持续压制，核心是封神一瞬到手后，快速找到养成核心封神。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-3807d02b6d162166094cf2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "天赋推荐强化单体核心的天赋，如自适应武装、全副武装；或等级增益类天赋如超速成长、消费返利。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-dcf8e1194b5a3584c96d3e",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "需要出牌触发钦定主角时，可以用梦奇登场与退场兑换券补出牌次数；先留出打出位置和处理兑换券的时间，具体是否买入仍看核心预算。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-632fbe51b880926d29a560",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "**已知打法方向：** 姜导炸盾廉颇\n\n核心思路：芈月触发效果让廉颇升级的时候，姜导的封神一瞬也会触发，并且使用的效果牌也会被钦定主角记录，可以说一张效果卡就能同时联动多重，这也是这套体系能够快速提升高等级的核心玩法。\n\n阵容必备扁鹊，扁鹊的卡牌效果是破盾会对周围造成生命值最大的百分比法术伤害，廉颇本身技能伤害是不高的，但他本身在拥有西施推演减蓝的情况下，可以高频的利用技能触发自身效果来刷盾，再用此来触发扁鹊的破盾AOE效果，既能扛输出又高。\n\n姜导飞升韩信\n\n核心思路：韩信的词条效果是通过触发整备、开团效果自身等级获得提升，其他英雄的选择以整备和开团效果为主，每回合触发效果提升韩信等级，同时触发封神一瞬效果让韩信的等级额外提升。阵容齐备后，一个回合韩信的等级就会飞涨。\n\n辅助英雄选择云中君、亚连，云中君/亚连不仅是开团/整备英雄，且自身的卡牌效果能让穿戴装备的英雄获得等级提升。\n\n选择露娜作为打出位，触发整备效果可以加快韩信升级。",
+      "separator": ""
+    },
+    {
+      "id": "support-b22-player-41-counted-cards",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "钦定主角计算打出的英雄与效果牌，二者可混搭；装备和合成锦囊本体不计入。非急需战力的手牌可在当轮成长到顶后留给下一轮，但不能因等计数而错过保血。",
+      "separator": ""
+    },
+    {
+      "id": "support-b22-player-41-miyue-cycle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "逐鹿芈月的效果牌不仅是直接收益，也服务姜导与芈月的成长。养成阶段留打出位置给供牌英雄，5级先补关键觉醒与保护，再升6级兑现吸血和免控；过早用终局工具占满位置会减少循环。",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

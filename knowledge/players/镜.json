@@ -1,0 +1,444 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "镜",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-5b79ea9a36bb7abc339b"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "技能",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-3cc74abe48119da9ebbb"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 使用技能，获得1张“镜像”牌，每使用4次技能，该技能能量消耗+1。",
+      "separator": "\n\n",
+      "id": "n-770e754d0104d4ac4261"
+    },
+    {
+      "type": "entry",
+      "key": "镜像",
+      "show_key": true,
+      "value": "该卡牌会自动变为上一张打出的英雄牌（不能复制其他打出的镜像牌）。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6001b0c4410e949c11f3"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 镜像可对应上一张打出的英雄牌；觉醒牌、其他镜像牌和商店镜像的复制边界存在表述冲突，操作前以实际可复制状态核对。",
+      "separator": "\n\n",
+      "id": "n-676944cb5d466cbcd402"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 使用4张镜像，获得1张秘技牌“万镜”。",
+      "separator": "\n\n",
+      "id": "n-da32dbcf877c4efb003d"
+    },
+    {
+      "type": "entry",
+      "key": "万镜",
+      "show_key": true,
+      "value": "随机复制场上4张不同的英雄牌。（若场上的英雄牌小于四张，会按照场上实际英雄数量进行复制。）",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-d09c3936f0d1967deedd"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 商店里的英雄牌在购买后会留下1个镜像复制（不计入秘技任务）。",
+      "separator": "\n\n",
+      "id": "n-95c37842cce9e7ed0338"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "前期思路",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-b3a1d521fb9086c55450"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 镜是典型的复制型棋手，核心玩法是利用镜像和万镜快速复制关键英雄牌，加速核心觉醒或形成多张战力。她非常适合依赖觉醒、需要快速凑牌的中后期阵容。操作上需要注意出牌顺序，确保镜像复制到想要的英雄。镜花影解锁后，购买英雄即可获得镜像，资源获取效率极高。缺点是技能能量消耗会递增，需要合理规划使用节奏。适合喜欢运营、擅长规划牌序的玩家。",
+      "separator": "\n\n",
+      "id": "n-f3ba8a33c7d2b2b27de8"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 由于镜本身没有任何经济能力以及商店找牌能力，天赋方面优先选择商店检索类或经济类天赋，例如无影手。常规玩法依靠积累败场刷新低血量启动。",
+      "separator": "\n\n",
+      "id": "n-23141560985ba4e31932"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 无形镜像使用次数增加后会变贵，积累镜像必须与升级和找首张核心的预算一起考虑。三分倒转教学以六张作为启动储备，是该路线的取舍，不是所有镜阵容的固定上限。",
+      "separator": "\n\n",
+      "id": "n-48c74dc33ca3a4947e0d"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用打法与选择",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-e9d39a6a8987e03170d4"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[三分倒转](../lineups/三分倒转-镜.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-24c76f5c2109e19bca8b"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "三分、日落海循环成员可获取，镜像和找牌预算能同时负担。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-2217afa20dc9e820b81b"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "只积累镜像而没有核心，或升级后无法买牌时先修正成型。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-cdc1094dd6c368039f36"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "三分、日落海。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-f27bb148b6dfe94c7579"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-21f27c96e7a82f0acf47"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-dc341bbded42ec45a860"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "曹操、甄姬、小乔先建循环；孙悟空作为主要输出时可用夺取集中等级，露娜是否留场输出按当前分支判断，确认结束循环后，先按传承的最低3名或遗志的随机目标规则分配工具等级，再补太乙真人等保护。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-9d89f5cab1828957b504"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-a8b958a43a9d1a709858"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "镜像储备消耗经济，前期以保血与资源平衡为主。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-01328cdf98f3402f27d2"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "4级补关键觉醒后可稳场，缺牌时需要临时启动方案。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-72b3a06fd624401dc8f0"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "5级露娜循环到位后成长高，终局需及时把成长转成战斗位。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-4d8e724dd75b4c42d556"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用技巧",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-962b15872af79759dad8"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 商店里的镜像牌可以被锁定在商店，下回合仍然不会消失。",
+      "separator": "\n\n",
+      "id": "n-4acb2afd08fc750ec22e"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 万镜是随机复制，使用万镜前先卖出其余非核心英雄，只保留四名核心英雄可确保获得场上英雄牌各一张。",
+      "separator": "\n\n",
+      "id": "n-a12d0968b8434311d86b"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 技能可以每回合使用，未打出的镜像牌会留在手牌里，可以先囤镜像牌中后期买到核心英雄后，先打出核心英雄再使用镜像牌，能快速觉醒核心英雄。",
+      "separator": "\n\n",
+      "id": "n-bcc361efdb726ea5f7aa"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 准备刷新商店前先预留或支付当回合获取镜像的能量，再按核心英雄与镜像的顺序出牌，避免买完英雄后没有技能预算。",
+      "separator": "\n\n",
+      "id": "n-25692c6687b5a249556f"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 镜像不能复制上一张镜像；真实英雄与镜像交替打出。镜像之力按实际使用四张镜像结算万镜，购买镜像本身不推进任务。先安排四名真正需要复制的场上英雄，再使用万镜。",
+      "separator": "\n\n",
+      "id": "n-eef112643b9fda3fe2cc"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-fe342a687fce6fae71ce"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无",
+      "separator": "\n",
+      "id": "n-817dce8b2844c87f4161"
+    }
+  ],
+  "adaptations": [
+    {
+      "lineup": "sanfen-reversal",
+      "branch": "jing",
+      "title": "三分倒转",
+      "path": "knowledge/lineups/三分倒转-镜.md",
+      "selection": {
+        "stage_strength": {
+          "early": {
+            "text": "镜像储备消耗经济，前期以保血与资源平衡为主。",
+            "claim_refs": [
+              "fmt24-jing-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "4级补关键觉醒后可稳场，缺牌时需要临时启动方案。",
+            "claim_refs": [
+              "fmt24-jing-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "5级露娜循环到位后成长高，终局需及时把成长转成战斗位。",
+            "claim_refs": [
+              "fmt24-jing-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        },
+        "adopt": "三分、日落海循环成员可获取，镜像和找牌预算能同时负担。",
+        "avoid": "只积累镜像而没有核心，或升级后无法买牌时先修正成型。",
+        "signals": {
+          "英雄投入": "曹操、甄姬、小乔先建循环；孙悟空作为主要输出时可用夺取集中等级，露娜是否留场输出按当前分支判断，确认结束循环后，先按传承的最低3名或遗志的随机目标规则分配工具等级，再补太乙真人等保护。"
+        }
+      },
+      "required_factions": [
+        "三分",
+        "日落海"
+      ],
+      "advantages": "暂无已确认结论",
+      "disadvantages": "暂无已确认结论"
+    }
+  ],
+  "topic": "镜",
+  "supporting_nodes": [
+    {
+      "id": "support-doc-3b446fc5b271077cc98ef5",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "使用技能，获得1张“镜像”牌，每使用4次技能，该技能能量消耗+1。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-1e14502185a2d7d2850919",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "镜像：该卡牌会自动变为上一张打出的英雄牌（不能复制其他打出的镜像牌）。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-e684a398c2be4090332bfe",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "镜像可对应上一张打出的英雄牌；觉醒牌、其他镜像牌和商店镜像的复制边界存在表述冲突，操作前以实际可复制状态核对。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-559146fa638e55c99b8687",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "使用4张镜像，获得1张秘技牌“万镜”。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-fe8b69737f8dbe021bae12",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "万镜：随机复制场上4张不同的英雄牌。（若场上的英雄牌小于四张，会按照场上实际英雄数量进行复制。）",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-a38ed2eabaee47104af066",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "商店里的英雄牌在购买后会留下1个镜像复制（不计入秘技任务）。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-ca96415607b67ec0b45ec9",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "镜是典型的复制型棋手，核心玩法是利用镜像和万镜快速复制关键英雄牌，加速核心觉醒或形成多张战力。她非常适合依赖觉醒、需要快速凑牌的中后期阵容。操作上需要注意出牌顺序，确保镜像复制到想要的英雄。镜花影解锁后，购买英雄即可获得镜像，资源获取效率极高。缺点是技能能量消耗会递增，需要合理规划使用节奏。适合喜欢运营、擅长规划牌序的玩家。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-fb96d4d309479d17cb0990",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "由于镜本身没有任何经济能力以及商店找牌能力，天赋方面优先选择商店检索类或经济类天赋，例如无影手。常规玩法依靠积累败场刷新低血量启动。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-221cd7e808eb0f05302998",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "商店里的镜像牌可以被锁定在商店，下回合仍然不会消失。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-9537bb4ed3d5a8f84f9a54",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "万镜是随机复制，使用万镜前先卖出其余非核心英雄，只保留四名核心英雄可确保获得场上英雄牌各一张。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-d040d4c93e7adbd5a0cada",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "技能可以每回合使用，未打出的镜像牌会留在手牌里，可以先囤镜像牌中后期买到核心英雄后，先打出核心英雄再使用镜像牌，能快速觉醒核心英雄。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-8e08242c26f3d5b5751873",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "准备刷新商店前先预留或支付当回合获取镜像的能量，再按核心英雄与镜像的顺序出牌，避免买完英雄后没有技能预算。",
+      "separator": ""
+    },
+    {
+      "id": "support-b22-player-21-real-copy",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "镜像不能复制上一张镜像；真实英雄与镜像交替打出。镜像之力按实际使用四张镜像结算万镜，购买镜像本身不推进任务。先安排四名真正需要复制的场上英雄，再使用万镜。",
+      "separator": ""
+    },
+    {
+      "id": "support-b22-player-21-opening-budget",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "无形镜像使用次数增加后会变贵，积累镜像必须与升级和找首张核心的预算一起考虑。三分倒转教学以六张作为启动储备，是该路线的取舍，不是所有镜阵容的固定上限。",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

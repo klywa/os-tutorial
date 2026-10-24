@@ -1,0 +1,126 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "牌库",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-d8a0cf4a036fc505f4c2"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "卡牌与牌库",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-d061a347c5e0942554ea"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 每张英雄牌在牌库中的数量都有上限，玩家可在牌库中查看当前对局的所有英雄牌和数量。（英雄牌的品阶越高，在牌库中的数量越少：1阶14张、2阶11张、3阶9张、4阶8张、5阶6张。）",
+      "separator": "\n\n",
+      "id": "n-b23e9330468d53fb061e"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 当英雄牌被玩家获得或者出现在商店中时，均会减少其在牌库中的剩余数量；玩家出售或刷新商店，会使英雄牌返回牌库。（出售场上英雄时，会将其累计占有的数量一并返回牌库。）",
+      "separator": "\n\n",
+      "id": "n-d5b6c4e28eb8012f5f90"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 英雄未觉醒时，合成打出的同名牌不会回到牌库，会占用牌库数量；英雄觉醒后，合成打出的同名牌会返回牌库，不占用牌库数量。",
+      "separator": "\n\n",
+      "id": "n-3efdf74f2b0245148289"
+    },
+    {
+      "type": "entry",
+      "key": "小技巧",
+      "show_key": true,
+      "value": "三分倒转/无限复活花木兰等阵容，需要一定数量的露娜打出，如果利用妙音觉醒露娜，牌库里的露娜不会减少，觉醒后仍然可以多次打出露娜。也可以上场后卖出，增加牌库露娜数量，更容易刷到露娜。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-e0253984cadc87534af2"
+    },
+    {
+      "type": "entry",
+      "key": "注意",
+      "show_key": true,
+      "value": "当“获得英雄牌”这类效果触发时，会优先获取牌库中仍有剩余数量的卡牌（例如照影等效果牌会优先获取牌库里还有的英雄牌），且占用牌库数量。（如果牌库中剩余数量为0，白歌的技能奇才等指定获取英雄牌的效果仍然会生效，但生成的英雄牌会继续占用牌库数量，此时牌库中的实际数量会变为负数）",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-a01d061676aa3392aae3"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-9a8e62ad58f66f149ae4"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无",
+      "separator": "\n",
+      "id": "n-dc5dd83452afd480a927"
+    }
+  ],
+  "topic": "牌库",
+  "supporting_nodes": [
+    {
+      "id": "support-doc-9f307672bbfdc58f4c5ba7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "每张英雄牌在牌库中的数量都有上限，玩家可在牌库中查看当前对局的所有英雄牌和数量。（英雄牌的品阶越高，在牌库中的数量越少：1阶14张、2阶11张、3阶9张、4阶8张、5阶6张。）",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-8c6b55a56eefe6482bbb68",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "当英雄牌被玩家获得或者出现在商店中时，均会减少其在牌库中的剩余数量；玩家出售或刷新商店，会使英雄牌返回牌库。（出售场上英雄时，会将其累计占有的数量一并返回牌库。）",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-95f58a332d72bfe29e5d00",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "英雄未觉醒时，合成打出的同名牌不会回到牌库，会占用牌库数量；英雄觉醒后，合成打出的同名牌会返回牌库，不占用牌库数量。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-9ef62839e333e8f1119f3e",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "小技巧：三分倒转/无限复活花木兰等阵容，需要一定数量的露娜打出，如果利用妙音觉醒露娜，牌库里的露娜不会减少，觉醒后仍然可以多次打出露娜。也可以上场后卖出，增加牌库露娜数量，更容易刷到露娜。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-3d16bc04e2577fbcd0f09b",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "注意：当“获得英雄牌”这类效果触发时，会优先获取牌库中仍有剩余数量的卡牌（例如照影等效果牌会优先获取牌库里还有的英雄牌），且占用牌库数量。（如果牌库中剩余数量为0，白歌的技能奇才等指定获取英雄牌的效果仍然会生效，但生成的英雄牌会继续占用牌库数量，此时牌库中的实际数量会变为负数）",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

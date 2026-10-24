@@ -1,0 +1,228 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "基础规则",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-24ece42e2b813000cdee"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "基础规则",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-d3ba1c24b4cc420fdad3"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 打出与上阵英雄相同的卡牌视为进行了一次合成，累计进行3次合成可获得一次效果锦囊。",
+      "separator": "\n\n",
+      "id": "n-d7799364c20308624c47"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 效果锦囊分为1-5阶，玩家获得效果锦囊品阶和当前棋手等级相同，棋手等级6级时获得5阶效果锦囊，使用效果锦囊可获得效果牌，获得效果牌的品阶通常至多只比效果锦囊品阶高1阶。",
+      "separator": "\n\n",
+      "id": "n-6e574892f875b160e759"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 每回合的战斗时长有限，倒计时结束后，进入加时赛（加时赛双方英雄攻速增加，生命回复降低），若加时结束时未分出胜负，双方打平并各自受到伤害。",
+      "separator": "\n\n",
+      "id": "n-159fa0a5b0cb1e89f490"
+    },
+    {
+      "type": "entry",
+      "key": "点击顶栏回合按钮，可以查看每回合关键信息",
+      "show_key": true,
+      "value": "护盾图标及数字代表本回合可造成的最大伤害；能量图标及右侧的数字代表本回合可获得的能量数；卡牌图标代表本回合可获得一张基础装备牌。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-2a3a24f02a75042452e9"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 英雄攻击和受击时，均会获得法力值，当法力值满后，会释放技能并清空法力值。（如果受击时，伤害被护盾抵挡，则不会获得法力值。）",
+      "separator": "\n\n",
+      "id": "n-c0075e84f3cffef9a61f"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 每回合战斗失败后，玩家受到的伤害 = 棋手造成固定伤害（随回合递增）+ 敌方存活英雄伤害（每个英雄2点）",
+      "separator": "\n\n",
+      "id": "n-27428c9328841d508006"
+    },
+    {
+      "type": "entry",
+      "key": "棋手造成的固定伤害",
+      "show_key": true,
+      "value": "回合1-3，固定1点；回合4-7，固定2点；回合8-11，固定4点，回合12及以后，每回合增加2点。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-87a7aca04a7c1c3bfc15"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 每回合玩家受到的伤害有上限。",
+      "separator": "\n\n",
+      "id": "n-a27fe613c7de0b73a474"
+    },
+    {
+      "type": "entry",
+      "key": "伤害上限",
+      "show_key": true,
+      "value": "回合1-3，造成的伤害上限为5点；回合4-7，造成的伤害上限10点；回合8-11，造成的伤害上限15点，回合12-15，造成的伤害上限20点，16回合及以后无上限。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-30a80e23a9cc17cc68b5"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "经济与锦囊",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-a93d7752dcc5dccfd76d"
+    },
+    {
+      "type": "entry",
+      "key": "免费刷新",
+      "show_key": true,
+      "value": "万象棋里每回合失败后会获得一次免费的刷新，经常其他人前期只上弈星就是失败后白嫖免费刷新，利用弈星快速升棋手等级到阵容需要的级别，免费刷新省能量快速找到阵容牌。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-f1729460c7716df7e9f9"
+    },
+    {
+      "type": "entry",
+      "key": "5.锦囊获得",
+      "show_key": true,
+      "value": "每合成3次英雄就会获得一张锦囊效果牌，与棋手等级相同。假如手上和场上有相同的英雄牌，但是打算卖出可以先合成，增加锦囊进度再卖出。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-ea248da81c39efc3e707"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-174d70b2b7cbb60bbc7d"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无",
+      "separator": "\n",
+      "id": "n-766f0bc5ccddf971a754"
+    }
+  ],
+  "topic": "基础规则",
+  "supporting_nodes": [
+    {
+      "id": "support-doc-6a5047681a171bfa36e9bf",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "打出与上阵英雄相同的卡牌视为进行了一次合成，累计进行3次合成可获得一次效果锦囊。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-b29f4f55329336bff6ae0d",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "效果锦囊分为1-5阶，玩家获得效果锦囊品阶和当前棋手等级相同，棋手等级6级时获得5阶效果锦囊，使用效果锦囊可获得效果牌，获得效果牌的品阶通常至多只比效果锦囊品阶高1阶。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-ab7cb3ac6a0edc1e256aa8",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "每回合的战斗时长有限，倒计时结束后，进入加时赛（加时赛双方英雄攻速增加，生命回复降低），若加时结束时未分出胜负，双方打平并各自受到伤害。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-d219873aee77f472cbe501",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "点击顶栏回合按钮，可以查看每回合关键信息：护盾图标及数字代表本回合可造成的最大伤害；能量图标及右侧的数字代表本回合可获得的能量数；卡牌图标代表本回合可获得一张基础装备牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-3296399bcc96be384d2ff4",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "英雄攻击和受击时，均会获得法力值，当法力值满后，会释放技能并清空法力值。（如果受击时，伤害被护盾抵挡，则不会获得法力值。）",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-48ee1b59d950137b7875e2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "每回合战斗失败后，玩家受到的伤害 = 棋手造成固定伤害（随回合递增）+ 敌方存活英雄伤害（每个英雄2点）",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-283bc7b12703296d6f1243",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手造成的固定伤害：回合1-3，固定1点；回合4-7，固定2点；回合8-11，固定4点，回合12及以后，每回合增加2点。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-c7ee8a47ec55b23ff16ccc",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "每回合玩家受到的伤害有上限。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-10457d3fcd34c9f3d76c3e",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "伤害上限：回合1-3，造成的伤害上限为5点；回合4-7，造成的伤害上限10点；回合8-11，造成的伤害上限15点，回合12-15，造成的伤害上限20点，16回合及以后无上限。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-09274625504ba8b1dd748a",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "免费刷新：万象棋里每回合失败后会获得一次免费的刷新，经常其他人前期只上弈星就是失败后白嫖免费刷新，利用弈星快速升棋手等级到阵容需要的级别，免费刷新省能量快速找到阵容牌。\n\n5.锦囊获得：每合成3次英雄就会获得一张锦囊效果牌，与棋手等级相同。假如手上和场上有相同的英雄牌，但是打算卖出可以先合成，增加锦囊进度再卖出。",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

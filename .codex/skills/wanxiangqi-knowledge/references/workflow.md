@@ -1,3 +1,5 @@
+> 当前存储以 [schema6知识契约](knowledge-contract.md) 为准。下文旧schema、Markdown同步与重放字段仅用于历史迁移；教学、采集、证据标准继续适用，不据此生成知识Markdown或全文索引。
+
 # 运行与恢复
 
 ## 安装

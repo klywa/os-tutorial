@@ -1,0 +1,717 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "type": "heading",
+      "level": 1,
+      "title": "白歌",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-117afa39eec31a75770a"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "技能",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-3cc74abe48119da9ebbb"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 每完成4次英雄合成，获得1张“即兴创作”。使用后，随机复制场上1名己方英雄，生成同名卡牌。",
+      "separator": "\n\n",
+      "id": "n-82752c97932eb39ffbc3"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 白歌的棋手秘技与技能是联动效果，累计使用6张“即兴创作”后解锁“灵感爆发”。释放后，斩击手牌中3张未觉醒英雄牌，每张裂变为2张“转瞬”复制牌。",
+      "separator": "\n\n",
+      "id": "n-489357115902681b4194"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 白歌棋手升级6级后的专属天赋为惊才绝艳，获得一张专属效果牌“奇才”。指定1名英雄，直接获得该英雄4张牌。要点：4张正好满足觉醒条件，6级固定送一个觉醒核心。",
+      "separator": "\n\n",
+      "id": "n-4dfe762ce6cd9d51434b"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 奇才一场比赛仅有一张，谨慎使用选择关键英雄牌。",
+      "separator": "\n\n",
+      "id": "n-4ba46eaf6940cd6b8d09"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 神来之笔累计四次英雄合成取得即兴创作，使用六次即兴创作后取得灵感爆发；6级取得奇才，可指定复制英雄。联动前先整理非觉醒手牌目标，先奇才再灵感爆发；合成或使用次数不足时不能直接跳到下一环。",
+      "separator": "\n\n",
+      "id": "n-3b68b1ed1e178ea1e510"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "前期思路",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-1ae250dbd39c81c50749"
+    },
+    {
+      "type": "entry",
+      "key": "要点",
+      "show_key": true,
+      "value": "想复制谁，先把他放上场，由于是随机复制，可以尽量保证场上均是需要的英雄再使用。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-819690d3e17b06f6020a"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 白歌通过合成与复制加速组件和觉醒，6级的奇才增加定向复制资源。启动前能否保血取决于过渡战力和已取得组件，启动后强度取决于循环能否兑现；具体前中后期条件由各阵容分支说明，不能以棋手等级单独判断强弱。",
+      "separator": "\n\n",
+      "id": "n-2be122f244fcad4f2b36"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 天赋优先点兵点将、资深猎头等加速合成的天赋。",
+      "separator": "\n\n",
+      "id": "n-63ff26458fef344ab8e4"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 未定阵时先用能够减少本轮掉血的承伤与输出过渡，同时比较合成能否带来有效复制；低阶牌到手可以合成，但不为无关合成消耗全部升级预算。免费刷新留到关键英雄可出现的棋手等级，再集中获取组件；是否抢等级须结合对手压力和升级后的买牌资源。",
+      "separator": "\n\n",
+      "id": "n-8c3f53652afdd2d86f7f"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 定阵可以参考关键英雄、关键天赋与关键装备，其中关键英雄最稳；只看天赋或装备提前锁死的容错更低。刷牌流示范中的极端空场和低血量不作为所有白歌开局的默认步骤。",
+      "separator": "\n\n",
+      "id": "n-8e7166cc6948cbbcad8f"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用打法与选择",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-6f12c497f11d016abf8f"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[三分倒转](../lineups/三分倒转-白歌.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-307afffa6a8ea05ec2d2"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "三分与日落海开放，前期有保血战力，曹操、甄姬、小乔逐步到手且能给露娜循环留出时间。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-77b48911fd9429938748"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "关键供牌或小乔迟迟不到而持续掉血时先补战力；无法取得露娜时不能把当前流程视为已经成型。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-c7fec7213b7fd3085154"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "三分、日落海。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-32d7ab8173a62d42591a"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "登场、整备与合成资源能互相补充，把大量打牌转成多名英雄永久等级。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-56941eebbf77591dd7b3"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "核心未齐时容易掉血，循环受牌库、操作空间与准备时间限制。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-20c56b87df7fef7afa9c"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "曹操、甄姬、小乔先建循环；孙悟空作为主要输出时可用夺取集中等级，露娜是否留场输出按当前分支判断，确认结束循环后，先按传承的最低3名或遗志的随机目标规则分配工具等级，再补太乙真人等保护。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-5875e6d3696cb53e4951"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-80480e7a4f831ec7f76a"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "循环未齐时，依靠过渡英雄的输出和承伤保血，为棋手4级找核心留资源。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-a0ba8a307006dce13433"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "曹操、甄姬、小乔到齐后开始成长；缺小乔或供牌时仍有明显启动空窗。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-9a33dacf7302fdec782b"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "露娜、关键觉醒与6级技能衔接后成长空间较大，受牌库、手牌空间、操作时间及对手控制限制。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-2c9ee8d6a783164445c4"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "[三分射](../lineups/三分射-白歌.json)",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-360933037d272cef9758"
+    },
+    {
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "三分供牌与低阶合成链可建立，赵云能保护公孙离输出。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-516fe243429d688fe865"
+    },
+    {
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "前期公孙离大量卡手而缺可夺取等级时，先修正前排、供级与生存。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6513e4b4622780b2b435"
+    },
+    {
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "三分。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-71e6f79d20ab516193eb"
+    },
+    {
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-67d2d43c700f93508e95"
+    },
+    {
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "暂无已确认结论",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-c0b4c61cc8e7b581b4a2"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "猪八戒只用于合成成长，打出时不夺走队友等级，觉醒后停止专门找他的重复牌；公孙离吸可退出工具，赵云转吕布前核对三分觉醒攻速条件。",
+      "prefix": "",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-1daac931ee29f3b60d31"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-e84fc0df9fa281927f4e"
+    },
+    {
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "2级找牌及曹操触发质量决定能否早期保血。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-96b830095728b45b5e9f"
+    },
+    {
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "持续二阶合成与公孙离夺取集中后进入主要发力窗口。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-a9edec8b8d7ce05d8774"
+    },
+    {
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "低阶天花板与对手成型压力增加，需要兼顾升级补战力和保留觉醒攻速。",
+      "prefix": "- **",
+      "key_suffix": "：** ",
+      "separator": "\n\n",
+      "id": "n-f815f1ea9a40a9692ec0"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "title": "其他选阵说明",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-ebc2705f387cb256387f"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 甄姬提供登场英雄牌、庄周提供招募战术，均可通过持续打牌与合成配合白歌技能；三分倒转与逐鹿方向按实际组件、保血和启动条件选择，不设无条件强弱排序。",
+      "separator": "\n\n",
+      "id": "n-9b2894e07beb4268c38b"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "白歌的技能可用于复制庄周，提高招募战术产出；招募战术有机会再次得到庄周，形成合成资源。效果牌可配合嬴政法强成长与芈月被动。",
+      "separator": "\n\n",
+      "id": "n-1de3eeca5d677d0abb96"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "逐鹿方向使用灵感爆发前，处理无用非觉醒英雄牌，把需要的庄周留作斩击材料；奇才也可指定场上的庄周提供复制牌，再逐张打出转瞬牌。具体使用仍需检查手牌和操作时间。",
+      "separator": "\n\n",
+      "id": "n-22c22b38ce1220deaf72"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "适用技巧",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-cc07bd1352e83990f354"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 棋手秘技牌的获得需要进行24次的英雄合成，至少需要在中期才能触发，灵感爆发就是将手牌的3张一分为二，要注意的是斩击是随机三张未觉醒牌，手上有觉醒的牌是不会斩击到觉醒牌。所以使用时就要注意手牌里的未觉醒牌只留三张自己需要的，避免斩击到没用的牌。",
+      "separator": "\n\n",
+      "id": "n-c46f619111b1c78af38e"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 如果手上没有非觉醒英雄牌依然可以斩击，但会空用技能。",
+      "separator": "\n\n",
+      "id": "n-6da45bb7cb7f9943812e"
+    },
+    {
+      "type": "entry",
+      "key": "要点",
+      "show_key": true,
+      "value": "转瞬牌当回合不用就消失，释放前留足操作时间。",
+      "prefix": "- ",
+      "key_suffix": "：",
+      "separator": "\n\n",
+      "id": "n-6046d9a70151faf504a1"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 即兴创作、照影从场上英雄中选择，灵感爆发从手牌非觉醒英雄中选择。分别检查场上候选、手牌空间与非觉醒牌种类；清理无用场上候选需要出售或实际触发觉醒回手，不能直接收回手牌。仍需作战的主力不要为了缩小随机范围随意卖掉。",
+      "separator": "\n\n",
+      "id": "n-3f062b56b2aee47b5ef8"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 棋手6级的奇才可集中补关键英雄牌，但升级不能替代本轮战力。先判断现有组件能否保血，以及升级后是否有足够手牌空间和时间使用复制资源，再决定继续找关键觉醒或争取6级；阵容专属目标见对应打法。",
+      "separator": "\n\n",
+      "id": "n-e2c740fd3b4d9269dee0"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 奇才可用来补尚未觉醒的关键供牌英雄，也可在供牌已稳定、目标已到手时增加循环材料。三分倒转中，甄姬未觉醒时与直接复制露娜的收益不同：先看缺的是后续选牌能力还是露娜数量，再整理灵感爆发的非觉醒目标；不把奇才固定给露娜。",
+      "separator": "\n\n",
+      "id": "n-3b2395c3776b29ab2b2e"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 使用灵感爆发前先整理手里的非觉醒英雄，让剑气尽量复制当前能继续供牌或合成的对象；逐鹿嬴政中常保留庄周。手牌或血量不允许等齐时可先用已有目标，不为固定复制数量耽误当轮战力。",
+      "separator": "\n\n",
+      "id": "n-eeb95e9459fdaf7e7e9f"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 需要处理大量手牌时，先用快捷键处理无需指定目标的牌，再手动指定其余牌的目标；练习以在回合结束前兑现实际战力为目标。刷牌流前期掉血过多可能来不及启动，升级与留技能都要服从存活条件。",
+      "separator": "\n\n",
+      "id": "n-97636b84c715bbf49d24"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- 三分射终局集中等级会减少场上觉醒英雄数量，从而降低公孙离攻速。传承、遗志与换帅前应同时检查主力等级、前排及觉醒人数；需要保留低阶合成牌补回觉醒时，不能提前清空所有材料。",
+      "separator": "\n\n",
+      "id": "n-005c9159739c058a0fdc"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n",
+      "id": "n-c3fe5a2eeed8961400d1"
+    },
+    {
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- [三分倒转](../lineups/三分倒转-白歌.json)",
+      "separator": "\n",
+      "id": "n-f01923f9d97883627ff5"
+    }
+  ],
+  "adaptations": [
+    {
+      "lineup": "sanfen-reversal",
+      "branch": "baige",
+      "title": "三分倒转",
+      "path": "knowledge/lineups/三分倒转-白歌.md",
+      "selection": {
+        "adopt": "三分与日落海开放，前期有保血战力，曹操、甄姬、小乔逐步到手且能给露娜循环留出时间。",
+        "avoid": "关键供牌或小乔迟迟不到而持续掉血时先补战力；无法取得露娜时不能把当前流程视为已经成型。",
+        "claim_refs": [
+          "sf-principle",
+          "sf-early",
+          "sf-middle",
+          "sf-late"
+        ],
+        "stage_strength": {
+          "early": {
+            "text": "循环未齐时，依靠过渡英雄的输出和承伤保血，为棋手4级找核心留资源。",
+            "claim_refs": [
+              "fmt24-baige-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "曹操、甄姬、小乔到齐后开始成长；缺小乔或供牌时仍有明显启动空窗。",
+            "claim_refs": [
+              "fmt24-baige-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "露娜、关键觉醒与6级技能衔接后成长空间较大，受牌库、手牌空间、操作时间及对手控制限制。",
+            "claim_refs": [
+              "fmt24-baige-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        },
+        "signals": {
+          "英雄投入": "曹操、甄姬、小乔先建循环；孙悟空作为主要输出时可用夺取集中等级，露娜是否留场输出按当前分支判断，确认结束循环后，先按传承的最低3名或遗志的随机目标规则分配工具等级，再补太乙真人等保护。"
+        }
+      },
+      "required_factions": [
+        "三分",
+        "日落海"
+      ],
+      "advantages": "登场、整备与合成资源能互相补充，把大量打牌转成多名英雄永久等级。",
+      "disadvantages": "核心未齐时容易掉血，循环受牌库、操作空间与准备时间限制。"
+    },
+    {
+      "lineup": "b22-sanfen-shoot",
+      "branch": "owner",
+      "title": "三分射",
+      "path": "knowledge/lineups/三分射-白歌.md",
+      "selection": {
+        "stage_strength": {
+          "early": {
+            "text": "2级找牌及曹操触发质量决定能否早期保血。",
+            "claim_refs": [
+              "fmt24-owner-e27b4cdf79c3"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "持续二阶合成与公孙离夺取集中后进入主要发力窗口。",
+            "claim_refs": [
+              "fmt24-owner-38713054751b"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "低阶天花板与对手成型压力增加，需要兼顾升级补战力和保留觉醒攻速。",
+            "claim_refs": [
+              "fmt24-owner-98c13f1a34fb"
+            ],
+            "inference": true
+          }
+        },
+        "adopt": "三分供牌与低阶合成链可建立，赵云能保护公孙离输出。",
+        "avoid": "前期公孙离大量卡手而缺可夺取等级时，先修正前排、供级与生存。",
+        "signals": {
+          "英雄投入": "猪八戒只用于合成成长，打出时不夺走队友等级，觉醒后停止专门找他的重复牌；公孙离吸可退出工具，赵云转吕布前核对三分觉醒攻速条件。"
+        }
+      },
+      "required_factions": [
+        "三分"
+      ],
+      "advantages": "暂无已确认结论",
+      "disadvantages": "暂无已确认结论"
+    }
+  ],
+  "topic": "白歌",
+  "supporting_nodes": [
+    {
+      "id": "support-doc-18dd7512550f269b27a8bf",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "每完成4次英雄合成，获得1张“即兴创作”。使用后，随机复制场上1名己方英雄，生成同名卡牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-3c78af7d37330e22e007cf",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "白歌的棋手秘技与技能是联动效果，累计使用6张“即兴创作”后解锁“灵感爆发”。释放后，斩击手牌中3张未觉醒英雄牌，每张裂变为2张“转瞬”复制牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-f649e5aedf1c0c085d7dc7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "白歌棋手升级6级后的专属天赋为惊才绝艳，获得一张专属效果牌“奇才”。指定1名英雄，直接获得该英雄4张牌。要点：4张正好满足觉醒条件，6级固定送一个觉醒核心。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-3682ac2c60f74f62b40af3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "奇才一场比赛仅有一张，谨慎使用选择关键英雄牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-34a90b6491a8358da560a2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "要点：想复制谁，先把他放上场，由于是随机复制，可以尽量保证场上均是需要的英雄再使用。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-a1e485530bcdf34e1fe2ff",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "白歌通过合成与复制加速组件和觉醒，6级的奇才增加定向复制资源。启动前能否保血取决于过渡战力和已取得组件，启动后强度取决于循环能否兑现；具体前中后期条件由各阵容分支说明，不能以棋手等级单独判断强弱。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-8f05f5917b5cbafe0487ac",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "天赋优先点兵点将、资深猎头等加速合成的天赋。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-c2ede512c4151e911b80af",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手秘技牌的获得需要进行24次的英雄合成，至少需要在中期才能触发，灵感爆发就是将手牌的3张一分为二，要注意的是斩击是随机三张未觉醒牌，手上有觉醒的牌是不会斩击到觉醒牌。所以使用时就要注意手牌里的未觉醒牌只留三张自己需要的，避免斩击到没用的牌。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-fceb6b658d191687af35d5",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "如果手上没有非觉醒英雄牌依然可以斩击，但会空用技能。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-0df199ff99e6ee1b048e53",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "要点：转瞬牌当回合不用就消失，释放前留足操作时间。",
+      "separator": ""
+    },
+    {
+      "id": "support-doc-9b2c118ba18913787c84f9",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "甄姬提供登场英雄牌、庄周提供招募战术，均可通过持续打牌与合成配合白歌技能；三分倒转与逐鹿方向按实际组件、保血和启动条件选择，不设无条件强弱排序。\n\n白歌的技能可用于复制庄周，提高招募战术产出；招募战术有机会再次得到庄周，形成合成资源。效果牌可配合嬴政法强成长与芈月被动。\n\n逐鹿方向使用灵感爆发前，处理无用非觉醒英雄牌，把需要的庄周留作斩击材料；奇才也可指定场上的庄周提供复制牌，再逐张打出转瞬牌。具体使用仍需检查手牌和操作时间。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-33-opening",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "未定阵时先用能够减少本轮掉血的承伤与输出过渡，同时比较合成能否带来有效复制；低阶牌到手可以合成，但不为无关合成消耗全部升级预算。免费刷新留到关键英雄可出现的棋手等级，再集中获取组件；是否抢等级须结合对手压力和升级后的买牌资源。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-33-empty-slots",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "即兴创作、照影从场上英雄中选择，灵感爆发从手牌非觉醒英雄中选择。分别检查场上候选、手牌空间与非觉醒牌种类；清理无用场上候选需要出售或实际触发觉醒回手，不能直接收回手牌。仍需作战的主力不要为了缩小随机范围随意卖掉。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-33-upgrade",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "棋手6级的奇才可集中补关键英雄牌，但升级不能替代本轮战力。先判断现有组件能否保血，以及升级后是否有足够手牌空间和时间使用复制资源，再决定继续找关键觉醒或争取6级；阵容专属目标见对应打法。",
+      "separator": ""
+    },
+    {
+      "id": "support-sl-player-33-qicai-options",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "奇才可用来补尚未觉醒的关键供牌英雄，也可在供牌已稳定、目标已到手时增加循环材料。三分倒转中，甄姬未觉醒时与直接复制露娜的收益不同：先看缺的是后续选牌能力还是露娜数量，再整理灵感爆发的非觉醒目标；不把奇才固定给露娜。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-33-keycard-first",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "定阵可以参考关键英雄、关键天赋与关键装备，其中关键英雄最稳；只看天赋或装备提前锁死的容错更低。刷牌流示范中的极端空场和低血量不作为所有白歌开局的默认步骤。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-33-copy-goal",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "使用灵感爆发前先整理手里的非觉醒英雄，让剑气尽量复制当前能继续供牌或合成的对象；逐鹿嬴政中常保留庄周。手牌或血量不允许等齐时可先用已有目标，不为固定复制数量耽误当轮战力。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-33-skill-chain",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "神来之笔累计四次英雄合成取得即兴创作，使用六次即兴创作后取得灵感爆发；6级取得奇才，可指定复制英雄。联动前先整理非觉醒手牌目标，先奇才再灵感爆发；合成或使用次数不足时不能直接跳到下一环。",
+      "separator": ""
+    },
+    {
+      "id": "support-six-player-33-hand-speed",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "需要处理大量手牌时，先用快捷键处理无需指定目标的牌，再手动指定其余牌的目标；练习以在回合结束前兑现实际战力为目标。刷牌流前期掉血过多可能来不及启动，升级与留技能都要服从存活条件。",
+      "separator": ""
+    },
+    {
+      "id": "support-b22-player-33-shoot-endgame",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "三分射终局集中等级会减少场上觉醒英雄数量，从而降低公孙离攻速。传承、遗志与换帅前应同时检查主力等级、前排及觉醒人数；需要保留低阶合成牌补回觉醒时，不能提前清空所有材料。",
+      "separator": ""
+    }
+  ],
+  "semantics": {}
+}

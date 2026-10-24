@@ -1,0 +1,536 @@
+{
+  "id": "player-yaomei",
+  "type": "player",
+  "title": "瑶妹",
+  "aliases": [
+    "瑶妹：适用打法与选择"
+  ],
+  "entities": [
+    "player:11"
+  ],
+  "related": [],
+  "path": "knowledge/players/瑶妹.json",
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手五章节与未定阵开局整理",
+      "previous": {
+        "claims": [],
+        "manual_sections": [],
+        "revision": "74348670a53b9df13969"
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.683866+00:00",
+      "origin": "editorial",
+      "reason": "棋手唯一身份与纯棋手名迁移",
+      "previous": {
+        "title": "瑶妹：适用打法与选择",
+        "path": "knowledge/players/瑶妹－适用打法与选择.md",
+        "player_id": null,
+        "aliases": []
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.700372+00:00",
+      "origin": "editorial",
+      "reason": "棋手升级术语统一与逐阶教学补充",
+      "previous": {
+        "claims": [
+          {
+            "id": "player-opening-deer-wins",
+            "section": "前期思路",
+            "text": "需要靠小鹿胜场发育时，前期应同时争取保血和累计胜利，利用已有过渡战力为后续定阵留容错。小鹿的额外等级收益与胜场条件有关，不要在未定阵时就把主动连败当作默认选择；这不代表任何对手都能打赢。",
+            "condition": "",
+            "inference": true,
+            "kind": "general_strategy",
+            "version": null,
+            "origin": "editorial",
+            "evidence": [
+              {
+                "source": "BV1xdYq6KEnA:p1",
+                "start": 144.99,
+                "end": 198.57
+              }
+            ],
+            "derived_from": [
+              "opening-wins"
+            ]
+          },
+          {
+            "id": "player-opening-deer-opponent",
+            "section": "前期思路",
+            "text": "需要争取前期胜场时，按对手质量选择过渡英雄：对手较弱、牛魔能够取胜时可补经济；面对同行瑶妹或强势孙尚香时，比较用干将莫邪替代牛魔补即时战力。保留用于后续升本和购买核心的预算，不为凑齐过渡名单刷空金币。",
+            "condition": "",
+            "inference": true,
+            "kind": "general_strategy",
+            "version": null,
+            "origin": "editorial",
+            "evidence": [
+              {
+                "source": "BV1pmap6HELz:p1",
+                "start": 31.3,
+                "end": 61.46
+              },
+              {
+                "source": "BV1xdYq6KEnA:p1",
+                "start": 198.86,
+                "end": 253.08
+              }
+            ],
+            "derived_from": [
+              "opening-four",
+              "opening-missing"
+            ]
+          }
+        ],
+        "meta": null,
+        "lineup_adaptations": [
+          {
+            "lineup": "yaomei-sacrifice-lixin",
+            "branch": "yaomei",
+            "title": "李信牺牲流",
+            "path": "knowledge/lineups/李信牺牲流-瑶妹.md",
+            "selection": {
+              "adopt": "能保前期胜场养小鹿，河洛开放，且能取得李信、钟馗和复生工具时考虑。",
+              "avoid": "持续掉血或缺李信时先补过渡战力；共鸣前不能安全升六时不硬升。",
+              "signals": {
+                "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
+                "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "小鹿配过渡英雄有争取前期胜场的能力，胜场同时帮助保血和养小鹿；面对强势孙尚香或同行仍需补即时战力，不能只凭棋手认定必胜。",
+                  "claim_refs": [
+                    "opening-four",
+                    "opening-wins"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "没有李信、等级和复生配套未成时，是需要重点防守的空窗；不能将小鹿前期优势延续理解为中期也强。取得李信后才开始兑现成长，缺牌时靠装备承接者保血并避免刷空金币。",
+                  "claim_refs": [
+                    "middle-no-lixin",
+                    "middle-fast-five",
+                    "middle-item-holder"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "李信达到关键等级、牺牲与复生衔接后可持续输出；共鸣前安全升六可进一步放大收益。是否形成优势取决于等级、死亡顺序、复生形式及对手，不能忽略共鸣前被淘汰的风险。",
+                  "claim_refs": [
+                    "growth-hundred",
+                    "growth-zhongkui",
+                    "taiyi-by-target",
+                    "six-budget-pressure",
+                    "order-six-before-double"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛"
+            ],
+            "advantages": "小鹿奉献集中等级，李信结合牺牲与复生继续输出。",
+            "disadvantages": "依赖死亡顺序、连线与100级门槛；复生成员可能分走奉献收益。"
+          }
+        ]
+      },
+      "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.725602+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-23T04:41:14.495940+00:00",
+      "origin": "readability_review",
+      "reason": "逐段可执行性审读；原文与依据保留，等级转移补用本地官方卡面规则，不新增固定转阵或竞价策略。",
+      "claims": [
+        {
+          "id": "doc-5d59de3417dbd20dd9d761",
+          "section": "前期思路",
+          "text": "注：如果没有以上天赋的话，优先选择以下天赋，如全军列阵、援军、无影手。这些天赋可以帮助我们快速找到阵容核心卡牌。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "document"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "explicit_relationships": true,
+  "player_reading_layout": {
+    "version": 1
+  },
+  "player_id": "player:11",
+  "claim_annotations": [
+    {
+      "id": "player-opening-deer-wins",
+      "section": "前期思路",
+      "condition": "",
+      "inference": true,
+      "kind": "general_strategy",
+      "version": null,
+      "origin": "editorial",
+      "evidence": [
+        {
+          "source": "BV1xdYq6KEnA:p1",
+          "start": 144.99,
+          "end": 198.57
+        }
+      ],
+      "derived_from": [
+        "opening-wins"
+      ],
+      "text_ref": "support-player-opening-deer-wins"
+    },
+    {
+      "id": "player-opening-deer-opponent",
+      "section": "前期思路",
+      "condition": "",
+      "inference": true,
+      "kind": "general_strategy",
+      "version": null,
+      "origin": "editorial",
+      "evidence": [
+        {
+          "source": "BV1pmap6HELz:p1",
+          "start": 31.3,
+          "end": 61.46
+        },
+        {
+          "source": "BV1xdYq6KEnA:p1",
+          "start": 198.86,
+          "end": 253.08
+        }
+      ],
+      "derived_from": [
+        "opening-four",
+        "opening-missing"
+      ],
+      "text_ref": "support-player-opening-deer-opponent"
+    },
+    {
+      "id": "tier-guide-general-player-yaomei",
+      "section": "前期思路",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "condition": "",
+      "version": null,
+      "evidence": [
+        {
+          "source": "BV1ksew6YEf5:p1",
+          "start": 114.41,
+          "end": 141.57
+        },
+        {
+          "source": "BV1e8HS6HEPk:p1",
+          "start": 1417.58,
+          "end": 1478.74
+        },
+        {
+          "source": "BV1LfaC6eEwi:p1",
+          "start": 441.23,
+          "end": 498.0
+        },
+        {
+          "source": "BV1mVY56iEN8:p1",
+          "start": 227.03,
+          "end": 252.88
+        },
+        {
+          "source": "BV1Qbae6AEgF:p1",
+          "start": 1248.19,
+          "end": 1277.65
+        },
+        {
+          "source": "BV1xWYC6HEz2:p1",
+          "start": 1489.16,
+          "end": 1520.84,
+          "frame": "frames/1495-0.jpg"
+        }
+      ],
+      "text_ref": "support-tier-guide-general-player-yaomei"
+    },
+    {
+      "id": "doc-783a6b71f1b480cf88ff0a",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 2,
+          "paragraph_end": 2
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-783a6b71f1b480cf88ff0a"
+    },
+    {
+      "id": "doc-ed182f416fac3dd421b9e0",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-ed182f416fac3dd421b9e0"
+    },
+    {
+      "id": "doc-8c2f98873a4524e27f9633",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-8c2f98873a4524e27f9633"
+    },
+    {
+      "id": "doc-5d59de3417dbd20dd9d761",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-5d59de3417dbd20dd9d761"
+    },
+    {
+      "id": "doc-c236294da89f2770ef4525",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-c236294da89f2770ef4525"
+    },
+    {
+      "id": "doc-beea16f1bc07d8d1e3f1e9",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 23,
+          "paragraph_end": 23
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-beea16f1bc07d8d1e3f1e9"
+    },
+    {
+      "id": "doc-d6ecdc17483820716b239f",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-d6ecdc17483820716b239f"
+    },
+    {
+      "id": "doc-4bee9051cf8d0e3edb8660",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 26,
+          "paragraph_end": 26
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-4bee9051cf8d0e3edb8660"
+    },
+    {
+      "id": "doc-572e916c2535e25f255671",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 28,
+          "paragraph_end": 28
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-0666e405421c6644af917d94d3fb3462c14bcf7616a8ca2fcff1427c40273576",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-572e916c2535e25f255671"
+    },
+    {
+      "id": "b22-player-11-lixin-transfer",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1mVY56iEN8:p1",
+          "start": 0,
+          "end": 252
+        },
+        {
+          "source": "BV1mVY56iEN8:p1",
+          "start": 870,
+          "end": 1065
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "text_ref": "support-b22-player-11-lixin-transfer"
+    }
+  ],
+  "body_sha256": "dd3f3a248be55303ac1fb7bb8865231d71f9fdbe843af23e8a4be130fd5118ea",
+  "revision": "5599f6fe5f93fe23fd1d",
+  "legacy_layout": {
+    "version": 4
+  }
+}

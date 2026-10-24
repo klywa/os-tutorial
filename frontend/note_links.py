@@ -4,7 +4,7 @@ from pathlib import Path
 from copy import deepcopy
 import workspace,wxq
 
-JOURNAL='knowledge/pending-note-link.json'
+JOURNAL='raw/knowledge/pending-note-link.json'
 
 def schema(db):
  db.executescript("""CREATE TABLE IF NOT EXISTS lineup_note_roles(lineup TEXT,note TEXT,role TEXT NOT NULL,PRIMARY KEY(lineup,note));
@@ -119,6 +119,8 @@ def after_knowledge_save(root):
  if (root/'raw/crawler/topics.sqlite3').is_file() and not (root/JOURNAL).exists():auto_link_locked(root)
 
 def project_notes(root):
+ import json_store
+ if json_store.enabled(root):return json_store.notes(root,public=True)
  from lineup_catalog import LineupCatalog
  catalog=LineupCatalog(root);roster=catalog.roster()
  with catalog.topics.db() as db:excluded={(r['lineup'],r['note']) for r in db.execute('SELECT * FROM lineup_note_exclusions')}

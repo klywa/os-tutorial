@@ -1,0 +1,987 @@
+{
+  "id": "player-zhaojun",
+  "type": "player",
+  "title": "昭君",
+  "entities": [
+    "card:1311",
+    "card:1361",
+    "card:1441",
+    "card:1461",
+    "card:1541",
+    "card:5131",
+    "card:663401",
+    "card:93412",
+    "card:93415",
+    "card:93416",
+    "card:93418",
+    "card:93419",
+    "card:93499",
+    "player:34"
+  ],
+  "related": [
+    {
+      "id": "zhaojun-high-tier-dahe",
+      "type": "lineup",
+      "title": "大河龙蛇-昭君",
+      "relation": "recommended_lineup",
+      "path": "knowledge/lineups/大河龙蛇-昭君.json"
+    },
+    {
+      "id": "heluo-huamulan--ming",
+      "type": "lineup",
+      "title": "河洛花木兰-明先生",
+      "relation": "recommended_lineup",
+      "path": "knowledge/lineups/河洛花木兰-明先生.json"
+    }
+  ],
+  "path": "knowledge/players/昭君.json",
+  "aliases": [
+    "昭君：冻结升阶与大河运营"
+  ],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手五章节与未定阵开局整理",
+      "previous": {
+        "claims": [
+          {
+            "section": "技能",
+            "text": "冰之心：冻结英雄，将其转换为随机更高品阶的英雄，并继承英雄等级。极寒冰冻：第5、第8回合提供深度冻结，选择后续技能分支。\n\n- 升华增加觉醒进度；霜寒进化让英雄沿同阵营升阶；破冰裂变让英雄跨两个品阶转换。\n\n- 冰封结晶根据解冻英雄的品阶提供对应兑换券。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 0,
+                "end": 204.7,
+                "frame": "frames/20-0.jpg"
+              }
+            ],
+            "kind": "mechanic"
+          },
+          {
+            "section": "技能",
+            "text": "寒冰觉醒：保留原英雄并增加觉醒进度，不能帮助换出高品阶英雄，需要自行刷新商店寻找核心。\n\n- 寒潮共振的收益与觉醒英雄有关；冰心领域按上场英雄的品阶总和增加等级。冰心领域存在30%与35%的不同资料记录，具体差异见关联知识。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 205,
+                "end": 346.8,
+                "frame": "frames/240-0.jpg"
+              }
+            ],
+            "kind": "mechanic"
+          },
+          {
+            "section": "使用技巧",
+            "text": "高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。\n\n- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。\n\n- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 234.6,
+                "end": 376.7
+              }
+            ],
+            "kind": "conditional_strategy"
+          },
+          {
+            "section": "使用技巧",
+            "text": "开局持续冻结用于过渡、能提供经济收益的英雄。核心英雄齐备后，无需为了寻找核心而继续冻结。保留遗志、传承，准备将过渡英雄积累的永久等级转给后期英雄，避免等级留在即将被替换的单位上。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 576.1,
+                "end": 635.1
+              }
+            ],
+            "kind": "general_strategy"
+          },
+          {
+            "section": "适配阵容",
+            "text": "适合高阶大河（龙蛇）阵容。升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 57.1,
+                "end": 84.7
+              }
+            ],
+            "kind": "general_strategy"
+          },
+          {
+            "id": "zhaojun-heluo-fit",
+            "section": "适配阵容",
+            "text": "较早取得花木兰及合适冻结强化时，昭君也能采用河洛古币复生体系，并在已有持续成长司空震时保留双输出。该方向围绕上官婉儿和露娜补复生，不沿用高阶大河的图腾成员。",
+            "kind": "conditional_strategy",
+            "condition": "",
+            "version": null,
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 164.53,
+                "end": 198.86
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 199.44,
+                "end": 239.07
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 313.58,
+                "end": 344.43
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 348.02,
+                "end": 382.08
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 427.98,
+                "end": 466.29
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 470.03,
+                "end": 503.39
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1107.97,
+                "end": 1141.42
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1337.07,
+                "end": 1365.33
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1365.33,
+                "end": 1395.42
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1395.42,
+                "end": 1434.88
+              }
+            ]
+          },
+          {
+            "id": "zhaojun-freeze-luna",
+            "section": "使用技巧",
+            "text": "河洛花木兰的核心齐备后，冻结仍可用于补露娜等关键资源。露娜冻结后是否仍变回露娜取决于强化及公共牌库情况；不能把卡住海诺的一次实战当成无条件循环。",
+            "kind": "conditional_strategy",
+            "condition": "",
+            "version": null,
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1434.88,
+                "end": 1467.6
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1468.94,
+                "end": 1505.84
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1509.04,
+                "end": 1550.18
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1550.18,
+                "end": 1586.13
+              }
+            ]
+          }
+        ],
+        "manual_sections": [],
+        "revision": "1e76f0bbeffcdd7d3e45"
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.683866+00:00",
+      "origin": "editorial",
+      "reason": "棋手唯一身份与纯棋手名迁移",
+      "previous": {
+        "title": "昭君：冻结升阶与大河运营",
+        "path": "knowledge/players/昭君－冻结升阶与大河运营.md",
+        "player_id": null,
+        "aliases": []
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.697871+00:00",
+      "origin": "editorial",
+      "reason": "棋手升级术语统一与逐阶教学补充",
+      "previous": {
+        "claims": [
+          {
+            "section": "技能",
+            "text": "冰之心：冻结英雄，将其转换为随机更高品阶的英雄，并继承英雄等级。极寒冰冻：第5、第8回合提供深度冻结，选择后续技能分支。\n\n- 升华增加觉醒进度；霜寒进化让英雄沿同阵营升阶；破冰裂变让英雄跨两个品阶转换。\n\n- 冰封结晶根据解冻英雄的品阶提供对应兑换券。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 0,
+                "end": 204.7,
+                "frame": "frames/20-0.jpg"
+              }
+            ],
+            "kind": "mechanic",
+            "id": "claim-0e35d83a4b627634a9f2"
+          },
+          {
+            "section": "技能",
+            "text": "寒冰觉醒：保留原英雄并增加觉醒进度，不能帮助换出高品阶英雄，需要自行刷新商店寻找核心。\n\n- 寒潮共振的收益与觉醒英雄有关；冰心领域按上场英雄的品阶总和增加等级。冰心领域存在30%与35%的不同资料记录，具体差异见关联知识。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 205,
+                "end": 346.8,
+                "frame": "frames/240-0.jpg"
+              }
+            ],
+            "kind": "mechanic",
+            "id": "claim-2f8236061f81588d616c"
+          },
+          {
+            "section": "适用技巧",
+            "text": "高阶大河阵容优先选择能获取高品阶英雄的技能分支，再依靠全队等级增长继续强化。\n\n- 寒冰觉醒配寒潮共振的后期潜力较高，但成型较慢，更依赖商店刷新获得所需英雄；金币不足时风险较高。\n\n- 已经选择霜寒进化或冰封结晶时，不必强行转向觉醒路线。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 234.6,
+                "end": 376.7
+              }
+            ],
+            "kind": "conditional_strategy",
+            "id": "claim-67dd23cb53842ea9129c"
+          },
+          {
+            "section": "前期思路",
+            "text": "开局尚未确定最终阵容时，可围绕能够提供经济或保留成长等级的过渡英雄进行冻结；检查冻结转换后的英雄是否仍能承担本轮战力。不同体系采用精简场面或升本的具体时机尚待确认。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": true,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 753.54,
+                "end": 834.81
+              }
+            ],
+            "kind": "general_strategy",
+            "id": "claim-e6fe65953f8dd1bbbfd8"
+          },
+          {
+            "section": "适用打法与选择",
+            "text": "### 其他已知方向\n\n升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 57.1,
+                "end": 84.7
+              }
+            ],
+            "kind": "general_strategy",
+            "id": "claim-fa635815cc71be704796"
+          },
+          {
+            "id": "zhaojun-heluo-fit",
+            "section": "适用打法与选择",
+            "text": "较早取得花木兰及合适冻结强化时，昭君也能采用河洛古币复生体系，并在已有持续成长司空震时保留双输出。该方向围绕上官婉儿和露娜补复生，不沿用高阶大河的图腾成员。",
+            "kind": "conditional_strategy",
+            "condition": "",
+            "version": null,
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 164.53,
+                "end": 198.86
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 199.44,
+                "end": 239.07
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 313.58,
+                "end": 344.43
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 348.02,
+                "end": 382.08
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 427.98,
+                "end": 466.29
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 470.03,
+                "end": 503.39
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1107.97,
+                "end": 1141.42
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1337.07,
+                "end": 1365.33
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1365.33,
+                "end": 1395.42
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1395.42,
+                "end": 1434.88
+              }
+            ]
+          },
+          {
+            "id": "zhaojun-freeze-luna",
+            "section": "适用技巧",
+            "text": "河洛花木兰的核心齐备后，冻结仍可用于补露娜等关键资源。露娜冻结后是否仍变回露娜取决于强化及公共牌库情况；不能把卡住海诺的一次实战当成无条件循环。",
+            "kind": "conditional_strategy",
+            "condition": "",
+            "version": null,
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1434.88,
+                "end": 1467.6
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1468.94,
+                "end": 1505.84
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1509.04,
+                "end": 1550.18
+              },
+              {
+                "source": "BV14Jh46AEpR:p1",
+                "start": 1550.18,
+                "end": 1586.13
+              }
+            ]
+          },
+          {
+            "id": "claim-e6fe65953f8dd1bbbfd8-transfer",
+            "section": "适用技巧",
+            "text": "需要换下积累等级的过渡英雄时，先保留并使用遗志、传承，将其永久等级转给后续英雄，避免成长留在即将被替换的单位上；高阶大河核心齐备后，无需仅为寻找核心继续冻结。",
+            "condition": "",
+            "inference": false,
+            "kind": "general_strategy",
+            "version": null,
+            "origin": "editorial",
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 576.1,
+                "end": 635.1
+              }
+            ],
+            "derived_from": [
+              "claim-e6fe65953f8dd1bbbfd8"
+            ]
+          }
+        ],
+        "meta": null,
+        "lineup_adaptations": [
+          {
+            "lineup": "zhaojun-high-tier-dahe",
+            "branch": "zhaojun",
+            "title": "昭君高阶大河（龙蛇）",
+            "path": "knowledge/lineups/昭君高阶大河（龙蛇）-昭君.md",
+            "selection": {
+              "adopt": "大河开放，有冻结进化技能和图腾组件时考虑，东皇太一、敖隐为主要核心。",
+              "avoid": "核心不到场时保留元流之子等过渡战力；司空震是可选补强，不因河洛被禁就否定整套打法。",
+              "signals": {
+                "来牌": "先找东皇太一与敖隐；虞姬迟迟不来时可先用司空震或海月承担输出，继续保留图腾组件。",
+                "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+                "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "前期主要靠弈星及被冻结的过渡英雄支撑。对手质量低、补干将莫邪有机会取胜时可保血；对手明显更强时精简场面升本，不能把冻结的后续收益当成本轮战力。",
+                  "claim_refs": [
+                    "claim-6e5677597b91d6042038"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "五本取得东皇太一、敖隐和图腾后，控制、回复与输出才逐步衔接。核心或虞姬未到时有过渡空窗，可按来牌用司空震、海月承担输出；第8回合冰心领域提供后续成长，不保证当轮压制所有对手。",
+                  "claim_refs": [
+                    "claim-01efb21eac616296f20c",
+                    "claim-163e42c476a496c5bbe8"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "核心与图腾齐备后，可依靠全队等级、人口和不朽坚冰继续提升；等级转移及保护图腾是兑现成长的条件。图腾被范围伤害快速清除时，后期潜力不能自动转为胜势。",
+                  "claim_refs": [
+                    "claim-bf3ad0a0c80d84f2d6d4",
+                    "claim-4bfc796afce05484f9b4",
+                    "guide-counter-totem"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "大河"
+            ],
+            "advantages": "控制与回复为高阶英雄争取输出时间，多人口可提高合成品阶。",
+            "disadvantages": "怕图腾被范围伤害清掉；等级转移、冻结和站位需要配合。"
+          },
+          {
+            "lineup": "heluo-huamulan",
+            "branch": "zhaojun",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-昭君.md",
+            "selection": {
+              "adopt": "较早取得花木兰、有适合的冻结强化时考虑；已有持续冻结成长的司空震时可双输出。",
+              "avoid": "无法较早取得花木兰时保留当前高阶战力，比较高阶大河；不为双输出硬追司空震。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "",
+                  "claim_refs": [],
+                  "inference": false
+                },
+                "middle": {
+                  "text": "需要较早取得花木兰及适合的冻结强化才有启动条件；同阵营进化不保证出核心，因此有条件未满足的空窗。已有持续成长司空震时可保留双输出，不应为照搬双核硬追缺牌。",
+                  "claim_refs": [
+                    "q-start",
+                    "q-double"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "古币复生体系与已有司空震的持续冻结成长可以并行，冻结露娜还可能补循环资源；这些收益受强化与公共牌库限制。双输出也不能代替婉儿觉醒、露娜位置和本轮复生准备。",
+                  "claim_refs": [
+                    "q-double",
+                    "q-luna",
+                    "wanner-awaken",
+                    "revive-budget"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛",
+              "日落海"
+            ],
+            "advantages": "冻结补高阶牌与成长，条件到位时保留第二输出。",
+            "disadvantages": "变化不保证花木兰，露娜循环受强化与公共牌库限制。"
+          }
+        ]
+      },
+      "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.677967+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-22T15:00:00+00:00",
+      "origin": "evidence_reconciliation",
+      "reason": "官方公告已解释成长公式版本差异。",
+      "previous": {
+        "claims": [
+          {
+            "section": "技能",
+            "text": "寒冰觉醒：保留原英雄并增加觉醒进度，不能帮助换出高品阶英雄，需要自行刷新商店寻找核心。\n\n- 寒潮共振的收益与觉醒英雄有关；冰心领域按上场英雄的品阶总和增加等级。冰心领域存在30%与35%的不同资料记录，具体差异见关联知识。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 205,
+                "end": 346.8,
+                "frame": "frames/240-0.jpg"
+              }
+            ],
+            "kind": "mechanic",
+            "id": "claim-2f8236061f81588d616c"
+          }
+        ]
+      }
+    },
+    {
+      "at": "2026-10-22T15:00:00+00:00",
+      "origin": "evidence_reconciliation",
+      "reason": "官方公告已解释成长公式版本差异。",
+      "previous": {
+        "claims": [
+          {
+            "id": "sl-player-zhaojun-growth-options",
+            "section": "适用技巧",
+            "text": "冰心领域按场上品阶总数成长，寒雨凝结按主要阵营人数成长，寒潮共振按已觉醒英雄数量成长；三者计数对象不同。选牌时按本局实际技能文字与当前场面比较，已有历史数值差异集中保留在版本差异笔记，不以当前卡面改写旧视频。",
+            "version": null,
+            "condition": "",
+            "inference": true,
+            "kind": "conditional_strategy",
+            "evidence": [
+              {
+                "source": "BV1MqhE6UEe2:p1",
+                "start": 149,
+                "end": 154,
+                "frame": "frames/151-0.jpg"
+              },
+              {
+                "source": "BV1Kwam6FEdu:p1",
+                "start": 1284.52,
+                "end": 1327.99
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "conflicts": [],
+  "explicit_relationships": true,
+  "player_reading_layout": {
+    "version": 1
+  },
+  "player_id": "player:34",
+  "claim_annotations": [
+    {
+      "section": "技能",
+      "version": "视频发布于2026-09-21；具体游戏版本未确认",
+      "condition": "",
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 0,
+          "end": 204.7,
+          "frame": "frames/20-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+          "paragraph_start": 2,
+          "paragraph_end": 2
+        },
+        {
+          "type": "document",
+          "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        }
+      ],
+      "kind": "mechanic",
+      "id": "claim-0e35d83a4b627634a9f2",
+      "text_ref": "support-claim-0e35d83a4b627634a9f2"
+    },
+    {
+      "section": "技能",
+      "version": "v1.7.1",
+      "condition": "",
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 205,
+          "end": 346.8,
+          "frame": "frames/240-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 18,
+          "paragraph_end": 24
+        }
+      ],
+      "kind": "mechanic",
+      "id": "claim-2f8236061f81588d616c",
+      "text_ref": "support-claim-2f8236061f81588d616c"
+    },
+    {
+      "section": "适用技巧",
+      "version": "视频发布于2026-09-21；具体游戏版本未确认",
+      "condition": "",
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 234.6,
+          "end": 376.7
+        }
+      ],
+      "kind": "conditional_strategy",
+      "id": "claim-67dd23cb53842ea9129c",
+      "text_ref": "support-claim-67dd23cb53842ea9129c"
+    },
+    {
+      "section": "前期思路",
+      "version": "视频发布于2026-09-21；具体游戏版本未确认",
+      "condition": "",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 753.54,
+          "end": 834.81
+        }
+      ],
+      "kind": "general_strategy",
+      "id": "claim-e6fe65953f8dd1bbbfd8",
+      "text_ref": "support-claim-e6fe65953f8dd1bbbfd8"
+    },
+    {
+      "section": "适用打法与选择",
+      "version": "视频发布于2026-09-21；具体游戏版本未确认",
+      "condition": "",
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 57.1,
+          "end": 84.7
+        }
+      ],
+      "kind": "general_strategy",
+      "id": "claim-fa635815cc71be704796",
+      "text_ref": "support-claim-fa635815cc71be704796"
+    },
+    {
+      "id": "zhaojun-heluo-fit",
+      "section": "适用打法与选择",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 164.53,
+          "end": 198.86
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 199.44,
+          "end": 239.07
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 313.58,
+          "end": 344.43
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 348.02,
+          "end": 382.08
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 427.98,
+          "end": 466.29
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 470.03,
+          "end": 503.39
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1107.97,
+          "end": 1141.42
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1337.07,
+          "end": 1365.33
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1365.33,
+          "end": 1395.42
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1395.42,
+          "end": 1434.88
+        }
+      ],
+      "text_ref": "support-zhaojun-heluo-fit"
+    },
+    {
+      "id": "zhaojun-freeze-luna",
+      "section": "适用技巧",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1434.88,
+          "end": 1467.6
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1468.94,
+          "end": 1505.84
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1509.04,
+          "end": 1550.18
+        },
+        {
+          "source": "BV14Jh46AEpR:p1",
+          "start": 1550.18,
+          "end": 1586.13
+        }
+      ],
+      "text_ref": "support-zhaojun-freeze-luna"
+    },
+    {
+      "id": "claim-e6fe65953f8dd1bbbfd8-transfer",
+      "section": "适用技巧",
+      "condition": "",
+      "inference": false,
+      "kind": "general_strategy",
+      "version": null,
+      "origin": "editorial",
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 576.1,
+          "end": 635.1
+        }
+      ],
+      "derived_from": [
+        "claim-e6fe65953f8dd1bbbfd8"
+      ],
+      "text_ref": "support-claim-e6fe65953f8dd1bbbfd8-transfer"
+    },
+    {
+      "id": "tier-guide-general-player-zhaojun",
+      "section": "前期思路",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "condition": "",
+      "version": null,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 753.5,
+          "end": 894.7
+        },
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 85.1,
+          "end": 174.8
+        }
+      ],
+      "text_ref": "support-tier-guide-general-player-zhaojun"
+    },
+    {
+      "id": "doc-2f4bc04958026a50ab4f00",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+          "paragraph_start": 23,
+          "paragraph_end": 23
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-2f4bc04958026a50ab4f00"
+    },
+    {
+      "id": "doc-239b394e85beffe59a54f3",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+          "paragraph_start": 24,
+          "paragraph_end": 24
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-239b394e85beffe59a54f3"
+    },
+    {
+      "id": "doc-2c33c214cf84a3e18a763d",
+      "section": "适用打法与选择",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-97b0318b567fa9331ba54dfa8207378e19b93b9716d929f94f1aeef9871ede0d",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-2c33c214cf84a3e18a763d"
+    },
+    {
+      "id": "sl-player-zhaojun-freeze-material",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 87.64,
+          "end": 257.28
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 517,
+          "end": 544.94
+        }
+      ],
+      "text_ref": "support-sl-player-zhaojun-freeze-material"
+    },
+    {
+      "id": "sl-player-zhaojun-upgrade-boundary",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 87.64,
+          "end": 200.17
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 517,
+          "end": 568.54
+        }
+      ],
+      "text_ref": "support-sl-player-zhaojun-upgrade-boundary"
+    },
+    {
+      "id": "sl-player-zhaojun-liubang-warning",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 103.69,
+          "end": 137.93
+        },
+        {
+          "source": "BV1jBJR6eE5f:p1",
+          "start": 170.75,
+          "end": 200.17
+        }
+      ],
+      "text_ref": "support-sl-player-zhaojun-liubang-warning"
+    },
+    {
+      "id": "sl-player-zhaojun-growth-options",
+      "section": "适用技巧",
+      "version": "v1.7.1",
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 149,
+          "end": 154,
+          "frame": "frames/151-0.jpg"
+        },
+        {
+          "source": "BV1Kwam6FEdu:p1",
+          "start": 1284.52,
+          "end": 1327.99
+        },
+        {
+          "type": "document",
+          "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+          "paragraph_start": 18,
+          "paragraph_end": 24
+        }
+      ],
+      "text_ref": "support-sl-player-zhaojun-growth-options"
+    }
+  ],
+  "body_sha256": "8ed601fbc051d9269f5861e487cfa46d54d1e48b3fd4055f6a11de3d60862f88",
+  "revision": "402a3c66e4d0e8865894",
+  "legacy_layout": {
+    "version": 4
+  }
+}

@@ -43,7 +43,28 @@ def retry_file_access(operation, cancelled=None, crt_access=False):
             time.sleep(delays[attempt])
 
 
+def storage_path(path):
+    path = Path(path)
+    knowledge = next((p for p in path.parents if p.name == 'knowledge'), None)
+    if knowledge is None or not (knowledge / 'index.meta.json').exists():
+        return path
+    relative = path.relative_to(knowledge)
+    if relative.as_posix() in ('source-registry.json', 'document-sources.json'):
+        return path.with_suffix('.meta.json')
+    if path.name.startswith('pending-') or relative.parts[0] in ('reviews', 'replays'):
+        return knowledge.parent / 'raw/knowledge' / relative
+    return path
+
+
 def read_json(path, default=None):
+    path = Path(path)
+    if path.name == 'index.json' and path.parent.name == 'knowledge' and (path.parent / 'index.meta.json').exists():
+        import json_store
+        return {'schema_version': 6, 'notes': json_store.notes(path.parent.parent)}
+    if path.name == 'index.json' and path.parent.name == 'cards' and (path.parent.parent / 'index.meta.json').exists():
+        from reference_store import json_cards
+        return {'schema_version': 6, 'cards': json_cards(path.parent.parent.parent)}
+    path = storage_path(path)
     return json.loads(retry_file_access(lambda: Path(path).read_text(encoding='utf-8-sig'), crt_access=True)) if Path(path).exists() else default
 
 
@@ -63,6 +84,11 @@ def backup_file(path):
 
 
 def atomic_text(path, text, cancelled=None):
+    path = storage_path(path)
+    knowledge = next((p for p in Path(path).parents if p.name == 'knowledge'), None)
+    if knowledge is not None and (knowledge / 'index.meta.json').exists():
+        if Path(path).suffix != '.json' or Path(path) in (knowledge / 'index.json', knowledge / 'cards/index.json'):
+            raise ValueError('纯JSON知识库禁止旧Markdown或全文索引写入，请使用schema6事务')
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists() and retry_file_access(lambda: path.read_text(encoding='utf-8'), cancelled, crt_access=True) == text:
@@ -83,6 +109,7 @@ def atomic_text(path, text, cancelled=None):
 
 
 def atomic_json(path, value, cancelled=None):
+    path = storage_path(path)
     text = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
     return atomic_text(path, text, cancelled=cancelled) if cancelled is not None else atomic_text(path, text)
 
@@ -99,6 +126,8 @@ def source_dir(root, sid):
 
 def init_store(root):
     root = Path(root)
+    if (root / 'knowledge/index.meta.json').exists():
+        return
     for folder in ['raw/sources', 'raw/reports', 'knowledge/lineups',
                    'knowledge/players', 'knowledge/other', 'entities/raw']:
         (root / folder).mkdir(parents=True, exist_ok=True)
@@ -174,6 +203,9 @@ def related(root, entity_ids, core=None, topic=None):
 
 
 def render_note(note, sources):
+    if 'document' in note:
+        from json_document import markdown
+        return markdown(note['document'])
     from player_branches import enabled, entry_markdown
     if enabled(note):return entry_markdown(note)
     from lineup_layout import PROFILE_ID, render as render_profile
@@ -247,6 +279,9 @@ def render_note(note, sources):
 
 
 def commit_notes(root, incoming):
+    import json_store
+    if json_store.enabled(root):
+        return json_store.commit(root, incoming)
     from workspace import store_lock, recover
     with store_lock(root):
         recover(root)
@@ -344,6 +379,9 @@ def _commit_notes(root, incoming):
 
 
 def validate_store(root):
+    import json_store
+    if json_store.enabled(root):
+        return json_store.validate_evidence(root)
     root = Path(root)
     errors = []
     seen = set()
@@ -439,6 +477,8 @@ def main():
     sub.add_parser('sync-card-images')
     sub.add_parser('validate')
     sub.add_parser('sync-markdown')
+    migration = sub.add_parser('migrate-json')
+    migration.add_argument('--apply', action='store_true')
     sub.add_parser('migrate')
     sub.add_parser('migrate-player-identities')
     p = sub.add_parser('export-transcripts')
@@ -467,7 +507,11 @@ def main():
     p.add_argument('url', help='Exact public media URL observed in the browser')
     args = parser.parse_args()
     if args.command == 'init':
-        init_store(args.root)
+        if (args.root/'knowledge/index.json').exists():
+            init_store(args.root)  # Legacy stores require explicit migrate-json --apply.
+        else:
+            from json_store import initialize
+            initialize(args.root)
         result = {'root': str(args.root)}
     elif args.command == 'sync-entities':
         from official import sync_official
@@ -478,6 +522,9 @@ def main():
     elif args.command == 'sync-markdown':
         from markdown_sync import scan
         result = scan(args.root)
+    elif args.command == 'migrate-json':
+        from migrate_json_knowledge import migrate
+        result = migrate(args.root, apply=args.apply)
     elif args.command == 'validate':
         result = validate_store(args.root)
     elif args.command == 'migrate-player-identities':

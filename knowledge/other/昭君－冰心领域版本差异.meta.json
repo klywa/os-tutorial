@@ -1,0 +1,112 @@
+{
+  "id": "zhaojun-version-and-asr-review",
+  "type": "other",
+  "title": "昭君：冰心领域版本差异",
+  "entities": [
+    "card:93416",
+    "player:34"
+  ],
+  "related": [
+    {
+      "id": "zhaojun-high-tier-dahe",
+      "type": "lineup",
+      "title": "大河龙蛇-昭君",
+      "path": "knowledge/lineups/大河龙蛇-昭君.json"
+    },
+    {
+      "id": "player-zhaojun",
+      "type": "player",
+      "title": "昭君",
+      "path": "knowledge/players/昭君.json"
+    },
+    {
+      "id": "heluo-huamulan--ming",
+      "type": "lineup",
+      "title": "河洛花木兰-明先生",
+      "path": "knowledge/lineups/河洛花木兰-明先生.json"
+    }
+  ],
+  "path": "knowledge/other/昭君－冰心领域版本差异.json",
+  "aliases": [],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-20T04:48:31.697871+00:00",
+      "origin": "editorial",
+      "reason": "棋手升级术语统一与逐阶教学补充",
+      "previous": {
+        "claims": [
+          {
+            "section": "版本差异",
+            "text": "冰心领域有两组不同日期的数值：2026年9月的攻略资料为上场英雄品阶总和的30%，2026年10月9日采集的官方资料为35%。尚未确认具体修改版本和生效日期，使用时应核对当前游戏中的技能描述。",
+            "version": "视频发布于2026-09-21；具体游戏版本未确认",
+            "condition": "",
+            "inference": false,
+            "evidence": [
+              {
+                "source": "BV1aThi6AEAC:p1",
+                "start": 261.9,
+                "end": 346.8
+              }
+            ],
+            "kind": "mechanic"
+          }
+        ],
+        "meta": null,
+        "lineup_adaptations": null
+      },
+      "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.677967+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "section": "版本差异",
+      "version": "视频发布于2026-09-21；具体游戏版本未确认",
+      "condition": "",
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1aThi6AEAC:p1",
+          "start": 261.9,
+          "end": 346.8
+        }
+      ],
+      "kind": "mechanic",
+      "text_ref": "support-0"
+    },
+    {
+      "id": "zhaojun-growth-snapshot-20261021",
+      "section": "版本差异",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "source": "BV1MqhE6UEe2:p1",
+          "start": 149,
+          "end": 154,
+          "frame": "frames/151-0.jpg"
+        },
+        {
+          "source": "BV1Kwam6FEdu:p1",
+          "start": 1284.52,
+          "end": 1327.99
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+      },
+      "text_ref": "support-zhaojun-growth-snapshot-20261021"
+    }
+  ],
+  "body_sha256": "ab81a33292314869278baed7b79ef08682f4f45f6e05c585e714d3506428757f",
+  "revision": "5ef56c937bd731c3a6df"
+}

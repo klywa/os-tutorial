@@ -1,0 +1,466 @@
+{
+  "schema_version": 6,
+  "notes": [
+    {
+      "id": "zhaojun-high-tier-dahe",
+      "type": "lineup",
+      "title": "大河龙蛇-昭君",
+      "path": "knowledge/lineups/大河龙蛇-昭君.json",
+      "player_id": "player:34",
+      "revision": "2ba0a0ecdd180aaa0ab0"
+    },
+    {
+      "id": "player-zhaojun",
+      "type": "player",
+      "title": "昭君",
+      "path": "knowledge/players/昭君.json",
+      "player_id": "player:34",
+      "revision": "402a3c66e4d0e8865894"
+    },
+    {
+      "id": "zhaojun-version-and-asr-review",
+      "type": "other",
+      "title": "昭君：冰心领域版本差异",
+      "path": "knowledge/other/昭君－冰心领域版本差异.json",
+      "player_id": null,
+      "revision": "5ef56c937bd731c3a6df"
+    },
+    {
+      "id": "player-angela",
+      "type": "player",
+      "title": "安琪拉",
+      "path": "knowledge/players/安琪拉.json",
+      "player_id": "player:51",
+      "revision": "9ee8cf167054c2bf86b2"
+    },
+    {
+      "id": "changxiaoe-general-play",
+      "type": "lineup",
+      "title": "常小娥灵活变阵-常小娥",
+      "path": "knowledge/lineups/常小娥灵活变阵-常小娥.json",
+      "player_id": "player:24",
+      "revision": "3b48336581ef96d3000e"
+    },
+    {
+      "id": "heluo-huamulan--ming",
+      "type": "lineup",
+      "title": "河洛花木兰-明先生",
+      "path": "knowledge/lineups/河洛花木兰-明先生.json",
+      "player_id": "player:39",
+      "revision": "efd85a4820a6fd6356e9"
+    },
+    {
+      "id": "heluo-huamulan--zhuang",
+      "type": "lineup",
+      "title": "河洛花木兰-庄小鱼",
+      "path": "knowledge/lineups/河洛花木兰-庄小鱼.json",
+      "player_id": "player:31",
+      "revision": "6f6eef37ae10d3718d14"
+    },
+    {
+      "id": "heluo-huamulan--naonao",
+      "type": "lineup",
+      "title": "河洛花木兰-闹闹",
+      "path": "knowledge/lineups/河洛花木兰-闹闹.json",
+      "player_id": "player:40",
+      "revision": "c3dc6ddd4ba19737d9fd"
+    },
+    {
+      "id": "heluo-huamulan--zhaojun",
+      "type": "lineup",
+      "title": "河洛花木兰-昭君",
+      "path": "knowledge/lineups/河洛花木兰-昭君.json",
+      "player_id": "player:34",
+      "revision": "fb98ad17fc2cac382840"
+    },
+    {
+      "id": "heluo-huamulan--ying",
+      "type": "lineup",
+      "title": "河洛花木兰-嬴律",
+      "path": "knowledge/lineups/河洛花木兰-嬴律.json",
+      "player_id": "player:43",
+      "revision": "4a3b741dff31a3e810c9"
+    },
+    {
+      "id": "player-yaomei",
+      "type": "player",
+      "title": "瑶妹",
+      "path": "knowledge/players/瑶妹.json",
+      "player_id": "player:11",
+      "revision": "5599f6fe5f93fe23fd1d"
+    },
+    {
+      "id": "player-ming",
+      "type": "player",
+      "title": "明先生",
+      "path": "knowledge/players/明先生.json",
+      "player_id": "player:39",
+      "revision": "c55ffa50cdf2b2628a81"
+    },
+    {
+      "id": "player-zhuang",
+      "type": "player",
+      "title": "庄小鱼",
+      "path": "knowledge/players/庄小鱼.json",
+      "player_id": "player:31",
+      "revision": "103079e0a1a500a88dc2"
+    },
+    {
+      "id": "player-naonao",
+      "type": "player",
+      "title": "闹闹",
+      "path": "knowledge/players/闹闹.json",
+      "player_id": "player:40",
+      "revision": "0b066758cdbd3a7121b8"
+    },
+    {
+      "id": "player-ying",
+      "type": "player",
+      "title": "嬴律",
+      "path": "knowledge/players/嬴律.json",
+      "player_id": "player:43",
+      "revision": "ec0e76b8fa2630e6684b"
+    },
+    {
+      "id": "player-22",
+      "type": "player",
+      "title": "乔汐",
+      "path": "knowledge/players/乔汐.json",
+      "player_id": "player:22",
+      "revision": "80f1e5c1c46d94efbcc9"
+    },
+    {
+      "id": "player-41",
+      "type": "player",
+      "title": "姜导",
+      "path": "knowledge/players/姜导.json",
+      "player_id": "player:41",
+      "revision": "7ca6713f35271f31d953"
+    },
+    {
+      "id": "player-38",
+      "type": "player",
+      "title": "孙小宾",
+      "path": "knowledge/players/孙小宾.json",
+      "player_id": "player:38",
+      "revision": "19a3b77c5cd6770a5784"
+    },
+    {
+      "id": "player-10",
+      "type": "player",
+      "title": "小妲己",
+      "path": "knowledge/players/小妲己.json",
+      "player_id": "player:10",
+      "revision": "cd20c26d9fece392638d"
+    },
+    {
+      "id": "player-24",
+      "type": "player",
+      "title": "常小娥",
+      "path": "knowledge/players/常小娥.json",
+      "player_id": "player:24",
+      "revision": "138c94ada674391370ab"
+    },
+    {
+      "id": "player-33",
+      "type": "player",
+      "title": "白歌",
+      "path": "knowledge/players/白歌.json",
+      "player_id": "player:33",
+      "revision": "c8eacf4c101332f07e01"
+    },
+    {
+      "id": "player-21",
+      "type": "player",
+      "title": "镜",
+      "path": "knowledge/players/镜.json",
+      "player_id": "player:21",
+      "revision": "667ffe762b1568c50058"
+    },
+    {
+      "id": "player-20",
+      "type": "player",
+      "title": "阿离",
+      "path": "knowledge/players/阿离.json",
+      "player_id": "player:20",
+      "revision": "630ef6ef379c1e95d89c"
+    },
+    {
+      "id": "player-50",
+      "type": "player",
+      "title": "香香",
+      "path": "knowledge/players/香香.json",
+      "player_id": "player:50",
+      "revision": "66842f161051b149ce80"
+    },
+    {
+      "id": "player-32",
+      "type": "player",
+      "title": "马可",
+      "path": "knowledge/players/马可.json",
+      "player_id": "player:32",
+      "revision": "027f5cc21801d8b35de0"
+    },
+    {
+      "id": "mechanics-cold-knowledge",
+      "type": "other",
+      "title": "冷门知识",
+      "path": "knowledge/other/冷门知识.json",
+      "player_id": null,
+      "revision": "5feb2f150fad59b59cbb"
+    },
+    {
+      "id": "mechanics-rules",
+      "type": "other",
+      "title": "基础规则",
+      "path": "knowledge/other/基础规则.json",
+      "player_id": null,
+      "revision": "d04ce95748052b5f6b2d"
+    },
+    {
+      "id": "mechanics-auction",
+      "type": "other",
+      "title": "拍卖机制",
+      "path": "knowledge/other/拍卖机制.json",
+      "player_id": null,
+      "revision": "1ff19ec4ce3ef0865289"
+    },
+    {
+      "id": "mechanics-pool",
+      "type": "other",
+      "title": "牌库",
+      "path": "knowledge/other/牌库.json",
+      "player_id": null,
+      "revision": "2035e6c8380cac3ab954"
+    },
+    {
+      "id": "mechanics-level-transfer",
+      "type": "other",
+      "title": "等级转移",
+      "path": "knowledge/other/等级转移.json",
+      "player_id": null,
+      "revision": "79e5cbab8822ed69066d"
+    },
+    {
+      "id": "mechanics-equipment",
+      "type": "other",
+      "title": "装备详解",
+      "path": "knowledge/other/装备详解.json",
+      "player_id": null,
+      "revision": "31c41c32cc9f98a28d3f"
+    },
+    {
+      "id": "document-lineup-16",
+      "type": "lineup",
+      "title": "大河开团射-香香",
+      "path": "knowledge/lineups/大河开团射-香香.json",
+      "player_id": "player:50",
+      "revision": "74841b32df1ee433c23a"
+    },
+    {
+      "id": "sanfen-reversal--baige",
+      "type": "lineup",
+      "title": "三分倒转-白歌",
+      "path": "knowledge/lineups/三分倒转-白歌.json",
+      "player_id": "player:33",
+      "revision": "d0a8520a540a1811027c"
+    },
+    {
+      "id": "sanfen-reversal--jing",
+      "type": "lineup",
+      "title": "三分倒转-镜",
+      "path": "knowledge/lineups/三分倒转-镜.json",
+      "player_id": "player:21",
+      "revision": "971f5b34fd4c3232e64e"
+    },
+    {
+      "id": "b22-shangui",
+      "type": "lineup",
+      "title": "山鬼流-明先生",
+      "path": "knowledge/lineups/山鬼流-明先生.json",
+      "player_id": "player:39",
+      "revision": "07b16209724d5a2846d4"
+    },
+    {
+      "id": "b22-zhuang-no-faction",
+      "type": "lineup",
+      "title": "庄小鱼无阵营-庄小鱼",
+      "path": "knowledge/lineups/庄小鱼无阵营-庄小鱼.json",
+      "player_id": "player:31",
+      "revision": "6e2b7fe112896c099f85"
+    },
+    {
+      "id": "b22-umbrella-haiyue",
+      "type": "lineup",
+      "title": "伞海月-阿离",
+      "path": "knowledge/lineups/伞海月-阿离.json",
+      "player_id": "player:20",
+      "revision": "8e45c7c4427ff0182cfe"
+    },
+    {
+      "id": "b22-umbrella-shouyue",
+      "type": "lineup",
+      "title": "伞守约-阿离",
+      "path": "knowledge/lineups/伞守约-阿离.json",
+      "player_id": "player:20",
+      "revision": "fa5fbaf74cce0dc0e863"
+    },
+    {
+      "id": "b22-marco-pig",
+      "type": "lineup",
+      "title": "马可养猪-马可",
+      "path": "knowledge/lineups/马可养猪-马可.json",
+      "player_id": "player:32",
+      "revision": "05151003bc33303c786e"
+    },
+    {
+      "id": "b22-heal-wall-zhuge",
+      "type": "lineup",
+      "title": "奶屏诸葛亮-班叔",
+      "path": "knowledge/lineups/奶屏诸葛亮-班叔.json",
+      "player_id": "player:35",
+      "revision": "2aea351fcd6e6c3b78b1"
+    },
+    {
+      "id": "player-35",
+      "type": "player",
+      "title": "班叔",
+      "path": "knowledge/players/班叔.json",
+      "player_id": "player:35",
+      "revision": "03b96926aa8f4fce3808"
+    },
+    {
+      "id": "b22-low-dahe-shoot",
+      "type": "lineup",
+      "title": "低阶大河射-嬴律",
+      "path": "knowledge/lineups/低阶大河射-嬴律.json",
+      "player_id": "player:43",
+      "revision": "414c39ab8bb78f50cee8"
+    },
+    {
+      "id": "b22-prep-hanxin",
+      "type": "lineup",
+      "title": "开备韩信-姜导",
+      "path": "knowledge/lineups/开备韩信-姜导.json",
+      "player_id": "player:41",
+      "revision": "093917118cc3c2340920"
+    },
+    {
+      "id": "b22-shield-yao",
+      "type": "lineup",
+      "title": "炸盾曜-阿离",
+      "path": "knowledge/lineups/炸盾曜-阿离.json",
+      "player_id": "player:20",
+      "revision": "cad933d2f4ab090fcc50"
+    },
+    {
+      "id": "b22-shield-liubang",
+      "type": "lineup",
+      "title": "炸盾刘邦-安琪拉",
+      "path": "knowledge/lineups/炸盾刘邦-安琪拉.json",
+      "player_id": "player:51",
+      "revision": "834957f50ac40681dd37"
+    },
+    {
+      "id": "b22-sanfen-shoot",
+      "type": "lineup",
+      "title": "三分射-白歌",
+      "path": "knowledge/lineups/三分射-白歌.json",
+      "player_id": "player:33",
+      "revision": "5de0f5e839b4d46303dd"
+    },
+    {
+      "id": "b22-zhulu-miyue",
+      "type": "lineup",
+      "title": "逐鹿芈月-姜导",
+      "path": "knowledge/lineups/逐鹿芈月-姜导.json",
+      "player_id": "player:41",
+      "revision": "acefbc078617771244f8"
+    },
+    {
+      "id": "b22-sacrifice-lixin",
+      "type": "lineup",
+      "title": "牺牲李信-瑶妹",
+      "path": "knowledge/lineups/牺牲李信-瑶妹.json",
+      "player_id": "player:11",
+      "revision": "63af6d7c889c3696388e"
+    },
+    {
+      "id": "b22-high-zhulu-yingzheng",
+      "type": "lineup",
+      "title": "高阶逐鹿嬴政-明先生",
+      "path": "knowledge/lineups/高阶逐鹿嬴政-明先生.json",
+      "player_id": "player:39",
+      "revision": "64d33298a04dd944aa33"
+    }
+  ],
+  "aliases": {
+    "zhaojun-high-tier-dahe|player:34": "zhaojun-high-tier-dahe",
+    "zhaojun-high-tier-dahe|zhaojun": "zhaojun-high-tier-dahe",
+    "zhaojun-high-tier-dahe": "zhaojun-high-tier-dahe",
+    "changxiaoe-general-play|player:24": "changxiaoe-general-play",
+    "changxiaoe-general-play|changxiaoe": "changxiaoe-general-play",
+    "changxiaoe-general-play": "changxiaoe-general-play",
+    "heluo-huamulan|player:39": "heluo-huamulan--ming",
+    "heluo-huamulan|ming": "heluo-huamulan--ming",
+    "heluo-huamulan": "heluo-huamulan--ming",
+    "heluo-huamulan|player:31": "heluo-huamulan--zhuang",
+    "heluo-huamulan|zhuang": "heluo-huamulan--zhuang",
+    "heluo-huamulan|player:40": "heluo-huamulan--naonao",
+    "heluo-huamulan|naonao": "heluo-huamulan--naonao",
+    "heluo-huamulan|player:34": "heluo-huamulan--zhaojun",
+    "heluo-huamulan|zhaojun": "heluo-huamulan--zhaojun",
+    "heluo-huamulan|player:43": "heluo-huamulan--ying",
+    "heluo-huamulan|ying": "heluo-huamulan--ying",
+    "document-lineup-16|player:50": "document-lineup-16",
+    "document-lineup-16|owner": "document-lineup-16",
+    "document-lineup-16": "document-lineup-16",
+    "sanfen-reversal|player:33": "sanfen-reversal--baige",
+    "sanfen-reversal|baige": "sanfen-reversal--baige",
+    "sanfen-reversal": "sanfen-reversal--baige",
+    "sanfen-reversal|player:21": "sanfen-reversal--jing",
+    "sanfen-reversal|jing": "sanfen-reversal--jing",
+    "b22-shangui|player:39": "b22-shangui",
+    "b22-shangui|owner": "b22-shangui",
+    "b22-shangui": "b22-shangui",
+    "b22-zhuang-no-faction|player:31": "b22-zhuang-no-faction",
+    "b22-zhuang-no-faction|owner": "b22-zhuang-no-faction",
+    "b22-zhuang-no-faction": "b22-zhuang-no-faction",
+    "b22-umbrella-haiyue|player:20": "b22-umbrella-haiyue",
+    "b22-umbrella-haiyue|owner": "b22-umbrella-haiyue",
+    "b22-umbrella-haiyue": "b22-umbrella-haiyue",
+    "b22-umbrella-shouyue|player:20": "b22-umbrella-shouyue",
+    "b22-umbrella-shouyue|owner": "b22-umbrella-shouyue",
+    "b22-umbrella-shouyue": "b22-umbrella-shouyue",
+    "b22-marco-pig|player:32": "b22-marco-pig",
+    "b22-marco-pig|owner": "b22-marco-pig",
+    "b22-marco-pig": "b22-marco-pig",
+    "b22-heal-wall-zhuge|player:35": "b22-heal-wall-zhuge",
+    "b22-heal-wall-zhuge|owner": "b22-heal-wall-zhuge",
+    "b22-heal-wall-zhuge": "b22-heal-wall-zhuge",
+    "b22-low-dahe-shoot|player:43": "b22-low-dahe-shoot",
+    "b22-low-dahe-shoot|owner": "b22-low-dahe-shoot",
+    "b22-low-dahe-shoot": "b22-low-dahe-shoot",
+    "b22-prep-hanxin|player:41": "b22-prep-hanxin",
+    "b22-prep-hanxin|owner": "b22-prep-hanxin",
+    "b22-prep-hanxin": "b22-prep-hanxin",
+    "b22-shield-yao|player:20": "b22-shield-yao",
+    "b22-shield-yao|owner": "b22-shield-yao",
+    "b22-shield-yao": "b22-shield-yao",
+    "b22-shield-liubang|player:51": "b22-shield-liubang",
+    "b22-shield-liubang|owner": "b22-shield-liubang",
+    "b22-shield-liubang": "b22-shield-liubang",
+    "b22-sanfen-shoot|player:33": "b22-sanfen-shoot",
+    "b22-sanfen-shoot|owner": "b22-sanfen-shoot",
+    "b22-sanfen-shoot": "b22-sanfen-shoot",
+    "b22-zhulu-miyue|player:41": "b22-zhulu-miyue",
+    "b22-zhulu-miyue|owner": "b22-zhulu-miyue",
+    "b22-zhulu-miyue": "b22-zhulu-miyue",
+    "b22-sacrifice-lixin|player:11": "b22-sacrifice-lixin",
+    "b22-sacrifice-lixin|owner": "b22-sacrifice-lixin",
+    "b22-sacrifice-lixin": "b22-sacrifice-lixin",
+    "b22-high-zhulu-yingzheng|player:39": "b22-high-zhulu-yingzheng",
+    "b22-high-zhulu-yingzheng|owner": "b22-high-zhulu-yingzheng",
+    "b22-high-zhulu-yingzheng": "b22-high-zhulu-yingzheng"
+  }
+}

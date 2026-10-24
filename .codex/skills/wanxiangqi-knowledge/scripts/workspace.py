@@ -27,13 +27,11 @@ class Busy(ValueError):
 @contextmanager
 def store_lock(root, wait=False):
     # OS byte-range locks release on process exit, including abnormal exits.
-    path = Path(root) / 'knowledge/.write.lock'
+    path = Path(root) / 'raw/knowledge/.write.lock'
     path.parent.mkdir(parents=True, exist_ok=True)
-    handle = open(path, 'a+b')
-    handle.seek(0, 2)
-    if handle.tell() == 0:
-        handle.write(b'0')
-        handle.flush()
+    handle = wxq.retry_file_access(lambda: open(path, 'a+b'), crt_access=True)
+    # Byte-range locks may extend past EOF. Initializing a byte before taking
+    # the lock races the first writer and can leak a handle on Windows.
     handle.seek(0)
     try:
         deadline = time.monotonic() + (2 if wait else 0)
@@ -56,6 +54,9 @@ def store_lock(root, wait=False):
 
 
 def notes(root):
+    import json_store
+    if json_store.enabled(root):
+        return json_store.notes(root)
     return wxq.read_json(Path(root) / 'knowledge/index.json', {'notes': []})['notes']
 
 
@@ -225,6 +226,9 @@ def make_transaction(root, items, obsolete=None, ignore_issues=(), expected_mark
 
 
 def persist(root, items, obsolete=None, _sync=True, _ignore_issues=(), _expected_markdown=None, _replay_updates=None):
+    import json_store
+    if json_store.enabled(root):
+        return json_store.persist_views(root, items)
     root = Path(root)
     if _sync:
         from markdown_sync import assert_clean
@@ -301,6 +305,13 @@ def apply_transaction(root, transaction):
 
 
 def recover(root):
+    import json_store
+    if json_store.enabled(root):
+        json_store.recover(root)
+        from reference_store import recover_cards, recover_transcript_edits
+        recover_transcript_edits(root)
+        recover_cards(root)
+        return
     from reference_store import recover_cards, recover_transcript_edits
     recover_transcript_edits(root)
     recover_cards(root)
@@ -312,6 +323,10 @@ def recover(root):
 
 
 def migrate(root):
+    import json_store
+    if json_store.enabled(root):
+        json_store.recover(root)
+        return {'notes': len(json_store.notes(root)), 'schema_version': 6}
     with store_lock(root):
         recover(root)
         pending = wxq.read_json(Path(root) / 'knowledge/pending-commit.json')
@@ -358,6 +373,9 @@ def manual_claim(section, text):
 
 
 def create_note(root, payload):
+    import json_store
+    if json_store.enabled(root):
+        return json_store.create(root, payload)
     """Create an empty, retry-safe knowledge note through the shared transaction."""
     if not isinstance(payload,dict) or set(payload)-{'type','title','aliases','request_id','player_id'}:
         raise ValueError('新建笔记字段无效')
@@ -550,6 +568,9 @@ def edit_locked(root, nid, payload, recover_first=True):
 
 
 def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False):
+    import json_store
+    if json_store.enabled(root):
+        return json_store.edit(root, nid, payload)
     with nullcontext() if _locked else store_lock(root):
         if _recover_first: recover(root)
         from markdown_sync import scan

@@ -1,0 +1,277 @@
+{
+  "id": "player-ming",
+  "type": "player",
+  "title": "明先生",
+  "aliases": [
+    "明先生：适用打法与选择"
+  ],
+  "entities": [
+    "player:39"
+  ],
+  "related": [
+    {
+      "id": "heluo-huamulan--ming",
+      "type": "lineup",
+      "title": "河洛花木兰-明先生",
+      "relation": "recommended_lineup",
+      "path": "knowledge/lineups/河洛花木兰-明先生.json"
+    }
+  ],
+  "path": "knowledge/players/明先生.json",
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-19T13:13:42.761249+00:00",
+      "origin": "editorial",
+      "reason": "棋手五章节与未定阵开局整理",
+      "previous": {
+        "claims": [],
+        "manual_sections": [],
+        "revision": "fa1d4886d4a45735c410"
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.683866+00:00",
+      "origin": "editorial",
+      "reason": "棋手唯一身份与纯棋手名迁移",
+      "previous": {
+        "title": "明先生：适用打法与选择",
+        "path": "knowledge/players/明先生－适用打法与选择.md",
+        "player_id": null,
+        "aliases": []
+      }
+    },
+    {
+      "at": "2026-10-20T04:48:31.700372+00:00",
+      "origin": "editorial",
+      "reason": "棋手升级术语统一与逐阶教学补充",
+      "previous": {
+        "claims": [],
+        "meta": null,
+        "lineup_adaptations": [
+          {
+            "lineup": "heluo-huamulan",
+            "branch": "ming",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-明先生.md",
+            "selection": {
+              "adopt": "已有保血过渡战力、卦象·节支持到五本，并能保留购买核心的资源时考虑。",
+              "avoid": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "卦象·节主要提供升本资源，单挂弈星节约开销的同时会压低场上战力；只有补牛魔有机会取胜时才兼顾其产币。这个阶段的重点是控制掉血和升本成本，不能视为默认强势期。",
+                  "claim_refs": [
+                    "ming-economy",
+                    "ming-opening-yixing"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "五本转卦象·丰集中找花木兰、上官婉儿后，取得核心与觉醒进度才逐步补起战力；找牌不顺而只有刷新时存在空窗。李信、李白和现有装备可承担过渡，升六需保留本轮买牌与保血预算。",
+                  "claim_refs": [
+                    "ming-five",
+                    "ming-economy",
+                    "missing-mulan"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "产币成员、婉儿觉醒与露娜整备循环齐备后，复生和等级收益逐步完整；卦象带来的资源仍需转成有效战力。对手控制、风筝及本轮复生预算会限制上限，不能只凭已经成型判断强弱。",
+                  "claim_refs": [
+                    "coin-loop",
+                    "wanner-awaken",
+                    "revive-budget",
+                    "anti-burst",
+                    "ailin-chase"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛",
+              "日落海"
+            ],
+            "advantages": "能量与卦象·丰支持找体系。",
+            "disadvantages": "核心未到手时战力空窗；留五与升六的收益边界尚不明确。"
+          }
+        ]
+      },
+      "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-20T06:20:35.725602+00:00",
+      "origin": "document-fusion",
+      "reason": "本地文档融合，旧结论和人工内容保留",
+      "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    }
+  ],
+  "conflicts": [],
+  "explicit_relationships": true,
+  "player_reading_layout": {
+    "version": 1
+  },
+  "player_id": "player:39",
+  "claim_annotations": [
+    {
+      "id": "tier-guide-general-player-ming",
+      "section": "前期思路",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "condition": "",
+      "version": null,
+      "evidence": [
+        {
+          "source": "BV1W7ab6KEhS:p1",
+          "start": 271.06,
+          "end": 306.1
+        },
+        {
+          "source": "BV1W7ab6KEhS:p1",
+          "start": 306.1,
+          "end": 345.97
+        },
+        {
+          "source": "BV1W7ab6KEhS:p1",
+          "start": 437.42,
+          "end": 480.88
+        },
+        {
+          "source": "BV1W7ab6KEhS:p1",
+          "start": 513.58,
+          "end": 544.21
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 115.79,
+          "end": 144.79
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 145.13,
+          "end": 174.03
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 347.42,
+          "end": 376.34
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 376.7,
+          "end": 406.1
+        },
+        {
+          "source": "BV1p7Yv6WEt2:p1",
+          "start": 658.35,
+          "end": 710.13,
+          "frame": "frames/700-0.jpg"
+        },
+        {
+          "source": "BV1qaJr6cEFv:p1",
+          "start": 61.39,
+          "end": 90.15
+        },
+        {
+          "source": "BV1qaJr6cEFv:p1",
+          "start": 90.51,
+          "end": 128.01
+        },
+        {
+          "source": "BV1qaJr6cEFv:p1",
+          "start": 694.23,
+          "end": 724.21
+        },
+        {
+          "source": "BV1qaJr6cEFv:p1",
+          "start": 724.55,
+          "end": 757.24
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 174.3,
+          "end": 198.96
+        }
+      ],
+      "text_ref": "support-tier-guide-general-player-ming"
+    },
+    {
+      "id": "doc-384b95ca42679855e70e9c",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-ad422be659dd9358c3aaba3c3beefa992e63b34e74b0daa71f875254f0c33106",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-384b95ca42679855e70e9c"
+    },
+    {
+      "id": "six-player-39-gift-choices",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Zga86fEic:p1",
+          "start": 0.02,
+          "end": 110.71
+        }
+      ],
+      "text_ref": "support-six-player-39-gift-choices"
+    },
+    {
+      "id": "b22-player-39-yingzheng-tempo",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 509,
+          "end": 899
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "text_ref": "support-b22-player-39-yingzheng-tempo"
+    },
+    {
+      "id": "b22-player-39-second-secret",
+      "section": "技能",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1iEH16VEdp:p1",
+          "start": 0.34,
+          "end": 56.68
+        }
+      ],
+      "text_ref": "support-b22-player-39-second-secret"
+    }
+  ],
+  "body_sha256": "35156afaf6893006089b0a89effb9a52725eb1aac1d201bc516b348e06a347a2",
+  "revision": "c55ffa50cdf2b2628a81",
+  "legacy_layout": {
+    "version": 4
+  }
+}
