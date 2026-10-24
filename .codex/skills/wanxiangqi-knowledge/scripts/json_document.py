@@ -79,8 +79,30 @@ def markdown(document):
     return document.get('leading', '') + ''.join(render_node(n) for n in document['nodes'])
 
 
-def copy_entry(node):
-    return '**' + node['key'] + '：** ' + node['value']
+def copy_entry(node, body=None, note_title='正文'):
+    key=node['key']
+    if not node.get('show_key') and body:
+        key=note_title
+        for previous in body['nodes']:
+            if previous['id']==node['id']:break
+            if previous['type']=='heading':key=previous['title']
+    key=key.replace('**','').strip().rstrip('：:').strip()
+    if re.fullmatch(r'(?:【[^【】]+】|\[[^\[\]]+\])',key):key=key[1:-1].strip()
+    return key + '：' + node['value']
+
+
+def clean_labels(body):
+    """Repair presentation wrappers; do not touch links or value formatting."""
+    body=deepcopy(body)
+    for node in body['nodes']:
+        if node['type']!='entry' or not node.get('show_key'):continue
+        key=node['key'];value=node['value']
+        if key.startswith('【') and value.lstrip().startswith('】'):
+            key=key[1:];value=value.lstrip()[1:].lstrip()
+        key=key.replace('**','').strip()
+        if key.startswith('【') and key.endswith('】'):key=key[1:-1].strip()
+        node.update(key=key.rstrip('：:').strip(),value=value)
+    return body
 
 
 def section(document, node_id):

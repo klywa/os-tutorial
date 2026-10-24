@@ -108,6 +108,778 @@
       "origin": "document-fusion",
       "reason": "本地文档融合，旧结论和人工内容保留",
       "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-24T09:19:01.196988+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "明先生",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-f7f5e1d3dec429477690"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 10月8日公告教学将第二次秘技由第10回合延后为第11回合；不据此改变首次秘技或卦象刷新规则。第二次馈赠的预算按延后节点安排。",
+            "separator": "\n\n",
+            "id": "n-22929a63d16de8208544"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-cda9c99cd962c060c359"
+          },
+          {
+            "type": "entry",
+            "key": "棋手升级判断",
+            "show_key": true,
+            "value": "卦象·节用于积累升级资源，进入需要集中找牌的阶段再比较卦象·丰；切换以实际找牌目标为依据，不以单个示范回合作通用时点。资源技能不等于场上战力，升级后仍需保留买牌和保血资源；阵容未定时不预先套用某套五阶停留流程。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-360216a8de7ec4d88b11"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-923ae424c6e0cca1727b"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-b20f043f3dea4aa490b9"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "已有保血过渡战力、卦象·节支持到棋手五级，并能保留购买核心的资源时考虑。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-57a7734ce5b83ccf62e9"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-581bc36bf6f0f6dda330"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "河洛、日落海。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-05d2221029fabec462ee"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "能量与卦象·丰支持找体系。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-662da318b044ed813652"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "核心未到手时战力空窗；停在棋手5级找牌与升至6级的收益边界尚不明确。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-57bf1c1152e4c7b94280"
+          },
+          {
+            "type": "entry",
+            "key": "来牌与同行",
+            "show_key": true,
+            "value": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-4370af3dc9a57d355996"
+          },
+          {
+            "type": "entry",
+            "key": "对手与压力",
+            "show_key": true,
+            "value": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-59ffec31b11aa1dab096"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1d31369f92606ea84d59"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-727177f5478e80ff7659"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "卦象·节提供升级能量；只留弈星时前排和伤害较少，需要控制掉血，牛魔能帮助赢下战斗时再补。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-0a5f8a1c674b0d06a6b7"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "棋手5级用卦象·丰集中找花木兰和上官婉儿；核心未到时靠李信、李白过渡，取得核心和觉醒后逐步提高战力。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-1a050af43ce87134db1d"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-de099d8312096000af61"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[山鬼流](../lineups/山鬼流-明先生.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-4e20a81b770a464702fd"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "大河与逐鹿核心组件可获得，且能用4级找牌尽早启动。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a6492b8e9ae733ac58b3"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "首张大司命迟迟未到且掉血压力大时，先补即时战力，不只追辅助觉醒。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1025a6dce5056e928faa"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "大河、日落海、逐鹿。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-82cbdfaa6cbf3780f583"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-cd4f3ad455b7f3359c1d"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-d5d7f56503ea10a9dcab"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "米莱狄优先质量，大司命与召唤链先成；牺牲工具保持能及时阵亡，鲁班大师的基础等级与傀儡额外临时等级分别计算。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-97abbdfc2c7d856a168b"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-de0e2ef361225c29dce9"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "过渡取决于弈星、牛魔及即时战力，资源优势不等于当轮能赢。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-912c10a979c1271415fa"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "大司命和米莱狄到位后开始成长，但山鬼需要积累时间。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-424afa5ebfa2eaf69f32"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "高等级山鬼与傀儡分担范围和单体输出，后排召唤受阻会削弱继续成长。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-8a3ab338878f6d7cca46"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[高阶逐鹿嬴政](../lineups/高阶逐鹿嬴政-明先生.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-c5ef0a8740ea5e9e8014"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "逐鹿可用，能够以血量换储能并兑现缩蓝与保护。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-e5b2327b6114f5985076"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "组件未齐且承伤不足时走4级先稳路线，避免为多一次卦节连败出局。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-673e8a5e71869c87f807"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "逐鹿。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1b5f0b25af157095aaa5"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-dcacbf58e0a7f4551fa6"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3cb2e1eb70c9f785e19b"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "嬴政40后继续成长，白起常驻而老夫子轮换；鲁班大师停刷后上，傀儡另获最高逐鹿/召唤单位半额临时等级，太乙主要按命运之种威胁选。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-0b8b647a76900111a37e"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-c1fab024f06f90e7a177"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "卦节储能期间需过渡场面保血。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-2417734b9914f0d170a4"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "卦丰找到高阶逐鹿、嬴政40级且启动解决后形成输出窗口。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-e319bb20a7b3994326bb"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "持续输出与保护齐备后清场强，反伤和第一轮启动仍是关键限制。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-70196ce0b2e679856383"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-a44879df50e5639afc8b"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 选择卦象·丰前先核算临时刷新后的购买预算；能量不足以购买目标时比较延后使用，不能把刷新次数本身当成战力。",
+            "separator": "\n\n",
+            "id": "n-c8872c94c236e482d47b"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 山鬼召唤中，第一发命运馈赠可选阴支持找牌，第二发在缺觉醒时继续阴、质量足够时选阳补当轮战力；按阵容缺钱或缺战力决定，不把两次固定选择套用到所有明先生打法。",
+            "separator": "\n\n",
+            "id": "n-86f6802165055439282d"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 高阶逐鹿嬴政可按生存选择4级先开卦丰找组件，或血量允许时再储能到5级集中刷新。卦节提高付费刷新价格，免费刷新不受影响；经济优势应先兑现西施缩蓝、主力启动和保护。",
+            "separator": "\n\n",
+            "id": "n-6e265d5e66b337cc38b9"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-044ab0129db85acf266d"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+            "separator": "\n",
+            "id": "n-e39b9cee048a6716b168"
+          }
+        ],
+        "adaptations": [
+          {
+            "lineup": "heluo-huamulan",
+            "branch": "ming",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-明先生.md",
+            "selection": {
+              "adopt": "已有保血过渡战力、卦象·节支持到棋手五级，并能保留购买核心的资源时考虑。",
+              "avoid": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+                "英雄投入": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "卦象·节提供升级能量；只留弈星时前排和伤害较少，需要控制掉血，牛魔能帮助赢下战斗时再补。",
+                  "claim_refs": [
+                    "fmt24-ming-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "棋手5级用卦象·丰集中找花木兰和上官婉儿；核心未到时靠李信、李白过渡，取得核心和觉醒后逐步提高战力。",
+                  "claim_refs": [
+                    "fmt24-ming-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                  "claim_refs": [
+                    "fmt24-ming-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛",
+              "日落海"
+            ],
+            "advantages": "能量与卦象·丰支持找体系。",
+            "disadvantages": "核心未到手时战力空窗；停在棋手5级找牌与升至6级的收益边界尚不明确。"
+          },
+          {
+            "lineup": "b22-shangui",
+            "branch": "owner",
+            "title": "山鬼流",
+            "path": "knowledge/lineups/山鬼流-明先生.md",
+            "selection": {
+              "stage_strength": {
+                "early": {
+                  "text": "过渡取决于弈星、牛魔及即时战力，资源优势不等于当轮能赢。",
+                  "claim_refs": [
+                    "fmt24-owner-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "大司命和米莱狄到位后开始成长，但山鬼需要积累时间。",
+                  "claim_refs": [
+                    "fmt24-owner-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "高等级山鬼与傀儡分担范围和单体输出，后排召唤受阻会削弱继续成长。",
+                  "claim_refs": [
+                    "fmt24-owner-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              },
+              "adopt": "大河与逐鹿核心组件可获得，且能用4级找牌尽早启动。",
+              "avoid": "首张大司命迟迟未到且掉血压力大时，先补即时战力，不只追辅助觉醒。",
+              "signals": {
+                "英雄投入": "米莱狄优先质量，大司命与召唤链先成；牺牲工具保持能及时阵亡，鲁班大师的基础等级与傀儡额外临时等级分别计算。"
+              }
+            },
+            "required_factions": [
+              "大河",
+              "日落海",
+              "逐鹿"
+            ],
+            "advantages": "暂无已确认结论",
+            "disadvantages": "暂无已确认结论"
+          },
+          {
+            "lineup": "b22-high-zhulu-yingzheng",
+            "branch": "owner",
+            "title": "高阶逐鹿嬴政",
+            "path": "knowledge/lineups/高阶逐鹿嬴政-明先生.md",
+            "selection": {
+              "stage_strength": {
+                "early": {
+                  "text": "卦节储能期间需过渡场面保血。",
+                  "claim_refs": [
+                    "fmt24-owner-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "卦丰找到高阶逐鹿、嬴政40级且启动解决后形成输出窗口。",
+                  "claim_refs": [
+                    "fmt24-owner-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "持续输出与保护齐备后清场强，反伤和第一轮启动仍是关键限制。",
+                  "claim_refs": [
+                    "fmt24-owner-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              },
+              "adopt": "逐鹿可用，能够以血量换储能并兑现缩蓝与保护。",
+              "avoid": "组件未齐且承伤不足时走4级先稳路线，避免为多一次卦节连败出局。",
+              "signals": {
+                "英雄投入": "嬴政40后继续成长，白起常驻而老夫子轮换；鲁班大师停刷后上，傀儡另获最高逐鹿/召唤单位半额临时等级，太乙主要按命运之种威胁选。"
+              }
+            },
+            "required_factions": [
+              "逐鹿"
+            ],
+            "advantages": "暂无已确认结论",
+            "disadvantages": "暂无已确认结论"
+          }
+        ],
+        "supporting_nodes": [
+          {
+            "id": "support-tier-guide-general-player-ming",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "棋手升级判断：卦象·节用于积累升级资源，进入需要集中找牌的阶段再比较卦象·丰；切换以实际找牌目标为依据，不以单个示范回合作通用时点。资源技能不等于场上战力，升级后仍需保留买牌和保血资源；阵容未定时不预先套用某套五阶停留流程。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-384b95ca42679855e70e9c",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "选择卦象·丰前先核算临时刷新后的购买预算；能量不足以购买目标时比较延后使用，不能把刷新次数本身当成战力。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-39-gift-choices",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "山鬼召唤中，第一发命运馈赠可选阴支持找牌，第二发在缺觉醒时继续阴、质量足够时选阳补当轮战力；按阵容缺钱或缺战力决定，不把两次固定选择套用到所有明先生打法。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-39-yingzheng-tempo",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "高阶逐鹿嬴政可按生存选择4级先开卦丰找组件，或血量允许时再储能到5级集中刷新。卦节提高付费刷新价格，免费刷新不受影响；经济优势应先兑现西施缩蓝、主力启动和保护。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-39-second-secret",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "10月8日公告教学将第二次秘技由第10回合延后为第11回合；不据此改变首次秘技或卦象刷新规则。第二次馈赠的预算按延后节点安排。",
+            "separator": ""
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "tier-guide-general-player-ming",
+          "section": "前期思路",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "condition": "",
+          "version": null,
+          "evidence": [
+            {
+              "source": "BV1W7ab6KEhS:p1",
+              "start": 271.06,
+              "end": 306.1
+            },
+            {
+              "source": "BV1W7ab6KEhS:p1",
+              "start": 306.1,
+              "end": 345.97
+            },
+            {
+              "source": "BV1W7ab6KEhS:p1",
+              "start": 437.42,
+              "end": 480.88
+            },
+            {
+              "source": "BV1W7ab6KEhS:p1",
+              "start": 513.58,
+              "end": 544.21
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 115.79,
+              "end": 144.79
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 145.13,
+              "end": 174.03
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 347.42,
+              "end": 376.34
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 376.7,
+              "end": 406.1
+            },
+            {
+              "source": "BV1p7Yv6WEt2:p1",
+              "start": 658.35,
+              "end": 710.13,
+              "frame": "frames/700-0.jpg"
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 61.39,
+              "end": 90.15
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 90.51,
+              "end": 128.01
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 694.23,
+              "end": 724.21
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 724.55,
+              "end": 757.24
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 174.3,
+              "end": 198.96
+            }
+          ],
+          "text_ref": "support-tier-guide-general-player-ming"
+        },
+        {
+          "id": "doc-384b95ca42679855e70e9c",
+          "section": "适用技巧",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-ad422be659dd9358c3aaba3c3beefa992e63b34e74b0daa71f875254f0c33106",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            }
+          ],
+          "origin": "document",
+          "text_ref": "support-doc-384b95ca42679855e70e9c"
+        },
+        {
+          "id": "six-player-39-gift-choices",
+          "section": "适用技巧",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Zga86fEic:p1",
+              "start": 0.02,
+              "end": 110.71
+            }
+          ],
+          "text_ref": "support-six-player-39-gift-choices"
+        },
+        {
+          "id": "b22-player-39-yingzheng-tempo",
+          "section": "适用技巧",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 509,
+              "end": 899
+            }
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+          },
+          "text_ref": "support-b22-player-39-yingzheng-tempo"
+        },
+        {
+          "id": "b22-player-39-second-secret",
+          "section": "技能",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1iEH16VEdp:p1",
+              "start": 0.34,
+              "end": 56.68
+            }
+          ],
+          "text_ref": "support-b22-player-39-second-secret"
+        }
+      ]
     }
   ],
   "conflicts": [],
@@ -267,11 +1039,33 @@
         }
       ],
       "text_ref": "support-b22-player-39-second-secret"
+    },
+    {
+      "id": "acq-f45608deb958c9852f53",
+      "text_ref": "n-22929a63d16de8208544",
+      "kind": "mechanic",
+      "section": "特殊获取与当前机制",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 563,
+          "paragraph_end": 563
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 815,
+          "paragraph_end": 815
+        }
+      ]
     }
   ],
-  "body_sha256": "35156afaf6893006089b0a89effb9a52725eb1aac1d201bc516b348e06a347a2",
-  "revision": "c55ffa50cdf2b2628a81",
+  "body_sha256": "4ebb1ef9029eb65a38b4c53c9211f7950c92626aac60b432a94e70473247a25b",
+  "revision": "1dad26a74a21b13ed36e",
   "legacy_layout": {
     "version": 4
-  }
+  },
+  "retired_claim_annotations": []
 }

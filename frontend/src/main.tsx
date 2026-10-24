@@ -21,7 +21,7 @@ import LineupOverview from './LineupOverview';
 import NoteDirectory from './NoteDirectory';
 import LibraryTools from './LibraryTools';
 import NewNoteDialog from './NewNoteDialog';
-import {filterNotes,noteCounts,restoreNoteSelection} from './directoryModel';
+import {filterNotes,noteCounts,restoreNoteSelection,normalizeDirectoryType} from './directoryModel';
 import './entities.css';
 import {api,availability,entityLabel} from './model';
 import type {Note,Options,Source,ReadingDocument,Creator} from './types';
@@ -31,7 +31,7 @@ import './directory.css';
 
 type Prefs={branchPlayers?:Record<string,string>;mode:'sidebar'|'full';view:'play'|'notes'|'sources'|'cards'|'crawler';selected:string;section:string;query:string;banned:string[];unknown:boolean;player:string;hero:string;type:string};
 const initial:Prefs={mode:window.innerWidth<760?'sidebar':'full',view:'play',selected:'',section:'前期运营及应变',query:'',banned:[],unknown:false,player:'',hero:'',type:''};
-function preferences(){try{return {...initial,...JSON.parse(localStorage.getItem('wxq.preferences')??'{}')};}catch{return initial;}}
+function preferences(){try{const saved={...initial,...JSON.parse(localStorage.getItem('wxq.preferences')??'{}')};return {...saved,type:normalizeDirectoryType(saved.type)};}catch{return initial;}}
 const quick=['运营节奏','后期运营及应变','终局技巧','克制手段','站位技巧','推荐装备','推荐天赋及原因','成型后提升思路'];
 const phaseLabels:Record<string,string>={'运营节奏':'运营节奏','阵容组成':'阵容','禁用阵营适用情况':'禁用条件','核心机制':'机制','前期运营及应变':'前期','中期运营及应变':'中期','后期运营及应变':'后期','成型后提升思路':'成型提升','第一轮拍卖':'首轮拍卖','第二轮拍卖':'二轮拍卖','第三轮拍卖':'三轮拍卖','推荐天赋及原因':'天赋','站位技巧':'站位','推荐装备':'装备','终局技巧':'终局','克制手段':'克制本阵容','制敌手段':'制敌手段'};
 function App(){
@@ -100,7 +100,7 @@ function App(){
   const rows=scopedClaims(active?.claims.filter(c=>c.section===section)??[]);
   const stage=section.startsWith('前期')?'early':section.startsWith('中期')?'middle':section.startsWith('后期')?'late':undefined;
   function saved(note:Note){setNotes(rows=>rows.map(n=>n.id===note.id?note:n));setEditing(false);setDirty(false);setToast('笔记与存档已同步保存');void loadReaderData(api).then(([rows,options])=>{setNotes(rows);setOptions(options);}).catch(e=>setError('已保存，刷新关联笔记失败：'+(e as Error).message));}
-  function created(note:Note){setNotes(rows=>[...rows.filter(n=>n.id!==note.id),note]);setNewNote(false);patch({selected:note.id,view:'notes',type:note.type,query:'',player:'',hero:''});setEditing(true);setDirty(false);setToast('空白笔记已创建');}
+  function created(note:Note){setNotes(rows=>[...rows.filter(n=>n.id!==note.id),note]);setNewNote(false);patch({selected:note.id,view:'notes',type:normalizeDirectoryType(note.type),query:'',player:'',hero:''});setEditing(true);setDirty(false);setToast('空白笔记已创建');}
   function noteList(entries:typeof visible){return entries.map(({note,status})=><button key={note.id} className={'note-option '+(active?.id===note.id?'active':'')} onClick={()=>select(note.id)}><span className="note-icon">{note.type==='lineup'?'◈':note.type==='player'?'♙':'▤'}</span><span><strong>{note.title}</strong><small>{note.meta?.core_heroes.map(name).join('、')||({lineup:'阵容攻略',player:'棋手笔记',other:'知识笔记'}[note.type])}</small></span>{status==='unknown'&&<span className="badge gold">待确认</span>}</button>);}
   return <EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><header className="app-header"><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航">{(['play','notes','sources','crawler','cards'] as const).map((v,i)=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{['对局助手','全部笔记','外部内容','爬取','卡牌库'][i]}</button>)}</nav><div className="header-actions"><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
     <GlobalActivity/>

@@ -2,6 +2,12 @@ import type {CardSummary} from './types';
 export type EntityToken={text:string;ids?:string[]};
 export function resolveCandidates(ids:string[],references:string[]){const scoped=ids.filter(id=>references.includes(id));return scoped.length===1?scoped:ids;}
 export function selectedCandidate(ids:string[],chosen:string){return ids.length===1?ids[0]:ids.includes(chosen)?chosen:'';}
+export function heroVersions(cards:CardSummary[],ids:string[]){
+ const seeds=ids.map(id=>cards.find(c=>c.id===id)),first=seeds[0];
+ if(!first||seeds.some(c=>!c||c.category!=='heroes'||c.name!==first.name))return [];
+ return cards.filter(c=>c.category==='heroes'&&c.name===first.name)
+  .sort((a,b)=>Number(a.awakened)-Number(b.awakened)||a.id.localeCompare(b.id));
+}
 const cache=new WeakMap<CardSummary[],{names:Map<string,string[]>;words:string[];protected:Set<string>}>();
 export function splitEntities(text:string,cards:CardSummary[]):EntityToken[]{
  let dict=cache.get(cards);

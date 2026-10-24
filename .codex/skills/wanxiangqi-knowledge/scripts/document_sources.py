@@ -2,8 +2,19 @@
 from pathlib import Path
 import hashlib,re,zipfile,xml.etree.ElementTree as ET
 import wxq
+from functools import lru_cache
 
 REGISTRY='knowledge/document-sources.json'
+
+
+@lru_cache(maxsize=32)
+def _verified_snapshot(artifact, artifact_hash, artifact_stamp, paragraphs, paragraph_hash, paragraph_stamp):
+    # The stat stamps form part of the cache key: changed files must be hashed
+    # again. Never cache a validation failure or a paragraph-range decision.
+    for filename,digest in [(artifact,artifact_hash),(paragraphs,paragraph_hash)]:
+        if hashlib.sha256(Path(filename).read_bytes()).hexdigest()!=digest:
+            raise ValueError('Document snapshot changed')
+    return wxq.read_json(Path(paragraphs))
 
 def paragraphs(path):
     with zipfile.ZipFile(path) as archive:
@@ -39,11 +50,13 @@ def validate_evidence(root,evidence):
     if not re.fullmatch(r'doc-[a-f0-9]{64}',sid):raise ValueError('Invalid document source')
     row=next((r for r in wxq.read_json(root/REGISTRY,{'documents':[]})['documents'] if r['id']==sid),None)
     if not row:raise ValueError('Unknown document source: '+sid)
-    for key,digest in [('artifact',row['sha256']),('paragraphs',row['paragraph_sha256'])]:
+    paths={}
+    for key in ('artifact','paragraphs'):
         path=(root/row[key]).resolve()
         if not path.is_relative_to((root/'raw/documents'/sid).resolve()) or not path.is_file():raise ValueError('Missing document artifact: '+sid)
-        if hashlib.sha256(path.read_bytes()).hexdigest()!=digest:raise ValueError('Document snapshot changed: '+sid)
-    rows=wxq.read_json(root/row['paragraphs']);start=evidence.get('paragraph_start');end=evidence.get('paragraph_end')
+        stat=path.stat();paths[key]=(str(path),(stat.st_mtime_ns,stat.st_ctime_ns,stat.st_size))
+    rows=_verified_snapshot(paths['artifact'][0],row['sha256'],paths['artifact'][1],paths['paragraphs'][0],row['paragraph_sha256'],paths['paragraphs'][1])
+    start=evidence.get('paragraph_start');end=evidence.get('paragraph_end')
     if type(start) is not int or type(end) is not int or not 1<=start<=end<=len(rows):raise ValueError('Invalid document paragraph range')
     if not any(p['text'].strip() for p in rows[start-1:end]):raise ValueError('Empty document evidence')
     if any(k in evidence for k in ('start','end','frame')):raise ValueError('Document evidence cannot use video timestamps or frames')

@@ -6,7 +6,32 @@ export function renderNode(n:KnowledgeNode){
  return text+(n.separator??'\n\n');
 }
 export function documentMarkdown(body:KnowledgeDocument){return (body.leading??'')+body.nodes.map(renderNode).join('');}
-export function copyEntry(n:KnowledgeNode){if(n.type!=='entry')throw new Error('请选择知识条目');return `**${n.key}：** ${n.value}`;}
+export function copyLabel(value:string){
+ const text=value.replace(/\*\*/g,'').trim().replace(/[：:]+$/,'').trim();
+ return /^(?:【[^【】]+】|\[[^\[\]]+\])$/.test(text)?text.slice(1,-1).trim():text;
+}
+export function copyEntry(n:KnowledgeNode,body?:KnowledgeDocument,noteTitle='正文'){
+ if(n.type!=='entry')throw new Error('请选择知识条目');
+ const index=body?.nodes.findIndex(row=>row.id===n.id)??-1;
+ const heading=body?.nodes.slice(0,index<0?0:index).reverse().find(row=>row.type==='heading');
+ const key=copyLabel(n.show_key?n.key:heading?.type==='heading'?heading.title:noteTitle);
+ return `${key}：${n.value}`;
+}
+function clipboardNode(n:KnowledgeNode){
+ if(n.type==='heading')return renderNode({...n,title:copyLabel(n.title)});
+ return (n.show_key?(n.prefix??'').replace(/\*\*/g,'')+copyLabel(n.key)+'：':'')+n.value+(n.separator??'\n\n');
+}
+export function documentClipboard(body:KnowledgeDocument){return (body.leading??'')+body.nodes.map(clipboardNode).join('');}
+export function sectionClipboard(body:KnowledgeDocument,id:string){
+ const start=body.nodes.findIndex(n=>n.id===id);if(start<0)return '';
+ const block=body.nodes.slice(start,blockEnd(body.nodes,start)),[heading,entry]=block;
+ if(block.length===2&&heading.type==='heading'&&entry.type==='entry'&&
+  !/\n\s*\n|^\s*(?:[-*+]\s|\d+[.)]\s|[>|#]|`{3}|~{3}| {4})/m.test(entry.value)&&
+  !/^[^\n]*\|[^\n]*\n\s*\|?\s*:?-+\s*:?\s*\|/m.test(entry.value)){
+  return copyLabel(heading.title)+'：'+(entry.show_key?copyEntry(entry,body):entry.value).trim();
+ }
+ return block.map(clipboardNode).join('');
+}
 export function sectionMarkdown(body:KnowledgeDocument,id:string){
  const start=body.nodes.findIndex(n=>n.id===id);if(start<0)return '';
  const n=body.nodes[start];const level=n.type==='heading'?n.level:7;

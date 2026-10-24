@@ -33,7 +33,7 @@ export default function LibraryTools({mode,filters,options,counts,total,resultCo
    </Popover>
    <button className="library-tool" type="button" aria-label="新建笔记" title="新建笔记" onClick={onNew}>＋</button>
   </div>
-  {mode==='notes'?<div className="note-type-switch" role="group" aria-label="笔记类型">{[['','全部'],['lineup','阵容'],['player','棋手'],['other','其他']].map(([type,label])=><button key={type} type="button" aria-pressed={filters.type===type} className={filters.type===type?'selected':''} onClick={()=>onChange({type})}>{label}<small>{counts[type]??0}</small></button>)}</div>:<div className="game-conditions">
+  {mode==='notes'?<div className="note-type-switch" role="group" aria-label="笔记类型">{[['','全部'],['tactics','打法'],['other','其他']].map(([type,label])=><button key={type} type="button" aria-pressed={filters.type===type} className={filters.type===type?'selected':''} onClick={()=>onChange({type})}>{label}<small>{counts[type]??0}</small></button>)}</div>:<div className="game-conditions">
    <Popover label="本局条件" active={!!filters.banned.length||filters.unknown} button={<>本局条件<span>{filters.banned.length?'禁用 '+filters.banned.length:'未选禁用'}</span></>}>
     <strong>本局禁用阵营</strong><div className="faction-grid">{options.factions.map(f=><button key={f.id} type="button" aria-pressed={filters.banned.includes(f.id)} className={'faction '+(filters.banned.includes(f.id)?'banned':'')} onClick={()=>onChange({banned:filters.banned.includes(f.id)?filters.banned.filter(x=>x!==f.id):[...filters.banned,f.id]})}>{f.name}</button>)}</div>
     <label className="check"><input type="checkbox" checked={filters.unknown} onChange={e=>onChange({unknown:e.target.checked})}/>显示适用情况待确认的打法</label>

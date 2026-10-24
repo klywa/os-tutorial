@@ -362,7 +362,7 @@ def edit(root, nid, payload):
         if set(payload) - {'revision', 'document', 'aliases', 'title'}:
             raise ValueError('请通过结构化JSON正文编辑知识')
         before = deepcopy(record)
-        incoming = deepcopy(payload.get('document', body))
+        incoming = document.clean_labels(payload.get('document', body))
         document.validate(incoming)
         # Supporting evidence and structured semantics are maintained by the
         # canonical document, not accepted as accidental editor omissions.
@@ -509,6 +509,7 @@ def commit(root, incoming):
             if 'body' not in item or 'metadata' not in item:
                 raise ValueError('版本6提交须包含body和metadata；旧schema只能显式迁移')
             record = deepcopy(item)
+            record['body'] = document.clean_labels(record['body'])
             check_record(record)
             meta = record['metadata'];nid = meta['id'];previous = current.get(nid)
             if previous:
@@ -525,6 +526,15 @@ def commit(root, incoming):
                     changed.append(meta['id']);continue
                 for k in ('history', 'node_annotations', 'retired_claim_annotations', 'manual_sections', 'manual_semantics', 'conflicts', 'creation'):
                     if k in previous['metadata']:meta[k] = deepcopy(previous['metadata'][k])
+                if record['body'] != previous['body']:
+                    history=meta.setdefault('history',[])
+                    history.append({'at':wxq.now(),'origin':'import','body':deepcopy(previous['body']),
+                                    'claim_annotations':deepcopy(previous['metadata'].get('claim_annotations',[]))})
+                    current_claim_ids={c.get('id') for c in meta.get('claim_annotations',[])}
+                    retired=meta.setdefault('retired_claim_annotations',[])
+                    known_retired={c.get('id') for c in retired}
+                    retired.extend({**deepcopy(c),'history_index':len(history)-1} for c in previous['metadata'].get('claim_annotations',[])
+                                   if c.get('id') not in current_claim_ids and c.get('id') not in known_retired)
             projected = project(record)
             validate_semantics(root,record)
             old_claims = project(previous)['claims'] if previous else []

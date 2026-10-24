@@ -1,7 +1,7 @@
 {
   "id": "zhaojun-version-and-asr-review",
   "type": "other",
-  "title": "昭君：冰心领域版本差异",
+  "title": "昭君成长技能选择",
   "entities": [
     "card:93416",
     "player:34"
@@ -62,6 +62,130 @@
       "origin": "document-fusion",
       "reason": "本地文档融合，旧结论和人工内容保留",
       "report": "knowledge/reviews/外网文档融合-2026-10-20.json"
+    },
+    {
+      "at": "2026-10-24T09:18:09.438435+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "昭君：冰心领域版本差异",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-83d099f055846fd1f3cf"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "版本差异",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-44f0ae22a9aaaa4c7f47"
+          },
+          {
+            "type": "entry",
+            "key": "冰心领域有两组不同日期的数值",
+            "show_key": true,
+            "value": "2026年9月的攻略资料为上场英雄品阶总和的30%，2026年10月9日采集的官方资料为35%。尚未确认具体修改版本和生效日期，使用时应核对当前游戏中的技能描述。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-adb3dd94280de6dcf74a"
+          },
+          {
+            "type": "entry",
+            "key": "推测",
+            "show_key": true,
+            "value": "新增核对的教学画面同时显示冰心领域为品阶总数30%、寒潮共振为觉醒英雄数量的1.5倍；另一实战讲解提到冰心领域35%，本地官方卡面则记录35%与2倍。具体修改补丁和生效日期仍待确认，比较强化时按本局实际数值计算，不把不同历史技能文字当作ASR同音纠错。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a8962219c5b1455356da"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-e51c2d90fc9e1ff996b6"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- [大河龙蛇](../lineups/大河龙蛇-昭君.json)\n- [昭君](../players/昭君.json)\n- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+            "separator": "\n",
+            "id": "n-39901acb5cba7d23e7b9"
+          }
+        ],
+        "topic": "大河龙蛇运营",
+        "supporting_nodes": [
+          {
+            "id": "support-0",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "冰心领域有两组不同日期的数值：2026年9月的攻略资料为上场英雄品阶总和的30%，2026年10月9日采集的官方资料为35%。尚未确认具体修改版本和生效日期，使用时应核对当前游戏中的技能描述。",
+            "separator": ""
+          },
+          {
+            "id": "support-zhaojun-growth-snapshot-20261021",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "新增核对的教学画面同时显示冰心领域为品阶总数30%、寒潮共振为觉醒英雄数量的1.5倍；另一实战讲解提到冰心领域35%，本地官方卡面则记录35%与2倍。具体修改补丁和生效日期仍待确认，比较强化时按本局实际数值计算，不把不同历史技能文字当作ASR同音纠错。",
+            "separator": ""
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "section": "版本差异",
+          "version": "视频发布于2026-09-21；具体游戏版本未确认",
+          "condition": "",
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 261.9,
+              "end": 346.8
+            }
+          ],
+          "kind": "mechanic",
+          "text_ref": "support-0"
+        },
+        {
+          "id": "zhaojun-growth-snapshot-20261021",
+          "section": "版本差异",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1MqhE6UEe2:p1",
+              "start": 149,
+              "end": 154,
+              "frame": "frames/151-0.jpg"
+            },
+            {
+              "source": "BV1Kwam6FEdu:p1",
+              "start": 1284.52,
+              "end": 1327.99
+            }
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+          },
+          "text_ref": "support-zhaojun-growth-snapshot-20261021"
+        }
+      ]
     }
   ],
   "conflicts": [],
@@ -105,8 +229,63 @@
         "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
       },
       "text_ref": "support-zhaojun-growth-snapshot-20261021"
+    },
+    {
+      "id": "acq-34caf071b65975ef9e29",
+      "text_ref": "n-adb3dd94280de6dcf74a",
+      "kind": "mechanic",
+      "section": "特殊获取与当前机制",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 796,
+          "paragraph_end": 796
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 797,
+          "paragraph_end": 797
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 798,
+          "paragraph_end": 798
+        }
+      ]
+    },
+    {
+      "id": "acq-b38c3dcf70e457093ca1",
+      "text_ref": "n-a8962219c5b1455356da",
+      "kind": "mechanic",
+      "section": "特殊获取与当前机制",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 796,
+          "paragraph_end": 796
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 797,
+          "paragraph_end": 797
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 798,
+          "paragraph_end": 798
+        }
+      ]
     }
   ],
-  "body_sha256": "ab81a33292314869278baed7b79ef08682f4f45f6e05c585e714d3506428757f",
-  "revision": "5ef56c937bd731c3a6df"
+  "body_sha256": "ea22b779c9ceff9351ce91f53a5f0557d564c2708ae8eabe484bf23b076a96bf",
+  "revision": "79f571cd646d53fb4011",
+  "retired_claim_annotations": []
 }

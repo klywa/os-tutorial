@@ -11,6 +11,20 @@ import json_store
 
 
 class StoreTests(unittest.TestCase):
+    def test_import_archives_replaced_body_and_removed_evidence(self):
+        import copy
+        record=self.record
+        entry=record['body']['nodes'][-1]
+        record['metadata']['claim_annotations']=[dict(id='c',text_ref=entry['id'],kind='mechanic',evidence=[{'source':'s'}])]
+        json_store.save(self.root,[record])
+        incoming=json_store.records(self.root)[0]
+        incoming['body']['nodes'].pop()
+        incoming['metadata']['claim_annotations']=[]
+        with patch.object(json_store,'check_evidence'),patch('wxq.entities',return_value=[]):
+            json_store.commit(self.root,[incoming])
+        saved=json_store.records(self.root)[0]
+        self.assertEqual(saved['metadata']['history'][-1]['body']['nodes'][-1]['value'],'原文。')
+        self.assertEqual(saved['metadata']['retired_claim_annotations'][-1]['id'],'c')
     def test_edit_retains_route_display_identity_and_original_evidence(self):
         record = self.record
         body = record['body'] = json_document.parse('# 测试\n\n## 前期\n\n**开局：** 路线原文\n')

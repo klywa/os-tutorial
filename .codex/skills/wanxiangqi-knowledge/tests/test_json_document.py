@@ -7,6 +7,13 @@ import json_document as doc
 
 
 class DocumentTests(unittest.TestCase):
+    def test_label_cleanup_preserves_links_and_body_emphasis(self):
+        body=doc.parse('# 题\n\n【后期运营思路：】正文 **强调** [说明](https://example.com)\n')
+        cleaned=doc.clean_labels(body)
+        self.assertEqual(cleaned['nodes'][1]['key'],'后期运营思路')
+        self.assertEqual(cleaned['nodes'][1]['value'],'正文 **强调** [说明](https://example.com)')
+        self.assertEqual(body['nodes'][1]['value'][0],'】')
+        self.assertEqual(cleaned,doc.clean_labels(cleaned))
     def test_lossless_markdown_and_stable_ids(self):
         text = '# 标题\n\n## 推荐天赋\n\n无标题说明。\n\n**暴君归来：** 内容 **强调**。\n\n### 补充\n\n|甲|乙|\n|--|--|\n|1|2|\n\n```md\n## 不是章节\n```\n'
         body = doc.parse(text)
@@ -14,10 +21,10 @@ class DocumentTests(unittest.TestCase):
         self.assertEqual(body, doc.parse(text))
         self.assertEqual(len([n for n in body['nodes'] if n['type'] == 'heading']), 3)
         entry = next(n for n in body['nodes'] if n.get('key') == '暴君归来')
-        self.assertEqual(doc.copy_entry(entry), '**暴君归来：** 内容 **强调**。')
+        self.assertEqual(doc.copy_entry(entry,body), '暴君归来：内容 **强调**。')
         intro = next(n for n in body['nodes'] if n.get('value') == '无标题说明。')
         self.assertFalse(intro['show_key'])
-        self.assertEqual(doc.copy_entry(intro), '**正文：** 无标题说明。')
+        self.assertEqual(doc.copy_entry(intro,body), '推荐天赋：无标题说明。')
 
     def test_section_includes_descendants_only(self):
         body = doc.parse('# 题\n\n## 一\n\na\n\n### 子\n\nb\n\n#### 孙\n\nc\n\n## 二\n\nd\n')
@@ -36,8 +43,8 @@ class DocumentTests(unittest.TestCase):
         text='# 棋手\n\n## 选择\n\n采用信号：已经成型。\n\n**优势:** 控制稳定。\n'
         body=doc.parse(text)
         self.assertEqual(doc.markdown(body),text)
-        self.assertEqual(doc.copy_entry(body['nodes'][2]),'**采用信号：** 已经成型。')
-        self.assertEqual(doc.copy_entry(body['nodes'][3]),'**优势：** 控制稳定。')
+        self.assertEqual(doc.copy_entry(body['nodes'][2]),'采用信号：已经成型。')
+        self.assertEqual(doc.copy_entry(body['nodes'][3]),'优势：控制稳定。')
 
 
 if __name__ == '__main__':

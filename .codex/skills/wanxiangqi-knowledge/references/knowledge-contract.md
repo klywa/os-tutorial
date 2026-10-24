@@ -10,11 +10,11 @@ index.meta.json 的 schema_version=6，notes 仅包含 id/type/title/path/player
 - heading：level=1..6、title、space、separator；唯一一级标题与附件title一致。
 - entry：key、show_key、value、separator，可有prefix和key_suffix保留原格式。
 
-无标题段落固定key=正文、show_key=false，多段以不同ID区分。英雄整段一个条目，五字段保留于value。列表、表格、代码、链接等在对应value保留Markdown语法，不能把全文当唯一字符串。
+无标题段落固定key=正文、show_key=false，多段以不同ID区分。英雄整段一个条目，五个行动字段及有据的可选获得途径、其他作用保留于value。列表、表格、代码、链接等在对应value保留Markdown语法，不能把全文当唯一字符串。
 
 semantics保存组成、路线、禁用和替换条件等知识，重复文本用 {"$text":"节点ID"} 引用；supporting_nodes保存已审核但不重复显示的支撑知识；adaptations保存棋手适配知识。当前知识不在附件保留第二份可编辑文本。
 
-json_document.parse(text)与markdown(body)无损往返。整篇复制/导出包含标题；点击二/三级标题复制本标题及全部下级，至下个同级或更高标题；条目复制为 **key：** value，隐藏段落包含正文key，无外层方括号。
+json_document.parse(text)与markdown(body)无损往返；导出格式与剪贴板格式分开。整篇复制/导出包含标题；二/三级标题复制至下个同级或更高标题，仅一个普通文字段落且无子标题时折为“章节标题：正文”，否则保留层级。条目复制“key：value”，隐藏条目采用最近章节标题，无章节用笔记标题。所有复制key无加粗星号，value有效Markdown保留。显示标签不带装饰方括号，clean_labels在编辑和commit入口修复跨key/value拆分残留。
 
 ## 附件与事务
 claim_annotations保留原结论ID、kind、section、condition、version、inference、evidence，以text_ref关联正文/支撑节点，附件不保存当前结论text。证据使用真实视频source/start/end/frame或document/source/paragraph_start/paragraph_end，沿用文件和来源校验。

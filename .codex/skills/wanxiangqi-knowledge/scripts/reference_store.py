@@ -25,6 +25,8 @@ def faction(properties):
 
 
 def normalize_cards(rows):
+    from acquisition import build
+    acquisition = build(rows)
     base = {}; counterparts = {}
     for row in rows:
         p = row.get('properties', {})
@@ -66,7 +68,7 @@ def normalize_cards(rows):
                            ('grpName', '所属分组'), ('grpDesc', '解锁条件')]:
             if raw_attributes.get(key): extra[label] = plain(raw_attributes[key])
         if p.get('talentStageDesc'): extra['拍卖轮次（官网原文）'] = p['talentStageDesc']
-        if p.get('cardGetDesc'): extra['获取途径'] = plain(p['cardGetDesc'])
+        if p.get('cardGetDesc') and row['category'] != 'heroes': extra['获得途径'] = plain(p['cardGetDesc'])
         result.append({'id': row['id'], 'name': row['name'], 'category': row['category'],
                        'aliases': row.get('aliases', []), 'effect': row.get('description') or '未提供',
                        'faction': faction(p), 'tier': p.get('quality') if row['category'] == 'heroes' else None,
@@ -75,7 +77,8 @@ def normalize_cards(rows):
                        'stats': stats, 'attributes': extra, 'raw_attributes': raw_attributes,
                        'relations': row.get('relations', []),
                        'sources': row.get('sources', []), 'retrieved_at': row.get('retrieved_at'),
-                       'version': row.get('version'), 'status': row.get('status', 'official')})
+                       'version': row.get('version'), 'status': row.get('status', 'official'),
+                       **acquisition.get(row['id'], {})})
     return result
 
 
@@ -86,6 +89,10 @@ def render_card(card):
              f"资料状态：{'待核实' if card['status'] == 'pending' else '官网资料'}", '',
              f"英雄品阶：{card['tier'] if card['tier'] is not None else '未提供'}", '',
              '## 卡牌效果', '', card['effect'], '', '## 技能', '']
+    if card.get('routes'):
+        lines[12:12] = ['获得途径：'+' '.join(r['text'] for r in card['routes']), '']
+    if card.get('other_uses'):
+        lines[12:12] = ['其他作用：'+card['other_uses'], '']
     if card['skills_source'] and card['skills_source'] != card['id']:
         lines += [f"官网未单独提供本觉醒卡技能；以下为对应普通英雄（{card['skills_source']}）技能，不代表额外觉醒强化。", '']
     for s in card['skills']:
@@ -96,19 +103,56 @@ def render_card(card):
     lines += ['', '## 其他官方属性', '']
     lines += ([f'- {k}：{json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else v}'
                for k, v in card['attributes'].items()] or ['未提供'])
-    lines += ['', '## 官网资料', '', f"同步日期：{card['retrieved_at'] or '未提供'}", '',
-              f"游戏版本：{card['version'] or '官网未标明'}", '']
-    lines += [f'- [官网数据 {i+1}]({url})' for i, url in enumerate(card['sources'])]
     return '\n'.join(lines) + '\n'
 
 
-def save_json_cards(root, cards):
+def save_json_cards(root, cards, evidence_refs=None):
     import json_document, json_store
     root = Path(root); rows = []
     for card in cards:
         name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', '－', card['name'])[:90]
         path = f"knowledge/cards/{card['category']}/{name}－{card['id'].replace(':', '-')}.json"
         body = json_document.parse(render_card(card))
+        old_body=json_store.read(root/path,{})
+        previous={}
+        for node in old_body.get('nodes',[]):
+            signature=(node['type'],node.get('title'),node.get('key'),node.get('value'))
+            previous.setdefault(signature,[]).append(node['id'])
+        used=set()
+        reused=set()
+        for node in body['nodes']:
+            signature=(node['type'],node.get('title'),node.get('key'),node.get('value'))
+            candidates=previous.get(signature,[])
+            if candidates:
+                node['id']=candidates.pop(0);reused.add(node['id'])
+            if node['id'] in used:
+                node['id']='n-'+hashlib.sha256((card['id']+repr(signature)).encode()).hexdigest()[:20]
+            used.add(node['id'])
+        # Reviewed acquisition prose can change while the field keeps its identity.
+        enrichment_ids={n.get('key'):n['id'] for n in old_body.get('nodes',[])
+                        if n.get('key') in ('获得途径','其他作用') and n['id'] not in reused}
+        for node in body['nodes']:
+            previous_id=enrichment_ids.get(node.get('key'))
+            if previous_id and node['id'] not in reused:
+                used.discard(node['id']);node['id']=previous_id
+                used.add(previous_id);reused.add(previous_id)
+        # An official effect can change wording or even parse as a different
+        # key. Its card/section position still identifies the same field.
+        def locations(nodes):
+            headings=[];count={};located=[]
+            for n in nodes:
+                if n['type']=='heading':
+                    while headings and headings[-1][0]>=n['level']:headings.pop()
+                    headings.append((n['level'],n['title']))
+                elif n.get('key') not in ('获得途径','其他作用'):
+                    section=tuple(headings);position=count.get(section,0);count[section]=position+1
+                    located.append((section,position,n))
+            return located
+        available={(s,p):n['id'] for s,p,n in locations(old_body.get('nodes',[])) if n['id'] not in reused}
+        for section,position,node in locations(body['nodes']):
+            previous_id=available.get((section,position))
+            if node['id'] not in reused and previous_id:
+                used.discard(node['id']);node['id']=previous_id;used.add(previous_id);reused.add(previous_id)
         texts = {n['value']: n['id'] for n in body['nodes'] if n['type'] == 'entry'}
         def intern(value):
             if isinstance(value, str) and value in texts:return {'$text': texts[value]}
@@ -117,6 +161,14 @@ def save_json_cards(root, cards):
             return value
         body['semantics'] = intern({k: v for k, v in card.items() if k not in ('sources', 'retrieved_at', 'version', 'path')})
         meta = {k: card.get(k) for k in ('id', 'sources', 'retrieved_at', 'version')}
+        previous_meta=json_store.read(root/json_store.meta_path(path),{})
+        if old_body and old_body!=body:
+            meta['history']=[*previous_meta.get('history',[]),{'body':old_body,'sources':previous_meta.get('sources',[])}]
+        elif previous_meta.get('history'):meta['history']=previous_meta['history']
+        if evidence_refs:
+            meta['acquisition_evidence']={r['text']:[evidence_refs[i] for i in r['evidence_ids'] if i in evidence_refs] for r in card.get('routes',[])}
+            if card.get('other_uses'):
+                meta['other_uses_evidence']=[evidence_refs[card['id']]] if card['id'] in evidence_refs else []
         meta.update(path=path, body_sha256=json_store.digest(body))
         json_store.write_file(root / path, body)
         json_store.write_file(root / json_store.meta_path(path), meta)
@@ -145,7 +197,8 @@ def json_cards(root):
 def _save_cards(root, cards):
     import json_store
     if json_store.enabled(root):
-        return save_json_cards(root, cards)
+        from acquisition import register_snapshot
+        return save_json_cards(root, cards, register_snapshot(root, wxq.entities(root), locked=True))
     for card in cards:
         name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', '－', card['name'])[:90]
         ident = card['id'].replace(':', '-')
