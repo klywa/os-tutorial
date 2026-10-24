@@ -224,7 +224,7 @@ def project(record, public=False):
     claims = []
     annotations = [{k:v for k,v in c.items() if k != 'evidence'} for c in source.get('claim_annotations', [])] if public else meta.pop('claim_annotations', [])
     for c in deepcopy(annotations):
-        ref = c.pop('text_ref')
+        ref = c['text_ref']
         formatted = c.pop('text_format',None)=='markdown'
         claims.append({**c, 'text': texts[ref+(':markdown' if formatted else '')]})
     meta.pop('body_sha256', None)
@@ -368,6 +368,12 @@ def edit(root, nid, payload):
         # canonical document, not accepted as accidental editor omissions.
         for key in ('supporting_nodes', 'semantics'):
             incoming.setdefault(key, deepcopy(body.get(key, [] if key == 'supporting_nodes' else {})))
+        if incoming != body:
+            # Keep display identity across text edits without rewriting evidence.
+            display_refs = document.claim_display_refs(body, project(record)['claims'])
+            for annotation in meta.get('claim_annotations', []):
+                if annotation['id'] in display_refs:
+                    annotation['display_ref'] = display_refs[annotation['id']]
         title = payload.get('title', meta['title'])
         if title != meta['title']:
             raise ValueError('笔记身份名称通过新建与迁移维护；正文编辑不能改绑棋手或阵容')

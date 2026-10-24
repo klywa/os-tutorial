@@ -11,7 +11,7 @@ export function stageOperations(note:Note,preset:OverviewPreset,stage:typeof sta
  const meta=note.meta!,config=preset.stages[stage],route=meta.operation_routes?.find(r=>r.id===routeId),compatible=compatibleRoute(meta,preset,routeId);
  const hidden=new Set(Object.entries(note.reading_layout?.supporting_claim_refs??{}).filter(([,refs])=>(Array.isArray(refs)?refs:[refs]).some(id=>note.claims.some(c=>c.id===id))).map(([id])=>id));
  const candidates:OverviewOperation[]=[...(operations?.[stage]??[])];
- for(const id of [...config.claim_refs,...compatible&&route?route.phases[stage]:[]]){
+ for(const id of note.document&&operations?[]:[...config.claim_refs,...compatible&&route?route.phases[stage]:[]]){
   const claim=note.claims.find(c=>c.id===id);
   if(claim&&!hidden.has(id))candidates.push({markdown:claimMarkdown(claim,note.reading_layout?.version),claim_refs:[id],route_ids:[],route_names:[]});
  }

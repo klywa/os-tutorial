@@ -115,6 +115,61 @@ def validate(document):
     return document
 
 
+def claim_display_refs(document, claims):
+    """Resolve migrated evidence to visible nodes; text is used only to locate."""
+    entries = [n for n in document['nodes'] if n['type'] == 'entry']
+    ids = {n['id'] for n in entries}
+    result = {}
+    for claim in claims:
+        ref = claim.get('display_ref', claim.get('text_ref'))
+        if ref in ids:
+            result[claim['id']] = ref
+        elif 'display_ref' not in claim:
+            text = claim.get('text', '').strip()
+            matches = [n for n in entries if text and text in render_node(n)]
+            if len(matches) == 1:
+                result[claim['id']] = matches[0]['id']
+    return result
+
+
+def overview_operations(document, note):
+    """Derive stage cards from current visible nodes, never legacy claim text."""
+    rows = {key: [] for key in ('early', 'middle', 'late', 'improvement')}
+    labels = {'前期': 'early', '中期': 'middle', '后期': 'late'}
+    headings = []
+    claims = {}
+    for cid, node_id in claim_display_refs(document, note.get('claims', [])).items():
+        claims.setdefault(node_id, []).append(cid)
+    routes = note.get('meta', {}).get('operation_routes', [])
+    for node in document['nodes']:
+        if node['type'] == 'heading':
+            while headings and headings[-1]['level'] >= node['level']:
+                headings.pop()
+            headings.append(node)
+            continue
+        target = None
+        for heading in reversed(headings):
+            title = heading['title']
+            if title == '后期提升思路':
+                target = 'improvement'
+                break
+            target = next((stage for label, stage in labels.items()
+                           if title == label or title.startswith(label + '英雄组成与运营')
+                           or title.startswith(label + '运营')), None)
+            if target:
+                break
+        text = render_node(node).rstrip('\r\n')
+        if not target or not text.strip():
+            continue
+        refs = claims.get(node['id'], [])
+        linked = [route for route in routes
+                  if set(refs) & {ref for phase in route.get('phases', {}).values() for ref in phase}]
+        rows[target].append({'markdown': text, 'claim_refs': refs,
+                             'route_ids': [r['id'] for r in linked],
+                             'route_names': [r['name'] for r in linked]})
+    return rows
+
+
 def reading(document, note):
     sections = []
     nodes = document['nodes']
@@ -129,6 +184,9 @@ def reading(document, note):
     if not starts and opening:
         sections.append({'id': 'content', 'title': '知识内容', 'nodes': opening, 'markdown': ''.join(render_node(n) for n in opening)})
         opening = []
-    return {'note_id': note['id'], 'revision': note['revision'], 'profile': 'json-v6', 'layout_version': 6,
+    result = {'note_id': note['id'], 'revision': note['revision'], 'profile': 'json-v6', 'layout_version': 6,
             'sections': sections, 'opening': ''.join(render_node(n) for n in opening), 'section_aliases': {},
             'document': deepcopy(document), 'markdown': markdown(document)}
+    if note.get('type') == 'lineup':
+        result['overview_operations'] = overview_operations(document, note)
+    return result

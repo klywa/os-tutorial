@@ -11,6 +11,23 @@ import json_store
 
 
 class StoreTests(unittest.TestCase):
+    def test_edit_retains_route_display_identity_and_original_evidence(self):
+        record = self.record
+        body = record['body'] = json_document.parse('# 测试\n\n## 前期\n\n**开局：** 路线原文\n')
+        entry = body['nodes'][-1]
+        body['supporting_nodes'] = [{'id':'support','type':'entry','key':'正文','show_key':False,'value':'路线原文'}]
+        record['metadata']['claim_annotations'] = [{'id':'c','text_ref':'support','section':'前期','evidence':[{'source':'s'}]}]
+        json_store.save(self.root, [record])
+        note = json_store.notes(self.root)[0]
+        note['document']['nodes'][-1]['value'] = '新路线原文'
+        updated = json_store.edit(self.root, 'test', {'revision':note['revision'],'document':note['document']})
+        claim = updated['claims'][0]
+        self.assertEqual(claim['display_ref'], entry['id'])
+        self.assertEqual(claim['text_ref'], 'support')
+        self.assertEqual(claim['text'], '路线原文')
+        self.assertEqual(claim['evidence'], [{'source':'s'}])
+        self.assertEqual(json_document.claim_display_refs(updated['document'], updated['claims']), {'c':entry['id']})
+
     def setUp(self):
         folder = Path(__file__).resolve().parents[4] / 'raw/test-temp'
         folder.mkdir(parents=True, exist_ok=True)

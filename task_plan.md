@@ -207,3 +207,8 @@
 - JSON事务存储与迁移：complete
 - 前端结构化编辑、复制、棋手树：complete
 - skill及完整验收：complete
+
+# 恢复阵容图形概览（2026-10-24）
+- 定位及失败回归：complete
+- JSON阶段投影、图形概览及稳定路线关联：complete
+- 前后端回归、构建、双入口桌面/窄屏与复制验收：complete

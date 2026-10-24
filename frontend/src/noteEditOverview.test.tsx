@@ -31,3 +31,10 @@ it('keeps route restrictions and deduplicates configured descriptions and refere
  preset.variant_id='unconfirmed';
  expect(stageOperations(configured,preset,'early',operations,'r').advice.map(r=>r.markdown)).toEqual(['共用操作']);
 });
+
+it('uses only current visible JSON operations instead of legacy claim fallbacks',()=>{
+ const preset=newPreset('p','方案');preset.stages.early.claim_refs=['early'];
+ const current={...note,document:{schema_version:6,nodes:[]}} as Note;
+ const operations={...document.overview_operations!,early:[{markdown:'当前正文',claim_refs:[],route_ids:[],route_names:[]}]};
+ expect(stageOperations(current,preset,'early',operations).advice.map(r=>r.markdown)).toEqual(['当前正文']);
+});
