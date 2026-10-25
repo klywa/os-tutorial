@@ -19,14 +19,79 @@
       "id": "n-3cc74abe48119da9ebbb"
     },
     {
+      "id": "official-95341c1fb8fd5337112b",
+      "type": "heading",
+      "level": 3,
+      "title": "技能",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-c6e0f4ffc3247f64470c",
       "type": "entry",
-      "key": "技能",
+      "key": "梦境游戏",
       "show_key": true,
-      "value": "梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
-      "prefix": "- ",
-      "key_suffix": "：",
-      "separator": "\n\n",
-      "id": "n-c6e0f4ffc3247f64470c"
+      "value": "庄小鱼升级时，会随机获得1张效果牌。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-797c18d49048dc670719",
+      "type": "heading",
+      "level": 3,
+      "title": "秘技",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-2abddeac0eb6e2159bf9",
+      "type": "entry",
+      "key": "美梦成真",
+      "show_key": true,
+      "value": "升到5级和6级，获得1张秘技牌如梦似幻。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：如梦似幻。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-edbd0bf73a6e547b20ec",
+      "type": "heading",
+      "level": 3,
+      "title": "专属天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-af8b2e454e44aa5603ea",
+      "type": "entry",
+      "key": "引擎升级",
+      "show_key": true,
+      "value": "获得1张梦幻引擎：将商店替换为梦幻商店。若在棋手生命值≤30时战斗失败，则重复获得。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；后续选项：梦幻引擎。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-12061c238198d2e0d72b",
+      "type": "heading",
+      "level": 3,
+      "title": "关联选项",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-91231c640d6cf0353e71",
+      "type": "entry",
+      "key": "如梦似幻",
+      "show_key": true,
+      "value": "基于场上英雄、阵营（至少3名）获取一套梦幻手牌。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-6c4130a7ac1576f48aaf",
+      "type": "entry",
+      "key": "梦幻引擎",
+      "show_key": true,
+      "value": "根据场上的阵容，将商店替换为梦幻商店。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-f2a60836ed93661e2509",
+      "type": "heading",
+      "level": 3,
+      "title": "技能运用与补充",
+      "separator": "\n\n"
     },
     {
       "type": "entry",
@@ -45,16 +110,6 @@
       "value": "- 主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
       "separator": "\n\n",
       "id": "n-43fba5f7f12639bc9930"
-    },
-    {
-      "type": "entry",
-      "key": "专属天赋",
-      "show_key": true,
-      "value": "获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
-      "prefix": "- ",
-      "key_suffix": "：",
-      "separator": "\n\n",
-      "id": "n-6c4130a7ac1576f48aaf"
     },
     {
       "type": "entry",

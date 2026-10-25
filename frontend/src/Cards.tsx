@@ -1,15 +1,19 @@
 import {useEffect,useMemo,useState} from 'react';
 import {api,cardMatches} from './model';
-import {CardImage} from './EntityCards';
+import {CardImage,useCards} from './EntityCards';
+import {cachedGet} from './readerCache';
+import OfficialSync from './OfficialSync';
 import type {CardDetail,CardSummary,CardFilters} from './types';
 const categories:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
 const initial:CardFilters={query:'',category:'',faction:'',tier:'',awakened:''};
 export default function Cards(){
-  const [cards,setCards]=useState<CardSummary[]>([]),[filters,setFilters]=useState(initial);
+  const shared=useCards();
+  const [cards,setCards]=useState<CardSummary[]>(shared),[filters,setFilters]=useState(initial);
   const [selected,setSelected]=useState(''),[detail,setDetail]=useState<CardDetail|null>(null);
-  const [error,setError]=useState(''),[loading,setLoading]=useState(true),[detailLoading,setDetailLoading]=useState(false);
-  async function load(){setLoading(true);setError('');try{setCards(await api<CardSummary[]>('cards'));}catch(e){setError((e as Error).message);}finally{setLoading(false);}}
+  const [error,setError]=useState(''),[loading,setLoading]=useState(!shared.length),[detailLoading,setDetailLoading]=useState(false);
+  async function load(){setLoading(true);setError('');try{setCards(await cachedGet<CardSummary[]>('cards'));}catch(e){setError((e as Error).message);}finally{setLoading(false);}}
   useEffect(()=>{void load();},[]);
+  useEffect(()=>{if(shared.length)setCards(shared);},[shared]);
   const visible=useMemo(()=>cards.filter(c=>cardMatches(c,filters)),[cards,filters]);
   const active=visible.find(c=>c.id===selected)?.id??visible[0]?.id??'';
   const factions=useMemo(()=>Array.from(new Map(cards.map(c=>[c.faction.id||'none',c.faction.name])).entries()),[cards]);
@@ -18,6 +22,7 @@ export default function Cards(){
     return()=>{current=false;};},[active,cards]);
   const patch=(p:Partial<CardFilters>)=>setFilters(f=>({...f,...p}));
   return <div className="cards-page"><div className="page-heading"><div><h1>卡牌库</h1><p>查询卡牌效果、英雄技能与成长节点。</p></div><span className="count">{visible.length} / {cards.length} 项</span></div>
+    <OfficialSync onUpdated={()=>void load()}/>
     {error&&<div className="error" role="alert">{error}<button onClick={()=>void load()}>重试</button></div>}
     <div className="card-filters"><input aria-label="搜索卡牌" placeholder="搜索名称、别名或效果" value={filters.query} onChange={e=>patch({query:e.target.value})}/>
       <select aria-label="卡牌类别" value={filters.category} onChange={e=>patch({category:e.target.value})}><option value="">全部类别</option>{Object.entries(categories).map(([id,name])=><option key={id} value={id}>{name}</option>)}</select>

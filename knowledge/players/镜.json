@@ -19,38 +19,87 @@
       "id": "n-3cc74abe48119da9ebbb"
     },
     {
-      "type": "entry",
-      "key": "正文",
-      "show_key": false,
-      "value": "- 使用技能，获得1张“镜像”牌，每使用4次技能，该技能能量消耗+1。",
-      "separator": "\n\n",
-      "id": "n-770e754d0104d4ac4261"
+      "id": "official-4a46470e908cbd05d607",
+      "type": "heading",
+      "level": 3,
+      "title": "技能",
+      "separator": "\n\n"
     },
     {
+      "id": "official-5c581f65913395fe7c1a",
+      "type": "entry",
+      "key": "无穷镜像",
+      "show_key": true,
+      "value": "使用技能，获得1张镜像牌，每使用4次技能，该技能能量消耗+1。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：镜像。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-9f922f7d42f2892f20b1",
+      "type": "heading",
+      "level": 3,
+      "title": "秘技",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-e3d5a552626be4171a04",
+      "type": "entry",
+      "key": "镜像之力",
+      "show_key": true,
+      "value": "使用4张镜像，获得1张秘技牌万镜。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：万镜。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-683c08bcaf7d92946d82",
+      "type": "heading",
+      "level": 3,
+      "title": "专属天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-9cff3b147c38d2b37544",
+      "type": "entry",
+      "key": "镜花影",
+      "show_key": true,
+      "value": "商店里的英雄牌在购买后会留下1个镜像复制（不计入秘技任务）。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-f48da55037d6af9da6d2",
+      "type": "heading",
+      "level": 3,
+      "title": "关联选项",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-770e754d0104d4ac4261",
       "type": "entry",
       "key": "镜像",
       "show_key": true,
-      "value": "该卡牌会自动变为上一张打出的英雄牌（不能复制其他打出的镜像牌）。",
-      "prefix": "- ",
-      "key_suffix": "：",
-      "separator": "\n\n",
-      "id": "n-6001b0c4410e949c11f3"
+      "value": "该卡牌会自动变为上一张打出的英雄牌（不能复制其他打出的镜像牌）。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-da32dbcf877c4efb003d",
+      "type": "entry",
+      "key": "万镜",
+      "show_key": true,
+      "value": "随机复制场上4张不同的英雄牌。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-c06184379b31f2d1f1d7",
+      "type": "heading",
+      "level": 3,
+      "title": "技能运用与补充",
+      "separator": "\n\n"
     },
     {
       "type": "entry",
       "key": "正文",
       "show_key": false,
-      "value": "镜像自动变为上一张打出的真实英雄牌，不能复制另一张打出的镜像。先打真实英雄，再打镜像；需要继续复制时重新打出真实英雄。",
+      "value": "先打真实英雄，再打镜像；需要继续复制时重新打出真实英雄，不能连续打镜像来复制上一张镜像。",
       "separator": "\n\n",
       "id": "n-676944cb5d466cbcd402"
-    },
-    {
-      "type": "entry",
-      "key": "正文",
-      "show_key": false,
-      "value": "- 使用4张镜像，获得1张秘技牌“万镜”。",
-      "separator": "\n\n",
-      "id": "n-da32dbcf877c4efb003d"
     },
     {
       "type": "entry",

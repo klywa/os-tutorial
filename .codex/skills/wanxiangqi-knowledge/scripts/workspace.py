@@ -305,6 +305,8 @@ def apply_transaction(root, transaction):
 
 
 def recover(root):
+    from official_sync import recover as recover_official
+    recover_official(root)
     import json_store
     if json_store.enabled(root):
         json_store.recover(root)

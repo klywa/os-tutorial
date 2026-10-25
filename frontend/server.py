@@ -21,7 +21,7 @@ def recover_before_read(root):
     writer may be updating derived files, but readers can still use its previous
     committed index. Recovery and every actual mutation retain the writer lock.
     """
-    journals=('raw/knowledge/pending-json-save.json','raw/knowledge/pending-cards.json','knowledge/pending-save.json','knowledge/pending-cards.json',
+    journals=('raw/knowledge/pending-official-sync.json','raw/knowledge/pending-json-save.json','raw/knowledge/pending-cards.json','knowledge/pending-save.json','knowledge/pending-cards.json',
               'knowledge/pending-note-link.json','raw/transcript-edit-pending.json')
     if not any((root/path).is_file() for path in journals):
         return
@@ -29,6 +29,7 @@ def recover_before_read(root):
         with workspace.store_lock(root):
             workspace.recover(root)
     except workspace.Busy:
+        if (root/'raw/knowledge/pending-official-sync.json').exists():raise
         pass  # Active save: read the last complete atomic index, without replay.
 
 
@@ -36,12 +37,23 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
         pass
 
-    def response(self, status, data):
+    def response(self, status, data, etag=None):
+        if etag is not None:
+            import json_store
+            tag='"'+json_store.digest(data)+'"' if etag is True else etag
+            if self.headers.get('If-None-Match')==tag:
+                self.send_response(304);self.send_header('ETag',tag)
+                self.send_header('Cache-Control','private, no-cache');self.send_header('Content-Length','0');self.end_headers();return
+        else:tag=None
         body = json.dumps(data, ensure_ascii=False).encode('utf-8')
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(body)))
-        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Cache-Control', 'private, no-cache' if tag else 'no-store')
+        if tag:self.send_header('ETag',tag)
+        if tag:
+            from reader_store import workspace_id
+            self.send_header('X-Workspace-Id',workspace_id(self.server.root))
         self.send_header('X-Content-Type-Options', 'nosniff')
         self.end_headers()
         self.wfile.write(body)
@@ -61,6 +73,9 @@ class Handler(BaseHTTPRequestHandler):
         path = unquote(urlsplit(self.path).path)
         player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
+            if path in ('/api/official-sync/status','/api/official-sync/settings'):
+                import official_sync
+                return self.response(200,official_sync.status(self.server.root,self.server.crawler.store.settings()['clock']))
             if path.startswith('/api/crawler/'):
                 suffix = path.removeprefix('/api/crawler/')
                 store = self.server.crawler.store
@@ -94,6 +109,7 @@ class Handler(BaseHTTPRequestHandler):
                 if suffix=='candidates':return self.response(200,topics.pending())
                 return self.response(404,{'error':'主题接口不存在'})
             if path == '/api/cards' or path.startswith('/api/cards/'):
+                recover_before_read(self.server.root)
                 from card_images import image_fields, image_file
                 if '/images/' in path:
                     eid, kind = path.removeprefix('/api/cards/').split('/images/', 1)
@@ -108,13 +124,14 @@ class Handler(BaseHTTPRequestHandler):
                     self.end_headers()
                     self.wfile.write(body)
                     return
-                cards = wxq.read_json(self.server.root / 'knowledge/cards/index.json', {}).get('cards', [])
+                import reader_store,json_store
+                cards = reader_store.cards(self.server.root) if json_store.enabled(self.server.root) and path=='/api/cards' else wxq.read_json(self.server.root / 'knowledge/cards/index.json', {}).get('cards', [])
                 images = wxq.read_json(self.server.root / 'entities/assets/index.json', {})
                 cards = [{**c, **image_fields(self.server.root, c['id'], images)} for c in cards]
                 if path == '/api/cards':
                     return self.response(200, [{k: c.get(k) for k in
                         ['id', 'name', 'category', 'aliases', 'effect', 'faction', 'tier', 'awakened','thumb_url','image_url','image_status']}
-                        for c in cards])
+                        for c in cards],etag=True)
                 card = next((c for c in cards if c['id'] == path.removeprefix('/api/cards/')), None)
                 return self.response(200 if card else 404, card or {'error': '卡牌不存在'})
             if path == '/api/sources/staging':
@@ -128,6 +145,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
             if path.startswith('/api/'):
                 recover_before_read(self.server.root)
+                if path in ('/api/notes/catalog','/api/notes/search'):
+                    import reader_store
+                    if path.endswith('/catalog'):return self.response(200,reader_store.catalog(self.server.root),etag=True)
+                    query=parse_qs(urlsplit(self.path).query).get('q',[''])[0]
+                    return self.response(200,reader_store.search(self.server.root,query),etag=True)
                 if path == '/api/annotations':
                     import note_review
                     query = parse_qs(urlsplit(self.path).query)
@@ -163,12 +185,12 @@ class Handler(BaseHTTPRequestHandler):
                     parts = path.split('/')
                     import json_store
                     note = (json_store.resolve_note(self.server.root, parts[-2], player) if json_store.enabled(self.server.root) else next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None)) if len(parts) == 5 else None
-                    return self.response(200, reading_document(note,player)) if note else self.response(404, {'error': '笔记不存在'})
+                    return self.response(200, reading_document(note,player),etag=True) if note else self.response(404, {'error': '笔记不存在'})
                 if path.startswith('/api/notes/'):
                     import json_store
                     if json_store.enabled(self.server.root):
                         note=json_store.resolve_note(self.server.root,path.split('/')[-1],player)
-                        return self.response(200 if note else 404,note or {'error':'笔记不存在'})
+                        return self.response(200 if note else 404,note or {'error':'笔记不存在'},etag=True if note else None)
                     from note_links import project_notes
                     note = next((n for n in project_notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
                     if note and player:
@@ -176,6 +198,8 @@ class Handler(BaseHTTPRequestHandler):
                         note = player_branches.project(note, player)
                     return self.response(200 if note else 404, note or {'error': '笔记不存在'})
                 if path == '/api/options':
+                    import json_store,reader_store
+                    if json_store.enabled(self.server.root):return self.response(200,reader_store.options(self.server.root),etag=True)
                     entities = [{**{k: e.get(k) for k in ['id', 'name', 'category', 'aliases']},
                                  'properties': {'type': e.get('properties', {}).get('type')}} for e in wxq.entities(self.server.root)]
                     return self.response(200, {'entities': entities, 'factions': workspace.factions(self.server.root), 'sections': wxq.SECTIONS})
@@ -226,6 +250,13 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(payload, dict):
                 raise ValueError('请求应为对象')
             path = unquote(urlsplit(self.path).path)
+            if path in ('/api/official-sync/settings','/api/official-sync/run','/api/official-sync/retry'):
+                import official_sync
+                action=path.rsplit('/',1)[-1]
+                if self.command not in (('POST','PUT') if action=='settings' else ('POST',)):
+                    raise ValueError('官网同步操作方法无效')
+                official_sync.configure(self.server.root,{**payload,**({'action':action} if action!='settings' else {})})
+                return self.response(200,official_sync.status(self.server.root,self.server.crawler.store.settings()['clock']))
             if path == '/api/annotations' and self.command == 'POST':
                 import note_review
                 return self.response(200, note_review.mutate(self.server.root, payload))

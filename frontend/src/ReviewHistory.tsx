@@ -13,7 +13,7 @@ const HistoryFieldEditor=memo(function HistoryFieldEditor({field,busy,onChange,o
  {value!==undefined?<ValueEditor key={epoch} disabled={busy} onComposing={setComposing} label={field.label+'：合并结果'} value={value} onValidity={valid=>onValidity(field.id,valid)} onChange={update}/>:<p className="muted">此字段或节点将被删除。</p>}
  <DiffText composing={composing} before={displayValue(field.oldValue)} after={displayValue(value)}/></div></div></section>;
 });
-export default function ReviewHistory({note,onDirty,onSaved,onClose}:{note:Note;onDirty:(v:boolean)=>void;onSaved:(n:Note)=>void;onClose:()=>void}){
+export default function ReviewHistory({note,onDirty,onSaved,onClose,readOnly=false}:{readOnly?:boolean;note:Note;onDirty:(v:boolean)=>void;onSaved:(n:Note)=>void;onClose:()=>void}){
  const dialog=useRef<HTMLDialogElement>(null),[base]=useState(()=>note);
  const [versions,setVersions]=useState<Version[]>([]),[selected,setSelected]=useState(''),[old,setOld]=useState<KnowledgeDocument|null>(null);
  const [changed,setChanged]=useState(false),[error,setError]=useState(''),[busy,setBusy]=useState(false),[invalid,setInvalid]=useState<Record<string,boolean>>({});
@@ -25,7 +25,7 @@ export default function ReviewHistory({note,onDirty,onSaved,onClose}:{note:Note;
  useEffect(()=>{dialog.current?.showModal();void api<Version[]>('notes/'+encodeURIComponent(base.id)+'/versions').then(setVersions).catch(e=>setError(e.message));},[]);
  const fields=useMemo(()=>old?reviewFields(old,base.document!):[],[old,base]);
  async function select(id:string){if(dirty){setError('修改未保存，请保存或取消');return;}setSelected(id);setOld(null);setError('');setBusy(true);try{const row=await api<{record:{body:KnowledgeDocument}}>('notes/'+encodeURIComponent(base.id)+'/versions/'+id);setOld(row.record.body);setChanged(false);setInvalid({});}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
- async function save(){if(!draft)return;setBusy(true);setError('');try{const document=draft.build();onSaved(await api<Note>('notes/'+encodeURIComponent(base.id),'PUT',{revision:base.revision,document,restore_version:selected}));}catch(e){setError((e as Error).message+'；合并草稿已保留。');}finally{setBusy(false);}}
+ async function save(){if(!draft)return;if(readOnly){setError('请先确认最新版本，合并草稿已保留');return;}setBusy(true);setError('');try{const document=draft.build();onSaved(await api<Note>('notes/'+encodeURIComponent(base.id),'PUT',{revision:base.revision,document,restore_version:selected}));}catch(e){setError((e as Error).message+'；合并草稿已保留。');}finally{setBusy(false);}}
  function close(){if(dirty||Object.values(invalid).some(Boolean)){setError('修改未保存，请保存或取消');return;}onClose();}
  return <dialog className="review-dialog history-dialog" ref={dialog} onCancel={e=>{e.preventDefault();close();}}>
  <div className="review-toolbar"><h2>历史版本对比</h2><button disabled={busy} onClick={close}>关闭</button></div>

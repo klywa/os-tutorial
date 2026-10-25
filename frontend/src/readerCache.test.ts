@@ -1,0 +1,8 @@
+import {describe,it,expect,vi} from 'vitest';
+import {cacheKey,evictEntries,cachedGet,putCached,cachedEntry} from './readerCache';
+describe('reader cache',()=>{
+ it('isolates workspaces and branches',()=>{expect(cacheKey('a','notes/n/reading?player=x')).not.toBe(cacheKey('b','notes/n/reading?player=x'));expect(cacheKey('a','notes/n/reading?player=x')).not.toBe(cacheKey('a','notes/n/reading?player=y'));});
+ it('limits recent note groups and total size',()=>{const rows=Array.from({length:25},(_,i)=>({key:String(i),workspace:'w',path:'notes/n'+i,at:i,size:10,value:{},kind:'note' as const}));expect(evictEntries(rows).length).toBe(5);});
+ it('reuses a 304 value without parsing an empty response',async()=>{const fetcher=vi.fn().mockResolvedValueOnce(new Response(JSON.stringify({value:1}),{status:200,headers:{ETag:'"r1"'}})).mockResolvedValueOnce(new Response(null,{status:304}));vi.stubGlobal('fetch',fetcher);expect(await cachedGet('unit-304',{workspace:'test'})).toEqual({value:1});expect(await cachedGet('unit-304',{workspace:'test'})).toEqual({value:1});expect(fetcher.mock.calls[1][1].headers['If-None-Match']).toBe('"r1"');vi.unstubAllGlobals();});
+ it('keeps both parts of a retained recent note and rejects malformed resources',async()=>{const rows=Array.from({length:21},(_,i)=>({key:'d'+i,workspace:'w',path:'notes/n'+i,at:100-i,size:10,value:{},kind:'note' as const}));rows.push({key:'old-reading',workspace:'w',path:'notes/n0/reading',at:0,size:10,value:{},kind:'note'});expect(evictEntries(rows)).not.toContain('old-reading');await putCached('options',[],'malformed');expect(await cachedEntry('options','malformed')).toBeNull();});
+});

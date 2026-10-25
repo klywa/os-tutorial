@@ -788,6 +788,8 @@ class Runtime:
         self.process_lock = threading.Lock()
         self.scan_pool = ThreadPoolExecutor(max_workers=2, thread_name_prefix='crawler-search')
         self.media_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix='crawler-media')
+        self.official_pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='official-sync')
+        self.official_future = None
         self.last_recovery = time.monotonic()
         self.tag_thread = None
 
@@ -808,6 +810,7 @@ class Runtime:
             terminate_worker(process)
         self.scan_pool.shutdown(wait=True, cancel_futures=True)
         self.media_pool.shutdown(wait=True, cancel_futures=True)
+        self.official_pool.shutdown(wait=True, cancel_futures=True)
         if self.tag_thread:self.tag_thread.join(timeout=5)
 
     def loop(self):
@@ -854,6 +857,13 @@ class Runtime:
             reconcile(self.store)
             self.last_recovery = time.monotonic()
         settings = self.store.settings()
+        import official_sync
+        if self.official_future is None or self.official_future.done():
+            if self.official_future is not None:
+                try:self.official_future.result()
+                except Exception:pass
+            if official_sync.due(self.root,settings['clock']):
+                self.official_future=self.official_pool.submit(official_sync.run,self.root,settings['clock'])
         self.store.adopt_risk_failures(scanning=self.scans, working=self.workers)
         self.store.adopt_network_failures()
         current = datetime.now(BJ)

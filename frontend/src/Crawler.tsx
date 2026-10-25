@@ -1,4 +1,5 @@
 import AcquisitionTags from './AcquisitionTags';
+import OfficialSync from './OfficialSync';
 import {contentTitle} from './acquisition';
 import LinkInput from './LinkInput';
 import SearchConditions,{searchKeywords} from './SearchConditions';
@@ -85,6 +86,7 @@ export default function Crawler({seed,onSeedUsed}:{seed?:Partial<Creator>;onSeed
         {!creators.length&&<p className="muted">尚未添加UP主，点击上方按钮开始监听。</p>}
         {!!creators.length&&!creators.some(c=>creatorMatches(c,creatorQuery))&&<p className="muted">没有匹配的UP主。</p>}</div>
         <details className="schedule-config"><summary>每日检查设置</summary><label>北京时间<input type="time" value={settings.clock} onChange={e=>setSettings({...settings,clock:e.target.value})}/></label><button disabled={busy} onClick={()=>void act(async()=>{await api('crawler/settings','PUT',{clock:settings.clock});setMessage('每日时间已保存');})}>保存时间</button><p className="muted">下次：{nextCheck()}。本地服务需运行；重启后自动补查。</p><button disabled={busy} onClick={()=>void act(async()=>{await api('crawler/creators/check','POST',{});setMessage('已安排所有启用UP主检查');})}>立即检查全部UP主</button></details>
+        <OfficialSync/>
       </>}
       <details className="connection-settings"><summary>B站连接设置</summary><label>本机cookies文件路径<input value={settings.cookies} onChange={e=>setSettings({...settings,cookies:e.target.value})} placeholder="留空使用匿名访问"/></label><button disabled={busy} onClick={()=>void act(async()=>{await api('crawler/settings','PUT',{cookies:settings.cookies});setMessage('连接设置已保存');})}>保存连接设置</button><p className="muted">使用Netscape格式cookies文件。遇到登录或风控错误后可配置，再重试任务。</p></details>
     </section><section className="acquisition-work"><div className="section-heading"><h2>{tab==='creators'?(currentCreator?.name||'全部UP主')+' · 任务':'任务进度'}</h2><span className="muted">每2秒刷新</span></div>

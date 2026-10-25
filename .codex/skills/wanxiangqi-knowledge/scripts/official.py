@@ -31,7 +31,7 @@ def walk_cards(value):
             yield from walk_cards(child)
 
 
-def normalize(data, url, at):
+def _legacy_normalize(data, url, at):
     buckets = {c: {} for c in CATEGORIES}
     for card in walk_cards(data):
         category = {1: 'heroes', 9: 'heroes', 2: 'effect-cards', 5: 'equipment', 6: 'talents'}.get(card['type'], 'derivatives')
@@ -80,7 +80,12 @@ def normalize(data, url, at):
     return buckets
 
 
-def sync_official(root):
+def normalize(data, url, at):
+    from official_profiles import normalize_entities
+    return normalize_entities(data, url, at)
+
+
+def _legacy_sync_official(root):
     root = Path(root)
     init_store(root)
     report = {'at': now(), 'page': OFFICIAL, 'counts': {}, 'errors': [], 'missing': [], 'unknown_types': []}
@@ -162,3 +167,13 @@ def sync_official(root):
     report['images'] = sync_images(root)
     atomic_json(root / 'entities/sync-report.json', report)
     return report
+
+
+def sync_official(root):
+    from official_sync import run
+    try:return run(root)
+    except (OSError,ValueError) as exc:
+        # Keep the CLI's historical report contract; the shared engine persists retry state.
+        from reference_store import export_cards
+        if not (Path(root)/'knowledge/cards/index.meta.json').exists():export_cards(root)
+        return {'errors':[{'error':str(exc)}]}

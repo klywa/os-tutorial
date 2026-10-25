@@ -14,6 +14,8 @@ import crawler
 
 class ParallelTests(unittest.TestCase):
     def setUp(self):
+        official=patch('official_sync.due',return_value=False)
+        official.start();self.addCleanup(official.stop)
         self.tmp = tempfile.TemporaryDirectory(dir=ROOT / '.wxq-runtime/test-temp')
         self.addCleanup(self.tmp.cleanup)
         self.runtime = crawler.Runtime(Path(self.tmp.name))

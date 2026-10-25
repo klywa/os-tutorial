@@ -19,10 +19,77 @@
       "id": "n-3cc74abe48119da9ebbb"
     },
     {
+      "id": "official-fe2a061187d32890f570",
+      "type": "heading",
+      "level": 3,
+      "title": "技能",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-493ef3f8adfd46ab9cdd",
+      "type": "entry",
+      "key": "怦然心动",
+      "show_key": true,
+      "value": "每购买4张牌，小妲己随机获得1张效果牌。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-c0f06a53803cae61014f",
+      "type": "heading",
+      "level": 3,
+      "title": "秘技",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-f3e55770ece70f397ea1",
+      "type": "entry",
+      "key": "心动节拍",
+      "show_key": true,
+      "value": "触发5/4/3次怦然心动，获得1张秘技牌心之引力。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：心之引力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-e8bc13f1245b5239f8ea",
+      "type": "heading",
+      "level": 3,
+      "title": "专属天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-908e4374ec2a87fca2d6",
+      "type": "entry",
+      "key": "魅力无限",
+      "show_key": true,
+      "value": "每回合打出的第1张效果牌会触发2次。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-c48f87ebcd0c84d8d18f",
+      "type": "heading",
+      "level": 3,
+      "title": "关联选项",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-e408286b1749d8b9b0f0",
+      "type": "entry",
+      "key": "心之引力",
+      "show_key": true,
+      "value": "获得4次临时刷新。且这4次刷新时，商店购买消耗-1。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-52a5083b989beb01bc28",
+      "type": "heading",
+      "level": 3,
+      "title": "技能运用与补充",
+      "separator": "\n\n"
+    },
+    {
       "type": "entry",
       "key": "棋手技能怦然心动",
       "show_key": true,
-      "value": "每购买四张牌，小妲己就能获得一张效果牌。需要花费一定能量来触发技能效果，且获得的效果牌较为随机。虽然成本较高但是积少成多每次解锁心动节拍需要的怦然心动触发次数会降低。",
+      "value": "怦然心动获得的效果牌随机，触发需要能量，不能当成指定牌保证；通过买牌与秘技的临时刷新形成资源循环。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -42,7 +109,7 @@
       "type": "entry",
       "key": "六级专属天赋魅力无限",
       "show_key": true,
-      "value": "每回合打出的第一张效果牌会触发两次。是棋手后期上限所在，当己方有关键效果牌时第一张打出可以获得双倍的收益。例如效果牌新生力量在回合内第一张打出，玩家就能获得两个人口。在关键对局当中往往能改变胜负。",
+      "value": "当己方有关键效果牌时，优先将其作为回合第一张效果牌打出，可获得双倍收益。例如新生力量可提供两个人口。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",

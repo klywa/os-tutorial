@@ -19,20 +19,77 @@
       "id": "n-3cc74abe48119da9ebbb"
     },
     {
+      "id": "official-ab99f4be57dd1e130021",
+      "type": "heading",
+      "level": 3,
+      "title": "技能",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-9d3aacb9e314014d08c8",
       "type": "entry",
-      "key": "棋手技能",
+      "key": "钦定主角",
       "show_key": true,
-      "value": "钦定主角，指定英雄成为主角，每打出2张英雄/效果牌，主角等级+1，每回合上限+5",
-      "prefix": "- ",
-      "key_suffix": "：",
-      "separator": "\n\n",
-      "id": "n-9d3aacb9e314014d08c8"
+      "value": "使用技能，指定1名英雄成为主角，获得效果：每打出2张英雄或效果牌，等级+1（每回合最多+5）。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-5f754cf83919f11d122b",
+      "type": "heading",
+      "level": 3,
+      "title": "秘技",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-d723c4bee3e4886790ea",
+      "type": "entry",
+      "key": "封神时刻",
+      "show_key": true,
+      "value": "己方英雄首次升到25级，获得1张秘技牌封神一瞬。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：封神一瞬。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-6f8ea9a585d14b77dcf0",
+      "type": "heading",
+      "level": 3,
+      "title": "专属天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-219828526bd9fa8c4520",
+      "type": "entry",
+      "key": "完美演出",
+      "show_key": true,
+      "value": "封神一瞬指定的英雄在战斗开始时获得30%物理和法术吸血，并在15秒内免疫控制效果（压制除外）。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-2b1667bad3a2f68d285e",
+      "type": "heading",
+      "level": 3,
+      "title": "关联选项",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-f11b59654e3f39f424f1",
+      "type": "entry",
+      "key": "封神一瞬",
+      "show_key": true,
+      "value": "指定1名英雄获得其品阶×5的等级，且每次等级永久提升时，都额外+1级。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-8278baf804c8a36cc036",
+      "type": "heading",
+      "level": 3,
+      "title": "技能运用与补充",
+      "separator": "\n\n"
     },
     {
       "type": "entry",
       "key": "棋手秘技",
       "show_key": true,
-      "value": "封神一瞬，己方英雄首次升到25级获得，可以指定1名英雄立刻获得品阶×5的等级，且每次等级永久提升时，都额外+1级。拿到封神一瞬后，把它给钦定主角本人，形成双重升级联动。提升等级的次数越频繁，封神一瞬额外提升的等级也越多。",
+      "value": "拿到封神一瞬后，把它给钦定主角本人，形成双重升级联动。提升等级的次数越频繁，封神一瞬额外提升的等级也越多。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -47,16 +104,6 @@
       "key_suffix": "：",
       "separator": "\n\n",
       "id": "n-18633b96d9453d606ec7"
-    },
-    {
-      "type": "entry",
-      "key": "专属天赋",
-      "show_key": true,
-      "value": "完美演出，封神一瞬指定的英雄在开局获得30%双吸血、15秒免控（压制无效）。",
-      "prefix": "- ",
-      "key_suffix": "：",
-      "separator": "\n\n",
-      "id": "n-219828526bd9fa8c4520"
     },
     {
       "type": "heading",

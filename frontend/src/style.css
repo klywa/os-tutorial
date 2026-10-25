@@ -55,3 +55,5 @@
 @media(max-width:1120px){.full .phase-nav{display:flex;flex-wrap:nowrap;overflow-x:auto;flex-shrink:0;padding:8px 16px}.full .phase-nav button{white-space:nowrap}.full .quick-buttons{display:none}.full .quick-panel{grid-template-columns:1fr}.app .compact-note-heading{padding:12px 18px}.note-title-row{align-items:flex-start}.note-actions{justify-content:flex-end;max-width:260px}}
 .sidebar .compact-note-heading{padding:12px 16px}.sidebar .compact-note-heading h1{font-size:20px}.sidebar .note-title-row{flex-wrap:wrap;gap:8px}.sidebar .note-actions{max-width:none;justify-content:flex-start}.sidebar .note-meta-row{gap:8px 12px}
 @media(max-width:760px){.app .compact-note-heading{padding:10px 16px;gap:8px}.compact-note-heading h1{font-size:20px}.note-title-row{flex-wrap:wrap;gap:8px}.note-actions{max-width:none;justify-content:flex-start}.note-meta-row{gap:8px 12px}.note-player select{width:130px}.note-actions button{font-size:11px;padding:5px 8px}}
+
+.reader-cache-status{display:flex;align-items:center;gap:12px;padding:6px 20px;font-size:12px;color:var(--muted);background:var(--panel)}.reader-edit-fieldset{border:0;padding:0;margin:0;min-width:0}

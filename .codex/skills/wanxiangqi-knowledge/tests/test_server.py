@@ -19,6 +19,24 @@ spec.loader.exec_module(server_module)
 
 
 class ServerTests(unittest.TestCase):
+    def test_light_catalog_search_and_conditional_get(self):
+        import reader_store
+        reader_store.rebuild(self.root)
+        with urlopen(self.url+'notes/catalog') as r:
+            data=json.load(r);tag=r.headers['ETag']
+        self.assertIn('workspace_id',data);self.assertTrue(data['ready'])
+        try:urlopen(Request(self.url+'notes/catalog',headers={'If-None-Match':tag}))
+        except HTTPError as exc:self.assertEqual(exc.code,304)
+        else:self.fail('Expected 304')
+        with urlopen(self.url+'notes/search?q=test') as r:self.assertIn('ready',json.load(r))
+    def test_official_sync_settings_status_and_request(self):
+        def send(path,payload):
+            with urlopen(Request(self.url+'official-sync/'+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method='POST')) as r:return json.load(r)
+        with urlopen(self.url+'official-sync/status') as r:self.assertTrue(json.load(r)['enabled'])
+        self.assertFalse(send('settings',{'enabled':False})['enabled'])
+        self.assertTrue(send('run',{})['requested'])
+        self.assertTrue(send('retry',{})['requested'])
+        with urlopen(self.url+'official-sync/status') as r:self.assertFalse(json.load(r)['enabled'])
     def test_monitor_resume_and_tags_http(self):
         def send(path,payload,method='POST'):
             with urlopen(Request(self.url+path,json.dumps(payload).encode(),{'Content-Type':'application/json'},method=method)) as response:return json.load(response)

@@ -19,26 +19,93 @@
       "id": "n-3cc74abe48119da9ebbb"
     },
     {
+      "id": "official-926ab3e4811bef987f10",
+      "type": "heading",
+      "level": 3,
+      "title": "技能",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-091718ebf070a8fbed0d",
       "type": "entry",
-      "key": "正文",
-      "show_key": false,
-      "value": "- 每完成4次英雄合成，获得1张“即兴创作”。使用后，随机复制场上1名己方英雄，生成同名卡牌。",
-      "separator": "\n\n",
-      "id": "n-82752c97932eb39ffbc3"
+      "key": "神来之笔",
+      "show_key": true,
+      "value": "每进行4次英雄合成，白歌获得1张即兴创作。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：即兴创作。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-1ecf70c0755cdb711236",
+      "type": "heading",
+      "level": 3,
+      "title": "秘技",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-99ddafe22f021bda1c08",
+      "type": "entry",
+      "key": "天生我才",
+      "show_key": true,
+      "value": "使用6张即兴创作，获得1张秘技牌灵感爆发。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：灵感爆发。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-7e3296677396b84d643e",
+      "type": "heading",
+      "level": 3,
+      "title": "专属天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-dc63f1a856d0bc6d89e8",
+      "type": "entry",
+      "key": "惊才绝艳",
+      "show_key": true,
+      "value": "获得1张奇才：指定1名英雄，获得4张该英雄牌。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；后续选项：奇才。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-4fe649ad8910183dbe22",
+      "type": "heading",
+      "level": 3,
+      "title": "关联选项",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-82752c97932eb39ffbc3",
+      "type": "entry",
+      "key": "即兴创作",
+      "show_key": true,
+      "value": "随机获得场上1名英雄的复制。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "n-489357115902681b4194",
+      "type": "entry",
+      "key": "灵感爆发",
+      "show_key": true,
+      "value": "释放3道剑气，斩击手牌中随机3张非觉醒英雄牌，将每张牌斩为2张转瞬版复制。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-552501b6bedacbf8726c",
+      "type": "entry",
+      "key": "奇才",
+      "show_key": true,
+      "value": "指定1名英雄，获得4张该英雄牌。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-be9ae3fd40c01ce3dbfc",
+      "type": "heading",
+      "level": 3,
+      "title": "技能运用与补充",
+      "separator": "\n\n"
     },
     {
       "type": "entry",
       "key": "正文",
       "show_key": false,
-      "value": "- 白歌的棋手秘技与技能是联动效果，累计使用6张“即兴创作”后解锁“灵感爆发”。释放后，斩击手牌中3张未觉醒英雄牌，每张裂变为2张“转瞬”复制牌。",
-      "separator": "\n\n",
-      "id": "n-489357115902681b4194"
-    },
-    {
-      "type": "entry",
-      "key": "正文",
-      "show_key": false,
-      "value": "- 白歌棋手升级6级后的专属天赋为惊才绝艳，获得一张专属效果牌“奇才”。指定1名英雄，直接获得该英雄4张牌。要点：4张正好满足觉醒条件，6级固定送一个觉醒核心。",
+      "value": "奇才获得的四张英雄牌可用于补齐觉醒，使用前核对目标英雄与实际觉醒进度。",
       "separator": "\n\n",
       "id": "n-4dfe762ce6cd9d51434b"
     },
@@ -54,7 +121,7 @@
       "type": "entry",
       "key": "正文",
       "show_key": false,
-      "value": "- 神来之笔累计四次英雄合成取得即兴创作，使用六次即兴创作后取得灵感爆发；6级取得奇才，可指定复制英雄。联动前先整理非觉醒手牌目标，先奇才再灵感爆发；合成或使用次数不足时不能直接跳到下一环。",
+      "value": "联动前先整理非觉醒手牌目标，先奇才再灵感爆发；合成或使用次数不足时不能直接跳到下一环。",
       "separator": "\n\n",
       "id": "n-3b68b1ed1e178ea1e510"
     },

@@ -18,7 +18,7 @@ def fetch_image(url):
     return data
 
 
-def sync_images(root, rows=None):
+def sync_images(root, rows=None, prepare_only=False):
     from workspace import store_lock
     root = Path(root)
     rows = wxq.entities(root) if rows is None else rows
@@ -62,6 +62,7 @@ def sync_images(root, rows=None):
                 manifest['assets'][key] = {'url':url,'path':key+'.img'}
                 for eid, kind in wanted[url]:
                     manifest['entities'].setdefault(eid, {})[kind] = key
+        if prepare_only:return {**report,'_manifest':manifest,'_entity_ids':list({eid for pairs in wanted.values() for eid,kind in pairs})}
         # Do not hold the knowledge lock during network downloads.
         with store_lock(root, wait=True):
             wxq.atomic_json(manifest_path, manifest)

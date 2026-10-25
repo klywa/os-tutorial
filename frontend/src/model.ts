@@ -29,6 +29,7 @@ export function availability(note:Note,banned:string[]):'playable'|'unplayable'|
   return states.includes('unplayable')?'unplayable':states.includes('unknown')?'unknown':'playable';
 }
 export function matches(note:Note,query:string,entities:Entity[]){
+  if(!query.trim())return true;
   const refs=[...note.entities,...note.core,...(note.meta?.core_heroes??[]),...(note.meta?.players??[]),...(note.meta?.late_variants??[]).flatMap(v=>[...v.core_heroes,...v.members.flatMap(m=>[m.hero,m.replaces])]),...Object.values(note.meta?.compositions??{}).flat().map(m=>m.hero)];
   const text=[note.title,note.document?documentMarkdown(note.document):'',...refs.filter((r):r is string=>typeof r==='string'&&r.startsWith('pending:')).map(r=>r.slice(8)),...(note.meta?.operation_routes??[]).flatMap(r=>[r.name,r.condition,r.advantages,r.risks,r.transition]),...(note.meta?.late_variants??[]).flatMap(v=>[v.name,v.condition,...v.members.map(m=>m.role+' '+m.replacement_note)]),...(note.aliases??[]),...note.claims.map(c=>c.text),...entities.filter(e=>refs.includes(e.id)).flatMap(e=>[e.name,...(e.aliases??[])])].join(' ').toLowerCase();
   return query.trim().toLowerCase().split(/\s+/).every(q=>text.includes(q));

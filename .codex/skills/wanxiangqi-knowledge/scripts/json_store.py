@@ -142,7 +142,7 @@ def check_record(record):
         raise ValueError('阵容适用棋手必须与笔记绑定一致')
 
 
-def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False):
+def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False, prepare_only=False):
     """Caller holds store_lock. Publish changed pairs and a complete light index."""
     root = Path(root)
     previous = read(root / INDEX, {'notes': []})
@@ -182,12 +182,16 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
     from note_review import version_writes
     journal = {'schema_version':6, 'delta':True, 'records':changed, 'index':index,
                'versions':version_writes(root, before, changed, origin, review_refs), 'retired':retired}
+    if prepare_only:return journal
     write_file(root / JOURNAL, journal)
     recover(root)
     return changed
 
 
-def recover(root):
+def recover(root, *, official=True):
+    if official and (Path(root)/'raw/knowledge/pending-official-sync.json').exists():
+        from official_sync import recover as recover_official
+        recover_official(root)
     root = Path(root)
     journal = read(root / JOURNAL)
     if not journal:
@@ -199,6 +203,11 @@ def recover(root):
         path = record['metadata']['path']
         write_file(target(root, path), record['body'])
         write_file(target(root, meta_path(path), True), record['metadata'])
+        # Rebuildable projections never make canonical saves depend on cache availability.
+        try:
+            from reader_store import write_record
+            write_record(root,record)
+        except (OSError,ValueError,KeyError):pass
     write_file(root / INDEX, journal['index'])
     for path in journal.get('retired', []):
         for name in (path, meta_path(path)):

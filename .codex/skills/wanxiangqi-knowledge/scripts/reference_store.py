@@ -106,10 +106,14 @@ def render_card(card):
     return '\n'.join(lines) + '\n'
 
 
-def save_json_cards(root, cards, evidence_refs=None):
+def save_json_cards(root, cards, evidence_refs=None, writer=None, only_ids=None):
     import json_document, json_store
     root = Path(root); rows = []
+    if only_ids is not None:
+        rows=[r for r in json_store.read(root/'knowledge/cards/index.meta.json',{'cards':[]})['cards'] if r['id'] not in only_ids]
+    write = writer or json_store.write_file
     for card in cards:
+        if only_ids is not None and card['id'] not in only_ids:continue
         name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', '－', card['name'])[:90]
         path = f"knowledge/cards/{card['category']}/{name}－{card['id'].replace(':', '-')}.json"
         body = json_document.parse(render_card(card))
@@ -170,10 +174,10 @@ def save_json_cards(root, cards, evidence_refs=None):
             if card.get('other_uses'):
                 meta['other_uses_evidence']=[evidence_refs[card['id']]] if card['id'] in evidence_refs else []
         meta.update(path=path, body_sha256=json_store.digest(body))
-        json_store.write_file(root / path, body)
-        json_store.write_file(root / json_store.meta_path(path), meta)
+        write(root / path, body)
+        write(root / json_store.meta_path(path), meta)
         rows.append({'id': card['id'], 'path': path})
-    json_store.write_file(root / 'knowledge/cards/index.meta.json', {'schema_version': 6, 'cards': rows})
+    write(root / 'knowledge/cards/index.meta.json', {'schema_version': 6, 'cards': rows})
 
 
 def json_cards(root):

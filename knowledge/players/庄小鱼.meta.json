@@ -29,6 +29,832 @@
   ],
   "path": "knowledge/players/庄小鱼.json",
   "manual_sections": [],
+  "conflicts": [],
+  "explicit_relationships": true,
+  "player_reading_layout": {
+    "version": 1
+  },
+  "player_id": "player:31",
+  "claim_annotations": [
+    {
+      "id": "b-zhuang-multi-sync",
+      "text_ref": "b-zhuang-multi-sync",
+      "section": "适用技巧",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2426.79
+        },
+        {
+          "type": "video",
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2571.7,
+          "end": 2713.64
+        }
+      ],
+      "origin": "batch77_fulltext_review"
+    },
+    {
+      "id": "b3-28d070ca50c5da9282-b3-claim",
+      "text_ref": "b3-28d070ca50c5da9282",
+      "section": "适用打法与选择",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "origin": "batch77_second_fulltext_review",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1xweA6MEwM:p1",
+          "start": 28.12,
+          "end": 145.31
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 199,
+          "paragraph_end": 199
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 90,
+          "paragraph_end": 90
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 70,
+          "paragraph_end": 70
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 771,
+          "paragraph_end": 771
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 545,
+          "paragraph_end": 545
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 144,
+          "paragraph_end": 144
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 58,
+          "paragraph_end": 58
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-b-extra3.json",
+        "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+      }
+    },
+    {
+      "id": "b3-6397d0ed883e1f1bd8-b3-claim",
+      "text_ref": "b3-6397d0ed883e1f1bd8",
+      "section": "适用技巧",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "origin": "batch77_second_fulltext_review",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1xweA6MEwM:p1",
+          "start": 121.95,
+          "end": 225.32
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 771,
+          "paragraph_end": 771
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 545,
+          "paragraph_end": 545
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 199,
+          "paragraph_end": 199
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 90,
+          "paragraph_end": 90
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 70,
+          "paragraph_end": 70
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-b-extra3.json",
+        "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+      }
+    },
+    {
+      "id": "b3-official-rumeng-cost6",
+      "text_ref": "n-048ff87ac1bbbbb5a095",
+      "section": "秘技",
+      "kind": "mechanic",
+      "inference": false,
+      "version": null,
+      "condition": "当前官网发布卡面",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+          "paragraph_start": 1,
+          "paragraph_end": 3
+        }
+      ]
+    },
+    {
+      "id": "c3-zhuang-balanced-direction-c3-claim",
+      "text_ref": "c3-zhuang-balanced-direction",
+      "section": "本批阵容补充",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1zgH16UEgk:p1",
+          "start": 11.82,
+          "end": 160.09
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 807,
+          "paragraph_end": 807
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 473,
+          "paragraph_end": 473
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "c3-zhuang-dahe-direction-c3-claim",
+      "text_ref": "c3-zhuang-dahe-direction",
+      "section": "大河龙蛇路线",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 90.84,
+          "end": 154.48
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 146,
+          "paragraph_end": 146
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 256,
+          "paragraph_end": 256
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 104,
+          "paragraph_end": 104
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 237.42,
+          "end": 301.49
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 143,
+          "paragraph_end": 143
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 125,
+          "paragraph_end": 125
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "official-c189ca0da54df0c63a7b",
+      "text_ref": "official-2abddeac0eb6e2159bf9",
+      "section": "技能",
+      "kind": "mechanic",
+      "origin": "official",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+          "paragraph_start": 546,
+          "paragraph_end": 546
+        }
+      ]
+    },
+    {
+      "id": "official-012c7fe13e50b68dec65",
+      "text_ref": "official-af8b2e454e44aa5603ea",
+      "section": "技能",
+      "kind": "mechanic",
+      "origin": "official",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+          "paragraph_start": 547,
+          "paragraph_end": 547
+        }
+      ]
+    },
+    {
+      "id": "official-965ea7a0c50853b91200",
+      "text_ref": "official-91231c640d6cf0353e71",
+      "section": "技能",
+      "kind": "mechanic",
+      "origin": "official",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+          "paragraph_start": 774,
+          "paragraph_end": 774
+        }
+      ]
+    },
+    {
+      "id": "official-400548dbb30d6040464b",
+      "text_ref": "n-c6e0f4ffc3247f64470c",
+      "section": "技能",
+      "kind": "mechanic",
+      "origin": "official",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+          "paragraph_start": 775,
+          "paragraph_end": 775
+        }
+      ]
+    },
+    {
+      "id": "official-d34b84762ec89df82f5b",
+      "text_ref": "n-6c4130a7ac1576f48aaf",
+      "section": "技能",
+      "kind": "mechanic",
+      "origin": "official",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+          "paragraph_start": 548,
+          "paragraph_end": 548
+        }
+      ]
+    }
+  ],
+  "body_sha256": "fc8b8de73b8c9e7dee187373cf1b1c04a313d7a8dc0496000e6cf1d4d48021e9",
+  "revision": "750cac7f78410da538f6",
+  "legacy_layout": {
+    "version": 4
+  },
+  "retired_claim_annotations": [
+    {
+      "id": "tier-guide-general-player-zhuang",
+      "section": "前期思路",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "condition": "",
+      "version": null,
+      "evidence": [
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 31.49,
+          "end": 58.87,
+          "frame": "frames/35-0.jpg"
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 59.37,
+          "end": 88.82
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 506.94,
+          "end": 532.77
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 533.15,
+          "end": 560.1
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 560.51,
+          "end": 588.41
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 86.9,
+          "end": 116.5
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 117.03,
+          "end": 143.69
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 144.32,
+          "end": 174.18
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 174.54,
+          "end": 203.26
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 203.85,
+          "end": 232.79
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 232.96,
+          "end": 261.03
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 453.32,
+          "end": 477.72
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 478.7,
+          "end": 506.73
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 31.49,
+          "end": 58.87
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 442.84,
+          "end": 471.97
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 588.74,
+          "end": 617.77
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 618.27,
+          "end": 644.28
+        }
+      ],
+      "text_ref": "support-tier-guide-general-player-zhuang",
+      "history_index": 7
+    },
+    {
+      "id": "doc-9c25b7d48b3156b925e1d7",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-9c25b7d48b3156b925e1d7",
+      "history_index": 7
+    },
+    {
+      "id": "doc-bad7a0bb3800a3179ad2e3",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-bad7a0bb3800a3179ad2e3",
+      "history_index": 7
+    },
+    {
+      "id": "doc-2a75b717da595796d7b4c5",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-2a75b717da595796d7b4c5",
+      "history_index": 7
+    },
+    {
+      "id": "doc-4ee5d79328ad7ecc741cd7",
+      "section": "技能",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-4ee5d79328ad7ecc741cd7",
+      "history_index": 7
+    },
+    {
+      "id": "doc-c989e1562c1af28a5ab0cf",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-c989e1562c1af28a5ab0cf",
+      "history_index": 7
+    },
+    {
+      "id": "doc-946e25fd91a11bc125f7f7",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-946e25fd91a11bc125f7f7",
+      "history_index": 7
+    },
+    {
+      "id": "doc-984b3e6def42ad1d0f3613",
+      "section": "前期思路",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-984b3e6def42ad1d0f3613",
+      "history_index": 7
+    },
+    {
+      "id": "doc-6a4fd645c697f53b07730c",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-6a4fd645c697f53b07730c",
+      "history_index": 7
+    },
+    {
+      "id": "doc-a54354980431318eecaf68",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-a54354980431318eecaf68",
+      "history_index": 7
+    },
+    {
+      "id": "doc-e66d6d2ba8eafb019eeafb",
+      "section": "适用技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        }
+      ],
+      "origin": "document",
+      "text_ref": "support-doc-e66d6d2ba8eafb019eeafb",
+      "history_index": 7
+    },
+    {
+      "id": "six-player-31-opening-effects",
+      "section": "技能",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 0,
+          "end": 27.08
+        }
+      ],
+      "text_ref": "support-six-player-31-opening-effects",
+      "history_index": 7
+    },
+    {
+      "id": "six-player-31-three-template",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 140.65,
+          "end": 313.02
+        }
+      ],
+      "text_ref": "support-six-player-31-three-template",
+      "history_index": 7
+    },
+    {
+      "id": "six-player-31-dream-random",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1PUJ26RE5c:p1",
+          "start": 293.69,
+          "end": 360.69
+        }
+      ],
+      "text_ref": "support-six-player-31-dream-random",
+      "history_index": 7
+    },
+    {
+      "id": "b22-player-31-mulan-rumeng",
+      "section": "适用技巧",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "kind": "conditional_strategy",
+      "evidence": [
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 86.9,
+          "end": 319.28
+        }
+      ],
+      "review_basis": {
+        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+      },
+      "text_ref": "support-b22-player-31-mulan-rumeng",
+      "history_index": 7
+    }
+  ],
+  "entity_names": {
+    "card:5631": "海诺",
+    "card:1831": "雅典娜",
+    "card:1591": "朵莉亚",
+    "card:93110": "如梦似幻",
+    "card:663109": "梦幻引擎",
+    "card:3551": "艾琳",
+    "card:1461": "露娜",
+    "card:7083": "传承"
+  },
+  "hero_field_review": [],
+  "batch77_conflicts": [
+    {
+      "id": "zhuang-rumeng-cost-6-versus-8",
+      "status": "resolved_current_official",
+      "old_visible_node": "n-048ff87ac1bbbbb5a095",
+      "old_visible_quote": "消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌",
+      "old_note": "player-zhuang",
+      "new_quote": "如梦似幻是花8点能量直接给手牌不需要买",
+      "new_evidence": [
+        {
+          "type": "video",
+          "source": "BV1xweA6MEwM:p1",
+          "start": 121.95,
+          "end": 145.31
+        }
+      ],
+      "official_scope": "card:93110描述没有使用费用，shopBuyCost=0不能作为技能实际使用消耗的独立反证",
+      "handling": "官网实际请求且view_image核对6 ENERGY，保留双方历史原文与证据；旧6正文原ID保留并直接补当前官网document证据。",
+      "old_evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "old_original_text_actually_read": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+      "old_document_sha256": "3190a71e9e615b2bd5e90257f3d43248f083eaa015f0118c1e849d5a7e7168dc",
+      "old_value_preserved_not_newly_certified": false,
+      "same_condition": "同一如梦似幻秘技使用费用；暂无已证版本或减费条件可将6/8条件化。",
+      "impact": "影响升5/6当回合能量预算及秘技/引擎先后。当前采用官网6 ENERGY；视频8不作为当前固定预算依据。",
+      "official_resolution": {
+        "current_cost": 6,
+        "evidence": [
+          {
+            "type": "document",
+            "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+            "paragraph_start": 1,
+            "paragraph_end": 3
+          }
+        ],
+        "image_url": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/04d5e74e97d281186429f633cb6309e8a246b9b1e5dcaeb3ba4289f3c0c03530.png",
+        "image_sha256": "9e8ce7220de1ea29f3f49dde0284bf94fbf6bf49d301f7734e8ee1d376998e53",
+        "requested_at": "2026-10-24T14:12:26.412975+00:00",
+        "report": "raw/reports/batch77/official-rumeng-check.json"
+      }
+    }
+  ],
+  "official_profile": {
+    "player_id": "player:31",
+    "nodes": {
+      "official-95341c1fb8fd5337112b": {
+        "kind": "heading",
+        "key": "group:0"
+      },
+      "official-797c18d49048dc670719": {
+        "kind": "heading",
+        "key": "group:1"
+      },
+      "official-2abddeac0eb6e2159bf9": {
+        "kind": "card",
+        "card_id": "card:663101",
+        "group": "秘技",
+        "parent_ids": []
+      },
+      "official-edbd0bf73a6e547b20ec": {
+        "kind": "heading",
+        "key": "group:2"
+      },
+      "official-af8b2e454e44aa5603ea": {
+        "kind": "card",
+        "card_id": "card:663108",
+        "group": "专属",
+        "parent_ids": []
+      },
+      "official-12061c238198d2e0d72b": {
+        "kind": "heading",
+        "key": "related"
+      },
+      "official-91231c640d6cf0353e71": {
+        "kind": "card",
+        "card_id": "card:93110",
+        "group": "关联选项",
+        "parent_ids": [
+          "card:663101"
+        ]
+      },
+      "n-c6e0f4ffc3247f64470c": {
+        "kind": "card",
+        "card_id": "card:93199",
+        "group": "技能",
+        "parent_ids": []
+      },
+      "n-6c4130a7ac1576f48aaf": {
+        "kind": "card",
+        "card_id": "card:663109",
+        "group": "关联选项",
+        "parent_ids": [
+          "card:663108"
+        ]
+      }
+    },
+    "card_ids": [
+      "card:663101",
+      "card:663108",
+      "card:663109",
+      "card:93110",
+      "card:93199"
+    ]
+  },
   "history": [
     {
       "at": "2026-10-19T13:13:42.761249+00:00",
@@ -3283,678 +4109,1401 @@
           ]
         }
       ]
-    }
-  ],
-  "conflicts": [],
-  "explicit_relationships": true,
-  "player_reading_layout": {
-    "version": 1
-  },
-  "player_id": "player:31",
-  "claim_annotations": [
-    {
-      "id": "tier-guide-general-player-zhuang",
-      "section": "前期思路",
-      "kind": "conditional_strategy",
-      "inference": true,
-      "condition": "",
-      "version": null,
-      "evidence": [
-        {
-          "source": "BV1brJq6BEYj:p1",
-          "start": 31.49,
-          "end": 58.87,
-          "frame": "frames/35-0.jpg"
-        },
-        {
-          "source": "BV1brJq6BEYj:p1",
-          "start": 59.37,
-          "end": 88.82
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 506.94,
-          "end": 532.77
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 533.15,
-          "end": 560.1
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 560.51,
-          "end": 588.41
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 86.9,
-          "end": 116.5
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 117.03,
-          "end": 143.69
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 144.32,
-          "end": 174.18
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 174.54,
-          "end": 203.26
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 203.85,
-          "end": 232.79
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 232.96,
-          "end": 261.03
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 453.32,
-          "end": 477.72
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 478.7,
-          "end": 506.73
-        },
-        {
-          "source": "BV1brJq6BEYj:p1",
-          "start": 31.49,
-          "end": 58.87
-        },
-        {
-          "source": "BV1brJq6BEYj:p1",
-          "start": 442.84,
-          "end": 471.97
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 588.74,
-          "end": 617.77
-        },
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 618.27,
-          "end": 644.28
-        }
-      ],
-      "text_ref": "support-tier-guide-general-player-zhuang"
     },
     {
-      "id": "doc-9c25b7d48b3156b925e1d7",
-      "section": "技能",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "mechanic",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 3,
-          "paragraph_end": 3
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-9c25b7d48b3156b925e1d7"
-    },
-    {
-      "id": "doc-bad7a0bb3800a3179ad2e3",
-      "section": "技能",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "mechanic",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 4,
-          "paragraph_end": 4
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-bad7a0bb3800a3179ad2e3"
-    },
-    {
-      "id": "doc-2a75b717da595796d7b4c5",
-      "section": "技能",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "mechanic",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 6,
-          "paragraph_end": 6
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-2a75b717da595796d7b4c5"
-    },
-    {
-      "id": "doc-4ee5d79328ad7ecc741cd7",
-      "section": "技能",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "mechanic",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 7,
-          "paragraph_end": 7
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-4ee5d79328ad7ecc741cd7"
-    },
-    {
-      "id": "doc-c989e1562c1af28a5ab0cf",
-      "section": "前期思路",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 9,
-          "paragraph_end": 9
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-c989e1562c1af28a5ab0cf"
-    },
-    {
-      "id": "doc-946e25fd91a11bc125f7f7",
-      "section": "前期思路",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 13,
-          "paragraph_end": 13
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-946e25fd91a11bc125f7f7"
-    },
-    {
-      "id": "doc-984b3e6def42ad1d0f3613",
-      "section": "前期思路",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 14,
-          "paragraph_end": 14
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-984b3e6def42ad1d0f3613"
-    },
-    {
-      "id": "doc-6a4fd645c697f53b07730c",
-      "section": "适用技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 11,
-          "paragraph_end": 11
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-6a4fd645c697f53b07730c"
-    },
-    {
-      "id": "doc-a54354980431318eecaf68",
-      "section": "适用技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 12,
-          "paragraph_end": 12
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-a54354980431318eecaf68"
-    },
-    {
-      "id": "doc-e66d6d2ba8eafb019eeafb",
-      "section": "适用技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 15,
-          "paragraph_end": 15
-        }
-      ],
-      "origin": "document",
-      "text_ref": "support-doc-e66d6d2ba8eafb019eeafb"
-    },
-    {
-      "id": "six-player-31-opening-effects",
-      "section": "技能",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "source": "BV1Lfp76KE6e:p1",
-          "start": 0,
-          "end": 27.08
-        }
-      ],
-      "text_ref": "support-six-player-31-opening-effects"
-    },
-    {
-      "id": "six-player-31-three-template",
-      "section": "适用技巧",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "source": "BV1Lfp76KE6e:p1",
-          "start": 140.65,
-          "end": 313.02
-        }
-      ],
-      "text_ref": "support-six-player-31-three-template"
-    },
-    {
-      "id": "six-player-31-dream-random",
-      "section": "适用技巧",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "source": "BV1PUJ26RE5c:p1",
-          "start": 293.69,
-          "end": 360.69
-        }
-      ],
-      "text_ref": "support-six-player-31-dream-random"
-    },
-    {
-      "id": "b22-player-31-mulan-rumeng",
-      "section": "适用技巧",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "source": "BV1oQJ66tESA:p1",
-          "start": 86.9,
-          "end": 319.28
-        }
-      ],
-      "review_basis": {
-        "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
-      },
-      "text_ref": "support-b22-player-31-mulan-rumeng"
-    },
-    {
-      "id": "b-zhuang-multi-sync",
-      "text_ref": "b-zhuang-multi-sync",
-      "section": "适用技巧",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1Lfp76KE6e:p1",
-          "start": 2257.74,
-          "end": 2426.79
+      "at": "2026-10-25T09:17:26.556320+00:00",
+      "origin": "official",
+      "previous": {
+        "body": {
+          "schema_version": 6,
+          "leading": "",
+          "nodes": [
+            {
+              "type": "heading",
+              "level": 1,
+              "title": "庄小鱼",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-3755bd442141d66a1874"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "title": "技能",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-3cc74abe48119da9ebbb"
+            },
+            {
+              "type": "entry",
+              "key": "技能",
+              "show_key": true,
+              "value": "梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+              "prefix": "- ",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-c6e0f4ffc3247f64470c"
+            },
+            {
+              "type": "entry",
+              "key": "秘技",
+              "show_key": true,
+              "value": "棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+              "prefix": "- ",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-048ff87ac1bbbbb5a095"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+              "separator": "\n\n",
+              "id": "n-43fba5f7f12639bc9930"
+            },
+            {
+              "type": "entry",
+              "key": "专属天赋",
+              "show_key": true,
+              "value": "获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+              "prefix": "- ",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-6c4130a7ac1576f48aaf"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+              "separator": "\n\n",
+              "id": "n-bd819f6b66d36dc9feb2"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "title": "前期思路",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-1ae250dbd39c81c50749"
+            },
+            {
+              "type": "entry",
+              "key": "棋手升级判断",
+              "show_key": true,
+              "value": "先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+              "prefix": "- ",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-3b82d3e8d0a17594a228"
+            },
+            {
+              "type": "entry",
+              "key": "优先选择能加快棋手升级的天赋，例如先苦后甜",
+              "show_key": true,
+              "value": "输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+              "prefix": "- ",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-175ebec71436f6d70b43"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+              "separator": "\n\n",
+              "id": "n-a5b6a2e2fd978aa2d051"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+              "separator": "\n\n",
+              "id": "n-ffc95410ff9c3d6cabf3"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "title": "适用打法与选择",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-e9d39a6a8987e03170d4"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "title": "[河洛花木兰](../lineups/河洛花木兰-庄小鱼.json)",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-9dc3b0d957406cbf7d83"
+            },
+            {
+              "type": "entry",
+              "key": "采用信号",
+              "show_key": true,
+              "value": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-a908abb029f70671558a"
+            },
+            {
+              "type": "entry",
+              "key": "放弃或转向信号",
+              "show_key": true,
+              "value": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-3e2077e7a15687e54001"
+            },
+            {
+              "type": "entry",
+              "key": "必须阵营",
+              "show_key": true,
+              "value": "河洛、日落海。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-6545ee06e9bc32cb7769"
+            },
+            {
+              "type": "entry",
+              "key": "优势",
+              "show_key": true,
+              "value": "如梦与梦幻商店补组件、觉醒和露娜。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-67feeacd2604e06550f7"
+            },
+            {
+              "type": "entry",
+              "key": "短板",
+              "show_key": true,
+              "value": "技能不保证命中核心；人数、合成和保血需要协同。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-267d76b89f99848e106b"
+            },
+            {
+              "type": "entry",
+              "key": "来牌与同行",
+              "show_key": true,
+              "value": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-d51a03f0801216933dd0"
+            },
+            {
+              "type": "entry",
+              "key": "对手与压力",
+              "show_key": true,
+              "value": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-defb22d03cf47086ff41"
+            },
+            {
+              "type": "entry",
+              "key": "英雄投入",
+              "show_key": true,
+              "value": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-78c0470f6aabf19afe62"
+            },
+            {
+              "type": "heading",
+              "level": 4,
+              "title": "阶段强度",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-2d7c7cf14dc1c554edf2"
+            },
+            {
+              "type": "entry",
+              "key": "前期",
+              "show_key": true,
+              "value": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+              "prefix": "- **",
+              "key_suffix": "：** ",
+              "separator": "\n\n",
+              "id": "n-ef91e52f48187bef00cf"
+            },
+            {
+              "type": "entry",
+              "key": "中期",
+              "show_key": true,
+              "value": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+              "prefix": "- **",
+              "key_suffix": "：** ",
+              "separator": "\n\n",
+              "id": "n-b64de566915a53cdea66"
+            },
+            {
+              "type": "entry",
+              "key": "后期",
+              "show_key": true,
+              "value": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+              "prefix": "- **",
+              "key_suffix": "：** ",
+              "separator": "\n\n",
+              "id": "n-ec9566f7284913eca2d5"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "title": "[庄小鱼无阵营](../lineups/庄小鱼无阵营-庄小鱼.json)",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-6d1b0262bd1fa99d604f"
+            },
+            {
+              "type": "entry",
+              "key": "采用信号",
+              "show_key": true,
+              "value": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-2658ca2d237b1dc15fd3"
+            },
+            {
+              "type": "entry",
+              "key": "放弃或转向信号",
+              "show_key": true,
+              "value": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-ea5274cbd3af3236e601"
+            },
+            {
+              "type": "entry",
+              "key": "必须阵营",
+              "show_key": true,
+              "value": "暂无已确认条件。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-6bfdc24fb8b924a6a2b4"
+            },
+            {
+              "type": "entry",
+              "key": "优势",
+              "show_key": true,
+              "value": "暂无已确认结论",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-1060acde86954274d235"
+            },
+            {
+              "type": "entry",
+              "key": "短板",
+              "show_key": true,
+              "value": "暂无已确认结论",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-1b3954e803d052011e72"
+            },
+            {
+              "type": "entry",
+              "key": "英雄投入",
+              "show_key": true,
+              "value": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。",
+              "prefix": "",
+              "key_suffix": "：",
+              "separator": "\n\n",
+              "id": "n-c11d04e8ecabc72e9790"
+            },
+            {
+              "type": "heading",
+              "level": 4,
+              "title": "阶段强度",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-78ae6063d1bccd2e93a5"
+            },
+            {
+              "type": "entry",
+              "key": "前期",
+              "show_key": true,
+              "value": "升级过渡需实际承伤与输出保血。",
+              "prefix": "- **",
+              "key_suffix": "：** ",
+              "separator": "\n\n",
+              "id": "n-9870cdffb24f6aa3ff86"
+            },
+            {
+              "type": "entry",
+              "key": "中期",
+              "show_key": true,
+              "value": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+              "prefix": "- **",
+              "key_suffix": "：** ",
+              "separator": "\n\n",
+              "id": "n-0948d169794200230c3a"
+            },
+            {
+              "type": "entry",
+              "key": "后期",
+              "show_key": true,
+              "value": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+              "prefix": "- **",
+              "key_suffix": "：** ",
+              "separator": "\n\n",
+              "id": "n-b873e4ed4144f08a756c"
+            },
+            {
+              "id": "b3-28d070ca50c5da9282",
+              "type": "entry",
+              "key": "日落海整备",
+              "show_key": true,
+              "value": "整备成员积累核心，海诺输出、雅典娜承伤、朵莉亚恢复；如梦似幻与梦幻商店帮助补体系和觉醒。没有装备的艾琳不急上场分摊核心，露娜则先区分登场成长收益与是否值得常驻。",
+              "separator": "\n\n"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "title": "适用技巧",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-0cd63f4d8b7e3a0ef63c"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+              "separator": "\n\n",
+              "id": "n-31d6c038a6facfca73b7"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+              "separator": "\n\n",
+              "id": "n-261fdec0c0201972bacb"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+              "separator": "\n\n",
+              "id": "n-07fc0b137cd482d979cd"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+              "separator": "\n\n",
+              "id": "n-c61394ec4d3f69211aeb"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+              "separator": "\n\n",
+              "id": "n-6455eb54b35a8de14a3d"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- 河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+              "separator": "\n\n",
+              "id": "n-2999ed65e527ecb249ea"
+            },
+            {
+              "id": "b-zhuang-multi-sync",
+              "type": "entry",
+              "key": "无阵营的输出分工",
+              "show_key": true,
+              "value": "无阵营路线通常让孙悟空与海月共同处理高等级目标，姜子牙先清杂兵，杨玉环补续航；海月到场后不必固定卖掉孙悟空。全队能够取胜时保留多核与四海来援的收益，确实难以取胜、需要集中等级时再按手中转级牌处理。",
+              "separator": "\n\n"
+            },
+            {
+              "id": "b3-6397d0ed883e1f1bd8",
+              "type": "entry",
+              "key": "日落海的秘技预算与终局精简",
+              "show_key": true,
+              "value": "如梦取得的是手牌，梦幻引擎替换商店后仍要购买，使用引擎前保留实际买牌能量。需要精简时，先确认海诺、雅典娜、朵莉亚能承担战斗，再按传承最低三名随机分配处理米莱狄；不把故意输一轮或必定给海诺等级作为通用操作。",
+              "separator": "\n\n"
+            },
+            {
+              "type": "heading",
+              "level": 2,
+              "title": "关联知识",
+              "space": " ",
+              "separator": "\n\n",
+              "id": "n-44ceb266bede60e56f72"
+            },
+            {
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+              "separator": "\n",
+              "id": "n-36cc13a3d009ddf36583"
+            },
+            {
+              "id": "c3-zhuang-balanced-direction-h",
+              "type": "heading",
+              "level": 2,
+              "title": "本批阵容补充",
+              "separator": "\n\n"
+            },
+            {
+              "id": "c3-zhuang-balanced-direction",
+              "type": "entry",
+              "key": "无阵营均衡路线",
+              "show_key": true,
+              "value": "没有刺客战斗天赋、且公孙离与猪八戒能承担当前输出和前排时，采用公孙离、猪八戒、姜子牙、海月、太乙真人、裴擒虎六人均衡路线。逍遥自在按场上无阵营人数给全队成长，四海来援让无阵营英雄阵亡后召唤同品阶同等级英雄继续参战；不需要为了成型强上孙悟空。拿到身外身等明确强化孙悟空的天赋时，再比较原孙悟空多核路线；已在用孙悟空、其单体输出仍有效时，也保留与海月并用或由海月接替的原有条件。",
+              "separator": "\n\n"
+            },
+            {
+              "id": "c3-zhuang-dahe-direction-h",
+              "type": "heading",
+              "level": 2,
+              "title": "大河龙蛇路线",
+              "separator": "\n\n"
+            },
+            {
+              "id": "c3-zhuang-dahe-direction",
+              "type": "entry",
+              "key": "大河龙蛇",
+              "show_key": true,
+              "value": "东皇太一承伤压制，敖隐靠图腾持续叠临时等级与攻速；张良和因缘图腾补全队永久成长。如梦似幻用于补大河组件和觉醒，低血速5只是有存款利息与即时战力资源的示例，不能固定卖血。结束成长后才按真实转级规则换入太乙真人、钟馗、瑶等保护。",
+              "separator": "\n\n"
+            }
+          ],
+          "adaptations": [
+            {
+              "lineup": "heluo-huamulan",
+              "branch": "zhuang",
+              "title": "河洛花木兰",
+              "path": "knowledge/lineups/河洛花木兰-庄小鱼.md",
+              "selection": {
+                "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+                "avoid": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+                "signals": {
+                  "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                  "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+                  "英雄投入": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。"
+                },
+                "stage_strength": {
+                  "early": {
+                    "text": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                    "claim_refs": [
+                      "fmt24-zhuang-e27b4cdf79c3"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+                    "claim_refs": [
+                      "fmt24-zhuang-38713054751b"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                    "claim_refs": [
+                      "fmt24-zhuang-98c13f1a34fb"
+                    ],
+                    "inference": true
+                  }
+                }
+              },
+              "required_factions": [
+                "河洛",
+                "日落海"
+              ],
+              "advantages": "如梦与梦幻商店补组件、觉醒和露娜。",
+              "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
+            },
+            {
+              "lineup": "b22-zhuang-no-faction",
+              "branch": "owner",
+              "title": "庄小鱼无阵营",
+              "path": "knowledge/lineups/庄小鱼无阵营-庄小鱼.md",
+              "selection": {
+                "stage_strength": {
+                  "early": {
+                    "text": "升级过渡需实际承伤与输出保血。",
+                    "claim_refs": [
+                      "fmt24-owner-e27b4cdf79c3"
+                    ],
+                    "inference": true
+                  },
+                  "middle": {
+                    "text": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+                    "claim_refs": [
+                      "fmt24-owner-38713054751b"
+                    ],
+                    "inference": true
+                  },
+                  "late": {
+                    "text": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+                    "claim_refs": [
+                      "fmt24-owner-98c13f1a34fb"
+                    ],
+                    "inference": true
+                  }
+                },
+                "adopt": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+                "avoid": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+                "signals": {
+                  "英雄投入": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。"
+                }
+              },
+              "required_factions": [],
+              "advantages": "暂无已确认结论",
+              "disadvantages": "暂无已确认结论"
+            }
+          ],
+          "supporting_nodes": [
+            {
+              "id": "support-tier-guide-general-player-zhuang",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "棋手升级判断：先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-9c25b7d48b3156b925e1d7",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "技能：梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-bad7a0bb3800a3179ad2e3",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-2a75b717da595796d7b4c5",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-4ee5d79328ad7ecc741cd7",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "专属天赋：获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-c989e1562c1af28a5ab0cf",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "优先选择能加快棋手升级的天赋，例如先苦后甜：输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-946e25fd91a11bc125f7f7",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-984b3e6def42ad1d0f3613",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-6a4fd645c697f53b07730c",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-a54354980431318eecaf68",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+              "separator": ""
+            },
+            {
+              "id": "support-doc-e66d6d2ba8eafb019eeafb",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+              "separator": ""
+            },
+            {
+              "id": "support-six-player-31-opening-effects",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+              "separator": ""
+            },
+            {
+              "id": "support-six-player-31-three-template",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+              "separator": ""
+            },
+            {
+              "id": "support-six-player-31-dream-random",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+              "separator": ""
+            },
+            {
+              "id": "support-b22-player-31-mulan-rumeng",
+              "type": "entry",
+              "key": "正文",
+              "show_key": false,
+              "value": "河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+              "separator": ""
+            }
+          ],
+          "semantics": {}
         },
-        {
-          "type": "video",
-          "source": "BV1Lfp76KE6e:p1",
-          "start": 2571.7,
-          "end": 2713.64
+        "metadata": {
+          "id": "player-zhuang",
+          "type": "player",
+          "title": "庄小鱼",
+          "aliases": [
+            "庄小鱼：适用打法与选择"
+          ],
+          "entities": [
+            "player:31",
+            "card:5631",
+            "card:1831",
+            "card:1591",
+            "card:93110",
+            "card:663109",
+            "card:3551",
+            "card:1461",
+            "card:7083"
+          ],
+          "related": [
+            {
+              "id": "heluo-huamulan--ming",
+              "type": "lineup",
+              "title": "河洛花木兰-明先生",
+              "relation": "recommended_lineup",
+              "path": "knowledge/lineups/河洛花木兰-明先生.json"
+            },
+            "batch77-riluohai-zhuang",
+            "c3-zhuang-dahe-long-she"
+          ],
+          "path": "knowledge/players/庄小鱼.json",
+          "manual_sections": [],
+          "explicit_relationships": true,
+          "player_reading_layout": {
+            "version": 1
+          },
+          "player_id": "player:31",
+          "claim_annotations": [
+            {
+              "id": "tier-guide-general-player-zhuang",
+              "section": "前期思路",
+              "kind": "conditional_strategy",
+              "inference": true,
+              "condition": "",
+              "version": null,
+              "evidence": [
+                {
+                  "source": "BV1brJq6BEYj:p1",
+                  "start": 31.49,
+                  "end": 58.87,
+                  "frame": "frames/35-0.jpg"
+                },
+                {
+                  "source": "BV1brJq6BEYj:p1",
+                  "start": 59.37,
+                  "end": 88.82
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 506.94,
+                  "end": 532.77
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 533.15,
+                  "end": 560.1
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 560.51,
+                  "end": 588.41
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 86.9,
+                  "end": 116.5
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 117.03,
+                  "end": 143.69
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 144.32,
+                  "end": 174.18
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 174.54,
+                  "end": 203.26
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 203.85,
+                  "end": 232.79
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 232.96,
+                  "end": 261.03
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 453.32,
+                  "end": 477.72
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 478.7,
+                  "end": 506.73
+                },
+                {
+                  "source": "BV1brJq6BEYj:p1",
+                  "start": 31.49,
+                  "end": 58.87
+                },
+                {
+                  "source": "BV1brJq6BEYj:p1",
+                  "start": 442.84,
+                  "end": 471.97
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 588.74,
+                  "end": 617.77
+                },
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 618.27,
+                  "end": 644.28
+                }
+              ],
+              "text_ref": "support-tier-guide-general-player-zhuang"
+            },
+            {
+              "id": "doc-9c25b7d48b3156b925e1d7",
+              "section": "技能",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "mechanic",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 3,
+                  "paragraph_end": 3
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-9c25b7d48b3156b925e1d7"
+            },
+            {
+              "id": "doc-bad7a0bb3800a3179ad2e3",
+              "section": "技能",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "mechanic",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 4,
+                  "paragraph_end": 4
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-bad7a0bb3800a3179ad2e3"
+            },
+            {
+              "id": "doc-2a75b717da595796d7b4c5",
+              "section": "技能",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "mechanic",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 6,
+                  "paragraph_end": 6
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-2a75b717da595796d7b4c5"
+            },
+            {
+              "id": "doc-4ee5d79328ad7ecc741cd7",
+              "section": "技能",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "mechanic",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 7,
+                  "paragraph_end": 7
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-4ee5d79328ad7ecc741cd7"
+            },
+            {
+              "id": "doc-c989e1562c1af28a5ab0cf",
+              "section": "前期思路",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 9,
+                  "paragraph_end": 9
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-c989e1562c1af28a5ab0cf"
+            },
+            {
+              "id": "doc-946e25fd91a11bc125f7f7",
+              "section": "前期思路",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 13,
+                  "paragraph_end": 13
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-946e25fd91a11bc125f7f7"
+            },
+            {
+              "id": "doc-984b3e6def42ad1d0f3613",
+              "section": "前期思路",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 14,
+                  "paragraph_end": 14
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-984b3e6def42ad1d0f3613"
+            },
+            {
+              "id": "doc-6a4fd645c697f53b07730c",
+              "section": "适用技巧",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 11,
+                  "paragraph_end": 11
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-6a4fd645c697f53b07730c"
+            },
+            {
+              "id": "doc-a54354980431318eecaf68",
+              "section": "适用技巧",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 12,
+                  "paragraph_end": 12
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-a54354980431318eecaf68"
+            },
+            {
+              "id": "doc-e66d6d2ba8eafb019eeafb",
+              "section": "适用技巧",
+              "version": null,
+              "condition": "",
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 15,
+                  "paragraph_end": 15
+                }
+              ],
+              "origin": "document",
+              "text_ref": "support-doc-e66d6d2ba8eafb019eeafb"
+            },
+            {
+              "id": "six-player-31-opening-effects",
+              "section": "技能",
+              "condition": "",
+              "version": null,
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "source": "BV1Lfp76KE6e:p1",
+                  "start": 0,
+                  "end": 27.08
+                }
+              ],
+              "text_ref": "support-six-player-31-opening-effects"
+            },
+            {
+              "id": "six-player-31-three-template",
+              "section": "适用技巧",
+              "condition": "",
+              "version": null,
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "source": "BV1Lfp76KE6e:p1",
+                  "start": 140.65,
+                  "end": 313.02
+                }
+              ],
+              "text_ref": "support-six-player-31-three-template"
+            },
+            {
+              "id": "six-player-31-dream-random",
+              "section": "适用技巧",
+              "condition": "",
+              "version": null,
+              "inference": false,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "source": "BV1PUJ26RE5c:p1",
+                  "start": 293.69,
+                  "end": 360.69
+                }
+              ],
+              "text_ref": "support-six-player-31-dream-random"
+            },
+            {
+              "id": "b22-player-31-mulan-rumeng",
+              "section": "适用技巧",
+              "condition": "",
+              "version": null,
+              "inference": true,
+              "kind": "conditional_strategy",
+              "evidence": [
+                {
+                  "source": "BV1oQJ66tESA:p1",
+                  "start": 86.9,
+                  "end": 319.28
+                }
+              ],
+              "review_basis": {
+                "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+              },
+              "text_ref": "support-b22-player-31-mulan-rumeng"
+            },
+            {
+              "id": "b-zhuang-multi-sync",
+              "text_ref": "b-zhuang-multi-sync",
+              "section": "适用技巧",
+              "kind": "conditional_strategy",
+              "condition": "",
+              "version": null,
+              "inference": false,
+              "evidence": [
+                {
+                  "type": "video",
+                  "source": "BV1Lfp76KE6e:p1",
+                  "start": 2257.74,
+                  "end": 2426.79
+                },
+                {
+                  "type": "video",
+                  "source": "BV1Lfp76KE6e:p1",
+                  "start": 2571.7,
+                  "end": 2713.64
+                }
+              ],
+              "origin": "batch77_fulltext_review"
+            },
+            {
+              "id": "b3-28d070ca50c5da9282-b3-claim",
+              "text_ref": "b3-28d070ca50c5da9282",
+              "section": "适用打法与选择",
+              "kind": "conditional_strategy",
+              "condition": "",
+              "version": null,
+              "inference": true,
+              "origin": "batch77_second_fulltext_review",
+              "evidence": [
+                {
+                  "type": "video",
+                  "source": "BV1xweA6MEwM:p1",
+                  "start": 28.12,
+                  "end": 145.31
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 199,
+                  "paragraph_end": 199
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 90,
+                  "paragraph_end": 90
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 70,
+                  "paragraph_end": 70
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 771,
+                  "paragraph_end": 771
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 545,
+                  "paragraph_end": 545
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 144,
+                  "paragraph_end": 144
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 58,
+                  "paragraph_end": 58
+                }
+              ],
+              "review_basis": {
+                "report": "raw/reports/batch77/review-b-extra3.json",
+                "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+              }
+            },
+            {
+              "id": "b3-6397d0ed883e1f1bd8-b3-claim",
+              "text_ref": "b3-6397d0ed883e1f1bd8",
+              "section": "适用技巧",
+              "kind": "conditional_strategy",
+              "condition": "",
+              "version": null,
+              "inference": true,
+              "origin": "batch77_second_fulltext_review",
+              "evidence": [
+                {
+                  "type": "video",
+                  "source": "BV1xweA6MEwM:p1",
+                  "start": 121.95,
+                  "end": 225.32
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 771,
+                  "paragraph_end": 771
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 545,
+                  "paragraph_end": 545
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 663,
+                  "paragraph_end": 663
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 199,
+                  "paragraph_end": 199
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 90,
+                  "paragraph_end": 90
+                },
+                {
+                  "type": "document",
+                  "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+                  "paragraph_start": 70,
+                  "paragraph_end": 70
+                }
+              ],
+              "review_basis": {
+                "report": "raw/reports/batch77/review-b-extra3.json",
+                "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+              }
+            },
+            {
+              "id": "b3-official-rumeng-cost6",
+              "text_ref": "n-048ff87ac1bbbbb5a095",
+              "section": "秘技",
+              "kind": "mechanic",
+              "inference": false,
+              "version": null,
+              "condition": "当前官网发布卡面",
+              "evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+                  "paragraph_start": 1,
+                  "paragraph_end": 3
+                }
+              ]
+            },
+            {
+              "id": "c3-zhuang-balanced-direction-c3-claim",
+              "text_ref": "c3-zhuang-balanced-direction",
+              "section": "本批阵容补充",
+              "kind": "conditional_strategy",
+              "inference": true,
+              "evidence": [
+                {
+                  "source": "BV1zgH16UEgk:p1",
+                  "start": 11.82,
+                  "end": 160.09
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 807,
+                  "paragraph_end": 807
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 473,
+                  "paragraph_end": 473
+                }
+              ],
+              "review_basis": {
+                "stage3": {
+                  "report": "raw/reports/batch77/review-c-stage3.json",
+                  "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+                }
+              }
+            },
+            {
+              "id": "c3-zhuang-dahe-direction-c3-claim",
+              "text_ref": "c3-zhuang-dahe-direction",
+              "section": "大河龙蛇路线",
+              "kind": "conditional_strategy",
+              "inference": true,
+              "evidence": [
+                {
+                  "source": "BV1hvhn6ZERe:p1",
+                  "start": 90.84,
+                  "end": 154.48
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 146,
+                  "paragraph_end": 146
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 256,
+                  "paragraph_end": 256
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 104,
+                  "paragraph_end": 104
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 181,
+                  "paragraph_end": 181
+                },
+                {
+                  "source": "BV1hvhn6ZERe:p1",
+                  "start": 237.42,
+                  "end": 301.49
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 143,
+                  "paragraph_end": 143
+                },
+                {
+                  "type": "document",
+                  "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+                  "paragraph_start": 125,
+                  "paragraph_end": 125
+                }
+              ],
+              "review_basis": {
+                "stage3": {
+                  "report": "raw/reports/batch77/review-c-stage3.json",
+                  "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+                }
+              }
+            }
+          ],
+          "body_sha256": "b8af1314059936384aa581ed3ffc0068978010cc7895bee78590d07f0c2565af",
+          "revision": "ce8d6d364de85ed55bea",
+          "legacy_layout": {
+            "version": 4
+          },
+          "retired_claim_annotations": [],
+          "entity_names": {
+            "card:5631": "海诺",
+            "card:1831": "雅典娜",
+            "card:1591": "朵莉亚",
+            "card:93110": "如梦似幻",
+            "card:663109": "梦幻引擎",
+            "card:3551": "艾琳",
+            "card:1461": "露娜",
+            "card:7083": "传承"
+          },
+          "hero_field_review": [],
+          "batch77_conflicts": [
+            {
+              "id": "zhuang-rumeng-cost-6-versus-8",
+              "status": "resolved_current_official",
+              "old_visible_node": "n-048ff87ac1bbbbb5a095",
+              "old_visible_quote": "消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌",
+              "old_note": "player-zhuang",
+              "new_quote": "如梦似幻是花8点能量直接给手牌不需要买",
+              "new_evidence": [
+                {
+                  "type": "video",
+                  "source": "BV1xweA6MEwM:p1",
+                  "start": 121.95,
+                  "end": 145.31
+                }
+              ],
+              "official_scope": "card:93110描述没有使用费用，shopBuyCost=0不能作为技能实际使用消耗的独立反证",
+              "handling": "官网实际请求且view_image核对6 ENERGY，保留双方历史原文与证据；旧6正文原ID保留并直接补当前官网document证据。",
+              "old_evidence": [
+                {
+                  "type": "document",
+                  "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+                  "paragraph_start": 4,
+                  "paragraph_end": 4
+                }
+              ],
+              "old_original_text_actually_read": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+              "old_document_sha256": "3190a71e9e615b2bd5e90257f3d43248f083eaa015f0118c1e849d5a7e7168dc",
+              "old_value_preserved_not_newly_certified": false,
+              "same_condition": "同一如梦似幻秘技使用费用；暂无已证版本或减费条件可将6/8条件化。",
+              "impact": "影响升5/6当回合能量预算及秘技/引擎先后。当前采用官网6 ENERGY；视频8不作为当前固定预算依据。",
+              "official_resolution": {
+                "current_cost": 6,
+                "evidence": [
+                  {
+                    "type": "document",
+                    "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+                    "paragraph_start": 1,
+                    "paragraph_end": 3
+                  }
+                ],
+                "image_url": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/04d5e74e97d281186429f633cb6309e8a246b9b1e5dcaeb3ba4289f3c0c03530.png",
+                "image_sha256": "9e8ce7220de1ea29f3f49dde0284bf94fbf6bf49d301f7734e8ee1d376998e53",
+                "requested_at": "2026-10-24T14:12:26.412975+00:00",
+                "report": "raw/reports/batch77/official-rumeng-check.json"
+              }
+            }
+          ]
         }
-      ],
-      "origin": "batch77_fulltext_review"
-    },
-    {
-      "id": "b3-28d070ca50c5da9282-b3-claim",
-      "text_ref": "b3-28d070ca50c5da9282",
-      "section": "适用打法与选择",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "origin": "batch77_second_fulltext_review",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1xweA6MEwM:p1",
-          "start": 28.12,
-          "end": 145.31
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 199,
-          "paragraph_end": 199
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 90,
-          "paragraph_end": 90
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 70,
-          "paragraph_end": 70
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 771,
-          "paragraph_end": 771
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 545,
-          "paragraph_end": 545
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 144,
-          "paragraph_end": 144
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 58,
-          "paragraph_end": 58
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-b-extra3.json",
-        "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
-      }
-    },
-    {
-      "id": "b3-6397d0ed883e1f1bd8-b3-claim",
-      "text_ref": "b3-6397d0ed883e1f1bd8",
-      "section": "适用技巧",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "origin": "batch77_second_fulltext_review",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1xweA6MEwM:p1",
-          "start": 121.95,
-          "end": 225.32
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 771,
-          "paragraph_end": 771
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 545,
-          "paragraph_end": 545
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 199,
-          "paragraph_end": 199
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 90,
-          "paragraph_end": 90
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 70,
-          "paragraph_end": 70
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-b-extra3.json",
-        "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
-      }
-    },
-    {
-      "id": "b3-official-rumeng-cost6",
-      "text_ref": "n-048ff87ac1bbbbb5a095",
-      "section": "秘技",
-      "kind": "mechanic",
-      "inference": false,
-      "version": null,
-      "condition": "当前官网发布卡面",
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
-          "paragraph_start": 1,
-          "paragraph_end": 3
-        }
-      ]
-    },
-    {
-      "id": "c3-zhuang-balanced-direction-c3-claim",
-      "text_ref": "c3-zhuang-balanced-direction",
-      "section": "本批阵容补充",
-      "kind": "conditional_strategy",
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1zgH16UEgk:p1",
-          "start": 11.82,
-          "end": 160.09
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 807,
-          "paragraph_end": 807
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 473,
-          "paragraph_end": 473
-        }
-      ],
-      "review_basis": {
-        "stage3": {
-          "report": "raw/reports/batch77/review-c-stage3.json",
-          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
-        }
-      }
-    },
-    {
-      "id": "c3-zhuang-dahe-direction-c3-claim",
-      "text_ref": "c3-zhuang-dahe-direction",
-      "section": "大河龙蛇路线",
-      "kind": "conditional_strategy",
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1hvhn6ZERe:p1",
-          "start": 90.84,
-          "end": 154.48
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 146,
-          "paragraph_end": 146
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 256,
-          "paragraph_end": 256
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 104,
-          "paragraph_end": 104
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 181,
-          "paragraph_end": 181
-        },
-        {
-          "source": "BV1hvhn6ZERe:p1",
-          "start": 237.42,
-          "end": 301.49
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 143,
-          "paragraph_end": 143
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 125,
-          "paragraph_end": 125
-        }
-      ],
-      "review_basis": {
-        "stage3": {
-          "report": "raw/reports/batch77/review-c-stage3.json",
-          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
-        }
-      }
-    }
-  ],
-  "body_sha256": "b8af1314059936384aa581ed3ffc0068978010cc7895bee78590d07f0c2565af",
-  "revision": "ce8d6d364de85ed55bea",
-  "legacy_layout": {
-    "version": 4
-  },
-  "retired_claim_annotations": [],
-  "entity_names": {
-    "card:5631": "海诺",
-    "card:1831": "雅典娜",
-    "card:1591": "朵莉亚",
-    "card:93110": "如梦似幻",
-    "card:663109": "梦幻引擎",
-    "card:3551": "艾琳",
-    "card:1461": "露娜",
-    "card:7083": "传承"
-  },
-  "hero_field_review": [],
-  "batch77_conflicts": [
-    {
-      "id": "zhuang-rumeng-cost-6-versus-8",
-      "status": "resolved_current_official",
-      "old_visible_node": "n-048ff87ac1bbbbb5a095",
-      "old_visible_quote": "消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌",
-      "old_note": "player-zhuang",
-      "new_quote": "如梦似幻是花8点能量直接给手牌不需要买",
-      "new_evidence": [
-        {
-          "type": "video",
-          "source": "BV1xweA6MEwM:p1",
-          "start": 121.95,
-          "end": 145.31
-        }
-      ],
-      "official_scope": "card:93110描述没有使用费用，shopBuyCost=0不能作为技能实际使用消耗的独立反证",
-      "handling": "官网实际请求且view_image核对6 ENERGY，保留双方历史原文与证据；旧6正文原ID保留并直接补当前官网document证据。",
-      "old_evidence": [
-        {
-          "type": "document",
-          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
-          "paragraph_start": 4,
-          "paragraph_end": 4
-        }
-      ],
-      "old_original_text_actually_read": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
-      "old_document_sha256": "3190a71e9e615b2bd5e90257f3d43248f083eaa015f0118c1e849d5a7e7168dc",
-      "old_value_preserved_not_newly_certified": false,
-      "same_condition": "同一如梦似幻秘技使用费用；暂无已证版本或减费条件可将6/8条件化。",
-      "impact": "影响升5/6当回合能量预算及秘技/引擎先后。当前采用官网6 ENERGY；视频8不作为当前固定预算依据。",
-      "official_resolution": {
-        "current_cost": 6,
-        "evidence": [
-          {
-            "type": "document",
-            "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
-            "paragraph_start": 1,
-            "paragraph_end": 3
-          }
-        ],
-        "image_url": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/04d5e74e97d281186429f633cb6309e8a246b9b1e5dcaeb3ba4289f3c0c03530.png",
-        "image_sha256": "9e8ce7220de1ea29f3f49dde0284bf94fbf6bf49d301f7734e8ee1d376998e53",
-        "requested_at": "2026-10-24T14:12:26.412975+00:00",
-        "report": "raw/reports/batch77/official-rumeng-check.json"
       }
     }
   ]
