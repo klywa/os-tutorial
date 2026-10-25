@@ -477,6 +477,12 @@ def main():
     sub.add_parser('sync-card-images')
     sub.add_parser('validate')
     sub.add_parser('sync-markdown')
+    p = sub.add_parser('annotations', help='查询或维护笔记批注')
+    p.add_argument('--note')
+    p.add_argument('--status', choices=['open', 'resolved'])
+    p.add_argument('--file', type=Path, help='批注修改或完成的JSON请求')
+    p.add_argument('--complete', help='验证并完成指定批注')
+    p.add_argument('--apply-editorial', action='store_true', help='仅修改批注范围内的措辞')
     migration = sub.add_parser('migrate-json')
     migration.add_argument('--apply', action='store_true')
     sub.add_parser('migrate')
@@ -548,6 +554,20 @@ def main():
         result = extract_frames(args.root, args.source, source_dir(args.root, args.source) / 'media.mp4', args.times)
     elif args.command == 'related':
         result = related(args.root, args.ids, args.core, args.topic)
+    elif args.command == 'annotations':
+        import note_review
+        if args.apply_editorial:
+            if not args.file:
+                parser.error('--apply-editorial 需要 --file')
+            result = note_review.apply_editorial(args.root, read_json(args.file))
+        elif args.complete:
+            if not args.file:
+                parser.error('--complete 需要 --file')
+            result = note_review.complete(args.root, args.complete, read_json(args.file))
+        elif args.file:
+            result = note_review.mutate(args.root, read_json(args.file))
+        else:
+            result = note_review.annotations(args.root, args.note, args.status)
     elif args.command == 'commit':
         result = commit_notes(args.root, read_json(args.file)['notes'])
     elif args.command == 'process-local':

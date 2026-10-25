@@ -128,6 +128,18 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
             if path.startswith('/api/'):
                 recover_before_read(self.server.root)
+                if path == '/api/annotations':
+                    import note_review
+                    query = parse_qs(urlsplit(self.path).query)
+                    return self.response(200, note_review.annotations(self.server.root, query.get('note_id', [None])[0], query.get('status', [None])[0]))
+                if path.startswith('/api/notes/') and '/versions' in path:
+                    import note_review
+                    parts = path.split('/')
+                    if len(parts) == 5 and parts[4] == 'versions':
+                        return self.response(200, note_review.versions(self.server.root, parts[3]))
+                    if len(parts) == 6 and parts[4] == 'versions':
+                        return self.response(200, note_review.version(self.server.root, parts[3], parts[5]))
+                    raise ValueError('历史版本路径无效')
                 if path == '/api/markdown-sync':
                     import markdown_sync
                     state=markdown_sync.status(self.server.root)
@@ -214,6 +226,17 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(payload, dict):
                 raise ValueError('请求应为对象')
             path = unquote(urlsplit(self.path).path)
+            if path == '/api/annotations' and self.command == 'POST':
+                import note_review
+                return self.response(200, note_review.mutate(self.server.root, payload))
+            if path.startswith('/api/annotations/'):
+                import note_review
+                parts = path.split('/')
+                if len(parts) == 5 and parts[4] == 'complete' and self.command == 'POST':
+                    return self.response(200, note_review.complete(self.server.root, parts[3], payload))
+                if len(parts) == 4 and self.command in ('PUT', 'DELETE'):
+                    return self.response(200, note_review.mutate(self.server.root, {**payload, 'id': parts[3], **({'action': 'delete'} if self.command == 'DELETE' else {})}))
+                raise ValueError('批注操作无效')
             store = self.server.crawler.store
             if path.startswith('/api/markdown-sync/'):
                 import markdown_sync

@@ -24,6 +24,8 @@ claim_annotations保留原结论ID、kind、section、condition、version、infe
 revision由正文与附件共同计算，body_sha256校验配对。raw/knowledge/pending-json-save.json发布完整快照，正文/附件/索引恢复后移除；读者在中断时读取完整事务快照。共享写锁和恢复文件都在raw。
 
 ## 接口
+
+正文保存统一产生库外历史快照；历史快照和批注均在已忽略的 raw/knowledge 下，不生成知识 Markdown。GET notes/ID/versions 列出可恢复完整版本，GET notes/ID/versions/版本ID 读取完整正文与证据附件。GET annotations 支持 note_id、status 查询；POST annotations 新建，PUT annotations/ID 修改或重新打开，DELETE annotations/ID 软删除，POST annotations/ID/complete 校验并结项。批注使用独立 revision，正文仍使用原有 revision。
 workspace.notes(root)提供兼容读视图及document；磁盘同名附件提供提交信息，兼容claims不是写入契约。GET notes/ID/reading返回document、markdown与含节点的sections，GET notes返回独立笔记。
 
 PUT notes/ID接受revision、document及可选aliases；旧sections/claims在schema6拒绝，失败保留草稿。POST notes接受type/title/aliases/request_id，player/lineup必须传player_id，阵容自动补棋手后缀，重复请求幂等。

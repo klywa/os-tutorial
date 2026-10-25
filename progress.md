@@ -608,3 +608,11 @@ CUHL stage21 candidate c62752eee726f1f5390f68df6415f5af9d8a317d113592a1816442a6b
 第23最终payload606841dd…13既有/123新改条目已统一commit成功；实际13读回errors[]/non_target[]/unexpected[]/journal false，validate实际exit0/errors[]/101notes已归一UTF8。不再推动Tcej来源闭合。root阿离9entry独审8d154456…通过；C香香/闹闹9record75变化经A独审ba682203…通过。root昭君2record3entry补干将过渡候选0ae7674f…交D。唯一实际缺组小妲廉颇交C用3段短源补新note/P10，不采长源；镜泳池/闹闹错标签实际身份已C核，source关联空不等于无笔记。27定点ASR已解码全部，未改canonical/未结项，不再作为交付前置。
 
 2026-10-25T03:02:26.813052+00:00 笔记优先交付完成：24批actual保存/读回/validate全通过，102库笔记/90受影响，76组对应笔记+1组日期排除；不声明全部来源闭合。priority-delivery.json含当前正文路径和具体未知条目。
+
+2026-10-25 前端编辑新任务：已获完整方案实施授权；本地分支 codex/note-edit-comments-history，保留 source-registry 既有修改。新增 note_review 模块、事务历史快照、批注 HTTP/CLI；首批3测试已红转绿，批注保护与完成流程第4测试正在实现。计划 docs/superpowers/plans/2026-10-25-note-review.md。
+
+2026-10-25 前端编辑交付：统一事务快照/批注HTTP与CLI/前端局部编辑与实时diff/历史字段合并/技能批注模式已实现。独审两处history草稿保护修复且红转绿。完整Python489、前端94、构建、quick_validate通过；正式库102笔记validate errors[]。浏览器隔离库完整/侧栏及420px交互通过，raw/note-review-browser.cjs与截图保留；真实CLI批注措辞apply→读回→validate→complete resolved闭环通过。历史与批注git-ignore已核实，既有source-registry修改保留。未提交Git。
+
+服务重载完成：已确认原8765进程与空闲状态后隐藏启动新服务，GET notes=102、annotations=0成功；临时8876/8877验收服务均已停止。报告raw/note-review-delivery.json。
+
+末轮独审补充：restore_evidence的旧节点映射补入supporting_nodes，避免无关字段恢复时覆盖未变支撑证据。新增回归先失败后通过；最终note_review7项与JSON23项全通过。服务已再次加载该修正。

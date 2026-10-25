@@ -135,7 +135,7 @@ def check_record(record):
         raise ValueError('阵容适用棋手必须与笔记绑定一致')
 
 
-def save(root, items, aliases=None):
+def save(root, items, aliases=None, origin='save', review_refs=None):
     """Caller holds workspace store_lock. Publish journal before touching pairs."""
     root = Path(root)
     items = deepcopy(items)
@@ -152,7 +152,9 @@ def save(root, items, aliases=None):
     previous = read(root / INDEX, {})
     index = {'schema_version': 6, 'notes': [{k: r['metadata'].get(k) for k in ('id', 'type', 'title', 'path', 'player_id', 'revision')} for r in items],
              'aliases': deepcopy(aliases if aliases is not None else previous.get('aliases', {}))}
+    from note_review import version_writes
     journal = {'schema_version': 6, 'records': items, 'index': index,
+               'versions': version_writes(root, records(root), items, origin, review_refs),
                'retired': [r['path'] for r in previous.get('notes', []) if r['path'] not in {x['metadata']['path'] for x in items}]}
     write_file(root / JOURNAL, journal)
     recover(root)
@@ -163,6 +165,8 @@ def recover(root):
     journal = read(root / JOURNAL)
     if not journal:
         return
+    for entry in journal.get('versions', []):
+        write_file(root / entry['path'], entry['value'])
     for record in journal['records']:
         check_record(record)
         path = record['metadata']['path']
@@ -348,7 +352,7 @@ def validate_semantics(root, record):
     except (TypeError,AttributeError,KeyError) as exc:raise ValueError('阵容结构格式无效，请检查阶段成员与运营条件') from exc
 
 
-def edit(root, nid, payload):
+def edit(root, nid, payload, *, _review=None):
     from workspace import Conflict, store_lock
     with store_lock(root, wait=True):
         recover(root)
@@ -359,7 +363,7 @@ def edit(root, nid, payload):
         meta, body = record['metadata'], record['body']
         if payload.get('revision') != meta['revision']:
             raise Conflict('笔记已更新，请重新载入后合并草稿')
-        if set(payload) - {'revision', 'document', 'aliases', 'title'}:
+        if set(payload) - {'revision', 'document', 'aliases', 'title', 'restore_version'}:
             raise ValueError('请通过结构化JSON正文编辑知识')
         before = deepcopy(record)
         incoming = document.clean_labels(payload.get('document', body))
@@ -368,6 +372,22 @@ def edit(root, nid, payload):
         # canonical document, not accepted as accidental editor omissions.
         for key in ('supporting_nodes', 'semantics'):
             incoming.setdefault(key, deepcopy(body.get(key, [] if key == 'supporting_nodes' else {})))
+        if _review:
+            from note_review import authorize
+            allowed = authorize(root, before, _review)
+            old_visible = {n['id']: n for n in body['nodes']}
+            new_visible = {n['id']: n for n in incoming['nodes']}
+            if list(old_visible) != list(new_visible):
+                raise ValueError('措辞修改不能新增、删除或重排节点')
+            for node_id, node in new_visible.items():
+                old_node = old_visible[node_id]
+                if old_node == node:
+                    continue
+                if node_id not in allowed or any(old_node.get(k) != node.get(k) for k in set(old_node) | set(node) if k not in ('key', 'value', 'title')):
+                    raise ValueError('措辞修改超出批注授权范围')
+            for key in set(body) | set(incoming):
+                if key != 'nodes' and body.get(key, [] if key == 'supporting_nodes' else {} if key == 'semantics' else None) != incoming.get(key):
+                    raise ValueError('措辞修改不能修改结构化知识或支撑节点')
         if incoming != body:
             # Keep display identity across text edits without rewriting evidence.
             display_refs = document.claim_display_refs(body, project(record)['claims'])
@@ -420,8 +440,13 @@ def edit(root, nid, payload):
             meta.setdefault('history', []).append({'at': wxq.now(), 'origin': 'manual', 'previous': snapshot(before)})
             meta['aliases'] = payload.get('aliases', meta.get('aliases', []))
             record['body'] = incoming
+        if payload.get('restore_version'):
+            from note_review import restore_evidence
+            restore_evidence(root, nid, payload['restore_version'], before, record)
+        if record['body'] != before['body']:
+            meta['review_receipts'] = deepcopy(_review or [])
         validate_semantics(root,record)
-        save(root, items)
+        save(root, items, origin='review' if _review else 'history_merge' if payload.get('restore_version') else 'manual', review_refs=_review)
         return next(n for n in notes(root) if n['id'] == nid)
 
 
@@ -505,6 +530,7 @@ def commit(root, incoming):
         recover(root)
         current = {r['metadata']['id']: r for r in records(root)}
         changed = []
+        batch_refs = []
         for item in incoming:
             if 'body' not in item or 'metadata' not in item:
                 raise ValueError('版本6提交须包含body和metadata；旧schema只能显式迁移')
@@ -518,12 +544,17 @@ def commit(root, incoming):
                 if meta.get('player_id') != previous['metadata'].get('player_id'):
                     raise ValueError('既有笔记不能改绑棋手')
                 protected = manual_nodes(previous)
+                refs = record.pop('review_refs', [])
+                from note_review import authorize
+                allowed = authorize(root, previous, refs) if refs else set()
+                batch_refs.extend(refs)
                 old_nodes = {n['id']: n for n in [*previous['body']['nodes'], *previous['body'].get('supporting_nodes', [])]}
                 new_nodes = {n['id']: n for n in [*record['body']['nodes'], *record['body'].get('supporting_nodes', [])]}
                 protected_semantics = previous['metadata'].get('manual_semantics') or previous['metadata'].get('manual_meta')
-                if any(new_nodes.get(nid) != old_nodes.get(nid) for nid in protected) or (protected_semantics and previous['body'].get('semantics') != record['body'].get('semantics')):
+                if any(new_nodes.get(node_id) != old_nodes.get(node_id) for node_id in protected - allowed) or (protected_semantics and previous['body'].get('semantics') != record['body'].get('semantics')):
                     previous['metadata'].setdefault('conflicts', []).append({'at': wxq.now(), 'incoming': snapshot(record), 'reason': '人工正文受到保护'})
                     changed.append(meta['id']);continue
+                meta['review_receipts'] = refs
                 for k in ('history', 'node_annotations', 'retired_claim_annotations', 'manual_sections', 'manual_semantics', 'conflicts', 'creation'):
                     if k in previous['metadata']:meta[k] = deepcopy(previous['metadata'][k])
                 if record['body'] != previous['body']:
@@ -560,7 +591,7 @@ def commit(root, incoming):
                 for evidence in claim.get('evidence', []):
                     check_evidence(root, evidence)
             current[nid] = record;changed.append(nid)
-        save(root, list(current.values()))
+        save(root, list(current.values()), origin='review' if batch_refs else 'import', review_refs=batch_refs)
         return {'notes': changed, 'schema_version': 6}
 
 
