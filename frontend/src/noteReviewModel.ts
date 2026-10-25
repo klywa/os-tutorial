@@ -23,6 +23,14 @@ const labels:Record<string,string>={title:'标题',key:'名称',value:'正文',l
 export function displayValue(v:unknown){return v===undefined?'（不存在）':typeof v==='string'?v:JSON.stringify(v,null,2);}
 export function equalValue(a:unknown,b:unknown){return JSON.stringify(a)===JSON.stringify(b);}
 export function hasReviewChanges(draft:KnowledgeDocument,base:KnowledgeDocument,invalid:Record<string,boolean>){return !equalValue(draft,base)||Object.values(invalid).some(Boolean);}
+export function createHistoryDraft(base:KnowledgeDocument,old:KnowledgeDocument){
+ const pending=new Map<string,{field:ReviewField;value:unknown}>();
+ return {get changed(){return pending.size>0;},set(field:ReviewField,value:unknown){if(equalValue(value,field.newValue))pending.delete(field.id);else pending.set(field.id,{field,value});},
+  build(){let body=base;for(const {field,value} of pending.values()){
+   const source=field.key==='$node'&&field.collection&&!(old[field.collection]??[]).some(n=>n.id===field.nodeId)?base:old;
+   body=applyReviewField(body,field,value,source);
+  }return body===base?structuredClone(base):body;}};
+}
 export function reviewFields(old:KnowledgeDocument,current:KnowledgeDocument):ReviewField[]{
  const out:ReviewField[]=[];
  function field(f:ReviewField){if(!equalValue(f.oldValue,f.newValue))out.push(f);}

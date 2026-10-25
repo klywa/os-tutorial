@@ -37,10 +37,16 @@ def digest(value):
 
 
 def snapshot(record):
-    value = deepcopy(record)
-    value['metadata'].pop('history', None)
-    value['metadata'].pop('conflicts', None)
-    return value
+    return {'body':deepcopy(record['body']),
+            'metadata':deepcopy({k:v for k,v in record['metadata'].items() if k not in ('history','conflicts')})}
+
+
+def editable_record(record):
+    """History entries are append-only; copy the list, not every old snapshot."""
+    meta = deepcopy({k:v for k,v in record['metadata'].items() if k!='history'})
+    if 'history' in record['metadata']:
+        meta['history'] = list(record['metadata']['history'])
+    return {'body':deepcopy(record['body']), 'metadata':meta}
 
 
 def manual_nodes(record):
@@ -84,7 +90,8 @@ def initialize(root):
 def write_file(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    text = json.dumps(value, ensure_ascii=False, indent=2) + '\n'
+    text = (json.dumps(value, ensure_ascii=False, separators=(',', ':')) if path.name == Path(JOURNAL).name
+            else json.dumps(value, ensure_ascii=False, indent=2)) + '\n'
     if path.exists() and path.read_text('utf-8') == text:
         return
     import wxq
@@ -135,29 +142,49 @@ def check_record(record):
         raise ValueError('阵容适用棋手必须与笔记绑定一致')
 
 
-def save(root, items, aliases=None, origin='save', review_refs=None):
-    """Caller holds workspace store_lock. Publish journal before touching pairs."""
+def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False):
+    """Caller holds store_lock. Publish changed pairs and a complete light index."""
     root = Path(root)
-    items = deepcopy(items)
+    previous = read(root / INDEX, {'notes': []})
+    old_rows = {row['id']: row for row in previous['notes']}
+    changed, before, rows = [], [], []
     ids, paths = set(), set()
-    for record in items:
-        check_record(record)
-        m = record['metadata']
-        target(root, m['path'])
-        if m['id'] in ids or m['path'].casefold() in paths:
+    for incoming in items:
+        nid = incoming['metadata']['id']
+        if nid in ids:
             raise ValueError('重复笔记身份或文件名')
-        ids.add(m['id']); paths.add(m['path'].casefold())
+        ids.add(nid)
+        old = _disk_record(root, old_rows[nid]) if nid in old_rows else None
+        if old is not None and incoming == old:
+            rows.append(old_rows[nid])
+            continue
+        record = editable_record(incoming)
+        check_record(record)
+        m = record['metadata']; target(root, m['path'])
         m['body_sha256'] = digest(record['body'])
-        m['revision'] = digest({'body': record['body'], 'metadata': {k: v for k, v in m.items() if k != 'revision'}})[:20]
-    previous = read(root / INDEX, {})
-    index = {'schema_version': 6, 'notes': [{k: r['metadata'].get(k) for k in ('id', 'type', 'title', 'path', 'player_id', 'revision')} for r in items],
-             'aliases': deepcopy(aliases if aliases is not None else previous.get('aliases', {}))}
+        m['revision'] = digest({'body': record['body'], 'metadata': {k:v for k,v in m.items() if k != 'revision'}})[:20]
+        rows.append({k:m.get(k) for k in ('id','type','title','path','player_id','revision')})
+        changed.append(record)
+        if old is not None: before.append(old)
+    if partial:
+        replacements = {r['id']:r for r in rows}
+        rows = [replacements.pop(r['id'], r) for r in previous['notes']] + list(replacements.values())
+    for row in rows:
+        target(root, row['path'])
+        if row['path'].casefold() in paths:
+            raise ValueError('重复笔记身份或文件名')
+        paths.add(row['path'].casefold())
+    index = {'schema_version':6, 'notes':rows,
+             'aliases':deepcopy(aliases if aliases is not None else previous.get('aliases', {}))}
+    retired = [r['path'] for r in previous['notes'] if r['path'] not in {x['path'] for x in rows}]
+    if not changed and not retired and index == previous:
+        return []
     from note_review import version_writes
-    journal = {'schema_version': 6, 'records': items, 'index': index,
-               'versions': version_writes(root, records(root), items, origin, review_refs),
-               'retired': [r['path'] for r in previous.get('notes', []) if r['path'] not in {x['metadata']['path'] for x in items}]}
+    journal = {'schema_version':6, 'delta':True, 'records':changed, 'index':index,
+               'versions':version_writes(root, before, changed, origin, review_refs), 'retired':retired}
     write_file(root / JOURNAL, journal)
     recover(root)
+    return changed
 
 
 def recover(root):
@@ -183,26 +210,45 @@ def recover(root):
     (root / JOURNAL).unlink(missing_ok=True)
 
 
+def _disk_record(root, row):
+    body = cached_read(target(root, row['path']))
+    meta = cached_read(target(root, meta_path(row['path']), True))
+    if body is None or meta is None or digest(body) != meta.get('body_sha256') or meta.get('revision') != row.get('revision'):
+        raise ValueError('正文与附件不一致：' + row['path'])
+    return {'body':body, 'metadata':meta}
+
+
+def load_record(root, nid, *, clone=True):
+    """Read one logical record, including the published transaction overlay."""
+    root = Path(root)
+    for attempt in range(2):
+        pending = read(root / JOURNAL)
+        index = pending['index'] if pending else read(root / INDEX, {'notes':[]})
+        row = next((r for r in index['notes'] if r['id']==nid), None)
+        if row is None: return None
+        overlay = next((r for r in pending['records'] if r['metadata']['id']==nid), None) if pending else None
+        try:
+            record = overlay if overlay is not None else _disk_record(root, row)
+            return deepcopy(record) if clone else record
+        except (ValueError, FileNotFoundError):
+            if attempt: raise
+    return None
+
+
 def records(root, clone=True):
     root = Path(root)
-    # A published journal is a complete snapshot, including unchanged records.
-    # Readers never observe half of a body/metadata update after interruption.
-    journal = read(root / JOURNAL)
-    if journal:
-        return deepcopy(journal['records'])
-    index = read(root / INDEX, {'notes': []})
-    result = []
-    for row in index['notes']:
-        body = cached_read(target(root, row['path']))
-        meta = cached_read(target(root, meta_path(row['path']), True))
-        if body is None or meta is None or digest(body) != meta.get('body_sha256'):
-            # A writer may have published its journal since the first read.
-            pending = read(root / JOURNAL)
-            if pending:
-                return deepcopy(pending['records'])
-            raise ValueError('正文与附件不一致：' + row['path'])
-        result.append({'body': body, 'metadata': meta})
-    return deepcopy(result) if clone else result
+    for attempt in range(2):
+        pending = read(root / JOURNAL)
+        if pending and not pending.get('delta'):
+            return deepcopy(pending['records'])
+        index = pending['index'] if pending else read(root / INDEX, {'notes':[]})
+        overlay = {r['metadata']['id']:r for r in pending['records']} if pending else {}
+        try:
+            result = [overlay[row['id']] if row['id'] in overlay else _disk_record(root,row) for row in index['notes']]
+            return deepcopy(result) if clone else result
+        except (ValueError, FileNotFoundError):
+            if attempt: raise
+    return []
 
 
 def resolve_value(value, texts):
@@ -252,16 +298,8 @@ def resolve_note(root, nid, player=None):
     aliases = index.get('aliases', {})
     mapped = aliases.get(nid + ('|' + player if player else '')) or aliases.get(nid)
     key = mapped or nid
-    pending = read(root / JOURNAL)
-    if pending:
-        record = next((r for r in pending['records'] if r['metadata']['id'] == key), None)
-        return project(record, public=True) if record else None
-    row = next((r for r in index.get('notes', []) if r['id'] == key), None)
-    if not row:return None
-    record = {'body':cached_read(target(root,row['path'])), 'metadata':cached_read(target(root,meta_path(row['path']),True))}
-    if digest(record['body']) != record['metadata']['body_sha256']:
-        raise ValueError('正文正在保存，请稍后重试')
-    return project(record, public=True)
+    record = load_record(root, key, clone=False)
+    return project(record, public=True) if record else None
 
 
 def from_legacy(note, markdown):
@@ -352,12 +390,12 @@ def validate_semantics(root, record):
     except (TypeError,AttributeError,KeyError) as exc:raise ValueError('阵容结构格式无效，请检查阶段成员与运营条件') from exc
 
 
-def edit(root, nid, payload, *, _review=None):
+def edit(root, nid, payload, *, _review=None, public=False):
     from workspace import Conflict, store_lock
     with store_lock(root, wait=True):
         recover(root)
-        items = records(root)
-        record = next((r for r in items if r['metadata']['id'] == nid), None)
+        before = load_record(root, nid, clone=False)
+        record = editable_record(before) if before is not None else None
         if record is None:
             raise KeyError('笔记不存在')
         meta, body = record['metadata'], record['body']
@@ -365,7 +403,6 @@ def edit(root, nid, payload, *, _review=None):
             raise Conflict('笔记已更新，请重新载入后合并草稿')
         if set(payload) - {'revision', 'document', 'aliases', 'title', 'restore_version'}:
             raise ValueError('请通过结构化JSON正文编辑知识')
-        before = deepcopy(record)
         incoming = document.clean_labels(payload.get('document', body))
         document.validate(incoming)
         # Supporting evidence and structured semantics are maintained by the
@@ -390,7 +427,7 @@ def edit(root, nid, payload, *, _review=None):
                     raise ValueError('措辞修改不能修改结构化知识或支撑节点')
         if incoming != body:
             # Keep display identity across text edits without rewriting evidence.
-            display_refs = document.claim_display_refs(body, project(record)['claims'])
+            display_refs = document.claim_display_refs(body, project(record, public=True)['claims'])
             for annotation in meta.get('claim_annotations', []):
                 if annotation['id'] in display_refs:
                     annotation['display_ref'] = display_refs[annotation['id']]
@@ -446,8 +483,8 @@ def edit(root, nid, payload, *, _review=None):
         if record['body'] != before['body']:
             meta['review_receipts'] = deepcopy(_review or [])
         validate_semantics(root,record)
-        save(root, items, origin='review' if _review else 'history_merge' if payload.get('restore_version') else 'manual', review_refs=_review)
-        return next(n for n in notes(root) if n['id'] == nid)
+        saved = save(root, [record], origin='review' if _review else 'history_merge' if payload.get('restore_version') else 'manual', review_refs=_review, partial=True)
+        return project(saved[0] if saved else record, public=public)
 
 
 def create(root, payload):

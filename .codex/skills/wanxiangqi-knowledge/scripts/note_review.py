@@ -12,16 +12,44 @@ def version_folder(root, nid):
     return Path(root) / 'raw/knowledge/versions' / store.digest(nid)[:32]
 
 
-def versions(root, nid):
-    rows = [store.read(p) for p in version_folder(root, nid).glob('*.json')]
-    return [{k: row[k] for k in ('id', 'note_id', 'at', 'origin', 'body_sha256', 'review_refs')}
-            for row in sorted(rows, key=lambda r: (r['at'], r['id']), reverse=True)]
+def _version_rows(root, nid):
+    folder = version_folder(root, nid)
+    index = folder / 'index.meta.json'
+    pending = store.read(Path(root) / store.JOURNAL)
+    relative = index.relative_to(Path(root)).as_posix()
+    if pending:
+        overlay = next((e['value'] for e in pending.get('versions', []) if e['path']==relative), None)
+        if overlay is not None: return overlay['versions']
+    saved = store.read(index)
+    if saved is not None: return saved['versions']
+    rows = []
+    for path in folder.glob('*.json'):
+        if path.name == 'index.meta.json': continue
+        row = store.read(path)
+        rows.append({**{k:row[k] for k in ('id','note_id','at','origin','body_sha256','review_refs')},
+                     'snapshot_sha256':store.digest(row['record'])})
+    rows.sort(key=lambda r:(r['at'],r['id']), reverse=True)
+    if rows: store.write_file(index, {'versions':rows})
+    return rows
+
+
+def versions(root, nid, *, _locked=False):
+    if _locked or (version_folder(root,nid) / 'index.meta.json').exists():
+        return _version_rows(root,nid)
+    from workspace import store_lock
+    with store_lock(root, wait=True):
+        store.recover(root)
+        return _version_rows(root,nid)
 
 
 def version(root, nid, vid):
     if not isinstance(vid, str) or len(vid) != 32 or any(c not in '0123456789abcdef' for c in vid):
         raise ValueError('版本标识无效')
-    row = store.read(version_folder(root, nid) / (vid + '.json'))
+    path = version_folder(root, nid) / (vid + '.json')
+    pending = store.read(Path(root) / store.JOURNAL)
+    relative = path.relative_to(Path(root)).as_posix()
+    row = next((entry['value'] for entry in pending.get('versions',[]) if entry['path']==relative),None) if pending else None
+    if row is None: row = store.read(path)
     if not row or row['note_id'] != nid:
         raise KeyError('历史版本不存在')
     return row
@@ -35,17 +63,21 @@ def version_writes(root, old, new, origin='save', review_refs=None):
         nid = record['metadata']['id']; before = previous.get(nid)
         if before and before['body'] == record['body']:
             continue
-        existing = versions(root, nid)
+        existing = versions(root, nid, _locked=True)
         candidates = []
-        if before and (not existing or version(root, nid, existing[0]['id'])['record'] != store.snapshot(before)):
+        if before and (not existing or existing[0]['snapshot_sha256'] != store.digest(store.snapshot(before))):
             candidates.append((before, 'baseline', []))
         candidates.append((record, origin, review_refs or []))
         for item, source, refs in candidates:
             vid = uuid.uuid4().hex
+            snap = store.snapshot(item)
+            value = {'id': vid, 'note_id': nid, 'at': datetime.now(timezone.utc).isoformat(), 'origin': source,
+                     'body_sha256': store.digest(item['body']), 'review_refs': refs, 'record':snap}
             result.append({'path': str((version_folder(root, nid) / (vid + '.json')).relative_to(Path(root))).replace('\\', '/'),
-                           'value': {'id': vid, 'note_id': nid, 'at': datetime.now(timezone.utc).isoformat(), 'origin': source,
-                                     'body_sha256': store.digest(item['body']), 'review_refs': refs,
-                                     'record': store.snapshot(item)}})
+                           'value': value})
+            existing.insert(0, {**{k:v for k,v in value.items() if k!='record'}, 'snapshot_sha256':store.digest(snap)})
+        result.append({'path':(version_folder(root,nid) / 'index.meta.json').relative_to(Path(root)).as_posix(),
+                       'value':{'versions':existing}})
     return result
 
 
@@ -86,18 +118,20 @@ def _rows(root):
 
 
 def _record(root, nid):
-    record = next((r for r in store.records(root) if r['metadata']['id'] == nid), None)
+    record = store.load_record(root, nid, clone=False)
     if not record:
         raise KeyError('笔记不存在')
     return record
 
 
 def annotations(root, note_id=None, status=None):
-    records = {r['metadata']['id']: r for r in store.records(root)}
+    records = {}
     result = []
     for row in _rows(root):
         if row.get('deleted') or (note_id and row['note_id'] != note_id) or (status and row['status'] != status):
             continue
+        if row['note_id'] not in records:
+            records[row['note_id']] = store.load_record(root, row['note_id'], clone=False)
         record = records.get(row['note_id'])
         current = scope(record['body'], row['node_id']) if record else []
         result.append({**row, 'anchor_state': 'missing' if not current else 'current' if current == row['target'] else 'changed',
@@ -191,6 +225,6 @@ def complete(root, aid, payload):
             raise ValueError('知识校验未通过，批注保持待处理')
         row.setdefault('history', []).append({k: deepcopy(v) for k, v in row.items() if k != 'history'})
         row.update(status='resolved', result=str(payload.get('result', '')).strip(), result_revision=meta['revision'],
-                   result_version=versions(root, row['note_id'])[0]['id'], updated_at=wxq.now(), revision=uuid.uuid4().hex)
+                   result_version=versions(root, row['note_id'], _locked=True)[0]['id'], updated_at=wxq.now(), revision=uuid.uuid4().hex)
         store.write_file(Path(root) / COMMENTS, {'annotations': rows})
         return deepcopy(row)

@@ -349,9 +349,11 @@ class Handler(BaseHTTPRequestHandler):
             elif self.command == 'POST' and path == '/api/notes':
                 result = workspace.create_note(self.server.root, payload)
             elif self.command == 'PUT' and path.startswith('/api/notes/'):
-                workspace.edit(self.server.root, path.split('/')[-1], payload)
-                from note_links import project_notes
-                result=next(n for n in project_notes(self.server.root) if n['id']==path.split('/')[-1])
+                result = workspace.edit(self.server.root, path.split('/')[-1], payload)
+                import json_store
+                if not json_store.enabled(self.server.root):
+                    from note_links import project_notes
+                    result=next(n for n in project_notes(self.server.root) if n['id']==path.split('/')[-1])
             elif self.command == 'POST' and path == '/api/sources':
                 result = workspace.register_source(self.server.root, payload)
             elif self.command == 'PUT' and path.startswith('/api/sources/') and path.endswith('/transcript'):

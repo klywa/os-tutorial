@@ -1,14 +1,13 @@
-# 笔记局部编辑、批注与历史对比（2026-10-25）
+# 加速笔记保存与输入（2026-10-25）
 
-用户已批准完整方案并要求实现。代码分支 codex/note-edit-comments-history，未提交Git。
+用户批准方案直接实现，保留当前知识人工修改、不提交Git。
 
-- [x] 统一事务历史快照、版本查询、逐字段恢复与证据校验。
-- [x] 批注 HTTP/CLI、锚定与并发校验、有限保护授权、完成读回校验。
-- [x] 前端章节与段落局部编辑、失焦警告、实时diff、历史合并、批注管理。
-- [x] wanxiangqi-knowledge 批注模式与纯措辞授权入口。
-- [x] 独立代码审阅及两项草稿保护问题修复。
-- [x] 最后回归：完整Python489项、前端94项、构建、quick_validate、正式库validate均通过；浏览器与真实CLI批注闭环通过。
+- [x] 保存基线：隔离副本普通34.02s、最大59.78s，208次write_file调用。
+- [x] 增量事务、单篇读取/返回及历史轻量索引实现；相关回归进行中。
+- [x] 2秒diff防抖、IME与局部草稿状态，移除保存后全库刷新。
+- [x] 前后性能测量、完整回归、浏览器及独立审阅、服务空闲重载。
 
-浏览器临时知识库验收已通过，截图和脚本在raw/note-review-*；正式库validate errors[]。
-细节计划 docs/superpowers/plans/2026-10-25-note-review.md。
-此前77组知识交付已完成，详见raw/reports/batch77/priority-delivery.json与progress.md，不重做。
+详细计划 docs/superpowers/plans/2026-10-25-note-performance.md。
+此前编辑/批注功能已完成，见raw/note-review-delivery.json。
+
+最终：普通34.02→0.436s，最大59.78→2.804s；Python497、前端97、构建与知识validate通过。报告raw/note-performance-delivery.json。

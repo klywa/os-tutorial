@@ -21,7 +21,7 @@ claim_annotations保留原结论ID、kind、section、condition、version、infe
 
 人工编辑将旧文及旧证据保留history，不为新话术沿用旧来源。node_annotations记录人工节点，后续导入不能自动覆盖，冲突进入conflicts。
 
-revision由正文与附件共同计算，body_sha256校验配对。raw/knowledge/pending-json-save.json发布完整快照，正文/附件/索引恢复后移除；读者在中断时读取完整事务快照。共享写锁和恢复文件都在raw。
+revision由正文与附件共同计算，body_sha256校验配对。raw/knowledge/pending-json-save.json先发布事务再写正文/附件/索引，恢复完成后移除。delta=true的增量事务仅包含变更笔记、完整轻量索引和版本快照；读者通过统一存储接口将变更覆盖到未变笔记上，不能把records数组当全库。旧完整事务仍兼容恢复。共享写锁和恢复文件都在raw。
 
 ## 接口
 

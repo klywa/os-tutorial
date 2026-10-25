@@ -1,5 +1,6 @@
 import {describe,it,expect} from 'vitest';
-import {textDiff,reviewFields,applyReviewField,scopeNodes,hasReviewChanges} from './noteReviewModel';
+import {textDiff,reviewFields,applyReviewField,scopeNodes,hasReviewChanges,createHistoryDraft} from './noteReviewModel';
+import {vi} from 'vitest';
 import type {KnowledgeDocument} from './types';
 
 const body:KnowledgeDocument={schema_version:6,nodes:[{id:'h',type:'heading',level:2,title:'英雄'},
@@ -7,6 +8,14 @@ const body:KnowledgeDocument={schema_version:6,nodes:[{id:'h',type:'heading',lev
  {id:'s',type:'heading',level:3,title:'条件'}, {id:'q',type:'entry',key:'正文',show_key:false,value:'条件正文'},
  {id:'end',type:'heading',level:2,title:'运营'}]};
 describe('note review model',()=>{
+ it('stores history field input without cloning the document until save',()=>{
+  const next=structuredClone(body);(next.nodes[1] as {value:string}).value='当前';
+  const field=reviewFields(body,next).find(f=>f.nodeId==='p'&&f.key==='value')!;
+  const clone=vi.spyOn(globalThis,'structuredClone');const draft=createHistoryDraft(next,body);
+  draft.set(field,'第一字');draft.set(field,'最新输入');expect(clone).not.toHaveBeenCalled();
+  expect(draft.changed).toBe(true);expect((draft.build().nodes[1] as {value:string}).value).toBe('最新输入');
+  draft.set(field,'当前');expect(draft.changed).toBe(false);clone.mockRestore();
+ });
  it('keeps navigation protected while any field contains invalid unsaved text',()=>{
   expect(hasReviewChanges(body,body,{a:true,b:false})).toBe(true);
   expect(hasReviewChanges(body,body,{a:false,b:false})).toBe(false);

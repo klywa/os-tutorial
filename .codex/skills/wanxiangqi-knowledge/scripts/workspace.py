@@ -553,11 +553,20 @@ def validate_meta(root, meta):
         reference(condition['faction'])
         if condition.get('status') not in ['playable', 'unplayable', 'unknown']:
             raise ValueError('禁用适用状态无效')
+    note_ids = set()
+    if meta.get('matchups'):
+        import json_store
+        if json_store.enabled(root):
+            pending = json_store.read(Path(root) / json_store.JOURNAL)
+            index = pending['index'] if pending else json_store.read(Path(root) / json_store.INDEX, {'notes':[]})
+            note_ids = {n['id'] for n in index['notes']}
+        else:
+            note_ids = {n['id'] for n in notes(root)}
     for matchup in meta.get('matchups', []):
         if not isinstance(matchup, dict):
             raise ValueError('针对策略无效')
         target = matchup.get('target', '')
-        if target not in {n['id'] for n in notes(root)}:
+        if target not in note_ids:
             reference(target)
         if not isinstance(matchup.get('text'), str) or not matchup['text'].strip():
             raise ValueError('针对策略需要正文')
@@ -570,7 +579,7 @@ def edit_locked(root, nid, payload, recover_first=True):
 def edit(root, nid, payload, _locked=False, _recover_first=True, _dry_run=False):
     import json_store
     if json_store.enabled(root):
-        return json_store.edit(root, nid, payload)
+        return json_store.edit(root, nid, payload, public=True)
     with nullcontext() if _locked else store_lock(root):
         if _recover_first: recover(root)
         from markdown_sync import scan
