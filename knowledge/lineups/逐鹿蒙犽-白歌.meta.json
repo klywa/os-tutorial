@@ -1,0 +1,1906 @@
+{
+  "schema_version": 6,
+  "id": "batch77-zhulu-mengya-baige",
+  "type": "lineup",
+  "title": "逐鹿蒙犽-白歌",
+  "lineup_name": "逐鹿蒙犽",
+  "path": "knowledge/lineups/逐鹿蒙犽-白歌.json",
+  "player_id": "player:33",
+  "aliases": [],
+  "entities": [
+    "card:1121",
+    "card:1123",
+    "card:1131",
+    "card:1201",
+    "card:1211",
+    "card:1213",
+    "card:1391",
+    "card:1971",
+    "card:5231",
+    "card:5233",
+    "card:5241",
+    "card:643402",
+    "card:644117",
+    "player:33"
+  ],
+  "entity_names": {
+    "player:33": "白歌",
+    "card:5241": "蒙犽",
+    "card:1131": "庄周",
+    "card:1201": "白起",
+    "card:1211": "芈月",
+    "card:1213": "芈月",
+    "card:5231": "西施",
+    "card:5233": "西施",
+    "card:1121": "鲁班七号",
+    "card:1123": "鲁班七号",
+    "card:1391": "老夫子",
+    "card:643402": "法源之杯",
+    "card:644117": "阿科米亚之子"
+  },
+  "related": [],
+  "history": [
+    {
+      "origin": "draft_delta",
+      "reason": "基于commit-b-new增量，不是正式commit",
+      "node_before": {
+        "id": "b77-c6422d7a1fbf42e805",
+        "type": "entry",
+        "key": "正文",
+        "show_key": false,
+        "value": "蒙犽用连续导弹承担主要物理输出，白歌通过合成与复制增加庄周的打出次数，继续取得招募资源并推进下一次复制。蒙犽导弹可以暴击，因此无尽巨剑放大技能伤害，回蓝装备支持连续施法，免控或保命装备让高等级输出能够兑现。操作时要给下一轮灵感爆发留下庄周等所需材料。",
+        "separator": "\n\n"
+      },
+      "claim_annotations_before": [
+        {
+          "id": "b77-c6422d7a1fbf42e805-claim",
+          "text_ref": "b77-c6422d7a1fbf42e805",
+          "kind": "conditional_strategy",
+          "section": "核心原理",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 553.33,
+              "end": 648.42
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 903.16,
+              "end": 976.32
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1432.24
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": []
+        }
+      ]
+    },
+    {
+      "at": "2026-10-25T02:46:40.570111+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "b77-8f45f51fb86c0e42b1",
+            "type": "heading",
+            "title": "逐鹿蒙犽-白歌",
+            "level": 1,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-e255d3ed4bff4507c3",
+            "type": "heading",
+            "title": "核心原理",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-c6422d7a1fbf42e805",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "蒙犽承担主要物理输出，芈月在每次使用效果牌时，为穿戴装备最多的一名逐鹿英雄加等级，因此先把主要装备给蒙犽，再反复使用战术等效果牌。庄周与蒙犽登场给战术，西施整备供推演战术，白起和鲁班七号再补战术资源；白歌通过合成取得即兴创作、灵感爆发与6级奇才，复制庄周、蒙犽继续供牌和合成，把牌量转成蒙犽的等级与连续导弹输出。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-1021f64d4c4de5b19",
+            "type": "heading",
+            "title": "核心机制",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-8acd7356142d536d1",
+            "type": "entry",
+            "key": "效果牌转等级与供牌次数",
+            "show_key": true,
+            "value": "芈月按每次效果牌使用给装备最多的逐鹿英雄加等级，蒙犽应成为实际受益者。庄周、蒙犽登场取得战术；西施整备取得推演战术；白起是每回合首次使用效果牌时给战术，鲁班七号是每3次合成给战术，老夫子是每回合首次合成给招募战术。三种供牌频率不同，不能全部当作每次打牌都会继续供牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-3f367bef165ff1ba71",
+            "type": "heading",
+            "title": "英雄",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-cfd7679609a6b5c06a",
+            "type": "entry",
+            "key": "蒙犽",
+            "show_key": true,
+            "value": "主力物理输出，连续导弹可暴击。觉醒需求：未确认；等级投入：持续培养，统一停级点未确认；购买策略：首张确定输出方向，重复和付费刷新边界未确认；拍卖出价上限未确认；上阵时机：有合适输出装备、能接替过渡战力时上，固定回合未确认；出售时机：作为主力保留，未确认换出路线；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-a374f8b92dbfb1a1de",
+            "type": "entry",
+            "key": "庄周",
+            "show_key": true,
+            "value": "登场补逐鹿招募资源，白歌复制后继续打出、合成。觉醒需求：未确认；等级投入：未确认；购买策略：复制技能将解锁时保留所需庄周材料，拍卖出价上限未确认；上阵时机：有打出位且需要招募资源时登场；出售时机：未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-8a663f1ef028c6bb98",
+            "type": "entry",
+            "key": "白起",
+            "show_key": true,
+            "value": "战术护盾组件，使用时机影响最后护盾结果。觉醒需求：未确认；等级投入：未确认；购买策略：首张与重复优先级未确认，拍卖出价上限未确认；上阵时机：未确认；出售时机：未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-cbfd5ce116a0e652b",
+            "type": "entry",
+            "key": "芈月",
+            "show_key": true,
+            "value": "把效果牌使用转为装备最多的逐鹿英雄的等级，是蒙犽成长核心。觉醒需求：普通每次+1，觉醒后+2；主动追醒顺序未确认；等级投入：未确认；购买策略：速升路线到棋手4级后用免费刷新先找首张，拍卖出价上限未确认；上阵时机：反复使用效果牌前先在场，并把主要装备给蒙犽；出售时机：仍需效果牌成长时保留，固定换出条件未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-e563be31d3330c3d5",
+            "type": "entry",
+            "key": "西施",
+            "show_key": true,
+            "value": "整备提供推演战术，继续供牌并减少蒙犽法力值上限。觉醒需求：未确认；等级投入：未确认；购买策略：复制庄周补体系后再补入，重复优先级与拍卖出价上限未确认；上阵时机：需要推演与缩蓝时加入；出售时机：未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-70da0002870a56ea7",
+            "type": "entry",
+            "key": "鲁班七号",
+            "show_key": true,
+            "value": "每3次英雄合成随机给战术，为芈月成长和蒙犽施法提供资源。觉醒需求：未确认；等级投入：未确认；购买策略：体系核心到手后补入，拍卖出价上限未确认；上阵时机：开始大量合成前加入；出售时机：未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-ee0045ed1eca5976b",
+            "type": "entry",
+            "key": "老夫子",
+            "show_key": true,
+            "value": "占用打出位参与合成供牌，每回合首次合成取得招募战术。觉醒需求：未确认；等级投入：未确认；购买策略：有打出位与合成收益时使用，重复及拍卖出价上限未确认；上阵时机：未确认；出售时机：未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-4fd7d4fd2382432078",
+            "type": "heading",
+            "title": "阵容组成与运营节奏",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-5e56070410dd13e390",
+            "type": "heading",
+            "title": "前期英雄组成与运营",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-1eefff1f01ddcf1469",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "本视频采用精简过渡进入棋手4级的找牌阶段；具体前期英雄名单、投入与保血阈值仍未确认，不把单局挂机阶段写成固定开局。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-f6f2986b2e66743b79",
+            "type": "heading",
+            "title": "中期英雄组成与运营",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-list-35cc2c117f0c256a87",
+            "type": "entry",
+            "key": "蒙犽（核心）",
+            "show_key": true,
+            "value": "取得首张主力；重复投入边界未确认。",
+            "prefix": "- ",
+            "separator": "\n"
+          },
+          {
+            "id": "b77-list-987d15c7644ee3c748",
+            "type": "entry",
+            "key": "庄周（核心）",
+            "show_key": true,
+            "value": "复制技能将取得时保留需要的材料。",
+            "prefix": "- ",
+            "separator": "\n"
+          },
+          {
+            "id": "b77-a18995425d363bebc7",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "补蒙犽与庄周，持续处理招募资源和合成，并给6级奇才留能量；何时升级取决于当前买牌资源和复制收益，不以单局主C等级作为固定标准。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-b6bf817cb5e18ee6e5",
+            "type": "heading",
+            "title": "后期英雄组成与运营",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-list-9828b37b8615271a64",
+            "type": "entry",
+            "key": "蒙犽（核心）",
+            "show_key": true,
+            "value": "取得首张主力；重复投入边界未确认。",
+            "prefix": "- ",
+            "separator": "\n"
+          },
+          {
+            "id": "b77-list-d5cc6b348ca724d54a",
+            "type": "entry",
+            "key": "庄周（核心）",
+            "show_key": true,
+            "value": "复制技能将取得时保留需要的材料。",
+            "prefix": "- ",
+            "separator": "\n"
+          },
+          {
+            "id": "b77-da3c37a0d7859b8bfd",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "奇才与灵感爆发将取得时先留庄周等需要的材料，再连续供牌与合成；按对手控制和爆发补蒙犽保护，不能提前清空下一次复制目标。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-b694bae8aa5ecc6db1",
+            "type": "heading",
+            "title": "后期提升思路",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-71e82c2effa7ec2fb9",
+            "type": "entry",
+            "key": "后期提升思路",
+            "show_key": true,
+            "value": "持续提高蒙犽等级和有效施法次数，完成暴击、回蓝与保护配装；合成和复制仍能继续时保留庄周材料，再根据当轮战力处理其他资源。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-80e580b5cbd03c26ec",
+            "type": "heading",
+            "title": "关键装备",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-a80c0044c24ba3374b",
+            "type": "entry",
+            "key": "无尽巨剑",
+            "show_key": true,
+            "value": "蒙犽导弹可以暴击，无尽巨剑用来放大导弹伤害；另外准备回蓝装备，并按控制或爆发压力补免控、保命。法力已经足以连续施法时，额外双重施法不是固定必需条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-49e5152e7e7597521",
+            "type": "entry",
+            "key": "法源之杯",
+            "show_key": true,
+            "value": "本教学要求蒙犽有回蓝装备支持连续施法；与无尽巨剑一起补输出循环。已有队友携带阿科米亚之子、能持续给蒙犽回蓝时，可比较腾出回蓝装备位置。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-53a9fcde43af292f9",
+            "type": "entry",
+            "key": "阿科米亚之子",
+            "show_key": true,
+            "value": "穿戴者和周围1格单位每秒恢复4法力值及2%最大生命值。队友携带并能持续覆盖蒙犽时，可为蒙犽提供回蓝，再比较是否腾出法源之杯的位置。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-f9fd9ada7a8ca6301",
+            "type": "heading",
+            "title": "棋手技能选择",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-27dc91daeefb78c1e",
+            "type": "entry",
+            "key": "奇才先复制庄周",
+            "show_key": true,
+            "value": "速升路线到6级后，先把装备全部给蒙犽，再用奇才指定庄周取得4张牌；打出庄周和觉醒庄周，使用取得的招募战术补其余体系。之后灵感爆发按缺口复制蒙犽或庄周，不把两回合达到固定等级视作保证。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-d5a609961f3a39ad6d",
+            "type": "heading",
+            "title": "关键操作",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-5ba7d5ef36328fe1b3",
+            "type": "entry",
+            "key": "复制前保留材料",
+            "show_key": true,
+            "value": "灵感爆发接近解锁时保留所需庄周等非觉醒牌，先整理无用牌，再使用技能并处理本回合的转瞬复制牌。不要为了额外一次合成把下一轮复制目标全部用掉。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-31b12b844ec8e6515",
+            "type": "heading",
+            "title": "新增运营路线",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "bex-23138c68492df5e01",
+            "type": "entry",
+            "key": "先集中供牌核心再速6",
+            "show_key": true,
+            "value": "此教学前期追弈星觉醒，利用经验与合成锦囊过渡；棋手4级先用免费刷新找芈月，遇庄周、蒙犽可留，其他体系牌延后。棋手5级先保血、取得首张庄周和蒙犽，再为6级奇才留资源；这是精简速升路线，不能套成所有白歌开局都禁止买其他牌。",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {
+          "players": [
+            "player:33"
+          ],
+          "core_heroes": [
+            "card:5241",
+            "card:1131",
+            "card:1211"
+          ],
+          "required_factions": [
+            "faction:zhulu"
+          ],
+          "compositions": {
+            "early": [],
+            "middle": [
+              {
+                "hero": "card:5241",
+                "necessity": "required",
+                "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1131",
+                "necessity": "required",
+                "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required",
+                "role": "效果牌成长核心；让蒙犽成为装备最多的逐鹿英雄",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5241",
+                "necessity": "required",
+                "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1131",
+                "necessity": "required",
+                "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required",
+                "role": "效果牌成长核心；让蒙犽成为装备最多的逐鹿英雄",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          },
+          "ban_conditions": [],
+          "matchups": []
+        }
+      },
+      "claim_annotations": [
+        {
+          "id": "b77-cfd7679609a6b5c06a-claim",
+          "text_ref": "b77-cfd7679609a6b5c06a",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 553.33,
+              "end": 648.42
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+          ]
+        },
+        {
+          "id": "b77-a374f8b92dbfb1a1de-claim",
+          "text_ref": "b77-a374f8b92dbfb1a1de",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 903.16,
+              "end": 976.32
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1432.24
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+          ]
+        },
+        {
+          "id": "b77-8a663f1ef028c6bb98-claim",
+          "text_ref": "b77-8a663f1ef028c6bb98",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 726.06,
+              "end": 836.9
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1257.68,
+              "end": 1316.13
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+          ]
+        },
+        {
+          "id": "b77-1eefff1f01ddcf1469-claim",
+          "text_ref": "b77-1eefff1f01ddcf1469",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 795.93,
+              "end": 836.9
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "b77-a18995425d363bebc7-claim",
+          "text_ref": "b77-a18995425d363bebc7",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 903.16,
+              "end": 976.32
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1089.0,
+              "end": 1240.18
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "b77-da3c37a0d7859b8bfd-claim",
+          "text_ref": "b77-da3c37a0d7859b8bfd",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1493.42
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "b77-71e82c2effa7ec2fb9-claim",
+          "text_ref": "b77-71e82c2effa7ec2fb9",
+          "kind": "conditional_strategy",
+          "section": "后期提升思路",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 553.33,
+              "end": 648.42
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1432.24
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "b77-a80c0044c24ba3374b-claim",
+          "text_ref": "b77-a80c0044c24ba3374b",
+          "kind": "conditional_strategy",
+          "section": "关键装备",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 553.33,
+              "end": 648.42
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "本批阅读全文中的直接讲解；不将当局胜负作为通用结论"
+          ]
+        },
+        {
+          "id": "b77-5ba7d5ef36328fe1b3-claim",
+          "text_ref": "b77-5ba7d5ef36328fe1b3",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1432.24
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "b77-list-35cc2c117f0c256a87-claim",
+          "text_ref": "b77-list-35cc2c117f0c256a87",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 903.16,
+              "end": 976.32
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1089.0,
+              "end": 1240.18
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+          ]
+        },
+        {
+          "id": "b77-list-987d15c7644ee3c748-claim",
+          "text_ref": "b77-list-987d15c7644ee3c748",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 903.16,
+              "end": 976.32
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1089.0,
+              "end": 1240.18
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+          ]
+        },
+        {
+          "id": "b77-list-9828b37b8615271a64-claim",
+          "text_ref": "b77-list-9828b37b8615271a64",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1493.42
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+          ]
+        },
+        {
+          "id": "b77-list-d5cc6b348ca724d54a-claim",
+          "text_ref": "b77-list-d5cc6b348ca724d54a",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1369.69,
+              "end": 1493.42
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+          ]
+        },
+        {
+          "id": "bex-adf34d3b25a5464df",
+          "text_ref": "b77-c6422d7a1fbf42e805",
+          "section": "核心原理",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 0,
+              "end": 43.77
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 30,
+              "paragraph_end": 30
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-cbfd5ce116a0e652b-claim",
+          "text_ref": "bex-cbfd5ce116a0e652b",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 0,
+              "end": 43.77
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 30,
+              "paragraph_end": 30
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-e563be31d3330c3d5-claim",
+          "text_ref": "bex-e563be31d3330c3d5",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 17.85,
+              "end": 43.77
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 185,
+              "paragraph_end": 185
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 186,
+              "paragraph_end": 186
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-70da0002870a56ea7-claim",
+          "text_ref": "bex-70da0002870a56ea7",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 17.85,
+              "end": 43.77
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 16,
+              "paragraph_end": 16
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-ee0045ed1eca5976b-claim",
+          "text_ref": "bex-ee0045ed1eca5976b",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 17.85,
+              "end": 43.77
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 50,
+              "paragraph_end": 50
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-27dc91daeefb78c1e-claim",
+          "text_ref": "bex-27dc91daeefb78c1e",
+          "section": "棋手技能选择",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 73.47,
+              "end": 131.81
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-23138c68492df5e01-claim",
+          "text_ref": "bex-23138c68492df5e01",
+          "section": "新增运营路线",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 43.93,
+              "end": 102.03
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-49e5152e7e7597521-claim",
+          "text_ref": "bex-49e5152e7e7597521",
+          "section": "关键装备",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 102.33,
+              "end": 131.81
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 458,
+              "paragraph_end": 458
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 500,
+              "paragraph_end": 500
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-8acd7356142d536d1-claim",
+          "text_ref": "bex-8acd7356142d536d1",
+          "section": "核心机制",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 0,
+              "end": 43.77
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 27,
+              "paragraph_end": 27
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 50,
+              "paragraph_end": 50
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 185,
+              "paragraph_end": 185
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 187,
+              "paragraph_end": 187
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        },
+        {
+          "id": "bex-53a9fcde43af292f9-claim",
+          "text_ref": "bex-53a9fcde43af292f9",
+          "section": "关键装备",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ArnA6vExb:p1",
+              "start": 102.33,
+              "end": 131.81
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 500,
+              "paragraph_end": 500
+            }
+          ],
+          "origin": "batch77_extra_fulltext"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "manual_sections": [],
+  "claim_annotations": [
+    {
+      "id": "b77-cfd7679609a6b5c06a-claim",
+      "text_ref": "b77-cfd7679609a6b5c06a",
+      "kind": "conditional_strategy",
+      "section": "英雄",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 553.33,
+          "end": 648.42
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+      ]
+    },
+    {
+      "id": "b77-a374f8b92dbfb1a1de-claim",
+      "text_ref": "b77-a374f8b92dbfb1a1de",
+      "kind": "conditional_strategy",
+      "section": "英雄",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 903.16,
+          "end": 976.32
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1432.24
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+      ]
+    },
+    {
+      "id": "b77-8a663f1ef028c6bb98-claim",
+      "text_ref": "b77-8a663f1ef028c6bb98",
+      "kind": "conditional_strategy",
+      "section": "英雄",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 726.06,
+          "end": 836.9
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1257.68,
+          "end": 1316.13
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+      ]
+    },
+    {
+      "id": "b77-1eefff1f01ddcf1469-claim",
+      "text_ref": "b77-1eefff1f01ddcf1469",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 795.93,
+          "end": 836.9
+        },
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 43.93,
+          "end": 102.03
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [],
+      "history": [
+        {
+          "at": "2026-10-25T02:34:43.075999+00:00",
+          "text": "本视频采用精简过渡进入棋手4级的找牌阶段；具体前期英雄名单、投入与保血阈值仍未确认，不把单局挂机阶段写成固定开局。",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 795.93,
+              "end": 836.9
+            }
+          ],
+          "reason": "教学覆盖归位，原文与证据保留"
+        }
+      ],
+      "review_basis": {
+        "coverage_projection": {
+          "report": "raw/reports/batch77/group-teaching-audit-part2.json",
+          "basis_nodes": [
+            "bex-23138c68492df5e01",
+            "b77-1eefff1f01ddcf1469"
+          ],
+          "new_source_review": false
+        }
+      }
+    },
+    {
+      "id": "b77-a18995425d363bebc7-claim",
+      "text_ref": "b77-a18995425d363bebc7",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 903.16,
+          "end": 976.32
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1089.0,
+          "end": 1240.18
+        },
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 43.93,
+          "end": 102.03
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [],
+      "history": [
+        {
+          "at": "2026-10-25T02:34:43.075999+00:00",
+          "text": "补蒙犽与庄周，持续处理招募资源和合成，并给6级奇才留能量；何时升级取决于当前买牌资源和复制收益，不以单局主C等级作为固定标准。",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 903.16,
+              "end": 976.32
+            },
+            {
+              "type": "video",
+              "source": "BV1CPpJ6DE6m:p1",
+              "start": 1089.0,
+              "end": 1240.18
+            }
+          ],
+          "reason": "教学覆盖归位，原文与证据保留"
+        }
+      ],
+      "review_basis": {
+        "coverage_projection": {
+          "report": "raw/reports/batch77/group-teaching-audit-part2.json",
+          "basis_nodes": [
+            "bex-23138c68492df5e01",
+            "b77-a18995425d363bebc7"
+          ],
+          "new_source_review": false
+        }
+      }
+    },
+    {
+      "id": "b77-da3c37a0d7859b8bfd-claim",
+      "text_ref": "b77-da3c37a0d7859b8bfd",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1493.42
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": []
+    },
+    {
+      "id": "b77-71e82c2effa7ec2fb9-claim",
+      "text_ref": "b77-71e82c2effa7ec2fb9",
+      "kind": "conditional_strategy",
+      "section": "后期提升思路",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 553.33,
+          "end": 648.42
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1432.24
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": []
+    },
+    {
+      "id": "b77-a80c0044c24ba3374b-claim",
+      "text_ref": "b77-a80c0044c24ba3374b",
+      "kind": "conditional_strategy",
+      "section": "关键装备",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 553.33,
+          "end": 648.42
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "本批阅读全文中的直接讲解；不将当局胜负作为通用结论"
+      ]
+    },
+    {
+      "id": "b77-5ba7d5ef36328fe1b3-claim",
+      "text_ref": "b77-5ba7d5ef36328fe1b3",
+      "kind": "conditional_strategy",
+      "section": "关键操作",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1432.24
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": []
+    },
+    {
+      "id": "b77-list-35cc2c117f0c256a87-claim",
+      "text_ref": "b77-list-35cc2c117f0c256a87",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 903.16,
+          "end": 976.32
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1089.0,
+          "end": 1240.18
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+      ]
+    },
+    {
+      "id": "b77-list-987d15c7644ee3c748-claim",
+      "text_ref": "b77-list-987d15c7644ee3c748",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 903.16,
+          "end": 976.32
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1089.0,
+          "end": 1240.18
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+      ]
+    },
+    {
+      "id": "b77-list-9828b37b8615271a64-claim",
+      "text_ref": "b77-list-9828b37b8615271a64",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1493.42
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+      ]
+    },
+    {
+      "id": "b77-list-d5cc6b348ca724d54a-claim",
+      "text_ref": "b77-list-d5cc6b348ca724d54a",
+      "kind": "conditional_strategy",
+      "section": "阵容组成与运营节奏",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1493.42
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [
+        "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+      ]
+    },
+    {
+      "id": "bex-adf34d3b25a5464df",
+      "text_ref": "b77-c6422d7a1fbf42e805",
+      "section": "核心原理",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 0,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-cbfd5ce116a0e652b-claim",
+      "text_ref": "bex-cbfd5ce116a0e652b",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 0,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-e563be31d3330c3d5-claim",
+      "text_ref": "bex-e563be31d3330c3d5",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 17.85,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 185,
+          "paragraph_end": 185
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 186,
+          "paragraph_end": 186
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-70da0002870a56ea7-claim",
+      "text_ref": "bex-70da0002870a56ea7",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 17.85,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-ee0045ed1eca5976b-claim",
+      "text_ref": "bex-ee0045ed1eca5976b",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 17.85,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 50,
+          "paragraph_end": 50
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-27dc91daeefb78c1e-claim",
+      "text_ref": "bex-27dc91daeefb78c1e",
+      "section": "棋手技能选择",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 73.47,
+          "end": 131.81
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-23138c68492df5e01-claim",
+      "text_ref": "bex-23138c68492df5e01",
+      "section": "新增运营路线",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 43.93,
+          "end": 102.03
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-49e5152e7e7597521-claim",
+      "text_ref": "bex-49e5152e7e7597521",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 102.33,
+          "end": 131.81
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 458,
+          "paragraph_end": 458
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 500,
+          "paragraph_end": 500
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-8acd7356142d536d1-claim",
+      "text_ref": "bex-8acd7356142d536d1",
+      "section": "核心机制",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 0,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 50,
+          "paragraph_end": 50
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 185,
+          "paragraph_end": 185
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 187,
+          "paragraph_end": 187
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "bex-53a9fcde43af292f9-claim",
+      "text_ref": "bex-53a9fcde43af292f9",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 102.33,
+          "end": 131.81
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 500,
+          "paragraph_end": 500
+        }
+      ],
+      "origin": "batch77_extra_fulltext"
+    },
+    {
+      "id": "cov2-cov2-meng-yixing-claim",
+      "text_ref": "cov2-meng-yixing",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 43.93,
+          "end": 102.03
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 115,
+          "paragraph_end": 115
+        }
+      ],
+      "review_basis": {
+        "coverage_projection": {
+          "report": "raw/reports/batch77/group-teaching-audit-part2.json",
+          "basis_nodes": [
+            "bex-23138c68492df5e01"
+          ],
+          "new_source_review": false
+        }
+      }
+    },
+    {
+      "id": "cov2-cov2-meng-select-claim",
+      "text_ref": "cov2-meng-select",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 0,
+          "end": 43.77
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        },
+        {
+          "type": "video",
+          "source": "BV1ArnA6vExb:p1",
+          "start": 43.93,
+          "end": 102.03
+        }
+      ],
+      "review_basis": {
+        "coverage_projection": {
+          "report": "raw/reports/batch77/group-teaching-audit-part2.json",
+          "basis_nodes": [
+            "b77-c6422d7a1fbf42e805",
+            "bex-23138c68492df5e01"
+          ],
+          "new_source_review": false
+        }
+      }
+    }
+  ],
+  "hero_field_review": [
+    {
+      "node_id": "b77-cfd7679609a6b5c06a",
+      "hero": "蒙犽",
+      "unknown_fields": [
+        "觉醒需求",
+        "等级投入",
+        "购买策略",
+        "上阵时机",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    },
+    {
+      "node_id": "b77-a374f8b92dbfb1a1de",
+      "hero": "庄周",
+      "unknown_fields": [
+        "觉醒需求",
+        "等级投入",
+        "购买策略",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    },
+    {
+      "node_id": "b77-8a663f1ef028c6bb98",
+      "hero": "白起",
+      "unknown_fields": [
+        "觉醒需求",
+        "等级投入",
+        "购买策略",
+        "上阵时机",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    },
+    {
+      "node_id": "bex-cbfd5ce116a0e652b",
+      "hero": "芈月",
+      "unknown_fields": [
+        "等级投入",
+        "购买策略",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    },
+    {
+      "node_id": "bex-e563be31d3330c3d5",
+      "hero": "西施",
+      "unknown_fields": [
+        "觉醒需求",
+        "等级投入",
+        "购买策略",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    },
+    {
+      "node_id": "bex-70da0002870a56ea7",
+      "hero": "鲁班七号",
+      "unknown_fields": [
+        "觉醒需求",
+        "等级投入",
+        "购买策略",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    },
+    {
+      "node_id": "bex-ee0045ed1eca5976b",
+      "hero": "老夫子",
+      "unknown_fields": [
+        "觉醒需求",
+        "等级投入",
+        "购买策略",
+        "上阵时机",
+        "出售时机"
+      ],
+      "evidence_scope": "注证不把未知字段计为已覆盖"
+    }
+  ],
+  "review_scope": {
+    "batch": "batch77",
+    "status": "仅草稿，未提交",
+    "missing_fields": "明确未确认；证据只支持有实质内容的字段，留缺不计已覆盖"
+  },
+  "body_sha256": "081b5397fb0f28a0815cce79f9a7ab3efcfe6f4b09443272ae1416de27f88c7d",
+  "source_ids": [
+    "BV1CPpJ6DE6m:p1"
+  ],
+  "retired_claim_annotations": [
+    {
+      "id": "b77-c6422d7a1fbf42e805-claim",
+      "text_ref": "b77-c6422d7a1fbf42e805",
+      "kind": "conditional_strategy",
+      "section": "核心原理",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 553.33,
+          "end": 648.42
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 903.16,
+          "end": 976.32
+        },
+        {
+          "type": "video",
+          "source": "BV1CPpJ6DE6m:p1",
+          "start": 1369.69,
+          "end": 1432.24
+        }
+      ],
+      "origin": "batch77_fulltext_review",
+      "basis": [],
+      "history_index": 0
+    }
+  ],
+  "revision": "fbd1555c102a17bfb7ac"
+}

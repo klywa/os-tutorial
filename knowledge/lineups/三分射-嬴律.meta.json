@@ -1,0 +1,4103 @@
+{
+  "schema_version": 6,
+  "id": "d10-sanfen-shooter-ying",
+  "type": "lineup",
+  "title": "三分射-嬴律",
+  "path": "knowledge/lineups/三分射-嬴律.json",
+  "player_id": "player:43",
+  "aliases": [
+    "嬴律低压三分射"
+  ],
+  "entities": [
+    "player:43",
+    "card:1861",
+    "card:5051",
+    "card:1751",
+    "card:1141",
+    "card:5011"
+  ],
+  "related": [
+    "player-ying"
+  ],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-25T03:00:04.265541+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "d10-s-title",
+            "type": "heading",
+            "level": 1,
+            "title": "三分射-嬴律",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-core-h",
+            "type": "heading",
+            "level": 2,
+            "title": "核心原理",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-core",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "公孙离在三分英雄觉醒形成的攻速加成下持续普攻输出，低压运营按棋手生命给全队永久成长。曹操触发三分登场、蔡文姬为低等级三分补级，孙尚香供应免费刷新；猪八戒把低阶合成转成同阶成长，公孙离通过夺取逐步归集可让出的永久等级。后期有吕布与合适转级牌时，再把积累转为吕布近身输出；嬴律的战略选择支持保血和找牌，血量下降也会降低低压收益。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-select-h",
+            "type": "heading",
+            "level": 2,
+            "title": "定阵条件",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-adopt",
+            "type": "entry",
+            "key": "采用条件",
+            "show_key": true,
+            "value": "能选低压运营，三分可用，且曹操、蔡文姬、孙尚香能组成前期过渡时考虑；补公孙离、赵云和猪八戒后，以保血和重复低阶牌延续成长。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-avoid",
+            "type": "entry",
+            "key": "放弃或转向",
+            "show_key": true,
+            "value": "血量下降会减少低压运营每轮提供的等级，成长不能代替当轮战力；连胜已断、当前阵容挡不住时先补质量，不为等待随机品阶或后期转级持续空耗。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-faction",
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "三分；公孙离和猪八戒为无阵营。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-heroes-h",
+            "type": "heading",
+            "level": 2,
+            "title": "英雄",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1991",
+            "type": "entry",
+            "key": "公孙离",
+            "show_key": true,
+            "value": "中期主力，夺取邻居永久等级并按已觉醒英雄数取得开团攻速。觉醒需求：继续补觉醒，提高每名已醒英雄提供的攻速；等级投入：逐次归集允许让出的永久等级，每次夺取最多10级；购买策略：来牌后补首张与重复，匹配战争头牌品阶时再比较打出，不为等品阶放弃当前战力，拍卖出价上限未确认；上阵时机：六人过渡成型时加入，打出前周围1格只留允许供级的目标；出售时机：决定转吕布且已备妥接收者和转级牌后再移除，具体无损全牌序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1281",
+            "type": "entry",
+            "key": "曹操",
+            "show_key": true,
+            "value": "三分登场触发者，整备随机触发三分英雄登场效果。觉醒需求：配合三分全体觉醒与公孙离攻速继续补醒，觉醒整备随机触发2次；等级投入：接受全队成长，不单独争公孙离归集资源；购买策略：前期首张并继续补有效重复，拍卖排序未确认，拍卖出价上限未确认；上阵时机：与蔡文姬、孙尚香组过渡，后续保留于六人；出售时机：转吕布时是否作为最终换帅载体取决于实际接收等级，固定出售顺序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1841",
+            "type": "entry",
+            "key": "蔡文姬",
+            "show_key": true,
+            "value": "三分成长成员，使用三分英雄牌时为其他等级最低的3名三分英雄加永久等级。觉醒需求：继续补醒，单次成长由1提高到2；等级投入：接受低压与队伍成长，专养未确认；购买策略：前期首张和重复，低阶牌仍可供成长，拍卖出价上限未确认；上阵时机：开局与曹操、孙尚香同场，六人阶段继续保留；出售时机：转吕布前的固定退出顺序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1111",
+            "type": "entry",
+            "key": "孙尚香",
+            "show_key": true,
+            "value": "登场提供免费刷新，帮助低阶反复找牌与觉醒。觉醒需求：继续补醒，登场免费刷新从1次提高到2次；等级投入：接受低压成长，需要归集等级时可让公孙离合法夺取；购买策略：开局首张并继续补重复取得登场收益，拍卖出价上限未确认；上阵时机：前期过渡及六人均保留，登场前留意商店阶段资源；出售时机：转吕布前可否保作换帅载体按实际等级判断，固定出售顺序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1071",
+            "type": "entry",
+            "key": "赵云",
+            "show_key": true,
+            "value": "登场给自身和随机其他2名永久等级，补三分成长。觉醒需求：六人继续补醒，登场等级从1提高到2；等级投入：接受队伍成长，专养和停级点未确认；购买策略：六人成型时补首张及有效重复，拍卖出价上限未确认；上阵时机：用赵云接替临时打工位，与曹操、蔡文姬、孙尚香同场；出售时机：后期转级时固定出售顺序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-5111",
+            "type": "entry",
+            "key": "猪八戒",
+            "show_key": true,
+            "value": "低阶合成成长成员，供公孙离逐次夺取可让出的永久等级。觉醒需求：继续补醒，把同阶合成成长从1提高到2；等级投入：接受低压及3阶以下合成成长，供级前保留当轮承伤所需；购买策略：六人成型补首张和重复，在场时兑现低阶合成，拍卖出价上限未确认；上阵时机：与公孙离及四名三分组成六人，合成低阶英雄前先在场；出售时机：转吕布前固定出售顺序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1231",
+            "type": "entry",
+            "key": "吕布",
+            "show_key": true,
+            "value": "后期接替输出核心，利用已积累等级提高斩击与近身输出。觉醒需求：此来源未确认固定觉醒优先级；等级投入：通过实际转级归集成长，100级技能全场范围不等于停养点；购买策略：准备后期接替时找首张，固定材料数量未确认，拍卖出价上限未确认；上阵时机：取得吕布并准备好三分换帅载体后部署，最近三分目标须核对；出售时机：接替主力后保留，后续替换未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-hero-1971",
+            "type": "entry",
+            "key": "弈星",
+            "show_key": true,
+            "value": "前期随棋手升级供经验的过渡成员。觉醒需求：未确认专追要求；等级投入：不专养，利用升级经验；购买策略：开局顺路首张，额外投入未确认，拍卖出价上限未确认；上阵时机：棋手升级前在场；出售时机：三分成员齐备且需要空位时退出，具体转级方法未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-phase-h",
+            "type": "heading",
+            "level": 2,
+            "title": "阵容组成与运营节奏",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-early-h",
+            "type": "heading",
+            "level": 3,
+            "title": "前期英雄组成与运营",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-early-buy",
+            "type": "entry",
+            "key": "英雄购买清单",
+            "show_key": true,
+            "value": "曹操、蔡文姬、孙尚香先组过渡，弈星顺路供升级经验。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-early",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "先比较低压运营并保住生命，让每15棋手生命转成每轮全体英雄+1永久等级。至高决策先看候选再决定，能继续连胜时比较乘胜追击；不把特邀对局的初始生命和每轮等级增长固定套用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-middle-h",
+            "type": "heading",
+            "level": 3,
+            "title": "中期英雄组成与运营",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-middle-buy",
+            "type": "entry",
+            "key": "英雄购买清单",
+            "show_key": true,
+            "value": "补齐曹操、蔡文姬、赵云、孙尚香、公孙离、猪八戒六人并继续有效重复。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-middle",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "用孙尚香免费刷新补低阶重复，猪八戒在场再合成，曹操整备和蔡文姬打三分牌继续补成长。战争头牌的匹配品阶每回合随机，能等时留牌到匹配品阶再打；若等待已妨碍当轮质量，则先补场面。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-late-h",
+            "type": "heading",
+            "level": 3,
+            "title": "后期英雄组成与运营",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-late-buy",
+            "type": "entry",
+            "key": "英雄购买清单",
+            "show_key": true,
+            "value": "能稳场后升本寻找吕布与合适转级牌；升本前比较还需补的低阶重复。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-late",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "公孙离先逐次归集可让出的永久等级，备齐接收者与牌后再决定转吕布。传承分给其他最低等级3名、遗志随机转给另一英雄，先核对实际接收池；最后用换帅让指定三分与最近三分吕布交换等级。没有确认完整无损牌序时，不把示范中的两个传承和一个遗志当成通用材料配方。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-improve-h",
+            "type": "heading",
+            "level": 2,
+            "title": "后期提升思路",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-improve",
+            "type": "entry",
+            "key": "后期提升思路",
+            "show_key": true,
+            "value": "在还能靠公孙离维持战力时继续三分重复与低压成长；准备转吕布后，先比较尚需的低阶重复再升本，确认遗志、传承的随机接收池与换帅最近目标后才拆原阵容。具体接替回合与转后完整成员尚未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-eq-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关键装备",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-eq-empty",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-skill-h",
+            "type": "heading",
+            "level": 2,
+            "title": "棋手技能选择",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-94353",
+            "type": "entry",
+            "key": "低压运营",
+            "show_key": true,
+            "value": "回合开始时，每有15棋手生命值则场上所有英雄等级+1。 保住棋手生命才能维持较高全队成长，血量下降后重算每轮收益。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-94322",
+            "type": "entry",
+            "key": "股权激励",
+            "show_key": true,
+            "value": "回合开始时，排名最高的玩家获得1件特殊装备；第2高的玩家获得1件普通装备。 按回合开始排名结算装备，不能把特殊装备预记给发布者。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-talent-h",
+            "type": "heading",
+            "level": 2,
+            "title": "推荐天赋",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-681024",
+            "type": "entry",
+            "key": "战争头牌",
+            "show_key": true,
+            "value": "每回合获得1个品阶数字，打出相同品阶的英雄牌时，额外+4等级。 低阶重复可等待匹配品阶再打出，但不能等到当轮战力已不足。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-681022",
+            "type": "entry",
+            "key": "节能商店",
+            "show_key": true,
+            "value": "每次手动刷新商店后，总有1张商店卡牌所需能量-1。 重复找牌阶段用每次手动刷新的一张减价节省买牌资源。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-effect-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关键效果牌",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-7041",
+            "type": "entry",
+            "key": "遗志",
+            "show_key": true,
+            "value": "指定场上1名英雄将其移除，并转移其等级（临时等级除外）给1名随机英雄。 准备移除公孙离归集等级时，先清楚场上实际随机接收者；多人在场时不保证交给预想的三分英雄。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-7083",
+            "type": "entry",
+            "key": "传承",
+            "show_key": true,
+            "value": "指定场上1名10级以上的英雄，将其等级随机分配给其他英雄中等级最低的3名（不会分配给同一英雄）。 指定10级以上英雄后，先检查其他最低等级3名，不能把等级直接定向交给吕布。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-card-7505",
+            "type": "entry",
+            "key": "换帅",
+            "show_key": true,
+            "value": "指定1名【三分】英雄与其最近的【三分】英雄交换等级。 吕布属于三分，最后由已接到等级的三分英雄与最近的吕布交换；使用前排除更近的其他三分目标。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-op-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关键操作",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-op",
+            "type": "entry",
+            "key": "先归集再核对转级接收者",
+            "show_key": true,
+            "value": "公孙离重复打出前，在周围1格只留允许供级者，每次最多夺取10永久等级，不能视为一次吸空猪八戒。转吕布前，遗志只会随机给场上另一名英雄，传承只会给其他最低等级3名；先检查接收池和剩余战力，再移除或分配等级。换帅最终指定已接到等级的三分英雄，使最近的三分吕布成为交换对象；完整无损出售牌序尚未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-pos-h",
+            "type": "heading",
+            "level": 2,
+            "title": "站位技巧",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-pos",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "打出公孙离时先控制周围1格的夺取候选，保留当前需要的等级；使用换帅时重新调整最近三分英雄，使其指向吕布。战斗站位的固定格子尚未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-h",
+            "type": "heading",
+            "level": 2,
+            "title": "拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-h1",
+            "type": "heading",
+            "level": 3,
+            "title": "第一轮拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-1",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-h2",
+            "type": "heading",
+            "level": 3,
+            "title": "第二轮拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-2",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-h3",
+            "type": "heading",
+            "level": 3,
+            "title": "第三轮拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d10-s-auction-3",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {
+          "players": [
+            "player:43"
+          ],
+          "required_factions": [
+            "faction:sanfen"
+          ],
+          "core_heroes": [
+            "card:1991"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1281",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1281"
+                }
+              },
+              {
+                "hero": "card:1841",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1841"
+                }
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1111"
+                }
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1281",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1281"
+                }
+              },
+              {
+                "hero": "card:1841",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1841"
+                }
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1111"
+                }
+              },
+              {
+                "hero": "card:1071",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1071"
+                }
+              },
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1991"
+                }
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-5111"
+                }
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1281",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1281"
+                }
+              },
+              {
+                "hero": "card:1841",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1841"
+                }
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1111"
+                }
+              },
+              {
+                "hero": "card:1071",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1071"
+                }
+              },
+              {
+                "hero": "card:1991",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-1991"
+                }
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "role": {
+                  "$text": "d10-s-hero-5111"
+                }
+              }
+            ]
+          },
+          "ban_conditions": [],
+          "matchups": [],
+          "selection": {
+            "adopt": {
+              "$text": "d10-s-adopt"
+            },
+            "avoid": {
+              "$text": "d10-s-avoid"
+            }
+          },
+          "late_variants": [
+            {
+              "id": "d10-s-lvbu",
+              "name": "吕布接替",
+              "condition": {
+                "$text": "d10-s-late"
+              },
+              "members": [
+                {
+                  "hero": "card:1231",
+                  "necessity": "required",
+                  "role": {
+                    "$text": "d10-s-hero-1231"
+                  }
+                }
+              ],
+              "core_heroes": [
+                "card:1231"
+              ],
+              "required_factions": [
+                "faction:sanfen"
+              ],
+              "ban_conditions": [],
+              "ban_combinations": [],
+              "claim_refs": [
+                "d10-s-late-d10-claim"
+              ]
+            }
+          ]
+        }
+      },
+      "claim_annotations": [
+        {
+          "id": "d10-s-core-d10-claim",
+          "text_ref": "d10-s-core",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 231.62,
+              "end": 260.28
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 33,
+              "paragraph_end": 33
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-adopt-d10-claim",
+          "text_ref": "d10-s-adopt",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-avoid-d10-claim",
+          "text_ref": "d10-s-avoid",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 373.74,
+              "end": 403.78
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1296,
+              "end": 1329
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-faction-d10-claim",
+          "text_ref": "d10-s-faction",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1991-d10-claim",
+          "text_ref": "d10-s-hero-1991",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 535.19,
+              "end": 627.56
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 776.11,
+              "end": 802.23
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1281-d10-claim",
+          "text_ref": "d10-s-hero-1281",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 55.97,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1841-d10-claim",
+          "text_ref": "d10-s-hero-1841",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 55.97,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1111-d10-claim",
+          "text_ref": "d10-s-hero-1111",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1071-d10-claim",
+          "text_ref": "d10-s-hero-1071",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-5111-d10-claim",
+          "text_ref": "d10-s-hero-5111",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1231-d10-claim",
+          "text_ref": "d10-s-hero-1231",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1422,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 33,
+              "paragraph_end": 33
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-hero-1971-d10-claim",
+          "text_ref": "d10-s-hero-1971",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 55.97,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 114,
+              "paragraph_end": 114
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-early-buy-d10-claim",
+          "text_ref": "d10-s-early-buy",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 114,
+              "paragraph_end": 114
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 173.02,
+              "end": 206.9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 388,
+              "paragraph_end": 388
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 385,
+              "paragraph_end": 385
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-early-d10-claim",
+          "text_ref": "d10-s-early",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 114,
+              "paragraph_end": 114
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 173.02,
+              "end": 206.9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 388,
+              "paragraph_end": 388
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 385,
+              "paragraph_end": 385
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-middle-buy-d10-claim",
+          "text_ref": "d10-s-middle-buy",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1060.81,
+              "end": 1088.6
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 900,
+              "paragraph_end": 900
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1296,
+              "end": 1329
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-middle-d10-claim",
+          "text_ref": "d10-s-middle",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1060.81,
+              "end": 1088.6
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 900,
+              "paragraph_end": 900
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1296,
+              "end": 1329
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-late-buy-d10-claim",
+          "text_ref": "d10-s-late-buy",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1116.06,
+              "end": 1148.59
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1203.29,
+              "end": 1235.67
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1393.37,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-late-d10-claim",
+          "text_ref": "d10-s-late",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1116.06,
+              "end": 1148.59
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1203.29,
+              "end": 1235.67
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1393.37,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-improve-d10-claim",
+          "text_ref": "d10-s-improve",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1116.06,
+              "end": 1148.59
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1393.37,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-94353-d10-claim",
+          "text_ref": "d10-s-card-94353",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 55.64
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-94322-d10-claim",
+          "text_ref": "d10-s-card-94322",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1032.2,
+              "end": 1060.35
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 399,
+              "paragraph_end": 399
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-681024-d10-claim",
+          "text_ref": "d10-s-card-681024",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 117.25,
+              "end": 147.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 900,
+              "paragraph_end": 900
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-681022-d10-claim",
+          "text_ref": "d10-s-card-681022",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 655.63,
+              "end": 682.97
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 898,
+              "paragraph_end": 898
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-7041-d10-claim",
+          "text_ref": "d10-s-card-7041",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 859.9,
+              "end": 885.78
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-7083-d10-claim",
+          "text_ref": "d10-s-card-7083",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1393.37,
+              "end": 1421.56
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-card-7505-d10-claim",
+          "text_ref": "d10-s-card-7505",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-op-d10-claim",
+          "text_ref": "d10-s-op",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 776.11,
+              "end": 802.23
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1393.37,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        },
+        {
+          "id": "d10-s-pos-d10-claim",
+          "text_ref": "d10-s-pos",
+          "section": "教学",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 776.11,
+              "end": 802.23
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "origin": "batch77_stage10_d"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "d10-s-core-d10-claim",
+      "text_ref": "d10-s-core",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 27.96,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 231.62,
+          "end": 260.28
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 33,
+          "paragraph_end": 33
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-adopt-d10-claim",
+      "text_ref": "d10-s-adopt",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 27.96,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 601.66
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "能选低压运营，三分可用，且曹操、蔡文姬、孙尚香能组成前期过渡时考虑；补公孙离、赵云和猪八戒后，以保血和重复低阶牌延续成长。",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-avoid-d10-claim",
+      "text_ref": "d10-s-avoid",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 373.74,
+          "end": 403.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1296,
+          "end": 1329
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-faction-d10-claim",
+      "text_ref": "d10-s-faction",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 601.66
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-hero-1991-d10-claim",
+      "text_ref": "d10-s-hero-1991",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 535.19,
+          "end": 627.56
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 776.11,
+          "end": 802.23
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "中期主力，夺取邻居永久等级并按已觉醒英雄数取得开团攻速。觉醒需求：继续补觉醒，提高每名已醒英雄提供的攻速；等级投入：逐次归集允许让出的永久等级，每次夺取最多10级；购买策略：来牌后补首张与重复，匹配战争头牌品阶时再比较打出，不为等品阶放弃当前战力，拍卖出价上限未确认；上阵时机：六人过渡成型时加入，打出前周围1格只留允许供级的目标；出售时机：决定转吕布且已备妥接收者和转级牌后再移除，具体无损全牌序未确认；",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 535.19,
+              "end": 627.56
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 118,
+              "paragraph_end": 118
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 776.11,
+              "end": 802.23
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-hero-1281-d10-claim",
+      "text_ref": "d10-s-hero-1281",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 55.97,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "三分登场触发者，整备随机触发三分英雄登场效果。觉醒需求：配合三分全体觉醒与公孙离攻速继续补醒，觉醒整备随机触发2次；等级投入：接受全队成长，不单独争公孙离归集资源；购买策略：前期首张并继续补有效重复，拍卖排序未确认，拍卖出价上限未确认；上阵时机：与蔡文姬、孙尚香组过渡，后续保留于六人；出售时机：转吕布时是否作为最终换帅载体取决于实际接收等级，固定出售顺序未确认；",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 55.97,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-hero-1841-d10-claim",
+      "text_ref": "d10-s-hero-1841",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 55.97,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "三分成长成员，使用三分英雄牌时为其他等级最低的3名三分英雄加永久等级。觉醒需求：继续补醒，单次成长由1提高到2；等级投入：接受低压与队伍成长，专养未确认；购买策略：前期首张和重复，低阶牌仍可供成长，拍卖出价上限未确认；上阵时机：开局与曹操、孙尚香同场，六人阶段继续保留；出售时机：转吕布前的固定退出顺序未确认；",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 55.97,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-hero-1111-d10-claim",
+      "text_ref": "d10-s-hero-1111",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 27.96,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-hero-1071-d10-claim",
+      "text_ref": "d10-s-hero-1071",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 601.66
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "登场给自身和随机其他2名永久等级，补三分成长。觉醒需求：六人继续补醒，登场等级从1提高到2；等级投入：接受队伍成长，专养和停级点未确认；购买策略：六人成型时补首张及有效重复，拍卖出价上限未确认；上阵时机：用赵云接替临时打工位，与曹操、蔡文姬、孙尚香同场；出售时机：后期转级时固定出售顺序未确认；",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-hero-5111-d10-claim",
+      "text_ref": "d10-s-hero-5111",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 601.66
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "低阶合成成长成员，供公孙离逐次夺取可让出的永久等级。觉醒需求：继续补醒，把同阶合成成长从1提高到2；等级投入：接受低压及3阶以下合成成长，供级前保留当轮承伤所需；购买策略：六人成型补首张和重复，在场时兑现低阶合成，拍卖出价上限未确认；上阵时机：与公孙离及四名三分组成六人，合成低阶英雄前先在场；出售时机：转吕布前固定出售顺序未确认；",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 601.66
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 886.01,
+              "end": 917.75
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-hero-1231-d10-claim",
+      "text_ref": "d10-s-hero-1231",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1422,
+          "end": 1511.76
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 33,
+          "paragraph_end": 33
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "后期接替输出核心，利用已积累等级提高斩击与近身输出。觉醒需求：此来源未确认固定觉醒优先级；等级投入：通过实际转级归集成长，100级技能全场范围不等于停养点；购买策略：准备后期接替时找首张，固定材料数量未确认，拍卖出价上限未确认；上阵时机：取得吕布并准备好三分换帅载体后部署，最近三分目标须核对；出售时机：接替主力后保留，后续替换未确认；",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1422,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 33,
+              "paragraph_end": 33
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-hero-1971-d10-claim",
+      "text_ref": "d10-s-hero-1971",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 55.97,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-early-buy-d10-claim",
+      "text_ref": "d10-s-early-buy",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 27.96,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 173.02,
+          "end": 206.9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 388,
+          "paragraph_end": 388
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 385,
+          "paragraph_end": 385
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-early-d10-claim",
+      "text_ref": "d10-s-early",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 27.96,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 173.02,
+          "end": 206.9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 388,
+          "paragraph_end": 388
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 385,
+          "paragraph_end": 385
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "先比较低压运营并保住生命，让每15棋手生命转成每轮全体英雄+1永久等级。至高决策先看候选再决定，能继续连胜时比较乘胜追击；不把特邀对局的初始生命和每轮等级增长固定套用。",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 27.96,
+              "end": 86.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 406,
+              "paragraph_end": 406
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 114,
+              "paragraph_end": 114
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 173.02,
+              "end": 206.9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 388,
+              "paragraph_end": 388
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 385,
+              "paragraph_end": 385
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-middle-buy-d10-claim",
+      "text_ref": "d10-s-middle-buy",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1060.81,
+          "end": 1088.6
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 900,
+          "paragraph_end": 900
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1296,
+          "end": 1329
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-middle-d10-claim",
+      "text_ref": "d10-s-middle",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1060.81,
+          "end": 1088.6
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 900,
+          "paragraph_end": 900
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1296,
+          "end": 1329
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "用孙尚香免费刷新补低阶重复，猪八戒在场再合成，曹操整备和蔡文姬打三分牌继续补成长。战争头牌的匹配品阶每回合随机，能等时留牌到匹配品阶再打；若等待已妨碍当轮质量，则先补场面。",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 567.85,
+              "end": 627.56
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 39,
+              "paragraph_end": 39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 9,
+              "paragraph_end": 9
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 140,
+              "paragraph_end": 140
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1060.81,
+              "end": 1088.6
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 900,
+              "paragraph_end": 900
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1296,
+              "end": 1329
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-late-buy-d10-claim",
+      "text_ref": "d10-s-late-buy",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1116.06,
+          "end": 1148.59
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1203.29,
+          "end": 1235.67
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1393.37,
+          "end": 1511.76
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-late-d10-claim",
+      "text_ref": "d10-s-late",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1116.06,
+          "end": 1148.59
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1203.29,
+          "end": 1235.67
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1393.37,
+          "end": 1511.76
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d",
+      "history": [
+        {
+          "at": "2026-10-25T02:51:59.357772+00:00",
+          "text": "公孙离先逐次归集可让出的永久等级，备齐接收者与牌后再决定转吕布。传承分给其他最低等级3名、遗志随机转给另一英雄，先核对实际接收池；最后用换帅让指定三分与最近三分吕布交换等级。没有确认完整无损牌序时，不把示范中的两个传承和一个遗志当成通用材料配方。",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1116.06,
+              "end": 1148.59
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1203.29,
+              "end": 1235.67
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1393.37,
+              "end": 1511.76
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "video",
+              "source": "BV1wdaf6QEVz:p1",
+              "start": 1539.18,
+              "end": 1560.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 228,
+              "paragraph_end": 228
+            }
+          ],
+          "reason": "本批新来源有据教学补全；旧文和旧证据保留"
+        }
+      ]
+    },
+    {
+      "id": "d10-s-improve-d10-claim",
+      "text_ref": "d10-s-improve",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1116.06,
+          "end": 1148.59
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1393.37,
+          "end": 1511.76
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-94353-d10-claim",
+      "text_ref": "d10-s-card-94353",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 27.96,
+          "end": 55.64
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-94322-d10-claim",
+      "text_ref": "d10-s-card-94322",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1032.2,
+          "end": 1060.35
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 399,
+          "paragraph_end": 399
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-681024-d10-claim",
+      "text_ref": "d10-s-card-681024",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 117.25,
+          "end": 147.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 900,
+          "paragraph_end": 900
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-681022-d10-claim",
+      "text_ref": "d10-s-card-681022",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 655.63,
+          "end": 682.97
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 898,
+          "paragraph_end": 898
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-7041-d10-claim",
+      "text_ref": "d10-s-card-7041",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 859.9,
+          "end": 885.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-7083-d10-claim",
+      "text_ref": "d10-s-card-7083",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1393.37,
+          "end": 1421.56
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-card-7505-d10-claim",
+      "text_ref": "d10-s-card-7505",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-op-d10-claim",
+      "text_ref": "d10-s-op",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 776.11,
+          "end": 802.23
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1393.37,
+          "end": 1511.76
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "d10-s-pos-d10-claim",
+      "text_ref": "d10-s-pos",
+      "section": "教学",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 776.11,
+          "end": 802.23
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_stage10_d"
+    },
+    {
+      "id": "ying4-d10-s-adopt-claim",
+      "text_ref": "d10-s-adopt",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 0.14,
+          "end": 29.34
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 29.62,
+          "end": 58.98
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 386,
+          "paragraph_end": 386
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-early-claim",
+      "text_ref": "d10-s-early",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 29.62,
+          "end": 58.98
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 386,
+          "paragraph_end": 386
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 388,
+          "paragraph_end": 388
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-middle-claim",
+      "text_ref": "d10-s-middle",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 118.79,
+          "end": 147.75
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 117.25,
+          "end": 147.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 900,
+          "paragraph_end": 900
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-late-claim",
+      "text_ref": "d10-s-late",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 177.06,
+          "end": 206.46
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 206.76,
+          "end": 224.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 403,
+          "paragraph_end": 403
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-auction-1-claim",
+      "text_ref": "d10-s-auction-1",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-auction-2-claim",
+      "text_ref": "d10-s-auction-2",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-auction-3-claim",
+      "text_ref": "d10-s-auction-3",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 177.06,
+          "end": 206.46
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 223,
+          "paragraph_end": 223
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-hero-1991-claim",
+      "text_ref": "d10-s-hero-1991",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 535.19,
+          "end": 627.56
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 118,
+          "paragraph_end": 118
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 776.11,
+          "end": 802.23
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-hero-5111-claim",
+      "text_ref": "d10-s-hero-5111",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 601.66
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 140,
+          "paragraph_end": 140
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-hero-1281-claim",
+      "text_ref": "d10-s-hero-1281",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 55.97,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 39,
+          "paragraph_end": 39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-hero-1841-claim",
+      "text_ref": "d10-s-hero-1841",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 55.97,
+          "end": 86.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-hero-1071-claim",
+      "text_ref": "d10-s-hero-1071",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 601.66
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 9,
+          "paragraph_end": 9
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 567.85,
+          "end": 627.56
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 886.01,
+          "end": 917.75
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-d10-s-hero-1231-claim",
+      "text_ref": "d10-s-hero-1231",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 59.34,
+          "end": 88.86
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 89.14,
+          "end": 118.48
+        },
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 148.02,
+          "end": 176.78
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1422,
+          "end": 1511.76
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 33,
+          "paragraph_end": 33
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 406,
+          "paragraph_end": 406
+        },
+        {
+          "type": "video",
+          "source": "BV1wdaf6QEVz:p1",
+          "start": 1539.18,
+          "end": 1560.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 228,
+          "paragraph_end": 228
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-s-hero-1861-claim",
+      "text_ref": "ying4-s-hero-1861",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 206.76,
+          "end": 224.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 97,
+          "paragraph_end": 97
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-s-hero-5051-claim",
+      "text_ref": "ying4-s-hero-5051",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 206.76,
+          "end": 224.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 132,
+          "paragraph_end": 132
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 133,
+          "paragraph_end": 133
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-s-hero-1751-claim",
+      "text_ref": "ying4-s-hero-1751",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 206.76,
+          "end": 224.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 85,
+          "paragraph_end": 85
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-s-hero-1141-claim",
+      "text_ref": "ying4-s-hero-1141",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 206.76,
+          "end": 224.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "origin": "batch77_ying4"
+    },
+    {
+      "id": "ying4-s-hero-5011-claim",
+      "text_ref": "ying4-s-hero-5011",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1kcpL6TEGh:p1",
+          "start": 206.76,
+          "end": 224.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 125,
+          "paragraph_end": 125
+        }
+      ],
+      "origin": "batch77_ying4"
+    }
+  ],
+  "body_sha256": "d9d7249bf975a92caa4b3f5dbf1ad624a0d13149df2a6526b411dc0dcbf3e24e",
+  "revision": "62d430bfc844f00dc3e1",
+  "retired_claim_annotations": []
+}

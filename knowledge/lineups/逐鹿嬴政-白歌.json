@@ -1,0 +1,609 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "b77-64c40118ef55819fb4",
+      "type": "heading",
+      "title": "逐鹿嬴政-白歌",
+      "level": 1,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-9cfe3e94d3325003ae",
+      "type": "heading",
+      "title": "核心原理",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-e1249e7b846a372afb",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "嬴政承担主要法术输出，打出战术牌会提高他的开团法术攻击力；芈月把效果牌使用转为装备最多的逐鹿英雄的等级。白歌通过合成取得复制技能，复制庄周、反复触发登场获得招募战术，继续寻找逐鹿英雄与庄周，把买牌、合成和战术牌连成持续成长链。相比只等自然来牌，这套打法利用白歌定向复制庄周集中增加牌量，成型后再用等级和保护装备兑现输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-59f3f8195c95798f13",
+      "type": "heading",
+      "title": "英雄",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-0358d8dde585978e26",
+      "type": "entry",
+      "key": "庄周",
+      "show_key": true,
+      "value": "登场取得招募战术，是白歌逐鹿的供牌与合成核心。觉醒需求：觉醒后提供高阶招募战术，可从逐鹿英雄候选中选择，更方便继续取得需要的庄周或组件；等级投入：接受自然成长，不把主要输出资源改投庄周；购买策略：循环仍需供牌时继续购买重复牌，灵感爆发前保留可斩击的庄周；拍卖出价上限未确认；上阵时机：需要招募战术时在打出位登场，先留足处理新牌的位置与时间；出售时机：本次登场收益用完且需要腾打出位时可出售，继续复制前应另有庄周目标；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-cedfe94654b063fcca",
+      "type": "entry",
+      "key": "嬴政",
+      "show_key": true,
+      "value": "主要法术输出，战术牌提高开团法术攻击力，芈月配合效果牌为他提高等级。觉醒需求：未确认；等级投入：作为主要输出持续成长，未确认统一停级点；购买策略：先取首张启动输出，重复投入边界与拍卖出价上限未确认；上阵时机：开始把效果牌转为等级前上场，并检查其装备是否使他成为芈月实际受益者；出售时机：主力保留，未确认固定换出方案；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-fae0e0aed2d5227a92",
+      "type": "entry",
+      "key": "芈月",
+      "show_key": true,
+      "value": "效果牌成长组件，提供逐鹿主力等级。觉醒需求：教学优先觉醒芈月；等级投入：未确认；购买策略：首张后优先补觉醒；本次拍卖示范先取杨玉环帮助补醒，未确认统一出价上限；上阵时机：连续使用效果牌前在场；出售时机：仍需效果牌成长时保留，固定替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-d092f9755f0f932a1d",
+      "type": "entry",
+      "key": "老夫子",
+      "show_key": true,
+      "value": "供牌过渡英雄，每回合首次合成取得招募战术。觉醒需求：普通招募，醒后高阶；专追优先级未确认；等级投入：自然成长，不争嬴政定向等级；购买策略：本回合有合成可兑现供牌时取首张与有效重复，拍卖出价上限未确认；上阵时机：先上场再完成本回合首次合成领取战术，不能合成后再上场补领；出售时机：已领取本次供牌、需要打出位或鲁班七号接替时比较，不预设跨实例重置；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-cda55120427b3a2253",
+      "type": "entry",
+      "key": "白起",
+      "show_key": true,
+      "value": "体系护盾组件，保护逐鹿主力输出。觉醒需求：未确认；等级投入：未确认；购买策略：补首张，重复优先级与拍卖出价上限未确认；上阵时机：未确认；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-32a908a50dfcf345f9",
+      "type": "entry",
+      "key": "鲁班七号",
+      "show_key": true,
+      "value": "后期逐鹿供牌组件，每合成3次随机获得1张战术牌并配合效果牌成长。觉醒需求：普通形态每合成3次随机获得1张战术牌，觉醒后改为随机获得高阶战术牌；专追顺序未确认；等级投入：自然成长，不争嬴政定向等级；购买策略：已有可保血主力且能处理额外牌量时比较首张，拍卖出价上限未确认；上阵时机：需要供牌时可接替老夫子，嬴政百级以上且保护足够时也可比较替瑶；仍需要瑶保护或操作不足时不强行换；出售时机：具体固定退出未确认，按供牌与当前战斗需求比较；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-164f4ecd8ea7bdd81d",
+      "type": "entry",
+      "key": "鲁班大师",
+      "show_key": true,
+      "value": "决赛补充作战单位，使用原刷牌位置。觉醒需求：未确认；等级投入：未确认；购买策略：决赛阶段比较首张，拍卖出价上限未确认；上阵时机：决赛不再需要原刷牌位时加入；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-f4426f6c135c72fc3d",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "给嬴政增加复生容错。觉醒需求：未确认；等级投入：未确认；购买策略：需要复生容错时补首张，拍卖出价上限未确认；上阵时机：决赛需要保护主C时，按实际价值换下一个挂件；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-w-yao",
+      "type": "entry",
+      "key": "瑶",
+      "show_key": true,
+      "value": "保护嬴政的可选开团工具。觉醒需求：本分支专追顺序未确认；等级投入：未确认固定停级，不能因百级换位条件强推瑶专养；购买策略：主力需要保护时比较首张，拍卖出价上限未确认；上阵时机：嬴政需要保护且有位置时加入，核对实际附身对象；出售时机：嬴政超过100级且当前保护足够、能处理额外牌量时可换鲁班七号；仍需保护或操作不足则留瑶；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-w-xishi",
+      "type": "entry",
+      "key": "西施",
+      "show_key": true,
+      "value": "整备供推演战术，减少嬴政本回合法力上限并触发效果牌成长。觉醒需求：普通推演，醒后高阶；本分支追醒顺序未确认；等级投入：自然成长，不争嬴政定向等级；购买策略：首拍与其他逐鹿核心比较首张，拍卖出价上限未确认；上阵时机：需要整备供推演及缩蓝启动时加入；出售时机：仍依赖推演时保留，固定终局退出未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-1971",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "棋手升级时补经验，支持进入4级找逐鹿组件。觉醒需求：普通已有工具职责，本分支专追醒顺序未确认；等级投入：自然过渡成长，专养或停止等级未确认；购买策略：精简过渡按来牌取首张；重复和拍卖出价上限未确认；上阵时机：计划升级前在场；出售时机：嬴政与体系质量已能接替时比较，固定等级转移顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-1681",
+      "type": "entry",
+      "key": "牛魔",
+      "show_key": true,
+      "value": "能取胜时取得额外能量，给嬴政启动留资源。觉醒需求：普通已有工具职责，本分支专追醒顺序未确认；等级投入：自然过渡成长，专养或停止等级未确认；购买策略：需要保血、当前可以争胜时比较首张；重复和拍卖出价上限未确认；上阵时机：现有输出可配合争胜时上场；出售时机：嬴政与体系质量已能接替时比较，固定等级转移顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-1821",
+      "type": "entry",
+      "key": "干将莫邪",
+      "show_key": true,
+      "value": "前期施法输出，在嬴政到手前帮助保血。觉醒需求：普通已有工具职责，本分支专追醒顺序未确认；等级投入：自然过渡成长，专养或停止等级未确认；购买策略：缺当前输出时按来牌比较首张；重复和拍卖出价上限未确认；上阵时机：已有前排能够承伤时加入；出售时机：嬴政与体系质量已能接替时比较，固定等级转移顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-f0a5fe0ed5b79f72b9",
+      "type": "heading",
+      "title": "阵容组成与运营节奏",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-c9d0ddfac9cca43609",
+      "type": "heading",
+      "title": "前期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-05a4e1b4aff1a83a19",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "用弈星过渡并留资源升级；此教学前期投入精简，到棋手4级后集中找体系。刷牌启动前仍可能大量掉血，不把低血翻盘当作保证。 需要当轮保血时可用牛魔、干将过渡；已有芈月时先承接装备与战斗，嬴政未到不空等。3级不为无关牌连续付费刷新，保留4级找主力的资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-870d268e375d7e91da",
+      "type": "heading",
+      "title": "中期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-list-feebaf84878169f327",
+      "type": "entry",
+      "key": "嬴政（核心）",
+      "show_key": true,
+      "value": "先补首张输出。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-list-f4024a74e950237355",
+      "type": "entry",
+      "key": "芈月（核心）",
+      "show_key": true,
+      "value": "优先补首张和觉醒。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-list-27690dace617ee8b5a",
+      "type": "entry",
+      "key": "庄周（核心）",
+      "show_key": true,
+      "value": "需要复制供牌时继续取得同名牌。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-57e1ee72f874b9183e",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "棋手4级起找嬴政、芈月和庄周等逐鹿组件，优先补芈月觉醒，持续打牌提高主力质量；按当轮战力与血量决定继续找牌还是给6级留能量。 压力大时先在4级找到嬴政、补有效质量；芈月已能保血、对手战力弱且血量允许时，可继续推进5、6级取得更高阶资源。没有核心不能仅因当前名次较高就跳本。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-c5e10167174f497e60",
+      "type": "heading",
+      "title": "后期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-list-32d293f6c08a1ed433",
+      "type": "entry",
+      "key": "嬴政（核心）",
+      "show_key": true,
+      "value": "先补首张输出。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-list-62696671867217d024",
+      "type": "entry",
+      "key": "芈月（核心）",
+      "show_key": true,
+      "value": "优先补首张和觉醒。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-list-9d0862f28bdeccdf19",
+      "type": "entry",
+      "key": "庄周（核心）",
+      "show_key": true,
+      "value": "需要复制供牌时继续取得同名牌。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-6486ca0ae6c357bf12",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "6级取得奇才后先整理庄周复制材料，再用灵感爆发继续供牌与合成；接近决赛再比较鲁班大师、太乙真人，不提前清空仍需使用的刷牌位置。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-4aa37d446c8fd1e6f2",
+      "type": "heading",
+      "title": "后期提升思路",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-3b4d7880f8268d9394",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "继续通过庄周复制增加战术牌和效果牌，提升嬴政输出与等级；鲁班七号到手可替老夫子，决赛再比较鲁班大师与太乙真人。复制次数受实际合成、牌量和操作时间限制。 嬴政超过100级且暂可独立承伤时，可比较将瑶的保护位让给鲁班七号增加供牌；仍需瑶保护或操作时间不足时保留瑶，不把两者收益同时计算。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-79b68fc42f98dd2711",
+      "type": "heading",
+      "title": "棋手技能选择",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-40a69cccd741f1dcae",
+      "type": "entry",
+      "key": "奇才",
+      "show_key": true,
+      "value": "指定1名英雄，取得4张同名英雄牌。准备集中供牌时可先指定庄周，留足手牌和打出位置；不是直接把英雄本体变成觉醒，也不代替灵感爆发的手牌候选整理。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-inspiration",
+      "type": "entry",
+      "key": "灵感爆发",
+      "show_key": true,
+      "value": "随机斩击手牌中3张未觉醒英雄牌，每张变为2张转瞬复制牌。先处理无用非觉醒牌并保留需要的庄周，再使用；本回合需兑现转瞬牌，手牌或血量不允许等齐时先用已有材料。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-1bf2fa7ee9853724d6",
+      "type": "heading",
+      "title": "关键操作",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-5429c7f8b9041f41dd",
+      "type": "entry",
+      "key": "奇才与灵感爆发衔接",
+      "show_key": true,
+      "value": "准备集中复制庄周时，先处理手中无用的非觉醒英雄牌，留庄周作为灵感爆发目标；6级奇才先指定庄周取得复制牌，再使用灵感爆发，逐张打出转瞬牌继续取招募战术。能量、手牌或血量不允许等齐时，先兑现已有牌量，不为固定数量耽误当轮战力。 不要在准备复制前把最后一张庄周打掉或卖掉；奇才取得4张指定英雄牌，灵感爆发斩击手牌随机3张非觉醒牌，候选和所得牌数分别核对，不预定每轮必得10张或固定能量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-w-equip-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备"
+    },
+    {
+      "id": "a9-w-book",
+      "type": "entry",
+      "key": "贤者之书",
+      "show_key": true,
+      "value": "法力上限-10，施法后获得20%基础法术攻击力，最多6层。嬴政需要尽早启动并持续施法时比较；西施缩蓝另计，不能把没有放出的技能算成已叠法强。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-w-mingdao",
+      "type": "entry",
+      "key": "名刀·司命",
+      "show_key": true,
+      "value": "首次致命伤后进入无敌和不可选中1.5秒。对手可直接伤到后排、嬴政需要额外启动窗口时比较；配已有吸血在窗口内回复，不把1.5秒当整场保护。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-w-position-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位与复制准备"
+    },
+    {
+      "id": "a9-w-spread",
+      "type": "entry",
+      "key": "分散与保护",
+      "show_key": true,
+      "value": "面对香香炮击、狙击或安琪拉集中覆盖，按真实范围分散关键单位，避免主力与挂件同时承受集中伤害；面对能直接打后排的对手仍需名刀等保护，分散本身不等于免疫。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-w-auction",
+      "type": "entry",
+      "key": "拍卖资源选择",
+      "show_key": true,
+      "value": "当前没有必须争取的组件时，可优先比较能增加后续买牌资源的拍品；确认对手正需要扶摇直上升级、且自身预算允许时才比较阻止其取得。不能为卡对手耗尽自己的找牌与升级资源，统一轮次报价未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-h",
+      "type": "heading",
+      "title": "拍卖",
+      "level": 2,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-1-h",
+      "type": "heading",
+      "title": "第一轮拍卖",
+      "level": 3,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-2-h",
+      "type": "heading",
+      "title": "第二轮拍卖",
+      "level": 3,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-3-h",
+      "type": "heading",
+      "title": "第三轮拍卖",
+      "level": 3,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-ying-auction-3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:33"
+    ],
+    "core_heroes": [
+      "card:1101",
+      "card:1211",
+      "card:1131"
+    ],
+    "required_factions": [
+      "faction:zhulu"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "按当前来牌与保血/升级职责取舍。",
+          "role": {
+            "$text": "cov2-ying-1971"
+          },
+          "claim_refs": [
+            "cov2-cov2-ying-1971-claim"
+          ]
+        },
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "condition": "按当前来牌与保血/升级职责取舍。",
+          "role": {
+            "$text": "cov2-ying-1681"
+          },
+          "claim_refs": [
+            "cov2-cov2-ying-1681-claim"
+          ]
+        },
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "condition": "按当前来牌与保血/升级职责取舍。",
+          "role": {
+            "$text": "cov2-ying-1821"
+          },
+          "claim_refs": [
+            "cov2-cov2-ying-1821-claim"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1101",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-cedfe94654b063fcca"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-fae0e0aed2d5227a92"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1131",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-0358d8dde585978e26"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "optional",
+          "condition": {
+            "$text": "a9-w-yao"
+          }
+        },
+        {
+          "hero": "card:1121",
+          "necessity": "optional",
+          "condition": {
+            "$text": "b77-32a908a50dfcf345f9"
+          }
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "optional",
+          "condition": "需要整备供推演与缩蓝时",
+          "role": {
+            "$text": "a9-w-xishi"
+          },
+          "claim_refs": [
+            "a9-w-xishi-a9-claim"
+          ]
+        },
+        {
+          "hero": "card:1201",
+          "necessity": "optional",
+          "condition": "需要逐鹿保护与战术资源时",
+          "role": {
+            "$text": "b77-cda55120427b3a2253"
+          },
+          "claim_refs": [
+            "b77-cda55120427b3a2253-claim"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1101",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-cedfe94654b063fcca"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-fae0e0aed2d5227a92"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1131",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-0358d8dde585978e26"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "optional",
+          "condition": {
+            "$text": "a9-w-yao"
+          }
+        },
+        {
+          "hero": "card:1121",
+          "necessity": "optional",
+          "condition": {
+            "$text": "b77-32a908a50dfcf345f9"
+          }
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "optional",
+          "condition": "需要整备供推演与缩蓝时",
+          "role": {
+            "$text": "a9-w-xishi"
+          },
+          "claim_refs": [
+            "a9-w-xishi-a9-claim"
+          ]
+        },
+        {
+          "hero": "card:1201",
+          "necessity": "optional",
+          "condition": "需要逐鹿保护与战术资源时",
+          "role": {
+            "$text": "b77-cda55120427b3a2253"
+          },
+          "claim_refs": [
+            "b77-cda55120427b3a2253-claim"
+          ]
+        },
+        {
+          "hero": "card:5251",
+          "necessity": "optional",
+          "condition": "决赛不再需要原刷牌位置时",
+          "role": {
+            "$text": "b77-164f4ecd8ea7bdd81d"
+          },
+          "claim_refs": [
+            "b77-164f4ecd8ea7bdd81d-claim"
+          ]
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "决赛需要最近主力复生保护时",
+          "role": {
+            "$text": "b77-f4426f6c135c72fc3d"
+          },
+          "claim_refs": [
+            "b77-f4426f6c135c72fc3d-claim"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": []
+  }
+}

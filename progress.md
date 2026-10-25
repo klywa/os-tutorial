@@ -535,6 +535,12 @@ v4关键操作合并、前移及旧名定位实现完成，新增测试先失败
 
 打法目录：86项前端回归和构建通过，旧分类恢复、计数和棋手首篇的浏览器步骤已通过；搜索测试改用经核对只存在于阵容的正文片段，保留原全文匹配语义，继续双入口验收。
 
+77组第八批完成：14record/4新正式保存，读回errors=[]、非目标变化为空、无未完事务；wxq validate93notes无错误。统一payload eba9a8ae878c7897cfe8700b14951bd237a6aa284d36b9989630bcff3ce75831，备份before-stage8.zip。新增孙蒙犽/伞狄仁杰/班叔李信/安琪拉大河；冥王误控制、芈月分支required混用、狂铁追醒摘要及同claim缺证已修复独审。root完整读C9三源48段及43entry，修明世隐五字段归属、四海召出者主语后通过，待stage9。玉环mpe42段全读并实际核600/1205/1230/1360帧，姬小满身份确认；C正接续成稿。ASR继续，77全批未完成。
+
+77组用量恢复续接：复用A/D/C审核代理，未重复提交旧7批。既有两个large-v3进程仍运行。root实际读孙蒙犽EQn全41段、玉环姜子牙mpe全42段；原始与corrected字节一致，词候选不等于已确认纠错。EQn原初误以end→start重叠为倒序，已在独审/修复报告澄清为普通0.14秒重叠，mpe有真实start倒序；不修改原稿来掩盖，重复幻听窗口不引用。演武数值/效果分歧已实际查询官网8.js成功：5级后所得战术高阶，非所有效果牌；查询快照留official-root-sun。任务继续未完成。
+
+77组融合（2026-10-25）：第六批22份正式保存及读回通过，2新建；第七批6份正式保存及读回通过，1新建，库内89份，wxq validate无错误。第六批source-registry并发4新登记、1人工标签新增及时间戳逐项核查保留，第七批仅并发时间戳、事实一致。用户明确策略新旧按视频发布日期，伞守约采用9月18日直接升3＋枫之洪流，已记录且与第六批正文一致。第七批R1七英雄图增量、姜导三阵容已落地；阿离第七批和班叔/安琪拉第八批草稿因审核agent额度中止，未作为完成稿提交。全77组仍未完成，最新逐源状态及续接信息见raw/reports/batch77/delivery-checkpoint.json、source-status.json、group-checkpoint.json；转写存在不算完成。
+
 打法目录完成：全部/打法/其他为49/42/7，86前端测试与构建、8765/5173桌面1440与420px的分类/组首/筛选/旧偏好/选择刷新均通过。底层笔记和接口不变，报告 raw/reports/tactics-directory/交付报告.md，无Git提交。
 
 卡牌滚轮：已检查内外层滚动CSS，新增真实mouse.wheel回归，等待复现结果；尚未修改产品代码。
@@ -542,3 +548,63 @@ v4关键操作合并、前移及旧名定位实现完成，新增测试先失败
 卡牌滚轮复现：内层1252/1252无滚动范围但overscroll contain，父栏744/1329需要滚动，真实wheel失败。已让停靠卡片overflow visible/overscroll auto，外层负责滚动并contain边界。
 
 卡牌滚轮修复完成：内层停止截断滚动链，外层保留边界隔离。86前端测试与构建、8765/5173桌面1920及420px真实mouse.wheel上下与到底隔离均通过；结果 raw/reports/card-wheel/result.json，无Git提交。
+
+77组融合开始：用户批准计划；日期含北京时间2026-09-10，未注明棋手的逐鹿蒙犽归孙小宾。已编写本批清点脚本，恢复事务、备份、登记来源及缓存日期核查运行中；不改产品代码、不提交Git。
+
+
+77组：189来源登记完成，raw/backups/knowledge/batch77-before.zip保存全库正文及附件，baseline.json保存哈希。日期缓存51条；浏览器正常可用，新增核对55条日期。公开API412已停止重试；使用浏览器实际媒体地址下载孙小宾BV1SyJt6yEjS完整音视频，process-local运行中。requests缺包改stdlib；公开网页返回未填数据模板，不能作为全文。
+
+
+77组日期核查完成：180合格、9排除、0日期未知，浏览器可见日期留browser-dates.json及inventory.json。3名独立审核员按不重叠棋手审核现成全文并仅写各自raw候选，正式提交由root串行执行。孙小宾首源large-v3全文完成，已读全部14段；其余3重点音频完整下载，串行ASR运行。闹闹额外5音频下载中。发现嬴律刘邦来源BV1Avhk实际木兰，按同批木兰归属核查；朋友多多旧4张不回滚当前官方5张。
+
+
+77组：已合并31份schema6草稿337个差异条目，三方合并仅在raw；9/6/7/8/5份原候选保留，派独立audit_drafts复核。孙小宾露娜旧卖出建议与10月7日高压保留建议已async请求用户裁决；未据新稿自动覆盖。第三来源视频全长下载，实际看320/325/330/335/340/345秒，双觉醒总体优先级已厘清，细牌序继续核图。临时localhost表单将浏览器观察存入browser-observed.json；批量20源超时丢临时内存，已改6源及时落盘。禁止声称整批完成。
+
+77组继续：合并候选39records/605changed entries，正式knowledge尚未commit。用户裁决孙露娜高压保留/确认可重取才卖；庄无阵营孙悟空按输出与接替条件；瑶妹狂铁/单双核均按条件保留。条件冲突方法已写入技能，原文备份与skill-update.json在raw，quick_validate通过。独立审计发现官方机制缺直接document、semantics空字段、双换帅悬空引用，正在定点修。58项相关回归通过，wxq基线validate errors=[]。两份旧全文时间倒序另列integrity报告，不新增引用。Chrome连续超时，仍处理已下载音频。
+
+2026-10-25 第九批16份已commit/读回/validate通过，2新note，总95。payload88e38350558b9ff3d87b983d4a4baeff2e1e4a284907b37e011a27e6a71cc0f8。非目标差异空，无journal。第十批C姜导3稿root独审45entry/24段通过，C正构ccnq玉环增量；A妲己53段、D明/嬴律81段已读正构最新revision。状态统计修复all_recognized_text_read漏识别，旧25deposited复用不重复finish，暂不冒称全77完成。
+
+2026-10-25 第十批11份已commit并读回，2新，总97笔记；payload93d1ceb9a6779cb725b93ec8986f1bf27f2cd4f1b1372ba9186f0b0d03a48fc9。wxq validate实际exit0/errors[]；非目标变化空、无journal。A10/D10交叉审查与C姜导/玉环root审核通过。A11弈星木兰2新已D独审通过，C11四驱2稿root已全读56段及24条改动后通过，待下一事务；27阶段纯结构包装修复候选待最新revision。C域31来源已逐源语义判定，root结项操作运行中；不能把完整77组视为完成。
+
+2026-10-25 第十一批10份已commit并读回（2新，总99），payload0bd129276eb5cb30204819c1750fc2e25145c3772155437b445d6012e784294b。A弈星木兰/C马可四驱及27阶段包装经独审、wxq validate实际exit0/errors[]、non_target[]/无journal。C31来源finish与A39/D16已完成，均errors[]且formal hashes不变；workspace实际C新增31核为complete/reviewed/deposited（加旧25共56）。A/D新增仍待workspace读回。7缺伴档、4缺标题修复均有差异审计；zhah首次valid raw导出errors[]，真实7源start回退继续hold，未sort/clamp/drop。root新完整重读EQn41段补双hash绑定，策略当前正文核过，未冒称新听音。C开始最新revision构rdh/aAhf stage12增量；R9pw缺段root已浏览实际新mediaURL，D正补关键帧。
+
+2026-10-25 第十二批8份已commit/读回/validate实际exit0，0新，总99，payload e154743efe3b23d4ee0dd7f65be988412bf307a1c7a53d561ec7cb95093af3a4。non_target[]，无journal；A12日落司空真实路由、C12瑶诸葛/伞守约、D R9pw字幕补句均经独审。R9pw11帧、ieH10帧root实际view并canonical登记。ieH20秒拍序狄>程>盾>铠，95秒字幕转实战，A正在最新revision补小稿；D正构areX（算盘姬满韩信，非日落司空）。剩余closure C复核15源root逐源理由读过并执行，3旧complete但review范围不足交C诊断，只需新审核不重复finish；如梦官方6已解决，审计描述补正。source-status已不再把旧xaY complete当本批归档通过；其原state未改。两large-v3仍运行，不能停在检查点。
+2026-10-25 第十三批6份既有note统一commit、读回与validate实际exit0/errors[]，99笔记，payload420c5e361f3fa05da637a9109ba81d7d40b9b59a94da9c15af0fdafb1dd6ffc0。非目标变化空、无journal。ieH首拍拍序及areX姬满韩信分支/海月无阵营身份已保存；三旧complete vTe/UWe/Jzp仅追加review覆盖，原字节备份raw/backups/source-review-refresh/20261024T181355Z-1a556bd3，workspace三源已reviewed=true/deposited，不重复finish。D五源closure判4源可结项、iDh需追加29.92–131.86单区间；root已读全部理由接受，尚待执行四源finish。Stage14新JQpJ孙逐鹿嬴政/A、vLp弈星木兰/D、ZT昭君七五/C均已全文审读构稿/独审中，未commit。官网实际UTC18:20三个请求成功，doc-055721327f01f249aea1d0d7bedfdafdb3eb237ba6e7ac3af0ca82bf6ea415a1登记5卡；痛苦面具75%法攻、虚无法杖15穿透，不采口播法力或每剑叠减/全真伤。两large-v3原进程36382/25505继续，不能把全文准备当融合。最新用户状态答复曾134完成/46余，后3review已结，需下一workspace快照刷新准确数。
+2026-10-25 来源结项补充：stage13四源finish实际errors[]、knowledge_unchanged=true；iDh追加review单区间29.92–131.86、state/formal不变、未finish，areX经A全文独审+root读33条改动后规范导出48段并finish errors[]。最新workspace144 deposited含旧xaY（本批真实start回退hold），本批143 verified。ZT title仅按BVID/date/visible_title与已观察浏览器完全匹配填缺，旧metadata留zt-title-repair.json，最新SHA5785c54…。integrity-stage14只读扫描156份raw，8源真实start回退（新增JQpJ），input稳定，0 word异常，普通end交叠分开。实际相关6模块53回归初次因sandbox默认Temp权限报9error，单变量将tempfile.tempdir设为已核工作区raw test-temp后全部53 passed（regression-stage13-workspace-temp.log），未改产品/测试实现，初失败原log保留。CUDA device count0，现有2CPU large-v3/watchers不重启不增并发。
+
+2026-10-25 第十四批6份统一commit/读回/validate实际exit0/errors[]，2新，总101笔记，payload4fbac92bad57ac4355c65201a65021b5f242de462e63c4638a7d6b22c1d51bad。non_target[]/unexpected_new[]/journal false；JQpJ root独审56条、ZT D修后终审、vLp A独审通过。vLp/ZT两来源规范导出与fresh targeted preflight通过，root接受全文语义归档执行中，JQpJ倒序hold不finish。6xJR马可已A独审，C合并sxn nextbase，避免双32覆盖。
+
+第十四批来源结项vLp/ZT实际processed2/errors[]/knowledge_unchanged=true；workspace146 deposited含旧xaY，本批source-status145 verified/35remaining，7已融合待sourceclose（含新JQpJ真实start回退hold），24audio/2invalid/1ready/1draft/9excluded。47组来源检查闭合、30仍有待处理来源；非最终77组语义验收。
+
+2026-10-25 第十五批5份既有note统一commit/读回/validate实际exit0/errors[]，101总笔记；payload eb8756c45cd537d6ecd3ab299754b39119f27f802c0524f0ecad5258b4e4064c。non_target[]/unexpected_new[]/无journal。马可6xJR+ sxn独审52/50段与74/154纠词通过，3hero新增句按五字段归位修复后二次独审通过。14批孙嬴政可见身份/评价/缺项/导航、昭君已存在英雄投入同ID精炼+适配映射通过root独审。两来源canonical导出/preflight/语义接受，finish运行中。C四目标projection+算盘同ID分章5稿root独审通过；A构HFn小妲己司空37段118纠词增量，current官网新doc33e4c8¶3扶摇升1/满10、¶4仅每回合首张双触发，实际HTTPUTC19:02:11成功。8时间倒序诊断无法仅word修、ime尾205秒非静音且音轨完整解码；均仍hold。D已安全停本轮重视频诊断FFmpeg，不碰ASR。
+
+15来源close实际processed2/errors[]/knowledge_unchanged=true；workspace stage15快照148deposited含旧xaY，本批147 verified/33pending。source-status为147完成/7committedhold/23audio/1HFnready/2invalid/9excluded；review-root-stage15归档chain绑定已新增。49组来源检查闭合/28有pending，最终77group acceptance仍false。C16四adaptation+算盘分章root独审通过（仅审计脚本section误写，实际schema heading已纠正，未动候选），A16HFn独审D请补F166/海诺副输出/扶摇时序，A已followup恢复修稿。
+
+第16实际统一commit exit0/7既有读回errors[]/non_target[]/unexpected_new[]/journal false，总101；payload6da6edefc93021a9ad9c404f59b352fc5c2c7d94e5259a1965d96945b9dd9eb9，validate session46458仍运行。A HFn fixed f32fb9…经D终审55db24…，原37raw/corr118候选；海诺副输出/扶摇预计语气已补，player资源同claimF166直证。root已读24变化与fixed2值，实际官网doc33e4c8¶3/4。C5projection02a76a…root实际全读4映射、exact保护审计通过，算盘仅插heading保旧所有文字。D补HFn单源closure理由在做，不能仅candidate pass就finish；C新Lua10/2安琪拉48段69candidate已全文读正在构无阵营→有条件图腾支线，保较新东皇主线。
+
+第16 HFn规范finish实际processed1/errors[]/knowledge_unchanged true；fresh状态148/180 verified、32剩余，group来源闭合50/77（最终组验收未完成）。第17 Lua fixed2 df673dcf7a1d7c22fa42557bd2f842c8ae4b47011e878ba4c5fed7307adbb112，A终审2e369d28dc7fdc9fde60d790352ee20c1a557e071cbf178eead9948f9896a9ec fixed_passed；root实际读修订差异。27entry/51video/36document precommit errors[]，payload5efb5b0425d0d577035a53fb20a582266150f7947aac15d0e55fae9134c3ae8e，备份与快照已落raw，commit运行中未先宣称完成。
+
+第17实际commit exit0，两份既有note保存读回errors[]/non_target[]/unexpected_new[]/journal false，validate exit0/101 notes/errors[]；Lua两空档5.06/6.54s及重复窗口D逐项语义审查，root已读全部理由与明确缺项并接受，canonical export/transcript preflight passed，finish实际processed1/errors[]/knowledge_unchanged true。原raw/corrected不改，未声称已听全AV。17批checkpoint生成，88份受影响正文。下一ZBn小妲逐鹿蒙犽和yo p3仍在原large-v3 worker中，范围先读不冒全文结论。
+
+第18 ZBn41raw/corr+106候选、20entry经A独审7d6f55…passed_candidate_source_closure_hold，root实际读全部raw及20增改。payload989e4fbe03f8331cb9170ce1617f21e5913a92ecdd192978d902f2c90a1fe67d；实际commit exit0、两既有读回errors[]/非目标[]/无journal，validate session9730仍在运行。鱼/斧保护链4帧待核，不finish。浏览器tab失效/createwebview超时与整页提取失败保留；公开playinfo按已观察cid调用成功，480p AVC下载/单线程4帧提取session17741中，无全视频重解码、不用cookie。yo p3完整ASR已ready68段，D构stage19；root实际读全部68文本0–2007.16，末29.6s未知保留，确认廉颇炸盾条件移装备而非转芈月主线。
+
+第18 validate实际exit0/errors[]/101notes，非目标及读回此前已过；ZBn鱼/斧画面gap未结项，保持149/180。C尝试API真实AVC/backup远程seek关键帧，root完整低清下载保留运行17741，不增ASR/全视频解码。A完成yo p3独立68raw/corr+105纠词预审，等D候选。
+
+ZBn四remote帧已实际root/C/D分别view，root官方F782/783直读确认怒莲之刺→银莲庇佑转伤，不是鲁班/鱼自带挡伤。4帧canonical登记完成frames.json及root-zbn-frame-observations.json，无source review/finish；银莲/名刀该局具体持有者仍不确。原full低清下载已按精确命令行识别27708/20088父子并停止（zbn-redundant-download-stopped.json），partialvideo保留不当完整，ASR未碰。C20两note9entry条件装备/承伤者教法冻结3e5f59…待D终审；root已实际读9条。D19 fixed7ea2c96b4c36c36e84ce66541d94af35bd06776b50a13608843fe1ecdb1b2bb7，A终审9ed03654ce6d625934d4932482b7be0fcefa66935ce99213878c3a02b496fa95 fixed_passed，root读61改动及5gap/尾29.6s全部语义理由。拟两源四records合并19统一commit，尚未写。raw报表helper去除19批上限，18验证批数/88受影响笔记统计不变。
+
+第19四record合并payload ea5fc8ec1b6b939d47f8b3ab25aa02f55b22d8c022cba78a58372b318d5c3c57，70entry/95video/85doc precommit errors[]。包装脚本先替换stage2再注入含stage20的文件名，修正旧替换顺序误把stage20拼为stage190的准备失败（正式写前失败无payload/知识修改）。实际统一commit exit0；4既有读回errors[]/non_target[]/unexpected_new[]/journal false，validate57364仍运行。accept-stage19-closure.py已准备未执行，分别绑定yo5gap+尾29.6s、ZBn11gap+4帧及A独立closure，须validate通过后再执行。C20 fixed d9f57… D独审5d7d630…passed；C16Fa姜导李白2note14entry候选c42d53…送A独审，29全文50纠词/15词gap sourcehold，不覆盖10/3觉醒推荐。钟馗口述50/60冲突已actualfresh官网new1 UTC19:58:11成功，query/raw在official-stage20-zhongkui-current；1751普通10/1753觉醒20%每场1，身份desc与F84对应机制逐字相同，但整response/heroCard结构不同，不冒全响应exact，verification.json准确限定。
+第19 validate实际exit0/errors[]/101notes；两源accept绑定与规范finish实际processed2/errors[]/knowledge_unchanged true。fresh snapshot152deposited含xaY legacyhold，batch verified151/180，29剩余；52组来源闭合/25pending，19验证批/88受影响note。第20 C16Fa fixed d20e6d2d3bc879cf5e36aa02bea0caea00838f97af1e3af9b7a890c10edbc6f0，A fixed_passed_source_hold审计77f497ce7b2d22dd19e6aaf411454a6a87e4b2523e8ec8f7cadbe75b5a909a26，root实际14条增改及fixed2句已读，prepare26540运行。首次构wrapper PowerShell引号解析失败，无文件/正式写；改apply_patch创建准备/读回wrapper。CUHL已ASR prepared，D逐段审读中；worker25505已自动下一2788.5s，36382玉环2289s转写继续。C逐gap独立评估16Fa闭合，不以大gap当静音。
+第20 payload a7c2faa373049365138d75557a2ee527c37f1da4d1de6a91b984fb5f495bc2be，14entry/21video/27doc precommit errors[]；actual commit exit0，两既有readback errors[]/non_target[]/unexpected[]/journal false；validate59263运行。root实际全读16Fa18gap，纠正C194.5s理由误写学识在444s前，fixed closure bdf511…明确仅有限14条自足不能默认全源穷尽，sourcehold保留。CUHL root实读67raw全文，D/A审核继续；D actualfresh镜像33/混沌吞噬查询20:06:10，canonical doc-a5ceda3feb4d075397c02f5b9abae23f660cb0122454d291519f0aac1cbfc78d登记，root完整读5段。
+当前两ASR分别36382=BV1Tcej6jEeK:p1（38min玉环指法），25505=BV1j8JD6WEaK:p1（2788.5s嬴律低压大河射）。不新增worker。checkpoint helper移除已19结项yo p3的陈旧待ASR提示，保16Fa未听长窗待全源复核。
+第20validate实际exit0/errors[]/101notes；record-stage20-review规范记录作者C与独审A29/corr50及root29raw/14增改真实范围，source未finish。status151closed/8committed_hold/18audio/2invalid/1reviewed_draft/9excluded，20批checkpoint88note。C group19两新增身份报告dbe9b11…，root首轮输出被57k截断，仅读首尾，已定向重读两组route/boundary/gaps，未冒全57k阅读。
+CUHL stage21 candidate c62752eee726f1f5390f68df6415f5af9d8a317d113592a1816442a6b9f4d6b7，2existing/25增改15新/4新hero20字段，A独审运行；root已实际读67raw和25完整after（首输出截断后定向重读），D另做12gap/头尾全源语义审查。targeted-recheck-plan.json已生成27 planned-only任务（8倒序/ime尾/16Fa18gap），executed0，无新ASR、无原始变动。玉环现有49节点与P25对应分支预读C已完成preread-c-tcej-yuhuan.json，Tcej未prepared前不构稿；9/15来源不得无条件覆盖10/17。
+并行有效工作：C待Tcej期间按fresh已sourceclosed组前8组进行当前正文/棋手分支教学覆盖实读审核，raw group-teaching-audit-part1待出；不以计数当最终验收，不正式写。root已读玉环预读trigger/prepare/target/sequence/failure和六项缺口，待Tcej全稿。
+第21 fixed a69d164…经A独审d7da85de…fixed_passed_source_hold，precommit payload e1e0c0153907ca41747062aea9eecc3a692c3ac79db2d1d65b1b41591378cb49/25entry/53video/44doc errors[]；actual commit17071 exit0。readback51644与validate78622运行。root实际view CUHL9帧，确认bye后训练场追加教学及手两传/遗志/换帅，2055拖芈、2072三人在场拖遗志曜、2093海月拖出售；没有从静帧推完整随机承接。D正补10定点帧精确链，原raw不变/sourcehold。A/C已sourceclosed教学覆盖查出有据但漏semantic/投影/适配/hero5字段，将按独立player分工构最小修补，A管瑶妹/白歌，C管香香/闹闹，正式root统一。
+第21actual commit/两读回/validate exit0/errors[]/101notes，非目标[]/无journal。CUHL19帧root与D均实际view，F201实际全文核，canonical帧登记19成功，不finish；首3帧receipt历史路径receipt.json被后10帧重用，但原fec…已保receipt-next3.json，rootaddendum明确真实别名，不丢旧证据。D正构海月副核条件支路补完整尾示范，root独审；Tcej60raw root全部实读，D预审60/corr148完成be838b…，C正在构稿。Tcejidx29长幻复保留原文且不引用，endoverlap非startregression。
+21批fresh状态151closed/9committed_hold/17audio/2invalid/1transcript_ready/9excluded；workspace152deposited含xaY legacyhold。CUHL海月fixed5ddcf686…root实际读3变化和2前置fixed、全部19帧和官方152/153/181/201/228，全树7diff验证script30309运行。将与后续稿合22或先独立22，未正式写此新支路。
+用户要求汇报并继续，已明确报告21批/88受影响正文/全库101、151/180来源结项剩29、52/77组仅来源闭合（25pending，非最终教学验收），继续执行。CUHL海月root终验7bf200…fixed_passed_source_hold；prepare22 wrapper已建，91960运行，不先宣称正式保存。D复判19帧之后全源closure边界；A继续瑶妹白歌coverage修补，C继续Tcej。
+第22prepare df22e29926342bac91831628fe22c0aeea101a9cd7a2cb1f2ab7585d85fd8a98，3entry/25video/13doc errors[]；actual commit17175 exit0，两既有readback errors[]/non_target[]/unexpected[]/journal false；validate54427仍运行。root已实际全读CUHL新closure12复判/首尾/既有缺项，D报告7619e89f…建议22保存后ready，原明确海月支路缺口已19帧补全。accept-stage22-closure.py已写未执行，必须实际validate通过才规范finish。36382下一来源BV1i7nz6dEyZ:p1/3076.5s嬴律河洛木兰，25505仍j8JD。
+用户10月25日调整优先级：先补全笔记，不强求全部来源采用，尽快完成。22批已保存验证、152来源结项；23批首次commit被新增空证据placeholder claim拦截，尚未save，无正式变化。根因是Tcej c22-yu-rates-claim，新fixed2仅移除该空claim保缺项正文，D已精确终验5f36ac2b。A coverage原稿无空claim不改；C继续7组教学补全、A嬴律、D阿离均已通知优先实际笔记缺口。
+第23最终payload606841dd…13既有/123新改条目已统一commit成功；实际13读回errors[]/non_target[]/unexpected[]/journal false，validate实际exit0/errors[]/101notes已归一UTF8。不再推动Tcej来源闭合。root阿离9entry独审8d154456…通过；C香香/闹闹9record75变化经A独审ba682203…通过。root昭君2record3entry补干将过渡候选0ae7674f…交D。唯一实际缺组小妲廉颇交C用3段短源补新note/P10，不采长源；镜泳池/闹闹错标签实际身份已C核，source关联空不等于无笔记。27定点ASR已解码全部，未改canonical/未结项，不再作为交付前置。
+
+2026-10-25T03:02:26.813052+00:00 笔记优先交付完成：24批actual保存/读回/validate全通过，102库笔记/90受影响，76组对应笔记+1组日期排除；不声明全部来源闭合。priority-delivery.json含当前正文路径和具体未知条目。

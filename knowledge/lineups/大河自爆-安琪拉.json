@@ -1,0 +1,677 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "d8-51-title",
+      "type": "heading",
+      "level": 1,
+      "title": "大河自爆-安琪拉",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-51-player",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "安琪拉",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-51-core",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "东皇太一承担压制与近身制敌，敖隐补远程输出；鬼谷子、少司缘、大司命提供图腾，明世隐按固化需求加入。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-51-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "大河。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-principle-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-principle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "东皇太一借图腾等级取得战斗临时等级，以压制和能量球持续制敌，敖隐在后排借图腾累积攻速与临时等级输出。安琪拉的定向毁灭按自爆实际伤害推动下回合全队等级；图腾增加可覆盖单位，友军自爆伤害也可计入，贴膜则给被命中的友军护盾与双吸，让残血队伍继续作战。全队等级和图腾等级提高后再放大东皇开团与敖隐战中收益，明世隐按连接英雄实际已有临时等级固化；前期连接对象要先能保血，不能把拿到定向毁灭等同完整成型。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-choice-h",
+      "type": "heading",
+      "level": 2,
+      "title": "采用与转向",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "先实际取得定向毁灭，大河可用且图腾有获取空间时考虑；本路线还需尽快找到贴膜，给自爆命中的友军提供护盾与双吸，才可稳定兑现后续等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-avoid",
+      "type": "entry",
+      "key": "放弃／转向信号",
+      "show_key": true,
+      "value": "多人争抢鬼谷子、少司缘、大司命而难取得图腾时，不强行押大河自爆；定向毁灭已有但贴膜未到时阵容容易炸至残血，应优先当轮保血与后续模块机会，不能把预期锁血当作已有战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-heroes-h",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-dong",
+      "type": "entry",
+      "key": "东皇太一",
+      "show_key": true,
+      "value": "开团取得每个图腾等级一定比例的临时等级，以能量球和压制制敌；通常接替成为飞行器连接核心。觉醒需求：普通每个图腾15%，醒后30%；核心到场后优先补醒；等级投入：尽早到场接受全队永久成长，100级压制持续至一方阵亡，不设固定停养；购买策略：第二拍与敖隐优先，首张尽早到场吃后续全队成长，拍卖出价上限未确认；上阵时机：取得后可接替连接，检查爆炸范围能覆盖己方图腾与有效单位；出售时机：主要制敌核心保留，缺首张时海月可暂作连接备选；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-ao",
+      "type": "entry",
+      "key": "敖隐",
+      "show_key": true,
+      "value": "每个图腾每4秒提供攻速与临时等级，后排持续普攻弥补东皇近战难接触敌后排的问题。觉醒需求：普通每图腾16%攻速与4临时，醒后32%与8；具体追醒投入边界未确认；等级投入：尽早到场接受全队成长，战中临时等级另计；购买策略：第二拍与东皇优先，未到时用虞姬等过渡，拍卖出价上限未确认；上阵时机：后排有保护时加入，需要贴膜命中才能得到该模块护盾双吸；出售时机：主要远程输出仍需要时保留，未确认稳定换出路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-1891",
+      "type": "entry",
+      "key": "鬼谷子",
+      "show_key": true,
+      "value": "在场召唤先知图腾，增加自爆覆盖单位与东皇、敖隐的图腾收益。觉醒需求：普通召唤，醒后强化先知图腾；具体补醒次序未确认；等级投入：随全队自爆成长，不争东皇和敖隐的专门培养；购买策略：鬼谷子与少司缘第一拍优先首张，大司命在双图腾后推进4、5级寻找，拍卖出价上限未确认；上阵时机：拿到后需要图腾参与覆盖时上，优先保护图腾单位仍在自爆范围内；出售时机：仍依赖图腾伤害覆盖与成长时保留，终局替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-5771",
+      "type": "entry",
+      "key": "少司缘",
+      "show_key": true,
+      "value": "在场召唤因缘图腾，增加自爆可覆盖单位和图腾联动。觉醒需求：普通召唤，醒后强化因缘图腾；具体补醒次序未确认；等级投入：随全队自爆成长，不争东皇和敖隐的专门培养；购买策略：鬼谷子与少司缘第一拍优先首张，大司命在双图腾后推进4、5级寻找，拍卖出价上限未确认；上阵时机：拿到后需要图腾参与覆盖时上，优先保护图腾单位仍在自爆范围内；出售时机：仍依赖图腾伤害覆盖与成长时保留，终局替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-5171",
+      "type": "entry",
+      "key": "大司命",
+      "show_key": true,
+      "value": "在场召唤往生图腾，牺牲触发使图腾永久成长并恢复法力。觉醒需求：普通每次牺牲图腾+2，醒后+4且均得50法力；具体追醒次序未确认；等级投入：随全队自爆成长，不争东皇和敖隐的专门培养；购买策略：鬼谷子与少司缘第一拍优先首张，大司命在双图腾后推进4、5级寻找，拍卖出价上限未确认；上阵时机：拿到后需要图腾参与覆盖时上，优先保护图腾单位仍在自爆范围内；出售时机：仍依赖图腾伤害覆盖与成长时保留，终局替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-ming",
+      "type": "entry",
+      "key": "明世隐",
+      "show_key": true,
+      "value": "最近英雄的临时等级在额度内转永久，保留飞行器与图腾给核心的临时成长。觉醒需求：普通额度2、登场+2；醒后4、登场+4；专追优先级未确认；等级投入：自然成长，核心有未固化临时等级才提高有效转化额度；购买策略：初期有可固化等级时可取首张和有用重复，不把单纯额度提高当收益，拍卖出价上限未确认；上阵时机：飞行器先连虞姬过渡时可连接虞姬；核心接替后重新核对最近对象；出售时机：仍需固化时保留，具体退出未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-yuji",
+      "type": "entry",
+      "key": "虞姬",
+      "show_key": true,
+      "value": "开团按图腾数给自身与随机不同友军永久等级，作为早期远程飞行器连接者。觉醒需求：普通自身及随机2人每图腾+1，醒后随机4人；本分支追醒次序未确认；等级投入：接受全队成长，可积累供后续转移的永久等级，定向培养不优先于最终核心；购买策略：双图腾阶段补过渡首张，敖隐未到时可继续用，拍卖出价上限未确认；上阵时机：远程位置可使自爆保留在己方单位群内，并让明世隐核对最近连接；出售时机：敖隐到后可换出；若用遗志先核对随机接收者，不能保证全部交敖隐；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-xiang",
+      "type": "entry",
+      "key": "项羽",
+      "show_key": true,
+      "value": "冲向敌后排把自爆带进敌群，牺牲使图腾永久成长，是另一种前期保血连接工具。觉醒需求：普通牺牲图腾+3，醒后+6；有自然觉醒可补，不强求；等级投入：自然成长，不争最终东皇与敖隐专养；购买策略：前期需要冲入后排而普通前排被堵时比较首张，拍卖出价上限未确认；上阵时机：敌人后排集中、需要先炸敌方保血时连飞行器；有耍赖皮可避免连接项羽自伤；出售时机：东皇接替连接后是否继续留作牺牲养图腾按位置比较，不固定全部卖出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-tai",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "开团给最近友军复生，让东皇继续压制或敖隐继续输出。觉醒需求：普通复生，醒后完美复生；先首张；等级投入：工具自然成长，不争输出定向等级；购买策略：核心与三图腾已可工作、还有位置且需要保护时补首张，拍卖出价上限未确认；上阵时机：上场前核对最近英雄是实际要保护的核心，不把保护位置提前占满；出售时机：仍需复生保护时保留，固定替换对象未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-hai",
+      "type": "entry",
+      "key": "海月",
+      "show_key": true,
+      "value": "牺牲按自身生命对敌方最高等级英雄造成真伤，可在缺东皇时作为自爆连接备选。觉醒需求：普通等额生命真伤，醒后150%；本备选追醒次序未确认；等级投入：接受全队自爆成长，不预设与东皇同时主养；购买策略：第二拍缺东皇、敖隐时再比较，不挤占既定主力，拍卖出价上限未确认；上阵时机：缺东皇时可放连接位，并重新检查自爆覆盖与生存；出售时机：东皇已可接替后如何换出未确认，不能只因缺牌把两路拼成固定双核；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-luban",
+      "type": "entry",
+      "key": "鲁班大师",
+      "show_key": true,
+      "value": "在场召唤机关傀儡，增加自爆可覆盖单位，并补控制。觉醒需求：醒后召唤机关傀儡·改；未核其完整临时等级公式，不能据此预定复制主力等级；等级投入：自然成长，不争东皇敖隐专养；购买策略：主阵容已有且确有额外位置时比较首张，拍卖出价上限未确认；上阵时机：需要增加可覆盖召唤单位与控制时加入；出售时机：仍有召唤控制收益时保留，固定替换对象未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-zhang",
+      "type": "entry",
+      "key": "张良",
+      "show_key": true,
+      "value": "己方单位触发开团时为随机英雄永久加级，补图腾体系与全队成长。觉醒需求：普通随机3人+1，醒后所有英雄+1；本分支补醒优先级未确认；等级投入：自然成长，不争主力定向培养；购买策略：前期明世隐等组件外可作备选成长工具，拍卖出价上限未确认；上阵时机：已有可触发开团成员且有位置时上，随机接收不保证每次中东皇；出售时机：仍需开团成长时保留，固定换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-han",
+      "type": "entry",
+      "key": "韩信",
+      "show_key": true,
+      "value": "每次己方英雄整备或开团给自身永久等级，可在敖隐未到且有额外人口时补临时战力。觉醒需求：普通每次+2，醒后+4；临时顶替未要求专醒；等级投入：接受自然事件成长，不挤最终东皇敖隐定向资源；购买策略：敖隐未到且有实际额外人口时比较首张，不推广成所有阵容必拿，拍卖出价上限未确认；上阵时机：场上已有整备开团事件且空位能够兑现战力时用；出售时机：敖隐到后按成长与实际输出比较替换，精确换出操作未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-early-1681",
+      "type": "entry",
+      "key": "牛魔",
+      "show_key": true,
+      "value": "凯旋给能量，配前期飞行器争胜场资源。觉醒需求：普通可过渡，具体追醒次序未确认；等级投入：自然成长，不争最终核心定向等级；购买策略：开局按能否改善战斗取首张，不强行补齐全部过渡，拍卖出价上限未确认；上阵时机：开局与弈星过渡；出售时机：核心前排可接替后比较退出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-early-1971",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "棋手升级时给额外经验，开局也可作飞行器连接者。觉醒需求：普通可过渡，具体追醒次序未确认；等级投入：自然成长，不争最终核心定向等级；购买策略：开局按能否改善战斗取首张，不强行补齐全部过渡，拍卖出价上限未确认；上阵时机：开局在场，计划升级前保留；出售时机：完成要利用其加成的升级再换核心；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-early-1821",
+      "type": "entry",
+      "key": "干将莫邪",
+      "show_key": true,
+      "value": "早期飞剑补伤害，为定向毁灭与后续图腾争取成长时间。觉醒需求：普通可过渡，具体追醒次序未确认；等级投入：自然成长，不争最终核心定向等级；购买策略：开局按能否改善战斗取首张，不强行补齐全部过渡，拍卖出价上限未确认；上阵时机：预计加入后能赢时再追加；出售时机：核心已能保血后再比较退出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-stages-h",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-early-h",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-early-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "牛魔、弈星过渡；预计能赢时可补干将莫邪；第一拍优先鬼谷子、少司缘。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-early",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "前期运营思路：飞行器可先连弈星保血，初次实际取得定向毁灭后再确定自爆方向并推进3级顿悟。若需要把炸弹送入敌方集中的后排，项羽冲入配耍赖皮可先炸敌方保血；要养己方图腾时则用虞姬等远程连接，聚拢单位参与自爆。两种连接的覆盖目标不同，贴膜未到时不要为多炸自己放弃唯一的当轮战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-middle-h",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-middle-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "双图腾后补大司命；初期有有效临时等级可补明世隐，虞姬过渡；第二拍优先东皇、敖隐。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-middle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "中期运营思路：双图腾到场后推进4级补体系，大司命难找到时可继续推进5级；尽早让东皇与敖隐到场接受全队永久成长。图腾被多人争抢时及时转向；已经拿定向毁灭但贴膜还没到，阵容会因自伤残血而脆弱，继续比较保血和真实模块机会，不为预期锁血乱卖现有战力。选择奇想按现有阵容和实际花能量方式兑现，人数将超过4人时不长期依赖精锐的少于5人奖励。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-late-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-late-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "补齐东皇、敖隐及三图腾，保护用太乙；海月仅为缺东皇的连接备选，鲁班大师按可用人口加入。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-late",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期运营思路：东皇取得后可接替飞行器连接，检查爆炸圈覆盖图腾与实际有用单位；贴膜命中的友军才获护盾双吸。需要额外模块且能保血时推进6级超级连接，未刷新到贴膜不能预定必出。东皇优先觉醒放大图腾等级继承，敖隐留后排输出；对手刺客切后排时可用图腾围护敖隐，但不免疫范围伤害。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-six",
+      "type": "entry",
+      "key": "六人保护组合",
+      "show_key": true,
+      "value": "东皇太一、敖隐与三图腾均已到场、需要复生且有足够位置时，采用东皇、敖隐、鬼谷子、少司缘、大司命、太乙真人六人保护组合；明世隐有实际临时等级可固化时再按位置比较，不能把所有供给工具也当固定必带。缺东皇时的海月连接只作缺牌方案，不能据此省去主路线需要的东皇。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-improve-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期提升思路",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-improve",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期提升思路：东皇补觉醒使每图腾15%临时等级提高到30%，敖隐继续利用每图腾战中攻速与临时等级；图腾与全队永久成长互相放大，但每轮加级仍取决于自爆实际伤害。增加人口只有能上有用英雄或召唤、并让爆炸真正覆盖时才有收益，不能无条件声称多一人就锁血；缺贴膜或核心没有生存时先解决当轮战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-h1",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先少司缘、鬼谷子，先补前期图腾；统一竞价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-h2",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先东皇太一、敖隐；缺两者时再比较海月作为连接备选，不把一局东皇只花1能量当统一报价。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-h3",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-auction-3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "可比较能提升有效核心或全队成长的等级牌；具体牌名与统一出价上限未确认，先按当前成长缺口选择。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-equipment-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-equipment",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-talents-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-talents",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先能推进升级、寻找大河组件的天赋；人口用于增加有效英雄或召唤、自爆实际覆盖越多才可能增加伤害与后续成长。当前缺核心或额外单位无法参与战斗时，不能只看人口数字。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-talent-634030",
+      "type": "entry",
+      "key": "战略中枢",
+      "show_key": true,
+      "value": "可上阵人数+1，并取得2张有福同享。额外人口能补有效图腾、输出或保护时比较；敖隐未到时也可暂用能兑现开团整备成长的韩信。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skills-h",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skill-95131",
+      "type": "entry",
+      "key": "“定向毁灭”模块",
+      "show_key": true,
+      "value": "每场自爆但对友军不致命，每造成1000伤害，下回合所有友方英雄+1级。先拿到它再确定自爆方向，友伤同样可计入；并不保证每轮固定加多少级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skill-95143",
+      "type": "entry",
+      "key": "“贴膜”模块",
+      "show_key": true,
+      "value": "自爆命中的友军获得飞行器法攻300%的护盾和20%物理、法术吸血。给被自爆打残的队伍补续航，本路线尽快争取；未命中单位不预支保护，拿到后仍要检查实战覆盖与生存。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skill-95132",
+      "type": "entry",
+      "key": "“耍赖皮”模块",
+      "show_key": true,
+      "value": "每场自爆但不伤连接英雄，每点神秘力量提供的飞行器法攻提高至8。前期项羽送炸弹进后排可保护连接者并补爆炸伤害，不能代替贴膜给其他友军的护盾双吸。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skill-95142",
+      "type": "entry",
+      "key": "“热情扩散”模块",
+      "show_key": true,
+      "value": "自爆范围+1、伤害+25%。单位分散而爆炸覆盖不足时比较，仍需实际炸到目标才能增加伤害与后续成长。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skill-95157",
+      "type": "entry",
+      "key": "“泄气皮球”模块",
+      "show_key": true,
+      "value": "自爆命中的敌人沉默8秒，连接英雄取得这些单位等级总和10%的临时等级。必须命中敌方才有这部分临时成长，不能将炸自己图腾也算作敌方等级继承。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-skill-665105",
+      "type": "entry",
+      "key": "超级连接",
+      "show_key": true,
+      "value": "取得一次灵异探测大改装，开战给连接英雄自身等级10%–30%的随机临时等级。6级追加模块机会与连接成长，不能保证最后一次改装必出贴膜。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-effects-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-effect-7041",
+      "type": "entry",
+      "key": "遗志",
+      "show_key": true,
+      "value": "移除指定英雄，将其非临时等级转移给1名随机英雄。敖隐到后需换虞姬时可比较保留已有永久等级，但先核对随机接收候选，不保证交给敖隐或东皇。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-ops-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-ops",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "先确定当轮要炸敌方保血还是覆盖己方成长：前者可用项羽冲入后排，后者用远程虞姬或后期东皇连接并让己方单位留在圈内。东皇、敖隐到后尽早接受全队永久成长，飞行器与明世隐最近连接分别重查；转掉虞姬前先决定遗志是否有有效接收机会，不能出售后再期待转级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-position-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ang-position",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "要自爆覆盖己方时，将三图腾与需要成长的单位放在爆炸范围内；远程连接避免开战自行走远，东皇接替后重新看范围。敖隐留后排，敌方刺客可直接接近时用图腾围护，减少其落地接战机会；图腾仍能承受范围伤害，不将围住写成免疫AOE。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:51"
+    ],
+    "required_factions": [
+      "faction:dahe"
+    ],
+    "core_heroes": [
+      "card:1871",
+      "card:5191"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "condition": "前期保血或升级过渡"
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "前期保血或升级过渡"
+        },
+        {
+          "hero": "card:1351",
+          "necessity": "optional",
+          "condition": "敌方后排集中且需要冲入炸敌保血"
+        },
+        {
+          "hero": "card:1741",
+          "necessity": "optional",
+          "condition": "远程连接覆盖己方图腾成长"
+        },
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "condition": "预计加入干将莫邪可以赢下当前战斗时追加过渡输出"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1891",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "optional",
+          "condition": "已取得的图腾、核心、固化或开团成长成员"
+        },
+        {
+          "hero": "card:1871",
+          "necessity": "optional",
+          "condition": "已取得的图腾、核心、固化或开团成长成员"
+        },
+        {
+          "hero": "card:5191",
+          "necessity": "optional",
+          "condition": "已取得的图腾、核心、固化或开团成长成员"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "condition": "已取得的图腾、核心、固化或开团成长成员"
+        },
+        {
+          "hero": "card:1561",
+          "necessity": "optional",
+          "condition": "已取得的图腾、核心、固化或开团成长成员"
+        },
+        {
+          "hero": "card:1741",
+          "necessity": "optional",
+          "condition": "已取得的图腾、核心、固化或开团成长成员"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1891",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1871",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5191",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "condition": "有临时等级待固化"
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "需要复生且有位置"
+        },
+        {
+          "hero": "card:5211",
+          "necessity": "optional",
+          "condition": "缺东皇连接备选，不固定与东皇同时主养"
+        },
+        {
+          "hero": "card:5251",
+          "necessity": "optional",
+          "condition": "有额外人口需要召唤控制"
+        },
+        {
+          "hero": "card:1501",
+          "necessity": "optional",
+          "condition": "敖隐未到且有额外人口临时顶替"
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "late_variants": [
+      {
+        "id": "d8-ang-six-protect",
+        "name": "东皇敖隐三图腾复生保护",
+        "condition": {
+          "$text": "d8-ang-six"
+        },
+        "members": [
+          {
+            "hero": "card:1871",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5191",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1891",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5771",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5171",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "required"
+          }
+        ],
+        "core_heroes": [
+          "card:1871",
+          "card:5191"
+        ],
+        "required_factions": [
+          "faction:dahe"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": [],
+        "claim_refs": [
+          "d8-ang-six-d8-claim"
+        ]
+      }
+    ]
+  }
+}

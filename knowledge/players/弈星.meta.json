@@ -1,0 +1,1327 @@
+{
+  "schema_version": 6,
+  "id": "player-36",
+  "type": "player",
+  "title": "弈星",
+  "path": "knowledge/players/弈星.json",
+  "player_id": "player:36",
+  "aliases": [],
+  "entities": [
+    "player:36",
+    "card:1541",
+    "card:1441",
+    "card:5131",
+    "card:1361",
+    "card:1461",
+    "card:1311",
+    "card:1751",
+    "card:1861",
+    "card:93699",
+    "card:663601",
+    "card:93610",
+    "card:663607",
+    "card:638005",
+    "card:644116",
+    "card:311002",
+    "card:7073",
+    "card:7074",
+    "card:7079",
+    "card:7080"
+  ],
+  "related": [
+    "a11-heluo-huamulan-yixing"
+  ],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-24T18:46:32.920472+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "a11-p-title",
+            "type": "heading",
+            "level": 1,
+            "title": "弈星",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-skills-h",
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-skill-93699",
+            "type": "entry",
+            "key": "棋道万象",
+            "show_key": true,
+            "value": "本回合战斗开始时随机复制1名敌方英雄。随机结果不能预先指定；棋手弈星与上场英雄弈星是不同实体。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-skill-663601",
+            "type": "entry",
+            "key": "谋而后定",
+            "show_key": true,
+            "value": "第4、8、12回合各获得1张驭势；使用驭势后，战斗开始时把敌方场上所有英雄复制进自己的手牌。只计算对方实际在场者。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-skill-663607",
+            "type": "entry",
+            "key": "神之一手",
+            "show_key": true,
+            "value": "取得神之一手天赋后，战斗开始时将敌方等级最高的英雄复制，临时加入己方战场；这是当轮战力，不是永久英雄手牌或觉醒材料。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-early-h",
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-early",
+            "type": "entry",
+            "key": "观察资源对象",
+            "show_key": true,
+            "value": "先观察对手实际走向和已上场成员，比较复制所得能否帮助自己成型；前期随机复制不能保证关键牌，自己的即时战力仍需满足保血要求。尚未确认可跨阵容套用的固定起手与升本时间表。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-routes-h",
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-route-h",
+            "type": "heading",
+            "level": 3,
+            "title": "[河洛花木兰](../lineups/河洛花木兰-弈星.json)",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-adopt",
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "河洛供币和木兰组件可获得，观察到同路线对手有有效复制对象；露娜补整备路线还需日落海。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-avoid",
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "木兰与供币组件未齐、下一场对手也没有可用资源时先补现有战力；不能只等一次随机复制。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-faction",
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "河洛；本篇露娜补整备的供牌路线还需要日落海。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-advantages",
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "驭势能把同路线对手实际在场的组件变成自己的牌量，再用于觉醒、供币与补当轮木兰战力。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-risks",
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "复制结果和对手资源不由自己保证，木兰仍需当轮古币、保护与能实际行动的输出环境。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-heroes",
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "木兰承担主力，程咬金、婉儿、武则天供币，露娜按实际重复补整备；李白补古币临时等级，决战比较太乙保护与钟馗牺牲。固定投入和完整终局成员未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-strength-h",
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-early-strength",
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "关键复制未到时要靠现有战力保血，早到木兰的单局不代表前期稳定强势。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-middle-strength",
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "木兰与供币组件齐备后，驭势能补同路线重复；仍要把所得转为当轮质量和古币。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-late-strength",
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "供币和复生延长木兰输出，但连续控制仍会消耗这份容错，需按对手检查机器头与太乙目标。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-tips-h",
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-tip",
+            "type": "entry",
+            "key": "区分两种复制去向",
+            "show_key": true,
+            "value": "驭势复制对方实际场上所有英雄进手牌，神之一手只把对方等级最高者临时加入己方战场；不要为补永久觉醒材料而预记神之一手。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-link-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a11-p-link",
+            "type": "entry",
+            "key": "河洛花木兰",
+            "show_key": true,
+            "value": "[河洛花木兰-弈星](../lineups/河洛花木兰-弈星.json)",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {},
+        "adaptations": [
+          {
+            "lineup": "a11-heluo-huamulan-yixing",
+            "branch": "owner",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-弈星.json",
+            "selection": {
+              "adopt": {
+                "$text": "a11-p-adopt"
+              },
+              "avoid": {
+                "$text": "a11-p-avoid"
+              },
+              "signals": {
+                "英雄投入": {
+                  "$text": "a11-p-heroes"
+                }
+              },
+              "stage_strength": {
+                "early": {
+                  "text": {
+                    "$text": "a11-p-early-strength"
+                  },
+                  "claim_refs": [
+                    "a11-p-early-strength-claim"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": {
+                    "$text": "a11-p-middle-strength"
+                  },
+                  "claim_refs": [
+                    "a11-p-middle-strength-claim"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": {
+                    "$text": "a11-p-late-strength"
+                  },
+                  "claim_refs": [
+                    "a11-p-late-strength-claim"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "faction:heluo",
+              "faction:riluohai"
+            ],
+            "advantages": {
+              "$text": "a11-p-advantages"
+            },
+            "disadvantages": {
+              "$text": "a11-p-risks"
+            }
+          }
+        ]
+      },
+      "claim_annotations": [
+        {
+          "id": "a11-p-skill-93699-claim",
+          "text_ref": "a11-p-skill-93699",
+          "kind": "mechanic",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 59.47,
+              "end": 109.77
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 367,
+              "paragraph_end": 367
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-skill-663601-claim",
+          "text_ref": "a11-p-skill-663601",
+          "kind": "mechanic",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 132.94,
+              "end": 186.75
+            },
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 541.9,
+              "end": 706.06
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 844,
+              "paragraph_end": 844
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-skill-663607-claim",
+          "text_ref": "a11-p-skill-663607",
+          "kind": "mechanic",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 1051.1,
+              "end": 1080.45
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 845,
+              "paragraph_end": 845
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-early-claim",
+          "text_ref": "a11-p-early",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 27.99,
+              "end": 157.44
+            },
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 228.06,
+              "end": 353.8
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 367,
+              "paragraph_end": 367
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-adopt-claim",
+          "text_ref": "a11-p-adopt",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 132.94,
+              "end": 186.75
+            },
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 541.9,
+              "end": 628.46
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 60,
+              "paragraph_end": 60
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-avoid-claim",
+          "text_ref": "a11-p-avoid",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 228.06,
+              "end": 318.39
+            },
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 600.96,
+              "end": 706.06
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 367,
+              "paragraph_end": 367
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-faction-claim",
+          "text_ref": "a11-p-faction",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 449.21,
+              "end": 628.46
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 60,
+              "paragraph_end": 60
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 142,
+              "paragraph_end": 142
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-advantages-claim",
+          "text_ref": "a11-p-advantages",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 600.96,
+              "end": 737.7
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 68,
+              "paragraph_end": 68
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-risks-claim",
+          "text_ref": "a11-p-risks",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 1374.93,
+              "end": 1498.8
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 68,
+              "paragraph_end": 68
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-heroes-claim",
+          "text_ref": "a11-p-heroes",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 600.96,
+              "end": 628.46
+            },
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 1469.98,
+              "end": 1653.74
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 142,
+              "paragraph_end": 142
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 49,
+              "paragraph_end": 49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 60,
+              "paragraph_end": 60
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 41,
+              "paragraph_end": 41
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-early-strength-claim",
+          "text_ref": "a11-p-early-strength",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 228.06,
+              "end": 353.8
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 367,
+              "paragraph_end": 367
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-middle-strength-claim",
+          "text_ref": "a11-p-middle-strength",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 541.9,
+              "end": 737.7
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 68,
+              "paragraph_end": 68
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-late-strength-claim",
+          "text_ref": "a11-p-late-strength",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 1374.93,
+              "end": 1653.74
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 68,
+              "paragraph_end": 68
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-tip-claim",
+          "text_ref": "a11-p-tip",
+          "kind": "mechanic",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 1051.1,
+              "end": 1080.45
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 845,
+              "paragraph_end": 845
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        },
+        {
+          "id": "a11-p-link-claim",
+          "text_ref": "a11-p-link",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1qHnC6zErD:p1",
+              "start": 541.9,
+              "end": 628.46
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 68,
+              "paragraph_end": 68
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 366,
+              "paragraph_end": 366
+            }
+          ],
+          "origin": "batch77_stage11_a"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "a11-p-skill-93699-claim",
+      "text_ref": "a11-p-skill-93699",
+      "kind": "mechanic",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 59.47,
+          "end": 109.77
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 367,
+          "paragraph_end": 367
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-skill-663601-claim",
+      "text_ref": "a11-p-skill-663601",
+      "kind": "mechanic",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 132.94,
+          "end": 186.75
+        },
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 541.9,
+          "end": 706.06
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 844,
+          "paragraph_end": 844
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-skill-663607-claim",
+      "text_ref": "a11-p-skill-663607",
+      "kind": "mechanic",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 1051.1,
+          "end": 1080.45
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 845,
+          "paragraph_end": 845
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-early-claim",
+      "text_ref": "a11-p-early",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 27.99,
+          "end": 157.44
+        },
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 228.06,
+          "end": 353.8
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 367,
+          "paragraph_end": 367
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-adopt-claim",
+      "text_ref": "a11-p-adopt",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 132.94,
+          "end": 186.75
+        },
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 541.9,
+          "end": 628.46
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 60,
+          "paragraph_end": 60
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-avoid-claim",
+      "text_ref": "a11-p-avoid",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 228.06,
+          "end": 318.39
+        },
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 600.96,
+          "end": 706.06
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 367,
+          "paragraph_end": 367
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-faction-claim",
+      "text_ref": "a11-p-faction",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 449.21,
+          "end": 628.46
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 60,
+          "paragraph_end": 60
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 58,
+          "paragraph_end": 58
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 142,
+          "paragraph_end": 142
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-advantages-claim",
+      "text_ref": "a11-p-advantages",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 600.96,
+          "end": 737.7
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 68,
+          "paragraph_end": 68
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-risks-claim",
+      "text_ref": "a11-p-risks",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 1374.93,
+          "end": 1498.8
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 68,
+          "paragraph_end": 68
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-heroes-claim",
+      "text_ref": "a11-p-heroes",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 600.96,
+          "end": 628.46
+        },
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 1469.98,
+          "end": 1653.74
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 58,
+          "paragraph_end": 58
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 142,
+          "paragraph_end": 142
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 49,
+          "paragraph_end": 49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 60,
+          "paragraph_end": 60
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 41,
+          "paragraph_end": 41
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-early-strength-claim",
+      "text_ref": "a11-p-early-strength",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 228.06,
+          "end": 353.8
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 367,
+          "paragraph_end": 367
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-middle-strength-claim",
+      "text_ref": "a11-p-middle-strength",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 541.9,
+          "end": 737.7
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 68,
+          "paragraph_end": 68
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-late-strength-claim",
+      "text_ref": "a11-p-late-strength",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 1374.93,
+          "end": 1653.74
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 68,
+          "paragraph_end": 68
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-tip-claim",
+      "text_ref": "a11-p-tip",
+      "kind": "mechanic",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 1051.1,
+          "end": 1080.45
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 845,
+          "paragraph_end": 845
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-link-claim",
+      "text_ref": "a11-p-link",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1qHnC6zErD:p1",
+          "start": 541.9,
+          "end": 628.46
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 68,
+          "paragraph_end": 68
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        }
+      ],
+      "origin": "batch77_stage11_a"
+    },
+    {
+      "id": "a11-p-skill-663607-vlp-claim",
+      "text_ref": "a11-p-skill-663607",
+      "section": "复制与镜像迷离协同",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1vLp76vEYb:p1",
+          "start": 753,
+          "end": 825.57
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 705,
+          "paragraph_end": 705
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 845,
+          "paragraph_end": 845
+        }
+      ],
+      "origin": "batch77_d_vlp_stage14"
+    },
+    {
+      "id": "a11-p-advantages-vlp-claim",
+      "text_ref": "a11-p-advantages",
+      "section": "复制与镜像迷离协同",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1vLp76vEYb:p1",
+          "start": 753,
+          "end": 825.57
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 705,
+          "paragraph_end": 705
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 845,
+          "paragraph_end": 845
+        }
+      ],
+      "origin": "batch77_d_vlp_stage14"
+    },
+    {
+      "id": "a11-p-tip-vlp-claim",
+      "text_ref": "a11-p-tip",
+      "section": "复制与镜像迷离协同",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1vLp76vEYb:p1",
+          "start": 599.92,
+          "end": 659.5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 366,
+          "paragraph_end": 366
+        },
+        {
+          "type": "video",
+          "source": "BV1vLp76vEYb:p1",
+          "start": 753,
+          "end": 825.57
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 705,
+          "paragraph_end": 705
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 845,
+          "paragraph_end": 845
+        }
+      ],
+      "origin": "batch77_d_vlp_stage14"
+    }
+  ],
+  "body_sha256": "9a9ef4f0649bf189bf2768276a1bf8b6e27c11d02373593cbc6ab637191b6f7e",
+  "revision": "398da94d412f6603e745",
+  "retired_claim_annotations": []
+}

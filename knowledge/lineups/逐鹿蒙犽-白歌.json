@@ -1,0 +1,581 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "b77-8f45f51fb86c0e42b1",
+      "type": "heading",
+      "title": "逐鹿蒙犽-白歌",
+      "level": 1,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-e255d3ed4bff4507c3",
+      "type": "heading",
+      "title": "核心原理",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-c6422d7a1fbf42e805",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "蒙犽承担主要物理输出，芈月在每次使用效果牌时，为穿戴装备最多的一名逐鹿英雄加等级，因此先把主要装备给蒙犽，再反复使用战术等效果牌。庄周与蒙犽登场给战术，西施整备供推演战术，白起和鲁班七号再补战术资源；白歌通过合成取得即兴创作、灵感爆发与6级奇才，复制庄周、蒙犽继续供牌和合成，把牌量转成蒙犽的等级与连续导弹输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-1021f64d4c4de5b19",
+      "type": "heading",
+      "title": "核心机制",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-8acd7356142d536d1",
+      "type": "entry",
+      "key": "效果牌转等级与供牌次数",
+      "show_key": true,
+      "value": "芈月按每次效果牌使用给装备最多的逐鹿英雄加等级，蒙犽应成为实际受益者。庄周、蒙犽登场取得战术；西施整备取得推演战术；白起是每回合首次使用效果牌时给战术，鲁班七号是每3次合成给战术，老夫子是每回合首次合成给招募战术。三种供牌频率不同，不能全部当作每次打牌都会继续供牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-select-h",
+      "type": "heading",
+      "title": "定阵条件",
+      "level": 2,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-select",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "逐鹿可用，芈月、蒙犽与庄周能逐步取得，能够给复制供牌留出位置与操作时间时采用。准备精简速升时，仍须有当前保血能力；核心与装备缺口过大时先补实际质量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-3f367bef165ff1ba71",
+      "type": "heading",
+      "title": "英雄",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-cfd7679609a6b5c06a",
+      "type": "entry",
+      "key": "蒙犽",
+      "show_key": true,
+      "value": "主力物理输出，连续导弹可暴击。觉醒需求：未确认；等级投入：持续培养，统一停级点未确认；购买策略：首张确定输出方向，重复和付费刷新边界未确认；拍卖出价上限未确认；上阵时机：有合适输出装备、能接替过渡战力时上，固定回合未确认；出售时机：作为主力保留，未确认换出路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-a374f8b92dbfb1a1de",
+      "type": "entry",
+      "key": "庄周",
+      "show_key": true,
+      "value": "登场补逐鹿招募资源，白歌复制后继续打出、合成。觉醒需求：未确认；等级投入：未确认；购买策略：复制技能将解锁时保留所需庄周材料，拍卖出价上限未确认；上阵时机：有打出位且需要招募资源时登场；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-8a663f1ef028c6bb98",
+      "type": "entry",
+      "key": "白起",
+      "show_key": true,
+      "value": "战术护盾组件，使用时机影响最后护盾结果。觉醒需求：未确认；等级投入：未确认；购买策略：首张与重复优先级未确认，拍卖出价上限未确认；上阵时机：未确认；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-cbfd5ce116a0e652b",
+      "type": "entry",
+      "key": "芈月",
+      "show_key": true,
+      "value": "把效果牌使用转为装备最多的逐鹿英雄的等级，是蒙犽成长核心。觉醒需求：普通每次+1，觉醒后+2；主动追醒顺序未确认；等级投入：未确认；购买策略：速升路线到棋手4级后用免费刷新先找首张，拍卖出价上限未确认；上阵时机：反复使用效果牌前先在场，并把主要装备给蒙犽；出售时机：仍需效果牌成长时保留，固定换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-e563be31d3330c3d5",
+      "type": "entry",
+      "key": "西施",
+      "show_key": true,
+      "value": "整备提供推演战术，继续供牌并减少蒙犽法力值上限。觉醒需求：未确认；等级投入：未确认；购买策略：复制庄周补体系后再补入，重复优先级与拍卖出价上限未确认；上阵时机：需要推演与缩蓝时加入；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-70da0002870a56ea7",
+      "type": "entry",
+      "key": "鲁班七号",
+      "show_key": true,
+      "value": "每3次英雄合成随机给战术，为芈月成长和蒙犽施法提供资源。觉醒需求：未确认；等级投入：未确认；购买策略：体系核心到手后补入，拍卖出价上限未确认；上阵时机：开始大量合成前加入；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-ee0045ed1eca5976b",
+      "type": "entry",
+      "key": "老夫子",
+      "show_key": true,
+      "value": "占用打出位参与合成供牌，每回合首次合成取得招募战术。觉醒需求：未确认；等级投入：未确认；购买策略：有打出位与合成收益时使用，重复及拍卖出价上限未确认；上阵时机：未确认；出售时机：未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-yixing",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "精简速升路线的升级经验工具，帮助推进4级供牌核心与6级奇才。觉醒需求：此路线前期争取觉醒，提高升级经验；等级投入：不专养输出，接受自然过渡成长；固定停级未确认；购买策略：前期优先取得有效同名补醒，再为4级找芈月及后续升级留预算；拍卖出价上限未确认；上阵时机：升级前确保在场；出售时机：升级职责结束且需要打出位时比较，固定等级转移方案未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-4fd7d4fd2382432078",
+      "type": "heading",
+      "title": "阵容组成与运营节奏",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-5e56070410dd13e390",
+      "type": "heading",
+      "title": "前期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-1eefff1f01ddcf1469",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "前期运营思路：采用精简速升路线时先争取弈星觉醒，利用升级经验与合成锦囊过渡，进入棋手4级后先用免费刷新找芈月；自然遇到庄周、蒙犽可留，其他体系牌延后。能否继续升本仍看当轮保血，不把单局空场或低血量当作所有开局默认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-f6f2986b2e66743b79",
+      "type": "heading",
+      "title": "中期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-list-35cc2c117f0c256a87",
+      "type": "entry",
+      "key": "蒙犽（核心）",
+      "show_key": true,
+      "value": "取得首张主力；重复投入边界未确认。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-list-987d15c7644ee3c748",
+      "type": "entry",
+      "key": "庄周（核心）",
+      "show_key": true,
+      "value": "复制技能将取得时保留需要的材料。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-a18995425d363bebc7",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "中期运营思路：棋手4级先补芈月，遇庄周、蒙犽取首张并保留复制材料；到5级先保血、取得供牌与主力，再为6级奇才留能量。其余供牌工具按来牌逐步补入，不能为精简投入而放弃当前作战质量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-b6bf817cb5e18ee6e5",
+      "type": "heading",
+      "title": "后期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-list-9828b37b8615271a64",
+      "type": "entry",
+      "key": "蒙犽（核心）",
+      "show_key": true,
+      "value": "取得首张主力；重复投入边界未确认。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-list-d5cc6b348ca724d54a",
+      "type": "entry",
+      "key": "庄周（核心）",
+      "show_key": true,
+      "value": "复制技能将取得时保留需要的材料。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-da3c37a0d7859b8bfd",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "奇才与灵感爆发将取得时先留庄周等需要的材料，再连续供牌与合成；按对手控制和爆发补蒙犽保护，不能提前清空下一次复制目标。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-b694bae8aa5ecc6db1",
+      "type": "heading",
+      "title": "后期提升思路",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-71e82c2effa7ec2fb9",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "持续提高蒙犽等级和有效施法次数，完成暴击、回蓝与保护配装；合成和复制仍能继续时保留庄周材料，再根据当轮战力处理其他资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-80e580b5cbd03c26ec",
+      "type": "heading",
+      "title": "关键装备",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-a80c0044c24ba3374b",
+      "type": "entry",
+      "key": "无尽巨剑",
+      "show_key": true,
+      "value": "蒙犽导弹可以暴击，无尽巨剑用来放大导弹伤害；另外准备回蓝装备，并按控制或爆发压力补免控、保命。法力已经足以连续施法时，额外双重施法不是固定必需条件。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-49e5152e7e7597521",
+      "type": "entry",
+      "key": "法源之杯",
+      "show_key": true,
+      "value": "本教学要求蒙犽有回蓝装备支持连续施法；与无尽巨剑一起补输出循环。已有队友携带阿科米亚之子、能持续给蒙犽回蓝时，可比较腾出回蓝装备位置。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-53a9fcde43af292f9",
+      "type": "entry",
+      "key": "阿科米亚之子",
+      "show_key": true,
+      "value": "穿戴者和周围1格单位每秒恢复4法力值及2%最大生命值。队友携带并能持续覆盖蒙犽时，可为蒙犽提供回蓝，再比较是否腾出法源之杯的位置。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-f9fd9ada7a8ca6301",
+      "type": "heading",
+      "title": "棋手技能选择",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-27dc91daeefb78c1e",
+      "type": "entry",
+      "key": "奇才先复制庄周",
+      "show_key": true,
+      "value": "速升路线到6级后，先把装备全部给蒙犽，再用奇才指定庄周取得4张牌；打出庄周和觉醒庄周，使用取得的招募战术补其余体系。之后灵感爆发按缺口复制蒙犽或庄周，不把两回合达到固定等级视作保证。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-d5a609961f3a39ad6d",
+      "type": "heading",
+      "title": "关键操作",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-5ba7d5ef36328fe1b3",
+      "type": "entry",
+      "key": "复制前保留材料",
+      "show_key": true,
+      "value": "灵感爆发接近解锁时保留所需庄周等非觉醒牌，先整理无用牌，再使用技能并处理本回合的转瞬复制牌。不要为了额外一次合成把下一轮复制目标全部用掉。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-talent-h",
+      "type": "heading",
+      "title": "推荐天赋",
+      "level": 2,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-talent",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-position-h",
+      "type": "heading",
+      "title": "站位技巧",
+      "level": 2,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-position",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-h",
+      "type": "heading",
+      "title": "拍卖",
+      "level": 2,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-1-h",
+      "type": "heading",
+      "title": "第一轮拍卖",
+      "level": 3,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-2-h",
+      "type": "heading",
+      "title": "第二轮拍卖",
+      "level": 3,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-3-h",
+      "type": "heading",
+      "title": "第三轮拍卖",
+      "level": 3,
+      "separator": "\n\n"
+    },
+    {
+      "id": "cov2-meng-auction-3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [
+    {
+      "id": "bex-31b12b844ec8e6515",
+      "type": "heading",
+      "title": "新增运营路线",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-23138c68492df5e01",
+      "type": "entry",
+      "key": "先集中供牌核心再速6",
+      "show_key": true,
+      "value": "此教学前期追弈星觉醒，利用经验与合成锦囊过渡；棋手4级先用免费刷新找芈月，遇庄周、蒙犽可留，其他体系牌延后。棋手5级先保血、取得首张庄周和蒙犽，再为6级奇才留资源；这是精简速升路线，不能套成所有白歌开局都禁止买其他牌。",
+      "separator": "\n\n"
+    }
+  ],
+  "semantics": {
+    "players": [
+      "player:33"
+    ],
+    "core_heroes": [
+      "card:5241",
+      "card:1131",
+      "card:1211"
+    ],
+    "required_factions": [
+      "faction:zhulu"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "采用已有精简速升条件时，不作为全部白歌开局规则。",
+          "role": {
+            "$text": "cov2-meng-yixing"
+          },
+          "claim_refs": [
+            "cov2-cov2-meng-yixing-claim"
+          ]
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5241",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-cfd7679609a6b5c06a"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1131",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-a374f8b92dbfb1a1de"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-cbfd5ce116a0e652b"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "bex-e563be31d3330c3d5"
+          },
+          "claim_refs": [
+            "bex-e563be31d3330c3d5-claim"
+          ]
+        },
+        {
+          "hero": "card:1201",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "b77-8a663f1ef028c6bb98"
+          },
+          "claim_refs": [
+            "b77-8a663f1ef028c6bb98-claim"
+          ]
+        },
+        {
+          "hero": "card:1121",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "bex-70da0002870a56ea7"
+          },
+          "claim_refs": [
+            "bex-70da0002870a56ea7-claim"
+          ]
+        },
+        {
+          "hero": "card:1391",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "bex-ee0045ed1eca5976b"
+          },
+          "claim_refs": [
+            "bex-ee0045ed1eca5976b-claim"
+          ]
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5241",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-cfd7679609a6b5c06a"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1131",
+          "necessity": "required",
+          "role": {
+            "$text": "b77-a374f8b92dbfb1a1de"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-cbfd5ce116a0e652b"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "bex-e563be31d3330c3d5"
+          },
+          "claim_refs": [
+            "bex-e563be31d3330c3d5-claim"
+          ]
+        },
+        {
+          "hero": "card:1201",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "b77-8a663f1ef028c6bb98"
+          },
+          "claim_refs": [
+            "b77-8a663f1ef028c6bb98-claim"
+          ]
+        },
+        {
+          "hero": "card:1121",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "bex-70da0002870a56ea7"
+          },
+          "claim_refs": [
+            "bex-70da0002870a56ea7-claim"
+          ]
+        },
+        {
+          "hero": "card:1391",
+          "necessity": "optional",
+          "condition": "核心已到、需要对应供牌且打出/战斗位置允许时补入，不固定全员同时在场。",
+          "role": {
+            "$text": "bex-ee0045ed1eca5976b"
+          },
+          "claim_refs": [
+            "bex-ee0045ed1eca5976b-claim"
+          ]
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": []
+  }
+}

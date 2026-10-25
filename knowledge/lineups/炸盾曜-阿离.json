@@ -277,6 +277,38 @@
       "id": "n-c4a01fdd6feb81d70853"
     },
     {
+      "id": "a7-yao-pig",
+      "type": "entry",
+      "key": "猪八戒",
+      "show_key": true,
+      "value": "缺芈月时的合成成长补位，3阶及以下英雄合成让同阶英雄加级。觉醒需求：普通同阶+1、觉醒+2，是否专追未确认；等级投入：以合成自然成长为主，不抢曜定向等级；购买策略：芈月未到、准备继续打曜等低阶合成且有位置时取首张，重复是否优先未确认，拍卖出价上限未确认；上阵时机：先上猪八戒再集中有效合成；出售时机：需要换回芈月或终局保护、且不再依赖同阶成长时比较退出，固定转级方法未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-yao-liushan",
+      "type": "entry",
+      "key": "刘禅",
+      "show_key": true,
+      "value": "缺芈月时，以曜施法补临时等级，配明世隐固化。觉醒需求：普通每次施法给施法者2临时等级、醒4；追醒先后未确认；等级投入：自然成长，不专门喂等级；购买策略：缺芈月且能与明世隐形成替代成长时补首张，重复优先未确认，拍卖出价上限未确认；上阵时机：曜已有持续施法条件时加入；出售时机：需用人口补当前保护或更好的成长渠道时比较退出，固定牌序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-yao-ming",
+      "type": "entry",
+      "key": "明世隐",
+      "show_key": true,
+      "value": "配刘禅把曜取得的临时等级中额度内部分固化。觉醒需求：普通2与登场额度+2，醒4与+4，是否专追未确认；等级投入：自然成长，不抢曜定向等级；购买策略：曜已有临时等级而当前转化额度不足时补有效重复，拍卖出价上限未确认；上阵时机：最近连接必须确认曜，且已有刘禅等实际临时等级来源；出售时机：成长需求结束、当前更需保护时比较退出，具体转级方法未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d24-yao-libai",
+      "type": "entry",
+      "key": "李白",
+      "show_key": true,
+      "value": "逐星条件下与曜共战的学习组件，不作为此炸盾路线的固定核心。觉醒需求：本支路专追觉醒要求未确认；等级投入：专门投入与停级点未确认，不能为学习组件挤掉曜当前保血投入；购买策略：已取得逐星可获得李白和曜，额外追牌预算未确认；上阵时机：逐星已取得且有可用人口时与曜共战，需李白实际施法，不能把手中持牌当已完成学习；出售时机：学习后的技能状态和本轮战力需实际核对，是否能固定完成三次就卖李白的通用退出条件未确认，不预支离场后的持续效果；",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 2,
       "title": "阵容组成与运营节奏",
@@ -382,9 +414,9 @@
     },
     {
       "type": "entry",
-      "key": "芈月（必需）",
+      "key": "芈月（可选）",
       "show_key": true,
-      "value": "先取得首张，投入按本阶段运营判断。",
+      "value": "先取首张补效果牌成长；缺芈月时按猪八戒、孙膑合成或刘禅、明世隐施法固化替代，不为她一张牌停掉已有战力。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -460,9 +492,9 @@
     },
     {
       "type": "entry",
-      "key": "芈月（必需）",
+      "key": "芈月（可选）",
       "show_key": true,
-      "value": "先取得首张，投入按本阶段运营判断。",
+      "value": "先取首张补效果牌成长；缺芈月时按猪八戒、孙膑合成或刘禅、明世隐施法固化替代，不为她一张牌停掉已有战力。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -661,6 +693,30 @@
       "id": "n-f4800f7070e5b5ac78b7"
     },
     {
+      "id": "a7-yao-no-miyue",
+      "type": "entry",
+      "key": "芈月缺牌时的成长替代",
+      "show_key": true,
+      "value": "芈月未到或逐鹿同行挤压时，不必停掉曜的成长：已有猪八戒与孙膑时继续有效低阶合成，猪八戒让同阶成员加级，曜自己的合成加级与孙膑施法成长继续生效；已有刘禅、明世隐时，也可由曜频繁施法取得临时等级，再把最近连接曜的额度内等级固化。两条替代只补成长来源，仍要取得西施缩蓝、墨子生命成长和扁鹊破盾输出，不把缺芈月理解为无需这些职责。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-yao-eq-641010",
+      "type": "entry",
+      "key": "凝渊",
+      "show_key": true,
+      "value": "唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。 第三件按敌人阵容比较，承伤可提高曜暴击率和后续移动能力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-yao-eq-643803",
+      "type": "entry",
+      "key": "炽热支配者",
+      "show_key": true,
+      "value": "唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。 第三件可在曜容易先被控制、无法持续产盾时补启动保护，压制不在免疫范围。",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 2,
       "title": "推荐天赋",
@@ -715,6 +771,14 @@
       "key_suffix": "：** ",
       "separator": "\n\n",
       "id": "n-f41e2a437181da953edc"
+    },
+    {
+      "id": "d24-yao-zhuxing",
+      "type": "entry",
+      "key": "逐星",
+      "show_key": true,
+      "value": "获得1张李白和1张曜。共战时，李白释放技能后曜同步模仿李白，3次后融会贯通并领悟更强招式，具体按技能面板核对。已有此天赋且能让李白实际施法时，作为曜的可选上限方案；没有逐星仍按西施缩蓝、墨子生命成长与扁鹊破盾主线完成阵容，不保证取得此天赋或必胜，不将250级与固定升本回合设成统一门槛。",
+      "separator": "\n\n"
     },
     {
       "type": "heading",
@@ -803,6 +867,38 @@
       "key_suffix": "：** ",
       "separator": "\n\n",
       "id": "n-daae9b0938157a6dbf89"
+    },
+    {
+      "id": "a7-common-92001",
+      "type": "entry",
+      "key": "翩跹舞步·新生",
+      "show_key": true,
+      "value": "为枫叶舞挑选1张强化牌。枫叶舞英雄每回合等级+2，且转移后恢复10%最大生命值。 前期由能稳定取得击败的持伞英雄推进，后续曜接管后利用每回合成长与转移恢复。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-common-92002",
+      "type": "entry",
+      "key": "翩跹舞步·蓄势",
+      "show_key": true,
+      "value": "为枫叶舞挑选1张强化牌。枫叶舞英雄击败敌方英雄时永久等级+1。 曜取得击败时继续提高永久等级，不把其他友军的击败计入持伞者。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-common-92003",
+      "type": "entry",
+      "key": "翩跹舞步·流动",
+      "show_key": true,
+      "value": "为枫叶舞挑选1张强化牌。枫叶舞英雄在转移后每击败3名敌方英雄，获得额外的1次转移次数。 转移后继续取得击败才补额外转移次数，先确保曜有实际收割空间。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-common-92004",
+      "type": "entry",
+      "key": "翩跹舞步·进化",
+      "show_key": true,
+      "value": "为枫叶舞挑选1张强化牌。枫叶舞英雄获得本局击败敌方英雄数量×4点物理和法术攻击力。 把曜本局击败数转为双攻，前期持伞过渡和后期主力的击败节奏共同影响成长。",
+      "separator": "\n\n"
     },
     {
       "type": "heading",
@@ -982,7 +1078,7 @@
       "type": "entry",
       "key": "正文",
       "show_key": false,
-      "value": "**墨子：** 整备积累生命上限，较早觉醒有利于后期生存与炸盾伤害；不把其普通攻击输出当作此位置主要目的。",
+      "value": "**墨子：** 友方单位护盾被击破时，该单位生命值上限永久增加，普通卡+30、觉醒+60。较早觉醒有利于后期生存与炸盾伤害；不是由墨子整备触发，不把其普通攻击输出当作此位置主要目的。",
       "separator": ""
     },
     {
@@ -1370,7 +1466,8 @@
           "replacement_note": "",
           "claim_refs": [
             "fmt24-owner-1cf25f143229"
-          ]
+          ],
+          "condition": "采用孙膑施法成长或猪八戒合成配套时；非所有替代路线都固定常驻"
         },
         {
           "hero": "card:5231",
@@ -1394,13 +1491,14 @@
         },
         {
           "hero": "card:1211",
-          "necessity": "required",
+          "necessity": "optional",
           "role": "先取得首张，投入按本阶段运营判断。",
           "replaces": "",
           "replacement_note": "",
           "claim_refs": [
             "fmt24-owner-07b291a9df2f"
-          ]
+          ],
+          "condition": "芈月已取得且采用效果牌成长时；缺牌可按a7-yao-no-miyue替代"
         },
         {
           "hero": "card:1391",
@@ -1410,6 +1508,42 @@
           "replacement_note": "",
           "claim_refs": [
             "fmt24-owner-9a1402885b8b"
+          ]
+        },
+        {
+          "hero": "card:5111",
+          "necessity": "optional",
+          "role": {
+            "$text": "a7-yao-pig"
+          },
+          "condition": "芈月未取得时，按实际已有组件选择成长替代"
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "optional",
+          "role": {
+            "$text": "a7-yao-liushan"
+          },
+          "condition": "芈月未取得时，按实际已有组件选择成长替代"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "role": {
+            "$text": "a7-yao-ming"
+          },
+          "condition": "芈月未取得时，按实际已有组件选择成长替代"
+        },
+        {
+          "hero": "card:1311",
+          "necessity": "optional",
+          "condition": "已取得逐星且实际有共战施法与人口条件",
+          "role": {
+            "$text": "d24-yao-libai"
+          },
+          "claim_refs": [
+            "d24-yao-libai-claim",
+            "d24-yao-zhuxing-claim"
           ]
         }
       ],
@@ -1432,7 +1566,8 @@
           "replacement_note": "",
           "claim_refs": [
             "fmt24-owner-1cf25f143229"
-          ]
+          ],
+          "condition": "采用孙膑施法成长或猪八戒合成配套时；非所有替代路线都固定常驻"
         },
         {
           "hero": "card:5231",
@@ -1456,13 +1591,14 @@
         },
         {
           "hero": "card:1211",
-          "necessity": "required",
+          "necessity": "optional",
           "role": "先取得首张，投入按本阶段运营判断。",
           "replaces": "",
           "replacement_note": "",
           "claim_refs": [
             "fmt24-owner-07b291a9df2f"
-          ]
+          ],
+          "condition": "芈月已取得且采用效果牌成长时；缺牌可按a7-yao-no-miyue替代"
         },
         {
           "hero": "card:1191",
@@ -1502,6 +1638,42 @@
           "replacement_note": "",
           "claim_refs": [
             "hero5-owner-card-5251"
+          ]
+        },
+        {
+          "hero": "card:5111",
+          "necessity": "optional",
+          "role": {
+            "$text": "a7-yao-pig"
+          },
+          "condition": "芈月未取得时，按实际已有组件选择成长替代"
+        },
+        {
+          "hero": "card:1141",
+          "necessity": "optional",
+          "role": {
+            "$text": "a7-yao-liushan"
+          },
+          "condition": "芈月未取得时，按实际已有组件选择成长替代"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "optional",
+          "role": {
+            "$text": "a7-yao-ming"
+          },
+          "condition": "芈月未取得时，按实际已有组件选择成长替代"
+        },
+        {
+          "hero": "card:1311",
+          "necessity": "optional",
+          "condition": "已取得逐星且实际有共战施法与人口条件",
+          "role": {
+            "$text": "d24-yao-libai"
+          },
+          "claim_refs": [
+            "d24-yao-libai-claim",
+            "d24-yao-zhuxing-claim"
           ]
         }
       ]

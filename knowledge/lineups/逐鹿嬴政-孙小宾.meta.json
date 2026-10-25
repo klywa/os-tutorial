@@ -1,0 +1,4992 @@
+{
+  "schema_version": 6,
+  "id": "a14-zhulu-yingzheng-sun",
+  "type": "lineup",
+  "title": "逐鹿嬴政-孙小宾",
+  "lineup_name": "逐鹿嬴政",
+  "path": "knowledge/lineups/逐鹿嬴政-孙小宾.json",
+  "player_id": "player:38",
+  "aliases": [
+    "雷霆战机-孙小宾"
+  ],
+  "entities": [
+    "card:1101",
+    "card:1111",
+    "card:1121",
+    "card:1131",
+    "card:1201",
+    "card:1211",
+    "card:1391",
+    "card:1751",
+    "card:1861",
+    "card:1971",
+    "card:5231",
+    "card:5241",
+    "card:636406",
+    "card:643202",
+    "card:643402",
+    "card:643403",
+    "card:643701",
+    "card:643801",
+    "card:643803",
+    "card:644109",
+    "card:644116",
+    "card:644117",
+    "card:7116",
+    "card:93810",
+    "card:93811",
+    "card:93899",
+    "player:38"
+  ],
+  "related": [
+    "player-38"
+  ],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-24T19:04:22.411896+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "a14-title",
+            "type": "heading",
+            "level": 1,
+            "title": "逐鹿嬴政-孙小宾",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-principle-h",
+            "type": "heading",
+            "level": 2,
+            "title": "核心原理",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-principle",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "嬴政依靠持续发射飞剑承担主要法术输出，使用战术牌会提高他的开团法术攻击力；芈月再把实际效果牌使用转为装备最多逐鹿英雄的等级。白起、蒙犽、庄周、西施和合成工具供给战术，先让嬴政成为芈月实际受益者，再把牌量兑现为输出。孙小宾用时光倒流与两次回环重复有效非觉醒英雄牌和效果牌，帮助补觉醒和延续成长；回蓝、缩蓝和免控让嬴政有机会启动并持续射击，手牌整理能力则决定回环资源能否及时变成当轮战力。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-select-h",
+            "type": "heading",
+            "level": 2,
+            "title": "定阵条件",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-adopt",
+            "type": "entry",
+            "key": "采用条件",
+            "show_key": true,
+            "value": "逐鹿可用，嬴政与芈月能逐步取得，并有有效供牌、缩蓝回蓝及保护条件时采用。适合能提前安排回溯对象、整理较多手牌并及时出牌的玩家；核心未齐时先用过渡保血，不把手里牌多当作已经成型。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-avoid",
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "回环资源已经超过自己当轮处理能力、嬴政不能稳定启动或持续被控制时，先修正回蓝、免控和当前战力，再继续扩大供牌；固定转向阵容及血量门槛未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-mechanism-h",
+            "type": "heading",
+            "level": 2,
+            "title": "核心机制",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-growth",
+            "type": "entry",
+            "key": "战术法强与效果牌等级分开",
+            "show_key": true,
+            "value": "嬴政的开团法强随实际使用战术牌增加；芈月则在使用效果牌时，给装备最多的1名逐鹿英雄加等级，普通每次+1、觉醒+2。先把主要装备集中给嬴政，再使用大量效果牌；供给英雄的触发频率各自计算，不能把买到牌或取得手牌直接算作已经使用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-heroes-h",
+            "type": "heading",
+            "level": 2,
+            "title": "英雄",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1101",
+            "type": "entry",
+            "key": "嬴政",
+            "show_key": true,
+            "value": "主力远程法术输出，靠持续飞剑和战术累积的开团法强作战。觉醒需求：普通可以启动，觉醒提高开团法强基础加成；首轮回环优先帮助核心补醒，固定追醒顺序未确认；等级投入：集中接受芈月与有效战术成长，100级提高飞剑数量并扩展击败后的范围，仍继续提升战力；购买策略：先取得首张，回环有能力兑现有效重复时再补质量，拍卖出价上限未确认；上阵时机：主输出首张到手、有前排与启动资源时加入，保持自身为装备最多的逐鹿英雄；出售时机：仍为主要输出时保留，完整换核流程未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1211",
+            "type": "entry",
+            "key": "芈月",
+            "show_key": true,
+            "value": "把效果牌使用转成嬴政等级，目标由逐鹿英雄实际装备件数决定。觉醒需求：普通每次+1、觉醒+2，首轮回环重点补核心觉醒；等级投入：功能成长，定向资源优先嬴政，独立停级点未确认；购买策略：缺成长核心时先取首张，需要回溯她时可单独安排非觉醒英雄牌，拍卖出价上限未确认；上阵时机：使用大量效果牌前在场，确认嬴政装备件数占优；出售时机：持续效果牌成长时保留，固定退出条件未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1201",
+            "type": "entry",
+            "key": "白起",
+            "show_key": true,
+            "value": "承伤前排，并在每回合首次使用效果牌时提供援护战术，补护盾与战术供给。觉醒需求：普通可给援护，觉醒给高阶援护；本路线追醒次序未确认；等级投入：按当前承伤需要接受成长，固定专养点未确认；购买策略：前排或援护供给有缺口时取首张，拍卖出价上限未确认；上阵时机：需要前排保护嬴政并准备兑现该回合供牌时加入；出售时机：仍承担前排与援护时保留，固定替代成员未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-5231",
+            "type": "entry",
+            "key": "西施",
+            "show_key": true,
+            "value": "整备提供推演战术，为嬴政降低本回合启动法力需求并触发效果牌成长。觉醒需求：普通给推演、觉醒给高阶推演；固定追醒优先级未确认；等级投入：工具自然成长，独立停级点未确认；购买策略：需要持续缩蓝与供牌时取首张，重复投入及拍卖上限未确认；上阵时机：需要整备产出推演前在场，所得牌仍需实际用于嬴政；出售时机：仍需这份推演时保留，替换顺序未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-5241",
+            "type": "entry",
+            "key": "蒙犽",
+            "show_key": true,
+            "value": "在嬴政主养路线中承担登场供特训的工具职责。觉醒需求：普通登场给特训、觉醒给高阶特训；有有效重复与记录空间时可继续补供牌质量；等级投入：本分支不专养，定向成长给嬴政；购买策略：缺特训或需要补回环资源时比较有效重复，拍卖出价上限未确认；上阵时机：有临时打出位时登场取得特训，所得特训指定合法目标后才实际加级；出售时机：供牌已兑现、当前不靠蒙犽输出且需要打出位时可卖，不把这条工具出售方案套到主养蒙犽的另一阵容；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1131",
+            "type": "entry",
+            "key": "庄周",
+            "show_key": true,
+            "value": "登场给招募战术，延续英雄获取与后续效果牌使用。觉醒需求：普通给招募、觉醒给高阶招募；首环可按核心与供给缺口补质量；等级投入：工具自然成长，资源优先嬴政；购买策略：需要继续供牌且来牌和出牌时间允许时买有效重复，拍卖上限未确认；上阵时机：有打出位、准备取得招募时登场；出售时机：已兑现登场且需要腾位时比较退出，不将每张牌都常驻战斗人口；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1121",
+            "type": "entry",
+            "key": "鲁班七号",
+            "show_key": true,
+            "value": "合成工具，每3次合成随机给1张战术，支撑嬴政战术法强与芈月等级。觉醒需求：普通随机战术、觉醒随机高阶战术，固定追醒先后未确认；等级投入：自然成长，不争主要定向等级；购买策略：有足够有效合成和打出位时取首张，重复投入与拍卖上限未确认；上阵时机：准备连续合成前在场；出售时机：合成供给不再需要、腾位收益更高时再比较，固定退场回合未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1391",
+            "type": "entry",
+            "key": "老夫子",
+            "show_key": true,
+            "value": "每回合首次合成给招募战术，补回环记录与找牌资源。觉醒需求：普通招募、觉醒高阶招募，追醒顺序未确认；等级投入：工具自然成长，专门投入未确认；购买策略：本回合能兑现首次合成且需要供牌时比较首张，拍卖上限未确认；上阵时机：本回合合成供给未用且准备合成时在场；出售时机：该回合资源已兑现而打出位不足时比较退出；更换新实例是否重置触发未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1861",
+            "type": "entry",
+            "key": "太乙真人",
+            "show_key": true,
+            "value": "给最近英雄复生，为嬴政争取再次射击的机会。觉醒需求：普通复生、觉醒完美复生，固定追醒顺序未确认；等级投入：功能保护自然成长，不争嬴政定向资源；购买策略：后期需要复生容错时比较首张和有效重复，拍卖上限未确认；上阵时机：保护缺口已高于新增供牌收益时加入，确认嬴政为最近英雄；出售时机：仍需要最近复生时保留，安全退出方案未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1751",
+            "type": "entry",
+            "key": "钟馗",
+            "show_key": true,
+            "value": "后期控制与牺牲降级工具，减轻敌方高等级单位对嬴政的压力。觉醒需求：普通牺牲降10%、觉醒20%，每场限1次，固定追醒顺序未确认；等级投入：10级可战开满法力，是否专门投入及更高停点未确认；购买策略：回环核心质量已经兑现、需要控制或降级时比较首张，拍卖上限未确认；上阵时机：有实际功能缺口和位置时加入，钩最远敌人并检查左右1格牺牲覆盖；出售时机：该控制或降级仍有收益时保留，固定退出条件未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1971",
+            "type": "entry",
+            "key": "弈星",
+            "show_key": true,
+            "value": "前期升级工具，棋手升级时取得额外经验。觉醒需求：普通+2经验、觉醒+4，本路线固定追醒需求未确认；等级投入：功能位不专养；购买策略：前期计划升级时比较首张，未取得时可用已有有效过渡，不为单卡照抄付费搜索；拍卖上限未确认；上阵时机：棋手升级前在场才兑现经验；出售时机：升级职责结束且核心需要位置时比较退出，固定回合未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-hero-1111",
+            "type": "entry",
+            "key": "孙尚香",
+            "show_key": true,
+            "value": "前期登场供免费刷新，在没有弈星时可先用已有来牌维持找牌资源。觉醒需求：普通登场给1次免费刷新、觉醒给2次；小回溯只记录非觉醒英雄牌，不能把觉醒牌当可选回溯目标；等级投入：工具自然成长，专门投入未确认；购买策略：前期已有来牌且需要免费刷新时比较首张，重复与拍卖投入未确认；上阵时机：需要刷新时打出兑现，不要求长期常驻；出售时机：资源已兑现且需要打出位时比较退出，完整替换回合未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-stage-h",
+            "type": "heading",
+            "level": 2,
+            "title": "阵容组成与运营节奏",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-early-h",
+            "type": "heading",
+            "level": 3,
+            "title": "前期英雄组成与运营",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-early-buy",
+            "type": "entry",
+            "key": "英雄购买清单",
+            "show_key": true,
+            "value": "升级前比较弈星，未到时可用孙尚香取得刷新；逐步补芈月与嬴政，缺回蓝时优先解决法源之杯等启动条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-early",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "时光倒流随机处理上一回合合资格出牌；想让它回溯芈月等单个核心时，该回合先集中有效对象，不混入其他英雄或效果牌扩大候选。前期用已有资源保血，首次回环优先补阵容核心质量，不按直播的具体升级回合与透支情况照抄。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-mid-h",
+            "type": "heading",
+            "level": 3,
+            "title": "中期英雄组成与运营",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-mid-buy",
+            "type": "entry",
+            "key": "英雄购买清单",
+            "show_key": true,
+            "value": "先补嬴政、芈月与需要的西施、白起；庄周、蒙犽、鲁班七号和老夫子按实际供牌、合成与位置补入，不要求全部常驻。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-mid",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "先集中主要装备给嬴政、确认芈月在场，再使用战术与其他有效效果牌成长。回蓝和免控未齐时先修正启动与存活，不为更大牌量放弃当轮质量。准备时之回环时先腾手牌和打出位，开启后再安排希望记录的非觉醒英雄及效果牌；首环用于补醒，录制前已打的牌不自动纳入。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-late-h",
+            "type": "heading",
+            "level": 3,
+            "title": "后期英雄组成与运营",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-late-buy",
+            "type": "entry",
+            "key": "英雄购买清单",
+            "show_key": true,
+            "value": "保留嬴政、芈月及有效前排，供牌工具按缺口补重复；需要额外保护或控制时比较太乙真人、钟馗。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-late",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "棋手6级取得永恒时之回环后，先整理空间再开启并记录最多12张合资格牌。下一回合先核对实际触发与新增资源，再继续供牌和成长；操作时间不足时先完成关键输出、保护与转瞬牌，不为录满而堆积无法处理的资源。回环补出的质量已兑现后，按对手补免控、复生或控制，保持芈月有效受益者为嬴政。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-improve-h",
+            "type": "heading",
+            "level": 2,
+            "title": "后期提升思路",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-improve",
+            "type": "entry",
+            "key": "后期提升思路",
+            "show_key": true,
+            "value": "持续把有效战术与芈月加级用于嬴政，同时检查是否能稳定启动并完成飞剑持续输出；免控、实际回蓝与复生仍有缺口时优先处理。机器头固定低攻速，只有外部回蓝足以支撑时才比较它的伤害和负面免疫收益；不能只看面板增伤便先拆掉正在工作的回蓝条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关键装备",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-cup",
+            "type": "entry",
+            "key": "法源之杯",
+            "show_key": true,
+            "value": "每秒回复5法力值，补嬴政前期启动与后续施法。已经有足够缩蓝、或队友灵泉项链与阿科米亚之子实际覆盖其回蓝时，再比较换装；不能把队友仅持有装备当作嬴政已被覆盖。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-control",
+            "type": "entry",
+            "key": "炽热支配者",
+            "show_key": true,
+            "value": "首次受控后获得300护盾与15秒免控，压制除外。嬴政需要持续施法而被控制中断时优先补这一保护；不能把某次免控下的胜局扩大为对所有控制与海月机制无条件免疫。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-penetration",
+            "type": "entry",
+            "key": "虚无法杖",
+            "show_key": true,
+            "value": "提供15点法术防御穿透。嬴政依靠多段法术飞剑输出，在启动与生存条件已能工作时比较穿透收益；这项属性不把法术伤害改成真实伤害。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-cocoon",
+            "type": "entry",
+            "key": "破茧之衣",
+            "show_key": true,
+            "value": "开战法力值+15，同时眩晕敌方等级最高3名英雄中的随机1名，持续时间随目标等级提高、最多5秒。需要开局更早施法时可比较，不能将初始法力当作后续持续回蓝。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-machine",
+            "type": "entry",
+            "key": "机器头",
+            "show_key": true,
+            "value": "战斗开始固定0.4攻击速度，获得60%伤害加成并免疫负面效果。低普攻频率会影响依赖普攻的回蓝，因此已有稳定法源之杯，或队友灵泉项链与阿科米亚之子实际补足回蓝时，才比较这件装备与其他输出、保护装的取舍。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-spring",
+            "type": "entry",
+            "key": "灵泉项链",
+            "show_key": true,
+            "value": "开战使周围1格单位每秒回4法力值，穿戴者法力值上限-10。队友穿戴时要让嬴政确实处于回蓝范围，才可用作机器头或其他换装方案的外部回蓝条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-son",
+            "type": "entry",
+            "key": "阿科米亚之子",
+            "show_key": true,
+            "value": "穿戴者及周围1格单位每秒回4法力值与2%最大生命值，友军经过可取得同等效果8秒。队友携带并实际覆盖嬴政时可补回蓝和恢复；这里使用恢复功能，不据装备名称把日落海核心列为本阵容必须。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-lifesteal",
+            "type": "entry",
+            "key": "噬神之书",
+            "show_key": true,
+            "value": "提供100法术攻击力和60%法术吸血。嬴政能持续施法、还需要伤害后的恢复时比较吸血位；回复不能替代尚未解决的开局启动或免控条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-eq-blade",
+            "type": "entry",
+            "key": "名刀司命",
+            "show_key": true,
+            "value": "承受致命伤害时提供保命窗口。持续输出仍可能被瞬间击败时比较这一保护；回溯取得多件名刀也不能把限定的保命效果计算成多次免死。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-talents-h",
+            "type": "heading",
+            "level": 2,
+            "title": "推荐天赋",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-talent-policy",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "回环会集中带来大量英雄与效果牌，选择能补有效供给或当前质量的天赋时，先检查是否有出牌时间和空位；本源没有已确认的通用必拿天赋排序。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-fuxian",
+            "type": "entry",
+            "key": "复现",
+            "show_key": true,
+            "value": "每回合首次对逐鹿英雄使用的效果牌返回手牌并附加转瞬。已有复现且希望重复给嬴政的有效效果时，可先对嬴政使用该牌，再在当回合实际用出返还牌；返还不等于自动再次使用，仍须确认这回合资格和操作时间。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-skills-h",
+            "type": "heading",
+            "level": 2,
+            "title": "棋手技能选择",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-small",
+            "type": "entry",
+            "key": "时光倒流",
+            "show_key": true,
+            "value": "随机触发上一回合使用过的1张非觉醒英雄牌或效果牌。需要稳妥回溯芈月等核心时，单独安排合资格对象；混用其他英雄和效果牌后，不能保证随机命中想要的卡。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-ring",
+            "type": "entry",
+            "key": "时之回环",
+            "show_key": true,
+            "value": "使用后才记录随后使用的最多8张非觉醒英雄牌和效果牌，下一回合开始再次触发。首轮优先记录能帮助核心觉醒、供牌或加级的有效资源，先保空间再连续出牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-big",
+            "type": "entry",
+            "key": "永恒时之回环",
+            "show_key": true,
+            "value": "使用后记录随后使用的最多12张非觉醒英雄牌和效果牌，下一回合开始再次触发。牌量爆发更大，开启前先确认手牌、临时打出位和可用时间，不能将取得技能等同自动重放此前任意12张牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-effect-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关键效果牌",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-tuiyan",
+            "type": "entry",
+            "key": "推演战术",
+            "show_key": true,
+            "value": "普通减少指定英雄5点法力值上限，本回合渐强上限20；高阶每次减少10、上限40。西施整备给的牌需实际用于嬴政，才能帮助本回合启动并触发芈月成长，不能把取得手牌写成已经永久缩蓝。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-train",
+            "type": "entry",
+            "key": "特训战术",
+            "show_key": true,
+            "value": "对指定英雄加4级。蒙犽登场供牌后，实际用于嬴政可以与芈月的效果牌加级同时产生收益；固定一次得到多少张、以及固定整轮加级总量未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-nova",
+            "type": "entry",
+            "key": "能量超新星",
+            "show_key": true,
+            "value": "每次随机获得10–20能量。已取得且回环记录资源、回溯资格和当前战力允许时，可安排再次触发以补后续买牌资源；每次仍随机，不将示例“20”或两次触发写成固定40能量。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-ops-h",
+            "type": "heading",
+            "level": 2,
+            "title": "关键操作",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-record-order",
+            "type": "entry",
+            "key": "先定回溯再处理供牌",
+            "show_key": true,
+            "value": "小回溯需要指定收益时，先看本回合哪些非觉醒英雄和效果牌会进入下回合候选；想集中回芈月时不要顺手混入其他有效牌。批量回环则先整理空间、开启技能，再连续使用要记录的牌；取得招募等新手牌后，先检查剩余记录次数与时间，不把无效资源塞满。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-use-supply",
+            "type": "entry",
+            "key": "工具供牌与主力分开",
+            "show_key": true,
+            "value": "芈月先在场且嬴政为装备最多的逐鹿英雄，再用蒙犽登场取得的特训、庄周招募等效果牌成长。蒙犽在这里是供牌工具，登场与有用合成资源兑现后，可按打出位退出；鲁班每3次合成随机供战术，老夫子只在本回合首次合成供牌，不能把全部合成都当作无限招募。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-position-h",
+            "type": "heading",
+            "level": 2,
+            "title": "站位技巧",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-position",
+            "type": "entry",
+            "key": "回蓝与保护覆盖",
+            "show_key": true,
+            "value": "太乙加入后，确认最近保护目标为嬴政。队友灵泉项链按周围1格提供回蓝，阿科米亚之子按周围1格或经过后的8秒效果计算；使用这些条件替换法源之杯前，先核实嬴政在实际战斗中持续取得回蓝。其他完整站位未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-h",
+            "type": "heading",
+            "level": 2,
+            "title": "拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-h-1",
+            "type": "heading",
+            "level": 3,
+            "title": "第一轮拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-1",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-h-2",
+            "type": "heading",
+            "level": 3,
+            "title": "第二轮拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-2",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-h-3",
+            "type": "heading",
+            "level": 3,
+            "title": "第三轮拍卖",
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "a14-auction-3",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {
+          "players": [
+            "player:38"
+          ],
+          "required_factions": [
+            "faction:zhulu"
+          ],
+          "core_heroes": [
+            "card:1101",
+            "card:1211"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:1971",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1971"
+                }
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1111"
+                }
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:1101",
+                "necessity": "required",
+                "role": {
+                  "$text": "a14-hero-1101"
+                }
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required",
+                "role": {
+                  "$text": "a14-hero-1211"
+                }
+              },
+              {
+                "hero": "card:1201",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1201"
+                }
+              },
+              {
+                "hero": "card:5231",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-5231"
+                }
+              },
+              {
+                "hero": "card:5241",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-5241"
+                }
+              },
+              {
+                "hero": "card:1131",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1131"
+                }
+              },
+              {
+                "hero": "card:1121",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1121"
+                }
+              },
+              {
+                "hero": "card:1391",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1391"
+                }
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:1101",
+                "necessity": "required",
+                "role": {
+                  "$text": "a14-hero-1101"
+                }
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required",
+                "role": {
+                  "$text": "a14-hero-1211"
+                }
+              },
+              {
+                "hero": "card:1201",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1201"
+                }
+              },
+              {
+                "hero": "card:5231",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-5231"
+                }
+              },
+              {
+                "hero": "card:5241",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-5241"
+                }
+              },
+              {
+                "hero": "card:1131",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1131"
+                }
+              },
+              {
+                "hero": "card:1121",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1121"
+                }
+              },
+              {
+                "hero": "card:1391",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1391"
+                }
+              },
+              {
+                "hero": "card:1861",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1861"
+                }
+              },
+              {
+                "hero": "card:1751",
+                "necessity": "optional",
+                "role": {
+                  "$text": "a14-hero-1751"
+                }
+              }
+            ]
+          },
+          "ban_conditions": [],
+          "matchups": [],
+          "membership_scope": {
+            "$text": "a14-mid-buy"
+          }
+        }
+      },
+      "claim_annotations": [
+        {
+          "id": "a14-principle-claim",
+          "text_ref": "a14-principle",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 409.02
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1525.83,
+              "end": 1585.25
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-adopt-claim",
+          "text_ref": "a14-adopt",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 746.52
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1691.67,
+              "end": 1756.29
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 156,
+              "paragraph_end": 156
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-avoid-claim",
+          "text_ref": "a14-avoid",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1132.33,
+              "end": 1161.53
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1275.28,
+              "end": 1311.05
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1691.67,
+              "end": 1756.29
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-growth-claim",
+          "text_ref": "a14-growth",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 703.81
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 52,
+              "paragraph_end": 52
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 156,
+              "paragraph_end": 156
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 158,
+              "paragraph_end": 158
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1101-claim",
+          "text_ref": "a14-hero-1101",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 409.02
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 746.52
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1211-claim",
+          "text_ref": "a14-hero-1211",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 233.21,
+              "end": 268.17
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 409.02
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 676.98
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1201-claim",
+          "text_ref": "a14-hero-1201",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 648.01,
+              "end": 703.81
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-5231-claim",
+          "text_ref": "a14-hero-5231",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 677.21,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 747.18,
+              "end": 790.4
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 156,
+              "paragraph_end": 156
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 496,
+              "paragraph_end": 496
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 497,
+              "paragraph_end": 497
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-5241-claim",
+          "text_ref": "a14-hero-5241",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 648.01,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1316.43,
+              "end": 1364.26
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1497.75
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 158,
+              "paragraph_end": 158
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 492,
+              "paragraph_end": 492
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1131-claim",
+          "text_ref": "a14-hero-1131",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 648.01,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1132.33,
+              "end": 1161.53
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1121-claim",
+          "text_ref": "a14-hero-1121",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 677.21,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1316.43,
+              "end": 1364.26
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1391-claim",
+          "text_ref": "a14-hero-1391",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 677.21,
+              "end": 703.81
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 52,
+              "paragraph_end": 52
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1861-claim",
+          "text_ref": "a14-hero-1861",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1464.78
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1691.67,
+              "end": 1725.93
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1751-claim",
+          "text_ref": "a14-hero-1751",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1464.78
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1757.16,
+              "end": 1766.42
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1971-claim",
+          "text_ref": "a14-hero-1971",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 37.6,
+              "end": 96.72
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 114,
+              "paragraph_end": 114
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-hero-1111-claim",
+          "text_ref": "a14-hero-1111",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 37.6,
+              "end": 96.72
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-early-buy-claim",
+          "text_ref": "a14-early-buy",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 37.6,
+              "end": 64.44
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 210.17,
+              "end": 268.17
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 114,
+              "paragraph_end": 114
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-early-claim",
+          "text_ref": "a14-early",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 37.6,
+              "end": 96.72
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 233.21,
+              "end": 268.17
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 409.02
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-mid-buy-claim",
+          "text_ref": "a14-mid-buy",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 703.81
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 156,
+              "paragraph_end": 156
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 158,
+              "paragraph_end": 158
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 52,
+              "paragraph_end": 52
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-mid-claim",
+          "text_ref": "a14-mid",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 473.76
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 611.58,
+              "end": 790.4
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-late-buy-claim",
+          "text_ref": "a14-late-buy",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1497.75
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1691.67,
+              "end": 1766.42
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-late-claim",
+          "text_ref": "a14-late",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1026.26,
+              "end": 1161.53
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1275.28,
+              "end": 1364.26
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1464.78
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-improve-claim",
+          "text_ref": "a14-improve",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1525.83,
+              "end": 1585.25
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1616.03,
+              "end": 1678.35
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1691.67,
+              "end": 1725.93
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 777,
+              "paragraph_end": 777
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 785,
+              "paragraph_end": 785
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-cup-claim",
+          "text_ref": "a14-eq-cup",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 0.54,
+              "end": 37.06
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1616.03,
+              "end": 1678.35
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 777,
+              "paragraph_end": 777
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 785,
+              "paragraph_end": 785
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-control-claim",
+          "text_ref": "a14-eq-control",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1525.83,
+              "end": 1555.01
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1398.22,
+              "end": 1464.78
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-penetration-claim",
+          "text_ref": "a14-eq-penetration",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1525.83,
+              "end": 1585.25
+            },
+            {
+              "type": "document",
+              "source": "doc-055721327f01f249aea1d0d7bedfdafdb3eb237ba6e7ac3af0ca82bf6ea415a1",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-cocoon-claim",
+          "text_ref": "a14-eq-cocoon",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 0.54,
+              "end": 37.06
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1650.88,
+              "end": 1678.35
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 744,
+              "paragraph_end": 744
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-machine-claim",
+          "text_ref": "a14-eq-machine",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 705.82,
+              "end": 790.4
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1616.03,
+              "end": 1645.72
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 743,
+              "paragraph_end": 743
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 777,
+              "paragraph_end": 777
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 785,
+              "paragraph_end": 785
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-spring-claim",
+          "text_ref": "a14-eq-spring",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1616.03,
+              "end": 1645.72
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 777,
+              "paragraph_end": 777
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-son-claim",
+          "text_ref": "a14-eq-son",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1616.03,
+              "end": 1645.72
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 785,
+              "paragraph_end": 785
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-lifesteal-claim",
+          "text_ref": "a14-eq-lifesteal",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1555.63,
+              "end": 1585.25
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 763,
+              "paragraph_end": 763
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-eq-blade-claim",
+          "text_ref": "a14-eq-blade",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 967.9,
+              "end": 1025.98
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1555.63,
+              "end": 1585.25
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 759,
+              "paragraph_end": 759
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-talent-policy-claim",
+          "text_ref": "a14-talent-policy",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 568.71,
+              "end": 606.1
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1132.33,
+              "end": 1161.53
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-fuxian-claim",
+          "text_ref": "a14-fuxian",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 568.71,
+              "end": 606.1
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 705.82,
+              "end": 746.52
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 662,
+              "paragraph_end": 662
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-small-claim",
+          "text_ref": "a14-small",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 37.6,
+              "end": 96.72
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 233.21,
+              "end": 268.17
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-ring-claim",
+          "text_ref": "a14-ring",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 473.76
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 539.96,
+              "end": 566.51
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-big-claim",
+          "text_ref": "a14-big",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1026.26,
+              "end": 1161.53
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1275.28,
+              "end": 1311.05
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 847,
+              "paragraph_end": 847
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-tuiyan-claim",
+          "text_ref": "a14-tuiyan",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 677.21,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1650.88,
+              "end": 1678.35
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 496,
+              "paragraph_end": 496
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 497,
+              "paragraph_end": 497
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 156,
+              "paragraph_end": 156
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-train-claim",
+          "text_ref": "a14-train",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1497.75
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 158,
+              "paragraph_end": 158
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 492,
+              "paragraph_end": 492
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-nova-claim",
+          "text_ref": "a14-nova",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 967.9,
+              "end": 1025.98
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 219,
+              "paragraph_end": 219
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-record-order-claim",
+          "text_ref": "a14-record-order",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 233.21,
+              "end": 268.17
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 371.85,
+              "end": 473.76
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1132.33,
+              "end": 1161.53
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 370,
+              "paragraph_end": 370
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 368,
+              "paragraph_end": 368
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 369,
+              "paragraph_end": 369
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-use-supply-claim",
+          "text_ref": "a14-use-supply",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 648.01,
+              "end": 703.81
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1316.43,
+              "end": 1364.26
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1432.83,
+              "end": 1497.75
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 158,
+              "paragraph_end": 158
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 19,
+              "paragraph_end": 19
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 52,
+              "paragraph_end": 52
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        },
+        {
+          "id": "a14-position-claim",
+          "text_ref": "a14-position",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1616.03,
+              "end": 1645.72
+            },
+            {
+              "type": "video",
+              "source": "BV1JQpJ6UEaq:p1",
+              "start": 1691.67,
+              "end": 1725.93
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 96,
+              "paragraph_end": 96
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 777,
+              "paragraph_end": 777
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 785,
+              "paragraph_end": 785
+            }
+          ],
+          "origin": "batch77_a_stage14"
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "a14-principle-claim",
+      "text_ref": "a14-principle",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-adopt-claim",
+      "text_ref": "a14-adopt",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 746.52
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1756.29
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-avoid-claim",
+      "text_ref": "a14-avoid",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1311.05
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1756.29
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-growth-claim",
+      "text_ref": "a14-growth",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 52,
+          "paragraph_end": 52
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 158,
+          "paragraph_end": 158
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1101-claim",
+      "text_ref": "a14-hero-1101",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 746.52
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1211-claim",
+      "text_ref": "a14-hero-1211",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 676.98
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1201-claim",
+      "text_ref": "a14-hero-1201",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 648.01,
+          "end": 703.81
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-5231-claim",
+      "text_ref": "a14-hero-5231",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 677.21,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 747.18,
+          "end": 790.4
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 496,
+          "paragraph_end": 496
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 497,
+          "paragraph_end": 497
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-5241-claim",
+      "text_ref": "a14-hero-5241",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 648.01,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1316.43,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1497.75
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 158,
+          "paragraph_end": 158
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 492,
+          "paragraph_end": 492
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1131-claim",
+      "text_ref": "a14-hero-1131",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 648.01,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1121-claim",
+      "text_ref": "a14-hero-1121",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 677.21,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1316.43,
+          "end": 1364.26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1391-claim",
+      "text_ref": "a14-hero-1391",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 677.21,
+          "end": 703.81
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 52,
+          "paragraph_end": 52
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1861-claim",
+      "text_ref": "a14-hero-1861",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1725.93
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1751-claim",
+      "text_ref": "a14-hero-1751",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1757.16,
+          "end": 1766.42
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1971-claim",
+      "text_ref": "a14-hero-1971",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 37.6,
+          "end": 96.72
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-hero-1111-claim",
+      "text_ref": "a14-hero-1111",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 37.6,
+          "end": 96.72
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-early-buy-claim",
+      "text_ref": "a14-early-buy",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 37.6,
+          "end": 64.44
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 210.17,
+          "end": 268.17
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-early-claim",
+      "text_ref": "a14-early",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 37.6,
+          "end": 96.72
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-mid-buy-claim",
+      "text_ref": "a14-mid-buy",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 158,
+          "paragraph_end": 158
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 52,
+          "paragraph_end": 52
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-mid-claim",
+      "text_ref": "a14-mid",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 473.76
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 790.4
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-late-buy-claim",
+      "text_ref": "a14-late-buy",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1497.75
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1766.42
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-late-claim",
+      "text_ref": "a14-late",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1026.26,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-improve-claim",
+      "text_ref": "a14-improve",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1678.35
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1725.93
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-cup-claim",
+      "text_ref": "a14-eq-cup",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 0.54,
+          "end": 37.06
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1678.35
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-control-claim",
+      "text_ref": "a14-eq-control",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1555.01
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1398.22,
+          "end": 1464.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-penetration-claim",
+      "text_ref": "a14-eq-penetration",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-055721327f01f249aea1d0d7bedfdafdb3eb237ba6e7ac3af0ca82bf6ea415a1",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-cocoon-claim",
+      "text_ref": "a14-eq-cocoon",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 0.54,
+          "end": 37.06
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1650.88,
+          "end": 1678.35
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 744,
+          "paragraph_end": 744
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-machine-claim",
+      "text_ref": "a14-eq-machine",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 705.82,
+          "end": 790.4
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1645.72
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-spring-claim",
+      "text_ref": "a14-eq-spring",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1645.72
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-son-claim",
+      "text_ref": "a14-eq-son",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1645.72
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-lifesteal-claim",
+      "text_ref": "a14-eq-lifesteal",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1555.63,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 763,
+          "paragraph_end": 763
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-eq-blade-claim",
+      "text_ref": "a14-eq-blade",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 967.9,
+          "end": 1025.98
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1555.63,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 759,
+          "paragraph_end": 759
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-talent-policy-claim",
+      "text_ref": "a14-talent-policy",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 568.71,
+          "end": 606.1
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-fuxian-claim",
+      "text_ref": "a14-fuxian",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 568.71,
+          "end": 606.1
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 705.82,
+          "end": 746.52
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 662,
+          "paragraph_end": 662
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-small-claim",
+      "text_ref": "a14-small",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 37.6,
+          "end": 96.72
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-ring-claim",
+      "text_ref": "a14-ring",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 473.76
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 539.96,
+          "end": 566.51
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-big-claim",
+      "text_ref": "a14-big",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1026.26,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1311.05
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 847,
+          "paragraph_end": 847
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-tuiyan-claim",
+      "text_ref": "a14-tuiyan",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 677.21,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1650.88,
+          "end": 1678.35
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 496,
+          "paragraph_end": 496
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 497,
+          "paragraph_end": 497
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-train-claim",
+      "text_ref": "a14-train",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1497.75
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 158,
+          "paragraph_end": 158
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 492,
+          "paragraph_end": 492
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-nova-claim",
+      "text_ref": "a14-nova",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 967.9,
+          "end": 1025.98
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 219,
+          "paragraph_end": 219
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-record-order-claim",
+      "text_ref": "a14-record-order",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 473.76
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-use-supply-claim",
+      "text_ref": "a14-use-supply",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 648.01,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1316.43,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1497.75
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 158,
+          "paragraph_end": 158
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 17,
+          "paragraph_end": 17
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 52,
+          "paragraph_end": 52
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "a14-position-claim",
+      "text_ref": "a14-position",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1645.72
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1725.93
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        }
+      ],
+      "origin": "batch77_a_stage14"
+    },
+    {
+      "id": "c14-cover-sun-owner-claim",
+      "text_ref": "c14-cover-sun-owner",
+      "kind": "mechanic",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fix.json",
+        "inherited_node_refs": [
+          "a14-principle"
+        ],
+        "basis": "当前正式已审结论及其同claim直接依据重新核对，提炼可见摘要；未声称本次重新全文审核JQpJ"
+      }
+    },
+    {
+      "id": "c14-cover-sun-core-claim",
+      "text_ref": "c14-cover-sun-core",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 746.52
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 676.98
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fix.json",
+        "inherited_node_refs": [
+          "a14-hero-1101",
+          "a14-hero-1211"
+        ],
+        "basis": "当前正式已审结论及其同claim直接依据重新核对，提炼可见摘要；未声称本次重新全文审核JQpJ"
+      }
+    },
+    {
+      "id": "c14-cover-sun-faction-claim",
+      "text_ref": "c14-cover-sun-faction",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 746.52
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1756.29
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 676.98
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fix.json",
+        "inherited_node_refs": [
+          "a14-adopt",
+          "a14-hero-1101",
+          "a14-hero-1211"
+        ],
+        "basis": "当前正式已审结论及其同claim直接依据重新核对，提炼可见摘要；未声称本次重新全文审核JQpJ"
+      }
+    },
+    {
+      "id": "c14-cover-sun-end-claim",
+      "text_ref": "c14-cover-sun-end",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1026.26,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 746.52
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1678.35
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1725.93
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fix.json",
+        "inherited_node_refs": [
+          "a14-late",
+          "a14-hero-1101",
+          "a14-improve"
+        ],
+        "basis": "当前正式已审结论及其同claim直接依据重新核对，提炼可见摘要；未声称本次重新全文审核JQpJ"
+      }
+    },
+    {
+      "id": "c14-cover-sun-time-claim",
+      "text_ref": "c14-cover-sun-time",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1026.26,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fix.json",
+        "inherited_node_refs": [
+          "a14-late"
+        ],
+        "basis": "当前正式已审结论及其同claim直接依据重新核对，提炼可见摘要；未声称本次重新全文审核JQpJ"
+      }
+    },
+    {
+      "id": "c14-cover-sun-nav-claim",
+      "text_ref": "c14-cover-sun-nav",
+      "kind": "mechanic",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 409.02
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fix.json",
+        "inherited_node_refs": [
+          "a14-principle"
+        ],
+        "basis": "当前正式已审结论及其同claim直接依据重新核对，提炼可见摘要；未声称本次重新全文审核JQpJ"
+      }
+    },
+    {
+      "id": "c14-cover-sun-eval-adv-claim",
+      "text_ref": "c14-cover-sun-eval-adv",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 473.76
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1756.29
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fixed.json",
+        "inherited_nodes": [
+          {
+            "note": "player-38",
+            "node": "a14-player-adv"
+          },
+          {
+            "note": "player-38",
+            "node": "a14-player-adopt"
+          }
+        ],
+        "basis": "本次实际读取当前已审玩家/阵容节点及同claim直接依据后提炼；不新增数值、回合、胜率或全源审读声明"
+      }
+    },
+    {
+      "id": "c14-cover-sun-eval-risk-claim",
+      "text_ref": "c14-cover-sun-eval-risk",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1311.05
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fixed.json",
+        "inherited_nodes": [
+          {
+            "note": "player-38",
+            "node": "a14-player-risk"
+          },
+          {
+            "note": "player-38",
+            "node": "a14-player-avoid"
+          }
+        ],
+        "basis": "本次实际读取当前已审玩家/阵容节点及同claim直接依据后提炼；不新增数值、回合、胜率或全源审读声明"
+      }
+    },
+    {
+      "id": "c14-cover-sun-eval-formation-claim",
+      "text_ref": "c14-cover-sun-eval-formation",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 703.81
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1756.29
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 473.76
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 611.58,
+          "end": 790.4
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 743,
+          "paragraph_end": 743
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1311.05
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1026.26,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1525.83,
+          "end": 1585.25
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1616.03,
+          "end": 1678.35
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1691.67,
+          "end": 1725.93
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 777,
+          "paragraph_end": 777
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 785,
+          "paragraph_end": 785
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fixed.json",
+        "inherited_nodes": [
+          {
+            "note": "player-38",
+            "node": "a14-player-adopt"
+          },
+          {
+            "note": "player-38",
+            "node": "a14-player-middle"
+          },
+          {
+            "note": "player-38",
+            "node": "a14-player-avoid"
+          },
+          {
+            "note": "a14-zhulu-yingzheng-sun",
+            "node": "a14-late"
+          },
+          {
+            "note": "a14-zhulu-yingzheng-sun",
+            "node": "a14-improve"
+          }
+        ],
+        "basis": "本次实际读取当前已审玩家/阵容节点及同claim直接依据后提炼；不新增数值、回合、胜率或全源审读声明"
+      }
+    },
+    {
+      "id": "c14-cover-sun-eval-operation-claim",
+      "text_ref": "c14-cover-sun-eval-operation",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 233.21,
+          "end": 268.17
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 371.85,
+          "end": 473.76
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1132.33,
+          "end": 1161.53
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 370,
+          "paragraph_end": 370
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 368,
+          "paragraph_end": 368
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 369,
+          "paragraph_end": 369
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1026.26,
+          "end": 1161.53
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1275.28,
+          "end": 1364.26
+        },
+        {
+          "type": "video",
+          "source": "BV1JQpJ6UEaq:p1",
+          "start": 1432.83,
+          "end": 1464.78
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 765,
+          "paragraph_end": 765
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-stage14-coverage-fixed.json",
+        "inherited_nodes": [
+          {
+            "note": "a14-zhulu-yingzheng-sun",
+            "node": "a14-record-order"
+          },
+          {
+            "note": "a14-zhulu-yingzheng-sun",
+            "node": "a14-late"
+          }
+        ],
+        "basis": "本次实际读取当前已审玩家/阵容节点及同claim直接依据后提炼；不新增数值、回合、胜率或全源审读声明"
+      }
+    }
+  ],
+  "body_sha256": "d18a50d22140a5dbbc9be6c74fe0fa09c7a5d1686cf2b43cca6c8837fa3a0c01",
+  "revision": "08cbf43ec0fe7b37a524",
+  "retired_claim_annotations": []
+}

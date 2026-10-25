@@ -1,0 +1,731 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "c6-pig-h1",
+      "type": "heading",
+      "level": 1,
+      "title": "猪虎轲-镜",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n2",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "镜",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n3",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "猪八戒、裴擒虎、明世隐、阿轲，四名均为三阶无阵营英雄。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n4",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "无。已确认的四人成长骨架均属无阵营，不依赖可禁用阵营；可选过渡和装备另检查实际获取。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h5",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n6",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "猪八戒把三阶及以下英雄合成转成同阶队友等级；阿轲反复登场提升自身和随机友军，裴擒虎整备随机取得其他英雄等级对应的临时等级，明世隐连接裴擒虎后把许可范围内的临时等级转成永久等级。镜像补刚打出的真实英雄，四张镜像换来的万镜在仅有这四种英雄时覆盖四名核心，帮助补合成与觉醒。最终猪八戒负责承伤、积累永久生命并以生命相关范围伤害反打，裴擒虎和阿轲补物理输出；复制、合成和转化形成成长，不能把取得四张首牌就视为无资源成本必定999。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h7",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n8",
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "四种无阵营核心可获取，镜像和刷新预算能兼顾，且能把明世隐最近连接设为裴擒虎时采用。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n9",
+      "type": "entry",
+      "key": "放弃或转向",
+      "show_key": true,
+      "value": "缺核心且血线承压时先补有用三阶战力；不要为固定四人名单耗尽资源，也不要只为遗志无限等待而放弃当前装备与战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h10",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n11",
+      "type": "entry",
+      "key": "猪八戒",
+      "show_key": true,
+      "value": "主要承伤与生命值相关范围输出，三阶合成提升同阶队友等级。觉醒需求：优先觉醒，把同阶合成+1提升到+2；等级投入：100级取消永久生命总层数上限，仍每回合最多100层；永久生命不是等级转移给其他英雄的资产；购买策略：首张启动，重复与镜像用于有效合成和夺取；拍卖出价上限未确认；上阵时机：大量三阶合成前先上场；使用本牌时才从周围1格随机1名友军夺取最多10级，排除临时等级；出售时机：仍为承伤主力时保留，不为终局转级直接出售；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n12",
+      "type": "entry",
+      "key": "裴擒虎",
+      "show_key": true,
+      "value": "随机整备临时成长与物理输出，明世隐最近连接的转永久目标。觉醒需求：普通整备取其他随机1名英雄一半等级，觉醒取完整等级，均不可叠加；等级投入：40级开战化虎，100级强化虎形态；接受明世隐转化但不把临时等级当遗志可转资产；购买策略：首张后用真实英雄与镜像补质量；全员醒后优先级低于明世隐与阿轲的重复收益，拍卖出价上限未确认；上阵时机：明世隐最近连接安排妥当后兑现整备成长，终局触发前检查其他在场候选；出售时机：常规双输出时保留；遗志终局只在已确认接收者和替代副本后移除旧卡；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n13",
+      "type": "entry",
+      "key": "明世隐",
+      "show_key": true,
+      "value": "连接最近英雄，把其许可额度内临时等级转永久；登场提高可转化上限。觉醒需求：觉醒由2级与登场+2提高到4级与登场+4，反复登场有收益；等级投入：自然合成成长，专门战斗投入门槛未确认；上限仍受实际临时来源限制；购买策略：四种核心首张已齐、猪八戒已醒后，优先比较明世隐的觉醒与重复登场；全员醒后镜像优先比较明世隐，再比较阿轲等有效成长牌；拍卖出价上限未确认；上阵时机：先保证最近目标为裴擒虎；需要猪夺取工具永久等级时再调整邻接，不能同时声称连接两个目标；出售时机：继续固化时保留；确认停止成长且传承接收者安排正确后才处理并卖出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n14",
+      "type": "entry",
+      "key": "阿轲",
+      "show_key": true,
+      "value": "登场提升自身与随机友军，低棋手生命使触发次数增加，兼任物理输出。觉醒需求：觉醒每次登场由+1变+2，按主力与重复牌进度补醒；等级投入：接受合成与登场成长，40级改善早期不优先被攻击、100级战斗中不优先被攻击且技能必暴击；购买策略：核心首张后用镜像补质量，醒后重复与明世隐一起比较；不为登场加成主动卖血，拍卖出价上限未确认；上阵时机：受益英雄已在场且有打出空间时上，随机加级不保证总给裴擒虎；出售时机：常规仍输出时保留；结束成长且能安全分配永久等级后才转出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n15",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "升级过渡工具，帮助较早进入三阶核心搜牌阶段。觉醒需求：普通可过渡，是否专追觉醒未确认；等级投入：不专门喂战斗等级；购买策略：自然首张过渡，不为找弈星反复刷新，拍卖出价上限未确认；上阵时机：需要棋手升级收益前在场；出售时机：升级收益兑现且需要核心位置后再出售，是否先转等级按实际效果牌；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h16",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h17",
+      "type": "heading",
+      "level": 3,
+      "title": "前期",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n18",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "可用单弈星过渡，核心没有自然出现时先留镜像与升级预算，不付费专找过渡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n19",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "先留获取镜像的能量，镜像可以暂存。来源给出第三回合升2级、第四回合升3级找核心的路线，适用于当前资源和血线允许的过渡；不将连败或该时表推广为所有来牌都必须照做。升级后优先找四种核心首张，缺牌和低血时先补能活下来的战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h20",
+      "type": "heading",
+      "level": 3,
+      "title": "中期",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n21",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "先齐猪八戒、阿轲、裴擒虎、明世隐四种首张，避免多买无用重复耗尽能量；重复与镜像优先让猪八戒觉醒，再优先补明世隐，其他核心按实际牌序与战力补齐。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n22",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "先让猪八戒在场，再打真实英雄接镜像。使用四张镜像取得万镜时，场上只保留四种核心可让随机四种覆盖全组；仍须有可用镜像、真实牌与打出位置，不能连续把镜像复制成镜像。全员补醒后继续在3级比较有效合成，镜像重点给明世隐与阿轲；明世隐最近连接指向裴擒虎，转永久不超过临时来源与当前上限。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h23",
+      "type": "heading",
+      "level": 3,
+      "title": "后期",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n24",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "常规仍保留四人成长与战斗骨架；准备传承、遗志、临阵磨枪终局时，先核对工具能否退出及裴擒虎替代副本，不把材料不足当作必须变阵。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n25",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "无遗志时可继续有效合成与装备提升，不承诺能等到遗志或必定吃分。已有遗志并准备转级时，来源建议攒钱向5级寻找后续材料；启动前先整理传承最低三名和遗志随机接收者，保留当轮能战斗的猪八戒与输出，不把达到某等级数视为已经赢下对局。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h26",
+      "type": "heading",
+      "level": 3,
+      "title": "后期提升思路",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n27",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "裴擒虎缺行动空间时优先比较免控，随后按暴击和输出缺口比较无尽巨剑、凝渊；猪八戒比较不死鸟之眼与聚灵水晶。装备补强与安全等级集中二者按当前材料和对手选择，不强行拆掉仍生效的固化链。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h28",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n29",
+      "type": "entry",
+      "key": "无穷镜像与镜像",
+      "show_key": true,
+      "value": "使用技能获得镜像，每使用4次技能后技能能量消耗+1。镜像变为上一张打出的英雄牌，不能复制其他镜像；先真实英雄再镜像，不把每打一个英雄自动送镜像当当前技能。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n30",
+      "type": "entry",
+      "key": "镜像之力与万镜",
+      "show_key": true,
+      "value": "实际使用4张镜像取得万镜，万镜随机复制场上4种不同英雄。四种核心齐备且没有其他种类时可覆盖全组，超过四种便不能保证命中每个核心。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h31",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n32",
+      "type": "entry",
+      "key": "炽热支配者",
+      "show_key": true,
+      "value": "首次受控制给300护盾与15秒免控，压制除外；裴擒虎需要减少开场控制损失时比较，不视为永久免控。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n33",
+      "type": "entry",
+      "key": "无尽巨剑",
+      "show_key": true,
+      "value": "暴击率+30%、暴击效果+60%，暴击效果不叠加；用于裴擒虎物理输出缺口。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n34",
+      "type": "entry",
+      "key": "凝渊",
+      "show_key": true,
+      "value": "暴击率+20%，每次受击+1%，到100%时加100%移速；能实际承受攻击并继续作战时兑现。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n35",
+      "type": "entry",
+      "key": "不死鸟之眼",
+      "show_key": true,
+      "value": "基础生命+15%，生命恢复和护盾效果+30%；给猪八戒改善承伤与恢复。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n36",
+      "type": "entry",
+      "key": "聚灵水晶",
+      "show_key": true,
+      "value": "受击额外得10法力、最多100，到上限恢复20%最大生命；猪八戒受击施法与恢复需要时比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n37",
+      "type": "entry",
+      "key": "其他装备",
+      "show_key": true,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h38",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n39",
+      "type": "entry",
+      "key": "唤醒与集体唤醒",
+      "show_key": true,
+      "value": "明世隐觉醒后，可用唤醒指定明世隐或用集体唤醒重触发其登场，每次提高可转化上限4级；不是立即凭空给连接目标4永久等级，仍须其有足够临时等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n40",
+      "type": "entry",
+      "key": "传承、遗志与临阵磨枪",
+      "show_key": true,
+      "value": "传承指定10级以上英雄，把其等级随机分给其他最低等级三名，不保证单独给猪；遗志移除指定英雄，把非临时等级给随机一名英雄。临阵磨枪指定裴擒虎可再触发随机整备，但普通只取半、觉醒取整，且不可叠加；要定向依赖场上候选已整理，不能只按效果牌名称承诺双999。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-luanshi",
+      "type": "entry",
+      "key": "乱世",
+      "show_key": true,
+      "value": "从3张登场英雄牌中选1张。需要持续固化时优先比较明世隐，之后按有效成长缺口比较阿轲、甄姬；每次只从实际候选中选择，不保证必出指定牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-coop1",
+      "type": "entry",
+      "key": "简易协作",
+      "show_key": true,
+      "value": "指定1名英雄+3级，随机1名+2级。按猪八戒承伤或裴擒虎输出的当前缺口指定，随机部分不预定接收者。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-coop2",
+      "type": "entry",
+      "key": "精密协作",
+      "show_key": true,
+      "value": "指定1名英雄+4级，随机1名+3级。四人成长期间按核心缺口使用，不将随机部分合并为定向收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-rebuild",
+      "type": "entry",
+      "key": "武装重构",
+      "show_key": true,
+      "value": "摧毁指定英雄全部装备，随机取得对应件数+1的基础装备。现有装备不再适用且能承担暂时失去装备时比较，不保证换到指定成品。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-selectequip",
+      "type": "entry",
+      "key": "精选武装",
+      "show_key": true,
+      "value": "从4张基础装备中选1张。按猪八戒生存或裴擒虎输出缺口取实际候选，仍需处理后续铸造结果。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-disassemble",
+      "type": "entry",
+      "key": "武装分解",
+      "show_key": true,
+      "value": "摧毁指定英雄全部装备：1件得4能量，2件得妙音，3件得珍品宝箱。按实际件数与所缺资源比较，先保住主力仍依靠的装备，不写拆一件就有妙音。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-gold",
+      "type": "entry",
+      "key": "化铁为金",
+      "show_key": true,
+      "value": "指定1至3阶英雄随机变为不在场的5阶英雄，觉醒并保留当前等级，包括临时等级。仅在已有遗志、决定放弃旧猪八戒卡牌职责并能承担随机新英雄战力时比较；先上武则天、鲁班七号、敖隐可排除这几名在场候选，不能保证唯一结果，也不能把猪八戒永久生命层数当等级一起转走。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-rain",
+      "type": "entry",
+      "key": "呼风唤雨",
+      "show_key": true,
+      "value": "随机取得4张5阶效果牌。尚缺传承等5阶材料时可比较，不能保证4张中一定有传承；材料已齐则不为抽牌继续拖延。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-stars",
+      "type": "entry",
+      "key": "众星闪耀",
+      "show_key": true,
+      "value": "全体英雄+10级，每持有一回合再增强5级。四人成长都需等级时比较，是否留手取决于当前能否保血，不为等强化牺牲本回合战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h41",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n42",
+      "type": "entry",
+      "key": "四人复制与等级回收",
+      "show_key": true,
+      "value": "需要稳定万镜覆盖时先齐四种核心，猪八戒先上，再按真实英雄→镜像顺序补牌。猪夺取仅在实际使用本牌时触发，周围1格随机一名、最多10级且排除临时等级；先检查明世隐等工具是否仍需保留永久等级，再安排邻接。终局传承与遗志各按自己的接收规则整理候选，不把猪永久生命误当等级一起转移。 若选择移除旧裴擒虎的遗志终局，先确认可重新上场的觉醒裴擒虎已经备好，再按传承与遗志的真实接收规则整理候选；最后对新裴擒虎用临阵磨枪重触发整备。它随机取得1名其他英雄的等级数作为临时等级，不可叠加，只有整理后的候选确实满足目标时才可能接到猪八戒等级，不预定双999。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h43",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n44",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-671003",
+      "type": "entry",
+      "key": "存款利息",
+      "show_key": true,
+      "value": "获得3能量。回合结束时，你每有7能量，额外获得1能量。 在不影响核心首张、镜像和保血的前提下保留能量，才有利息可得，不为凑利息放弃当轮战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-613006",
+      "type": "entry",
+      "key": "先苦后甜",
+      "show_key": true,
+      "value": "选取天赋后，当你输掉2场战斗时，获得6棋手经验。 前期已需要低投入过渡且能承受两场失利时比较经验收益，不为触发主动卖血。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-632001",
+      "type": "entry",
+      "key": "小电池包",
+      "show_key": true,
+      "value": "获得5能量。 缺当轮镜像、升级或找核心的能量时补预算。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-613002",
+      "type": "entry",
+      "key": "保持进步",
+      "show_key": true,
+      "value": "获得1张3阶兑换券。回合开始时，获得1棋手经验。满级后，改为获得1能量。 需要3阶首张与后续升级时比较；若仍准备留3级找遗志，须接受自动经验会改变升级时点。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-633001",
+      "type": "entry",
+      "key": "电池包",
+      "show_key": true,
+      "value": "获得8能量。 用于镜像和四种核心的实际预算缺口，不视为已取得核心。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-671016",
+      "type": "entry",
+      "key": "拍卖专家",
+      "show_key": true,
+      "value": "每次拍卖后，获得1张天赋牌拍卖重现：选择获得1张拍卖中你未获得的卡牌。 拍卖存在想补的核心或功能牌时，增加事后取牌机会，仍以实际候选为准。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-613011",
+      "type": "entry",
+      "key": "无限进步",
+      "show_key": true,
+      "value": "获得1张3阶兑换券。回合开始时，获得2棋手经验。满级后，改为获得2能量。 同时需要3阶首张与升级时比较；自动经验可能打断留3级找遗志的计划。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-635001",
+      "type": "entry",
+      "key": "特大电池包",
+      "show_key": true,
+      "value": "获得12能量。 缺找牌与复制能量时补资源，不为额外能量无条件空搜。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-623002",
+      "type": "entry",
+      "key": "复印机",
+      "show_key": true,
+      "value": "获得2张天赋牌复印机：指定1名1-3阶英雄，获得该英雄牌。 四名核心都为3阶，可按缺口指定补重复牌与觉醒，先确认目标在场。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-634021",
+      "type": "entry",
+      "key": "控能达人",
+      "show_key": true,
+      "value": "战斗开始时，若当前能量≤3，随机获得1张3-4阶英雄牌。 满足开战剩余能量条件时才供牌，结果随机且不保证四种核心。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-635023",
+      "type": "entry",
+      "key": "点兵点将",
+      "show_key": true,
+      "value": "获得场上所有英雄牌各1张。 四种核心在场且确需全组重复时采用；无关成员也会被复制，先整理打出位和手牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-681001",
+      "type": "entry",
+      "key": "买橘子去",
+      "show_key": true,
+      "value": "获得1张天赋牌站这别动：指定1个阵位，每过2回合，获得1张此格上的英雄牌。 需要持续补同一核心时比较，指定阵位后维持目标在该格，收益需等待2回合。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-622008",
+      "type": "entry",
+      "key": "小咖秀",
+      "show_key": true,
+      "value": "战斗开始时，若你只有1-3阶英雄，随机获得1张场上的英雄牌。 四名3阶核心阶段可供牌；上太乙等高阶保护后重新检查只有1至3阶的条件。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-622003",
+      "type": "entry",
+      "key": "永不独行",
+      "show_key": true,
+      "value": "获得1张双人同行。回合开始时，若棋手不超过3级，再获得1张。 停3级成长时可持续取得双人同行；升级后不再预支每回合供给。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-613007",
+      "type": "entry",
+      "key": "防御领域",
+      "show_key": true,
+      "value": "棋手每次受到的伤害减少2点。 减少棋手掉血以延长找核心窗口，不是英雄的伤害减免。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-614002",
+      "type": "entry",
+      "key": "紧急行动",
+      "show_key": true,
+      "value": "获得10点棋手生命值、1张装备箱。 血线与装备缺口同时存在时比较，补棋手容错而非立即抬高英雄质量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-613010",
+      "type": "entry",
+      "key": "绝对领域",
+      "show_key": true,
+      "value": "棋手每次受到的伤害减少3点。 血线承压时比较棋手受伤减免，不当作核心免伤。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-615002",
+      "type": "entry",
+      "key": "紧急救援",
+      "show_key": true,
+      "value": "获得15棋手生命值、1张装备箱、1张5阶兑换券。 缺血量与额外资源时比较，5阶兑换券的候选不保证特定英雄。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-632012",
+      "type": "entry",
+      "key": "泉水",
+      "show_key": true,
+      "value": "回合开始时，恢复3棋手生命值；若棋手生命值已满，改为获得4棋手经验。 恢复棋手生命帮助撑过发力前窗口；满血转经验，可能影响停3级计划，不是给猪八戒治疗。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-636601",
+      "type": "entry",
+      "key": "协同一致",
+      "show_key": true,
+      "value": "回合开始时，无阵营英雄获得等于当前棋手等级的等级。 四名无阵营骨架常驻成长时可同时受益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-636603",
+      "type": "entry",
+      "key": "千里相聚",
+      "show_key": true,
+      "value": "每打出3张无阵营英雄牌时，全体英雄等级+4。 反复打出无阵营英雄时为全队补永久等级，先保证有效来牌和打出位置。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-636503",
+      "type": "entry",
+      "key": "四海来援",
+      "show_key": true,
+      "value": "无阵营英雄获得牺牲：召唤1名与自身品阶和等级相同的英雄（无卡牌效果）参战。 高等级无阵营骨架需要牺牲后续战单位时比较，不保证召出指定英雄，召出的英雄无卡牌效果。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c9-jing-talent-622010",
+      "type": "entry",
+      "key": "中流砥柱",
+      "show_key": true,
+      "value": "打出3阶英雄牌，额外+6级。 四种核心都是3阶，有实际重复打出资源时提高该牌等级，不额外产生英雄牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h45",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h46",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n47",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h48",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n49",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h50",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n51",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "材料未齐时比较呼风唤雨寻找5阶效果牌，但不保证传承；已有遗志且能承担随机转化风险时才考虑化铁为金。需要直接等级可比较众星拱月或众星闪耀；其余按缺重复牌、能量或生存比较超级复印机、能量超新星、绝处逢生和沧海拾遗，绝处逢生会把棋手生命降到1，不为资源无条件选择。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-h52",
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c6-pig-n53",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "[镜](../players/镜.json)",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:21"
+    ],
+    "required_factions": [],
+    "core_heroes": [
+      "card:5111",
+      "card:5021",
+      "card:5011",
+      "card:1161"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "弈星升级过渡，非战斗核心"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5111",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1161",
+          "necessity": "required"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5111",
+          "necessity": "required",
+          "condition": "仍在四人成长且尚未启动传承、遗志终局回收时；启动回收后按实际保留输出与接收结果另定，完整终局名单未确认。"
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "required",
+          "condition": "仍在四人成长且尚未启动传承、遗志终局回收时；启动回收后按实际保留输出与接收结果另定，完整终局名单未确认。"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "condition": "仍在四人成长且尚未启动传承、遗志终局回收时；启动回收后按实际保留输出与接收结果另定，完整终局名单未确认。"
+        },
+        {
+          "hero": "card:1161",
+          "necessity": "required",
+          "condition": "仍在四人成长且尚未启动传承、遗志终局回收时；启动回收后按实际保留输出与接收结果另定，完整终局名单未确认。"
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": []
+  }
+}

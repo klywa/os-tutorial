@@ -307,6 +307,14 @@
       "id": "n-ce695f623ff6bac388e9"
     },
     {
+      "id": "d24-haiyue-xiang",
+      "type": "entry",
+      "key": "孙尚香",
+      "show_key": true,
+      "value": "可选的登场供刷新工具，用来减轻干将成长期找牌压力，不替换海月主输出。觉醒需求：普通登场获得1次免费刷新，醒后2次；本路线专追觉醒先后未确认；等级投入：功能供给为主，专门培养或停级点未确认；购买策略：三分可用且实际来牌、需要更多刷新时比较首张；同行多而孙尚香难取得时保留孙膑路线，不为这张替代工具空搜，拍卖预算未确认；上阵时机：本局需要刷新资源时可用她替代孙膑的位置，干将仍负责取得击败成长；出售时机：准备遗志转海月时先退出不再需要的供牌工具，避免成为额外随机接收者；若要保留她的等级，另需实际可用的回收手段，不能靠直接出售转给海月；",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 2,
       "title": "阵容组成与运营节奏",
@@ -829,6 +837,22 @@
       "id": "n-67f8e1764d4d37d7def3"
     },
     {
+      "id": "d24-haiyue-supply",
+      "type": "entry",
+      "key": "供牌与同行决定孙膑或孙尚香",
+      "show_key": true,
+      "value": "干将转海月前，实际需要施法成长时继续孙膑；需要降低找牌压力、三分可用且孙尚香顺利来牌时，可用她的登场刷新替代孙膑的位置。孙尚香被同行大量争抢时不要为了照抄替代方案空搜。两者都是过渡资源，遗志前均需重新核接收者；海月接手后按原保护与炸盾职责补位，不将孙尚香列为固定终局。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d24-haiyue-pool",
+      "type": "entry",
+      "key": "海月竞争与升本时机",
+      "show_key": true,
+      "value": "已有遗志后再比较找海月的资源；能直接从拍卖取得首张时可提前准备。遇到对手更早升本、可用海月数量已经很少时，结合当前血量与战力提速，不固定第几回合必须升5或升6。海月和遗志尚未同时落实时，保留干将的实际战力，不把一场较晚才抽中遗志当成可长期卖血的公式。",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 2,
       "title": "站位技巧",
@@ -1328,6 +1352,20 @@
           "claim_refs": [
             "hero5-owner-card-1681"
           ]
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "condition": {
+            "$text": "d24-haiyue-supply"
+          },
+          "role": {
+            "$text": "d24-haiyue-xiang"
+          },
+          "claim_refs": [
+            "d24-haiyue-xiang-claim",
+            "d24-haiyue-supply-claim"
+          ]
         }
       ],
       "middle": [
@@ -1379,6 +1417,20 @@
           "replacement_note": "",
           "claim_refs": [
             "fmt24-owner-20412c3cb1fb"
+          ]
+        },
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "condition": {
+            "$text": "d24-haiyue-supply"
+          },
+          "role": {
+            "$text": "d24-haiyue-xiang"
+          },
+          "claim_refs": [
+            "d24-haiyue-xiang-claim",
+            "d24-haiyue-supply-claim"
           ]
         }
       ],
@@ -1454,7 +1506,31 @@
       }
     ],
     "matchups": [],
-    "operation_routes": [],
+    "operation_routes": [
+      {
+        "id": "d24-haiyue-supply-route",
+        "name": "按供给选择孙膑或孙尚香",
+        "condition": {
+          "$text": "d24-haiyue-supply"
+        },
+        "advantages": "",
+        "risks": "",
+        "transition": "",
+        "phases": {
+          "early": [],
+          "middle": [
+            "d24-haiyue-supply-claim",
+            "d24-haiyue-xiang-claim"
+          ],
+          "late": []
+        },
+        "claim_refs": [
+          "d24-haiyue-supply-claim",
+          "d24-haiyue-xiang-claim"
+        ],
+        "variant_ids": []
+      }
+    ],
     "late_variants": [],
     "major_variants": [],
     "assessment": [],

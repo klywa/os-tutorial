@@ -1,0 +1,586 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "b77-354d1614371468103b",
+      "type": "heading",
+      "title": "算盘单C-小妲己",
+      "level": 1,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-475f177b37f706b9f7",
+      "type": "heading",
+      "title": "核心原理",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-f507455842843357d7",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "这条路线用算盘把出售英雄转为随机等级，并让姜子牙通过打出符合条件的英雄继续成长，再把等级积累给选定的有阵营输出。小妲己的买牌技能继续提供效果牌与减价刷新，使反复买入、打出、出售更容易持续。主力应能吃到姜子牙的等级；海月属于无阵营，不能直接套用这条由姜子牙给有阵营主力加级的路线。 李信分支可先在4级以少量有效受益者集中算盘等级，主力约100级且能够保血后再比较5级姜子牙；姜子牙加入后，非河洛等符合当前在场阵营条件的英雄才服务其打牌成长。太乙不在刷级阶段无条件常驻，但保护已比集中等级更重要时应保留。 金算盘也可集中养日落海姬小满，兼用出售刷新继续买牌；韩信是大河近战输出选择，通过闪现接敌、普攻击飞和高等级范围技能作战。优先集中一名主力成长，双养会分散算盘等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c16-abacus-selection-h",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "金算盘已可用，能实际取得姬小满或韩信作为有阵营主力，并能继续买入、打出、出售英雄时采用对应单核。姜子牙到场后补第二条真实等级成长；本分支不要求先有司空震。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-avoid",
+      "type": "entry",
+      "key": "放弃或转向",
+      "show_key": true,
+      "value": "目标韩信未到时先用已有姬小满接战力；已有主力尚不足以保血时，不为了双养或等未来双倍继续削弱当前场面。钱不足以兑现折扣店购买时，先留当前战力，不把秘技可用当作有无限购买资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-7eacda9d3904ed279a",
+      "type": "heading",
+      "title": "英雄",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-138fe1c002b4670b1a",
+      "type": "entry",
+      "key": "姜子牙",
+      "show_key": true,
+      "value": "打出未在场阵营及无阵营英雄牌时，姜子牙为自身及随机3名其他不同阵营英雄加等级，帮助有阵营主力成长。觉醒需求：普通每次+1、觉醒+2，持续刷牌时争取觉醒，确切优先次序未确认；等级投入：接受有效打牌成长，统一停级点未确认；购买策略：路线成立时补首张，拍卖优先比较姜子牙，出价仍需保留买牌与保血资源，统一上限未确认；上阵时机：开始给主力刷真实等级前加入；出售时机：仍需后续成长时保留，固定出售条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-a603921fbc1e400e29",
+      "type": "entry",
+      "key": "司空震",
+      "show_key": true,
+      "value": "本视频后期明确使用的有阵营输出示例，算盘路线并不只限司空震。觉醒需求：未确认；等级投入：接受算盘与姜子牙成长，临时等级继承仍受真实等级限制；购买策略：确定以其输出时补首张；拍卖出价上限未确认；上阵时机：确定输出方向且已有合适装备时加入；出售时机：作为本局主力保留，固定换出路线未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-76fc060f8c37511535",
+      "type": "entry",
+      "key": "裴擒虎",
+      "show_key": true,
+      "value": "终局借其他高等级英雄取得临时等级，补充主要输出的战斗上限。觉醒需求：若要复制全部借级收益，觉醒比普通卡的一半收益更高；等级投入：主要使用整备借来的临时等级，未确认专门永久等级投入或停级点；购买策略：准备最后一轮借级时再考虑留牌，不在持续刷算盘阶段提前上场分走随机加级；拍卖出价上限未确认；上阵时机：主要成长操作完成、准备终局且有实际借级目标时再上，并准备触发整备；出售时机：本轮仍需其临时等级和作战能力时保留，未确认固定换出路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-s-lixin",
+      "type": "entry",
+      "key": "李信",
+      "show_key": true,
+      "value": "算盘单C的河洛输出选择，100级阵亡后以狂暴形态完美复生。觉醒需求：普通牺牲响应每次+7临时，醒后+14；本分支追醒次序未确认；等级投入：4级先集中成长至约100级并核保血，再比较升5找姜子牙，不以固定回合为准；购买策略：已有算盘与有效装备时先取首张，拍卖出价上限未确认；上阵时机：确定以其主C时上，持续刷算盘先减少非必要分级者；出售时机：主输出保留，未确认安全换核与转级牌序；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-s-tai",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "最近英雄复生保护工具。觉醒需求：普通复生，醒后完美复生；先取保护首张；等级投入：自然成长，定向资源优先主C；购买策略：面对难打对手需要保护时比较首张，拍卖出价上限未确认；上阵时机：主力需要复生时加入，最近目标对准主C；出售时机：仍能少掉血或保住主力时不为少量算盘等级出售；集中成长阶段可暂缓上场，固定退出回合未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-jixiaoman",
+      "type": "entry",
+      "key": "姬小满",
+      "show_key": true,
+      "value": "日落海近战输出选择，算盘与姜子牙提高等级，出售英雄又提供临时刷新，延续买牌；100级技能追加减伤腾空后的范围重击。觉醒需求：争取觉醒，出售刷新由每4名场上英雄1次变为每2名1次，追醒先后未确认；等级投入：单养时先集中至约100级并检查保血，双养会分走随机等级，统一终局停级点未确认；购买策略：韩信尚未到手时可先取首张接战力，已有她作为主力时补有效重复，拍卖上限未确认；上阵时机：决定以其承接算盘成长时加入，刷新用于继续寻找有效供牌；出售时机：仍需其输出与刷新时保留，转艾琳的完整成功牌序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-hanxin",
+      "type": "entry",
+      "key": "韩信",
+      "show_key": true,
+      "value": "大河近战输出选择，闪现切入后以普攻击飞和范围技能作战；友方整备或开团触发时另得永久等级。觉醒需求：普通每次该触发+2、觉醒+4，本路线追醒先后未确认；等级投入：准备以其主力时集中算盘成长，先约100级并核保血，再比较第二名输出，不以999作保证；购买策略：确定培养时取首张和有效重复，未到手先维持现有主力，拍卖上限未确认；上阵时机：来牌且决定承接算盘成长时加入，兼看实际攻速与生存装备；出售时机：主力仍承担输出时保留，固定换出及安全转级牌序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-zhuang",
+      "type": "entry",
+      "key": "庄周",
+      "show_key": true,
+      "value": "临时供牌工具，登场自身加2级并取得招募战术，一次打出可带来后续牌。觉醒需求：普通即可供牌，觉醒自身加4级并给高阶招募战术，本路线不要求专门追醒；等级投入：不专养，算盘资源优先选定主力；购买策略：有临时刷新与可兑现登场收益时比较首张、有效重复，拍卖排序及出价上限未确认；上阵时机：腾出临时位置后打出领取供牌，再核对该英雄阵营能否触发姜子牙；出售时机：登场收益已兑现且不需要继续作战时退出，减少后续分走算盘等级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-zhen",
+      "type": "entry",
+      "key": "甄姬",
+      "show_key": true,
+      "value": "临时供牌工具，登场随机取得1张其他登场英雄牌，一次打出可带来后续牌。觉醒需求：普通即可供牌，觉醒改为从3张其他登场英雄牌中选择1张，本路线不要求专门追醒；等级投入：不专养，算盘资源优先选定主力；购买策略：有临时刷新与可兑现登场收益时比较首张、有效重复，拍卖排序及出价上限未确认；上阵时机：腾出临时位置后打出领取供牌，再核对该英雄阵营能否触发姜子牙；出售时机：登场收益已兑现且不需要继续作战时退出，减少后续分走算盘等级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-7b17a076a2a0e28c0d",
+      "type": "heading",
+      "title": "阵容组成与运营节奏",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-ce21eb2b7b071f17d5",
+      "type": "heading",
+      "title": "前期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-0a998bd60beb807235",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "先观察算盘天赋、装备与姜子牙取得情况，再决定培养的有阵营输出；不把本局随意挑拍品的娱乐过程泛化为所有英雄都能培养。 已有金、银算盘且要走四阶单核时，可用弈星低投入推进4级；首拍没有必须争取的组件，具体统一拍品与报价未确认。 选择姬小满或韩信时，先把能接战力的一名主力集中养至约100级并核保血，再比较第二名输出；韩信尚未到手时可先以姬小满接战力，不空等目标。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-beac69d74dcb1708f5",
+      "type": "heading",
+      "title": "中期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-list-323245337a4ecba43d",
+      "type": "entry",
+      "key": "姜子牙（核心）",
+      "show_key": true,
+      "value": "路线成立时补首张。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-2d29a7ed859623d8cd",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "主力与姜子牙就位后，买入并打出有效英雄，再按登场收益出售触发算盘；小妲己继续用买牌技能补资源。已有阵营会改变姜子牙触发条件，不能不分场面地禁买三分和河洛。 李信分支先在4级使主力约100级并能实际保血后，再比较5级补姜子牙；示例靠额外经验提前升5不是通用步骤。算盘随机加级需核在场受益者，临时买牌先兑现供牌再出售。 姬小满与韩信同时在场时，日落海和大河都已在场，打同阵营牌不触发姜子牙这条成长；其他阵营与无阵营牌逐张核对。临时刷新优先比较庄周、甄姬等能继续供牌的英雄，处理登场收益后出售。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-44143151b29268d753",
+      "type": "heading",
+      "title": "后期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-list-23bc8dd7cf5ac7e9d3",
+      "type": "entry",
+      "key": "姜子牙（核心）",
+      "show_key": true,
+      "value": "路线成立时补首张。",
+      "prefix": "- ",
+      "separator": "\n"
+    },
+    {
+      "id": "b77-c1f63c5a5992f2f361",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "持续成长时不急着上裴擒虎分走算盘的随机等级，准备终局时再补入并触发整备取得临时等级；只买到老虎、没有触发整备，不等于已完成借级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-2f45cc9fe33e6bb0da",
+      "type": "heading",
+      "title": "后期提升思路",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-3aec7d0962378a1c72",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "继续将算盘出售收益与姜子牙成长用于确定的有阵营主力，终局再补裴擒虎及整备触发资源。海月属于无阵营，不能套用由姜子牙给有阵营主力加级的路线，若改用她必须另有成长来源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-c08ffe65b6970ed0f1",
+      "type": "heading",
+      "title": "推荐天赋",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-2bf9126240d9838b31-1",
+      "type": "entry",
+      "key": "银算盘",
+      "show_key": true,
+      "value": "出售场上英雄可让随机英雄获得等级，将买入、打出、出售转为成长；先检查场上受益候选，减少临时工具分走等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-2bf9126240d9838b31-2",
+      "type": "entry",
+      "key": "金算盘",
+      "show_key": true,
+      "value": "同样用出售场上英雄触发随机等级成长；需要算盘养单核时，先检查场上候选和买牌资源，不为追求固定天赋颜色放弃当前战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-danger",
+      "type": "entry",
+      "key": "危险数字",
+      "show_key": true,
+      "value": "在商店每买3张牌获得1能量，3张品阶和为10再随机补其中1张，可延长小妲己的购买循环；仍要有实际买牌与刷新资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-fellow",
+      "type": "entry",
+      "key": "同路人",
+      "show_key": true,
+      "value": "同一回合每打出4张同阵营英雄牌随机给1张该阵营牌，补打牌材料；姜子牙是否加级另检查场上阵营，韩信和姬小满在场时，不把大河和日落海牌算作这条姜子牙的触发材料。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-shop",
+      "type": "entry",
+      "key": "节能商店",
+      "show_key": true,
+      "value": "每次手动刷新后，总有1张商店牌所需能量-1。可与实际折扣店一起比较低价购买，但减价只落到相应牌，不能据此保证每次刷新都有可获利循环。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-09cf8449b71822a872",
+      "type": "heading",
+      "title": "关键操作",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77-46d7d6e72e712cf0cb",
+      "type": "entry",
+      "key": "买牌与借级顺序",
+      "show_key": true,
+      "value": "先让姜子牙和确定的有阵营主力在场，再打出符合姜子牙条件的英雄，处理登场收益后出售以触发算盘。持续成长阶段暂缓上裴擒虎，终局需要借级时才上场并触发整备。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-single-vs-double",
+      "type": "entry",
+      "key": "先单养再比较双养",
+      "show_key": true,
+      "value": "优先集中一名输出到约100级并检查能否保血。韩信尚未到时可先养姬小满；已有姬小满又想培养韩信时，两人都会进入算盘随机成长候选。双养取得两名输出，但延缓单核等级，不把本局互动挑战的双养作为默认必选。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-buy-loop",
+      "type": "entry",
+      "key": "折扣购买与供牌",
+      "show_key": true,
+      "value": "怦然心动按每购买4张牌随机给1张效果牌；心动节拍按5/4/3次触发给心之引力。心之引力提供4次临时刷新，只有这4次刷新后的商店购买消耗-1。先比较能继续供牌或兑现登场的便宜牌，打出处理收益后出售，触发算盘；买牌推进棋手技能，打出是否触发姜子牙另按场上阵营判断。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-first-effect",
+      "type": "entry",
+      "key": "双倍与当轮战力取舍",
+      "show_key": true,
+      "value": "棋手6级后，每回合首张效果牌触发两次。已拿到能量超新星、准备升6且当前能等待时，可留到取得该能力后作为回合首张效果牌；能量超新星每次随机给10–20能量，不固定40。已临近淘汰、急需当轮战力时，先兑现手中有用的牌，不为下一轮双倍继续囤牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-inherit",
+      "type": "entry",
+      "key": "转艾琳前先核传承接收者",
+      "show_key": true,
+      "value": "传承指定场上10级以上英雄，将其等级随机分给其他英雄中等级最低的3名，且不重复分给同一英雄。想把姬小满积累转给艾琳时，先确认传承已经到手、场上最低等级候选与接战力对象，再安排换人；本分支没有已确认的定向全额转艾琳流程，不能只留艾琳就预支其等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a9-s-equip-h",
+      "type": "heading",
+      "level": 2,
+      "title": "李信分支装备"
+    },
+    {
+      "id": "a9-s-natural",
+      "type": "entry",
+      "key": "自然法杖",
+      "show_key": true,
+      "value": "法攻+20%；近战穿戴者每消耗80法力将随机1名敌人变猪2秒，远程阈值40。李信狂暴形态已能持续施法、需要控制敌方输出时比较；仍需足够输出和生存，不把每次普攻或复生当作变猪。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-auction-h",
+      "type": "heading",
+      "title": "韩信与姬小满分支拍卖",
+      "level": 2,
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-auction-first",
+      "type": "entry",
+      "key": "第一轮拍卖",
+      "show_key": true,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-auction-second",
+      "type": "entry",
+      "key": "第二轮拍卖",
+      "show_key": true,
+      "value": "优先比较姜子牙首张，让符合阵营条件的打牌为主力继续加等级；报价仍要给后续买牌与当轮保血留资源，统一出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d-arex-auction-third",
+      "type": "entry",
+      "key": "第三轮拍卖",
+      "show_key": true,
+      "value": "已确定需要后续购买资源时，可比较能量超新星；已取得且准备升6，可留为之后回合首张效果牌，但急需当前资源或战力时先兑现。统一报价上限未确认。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:10"
+    ],
+    "core_heroes": [
+      "card:1481"
+    ],
+    "required_factions": [],
+    "compositions": {
+      "early": [],
+      "middle": [
+        {
+          "hero": "card:1481",
+          "necessity": "required",
+          "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5071",
+          "necessity": "optional",
+          "condition": {
+            "$text": "a9-s-lixin"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": {
+            "$text": "a9-s-tai"
+          }
+        },
+        {
+          "hero": "card:5641",
+          "necessity": "optional",
+          "condition": {
+            "$text": "d-arex-jixiaoman"
+          },
+          "role": {
+            "$text": "d-arex-jixiaoman"
+          }
+        },
+        {
+          "hero": "card:1501",
+          "necessity": "optional",
+          "condition": {
+            "$text": "d-arex-hanxin"
+          },
+          "role": {
+            "$text": "d-arex-hanxin"
+          }
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1481",
+          "necessity": "required",
+          "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:5071",
+          "necessity": "optional",
+          "condition": {
+            "$text": "a9-s-lixin"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": {
+            "$text": "a9-s-tai"
+          }
+        },
+        {
+          "hero": "card:5641",
+          "necessity": "optional",
+          "condition": {
+            "$text": "d-arex-jixiaoman"
+          },
+          "role": {
+            "$text": "d-arex-jixiaoman"
+          }
+        },
+        {
+          "hero": "card:1501",
+          "necessity": "optional",
+          "condition": {
+            "$text": "d-arex-hanxin"
+          },
+          "role": {
+            "$text": "d-arex-hanxin"
+          }
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "late_variants": [
+      {
+        "id": "a9-s-river-lixin",
+        "name": "李信与姜子牙成长及保护",
+        "condition": {
+          "$text": "a9-s-lixin"
+        },
+        "members": [
+          {
+            "hero": "card:5071",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1481",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "optional",
+            "condition": {
+              "$text": "a9-s-tai"
+            }
+          }
+        ],
+        "core_heroes": [
+          "card:5071"
+        ],
+        "required_factions": [
+          "faction:heluo"
+        ],
+        "claim_refs": [
+          "a9-s-lixin-a9-claim"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": []
+      },
+      {
+        "id": "d-arex-jixiao-single",
+        "name": "姬小满金算盘单核",
+        "condition": {
+          "$text": "d-arex-jixiaoman"
+        },
+        "members": [
+          {
+            "hero": "card:5641",
+            "necessity": "required",
+            "role": {
+              "$text": "d-arex-jixiaoman"
+            }
+          },
+          {
+            "hero": "card:1481",
+            "necessity": "required",
+            "role": {
+              "$text": "b77-138fe1c002b4670b1a"
+            }
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "optional",
+            "condition": {
+              "$text": "a9-s-tai"
+            }
+          }
+        ],
+        "core_heroes": [
+          "card:5641"
+        ],
+        "required_factions": [
+          "faction:riluohai"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": [],
+        "claim_refs": [
+          "d-arex-jixiaoman-arex-claim",
+          "d-arex-single-vs-double-arex-claim"
+        ]
+      },
+      {
+        "id": "d-arex-han-single",
+        "name": "韩信金算盘单核",
+        "condition": {
+          "$text": "d-arex-hanxin"
+        },
+        "members": [
+          {
+            "hero": "card:1501",
+            "necessity": "required",
+            "role": {
+              "$text": "d-arex-hanxin"
+            }
+          },
+          {
+            "hero": "card:1481",
+            "necessity": "required",
+            "role": {
+              "$text": "b77-138fe1c002b4670b1a"
+            }
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "optional",
+            "condition": {
+              "$text": "a9-s-tai"
+            }
+          }
+        ],
+        "core_heroes": [
+          "card:1501"
+        ],
+        "required_factions": [
+          "faction:dahe"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": [],
+        "claim_refs": [
+          "d-arex-hanxin-arex-claim",
+          "d-arex-single-vs-double-arex-claim"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,834 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "c14-five-title",
+      "type": "heading",
+      "level": 1,
+      "title": "昭君七五-昭君",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-owner",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "昭君",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-pool",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "海月、姜子牙、杨玉环是优先比较的五阶候选；海诺、吕布、东皇太一、花木兰及有配套的司空震按实际来牌补充，七五指多名五阶的目标，不是固定七人名单。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "没有本路线共同强制的单一阵营。无阵营海月、姜子牙、杨玉环可以承担主要战力；三分被禁时少了吕布等选择，仍可按已来的其他五阶运作。选择具体英雄时，另核其所属阵营是否开放。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-principle-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-principle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "这套阵容靠多名高等级五阶英雄的伤害、控制和回复共同赢下战斗。昭君冻结材料，使解冻后的高阶英雄继承等级，再用寒冰王座直接取得随机五阶，或用破冰裂变跨两阶并在后续每回合冻结两次，逐步铺开高阶战力。选到冰心领域后，更多实际在场五阶又会提高全队每回合的等级收益，帮助海月、姜子牙、海诺等到达40级、100级战斗技能节点；杨玉环提供群体回复，花木兰重剑、吕布等补控制。具体英雄随来牌与配套调整。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-assessment-h",
+      "type": "heading",
+      "level": 2,
+      "title": "打法评价",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-advantages",
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "高阶获取不只依赖商店找到指定英雄，能够围绕已来的五阶组成多个输出与控制点；冰心领域可以把增加五阶人数转成后续全队成长。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-risks",
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "冻结结果随机，成型前会少一名当轮可作战的材料；五阶尚未到达战斗技能节点、装备与控制不够时仍会掉血。更多五阶需要实际人口，工具英雄与主力也会争位置。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-difficulty",
+      "type": "entry",
+      "key": "成型与操作",
+      "show_key": true,
+      "value": "先满足本轮战力，再用合适冻结强化提高五阶数量；每次换人检查输出、控制与回复是否接上，不以七人、某一回合或全体100级认定必胜。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-rates",
+      "type": "entry",
+      "key": "前三率／吃鸡率",
+      "show_key": true,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-selection-h",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "取得寒冰王座或破冰裂变、已有可用冻结材料且能维持当轮战力时，考虑把资源用于多名五阶。海月、姜子牙、杨玉环等较早到手，可以围绕已有战力继续展开。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-avoid",
+      "type": "entry",
+      "key": "放弃或转向",
+      "show_key": true,
+      "value": "冻结后当前战力不足时先补能打的英雄；只取得觉醒方向强化、但主要高阶成员尚未到手时，不照搬本路线的获取速度。已经建立图腾龙蛇或木兰古币体系时，继续按该体系需要选人，不为凑七五拆掉必要联动。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-mechanism-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心机制",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-loop",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "先用冻结继承保留材料等级，再逐步增加有效五阶。选择冰心领域时，回合开始按场上五阶英雄数量×2给场上友军等级，五阶数量越多，后续成长越快；必须把英雄实际放上场，手里的五阶不计入这项成长。最后由各英雄的高等级战斗技能兑现战力，不能把成长收益等同于本轮已获得装备和控制。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-heroes-h",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-5211",
+      "type": "entry",
+      "key": "海月",
+      "show_key": true,
+      "value": "优先五阶前排兼法术输出。施法取得护盾并转化生命，阵亡牺牲可控制敌方最高等级英雄并造成真实伤害。觉醒需求：普通已有施法与牺牲作用，不必等醒再上；本路线优先补高阶数量，专门追醒门槛未确认；等级投入：接受冻结继承与全队成长；40级施法叠盾、100级首次施法建立幻境是关键战力节点，不是固定停级点；购买策略：有有效来牌或冻结得到时优先比较，已有同名是否继续购买按能否改善当前质量，拍卖出价上限未确认；上阵时机：需要前排或针对高等级敌人，且不会拆掉当轮必要战力时上；出售时机：仍承担前排、幻境与牺牲针对时保留，固定替换路线未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1481",
+      "type": "entry",
+      "key": "姜子牙",
+      "show_key": true,
+      "value": "优先五阶范围法术输出，天人形态免控并发射冲击波。打出不在场阵营或无阵营英雄牌时，他和随机3名其他不同阵营英雄可获得等级。觉醒需求：普通已有战斗与打牌成长，本路线追醒优先级未确认；等级投入：接受冻结继承和全队成长；40级增加冲击波与减治疗，100级向八方向散射；不把他的等级直接赋给所有队友；购买策略：作为优先五阶候选比较首张；重复和付费追牌的固定预算未确认，拍卖出价上限未确认；上阵时机：有可用等级和法术输出需求时上，打牌成长另核阵营及随机接收者；出售时机：仍承担范围伤害时保留，具体替换或回收路线未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1761",
+      "type": "entry",
+      "key": "杨玉环",
+      "show_key": true,
+      "value": "优先五阶续航兼法术输出，清平回复低血量友军，破阵攻击敌人；高等级后群体回复与伤害同时生效。觉醒需求：普通已能治疗；觉醒是否优先于补其他有效五阶未确认；等级投入：随冻结继承与全队成长提高；40级增强数值，100级每次施法同时作用全场，不因未到100就拒绝首张；购买策略：较早到手时优先比较；未取得时保留现有有效输出和保护继续打，不把她当唯一开局门槛，拍卖出价上限未确认；上阵时机：需要续航、已有可用质量时加入；不为等她出现先拆当前战力；出售时机：仍需治疗和范围输出时保留；本篇不采用出售取弦音循环，固定退出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-5631",
+      "type": "entry",
+      "key": "海诺",
+      "show_key": true,
+      "value": "条件五阶后排法术输出，投掷神杖与子杖造成多目标伤害；本篇用其战斗技能，不把阿科米亚核心成长误当全队五阶永久等级。觉醒需求：普通即可承担输出，专门追醒必要性未确认；等级投入：40级连续施法两次，100级扩大子杖目标数；随全队成长提高，不承诺100级必胜；购买策略：实际取得且后排输出需要补足时比较首张，重复和付费追牌上限未确认，拍卖出价上限未确认；上阵时机：能得到前排和控制保护时上，防刺客时另调花木兰重剑等保护；出售时机：仍承担主要后排伤害时保留，固定替换方案未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1231",
+      "type": "entry",
+      "key": "吕布",
+      "show_key": true,
+      "value": "条件五阶范围物理输出与控制，技能跳入敌人密集区域击飞并降低治疗；三分开放时可比较。觉醒需求：普通已有范围技能，不以先醒为加入前提；具体追醒投入未确认；等级投入：随冻结继承与团队成长；100级扩大技能范围至全战场，是否继续集中投入按当前输出需求；购买策略：作为已来五阶候选比较，三分被禁则改用其他可得五阶，拍卖出价上限未确认；上阵时机：需要范围控制与物理伤害时加入；不要求同时凑旧三分转级成员；出售时机：仍承担控制与输出时保留，本源没有完整换帅牌序，不为套用其他阵容强拆主力；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1871",
+      "type": "entry",
+      "key": "东皇太一",
+      "show_key": true,
+      "value": "条件五阶承伤与单体压制；近身能量球造成伤害并回复生命。没有图腾组件时，不预支图腾等级带来的临时成长。觉醒需求：普通可压制；本路线专门补醒及图腾配置优先级未确认；等级投入：随团队自然成长；40级压制期间增强能量球转速，100级压制可持续到一方阵亡，仍要实际存活；购买策略：有可用首张并需要承伤、压制时比较，不照搬局内高价竞拍，拍卖出价上限未确认；上阵时机：需要前排和针对单体威胁时上；若另走图腾路线，再完整核组件；出售时机：仍需压制和承伤时保留，固定退出或转图腾步骤未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1541",
+      "type": "entry",
+      "key": "花木兰",
+      "show_key": true,
+      "value": "条件五阶近战输出与控制；重剑蓄力期间免控，重剑范围控制可保护海诺等后排。觉醒需求：来源将觉醒木兰列为可用选择，但本路线不要求先醒才用；不等同古币复生体系的投入；等级投入：40级重剑蓄力期间减伤，100级重剑技能范围扩大至全场；按当前等级和威胁选择形态；购买策略：有效五阶来牌时比较，重复按当前质量，不为了本路线默认买齐古币组件，拍卖出价上限未确认；上阵时机：需要承伤或防后排突入时采用重剑，检查实际来敌方向；出售时机：仍承担后排保护或有效伤害时保留；本源未证固定换下顺序；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-5371",
+      "type": "entry",
+      "key": "司空震",
+      "show_key": true,
+      "value": "有临时等级来源和法术装备时的条件范围输出；100级开场轰击全场并持续变身，临时等级继承受自身真实等级限制。觉醒需求：普通继承队友临时等级的一半，上限自身真实等级1倍；觉醒全额、上限2倍；先确认有临时等级来源；等级投入：真实等级既影响继承上限，也影响100级开场技能节点；本篇无临时等级配套时不把觉醒收益当固定战力；购买策略：已有群星璀璨等实际临时等级来源或能兑现开场伤害时比较；不能因是五阶就无条件优先，拍卖出价上限未确认；上阵时机：有法术装备与可用等级时上；群星璀璨须实际至少5名4–5阶在场；出售时机：杨玉环等更能满足当前续航时可比较替换，但本篇没有已核完整等级回收牌序；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1971",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "条件棋手升级工具，在场遇到棋手升级时补经验，帮助积累后续获取高阶的资源。觉醒需求：普通已补2经验，不为过渡强追觉醒；觉醒补4经验；等级投入：不专养本体，接受自然成长；购买策略：近期确需棋手升级且已有可用首张时比较，追牌预算未确认，拍卖出价上限未确认；上阵时机：先上场再完成需要其经验收益的棋手升级；不把手持当已经生效；出售时机：升级收益已兑现、需要给有效五阶腾位置时比较退出，固定回合未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-hero-1861",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "危险对局的条件复生保护，开团给予最近1名英雄复生，为实际承担伤害或输出的主力争取时间。觉醒需求：普通已有复生；醒后完美复生，本路线专门追醒门槛未确认；等级投入：功能用途接受自然成长，不按其他五阶输出的100级目标强养；购买策略：临近淘汰或确需复生时比较首张，平时不为常驻工具压缩有效五阶，拍卖出价上限未确认；上阵时机：确定保护需求后上，战前检查最近英雄确为本轮需要保护的主力；出售时机：本轮仍依赖复生保护时保留；安全发育、需要有效五阶位置时才比较换下，先核当前战力；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "root24-five-ganjiang",
+      "type": "entry",
+      "key": "干将莫邪",
+      "show_key": true,
+      "value": "前期战斗过渡，普通在场取得双剑·雄，觉醒另取得双剑·雌，先用战力守住血量，再作冻结材料换取五阶。觉醒需求：采用本教学的干将过渡时优先觉醒，不把首张直接冻掉；等级投入：先维持当轮作战，尚未确认统一停级点，不追单局18级；购买策略：实际来牌时补齐觉醒，预算与固定搜牌次数未确认；上阵时机：前期已有干将且五阶尚未接替战力时留场战斗；出售时机：已有其他英雄接住战力、已取得寒冰王座时，用冻结继承其等级并解冻为随机五阶，不先卖掉丢失材料与当轮战力；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-phases-h",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-early-h",
+      "type": "heading",
+      "level": 3,
+      "title": "前期",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-early-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "弈星作为已有首张的升级工具可用，不为过渡追醒；冻结材料的完整开局购买名单尚未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-early",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "先保证冻结后剩余成员能应战，利用已经到手的过渡与升级工具取得后续资源；完整逐回合开局尚未确认。第5、8回合的深度冻结从随机3个强化中选1个，按实际候选比较更快取得高阶的路线，不预定两次必出指定组合。 采用干将莫邪过渡时先补觉醒并留场保血，等其他英雄能够接住战力、且已取得寒冰王座后再冻结，解冻为随机五阶；不照搬单局第7回合，也不在首张到手就提前冻掉。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-middle-h",
+      "type": "heading",
+      "level": 3,
+      "title": "中期",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-middle-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "已选破冰裂变或寒冰王座时比较三阶材料；海月、姜子牙、杨玉环作为优先五阶候选，其他输出与前排按实际来牌补，不同时强制取得。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-middle",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "破冰裂变可让三阶材料解冻成五阶，下回合起每回合可冻结两次；寒冰王座则让解冻结果直接为随机五阶。只为同样的五阶结果时，不必多花资源买四阶材料；已有等级与即时保血价值仍需一起比较。保留已经有效的输出与前排，再逐步增加五阶，按当前战力比较棋手升级，不把本局第8或第10回合作成固定成型表。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-late-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-late-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "继续补能改善当前战力的五阶与质量；有临时等级配套才重点比较司空震，遇到淘汰压力再补太乙真人，不把后期名单固定为全部候选。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-late",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "已选冰心领域时增加实际在场五阶可以提高后续全队成长；已有足够质量后再比较扩人口，只有放入有效五阶才增加对应计数。让已承担输出、控制和回复的成员逐步达到各自战斗技能节点，遇到刺客或高爆发先调整保护，不为追求全体100级忽略当轮会被淘汰的风险。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-improve-h",
+      "type": "heading",
+      "level": 2,
+      "title": "后期提升思路",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-improve",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "优先让正在承担战斗的海月、姜子牙、海诺或杨玉环兑现40级、100级技能节点，并按实际来牌补质量；缺续航时比较杨玉环，缺后排保护时比较花木兰重剑或太乙真人。七五、八五、九五只是已在场五阶数量与人口的不同目标，先补能改变当前战斗的成员，再比较继续扩人口。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-equipment-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-mask",
+      "type": "entry",
+      "key": "痛苦面具",
+      "show_key": true,
+      "value": "单次魔法伤害超过目标最大生命值8%时点燃目标，每秒造成75%法术攻击力的真实伤害，持续3秒。已有100级司空震开场全场轰击、且伤害足以达到门槛时可比较，用开场伤害接后续点燃；按法术攻击力计算。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-talents-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-talent-overview",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "按当前五阶获取、临时等级配套与保血缺口选择；本路线没有已证每局必须取得的通用天赋组合。群星璀璨与绝境逆袭都有实际条件，不预支未生效的收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-stars",
+      "type": "entry",
+      "key": "群星璀璨",
+      "show_key": true,
+      "value": "取得2张4–5阶英雄兑换券；场上至少5名4–5阶时，所有4–5阶取得20临时等级。已满足人数并准备使用司空震时，可同时补临时等级来源；不把20临时等级算进可永久回收的等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-comeback",
+      "type": "entry",
+      "key": "绝境逆袭",
+      "show_key": true,
+      "value": "排名不是第1或第2时，所有单位伤害提高20%、最大生命值提高25%；需要当轮战力且仍满足排名条件时比较。排名改变会影响生效，不能把本局一度触发当作后续一直有加成。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-fountain",
+      "type": "entry",
+      "key": "泉水",
+      "show_key": true,
+      "value": "回合开始恢复3棋手生命值，已满血时改得4棋手经验。能够继续保住战斗、需要恢复容错时比较；回血不能代替本轮防住足以淘汰自己的伤害。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-skills-h",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-king",
+      "type": "entry",
+      "key": "寒冰王座",
+      "show_key": true,
+      "value": "解冻后直接变为随机五阶。目标是扩大五阶数量时优先比较，材料是否值得冻结还要看其等级与当轮战力；变化不保证指定英雄。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-split",
+      "type": "entry",
+      "key": "破冰裂变",
+      "show_key": true,
+      "value": "解冻后变为高2阶英雄，下回合起技能单回合可使用2次。三阶材料可以跨到五阶；刚取得强化的本回合不预支两次冻结，下一回合再按实际可用次数安排材料。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-domain",
+      "type": "entry",
+      "key": "冰心领域",
+      "show_key": true,
+      "value": "回合开始时，场上友方英雄获得场上五阶英雄数量×2的等级。本路线持续增加有效五阶时可提高全队成长；手牌五阶与其他品阶工具不增加五阶计数。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-immortal",
+      "type": "entry",
+      "key": "不朽坚冰",
+      "show_key": true,
+      "value": "战斗开始时，全体英雄取得500最大生命值、60物理和法术攻击力；遇到需要即时补战力的局面可比较，和每回合按五阶人数增长等级的冰心领域分别生效。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-awake-choice",
+      "type": "entry",
+      "key": "寒冰觉醒",
+      "show_key": true,
+      "value": "解冻后英雄不变、觉醒进度额外+2，适合已有需要保留的目标时比较；本篇更重视扩大五阶数量，因此不能一面选择保留原英雄的路线，一面预期它仍按本篇速度不断产生新五阶。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-effects-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-effect-gap",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-operation-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-freeze-order",
+      "type": "entry",
+      "key": "安排冻结",
+      "show_key": true,
+      "value": "先辨认自己选到寒冰王座还是破冰裂变，再比较三阶材料、已有等级和少一名英雄后的战力；选择不再承担关键战斗作用的材料冻结，战斗结束后检查实际解冻英雄，再决定是否加入战斗。破冰裂变的双次使用从下一回合开始，不把首次只用一次当成失效。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-growth-count",
+      "type": "entry",
+      "key": "扩人口与工具保护",
+      "show_key": true,
+      "value": "准备扩人口前先确认能放入哪名有效五阶；只有新增实际在场五阶，冰心领域才相应提高下一次成长。需要太乙保护时，先判断本轮生存价值，再调整其最近保护目标；不能为了保五阶人数让主力直接被淘汰。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-position-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-backline",
+      "type": "entry",
+      "key": "后排受到刺客威胁",
+      "show_key": true,
+      "value": "按敌方突入方向安排花木兰重剑保护海诺等后排；需要太乙时检查最近目标。对手有钩子时另留可承受钩取的前排，具体棋盘坐标未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction1-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction2-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction3-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-auction3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-terminal-h",
+      "type": "heading",
+      "level": 2,
+      "title": "终局技巧",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-terminal",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "临近淘汰时先补当前保护与输出，太乙复生或花木兰重剑控制的价值可能高于继续凑五阶人数；仍有安全发育空间时再等正在承担战斗的五阶达到技能节点。本篇未确认遗志、传承、换帅的完整集中等级牌序，不按其他三分阵容流程提前出售主力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-review-h",
+      "type": "heading",
+      "level": 2,
+      "title": "战后复盘",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-review",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "掉血较多时检查冻结后是否仍有有效前排、主要输出是否已到技能节点、装备能否兑现伤害，以及太乙最近保护目标是否正确；冰心领域成长不足时，重数实际在场五阶，不把手牌和工具算入。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-time-h",
+      "type": "heading",
+      "level": 2,
+      "title": "操作时间不足",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-time",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-related-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-five-nav",
+      "type": "entry",
+      "key": "棋手",
+      "show_key": true,
+      "value": "[昭君](../players/昭君.json)",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:34"
+    ],
+    "required_factions": [],
+    "core_heroes": [],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；近期棋手升级需要经验",
+          "role": {
+            "$text": "c14-five-hero-1971"
+          }
+        },
+        {
+          "hero": "card:1821",
+          "necessity": "optional",
+          "role": {
+            "$text": "root24-five-ganjiang"
+          }
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5211",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-5211"
+          }
+        },
+        {
+          "hero": "card:1481",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1481"
+          }
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1761"
+          }
+        },
+        {
+          "hero": "card:5631",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-5631"
+          }
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1231"
+          }
+        },
+        {
+          "hero": "card:1871",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1871"
+          }
+        },
+        {
+          "hero": "card:1541",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1541"
+          }
+        },
+        {
+          "hero": "card:5371",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；有临时等级来源或可兑现开场伤害",
+          "role": {
+            "$text": "c14-five-hero-5371"
+          }
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；近期棋手升级需要经验",
+          "role": {
+            "$text": "c14-five-hero-1971"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；危险对局确需最近主力复生",
+          "role": {
+            "$text": "c14-five-hero-1861"
+          }
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5211",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-5211"
+          }
+        },
+        {
+          "hero": "card:1481",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1481"
+          }
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1761"
+          }
+        },
+        {
+          "hero": "card:5631",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-5631"
+          }
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1231"
+          }
+        },
+        {
+          "hero": "card:1871",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1871"
+          }
+        },
+        {
+          "hero": "card:1541",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；不要求与全部候选同时在场",
+          "role": {
+            "$text": "c14-five-hero-1541"
+          }
+        },
+        {
+          "hero": "card:5371",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；有临时等级来源或可兑现开场伤害",
+          "role": {
+            "$text": "c14-five-hero-5371"
+          }
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；近期棋手升级需要经验",
+          "role": {
+            "$text": "c14-five-hero-1971"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "已取得且战力/控制/回复用途适配；危险对局确需最近主力复生",
+          "role": {
+            "$text": "c14-five-hero-1861"
+          }
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "membership_scope": "以下为全文已证候选池，各名均须按来牌/配套选择；固定完整开局和终局名单未知，不将购买增量误称完整在场名单。七五/八五/九五不保证固定人口。",
+    "operation_routes": [
+      {
+        "id": "random-five-tier",
+        "name": "随机五阶数量路线",
+        "condition": "已有寒冰王座或破冰裂变，冻结后仍能保住当轮战力",
+        "advantages": "冻结继承等级并增加高阶获取机会",
+        "risks": "目标随机，成长兑现需要当前战力与装备",
+        "transition": "按已来的有效五阶逐步替换材料，固定完整终局未知",
+        "phases": {
+          "early": [
+            "c14-five-early-claim"
+          ],
+          "middle": [
+            "c14-five-middle-claim"
+          ],
+          "late": [
+            "c14-five-late-claim"
+          ]
+        },
+        "claim_refs": [
+          "c14-five-principle-claim",
+          "c14-five-king-claim",
+          "c14-five-split-claim"
+        ],
+        "variant_ids": []
+      }
+    ],
+    "late_variants": [],
+    "selection": {
+      "adopt": {
+        "$text": "c14-five-adopt"
+      },
+      "avoid": {
+        "$text": "c14-five-avoid"
+      },
+      "stage_strength": {
+        "early": {
+          "text": "冻结后战力不足时可能掉血，完整开局与通用强势回合未确认。",
+          "claim_refs": [
+            "c14-five-early-claim"
+          ],
+          "inference": true
+        },
+        "middle": {
+          "text": "有效五阶逐步到手，技能节点与装备尚未接齐时仍有空窗。",
+          "claim_refs": [
+            "c14-five-middle-claim"
+          ],
+          "inference": true
+        },
+        "late": {
+          "text": "有效五阶数量、等级节点、装备与保护接上后形成多核战力，不能保证胜局。",
+          "claim_refs": [
+            "c14-five-late-claim"
+          ],
+          "inference": true
+        }
+      }
+    }
+  }
+}

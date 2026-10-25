@@ -1,0 +1,608 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "d9-l-title",
+      "type": "heading",
+      "level": 1,
+      "title": "炸盾刘邦-嬴律",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-principle-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-principle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "刘邦开团摧毁己方图腾，按数量取得永久等级；鬼谷子、少司缘和大司命提供三种图腾。刘邦技能持续获得护盾，扁鹊把友军破盾转成附近法术伤害，刘邦100级还会自行触发破盾伤害；瑶附身护盾、太乙复生帮助主力延长输出。嬴律以风险对冲和经济决策支持先积累资源、4级集中找刘邦觉醒；体系能稳场后再升6比较资源再分配，把之后实际发生的淘汰转成装备和棋手生命恢复。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-selection-h",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "大河刘邦和三种图腾、逐鹿扁鹊可取得，能承受储能期掉血，并有资源在4级补主力时考虑。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-avoid",
+      "type": "entry",
+      "key": "放弃或转向",
+      "show_key": true,
+      "value": "刘邦迟迟不来、储能期间已难承受下一轮伤害时，先补当前质量；这套路线不承诺固定前三或自动获胜。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "大河、逐鹿。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-heroes-h",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-1491",
+      "type": "entry",
+      "key": "刘邦",
+      "show_key": true,
+      "value": "主力近战输出，开团摧毁图腾取得永久等级，持续产盾配扁鹊炸盾。觉醒需求：优先觉醒，吃每个图腾的永久等级从5提高到10；等级投入：主养刘邦，100级增加自身破盾伤害；不把100写成停养点；购买策略：4级先找首张及觉醒；第二拍优先比较刘邦，来牌前其余工具先各一张，拍卖出价上限未确认；上阵时机：首张到手后接替弈星过渡并接主要装备；出售时机：核心保留，未确认换核路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-1191",
+      "type": "entry",
+      "key": "扁鹊",
+      "show_key": true,
+      "value": "把友军破盾变成附近法术伤害，提供刘邦护盾循环的额外输出。觉醒需求：刘邦未醒前先一张，主力觉醒后再补；普通10%、觉醒20%触发者最大生命法伤，冷却1秒；等级投入：主要依赖刘邦生命与触发，不抢主力等级；专养目标未确认；购买策略：先首张，刘邦觉醒后继续补觉醒，拍卖出价上限未确认；上阵时机：有刘邦护盾来源时加入；出售时机：仍采用炸盾时保留，固定退出未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-1891",
+      "type": "entry",
+      "key": "鬼谷子",
+      "show_key": true,
+      "value": "在场召唤先知图腾，供刘邦开团吞掉成长。觉醒需求：本路线先一张即可，专追未确认；等级投入：功能位自然成长，不额外指定等级目标；购买策略：先找刘邦，再补首张，不为重复挤占主力，拍卖出价上限未确认；上阵时机：开战前在场提供图腾；出售时机：成长仍需图腾时保留，替换路线未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-5771",
+      "type": "entry",
+      "key": "少司缘",
+      "show_key": true,
+      "value": "在场召唤因缘图腾，供刘邦开团永久成长。觉醒需求：先一张，觉醒强化图腾但本路线专追未确认；等级投入：功能位自然成长，专养未确认；购买策略：主力后补首张，重复优先未确认，拍卖出价上限未确认；上阵时机：开战前与刘邦同场提供图腾；出售时机：仍需图腾成长时保留，固定退出未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-5171",
+      "type": "entry",
+      "key": "大司命",
+      "show_key": true,
+      "value": "在场召唤往生图腾，供刘邦开团吞掉以取得永久等级。觉醒需求：先一张即可，未确认本分支追醒要求；等级投入：自然成长，不抢刘邦定向等级；购买策略：4级补首张，第二拍除刘邦外比较大司命，拍卖出价上限未确认；上阵时机：开战前在场提供往生图腾；出售时机：成长仍需图腾时保留，终局固定退出未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-5051",
+      "type": "entry",
+      "key": "瑶",
+      "show_key": true,
+      "value": "附身最近主力并提供护盾和属性，帮助刘邦承伤与继续输出。觉醒需求：本路线一张即可，专追未确认；等级投入：自然成长；100级分享30%主要属性，但没有专养100的要求；购买策略：刘邦体系需要保护时补首张，拍卖出价上限未确认；上阵时机：开战前放在刘邦最近位置，核对附身目标；出售时机：仍需附身保护时保留，退出未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-1861",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "给最近英雄复生，让刘邦有再次输出机会。觉醒需求：先一张，刘邦觉醒后再补觉醒取得完美复生；等级投入：自然成长，资源先给刘邦；购买策略：首张补保护，成型后继续找有效重复，拍卖出价上限未确认；上阵时机：开战前最近目标核对刘邦；出售时机：仍需复生时保留，具体退出牌序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-hero-1971",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "在棋手升级时提供经验，配储能开局争取4级找核心。觉醒需求：普通可工作，专追未确认；等级投入：不专养，主要取升级经验；购买策略：开局顺路首张，重复购买优先未确认，拍卖出价上限未确认；上阵时机：先上场再升级棋手；出售时机：刘邦已到、准备换成主力战力时出售；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-phase-h",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-early-h",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-early-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "弈星先过渡，战略优先比较风险对冲。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-early",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "风险对冲提供败阵刷新和每回合生命恢复，精简投入储能；资本杠杆按回合结束时每7能量取得1能量，先看下一轮掉血能否承受。4级是集中找牌阶段，不把示范中吃两次杠杆的回合机械套用。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-middle-h",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-middle-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "4级优先刘邦首张及觉醒，其余三图腾、瑶、太乙和扁鹊先各一张。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-middle",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "刘邦没醒前先保首张扁鹊与太乙，不为重复辅助耗尽找主力的钱。用凯旋征召时确认刘邦是等级最高英雄并实际获胜，不能把一张天赋当必定觉醒；主力觉醒后补齐三图腾并转向升本。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-late-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-late-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "补太乙和扁鹊觉醒，继续找适合刘邦的装备。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-late",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "三图腾与保护已能稳场时升6比较资源再分配；只有实际棋手淘汰后，发布者才取得特殊装备并恢复5棋手生命，淘汰前不预记收益。继续补太乙与扁鹊质量，免控、吸血和肉装按对手调整。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-h1",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-h2",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先比较刘邦和大司命补主力及图腾，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-h3",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-auction-3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-643207",
+      "type": "entry",
+      "key": "金色圣剑",
+      "show_key": true,
+      "value": "唯一。获得30%（+15%法术攻击力）攻击速度。每次普通攻击附带20（+30%法术攻击力）点法术伤害。 给刘邦补攻速和普攻法伤，技能横扫期间继续输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-643803",
+      "type": "entry",
+      "key": "炽热支配者",
+      "show_key": true,
+      "value": "唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。 给刘邦启动免控和护盾，压制仍不免疫。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-643604",
+      "type": "entry",
+      "key": "反伤重甲",
+      "show_key": true,
+      "value": "唯一。将受到伤害的30%以真实伤害回敬给目标。 对手持续攻击刘邦时，以承伤反击补伤害。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-643504",
+      "type": "entry",
+      "key": "红莲炎甲",
+      "show_key": true,
+      "value": "唯一。每2秒对周围1格敌人造成20（+5%穿戴者最大生命值）点法术伤害，并降低目标50%生命恢复和护盾效果，持续3秒。 给近身刘邦补范围伤害并降低敌方恢复与护盾。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-643502",
+      "type": "entry",
+      "key": "不死鸟之眼",
+      "show_key": true,
+      "value": "唯一。增加15%基础生命值，生命恢复和护盾效果提升30%。 提高刘邦生命、恢复和护盾效果，延长产盾炸盾时间。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-644105",
+      "type": "entry",
+      "key": "护命灵珠",
+      "show_key": true,
+      "value": "唯一。每4秒获得基础生命值25%的护盾。拥有护盾时伤害提升25%，护盾被击破则移除。 缺护盾时给刘邦补周期护盾和持盾增伤。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-644113",
+      "type": "entry",
+      "key": "驱雷",
+      "show_key": true,
+      "value": "唯一。每2秒召唤2道雷电轰击敌我双方任意2名单位（穿戴者除外）。造成目标30%最大生命值的法术伤害（命中友军不触发吸血）。若命中司空震则改为使其快速攻击4次。 对难接近的敌人或高生命猪八戒比较百分比雷击，但雷电也可能命中友方，不能保证专打敌方主力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-eq-641003",
+      "type": "entry",
+      "key": "聚灵法杖",
+      "show_key": true,
+      "value": "唯一，无法拆卸。法术攻击力+30，普攻附带自身70%法术攻击力。每击败1名英雄，永久获得5点法术攻击力，战斗胜利翻倍（已击败：0)。 较早可由刘邦击败敌人叠法攻，临近终局比较已有积累与其他装备即时收益；无法拆卸。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-talent-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-talent-633003",
+      "type": "entry",
+      "key": "加速成长",
+      "show_key": true,
+      "value": "获得2张天赋牌加速成长：指定1名英雄等级+5。 已有刘邦时指定主力补等级，形成当前战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-talent-622005",
+      "type": "entry",
+      "key": "凯旋征召",
+      "show_key": true,
+      "value": "战斗胜利时，获得1张你等级最高的英雄牌。 刘邦等级为全队最高且能取胜时，争取其重复牌帮助觉醒；打不赢时没有奖励。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-skill-h",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-skill-94303",
+      "type": "entry",
+      "key": "风险对冲",
+      "show_key": true,
+      "value": "战斗失败时额外获得2次刷新，每回合开始时恢复1棋手生命值。 储能过渡时补刷新与棋手生命，掉血太多仍要先补当前战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-skill-94311",
+      "type": "entry",
+      "key": "资本杠杆",
+      "show_key": true,
+      "value": "回合结束时每有7能量，获得1能量。 前期需要储能且能承受等待时比较，实际收益按回合结束余额计算。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-skill-94318",
+      "type": "entry",
+      "key": "管理进修",
+      "show_key": true,
+      "value": "获得3棋手经验，棋手升级时再次获得。 准备继续升本且核心质量已到时比较经验收益，不把未来经验视为当前战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-skill-94363",
+      "type": "entry",
+      "key": "资源再分配",
+      "show_key": true,
+      "value": "有棋手被淘汰时，获得5能量以及1张基础装备牌。决策颁布者额外特权：改为获得特殊装备牌且额外恢复5棋手生命值。 体系能稳场后准备升6，比较是否有人将淘汰，再取得发布者的装备和生命收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-effect-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-effect-empty",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-op-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-op",
+      "type": "entry",
+      "key": "先觉醒主力再补辅助质量",
+      "show_key": true,
+      "value": "三图腾在场供刘邦开团摧毁成长，扁鹊把破盾转法术伤害。先保证刘邦觉醒，其他图腾与瑶先一张；主力成长后补太乙、扁鹊觉醒。太乙与瑶的最近目标分别核对刘邦，不能用一次摆位代替两种目标检查。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-pos-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-pos",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "让瑶附身与太乙开团复生的最近英雄指向刘邦，使主力接住护盾和复生；刘邦需要近身才能兑现横扫与周围破盾伤害，具体对手下的固定格子尚未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-improve-h",
+      "type": "heading",
+      "level": 2,
+      "title": "后期提升思路",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d9-l-improve",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "刘邦觉醒和三图腾到位后，把预算用于太乙与扁鹊觉醒、吸血及合适装备；资源再分配必须等实际淘汰兑现，不把未来特殊装备当作本轮生存保障。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:43"
+    ],
+    "required_factions": [
+      "faction:dahe",
+      "faction:zhulu"
+    ],
+    "core_heroes": [
+      "card:1491",
+      "card:1191"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "role": {
+            "$text": "d9-l-hero-1971"
+          }
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1491",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1491"
+          }
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1891"
+          }
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-5771"
+          }
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-5171"
+          }
+        },
+        {
+          "hero": "card:1191",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1191"
+          }
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-5051"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1861"
+          }
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1491",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1491"
+          }
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1891"
+          }
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-5771"
+          }
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-5171"
+          }
+        },
+        {
+          "hero": "card:1191",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1191"
+          }
+        },
+        {
+          "hero": "card:5051",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-5051"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "required",
+          "role": {
+            "$text": "d9-l-hero-1861"
+          }
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "selection": {
+      "adopt": {
+        "$text": "d9-l-adopt"
+      },
+      "avoid": {
+        "$text": "d9-l-avoid"
+      }
+    },
+    "late_variants": []
+  }
+}

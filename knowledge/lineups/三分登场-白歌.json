@@ -1,0 +1,581 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "bex-50cd73de5c38f7146",
+      "type": "heading",
+      "title": "三分登场-白歌",
+      "level": 1,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-bb0793055674e9c8e",
+      "type": "heading",
+      "title": "核心原理",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-98883e22d23966b33",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "周瑜、吕布承接成长后的等级承担终局输出。曹操整备触发三分英雄登场，甄姬补其他登场牌、周瑜和貂蝉补等级，小乔在登场效果触发时再加级；蔡文姬则在打出三分英雄牌时给等级最低的其他三名三分英雄加级。白歌利用合成和复制增加甄姬等牌的数量，把反复打牌转为全队成长，最后用传承、遗志或换帅按各自目标规则集中等级。本分支不用露娜，不依赖露娜登场触发整备的三分倒转循环。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-e1d45a8a8d590f804",
+      "type": "heading",
+      "title": "定阵条件",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-1fb255da10c256db9",
+      "type": "entry",
+      "key": "必须三分、无需露娜",
+      "show_key": true,
+      "value": "本分支的曹操、蔡文姬、小乔、甄姬及终局周瑜、吕布均来自三分。日落海被禁时仍可按本篇登场与复制流程玩；三分被禁时不能组建当前阵容。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-f80e2fee4fc79ba50",
+      "type": "heading",
+      "title": "核心机制",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-8d9d6dca3983fd12b",
+      "type": "entry",
+      "key": "区分打牌与登场",
+      "show_key": true,
+      "value": "曹操普通卡整备随机触发1名三分英雄登场，觉醒卡触发2名；没有登场效果的蔡文姬不属于这种登场目标。蔡文姬响应打出三分英雄牌，小乔响应英雄登场效果。连续处理英雄牌时可叠加这些成长，但不能写成每次曹操整备都触发蔡文姬给全队加级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-089216273c0348f69",
+      "type": "heading",
+      "title": "英雄",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-693f5f305e1aa2c82",
+      "type": "entry",
+      "key": "曹操",
+      "show_key": true,
+      "value": "整备触发三分登场，是启动组件。觉醒需求：优先觉醒，触发目标从1名变2名；等级投入：未确认；购买策略：首张和觉醒高优先，拍卖出价上限未确认；上阵时机：已有有效登场目标时加入；出售时机：仍需成长时保留，终局不再循环才比较转级与换出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-e7bb2920187ebf662",
+      "type": "entry",
+      "key": "蔡文姬",
+      "show_key": true,
+      "value": "每打出三分英雄牌，给等级最低的其他3名三分英雄加级。觉醒需求：前期优先补醒，一次加级由1变2；等级投入：未确认；购买策略：优先首张和重复补醒，拍卖出价上限未确认；上阵时机：大量打出三分英雄牌前在场；出售时机：仍需打牌成长时保留，固定换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-e12b45f99ef3f5f6f",
+      "type": "entry",
+      "key": "小乔",
+      "show_key": true,
+      "value": "英雄触发登场时额外给队友等级。觉醒需求：4级后重点补醒，普通随机3名、觉醒全队受益；等级投入：未确认；购买策略：补首张和觉醒，拍卖出价上限未确认；上阵时机：高频登场前在场；出售时机：终局集中等级且不再需要后续成长时，按转级牌的真实目标处理；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-dd6da9cdbe4bb54eb",
+      "type": "entry",
+      "key": "甄姬",
+      "show_key": true,
+      "value": "登场补其他登场英雄牌，增加打牌与合成资源。觉醒需求：4级后重点补醒，觉醒改善选牌；等级投入：未确认；购买策略：第二轮拍卖优先比较，奇才和灵感爆发补其材料；出价上限未确认；上阵时机：需要供牌时上场并留处理新牌的位置；出售时机：仍需供牌合成时保留，固定换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-263c985ccb36a2810",
+      "type": "entry",
+      "key": "周瑜",
+      "show_key": true,
+      "value": "登场提高全队等级，终局可承接等级作战。觉醒需求：未确认；等级投入：按实际转级牌承接团队成长，统一阈值未确认；购买策略：第二轮在甄姬、小乔之后比较，出价上限未确认；上阵时机：登场成长或终局输出需要时加入；出售时机：终局输出时保留，固定换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-c294ff6994ed2eabe",
+      "type": "entry",
+      "key": "吕布",
+      "show_key": true,
+      "value": "三分终局输出，开团提供吸血，可用换帅承接等级。觉醒需求：单次换帅普通吕布即可承接等级，是否补醒仍看战力；选择超级换帅时第一张必须未觉醒，先换帅再用另外三张未觉醒吕布使其觉醒回手，完整顺序见关键操作；等级投入：换帅只交换最近三分英雄等级，不是指定吸收全队；购买策略：第二轮在关键成长组件后比较，出价上限未确认；若已选吕布终局、两名不同三分成员确可转出等级且能备齐两张换帅，再准备五张未觉醒吕布，缺条件时不为此耗尽找牌资源；上阵时机：纯三分已有位置且能补当轮战力时加入；出售时机：终局输出时保留，固定换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-51797a7ac266b3cd6",
+      "type": "entry",
+      "key": "孙尚香",
+      "show_key": true,
+      "value": "前期作战并用登场免费刷新找核心。觉醒需求：前三回合来牌足够可优先补醒保血；等级投入：未确认；购买策略：前期首张与重复用于刷新、觉醒；4级后停止为低级过渡长期重刷，拍卖上限未确认；上阵时机：需要过渡战力与刷新时上；出售时机：4级后等级低、关键组件已到时可卖，减少曹操无关登场候选；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-ffdfb55f939cc1cd6",
+      "type": "entry",
+      "key": "貂蝉",
+      "show_key": true,
+      "value": "条件过渡，登场给三分英雄等级。觉醒需求：不强追，先保证曹操、蔡文姬；等级投入：未确认；购买策略：与赵云按装备和当前战力选择，拍卖上限未确认；上阵时机：装备适合且需要过渡时上；出售时机：核心到齐后按位置和转级资源处理，固定顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-de225c0026e8159a0",
+      "type": "entry",
+      "key": "赵云",
+      "show_key": true,
+      "value": "条件过渡，登场给自己和队友等级。觉醒需求：不强追，先保证曹操、蔡文姬；等级投入：未确认；购买策略：与貂蝉按装备和当前战力选择，拍卖上限未确认；上阵时机：装备适合且需要过渡时上；出售时机：核心到齐后按位置和转级资源处理，固定顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-2ccfa422cd716eca4",
+      "type": "heading",
+      "title": "阵容组成与运营节奏",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-7335ac68f463ee4b3",
+      "type": "heading",
+      "title": "前期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-44b3e47b0bb0600b5",
+      "type": "entry",
+      "key": "孙尚香（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-33af8a6d39cf0fcb7",
+      "type": "entry",
+      "key": "曹操（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-684223a86fb85b32f",
+      "type": "entry",
+      "key": "蔡文姬（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-48560a813812b9361",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "前三波先用能争取胜场的牛魔、孙尚香、弈星过渡；对手孙尚香质量过高、继续打香也难赢时，可留重复牌到蔡文姬在场后再打出，用合成同时补三分成长。第3回合升2级先补曹操、蔡文姬首张与觉醒；缺免费刷新时，先让曹操、蔡文姬上场，再逐张打孙尚香取得刷新，不为凑齐所有挂件强追觉醒。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-daeff36942c74912c",
+      "type": "heading",
+      "title": "中期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-251a38de1122af202",
+      "type": "entry",
+      "key": "曹操（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-354abd707b6fbf382",
+      "type": "entry",
+      "key": "蔡文姬（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-90a20d237be8ce76c",
+      "type": "entry",
+      "key": "小乔（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-29aa48e61203c4030",
+      "type": "entry",
+      "key": "甄姬（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-16e76cc97facb220f",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "3级阶段补曹操、蔡文姬，4级后重点找小乔、甄姬；孙尚香等级低、关键牌已到时可卖，减少曹操无关登场候选。继续用登场牌与合成成长，血量健康可在5级多运营，本轮战力不足时先兑现资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a3-b177211c124de1459575",
+      "type": "entry",
+      "key": "3级停搜与升4的取舍",
+      "show_key": true,
+      "value": "第5、6回合可比较升3级。已有先苦后甜或额外经验、能够继续买牌保血时，可少停留3级推进4级；没有额外经济经验支持时，先在3级补曹操、蔡文姬和合成资源，示例到第8回合再升4。合成锦囊可优先比较经验，不能把有经验支持的快升顺序当作每局固定路线。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-560cfbf73826afff4",
+      "type": "heading",
+      "title": "后期英雄组成与运营",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-db8a8462f59f69028",
+      "type": "entry",
+      "key": "曹操（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-d257677eadab0cb8b",
+      "type": "entry",
+      "key": "蔡文姬（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-e97f72e583a09e66b",
+      "type": "entry",
+      "key": "小乔（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-d034b47d9ca1ee81d",
+      "type": "entry",
+      "key": "甄姬（核心/过渡）",
+      "show_key": true,
+      "value": "按英雄字段补首张、重复与觉醒，拍卖出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-35cab9077dd41b9ee",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "争取6级奇才补甄姬，整理灵感爆发目标继续复制供牌材料。确认需要终局集中等级时，按传承、遗志、换帅的实际规则给周瑜、吕布；仍需后续成长时保留供牌组件。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-fa9e7bf3f4a699465",
+      "type": "heading",
+      "title": "后期提升思路",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-2d02f040f508d439a",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "先补甄姬供牌、小乔成长和曹操触发质量，再按实际转级牌把团队永久等级集中到周瑜、吕布。血量健康时可在5级多运营，需要奇才补牌时再比较升6资源。统一等级、装备和精准拍卖预算未确认，不以吃鸡口号作结果保证。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-d0616cbae53868811",
+      "type": "heading",
+      "title": "拍卖",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-f7e2db933997a4221",
+      "type": "heading",
+      "title": "第一轮拍卖",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-eb59ef6674888015e",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "前期尚缺成长组件时优先补蔡文姬，再看曹操；两者已到而缺当轮战力时，仍比较能立即改善场面的貂蝉、赵云。统一出价上限待确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-2723ff0f41031e393",
+      "type": "heading",
+      "title": "第二轮拍卖",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-16207a0b4029a2376",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "本教学先比较甄姬，再看小乔、周瑜、吕布；按已有首张与觉醒进度补缺口，不设无来源金额。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-62d7ce8e806d46a67",
+      "type": "heading",
+      "title": "第三轮拍卖",
+      "level": 3,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-22311cf9e60b139ac",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "需要尽快到6级取得奇才时，比较扶摇直上与能量超新星；当前战力不足时先考虑能帮助活过本轮的资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-3a21605de985af271",
+      "type": "heading",
+      "title": "棋手技能选择",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-2d60659d50ffa5301",
+      "type": "entry",
+      "key": "奇才与灵感爆发",
+      "show_key": true,
+      "value": "奇才优先补甄姬。使用灵感爆发前先处理无用非觉醒牌，保留本轮需要的甄姬、周瑜或吕布等材料；血量不足时先兑现即时战力，不为等待固定数量拖到开战。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a3-73e3d459166357885b5c",
+      "type": "entry",
+      "key": "灵感爆发前先积累有效合成",
+      "show_key": true,
+      "value": "第8至10回合争取完成可兑现的合成，尽早累计即兴创作的使用次数。手里能保留甄姬、小乔等所需非觉醒材料最好，材料不足时也可用当前有用的孙尚香、貂蝉，不为凑固定三张拖到失去保血机会；奇才取得后仍优先补甄姬。先处理无关非觉醒牌，灵感爆发随机斩击3张材料，每张得到2张转瞬复制，需在当回合安排位置与操作时间。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-c9615302f857ad9d6",
+      "type": "heading",
+      "title": "关键操作",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-791e22ec4990d362e",
+      "type": "entry",
+      "key": "曹操候选与孙尚香退出",
+      "show_key": true,
+      "value": "4级补到关键牌后，孙尚香等级低、免费刷新已经不足以抵消占位成本时可卖掉，减少曹操随机触发的无关登场候选。出售前比较余下场面的保血能力，不能直接把场上英雄收回手牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-56883a7561b7f9a62",
+      "type": "entry",
+      "key": "终局转级的目标规则",
+      "show_key": true,
+      "value": "先完成本轮需要的登场成长，再判断是否集中等级。传承指定10级以上英雄，等级随机给其他英雄中最低的3名；遗志移除目标，永久等级给随机1名友军；换帅只交换三分英雄等级，先把吕布或周瑜与预定高等级三分目标单独靠近，再按最近目标使用。仍需供牌时保留曹操、蔡文姬、小乔、甄姬，不把随机转移写成任意指定。若选择超级换帅，应在第一次换帅前确认已决定由吕布承担终局战力、场上有两名不同的可转出等级三分英雄，并备齐五张未觉醒吕布和两张换帅，再按以下顺序合并两份等级：先上第一张未觉醒吕布，把第一名供级三分英雄安排为其唯一最近三分目标，对吕布使用第一张换帅；再连续打出三张未觉醒吕布，使其觉醒回到手牌。随后上第五张未觉醒吕布，把另一名供级三分英雄安排为其唯一最近三分目标，使用第二张换帅；最后打出手里的觉醒吕布，与场上吕布合成，使两次承接的等级相加。若只有一名可转出等级的三分英雄、只有一张换帅，或仍需保留两个供级成员的战力与后续成长，就保留单次换帅或继续原循环，不强求双换帅。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a3-4f64693fa252c463a4e6",
+      "type": "entry",
+      "key": "面对命运图腾不要急拆战力",
+      "show_key": true,
+      "value": "对手有命运图腾、自己仍需足够有效战力处理战斗时，不要为了把等级全部堆到吕布就提前拆光队伍；先判断这轮能否保住主要输出，继续保留必要的成长、供牌与保护。用遗志处理孙尚香等工具后，先看等级实际落到谁，再按真实最近三分目标使用换帅，不能把随机转级当作任意指定。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-c006f83e65a45f47e",
+      "type": "heading",
+      "title": "关联知识",
+      "level": 2,
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "bex-59c72e4ad5f9e954b",
+      "type": "entry",
+      "key": "白歌",
+      "show_key": true,
+      "value": "[白歌](../players/白歌.json)",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:33"
+    ],
+    "core_heroes": [
+      "card:1281",
+      "card:1841",
+      "card:1061",
+      "card:1271"
+    ],
+    "required_factions": [
+      "faction:sanfen"
+    ],
+    "compositions": {
+      "early": [],
+      "middle": [
+        {
+          "hero": "card:1281",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-693f5f305e1aa2c82"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1841",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-e7bb2920187ebf662"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1061",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-e12b45f99ef3f5f6f"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1271",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-dd6da9cdbe4bb54eb"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1241",
+          "necessity": "optional",
+          "role": {
+            "$text": "bex-263c985ccb36a2810"
+          },
+          "replaces": "",
+          "replacement_note": "终局按实际成长接收和战力需要加入，不要求成长阶段同时上场。"
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "role": {
+            "$text": "bex-c294ff6994ed2eabe"
+          },
+          "replaces": "",
+          "replacement_note": "终局按实际成长接收和战力需要加入，不要求成长阶段同时上场。"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1281",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-693f5f305e1aa2c82"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1841",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-e7bb2920187ebf662"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1061",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-e12b45f99ef3f5f6f"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1271",
+          "necessity": "required",
+          "role": {
+            "$text": "bex-dd6da9cdbe4bb54eb"
+          },
+          "replaces": "",
+          "replacement_note": ""
+        },
+        {
+          "hero": "card:1241",
+          "necessity": "optional",
+          "role": {
+            "$text": "bex-263c985ccb36a2810"
+          },
+          "replaces": "",
+          "replacement_note": "终局按实际成长接收和战力需要加入，不要求成长阶段同时上场。"
+        },
+        {
+          "hero": "card:1231",
+          "necessity": "optional",
+          "role": {
+            "$text": "bex-c294ff6994ed2eabe"
+          },
+          "replaces": "",
+          "replacement_note": "终局按实际成长接收和战力需要加入，不要求成长阶段同时上场。"
+        }
+      ]
+    },
+    "ban_conditions": [
+      {
+        "faction": "faction:sanfen",
+        "status": "unplayable",
+        "reason": "核心成长和终局英雄依赖三分。"
+      },
+      {
+        "faction": "faction:riluohai",
+        "status": "playable",
+        "reason": "本分支不用露娜，不依赖其整备循环。"
+      }
+    ],
+    "matchups": []
+  }
+}

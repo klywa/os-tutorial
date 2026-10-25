@@ -1,0 +1,1708 @@
+{
+  "schema_version": 6,
+  "id": "c24-daji-shield-lianpo",
+  "title": "廉颇炸盾-小妲己",
+  "type": "lineup",
+  "player_id": "player:10",
+  "path": "knowledge/lineups/廉颇炸盾-小妲己.json",
+  "aliases": [
+    "炸盾廉颇-小妲己"
+  ],
+  "entities": [
+    "player:10",
+    "card:1051",
+    "card:1211",
+    "card:5231",
+    "card:1191",
+    "card:1081",
+    "card:1181",
+    "card:1861",
+    "card:1761",
+    "card:1971"
+  ],
+  "related": [
+    "player-10"
+  ],
+  "history": [],
+  "conflicts": [],
+  "manual_sections": [],
+  "claim_annotations": [
+    {
+      "id": "c24-dl-core-claim",
+      "text_ref": "c24-dl-core",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 816,
+          "paragraph_end": 816
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-identity-claim",
+      "text_ref": "c24-dl-identity",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 86,
+          "paragraph_end": 86
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-adopt-claim",
+      "text_ref": "c24-dl-adopt",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-avoid-claim",
+      "text_ref": "c24-dl-avoid",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-break-claim",
+      "text_ref": "c24-dl-break",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 28,
+          "paragraph_end": 28
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-growth-claim",
+      "text_ref": "c24-dl-growth",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 26,
+          "paragraph_end": 26
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 32,
+          "paragraph_end": 32
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 157,
+          "paragraph_end": 157
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 496,
+          "paragraph_end": 496
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 497,
+          "paragraph_end": 497
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1051-claim",
+      "text_ref": "c24-dl-hero-1051",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1211-claim",
+      "text_ref": "c24-dl-hero-1211",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 32,
+          "paragraph_end": 32
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-5231-claim",
+      "text_ref": "c24-dl-hero-5231",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 157,
+          "paragraph_end": 157
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 496,
+          "paragraph_end": 496
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 497,
+          "paragraph_end": 497
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1191-claim",
+      "text_ref": "c24-dl-hero-1191",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 28,
+          "paragraph_end": 28
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1081-claim",
+      "text_ref": "c24-dl-hero-1081",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1181-claim",
+      "text_ref": "c24-dl-hero-1181",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 26,
+          "paragraph_end": 26
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1861-claim",
+      "text_ref": "c24-dl-hero-1861",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 97,
+          "paragraph_end": 97
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1761-claim",
+      "text_ref": "c24-dl-hero-1761",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 86,
+          "paragraph_end": 86
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 87,
+          "paragraph_end": 87
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-hero-1971-claim",
+      "text_ref": "c24-dl-hero-1971",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 115,
+          "paragraph_end": 115
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-early-claim",
+      "text_ref": "c24-dl-early",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 86,
+          "paragraph_end": 86
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-middle-claim",
+      "text_ref": "c24-dl-middle",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 86,
+          "paragraph_end": 86
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-late-claim",
+      "text_ref": "c24-dl-late",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 86,
+          "paragraph_end": 86
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 114,
+          "paragraph_end": 114
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-improve-claim",
+      "text_ref": "c24-dl-improve",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 28,
+          "paragraph_end": 28
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-auction1-claim",
+      "text_ref": "c24-dl-auction1",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-auction2-claim",
+      "text_ref": "c24-dl-auction2",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 86,
+          "paragraph_end": 86
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 87,
+          "paragraph_end": 87
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-equip-target-claim",
+      "text_ref": "c24-dl-equip-target",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 32,
+          "paragraph_end": 32
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-buy-claim",
+      "text_ref": "c24-dl-buy",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 816,
+          "paragraph_end": 816
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-reduce-claim",
+      "text_ref": "c24-dl-reduce",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 157,
+          "paragraph_end": 157
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 496,
+          "paragraph_end": 496
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 497,
+          "paragraph_end": 497
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-decompose-claim",
+      "text_ref": "c24-dl-decompose",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-order-claim",
+      "text_ref": "c24-dl-order",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 496,
+          "paragraph_end": 496
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-position-claim",
+      "text_ref": "c24-dl-position",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 96,
+          "paragraph_end": 96
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-review-claim",
+      "text_ref": "c24-dl-review",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 206,
+          "paragraph_end": 206
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-adv-claim",
+      "text_ref": "c24-dl-adv",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 25,
+          "paragraph_end": 25
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-risk-claim",
+      "text_ref": "c24-dl-risk",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 23.39,
+          "end": 45.65
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 156,
+          "paragraph_end": 156
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    },
+    {
+      "id": "c24-dl-link-claim",
+      "text_ref": "c24-dl-link",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "origin": "batch77_pjnp_fulltext",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 0.0,
+          "end": 22.98
+        },
+        {
+          "type": "video",
+          "source": "BV1pjnp6pEHu:p1",
+          "start": 46.0,
+          "end": 58.36
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 279,
+          "paragraph_end": 279
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 280,
+          "paragraph_end": 280
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-daji-lianpo.json",
+        "basis": "3段完整raw/corrected及10候选实读；同claim官方机制校准与本路线角色/目标推导；战斗触发不是口述自动施法爆盾"
+      }
+    }
+  ],
+  "body_sha256": "aaa75525774e6a27f5e54024f0bce956b51a23d57957bc83ac01e70f35a86ab7",
+  "revision": "6c67d6183dcbcb5f8c24"
+}

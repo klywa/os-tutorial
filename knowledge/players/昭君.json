@@ -359,6 +359,92 @@
       "id": "n-c70ec19bc5d72de90779"
     },
     {
+      "id": "c14-player-five-h",
+      "type": "heading",
+      "level": 3,
+      "title": "[昭君七五](../lineups/昭君七五-昭君.json)",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-adopt",
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "取得寒冰王座或破冰裂变，已有冻结材料且剩余战力能应战时采用；目标是多名有效五阶，不要求先确定固定七人。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-avoid",
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "当前冻结后无法保血时先补战力；只有觉醒强化时，不照搬随机五阶获取路线。已形成图腾或古币体系时保留其核心联动。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "没有共同强制单一阵营；三分被禁仍可用其他已来五阶，吕布与其他成员各按所属阵营开放情况选择。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-adv",
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "随机高阶获取和等级继承帮助形成多个战力点；冰心领域把更多实际在场五阶转为后续全队成长，逐步兑现高等级技能。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-risk",
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "变化结果随机，五阶数量、等级节点和装备未接上时有空窗；工具占位与冻结少一名战斗成员都需看当轮压力。",
+      "separator": "\n\n"
+    },
+    {
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "海月、姜子牙和海诺接受冻结继承与全队成长，分别兑现各自40级、100级战斗技能，达到节点后仍按战力需要成长；杨玉环按续航需求补入，未到时保留现有有效战力。司空震先确认群星璀璨等真实临时等级来源及法术装备，弈星不专养，危险对局再比较太乙真人保护。已有目标需要觉醒时，升华按实际需求选择；固定追醒预算与统一停级点未确认。",
+      "separator": "\n\n",
+      "id": "n-af9152bcfed9e51d2464"
+    },
+    {
+      "id": "c14-player-five-strength-h",
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-early",
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "先看冻结后是否还有可用战力，弈星普通首张可辅助棋手升级；完整开局购买顺序与通用强势回合尚未确认。 采用干将莫邪过渡时先补觉醒并留场保血，等其他英雄能够接住战力、且已取得寒冰王座后再冻结，解冻为随机五阶；不照搬单局第7回合，也不在首张到手就提前冻掉。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-middle",
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "有合适强化后比较三阶材料，逐步把随机五阶转为当轮输出、承伤与回复；破冰裂变双次使用从下回合开始，不把单局第8/10回合当固定成型表。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c14-player-five-late",
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "实际在场五阶推动冰心领域成长，核心技能节点和装备齐备后形成多核战力；危险时比较太乙保护，不为凑数量放弃当轮生存，也不宣称全体100级无敌。",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 3,
       "title": "其他选阵说明",
@@ -373,14 +459,6 @@
       "space": " ",
       "separator": "\n\n",
       "id": "n-eda8de81f4dc71840ff9"
-    },
-    {
-      "type": "entry",
-      "key": "正文",
-      "show_key": false,
-      "value": "升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
-      "separator": "\n\n",
-      "id": "n-af9152bcfed9e51d2464"
     },
     {
       "type": "entry",
@@ -591,6 +669,76 @@
       ],
       "advantages": "冻结补高阶牌与成长，条件到位时保留第二输出。",
       "disadvantages": "变化不保证花木兰，露娜循环受强化与公共牌库限制。"
+    },
+    {
+      "lineup": "c14-zhaojun-five-tier",
+      "branch": "random-five-tier",
+      "title": "昭君七五-昭君",
+      "path": "knowledge/lineups/昭君七五-昭君.json",
+      "selection": {
+        "adopt": "取得寒冰王座或破冰裂变，已有冻结材料且剩余战力能应战时采用；目标是多名有效五阶，不要求先确定固定七人。",
+        "avoid": "当前冻结后无法保血时先补战力；只有觉醒强化时，不照搬随机五阶获取路线。已形成图腾或古币体系时保留其核心联动。",
+        "signals": {
+          "英雄投入": "海月、姜子牙和海诺接受冻结继承与全队成长，分别兑现各自40级、100级战斗技能，达到节点后仍按战力需要成长；杨玉环按续航需求补入，未到时保留现有有效战力。司空震先确认群星璀璨等真实临时等级来源及法术装备，弈星不专养，危险对局再比较太乙真人保护。已有目标需要觉醒时，升华按实际需求选择；固定追醒预算与统一停级点未确认。"
+        },
+        "stage_strength": {
+          "early": {
+            "text": "先看冻结后是否还有可用战力，弈星普通首张可辅助棋手升级；完整开局购买顺序与通用强势回合尚未确认。 采用干将莫邪过渡时先补觉醒并留场保血，等其他英雄能够接住战力、且已取得寒冰王座后再冻结，解冻为随机五阶；不照搬单局第7回合，也不在首张到手就提前冻掉。",
+            "claim_refs": [
+              "c14-player-five-early-claim"
+            ],
+            "node_refs": [
+              "c14-player-five-early"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": "有合适强化后比较三阶材料，逐步把随机五阶转为当轮输出、承伤与回复；破冰裂变双次使用从下回合开始，不把单局第8/10回合当固定成型表。",
+            "claim_refs": [
+              "c14-player-five-middle-claim"
+            ],
+            "node_refs": [
+              "c14-player-five-middle"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": "实际在场五阶推动冰心领域成长，核心技能节点和装备齐备后形成多核战力；危险时比较太乙保护，不为凑数量放弃当轮生存，也不宣称全体100级无敌。",
+            "claim_refs": [
+              "c14-player-five-late-claim"
+            ],
+            "node_refs": [
+              "c14-player-five-late"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [],
+      "advantages": "随机高阶获取和等级继承帮助形成多个战力点；冰心领域把更多实际在场五阶转为后续全队成长，逐步兑现高等级技能。",
+      "disadvantages": "变化结果随机，五阶数量、等级节点和装备未接上时有空窗；工具占位与冻结少一名战斗成员都需看当轮压力。",
+      "node_refs": [
+        "c14-player-five-adopt",
+        "c14-player-five-avoid",
+        "c14-player-five-factions",
+        "c14-player-five-adv",
+        "c14-player-five-risk",
+        "c14-player-five-early",
+        "c14-player-five-middle",
+        "c14-player-five-late",
+        "n-af9152bcfed9e51d2464"
+      ],
+      "claim_refs": [
+        "c14-player-five-adopt-claim",
+        "c14-player-five-avoid-claim",
+        "c14-player-five-factions-claim",
+        "c14-player-five-adv-claim",
+        "c14-player-five-risk-claim",
+        "c14-player-five-early-claim",
+        "c14-player-five-middle-claim",
+        "c14-player-five-late-claim",
+        "n-af9152bcfed9e51d2464-claim"
+      ]
     }
   ],
   "topic": "大河龙蛇运营",
@@ -632,7 +780,7 @@
       "type": "entry",
       "key": "正文",
       "show_key": false,
-      "value": "### 其他已知方向\n\n升华也可用于“七五”阵容，即以七个五品阶英雄为目标的阵容；其完整组成和运营方法尚未整理。",
+      "value": "七五以多名五阶的战斗技能为胜利手段。希望优先扩大高阶数量时比较寒冰王座或破冰裂变，不强制同局同时取得；已有目标需要觉醒时，升华仍是另一种有条件选择。海月、姜子牙、杨玉环优先比较，海诺、吕布、东皇太一、花木兰及有配套的司空震按来牌使用；三分被禁、杨玉环未到仍可继续组织有效五阶，完整固定终局名单尚未确认。",
       "separator": ""
     },
     {

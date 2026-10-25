@@ -22,7 +22,7 @@
       "type": "entry",
       "key": "棋手技能",
       "show_key": true,
-      "value": "使用技能，指定1名英雄，其受到最大生命值20%时将获得护盾并转移至纸伞处。完成秘技时可以为枫叶舞解锁1项新特性，共4项。技能给予了单C英雄强大的生存能力，还能解锁各种各样的特性来提升英雄战力。",
+      "value": "使用枫叶舞指向1名英雄，其受到最大生命值20%的伤害时获得护盾并转移至纸伞处。由能取得击败的主力推进秘技，再按阵容输出与存活缺口选择强化；枫叶舞本身不等同复生。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -32,7 +32,7 @@
       "type": "entry",
       "key": "棋手秘技",
       "show_key": true,
-      "value": "枫叶舞指定的英雄击败3/7/11/15名敌方英雄，获得1张秘技牌翩跹舞步并为枫叶舞解锁1项特性。阿离的秘技是提升英雄上限的核心技能，每解锁一次秘技就能获得不一样的强化效果，可以根据阵容特性选择强化牌进一步提升英雄的战力。",
+      "value": "枫叶舞指定英雄击败3/7/11/15名敌方英雄时获得翩跹舞步并解锁特性。前四阶段分别带来每回合+2等级及转移后恢复、击败永久加级、转移后每击败3名敌人补转移次数、本局击败数对应双攻；因此先用能取得击败的过渡，再让有基础战力的主力接管，并按输出与生存缺口选择强化。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -167,6 +167,14 @@
       "id": "n-48c109a573e86d0d4a27"
     },
     {
+      "id": "d24-player-haiyue-supply",
+      "type": "entry",
+      "key": "可选刷新支路",
+      "show_key": true,
+      "value": "过渡找牌压力较大且孙尚香顺利来牌时，可在三分可用的前提下以其登场刷新替代孙膑位置；孙尚香被大量争抢时继续已有孙膑，不为工具空搜。遗志前仍精简这些工具，不能让新增供牌者分走给海月的等级。",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 4,
       "title": "阶段强度",
@@ -246,7 +254,7 @@
       "type": "entry",
       "key": "优势",
       "show_key": true,
-      "value": "暂无已确认结论",
+      "value": "牺牲压蓝后连续狙击，铠提供临时等级、明世隐最近连接固化，李白在场后的古币可扩展临时来源；枫叶舞转移争取下一枪输出。",
       "prefix": "",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -256,7 +264,7 @@
       "type": "entry",
       "key": "短板",
       "show_key": true,
-      "value": "暂无已确认结论",
+      "value": "需要实际完成牺牲、命中击败与明世隐正确连接；控制、反伤、多次复生会打断收割，临时来源不足时高转化额度也不会凭空产生等级。",
       "prefix": "",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -266,7 +274,7 @@
       "type": "entry",
       "key": "英雄投入",
       "show_key": true,
-      "value": "守约优先等级与觉醒，铠等先满足牺牲压蓝；明世隐只在临时来源成立后重复叠上限。",
+      "value": "守约优先等级与觉醒，铠等先满足牺牲压蓝；准备好升级资源后直接到3级找守约与牺牲配套，不在2级久留。明世隐只在临时来源成立后重复叠上限，6级优先比较枫之洪流的连续施法窗口。换伞先看过渡位是否仍需留场，并按免控和吸血缺口补保护。 铠和明世隐是可采用的固化主链；李白与实际古币按临时来源缺口补入，额度不足才继续叠明世隐。程咬金、钟馗和盾山按供币、压蓝次数或对手收益取舍，不强制全员常驻。40级子弹须击败命中敌人才继续贯穿，100级只消除衰减；免控和存活仍优先于空叠理论伤害。",
       "prefix": "",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -372,7 +380,7 @@
       "type": "entry",
       "key": "英雄投入",
       "show_key": true,
-      "value": "曜、孙膑、西施和墨子先启动；芈月单张也可用，曜到100级且能保血后，留钱补扁鹊、太乙真人，终局再比较换成长工具。",
+      "value": "曜、西施、墨子先形成持续施法与护盾成长，扁鹊补破盾输出。芈月到手时可用效果牌养曜；缺芈月时可用猪八戒与孙膑合成成长，或刘禅临时等级与明世隐最近连接固化，不因一张热门牌断掉已有战力。曜100级且能保血后，补扁鹊、太乙真人，再按对手和伞落点比较6级落英汲取。 已取得逐星且有共战施法条件时，可补李白帮助曜学习，实际三次模仿后核技能面板；这只是可选分支，不替代西施、墨子和扁鹊的原职责，也不把是否取得逐星当必胜条件。",
       "prefix": "",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -415,6 +423,180 @@
       "key_suffix": "：** ",
       "separator": "\n\n",
       "id": "n-cbe20eeb8c098471e02b"
+    },
+    {
+      "id": "b77c-player-20-h53",
+      "type": "heading",
+      "level": 3,
+      "title": "[伞亚连](../lineups/伞亚连-阿离.json)",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-player-20-n54",
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "亚连与米莱狄首张能够取得、日落海整备成长可持续时采用。先用狂铁等过渡取得击败，再让已有基础输出的亚连接枫叶舞；100级流星斩扩大范围，转移护盾和后期落英汲取帮助近战输出兑现。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-player-20-n55",
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "亚连尚无基础战力、关键整备或保护未到时，先保留能取得击败的过渡；血量不足以等升本收益时补本轮质量，不照搬健康局的升6节奏。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-yalian-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "日落海。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-yalian-advantages",
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "亚连的普攻与技能可暴击，100级扩大流星斩范围；整备核心提高临时战力，枫叶舞护盾与转移、瑶附身和太乙复生让主要输出继续发挥。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-yalian-risk",
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "100级前需要过渡与成长承接；核心在日落海英雄中均分，普通分配单名最多50%，不能靠减少人数就预期亚连独得整个核心。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-yalian-investment",
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "3级先找亚连、米莱狄首张，能保血时升级，5级补亚连觉醒及朵莉亚、雅典娜、海诺、瑶、太乙真人等实际缺口。明世隐、云中君可在高阶未齐时补永久成长；明世隐最近连接、瑶附身、太乙复生都检查亚连。血量健康或已稳场后升6选择落英汲取，不把尚未形成的成长当成当前输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-player-20-h56",
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-player-20-n57",
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "狂铁等过渡能取得击败时，先积累枫叶舞与核心等级；需要经验时用弈星辅助升级，不强求零基础亚连立即承担收割。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-player-20-n58",
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "3级补亚连、米莱狄首张后按保血升级，5级集中补质量；高阶未齐时由明世隐、云中君补永久成长，首张到手不等于已经成型。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-player-20-n59",
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "100级亚连的大范围技能与瑶、太乙保护就绪后，按血量和当前战力升6用落英汲取；继续补有效等级与质量，近战接敌和伞落点仍影响输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-h",
+      "type": "heading",
+      "level": 3,
+      "title": "[伞狄仁杰](../lineups/伞狄仁杰-阿离.json)",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-adopt",
+      "type": "entry",
+      "key": "采用信号",
+      "show_key": true,
+      "value": "河洛组件可取得，狄仁杰与古币成长能逐步成型；需要持续普攻射手、已有苏烈与李元芳可过渡时比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-avoid",
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "狄仁杰迟迟未到时先用实际战力保血；前排、免控或恢复不足时先补对应缺口，不只攒升本资源，也不把伞转移当固定复生。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-advantage",
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "古币提高狄仁杰永久等级与攻速，6级翩跹馈赠用转移后的15次普攻补转移机会；前排和分身争取时间，让高频蓝牌持续输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-risk",
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "成长需要古币来源和狄仁杰实际普攻时间，敌方爆发先带走射手、或连接与复生目标错误，都会破坏循环；已有吸血仍要检查控制和前排。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-investment",
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "3级起找狄仁杰并优先觉醒，古币优先给他；程咬金、盾山承担前排与供币，铠到手后再上明世隐固化，额度覆盖实际来源后停止无效重复。太乙可先复生盾山补古币，主力约100级或被爆发威胁时改护狄仁杰；人口不足时用太乙替李元芳，七人口再补钟馗，额外人口才比较武则天。 当攻速成长已满足当前需要、关键对局更缺保护时，可比较退出不再需要的李元芳或盾山；古币仍提供等级、盾山仍有承伤价值，不能把本局4.0面板当作无条件清空供币前排的阈值。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-stage-h",
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-early",
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "苏烈或干将临时持伞取得击败，李元芳继续供币，弈星上场后再升级；当前质量不足时仍需补战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-middle",
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "狄仁杰接管枫叶舞后，用古币攻速与铠、明世隐成长形成持续普攻窗口；缺前排时不能只叠射手面板。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a7-player-direnjie-late",
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "保护主力、前排与6级翩跹馈赠到位后提高持续转移能力；太乙按供币或主力危险切换最近对象，钟馗按七人口与降级需要补。",
+      "separator": "\n\n"
     },
     {
       "type": "heading",
@@ -528,7 +710,7 @@
       "type": "entry",
       "key": "推测",
       "show_key": true,
-      "value": "替换主要输出英雄后，重新主动指定枫叶舞；确认纸伞与新目标对应，避免强化仍留在已换下的英雄上。",
+      "value": "决定由新英雄接管枫叶舞时，先确认旧持伞者已经可以退出；出售带伞旧英雄收回枫叶舞，再主动指定新主力，并把装备和最近保护目标一并检查。旧英雄仍承担必要保血或供币时，先不要为了换伞把它卖掉。",
       "prefix": "- ",
       "key_suffix": "：",
       "separator": "\n\n",
@@ -594,7 +776,7 @@
         "adopt": "干将能完成早期成长，且能取得遗志和海月。",
         "avoid": "缺遗志或海月时不把完成升级等同成型，优先修正保血与找牌渠道。",
         "signals": {
-          "英雄投入": "干将觉醒保血，取得遗志后留钱升5找海月；先精简遗志的随机接收候选，再用遗志移除干将、转移永久等级，最后重新指定枫叶舞给海月，瑶先用单张提供保护，扁鹊先补首张启动炸盾。"
+          "英雄投入": "干将觉醒保血，取得遗志后留钱升5找海月；先精简遗志的随机接收候选，再用遗志移除干将、转移永久等级，最后重新指定枫叶舞给海月，瑶先用单张提供保护，扁鹊先补首张启动炸盾。 过渡找牌压力较大且孙尚香顺利来牌时，可在三分可用的前提下以其登场刷新替代孙膑位置；孙尚香被大量争抢时继续已有孙膑，不为工具空搜。遗志前仍精简这些工具，不能让新增供牌者分走给海月的等级。"
         }
       },
       "required_factions": [
@@ -602,13 +784,19 @@
         "逐鹿"
       ],
       "advantages": "暂无已确认结论",
-      "disadvantages": "暂无已确认结论"
+      "disadvantages": "暂无已确认结论",
+      "node_refs": [
+        "d24-player-haiyue-supply"
+      ],
+      "claim_refs": [
+        "d24-player-haiyue-supply-claim"
+      ]
     },
     {
       "lineup": "b22-umbrella-shouyue",
       "branch": "owner",
       "title": "伞守约",
-      "path": "knowledge/lineups/伞守约-阿离.md",
+      "path": "knowledge/lineups/伞守约-阿离.json",
       "selection": {
         "stage_strength": {
           "early": {
@@ -636,14 +824,20 @@
         "adopt": "河洛牺牲与古币组件可获取，能尽早形成守约输出。",
         "avoid": "高爆发未能完成收割时先修正存活和免控，不只叠理论伤害。",
         "signals": {
-          "英雄投入": "守约优先等级与觉醒，铠等先满足牺牲压蓝；明世隐只在临时来源成立后重复叠上限。"
+          "英雄投入": {
+            "$text": "n-4623cdfd2b5076dfdf24"
+          }
         }
       },
       "required_factions": [
         "河洛"
       ],
-      "advantages": "暂无已确认结论",
-      "disadvantages": "暂无已确认结论"
+      "advantages": {
+        "$text": "n-2c06c153085cda3fa47b"
+      },
+      "disadvantages": {
+        "$text": "n-2c42f17952231f5fd128"
+      }
     },
     {
       "lineup": "b22-shield-yao",
@@ -677,7 +871,9 @@
         "adopt": "逐鹿核心和阿离击败成长能启动，能补西施与扁鹊。",
         "avoid": "无法稳定施法或转移落点被利用时，先解决免控、缩蓝和接敌。",
         "signals": {
-          "英雄投入": "曜、孙膑、西施和墨子先启动；芈月单张也可用，曜到100级且能保血后，留钱补扁鹊、太乙真人，终局再比较换成长工具。"
+          "英雄投入": {
+            "$text": "n-153952fac7b2008d1e19"
+          }
         }
       },
       "required_factions": [
@@ -685,6 +881,123 @@
       ],
       "advantages": "暂无已确认结论",
       "disadvantages": "暂无已确认结论"
+    },
+    {
+      "lineup": "b77c-umbrella-yalian",
+      "branch": "owner",
+      "title": "伞亚连",
+      "path": "knowledge/lineups/伞亚连-阿离.json",
+      "selection": {
+        "adopt": {
+          "$text": "b77c-player-20-n54"
+        },
+        "avoid": {
+          "$text": "b77c-player-20-n55"
+        },
+        "signals": {
+          "英雄投入": {
+            "$text": "a7-player-yalian-investment"
+          }
+        },
+        "stage_strength": {
+          "early": {
+            "text": {
+              "$text": "b77c-player-20-n57"
+            },
+            "claim_refs": [
+              "b77c-player-20-n57-claim",
+              "a7-7178eca781856f46b910"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": {
+              "$text": "b77c-player-20-n58"
+            },
+            "claim_refs": [
+              "b77c-player-20-n58-claim",
+              "a7-2b18517872769a98068c"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": {
+              "$text": "b77c-player-20-n59"
+            },
+            "claim_refs": [
+              "b77c-player-20-n59-claim",
+              "a7-9ea507b865751296e267"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [
+        "faction:riluohai"
+      ],
+      "advantages": {
+        "$text": "a7-player-yalian-advantages"
+      },
+      "disadvantages": {
+        "$text": "a7-player-yalian-risk"
+      }
+    },
+    {
+      "lineup": "a7-umbrella-direnjie",
+      "branch": "owner",
+      "title": "伞狄仁杰",
+      "path": "knowledge/lineups/伞狄仁杰-阿离.json",
+      "selection": {
+        "adopt": {
+          "$text": "a7-player-direnjie-adopt"
+        },
+        "avoid": {
+          "$text": "a7-player-direnjie-avoid"
+        },
+        "signals": {
+          "英雄投入": {
+            "$text": "a7-player-direnjie-investment"
+          }
+        },
+        "stage_strength": {
+          "early": {
+            "text": {
+              "$text": "a7-player-direnjie-early"
+            },
+            "claim_refs": [
+              "a7-8264dd05e21b9ce176cc"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": {
+              "$text": "a7-player-direnjie-middle"
+            },
+            "claim_refs": [
+              "a7-658462cd8c59392cdc80"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": {
+              "$text": "a7-player-direnjie-late"
+            },
+            "claim_refs": [
+              "a7-2e489faab3e9f14b5fa9"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [
+        "faction:heluo"
+      ],
+      "advantages": {
+        "$text": "a7-player-direnjie-advantage"
+      },
+      "disadvantages": {
+        "$text": "a7-player-direnjie-risk"
+      }
     }
   ],
   "topic": "阿离",

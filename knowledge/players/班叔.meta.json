@@ -4,7 +4,11 @@
   "title": "班叔",
   "player_id": "player:35",
   "entities": [
-    "player:35"
+    "player:35",
+    "card:5071",
+    "card:5011",
+    "card:1931",
+    "card:1751"
   ],
   "aliases": [],
   "path": "knowledge/players/班叔.json",
@@ -364,6 +368,1513 @@
           "text_ref": "support-b22-player-35-official-five"
         }
       ]
+    },
+    {
+      "at": "2026-10-24T16:56:01.230101+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "班叔",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-ad216a81522724bfca7f"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 神匠提供开局机关，机关跃迁通过收集螺丝取得构筑升级。陷阱被触发、弹簧被触发、屏障被摧毁分别提供不同螺丝收益；机关布置需同时考虑当轮保护和后续升级。",
+            "separator": "\n\n",
+            "id": "n-a1ab1f0688d6d7dc0dfc"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 神匠在开局及棋手5级给便携式机关，升级至2、3、4级随机给热能陷阱、电磁弹簧或等离子屏障。需要特定机关时利用可选节点，不能把中间升级奖励算成保证。",
+            "separator": "\n\n",
+            "id": "n-7b763dc522c62c79a48e"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-95619a8c9010a51c7d85"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 先确定当轮需要阻挡近战、拦截弹道还是应对刺客，再布置屏障和触发机关。1级屏障不能按2级的弹道保护使用；不能为了收螺丝放弃必要保血。",
+            "separator": "\n\n",
+            "id": "n-7816830377fea3055593"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-e973d1d9585b112bc5f7"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[奶屏诸葛亮](../lineups/奶屏诸葛亮-班叔.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-9d9e378864a408881ab0"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "能取得杨玉环、诸葛亮和足够机关保护，队伍可维持远程施法。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-d22f55bd5dba437deb24"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "缺治疗或屏障被绕过时先解决保护，不只增加诸葛亮理论等级。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1bdefbac7c8b0eb79ed8"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "大河、三分、逐鹿。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a61c7e141cd1be09db50"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-dc30415045f6337cff65"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-c4bdeea98f05b8f14e6a"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "永久等级优先给杨玉环，提高治疗量、维持屏障；诸葛亮主要借队友施法获得临时等级；刘禅醒后停买，明世隐按有效转化空间续买。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3a32f0e032cc862899e6"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-207eee0c5b7f068590f0"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "觉醒干将和机关可保血，但强前期对手仍会施压。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-1680a72338f443162d21"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "升5级补杨玉环、诸葛亮及明世隐后才形成完整治疗施法循环。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-eceed6de16595200887b"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "屏障升级、杨玉环治疗与全队存活共同决定能否持续输出，单屏障局需独立取舍。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-4a97f326412f05ef84d2"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-376004f98398508e4ce8"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 奶屏路线只有一个屏障时，2级横向保护与3级圆形保护用途不同。等待6级强化及足够治疗后再比较3级复生，避免保护范围缩小导致多个远程施法者提前阵亡。",
+            "separator": "\n\n",
+            "id": "n-0d27ee24580e41ac43d1"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-433747b736d6ffab46c9"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无",
+            "separator": "\n",
+            "id": "n-e08835c3081243e2094a"
+          }
+        ],
+        "adaptations": [
+          {
+            "lineup": "b22-heal-wall-zhuge",
+            "branch": "owner",
+            "title": "奶屏诸葛亮",
+            "path": "knowledge/lineups/奶屏诸葛亮-班叔.md",
+            "selection": {
+              "stage_strength": {
+                "early": {
+                  "text": "觉醒干将和机关可保血，但强前期对手仍会施压。",
+                  "claim_refs": [
+                    "fmt24-owner-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "升5级补杨玉环、诸葛亮及明世隐后才形成完整治疗施法循环。",
+                  "claim_refs": [
+                    "fmt24-owner-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "屏障升级、杨玉环治疗与全队存活共同决定能否持续输出，单屏障局需独立取舍。",
+                  "claim_refs": [
+                    "fmt24-owner-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              },
+              "adopt": "能取得杨玉环、诸葛亮和足够机关保护，队伍可维持远程施法。",
+              "avoid": "缺治疗或屏障被绕过时先解决保护，不只增加诸葛亮理论等级。",
+              "signals": {
+                "英雄投入": "永久等级优先给杨玉环，提高治疗量、维持屏障；诸葛亮主要借队友施法获得临时等级；刘禅醒后停买，明世隐按有效转化空间续买。"
+              }
+            },
+            "required_factions": [
+              "大河",
+              "三分",
+              "逐鹿"
+            ],
+            "advantages": "暂无已确认结论",
+            "disadvantages": "暂无已确认结论"
+          }
+        ],
+        "topic": "班叔",
+        "supporting_nodes": [
+          {
+            "id": "support-b22-player-35-skill",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "神匠提供开局机关，机关跃迁通过收集螺丝取得构筑升级。陷阱被触发、弹簧被触发、屏障被摧毁分别提供不同螺丝收益；机关布置需同时考虑当轮保护和后续升级。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-35-opening",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "先确定当轮需要阻挡近战、拦截弹道还是应对刺客，再布置屏障和触发机关。1级屏障不能按2级的弹道保护使用；不能为了收螺丝放弃必要保血。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-35-single-wall",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "奶屏路线只有一个屏障时，2级横向保护与3级圆形保护用途不同。等待6级强化及足够治疗后再比较3级复生，避免保护范围缩小导致多个远程施法者提前阵亡。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-35-official-five",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "神匠在v1.7.1开局及棋手5级给便携式机关，升级至2、3、4级随机给热能陷阱、电磁弹簧或等离子屏障。需要特定机关时利用可选节点，不能把中间升级奖励算成保证。",
+            "separator": ""
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "b22-player-35-skill",
+          "section": "技能",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 0.18,
+              "end": 115.06
+            }
+          ],
+          "text_ref": "support-b22-player-35-skill"
+        },
+        {
+          "id": "b22-player-35-opening",
+          "section": "前期思路",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 558.72,
+              "end": 737.38
+            }
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+          },
+          "text_ref": "support-b22-player-35-opening"
+        },
+        {
+          "id": "b22-player-35-single-wall",
+          "section": "适用技巧",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 842.32,
+              "end": 957.9
+            }
+          ],
+          "text_ref": "support-b22-player-35-single-wall"
+        },
+        {
+          "id": "b22-player-35-official-five",
+          "section": "技能",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+              "paragraph_start": 14,
+              "paragraph_end": 17
+            }
+          ],
+          "text_ref": "support-b22-player-35-official-five"
+        },
+        {
+          "id": "acq-0b4050f837c5c499ff07",
+          "text_ref": "n-7b763dc522c62c79a48e",
+          "kind": "mechanic",
+          "section": "特殊获取与当前机制",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 801,
+              "paragraph_end": 801
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 802,
+              "paragraph_end": 802
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 803,
+              "paragraph_end": 803
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 808,
+              "paragraph_end": 808
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 809,
+              "paragraph_end": 809
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-10-24T17:46:45.201304+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "班叔",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-ad216a81522724bfca7f"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 神匠提供开局机关，机关跃迁通过收集螺丝取得构筑升级。陷阱被触发、弹簧被触发、屏障被摧毁分别提供不同螺丝收益；机关布置需同时考虑当轮保护和后续升级。",
+            "separator": "\n\n",
+            "id": "n-a1ab1f0688d6d7dc0dfc"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 神匠在开局及棋手5级给便携式机关，升级至2、3、4级随机给热能陷阱、电磁弹簧或等离子屏障。需要特定机关时利用可选节点，不能把中间升级奖励算成保证。",
+            "separator": "\n\n",
+            "id": "n-7b763dc522c62c79a48e"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-95619a8c9010a51c7d85"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 先确定当轮需要阻挡近战、拦截弹道还是应对刺客，再布置屏障和触发机关。1级屏障不能按2级的弹道保护使用；不能为了收螺丝放弃必要保血。",
+            "separator": "\n\n",
+            "id": "n-7816830377fea3055593"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-e973d1d9585b112bc5f7"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[奶屏诸葛亮](../lineups/奶屏诸葛亮-班叔.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-9d9e378864a408881ab0"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "能取得杨玉环、诸葛亮和足够机关保护，队伍可维持远程施法。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-d22f55bd5dba437deb24"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "缺治疗或屏障被绕过时先解决保护，不只增加诸葛亮理论等级。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1bdefbac7c8b0eb79ed8"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "大河、三分、逐鹿。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a61c7e141cd1be09db50"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-dc30415045f6337cff65"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-c4bdeea98f05b8f14e6a"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "永久等级优先给杨玉环，提高治疗量、维持屏障；诸葛亮主要借队友施法获得临时等级；刘禅醒后停买，明世隐按有效转化空间续买。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3a32f0e032cc862899e6"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-207eee0c5b7f068590f0"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "觉醒干将和机关可保血，但强前期对手仍会施压。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-1680a72338f443162d21"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "升5级补杨玉环、诸葛亮及明世隐后才形成完整治疗施法循环。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-eceed6de16595200887b"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "屏障升级、杨玉环治疗与全队存活共同决定能否持续输出，单屏障局需独立取舍。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-4a97f326412f05ef84d2"
+          },
+          {
+            "id": "d8-player-ban-lixin-h",
+            "type": "heading",
+            "level": 3,
+            "title": "[牺牲李信](../lineups/牺牲李信-班叔.json)",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-adopt",
+            "type": "entry",
+            "key": "采用条件",
+            "show_key": true,
+            "value": "河洛可用，李信与牺牲、临时等级组件有机会到场，机关能保护过渡并引导敌人接近时采用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-avoid",
+            "type": "entry",
+            "key": "放弃／转向信号",
+            "show_key": true,
+            "value": "远程分散且难踩机关时先调整屏障与阵型；缺李信或保血不足时不为升5与追三级陷阱同时耗尽资源。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-factions",
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "河洛。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-adv",
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "牺牲给李信临时成长，明世隐有限固化；陷阱与钟馗对实际触发对象降级，让李信更容易持续作战。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-risk",
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "依赖敌人踩踏和李信活到牺牲收益，远程分散、绕机关或拉走李信会削弱循环。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-heroes",
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "李信与明世隐后期优先补醒；铠、钟馗补牺牲，太乙提供最近目标复生。李元芳给李信古币，缺铠钟时李白暂补古币临时等级。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-stages-h",
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-early",
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "热能陷阱配牛魔、李元芳保血，弈星有则补升级经验，首拍优先河洛体系并保留升级资源。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-middle",
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "4级免费刷新找李信，无首张可攒资源5级再找；搏命可提前操作但降低20棋手生命，屏障保护与后续陷阱升级分别比较。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "d8-player-ban-lixin-late",
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "6级陷阱强化扩大范围、延时2秒爆炸并使三级陷阱冷却4秒；李信成长与狂暴复生兑现输出，对手射手多时2级屏障先挡飞行伤害。",
+            "separator": "\n\n"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-376004f98398508e4ce8"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 奶屏路线只有一个屏障时，2级横向保护与3级圆形保护用途不同。等待6级强化及足够治疗后再比较3级复生，避免保护范围缩小导致多个远程施法者提前阵亡。",
+            "separator": "\n\n",
+            "id": "n-0d27ee24580e41ac43d1"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-433747b736d6ffab46c9"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无",
+            "separator": "\n",
+            "id": "n-e08835c3081243e2094a"
+          }
+        ],
+        "adaptations": [
+          {
+            "lineup": "b22-heal-wall-zhuge",
+            "branch": "owner",
+            "title": "奶屏诸葛亮",
+            "path": "knowledge/lineups/奶屏诸葛亮-班叔.md",
+            "selection": {
+              "stage_strength": {
+                "early": {
+                  "text": "觉醒干将和机关可保血，但强前期对手仍会施压。",
+                  "claim_refs": [
+                    "fmt24-owner-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "升5级补杨玉环、诸葛亮及明世隐后才形成完整治疗施法循环。",
+                  "claim_refs": [
+                    "fmt24-owner-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "屏障升级、杨玉环治疗与全队存活共同决定能否持续输出，单屏障局需独立取舍。",
+                  "claim_refs": [
+                    "fmt24-owner-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              },
+              "adopt": "能取得杨玉环、诸葛亮和足够机关保护，队伍可维持远程施法。",
+              "avoid": "缺治疗或屏障被绕过时先解决保护，不只增加诸葛亮理论等级。",
+              "signals": {
+                "英雄投入": "永久等级优先给杨玉环，提高治疗量、维持屏障；诸葛亮主要借队友施法获得临时等级；刘禅醒后停买，明世隐按有效转化空间续买。"
+              }
+            },
+            "required_factions": [
+              "大河",
+              "三分",
+              "逐鹿"
+            ],
+            "advantages": "暂无已确认结论",
+            "disadvantages": "暂无已确认结论"
+          },
+          {
+            "lineup": "d8-sacrifice-lixin-banshu",
+            "branch": "owner",
+            "title": "牺牲李信",
+            "path": "knowledge/lineups/牺牲李信-班叔.json",
+            "selection": {
+              "adopt": {
+                "$text": "d8-player-ban-lixin-adopt"
+              },
+              "avoid": {
+                "$text": "d8-player-ban-lixin-avoid"
+              },
+              "signals": {
+                "英雄投入": {
+                  "$text": "d8-player-ban-lixin-heroes"
+                }
+              },
+              "stage_strength": {
+                "early": {
+                  "$text": "d8-player-ban-lixin-early"
+                },
+                "middle": {
+                  "$text": "d8-player-ban-lixin-middle"
+                },
+                "late": {
+                  "$text": "d8-player-ban-lixin-late"
+                }
+              }
+            },
+            "required_factions": [
+              "faction:heluo"
+            ],
+            "advantages": {
+              "$text": "d8-player-ban-lixin-adv"
+            },
+            "disadvantages": {
+              "$text": "d8-player-ban-lixin-risk"
+            }
+          }
+        ],
+        "topic": "班叔",
+        "supporting_nodes": [
+          {
+            "id": "support-b22-player-35-skill",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "神匠提供开局机关，机关跃迁通过收集螺丝取得构筑升级。陷阱被触发、弹簧被触发、屏障被摧毁分别提供不同螺丝收益；机关布置需同时考虑当轮保护和后续升级。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-35-opening",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "先确定当轮需要阻挡近战、拦截弹道还是应对刺客，再布置屏障和触发机关。1级屏障不能按2级的弹道保护使用；不能为了收螺丝放弃必要保血。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-35-single-wall",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "奶屏路线只有一个屏障时，2级横向保护与3级圆形保护用途不同。等待6级强化及足够治疗后再比较3级复生，避免保护范围缩小导致多个远程施法者提前阵亡。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-35-official-five",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "神匠在v1.7.1开局及棋手5级给便携式机关，升级至2、3、4级随机给热能陷阱、电磁弹簧或等离子屏障。需要特定机关时利用可选节点，不能把中间升级奖励算成保证。",
+            "separator": ""
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "b22-player-35-skill",
+          "section": "技能",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 0.18,
+              "end": 115.06
+            }
+          ],
+          "text_ref": "support-b22-player-35-skill"
+        },
+        {
+          "id": "b22-player-35-opening",
+          "section": "前期思路",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 558.72,
+              "end": 737.38
+            }
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/22份文字稿融合-2026-10-22.json"
+          },
+          "text_ref": "support-b22-player-35-opening"
+        },
+        {
+          "id": "b22-player-35-single-wall",
+          "section": "适用技巧",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1yMeq6wEGc:p1",
+              "start": 842.32,
+              "end": 957.9
+            }
+          ],
+          "text_ref": "support-b22-player-35-single-wall"
+        },
+        {
+          "id": "b22-player-35-official-five",
+          "section": "技能",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-0e990e4062663a3b5d31e6b35917eaead067f38b53da7e4ebc64eaf7fc8d4a27",
+              "paragraph_start": 14,
+              "paragraph_end": 17
+            }
+          ],
+          "text_ref": "support-b22-player-35-official-five"
+        },
+        {
+          "id": "acq-0b4050f837c5c499ff07",
+          "text_ref": "n-7b763dc522c62c79a48e",
+          "kind": "mechanic",
+          "section": "特殊获取与当前机制",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 801,
+              "paragraph_end": 801
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 802,
+              "paragraph_end": 802
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 803,
+              "paragraph_end": 803
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 808,
+              "paragraph_end": 808
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 809,
+              "paragraph_end": 809
+            }
+          ]
+        },
+        {
+          "id": "d8-player-ban-lixin-adopt-d8-claim",
+          "text_ref": "d8-player-ban-lixin-adopt",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-avoid-d8-claim",
+          "text_ref": "d8-player-ban-lixin-avoid",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-factions-d8-claim",
+          "text_ref": "d8-player-ban-lixin-factions",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-adv-d8-claim",
+          "text_ref": "d8-player-ban-lixin-adv",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-risk-d8-claim",
+          "text_ref": "d8-player-ban-lixin-risk",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-heroes-d8-claim",
+          "text_ref": "d8-player-ban-lixin-heroes",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-early-d8-claim",
+          "text_ref": "d8-player-ban-lixin-early",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-middle-d8-claim",
+          "text_ref": "d8-player-ban-lixin-middle",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        },
+        {
+          "id": "d8-player-ban-lixin-late-d8-claim",
+          "text_ref": "d8-player-ban-lixin-late",
+          "kind": "conditional_strategy",
+          "section": "牺牲李信",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 34.13,
+              "end": 117.39
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 136,
+              "paragraph_end": 136
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 124,
+              "paragraph_end": 124
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 106,
+              "paragraph_end": 106
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 84,
+              "paragraph_end": 84
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 192.77,
+              "end": 394.49
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 527,
+              "paragraph_end": 527
+            },
+            {
+              "type": "document",
+              "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+              "paragraph_start": 361,
+              "paragraph_end": 361
+            },
+            {
+              "source": "BV1fepE63EYY:p1",
+              "start": 558.06,
+              "end": 672.39
+            }
+          ],
+          "review_basis": {
+            "stage8": {
+              "report": "raw/reports/batch77/review-d-stage8.json",
+              "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+            }
+          }
+        }
+      ]
     }
   ],
   "conflicts": [],
@@ -474,10 +1985,604 @@
           "paragraph_end": 809
         }
       ]
+    },
+    {
+      "id": "d8-player-ban-lixin-adopt-d8-claim",
+      "text_ref": "d8-player-ban-lixin-adopt",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-avoid-d8-claim",
+      "text_ref": "d8-player-ban-lixin-avoid",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-factions-d8-claim",
+      "text_ref": "d8-player-ban-lixin-factions",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-adv-d8-claim",
+      "text_ref": "d8-player-ban-lixin-adv",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-risk-d8-claim",
+      "text_ref": "d8-player-ban-lixin-risk",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-heroes-d8-claim",
+      "text_ref": "d8-player-ban-lixin-heroes",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-early-d8-claim",
+      "text_ref": "d8-player-ban-lixin-early",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-middle-d8-claim",
+      "text_ref": "d8-player-ban-lixin-middle",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
+    },
+    {
+      "id": "d8-player-ban-lixin-late-d8-claim",
+      "text_ref": "d8-player-ban-lixin-late",
+      "kind": "conditional_strategy",
+      "section": "牺牲李信",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 34.13,
+          "end": 117.39
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 136,
+          "paragraph_end": 136
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 124,
+          "paragraph_end": 124
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 106,
+          "paragraph_end": 106
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 84,
+          "paragraph_end": 84
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 192.77,
+          "end": 394.49
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 527,
+          "paragraph_end": 527
+        },
+        {
+          "type": "document",
+          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
+          "paragraph_start": 361,
+          "paragraph_end": 361
+        },
+        {
+          "source": "BV1fepE63EYY:p1",
+          "start": 558.06,
+          "end": 672.39
+        }
+      ],
+      "review_basis": {
+        "stage8": {
+          "report": "raw/reports/batch77/review-d-stage8.json",
+          "basis": "三源79段raw/corrected实际逐段阅读及10/25北京时间实际官网请求已注册完整对象；未核音频/视频帧，具体歧义留缺"
+        }
+      }
     }
   ],
-  "body_sha256": "d1adca92847c47665862395fe2d8eec92d02733190f0e41665216aabf2b640cd",
-  "revision": "22d5e38171111f826f76",
+  "body_sha256": "1080d7136a58d7bc30619227d0e86de74fb6e8901ed3509007e7e4b794af6c05",
+  "revision": "40aec4f7fb7bf0c81a25",
   "legacy_layout": {
     "version": 4
   },

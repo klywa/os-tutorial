@@ -1,0 +1,779 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h0",
+      "type": "heading",
+      "level": 1,
+      "title": "自爆海月-安琪拉",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-player",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "安琪拉",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-core",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "海月为共同制敌核心，明世隐在仍需固化时连接海月。大河双核心路线加入东皇太一与图腾；已取得协同一致且有有效无阵营来牌时，可先以海月和实际取得的无阵营英雄成长，后期再比较图腾，不把东皇设为此分支起手必需。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h1",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "大河双核心路线中，海月以生命值换取牺牲真伤压制敌方最高等级英雄，东皇太一用压制与等量受伤牵制大哥；安琪拉定向毁灭把自爆伤害转成下一回合全队等级，明世隐再把海月实际取得的临时等级在额度内固化。先靠项羽冲入后排或云中君闪现携带飞行器保血，海月、东皇到场后积累等级与生存；耍赖皮提高爆炸法强，泄气皮球命中敌方高等级单位后给连接海月补临时等级，使自爆清杂与双核心制敌相互衔接。 已取得协同一致且有有效无阵营来牌时，也可先提高这些英雄的等级与海月战力，取得逍遥自在后再扩大成长收益；后期需要更多自爆伤害覆盖、且能腾出位置时，再加入实际取得的大河图腾。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-selection-h",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-selection",
+      "type": "entry",
+      "key": "条件路线",
+      "show_key": true,
+      "value": "大河双核心路线继续按海月、东皇和图腾推进。若已取得协同一致，且海月、明世隐与其他有效无阵营英雄能逐步取得，可先用无阵营人数和棋手等级兑现成长；有逍遥自在、实际买牌资源与打出时间时再扩大这份收益。未取得这些条件时不为凑无阵营数量拆掉当前战力；后期自爆更需要实际伤害覆盖时，可从成长人数转向图腾。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "大河双核心与图腾方向需要大河；已取得协同一致且有有效无阵营来牌的集中成长阶段无额外必需阵营。之后要补鬼谷子、大司命或少司缘图腾时再检查大河可用，不把条件图腾写成无阵营阶段的前置门槛。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h3",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n4",
+      "type": "entry",
+      "key": "海月",
+      "show_key": true,
+      "value": "无阵营核心。以生命与牺牲真伤对付敌方最高等级英雄，飞行器临时等级由明世隐按额度保留。觉醒需求：普通牺牲造成自身生命值等额真伤，醒后150%；具体补醒优先级未确认；等级投入：接受全队成长和临时等级固化，40级施法护盾可转为生命，100级增加幻境支持；需给成型后成长时间；购买策略：第二轮拍卖优先首张，后续重复按质量和成长资源比较，拍卖出价上限未确认；上阵时机：中期取得后核对飞行器与明世隐最近连接均为海月；出售时机：仍是高等级制敌核心时保留，未确认可靠换核路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n5",
+      "type": "entry",
+      "key": "鬼谷子",
+      "show_key": true,
+      "value": "召唤先知图腾，本体与图腾增加爆炸可覆盖单位。觉醒需求：普通能提供图腾；新来源只要求挂件首张，后期专追醒优先级未确认；等级投入：接受全队自然成长，不占海月专门培养；购买策略：自爆方向需要图腾和人数时取首张，第二轮拍卖前不为无关重复拖升级，拍卖出价上限未确认；上阵时机：无阵营集中成长时不为图腾提前挤掉有效成员；决定转向图腾扩大自爆覆盖、且有有效位置时加入；出售时机：仍依靠图腾数量和成长时保留，替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-donghuang",
+      "type": "entry",
+      "key": "东皇太一",
+      "show_key": true,
+      "value": "大河双核心路线的副核心以能量球造成百分比伤害并恢复，压制敌人时双方承受等量伤害；开团取图腾等级的临时成长。觉醒需求：普通取每图腾15%等级，醒后30%；追醒次序未确认；等级投入：接受全队等级，100级压制延续至一方阵亡，不据此固定停止培养；购买策略：第二轮拍卖与海月同为优先目标，随后先保证首张战力，拍卖出价上限未确认；上阵时机：已有生存装备和图腾时加入，取得后仍需成长；出售时机：仍承担压制与承伤时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-ming",
+      "type": "entry",
+      "key": "明世隐",
+      "show_key": true,
+      "value": "连接最近海月，把临时等级中的有限额度转为永久等级；每次登场提高额度。觉醒需求：普通2级且登场+2，醒后4级且登场+4；可先首张工作；等级投入：本体自然成长，收益依赖海月实际临时等级与额度；购买策略：首拍优先，后续有临时等级可固化时继续取重复，不因已醒停止有效登场，拍卖出价上限未确认；上阵时机：海月或当前要固化的核心为最近英雄时上；出售时机：仍需固化时保留，退出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-xiangyu",
+      "type": "entry",
+      "key": "项羽",
+      "show_key": true,
+      "value": "开战向前冲撞3格，携自爆飞行器切入后排，牺牲还为图腾加级。觉醒需求：普通牺牲图腾+3，醒后+6；过渡不要求专醒；等级投入：自然成长以承伤，专养阈值未确认；购买策略：首拍优先首张；二拍前其他挂件一般只拿首张，拍卖出价上限未确认；上阵时机：需要冲入后排炸杂兵时连接飞行器，按实际站位安排冲撞；出售时机：海月接替连接后可比较腾位，具体出售和转级顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-yun",
+      "type": "entry",
+      "key": "云中君",
+      "show_key": true,
+      "value": "闪现进入敌方镜像位置携带飞行器，并按队友装备件数给穿戴者永久等级。觉醒需求：普通每件装备+1，醒后+2；过渡不专追醒；等级投入：自然成长，不争海月专养；购买策略：首拍优先首张，没有项羽时作为切后排工具，拍卖出价上限未确认；上阵时机：需要闪现把自爆带进敌后时上，装备成长按实际穿戴兑现；出售时机：主力接替连接后按位置比较，未确认固定换出节点；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-yixing",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "升级经验工具，帮助过渡阶段推进棋手等级。觉醒需求：普通已有经验作用，是否补醒未确认；等级投入：自然成长；购买策略：开局有则补首张，不为过渡专追，拍卖出价上限未确认；上阵时机：需要其经验效果的升级前在场；出售时机：不再需要升级加成且核心需位置时换下，先完成要利用其加成的升级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-taiyi",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "开团使最近友军复生，延长海月或东皇的有效作战。觉醒需求：普通复生，醒后完美复生；先首张；等级投入：功能用途不专养；购买策略：第二轮拍卖核心之后比较首张，拍卖出价上限未确认；上阵时机：当前主力已能战斗且需要复生时加入，核对最近对象；出售时机：仍需复生时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-dasiming",
+      "type": "entry",
+      "key": "大司命",
+      "show_key": true,
+      "value": "提供往生图腾，牺牲触发让其永久成长并恢复法力。觉醒需求：普通牺牲图腾+2，醒后+4；具体追醒未确认；等级投入：接受全队自然成长；购买策略：第二轮拍卖核心之后补首张，拍卖出价上限未确认；上阵时机：无阵营集中成长时不为图腾提前挤掉有效成员；决定转向图腾覆盖并需要牺牲联动、且有有效位置时加入；出售时机：仍依赖其图腾时保留，具体替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-hero-jiang",
+      "type": "entry",
+      "key": "姜子牙",
+      "show_key": true,
+      "value": "无阵营条件范围输出兼打牌成长。符合未在场阵营或无阵营的英雄牌打出时，他与随机3名其他不同阵营英雄加级。觉醒需求：普通已有成长作用，觉醒把该次加级从1提高至2；本分支不设固定追醒顺序；等级投入：接受协同一致、逍遥自在和自爆全队成长，不承诺其触发把等级给全体无阵营；购买策略：无阵营方向已成立、缺范围输出与有效成长时比较首张，重复与拍卖出价上限未确认；上阵时机：取得后能改善当前输出或有效打牌成长时加入，不为凑满人数拆主力；出售时机：转向图腾且其边际战力低于新成员时才比较退出，确切回收牌序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-hero-yuhuan",
+      "type": "entry",
+      "key": "杨玉环",
+      "show_key": true,
+      "value": "无阵营条件续航，给海月与其他有效成员争取继续作战时间。觉醒需求：普通已有治疗作用，固定专追顺序未确认；等级投入：随无阵营与自爆成长提高，按当前治疗和存活缺口投入，统一停级点未确认；购买策略：需要续航且实际取得首张时比较，不把每局自然到手当成保证，重复及拍卖出价上限未确认；上阵时机：无阵营成长或承伤阶段需要治疗时加入；出售时机：仍依赖其治疗时保留，完整转级与替换顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-hero-tiger",
+      "type": "entry",
+      "key": "裴擒虎",
+      "show_key": true,
+      "value": "无阵营条件战力，整备随机取得其他英雄等级对应的临时等级。觉醒需求：普通取一半、觉醒取全部，固定追醒优先级未确认；等级投入：接受全队成长，整备临时等级不叠加，不能直接算作可用遗志送出的永久等级；购买策略：无阵营成长已有条件、需要补当前战力时比较首张，重复和拍卖出价上限未确认；上阵时机：场上已有可借级的其他英雄且能改善战力时加入；出售时机：需要图腾位置且不再依赖其战力时才比较退出，未确认把其全部临时等级回收给海月的可靠流程；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-hero-shaosi",
+      "type": "entry",
+      "key": "少司缘",
+      "show_key": true,
+      "value": "大河条件图腾位，在场召出因缘图腾，增加可实际覆盖的己方单位。觉醒需求：普通已能召图腾，本路线固定追醒优先级未确认；等级投入：随全队成长，不抢海月专门投入，独立停级点未确认；购买策略：准备由无阵营成长转向图腾覆盖且确有位置时比较首张，重复和拍卖出价上限未确认；上阵时机：先确认腾位后仍能保住海月战力，再上场召图腾；出售时机：仍需图腾扩大实际爆炸覆盖时保留，固定替换路线未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h6",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h7",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n8",
+      "type": "entry",
+      "key": "购买清单",
+      "show_key": true,
+      "value": "开局弈星可用作升级过渡；首拍优先项羽、云中君、明世隐，其他成员按实际前后排缺口补首张。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n9",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "前期运营思路：先用现有前后排与飞行器保血，缺弈星时不空场等牌；首次模块出现定向毁灭才确定自爆方向。推进棋手3级取得顿悟时刻，按现有阵营与花能量方式选神秘力量来源，不为拉等级主动拆掉唯一过渡战力。 已取得协同一致并有有效无阵营来牌时，可先用已有有效过渡，继续保血升级寻找海月；协同一致、奇想·灵活的收益各按真实上场人数结算，不固定开局必须凑齐某组英雄。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h10",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n11",
+      "type": "entry",
+      "key": "购买清单",
+      "show_key": true,
+      "value": "优先首张海月、东皇太一，第二轮拍卖其次比较太乙真人、大司命；明世隐有实际固化收益可继续取重复，其他挂件先满足首张。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n12",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "中期运营思路：第二轮拍卖前继续推进升级，自然商店有需要成员就取首张，不主动刷新追齐挂件；项羽、云中君未到时用已有闪现英雄携带自爆飞行器过渡。第二轮拍卖回来后，通常升至棋手5级，集中刷新寻找海月、东皇太一；也可先升至棋手6级再找。取得海月、东皇后，核心框架成型，仍要保留成长时间；飞行器与明世隐都检查实际最近目标，不要在尚未有核心承伤与等级时无脑卖血。 已有协同一致并选择无阵营方向时，取得海月后可按来牌补明世隐、杨玉环、姜子牙或裴擒虎，先兑现成长与续航；没有这些条件时仍沿用海月东皇主线，不将无阵营八人作为通用成型名单。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h13",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n14",
+      "type": "entry",
+      "key": "购买清单",
+      "show_key": true,
+      "value": "补齐海月、东皇与固化需要的明世隐，按位置保留有用图腾或保护；继续比较自爆相关模块，不固定要求每个挂件觉醒。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n15",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "后期运营思路：分开检查成长与对敌控制：定向毁灭按自爆造成的伤害累计下回合全队等级，炸到友军的伤害同样计入，且自爆对友军不致命；因此只炸自己人仍可能加级，不要求命中敌人。泄气皮球的8秒沉默与连接英雄取得敌方等级总和10%的临时等级，则必须自爆命中敌方单位。难以炸到敌人时可比较热情扩散改善对敌覆盖；等级收益仍按实际伤害判断，不把演示中的单次伤害或加级当固定收益。 保留海月和东皇的成长窗口，已有生存装备时再兑现全队等级；不要以一回合三四十级的演示作为预算。 协同一致与逍遥自在的无阵营成长已经兑现、且图腾收益高于继续占用成长人数时，才按实际位置补大司命、鬼谷子或少司缘；先补到的两种图腾也可先工作，不等待三种全齐再战斗。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h16",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n17",
+      "type": "entry",
+      "key": "“定向毁灭”模块",
+      "show_key": true,
+      "value": "飞行器每场战斗自爆，对友军不致命，每造成1000伤害下回合所有友方英雄+1级。自爆伤害包括友方覆盖，因此以实际伤害累计成长；海月和东皇仍需保血过渡后才有时间兑现等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n18",
+      "type": "entry",
+      "key": "“热情扩散”模块",
+      "show_key": true,
+      "value": "自爆范围+1、伤害+25%。需要让爆炸覆盖敌后排或更多单位时比较，增加实际覆盖再改善定向毁灭成长。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n19",
+      "type": "entry",
+      "key": "“泄气皮球”模块",
+      "show_key": true,
+      "value": "自爆命中的敌人沉默8秒，连接英雄获得这些单位等级总和10%的临时等级。先让飞行器连接海月并有敌方覆盖，再用高等级敌人的临时成长提高海月战力；未命中敌方时无这部分收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-lai",
+      "type": "entry",
+      "key": "“耍赖皮”模块",
+      "show_key": true,
+      "value": "每场战斗自爆但不伤连接英雄，每点神秘力量提供的飞行器法术攻击力提高到8。与定向毁灭配合提高爆炸实际伤害，是该源重点选择的自爆模块。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-qixiang",
+      "type": "entry",
+      "key": "奇想·阵营",
+      "show_key": true,
+      "value": "至少4名同阵营英雄时每回合取得2点神秘力量。按实际大河成员数比较这份供给；海月、明世隐均为无阵营，不计入大河四人。未实际达到四名同阵营时，不预支神秘力量，先比较奖励。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-jiangli",
+      "type": "entry",
+      "key": "奇想·奖励",
+      "show_key": true,
+      "value": "每使用6能量获得1神秘力量。需要持续升级买牌的过渡阶段可兑现，按实际花费结算。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-jinhua",
+      "type": "entry",
+      "key": "奇想·进化",
+      "show_key": true,
+      "value": "每名英雄等级达到10/40/100时各给2点神秘力量。前期较弱而成型后全队等级提升快时可比较；不要把预期爆发当作当轮保血。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-film",
+      "type": "entry",
+      "key": "“贴膜”模块",
+      "show_key": true,
+      "value": "自爆实际命中的友方单位获得飞行器法术攻击力300%的护盾与20%物理、法术吸血。海月和图腾方向需要继续承伤作战时比较，先检查友军在实际自爆范围内；不是单纯上场就自动取得护盾。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-flexible",
+      "type": "entry",
+      "key": "奇想·灵活",
+      "show_key": true,
+      "value": "场上至少4名无阵营英雄时，每回合获得4点神秘力量。已有海月与有效无阵营成员、能满足人数且不损失当轮战力时比较；它与协同一致提供英雄等级是两种收益，不把无阵营英雄等级加总当作神秘力量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h20",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n21",
+      "type": "entry",
+      "key": "不死鸟之眼",
+      "show_key": true,
+      "value": "增加15%基础生命值，恢复和护盾效果提高30%。给海月加强护盾转生命，东皇则利用生命与恢复持续承伤。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-cang",
+      "type": "entry",
+      "key": "纯净苍穹",
+      "show_key": true,
+      "value": "每2秒提高10法术攻击力并清除自身负面状态。给海月减少控制与负面效果持续影响，配合其存活和施法。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-mingdao",
+      "type": "entry",
+      "key": "名刀·司命",
+      "show_key": true,
+      "value": "首次致命伤后无敌且不可选中1.5秒。给东皇争取继续承伤和压制的窗口。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d6-haiyue-jinwei",
+      "type": "entry",
+      "key": "近卫荣耀",
+      "show_key": true,
+      "value": "开战使周围1格己方单位获得10双防，穿戴者双倍。给挂件并靠近需要保护的海月、东皇，增加阵容承伤。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h22",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n23",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "前期优先能补英雄与当轮战力的天赋；图腾或额外人口只有能实际上场有用单位时再选。该来源不推荐为扩编增加的付费买牌负担牺牲保血，未确认本分支固定必拿天赋。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-synergy",
+      "type": "entry",
+      "key": "协同一致",
+      "show_key": true,
+      "value": "回合开始时，无阵营英雄各获得等于当前棋手等级的等级。已选择无阵营方向时，用海月及当前有效无阵营成员提高团队质量；在棋手6级时是每名符合者各+6，不能把八人的合计48写成海月单独+48。后期腾位补大河图腾会减少这份无阵营人数收益，应比较当轮战力与自爆实际伤害。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h24",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n25",
+      "type": "entry",
+      "key": "逍遥自在",
+      "show_key": true,
+      "value": "所有无阵营英雄获得2×场上无阵营英雄数量的等级。已选择无阵营成长方向时，先让实际需要成长的无阵营成员在场，再使用逍遥自在；得到牌和预期随机搜到不是已经获得等级，不要求每局追到同样张数。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-refresh",
+      "type": "entry",
+      "key": "展翅腾飞",
+      "show_key": true,
+      "value": "本回合刷新商店不消耗能量，但购买卡牌仍需资源。准备集中寻找逍遥自在等有效牌时，先确认本轮剩余购买预算与操作时间，再决定何时使用；不把直播中攒到的13或28能量作为通用启动门槛，也不保证刷新必出目标。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c17-lua-search",
+      "type": "entry",
+      "key": "人才搜寻",
+      "show_key": true,
+      "value": "从商店可购最高品阶英雄中3选1。准备找海月、姜子牙、杨玉环等五阶候选时，可先升至能够商店购买五阶英雄的棋手等级，再使用已在手的牌；结果仍看实际候选，不保证指定得到海月。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h26",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n27",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "开局把飞行器连在能存活并兑现伤害的过渡英雄；项羽冲撞或云中君闪现可把自爆送进后排。海月到手后重新摆位，让飞行器与明世隐最近连接指向海月，再检查东皇与保护装备；每轮改装先比较定向毁灭、耍赖皮和泄气皮球的实际组合。 无阵营方向先把逍遥自在用于实际在场的成长成员；展翅腾飞之前准备购买预算和出牌时间。改为图腾方向前先比较需要让出的成员是否仍承担治疗、固化或输出，未核实的遗志接收者与临时等级回收流程不照抄。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h28",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n29",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "携飞行器的项羽按冲撞方向对准敌方后排；来源示例第一排右二针对其观察到的后排习惯，不固定套到每个对手。云中君则按闪现镜像位置安排；海月接替后优先保证正确连接与东皇接战。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h30",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h31",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n32",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先项羽、云中君、明世隐，其次补当前缺失的体系英雄；没有冲后排工具时先用现有战力过渡，出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h33",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n34",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先海月、东皇太一，其次太乙真人、大司命；核心取得后仍预留成长与生存资源，出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h35",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n36",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "待确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-h37",
+      "type": "heading",
+      "level": 2,
+      "title": "后期提升思路",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-selfdestruct-haiyue-n38",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期提升思路：海月与东皇先积累能承伤的等级，海月已有临时等级时继续明世隐有效登场扩大固化额度；自爆模块重点补耍赖皮提高爆炸法强、泄气皮球从命中敌核取得临时等级。装备优先保证两名核心生存，人口收益取决于能否补入实际有用的英雄或图腾。 协同一致条件下可先提高有效无阵营成员质量，再比较停止集中成长、加入大河图腾扩大自爆伤害；留下仍需要的海月保护与明世隐固化，不把高面板或护盾展示写成必胜。",
+      "separator": "\n\n"
+    }
+  ],
+  "semantics": {
+    "players": [
+      "player:51"
+    ],
+    "required_factions": [],
+    "core_heroes": [
+      "card:5211",
+      "card:5011"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "升级过渡"
+        },
+        {
+          "hero": "card:1351",
+          "necessity": "optional",
+          "condition": "项羽携自爆冲后排"
+        },
+        {
+          "hero": "card:5061",
+          "necessity": "optional",
+          "condition": "云中君携自爆闪现"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5211",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1871",
+          "necessity": "optional",
+          "condition": "采用原大河东皇双核心分支时必需；无阵营集中成长阶段不强制"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "condition": "仍依靠明世隐固化临时等级、尚未启动未确认的回收替换时"
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "optional",
+          "condition": "保留图腾与人数扩大覆盖"
+        },
+        {
+          "hero": "card:1481",
+          "necessity": "optional",
+          "condition": "已取得协同一致且有有效无阵营来牌，所选英雄实际取得并改善当前战力；逍遥自在只扩大既定路线收益，不是固定八人终局"
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "已取得协同一致且有有效无阵营来牌，所选英雄实际取得并改善当前战力；逍遥自在只扩大既定路线收益，不是固定八人终局"
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "optional",
+          "condition": "已取得协同一致且有有效无阵营来牌，所选英雄实际取得并改善当前战力；逍遥自在只扩大既定路线收益，不是固定八人终局"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5211",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1871",
+          "necessity": "optional",
+          "condition": "采用原大河东皇双核心分支时必需；无阵营集中成长阶段不强制"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required",
+          "condition": "仍依靠明世隐固化临时等级、尚未启动未确认的回收替换时"
+        },
+        {
+          "hero": "card:1891",
+          "necessity": "optional",
+          "condition": "图腾与人数仍有收益"
+        },
+        {
+          "hero": "card:5171",
+          "necessity": "optional",
+          "condition": "图腾牺牲联动"
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "需要复生保护"
+        },
+        {
+          "hero": "card:1481",
+          "necessity": "optional",
+          "condition": "已取得协同一致且有有效无阵营来牌，所选英雄实际取得并改善当前战力；逍遥自在只扩大既定路线收益，不是固定八人终局"
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "已取得协同一致且有有效无阵营来牌，所选英雄实际取得并改善当前战力；逍遥自在只扩大既定路线收益，不是固定八人终局"
+        },
+        {
+          "hero": "card:5021",
+          "necessity": "optional",
+          "condition": "已取得协同一致且有有效无阵营来牌，所选英雄实际取得并改善当前战力；逍遥自在只扩大既定路线收益，不是固定八人终局"
+        },
+        {
+          "hero": "card:5771",
+          "necessity": "optional",
+          "condition": "结束集中无阵营成长、转向图腾且有有效位置时"
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "operation_routes": [
+      {
+        "id": "r9pw-second-auction-core-search",
+        "name": "二拍后找海月与东皇",
+        "condition": {
+          "$text": "b77c-b77c-selfdestruct-haiyue-n12"
+        },
+        "advantages": "",
+        "risks": "",
+        "transition": "",
+        "phases": {
+          "early": [],
+          "middle": [
+            "b77c-b77c-selfdestruct-haiyue-n12-r9pw-gap-claim"
+          ],
+          "late": []
+        },
+        "claim_refs": [
+          "b77c-b77c-selfdestruct-haiyue-n12-r9pw-gap-claim"
+        ],
+        "variant_ids": []
+      }
+    ],
+    "late_variants": [
+      {
+        "id": "c17-lua-dahe-original",
+        "name": "大河东皇双核心",
+        "condition": "采用原大河路线且海月、东皇、明世隐已可用；保留较新来源原运营，不与无阵营条件路线拼固定流程",
+        "members": [
+          {
+            "hero": "card:5211",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1871",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5011",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1891",
+            "necessity": "optional",
+            "condition": "图腾与人数仍有收益"
+          },
+          {
+            "hero": "card:5171",
+            "necessity": "optional",
+            "condition": "图腾牺牲联动"
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "optional",
+            "condition": "需要复生保护"
+          }
+        ],
+        "required_factions": [
+          "faction:dahe"
+        ],
+        "core_heroes": [
+          "card:5211",
+          "card:1871"
+        ],
+        "claim_refs": [
+          "d6-haiyue-core-d6-claim"
+        ],
+        "membership_scope": "原已知骨架与条件保护，不补固定完整终局",
+        "ban_conditions": [],
+        "ban_combinations": []
+      },
+      {
+        "id": "c17-lua-neutral-growth",
+        "name": "协同一致无阵营成长",
+        "condition": "已取得协同一致，且海月、明世隐与其他有效无阵营英雄能逐步取得；先兑现该路线成长，有逍遥自在和实际买牌、打出空间时再扩大收益。未有协同一致时，不仅凭一张逍遥自在整体转入全无阵营路线。",
+        "members": [
+          {
+            "hero": "card:5211",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5011",
+            "necessity": "required",
+            "condition": "仍依靠临时等级固化阶段"
+          },
+          {
+            "hero": "card:1481",
+            "necessity": "optional",
+            "condition": "实际取得且有当前输出、治疗或保护收益，不要求同时全部上场"
+          },
+          {
+            "hero": "card:1761",
+            "necessity": "optional",
+            "condition": "实际取得且有当前输出、治疗或保护收益，不要求同时全部上场"
+          },
+          {
+            "hero": "card:5021",
+            "necessity": "optional",
+            "condition": "实际取得且有当前输出、治疗或保护收益，不要求同时全部上场"
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "optional",
+            "condition": "实际取得且有当前输出、治疗或保护收益，不要求同时全部上场"
+          }
+        ],
+        "required_factions": [],
+        "core_heroes": [
+          "card:5211"
+        ],
+        "claim_refs": [
+          "c17-lua-selection-lua-claim",
+          "c17-lua-synergy-lua-claim"
+        ],
+        "membership_scope": "已证无阵营成长候选；完整八人名单、固定人口与终局未确认",
+        "ban_conditions": [],
+        "ban_combinations": []
+      }
+    ]
+  },
+  "supporting_nodes": []
+}

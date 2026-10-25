@@ -165,6 +165,92 @@
       "id": "n-4a97f326412f05ef84d2"
     },
     {
+      "id": "d8-player-ban-lixin-h",
+      "type": "heading",
+      "level": 3,
+      "title": "[牺牲李信](../lineups/牺牲李信-班叔.json)",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "河洛可用，李信与牺牲、临时等级组件有机会到场，机关能保护过渡并引导敌人接近时采用。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-avoid",
+      "type": "entry",
+      "key": "放弃／转向信号",
+      "show_key": true,
+      "value": "远程分散且难踩机关时先调整屏障与阵型；缺李信或保血不足时不为升5与追三级陷阱同时耗尽资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-adv",
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "牺牲给李信临时成长，明世隐有限固化；陷阱与钟馗对实际触发对象降级，让李信更容易持续作战。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-risk",
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "依赖敌人踩踏和李信活到牺牲收益，远程分散、绕机关或拉走李信会削弱循环。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-heroes",
+      "type": "entry",
+      "key": "英雄投入",
+      "show_key": true,
+      "value": "李信与明世隐后期优先补醒；铠、钟馗补牺牲，太乙提供最近目标复生。李元芳给李信古币，缺铠钟时李白暂补古币临时等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-stages-h",
+      "type": "heading",
+      "level": 4,
+      "title": "阶段强度",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-early",
+      "type": "entry",
+      "key": "前期",
+      "show_key": true,
+      "value": "热能陷阱配牛魔、李元芳保血，弈星有则补升级经验，首拍优先河洛体系并保留升级资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-middle",
+      "type": "entry",
+      "key": "中期",
+      "show_key": true,
+      "value": "4级免费刷新找李信，无首张可攒资源5级再找；搏命可提前操作但降低20棋手生命，屏障保护与后续陷阱升级分别比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-player-ban-lixin-late",
+      "type": "entry",
+      "key": "后期",
+      "show_key": true,
+      "value": "6级陷阱强化扩大范围、延时2秒爆炸并使三级陷阱冷却4秒；李信成长与狂暴复生兑现输出，对手射手多时2级屏障先挡飞行伤害。",
+      "separator": "\n\n"
+    },
+    {
       "type": "heading",
       "level": 2,
       "title": "适用技巧",
@@ -240,6 +326,63 @@
       ],
       "advantages": "暂无已确认结论",
       "disadvantages": "暂无已确认结论"
+    },
+    {
+      "lineup": "d8-sacrifice-lixin-banshu",
+      "branch": "owner",
+      "title": "牺牲李信",
+      "path": "knowledge/lineups/牺牲李信-班叔.json",
+      "selection": {
+        "adopt": {
+          "$text": "d8-player-ban-lixin-adopt"
+        },
+        "avoid": {
+          "$text": "d8-player-ban-lixin-avoid"
+        },
+        "signals": {
+          "英雄投入": {
+            "$text": "d8-player-ban-lixin-heroes"
+          }
+        },
+        "stage_strength": {
+          "early": {
+            "text": {
+              "$text": "d8-player-ban-lixin-early"
+            },
+            "claim_refs": [
+              "d8-player-ban-lixin-early-d8-claim"
+            ],
+            "inference": true
+          },
+          "middle": {
+            "text": {
+              "$text": "d8-player-ban-lixin-middle"
+            },
+            "claim_refs": [
+              "d8-player-ban-lixin-middle-d8-claim"
+            ],
+            "inference": true
+          },
+          "late": {
+            "text": {
+              "$text": "d8-player-ban-lixin-late"
+            },
+            "claim_refs": [
+              "d8-player-ban-lixin-late-d8-claim"
+            ],
+            "inference": true
+          }
+        }
+      },
+      "required_factions": [
+        "faction:heluo"
+      ],
+      "advantages": {
+        "$text": "d8-player-ban-lixin-adv"
+      },
+      "disadvantages": {
+        "$text": "d8-player-ban-lixin-risk"
+      }
     }
   ],
   "topic": "班叔",

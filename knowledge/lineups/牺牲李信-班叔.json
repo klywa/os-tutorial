@@ -1,0 +1,611 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "d8-35-title",
+      "type": "heading",
+      "level": 1,
+      "title": "牺牲李信-班叔",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-35-player",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "班叔",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-35-core",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "李信承担输出；明世隐固化临时等级，铠与钟馗补牺牲，太乙真人按保护需求加入。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-35-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-principle-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-principle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "李信从带牺牲的友军阵亡中取得临时等级，用强化剑气与100级阵亡后的狂暴复生输出；明世隐把李信实际已有的临时等级在额度内固化。班叔的升级热能陷阱削弱踩中敌人的等级，反复触发配合6级陷阱强化扩大覆盖，使养成中的李信更容易承伤与收割。屏障与弹簧把敌人引入机关，钟馗牺牲再降低实际击败者等级；胜利依赖李信存活与敌人真正踩中机关，远程分散或绕开机关时不能只看理论降级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-choice-h",
+      "type": "heading",
+      "level": 2,
+      "title": "采用与转向",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "河洛可用，李信与临时等级组件有获取机会，能用机关保护过渡并引导敌人接近时采用。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-avoid",
+      "type": "entry",
+      "key": "转向信号",
+      "show_key": true,
+      "value": "对手大量远程分散、机关难以被触发时，先调整屏障与集中站位；若李信尚未取得或保血不足，不为追三级陷阱与升5级同时耗尽找牌资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-heroes-h",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-lixin",
+      "type": "entry",
+      "key": "李信",
+      "show_key": true,
+      "value": "牺牲英雄阵亡取得临时等级，40级三道剑气，100级阵亡后以狂暴形态完美复生。觉醒需求：普通每次+7临时等级，醒后+14；后期优先补醒；等级投入：集中装备与成长；战斗临时等级可参与100级节点判断，之后仍继续积累；购买策略：4级找首张，取得且资源足时升5；后期重复优先补觉醒，拍卖出价上限未确认；上阵时机：有牺牲和生存配置后上，明世隐最近对象对准李信；出售时机：主要输出保留，未确认可靠换核；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-ming",
+      "type": "entry",
+      "key": "明世隐",
+      "show_key": true,
+      "value": "最近英雄的临时等级在有限额度内转永久，支撑李信长期成长。觉醒需求：普通额度2且登场+2，醒后4且登场+4；后期优先补醒；等级投入：自然成长，不争李信定向等级；购买策略：有可固化临时等级时补首张与有效重复；无临时等级时不预支额度收益，拍卖出价上限未确认；上阵时机：李信已有未固化临时等级且为最近英雄时加入；出售时机：仍需固化时保留，退出边界未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-kai",
+      "type": "entry",
+      "key": "铠",
+      "show_key": true,
+      "value": "自带复生与牺牲，阵亡给河洛临时等级，同时触发李信的牺牲计数。觉醒需求：普通牺牲+5，醒后+10且完美复生；本分支追醒次序未确认；等级投入：工具自然成长，不争李信定向培养；购买策略：缺牺牲组件时找首张，不为工具盲目提高拍卖投入，拍卖出价上限未确认；上阵时机：需要牺牲临时等级时加入，安排实际承伤与阵亡；出售时机：仍需牺牲时保留，替换条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-zhong",
+      "type": "entry",
+      "key": "钟馗",
+      "show_key": true,
+      "value": "自己及左右1格友军获牺牲，让实际击败者临时降级，且补李信牺牲触发。觉醒需求：普通降10%，醒后20%，每场限1次；追醒次序未确认；等级投入：自然成长，专养阈值未确认；购买策略：缺时与铠一起找首张，别为功能牌耗尽主力预算，拍卖出价上限未确认；上阵时机：左右1格放需要附加牺牲的成员，防对手同样用钟馗把李信拉离保护；出售时机：仍依赖牺牲和降级时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-tai",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "开团给最近友军复生，延长李信有效输出时间。觉醒需求：普通复生，醒后完美复生；先首张；等级投入：功能用途自然成长，不争李信定向等级；购买策略：体系未齐、分红不足时不高价争抢；后期继续寻找首张，拍卖出价上限未确认；上阵时机：需要复生且李信为最近友军时加入；出售时机：仍需复生保护时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-yuan",
+      "type": "entry",
+      "key": "李元芳",
+      "show_key": true,
+      "value": "整备对最近河洛使用古币，给李信永久等级并配李白的临时等级加成。觉醒需求：普通1古币，醒后2；临时过渡不强求专醒；等级投入：自然成长，定向资源给李信；购买策略：开局配牛魔取首张，后续投入以实际供币为准，拍卖出价上限未确认；上阵时机：李信到后核对最近河洛目标为李信；出售时机：不再需要供币且有可靠接替时再比较换下，明确节点未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-libai",
+      "type": "entry",
+      "key": "李白",
+      "show_key": true,
+      "value": "使古币额外提供临时等级，缺钟馗、铠时给李信补临时成长。觉醒需求：普通古币额外+4临时，醒后+8；只作临时组件未要求专醒；等级投入：自然成长，不争李信定向等级；购买策略：缺钟馗和铠时可补首张，不为替代工具延误主力，拍卖出价上限未确认；上阵时机：李元芳对李信用币时在场，实际古币目标不改成李白；出售时机：钟馗和铠到后比较恢复正式牺牲组件，具体出售顺序未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-1681",
+      "type": "entry",
+      "key": "牛魔",
+      "show_key": true,
+      "value": "凯旋取得能量，把早期胜场转为后续找牌资源。觉醒需求：普通1能量，醒后2；不专追过渡醒；等级投入：自然成长，不争李信定向等级；购买策略：按实际过渡或供给需求取首张，不为工具高价竞拍，拍卖出价上限未确认；上阵时机：开局与李元芳沉后，让敌方接近机关；出售时机：主力与前排接替后可比较退出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-1971",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "棋手升级时额外取得经验，帮助推进核心商店等级。觉醒需求：普通已有升级经验，过渡不专追醒；等级投入：自然成长，不争李信定向等级；购买策略：按实际过渡或供给需求取首张，不为工具高价竞拍，拍卖出价上限未确认；上阵时机：计划升级时在场；出售时机：完成仍要利用其加成的升级后，再按核心位置换下；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-1761",
+      "type": "entry",
+      "key": "杨玉环",
+      "show_key": true,
+      "value": "在场每3回合或退场供弦音，觉醒供妙音，可辅助补核心质量。觉醒需求：普通弦音，醒后妙音；本分支优先级未确认；等级投入：自然成长，不争李信定向等级；购买策略：按实际过渡或供给需求取首张，不为工具高价竞拍，拍卖出价上限未确认；上阵时机：需要供牌与治疗且有位置时用，不能把一次帮钟馗觉醒当必带；出售时机：需要临时供牌后如何处理未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-1361",
+      "type": "entry",
+      "key": "武则天",
+      "show_key": true,
+      "value": "加强古币永久等级且登场给精致古币，补李信成长。觉醒需求：普通古币+1且登场1张精致币，醒后+2且2张；先首张；等级投入：自然成长，不争李信定向等级；购买策略：按实际过渡或供给需求取首张，不为工具高价竞拍，拍卖出价上限未确认；上阵时机：核心与体系已齐且有可用位置时比较；出售时机：仍有古币价值时保留，具体替换未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-stages-h",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-early-h",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-early-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "牛魔、李元芳过渡，弈星有则取首张；第一拍优先河洛体系。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-early",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "前期运营思路：开局机关优先热能陷阱，李元芳与牛魔可沉后诱导踩踏；有弈星再结合升级收益推进。首轮拍卖不为高价争抢耗尽升级资源，先保当轮战力与河洛成型机会，不把示例的第3、第4回合写成固定升级表。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-middle-h",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-middle-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "4级优先李信，补明世隐、钟馗、铠；未到钟馗铠可用李白暂补古币临时等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-middle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "中期运营思路：4级用免费刷新找首张李信，没有首张也可攒资源推进5级再找；搏命有额外能量但减少棋手容错，只有能兑现提前找牌和升级时才比较，不把本局连升当作每局必做。先把可用屏障升2级拦截飞行伤害，再把后续构筑升级投入热能陷阱，保护未齐时不为凑三级陷阱忽略当前承伤。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-late-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-late-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "补太乙真人首张，优先李信、明世隐觉醒，其他成员以有效牺牲和供给为主。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-late",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期运营思路：可保血时推进6级选热能陷阱强化，扩大覆盖并使三级陷阱冷却降至4秒；继续补多个能真正触发的三级陷阱。李信战中达到100级并阵亡后可狂暴复生，必要时再配太乙保护；对手控制消失时可比较换输出装，面对控制再换回炽热，不把单局没带免控获胜当普遍建议。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-improve-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期提升思路",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-improve",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期提升思路：李信与明世隐优先补质量，让牺牲临时等级、有限固化与李信狂暴复生形成持续战力。机关资源继续提升有效陷阱数量与实际踩踏覆盖；敌方射手多时先补2级屏障的弹道保护，刺客与近战则按落点布弹簧与陷阱。核心能否活到接收牺牲和陷阱是否真正触发，比面板等级或机关数量更重要。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-h1",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先当前缺失的河洛体系英雄，不为被抬高的价位牺牲升级与找主力资源；统一出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-h2",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "体系尚未齐、棋手生命不是垫底且分红有限时，不高价抢武则天、太乙真人，先留资源补河洛体系；统一出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-h3",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-auction-3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "已满棋手等级但缺能量时，可比较扶摇直上转换的10能量；未满级则按升级收益判断，不能同时计算升级与10能量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-643208",
+      "type": "entry",
+      "key": "自然法杖",
+      "show_key": true,
+      "value": "法攻+20%，远程每消耗40法力、近战80法力使随机1敌人变猪2秒。李信战中达到100级、阵亡进入狂暴形态后比较，用施法消耗兑现控制；未成型阶段的攻速装备只作过渡。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-643803",
+      "type": "entry",
+      "key": "炽热支配者",
+      "show_key": true,
+      "value": "首次受控取得300护盾，并在随后15秒免控，压制除外。敌方仍有控制时给李信保启动，不能因上一场没控制就无条件撤装。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-643105",
+      "type": "entry",
+      "key": "纯净苍穹",
+      "show_key": true,
+      "value": "每2秒法攻+10并清除自身负面状态。给李信应对持续负面效果，周期清除不等同全程免控。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-643103",
+      "type": "entry",
+      "key": "无尽巨剑",
+      "show_key": true,
+      "value": "暴击率+30%、暴击效果+60%，暴击效果不可叠加。给李信补暴击输出，与生存和免控按对手比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-641010",
+      "type": "entry",
+      "key": "凝渊",
+      "show_key": true,
+      "value": "暴击率+20%，每次受击再+1%，达到100%暴击率后移速+100%。需要追近艾琳等远程时比较；有可用三级弹簧处理对手时不必固定用同一追击装。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-643602",
+      "type": "entry",
+      "key": "极寒风暴",
+      "show_key": true,
+      "value": "受到普攻降低攻击者20%攻速2秒；单一目标普攻5次后冻结远程目标1秒，近战减半。面对艾琳等远程普攻压力时与凝渊比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-equip-643703",
+      "type": "entry",
+      "key": "名刀·司命",
+      "show_key": true,
+      "value": "首次致命伤后无敌且不可选中1.5秒，为李信争取继续输出或等牺牲收益的窗口；装备位仍按当轮免控与输出取舍。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talents-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talent-632012",
+      "type": "entry",
+      "key": "泉水",
+      "show_key": true,
+      "value": "回合开始恢复3棋手生命，满生命时改为4棋手经验。需要等待李信与升级时补容错，不给李信英雄直接回血。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talent-635012",
+      "type": "entry",
+      "key": "守护灵",
+      "show_key": true,
+      "value": "仅剩1名英雄时召唤满装备但无卡牌效果的5阶英雄，等级为回合数×10且至少80。用于补残局战力，不能预定每次召唤都能保住棋手。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talent-613004",
+      "type": "entry",
+      "key": "人才济济",
+      "show_key": true,
+      "value": "升级经验需求-2，每次升级取得人才搜寻。需要推进5级并找河洛组件时比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talent-622002",
+      "type": "entry",
+      "key": "人才市场",
+      "show_key": true,
+      "value": "取得3张人才搜寻，为寻找李信、明世隐及体系牌补机会，不能当保证抽到指定英雄。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talent-615006",
+      "type": "entry",
+      "key": "搏命",
+      "show_key": true,
+      "value": "棋手生命-20，取得25能量。当前能量可兑现提前找李信与推进5级时比较，代价是降低容错；没有这笔能量时可4级免费刷新或攒资源后再升5。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-talent-636211",
+      "type": "entry",
+      "key": "自我奉献",
+      "show_key": true,
+      "value": "河洛英雄获得牺牲：给所有友方单位临时等级，且每次触发该牺牲效果时收益额外+1。需要河洛工具实际阵亡，既可补李信牺牲计数也补临时成长，不按人数预定固定回合收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-skills-h",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-skill-93599",
+      "type": "entry",
+      "key": "神匠",
+      "show_key": true,
+      "value": "开局和棋手5级取得便携式机关，升2/3/4级随机给陷阱、弹簧或屏障。开局优先热能陷阱，但不能把中间随机升级奖励当作必定继续给陷阱。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-skill-93504",
+      "type": "entry",
+      "key": "构筑升级",
+      "show_key": true,
+      "value": "指定场上机关升级。需要挡远程飞行伤害时先把可用屏障升2级，再将后续升级投入陷阱，避免全押降级却保护不住主力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-skill-93505",
+      "type": "entry",
+      "key": "热能陷阱强化",
+      "show_key": true,
+      "value": "陷阱延时2秒爆炸、范围增加1格，三级陷阱冷却缩短为4秒。6级选择后继续布置能被敌方实际踩到的位置，不把范围提升当作必定命中远处后排。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-effects-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-effects",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-ops-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-ops",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "李信与明世隐检查最近连接，避免无免控的李信被敌方钟馗拉出保护；必要时两者互换位置。先有实际牺牲与古币临时等级，再由明世隐固化，不把有额度当作已有可转化等级。陷阱由敌方真实踩踏才兑现，远程多且分散时先调整屏障保护和引导线路。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-position-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d8-ban-position",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "对近战可将人员与陷阱集中角落，引导其接近反复踩踏；对射手较多的阵容，将可用屏障铺在倒数第二排、英雄放最后一排，让敌人前移并拦截飞行伤害。面对刺客按其实际落点摆屏障和弹簧，不能把一局左下角当作所有对手的固定格位。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:35"
+    ],
+    "required_factions": [
+      "faction:heluo"
+    ],
+    "core_heroes": [
+      "card:5071",
+      "card:5011"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "condition": "早期保血或升级过渡"
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "condition": "早期保血或升级过渡"
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "早期保血或升级过渡"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5071",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1931",
+          "necessity": "optional",
+          "condition": "已取得的牺牲与古币组件；李白只作缺钟馗铠的暂补"
+        },
+        {
+          "hero": "card:1751",
+          "necessity": "optional",
+          "condition": "已取得的牺牲与古币组件；李白只作缺钟馗铠的暂补"
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "condition": "已取得的牺牲与古币组件；李白只作缺钟馗铠的暂补"
+        },
+        {
+          "hero": "card:1311",
+          "necessity": "optional",
+          "condition": "已取得的牺牲与古币组件；李白只作缺钟馗铠的暂补"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5071",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5011",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1931",
+          "necessity": "optional",
+          "condition": "按实际牺牲、复生、供币或供牌需求与位置加入"
+        },
+        {
+          "hero": "card:1751",
+          "necessity": "optional",
+          "condition": "按实际牺牲、复生、供币或供牌需求与位置加入"
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "按实际牺牲、复生、供币或供牌需求与位置加入"
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "condition": "按实际牺牲、复生、供币或供牌需求与位置加入"
+        },
+        {
+          "hero": "card:1361",
+          "necessity": "optional",
+          "condition": "按实际牺牲、复生、供币或供牌需求与位置加入"
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "按实际牺牲、复生、供币或供牌需求与位置加入"
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": []
+  }
+}

@@ -1,0 +1,602 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h0",
+      "type": "heading",
+      "level": 1,
+      "title": "炸盾廉颇-姜导",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h1",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "廉颇靠连续施法形成护盾，扁鹊把友军破盾转为周围按受盾者最大生命值计算的法术伤害，墨子再把实际破盾变成永久生命值。西施缩短廉颇蓝条，芈月将效果牌转为装备最多逐鹿英雄的永久等级，姜导主角与封神一瞬进一步叠加成长；孙膑按每名英雄自己的施法次数提供永久成长、杨玉环治疗补足队伍持久作战。廉颇的等级、生命与施法频率共同提高承伤和炸盾输出，6级完美演出提供双吸与开局免控。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h3",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n4",
+      "type": "entry",
+      "key": "廉颇",
+      "show_key": true,
+      "value": "廉颇是主要承伤与炸盾载体，施法给自身护盾，施法时另给其他英雄护盾。觉醒需求：普通补盾5，醒后10；普通可启动，追醒优先级未确认；等级投入：集中主角、封神与芈月成长，100级护盾和恢复改善持续作战，未确认固定停级；购买策略：第一轮与芈月、西施共同优先，第一轮可在3能量以内争取，超过时按实际预算比较；上阵时机：首张到场后指定主角并补装备；出售时机：持续炸盾的主要载体保留，未确认转核路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n5",
+      "type": "entry",
+      "key": "西施",
+      "show_key": true,
+      "value": "提供推演战术缩短廉颇蓝条，让施法与护盾循环及时启动。觉醒需求：有复现或其他可靠缩蓝方案时不必无条件等待觉醒；其余觉醒边界待确认；等级投入：辅助自然成长，不争廉颇定向等级；购买策略：缺缩蓝时优先首张，按当前蓝量与资源补觉醒；拍卖出价上限未确认；上阵时机：廉颇需要缩蓝时上场，使用整备触发牌前核对她在场；出售时机：仍需要推演时保留，终局替换条件待确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n6",
+      "type": "entry",
+      "key": "扁鹊",
+      "show_key": true,
+      "value": "友方单位破盾时对其周围敌人造成该受盾英雄最大生命值比例的法术伤害，是炸盾输出核心；药液另有治疗与伤害。觉醒需求：普通破盾伤害10%，醒后20%，冷却1秒；普通先启动，具体追醒次序未确认；等级投入：自然成长，100级药液提高其中友军40%攻速、降低其中敌军40%攻速，不是全场无条件生效，专养阈值未确认；购买策略：升到可购买品阶时补首张，第二轮拍卖与杨玉环优先，拍卖出价上限未确认；上阵时机：需要将廉颇护盾转为伤害时加入；出售时机：仍以炸盾输出取胜时保留，未确认稳定替代；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n7",
+      "type": "entry",
+      "key": "墨子",
+      "show_key": true,
+      "value": "友军破盾后给该受盾者永久最大生命值，廉颇生命上升再提高扁鹊对应破盾伤害。觉醒需求：普通每次+30生命，醒后+60；追醒优先级与投入上限未确认；等级投入：辅助自然成长，不争廉颇定向等级；购买策略：养成阶段补首张，重复牌按成长收益补觉醒，拍卖出价上限未确认；上阵时机：需要持续积累破盾永久生命时加入；出售时机：尚需后续永久生命成长时保留，终局不再需要积累时可换钟馗；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n8",
+      "type": "entry",
+      "key": "芈月",
+      "show_key": true,
+      "value": "每使用效果牌给装备最多的1名逐鹿英雄永久等级，配封神额外加级培养廉颇。觉醒需求：普通每次+1，醒后+2；普通可启动，具体追醒优先级未确认；等级投入：自然成长，不争廉颇定向等级，装备数确保廉颇为实际接收者；购买策略：组件成型后按成长收益补觉醒，拍卖出价上限未确认；上阵时机：打效果牌前与廉颇同时在场并核对装备数；出售时机：仍需效果牌成长时保留，终局换出边界未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-sun",
+      "type": "entry",
+      "key": "孙膑",
+      "show_key": true,
+      "value": "每名己方英雄分别累计自己的施法次数，每施法3次给该英雄永久等级，廉颇缩蓝后可更频繁兑现。觉醒需求：普通每3次+1，醒后+2；具体追醒次序未确认；等级投入：开局可暂接主角；廉颇到后转移主角，孙膑以自然成长为主；购买策略：开局与弈星配合过渡，成型期需要施法成长时补首张，拍卖出价上限未确认；上阵时机：需要过渡或廉颇已能频繁施法时加入；出售时机：仍依赖施法永久成长时保留，终局换出边界未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-yuhuan",
+      "type": "entry",
+      "key": "杨玉环",
+      "show_key": true,
+      "value": "技能为低生命友军治疗，在场每过3回合取得弦音，退场也能供给；配合持续护盾延长作战。觉醒需求：普通弦音，醒后妙音；醒后供牌改善，追醒优先级未确认；等级投入：自然成长；10级每3次施法群体治疗，100级每次群体治疗，不把普通技能说成全队治疗；购买策略：棋手5级找后期续航成员，第二轮拍卖与扁鹊优先，拍卖出价上限未确认；上阵时机：已有廉颇持续承伤且需要治疗时加入；出售时机：仍需续航或后续供牌时保留，具体终局替换未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-yixing",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "升级经验过渡，帮助用较少前期投入推进棋手等级。觉醒需求：普通可工作，补醒优先级未确认；等级投入：自然成长，主角优先暂给孙膑后改廉颇；购买策略：开局与孙膑配合，按自然来牌补质量，不固定要求第二回合三张，拍卖出价上限未确认；上阵时机：利用升级经验时在场；出售时机：完成仍要利用其加成的升级后，再按核心位置换下；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-1861",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "开团使最近友军复生，保护廉颇持续施法。觉醒需求：普通复生，醒后完美复生；专追次序未确认；等级投入：自然成长，本分支专门培养阈值未确认；购买策略：终局按保护或控制需求取首张，拍卖出价上限未确认；上阵时机：廉颇已能战斗且有保护需要时上，核对最近对象；未打完牌可先存手；出售时机：仍需要复生时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-1751",
+      "type": "entry",
+      "key": "钟馗",
+      "show_key": true,
+      "value": "给自身及左右1格牺牲，使实际击败者临时降低等级。觉醒需求：普通临时降级10%，醒后20%，每场限1次；专追次序未确认；等级投入：自然成长，本分支专门培养阈值未确认；购买策略：终局按保护或控制需求取首张，拍卖出价上限未确认；上阵时机：终局无需墨子继续积累永久生命时换入；出售时机：仍依赖牺牲削级时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-5251",
+      "type": "entry",
+      "key": "鲁班大师",
+      "show_key": true,
+      "value": "在场召唤机关傀儡补场面，并有跳跃控制。觉醒需求：普通召唤机关傀儡，醒后召唤机关傀儡·改；具体追醒次序未确认；等级投入：自然成长，本分支专门培养阈值未确认；购买策略：终局按保护或控制需求取首张，拍卖出价上限未确认；上阵时机：终局额外人口且不再需要循环打出位时比较；出售时机：仍有召唤及控制价值时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h9",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h10",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n11",
+      "type": "entry",
+      "key": "购买清单",
+      "show_key": true,
+      "value": "低投入过渡，第一轮比较廉颇、芈月、西施，避免买多工具影响升3级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n12",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "省下前期资源，拍卖后升3级找廉颇及逐鹿组件。拿到廉颇后先重新指定钦定主角，再打出手牌成长。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h13",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n14",
+      "type": "entry",
+      "key": "购买清单",
+      "show_key": true,
+      "value": "优先补齐廉颇、芈月、墨子、西施的启动组件，再按当前续航需求补孙膑、扁鹊、杨玉环；不为填完整名单提前占满打出位。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n15",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "中期运营思路：廉颇到场后重新指定主角并把封神留给廉颇，效果牌先核对装备最多逐鹿目标。3级启动后，缺扁鹊可先升4级寻找；后续推进5级补扁鹊、杨玉环等续航输出。西施普通推演每次缩蓝5、当回合累计上限20，醒后高阶推演每次10、上限40；若没有复现等额外可靠缩蓝方案，优先补醒取得更高上限，不能把本回合缩蓝保留到下回合。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h16",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n17",
+      "type": "entry",
+      "key": "购买清单",
+      "show_key": true,
+      "value": "太乙真人可先存手，成长结束后比较钟馗与鲁班大师。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n18",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "能保血时争取6级完美演出。仍需打出位时不让保护成员过早占满人口；终局可卖墨子换钟馗，有额外人口再补鲁班大师。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-seven",
+      "type": "entry",
+      "key": "持续养成与终局替换",
+      "show_key": true,
+      "value": "仍需要持续养成、施法成长和治疗且有足够上阵位置时，保留廉颇、墨子、芈月、西施、孙膑、扁鹊、杨玉环七人成员；若还要反复打出英雄，先保持可操作的空位。终局不再需要墨子积累永久生命时，再用钟馗替墨子；太乙与鲁班大师按保护需求和额外人口比较，不与七人骨架强行合并。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h19",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n20",
+      "type": "entry",
+      "key": "施法与免控",
+      "show_key": true,
+      "value": "保持西施提供的缩蓝收益。姜导6级的免控从战斗开始计时，面对开团动画较长或后段持续控制时，不把它视为全程免控，也不无条件撤掉炽热支配者。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h21",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n22",
+      "type": "entry",
+      "key": "生命魔典",
+      "show_key": true,
+      "value": "受到伤害时为自身和周围1格己方单位恢复5%最大生命值，冷却2秒。给廉颇补受击恢复，靠持续承伤与护盾维持炸盾循环。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-juling",
+      "type": "entry",
+      "key": "聚灵水晶",
+      "show_key": true,
+      "value": "受击额外获得10法力，累计最多100，达到上限后恢复20%最大生命值。给廉颇加快受击后的启动并补一次恢复，不能当作无限法力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-fanjia",
+      "type": "entry",
+      "key": "反伤重甲",
+      "show_key": true,
+      "value": "把受到伤害的30%以真伤回敬给目标。远程伤害压力下比较这件第三装，让廉颇承伤同时补反击。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-bird",
+      "type": "entry",
+      "key": "不死鸟之眼",
+      "show_key": true,
+      "value": "增加15%基础生命，恢复和护盾效果提高30%。近战持续接战时比较这件第三装，提高廉颇护盾、恢复与生命收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h23",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n24",
+      "type": "entry",
+      "key": "罡气护体",
+      "show_key": true,
+      "value": "逐鹿英雄在技能释放期间每1秒获得自身最大生命5%的护盾，持续3秒。廉颇等逐鹿成员有持续施法时间时可补护盾，实际破盾再联动扁鹊和墨子；不是每次开始施法立即固定取得一层。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-spring",
+      "type": "entry",
+      "key": "泉水",
+      "show_key": true,
+      "value": "回合开始恢复3棋手生命，满生命时改得4棋手经验。用于过渡保血或推进升级，不为廉颇英雄直接回血。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h25",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n26",
+      "type": "entry",
+      "key": "钦定主角",
+      "show_key": true,
+      "value": "每打出2张英雄或效果牌，指定主角等级+1，每回合基础最多+5；廉颇到场后改指定廉颇。先给不常驻的英雄留下打出位置，打出后再出售，不能直接出售手牌代替打出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-fengshen",
+      "type": "entry",
+      "key": "封神一瞬",
+      "show_key": true,
+      "value": "指定廉颇获得品阶×5等级，此后每次永久等级提升额外+1。芈月和孙膑的实际永久加级可继续触发；该额外收益与钦定主角每回合基础+5上限分开。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-perfect",
+      "type": "entry",
+      "key": "完美演出",
+      "show_key": true,
+      "value": "封神目标开战得到30%物理和法术吸血、15秒免控，压制除外。升6后改善廉颇持续作战，仍要检查15秒后的控制与生存。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h27",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n28",
+      "type": "entry",
+      "key": "推演战术",
+      "show_key": true,
+      "value": "对指定逐鹿英雄减少本回合法力上限5，累计最多20。西施整备供给，给廉颇减少启动蓝量；每轮重新核对当轮缩蓝。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-lianpo-high",
+      "type": "entry",
+      "key": "高阶推演战术",
+      "show_key": true,
+      "value": "对指定逐鹿英雄减少本回合法力上限10，累计最多40。觉醒西施供给，给廉颇压低蓝条；尚未补醒又无额外缩蓝方案时不能预支此上限。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h29",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n30",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "待确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h31",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h32",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n33",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先廉颇、墨子、西施、芈月等启动成员，再比较有用供牌工具；不将单局竞价推广为统一金额。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h34",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n35",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先扁鹊、杨玉环，再比较蒙犽等供牌工具；取得首张核心与当前续航优先于无用重复，统一出价上限未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h36",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n37",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "比较扶摇直上使棋手等级+1，未满6级时帮助取得完美演出；已满级改得10能量，不把满级再升一级计算收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-h38",
+      "type": "heading",
+      "level": 2,
+      "title": "后期提升思路",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-b77c-shield-lianpo-jiangdao-n39",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期提升思路：廉颇集中等级、装备与缩蓝，持续施法让破盾输出、永久生命和施法等级互相推进；杨玉环补续航，孙膑按各英雄自己的施法次数成长。能够保血再推进6级完美演出，保持打出位；仍需后续永久生命成长时保留墨子，终局不再需要这部分成长可按原路线换钟馗，有额外人口再比较鲁班大师。",
+      "separator": "\n\n"
+    }
+  ],
+  "semantics": {
+    "players": [
+      "player:41"
+    ],
+    "required_factions": [
+      "faction:zhulu"
+    ],
+    "core_heroes": [
+      "card:1051",
+      "card:1191",
+      "card:5231",
+      "card:1211"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1181",
+          "necessity": "optional",
+          "condition": "开局过渡"
+        },
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "升级过渡"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1051",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1081",
+          "necessity": "optional",
+          "condition": "持续养成积累破盾永久生命"
+        },
+        {
+          "hero": "card:1191",
+          "necessity": "optional",
+          "condition": "已取得开始兑现炸盾输出"
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "optional",
+          "condition": "需要施法成长"
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "已取得且需要续航"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1051",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1191",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1081",
+          "necessity": "optional",
+          "condition": "尚需持续养成，终局钟馗分支可换出"
+        },
+        {
+          "hero": "card:1181",
+          "necessity": "optional",
+          "condition": "继续施法成长且有位置"
+        },
+        {
+          "hero": "card:1761",
+          "necessity": "optional",
+          "condition": "需要续航且有位置"
+        },
+        {
+          "hero": "card:1751",
+          "necessity": "optional",
+          "condition": "终局以牺牲降级替墨子成长"
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "需要复生且不提前堵打出位"
+        },
+        {
+          "hero": "card:5251",
+          "necessity": "optional",
+          "condition": "终局额外人口"
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "late_variants": [
+      {
+        "id": "d7-lianpo-seven-growth",
+        "name": "七人持续养成",
+        "condition": {
+          "$text": "d7-lianpo-seven"
+        },
+        "members": [
+          {
+            "hero": "card:1051",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1081",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1211",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5231",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1181",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1191",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1761",
+            "necessity": "required"
+          }
+        ],
+        "core_heroes": [
+          "card:1051",
+          "card:1191"
+        ],
+        "required_factions": [
+          "faction:zhulu"
+        ],
+        "claim_refs": [
+          "d7-lianpo-seven-d7-claim"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": []
+      }
+    ]
+  },
+  "supporting_nodes": []
+}

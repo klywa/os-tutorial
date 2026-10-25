@@ -1,0 +1,3821 @@
+{
+  "schema_version": 6,
+  "id": "b77c-marco-zhulu-jing",
+  "title": "逐鹿镜-马可",
+  "type": "lineup",
+  "player_id": "player:32",
+  "path": "knowledge/lineups/逐鹿镜-马可.json",
+  "aliases": [],
+  "entities": [
+    "card:1111",
+    "card:1113",
+    "card:1211",
+    "card:1213",
+    "card:1231",
+    "card:1461",
+    "card:1861",
+    "card:1863",
+    "card:1991",
+    "card:5011",
+    "card:5111",
+    "card:5113",
+    "card:5211",
+    "card:5213",
+    "card:5311",
+    "card:5313",
+    "card:5641",
+    "card:5643",
+    "card:641009",
+    "card:7041",
+    "card:7083",
+    "card:7505",
+    "card:93299",
+    "player:32"
+  ],
+  "related": [
+    "player-32"
+  ],
+  "manual_sections": [],
+  "history": [
+    {
+      "at": "2026-10-24T14:41:33.702885+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "b77c-marco-zhulu-jing-h0",
+            "type": "heading",
+            "level": 1,
+            "title": "逐鹿镜-马可"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n1",
+            "type": "entry",
+            "key": "适用棋手",
+            "show_key": true,
+            "value": "马可",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n2",
+            "type": "entry",
+            "key": "核心英雄",
+            "show_key": true,
+            "value": "镜、猪八戒、芈月、姬小满、孙尚香",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h3",
+            "type": "heading",
+            "level": 2,
+            "title": "核心原理"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n4",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "镜靠反复使用效果牌提高永久等级，芈月把效果牌使用转成装备最多的逐鹿英雄成长；把装备集中给镜，才能让这部分成长落到主要输出。猪八戒承担前排并通过低阶合成补同阶等级，孙尚香提供免费刷新，姬小满把出售场上英雄转成临时刷新。马可每打出四张三阶及以下英雄取得宝藏，把频繁买、打、卖的操作继续转为资源，适配这套低阶供给养镜的组合；终局才按真实转级条件比较海月接替。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h5",
+            "type": "heading",
+            "level": 2,
+            "title": "定阵条件"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n6",
+            "type": "entry",
+            "key": "采用条件",
+            "show_key": true,
+            "value": "逐鹿镜、芈月与刷新组件能够取得，能留出打出位反复使用低阶英雄；终局海月只是有转级牌时的替换方向，不是成型前提。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h7",
+            "type": "heading",
+            "level": 2,
+            "title": "英雄"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n8",
+            "type": "entry",
+            "key": "镜",
+            "show_key": true,
+            "value": "主要输出，效果牌带来永久成长。觉醒需求：普通每两张效果牌+1级，觉醒后+2；来源未明确统一觉醒时点；等级投入：接受效果牌及芈月定向成长，终局可回收永久等级；购买策略：取得主力后围绕有效打牌持续投入，固定停级与额外追醒边界待确认；拍卖出价上限未确认；上阵时机：芈月在场时让镜成为装备最多的逐鹿英雄；出售时机：仍作为主要输出时保留；确认终止成长且海月已就位、遗志接收条件已核对后才移除；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n9",
+            "type": "entry",
+            "key": "芈月",
+            "show_key": true,
+            "value": "效果牌成长辅助，把等级给装备最多的逐鹿英雄。觉醒需求：普通可触发，觉醒翻倍；本短稿未明确追醒优先级；等级投入：不争镜的定向等级，接受自然成长；购买策略：先取得首张，重复牌投入边界待确认；拍卖出价上限未确认；上阵时机：使用效果牌前在场，并确认装备最多的逐鹿英雄为镜；出售时机：仍需效果牌成长时保留；终局明确停止养镜才整理其已有等级与位置；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n10",
+            "type": "entry",
+            "key": "猪八戒",
+            "show_key": true,
+            "value": "前期承担伤害，合成时提高同阶英雄永久等级。觉醒需求：觉醒使每次同阶成长由1变2，具体本路线追醒时点待确认；等级投入：以合成自然成长与承伤为主，未确认固定等级；购买策略：作为前排和低阶合成配套取首张，重复按成醒与合成收益；拍卖出价上限未确认；上阵时机：低阶合成前在场；出售时机：终止低阶合成并准备终局转级时才比较换下，先检查已有等级是否值得保留；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n11",
+            "type": "entry",
+            "key": "姬小满",
+            "show_key": true,
+            "value": "出售场上英雄获得临时刷新，补马可的打牌供给。觉醒需求：普通每出售4名、觉醒每2名场上英雄取得一次临时刷新；等级投入：工具接受自然成长，专门培养节点待确认；购买策略：先取得首张，重复觉醒投入边界待确认；拍卖出价上限未确认；上阵时机：出售低阶工具前在场；出售时机：还需要出售刷新时保留；终局停止这条资源循环后再比较换下；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n12",
+            "type": "entry",
+            "key": "孙尚香",
+            "show_key": true,
+            "value": "登场提供免费刷新，重复打出和合成继续供牌。觉醒需求：普通登场给1次刷新，觉醒给2次；短稿未定优先级；等级投入：接受低阶合成成长，不与镜争定向等级；购买策略：有效重复牌继续触发登场和合成；拍卖出价上限未确认；上阵时机：留有打出位时先登场领取刷新；出售时机：本轮登场收益领取后可出售多余牌继续周转，保留循环所需实际牌量；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n13",
+            "type": "entry",
+            "key": "海月",
+            "show_key": true,
+            "value": "有转级牌时的终局输出和牺牲控制替换。觉醒需求：普通已有牺牲控制，觉醒提高真伤比例；示例未要求先醒；等级投入：仅接收实际成功转入的永久等级，不把示例585级当固定值；购买策略：确认结束成长且手中有相应传承、遗志时才比较首张；拍卖出价上限未确认；上阵时机：处理镜等高等级英雄前先上，作为实际接收候选；出售时机：接替主要战力后保留，未确认再次换下的路线；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n14",
+            "type": "entry",
+            "key": "太乙真人",
+            "show_key": true,
+            "value": "终局给海月等核心复生，延长有效战斗。觉醒需求：普通已有复生，觉醒为完美复生；短稿未要求先醒；等级投入：功能用途不专门培养；购买策略：等级转移结束后补首张保护；拍卖出价上限未确认；上阵时机：完成遗志的候选整理后再上，检查最近英雄为海月；出售时机：仍需保护时保留，未确认替换路线；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h15",
+            "type": "heading",
+            "level": 2,
+            "title": "前期英雄组成与运营"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n16",
+            "type": "entry",
+            "key": "猪八戒（必需）",
+            "show_key": true,
+            "value": "先形成前排。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n17",
+            "type": "entry",
+            "key": "孙尚香（必需）",
+            "show_key": true,
+            "value": "打出后取得免费刷新。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n18",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "先建立猪八戒承伤与孙尚香刷新，再补姬小满、芈月和镜。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h19",
+            "type": "heading",
+            "level": 2,
+            "title": "中期英雄组成与运营"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n20",
+            "type": "entry",
+            "key": "镜（必需）",
+            "show_key": true,
+            "value": "建立该英雄的资源或成长作用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n21",
+            "type": "entry",
+            "key": "芈月（必需）",
+            "show_key": true,
+            "value": "建立该英雄的资源或成长作用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n22",
+            "type": "entry",
+            "key": "姬小满（必需）",
+            "show_key": true,
+            "value": "建立该英雄的资源或成长作用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n23",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "保留一个打出位，反复使用三阶及以下英雄推进马可宝藏，出售场上多余英雄前让姬小满在场。效果牌使用同时触发镜与芈月成长，装备最多的逐鹿目标要指向镜。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h24",
+            "type": "heading",
+            "level": 2,
+            "title": "后期英雄组成与运营"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n25",
+            "type": "entry",
+            "key": "海月（可选）",
+            "show_key": true,
+            "value": "有实际转级牌时才作为终局接替。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n26",
+            "type": "entry",
+            "key": "太乙真人（可选）",
+            "show_key": true,
+            "value": "转级操作后补复生。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n27",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "决定结束刷牌后再比较海月接替，不提前拆掉仍在保血的镜和前排。终局按照剩余接收者、永久等级及实际传承结果逐步操作；示例的585级和获胜结果不是每局预算。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h28",
+            "type": "heading",
+            "level": 2,
+            "title": "关键操作"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n29",
+            "type": "entry",
+            "key": "海月接替示例",
+            "show_key": true,
+            "value": "确认不再继续成长后，按来源示例保留镜和另一名高等级英雄，先上海月。对符合10级门槛的次高等级英雄用传承，核对随机分配，再出售这名工具；确认场上只剩镜与海月时，对镜用遗志，才具有海月是唯一其他英雄的条件。完成后再上太乙真人并检查最近目标，不能先上太乙而增加遗志候选。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h30",
+            "type": "heading",
+            "level": 2,
+            "title": "关键效果牌"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n31",
+            "type": "entry",
+            "key": "传承",
+            "show_key": true,
+            "value": "指定场上1名10级以上英雄，将等级随机分给其他英雄中等级最低的3名。结束成长、准备换下有等级的工具时，先检查接收者，使用后再出售原英雄；不能指定全部交给主C。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n32",
+            "type": "entry",
+            "key": "遗志",
+            "show_key": true,
+            "value": "移除指定英雄，把非临时等级转给1名随机英雄。先整理接收候选；场上除被移除者外只有一个英雄时，才具备唯一接收者条件。它会直接移除目标，不需要再出售一次。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n33",
+            "type": "entry",
+            "key": "换帅",
+            "show_key": true,
+            "value": "指定一名三分英雄，与其最近的三分英雄交换等级。需要用吕布接等级时，先确认高等级承担者是三分，再安排最近目标，最后使用换帅；高等级落到非三分英雄时不能直接套用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h34",
+            "type": "heading",
+            "level": 2,
+            "title": "关键装备"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n35",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h36",
+            "type": "heading",
+            "level": 2,
+            "title": "站位技巧"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n37",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h38",
+            "type": "heading",
+            "level": 2,
+            "title": "克制手段"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n39",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h40",
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n41",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- [马可](../players/马可.json)",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {
+          "players": [
+            "player:32"
+          ],
+          "required_factions": [
+            "faction:zhulu",
+            "faction:riluohai",
+            "faction:sanfen"
+          ],
+          "core_heroes": [
+            "card:5311",
+            "card:5111",
+            "card:1211",
+            "card:5641",
+            "card:1111"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:5111",
+                "necessity": "optional",
+                "condition": "前期已取得且需承伤"
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "optional",
+                "condition": "前期已取得且需刷新"
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:5311",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required"
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5311",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              }
+            ]
+          },
+          "ban_conditions": [],
+          "matchups": [],
+          "late_variants": [
+            {
+              "id": "b77c-jing-haiyue-terminal",
+              "name": "海月接替终局示例",
+              "condition": "已确认停止养镜，并完成传承、遗志候选整理；拥有海月与太乙真人且能够接替当前战力。",
+              "members": [
+                {
+                  "hero": "card:5211",
+                  "necessity": "required"
+                },
+                {
+                  "hero": "card:1861",
+                  "necessity": "required"
+                }
+              ],
+              "core_heroes": [
+                "card:5211"
+              ],
+              "required_factions": [],
+              "ban_conditions": [],
+              "ban_combinations": [],
+              "claim_refs": [
+                "b77c-marco-zhulu-jing-n29-claim"
+              ]
+            }
+          ]
+        }
+      },
+      "claim_annotations": [
+        {
+          "id": "b77c-marco-zhulu-jing-n1-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n1",
+          "section": "逐鹿镜-马可",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n2-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n2",
+          "section": "逐鹿镜-马可",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n4-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n4",
+          "section": "核心原理",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 193,
+              "paragraph_end": 193
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 169,
+              "paragraph_end": 169
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 786,
+              "paragraph_end": 786
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n6-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n6",
+          "section": "定阵条件",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n8-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n8",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 193,
+              "paragraph_end": 193
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 194,
+              "paragraph_end": 194
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n9-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n9",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 30,
+              "paragraph_end": 30
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n10-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n10",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 169,
+              "paragraph_end": 169
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 170,
+              "paragraph_end": 170
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n11-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n11",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 202,
+              "paragraph_end": 202
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n12-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n12",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n13-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n13",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 182,
+              "paragraph_end": 182
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n14-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n14",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 95,
+              "paragraph_end": 95
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n16-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n16",
+          "section": "前期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n17-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n17",
+          "section": "前期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n18-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n18",
+          "section": "前期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n20-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n20",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n21-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n21",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n22-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n22",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n23-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n23",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n25-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n25",
+          "section": "后期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n26-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n26",
+          "section": "后期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n27-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n27",
+          "section": "后期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n29-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n29",
+          "section": "关键操作",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 64.01,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 643,
+              "paragraph_end": 643
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n31-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n31",
+          "section": "关键效果牌",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n32-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n32",
+          "section": "关键效果牌",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 643,
+              "paragraph_end": 643
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n33-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n33",
+          "section": "关键效果牌",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 690,
+              "paragraph_end": 690
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n41-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n41",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        }
+      ]
+    },
+    {
+      "at": "2026-10-24T15:24:20.005152+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "b77c-marco-zhulu-jing-h0",
+            "type": "heading",
+            "level": 1,
+            "title": "逐鹿镜-马可"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n1",
+            "type": "entry",
+            "key": "适用棋手",
+            "show_key": true,
+            "value": "马可",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n2",
+            "type": "entry",
+            "key": "核心英雄",
+            "show_key": true,
+            "value": "镜、猪八戒、芈月、姬小满、孙尚香",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h3",
+            "type": "heading",
+            "level": 2,
+            "title": "核心原理"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n4",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "镜靠反复使用效果牌提高永久等级，芈月把效果牌使用转成装备最多的逐鹿英雄成长；把装备集中给镜，才能让这部分成长落到主要输出。猪八戒承担前排并通过低阶合成补同阶等级，孙尚香提供免费刷新，姬小满把出售场上英雄转成临时刷新。马可每打出四张三阶及以下英雄取得宝藏，把频繁买、打、卖的操作继续转为资源，适配这套低阶供给养镜的组合；终局决定停止养镜后，按真实转级条件比较海月接替或吕布换帅：海月方向先整理遗志接收者，吕布方向另需三分换帅目标，不能把两条顺序混用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h5",
+            "type": "heading",
+            "level": 2,
+            "title": "定阵条件"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n6",
+            "type": "entry",
+            "key": "采用条件",
+            "show_key": true,
+            "value": "逐鹿镜、芈月与刷新组件能够取得，能留出打出位反复使用低阶英雄；终局海月只是有转级牌时的替换方向，不是成型前提。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h7",
+            "type": "heading",
+            "level": 2,
+            "title": "英雄"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n8",
+            "type": "entry",
+            "key": "镜",
+            "show_key": true,
+            "value": "主要输出，效果牌带来永久成长。觉醒需求：普通每两张效果牌+1级，觉醒后+2；来源未明确统一觉醒时点；等级投入：接受效果牌及芈月定向成长，终局可回收永久等级；购买策略：取得主力后围绕有效打牌持续投入，固定停级与额外追醒边界待确认；拍卖出价上限未确认；上阵时机：芈月在场时让镜成为装备最多的逐鹿英雄；出售时机：仍作为主要输出时保留；决定停止养镜后，海月方向先上海月并核对遗志接收条件，吕布方向先完成孙尚香与吕布的三分换帅、处理猪八戒等其他接收候选；只有本轮接替主力已就位且遗志能交给实际目标时，才移除镜；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n9",
+            "type": "entry",
+            "key": "芈月",
+            "show_key": true,
+            "value": "效果牌成长辅助，把等级给装备最多的逐鹿英雄。觉醒需求：普通可触发，觉醒翻倍；本短稿未明确追醒优先级；等级投入：不争镜的定向等级，接受自然成长；购买策略：先取得首张，重复牌投入边界待确认；拍卖出价上限未确认；上阵时机：使用效果牌前在场，并确认装备最多的逐鹿英雄为镜；出售时机：仍需效果牌成长时保留；终局明确停止养镜才整理其已有等级与位置；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n10",
+            "type": "entry",
+            "key": "猪八戒",
+            "show_key": true,
+            "value": "前期承担伤害，合成时提高同阶英雄永久等级。觉醒需求：觉醒使每次同阶成长由1变2，具体本路线追醒时点待确认；等级投入：以合成自然成长与承伤为主，未确认固定等级；购买策略：作为前排和低阶合成配套取首张，重复按成醒与合成收益；拍卖出价上限未确认；上阵时机：低阶合成前在场；出售时机：终止低阶合成并准备终局转级时才比较换下，先检查已有等级是否值得保留；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n11",
+            "type": "entry",
+            "key": "姬小满",
+            "show_key": true,
+            "value": "出售场上英雄获得临时刷新，补马可的打牌供给。觉醒需求：普通每出售4名、觉醒每2名场上英雄取得一次临时刷新；等级投入：工具接受自然成长，专门培养节点待确认；购买策略：先取得首张，重复觉醒投入边界待确认；拍卖出价上限未确认；上阵时机：出售低阶工具前在场；出售时机：还需要出售刷新时保留；终局停止这条资源循环后再比较换下；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n12",
+            "type": "entry",
+            "key": "孙尚香",
+            "show_key": true,
+            "value": "登场提供免费刷新，重复打出和合成继续供牌。觉醒需求：普通登场给1次刷新，觉醒给2次；短稿未定优先级；等级投入：接受低阶合成成长，不与镜争定向等级；购买策略：有效重复牌继续触发登场和合成；拍卖出价上限未确认；上阵时机：留有打出位时先登场领取刷新；出售时机：本轮登场收益领取后可出售多余牌继续周转，保留循环所需实际牌量；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n13",
+            "type": "entry",
+            "key": "海月",
+            "show_key": true,
+            "value": "有转级牌时的终局输出和牺牲控制替换。觉醒需求：普通已有牺牲控制，觉醒提高真伤比例；示例未要求先醒；等级投入：仅接收实际成功转入的永久等级，不把示例585级当固定值；购买策略：确认结束成长且手中有相应传承、遗志时才比较首张；拍卖出价上限未确认；上阵时机：处理镜等高等级英雄前先上，作为实际接收候选；出售时机：接替主要战力后保留，未确认再次换下的路线；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n14",
+            "type": "entry",
+            "key": "太乙真人",
+            "show_key": true,
+            "value": "终局给本轮实际接替的海月或吕布复生，延长有效战斗。觉醒需求：普通已有复生，觉醒为完美复生；短稿未要求先醒；等级投入：功能用途不专门培养；购买策略：等级转移结束后补首张保护；拍卖出价上限未确认；上阵时机：完成遗志的候选整理后再上，检查最近英雄为本轮实际接管战力的海月或吕布；出售时机：仍需保护时保留，未确认替换路线；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h15",
+            "type": "heading",
+            "level": 2,
+            "title": "前期英雄组成与运营"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n16",
+            "type": "entry",
+            "key": "猪八戒（必需）",
+            "show_key": true,
+            "value": "先形成前排。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n17",
+            "type": "entry",
+            "key": "孙尚香（必需）",
+            "show_key": true,
+            "value": "打出后取得免费刷新。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n18",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "先建立猪八戒承伤与孙尚香刷新，再补姬小满、芈月和镜。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h19",
+            "type": "heading",
+            "level": 2,
+            "title": "中期英雄组成与运营"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n20",
+            "type": "entry",
+            "key": "镜（必需）",
+            "show_key": true,
+            "value": "建立该英雄的资源或成长作用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n21",
+            "type": "entry",
+            "key": "芈月（必需）",
+            "show_key": true,
+            "value": "建立该英雄的资源或成长作用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n22",
+            "type": "entry",
+            "key": "姬小满（必需）",
+            "show_key": true,
+            "value": "建立该英雄的资源或成长作用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n23",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "保留一个打出位，在棋手3级持续刷新低阶资源，出售场上多余英雄前先让姬小满在场。效果牌同时推进镜与芈月成长，镜应为装备最多的逐鹿英雄；没有镜时可先靠芈月成长保血或存下暂时不急用的效果牌。冰曜宝石镜随机复制非觉醒手牌，通常为后续资源工具留候选，姬小满距离觉醒很近且刷新不足时可先争取补其觉醒。曹操只有随机触发到孙尚香才给刷新，不能预设每回合固定两次。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h24",
+            "type": "heading",
+            "level": 2,
+            "title": "后期英雄组成与运营"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n25",
+            "type": "entry",
+            "key": "海月（可选）",
+            "show_key": true,
+            "value": "有实际转级牌时才作为终局接替。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n26",
+            "type": "entry",
+            "key": "太乙真人（可选）",
+            "show_key": true,
+            "value": "转级操作后补复生。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n27",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "本路线终局有海月接替与吕布换帅两种条件方向。决定结束刷牌后再选择，不提前拆仍在保血的镜和前排：海月方向按剩余接收者和实际传承结果处理；吕布方向先准备传承、遗志、换帅及可交换等级的三分目标。镜继续使用效果牌仍有成长收益，换成吕布后原效果牌成长链会停止，因此已到后期、现有镜战力不足以支撑下一轮时再兑现战力，不把示例回合与等级作为统一阈值。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h28",
+            "type": "heading",
+            "level": 2,
+            "title": "关键操作"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n29",
+            "type": "entry",
+            "key": "海月接替示例",
+            "show_key": true,
+            "value": "确认不再继续成长后，按来源示例保留镜和另一名高等级英雄，先上海月。对符合10级门槛的次高等级英雄用传承，核对随机分配，再出售这名工具；确认场上只剩镜与海月时，对镜用遗志，才具有海月是唯一其他英雄的条件。完成后再上太乙真人并检查最近目标，不能先上太乙而增加遗志候选。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h30",
+            "type": "heading",
+            "level": 2,
+            "title": "关键效果牌"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n31",
+            "type": "entry",
+            "key": "传承",
+            "show_key": true,
+            "value": "指定场上1名10级以上英雄，将等级随机分给其他英雄中等级最低的3名。结束成长、准备换下有等级的工具时，先检查接收者，使用后再出售原英雄；不能指定全部交给主C。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n32",
+            "type": "entry",
+            "key": "遗志",
+            "show_key": true,
+            "value": "移除指定英雄，把非临时等级转给1名随机英雄。先整理接收候选；场上除被移除者外只有一个英雄时，才具备唯一接收者条件。它会直接移除目标，不需要再出售一次。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n33",
+            "type": "entry",
+            "key": "换帅",
+            "show_key": true,
+            "value": "指定一名三分英雄，与其最近的三分英雄交换等级。需要用吕布接等级时，先确认高等级承担者是三分，再安排最近目标，最后使用换帅；高等级落到非三分英雄时不能直接套用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h34",
+            "type": "heading",
+            "level": 2,
+            "title": "关键装备"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n35",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h36",
+            "type": "heading",
+            "level": 2,
+            "title": "站位技巧"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n37",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h38",
+            "type": "heading",
+            "level": 2,
+            "title": "克制手段"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n39",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无已确认的通用策略。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-h40",
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识"
+          },
+          {
+            "id": "b77c-marco-zhulu-jing-n41",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- [马可](../players/马可.json)",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-lubu-operation-h",
+            "type": "heading",
+            "level": 2,
+            "title": "吕布终局补充",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-lubu-operation",
+            "type": "entry",
+            "key": "单传承转吕布的条件顺序",
+            "show_key": true,
+            "value": "已经决定停止养镜且只有一张传承时，先确认猪八戒、孙尚香、镜三人保有可回收等级，再出售其余已无后续作用的成员。对达到10级门槛的猪八戒使用传承后，检查孙尚香、镜实际收到的等级；随后上吕布，与孙尚香安排最近三分关系并使用换帅。按示例出售孙尚香之前，还须处理已分配等级的猪八戒：若遗志时还留着猪八戒，它也会成为随机接收候选。只有遗志目标镜之外确实只剩吕布时，才保证把镜的非临时等级交给吕布；最后再补太乙真人等保护。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-lubu",
+            "type": "entry",
+            "key": "吕布",
+            "show_key": true,
+            "value": "结束养镜后的条件终局输出，以三分换帅承接孙尚香等级，再按遗志候选接收镜的非临时等级。觉醒需求：单换帅普通即可启动，重复质量按来牌；该源未要求固定觉醒；等级投入：只有实际交换与成功转入的等级，不保证示例800级；购买策略：已备终局转级牌时取首张，拍卖出价上限未确认；上阵时机：决定停止养镜、已有高等级三分目标且最近关系明确后上；出售时机：仍承担终局战力时保留，进一步换出路线未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-equip-bell",
+            "type": "entry",
+            "key": "静谧之铃",
+            "show_key": true,
+            "value": "敌方等级最高的两名英雄施法后5秒内无法恢复法力值，期间每0.5秒受到穿戴者20%法术攻击力的法术伤害。养镜内战与敌方高等级核心依赖施法时，来源优先比较这件装备，而非只为经济收益选择学识宝石。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-first-auction-h",
+            "type": "heading",
+            "level": 2,
+            "title": "拍卖补充",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-first-auction",
+            "type": "entry",
+            "key": "第一轮拍卖优先级",
+            "show_key": true,
+            "value": "本教学第一轮按姬小满、镜、猪八戒、芈月排序补缺；三阶组件比棋手3级较易搜索的二阶芈月更早比较，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-jing-last-auction",
+            "type": "entry",
+            "key": "第三轮拍卖取舍",
+            "show_key": true,
+            "value": "需要从棋手5级升6级取得专属天赋时优先比较扶摇直上；竞争导致价格超过自身可承受资源时，不照搬示例价格，改用神兵天降等补终局高阶牌。神兵天降不保证取得吕布。",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {
+          "players": [
+            "player:32"
+          ],
+          "required_factions": [
+            "faction:zhulu",
+            "faction:riluohai",
+            "faction:sanfen"
+          ],
+          "core_heroes": [
+            "card:5311",
+            "card:5111",
+            "card:1211",
+            "card:5641",
+            "card:1111"
+          ],
+          "compositions": {
+            "early": [
+              {
+                "hero": "card:5111",
+                "necessity": "optional",
+                "condition": "前期已取得且需承伤"
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "optional",
+                "condition": "前期已取得且需刷新"
+              }
+            ],
+            "middle": [
+              {
+                "hero": "card:5311",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required"
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required"
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5311",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:5111",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:1211",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              },
+              {
+                "hero": "card:1111",
+                "necessity": "required",
+                "condition": "尚未终止养镜循环"
+              }
+            ]
+          },
+          "ban_conditions": [],
+          "matchups": [],
+          "late_variants": [
+            {
+              "id": "b77c-jing-haiyue-terminal",
+              "name": "海月接替终局示例",
+              "condition": "已确认停止养镜，并完成传承、遗志候选整理；拥有海月与太乙真人且能够接替当前战力。",
+              "members": [
+                {
+                  "hero": "card:5211",
+                  "necessity": "required"
+                },
+                {
+                  "hero": "card:1861",
+                  "necessity": "required"
+                }
+              ],
+              "core_heroes": [
+                "card:5211"
+              ],
+              "required_factions": [],
+              "ban_conditions": [],
+              "ban_combinations": [],
+              "claim_refs": [
+                "b77c-marco-zhulu-jing-n29-claim"
+              ]
+            },
+            {
+              "id": "jing-lubu-terminal-c3",
+              "name": "结束养镜转吕布",
+              "condition": "有传承、遗志、换帅与吕布；决定停止成长，并能整理真实随机接收者和最近三分目标。吕布与太乙真人仅为已确认核心及保护，其他终局成员尚未确认固定完整名单。",
+              "members": [
+                {
+                  "hero": "card:1231",
+                  "necessity": "required"
+                },
+                {
+                  "hero": "card:1861",
+                  "necessity": "optional",
+                  "condition": "转级完成后有实际复生保护需求"
+                }
+              ],
+              "core_heroes": [
+                "card:1231"
+              ],
+              "required_factions": [
+                "faction:sanfen"
+              ],
+              "ban_conditions": [],
+              "ban_combinations": [],
+              "claim_refs": [
+                "c3-jing-lubu-operation-c3-claim"
+              ]
+            }
+          ]
+        }
+      },
+      "claim_annotations": [
+        {
+          "id": "b77c-marco-zhulu-jing-n1-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n1",
+          "section": "逐鹿镜-马可",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n2-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n2",
+          "section": "逐鹿镜-马可",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n4-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n4",
+          "section": "核心原理",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 193,
+              "paragraph_end": 193
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 169,
+              "paragraph_end": 169
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 786,
+              "paragraph_end": 786
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n6-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n6",
+          "section": "定阵条件",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n8-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n8",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 193,
+              "paragraph_end": 193
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 194,
+              "paragraph_end": 194
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n9-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n9",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 29,
+              "paragraph_end": 29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 30,
+              "paragraph_end": 30
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n10-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n10",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 169,
+              "paragraph_end": 169
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 170,
+              "paragraph_end": 170
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n11-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n11",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 202,
+              "paragraph_end": 202
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n12-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n12",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 14,
+              "paragraph_end": 14
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n13-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n13",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 182,
+              "paragraph_end": 182
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n14-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n14",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 95,
+              "paragraph_end": 95
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n16-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n16",
+          "section": "前期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n17-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n17",
+          "section": "前期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n18-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n18",
+          "section": "前期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n20-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n20",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n21-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n21",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n22-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n22",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n23-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n23",
+          "section": "中期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 132.07,
+              "end": 180.72
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 872,
+              "paragraph_end": 872
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 57,
+              "paragraph_end": 57
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 21,
+              "paragraph_end": 21
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 22,
+              "paragraph_end": 22
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 45,
+              "paragraph_end": 45
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 277,
+              "paragraph_end": 277
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。",
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n25-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n25",
+          "section": "后期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n26-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n26",
+          "section": "后期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n27-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n27",
+          "section": "后期英雄组成与运营",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 180.97,
+              "end": 210.33
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 318.75,
+              "end": 373.72
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。",
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n29-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n29",
+          "section": "关键操作",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 64.01,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 643,
+              "paragraph_end": 643
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 94,
+              "paragraph_end": 94
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n31-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n31",
+          "section": "关键效果牌",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n32-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n32",
+          "section": "关键效果牌",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 643,
+              "paragraph_end": 643
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n33-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n33",
+          "section": "关键效果牌",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 690,
+              "paragraph_end": 690
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 31,
+              "paragraph_end": 31
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n41-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n41",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1EmYV6WEzv:p1",
+              "start": 0,
+              "end": 108.69
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-c-extra.json",
+            "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+          }
+        },
+        {
+          "id": "c3-jing-lubu-operation-c3-claim",
+          "text_ref": "c3-jing-lubu-operation",
+          "section": "吕布终局补充",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 348.06,
+              "end": 373.72
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "c3-jing-lubu-c3-claim",
+          "text_ref": "c3-jing-lubu",
+          "section": "本批来源融合",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 288.78,
+              "end": 403.03
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 48,
+              "paragraph_end": 48
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "c3-jing-equip-bell-c3-claim",
+          "text_ref": "c3-jing-equip-bell",
+          "section": "本批来源融合",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 107.33,
+              "end": 131.73
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 528,
+              "paragraph_end": 528
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "c3-jing-first-auction-c3-claim",
+          "text_ref": "c3-jing-first-auction",
+          "section": "拍卖补充",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 84.68,
+              "end": 106.72
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "c3-jing-last-auction-c3-claim",
+          "text_ref": "c3-jing-last-auction",
+          "section": "本批来源融合",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 266.33,
+              "end": 318.51
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n4-c3-audit-branch-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n4",
+          "section": "核心原理",
+          "kind": "conditional_strategy",
+          "condition": "海月接替与吕布换帅分别执行",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 348.06,
+              "end": 403.03
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/audit-c-stage3.json",
+            "reason": "同步旧核心与英雄字段到已新增的海月/吕布两路；旧海月n29完整保留。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n8-c3-audit-branch-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n8",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "condition": "海月接替与吕布换帅分别执行",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 348.06,
+              "end": 403.03
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/audit-c-stage3.json",
+            "reason": "同步旧核心与英雄字段到已新增的海月/吕布两路；旧海月n29完整保留。"
+          }
+        },
+        {
+          "id": "b77c-marco-zhulu-jing-n14-c3-audit-branch-claim",
+          "text_ref": "b77c-marco-zhulu-jing-n14",
+          "section": "英雄",
+          "kind": "conditional_strategy",
+          "condition": "海月接替与吕布换帅分别执行",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1t6Jv6hEEN:p1",
+              "start": 348.06,
+              "end": 403.03
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 784,
+              "paragraph_end": 784
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/audit-c-stage3.json",
+            "reason": "同步旧核心与英雄字段到已新增的海月/吕布两路；旧海月n29完整保留。"
+          }
+        }
+      ]
+    }
+  ],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "b77c-marco-zhulu-jing-n1-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n1",
+      "section": "逐鹿镜-马可",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n2-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n2",
+      "section": "逐鹿镜-马可",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n4-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n4",
+      "section": "核心原理",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 193,
+          "paragraph_end": 193
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 169,
+          "paragraph_end": 169
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 786,
+          "paragraph_end": 786
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n6-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n6",
+      "section": "定阵条件",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n8-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n8",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 193,
+          "paragraph_end": 193
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 194,
+          "paragraph_end": 194
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n9-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n9",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 29,
+          "paragraph_end": 29
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 30,
+          "paragraph_end": 30
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n10-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n10",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 169,
+          "paragraph_end": 169
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 170,
+          "paragraph_end": 170
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n11-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n11",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 201,
+          "paragraph_end": 201
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 202,
+          "paragraph_end": 202
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n12-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n12",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        },
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 742.61,
+          "end": 788.84
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n13-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n13",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 182,
+          "paragraph_end": 182
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n14-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n14",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 95,
+          "paragraph_end": 95
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n16-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n16",
+      "section": "前期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n17-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n17",
+      "section": "前期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n18-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n18",
+      "section": "前期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n20-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n20",
+      "section": "中期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n21-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n21",
+      "section": "中期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n22-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n22",
+      "section": "中期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n23-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n23",
+      "section": "中期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 132.07,
+          "end": 180.72
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 872,
+          "paragraph_end": 872
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 57,
+          "paragraph_end": 57
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 58,
+          "paragraph_end": 58
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 22,
+          "paragraph_end": 22
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 45,
+          "paragraph_end": 45
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 277,
+          "paragraph_end": 277
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。",
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n25-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n25",
+      "section": "后期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n26-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n26",
+      "section": "后期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n27-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n27",
+      "section": "后期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 180.97,
+          "end": 210.33
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 318.75,
+          "end": 373.72
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。",
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n29-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n29",
+      "section": "关键操作",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 64.01,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n31-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n31",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n32-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n32",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n33-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n33",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 690,
+          "paragraph_end": 690
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 649.34,
+          "end": 696.09
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n41-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n41",
+      "section": "关联知识",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EmYV6WEzv:p1",
+          "start": 0,
+          "end": 108.69
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-c-extra.json",
+        "basis": "逐段读取本来源全文；策略用途来自视频，随机目标和触发条件按本地官方文档校准；无依据的五字段留待确认。"
+      }
+    },
+    {
+      "id": "c3-jing-lubu-operation-c3-claim",
+      "text_ref": "c3-jing-lubu-operation",
+      "section": "吕布终局补充",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 348.06,
+          "end": 373.72
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "c3-jing-lubu-c3-claim",
+      "text_ref": "c3-jing-lubu",
+      "section": "本批来源融合",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 288.78,
+          "end": 403.03
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 48,
+          "paragraph_end": 48
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "c3-jing-equip-bell-c3-claim",
+      "text_ref": "c3-jing-equip-bell",
+      "section": "本批来源融合",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 107.33,
+          "end": 131.73
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 528,
+          "paragraph_end": 528
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "c3-jing-first-auction-c3-claim",
+      "text_ref": "c3-jing-first-auction",
+      "section": "拍卖补充",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 84.68,
+          "end": 106.72
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "c3-jing-last-auction-c3-claim",
+      "text_ref": "c3-jing-last-auction",
+      "section": "本批来源融合",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 266.33,
+          "end": 318.51
+        }
+      ],
+      "review_basis": {
+        "stage3": {
+          "report": "raw/reports/batch77/review-c-stage3.json",
+          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+        }
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n4-c3-audit-branch-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n4",
+      "section": "核心原理",
+      "kind": "conditional_strategy",
+      "condition": "海月接替与吕布换帅分别执行",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 348.06,
+          "end": 403.03
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 143,
+          "paragraph_end": 143
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/audit-c-stage3.json",
+        "reason": "同步旧核心与英雄字段到已新增的海月/吕布两路；旧海月n29完整保留。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n8-c3-audit-branch-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n8",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "海月接替与吕布换帅分别执行",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 348.06,
+          "end": 403.03
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 143,
+          "paragraph_end": 143
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/audit-c-stage3.json",
+        "reason": "同步旧核心与英雄字段到已新增的海月/吕布两路；旧海月n29完整保留。"
+      }
+    },
+    {
+      "id": "b77c-marco-zhulu-jing-n14-c3-audit-branch-claim",
+      "text_ref": "b77c-marco-zhulu-jing-n14",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "海月接替与吕布换帅分别执行",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 348.06,
+          "end": 403.03
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 143,
+          "paragraph_end": 143
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/audit-c-stage3.json",
+        "reason": "同步旧核心与英雄字段到已新增的海月/吕布两路；旧海月n29完整保留。"
+      }
+    },
+    {
+      "id": "a5-4e71d13772e9276d1db8",
+      "text_ref": "b77c-marco-zhulu-jing-n6",
+      "kind": "conditional_strategy",
+      "section": "定阵条件",
+      "condition": "按正文实际来牌、装备、阶段及目标条件",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 313.61,
+          "end": 421.31
+        },
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 422.99,
+          "end": 605.36
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 277,
+          "paragraph_end": 277
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 241,
+          "paragraph_end": 241
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 217,
+          "paragraph_end": 217
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 45,
+          "paragraph_end": 45
+        }
+      ],
+      "origin": "batch77_stage5_a",
+      "review_basis": {
+        "report": "raw/reports/batch77/review-a-stage5.json",
+        "official_snapshot": "真实10/24官网完整卡对象，沿用已登记doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39；本次未伪称重新HTTP查询"
+      }
+    },
+    {
+      "id": "a5-3ef83349ba7a764c30ab",
+      "text_ref": "a5-jing-resource",
+      "kind": "conditional_strategy",
+      "section": "关键操作",
+      "condition": "按正文实际来牌、装备、阶段及目标条件",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 649.34,
+          "end": 696.09
+        },
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 841.26,
+          "end": 933.27
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 784,
+          "paragraph_end": 784
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 176,
+          "paragraph_end": 176
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 48,
+          "paragraph_end": 48
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 241,
+          "paragraph_end": 241
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 45,
+          "paragraph_end": 45
+        }
+      ],
+      "origin": "batch77_stage5_a",
+      "review_basis": {
+        "report": "raw/reports/batch77/review-a-stage5.json",
+        "official_snapshot": "真实10/24官网完整卡对象，沿用已登记doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39；本次未伪称重新HTTP查询"
+      }
+    },
+    {
+      "id": "a5-712995a099f6824069a2",
+      "text_ref": "b77c-marco-zhulu-jing-n27",
+      "kind": "conditional_strategy",
+      "section": "后期英雄组成与运营",
+      "condition": "按正文实际来牌、装备、阶段及目标条件",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 699.18,
+          "end": 788.84
+        },
+        {
+          "type": "video",
+          "source": "BV1Mrnn6tE19:p1",
+          "start": 1324.75,
+          "end": 1451.89
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 21,
+          "paragraph_end": 21
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 89,
+          "paragraph_end": 89
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 277,
+          "paragraph_end": 277
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 880,
+          "paragraph_end": 880
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        }
+      ],
+      "origin": "batch77_stage5_a",
+      "review_basis": {
+        "report": "raw/reports/batch77/review-a-stage5.json",
+        "official_snapshot": "真实10/24官网完整卡对象，沿用已登记doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39；本次未伪称重新HTTP查询"
+      }
+    }
+  ],
+  "composition_review": {
+    "status": "confirmed_members_with_explicit_unknown_boundaries",
+    "meaning": "members_present_not_purchase_delta",
+    "boundary": "来源确认成型五人骨架，未确认每回合早期完整名单；late默认继续养镜，不把海月接替当成与原五人同时常驻。"
+  },
+  "body_sha256": "04de46fb5fe52ad3e1618d98e3d9291a7f706cf3dad52397342b71a50990ed21",
+  "revision": "6b26ca8fa7efce50712c",
+  "retired_claim_annotations": []
+}

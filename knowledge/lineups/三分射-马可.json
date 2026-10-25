@@ -1,0 +1,830 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "b77c-marco-sanfen-shooter-h0",
+      "type": "heading",
+      "level": 1,
+      "title": "三分射-马可"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n1",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "马可",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n2",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "孙尚香、公孙离、曹操、蔡文姬、小乔、甄姬、露娜",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-factions",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "完整登场整备成长路线需要三分之地和日落海，分别提供公孙离、曹操等三分成员及露娜；停止成长后选周瑜或吕布接战，不代表开局可以忽略露娜路线所需阵营。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h3",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n4",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "前中期以公孙离吸收可退出工具的永久等级，利用高等级远程攻击保血；蔡文姬把三分英雄打出转成低等级三分成员成长，小乔再把登场转成团队等级。孙尚香提供刷新，曹操整备随机触发三分登场，后期加入甄姬与露娜继续供牌、触发整备。马可奖励反复使用低阶英雄，使刷新、登场和成长相互支持；6级阳光普照按实际使用过的宝藏牌数量提高团队伤害。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h5",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n6",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "先有低阶三分质量与公孙离有效等级，后续能够进入甄姬、露娜阶段；曹操触发孙尚香或甄姬取决于实际三分登场候选，不能预先保证每回合固定两次刷新。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-assess-h",
+      "type": "heading",
+      "level": 2,
+      "title": "打法评价",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-adv",
+      "type": "entry",
+      "key": "优势",
+      "show_key": true,
+      "value": "公孙离的实际等级与攻击装备支撑前中期保血；小乔、曹操、甄姬和露娜接上后，有效登场既提高全队质量，又继续推进马可宝藏资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-risk",
+      "type": "entry",
+      "key": "短板",
+      "show_key": true,
+      "value": "露娜与关键同名仍受来牌和同行影响，准备阶段也可能来不及完成打牌与终局整理。保住现有公孙离战力、提前留好核心与材料，比预期固定回合多个999更可靠。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-rates",
+      "type": "entry",
+      "key": "前三率／吃鸡率",
+      "show_key": true,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-core-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心机制",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-core",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "露娜登场随机触发整备，曹操的整备再随机触发三分英雄的登场，甄姬提供其他登场英雄候选，小乔把实际登场触发转成等级。锦囊妙计提供的锦囊若先在本回合使用，后续打出的登场英雄牌会再触发一次，提高有效供牌和成长机会；两层随机目标仍须核对，不能视为每次都命中曹操、甄姬。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h7",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n8",
+      "type": "entry",
+      "key": "公孙离",
+      "show_key": true,
+      "value": "前中期主要输出，使用公孙离牌时触发夺取，从周围1格随机1名己方英雄取得最多10级，排除临时等级。觉醒需求：普通开团按已醒人数加15%攻速，觉醒30%；短稿未给独立追醒时点；等级投入：通过实际多次夺取逐步积累永久等级，保留仍在供牌或保血成员的必要等级；购买策略：有实际等级可接、能接替输出时取首张，前中期先比较能兑现普通攻击的装备与实际质量，能稳定保血后再投入高阶引擎；精确额外追牌预算未确认；拍卖出价上限未确认；上阵时机：来源在曹操觉醒后比较貂蝉，使用公孙离牌前让可回收等级的貂蝉位于其周围1格，其他相邻友军也会进入随机候选；出售时机：仍负责主要输出时保留；只有结束循环且有真实转级方案才比较终局替换；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n9",
+      "type": "entry",
+      "key": "孙尚香",
+      "show_key": true,
+      "value": "登场刷新来源，打出又触发蔡文姬成长。觉醒需求：来源前三回合优先补觉醒，普通1次、觉醒2次刷新；等级投入：接受三分和登场成长，未确认定向养级要求；购买策略：开局与牛魔配合，重复牌用于登场与合成；拍卖出价上限未确认；上阵时机：曹操整备前保留实际有效登场目标；出售时机：还需刷新时保留有效组件，多余牌在领取收益后再周转；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n10",
+      "type": "entry",
+      "key": "曹操",
+      "show_key": true,
+      "value": "整备触发三分登场，连接刷新与后期甄姬供牌。觉醒需求：优先觉醒，普通随机触发1名、觉醒2名；觉醒也不保证同时选中指定英雄；等级投入：接受共同成长，不另设固定停级点；购买策略：先完成低阶配套与曹操觉醒，再扩展登场候选；质量接上后再升级寻找小乔、甄姬与露娜，不为本局某个启动回合提前拆掉公孙离战力；拍卖出价上限未确认；上阵时机：先让孙尚香等有效目标在场，未醒时不急上貂蝉稀释目标；出售时机：还要依靠甄姬、露娜循环时保留，确认停止成长再处理等级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n11",
+      "type": "entry",
+      "key": "蔡文姬",
+      "show_key": true,
+      "value": "反复打三分英雄时为最低等级其他三名三分成长。觉醒需求：觉醒从每次+1提高到+2，按低阶质量补；等级投入：接受共同成长，未确认固定数值；购买策略：低阶阶段取首张与有效重复，额外追醒边界待确认；拍卖出价上限未确认；上阵时机：大量打三分牌前在场；出售时机：停止三分打牌后才比较换下，不提前拆成长引擎；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n12",
+      "type": "entry",
+      "key": "小乔",
+      "show_key": true,
+      "value": "将登场英雄使用转成队伍等级。觉醒需求：优先用实际能命中的复制牌补觉醒，普通随机3人、觉醒全队；等级投入：自然共同成长，不争公孙离的定向等级；购买策略：冰曜宝石镜可争取同名，但须整理非觉醒手牌候选；小乔已接近成醒、甄姬尚未接上时，可先补小乔扩大成长覆盖，再补甄姬供牌；拍卖出价上限未确认；上阵时机：后续大量登场之前上；出售时机：仍需登场成长时保留，终局停止成长才处理等级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n13",
+      "type": "entry",
+      "key": "甄姬",
+      "show_key": true,
+      "value": "后期登场供牌，有机会提供露娜继续循环。觉醒需求：按来源优先补觉醒，觉醒提高候选选择质量；等级投入：接受共同成长，未确认独立培养值；购买策略：进入高阶阶段找首张，再按实际手牌复制补觉醒；拍卖出价上限未确认；上阵时机：曹操触发登场和大量唤醒前在场；出售时机：仍需找牌时保留，终局停止成长再处理等级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n14",
+      "type": "entry",
+      "key": "露娜",
+      "show_key": true,
+      "value": "后期登场触发整备，接回曹操和甄姬供牌链。觉醒需求：普通触发2名、觉醒4名整备；本短稿未要求必须先醒；等级投入：通过循环自然成长，未确认本分支主养节点；购买策略：示例10回合升5找首张；小乔甄姬已醒后可把复制机会转向露娜；拍卖出价上限未确认；上阵时机：曹操、甄姬及成长成员已到位并留打出位后上；出售时机：循环和当前战力依赖露娜时保留；本短稿未确认卖回再抓的安全条件；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n15",
+      "type": "entry",
+      "key": "貂蝉",
+      "show_key": true,
+      "value": "条件登场成长牌，可作为使用公孙离牌时的夺取候选；不是站近就自动回收。觉醒需求：普通给三分+1，觉醒+2；短稿未给必须觉醒要求；等级投入：接受登场与三分成长，回收时按实际永久等级；购买策略：曹操觉醒后再比较加入，避免普通曹操的目标被分散；拍卖出价上限未确认；上阵时机：曹操已醒且有打出位时加入；出售时机：登场收益结束后，先把她放在公孙离使用位置周围1格；每次夺取随机选1名相邻友军、最多10级且排除临时等级。核对实际转入量与貂蝉剩余等级，再比较换下；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n16",
+      "type": "entry",
+      "key": "牛魔",
+      "show_key": true,
+      "value": "前三回合过渡前排，胜利时提供能量。觉醒需求：来源未要求先觉醒；等级投入：接受现成过渡等级，不抢公孙离资源；购买策略：开局按质量补首张；拍卖出价上限未确认；上阵时机：需要前排保血时先上；出售时机：后续前排和输出能接替时再考虑出售；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n17",
+      "type": "entry",
+      "key": "梦奇",
+      "show_key": true,
+      "value": "低阶打出与退场资源工具，补马可宝藏进度。觉醒需求：普通退场有资源，专门追醒要求待确认；等级投入：工具不专门养战斗等级；购买策略：有操作位置和购买预算时使用，不为工具停掉核心成型；拍卖出价上限未确认；上阵时机：先打出，才计马可的低阶英雄次数；出售时机：先实际打出，再出售以触发退场，随后领取退场收益；复制需要的非觉醒手牌种子另行保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n18",
+      "type": "entry",
+      "key": "老夫子",
+      "show_key": true,
+      "value": "首次合成供招募战术，帮助继续操作和成型。觉醒需求：普通招募、觉醒高阶，短稿未明确优先级；等级投入：自然成长，未确认额外投入；购买策略：有合成和打出收益时比较首张与重复；拍卖出价上限未确认；上阵时机：需要本回合首次合成供牌时先上；出售时机：本轮收益已用、需要位置时才比较换下；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n19",
+      "type": "entry",
+      "key": "吕布",
+      "show_key": true,
+      "value": "来源末段提到的条件终局战斗替换。觉醒需求：单次换帅普通吕布即可承接等级，是否补醒仍看战力；超级换帅须先换帅再用另外三张未觉醒吕布使其觉醒回手，之后再接第二份等级，顺序见换帅条目；等级投入：只接收真实换帅交换所得等级，不保证999；购买策略：已有换帅且保有高等级三分目标时才比较首张；拍卖出价上限未确认；若已选吕布终局、两名不同三分成员确可转出等级且能备齐两张换帅，再准备五张未觉醒吕布，缺条件时不为此耗尽找牌资源；上阵时机：停止倒转、目标为最近三分且装备能接战斗后上；出售时机：仍负责终局战力时保留，继续替换方案未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-zhou",
+      "type": "entry",
+      "key": "周瑜",
+      "show_key": true,
+      "value": "条件终局法术输出兼登场成长；施法在周围留下持续伤害和自我回复的焦土，100级开场把全场化为焦土。觉醒需求：普通登场全队+1级、觉醒+2；已有可用战斗质量时可先上，重复按成长和合成收益比较；等级投入：已有高等级三分供级者与真实换帅时可交换接收，100级是开场技能节点，不保证800或999；购买策略：原引擎与公孙离已保住战力、决定比较周瑜终局且能接等级时取首张，重复补质量；拍卖出价上限未确认；上阵时机：先确认换帅指定者和最近三分供级对象，交换后把适合持续法术作战的现有装备交给周瑜；没有材料时不为首张就拆原输出；出售时机：仍承担终局伤害和持续作战时保留；本源未确认固定退出路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h20",
+      "type": "heading",
+      "level": 2,
+      "title": "前期英雄组成与运营"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n21",
+      "type": "entry",
+      "key": "孙尚香（必需）",
+      "show_key": true,
+      "value": "前三回合优先补觉醒。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n22",
+      "type": "entry",
+      "key": "牛魔（可选）",
+      "show_key": true,
+      "value": "按当前对手补前排。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n23",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "来源前三回合用孙尚香配牛魔过渡，反复使用三分牌补蔡文姬成长。曹操未觉醒时，先避免加入会分散有效登场触发的成员；觉醒后再比较貂蝉与公孙离的等级回收。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h24",
+      "type": "heading",
+      "level": 2,
+      "title": "中期英雄组成与运营"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n25",
+      "type": "entry",
+      "key": "公孙离（必需）",
+      "show_key": true,
+      "value": "接取可退出工具的永久等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n26",
+      "type": "entry",
+      "key": "曹操（必需）",
+      "show_key": true,
+      "value": "先补觉醒再扩展登场候选。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n27",
+      "type": "entry",
+      "key": "蔡文姬（必需）",
+      "show_key": true,
+      "value": "三分打出成长。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n28",
+      "type": "entry",
+      "key": "小乔（必需）",
+      "show_key": true,
+      "value": "在大量登场前补入。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n29",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "曹操觉醒后再比较上貂蝉；准备使用公孙离牌时，把貂蝉放在其周围1格。夺取仅在使用公孙离牌时触发，随机选1名相邻己方英雄、最多取得10级且排除临时等级；有其他相邻友军时不保证选到貂蝉，单次也不保证回收其全部等级。核对实际转入量和剩余等级后再决定是否出售貂蝉。冰曜宝石镜优先争取小乔、甄姬觉醒，但它随机复制一张非觉醒手牌，先整理候选再用，不把目标优先级写成指定复制。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h30",
+      "type": "heading",
+      "level": 2,
+      "title": "后期英雄组成与运营"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n31",
+      "type": "entry",
+      "key": "甄姬（必需）",
+      "show_key": true,
+      "value": "补觉醒提高供牌质量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n32",
+      "type": "entry",
+      "key": "露娜（必需）",
+      "show_key": true,
+      "value": "加入登场整备循环。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n33",
+      "type": "entry",
+      "key": "吕布（可选）",
+      "show_key": true,
+      "value": "符合三分交换条件时再替换。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n34",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "通常可在8—9回合附近升4、10—11回合附近升5，仍按当前战力、经验与买牌资源调整。管理进修等外部经验条件可能改变升本节奏，不能照抄示例提前升本而预支未实际领取的经验。5级找甄姬与露娜；小乔、甄姬觉醒后，复制机会可转向露娜继续打登场与三分牌。没找到露娜时保留有效的中期成长和刷新，集中找登场、三分相关供牌，不把开启随机牌写成必定得到露娜。继续循环时保留孙尚香、公孙离、曹操、蔡文姬、小乔、甄姬与露娜；终局停止成长再按真实转级条件比较吕布，手速和准备不足时不承诺完成999级终局。 有锦囊妙计时先备好锦囊、核心和实际打出位置，再在同一回合开锦囊并集中打有效登场牌；没有露娜或操作时间不足时，继续保留公孙离和有效成长，不预定13回合启动或固定500级以上。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-improve-h",
+      "type": "heading",
+      "level": 2,
+      "title": "后期提升思路",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-improve",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "小乔、甄姬质量与露娜到位后继续有效循环，有锦囊时把其收益用于同一回合的真实登场打出。停止成长、确有转级材料与合适接收者时再比较周瑜或吕布承担终局，先检查随机转移和最近三分对象；不为追求多个999拖过操作结束。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h35",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n36",
+      "type": "entry",
+      "key": "阳光普照",
+      "show_key": true,
+      "value": "全队获得已打出宝藏牌数量×0.7%的伤害提升，来源将其作为6级选择。收益取决于实际使用过的宝藏数量，不能以教学标题的满级或连胜承诺替代当轮战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a5-shooter-qunying",
+      "type": "entry",
+      "key": "群英荟萃",
+      "show_key": true,
+      "value": "回合中每打出3张不同品阶的英雄牌，全体英雄等级+3。有群英荟萃且手牌顺序允许时，用1/2/3、2/3/4或1/3/4等真实不同品阶组合继续打牌，不固定只认1/2/3。牌序或操作时间不足时，先打有效成长与成型牌，不为凑三种品阶卡住整套运营；该天赋是额外收益，不是阵容必选前提。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-talents-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-jinnang-talent",
+      "type": "entry",
+      "key": "锦囊妙计",
+      "show_key": true,
+      "value": "取得1张锦囊；使用锦囊后，本回合打出的登场英雄牌会额外触发1次登场。已有小乔和露娜等登场引擎、且本轮能实际打出足够有效牌时比较，先备好核心和打出位，不把此天赋写成每局必需。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-discount",
+      "type": "entry",
+      "key": "节能商店",
+      "show_key": true,
+      "value": "每次手动刷新商店后，总有1张商店卡牌所需能量减少1。持续找低阶三分与登场牌时，比较实际打折卡是否能推进宝藏、质量或供牌；孙尚香免费刷新是否计入此天赋未由该卡面说明，不预支折扣。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h37",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n38",
+      "type": "entry",
+      "key": "曹操目标与复制顺序",
+      "show_key": true,
+      "value": "曹操普通卡只随机触发一名三分登场英雄，孙尚香已觉醒也不意味着每回合必有两次刷新。曹操觉醒后可触发两名，仍需核对场上候选；来源此后才比较貂蝉与公孙离回收。冰曜宝石镜先争取小乔、甄姬同名完成觉醒，再把后续复制机会转向露娜；每次都检查手中的非觉醒候选，不直接把随机镜写成指定复制。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-jinnang-op",
+      "type": "entry",
+      "key": "集中登场前的准备",
+      "show_key": true,
+      "value": "先确认小乔在场、曹操与实际需要的三分登场目标已经到位，手中有可打出的有效登场英雄及实际空位；在准备大量打牌的这一回合使用锦囊，再打露娜等登场英雄。锦囊只增加本回合后续实际打出登场英雄牌的触发；使用唤醒或集体唤醒本身不是打出英雄牌，不把它们当成再次取得锦囊额外一次。每次仍按露娜整备候选及曹操三分候选确认结果。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h39",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n40",
+      "type": "entry",
+      "key": "传承",
+      "show_key": true,
+      "value": "指定场上1名10级以上英雄，将等级随机分给其他英雄中等级最低的3名。结束成长、准备换下有等级的工具时，先检查接收者，使用后再出售原英雄；不能指定全部交给主C。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n41",
+      "type": "entry",
+      "key": "遗志",
+      "show_key": true,
+      "value": "移除指定英雄，把非临时等级转给1名随机英雄。先整理接收候选；场上除被移除者外只有一个英雄时，才具备唯一接收者条件。它会直接移除目标，不需要再出售一次。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n42",
+      "type": "entry",
+      "key": "换帅",
+      "show_key": true,
+      "value": "指定一名三分英雄，与其最近的三分英雄交换等级。需要用吕布接等级时，先确认高等级承担者是三分，再安排最近目标，最后使用换帅；高等级落到非三分英雄时不能直接套用。若选择超级换帅，应在第一次换帅前确认已决定由吕布承担终局战力、场上有两名不同的可转出等级三分英雄，并备齐五张未觉醒吕布和两张换帅，再按以下顺序合并两份等级：先上第一张未觉醒吕布，把第一名供级三分英雄安排为其唯一最近三分目标，对吕布使用第一张换帅；再连续打出三张未觉醒吕布，使其觉醒回到手牌。随后上第五张未觉醒吕布，把另一名供级三分英雄安排为其唯一最近三分目标，使用第二张换帅；最后打出手里的觉醒吕布，与场上吕布合成，使两次承接的等级相加。若只有一名可转出等级的三分英雄、只有一张换帅，或仍需保留两个供级成员的战力与后续成长，就保留单次换帅或继续原循环，不强求双换帅。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-jinnang-effect",
+      "type": "entry",
+      "key": "锦囊",
+      "show_key": true,
+      "value": "使用后，本回合打出的登场英雄牌额外触发1次登场。先保留到准备大量打出露娜等英雄的这一回合，再在这些英雄打出前使用；过早在别回合用掉，不能保留到之后启动。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h43",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n44",
+      "type": "entry",
+      "key": "炽热支配者",
+      "show_key": true,
+      "value": "首次受到控制时取得300护盾，并在接下来15秒免疫控制效果，压制除外。前中期依赖公孙离普通攻击保血、对手控制会打断输出时，可比较给实际主要输出穿戴；不把15秒免控当成全场或压制免疫。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-mingdao",
+      "type": "entry",
+      "key": "名刀·司命",
+      "show_key": true,
+      "value": "首次受到致命伤害时进入无敌与不可选中状态，持续1.5秒。公孙离仍承担中期保血、容易被爆发击倒时可比较，争取继续攻击的时间；换成周瑜终局后另看实际受伤与装备位置，不承诺必定撑过本轮。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h45",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n46",
+      "type": "entry",
+      "key": "面对弈星",
+      "show_key": true,
+      "value": "对手有弈星时，避免把多名关键成员摆在同一排；弈星选择敌人最多的一排制造棋盘，分排可减少一次同时覆盖的主要成员。实际位置继续按双方前排与输出调整，不固化为特定棋盘坐标。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction1-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction2-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction3-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-auction3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h47",
+      "type": "heading",
+      "level": 2,
+      "title": "克制手段"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n48",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-terminal-h",
+      "type": "heading",
+      "level": 2,
+      "title": "终局技巧",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-terminal",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "选择周瑜终局时，换帅仍只交换指定三分与最近三分的等级，先核真实供级者和位置，再调整适合周瑜持续施法的装备。原吕布超级换帅仍须完整材料与两名可转出三分成员；本局周瑜已经成型不需要该流程，不等于所有对局都无需它。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-time-h",
+      "type": "heading",
+      "level": 2,
+      "title": "操作时间不足",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c15-shooter-time",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "把核心、锦囊、打出位置和准备使用的转级材料提前确认；仍缺换帅或无法整理接收者时，先保现有战斗成员，不为追求多个999在最后时刻盲目出售主力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-h49",
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识"
+    },
+    {
+      "id": "b77c-marco-sanfen-shooter-n50",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "- [马可](../players/马可.json)",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:32"
+    ],
+    "required_factions": [
+      "faction:sanfen",
+      "faction:riluohai"
+    ],
+    "core_heroes": [
+      "card:1111",
+      "card:1991",
+      "card:1281",
+      "card:1841",
+      "card:1061",
+      "card:1271",
+      "card:1461"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1111",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1681",
+          "necessity": "optional",
+          "condition": "前三回合需要前排"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:1111",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1991",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1281",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1841",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1061",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1411",
+          "necessity": "optional",
+          "condition": "曹操觉醒后且有打出与夺取收益"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1111",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1991",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1281",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1841",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1061",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1271",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1461",
+          "necessity": "optional",
+          "condition": "继续登场整备循环分支所需；终局停止成长时是否保留按实际战力与转级目标"
+        },
+        {
+          "hero": "card:1241",
+          "necessity": "optional",
+          "condition": "决定采用周瑜终局，且已有真实等级接收和装备条件",
+          "role": {
+            "$text": "c15-shooter-zhou"
+          }
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "late_variants": [
+      {
+        "id": "continue-entry-cycle",
+        "name": "继续登场整备成长",
+        "condition": "已经取得露娜并继续倒转，尚未结束成长转终局",
+        "members": [
+          {
+            "hero": "card:1111",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          },
+          {
+            "hero": "card:1991",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          },
+          {
+            "hero": "card:1281",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          },
+          {
+            "hero": "card:1841",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          },
+          {
+            "hero": "card:1061",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          },
+          {
+            "hero": "card:1271",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          },
+          {
+            "hero": "card:1461",
+            "necessity": "required",
+            "condition": "已取得露娜并继续登场整备循环"
+          }
+        ],
+        "core_heroes": [
+          "card:1111",
+          "card:1991",
+          "card:1281",
+          "card:1841",
+          "card:1061",
+          "card:1271",
+          "card:1461"
+        ],
+        "required_factions": [
+          "faction:sanfen",
+          "faction:riluohai"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": [],
+        "claim_refs": [
+          "b77c-marco-sanfen-shooter-n34-claim"
+        ]
+      },
+      {
+        "id": "zhou-terminal-partial",
+        "name": "周瑜终局条件组合",
+        "condition": "已决定停止或减少原成长，以真实换帅把可转出三分等级交换给周瑜；完整最终名单未知",
+        "members": [
+          {
+            "hero": "card:1241",
+            "necessity": "required",
+            "role": {
+              "$text": "c15-shooter-zhou"
+            }
+          },
+          {
+            "hero": "card:1111",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          },
+          {
+            "hero": "card:1991",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          },
+          {
+            "hero": "card:1281",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          },
+          {
+            "hero": "card:1841",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          },
+          {
+            "hero": "card:1061",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          },
+          {
+            "hero": "card:1271",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          },
+          {
+            "hero": "card:1461",
+            "necessity": "optional",
+            "condition": "仅在仍需其输出、成长或供牌且未转出等级时保留"
+          }
+        ],
+        "core_heroes": [
+          "card:1241"
+        ],
+        "required_factions": [
+          "faction:sanfen"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": [],
+        "claim_refs": [
+          "c15-shooter-zhou-claim",
+          "c15-shooter-terminal-claim"
+        ]
+      }
+    ],
+    "membership_scope": "前中期沿既有完整已知骨架，后期共同列表为可选成员；继续循环variant明确七名必需，周瑜终局只记录已证接收者与条件保留成员，完整最终在场未知。"
+  }
+}

@@ -1,0 +1,574 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "a11-l-title",
+      "type": "heading",
+      "level": 1,
+      "title": "河洛花木兰-弈星",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-principle-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-principle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "花木兰依靠连续攻击与复生承担主要输出，本回合每使用5张古币就增加1次复生，阵亡时还取得临时等级。程咬金和上官婉儿整备供币，武则天提高古币的加级收益，露娜登场随机触发整备，补充本回合的币量。弈星观察同路线对手，用驭势复制对方实际在场的英雄进手牌，补自己的组件与有效重复；这份供牌优势要转成当轮古币、觉醒和保护，才能延长花木兰的输出时间。 取得镜像迷离后，同名英雄可偷取对方等级；神之一手临时复制敌方最高等级英雄，也可形成这份同名匹配，补当轮战力。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-select-h",
+      "type": "heading",
+      "level": 2,
+      "title": "定阵条件",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "河洛可用，已有花木兰及程咬金、上官婉儿、武则天的供币条件，且观察到同路线对手能提供有效复制对象时考虑。采用露娜登场补整备的供牌路线还需要日落海；没有合适对手时，不能把随机复制当成必定凑齐关键组件。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-avoid",
+      "type": "entry",
+      "key": "放弃或转向信号",
+      "show_key": true,
+      "value": "木兰与供币组件未齐、下一场对手也没有可用资源时，先比较现有战力能否保血，不只等待复制。露娜缺失时的其他完整供牌路线尚未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-faction",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "河洛；本篇以露娜登场补整备的供牌路线还需要日落海。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-heroes-h",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1541",
+      "type": "entry",
+      "key": "花木兰",
+      "show_key": true,
+      "value": "主力近战输出，用古币次数换复生并通过牺牲取得临时等级。觉醒需求：普通已有每5张古币增加1次复生，觉醒将牺牲临时等级由10提高为20；追醒顺序未确认；等级投入：持续用有效古币成长，100级扩大技能作用，固定停养点未确认；购买策略：优先建立输出首张，驭势可在对方已上场时补其牌量，付费追醒及拍卖出价上限未确认；上阵时机：取得首张且有可用战斗装备时建立主力，战前把当轮供币兑现；出售时机：主要输出保留，安全换核及转级路线未确认；获得途径：使用驭势并在战斗开始时遇到实际上场花木兰的对手，可复制其花木兰进手牌；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1441",
+      "type": "entry",
+      "key": "程咬金",
+      "show_key": true,
+      "value": "整备获得古币并对自身使用古币，为本回合古币次数和河洛等级提供来源。觉醒需求：普通可供古币，觉醒改精致古币；追醒先后未确认；等级投入：接受自身古币成长，独立投入目标未确认；购买策略：需要供币时补首张和有用重复，本局4能量不是统一报价，拍卖出价上限未确认；上阵时机：需要整备供币前在场；出售时机：仍依赖这份供币时保留，具体替换及转级未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-5131",
+      "type": "entry",
+      "key": "上官婉儿",
+      "show_key": true,
+      "value": "整备随机对不同河洛英雄使用古币，直接推进本回合用币次数。觉醒需求：普通对3名、觉醒对6名不同河洛英雄使用古币，补觉醒提高实际覆盖；等级投入：自然接受河洛成长，独立专养未确认；购买策略：组件未齐时找首张，成型后可用有效重复补醒，拍卖出价上限未确认；上阵时机：供币链需要其整备时加入，确认场上实际河洛人数；出售时机：继续供币时保留，固定退出路线未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1361",
+      "type": "entry",
+      "key": "武则天",
+      "show_key": true,
+      "value": "提高古币加级量，并在登场时提供精致古币。觉醒需求：普通古币加级额外+1并给1张精致古币，觉醒额外+2并给2张；继续补有实际收益的重复；等级投入：接受河洛成长，独立专养未确认；购买策略：供币组件首张与有效觉醒重复，拍卖出价上限未确认；上阵时机：准备使用古币前在场，打出后处理取得的精致古币；出售时机：供币和古币加成仍需要时保留，终局换下的确切条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1461",
+      "type": "entry",
+      "key": "露娜",
+      "show_key": true,
+      "value": "登场随机触发其他英雄的整备，命中程咬金和婉儿时继续供币。觉醒需求：普通随机触发2名、觉醒4名英雄整备；该路线固定追醒顺序未确认；等级投入：承担登场触发职责，专门投级目标未确认；购买策略：供币组件已齐后继续关注露娜牌量，驭势只有遇到对方实际上场露娜时才复制得到；拍卖出价上限未确认；上阵时机：需要本回合整备资源时打出，所得结果仍随机；后续可留有效牌量到决战；出售时机：本次登场后是否出售或保留，按后续牌量和战力决定，完整循环及转级牌序未确认；获得途径：使用驭势并在战斗开始时遇到实际上场露娜的对手，可复制其露娜进手牌；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1311",
+      "type": "entry",
+      "key": "李白",
+      "show_key": true,
+      "value": "古币额外提供临时等级，补河洛战斗质量。觉醒需求：普通每张古币额外4临时等级，觉醒为8；给李白自身时另有额外加成，追醒先后未确认；等级投入：接受河洛古币和临时成长，专门培养目标未确认；购买策略：有实际古币收益时补首张与有效重复，拍卖出价上限未确认；上阵时机：需要古币临时等级收益与现有战力时加入；出售时机：供币与战力仍需其作用时保留，固定终局替换未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1751",
+      "type": "entry",
+      "key": "钟馗",
+      "show_key": true,
+      "value": "给自身和左右1格英雄附加牺牲，降低击败者的临时等级。觉醒需求：普通降10%、觉醒20%，每场战斗限1次；本路线追醒顺序未确认；等级投入：自然成长，独立投级未确认；购买策略：决战需要牺牲降级时比较首张，拍卖出价上限未确认；上阵时机：决战需要其作用且有位置时比较，左右1格应覆盖实际能触发牺牲的成员；出售时机：固定替换和转级方法未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-hero-1861",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "开团给最近英雄复生，补花木兰的战斗容错。觉醒需求：普通可给复生，觉醒改完美复生；追醒顺序未确认；等级投入：不以本来源确定专养目标；购买策略：决战需要额外复生且有位置时比较首张，拍卖出价上限未确认；上阵时机：核对花木兰为最近目标后加入，不把太乙在场直接等同木兰获益；出售时机：仍需该复生时保留，固定替换未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-phase-h",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-early-h",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-early-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-early",
+      "type": "entry",
+      "key": "前期运营思路",
+      "show_key": true,
+      "value": "观察同路线对手的实际组件与下一场对手，已有可用复制资源时再安排驭势。前期随机复制仍不能替代自己的当轮战力，不因示例较早取得花木兰就照抄固定升本回合。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-middle-h",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-middle-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "补花木兰与程咬金、上官婉儿、武则天，李白按现有古币与战力需求加入；露娜供牌路线需继续补露娜牌量。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-middle",
+      "type": "entry",
+      "key": "中期运营思路",
+      "show_key": true,
+      "value": "先把复制所得和实际商店来牌补成能供币的组件；主体系已齐后，观察对手是否持有露娜或有用的觉醒重复，再比较驭势的使用价值。继续准备本回合古币和复生，不把对手仍未取得的牌计入自己的后续供给。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-late-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-late-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "继续补武则天、露娜等有用资源；需要额外保护时比较太乙，需牺牲降级且有位置时比较钟馗。完整固定终局名单未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-late",
+      "type": "entry",
+      "key": "后期运营思路",
+      "show_key": true,
+      "value": "决战前根据对手实际伤害与控制，安排当轮露娜、古币和触发牌，不把多次复生当作能自动解决控制。太乙要实际保护花木兰；钟馗需占用有效位置。能否留资源到下一轮取决于当轮能否存活，不能用解说的胜负预测代替判断。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-improve-h",
+      "type": "heading",
+      "level": 2,
+      "title": "后期提升思路",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-improve",
+      "type": "entry",
+      "key": "后期提升思路",
+      "show_key": true,
+      "value": "提高有实际古币收益的质量与可用露娜牌量，继续增加当轮古币与木兰战力；面对反复控制，机器头的负面免疫与太乙实际保护目标比单纯增加复生次数更影响输出能否持续。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-equip-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-equip-644116",
+      "type": "entry",
+      "key": "机器头",
+      "show_key": true,
+      "value": "开战固定0.4攻击速度，获得60%伤害加成并免疫负面效果。花木兰需要在对方持续控制下继续攻击时比较，取得该装备不等于已补足古币和复生。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-skill-h",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-skill-93699",
+      "type": "entry",
+      "key": "棋道万象",
+      "show_key": true,
+      "value": "本回合战斗开始时随机复制1名敌方英雄。观察对手可估计可能取得的资源，但不能指定露娜或木兰。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-skill-663601",
+      "type": "entry",
+      "key": "谋而后定",
+      "show_key": true,
+      "value": "第4、8、12回合各获得1张驭势。驭势在战斗开始时把敌方场上所有英雄复制进自己手牌；选择对方有效组件已上场的一战，才可能补到该套河洛所需资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-talent-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-talent-638005",
+      "type": "entry",
+      "key": "镜像迷离",
+      "show_key": true,
+      "value": "开战时己方英雄偷取敌方同名英雄33%等级，每名英雄只因此改变一次；对手也有此天赋时失效。同路线河洛对手具备同名英雄时才有实际收益，不按本局预测写成稳定获胜。 已取得神之一手时，其复制敌方最高等级英雄的临时战场单位，也可形成同名匹配机会；不只限自己原先购买的同名主力。仍受每名英雄只改变一次、对手也有镜像迷离则失效的限制，不按复制数量预记多次叠偷。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-talent-663607",
+      "type": "entry",
+      "key": "神之一手",
+      "show_key": true,
+      "value": "取得神之一手天赋后，战斗开始时复制敌方等级最高英雄，临时加入己方战场。可补当轮战力；它不会因此提供用于永久觉醒自己木兰的手牌。 若同时有镜像迷离，复制体与对方原英雄同名，可进一步形成偷等级的匹配；对手也有镜像迷离时该天赋失效，每名英雄只因此改变一次等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-effect-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-effect-311002",
+      "type": "entry",
+      "key": "古币",
+      "show_key": true,
+      "value": "转瞬，指定河洛英雄等级+2。手牌古币需当回合实际使用，才继续计本回合每5张古币增加木兰复生的进度。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-effect-7073",
+      "type": "entry",
+      "key": "临阵磨枪",
+      "show_key": true,
+      "value": "指定英雄触发整备。需要继续供币时给程咬金或上官婉儿，触发其已具备的整备效果。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-effect-7074",
+      "type": "entry",
+      "key": "唤醒",
+      "show_key": true,
+      "value": "指定英雄触发登场。用在露娜时随机触发整备，用在武则天时补精致古币，按当轮实际缺口选择目标。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-effect-7079",
+      "type": "entry",
+      "key": "集体唤醒",
+      "show_key": true,
+      "value": "触发所有英雄登场。使用前核对武则天与露娜等有效登场者实际在场，所得古币仍需当回合处理。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-effect-7080",
+      "type": "entry",
+      "key": "全军动员",
+      "show_key": true,
+      "value": "触发所有英雄整备。程咬金和上官婉儿在场时继续提供古币，把触发转成本回合的成长与复生。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-operation-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-operation",
+      "type": "entry",
+      "key": "先观察对手再安排复制",
+      "show_key": true,
+      "value": "看下一场实际对手的场上成员，确认驭势是否能补自己缺的木兰、觉醒材料或露娜；只在手里、未上场的对手英雄不在驭势复制范围。复制所得需继续实际打出或合成，才形成自己的成长与战力。 有多张驭势且当前对手的场上资源正是自己所缺时，可在同一场使用以增加复制牌量；对方尚未上场的露娜仍不能预记到手。若下一轮继续等待会失去保血机会，先补当轮战力，不为等对手未来组件继续空耗。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-position-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-position",
+      "type": "entry",
+      "key": "保护与牺牲目标",
+      "show_key": true,
+      "value": "太乙复生按最近目标选择，钟馗牺牲覆盖自身与左右1格。准备决战时分别检查这些实际目标；其他固定格子与角落脱困路线尚未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-h1",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-1",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-h2",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-2",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-h3",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-auction-3",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-link-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关联知识",
+      "space": " ",
+      "separator": "\n\n"
+    },
+    {
+      "id": "a11-l-link",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "[弈星](../players/弈星.json)",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:36"
+    ],
+    "required_factions": [
+      "faction:heluo",
+      "faction:riluohai"
+    ],
+    "core_heroes": [
+      "card:1541"
+    ],
+    "compositions": {
+      "early": [],
+      "middle": [
+        {
+          "hero": "card:1541",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1541"
+          }
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1441"
+          }
+        },
+        {
+          "hero": "card:5131",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-5131"
+          }
+        },
+        {
+          "hero": "card:1361",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1361"
+          }
+        },
+        {
+          "hero": "card:1461",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1461"
+          }
+        },
+        {
+          "hero": "card:1311",
+          "necessity": "optional",
+          "role": {
+            "$text": "a11-l-hero-1311"
+          }
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:1541",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1541"
+          }
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1441"
+          }
+        },
+        {
+          "hero": "card:5131",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-5131"
+          }
+        },
+        {
+          "hero": "card:1361",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1361"
+          }
+        },
+        {
+          "hero": "card:1461",
+          "necessity": "required",
+          "role": {
+            "$text": "a11-l-hero-1461"
+          }
+        },
+        {
+          "hero": "card:1311",
+          "necessity": "optional",
+          "role": {
+            "$text": "a11-l-hero-1311"
+          }
+        },
+        {
+          "hero": "card:1751",
+          "necessity": "optional",
+          "role": {
+            "$text": "a11-l-hero-1751"
+          }
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "role": {
+            "$text": "a11-l-hero-1861"
+          }
+        }
+      ]
+    },
+    "selection": {
+      "adopt": {
+        "$text": "a11-l-adopt"
+      },
+      "avoid": {
+        "$text": "a11-l-avoid"
+      }
+    },
+    "ban_conditions": [],
+    "matchups": []
+  }
+}

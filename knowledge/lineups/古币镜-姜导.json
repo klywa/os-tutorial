@@ -1,0 +1,702 @@
+{
+  "schema_version": 6,
+  "leading": "",
+  "nodes": [
+    {
+      "id": "d7-jing-title",
+      "type": "heading",
+      "level": 1,
+      "title": "古币镜-姜导",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-player",
+      "type": "entry",
+      "key": "适用棋手",
+      "show_key": true,
+      "value": "姜导",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-core",
+      "type": "entry",
+      "key": "核心英雄",
+      "show_key": true,
+      "value": "镜承担主要物理输出，芈月把效果牌转为定向成长，西施缩蓝；程咬金、李元芳或盾山、上官婉儿提供古币或自动用币，保护成员按后期位置补入。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-faction",
+      "type": "entry",
+      "key": "必须阵营",
+      "show_key": true,
+      "value": "逐鹿、河洛。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-principle-h",
+      "type": "heading",
+      "level": 2,
+      "title": "核心原理",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-principle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "镜靠闪现、分身与集中成长输出，芈月对每张实际使用的效果牌给装备最多的逐鹿英雄加级，镜自身每使用两张效果牌再加级；姜导主角的手打计数与封神的永久成长额外加级进一步叠加。程咬金、李元芳、盾山和婉儿提供河洛古币资源，古币作用于河洛目标而间接触发芈月和镜的成长。西施缩短镜的本回合蓝条，让高等级镜更快施法；后期用保护、控制或召唤成员延长输出窗口。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-choice-h",
+      "type": "heading",
+      "level": 2,
+      "title": "采用与转向",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-adopt",
+      "type": "entry",
+      "key": "采用条件",
+      "show_key": true,
+      "value": "逐鹿与河洛可用，镜、芈月、西施及有效古币组件有获取机会，能够保留打出位置时采用；镜装备数不足以成为芈月实际目标时先调整装备分配。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-avoid",
+      "type": "entry",
+      "key": "转向信号",
+      "show_key": true,
+      "value": "首张核心与保血战力不足时先用现有过渡，镜100级是4级培养后再攒资源推进的战力参照，不将固定回合当作无条件升级时间表。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-heroes-h",
+      "type": "heading",
+      "level": 2,
+      "title": "英雄",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-jing",
+      "type": "entry",
+      "key": "镜",
+      "show_key": true,
+      "value": "闪现与分身承担主要物理输出，每使用2张效果牌给自身永久等级。觉醒需求：普通每2张+1，醒后+2；初期一张可工作，芈月优先补醒，不强推镜专醒；等级投入：主角、封神与芈月装备最多目标均指镜；100级分身与治疗提高战力，之后仍可继续成长；购买策略：首拍争取首张，前期先满足核心首张，不为追其重复打断芈月成型，拍卖出价上限未确认；上阵时机：取得后指定主角，封神留给镜，检查镜是装备最多逐鹿英雄；出售时机：主要输出保留，未确认转核路线；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-mi",
+      "type": "entry",
+      "key": "芈月",
+      "show_key": true,
+      "value": "每使用效果牌，给穿装备最多的1名逐鹿英雄永久等级，是镜的重要外部成长。觉醒需求：普通每张+1，醒后+2；优先补醒提高每次效果牌收益；等级投入：自然成长，装备与定向等级集中镜；购买策略：镜与西施先首张后优先补芈月觉醒，具备战力再推进升级，拍卖出价上限未确认；上阵时机：效果牌使用前与镜同时在场，镜装备数为逐鹿中最多；出售时机：仍依赖效果牌成长时保留，终局换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-xishi",
+      "type": "entry",
+      "key": "西施",
+      "show_key": true,
+      "value": "整备供给推演，减少镜本回合法力上限，提高施法与分身速度。觉醒需求：普通推演每张-5累计20，醒后高阶每张-10累计40；追醒次序未确认；等级投入：自然成长，不争镜定向资源；购买策略：首拍与镜、芈月比较首张，后续按缩蓝需要补质量，拍卖出价上限未确认；上阵时机：镜需要缩蓝且要取得整备推演时上场；出售时机：仍需供给推演时保留，终局换出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-1441",
+      "type": "entry",
+      "key": "程咬金",
+      "show_key": true,
+      "value": "整备取得古币并对自己用一张，提供手牌资源与当前前排。觉醒需求：醒后精致古币，专追优先级未确认；等级投入：自然成长，不争镜定向培养；购买策略：前期优先首张，后续重复须有有效供给或战力收益，拍卖出价上限未确认；上阵时机：早期需要古币与前排时上场；出售时机：仍需古币供给时保留，具体退出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-1731",
+      "type": "entry",
+      "key": "李元芳",
+      "show_key": true,
+      "value": "整备对最近河洛英雄使用古币，触发效果牌联动；不能直接指定逐鹿镜。觉醒需求：普通1张，醒后2张，先首张工作；等级投入：自然成长，不争镜定向培养；购买策略：前期优先首张，后续重复须有有效供给或战力收益，拍卖出价上限未确认；上阵时机：早期有则配程咬金，最近目标须是有收益的河洛英雄；出售时机：仍需古币供给时保留；后期需要钟馗保护时可换出；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-5091",
+      "type": "entry",
+      "key": "盾山",
+      "show_key": true,
+      "value": "牺牲取得古币，供下一轮手打效果牌与河洛等级。觉醒需求：醒后精致古币，早期不专追；等级投入：自然成长，不争镜定向培养；购买策略：前期优先首张，后续重复须有有效供给或战力收益，拍卖出价上限未确认；上阵时机：李元芳未到时可用盾山作为早期古币组件；出售时机：仍需古币供给时保留，具体退出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-5131",
+      "type": "entry",
+      "key": "上官婉儿",
+      "show_key": true,
+      "value": "整备随机为不同河洛英雄使用古币，增加效果牌事件。觉醒需求：普通随机3名，醒后6名；本分支不要求先专追；等级投入：自然成长，不争镜定向培养；购买策略：前期优先首张，后续重复须有有效供给或战力收益，拍卖出价上限未确认；上阵时机：到场后提供整备古币，不预定镜每轮直接获得12级；出售时机：仍需古币供给时保留，具体退出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-1861",
+      "type": "entry",
+      "key": "太乙真人",
+      "show_key": true,
+      "value": "开团给最近友军复生，延长镜输出。觉醒需求：普通复生，醒后完美复生；先首张；等级投入：自然成长，专养阈值未确认；购买策略：后期按保护控制需求取首张，拍卖出价上限未确认；上阵时机：前期可先用作临时打出位，后期镜能战斗且需要保护时常驻，最近目标对准镜；出售时机：保护仍有价值时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-1751",
+      "type": "entry",
+      "key": "钟馗",
+      "show_key": true,
+      "value": "给自己及左右1格牺牲，实际击败者临时降级一次。觉醒需求：普通10%，醒后20%；专追次序未确认；等级投入：自然成长，专养阈值未确认；购买策略：后期按保护控制需求取首张，拍卖出价上限未确认；上阵时机：后期李元芳供币可让位保护时替换，按敌方接战安排左右对象；出售时机：仍有牺牲对位价值时保留；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-5251",
+      "type": "entry",
+      "key": "鲁班大师",
+      "show_key": true,
+      "value": "在场召唤机关傀儡并用跳跃控制补场面，作为后期对局工具。觉醒需求：醒后召唤机关傀儡·改；机关傀儡·改的具体临时等级取得规则未确认；等级投入：自然成长，专养阈值未确认；购买策略：后期按保护控制需求取首张，拍卖出价上限未确认；上阵时机：后期需要召唤与控制、并有可用位置时比较，不能为塞入工具堵住仍需使用的打出位；出售时机：具体替换对象与退出条件未确认；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-yixing",
+      "type": "entry",
+      "key": "弈星",
+      "show_key": true,
+      "value": "经验工具，为缺少可靠连胜开局提供低投入升级过渡。觉醒需求：普通可工作，不强求专醒；等级投入：自然成长，不争镜主角资源；购买策略：不能确认开局战力能赢时单挂弈星，拍卖出价上限未确认；上阵时机：需要经验过渡时在场；出售时机：镜和组件需要人口时退出，先完成仍要利用其加成的升级；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-supply-1271",
+      "type": "entry",
+      "key": "甄姬",
+      "show_key": true,
+      "value": "登场取得另一张登场英雄，增加可用英雄牌和主角打出次数。觉醒需求：醒后从3张中选1，具体追醒优先级未确认；等级投入：自然成长，不争镜定向等级；购买策略：有实际供给或刷新收益时取用，不为纯计数耗尽升级资源，拍卖出价上限未确认；上阵时机：4级起需要登场供牌时打出；出售时机：完成本次用途后可卖以恢复打出位；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-supply-1131",
+      "type": "entry",
+      "key": "庄周",
+      "show_key": true,
+      "value": "登场自身加级并取得招募战术，为镜提供效果牌事件。觉醒需求：醒后改高阶招募，先首张完成一次登场；等级投入：自然成长，不争镜定向等级；购买策略：有实际供给或刷新收益时取用，不为纯计数耗尽升级资源，拍卖出价上限未确认；上阵时机：4级或5级需要供牌时打出；出售时机：完成本次用途后可卖以恢复打出位；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-supply-5241",
+      "type": "entry",
+      "key": "蒙犽",
+      "show_key": true,
+      "value": "登场取得特训战术，为镜、芈月的效果牌成长提供资源。觉醒需求：醒后高阶特训，先首张完成一次登场；等级投入：自然成长，不争镜定向等级；购买策略：有实际供给或刷新收益时取用，不为纯计数耗尽升级资源，拍卖出价上限未确认；上阵时机：4级或5级需要效果牌时打出；出售时机：完成本次用途后可卖以恢复打出位；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-supply-1391",
+      "type": "entry",
+      "key": "老夫子",
+      "show_key": true,
+      "value": "每回合首次合成取得招募战术，需实际合成条件才能供牌。觉醒需求：醒后高阶招募，追醒次序未确认；等级投入：自然成长，不争镜定向等级；购买策略：有实际供给或刷新收益时取用，不为纯计数耗尽升级资源，拍卖出价上限未确认；上阵时机：5级且本轮有合成可兑现时打出；出售时机：完成本次用途后可卖以恢复打出位；老夫子若保留下一轮供牌须继续在场；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-supply-1111",
+      "type": "entry",
+      "key": "孙尚香",
+      "show_key": true,
+      "value": "登场取得免费刷新，并通过实际打出服务主角计数。觉醒需求：普通1次，醒后2次，临时工具不专追；等级投入：自然成长，不争镜定向等级；购买策略：有实际供给或刷新收益时取用，不为纯计数耗尽升级资源，拍卖出价上限未确认；上阵时机：有打出位置且刷新有用时打出；出售时机：完成本次用途后可卖以恢复打出位；",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-stages-h",
+      "type": "heading",
+      "level": 2,
+      "title": "阵容组成与运营节奏",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-early-h",
+      "type": "heading",
+      "level": 3,
+      "title": "前期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-early-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "开局可单弈星过渡；首拍比较镜、芈月、西施，镜和芈月先满足首张。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-early",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "前期运营思路：可确认开局战力能赢时才投入多英雄，否则弈星低投入过渡，首拍后推进棋手3级。镜到后指定主角，封神留给镜，逐步加入芈月、西施与程咬金、李元芳或盾山供给。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-middle-h",
+      "type": "heading",
+      "level": 3,
+      "title": "中期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-middle-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "优先芈月觉醒，镜、西施及早期古币成员先首张；有收益的低费效果牌与供牌工具再比较。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-middle",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "中期运营思路：3级先找齐镜、芈月、西施及古币组件，除镜和芈月外先满足首张，优先补芈月觉醒。推进棋手4级后继续打古币与效果牌，使镜达到100级战力再攒资源推进5级、6级；5级优先庄周、蒙犽、老夫子等有实际供给的工具。保留打出位置，古币选有效河洛目标，镜装备最多的条件单独检查；升级以当前质量与保血为条件。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-late-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期英雄组成与运营",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-late-buy",
+      "type": "entry",
+      "key": "英雄购买清单",
+      "show_key": true,
+      "value": "补太乙真人、钟馗；鲁班大师按召唤与控制需求比较。继续购买确能兑现收益的效果牌，停止无用凑数。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-late",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期运营思路：补入太乙保护镜，李元芳后期可换钟馗；需要继续循环打牌时先保留打出位置，不把七人后期名单一齐提前塞满。人口足够且要结束供币循环时，可保留镜、芈月、西施、程咬金、婉儿、太乙与钟馗；鲁班大师属于有位置并需要召唤控制时另行比较的工具，具体换出谁尚无可靠说明。6级后资源转向镜有效等级与生存，不预支固定每轮成长。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-improve-h",
+      "type": "heading",
+      "level": 3,
+      "title": "后期提升思路",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-improve",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "后期提升思路：镜集中装备与永久等级，芈月每次使用效果牌的加级与镜每两张的自身加级分别结算；封神再对实际永久成长额外+1。补保护与启动装备，让已有高等级兑现输出；局面仍需供牌时保留工具与打出位，终局按对手比较复生、牺牲降级和鲁班大师控制，不把吞下全部候选当作固定满员阵容。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-h",
+      "type": "heading",
+      "level": 2,
+      "title": "拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-first-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第一轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-first",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "优先镜、芈月、西施的首张，避免无用重复挤占启动资源；统一竞价金额未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-second-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第二轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-second",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "暂无已确认的通用策略。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-third-h",
+      "type": "heading",
+      "level": 3,
+      "title": "第三轮拍卖",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-auction-third",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "待确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-equips-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键装备",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-equip-643703",
+      "type": "entry",
+      "key": "名刀·司命",
+      "show_key": true,
+      "value": "首次致命伤后无敌且不可选中1.5秒。镜被爆发击杀前比较，延长其输出窗口。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-equip-643105",
+      "type": "entry",
+      "key": "纯净苍穹",
+      "show_key": true,
+      "value": "每2秒增加10法术攻击并清除自身负面状态。面对持续变形与控制时比较，帮助镜维持输出。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-equip-641002",
+      "type": "entry",
+      "key": "百锻刀",
+      "show_key": true,
+      "value": "物攻+30且无法拆卸，击败英雄永久+5物攻、胜利翻倍。早期能累积击败时可取，后期不为尚未叠层的刀挤掉即时战力装备。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-equip-643103",
+      "type": "entry",
+      "key": "无尽巨剑",
+      "show_key": true,
+      "value": "暴击率+30%、暴击效果+60%，暴击效果不可叠加。给镜补物理爆发；本分支未确认固定获取配方。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c8-jing-lingquan",
+      "type": "entry",
+      "key": "灵泉法杖",
+      "show_key": true,
+      "value": "获得闪现，每次闪现后普攻附带一次300%伤害、眩晕1秒的重击，击败敌方单位可再次触发闪现。镜有持续击败能力、需要转火控制时比较；取得同名天赋可获得该装备，不把武装重构或分解写成必出指定装备。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c8-jing-qinglian",
+      "type": "entry",
+      "key": "青莲剑谱",
+      "show_key": true,
+      "value": "限定近战英雄，暴击率+40%，将穿戴者技能替换为青莲剑歌。来源口播以青莲剑歌说明改换技能的用途；比较给镜时须接受原裂空技能被替换，不同时预支原技能分身与回血。具体获取成功率、技能替换后的伤害与无敌时长未确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-talents-h",
+      "type": "heading",
+      "level": 2,
+      "title": "推荐天赋",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-talents",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "待确认。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c8-jing-shunying",
+      "type": "entry",
+      "key": "瞬影连斩",
+      "show_key": true,
+      "value": "闪现英雄击败敌方单位后，立刻闪现到最近敌人处并无敌0.5秒。镜已有足够伤害能实际击败单位时优先比较，以连续转火与短暂无敌维持输出；未形成击败时不能预支连斩或无限无敌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "c8-jing-jiaozhen",
+      "type": "entry",
+      "key": "战前叫阵",
+      "show_key": true,
+      "value": "敌我双方最高等级英雄比拼等级：己方胜利，该英雄获得1次完美复生；失败则变猪3秒并获30%最大生命值护盾。镜确为己方最高等级、且能胜过对手最高等级时，才把它作为镜的复生方案；不能把等级优势或完美复生写成必然。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-skill-h",
+      "type": "heading",
+      "level": 2,
+      "title": "棋手技能选择",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-skill-94199",
+      "type": "entry",
+      "key": "钦定主角",
+      "show_key": true,
+      "value": "指定镜，每手动打出2张英雄或效果牌给主角+1，每回合基础最多+5。留打出位实现计数，自动使用古币不直接当作手打；满基础计数后是否继续打牌还看芈月、镜与封神实际收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-skill-94110",
+      "type": "entry",
+      "key": "封神一瞬",
+      "show_key": true,
+      "value": "指定镜取得品阶×5等级，之后每次永久等级提升额外+1。给镜确认主角后再使用，不把主角每回合基础上限当作封神与其他成长的总上限。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-skill-664108",
+      "type": "entry",
+      "key": "完美演出",
+      "show_key": true,
+      "value": "封神指定英雄开战获得30%物理和法术吸血、15秒免控，压制除外。升6改善镜输出环境，仍要补足15秒后与压制的风险。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-effects-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键效果牌",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-effect-311002",
+      "type": "entry",
+      "key": "古币",
+      "show_key": true,
+      "value": "转瞬，指定河洛英雄+2级。需要手打时给有效河洛成员，再利用效果牌事件联动芈月与镜；不能直接指定逐鹿镜。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-effect-311003",
+      "type": "entry",
+      "key": "精致古币",
+      "show_key": true,
+      "value": "转瞬，指定河洛英雄+4级。觉醒程咬金、盾山可提供，保留与使用看当轮实际成长，不以名义古币数量预定镜等级。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-effect-7502",
+      "type": "entry",
+      "key": "古币多多",
+      "show_key": true,
+      "value": "取得2张古币。已有芈月、镜与可用河洛目标时比较，可增加后续效果牌资源；先预留操作位置与实际可打出的资源。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-effect-313011",
+      "type": "entry",
+      "key": "推演战术",
+      "show_key": true,
+      "value": "本回合指定逐鹿英雄法力上限-5，累计最多20。西施整备供给，给镜减少蓝条，每轮重新操作。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-effect-313012",
+      "type": "entry",
+      "key": "高阶推演战术",
+      "show_key": true,
+      "value": "本回合指定逐鹿英雄法力上限-10，累计最多40。觉醒西施供给，不将普通西施按高阶收益预支。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-ops-h",
+      "type": "heading",
+      "level": 2,
+      "title": "关键操作",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-target",
+      "type": "entry",
+      "key": "对象与事件分开核对",
+      "show_key": true,
+      "value": "先指定镜为主角并使用封神，检查镜装备数使芈月实际选中镜，再打有收益的效果牌；古币目标为河洛英雄，芈月的等级接收者为装备最多逐鹿，镜的自身效果每2张触发，三者不可混成一次直接给镜的古币加级。手动打出的英雄与效果牌才服务主角打出计数，不为凑计数买下没有其他价值且挤占核心资源的牌。 比较连斩前先核实际击败能力；战前叫阵前检查双方最高等级与镜是否为本方对象。灵泉依赖闪现后的普攻，青莲剑谱则会替换原技能，两者不能仅按显示等级无条件叠满所有原技能收益。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-position-h",
+      "type": "heading",
+      "level": 2,
+      "title": "站位技巧",
+      "separator": "\n\n"
+    },
+    {
+      "id": "d7-jing-position",
+      "type": "entry",
+      "key": "正文",
+      "show_key": false,
+      "value": "太乙真人保护镜时检查最近友军确为镜；李元芳只对最近河洛使用古币，不能用把李元芳放镜旁边代替合法古币目标。镜闪现落点与鲁班大师具体格位未确认。",
+      "separator": "\n\n"
+    }
+  ],
+  "supporting_nodes": [],
+  "semantics": {
+    "players": [
+      "player:41"
+    ],
+    "required_factions": [
+      "faction:zhulu",
+      "faction:heluo"
+    ],
+    "core_heroes": [
+      "card:5311",
+      "card:1211",
+      "card:5231"
+    ],
+    "compositions": {
+      "early": [
+        {
+          "hero": "card:1971",
+          "necessity": "optional",
+          "condition": "缺可靠开局战力时单挂经验过渡"
+        }
+      ],
+      "middle": [
+        {
+          "hero": "card:5311",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "condition": "早期古币供给，或用盾山替代"
+        },
+        {
+          "hero": "card:5091",
+          "necessity": "optional",
+          "condition": "李元芳未到的早期古币替代"
+        },
+        {
+          "hero": "card:5131",
+          "necessity": "optional",
+          "condition": "已取得补整备古币，保留打出位置"
+        }
+      ],
+      "late": [
+        {
+          "hero": "card:5311",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1211",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5231",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:1441",
+          "necessity": "required"
+        },
+        {
+          "hero": "card:5131",
+          "necessity": "optional",
+          "condition": "保留古币循环"
+        },
+        {
+          "hero": "card:1731",
+          "necessity": "optional",
+          "condition": "仍需早期供币，终局可被钟馗替"
+        },
+        {
+          "hero": "card:1861",
+          "necessity": "optional",
+          "condition": "已打完当前牌且需复生保护"
+        },
+        {
+          "hero": "card:1751",
+          "necessity": "optional",
+          "condition": "后期李元芳换出，需牺牲降级"
+        },
+        {
+          "hero": "card:5251",
+          "necessity": "optional",
+          "condition": "需要召唤控制且有可用位置，具体换出对象未确认"
+        }
+      ]
+    },
+    "ban_conditions": [],
+    "matchups": [],
+    "late_variants": [
+      {
+        "id": "d7-jing-seven-end",
+        "name": "古币与保护七人终局",
+        "condition": {
+          "$text": "d7-jing-late"
+        },
+        "members": [
+          {
+            "hero": "card:5311",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1211",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5231",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1441",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:5131",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1861",
+            "necessity": "required"
+          },
+          {
+            "hero": "card:1751",
+            "necessity": "required"
+          }
+        ],
+        "core_heroes": [
+          "card:5311",
+          "card:1211",
+          "card:5231"
+        ],
+        "required_factions": [
+          "faction:zhulu",
+          "faction:heluo"
+        ],
+        "claim_refs": [
+          "d7-jing-late-d7-claim"
+        ],
+        "ban_conditions": [],
+        "ban_combinations": []
+      }
+    ]
+  }
+}
