@@ -1,5 +1,5 @@
 """Install pinned official CPU assets with resumable, checksum-verified downloads."""
-import argparse,hashlib,json,subprocess,zipfile,tempfile,os
+import argparse,hashlib,json,subprocess,zipfile,tempfile,os,sys,shutil
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -16,12 +16,19 @@ def download(url,path,sha):
  if path.is_file() and digest(path)==sha:return
  part=path.with_suffix(path.suffix+'.part')
  if not part.is_file() or digest(part)!=sha:
-  subprocess.run(['curl.exe','--fail','--location','--retry','3','--retry-delay','2','--continue-at','-','--output',str(part),url],check=True,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+  subprocess.run(['curl.exe' if sys.platform=='win32' else 'curl','--fail','--location','--retry','3','--retry-delay','2','--continue-at','-','--output',str(part),url],check=True,creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
  if not part.is_file() or digest(part)!=sha:raise ValueError('下载校验失败，旧文件保持不变，已保留.part供检查或续传：'+path.name)
  os.replace(part,path)
 
 def install(verify_only=False):
  folder=ROOT/'.wxq-runtime/llm';model=folder/'Qwen3-1.7B-Q8_0.gguf';archive=folder/'llama-b11712-win-cpu.zip'
+ if sys.platform != 'win32':
+  executable=shutil.which('llama-server')
+  if not executable:raise RuntimeError('请先安装本机 llama.cpp：brew install llama.cpp')
+  if verify_only:
+   if not model.is_file() or digest(model)!=MODEL_SHA:raise ValueError('缺失或校验失败：'+model.name)
+  else:download(MODEL_URL,model,MODEL_SHA)
+  return {'model':str(model),'sha256':MODEL_SHA,'runtime_executable':executable}
  for url,path,sha in [(MODEL_URL,model,MODEL_SHA),(RUNTIME_URL,archive,RUNTIME_SHA)]:
   if verify_only:
    if not path.is_file() or digest(path)!=sha:raise ValueError('缺失或校验失败：'+path.name)

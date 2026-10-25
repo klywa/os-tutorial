@@ -638,3 +638,7 @@ CUHL stage21 candidate c62752eee726f1f5390f68df6415f5af9d8a317d113592a1816442a6b
 载入优化核验：全文搜索12组与原前端matches对照一致；目录摘要进一步去掉展示不需要的角色/说明，12.08MB全库降至约294KB。独审发现新建编辑/固定搜索刷新/合法JSON错误缓存形状，已修复；实际浏览器新建→保存→固定搜索编辑后自动刷新通过。普通保存0.4407s、最大2.6364s（仅隔离副本）。
 
 2026-10-25载入优化交付：轻量catalog约294KB，options移除全库factions投影；逐笔记可重建摘要/搜索与事务恢复、ETag、IndexedDB最近20篇/50MB、缓存只读/后台更新/旧请求和草稿保护、全文搜索去抖均完成。正式只读浏览器无浏览器缓存474ms、离线缓存119ms；最大笔记隔离1584ms/451ms，普通保存0.4407s/最大2.6364s未退化。独审3项修复有回归，新建→编辑→保存及固定搜索刷新通过；Python516、前端101、构建/quick_validate/wxq validate errors[]。正式102笔记及元数据、索引、来源档案所有基线哈希一致，无知识写入、无Git提交。8765已加载优化，报告raw/note-loading-delivery.json。
+
+2026-10-25：新增根目录 README.md，按用户要求简列环境准备、一键启动命令、默认访问地址、停止方式及可选端口/浏览器参数；已与 frontend/start.ps1 核对。仅文档修改，未启动服务或提交 Git。
+
+2026-10-25：新增根目录 start.ps1/start.zsh 与共享 frontend/launch.py，一键重建本机venv、按摘要安装Python/npm依赖、校验/下载主题模型、构建并运行前端+API+后台任务；旧 frontend/start.ps1 转发新入口。修复主题模型固定Windows路径，Mac使用Homebrew llama-server。README补充跨机资料复制、隐藏.codex、忽略数据、排除venv及Mac/Windows步骤。启动测试5项、主题测试25项及PowerShell语法检查通过（主题HTTP测试放开沙箱回环后通过）；当前无zsh/Mac，未做真实Mac端到端验收，未改正式知识/重启服务/提交Git。

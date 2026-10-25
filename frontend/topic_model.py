@@ -1,5 +1,5 @@
 """CPU-only llama.cpp adapter. No cloud calls or document-supplied instructions."""
-import json,subprocess,time,socket,urllib.request,secrets,hashlib,re
+import json,subprocess,time,socket,urllib.request,secrets,hashlib,re,sys,shutil
 from pathlib import Path
 from topics import validate_result,MODEL,PROMPT_VERSION
 
@@ -31,7 +31,7 @@ class LocalModel:
   if self.process and self.process.poll() is None:return
   folder=Path(__file__).resolve().parents[1]/'.wxq-runtime/llm'
   runtime=folder/'bin-b11712' if (folder/'bin-b11712').is_dir() else folder/'bin'
-  exe=runtime/'llama-server.exe';model=folder/'Qwen3-1.7B-Q8_0.gguf'
+  exe=runtime/'llama-server.exe' if sys.platform=='win32' else Path(shutil.which('llama-server') or '/nonexistent/llama-server');model=folder/'Qwen3-1.7B-Q8_0.gguf'
   if not exe.is_file() or not model.is_file():raise RuntimeError('本地主题模型尚未安装')
   with socket.socket() as sock:sock.bind(('127.0.0.1',0));port=sock.getsockname()[1]
   self.url=f'http://127.0.0.1:{port}'
