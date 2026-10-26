@@ -642,3 +642,17 @@ CUHL stage21 candidate c62752eee726f1f5390f68df6415f5af9d8a317d113592a1816442a6b
 2026-10-25：新增根目录 README.md，按用户要求简列环境准备、一键启动命令、默认访问地址、停止方式及可选端口/浏览器参数；已与 frontend/start.ps1 核对。仅文档修改，未启动服务或提交 Git。
 
 2026-10-25：新增根目录 start.ps1/start.zsh 与共享 frontend/launch.py，一键重建本机venv、按摘要安装Python/npm依赖、校验/下载主题模型、构建并运行前端+API+后台任务；旧 frontend/start.ps1 转发新入口。修复主题模型固定Windows路径，Mac使用Homebrew llama-server。README补充跨机资料复制、隐藏.codex、忽略数据、排除venv及Mac/Windows步骤。启动测试5项、主题测试25项及PowerShell语法检查通过（主题HTTP测试放开沙箱回环后通过）；当前无zsh/Mac，未做真实Mac端到端验收，未改正式知识/重启服务/提交Git。
+
+2026-10-26 批注warning排查：ReviewComments独立error未在成功/cancel清理，onBlur缺少同步保存保护；新增隔离浏览器回归（API全部拦截，不写正式知识），正在红绿验证。
+
+2026-10-26 批注保存warning修复完成：隔离Edge实测原版保存后warning残留（断言1!=0），修复ReviewComments同步saving ref屏蔽保存失焦、成功/取消清error；新增/编辑/取消/失败保留草稿/干净关闭回归全部通过。前端101测试及生产构建通过（首次沙箱SSR临时文件失败后正常环境重跑；构建仅既有大chunk提示）。正式批注API全部mock，无知识写入，无Git提交；刷新页面加载新静态构建。回归raw/comment-save-notice-browser.cjs。
+
+2026-10-26 长笔记交互优化启动：已获完整方案批准，executing-plans内联实施。Ruling: 使用当前工作区叠加，保留已有批注修复及source-registry修改，不提交Git。先生产浏览器只读基线，再正文/卡牌/滚动优化和验收。
+
+长笔记优化基线：1920x1080正式生产页面232条正文、1232卡牌，scroll累计85ms，3次章节task1155ms/单长任务223-232ms，cards累计447ms；报告raw/reading-perf-baseline.json。首轮正文memo/延迟复制、卡牌定向订阅/索引/有界分词缓存、滚动rAF已接入；新增3回归先红后绿（11项实体测试通过），正在全量和构建。
+
+独审无阻塞项；发现滚动后立刻切换在rAF前可能丢最后位置，新增正式只读浏览器回归已红（restore0），修复track同步记录位置，章节检测仍rAF。实体性能计数修正复用Fiber标记后：scroll正文0/卡牌0重绘，chapter正文0，cards正文0/卡牌12次。
+
+长笔记最终验收进展：实际容器挂载绑定滚动监听后，立即滚动切换恢复通过（懒加载图片可引起约124px布局锚定偏移，验收容差200px）；正式全文/native find、宽屏锁定/Escape、窄屏浮层/resize、延迟复制通过。隔离审阅inline diff/章节范围/正文保存/批注计数持久化/历史合并/420px/冲突草稿保留通过，批注晚失焦新增编辑成功及失败回归通过。104前端测试+构建通过。第二长笔记河洛花木兰-嬴律139正文784卡牌亦无长任务，正文重解析0。
+
+2026-10-26 长笔记优化交付：目标正文232条/1232卡牌不变；3次章节主线程1155→106ms（约91%），卡牌脚本201→34ms（约83%），卡牌序列累计CPU447→225ms（约50%，非单次延迟）。宽屏及420px、第二长笔记均无>=50ms长任务，全文重解析0；卡牌操作仅12次组件重绘。实体索引/512条有界分词缓存、正文memo/延迟复制、定向卡牌订阅、rAF章节检测与实际容器绑定完成。独审滚动风险红→绿，104测试/构建及完整浏览器读写回归通过（正式只读，写入仅隔离副本/API mock），生产静态构建已更新，未提交Git。报告raw/reading-interaction-delivery.json。

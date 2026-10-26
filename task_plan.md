@@ -9,3 +9,16 @@
 
 Ruling: 沿用当前有未提交官方同步和source-registry修改的工作区，逐项叠加，不重置或提交。
 Ruling: 后端派生缓存写入失败不丢正式正文；以revision和文件签名判旧并后台重建，读取不采用不匹配投影。
+
+## 2026-10-26 长笔记阅读交互优化（批准方案）
+
+### Phase 1: 生产基线与热点确认
+**Status:** complete
+
+### Phase 2: 正文缓存、卡牌定向订阅和滚动监听优化
+**Status:** complete
+
+### Phase 3: 全量测试、宽窄屏及第二长笔记验收、独审
+**Status:** complete
+
+保留连续全文、知识只读、不提交Git；报告 raw/reading-interaction-delivery.json。
