@@ -1050,4 +1050,8 @@ def terminate_worker(process):
 
 def register_discovered(root, row, cancelled=None):
     # Existing CLI registry identity is p1 for an unqualified BV URL.
-    workspace.register_source(root, {'url': row['url'], 'title': row.get('title', ''), 'notes': ''}, preserve_annotations=True, wait=True, cancelled=cancelled)
+    # Registration only needs this source's identity/title. The full sources()
+    # projection reads every note and its history while holding the writer lock.
+    _, sid = workspace.canonical_url(row['url'])
+    metadata = wxq.read_json(wxq.source_dir(root, sid) / 'metadata.json', {})
+    workspace.register_source(root, {'url': row['url'], 'title': row.get('title', ''), 'notes': ''}, preserve_annotations=True, wait=True, cancelled=cancelled, _metadata=metadata)
