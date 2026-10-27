@@ -22,3 +22,14 @@ Ruling: 后端派生缓存写入失败不丢正式正文；以revision和文件�
 **Status:** complete
 
 保留连续全文、知识只读、不提交Git；报告 raw/reading-interaction-delivery.json。
+
+
+## Follow-up: 5条运营与表达批注修订（2026-10-27）
+
+### Phase 6: Evidence and revision
+- [x] 最新5条批注锚点与正文附件快照
+- [x] 同批保存正文附件与技能规范
+- [x] 校验、浏览器验收与完成批注
+- **Status:** complete
+
+本次交付：raw/reports/changxiaoe-annotation-five/delivery.json；5条批注已完成，无本次待核实项。
