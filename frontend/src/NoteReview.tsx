@@ -8,9 +8,9 @@ import ReviewHistory from './ReviewHistory';
 import './noteReview.css';
 
 export type Annotation={id:string;note_id:string;node_id:string;text:string;status:'open'|'resolved';revision:string;created_at:string;result?:string;result_revision?:string;anchor_state:'current'|'changed'|'missing';target:KnowledgeNode[]};
-type Draft={id:string;base:Note;body:KnowledgeDocument};
+type Draft={surface?:string;id:string;base:Note;body:KnowledgeDocument};
 type Review={readOnly?:boolean;note:Note;draft:Draft|null;dirty:boolean;busy:boolean;error:string;comments:Annotation[];commentNode:string|null;
- startEdit:(id:string)=>void;startComment:(id:string)=>void;openHistory:()=>void;updateNodes:(nodes:KnowledgeNode[],changed:boolean)=>void;
+ startEdit:(id:string,surface?:string)=>void;startComment:(id:string)=>void;openHistory:()=>void;updateNodes:(nodes:KnowledgeNode[],changed:boolean)=>void;
  cancel:()=>void;save:()=>Promise<void>;warn:()=>void;reloadComments:()=>Promise<void>;setExtraDirty:(dirty:boolean)=>void;closeComments:()=>void};
 const Context=createContext<Review|null>(null);
 export const useReview=()=>useContext(Context);
@@ -27,7 +27,7 @@ export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=fals
  function guard(){if(readOnly){setError('请先确认最新版本后编辑');return false;}if(dirty||externalDirty){warn();return false;}setError('');return true;}
  function changeDirty(value:boolean){setExtra(value);if(!value&&!inlineDirty)setError(error=>error==='修改未保存，请保存或取消'?'':error);onDirty(value||inlineDirty);}
  const review:Review={readOnly,note,draft,dirty,busy,error,comments,commentNode,
-  startEdit:id=>{if(!guard())return;setCommentNode(null);pendingNodes.current=scopeNodes(note.document!,id);dirtyRef.current=false;setInlineDirty(false);setDraft({id,base:note,body:note.document!});},
+  startEdit:(id,surface)=>{if(!guard())return;setCommentNode(null);pendingNodes.current=scopeNodes(note.document!,id);dirtyRef.current=false;setInlineDirty(false);setDraft({id,surface,base:note,body:note.document!});},
   startComment:id=>{if(!guard())return;setDraft(null);setCommentNode(id);},
   openHistory:()=>{if(!guard())return;setDraft(null);setCommentNode(null);setHistory(true);},
   updateNodes:(nodes,changed)=>{if(!draft)return;pendingNodes.current=nodes;if(changed!==dirtyRef.current){dirtyRef.current=changed;setInlineDirty(changed);onDirty(changed||extraDirty);}},
@@ -39,11 +39,11 @@ export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=fals
  {history&&<ReviewHistory readOnly={readOnly} note={note} onDirty={changeDirty} onSaved={saved=>{setHistory(false);setExtra(false);setError('');onDirty(false);onSaved(saved);}} onClose={()=>{setHistory(false);setExtra(false);onDirty(false);}}/>}
  </Context.Provider>;
 }
-export function NodeActions({node}:{node:KnowledgeNode}){
+export function NodeActions({node,surface}:{node:KnowledgeNode;surface?:string}){
  const review=useReview();if(!review)return null;
  const title=node.type==='heading'?node.title:node.show_key?node.key:'正文';
  const count=review.comments.filter(c=>c.node_id===node.id&&c.status==='open').length;
- return <span className="node-review-actions"><button type="button" disabled={review.busy} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id)}>编辑</button><button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button></span>;
+ return <span className="node-review-actions"><button type="button" disabled={review.busy} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id,surface)}>编辑</button><button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button></span>;
 }
 export function HistoryButton(){const review=useReview();return review?<><button onClick={review.openHistory}>历史版本</button><button onClick={()=>review.startComment('*')}>全部批注{review.comments.some(c=>c.status==='open')&&`（${review.comments.filter(c=>c.status==='open').length}）`}</button></>:null;}
 export function InlineReviewEditor(){

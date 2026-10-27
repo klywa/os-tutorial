@@ -44,3 +44,9 @@ Phase 5
 ## Errors Encountered
 | Error | Resolution |
 |-------|------------|
+
+## Follow-up: 概览阶段说明交互
+- [x] 正文节点关联与复制/编辑/批注复用
+- [x] 单一局部编辑器及未保存切换保护
+- [x] Python516/前端105/构建与Edge桌面420验收
+- Status: complete；不提交Git；交互报告 raw/reports/overview-actions/result.json。

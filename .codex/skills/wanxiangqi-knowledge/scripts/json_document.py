@@ -186,7 +186,7 @@ def overview_operations(document, note):
         refs = claims.get(node['id'], [])
         linked = [route for route in routes
                   if set(refs) & {ref for phase in route.get('phases', {}).values() for ref in phase}]
-        rows[target].append({'markdown': text, 'claim_refs': refs,
+        rows[target].append({'node_id': node['id'], 'markdown': text, 'claim_refs': refs,
                              'route_ids': [r['id'] for r in linked],
                              'route_names': [r['name'] for r in linked]})
     return rows

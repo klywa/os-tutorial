@@ -16,6 +16,9 @@ class OverviewTests(unittest.TestCase):
         before = doc.markdown(body)
         result = doc.reading(body, note)
         rows = result['overview_operations']
+        self.assertEqual(rows['early'][0]['node_id'], entry['id'])
+        self.assertTrue(all(row['node_id'] in {n['id'] for n in body['nodes']}
+                            for group in rows.values() for row in group))
         self.assertEqual([r['markdown'] for r in rows['early']], ['**开局：** 当前建议', '隐藏段落'])
         self.assertEqual(rows['early'][0]['claim_refs'], ['c1'])
         self.assertEqual(rows['early'][0]['route_ids'], ['r1'])

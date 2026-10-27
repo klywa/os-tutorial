@@ -1,4 +1,4 @@
-export type OverviewOperation={markdown:string;claim_refs:string[];route_ids:string[];route_names:string[]};
+export type OverviewOperation={node_id?:string;markdown:string;claim_refs:string[];route_ids:string[];route_names:string[]};
 export type OverviewOperations=Record<'early'|'middle'|'late'|'improvement',OverviewOperation[]>;
 export type RiskRetry={attempt:number;next_retry_at:string};
 export type Entity = {id:string;name:string;category?:string;aliases?:string[];properties?:{type?:number}};
