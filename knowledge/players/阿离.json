@@ -60,7 +60,7 @@
       "type": "entry",
       "key": "即刻起舞",
       "show_key": true,
-      "value": "从3个枫叶舞强化中选择1项。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；后续选项：落英汲取、枫之洪流、翩跹馈赠。",
+      "value": "从3个枫叶舞强化中选择1项。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；出现阶段：初始阵容；后续选项：落英汲取、枫之洪流、翩跹馈赠。",
       "separator": "\n\n"
     },
     {
@@ -68,62 +68,6 @@
       "type": "heading",
       "level": 3,
       "title": "关联选项",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-c57a84b1d9f8b8171644",
-      "type": "entry",
-      "key": "枫华之刃",
-      "show_key": true,
-      "value": "转移后获得25%伤害加成。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-83c940a2d44835c5ef73",
-      "type": "entry",
-      "key": "有叶新生",
-      "show_key": true,
-      "value": "转移后恢复20%最大生命值。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-818e035fc2f1fa5ad6de",
-      "type": "entry",
-      "key": "枫佑永驻",
-      "show_key": true,
-      "value": "护盾量增加且持续时间变为无限。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-1b49634338be5485f97a",
-      "type": "entry",
-      "key": "拈花一指",
-      "show_key": true,
-      "value": "转移后眩晕附近的敌人2秒。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-2f4061163cb681650046",
-      "type": "entry",
-      "key": "红枫疾舞",
-      "show_key": true,
-      "value": "转移后的4次普通攻击以最大速度进行。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-9865c4b7b322f441805f",
-      "type": "entry",
-      "key": "红叶染锋",
-      "show_key": true,
-      "value": "枫叶舞英雄离场后，其真实等级的50%会保留给下一个枫叶舞英雄，限一次。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-30662d057ca87ebbf403",
-      "type": "entry",
-      "key": "枫灵涌动",
-      "show_key": true,
-      "value": "转移后每秒获得15点法力值，持续4秒。\n\n获得方式：初始获得卡牌。",
       "separator": "\n\n"
     },
     {
@@ -135,6 +79,30 @@
       "separator": "\n\n"
     },
     {
+      "id": "official-c57a84b1d9f8b8171644",
+      "type": "entry",
+      "key": "枫华之刃",
+      "show_key": true,
+      "value": "转移后获得25%伤害加成。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-30662d057ca87ebbf403",
+      "type": "entry",
+      "key": "枫灵涌动",
+      "show_key": true,
+      "value": "转移后每秒获得15点法力值，持续4秒。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-2f4061163cb681650046",
+      "type": "entry",
+      "key": "红枫疾舞",
+      "show_key": true,
+      "value": "转移后的4次普通攻击以最大速度进行。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
       "id": "official-27786b22eaf3f563030e",
       "type": "entry",
       "key": "枫舞扶摇",
@@ -143,11 +111,35 @@
       "separator": "\n\n"
     },
     {
-      "id": "official-59186e4564c3e9cce215",
+      "id": "official-1b49634338be5485f97a",
       "type": "entry",
-      "key": "翩跹馈赠",
+      "key": "拈花一指",
       "show_key": true,
-      "value": "转移后，枫叶舞英雄累积普攻15次时也会获得1次转移次数。\n\n获得方式：初始获得卡牌。",
+      "value": "转移后眩晕附近的敌人2秒。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-818e035fc2f1fa5ad6de",
+      "type": "entry",
+      "key": "枫佑永驻",
+      "show_key": true,
+      "value": "护盾量增加且持续时间变为无限。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-83c940a2d44835c5ef73",
+      "type": "entry",
+      "key": "有叶新生",
+      "show_key": true,
+      "value": "转移后恢复20%最大生命值。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-9865c4b7b322f441805f",
+      "type": "entry",
+      "key": "红叶染锋",
+      "show_key": true,
+      "value": "枫叶舞英雄离场后，其真实等级的50%会保留给下一个枫叶舞英雄，限一次。\n\n获得方式：初始获得卡牌。",
       "separator": "\n\n"
     },
     {
@@ -252,6 +244,14 @@
       "key": "翩跹舞步·蓄势",
       "show_key": true,
       "value": "为枫叶舞挑选1张强化牌。枫叶舞英雄击败敌方英雄时永久等级+1。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-59186e4564c3e9cce215",
+      "type": "entry",
+      "key": "翩跹馈赠",
+      "show_key": true,
+      "value": "转移后，枫叶舞英雄累积普攻15次时也会获得1次转移次数。\n\n获得方式：初始获得卡牌。",
       "separator": "\n\n"
     },
     {

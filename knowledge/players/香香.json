@@ -60,7 +60,7 @@
       "type": "entry",
       "key": "火力全开",
       "show_key": true,
-      "value": "香香获得（己方英雄等级的总和×0.5）%的攻击力提升。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。。",
+      "value": "香香获得（己方英雄等级的总和×0.5）%的攻击力提升。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；出现阶段：初始阵容。",
       "separator": "\n\n"
     },
     {
@@ -71,11 +71,19 @@
       "separator": "\n\n"
     },
     {
-      "id": "official-7e61c58830d9d1192eca",
+      "id": "official-25a69e6a54b732655557",
       "type": "entry",
-      "key": "补给弹匣",
+      "key": "战术·砺刃",
       "show_key": true,
-      "value": "若子弹击败敌方英雄，立即补充10发子弹。\n\n获得方式：初始获得卡牌。",
+      "value": "香香在战斗中每累积造成500点伤害，下回合开始时随机1名英雄等级+3。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
+      "id": "official-64b4bf1cce013a5d5a25",
+      "type": "entry",
+      "key": "贯穿弹头",
+      "show_key": true,
+      "value": "狙击弹伤害不再因穿透而衰减。\n\n获得方式：初始获得卡牌。",
       "separator": "\n\n"
     },
     {
@@ -124,14 +132,6 @@
       "key": "战术·歼灭",
       "show_key": true,
       "value": "若香香在战斗中击败过敌人，下回合开始时所有英雄等级+4。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-25a69e6a54b732655557",
-      "type": "entry",
-      "key": "战术·砺刃",
-      "show_key": true,
-      "value": "香香在战斗中每累积造成500点伤害，下回合开始时随机1名英雄等级+3。\n\n获得方式：初始获得卡牌。",
       "separator": "\n\n"
     },
     {
@@ -231,19 +231,19 @@
       "separator": "\n\n"
     },
     {
+      "id": "official-7e61c58830d9d1192eca",
+      "type": "entry",
+      "key": "补给弹匣",
+      "show_key": true,
+      "value": "若子弹击败敌方英雄，立即补充10发子弹。\n\n获得方式：初始获得卡牌。",
+      "separator": "\n\n"
+    },
+    {
       "id": "official-5a38008aa4c916a21b6b",
       "type": "entry",
       "key": "干扰弹",
       "show_key": true,
       "value": "子弹命中的目标在5秒内沉默且受到的治疗效果降低70%。\n\n获得方式：初始获得卡牌。",
-      "separator": "\n\n"
-    },
-    {
-      "id": "official-64b4bf1cce013a5d5a25",
-      "type": "entry",
-      "key": "贯穿弹头",
-      "show_key": true,
-      "value": "狙击弹伤害不再因穿透而衰减。\n\n获得方式：初始获得卡牌。",
       "separator": "\n\n"
     },
     {
