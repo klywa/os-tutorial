@@ -729,6 +729,7 @@ def register_source(root, payload, sid=None, preserve_annotations=False, wait=Fa
     with store_lock(root, wait=wait):
         path = Path(root) / 'knowledge/source-registry.json'
         rows = wxq.read_json(path, [])
+        original_rows = deepcopy(rows)
         if _metadata is not None:
             if _metadata and canonical_url(_metadata.get('url',''))[0]!=url:raise ValueError('元数据与来源链接不一致')
             imported=_metadata or None
@@ -766,8 +767,12 @@ def register_source(root, payload, sid=None, preserve_annotations=False, wait=Fa
         else:row['title_origin']='manual' if title else 'unset'
         row.update({'url': url,
                     'title': title,
-                    'notes': (row.get('notes') or (imported or {}).get('notes') or payload.get('notes', '')) if preserve_annotations else payload.get('notes', ''),
-                    'updated_at': wxq.now()})
+                    'notes': (row.get('notes') or (imported or {}).get('notes') or payload.get('notes', '')) if preserve_annotations else payload.get('notes', '')})
+        if rows == original_rows:
+            if cancelled and cancelled():
+                raise InterruptedError('保存已取消')
+            return row
+        row['updated_at'] = wxq.now()
         wxq.atomic_json(path, rows, cancelled=cancelled)
         return row
 

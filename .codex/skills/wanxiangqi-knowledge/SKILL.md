@@ -51,6 +51,8 @@ description: 将王者万象棋攻略复用文字稿或按需ASR及关键帧核�
 
 ## 教学、实体与验收
 
+写作、润色与提质前，先读[用玩家会说的话写操作](references/teaching-v4.md#用玩家会说的话写操作)及其中六组用户对照例。逐段检查自然表达、具体动作和必要原因；保留已经清楚的人工措辞，不能只做六句替换或把格式校验当成内容验收。
+
 天赋牌说明品阶，效果牌说明来源及品阶；字段核对和含糊缩写的修订按[教学表达v4](references/teaching-v4.md)执行，不能用购买费用猜品阶或用概括词省略操作。
 新建或提质先读[教学表达v4](references/teaching-v4.md)、[内容标准](references/editorial-standards.md)，按需读[覆盖检查](references/teaching-coverage.md)、[主要变阵](references/major-variants.md)。沿用其教学质量要求，旧字段位置按schema6转换。
 

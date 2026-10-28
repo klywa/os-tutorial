@@ -9,6 +9,42 @@ import workspace
 
 
 class WorkspaceTests(unittest.TestCase):
+    def test_unchanged_source_registration_still_honors_cancellation(self):
+        payload = {'url': 'https://example.com/video', 'title': '人工标题'}
+        original = workspace.register_source(self.root, payload)
+        with self.assertRaises(InterruptedError):
+            workspace.register_source(self.root, payload, cancelled=lambda: True)
+        self.assertEqual(workspace.sources(self.root)[0]['updated_at'], original['updated_at'])
+
+    def test_repeated_source_registration_does_not_write_or_refresh_timestamp(self):
+        from unittest.mock import patch
+        payload = {'url': 'https://www.bilibili.com/video/BV123?p=2', 'title': '人工标题', 'notes': '人工备注'}
+        with patch.object(wxq, 'now', return_value='first'):
+            original = workspace.register_source(self.root, payload)
+        path = self.root / 'knowledge/source-registry.json'
+        before = path.read_bytes()
+        with patch.object(wxq, 'now', return_value='later'), patch.object(wxq, 'atomic_json', wraps=wxq.atomic_json) as write:
+            repeated = workspace.register_source(self.root, {**payload, 'url': payload['url'] + '&utm_source=x'})
+            self.assertEqual(repeated, original)
+            write.assert_not_called()
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_preserved_annotations_skip_write_but_real_edit_is_saved(self):
+        from unittest.mock import patch
+        payload = {'url': 'https://example.com/video', 'title': '人工标题', 'notes': '人工备注'}
+        with patch.object(wxq, 'now', return_value='first'):
+            original = workspace.register_source(self.root, payload)
+        with patch.object(wxq, 'now', return_value='later'), patch.object(wxq, 'atomic_json', wraps=wxq.atomic_json) as write:
+            result = workspace.register_source(self.root, {**payload, 'title': '抓取标题', 'notes': ''}, preserve_annotations=True)
+            self.assertEqual(result, original)
+            write.assert_not_called()
+            edited = workspace.register_source(self.root, {**payload, 'notes': '新的人工备注'}, sid=original['id'])
+            self.assertEqual(edited['title'], '人工标题')
+            self.assertEqual(edited['notes'], '新的人工备注')
+            self.assertEqual(edited['updated_at'], 'later')
+            write.assert_called_once()
+        self.assertEqual(workspace.sources(self.root)[0]['notes'], '新的人工备注')
+
     def test_reviewed_entity_paragraph_names_survive_shared_prepare(self):
         from unittest.mock import patch
         from copy import deepcopy
