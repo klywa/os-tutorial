@@ -5,7 +5,11 @@
   "type": "lineup",
   "player_id": "player:25",
   "path": "knowledge/lineups/日落海倒转-玉环.json",
-  "aliases": [],
+  "aliases": [
+    "日落海 · 司空震",
+    "日落海 · 司空震 · 亚瑟",
+    "日落海 · 司空震 · 姬小满"
+  ],
   "entities": [
     "player:25",
     "card:5371",
@@ -32,1773 +36,6 @@
     "card:5631": "海诺"
   },
   "related": [],
-  "history": [
-    {
-      "at": "2026-10-25T02:46:33.613036+00:00",
-      "origin": "import",
-      "body": {
-        "schema_version": 6,
-        "leading": "",
-        "nodes": [
-          {
-            "id": "batch77-riluohai-reversal-yuhuan-title",
-            "type": "heading",
-            "title": "日落海倒转-玉环",
-            "level": 1,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-53490ad4407de2",
-            "type": "heading",
-            "title": "核心原理",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-85ee8f60d3bfa4a7cb",
-            "type": "entry",
-            "key": "正文",
-            "show_key": false,
-            "value": "司空震承担主要输出，姜子牙通过不断打出场上没有的阵营英雄及无阵营英雄带动真实等级成长；亚瑟把日落海英雄的打出转为阿科米亚核心等级，莱西奥把出售英雄转为核心成长，海诺进一步放大加级。开战时核心等级均分为日落海英雄的临时等级，司空震再继承其他英雄得到的临时等级。玉环以吟揉和惊鸿调补转瞬英雄，姬小满把出售转为刷新，使供牌、出售、刷新能够衔接；真实等级与核心等级都成长后，牌量才能兑现为高等级司空震的输出。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-fbf71fe91710ea",
-            "type": "heading",
-            "title": "核心机制",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-335b1e8ac39cfc1592",
-            "type": "entry",
-            "key": "真实等级与临时等级",
-            "show_key": true,
-            "value": "核心在开战时把等级平均分给日落海英雄，单名英雄分配不超过核心等级50%。司空震根据自身真实等级和觉醒状态继承其他英雄得到的临时等级；只提高核心而不提高司空震真实等级，会被继承上限限制。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-564945cd0f4e6c",
-            "type": "heading",
-            "title": "英雄",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-e89c4d989e3c023878",
-            "type": "entry",
-            "key": "司空震",
-            "show_key": true,
-            "value": "主力法术输出，承接其他英雄临时等级并以闪电链清场。觉醒需求：要用333真实等级加666临时等级达到999，必须先觉醒；普通卡的继承比例与上限不足；等级投入：持续提高真实等级；333只是在觉醒且实际继承足够时的计算示例，不是无条件停级点；购买策略：先补首张输出再补觉醒，拍卖出价上限未确认；上阵时机：真实与临时等级来源、输出装备能够接上时加入；固定回合未确认；出售时机：作为主要输出保留，固定换出路线未确认；",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-c92931522ed443cbe0",
-            "type": "entry",
-            "key": "姜子牙",
-            "show_key": true,
-            "value": "打出符合阵营条件的英雄后，为自己与其他不同阵营英雄增加永久等级。觉醒需求：觉醒把一次触发等级由1提高为2；主动追醒顺序未确认；等级投入：通过打牌自然成长，专门投入与停级点未确认；购买策略：核心成长组件尽早补首张，拍卖出价上限未确认；上阵时机：连续打出不在场阵营或无阵营英雄前在场；出售时机：仍需真实等级成长时保留，固定换出条件未确认；",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-3c256d47f9ac0e4640",
-            "type": "entry",
-            "key": "姬小满",
-            "show_key": true,
-            "value": "把出售场上英雄转成临时刷新，支持持续找牌。觉醒需求：普通每售4名场上英雄获得1次临时刷新，觉醒后每售2名获得1次；主动追醒优先级未确认；等级投入：未确认；购买策略：关键刷新组件先补首张，重复投入与拍卖出价上限未确认；上阵时机：连续出售临时英雄前先在场；出售时机：仍靠出售刷新时保留，提前卖出会中断后续刷新；",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-291791c341302b7543",
-            "type": "entry",
-            "key": "亚瑟",
-            "show_key": true,
-            "value": "把日落海英雄的打出转为核心成长。觉醒需求：普通每次核心+3，觉醒后+6；主动追醒优先级未确认；等级投入：未确认；购买策略：需要日落海打牌成长时补首张，拍卖出价上限未确认；上阵时机：准备大量打出日落海英雄前在场；出售时机：仍需此成长渠道时保留，固定换出条件未确认；",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-a9b6a743bb59de4902",
-            "type": "entry",
-            "key": "莱西奥",
-            "show_key": true,
-            "value": "把出售场上英雄转为核心等级，与姬小满刷新一起兑现。觉醒需求：普通每售2名场上英雄核心+1，觉醒后每售1名核心+1；主动追醒优先级未确认；等级投入：未确认；购买策略：补首张成长组件，拍卖出价上限未确认；上阵时机：连续出售临时英雄前在场；出售时机：仍需出售带来的核心成长时保留，固定换出条件未确认；",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-1291373f225172bffd",
-            "type": "entry",
-            "key": "海诺",
-            "show_key": true,
-            "value": "在核心等级提高时额外加级，放大亚瑟、莱西奥的成长。觉醒需求：普通每次核心加级额外+1，觉醒后额外+2；能改善成长效率，统一追醒顺序未确认；等级投入：未确认；购买策略：需要放大核心成长时补首张，拍卖出价上限未确认；上阵时机：连续打牌、出售提高核心前在场；出售时机：仍需放大核心成长时保留，固定换出方案未确认；",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-552ea0da9a6725",
-            "type": "heading",
-            "title": "阵容组成与运营节奏",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-5c70871ebe9cf0",
-            "type": "heading",
-            "title": "前期英雄组成与运营",
-            "level": 3,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-eac96c484af56158e7",
-            "type": "entry",
-            "key": "牛魔、狂铁、弈星（过渡）",
-            "show_key": true,
-            "value": "本教学前两回合用于取得扫拂；弈星重复牌再用于轮指，后续不据此持续专门追这些过渡牌。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-3d02b271f7f3775151",
-            "type": "entry",
-            "key": "前期运营思路",
-            "show_key": true,
-            "value": "前两回合可按本教学示例，用牛魔、狂铁、弈星取得扫拂，再打3张普通弈星取得轮指；后续先保留轮指给吟揉，需要保血的强牌可先上，但要检查三张条件。升本与买牌按当前血量、资源决定，不把示例固定成以后每回合的顺序。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-a0ef625667f061",
-            "type": "heading",
-            "title": "中期英雄组成与运营",
-            "level": 3,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-fdc68646eb21b2369c",
-            "type": "entry",
-            "key": "姬小满（核心）",
-            "show_key": true,
-            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-3572c2210dc41e099d",
-            "type": "entry",
-            "key": "姜子牙（核心）",
-            "show_key": true,
-            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-0775c69b3761d2ff16",
-            "type": "entry",
-            "key": "司空震（核心）",
-            "show_key": true,
-            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-25ae65c98aa7ef95b3",
-            "type": "entry",
-            "key": "中期运营思路",
-            "show_key": true,
-            "value": "先补姬小满的刷新与姜子牙的真实等级成长，再让司空震接上输出；亚瑟、莱西奥、海诺逐步补核心成长。选择商店英雄时兼顾供牌效果和三张指法组合，临时工具用完再卖，固定成长组件保留。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-63f084576c2bf0",
-            "type": "heading",
-            "title": "后期英雄组成与运营",
-            "level": 3,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-96ea68e3cb2846dbcb",
-            "type": "entry",
-            "key": "姬小满（核心）",
-            "show_key": true,
-            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-9f2219fe962e20dd1e",
-            "type": "entry",
-            "key": "姜子牙（核心）",
-            "show_key": true,
-            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-8bf885cd3a3dbb45b9",
-            "type": "entry",
-            "key": "司空震（核心）",
-            "show_key": true,
-            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-da245b2191f93ce339",
-            "type": "entry",
-            "key": "后期运营思路",
-            "show_key": true,
-            "value": "持续用吟揉、惊鸿调补英雄，配合买入、打出、出售与临时刷新，提高司空震真实等级和核心等级。常规惊鸿调额度用完后比较6级余音绕梁的演奏机会，同时补司空震觉醒与金色圣剑；本轮需要战力时先兑现已有资源。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-9c89cf4af19e98",
-            "type": "heading",
-            "title": "后期提升思路",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-74ff7cc848f748187b",
-            "type": "entry",
-            "key": "后期提升思路",
-            "show_key": true,
-            "value": "先补司空震觉醒与真实等级，再提高核心等级，扩大日落海英雄实际得到的临时等级。补金色圣剑兑现法术攻击和普攻输出；未知的终局替换成员、转级顺序不固定套用。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-c8ba6a7be0ef36",
-            "type": "heading",
-            "title": "关键装备",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-8eebaca055e3bde219",
-            "type": "entry",
-            "key": "金色圣剑",
-            "show_key": true,
-            "value": "获得30%加15%法术攻击力所对应的攻击速度，每次普攻附带20加30%法术攻击力的法术伤害。司空震靠普攻和闪电链输出，等级高却打得慢时，先检查这件装备是否到位。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-84ce8f3ce44e98b544",
-            "type": "entry",
-            "key": "供牌英雄的处理",
-            "show_key": true,
-            "value": "庄周登场能给逐鹿招募资源，甄姬登场能给其他登场英雄牌，老夫子每回合首次合成能给招募战术。买到这些资源牌后，仍要检查当前组三张的同名、品阶与阵营，再打出处理收益；不是只看到供牌英雄就不看指法连续丢出。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-ca2734a1aacfd2",
-            "type": "heading",
-            "title": "棋手技能选择",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-fcffcb2364550b623a",
-            "type": "entry",
-            "key": "霓裳曲",
-            "show_key": true,
-            "value": "每打出3张非觉醒英雄牌，按这一组3张牌的类型结算指法。先检查是否三张同名，再检查是否同品阶，最后看同阵营；觉醒牌不按这组三张非觉醒的条件计算。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-180e84a2aa60d3eaf9",
-            "type": "entry",
-            "key": "轮指",
-            "show_key": true,
-            "value": "一组3张相同非觉醒英雄牌触发轮指，使下个有效指法触发2次。例如3张普通弈星，虽然也同品阶，仍按轮指处理。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-ee903b073264d645c5",
-            "type": "entry",
-            "key": "扫拂",
-            "show_key": true,
-            "value": "一组3张同品阶、但不是3张相同英雄的非觉醒牌触发扫拂，使场上等级最低的2名英雄获得等于棋手等级的等级。三张同阵营又同品阶时先结算扫拂，不按吟揉补牌。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-b8ef3d5fbb6cf48781",
-            "type": "entry",
-            "key": "吟揉",
-            "show_key": true,
-            "value": "一组3张同阵营、又没有落入同名或同品阶条件的非觉醒英雄牌触发吟揉，获得1张随机转瞬英雄牌。转瞬牌要在本回合用掉，继续补牌时重新检查下一组三张条件。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-ab10754f0a882968de",
-            "type": "entry",
-            "key": "绞弦",
-            "show_key": true,
-            "value": "不满足轮指、扫拂、吟揉条件的混牌组合可以绞弦，场上随机英雄等级+1。绞弦不消耗待用的轮指双触发，也不录入惊鸿调；清理难凑有效指法的牌时可用它保留轮指。无阵营不作吟揉的同阵营条件，但仍要检查同名与品阶：三张弈星会轮指，三张同品阶无阵营仍可能扫拂。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-c363e76d73fbbedd28",
-            "type": "entry",
-            "key": "自成曲调",
-            "show_key": true,
-            "value": "累计6次有效指法取得1张惊鸿调，常规获取上限为2张。绞弦不计入这份有效指法记录，清手牌不会帮助补足6次。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-c380c5e52e7271558b",
-            "type": "entry",
-            "key": "惊鸿调",
-            "show_key": true,
-            "value": "使用记录的前6次指法演奏并触发对应效果。要以补牌为主，就尽量让后续有效记录为吟揉，操作前核对实际记录而非只数打了多少张牌。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-8acb625f1988544f85",
-            "type": "entry",
-            "key": "余音绕梁",
-            "show_key": true,
-            "value": "棋手6级专属天赋获得3次惊鸿调演奏次数；这是演奏次数，不等于额外取得3张秘技牌。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-e5ef6adb0f056a",
-            "type": "heading",
-            "title": "关键操作",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-95f2fd7622df30591d",
-            "type": "entry",
-            "key": "1．先辨认下一组三张",
-            "show_key": true,
-            "value": "每组三张非觉醒牌开始前，先检查同名，再检查品阶与阵营。已经打两张普通庄周时，第三张仍是庄周会轮指；改打同为4品阶的蒙犽会扫拂；改打3品阶逐鹿英雄老夫子，才按吟揉补牌。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-5b60aa7f533d7ad584",
-            "type": "entry",
-            "key": "2．轮指留给吟揉",
-            "show_key": true,
-            "value": "先用3张普通弈星取得轮指，再准备一组同阵营、非同品阶、非3张相同英雄的牌触发吟揉。轮指使这次吟揉触发2次，补两张随机转瞬英雄；中间不要误打扫拂，把双触发提前用于加级。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-0c351cecd56aacb44a",
-            "type": "entry",
-            "key": "3．用绞弦清手牌",
-            "show_key": true,
-            "value": "已有轮指、暂时凑不出吟揉时，用不满足前三类条件的混牌清手。例：普通牛魔、庄周、孙尚香，不同名、不同阵营，品阶为1、4、1，不构成三张同品阶；这一组用于绞弦，保留轮指。无阵营牌也须检查同名与品阶，不能无视当前组三张的进度随意插入。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-a5f01a98b655249c30",
-            "type": "entry",
-            "key": "4．打出后再出售临时工具",
-            "show_key": true,
-            "value": "姜子牙、姬小满就位后，先处理能供牌或符合姜子牙条件的英雄；打出取得登场收益，临时工具再出售，以推进临时刷新与莱西奥的核心成长。日落海英雄要在亚瑟在场时打出；固定成长组件仍需保留，不能全部当作临时工具清空。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-5ab66f1cd21415d1b9",
-            "type": "entry",
-            "key": "5．有效指法录好后再演奏",
-            "show_key": true,
-            "value": "惊鸿调重放的是有效指法记录；要以补牌为主，就尽量让后续有效记录为吟揉，绞弦不会帮忙补足6次。常规2张获取额度与棋手6级增加的3次演奏分开核对，不把演奏次数当作额外牌数。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-10a0957adb5421d3a6",
-            "type": "entry",
-            "key": "6．核对333加666的条件",
-            "show_key": true,
-            "value": "先确认司空震已觉醒、真实等级为333，再看本场其他英雄获得临时等级后，他实际继承的总量是否能达到666。觉醒卡继承全部效果，但上限是自身真实等级2倍，因此同时满足条件才有333+666=999。核心等级还要先按日落海人数均分，单名最多分到50%；不能只看到一个666级核心或一名666级队友就认为必到999。",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-h-daffef843d1688",
-            "type": "heading",
-            "title": "关联知识",
-            "level": 2,
-            "space": " ",
-            "separator": "\n\n"
-          },
-          {
-            "id": "yu-11cce1314a4fb0a726",
-            "type": "entry",
-            "key": "玉环",
-            "show_key": true,
-            "value": "[玉环](../players/玉环.json)",
-            "separator": "\n\n"
-          }
-        ],
-        "supporting_nodes": [],
-        "semantics": {
-          "players": [
-            "player:25"
-          ],
-          "core_heroes": [
-            "card:5371",
-            "card:1481",
-            "card:5641"
-          ],
-          "required_factions": [
-            "faction:riluohai",
-            "faction:heluo"
-          ],
-          "compositions": {
-            "early": [],
-            "middle": [
-              {
-                "hero": "card:5371",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:1481",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:5641",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:1661",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:5451",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:5631",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              }
-            ],
-            "late": [
-              {
-                "hero": "card:5371",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:1481",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:5641",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:1661",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:5451",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              },
-              {
-                "hero": "card:5631",
-                "necessity": "required",
-                "role": "按英雄段落的有据职责与缺项执行",
-                "replaces": "",
-                "replacement_note": ""
-              }
-            ]
-          },
-          "ban_conditions": [],
-          "matchups": [],
-          "operation_routes": []
-        }
-      },
-      "claim_annotations": [
-        {
-          "id": "yu-85ee8f60d3bfa4a7cb-claim",
-          "text_ref": "yu-85ee8f60d3bfa4a7cb",
-          "kind": "conditional_strategy",
-          "section": "核心原理",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 78.81
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 112.88,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1217.58,
-              "end": 1245.16
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 60,
-              "paragraph_end": 60
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 72,
-              "paragraph_end": 72
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 197,
-              "paragraph_end": 197
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 199,
-              "paragraph_end": 199
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 201,
-              "paragraph_end": 201
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 195,
-              "paragraph_end": 195
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 196,
-              "paragraph_end": 196
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-335b1e8ac39cfc1592-claim",
-          "text_ref": "yu-335b1e8ac39cfc1592",
-          "kind": "conditional_strategy",
-          "section": "核心机制",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 72,
-              "paragraph_end": 72
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 195,
-              "paragraph_end": 195
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 196,
-              "paragraph_end": 196
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 53.81,
-              "end": 78.81
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-fcffcb2364550b623a-claim",
-          "text_ref": "yu-fcffcb2364550b623a",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 770,
-              "paragraph_end": 770
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 767,
-              "paragraph_end": 767
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 769,
-              "paragraph_end": 769
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 768,
-              "paragraph_end": 768
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 142.19,
-              "end": 165.29
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-180e84a2aa60d3eaf9-claim",
-          "text_ref": "yu-180e84a2aa60d3eaf9",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": false,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 767,
-              "paragraph_end": 767
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 142.19,
-              "end": 195.65
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-ee903b073264d645c5-claim",
-          "text_ref": "yu-ee903b073264d645c5",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 769,
-              "paragraph_end": 769
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 142.19,
-              "end": 165.29
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 843.57,
-              "end": 886.01
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-b8ef3d5fbb6cf48781-claim",
-          "text_ref": "yu-b8ef3d5fbb6cf48781",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 768,
-              "paragraph_end": 768
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 142.19,
-              "end": 195.65
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-ab10754f0a882968de-claim",
-          "text_ref": "yu-ab10754f0a882968de",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 765,
-              "paragraph_end": 765
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 767,
-              "paragraph_end": 767
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 769,
-              "paragraph_end": 769
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 199.34,
-              "end": 224.26
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 266.51,
-              "end": 295.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 179.29,
-              "end": 284.95
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-c363e76d73fbbedd28-claim",
-          "text_ref": "yu-c363e76d73fbbedd28",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 541,
-              "paragraph_end": 541
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 266.51,
-              "end": 295.81
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-c380c5e52e7271558b-claim",
-          "text_ref": "yu-c380c5e52e7271558b",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 766,
-              "paragraph_end": 766
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 257.78,
-              "end": 266.76
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-8acb625f1988544f85-claim",
-          "text_ref": "yu-8acb625f1988544f85",
-          "kind": "conditional_strategy",
-          "section": "棋手技能选择",
-          "condition": "",
-          "version": null,
-          "inference": false,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 936,
-              "paragraph_end": 936
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 542,
-              "paragraph_end": 542
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-e89c4d989e3c023878-claim",
-          "text_ref": "yu-e89c4d989e3c023878",
-          "kind": "conditional_strategy",
-          "section": "英雄",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 195,
-              "paragraph_end": 195
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 196,
-              "paragraph_end": 196
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 53.81,
-              "end": 78.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
-          ]
-        },
-        {
-          "id": "yu-c92931522ed443cbe0-claim",
-          "text_ref": "yu-c92931522ed443cbe0",
-          "kind": "conditional_strategy",
-          "section": "英雄",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 60,
-              "paragraph_end": 60
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 61,
-              "paragraph_end": 61
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 54.19
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 624.51,
-              "end": 651.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
-          ]
-        },
-        {
-          "id": "yu-3c256d47f9ac0e4640-claim",
-          "text_ref": "yu-3c256d47f9ac0e4640",
-          "kind": "conditional_strategy",
-          "section": "英雄",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 201,
-              "paragraph_end": 201
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 202,
-              "paragraph_end": 202
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 112.88,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 553.18,
-              "end": 590.32
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
-          ]
-        },
-        {
-          "id": "yu-291791c341302b7543-claim",
-          "text_ref": "yu-291791c341302b7543",
-          "kind": "conditional_strategy",
-          "section": "英雄",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 72,
-              "paragraph_end": 72
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 73,
-              "paragraph_end": 73
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 170.03,
-              "end": 195.65
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
-          ]
-        },
-        {
-          "id": "yu-a9b6a743bb59de4902-claim",
-          "text_ref": "yu-a9b6a743bb59de4902",
-          "kind": "conditional_strategy",
-          "section": "英雄",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 197,
-              "paragraph_end": 197
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 198,
-              "paragraph_end": 198
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 54.19
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
-          ]
-        },
-        {
-          "id": "yu-1291373f225172bffd-claim",
-          "text_ref": "yu-1291373f225172bffd",
-          "kind": "conditional_strategy",
-          "section": "英雄",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 199,
-              "paragraph_end": 199
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 200,
-              "paragraph_end": 200
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1371.38,
-              "end": 1384.78
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
-          ]
-        },
-        {
-          "id": "yu-95f2fd7622df30591d-claim",
-          "text_ref": "yu-95f2fd7622df30591d",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 142.19,
-              "end": 165.29
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 17,
-              "paragraph_end": 17
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 187,
-              "paragraph_end": 187
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 50,
-              "paragraph_end": 50
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "同批棋手操作同步，证据不来自笔记本身。"
-          ]
-        },
-        {
-          "id": "yu-5b60aa7f533d7ad584-claim",
-          "text_ref": "yu-5b60aa7f533d7ad584",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 142.19,
-              "end": 195.65
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 179.29,
-              "end": 207.15
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 767,
-              "paragraph_end": 767
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 768,
-              "paragraph_end": 768
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "同批棋手操作同步，证据不来自笔记本身。"
-          ]
-        },
-        {
-          "id": "yu-0c351cecd56aacb44a-claim",
-          "text_ref": "yu-0c351cecd56aacb44a",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 199.34,
-              "end": 224.26
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 266.51,
-              "end": 295.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 240.04,
-              "end": 284.95
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 76,
-              "paragraph_end": 76
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 17,
-              "paragraph_end": 17
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 13,
-              "paragraph_end": 13
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "同批棋手操作同步，证据不来自笔记本身。"
-          ]
-        },
-        {
-          "id": "yu-a5f01a98b655249c30-claim",
-          "text_ref": "yu-a5f01a98b655249c30",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 54.19
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 112.88,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1129.18,
-              "end": 1180.14
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 201,
-              "paragraph_end": 201
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 197,
-              "paragraph_end": 197
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 72,
-              "paragraph_end": 72
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "同批棋手操作同步，证据不来自笔记本身。"
-          ]
-        },
-        {
-          "id": "yu-5ab66f1cd21415d1b9-claim",
-          "text_ref": "yu-5ab66f1cd21415d1b9",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 541,
-              "paragraph_end": 541
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 766,
-              "paragraph_end": 766
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 542,
-              "paragraph_end": 542
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 257.78,
-              "end": 295.81
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": [
-            "同批棋手操作同步，证据不来自笔记本身。"
-          ]
-        },
-        {
-          "id": "yu-10a0957adb5421d3a6-claim",
-          "text_ref": "yu-10a0957adb5421d3a6",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 196,
-              "paragraph_end": 196
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 72,
-              "paragraph_end": 72
-            },
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 53.81,
-              "end": 78.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1533.94,
-              "end": 1561.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-eac96c484af56158e7-claim",
-          "text_ref": "yu-eac96c484af56158e7",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 170.03,
-              "end": 195.65
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-3d02b271f7f3775151-claim",
-          "text_ref": "yu-3d02b271f7f3775151",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 170.03,
-              "end": 224.26
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-fdc68646eb21b2369c-claim",
-          "text_ref": "yu-fdc68646eb21b2369c",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 624.51,
-              "end": 651.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-3572c2210dc41e099d-claim",
-          "text_ref": "yu-3572c2210dc41e099d",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 624.51,
-              "end": 651.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-0775c69b3761d2ff16-claim",
-          "text_ref": "yu-0775c69b3761d2ff16",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 624.51,
-              "end": 651.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-25ae65c98aa7ef95b3-claim",
-          "text_ref": "yu-25ae65c98aa7ef95b3",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 24.37,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 624.51,
-              "end": 651.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-96ea68e3cb2846dbcb-claim",
-          "text_ref": "yu-96ea68e3cb2846dbcb",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 257.78,
-              "end": 295.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 541,
-              "paragraph_end": 541
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 542,
-              "paragraph_end": 542
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-9f2219fe962e20dd1e-claim",
-          "text_ref": "yu-9f2219fe962e20dd1e",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 257.78,
-              "end": 295.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 541,
-              "paragraph_end": 541
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 542,
-              "paragraph_end": 542
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-8bf885cd3a3dbb45b9-claim",
-          "text_ref": "yu-8bf885cd3a3dbb45b9",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 257.78,
-              "end": 295.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 541,
-              "paragraph_end": 541
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 542,
-              "paragraph_end": 542
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-da245b2191f93ce339-claim",
-          "text_ref": "yu-da245b2191f93ce339",
-          "kind": "conditional_strategy",
-          "section": "阵容组成与运营节奏",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 257.78,
-              "end": 295.81
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 541,
-              "paragraph_end": 541
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 542,
-              "paragraph_end": 542
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-74ff7cc848f748187b-claim",
-          "text_ref": "yu-74ff7cc848f748187b",
-          "kind": "conditional_strategy",
-          "section": "后期提升思路",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 196,
-              "paragraph_end": 196
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 72,
-              "paragraph_end": 72
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 449,
-              "paragraph_end": 449
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1533.94,
-              "end": 1561.54
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-8eebaca055e3bde219-claim",
-          "text_ref": "yu-8eebaca055e3bde219",
-          "kind": "conditional_strategy",
-          "section": "关键装备",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 449,
-              "paragraph_end": 449
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-84ce8f3ce44e98b544-claim",
-          "text_ref": "yu-84ce8f3ce44e98b544",
-          "kind": "conditional_strategy",
-          "section": "关键操作",
-          "condition": "",
-          "version": null,
-          "inference": true,
-          "evidence": [
-            {
-              "type": "video",
-              "source": "BV1ZcYC6TEer:p1",
-              "start": 112.88,
-              "end": 138.98
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1031.62,
-              "end": 1068.8
-            },
-            {
-              "type": "video",
-              "source": "BV1UZJe6cEc5:p1",
-              "start": 1129.18,
-              "end": 1180.14
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 17,
-              "paragraph_end": 17
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 35,
-              "paragraph_end": 35
-            },
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 50,
-              "paragraph_end": 50
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        },
-        {
-          "id": "yu-11cce1314a4fb0a726-claim",
-          "text_ref": "yu-11cce1314a4fb0a726",
-          "kind": "conditional_strategy",
-          "section": "关联知识",
-          "condition": "",
-          "version": null,
-          "inference": false,
-          "evidence": [
-            {
-              "type": "document",
-              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-              "paragraph_start": 936,
-              "paragraph_end": 936
-            }
-          ],
-          "origin": "batch77_yuhuan_fulltext_review",
-          "basis": []
-        }
-      ]
-    }
-  ],
   "conflicts": [],
   "manual_sections": [],
   "claim_annotations": [
@@ -4537,6 +2774,1773 @@
       ]
     }
   ],
-  "revision": "93d7cad2374094875d1f",
-  "retired_claim_annotations": []
+  "revision": "6f6c1dae9384416a11ff",
+  "retired_claim_annotations": [],
+  "history": [
+    {
+      "at": "2026-10-25T02:46:33.613036+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "id": "batch77-riluohai-reversal-yuhuan-title",
+            "type": "heading",
+            "title": "日落海倒转-玉环",
+            "level": 1,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-53490ad4407de2",
+            "type": "heading",
+            "title": "核心原理",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-85ee8f60d3bfa4a7cb",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "司空震承担主要输出，姜子牙通过不断打出场上没有的阵营英雄及无阵营英雄带动真实等级成长；亚瑟把日落海英雄的打出转为阿科米亚核心等级，莱西奥把出售英雄转为核心成长，海诺进一步放大加级。开战时核心等级均分为日落海英雄的临时等级，司空震再继承其他英雄得到的临时等级。玉环以吟揉和惊鸿调补转瞬英雄，姬小满把出售转为刷新，使供牌、出售、刷新能够衔接；真实等级与核心等级都成长后，牌量才能兑现为高等级司空震的输出。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-fbf71fe91710ea",
+            "type": "heading",
+            "title": "核心机制",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-335b1e8ac39cfc1592",
+            "type": "entry",
+            "key": "真实等级与临时等级",
+            "show_key": true,
+            "value": "核心在开战时把等级平均分给日落海英雄，单名英雄分配不超过核心等级50%。司空震根据自身真实等级和觉醒状态继承其他英雄得到的临时等级；只提高核心而不提高司空震真实等级，会被继承上限限制。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-564945cd0f4e6c",
+            "type": "heading",
+            "title": "英雄",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-e89c4d989e3c023878",
+            "type": "entry",
+            "key": "司空震",
+            "show_key": true,
+            "value": "主力法术输出，承接其他英雄临时等级并以闪电链清场。觉醒需求：要用333真实等级加666临时等级达到999，必须先觉醒；普通卡的继承比例与上限不足；等级投入：持续提高真实等级；333只是在觉醒且实际继承足够时的计算示例，不是无条件停级点；购买策略：先补首张输出再补觉醒，拍卖出价上限未确认；上阵时机：真实与临时等级来源、输出装备能够接上时加入；固定回合未确认；出售时机：作为主要输出保留，固定换出路线未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-c92931522ed443cbe0",
+            "type": "entry",
+            "key": "姜子牙",
+            "show_key": true,
+            "value": "打出符合阵营条件的英雄后，为自己与其他不同阵营英雄增加永久等级。觉醒需求：觉醒把一次触发等级由1提高为2；主动追醒顺序未确认；等级投入：通过打牌自然成长，专门投入与停级点未确认；购买策略：核心成长组件尽早补首张，拍卖出价上限未确认；上阵时机：连续打出不在场阵营或无阵营英雄前在场；出售时机：仍需真实等级成长时保留，固定换出条件未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-3c256d47f9ac0e4640",
+            "type": "entry",
+            "key": "姬小满",
+            "show_key": true,
+            "value": "把出售场上英雄转成临时刷新，支持持续找牌。觉醒需求：普通每售4名场上英雄获得1次临时刷新，觉醒后每售2名获得1次；主动追醒优先级未确认；等级投入：未确认；购买策略：关键刷新组件先补首张，重复投入与拍卖出价上限未确认；上阵时机：连续出售临时英雄前先在场；出售时机：仍靠出售刷新时保留，提前卖出会中断后续刷新；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-291791c341302b7543",
+            "type": "entry",
+            "key": "亚瑟",
+            "show_key": true,
+            "value": "把日落海英雄的打出转为核心成长。觉醒需求：普通每次核心+3，觉醒后+6；主动追醒优先级未确认；等级投入：未确认；购买策略：需要日落海打牌成长时补首张，拍卖出价上限未确认；上阵时机：准备大量打出日落海英雄前在场；出售时机：仍需此成长渠道时保留，固定换出条件未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-a9b6a743bb59de4902",
+            "type": "entry",
+            "key": "莱西奥",
+            "show_key": true,
+            "value": "把出售场上英雄转为核心等级，与姬小满刷新一起兑现。觉醒需求：普通每售2名场上英雄核心+1，觉醒后每售1名核心+1；主动追醒优先级未确认；等级投入：未确认；购买策略：补首张成长组件，拍卖出价上限未确认；上阵时机：连续出售临时英雄前在场；出售时机：仍需出售带来的核心成长时保留，固定换出条件未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-1291373f225172bffd",
+            "type": "entry",
+            "key": "海诺",
+            "show_key": true,
+            "value": "在核心等级提高时额外加级，放大亚瑟、莱西奥的成长。觉醒需求：普通每次核心加级额外+1，觉醒后额外+2；能改善成长效率，统一追醒顺序未确认；等级投入：未确认；购买策略：需要放大核心成长时补首张，拍卖出价上限未确认；上阵时机：连续打牌、出售提高核心前在场；出售时机：仍需放大核心成长时保留，固定换出方案未确认；",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-552ea0da9a6725",
+            "type": "heading",
+            "title": "阵容组成与运营节奏",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-5c70871ebe9cf0",
+            "type": "heading",
+            "title": "前期英雄组成与运营",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-eac96c484af56158e7",
+            "type": "entry",
+            "key": "牛魔、狂铁、弈星（过渡）",
+            "show_key": true,
+            "value": "本教学前两回合用于取得扫拂；弈星重复牌再用于轮指，后续不据此持续专门追这些过渡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-3d02b271f7f3775151",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "前两回合可按本教学示例，用牛魔、狂铁、弈星取得扫拂，再打3张普通弈星取得轮指；后续先保留轮指给吟揉，需要保血的强牌可先上，但要检查三张条件。升本与买牌按当前血量、资源决定，不把示例固定成以后每回合的顺序。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-a0ef625667f061",
+            "type": "heading",
+            "title": "中期英雄组成与运营",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-fdc68646eb21b2369c",
+            "type": "entry",
+            "key": "姬小满（核心）",
+            "show_key": true,
+            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-3572c2210dc41e099d",
+            "type": "entry",
+            "key": "姜子牙（核心）",
+            "show_key": true,
+            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-0775c69b3761d2ff16",
+            "type": "entry",
+            "key": "司空震（核心）",
+            "show_key": true,
+            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-25ae65c98aa7ef95b3",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "先补姬小满的刷新与姜子牙的真实等级成长，再让司空震接上输出；亚瑟、莱西奥、海诺逐步补核心成长。选择商店英雄时兼顾供牌效果和三张指法组合，临时工具用完再卖，固定成长组件保留。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-63f084576c2bf0",
+            "type": "heading",
+            "title": "后期英雄组成与运营",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-96ea68e3cb2846dbcb",
+            "type": "entry",
+            "key": "姬小满（核心）",
+            "show_key": true,
+            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-9f2219fe962e20dd1e",
+            "type": "entry",
+            "key": "姜子牙（核心）",
+            "show_key": true,
+            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-8bf885cd3a3dbb45b9",
+            "type": "entry",
+            "key": "司空震（核心）",
+            "show_key": true,
+            "value": "先补首张；重复与觉醒按英雄字段和当前缺口，拍卖出价上限未确认。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-da245b2191f93ce339",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "持续用吟揉、惊鸿调补英雄，配合买入、打出、出售与临时刷新，提高司空震真实等级和核心等级。常规惊鸿调额度用完后比较6级余音绕梁的演奏机会，同时补司空震觉醒与金色圣剑；本轮需要战力时先兑现已有资源。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-9c89cf4af19e98",
+            "type": "heading",
+            "title": "后期提升思路",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-74ff7cc848f748187b",
+            "type": "entry",
+            "key": "后期提升思路",
+            "show_key": true,
+            "value": "先补司空震觉醒与真实等级，再提高核心等级，扩大日落海英雄实际得到的临时等级。补金色圣剑兑现法术攻击和普攻输出；未知的终局替换成员、转级顺序不固定套用。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-c8ba6a7be0ef36",
+            "type": "heading",
+            "title": "关键装备",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-8eebaca055e3bde219",
+            "type": "entry",
+            "key": "金色圣剑",
+            "show_key": true,
+            "value": "获得30%加15%法术攻击力所对应的攻击速度，每次普攻附带20加30%法术攻击力的法术伤害。司空震靠普攻和闪电链输出，等级高却打得慢时，先检查这件装备是否到位。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-84ce8f3ce44e98b544",
+            "type": "entry",
+            "key": "供牌英雄的处理",
+            "show_key": true,
+            "value": "庄周登场能给逐鹿招募资源，甄姬登场能给其他登场英雄牌，老夫子每回合首次合成能给招募战术。买到这些资源牌后，仍要检查当前组三张的同名、品阶与阵营，再打出处理收益；不是只看到供牌英雄就不看指法连续丢出。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-ca2734a1aacfd2",
+            "type": "heading",
+            "title": "棋手技能选择",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-fcffcb2364550b623a",
+            "type": "entry",
+            "key": "霓裳曲",
+            "show_key": true,
+            "value": "每打出3张非觉醒英雄牌，按这一组3张牌的类型结算指法。先检查是否三张同名，再检查是否同品阶，最后看同阵营；觉醒牌不按这组三张非觉醒的条件计算。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-180e84a2aa60d3eaf9",
+            "type": "entry",
+            "key": "轮指",
+            "show_key": true,
+            "value": "一组3张相同非觉醒英雄牌触发轮指，使下个有效指法触发2次。例如3张普通弈星，虽然也同品阶，仍按轮指处理。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-ee903b073264d645c5",
+            "type": "entry",
+            "key": "扫拂",
+            "show_key": true,
+            "value": "一组3张同品阶、但不是3张相同英雄的非觉醒牌触发扫拂，使场上等级最低的2名英雄获得等于棋手等级的等级。三张同阵营又同品阶时先结算扫拂，不按吟揉补牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-b8ef3d5fbb6cf48781",
+            "type": "entry",
+            "key": "吟揉",
+            "show_key": true,
+            "value": "一组3张同阵营、又没有落入同名或同品阶条件的非觉醒英雄牌触发吟揉，获得1张随机转瞬英雄牌。转瞬牌要在本回合用掉，继续补牌时重新检查下一组三张条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-ab10754f0a882968de",
+            "type": "entry",
+            "key": "绞弦",
+            "show_key": true,
+            "value": "不满足轮指、扫拂、吟揉条件的混牌组合可以绞弦，场上随机英雄等级+1。绞弦不消耗待用的轮指双触发，也不录入惊鸿调；清理难凑有效指法的牌时可用它保留轮指。无阵营不作吟揉的同阵营条件，但仍要检查同名与品阶：三张弈星会轮指，三张同品阶无阵营仍可能扫拂。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-c363e76d73fbbedd28",
+            "type": "entry",
+            "key": "自成曲调",
+            "show_key": true,
+            "value": "累计6次有效指法取得1张惊鸿调，常规获取上限为2张。绞弦不计入这份有效指法记录，清手牌不会帮助补足6次。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-c380c5e52e7271558b",
+            "type": "entry",
+            "key": "惊鸿调",
+            "show_key": true,
+            "value": "使用记录的前6次指法演奏并触发对应效果。要以补牌为主，就尽量让后续有效记录为吟揉，操作前核对实际记录而非只数打了多少张牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-8acb625f1988544f85",
+            "type": "entry",
+            "key": "余音绕梁",
+            "show_key": true,
+            "value": "棋手6级专属天赋获得3次惊鸿调演奏次数；这是演奏次数，不等于额外取得3张秘技牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-e5ef6adb0f056a",
+            "type": "heading",
+            "title": "关键操作",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-95f2fd7622df30591d",
+            "type": "entry",
+            "key": "1．先辨认下一组三张",
+            "show_key": true,
+            "value": "每组三张非觉醒牌开始前，先检查同名，再检查品阶与阵营。已经打两张普通庄周时，第三张仍是庄周会轮指；改打同为4品阶的蒙犽会扫拂；改打3品阶逐鹿英雄老夫子，才按吟揉补牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-5b60aa7f533d7ad584",
+            "type": "entry",
+            "key": "2．轮指留给吟揉",
+            "show_key": true,
+            "value": "先用3张普通弈星取得轮指，再准备一组同阵营、非同品阶、非3张相同英雄的牌触发吟揉。轮指使这次吟揉触发2次，补两张随机转瞬英雄；中间不要误打扫拂，把双触发提前用于加级。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-0c351cecd56aacb44a",
+            "type": "entry",
+            "key": "3．用绞弦清手牌",
+            "show_key": true,
+            "value": "已有轮指、暂时凑不出吟揉时，用不满足前三类条件的混牌清手。例：普通牛魔、庄周、孙尚香，不同名、不同阵营，品阶为1、4、1，不构成三张同品阶；这一组用于绞弦，保留轮指。无阵营牌也须检查同名与品阶，不能无视当前组三张的进度随意插入。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-a5f01a98b655249c30",
+            "type": "entry",
+            "key": "4．打出后再出售临时工具",
+            "show_key": true,
+            "value": "姜子牙、姬小满就位后，先处理能供牌或符合姜子牙条件的英雄；打出取得登场收益，临时工具再出售，以推进临时刷新与莱西奥的核心成长。日落海英雄要在亚瑟在场时打出；固定成长组件仍需保留，不能全部当作临时工具清空。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-5ab66f1cd21415d1b9",
+            "type": "entry",
+            "key": "5．有效指法录好后再演奏",
+            "show_key": true,
+            "value": "惊鸿调重放的是有效指法记录；要以补牌为主，就尽量让后续有效记录为吟揉，绞弦不会帮忙补足6次。常规2张获取额度与棋手6级增加的3次演奏分开核对，不把演奏次数当作额外牌数。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-10a0957adb5421d3a6",
+            "type": "entry",
+            "key": "6．核对333加666的条件",
+            "show_key": true,
+            "value": "先确认司空震已觉醒、真实等级为333，再看本场其他英雄获得临时等级后，他实际继承的总量是否能达到666。觉醒卡继承全部效果，但上限是自身真实等级2倍，因此同时满足条件才有333+666=999。核心等级还要先按日落海人数均分，单名最多分到50%；不能只看到一个666级核心或一名666级队友就认为必到999。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-h-daffef843d1688",
+            "type": "heading",
+            "title": "关联知识",
+            "level": 2,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "yu-11cce1314a4fb0a726",
+            "type": "entry",
+            "key": "玉环",
+            "show_key": true,
+            "value": "[玉环](../players/玉环.json)",
+            "separator": "\n\n"
+          }
+        ],
+        "supporting_nodes": [],
+        "semantics": {
+          "players": [
+            "player:25"
+          ],
+          "core_heroes": [
+            "card:5371",
+            "card:1481",
+            "card:5641"
+          ],
+          "required_factions": [
+            "faction:riluohai",
+            "faction:heluo"
+          ],
+          "compositions": {
+            "early": [],
+            "middle": [
+              {
+                "hero": "card:5371",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1481",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1661",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5451",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5631",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ],
+            "late": [
+              {
+                "hero": "card:5371",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1481",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5641",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:1661",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5451",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              },
+              {
+                "hero": "card:5631",
+                "necessity": "required",
+                "role": "按英雄段落的有据职责与缺项执行",
+                "replaces": "",
+                "replacement_note": ""
+              }
+            ]
+          },
+          "ban_conditions": [],
+          "matchups": [],
+          "operation_routes": []
+        }
+      },
+      "claim_annotations": [
+        {
+          "id": "yu-85ee8f60d3bfa4a7cb-claim",
+          "text_ref": "yu-85ee8f60d3bfa4a7cb",
+          "kind": "conditional_strategy",
+          "section": "核心原理",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 78.81
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 112.88,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1217.58,
+              "end": 1245.16
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 60,
+              "paragraph_end": 60
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 72,
+              "paragraph_end": 72
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 197,
+              "paragraph_end": 197
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 195,
+              "paragraph_end": 195
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 196,
+              "paragraph_end": 196
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-335b1e8ac39cfc1592-claim",
+          "text_ref": "yu-335b1e8ac39cfc1592",
+          "kind": "conditional_strategy",
+          "section": "核心机制",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 72,
+              "paragraph_end": 72
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 195,
+              "paragraph_end": 195
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 196,
+              "paragraph_end": 196
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 53.81,
+              "end": 78.81
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-fcffcb2364550b623a-claim",
+          "text_ref": "yu-fcffcb2364550b623a",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 770,
+              "paragraph_end": 770
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 767,
+              "paragraph_end": 767
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 769,
+              "paragraph_end": 769
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 768,
+              "paragraph_end": 768
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 142.19,
+              "end": 165.29
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-180e84a2aa60d3eaf9-claim",
+          "text_ref": "yu-180e84a2aa60d3eaf9",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 767,
+              "paragraph_end": 767
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 142.19,
+              "end": 195.65
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-ee903b073264d645c5-claim",
+          "text_ref": "yu-ee903b073264d645c5",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 769,
+              "paragraph_end": 769
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 142.19,
+              "end": 165.29
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 843.57,
+              "end": 886.01
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-b8ef3d5fbb6cf48781-claim",
+          "text_ref": "yu-b8ef3d5fbb6cf48781",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 768,
+              "paragraph_end": 768
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 142.19,
+              "end": 195.65
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-ab10754f0a882968de-claim",
+          "text_ref": "yu-ab10754f0a882968de",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 765,
+              "paragraph_end": 765
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 767,
+              "paragraph_end": 767
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 769,
+              "paragraph_end": 769
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 199.34,
+              "end": 224.26
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 266.51,
+              "end": 295.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 179.29,
+              "end": 284.95
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-c363e76d73fbbedd28-claim",
+          "text_ref": "yu-c363e76d73fbbedd28",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 266.51,
+              "end": 295.81
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-c380c5e52e7271558b-claim",
+          "text_ref": "yu-c380c5e52e7271558b",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 766,
+              "paragraph_end": 766
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 257.78,
+              "end": 266.76
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-8acb625f1988544f85-claim",
+          "text_ref": "yu-8acb625f1988544f85",
+          "kind": "conditional_strategy",
+          "section": "棋手技能选择",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 936,
+              "paragraph_end": 936
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 542,
+              "paragraph_end": 542
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-e89c4d989e3c023878-claim",
+          "text_ref": "yu-e89c4d989e3c023878",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 195,
+              "paragraph_end": 195
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 196,
+              "paragraph_end": 196
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 53.81,
+              "end": 78.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
+          ]
+        },
+        {
+          "id": "yu-c92931522ed443cbe0-claim",
+          "text_ref": "yu-c92931522ed443cbe0",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 60,
+              "paragraph_end": 60
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 61,
+              "paragraph_end": 61
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 54.19
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 624.51,
+              "end": 651.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
+          ]
+        },
+        {
+          "id": "yu-3c256d47f9ac0e4640-claim",
+          "text_ref": "yu-3c256d47f9ac0e4640",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 202,
+              "paragraph_end": 202
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 112.88,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 553.18,
+              "end": 590.32
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
+          ]
+        },
+        {
+          "id": "yu-291791c341302b7543-claim",
+          "text_ref": "yu-291791c341302b7543",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 72,
+              "paragraph_end": 72
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 73,
+              "paragraph_end": 73
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 170.03,
+              "end": 195.65
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
+          ]
+        },
+        {
+          "id": "yu-a9b6a743bb59de4902-claim",
+          "text_ref": "yu-a9b6a743bb59de4902",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 197,
+              "paragraph_end": 197
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 198,
+              "paragraph_end": 198
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 54.19
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
+          ]
+        },
+        {
+          "id": "yu-1291373f225172bffd-claim",
+          "text_ref": "yu-1291373f225172bffd",
+          "kind": "conditional_strategy",
+          "section": "英雄",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 200,
+              "paragraph_end": 200
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1371.38,
+              "end": 1384.78
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "卡面机制、觉醒差异与主动投入建议分别核对；缺字段明确留缺。"
+          ]
+        },
+        {
+          "id": "yu-95f2fd7622df30591d-claim",
+          "text_ref": "yu-95f2fd7622df30591d",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 142.19,
+              "end": 165.29
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 187,
+              "paragraph_end": 187
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 50,
+              "paragraph_end": 50
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "同批棋手操作同步，证据不来自笔记本身。"
+          ]
+        },
+        {
+          "id": "yu-5b60aa7f533d7ad584-claim",
+          "text_ref": "yu-5b60aa7f533d7ad584",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 142.19,
+              "end": 195.65
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 179.29,
+              "end": 207.15
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 767,
+              "paragraph_end": 767
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 768,
+              "paragraph_end": 768
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "同批棋手操作同步，证据不来自笔记本身。"
+          ]
+        },
+        {
+          "id": "yu-0c351cecd56aacb44a-claim",
+          "text_ref": "yu-0c351cecd56aacb44a",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 199.34,
+              "end": 224.26
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 266.51,
+              "end": 295.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 240.04,
+              "end": 284.95
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 76,
+              "paragraph_end": 76
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 13,
+              "paragraph_end": 13
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "同批棋手操作同步，证据不来自笔记本身。"
+          ]
+        },
+        {
+          "id": "yu-a5f01a98b655249c30-claim",
+          "text_ref": "yu-a5f01a98b655249c30",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 54.19
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 112.88,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1129.18,
+              "end": 1180.14
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 201,
+              "paragraph_end": 201
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 197,
+              "paragraph_end": 197
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 72,
+              "paragraph_end": 72
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "同批棋手操作同步，证据不来自笔记本身。"
+          ]
+        },
+        {
+          "id": "yu-5ab66f1cd21415d1b9-claim",
+          "text_ref": "yu-5ab66f1cd21415d1b9",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 766,
+              "paragraph_end": 766
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 542,
+              "paragraph_end": 542
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 257.78,
+              "end": 295.81
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": [
+            "同批棋手操作同步，证据不来自笔记本身。"
+          ]
+        },
+        {
+          "id": "yu-10a0957adb5421d3a6-claim",
+          "text_ref": "yu-10a0957adb5421d3a6",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 196,
+              "paragraph_end": 196
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 72,
+              "paragraph_end": 72
+            },
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 53.81,
+              "end": 78.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1533.94,
+              "end": 1561.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-eac96c484af56158e7-claim",
+          "text_ref": "yu-eac96c484af56158e7",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 170.03,
+              "end": 195.65
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-3d02b271f7f3775151-claim",
+          "text_ref": "yu-3d02b271f7f3775151",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 170.03,
+              "end": 224.26
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-fdc68646eb21b2369c-claim",
+          "text_ref": "yu-fdc68646eb21b2369c",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 624.51,
+              "end": 651.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-3572c2210dc41e099d-claim",
+          "text_ref": "yu-3572c2210dc41e099d",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 624.51,
+              "end": 651.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-0775c69b3761d2ff16-claim",
+          "text_ref": "yu-0775c69b3761d2ff16",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 624.51,
+              "end": 651.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-25ae65c98aa7ef95b3-claim",
+          "text_ref": "yu-25ae65c98aa7ef95b3",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 24.37,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 624.51,
+              "end": 651.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-96ea68e3cb2846dbcb-claim",
+          "text_ref": "yu-96ea68e3cb2846dbcb",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 257.78,
+              "end": 295.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 542,
+              "paragraph_end": 542
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-9f2219fe962e20dd1e-claim",
+          "text_ref": "yu-9f2219fe962e20dd1e",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 257.78,
+              "end": 295.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 542,
+              "paragraph_end": 542
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-8bf885cd3a3dbb45b9-claim",
+          "text_ref": "yu-8bf885cd3a3dbb45b9",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 257.78,
+              "end": 295.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 542,
+              "paragraph_end": 542
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-da245b2191f93ce339-claim",
+          "text_ref": "yu-da245b2191f93ce339",
+          "kind": "conditional_strategy",
+          "section": "阵容组成与运营节奏",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 257.78,
+              "end": 295.81
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 542,
+              "paragraph_end": 542
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-74ff7cc848f748187b-claim",
+          "text_ref": "yu-74ff7cc848f748187b",
+          "kind": "conditional_strategy",
+          "section": "后期提升思路",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 196,
+              "paragraph_end": 196
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 72,
+              "paragraph_end": 72
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 449,
+              "paragraph_end": 449
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1533.94,
+              "end": 1561.54
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-8eebaca055e3bde219-claim",
+          "text_ref": "yu-8eebaca055e3bde219",
+          "kind": "conditional_strategy",
+          "section": "关键装备",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 449,
+              "paragraph_end": 449
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-84ce8f3ce44e98b544-claim",
+          "text_ref": "yu-84ce8f3ce44e98b544",
+          "kind": "conditional_strategy",
+          "section": "关键操作",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1ZcYC6TEer:p1",
+              "start": 112.88,
+              "end": 138.98
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1031.62,
+              "end": 1068.8
+            },
+            {
+              "type": "video",
+              "source": "BV1UZJe6cEc5:p1",
+              "start": 1129.18,
+              "end": 1180.14
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 17,
+              "paragraph_end": 17
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 35,
+              "paragraph_end": 35
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 50,
+              "paragraph_end": 50
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        },
+        {
+          "id": "yu-11cce1314a4fb0a726-claim",
+          "text_ref": "yu-11cce1314a4fb0a726",
+          "kind": "conditional_strategy",
+          "section": "关联知识",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 936,
+              "paragraph_end": 936
+            }
+          ],
+          "origin": "batch77_yuhuan_fulltext_review",
+          "basis": []
+        }
+      ]
+    }
+  ]
 }

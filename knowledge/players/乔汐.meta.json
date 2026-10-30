@@ -14,96 +14,6 @@
   "conflicts": [],
   "claim_annotations": [
     {
-      "id": "b77-1fe0fed143f4c9a1c9-claim",
-      "text_ref": "b77-1fe0fed143f4c9a1c9",
-      "kind": "conditional_strategy",
-      "section": "适用打法与选择",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1jXeJ6MENk:p1",
-          "start": 70.35,
-          "end": 100.32
-        },
-        {
-          "type": "video",
-          "source": "BV1jXeJ6MENk:p1",
-          "start": 153.09,
-          "end": 237.78
-        }
-      ],
-      "origin": "batch77_fulltext_review",
-      "basis": [
-        "同批新阵容核心原理同步，不采用笔记本身作为新证据。"
-      ]
-    },
-    {
-      "id": "b77-93cb18ecfe7a4f80fc-claim",
-      "text_ref": "b77-93cb18ecfe7a4f80fc",
-      "kind": "conditional_strategy",
-      "section": "适用打法与选择",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1jXeJ6MENk:p1",
-          "start": 100.32,
-          "end": 179.31
-        }
-      ],
-      "origin": "batch77_fulltext_review",
-      "basis": [
-        "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
-      ]
-    },
-    {
-      "id": "b77-89df7197e6b12246b1-claim",
-      "text_ref": "b77-89df7197e6b12246b1",
-      "kind": "conditional_strategy",
-      "section": "适用打法与选择",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1jXeJ6MENk:p1",
-          "start": 546.77,
-          "end": 782.32
-        }
-      ],
-      "origin": "batch77_fulltext_review",
-      "basis": [
-        "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
-      ]
-    },
-    {
-      "id": "b77-a3bc731f9d9503528c-claim",
-      "text_ref": "b77-a3bc731f9d9503528c",
-      "kind": "conditional_strategy",
-      "section": "适用打法与选择",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1jXeJ6MENk:p1",
-          "start": 865.87,
-          "end": 998.86
-        }
-      ],
-      "origin": "batch77_fulltext_review",
-      "basis": [
-        "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
-      ]
-    },
-    {
       "id": "b-qiao-tide",
       "text_ref": "n-02131c0df0b617e7fb64",
       "section": "适用技巧",
@@ -120,6 +30,169 @@
         }
       ],
       "origin": "batch77_fulltext_review"
+    },
+    {
+      "id": "pf28-e424080a8a78b04b183e",
+      "text_ref": "n-89604d03b42117d9be8d",
+      "section": "棋手原始文档",
+      "kind": "conditional_strategy",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 18,
+          "paragraph_end": 18
+        }
+      ]
+    },
+    {
+      "id": "pf28-76767e77b1bfdabacef2",
+      "text_ref": "pf28-6d266c5edde871742953",
+      "section": "适用打法与选择",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 70.35,
+          "end": 100.32
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 153.09,
+          "end": 237.78
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 100.32,
+          "end": 179.31
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 546.77,
+          "end": 782.32
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 865.87,
+          "end": 998.86
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "derived_from": [
+        "b77-1fe0fed143f4c9a1c9-claim",
+        "b77-93cb18ecfe7a4f80fc-claim",
+        "b77-89df7197e6b12246b1-claim",
+        "b77-a3bc731f9d9503528c-claim",
+        "pf28-3a27f772a2901fc5c95a",
+        "pf28-050cd6b7a4889e117568",
+        "pf28-8a51db8ed5a69ed42cc0",
+        "pf28-cf570f563ca72c4d775f",
+        "b77-58f4f909f5d66d1365-claim"
+      ]
+    },
+    {
+      "id": "pf28-78cc5fd5b304bf18e776",
+      "text_ref": "pf28-53ba7973ab371b4e625b",
+      "section": "关联知识",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 70.35,
+          "end": 100.32
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 153.09,
+          "end": 237.78
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 100.32,
+          "end": 179.31
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 546.77,
+          "end": 782.32
+        },
+        {
+          "type": "video",
+          "source": "BV1jXeJ6MENk:p1",
+          "start": 865.87,
+          "end": 998.86
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 6,
+          "paragraph_end": 6
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 7,
+          "paragraph_end": 7
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 8,
+          "paragraph_end": 8
+        },
+        {
+          "type": "document",
+          "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ],
+      "derived_from": [
+        "b77-1fe0fed143f4c9a1c9-claim",
+        "b77-93cb18ecfe7a4f80fc-claim",
+        "b77-89df7197e6b12246b1-claim",
+        "b77-a3bc731f9d9503528c-claim",
+        "pf28-3a27f772a2901fc5c95a",
+        "pf28-050cd6b7a4889e117568",
+        "pf28-8a51db8ed5a69ed42cc0",
+        "pf28-cf570f563ca72c4d775f",
+        "b77-58f4f909f5d66d1365-claim"
+      ]
     },
     {
       "id": "official-76ddcbeeffb9e4efbd8d",
@@ -182,8 +255,8 @@
       ]
     }
   ],
-  "body_sha256": "1b7f96760a8acbfb000316513559724051b6c39967cf0aafee3bf6c0d66e4a98",
-  "revision": "d8194e5c4477f659c141",
+  "body_sha256": "e32d58f66fb515d1506094ce05e9f3bc929cceb99e93fb7a1c3f9365039fd6b2",
+  "revision": "24a3771ce3ef6e630417",
   "retired_claim_annotations": [
     {
       "id": "doc-a8824ad011d41ebf59acaf",
@@ -481,6 +554,7 @@
       "card:92299"
     ]
   },
+  "review_receipts": [],
   "history": [
     {
       "at": "2026-10-23T04:41:14.496587+00:00",
@@ -2575,6 +2649,1351 @@
           }
         }
       }
+    },
+    {
+      "at": "2026-10-28T15:12:23.094851+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "乔汐",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-dde8e70cf304769c1bfd"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "id": "official-be4cab7f683b80c14e55",
+            "type": "heading",
+            "level": 3,
+            "title": "技能",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-661ff43bdbabfc4b344c",
+            "type": "entry",
+            "key": "温柔呼唤",
+            "show_key": true,
+            "value": "使用技能，随机获得1张2-5阶的转瞬英雄牌。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-54bb2c267314fce615aa",
+            "type": "heading",
+            "level": 3,
+            "title": "秘技",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-00f405f88e564fca3628",
+            "type": "entry",
+            "key": "海的拥抱",
+            "show_key": true,
+            "value": "每经过4个回合，获得1张秘技牌潮汐的交响。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：潮汐的交响。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-63364a709d3f4297ecbe",
+            "type": "heading",
+            "level": 3,
+            "title": "专属天赋",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-ba9435cd9266385a76cf",
+            "type": "entry",
+            "key": "潮起潮落",
+            "show_key": true,
+            "value": "战斗开始时，随机传送1个临时等级100级的英雄进入战场（不含卡牌效果），该等级每回合+40。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；出现阶段：初始阵容。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-a18cc261abbd80a106bc",
+            "type": "heading",
+            "level": 3,
+            "title": "关联选项",
+            "separator": "\n\n"
+          },
+          {
+            "id": "n-a27ca46d3903106954b6",
+            "type": "entry",
+            "key": "潮汐的交响",
+            "show_key": true,
+            "value": "场上随机5名英雄等级+8。\n\n获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-3276d5c06d1e8741ba97",
+            "type": "heading",
+            "level": 3,
+            "title": "技能运用与补充",
+            "separator": "\n\n"
+          },
+          {
+            "type": "entry",
+            "key": "技能",
+            "show_key": true,
+            "value": "温柔呼唤，使用技能随机获得1张2-5阶的转瞬英雄牌，每次使用技能需要花费1能量。获得的转瞬英雄牌完全随机（2-5阶），且转瞬英雄牌会在回合结束后自动销毁，直接出售转瞬英雄牌不会获得能量，上阵转瞬英雄牌后再出售可以获得1能量。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-837dc180220905c16b8b"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-95619a8c9010a51c7d85"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 实际对局可以根据棋手技能给的转瞬英雄牌来确定阵容，如果直接出现了某个阵容的核心，可以直接围绕核心牌构筑阵容。（如前期转瞬牌开出嬴政，也可以直接围绕嬴政选择逐鹿嬴政的阵容。）",
+            "separator": "\n\n",
+            "id": "n-163052feaaf7a0caff7f"
+          },
+          {
+            "type": "entry",
+            "key": "推荐天赋",
+            "show_key": true,
+            "value": "经验 > 能量 > 装备，以加快棋手升级的天赋为主，人才济济、无限进步、三十而立、搏命、银算盘等。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a1cc5ffc28d76dab7fcd"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 确定阵容后，商店自动刷新出来的阵容核心英雄牌可以购买，但核心目标还是让棋手快速到达六级。",
+            "separator": "\n\n",
+            "id": "n-2584ae90e1b5461d41ec"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 每回合都用技能，用开出的转瞬牌上阵，寻找当前最强的战力，目标是血量损失最小上六。",
+            "separator": "\n\n",
+            "id": "n-46d848d1a504da19b98e"
+          },
+          {
+            "type": "entry",
+            "key": "推测",
+            "show_key": true,
+            "value": "前期用弈星及转瞬英雄补即时战力，保留棋手六阶预算；六阶传送英雄会随回合继续成长，较早解锁能积累更多成长回合。先比较本轮掉血与升级收益，以尽量少掉血到达六阶为目标，不为升级放弃必要战力。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-91f2f98b111179f3fc37"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-74ddabd11fefdf002757"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "其他选阵说明",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-d635652ae1845731d47b"
+          },
+          {
+            "type": "entry",
+            "key": "已知打法方向",
+            "show_key": true,
+            "value": "乔汐速六司空震。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-7e32256bca397d7a0dc2"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "用前期强势的打工卡铠、程咬金过渡。",
+            "separator": "\n\n",
+            "id": "n-c4249f820eea68ab78c3"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "锦囊牌推荐高级人才、集体唤醒、夺取之术，高级人才可以加快寻找司空震；集体唤醒可以给明世隐、武则天使用，明世隐给司空震转化真实等级，武则天产出古币提升司空震等级；夺取之术可以让司空震夺取等级。",
+            "separator": "\n\n",
+            "id": "n-f5de59cb3964334e26c5"
+          },
+          {
+            "type": "entry",
+            "key": "司空震需要补觉醒和自身真实等级",
+            "show_key": true,
+            "value": "真实等级决定他能够继承多少临时等级。乔汐传送单位带来的临时等级可以成为继承来源，但不能代替司空震自身的真实等级投入。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-48a22b04e31d9b1166c8"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "棋手升到6级后，优先提高司空震的真实等级；有条件时让姜子牙、云中君提供后续成长。",
+            "separator": "\n\n",
+            "id": "n-6173cacecf4ea7745182"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "确定以司空震为核心后，前期需要优先合成司空震的核心装备，必备金色圣剑，免控装纯净苍穹炽热支配者二选一（单核阵容，免控装可以防止司空震被控放不出技能），法强装痛苦面具虚无法杖等二选一。",
+            "separator": "\n\n",
+            "id": "n-15ef64b77656f2b4689e"
+          },
+          {
+            "id": "b77-07b9eaab18d739e83f",
+            "type": "heading",
+            "title": "[河洛司空震](../lineups/河洛司空震-乔汐.json)",
+            "level": 3,
+            "space": " ",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-1fe0fed143f4c9a1c9",
+            "type": "entry",
+            "key": "原理与采用条件",
+            "show_key": true,
+            "value": "司空震承担主要输出，利用高等级进入雷霆之王状态后持续普攻、释放闪电链。乔汐6级天赋在开战时传送高等级英雄，提供司空震可继承的临时等级；河洛产币与用币先提高司空震真实等级，才能提高临时等级继承上限。明世隐把司空震得到的部分临时等级转为永久等级，使后续战斗继续受益，太乙真人则提供复生容错。乔汐越早取得传送天赋，后续可积累的成长回合越多，但升6前仍需保血。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-93cb18ecfe7a4f80fc",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "用弈星和温柔呼唤取得的可用英雄过渡，目标是少掉血升6级；自然商店出现体系牌可买，不为单独刷新拖慢升级。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-89df7197e6b12246b1",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "司空震到手后先用河洛古币补真实等级，再让明世隐连接并转化临时等级。临时来源不足时，可在李白就位后先用必要古币；潮汐的交响也可用于当前保血。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-a3bc731f9d9503528c",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "6级解锁传送后继续提高司空震真实等级、补觉醒，扩大临时等级继承收益；按对手补保护和降级，当前需要战力时及时用古币，不只为传家宝增值留手。",
+            "separator": "\n\n"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-376004f98398508e4ce8"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 乔汐传送的英雄不属于召唤单位，无法使鲁班大师的机关傀儡获得等级加成；传送的英雄等级属于临时等级，司空震可以吃到临时等级效果。",
+            "separator": "\n\n",
+            "id": "n-89604d03b42117d9be8d"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "潮汐的交响给场上随机5名英雄增加等级。过渡英雄较多、当前仍能保血时，可以留给后续需要培养的英雄；若前期掉血已经影响升6后的容错，应先用它提高当轮战力，不必固定等司空震到场。",
+            "separator": "\n\n",
+            "id": "n-02131c0df0b617e7fb64"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-8c0b04a418b14711f95f"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无",
+            "separator": "\n",
+            "id": "n-3fb2174ec78eedda2fce"
+          }
+        ],
+        "topic": "乔汐",
+        "supporting_nodes": [
+          {
+            "id": "support-doc-a8824ad011d41ebf59acaf",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "技能：温柔呼唤，使用技能随机获得1张2-5阶的转瞬英雄牌，每次使用技能需要花费1能量。获得的转瞬英雄牌完全随机（2-5阶），且转瞬英雄牌会在回合结束后自动销毁，直接出售转瞬英雄牌不会获得能量，上阵转瞬英雄牌后再出售可以获得1能量。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-8e454fe961bfac10422f0e",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "秘技：每经过4个回合，自动获得一张秘技牌潮汐的交响。使用后使场上随机5名英雄等级+8.",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-6dc90ec7b7df9625c8e14b",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "实际对局可以根据棋手技能给的转瞬英雄牌来确定阵容，如果直接出现了某个阵容的核心，可以直接围绕核心牌构筑阵容。（如前期转瞬牌开出嬴政，也可以直接围绕嬴政选择逐鹿嬴政的阵容。）",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-e101025dc08b1ce9586727",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "推荐天赋：经验 > 能量 > 装备，以加快棋手升级的天赋为主，人才济济、无限进步、三十而立、搏命、银算盘等。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-b3d7d00adbe5626b18fbd5",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "确定阵容后，商店自动刷新出来的阵容核心英雄牌可以购买，但核心目标还是让棋手快速到达六级。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-4b8f99f4808e2ab78d3888",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "每回合都用技能，用开出的转瞬牌上阵，寻找当前最强的战力，目标是血量损失最小上六。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-e0a6c8de3fc18b6af955ee",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "乔汐传送的英雄不属于召唤单位，无法使鲁班大师的机关傀儡获得等级加成；传送的英雄等级属于临时等级，司空震可以吃到临时等级效果。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-c4995e97a2fb10b38391dd",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "潮汐的交响是给场上随机5名英雄增加等级，场上过渡英雄较多的时候可以先留在手牌里，等阵容所需英雄上场或需要提升等级的时候再打出。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-62e1b7ce771ad5a9ae60cf",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "前期用弈星及转瞬英雄补即时战力，保留棋手六阶预算；六阶传送英雄会随回合继续成长，较早解锁能积累更多成长回合。先比较本轮掉血与升级收益，以尽量少掉血到达六阶为目标，不为升级放弃必要战力。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-3930c063fdc2c0aaaaee36",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "**已知打法方向：** 乔汐速六司空震。\n\n用前期强势的打工卡铠、程咬金过渡。\n\n锦囊牌推荐高级人才、集体唤醒、夺取之术，高级人才可以加快寻找司空震；集体唤醒可以给明世隐、武则天使用，明世隐给司空震转化真实等级，武则天产出古币提升司空震等级；夺取之术可以让司空震夺取等级。\n\n司空震需要补觉醒和自身真实等级：真实等级决定他能够继承多少临时等级。乔汐传送单位带来的临时等级可以成为继承来源，但不能代替司空震自身的真实等级投入。\n\n棋手升到6级后，优先提高司空震的真实等级；有条件时让姜子牙、云中君提供后续成长。\n\n确定以司空震为核心后，前期需要优先合成司空震的核心装备，必备金色圣剑，免控装纯净苍穹炽热支配者二选一（单核阵容，免控装可以防止司空震被控放不出技能），法强装痛苦面具虚无法杖等二选一。",
+            "separator": ""
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "b77-1fe0fed143f4c9a1c9-claim",
+          "text_ref": "b77-1fe0fed143f4c9a1c9",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 70.35,
+              "end": 100.32
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 153.09,
+              "end": 237.78
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同批新阵容核心原理同步，不采用笔记本身作为新证据。"
+          ]
+        },
+        {
+          "id": "b77-93cb18ecfe7a4f80fc-claim",
+          "text_ref": "b77-93cb18ecfe7a4f80fc",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 100.32,
+              "end": 179.31
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
+          ]
+        },
+        {
+          "id": "b77-89df7197e6b12246b1-claim",
+          "text_ref": "b77-89df7197e6b12246b1",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 546.77,
+              "end": 782.32
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
+          ]
+        },
+        {
+          "id": "b77-a3bc731f9d9503528c-claim",
+          "text_ref": "b77-a3bc731f9d9503528c",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 865.87,
+              "end": 998.86
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
+          ]
+        },
+        {
+          "id": "b-qiao-tide",
+          "text_ref": "n-02131c0df0b617e7fb64",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 546.77,
+              "end": 611.57
+            }
+          ],
+          "origin": "batch77_fulltext_review"
+        },
+        {
+          "id": "official-76ddcbeeffb9e4efbd8d",
+          "text_ref": "official-661ff43bdbabfc4b344c",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 762,
+              "paragraph_end": 762
+            }
+          ]
+        },
+        {
+          "id": "official-929248bda4ff0418837e",
+          "text_ref": "official-00f405f88e564fca3628",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 540,
+              "paragraph_end": 540
+            }
+          ]
+        },
+        {
+          "id": "official-2497fa911972f91bf021",
+          "text_ref": "official-ba9435cd9266385a76cf",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3b2bea95d05fabf3cef39817ad0ac9f51143f8eccce89086930decbc5efd8e7",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            }
+          ]
+        },
+        {
+          "id": "official-c0bc09d0d6a394b5a4e3",
+          "text_ref": "n-a27ca46d3903106954b6",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 761,
+              "paragraph_end": 761
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-10-28T15:30:34.697119+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "乔汐",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-dde8e70cf304769c1bfd"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "id": "official-be4cab7f683b80c14e55",
+            "type": "heading",
+            "level": 3,
+            "title": "技能",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-661ff43bdbabfc4b344c",
+            "type": "entry",
+            "key": "温柔呼唤",
+            "show_key": true,
+            "value": "使用技能，随机获得1张2-5阶的转瞬英雄牌。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-54bb2c267314fce615aa",
+            "type": "heading",
+            "level": 3,
+            "title": "秘技",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-00f405f88e564fca3628",
+            "type": "entry",
+            "key": "海的拥抱",
+            "show_key": true,
+            "value": "每经过4个回合，获得1张秘技牌潮汐的交响。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：潮汐的交响。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-63364a709d3f4297ecbe",
+            "type": "heading",
+            "level": 3,
+            "title": "专属天赋",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-ba9435cd9266385a76cf",
+            "type": "entry",
+            "key": "潮起潮落",
+            "show_key": true,
+            "value": "战斗开始时，随机传送1个临时等级100级的英雄进入战场（不含卡牌效果），该等级每回合+40。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；出现阶段：初始阵容。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-a18cc261abbd80a106bc",
+            "type": "heading",
+            "level": 3,
+            "title": "关联选项",
+            "separator": "\n\n"
+          },
+          {
+            "id": "n-a27ca46d3903106954b6",
+            "type": "entry",
+            "key": "潮汐的交响",
+            "show_key": true,
+            "value": "场上随机5名英雄等级+8。\n\n获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-3276d5c06d1e8741ba97",
+            "type": "heading",
+            "level": 3,
+            "title": "技能运用与补充",
+            "separator": "\n\n"
+          },
+          {
+            "type": "entry",
+            "key": "技能",
+            "show_key": true,
+            "value": "温柔呼唤，使用技能随机获得1张2-5阶的转瞬英雄牌，每次使用技能需要花费1能量。获得的转瞬英雄牌完全随机（2-5阶），且转瞬英雄牌会在回合结束后自动销毁，直接出售转瞬英雄牌不会获得能量，上阵转瞬英雄牌后再出售可以获得1能量。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-837dc180220905c16b8b"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-95619a8c9010a51c7d85"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 实际对局可以根据棋手技能给的转瞬英雄牌来确定阵容，如果直接出现了某个阵容的核心，可以直接围绕核心牌构筑阵容。（如前期转瞬牌开出嬴政，也可以直接围绕嬴政选择逐鹿嬴政的阵容。）",
+            "separator": "\n\n",
+            "id": "n-163052feaaf7a0caff7f"
+          },
+          {
+            "type": "entry",
+            "key": "推荐天赋",
+            "show_key": true,
+            "value": "经验 > 能量 > 装备，以加快棋手升级的天赋为主，人才济济、无限进步、三十而立、搏命、银算盘等。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a1cc5ffc28d76dab7fcd"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 确定阵容后，商店自动刷新出来的阵容核心英雄牌可以购买，但核心目标还是让棋手快速到达六级。",
+            "separator": "\n\n",
+            "id": "n-2584ae90e1b5461d41ec"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 每回合都用技能，用开出的转瞬牌上阵，寻找当前最强的战力，目标是血量损失最小上六。",
+            "separator": "\n\n",
+            "id": "n-46d848d1a504da19b98e"
+          },
+          {
+            "type": "entry",
+            "key": "推测",
+            "show_key": true,
+            "value": "前期用弈星及转瞬英雄补即时战力，保留棋手六阶预算；六阶传送英雄会随回合继续成长，较早解锁能积累更多成长回合。先比较本轮掉血与升级收益，以尽量少掉血到达六阶为目标，不为升级放弃必要战力。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-91f2f98b111179f3fc37"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-74ddabd11fefdf002757"
+          },
+          {
+            "id": "pf28-6d266c5edde871742953",
+            "type": "entry",
+            "key": "河洛司空震",
+            "show_key": true,
+            "value": "【必须阵营：河洛。】【关键成员：司空震负责输出，明世隐固化实际临时等级，河洛供币成员提高真实等级，太乙真人提供复生容错。】【定阵条件：河洛可用、司空震与明世隐等组件有取得机会，并能用现有过渡战力保血升6级取得传送天赋时考虑；需要先提高司空震真实等级，才能兑现后续临时等级继承。】【主要英雄：锦囊牌推荐高级人才、集体唤醒、夺取之术，高级人才可以加快寻找司空震；集体唤醒可以给明世隐、武则天使用，明世隐给司空震转化真实等级，武则天产出古币提升司空震等级；夺取之术可以让司空震夺取等级。 真实等级决定他能够继承多少临时等级。乔汐传送单位带来的临时等级可以成为继承来源，但不能代替司空震自身的真实等级投入。 棋手升到6级后，优先提高司空震的真实等级；有条件时让姜子牙、云中君提供后续成长。 确定以司空震为核心后，前期需要优先合成司空震的核心装备，必备金色圣剑，免控装纯净苍穹炽热支配者二选一（单核阵容，免控装可以防止司空震被控放不出技能），法强装痛苦面具虚无法杖等二选一。】【核心机制：司空震承担主要输出，利用高等级进入雷霆之王状态后持续普攻、释放闪电链。乔汐6级天赋在开战时传送高等级英雄，提供司空震可继承的临时等级；河洛产币与用币先提高司空震真实等级，才能提高临时等级继承上限。明世隐把司空震得到的部分临时等级转为永久等级，使后续战斗继续受益，太乙真人则提供复生容错。乔汐越早取得传送天赋，后续可积累的成长回合越多，但升6前仍需保血。】【优势：传送提供临时等级，司空震继承与明世隐固化可把成长延续到后续战斗。】【短板：升6前需保血，司空震真实等级限制继承收益；缺觉醒、装备或保护时，临时等级来源不能单独保证战力。】【阶段强度：前期：用弈星和温柔呼唤取得的可用英雄过渡，目标是少掉血升6级；自然商店出现体系牌可买，不为单独刷新拖慢升级。 用前期强势的打工卡铠、程咬金过渡；中期：司空震到手后先用河洛古币补真实等级，再让明世隐连接并转化临时等级。临时来源不足时，可在李白就位后先用必要古币；潮汐的交响也可用于当前保血；后期：6级解锁传送后继续提高司空震真实等级、补觉醒，扩大临时等级继承收益；按对手补保护和降级，当前需要战力时及时用古币，不只为传家宝增值留手。】【可能变阵：暂无已确认的变阵方案。】",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-376004f98398508e4ce8"
+          },
+          {
+            "type": "entry",
+            "key": "传送单位与临时等级继承",
+            "show_key": true,
+            "value": "乔汐传送的英雄不属于召唤单位，无法使鲁班大师的机关傀儡获得等级加成；传送的英雄等级属于临时等级，司空震可以吃到临时等级效果。",
+            "separator": "\n\n",
+            "id": "n-89604d03b42117d9be8d",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "entry",
+            "key": "潮汐的交响的使用时机",
+            "show_key": true,
+            "value": "潮汐的交响给场上随机5名英雄增加等级。过渡英雄较多、当前仍能保血时，可以留给后续需要培养的英雄；若前期掉血已经影响升6后的容错，应先用它提高当轮战力，不必固定等司空震到场。",
+            "separator": "\n\n",
+            "id": "n-02131c0df0b617e7fb64",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-8c0b04a418b14711f95f"
+          },
+          {
+            "id": "pf28-53ba7973ab371b4e625b",
+            "type": "entry",
+            "key": "河洛司空震",
+            "show_key": true,
+            "value": "[河洛司空震](../lineups/河洛司空震-乔汐.json)",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          }
+        ],
+        "topic": "乔汐",
+        "supporting_nodes": [
+          {
+            "id": "support-doc-a8824ad011d41ebf59acaf",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "技能：温柔呼唤，使用技能随机获得1张2-5阶的转瞬英雄牌，每次使用技能需要花费1能量。获得的转瞬英雄牌完全随机（2-5阶），且转瞬英雄牌会在回合结束后自动销毁，直接出售转瞬英雄牌不会获得能量，上阵转瞬英雄牌后再出售可以获得1能量。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-8e454fe961bfac10422f0e",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "秘技：每经过4个回合，自动获得一张秘技牌潮汐的交响。使用后使场上随机5名英雄等级+8.",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-6dc90ec7b7df9625c8e14b",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "实际对局可以根据棋手技能给的转瞬英雄牌来确定阵容，如果直接出现了某个阵容的核心，可以直接围绕核心牌构筑阵容。（如前期转瞬牌开出嬴政，也可以直接围绕嬴政选择逐鹿嬴政的阵容。）",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-e101025dc08b1ce9586727",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "推荐天赋：经验 > 能量 > 装备，以加快棋手升级的天赋为主，人才济济、无限进步、三十而立、搏命、银算盘等。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-b3d7d00adbe5626b18fbd5",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "确定阵容后，商店自动刷新出来的阵容核心英雄牌可以购买，但核心目标还是让棋手快速到达六级。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-4b8f99f4808e2ab78d3888",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "每回合都用技能，用开出的转瞬牌上阵，寻找当前最强的战力，目标是血量损失最小上六。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-e0a6c8de3fc18b6af955ee",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "乔汐传送的英雄不属于召唤单位，无法使鲁班大师的机关傀儡获得等级加成；传送的英雄等级属于临时等级，司空震可以吃到临时等级效果。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-c4995e97a2fb10b38391dd",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "潮汐的交响是给场上随机5名英雄增加等级，场上过渡英雄较多的时候可以先留在手牌里，等阵容所需英雄上场或需要提升等级的时候再打出。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-62e1b7ce771ad5a9ae60cf",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "前期用弈星及转瞬英雄补即时战力，保留棋手六阶预算；六阶传送英雄会随回合继续成长，较早解锁能积累更多成长回合。先比较本轮掉血与升级收益，以尽量少掉血到达六阶为目标，不为升级放弃必要战力。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-3930c063fdc2c0aaaaee36",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "**已知打法方向：** 乔汐速六司空震。\n\n用前期强势的打工卡铠、程咬金过渡。\n\n锦囊牌推荐高级人才、集体唤醒、夺取之术，高级人才可以加快寻找司空震；集体唤醒可以给明世隐、武则天使用，明世隐给司空震转化真实等级，武则天产出古币提升司空震等级；夺取之术可以让司空震夺取等级。\n\n司空震需要补觉醒和自身真实等级：真实等级决定他能够继承多少临时等级。乔汐传送单位带来的临时等级可以成为继承来源，但不能代替司空震自身的真实等级投入。\n\n棋手升到6级后，优先提高司空震的真实等级；有条件时让姜子牙、云中君提供后续成长。\n\n确定以司空震为核心后，前期需要优先合成司空震的核心装备，必备金色圣剑，免控装纯净苍穹炽热支配者二选一（单核阵容，免控装可以防止司空震被控放不出技能），法强装痛苦面具虚无法杖等二选一。",
+            "separator": ""
+          },
+          {
+            "id": "b77-1fe0fed143f4c9a1c9",
+            "type": "entry",
+            "key": "原理与采用条件",
+            "show_key": true,
+            "value": "司空震承担主要输出，利用高等级进入雷霆之王状态后持续普攻、释放闪电链。乔汐6级天赋在开战时传送高等级英雄，提供司空震可继承的临时等级；河洛产币与用币先提高司空震真实等级，才能提高临时等级继承上限。明世隐把司空震得到的部分临时等级转为永久等级，使后续战斗继续受益，太乙真人则提供复生容错。乔汐越早取得传送天赋，后续可积累的成长回合越多，但升6前仍需保血。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-93cb18ecfe7a4f80fc",
+            "type": "entry",
+            "key": "前期运营思路",
+            "show_key": true,
+            "value": "用弈星和温柔呼唤取得的可用英雄过渡，目标是少掉血升6级；自然商店出现体系牌可买，不为单独刷新拖慢升级。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-89df7197e6b12246b1",
+            "type": "entry",
+            "key": "中期运营思路",
+            "show_key": true,
+            "value": "司空震到手后先用河洛古币补真实等级，再让明世隐连接并转化临时等级。临时来源不足时，可在李白就位后先用必要古币；潮汐的交响也可用于当前保血。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b77-a3bc731f9d9503528c",
+            "type": "entry",
+            "key": "后期运营思路",
+            "show_key": true,
+            "value": "6级解锁传送后继续提高司空震真实等级、补觉醒，扩大临时等级继承收益；按对手补保护和降级，当前需要战力时及时用古币，不只为传家宝增值留手。",
+            "separator": "\n\n"
+          },
+          {
+            "type": "entry",
+            "key": "已知打法方向",
+            "show_key": true,
+            "value": "乔汐速六司空震。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-7e32256bca397d7a0dc2"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "用前期强势的打工卡铠、程咬金过渡。",
+            "separator": "\n\n",
+            "id": "n-c4249f820eea68ab78c3"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "锦囊牌推荐高级人才、集体唤醒、夺取之术，高级人才可以加快寻找司空震；集体唤醒可以给明世隐、武则天使用，明世隐给司空震转化真实等级，武则天产出古币提升司空震等级；夺取之术可以让司空震夺取等级。",
+            "separator": "\n\n",
+            "id": "n-f5de59cb3964334e26c5"
+          },
+          {
+            "type": "entry",
+            "key": "司空震需要补觉醒和自身真实等级",
+            "show_key": true,
+            "value": "真实等级决定他能够继承多少临时等级。乔汐传送单位带来的临时等级可以成为继承来源，但不能代替司空震自身的真实等级投入。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-48a22b04e31d9b1166c8"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "棋手升到6级后，优先提高司空震的真实等级；有条件时让姜子牙、云中君提供后续成长。",
+            "separator": "\n\n",
+            "id": "n-6173cacecf4ea7745182"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "确定以司空震为核心后，前期需要优先合成司空震的核心装备，必备金色圣剑，免控装纯净苍穹炽热支配者二选一（单核阵容，免控装可以防止司空震被控放不出技能），法强装痛苦面具虚无法杖等二选一。",
+            "separator": "\n\n",
+            "id": "n-15ef64b77656f2b4689e"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "暂无",
+            "separator": "\n",
+            "id": "n-3fb2174ec78eedda2fce"
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "b77-1fe0fed143f4c9a1c9-claim",
+          "text_ref": "b77-1fe0fed143f4c9a1c9",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 70.35,
+              "end": 100.32
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 153.09,
+              "end": 237.78
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同批新阵容核心原理同步，不采用笔记本身作为新证据。"
+          ]
+        },
+        {
+          "id": "b77-93cb18ecfe7a4f80fc-claim",
+          "text_ref": "b77-93cb18ecfe7a4f80fc",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 100.32,
+              "end": 179.31
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
+          ]
+        },
+        {
+          "id": "b77-89df7197e6b12246b1-claim",
+          "text_ref": "b77-89df7197e6b12246b1",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 546.77,
+              "end": 782.32
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
+          ]
+        },
+        {
+          "id": "b77-a3bc731f9d9503528c-claim",
+          "text_ref": "b77-a3bc731f9d9503528c",
+          "kind": "conditional_strategy",
+          "section": "适用打法与选择",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 865.87,
+              "end": 998.86
+            }
+          ],
+          "origin": "batch77_fulltext_review",
+          "basis": [
+            "同步对应新阵容的阶段条件；不以未来资源当当前战力。"
+          ]
+        },
+        {
+          "id": "b-qiao-tide",
+          "text_ref": "n-02131c0df0b617e7fb64",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 546.77,
+              "end": 611.57
+            }
+          ],
+          "origin": "batch77_fulltext_review"
+        },
+        {
+          "id": "official-76ddcbeeffb9e4efbd8d",
+          "text_ref": "official-661ff43bdbabfc4b344c",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 762,
+              "paragraph_end": 762
+            }
+          ]
+        },
+        {
+          "id": "official-929248bda4ff0418837e",
+          "text_ref": "official-00f405f88e564fca3628",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 540,
+              "paragraph_end": 540
+            }
+          ]
+        },
+        {
+          "id": "official-2497fa911972f91bf021",
+          "text_ref": "official-ba9435cd9266385a76cf",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3b2bea95d05fabf3cef39817ad0ac9f51143f8eccce89086930decbc5efd8e7",
+              "paragraph_start": 541,
+              "paragraph_end": 541
+            }
+          ]
+        },
+        {
+          "id": "official-c0bc09d0d6a394b5a4e3",
+          "text_ref": "n-a27ca46d3903106954b6",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 761,
+              "paragraph_end": 761
+            }
+          ]
+        },
+        {
+          "id": "pf28-3a27f772a2901fc5c95a",
+          "text_ref": "n-7e32256bca397d7a0dc2",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            }
+          ]
+        },
+        {
+          "id": "pf28-050cd6b7a4889e117568",
+          "text_ref": "n-c4249f820eea68ab78c3",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 7,
+              "paragraph_end": 7
+            }
+          ]
+        },
+        {
+          "id": "pf28-8a51db8ed5a69ed42cc0",
+          "text_ref": "n-f5de59cb3964334e26c5",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            }
+          ]
+        },
+        {
+          "id": "pf28-cf570f563ca72c4d775f",
+          "text_ref": "n-15ef64b77656f2b4689e",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 11,
+              "paragraph_end": 11
+            }
+          ]
+        },
+        {
+          "id": "pf28-e424080a8a78b04b183e",
+          "text_ref": "n-89604d03b42117d9be8d",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 18,
+              "paragraph_end": 18
+            }
+          ]
+        },
+        {
+          "id": "pf28-76767e77b1bfdabacef2",
+          "text_ref": "pf28-6d266c5edde871742953",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 70.35,
+              "end": 100.32
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 153.09,
+              "end": 237.78
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 100.32,
+              "end": 179.31
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 546.77,
+              "end": 782.32
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 865.87,
+              "end": 998.86
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 7,
+              "paragraph_end": 7
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 11,
+              "paragraph_end": 11
+            }
+          ],
+          "derived_from": [
+            "b77-1fe0fed143f4c9a1c9-claim",
+            "b77-93cb18ecfe7a4f80fc-claim",
+            "b77-89df7197e6b12246b1-claim",
+            "b77-a3bc731f9d9503528c-claim",
+            "pf28-3a27f772a2901fc5c95a",
+            "pf28-050cd6b7a4889e117568",
+            "pf28-8a51db8ed5a69ed42cc0",
+            "pf28-cf570f563ca72c4d775f",
+            "b77-58f4f909f5d66d1365-claim"
+          ]
+        },
+        {
+          "id": "pf28-78cc5fd5b304bf18e776",
+          "text_ref": "pf28-53ba7973ab371b4e625b",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 70.35,
+              "end": 100.32
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 153.09,
+              "end": 237.78
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 100.32,
+              "end": 179.31
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 546.77,
+              "end": 782.32
+            },
+            {
+              "type": "video",
+              "source": "BV1jXeJ6MENk:p1",
+              "start": 865.87,
+              "end": 998.86
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 6,
+              "paragraph_end": 6
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 7,
+              "paragraph_end": 7
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 8,
+              "paragraph_end": 8
+            },
+            {
+              "type": "document",
+              "source": "doc-03451d140301800a933f9b4b8ce800b5cb729b5c6a4fb666fa20fe8f906113da",
+              "paragraph_start": 11,
+              "paragraph_end": 11
+            }
+          ],
+          "derived_from": [
+            "b77-1fe0fed143f4c9a1c9-claim",
+            "b77-93cb18ecfe7a4f80fc-claim",
+            "b77-89df7197e6b12246b1-claim",
+            "b77-a3bc731f9d9503528c-claim",
+            "pf28-3a27f772a2901fc5c95a",
+            "pf28-050cd6b7a4889e117568",
+            "pf28-8a51db8ed5a69ed42cc0",
+            "pf28-cf570f563ca72c4d775f",
+            "b77-58f4f909f5d66d1365-claim"
+          ]
+        }
+      ]
     }
   ]
 }

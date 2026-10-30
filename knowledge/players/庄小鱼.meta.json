@@ -61,70 +61,6 @@
       "origin": "batch77_fulltext_review"
     },
     {
-      "id": "b3-28d070ca50c5da9282-b3-claim",
-      "text_ref": "b3-28d070ca50c5da9282",
-      "section": "适用打法与选择",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "origin": "batch77_second_fulltext_review",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1xweA6MEwM:p1",
-          "start": 28.12,
-          "end": 145.31
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 199,
-          "paragraph_end": 199
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 90,
-          "paragraph_end": 90
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 70,
-          "paragraph_end": 70
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 771,
-          "paragraph_end": 771
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 545,
-          "paragraph_end": 545
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 144,
-          "paragraph_end": 144
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 58,
-          "paragraph_end": 58
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-b-extra3.json",
-        "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
-      }
-    },
-    {
       "id": "b3-6397d0ed883e1f1bd8-b3-claim",
       "text_ref": "b3-6397d0ed883e1f1bd8",
       "section": "适用技巧",
@@ -200,41 +136,951 @@
       ]
     },
     {
-      "id": "c3-zhuang-balanced-direction-c3-claim",
-      "text_ref": "c3-zhuang-balanced-direction",
-      "section": "本批阵容补充",
+      "id": "pf28-ce9a33d3548752408300",
+      "text_ref": "n-31d6c038a6facfca73b7",
+      "section": "棋手原始文档",
+      "kind": "conditional_strategy",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 11,
+          "paragraph_end": 11
+        }
+      ]
+    },
+    {
+      "id": "pf28-f47e4153e9344b7e5187",
+      "text_ref": "n-261fdec0c0201972bacb",
+      "section": "棋手原始文档",
+      "kind": "conditional_strategy",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 12,
+          "paragraph_end": 12
+        }
+      ]
+    },
+    {
+      "id": "pf28-392195b0cf281f9c65c5",
+      "text_ref": "n-07fc0b137cd482d979cd",
+      "section": "棋手原始文档",
+      "kind": "conditional_strategy",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+          "paragraph_start": 15,
+          "paragraph_end": 15
+        }
+      ]
+    },
+    {
+      "id": "pf28-1d4031bb5a83b9b67180",
+      "text_ref": "pf28-bd1fe610de989dab1010",
+      "section": "适用打法与选择",
       "kind": "conditional_strategy",
       "inference": true,
       "evidence": [
         {
-          "source": "BV1zgH16UEgk:p1",
-          "start": 11.82,
-          "end": 160.09
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 514.96,
+          "end": 543.44
         },
         {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 807,
-          "paragraph_end": 807
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 642.09,
+          "end": 669.99
         },
         {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 473,
-          "paragraph_end": 473
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 0.0,
+          "end": 26.96
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 56.97,
+          "end": 85.65
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 85.9,
+          "end": 115.42
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 304.58,
+          "end": 332.29
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 536.05,
+          "end": 562.55
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 562.8,
+          "end": 590.19
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 1132.17,
+          "end": 1180.47
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 1181.24,
+          "end": 1220.39
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 1220.85,
+          "end": 1227.31
+        },
+        {
+          "source": "BV1sLpq6TEnY:p1",
+          "start": 27.2,
+          "end": 56.76
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 297.0,
+          "end": 326.4
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 442.84,
+          "end": 471.97
+        },
+        {
+          "source": "BV1mwHS66EUa:p1",
+          "start": 325.07,
+          "end": 353.98
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 888.74,
+          "end": 918.88
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1175.96,
+          "end": 1203.98
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1293.88,
+          "end": 1323.5
+        },
+        {
+          "source": "BV1qaJr6cEFv:p1",
+          "start": 724.55,
+          "end": 757.24
+        },
+        {
+          "source": "BV1qaJr6cEFv:p1",
+          "start": 757.61,
+          "end": 785.05
+        },
+        {
+          "source": "BV1jvJX6ZELy:p1",
+          "start": 111.31,
+          "end": 129.91
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 283.77,
+          "end": 313.11
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 313.35,
+          "end": 341.73
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 399.23,
+          "end": 427.97
+        },
+        {
+          "source": "BV15kpn6yERf:p1",
+          "start": 1107.59,
+          "end": 1150.98
+        },
+        {
+          "source": "BV15kpn6yERf:p1",
+          "start": 1385.38,
+          "end": 1436.46
+        },
+        {
+          "source": "BV15kpn6yERf:p1",
+          "start": 1492.87,
+          "end": 1535.78
+        },
+        {
+          "source": "BV15kpn6yERf:p1",
+          "start": 1536.08,
+          "end": 1587.23
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 648.81,
+          "end": 680.67
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 681.08,
+          "end": 710.04
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 710.34,
+          "end": 739.56
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 741.59,
+          "end": 769.51
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 750.39,
+          "end": 776.79,
+          "frame": "frames/763-59.jpg"
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 645.21,
+          "end": 670.87,
+          "frame": "frames/645-21.jpg"
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 56.17,
+          "end": 83.29
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 83.63,
+          "end": 109.67
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 31.49,
+          "end": 58.87,
+          "frame": "frames/35-0.jpg"
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 59.37,
+          "end": 88.82
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 164.78,
+          "end": 194.55,
+          "frame": "frames/205-0.jpg"
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 194.86,
+          "end": 225.68
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 225.91,
+          "end": 256.96
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 257.25,
+          "end": 286.76
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 288.09,
+          "end": 316.55
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 86.9,
+          "end": 116.5
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 117.03,
+          "end": 143.69
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 144.32,
+          "end": 174.18
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 174.54,
+          "end": 203.26
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 203.85,
+          "end": 232.79
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 232.96,
+          "end": 261.03
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 453.32,
+          "end": 477.72
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 478.7,
+          "end": 506.73
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 31.49,
+          "end": 58.87
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 560.51,
+          "end": 588.41
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 588.74,
+          "end": 617.77
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 618.27,
+          "end": 644.28
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 645.21,
+          "end": 670.87
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 671.34,
+          "end": 699.1
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 700.44,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1204.19,
+          "end": 1230.53
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1232.33,
+          "end": 1256.21
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1256.73,
+          "end": 1293.26
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 425.4,
+          "end": 452.68
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 506.94,
+          "end": 532.77
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 533.15,
+          "end": 560.1
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 573.52,
+          "end": 599.04
+        },
+        {
+          "source": "BV1vTeS6nE9c:p1",
+          "start": 599.45,
+          "end": 627.65
+        },
+        {
+          "source": "BV1brJq6BEYj:p1",
+          "start": 531.05,
+          "end": 580.57
+        },
+        {
+          "source": "BV15kpn6yERf:p1",
+          "start": 611.18,
+          "end": 642.51
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1070.73,
+          "end": 1102.92
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1103.84,
+          "end": 1144.5
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 1145.23,
+          "end": 1175.26
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 291.94,
+          "end": 319.28
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 319.67,
+          "end": 348.39
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 348.87,
+          "end": 378.67
+        },
+        {
+          "source": "BV1otaK6FEE1:p1",
+          "start": 0.0,
+          "end": 39.28
+        },
+        {
+          "source": "BV1otaK6FEE1:p1",
+          "start": 39.96,
+          "end": 66.08
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 1702.76,
+          "end": 1764.12
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 1764.53,
+          "end": 1819.85
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 1820.5,
+          "end": 1866.34
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 327.56,
+          "end": 351.38
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 543.2,
+          "end": 570.72
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 664.14,
+          "end": 698.28
+        },
+        {
+          "source": "BV1rQpy6REUX:p1",
+          "start": 792.2,
+          "end": 821.72
+        },
+        {
+          "source": "BV1g9a26vEdU:p1",
+          "start": 115.07,
+          "end": 143.73
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 893.68,
+          "end": 921.56
+        },
+        {
+          "source": "BV1mwHS66EUa:p1",
+          "start": 544.24,
+          "end": 570.23,
+          "frame": "frames/795-0.jpg"
+        },
+        {
+          "source": "BV1mwHS66EUa:p1",
+          "start": 753.7,
+          "end": 781.6
+        },
+        {
+          "source": "BV1mwHS66EUa:p1",
+          "start": 782.16,
+          "end": 808.06
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 333.45,
+          "end": 363.01,
+          "frame": "frames/365-0.jpg"
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 363.69,
+          "end": 386.43
+        },
+        {
+          "source": "BV1bMpz6SEof:p1",
+          "start": 1774.48,
+          "end": 1803.77
+        },
+        {
+          "source": "BV1Nhps6BEkj:p1",
+          "start": 888.74,
+          "end": 918.88,
+          "frame": "frames/910-0.jpg"
+        },
+        {
+          "source": "BV1oQJ66tESA:p1",
+          "start": 1650.39,
+          "end": 1701.97
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 224.22,
+          "end": 253.58,
+          "frame": "frames/260-0.jpg"
+        },
+        {
+          "source": "BV1Jzp36REg6:p1",
+          "start": 254.01,
+          "end": 283.43
         }
       ],
-      "review_basis": {
-        "stage3": {
-          "report": "raw/reports/batch77/review-c-stage3.json",
-          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+      "derived_from": [
+        "principle-zhuang",
+        "fmt24-zhuang-e27b4cdf79c3",
+        "fmt24-zhuang-38713054751b",
+        "fmt24-zhuang-98c13f1a34fb"
+      ]
+    },
+    {
+      "id": "pf28-8c10eae04d25697aa85a",
+      "text_ref": "pf28-eedfc9a9fbc0e16ac015",
+      "section": "适用打法与选择",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 727.31
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 0,
+          "end": 54.95
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 563.24,
+          "end": 645.79
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 675.55
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 727.31
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.16
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.08,
+          "end": 699.86
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.74,
+          "end": 2319.12
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.53,
+          "end": 395.35
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1897.19,
+          "end": 1949.87
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.51,
+          "end": 536.17
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1501.74,
+          "end": 1547.32
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 508.5,
+          "end": 536.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.6,
+          "end": 675.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 700.6,
+          "end": 726.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.23,
+          "end": 366.76
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 646.63,
+          "end": 675.55
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.31,
+          "end": 751.23
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 751.56,
+          "end": 778.49
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 727.3,
+          "end": 751.2
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 751.6,
+          "end": 778.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 896.3,
+          "end": 924.5
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1015.2,
+          "end": 1044.3
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1083.3,
+          "end": 1127.8
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1609.77,
+          "end": 1651.47
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2121.74,
+          "end": 2189.84
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1083.32,
+          "end": 1127.83
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1462.53,
+          "end": 1501.14
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 676.1,
+          "end": 699.9
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 341.2,
+          "end": 366.8
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 2257.7,
+          "end": 2319.1
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 367.5,
+          "end": 395.4
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 1653.04,
+          "end": 1701.02
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 954.0,
+          "end": 982.0
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 982.7,
+          "end": 1010.1
+        },
+        {
+          "source": "BV1tvYS6MEHf:p1",
+          "start": 1011.0,
+          "end": 1037.3
         }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-principle",
+        "fmt24-owner-ac0ad7627d64",
+        "fmt24-owner-13e8a1cfa033",
+        "fmt24-owner-6d19c54c44ea",
+        "fmt24-owner-6cef48f9e392",
+        "fmt24-owner-4845a9632bcf",
+        "fmt24-owner-db9a87220df6",
+        "fmt24-owner-85eea5d917d3",
+        "fmt24-owner-e27b4cdf79c3",
+        "fmt24-owner-38713054751b",
+        "fmt24-owner-98c13f1a34fb"
+      ]
+    },
+    {
+      "id": "pf28-fc879fc8ccc3d856d564",
+      "text_ref": "pf28-90079804dafa5dd30698",
+      "section": "适用打法与选择",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1xweA6MEwM:p1",
+          "start": 28.12,
+          "end": 145.31
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 199,
+          "paragraph_end": 199
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 90,
+          "paragraph_end": 90
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 70,
+          "paragraph_end": 70
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 771,
+          "paragraph_end": 771
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 545,
+          "paragraph_end": 545
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 144,
+          "paragraph_end": 144
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 58,
+          "paragraph_end": 58
+        },
+        {
+          "type": "video",
+          "source": "BV1xweA6MEwM:p1",
+          "start": 0,
+          "end": 153.42
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 937,
+          "paragraph_end": 937
+        }
+      ],
+      "derived_from": [
+        "b3-28d070ca50c5da9282-b3-claim",
+        "b3-7a5cae32f9ccfe090c-b3-claim"
+      ]
+    },
+    {
+      "id": "pf28-b78ed234e01253d14bd6",
+      "text_ref": "n-c61394ec4d3f69211aeb",
+      "section": "适用技巧",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        }
+      ],
+      "derived_from": [
+        "b22-b22-zhuang-no-faction-owner-middle",
+        "fmt24-owner-38713054751b"
+      ],
+      "review_basis": {
+        "report": "raw/reports/player-format-20261028/tip-lineage.json",
+        "basis": "保留原技巧含义，仅规范名称和段落；关联同棋手适用机制及条件依据，不将文本相似度作为证据结论。"
       }
     },
     {
-      "id": "c3-zhuang-dahe-direction-c3-claim",
-      "text_ref": "c3-zhuang-dahe-direction",
-      "section": "大河龙蛇路线",
+      "id": "pf28-5f0f6ea10e8252541c4b",
+      "text_ref": "n-6455eb54b35a8de14a3d",
+      "section": "适用技巧",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1xweA6MEwM:p1",
+          "start": 121.95,
+          "end": 225.32
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 771,
+          "paragraph_end": 771
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 545,
+          "paragraph_end": 545
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 199,
+          "paragraph_end": 199
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 90,
+          "paragraph_end": 90
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 70,
+          "paragraph_end": 70
+        },
+        {
+          "source": "BV1Lfp76KE6e:p1",
+          "start": 425.16,
+          "end": 619.94
+        }
+      ],
+      "derived_from": [
+        "b3-6397d0ed883e1f1bd8-b3-claim",
+        "b22-b22-zhuang-no-faction-owner-middle"
+      ],
+      "review_basis": {
+        "report": "raw/reports/player-format-20261028/tip-lineage.json",
+        "basis": "保留原技巧含义，仅规范名称和段落；关联同棋手适用机制及条件依据，不将文本相似度作为证据结论。"
+      }
+    },
+    {
+      "id": "pf28-2ec5cdfd20187e8a9699",
+      "text_ref": "n-2999ed65e527ecb249ea",
+      "section": "适用技巧",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 222.7
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 865,
+          "paragraph_end": 865
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 638,
+          "paragraph_end": 638
+        }
+      ],
+      "derived_from": [
+        "c3-zhuang-dahe-long-she-n35-c3-claim"
+      ],
+      "review_basis": {
+        "report": "raw/reports/player-format-20261028/tip-lineage.json",
+        "basis": "保留原技巧含义，仅规范名称和段落；关联同棋手适用机制及条件依据，不将文本相似度作为证据结论。"
+      }
+    },
+    {
+      "id": "pf28-8f0274a822e220a6fbe4",
+      "text_ref": "pf28-01bb8912e95413ffe006",
+      "section": "适用打法与选择",
       "kind": "conditional_strategy",
       "inference": true,
       "evidence": [
@@ -264,13 +1110,55 @@
         {
           "type": "document",
           "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 292,
+          "paragraph_end": 292
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
           "paragraph_start": 181,
           "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 638,
+          "paragraph_end": 638
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 125,
+          "paragraph_end": 126
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 149,
+          "paragraph_end": 149
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 250,
+          "paragraph_end": 250
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 122,
+          "paragraph_end": 122
         },
         {
           "source": "BV1hvhn6ZERe:p1",
           "start": 237.42,
           "end": 301.49
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 232,
+          "paragraph_end": 232
         },
         {
           "type": "document",
@@ -283,14 +1171,469 @@
           "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
           "paragraph_start": 125,
           "paragraph_end": 125
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 229,
+          "paragraph_end": 229
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 29.48,
+          "end": 58.78
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 29.48,
+          "end": 87.88
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 673,
+          "paragraph_end": 673
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 865,
+          "paragraph_end": 865
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 351,
+          "paragraph_end": 351
+        },
+        {
+          "type": "document",
+          "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+          "paragraph_start": 1,
+          "paragraph_end": 3
+        },
+        {
+          "type": "video",
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 222.7
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 301.49
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 237.42,
+          "end": 331.22
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 58.7,
+          "end": 90.52
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 322,
+          "paragraph_end": 322
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 58.7,
+          "end": 87.88
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 331.21,
+          "end": 360.21
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 353,
+          "paragraph_end": 353
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 222.7
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 275.36,
+          "end": 301.49
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 237.42,
+          "end": 266.7
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 557,
+          "paragraph_end": 557
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 556,
+          "paragraph_end": 556
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 575,
+          "paragraph_end": 575
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 558,
+          "paragraph_end": 558
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 547,
+          "paragraph_end": 547
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 568,
+          "paragraph_end": 568
         }
       ],
-      "review_basis": {
-        "stage3": {
-          "report": "raw/reports/batch77/review-c-stage3.json",
-          "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+      "derived_from": [
+        "c3-zhuang-dahe-long-she-n2-c3-claim",
+        "c3-zhuang-dahe-long-she-n3-c3-claim",
+        "c3-zhuang-dahe-long-she-n5-c3-claim",
+        "c3-zhuang-dahe-long-she-n7-c3-claim",
+        "c3-zhuang-dahe-long-she-n8-c3-claim",
+        "c3-zhuang-dahe-long-she-n9-c3-claim",
+        "c3-zhuang-dahe-long-she-n10-c3-claim",
+        "c3-zhuang-dahe-long-she-n11-c3-claim",
+        "c3-zhuang-dahe-long-she-n12-c3-claim",
+        "c3-zhuang-dahe-long-she-n13-c3-claim",
+        "c3-zhuang-dahe-long-she-n14-c3-claim",
+        "c3-zhuang-dahe-long-she-n15-c3-claim",
+        "c3-zhuang-dahe-long-she-n16-c3-claim",
+        "c3-zhuang-dahe-long-she-n17-c3-claim",
+        "c3-zhuang-dahe-long-she-n20-c3-claim",
+        "c3-zhuang-dahe-long-she-n21-c3-claim",
+        "c3-zhuang-dahe-long-she-n23-c3-claim",
+        "c3-zhuang-dahe-long-she-n24-c3-claim",
+        "c3-zhuang-dahe-long-she-n26-c3-claim",
+        "c3-zhuang-dahe-long-she-n27-c3-claim",
+        "c3-zhuang-dahe-long-she-n29-c3-claim",
+        "c3-zhuang-dahe-long-she-n31-c3-claim",
+        "c3-zhuang-dahe-long-she-n32-c3-claim",
+        "c3-zhuang-dahe-long-she-n33-c3-claim",
+        "c3-zhuang-dahe-long-she-n35-c3-claim",
+        "c3-zhuang-dahe-long-she-n37-c3-claim",
+        "c3-zhuang-dahe-long-she-n38-c3-claim",
+        "c3-zhuang-dahe-long-she-n40-c3-claim",
+        "c3-dragon-equip-557-claim",
+        "c3-dragon-equip-556-claim",
+        "c3-dragon-equip-575-claim",
+        "c3-dragon-equip-558-claim",
+        "c3-dragon-equip-547-claim",
+        "c3-dragon-equip-568-claim"
+      ]
+    },
+    {
+      "id": "pf28-9120fdf5fd798fa65fe8",
+      "text_ref": "pf28-c252e3cf1d44b1eb1ffd",
+      "section": "关联知识",
+      "kind": "conditional_strategy",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 90.84,
+          "end": 154.48
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 146,
+          "paragraph_end": 146
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 256,
+          "paragraph_end": 256
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 104,
+          "paragraph_end": 104
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 292,
+          "paragraph_end": 292
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 181,
+          "paragraph_end": 181
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 638,
+          "paragraph_end": 638
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 125,
+          "paragraph_end": 126
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 149,
+          "paragraph_end": 149
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 250,
+          "paragraph_end": 250
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 122,
+          "paragraph_end": 122
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 237.42,
+          "end": 301.49
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 232,
+          "paragraph_end": 232
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 143,
+          "paragraph_end": 143
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 125,
+          "paragraph_end": 125
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 229,
+          "paragraph_end": 229
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 29.48,
+          "end": 58.78
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 29.48,
+          "end": 87.88
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 673,
+          "paragraph_end": 673
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 865,
+          "paragraph_end": 865
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 351,
+          "paragraph_end": 351
+        },
+        {
+          "type": "document",
+          "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+          "paragraph_start": 1,
+          "paragraph_end": 3
+        },
+        {
+          "type": "video",
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 222.7
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 301.49
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 757,
+          "paragraph_end": 757
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 737,
+          "paragraph_end": 737
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 237.42,
+          "end": 331.22
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 58.7,
+          "end": 90.52
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 322,
+          "paragraph_end": 322
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 58.7,
+          "end": 87.88
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 331.21,
+          "end": 360.21
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 353,
+          "paragraph_end": 353
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 193.8,
+          "end": 222.7
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 275.36,
+          "end": 301.49
+        },
+        {
+          "source": "BV1hvhn6ZERe:p1",
+          "start": 237.42,
+          "end": 266.7
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 557,
+          "paragraph_end": 557
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 556,
+          "paragraph_end": 556
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 575,
+          "paragraph_end": 575
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 558,
+          "paragraph_end": 558
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 547,
+          "paragraph_end": 547
+        },
+        {
+          "type": "document",
+          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+          "paragraph_start": 568,
+          "paragraph_end": 568
         }
-      }
+      ],
+      "derived_from": [
+        "c3-zhuang-dahe-long-she-n2-c3-claim",
+        "c3-zhuang-dahe-long-she-n3-c3-claim",
+        "c3-zhuang-dahe-long-she-n5-c3-claim",
+        "c3-zhuang-dahe-long-she-n7-c3-claim",
+        "c3-zhuang-dahe-long-she-n8-c3-claim",
+        "c3-zhuang-dahe-long-she-n9-c3-claim",
+        "c3-zhuang-dahe-long-she-n10-c3-claim",
+        "c3-zhuang-dahe-long-she-n11-c3-claim",
+        "c3-zhuang-dahe-long-she-n12-c3-claim",
+        "c3-zhuang-dahe-long-she-n13-c3-claim",
+        "c3-zhuang-dahe-long-she-n14-c3-claim",
+        "c3-zhuang-dahe-long-she-n15-c3-claim",
+        "c3-zhuang-dahe-long-she-n16-c3-claim",
+        "c3-zhuang-dahe-long-she-n17-c3-claim",
+        "c3-zhuang-dahe-long-she-n20-c3-claim",
+        "c3-zhuang-dahe-long-she-n21-c3-claim",
+        "c3-zhuang-dahe-long-she-n23-c3-claim",
+        "c3-zhuang-dahe-long-she-n24-c3-claim",
+        "c3-zhuang-dahe-long-she-n26-c3-claim",
+        "c3-zhuang-dahe-long-she-n27-c3-claim",
+        "c3-zhuang-dahe-long-she-n29-c3-claim",
+        "c3-zhuang-dahe-long-she-n31-c3-claim",
+        "c3-zhuang-dahe-long-she-n32-c3-claim",
+        "c3-zhuang-dahe-long-she-n33-c3-claim",
+        "c3-zhuang-dahe-long-she-n35-c3-claim",
+        "c3-zhuang-dahe-long-she-n37-c3-claim",
+        "c3-zhuang-dahe-long-she-n38-c3-claim",
+        "c3-zhuang-dahe-long-she-n40-c3-claim",
+        "c3-dragon-equip-557-claim",
+        "c3-dragon-equip-556-claim",
+        "c3-dragon-equip-575-claim",
+        "c3-dragon-equip-558-claim",
+        "c3-dragon-equip-547-claim",
+        "c3-dragon-equip-568-claim"
+      ]
     },
     {
       "id": "official-c189ca0da54df0c63a7b",
@@ -368,8 +1711,8 @@
       ]
     }
   ],
-  "body_sha256": "59a4c63174e8059e17389f9b70aa0bc2e65413f68c30a19f5418ffaa8dd86509",
-  "revision": "cb6910ab3939bfd1c060",
+  "body_sha256": "20bf1a180899c316043754814dfbffdd7461ddf917178ae241fa4d3cfb7c4d76",
+  "revision": "fa9882cf76f631535982",
   "legacy_layout": {
     "version": 4
   },
@@ -871,6 +2214,7 @@
       "card:93199"
     ]
   },
+  "review_receipts": [],
   "history": [
     {
       "at": "2026-10-19T13:13:42.761249+00:00",
@@ -7125,6 +8469,4490 @@
           }
         }
       }
+    },
+    {
+      "at": "2026-10-28T15:12:19.855703+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "庄小鱼",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3755bd442141d66a1874"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "id": "official-95341c1fb8fd5337112b",
+            "type": "heading",
+            "level": 3,
+            "title": "技能",
+            "separator": "\n\n"
+          },
+          {
+            "id": "n-c6e0f4ffc3247f64470c",
+            "type": "entry",
+            "key": "梦境游戏",
+            "show_key": true,
+            "value": "庄小鱼升级时，会随机获得1张效果牌。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-797c18d49048dc670719",
+            "type": "heading",
+            "level": 3,
+            "title": "秘技",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-2abddeac0eb6e2159bf9",
+            "type": "entry",
+            "key": "美梦成真",
+            "show_key": true,
+            "value": "升到5级和6级，获得1张秘技牌如梦似幻。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：如梦似幻。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-edbd0bf73a6e547b20ec",
+            "type": "heading",
+            "level": 3,
+            "title": "专属天赋",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-af8b2e454e44aa5603ea",
+            "type": "entry",
+            "key": "引擎升级",
+            "show_key": true,
+            "value": "获得1张梦幻引擎：将商店替换为梦幻商店。若在棋手生命值≤30时战斗失败，则重复获得。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；出现阶段：初始阵容；后续选项：梦幻引擎。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-12061c238198d2e0d72b",
+            "type": "heading",
+            "level": 3,
+            "title": "关联选项",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-91231c640d6cf0353e71",
+            "type": "entry",
+            "key": "如梦似幻",
+            "show_key": true,
+            "value": "基于场上英雄、阵营（至少3名）获取一套梦幻手牌。\n\n获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "n-6c4130a7ac1576f48aaf",
+            "type": "entry",
+            "key": "梦幻引擎",
+            "show_key": true,
+            "value": "根据场上的阵容，将商店替换为梦幻商店。\n\n获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-f2a60836ed93661e2509",
+            "type": "heading",
+            "level": 3,
+            "title": "技能运用与补充",
+            "separator": "\n\n"
+          },
+          {
+            "type": "entry",
+            "key": "秘技",
+            "show_key": true,
+            "value": "棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-048ff87ac1bbbbb5a095"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+            "separator": "\n\n",
+            "id": "n-43fba5f7f12639bc9930"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+            "separator": "\n\n",
+            "id": "n-bd819f6b66d36dc9feb2"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-1ae250dbd39c81c50749"
+          },
+          {
+            "type": "entry",
+            "key": "棋手升级判断",
+            "show_key": true,
+            "value": "先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3b82d3e8d0a17594a228"
+          },
+          {
+            "type": "entry",
+            "key": "优先选择能加快棋手升级的天赋，例如先苦后甜",
+            "show_key": true,
+            "value": "输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-175ebec71436f6d70b43"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+            "separator": "\n\n",
+            "id": "n-a5b6a2e2fd978aa2d051"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+            "separator": "\n\n",
+            "id": "n-ffc95410ff9c3d6cabf3"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-e9d39a6a8987e03170d4"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[河洛花木兰](../lineups/河洛花木兰-庄小鱼.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-9dc3b0d957406cbf7d83"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a908abb029f70671558a"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3e2077e7a15687e54001"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "河洛、日落海。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-6545ee06e9bc32cb7769"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "如梦与梦幻商店补组件、觉醒和露娜。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-67feeacd2604e06550f7"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "技能不保证命中核心；人数、合成和保血需要协同。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-267d76b89f99848e106b"
+          },
+          {
+            "type": "entry",
+            "key": "来牌与同行",
+            "show_key": true,
+            "value": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-d51a03f0801216933dd0"
+          },
+          {
+            "type": "entry",
+            "key": "对手与压力",
+            "show_key": true,
+            "value": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-defb22d03cf47086ff41"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-78c0470f6aabf19afe62"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-2d7c7cf14dc1c554edf2"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-ef91e52f48187bef00cf"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-b64de566915a53cdea66"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-ec9566f7284913eca2d5"
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "title": "[庄小鱼无阵营](../lineups/庄小鱼无阵营-庄小鱼.json)",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-6d1b0262bd1fa99d604f"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-2658ca2d237b1dc15fd3"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-ea5274cbd3af3236e601"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "暂无已确认条件。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-6bfdc24fb8b924a6a2b4"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1060acde86954274d235"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1b3954e803d052011e72"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-c11d04e8ecabc72e9790"
+          },
+          {
+            "type": "heading",
+            "level": 4,
+            "title": "阶段强度",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-78ae6063d1bccd2e93a5"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "升级过渡需实际承伤与输出保血。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-9870cdffb24f6aa3ff86"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-0948d169794200230c3a"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-b873e4ed4144f08a756c"
+          },
+          {
+            "id": "b3-28d070ca50c5da9282",
+            "type": "entry",
+            "key": "日落海整备",
+            "show_key": true,
+            "value": "整备成员积累核心，海诺输出、雅典娜承伤、朵莉亚恢复；如梦似幻与梦幻商店帮助补体系和觉醒。没有装备的艾琳不急上场分摊核心，露娜则先区分登场成长收益与是否值得常驻。",
+            "separator": "\n\n"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-0cd63f4d8b7e3a0ef63c"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+            "separator": "\n\n",
+            "id": "n-31d6c038a6facfca73b7"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+            "separator": "\n\n",
+            "id": "n-261fdec0c0201972bacb"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+            "separator": "\n\n",
+            "id": "n-07fc0b137cd482d979cd"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+            "separator": "\n\n",
+            "id": "n-c61394ec4d3f69211aeb"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+            "separator": "\n\n",
+            "id": "n-6455eb54b35a8de14a3d"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+            "separator": "\n\n",
+            "id": "n-2999ed65e527ecb249ea"
+          },
+          {
+            "id": "b-zhuang-multi-sync",
+            "type": "entry",
+            "key": "无阵营的输出分工",
+            "show_key": true,
+            "value": "无阵营路线通常让孙悟空与海月共同处理高等级目标，姜子牙先清杂兵，杨玉环补续航；海月到场后不必固定卖掉孙悟空。全队能够取胜时保留多核与四海来援的收益，确实难以取胜、需要集中等级时再按手中转级牌处理。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "b3-6397d0ed883e1f1bd8",
+            "type": "entry",
+            "key": "日落海的秘技预算与终局精简",
+            "show_key": true,
+            "value": "如梦取得的是手牌，梦幻引擎替换商店后仍要购买，使用引擎前保留实际买牌能量。需要精简时，先确认海诺、雅典娜、朵莉亚能承担战斗，再按传承最低三名随机分配处理米莱狄；不把故意输一轮或必定给海诺等级作为通用操作。",
+            "separator": "\n\n"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-44ceb266bede60e56f72"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+            "separator": "\n",
+            "id": "n-36cc13a3d009ddf36583"
+          },
+          {
+            "id": "c3-zhuang-balanced-direction-h",
+            "type": "heading",
+            "level": 2,
+            "title": "本批阵容补充",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-zhuang-balanced-direction",
+            "type": "entry",
+            "key": "无阵营均衡路线",
+            "show_key": true,
+            "value": "没有刺客战斗天赋、且公孙离与猪八戒能承担当前输出和前排时，采用公孙离、猪八戒、姜子牙、海月、太乙真人、裴擒虎六人均衡路线。逍遥自在按场上无阵营人数给全队成长，四海来援让无阵营英雄阵亡后召唤同品阶同等级英雄继续参战；不需要为了成型强上孙悟空。拿到身外身等明确强化孙悟空的天赋时，再比较原孙悟空多核路线；已在用孙悟空、其单体输出仍有效时，也保留与海月并用或由海月接替的原有条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-zhuang-dahe-direction-h",
+            "type": "heading",
+            "level": 2,
+            "title": "大河龙蛇路线",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-zhuang-dahe-direction",
+            "type": "entry",
+            "key": "大河龙蛇",
+            "show_key": true,
+            "value": "东皇太一承伤压制，敖隐靠图腾持续叠临时等级与攻速；张良和因缘图腾补全队永久成长。如梦似幻用于补大河组件和觉醒，低血速5只是有存款利息与即时战力资源的示例，不能固定卖血。结束成长后才按真实转级规则换入太乙真人、钟馗、瑶等保护。",
+            "separator": "\n\n"
+          }
+        ],
+        "adaptations": [
+          {
+            "lineup": "heluo-huamulan",
+            "branch": "zhuang",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-庄小鱼.md",
+            "selection": {
+              "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+              "avoid": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+                "英雄投入": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                  "claim_refs": [
+                    "fmt24-zhuang-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+                  "claim_refs": [
+                    "fmt24-zhuang-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                  "claim_refs": [
+                    "fmt24-zhuang-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛",
+              "日落海"
+            ],
+            "advantages": "如梦与梦幻商店补组件、觉醒和露娜。",
+            "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
+          },
+          {
+            "lineup": "b22-zhuang-no-faction",
+            "branch": "owner",
+            "title": "庄小鱼无阵营",
+            "path": "knowledge/lineups/庄小鱼无阵营-庄小鱼.md",
+            "selection": {
+              "stage_strength": {
+                "early": {
+                  "text": "升级过渡需实际承伤与输出保血。",
+                  "claim_refs": [
+                    "fmt24-owner-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+                  "claim_refs": [
+                    "fmt24-owner-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+                  "claim_refs": [
+                    "fmt24-owner-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              },
+              "adopt": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+              "avoid": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+              "signals": {
+                "英雄投入": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。"
+              }
+            },
+            "required_factions": [],
+            "advantages": "暂无已确认结论",
+            "disadvantages": "暂无已确认结论"
+          }
+        ],
+        "supporting_nodes": [
+          {
+            "id": "support-tier-guide-general-player-zhuang",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "棋手升级判断：先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-9c25b7d48b3156b925e1d7",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "技能：梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-bad7a0bb3800a3179ad2e3",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-2a75b717da595796d7b4c5",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-4ee5d79328ad7ecc741cd7",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "专属天赋：获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-c989e1562c1af28a5ab0cf",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "优先选择能加快棋手升级的天赋，例如先苦后甜：输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-946e25fd91a11bc125f7f7",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-984b3e6def42ad1d0f3613",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-6a4fd645c697f53b07730c",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-a54354980431318eecaf68",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-e66d6d2ba8eafb019eeafb",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-31-opening-effects",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-31-three-template",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-31-dream-random",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-31-mulan-rumeng",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+            "separator": ""
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "b-zhuang-multi-sync",
+          "text_ref": "b-zhuang-multi-sync",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2426.79
+            },
+            {
+              "type": "video",
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2571.7,
+              "end": 2713.64
+            }
+          ],
+          "origin": "batch77_fulltext_review"
+        },
+        {
+          "id": "b3-28d070ca50c5da9282-b3-claim",
+          "text_ref": "b3-28d070ca50c5da9282",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "origin": "batch77_second_fulltext_review",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 28.12,
+              "end": 145.31
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 144,
+              "paragraph_end": 144
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-b-extra3.json",
+            "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+          }
+        },
+        {
+          "id": "b3-6397d0ed883e1f1bd8-b3-claim",
+          "text_ref": "b3-6397d0ed883e1f1bd8",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "origin": "batch77_second_fulltext_review",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 121.95,
+              "end": 225.32
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-b-extra3.json",
+            "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+          }
+        },
+        {
+          "id": "b3-official-rumeng-cost6",
+          "text_ref": "n-048ff87ac1bbbbb5a095",
+          "section": "秘技",
+          "kind": "mechanic",
+          "inference": false,
+          "version": null,
+          "condition": "当前官网发布卡面",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+              "paragraph_start": 1,
+              "paragraph_end": 3
+            }
+          ]
+        },
+        {
+          "id": "c3-zhuang-balanced-direction-c3-claim",
+          "text_ref": "c3-zhuang-balanced-direction",
+          "section": "本批阵容补充",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1zgH16UEgk:p1",
+              "start": 11.82,
+              "end": 160.09
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 807,
+              "paragraph_end": 807
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 473,
+              "paragraph_end": 473
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "c3-zhuang-dahe-direction-c3-claim",
+          "text_ref": "c3-zhuang-dahe-direction",
+          "section": "大河龙蛇路线",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 90.84,
+              "end": 154.48
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 146,
+              "paragraph_end": 146
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 256,
+              "paragraph_end": 256
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 104,
+              "paragraph_end": 104
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 301.49
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 125,
+              "paragraph_end": 125
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "official-c189ca0da54df0c63a7b",
+          "text_ref": "official-2abddeac0eb6e2159bf9",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 546,
+              "paragraph_end": 546
+            }
+          ]
+        },
+        {
+          "id": "official-012c7fe13e50b68dec65",
+          "text_ref": "official-af8b2e454e44aa5603ea",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3b2bea95d05fabf3cef39817ad0ac9f51143f8eccce89086930decbc5efd8e7",
+              "paragraph_start": 547,
+              "paragraph_end": 547
+            }
+          ]
+        },
+        {
+          "id": "official-965ea7a0c50853b91200",
+          "text_ref": "official-91231c640d6cf0353e71",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 774,
+              "paragraph_end": 774
+            }
+          ]
+        },
+        {
+          "id": "official-400548dbb30d6040464b",
+          "text_ref": "n-c6e0f4ffc3247f64470c",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 775,
+              "paragraph_end": 775
+            }
+          ]
+        },
+        {
+          "id": "official-d34b84762ec89df82f5b",
+          "text_ref": "n-6c4130a7ac1576f48aaf",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 548,
+              "paragraph_end": 548
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "at": "2026-10-28T15:30:31.764343+00:00",
+      "origin": "import",
+      "body": {
+        "schema_version": 6,
+        "leading": "",
+        "nodes": [
+          {
+            "type": "heading",
+            "level": 1,
+            "title": "庄小鱼",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3755bd442141d66a1874"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "技能",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-3cc74abe48119da9ebbb"
+          },
+          {
+            "id": "official-95341c1fb8fd5337112b",
+            "type": "heading",
+            "level": 3,
+            "title": "技能",
+            "separator": "\n\n"
+          },
+          {
+            "id": "n-c6e0f4ffc3247f64470c",
+            "type": "entry",
+            "key": "梦境游戏",
+            "show_key": true,
+            "value": "庄小鱼升级时，会随机获得1张效果牌。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-797c18d49048dc670719",
+            "type": "heading",
+            "level": 3,
+            "title": "秘技",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-2abddeac0eb6e2159bf9",
+            "type": "entry",
+            "key": "美梦成真",
+            "show_key": true,
+            "value": "升到5级和6级，获得1张秘技牌如梦似幻。\n\n官网等级标记：1级（字段含义待确认，不等同于必定获得）；获得方式：初始获得卡牌；后续选项：如梦似幻。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-edbd0bf73a6e547b20ec",
+            "type": "heading",
+            "level": 3,
+            "title": "专属天赋",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-af8b2e454e44aa5603ea",
+            "type": "entry",
+            "key": "引擎升级",
+            "show_key": true,
+            "value": "获得1张梦幻引擎：将商店替换为梦幻商店。若在棋手生命值≤30时战斗失败，则重复获得。\n\n官网等级标记：6级（字段含义待确认，不等同于必定获得）；获得方式：棋手升级时概率选择获取天赋。；出现阶段：初始阵容；后续选项：梦幻引擎。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-12061c238198d2e0d72b",
+            "type": "heading",
+            "level": 3,
+            "title": "关联选项",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-91231c640d6cf0353e71",
+            "type": "entry",
+            "key": "如梦似幻",
+            "show_key": true,
+            "value": "基于场上英雄、阵营（至少3名）获取一套梦幻手牌。\n\n获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "n-6c4130a7ac1576f48aaf",
+            "type": "entry",
+            "key": "梦幻引擎",
+            "show_key": true,
+            "value": "根据场上的阵容，将商店替换为梦幻商店。\n\n获得方式：初始获得卡牌。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "official-f2a60836ed93661e2509",
+            "type": "heading",
+            "level": 3,
+            "title": "技能运用与补充",
+            "separator": "\n\n"
+          },
+          {
+            "type": "entry",
+            "key": "秘技",
+            "show_key": true,
+            "value": "棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-048ff87ac1bbbbb5a095"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+            "separator": "\n\n",
+            "id": "n-43fba5f7f12639bc9930"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+            "separator": "\n\n",
+            "id": "n-bd819f6b66d36dc9feb2"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "前期思路",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-1ae250dbd39c81c50749"
+          },
+          {
+            "type": "entry",
+            "key": "棋手升级判断",
+            "show_key": true,
+            "value": "先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3b82d3e8d0a17594a228"
+          },
+          {
+            "type": "entry",
+            "key": "优先选择能加快棋手升级的天赋，例如先苦后甜",
+            "show_key": true,
+            "value": "输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+            "prefix": "- ",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-175ebec71436f6d70b43"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+            "separator": "\n\n",
+            "id": "n-a5b6a2e2fd978aa2d051"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- 后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+            "separator": "\n\n",
+            "id": "n-ffc95410ff9c3d6cabf3"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用打法与选择",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-e9d39a6a8987e03170d4"
+          },
+          {
+            "id": "pf28-bd1fe610de989dab1010",
+            "type": "entry",
+            "key": "河洛花木兰",
+            "show_key": true,
+            "value": "【必须阵营：河洛、日落海。】【关键成员：花木兰、上官婉儿、李白、武则天、程咬金、露娜。】【定阵条件：有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。 凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。 先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。 对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。】【主要英雄：花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。】【核心机制：花木兰是主要输出，也承担前排伤害；全队本回合每使用5张古币，就能给她增加1次复生。上官婉儿的整备效果给多名河洛英雄使用古币，程咬金的整备效果产出古币并给自己使用古币，再把手牌古币用于花木兰，继续叠加复生次数。露娜的登场效果再次触发上官婉儿和程咬金整备，继续产币、用币；李白和武则天提高古币带来的临时与永久等级，让花木兰每次复生后都能继续承伤、输出。庄小鱼升级后用如梦似幻，根据场上河洛成员取得梦幻手牌，补核心与觉醒；6级的梦幻引擎再补后续牌源。】【优势：如梦与梦幻商店补组件、觉醒和露娜。】【短板：技能不保证命中核心；人数、合成和保血需要协同。】【阶段强度：前期：保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力；中期：棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险；后期：上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。】【可能变阵：暂无已确认的变阵方案。】",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "pf28-eedfc9a9fbc0e16ac015",
+            "type": "entry",
+            "key": "庄小鱼无阵营",
+            "show_key": true,
+            "value": "【必须阵营：主体使用无阵营英雄，没有共同强制阵营；过渡或条件工具按各自阵营开放情况选择。】【关键成员：原多核路线由孙悟空、海月输出，姜子牙清杂、杨玉环续航；无刺客强化且公孙离、猪八戒能承担战斗时，也可选公孙离、猪八戒、姜子牙、海月、太乙真人、裴擒虎的均衡路线，不强上孙悟空。】【定阵条件：能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。 开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。】【主要英雄：无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。】【核心机制：孙悟空、海月承担主要输出，姜子牙清杂兵，杨玉环维持续航。庄小鱼升到5级和6级取得如梦似幻，补齐无阵营英雄与专属效果牌，再靠逍遥自在同步提升多个英雄的永久等级。孙悟空回收退场过渡英雄的等级，使早期投入继续服务输出；这套打法的上限来自全队成长，成型速度则受逍遥自在获取影响。 没有刺客战斗天赋、且公孙离与猪八戒能承担当前输出和前排时，采用公孙离、猪八戒、姜子牙、海月、太乙真人、裴擒虎六人均衡路线。逍遥自在按场上无阵营人数给全队成长，四海来援让无阵营英雄阵亡后召唤同品阶同等级英雄继续参战；不需要为了成型强上孙悟空。拿到身外身等明确强化孙悟空的天赋时，再比较原孙悟空多核路线；已在用孙悟空、其单体输出仍有效时，也保留与海月并用或由海月接替的原有条件。】【优势：尚待确认】【短板：尚待确认】【阶段强度：前期：升级过渡需实际承伤与输出保血；中期：5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗；后期：多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。】【可能变阵：暂无已确认的变阵方案。】",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "pf28-90079804dafa5dd30698",
+            "type": "entry",
+            "key": "日落海整备",
+            "show_key": true,
+            "value": "【必须阵营：日落海。】【关键成员：海诺、雅典娜、朵莉亚。】【定阵条件：日落海可用，海诺、雅典娜、朵莉亚等组件能逐步取得，现有战力能支撑如梦似幻与梦幻商店补牌时采用；引擎替换商店后仍需保留买牌能量。】【主要英雄：日落海整备成员先积累阿科米亚核心等级，海诺让核心每次成长再提高，开战时用核心分配的临时等级支撑输出。】【核心机制：整备成员积累核心，海诺输出、雅典娜承伤、朵莉亚恢复；如梦似幻与梦幻商店帮助补体系和觉醒。没有装备的艾琳不急上场分摊核心，露娜则先区分登场成长收益与是否值得常驻。】【优势：整备积累核心，海诺输出、雅典娜承伤、朵莉亚恢复；如梦似幻与梦幻商店帮助补齐组件和觉醒。】【短板：缺核心时有空窗，引擎商店仍需购买；没有装备的艾琳过早上场会分摊核心，露娜登场收益与常驻价值需分开判断。】【阶段强度：前期：尚待确认；中期：尚待确认；后期：尚待确认。】【可能变阵：暂无已确认的变阵方案。】",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "pf28-01bb8912e95413ffe006",
+            "type": "entry",
+            "key": "大河龙蛇",
+            "show_key": true,
+            "value": "【必须阵营：大河】【关键成员：东皇太一、敖隐为双核心，鬼谷子、少司缘等图腾配张良持续成长；太乙真人、钟馗、瑶在结束成长后按对手补保护。】【定阵条件：大河可用，能以当前过渡战力支撑升5级并留出如梦与后续买牌能量时采用；低血速5仅在有存款利息和即时战力资源时成立，不固定卖血。】【主要英雄：东皇太一承伤压制，敖隐后排持续输出；先补两核心与图腾质量，决赛再按实际缺口补保护和降级。】【核心机制：东皇太一用图腾等级换取开团临时等级，靠能量球的最大生命值伤害与恢复承伤、压制敌方核心；敖隐则从存活图腾持续取得攻速和临时等级，后排输出随战斗时间提高。张良把队伍多次开团转成永久等级，少司缘的因缘图腾按全队普攻次数继续加级，鬼谷子提供先知图腾装备，虞姬与云中君再补等级。庄小鱼在棋手5级、6级取得如梦似幻，用以补齐大河成员和觉醒，随后以太乙真人、钟馗、瑶等条件保护把龙蛇的成长兑现为战力。】【优势：图腾、张良与因缘普攻成长相互衔接，如梦似幻和梦幻商店补大河组件与觉醒。】【短板：高阶核心未齐和图腾过早被清会中断输出成长；如梦产物不固定，商店补牌仍要实际购买。】【阶段强度：前期：尚待确认；中期：尚待确认；后期：尚待确认】【可能变阵：暂无已确认的变阵方案】",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "适用技巧",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-0cd63f4d8b7e3a0ef63c"
+          },
+          {
+            "type": "entry",
+            "key": "升六与梦幻引擎触发",
+            "show_key": true,
+            "value": "庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+            "separator": "\n\n",
+            "id": "n-31d6c038a6facfca73b7",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "entry",
+            "key": "紧急救援与再次获取引擎",
+            "show_key": true,
+            "value": "后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+            "separator": "\n\n",
+            "id": "n-261fdec0c0201972bacb",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "entry",
+            "key": "梦幻商店的候选整理",
+            "show_key": true,
+            "value": "梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+            "separator": "\n\n",
+            "id": "n-07fc0b137cd482d979cd",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "entry",
+            "key": "无阵营如梦的人数选择",
+            "show_key": true,
+            "value": "无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+            "separator": "\n\n",
+            "id": "n-c61394ec4d3f69211aeb",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "entry",
+            "key": "逍遥自在与刷新预算",
+            "show_key": true,
+            "value": "无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+            "separator": "\n\n",
+            "id": "n-6455eb54b35a8de14a3d",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "entry",
+            "key": "花木兰如梦的河洛人数",
+            "show_key": true,
+            "value": "河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；准备留场的英雄应随当前需要找缺牌或补觉醒调整。5名与7名河洛时的具体复制差异尚待确认，不将其当作棋手等级条件。",
+            "separator": "\n\n",
+            "id": "n-2999ed65e527ecb249ea",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "b-zhuang-multi-sync",
+            "type": "entry",
+            "key": "无阵营的输出分工",
+            "show_key": true,
+            "value": "无阵营路线通常让孙悟空与海月共同处理高等级目标，姜子牙先清杂兵，杨玉环补续航；海月到场后不必固定卖掉孙悟空。全队能够取胜时保留多核与四海来援的收益，确实难以取胜、需要集中等级时再按手中转级牌处理。",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "b3-6397d0ed883e1f1bd8",
+            "type": "entry",
+            "key": "无阵营终局的等级集中",
+            "show_key": true,
+            "value": "如梦取得的是手牌，梦幻引擎替换商店后仍要购买，使用引擎前保留实际买牌能量。需要精简时，先确认海诺、雅典娜、朵莉亚能承担战斗，再按传承最低三名随机分配处理米莱狄；不把故意输一轮或必定给海诺等级作为通用操作。",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "title": "关联知识",
+            "space": " ",
+            "separator": "\n\n",
+            "id": "n-44ceb266bede60e56f72"
+          },
+          {
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "- [河洛花木兰](../lineups/河洛花木兰-明先生.json)",
+            "separator": "\n",
+            "id": "n-36cc13a3d009ddf36583"
+          },
+          {
+            "id": "pf28-c252e3cf1d44b1eb1ffd",
+            "type": "entry",
+            "key": "大河龙蛇",
+            "show_key": true,
+            "value": "[大河龙蛇](../lineups/大河龙蛇-庄小鱼.json)",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          }
+        ],
+        "adaptations": [
+          {
+            "lineup": "heluo-huamulan",
+            "branch": "zhuang",
+            "title": "河洛花木兰",
+            "path": "knowledge/lineups/河洛花木兰-庄小鱼.json",
+            "selection": {
+              "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+              "avoid": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+              "signals": {
+                "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+                "对手与压力": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+                "英雄投入": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。"
+              },
+              "stage_strength": {
+                "early": {
+                  "text": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                  "claim_refs": [
+                    "fmt24-zhuang-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+                  "claim_refs": [
+                    "fmt24-zhuang-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+                  "claim_refs": [
+                    "fmt24-zhuang-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              }
+            },
+            "required_factions": [
+              "河洛",
+              "日落海"
+            ],
+            "advantages": "如梦与梦幻商店补组件、觉醒和露娜。",
+            "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
+          },
+          {
+            "lineup": "b22-zhuang-no-faction",
+            "branch": "owner",
+            "title": "庄小鱼无阵营",
+            "path": "knowledge/lineups/庄小鱼无阵营-庄小鱼.json",
+            "selection": {
+              "stage_strength": {
+                "early": {
+                  "text": "升级过渡需实际承伤与输出保血。",
+                  "claim_refs": [
+                    "fmt24-owner-e27b4cdf79c3"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+                  "claim_refs": [
+                    "fmt24-owner-38713054751b"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+                  "claim_refs": [
+                    "fmt24-owner-98c13f1a34fb"
+                  ],
+                  "inference": true
+                }
+              },
+              "adopt": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+              "avoid": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+              "signals": {
+                "英雄投入": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。"
+              }
+            },
+            "required_factions": [],
+            "advantages": "暂无已确认结论",
+            "disadvantages": "暂无已确认结论"
+          }
+        ],
+        "supporting_nodes": [
+          {
+            "id": "support-tier-guide-general-player-zhuang",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "棋手升级判断：先核实升级后的如梦收益能否复制到当前真正有用的英雄，再比较等待更多成员与立即补战力的代价。已有后续技能机会不能替代当前保血；场上无用牌过多时不为凑人数拖延。具体结算人数、合成顺序和升级时点属于阵容路线，不作为所有打法的固定门槛。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-9c25b7d48b3156b925e1d7",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "技能：梦境游戏，庄小鱼升级时，会随机获得1张效果牌，可以用于提升战力或加速棋手升级。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-bad7a0bb3800a3179ad2e3",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "秘技：棋手升到5级和6级分别获得一张秘技牌如梦似幻，消耗6能量基于场上阵营提供对应阵营的高阶英雄和效果牌。当场上主要阵营人数为两人及以下，将开出随机阵容牌，只有场上主阵营人数大于等于三人，才能开出主阵营的套牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-2a75b717da595796d7b4c5",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "主阵营为4人，会开出4张随机通用的3-5阶效果牌和4张随机主阵营的3-5阶棋子；主阵营为5人，会开出2张随机通用的3-5阶效果牌和2张随机阵营专属效果牌，以及2张随机主阵营的4-5阶棋子和随机2张场上主阵营棋子；主阵营为6人，会开出2张主阵营专属效果牌和3张4-5阶主阵营棋子牌，以及随机3张场上主阵营棋子牌；当主阵营人数为7人，会完整复制场上棋子各一张（相当于一张金色天赋点兵点将）以及1张随机主阵营专属效果牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-4ee5d79328ad7ecc741cd7",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "专属天赋：获得一张梦幻引擎，使用后将商店替换为梦幻商店，梦幻商店里的英雄牌和效果牌全部匹配当前阵营。棋手生命值小于等于30时，每次战斗失败都能再获取一张。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-c989e1562c1af28a5ab0cf",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "优先选择能加快棋手升级的天赋，例如先苦后甜：输掉两场战斗后获得6棋手经验；无限进步：立刻获得1张3阶兑换券，回合开始时获得2棋手经验，满级后获得2能量。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-946e25fd91a11bc125f7f7",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "庄小鱼是中后期发力的棋手，需要升到五级和六级才能开出如梦似幻，所以前期主升级，速五快速让阵容成型再锁血，但不要为了升等级疯狂卖血，前期一般购买弈星上场吃升级额外经验。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-984b3e6def42ad1d0f3613",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "后续根据拍卖或者来牌确认阵容，开出如梦似幻后需要等体系确认之后再使用。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-6a4fd645c697f53b07730c",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "庄小鱼的梦幻引擎只有棋手升到六级后，生命值小于等于30时战斗失败才能重复获取，所以尽量保证30血以上升六。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-a54354980431318eecaf68",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "后期有紧急救援等天赋可以点，回复血量可以在战斗失败时重复获得梦幻引擎，往往能刷出阵容关键牌提升翻盘几率。",
+            "separator": ""
+          },
+          {
+            "id": "support-doc-e66d6d2ba8eafb019eeafb",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "梦幻引擎建议在场上只有关键牌未觉醒时使用，梦幻商店主要会刷出场上未觉醒的英雄牌，以及阵营特殊装备和阵营特殊效果牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-31-opening-effects",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "梦境游戏在棋手升级时随机给出效果牌；本次教学明确效果牌品阶不会超过当时棋手等级，因此低等级升级不能预期直接获得高阶效果牌。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-31-three-template",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "无阵营使用如梦似幻时，三名与四名英雄采用同一套牌模板；五、六、七名对应不同的专属效果牌和英雄复制组成。先按需要补英雄、找专属效果牌或复制关键觉醒决定人数，不把“人数越多越好”作为统一原则。",
+            "separator": ""
+          },
+          {
+            "id": "support-six-player-31-dream-random",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "无阵营的六人如梦似幻和梦幻商店都可能没有逍遥自在；配合展翅腾飞刷新前，要留出购买金币并确认当前场面能承受继续找牌。不能把教学中某次开到多张的结果当作保底数量。",
+            "separator": ""
+          },
+          {
+            "id": "support-b22-player-31-mulan-rumeng",
+            "type": "entry",
+            "key": "正文",
+            "show_key": false,
+            "value": "河洛花木兰用如梦时，先整理场上河洛成员，避免无关目标分走补牌；5名与7名河洛时的复制范围不同，不能理解成棋手5级与7级。准备留场的英雄应随当前需要找缺牌或补觉醒调整。",
+            "separator": ""
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-a908abb029f70671558a"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "凑入无用河洛牌、棋手升级后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-3e2077e7a15687e54001"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "河洛、日落海。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-6545ee06e9bc32cb7769"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "如梦与梦幻商店补组件、觉醒和露娜。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-67feeacd2604e06550f7"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "技能不保证命中核心；人数、合成和保血需要协同。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-267d76b89f99848e106b"
+          },
+          {
+            "type": "entry",
+            "key": "来牌与同行",
+            "show_key": true,
+            "value": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-d51a03f0801216933dd0"
+          },
+          {
+            "type": "entry",
+            "key": "对手与压力",
+            "show_key": true,
+            "value": "对手已能快速消耗复生时，先把资源用于当轮古币和战力，再考虑存牌。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-defb22d03cf47086ff41"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "花木兰集中战力资源，婉儿优先觉醒；普通露娜可启动双整备，使用本轮唤醒后再考虑出售，同行保留种子。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-78c0470f6aabf19afe62"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "保血过渡与精简尽快将棋手升至五级有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-ef91e52f48187bef00cf"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "棋手5级用如梦似幻集中补河洛核心与觉醒；为凑人数加入无用英雄、或等牌过久，都会增加掉血风险。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-b64de566915a53cdea66"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "上官婉儿觉醒、河洛人数和露娜齐备后，能反复触发整备用币，持续增加花木兰的复生与等级；面对控制和风筝时，还需补免控、追击并调整站位。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-ec9566f7284913eca2d5"
+          },
+          {
+            "type": "entry",
+            "key": "采用信号",
+            "show_key": true,
+            "value": "能够稳住升5级的过程，且如梦似幻可获得有用无阵营组件。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-2658ca2d237b1dc15fd3"
+          },
+          {
+            "type": "entry",
+            "key": "放弃或转向信号",
+            "show_key": true,
+            "value": "开启模板不保证逍遥自在；关键牌缺失且连续掉血时先补战力。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-ea5274cbd3af3236e601"
+          },
+          {
+            "type": "entry",
+            "key": "必须阵营",
+            "show_key": true,
+            "value": "暂无已确认条件。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-6bfdc24fb8b924a6a2b4"
+          },
+          {
+            "type": "entry",
+            "key": "优势",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1060acde86954274d235"
+          },
+          {
+            "type": "entry",
+            "key": "短板",
+            "show_key": true,
+            "value": "暂无已确认结论",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-1b3954e803d052011e72"
+          },
+          {
+            "type": "entry",
+            "key": "英雄投入",
+            "show_key": true,
+            "value": "无阵营模板先能启动，牛魔、弈星不再承担过渡职责后，可先让孙悟空夺取其等级再出售；通常保留多核，极难终局才考虑集中等级。",
+            "prefix": "",
+            "key_suffix": "：",
+            "separator": "\n\n",
+            "id": "n-c11d04e8ecabc72e9790"
+          },
+          {
+            "type": "entry",
+            "key": "前期",
+            "show_key": true,
+            "value": "升级过渡需实际承伤与输出保血。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-9870cdffb24f6aa3ff86"
+          },
+          {
+            "type": "entry",
+            "key": "中期",
+            "show_key": true,
+            "value": "5级是否得到有效英雄和逍遥自在决定启动质量，随机模板可能形成空窗。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-0948d169794200230c3a"
+          },
+          {
+            "type": "entry",
+            "key": "后期",
+            "show_key": true,
+            "value": "多核共同成长后持续战斗力提高；缺逍遥自在时不能照搬成型上限。",
+            "prefix": "- **",
+            "key_suffix": "：** ",
+            "separator": "\n\n",
+            "id": "n-b873e4ed4144f08a756c"
+          },
+          {
+            "id": "b3-28d070ca50c5da9282",
+            "type": "entry",
+            "key": "日落海整备",
+            "show_key": true,
+            "value": "整备成员积累核心，海诺输出、雅典娜承伤、朵莉亚恢复；如梦似幻与梦幻商店帮助补体系和觉醒。没有装备的艾琳不急上场分摊核心，露娜则先区分登场成长收益与是否值得常驻。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-zhuang-balanced-direction",
+            "type": "entry",
+            "key": "无阵营均衡路线",
+            "show_key": true,
+            "value": "没有刺客战斗天赋、且公孙离与猪八戒能承担当前输出和前排时，采用公孙离、猪八戒、姜子牙、海月、太乙真人、裴擒虎六人均衡路线。逍遥自在按场上无阵营人数给全队成长，四海来援让无阵营英雄阵亡后召唤同品阶同等级英雄继续参战；不需要为了成型强上孙悟空。拿到身外身等明确强化孙悟空的天赋时，再比较原孙悟空多核路线；已在用孙悟空、其单体输出仍有效时，也保留与海月并用或由海月接替的原有条件。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "c3-zhuang-dahe-direction",
+            "type": "entry",
+            "key": "大河龙蛇",
+            "show_key": true,
+            "value": "东皇太一承伤压制，敖隐靠图腾持续叠临时等级与攻速；张良和因缘图腾补全队永久成长。如梦似幻用于补大河组件和觉醒，低血速5只是有存款利息与即时战力资源的示例，不能固定卖血。结束成长后才按真实转级规则换入太乙真人、钟馗、瑶等保护。",
+            "separator": "\n\n"
+          },
+          {
+            "id": "pf28-cae04acc7b904b62c74e",
+            "type": "entry",
+            "key": "河洛花木兰",
+            "show_key": true,
+            "value": "[河洛花木兰](../lineups/河洛花木兰-庄小鱼.json)",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "pf28-793b57364e069872f478",
+            "type": "entry",
+            "key": "庄小鱼无阵营",
+            "show_key": true,
+            "value": "[庄小鱼无阵营](../lineups/庄小鱼无阵营-庄小鱼.json)",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          },
+          {
+            "id": "pf28-0d26903b94cd17b2c4f6",
+            "type": "entry",
+            "key": "日落海整备",
+            "show_key": true,
+            "value": "[日落海整备](../lineups/日落海整备-庄小鱼.json)",
+            "separator": "\n\n",
+            "prefix": "",
+            "key_suffix": "："
+          }
+        ],
+        "semantics": {}
+      },
+      "claim_annotations": [
+        {
+          "id": "b-zhuang-multi-sync",
+          "text_ref": "b-zhuang-multi-sync",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2426.79
+            },
+            {
+              "type": "video",
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2571.7,
+              "end": 2713.64
+            }
+          ],
+          "origin": "batch77_fulltext_review"
+        },
+        {
+          "id": "b3-28d070ca50c5da9282-b3-claim",
+          "text_ref": "b3-28d070ca50c5da9282",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "origin": "batch77_second_fulltext_review",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 28.12,
+              "end": 145.31
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 144,
+              "paragraph_end": 144
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-b-extra3.json",
+            "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+          }
+        },
+        {
+          "id": "b3-6397d0ed883e1f1bd8-b3-claim",
+          "text_ref": "b3-6397d0ed883e1f1bd8",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "condition": "",
+          "version": null,
+          "inference": true,
+          "origin": "batch77_second_fulltext_review",
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 121.95,
+              "end": 225.32
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            }
+          ],
+          "review_basis": {
+            "report": "raw/reports/batch77/review-b-extra3.json",
+            "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
+          }
+        },
+        {
+          "id": "b3-official-rumeng-cost6",
+          "text_ref": "n-048ff87ac1bbbbb5a095",
+          "section": "秘技",
+          "kind": "mechanic",
+          "inference": false,
+          "version": null,
+          "condition": "当前官网发布卡面",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+              "paragraph_start": 1,
+              "paragraph_end": 3
+            }
+          ]
+        },
+        {
+          "id": "c3-zhuang-balanced-direction-c3-claim",
+          "text_ref": "c3-zhuang-balanced-direction",
+          "section": "本批阵容补充",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1zgH16UEgk:p1",
+              "start": 11.82,
+              "end": 160.09
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 807,
+              "paragraph_end": 807
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 473,
+              "paragraph_end": 473
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "c3-zhuang-dahe-direction-c3-claim",
+          "text_ref": "c3-zhuang-dahe-direction",
+          "section": "大河龙蛇路线",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 90.84,
+              "end": 154.48
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 146,
+              "paragraph_end": 146
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 256,
+              "paragraph_end": 256
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 104,
+              "paragraph_end": 104
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 301.49
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 125,
+              "paragraph_end": 125
+            }
+          ],
+          "review_basis": {
+            "stage3": {
+              "report": "raw/reports/batch77/review-c-stage3.json",
+              "basis": "新来源逐段全文与10/24官方实际查询卡面校准"
+            }
+          }
+        },
+        {
+          "id": "official-c189ca0da54df0c63a7b",
+          "text_ref": "official-2abddeac0eb6e2159bf9",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 546,
+              "paragraph_end": 546
+            }
+          ]
+        },
+        {
+          "id": "official-012c7fe13e50b68dec65",
+          "text_ref": "official-af8b2e454e44aa5603ea",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-e3b2bea95d05fabf3cef39817ad0ac9f51143f8eccce89086930decbc5efd8e7",
+              "paragraph_start": 547,
+              "paragraph_end": 547
+            }
+          ]
+        },
+        {
+          "id": "official-965ea7a0c50853b91200",
+          "text_ref": "official-91231c640d6cf0353e71",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 774,
+              "paragraph_end": 774
+            }
+          ]
+        },
+        {
+          "id": "official-400548dbb30d6040464b",
+          "text_ref": "n-c6e0f4ffc3247f64470c",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 775,
+              "paragraph_end": 775
+            }
+          ]
+        },
+        {
+          "id": "official-d34b84762ec89df82f5b",
+          "text_ref": "n-6c4130a7ac1576f48aaf",
+          "section": "技能",
+          "kind": "mechanic",
+          "origin": "official",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-29ac338300e78862730657d2822ce2b74ea81517fc50b9e8ad061577e5108e79",
+              "paragraph_start": 548,
+              "paragraph_end": 548
+            }
+          ]
+        },
+        {
+          "id": "pf28-ce9a33d3548752408300",
+          "text_ref": "n-31d6c038a6facfca73b7",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 11,
+              "paragraph_end": 11
+            }
+          ]
+        },
+        {
+          "id": "pf28-f47e4153e9344b7e5187",
+          "text_ref": "n-261fdec0c0201972bacb",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 12,
+              "paragraph_end": 12
+            }
+          ]
+        },
+        {
+          "id": "pf28-392195b0cf281f9c65c5",
+          "text_ref": "n-07fc0b137cd482d979cd",
+          "section": "棋手原始文档",
+          "kind": "conditional_strategy",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-7dea8940ae4bc1d4ddbda060e2527d04718961ab36140612b4f6abdef935d052",
+              "paragraph_start": 15,
+              "paragraph_end": 15
+            }
+          ]
+        },
+        {
+          "id": "pf28-1d4031bb5a83b9b67180",
+          "text_ref": "pf28-bd1fe610de989dab1010",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 514.96,
+              "end": 543.44
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 642.09,
+              "end": 669.99
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 0.0,
+              "end": 26.96
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 56.97,
+              "end": 85.65
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 85.9,
+              "end": 115.42
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 304.58,
+              "end": 332.29
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 536.05,
+              "end": 562.55
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 562.8,
+              "end": 590.19
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1132.17,
+              "end": 1180.47
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1181.24,
+              "end": 1220.39
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1220.85,
+              "end": 1227.31
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 27.2,
+              "end": 56.76
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 297.0,
+              "end": 326.4
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 442.84,
+              "end": 471.97
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 325.07,
+              "end": 353.98
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 888.74,
+              "end": 918.88
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1175.96,
+              "end": 1203.98
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1293.88,
+              "end": 1323.5
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 724.55,
+              "end": 757.24
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 757.61,
+              "end": 785.05
+            },
+            {
+              "source": "BV1jvJX6ZELy:p1",
+              "start": 111.31,
+              "end": 129.91
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 283.77,
+              "end": 313.11
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 313.35,
+              "end": 341.73
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 399.23,
+              "end": 427.97
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1107.59,
+              "end": 1150.98
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1385.38,
+              "end": 1436.46
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1492.87,
+              "end": 1535.78
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1536.08,
+              "end": 1587.23
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 648.81,
+              "end": 680.67
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 681.08,
+              "end": 710.04
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 710.34,
+              "end": 739.56
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 741.59,
+              "end": 769.51
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 750.39,
+              "end": 776.79,
+              "frame": "frames/763-59.jpg"
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 645.21,
+              "end": 670.87,
+              "frame": "frames/645-21.jpg"
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 56.17,
+              "end": 83.29
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 83.63,
+              "end": 109.67
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 31.49,
+              "end": 58.87,
+              "frame": "frames/35-0.jpg"
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 59.37,
+              "end": 88.82
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 164.78,
+              "end": 194.55,
+              "frame": "frames/205-0.jpg"
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 194.86,
+              "end": 225.68
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 225.91,
+              "end": 256.96
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 257.25,
+              "end": 286.76
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 288.09,
+              "end": 316.55
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 86.9,
+              "end": 116.5
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 117.03,
+              "end": 143.69
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 144.32,
+              "end": 174.18
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 174.54,
+              "end": 203.26
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 203.85,
+              "end": 232.79
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 232.96,
+              "end": 261.03
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 453.32,
+              "end": 477.72
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 478.7,
+              "end": 506.73
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 31.49,
+              "end": 58.87
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 560.51,
+              "end": 588.41
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 588.74,
+              "end": 617.77
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 618.27,
+              "end": 644.28
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 645.21,
+              "end": 670.87
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 671.34,
+              "end": 699.1
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 700.44,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1204.19,
+              "end": 1230.53
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1232.33,
+              "end": 1256.21
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1256.73,
+              "end": 1293.26
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 425.4,
+              "end": 452.68
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 506.94,
+              "end": 532.77
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 533.15,
+              "end": 560.1
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 573.52,
+              "end": 599.04
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 599.45,
+              "end": 627.65
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 531.05,
+              "end": 580.57
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 611.18,
+              "end": 642.51
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1070.73,
+              "end": 1102.92
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1103.84,
+              "end": 1144.5
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1145.23,
+              "end": 1175.26
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 291.94,
+              "end": 319.28
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 319.67,
+              "end": 348.39
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 348.87,
+              "end": 378.67
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 0.0,
+              "end": 39.28
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 39.96,
+              "end": 66.08
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1702.76,
+              "end": 1764.12
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1764.53,
+              "end": 1819.85
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1820.5,
+              "end": 1866.34
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 327.56,
+              "end": 351.38
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 543.2,
+              "end": 570.72
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 664.14,
+              "end": 698.28
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 792.2,
+              "end": 821.72
+            },
+            {
+              "source": "BV1g9a26vEdU:p1",
+              "start": 115.07,
+              "end": 143.73
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 893.68,
+              "end": 921.56
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 544.24,
+              "end": 570.23,
+              "frame": "frames/795-0.jpg"
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 753.7,
+              "end": 781.6
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 782.16,
+              "end": 808.06
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 333.45,
+              "end": 363.01,
+              "frame": "frames/365-0.jpg"
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 363.69,
+              "end": 386.43
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 1774.48,
+              "end": 1803.77
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 888.74,
+              "end": 918.88,
+              "frame": "frames/910-0.jpg"
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1650.39,
+              "end": 1701.97
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 224.22,
+              "end": 253.58,
+              "frame": "frames/260-0.jpg"
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 254.01,
+              "end": 283.43
+            }
+          ],
+          "derived_from": [
+            "principle-zhuang",
+            "fmt24-zhuang-e27b4cdf79c3",
+            "fmt24-zhuang-38713054751b",
+            "fmt24-zhuang-98c13f1a34fb"
+          ]
+        },
+        {
+          "id": "pf28-6700ef1bc9a68c52d4bf",
+          "text_ref": "pf28-cae04acc7b904b62c74e",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 514.96,
+              "end": 543.44
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 642.09,
+              "end": 669.99
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 0.0,
+              "end": 26.96
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 56.97,
+              "end": 85.65
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 85.9,
+              "end": 115.42
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 304.58,
+              "end": 332.29
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 536.05,
+              "end": 562.55
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 562.8,
+              "end": 590.19
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1132.17,
+              "end": 1180.47
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1181.24,
+              "end": 1220.39
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1220.85,
+              "end": 1227.31
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 27.2,
+              "end": 56.76
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 297.0,
+              "end": 326.4
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 442.84,
+              "end": 471.97
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 325.07,
+              "end": 353.98
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 888.74,
+              "end": 918.88
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1175.96,
+              "end": 1203.98
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1293.88,
+              "end": 1323.5
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 724.55,
+              "end": 757.24
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 757.61,
+              "end": 785.05
+            },
+            {
+              "source": "BV1jvJX6ZELy:p1",
+              "start": 111.31,
+              "end": 129.91
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 283.77,
+              "end": 313.11
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 313.35,
+              "end": 341.73
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 399.23,
+              "end": 427.97
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1107.59,
+              "end": 1150.98
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1385.38,
+              "end": 1436.46
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1492.87,
+              "end": 1535.78
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1536.08,
+              "end": 1587.23
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 648.81,
+              "end": 680.67
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 681.08,
+              "end": 710.04
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 710.34,
+              "end": 739.56
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 741.59,
+              "end": 769.51
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 750.39,
+              "end": 776.79,
+              "frame": "frames/763-59.jpg"
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 645.21,
+              "end": 670.87,
+              "frame": "frames/645-21.jpg"
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 56.17,
+              "end": 83.29
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 83.63,
+              "end": 109.67
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 31.49,
+              "end": 58.87,
+              "frame": "frames/35-0.jpg"
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 59.37,
+              "end": 88.82
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 164.78,
+              "end": 194.55,
+              "frame": "frames/205-0.jpg"
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 194.86,
+              "end": 225.68
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 225.91,
+              "end": 256.96
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 257.25,
+              "end": 286.76
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 288.09,
+              "end": 316.55
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 86.9,
+              "end": 116.5
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 117.03,
+              "end": 143.69
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 144.32,
+              "end": 174.18
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 174.54,
+              "end": 203.26
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 203.85,
+              "end": 232.79
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 232.96,
+              "end": 261.03
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 453.32,
+              "end": 477.72
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 478.7,
+              "end": 506.73
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 31.49,
+              "end": 58.87
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 560.51,
+              "end": 588.41
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 588.74,
+              "end": 617.77
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 618.27,
+              "end": 644.28
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 645.21,
+              "end": 670.87
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 671.34,
+              "end": 699.1
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 700.44,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1204.19,
+              "end": 1230.53
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1232.33,
+              "end": 1256.21
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1256.73,
+              "end": 1293.26
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 425.4,
+              "end": 452.68
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 506.94,
+              "end": 532.77
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 533.15,
+              "end": 560.1
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 573.52,
+              "end": 599.04
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 599.45,
+              "end": 627.65
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 531.05,
+              "end": 580.57
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 611.18,
+              "end": 642.51
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1070.73,
+              "end": 1102.92
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1103.84,
+              "end": 1144.5
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1145.23,
+              "end": 1175.26
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 291.94,
+              "end": 319.28
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 319.67,
+              "end": 348.39
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 348.87,
+              "end": 378.67
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 0.0,
+              "end": 39.28
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 39.96,
+              "end": 66.08
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1702.76,
+              "end": 1764.12
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1764.53,
+              "end": 1819.85
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1820.5,
+              "end": 1866.34
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 327.56,
+              "end": 351.38
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 543.2,
+              "end": 570.72
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 664.14,
+              "end": 698.28
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 792.2,
+              "end": 821.72
+            },
+            {
+              "source": "BV1g9a26vEdU:p1",
+              "start": 115.07,
+              "end": 143.73
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 893.68,
+              "end": 921.56
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 544.24,
+              "end": 570.23,
+              "frame": "frames/795-0.jpg"
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 753.7,
+              "end": 781.6
+            },
+            {
+              "source": "BV1mwHS66EUa:p1",
+              "start": 782.16,
+              "end": 808.06
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 333.45,
+              "end": 363.01,
+              "frame": "frames/365-0.jpg"
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 363.69,
+              "end": 386.43
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 1774.48,
+              "end": 1803.77
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 888.74,
+              "end": 918.88,
+              "frame": "frames/910-0.jpg"
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1650.39,
+              "end": 1701.97
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 224.22,
+              "end": 253.58,
+              "frame": "frames/260-0.jpg"
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 254.01,
+              "end": 283.43
+            }
+          ],
+          "derived_from": [
+            "principle-zhuang",
+            "fmt24-zhuang-e27b4cdf79c3",
+            "fmt24-zhuang-38713054751b",
+            "fmt24-zhuang-98c13f1a34fb"
+          ]
+        },
+        {
+          "id": "pf28-8c10eae04d25697aa85a",
+          "text_ref": "pf28-eedfc9a9fbc0e16ac015",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 727.31
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 0,
+              "end": 54.95
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 619.94
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 563.24,
+              "end": 645.79
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 727.31
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.08,
+              "end": 699.86
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.53,
+              "end": 395.35
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1897.19,
+              "end": 1949.87
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 536.17
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1501.74,
+              "end": 1547.32
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.5,
+              "end": 536.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.6,
+              "end": 675.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.31,
+              "end": 751.23
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.56,
+              "end": 778.49
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.3,
+              "end": 751.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.6,
+              "end": 778.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 896.3,
+              "end": 924.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1015.2,
+              "end": 1044.3
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.3,
+              "end": 1127.8
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1609.77,
+              "end": 1651.47
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2121.74,
+              "end": 2189.84
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.32,
+              "end": 1127.83
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1462.53,
+              "end": 1501.14
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.1,
+              "end": 699.9
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.2,
+              "end": 366.8
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.7,
+              "end": 2319.1
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.5,
+              "end": 395.4
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1653.04,
+              "end": 1701.02
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-principle",
+            "fmt24-owner-ac0ad7627d64",
+            "fmt24-owner-13e8a1cfa033",
+            "fmt24-owner-6d19c54c44ea",
+            "fmt24-owner-6cef48f9e392",
+            "fmt24-owner-4845a9632bcf",
+            "fmt24-owner-db9a87220df6",
+            "fmt24-owner-85eea5d917d3",
+            "fmt24-owner-e27b4cdf79c3",
+            "fmt24-owner-38713054751b",
+            "fmt24-owner-98c13f1a34fb"
+          ]
+        },
+        {
+          "id": "pf28-4f5d9c21dfa0f18fee7f",
+          "text_ref": "pf28-793b57364e069872f478",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 727.31
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 0,
+              "end": 54.95
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 619.94
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 563.24,
+              "end": 645.79
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 727.31
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.16
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.08,
+              "end": 699.86
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.74,
+              "end": 2319.12
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.53,
+              "end": 395.35
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1897.19,
+              "end": 1949.87
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.51,
+              "end": 536.17
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1501.74,
+              "end": 1547.32
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 508.5,
+              "end": 536.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.6,
+              "end": 675.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 700.6,
+              "end": 726.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.23,
+              "end": 366.76
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 646.63,
+              "end": 675.55
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.31,
+              "end": 751.23
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.56,
+              "end": 778.49
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 727.3,
+              "end": 751.2
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 751.6,
+              "end": 778.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 896.3,
+              "end": 924.5
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1015.2,
+              "end": 1044.3
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.3,
+              "end": 1127.8
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1609.77,
+              "end": 1651.47
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2121.74,
+              "end": 2189.84
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1083.32,
+              "end": 1127.83
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1462.53,
+              "end": 1501.14
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 676.1,
+              "end": 699.9
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 341.2,
+              "end": 366.8
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 2257.7,
+              "end": 2319.1
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 367.5,
+              "end": 395.4
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 1653.04,
+              "end": 1701.02
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 954.0,
+              "end": 982.0
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 982.7,
+              "end": 1010.1
+            },
+            {
+              "source": "BV1tvYS6MEHf:p1",
+              "start": 1011.0,
+              "end": 1037.3
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-principle",
+            "fmt24-owner-ac0ad7627d64",
+            "fmt24-owner-13e8a1cfa033",
+            "fmt24-owner-6d19c54c44ea",
+            "fmt24-owner-6cef48f9e392",
+            "fmt24-owner-4845a9632bcf",
+            "fmt24-owner-db9a87220df6",
+            "fmt24-owner-85eea5d917d3",
+            "fmt24-owner-e27b4cdf79c3",
+            "fmt24-owner-38713054751b",
+            "fmt24-owner-98c13f1a34fb"
+          ]
+        },
+        {
+          "id": "pf28-fc879fc8ccc3d856d564",
+          "text_ref": "pf28-90079804dafa5dd30698",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 28.12,
+              "end": 145.31
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 144,
+              "paragraph_end": 144
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            },
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 0,
+              "end": 153.42
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 937,
+              "paragraph_end": 937
+            }
+          ],
+          "derived_from": [
+            "b3-28d070ca50c5da9282-b3-claim",
+            "b3-7a5cae32f9ccfe090c-b3-claim"
+          ]
+        },
+        {
+          "id": "pf28-f975346bb59422bf1872",
+          "text_ref": "pf28-0d26903b94cd17b2c4f6",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 28.12,
+              "end": 145.31
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 144,
+              "paragraph_end": 144
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 58,
+              "paragraph_end": 58
+            },
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 0,
+              "end": 153.42
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 937,
+              "paragraph_end": 937
+            }
+          ],
+          "derived_from": [
+            "b3-28d070ca50c5da9282-b3-claim",
+            "b3-7a5cae32f9ccfe090c-b3-claim"
+          ]
+        },
+        {
+          "id": "pf28-b78ed234e01253d14bd6",
+          "text_ref": "n-c61394ec4d3f69211aeb",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 619.94
+            }
+          ],
+          "derived_from": [
+            "b22-b22-zhuang-no-faction-owner-middle",
+            "fmt24-owner-38713054751b"
+          ],
+          "review_basis": {
+            "report": "raw/reports/player-format-20261028/tip-lineage.json",
+            "basis": "保留原技巧含义，仅规范名称和段落；关联同棋手适用机制及条件依据，不将文本相似度作为证据结论。"
+          }
+        },
+        {
+          "id": "pf28-5f0f6ea10e8252541c4b",
+          "text_ref": "n-6455eb54b35a8de14a3d",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "type": "video",
+              "source": "BV1xweA6MEwM:p1",
+              "start": 121.95,
+              "end": 225.32
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 771,
+              "paragraph_end": 771
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 545,
+              "paragraph_end": 545
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 663,
+              "paragraph_end": 663
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 199,
+              "paragraph_end": 199
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 90,
+              "paragraph_end": 90
+            },
+            {
+              "type": "document",
+              "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+              "paragraph_start": 70,
+              "paragraph_end": 70
+            },
+            {
+              "source": "BV1Lfp76KE6e:p1",
+              "start": 425.16,
+              "end": 619.94
+            }
+          ],
+          "derived_from": [
+            "b3-6397d0ed883e1f1bd8-b3-claim",
+            "b22-b22-zhuang-no-faction-owner-middle"
+          ],
+          "review_basis": {
+            "report": "raw/reports/player-format-20261028/tip-lineage.json",
+            "basis": "保留原技巧含义，仅规范名称和段落；关联同棋手适用机制及条件依据，不将文本相似度作为证据结论。"
+          }
+        },
+        {
+          "id": "pf28-2ec5cdfd20187e8a9699",
+          "text_ref": "n-2999ed65e527ecb249ea",
+          "section": "适用技巧",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 222.7
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 865,
+              "paragraph_end": 865
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 638,
+              "paragraph_end": 638
+            }
+          ],
+          "derived_from": [
+            "c3-zhuang-dahe-long-she-n35-c3-claim"
+          ],
+          "review_basis": {
+            "report": "raw/reports/player-format-20261028/tip-lineage.json",
+            "basis": "保留原技巧含义，仅规范名称和段落；关联同棋手适用机制及条件依据，不将文本相似度作为证据结论。"
+          }
+        },
+        {
+          "id": "pf28-8f0274a822e220a6fbe4",
+          "text_ref": "pf28-01bb8912e95413ffe006",
+          "section": "适用打法与选择",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 90.84,
+              "end": 154.48
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 146,
+              "paragraph_end": 146
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 256,
+              "paragraph_end": 256
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 104,
+              "paragraph_end": 104
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 292,
+              "paragraph_end": 292
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 638,
+              "paragraph_end": 638
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 125,
+              "paragraph_end": 126
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 149,
+              "paragraph_end": 149
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 250,
+              "paragraph_end": 250
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 122,
+              "paragraph_end": 122
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 301.49
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 232,
+              "paragraph_end": 232
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 125,
+              "paragraph_end": 125
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 229,
+              "paragraph_end": 229
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 29.48,
+              "end": 58.78
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 29.48,
+              "end": 87.88
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 673,
+              "paragraph_end": 673
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 865,
+              "paragraph_end": 865
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 351,
+              "paragraph_end": 351
+            },
+            {
+              "type": "document",
+              "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+              "paragraph_start": 1,
+              "paragraph_end": 3
+            },
+            {
+              "type": "video",
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 222.7
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 301.49
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 331.22
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 58.7,
+              "end": 90.52
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 322,
+              "paragraph_end": 322
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 58.7,
+              "end": 87.88
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 331.21,
+              "end": 360.21
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 353,
+              "paragraph_end": 353
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 222.7
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 275.36,
+              "end": 301.49
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 266.7
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 557,
+              "paragraph_end": 557
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 556,
+              "paragraph_end": 556
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 575,
+              "paragraph_end": 575
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 558,
+              "paragraph_end": 558
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 547,
+              "paragraph_end": 547
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 568,
+              "paragraph_end": 568
+            }
+          ],
+          "derived_from": [
+            "c3-zhuang-dahe-long-she-n2-c3-claim",
+            "c3-zhuang-dahe-long-she-n3-c3-claim",
+            "c3-zhuang-dahe-long-she-n5-c3-claim",
+            "c3-zhuang-dahe-long-she-n7-c3-claim",
+            "c3-zhuang-dahe-long-she-n8-c3-claim",
+            "c3-zhuang-dahe-long-she-n9-c3-claim",
+            "c3-zhuang-dahe-long-she-n10-c3-claim",
+            "c3-zhuang-dahe-long-she-n11-c3-claim",
+            "c3-zhuang-dahe-long-she-n12-c3-claim",
+            "c3-zhuang-dahe-long-she-n13-c3-claim",
+            "c3-zhuang-dahe-long-she-n14-c3-claim",
+            "c3-zhuang-dahe-long-she-n15-c3-claim",
+            "c3-zhuang-dahe-long-she-n16-c3-claim",
+            "c3-zhuang-dahe-long-she-n17-c3-claim",
+            "c3-zhuang-dahe-long-she-n20-c3-claim",
+            "c3-zhuang-dahe-long-she-n21-c3-claim",
+            "c3-zhuang-dahe-long-she-n23-c3-claim",
+            "c3-zhuang-dahe-long-she-n24-c3-claim",
+            "c3-zhuang-dahe-long-she-n26-c3-claim",
+            "c3-zhuang-dahe-long-she-n27-c3-claim",
+            "c3-zhuang-dahe-long-she-n29-c3-claim",
+            "c3-zhuang-dahe-long-she-n31-c3-claim",
+            "c3-zhuang-dahe-long-she-n32-c3-claim",
+            "c3-zhuang-dahe-long-she-n33-c3-claim",
+            "c3-zhuang-dahe-long-she-n35-c3-claim",
+            "c3-zhuang-dahe-long-she-n37-c3-claim",
+            "c3-zhuang-dahe-long-she-n38-c3-claim",
+            "c3-zhuang-dahe-long-she-n40-c3-claim",
+            "c3-dragon-equip-557-claim",
+            "c3-dragon-equip-556-claim",
+            "c3-dragon-equip-575-claim",
+            "c3-dragon-equip-558-claim",
+            "c3-dragon-equip-547-claim",
+            "c3-dragon-equip-568-claim"
+          ]
+        },
+        {
+          "id": "pf28-9120fdf5fd798fa65fe8",
+          "text_ref": "pf28-c252e3cf1d44b1eb1ffd",
+          "section": "关联知识",
+          "kind": "conditional_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 90.84,
+              "end": 154.48
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 146,
+              "paragraph_end": 146
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 256,
+              "paragraph_end": 256
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 104,
+              "paragraph_end": 104
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 292,
+              "paragraph_end": 292
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 181,
+              "paragraph_end": 181
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 638,
+              "paragraph_end": 638
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 125,
+              "paragraph_end": 126
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 149,
+              "paragraph_end": 149
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 250,
+              "paragraph_end": 250
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 122,
+              "paragraph_end": 122
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 301.49
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 232,
+              "paragraph_end": 232
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 143,
+              "paragraph_end": 143
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 125,
+              "paragraph_end": 125
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 229,
+              "paragraph_end": 229
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 29.48,
+              "end": 58.78
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 29.48,
+              "end": 87.88
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 673,
+              "paragraph_end": 673
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 865,
+              "paragraph_end": 865
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 351,
+              "paragraph_end": 351
+            },
+            {
+              "type": "document",
+              "source": "doc-da43efb04b189442bb17208bb9a7aecff5247f417e0b58def390b2219f28ab63",
+              "paragraph_start": 1,
+              "paragraph_end": 3
+            },
+            {
+              "type": "video",
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 222.7
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 301.49
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 757,
+              "paragraph_end": 757
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 737,
+              "paragraph_end": 737
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 331.22
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 58.7,
+              "end": 90.52
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 322,
+              "paragraph_end": 322
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 58.7,
+              "end": 87.88
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 331.21,
+              "end": 360.21
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 353,
+              "paragraph_end": 353
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 193.8,
+              "end": 222.7
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 275.36,
+              "end": 301.49
+            },
+            {
+              "source": "BV1hvhn6ZERe:p1",
+              "start": 237.42,
+              "end": 266.7
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 557,
+              "paragraph_end": 557
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 556,
+              "paragraph_end": 556
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 575,
+              "paragraph_end": 575
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 558,
+              "paragraph_end": 558
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 547,
+              "paragraph_end": 547
+            },
+            {
+              "type": "document",
+              "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
+              "paragraph_start": 568,
+              "paragraph_end": 568
+            }
+          ],
+          "derived_from": [
+            "c3-zhuang-dahe-long-she-n2-c3-claim",
+            "c3-zhuang-dahe-long-she-n3-c3-claim",
+            "c3-zhuang-dahe-long-she-n5-c3-claim",
+            "c3-zhuang-dahe-long-she-n7-c3-claim",
+            "c3-zhuang-dahe-long-she-n8-c3-claim",
+            "c3-zhuang-dahe-long-she-n9-c3-claim",
+            "c3-zhuang-dahe-long-she-n10-c3-claim",
+            "c3-zhuang-dahe-long-she-n11-c3-claim",
+            "c3-zhuang-dahe-long-she-n12-c3-claim",
+            "c3-zhuang-dahe-long-she-n13-c3-claim",
+            "c3-zhuang-dahe-long-she-n14-c3-claim",
+            "c3-zhuang-dahe-long-she-n15-c3-claim",
+            "c3-zhuang-dahe-long-she-n16-c3-claim",
+            "c3-zhuang-dahe-long-she-n17-c3-claim",
+            "c3-zhuang-dahe-long-she-n20-c3-claim",
+            "c3-zhuang-dahe-long-she-n21-c3-claim",
+            "c3-zhuang-dahe-long-she-n23-c3-claim",
+            "c3-zhuang-dahe-long-she-n24-c3-claim",
+            "c3-zhuang-dahe-long-she-n26-c3-claim",
+            "c3-zhuang-dahe-long-she-n27-c3-claim",
+            "c3-zhuang-dahe-long-she-n29-c3-claim",
+            "c3-zhuang-dahe-long-she-n31-c3-claim",
+            "c3-zhuang-dahe-long-she-n32-c3-claim",
+            "c3-zhuang-dahe-long-she-n33-c3-claim",
+            "c3-zhuang-dahe-long-she-n35-c3-claim",
+            "c3-zhuang-dahe-long-she-n37-c3-claim",
+            "c3-zhuang-dahe-long-she-n38-c3-claim",
+            "c3-zhuang-dahe-long-she-n40-c3-claim",
+            "c3-dragon-equip-557-claim",
+            "c3-dragon-equip-556-claim",
+            "c3-dragon-equip-575-claim",
+            "c3-dragon-equip-558-claim",
+            "c3-dragon-equip-547-claim",
+            "c3-dragon-equip-568-claim"
+          ]
+        }
+      ]
     }
   ]
 }

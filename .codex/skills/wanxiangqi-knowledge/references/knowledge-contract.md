@@ -1,5 +1,7 @@
 # 知识契约 schema6
 
+阵容附件统一包含 `aliases: string[]`，一项一个完整别名，不新增 `alias` 字段。Top-50 当前有效人工匹配和组成唯一自动匹配，把网站名称去首尾空白后追加到对应棋手笔记，保留旧别名并去重。名称只用于检索，不用于自动匹配。每日同步和保存/恢复匹配复用共享知识锁、增量事务和库外版本历史；别名同步与榜单发布共用写锁，失败不报告同步成功。解除或改绑保留历史别名，正文、证据和人工保护不因此改变。
+
 ## 文件
 正文为 knowledge/players/棋手.json、knowledge/lineups/阵容-棋手.json、knowledge/other/名称.json，同名 .meta.json 保存身份、证据、人工保护、历史、冲突和关联。棋手及阵容必须绑定有效 player_id，棋手笔记唯一，阵容按棋手独立。
 
@@ -11,6 +13,8 @@ index.meta.json 的 schema_version=6，notes 仅包含 id/type/title/path/player
 - entry：key、show_key、value、separator，可有prefix和key_suffix保留原格式。
 
 无标题段落固定key=正文、show_key=false，多段以不同ID区分。英雄整段一个条目，五个行动字段及有据的可选获得途径、其他作用保留于value。列表、表格、代码、链接等在对应value保留Markdown语法，不能把全文当唯一字符串。
+
+棋手笔记的适用打法与适用技巧使用命名entry，具体格式见[player-notes](player-notes.md#适用打法与技巧的段落格式)。阵容九项“标题：内容”保存在value内，不加【】等装饰括号；每个阵容、每条技巧各占一段，不使用换行或子列表。
 
 semantics保存组成、路线、禁用和替换条件等知识，重复文本用 {"$text":"节点ID"} 引用；supporting_nodes保存已审核但不重复显示的支撑知识；adaptations保存棋手适配知识。当前知识不在附件保留第二份可编辑文本。
 

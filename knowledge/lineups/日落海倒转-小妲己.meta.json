@@ -7,7 +7,8 @@
   "path": "knowledge/lineups/日落海倒转-小妲己.json",
   "player_id": "player:10",
   "aliases": [
-    "司空震倒转-小妲己"
+    "司空震倒转-小妲己",
+    "日落海 · 司空震"
   ],
   "entities": [
     "card:1131",
@@ -3090,6 +3091,121 @@
       "origin": "batch77_a_hfn_stage16"
     }
   ],
+  "conflicts": [],
+  "hero_field_review": {
+    "reading_layout": {
+      "entity_paragraphs": true,
+      "hero_fields_required": true
+    },
+    "scope": "逐英雄五字段复核，未确认明确留缺，不以齐标签冒称完整"
+  },
+  "body_sha256": "ef869d1a36c31c39b355c60cc898596601af3fbd1d155f28025bb7c5cbe85991",
+  "batch77_conflicts": [
+    {
+      "id": "stage3-daji-all-effects-double",
+      "status": "resolved_current_official",
+      "video_quote": "6级的大招…给你的效果牌触发双倍",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1VVpo6gE8B:p1",
+          "start": 56.78,
+          "end": 112.58
+        }
+      ],
+      "official_quote": "每回合打出的第1张<color=#ffffff><b>效果牌</b></color>会触发2次。",
+      "official_evidence": [
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 79,
+          "paragraph_end": 79
+        }
+      ],
+      "same_condition": "6级魅力无限作用范围",
+      "handling": "三阵容与棋手摘要均只写每回合首张效果牌触发2次。"
+    },
+    {
+      "id": "stage3-riluohai-jixiaoman-core",
+      "status": "resolved_current_official_plus_transcript_ambiguity",
+      "video_quote": "如果你场上有技巧满…给你柱子加等级…场上有海诺…双倍提升",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1VVpo6gE8B:p1",
+          "start": 83.72,
+          "end": 130.45
+        }
+      ],
+      "official_quote": [
+        "每当你出售4名场上英雄后，获得1次临时刷新。",
+        "每当你出售2名场上英雄后，获得1次临时刷新。",
+        "每当<a href=3140012><color=#ffffff><b>阿科米亚核心</b></color></a>等级提升时，核心等级额外+1。",
+        "每当<a href=3140012><color=#ffffff><b>阿科米亚核心</b></color></a>等级提升时，核心等级额外+2。"
+      ],
+      "official_evidence": [
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 43,
+          "paragraph_end": 43
+        },
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 44,
+          "paragraph_end": 44
+        },
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 41,
+          "paragraph_end": 41
+        },
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 42,
+          "paragraph_end": 42
+        }
+      ],
+      "same_condition": "疑似姬小满的具体作用及海诺加级数",
+      "handling": "技巧满不直接认作加核心英雄；本路线姬小满只按当前出售换刷新作用，海诺按额外+1/+2；不虚构亚瑟/莱西奥等本源未讲成员补链。核心具体原始供级来源留缺。"
+    },
+    {
+      "id": "stage3-riluohai-yao-equipment-identity",
+      "status": "pending_equipment_identity",
+      "video_quote": "瑶妹带了个日落海的装备，可以分享到这个属性",
+      "evidence": [
+        {
+          "type": "video",
+          "source": "BV1VVpo6gE8B:p1",
+          "start": 214.74,
+          "end": 292.97
+        }
+      ],
+      "official_quote": "<a href=3><color=#ffffff><b>开团</b></color></a>：自身的首件普通装备分享给随机3名友方英雄（持续15秒）。",
+      "official_evidence": [
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
+          "paragraph_start": 32,
+          "paragraph_end": 32
+        }
+      ],
+      "same_condition": "瑶的装备是否使她成为核心等级接收者或改变属性",
+      "impact": "影响核心实际分配人数及司空震临时等级；不能只凭日落海装备俗称计算。",
+      "handling": "未知装备不建立通用别名或确认阵营；瑶仅为来源中的条件终局保护位，不把单局730等总等级泛化。"
+    }
+  ],
+  "revision": "9392a75455caacc38519",
+  "retired_claim_annotations": [],
   "history": [
     {
       "at": "2026-10-24T16:04:36.951909+00:00",
@@ -9974,120 +10090,5 @@
         }
       ]
     }
-  ],
-  "conflicts": [],
-  "hero_field_review": {
-    "reading_layout": {
-      "entity_paragraphs": true,
-      "hero_fields_required": true
-    },
-    "scope": "逐英雄五字段复核，未确认明确留缺，不以齐标签冒称完整"
-  },
-  "body_sha256": "ef869d1a36c31c39b355c60cc898596601af3fbd1d155f28025bb7c5cbe85991",
-  "batch77_conflicts": [
-    {
-      "id": "stage3-daji-all-effects-double",
-      "status": "resolved_current_official",
-      "video_quote": "6级的大招…给你的效果牌触发双倍",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1VVpo6gE8B:p1",
-          "start": 56.78,
-          "end": 112.58
-        }
-      ],
-      "official_quote": "每回合打出的第1张<color=#ffffff><b>效果牌</b></color>会触发2次。",
-      "official_evidence": [
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 79,
-          "paragraph_end": 79
-        }
-      ],
-      "same_condition": "6级魅力无限作用范围",
-      "handling": "三阵容与棋手摘要均只写每回合首张效果牌触发2次。"
-    },
-    {
-      "id": "stage3-riluohai-jixiaoman-core",
-      "status": "resolved_current_official_plus_transcript_ambiguity",
-      "video_quote": "如果你场上有技巧满…给你柱子加等级…场上有海诺…双倍提升",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1VVpo6gE8B:p1",
-          "start": 83.72,
-          "end": 130.45
-        }
-      ],
-      "official_quote": [
-        "每当你出售4名场上英雄后，获得1次临时刷新。",
-        "每当你出售2名场上英雄后，获得1次临时刷新。",
-        "每当<a href=3140012><color=#ffffff><b>阿科米亚核心</b></color></a>等级提升时，核心等级额外+1。",
-        "每当<a href=3140012><color=#ffffff><b>阿科米亚核心</b></color></a>等级提升时，核心等级额外+2。"
-      ],
-      "official_evidence": [
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 43,
-          "paragraph_end": 43
-        },
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 44,
-          "paragraph_end": 44
-        },
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 41,
-          "paragraph_end": 41
-        },
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 42,
-          "paragraph_end": 42
-        }
-      ],
-      "same_condition": "疑似姬小满的具体作用及海诺加级数",
-      "handling": "技巧满不直接认作加核心英雄；本路线姬小满只按当前出售换刷新作用，海诺按额外+1/+2；不虚构亚瑟/莱西奥等本源未讲成员补链。核心具体原始供级来源留缺。"
-    },
-    {
-      "id": "stage3-riluohai-yao-equipment-identity",
-      "status": "pending_equipment_identity",
-      "video_quote": "瑶妹带了个日落海的装备，可以分享到这个属性",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1VVpo6gE8B:p1",
-          "start": 214.74,
-          "end": 292.97
-        }
-      ],
-      "official_quote": "<a href=3><color=#ffffff><b>开团</b></color></a>：自身的首件普通装备分享给随机3名友方英雄（持续15秒）。",
-      "official_evidence": [
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 31,
-          "paragraph_end": 31
-        },
-        {
-          "type": "document",
-          "source": "doc-98ffb97878bba49c436b6bf114f11e42cb4820430227d279ebb3932ab2c2c311",
-          "paragraph_start": 32,
-          "paragraph_end": 32
-        }
-      ],
-      "same_condition": "瑶的装备是否使她成为核心等级接收者或改变属性",
-      "impact": "影响核心实际分配人数及司空震临时等级；不能只凭日落海装备俗称计算。",
-      "handling": "未知装备不建立通用别名或确认阵营；瑶仅为来源中的条件终局保护位，不把单局730等总等级泛化。"
-    }
-  ],
-  "revision": "7f3db89999a975a29ac1",
-  "retired_claim_annotations": []
+  ]
 }

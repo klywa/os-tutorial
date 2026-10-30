@@ -790,6 +790,8 @@ class Runtime:
         self.media_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix='crawler-media')
         self.official_pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix='official-sync')
         self.official_future = None
+        from lineup_usage import UsageWorker
+        self.usage = UsageWorker(root)
         self.last_recovery = time.monotonic()
         self.tag_thread = None
 
@@ -811,6 +813,7 @@ class Runtime:
         self.scan_pool.shutdown(wait=True, cancel_futures=True)
         self.media_pool.shutdown(wait=True, cancel_futures=True)
         self.official_pool.shutdown(wait=True, cancel_futures=True)
+        self.usage.close()
         if self.tag_thread:self.tag_thread.join(timeout=5)
 
     def loop(self):
@@ -842,6 +845,7 @@ class Runtime:
     def tick(self):
         if self.closed.is_set():
             return
+        self.usage.tick()
         for pending in [self.scans, self.workers]:
             for key, future in list(pending.items()):
                 if future.done():

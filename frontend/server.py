@@ -73,6 +73,13 @@ class Handler(BaseHTTPRequestHandler):
         path = unquote(urlsplit(self.path).path)
         player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
+            if path == '/api/dashboard/usage/matches':
+                import usage_matches
+                return self.response(200,usage_matches.editor(self.server.root))
+            if path == '/api/dashboard':
+                import dashboard
+                scope=parse_qs(urlsplit(self.path).query).get('scope',['all'])[0]
+                return self.response(200, dashboard.snapshot(self.server.root,scope=scope), etag=True)
             if path in ('/api/official-sync/status','/api/official-sync/settings'):
                 import official_sync
                 return self.response(200,official_sync.status(self.server.root,self.server.crawler.store.settings()['clock']))
@@ -250,6 +257,13 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(payload, dict):
                 raise ValueError('请求应为对象')
             path = unquote(urlsplit(self.path).path)
+            if path == '/api/dashboard/usage/matches':
+                if self.command!='PUT':raise ValueError('匹配保存只接受PUT')
+                import usage_matches
+                return self.response(200,usage_matches.save(self.server.root,payload))
+            if path == '/api/dashboard/usage/refresh':
+                if self.command!='POST':raise ValueError('使用率更新只接受POST')
+                return self.response(202,self.server.crawler.usage.request())
             if path in ('/api/official-sync/settings','/api/official-sync/run','/api/official-sync/retry'):
                 import official_sync
                 action=path.rsplit('/',1)[-1]

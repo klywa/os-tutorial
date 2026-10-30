@@ -381,21 +381,8 @@ def fetch_variants(read,scope,row):
  return {'pages':pages,'scanned':len(items),'items':[v for v in items if v['count']>=scope['minimumCount']]}
 
 def fetch_website(root):
- import re,secrets
- def read(url,payload=None):
-  headers={'User-Agent':'Mozilla/5.0','Origin':SITE,'Referer':SITE+'/lineups','App-Platform':'wzwxq','Accept-Language':'CN','Browser-Language':'ZH-CN'}
-  if payload is not None:
-   stamp=str(int(time.time()*1000));nonce=secrets.token_hex(8);did='did'+secrets.token_hex(12)[:23]
-   headers.update({'t':stamp,'nonce':nonce,'did':did,'signature':hashlib.md5((stamp+nonce+did+'koTefnFEdaYDuLFmXyzt').encode()).hexdigest(),'Content-Type':'application/json'})
-  request=urllib.request.Request(url,None if payload is None else json.dumps(payload).encode(),headers)
-  with urllib.request.urlopen(request,timeout=45) as response:return response.read().decode('utf-8')
- html=read(SITE+'/lineups');asset=re.search(r'src="(/assets/index-[^"/]+\.js)"',html)
- if not asset:raise ValueError('网站脚本结构已变化，原名单保留')
- index=read(SITE+asset[1]);desktop=re.search(r'assets/desktop-main-[\w-]+\.js',index)
- if not desktop:raise ValueError('网站默认版本不可识别')
- script=read(SITE+'/'+desktop[0]);versions=re.search(r'\[\{value:"(v\d+)",label:"\1"\}',script)
- if not versions:raise ValueError('网站默认版本不可识别')
- scope={'version':versions[1],'gameType':'2','time':7,'minimumCount':50,'sortBy':'appearanceRate'}
+ from lineup_website import read_website as read,website_scope
+ scope=website_scope(read)
  pages=[];records=[];seen=set()
  for page in range(1,501):
   data=json.loads(read('https://api.datatft.com/wzwxq/lineups/search',{**scope,'operator':'AND','advancedMode':False,'filters':[],'exclusions':[],'page':page,'pageSize':12}))

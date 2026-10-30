@@ -118,6 +118,9 @@ def check_record(record):
         raise ValueError('笔记身份无效')
     if not isinstance(meta.get('title'), str) or not meta['title'].strip():
         raise ValueError('笔记标题无效')
+    if meta['type']=='lineup' and (not isinstance(meta.get('aliases',[]),list)
+            or any(not isinstance(value,str) for value in meta.get('aliases',[]))):
+        raise ValueError('阵容别名必须是字符串列表')
     folders={'lineup':'lineups','player':'players','other':'other'}
     if Path(meta.get('path','')).parent.as_posix() != 'knowledge/'+folders[meta['type']]:
         raise ValueError('正文路径必须位于对应知识目录')
@@ -159,6 +162,7 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
             rows.append(old_rows[nid])
             continue
         record = editable_record(incoming)
+        if record['metadata']['type']=='lineup':record['metadata'].setdefault('aliases',[])
         check_record(record)
         m = record['metadata']; target(root, m['path'])
         m['body_sha256'] = digest(record['body'])
@@ -216,7 +220,8 @@ def recover(root, *, official=True):
                 import wxq
                 wxq.backup_file(p)
                 p.unlink()
-    (root / JOURNAL).unlink(missing_ok=True)
+    import wxq
+    wxq.retry_file_access(lambda:(root / JOURNAL).unlink(missing_ok=True))
 
 
 def _disk_record(root, row):

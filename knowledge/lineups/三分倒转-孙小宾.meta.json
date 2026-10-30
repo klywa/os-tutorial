@@ -7,7 +7,8 @@
   "path": "knowledge/lineups/三分倒转-孙小宾.json",
   "aliases": [
     "孙小宾倒转",
-    "孙小宾三分倒转"
+    "孙小宾三分倒转",
+    "三分之地 · 孙悟空 · 阿轲"
   ],
   "entities": [
     "player:38",
@@ -25,6 +26,2011 @@
     "player-38"
   ],
   "manual_sections": [],
+  "conflicts": [],
+  "claim_annotations": [
+    {
+      "id": "sun-n-2-claim",
+      "text_ref": "sun-n-2",
+      "section": "核心原理",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 0,
+          "end": 112.47
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 245.26,
+          "end": 308.29
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 511.6,
+          "end": 539.3
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-4-claim",
+      "text_ref": "sun-n-4",
+      "section": "核心机制",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 0,
+          "end": 57.8
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 812,
+          "paragraph_end": 812
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 813,
+          "paragraph_end": 813
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 943,
+          "paragraph_end": 943
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-5-claim",
+      "text_ref": "sun-n-5",
+      "section": "核心机制",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 368.99,
+          "end": 426.18
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 142.28
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 374.27,
+          "end": 403.85
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "本地曹操随机触发1名/觉醒2名三分登场的机制；孙尚香经济收益与甄姬稳定供牌分开。"
+      }
+    },
+    {
+      "id": "sun-n-7-claim",
+      "text_ref": "sun-n-7",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 0.05,
+          "end": 59.29
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 257.8,
+          "end": 315.43
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 215.06,
+          "end": 244.96
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-8-claim",
+      "text_ref": "sun-n-8",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 403.85
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-9-claim",
+      "text_ref": "sun-n-9",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 58.14,
+          "end": 142.28
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 147.3,
+          "end": 183.96
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 245.26,
+          "end": 278.21
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 511.6,
+          "end": 539.3
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-10-claim",
+      "text_ref": "sun-n-10",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 58.14,
+          "end": 142.28
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 147.3,
+          "end": 214.65
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 397.66,
+          "end": 426.18
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 492.1
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-11-claim",
+      "text_ref": "sun-n-11",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 58.14,
+          "end": 142.28
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 147.3,
+          "end": 183.96
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 215.06,
+          "end": 278.21
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 306.93,
+          "end": 335.89
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-12-claim",
+      "text_ref": "sun-n-12",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 29.5,
+          "end": 112.47
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 337.9,
+          "end": 397.31
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 191.17,
+          "end": 250.21
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 86.35,
+          "end": 112.47
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺",
+        "user_resolution": {
+          "id": "batch77-sun-luna-sale-conditional",
+          "origin": "user_instruction",
+          "instruction": "采用条件区分：高压局保留露娜；旧卖出路线仅在确认能重取时保留",
+          "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
+          "report": "raw/reports/batch77/review-sun.json"
+        }
+      }
+    },
+    {
+      "id": "sun-n-13-claim",
+      "text_ref": "sun-n-13",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 147.3,
+          "end": 183.96
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 215.06,
+          "end": 278.21
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 374.27,
+          "end": 433.51
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 511.6,
+          "end": 562.55
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-14-claim",
+      "text_ref": "sun-n-14",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 184.43,
+          "end": 214.65
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 368.99,
+          "end": 452.33
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 511.6,
+          "end": 562.55
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-15-claim",
+      "text_ref": "sun-n-15",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 86.35,
+          "end": 142.28
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 404.17,
+          "end": 492.1
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 308.64,
+          "end": 337.12
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 482.7,
+          "end": 539.3
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-16-claim",
+      "text_ref": "sun-n-16",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 104.64,
+          "end": 162.13
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 345.72,
+          "end": 373.72
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-17-claim",
+      "text_ref": "sun-n-17",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 104.64,
+          "end": 133.04
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 345.72,
+          "end": 373.72
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-18-claim",
+      "text_ref": "sun-n-18",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 162.59,
+          "end": 190.73
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-19-claim",
+      "text_ref": "sun-n-19",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 162.59,
+          "end": 190.73
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-20-claim",
+      "text_ref": "sun-n-20",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 250.59,
+          "end": 335.89
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-21-claim",
+      "text_ref": "sun-n-21",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 278.11,
+          "end": 306.55
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-22-claim",
+      "text_ref": "sun-n-22",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 142.28
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 31,
+          "paragraph_end": 31
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 690,
+          "paragraph_end": 690
+        },
+        {
+          "type": "document",
+          "source": "doc-2508470590ca63aab7164b599a0225c985133d890704883c7bb1853c9e3b1f9b",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 492.48,
+          "end": 520.9
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺",
+        "super_swap_stage2": {
+          "report": "raw/reports/batch77/double-swap-applicability.json",
+          "direct_mechanism": "冷门知识¶14与孙视频492.48–520.9为完整流程，官方¶690校准两次最近三分目标",
+          "conditional_application": "曹操、甄姬、小乔等三分成长成员；露娜、孙悟空不能用换帅供级。",
+          "limits": "不依赖特定棋手；仅在已确认的吕布终局分支增加可选操作，不表示每局必须变阵；无新帧引用"
+        }
+      }
+    },
+    {
+      "id": "sun-n-23-claim",
+      "text_ref": "sun-n-23",
+      "section": "英雄",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 336.3,
+          "end": 379.19
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 20,
+          "paragraph_end": 20
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
+      }
+    },
+    {
+      "id": "sun-n-26-claim",
+      "text_ref": "sun-n-26",
+      "section": "前期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 104.01
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 0.05,
+          "end": 146.94
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 257.8,
+          "end": 345.36
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-27-claim",
+      "text_ref": "sun-n-27",
+      "section": "前期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 104.01
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 0.05,
+          "end": 146.94
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 257.8,
+          "end": 345.36
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-29-claim",
+      "text_ref": "sun-n-29",
+      "section": "中期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 104.64,
+          "end": 190.73
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 147.3,
+          "end": 308.29
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 374.27,
+          "end": 433.51
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-30-claim",
+      "text_ref": "sun-n-30",
+      "section": "中期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 104.64,
+          "end": 190.73
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 147.3,
+          "end": 308.29
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 374.27,
+          "end": 433.51
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-32-claim",
+      "text_ref": "sun-n-32",
+      "section": "后期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 308.64,
+          "end": 426.18
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 433.82,
+          "end": 520.9
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-33-claim",
+      "text_ref": "sun-n-33",
+      "section": "后期英雄组成与运营",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 308.64,
+          "end": 426.18
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 433.82,
+          "end": 520.9
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-35-claim",
+      "text_ref": "sun-n-35",
+      "section": "后期提升思路",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 426.59,
+          "end": 539.3
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 690,
+          "paragraph_end": 690
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-37-claim",
+      "text_ref": "sun-n-37",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 539.71,
+          "end": 562.55
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 142.28
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-38-claim",
+      "text_ref": "sun-n-38",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 539.71,
+          "end": 562.55
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 142.62,
+          "end": 172.08
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-39-claim",
+      "text_ref": "sun-n-39",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 539.71,
+          "end": 562.55
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-40-claim",
+      "text_ref": "sun-n-40",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 539.71,
+          "end": 562.55
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 172.08
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-41-claim",
+      "text_ref": "sun-n-41",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 142.28
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-42-claim",
+      "text_ref": "sun-n-42",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 539.71,
+          "end": 562.55
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-43-claim",
+      "text_ref": "sun-n-43",
+      "section": "关键装备",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 142.62,
+          "end": 172.08
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-45-claim",
+      "text_ref": "sun-n-45",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 172.43,
+          "end": 200.51
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 29.91,
+          "end": 58.91
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-46-claim",
+      "text_ref": "sun-n-46",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 118.51,
+          "end": 146.94
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-47-claim",
+      "text_ref": "sun-n-47",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 172.43,
+          "end": 200.51
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-48-claim",
+      "text_ref": "sun-n-48",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 133.47,
+          "end": 162.13
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 172.43,
+          "end": 200.51
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-49-claim",
+      "text_ref": "sun-n-49",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 118.51,
+          "end": 183.96
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 0,
+          "end": 29.12
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-50-claim",
+      "text_ref": "sun-n-50",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 104.01
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-51-claim",
+      "text_ref": "sun-n-51",
+      "section": "推荐天赋",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 133.47,
+          "end": 162.13
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-53-claim",
+      "text_ref": "sun-n-53",
+      "section": "棋手技能选择",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": false,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 0,
+          "end": 29.12
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 257.8,
+          "end": 315.43
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-54-claim",
+      "text_ref": "sun-n-54",
+      "section": "棋手技能选择",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 0,
+          "end": 57.8
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 404.17,
+          "end": 433.51
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 812,
+          "paragraph_end": 812
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 943,
+          "paragraph_end": 943
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-55-claim",
+      "text_ref": "sun-n-55",
+      "section": "棋手技能选择",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 29.5,
+          "end": 86.04
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 433.82,
+          "end": 462.88
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 813,
+          "paragraph_end": 813
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 943,
+          "paragraph_end": 943
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-57-claim",
+      "text_ref": "sun-n-57",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 200.91,
+          "end": 228.47
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 337.9,
+          "end": 397.31
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-58-claim",
+      "text_ref": "sun-n-58",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 200.91,
+          "end": 228.47
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 337.9,
+          "end": 397.31
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-59-claim",
+      "text_ref": "sun-n-59",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 200.91,
+          "end": 228.47
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 368.99,
+          "end": 397.31
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-60-claim",
+      "text_ref": "sun-n-60",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 482.7,
+          "end": 511.13
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 200.91,
+          "end": 228.47
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-61-claim",
+      "text_ref": "sun-n-61",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 142.28
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 492.1
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 482.7,
+          "end": 539.3
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-62-claim",
+      "text_ref": "sun-n-62",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 492.1
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 511.6,
+          "end": 539.3
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-63-claim",
+      "text_ref": "sun-n-63",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 112.84,
+          "end": 142.28
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 690,
+          "paragraph_end": 690
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-64-claim",
+      "text_ref": "sun-n-64",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 228.86,
+          "end": 257.36
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 433.82,
+          "end": 462.88
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-65-claim",
+      "text_ref": "sun-n-65",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 452.76,
+          "end": 482.38
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-66-claim",
+      "text_ref": "sun-n-66",
+      "section": "关键效果牌",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 228.86,
+          "end": 257.36
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-68-claim",
+      "text_ref": "sun-n-68",
+      "section": "关键操作",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 104.01
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 0.05,
+          "end": 146.94
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 257.8,
+          "end": 345.36
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 374.27,
+          "end": 462.88
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 426.59,
+          "end": 452.33
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 77.05,
+          "frame": "frames/27-26.jpg"
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 77.05,
+          "frame": "frames/40-82.jpg"
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 77.05,
+          "frame": "frames/54-81.jpg"
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 86.35,
+          "end": 112.47
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 812,
+          "paragraph_end": 812
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 813,
+          "paragraph_end": 813
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 943,
+          "paragraph_end": 943
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "三源共同约束；双觉醒歧义暂不猜；表中第1—4回合仅适用单弈星路线。",
+        "user_resolution": {
+          "id": "batch77-sun-luna-sale-conditional",
+          "origin": "user_instruction",
+          "instruction": "采用条件区分：高压局保留露娜；旧卖出路线仅在确认能重取时保留",
+          "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
+          "report": "raw/reports/batch77/review-sun.json"
+        }
+      }
+    },
+    {
+      "id": "sun-n-69-claim",
+      "text_ref": "sun-n-69",
+      "section": "关键操作",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 27.26,
+          "end": 250.21
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-70-claim",
+      "text_ref": "sun-n-70",
+      "section": "关键操作",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 511.6,
+          "end": 539.3
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 82,
+          "paragraph_end": 82
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 643,
+          "paragraph_end": 643
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 663,
+          "paragraph_end": 663
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 690,
+          "paragraph_end": 690
+        },
+        {
+          "type": "document",
+          "source": "doc-2508470590ca63aab7164b599a0225c985133d890704883c7bb1853c9e3b1f9b",
+          "paragraph_start": 14,
+          "paragraph_end": 14
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 492.48,
+          "end": 520.9
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "本地card:7083/7041/7505校准视频泛称“汇总”，不承诺指定随机转级结果",
+        "super_swap_stage2": {
+          "report": "raw/reports/batch77/double-swap-applicability.json",
+          "direct_mechanism": "冷门知识¶14与孙视频492.48–520.9为完整流程，官方¶690校准两次最近三分目标",
+          "conditional_application": "曹操、甄姬、小乔等三分成长成员；露娜、孙悟空不能用换帅供级。",
+          "limits": "不依赖特定棋手；仅在已确认的吕布终局分支增加可选操作，不表示每局必须变阵；无新帧引用"
+        }
+      }
+    },
+    {
+      "id": "sun-n-72-claim",
+      "text_ref": "sun-n-72",
+      "section": "站位技巧",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 404.17,
+          "end": 433.51
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 463.4,
+          "end": 520.9
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 336.3,
+          "end": 379.19
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 19,
+          "paragraph_end": 19
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 74,
+          "paragraph_end": 74
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 82,
+          "paragraph_end": 82
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 94,
+          "paragraph_end": 94
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 690,
+          "paragraph_end": 690
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-75-claim",
+      "text_ref": "sun-n-75",
+      "section": "第一轮拍卖",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 54.81,
+          "end": 77.05
+        },
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 88.56,
+          "end": 118.05
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 345.72,
+          "end": 373.72
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-77-claim",
+      "text_ref": "sun-n-77",
+      "section": "第二轮拍卖",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 184.43,
+          "end": 214.65
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 345.72,
+          "end": 373.72
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-n-79-claim",
+      "text_ref": "sun-n-79",
+      "section": "第三轮拍卖",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1EfYQ68EsM:p1",
+          "start": 452.76,
+          "end": 482.38
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 228.86,
+          "end": 257.36
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 433.82,
+          "end": 462.88
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
+      }
+    },
+    {
+      "id": "sun-double-awaken-example-claim",
+      "text_ref": "sun-double-awaken-example",
+      "section": "关键操作",
+      "kind": "conditional_strategy",
+      "condition": "第1回合孙尚香起手、后续来牌与示例相符",
+      "version": null,
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 373.72,
+          "frame": "frames/320-0.jpg"
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 373.72,
+          "frame": "frames/325-0.jpg"
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 373.72,
+          "frame": "frames/330-0.jpg"
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 373.72,
+          "frame": "frames/335-0.jpg"
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 373.72,
+          "frame": "frames/340-0.jpg"
+        },
+        {
+          "source": "BV1rmpM6QEjn:p1",
+          "start": 315.82,
+          "end": 373.72,
+          "frame": "frames/345-0.jpg"
+        }
+      ],
+      "review_basis": {
+        "report": "raw/reports/batch77/review-sun.json",
+        "basis": "本agent实际逐帧查看320/325/330/335/340/345秒，与全文核对；不把第二回合口述的觉醒理解为即时动作。"
+      }
+    }
+  ],
+  "editorial_decisions": [
+    {
+      "id": "batch77-sun-luna-sale-conditional",
+      "origin": "user_instruction",
+      "instruction": "采用条件区分：高压局保留露娜；旧卖出路线仅在确认能重取时保留",
+      "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
+      "report": "raw/reports/batch77/review-sun.json"
+    }
+  ],
+  "body_sha256": "62104eea7ee04c67d7ea744a5f4c1f1345cf632dd875682a8412eb66c1f0d6da",
+  "revision": "800bdcbdb84e65f85c4b",
+  "retired_claim_annotations": [],
   "history": [
     {
       "at": "2026-10-24T14:15:38.564033+00:00",
@@ -2736,2010 +4742,5 @@
         }
       ]
     }
-  ],
-  "conflicts": [],
-  "claim_annotations": [
-    {
-      "id": "sun-n-2-claim",
-      "text_ref": "sun-n-2",
-      "section": "核心原理",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 0,
-          "end": 112.47
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 245.26,
-          "end": 308.29
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-4-claim",
-      "text_ref": "sun-n-4",
-      "section": "核心机制",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 0,
-          "end": 57.8
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 812,
-          "paragraph_end": 812
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 813,
-          "paragraph_end": 813
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 943,
-          "paragraph_end": 943
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-5-claim",
-      "text_ref": "sun-n-5",
-      "section": "核心机制",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 368.99,
-          "end": 426.18
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 142.28
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 374.27,
-          "end": 403.85
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "本地曹操随机触发1名/觉醒2名三分登场的机制；孙尚香经济收益与甄姬稳定供牌分开。"
-      }
-    },
-    {
-      "id": "sun-n-7-claim",
-      "text_ref": "sun-n-7",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 0.05,
-          "end": 59.29
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 257.8,
-          "end": 315.43
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 215.06,
-          "end": 244.96
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-8-claim",
-      "text_ref": "sun-n-8",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 403.85
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-9-claim",
-      "text_ref": "sun-n-9",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 58.14,
-          "end": 142.28
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 147.3,
-          "end": 183.96
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 245.26,
-          "end": 278.21
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-10-claim",
-      "text_ref": "sun-n-10",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 58.14,
-          "end": 142.28
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 147.3,
-          "end": 214.65
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 397.66,
-          "end": 426.18
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 492.1
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-11-claim",
-      "text_ref": "sun-n-11",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 58.14,
-          "end": 142.28
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 147.3,
-          "end": 183.96
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 215.06,
-          "end": 278.21
-        },
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 306.93,
-          "end": 335.89
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-12-claim",
-      "text_ref": "sun-n-12",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 29.5,
-          "end": 112.47
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 337.9,
-          "end": 397.31
-        },
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 191.17,
-          "end": 250.21
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 86.35,
-          "end": 112.47
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺",
-        "user_resolution": {
-          "id": "batch77-sun-luna-sale-conditional",
-          "origin": "user_instruction",
-          "instruction": "采用条件区分：高压局保留露娜；旧卖出路线仅在确认能重取时保留",
-          "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
-          "report": "raw/reports/batch77/review-sun.json"
-        }
-      }
-    },
-    {
-      "id": "sun-n-13-claim",
-      "text_ref": "sun-n-13",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 147.3,
-          "end": 183.96
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 215.06,
-          "end": 278.21
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 374.27,
-          "end": 433.51
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 562.55
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-14-claim",
-      "text_ref": "sun-n-14",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 184.43,
-          "end": 214.65
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 368.99,
-          "end": 452.33
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 562.55
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-15-claim",
-      "text_ref": "sun-n-15",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 86.35,
-          "end": 142.28
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 404.17,
-          "end": 492.1
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 308.64,
-          "end": 337.12
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 482.7,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-16-claim",
-      "text_ref": "sun-n-16",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 104.64,
-          "end": 162.13
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 345.72,
-          "end": 373.72
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-17-claim",
-      "text_ref": "sun-n-17",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 104.64,
-          "end": 133.04
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 345.72,
-          "end": 373.72
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-18-claim",
-      "text_ref": "sun-n-18",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 162.59,
-          "end": 190.73
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-19-claim",
-      "text_ref": "sun-n-19",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 162.59,
-          "end": 190.73
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-20-claim",
-      "text_ref": "sun-n-20",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 250.59,
-          "end": 335.89
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-21-claim",
-      "text_ref": "sun-n-21",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 278.11,
-          "end": 306.55
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-22-claim",
-      "text_ref": "sun-n-22",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 142.28
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 31,
-          "paragraph_end": 31
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 690,
-          "paragraph_end": 690
-        },
-        {
-          "type": "document",
-          "source": "doc-2508470590ca63aab7164b599a0225c985133d890704883c7bb1853c9e3b1f9b",
-          "paragraph_start": 14,
-          "paragraph_end": 14
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 492.48,
-          "end": 520.9
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺",
-        "super_swap_stage2": {
-          "report": "raw/reports/batch77/double-swap-applicability.json",
-          "direct_mechanism": "冷门知识¶14与孙视频492.48–520.9为完整流程，官方¶690校准两次最近三分目标",
-          "conditional_application": "曹操、甄姬、小乔等三分成长成员；露娜、孙悟空不能用换帅供级。",
-          "limits": "不依赖特定棋手；仅在已确认的吕布终局分支增加可选操作，不表示每局必须变阵；无新帧引用"
-        }
-      }
-    },
-    {
-      "id": "sun-n-23-claim",
-      "text_ref": "sun-n-23",
-      "section": "英雄",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 336.3,
-          "end": 379.19
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 19,
-          "paragraph_end": 19
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 20,
-          "paragraph_end": 20
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
-    },
-    {
-      "id": "sun-n-26-claim",
-      "text_ref": "sun-n-26",
-      "section": "前期英雄组成与运营",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 104.01
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 0.05,
-          "end": 146.94
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 257.8,
-          "end": 345.36
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-27-claim",
-      "text_ref": "sun-n-27",
-      "section": "前期英雄组成与运营",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 104.01
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 0.05,
-          "end": 146.94
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 257.8,
-          "end": 345.36
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-29-claim",
-      "text_ref": "sun-n-29",
-      "section": "中期英雄组成与运营",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 104.64,
-          "end": 190.73
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 147.3,
-          "end": 308.29
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 374.27,
-          "end": 433.51
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-30-claim",
-      "text_ref": "sun-n-30",
-      "section": "中期英雄组成与运营",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 104.64,
-          "end": 190.73
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 147.3,
-          "end": 308.29
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 374.27,
-          "end": 433.51
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-32-claim",
-      "text_ref": "sun-n-32",
-      "section": "后期英雄组成与运营",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 308.64,
-          "end": 426.18
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 433.82,
-          "end": 520.9
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-33-claim",
-      "text_ref": "sun-n-33",
-      "section": "后期英雄组成与运营",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 308.64,
-          "end": 426.18
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 433.82,
-          "end": 520.9
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-35-claim",
-      "text_ref": "sun-n-35",
-      "section": "后期提升思路",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 426.59,
-          "end": 539.3
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 690,
-          "paragraph_end": 690
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-37-claim",
-      "text_ref": "sun-n-37",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 539.71,
-          "end": 562.55
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 142.28
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-38-claim",
-      "text_ref": "sun-n-38",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 539.71,
-          "end": 562.55
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 142.62,
-          "end": 172.08
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-39-claim",
-      "text_ref": "sun-n-39",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 539.71,
-          "end": 562.55
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-40-claim",
-      "text_ref": "sun-n-40",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 539.71,
-          "end": 562.55
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 172.08
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-41-claim",
-      "text_ref": "sun-n-41",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 142.28
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-42-claim",
-      "text_ref": "sun-n-42",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 539.71,
-          "end": 562.55
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-43-claim",
-      "text_ref": "sun-n-43",
-      "section": "关键装备",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 142.62,
-          "end": 172.08
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-45-claim",
-      "text_ref": "sun-n-45",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 172.43,
-          "end": 200.51
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 29.91,
-          "end": 58.91
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-46-claim",
-      "text_ref": "sun-n-46",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 118.51,
-          "end": 146.94
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-47-claim",
-      "text_ref": "sun-n-47",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 172.43,
-          "end": 200.51
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-48-claim",
-      "text_ref": "sun-n-48",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 133.47,
-          "end": 162.13
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 172.43,
-          "end": 200.51
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-49-claim",
-      "text_ref": "sun-n-49",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 118.51,
-          "end": 183.96
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 0,
-          "end": 29.12
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-50-claim",
-      "text_ref": "sun-n-50",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 104.01
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-51-claim",
-      "text_ref": "sun-n-51",
-      "section": "推荐天赋",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 133.47,
-          "end": 162.13
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-53-claim",
-      "text_ref": "sun-n-53",
-      "section": "棋手技能选择",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": false,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 0,
-          "end": 29.12
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 257.8,
-          "end": 315.43
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-54-claim",
-      "text_ref": "sun-n-54",
-      "section": "棋手技能选择",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 0,
-          "end": 57.8
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 404.17,
-          "end": 433.51
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 812,
-          "paragraph_end": 812
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 943,
-          "paragraph_end": 943
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-55-claim",
-      "text_ref": "sun-n-55",
-      "section": "棋手技能选择",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 29.5,
-          "end": 86.04
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 433.82,
-          "end": 462.88
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 813,
-          "paragraph_end": 813
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 943,
-          "paragraph_end": 943
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-57-claim",
-      "text_ref": "sun-n-57",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 200.91,
-          "end": 228.47
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 337.9,
-          "end": 397.31
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-58-claim",
-      "text_ref": "sun-n-58",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 200.91,
-          "end": 228.47
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 337.9,
-          "end": 397.31
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-59-claim",
-      "text_ref": "sun-n-59",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 200.91,
-          "end": 228.47
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 368.99,
-          "end": 397.31
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-60-claim",
-      "text_ref": "sun-n-60",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 482.7,
-          "end": 511.13
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 200.91,
-          "end": 228.47
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-61-claim",
-      "text_ref": "sun-n-61",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 142.28
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 492.1
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 482.7,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-62-claim",
-      "text_ref": "sun-n-62",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 492.1
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-63-claim",
-      "text_ref": "sun-n-63",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 112.84,
-          "end": 142.28
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 690,
-          "paragraph_end": 690
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-64-claim",
-      "text_ref": "sun-n-64",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 228.86,
-          "end": 257.36
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 433.82,
-          "end": 462.88
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-65-claim",
-      "text_ref": "sun-n-65",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 452.76,
-          "end": 482.38
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-66-claim",
-      "text_ref": "sun-n-66",
-      "section": "关键效果牌",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 228.86,
-          "end": 257.36
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-68-claim",
-      "text_ref": "sun-n-68",
-      "section": "关键操作",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 104.01
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 0.05,
-          "end": 146.94
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 257.8,
-          "end": 345.36
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 374.27,
-          "end": 462.88
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 426.59,
-          "end": 452.33
-        },
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 77.05,
-          "frame": "frames/27-26.jpg"
-        },
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 77.05,
-          "frame": "frames/40-82.jpg"
-        },
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 77.05,
-          "frame": "frames/54-81.jpg"
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 86.35,
-          "end": 112.47
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 812,
-          "paragraph_end": 812
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 813,
-          "paragraph_end": 813
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 943,
-          "paragraph_end": 943
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "三源共同约束；双觉醒歧义暂不猜；表中第1—4回合仅适用单弈星路线。",
-        "user_resolution": {
-          "id": "batch77-sun-luna-sale-conditional",
-          "origin": "user_instruction",
-          "instruction": "采用条件区分：高压局保留露娜；旧卖出路线仅在确认能重取时保留",
-          "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
-          "report": "raw/reports/batch77/review-sun.json"
-        }
-      }
-    },
-    {
-      "id": "sun-n-69-claim",
-      "text_ref": "sun-n-69",
-      "section": "关键操作",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 27.26,
-          "end": 250.21
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-70-claim",
-      "text_ref": "sun-n-70",
-      "section": "关键操作",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 82,
-          "paragraph_end": 82
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 94,
-          "paragraph_end": 94
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 690,
-          "paragraph_end": 690
-        },
-        {
-          "type": "document",
-          "source": "doc-2508470590ca63aab7164b599a0225c985133d890704883c7bb1853c9e3b1f9b",
-          "paragraph_start": 14,
-          "paragraph_end": 14
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 492.48,
-          "end": 520.9
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "本地card:7083/7041/7505校准视频泛称“汇总”，不承诺指定随机转级结果",
-        "super_swap_stage2": {
-          "report": "raw/reports/batch77/double-swap-applicability.json",
-          "direct_mechanism": "冷门知识¶14与孙视频492.48–520.9为完整流程，官方¶690校准两次最近三分目标",
-          "conditional_application": "曹操、甄姬、小乔等三分成长成员；露娜、孙悟空不能用换帅供级。",
-          "limits": "不依赖特定棋手；仅在已确认的吕布终局分支增加可选操作，不表示每局必须变阵；无新帧引用"
-        }
-      }
-    },
-    {
-      "id": "sun-n-72-claim",
-      "text_ref": "sun-n-72",
-      "section": "站位技巧",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 404.17,
-          "end": 433.51
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 463.4,
-          "end": 520.9
-        },
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 336.3,
-          "end": 379.19
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 19,
-          "paragraph_end": 19
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 74,
-          "paragraph_end": 74
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 82,
-          "paragraph_end": 82
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 94,
-          "paragraph_end": 94
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 690,
-          "paragraph_end": 690
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-75-claim",
-      "text_ref": "sun-n-75",
-      "section": "第一轮拍卖",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1SyJt6yEjS:p1",
-          "start": 54.81,
-          "end": 77.05
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 88.56,
-          "end": 118.05
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 345.72,
-          "end": 373.72
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-77-claim",
-      "text_ref": "sun-n-77",
-      "section": "第二轮拍卖",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 184.43,
-          "end": 214.65
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 345.72,
-          "end": 373.72
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-n-79-claim",
-      "text_ref": "sun-n-79",
-      "section": "第三轮拍卖",
-      "kind": "conditional_strategy",
-      "condition": "",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 452.76,
-          "end": 482.38
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 228.86,
-          "end": 257.36
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 433.82,
-          "end": 462.88
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
-    },
-    {
-      "id": "sun-double-awaken-example-claim",
-      "text_ref": "sun-double-awaken-example",
-      "section": "关键操作",
-      "kind": "conditional_strategy",
-      "condition": "第1回合孙尚香起手、后续来牌与示例相符",
-      "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 373.72,
-          "frame": "frames/320-0.jpg"
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 373.72,
-          "frame": "frames/325-0.jpg"
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 373.72,
-          "frame": "frames/330-0.jpg"
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 373.72,
-          "frame": "frames/335-0.jpg"
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 373.72,
-          "frame": "frames/340-0.jpg"
-        },
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 315.82,
-          "end": 373.72,
-          "frame": "frames/345-0.jpg"
-        }
-      ],
-      "review_basis": {
-        "report": "raw/reports/batch77/review-sun.json",
-        "basis": "本agent实际逐帧查看320/325/330/335/340/345秒，与全文核对；不把第二回合口述的觉醒理解为即时动作。"
-      }
-    }
-  ],
-  "editorial_decisions": [
-    {
-      "id": "batch77-sun-luna-sale-conditional",
-      "origin": "user_instruction",
-      "instruction": "采用条件区分：高压局保留露娜；旧卖出路线仅在确认能重取时保留",
-      "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
-      "report": "raw/reports/batch77/review-sun.json"
-    }
-  ],
-  "body_sha256": "62104eea7ee04c67d7ea744a5f4c1f1345cf632dd875682a8412eb66c1f0d6da",
-  "revision": "b0a339b86366bdbb2ca5",
-  "retired_claim_annotations": []
+  ]
 }
