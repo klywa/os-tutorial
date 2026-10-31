@@ -1,5 +1,7 @@
 # 万象棋战术手册
 
+公网模式与本地模式分别启动。生产构建运行 `npm ci`、`npm run build -- --base=/os-tutorial/`；公网服务运行 `python3 frontend/server.py --public`，完整配置、离线数据准备和 systemd 步骤见 [部署文档](../docs/depolyment.md)。公网访客只读笔记和看板；`/os-tutorial/admin` 登录后可维护笔记及人工匹配，采集和官网更新始终关闭。
+
 新电脑的完整安装及 Windows/macOS 一键启动方式见[根目录 README](../README.md)。下方开发说明中的 Windows 路径在 macOS 对应 `.wxq-runtime/bin/python`。
 
 知识库已采用 schema6：正文保存在 `名称.json`，来源、证据、历史和身份保存在同名 `.meta.json`；目录索引不再保存全文。Markdown 仅在阅读、复制或下载时生成。
@@ -178,7 +180,7 @@ GET/PUT /api/sources/{id}/transcript 使用独立revision，路径仅从登记�
 
 ### 使用率手动匹配
 
-已确认外网名称会追加到对应棋手阵容附件的 aliases 列表。首次回填由 usage_aliases.backfill 执行，日后同步和匹配保存自动追加。歧义/失效指定不写入，不按名称推断匹配。结构化编辑器的“搜索别名”每行一项，保存仍校验笔记 revision；自动更新不会覆盖编辑中的旧草稿。
+外网名称只保留在本地快照中，日常同步和匹配保存不会修改正式笔记及 aliases。usage_aliases.backfill 仅提供只读预览，旧写入方式已停用。结构化编辑器的“搜索别名”每行一项，用户明确保存时才更新附件并校验笔记 revision；来源匹配仅保存本地匹配关系。
 
 看板的“使用率 Top-10 / Top-20 / Top-50”提供“管理匹配”浮窗，也可直接点击每行打法名指定匹配，可搜索同棋手的阵容笔记，查看双方英雄组成，保存后立即重算覆盖率。可继续切换下一项，也可恢复自动匹配。
 

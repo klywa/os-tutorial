@@ -1,3 +1,4 @@
+import {apiUrl,sessionExpired} from './urls';
 import type { Entity, Note, CardSummary, CardFilters, Meta, LateVariant } from './types';
 import {documentMarkdown} from './jsonDocument';
 export function cardMatches(card:CardSummary,filters:CardFilters){
@@ -36,6 +37,7 @@ export function matches(note:Note,query:string,entities:Entity[]){
 }
 export function sectionText(note:Note,section:string){return note.claims.filter(c=>c.section===section).map(c=>c.text).join('\n\n');}
 export async function api<T>(url:string,method='GET',body?:unknown):Promise<T>{
-  const response=await fetch('/api/'+url,{method,headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
-  const data=await response.json();if(!response.ok)throw new Error(data.error??'请求失败，请重试');return data;
+  const response=await fetch(apiUrl(url),{method,headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
+  if(response.status===401)sessionExpired();
+  const data=await response.json();if(!response.ok)throw new Error(data.error??'请求失败，请重试');if(method.toUpperCase()!=='GET'&&method.toUpperCase()!=='HEAD')window.dispatchEvent(new Event('wxq:sync-changed'));return data;
 }

@@ -1,0 +1,11 @@
+[Unit]
+Description=Hourly Wanxiangqi Git synchronization and deployment
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+RandomizedDelaySec=120
+Unit=os-tutorial-update.service
+
+[Install]
+WantedBy=timers.target

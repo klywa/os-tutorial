@@ -1,11 +1,11 @@
 # 知识契约 schema6
 
-阵容附件统一包含 `aliases: string[]`，一项一个完整别名，不新增 `alias` 字段。Top-50 当前有效人工匹配和组成唯一自动匹配，把网站名称去首尾空白后追加到对应棋手笔记，保留旧别名并去重。名称只用于检索，不用于自动匹配。每日同步和保存/恢复匹配复用共享知识锁、增量事务和库外版本历史；别名同步与榜单发布共用写锁，失败不报告同步成功。解除或改绑保留历史别名，正文、证据和人工保护不因此改变。
+阵容附件统一包含 `aliases: string[]`，一项一个完整别名，不新增 `alias` 字段。外网名称仅保存在本地榜单快照中，自动刷新和保存/恢复匹配不修改正式别名、正文、附件或知识索引。正式别名由用户通过笔记编辑明确保存，保留原有 revision 校验、人工保护及历史。名称只用于检索，不用于自动匹配；本地匹配与榜单发布继续使用共享写锁。
 
 ## 文件
 正文为 knowledge/players/棋手.json、knowledge/lineups/阵容-棋手.json、knowledge/other/名称.json，同名 .meta.json 保存身份、证据、人工保护、历史、冲突和关联。棋手及阵容必须绑定有效 player_id，棋手笔记唯一，阵容按棋手独立。
 
-index.meta.json 的 schema_version=6，notes 仅包含 id/type/title/path/player_id/revision，aliases 保存旧 note/branch 到新ID的映射，不复制全文。来源登记为source-registry.meta.json，本地文档为document-sources.meta.json；旧内部路径兼容读取，不生成旧文件。
+index.meta.json 的 schema_version=6，notes 仅包含 id/type/title/path/player_id/revision，aliases 保存旧 note/branch 到新ID的映射，不复制全文。来源登记为source-registry.meta.json，本地文档为document-sources.meta.json；这两个登记文件连同人工标题、标签、备注均被 Git 忽略，随原始资料单独备份。旧内部路径兼容读取，不生成旧文件。
 
 ## 正文节点
 正文包含 schema_version=6、leading、nodes。nodes 按原顺序排列，均有稳定id：
@@ -21,6 +21,8 @@ semantics保存组成、路线、禁用和替换条件等知识，重复文本�
 json_document.parse(text)与markdown(body)无损往返；导出格式与剪贴板格式分开。整篇复制/导出包含标题；二/三级标题复制至下个同级或更高标题，仅一个普通文字段落且无子标题时折为“章节标题：正文”，否则保留层级。条目复制“key：value”，隐藏条目采用最近章节标题，无章节用笔记标题。所有复制key无加粗星号，value有效Markdown保留。显示标签不带装饰方括号，clean_labels在编辑和commit入口修复跨key/value拆分残留。
 
 ## 附件与事务
+
+官网采集默认仅更新本地缓存，明确使用 `sync-entities --apply-notes` 才可修改官方绑定节点及知识索引。新事务记录 origin；旧官网笔记事务在启动恢复时归档至 raw/official-sync/pending-notes，不自动重放，也不作为当前正文读取。明确应用时从最新笔记及官网资料重新生成事务，不能直接覆盖归档快照。
 claim_annotations保留原结论ID、kind、section、condition、version、inference、evidence，以text_ref关联正文/支撑节点，附件不保存当前结论text。证据使用真实视频source/start/end/frame或document/source/paragraph_start/paragraph_end，沿用文件和来源校验。
 
 人工编辑将旧文及旧证据保留history，不为新话术沿用旧来源。node_annotations记录人工节点，后续导入不能自动覆盖，冲突进入conflicts。

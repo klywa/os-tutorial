@@ -114,13 +114,8 @@ def run(root,fetcher=None,current=None):
                 wxq.atomic_json(root/raw_path,source.get('raw',{}))
                 bundle={'capacity':MAX_PAIRS,'id':rid,'window':window(current),'fetched_at':stamp,'scope':source['scope'],
                         'url':source.get('url','https://www.datawxq.com/lineups'),'pairs':pairs,'raw_snapshot':raw_path}
-                from usage_aliases import sync_locked
-                try:
-                    with store_lock(root,wait=True):
-                        sync_locked(root,pairs)
-                        wxq.atomic_json(root/SNAPSHOT,bundle)
-                except Exception as exc:
-                    raise ValueError('阵容别名同步失败，请重试：'+str(exc)) from exc
+                with store_lock(root,wait=True):
+                    wxq.atomic_json(root/SNAPSHOT,bundle)
                 wxq.atomic_json(root/STATE,{'state':'idle','last_success':stamp,'error':'','retry_at':None})
             except Exception as exc:
                 failed_at=current if fixed_clock else now()
@@ -158,7 +153,7 @@ class UsageWorker:
 def read_catalog(root):
     """Never construct the mutating LineupCatalog/TopicStore on a GET."""
     path=Path(root)/'raw/crawler/topics.sqlite3'
-    if not path.exists():return []
+    if not path.exists():return store.read(Path(root)/'website-data/catalog.json',[])
     with closing(sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True)) as db:
         db.row_factory=sqlite3.Row;db.execute('BEGIN')
         tables={r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}

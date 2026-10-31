@@ -169,9 +169,9 @@ def _legacy_sync_official(root):
     return report
 
 
-def sync_official(root):
+def sync_official(root, *, apply_notes=False):
     from official_sync import run
-    try:return run(root)
+    try:return run(root, apply_notes=apply_notes)
     except (OSError,ValueError) as exc:
         # Keep the CLI's historical report contract; the shared engine persists retry state.
         from reference_store import export_cards

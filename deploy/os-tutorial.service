@@ -1,0 +1,20 @@
+[Unit]
+Description=Wanxiangqi public website
+After=network.target
+
+[Service]
+Type=simple
+User=os-tutorial
+Group=os-tutorial
+UMask=0007
+WorkingDirectory=/opt/os-tutorial/current
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 frontend/server.py --public --base-path /os-tutorial --origin https://klywa.xyz --auth-config /etc/os-tutorial/admins.json --state-dir /var/lib/os-tutorial --port 8765
+Restart=on-failure
+RestartSec=3
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/opt/os-tutorial /var/lib/os-tutorial
+
+[Install]
+WantedBy=multi-user.target

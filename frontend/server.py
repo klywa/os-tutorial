@@ -11,7 +11,6 @@ sys.path.insert(0, str(ROOT / '.codex/skills/wanxiangqi-knowledge/scripts'))
 sys.path.insert(0, str(ROOT / 'frontend'))
 import wxq
 import workspace
-import crawler
 
 
 def recover_before_read(root):
@@ -71,6 +70,8 @@ class Handler(BaseHTTPRequestHandler):
         if not self.trusted():
             return self.response(403, {'error': '只允许本机页面访问'})
         path = unquote(urlsplit(self.path).path)
+        if path == '/api/auth/me':
+            return self.response(200, {'mode':'local','role':'admin','username':'local','base_path':''})
         player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
             if path == '/api/dashboard/usage/matches':
@@ -435,7 +436,19 @@ class LocalServer(ThreadingHTTPServer):
         super().server_close()
 
 
-def create_server(root=ROOT, port=8765, start_worker=False):
+def create_server(root=ROOT, port=8765, start_worker=False, *, public=False,
+                  base_path='/os-tutorial', origin='https://klywa.xyz',
+                  auth_config='/etc/os-tutorial/admins.json', state_dir='/var/lib/os-tutorial'):
+    if public:
+        from website_server import handler_class, configure
+        server = LocalServer(('127.0.0.1', port), handler_class(Handler))
+        server.root = Path(root)
+        try:configure(server,base_path,origin,auth_config,state_dir)
+        except Exception:
+            server.server_close();raise
+        return server
+    global crawler
+    import crawler
     server = LocalServer(('127.0.0.1', port), Handler)
     server.root = Path(root)
     server.crawler = crawler.Runtime(root)
@@ -458,11 +471,26 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=8765)
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--open-browser', action='store_true')
+    parser.add_argument('--public', action='store_true')
+    parser.add_argument('--base-path', default='/os-tutorial')
+    parser.add_argument('--origin', default='https://klywa.xyz')
+    parser.add_argument('--auth-config', type=Path, default=Path('/etc/os-tutorial/admins.json'))
+    parser.add_argument('--state-dir', type=Path, default=Path('/var/lib/os-tutorial'))
     args = parser.parse_args()
-    workspace.migrate(args.root)
-    from player_identity import migrate as migrate_players
-    migrate_players(args.root)
-    server = create_server(args.root, args.port, start_worker=True)
+    if args.public:
+        from website_data import validate, recover
+        from website_sync import sync_lock
+        import json_store
+        if (args.root/json_store.JOURNAL).exists():
+            with sync_lock(args.state_dir):recover(args.root)
+        validate(args.root)
+        server = create_server(args.root,args.port,public=True,base_path=args.base_path,
+            origin=args.origin,auth_config=args.auth_config,state_dir=args.state_dir)
+    else:
+        workspace.migrate(args.root)
+        from player_identity import migrate as migrate_players
+        migrate_players(args.root)
+        server = create_server(args.root, args.port, start_worker=True)
     print(f'万象棋工具：http://127.0.0.1:{args.port}', flush=True)
     if args.open_browser:
         import webbrowser

@@ -129,7 +129,14 @@ def fetch_bundle(root,run_dir):
     return buckets
 
 
-def recover(root):
+def defer_notes(root, value):
+    """Keep stale automatic writes for inspection, never replay them on startup."""
+    path = Path(root)/'raw/official-sync/pending-notes'/f'{json_store.digest(value)}.json'
+    json_store.write_file(path, value)
+    json_store.preserve_deferred_baselines(root, value)
+
+
+def recover(root, *, apply_notes=False):
     """Caller holds the store lock. Immutable manifest can be replayed repeatedly."""
     root=Path(root);manifest=wxq.read_json(root/JOURNAL)
     if not manifest:return
@@ -139,17 +146,28 @@ def recover(root):
             raise ValueError('Invalid official transaction path')
         value=json_store.read(stage)
         if json_store.digest(value)!=item['sha256']:raise ValueError('Official stage checksum mismatch')
-        json_store.write_file(path,value)
+        relative = path.relative_to(root.resolve()).parts
+        cache = relative[0] in ('raw', 'entities') or relative[:2] == ('knowledge', 'cards')
+        if cache or apply_notes:
+            json_store.write_file(path,value)
+        else:
+            defer_notes(root, {'file':item, 'value':value})
     if manifest.get('notes'):
-        json_store.write_file(root/'raw/knowledge/pending-json-save.json',manifest['notes'])
-        json_store.recover(root,official=False)
+        if apply_notes:
+            json_store.write_file(root/'raw/knowledge/pending-json-save.json',manifest['notes'])
+            json_store.recover(root,official=False,apply_official_notes=True)
+        else:
+            defer_notes(root, manifest['notes'])
+            # A previous crash may have already copied this exact journal.
+            if json_store.read(root/json_store.JOURNAL) == manifest['notes']:
+                (root/json_store.JOURNAL).unlink()
     # Publish success only after all projections, snapshots and notes are restored.
     state={**wxq.read_json(root/STATE,{}),**manifest['success']}
     wxq.atomic_json(root/STATE,state)
     (root/JOURNAL).unlink()
 
 
-def publish(root,buckets,run_dir,images=None):
+def publish(root,buckets,run_dir,images=None,*,apply_notes=False):
     from official_profiles import merge_profile,merge_values
     from acquisition import register_snapshot
     from reference_store import normalize_cards,save_json_cards,json_cards
@@ -188,20 +206,23 @@ def publish(root,buckets,run_dir,images=None):
         updates=[]
         state=wxq.read_json(root/STATE,{})
         profile_revisions=dict(state.get('profile_revisions',{}))
+        profile_hashes=dict(state.get('profile_hashes',{}))
         reconciliation=wxq.read_json(root/'raw/reports/official-profile-reconciliation.json',{})
-        for player in buckets['players'].values():
+        for player in buckets['players'].values() if apply_notes else ():
             target=next((r for r in records if r.get('player_id')==player['id'] and r.get('type')=='player'),None)
-            if target and player['id'] not in changed and profile_revisions.get(target['id'])==target.get('revision'):continue
+            profile_hash=json_store.digest(semantic(merged[player['id']]))
+            if target and profile_hashes.get(player['id'])==profile_hash and profile_revisions.get(target['id'])==target.get('revision'):continue
             record=json_store.load_record(root,target['id']) if target else None
             if not refs:refs=register_snapshot(root,list(merged.values()),locked=True)
             updated,report=merge_profile(record,merged[player['id']],refs,reconciliation)
             reports.append(report)
             if updated!=record:updates.append(updated)
+            profile_hashes[player['id']]=profile_hash
         notes=json_store.save(root,updates,origin='official',partial=True,prepare_only=True) if updates else None
         if notes:
             for row in notes['index']['notes']:
                 if row['type']=='player':profile_revisions[row['id']]=row['revision']
-        else:
+        elif apply_notes:
             for row in records:
                 if row['type']=='player':profile_revisions[row['id']]=row['revision']
         if changed:
@@ -226,9 +247,9 @@ def publish(root,buckets,run_dir,images=None):
         state=wxq.read_json(root/STATE,{})
         manifest={'files':files,'notes':notes,'success':{'state':'success','last_success':wxq.now(),
             'error':None,'retry_at':None,'failures':0,'requested':False,'report':report,
-            'window':state.get('attempt_window'),'profile_revisions':profile_revisions}}
+            'window':state.get('attempt_window'),'profile_revisions':profile_revisions,'profile_hashes':profile_hashes}}
         wxq.atomic_json(root/JOURNAL,manifest)
-        recover(root)
+        recover(root,apply_notes=apply_notes)
     return report
 
 
@@ -242,7 +263,7 @@ def configured_clock(root):
     return '09:00'
 
 
-def run(root,clock=None):
+def run(root,clock=None,*,apply_notes=False):
     root=Path(root).resolve()
     clock=clock or configured_clock(root)
     with file_lock(root/'raw/official-sync/run.lock'):
@@ -262,7 +283,7 @@ def run(root,clock=None):
                     any(r.get('properties',{}).get(k)!=prior.get(r['id'],{}).get('properties',{}).get(k) for k in image_keys)]
             images=sync_images(root,wanted,prepare_only=True) if wanted else None
             if images and images['errors']:raise ValueError('官网图片获取失败：'+json.dumps(images['errors'],ensure_ascii=False))
-            return publish(root,buckets,run_dir,images)
+            return publish(root,buckets,run_dir,images,apply_notes=apply_notes)
         except Exception as exc:
             with workspace.store_lock(root,wait=True):
                 # A published manifest remains authoritative after a write interruption.

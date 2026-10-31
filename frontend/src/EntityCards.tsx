@@ -1,3 +1,4 @@
+import {appUrl} from './urls';
 import {Children,cloneElement,createContext,isValidElement,useContext,useEffect,useRef,useState,useId,useMemo,useCallback,useSyncExternalStore} from 'react';
 import type {ReactNode,ReactElement} from 'react';
 import {createPortal} from 'react-dom';
@@ -27,7 +28,7 @@ export function getCard(id:string){if(!details.has(id)){const request=api<CardDe
 export function CardProvider({children}:{children:ReactNode}){const [cards,setCards]=useState<CardSummary[]>([]);useEffect(()=>{let alive=true,epoch=0;const refresh=()=>{const current=++epoch;let fresh=false;void cachedEntry<CardSummary[]>('cards').then(c=>{if(alive&&current===epoch&&!fresh&&c)setCards(c.value);});void cachedGet<CardSummary[]>('cards',{workspace:activeWorkspace()}).then(c=>{if(alive&&current===epoch){fresh=true;setCards(c);}}).catch(()=>{});};refresh();window.addEventListener('reader-workspace',refresh);return()=>{alive=false;window.removeEventListener('reader-workspace',refresh);};},[]);return <CardContext.Provider value={cards}>{children}</CardContext.Provider>;}
 export function EntityScope({references,children}:{references:string[];children:ReactNode}){return <ReferenceContext.Provider value={references}>{children}</ReferenceContext.Provider>;}
 export function useCards(){return useContext(CardContext);}
-export function CardImage({card,large=false}:{card?:CardSummary;large?:boolean}){const [bad,setBad]=useState(false);const url=large?card?.image_url||card?.thumb_url:card?.thumb_url||card?.image_url;useEffect(()=>setBad(false),[url]);return url&&!bad?<img className={large?'official-card-image':'official-card-thumb'} src={url} alt={card?.name??'卡牌'} loading="lazy" onError={()=>setBad(true)}/>:<span className={large?'card-image-placeholder large':'card-image-placeholder'}>{card?.name??'未配置'}</span>;}
+export function CardImage({card,large=false}:{card?:CardSummary;large?:boolean}){const [bad,setBad]=useState(false);const url=large?card?.image_url||card?.thumb_url:card?.thumb_url||card?.image_url;useEffect(()=>setBad(false),[url]);return url&&!bad?<img className={large?'official-card-image':'official-card-thumb'} src={appUrl(url)} alt={card?.name??'卡牌'} loading="lazy" onError={()=>setBad(true)}/>:<span className={large?'card-image-placeholder large':'card-image-placeholder'}>{card?.name??'未配置'}</span>;}
 export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:string;portrait?:boolean}){
  const dock=useContext(DockContext),token=useId();
  const cards=useCards(),references=useContext(ReferenceContext);const candidates=resolveCandidates(ids,references);

@@ -57,3 +57,5 @@
 @media(max-width:760px){.app .compact-note-heading{padding:10px 16px;gap:8px}.compact-note-heading h1{font-size:20px}.note-title-row{flex-wrap:wrap;gap:8px}.note-actions{max-width:none;justify-content:flex-start}.note-meta-row{gap:8px 12px}.note-player select{width:130px}.note-actions button{font-size:11px;padding:5px 8px}}
 
 .reader-cache-status{display:flex;align-items:center;gap:12px;padding:6px 20px;font-size:12px;color:var(--muted);background:var(--panel)}.reader-edit-fieldset{border:0;padding:0;margin:0;min-width:0}
+.admin-access{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid var(--line,#ddd);background:var(--paper,#fffdf7)}
+.admin-access label{display:flex;align-items:center;gap:8px}.admin-access input{max-width:220px}.admin-access small{color:var(--muted,#68685f)}

@@ -1,3 +1,4 @@
+import {useCapabilities} from './auth';
 import {useEffect,useRef,useState} from 'react';
 import type {CSSProperties,ReactNode} from 'react';
 import {entityLabel} from './model';
@@ -20,6 +21,7 @@ function Popover({label,button,active,children,focusSearch=false}:{label:string;
 }
 
 export default function LibraryTools({mode,filters,options,counts,total,resultCount,onChange,onNew}:{mode:'play'|'notes';filters:DirectoryFilters&{banned:string[];unknown:boolean};options:Options;counts:Record<string,number>;total:number;resultCount:number;onChange:(p:Partial<DirectoryFilters&{banned:string[];unknown:boolean}>)=>void;onNew:()=>void}){
+ const {editNotes}=useCapabilities();
  const applied=!!(filters.query.trim()||filters.player||filters.hero);
  function entitySelect(label:string,category:string,value:string,key:'player'|'hero',empty:string){return <label>{label}<select aria-label={label} value={value} onChange={e=>onChange({[key]:e.target.value})}><option value="">{empty}</option>{options.entities.filter((e:Entity)=>e.category===category).map(e=><option key={e.id} value={e.id}>{entityLabel(e)}</option>)}</select></label>;}
  return <div className="library-tools">
@@ -31,7 +33,7 @@ export default function LibraryTools({mode,filters,options,counts,total,resultCo
     {entitySelect('按核心英雄筛选','heroes',filters.hero,'hero','全部核心英雄')}
     <button type="button" className="quiet" onClick={()=>onChange({query:'',player:'',hero:''})}>清除搜索筛选</button>
    </Popover>
-   <button className="library-tool" type="button" aria-label="新建笔记" title="新建笔记" onClick={onNew}>＋</button>
+   {editNotes&&<button className="library-tool" type="button" aria-label="新建笔记" title="新建笔记" onClick={onNew}>＋</button>}
   </div>
   {mode==='notes'?<div className="note-type-switch" role="group" aria-label="笔记类型">{[['','全部'],['tactics','打法'],['other','其他']].map(([type,label])=><button key={type} type="button" aria-pressed={filters.type===type} className={filters.type===type?'selected':''} onClick={()=>onChange({type})}>{label}<small>{counts[type]??0}</small></button>)}</div>:<div className="game-conditions">
    <Popover label="本局条件" active={!!filters.banned.length||filters.unknown} button={<>本局条件<span>{filters.banned.length?'禁用 '+filters.banned.length:'未选禁用'}</span></>}>

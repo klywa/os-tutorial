@@ -9,7 +9,7 @@ description: 将王者万象棋攻略复用文字稿或按需ASR及关键帧核�
 用户要求处理批注、按前端批注修订时，先读[批注修改流程](references/annotation-review.md)。默认查询全库未处理批注，读取最新正文与附件，按批注直接修改并保存；证据不足或有歧义的保留待处理并说明原因。只授权批注涉及的人工保护范围，不能绕过其他人工保护。保存读回、校验成功后才标记已处理。
 
 ## 官方棋手资料与每日同步
-用户要求官网资料补全、技能选项核对或官网同步时，先读[官网同步说明](references/official-sync.md)。`sync-entities` 与前端手动、每日任务共用同一同步引擎。只有 `official_profile.nodes` 绑定的官方机制随官网更新；人工技巧、攻略和阵容不得因此覆盖。
+用户要求官网资料补全、技能选项核对或官网同步时，先读[官网同步说明](references/official-sync.md)。`sync-entities` 与前端手动、每日任务默认只拉取本地缓存，不创建或更新正式笔记。用户明确要求修改笔记时才使用 `sync-entities --apply-notes`，且仅更新 `official_profile.nodes` 绑定的官方机制；人工技巧、攻略和阵容不得因此覆盖。
 
 ## schema6：纯 JSON 知识
 先读[知识契约](references/knowledge-contract.md)。knowledge/ 仅保存 JSON：名称.json 是正文唯一事实源，同名 .meta.json 保存身份、来源、证据、历史、人工保护、冲突与迁移映射。index.meta.json 只登记身份和路径，不复制全文。
@@ -33,6 +33,8 @@ description: 将王者万象棋攻略复用文字稿或按需ASR及关键帧核�
 - .wxq-runtime/Scripts/python.exe .codex/skills/wanxiangqi-knowledge/scripts/wxq.py validate
 
 ## 来源与证据
+
+采集和启动流程只能写入被 Git 忽略的本地资料，不能自动改写正式笔记、附件及知识索引。`knowledge/source-registry.meta.json` 和 `knowledge/document-sources.meta.json`（含人工标题、标签和备注）均为本地资料，需随 raw 单独备份。外网阵容名称仅存本地快照，搜索别名通过笔记编辑明确保存。旧官网笔记事务归档于 `raw/official-sync/pending-notes/`，不得在读取或重启时重放；明确应用时根据最新笔记重算。
 导入前读[流程](references/workflow.md)、[内容标准](references/editorial-standards.md)。参考中的旧schema写入、Markdown同步和重放字段仅适用于迁移历史；教学、采集和证据规则继续适用，当前写入以知识契约为准。
 
 1. 使用 workspace.register_source 登记规范化链接，保留人工标题、标签和备注；登记不等于沉淀。先恢复事务再读取知识，避免旧快照覆盖人工修改。

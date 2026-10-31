@@ -184,7 +184,7 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
     if not changed and not retired and index == previous:
         return []
     from note_review import version_writes
-    journal = {'schema_version':6, 'delta':True, 'records':changed, 'index':index,
+    journal = {'schema_version':6, 'origin':origin, 'delta':True, 'records':changed, 'index':index,
                'versions':version_writes(root, before, changed, origin, review_refs), 'retired':retired}
     if prepare_only:return journal
     write_file(root / JOURNAL, journal)
@@ -192,13 +192,34 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
     return changed
 
 
-def recover(root, *, official=True):
+def automatic_journal(journal):
+    if not journal:return False
+    origin = journal.get('origin')
+    if origin is not None:return origin in ('official', 'usage_aliases')
+    # Old metadata-only saves have no provenance (including automatic aliases).
+    # Preserve ambiguous pre-upgrade writes for explicit review as well.
+    if journal.get('versions') == []:return True
+    return any(entry.get('value', {}).get('origin') in ('official', 'usage_aliases')
+               for entry in journal.get('versions', []))
+
+
+def pending_save(root):
+    journal = read(Path(root)/JOURNAL)
+    return None if automatic_journal(journal) else journal
+
+
+def recover(root, *, official=True, apply_official_notes=False):
     if official and (Path(root)/'raw/knowledge/pending-official-sync.json').exists():
         from official_sync import recover as recover_official
         recover_official(root)
     root = Path(root)
     journal = read(root / JOURNAL)
     if not journal:
+        return
+    if automatic_journal(journal) and not apply_official_notes:
+        from official_sync import defer_notes
+        defer_notes(root, journal)
+        (root/JOURNAL).unlink()
         return
     for entry in journal.get('versions', []):
         write_file(root / entry['path'], entry['value'])
@@ -225,18 +246,57 @@ def recover(root, *, official=True):
 
 
 def _disk_record(root, row):
-    body = cached_read(target(root, row['path']))
-    meta = cached_read(target(root, meta_path(row['path']), True))
+    try:
+        body = cached_read(target(root, row['path']))
+        meta = cached_read(target(root, meta_path(row['path']), True))
+    except FileNotFoundError:
+        body = meta = None
     if body is None or meta is None or digest(body) != meta.get('body_sha256') or meta.get('revision') != row.get('revision'):
+        baseline = read(deferred_baseline_path(root, row))
+        if baseline and baseline['metadata'].get('revision') == row.get('revision'):
+            check_record(baseline)
+            if digest(baseline['body']) == baseline['metadata'].get('body_sha256'):return baseline
         raise ValueError('正文与附件不一致：' + row['path'])
     return {'body':body, 'metadata':meta}
+
+
+def deferred_baseline_path(root, row):
+    return Path(root)/'raw/official-sync/deferred-baselines'/f'{digest([row["id"], row.get("revision")])}.json'
+
+
+def preserve_deferred_baselines(root, journal):
+    """Read an interrupted save's last consistent pairs without restoring tracked files."""
+    root = Path(root)
+    affected = {record['metadata']['id'] for record in journal.get('records', [])}
+    def candidates(relative):
+        path = root/relative
+        value = read(path)
+        if value is not None:yield value
+        folder = root/'raw/backups/knowledge'/Path(relative).relative_to('knowledge').parent
+        if folder.exists():
+            for backup in sorted(folder.iterdir(), reverse=True):
+                if backup.name.startswith(path.name+'.') and backup.name.endswith('.bak'):
+                    yield read(backup)
+    for row in read(root/INDEX, {'notes':[]})['notes']:
+        if row['id'] not in affected:continue
+        try:
+            _disk_record(root, row)
+            continue
+        except ValueError:pass
+        meta = next((m for m in candidates(meta_path(row['path'])) if m.get('revision') == row.get('revision')), None)
+        body = next((b for b in candidates(row['path']) if meta and digest(b) == meta.get('body_sha256')), None)
+        if meta is None or body is None:
+            raise ValueError('旧自动事务已保留，但缺少一致的旧版备份，请人工恢复：'+row['path'])
+        baseline = {'body':body, 'metadata':meta}
+        check_record(baseline)
+        write_file(deferred_baseline_path(root, row), baseline)
 
 
 def load_record(root, nid, *, clone=True):
     """Read one logical record, including the published transaction overlay."""
     root = Path(root)
     for attempt in range(2):
-        pending = read(root / JOURNAL)
+        pending = pending_save(root)
         index = pending['index'] if pending else read(root / INDEX, {'notes':[]})
         row = next((r for r in index['notes'] if r['id']==nid), None)
         if row is None: return None
@@ -252,7 +312,7 @@ def load_record(root, nid, *, clone=True):
 def records(root, clone=True):
     root = Path(root)
     for attempt in range(2):
-        pending = read(root / JOURNAL)
+        pending = pending_save(root)
         if pending and not pending.get('delta'):
             return deepcopy(pending['records'])
         index = pending['index'] if pending else read(root / INDEX, {'notes':[]})

@@ -1,15 +1,15 @@
-"""Append confirmed website names to canonical lineup metadata under the store lock."""
+"""Preview website names; canonical aliases are saved only through the note editor."""
 from pathlib import Path
 import json_store as store
 from workspace import store_lock
 
 
-def sync_locked(root,pairs,manual=None,*,initialize=False,dry_run=False):
+def sync_locked(root,pairs,manual=None,*,initialize=False,dry_run=True):
     import lineup_usage as usage
     import usage_matches
     root=Path(root)
-    if not dry_run:store.recover(root)
-    elif (root/store.JOURNAL).exists():raise ValueError('知识事务尚未恢复，请稍后预览别名')
+    if not dry_run:raise ValueError('外网别名仅可预览，请通过笔记编辑明确保存搜索别名')
+    if (root/store.JOURNAL).exists():raise ValueError('知识事务尚未恢复，请稍后预览别名')
     rows=store.read(root/store.INDEX,{'notes':[]})['notes']
     notes={r['id']:r for r in rows if r['type']=='lineup'}
     manual=usage_matches.read(root) if manual is None else manual
@@ -36,11 +36,10 @@ def sync_locked(root,pairs,manual=None,*,initialize=False,dry_run=False):
         if names!=old or 'aliases' not in meta:
             meta['aliases']=names;changed.append(record)
             details.append({'note_id':nid,'title':meta['title'],'added':names[len(old):]})
-    if changed and not dry_run:store.save(root,changed,origin='usage_aliases',partial=True)
     return {'changed':len(changed),'added':sum(len(row['added']) for row in details),'notes':details}
 
 
-def backfill(root,*,dry_run=False):
+def backfill(root,*,dry_run=True):
     import lineup_usage as usage
     with store_lock(root,wait=True):
         snapshot=usage.cached_snapshot(root)

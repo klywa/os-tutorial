@@ -1,3 +1,4 @@
+import {apiUrl} from './urls';
 export type CoverageCell={covered:boolean;section:string|null;node_id:string|null};
 export type CoverageScope='all'|'usage_top10'|'usage_top20'|'usage_top50';
 export type UsageStatus={ready:boolean;state:string;stale?:boolean;error?:string;last_success?:string|null;next_check?:string;scope?:{version:string;time?:number;minimumCount?:number}|null;ambiguous?:number;missing?:number;selected_count?:number};
@@ -36,7 +37,7 @@ export function startDashboardPolling(callbacks:PollingCallbacks,env:PollingEnvi
 }
 
 export async function readDashboard(signal:AbortSignal,scope:CoverageScope='all'):Promise<DashboardData>{
- const response=await fetch('/api/dashboard?scope='+scope,{signal,cache:'no-store'});
+ const response=await fetch(apiUrl('dashboard?scope='+scope),{signal,cache:'no-store'});
  const value=await response.json();
  if(!response.ok)throw new Error(value.error||'无法读取看板，请重试');
  return value;

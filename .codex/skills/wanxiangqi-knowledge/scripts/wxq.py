@@ -473,7 +473,8 @@ def main():
     parser.add_argument('--root', type=Path, default=ROOT)
     sub = parser.add_subparsers(dest='command', required=True)
     sub.add_parser('init')
-    sub.add_parser('sync-entities')
+    p = sub.add_parser('sync-entities')
+    p.add_argument('--apply-notes', action='store_true', help='明确将官网资料应用到正式棋手笔记；默认只更新本地缓存')
     sub.add_parser('sync-card-images')
     sub.add_parser('validate')
     sub.add_parser('sync-markdown')
@@ -521,7 +522,7 @@ def main():
         result = {'root': str(args.root)}
     elif args.command == 'sync-entities':
         from official import sync_official
-        result = sync_official(args.root)
+        result = sync_official(args.root, apply_notes=args.apply_notes)
     elif args.command == 'sync-card-images':
         from card_images import sync_images
         result = sync_images(args.root)

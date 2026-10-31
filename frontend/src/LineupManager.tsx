@@ -1,3 +1,4 @@
+import {apiUrl} from './urls';
 import NoteLinks,{linkRoleLabel} from './NoteLinks';
 import {lineupLabel} from './lineupNames';
 import LineupNaming from './LineupNaming';
@@ -51,7 +52,7 @@ export default function LineupManager({onChanged,onDirty,initialId}:{onChanged:(
   try{
    const items=[...namePayload(drafts),...newRows.filter(r=>r.common_name.trim()||r.aliases.trim()).map(r=>({client_id:r.client_id,common_name:r.common_name,aliases:r.aliases.split(/[、,，;；]/).map(a=>a.trim()).filter(Boolean)}))];
    const body=JSON.stringify(items);if(requestRef.current.body!==body)requestRef.current={body,id:crypto.randomUUID()};
-   const response=await fetch('/api/topics/lineups/batch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,request_id:requestRef.current.id})});const data=await response.json();
+   const response=await fetch(apiUrl('topics/lineups/batch'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items,request_id:requestRef.current.id})});const data=await response.json();
    if(!response.ok){setConflicts(data.lineup_ids??[]);const errors:Record<string,string>={};for(const r of data.row_errors??[])if(r.client_id)errors[r.client_id]=r.error;setRowErrors(errors);requestAnimationFrame(()=>document.querySelector('[data-new-lineup="'+Object.keys(errors)[0]+'"] input')?.scrollIntoView({block:'center'}));throw new Error(data.error??'保存失败，草稿保留');}
    setDrafts({});setNewRows([blankLineupRow()]);setRowErrors({});setRoster(data.roster);setNotice('全部新增与修改已保存'+(data.warnings?.length?'；'+data.warnings.map((w:{name:string})=>w.name+'：同名项已保留为独立条目').join('；'):''));if(edit){const r=(data.roster as Lineup[]).find(r=>r.id===edit.id);if(r)choose(r,true);}await onChanged();
   }catch(e){setError((e as Error).message);}finally{setBusy(false);}

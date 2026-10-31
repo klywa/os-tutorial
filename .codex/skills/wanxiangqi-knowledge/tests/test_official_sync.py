@@ -47,11 +47,11 @@ class SyncTests(unittest.TestCase):
         import official
         from test_official_profiles import sample
         b=official.normalize(sample(),'https://official.test/data','today')
-        first=sync.publish(self.root,b,self.root/'raw/official-sync/runs/one')
+        first=sync.publish(self.root,b,self.root/'raw/official-sync/runs/one',apply_notes=True)
         self.assertEqual(first['updated_notes'],1)
         row=json_store.read(self.root/'knowledge/index.meta.json')['notes'][0]
         before=json_store.read(self.root/row['path'])
-        second=sync.publish(self.root,b,self.root/'raw/official-sync/runs/two')
+        second=sync.publish(self.root,b,self.root/'raw/official-sync/runs/two',apply_notes=True)
         self.assertEqual(second['updated_notes'],0)
         self.assertEqual(second['changed_ids'],[])
         self.assertEqual(before,json_store.read(self.root/row['path']))
@@ -66,19 +66,19 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(wxq.read_json(self.root/'entities/players.json'),[{'id':'old'}])
         self.assertEqual(sync.status(self.root)['state'],'failed')
         self.assertIsNotNone(sync.status(self.root)['retry_at'])
-    def test_edit_recovers_common_manifest_before_revision_check(self):
+    def test_edit_defers_old_official_manifest_and_uses_current_revision(self):
         import official
         from test_official_profiles import sample
-        sync.publish(self.root,official.normalize(sample(),'https://official.test','today'),self.root/'raw/official-sync/runs/first')
+        sync.publish(self.root,official.normalize(sample(),'https://official.test','today'),self.root/'raw/official-sync/runs/first',apply_notes=True)
         row=json_store.read(self.root/'knowledge/index.meta.json')['notes'][0]
         record=json_store.load_record(self.root,row['id']);old_revision=record['metadata']['revision']
         original=__import__('copy').deepcopy(record['body'])
         record['body']['nodes'][2]['value']='最新官方正文'
         journal=json_store.save(self.root,[record],partial=True,prepare_only=True)
         wxq.atomic_json(self.root/sync.JOURNAL,{'files':[],'notes':journal,'success':{'state':'success'}})
-        with self.assertRaises(__import__('workspace').Conflict):
-            json_store.edit(self.root,row['id'],{'revision':old_revision,'document':original})
-        self.assertEqual(json_store.load_record(self.root,row['id'])['body']['nodes'][2]['value'],'最新官方正文')
+        json_store.edit(self.root,row['id'],{'revision':old_revision,'document':original})
+        self.assertEqual(json_store.load_record(self.root,row['id'])['body']['nodes'],original['nodes'])
+        self.assertTrue(list((self.root/'raw/official-sync/pending-notes').glob('*.json')))
     def test_image_publication_keeps_concurrent_unrelated_mappings(self):
         import official
         from test_official_profiles import sample

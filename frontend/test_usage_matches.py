@@ -88,12 +88,12 @@ class ManualMatchTests(unittest.TestCase):
         self.assertIn('g@player:1',matches.read(self.root)['assignments'])
         self.publish();self.assertEqual(dashboard.snapshot(self.root,scope='usage_top10')['notes'][0]['note_id'],'chosen')
 
-    def test_only_target_alias_metadata_changes_and_old_roster_is_untouched(self):
-        self.prepare();before={str(p):p.read_bytes() for p in (self.root/'knowledge/lineups').glob('*.json') if not p.name.endswith('.meta.json')}
+    def test_manual_matching_leaves_all_knowledge_and_old_roster_untouched(self):
+        self.prepare();before={str(p):p.read_bytes() for p in (self.root/'knowledge').rglob('*.json')}
         roster=list(self.db.execute('SELECT * FROM topic_lineups'));links=list(self.db.execute('SELECT * FROM lineup_note_roles'))
         matches.save(self.root,self.payload())
-        self.assertEqual(before,{str(p):p.read_bytes() for p in (self.root/'knowledge/lineups').glob('*.json') if not p.name.endswith('.meta.json')})
-        self.assertIn('网站名',fixtures.usage.store.load_record(self.root,'chosen')['metadata']['aliases'])
+        self.assertEqual(before,{str(p):p.read_bytes() for p in (self.root/'knowledge').rglob('*.json')})
+        self.assertNotIn('网站名',fixtures.usage.store.load_record(self.root,'chosen')['metadata']['aliases'])
         self.assertEqual(roster,list(self.db.execute('SELECT * FROM topic_lineups')));self.assertEqual(links,list(self.db.execute('SELECT * FROM lineup_note_roles')))
 
 if __name__=='__main__':unittest.main()

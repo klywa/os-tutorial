@@ -15,7 +15,7 @@ def version_folder(root, nid):
 def _version_rows(root, nid):
     folder = version_folder(root, nid)
     index = folder / 'index.meta.json'
-    pending = store.read(Path(root) / store.JOURNAL)
+    pending = store.pending_save(root)
     relative = index.relative_to(Path(root)).as_posix()
     if pending:
         overlay = next((e['value'] for e in pending.get('versions', []) if e['path']==relative), None)
@@ -46,7 +46,7 @@ def version(root, nid, vid):
     if not isinstance(vid, str) or len(vid) != 32 or any(c not in '0123456789abcdef' for c in vid):
         raise ValueError('版本标识无效')
     path = version_folder(root, nid) / (vid + '.json')
-    pending = store.read(Path(root) / store.JOURNAL)
+    pending = store.pending_save(root)
     relative = path.relative_to(Path(root)).as_posix()
     row = next((entry['value'] for entry in pending.get('versions',[]) if entry['path']==relative),None) if pending else None
     if row is None: row = store.read(path)

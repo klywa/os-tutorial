@@ -1,3 +1,4 @@
+import {useCapabilities} from './auth';
 import {createContext,useCallback,useContext,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import type {KnowledgeDocument,KnowledgeNode,Note} from './types';
 import {api} from './model';
@@ -15,14 +16,15 @@ type Review={readOnly?:boolean;note:Note;draft:Draft|null;dirty:boolean;busy:boo
 const Context=createContext<Review|null>(null);
 export const useReview=()=>useContext(Context);
 export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=false,readOnly=false}:{note?:Note;children:ReactNode;onSaved:(note:Note)=>void;onDirty:(dirty:boolean)=>void;externalDirty?:boolean;readOnly?:boolean}){
+ const {reviews}=useCapabilities();
  const [draft,setDraft]=useState<Draft|null>(null),[extraDirty,setExtra]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const [comments,setComments]=useState<Annotation[]>([]),[commentNode,setCommentNode]=useState<string|null>(null),[history,setHistory]=useState(false);
  const pendingNodes=useRef<KnowledgeNode[]>([]),dirtyRef=useRef(false),savingRef=useRef(false);
  const [inlineDirty,setInlineDirty]=useState(false);
  const dirty=inlineDirty||extraDirty;
- async function reloadComments(){if(note)setComments(await api<Annotation[]>('annotations?note_id='+encodeURIComponent(note.id)));}
- useEffect(()=>{let live=true;if(note)void api<Annotation[]>('annotations?note_id='+encodeURIComponent(note.id)).then(rows=>{if(live)setComments(rows);}).catch(e=>{if(live)setError('批注载入失败：'+e.message);});return()=>{live=false;};},[note?.id,note?.revision]);
- if(!note?.document)return <>{children}</>;
+ async function reloadComments(){if(reviews&&note)setComments(await api<Annotation[]>('annotations?note_id='+encodeURIComponent(note.id)));}
+ useEffect(()=>{let live=true;if(reviews&&note)void api<Annotation[]>('annotations?note_id='+encodeURIComponent(note.id)).then(rows=>{if(live)setComments(rows);}).catch(e=>{if(live)setError('批注载入失败：'+e.message);});return()=>{live=false;};},[note?.id,note?.revision,reviews]);
+ if(!reviews||!note?.document)return <>{children}</>;
  function warn(){if(!savingRef.current)setError('修改未保存，请保存或取消');}
  function guard(){if(readOnly){setError('请先确认最新版本后编辑');return false;}if(dirty||externalDirty){warn();return false;}setError('');return true;}
  function changeDirty(value:boolean){setExtra(value);if(!value&&!inlineDirty)setError(error=>error==='修改未保存，请保存或取消'?'':error);onDirty(value||inlineDirty);}

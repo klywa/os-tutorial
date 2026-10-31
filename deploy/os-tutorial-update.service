@@ -1,0 +1,13 @@
+[Unit]
+Description=Build and activate validated Wanxiangqi releases
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=os-tutorial
+Group=os-tutorial
+UMask=0007
+WorkingDirectory=/opt/os-tutorial
+ExecStart=/usr/bin/python3 /opt/os-tutorial/current/deploy/release.py --base-dir /opt/os-tutorial --state-dir /var/lib/os-tutorial
+TimeoutStartSec=30min

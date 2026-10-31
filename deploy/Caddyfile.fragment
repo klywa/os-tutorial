@@ -1,0 +1,21 @@
+# Merge into the single existing klywa.xyz site block (back it up first).
+# All reverse proxies preserve their application base path; never use handle_path.
+@root path /
+redir @root /os-tutorial/ 302
+
+@os_bare path /os-tutorial
+redir @os_bare /os-tutorial/ 308
+
+handle /os-tutorial/* {
+    reverse_proxy 127.0.0.1:8765
+}
+
+# Next.js owns trailing-slash behavior for /pokilot; do not redirect it here.
+@pokilot path /pokilot /pokilot/*
+handle @pokilot {
+    reverse_proxy 127.0.0.1:3000
+}
+
+handle {
+    respond "Not found" 404
+}

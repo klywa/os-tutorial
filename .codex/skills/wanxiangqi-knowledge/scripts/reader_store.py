@@ -25,7 +25,7 @@ def workspace_id(root):
 
 
 def index(root):
-    pending=store.read(Path(root)/store.JOURNAL)
+    pending=store.pending_save(root)
     return pending['index'] if pending else store.read(Path(root)/store.INDEX,{'notes':[]})
 
 

@@ -92,3 +92,15 @@ describe('visible dashboard refresh lifecycle',()=>{
   expect(s.load.mock.calls[0][0].aborted).toBe(true);
  });
 });
+
+it('hides all public usage refresh and guest match controls',()=>{
+ const data=fixture();Object.assign(data,{scope:'usage_top10',usage:{ready:true,state:'idle'}});
+ const html=renderToStaticMarkup(<DashboardView data={data} error="" busy={false} checkedAt="" order="usage" onOrder={()=>{}} onRefresh={()=>{}} onOpen={()=>{}} publicMode canManageMatches={false}/>);
+ expect(html).not.toContain('更新使用率');expect(html).not.toContain('管理匹配');expect(html).not.toContain('指定乙阵容');expect(html).toContain('每小时');
+});
+
+it('allows public administrators to match without requesting usage refresh',()=>{
+ const data=fixture();Object.assign(data,{scope:'usage_top10',usage:{ready:true,state:'idle'}});
+ const html=renderToStaticMarkup(<DashboardView data={data} error="" busy={false} checkedAt="" order="usage" onOrder={()=>{}} onRefresh={()=>{}} onOpen={()=>{}} publicMode canManageMatches/>);
+ expect(html).toContain('管理匹配');expect(html).toContain('指定乙阵容');expect(html).not.toContain('更新使用率');
+});

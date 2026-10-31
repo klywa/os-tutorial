@@ -1,0 +1,3 @@
+# Install with visudo -cf first, then mode 0440 in /etc/sudoers.d/os-tutorial.
+# No wildcard service names or arguments.
+os-tutorial ALL=(root) NOPASSWD: /usr/bin/systemctl restart os-tutorial.service, /usr/bin/systemctl stop os-tutorial.service

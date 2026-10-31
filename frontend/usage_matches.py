@@ -7,8 +7,13 @@ import wxq
 FILE='personal/lineup-usage-matches.json'
 
 
+def matches_path(root):
+    root=Path(root)
+    return root/'website-data/usage-matches.json' if (root/'website-data/manifest.json').exists() else root/FILE
+
+
 def read(root):
-    value=store.read(Path(root)/FILE,{'schema_version':1,'assignments':{}})
+    value=store.read(matches_path(root),{'schema_version':1,'assignments':{}})
     if (not isinstance(value,dict) or value.get('schema_version')!=1
             or not isinstance(value.get('assignments'),dict)
             or any(not isinstance(k,str) or not isinstance(v,dict)
@@ -90,9 +95,5 @@ def save(root,payload):
                 'heroes':sorted(set(pair['heroes'])),'updated_at':usage.now().isoformat()}
         else:
             document['assignments'].pop(pair['id'],None)
-        from usage_aliases import sync_locked
-        try:sync_locked(root,[pair],document)
-        except Exception as exc:
-            raise ValueError('阵容别名保存失败，匹配尚未保存，请重试：'+str(exc)) from exc
-        wxq.atomic_json(root/FILE,document)
+        wxq.atomic_json(matches_path(root),document)
         return {'revision':store.digest(document),'assignment':document['assignments'].get(pair['id'])}
