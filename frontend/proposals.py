@@ -203,6 +203,26 @@ class ProposalStore:
         # receipt between this check and the private mutation's commit.
         if self.journal_path.exists():raise Conflict('审批正在恢复，请稍后重试')
 
+    def submit_delta(self,actor,payload,*,_recover=True):
+        _authority(actor)
+        if _recover:self.recover()
+        from entry_changes import submit
+        return submit(self,actor,payload)
+
+    def saved_changes(self,actor,payload):
+        _authority(actor)
+        if actor['role']!='admin':raise PermissionError('只有管理员可以保存正式正文')
+        from edit_locks import EditLocks
+        key=EditLocks.request_key(actor,payload.get('client_id'),payload.get('request_id'),'canonical')
+        with self._db(write=False) as conn:
+            if EditLocks.replay(conn,key,payload) is not None:return json_store.resolve_note(self.root,payload['note_id'])
+        return None
+
+    def apply_changes(self,actor,payload):
+        _authority(actor)
+        from entry_changes import apply
+        return apply(self,actor,payload)
+
     def submit(self,actor,payload,*,_recover=True):
         _authority(actor)
         if set(payload)-{'note_id','revision','scope_id','nodes'}:raise ValueError('提案包含不支持的字段')
@@ -261,12 +281,16 @@ class ProposalStore:
 
     def update(self,actor,pid,payload,*,_recover=True):
         _authority(actor)
-        if set(payload)-{'revision','proposed_node','rebase'}:raise ValueError('不支持的提案字段')
+        if set(payload)-{'revision','proposed_node','rebase','client_id','lease'}:raise ValueError('不支持的提案字段')
         if _recover:self.recover()
         with self._db() as conn:
             if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item);self._revision(item,payload)
             if item['status']!='pending':raise Conflict('已处理提案不能修改')
+            locks=getattr(self,'edit_locks',None)
+            if locks:
+                from entry_changes import target
+                locks.validate(conn,actor,payload.get('client_id'),payload.get('lease'),item['note_id'],target=target(item))
             if payload.get('rebase'):
                 if actor['role']!='admin':raise ProposalForbidden('只有管理员可重新合并基础版本')
                 record=self._note(item['note_id']);nodes=record['body']['nodes']
@@ -284,6 +308,7 @@ class ProposalStore:
                 item['proposed_node']=_entry(proposed,item['base_node'])
             item.update(revision=item['revision']+1,updated_at=_now())
             self._put(conn,item)
+            if locks:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
             return self._public(item)
 
     def _apply_body(self,conn,item,record):
@@ -331,8 +356,12 @@ class ProposalStore:
             if action=='approve':
                 record=self._note(item['note_id'])
                 if self._conflict(item,record):raise Conflict('正文或插入锚点已变化，请重新合并')
+                locks=getattr(self,'edit_locks',None);revoked=[]
+                if locks:
+                    from entry_changes import target
+                    revoked=locks.revoke_annotators(conn,item['note_id'],[target(item)])
                 body=self._apply_body(conn,item,record)
-                receipt={'proposal_id':pid,'reviewed_by':actor['username'],'pre_body':record['body'],
+                receipt={'proposal_id':pid,'revoked_leases':revoked,'reviewed_by':actor['username'],'pre_body':record['body'],
                     'post_body':body,'pre_revision':record['metadata']['revision'],
                     'history_index':len(record['metadata'].get('history',[])),'note_id':item['note_id'],
                     'workspace':str(self.root.resolve())}
@@ -355,7 +384,6 @@ class ProposalStore:
             with store_lock(self.root,wait=True):
                 json_store.recover(self.root)
                 record=self._note(receipt['note_id'])
-            item=self._get(conn,receipt['proposal_id'])
             history=record['metadata'].get('history',[])
             index=receipt['history_index']
             transition=history[index].get('previous',{}) if len(history)>index else {}
@@ -365,6 +393,10 @@ class ProposalStore:
             applied=(transition.get('metadata',{}).get('revision')==receipt['pre_revision']
                 and transition.get('body')==receipt['pre_body'] and after.get('body')==receipt['post_body'])
             if applied:
+                from edit_locks import EditLocks
+                EditLocks.recover_receipt(conn,receipt)
+            if applied and receipt.get('kind')!='entry-save':
+                item=self._get(conn,receipt['proposal_id'])
                 if item['status']!='approved':
                     item.update(status='approved',reviewed_by=receipt['reviewed_by'],revision=item['revision']+1,
                         result_revision=after['metadata']['revision'],updated_at=_now())

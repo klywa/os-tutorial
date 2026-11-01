@@ -86,6 +86,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\pull-local.ps1 -Port 8877
 
 首次升级遇到“不支持安全停止”时，在原服务窗口按一次 `Ctrl+C`，再运行脚本；升级完成后可用原 `start.ps1` 启动。脚本不会结束其他项目或不明 Python 进程。本地同步与后台服务日志位于 `raw/local-sync/`。
 
-管理员可在右上角切换身份；`test1 / aa2025` 仅为编写员，提交提案供管理员审核，访客只看正式内容。本地调试不会自动上传，上传需明确运行发布脚本。
+点击右上角“登录”，在弹窗中输入账号密码。管理员可在右上角切换身份；`test1 / aa2025` 仅为编写员，提交提案供管理员审核，访客只看正式内容。本地调试不会自动上传，上传需明确运行发布脚本。
 
 脚本显示更新成功后，刷新 https://klywa.xyz/os-tutorial/ 和 https://klywa.xyz/pokilot/ 检查网站。

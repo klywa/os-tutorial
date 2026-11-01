@@ -11,6 +11,7 @@ import reader_store
 import workspace
 from website_auth import Auth, Unconfigured
 from website_data import sanitize
+from edit_locks import EditLocked
 
 
 def public_catalog(root):
@@ -92,6 +93,10 @@ def handler_class(base):
                 root=self.server.root
                 query=parse_qs(urlsplit(self.path).query)
                 if path=='/api/auth/me':return self.response(200,self.who())
+                if path=='/api/edit-locks':
+                    if not self.actor():return self.response(401,{'error':'请先登录'})
+                    from site_access import get_locks
+                    return self.response(200,get_locks(self.server,self.actor(),self.path))
                 if path=='/api/proposals':
                     if not self.actor():return self.response(401,{'error':'请先登录'})
                     from site_access import get_proposals
@@ -162,6 +167,7 @@ def handler_class(base):
                     target=dist/'index.html'
                 if not target.exists():return self.response(503,{'error':'前端尚未构建'})
                 return self.file(target)
+            except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})
             except (workspace.Conflict,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
             except KeyError:self.response(404,{'error':'页面或接口不存在'})
             except (ValueError,TypeError) as exc:self.response(400,{'error':str(exc)})
@@ -180,6 +186,7 @@ def handler_class(base):
             from website_sync import SyncBusy, SyncBlocked, sync_lock
             from site_access import is_proposal_path,mutate_proposal
             from proposals import ProposalForbidden
+            from edit_locks import EditLocked
             try:
                 path=self.request_path()
                 authpath=path in ('/api/auth/login','/api/auth/logout','/api/auth/role') and self.command=='POST'
@@ -187,7 +194,9 @@ def handler_class(base):
                 matching=path=='/api/dashboard/usage/matches' and self.command=='PUT'
                 retry=path=='/api/admin/sync/retry' and self.command=='POST'
                 proposal=is_proposal_path(path)
-                if not (authpath or noteedit or matching or proposal or retry):
+                lockpath=path.startswith('/api/edit-locks/') and self.command=='POST'
+                entries=bool(re.fullmatch(r'/api/notes/[^/]+/entries',path)) and self.command=='PUT'
+                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries):
                     self.discard_small_body()
                     raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
@@ -211,6 +220,9 @@ def handler_class(base):
                     cookie=self.server.auth.switch_role(self.headers.get('Cookie'),data.get('role'))
                     from site_access import session
                     return self.auth_reply(200,session(self.server,cookie,public=True),cookie)
+                if lockpath:
+                    from site_access import mutate_locks
+                    return self.response(200,mutate_locks(self.server,self.actor(),path,data))
                 if proposal:
                     return self.response(200,mutate_proposal(self.server,self.actor(),path,self.command,data,public=True))
                 if self.actor()['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
@@ -220,14 +232,27 @@ def handler_class(base):
                     return self.response(202,value)
                 with sync_lock(self.server.state_dir),formal_save(self.server):
                     getattr(self.server.sync,'_assert_active',lambda:None)()
+                    if entries:
+                        from site_access import proposal_store,sync_status
+                        if data.get('note_id')!=path.split('/')[-2]:raise ValueError('笔记标识不一致')
+                        proposal_store(self.server).recover()
+                        previous=proposal_store(self.server).saved_changes(self.actor(),data)
+                        if previous is not None:return self.response(200,sanitize({**previous,'sync':sync_status(self.server)}))
                     if self.server.sync.status(light=True).get('state')!='synced':raise SyncBlocked('修改正在等待同步或发布，请稍后重试')
                     if matching:
                         import usage_matches
                         value=usage_matches.save(self.server.root,data)
+                    elif entries:
+                        from site_access import proposal_store
+                        if data.get('note_id')!=path.split('/')[-2]:raise ValueError('笔记标识不一致')
+                        value=proposal_store(self.server).apply_changes(self.actor(),data)
                     elif path=='/api/notes':value=workspace.create_note(self.server.root,data)
-                    else:value=workspace.edit(self.server.root,path.split('/')[-1],data)
+                    else:
+                        from site_access import edit_note
+                        value=edit_note(self.server,self.actor(),path.split('/')[-1],data)
                     value={**value,'sync':enqueue_sync(self.server)}
                 return self.response(200,sanitize(value))
+            except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})
             except Unconfigured:self.response(503,{'error':'管理员配置不可用'})
             except PermissionError as exc:self.response(403,{'error':str(exc)})
             except ProposalForbidden as exc:self.response(403,{'error':str(exc)})

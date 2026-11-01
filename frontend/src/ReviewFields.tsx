@@ -17,8 +17,8 @@ export const NodeFields=memo(function NodeFields({node,original,onChange}:{node:
  const composition={onCompositionStart:()=>setComposing(true),onCompositionEnd:()=>setComposing(false)};
  const before=original as unknown as Record<string,unknown>;
  return <div className="review-node-fields">{node.type==='heading'?<label>章节标题<input {...composition} value={node.title} readOnly={node.level===1} onChange={e=>onChange({...node,title:e.target.value})}/><DiffText composing={composing} before={String(before.title??'')} after={node.title}/></label>:<>
- {node.show_key&&<label>名称<input {...composition} value={node.key} onChange={e=>onChange({...node,key:e.target.value})}/><DiffText composing={composing} before={String(before.key??'')} after={node.key}/></label>}
- <label>正文<textarea {...composition} rows={Math.max(3,Math.min(14,Math.ceil(node.value.length/70)))} value={node.value} onChange={e=>onChange({...node,value:e.target.value})}/></label><DiffText composing={composing} before={String(before.value??'')} after={node.value}/></>}</div>;
+ {node.show_key&&<label>名称<input aria-label="名称" {...composition} value={node.key} onChange={e=>onChange({...node,key:e.target.value})}/><DiffText composing={composing} before={String(before.key??'')} after={node.key}/></label>}
+ <label>正文<textarea aria-label="正文" {...composition} rows={Math.max(3,Math.min(14,Math.ceil(node.value.length/70)))} value={node.value} onChange={e=>onChange({...node,value:e.target.value})}/></label><DiffText composing={composing} before={String(before.value??'')} after={node.value}/></>}</div>;
 });
 export function ValueEditor({value,onChange,label,onValidity,onComposing,disabled=false}:{value:unknown;onChange:(value:unknown)=>void;label:string;onValidity?:(valid:boolean)=>void;onComposing?:(composing:boolean)=>void;disabled?:boolean}){
  const [text,setText]=useState(displayValue(value)),[error,setError]=useState('');

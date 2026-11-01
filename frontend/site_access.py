@@ -33,6 +33,8 @@ def proposal_store(server):
         from proposals import ProposalStore
         path=state_dir(server)/'proposals.sqlite3' if hasattr(server,'public_origin') else Path(server.root)/'raw/proposals.sqlite3'
         server.proposals=ProposalStore(server.root,path)
+        from edit_locks import EditLocks
+        server.edit_locks=EditLocks(server.proposals)
     return server.proposals
 
 
@@ -124,9 +126,32 @@ def mutate_proposal(server,identity,path,command,data,public=False):
     # approval receipt alone requires the canonical/global lock for recovery.
     if service.recovery_pending():
         with sync_lock(state_dir(server)):service.recover()
-    if path=='/api/proposals' and command=='POST':return service.submit(identity,data,_recover=False)
+    if path=='/api/proposals' and command=='POST':return service.submit_delta(identity,data,_recover=False)
     if not match:raise KeyError('提案接口不存在')
     item_id,action=match.groups()
     if action is None and command=='PUT':return service.update(identity,item_id,data,_recover=False)
     if action in ('reject','withdraw') and command=='POST':return service.action(identity,item_id,action,data,_recover=False)
     raise KeyError('提案操作不存在')
+
+
+def get_locks(server,identity,request_url):
+    require_identity(identity);proposal_store(server)
+    query=parse_qs(urlsplit(request_url).query)
+    return server.edit_locks.list(identity,query.get('note_id',[''])[0],query.get('client_id',[''])[0])
+
+
+def mutate_locks(server,identity,path,data):
+    require_identity(identity);proposal_store(server)
+    action=path.rsplit('/',1)[-1]
+    if action not in ('acquire','renew','release'):raise KeyError('编辑锁操作不存在')
+    return getattr(server.edit_locks,action)(identity,data)
+
+
+def edit_note(server,identity,nid,data):
+    """Legacy admin editor: revision first, then revoke only affected entries."""
+    import workspace
+    service=proposal_store(server);service.recover()
+    record=service._note(nid)
+    if data.get('revision')!=record['metadata']['revision']:raise workspace.Conflict('笔记已更新，请重新载入后合并草稿')
+    with server.edit_locks.admin_guard(identity,nid,record['body'],data.get('document',record['body'])):
+        return workspace.edit(server.root,nid,data)

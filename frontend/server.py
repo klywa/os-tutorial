@@ -78,6 +78,13 @@ class Handler(BaseHTTPRequestHandler):
         if path=='/api/local-service/status':
             if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
             return self.response(200,{'mode':'local','root':str(Path(self.server.root).resolve()),'port':self.server.server_port})
+        if path=='/api/edit-locks':
+            try:
+                from site_access import get_locks
+                from edit_locks import EditLocked
+                return self.response(200,get_locks(self.server,identity,self.path))
+            except EditLocked as exc:return self.response(423,{'error':str(exc),'reason':exc.reason})
+            except (ValueError,PermissionError) as exc:return self.response(403,{'error':str(exc)})
         if path=='/api/proposals':
             try:return self.response(200,get_proposals(self.server,identity,self.path))
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
@@ -265,6 +272,7 @@ class Handler(BaseHTTPRequestHandler):
         from site_access import actor,payload,is_proposal_path,mutate_proposal,state_dir,session
         from website_sync import sync_lock,SyncBusy,SyncBlocked
         from proposals import ProposalForbidden
+        from edit_locks import EditLocked
         path=unquote(urlsplit(self.path).path)
         identity=actor(self.server,self.headers.get('Cookie'))
         try:
@@ -286,13 +294,23 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_response(200);self.send_header('Content-Type','application/json; charset=utf-8')
                 self.send_header('Set-Cookie',cookie);self.send_header('Cache-Control','no-store')
                 self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body);return
+            if path.startswith('/api/edit-locks/') and self.command=='POST':
+                from site_access import mutate_locks
+                return self.response(200,mutate_locks(self.server,identity,path,payload(self)))
             if is_proposal_path(path):
                 return self.response(200,mutate_proposal(self.server,identity,path,self.command,payload(self)))
             if identity and identity['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
+            if re.fullmatch(r'/api/notes/[^/]+/entries',path) and self.command=='PUT':
+                from site_access import proposal_store
+                data=payload(self)
+                if data.get('note_id')!=path.split('/')[-2]:raise ValueError('笔记标识不一致')
+                with sync_lock(state_dir(self.server)):
+                    return self.response(200,proposal_store(self.server).apply_changes(identity,data))
             if path=='/api/notes' or path.startswith('/api/notes/'):
                 with sync_lock(state_dir(self.server)):
                     return self._mutate_local()
             return self._mutate_local()
+        except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})
         except PermissionError as exc:self.response(403,{'error':str(exc)})
         except ProposalForbidden as exc:self.response(403,{'error':str(exc)})
         except workspace.Conflict as exc:self.response(409,{'error':str(exc)})
@@ -449,7 +467,8 @@ class Handler(BaseHTTPRequestHandler):
             elif self.command == 'POST' and path == '/api/notes':
                 result = workspace.create_note(self.server.root, payload)
             elif self.command == 'PUT' and path.startswith('/api/notes/'):
-                result = workspace.edit(self.server.root, path.split('/')[-1], payload)
+                from site_access import edit_note,actor
+                result = edit_note(self.server,actor(self.server,self.headers.get('Cookie')),path.split('/')[-1],payload)
                 import json_store
                 if not json_store.enabled(self.server.root):
                     from note_links import project_notes
