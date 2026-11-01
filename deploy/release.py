@@ -16,7 +16,7 @@ import urllib.request
 import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'frontend'))
-from website_sync import SyncManager, git, sync_lock
+from website_sync import SyncManager, git, wait_sync_lock
 from update_sites import snapshot_os, stamp
 
 
@@ -106,7 +106,7 @@ class ReleaseManager:
 
     def update(self):
         self.releases.mkdir(parents=True, exist_ok=True)
-        with sync_lock(self.state_dir):
+        with wait_sync_lock(self.state_dir):
             snapshot = self.snapshot()
             if snapshot:
                 active = Path(snapshot['root'])
@@ -141,7 +141,7 @@ class ReleaseManager:
                 value = git(Path(snapshot['root']), 'config', '--get', key).stdout.strip()
                 git(candidate, 'config', key, value)
         self.build(candidate)
-        with sync_lock(self.state_dir):
+        with wait_sync_lock(self.state_dir):
             self.assert_unchanged(snapshot)
             if self.remote_head(candidate) != head:
                 raise StaleRelease('Remote advanced during build; activation skipped')

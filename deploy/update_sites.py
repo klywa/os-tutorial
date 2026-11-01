@@ -87,10 +87,10 @@ class PokilotUpdater:
     def run(self, args, **kwargs):
         return command(args, runner=self.runner, **kwargs)
 
-    def git(self, *args):
+    def git(self, *args, log_output=True):
         env = {**os.environ, 'GIT_TERMINAL_PROMPT':'0',
                'GIT_SSH_COMMAND':os.environ.get('GIT_SSH_COMMAND','ssh -o BatchMode=yes -o ConnectTimeout=15')}
-        return self.run(['git','-C',str(self.root), *args], env=env, timeout=180)
+        return self.run(['git','-C',str(self.root), *args], env=env, timeout=180, log_output=log_output)
 
     def service(self, action):
         self.run(['systemctl',action,'pokilot.service'], timeout=90)
@@ -98,8 +98,14 @@ class PokilotUpdater:
     def preflight(self):
         if self.root.is_symlink() or self.root.resolve() != self.root or not (self.root / '.git').is_dir():
             raise RuntimeError('Pokilot 必须是独立真实 Git 工作目录，不能是链接')
-        if self.git('branch','--show-current') != 'app':
-            raise RuntimeError('Pokilot 分支必须是 app')
+        branch = self.git('branch','--show-current')
+        if not branch:
+            raise RuntimeError('Pokilot 当前处于游离 HEAD，请先恢复部署分支；未自动切换分支')
+        remote = self.git('config','--default','','--get',f'branch.{branch}.remote',log_output=False)
+        merge = self.git('config','--default','','--get',f'branch.{branch}.merge',log_output=False)
+        if (remote or merge) and (remote != 'origin' or merge != f'refs/heads/{branch}'):
+            raise RuntimeError(f'Pokilot 当前分支 {branch} 的上游必须为 origin/{branch}；未修改分支或上游配置')
+        logging.info('Pokilot 保留部署分支 %s，更新目标 origin/%s',branch,branch)
         if self.git('status','--porcelain','--untracked-files=all'):
             raise RuntimeError('Pokilot 有本地改动，已停止更新')
         if self.git('ls-files','--','data/pokilot.db','data/pokilot.db-wal','data/pokilot.db-shm'):
@@ -116,6 +122,7 @@ class PokilotUpdater:
         with closing(sqlite3.connect(self.db.as_uri()+'?mode=ro', uri=True)) as connection:
             if connection.execute('pragma quick_check').fetchone()[0] != 'ok':
                 raise RuntimeError('Pokilot 数据库完整性检查失败')
+        return branch
 
     def backup(self, destination, old_head):
         # Full copy includes node_modules and .next: rollback needs no network/build.
@@ -129,14 +136,14 @@ class PokilotUpdater:
         (destination / '.git/update-sites-head').write_text(old_head+'\n', encoding='utf-8')
 
     def update(self):
-        self.preflight()
+        branch = self.preflight()
         old_head = self.git('rev-parse','HEAD')
         # Fetch with service running; reject divergence before downtime.
-        self.git('fetch','origin','app')
+        self.git('fetch','origin',branch)
         new_head = self.git('rev-parse','FETCH_HEAD')
         if old_head == new_head:
             logging.info('Pokilot 已是最新版本，跳过')
-            return {'state':'unchanged', 'head':old_head}
+            return {'state':'unchanged', 'head':old_head, 'branch':branch}
         self.git('merge-base','--is-ancestor',old_head,new_head)
         database_paths=history_paths(self.git,old_head,new_head)
         if any(path in {'data/pokilot.db','data/pokilot.db-wal','data/pokilot.db-shm'} for path in database_paths) or self.git('ls-tree','-r','--name-only',new_head,'--','data/pokilot.db'):
@@ -153,8 +160,10 @@ class PokilotUpdater:
         backed_up = False
         try:
             # Recheck after stop so an out-of-band edit never gets overwritten.
-            if self.git('status','--porcelain','--untracked-files=all') or self.git('rev-parse','HEAD') != old_head:
-                raise RuntimeError('停服期间代码发生变化，已停止更新')
+            if (self.git('status','--porcelain','--untracked-files=all') or
+                    self.git('rev-parse','HEAD') != old_head or
+                    self.git('branch','--show-current') != branch):
+                raise RuntimeError('停服期间代码或分支发生变化，已停止更新')
             self.backup(backup, old_head)
             backed_up = True
             logging.info('Pokilot 完整回滚备份：%s', backup)
@@ -168,7 +177,7 @@ class PokilotUpdater:
             if not self.health():
                 raise RuntimeError('Pokilot 健康检查失败')
             logging.info('Pokilot 更新成功；备份保留：%s', backup)
-            return {'state':'deployed','head':self.git('rev-parse','HEAD'), 'backup':str(backup)}
+            return {'state':'deployed','head':self.git('rev-parse','HEAD'), 'branch':branch, 'backup':str(backup)}
         except Exception:
             if backed_up:
                 self.service('stop')

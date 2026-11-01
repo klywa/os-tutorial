@@ -1,6 +1,6 @@
 # 两站日常更新：执行脚本
 
-以下适用于已经部署好的网站。本地双向同步脚本只操作万象棋；服务器 `update-sites` 可以更新万象棋和 Pokilot。Pokilot 更新前，其代码需已上传到 GitHub 的 `app` 分支。
+以下适用于已经部署好的网站。本地双向同步脚本只操作万象棋；服务器 `update-sites` 可以更新万象棋和 Pokilot。Pokilot 沿用服务器当前部署分支（例如 `master`），更新前需将代码上传到 GitHub 的同名分支；脚本不会切换分支。
 
 ## 首次安装服务器命令（只做一次）
 
@@ -54,6 +54,13 @@ update-sites --os-tutorial
 只更新 Pokilot：
 
 ```bash
+update-sites --pokilot
+```
+
+若旧版报“Pokilot 分支必须是 app”，先在本机运行发布脚本上传修复，再在服务器依次执行：
+
+```bash
+update-sites --os-tutorial
 update-sites --pokilot
 ```
 

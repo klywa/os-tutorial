@@ -1,5 +1,6 @@
 """Shared local/public identities and private proposal HTTP operations."""
 import json
+from contextlib import contextmanager,nullcontext
 from pathlib import Path
 import re
 from urllib.parse import parse_qs,urlsplit
@@ -22,7 +23,7 @@ def session(server,cookie,public=False):
     result={'mode':'public' if public else 'local','base_path':getattr(server,'base_path',''),
             **(identity or {'username':None,'role':'guest','account_role':'guest','allowed_roles':[]})}
     if public and identity:
-        try:result['sync']=server.sync.status()
+        try:result['sync']=sync_status(server)
         except (RuntimeError,OSError,ValueError):result['sync']={'state':'conflict','message':'Git同步暂时不可用，正式编辑已暂停'}
     return result
 
@@ -68,26 +69,64 @@ def get_proposals(server,identity,request_url):
     return proposal_store(server).list(identity,**{key:query.get(key,[None])[0] for key in ('note_id','status','author')})
 
 
+def sync_status(server):
+    value=server.sync.status(light=True)
+    return {key:value[key] for key in ('state','phase','message','job_id','updated_at','next_retry_at','attempts') if key in value}
+
+
+def enqueue_sync(server,force=False):
+    worker=getattr(server,'sync_worker',None)
+    try:
+        value=server.sync.enqueue(force=True) if force else server.sync.enqueue()
+        return {key:value[key] for key in ('state','phase','message','job_id','updated_at','next_retry_at','attempts') if key in value}
+    except OSError:
+        if worker:worker.initialized=False
+        raise
+    finally:
+        if worker:worker.wake()
+
+
+@contextmanager
+def formal_save(server):
+    """Keep any durable partial save recoverable even if receipt cleanup fails."""
+    try:yield
+    except OSError:
+        worker=getattr(server,'sync_worker',None)
+        if worker:worker.initialized=False
+        try:enqueue_sync(server)
+        except Exception:pass  # Preserve the original error; startup/worker scans durable journals.
+        finally:
+            if worker:worker.wake()
+        raise
+
+
 def mutate_proposal(server,identity,path,command,data,public=False):
     require_identity(identity)
     service=proposal_store(server)
-    with sync_lock(state_dir(server)):
-        service.recover()
-        if path=='/api/proposals' and command=='POST':return service.submit(identity,data)
-        match=re.fullmatch(r'/api/proposals/([^/]+)(?:/(approve|reject|withdraw))?',path)
-        if not match:raise KeyError('提案接口不存在')
-        item_id,action=match.groups()
-        if action is None and command=='PUT':return service.update(identity,item_id,data)
-        if action and command=='POST':
-            if action=='approve':
-                if identity['role']!='admin':raise PermissionError('只有管理员可以确认提案')
-                # A retry after a lost HTTP response is a read of the completed
-                # item, including when Git is still unavailable.
-                approved=next((p for p in service.list(identity)['items'] if p['id']==item_id and p['status']=='approved'),None)
-                if approved:return approved
-                if public and server.sync.status().get('state')!='synced':
-                    raise SyncBlocked('正式修改等待同步或发布，请稍后确认；仍可暂存提案')
-            result=service.action(identity,item_id,action,data)
-            if action=='approve' and public:server.sync.record_save()
+    match=re.fullmatch(r'/api/proposals/([^/]+)(?:/(approve|reject|withdraw))?',path)
+    if match and match[2]=='approve' and command=='POST':
+        if identity['role']!='admin':raise PermissionError('只有管理员可以确认提案')
+        existing=service.get(identity,match[1])
+        if existing['status']=='approved':
+            return {**existing,**({'sync':sync_status(server)} if public else {})}
+        with sync_lock(state_dir(server)),formal_save(server) if public else nullcontext():
+            if public:getattr(server.sync,'_assert_active',lambda:None)()
+            service.recover()
+            existing=service.get(identity,match[1])
+            if existing['status']=='approved':
+                return {**existing,**({'sync':sync_status(server)} if public else {})}
+            if public and server.sync.status(light=True).get('state')!='synced':
+                raise SyncBlocked('正式修改等待同步或发布，请稍后确认；仍可暂存提案')
+            result=service.action(identity,match[1],'approve',data)
+            if public:result={**result,'sync':enqueue_sync(server)}
             return result
-        raise KeyError('提案操作不存在')
+    # Private proposal CRUD never waits for a long Git operation. A leftover
+    # approval receipt alone requires the canonical/global lock for recovery.
+    if service.recovery_pending():
+        with sync_lock(state_dir(server)):service.recover()
+    if path=='/api/proposals' and command=='POST':return service.submit(identity,data,_recover=False)
+    if not match:raise KeyError('提案接口不存在')
+    item_id,action=match.groups()
+    if action is None and command=='PUT':return service.update(identity,item_id,data,_recover=False)
+    if action in ('reject','withdraw') and command=='POST':return service.action(identity,item_id,action,data,_recover=False)
+    raise KeyError('提案操作不存在')

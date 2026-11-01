@@ -7,6 +7,7 @@ import tempfile
 import threading
 import unittest
 from types import SimpleNamespace
+from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'frontend'),str(ROOT/'.codex/skills/wanxiangqi-knowledge/scripts')]
@@ -82,7 +83,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
         self.assertEqual(self.call('/os-tutorial/api/proposals/'+edited['id'],'PUT',{'revision':1,'proposed_node':changed})[0],403)
         self.login()
         pushed=[]
-        self.http.sync=SimpleNamespace(status=lambda:{'state':'synced'},record_save=lambda:pushed.append(True))
+        self.http.sync=SimpleNamespace(status=lambda **kwargs:{'state':'synced'},enqueue=lambda:pushed.append(True) or {'state':'pending','phase':'queued'})
         path='/os-tutorial/api/proposals/'+edited['id']+'/approve'
         code,approved,_=self.call(path,'POST',{'revision':1})
         self.assertEqual(code,200,approved);self.assertEqual(approved['status'],'approved')
@@ -94,6 +95,69 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
         code,rejected,_=self.call('/os-tutorial/api/proposals/'+inserted['id']+'/reject','POST',{'revision':1})
         self.assertEqual((code,rejected['status']),(200,'rejected'))
         self.assertEqual(len(json_store.resolve_note(self.root,note['id'])['document']['nodes']),3)
+
+    def test_approval_returns_while_git_is_blocked_and_proposals_remain_writable(self):
+        import json_store
+        from site_access import proposal_store
+        from website_sync import SyncManager,SyncWorker
+        nodes=[{'id':'t','type':'heading','level':1,'title':'异步审核'},
+               {'id':'h','type':'heading','level':2,'title':'章节'},
+               {'id':'e','type':'entry','key':'名称','show_key':True,'value':'旧正文'}]
+        with fixtures.workspace.store_lock(self.root):
+            json_store.save(self.root,[{'body':{'schema_version':6,'nodes':nodes},
+                'metadata':{'id':'async-note','type':'other','title':'异步审核','path':'knowledge/other/异步审核.json'}}],partial=True)
+        service=proposal_store(self.http)
+        author={'username':'test1','role':'annotator','account_role':'annotator'}
+        record=json_store.load_record(self.root,'async-note')
+        item=service.submit(author,{'note_id':'async-note','revision':record['metadata']['revision'],
+            'scope_id':'h','nodes':[nodes[1],{**nodes[2],'value':'确认正文'}]})['items'][0]
+        manager=SyncManager(self.root,self.root/'state');self.http.sync=manager
+        started=threading.Event();release=threading.Event()
+        def blocked():
+            manager._state('pending',phase='pushing');started.set()
+            release.wait(8)
+            return manager._state('synced')
+        worker=SyncWorker(manager);worker.initialized=True;self.http.sync_worker=worker
+        with patch.object(manager,'retry',side_effect=blocked):
+            worker.start()
+            try:
+                self.login()
+                path='/os-tutorial/api/proposals/'+item['id']+'/approve'
+                code,result,_=self.call(path,'POST',{'revision':1})
+                self.assertEqual(code,200,result)
+                self.assertEqual(result['status'],'approved')
+                self.assertEqual(result['sync']['state'],'pending')
+                self.assertTrue(started.wait(3))
+                self.assertFalse(release.is_set())
+                self.assertEqual(json_store.resolve_note(self.root,'async-note')['document']['nodes'][2]['value'],'确认正文')
+                self.assertEqual(self.call(path,'POST',{'revision':1})[0],200)
+                self.assertEqual(self.call('/os-tutorial/api/notes/catalog')[0],200)
+                self.assertEqual(self.call('/os-tutorial/api/notes/async-note','PUT',
+                    {'revision':record['metadata']['revision'],'document':record['body']})[0],423)
+                code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test1','password':'aa2025'})
+                self.cookie=headers['Set-Cookie'].split(';')[0]
+                note=json_store.resolve_note(self.root,'async-note')
+                code,pending,_=self.call('/os-tutorial/api/proposals','POST',{'note_id':'async-note',
+                    'revision':note['revision'],'scope_id':'h','nodes':[nodes[1],{**nodes[2],'value':'下一份建议'}]})
+                self.assertEqual(code,200,pending)
+                second=pending['items'][0]
+                code,modified,_=self.call('/os-tutorial/api/proposals/'+second['id'],'PUT',
+                    {'revision':1,'proposed_node':{**second['proposed_node'],'value':'再次修改建议'}})
+                self.assertEqual(code,200,modified)
+                self.assertEqual(self.call('/os-tutorial/api/proposals/'+second['id']+'/withdraw','POST',{'revision':2})[0],200)
+                self.assertEqual(self.call('/os-tutorial/api/admin/sync/retry','POST',{})[0],403)
+            finally:
+                release.set();worker.close()
+
+    def test_admin_manual_retry_enqueues_without_running_git(self):
+        from website_sync import SyncManager
+        self.http.sync=SyncManager(self.root,self.root/'state')
+        self.http.sync._state('conflict','needs retry')
+        self.login()
+        with patch.object(self.http.sync,'retry',side_effect=AssertionError('HTTP invoked slow retry')):
+            code,result,_=self.call('/os-tutorial/api/admin/sync/retry','POST',{})
+        self.assertEqual(code,202,result)
+        self.assertEqual(result['phase'],'queued')
 
 
 class LocalRoleHttpTests(unittest.TestCase):

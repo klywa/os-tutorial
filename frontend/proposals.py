@@ -1,7 +1,8 @@
 """Private, durable per-entry review; canonical edits use the normal JSON pipeline.
 
-HTTP callers serialize writes with their sync lock. SQLite serializes store users;
-json_store.edit owns the (non-reentrant) workspace lock. No Git operations live here.
+HTTP canonical approvals/recovery hold sync_lock. Private HTTP mutations pass
+_recover=False and check receipts inside SQLite's write transaction instead.
+json_store.edit owns the non-reentrant workspace lock. No Git operations live here.
 """
 from contextlib import contextmanager, closing
 from copy import deepcopy
@@ -96,18 +97,22 @@ class ProposalStore:
         _sync_directory(self.journal_path.parent)
 
     @contextmanager
-    def _db(self):
+    def _db(self,write=True):
         fresh=not self.db_path.parent.exists()
         self.db_path.parent.mkdir(parents=True,exist_ok=True)
         if fresh:os.chmod(self.db_path.parent,0o700)
         conn=sqlite3.connect(self.db_path,timeout=30)
         try:
-            os.chmod(self.db_path,0o600)
-            conn.execute('PRAGMA journal_mode=WAL')
-            conn.execute('PRAGMA synchronous=FULL')
-            conn.execute('CREATE TABLE IF NOT EXISTS proposals (id TEXT PRIMARY KEY, data TEXT NOT NULL)')
-            conn.commit()
-            conn.execute('BEGIN IMMEDIATE')
+            if write:
+                os.chmod(self.db_path,0o600)
+                conn.execute('PRAGMA journal_mode=WAL')
+                conn.execute('PRAGMA synchronous=FULL')
+                conn.execute('CREATE TABLE IF NOT EXISTS proposals (id TEXT PRIMARY KEY, data TEXT NOT NULL)')
+                conn.commit()
+                conn.execute('BEGIN IMMEDIATE')
+            else:
+                conn.execute('PRAGMA query_only=ON')
+                conn.execute('BEGIN')
             yield conn
             conn.commit()
         except BaseException:
@@ -140,7 +145,7 @@ class ProposalStore:
             raise Conflict('提案已更新，请重新载入')
 
     def _note(self,nid):
-        record=json_store.load_record(self.root,nid)
+        record=json_store.load_record(self.root,nid,clone=False)
         if record is None:raise KeyError('笔记不存在')
         return record
 
@@ -172,17 +177,38 @@ class ProposalStore:
     def list(self,actor,note_id=None,status=None,author=None):
         role=_authority(actor)
         if not self.db_path.exists():return {'items':[]}
-        with self._db() as conn:
+        with self._db(write=False) as conn:
             rows=[r for r in self._rows(conn) if (role=='admin' or r['author']==actor['username'])
                 and (note_id is None or r['note_id']==note_id) and (status is None or r['status']==status)
                 and (author is None or r['author']==author)]
-            return {'items':[self._public(r) for r in rows]}
+            records={}
+            result=[]
+            for item in rows:
+                if item['status']=='pending' and item['note_id'] not in records:
+                    try:records[item['note_id']]=self._note(item['note_id'])
+                    except (KeyError,ValueError):records[item['note_id']]=None
+                result.append(self._public(item,records.get(item['note_id'])))
+            return {'items':result}
 
-    def submit(self,actor,payload):
+    def get(self,actor,pid):
+        _authority(actor)
+        if not self.db_path.exists():raise KeyError('提案不存在')
+        with self._db(write=False) as conn:
+            item=self._get(conn,pid)
+            self._access(actor,item)
+            return self._public(item)
+
+    def _private_ready(self):
+        # Called only after BEGIN IMMEDIATE: an approval cannot create its
+        # receipt between this check and the private mutation's commit.
+        if self.journal_path.exists():raise Conflict('审批正在恢复，请稍后重试')
+
+    def submit(self,actor,payload,*,_recover=True):
         _authority(actor)
         if set(payload)-{'note_id','revision','scope_id','nodes'}:raise ValueError('提案包含不支持的字段')
-        self.recover()
+        if _recover:self.recover()
         with self._db() as conn:
+            if not _recover:self._private_ready()
             record=self._note(payload['note_id']);all_nodes=record['body']['nodes']
             if payload.get('revision')!=record['metadata']['revision']:raise Conflict('笔记已更新')
             original=_scope(all_nodes,payload['scope_id']);incoming=payload.get('nodes')
@@ -233,11 +259,12 @@ class ProposalStore:
             for item in items:self._put(conn,item)
             return {'items':[self._public(i,record) for i in items]}
 
-    def update(self,actor,pid,payload):
+    def update(self,actor,pid,payload,*,_recover=True):
         _authority(actor)
         if set(payload)-{'revision','proposed_node','rebase'}:raise ValueError('不支持的提案字段')
-        self.recover()
+        if _recover:self.recover()
         with self._db() as conn:
+            if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item);self._revision(item,payload)
             if item['status']!='pending':raise Conflict('已处理提案不能修改')
             if payload.get('rebase'):
@@ -289,12 +316,13 @@ class ProposalStore:
             nodes.insert(position,deepcopy(item['proposed_node']))
         return json_document.clean_labels(body)
 
-    def action(self,actor,pid,action,payload):
+    def action(self,actor,pid,action,payload,*,_recover=True):
         role=_authority(actor)
         if action not in ('approve','reject','withdraw'):raise ValueError('未知提案操作')
         if action in ('approve','reject') and role!='admin':raise ProposalForbidden('当前身份不能审核提案')
-        self.recover()
+        if _recover:self.recover()
         with self._db() as conn:
+            if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item)
             if action=='approve' and item['status']=='approved':return self._public(item)
             self._revision(item,payload)

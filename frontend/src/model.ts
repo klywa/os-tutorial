@@ -39,5 +39,5 @@ export function sectionText(note:Note,section:string){return note.claims.filter(
 export async function api<T>(url:string,method='GET',body?:unknown):Promise<T>{
   const response=await fetch(apiUrl(url),{method,...(/^proposals(?:[/?]|$)/.test(url)?{cache:'no-store' as RequestCache}:{}),headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
   if(response.status===401)sessionExpired();
-  const data=await response.json();if(!response.ok)throw new Error(data.error??'请求失败，请重试');if(method.toUpperCase()!=='GET'&&method.toUpperCase()!=='HEAD')window.dispatchEvent(new Event('wxq:sync-changed'));return data;
+  const data=await response.json();if(!response.ok)throw new Error(data.error??'请求失败，请重试');if(method.toUpperCase()!=='GET'&&method.toUpperCase()!=='HEAD')window.dispatchEvent(new CustomEvent('wxq:sync-changed',{detail:data.sync??(url==='admin/sync/retry'?data:undefined)}));return data;
 }

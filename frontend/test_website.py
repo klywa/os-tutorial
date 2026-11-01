@@ -130,7 +130,7 @@ class PublicHttpTests(unittest.TestCase):
             json_store.save(self.root,[{'body':body,'metadata':row}],partial=True)
         state={'state':'synced'}
         def saved():state.update(state='pending');return state
-        self.http.sync=SimpleNamespace(status=lambda:dict(state),record_save=saved)
+        self.http.sync=SimpleNamespace(status=lambda **kwargs:dict(state),enqueue=saved)
         self.login()
         _,note,_=self.call('/os-tutorial/api/notes/n')
         revision=note['revision']
@@ -146,6 +146,17 @@ class PublicHttpTests(unittest.TestCase):
     def test_reading_does_not_start_background_projection_threads(self):
         with patch('reader_store.schedule_rebuild',side_effect=AssertionError('public read spawned worker')):
             self.assertEqual(self.call('/os-tutorial/api/options')[0],200)
+
+    def test_early_rejection_consumes_small_body_before_closing_socket(self):
+        # Header/body packets may arrive separately. Closing with unread payload
+        # can reset the connection on Windows before the client reads its404.
+        with socket.create_connection(('127.0.0.1',self.http.server_port),timeout=3) as connection:
+            connection.sendall(b'POST /os-tutorial/api/sources HTTP/1.0\r\nHost: klywa.xyz\r\nContent-Length: 2\r\n\r\n')
+            connection.settimeout(.1)
+            with self.assertRaises(TimeoutError):connection.recv(1)
+            connection.sendall(b'{}');connection.settimeout(3)
+            response=http.client.HTTPResponse(connection);response.begin()
+            self.assertEqual(response.status,404);response.read();response.close()
 
     def test_clean_release_can_start_while_publisher_holds_activation_lock(self):
         from website_sync import sync_lock

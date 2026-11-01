@@ -38,13 +38,13 @@ class UpdateTests(unittest.TestCase):
         self.commands = []
     def git(self, *args):
         return subprocess.run(['git','-C',str(self.repo),*args], check=True, capture_output=True, text=True).stdout.strip()
-    def advance(self):
+    def advance(self,branch='app'):
         other = self.parent / 'other'
-        subprocess.run(['git','clone','--no-hardlinks',str(self.origin),str(other)],check=True,capture_output=True)
+        subprocess.run(['git','clone','--no-hardlinks','--branch',branch,str(self.origin),str(other)],check=True,capture_output=True)
         for args in [('config','user.email','test@example.invalid'),('config','user.name','Test')]:
             subprocess.run(['git','-C',str(other),*args],check=True,capture_output=True)
         (other / 'code.txt').write_text('new')
-        for args in [('add','.'),('commit','-m','new'),('push','origin','app')]:
+        for args in [('add','.'),('commit','-m','new'),('push','origin',branch)]:
             subprocess.run(['git','-C',str(other),*args],check=True,capture_output=True)
     def runner(self, args, **kwargs):
         self.commands.append(args)
@@ -59,6 +59,49 @@ class UpdateTests(unittest.TestCase):
     def test_unchanged_does_not_stop_or_install(self):
         self.assertEqual(self.manager().update()['state'], 'unchanged')
         self.assertFalse(any('stop' in args or args[0]=='pnpm' for args in self.commands))
+
+    def master_deployment(self):
+        self.git('branch','-m','master')
+        self.git('push','--set-upstream','origin','master')
+
+    def test_existing_master_deployment_updates_its_master_without_switching(self):
+        self.master_deployment(); self.advance('master')
+        upstream=self.git('rev-parse','--abbrev-ref','@{upstream}')
+        self.assertEqual(self.manager().update()['state'],'deployed')
+        self.assertEqual(self.git('branch','--show-current'),'master')
+        self.assertEqual(self.git('rev-parse','--abbrev-ref','@{upstream}'),upstream)
+        self.assertEqual((self.repo/'code.txt').read_text(),'new')
+        self.assertIn(['git','-C',str(self.repo),'fetch','origin','master'],self.commands)
+        self.assertNotIn(['git','-C',str(self.repo),'fetch','origin','app'],self.commands)
+
+    def test_unchanged_master_deployment_does_not_stop_or_build(self):
+        self.master_deployment()
+        self.assertEqual(self.manager().update()['state'],'unchanged')
+        self.assertFalse(any('stop' in args or args[0]=='pnpm' for args in self.commands))
+
+    def test_detached_head_is_rejected_before_fetch_or_stop(self):
+        self.git('checkout','--detach')
+        with self.assertRaisesRegex(RuntimeError,'分支'):
+            self.manager().update()
+        self.assertFalse(any('fetch' in args or 'stop' in args for args in self.commands))
+
+    def test_mismatched_upstream_is_rejected_before_fetch_or_stop(self):
+        self.git('config','branch.app.remote','origin')
+        self.git('config','branch.app.merge','refs/heads/master')
+        with self.assertRaisesRegex(RuntimeError,'上游'):
+            self.manager().update()
+        self.assertFalse(any('fetch' in args or 'stop' in args for args in self.commands))
+
+    def test_branch_change_during_stop_is_rejected_without_changing_code(self):
+        self.advance()
+        def change_branch(args,**kwargs):
+            if args==['systemctl','stop','pokilot.service']:
+                self.git('branch','-m','other')
+            return self.runner(args,**kwargs)
+        with self.assertRaisesRegex(RuntimeError,'分支|变化'):
+            self.manager(change_branch).update()
+        self.assertEqual((self.repo/'code.txt').read_text(),'old')
+        self.assertEqual(self.commands[-1],['systemctl','start','pokilot.service'])
     def test_dirty_tree_aborts_before_fetch_or_stop(self):
         (self.repo / 'code.txt').write_text('local work')
         with self.assertRaisesRegex(RuntimeError, '改动'):

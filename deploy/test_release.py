@@ -6,6 +6,8 @@ import sys
 import unittest
 from unittest.mock import patch
 import urllib.error
+import threading
+import time
 
 sys.path.insert(0, str(Path(__file__).parents[1] / 'frontend'))
 import test_website_sync as fixtures
@@ -128,6 +130,24 @@ class ReleaseTests(unittest.TestCase):
         manager = self.manager()
         manager.build = lambda _: self.fail('unchanged release rebuilt')
         self.assertEqual(manager.update()['state'], 'unchanged')
+
+    def test_publication_waits_for_an_existing_sync_job(self):
+        from website_sync import sync_lock
+        manager=self.manager();entered=threading.Event();release=threading.Event();errors=[];results=[]
+        def holder():
+            with sync_lock(self.sync.state_dir):entered.set();release.wait(5)
+        lock_thread=threading.Thread(target=holder);lock_thread.start();self.assertTrue(entered.wait(2))
+        def update():
+            try:results.append(manager.update())
+            except Exception as exc:errors.append(exc)
+        thread=threading.Thread(target=update);thread.start()
+        try:
+            time.sleep(.1)
+            self.assertTrue(thread.is_alive(),'publisher failed instead of waiting for active sync')
+        finally:release.set();lock_thread.join();thread.join(15)
+        self.assertFalse(thread.is_alive())
+        self.assertEqual(errors,[])
+        self.assertEqual(results[0]['state'],'unchanged')
 
 
 if __name__ == '__main__':

@@ -483,6 +483,8 @@ class LocalServer(ThreadingHTTPServer):
     allow_reuse_address = False
 
     def server_close(self):
+        if hasattr(self,'sync_worker'):
+            self.sync_worker.close()
         if hasattr(self, 'markdown_watcher'):
             self.markdown_watcher.close()
         if hasattr(self, 'crawler'):
@@ -548,6 +550,8 @@ if __name__ == '__main__':
         validate(args.root)
         server = create_server(args.root,args.port,public=True,base_path=args.base_path,
             origin=args.origin,auth_config=args.auth_config,state_dir=args.state_dir)
+        from website_sync import SyncWorker
+        server.sync_worker=SyncWorker(server.sync).start()
     else:
         workspace.migrate(args.root)
         from player_identity import migrate as migrate_players

@@ -63,6 +63,67 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(self.action(items[2])['status'],'approved')
         self.assertNotIn('b',[n['id'] for n in self.note()['body']['nodes']])
 
+    def test_private_list_reuses_one_readonly_record_and_get_never_scans(self):
+        items=self.submit([self.nodes[1],entry('a','new'),entry('x','insert')])
+        original=json_store.load_record
+        def readonly(root,nid,*,clone=True):
+            self.assertFalse(clone,'proposal read cloned historical metadata')
+            return original(root,nid,clone=clone)
+        with patch.object(json_store,'load_record',side_effect=readonly) as load:
+            self.assertEqual(len(self.store.list(ADMIN)['items']),3)
+            self.assertEqual(load.call_count,1)
+        with patch.object(self.store,'_rows',side_effect=AssertionError('get scanned all proposals')):
+            self.assertEqual(self.store.get(AUTHOR,items[0]['id'])['id'],items[0]['id'])
+            with self.assertRaises(ProposalForbidden):self.store.get(OTHER,items[0]['id'])
+
+    def test_approval_cleanup_failure_still_queues_and_recovers_sync(self):
+        from types import SimpleNamespace
+        from site_access import mutate_proposal
+        from website_sync import SyncManager,SyncWorker
+        item=self.submit()[0]
+        manager=SyncManager(self.root,self.db.parent)
+        worker=SyncWorker(manager);worker.initialized=True
+        server=SimpleNamespace(root=self.root,state_dir=self.db.parent,proposals=self.store,
+                               sync=manager,sync_worker=worker)
+        path='/api/proposals/'+item['id']+'/approve'
+        with patch.object(self.store,'_clear_receipt',side_effect=OSError('cleanup interrupted')):
+            with self.assertRaises(OSError):mutate_proposal(server,ADMIN,path,'POST',{'revision':1},public=True)
+        self.assertEqual(self.store.get(ADMIN,item['id'])['status'],'approved')
+        self.assertEqual(self.note()['body']['nodes'][2]['value'],'new')
+        duplicate=mutate_proposal(server,ADMIN,path,'POST',{'revision':1},public=True)
+        self.assertEqual(duplicate['sync']['state'],'pending')
+        with patch.object(manager,'_changed',return_value=['knowledge/other/n.json']), \
+                patch.object(manager,'retry',side_effect=lambda:manager._state('synced')):
+            self.assertTrue(worker.step())
+        self.assertFalse(self.store.recovery_pending())
+
+    def test_private_http_crud_never_recovers_outside_global_lock(self):
+        from types import SimpleNamespace
+        from site_access import mutate_proposal
+        item=self.submit()[0]
+        server=SimpleNamespace(root=self.root,state_dir=self.db.parent,proposals=self.store)
+        with patch.object(self.store,'recovery_pending',return_value=False), \
+                patch.object(self.store,'recover',side_effect=AssertionError('private path recovered without lock')):
+            result=mutate_proposal(server,AUTHOR,'/api/proposals/'+item['id'],'PUT',
+                                   {'revision':1,'proposed_node':entry('a','changed')})
+        self.assertEqual(result['proposed_node']['value'],'changed')
+
+    def test_private_transaction_refuses_new_receipt_after_outer_check(self):
+        item=self.submit()[0]
+        with patch.object(self.store,'_put',side_effect=OSError('DB transaction interrupted')):
+            with self.assertRaises(OSError):self.action(item)
+        self.assertTrue(self.store.recovery_pending())
+        self.assertEqual(self.store.get(ADMIN,item['id'])['status'],'pending')
+        with self.assertRaises(Conflict):
+            self.store.update(AUTHOR,item['id'],{'revision':1,'proposed_node':entry('a','different')},_recover=False)
+        with self.assertRaises(Conflict):
+            self.store.action(AUTHOR,item['id'],'withdraw',{'revision':1},_recover=False)
+        with self.assertRaises(Conflict):
+            self.store.submit(AUTHOR,{'note_id':'n','revision':self.note()['metadata']['revision'],
+                'scope_id':'h','nodes':[self.nodes[1],entry('a','other'),self.nodes[3]]},_recover=False)
+        self.store.recover()
+        self.assertEqual(self.store.get(ADMIN,item['id'])['status'],'approved')
+
     def test_effective_role_and_unauthorized_reads_do_not_create_database(self):
         fresh = self.root/'untouched/db.sqlite3'
         store = ProposalStore(self.root,fresh)

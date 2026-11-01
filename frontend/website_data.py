@@ -110,6 +110,10 @@ def verify_package(root):
 
 def prepare(root=ROOT):
     root=Path(root);manifest=verify_package(root)
+    return _prepare_verified(root,manifest)
+
+
+def _prepare_verified(root,manifest):
     for relative in manifest['files']:
         if relative.startswith('entities/'):
             target=root/relative;target.parent.mkdir(parents=True,exist_ok=True)
@@ -123,16 +127,35 @@ def validate(root=ROOT):
     root=Path(root)
     if (root/store.JOURNAL).exists():raise ValueError('存在未恢复的保存事务，请先执行 website_data.py recover')
     verify_package(root)
-    result=store.validate(root)
-    if result['errors']:raise ValueError('; '.join(result['errors']))
+    return _validate_records(root)
+
+
+def _validate_records(root):
+    # Validation is read-only: private history never needs to be copied or
+    # rendered. Keep the same structural/reference checks as store.validate.
+    records=store.records(root,clone=False)
+    for record in records:
+        store.check_record(record)
+        store.project(record,public=True)
+    for path in (root/'knowledge').rglob('*'):
+        if path.is_file() and path.suffix!='.json':
+            raise ValueError('知识库含非JSON文件：'+str(path))
     # Validate against published entities without requiring previously hydrated caches.
     categories=[row for category in wxq.CATEGORIES for row in store.read(root/FOLDER/'entities'/(category+'.json'),[])]
     from unittest.mock import patch
     with patch.object(wxq,'entities',return_value=categories):
-        for record in store.records(root,clone=False):store.validate_semantics(root,record)
+        for record in records:store.validate_semantics(root,record)
     from usage_matches import read
     read(root)
-    return {'valid':True,'notes':result['notes']}
+    return {'valid':True,'notes':len(records)}
+
+
+def sync_check(root=ROOT):
+    root=Path(root)
+    recover(root)
+    manifest=verify_package(root)
+    _prepare_verified(root,manifest)
+    return _validate_records(root)
 
 
 def recover(root=ROOT):
@@ -149,8 +172,8 @@ def recover(root=ROOT):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command',choices=['export','validate','prepare','recover'])
+    parser.add_argument('command',choices=['export','validate','prepare','recover','sync-check'])
     parser.add_argument('--root',type=Path,default=ROOT)
     args=parser.parse_args()
-    try:print(json.dumps(globals()[args.command](args.root),ensure_ascii=False))
+    try:print(json.dumps(globals()[args.command.replace('-','_')](args.root),ensure_ascii=False))
     except (OSError,ValueError,KeyError,TypeError) as exc:parser.exit(1,str(exc)+'\n')

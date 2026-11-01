@@ -15,7 +15,14 @@ from website_data import sanitize
 
 def public_catalog(root):
     index=reader_store.index(root)
-    projections=[reader_store.projection(store.load_record(root,row['id'],clone=False)) for row in index.get('notes',[])]
+    projections=[]
+    for row in index.get('notes',[]):
+        value=reader_store.cached(root,row)
+        if value is None:
+            record=store.load_record(root,row['id'],clone=False)
+            reader_store.write_record(root,record)
+            value=reader_store.cached(root,row) or reader_store.projection(record)
+        projections.append(value)
     return {'workspace_id':reader_store.workspace_id(root),'format':1,'revision':store.digest(index),
             'ready':True,'notes':[p['summary'] for p in projections]},projections
 
@@ -62,6 +69,20 @@ def handler_class(base):
             from site_access import session
             return session(self.server,self.headers.get('Cookie'),public=True)
 
+        def discard_small_body(self):
+            if getattr(self,'_body_read',False):return
+            self._body_read=True
+            if self.headers.get('Transfer-Encoding'):return
+            try:length=int(self.headers.get('Content-Length','0'))
+            except ValueError:return
+            if not 0<length<=65536:return
+            previous=self.connection.gettimeout()
+            try:
+                self.connection.settimeout(2)
+                self.rfile.read(length)
+            except OSError:pass
+            finally:self.connection.settimeout(previous)
+
         def do_GET(self):
             try:
                 path=self.request_path()
@@ -77,7 +98,8 @@ def handler_class(base):
                     return self.response(200,get_proposals(self.server,self.actor(),self.path))
                 if path=='/api/admin/sync':
                     if not self.actor():return self.response(401,{'error':'请先登录管理员'})
-                    return self.response(200,self.server.sync.status()) if self.actor()['role']=='admin' else self.response(403,{'error':'只有管理员可以查看同步状态'})
+                    from site_access import sync_status
+                    return self.response(200,sync_status(self.server)) if self.actor()['role']=='admin' else self.response(403,{'error':'只有管理员可以查看同步状态'})
                 if path=='/api/dashboard':
                     import dashboard
                     return self.response(200,sanitize(dashboard.snapshot(root,scope=query.get('scope',['all'])[0])),etag=True)
@@ -163,15 +185,21 @@ def handler_class(base):
                 authpath=path in ('/api/auth/login','/api/auth/logout','/api/auth/role') and self.command=='POST'
                 noteedit=(path=='/api/notes' and self.command=='POST') or (re.fullmatch(r'/api/notes/[^/]+',path) and self.command=='PUT')
                 matching=path=='/api/dashboard/usage/matches' and self.command=='PUT'
+                retry=path=='/api/admin/sync/retry' and self.command=='POST'
                 proposal=is_proposal_path(path)
-                if not (authpath or noteedit or matching or proposal):raise KeyError('接口不存在')
+                if not (authpath or noteedit or matching or proposal or retry):
+                    self.discard_small_body()
+                    raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
+                    self.discard_small_body()
                     return self.response(403,{'error':'请求来源无效'})
                 if self.headers.get('Content-Type','').split(';')[0]!='application/json':
+                    self.discard_small_body()
                     return self.response(415,{'error':'请求必须为JSON'})
                 if self.headers.get('Transfer-Encoding'):raise ValueError('不支持此请求格式')
                 length=int(self.headers.get('Content-Length','0'))
                 if not 0<length<=2_000_000:raise ValueError('请求大小无效')
+                self._body_read=True
                 data=json.loads(self.rfile.read(length))
                 if not isinstance(data,dict):raise ValueError('请求必须为对象')
                 if path=='/api/auth/login':
@@ -186,14 +214,19 @@ def handler_class(base):
                 if proposal:
                     return self.response(200,mutate_proposal(self.server,self.actor(),path,self.command,data,public=True))
                 if self.actor()['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
-                with sync_lock(self.server.state_dir):
-                    if self.server.sync.status().get('state')!='synced':raise SyncBlocked('修改正在等待同步或发布，请稍后重试')
+                from site_access import enqueue_sync,formal_save
+                if retry:
+                    with sync_lock(self.server.state_dir):value=enqueue_sync(self.server,force=True)
+                    return self.response(202,value)
+                with sync_lock(self.server.state_dir),formal_save(self.server):
+                    getattr(self.server.sync,'_assert_active',lambda:None)()
+                    if self.server.sync.status(light=True).get('state')!='synced':raise SyncBlocked('修改正在等待同步或发布，请稍后重试')
                     if matching:
                         import usage_matches
                         value=usage_matches.save(self.server.root,data)
                     elif path=='/api/notes':value=workspace.create_note(self.server.root,data)
                     else:value=workspace.edit(self.server.root,path.split('/')[-1],data)
-                    self.server.sync.record_save()
+                    value={**value,'sync':enqueue_sync(self.server)}
                 return self.response(200,sanitize(value))
             except Unconfigured:self.response(503,{'error':'管理员配置不可用'})
             except PermissionError as exc:self.response(403,{'error':str(exc)})
