@@ -2,11 +2,13 @@
 
 ## 公网部署
 
-双站部署、管理员配置、每小时自动更新及恢复步骤见 [docs/depolyment.md](docs/depolyment.md)。网站地址为 `https://klywa.xyz/os-tutorial/`，管理员入口为 `/os-tutorial/admin`；Pokilot 地址为 `/pokilot/`。
+双站更新脚本的执行方法见 [docs/depolyment.md](docs/depolyment.md)。网站地址为 `https://klywa.xyz/os-tutorial/`，登录入口为 `/os-tutorial/admin`；Pokilot 地址为 `/pokilot/`。
 
-本机停止服务并拉取最新笔记后，运行 `.wxq-runtime/Scripts/python.exe frontend/website_data.py export` 导出公开实体、卡牌、图片和看板快照，再执行同脚本的 `validate`，提交 `website-data/` 与正式笔记。发布不会爬取内容；已发布的人工匹配不会被导出覆盖，后续本机和网站共用 Git 管理的匹配文件。
+本地修改代码或笔记后，在项目根目录执行 `./publish-local.ps1` 上传 GitHub，再在服务器执行 `update-sites --os-tutorial` 发布。线上管理员确认的笔记会自动同步 GitHub；本地执行 `./pull-local.ps1` 拉取并按原运行状态重启服务。私有提案不上传 Git；本地编辑和调试不会自行提交。
 
-公网启动使用 `python3 frontend/server.py --public`，前置准备步骤见部署文档；只提供笔记和看板，不创建采集运行时。本机原有启动方式保持不变。
+顶栏可切换管理员和编写员身份；编写员的正文增改删仅暂存为淡红色提案，由管理员逐条确认。服务器安装脚本初始化 `test1 / aa2025` 为编写员，本地默认管理员，支持切换调试。
+
+公网只提供笔记和看板，不创建采集运行时；现有服务器的更新命令见部署文档。本机启动方式见下方。
 
 ## 在另一台电脑准备项目
 

@@ -36,6 +36,9 @@ def handler_class(base):
         def identity(self):
             return self.server.auth.identity(self.headers.get('Cookie'))
 
+        def actor(self):
+            return self.server.auth.actor(self.headers.get('Cookie'))
+
         def login_peer(self):
             peer=self.client_address[0]
             # The service binds loopback. Caddy sets/appends the actual client
@@ -56,12 +59,8 @@ def handler_class(base):
             self.end_headers();self.wfile.write(body)
 
         def who(self):
-            username=self.identity()
-            result={'mode':'public','role':'admin' if username else 'guest','username':username,'base_path':self.server.base_path}
-            if username:
-                try:result['sync']=self.server.sync.status()
-                except (RuntimeError,OSError,ValueError):result['sync']={'state':'conflict','message':'Git同步暂时不可用，编辑已暂停'}
-            return result
+            from site_access import session
+            return session(self.server,self.headers.get('Cookie'),public=True)
 
         def do_GET(self):
             try:
@@ -72,13 +71,19 @@ def handler_class(base):
                 root=self.server.root
                 query=parse_qs(urlsplit(self.path).query)
                 if path=='/api/auth/me':return self.response(200,self.who())
+                if path=='/api/proposals':
+                    if not self.actor():return self.response(401,{'error':'请先登录'})
+                    from site_access import get_proposals
+                    return self.response(200,get_proposals(self.server,self.actor(),self.path))
                 if path=='/api/admin/sync':
-                    return self.response(200,self.server.sync.status()) if self.identity() else self.response(401,{'error':'请先登录管理员'})
+                    if not self.actor():return self.response(401,{'error':'请先登录管理员'})
+                    return self.response(200,self.server.sync.status()) if self.actor()['role']=='admin' else self.response(403,{'error':'只有管理员可以查看同步状态'})
                 if path=='/api/dashboard':
                     import dashboard
                     return self.response(200,sanitize(dashboard.snapshot(root,scope=query.get('scope',['all'])[0])),etag=True)
                 if path=='/api/dashboard/usage/matches':
                     if not self.identity():return self.response(401,{'error':'请先登录管理员'})
+                    if self.actor()['role']!='admin':return self.response(403,{'error':'只有管理员可以管理匹配'})
                     import usage_matches
                     return self.response(200,sanitize(usage_matches.editor(root)))
                 if path in ('/api/notes/catalog','/api/notes/search','/api/notes'):
@@ -151,12 +156,15 @@ def handler_class(base):
 
         def mutate(self):
             from website_sync import SyncBusy, SyncBlocked, sync_lock
+            from site_access import is_proposal_path,mutate_proposal
+            from proposals import ProposalForbidden
             try:
                 path=self.request_path()
-                authpath=path in ('/api/auth/login','/api/auth/logout') and self.command=='POST'
+                authpath=path in ('/api/auth/login','/api/auth/logout','/api/auth/role') and self.command=='POST'
                 noteedit=(path=='/api/notes' and self.command=='POST') or (re.fullmatch(r'/api/notes/[^/]+',path) and self.command=='PUT')
                 matching=path=='/api/dashboard/usage/matches' and self.command=='PUT'
-                if not (authpath or noteedit or matching):raise KeyError('接口不存在')
+                proposal=is_proposal_path(path)
+                if not (authpath or noteedit or matching or proposal):raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
                     return self.response(403,{'error':'请求来源无效'})
                 if self.headers.get('Content-Type','').split(';')[0]!='application/json':
@@ -171,6 +179,13 @@ def handler_class(base):
                     return self.auth_reply(status,{'ok':True} if status==200 else {'error':'登录尝试过多，请15分钟后重试' if status==429 else '账号或密码不正确'},cookie)
                 if path=='/api/auth/logout':return self.auth_reply(200,{'ok':True},self.server.auth.cookie())
                 if not self.identity():return self.response(401,{'error':'请先登录管理员'})
+                if path=='/api/auth/role':
+                    cookie=self.server.auth.switch_role(self.headers.get('Cookie'),data.get('role'))
+                    from site_access import session
+                    return self.auth_reply(200,session(self.server,cookie,public=True),cookie)
+                if proposal:
+                    return self.response(200,mutate_proposal(self.server,self.actor(),path,self.command,data,public=True))
+                if self.actor()['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
                 with sync_lock(self.server.state_dir):
                     if self.server.sync.status().get('state')!='synced':raise SyncBlocked('修改正在等待同步或发布，请稍后重试')
                     if matching:
@@ -181,6 +196,8 @@ def handler_class(base):
                     self.server.sync.record_save()
                 return self.response(200,sanitize(value))
             except Unconfigured:self.response(503,{'error':'管理员配置不可用'})
+            except PermissionError as exc:self.response(403,{'error':str(exc)})
+            except ProposalForbidden as exc:self.response(403,{'error':str(exc)})
             except (SyncBusy,SyncBlocked,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
             except workspace.Conflict as exc:self.response(409,{'error':str(exc)})
             except KeyError:self.response(404,{'error':'接口或笔记不存在'})
@@ -202,6 +219,10 @@ def configure(server,base_path,origin,config,state_dir):
     server.auth=Auth(config,base_path)
     server.state_dir=Path(state_dir)
     server.sync=SyncManager(server.root,server.state_dir)
+    from site_access import proposal_store
+    proposals=proposal_store(server)
+    if proposals.recovery_pending():
+        with sync_lock(server.state_dir):proposals.recover()
     server.dist=Path(__file__).resolve().parent/'dist'
     # Clean staged releases start while the publisher holds its activation lock.
     # Only an interrupted existing release needs to acquire it for recovery.

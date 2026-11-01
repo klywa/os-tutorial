@@ -125,6 +125,10 @@ class SyncManager:
     def retry(self):
         """Retry saved edits; caller holds sync_lock. Never modifies serving code."""
         try:
+            proposal_db=self.state_dir/'proposals.sqlite3'
+            if proposal_db.with_name(proposal_db.name+'.approval.json').exists():
+                from proposals import ProposalStore
+                ProposalStore(self.root,proposal_db).recover()
             # Durable journals are not tracked. Replay them before selecting the
             # files to commit, otherwise a valid overlay can hide missing disk writes.
             self._validate(self.root)

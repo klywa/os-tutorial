@@ -40,6 +40,7 @@ export function useReaderLoader({selected,player,dirty,onSelect}:{selected:strin
   void refresh();const timer=setInterval(()=>{void api<{revision:string}>('notes/'+encodeURIComponent(selected)+'/revision').then(row=>{if(!live)return;if(row.revision!==detailRef.current?.revision){if(dirtyRef.current)setPending(true);else void refresh();}else if(!verifiedRef.current){void refresh();}else{setReaderError('');}}).catch(()=>{if(live){setVerified(false);setReaderError('连接中断，缓存可继续阅读；请重试后编辑。');}});},3000);
   return()=>{live=false;controller.abort();clearInterval(timer);};
  },[selected,player,workspace,noteEpoch]);
+ useEffect(()=>{const saved=()=>{bumpCatalog(n=>n+1);bumpNote(n=>n+1);};window.addEventListener('wxq:knowledge-saved',saved);return()=>window.removeEventListener('wxq:knowledge-saved',saved);},[]);
  useEffect(()=>{if(!dirty&&pending){bumpCatalog(n=>n+1);bumpNote(n=>n+1);}},[dirty,pending]);
  function accept(note:Note){scopeRef.current=workspace+'|'+note.id+'|'+(note.id===selected?(player??''):'');setDetail(note);setVerified(true);setPending(false);setNotes(rows=>rows.some(n=>n.id===note.id)?rows.map(n=>n.id===note.id?note:n):[...rows,note]);void putCached(detailPath(note.id,note.id===selected?player:undefined),note,workspace);bumpNote(n=>n+1);bumpCatalog(n=>n+1);}
  return {notes,setNotes,options,detail,reader,setReader,loading,error,readerError,verified,checking,ready,pending,workspace,catalogRevision,reload:()=>{bumpCatalog(n=>n+1);bumpNote(n=>n+1);},accept};

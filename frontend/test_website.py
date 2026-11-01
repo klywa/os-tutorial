@@ -74,7 +74,8 @@ class PublicHttpTests(unittest.TestCase):
     def test_disabled_routes_stay_disabled_for_admin_all_methods(self):
         self.login()
         for path in ('crawler/activity','crawler/creators/resume','sources','topics/catalog',
-                     'official-sync/run','dashboard/usage/refresh','annotations','notes/n/versions'):
+                     'official-sync/run','dashboard/usage/refresh','annotations','notes/n/versions',
+                     'local-service/status','local-service/stop'):
             for method in ('GET','POST','PUT','DELETE'):
                 with self.subTest(path=path,method=method):
                     self.assertEqual(self.call('/os-tutorial/api/'+path,method,{} if method!='GET' else None)[0],404)

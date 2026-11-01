@@ -17,6 +17,7 @@ import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'frontend'))
 from website_sync import SyncManager, git, sync_lock
+from update_sites import snapshot_os, stamp
 
 
 class StaleRelease(RuntimeError):
@@ -118,13 +119,15 @@ class ReleaseManager:
                 remote_head = self.remote_head(active)
                 if remote_head == snapshot['head'] and not self.rebuild:
                     return {'state': 'unchanged', 'head': remote_head}
+                # Same lock as approvals: canonical JSON, receipts and WAL DB align.
+                snapshot_os(active, self.state_dir, self.state_dir / 'update-backups' / ('release-' + stamp()))
             else:
                 if not self.repo:
                     raise ValueError('--repo SSH_URL is required for the first release')
                 upstream = self.repo
                 remote_head = None
-        stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
-        candidate = self.releases / f'{stamp}-{uuid.uuid4().hex[:8]}'
+        release_stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
+        candidate = self.releases / f'{release_stamp}-{uuid.uuid4().hex[:8]}'
         git(self.base, 'clone', '--no-hardlinks', '--single-branch', '--branch', self.branch,
             upstream, str(candidate))
         head = git(candidate, 'rev-parse', 'HEAD').stdout.strip()

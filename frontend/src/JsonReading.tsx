@@ -1,3 +1,4 @@
+import {ProposalOverlay} from './Proposals';
 import {useState,useMemo,type ReactNode,type ElementType} from 'react';
 import Markdown from './EntityMarkdown';
 import type {KnowledgeDocument,KnowledgeNode,Note} from './types';
@@ -18,7 +19,7 @@ function CopyHeading({node,body,children,interactive=true}:{node:Extract<Knowled
 }
 
 export default function JsonReading({body,nodes,note,onNote,interactive=true,surface='body'}:{body:KnowledgeDocument;nodes:KnowledgeNode[];note:Note;onNote:(id:string,player?:string)=>void;interactive?:boolean;surface?:string}){
- const context=useReview();const review=interactive?context:null;
+ const context=useReview();const proposals=context?.proposals??[];const review=interactive?context:null;
  const localDraft=review?.draft&&(review.draft.surface??'body')===surface?review.draft:null;
  const hidden=new Set(localDraft?scopeNodes(body,localDraft.id).slice(1).map(n=>n.id):[]);
  const components=useMemo(()=>({a:({href,children}:{href?:string;children?:ReactNode})=>{
@@ -31,7 +32,7 @@ export default function JsonReading({body,nodes,note,onNote,interactive=true,sur
  const draftId=localDraft?.id;
  return useMemo(()=><>{nodes.filter(n=>!hidden.has(n.id)).map(n=>draftId===n.id?<div key={n.id} id={surface==='body'?n.id:surface+'-'+n.id} data-node={n.id}><InlineReviewEditor/></div>:n.type==='heading'?<div key={n.id} className="json-heading" data-section={n.level===2?n.title:undefined} id={n.id}>
   {n.level===1?null:<CopyHeading node={n} body={body} interactive={interactive}><Markdown components={headingComponents}>{n.title}</Markdown></CopyHeading>}
- </div>:<article key={n.id} className={'json-entry '+(n.show_key?'keyed':'unkeyed')} data-node={n.id}>
+ <ProposalOverlay nodeId={n.id} items={proposals}/></div>:<article key={n.id} className={'json-entry '+(n.show_key?'keyed':'unkeyed')} data-node={n.id}>
   {n.show_key?<>{/^(?:[-*+] |\d+[.)] )/.test(n.prefix??'')&&<span className="entry-bullet" aria-hidden="true">{n.prefix?.match(/^\d+[.)]/)?.[0]??'•'} </span>}<CopyButton text={()=>copyEntry(n,body,note.title)} label={'复制条目：'+n.key} className="entry-key">{n.key}：</CopyButton><div className="entry-value prose"><Markdown components={components}>{n.value}</Markdown></div><CopyButton text={()=>copyEntry(n,body,note.title)} label={'复制段落：'+n.key} className="anonymous-copy"/></>:<><div className="prose"><Markdown components={components}>{n.value}</Markdown></div><CopyButton text={()=>copyEntry(n,body,note.title)} label="复制条目：正文" className="anonymous-copy"/></>}{interactive&&<NodeActions node={n} surface={surface}/>}
- </article>)}</>,[body,nodes,note,components,headingComponents,draftId,interactive,surface]);
+ <ProposalOverlay nodeId={n.id} items={proposals}/></article>)}</>,[body,nodes,note,components,headingComponents,draftId,interactive,surface,proposals]);
 }

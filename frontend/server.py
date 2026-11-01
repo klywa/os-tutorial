@@ -2,6 +2,7 @@
 import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import re
 from pathlib import Path
 import sys
 from urllib.parse import urlsplit, unquote, parse_qs
@@ -70,8 +71,21 @@ class Handler(BaseHTTPRequestHandler):
         if not self.trusted():
             return self.response(403, {'error': '只允许本机页面访问'})
         path = unquote(urlsplit(self.path).path)
+        from site_access import actor,session,get_proposals,is_proposal_path
+        identity=actor(self.server,self.headers.get('Cookie'))
         if path == '/api/auth/me':
-            return self.response(200, {'mode':'local','role':'admin','username':'local','base_path':''})
+            return self.response(200, session(self.server,self.headers.get('Cookie')))
+        if path=='/api/local-service/status':
+            if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
+            return self.response(200,{'mode':'local','root':str(Path(self.server.root).resolve()),'port':self.server.server_port})
+        if path=='/api/proposals':
+            try:return self.response(200,get_proposals(self.server,identity,self.path))
+            except PermissionError as exc:return self.response(403,{'error':str(exc)})
+            except (ValueError,KeyError) as exc:return self.response(400,{'error':str(exc)})
+        if identity and identity['role']=='annotator' and path.startswith('/api/') and not (
+                path=='/api/dashboard' or path=='/api/options' or path=='/api/cards' or path.startswith('/api/cards/') or
+                path=='/api/notes' or re.fullmatch(r'/api/notes/[^/]+(?:/(reading|revision))?',path)):
+            return self.response(403,{'error':'编写员仅可浏览笔记、看板和自己的提案'})
         player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
             if path == '/api/dashboard/usage/matches':
@@ -248,6 +262,46 @@ class Handler(BaseHTTPRequestHandler):
         self.mutate()
 
     def mutate(self):
+        from site_access import actor,payload,is_proposal_path,mutate_proposal,state_dir,session
+        from website_sync import sync_lock,SyncBusy,SyncBlocked
+        from proposals import ProposalForbidden
+        path=unquote(urlsplit(self.path).path)
+        identity=actor(self.server,self.headers.get('Cookie'))
+        try:
+            if not self.trusted():return self.response(403,{'error':'请求来源无效'})
+            if path=='/api/local-service/stop' and self.command=='POST':
+                if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
+                if payload(self):raise ValueError('停止服务不接受额外参数')
+                self.response(202,{'ok':True,'message':'本地服务正在安全停止'})
+                import threading
+                threading.Thread(target=self.server.shutdown,daemon=True,name='local-service-stop').start()
+                return
+            if path=='/api/auth/role' and self.command=='POST':
+                data=payload(self)
+                if not hasattr(self.server,'auth'):
+                    from site_access import initialize_local
+                    initialize_local(self.server)
+                cookie=self.server.auth.switch_role(self.headers.get('Cookie'),data.get('role'))
+                body=json.dumps(session(self.server,cookie),ensure_ascii=False).encode()
+                self.send_response(200);self.send_header('Content-Type','application/json; charset=utf-8')
+                self.send_header('Set-Cookie',cookie);self.send_header('Cache-Control','no-store')
+                self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body);return
+            if is_proposal_path(path):
+                return self.response(200,mutate_proposal(self.server,identity,path,self.command,payload(self)))
+            if identity and identity['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
+            if path=='/api/notes' or path.startswith('/api/notes/'):
+                with sync_lock(state_dir(self.server)):
+                    return self._mutate_local()
+            return self._mutate_local()
+        except PermissionError as exc:self.response(403,{'error':str(exc)})
+        except ProposalForbidden as exc:self.response(403,{'error':str(exc)})
+        except workspace.Conflict as exc:self.response(409,{'error':str(exc)})
+        except (workspace.Busy,SyncBusy,SyncBlocked) as exc:self.response(423,{'error':str(exc)})
+        except KeyError as exc:self.response(404,{'error':str(exc)})
+        except (ValueError,TypeError) as exc:self.response(400,{'error':str(exc)})
+        except OSError:self.response(503,{'error':'暂存或审核失败，请保留草稿后重试'})
+
+    def _mutate_local(self):
         if not self.trusted() or self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
             return self.response(403, {'error': '请求来源或格式无效'})
         try:
@@ -451,6 +505,8 @@ def create_server(root=ROOT, port=8765, start_worker=False, *, public=False,
     import crawler
     server = LocalServer(('127.0.0.1', port), Handler)
     server.root = Path(root)
+    from site_access import initialize_local
+    initialize_local(server)
     server.crawler = crawler.Runtime(root)
     import json_store
     if not json_store.enabled(root):

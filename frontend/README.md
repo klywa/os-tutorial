@@ -1,6 +1,10 @@
 # 万象棋战术手册
 
-公网模式与本地模式分别启动。生产构建运行 `npm ci`、`npm run build -- --base=/os-tutorial/`；公网服务运行 `python3 frontend/server.py --public`，完整配置、离线数据准备和 systemd 步骤见 [部署文档](../docs/depolyment.md)。公网访客只读笔记和看板；`/os-tutorial/admin` 登录后可维护笔记及人工匹配，采集和官网更新始终关闭。
+公网模式与本地模式分别启动。现有服务器的一键更新命令见 [部署文档](../docs/depolyment.md)。公网访客只读笔记和看板；`/os-tutorial/admin` 登录后可维护笔记及人工匹配，采集和官网更新始终关闭。
+
+管理员账号可在顶栏切换编写员身份；编写员只对已有笔记正文的 key-value 条目提出新增、修改、删除建议，暂存后由管理员逐条确认。章节编辑支持条目前后及章末插入。提案仅作者与管理员可见，不进入正式正文的复制、导出或 Git。
+
+本地默认管理员，可切换身份调试；本地确认不自动推送。项目根目录的 `publish-local.ps1` 上传代码和正式笔记，`pull-local.ps1` 拉取并按需恢复本地服务；服务器执行 `update-sites` 更新两个站点。
 
 新电脑的完整安装及 Windows/macOS 一键启动方式见[根目录 README](../README.md)。下方开发说明中的 Windows 路径在 macOS 对应 `.wxq-runtime/bin/python`。
 

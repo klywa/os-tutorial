@@ -73,3 +73,8 @@ export function applyReviewField(body:KnowledgeDocument,f:ReviewField,value:unkn
  }
  return next;
 }
+
+export function replaceScope(body:KnowledgeDocument,id:string,nodes:KnowledgeNode[]):KnowledgeDocument{
+ const at=body.nodes.findIndex(n=>n.id===id);if(at<0)throw new Error('编辑范围已不存在');
+ return {...body,nodes:[...body.nodes.slice(0,at),...nodes,...body.nodes.slice(blockEnd(body.nodes,at))]};
+}
