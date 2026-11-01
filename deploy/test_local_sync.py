@@ -1,13 +1,17 @@
 """Local synchronization tests use temporary Git remotes and a fake local service."""
 import json
+import hashlib
+import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 from io import BytesIO
 import urllib.error
 import local_sync as sync
+from website_data import verify_package
 
 class Service:
     def __init__(self): self.active=True; self.events=[]; self.fail_stop=False; self.fail_start=False
@@ -206,6 +210,94 @@ class LocalSyncTests(unittest.TestCase):
         self.manager().publish()
         self.assertNotIn('secret.txt',self.git(self.origin,'ls-tree','-r','--name-only','master'))
         self.assertIn('secret.txt',self.git(self.root,'diff','--cached','--name-only'))
+
+    def package(self, root):
+        folder=root/'website-data'; folder.mkdir(exist_ok=True)
+        payloads={'cards.json':'[\n  {"name":"中文卡牌"}\n]\n'.encode('utf-8'),
+                  'images/example.img':b'\x89PNG\r\n\x1a\noriginal\r\nimage'}
+        for name,body in payloads.items():
+            path=folder/name; path.parent.mkdir(exist_ok=True)
+            path.write_bytes(body)
+        (folder/'manifest.json').write_bytes(json.dumps({'schema_version':1,'files':{
+            name:hashlib.sha256(body).hexdigest() for name,body in payloads.items()
+        }}).encode('utf-8'))
+        return payloads
+
+    def autocrlf_environment(self):
+        config=self.base/'global.gitconfig'
+        config.write_text('[core]\n autocrlf = true\n',encoding='utf-8')
+        return patch.dict(os.environ,{'GIT_CONFIG_GLOBAL':str(config),'GIT_CONFIG_NOSYSTEM':'1'})
+
+    def test_candidate_preserves_package_bytes_with_global_autocrlf(self):
+        payloads=self.package(self.root)
+        self.git(self.root,'add','website-data'); self.git(self.root,'commit','-m','offline package')
+        with self.autocrlf_environment():
+            candidate=self.manager().candidate()
+        verify_package(candidate)
+        for name,body in payloads.items():
+            self.assertEqual((candidate/'website-data'/name).read_bytes(),body)
+        self.assertEqual(self.git(candidate,'config','--local','core.autocrlf'),'false')
+
+    def test_package_attributes_preserve_bytes_for_normal_autocrlf_clone(self):
+        (self.root/'.gitattributes').write_bytes((sync.ROOT/'.gitattributes').read_bytes())
+        payloads=self.package(self.root)
+        self.git(self.root,'add','.'); self.git(self.root,'commit','-m','package attributes')
+        clone=self.base/'normal-clone'
+        with self.autocrlf_environment():
+            self.git(self.base,'clone','--no-hardlinks',str(self.root),str(clone))
+        verify_package(clone)
+        for name,body in payloads.items():
+            self.assertEqual((clone/'website-data'/name).read_bytes(),body)
+
+    def test_publish_package_with_autocrlf_and_reject_real_corruption(self):
+        payloads=self.package(self.root)
+        manager=self.manager()
+        manager.validate=lambda root,export=False:verify_package(root)
+        with self.autocrlf_environment():
+            self.assertEqual(manager.publish()['state'],'published')
+        self.assertEqual(self.git(self.root,'rev-parse','HEAD'),self.git(self.origin,'rev-parse','master'))
+        (self.root/'website-data/cards.json').write_bytes(payloads['cards.json']+b'corruption')
+        with self.assertRaisesRegex(ValueError,'cards.json'):
+            verify_package(self.root)
+
+    def test_pull_package_with_autocrlf_preserves_verified_active_bytes(self):
+        other=self.other()
+        (other/'.gitattributes').write_bytes((sync.ROOT/'.gitattributes').read_bytes())
+        payloads=self.package(other)
+        self.git(other,'add','.'); self.git(other,'commit','-m','remote offline package')
+        self.git(other,'push','origin','master')
+        manager=self.manager()
+        manager.validate=lambda root,export=False:verify_package(root)
+        with self.autocrlf_environment():
+            self.assertEqual(manager.pull()['state'],'updated')
+        verify_package(self.root)
+        for name,body in payloads.items():
+            self.assertEqual((self.root/'website-data'/name).read_bytes(),body)
+
+    def test_child_python_output_and_errors_are_utf8(self):
+        manager=self.manager()
+        environment={**os.environ,'PYTHONUTF8':'0','PYTHONIOENCODING':'cp936','SYNC_TEST_VALUE':'保留环境'}
+        message='中文校验错误：cards.json'
+        output=manager.run([sys.executable,'-c','import os; print(os.environ["SYNC_TEST_VALUE"])'],env=environment)
+        self.assertEqual(output,'保留环境')
+        with self.assertRaisesRegex(RuntimeError,message):
+            manager.run([sys.executable,'-c',f'import sys; sys.stderr.write({message!r}); sys.exit(1)'],env=environment)
+
+    def test_duplicate_cli_keeps_lock_and_reports_friendly_message(self):
+        directory=self.root/'raw/local-sync'
+        with sync.sync_lock(directory):
+            with patch.object(sys,'argv',['local_sync.py','publish','--root',str(self.root)]), \
+                    patch.object(sync.LocalSync,'publish') as publish, \
+                    patch.object(sync.logging,'FileHandler',return_value=sync.logging.NullHandler()), \
+                    self.assertLogs(level='ERROR') as logs:
+                self.assertEqual(sync.main(),1)
+            publish.assert_not_called()
+            self.assertTrue((directory/'sync.lock').exists())
+        text='\n'.join(logs.output)
+        self.assertIn('另一项同步正在运行，请等待',text)
+        self.assertNotIn('Traceback',text)
+        with sync.sync_lock(directory):
+            pass
 
 class LocalServiceTests(unittest.TestCase):
     def test_foreign_workspace_never_receives_stop_request(self):

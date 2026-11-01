@@ -18,8 +18,12 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'frontend'))
-from website_sync import sync_lock
+from website_sync import SyncBusy, sync_lock
 from git_history import history_paths
+
+
+def child_environment(env=None):
+    return {**os.environ, **(env or {}), 'PYTHONUTF8':'1', 'PYTHONIOENCODING':'utf-8'}
 
 
 def allowed_local_path(path):
@@ -103,7 +107,8 @@ class LocalService:
             return
         directory=self.root/'raw/local-sync'; directory.mkdir(parents=True,exist_ok=True)
         logfile=directory/('server-'+datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:6]+'.log')
-        options={'cwd':self.root,'stdin':subprocess.DEVNULL,'stderr':subprocess.STDOUT}
+        options={'cwd':self.root,'stdin':subprocess.DEVNULL,'stderr':subprocess.STDOUT,
+                 'env':child_environment()}
         if os.name=='nt':
             options['creationflags']=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS
         else:
@@ -134,7 +139,7 @@ class LocalSync:
 
     def run(self,args,root=None,env=None):
         logging.info('执行：%s',' '.join(map(str,args)))
-        result=subprocess.run(list(map(str,args)),cwd=root or self.root,env=env,check=False,
+        result=subprocess.run(list(map(str,args)),cwd=root or self.root,env=child_environment(env),check=False,
             capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=1800)
         if result.stdout.strip(): logging.info('%s',result.stdout.strip())
         if result.returncode:
@@ -213,7 +218,8 @@ class LocalSync:
     def candidate(self):
         path=self.root/'raw/local-sync/candidates'/uuid.uuid4().hex
         path.parent.mkdir(parents=True,exist_ok=True)
-        self.git('clone','--no-hardlinks','--single-branch','--branch','master',str(self.root),str(path))
+        self.git('clone','--config','core.autocrlf=false','--no-hardlinks','--single-branch',
+                 '--branch','master',str(self.root),str(path))
         for key in ('user.name','user.email'):
             self.git('config',key,self.git('config','--get',key),root=path)
         self.git('remote','set-url','origin',self.git('remote','get-url','origin'),root=path)
@@ -331,6 +337,9 @@ def main():
             result=getattr(manager,args.action)()
         logging.info('同步结束：%s',json.dumps(result,ensure_ascii=False))
         return 0
+    except SyncBusy:
+        logging.error('另一项同步正在运行，请等待完成后再运行。日志：%s',logfile.resolve())
+        return 1
     except Exception as exc:
         logging.exception('同步失败；本地提交、远端与故障验证目录均保留：%s',exc)
         logging.error('请保留日志：%s',logfile.resolve())
