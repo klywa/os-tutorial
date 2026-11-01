@@ -54,6 +54,26 @@ class ReleaseManager:
         result = git(root, 'ls-remote', '--exit-code', 'origin', f'refs/heads/{self.branch}')
         return result.stdout.split()[0]
 
+    def clone_candidate(self, candidate, upstream, reference=None):
+        # Reuse existing objects for transport, then copy them into this release.
+        # Never leave alternates pointing at a release that might later be retired.
+        args=['git','-C',str(self.base),'clone','--no-hardlinks','--single-branch',
+              '--branch',self.branch,'--progress']
+        if reference is not None:
+            args.extend(['--reference',str(reference),'--dissociate'])
+        args.extend(['--',str(upstream),str(candidate)])
+        env={**os.environ,'GIT_TERMINAL_PROMPT':'0',
+             'GIT_SSH_COMMAND':os.environ.get('GIT_SSH_COMMAND','ssh -o BatchMode=yes -o ConnectTimeout=15')}
+        print('开始取得新版本（复用已有 Git 数据）' if reference is not None else '开始首次克隆仓库',flush=True)
+        try:
+            # Stream Git progress to journalctl/SSH; ordinary Git operations keep
+            # their shorter timeout. This also works with the previous helper API.
+            subprocess.run(args,env=env,check=True,timeout=900)
+        except subprocess.TimeoutExpired as exc:
+            raise RuntimeError('克隆仓库超过 900 秒；旧网站未切换。请检查服务器到 GitHub 的连接后重试。') from exc
+        except subprocess.CalledProcessError as exc:
+            raise RuntimeError(f'克隆仓库失败（退出码 {exc.returncode}）；旧网站未切换，请查看上方 Git 输出。') from exc
+
     def build(self, candidate):
         # Ubuntu 24.04 /usr/bin/python3 is Python 3.12; all public runtime code is stdlib.
         self.sync_class(candidate, self.state_dir, self.branch)._validate(candidate)
@@ -131,8 +151,7 @@ class ReleaseManager:
                 remote_head = None
         release_stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         candidate = self.releases / f'{release_stamp}-{uuid.uuid4().hex[:8]}'
-        git(self.base, 'clone', '--no-hardlinks', '--single-branch', '--branch', self.branch,
-            upstream, str(candidate))
+        self.clone_candidate(candidate,upstream,Path(snapshot['root']) if snapshot else None)
         head = git(candidate, 'rev-parse', 'HEAD').stdout.strip()
         if remote_head and head != remote_head:
             raise StaleRelease('Remote advanced during clone; retry next update')

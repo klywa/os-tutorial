@@ -26,6 +26,27 @@ sudo bash /tmp/install-update-sites.sh
 bash /tmp/install-update-sites.sh --recover-port
 ```
 
+## 如果更新报“clone 超过 180 秒”（恢复一次即可）
+
+先在 **Windows 本机 PowerShell** 逐行执行。第一条发布命令成功后，再执行两条上传命令；上传时提示输入密码，填写服务器 root 的 SSH 密码：
+
+```powershell
+Set-Location D:\GameProjects\os-tutorial
+powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1
+scp .\deploy\release.py root@klywa.xyz:/tmp/os-tutorial-release.py
+scp .\deploy\recover-os-tutorial-update.sh root@klywa.xyz:/tmp/recover-os-tutorial-update.sh
+```
+
+然后在 **服务器 root SSH 窗口** 执行：
+
+```bash
+bash /tmp/recover-os-tutorial-update.sh
+```
+
+保持窗口打开，等到显示“恢复完成”，再刷新网站。下载与构建期间旧网站继续运行。脚本若提示更新正在运行，等待原任务结束后再执行同一命令。若报 Git 连接错误或再次超时，保留完整输出。
+
+恢复成功后，以后仍执行 `update-sites --os-tutorial`，不需要再次上传恢复脚本。
+
 ## 1. 本地代码、正式笔记 → GitHub
 
 在 **Windows 本机 PowerShell** 执行：

@@ -8,6 +8,7 @@ from unittest.mock import patch
 import urllib.error
 import threading
 import time
+import subprocess
 
 sys.path.insert(0, str(Path(__file__).parents[1] / 'frontend'))
 import test_website_sync as fixtures
@@ -130,6 +131,50 @@ class ReleaseTests(unittest.TestCase):
         manager = self.manager()
         manager.build = lambda _: self.fail('unchanged release rebuilt')
         self.assertEqual(manager.update()['state'], 'unchanged')
+
+    def test_candidate_reuses_local_objects_then_becomes_independent(self):
+        manager=self.manager();candidate=manager.releases/'cached'
+        other=self.other()
+        (other/'new-content.txt').write_text('only on remote')
+        git(other,'add','.');git(other,'commit','-m','new remote content');git(other,'push')
+        # file:// uses the Git transport rather than its local-clone shortcut.
+        upstream=self.origin.as_uri()
+        manager.clone_candidate(candidate,upstream,self.root)
+        self.assertEqual(git(candidate,'remote','get-url','origin'),upstream)
+        self.assertEqual(git(candidate,'rev-parse','HEAD'),git(other,'rev-parse','HEAD'))
+        self.assertEqual((candidate/'new-content.txt').read_text(),'only on remote')
+        self.assertFalse((self.root/'new-content.txt').exists())
+        self.assertFalse((candidate/'.git/objects/info/alternates').exists())
+        git(candidate,'fsck','--full')
+
+    def test_uploaded_publisher_imports_helpers_from_serving_release(self):
+        uploaded=self.base/'os-tutorial-release.py'
+        uploaded.write_bytes(Path(module.__file__).read_bytes())
+        source="import runpy,sys;sys.path[:0]=[sys.argv[1],sys.argv[2]];sys.argv=[sys.argv[3],'--help'];runpy.run_path(sys.argv[0],run_name='__main__')"
+        root=Path(__file__).resolve().parents[1]
+        result=subprocess.run([sys.executable,'-c',source,str(root/'frontend'),str(root/'deploy'),str(uploaded)],
+            capture_output=True,encoding='utf-8',timeout=15)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertIn('--base-dir',result.stdout)
+
+    def test_clone_has_separate_long_timeout_and_preserves_failed_active_site(self):
+        manager=self.manager();candidate=manager.releases/'slow'
+        with patch.object(module.subprocess,'run',side_effect=subprocess.TimeoutExpired('git clone',900)) as run:
+            with self.assertRaisesRegex(RuntimeError,'900'):
+                manager.clone_candidate(candidate,'git@example.test:site.git',self.root)
+        args=run.call_args.args[0]
+        self.assertEqual(args[args.index('--reference')+1],str(self.root))
+        self.assertIn('--dissociate',args)
+        self.assertIn('--progress',args)
+        self.assertEqual(run.call_args.kwargs['timeout'],900)
+        self.assertEqual(run.call_args.kwargs['env']['GIT_TERMINAL_PROMPT'],'0')
+        self.assertEqual(manager.current.resolve(),self.root)
+
+    def test_first_clone_needs_no_existing_reference(self):
+        manager=self.manager()
+        with patch.object(module.subprocess,'run') as run:
+            manager.clone_candidate(manager.releases/'first','git@example.test:site.git',None)
+        self.assertNotIn('--reference',run.call_args.args[0])
 
     def test_publication_waits_for_an_existing_sync_job(self):
         from website_sync import sync_lock
