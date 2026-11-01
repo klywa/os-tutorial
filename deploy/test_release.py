@@ -1,8 +1,11 @@
 """Release behavior is tested with real independent Git checkouts, no services."""
 import importlib.util
+from io import BytesIO
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
+import urllib.error
 
 sys.path.insert(0, str(Path(__file__).parents[1] / 'frontend'))
 import test_website_sync as fixtures
@@ -47,6 +50,27 @@ class ReleaseTests(unittest.TestCase):
             manager.activate(candidate, manager.snapshot())
         self.assertEqual(manager.current.resolve(), self.root)
         self.assertEqual(calls, [candidate, self.root])
+
+    def test_health_waits_for_slow_startup_beyond_thirty_seconds(self):
+        clock=[0.0]
+        def response(*args,**kwargs):
+            if clock[0]<45:
+                raise urllib.error.URLError('still starting')
+            body=BytesIO(b'{"ok":true}'); body.status=200
+            return body
+        with patch.object(module.time,'monotonic',side_effect=lambda:clock[0]), \
+                patch.object(module.time,'sleep',side_effect=lambda seconds:clock.__setitem__(0,clock[0]+seconds)), \
+                patch.object(module.urllib.request,'urlopen',side_effect=response):
+            self.assertTrue(self.manager().healthy())
+        self.assertEqual(clock[0],45)
+
+    def test_health_wait_has_bounded_timeout(self):
+        clock=[0.0]
+        with patch.object(module.time,'monotonic',side_effect=lambda:clock[0]), \
+                patch.object(module.time,'sleep',side_effect=lambda seconds:clock.__setitem__(0,clock[0]+seconds)), \
+                patch.object(module.urllib.request,'urlopen',side_effect=urllib.error.URLError('unavailable')):
+            self.assertFalse(self.manager().healthy(timeout=3))
+        self.assertEqual(clock[0],3)
 
     def test_build_failure_keeps_old_release(self):
         manager = self.manager()

@@ -495,9 +495,15 @@ def create_server(root=ROOT, port=8765, start_worker=False, *, public=False,
                   auth_config='/etc/os-tutorial/admins.json', state_dir='/var/lib/os-tutorial'):
     if public:
         from website_server import handler_class, configure
-        server = LocalServer(('127.0.0.1', port), handler_class(Handler))
+        server = LocalServer(('127.0.0.1', port), handler_class(Handler), bind_and_activate=False)
         server.root = Path(root)
-        try:configure(server,base_path,origin,auth_config,state_dir)
+        # POSIX restarts may encounter connections in TIME_WAIT. Windows and
+        # local debug listeners retain exclusive binding to protect port checks.
+        server.allow_reuse_address = sys.platform != 'win32'
+        try:
+            server.server_bind()
+            server.server_activate()
+            configure(server,base_path,origin,auth_config,state_dir)
         except Exception:
             server.server_close();raise
         return server

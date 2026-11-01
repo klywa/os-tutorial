@@ -63,16 +63,19 @@ class ReleaseManager:
     def restart(self):
         subprocess.run(['sudo', '-n', '/usr/bin/systemctl', 'restart', self.service + '.service'], check=True, timeout=60)
 
-    def healthy(self):
-        for _ in range(30):
+    def healthy(self, timeout=180):
+        deadline = time.monotonic() + timeout
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return False
             try:
-                with urllib.request.urlopen('http://127.0.0.1:8765/os-tutorial/api/health', timeout=2) as response:
+                with urllib.request.urlopen('http://127.0.0.1:8765/os-tutorial/api/health', timeout=min(2, remaining)) as response:
                     if response.status == 200 and json.loads(response.read()).get('ok') is True:
                         return True
             except (OSError, ValueError):
                 pass
-            time.sleep(1)
-        return False
+            time.sleep(min(1, max(0, deadline - time.monotonic())))
 
     def _switch(self, destination):
         temporary = self.base / f'.current-{uuid.uuid4().hex}'
@@ -91,7 +94,7 @@ class ReleaseManager:
         try:
             self.restart()
             if not self.healthy():
-                raise RuntimeError('New release health check failed')
+                raise RuntimeError('New release health check failed within 180 seconds; inspect journalctl -u os-tutorial.service')
         except Exception:
             if previous:
                 self._switch(previous)

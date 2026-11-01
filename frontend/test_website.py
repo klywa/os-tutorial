@@ -1,6 +1,7 @@
 """Public HTTP boundaries, signed sessions and offline dataset publishing."""
 import http.client
 import json
+import socket
 from pathlib import Path
 import sys
 import tempfile
@@ -60,6 +61,33 @@ class PublicHttpTests(unittest.TestCase):
         self.assertEqual(self.call('/os-tutorial/api/dashboard')[0], 200)
         self.assertEqual(self.call('/os-tutorial/api/notes/n', 'PUT', {})[0], 401)
         self.assertEqual(self.call('/api/notes/catalog')[0], 404)
+
+    def test_public_unix_listener_enables_address_reuse(self):
+        with patch.object(server.sys,'platform','linux'):
+            http=server.create_server(self.root,0,public=True,auth_config=self.config,
+                                      state_dir=self.root/'state')
+        try:
+            self.assertEqual(http.socket.getsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR),1)
+        finally:
+            http.server_close()
+
+    def test_public_windows_listener_keeps_exclusive_binding(self):
+        with patch.object(server.sys,'platform','win32'):
+            http=server.create_server(self.root,0,public=True,auth_config=self.config,
+                                      state_dir=self.root/'state')
+        try:
+            self.assertEqual(http.socket.getsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR),0)
+        finally:
+            http.server_close()
+
+    @unittest.skipIf(sys.platform=='win32','POSIX TIME_WAIT restart integration')
+    def test_public_listener_rebinds_after_health_connection(self):
+        port=self.http.server_port
+        self.assertEqual(self.call('/os-tutorial/api/health')[0],200)
+        self.http.shutdown(); self.thread.join(); self.http.server_close()
+        restarted=server.create_server(self.root,port,public=True,auth_config=self.config,
+                                       state_dir=self.root/'state')
+        restarted.server_close()
 
     def test_login_cookie_tampering_origin_and_logout(self):
         self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'klywa','password':'bad'})[0],401)

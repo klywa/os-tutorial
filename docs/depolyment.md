@@ -20,6 +20,12 @@ sudo bash /tmp/install-update-sites.sh
 
 等显示“安装完成”，以后直接使用下面的日常命令。
 
+首次升级若报 `Address already in use`：在本机重新执行本节的发布、上传安装脚本两步。确认成功后，在服务器执行下面这一条命令。万象棋会暂停访问直到安装完成，Pokilot 不受影响；安装失败会尝试恢复网站服务并保留失败提示。
+
+```bash
+bash /tmp/install-update-sites.sh --recover-port
+```
+
 ## 1. 本地代码、正式笔记 → GitHub
 
 在 **Windows 本机 PowerShell** 执行：
