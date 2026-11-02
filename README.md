@@ -10,6 +10,37 @@
 
 公网只提供笔记和看板，不创建采集运行时；现有服务器的更新命令见部署文档。本机启动方式见下方。
 
+## 每次更新服务器
+
+更新万象棋时，直接按下面三步操作。
+
+1. 在 **Windows 本机 PowerShell** 发布代码和正式笔记：
+
+   ```powershell
+   Set-Location D:\GameProjects\os-tutorial
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1
+   ```
+
+   等到发布成功，再执行第 2 步；如果报错，先保留完整输出。
+
+2. 在 **同一个 PowerShell 窗口** 登录服务器：
+
+   ```powershell
+   ssh root@klywa.xyz
+   ```
+
+   如果提示密码，输入服务器 root 密码并按回车；输入时不显示字符是正常的。
+
+3. 登录成功后，在 **当前服务器 root SSH 窗口** 执行：
+
+   ```bash
+   update-sites --os-tutorial
+   ```
+
+   保持窗口打开，等显示“更新结束”且没有报错，再刷新 [万象棋网站](https://klywa.xyz/os-tutorial/)。
+
+每次更新都执行以上三步，无需重新安装更新命令或上传恢复脚本。首次安装及克隆超时的恢复步骤见 [部署文档](docs/depolyment.md)。
+
 ## 在另一台电脑准备项目
 
 复制整个项目，**包含隐藏目录 `.codex`，以及 `knowledge/`、`entities/`、`raw/`**。其中部分数据被 Git 忽略，只克隆仓库不能带走完整资料。迁移前先停止旧电脑上的服务，避免复制到写入一半的数据库。

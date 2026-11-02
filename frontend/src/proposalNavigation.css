@@ -1,0 +1,24 @@
+/* Keep each action whole; let the header grow instead of clipping a new row. */
+.app .app-header{height:auto;min-height:76px;flex-wrap:wrap;padding-block:12px;row-gap:10px}
+.app-header .brand,.app-header>nav,.app-header .header-actions{flex-shrink:0}
+.app-header>nav{flex-wrap:nowrap;max-width:100%;overflow-x:auto}
+.app-header>nav button{white-space:nowrap;flex-shrink:0}
+.app-header .header-actions{margin-left:auto;flex-wrap:nowrap;max-width:100%}
+.header-actions>button,.account-items>button{white-space:nowrap;flex:0 0 auto}
+.account-controls .account-items{flex-wrap:nowrap;min-width:0;max-width:100%}
+.account-items>select{width:auto;flex:0 0 auto;max-width:8rem;padding:5px 8px;white-space:nowrap}
+.account-items>.account-name{max-width:10rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.account-items>small{min-width:0;max-width:10rem;flex:0 1 auto}
+.account-error{min-width:0;max-width:12rem;overflow-wrap:anywhere}
+.mobile-account-trigger{max-width:min(52vw,18rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proposal-location-action{display:flex;justify-content:flex-end;margin:8px 0}
+.proposal-location-action button{white-space:nowrap;min-height:36px}
+.proposal-location-target{outline:2px solid #72d5b5!important;outline-offset:-2px;background-color:#72d5b51a;scroll-margin-block:20px}
+@media(min-width:761px) and (max-width:1120px){.account-items>.account-name{max-width:7rem}.account-items>small{max-width:7rem}}
+@media(max-width:760px){
+ .app .app-header{min-height:0;padding:8px 12px}
+ .account-controls .account-items{max-width:none;min-width:0;flex-direction:column;align-items:stretch}
+ .account-items>.account-name,.account-items>small{max-width:100%}
+ .account-items>select{width:100%;max-width:none;min-height:44px}
+ .account-items>button,.proposal-location-action button{min-height:44px;white-space:nowrap}
+}
