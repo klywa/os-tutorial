@@ -31,18 +31,15 @@ def encode(value):
 
 
 def is_risk(error):
-    return bool(re.search(r'-352|-401|\b412\b|风控|HTTP(?: Error)?[ :]+(?:403|429)\b|B站请求失败[（(](?:403|429)[）)]', str(error), re.I))
+    from acquisition_errors import describe_error
+    return describe_error(error)['category']=='risk'
 
 
 def error_info(error, phase=None):
     if not error:
         return None
-    if re.search(r'WinError (?:5|32|33)\b|PermissionError|拒绝访问|Permission denied', str(error), re.I):
-        return {'category':'storage', 'phase':phase or 'registration', 'recoverable':True,
-                'hint':'自动重试后仍无法保存，请检查文件占用或目录权限'}
-    category = 'risk' if is_risk(error) else 'login' if re.search(r'-101|登录', error) else 'transcript' if re.search(r'corrected_sha256|Transcript|文字稿', error) else 'audio' if re.search(r'Decoded audio|Invalid data|音频', error) else 'network' if re.search(r'HTTP|connection|timed? ?out|Downloaded.*expected', error, re.I) else 'processing'
-    return {'category': category, 'phase': phase or ('exporting' if category == 'transcript' else 'downloading' if category in ['network','audio'] else 'discovery' if category in ['risk','login'] else 'unknown'),
-            'recoverable': category != 'login', 'hint': '自动冷却并刷新会话后重试' if category == 'risk' else '更新登录信息后重新检查' if category == 'login' else '保留已有材料，可重试恢复'}
+    from acquisition_errors import describe_error
+    return describe_error(error, phase)
 
 
 def matches_filters(row, filters):
@@ -68,6 +65,7 @@ def title_keywords(title, keywords):
 
 from crawler_tags import TagMixin,normalize_tags
 from crawler_monitor import MonitorMixin
+from crawler_retries import RetryMixin
 
 def config(payload):
     result = {**payload}
@@ -113,7 +111,7 @@ def due_creators(creators, clock, current=None):
             (not c.get('last_success') or datetime.fromisoformat(c['last_success']) < target)]
 
 
-class Store(MonitorMixin,TagMixin):
+class Store(MonitorMixin,TagMixin,RetryMixin):
     def __init__(self, root):
         self.root = Path(root)
         self.path = self.root / 'raw/crawler/queue.sqlite3'
@@ -155,6 +153,8 @@ class Store(MonitorMixin,TagMixin):
                 db.execute("ALTER TABLE jobs ADD COLUMN last_dispatched TEXT NOT NULL DEFAULT ''")
             if 'scan_cancelled' not in [r['name'] for r in db.execute('PRAGMA table_info(jobs)')]:
                 db.execute('ALTER TABLE jobs ADD COLUMN scan_cancelled INTEGER NOT NULL DEFAULT 0')
+            from crawler_retries import schema as retry_schema
+            retry_schema(db)
         with self.db() as db:uids=[r['uid'] for r in db.execute('SELECT uid FROM creators')]
         for uid in uids:self.ensure_monitor(uid)
 
@@ -177,7 +177,7 @@ class Store(MonitorMixin,TagMixin):
                     if not creator or not json.loads(creator['data']).get('enabled', True):
                         return None
             else:
-                row = db.execute("SELECT 1 FROM tasks WHERE bvid=? AND state='failed' AND EXISTS(SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=tasks.bvid AND j.state NOT IN ('stopped','deleted'))", (target,)).fetchone()
+                row = db.execute("SELECT * FROM tasks WHERE bvid=? AND state='failed' AND EXISTS(SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=tasks.bvid AND j.state NOT IN ('stopped','deleted'))", (target,)).fetchone()
                 if not row:
                     return None
             previous = db.execute('SELECT attempt FROM risk_retries WHERE kind=? AND target=?', (kind,target)).fetchone()
@@ -188,24 +188,16 @@ class Store(MonitorMixin,TagMixin):
             if kind == 'job':
                 db.execute("UPDATE jobs SET state='pending',error=? WHERE id=?", (str(error),target))
             else:
-                db.execute("UPDATE tasks SET state='queued',error=?,progress=?,generation=generation+1,updated=? WHERE bvid=?", (str(error),encode({'phase':'retry_wait','next_retry_at':next_at,'attempt':attempt}),now(),target))
+                from acquisition_errors import describe_error
+                progress=json.loads(row['progress'] or '{}')
+                phase=progress.get('last_phase') or progress.get('phase')
+                progress.update(phase='retry_wait',last_phase=phase,next_retry_at=next_at,attempt=attempt)
+                detail=describe_error(error,phase,f'raw/crawler/{target}.log')
+                db.execute("UPDATE tasks SET state='queued',error=?,error_data=?,progress=?,generation=generation+1,updated=? WHERE bvid=?", (str(error),encode(detail),encode(progress),now(),target))
         return {'attempt':attempt,'next_retry_at':next_at}
 
     def adopt_network_failures(self):
-        from acquisition_errors import describe_error
-        for task in self.tasks():
-            if task['state']!='failed' or describe_error(task['error'])['category']!='network':continue
-            with self.db() as db:
-                db.execute('BEGIN IMMEDIATE')
-                if not db.execute("SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=? AND j.state NOT IN ('stopped','deleted')",(task['bvid'],)).fetchone():continue
-                old=db.execute('SELECT attempt FROM network_retries WHERE bvid=?',(task['bvid'],)).fetchone();attempt=(old['attempt'] if old else 0)+1
-                if attempt>3:continue
-                when=(datetime.fromisoformat(now())+timedelta(seconds=[60,300,900][attempt-1])).isoformat(timespec='seconds')
-                changed=db.execute("UPDATE tasks SET state='queued',error='',error_data='{}',progress=?,generation=generation+1 WHERE bvid=? AND generation=? AND state='failed'",(encode({'phase':'retry_wait'}),task['bvid'],task['generation'])).rowcount
-                if changed:
-                    detail=describe_error(task['error'],json.loads(task['progress'] or '{}').get('phase') or 'downloading',f'raw/crawler/{task["bvid"]}.log')
-                    db.execute('INSERT INTO task_diagnostics VALUES(?,?,?,?)',(task['bvid'],task['generation'],encode(detail),now()))
-                    db.execute('INSERT OR REPLACE INTO network_retries VALUES(?,?,?,?)',(task['bvid'],attempt,when,task['error']))
+        return self.adopt_transient_failures()
 
     def adopt_risk_failures(self, scanning=(), working=()):
         with self.db() as db:
@@ -273,13 +265,14 @@ class Store(MonitorMixin,TagMixin):
 
     def next_pending(self, exclude=()):
         with self.db() as db:
-            condition = ' AND id NOT IN (' + ','.join('?' for _ in exclude) + ')' if exclude else ''
-            row = db.execute("SELECT id FROM jobs WHERE state='pending' AND scan_cancelled=0 AND NOT EXISTS(SELECT 1 FROM monitor_members m WHERE m.job=jobs.id AND m.monitor!=jobs.id) AND (creator IS NULL OR EXISTS(SELECT 1 FROM creators c WHERE c.uid=jobs.creator AND json_extract(c.data,'$.enabled')!=0)) AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id AND r.next_retry_at>?)" + condition + ' ORDER BY created,id LIMIT 1', (now(),*exclude)).fetchone()
+            condition = " AND NOT EXISTS(SELECT 1 FROM acquisition_retries a WHERE a.kind='job' AND a.target=jobs.id AND a.next_retry_at>?)"
+            condition += ' AND id NOT IN (' + ','.join('?' for _ in exclude) + ')' if exclude else ''
+            row = db.execute("SELECT id FROM jobs WHERE state='pending' AND scan_cancelled=0 AND NOT EXISTS(SELECT 1 FROM monitor_members m WHERE m.job=jobs.id AND m.monitor!=jobs.id) AND (creator IS NULL OR EXISTS(SELECT 1 FROM creators c WHERE c.uid=jobs.creator AND json_extract(c.data,'$.enabled')!=0)) AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id AND r.next_retry_at>?)" + condition + ' ORDER BY created,id LIMIT 1', (now(),now(),*exclude)).fetchone()
         return self.job(row['id'], False) if row else None
 
     def begin_scan(self, jid):
         with self.db() as db:
-            return bool(db.execute("UPDATE jobs SET state='scanning',error='' WHERE id=? AND state='pending' AND scan_cancelled=0 AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id AND r.next_retry_at>?)", (jid,now())).rowcount)
+            return bool(db.execute("UPDATE jobs SET state='scanning',error='' WHERE id=? AND state='pending' AND scan_cancelled=0 AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='job' AND r.target=jobs.id AND r.next_retry_at>?) AND NOT EXISTS(SELECT 1 FROM acquisition_retries a WHERE a.kind='job' AND a.target=jobs.id AND a.next_retry_at>?)", (jid,now(),now())).rowcount)
 
     def job(self, jid, items=True):
         with self.db() as db:
@@ -304,11 +297,12 @@ class Store(MonitorMixin,TagMixin):
         result['counts'] = {state: sum(v['state'] == state for v in grouped.values())
                             for state in ['preview', 'queued', 'running', 'paused', 'cancelled', 'succeeded', 'failed']}
         for phase in ['downloading', 'transcribing']:
-            result['counts'][phase] = sum(v['state'] == 'running' and v['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]) for v in grouped.values())
+            result['counts'][phase] = sum(v['state'] == 'running' and v['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else ['transcribing','initializing_asr','loading_asr']) for v in grouped.values())
         if items:
             for item in grouped.values():
                 if item['state']=='succeeded':item['error']='';item['error_info']=None
                 item['error_info'] = item.get('error_info') or error_info(item['error'], item['progress'].get('phase'))
+                item['retry']=(self.risk_retry('task',item['bvid']) or self.retry_status('task',item['bvid'])) if item['state']=='queued' else None
             result['items'] = list(grouped.values())
         if result.get('creator'):
             with self.db() as db:
@@ -318,7 +312,7 @@ class Store(MonitorMixin,TagMixin):
                     result.update({key:info.get(key) for key in ['monitor_state','last_checked','last_success','next_check','tag_progress','tag_error']})
             result['matched']=len(grouped)
         result['error_info'] = error_info(result['error'], 'discovery')
-        result['retry'] = self.risk_retry('job',jid) if result['state'] == 'pending' else None
+        result['retry'] = (self.risk_retry('job',jid) or self.retry_status('job',jid)) if result['state'] == 'pending' else None
         return result
 
     def update_job(self, jid, **values):
@@ -329,6 +323,7 @@ class Store(MonitorMixin,TagMixin):
             condition = " AND state!='stopped' AND scan_cancelled=0" if values.get('state') in ['scanning', 'scanned', 'failed'] else ''
             updated = bool(db.execute('UPDATE jobs SET ' + ','.join(k + '=?' for k in values) + " WHERE id=? AND state!='deleted'" + condition, (*values.values(), jid)).rowcount)
             if updated and values.get('state') == 'scanned':
+                db.execute("DELETE FROM acquisition_retries WHERE kind='job' AND target=?", (jid,))
                 db.execute("DELETE FROM risk_retries WHERE kind='job' AND target=?", (jid,))
             return updated
 
@@ -460,7 +455,7 @@ class Store(MonitorMixin,TagMixin):
                 raise KeyError('视频任务不存在')
             if action != 'delete':
                 phase = 'downloading' if action == 'stop-download' else 'transcribing'
-                if row['state'] != 'running' or json.loads(row['progress']).get('phase') not in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]):
+                if row['state'] != 'running' or json.loads(row['progress']).get('phase') not in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else ['transcribing','initializing_asr','loading_asr']):
                     raise ValueError('视频已不在对应阶段，请刷新任务状态')
             state = 'cancelled' if action == 'delete' else 'paused'
             db.execute('UPDATE tasks SET state=?,error=?,updated=?,generation=generation+1 WHERE bvid=?',
@@ -474,7 +469,7 @@ class Store(MonitorMixin,TagMixin):
             with self.db() as db:
                 shared=db.execute("SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=? AND d.job!=? AND j.state NOT IN ('stopped','deleted')",(item['bvid'],jid)).fetchone()
             if shared:continue
-            if item['state'] == 'running' and item['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else [phase]):
+            if item['state'] == 'running' and item['progress'].get('phase') in (['downloading','checking_subtitles','fetching_subtitles'] if phase == 'downloading' else ['transcribing','initializing_asr','loading_asr']):
                 try:
                     self.control_task(item['bvid'], action)
                 except ValueError:
@@ -503,17 +498,25 @@ class Store(MonitorMixin,TagMixin):
                 JOIN jobs j ON j.id=d.job WHERE t.state='queued' AND j.state NOT IN ('stopped','deleted')
                 AND NOT EXISTS(SELECT 1 FROM network_retries n WHERE n.bvid=t.bvid AND n.next_retry_at>?)
                 AND NOT EXISTS(SELECT 1 FROM risk_retries r WHERE r.kind='task' AND r.target=t.bvid AND r.next_retry_at>?)''' + condition + '''
+                AND NOT EXISTS(SELECT 1 FROM acquisition_retries a WHERE a.kind='task' AND a.target=t.bvid AND a.next_retry_at>?)
                 ORDER BY (SELECT COUNT(*) FROM tasks r JOIN dispatch rd ON rd.bvid=r.bvid
                           WHERE rd.job=j.id AND r.state='running'),
-                         j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', (now(),now(),*exclude)).fetchone()
+                         j.last_dispatched,j.created,t.updated,t.bvid LIMIT 1''', (now(),now(),*exclude,now())).fetchone()
             if not row:
                 return None
-            db.execute("UPDATE tasks SET state='running',error='',error_data='{}',progress='{}',updated=?,generation=generation+1 WHERE bvid=?", (now(), row['bvid']))
+            previous=json.loads(row['progress'] or '{}')
+            starting={**previous,'phase':'starting'}
+            for key in ('next_retry_at','attempt'):starting.pop(key,None)
+            db.execute("UPDATE tasks SET state='running',error='',error_data='{}',progress=?,updated=?,generation=generation+1 WHERE bvid=?", (encode(starting),now(), row['bvid']))
             db.execute('UPDATE jobs SET last_dispatched=? WHERE id=?', (datetime.now(BJ).isoformat(), row['owner']))
             return {**dict(row), 'state': 'running', 'generation': row['generation'] + 1}
 
     def finish_task(self, bvid, state, error='', progress=None, generation=None):
         from acquisition_errors import describe_error
+        if progress is None and state=='failed':
+            with self.db() as db:
+                previous=db.execute('SELECT progress FROM tasks WHERE bvid=?',(bvid,)).fetchone()
+            progress=json.loads(previous['progress']) if previous else {}
         detail=describe_error(error,(progress or {}).get('phase'),f'raw/crawler/{bvid}.log') if error else None
         from link_jobs import inspect_artifacts,refresh_artifacts,demand_done,scope_for
         artifacts = inspect_artifacts(self,bvid) if state=='succeeded' else []
@@ -530,6 +533,7 @@ class Store(MonitorMixin,TagMixin):
             if changed and detail:
                 db.execute("INSERT INTO task_diagnostics VALUES(?,?,?,?)",(bvid,generation,encode(detail),now()))
             if changed and state == 'succeeded':
+                db.execute("DELETE FROM acquisition_retries WHERE kind='task' AND target=?",(bvid,))
                 db.execute("DELETE FROM risk_retries WHERE kind='task' AND target=?", (bvid,))
                 db.execute('DELETE FROM network_retries WHERE bvid=?',(bvid,))
 
@@ -537,8 +541,15 @@ class Store(MonitorMixin,TagMixin):
         with self.db() as db:
             if not db.execute("SELECT 1 FROM jobs WHERE id=? AND state!='deleted'", (jid,)).fetchone():
                 raise KeyError('任务已删除或不存在')
-            targets=[r['bvid'] for r in db.execute("SELECT bvid FROM tasks WHERE state='failed' AND bvid IN (SELECT bvid FROM dispatch WHERE job=? OR job IN (SELECT job FROM monitor_members WHERE monitor=?))",(jid,jid)) if not bvids or r['bvid'] in bvids]
-            for target in targets:db.execute('DELETE FROM network_retries WHERE bvid=?',(target,))
+            targets=[r['bvid'] for r in db.execute("SELECT bvid FROM tasks WHERE state IN ('failed','queued') AND bvid IN (SELECT bvid FROM dispatch WHERE job=? OR job IN (SELECT job FROM monitor_members WHERE monitor=?))",(jid,jid)) if not bvids or r['bvid'] in bvids]
+            for target in targets:
+                db.execute('DELETE FROM network_retries WHERE bvid=?',(target,))
+                db.execute("DELETE FROM acquisition_retries WHERE kind='task' AND target=?",(target,))
+                progress=json.loads(db.execute('SELECT progress FROM tasks WHERE bvid=?',(target,)).fetchone()['progress'])
+                for key in ('next_retry_at','attempt'):progress.pop(key,None)
+                progress['phase']='queued'
+                db.execute("UPDATE tasks SET error='',error_data='{}',progress=? WHERE bvid=?",(encode(progress),target))
+            db.execute("DELETE FROM acquisition_retries WHERE kind='job' AND target=?",(jid,))
             db.execute("UPDATE tasks SET state='queued',error='',updated=? WHERE state='failed' AND bvid IN (SELECT bvid FROM dispatch WHERE job=? OR job IN (SELECT job FROM monitor_members WHERE monitor=?))" +
                        (' AND bvid IN (' + ','.join('?' for _ in bvids) + ')' if bvids else ''),
                        (now(), jid,jid, *(bvids or [])))
@@ -546,34 +557,24 @@ class Store(MonitorMixin,TagMixin):
 
     def recover_tasks(self, exclude=()):
         from processing_lock import file_lock
+        interrupted=False
         # A hard-killed HTTP process can leave its ASR child alive. Its source lock owns that work.
         for task in self.tasks():
             if task['state'] != 'running' or task['bvid'] in exclude:
                 continue
             try:
                 with file_lock(self.root / 'raw/crawler/locks' / (task['bvid'] + '.lock')):
-                    with self.db() as db:
-                        db.execute("UPDATE tasks SET state='queued' WHERE bvid=? AND state='running'", (task['bvid'],))
+                    from worker_diagnostics import Diagnostic
+                    progress=Diagnostic(self.root,task['bvid'],task['generation']).recovery_progress(json.loads(task['progress'] or '{}'))
+                    self.finish_task(task['bvid'],'failed','工作进程异常退出（恢复时未发现有效工作进程）',progress,generation=task['generation'])
+                    interrupted=True
             except workspace.Busy:
                 continue
+        if interrupted:self.adopt_transient_failures()
 
     def restore_recoverable(self):
-        from acquisition_errors import describe_error
-        from reference_store import transcript_errors
-        restored=[]
-        for task in self.tasks():
-            if task['state'] not in ['failed','queued']:continue
-            if not self.requested(task['bvid']):continue
-            detail=task['error_info'] or describe_error(task['error'])
-            if detail['category'] not in ['risk','network','formats']:continue
-            with self.db() as db:
-                db.execute('BEGIN IMMEDIATE')
-                if db.execute('SELECT 1 FROM task_recoveries WHERE bvid=?',(task['bvid'],)).fetchone():continue
-                db.execute('INSERT INTO task_recoveries VALUES(?,?)',(task['bvid'],now()))
-                db.execute('INSERT INTO task_diagnostics VALUES(?,?,?,?)',(task['bvid'],task['generation'],encode(detail),now()))
-                changed=db.execute("UPDATE tasks SET state='queued',error='',error_data='{}',progress='{}',generation=generation+1,updated=? WHERE bvid=? AND generation=? AND state IN ('failed','queued') AND EXISTS(SELECT 1 FROM dispatch d JOIN jobs j ON j.id=d.job WHERE d.bvid=tasks.bvid AND j.state NOT IN ('stopped','deleted'))",(now(),task['bvid'],task['generation'])).rowcount
-                if changed:
-                    db.execute("DELETE FROM risk_retries WHERE kind='task' AND target=?",(task['bvid'],));restored.append(task['bvid'])
+        restored=self.adopt_transient_failures()
+        self.adopt_risk_failures()
         return restored
 
     def recover(self):
@@ -666,7 +667,7 @@ class Store(MonitorMixin,TagMixin):
             item = result.setdefault(r['bvid'], {**json.loads(r['data']), 'keywords': [], 'batches': [],
                 'acquisition_state': r['state'] or 'preview', 'acquisition_error': r['error'] if r['state']=='failed' else '',
                 'acquisition_error_info': json.loads(r['error_data'] or '{}') or None,
-                'acquisition_retry': self.risk_retry('task',r['bvid']) if r['state']=='queued' and json.loads(r['progress'] or '{}').get('phase')=='retry_wait' else None})
+                'acquisition_retry': (self.risk_retry('task',r['bvid']) or self.retry_status('task',r['bvid'])) if r['state']=='queued' else None})
             if r['keyword'] and r['keyword'] not in item['keywords']:
                 item['keywords'].append(r['keyword'])
             if r['job'] not in item['batches']:
@@ -973,6 +974,8 @@ class Runtime:
                 with self.store.db() as db:jobs=[r['job'] for r in db.execute('SELECT DISTINCT job FROM hits WHERE bvid=?',(bvid,))]
                 for jid in jobs:self.store.queue_job_tags(jid,bvid)
         output = self.root / 'raw/crawler' / (bvid + '.log')
+        from worker_diagnostics import Diagnostic
+        diagnostic=Diagnostic(self.root,bvid,generation)
         process = None
         try:
             if not self.store.requested(bvid, generation):
@@ -986,8 +989,10 @@ class Runtime:
                 archive=output.parent/'logs';archive.mkdir(exist_ok=True)
                 shutil.copy2(output,archive/(bvid+'-'+str(generation)+'-'+uuid.uuid4().hex[:8]+'.log'))
             with output.open('w', encoding='utf8') as log:
-                process = subprocess.Popen([sys.executable, '-X', 'utf8', str(Path(__file__).with_name('crawler_worker.py')),
-                    '--root', str(self.root), '--bvid', bvid, '--generation', str(generation)], stdout=log, stderr=subprocess.STDOUT,
+                profile=json.loads(task.get('progress') or '{}').get('asr_profile','default')
+                diagnostic.event('launching', profile=profile)
+                process = subprocess.Popen([sys.executable, '-u', '-X', 'utf8', '-X', 'faulthandler', str(Path(__file__).with_name('crawler_worker.py')),
+                    '--root', str(self.root), '--bvid', bvid, '--generation', str(generation), '--asr-profile', profile], stdout=log, stderr=subprocess.STDOUT,
                     creationflags=getattr(subprocess, 'CREATE_NO_WINDOW', 0), start_new_session=sys.platform != 'win32')
                 with self.process_lock:
                     self.processes[bvid] = process
@@ -1012,7 +1017,8 @@ class Runtime:
                     finish('queued', '来源正在处理，稍后自动重试')
                     self.closed.wait(2)
                 elif process.returncode:
-                    finish('failed', f'工作进程异常退出（退出码{process.returncode}），完整诊断见 raw/crawler/{bvid}.log')
+                    progress=diagnostic.recovery_progress(json.loads(current.get('progress') or '{}'))
+                    finish('failed', f'工作进程异常退出（退出码{process.returncode}），完整诊断见 raw/crawler/{bvid}.log',progress)
                 else:
                     finish('succeeded', progress={'phase': 'ready'})
         except Exception as exc:
@@ -1023,6 +1029,11 @@ class Runtime:
             else:
                 self.store.cancel_orphan(bvid)
         finally:
+            if process is not None and process.poll() is not None:
+                diagnostic.exit(process.returncode)
+                if output.is_file():
+                    import shutil
+                    shutil.copy2(output,diagnostic.path.with_suffix('.log'))
             with self.process_lock:
                 self.processes.pop(bvid, None)
 

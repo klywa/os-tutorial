@@ -20,7 +20,7 @@ export function sourceMatches(s:Source,f:SourceFilters){
   return true;
 }
 export function visibleSelection(selected:string[],rows:Source[]){return [...new Set([...selected,...rows.filter(s=>!s.ignored).map(s=>s.id)])];}
-export const taskNames:Record<string,string>={checking_subtitles:'检查字幕',fetching_subtitles:'获取字幕',retry_wait:'排队中',paused:'已停止，可继续',exporting:'整理文字稿',frames:'提取关键帧',pending:'等待采集',scanning:'采集中',scanned:'采集结束',stopped:'已停止派发',deleted:'已删除',cancelled:'已取消',failed:'失败',preview:'待选择',queued:'排队中',running:'处理中',succeeded:'文字稿已生成',registered:'待整理',downloading:'下载中',transcribing:'转写中',prepared:'待核对',complete:'处理完成',ready:'文字稿已生成'};
+export const taskNames:Record<string,string>={starting:'启动处理',initializing:'准备处理',importing_runtime:'加载处理组件',initializing_asr:'加载转写模型',loading_asr:'加载转写组件',discovery:'获取视频信息',checking_subtitles:'检查字幕',fetching_subtitles:'获取字幕',retry_wait:'排队中',paused:'已停止，可继续',exporting:'整理文字稿',frames:'提取关键帧',pending:'等待采集',scanning:'采集中',scanned:'采集结束',stopped:'已停止派发',deleted:'已删除',cancelled:'已取消',failed:'失败',preview:'待选择',queued:'排队中',running:'处理中',succeeded:'文字稿已生成',registered:'待整理',downloading:'下载中',transcribing:'转写中',prepared:'待核对',complete:'处理完成',ready:'文字稿已生成'};
 export function progressLabel(p:Progress){
   const base=taskNames[p.phase??'']??p.phase??'处理中';
   const [value,total]=p.phase==='downloading'?[p.downloaded_bytes,p.total_bytes]:[p.processed_seconds,p.total_seconds];

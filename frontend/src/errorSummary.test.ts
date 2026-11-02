@@ -16,3 +16,14 @@ it('本地保存错误隐藏路径并提示文件占用',()=>{
 it('格式缺失不归类为风控',()=>{expect(taskError('No video formats found!').category).toBe('formats');});
 
 it('视频不可访问不归类为网络中断',()=>{expect(taskError('B站请求失败（-404）：视频不存在').category).toBe('unavailable');});
+
+it('报错中的网址不等于网络故障，页面解析有独立分类',()=>{
+ expect(taskError('broken data; see https://github.com/yt-dlp').category).toBe('processing');
+ expect(taskError('Unable to extract initial state; https://github.com/yt-dlp').category).toBe('extractor');
+});
+
+it('以服务端分类为准，并区分占用与崩溃',()=>{
+ expect(taskError('HTTP Error 500',{category:'login',phase:'discovery',recoverable:false,hint:'更新登录'}).category).toBe('login');
+ expect(taskError('知识库正在保存，请稍后重试').category).toBe('busy');
+ expect(taskError('工作进程异常退出（退出码3221225477）').category).toBe('crash');
+});

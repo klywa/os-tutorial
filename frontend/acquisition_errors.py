@@ -13,14 +13,18 @@ def describe_error(error,phase=None,log=None):
   code=int(match[1]) if match else (412 if re.search(r'\b412\b',text) else None)
  category=getattr(error,'category',None)
  if not category:
-  if code in [-352,-401,403,412,429] or re.search(r'-352|-401|风控',text):category='risk'
-  elif code in [-101,-111] or re.search(r'login|sign in|登录',text,re.I):category='login'
+  if code in [-352,-401,403,412,429] or re.search(r'-352|-401|风控|exceeded the rate limit|too many requests',text,re.I):category='risk'
+  elif code in [-101,-111,401] or re.search(r'login|sign in|登录',text,re.I):category='login'
   elif code in [-404,404,410] or re.search(r'video.*(?:removed|deleted)|视频.*(?:删除|不存在)',text,re.I):category='unavailable'
+  elif re.search(r'Unable to extract initial state',text,re.I):category='extractor'
   elif re.search(r'No video formats|requested format.*not available',text,re.I):category='formats'
-  elif re.search(r'WinError (?:5|32|33)|PermissionError|拒绝访问',text):category='storage'
-  elif re.search(r'HTTP|connection|timed? ?out|网络|Downloaded.*bytes.*expected|ConnectionReset|RemoteDisconnected|WinError (?:10053|10054|10060)\b|TransportError|远程主机.*关闭',text,re.I):category='network'
+  elif type(error).__name__=='Busy' or re.search(r'知识库正在保存|来源正在处理|database is locked|WinError (?:32|33)\b|sharing violation',text,re.I):category='busy'
+  elif re.search(r'工作进程异常退出|0xC0000005|3221225477|segmentation fault|access violation',text,re.I):category='crash'
+  elif re.search(r'corrected_sha256|index needs verification|Transcript|文字稿.*校验|校验.*失败',text,re.I):category='validation'
+  elif isinstance(error,PermissionError) or re.search(r'WinError 5\b|PermissionError|Permission denied|拒绝访问',text,re.I):category='storage'
+  elif re.search(r'HTTP(?: Error)?[ :]+\d{3}\b|Unable to download|connection|timed? ?out|网络|Downloaded.*bytes.*expected|ConnectionReset|RemoteDisconnected|WinError (?:10053|10054|10060)\b|TransportError|远程主机.*关闭',text,re.I):category='network'
   else:category='processing'
- return {'category':category,'code':code,'phase':getattr(error,'phase',None) or phase or 'unknown','reason':text,'recoverable':category not in ['login','unavailable'],'log':log,'hint':'更新登录信息后重试' if category=='login' else '保留材料，可恢复处理'}
+ return {'category':category,'code':code,'phase':getattr(error,'phase',None) or phase or 'unknown','reason':text,'recoverable':category in ['risk','network','formats','extractor','busy','crash'],'log':log,'hint':'更新登录信息后重试' if category=='login' else '保留材料，等待自动重试' if category in ['risk','network','formats','extractor','busy','crash'] else '需要检查文件占用或目录权限，保留已有材料' if category=='storage' else '需要处理，保留已有材料'}
 
 class AcquisitionFailure(RuntimeError):
  def __init__(self,rows):

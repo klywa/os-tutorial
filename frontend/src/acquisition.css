@@ -127,3 +127,6 @@
 .annotation-error{color:#f0b6ae}.annotation-error button{margin:4px 6px 0 0}
 .source-editor-tags{display:grid;gap:8px;margin:12px 0}
 .source-editor-form{border:0;margin:0;padding:0;min-width:0}
+.retry-status{display:block;line-height:1.7;overflow-wrap:anywhere}
+.task-error>.retry-status{margin-top:5px}
+.task-error.retry-wait{border-left-color:var(--gold,#e7bf76);background:#283b48}

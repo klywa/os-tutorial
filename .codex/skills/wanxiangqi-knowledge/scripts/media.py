@@ -191,41 +191,56 @@ def repair_audio(root, sid, entry_url, options):
             time.sleep(2 ** attempt)
 
 
-def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True, progress_callback=None):
+def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True, progress_callback=None, runtime_options=None):
     folder = source_dir(root, sid)
     raw_path = folder / 'asr.raw.json'
     if not raw_path.exists():
+        options = runtime_options or {}
+        if progress_callback:
+            progress_callback({'phase':'loading_asr', 'source':sid,
+                               'profile':'cpu_safe' if options.get('device') == 'cpu' else 'default'})
         from faster_whisper import WhisperModel, BatchedInferencePipeline
         from faster_whisper.audio import decode_audio
         import ctranslate2
         progress = read_json(folder / 'asr.progress.json', {})
         prior_segments = progress.get('segments', []) if progress.get('model') == model_name else []
         offset = prior_segments[-1]['end'] if prior_segments else 0
-        device = 'cuda' if ctranslate2.get_cuda_device_count() else 'cpu'
+        device = options.get('device') or ('cuda' if ctranslate2.get_cuda_device_count() else 'cpu')
+        cpu_threads = int(options.get('cpu_threads', 8))
+        batch_size = int(options.get('batch_size', 4))
+        if progress_callback:
+            progress_callback({'phase':'initializing_asr', 'source':sid, 'device':device,
+                               'profile':'cpu_safe' if options.get('device') == 'cpu' else 'default'})
         records = entities(root)
         prompt = '王者万象棋。' + '、'.join(e['name'] for e in records if e['category'] == 'players')[:220]
         try:
             model = WhisperModel(model_name, device=device,
                                  compute_type='float16' if device == 'cuda' else 'int8',
-                                 cpu_threads=8,
+                                 cpu_threads=cpu_threads,
                                  download_root=str(Path(root) / '.wxq-runtime/models'))
         except RuntimeError:
             if device != 'cuda':
                 raise
             device = 'cpu'
+            if progress_callback:
+                progress_callback({'phase':'initializing_asr','source':sid,'device':device})
             model = WhisperModel(model_name, device='cpu', compute_type='int8',
-                                 cpu_threads=8,
+                                 cpu_threads=cpu_threads,
                                  download_root=str(Path(root) / '.wxq-runtime/models'))
         print(f'Loaded {model_name}, device={device}; running local ASR', flush=True)
         pipeline = BatchedInferencePipeline(model=model)
         beam = 1 if device == 'cpu' else 5
+        if progress_callback:
+            progress_callback({'phase':'decoding_audio','source':sid,'device':device})
         waveform = decode_audio(str(audio))[int(offset * 16000):] if offset else str(audio)
+        if progress_callback:
+            progress_callback({'phase':'transcribing','source':sid,'device':device})
         segments, info = pipeline.transcribe(waveform, language='zh', vad_filter=True,
                                              beam_size=beam, initial_prompt=prompt,
-                                             word_timestamps=apply_corrections, batch_size=4)
+                                             word_timestamps=apply_corrections, batch_size=batch_size)
         validate_audio_duration(root, sid, info.duration + offset)
         print(f'VAD complete: {info.duration_after_vad:.1f}s speech / {info.duration:.1f}s total', flush=True)
-        raw = {'model': model_name, 'device': device, 'language': info.language, 'batch_size': 4,
+        raw = {'model': model_name, 'device': device, 'language': info.language, 'batch_size': batch_size,
                'word_timestamps': apply_corrections,
                'decoder_runs': progress.get('decoder_runs', []) + [{'start': offset, 'beam_size': beam}],
                'segments': prior_segments}
@@ -235,7 +250,7 @@ def transcribe(root, sid, audio, model_name='large-v3', apply_corrections=True, 
                                     'words': [{'start': w.start + offset, 'end': w.end + offset, 'word': w.word,
                                                'probability': w.probability} for w in (s.words or [])]})
             if progress_callback:
-                progress_callback({'phase': 'transcribing', 'source': sid, 'processed_seconds': s.end + offset,
+                progress_callback({'phase': 'transcribing', 'source': sid, 'device': device, 'processed_seconds': s.end + offset,
                                    'total_seconds': info.duration + offset})
             if len(raw['segments']) % 10 == 0:
                 atomic_json(folder / 'asr.progress.json', raw)

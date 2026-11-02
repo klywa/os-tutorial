@@ -1,4 +1,6 @@
 """One acquisition per process: release ASR memory and keep the HTTP server responsive."""
+from worker_diagnostics import bootstrap
+DIAGNOSTIC = bootstrap()
 import argparse
 import json
 import sys
@@ -34,10 +36,13 @@ def cancel_self():
 
 
 @locked_video
-def run(root, bvid, generation=None):
+def run(root, bvid, generation=None, asr_profile='default'):
     store = Store(root)
     last = [0.0, None]
     def progress(value):
+        value={**value,'asr_profile':asr_profile}
+        if DIAGNOSTIC and value.get('phase') != last[1]:
+            DIAGNOSTIC.event(value.get('phase','unknown'), **{k:v for k,v in value.items() if k!='phase'})
         if value.get('phase') != last[1] or time.monotonic() - last[0] >= 1:
             store.finish_task(bvid, 'running', progress=value, generation=generation)
             last[0] = time.monotonic()
@@ -49,10 +54,11 @@ def run(root, bvid, generation=None):
         if adapter[0] is None:adapter[0]=Bilibili(store.settings()['cookies'],refresh=bool(store.risk_retry('task',bvid)),root=root)
         return adapter[0]
     def discover_entries():
+        progress({'phase':'discovery'})
         try:return client().entries(bvid)
         except Exception as exc:
             detail=describe_error(exc,'discovery')
-            if detail['category'] not in ['risk','network']:raise
+            if detail['category'] not in ['risk','network','extractor']:raise
             cached=[]
             for folder in sorted((Path(root)/'raw/sources').glob(bvid+'_p*')):
                 meta=wxq.read_json(folder/'metadata.json',{})
@@ -164,15 +170,24 @@ if __name__ == '__main__':
     parser.add_argument('--root', type=Path, required=True)
     parser.add_argument('--bvid', required=True)
     parser.add_argument('--generation', type=int)
+    parser.add_argument('--asr-profile', choices=('default','cpu_safe'), default='default')
     args = parser.parse_args()
+    if args.asr_profile=='cpu_safe':
+        from processing_lock import file_lock
+        original_transcribe=media.transcribe
+        def safe_transcribe(*values,**kwargs):
+            with file_lock(args.root/'raw/crawler/cpu-asr.lock'):
+                return original_transcribe(*values,**kwargs,runtime_options={'device':'cpu','cpu_threads':2,'batch_size':1})
+        media.transcribe=safe_transcribe
     store = Store(args.root)
     stopped = threading.Event()
     if any(t['bvid'] == args.bvid and t['state'] == 'running' for t in store.tasks()):
         threading.Thread(target=watch_requests, args=(store, args.bvid, stopped, cancel_self, args.generation), daemon=True).start()
     try:
-        run(args.root, args.bvid, generation=args.generation)
-    except workspace.Busy:
-        store.finish_task(args.bvid, 'queued', '来源正在处理，稍后自动重试', generation=args.generation)
+        if DIAGNOSTIC:DIAGNOSTIC.event('initializing')
+        run(args.root, args.bvid, generation=args.generation, asr_profile=args.asr_profile)
+    except workspace.Busy as exc:
+        store.finish_task(args.bvid, 'failed', exc, generation=args.generation)
         sys.exit(75)
     except Exception as exc:
         current=next((t for t in store.tasks() if t['bvid']==args.bvid),{})

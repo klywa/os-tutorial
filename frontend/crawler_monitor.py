@@ -64,12 +64,15 @@ class MonitorMixin:
     def monitor_info(self,row,db):
         jid=row.get('job_id');job=db.execute('SELECT state FROM jobs WHERE id=?',(jid,)).fetchone() if jid else None
         retry=db.execute("SELECT attempt,next_retry_at FROM risk_retries WHERE kind='job' AND target=?",(jid,)).fetchone() if jid else None
+        retry=(dict(retry) if retry else self.retry_status('job',jid,db)) if job and job['state'] in ('pending','failed') else None
         state='disabled' if not row.get('enabled',True) else 'paused' if job and job['state']=='stopped' else 'retry_wait' if retry else 'scanning' if job and job['state']=='scanning' else 'pending' if job and job['state']=='pending' else 'failed' if row.get('error') else 'waiting'
         row.update(monitor_state=state,checking=state=='scanning',retry=dict(retry) if retry else None)
         pending=db.execute("SELECT state,COUNT(*) n FROM acquisition_tags WHERE owner=? GROUP BY state",('creator:'+row['uid'],)).fetchall()
         row['tag_progress']={r['state']:r['n'] for r in pending}
         error=db.execute("SELECT error FROM acquisition_tags WHERE owner=? AND state='failed' LIMIT 1",('creator:'+row['uid'],)).fetchone()
         row['tag_error']=error['error'] if error else ''
+        tag_retry=db.execute("SELECT attempt,category,next_retry_at,error FROM acquisition_retries WHERE kind='tag' AND json_extract(target,'$[0]')=? ORDER BY next_retry_at LIMIT 1",('creator:'+row['uid'],)).fetchone()
+        row['tag_retry']=dict(tag_retry) if tag_retry and state not in ('disabled','paused') else None
         clock=self.settings()['clock'];hour,minute=map(int,clock.split(':'));current=datetime.now(BJ);target=current.replace(hour=hour,minute=minute,second=0,microsecond=0)
         if target<=current:target+=timedelta(days=1)
         row['next_check']=target.isoformat(timespec='seconds') if row.get('enabled',True) else None

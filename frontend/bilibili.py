@@ -198,6 +198,9 @@ class Bilibili:
         from pathlib import Path
         from download_resume import ResumeGuard,guarded_downloader
         guard=ResumeGuard(options)
+        # The shared jar is loaded by the adapter; context managers must not save
+        # cookies back into the user's configured input file.
+        options={k:v for k,v in options.items() if k!='cookiefile'}
         Downloader=guarded_downloader(yt_dlp.YoutubeDL,guard)
         for attempt in range(attempts):
             if getattr(self,'gate',None):self.gate.wait('media')
@@ -210,6 +213,14 @@ class Bilibili:
             except Exception as exc:
                 from acquisition_errors import describe_error
                 detail=describe_error(exc,'downloading')
+                if detail['category']=='extractor':
+                    self.refresh_session()
+                    if getattr(self,'gate',None):self.gate.wait('media')
+                    info=self.api_download_info(url)
+                    with Downloader({**options,'retries':0,'fragment_retries':0}) as downloader:
+                        downloader.cookiejar=self.ydl.cookiejar
+                        downloaded=downloader.process_ie_result(info,download=True)
+                        return downloaded,Path(downloader.prepare_filename(downloaded))
                 if detail['category']=='risk':
                     if getattr(self,'gate',None):self.gate.defer('media')
                     raise
@@ -219,6 +230,25 @@ class Bilibili:
                     if attempt:raise
                     self.refresh_session()
                 time.sleep(2**attempt)
+
+    def api_download_info(self,url):
+        """Resolve a verified page through APIs when watch-page state is absent."""
+        from urllib.parse import parse_qs
+        found=re.search(r'BV[0-9A-Za-z]+',url)
+        if not found:raise ValueError('下载链接缺少 BV ID')
+        bvid=found.group()
+        part=int(parse_qs(urlsplit(url).query).get('p',['1'])[0])
+        pages=self.entries(bvid)
+        entry=next((row for row in pages if row['playlist_index']==part),None)
+        if not entry:raise BilibiliError(-404,'指定分P不可访问')
+        info=self.request('x/player/wbi/playurl',{'bvid':bvid,'cid':entry['cid'],'fnval':4048,'fnver':0,'fourk':1},
+                          signed=True,referer=f'https://www.bilibili.com/video/{bvid}/?p={part}')
+        formats=self.ie.extract_formats(info)
+        if not formats:raise RuntimeError('No video formats found in verified play information')
+        return {'id':f'{bvid}_p{part}','title':entry.get('title') or bvid,
+                'duration':entry.get('duration'),'formats':formats,
+                'webpage_url':url,'extractor':'BiliBili','extractor_key':'BiliBili',
+                'http_headers':{'Referer':f'https://www.bilibili.com/video/{bvid}/?p={part}'}}
 
     def subtitles(self, bvid, part, duration=None, progress=None):
         if progress:progress({'phase':'checking_subtitles'})
