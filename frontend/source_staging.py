@@ -1,6 +1,6 @@
 """One persistent source basket per project. Stores IDs, never client paths."""
 import hashlib,json
-from crawler import Store,batch_paths
+from crawler import Store
 import workspace
 
 class Staging:
@@ -11,14 +11,16 @@ class Staging:
    db.execute('CREATE TABLE IF NOT EXISTS staging_revision(id INTEGER PRIMARY KEY,value INTEGER)')
    db.execute('INSERT OR IGNORE INTO staging_revision VALUES(1,0)')
  def sources(self,ids=None):
-  return {r['id']:r for r in workspace.sources(self.root,source_ids=ids) if not r.get('manual_values',{}).get('ignored')}
+  return {r['id']:r for r in workspace.sources(self.root,source_ids=ids,include_knowledge=False) if not r.get('manual_values',{}).get('ignored')}
+ def basket(self,ids,revision,valid):
+  ids=[sid for sid in ids if sid in valid]
+  return {'ids':ids,'items':[{'id':sid,'title':valid[sid].get('manual_values',{}).get('title',valid[sid].get('title',''))} for sid in ids],
+    'revision':revision,'project_key':hashlib.sha256(str(self.root.resolve()).encode()).hexdigest()[:16]}
  def get(self):
   with self.store.db() as db:
    ids=[r['id'] for r in db.execute('SELECT id FROM source_staging ORDER BY position,id')]
    revision=db.execute('SELECT value FROM staging_revision WHERE id=1').fetchone()[0]
-  valid=self.sources(ids);ids=[sid for sid in ids if sid in valid]
-  return {'ids':ids,'items':[{'id':sid,'title':valid[sid].get('manual_values',{}).get('title',valid[sid].get('title',''))} for sid in ids],
-    'revision':revision,'project_key':hashlib.sha256(str(self.root.resolve()).encode()).hexdigest()[:16]}
+  return self.basket(ids,revision,self.sources(ids))
  def prune(self):
   with self.store.db() as db:ids=[r['id'] for r in db.execute('SELECT id FROM source_staging')]
   valid=self.sources(ids)
@@ -29,13 +31,19 @@ class Staging:
    if changed:db.execute('UPDATE staging_revision SET value=value+1 WHERE id=1')
  def add(self,ids):
   if not isinstance(ids,list) or len(ids)>10000 or any(not isinstance(v,str) for v in ids):raise ValueError('请选择最多10000个来源ID')
-  valid=self.sources(ids)
   with self.store.db() as db:
-   db.execute('BEGIN IMMEDIATE');pos=db.execute('SELECT COALESCE(MAX(position),0) FROM source_staging').fetchone()[0];changed=0
+   db.execute('BEGIN IMMEDIATE')
+   existing=[r['id'] for r in db.execute('SELECT id FROM source_staging ORDER BY position,id')]
+   valid=self.sources(list(dict.fromkeys([*existing,*ids])))
+   pos=db.execute('SELECT COALESCE(MAX(position),0) FROM source_staging').fetchone()[0];changed=0
+   for sid in existing:
+    if sid not in valid:changed+=db.execute('DELETE FROM source_staging WHERE id=?',(sid,)).rowcount
    for sid in dict.fromkeys(ids):
     if sid in valid:pos+=1;changed+=db.execute('INSERT OR IGNORE INTO source_staging VALUES(?,?)',(sid,pos)).rowcount
    if changed:db.execute('UPDATE staging_revision SET value=value+1 WHERE id=1')
-  self.prune();return self.get()
+   ordered=[r['id'] for r in db.execute('SELECT id FROM source_staging ORDER BY position,id')]
+   revision=db.execute('SELECT value FROM staging_revision WHERE id=1').fetchone()[0]
+  return self.basket(ordered,revision,valid)
  def remove(self,sid):
   with self.store.db() as db:
    db.execute('BEGIN IMMEDIATE')

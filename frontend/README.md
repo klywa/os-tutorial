@@ -166,6 +166,8 @@ GET/PUT /api/sources/{id}/transcript 使用独立revision，路径仅从登记�
 
 外部内容每页25条，可选择本页或全部筛选结果；勾选、筛选和页码保留页面会话，改变筛选清空临时勾选。“加入暂存”向项目唯一暂存区累加，刷新和服务重启保留；忽略或失效来源移出。复制文字稿路径与编辑prompt使用全部暂存内容。Prompt是本次完整草稿，关闭重开保留；暂存变化须显式重新生成，复制前核验路径快照。
 
+列表左上方提供“全选本页”复选框和半选状态，取消本页全选保留其他页的选择。加入暂存仅清除本次提交的勾选；请求期间新增勾选保留。暂存修改、路径复制及 Prompt 加载各自显示状态：加入期间可立即打开 Prompt 并编辑模板，复制及生成会等待本次加入成功；加入失败时保留勾选并阻止依赖复制，重试成功后恢复。若本地暂存修改与快照请求重叠，会重新核对快照。
+
 名单管理支持清理预览：仅无明确笔记关联的项目可移入已删除，先备份并再次校验名单版本。恢复不改正文。
 
 新增API：POST /api/crawler/links（text、preview）；GET/POST /api/sources/staging；DELETE /api/sources/staging/ID；POST /api/sources/staging/clear（revision）、paths；POST /api/topics/lineups/cleanup/preview、apply（token）。
@@ -177,6 +179,8 @@ GET/PUT /api/sources/{id}/transcript 使用独立revision，路径仅从登记�
 每条外部内容可点击“标签”或“备注”直接编辑，焦点离开整个编辑区域后保存，Esc取消。标签可搜索、多选、输入新标签后回车或点击添加；已有备注复用。单行保存串行使用成功修订号，其他行和文字稿阅读保持可用；错误保留草稿，核对后重试。标签与自动主题分类分开，`GET /api/sources/tags`仅汇总来源登记中的已使用标签（含已忽略来源），`PUT /api/sources/{id}`支持`tags:string[]`，仍携带revision。
 
 “编辑prompt”以浮窗打开，提供“复制”按钮。`POST /api/sources/staging/prompt`返回按暂存顺序排列的`items:{id,title,location,notes}[]`、revision及fingerprint；location优先有效本地文字稿绝对路径，否则网页链接。每项格式为`- 标题：路径或链接（备注）`，无备注省略括号，多行备注生成时合并为一行；标题为空使用来源ID，标签不写入Prompt。人工草稿关闭重开保留，复制前核验相关资料，过期时显式重新生成。“复制文字稿路径”接口及其仅复制有效本地路径的行为保持不变。
+
+浮窗内“编辑模板”可保存一套通用模板，按项目存入当前浏览器 `localStorage`，刷新后保留。`{阵容名}`、`{内容列表}` 在生成时一次替换，不递归解析资料中的占位符。保存模板不替换当前草稿，点击“按当前暂存重新生成”后应用。草稿仍按项目保留在 `sessionStorage`。暂存后端通过 `workspace.sources(..., include_knowledge=False)` 跳过笔记和证据关联扫描，其他来源查询默认行为不变。
 
 ### 采集标签与UP持续监听
 

@@ -777,19 +777,30 @@ def register_source(root, payload, sid=None, preserve_annotations=False, wait=Fa
         return row
 
 
-def sources(root, source_ids=None):
+def _source_notes(root):
+    """Read evidence metadata without projecting/copying complete schema6 notes."""
+    import json_store
+    if not json_store.enabled(root):
+        return notes(root)
+    return ({'id':record['metadata']['id'],'title':record['metadata']['title'],
+             'claims':record['metadata'].get('claim_annotations',[]),
+             'history':record['metadata'].get('history',[])}
+            for record in json_store.records(root,clone=False))
+
+
+def sources(root, source_ids=None, *, include_knowledge=True):
     root = Path(root)
     selected = set(source_ids) if source_ids is not None else None
     if selected == set():
         return []
     if selected is not None and any(sid.startswith('link-') for sid in selected):
         # Generic URL IDs may have been replaced by an imported platform ID.
-        return [row for row in sources(root) if row['id'] in selected]
+        return [row for row in sources(root, include_knowledge=include_knowledge) if row['id'] in selected]
     rows = {r['id']: dict(r) for r in wxq.read_json(root / 'knowledge/source-registry.json', [])}
     selected_folders = {sid.replace(':', '_') for sid in selected} if selected is not None else None
     linked = {}
     references = {}
-    for note in notes(root):
+    for note in _source_notes(root) if include_knowledge else ():
         for claim in note.get('claims', []):
             for evidence in claim.get('evidence', []):
                 linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
@@ -808,14 +819,15 @@ def sources(root, source_ids=None):
         annotation = rows.pop(registry_id, {}) if registry_id != sid else rows.get(sid, {})
         row = {**metadata, **annotation, **rows.get(sid, {}), 'id': sid, 'url': url}
         state = wxq.read_json(path.parent / 'state.json', {})
-        review = wxq.read_json(path.parent / 'review.json', {})
+        review = wxq.read_json(path.parent / 'review.json', {}) if include_knowledge else {}
         row['stage'] = state.get('stage', 'registered')
         row['error'] = state.get('error', '')
         row['processing_warning'] = '；'.join(state.get('warnings', []))
         referenced = references.get(sid, [])
         intervals = review.get('checked_intervals', [])
-        row['reviewed'] = review.get('approved') is True and bool(intervals) and all(
-            any(a <= e['start'] and b >= e['end'] for a, b in intervals) for e in referenced)
+        if include_knowledge:
+            row['reviewed'] = review.get('approved') is True and bool(intervals) and all(
+                any(a <= e['start'] and b >= e['end'] for a, b in intervals) for e in referenced)
         rows[sid] = row
     # Acquisition failures that happened before metadata existed remain visible.
     for result in wxq.read_json(root / 'raw/reports/last-prepare.json', {}).get('results', []):
@@ -833,6 +845,7 @@ def sources(root, source_ids=None):
         rows = {sid: row for sid, row in rows.items() if sid in selected}
     for sid, row in rows.items():
         row.setdefault('stage', 'registered')
-        row['linked_notes'] = list(linked.get(sid, {}).values())
-        row['knowledge_status'] = 'deposited' if row['linked_notes'] and row['stage'] == 'complete' and row.get('reviewed') else 'submitted' if row['linked_notes'] else 'unprocessed'
+        if include_knowledge:
+            row['linked_notes'] = list(linked.get(sid, {}).values())
+            row['knowledge_status'] = 'deposited' if row['linked_notes'] and row['stage'] == 'complete' and row.get('reviewed') else 'submitted' if row['linked_notes'] else 'unprocessed'
     return sorted(rows.values(), key=lambda r: r.get('updated_at', r.get('collected_at', '')), reverse=True)

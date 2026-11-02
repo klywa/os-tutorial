@@ -24,6 +24,7 @@
 .job-summary span{background:var(--panel);padding:12px}.job-summary b{font-size:22px;font-weight:500;display:block;color:var(--jade)}
 .batch-toolbar{position:sticky;top:0;z-index:3;background:var(--panel);border:1px solid var(--line);padding:12px;display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:16px 0}
 .batch-toolbar strong{margin-right:auto}
+.sources-page .source-selection-toolbar{position:static;justify-content:flex-start}.sources-page .staging-toolbar{position:static}.source-selection-toolbar strong{margin-right:0}.sources-page .source-selection-toolbar .check-label{display:flex;margin:0;gap:6px;white-space:nowrap}
 .crawl-result,.external-row{display:flex;gap:13px;padding:18px 0;border-bottom:1px solid var(--line);align-items:flex-start}
 .crawl-result>div,.external-body{min-width:0;flex:1}.crawl-result a,.external-row a{overflow-wrap:anywhere}.crawl-result p{margin:5px 0}
 .crawl-result>input,.external-row>input{margin-top:6px}

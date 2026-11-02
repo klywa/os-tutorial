@@ -13,6 +13,24 @@ import wxq
 
 
 class SourceProjectionTests(unittest.TestCase):
+    def test_schema6_sources_read_evidence_without_projecting_full_note_histories(self):
+        import json_store,json_document
+        with tempfile.TemporaryDirectory(dir=ROOT / '.wxq-runtime/test-temp') as folder:
+            root=Path(folder);json_store.initialize(root)
+            sid='BV1234567890:p1'
+            body=json_document.parse('# 笔记\n\n**正文：** 测试内容\n')
+            record={'body':body,'metadata':{'id':'one','type':'other','title':'笔记','path':'knowledge/other/笔记.json',
+                'claim_annotations':[{'id':'claim','text_ref':body['nodes'][-1]['id'],'evidence':[{'source':sid,'start':0,'end':10}]}],
+                'history':[{'previous':{'claims':[{'evidence':[{'source':'old-source','start':0,'end':1}]}]}}]}}
+            json_store.save(root,[record])
+            wxq.atomic_json(root/'knowledge/source-registry.json',[{'id':sid,'url':'https://www.bilibili.com/video/BV1234567890'}, {'id':'old-source','url':'https://example.com/old'}])
+            expected=workspace.sources(root)
+            with patch.object(json_store,'project',side_effect=AssertionError('source lookup must not render or deepcopy full notes')):
+                actual=workspace.sources(root)
+            self.assertEqual(actual,expected)
+            self.assertEqual(actual[0]['linked_notes'],[{'id':'one','title':'笔记'}])
+            self.assertTrue(all(row['knowledge_status']=='submitted' for row in actual))
+
     def test_unchanged_asr_is_not_reparsed_on_every_poll_and_edits_are_seen(self):
         import crawler
         with tempfile.TemporaryDirectory(dir=ROOT / '.wxq-runtime/test-temp') as folder:
@@ -44,6 +62,11 @@ class SourceProjectionTests(unittest.TestCase):
             self.assertEqual(actual,expected)
             self.assertTrue(actual[0]['manual_values']['ignored'])
             self.assertEqual(workspace.sources(root,source_ids=[row['id']]),[])
+            with patch.object(workspace,'notes',side_effect=AssertionError('lightweight lookup must not scan knowledge')):
+                light=workspace.sources(root,source_ids=['platform123:p1'],include_knowledge=False)
+                self.assertTrue(light[0]['manual_values']['ignored'])
+                self.assertEqual(light[0]['notes'],'保留备注')
+                self.assertEqual(workspace.sources(root,source_ids=[row['id']],include_knowledge=False),[])
 
     def test_sources_read_notes_once_and_keep_current_and_history_reviews(self):
         with tempfile.TemporaryDirectory(dir=ROOT / '.wxq-runtime/test-temp') as folder:

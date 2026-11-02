@@ -12,6 +12,31 @@ class StagingLinksTests(unittest.TestCase):
   self.root=Path(self.temp.name);wxq.init_store(self.root);self.store=Store(self.root)
  def source(self,n):
   return workspace.register_source(self.root,{'url':f'https://www.bilibili.com/video/BV123456789{n}','title':'测试'})
+ def test_lightweight_sources_skip_notes_and_keep_source_fields(self):
+  self.source(1)
+  full=workspace.sources(self.root)
+  with patch.object(workspace,'notes',side_effect=AssertionError('must not scan notes')):
+   light=workspace.sources(self.root,source_ids=[full[0]['id']],include_knowledge=False)
+  for key in ('id','title','url','stage'):
+   self.assertEqual(light[0][key],full[0][key])
+  self.assertNotIn('linked_notes',light[0])
+  self.assertNotIn('knowledge_status',light[0])
+ def test_staging_add_uses_one_lightweight_lookup_and_preserves_order(self):
+  from source_staging import Staging
+  self.source(1);self.source(2);s=Staging(self.root)
+  with patch.object(workspace,'sources',wraps=workspace.sources) as lookup,patch.object(workspace,'notes',side_effect=AssertionError('must not scan notes')):
+   result=s.add(['BV1234567892:p1','BV1234567891:p1','BV1234567892:p1','missing'])
+  self.assertEqual(lookup.call_count,1)
+  self.assertEqual(result['ids'],['BV1234567892:p1','BV1234567891:p1'])
+  self.assertEqual(Staging(self.root).get()['ids'],result['ids'])
+ def test_staging_add_prunes_ignored_existing_items(self):
+  from source_staging import Staging
+  from source_edit import save_metadata
+  self.source(1);self.source(2);s=Staging(self.root);s.add(['BV1234567891:p1'])
+  row=next(r for r in workspace.sources(self.root) if r['id']=='BV1234567891:p1')
+  save_metadata(self.root,row['id'],{'revision':row.get('manual_revision',''),'ignored':True},self.store)
+  result=s.add(['BV1234567892:p1'])
+  self.assertEqual(result['ids'],['BV1234567892:p1'])
  def test_staging_union_restart_clear_conflict_and_ignore(self):
   from source_staging import Staging
   self.source(1);self.source(2);s=Staging(self.root)
