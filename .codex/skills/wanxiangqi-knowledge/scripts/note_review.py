@@ -13,6 +13,10 @@ def version_folder(root, nid):
 
 
 def _version_rows(root, nid):
+    import knowledge_history as history
+    if history.enabled(root):
+        rows=[{**{k:v for k,v in row.items() if k!='record'}, 'snapshot_sha256':store.digest(row['record'])} for row in history.version_entries(root,nid)]
+        return sorted(rows,key=lambda r:(r['at'],r['id']),reverse=True)
     folder = version_folder(root, nid)
     index = folder / 'index.meta.json'
     pending = store.pending_save(root)
@@ -45,6 +49,11 @@ def versions(root, nid, *, _locked=False):
 def version(root, nid, vid):
     if not isinstance(vid, str) or len(vid) != 32 or any(c not in '0123456789abcdef' for c in vid):
         raise ValueError('版本标识无效')
+    import knowledge_history as history
+    if history.enabled(root):
+        row=next((r for r in history.version_entries(root,nid) if r['id']==vid),None)
+        if row is None: raise KeyError('历史版本不存在')
+        return row
     path = version_folder(root, nid) / (vid + '.json')
     pending = store.pending_save(root)
     relative = path.relative_to(Path(root)).as_posix()
@@ -57,6 +66,8 @@ def version(root, nid, vid):
 
 def version_writes(root, old, new, origin='save', review_refs=None):
     import wxq
+    import knowledge_history as history
+    external=history.enabled(root)
     result = []
     previous = {r['metadata']['id']: r for r in old}
     for record in new:
@@ -73,9 +84,14 @@ def version_writes(root, old, new, origin='save', review_refs=None):
             snap = store.snapshot(item)
             value = {'id': vid, 'note_id': nid, 'at': datetime.now(timezone.utc).isoformat(), 'origin': source,
                      'body_sha256': store.digest(item['body']), 'review_refs': refs, 'record':snap}
+            if external:
+                value['id']=store.digest(snap)[:32]
+                result.append(history.version_write(value))
+                continue
             result.append({'path': str((version_folder(root, nid) / (vid + '.json')).relative_to(Path(root))).replace('\\', '/'),
                            'value': value})
             existing.insert(0, {**{k:v for k,v in value.items() if k!='record'}, 'snapshot_sha256':store.digest(snap)})
+        if external: continue
         result.append({'path':(version_folder(root,nid) / 'index.meta.json').relative_to(Path(root)).as_posix(),
                        'value':{'versions':existing}})
     return result

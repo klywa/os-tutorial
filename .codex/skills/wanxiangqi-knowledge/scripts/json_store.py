@@ -38,7 +38,7 @@ def digest(value):
 
 def snapshot(record):
     return {'body':deepcopy(record['body']),
-            'metadata':deepcopy({k:v for k,v in record['metadata'].items() if k not in ('history','conflicts')})}
+            'metadata':deepcopy({k:v for k,v in record['metadata'].items() if k not in ('history','history_head','history_count','conflicts')})}
 
 
 def editable_record(record):
@@ -145,12 +145,15 @@ def check_record(record):
         raise ValueError('阵容适用棋手必须与笔记绑定一致')
 
 
-def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False, prepare_only=False):
+def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False, prepare_only=False, storage_version=None):
     """Caller holds store_lock. Publish changed pairs and a complete light index."""
     root = Path(root)
     previous = read(root / INDEX, {'notes': []})
     old_rows = {row['id']: row for row in previous['notes']}
     changed, before, rows = [], [], []
+    import knowledge_history as history_store
+    external = (storage_version or previous.get("storage_version")) == 2
+    archives = []
     ids, paths = set(), set()
     for incoming in items:
         nid = incoming['metadata']['id']
@@ -158,7 +161,7 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
             raise ValueError('重复笔记身份或文件名')
         ids.add(nid)
         old = _disk_record(root, old_rows[nid]) if nid in old_rows else None
-        if old is not None and incoming == old:
+        if old is not None and incoming == old and storage_version is None:
             rows.append(old_rows[nid])
             continue
         record = editable_record(incoming)
@@ -166,7 +169,9 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
         check_record(record)
         m = record['metadata']; target(root, m['path'])
         m['body_sha256'] = digest(record['body'])
-        m['revision'] = digest({'body': record['body'], 'metadata': {k:v for k,v in m.items() if k != 'revision'}})[:20]
+        if external: archives.extend(history_store.extract(record))
+        ignored = {'revision', 'history', 'history_head', 'history_count'} if external else {'revision'}
+        m['revision'] = digest({'body': record['body'], 'metadata': {k:v for k,v in m.items() if k not in ignored}})[:20]
         rows.append({k:m.get(k) for k in ('id','type','title','path','player_id','revision')})
         changed.append(record)
         if old is not None: before.append(old)
@@ -180,12 +185,17 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
         paths.add(row['path'].casefold())
     index = {'schema_version':6, 'notes':rows,
              'aliases':deepcopy(aliases if aliases is not None else previous.get('aliases', {}))}
+    if external: index['storage_version'] = 2
     retired = [r['path'] for r in previous['notes'] if r['path'] not in {x['path'] for x in rows}]
     if not changed and not retired and index == previous:
         return []
     from note_review import version_writes
     journal = {'schema_version':6, 'origin':origin, 'delta':True, 'records':changed, 'index':index,
                'versions':version_writes(root, before, changed, origin, review_refs), 'retired':retired}
+    if external:
+        archives.extend(journal.pop('versions'))
+        journal['versions'] = []
+        journal['archives'] = archives
     if prepare_only:return journal
     write_file(root / JOURNAL, journal)
     recover(root)
@@ -221,6 +231,9 @@ def recover(root, *, official=True, apply_official_notes=False):
         defer_notes(root, journal)
         (root/JOURNAL).unlink()
         return
+    from knowledge_history import immutable
+    for entry in journal.get('archives', []):
+        immutable(root, entry['path'], entry['value'])
     for entry in journal.get('versions', []):
         write_file(root / entry['path'], entry['value'])
     for record in journal['records']:
@@ -340,7 +353,7 @@ def project(record, public=False):
     source = record['metadata']
     meta = deepcopy({k:v for k,v in source.items() if not public or k not in ('history','legacy_layout','retired_claim_annotations','claim_annotations','entity_names','conflicts')})
     if public:
-        meta['history_count'] = len(source.get('history', []))
+        meta['history_count'] = source.get('history_count', 0) + len(source.get('history', []))
         meta['conflicts'] = [{'reason':x.get('reason', '待核对的知识冲突')} for x in source.get('conflicts', [])]
     texts = {n['id']: n.get('value', n.get('title', '')) for n in [*body['nodes'], *body.get('supporting_nodes', [])]}
     texts.update({n['id']+':markdown':document.render_node(n).rstrip('\r\n') for n in [*body['nodes'], *body.get('supporting_nodes', [])]})
@@ -517,7 +530,7 @@ def edit(root, nid, payload, *, _review=None, public=False):
             for annotation in meta.get('claim_annotations', []):
                 if annotation['text_ref'] in deleted:
                     if annotation.get('id'):removed_claim_ids.add(annotation['id'])
-                    meta.setdefault('retired_claim_annotations', []).append({**annotation, 'history_index':len(meta.get('history', []))})
+                    meta.setdefault('retired_claim_annotations', []).append({**annotation, 'history_index':meta.get('history_count', 0) + len(meta.get('history', []))})
                 else:active.append(annotation)
             meta['claim_annotations'] = active
             def detach(value):
@@ -666,7 +679,7 @@ def commit(root, incoming):
                     previous['metadata'].setdefault('conflicts', []).append({'at': wxq.now(), 'incoming': snapshot(record), 'reason': '人工正文受到保护'})
                     changed.append(meta['id']);continue
                 meta['review_receipts'] = refs
-                for k in ('history', 'node_annotations', 'retired_claim_annotations', 'manual_sections', 'manual_semantics', 'conflicts', 'creation'):
+                for k in ('history', 'history_head', 'history_count', 'node_annotations', 'retired_claim_annotations', 'manual_sections', 'manual_semantics', 'conflicts', 'creation'):
                     if k in previous['metadata']:meta[k] = deepcopy(previous['metadata'][k])
                 if record['body'] != previous['body']:
                     history=meta.setdefault('history',[])
@@ -675,7 +688,7 @@ def commit(root, incoming):
                     current_claim_ids={c.get('id') for c in meta.get('claim_annotations',[])}
                     retired=meta.setdefault('retired_claim_annotations',[])
                     known_retired={c.get('id') for c in retired}
-                    retired.extend({**deepcopy(c),'history_index':len(history)-1} for c in previous['metadata'].get('claim_annotations',[])
+                    retired.extend({**deepcopy(c),'history_index':meta.get('history_count',0)+len(history)-1} for c in previous['metadata'].get('claim_annotations',[])
                                    if c.get('id') not in current_claim_ids and c.get('id') not in known_retired)
             projected = project(record)
             validate_semantics(root,record)
