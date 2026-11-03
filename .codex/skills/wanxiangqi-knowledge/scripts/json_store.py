@@ -254,6 +254,9 @@ def recover(root, *, official=True, apply_official_notes=False):
                 import wxq
                 wxq.backup_file(p)
                 p.unlink()
+    from knowledge_conflicts import immutable_event
+    for entry in journal.get('sync_events', []):
+        immutable_event(root, entry['path'], entry['value'])
     import wxq
     wxq.retry_file_access(lambda:(root / JOURNAL).unlink(missing_ok=True))
 
