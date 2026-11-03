@@ -182,9 +182,7 @@ def _merge_branches(root,left,right,*,preferred='right',origin='local'):
         for entry in archives:history.immutable(root,entry['path'],entry['value'])
     validation=store.validate(root)
     if validation['errors']:raise ValueError('知识合并校验失败：'+'; '.join(validation['errors']))
-    paths=[p for p in known if (root/p).exists() or p in unmerged]
-    paths.extend(['knowledge','knowledge-history','knowledge-sync'])
-    paths=[p for p in dict.fromkeys(paths) if (root/p).exists() or p in unmerged]
+    paths=[p for p in ('knowledge','knowledge-history','knowledge-sync') if (root/p).exists()]
     if paths:_git(root,'add','--all','--',*paths)
     staged=_git(root,'diff','--cached','--name-only').stdout.strip()
     merging=_git(root,'rev-parse','-q','--verify','MERGE_HEAD',check=False).returncode==0
