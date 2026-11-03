@@ -122,3 +122,9 @@ class ExternalHistoryTests(unittest.TestCase):
         report=migrate(self.root)
         self.assertGreater(report['archive_bytes'],0)
         self.assertFalse((self.root/'knowledge-history').exists())
+
+    def test_storage2_override_on_initial_note_save(self):
+        s.initialize(self.root)
+        s.save(self.root,[self.record],storage_version=2)
+        self.assertEqual(s.read(self.root/s.INDEX)['storage_version'],2)
+        self.assertEqual(s.load_record(self.root,'test')['body'],self.record['body'])

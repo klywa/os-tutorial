@@ -193,7 +193,11 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
     journal = {'schema_version':6, 'origin':origin, 'delta':True, 'records':changed, 'index':index,
                'versions':version_writes(root, before, changed, origin, review_refs), 'retired':retired}
     if external:
-        archives.extend(journal.pop('versions'))
+        for entry in journal.pop('versions'):
+            if entry['path'].startswith('knowledge-history/'):
+                archives.append(entry)
+            elif not entry['path'].endswith('/index.meta.json'):
+                archives.append(history_store.version_write(entry['value']))
         journal['versions'] = []
         journal['archives'] = archives
     if prepare_only:return journal
