@@ -69,6 +69,43 @@ class LocalSyncTests(unittest.TestCase):
         self.assertEqual(self.git(self.root,'rev-parse','HEAD'),self.git(self.origin,'rev-parse','master'))
         self.assertNotIn('raw/',self.git(self.origin,'ls-tree','-r','--name-only','master'))
         self.assertEqual(self.service.events,['stop','restart'])
+
+    def test_publish_precommitted_browser_modules_and_repeat(self):
+        scripts = {
+            f'frontend/browser_{name}.cjs': f'// {name}\n'
+            for name in ('collaboration', 'monitor_resilience', 'proposal_navigation', 'source_staging')
+        }
+        for path, content in scripts.items():
+            (self.root/path).write_text(content)
+        self.git(self.root, 'add', '--', *scripts)
+        self.git(self.root, 'commit', '-m', 'browser regression scripts')
+        # Also exercise automatic staging of a newly created ES module.
+        scripts['frontend/browser_module.mjs'] = 'export const ready = true;\n'
+        (self.root/'frontend/browser_module.mjs').write_text(scripts['frontend/browser_module.mjs'])
+
+        manager = self.manager()
+        self.assertEqual(manager.publish()['state'], 'published')
+        for path, content in scripts.items():
+            self.assertEqual(self.git(self.origin, 'show', f'master:{path}'), content.strip())
+        published = self.git(self.origin, 'rev-parse', 'master')
+        self.assertEqual(manager.publish()['state'], 'published')
+        self.assertEqual(self.git(self.origin, 'rev-parse', 'master'), published)
+        self.assertEqual(self.git(self.root, 'rev-parse', 'HEAD'), published)
+        self.assertEqual(self.service.events, ['stop', 'restart', 'stop', 'restart'])
+
+    def test_deleted_private_module_history_is_not_uploaded(self):
+        path = 'frontend/personal/secret.cjs'
+        (self.root/path).parent.mkdir()
+        (self.root/path).write_text('// private module\n')
+        self.git(self.root, 'add', '--', path)
+        self.git(self.root, 'commit', '-m', 'private module')
+        self.git(self.root, 'rm', '--', path)
+        self.git(self.root, 'commit', '-m', 'remove private module')
+        before = self.git(self.origin, 'rev-parse', 'master')
+        with self.assertRaisesRegex(RuntimeError, '白名单'):
+            self.manager().publish()
+        self.assertEqual(self.git(self.origin, 'rev-parse', 'master'), before)
+        self.assertTrue(self.service.active)
     def test_invalid_remote_never_reaches_local_tree_or_remote_push(self):
         self.remote_note('invalid'); remote_before=self.git(self.origin,'rev-parse','master')
         (self.root/'frontend/server.py').write_text('# safe local\n')
@@ -310,6 +347,28 @@ class LocalSyncTests(unittest.TestCase):
         self.assertNotIn('Traceback',text)
         with sync.sync_lock(directory):
             pass
+
+class LocalPathTests(unittest.TestCase):
+    def test_javascript_module_formats_in_existing_code_directories(self):
+        for directory in ('frontend', 'deploy', 'docs', '.codex/skills/wanxiangqi-knowledge/scripts'):
+            for extension in ('.js', '.cjs', '.mjs'):
+                path = f'{directory}/example{extension}'
+                with self.subTest(path=path):
+                    self.assertTrue(sync.allowed_local_path(path))
+
+    def test_module_formats_do_not_bypass_private_path_exclusions(self):
+        paths = (
+            'frontend/raw/private.cjs', 'frontend/personal/private.mjs',
+            'frontend/proposals/private.cjs', 'frontend/node_modules/package/index.mjs',
+            'frontend/dist/index.cjs', 'frontend/coverage/report.mjs',
+            'frontend/.env.cjs', 'deploy/.env.local.mjs', 'frontend/credentials.json',
+            'frontend/auth.json', 'frontend/cache.sqlite3', 'frontend/id_ed25519',
+            'raw/script.cjs', 'personal/script.mjs', 'unknown/script.cjs',
+        )
+        for path in paths:
+            with self.subTest(path=path):
+                self.assertFalse(sync.allowed_local_path(path))
+
 
 class LocalServiceTests(unittest.TestCase):
     def test_foreign_workspace_never_receives_stop_request(self):

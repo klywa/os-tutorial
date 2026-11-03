@@ -46,7 +46,7 @@ def allowed_local_path(path):
     if parts[0] == 'website-data':
         return basename.endswith(('.json','.img'))
     if parts[0] in {'frontend','deploy','docs'} or path.startswith('.codex/skills/wanxiangqi-knowledge/'):
-        return basename.endswith(('.py','.ts','.tsx','.js','.jsx','.json','.css','.html','.md','.txt','.ps1','.sh','.zsh',
+        return basename.endswith(('.py','.ts','.tsx','.js','.cjs','.mjs','.jsx','.json','.css','.html','.md','.txt','.ps1','.sh','.zsh',
                                   '.yml','.yaml','.toml','.service','.timer','.sudoers','.fragment'))
     return False
 
