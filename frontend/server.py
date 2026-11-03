@@ -1,7 +1,11 @@
 """Local-only API and static frontend; run using the project's Python runtime."""
 import argparse
+import faulthandler
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import logging
+import os
+import socket
 import re
 from pathlib import Path
 import sys
@@ -501,6 +505,13 @@ class Handler(BaseHTTPRequestHandler):
 class LocalServer(ThreadingHTTPServer):
     allow_reuse_address = False
 
+    def server_bind(self):
+        if sys.platform=='win32':
+            # Windows requires exclusive binding rather than SO_REUSEADDR:
+            # reuse permits a second live server to hijack the same port.
+            self.socket.setsockopt(socket.SOL_SOCKET,socket.SO_EXCLUSIVEADDRUSE,1)
+        super().server_bind()
+
     def server_close(self):
         if hasattr(self,'sync_worker'):
             self.sync_worker.close()
@@ -549,7 +560,7 @@ def create_server(root=ROOT, port=8765, start_worker=False, *, public=False,
     return server
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=int, default=8765)
     parser.add_argument('--root', type=Path, default=ROOT)
@@ -560,27 +571,49 @@ if __name__ == '__main__':
     parser.add_argument('--auth-config', type=Path, default=Path('/etc/os-tutorial/admins.json'))
     parser.add_argument('--state-dir', type=Path, default=Path('/var/lib/os-tutorial'))
     args = parser.parse_args()
-    if args.public:
-        from website_data import validate, recover
-        from website_sync import sync_lock
-        import json_store
-        if (args.root/json_store.JOURNAL).exists():
-            with sync_lock(args.state_dir):recover(args.root)
-        validate(args.root)
-        server = create_server(args.root,args.port,public=True,base_path=args.base_path,
-            origin=args.origin,auth_config=args.auth_config,state_dir=args.state_dir)
-        from website_sync import SyncWorker
-        server.sync_worker=SyncWorker(server.sync).start()
-    else:
-        workspace.migrate(args.root)
-        from player_identity import migrate as migrate_players
-        migrate_players(args.root)
-        server = create_server(args.root, args.port, start_worker=True)
-    print(f'万象棋工具：http://127.0.0.1:{args.port}', flush=True)
-    if args.open_browser:
-        import webbrowser
-        webbrowser.open(f'http://127.0.0.1:{args.port}')
+    logger=logging.getLogger('local-server')
+    logger.info('starting pid=%s parent_pid=%s root=%s port=%s',os.getpid(),os.getppid(),args.root.resolve(),args.port)
+    server=None;exit_code=0
     try:
+        if args.public:
+            from website_data import validate, recover
+            from website_sync import sync_lock
+            import json_store
+            if (args.root/json_store.JOURNAL).exists():
+                with sync_lock(args.state_dir):recover(args.root)
+            validate(args.root)
+            server = create_server(args.root,args.port,public=True,base_path=args.base_path,
+                origin=args.origin,auth_config=args.auth_config,state_dir=args.state_dir)
+            from website_sync import SyncWorker
+            server.sync_worker=SyncWorker(server.sync).start()
+        else:
+            workspace.migrate(args.root)
+            from player_identity import migrate as migrate_players
+            migrate_players(args.root)
+            server = create_server(args.root, args.port, start_worker=True)
+        print(f'万象棋工具：http://127.0.0.1:{args.port}', flush=True)
+        if args.open_browser:
+            import webbrowser
+            webbrowser.open(f'http://127.0.0.1:{args.port}')
         server.serve_forever()
+    except KeyboardInterrupt:
+        exit_code=130
+        logger.info('keyboard interrupt pid=%s',os.getpid())
+    except Exception:
+        exit_code=1
+        logger.exception('server failed pid=%s',os.getpid())
     finally:
-        server.server_close()
+        if server is not None:
+            try:
+                server.server_close()
+            except Exception:
+                exit_code=1
+                logger.exception('server cleanup failed pid=%s',os.getpid())
+        logger.info('stopped pid=%s exit_code=%s',os.getpid(),exit_code)
+    return exit_code
+
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO,format='%(asctime)s %(name)s %(levelname)s %(message)s')
+    faulthandler.enable()
+    raise SystemExit(main())

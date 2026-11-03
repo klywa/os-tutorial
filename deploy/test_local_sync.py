@@ -108,6 +108,18 @@ class LocalSyncTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,'restart failed'): self.manager().publish()
         self.assertEqual(self.git(self.root,'rev-parse','HEAD'),self.git(self.origin,'rev-parse','master'))
         self.assertIn('safe local',(self.root/'frontend/server.py').read_text())
+
+    def test_publish_and_restart_failures_are_both_reported(self):
+        manager=self.manager();self.service.fail_start=True
+        manager.validate=lambda *args,**kwargs:(_ for _ in ()).throw(ValueError('validation failed'))
+        with self.assertRaisesRegex(RuntimeError,'validation failed.*restart failed'):
+            manager.publish()
+
+    def test_publish_success_is_not_logged_before_failed_restart(self):
+        self.service.fail_start=True
+        with self.assertLogs(level='INFO') as logs:
+            with self.assertRaisesRegex(RuntimeError,'restart failed'):self.manager().publish()
+        self.assertFalse(any('服务按原运行状态恢复' in line for line in logs.output))
     def test_existing_private_local_commit_cannot_be_pushed_by_publish(self):
         (self.root/'secret.txt').write_text('private')
         self.git(self.root,'add','secret.txt'); self.git(self.root,'commit','-m','private local commit')

@@ -3,6 +3,8 @@
 import argparse
 from contextlib import contextmanager
 from datetime import datetime
+from html.parser import HTMLParser
+from http.client import HTTPException
 import json
 import logging
 import os
@@ -11,9 +13,11 @@ import shutil
 import socket
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
+from urllib.parse import urljoin, urlsplit
 import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,12 +51,38 @@ def allowed_local_path(path):
     return False
 
 
+class ForeignService(RuntimeError):
+    """A responding endpoint identifies a different workspace."""
+
+
+class ServiceNotReady(RuntimeError):
+    """The listener has not yet provided a usable status endpoint."""
+
+
+class FrontendAssets(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.assets=[]
+
+    def handle_starttag(self,tag,attributes):
+        attrs=dict(attributes)
+        if tag=='script' and attrs.get('src'):
+            self.assets.append((attrs['src'],'js'))
+        elif tag=='link' and 'stylesheet' in attrs.get('rel','').split() and attrs.get('href'):
+            self.assets.append((attrs['href'],'css'))
+
+
 class LocalService:
     def __init__(self, root, port=8765, *, stop_timeout=600, clock=time.monotonic, sleep=time.sleep):
         self.root, self.port = Path(root).resolve(), port
         self.url = f'http://127.0.0.1:{port}'
         self.stop_timeout, self.clock, self.sleep = stop_timeout, clock, sleep
         self.stopping = False
+        self.start_timeout = 120
+        self.stable_time = 5
+        self.retries = 3
+        self.process = None
+        self.logfile = None
 
     def occupied(self):
         with socket.socket() as connection:
@@ -66,13 +96,39 @@ class LocalService:
         except (urllib.error.URLError, OSError) as exc:
             if not self.occupied():
                 return False
-            raise RuntimeError('端口已有服务但不支持安全停止；请先在原窗口 Ctrl+C，升级一次后重试。不自动杀进程。') from exc
+            raise ServiceNotReady('端口已有服务但不支持安全停止；请先在原窗口 Ctrl+C，升级一次后重试。不自动杀进程。') from exc
         except (ValueError, TypeError) as exc:
-            raise RuntimeError('本地服务身份响应无效，未停止任何服务') from exc
+            raise ForeignService('本地服务身份响应无效，未停止任何服务') from exc
         if (not isinstance(status,dict) or status.get('mode')!='local' or status.get('port')!=self.port or
                 not isinstance(status.get('root'),str) or
                 os.path.normcase(str(Path(status['root']).resolve()))!=os.path.normcase(str(self.root))):
-            raise RuntimeError('端口属于其他项目或公网服务，未停止任何服务')
+            raise ForeignService('端口属于其他项目或公网服务，未停止任何服务')
+        return True
+
+    def healthy(self):
+        if not self.running():
+            return False
+        with urllib.request.urlopen(self.url+'/',timeout=3) as response:
+            if response.status!=200 or 'text/html' not in response.headers.get_content_type():
+                return False
+            page=response.read().decode('utf-8')
+        parser=FrontendAssets();parser.feed(page)
+        local=[]
+        for source,kind in parser.assets:
+            url=urljoin(self.url+'/',source)
+            if urlsplit(url).netloc==urlsplit(self.url).netloc:
+                local.append((url,kind))
+        if not any(kind=='js' for _,kind in local):
+            return False
+        for url,kind in local:
+            with urllib.request.urlopen(url,timeout=3) as response:
+                mime=response.headers.get_content_type()
+                if response.status!=200 or not response.read():
+                    return False
+                if kind=='js' and mime not in {'text/javascript','application/javascript','application/x-javascript'}:
+                    return False
+                if kind=='css' and mime!='text/css':
+                    return False
         return True
 
     def stop(self):
@@ -87,7 +143,7 @@ class LocalService:
     def wait_stopped(self):
         deadline = self.clock() + self.stop_timeout
         next_progress = self.clock()
-        while self.occupied():
+        while self.occupied() or (self.process is not None and self.process.poll() is None):
             now = self.clock()
             if now >= deadline:
                 raise RuntimeError('等待本地服务退出超时；未拉取覆盖文件；原服务仍在安全关闭，不会强制杀进程')
@@ -98,35 +154,84 @@ class LocalService:
         self.stopping = False
         logging.info('本项目本地服务已停止')
 
-    def restart(self):
-        if self.stopping:
-            # A confirmed shutdown can stop accepting HTTP while workers drain.
-            # Wait for that known instance, rather than classifying it as foreign.
-            self.wait_stopped()
-        if self.running():
-            return
+    def launch(self):
         directory=self.root/'raw/local-sync'; directory.mkdir(parents=True,exist_ok=True)
         logfile=directory/('server-'+datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:6]+'.log')
         options={'cwd':self.root,'stdin':subprocess.DEVNULL,'stderr':subprocess.STDOUT,
                  'env':child_environment()}
         if os.name=='nt':
-            options['creationflags']=subprocess.CREATE_NO_WINDOW | subprocess.DETACHED_PROCESS
+            # Detaching the console alone still inherits a kill-on-close job.
+            # Do not silently fall back to a child that dies with its publisher.
+            options['creationflags']=subprocess.DETACHED_PROCESS | subprocess.CREATE_BREAKAWAY_FROM_JOB
         else:
             options['start_new_session']=True
         with logfile.open('ab') as output:
-            process=subprocess.Popen([sys.executable,str(self.root/'frontend/server.py'),
-                '--root',str(self.root),'--port',str(self.port)],stdout=output,**options)
-        for _ in range(100):
-            if process.poll() is not None:
-                raise RuntimeError(f'本地服务重启失败，日志：{logfile}')
+            output.write(f'[launcher] parent_pid={os.getpid()} executable={sys.executable}\n'.encode('utf-8'))
+            output.flush()
             try:
+                process=subprocess.Popen([sys.executable,str(self.root/'frontend/server.py'),
+                    '--root',str(self.root),'--port',str(self.port)],stdout=output,**options)
+            except OSError as exc:
+                raise RuntimeError(f'无法独立启动本地服务：{self.url} 父PID={os.getpid()} 日志：{logfile}；{exc}') from exc
+        self.process=process
+        self.logfile=logfile
+        logging.info('启动本地服务：%s PID=%s 父PID=%s 日志：%s',self.url,process.pid,os.getpid(),logfile)
+        # Reap the process while the publisher lives; the daemon never keeps
+        # the publisher alive and is not a service supervisor.
+        def record_exit():
+            code=process.wait()
+            with logfile.open('ab') as output:
+                output.write(f'[launcher] pid={process.pid} exit_code={code}\n'.encode('utf-8'))
+        threading.Thread(target=record_exit,daemon=True,name='local-service-exit').start()
+        return process,logfile
+
+    def restart(self):
+        if self.stopping:
+            self.wait_stopped()
+        existing=self.running()  # Foreign services must fail before launching.
+        process=self.process if self.process is not None and self.process.poll() is None else None
+        logfile=self.logfile;last_error='服务尚未就绪'
+        for attempt in range(self.retries+1):
+            if not existing and process is None:
+                try:
+                    process,logfile=self.launch()
+                except OSError as exc:
+                    raise RuntimeError(f'无法独立启动本地服务：{self.url} 父PID={os.getpid()}；{exc}') from exc
+            deadline=self.clock()+self.start_timeout
+            stable_since=None
+            while self.clock()<deadline:
+                if process is not None and process.poll() is not None:
+                    last_error=f'PID={process.pid} exit_code={process.returncode}'
+                    logging.error('本地服务启动退出：%s 日志：%s',last_error,logfile)
+                    break
+                try:
+                    ready=self.healthy()
+                except ForeignService:
+                    raise
+                except (ServiceNotReady,OSError,ValueError,HTTPException) as exc:
+                    ready=False;last_error=str(exc)
+                if ready:
+                    if stable_since is None:stable_since=self.clock()
+                    if self.clock()-stable_since>=self.stable_time and self.clock()<deadline:
+                        if process is not None and process.poll() is not None:
+                            continue
+                        logging.info('本地服务和前端已稳定恢复：%s PID=%s 日志：%s',
+                                     self.url,process.pid if process else 'existing',logfile)
+                        return
+                else:
+                    stable_since=None
+                self.sleep(min(.25,max(0,deadline-self.clock())))
+            else:
+                raise RuntimeError(f'等待重启健康检查超时，未重复启动或强制杀进程：{self.url} '
+                                   f'PID={process.pid if process else "existing"} 日志：{logfile}；{last_error}')
+            if attempt<self.retries:
+                # Only a confirmed dead instance is eligible for another launch.
                 if self.running():
-                    logging.info('本地服务已隐藏重启：%s（日志：%s）',self.url,logfile)
-                    return
-            except RuntimeError:
-                pass  # Port can accept before the HTTP status endpoint is ready.
-            time.sleep(0.2)
-        raise RuntimeError(f'等待重启健康检查超时，未强制杀进程；请检查日志：{logfile}')
+                    existing=True;process=None
+                else:
+                    existing=False;process=None
+                self.sleep(.25)
+        raise RuntimeError(f'本地服务重启失败（已重试 {self.retries} 次）：{self.url} {last_error} 日志：{logfile}')
 
 
 class LocalSync:
@@ -206,14 +311,23 @@ class LocalSync:
     @contextmanager
     def stopped_service(self):
         was_running=self.service.running()
+        original=None
         try:
             if was_running:
                 self.service.stop()
             # Do not hold the sync lock while waiting for server shutdown/restart.
             yield
+        except BaseException as exc:
+            original=exc
+            raise
         finally:
             if was_running:
-                self.service.restart()
+                try:
+                    self.service.restart()
+                except Exception as recovery:
+                    if original is not None:
+                        raise RuntimeError(f'同步失败：{original}；服务恢复也失败：{recovery}') from original
+                    raise
 
     def candidate(self):
         path=self.root/'raw/local-sync/candidates'/uuid.uuid4().hex
@@ -285,8 +399,9 @@ class LocalSync:
                 self.git('fetch',str(candidate),'master')
                 self.activate(candidate,target,runtime)
                 self.git('push','origin',f'{target}:refs/heads/master')
-                logging.info('本地代码和正式笔记已上传 master；服务按原运行状态恢复')
-                return {'state':'published','head':target,'candidate':str(candidate)}
+                logging.info('Git 发布完成：master=%s；接下来确认本地服务恢复',target)
+        logging.info('本地代码和正式笔记已上传 master；服务按原运行状态恢复')
+        return {'state':'published','head':target,'candidate':str(candidate)}
 
     def pull(self):
         self.assert_branch()
@@ -313,8 +428,9 @@ class LocalSync:
                 runtime=self.build([path for path in changes if path],candidate) or []
                 self.validate(candidate)
                 self.activate(candidate,remote,runtime)
-                logging.info('已快进更新本地代码和笔记；服务按原运行状态恢复')
-                return {'state':'updated','head':remote}
+                logging.info('Git 快进完成：master=%s；接下来确认本地服务恢复',remote)
+        logging.info('已快进更新本地代码和笔记；服务按原运行状态恢复')
+        return {'state':'updated','head':remote}
 
 
 def main():
