@@ -293,8 +293,8 @@ class SyncManager:
             if paths:
                 # --only ensures unrelated staged changes cannot enter this commit.
                 self._phase('committing')
-                git(self.root, 'add', '--', *paths)
-                git(self.root, 'commit', '--only', '-m', 'website: save knowledge edits', '--', *paths)
+                from git_paths import commit_selected
+                commit_selected(self.root,paths,'website: save knowledge edits',lambda *args:git(self.root,*args))
         except SyncCancelled:
             return self._state('pending',phase='queued')
         except Exception as exc:
@@ -362,8 +362,8 @@ class SyncManager:
                     self._phase('validating');self._validate(self.root)
                     paths=[p for p in self._changed() if allowed_path(p)]
                     if paths:
-                        git(self.root,'add','--all','--',*paths)
-                        git(self.root,'commit','--only','-m','website: save knowledge edits','--',*paths)
+                        from git_paths import commit_selected
+                        commit_selected(self.root,paths,'website: save knowledge edits',lambda *args:git(self.root,*args))
                     local_head=self._head()
                     self._phase('fetching')
                 upstream=git(self.root,'remote','get-url','origin').stdout.strip()

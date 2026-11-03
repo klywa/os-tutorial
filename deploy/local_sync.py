@@ -385,8 +385,8 @@ class LocalSync:
                 self.validate(self.root,export=True)
                 paths=[path for path in self.changed() if allowed_local_path(path)]
                 if paths:
-                    self.git('add','--all','--',*paths)
-                    self.git('commit','--only','-m','local: publish code and formal notes','--',*paths)
+                    from git_paths import commit_selected
+                    commit_selected(self.root,paths,'local: publish code and formal notes',self.git)
                 candidate=self.candidate()
                 self.git('fetch','origin','master',root=candidate)
                 remote_head=self.git('rev-parse','FETCH_HEAD',root=candidate)
