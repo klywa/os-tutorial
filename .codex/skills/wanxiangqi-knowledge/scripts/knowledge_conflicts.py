@@ -51,6 +51,35 @@ def _requests(root,nid=None):
   if nid is None or value['note_id']==nid:closed.update(value['request_ids'])
  return sorted((key,v) for key,v in rows if key not in closed)
 
+def _at(record,path):
+ if path=='record':return deepcopy(record)
+ value=record
+ try:
+  for part in path.split('/'):
+   if isinstance(value,list):
+    if part=='order':return [n['id'] for n in value]
+    value=next(n for n in value if n['id']==part)
+   else:value=value[part]
+  return deepcopy(value)
+ except (KeyError,TypeError,StopIteration):return None
+
+def _group_paths(nid,current,variants,conflicts):
+ paths=sorted({c['path'] for c in conflicts},key=lambda path:(path!='record',len(path.split('/')),path))
+ minimal=[]
+ for path in paths:
+  if not any(parent=='record' or path.startswith(parent+'/') for parent in minimal):minimal.append(path)
+ grouped=[]
+ for path in minimal:
+  originals=[c for c in conflicts if c['path']==path];first=originals[0]
+  selected=_at(current,path);options=[]
+  for vid,record in variants.items():
+   candidate=_at(record,path)
+   if candidate!=selected and not any(v['value']==candidate for v in options):options.append({'variant_id':vid,'value':candidate})
+  if not options:continue
+  grouped.append({'id':store.digest([nid,path])[:24],'path':path,'reason':first['reason'],'base':first['base'],
+    'left':selected,'right':options[0]['value'],'variant_id':options[0]['variant_id'],'variants':options})
+ return grouped
+
 def _detail(root,nid):
  rows=_requests(root,nid)
  if not rows:return None
@@ -68,6 +97,7 @@ def _detail(root,nid):
    vid=store.digest(incoming);m=merge_record(req['base'],merged,incoming,preferred='left');merged=m['record']
    for c in m['conflicts']:
     c.update(variant_id=vid,request_id=rid);c['id']=store.digest([rid,vid,c['id']])[:24];conflicts.append(c)
+ conflicts=_group_paths(nid,current,variants,conflicts)
  return {'note_id':nid,'revision':store.digest([rows,current]),'note_revision':current['metadata'].get('revision') if current else None,'request_ids':[k for k,_ in rows],'current':current,'variants':variants,'conflicts':conflicts,'merged':merged,'requests':rows}
 
 def _text(value):
@@ -83,7 +113,7 @@ def get_group(root,note_id):
  return {**{k:d[k] for k in ('note_id','revision','note_revision','request_ids')},
   'current':{'variant_id':store.digest(d['current']),'body':deepcopy(d['current']['body']) if d['current'] else None},
   'variants':[{'variant_id':k,'body':deepcopy(v['body']) if v else None} for k,v in d['variants'].items()],
-  'conflicts':[{'id':c['id'],'path':c['path'],'reason':c['reason'],'base':_text(c['base']),'current':_text(c['left']),'incoming':_text(c['right']),'variant_id':c['variant_id']} for c in d['conflicts']]}
+  'conflicts':[{'id':c['id'],'path':c['path'],'reason':c['reason'],'base':_text(c['base']),'current':_text(c['left']),'incoming':_text(c['right']),'variant_id':c['variant_id'],'variants':[{'variant_id':v['variant_id'],'value':_text(v['value'])} for v in c['variants']]} for c in d['conflicts']]}
 
 def list_groups(root):return [get_group(root,n) for n in sorted({v['note_id'] for _,v in _requests(root)})]
 def is_blocked(root,note_id):return bool(_requests(root,note_id))
@@ -110,15 +140,21 @@ def resolve(root,note_id,payload,actor='admin'):
  with store_lock(root,wait=True):
   store.recover(root);d=_detail(root,note_id)
   if not d or payload.get('revision')!=d['revision'] or payload.get('note_revision')!=d['note_revision']:raise Conflict('冲突集合或当前笔记已变化，请重新读取')
-  choices={c['conflict_id']:c for c in payload.get('choices',[])};record=d['merged'];manual=[]
+  submitted=payload.get('choices',[])
+  choices={c['conflict_id']:c for c in submitted}
+  if len(choices)!=len(submitted) or set(choices)!={c['id'] for c in d['conflicts']}:raise ValueError('每处冲突必须且只能选择一次')
+  record=d['merged'];manual=[]
   for c in d['conflicts']:
    choice=choices.get(c['id'])
    if not choice:raise ValueError('缺少冲突选择：'+c['id'])
    action=choice['action']
    if action=='current':selected=c['left']
    elif action=='incoming':
-    if choice.get('variant_id',c['variant_id'])!=c['variant_id']:raise ValueError('候选版本不匹配')
-    selected=c['right']
+    vid=choice.get('variant_id')
+    if vid is None and len(c['variants'])==1:vid=c['variants'][0]['variant_id']
+    option=next((v for v in c['variants'] if v['variant_id']==vid),None)
+    if option is None:raise ValueError('请明确选择候选版本')
+    selected=option['value']
    elif action=='manual':
     parts=c['path'].split('/')
     if not isinstance(choice.get('text'),str) or parts[0]!='body' or parts[1] not in ('nodes','supporting_nodes'):raise ValueError('只能手工修改正文文本')

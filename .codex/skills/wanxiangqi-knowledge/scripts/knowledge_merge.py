@@ -105,5 +105,6 @@ def merge_record(base,left,right,preferred='right'):
  if any(r['metadata'].get('manual_semantics') for r in (base,left,right)):meta['manual_semantics']=True
  try:store.check_record(result)
  except ValueError as exc:
+  conflicts.clear()
   result=conflict('record',base,left,right,'关联知识需要与正文一起选择：'+str(exc))
  return {'record':result,'conflicts':conflicts}

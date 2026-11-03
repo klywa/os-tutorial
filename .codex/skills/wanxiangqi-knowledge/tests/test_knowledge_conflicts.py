@@ -46,9 +46,38 @@ class BranchHistoryTests(unittest.TestCase):
     src['metadata']['history']=[{'origin':label,'old_evidence':label}]
     for e in history.extract(src):history.immutable(root,e['path'],e['value'])
     src['body']['nodes'][1]['value']=label
-   write_request(root,create_request(b,l,r));g=get_group(root,'n');resolve(root,'n',{'revision':g['revision'],'note_revision':g['note_revision'],'choices':[{'conflict_id':c['id'],'action':'incoming'} for c in g['conflicts']]})
+   write_request(root,create_request(b,l,r));g=get_group(root,'n');resolve(root,'n',{'revision':g['revision'],'note_revision':g['note_revision'],'choices':[{'conflict_id':c['id'],'action':'incoming','variant_id':c['variant_id']} for c in g['conflicts']]})
    versions=history.version_entries(root,'n');labels=set()
    for version in versions:
     for row in history.history_entries(root,version['record']):
      if row.get('origin') in ('L','R'):labels.add(row['origin'])
    self.assertEqual(labels,{'L','R'});self.assertNotIn('history_parents',store.load_record(root,'n')['metadata'])
+
+class SingleDecisionTests(unittest.TestCase):
+ def test_many_requests_same_path_has_one_manual_decision(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);b=record();l=deepcopy(b);l['body']['nodes'][1]['value']='L';store.save(root,[l])
+   for text in ('R','T'):
+    r=deepcopy(b);r['body']['nodes'][1]['value']=text;write_request(root,create_request(b,l,r))
+   g=get_group(root,'n');self.assertEqual(len(g['conflicts']),1);c=g['conflicts'][0];self.assertEqual(len(c['variants']),2)
+   resolve(root,'n',{'revision':g['revision'],'note_revision':g['note_revision'],'choices':[{'conflict_id':c['id'],'action':'manual','text':'MY MERGE'}]})
+   self.assertEqual(store.load_record(root,'n')['body']['nodes'][1]['value'],'MY MERGE');self.assertFalse(is_blocked(root,'n'))
+ def test_record_conflict_excludes_leaf_decisions(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);b=record();l=deepcopy(b);r=deepcopy(b);l['body']['nodes'].pop(2);l['body']['nodes'][1]['value']='L';r['body']['nodes'][1]['value']='R';r['body']['semantics']={'general':[{'$text':'b'}]};store.save(root,[l]);write_request(root,create_request(b,l,r));g=get_group(root,'n')
+   self.assertEqual([c['path'] for c in g['conflicts']],['record'])
+
+class DecisionValidationTests(unittest.TestCase):
+ def test_ambiguous_or_duplicate_choices_preserve_requests(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);b=record();l=deepcopy(b);l['body']['nodes'][1]['value']='L';store.save(root,[l])
+   for text in ('R','T'):
+    r=deepcopy(b);r['body']['nodes'][1]['value']=text;write_request(root,create_request(b,l,r))
+   g=get_group(root,'n');c=g['conflicts'][0];payload={'revision':g['revision'],'note_revision':g['note_revision'],'choices':[{'conflict_id':c['id'],'action':'incoming'}]}
+   with self.assertRaises(ValueError):resolve(root,'n',payload)
+   self.assertTrue(is_blocked(root,'n'));self.assertEqual(store.load_record(root,'n')['body']['nodes'][1]['value'],'L')
+   payload['choices']=[{'conflict_id':c['id'],'action':'manual','text':'MY MERGE'},{'conflict_id':c['id'],'action':'current'}]
+   with self.assertRaises(ValueError):resolve(root,'n',payload)
+   self.assertTrue(is_blocked(root,'n'))
+   target=next(v for v in c['variants'] if v['value']=='T');payload['choices']=[{'conflict_id':c['id'],'action':'incoming','variant_id':target['variant_id']}];resolve(root,'n',payload)
+   self.assertEqual(store.load_record(root,'n')['body']['nodes'][1]['value'],'T');self.assertFalse(is_blocked(root,'n'))
