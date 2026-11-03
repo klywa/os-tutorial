@@ -101,6 +101,10 @@ def handler_class(base):
                     if not self.actor():return self.response(401,{'error':'请先登录'})
                     from site_access import get_proposals
                     return self.response(200,get_proposals(self.server,self.actor(),self.path))
+                if path=='/api/sync-conflicts' or re.fullmatch(r'/api/sync-conflicts/[^/]+',path):
+                    if not self.actor():return self.response(401,{'error':'请先登录管理员'})
+                    from site_access import get_sync_conflicts
+                    return self.response(200,get_sync_conflicts(self.server,self.actor(),None if path=='/api/sync-conflicts' else path.rsplit('/',1)[-1]))
                 if path=='/api/admin/sync':
                     if not self.actor():return self.response(401,{'error':'请先登录管理员'})
                     from site_access import sync_status
@@ -169,6 +173,7 @@ def handler_class(base):
                 return self.file(target)
             except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})
             except (workspace.Conflict,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
+            except PermissionError as exc:self.response(403,{'error':str(exc)})
             except KeyError:self.response(404,{'error':'页面或接口不存在'})
             except (ValueError,TypeError) as exc:self.response(400,{'error':str(exc)})
             except OSError:self.response(503,{'error':'网站资料暂时不可用'})
@@ -193,10 +198,11 @@ def handler_class(base):
                 noteedit=(path=='/api/notes' and self.command=='POST') or (re.fullmatch(r'/api/notes/[^/]+',path) and self.command=='PUT')
                 matching=path=='/api/dashboard/usage/matches' and self.command=='PUT'
                 retry=path=='/api/admin/sync/retry' and self.command=='POST'
+                resolving=bool(re.fullmatch(r'/api/sync-conflicts/[^/]+/resolve',path)) and self.command=='POST'
                 proposal=is_proposal_path(path)
                 lockpath=path.startswith('/api/edit-locks/') and self.command=='POST'
                 entries=bool(re.fullmatch(r'/api/notes/[^/]+/entries',path)) and self.command=='PUT'
-                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries):
+                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving):
                     self.discard_small_body()
                     raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
@@ -226,6 +232,9 @@ def handler_class(base):
                 if proposal:
                     return self.response(200,mutate_proposal(self.server,self.actor(),path,self.command,data,public=True))
                 if self.actor()['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
+                if resolving:
+                    from site_access import resolve_sync_conflict
+                    return self.response(200,resolve_sync_conflict(self.server,self.actor(),path.split('/')[-2],data,public=True))
                 from site_access import enqueue_sync,formal_save
                 if retry:
                     with sync_lock(self.server.state_dir):value=enqueue_sync(self.server,force=True)
@@ -238,7 +247,8 @@ def handler_class(base):
                         proposal_store(self.server).recover()
                         previous=proposal_store(self.server).saved_changes(self.actor(),data)
                         if previous is not None:return self.response(200,sanitize({**previous,'sync':sync_status(self.server)}))
-                    if self.server.sync.status(light=True).get('state')!='synced':raise SyncBlocked('修改正在等待同步或发布，请稍后重试')
+                    from site_access import assert_formal_write
+                    assert_formal_write(self.server,path.split('/')[3] if entries or (noteedit and path!='/api/notes') else None,public=True)
                     if matching:
                         import usage_matches
                         value=usage_matches.save(self.server.root,data)

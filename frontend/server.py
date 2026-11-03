@@ -79,6 +79,13 @@ class Handler(BaseHTTPRequestHandler):
         identity=actor(self.server,self.headers.get('Cookie'))
         if path == '/api/auth/me':
             return self.response(200, session(self.server,self.headers.get('Cookie')))
+        if path=='/api/sync-conflicts' or re.fullmatch(r'/api/sync-conflicts/[^/]+',path):
+            try:
+                from site_access import get_sync_conflicts
+                return self.response(200,get_sync_conflicts(self.server,identity,None if path=='/api/sync-conflicts' else path.rsplit('/',1)[-1]))
+            except PermissionError as exc:return self.response(403,{'error':str(exc)})
+            except KeyError as exc:return self.response(404,{'error':str(exc)})
+            except (ValueError,TypeError) as exc:return self.response(400,{'error':str(exc)})
         if path=='/api/local-service/status':
             if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
             return self.response(200,{'mode':'local','root':str(Path(self.server.root).resolve()),'port':self.server.server_port})
@@ -298,6 +305,9 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_response(200);self.send_header('Content-Type','application/json; charset=utf-8')
                 self.send_header('Set-Cookie',cookie);self.send_header('Cache-Control','no-store')
                 self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body);return
+            if re.fullmatch(r'/api/sync-conflicts/[^/]+/resolve',path) and self.command=='POST':
+                from site_access import resolve_sync_conflict
+                return self.response(200,resolve_sync_conflict(self.server,identity,path.split('/')[-2],payload(self)))
             if path.startswith('/api/edit-locks/') and self.command=='POST':
                 from site_access import mutate_locks
                 return self.response(200,mutate_locks(self.server,identity,path,payload(self)))
@@ -309,9 +319,13 @@ class Handler(BaseHTTPRequestHandler):
                 data=payload(self)
                 if data.get('note_id')!=path.split('/')[-2]:raise ValueError('笔记标识不一致')
                 with sync_lock(state_dir(self.server)):
+                    from site_access import assert_formal_write
+                    assert_formal_write(self.server,data['note_id'])
                     return self.response(200,proposal_store(self.server).apply_changes(identity,data))
             if path=='/api/notes' or path.startswith('/api/notes/'):
                 with sync_lock(state_dir(self.server)):
+                    from site_access import assert_formal_write
+                    if path!='/api/notes':assert_formal_write(self.server,path.split('/')[3])
                     return self._mutate_local()
             return self._mutate_local()
         except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})

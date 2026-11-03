@@ -22,7 +22,7 @@ def session(server,cookie,public=False):
     identity=actor(server,cookie)
     result={'mode':'public' if public else 'local','base_path':getattr(server,'base_path',''),
             **(identity or {'username':None,'role':'guest','account_role':'guest','allowed_roles':[]})}
-    if public and identity:
+    if identity and (public or identity['role']=='admin'):
         try:result['sync']=sync_status(server)
         except (RuntimeError,OSError,ValueError):result['sync']={'state':'conflict','message':'Git同步暂时不可用，正式编辑已暂停'}
     return result
@@ -71,16 +71,61 @@ def get_proposals(server,identity,request_url):
     return proposal_store(server).list(identity,**{key:query.get(key,[None])[0] for key in ('note_id','status','author')})
 
 
+SYNC_FIELDS=('state','phase','message','job_id','updated_at','next_retry_at','attempts','conflict_note_ids','conflict_count')
+
+
 def sync_status(server):
+    if not hasattr(server,'sync'):
+        import knowledge_conflicts
+        ids=[g['note_id'] for g in knowledge_conflicts.list_groups(server.root)]
+        return {'state':'synced','conflict_note_ids':ids,'conflict_count':len(ids)}
     value=server.sync.status(light=True)
-    return {key:value[key] for key in ('state','phase','message','job_id','updated_at','next_retry_at','attempts') if key in value}
+    return {key:value[key] for key in SYNC_FIELDS if key in value}
+
+
+def assert_formal_write(server,note_id=None,public=False):
+    # Pending commits/deployments are durable work, not a global editing ban.
+    if public and server.sync.status(light=True).get('state')=='conflict':
+        raise SyncBlocked('Git同步冲突尚未解决，请稍后重试')
+    if note_id:
+        import knowledge_conflicts
+        from edit_locks import EditLocked
+        if knowledge_conflicts.is_blocked(server.root,note_id):
+            raise EditLocked('此笔记存在同步冲突，请先确认合并方案',reason='sync_conflict',resource={'note_id':note_id})
+
+
+def get_sync_conflicts(server,identity,note_id=None):
+    require_identity(identity)
+    if identity['role']!='admin':raise PermissionError('只有管理员可以查看同步冲突')
+    import knowledge_conflicts
+    def titled(group):
+        bodies=[group['current']['body'],*[v['body'] for v in group['variants']]]
+        title=next((n.get('title') for b in bodies if b for n in b.get('nodes',[]) if n.get('type')=='heading' and n.get('level')==1),group['note_id'])
+        return {**group,'title':title}
+    if note_id is None:return [titled(g) for g in knowledge_conflicts.list_groups(server.root)]
+    group=knowledge_conflicts.get_group(server.root,note_id)
+    if group is None:raise KeyError('同步冲突不存在')
+    return titled(group)
+
+
+def resolve_sync_conflict(server,identity,note_id,data,public=False):
+    require_identity(identity)
+    if identity['role']!='admin':raise PermissionError('只有管理员可以解决同步冲突')
+    import knowledge_conflicts
+    with sync_lock(state_dir(server)),formal_save(server) if public else nullcontext():
+        if public:getattr(server.sync,'_assert_active',lambda:None)()
+        # The resolver owns store_lock and its atomic note/history/event journal.
+        value=knowledge_conflicts.resolve(server.root,note_id,data)
+        result={'note':value}
+        if public:result['sync']=enqueue_sync(server)
+        return result
 
 
 def enqueue_sync(server,force=False):
     worker=getattr(server,'sync_worker',None)
     try:
         value=server.sync.enqueue(force=True) if force else server.sync.enqueue()
-        return {key:value[key] for key in ('state','phase','message','job_id','updated_at','next_retry_at','attempts') if key in value}
+        return {key:value[key] for key in SYNC_FIELDS if key in value}
     except OSError:
         if worker:worker.initialized=False
         raise
@@ -117,8 +162,7 @@ def mutate_proposal(server,identity,path,command,data,public=False):
             existing=service.get(identity,match[1])
             if existing['status']=='approved':
                 return {**existing,**({'sync':sync_status(server)} if public else {})}
-            if public and server.sync.status(light=True).get('state')!='synced':
-                raise SyncBlocked('正式修改等待同步或发布，请稍后确认；仍可暂存提案')
+            assert_formal_write(server,existing['note_id'],public=public)
             result=service.action(identity,match[1],'approve',data)
             if public:result={**result,'sync':enqueue_sync(server)}
             return result

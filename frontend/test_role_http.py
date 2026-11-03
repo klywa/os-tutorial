@@ -169,7 +169,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
             release.wait(8)
             return manager._state('synced')
         worker=SyncWorker(manager);worker.initialized=True;self.http.sync_worker=worker
-        with patch.object(manager,'retry',side_effect=blocked):
+        with patch.object(manager,'retry_canonical',side_effect=blocked):
             worker.start()
             try:
                 self.login()
@@ -184,7 +184,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
                 self.assertEqual(self.call(path,'POST',{'revision':1})[0],200)
                 self.assertEqual(self.call('/os-tutorial/api/notes/catalog')[0],200)
                 self.assertEqual(self.call('/os-tutorial/api/notes/async-note','PUT',
-                    {'revision':record['metadata']['revision'],'document':record['body']})[0],423)
+                    {'revision':record['metadata']['revision'],'document':record['body']})[0],409)
                 code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test1','password':'aa2025'})
                 self.cookie=headers['Set-Cookie'].split(';')[0]
                 note=json_store.resolve_note(self.root,'async-note')

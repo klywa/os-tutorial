@@ -141,7 +141,7 @@ class PublicHttpTests(unittest.TestCase):
         self.assertEqual(code,200,result)
         self.assertIn('保留人工内容',json.dumps(json_store.resolve_note(self.root,'n'),ensure_ascii=False))
         self.assertEqual(self.call('/os-tutorial/api/auth/me')[1]['sync']['state'],'pending')
-        self.assertEqual(self.call('/os-tutorial/api/notes/n','PUT',{'revision':result['revision'],'document':body})[0],423)
+        self.assertEqual(self.call('/os-tutorial/api/notes/n','PUT',{'revision':result['revision'],'document':body})[0],200)
 
     def test_reading_does_not_start_background_projection_threads(self):
         with patch('reader_store.schedule_rebuild',side_effect=AssertionError('public read spawned worker')):
