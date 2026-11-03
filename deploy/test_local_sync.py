@@ -349,6 +349,13 @@ class LocalSyncTests(unittest.TestCase):
             pass
 
 class LocalPathTests(unittest.TestCase):
+    def test_only_the_deployment_workflow_is_publishable(self):
+        self.assertTrue(sync.allowed_local_path('.github/workflows/deploy-os-tutorial.yml'))
+        for path in ('.github/workflows/other.yml', '.github/private.key',
+                     '.github/workflows/raw/deploy-os-tutorial.yml'):
+            with self.subTest(path=path):
+                self.assertFalse(sync.allowed_local_path(path))
+
     def test_javascript_module_formats_in_existing_code_directories(self):
         for directory in ('frontend', 'deploy', 'docs', '.codex/skills/wanxiangqi-knowledge/scripts'):
             for extension in ('.js', '.cjs', '.mjs'):

@@ -60,6 +60,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1
 
 万象棋服务器已启用 `os-tutorial-update.timer`，每五分钟检查 Git 更新；有新提交时通过现有发布器构建、校验并切换版本，没有新提交则跳过构建。若要立即更新，仍可执行 `update-sites --os-tutorial`。
 
+`master` 推送也会触发 GitHub Actions 的 `Deploy Wanxiangqi` 工作流，立即调用同一更新器；五分钟定时检查保留作兜底。工作流使用专用受限 SSH 密钥，只接受部署提交的命令，不能执行任意服务器命令；部署串行执行，完成后核对目标提交已包含在运行版本中。工作流配置为 `.github/workflows/deploy-os-tutorial.yml`，仓库 Secrets 为 `OS_TUTORIAL_DEPLOY_KEY` 和 `OS_TUTORIAL_KNOWN_HOSTS`；私钥不放进 Git。查看仓库 Actions 页面可确认本次部署结果。
+
 让 Codex 帮忙更新本项目时，默认执行本地 `publish-local.ps1`，成功后通过本机 `C:\Users\klywa\.ssh\id_ed25519` 连接 `root@klywa.xyz`，运行 `update-sites --os-tutorial`，最后核对服务器版本、服务状态和公网访问。密钥已配置，保留原有密钥和密码登录；不上传私钥，不默认更新 Pokilot。任一步失败先保留日志并查明状态，不重复强推或强制重启。
 
 代码目录的 JavaScript 文件支持 `.js`、`.cjs` 和 `.mjs`。若提示“待上传提交含白名单外文件”，检查列出的路径并修复原因，再重跑同一条发布命令。检查范围包括尚未推送的提交历史，工作区干净或后来删除文件不会跳过历史检查；私有资料和凭据仍禁止上传。

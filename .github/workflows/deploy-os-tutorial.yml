@@ -1,0 +1,40 @@
+name: Deploy Wanxiangqi
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: os-tutorial-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: Update and verify the production server
+        shell: bash
+        env:
+          DEPLOY_KEY: ${{ secrets.OS_TUTORIAL_DEPLOY_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.OS_TUTORIAL_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          test -n "$DEPLOY_KEY"
+          test -n "$DEPLOY_KNOWN_HOSTS"
+          umask 077
+          ssh_directory=$(mktemp -d)
+          trap 'rm -rf "$ssh_directory"' EXIT
+          printf '%s\n' "$DEPLOY_KEY" > "$ssh_directory/key"
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > "$ssh_directory/known_hosts"
+          ssh -i "$ssh_directory/key" \
+            -o IdentitiesOnly=yes -o BatchMode=yes \
+            -o StrictHostKeyChecking=yes \
+            -o UserKnownHostsFile="$ssh_directory/known_hosts" \
+            -o ConnectTimeout=20 -o ServerAliveInterval=15 -o ServerAliveCountMax=3 \
+            root@klywa.xyz "deploy $GITHUB_SHA"
+          curl --fail --silent --show-error --retry 3 --max-time 30 \
+            https://klywa.xyz/os-tutorial/ -o /dev/null

@@ -41,6 +41,8 @@ def allowed_local_path(path):
         return False
     if path in {'.gitignore','.gitattributes','README.md','start.ps1','start.zsh','publish-local.ps1','pull-local.ps1'}:
         return True
+    if path == '.github/workflows/deploy-os-tutorial.yml':
+        return True
     if parts[0] == 'knowledge':
         return path == 'knowledge/index.meta.json' or (len(parts)==3 and parts[1] in {'players','lineups','other'} and basename.endswith('.json'))
     if parts[0] == 'website-data':
