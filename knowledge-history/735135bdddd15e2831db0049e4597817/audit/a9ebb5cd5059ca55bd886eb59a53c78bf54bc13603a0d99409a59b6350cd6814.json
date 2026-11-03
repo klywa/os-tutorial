@@ -1,0 +1,2821 @@
+{
+  "note_id": "heluo-huamulan--zhuang",
+  "previous": "knowledge-history/735135bdddd15e2831db0049e4597817/audit/8d3159a580d3811a235ca8d5ff9baa50f9f4d79c082ec4eb6e9552b22b27e50f.json",
+  "history_index": 26,
+  "entry": {
+    "at": "2026-10-21T01:49:11.453700+00:00",
+    "origin": "editorial",
+    "reason": "删除与资料缺口冲突的觉醒购买依据",
+    "previous": {
+      "claims": [
+        {
+          "id": "v4-equipment-641010",
+          "section": "推荐装备",
+          "text": "**凝渊：** 唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。 来源：把基础装备速击之枪穿戴给英雄后铸造获得。给花木兰叠暴击并在达到100%暴击率后追击远程敌人；没有达到触发条件时不能当成常驻加速。面对治疗护盾可比较制裁之剑，已有提供60%移速、免疫减速且将50%伤害转为真实伤害的破妄之刃时再重新比较是否需要保留凝渊。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 750.39,
+              "end": 776.79
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 777.3,
+              "end": 806.76
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 671.37,
+              "end": 700.47
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "crit-basic",
+              "artifact-choice"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:641010",
+                "name": "凝渊",
+                "category": "equipment",
+                "aliases": [],
+                "effect": "唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+                "faction": {
+                  "id": "faction:none",
+                  "name": "无阵营",
+                  "official_id": 307
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "装备分类": "普通装备",
+                  "装备类型": "通用装备",
+                  "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                },
+                "raw_attributes": {
+                  "atlasSubType": 4,
+                  "atlasSubTypeName": "普通装备",
+                  "equipTypeID": 3,
+                  "equipTypeName": "通用装备"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/equipment/凝渊－card-641010.md"
+              },
+              {
+                "id": "card:641010",
+                "category": "equipment",
+                "name": "凝渊",
+                "aliases": [],
+                "description": "唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+                "properties": {
+                  "id": 641010,
+                  "name": "凝渊",
+                  "type": 5,
+                  "quality": 2,
+                  "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/b4b0f182c3ae500badb1a230736d9d4b.png",
+                  "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/b4b0f182c3ae500badb1a230736d9d4b.png",
+                  "desc": "<color=#ffffff><b>唯一</b></color>。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+                  "jumpID": 0,
+                  "jumpType": 0,
+                  "previewCardIDs": [],
+                  "previewCards": [],
+                  "relationID": 307,
+                  "relationName": "无阵营",
+                  "heroCard": null,
+                  "effectCard": null,
+                  "equipCard": {
+                    "atlasSubType": 4,
+                    "atlasSubTypeName": "普通装备",
+                    "equipTypeID": 3,
+                    "equipTypeName": "通用装备"
+                  },
+                  "talentCard": null,
+                  "sourceCards": [
+                    {
+                      "id": 643300,
+                      "name": "速击之枪",
+                      "type": 5,
+                      "quality": 1,
+                      "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/165fa497920da5cdd49d84813dac3d02.png",
+                      "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/165fa497920da5cdd49d84813dac3d02.png",
+                      "desc": "穿戴给英雄，可以铸造成1件输出型普通装备。",
+                      "jumpID": 0,
+                      "jumpType": 0,
+                      "previewCardIDs": [
+                        641010,
+                        643301,
+                        643302,
+                        641015
+                      ],
+                      "previewCards": [],
+                      "relationID": 307,
+                      "relationName": "无阵营",
+                      "heroCard": null,
+                      "effectCard": null,
+                      "equipCard": {
+                        "atlasSubType": 16,
+                        "atlasSubTypeName": "基础装备",
+                        "equipTypeID": 1,
+                        "equipTypeName": "物理装备"
+                      },
+                      "talentCard": null,
+                      "sourceCards": [],
+                      "effectTypeDesc": "",
+                      "imageBg": "",
+                      "faceType": 2,
+                      "shopBuyCost": {
+                        "Type": 1,
+                        "Count": 1
+                      },
+                      "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/abc84701dfbb26ba142ffeefbdf157a7.png",
+                      "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                      "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/1c270e71f5c1331576a711221fb725c1755d2fc9ce66ca735ce16cf93784b8a4.png",
+                      "isShowGuideBook": false,
+                      "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/8089935a276cf1016ac196b1b56d5240.png",
+                      "talentStageType": 0,
+                      "talentStageDesc": ""
+                    }
+                  ],
+                  "effectTypeDesc": "",
+                  "imageBg": "",
+                  "faceType": 2,
+                  "shopBuyCost": {
+                    "Type": 1,
+                    "Count": 1
+                  },
+                  "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+                  "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                  "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/626f81778258800e4cec8955b6599cc186f0957243bc184739dae6c1433eb28b.png",
+                  "isShowGuideBook": false,
+                  "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+                  "talentStageType": 0,
+                  "talentStageDesc": ""
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "version": null,
+                "status": "official",
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-equipment-641010",
+                "section": "推荐装备",
+                "text": "**凝渊：** 唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。 来源：把基础装备速击之枪穿戴给英雄后铸造获得。给花木兰叠暴击并在达到100%暴击率后追击远程敌人；没有达到触发条件时不能当成常驻加速。面对治疗护盾可比较制裁之剑，已有破妄之刃时再重新比较是否需要保留凝渊。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1oQJ66tESA:p1",
+                    "start": 750.39,
+                    "end": 776.79
+                  },
+                  {
+                    "source": "BV1oQJ66tESA:p1",
+                    "start": 777.3,
+                    "end": 806.76
+                  },
+                  {
+                    "source": "BV1vTeS6nE9c:p1",
+                    "start": 671.37,
+                    "end": 700.47
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "crit-basic",
+                    "artifact-choice"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:641010",
+                      "name": "凝渊",
+                      "category": "equipment",
+                      "aliases": [],
+                      "effect": "唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+                      "faction": {
+                        "id": "faction:none",
+                        "name": "无阵营",
+                        "official_id": 307
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "装备分类": "普通装备",
+                        "装备类型": "通用装备",
+                        "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                      },
+                      "raw_attributes": {
+                        "atlasSubType": 4,
+                        "atlasSubTypeName": "普通装备",
+                        "equipTypeID": 3,
+                        "equipTypeName": "通用装备"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/equipment/凝渊－card-641010.md"
+                    },
+                    {
+                      "id": "card:641010",
+                      "category": "equipment",
+                      "name": "凝渊",
+                      "aliases": [],
+                      "description": "唯一。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+                      "properties": {
+                        "id": 641010,
+                        "name": "凝渊",
+                        "type": 5,
+                        "quality": 2,
+                        "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/b4b0f182c3ae500badb1a230736d9d4b.png",
+                        "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/b4b0f182c3ae500badb1a230736d9d4b.png",
+                        "desc": "<color=#ffffff><b>唯一</b></color>。暴击率+20%。每次受击时提升1%暴击率，暴击率达到100%时提升100%移动速度。",
+                        "jumpID": 0,
+                        "jumpType": 0,
+                        "previewCardIDs": [],
+                        "previewCards": [],
+                        "relationID": 307,
+                        "relationName": "无阵营",
+                        "heroCard": null,
+                        "effectCard": null,
+                        "equipCard": {
+                          "atlasSubType": 4,
+                          "atlasSubTypeName": "普通装备",
+                          "equipTypeID": 3,
+                          "equipTypeName": "通用装备"
+                        },
+                        "talentCard": null,
+                        "sourceCards": [
+                          {
+                            "id": 643300,
+                            "name": "速击之枪",
+                            "type": 5,
+                            "quality": 1,
+                            "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/165fa497920da5cdd49d84813dac3d02.png",
+                            "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/165fa497920da5cdd49d84813dac3d02.png",
+                            "desc": "穿戴给英雄，可以铸造成1件输出型普通装备。",
+                            "jumpID": 0,
+                            "jumpType": 0,
+                            "previewCardIDs": [
+                              641010,
+                              643301,
+                              643302,
+                              641015
+                            ],
+                            "previewCards": [],
+                            "relationID": 307,
+                            "relationName": "无阵营",
+                            "heroCard": null,
+                            "effectCard": null,
+                            "equipCard": {
+                              "atlasSubType": 16,
+                              "atlasSubTypeName": "基础装备",
+                              "equipTypeID": 1,
+                              "equipTypeName": "物理装备"
+                            },
+                            "talentCard": null,
+                            "sourceCards": [],
+                            "effectTypeDesc": "",
+                            "imageBg": "",
+                            "faceType": 2,
+                            "shopBuyCost": {
+                              "Type": 1,
+                              "Count": 1
+                            },
+                            "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/abc84701dfbb26ba142ffeefbdf157a7.png",
+                            "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                            "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/1c270e71f5c1331576a711221fb725c1755d2fc9ce66ca735ce16cf93784b8a4.png",
+                            "isShowGuideBook": false,
+                            "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/8089935a276cf1016ac196b1b56d5240.png",
+                            "talentStageType": 0,
+                            "talentStageDesc": ""
+                          }
+                        ],
+                        "effectTypeDesc": "",
+                        "imageBg": "",
+                        "faceType": 2,
+                        "shopBuyCost": {
+                          "Type": 1,
+                          "Count": 1
+                        },
+                        "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+                        "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                        "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/626f81778258800e4cec8955b6599cc186f0957243bc184739dae6c1433eb28b.png",
+                        "isShowGuideBook": false,
+                        "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+                        "talentStageType": 0,
+                        "talentStageDesc": ""
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                      ],
+                      "version": null,
+                      "status": "official",
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        },
+        {
+          "id": "v4-equipment-643803",
+          "section": "推荐装备",
+          "text": "**炽热支配者：** 唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。 来源：把基础装备圣者法典穿戴给英雄后铸造获得。给花木兰应对开局控制，争取轻剑启动；对手控制少时可比较反伤重甲等输出或对策装。15秒免控不等于全场免控，也不覆盖压制。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 750.39,
+              "end": 776.79
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 777.3,
+              "end": 806.76
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 671.37,
+              "end": 700.47
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "crit-basic",
+              "artifact-choice"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:643803",
+                "name": "炽热支配者",
+                "category": "equipment",
+                "aliases": [],
+                "effect": "唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。",
+                "faction": {
+                  "id": "faction:none",
+                  "name": "无阵营",
+                  "official_id": 307
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "装备分类": "普通装备",
+                  "装备类型": "通用装备",
+                  "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                },
+                "raw_attributes": {
+                  "atlasSubType": 4,
+                  "atlasSubTypeName": "普通装备",
+                  "equipTypeID": 3,
+                  "equipTypeName": "通用装备"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/equipment/炽热支配者－card-643803.md"
+              },
+              {
+                "id": "card:643803",
+                "category": "equipment",
+                "name": "炽热支配者",
+                "aliases": [],
+                "description": "唯一。首次受到控制效果时，获得300点护盾并在接下来的15秒内免疫控制效果（压制除外）。",
+                "properties": {
+                  "id": 643803,
+                  "name": "炽热支配者",
+                  "type": 5,
+                  "quality": 2,
+                  "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/f70a4e72b85582fa6454557031cb3855.png",
+                  "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/f70a4e72b85582fa6454557031cb3855.png",
+                  "desc": "<color=#ffffff><b>唯一</b></color>。首次受到控制效果时，获得<color=#ffffff>300点护盾</color>并在接下来的15秒内免疫控制效果（压制除外）。",
+                  "jumpID": 0,
+                  "jumpType": 0,
+                  "previewCardIDs": [],
+                  "previewCards": [],
+                  "relationID": 307,
+                  "relationName": "无阵营",
+                  "heroCard": null,
+                  "effectCard": null,
+                  "equipCard": {
+                    "atlasSubType": 4,
+                    "atlasSubTypeName": "普通装备",
+                    "equipTypeID": 3,
+                    "equipTypeName": "通用装备"
+                  },
+                  "talentCard": null,
+                  "sourceCards": [
+                    {
+                      "id": 643800,
+                      "name": "圣者法典",
+                      "type": 5,
+                      "quality": 1,
+                      "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/77311396e9759df6f78df3027aca15ab.png",
+                      "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/77311396e9759df6f78df3027aca15ab.png",
+                      "desc": "穿戴给英雄，可以铸造成1件法术型普通装备。",
+                      "jumpID": 0,
+                      "jumpType": 0,
+                      "previewCardIDs": [
+                        643802,
+                        643803,
+                        643804,
+                        643805
+                      ],
+                      "previewCards": [],
+                      "relationID": 307,
+                      "relationName": "无阵营",
+                      "heroCard": null,
+                      "effectCard": null,
+                      "equipCard": {
+                        "atlasSubType": 16,
+                        "atlasSubTypeName": "基础装备",
+                        "equipTypeID": 2,
+                        "equipTypeName": "法术装备"
+                      },
+                      "talentCard": null,
+                      "sourceCards": [],
+                      "effectTypeDesc": "",
+                      "imageBg": "",
+                      "faceType": 2,
+                      "shopBuyCost": {
+                        "Type": 1,
+                        "Count": 1
+                      },
+                      "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/abc84701dfbb26ba142ffeefbdf157a7.png",
+                      "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                      "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/5c0c004788518c5d4cdd8b8b2452bf97771bc5b844550521ceb25d3696424654.png",
+                      "isShowGuideBook": false,
+                      "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/8089935a276cf1016ac196b1b56d5240.png",
+                      "talentStageType": 0,
+                      "talentStageDesc": ""
+                    }
+                  ],
+                  "effectTypeDesc": "",
+                  "imageBg": "",
+                  "faceType": 2,
+                  "shopBuyCost": {
+                    "Type": 1,
+                    "Count": 1
+                  },
+                  "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+                  "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                  "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/cead4333a251a6f9a0cf080aac74f161c8d78a5137bc3f7ccb9a668a06f1e9e6.png",
+                  "isShowGuideBook": false,
+                  "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+                  "talentStageType": 0,
+                  "talentStageDesc": ""
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "version": null,
+                "status": "official",
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-equipment-643602",
+          "section": "推荐装备",
+          "text": "**极寒风暴：** 唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。 来源：把基础装备守护者之铠穿戴给英雄后铸造获得。给花木兰对付艾琳的远程普攻减速和风筝，与达到100%暴击率后触发追击移速的装备凝渊配合冻结后追击；对手带炽热支配者时等实际免控结束，不能把其他免控一律当15秒。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 174.3,
+              "end": 198.96,
+              "frame": "frames/199-16.jpg"
+            },
+            {
+              "source": "BV1sLpq6TEnY:p1",
+              "start": 199.16,
+              "end": 221.56
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1308.8000000000002,
+              "end": 1337.16
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 800.62,
+              "end": 828.07
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 1869.55,
+              "end": 1901.93
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 1902.41,
+              "end": 1934.2
+            },
+            {
+              "source": "BV1bMpz6SEof:p1",
+              "start": 1935.22,
+              "end": 1972.1
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1379.92,
+              "end": 1409.5
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1409.9,
+              "end": 1440.52
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "ailin-chase"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:643602",
+                "name": "极寒风暴",
+                "category": "equipment",
+                "aliases": [],
+                "effect": "唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+                "faction": {
+                  "id": "faction:none",
+                  "name": "无阵营",
+                  "official_id": 307
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "装备分类": "普通装备",
+                  "装备类型": "防御装备",
+                  "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                },
+                "raw_attributes": {
+                  "atlasSubType": 4,
+                  "atlasSubTypeName": "普通装备",
+                  "equipTypeID": 7,
+                  "equipTypeName": "防御装备"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/equipment/极寒风暴－card-643602.md"
+              },
+              {
+                "id": "card:643602",
+                "category": "equipment",
+                "name": "极寒风暴",
+                "aliases": [],
+                "description": "唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+                "properties": {
+                  "id": 643602,
+                  "name": "极寒风暴",
+                  "type": 5,
+                  "quality": 2,
+                  "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/7ab8429256b9465380e9522c9f54ed90.png",
+                  "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/7ab8429256b9465380e9522c9f54ed90.png",
+                  "desc": "<color=#ffffff><b>唯一</b></color>。受到普攻时，降低目标<color=#ffffff>20%攻击速度</color>，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+                  "jumpID": 0,
+                  "jumpType": 0,
+                  "previewCardIDs": [],
+                  "previewCards": [],
+                  "relationID": 307,
+                  "relationName": "无阵营",
+                  "heroCard": null,
+                  "effectCard": null,
+                  "equipCard": {
+                    "atlasSubType": 4,
+                    "atlasSubTypeName": "普通装备",
+                    "equipTypeID": 7,
+                    "equipTypeName": "防御装备"
+                  },
+                  "talentCard": null,
+                  "sourceCards": [
+                    {
+                      "id": 643600,
+                      "name": "守护者之铠",
+                      "type": 5,
+                      "quality": 1,
+                      "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/a3f9b0de55ad876b03b12f0cff30d7de.png",
+                      "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/a3f9b0de55ad876b03b12f0cff30d7de.png",
+                      "desc": "穿戴给英雄，可以铸造成1件防御型普通装备。",
+                      "jumpID": 0,
+                      "jumpType": 0,
+                      "previewCardIDs": [
+                        643601,
+                        643602,
+                        643603,
+                        643604
+                      ],
+                      "previewCards": [],
+                      "relationID": 307,
+                      "relationName": "无阵营",
+                      "heroCard": null,
+                      "effectCard": null,
+                      "equipCard": {
+                        "atlasSubType": 16,
+                        "atlasSubTypeName": "基础装备",
+                        "equipTypeID": 3,
+                        "equipTypeName": "通用装备"
+                      },
+                      "talentCard": null,
+                      "sourceCards": [],
+                      "effectTypeDesc": "",
+                      "imageBg": "",
+                      "faceType": 2,
+                      "shopBuyCost": {
+                        "Type": 1,
+                        "Count": 1
+                      },
+                      "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/abc84701dfbb26ba142ffeefbdf157a7.png",
+                      "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                      "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/4669676451d7abcce24b5192a2ef4a4511dcde60671b4687a5acf9337db77fa8.png",
+                      "isShowGuideBook": false,
+                      "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/8089935a276cf1016ac196b1b56d5240.png",
+                      "talentStageType": 0,
+                      "talentStageDesc": ""
+                    }
+                  ],
+                  "effectTypeDesc": "",
+                  "imageBg": "",
+                  "faceType": 2,
+                  "shopBuyCost": {
+                    "Type": 1,
+                    "Count": 1
+                  },
+                  "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+                  "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                  "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/43175364bfe8b0ead496cca0f8451b24d074af986b2e7b277126964ce73d80f4.png",
+                  "isShowGuideBook": false,
+                  "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+                  "talentStageType": 0,
+                  "talentStageDesc": ""
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "version": null,
+                "status": "official",
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-equipment-643602",
+                "section": "推荐装备",
+                "text": "**极寒风暴：** 唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。 来源：把基础装备守护者之铠穿戴给英雄后铸造获得。给花木兰对付艾琳的远程普攻减速和风筝，与凝渊配合冻结后追击；对手带炽热支配者时等实际免控结束，不能把其他免控一律当15秒。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1sLpq6TEnY:p1",
+                    "start": 174.3,
+                    "end": 198.96,
+                    "frame": "frames/199-16.jpg"
+                  },
+                  {
+                    "source": "BV1sLpq6TEnY:p1",
+                    "start": 199.16,
+                    "end": 221.56
+                  },
+                  {
+                    "source": "BV1Jzp36REg6:p1",
+                    "start": 1308.8000000000002,
+                    "end": 1337.16
+                  },
+                  {
+                    "source": "BV1bMpz6SEof:p1",
+                    "start": 800.62,
+                    "end": 828.07
+                  },
+                  {
+                    "source": "BV1bMpz6SEof:p1",
+                    "start": 1869.55,
+                    "end": 1901.93
+                  },
+                  {
+                    "source": "BV1bMpz6SEof:p1",
+                    "start": 1902.41,
+                    "end": 1934.2
+                  },
+                  {
+                    "source": "BV1bMpz6SEof:p1",
+                    "start": 1935.22,
+                    "end": 1972.1
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 1379.92,
+                    "end": 1409.5
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 1409.9,
+                    "end": 1440.52
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "ailin-chase"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:643602",
+                      "name": "极寒风暴",
+                      "category": "equipment",
+                      "aliases": [],
+                      "effect": "唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+                      "faction": {
+                        "id": "faction:none",
+                        "name": "无阵营",
+                        "official_id": 307
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "装备分类": "普通装备",
+                        "装备类型": "防御装备",
+                        "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                      },
+                      "raw_attributes": {
+                        "atlasSubType": 4,
+                        "atlasSubTypeName": "普通装备",
+                        "equipTypeID": 7,
+                        "equipTypeName": "防御装备"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/equipment/极寒风暴－card-643602.md"
+                    },
+                    {
+                      "id": "card:643602",
+                      "category": "equipment",
+                      "name": "极寒风暴",
+                      "aliases": [],
+                      "description": "唯一。受到普攻时，降低目标20%攻击速度，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+                      "properties": {
+                        "id": 643602,
+                        "name": "极寒风暴",
+                        "type": 5,
+                        "quality": 2,
+                        "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/7ab8429256b9465380e9522c9f54ed90.png",
+                        "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/7ab8429256b9465380e9522c9f54ed90.png",
+                        "desc": "<color=#ffffff><b>唯一</b></color>。受到普攻时，降低目标<color=#ffffff>20%攻击速度</color>，持续2秒。被单一目标普攻5次后，远程目标将被冻结1秒，近战目标减半。",
+                        "jumpID": 0,
+                        "jumpType": 0,
+                        "previewCardIDs": [],
+                        "previewCards": [],
+                        "relationID": 307,
+                        "relationName": "无阵营",
+                        "heroCard": null,
+                        "effectCard": null,
+                        "equipCard": {
+                          "atlasSubType": 4,
+                          "atlasSubTypeName": "普通装备",
+                          "equipTypeID": 7,
+                          "equipTypeName": "防御装备"
+                        },
+                        "talentCard": null,
+                        "sourceCards": [
+                          {
+                            "id": 643600,
+                            "name": "守护者之铠",
+                            "type": 5,
+                            "quality": 1,
+                            "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/a3f9b0de55ad876b03b12f0cff30d7de.png",
+                            "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/a3f9b0de55ad876b03b12f0cff30d7de.png",
+                            "desc": "穿戴给英雄，可以铸造成1件防御型普通装备。",
+                            "jumpID": 0,
+                            "jumpType": 0,
+                            "previewCardIDs": [
+                              643601,
+                              643602,
+                              643603,
+                              643604
+                            ],
+                            "previewCards": [],
+                            "relationID": 307,
+                            "relationName": "无阵营",
+                            "heroCard": null,
+                            "effectCard": null,
+                            "equipCard": {
+                              "atlasSubType": 16,
+                              "atlasSubTypeName": "基础装备",
+                              "equipTypeID": 3,
+                              "equipTypeName": "通用装备"
+                            },
+                            "talentCard": null,
+                            "sourceCards": [],
+                            "effectTypeDesc": "",
+                            "imageBg": "",
+                            "faceType": 2,
+                            "shopBuyCost": {
+                              "Type": 1,
+                              "Count": 1
+                            },
+                            "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/abc84701dfbb26ba142ffeefbdf157a7.png",
+                            "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                            "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/4669676451d7abcce24b5192a2ef4a4511dcde60671b4687a5acf9337db77fa8.png",
+                            "isShowGuideBook": false,
+                            "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/8089935a276cf1016ac196b1b56d5240.png",
+                            "talentStageType": 0,
+                            "talentStageDesc": ""
+                          }
+                        ],
+                        "effectTypeDesc": "",
+                        "imageBg": "",
+                        "faceType": 2,
+                        "shopBuyCost": {
+                          "Type": 1,
+                          "Count": 1
+                        },
+                        "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+                        "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                        "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/43175364bfe8b0ead496cca0f8451b24d074af986b2e7b277126964ce73d80f4.png",
+                        "isShowGuideBook": false,
+                        "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+                        "talentStageType": 0,
+                        "talentStageDesc": ""
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                      ],
+                      "version": null,
+                      "status": "official",
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        },
+        {
+          "id": "v4-equipment-641005",
+          "section": "推荐装备",
+          "text": "**捕能手套：** 唯一。每击败1名英雄，获得1能量。单回合击败不少于5名英雄时，获得能量转换。能量转换：消耗3能量，获得与棋手等级相对应的效果锦囊牌（不超过5阶）。 来源：该卡通过商店购买、效果锦囊、拍卖等渠道获得。 不由基础装备铸造。给能稳定完成击败的花木兰补后续买牌资源；单回合击败至少5名英雄取得能量转换后，转换仍花3能量，锦囊不保证给露娜或唤醒。缺即时战力时先比较魂灭灵冠等装备。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1649.95,
+              "end": 1678.06
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1678.8,
+              "end": 1707.73
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "capture-glove-resource"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:641005",
+                "name": "捕能手套",
+                "category": "equipment",
+                "aliases": [],
+                "effect": "唯一。每击败1名英雄，获得1能量。单回合击败不少于5名英雄时，获得能量转换。能量转换：消耗3能量，获得与棋手等级相对应的效果锦囊牌（不超过5阶）。",
+                "faction": {
+                  "id": "faction:none",
+                  "name": "无阵营",
+                  "official_id": 307
+                },
+                "tier": null,
+                "quality": 5,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "装备分类": "特殊装备",
+                  "装备类型": "通用装备",
+                  "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                },
+                "raw_attributes": {
+                  "atlasSubType": 5,
+                  "atlasSubTypeName": "特殊装备",
+                  "equipTypeID": 3,
+                  "equipTypeName": "通用装备"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/equipment/捕能手套－card-641005.md"
+              },
+              {
+                "id": "card:641005",
+                "category": "equipment",
+                "name": "捕能手套",
+                "aliases": [],
+                "description": "唯一。每击败1名英雄，获得1能量。单回合击败不少于5名英雄时，获得能量转换。能量转换：消耗3能量，获得与棋手等级相对应的效果锦囊牌（不超过5阶）。",
+                "properties": {
+                  "id": 641005,
+                  "name": "捕能手套",
+                  "type": 5,
+                  "quality": 5,
+                  "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/6b16990dc680783a240582906f7a6295.png",
+                  "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/6b16990dc680783a240582906f7a6295.png",
+                  "desc": "<color=#ffffff><b>唯一</b></color>。每击败1名英雄，<color=#ffffff>获得1能量</color>。单回合击败不少于5名英雄时，获得<color=#ffffff>能量转换</color>。能量转换：消耗3能量，获得与棋手等级相对应的效果锦囊牌（不超过5阶）。",
+                  "jumpID": 0,
+                  "jumpType": 0,
+                  "previewCardIDs": [],
+                  "previewCards": [],
+                  "relationID": 307,
+                  "relationName": "无阵营",
+                  "heroCard": null,
+                  "effectCard": null,
+                  "equipCard": {
+                    "atlasSubType": 5,
+                    "atlasSubTypeName": "特殊装备",
+                    "equipTypeID": 3,
+                    "equipTypeName": "通用装备"
+                  },
+                  "talentCard": null,
+                  "sourceCards": [],
+                  "effectTypeDesc": "",
+                  "imageBg": "",
+                  "faceType": 2,
+                  "shopBuyCost": {
+                    "Type": 1,
+                    "Count": 1
+                  },
+                  "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/b12ea4150a0a3fb76d214295521ca907.png",
+                  "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                  "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/12bff64c500f53dab8ac301e2bc477ab0f59ad77e3f6b055996f91d3c6e4c3f8.png",
+                  "isShowGuideBook": false,
+                  "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/5e16a4a85c33180dab3e63d091bb3500.png",
+                  "talentStageType": 0,
+                  "talentStageDesc": ""
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "version": null,
+                "status": "official",
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-equipment-643704",
+          "section": "推荐装备",
+          "text": "**红魔：** 唯一。周围1格没有友军时，获得25%伤害加成。每承受3%最大生命值的伤害，获得1%伤害加成，上限100%。 来源：把基础装备雷鸣刃穿戴给英雄后铸造获得。花木兰独自进入敌群、需要提高伤害时考虑；敌方以法术伤害为主时，比只增加物防的冥王更切合伤害需求，周围有友军则不能计入独处加成。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1440.94,
+              "end": 1468.89,
+              "frame": "frames/1475-0.jpg"
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1469.15,
+              "end": 1498.95
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1499.94,
+              "end": 1528.66
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1530.24,
+              "end": 1558.0
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 1558.24,
+              "end": 1590.21
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "red-demon-underworld-choice"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:643704",
+                "name": "红魔",
+                "category": "equipment",
+                "aliases": [],
+                "effect": "唯一。周围1格没有友军时，获得25%伤害加成。每承受3%最大生命值的伤害，获得1%伤害加成，上限100%。",
+                "faction": {
+                  "id": "faction:none",
+                  "name": "无阵营",
+                  "official_id": 307
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "装备分类": "普通装备",
+                  "装备类型": "通用装备",
+                  "获取途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+                },
+                "raw_attributes": {
+                  "atlasSubType": 4,
+                  "atlasSubTypeName": "普通装备",
+                  "equipTypeID": 3,
+                  "equipTypeName": "通用装备"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/equipment/红魔－card-643704.md"
+              },
+              {
+                "id": "card:643704",
+                "category": "equipment",
+                "name": "红魔",
+                "aliases": [],
+                "description": "唯一。周围1格没有友军时，获得25%伤害加成。每承受3%最大生命值的伤害，获得1%伤害加成，上限100%。",
+                "properties": {
+                  "id": 643704,
+                  "name": "红魔",
+                  "type": 5,
+                  "quality": 2,
+                  "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/fd81eae8d5ce712110295d1b7acf153f.png",
+                  "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/fd81eae8d5ce712110295d1b7acf153f.png",
+                  "desc": "<color=#ffffff><b>唯一</b></color>。周围1格没有友军时，获得<color=#ffffff>25%伤害加成</color>。每承受3%最大生命值的伤害，获得<color=#ffffff>1%伤害加成</color>，上限100%。",
+                  "jumpID": 0,
+                  "jumpType": 0,
+                  "previewCardIDs": [],
+                  "previewCards": [],
+                  "relationID": 307,
+                  "relationName": "无阵营",
+                  "heroCard": null,
+                  "effectCard": null,
+                  "equipCard": {
+                    "atlasSubType": 4,
+                    "atlasSubTypeName": "普通装备",
+                    "equipTypeID": 3,
+                    "equipTypeName": "通用装备"
+                  },
+                  "talentCard": null,
+                  "sourceCards": [
+                    {
+                      "id": 643700,
+                      "name": "雷鸣刃",
+                      "type": 5,
+                      "quality": 1,
+                      "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/caf8e2a94c95ed06898c02de43d7dd7d.png",
+                      "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_equip_auto/caf8e2a94c95ed06898c02de43d7dd7d.png",
+                      "desc": "穿戴给英雄，可以铸造成1件输出型普通装备。",
+                      "jumpID": 0,
+                      "jumpType": 0,
+                      "previewCardIDs": [
+                        643702,
+                        643703,
+                        643704,
+                        643705
+                      ],
+                      "previewCards": [],
+                      "relationID": 307,
+                      "relationName": "无阵营",
+                      "heroCard": null,
+                      "effectCard": null,
+                      "equipCard": {
+                        "atlasSubType": 16,
+                        "atlasSubTypeName": "基础装备",
+                        "equipTypeID": 1,
+                        "equipTypeName": "物理装备"
+                      },
+                      "talentCard": null,
+                      "sourceCards": [],
+                      "effectTypeDesc": "",
+                      "imageBg": "",
+                      "faceType": 2,
+                      "shopBuyCost": {
+                        "Type": 1,
+                        "Count": 1
+                      },
+                      "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/abc84701dfbb26ba142ffeefbdf157a7.png",
+                      "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                      "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/b1af788de7aaf66b0ce210981a95eab30ae59fe13650781995b6d0d888c05c76.png",
+                      "isShowGuideBook": false,
+                      "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/8089935a276cf1016ac196b1b56d5240.png",
+                      "talentStageType": 0,
+                      "talentStageDesc": ""
+                    }
+                  ],
+                  "effectTypeDesc": "",
+                  "imageBg": "",
+                  "faceType": 2,
+                  "shopBuyCost": {
+                    "Type": 1,
+                    "Count": 1
+                  },
+                  "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+                  "cardGetDesc": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                  "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/e628e6b8b8b7c2ccf88e455fe218dda8d78c5358d5ada20927ffc9659f407afd.png",
+                  "isShowGuideBook": false,
+                  "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+                  "talentStageType": 0,
+                  "talentStageDesc": ""
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_4.js"
+                ],
+                "version": null,
+                "status": "official",
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-ming-636220",
+          "section": "推荐天赋",
+          "text": "**暴君归来：** 你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。 花木兰每次复生后可在短窗口内继续输出，核心已启动并能保血时优先；它不负责生成复生次数。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636220",
+                "name": "暴君归来",
+                "category": "talents",
+                "aliases": [],
+                "effect": "你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/暴君归来－card-636220.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-ming-636221",
+          "section": "推荐天赋",
+          "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。额外触发增加古币结算收益；全队本回合每使用5张古币为花木兰增加1次复生，不把一次额外触发直接当成独立手动打牌。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 424.56,
+              "end": 449.28
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 451.41,
+              "end": 485.58
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 481.68,
+              "end": 510.59
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 548.14,
+              "end": 578.28
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 578.9,
+              "end": 609.21
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 407.13,
+              "end": 433.86
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 434.52,
+              "end": 466.52
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 467.14,
+              "end": 493.92
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 494.42,
+              "end": 523.87
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 678.08,
+              "end": 704.32
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 704.89,
+              "end": 732.17
+            },
+            {
+              "source": "BV1Nhps6BEkj:p1",
+              "start": 734.76,
+              "end": 764.08
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "transition-talents",
+              "transition-wuzhuang",
+              "talent-core",
+              "ming-survival-talents"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636221",
+                "name": "幸运硬币",
+                "category": "talents",
+                "aliases": [],
+                "effect": "打出古币时有概率额外触发1-3次。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-talent-ming-636221",
+                "section": "推荐天赋",
+                "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1rQpy6REUX:p1",
+                    "start": 424.56,
+                    "end": 449.28
+                  },
+                  {
+                    "source": "BV1rQpy6REUX:p1",
+                    "start": 451.41,
+                    "end": 485.58
+                  },
+                  {
+                    "source": "BV1qaJr6cEFv:p1",
+                    "start": 481.68,
+                    "end": 510.59
+                  },
+                  {
+                    "source": "BV1qaJr6cEFv:p1",
+                    "start": 548.14,
+                    "end": 578.28
+                  },
+                  {
+                    "source": "BV1qaJr6cEFv:p1",
+                    "start": 578.9,
+                    "end": 609.21
+                  },
+                  {
+                    "source": "BV1oQJ66tESA:p1",
+                    "start": 58.04,
+                    "end": 86.4
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 407.13,
+                    "end": 433.86
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 434.52,
+                    "end": 466.52
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 467.14,
+                    "end": 493.92
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 494.42,
+                    "end": 523.87
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 678.08,
+                    "end": 704.32
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 704.89,
+                    "end": 732.17
+                  },
+                  {
+                    "source": "BV1Nhps6BEkj:p1",
+                    "start": 734.76,
+                    "end": 764.08
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "transition-talents",
+                    "transition-wuzhuang",
+                    "talent-core",
+                    "ming-survival-talents"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:636221",
+                      "name": "幸运硬币",
+                      "category": "talents",
+                      "aliases": [],
+                      "effect": "打出古币时有概率额外触发1-3次。",
+                      "faction": {
+                        "id": "",
+                        "name": "未提供",
+                        "official_id": 0
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "所属分组": "天赋包一",
+                        "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "拍卖轮次（官网原文）": "第八轮拍卖",
+                        "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                      },
+                      "raw_attributes": {
+                        "grpID": 2,
+                        "grpName": "天赋包一",
+                        "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "unlockScore": {
+                          "UnlockScore": 4,
+                          "OSGEloScore": 1320,
+                          "OSOEloScore": 1000,
+                          "OSHMaxCoin": 0,
+                          "OSHEloScore": 3000
+                        },
+                        "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        },
+        {
+          "id": "v4-talent-zhuang-636220",
+          "section": "推荐天赋",
+          "text": "**暴君归来：** 你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。 花木兰每次复生后可在短窗口内继续输出，核心已启动并能保血时优先；它不负责生成复生次数。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636220",
+                "name": "暴君归来",
+                "category": "talents",
+                "aliases": [],
+                "effect": "你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/暴君归来－card-636220.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-zhuang-636221",
+          "section": "推荐天赋",
+          "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。额外触发增加古币结算收益；全队本回合每使用5张古币为花木兰增加1次复生，不把一次额外触发直接当成独立手动打牌。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 208.15,
+              "end": 237.65,
+              "frame": "frames/220-0.jpg"
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 237.91,
+              "end": 267.44
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 267.71,
+              "end": 296.73
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 297.0,
+              "end": 326.4
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 412.89,
+              "end": 442.45,
+              "frame": "frames/430-0.jpg"
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 442.84,
+              "end": 471.97
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 472.25,
+              "end": 480.59
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 318.81,
+              "end": 347.01
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 348.17,
+              "end": 377.03
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 377.39,
+              "end": 406.05
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "zhuang-talent-speed",
+              "zhuang-ace-army",
+              "talent-core",
+              "zhuang-coin-machine-choice"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636221",
+                "name": "幸运硬币",
+                "category": "talents",
+                "aliases": [],
+                "effect": "打出古币时有概率额外触发1-3次。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-talent-zhuang-636221",
+                "section": "推荐天赋",
+                "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 208.15,
+                    "end": 237.65,
+                    "frame": "frames/220-0.jpg"
+                  },
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 237.91,
+                    "end": 267.44
+                  },
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 267.71,
+                    "end": 296.73
+                  },
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 297.0,
+                    "end": 326.4
+                  },
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 412.89,
+                    "end": 442.45,
+                    "frame": "frames/430-0.jpg"
+                  },
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 442.84,
+                    "end": 471.97
+                  },
+                  {
+                    "source": "BV1brJq6BEYj:p1",
+                    "start": 472.25,
+                    "end": 480.59
+                  },
+                  {
+                    "source": "BV1oQJ66tESA:p1",
+                    "start": 58.04,
+                    "end": 86.4
+                  },
+                  {
+                    "source": "BV1vTeS6nE9c:p1",
+                    "start": 318.81,
+                    "end": 347.01
+                  },
+                  {
+                    "source": "BV1vTeS6nE9c:p1",
+                    "start": 348.17,
+                    "end": 377.03
+                  },
+                  {
+                    "source": "BV1vTeS6nE9c:p1",
+                    "start": 377.39,
+                    "end": 406.05
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "zhuang-talent-speed",
+                    "zhuang-ace-army",
+                    "talent-core",
+                    "zhuang-coin-machine-choice"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:636221",
+                      "name": "幸运硬币",
+                      "category": "talents",
+                      "aliases": [],
+                      "effect": "打出古币时有概率额外触发1-3次。",
+                      "faction": {
+                        "id": "",
+                        "name": "未提供",
+                        "official_id": 0
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "所属分组": "天赋包一",
+                        "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "拍卖轮次（官网原文）": "第八轮拍卖",
+                        "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                      },
+                      "raw_attributes": {
+                        "grpID": 2,
+                        "grpName": "天赋包一",
+                        "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "unlockScore": {
+                          "UnlockScore": 4,
+                          "OSGEloScore": 1320,
+                          "OSOEloScore": 1000,
+                          "OSHMaxCoin": 0,
+                          "OSHEloScore": 3000
+                        },
+                        "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        },
+        {
+          "id": "v4-talent-zhuang-636204",
+          "section": "推荐天赋",
+          "text": "**古币机：** 召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。 有余币才投入，优先比较前两次固定收益；花木兰本轮战力不足时先给花木兰用币，不能把随机超速成长或能量当保证。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 208.15,
+              "end": 237.65,
+              "frame": "frames/220-0.jpg"
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 237.91,
+              "end": 267.44
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 267.71,
+              "end": 296.73
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 297.0,
+              "end": 326.4
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 412.89,
+              "end": 442.45,
+              "frame": "frames/430-0.jpg"
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 442.84,
+              "end": 471.97
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 472.25,
+              "end": 480.59
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 318.81,
+              "end": 347.01
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 348.17,
+              "end": 377.03
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 377.39,
+              "end": 406.05
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "zhuang-talent-speed",
+              "zhuang-ace-army",
+              "talent-core",
+              "zhuang-coin-machine-choice"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636204",
+                "name": "古币机",
+                "category": "talents",
+                "aliases": [],
+                "effect": "召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包三",
+                  "解锁条件": "万象大赛达到1820分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 4,
+                  "grpName": "天赋包三",
+                  "grpDesc": "万象大赛达到1820分",
+                  "unlockScore": {
+                    "UnlockScore": 13,
+                    "OSGEloScore": 1820,
+                    "OSOEloScore": 0,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 0
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/古币机－card-636204.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-naonao-636220",
+          "section": "推荐天赋",
+          "text": "**暴君归来：** 你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。 花木兰每次复生后可在短窗口内继续输出，核心已启动并能保血时优先；它不负责生成复生次数。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636220",
+                "name": "暴君归来",
+                "category": "talents",
+                "aliases": [],
+                "effect": "你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/暴君归来－card-636220.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-naonao-636221",
+          "section": "推荐天赋",
+          "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。额外触发增加古币结算收益；全队本回合每使用5张古币为花木兰增加1次复生，不把一次额外触发直接当成独立手动打牌。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 514.96,
+              "end": 543.44,
+              "frame": "frames/529-2.jpg"
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "n-coins-manual"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636221",
+                "name": "幸运硬币",
+                "category": "talents",
+                "aliases": [],
+                "effect": "打出古币时有概率额外触发1-3次。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-talent-naonao-636221",
+                "section": "推荐天赋",
+                "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1vTeS6nE9c:p1",
+                    "start": 514.96,
+                    "end": 543.44,
+                    "frame": "frames/529-2.jpg"
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "n-coins-manual"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:636221",
+                      "name": "幸运硬币",
+                      "category": "talents",
+                      "aliases": [],
+                      "effect": "打出古币时有概率额外触发1-3次。",
+                      "faction": {
+                        "id": "",
+                        "name": "未提供",
+                        "official_id": 0
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "所属分组": "天赋包一",
+                        "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "拍卖轮次（官网原文）": "第八轮拍卖",
+                        "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                      },
+                      "raw_attributes": {
+                        "grpID": 2,
+                        "grpName": "天赋包一",
+                        "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "unlockScore": {
+                          "UnlockScore": 4,
+                          "OSGEloScore": 1320,
+                          "OSOEloScore": 1000,
+                          "OSHMaxCoin": 0,
+                          "OSHEloScore": 3000
+                        },
+                        "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        },
+        {
+          "id": "v4-talent-naonao-636204",
+          "section": "推荐天赋",
+          "text": "**古币机：** 召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。 有余币才投入，优先比较前两次固定收益；花木兰本轮战力不足时先给花木兰用币，不能把随机超速成长或能量当保证。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 318.81,
+              "end": 347.01
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 348.17,
+              "end": 377.03
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 377.39,
+              "end": 406.05
+            },
+            {
+              "source": "BV1brJq6BEYj:p1",
+              "start": 267.71,
+              "end": 296.73
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "coin-machine"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636204",
+                "name": "古币机",
+                "category": "talents",
+                "aliases": [],
+                "effect": "召唤古币机，每对其使用4张古币牌（精致古币视为2次），依次获得：随机5张河洛英雄牌；1件贤者的庇护。之后随机获得：1张超速成长、1张普通装备牌或8能量。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包三",
+                  "解锁条件": "万象大赛达到1820分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 4,
+                  "grpName": "天赋包三",
+                  "grpDesc": "万象大赛达到1820分",
+                  "unlockScore": {
+                    "UnlockScore": 13,
+                    "OSGEloScore": 1820,
+                    "OSOEloScore": 0,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 0
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/古币机－card-636204.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-zhaojun-636220",
+          "section": "推荐天赋",
+          "text": "**暴君归来：** 你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。 花木兰每次复生后可在短窗口内继续输出，核心已启动并能保血时优先；它不负责生成复生次数。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636220",
+                "name": "暴君归来",
+                "category": "talents",
+                "aliases": [],
+                "effect": "你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/暴君归来－card-636220.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-zhaojun-636221",
+          "section": "推荐天赋",
+          "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。额外触发增加古币结算收益；全队本回合每使用5张古币为花木兰增加1次复生，不把一次额外触发直接当成独立手动打牌。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636221",
+                "name": "幸运硬币",
+                "category": "talents",
+                "aliases": [],
+                "effect": "打出古币时有概率额外触发1-3次。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-talent-zhaojun-636221",
+                "section": "推荐天赋",
+                "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV1oQJ66tESA:p1",
+                    "start": 58.04,
+                    "end": 86.4
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "talent-core"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:636221",
+                      "name": "幸运硬币",
+                      "category": "talents",
+                      "aliases": [],
+                      "effect": "打出古币时有概率额外触发1-3次。",
+                      "faction": {
+                        "id": "",
+                        "name": "未提供",
+                        "official_id": 0
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "所属分组": "天赋包一",
+                        "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "拍卖轮次（官网原文）": "第八轮拍卖",
+                        "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                      },
+                      "raw_attributes": {
+                        "grpID": 2,
+                        "grpName": "天赋包一",
+                        "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "unlockScore": {
+                          "UnlockScore": 4,
+                          "OSGEloScore": 1320,
+                          "OSOEloScore": 1000,
+                          "OSHMaxCoin": 0,
+                          "OSHEloScore": 3000
+                        },
+                        "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        },
+        {
+          "id": "v4-talent-ying-636220",
+          "section": "推荐天赋",
+          "text": "**暴君归来：** 你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。 花木兰每次复生后可在短窗口内继续输出，核心已启动并能保血时优先；它不负责生成复生次数。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636220",
+                "name": "暴君归来",
+                "category": "talents",
+                "aliases": [],
+                "effect": "你在战斗过程中复生的英雄，获得200%攻速、100%暴击率并无敌，持续1.5秒。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 3,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/3ade8a5e715564da7d10b7a316459390.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/暴君归来－card-636220.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          }
+        },
+        {
+          "id": "v4-talent-ying-636221",
+          "section": "推荐天赋",
+          "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。额外触发增加古币结算收益；全队本回合每使用5张古币为花木兰增加1次复生，不把一次额外触发直接当成独立手动打牌。",
+          "condition": "",
+          "version": null,
+          "kind": "general_strategy",
+          "inference": true,
+          "evidence": [
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 473.67,
+              "end": 507.34,
+              "frame": "frames/515-0.jpg"
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 508.96,
+              "end": 541.49
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 543.95,
+              "end": 577.18
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 102.38,
+              "end": 133.69,
+              "frame": "frames/620-0.jpg"
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 440.44,
+              "end": 472.63
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 577.89,
+              "end": 610.65
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 58.04,
+              "end": 86.4
+            }
+          ],
+          "derivation": {
+            "claim_refs": [
+              "ying-boming-tradeoff",
+              "ying-contract-bottle",
+              "talent-core"
+            ],
+            "card_snapshots": [
+              {
+                "id": "card:636221",
+                "name": "幸运硬币",
+                "category": "talents",
+                "aliases": [],
+                "effect": "打出古币时有概率额外触发1-3次。",
+                "faction": {
+                  "id": "",
+                  "name": "未提供",
+                  "official_id": 0
+                },
+                "tier": null,
+                "quality": 2,
+                "awakened": false,
+                "skills": [],
+                "skills_source": null,
+                "stats": {},
+                "attributes": {
+                  "所属分组": "天赋包一",
+                  "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "拍卖轮次（官网原文）": "第八轮拍卖",
+                  "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                },
+                "raw_attributes": {
+                  "grpID": 2,
+                  "grpName": "天赋包一",
+                  "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                  "unlockScore": {
+                    "UnlockScore": 4,
+                    "OSGEloScore": 1320,
+                    "OSOEloScore": 1000,
+                    "OSHMaxCoin": 0,
+                    "OSHEloScore": 3000
+                  },
+                  "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                },
+                "relations": [],
+                "sources": [
+                  "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                ],
+                "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                "version": null,
+                "status": "official",
+                "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+              }
+            ],
+            "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+          },
+          "editorial_derivations": [
+            {
+              "reason": "购买条件及独立阅读机制说明",
+              "inference": true,
+              "previous_claim": {
+                "id": "v4-talent-ying-636221",
+                "section": "推荐天赋",
+                "text": "**幸运硬币：** 打出古币时有概率额外触发1-3次。 手里有可打出的古币时放大收益，配合程咬金、盾山或武则天产出的手牌使用；自动整备使用古币不能一律按额外触发计算。",
+                "condition": "",
+                "version": null,
+                "kind": "general_strategy",
+                "inference": true,
+                "evidence": [
+                  {
+                    "source": "BV15kpn6yERf:p1",
+                    "start": 473.67,
+                    "end": 507.34,
+                    "frame": "frames/515-0.jpg"
+                  },
+                  {
+                    "source": "BV15kpn6yERf:p1",
+                    "start": 508.96,
+                    "end": 541.49
+                  },
+                  {
+                    "source": "BV15kpn6yERf:p1",
+                    "start": 543.95,
+                    "end": 577.18
+                  },
+                  {
+                    "source": "BV15kpn6yERf:p1",
+                    "start": 102.38,
+                    "end": 133.69,
+                    "frame": "frames/620-0.jpg"
+                  },
+                  {
+                    "source": "BV15kpn6yERf:p1",
+                    "start": 440.44,
+                    "end": 472.63
+                  },
+                  {
+                    "source": "BV15kpn6yERf:p1",
+                    "start": 577.89,
+                    "end": 610.65
+                  },
+                  {
+                    "source": "BV1oQJ66tESA:p1",
+                    "start": 58.04,
+                    "end": 86.4
+                  }
+                ],
+                "derivation": {
+                  "claim_refs": [
+                    "ying-boming-tradeoff",
+                    "ying-contract-bottle",
+                    "talent-core"
+                  ],
+                  "card_snapshots": [
+                    {
+                      "id": "card:636221",
+                      "name": "幸运硬币",
+                      "category": "talents",
+                      "aliases": [],
+                      "effect": "打出古币时有概率额外触发1-3次。",
+                      "faction": {
+                        "id": "",
+                        "name": "未提供",
+                        "official_id": 0
+                      },
+                      "tier": null,
+                      "quality": 2,
+                      "awakened": false,
+                      "skills": [],
+                      "skills_source": null,
+                      "stats": {},
+                      "attributes": {
+                        "所属分组": "天赋包一",
+                        "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "拍卖轮次（官网原文）": "第八轮拍卖",
+                        "获取途径": "来源: 棋手升级时概率选择获取天赋。"
+                      },
+                      "raw_attributes": {
+                        "grpID": 2,
+                        "grpName": "天赋包一",
+                        "grpDesc": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+                        "unlockScore": {
+                          "UnlockScore": 4,
+                          "OSGEloScore": 1320,
+                          "OSOEloScore": 1000,
+                          "OSHMaxCoin": 0,
+                          "OSHEloScore": 3000
+                        },
+                        "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+                      },
+                      "relations": [],
+                      "sources": [
+                        "https://game.gtimg.cn/images/amside/ide_timer/589094_oscard_new_8.js"
+                      ],
+                      "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+                      "version": null,
+                      "status": "official",
+                      "path": "knowledge/cards/talents/幸运硬币－card-636221.md"
+                    }
+                  ],
+                  "reason": "基于已有教学与本地卡面整理具体机制及操作，不作为来源直接引文"
+                }
+              },
+              "card_snapshots": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

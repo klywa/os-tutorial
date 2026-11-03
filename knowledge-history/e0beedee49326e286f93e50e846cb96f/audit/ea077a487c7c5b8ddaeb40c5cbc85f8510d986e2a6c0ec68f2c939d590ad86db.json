@@ -1,0 +1,77 @@
+{
+  "note_id": "zhaojun-high-tier-dahe",
+  "previous": "knowledge-history/e0beedee49326e286f93e50e846cb96f/audit/2a48a0c12872338a5326a945b375de476128882d6ed39093f0f0c133f2572de5.json",
+  "history_index": 18,
+  "entry": {
+    "at": "2026-10-22T15:00:00+00:00",
+    "origin": "evidence_reconciliation",
+    "reason": "官方v1.7.1规则变化，保留旧结论ID及历史。",
+    "previous": {
+      "claims": [
+        {
+          "id": "ls-skill-93416",
+          "section": "棋手技能推荐",
+          "text": "**冰心领域：** 根据场上英雄品阶总数，为全队增加等级。适合东皇太一、敖隐等高品阶成员较多的场面。历史资料有30%和35%两种比例，按本局实际文字计算，再与寒雨凝结、寒潮共振比较。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 0,
+              "end": 145,
+              "frame": "frames/90-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 895,
+              "end": 1040,
+              "frame": "frames/1039-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 753.5,
+              "end": 894.7
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 85.1,
+              "end": 174.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1543.6,
+              "end": 1933.4,
+              "frame": "frames/1840-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1097.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1038.7
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 347.4,
+              "end": 435.2,
+              "frame": "frames/395-0.jpg"
+            },
+            {
+              "source": "BV1MqhE6UEe2:p1",
+              "start": 138.25,
+              "end": 162.95
+            }
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+          }
+        }
+      ]
+    }
+  }
+}

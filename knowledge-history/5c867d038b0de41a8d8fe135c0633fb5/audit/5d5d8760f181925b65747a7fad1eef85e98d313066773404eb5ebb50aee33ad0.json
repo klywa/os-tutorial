@@ -1,0 +1,268 @@
+{
+  "note_id": "b22-shangui",
+  "previous": "knowledge-history/5c867d038b0de41a8d8fe135c0633fb5/audit/22fd140aa015d4cc5f32766e3ac8879da151dd235584e30521edea0b4629ed6e.json",
+  "history_index": 1,
+  "entry": {
+    "at": "2026-10-23T12:00:00+00:00",
+    "origin": "hero5_source_review",
+    "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+    "claims": [
+      {
+        "id": "fmt24-owner-04b71e673c0d",
+        "section": "英雄",
+        "text": "**米莱狄：** 主要供养英雄，通过召唤机器人喂养山鬼。优先觉醒，提高召唤物等级及整备收益；装备先补回蓝和炽热支配者，保护其持续召唤，不必把等级资源从大司命身上移来。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 763.21,
+            "end": 933.44
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-5041"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-60570d4a8404",
+        "section": "英雄",
+        "text": "**大司命：** 成长与战斗核心，尽早取得首张才能完整启动牺牲成长。等级越高越有利于山鬼，跳级与夺取之术优先服务大司命；自身需要攻速、免控和生存，不能只保护召唤物而忽视大司命。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 55.82,
+            "end": 83.88
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 111.12,
+            "end": 140.43
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 193.56,
+            "end": 221.51
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 360.75,
+            "end": 388.36
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 389.22,
+            "end": 416.98
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-5171"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-4a80653f19be",
+        "section": "英雄",
+        "text": "**蒙恬：** 召唤小兵供山鬼吞噬，同时担任牺牲组件；与其他低阶成员一起补觉醒，不专门堆其等级替代大司命成长。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 645.97,
+            "end": 762.83
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-5271"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-aefed9a7eb56",
+        "section": "英雄",
+        "text": "**项羽：** 前排牺牲组件，帮助往生图腾取得法力与等级。无需为延迟其阵亡额外堆等级；鬼谷子词条优先覆盖本来没有牺牲的英雄。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 563.0,
+            "end": 592.45
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 733.34,
+            "end": 762.83
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 1213.81,
+            "end": 1295.18
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 1299.4,
+            "end": 1372.32
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-1351"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-660dd52b0ea3",
+        "section": "英雄",
+        "text": "**鬼谷子：** 先知图腾配合玄微之种，为没有牺牲的大河英雄补词条；未觉醒时靠图腾位置控制覆盖，不把装备重复给自带牺牲的项羽。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 1122.33,
+            "end": 1213.25
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 1213.81,
+            "end": 1295.18
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-1891"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-61f90c77cf0d",
+        "section": "英雄",
+        "text": "**少司缘：** 通过因缘图腾提供成长与图腾配套。后期是否保留取决于灵祭升华等收益及钟馗补牺牲的需要。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 303.8,
+            "end": 331.94
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 876.73,
+            "end": 904.74
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-5771"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-6546c32e0218",
+        "section": "英雄",
+        "text": "**鲁班大师：** 后期单体输出补充，机关傀儡承接高等级召唤物。优先补觉醒以提高继承比例，自身等级也有价值；尤其用于山鬼范围伤害难以击穿的单核。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 55.82,
+            "end": 83.88
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 111.12,
+            "end": 140.43
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 142.45,
+            "end": 169.11
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 449.34,
+            "end": 478.0
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 790.49,
+            "end": 817.67
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-5251"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-85eea5d917d3",
+        "section": "英雄",
+        "text": "**太乙真人：** 额外人口下的条件保护位：养成阶段可保护米莱狄或牺牲英雄，决战阶段可保护大司命。按当前需要选择复活对象，不写成无条件固定必带。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 846.6,
+            "end": 876.29
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 876.73,
+            "end": 904.74
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 1506.62,
+            "end": 1579.03
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 2202.09,
+            "end": 2277.6
+          },
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 2412.74,
+            "end": 2485.18
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-1861"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-e772cbd434eb",
+        "section": "英雄",
+        "text": "**钟馗：** 决赛补牺牲的工具位，可替换已无成长价值的少司缘，覆盖鲁班大师等缺少词条的成员。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Zga86fEic:p1",
+            "start": 876.73,
+            "end": 904.74
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shangui-owner-hero-1751"
+        ],
+        "editorial_review": "format24"
+      }
+    ]
+  }
+}

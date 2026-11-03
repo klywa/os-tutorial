@@ -1,0 +1,424 @@
+{
+  "note_id": "sanfen-reversal--baige",
+  "previous": "knowledge-history/0f457bb1aacb2bad4b1dcb49df0113db/audit/2ef29a47aeebade241653eda109dba2f6dbbbbfbe2e8af2ebee936644c9423f5.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-21",
+    "origin": "knowledge_revision",
+    "reason": "按已批准关键操作方案补充步骤、循环和早期运营；底层来源章节不改",
+    "previous": {
+      "claims": [
+        {
+          "id": "sf-principle",
+          "section": "核心原理",
+          "text": "这套阵容用反复登场和整备快速提高队伍等级，由孙悟空、阿轲承担主要物理输出，露娜也可按对手培养成范围输出。曹操的整备效果随机触发三分英雄登场，命中甄姬时提供更多英雄牌，小乔则把每次登场转成队友等级；露娜登场随机触发整备，目标集中在曹操和孙悟空时更容易同时触发两者，继续补牌、加级。白歌通过合成取得即兴创作和灵感爆发，复制更多露娜等循环材料；棋手6级的奇才还能定向补4张英雄牌。队伍把这些复制牌反复打出、合成，持续提高输出英雄等级。",
+          "condition": "",
+          "version": null,
+          "evidence": [
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 346,
+              "end": 419
+            },
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 880,
+              "end": 920
+            },
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 1078,
+              "end": 1295
+            },
+            {
+              "source": "BV16cpm64E3K:p1",
+              "start": 512.16,
+              "end": 732.41
+            }
+          ]
+        },
+        {
+          "id": "sf-chain",
+          "section": "核心机制",
+          "text": "曹操整备时随机触发三分英雄的登场效果：甄姬提供其他登场英雄牌，小乔在英雄登场时给队友加级，周瑜和阿轲也能直接增加等级。普通露娜登场随机触发2名英雄整备，觉醒后触发4名；场上整备目标集中在曹操、孙悟空时，更容易同时触发两者。曹操命中甄姬时继续提供英雄牌，孙悟空给闪现英雄加级。白歌通过合成和即兴创作取得灵感爆发，把非觉醒英雄牌变成更多转瞬复制牌，补充本回合下一次循环的材料，形成补牌、合成、加级的循环。",
+          "condition": "",
+          "version": null,
+          "evidence": [
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 346,
+              "end": 419
+            },
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 880,
+              "end": 920
+            },
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 1149,
+              "end": 1295
+            },
+            {
+              "source": "BV1R7hx6yEVK:p1",
+              "start": 1379,
+              "end": 1509
+            }
+          ]
+        }
+      ],
+      "meta": {
+        "required_factions": [
+          "faction:sanfen",
+          "faction:riluohai"
+        ],
+        "players": [
+          "player:33"
+        ],
+        "core_heroes": [
+          "card:1281",
+          "card:1271",
+          "card:1061",
+          "card:1461"
+        ],
+        "compositions": {
+          "early": [
+            {
+              "hero": "card:1111",
+              "necessity": "optional",
+              "role": "前期拿首张，免费刷新尽量留到棋手4级找核心。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1681",
+              "necessity": "optional",
+              "role": "开局缺前排时补一张。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1821",
+              "necessity": "optional",
+              "role": "现有阵容缺伤害时补入，核心输出到场后处理等级、装备再换下。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1971",
+              "necessity": "optional",
+              "role": "过渡战力足够时顺路补首张。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1281",
+              "necessity": "optional",
+              "role": "自然商店出现就先拿，棋手4级再集中找其他组件，后续重复牌用于觉醒和合成。循环阶段持续留场。",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "middle": [
+            {
+              "hero": "card:1281",
+              "necessity": "required",
+              "role": "自然商店出现就先拿，棋手4级再集中找其他组件，后续重复牌用于觉醒和合成。循环阶段持续留场。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1271",
+              "necessity": "required",
+              "role": "棋手4级集中找首张，前浪的荣光也可指定合适的三分3品阶英雄，争取甄姬或小乔。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1061",
+              "necessity": "required",
+              "role": "棋手4级先补首张，再补觉醒。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1671",
+              "necessity": "required",
+              "role": "自然商店或拍卖取得后补入。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1161",
+              "necessity": "optional",
+              "role": "前期拍卖或自然商店拿到可补战力，循环启动后重复购买仍能加级和合成。需要临时打出位置时可收起，开战前再放回。",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "late": [
+            {
+              "hero": "card:1281",
+              "necessity": "required",
+              "role": "自然商店出现就先拿，棋手4级再集中找其他组件，后续重复牌用于觉醒和合成。循环阶段持续留场。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1271",
+              "necessity": "required",
+              "role": "棋手4级集中找首张，前浪的荣光也可指定合适的三分3品阶英雄，争取甄姬或小乔。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1061",
+              "necessity": "required",
+              "role": "棋手4级先补首张，再补觉醒。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1671",
+              "necessity": "required",
+              "role": "自然商店或拍卖取得后补入。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1161",
+              "necessity": "optional",
+              "role": "前期拍卖或自然商店拿到可补战力，循环启动后重复购买仍能加级和合成。需要临时打出位置时可收起，开战前再放回。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1241",
+              "necessity": "optional",
+              "role": "棋手5级后补入；曹操未觉醒、甄姬供牌不足时可稍后上场，避免增加曹操的随机候选、降低触发甄姬的机会。循环稳定后，重复牌兼有登场加级和合成价值。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1461",
+              "necessity": "required",
+              "role": "棋手5级商店、甄姬选牌和奇才可补露娜。",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1231",
+              "necessity": "optional",
+              "role": "核心齐备、有位置且需要群体控制时补入。",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ]
+        },
+        "ban_conditions": [
+          {
+            "faction": "faction:sanfen",
+            "status": "unplayable",
+            "reason": "缺少曹操、甄姬、小乔与孙悟空，无法形成当前登场整备成长循环。"
+          },
+          {
+            "faction": "faction:riluohai",
+            "status": "unplayable",
+            "reason": "缺少露娜，当前已确认的露娜登场—整备循环不完整；其他无露娜体系不在本批证据确认范围。"
+          }
+        ],
+        "matchups": [],
+        "operation_routes": [
+          {
+            "id": "quality-first",
+            "name": "4级补质量后升级",
+            "condition": "关键组件或觉醒距离较近，现有场面能继续撑住，优先兑现小乔成长与甄姬供牌。",
+            "advantages": "较早建立有效战力与循环，降低纯升级阶段的掉血。",
+            "risks": "花费更多4级找牌资源，6级与奇才较晚；不来牌时同样存在淘汰风险。",
+            "transition": "关键组件已运转、继续找牌收益低于升级或需要露娜时，向5级和6级推进。",
+            "phases": {
+              "early": [
+                "sf-early"
+              ],
+              "middle": [
+                "sf-middle"
+              ],
+              "late": [
+                "sf-late"
+              ]
+            },
+            "claim_refs": [
+              "sf-early",
+              "sf-middle",
+              "sf-late"
+            ],
+            "variant_ids": []
+          },
+          {
+            "id": "six-first",
+            "name": "核心各有首张后升6级",
+            "condition": "已有曹操、甄姬、小乔首张，升级资源与保命手段允许承担较低当轮质量。",
+            "advantages": "较早得到奇才，可补未觉醒甄姬或已有露娜的复制资源。",
+            "risks": "少花找牌资源会削弱当前战力；保命天赋、拍卖和关键牌不保证到手。",
+            "transition": "升级期间掉血过快时，先补能改善当轮战斗的英雄，再继续升级。",
+            "phases": {
+              "early": [
+                "sf-early"
+              ],
+              "middle": [
+                "sf-middle"
+              ],
+              "late": [
+                "sf-late"
+              ]
+            },
+            "claim_refs": [
+              "sf-early",
+              "sf-middle",
+              "sf-late"
+            ],
+            "variant_ids": []
+          }
+        ],
+        "late_variants": [],
+        "major_variants": [],
+        "common_claim_refs": [],
+        "player_branches": [
+          {
+            "id": "baige",
+            "player": "player:33",
+            "condition_refs": [],
+            "operation_route_ids": [
+              "quality-first",
+              "six-first"
+            ],
+            "late_variant_ids": [],
+            "major_variant_ids": [],
+            "overrides": {},
+            "assessment": [
+              {
+                "dimension": "advantages",
+                "text": "登场、整备与合成资源能互相补充，把大量打牌转成多名英雄永久等级。",
+                "claim_refs": [
+                  "sf-principle"
+                ]
+              },
+              {
+                "dimension": "disadvantages",
+                "text": "核心未齐时容易掉血，循环受牌库、操作空间与准备时间限制。",
+                "claim_refs": [
+                  "sf-middle",
+                  "sf-late"
+                ]
+              }
+            ],
+            "claim_refs": [
+              "sf-principle",
+              "sf-chain",
+              "sf-hero-1281",
+              "sf-hero-1271",
+              "sf-hero-1061",
+              "sf-hero-1671",
+              "sf-hero-1161",
+              "sf-hero-1461",
+              "sf-hero-1241",
+              "sf-hero-1111",
+              "sf-hero-1681",
+              "sf-hero-1821",
+              "sf-hero-1971",
+              "sf-hero-1231",
+              "sf-early",
+              "sf-middle",
+              "sf-late",
+              "sf-improve",
+              "sf-route-quality-first",
+              "sf-route-six-first",
+              "sf-qicai-choice",
+              "sf-caocao-pool",
+              "sf-luna-return",
+              "sf-luna-combat",
+              "sf-qicai-near-awake",
+              "sf-talent-plan",
+              "sf-talent-635021",
+              "sf-talent-634013",
+              "sf-talent-613007",
+              "sf-talent-638003",
+              "sf-talent-615002",
+              "sf-talent-615006",
+              "sf-talent-636604",
+              "sf-talent-636306",
+              "sf-talent-635023",
+              "sf-talent-623008",
+              "sf-talent-638008",
+              "sf-equip-643503",
+              "sf-equip-643604",
+              "sf-equip-643803",
+              "sf-equip-643804",
+              "sf-equip-643404",
+              "sf-equip-643208",
+              "sf-equip-643703",
+              "sf-equip-641010",
+              "sf-equip-643304",
+              "sf-equip-641021",
+              "sf-equip-643701",
+              "sf-equip-641002",
+              "sf-equip-641004",
+              "sf-equip-643801",
+              "sf-machine-head",
+              "sf-auction1",
+              "sf-auction2",
+              "sf-auction3",
+              "sf-skill-93300",
+              "sf-skill-663308",
+              "sf-skill-93310",
+              "sf-effect-7032",
+              "sf-effect-7079",
+              "sf-effect-7080",
+              "sf-effect-7041",
+              "sf-effect-7083",
+              "sf-effect-7085",
+              "sf-time",
+              "sf-diagnose",
+              "sf-resource-before-loop",
+              "sf-late-recruitment",
+              "sf-auction-conditions"
+            ],
+            "selection": {
+              "adopt": "三分与日落海开放，前期有保血战力，曹操、甄姬、小乔逐步到手且能给露娜循环留出时间。",
+              "avoid": "关键供牌或小乔迟迟不到而持续掉血时先补战力；无法取得露娜时不能把当前流程视为已经成型。",
+              "claim_refs": [
+                "sf-principle",
+                "sf-early",
+                "sf-middle",
+                "sf-late"
+              ],
+              "stage_strength": {
+                "early": {
+                  "text": "循环未齐时，依靠过渡英雄的输出和承伤保血，为棋手4级找核心留资源。",
+                  "claim_refs": [
+                    "sf-early"
+                  ],
+                  "inference": true
+                },
+                "middle": {
+                  "text": "曹操、甄姬、小乔到齐后开始成长；缺小乔或供牌时仍有明显启动空窗。",
+                  "claim_refs": [
+                    "sf-middle"
+                  ],
+                  "inference": true
+                },
+                "late": {
+                  "text": "露娜、关键觉醒与6级技能衔接后成长空间较大，受牌库、手牌空间、操作时间及对手控制限制。",
+                  "claim_refs": [
+                    "sf-late"
+                  ],
+                  "inference": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

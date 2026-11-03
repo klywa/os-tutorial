@@ -1,0 +1,156 @@
+{
+  "note_id": "player-ying",
+  "previous": "knowledge-history/9b5ef39fefbc356b9a7d6f6c651777ab/audit/68791247b82ecfa0a40f8df1da2280a3074a7ec1af6fc5462082ba2e9f352678.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-20T04:48:31.700372+00:00",
+    "origin": "editorial",
+    "reason": "棋手升级术语统一与逐阶教学补充",
+    "previous": {
+      "claims": [
+        {
+          "id": "player-opening-lowpressure",
+          "section": "前期思路",
+          "text": "已经选择低压运营时，优先用现有过渡战力争胜、保住血量，以维持全体等级收益；不要把风险对冲的连败起手套入低压运营。先根据已选战略判断本轮目标，再观察来牌决定最终阵容。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 219.2,
+              "end": 242.8,
+              "frame": "frames/280-0.jpg"
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 274.5,
+              "end": 299.98
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 555.42,
+              "end": 588.5
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 799.51,
+              "end": 828.89
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 1.42,
+              "end": 31.6
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 32.31,
+              "end": 62.61
+            },
+            {
+              "source": "BV15kpn6yERf:p1",
+              "start": 64.28,
+              "end": 98.08
+            }
+          ],
+          "derived_from": [
+            "ying-lowpressure"
+          ]
+        },
+        {
+          "id": "player-opening-capital",
+          "section": "前期思路",
+          "text": "选择沉淀收益且早期能量充足、能兼顾必要战力时，可比较资本杠杆的存量收益；决策影响全场，可等其他玩家花掉能量后再生效。不能为保利息而不补保命战力，也不能把这一早期条件推广成中后期通用选择。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1051.99,
+              "end": 1081.1100000000001,
+              "frame": "frames/1089-0.jpg"
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1081.38,
+              "end": 1107.6
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1107.8600000000001,
+              "end": 1137.4
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1137.83,
+              "end": 1167.19
+            }
+          ],
+          "derived_from": [
+            "ying-capital-timing"
+          ]
+        }
+      ],
+      "meta": null,
+      "lineup_adaptations": [
+        {
+          "lineup": "heluo-huamulan",
+          "branch": "ying",
+          "title": "河洛花木兰",
+          "path": "knowledge/lineups/河洛花木兰-嬴律.md",
+          "selection": {
+            "adopt": "能结合所选战略保血，并能观察全场资源与同行露娜需求时考虑。",
+            "avoid": "开放决策会让同行先拿核心，或升本会导致当轮淘汰时，先保质量和自身获取资源。",
+            "signals": {
+              "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+              "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "低压运营需要保血争胜维持等级收益，风险对冲的精简连败开局则承担更高掉血风险；两者不能混用。沉淀收益配资本杠杆偏向积累资源，并不直接代表场上占优，仍要买必要战力。",
+                "claim_refs": [
+                  "ying-lowpressure",
+                  "ying-first-second-skill",
+                  "ying-capital-timing"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "从过渡输出换到花木兰、补婉儿觉醒时有战力衔接风险。空降人才、首购激励等需要匹配来牌与决策条件；逐步替换原有输出，不能为换阵或等复制一次卖空战力。",
+                "claim_refs": [
+                  "ying-early-auction",
+                  "ying-first-second-skill",
+                  "ying-first-purchase",
+                  "ying-contract-bottle"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "体系齐备后，古币出牌循环更容易兑现投资回报，首购可补关键资源；等待淘汰收益或升六仍要先保证自己能存活。决策可能同时帮助对手，资源更多不等于本轮战力必然更强。",
+                "claim_refs": [
+                  "ying-return-timing",
+                  "ying-six-redistribution",
+                  "ying-resource",
+                  "revive-budget"
+                ],
+                "inference": true
+              }
+            }
+          },
+          "required_factions": [
+            "河洛",
+            "日落海"
+          ],
+          "advantages": "战略与决策提供资源、首购复制和体系补强。",
+          "disadvantages": "全场决策也会帮助对手，操作与资源时机判断较复杂。"
+        }
+      ]
+    },
+    "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+  }
+}

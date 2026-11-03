@@ -1,0 +1,181 @@
+{
+  "note_id": "zhaojun-high-tier-dahe",
+  "previous": "knowledge-history/e0beedee49326e286f93e50e846cb96f/audit/367989b5970c8a5b027144b39ec7ad637da8a1edd68267e6d780062fc02ba4a3.json",
+  "history_index": 1,
+  "entry": {
+    "at": "2026-10-18T08:14:41.540100+00:00",
+    "origin": "major_variants_evidence_review",
+    "previous": {
+      "meta": {
+        "required_factions": [
+          "faction:dahe"
+        ],
+        "players": [
+          "player:34"
+        ],
+        "core_heroes": [
+          "card:1871",
+          "card:5191"
+        ],
+        "compositions": {
+          "early": [
+            {
+              "hero": "card:1971",
+              "necessity": "optional",
+              "role": "过渡",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1111",
+              "necessity": "optional",
+              "role": "冻结及经济",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1941",
+              "necessity": "optional",
+              "role": "孙尚香缺少时冻结替代",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "middle": [
+            {
+              "hero": "card:1871",
+              "necessity": "required",
+              "role": "控制核心",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5191",
+              "necessity": "required",
+              "role": "持续输出核心",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1891",
+              "necessity": "required",
+              "role": "图腾",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5771",
+              "necessity": "required",
+              "role": "图腾",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5171",
+              "necessity": "required",
+              "role": "图腾",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1561",
+              "necessity": "optional",
+              "role": "过渡控制",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1741",
+              "necessity": "optional",
+              "role": "过渡成长",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "late": [
+            {
+              "hero": "card:1871",
+              "necessity": "required",
+              "role": "控制与承伤",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5191",
+              "necessity": "required",
+              "role": "持续输出",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:1891",
+              "necessity": "required",
+              "role": "图腾",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5771",
+              "necessity": "required",
+              "role": "图腾",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5171",
+              "necessity": "required",
+              "role": "图腾",
+              "replaces": "",
+              "replacement_note": ""
+            },
+            {
+              "hero": "card:5371",
+              "necessity": "optional",
+              "role": "可选补充输出",
+              "replaces": "card:1741",
+              "replacement_note": "有圣剑或需要补输出时使用；不是必须成员"
+            },
+            {
+              "hero": "card:5211",
+              "necessity": "optional",
+              "role": "司空震的可选替代",
+              "replaces": "card:5371",
+              "replacement_note": "按获得英雄和护命灵珠情况选择"
+            },
+            {
+              "hero": "card:1861",
+              "necessity": "optional",
+              "role": "终局复生",
+              "replaces": "card:1561",
+              "replacement_note": "转移张良永久等级后替换，附身东皇太一"
+            }
+          ]
+        },
+        "ban_conditions": [
+          {
+            "faction": "faction:heluo",
+            "status": "playable",
+            "reason": "司空震为可选补输出，河洛被禁时不能获取司空震；按原攻略可用无阵营海月替代，不依赖司空震的针对手段仍需结合对手判断。"
+          },
+          {
+            "faction": "faction:dahe",
+            "status": "unplayable",
+            "reason": "完整阵容无法获取：东皇太一（控制与承伤）、敖隐（持续输出）、鬼谷子（图腾）、少司缘（图腾）、大司命（图腾）。",
+            "derived_dependency": true,
+            "explicit_required": false,
+            "explicit_condition": null
+          }
+        ],
+        "matchups": [
+          {
+            "target": "card:5071",
+            "condition": "敖隐与前排、回复图腾、复生配套成型。",
+            "text": "利用回复与吸血应对反甲，保护敖隐不被勾走，按增益条件与范围伤害调整图腾。"
+          }
+        ]
+      },
+      "revision": "3e1c663b2523bddfcf82"
+    },
+    "note": "按已有证据区分完整打法分支、运营节奏及工具位；原结论和来源不改写。"
+  }
+}

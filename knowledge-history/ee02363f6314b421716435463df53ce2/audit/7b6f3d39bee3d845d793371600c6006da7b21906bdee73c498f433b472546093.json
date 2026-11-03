@@ -1,0 +1,32 @@
+{
+  "note_id": "player-32",
+  "previous": null,
+  "history_index": 0,
+  "entry": {
+    "at": "2026-10-22T15:00:00+00:00",
+    "origin": "evidence_reconciliation",
+    "reason": "用户要求核对官方新公告；官方明确1.5%改1%、1%改0.7%。",
+    "previous": {
+      "claims": [
+        {
+          "id": "doc-f86f0a654e0e75b7d5d85e",
+          "section": "技能",
+          "text": "专属天赋瓜分宝藏：从2种英雄强化效果中选择1个。重点照顾：战斗开始时，你的人数最多的同品阶英雄获2%×已打出宝藏牌数量的伤害提升；阳光普照：战斗开始时，你的全体英雄获得1%x已打出宝藏牌数量的伤害提升。专属天赋是棋手后期上限所在，可以提供增伤，根据阵容的不同选择不同的增伤效果。只要前期打出的宝藏牌足够多，100%增伤效果也是轻而易举。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-a89beb6c961490e3c3b88526a2929345fa46875f313a9db621e97b80351e522b",
+              "paragraph_start": 5,
+              "paragraph_end": 5
+            }
+          ],
+          "origin": "document"
+        }
+      ]
+    }
+  }
+}

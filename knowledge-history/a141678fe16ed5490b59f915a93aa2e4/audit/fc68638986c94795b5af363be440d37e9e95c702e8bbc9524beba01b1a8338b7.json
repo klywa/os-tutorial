@@ -1,0 +1,30 @@
+{
+  "note_id": "changxiaoe-general-play",
+  "previous": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/cd71dacdf8356ebf2d226559b81e3629ff3e1775450d87bbf6a52632adc83a33.json",
+  "history_index": 3,
+  "entry": {
+    "at": "2026-10-14T08:37:34.505474+00:00",
+    "origin": "import_correction",
+    "previous": {
+      "claims": [
+        {
+          "id": "hold-luna-for-competing-mulan",
+          "section": "关键牌判断",
+          "text": "场上有多家花木兰、且这些对手需要露娜时，顺路获得的露娜可以暂留手中，限制同行获取关键牌。",
+          "version": null,
+          "condition": "场上有多家花木兰、且这些对手需要露娜，顺路获得该牌",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 1095.86,
+              "end": 1125.66,
+              "frame": "frames/1100-0.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

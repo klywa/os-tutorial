@@ -1,0 +1,557 @@
+{
+  "note_id": "batch77-abacus-single-daji",
+  "previous": null,
+  "history_index": 0,
+  "entry": {
+    "at": "2026-10-24T17:15:41.043405+00:00",
+    "origin": "import",
+    "body": {
+      "schema_version": 6,
+      "leading": "",
+      "nodes": [
+        {
+          "id": "b77-354d1614371468103b",
+          "type": "heading",
+          "title": "算盘单C-小妲己",
+          "level": 1,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-475f177b37f706b9f7",
+          "type": "heading",
+          "title": "核心原理",
+          "level": 2,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-f507455842843357d7",
+          "type": "entry",
+          "key": "正文",
+          "show_key": false,
+          "value": "这条路线用算盘把出售英雄转为随机等级，并让姜子牙通过打出符合条件的英雄继续成长，再把等级积累给选定的有阵营输出。小妲己的买牌技能继续提供效果牌与减价刷新，使反复买入、打出、出售更容易持续。主力应能吃到姜子牙的等级；海月属于无阵营，不能直接套用这条由姜子牙给有阵营主力加级的路线。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-7eacda9d3904ed279a",
+          "type": "heading",
+          "title": "英雄",
+          "level": 2,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-138fe1c002b4670b1a",
+          "type": "entry",
+          "key": "姜子牙",
+          "show_key": true,
+          "value": "打出满足阵营条件的英雄牌后为自己和其他不同阵营英雄加等级，支持选定的有阵营主力成长。觉醒需求：未确认；等级投入：接受买牌成长，统一停级点未确认；购买策略：路线成立时补首张，买牌先看能否产生有效成长；拍卖出价上限未确认；上阵时机：开始通过打出英雄给主力加级前上场；出售时机：仍需后续成长时保留，固定出售条件未确认；",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-a603921fbc1e400e29",
+          "type": "entry",
+          "key": "司空震",
+          "show_key": true,
+          "value": "本视频后期明确使用的有阵营输出示例，算盘路线并不只限司空震。觉醒需求：未确认；等级投入：接受算盘与姜子牙成长，临时等级继承仍受真实等级限制；购买策略：确定以其输出时补首张；拍卖出价上限未确认；上阵时机：确定输出方向且已有合适装备时加入；出售时机：作为本局主力保留，固定换出路线未确认；",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-76fc060f8c37511535",
+          "type": "entry",
+          "key": "裴擒虎",
+          "show_key": true,
+          "value": "终局借其他高等级英雄取得临时等级，补充主要输出的战斗上限。觉醒需求：若要复制全部借级收益，觉醒比普通卡的一半收益更高；等级投入：主要使用整备借来的临时等级，未确认专门永久等级投入或停级点；购买策略：准备最后一轮借级时再考虑留牌，不在持续刷算盘阶段提前上场分走随机加级；拍卖出价上限未确认；上阵时机：主要成长操作完成、准备终局且有实际借级目标时再上，并准备触发整备；出售时机：本轮仍需其临时等级和作战能力时保留，未确认固定换出路线；",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-7b17a076a2a0e28c0d",
+          "type": "heading",
+          "title": "阵容组成与运营节奏",
+          "level": 2,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-ce21eb2b7b071f17d5",
+          "type": "heading",
+          "title": "前期英雄组成与运营",
+          "level": 3,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-0a998bd60beb807235",
+          "type": "entry",
+          "key": "前期运营思路",
+          "show_key": true,
+          "value": "先观察算盘天赋、装备与姜子牙取得情况，再决定培养的有阵营输出；不把本局随意挑拍品的娱乐过程泛化为所有英雄都能培养。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-beac69d74dcb1708f5",
+          "type": "heading",
+          "title": "中期英雄组成与运营",
+          "level": 3,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-list-323245337a4ecba43d",
+          "type": "entry",
+          "key": "姜子牙（核心）",
+          "show_key": true,
+          "value": "路线成立时补首张。",
+          "prefix": "- ",
+          "separator": "\n"
+        },
+        {
+          "id": "b77-2d29a7ed859623d8cd",
+          "type": "entry",
+          "key": "中期运营思路",
+          "show_key": true,
+          "value": "主力与姜子牙就位后，买入并打出有效英雄，再按登场收益出售触发算盘；小妲己继续用买牌技能补资源。已有阵营会改变姜子牙触发条件，不能不分场面地禁买三分和河洛。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-44143151b29268d753",
+          "type": "heading",
+          "title": "后期英雄组成与运营",
+          "level": 3,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-list-23bc8dd7cf5ac7e9d3",
+          "type": "entry",
+          "key": "姜子牙（核心）",
+          "show_key": true,
+          "value": "路线成立时补首张。",
+          "prefix": "- ",
+          "separator": "\n"
+        },
+        {
+          "id": "b77-c1f63c5a5992f2f361",
+          "type": "entry",
+          "key": "后期运营思路",
+          "show_key": true,
+          "value": "持续成长时不急着上裴擒虎分走算盘的随机等级，准备终局时再补入并触发整备取得临时等级；只买到老虎、没有触发整备，不等于已完成借级。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-2f45cc9fe33e6bb0da",
+          "type": "heading",
+          "title": "后期提升思路",
+          "level": 2,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-3aec7d0962378a1c72",
+          "type": "entry",
+          "key": "后期提升思路",
+          "show_key": true,
+          "value": "继续将算盘出售收益与姜子牙成长用于确定的有阵营主力，终局再补裴擒虎及整备触发资源。海月属于无阵营，不能套用由姜子牙给有阵营主力加级的路线，若改用她必须另有成长来源。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-c08ffe65b6970ed0f1",
+          "type": "heading",
+          "title": "推荐天赋",
+          "level": 2,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-2bf9126240d9838b31-1",
+          "type": "entry",
+          "key": "银算盘",
+          "show_key": true,
+          "value": "出售场上英雄可让随机英雄获得等级，将买入、打出、出售转为成长；先检查场上受益候选，减少临时工具分走等级。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-2bf9126240d9838b31-2",
+          "type": "entry",
+          "key": "金算盘",
+          "show_key": true,
+          "value": "同样用出售场上英雄触发随机等级成长；需要算盘养单核时，先检查场上候选和买牌资源，不为追求固定天赋颜色放弃当前战力。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-09cf8449b71822a872",
+          "type": "heading",
+          "title": "关键操作",
+          "level": 2,
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "b77-46d7d6e72e712cf0cb",
+          "type": "entry",
+          "key": "买牌与借级顺序",
+          "show_key": true,
+          "value": "先让姜子牙和确定的有阵营主力在场，再打出符合姜子牙条件的英雄，处理登场收益后出售以触发算盘。持续成长阶段暂缓上裴擒虎，终局需要借级时才上场并触发整备。",
+          "separator": "\n\n"
+        }
+      ],
+      "supporting_nodes": [],
+      "semantics": {
+        "players": [
+          "player:10"
+        ],
+        "core_heroes": [
+          "card:1481"
+        ],
+        "required_factions": [],
+        "compositions": {
+          "early": [],
+          "middle": [
+            {
+              "hero": "card:1481",
+              "necessity": "required",
+              "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ],
+          "late": [
+            {
+              "hero": "card:1481",
+              "necessity": "required",
+              "role": "按英雄条目所述承担核心职责，缺项仍未确认",
+              "replaces": "",
+              "replacement_note": ""
+            }
+          ]
+        },
+        "ban_conditions": [],
+        "matchups": []
+      }
+    },
+    "claim_annotations": [
+      {
+        "id": "b77-f507455842843357d7-claim",
+        "text_ref": "b77-f507455842843357d7",
+        "kind": "conditional_strategy",
+        "section": "核心原理",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 239.99,
+            "end": 322.94
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 994.72,
+            "end": 1033.62
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": [
+          "entities/heroes.json card:1481/1483",
+          "entities/talents.json 银算盘随机+2、金算盘随机+3，视频开头自称金算盘与后文明称银算盘不一致，不把当前牌色当定论"
+        ]
+      },
+      {
+        "id": "b77-138fe1c002b4670b1a-claim",
+        "text_ref": "b77-138fe1c002b4670b1a",
+        "kind": "conditional_strategy",
+        "section": "英雄",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 239.99,
+            "end": 322.94
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 994.72,
+            "end": 1033.62
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": [
+          "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+        ]
+      },
+      {
+        "id": "b77-a603921fbc1e400e29-claim",
+        "text_ref": "b77-a603921fbc1e400e29",
+        "kind": "conditional_strategy",
+        "section": "英雄",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 543.25,
+            "end": 622.78
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 943.9,
+            "end": 1033.62
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": [
+          "未确认字段是编辑留缺，不以附带证据声称作者讲过。"
+        ]
+      },
+      {
+        "id": "b77-76fc060f8c37511535-claim",
+        "text_ref": "b77-76fc060f8c37511535",
+        "kind": "conditional_strategy",
+        "section": "英雄",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 771.95
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 943.9,
+            "end": 993.81
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 1348.38,
+            "end": 1392.98
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": [
+          "本视频反复强调老虎最后一波上、需整备触发",
+          "entities/heroes.json card:5021/5023；不把借级随机目标写成必定姜子牙"
+        ]
+      },
+      {
+        "id": "b77-0a998bd60beb807235-claim",
+        "text_ref": "b77-0a998bd60beb807235",
+        "kind": "conditional_strategy",
+        "section": "阵容组成与运营节奏",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 4.3,
+            "end": 322.94
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-2d29a7ed859623d8cd-claim",
+        "text_ref": "b77-2d29a7ed859623d8cd",
+        "kind": "conditional_strategy",
+        "section": "阵容组成与运营节奏",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 838.0
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-c1f63c5a5992f2f361-claim",
+        "text_ref": "b77-c1f63c5a5992f2f361",
+        "kind": "conditional_strategy",
+        "section": "阵容组成与运营节奏",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 771.95
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 1348.38,
+            "end": 1453.48
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-3aec7d0962378a1c72-claim",
+        "text_ref": "b77-3aec7d0962378a1c72",
+        "kind": "conditional_strategy",
+        "section": "后期提升思路",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 943.9,
+            "end": 1033.62
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-46d7d6e72e712cf0cb-claim",
+        "text_ref": "b77-46d7d6e72e712cf0cb",
+        "kind": "conditional_strategy",
+        "section": "关键操作",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 838.0
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 1348.38,
+            "end": 1453.48
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-2bf9126240d9838b31-1-claim",
+        "text_ref": "b77-2bf9126240d9838b31-1",
+        "kind": "conditional_strategy",
+        "section": "推荐天赋",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 771.95
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 839.6,
+            "end": 890.68
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-2bf9126240d9838b31-2-claim",
+        "text_ref": "b77-2bf9126240d9838b31-2",
+        "kind": "conditional_strategy",
+        "section": "推荐天赋",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 771.95
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 839.6,
+            "end": 890.68
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": []
+      },
+      {
+        "id": "b77-list-323245337a4ecba43d-claim",
+        "text_ref": "b77-list-323245337a4ecba43d",
+        "kind": "conditional_strategy",
+        "section": "阵容组成与运营节奏",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 838.0
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": [
+          "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+        ]
+      },
+      {
+        "id": "b77-list-23bc8dd7cf5ac7e9d3-claim",
+        "text_ref": "b77-list-23bc8dd7cf5ac7e9d3",
+        "kind": "conditional_strategy",
+        "section": "阵容组成与运营节奏",
+        "condition": "",
+        "version": null,
+        "inference": true,
+        "evidence": [
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 663.08,
+            "end": 771.95
+          },
+          {
+            "type": "video",
+            "source": "BV16RpJ62EFB:p1",
+            "start": 1348.38,
+            "end": 1453.48
+          }
+        ],
+        "origin": "batch77_fulltext_review",
+        "basis": [
+          "由本阵容已审英雄字段及对应阶段直接证据归纳购买摘要，不视为完整名单。"
+        ]
+      }
+    ]
+  }
+}

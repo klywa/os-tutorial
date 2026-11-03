@@ -1,0 +1,185 @@
+{
+  "note_id": "heluo-huamulan--naonao",
+  "previous": "knowledge-history/04332eb37876ad98c7f891a66ee4d561/audit/03aafe23fa414df485bff537bb08c90097713bb49a589e2e4a90eecdf938b62b.json",
+  "history_index": 5,
+  "entry": {
+    "at": "2026-10-19T06:34:15.658559+00:00",
+    "origin": "import_correction",
+    "previous": {
+      "claims": [
+        {
+          "id": "opening-fighters",
+          "section": "前期运营及应变",
+          "text": "前期用苏烈、李元芳配合，按来牌补弈星或牛魔。苏烈在前排通过牺牲成长；牛魔适合有把握取胜时补经济。对手前期战力明显更强、加牛魔也赢不了时，庄小鱼路线可少买过渡牌，优先升本。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 291.94,
+              "end": 319.28
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 319.67,
+              "end": 348.39
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 348.87,
+              "end": 378.67
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 0.0,
+              "end": 39.28
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 39.96,
+              "end": 66.08
+            }
+          ]
+        },
+        {
+          "id": "transition-talents",
+          "section": "推荐天赋及原因",
+          "text": "准备打后期但当前战力不足时，可以用群星璀璨、虚构武装等提供即时战力的天赋过渡。选择时看当前能否满足触发要求、现有英雄能否承接收益，而非只追求后期经济或阵营天赋。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 424.56,
+              "end": 449.28
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 451.41,
+              "end": 485.58
+            }
+          ]
+        },
+        {
+          "id": "transition-wuzhuang",
+          "section": "推荐天赋及原因",
+          "text": "虚构武装能让过渡阶段获得装备和生命值支持，给寻找花木兰及体系觉醒留出血量容错。已经取得花木兰后，也不必立刻撤掉仍能保血的过渡战力。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 481.68,
+              "end": 510.59
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 548.14,
+              "end": 578.28
+            },
+            {
+              "source": "BV1qaJr6cEFv:p1",
+              "start": 578.9,
+              "end": 609.21
+            }
+          ]
+        },
+        {
+          "id": "coin-machine",
+          "section": "推荐天赋及原因",
+          "text": "采用古币机时，先考虑前两次固定收益；已有更适合的天赋时，不必硬拿它。阵容尚不能稳血时，优先把古币用于花木兰和李白的即时战力，战力足够后再将余币投入古币机；后续随机奖励不能当作保证。",
+          "kind": "conditional_strategy",
+          "condition": "选择古币机",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 318.81,
+              "end": 347.01
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 348.17,
+              "end": 377.03
+            },
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 377.39,
+              "end": 406.05
+            }
+          ]
+        },
+        {
+          "id": "second-auction",
+          "section": "第二轮拍卖",
+          "text": "第二轮按缺口补花木兰、武则天，再考虑上官婉儿、李白等核心组件；零钱兑换路线尤其要看李白能否补临时战力。报价同时保留后续买牌和升本预算，不把实战中某次成交的金币数写成固定上限。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 269.9,
+              "end": 298.96
+            }
+          ]
+        },
+        {
+          "id": "third-auction",
+          "section": "第三轮拍卖",
+          "text": "关键牌未觉醒时，第三轮优先考虑能补觉醒的天籁琴音；已有完整体系时，再按资源和战力缺口选择。展翅腾飞能补刷新寻找露娜，也是后期可考虑的拍卖牌。不同拍卖牌解决的缺口不同，没有本批统一出价表。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1vTeS6nE9c:p1",
+              "start": 573.52,
+              "end": 599.04
+            },
+            {
+              "source": "BV1rQpy6REUX:p1",
+              "start": 1262.04,
+              "end": 1290.57
+            }
+          ]
+        },
+        {
+          "id": "luna-recycle",
+          "section": "后期运营及应变",
+          "text": "露娜已集中在自己手里、公共牌库没有余牌时，先保留；等准备刷新或使用梦幻商店、且有足够买回预算时，再卖回牌库并立刻寻找。没有预算就先卖，会把露娜交给同行。",
+          "kind": "conditional_strategy",
+          "condition": "露娜竞争激烈，需要卖回牌库再找",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1702.76,
+              "end": 1764.12
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1764.53,
+              "end": 1819.85
+            },
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 1820.5,
+              "end": 1866.34
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

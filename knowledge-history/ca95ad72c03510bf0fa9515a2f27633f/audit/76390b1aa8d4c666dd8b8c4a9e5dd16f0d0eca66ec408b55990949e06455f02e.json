@@ -1,0 +1,264 @@
+{
+  "note_id": "b22-shield-yao",
+  "previous": "knowledge-history/ca95ad72c03510bf0fa9515a2f27633f/audit/cc1aafc3f1d7b49f485c7c2d2988d68f55e5845c8ad21ffd34c2e636862468b5.json",
+  "history_index": 4,
+  "entry": {
+    "at": "2026-10-23T12:00:00+00:00",
+    "origin": "hero5_source_review",
+    "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+    "claims": [
+      {
+        "id": "fmt24-owner-a34f2855e370",
+        "section": "英雄",
+        "text": "**曜：** 主要输出与承伤，前期优先觉醒并继续打同名合成，100级强化攻击带来恢复，是此路线的重要节点；后期仍可继续成长，不把到100级等同停止投入。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 397.9,
+            "end": 477.6
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-5221"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-b74b0cea90ab",
+        "section": "英雄",
+        "text": "**西施：** 推演战术缩短曜法力上限，常规优先觉醒；有复现等额外触发渠道时可用普通西施配合两次推演，不把替代条件写成无条件不必觉醒。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 167.72,
+            "end": 194.75
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 195.12,
+            "end": 224.48
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 247.58,
+            "end": 252.34
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 341.19,
+            "end": 367.56
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1100.47,
+            "end": 1127.24
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-5231"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-1cf25f143229",
+        "section": "英雄",
+        "text": "**孙膑：** 通过频繁施法给曜永久成长，优先觉醒，前期合成与快速技能共同提高等级。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 97.66,
+            "end": 166.87
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-1181"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-3bd7c086014e",
+        "section": "英雄",
+        "text": "**墨子：** 整备积累生命上限，较早觉醒有利于后期生存与炸盾伤害；不把其普通攻击输出当作此位置主要目的。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1889.58,
+            "end": 1945.3
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-1081"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-07b291a9df2f",
+        "section": "英雄",
+        "text": "**芈月：** 打效果牌时补逐鹿成长，是多种成长渠道之一，觉醒优先级低于西施等启动组件；不为追其觉醒与高阶逐鹿同行无条件争牌。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 252.79,
+            "end": 280.53
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 286.16,
+            "end": 290.02
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 310.44,
+            "end": 339.46
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1127.58,
+            "end": 1155.37
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1838.48,
+            "end": 1889.21
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-1211"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-1fb2e30b8470",
+        "section": "英雄",
+        "text": "**扁鹊：** 破盾输出的关键，护盾被击破有冷却限制，连续叠盾不能无视冷却无限爆炸。补首张启动炸盾，再按进度补觉醒提升伤害。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 397.9,
+            "end": 424.98
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 455.42,
+            "end": 477.6
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 478.48,
+            "end": 502.97
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 614.46,
+            "end": 643.6
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1417.29,
+            "end": 1446.77
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-1191"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-85eea5d917d3",
+        "section": "英雄",
+        "text": "**太乙真人：** 后期保护曜，取得首张即可提供第二条命，按实际竞争补牌，不等所有组件完美才转入战斗。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 397.9,
+            "end": 424.98
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 455.42,
+            "end": 477.6
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1244.34,
+            "end": 1270.82
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1417.29,
+            "end": 1446.77
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 2507.58,
+            "end": 2557.43
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-1861"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-9a1402885b8b",
+        "section": "英雄",
+        "text": "**老夫子：** 3级时合成提供招募战术，帮助找组件及触发效果牌成长；占满打出位置时可在新老夫子到手后更换，先兑现供牌再退场。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 167.72,
+            "end": 194.75
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 247.58,
+            "end": 252.34
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 252.79,
+            "end": 280.53
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 341.19,
+            "end": 367.56
+          },
+          {
+            "source": "BV1Gsan6bECH:p1",
+            "start": 1777.83,
+            "end": 1822.81
+          }
+        ],
+        "derived_from": [
+          "b22-b22-shield-yao-owner-hero-1391"
+        ],
+        "editorial_review": "format24"
+      }
+    ]
+  }
+}

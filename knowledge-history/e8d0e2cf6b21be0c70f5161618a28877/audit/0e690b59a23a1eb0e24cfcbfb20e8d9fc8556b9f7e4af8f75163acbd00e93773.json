@@ -1,0 +1,114 @@
+{
+  "note_id": "player-yaomei",
+  "previous": "knowledge-history/e8d0e2cf6b21be0c70f5161618a28877/audit/85d73cf452c83caf5cba22a8cb29022b3a9c956f869d1aec96c74c2172e3468c.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-20T04:48:31.700372+00:00",
+    "origin": "editorial",
+    "reason": "棋手升级术语统一与逐阶教学补充",
+    "previous": {
+      "claims": [
+        {
+          "id": "player-opening-deer-wins",
+          "section": "前期思路",
+          "text": "需要靠小鹿胜场发育时，前期应同时争取保血和累计胜利，利用已有过渡战力为后续定阵留容错。小鹿的额外等级收益与胜场条件有关，不要在未定阵时就把主动连败当作默认选择；这不代表任何对手都能打赢。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 144.99,
+              "end": 198.57
+            }
+          ],
+          "derived_from": [
+            "opening-wins"
+          ]
+        },
+        {
+          "id": "player-opening-deer-opponent",
+          "section": "前期思路",
+          "text": "需要争取前期胜场时，按对手质量选择过渡英雄：对手较弱、牛魔能够取胜时可补经济；面对同行瑶妹或强势孙尚香时，比较用干将莫邪替代牛魔补即时战力。保留用于后续升本和购买核心的预算，不为凑齐过渡名单刷空金币。",
+          "condition": "",
+          "inference": true,
+          "kind": "general_strategy",
+          "version": null,
+          "origin": "editorial",
+          "evidence": [
+            {
+              "source": "BV1pmap6HELz:p1",
+              "start": 31.3,
+              "end": 61.46
+            },
+            {
+              "source": "BV1xdYq6KEnA:p1",
+              "start": 198.86,
+              "end": 253.08
+            }
+          ],
+          "derived_from": [
+            "opening-four",
+            "opening-missing"
+          ]
+        }
+      ],
+      "meta": null,
+      "lineup_adaptations": [
+        {
+          "lineup": "yaomei-sacrifice-lixin",
+          "branch": "yaomei",
+          "title": "李信牺牲流",
+          "path": "knowledge/lineups/李信牺牲流-瑶妹.md",
+          "selection": {
+            "adopt": "能保前期胜场养小鹿，河洛开放，且能取得李信、钟馗和复生工具时考虑。",
+            "avoid": "持续掉血或缺李信时先补过渡战力；共鸣前不能安全升六时不硬升。",
+            "signals": {
+              "来牌": "先拿第一张李信启动成长，再追觉醒；缺李信时用狄仁杰或百里守约带装备保血，不刷空金币。",
+              "同行与对手": "先观察同行是否占用关键牌及对手控制、爆发和回复；缺少统一数量阈值。",
+              "经济和掉血压力": "保留当轮必要战力与核心预算，能稳定过渡再升本。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "小鹿配过渡英雄有争取前期胜场的能力，胜场同时帮助保血和养小鹿；面对强势孙尚香或同行仍需补即时战力，不能只凭棋手认定必胜。",
+                "claim_refs": [
+                  "opening-four",
+                  "opening-wins"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "没有李信、等级和复生配套未成时，是需要重点防守的空窗；不能将小鹿前期优势延续理解为中期也强。取得李信后才开始兑现成长，缺牌时靠装备承接者保血并避免刷空金币。",
+                "claim_refs": [
+                  "middle-no-lixin",
+                  "middle-fast-five",
+                  "middle-item-holder"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "李信达到关键等级、牺牲与复生衔接后可持续输出；共鸣前安全升六可进一步放大收益。是否形成优势取决于等级、死亡顺序、复生形式及对手，不能忽略共鸣前被淘汰的风险。",
+                "claim_refs": [
+                  "growth-hundred",
+                  "growth-zhongkui",
+                  "taiyi-by-target",
+                  "six-budget-pressure",
+                  "order-six-before-double"
+                ],
+                "inference": true
+              }
+            }
+          },
+          "required_factions": [
+            "河洛"
+          ],
+          "advantages": "小鹿奉献集中等级，李信结合牺牲与复生继续输出。",
+          "disadvantages": "依赖死亡顺序、连线与100级门槛；复生成员可能分走奉献收益。"
+        }
+      ]
+    },
+    "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+  }
+}

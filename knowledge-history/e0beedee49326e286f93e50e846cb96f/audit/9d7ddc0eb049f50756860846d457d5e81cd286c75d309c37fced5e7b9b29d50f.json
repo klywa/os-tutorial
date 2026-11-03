@@ -1,0 +1,69 @@
+{
+  "note_id": "zhaojun-high-tier-dahe",
+  "previous": "knowledge-history/e0beedee49326e286f93e50e846cb96f/audit/bd9c3b3f0c5b31edf8510c78bce797d5943051f27d57ae50ffb37cdf005a0a95.json",
+  "history_index": 16,
+  "entry": {
+    "at": "2026-10-22T15:00:00+00:00",
+    "origin": "evidence_reconciliation",
+    "reason": "官方v1.7.1规则变化，保留旧结论ID及历史。",
+    "previous": {
+      "claims": [
+        {
+          "id": "ls-hero-1741",
+          "section": "英雄",
+          "text": "**虞姬：** 前中期输出与团队成长英雄。开团时根据图腾数量，为自己和其他大河英雄增加永久等级。觉醒：会扩大受益人数，准备继续使用时再补，敖隐即将接替时可暂缓。等级投入：随队成长。购买、上阵时机：棋手3级起按战力需要补入，搭配鬼谷子等图腾英雄；敖隐到手后可直接接替主要输出。已有合适等级、装备的司空震也可用于后续替换。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 895,
+              "end": 1040,
+              "frame": "frames/1039-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 0,
+              "end": 145,
+              "frame": "frames/90-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 753.5,
+              "end": 894.7
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 85.1,
+              "end": 174.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1543.6,
+              "end": 1933.4,
+              "frame": "frames/1840-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1097.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1038.7
+            }
+          ],
+          "derived_from": [
+            "claim-4c5fb188552a343f023e"
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+          }
+        }
+      ]
+    }
+  }
+}
