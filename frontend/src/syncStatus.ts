@@ -1,4 +1,4 @@
-export type SyncStatus={state:string;phase?:string;message?:string;job_id?:string;updated_at?:string;next_retry_at?:number|null};
+export type SyncStatus={state:string;conflict_note_ids?:string[];conflict_count?:number;phase?:string;message?:string;job_id?:string;updated_at?:string;next_retry_at?:number|null};
 export function syncLabel(sync:SyncStatus){
  if(sync.state==='synced')return '已同步';
  if(sync.state==='pending-deploy')return '已同步，等待发布新版本';

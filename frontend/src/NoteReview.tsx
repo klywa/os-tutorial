@@ -1,5 +1,5 @@
 import {useProposals,type Proposal} from './Proposals';
-import {useCapabilities} from './auth';
+import {useCapabilities,useCanEditNote} from './auth';
 import {useEditLocks,leaseRef,type Resource,type Lease} from './editLocks';
 import {createContext,useContext,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import type {KnowledgeDocument,KnowledgeNode,Note} from './types';
@@ -18,7 +18,9 @@ type Review={canSave:boolean;proposals:Proposal[];proposing:boolean;legacyReview
 const Context=createContext<Review|null>(null);
 export const useReview=()=>useContext(Context);
 export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=false,readOnly=false}:{note?:Note;children:ReactNode;onSaved:(note:Note)=>void;onDirty:(dirty:boolean)=>void;externalDirty?:boolean;readOnly?:boolean}){
- const {reviews,inlineEdit,proposeNotes,editNotes}=useCapabilities();
+ const {reviews,inlineEdit,proposeNotes}=useCapabilities();
+ const editNotes=useCanEditNote(note?.id);
+ readOnly=readOnly||(!proposeNotes&&!editNotes);
  const {items:proposals}=useProposals(note?.id);
  const [loss,setLoss]=useState<{lease:Lease;reason:string;at:number}[]>([]);
  const locks=useEditLocks(note?.id,(lease,reason)=>setLoss(rows=>[...rows,{lease,reason,at:Date.now()}]));
@@ -43,6 +45,7 @@ export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=fals
   cancel:()=>{setUncertain(false);requestRef.current=null;void locks.release();setDraft(null);setInlineDirty(false);dirtyRef.current=false;setError('');onDirty(extraDirty);},
   save:async(changes)=>{
    if(!draft||savingRef.current)return;
+   if(readOnly||(!proposeNotes&&!editNotes)){setError('当前笔记暂停编辑，草稿已保留');return;}
    const replay=!changes&&requestRef.current;
    if(!replay&&(readOnly||(!proposeNotes&&!editNotes)||!locks.online)){setError('请恢复连接并确认最新版本后保存，草稿已保留');return;}
    if(!replay&&!changes?.length)return;
@@ -65,7 +68,7 @@ export function NodeActions({node,surface}:{node:KnowledgeNode;surface?:string})
  const title=node.type==='heading'?node.title:node.show_key?node.key:'正文';
  const owner=node.type==='entry'?review.locks.owner({kind:'entry',id:node.id}):undefined;
  const count=review.comments.filter(c=>c.node_id===node.id&&c.status==='open').length;
- return <span className="node-review-actions"><button type="button" disabled={review.busy||!!owner&&review.proposing} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id,surface)}>{owner&&!review.proposing?'接管编辑':'编辑'}</button>{owner&&<small className="lock-hint">{owner.owner} 正在编辑 · 已锁定</small>}{review.legacyReviews&&<button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button>}</span>;
+ return <span className="node-review-actions"><button type="button" disabled={review.readOnly||review.busy||!!owner&&review.proposing} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id,surface)}>{owner&&!review.proposing?'接管编辑':'编辑'}</button>{owner&&<small className="lock-hint">{owner.owner} 正在编辑 · 已锁定</small>}{review.legacyReviews&&<button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button>}</span>;
 }
 export function HistoryButton(){const review=useReview();return review?.legacyReviews?<><button onClick={review.openHistory}>历史版本</button><button onClick={()=>review.startComment('*')}>全部批注{review.comments.some(c=>c.status==='open')&&`（${review.comments.filter(c=>c.status==='open').length}）`}</button></>:null;}
 export function InlineReviewEditor(){
@@ -110,7 +113,7 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
  <div className="review-toolbar"><strong>{chapter?'编辑章节':'编辑段落'}</strong><button disabled={review.busy} onClick={review.cancel}>取消</button>{review.uncertain&&<button disabled={review.busy} onClick={()=>void review.save()}>重试核对保存结果</button>}<button disabled={review.uncertain||review.busy||!review.dirty||!review.canSave||!locks.online} className="primary" onClick={save}>{review.busy?'保存中…':review.proposing?'暂存待确认':'保存'}</button></div>
  {!review.canSave&&<p role="status">正在等待同步或确认最新版本，草稿已保留。</p>}{!locks.online&&<p role="status">连接中断，编辑已暂停；草稿保留。</p>}
  {(review.error||message)&&<p className="error" role="alert">{review.error||message}</p>}
- <fieldset disabled={review.busy||review.uncertain}>{nodes.map((n,i)=>{const target=targetFor(n),lease=locks.get(target),owner=locks.owner(target);return <div key={n.id} className="entry-edit-row" data-entry={n.id} onBlur={e=>blur(n,e)}>
+ <fieldset disabled={review.readOnly||review.busy||review.uncertain}>{nodes.map((n,i)=>{const target=targetFor(n),lease=locks.get(target),owner=locks.owner(target);return <div key={n.id} className="entry-edit-row" data-entry={n.id} onBlur={e=>blur(n,e)}>
  {n.type==='heading'?<strong>{n.title}</strong>:<><div className="entry-lock-status">{owner&&<span className="lock-hint">{owner.owner} 正在编辑 · 已锁定</span>}{!lease&&<button disabled={!!acquiring||!!owner&&review.proposing} onClick={()=>void enter(n)}>{acquiring===n.id?'正在取得权限…':owner&&!review.proposing?'接管编辑':'编辑此项'}</button>}{lease&&<small>正在编辑</small>}</div><fieldset disabled={!lease}><NodeFields node={n} original={originals.current.get(n.id)??n} onChange={node=>update(local.current.map(v=>v.id===node.id?node:v))}/></fieldset></>}
  <div className="scope-insert-actions">{n.type==='entry'&&<>{chapter&&<><button onClick={()=>void insert(i)}>在前面插入</button><button onClick={()=>void insert(i+1)}>在后面插入</button></>}<button disabled={!lease} onClick={()=>{update(local.current.filter(o=>o.id!==n.id));if(!originals.current.has(n.id)&&!local.current.some(v=>JSON.stringify(targetFor(v))===JSON.stringify(target)))void locks.release(target);}}>删除条目</button></>}{n.type==='heading'&&<button onClick={()=>void insert(i+1)}>章节开头插入条目</button>}</div></div>;})}{[...originals.current.values()].filter(n=>n.type==='entry'&&!nodes.some(v=>v.id===n.id)).map(n=><div className="entry-edit-row" key={'deleted-'+n.id}><del>{n.type==='entry'?n.key:''} · 待删除</del>{n.type==='entry'&&<p>{n.value}</p>}{!locks.get(targetFor(n))&&<button onClick={()=>void enter(n)}>重新取得删除权限</button>}<button onClick={()=>{const next=[...local.current];const index=initial.findIndex(v=>v.id===n.id);next.splice(Math.min(index,next.length),0,n);update(next);void locks.release(targetFor(n));}}>恢复条目</button></div>)}{chapter&&<button onClick={()=>void insert(local.current.length)}>章节末尾插入条目</button>}</fieldset>
  </section>;

@@ -26,9 +26,9 @@ describe('public access',()=>{
 });
 
 afterEach(()=>vi.unstubAllGlobals());
-it.each(['pending','conflict','pending-deploy'])('pauses admin writes during %s while keeping local mode editable',state=>{
+it.each(['pending','conflict','pending-deploy'])('only blocks global writes for a real sync failure during %s',state=>{
  const session={mode:'public' as const,role:'admin' as const,username:'admin',base_path:'/os-tutorial',sync:{state,message:'等待同步'}};
- expect(capabilitiesFor(session)).toMatchObject({editNotes:false,manageMatches:false});
+ expect(capabilitiesFor(session)).toMatchObject({editNotes:state!=='conflict',manageMatches:state!=='conflict'});
  expect(capabilitiesFor({...session,mode:'local'})).toMatchObject({editNotes:true,manageMatches:true});
 });
 it('announces successful mutations so authentication can refresh sync status immediately',async()=>{

@@ -37,7 +37,7 @@ export function matches(note:Note,query:string,entities:Entity[]){
 }
 export function sectionText(note:Note,section:string){return note.claims.filter(c=>c.section===section).map(c=>c.text).join('\n\n');}
 export async function api<T>(url:string,method='GET',body?:unknown):Promise<T>{
-  const response=await fetch(apiUrl(url),{method,...(/^(proposals|edit-locks)(?:[/?]|$)/.test(url)?{cache:'no-store' as RequestCache}:{}),headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
+  const response=await fetch(apiUrl(url),{method,...(/^(proposals|edit-locks|sync-conflicts)(?:[/?]|$)/.test(url)?{cache:'no-store' as RequestCache}:{}),headers:{'Content-Type':'application/json'},body:body===undefined?undefined:JSON.stringify(body)});
   if(response.status===401)sessionExpired();
   const data=await response.json();if(!response.ok)throw Object.assign(new Error(data.error??'请求失败，请重试'),{reason:data.reason,resource:data.resource,status:response.status});if(!url.startsWith('edit-locks')&&method.toUpperCase()!=='GET'&&method.toUpperCase()!=='HEAD')window.dispatchEvent(new CustomEvent('wxq:sync-changed',{detail:data.sync??(url==='admin/sync/retry'?data:undefined)}));return data;
 }

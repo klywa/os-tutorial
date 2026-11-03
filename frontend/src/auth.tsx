@@ -4,7 +4,10 @@ import {syncPollMs,type SyncStatus} from './syncStatus';
 export type Role='guest'|'admin'|'annotator';
 export type Session={mode:'local'|'public';role:Role;account_role?:Role;allowed_roles?:Role[];username:string|null;base_path:string;sync?:SyncStatus;capabilities?:Record<string,boolean>};
 const local:Session={mode:'local',role:'admin',username:null,base_path:'/'};
-export function capabilitiesFor(session:Session){const admin=session.role==='admin',localTools=session.mode==='local'&&admin,writable=admin&&(session.mode==='local'||!session.sync||session.sync.state==='synced');return {localTools,editNotes:writable,manageMatches:writable,reviews:localTools,inlineEdit:admin||session.role==='annotator',proposeNotes:session.role==='annotator'};}
+export function capabilitiesFor(session:Session){const admin=session.role==='admin',localTools=session.mode==='local'&&admin,writable=admin&&(session.mode==='local'||!session.sync||session.sync.state!=='conflict');return {localTools,editNotes:writable,manageMatches:writable,reviews:localTools,inlineEdit:admin||session.role==='annotator',proposeNotes:session.role==='annotator'};}
+
+export function canEditNote(session:Session,noteId?:string){return capabilitiesFor(session).editNotes&&(!noteId||!session.sync?.conflict_note_ids?.includes(noteId));}
+export function useCanEditNote(noteId?:string){return canEditNote(useAuth().session,noteId);}
 
 type Auth={session:Session;refresh:()=>Promise<void>;login:(username:string,password:string)=>Promise<void>;logout:()=>Promise<void>;openLogin?:()=>void;closeLogin?:()=>void;loginOpen?:boolean;switchRole?:(role:Role)=>Promise<void>};
 export const AuthContext=createContext<Auth>({session:local,refresh:async()=>{},login:async()=>{},logout:async()=>{}});
