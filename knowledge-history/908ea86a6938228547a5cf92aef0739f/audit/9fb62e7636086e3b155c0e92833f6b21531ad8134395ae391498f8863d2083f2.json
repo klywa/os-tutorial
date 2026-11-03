@@ -1,0 +1,229 @@
+{
+  "note_id": "b22-umbrella-shouyue",
+  "previous": "knowledge-history/908ea86a6938228547a5cf92aef0739f/audit/bb6dbe8af17dc66005f398fda2880cd8de94c1d86a5a234e7ce8c757a0670500.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-23T12:00:00+00:00",
+    "origin": "hero5_source_review",
+    "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+    "claims": [
+      {
+        "id": "fmt24-owner-4fa4d4573603",
+        "section": "英雄",
+        "text": "**百里守约：** 主要输出，牺牲触发缩短法力上限，40级获得贯穿、100级消除贯穿衰减。优先保证能狙出伤害，再追觉醒加快缩蓝；普通状态也能启动，不能把未觉醒等同完全不能打。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1152.78,
+            "end": 1179.38
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1265.07,
+            "end": 1293.87
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2487.02,
+            "end": 2567.6
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-1961"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-ccee2a455863",
+        "section": "英雄",
+        "text": "**铠：** 牺牲与复生组件，同时给守约临时等级，是明世隐转永久等级的主要配套。第一轮拍卖优先级高，觉醒提高该来源的临时等级。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 550.77,
+            "end": 579.68
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-1931"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-db9a87220df6",
+        "section": "英雄",
+        "text": "**明世隐：** 连接守约，把可转化的临时等级变为永久等级。重复登场增加额度；当前来源仅有铠时，额度到相应上限后不继续无效堆叠，得到枫舞扶摇或李白等来源后另算。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 204.18,
+            "end": 233.5
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 925.22,
+            "end": 954.69
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1070.24,
+            "end": 1101.57
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1206.45,
+            "end": 1235.81
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2286.06,
+            "end": 2341.01
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-5011"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-f1b84104646a",
+        "section": "英雄",
+        "text": "**程咬金：** 通过整备取得古币，补守约等级；中期补觉醒提高古币收益，兼任牺牲前排。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1070.24,
+            "end": 1101.57
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2775.89,
+            "end": 2841.74
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-1441"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-2b67fb11d2c8",
+        "section": "英雄",
+        "text": "**盾山：** 以河洛整备与古币参与成长，按当前觉醒进度补牌；与程咬金分工不代表一定长期占满全部可选人口。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 550.77,
+            "end": 579.68
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2346.48,
+            "end": 2423.71
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2991.92,
+            "end": 3056.02
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-5091"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-e772cbd434eb",
+        "section": "英雄",
+        "text": "**钟馗：** 给缺词条的成员补牺牲，从而加快守约缩蓝，注意覆盖实际缺少词条的目标。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1070.24,
+            "end": 1101.57
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-1751"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-85eea5d917d3",
+        "section": "英雄",
+        "text": "**太乙真人：** 5级后的保护位，让守约在爆发、反伤或多次复生对局中争取更多狙击次数。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 0.14,
+            "end": 25.44
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 1179.6,
+            "end": 1206.45
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2843.5,
+            "end": 2893.36
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 2991.92,
+            "end": 3056.02
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-1861"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-bd4608d3c81e",
+        "section": "英雄",
+        "text": "**马可波罗：** 仅在崛起与双生突袭的配套路线补入，与守约共战产生额外技能分身；没有该配套时不固定占用原工具位。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 409.02,
+            "end": 436.88
+          },
+          {
+            "source": "BV1hRem66EMw:p1",
+            "start": 436.88,
+            "end": 463.47
+          }
+        ],
+        "derived_from": [
+          "b22-b22-umbrella-shouyue-owner-hero-1321"
+        ],
+        "editorial_review": "format24"
+      }
+    ]
+  }
+}

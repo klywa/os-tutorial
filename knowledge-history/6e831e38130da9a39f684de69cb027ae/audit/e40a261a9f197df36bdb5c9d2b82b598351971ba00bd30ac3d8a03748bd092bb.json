@@ -1,0 +1,67 @@
+{
+  "note_id": "player-zhuang",
+  "previous": "knowledge-history/6e831e38130da9a39f684de69cb027ae/audit/8a78fb643a3410dca66e11f2269acc450c24aa6f55e49737124f28b6c42d5f20.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-20T04:48:31.700372+00:00",
+    "origin": "editorial",
+    "reason": "棋手升级术语统一与逐阶教学补充",
+    "previous": {
+      "claims": [],
+      "meta": null,
+      "lineup_adaptations": [
+        {
+          "lineup": "heluo-huamulan",
+          "branch": "zhuang",
+          "title": "河洛花木兰",
+          "path": "knowledge/lineups/河洛花木兰-庄小鱼.md",
+          "selection": {
+            "adopt": "有启动如梦的金币、有用河洛人数和可承受的掉血空间时考虑。",
+            "avoid": "凑入无用河洛牌、升本后无预算买牌，或等待如梦会导致淘汰时先补当轮战力。",
+            "signals": {
+              "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+              "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "保血过渡与精简速五有不同代价：有把握取胜时补苏烈、牛魔保血；补牌也难赢时节约开销，但要承受掉血。尚未开如梦前，不宜把后续补牌能力当作现有战力。",
+                "claim_refs": [
+                  "zhuang-opening-dispute",
+                  "opening-fighters"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "五本第一次如梦能集中补体系，是启动窗口；收益取决于场上有用河洛成员、核心来牌和合成安排。技能未补到核心、婉儿未觉醒或为凑人数塞无用牌时，仍有明显空窗。",
+                "claim_refs": [
+                  "zhuang-three-five",
+                  "zhuang-delayed-dispute",
+                  "save-search",
+                  "guide-middle-awakening"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "六本第二次如梦和满足条件的梦幻商店可继续补觉醒、露娜，支持后续循环；低血量失败触发资源的同时也意味着淘汰风险。强敌前仍需预留整备与复生预算，不为追求后续商店主动丢掉关键血量。",
+                "claim_refs": [
+                  "zhuang-second-cast",
+                  "zhuang-dream-trigger",
+                  "zhuang-dream-luna",
+                  "revive-budget"
+                ],
+                "inference": true
+              }
+            }
+          },
+          "required_factions": [
+            "河洛",
+            "日落海"
+          ],
+          "advantages": "如梦与梦幻商店补组件、觉醒和露娜。",
+          "disadvantages": "技能不保证命中核心；人数、合成和保血需要协同。"
+        }
+      ]
+    },
+    "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+  }
+}

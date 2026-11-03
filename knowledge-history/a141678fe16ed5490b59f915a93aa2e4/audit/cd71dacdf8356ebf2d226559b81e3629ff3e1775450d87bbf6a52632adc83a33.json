@@ -1,0 +1,51 @@
+{
+  "note_id": "changxiaoe-general-play",
+  "previous": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/3413d2effb44b19549e62430c0161f500f026e167ae5d741eff7c07466d7cd39.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-11T17:17:11.783615+00:00",
+    "origin": "import_correction",
+    "previous": {
+      "claims": [
+        {
+          "id": "auction-budget-dispute",
+          "section": "第一轮拍卖",
+          "text": "一份讲解要求拍卖超过2点能量一律放弃；另一份讲解根据辅助、升本预算与保血需求允许灵活投入。两者尚待裁决，暂不制定统一出价上限。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Rsai6CEYT:p1",
+              "start": 177.1,
+              "end": 201.4
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 206.3,
+              "end": 323.1
+            }
+          ]
+        },
+        {
+          "id": "double-growth-final-auction",
+          "section": "第三轮拍卖",
+          "text": "双养路线优先关注扶摇之上或超新星等等级启动收益；一份讲解愿意为此投入十余能量，另一份讲解主张拍卖超过两能量就放弃。该投入上限仍待裁决，先区分双养的终局启动需求与省钱升本路线，不给统一出价。",
+          "condition": "双养后期需要等级启动收益时",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 2148.12,
+              "end": 2173.58,
+              "frame": "frames/2160-0.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

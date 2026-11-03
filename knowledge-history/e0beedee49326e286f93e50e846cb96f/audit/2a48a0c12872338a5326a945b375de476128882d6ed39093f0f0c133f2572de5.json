@@ -1,0 +1,58 @@
+{
+  "note_id": "zhaojun-high-tier-dahe",
+  "previous": "knowledge-history/e0beedee49326e286f93e50e846cb96f/audit/9d7ddc0eb049f50756860846d457d5e81cd286c75d309c37fced5e7b9b29d50f.json",
+  "history_index": 17,
+  "entry": {
+    "at": "2026-10-22T15:00:00+00:00",
+    "origin": "evidence_reconciliation",
+    "reason": "官方v1.7.1规则变化，保留旧结论ID及历史。",
+    "previous": {
+      "claims": [
+        {
+          "id": "ls-skills",
+          "section": "棋手技能推荐",
+          "text": "第一次深度冻结按获取核心的方式选择：霜寒进化用高品阶大河材料寻找同阵营核心，冰封结晶结合兑换券和商店补牌，寒冰王座则直接给随机五品阶英雄。第二次强化比较场面：高品阶成员多时看冰心领域，大河成员多时看寒雨凝结，觉醒英雄多时看寒潮共振。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 85.1,
+              "end": 174.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1543.6,
+              "end": 1933.4,
+              "frame": "frames/1840-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 347.4,
+              "end": 435.2,
+              "frame": "frames/395-0.jpg"
+            },
+            {
+              "source": "BV1MqhE6UEe2:p1",
+              "start": 103.69,
+              "end": 162.95
+            },
+            {
+              "source": "BV1jBJR6eE5f:p1",
+              "start": 87.64,
+              "end": 200.17
+            }
+          ],
+          "derived_from": [
+            "guide-skills-freezing"
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+          }
+        }
+      ]
+    }
+  }
+}

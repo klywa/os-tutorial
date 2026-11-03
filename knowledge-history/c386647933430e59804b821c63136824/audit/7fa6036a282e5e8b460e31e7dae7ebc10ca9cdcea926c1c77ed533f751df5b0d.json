@@ -1,0 +1,294 @@
+{
+  "note_id": "b22-prep-hanxin",
+  "previous": "knowledge-history/c386647933430e59804b821c63136824/audit/82e5a764bc0c2ab42a8b169635293121faacc2f988b2a92b7a71f3719046e1dc.json",
+  "history_index": 1,
+  "entry": {
+    "at": "2026-10-23T12:00:00+00:00",
+    "origin": "hero5_source_review",
+    "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+    "claims": [
+      {
+        "id": "fmt24-owner-89087a0facdb",
+        "section": "英雄",
+        "text": "**韩信：** 主要输出，频繁开团、整备提高永久等级，觉醒提高成长速度，第三轮可借天籁琴音补关键觉醒。等级越高越有利于面板与收割，仍需保证攻速启动和生存。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 0.0,
+            "end": 27.88
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 86.24,
+            "end": 109.29
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 141.82,
+            "end": 165.66
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 166.34,
+            "end": 193.35
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 222.28,
+            "end": 245.64
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-1501"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-2669093bf1e3",
+        "section": "英雄",
+        "text": "**亚连：** 整备定向给主力成长，优先觉醒取得双次整备，避免用随机分配工具替代定向成长后丢失确定收益。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 304.8,
+            "end": 334.54
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 552.66,
+            "end": 579.08
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 579.44,
+            "end": 606.79
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 1664.17,
+            "end": 1768.72
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-5141"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-1642b7b3563b",
+        "section": "英雄",
+        "text": "**狂铁：** 前期主要战力与整备成员，优先觉醒；阿科米亚核心积累可用跳级回收给非日落海的韩信。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 275.85,
+            "end": 304.0
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 304.8,
+            "end": 334.54
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 475.12,
+            "end": 501.78
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 502.19,
+            "end": 530.13
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 530.45,
+            "end": 551.81
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-5031"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-20412c3cb1fb",
+        "section": "英雄",
+        "text": "**云中君：** 开团提供装备相关等级，与韩信开团成长及封神一瞬联动；优先保证实际装备覆盖。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 1664.17,
+            "end": 1768.72
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 2173.27,
+            "end": 2239.99
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-5061"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-1137deed4ae1",
+        "section": "英雄",
+        "text": "**瑶：** 开团触发成长并保护韩信，40级控制在后期单挑有价值；未达到100级时不为属性分享强行配置装备。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 362.76,
+            "end": 389.48
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 448.01,
+            "end": 474.77
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 552.66,
+            "end": 579.08
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 579.44,
+            "end": 606.79
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 607.48,
+            "end": 635.06
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-5051"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-6986946aa839",
+        "section": "英雄",
+        "text": "**雅典娜：** 配合其他整备英雄提供自动成长；当轮手牌已打完后补入，避免占满打牌空间。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 304.8,
+            "end": 334.54
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 1836.65,
+            "end": 1912.74
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 2056.61,
+            "end": 2169.7
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 2173.27,
+            "end": 2239.99
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-1831"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-85eea5d917d3",
+        "section": "英雄",
+        "text": "**太乙真人：** 后期保护位，缺人口时先留手，准备转战斗或进入决赛再上；觉醒回手形成空间时继续利用打牌成长。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 193.85,
+            "end": 221.87
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 418.49,
+            "end": 447.6
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 830.3,
+            "end": 858.99
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 859.31,
+            "end": 887.13
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 1769.21,
+            "end": 1836.21
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-1861"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-ac0ad7627d64",
+        "section": "英雄",
+        "text": "**孙悟空：** 额外位置下的整备工具，当前用途不必夺取其他核心等级；成型过程可临时上场，再为关键保护位腾位置。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 304.8,
+            "end": 334.54
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 799.35,
+            "end": 828.74
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 1575.96,
+            "end": 1664.16
+          },
+          {
+            "source": "BV1H7aP6FEgZ:p1",
+            "start": 2367.34,
+            "end": 2433.31
+          }
+        ],
+        "derived_from": [
+          "b22-b22-prep-hanxin-owner-hero-1671"
+        ],
+        "editorial_review": "format24"
+      }
+    ]
+  }
+}

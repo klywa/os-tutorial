@@ -1,0 +1,67 @@
+{
+  "note_id": "player-ming",
+  "previous": "knowledge-history/ecc822adc3754d8d93492229a4cdc75b/audit/f3d7a011937acf6974711afad7383191e87400121f929b2ff9447fc6fe1db99e.json",
+  "history_index": 2,
+  "entry": {
+    "at": "2026-10-20T04:48:31.700372+00:00",
+    "origin": "editorial",
+    "reason": "棋手升级术语统一与逐阶教学补充",
+    "previous": {
+      "claims": [],
+      "meta": null,
+      "lineup_adaptations": [
+        {
+          "lineup": "heluo-huamulan",
+          "branch": "ming",
+          "title": "河洛花木兰",
+          "path": "knowledge/lineups/河洛花木兰-明先生.md",
+          "selection": {
+            "adopt": "已有保血过渡战力、卦象·节支持到五本，并能保留购买核心的资源时考虑。",
+            "avoid": "花木兰迟迟不来且掉血压力大时先补李信或李白过渡，不能只有刷新没有战力。",
+            "signals": {
+              "来牌与同行": "先检查花木兰、上官婉儿与露娜的获取和公共牌库；同行会争夺露娜。",
+              "对手与压力": "先能保住当轮血量，再为后续循环存资源；无统一血量阈值。"
+            },
+            "stage_strength": {
+              "early": {
+                "text": "卦象·节主要提供升本资源，单挂弈星节约开销的同时会压低场上战力；只有补牛魔有机会取胜时才兼顾其产币。这个阶段的重点是控制掉血和升本成本，不能视为默认强势期。",
+                "claim_refs": [
+                  "ming-economy",
+                  "ming-opening-yixing"
+                ],
+                "inference": true
+              },
+              "middle": {
+                "text": "五本转卦象·丰集中找花木兰、上官婉儿后，取得核心与觉醒进度才逐步补起战力；找牌不顺而只有刷新时存在空窗。李信、李白和现有装备可承担过渡，升六需保留本轮买牌与保血预算。",
+                "claim_refs": [
+                  "ming-five",
+                  "ming-economy",
+                  "missing-mulan"
+                ],
+                "inference": true
+              },
+              "late": {
+                "text": "产币成员、婉儿觉醒与露娜整备循环齐备后，复生和等级收益逐步完整；卦象带来的资源仍需转成有效战力。对手控制、风筝及本轮复生预算会限制上限，不能只凭已经成型判断强弱。",
+                "claim_refs": [
+                  "coin-loop",
+                  "wanner-awaken",
+                  "revive-budget",
+                  "anti-burst",
+                  "ailin-chase"
+                ],
+                "inference": true
+              }
+            }
+          },
+          "required_factions": [
+            "河洛",
+            "日落海"
+          ],
+          "advantages": "能量与卦象·丰支持找体系。",
+          "disadvantages": "核心未到手时战力空窗；留五与升六的收益边界尚不明确。"
+        }
+      ]
+    },
+    "evidence_report": "knowledge/reviews/棋手升级教学-2026-10-20.json"
+  }
+}

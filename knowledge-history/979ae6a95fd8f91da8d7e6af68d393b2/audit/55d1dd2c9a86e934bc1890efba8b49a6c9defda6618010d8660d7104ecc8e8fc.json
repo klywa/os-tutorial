@@ -1,0 +1,72 @@
+{
+  "note_id": "heluo-huamulan--ying",
+  "previous": "knowledge-history/979ae6a95fd8f91da8d7e6af68d393b2/audit/2dab3f0ce166d893142fef4296129c63759c39bfc40ed60716f6b5cf9a477ec4.json",
+  "history_index": 7,
+  "entry": {
+    "at": "2026-10-19T06:58:00.181801+00:00",
+    "origin": "import_correction",
+    "previous": {
+      "claims": [
+        {
+          "id": "zhong-position",
+          "section": "站位技巧",
+          "text": "决赛需要钟馗的降级牺牲时，让花木兰位于钟馗左右1格覆盖内；调整后复查花木兰是否仍被覆盖。盾山的产币位置与钟馗的决赛作用不同，不是阵容成型后两者都永久必带。",
+          "kind": "general_strategy",
+          "condition": "",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1oQJ66tESA:p1",
+              "start": 618.27,
+              "end": 644.28,
+              "frame": "frames/645-21.jpg"
+            }
+          ]
+        },
+        {
+          "id": "ying-first-purchase",
+          "section": "关键牌判断",
+          "text": "嬴律选择首购激励后，每回合买入的第一张牌会额外复制一张。商店出现武则天或露娜、但本回合首购已用掉时，可在战力允许等待的前提下锁住，留给下回合首购；下一回合先买目标牌，再买其他牌。不要为了翻倍而耽误当轮必需的保血操作。",
+          "kind": "conditional_strategy",
+          "condition": "嬴律选择首购激励",
+          "version": null,
+          "inference": false,
+          "evidence": [
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 1172.26,
+              "end": 1203.38,
+              "frame": "frames/1320-0.jpg"
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 1204.34,
+              "end": 1235.61
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 1235.94,
+              "end": 1275.08
+            },
+            {
+              "source": "BV1otaK6FEE1:p1",
+              "start": 1306.18,
+              "end": 1331.68
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1023.57,
+              "end": 1051.5700000000002
+            },
+            {
+              "source": "BV1Jzp36REg6:p1",
+              "start": 1051.99,
+              "end": 1081.1100000000001
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

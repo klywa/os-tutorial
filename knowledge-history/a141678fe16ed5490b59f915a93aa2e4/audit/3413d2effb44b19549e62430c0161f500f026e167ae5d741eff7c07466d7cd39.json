@@ -1,0 +1,47 @@
+{
+  "note_id": "changxiaoe-general-play",
+  "previous": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/eba74fed7e2b8ccae4b7c454bcd3d93f920aea6000e3f3477a276776c82ed0d1.json",
+  "history_index": 1,
+  "entry": {
+    "at": "2026-10-11T17:16:17.984292+00:00",
+    "origin": "import_correction",
+    "previous": {
+      "claims": [
+        {
+          "id": "double-growth-middle",
+          "section": "中期运营及应变",
+          "text": "双养路线在三本用完免费刷新、补三分成员，再持续升本。环境压力低时可等第二轮拍卖补诸葛亮或吕布；高压局先凑四名能够受益的英雄、启动已有小菟送福，再根据拍卖来牌调整，不把等待拍卖作为硬规则。",
+          "condition": "采用双养路线，按当前血量和环境压力选择启动时机",
+          "version": null,
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 494.24,
+              "end": 717.93,
+              "frame": "frames/540-0.jpg"
+            }
+          ]
+        },
+        {
+          "id": "combo-spring-flash",
+          "section": "阵容组成",
+          "text": "大河被禁且开局获得灵泉法杖时，可以把法杖给苏烈，用李元芳先养苏烈，再通过百里玄策与裴擒虎组成闪现培养分支；后期用传承或遗志处理李元芳，接苏烈＋裴擒虎＋百里玄策＋露娜。继续转型时，可处理百里玄策等级并挂太乙真人补保护。没有灵泉法杖时，不直接照搬这套组合。",
+          "version": null,
+          "condition": "单独禁大河、获得灵泉法杖并有对应闪现成员时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1ydeE6jEE8:p1",
+              "start": 1417.52,
+              "end": 1573.87,
+              "frame": "frames/1540-0.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

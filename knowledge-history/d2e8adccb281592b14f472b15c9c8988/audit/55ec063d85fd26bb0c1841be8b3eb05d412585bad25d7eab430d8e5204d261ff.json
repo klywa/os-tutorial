@@ -1,0 +1,235 @@
+{
+  "note_id": "b22-marco-pig",
+  "previous": "knowledge-history/d2e8adccb281592b14f472b15c9c8988/audit/c16c923707501e8a74d898abfbde6988a5a7e2a2cf36106f37dbd27a052fa861.json",
+  "history_index": 1,
+  "entry": {
+    "at": "2026-10-23T12:00:00+00:00",
+    "origin": "hero5_source_review",
+    "reason": "本轮来源全文与实体机制复核，保留原英雄结论ID及全部原证据，按五字段重写。",
+    "claims": [
+      {
+        "id": "fmt24-owner-aff126683b9a",
+        "section": "英雄",
+        "text": "**猪八戒：** 主要承伤与法术输出，100级后移除总层数上限但仍有单轮限制，不能把高血量理解成无条件无限成长。优先补觉醒提高合成收益，镜子复制时整理手牌；其护盾被扣也能帮助积累生命上限。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 58.62,
+            "end": 86.02
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 86.52,
+            "end": 115.14
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 146.53,
+            "end": 175.98
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 286.05,
+            "end": 314.72
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 316.66,
+            "end": 343.8
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-5111"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-1a8c3234e8fc",
+        "section": "英雄",
+        "text": "**姬小满：** 出售场上英雄提供临时刷新，持续刷牌时优先补其效果；更换过渡英雄前先让其在场，避免漏掉出售进度。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1054.13,
+            "end": 1082.73
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1230.49,
+            "end": 1259.35
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-5641"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-ef3058df087f",
+        "section": "英雄",
+        "text": "**刘禅：** 提供团队临时等级，配合明世隐转成永久等级；夺取时可以优先处理其可回收的永久等级，不误把临时等级直接夺走。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1230.49,
+            "end": 1259.35
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-1141"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-db9a87220df6",
+        "section": "英雄",
+        "text": "**明世隐：** 把猪八戒的临时等级转为永久等级，重复登场和唤醒有价值；不把所有重复牌都视为仅补觉醒。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 373.25,
+            "end": 398.96
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1054.13,
+            "end": 1082.73
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1895.82,
+            "end": 1996.48
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-5011"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-1137deed4ae1",
+        "section": "英雄",
+        "text": "**瑶：** 给猪八戒护盾，100级属性分享时自身等级和属性有价值，因此夺取不优先抽走瑶的等级。近卫荣耀、不死鸟之眼等可按其节点服务属性共享。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 373.25,
+            "end": 398.96
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 716.37,
+            "end": 735.68
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1054.13,
+            "end": 1082.73
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1230.49,
+            "end": 1259.35
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1598.58,
+            "end": 1626.67
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-5051"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-85eea5d917d3",
+        "section": "英雄",
+        "text": "**太乙真人：** 后期保护猪八戒，第二条命提供继续承伤与叠生命的机会；根据牌库竞争决定获取时机，必要时借天籁琴音补觉醒。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 651.36,
+            "end": 678.53
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 971.82,
+            "end": 995.64
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1400.24,
+            "end": 1429.9
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 3124.52,
+            "end": 3182.3599999999997
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-1861"
+        ],
+        "editorial_review": "format24"
+      },
+      {
+        "id": "fmt24-owner-3d638af60f3d",
+        "section": "英雄",
+        "text": "**孙尚香：** 前期输出与刷新来源，退场前让猪八戒回收有用等级；成型后刷到也可作为有额外收益的打出出售牌。",
+        "condition": "",
+        "inference": true,
+        "kind": "conditional_strategy",
+        "evidence": [
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 856.21,
+            "end": 882.53
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 996.3,
+            "end": 1023.85
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1111.88,
+            "end": 1141.79
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1172.1399999999999,
+            "end": 1201.61
+          },
+          {
+            "source": "BV1Mseb6EEMq:p1",
+            "start": 1259.69,
+            "end": 1285.17
+          }
+        ],
+        "derived_from": [
+          "b22-b22-marco-pig-owner-hero-1111"
+        ],
+        "editorial_review": "format24"
+      }
+    ]
+  }
+}

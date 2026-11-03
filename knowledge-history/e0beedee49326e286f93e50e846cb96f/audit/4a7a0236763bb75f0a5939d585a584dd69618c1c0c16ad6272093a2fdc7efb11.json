@@ -1,0 +1,77 @@
+{
+  "note_id": "zhaojun-high-tier-dahe",
+  "previous": "knowledge-history/e0beedee49326e286f93e50e846cb96f/audit/ea077a487c7c5b8ddaeb40c5cbc85f8510d986e2a6c0ec68f2c939d590ad86db.json",
+  "history_index": 19,
+  "entry": {
+    "at": "2026-10-22T15:00:00+00:00",
+    "origin": "evidence_reconciliation",
+    "reason": "官方v1.7.1规则变化，保留旧结论ID及历史。",
+    "previous": {
+      "claims": [
+        {
+          "id": "ls-skill-93417",
+          "section": "棋手技能推荐",
+          "text": "**寒雨凝结：** 根据主要阵营英雄人数，为全队增加等级。场上大河成员较多时有较高收益；选牌时用实际人数计算，并考虑接下来是否会替换成员。",
+          "version": null,
+          "condition": "",
+          "inference": true,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 0,
+              "end": 145,
+              "frame": "frames/90-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 895,
+              "end": 1040,
+              "frame": "frames/1039-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 753.5,
+              "end": 894.7
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 85.1,
+              "end": 174.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 1543.6,
+              "end": 1933.4,
+              "frame": "frames/1840-0.jpg"
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1097.8
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 951,
+              "end": 1038.7
+            },
+            {
+              "source": "BV1aThi6AEAC:p1",
+              "start": 347.4,
+              "end": 435.2,
+              "frame": "frames/395-0.jpg"
+            },
+            {
+              "source": "BV1MqhE6UEe2:p1",
+              "start": 138.25,
+              "end": 162.95
+            }
+          ],
+          "review_basis": {
+            "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
+          }
+        }
+      ]
+    }
+  }
+}

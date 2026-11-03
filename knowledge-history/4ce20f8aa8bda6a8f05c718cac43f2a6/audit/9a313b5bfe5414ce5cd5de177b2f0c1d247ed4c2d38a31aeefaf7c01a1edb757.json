@@ -1,0 +1,188 @@
+{
+  "note_id": "player-angela",
+  "previous": null,
+  "history_index": 0,
+  "entry": {
+    "at": "2026-10-19T13:13:42.761249+00:00",
+    "origin": "editorial",
+    "reason": "棋手五章节与未定阵开局整理",
+    "previous": {
+      "claims": [
+        {
+          "section": "技能",
+          "text": "特制灵异追踪器初始拥有3点神秘力量，每回合自动获得3点；每点神秘力量提供2点飞行器法术攻击。飞行器连接最近英雄，连接英雄存活时持续输出；开战为连接英雄提供神秘力量值30%的临时等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 0,
+              "end": 57.92,
+              "frame": "frames/20-0.jpg"
+            }
+          ]
+        },
+        {
+          "section": "技能",
+          "text": "三阶获得顿悟时刻，从三项候选中选择神秘力量获取方式。累计获得5、10、20、35点神秘力量时，驱鬼!加大力度!分别提供灵异探测大改装；六阶超级连接额外提供一次大改装，并随机给予连接英雄自身等级10%–30%的临时等级。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 59.04,
+              "end": 86.98,
+              "frame": "frames/80-0.jpg"
+            },
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 315.7,
+              "end": 341.8,
+              "frame": "frames/325-0.jpg"
+            },
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 1054.76,
+              "end": 1104.9
+            }
+          ]
+        },
+        {
+          "section": "使用技巧",
+          "text": "按实际阵容选择奇想：频繁使用英雄牌的图腾体系可优先英雄牌，频繁花能量可考虑奖励；预期前期掉血时补给有价值，能连胜时考虑胜利。效果牌选项不适合本来就很少使用效果牌的路线。",
+          "version": null,
+          "condition": "频繁使用英雄牌",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 259.8,
+              "end": 315.4
+            }
+          ]
+        },
+        {
+          "section": "使用技巧",
+          "text": "刘邦持续输出路线通常不选一次性自爆模块。优先考虑壮胆、保送升级、上强度、打扫战场、坐火箭；变胖、杠上了、秒变脆皮、技能加持、复仇者等结合对手和工具英雄情况选择。低调、重拳及蓄力痛击不是刘邦的常规优先项。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 908.28,
+              "end": 1104.9
+            }
+          ]
+        },
+        {
+          "section": "技能",
+          "text": "壮胆给连接英雄15点双抗；紧急救命在连接英雄受到致命伤时提供1.5秒无敌且不可选中。这是两个不同模块，紧急救命不额外提供壮胆的15点双抗。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 455.25,
+              "end": 513.2,
+              "frame": "frames/490-0.jpg"
+            }
+          ]
+        },
+        {
+          "section": "技能",
+          "text": "拿来吧你每次命中将目标等级的1.5%临时继承给连接英雄，至少1级；本视频展示的版本已经不再降低对方等级。坐火箭使神秘力量转化临时等级的效果值增加60%。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 800.36,
+              "end": 859.3,
+              "frame": "frames/820-0.jpg"
+            },
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 859.84,
+              "end": 907.9,
+              "frame": "frames/900-0.jpg"
+            }
+          ]
+        },
+        {
+          "section": "使用技巧",
+          "text": "拿来吧你配秒变脆皮可提高攻击频率，加快临时等级积累；打扫战场继承连接英雄法攻，适合刘邦、芈月等有法攻的核心。廉颇的扁鹊炸盾伤害不能直接当作廉颇自身法攻继承。",
+          "version": null,
+          "condition": "打扫战场继承连接英雄法攻",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 800.36,
+              "end": 907.9
+            }
+          ]
+        },
+        {
+          "section": "技能",
+          "text": "让你嘚瑟在本视频展示的版本中从等级最高的三个敌人里随机选一个，可能打到工具英雄；不能沿用旧版固定针对最高等级核心的预期。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 625,
+              "end": 652.3
+            }
+          ]
+        },
+        {
+          "section": "适配阵容",
+          "text": "适合以刘邦为核心的图腾成长体系，利用持续法伤、临时等级以及明世隐的等级转化。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 1105.19,
+              "end": 1273.85,
+              "frame": "frames/1255-0.jpg"
+            }
+          ]
+        },
+        {
+          "section": "使用技巧",
+          "text": "瑶附身主核心时可以考虑二号机，以双飞行器持续输出，但需权衡临时等级转化效果的降低。",
+          "version": null,
+          "condition": "瑶附身主核心时",
+          "inference": false,
+          "kind": "conditional_strategy",
+          "evidence": [
+            {
+              "source": "BV1Jjao66ELh:p1",
+              "start": 342.29,
+              "end": 371.4
+            }
+          ]
+        }
+      ],
+      "manual_sections": [],
+      "revision": "31a49000e41d5a5f33a4"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "note_id": "changxiaoe-general-play",
+  "previous": null,
+  "history_index": 0,
+  "entry": {
+    "at": "2026-10-11T17:13:29.528687+00:00",
+    "origin": "import_correction",
+    "previous": {
+      "claims": [
+        {
+          "id": "skill-growth",
+          "section": "核心机制",
+          "text": "每回合使用小菟助力，积累递增的加级次数；小菟送福会对随机四名英雄分别触发一次小菟助力。全场英雄等级总和达到 50、150、375 时各获得一次小菟送福。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "mechanic",
+          "evidence": [
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 7.1,
+              "end": 150.8
+            },
+            {
+              "source": "BV12Ba16dEmw:p1",
+              "start": 0,
+              "end": 56.5
+            }
+          ]
+        },
+        {
+          "id": "equip-tank",
+          "section": "推荐装备",
+          "text": "苏烈／狂铁过渡优先红莲炎甲、反伤重甲等即时保血装备。针对未取得吸血书的嬴政，讲解给出苏烈反伤重甲＋魔女斗篷的针对性配置，不将其直接推广为全部法伤对局的固定出装。",
+          "version": null,
+          "condition": "",
+          "inference": false,
+          "kind": "general_strategy",
+          "evidence": [
+            {
+              "source": "BV1n5af6SE4F:p1",
+              "start": 73,
+              "end": 96.6
+            },
+            {
+              "source": "BV1xaY169EM3:p1",
+              "start": 1395,
+              "end": 1451
+            },
+            {
+              "source": "BV1WPap6DEa9:p1",
+              "start": 1039.23,
+              "end": 1095.86
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
