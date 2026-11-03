@@ -78,7 +78,7 @@ def apply(store,actor,payload):
         current['body'].setdefault('semantics',{})
         receipt={'kind':'entry-save','request_key':key,'payload':payload,'actor':actor,'refs':refs,
             'pre_body':record['body'],'post_body':current['body'],'pre_revision':record['metadata']['revision'],
-            'history_index':len(record['metadata'].get('history',[])),'note_id':payload['note_id'],
+            'history_index':record['metadata'].get('history_count',0)+len(record['metadata'].get('history',[])),'note_id':payload['note_id'],
             'workspace':str(store.root.resolve())}
         store._write_receipt(receipt)
         result=json_store.edit(store.root,payload['note_id'],{'revision':record['metadata']['revision'],'document':current['body']},public=True)

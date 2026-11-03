@@ -194,7 +194,7 @@ def merge_profile(record,player,evidence,reconciliation=None):
     if body!=before['body']:
         from wxq import now
         meta.setdefault('history',[]).append({'at':now(),'origin':'official','previous':json_store.snapshot(before)})
-        meta.setdefault('retired_claim_annotations',[]).extend({**c,'history_index':len(meta['history'])-1} for c in retired if c not in meta.get('retired_claim_annotations',[]))
+        meta.setdefault('retired_claim_annotations',[]).extend({**c,'history_index':meta.get('history_count',0)+len(meta['history'])-1} for c in retired if c not in meta.get('retired_claim_annotations',[]))
     report.update(changed_nodes=sorted(changed),retained_supplements=len(supplements))
     json_store.check_record(result)
     return result,report

@@ -363,7 +363,7 @@ class ProposalStore:
                 body=self._apply_body(conn,item,record)
                 receipt={'proposal_id':pid,'revoked_leases':revoked,'reviewed_by':actor['username'],'pre_body':record['body'],
                     'post_body':body,'pre_revision':record['metadata']['revision'],
-                    'history_index':len(record['metadata'].get('history',[])),'note_id':item['note_id'],
+                    'history_index':record['metadata'].get('history_count',0)+len(record['metadata'].get('history',[])),'note_id':item['note_id'],
                     'workspace':str(self.root.resolve())}
                 self._write_receipt(receipt)
                 result=json_store.edit(self.root,item['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True)
@@ -384,7 +384,8 @@ class ProposalStore:
             with store_lock(self.root,wait=True):
                 json_store.recover(self.root)
                 record=self._note(receipt['note_id'])
-            history=record['metadata'].get('history',[])
+            from knowledge_history import history_entries
+            history=history_entries(self.root,record)
             index=receipt['history_index']
             transition=history[index].get('previous',{}) if len(history)>index else {}
             after=history[index+1].get('previous',{}) if len(history)>index+1 else record

@@ -299,3 +299,9 @@ class ProposalTests(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+class Storage2ProposalTests(ProposalTests):
+    def setUp(self):
+        super().setUp()
+        from migrate_knowledge_history import migrate
+        migrate(self.root, apply=True)
