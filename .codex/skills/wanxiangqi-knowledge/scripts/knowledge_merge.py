@@ -66,7 +66,10 @@ def merge_record(base,left,right,preferred='right'):
  for k in dict.fromkeys(k for r in (base,left,right) for k in r['body']):
   if k in ('nodes','supporting_nodes'):result['body'][k]=nodes(k)
   else:
-   v=value(*(r['body'].get(k,MISSING) for r in (base,left,right)),'body/'+k)
+   b,l,r=(src['body'].get(k,MISSING) for src in (base,left,right))
+   if k=='semantics' and l!=r and ((left['metadata'].get('manual_semantics') and r!=b) or (right['metadata'].get('manual_semantics') and l!=b)):
+    v=conflict('body/'+k,b,l,r,'人工关联知识受到保护，需要明确选择')
+   else:v=value(b,l,r,'body/'+k)
    if v is not MISSING:result['body'][k]=v
  for k in dict.fromkeys(k for r in (base,left,right) for k in r['metadata']):
   if k in IGNORED or k in ('claim_annotations','node_annotations','manual_sections','manual_semantics'):continue

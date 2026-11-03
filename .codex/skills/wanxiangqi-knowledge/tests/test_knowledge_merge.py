@@ -51,3 +51,8 @@ class OrderingTests(unittest.TestCase):
   b=record();b['body']['nodes'].append(dict(b['body']['nodes'][1],id='c'));l=deepcopy(b);r=deepcopy(b);l['body']['nodes'][1:]=[b['body']['nodes'][2],b['body']['nodes'][1],b['body']['nodes'][3]];r['body']['nodes'][1:]=[b['body']['nodes'][1],b['body']['nodes'][3],b['body']['nodes'][2]];self.assertTrue(any(c['path'].endswith('/order') for c in merge_record(b,l,r)['conflicts']))
 
 if __name__=='__main__':unittest.main()
+
+class SemanticProtectionTests(unittest.TestCase):
+ def test_manual_semantics_protection(self):
+  b=record();b['body']['semantics']={'topic':'old'};l=deepcopy(b);r=deepcopy(b);l['metadata']['manual_semantics']=True;r['body']['semantics']['topic']='new'
+  self.assertTrue(merge_record(b,l,r)['conflicts'])
