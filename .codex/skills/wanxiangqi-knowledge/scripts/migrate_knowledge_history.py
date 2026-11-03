@@ -25,21 +25,21 @@ def migrate(root, *, apply=False):
                 if value.get('note_id')!=nid: raise ValueError('Version identity mismatch')
                 entry=history.version_write(value); writes.append(entry)
                 mapping.append({'old':path.relative_to(root).as_posix(),'new':entry['path'],'version_id':value['id']})
-        report={'storage_version':2,'notes':len(records),'legacy_history_entries':sum(len(r['metadata'].get('history',[])) for r in records),
-                'versions':len(writes),'archive_bytes':sum(len(json.dumps(w['value'],ensure_ascii=False).encode('utf-8')) for w in writes), 'mapping':mapping}
-        if not apply or history.enabled(root): return report
-        backup=root/'raw/backups/history-migration'/uuid.uuid4().hex
-        backup.mkdir(parents=True)
-        shutil.copytree(root/'knowledge',backup/'knowledge')
-        if (root/'raw/knowledge/versions').exists(): shutil.copytree(root/'raw/knowledge/versions',backup/'versions')
         journal=store.save(root,records,origin='history_migration',prepare_only=True,storage_version=2)
+        if not journal:journal={'archives':[]}
         journal['archives']=writes+journal.get('archives',[])
-        # Immutable per-note mapping also preserves old numeric history_index positions.
         for record in records:
             nid=record['metadata']['id']
             value={'note_id':nid,'version_mapping':[m for m in mapping if m['old'].startswith(note_review.version_folder(root,nid).relative_to(root).as_posix()+'/')],
                    'history_index_count':len(record['metadata'].get('history',[]))}
             journal['archives'].append({'path':history.folder(nid)+'/migrations/'+store.digest(value)+'.json','value':value})
+        report={'storage_version':2,'notes':len(records),'legacy_history_entries':sum(len(r['metadata'].get('history',[])) for r in records),
+                'versions':len(writes),'archive_bytes':sum(len((json.dumps(w['value'],ensure_ascii=False,indent=2)+'\n').encode('utf-8')) for w in journal['archives']), 'mapping':mapping}
+        if not apply or history.enabled(root): return report
+        backup=root/'raw/backups/history-migration'/uuid.uuid4().hex
+        backup.mkdir(parents=True)
+        shutil.copytree(root/'knowledge',backup/'knowledge')
+        if (root/'raw/knowledge/versions').exists(): shutil.copytree(root/'raw/knowledge/versions',backup/'versions')
         store.write_file(backup/'report.json',report)
         store.write_file(root/store.JOURNAL,journal)
         store.recover(root)

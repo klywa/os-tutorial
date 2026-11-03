@@ -113,3 +113,12 @@ class ExternalHistoryTests(unittest.TestCase):
         incoming['body']['nodes'].pop()
         with patch.object(s,'check_evidence'),patch('wxq.entities',return_value=[]): s.commit(self.root,[incoming])
         self.assertEqual(history_entries(self.root,s.records(self.root)[0])[0],{'old':'evidence'})
+
+    def test_migration_size_includes_audit_and_mapping_without_versions(self):
+        from migrate_knowledge_history import migrate
+        self.record['metadata']['history']=[{'body':{'old':'evidence'}}]
+        s.save(self.root,[self.record])
+        shutil.rmtree(self.root/'raw/knowledge/versions')
+        report=migrate(self.root)
+        self.assertGreater(report['archive_bytes'],0)
+        self.assertFalse((self.root/'knowledge-history').exists())
