@@ -12,7 +12,7 @@ description: 将王者万象棋攻略复用文字稿或按需ASR及关键帧核�
 用户要求官网资料补全、技能选项核对或官网同步时，先读[官网同步说明](references/official-sync.md)。`sync-entities` 与前端手动、每日任务默认只拉取本地缓存，不创建或更新正式笔记。用户明确要求修改笔记时才使用 `sync-entities --apply-notes`，且仅更新 `official_profile.nodes` 绑定的官方机制；人工技巧、攻略和阵容不得因此覆盖。
 
 ## schema6：纯 JSON 知识
-先读[知识契约](references/knowledge-contract.md)。knowledge/ 仅保存 JSON：名称.json 是正文唯一事实源，同名 .meta.json 保存身份、来源、证据、历史、人工保护、冲突与迁移映射。index.meta.json 只登记身份和路径，不复制全文。
+先读[知识契约](references/knowledge-contract.md)。knowledge/ 仅保存 JSON：名称.json 是正文唯一事实源，同名 .meta.json 保存身份、来源、证据、人工保护与历史引用。index.meta.json 只登记身份和路径，不复制全文。启用 storage_version=2 后，完整历史由统一写入接口存入 knowledge-history；同步分歧由 knowledge-sync 记录并在管理员网页处理，不手改附件或用 Git ours/theirs 解决知识冲突。
 
 棋手笔记按官方 player_id 唯一绑定；阵容独立保存为“阵容名-棋手”，共通知识完整归入各适用分支。常小娥使用“常小娥灵活变阵-常小娥”。不生成编号副本、阵容总览、知识 Markdown、reviews 或 replays。
 

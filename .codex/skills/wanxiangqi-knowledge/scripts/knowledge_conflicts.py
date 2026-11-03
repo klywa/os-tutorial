@@ -100,8 +100,30 @@ def _detail(root,nid):
  conflicts=_group_paths(nid,current,variants,conflicts)
  return {'note_id':nid,'revision':store.digest([rows,current]),'note_revision':current['metadata'].get('revision') if current else None,'request_ids':[k for k,_ in rows],'current':current,'variants':variants,'conflicts':conflicts,'merged':merged,'requests':rows}
 
-def _text(value):
+def _summary(value,record=None):
+ labels={'topic':'主题','composition':'阵容组成','routes':'运营路线','route':'运营路线','general':'通用打法','required_factions':'必须阵营','core_heroes':'主要英雄','players':'适用棋手','replacements':'替换条件','conditions':'适用条件','condition':'适用条件','forbidden':'禁用条件','$text':'关联段落','source':'来源','start':'开始秒数','end':'结束秒数','evidence':'证据','text_ref':'关联段落','kind':'结论类别','version':'适用版本','inference':'是否推断','id':'记录标识'}
+ if isinstance(value,dict):
+  if set(value)=={'$text'} and record:
+   body=record['body'];node=next((n for n in [*body.get('nodes',[]),*body.get('supporting_nodes',[])] if n['id']==value['$text']),None)
+   if node:return node.get('value',node.get('title',''))
+  return '；'.join(labels.get(k,k)+'：'+_summary(v,record) for k,v in value.items()) or '无关联信息'
+ if isinstance(value,list):return '；'.join(_summary(v,record) for v in value) or '无'
+ if value is None:return '无'
+ if isinstance(value,bool):return '是' if value else '否'
+ return str(value)
+
+def _text(value,path='',record=None):
  if value is None:return None
+ if path.startswith('body/semantics') or path.startswith(('metadata/aliases','metadata/entities','metadata/core','metadata/player_id','metadata/claim_annotations')):
+  # Show the actual business values rather than indistinguishable placeholders.
+  # Evidence is restricted to source IDs/times, never raw filesystem locations.
+  if path.startswith('metadata/claim_annotations'):
+   def safe(v):
+    if isinstance(v,dict):return {k:safe(x) for k,x in v.items() if k in ('id','kind','condition','version','inference','evidence','source','start','end','text_ref')}
+    if isinstance(v,list):return [safe(x) for x in v]
+    return v
+   value=safe(value)
+  return _summary(value,record)
  if isinstance(value,str):return value
  if isinstance(value,dict):return value.get('value',value.get('title','关联信息发生变化'))
  if isinstance(value,list) and all(isinstance(x,str) for x in value):return value
@@ -110,10 +132,15 @@ def _text(value):
 def get_group(root,note_id):
  d=_detail(root,note_id)
  if d is None:return None
+ def public_conflict(c):
+  path=c['path'];base=next((req['base'] for _,req in d['requests'] if _at(req['base'],path)==c['base']),None)
+  return {'id':c['id'],'path':path,'reason':c['reason'],'base':_text(c['base'],path,base),
+   'current':_text(c['left'],path,d['current']),'incoming':_text(c['right'],path,d['variants'].get(c['variant_id'])),
+   'variant_id':c['variant_id'],'variants':[{'variant_id':v['variant_id'],'value':_text(v['value'],path,d['variants'].get(v['variant_id']))} for v in c['variants']]}
  return {**{k:d[k] for k in ('note_id','revision','note_revision','request_ids')},
   'current':{'variant_id':store.digest(d['current']),'body':deepcopy(d['current']['body']) if d['current'] else None},
   'variants':[{'variant_id':k,'body':deepcopy(v['body']) if v else None} for k,v in d['variants'].items()],
-  'conflicts':[{'id':c['id'],'path':c['path'],'reason':c['reason'],'base':_text(c['base']),'current':_text(c['left']),'incoming':_text(c['right']),'variant_id':c['variant_id'],'variants':[{'variant_id':v['variant_id'],'value':_text(v['value'])} for v in c['variants']]} for c in d['conflicts']]}
+  'conflicts':[public_conflict(c) for c in d['conflicts']]}
 
 def list_groups(root):return [get_group(root,n) for n in sorted({v['note_id'] for _,v in _requests(root)})]
 def is_blocked(root,note_id):return bool(_requests(root,note_id))

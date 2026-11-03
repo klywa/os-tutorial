@@ -54,6 +54,21 @@ class BranchHistoryTests(unittest.TestCase):
    self.assertEqual(labels,{'L','R'});self.assertNotIn('history_parents',store.load_record(root,'n')['metadata'])
 
 class SingleDecisionTests(unittest.TestCase):
+ def test_semantic_references_show_each_versions_supporting_text(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);b=record();b['body']['supporting_nodes']=[{'id':'old','type':'entry','key':'正文','show_key':False,'value':'旧版选择条件'},{'id':'new','type':'entry','key':'正文','show_key':False,'value':'新版选择条件'}]
+   b['body']['semantics']={'general':[{'$text':'old'}]};l=deepcopy(b);r=deepcopy(b)
+   l['metadata']['manual_semantics']=True;r['body']['semantics']={'general':[{'$text':'new'}]}
+   store.save(root,[l]);write_request(root,create_request(b,l,r));g=get_group(root,'n')
+   c=next(c for c in g['conflicts'] if c['path']=='body/semantics')
+   self.assertIn('旧版选择条件',c['current']);self.assertIn('新版选择条件',c['incoming'])
+ def test_semantic_choices_show_actual_business_values(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);b=record();b['body']['semantics']={'topic':'旧主题'};l=deepcopy(b);r=deepcopy(b)
+   l['metadata']['manual_semantics']=True;r['body']['semantics']['topic']='新主题'
+   store.save(root,[l]);write_request(root,create_request(b,l,r));g=get_group(root,'n')
+   c=next(c for c in g['conflicts'] if c['path']=='body/semantics')
+   self.assertIn('旧主题',c['current']);self.assertIn('新主题',c['incoming']);self.assertIn('主题',c['incoming'])
  def test_many_requests_same_path_has_one_manual_decision(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);b=record();l=deepcopy(b);l['body']['nodes'][1]['value']='L';store.save(root,[l])

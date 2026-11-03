@@ -99,6 +99,12 @@ update-sites --pokilot
 
 ## 3. 线上正式笔记 → 本地
 
+本地和网站同时修改时，`publish-local.ps1` 按笔记与段落 ID 合并：不同段落自动合并，同段改文、删改或顺序分歧进入管理员右上角“同步冲突”。只有冲突笔记暂停正式编辑，其它笔记和提案可继续保存；处理前读者继续看服务器原展示版。网页可逐项选择版本或手工改稿；遇到新版本会要求重新核对并保留旧稿。不要手动解决 `.meta.json` 的 Git 冲突或整份选 ours/theirs。
+
+`pull-local.ps1` 仅快进下载，不隐式上传；本地有改动或已分叉时先执行 `publish-local.ps1`。网站后台在临时目录合并代码，网络阶段不占用正文保存锁；部署前再次核对网站快照，期间有人保存便推迟切换。
+
+历史存储通过 `knowledge/index.meta.json` 的 `storage_version: 2` 显式启用：当前附件只保存历史引用，完整旧文、证据和版本位于 Git 跟踪的 `knowledge-history/`，同步裁决位于 `knowledge-sync/`。先把兼容代码部署两端，再运行 `.codex/skills/wanxiangqi-knowledge/scripts/migrate_knowledge_history.py ROOT` 预演；核对容量与备份后加 `--apply`。迁移自动备份 `raw/backups/history-migration/`，原正文、稳定 ID 和旧版本 ID 保留；不改写 Git 历史。出错保留事务、日志和备份，修复原因再重跑。
+
 线上管理员确认的正式笔记同步到 GitHub 后，在 **Windows 本机 PowerShell** 执行：
 
 ```powershell

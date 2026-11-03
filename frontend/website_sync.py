@@ -15,6 +15,7 @@ import subprocess
 import sys
 import tempfile
 import signal
+import shutil
 import threading
 import time
 import uuid
@@ -129,7 +130,7 @@ def wait_sync_lock(state_dir,timeout=300):
 def git(root, *args, check=True):
     env = {**os.environ, 'GIT_TERMINAL_PROMPT': '0',
            'GIT_SSH_COMMAND': os.environ.get('GIT_SSH_COMMAND', 'ssh -o BatchMode=yes -o ConnectTimeout=15')}
-    result = run_process(['git', '-C', str(root), *args], capture_output=True,
+    result = run_process(['git', '-c', 'core.longpaths=true', '-C', str(root), *args], capture_output=True,
                             encoding='utf-8', errors='replace', env=env, timeout=180)
     if check and result.returncode:
         raise RuntimeError(result.stderr.strip() or result.stdout.strip() or 'Git operation failed')
@@ -138,7 +139,26 @@ def git(root, *args, check=True):
 
 def allowed_path(path):
     return (path in {'knowledge/index.meta.json', 'website-data/usage-matches.json'}
-            or bool(re.fullmatch(r'knowledge/(players|lineups|other)/[^/]+\.json', path)))
+            or bool(re.fullmatch(r'knowledge/(players|lineups|other)/[^/]+\.json', path))
+            or bool(re.fullmatch(r'knowledge-history/[0-9a-f]{32}/(audit|versions|migrations)/[0-9a-f]{64}\.json',path))
+            or bool(re.fullmatch(r'knowledge-sync/(requests/[0-9a-f]{64}|resolutions/[0-9a-f]{32}/[0-9a-f]{64})\.json',path)))
+
+@contextmanager
+def candidate_checkout(state_dir):
+    # Keep Windows paths short enough for atomic replacement of 64-char archive
+    # names. Failed candidates still live in the ignored workspace diagnostics.
+    parent=((Path(__file__).resolve().parents[1]/'raw/git-sync-candidates') if os.name=='nt' else Path(state_dir)/'candidates').resolve()
+    parent.mkdir(parents=True,exist_ok=True)
+    directory=Path(tempfile.mkdtemp(prefix='website-sync-',dir=parent)).resolve()
+    try:yield directory
+    except (SyncCancelled,StaleSync):raise
+    except ValueError as exc:
+        raise ValueError(f'{exc}；故障验证目录已保留：{directory}') from exc
+    except Exception as exc:
+        raise RuntimeError(f'{exc}；故障验证目录已保留：{directory}') from exc
+    else:
+        if directory.parent!=parent:raise ValueError('候选目录越界，未清理')
+        shutil.rmtree(directory)
 
 
 class SyncManager:
@@ -180,6 +200,11 @@ class SyncManager:
                 'waiting-retry':'同步失败，正文已保存，等待重试'}
         message=phases.get(value.get('phase')) if value.get('state')=='pending' else None
         result={**value,'message':message or messages.get(value.get('state'),'同步状态需要管理员检查。')}
+        from knowledge_git import canonical,pending_ids
+        if canonical(self.root):
+            ids=pending_ids(self.root)
+            result.update(conflict_note_ids=ids,conflict_count=len(ids))
+            if value.get('state')=='pending-deploy':result['message']='修改已同步，等待发布新版本'
         return result if light else {**result,'head':self._head(),'dirty':self._changed()}
 
     def _assert_active(self):
@@ -220,7 +245,8 @@ class SyncManager:
         if value['state'] in ('pending','conflict') and value.get('source_root',str(self.root))!=str(self.root):
             raise StaleSync('待同步任务属于其他发布目录，请先在原版本恢复')
         if value['state']=='pending' and not force:return value
-        if value['state']=='pending-deploy':raise SyncBlocked('修改已同步，等待发布新版本')
+        from knowledge_git import canonical
+        if value['state']=='pending-deploy' and not canonical(self.root):raise SyncBlocked('修改已同步，等待发布新版本')
         return self._state('pending',job_id=uuid.uuid4().hex,phase='queued',attempts=0)
 
     def _phase(self,phase):
@@ -234,6 +260,8 @@ class SyncManager:
             raise ValueError(result.stderr.strip() or result.stdout.strip() or 'Knowledge validation failed')
 
     def record_save(self):
+        from knowledge_git import canonical
+        if canonical(self.root):return self.enqueue()
         if self.status()['state'] != 'synced':
             raise SyncBlocked('Previous save must synchronize or deploy before further edits')
         self.retry()
@@ -313,6 +341,64 @@ class SyncManager:
         except Exception as exc:
             return self._state('pending', exc)
 
+    def retry_canonical(self):
+        """Own locks: short save locks around a network job in a disposable tree.
+
+        A second note may be durably saved throughout fetch/build/push. Its dirty
+        files/job remain queued, and release snapshot checks prevent stale activation.
+        """
+        from knowledge_git import merge_branches,adopt_events
+        with sync_lock(self.state_dir/'git-sync'):
+            try:
+                with wait_sync_lock(self.state_dir):
+                    self._assert_active()
+                    state=self._read_state()
+                    if state.get('state') in ('pending','conflict') and state.get('source_root',str(self.root))!=str(self.root):
+                        raise StaleSync('待同步任务属于其他发布目录，请先恢复原版本')
+                    proposal_db=self.state_dir/'proposals.sqlite3'
+                    if proposal_db.with_name(proposal_db.name+'.approval.json').exists():
+                        from proposals import ProposalStore
+                        ProposalStore(self.root,proposal_db).recover()
+                    self._phase('validating');self._validate(self.root)
+                    paths=[p for p in self._changed() if allowed_path(p)]
+                    if paths:
+                        git(self.root,'add','--all','--',*paths)
+                        git(self.root,'commit','--only','-m','website: save knowledge edits','--',*paths)
+                    local_head=self._head()
+                    self._phase('fetching')
+                upstream=git(self.root,'remote','get-url','origin').stdout.strip()
+                git(self.root,'fetch','origin',self.branch)
+                remote_head=git(self.root,'rev-parse','FETCH_HEAD').stdout.strip()
+                with candidate_checkout(self.state_dir) as directory:
+                    candidate=Path(directory)/'checkout'
+                    git(self.root,'clone','--config','core.autocrlf=false','--no-hardlinks','--no-checkout',str(self.root),str(candidate))
+                    git(candidate,'checkout','-B',self.branch,local_head)
+                    git(candidate,'remote','set-url','origin',upstream)
+                    for key in ('user.name','user.email'):
+                        git(candidate,'config',key,git(self.root,'config','--get',key).stdout.strip())
+                    git(candidate,'fetch','origin',self.branch)
+                    merge_branches(candidate,local_head,remote_head,preferred='left',origin='website')
+                    self._validate(candidate)
+                    published=git(candidate,'rev-parse','HEAD').stdout.strip()
+                    self._assert_active()
+                    git(candidate,'push','origin',f'{published}:refs/heads/{self.branch}')
+                    with wait_sync_lock(self.state_dir):
+                        self._assert_active()
+                        # New requests become available immediately while the
+                        # actual displayed body stays untouched until deployment.
+                        adopt_events(candidate,self.root)
+                        dirty=any(allowed_path(p) for p in self._changed())
+                        more=dirty or self._head()!=local_head
+                        if more:
+                            return self._state('pending',phase='queued',more_pending=True,published_head=published)
+                        return self._state('synced' if published==local_head else 'pending-deploy',published_head=published)
+            except SyncCancelled:
+                with wait_sync_lock(self.state_dir):return self._state('pending',phase='queued')
+            except StaleSync:raise
+            except Exception as exc:
+                with wait_sync_lock(self.state_dir):
+                    return self._state('conflict' if isinstance(exc,ValueError) or '代码文件仍有冲突' in str(exc) else 'pending',exc)
+
 
 class SyncWorker:
     """One per public process. Job execution is serialized across processes too."""
@@ -367,6 +453,19 @@ class SyncWorker:
         if self.initialized and (value['state']!='pending' or (value.get('next_retry_at') or 0)>self.clock()):
             return False
         try:
+            from knowledge_git import canonical
+            if canonical(manager.root):
+                with sync_lock(manager.state_dir):
+                    if not self.initialized:self._reconcile()
+                    value=manager.status(light=True)
+                    if value['state']!='pending' or (value.get('next_retry_at') or 0)>self.clock():return False
+                result=manager.retry_canonical()
+                if result['state']=='pending' and not result.get('more_pending') and not self.stop_event.is_set():
+                    with sync_lock(manager.state_dir):
+                        attempts=value.get('attempts',0)+1
+                        manager._state('pending',result.get('error'),phase='waiting-retry',attempts=attempts,
+                                       next_retry_at=self.clock()+(30,60,120,300)[min(attempts-1,3)])
+                return True
             with sync_lock(manager.state_dir):
                 if not self.initialized:self._reconcile()
                 manager._assert_active()
@@ -409,8 +508,10 @@ def main():
     if args.status:
         result = manager.status()
     else:
-        with sync_lock(args.state_dir):
-            result = manager.retry()
+        from knowledge_git import canonical
+        if canonical(args.root):result=manager.retry_canonical()
+        else:
+            with sync_lock(args.state_dir):result = manager.retry()
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0 if result['state'] in ('synced', 'pending-deploy') else 1
 

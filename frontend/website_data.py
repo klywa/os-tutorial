@@ -134,9 +134,16 @@ def _validate_records(root):
     # Validation is read-only: private history never needs to be copied or
     # rendered. Keep the same structural/reference checks as store.validate.
     records=store.records(root,clone=False)
+    import knowledge_history,knowledge_conflicts
+    for path in (root/'knowledge-history').rglob('*.json'):
+        knowledge_history.validate_archive(path.relative_to(root).as_posix(),store.read(path))
+    for path in (root/'knowledge-sync').rglob('*.json'):
+        knowledge_conflicts.validate_event(path.relative_to(root).as_posix(),store.read(path))
     for record in records:
         store.check_record(record)
         store.project(record,public=True)
+        if record['metadata'].get('history_head'):
+            knowledge_history.history_entries(root,record)
     for path in (root/'knowledge').rglob('*'):
         if path.is_file() and path.suffix!='.json':
             raise ValueError('知识库含非JSON文件：'+str(path))

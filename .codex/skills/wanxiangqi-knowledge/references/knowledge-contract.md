@@ -25,13 +25,15 @@ json_document.parse(text)与markdown(body)无损往返；导出格式与剪贴�
 官网采集默认仅更新本地缓存，明确使用 `sync-entities --apply-notes` 才可修改官方绑定节点及知识索引。新事务记录 origin；旧官网笔记事务在启动恢复时归档至 raw/official-sync/pending-notes，不自动重放，也不作为当前正文读取。明确应用时从最新笔记及官网资料重新生成事务，不能直接覆盖归档快照。
 claim_annotations保留原结论ID、kind、section、condition、version、inference、evidence，以text_ref关联正文/支撑节点，附件不保存当前结论text。证据使用真实视频source/start/end/frame或document/source/paragraph_start/paragraph_end，沿用文件和来源校验。
 
-人工编辑将旧文及旧证据保留history，不为新话术沿用旧来源。node_annotations记录人工节点，后续导入不能自动覆盖，冲突进入conflicts。
+人工编辑保留旧文及旧证据，不为新话术沿用旧来源。旧存储仍读写 history；index.meta.json 显式启用 storage_version=2 后，完整历史移至 Git 跟踪的 knowledge-history/<身份摘要>/{audit,versions,migrations}/<内容摘要>.json，当前附件只保留 history_head/history_count。统一保存事务先写不可变历史再写正文、附件和索引；不得自行内嵌旧正文或按历史累计计算 revision。旧版本ID、history_index 和证据通过统一历史接口读取。node_annotations 记录人工节点，后续导入不能自动覆盖。
+
+双端同步按稳定笔记和节点 ID 三方合并。不同段落自动合并；同段、删改、顺序、身份或证据分歧写入 knowledge-sync 的不可变 requests/resolutions，由管理员网页裁决，仅暂停相应笔记的正式写入。当前服务器展示版保持到裁决；其它笔记、私有提案和代码继续同步。先读最新 revision，发现待处理同步冲突时不要绕过门禁或选整份附件覆盖。raw、账号及私有提案不进入上述共享目录。迁移必须显式运行 migrate_knowledge_history.py，先预演和备份。
 
 revision由正文与附件共同计算，body_sha256校验配对。raw/knowledge/pending-json-save.json先发布事务再写正文/附件/索引，恢复完成后移除。delta=true的增量事务仅包含变更笔记、完整轻量索引和版本快照；读者通过统一存储接口将变更覆盖到未变笔记上，不能把records数组当全库。旧完整事务仍兼容恢复。共享写锁和恢复文件都在raw。
 
 ## 接口
 
-正文保存统一产生库外历史快照；历史快照和批注均在已忽略的 raw/knowledge 下，不生成知识 Markdown。GET notes/ID/versions 列出可恢复完整版本，GET notes/ID/versions/版本ID 读取完整正文与证据附件。GET annotations 支持 note_id、status 查询；POST annotations 新建，PUT annotations/ID 修改或重新打开，DELETE annotations/ID 软删除，POST annotations/ID/complete 校验并结项。批注使用独立 revision，正文仍使用原有 revision。
+正文保存统一产生历史快照；storage_version=2 的完整版本在 knowledge-history，旧存储和批注仍在已忽略的 raw/knowledge 下，不生成知识 Markdown。GET notes/ID/versions 列出可恢复完整版本，GET notes/ID/versions/版本ID 读取完整正文与证据附件。GET annotations 支持 note_id、status 查询；POST annotations 新建，PUT annotations/ID 修改或重新打开，DELETE annotations/ID 软删除，POST annotations/ID/complete 校验并结项。批注使用独立 revision，正文仍使用原有 revision。
 workspace.notes(root)提供兼容读视图及document；磁盘同名附件提供提交信息，兼容claims不是写入契约。GET notes/ID/reading返回document、markdown与含节点的sections，GET notes返回独立笔记。
 
 PUT notes/ID接受revision、document及可选aliases；旧sections/claims在schema6拒绝，失败保留草稿。POST notes接受type/title/aliases/request_id，player/lineup必须传player_id，阵容自动补棋手后缀，重复请求幂等。

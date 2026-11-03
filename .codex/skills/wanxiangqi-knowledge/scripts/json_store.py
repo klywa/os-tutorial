@@ -161,7 +161,7 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
             raise ValueError('重复笔记身份或文件名')
         ids.add(nid)
         old = _disk_record(root, old_rows[nid]) if nid in old_rows else None
-        if old is not None and incoming == old and storage_version is None:
+        if old is not None and incoming == old and (storage_version is None or storage_version==previous.get('storage_version')):
             rows.append(old_rows[nid])
             continue
         record = editable_record(incoming)

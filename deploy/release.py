@@ -126,13 +126,24 @@ class ReleaseManager:
 
     def update(self):
         self.releases.mkdir(parents=True, exist_ok=True)
+        # Canonical sync owns its short save locks and releases them during
+        # network I/O. Never wrap this call in the deployment/save lock.
+        initial=self.snapshot()
+        canonical_sync=False
+        if initial:
+            from knowledge_git import canonical
+            canonical_sync=canonical(Path(initial['root']))
+            if canonical_sync:
+                status=self.sync_class(Path(initial['root']),self.state_dir,self.branch).retry_canonical()
+                if status['state'] not in ('synced','pending-deploy'):
+                    raise StaleRelease(f"Synchronization requires attention: {status['state']}")
         with wait_sync_lock(self.state_dir):
             snapshot = self.snapshot()
             if snapshot:
                 active = Path(snapshot['root'])
                 sync = self.sync_class(active, self.state_dir, self.branch)
                 # Always retry before reading/building a newer release.
-                status = sync.retry()
+                status = sync.status() if canonical_sync else sync.retry()
                 if status['state'] not in ('synced', 'pending-deploy'):
                     raise StaleRelease(f"Synchronization requires attention: {status['state']}")
                 snapshot = self.snapshot()

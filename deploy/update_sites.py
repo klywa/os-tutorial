@@ -211,7 +211,7 @@ def snapshot_os(current, state_dir, destination):
             os.chown(destination.parent, state_owner.st_uid, state_owner.st_gid)
     destination.mkdir(parents=True, exist_ok=False)
     os.chmod(destination, 0o700)
-    for name in ('knowledge','website-data'):
+    for name in ('knowledge','knowledge-history','knowledge-sync','website-data'):
         source = current / name
         if source.exists():
             shutil.copytree(source, destination / name)

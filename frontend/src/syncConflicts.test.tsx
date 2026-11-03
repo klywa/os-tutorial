@@ -1,10 +1,20 @@
 import {it,expect,vi} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
-import {ConflictEditor} from './SyncConflicts';
+import {ConflictEditor,RetainedDrafts} from './SyncConflicts';
 import {conflictPayload,refreshConflictDrafts,resolveConflict,type ConflictGroup} from './syncConflictModel';
 import {capabilitiesFor,canEditNote,type Session} from './auth';
 const body={schema_version:6 as const,nodes:[{id:'p',type:'entry' as const,key:'节奏',show_key:true,value:'网站上下文'}]};
 const group:ConflictGroup={note_id:'n',title:'节奏笔记',revision:'g1',note_revision:'r1',request_ids:['q'],current:{variant_id:'site',body},variants:[{variant_id:'v1',body},{variant_id:'v2',body}],conflicts:[{id:'c',path:'body/nodes/p/value',reason:'text',base:'共同原文',current:'网站当前文',incoming:'另一端文',variant_id:'v1',variants:[{variant_id:'v1',value:'另一端文'},{variant_id:'v2',value:'第三版'}]}]};
+it('keeps stale drafts visible after a third version changes conflict identity',()=>{
+ const newer={...group,conflicts:[{...group.conflicts[0],id:'new-id',path:'body/nodes/p'}]};
+ const html=renderToStaticMarkup(<RetainedDrafts group={newer} drafts={refreshConflictDrafts({c:{action:'manual',text:'不能丢的旧稿'}})}/>);
+ expect(html).toContain('不能丢的旧稿');expect(html).toContain('冲突范围已变化');
+});
+it('shows alias values as names instead of unnamed paragraph ids',()=>{
+ const g={...group,conflicts:[{...group.conflicts[0],path:'metadata/aliases',base:[],current:['site-alias'],incoming:['local-alias'],variants:[{variant_id:'v1',value:['local-alias']}]}]};
+ const html=renderToStaticMarkup(<ConflictEditor group={g} drafts={{}} onChange={()=>{}}/>);
+ expect(html).toContain('site-alias');expect(html).toContain('local-alias');expect(html).not.toContain('未命名段落');
+});
 it('shows three versions, multiple candidates and a retained manual merge',()=>{
  const html=renderToStaticMarkup(<ConflictEditor group={group} drafts={{c:{action:'manual',text:'我的合并稿',variant_id:'v2'}}} onChange={()=>{}}/>);
  for(const text of ['共同原文','网站当前版','另一端版本','第三版','我的合并稿','手工合并'])expect(html).toContain(text);

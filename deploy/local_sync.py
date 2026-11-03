@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'frontend'))
 from website_sync import SyncBusy, sync_lock
 from git_history import history_paths
+from knowledge_git import merge_branches
 
 
 def child_environment(env=None):
@@ -45,6 +46,9 @@ def allowed_local_path(path):
         return True
     if parts[0] == 'knowledge':
         return path == 'knowledge/index.meta.json' or (len(parts)==3 and parts[1] in {'players','lineups','other'} and basename.endswith('.json'))
+    if parts[0] in {'knowledge-history','knowledge-sync'}:
+        from website_sync import allowed_path
+        return allowed_path(path)
     if parts[0] == 'website-data':
         return basename.endswith(('.json','.img'))
     if parts[0] in {'frontend','deploy','docs'} or path.startswith('.codex/skills/wanxiangqi-knowledge/'):
@@ -386,7 +390,8 @@ class LocalSync:
                 candidate=self.candidate()
                 self.git('fetch','origin','master',root=candidate)
                 remote_head=self.git('rev-parse','FETCH_HEAD',root=candidate)
-                self.git('merge','--no-edit',remote_head,root=candidate)
+                outcome=merge_branches(candidate,self.git('rev-parse','HEAD',root=candidate),remote_head,preferred='right',origin='local')
+                if not outcome['handled']:self.git('merge','--no-edit',remote_head,root=candidate)
                 self.validate(candidate)
                 if self.git('status','--porcelain','--untracked-files=all',root=candidate):
                     raise RuntimeError(f'远端合并后的校验改写了正式文件，已保留验证目录：{candidate}')
@@ -403,7 +408,7 @@ class LocalSync:
                 self.git('push','origin',f'{target}:refs/heads/master')
                 logging.info('Git 发布完成：master=%s；接下来确认本地服务恢复',target)
         logging.info('本地代码和正式笔记已上传 master；服务按原运行状态恢复')
-        return {'state':'published','head':target,'candidate':str(candidate)}
+        return {'state':'published','head':target,'candidate':str(candidate),'conflict_note_ids':outcome['conflict_note_ids']}
 
     def pull(self):
         self.assert_branch()

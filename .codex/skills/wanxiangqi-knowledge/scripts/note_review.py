@@ -82,6 +82,8 @@ def version_writes(root, old, new, origin='save', review_refs=None):
         for item, source, refs in candidates:
             vid = uuid.uuid4().hex
             snap = store.snapshot(item)
+            if external and any(row.get('snapshot_sha256')==store.digest(snap) for row in existing):
+                continue
             value = {'id': vid, 'note_id': nid, 'at': datetime.now(timezone.utc).isoformat(), 'origin': source,
                      'body_sha256': store.digest(item['body']), 'review_refs': refs, 'record':snap}
             if external:
