@@ -1,10 +1,11 @@
 [Unit]
-Description=Hourly Wanxiangqi Git synchronization and deployment
+Description=Wanxiangqi Git synchronization and deployment every five minutes
 
 [Timer]
-OnCalendar=hourly
+OnCalendar=*-*-* *:0/5:00
 Persistent=true
-RandomizedDelaySec=120
+RandomizedDelaySec=0
+AccuracySec=1s
 Unit=os-tutorial-update.service
 
 [Install]
