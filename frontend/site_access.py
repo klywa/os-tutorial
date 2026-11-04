@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 from urllib.parse import parse_qs,urlsplit
 
-from website_sync import SyncBlocked,sync_lock
+from website_sync import SyncBlocked,sync_lock,save_lock
 
 
 def state_dir(server):
@@ -113,7 +113,7 @@ def resolve_sync_conflict(server,identity,note_id,data,public=False):
     require_identity(identity)
     if identity['role']!='admin':raise PermissionError('只有管理员可以解决同步冲突')
     import knowledge_conflicts
-    with sync_lock(state_dir(server)),formal_save(server) if public else nullcontext():
+    with save_lock(state_dir(server)),formal_save(server) if public else nullcontext():
         if public:getattr(server.sync,'_assert_active',lambda:None)()
         # The resolver owns store_lock and its atomic note/history/event journal.
         value=knowledge_conflicts.resolve(server.root,note_id,data)
@@ -157,7 +157,7 @@ def mutate_proposal(server,identity,path,command,data,public=False):
         existing=service.get(identity,match[1])
         if existing['status']=='approved':
             return {**existing,**({'sync':sync_status(server)} if public else {})}
-        with sync_lock(state_dir(server)),formal_save(server) if public else nullcontext():
+        with save_lock(state_dir(server)),formal_save(server) if public else nullcontext():
             if public:getattr(server.sync,'_assert_active',lambda:None)()
             service.recover()
             existing=service.get(identity,match[1])
@@ -170,7 +170,7 @@ def mutate_proposal(server,identity,path,command,data,public=False):
     # Private proposal CRUD never waits for a long Git operation. A leftover
     # approval receipt alone requires the canonical/global lock for recovery.
     if service.recovery_pending():
-        with sync_lock(state_dir(server)):service.recover()
+        with save_lock(state_dir(server)):service.recover()
     if path=='/api/proposals' and command=='POST':return service.submit_delta(identity,data,_recover=False)
     if not match:raise KeyError('提案接口不存在')
     item_id,action=match.groups()

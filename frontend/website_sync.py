@@ -39,6 +39,9 @@ class StaleSync(SyncBlocked):
     pass
 
 
+SAVE_LOCK_WAIT_SECONDS = 3
+
+
 def _stop_child(process):
     if os.name=='nt':
         if process.poll() is None:
@@ -125,6 +128,11 @@ def wait_sync_lock(state_dir,timeout=300):
             if acquired:raise
             if time.monotonic()>=deadline:raise SyncBusy('等待正在执行的同步超时；任务仍保留，请稍后重试')
             time.sleep(min(.25,max(0,deadline-time.monotonic())))
+
+
+def save_lock(state_dir):
+    """HTTP saves tolerate short writes/switches, never wait on a long Git job."""
+    return wait_sync_lock(state_dir,timeout=SAVE_LOCK_WAIT_SECONDS)
 
 
 def git(root, *args, check=True):
@@ -359,7 +367,11 @@ class SyncManager:
                     if proposal_db.with_name(proposal_db.name+'.approval.json').exists():
                         from proposals import ProposalStore
                         ProposalStore(self.root,proposal_db).recover()
-                    self._phase('validating');self._validate(self.root)
+                    # Recover only durable writes here. Full package/image/history
+                    # validation belongs to the immutable candidate below, so an
+                    # unrelated HTTP field save never waits on a whole-library scan.
+                    from website_data import recover
+                    recover(self.root)
                     paths=[p for p in self._changed() if allowed_path(p)]
                     if paths:
                         from git_paths import commit_selected

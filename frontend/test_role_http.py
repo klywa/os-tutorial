@@ -17,6 +17,38 @@ import server
 
 
 class PublicRoleHttpTests(fixtures.PublicHttpTests):
+    def test_entry_save_waits_for_brief_background_lock(self):
+        import json_store,time
+        from website_sync import sync_lock
+        nodes=[{'id':'t','type':'heading','level':1,'title':'保存测试'},
+               {'id':'e','type':'entry','key':'字段','show_key':True,'value':'原文'}]
+        json_store.save(self.root,[{'body':{'schema_version':6,'nodes':nodes},'metadata':{
+            'id':'save-wait','type':'other','title':'保存测试','path':'knowledge/other/save-wait.json'}}],partial=True)
+        self.http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda:{'state':'pending'})
+        self.login();lease=self.acquire('save-wait',{'kind':'entry','id':'e'})
+        entered=threading.Event()
+        def hold():
+            with sync_lock(self.http.state_dir):entered.set();time.sleep(.35)
+        worker=threading.Thread(target=hold);worker.start();self.assertTrue(entered.wait(2))
+        try:
+            code,data,_=self.call('/os-tutorial/api/notes/save-wait/entries','PUT',{
+                'note_id':'save-wait','client_id':'http-test-tab','request_id':'brief-lock-save',
+                'changes':[{'kind':'update','node':{**nodes[1],'value':'新字段内容'},'lease':lease}]})
+            self.assertEqual(code,200,data)
+            self.assertEqual(json_store.load_record(self.root,'save-wait')['body']['nodes'][1]['value'],'新字段内容')
+        finally:worker.join(2)
+        # A genuinely busy switch has a bounded wait and keeps the draft/data intact.
+        entered.clear();worker=threading.Thread(target=hold);worker.start();self.assertTrue(entered.wait(2))
+        try:
+            with patch('website_sync.SAVE_LOCK_WAIT_SECONDS',.05):
+                code,data,_=self.call('/os-tutorial/api/notes/save-wait/entries','PUT',{
+                    'note_id':'save-wait','client_id':'http-test-tab','request_id':'timed-out-save',
+                    'changes':[{'kind':'update','node':{**nodes[1],'value':'不得写入'},'lease':lease}]})
+            self.assertEqual(code,423,data);self.assertEqual(data['reason'],'save_busy')
+            self.assertNotIn('Another save',data['error'])
+            self.assertEqual(json_store.load_record(self.root,'save-wait')['body']['nodes'][1]['value'],'新字段内容')
+        finally:worker.join(2)
+
     def setUp(self):
         super().setUp()
         self.config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,'sessionTtlHours':168,

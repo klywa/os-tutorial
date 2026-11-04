@@ -17,7 +17,7 @@ import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'frontend'))
 from website_sync import SyncManager, git, wait_sync_lock
-from update_sites import snapshot_os, stamp
+from update_sites import snapshot_os, snapshot_os_images, stamp
 
 
 class StaleRelease(RuntimeError):
@@ -150,16 +150,22 @@ class ReleaseManager:
                 if snapshot['dirty']:
                     raise StaleRelease('Active checkout has unrelated edits; leaving it untouched')
                 upstream = git(active, 'remote', 'get-url', 'origin').stdout.strip()
-                remote_head = self.remote_head(active)
-                if remote_head == snapshot['head'] and not self.rebuild:
-                    return {'state': 'unchanged', 'head': remote_head}
-                # Same lock as approvals: canonical JSON, receipts and WAL DB align.
-                snapshot_os(active, self.state_dir, self.state_dir / 'update-backups' / ('release-' + stamp()))
             else:
                 if not self.repo:
                     raise ValueError('--repo SSH_URL is required for the first release')
                 upstream = self.repo
                 remote_head = None
+        # GitHub latency must not hold the lock used by browser field saves.
+        if snapshot:
+            remote_head = self.remote_head(active)
+            with wait_sync_lock(self.state_dir):
+                self.assert_unchanged(snapshot)
+                if remote_head == snapshot['head'] and not self.rebuild:
+                    return {'state': 'unchanged', 'head': remote_head}
+                # Same lock as approvals: canonical JSON, receipts and WAL DB align.
+                backup=self.state_dir/'update-backups'/('release-'+stamp())
+                snapshot_os(active,self.state_dir,backup,include_images=False)
+            snapshot_os_images(active,backup)
         release_stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         candidate = self.releases / f'{release_stamp}-{uuid.uuid4().hex[:8]}'
         self.clone_candidate(candidate,upstream,Path(snapshot['root']) if snapshot else None)
@@ -171,9 +177,10 @@ class ReleaseManager:
                 value = git(Path(snapshot['root']), 'config', '--get', key).stdout.strip()
                 git(candidate, 'config', key, value)
         self.build(candidate)
+        verified_remote_head = self.remote_head(candidate)
         with wait_sync_lock(self.state_dir):
             self.assert_unchanged(snapshot)
-            if self.remote_head(candidate) != head:
+            if verified_remote_head != head:
                 raise StaleRelease('Remote advanced during build; activation skipped')
             self.activate(candidate, snapshot)
             self.sync_class(candidate, self.state_dir, self.branch)._state('synced', published_head=head)

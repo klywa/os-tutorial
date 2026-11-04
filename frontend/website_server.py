@@ -191,7 +191,7 @@ def handler_class(base):
             self.send_header('X-Content-Type-Options','nosniff');self.end_headers();self.wfile.write(body)
 
         def mutate(self):
-            from website_sync import SyncBusy, SyncBlocked, sync_lock
+            from website_sync import SyncBusy, SyncBlocked, save_lock
             from site_access import is_proposal_path,mutate_proposal
             from proposals import ProposalForbidden
             from edit_locks import EditLocked
@@ -240,9 +240,9 @@ def handler_class(base):
                     return self.response(200,resolve_sync_conflict(self.server,self.actor(),path.split('/')[-2],data,public=True))
                 from site_access import enqueue_sync,formal_save
                 if retry:
-                    with sync_lock(self.server.state_dir):value=enqueue_sync(self.server,force=True)
+                    with save_lock(self.server.state_dir):value=enqueue_sync(self.server,force=True)
                     return self.response(202,value)
-                with sync_lock(self.server.state_dir),formal_save(self.server):
+                with save_lock(self.server.state_dir),formal_save(self.server):
                     getattr(self.server.sync,'_assert_active',lambda:None)()
                     if entries:
                         from site_access import proposal_store,sync_status
@@ -269,7 +269,8 @@ def handler_class(base):
             except Unconfigured:self.response(503,{'error':'管理员配置不可用'})
             except PermissionError as exc:self.response(403,{'error':str(exc)})
             except ProposalForbidden as exc:self.response(403,{'error':str(exc)})
-            except (SyncBusy,SyncBlocked,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
+            except SyncBusy:self.response(423,{'error':'其他保存或发布正在完成，请稍后重试；当前草稿已保留','reason':'save_busy'})
+            except (SyncBlocked,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
             except workspace.Conflict as exc:self.response(409,{'error':str(exc)})
             except KeyError:self.response(404,{'error':'接口或笔记不存在'})
             except (ValueError,TypeError) as exc:self.response(400,{'error':str(exc)})

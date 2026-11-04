@@ -201,8 +201,9 @@ def updater_lock(path=Path('/run/lock/update-sites.lock')):
         yield
 
 
-def snapshot_os(current, state_dir, destination):
-    """Caller holds website_sync.sync_lock briefly, never across systemctl start."""
+def snapshot_os(current, state_dir, destination, *, include_images=True):
+    """Capture mutable data under sync_lock; callers may defer immutable images."""
+    current=Path(current).resolve()
     if destination.parent == state_dir / 'update-backups':
         destination.parent.mkdir(mode=0o750, parents=True, exist_ok=True)
         os.chmod(destination.parent, 0o750)
@@ -214,7 +215,8 @@ def snapshot_os(current, state_dir, destination):
     for name in ('knowledge','knowledge-history','knowledge-sync','website-data'):
         source = current / name
         if source.exists():
-            shutil.copytree(source, destination / name)
+            shutil.copytree(source, destination / name,
+                            ignore=shutil.ignore_patterns('images') if name=='website-data' else None)
     for source in state_dir.iterdir():
         if source.name in ('sync.lock', 'proposals.sqlite3-wal', 'proposals.sqlite3-shm'):
             continue
@@ -223,6 +225,13 @@ def snapshot_os(current, state_dir, destination):
         elif source.is_file():
             shutil.copy2(source, destination / source.name)
     (destination / 'release.txt').write_text(str(current.resolve())+'\n', encoding='utf-8')
+    if include_images:snapshot_os_images(current,destination)
+
+
+def snapshot_os_images(current, destination):
+    """Published images are immutable within a release; no save lock is needed."""
+    source=Path(current)/'website-data/images'
+    if source.exists():shutil.copytree(source,Path(destination)/'website-data/images')
 
 
 def wait_role_capability():
@@ -256,12 +265,14 @@ def update_os(*, runner=subprocess.run, base=Path('/opt/os-tutorial'), state_dir
     while True:
         try:
             with sync_lock(state_dir):
-                snapshot_os(base / 'current', state_dir, backup)
+                snapshot_root=(base/'current').resolve()
+                snapshot_os(snapshot_root, state_dir, backup,include_images=False)
             break
         except SyncBusy:
             if time.monotonic() >= deadline:
                 raise RuntimeError('等待万象棋保存/审核锁超时')
             time.sleep(1)
+    snapshot_os_images(snapshot_root,backup)
     logging.info('万象棋正文和提案一致快照：%s', backup)
     command(['systemctl','start','os-tutorial-update.service'], runner=runner, timeout=1900)
     # Run the helper from the activated release, never migrate before role support.

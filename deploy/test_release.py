@@ -21,6 +21,38 @@ spec.loader.exec_module(module)
 
 
 class ReleaseTests(unittest.TestCase):
+    def test_remote_probes_do_not_hold_the_save_lock(self):
+        from website_sync import sync_lock
+        manager=self.manager();probe=manager.remote_head;calls=[]
+        def remote(root):
+            with sync_lock(manager.state_dir):calls.append(root)
+            return probe(root)
+        manager.remote_head=remote
+        self.assertEqual(manager.update()['state'],'unchanged')
+        self.assertTrue(calls)
+
+    def test_release_probes_and_bulk_image_backup_allow_saves(self):
+        from website_sync import sync_lock
+        manager=self.manager();other=self.other()
+        images=self.root/'website-data/images';images.mkdir(parents=True);(images/'test.img').write_bytes(b'image bytes')
+        # These are immutable published files in the fixture, not a dirty user edit.
+        git(self.root,'add','website-data');git(self.root,'commit','-m','images');git(self.root,'push')
+        git(other,'pull','--ff-only')
+        (other/'remote.txt').write_text('new');git(other,'add','.');git(other,'commit','-m','remote');git(other,'push')
+        probe=manager.remote_head;copy=module.snapshot_os_images;calls=[]
+        def remote(root):
+            with sync_lock(manager.state_dir):calls.append('probe')
+            return probe(root)
+        def bulk(root,destination):
+            with sync_lock(manager.state_dir):calls.append('images')
+            return copy(root,destination)
+        manager.remote_head=remote;manager.build=lambda _:None;manager.restart=lambda:None;manager.healthy=lambda:True
+        with patch.object(module,'snapshot_os_images',side_effect=bulk):
+            self.assertEqual(manager.update()['state'],'deployed')
+        self.assertIn('images',calls);self.assertGreaterEqual(calls.count('probe'),2)
+        backups=list((manager.state_dir/'update-backups').glob('release-*'))
+        self.assertEqual((backups[0]/'website-data/images/test.img').read_bytes(),b'image bytes')
+
     setUp = fixtures.SyncTests.setUp
     identity = fixtures.SyncTests.identity
     other = fixtures.SyncTests.other

@@ -135,6 +135,34 @@ class KnowledgeGitTests(unittest.TestCase):
         result=manager.retry_canonical()
         self.assertEqual(result['state'],'synced')
 
+    def test_validation_allows_another_save_and_keeps_it_queued(self):
+        from unittest.mock import patch
+        manager=self.manager();validate=manager._validate;saved=[]
+        def during_validation(root):
+            if not saved:
+                with sync_lock(manager.state_dir):
+                    record=store.load_record(self.left,'b');body=deepcopy(record['body'])
+                    body['nodes'][1]['value']='校验期间保存'
+                    store.edit(self.left,'b',{'revision':record['metadata']['revision'],'document':body})
+                    manager.enqueue();saved.append(True)
+            self.assertNotEqual(Path(root).resolve(),self.left.resolve(),'full validation must use an isolated commit')
+            return validate(root)
+        with patch.object(manager,'_validate',side_effect=during_validation):
+            result=manager.retry_canonical()
+        self.assertEqual(saved,[True],result)
+        self.assertEqual(self.text(self.left,'b'),'校验期间保存')
+        self.assertTrue(result.get('more_pending'),result)
+        self.assertEqual(manager.retry_canonical()['state'],'synced')
+
+    def test_canonical_sync_recovers_a_durable_manual_journal(self):
+        record=store.load_record(self.left,'a');record['body']['nodes'][1]['value']='恢复的字段'
+        journal=store.save(self.left,[record],prepare_only=True)
+        store.write_file(self.left/store.JOURNAL,journal)
+        result=self.manager().retry_canonical()
+        self.assertIn(result['state'],('synced','pending-deploy'),result)
+        self.assertEqual(self.text(self.left,'a'),'恢复的字段')
+        self.assertFalse((self.left/store.JOURNAL).exists())
+
     def test_third_version_from_pending_ancestor_changes_group_revision(self):
         import knowledge_conflicts as conflicts
         base=store.load_record(self.left,'a');incoming=deepcopy(base)
