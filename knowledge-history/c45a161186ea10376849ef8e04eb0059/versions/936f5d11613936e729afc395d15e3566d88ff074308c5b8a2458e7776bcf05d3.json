@@ -1,0 +1,130 @@
+{
+  "id": "5adb411c7a6c87e926053e68c5f0e5f2",
+  "note_id": "game-macro",
+  "at": "2026-11-04T03:42:44.106806+00:00",
+  "origin": "import",
+  "body_sha256": "31fcf9a3d388242071357971da0177c2d27d508dac92c410aa52416b2fcce69a",
+  "review_refs": [],
+  "record": {
+    "body": {
+      "schema_version": 6,
+      "leading": "",
+      "nodes": [
+        {
+          "id": "g-1c9d03415a033a9c38cf",
+          "type": "heading",
+          "level": 1,
+          "title": "游戏大局观",
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-22a2f53d939fc1fe05a1",
+          "type": "heading",
+          "level": 2,
+          "title": "前期目标",
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-05cde3faa0c2e9313e3d",
+          "type": "heading",
+          "level": 2,
+          "title": "中期发展",
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-2129555de1f4d5070b83",
+          "type": "entry",
+          "key": "前两轮拍卖补核心",
+          "show_key": true,
+          "value": "想借拍卖补齐核心英雄，应重视前两次拍卖。第二次拍卖结束后仍缺核心英雄时，将找核心的手段转向刷新商店。",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-17a2ab40ff5c77d80979",
+          "type": "heading",
+          "level": 2,
+          "title": "后期收束",
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-a8ef5ed5dcd49c4fe4be",
+          "type": "heading",
+          "level": 2,
+          "title": "夺冠与保名次",
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-6b80fd27bccb0e803962",
+          "type": "heading",
+          "level": 2,
+          "title": "转型与投入",
+          "space": " ",
+          "separator": "\n\n"
+        },
+        {
+          "id": "g-d68ac9bbb4de17aabcb2",
+          "type": "entry",
+          "key": "转型前保留等级转移手段",
+          "show_key": true,
+          "value": "准备转阵容、且场上已有不适合新阵容的高等级英雄时，提前留意可用的等级转移效果牌，避免换人时丢掉前期积累。具体接收目标和适用范围要按效果牌分别判断。",
+          "separator": "\n\n"
+        }
+      ]
+    },
+    "metadata": {
+      "id": "game-macro",
+      "type": "other",
+      "title": "游戏大局观",
+      "path": "knowledge/other/游戏大局观.json",
+      "aliases": [],
+      "entities": [],
+      "related": [],
+      "claim_annotations": [
+        {
+          "id": "g-5ead5028eafa17609fdb",
+          "text_ref": "g-2129555de1f4d5070b83",
+          "section": "中期发展",
+          "kind": "conditional_strategy",
+          "origin": "document",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-43e5dddcdc3fba2a1fe7fbf9784309d4cbe586ff232964e52284b194c2974c1c",
+              "paragraph_start": 11,
+              "paragraph_end": 12
+            }
+          ],
+          "condition": "",
+          "version": null
+        },
+        {
+          "id": "g-0a98cc2dae59496c1a52",
+          "text_ref": "g-d68ac9bbb4de17aabcb2",
+          "section": "转型与投入",
+          "kind": "conditional_strategy",
+          "origin": "document",
+          "inference": false,
+          "evidence": [
+            {
+              "type": "document",
+              "source": "doc-9baf8134cbe312add21f169a29e047768e02eb03bfa0cc9399b1e49c07484de4",
+              "paragraph_start": 1,
+              "paragraph_end": 4
+            }
+          ],
+          "condition": "",
+          "version": null
+        }
+      ],
+      "manual_sections": [],
+      "body_sha256": "31fcf9a3d388242071357971da0177c2d27d508dac92c410aa52416b2fcce69a",
+      "revision": "5112758b448590b4e99b"
+    }
+  }
+}
