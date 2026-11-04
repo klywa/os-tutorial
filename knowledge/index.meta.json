@@ -343,7 +343,7 @@
       "title": "昭君七五-昭君",
       "path": "knowledge/lineups/昭君七五-昭君.json",
       "player_id": "player:34",
-      "revision": "36b02a97bd5316977b58"
+      "revision": "b0b13111ae0daed32267"
     },
     {
       "id": "c24-daji-shield-lianpo",
@@ -578,14 +578,6 @@
       "revision": "70de2698d6bbbdcec1a3"
     },
     {
-      "id": "mechanics-auction",
-      "type": "other",
-      "title": "拍卖机制",
-      "path": "knowledge/other/拍卖机制.json",
-      "player_id": null,
-      "revision": "7ccc4ab8c26562dc53c2"
-    },
-    {
       "id": "mechanics-cold-knowledge",
       "type": "other",
       "title": "冷门知识",
@@ -594,36 +586,12 @@
       "revision": "cbc11c9d3b53f857bcc1"
     },
     {
-      "id": "mechanics-equipment",
-      "type": "other",
-      "title": "装备详解",
-      "path": "knowledge/other/装备详解.json",
-      "player_id": null,
-      "revision": "425b0a15fbecbf52efea"
-    },
-    {
-      "id": "mechanics-level-transfer",
-      "type": "other",
-      "title": "等级转移",
-      "path": "knowledge/other/等级转移.json",
-      "player_id": null,
-      "revision": "564c707dfcf440848aae"
-    },
-    {
-      "id": "mechanics-pool",
-      "type": "other",
-      "title": "牌库",
-      "path": "knowledge/other/牌库.json",
-      "player_id": null,
-      "revision": "512fcb4735a2113b681d"
-    },
-    {
       "id": "mechanics-rules",
       "type": "other",
-      "title": "基础规则",
-      "path": "knowledge/other/基础规则.json",
+      "title": "游戏机制",
+      "path": "knowledge/other/游戏机制.json",
       "player_id": null,
-      "revision": "82ab9ab5af487c7aa52e"
+      "revision": "6749b26810762a877724"
     },
     {
       "id": "player-10",
@@ -767,7 +735,7 @@
       "title": "昭君",
       "path": "knowledge/players/昭君.json",
       "player_id": "player:34",
-      "revision": "2fafb47b2ee92d85aec3"
+      "revision": "0d5b0a82a25fc143f607"
     },
     {
       "id": "player-zhuang",
@@ -810,12 +778,28 @@
       "revision": "c74594ac3bbe59a83378"
     },
     {
-      "id": "zhaojun-version-and-asr-review",
+      "id": "game-macro",
       "type": "other",
-      "title": "昭君成长技能选择",
-      "path": "knowledge/other/昭君－冰心领域版本差异.json",
+      "title": "游戏大局观",
+      "path": "knowledge/other/游戏大局观.json",
       "player_id": null,
-      "revision": "c01231798b59e51723cf"
+      "revision": "5112758b448590b4e99b"
+    },
+    {
+      "id": "game-decisions",
+      "type": "other",
+      "title": "游戏决策逻辑",
+      "path": "knowledge/other/游戏决策逻辑.json",
+      "player_id": null,
+      "revision": "ced983f9728d8f943242"
+    },
+    {
+      "id": "game-common-sense",
+      "type": "other",
+      "title": "游戏打法常识",
+      "path": "knowledge/other/游戏打法常识.json",
+      "player_id": null,
+      "revision": "502c9c146c3fcc1a23c7"
     }
   ],
   "aliases": {
@@ -885,7 +869,12 @@
     "sanfen-reversal|player:33": "sanfen-reversal--baige",
     "zhaojun-high-tier-dahe": "zhaojun-high-tier-dahe",
     "zhaojun-high-tier-dahe|player:34": "zhaojun-high-tier-dahe",
-    "zhaojun-high-tier-dahe|zhaojun": "zhaojun-high-tier-dahe"
+    "zhaojun-high-tier-dahe|zhaojun": "zhaojun-high-tier-dahe",
+    "zhaojun-version-and-asr-review": "player-zhaojun",
+    "mechanics-auction": "mechanics-rules",
+    "mechanics-equipment": "mechanics-rules",
+    "mechanics-level-transfer": "mechanics-rules",
+    "mechanics-pool": "mechanics-rules"
   },
   "storage_version": 2
 }

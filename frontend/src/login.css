@@ -1,0 +1,5 @@
+.login-screen{min-height:100dvh;display:grid;place-items:center;padding:28px 20px;background:var(--base);text-align:left}
+.login-panel{width:min(100%,420px);padding:32px;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--jade);border-radius:12px}
+.login-panel header{display:flex;align-items:center;gap:16px;margin-bottom:24px}.login-panel header p{margin:0 0 5px;color:var(--gold);font-size:14px}.login-panel h1{font-size:26px;margin:0;letter-spacing:0}
+.login-panel form{display:grid;gap:20px;margin-top:26px}.login-panel label{display:grid;gap:8px}.login-panel input{width:100%;min-width:0}.login-panel button{min-height:44px}.login-panel .error{margin:0}.login-panel :focus-visible{outline:2px solid var(--jade);outline-offset:3px}
+@media(max-width:480px){.login-panel{padding:26px 22px}.login-screen{align-items:center;padding:20px 16px}}

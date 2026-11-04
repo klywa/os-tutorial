@@ -38,7 +38,8 @@
   ],
   "path": "knowledge/players/昭君.json",
   "aliases": [
-    "昭君：冻结升阶与大河运营"
+    "昭君：冻结升阶与大河运营",
+    "昭君成长技能选择"
   ],
   "manual_sections": [],
   "conflicts": [],
@@ -3087,10 +3088,64 @@
           "paragraph_end": 798
         }
       ]
+    },
+    {
+      "id": "acq-34caf071b65975ef9e29",
+      "text_ref": "n-adb3dd94280de6dcf74a",
+      "kind": "mechanic",
+      "section": "特殊获取与当前机制",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 796,
+          "paragraph_end": 796
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 797,
+          "paragraph_end": 797
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 798,
+          "paragraph_end": 798
+        }
+      ]
+    },
+    {
+      "id": "acq-b38c3dcf70e457093ca1",
+      "text_ref": "n-5bb55fab226a77e431f1",
+      "kind": "mechanic",
+      "section": "特殊获取与当前机制",
+      "inference": true,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 796,
+          "paragraph_end": 796
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 797,
+          "paragraph_end": 797
+        },
+        {
+          "type": "document",
+          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
+          "paragraph_start": 798,
+          "paragraph_end": 798
+        }
+      ]
     }
   ],
-  "body_sha256": "84075b540661e2d8eabaac11fcbfe6fc32b83e266baa7d0e02ffe272dd901c44",
-  "revision": "2fafb47b2ee92d85aec3",
+  "body_sha256": "4f3980880115d956e0c54ea94e383f730f24478a31a094f7e45fd1120db1af97",
+  "revision": "0d5b0a82a25fc143f607",
   "legacy_layout": {
     "version": 4
   },
@@ -3843,6 +3898,16 @@
       "card:93499"
     ]
   },
-  "history_head": "knowledge-history/3b67ba9e0dccfdb9f6bf1ad667d1b414/audit/0c392a648af2993481a30a23ceae3fb96b0c0173d7792996e8eb3e6715119b4c.json",
-  "history_count": 16
+  "history_head": "knowledge-history/3b67ba9e0dccfdb9f6bf1ad667d1b414/audit/f3d4a1f593614815eca05ce194e95c5b824e71b1534645be79194767405a01ae.json",
+  "history_count": 18,
+  "consolidated_from": [
+    {
+      "id": "zhaojun-version-and-asr-review",
+      "title": "昭君成长技能选择",
+      "path": "knowledge/other/昭君－冰心领域版本差异.json",
+      "revision": "c01231798b59e51723cf",
+      "history_head": "knowledge-history/3b8462170980cf4a8834a57c02d4f3e4/audit/339111a23f328136c3e14f7e4daf64e33fccb29953e7c99858b1606d887cc32a.json",
+      "history_count": 3
+    }
+  ]
 }

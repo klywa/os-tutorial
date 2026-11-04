@@ -3,6 +3,7 @@ import type {Note,ReadingDocument} from './types';
 import {CopyButton} from './JsonReading';
 import {documentClipboard} from './jsonDocument';
 import {HistoryButton} from './NoteReview';
+import {downloadNoteJson} from './noteExport';
 type Props={note:Note;reading?:ReadingDocument|null;name:(id:string)=>string;dirty:boolean;editing:boolean;onAssociate?:()=>void;onEdit:()=>void;onPlayer:(player:string)=>void;onExport:()=>void};
 export default function NoteHeading({note,reading,name,dirty,editing,onEdit,onPlayer,onExport}:Props){
  const editNotes=useCanEditNote(note.id);
@@ -12,6 +13,7 @@ export default function NoteHeading({note,reading,name,dirty,editing,onEdit,onPl
    {!editing&&<HistoryButton/>}
    {!!reading?.markdown&&<CopyButton text={reading.document?documentClipboard(reading.document):reading.markdown} label="复制整篇"/>}
    {(!!reading?.player_options||!!reading?.document)&&<button onClick={onExport}>{reading.document?'导出整篇':'导出当前棋手'}</button>}
+   {!!reading&&<button onClick={()=>downloadNoteJson(note,reading)}>导出json</button>}
   </div></div>
   {!!note.meta&&<div className="note-meta-row">
    {reading?.player_options?<label className="note-player">棋手<select aria-label="当前打法棋手" disabled={dirty} value={reading.player} onChange={e=>onPlayer(e.target.value)}>{reading.player_options.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>:<div className="chips">{note.meta.players.map(id=><span className="badge jade" key={id}>{name(id)}</span>)}</div>}

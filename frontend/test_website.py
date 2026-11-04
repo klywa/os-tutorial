@@ -54,11 +54,11 @@ class PublicHttpTests(unittest.TestCase):
         self.cookie = headers['Set-Cookie'].split(';')[0]
         return headers['Set-Cookie']
 
-    def test_guest_can_read_and_cannot_write(self):
+    def test_guest_cannot_read_or_write(self):
         code, data, _ = self.call('/os-tutorial/api/auth/me')
         self.assertEqual((code, data['mode'], data['role']), (200,'public','guest'))
-        self.assertEqual(self.call('/os-tutorial/api/notes/catalog')[0], 200)
-        self.assertEqual(self.call('/os-tutorial/api/dashboard')[0], 200)
+        self.assertEqual(self.call('/os-tutorial/api/notes/catalog')[0], 401)
+        self.assertEqual(self.call('/os-tutorial/api/dashboard')[0], 401)
         self.assertEqual(self.call('/os-tutorial/api/notes/n', 'PUT', {})[0], 401)
         self.assertEqual(self.call('/api/notes/catalog')[0], 404)
 
@@ -144,6 +144,7 @@ class PublicHttpTests(unittest.TestCase):
         self.assertEqual(self.call('/os-tutorial/api/notes/n','PUT',{'revision':result['revision'],'document':body})[0],200)
 
     def test_reading_does_not_start_background_projection_threads(self):
+        self.login()
         with patch('reader_store.schedule_rebuild',side_effect=AssertionError('public read spawned worker')):
             self.assertEqual(self.call('/os-tutorial/api/options')[0],200)
 

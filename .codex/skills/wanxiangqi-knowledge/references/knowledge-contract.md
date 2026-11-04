@@ -40,6 +40,8 @@ PUT notes/ID接受revision、document及可选aliases；旧sections/claims在sch
 
 CLI commit文件为 {"notes":[{"body":正文对象,"metadata":附件对象}]}。已有记录必须带最新metadata.revision，保留历史、ID、人工保护及证据。人工节点变化进入conflicts，不静默覆盖。新增结论需有效证据，不将单局操作包装成通用知识。
 
+明确授权的笔记合并可额外传入 `retire: {"旧笔记ID": {"revision": "最新revision", "target": "同批目标笔记ID"}}`。仅显式列出的旧笔记退役；统一事务先归档其完整快照，再保存目标、旧ID映射与索引，最后移除旧活动正文及附件。来源或目标已更新、目标不在同批、存在同步冲突或目标人工保护冲突时整批失败，不能先删除来源。
+
 新增或改义的非空条目必须由 claim_annotations.text_ref 直接关联该节点及有效来源，不能仅在其他支撑节点挂证据。既有原样保留的留缺结论可以没有证据；不能据此给新结论伪造来源。网页人工编辑由服务记录 origin=manual，导入不得伪造人工标记。删除条目时，旧正文和证据留在 history，退出当前阅读的结论进入 retired_claim_annotations 并记录对应历史位置。
 
 ## 迁移

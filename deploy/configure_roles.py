@@ -35,7 +35,7 @@ def migrate(path, server_capability):
     for account in accounts:
         if (set(account) != {'username', 'password', 'role'} or
                 not all(isinstance(account[key], str) and account[key] for key in account) or
-                account['role'] not in ('admin', 'annotator') or account['username'] in seen):
+                account['role'] not in ('admin', 'annotator', 'viewer') or account['username'] in seen):
             raise ValueError('账号配置无效或用户名重复')
         seen.add(account['username'])
         if account['username'] == 'test1' and account['role'] != 'annotator':

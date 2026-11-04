@@ -278,10 +278,11 @@ def render_note(note, sources):
     return '\n'.join(lines) + '\n'
 
 
-def commit_notes(root, incoming):
+def commit_notes(root, incoming, *, retire=None):
     import json_store
     if json_store.enabled(root):
-        return json_store.commit(root, incoming)
+        return json_store.commit(root, incoming, retire=retire) if retire else json_store.commit(root, incoming)
+    if retire:raise ValueError('合并退役仅支持schema6知识库')
     from workspace import store_lock, recover
     with store_lock(root):
         recover(root)
@@ -570,7 +571,8 @@ def main():
         else:
             result = note_review.annotations(args.root, args.note, args.status)
     elif args.command == 'commit':
-        result = commit_notes(args.root, read_json(args.file)['notes'])
+        payload = read_json(args.file)
+        result = commit_notes(args.root, payload['notes'], retire=payload.get('retire'))
     elif args.command == 'process-local':
         from media import process_local
         result = process_local(args.root, args.source, args.model)

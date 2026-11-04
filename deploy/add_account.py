@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""新增公网账号：add_account.py admin|annotator 用户名 密码。"""
+"""新增公网账号：add_account.py admin|annotator|viewer 用户名 密码。"""
 import argparse
 from contextlib import contextmanager
 from datetime import datetime, timezone
@@ -46,8 +46,8 @@ def account_lock(path):
 
 
 def add_account(path, role, username, password):
-    if role not in ('admin', 'annotator'):
-        raise ValueError('角色必须是 admin 或 annotator')
+    if role not in ('admin', 'annotator', 'viewer'):
+        raise ValueError('角色必须是 admin、annotator 或 viewer')
     if not username or not username.strip() or not password:
         raise ValueError('用户名和密码不能为空')
     path = Path(path)
@@ -92,7 +92,7 @@ def add_account(path, role, username, password):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('role', choices=('admin', 'annotator'), help='账号角色')
+    parser.add_argument('role', choices=('admin', 'annotator', 'viewer'), help='账号角色')
     parser.add_argument('username', help='新账号用户名')
     parser.add_argument('password', help='新账号密码')
     args = parser.parse_args(argv)

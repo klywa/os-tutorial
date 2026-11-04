@@ -145,7 +145,7 @@ def check_record(record):
         raise ValueError('阵容适用棋手必须与笔记绑定一致')
 
 
-def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False, prepare_only=False, storage_version=None):
+def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False, prepare_only=False, storage_version=None, retire_ids=()):
     """Caller holds store_lock. Publish changed pairs and a complete light index."""
     root = Path(root)
     previous = read(root / INDEX, {'notes': []})
@@ -187,11 +187,17 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
              'aliases':deepcopy(aliases if aliases is not None else previous.get('aliases', {}))}
     if external: index['storage_version'] = 2
     retired = [r['path'] for r in previous['notes'] if r['path'] not in {x['path'] for x in rows}]
+    # Only explicitly authorized retirements receive final archival snapshots.
+    for nid in retire_ids:
+        if nid not in old_rows or nid in {r['id'] for r in rows}:
+            raise ValueError('显式退役记录必须存在且不再出现在活动索引中')
+        archives.extend(history_store.archive_record(_disk_record(root, old_rows[nid]), origin='retire')['writes'])
     if not changed and not retired and index == previous:
         return []
     from note_review import version_writes
     journal = {'schema_version':6, 'origin':origin, 'delta':True, 'records':changed, 'index':index,
                'versions':version_writes(root, before, changed, origin, review_refs), 'retired':retired}
+    if archives:journal['archives'] = archives
     if external:
         for entry in journal.pop('versions'):
             if entry['path'].startswith('knowledge-history/'):
@@ -654,12 +660,31 @@ def persist_views(root, views):
     save(root, items)
 
 
-def commit(root, incoming):
+def commit(root, incoming, *, retire=None):
+    """Optional explicit retire map: source ID -> {revision, target}."""
     import wxq
     from workspace import store_lock, Conflict
     with store_lock(root, wait=True):
         recover(root)
         current = {r['metadata']['id']: r for r in records(root)}
+        retire = retire or {}
+        aliases = deepcopy(read(Path(root)/INDEX, {}).get('aliases', {}))
+        incoming_ids = {item.get('metadata', {}).get('id') for item in incoming}
+        retiring_ids = []
+        if retire:
+            from knowledge_conflicts import is_blocked
+            for nid in set(retire) | incoming_ids:
+                if is_blocked(root, nid):raise Conflict('笔记有待裁决的同步冲突：'+nid)
+            for nid, spec in retire.items():
+                target_id = spec['target']
+                if nid in incoming_ids or target_id in retire or target_id not in current or target_id not in incoming_ids:
+                    raise ValueError('合并目标必须在同批提交中，且不能同时退役')
+                if nid not in current:
+                    if aliases.get(nid) == target_id:continue
+                    raise ValueError('待合并笔记不存在：'+nid)
+                if spec.get('revision') != current[nid]['metadata']['revision']:
+                    raise Conflict('待合并笔记已更新，请重新读取：'+nid)
+                retiring_ids.append(nid)
         changed = []
         batch_refs = []
         for item in incoming:
@@ -683,6 +708,7 @@ def commit(root, incoming):
                 new_nodes = {n['id']: n for n in [*record['body']['nodes'], *record['body'].get('supporting_nodes', [])]}
                 protected_semantics = previous['metadata'].get('manual_semantics') or previous['metadata'].get('manual_meta')
                 if any(new_nodes.get(node_id) != old_nodes.get(node_id) for node_id in protected - allowed) or (protected_semantics and previous['body'].get('semantics') != record['body'].get('semantics')):
+                    if retire:raise Conflict('合并不能覆盖人工保护的正文：'+nid)
                     previous['metadata'].setdefault('conflicts', []).append({'at': wxq.now(), 'incoming': snapshot(record), 'reason': '人工正文受到保护'})
                     changed.append(meta['id']);continue
                 meta['review_receipts'] = refs
@@ -722,7 +748,11 @@ def commit(root, incoming):
                 for evidence in claim.get('evidence', []):
                     check_evidence(root, evidence)
             current[nid] = record;changed.append(nid)
-        save(root, list(current.values()), origin='review' if batch_refs else 'import', review_refs=batch_refs)
+        for nid, spec in retire.items():
+            current.pop(nid, None)
+            aliases = {key:spec['target'] if value==nid else value for key,value in aliases.items()}
+            aliases[nid] = spec['target']
+        save(root, list(current.values()), aliases=aliases, origin='review' if batch_refs else 'import', review_refs=batch_refs, retire_ids=retiring_ids)
         return {'notes': changed, 'schema_version': 6}
 
 

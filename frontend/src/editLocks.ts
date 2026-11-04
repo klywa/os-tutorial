@@ -1,3 +1,4 @@
+import {sessionFetch} from './sessionRequest';
 import {useEffect,useRef,useState} from 'react';
 import {useAuth} from './auth';
 import {api} from './model';
@@ -28,11 +29,11 @@ export function useEditLocks(noteId?:string,onLost?:(lease:Lease,reason:string)=
  }
  useEffect(()=>{
   alive.current=true;generation.current++;let live=true,polling=false,renewing=false;
-  if(!noteId||session.role==='guest')return;
+  if(!noteId||!['admin','annotator'].includes(session.role))return;
   async function poll(){if(polling)return;polling=true;const observed=new Set([...own.current.values()].map(l=>l.id));try{const view=await api<View>('edit-locks?note_id='+encodeURIComponent(noteId!)+'&client_id='+clientId);if(!live)return;setPresence(view.leases);if(!own.current.size)connectivity(true);else if(!connected.current)await renew();for(const lease of [...own.current.values()]){if(!observed.has(lease.id))continue;const revoked=view.revoked.find(r=>r.id===lease.id);if(revoked)invalidate(lease,revoked.reason);else if(!view.leases.some(p=>p.id===lease.id))invalidate(lease,'expired');}}catch{if(live)connectivity(false);}finally{polling=false;}}
   async function renew(){if(renewing||!own.current.size)return;renewing=true;try{const result=await api<{leases:Lease[];lost:{id:string;reason:string}[]}>('edit-locks/renew','POST',{client_id:clientId,leases:[...own.current.values()].map(leaseRef)});if(!live)return;for(const item of result.lost){const lease=[...own.current.values()].find(l=>l.id===item.id);if(lease)invalidate(lease,item.reason);}for(const lease of result.leases)if(own.current.get(resourceKey(lease.resource))?.id===lease.id)own.current.set(resourceKey(lease.resource),lease);connectivity(true);bump();}catch{if(live)connectivity(false);}finally{renewing=false;}}
   void poll();const p=setInterval(()=>{if(document.visibilityState==='visible')void poll();},2000),r=setInterval(()=>void renew(),15000);
-  const pagehide=()=>{const leases=[...own.current.values()].map(leaseRef);if(leases.length)void fetch(apiUrl('edit-locks/release'),{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:clientId,leases})});};
+  const pagehide=()=>{const leases=[...own.current.values()].map(leaseRef);if(leases.length)void sessionFetch(apiUrl('edit-locks/release'),{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},body:JSON.stringify({client_id:clientId,leases})});};
   window.addEventListener('pagehide',pagehide);
   return()=>{live=false;alive.current=false;generation.current++;clearInterval(p);clearInterval(r);window.removeEventListener('pagehide',pagehide);void release();};
  },[noteId,session.role,session.username]);

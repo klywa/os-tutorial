@@ -43,6 +43,22 @@ export function blockEnd(nodes:KnowledgeNode[],index:number){
  let end=index+1;while(end<nodes.length){const n=nodes[end];if(n.type==='heading'&&n.level<=node.level)break;end++;}return end;
 }
 export function removeNode(nodes:KnowledgeNode[],index:number){return [...nodes.slice(0,index),...nodes.slice(blockEnd(nodes,index))];}
+export function insertKnowledgeNode(nodes:KnowledgeNode[],type:'heading'|'entry',after:number,child=false,keyValue=false){
+ const parent=nodes[after];
+ if(child&&(!parent||parent.type!=='heading'||parent.level>=6))return nodes;
+ const level=parent?.type==='heading'?Math.max(2,parent.level+(child?1:0)):2;
+ const node:KnowledgeNode=type==='heading'?{id:crypto.randomUUID(),type,level,title:'新章节',separator:'\n\n'}:
+  {id:crypto.randomUUID(),type,key:keyValue?'新条目':'正文',show_key:keyValue,value:'',separator:'\n\n'};
+ const index=type==='heading'&&parent?.type==='heading'?blockEnd(nodes,after):after+1;
+ return [...nodes.slice(0,index),node,...nodes.slice(index)];
+}
+export function changeHeadingLevel(nodes:KnowledgeNode[],index:number,level:number){
+ const node=nodes[index];
+ if(!node||node.type!=='heading'||node.level===1||level<2||level>6)return nodes;
+ const end=blockEnd(nodes,index),delta=level-node.level;
+ if(nodes.slice(index,end).some(n=>n.type==='heading'&&n.level+delta>6))return nodes;
+ return nodes.map((n,i)=>i>=index&&i<end&&n.type==='heading'?{...n,level:n.level+delta}:n);
+}
 export function moveNode(nodes:KnowledgeNode[],index:number,offset:number){
  const node=nodes[index];if(node.type!=='heading'){
   const target=index+offset;if(target<1||target>=nodes.length)return nodes;

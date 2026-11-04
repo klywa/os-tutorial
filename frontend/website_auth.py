@@ -44,7 +44,7 @@ class Auth:
                 if not isinstance(name,str) or not name or not isinstance(password,str) or not password or name in result:
                     raise ValueError()
                 role=row.get('role','admin')
-                if role not in ('admin','annotator') or (version==1 and role!='admin'):
+                if role not in ('admin','annotator','viewer') or (version==1 and role!='admin'):
                     raise ValueError()
                 result[name]={'password':password,'role':role}
             return secret, result, int(ttl*3600)
@@ -68,7 +68,7 @@ class Auth:
             user=users[username]
             expected=self.fingerprint(secret,username,user)
             role=value.get('role',user['role'])
-            allowed=['admin','annotator'] if user['role']=='admin' else ['annotator']
+            allowed=['admin','annotator','viewer'] if user['role']=='admin' else [user['role']]
             if role not in allowed or not hmac.compare_digest(expected,value['v']):return None
             return value,{'username':username,'account_role':user['role'],'role':role,'allowed_roles':allowed}
         except (Unconfigured,ValueError,TypeError,KeyError,CookieError):
@@ -133,4 +133,4 @@ class LocalAuth(Auth):
 
     def actor(self,cookie):
         return super().actor(cookie) or {'username':'local','account_role':'admin','role':'admin',
-                                       'allowed_roles':['admin','annotator']}
+                                       'allowed_roles':['admin','annotator','viewer']}

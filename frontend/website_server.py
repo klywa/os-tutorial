@@ -93,6 +93,8 @@ def handler_class(base):
                 root=self.server.root
                 query=parse_qs(urlsplit(self.path).query)
                 if path=='/api/auth/me':return self.response(200,self.who())
+                if path.startswith('/api/') and not self.actor():
+                    return self.response(401,{'error':'请先登录'})
                 if path=='/api/edit-locks':
                     if not self.actor():return self.response(401,{'error':'请先登录'})
                     from site_access import get_locks
@@ -152,7 +154,7 @@ def handler_class(base):
                     entry=manifest.get('assets',{}).get(key,{})
                     folder=(root/'website-data').resolve();target=(folder/entry.get('path','__missing__')).resolve()
                     if not key or not target.is_relative_to(folder) or not target.is_file():raise KeyError('图片不存在')
-                    return self.file(target,cache='public, max-age=3600')
+                    return self.file(target,cache='private, no-store')
                 if path=='/api/cards' or re.fullmatch(r'/api/cards/[^/]+',path):
                     cards=store.read(root/'website-data/cards.json',[])
                     images=store.read(root/'website-data/images.json',{}).get('entities',{})
