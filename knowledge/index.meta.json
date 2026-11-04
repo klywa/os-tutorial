@@ -458,6 +458,30 @@
       "revision": "c7578a5e58cadca1e063"
     },
     {
+      "id": "game-common-sense",
+      "type": "other",
+      "title": "游戏打法常识",
+      "path": "knowledge/other/游戏打法常识.json",
+      "player_id": null,
+      "revision": "502c9c146c3fcc1a23c7"
+    },
+    {
+      "id": "game-decisions",
+      "type": "other",
+      "title": "游戏决策逻辑",
+      "path": "knowledge/other/游戏决策逻辑.json",
+      "player_id": null,
+      "revision": "ced983f9728d8f943242"
+    },
+    {
+      "id": "game-macro",
+      "type": "other",
+      "title": "游戏大局观",
+      "path": "knowledge/other/游戏大局观.json",
+      "player_id": null,
+      "revision": "5112758b448590b4e99b"
+    },
+    {
       "id": "heluo-huamulan--ming",
       "type": "lineup",
       "title": "河洛花木兰-明先生",
@@ -776,30 +800,6 @@
       "path": "knowledge/lineups/大河龙蛇-昭君.json",
       "player_id": "player:34",
       "revision": "c74594ac3bbe59a83378"
-    },
-    {
-      "id": "game-macro",
-      "type": "other",
-      "title": "游戏大局观",
-      "path": "knowledge/other/游戏大局观.json",
-      "player_id": null,
-      "revision": "5112758b448590b4e99b"
-    },
-    {
-      "id": "game-decisions",
-      "type": "other",
-      "title": "游戏决策逻辑",
-      "path": "knowledge/other/游戏决策逻辑.json",
-      "player_id": null,
-      "revision": "ced983f9728d8f943242"
-    },
-    {
-      "id": "game-common-sense",
-      "type": "other",
-      "title": "游戏打法常识",
-      "path": "knowledge/other/游戏打法常识.json",
-      "player_id": null,
-      "revision": "502c9c146c3fcc1a23c7"
     }
   ],
   "aliases": {
@@ -862,6 +862,10 @@
     "heluo-huamulan|ying": "heluo-huamulan--ying",
     "heluo-huamulan|zhaojun": "heluo-huamulan--zhaojun",
     "heluo-huamulan|zhuang": "heluo-huamulan--zhuang",
+    "mechanics-auction": "mechanics-rules",
+    "mechanics-equipment": "mechanics-rules",
+    "mechanics-level-transfer": "mechanics-rules",
+    "mechanics-pool": "mechanics-rules",
     "sanfen-reversal": "sanfen-reversal--baige",
     "sanfen-reversal|baige": "sanfen-reversal--baige",
     "sanfen-reversal|jing": "sanfen-reversal--jing",
@@ -870,11 +874,7 @@
     "zhaojun-high-tier-dahe": "zhaojun-high-tier-dahe",
     "zhaojun-high-tier-dahe|player:34": "zhaojun-high-tier-dahe",
     "zhaojun-high-tier-dahe|zhaojun": "zhaojun-high-tier-dahe",
-    "zhaojun-version-and-asr-review": "player-zhaojun",
-    "mechanics-auction": "mechanics-rules",
-    "mechanics-equipment": "mechanics-rules",
-    "mechanics-level-transfer": "mechanics-rules",
-    "mechanics-pool": "mechanics-rules"
+    "zhaojun-version-and-asr-review": "player-zhaojun"
   },
   "storage_version": 2
 }
