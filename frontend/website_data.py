@@ -31,6 +31,34 @@ def write(path,value):
     store.write_file(path,value)
 
 
+def export_cards(root, staging):
+    """Export only the sanitized official card catalog and immutable image bytes."""
+    root=Path(root);staging=Path(staging);staging.mkdir(parents=True,exist_ok=True)
+    from reference_store import json_cards
+    try:cards=json_cards(root) if (root/'knowledge/cards/index.meta.json').exists() else []
+    except (KeyError,ValueError):raise ValueError('卡牌资料无效，请先修复再发布')
+    public_cards=[]
+    for card in cards:
+        public_cards.append({**sanitize({k:deepcopy(card[k]) for k in ('id','name','category','aliases','effect','faction','tier','awakened','skills','skills_source','stats','attributes','retrieved_at','version') if k in card}),
+            'sources':[],'skills':sanitize(card.get('skills',[])),'stats':sanitize(card.get('stats',{}))})
+    write(staging/'cards.json',public_cards)
+    images=store.read(root/'entities/assets/index.json',{})
+    manifest={'entities':{},'assets':{}}
+    from card_images import image_file
+    for eid,kinds in images.get('entities',{}).items():
+        for kind in ('thumb','image'):
+            if kind not in kinds:continue
+            try:source=image_file(root,eid,kind,images)
+            except KeyError as exc:raise ValueError('卡牌引用的图片不可用：'+eid) from exc
+            digest=hashlib.sha256(source.read_bytes()).hexdigest()
+            target=staging/'images'/(digest+'.img');target.parent.mkdir(exist_ok=True)
+            shutil.copyfile(source,target)
+            manifest['entities'].setdefault(eid,{})[kind]=digest
+            manifest['assets'][digest]={'path':f'images/{digest}.img'}
+    write(staging/'images.json',manifest)
+    return public_cards,manifest
+
+
 def export(root=ROOT):
     from workspace import store_lock
     import lineup_usage
@@ -43,29 +71,7 @@ def export(root=ROOT):
             for category in wxq.CATEGORIES:
                 rows=store.read(root/'entities'/(category+'.json'),[])
                 write(staging/'entities'/(category+'.json'),[sanitize({k:v for k,v in row.items() if k in ENTITY_KEYS}) for row in rows])
-            import reader_store
-            from reference_store import json_cards
-            try:cards=json_cards(root) if (root/'knowledge/cards/index.meta.json').exists() else []
-            except (KeyError,ValueError):raise ValueError('卡牌资料无效，请先修复再发布')
-            public_cards=[]
-            for card in cards:
-                public_cards.append({**sanitize({k:deepcopy(card[k]) for k in ('id','name','category','aliases','effect','faction','tier','awakened','skills','skills_source','stats','attributes','retrieved_at','version') if k in card}),
-                    'sources':[],'skills':sanitize(card.get('skills',[])),'stats':sanitize(card.get('stats',{}))})
-            write(staging/'cards.json',public_cards)
-            images=store.read(root/'entities/assets/index.json',{})
-            manifest={'entities':{},'assets':{}}
-            from card_images import image_file
-            for eid,kinds in images.get('entities',{}).items():
-                for kind in ('thumb','image'):
-                    if kind not in kinds:continue
-                    try:source=image_file(root,eid,kind,images)
-                    except KeyError:continue
-                    digest=hashlib.sha256(source.read_bytes()).hexdigest()
-                    target=staging/'images'/(digest+'.img');target.parent.mkdir(exist_ok=True)
-                    shutil.copyfile(source,target)
-                    manifest['entities'].setdefault(eid,{})[kind]=digest
-                    manifest['assets'][digest]={'path':f'images/{digest}.img'}
-            write(staging/'images.json',manifest)
+            public_cards,manifest=export_cards(root,staging)
             write(staging/'usage.json',sanitize(lineup_usage.cached_snapshot(root)))
             keys=('id','name','common_name','heroes','variants','links','excluded','sources')
             # Only source identifiers used by the matching join are retained.

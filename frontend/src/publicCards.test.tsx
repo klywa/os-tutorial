@@ -1,6 +1,9 @@
 import {afterEach,expect,it,vi} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {CardImage,getCard} from './EntityCards';
+import Cards from './Cards';
+import {AuthContext} from './auth';
+import type {Session} from './auth';
 import type {CardDetail} from './types';
 afterEach(()=>{vi.unstubAllGlobals();vi.unstubAllEnvs();});
 it('loads published card details with skills, enhancements, stats and sanitized sources intact',async()=>{
@@ -14,4 +17,11 @@ it('renders thumb and full card images under the published site base path',()=>{
  const card={id:'image',name:'测试卡',thumb_url:'/api/card-images/image/thumb',image_url:'/api/card-images/image/image'} as CardDetail;
  expect(renderToStaticMarkup(<CardImage card={card}/>)).toContain('src="/os-tutorial/api/card-images/image/thumb"');
  expect(renderToStaticMarkup(<CardImage card={card} large/>)).toContain('src="/os-tutorial/api/card-images/image/image"');
+});
+it('keeps official sync controls exclusive to local administrators',()=>{
+ for(const mode of ['local','public'] as const)for(const role of ['admin','annotator','viewer'] as const){
+  const session={mode,role,username:'test',allowed_roles:[role]} as Session;
+  const html=renderToStaticMarkup(<AuthContext.Provider value={{session,refresh:async()=>{},login:async()=>{},logout:async()=>{}}}><Cards/></AuthContext.Provider>);
+  expect(html).toContain('卡牌库');expect(html.includes('每日自动检查官网')).toBe(mode==='local'&&role==='admin');
+ }
 });

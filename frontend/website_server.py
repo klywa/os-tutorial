@@ -147,23 +147,30 @@ def handler_class(base):
                         value=reading_document(note,query.get('player',[None])[0])
                     else:value=note
                     return self.response(200,sanitize(value),etag=True)
+                if path=='/api/cards/status':
+                    from card_publication import status
+                    return self.response(200,status(root,self.server.state_dir))
                 match=re.fullmatch(r'/api/cards/([^/]+)/images/(thumb|image)',path)
                 if match:
-                    manifest=store.read(root/'website-data/images.json',{})
+                    from card_publication import resolve
+                    folder,version=resolve(root,self.server.state_dir,query.get('version',[None])[0])
+                    manifest=store.read(folder/'images.json',{})
                     key=manifest.get('entities',{}).get(match[1],{}).get(match[2])
                     entry=manifest.get('assets',{}).get(key,{})
-                    folder=(root/'website-data').resolve();target=(folder/entry.get('path','__missing__')).resolve()
+                    folder=folder.resolve();target=(folder/entry.get('path','__missing__')).resolve()
                     if not key or not target.is_relative_to(folder) or not target.is_file():raise KeyError('图片不存在')
                     return self.file(target,cache='private, no-store')
                 if path=='/api/cards' or re.fullmatch(r'/api/cards/[^/]+',path):
-                    cards=store.read(root/'website-data/cards.json',[])
-                    images=store.read(root/'website-data/images.json',{}).get('entities',{})
+                    from card_publication import resolve
+                    folder,version=resolve(root,self.server.state_dir,query.get('version',[None])[0])
+                    cards=store.read(folder/'cards.json',[])
+                    images=store.read(folder/'images.json',{}).get('entities',{})
                     cards=[{**c,'image_status':'ready' if c['id'] in images else 'missing',
-                        **{kind+'_url':f'/api/cards/{c["id"]}/images/{kind}' if kind in images.get(c['id'],{}) else None for kind in ('thumb','image')}} for c in cards]
+                        **{kind+'_url':f'/api/cards/{c["id"]}/images/{kind}?version={version}' if kind in images.get(c['id'],{}) else None for kind in ('thumb','image')}} for c in cards]
                     if path!='/api/cards':
                         cards=next((c for c in cards if c['id']==path.split('/')[-1]),None)
                         if cards is None:raise KeyError('卡牌不存在')
-                    return self.response(200,cards,etag=True)
+                    return self.response(200,cards,etag=True,headers={'X-Cards-Version':version})
                 if path.startswith('/api/'):raise KeyError('接口不存在')
                 dist=self.server.dist.resolve()
                 target=(dist/path.lstrip('/')).resolve()

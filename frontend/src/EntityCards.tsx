@@ -1,11 +1,12 @@
 import {appUrl} from './urls';
-import {onSessionReset} from './sessionRequest';
+import {onSessionReset,requestGeneration} from './sessionRequest';
+import {useAuth} from './auth';
 import {Children,cloneElement,createContext,isValidElement,useContext,useEffect,useRef,useState,useId,useMemo,useCallback,useSyncExternalStore} from 'react';
 import type {ReactNode,ReactElement} from 'react';
 import {createPortal} from 'react-dom';
 import {api} from './model';
 import {activeWorkspace,cachedEntry} from './readerCache';
-import {loadCardCatalog} from './cardCatalog';
+import {loadCardCatalog,cardPath,cardVersion,checkCardVersion} from './cardCatalog';
 import type {CardDetail,CardSummary} from './types';
 import {splitEntities,resolveCandidates,selectedCandidate,heroVersions,cardIndex} from './entityText';
 import {DockSelection} from './dockSelection';
@@ -27,19 +28,22 @@ export function ReadingCards({children}:{children:ReactNode}){
  return <DockContext.Provider value={dock}><div ref={container} className={'reading-body '+(wide?'with-card-dock':'')}>{children}{wide&&<aside className="card-dock" aria-label="卡牌详情栏"><DockHeading selection={selection}/><div ref={setTarget}/></aside>}</div></DockContext.Provider>;
 }
 export const categoryNames:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
-export function getCard(id:string){if(!details.has(id)){const request=api<CardDetail>('cards/'+encodeURIComponent(id)).catch(e=>{if(details.get(id)===request)details.delete(id);throw e;});details.set(id,request);}return details.get(id)!;}
+export function getCard(id:string,version=cardVersion()){const key=cardPath(id,version);if(!details.has(key)){const request=api<CardDetail>(key).catch(e=>{if(details.get(key)===request)details.delete(key);throw e;});details.set(key,request);}return details.get(key)!;}
 export function CardProvider({children,enabled=true}:{children:ReactNode;enabled?:boolean}){
+ const publicMode=useAuth().session.mode==='public';
  const [cards,setCards]=useState<CardSummary[]>([]),[active,setActive]=useState(enabled);
  useEffect(()=>{if(enabled)setActive(true);},[enabled]);
  useEffect(()=>{
   if(!active)return;let alive=true,epoch=0;
   const refresh=()=>{const current=++epoch,workspace=activeWorkspace();let fresh=false;
-   void cachedEntry<CardSummary[]>('cards',workspace).then(c=>{if(alive&&current===epoch&&!fresh&&c)setCards(c.value);});
-   void loadCardCatalog(workspace).then(c=>{if(alive&&current===epoch){fresh=true;setCards(c);}}).catch(()=>{});
+   if(!publicMode)void cachedEntry<CardSummary[]>('cards',workspace).then(c=>{if(alive&&current===epoch&&!fresh&&c)setCards(c.value);});
+   void (publicMode?checkCardVersion().then(()=>loadCardCatalog(workspace)):loadCardCatalog(workspace)).then(c=>{if(alive&&current===epoch&&c.every(card=>(card.catalog_version??'')===cardVersion(workspace))){fresh=true;setCards(c);}}).catch(()=>{});
   };
+  const catalog=(event:Event)=>{const value=(event as CustomEvent<{cards:CardSummary[];workspace:string;epoch:number;version:string}>).detail;if(alive&&value.workspace===activeWorkspace()&&value.epoch===requestGeneration()&&value.version===cardVersion(value.workspace))setCards(value.cards);};
+  window.addEventListener('cards-catalog',catalog);
   refresh();window.addEventListener('reader-workspace',refresh);
-  return()=>{alive=false;window.removeEventListener('reader-workspace',refresh);};
- },[active]);
+  return()=>{alive=false;window.removeEventListener('reader-workspace',refresh);window.removeEventListener('cards-catalog',catalog);};
+ },[active,publicMode]);
  return <CardContext.Provider value={cards}>{children}</CardContext.Provider>;
 }
 export function EntityScope({references,children}:{references:string[];children:ReactNode}){return <ReferenceContext.Provider value={references}>{children}</ReferenceContext.Provider>;}
@@ -69,8 +73,8 @@ export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:strin
 }
 function CardVersion({card,hero=false}:{card?:CardSummary;hero?:boolean}){
  const [detail,setDetail]=useState<CardDetail|null>(null),[error,setError]=useState(''),[full,setFull]=useState(false);
- const id=card?.id;
- useEffect(()=>{if(!id)return;let alive=true;setDetail(null);setError('');void getCard(id).then(d=>{if(alive)setDetail(d);}).catch(e=>{if(alive)setError(e.message);});return()=>{alive=false;};},[id]);
+ const id=card?.id,version=card?.catalog_version??'',key=id?cardPath(id,version):'';
+ useEffect(()=>{if(!id)return;let alive=true;setDetail(null);setError('');void getCard(id,version).then(d=>{if(alive)setDetail(d);}).catch(e=>{if(alive)setError(e.message);});return()=>{alive=false;};},[id,key,version]);
  return <section className="card-version" aria-label={hero?(card?.awakened?'觉醒':'未觉醒'):undefined}>
  {hero&&<h3 className="card-version-heading">{card?.awakened?'觉醒':'未觉醒'}</h3>}
  <div className="popover-card"><CardImage card={card} large/><div><p className="muted">{categoryNames[card?.category??'']}{card?.tier!=null?` · ${card.tier}品阶`:''}{card?.faction?.name?` · ${card.faction.name}`:''}</p><p>{card?.effect||'资料未提供'}</p></div></div>

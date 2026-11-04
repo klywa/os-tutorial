@@ -1,0 +1,16 @@
+[Unit]
+Description=Refresh Wanxiangqi official cards independently of note saves
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=os-tutorial
+Group=os-tutorial
+UMask=0007
+WorkingDirectory=/opt/os-tutorial/current
+ExecStart=/usr/bin/python3 /opt/os-tutorial/current/frontend/card_daily.py --state-dir /var/lib/os-tutorial
+TimeoutStartSec=30min
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/os-tutorial
