@@ -172,7 +172,8 @@ def handler_class(base):
                     if path not in ('/','/admin','/admin/'):raise KeyError('页面不存在')
                     target=dist/'index.html'
                 if not target.exists():return self.response(503,{'error':'前端尚未构建'})
-                return self.file(target)
+                hashed_asset=path.startswith('/assets/') and re.search(r'-[A-Za-z0-9_-]{8,}\.(?:js|css)$',target.name)
+                return self.file(target,cache='public, max-age=31536000, immutable' if hashed_asset else 'no-cache')
             except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})
             except (workspace.Conflict,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
             except PermissionError as exc:self.response(403,{'error':str(exc)})

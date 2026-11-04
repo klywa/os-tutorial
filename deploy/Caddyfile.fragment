@@ -7,6 +7,7 @@ redir @root /os-tutorial/ 302
 redir @os_bare /os-tutorial/ 308
 
 handle /os-tutorial/* {
+    encode zstd gzip
     reverse_proxy 127.0.0.1:8765
 }
 

@@ -5,6 +5,21 @@ import test_website as fixtures
 
 
 class PrivateAccessTests(fixtures.PublicHttpTests):
+    def test_only_hashed_static_assets_are_cached_long_term(self):
+        dist=self.root/'dist';(dist/'assets').mkdir(parents=True)
+        for name in ('index-Ab12Cd34.js','index-Ab12Cd34.css','unhashed.js'):
+            (dist/'assets'/name).write_text('/* fixture */')
+        (dist/'index.html').write_text('<html>login</html>')
+        self.http.dist=dist
+        for path,expected in [('assets/index-Ab12Cd34.js','public, max-age=31536000, immutable'),
+                ('assets/index-Ab12Cd34.css','public, max-age=31536000, immutable'),
+                ('assets/unhashed.js','no-cache'),('','no-cache')]:
+            connection=http.client.HTTPConnection('127.0.0.1',self.http.server_port)
+            connection.request('GET','/os-tutorial/'+path,headers={'Host':'klywa.xyz'})
+            response=connection.getresponse();response.read();connection.close()
+            self.assertEqual(response.status,200)
+            self.assertEqual(response.headers['Cache-Control'],expected)
+
     def setUp(self):
         super().setUp()
         self.config.write_text(json.dumps({'schema_version': 2, 'sessionSecret': 's'*48,

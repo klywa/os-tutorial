@@ -1,7 +1,7 @@
 import {useEffect,useMemo,useState} from 'react';
 import {api,cardMatches} from './model';
 import {CardImage,useCards} from './EntityCards';
-import {cachedGet} from './readerCache';
+import {loadCardCatalog} from './cardCatalog';
 import OfficialSync from './OfficialSync';
 import type {CardDetail,CardSummary,CardFilters} from './types';
 const categories:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
@@ -11,7 +11,7 @@ export default function Cards(){
   const [cards,setCards]=useState<CardSummary[]>(shared),[filters,setFilters]=useState(initial);
   const [selected,setSelected]=useState(''),[detail,setDetail]=useState<CardDetail|null>(null);
   const [error,setError]=useState(''),[loading,setLoading]=useState(!shared.length),[detailLoading,setDetailLoading]=useState(false);
-  async function load(){setLoading(true);setError('');try{setCards(await cachedGet<CardSummary[]>('cards'));}catch(e){setError((e as Error).message);}finally{setLoading(false);}}
+  async function load(){setLoading(true);setError('');try{setCards(await loadCardCatalog());}catch(e){setError((e as Error).message);}finally{setLoading(false);}}
   useEffect(()=>{void load();},[]);
   useEffect(()=>{if(shared.length)setCards(shared);},[shared]);
   const visible=useMemo(()=>cards.filter(c=>cardMatches(c,filters)),[cards,filters]);

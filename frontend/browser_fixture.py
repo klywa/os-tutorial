@@ -19,7 +19,19 @@ if __name__=='__main__':
             {'id':'end','type':'entry','key':'终局','show_key':True,'value':'保持连续阅读，章节只负责定位。'}]
         json_store.save(root,[{'body':{'schema_version':6,'nodes':nodes},'metadata':{'id':'browser-note',
             'type':'other','title':'协作阅读样例','path':'knowledge/other/协作阅读样例.json'}}],partial=True)
+        if '--startup-test' in sys.argv:
+            record=json_store.load_record(root,'browser-note')
+            record['body']['nodes'][2]['value']+=' 测试英雄'
+            json_store.save(root,[record],partial=True)
+            json_store.save(root,[{'body':{'schema_version':6,'nodes':[
+                {'id':'second-title','type':'heading','level':1,'title':'追加样例'},
+                {'id':'second-entry','type':'entry','key':'正文','show_key':False,'value':'第二篇正文'}]},
+                'metadata':{'id':'second-note','type':'other','title':'追加样例','path':'knowledge/other/追加样例.json'}}],partial=True)
         website_data.export(root)
+        if '--startup-test' in sys.argv:
+            (root/'website-data/cards.json').write_text(json.dumps([{'id':'test-hero','name':'测试英雄','category':'heroes',
+                'aliases':[],'effect':'测试效果','faction':{'id':'f','name':'测试阵营'},'tier':1,'awakened':False,
+                'skills':[],'stats':{},'attributes':{},'sources':[]}],ensure_ascii=False),encoding='utf-8')
         config=root/'accounts.json';config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,
             'accounts':[{'username':name,'password':'fixture','role':role} for name,role in
                 [('reviewer','admin'),('alice','annotator'),('bob','annotator'),('reader','viewer')]]}),encoding='utf-8')
