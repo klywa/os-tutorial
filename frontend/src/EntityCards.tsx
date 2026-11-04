@@ -1,4 +1,5 @@
 import {appUrl} from './urls';
+import {onSessionReset} from './sessionRequest';
 import {Children,cloneElement,createContext,isValidElement,useContext,useEffect,useRef,useState,useId,useMemo,useCallback,useSyncExternalStore} from 'react';
 import type {ReactNode,ReactElement} from 'react';
 import {createPortal} from 'react-dom';
@@ -9,6 +10,7 @@ import {splitEntities,resolveCandidates,selectedCandidate,heroVersions,cardIndex
 import {DockSelection} from './dockSelection';
 const CardContext=createContext<CardSummary[]>([]),ReferenceContext=createContext<string[]>([]);
 const details=new Map<string,Promise<CardDetail>>();
+onSessionReset(()=>details.clear());
 type Dock={wide:boolean;target:HTMLDivElement|null;selection:DockSelection};
 const DockContext=createContext<Dock|null>(null);
 function DockHeading({selection}:{selection:DockSelection}){
@@ -24,7 +26,7 @@ export function ReadingCards({children}:{children:ReactNode}){
  return <DockContext.Provider value={dock}><div ref={container} className={'reading-body '+(wide?'with-card-dock':'')}>{children}{wide&&<aside className="card-dock" aria-label="卡牌详情栏"><DockHeading selection={selection}/><div ref={setTarget}/></aside>}</div></DockContext.Provider>;
 }
 export const categoryNames:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
-export function getCard(id:string){if(!details.has(id)){const request=api<CardDetail>('cards/'+encodeURIComponent(id)).catch(e=>{details.delete(id);throw e;});details.set(id,request);}return details.get(id)!;}
+export function getCard(id:string){if(!details.has(id)){const request=api<CardDetail>('cards/'+encodeURIComponent(id)).catch(e=>{if(details.get(id)===request)details.delete(id);throw e;});details.set(id,request);}return details.get(id)!;}
 export function CardProvider({children}:{children:ReactNode}){const [cards,setCards]=useState<CardSummary[]>([]);useEffect(()=>{let alive=true,epoch=0;const refresh=()=>{const current=++epoch;let fresh=false;void cachedEntry<CardSummary[]>('cards').then(c=>{if(alive&&current===epoch&&!fresh&&c)setCards(c.value);});void cachedGet<CardSummary[]>('cards',{workspace:activeWorkspace()}).then(c=>{if(alive&&current===epoch){fresh=true;setCards(c);}}).catch(()=>{});};refresh();window.addEventListener('reader-workspace',refresh);return()=>{alive=false;window.removeEventListener('reader-workspace',refresh);};},[]);return <CardContext.Provider value={cards}>{children}</CardContext.Provider>;}
 export function EntityScope({references,children}:{references:string[];children:ReactNode}){return <ReferenceContext.Provider value={references}>{children}</ReferenceContext.Provider>;}
 export function useCards(){return useContext(CardContext);}

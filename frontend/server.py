@@ -42,18 +42,19 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
     def response(self, status, data, etag=None):
+        cache='private, no-store' if hasattr(self.server,'public_origin') else 'private, no-cache'
         if etag is not None:
             import json_store
             tag='"'+json_store.digest(data)+'"' if etag is True else etag
             if self.headers.get('If-None-Match')==tag:
                 self.send_response(304);self.send_header('ETag',tag)
-                self.send_header('Cache-Control','private, no-cache');self.send_header('Content-Length','0');self.end_headers();return
+                self.send_header('Cache-Control',cache);self.send_header('Content-Length','0');self.end_headers();return
         else:tag=None
         body = json.dumps(data, ensure_ascii=False).encode('utf-8')
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(body)))
-        self.send_header('Cache-Control', 'private, no-cache' if tag else 'no-store')
+        self.send_header('Cache-Control', cache if tag else 'no-store')
         if tag:self.send_header('ETag',tag)
         if tag:
             from reader_store import workspace_id
@@ -100,10 +101,10 @@ class Handler(BaseHTTPRequestHandler):
             try:return self.response(200,get_proposals(self.server,identity,self.path))
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
             except (ValueError,KeyError) as exc:return self.response(400,{'error':str(exc)})
-        if identity and identity['role']=='annotator' and path.startswith('/api/') and not (
+        if identity and identity['role'] in ('annotator','viewer') and path.startswith('/api/') and not (
                 path=='/api/dashboard' or path=='/api/options' or path=='/api/cards' or path.startswith('/api/cards/') or
                 path=='/api/notes' or re.fullmatch(r'/api/notes/[^/]+(?:/(reading|revision))?',path)):
-            return self.response(403,{'error':'编写员仅可浏览笔记、看板和自己的提案'})
+            return self.response(403,{'error':'当前身份仅可浏览笔记、看板和卡牌'})
         player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
             if path == '/api/dashboard/usage/matches':

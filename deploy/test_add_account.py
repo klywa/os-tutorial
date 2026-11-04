@@ -19,7 +19,7 @@ class AddAccountTests(unittest.TestCase):
         self.path.write_text(json.dumps(self.original), encoding='utf-8')
 
     def test_add_roles_preserves_config_and_backup(self):
-        for role in ('admin', 'annotator'):
+        for role in ('admin', 'annotator', 'viewer'):
             before = self.path.read_bytes()
             backup = add_account.add_account(self.path, role, role, '中文 $ password')
             self.assertEqual(backup.read_bytes(), before)
@@ -27,7 +27,7 @@ class AddAccountTests(unittest.TestCase):
         self.assertEqual(value['accounts'][0], self.original['accounts'][0])
         self.assertEqual(value['sessionSecret'], self.original['sessionSecret'])
         self.assertEqual(value['sessionTtlHours'], 48)
-        self.assertEqual([a['role'] for a in value['accounts']], ['admin', 'admin', 'annotator'])
+        self.assertEqual([a['role'] for a in value['accounts']], ['admin', 'admin', 'annotator', 'viewer'])
         if os.name != 'nt':
             self.assertEqual(self.path.stat().st_mode & 0o777, 0o600)
             self.assertEqual(backup.stat().st_mode & 0o777, 0o600)

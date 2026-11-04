@@ -1,0 +1,105 @@
+{
+  "id": "game-decisions",
+  "type": "other",
+  "title": "游戏决策逻辑",
+  "path": "knowledge/other/游戏决策逻辑.json",
+  "aliases": [],
+  "entities": [],
+  "related": [],
+  "claim_annotations": [
+    {
+      "id": "g-df354e2f2320e78b0c26",
+      "text_ref": "g-891ee54886c0ead5edcf",
+      "section": "局势判断",
+      "kind": "conditional_strategy",
+      "origin": "document",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-438a80cb1460f2a866095aaa93cda3f93a825947b146dba23d0ce59bfc915bc5",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        }
+      ],
+      "condition": "",
+      "version": null
+    },
+    {
+      "id": "g-68986b93ed26d7b9c8a4",
+      "text_ref": "g-dd2b27b8c1f09d59406b",
+      "section": "选择与代价",
+      "kind": "conditional_strategy",
+      "origin": "document",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-43e5dddcdc3fba2a1fe7fbf9784309d4cbe586ff232964e52284b194c2974c1c",
+          "paragraph_start": 6,
+          "paragraph_end": 8
+        }
+      ],
+      "condition": "",
+      "version": null
+    },
+    {
+      "id": "g-26a3852f5e24ea4d7c9f",
+      "text_ref": "g-0bc88a875e2d743df342",
+      "section": "选择与代价",
+      "kind": "conditional_strategy",
+      "origin": "document",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-43e5dddcdc3fba2a1fe7fbf9784309d4cbe586ff232964e52284b194c2974c1c",
+          "paragraph_start": 9,
+          "paragraph_end": 10
+        }
+      ],
+      "condition": "",
+      "version": null
+    },
+    {
+      "id": "g-8eb422cbb8189add6f90",
+      "text_ref": "g-15fd0b1fb9699a64f6f0",
+      "section": "操作顺序",
+      "kind": "conditional_strategy",
+      "origin": "document",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-2508470590ca63aab7164b599a0225c985133d890704883c7bb1853c9e3b1f9b",
+          "paragraph_start": 5,
+          "paragraph_end": 5
+        }
+      ],
+      "condition": "",
+      "version": null
+    },
+    {
+      "id": "g-fdb0bba4551ead0d5875",
+      "text_ref": "g-c869668e833725bdecc4",
+      "section": "对手分析",
+      "kind": "conditional_strategy",
+      "origin": "document",
+      "inference": false,
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-43e5dddcdc3fba2a1fe7fbf9784309d4cbe586ff232964e52284b194c2974c1c",
+          "paragraph_start": 6,
+          "paragraph_end": 7
+        }
+      ],
+      "condition": "",
+      "version": null
+    }
+  ],
+  "manual_sections": [],
+  "conflicts": [],
+  "body_sha256": "29123828af453bdf4d448c90676710246b198f36d8080f1169ede36563d0d332",
+  "revision": "ced983f9728d8f943242"
+}

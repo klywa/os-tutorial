@@ -15,7 +15,7 @@ def state_dir(server):
 def actor(server,cookie):
     auth=getattr(server,'auth',None)
     if auth:return auth.actor(cookie)
-    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':['admin','annotator']}
+    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':['admin','annotator','viewer']}
 
 
 def session(server,cookie,public=False):
@@ -62,7 +62,8 @@ def is_proposal_path(path):
 
 
 def require_identity(identity):
-    if not identity or identity['role'] not in ('admin','annotator'):raise PermissionError('请先登录')
+    if not identity:raise PermissionError('请先登录')
+    if identity['role'] not in ('admin','annotator'):raise PermissionError('浏览者没有编辑权限')
 
 
 def get_proposals(server,identity,request_url):

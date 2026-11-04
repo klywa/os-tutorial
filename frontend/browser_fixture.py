@@ -22,12 +22,12 @@ if __name__=='__main__':
         website_data.export(root)
         config=root/'accounts.json';config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,
             'accounts':[{'username':name,'password':'fixture','role':role} for name,role in
-                [('reviewer','admin'),('alice','annotator'),('bob','annotator')]]}),encoding='utf-8')
+                [('reviewer','admin'),('alice','annotator'),('bob','annotator'),('reader','viewer')]]}),encoding='utf-8')
         record=json_store.load_record(root,'browser-note')
         ProposalStore(root,root/'state/proposals.sqlite3').submit({'username':'alice','role':'annotator'},
             {'note_id':'browser-note','revision':record['metadata']['revision'],'scope_id':'a',
              'nodes':[{**nodes[2],'value':'管理员已确认的 A 正文'}]})
-        http=server.create_server(root,0,public=True,base_path='',auth_config=config,state_dir=root/'state')
+        http=server.create_server(root,0,start_worker=False) if '--local' in sys.argv else server.create_server(root,0,public=True,base_path='',auth_config=config,state_dir=root/'state')
         http.auth.secure=False
         http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced','phase':'synced'},enqueue=lambda:{'state':'synced','phase':'synced'})
         print(json.dumps({'port':http.server_port,'root':str(root)}),flush=True)
