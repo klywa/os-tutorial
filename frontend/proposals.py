@@ -63,15 +63,39 @@ def _entry(node, base=None):
     if base is None:
         if set(node)-{'id','type','key','value','show_key','separator','prefix','key_suffix'}:
             raise ValueError('新条目不能携带隐藏字段')
-        if node.get('show_key') is not True:raise ValueError('新条目必须显示key')
-    elif any(node.get(k)!=base.get(k) for k in set(node)|set(base) if k not in ('key','value')):
+    elif any(node.get(k)!=base.get(k) for k in set(node)|set(base) if k not in ('key','value','show_key')):
         raise ValueError('不能修改条目的格式或隐藏字段')
-    if base and not base.get('show_key') and node.get('key')!=base['key']:
-        raise ValueError('无key正文不能修改key')
     if node.get('type')!='entry':raise ValueError('只能提议正文条目')
     json_document.validate({'schema_version':6,'nodes':[node]})
     cleaned=json_document.clean_labels({'schema_version':6,'nodes':[node]})['nodes'][0]
     return cleaned
+
+
+def sibling_boundary(nodes, source_id):
+    start = next((i for i, node in enumerate(nodes) if node['id'] == source_id), None)
+    if start is None or nodes[start]['type'] != 'heading' or nodes[start]['level'] == 1:
+        raise Conflict('来源章节已变化，请刷新')
+    level = nodes[start]['level']
+    end = next((i for i in range(start + 1, len(nodes))
+                if nodes[i]['type'] == 'heading' and nodes[i]['level'] <= level), len(nodes))
+    return end, {
+        'section': _section(nodes, source_id),
+        'before': nodes[start - 1]['id'] if start else None,
+        'right': nodes[end]['id'] if end < len(nodes) else None,
+        'headings': [[node['id'], node['level']] for node in nodes[start + 1:end]
+                     if node['type'] == 'heading'],
+    }
+
+
+def sibling_heading(node, level):
+    if (not isinstance(node, dict) or set(node) - {'id','type','title','level','space','separator'}
+            or node.get('type') != 'heading' or node.get('level') != level
+            or not isinstance(node.get('title'), str) or not node['title'].strip()
+            or '\r' in node['title'] or '\n' in node['title']):
+        raise ValueError('请输入有效的同级章节标题')
+    result = {**node, 'level': level, 'title': node['title'].strip(), 'space': ' ', 'separator': '\n\n'}
+    json_document.validate({'schema_version':6,'nodes':[result]})
+    return result
 
 
 class ProposalStore:
@@ -156,6 +180,12 @@ class ProposalStore:
             if byid.get(item['node_id'])!=item['base_node']:return True
             return _section(nodes,item['node_id'])!=context['section']
         if item['node_id'] in byid:return True
+        if source := context.get('sibling_of'):
+            try:
+                _, boundary = sibling_boundary(nodes, source)
+            except Conflict:
+                return True
+            return boundary != context['sibling_boundary']
         for name in ('left','right'):
             anchor=context[name]
             if anchor is not None and (anchor not in byid or _section(nodes,anchor)!=context[name+'_section']):return True
@@ -291,6 +321,9 @@ class ProposalStore:
             if locks:
                 from entry_changes import target
                 locks.validate(conn,actor,payload.get('client_id'),payload.get('lease'),item['note_id'],target=target(item))
+            sibling = item['_context'].get('sibling_of')
+            if sibling and self._conflict(item, self._note(item['note_id'])):
+                raise Conflict('章节插入位置已变化，请重新提交')
             if payload.get('rebase'):
                 if actor['role']!='admin':raise ProposalForbidden('只有管理员可重新合并基础版本')
                 record=self._note(item['note_id']);nodes=record['body']['nodes']
@@ -305,7 +338,8 @@ class ProposalStore:
                 if proposed is not None:raise ValueError('删除提案不接受正文')
             else:
                 if not isinstance(proposed,dict) or proposed.get('id')!=item['node_id']:raise ValueError('提案节点ID不可变')
-                item['proposed_node']=_entry(proposed,item['base_node'])
+                item['proposed_node'] = (sibling_heading(proposed, item['proposed_node']['level'])
+                                         if sibling else _entry(proposed, item['base_node']))
             item.update(revision=item['revision']+1,updated_at=_now())
             self._put(conn,item)
             if locks:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
@@ -327,9 +361,13 @@ class ProposalStore:
             body['nodes']=[n for n in nodes if n['id']!=nid]
         elif item['kind']=='update':
             body['nodes']=[deepcopy(item['proposed_node']) if n['id']==nid else n for n in nodes]
+        elif source := item['_context'].get('sibling_of'):
+            position, _ = sibling_boundary(nodes, source)
+            nodes.insert(position, deepcopy(item['proposed_node']))
         else:
             ctx=item['_context'];ids=[n['id'] for n in nodes]
             siblings=[r for r in self._rows(conn) if r['_batch']==item['_batch'] and r['kind']=='insert'
+                and not r['_context'].get('sibling_of')
                 and r['_context']['left']==ctx['left'] and r['_context']['right']==ctx['right']
                 and r['status']=='approved' and r['node_id'] in ids
                 and _section(nodes,r['node_id'])==ctx['section']

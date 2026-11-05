@@ -114,6 +114,67 @@ class EditLockTests(unittest.TestCase):
         payload['changes'][0]['node']['value']='different'
         with self.assertRaises(Conflict):self.store.submit_delta(A,payload)
 
+    def test_plain_paragraph_can_be_inserted_and_renamed_through_approval(self):
+        lease = self.locks.acquire(A, {'note_id':'n','client_id':'client-a',
+            'resource':{'kind':'slot','section_id':'h','left_id':'b'}})
+        payload = self.delta(lease,'insert')
+        payload['changes'][0]['node'].update(key='正文',show_key=False)
+        item = self.store.submit_delta(A,payload)['items'][0]
+        self.store.action(ADMIN,item['id'],'approve',{'revision':1})
+        saved = self.store._note('n')['body']['nodes'][-1]
+        self.assertEqual((saved['key'],saved['show_key']),('正文',False))
+        lease = self.acquire(ADMIN,'admin-tab',saved['id'])
+        payload = self.delta(lease,request='rename-plain')
+        payload['changes'][0]['node'] = dict(saved,key='说明',show_key=True)
+        self.store.apply_changes(ADMIN,payload)
+        self.assertEqual(self.store._note('n')['body']['nodes'][-1],payload['changes'][0]['node'])
+
+    def sibling_payload(self, actor, client, section, left, source, level, request):
+        lease = self.locks.acquire(actor, {'note_id':'n','client_id':client,
+            'resource':{'kind':'slot','section_id':section,'left_id':left}})
+        payload = self.delta(lease,'insert',request=request)
+        payload['changes'][0].update(sibling_of=source,
+            node={'id':'new-heading','type':'heading','level':level,'title':'Sibling'})
+        return payload, lease
+
+    def test_sibling_after_descendants_and_after_new_entries(self):
+        note = self.store._note('n')
+        nodes = [*note['body']['nodes'][:3], {'id':'sub','type':'heading','level':3,'title':'Child'},
+                 note['body']['nodes'][3], {'id':'next','type':'heading','level':2,'title':'Next'}]
+        json_store.edit(self.root,'n',{'revision':note['metadata']['revision'],
+            'document':{**note['body'],'nodes':nodes}})
+        payload, lease = self.sibling_payload(ADMIN,'admin-tab','sub','b','h',2,'add-sibling')
+        payload['changes'].append(self.delta(lease,'insert','child text')['changes'][0])
+        self.store.apply_changes(ADMIN,payload)
+        saved = self.store._note('n')['body']['nodes']
+        self.assertEqual([(n['type'],n.get('title') or n.get('value')) for n in saved[-3:]],
+            [('entry','child text'),('heading','Sibling'),('heading','Next')])
+
+    def test_sibling_proposal_approval_at_document_end_conflicts_with_old_boundary(self):
+        first, _ = self.sibling_payload(A,'client-a','h','b','h',2,'sibling-one')
+        item = self.store.submit_delta(A,first)['items'][0]
+        edit = self.locks.acquire(A, {'note_id':'n','client_id':'client-a',
+            'resource':{'kind':'slot','section_id':'h','left_id':'b'}})
+        item = self.store.update(A,item['id'],{'revision':1,'client_id':'client-a','lease':edit,
+            'proposed_node':dict(item['proposed_node'],title='Revised sibling')})
+        second, _ = self.sibling_payload(B,'client-b','h','b','h',2,'sibling-two')
+        other = self.store.submit_delta(B,second)['items'][0]
+        self.store.action(ADMIN,item['id'],'approve',{'revision':2})
+        self.assertEqual(self.store._note('n')['body']['nodes'][-1]['title'],'Revised sibling')
+        with self.assertRaises(Conflict):
+            self.store.action(ADMIN,other['id'],'approve',{'revision':1})
+
+    def test_sibling_of_empty_third_level_chapter_stays_inside_parent(self):
+        note = self.store._note('n')
+        nodes = [*note['body']['nodes'], {'id':'empty','type':'heading','level':3,'title':'Empty'},
+                 {'id':'next','type':'heading','level':2,'title':'Next'}]
+        json_store.edit(self.root,'n',{'revision':note['metadata']['revision'],
+            'document':{**note['body'],'nodes':nodes}})
+        payload, _ = self.sibling_payload(ADMIN,'admin-tab','empty','empty','empty',3,'empty-chapter')
+        self.store.apply_changes(ADMIN,payload)
+        headings = [(n['title'],n['level']) for n in self.store._note('n')['body']['nodes'][-3:]]
+        self.assertEqual(headings,[('Empty',3),('Sibling',3),('Next',2)])
+
     def test_approval_preempts_only_target_and_rejects_replayed_submission(self):
         first=self.acquire();item=self.store.submit_delta(A,self.delta(first))['items'][0]
         editing=self.acquire(B,'client-b');other=self.acquire(A,'client-a','b')

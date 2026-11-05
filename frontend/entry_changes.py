@@ -3,7 +3,7 @@ from copy import deepcopy
 import uuid
 
 import json_store
-from proposals import _entry, _section, _now
+from proposals import _entry, _section, _now, sibling_boundary, sibling_heading
 from workspace import Conflict
 
 
@@ -19,8 +19,9 @@ def prepare(store, conn, actor, payload):
     if not isinstance(changes,list) or not 0<len(changes)<=1000:raise ValueError('请选择需要保存的条目')
     record=store._note(payload['note_id']);nodes=record['body']['nodes'];items=[];refs=[];seen=set()
     batch=locks.request_key(actor,payload['client_id'],payload['request_id'],'entries')
+    has_sibling = False
     for index,change in enumerate(changes):
-        if not isinstance(change,dict) or set(change)-{'kind','lease','node'}:raise ValueError('无效的条目修改')
+        if not isinstance(change,dict) or set(change)-{'kind','lease','node','sibling_of'}:raise ValueError('无效的条目修改')
         kind=change.get('kind')
         if kind not in ('update','insert','delete'):raise ValueError('无效的修改类型')
         lease=locks.validate(conn,actor,payload['client_id'],change.get('lease'),payload['note_id'],record=record)
@@ -30,16 +31,28 @@ def prepare(store, conn, actor, payload):
         if not slot:
             if base['id'] in seen:raise ValueError('同一条目只能修改一次')
             seen.add(base['id'])
-        proposed=None if kind=='delete' else _entry(change.get('node'),base)
+        section=lease['baseline']['section'];left=lease['baseline'].get('left_id');right=lease['baseline'].get('right_id')
+        context={'section':section,'left':left,'right':right,
+                 'left_section':_section(nodes,left),'right_section':_section(nodes,right)}
+        if 'sibling_of' in change:
+            source = change['sibling_of']
+            if not slot or has_sibling or not isinstance(source, str) or not source:
+                raise ValueError('每次只能在章节末尾新增一个同级章节')
+            end, boundary = sibling_boundary(nodes, source)
+            if nodes[end - 1]['id'] != left or boundary['right'] != right:
+                raise Conflict('章节插入位置已变化，请刷新')
+            proposed = sibling_heading(change.get('node'), boundary['section'][-1]['level'])
+            context.update(sibling_of=source, sibling_boundary=boundary)
+            has_sibling = True
+        else:
+            proposed=None if kind=='delete' else _entry(change.get('node'),base)
         nid=base['id'] if base else 'entry-'+json_store.digest([batch,index])[:32]
         if proposed is not None:proposed={**proposed,'id':nid}
-        section=lease['baseline']['section'];left=lease['baseline'].get('left_id');right=lease['baseline'].get('right_id')
         items.append({'id':uuid.uuid4().hex,'note_id':payload['note_id'],'note_title':record['metadata']['title'],
             'author':actor['username'],'kind':kind,'node_id':nid,'section_id':section[-1]['id'] if section else None,
             'after_id':left,'base_node':deepcopy(base),'proposed_node':proposed,'revision':1,'status':'pending',
             'created_at':_now(),'updated_at':_now(),'reviewed_by':None,'result_revision':None,'order':index,
-            '_batch':batch,'_context':{'section':section,'left':left,'right':right,
-                'left_section':_section(nodes,left),'right_section':_section(nodes,right)}})
+            '_batch':batch,'_context':context})
         refs.append(change['lease'])
     return record,items,refs
 
@@ -68,7 +81,10 @@ def apply(store,actor,payload):
         if prior is not None:return json_store.resolve_note(store.root,payload['note_id'])
         record,items,refs=prepare(store,conn,actor,payload)
         current={**record,'body':deepcopy(record['body'])};last={}
-        for item in items:
+        for item in sorted(items, key=lambda item: bool(item['_context'].get('sibling_of'))):
+            if item['_context'].get('sibling_of'):
+                current['body'] = store._apply_body(conn, item, current)
+                continue
             if item['kind']=='insert':
                 anchor=item['_context']['left'];ids=[n['id'] for n in current['body']['nodes']]
                 current['body']['nodes'].insert(ids.index(last.get(anchor,anchor))+1,deepcopy(item['proposed_node']))

@@ -3,7 +3,7 @@ import {findReadingNode,locationCandidates,loadProposalLocation,revealReadingNod
 import {AuthProvider,AdminAccess,useCapabilities,useAuth} from './auth';
 import SyncConflicts from './SyncConflicts';
 import {canEditNote} from './auth';
-import {ReviewProvider} from './NoteReview';
+import {ReviewProvider,type InlineSaveLocation} from './NoteReview';
 import JsonReading from './JsonReading';
 import './jsonKnowledge.css';
 import StructuredEditor from './StructuredEditor';
@@ -44,13 +44,17 @@ const initial:Prefs={mode:window.innerWidth<760?'sidebar':'full',view:'play',sel
 function preferences(){try{const saved={...initial,...JSON.parse(localStorage.getItem('wxq.preferences')??'{}')};return {...saved,type:normalizeDirectoryType(saved.type)};}catch{return initial;}}
 const quick=['运营节奏','后期运营及应变','终局技巧','克制手段','站位技巧','推荐装备','推荐天赋及原因','成型后提升思路'];
 const phaseLabels:Record<string,string>={'运营节奏':'运营节奏','阵容组成':'阵容','禁用阵营适用情况':'禁用条件','核心机制':'机制','前期运营及应变':'前期','中期运营及应变':'中期','后期运营及应变':'后期','成型后提升思路':'成型提升','第一轮拍卖':'首轮拍卖','第二轮拍卖':'二轮拍卖','第三轮拍卖':'三轮拍卖','推荐天赋及原因':'天赋','站位技巧':'站位','推荐装备':'装备','终局技巧':'终局','克制手段':'克制本阵容','制敌手段':'制敌手段'};
+function readingAnchor(root:HTMLElement,id:string,surface:string){
+ return root.querySelector<HTMLElement>(`[data-node="${CSS.escape(id)}"][data-reading-surface="${CSS.escape(surface)}"]`);
+}
 function App(){
   const capabilities=useCapabilities();
   const proposalPanel=useProposalPanelState();
   const navigationEpoch=useRef(0),locatingRequest=useRef(0),clearHighlight=useRef<(()=>void)|null>(null);
   const pendingLocation=useRef<((success:boolean)=>void)|null>(null);
   const [proposalTarget,setProposalTarget]=useState<Proposal|null>(null);
-  function cancelProposalLocation(){navigationEpoch.current++;pendingLocation.current?.(false);pendingLocation.current=null;setProposalTarget(null);}
+  const [inlineReturn,setInlineReturn]=useState<(InlineSaveLocation&{noteId:string;offset:number;scrollTop:number})|null>(null);
+  function cancelProposalLocation(){navigationEpoch.current++;pendingLocation.current?.(false);pendingLocation.current=null;setProposalTarget(null);setInlineReturn(null);}
   const {session}=useAuth();
   useEffect(()=>{cancelProposalLocation();proposalPanel.setOpen(false);proposalPanel.setLocating('');proposalPanel.scrollTop.current=0;setDirty(false);setEditing(false);},[session.role,session.username]);
   useEffect(()=>()=>{navigationEpoch.current++;pendingLocation.current?.(false);clearHighlight.current?.();},[]);
@@ -113,7 +117,18 @@ function App(){
   const readingKey=(active?.id??'')+'|'+(reading?.player??'');
   useEffect(()=>{
     const element=contentElement;if(!element||editing)return;
-    const restore=requestAnimationFrame(()=>{element.scrollTop=scroll.current[readingKey]??0;});
+    const returning=inlineReturn?.noteId===active?.id?inlineReturn:null;
+    const restore=requestAnimationFrame(()=>{
+      if(!returning){element.scrollTop=scroll.current[readingKey]??0;return;}
+      if(!reading)return;
+      const anchor=readingAnchor(element,returning.id,returning.surface)
+        ??(returning.sectionId?readingAnchor(element,returning.sectionId,'body'):null);
+      element.scrollTop=anchor
+        ?element.scrollTop+anchor.getBoundingClientRect().top-element.getBoundingClientRect().top-returning.offset
+        :returning.scrollTop;
+      scroll.current[readingKey]=element.scrollTop;
+      setInlineReturn(null);
+    });
     const chapters=Array.from(element.querySelectorAll<HTMLElement>('[data-section]'));
     let frame=0;
     function update(){
@@ -126,7 +141,7 @@ function App(){
     function track(){scroll.current[readingKey]=element!.scrollTop;if(!frame)frame=requestAnimationFrame(update);}
     element.addEventListener('scroll',track,{passive:true});
     return()=>{cancelAnimationFrame(restore);cancelAnimationFrame(frame);element.removeEventListener('scroll',track);};
-  },[contentElement,readingKey,reading?.revision,editing,mobile]);
+  },[contentElement,readingKey,reading?.revision,editing,mobile,inlineReturn]);
   useEffect(()=>{
     if(!dashboardTarget||prefs.view!=='notes'||reading?.note_id!==dashboardTarget.id||!contentElement||editing||loader.checking||!loader.verified)return;
     const element=contentElement;
@@ -179,9 +194,18 @@ function App(){
   const rows=scopedClaims(active?.claims.filter(c=>c.section===section)??[]);
   const stage=section.startsWith('前期')?'early':section.startsWith('中期')?'middle':section.startsWith('后期')?'late':undefined;
   function saved(note:Note){loader.accept(note);setEditing(false);setDirty(false);setToast('笔记与存档已同步保存');window.dispatchEvent(new Event('wxq:knowledge-saved'));}
+  function inlineSaved(note:Note|undefined,location:InlineSaveLocation){
+    const element=content.current;
+    if(element&&active){
+      const anchor=readingAnchor(element,location.id,location.surface);
+      const offset=anchor?anchor.getBoundingClientRect().top-element.getBoundingClientRect().top:0;
+      setInlineReturn({...location,noteId:active.id,offset:Math.max(0,Math.min(offset,element.clientHeight-32)),scrollTop:element.scrollTop});
+    }
+    if(note)saved(note);
+  }
   function created(note:Note){loader.accept(note);setNewNote(false);patch({selected:note.id,view:'notes',type:normalizeDirectoryType(note.type),query:'',player:'',hero:''});setEditing(true);setDirty(false);setToast('空白笔记已创建');}
   function noteList(entries:typeof visible){return entries.map(({note,status})=><button key={note.id} className={'note-option '+(active?.id===note.id?'active':'')} onClick={()=>select(note.id)}><span className="note-icon">{note.type==='lineup'?'◈':note.type==='player'?'♙':'▤'}</span><span><strong>{note.title}</strong><small>{note.meta?.core_heroes.map(name).join('、')||({lineup:'阵容攻略',player:'棋手笔记',other:'知识笔记'}[note.type])}</small></span>{status==='unknown'&&<span className="badge gold">待确认</span>}</button>);}
-  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><ReviewProvider key={session.role+'|'+(prefs.view==='dashboard'?'dashboard':active?.id??'none')} note={active} onSaved={saved} onDirty={setDirty} externalDirty={dirty} readOnly={!loader.verified}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航">{(['play','notes','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='notes'||v==='dashboard'||v==='cards').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions"><SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
+  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><ReviewProvider key={session.role+'|'+(prefs.view==='dashboard'?'dashboard':active?.id??'none')} note={active} onSaved={saved} onInlineSaved={inlineSaved} onDirty={setDirty} externalDirty={dirty} readOnly={!loader.verified}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航">{(['play','notes','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='notes'||v==='dashboard'||v==='cards').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions"><SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
     <AdminAccess/>{capabilities.localTools&&<GlobalActivity expanded={activityExpanded} onExpandedChange={setActivityExpanded}/>}
     {capabilities.editNotes&&newNote&&<NewNoteDialog entities={options.entities} notes={notes} onOpen={id=>select(id)} defaultType={prefs.view==='play'?'lineup':prefs.type} onClose={()=>setNewNote(false)} onCreated={created}/>}
     {(loader.checking||!loader.verified||loader.pending||!loader.ready)&&<div className="reader-cache-status" role="status">{loader.pending?'笔记已有新版本；现有草稿保留，保存或取消后重新比较。':loader.checking?'正在检查更新…':!loader.verified?'缓存阅读中，确认最新版本后可编辑。':!loader.ready?'正在建立搜索和筛选索引…':''}<button className="quiet" onClick={()=>loader.reload()}>重试</button></div>}

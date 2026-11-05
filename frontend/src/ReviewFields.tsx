@@ -16,7 +16,8 @@ export const NodeFields=memo(function NodeFields({node,original,onChange}:{node:
  const [composing,setComposing]=useState(false);
  const composition={onCompositionStart:()=>setComposing(true),onCompositionEnd:()=>setComposing(false)};
  const before=original as unknown as Record<string,unknown>;
- return <div className="review-node-fields">{node.type==='heading'?<label>章节标题<input {...composition} value={node.title} readOnly={node.level===1} onChange={e=>onChange({...node,title:e.target.value})}/><DiffText composing={composing} before={String(before.title??'')} after={node.title}/></label>:<>
+ return <div className="review-node-fields">{node.type==='heading'?<label>章节标题<input aria-label="章节标题" {...composition} value={node.title} readOnly={node.level===1} onChange={e=>onChange({...node,title:e.target.value})}/><DiffText composing={composing} before={String(before.title??'')} after={node.title}/></label>:<>
+ <label className="inline"><input type="checkbox" checked={node.show_key} onChange={e=>onChange({...node,show_key:e.target.checked,key:e.target.checked&&original.type==='entry'?original.key:'正文'})}/>显示名称</label>
  {node.show_key&&<label>名称<input aria-label="名称" {...composition} value={node.key} onChange={e=>onChange({...node,key:e.target.value})}/><DiffText composing={composing} before={String(before.key??'')} after={node.key}/></label>}
  <label>正文<textarea aria-label="正文" {...composition} rows={Math.max(3,Math.min(14,Math.ceil(node.value.length/70)))} value={node.value} onChange={e=>onChange({...node,value:e.target.value})}/></label><DiffText composing={composing} before={String(before.value??'')} after={node.value}/></>}</div>;
 });

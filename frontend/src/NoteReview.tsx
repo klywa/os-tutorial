@@ -12,12 +12,13 @@ import './noteReview.css';
 
 export type Annotation={id:string;note_id:string;node_id:string;text:string;status:'open'|'resolved';revision:string;created_at:string;result?:string;result_revision?:string;anchor_state:'current'|'changed'|'missing';target:KnowledgeNode[]};
 type Draft={surface?:string;id:string;base:Note;body:KnowledgeDocument};
+export type InlineSaveLocation={id:string;surface:string;sectionId?:string};
 type Review={canSave:boolean;proposals:Proposal[];proposing:boolean;legacyReviews:boolean;readOnly?:boolean;note:Note;locks:ReturnType<typeof useEditLocks>;loss:{lease:Lease;reason:string;at:number}[];draft:Draft|null;dirty:boolean;busy:boolean;uncertain:boolean;error:string;comments:Annotation[];commentNode:string|null;
  startEdit:(id:string,surface?:string)=>void;startComment:(id:string)=>void;openHistory:()=>void;updateNodes:(nodes:KnowledgeNode[],changed:boolean)=>void;
  cancel:()=>void;save:(changes?:unknown[])=>Promise<void>;warn:()=>void;reloadComments:()=>Promise<void>;setExtraDirty:(dirty:boolean)=>void;closeComments:()=>void};
 const Context=createContext<Review|null>(null);
 export const useReview=()=>useContext(Context);
-export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=false,readOnly=false}:{note?:Note;children:ReactNode;onSaved:(note:Note)=>void;onDirty:(dirty:boolean)=>void;externalDirty?:boolean;readOnly?:boolean}){
+export function ReviewProvider({note,children,onSaved,onInlineSaved,onDirty,externalDirty=false,readOnly=false}:{note?:Note;children:ReactNode;onSaved:(note:Note)=>void;onInlineSaved?:(note:Note|undefined,location:InlineSaveLocation)=>void;onDirty:(dirty:boolean)=>void;externalDirty?:boolean;readOnly?:boolean}){
  const {reviews,inlineEdit,proposeNotes}=useCapabilities();
  const editNotes=useCanEditNote(note?.id);
  readOnly=readOnly||(!proposeNotes&&!editNotes);
@@ -51,9 +52,12 @@ export function ReviewProvider({note,children,onSaved,onDirty,externalDirty=fals
    if(!replay&&!changes?.length)return;
    if(!replay)requestRef.current={note_id:note.id,client_id:locks.clientId,request_id:crypto.randomUUID(),changes:changes!};
    const payload=requestRef.current!;savingRef.current=true;setBusy(true);setError('');
-   try{const saved=proposeNotes?null:await api<Note>('notes/'+encodeURIComponent(note.id)+'/entries','PUT',payload);
+   try{const saved=proposeNotes?undefined:await api<Note>('notes/'+encodeURIComponent(note.id)+'/entries','PUT',payload);
     if(proposeNotes){await api('proposals','POST',payload);window.dispatchEvent(new Event('wxq:proposals-changed'));}
-    requestRef.current=null;setUncertain(false);void locks.release();setDraft(null);setInlineDirty(false);dirtyRef.current=false;setError('');onDirty(false);if(saved)onSaved(saved);
+    const index=draft.body.nodes.findIndex(n=>n.id===draft.id);
+    const section=draft.body.nodes.slice(0,index+1).reverse().find(n=>n.type==='heading'&&n.level>1);
+    onInlineSaved?.(saved,{id:draft.id,surface:draft.surface??'body',sectionId:section?.id});
+    requestRef.current=null;setUncertain(false);void locks.release();setDraft(null);setInlineDirty(false);dirtyRef.current=false;setError('');onDirty(false);if(saved&&!onInlineSaved)onSaved(saved);
    }catch(e){const status=(e as Error&{status?:number}).status;const unknown=!status||status>=500;setUncertain(unknown);if(!unknown)requestRef.current=null;setError((e as Error).message+(unknown?'；保存结果尚未确认，请重试核对。':'；草稿已保留。'));}
    finally{savingRef.current=false;setBusy(false);}
   },
@@ -83,10 +87,20 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
  const locks=review.locks,processed=useRef(review.loss.length);
  function update(next:KnowledgeNode[]){local.current=next;setNodes(next);review.updateNodes(next,!equalValue(next,[...originals.current.values()]));}
  function targetFor(n:KnowledgeNode):Resource{return targets.current.get(n.id)??{kind:'entry',id:n.id};}
+ function updateNode(node:KnowledgeNode){update(local.current.map(current=>current.id===node.id?node:current));}
+ function removeDraftNode(node:KnowledgeNode){
+  const target=targetFor(node);
+  const next=local.current.filter(current=>current.id!==node.id);
+  update(next);
+  if(!originals.current.has(node.id)&&!next.some(current=>JSON.stringify(targetFor(current))===JSON.stringify(target))){
+   targets.current.delete(node.id);
+   void locks.release(target);
+  }
+ }
  async function enter(n:KnowledgeNode){const target=targetFor(n);setAcquiring(n.id);setMessage('');try{
   const lease=await locks.acquire(target,!review.proposing);targets.current.set(n.id,target);
   const fresh=lease.baseline.node;
-  if(fresh&&!equalValue(fresh,originals.current.get(n.id))){const prior=originals.current.get(n.id),current=local.current.find(v=>v.id===n.id),changed=!equalValue(current,prior);originals.current.set(n.id,fresh);update(local.current.map(v=>v.id!==n.id?v:changed&&v.type==='entry'&&fresh.type==='entry'?{...fresh,key:v.key,value:v.value}:fresh));setMessage(changed?'最新正文已变化，草稿保留并显示与最新正文的差异；请核对后保存。':'条目已有更新，已载入最新内容，请核对后编辑。');}
+  if(fresh&&!equalValue(fresh,originals.current.get(n.id))){const prior=originals.current.get(n.id),current=local.current.find(v=>v.id===n.id),changed=!equalValue(current,prior);originals.current.set(n.id,fresh);update(local.current.map(v=>v.id!==n.id?v:changed&&v.type==='entry'&&fresh.type==='entry'?{...fresh,key:v.key,value:v.value,show_key:v.show_key}:fresh));setMessage(changed?'最新正文已变化，草稿保留并显示与最新正文的差异；请核对后保存。':'条目已有更新，已载入最新内容，请核对后编辑。');}
  }catch(e){setMessage((e as Error).message);}finally{setAcquiring('');}}
  useEffect(()=>{if(!chapter&&initial[0])void enter(initial[0]);return()=>{void locks.release();};},[]);
  useEffect(()=>{const losses=review.loss.slice(processed.current);processed.current=review.loss.length;for(const loss of losses){const affected=[...targets.current].filter(([,t])=>JSON.stringify(t)===JSON.stringify(loss.lease.resource)).map(([id])=>id);
@@ -97,16 +111,37 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
   }else setMessage('编辑权限已暂停，草稿已保留。请重新取得编辑权限并核对正文。');}
  },[review.loss]);
  async function insert(at:number){
+  if(acquiring)return;
   const before=local.current.slice(0,at),anchor=[...before].reverse().find(n=>originals.current.has(n.id));if(!anchor){setMessage('请从章节内插入条目');return;}
   const all=draft.base.document!.nodes;let section:string|undefined;
   for(const n of all){if(n.type==='heading')section=n.id;if(n.id===anchor.id)break;}
   if(!section)return;const target:Resource={kind:'slot',section_id:section,left_id:anchor.id};setAcquiring('insert');
   try{await locks.acquire(target,!review.proposing);const node:KnowledgeNode={id:crypto.randomUUID(),type:'entry',key:'新条目',show_key:true,value:''};targets.current.set(node.id,target);update([...local.current.slice(0,at),node,...local.current.slice(at)]);}catch(e){setMessage((e as Error).message);}finally{setAcquiring('');}
  }
+ const sibling=nodes.find(n=>n.type==='heading'&&!originals.current.has(n.id));
+ async function insertSibling(){
+  const heading=initial[0],tail=initial.at(-1);
+  if(acquiring||sibling||heading?.type!=='heading'||heading.level===1||!tail)return;
+  const lastHeading=[...initial].reverse().find(n=>n.type==='heading')!;
+  const target:Resource={kind:'slot',section_id:lastHeading.id,left_id:tail.id};
+  setAcquiring('sibling');setMessage('');
+  try{
+   await locks.acquire(target,!review.proposing);
+   const node:KnowledgeNode={id:crypto.randomUUID(),type:'heading',level:heading.level,title:'',space:' ',separator:'\n\n'};
+   targets.current.set(node.id,target);
+   update([...local.current,node]);
+  }catch(e){setMessage((e as Error).message);}finally{setAcquiring('');}
+ }
  function blur(n:KnowledgeNode,e:React.FocusEvent){if(e.currentTarget.contains(e.relatedTarget as Node|null))return;if(equalValue(n,originals.current.get(n.id)))void locks.release(targetFor(n));}
  function save(){const changes:unknown[]=[];
   for(const n of nodes){if(n.type!=='entry'||equalValue(n,originals.current.get(n.id)))continue;const lease=locks.get(targetFor(n));if(!lease){setMessage('请重新取得所有已修改条目的编辑权限后再保存。');return;}changes.push({kind:originals.current.has(n.id)?'update':'insert',node:n,lease:leaseRef(lease)});}
   for(const n of originals.current.values()){if(n.type!=='entry'||nodes.some(v=>v.id===n.id))continue;const lease=locks.get(targetFor(n));if(!lease){setMessage('删除条目的权限已暂停，请先恢复条目并重新取得权限。');return;}changes.push({kind:'delete',lease:leaseRef(lease)});}
+  if(sibling){
+   const lease=locks.get(targetFor(sibling));
+   if(!lease){setMessage('请重新取得章节插入位置的编辑权限。');return;}
+   if(sibling.type!=='heading'||!sibling.title.trim()){setMessage('请输入新章节标题。');return;}
+   changes.push({kind:'insert',node:sibling,sibling_of:draft.id,lease:leaseRef(lease)});
+  }
   void review.save(changes);
  }
  return <section className="inline-review-editor" aria-label="局部编辑">
@@ -114,8 +149,12 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
  {!review.canSave&&<p role="status">正在等待同步或确认最新版本，草稿已保留。</p>}{!locks.online&&<p role="status">连接中断，编辑已暂停；草稿保留。</p>}
  {(review.error||message)&&<p className="error" role="alert">{review.error||message}</p>}
  <fieldset disabled={review.readOnly||review.busy||review.uncertain}>{nodes.map((n,i)=>{const target=targetFor(n),lease=locks.get(target),owner=locks.owner(target);return <div key={n.id} className="entry-edit-row" data-entry={n.id} onBlur={e=>blur(n,e)}>
- {n.type==='heading'?<strong>{n.title}</strong>:<><div className="entry-lock-status">{owner&&<span className="lock-hint">{owner.owner} 正在编辑 · 已锁定</span>}{!lease&&<button disabled={!!acquiring||!!owner&&review.proposing} onClick={()=>void enter(n)}>{acquiring===n.id?'正在取得权限…':owner&&!review.proposing?'接管编辑':'编辑此项'}</button>}{lease&&<small>正在编辑</small>}</div><fieldset disabled={!lease}><NodeFields node={n} original={originals.current.get(n.id)??n} onChange={node=>update(local.current.map(v=>v.id===node.id?node:v))}/></fieldset></>}
- <div className="scope-insert-actions">{n.type==='entry'&&<>{chapter&&<><button onClick={()=>void insert(i)}>在前面插入</button><button onClick={()=>void insert(i+1)}>在后面插入</button></>}<button disabled={!lease} onClick={()=>{update(local.current.filter(o=>o.id!==n.id));if(!originals.current.has(n.id)&&!local.current.some(v=>JSON.stringify(targetFor(v))===JSON.stringify(target)))void locks.release(target);}}>删除条目</button></>}{n.type==='heading'&&<button onClick={()=>void insert(i+1)}>章节开头插入条目</button>}</div></div>;})}{[...originals.current.values()].filter(n=>n.type==='entry'&&!nodes.some(v=>v.id===n.id)).map(n=><div className="entry-edit-row" key={'deleted-'+n.id}><del>{n.type==='entry'?n.key:''} · 待删除</del>{n.type==='entry'&&<p>{n.value}</p>}{!locks.get(targetFor(n))&&<button onClick={()=>void enter(n)}>重新取得删除权限</button>}<button onClick={()=>{const next=[...local.current];const index=initial.findIndex(v=>v.id===n.id);next.splice(Math.min(index,next.length),0,n);update(next);void locks.release(targetFor(n));}}>恢复条目</button></div>)}{chapter&&<button onClick={()=>void insert(local.current.length)}>章节末尾插入条目</button>}</fieldset>
+ {n.type==='heading'?(n.id===sibling?.id?<>
+  {!lease&&<button disabled={!!acquiring} onClick={()=>void enter(n)}>重新取得编辑权限</button>}
+  <fieldset disabled={!lease}><NodeFields node={n} original={{...n,title:''}} onChange={updateNode}/></fieldset>
+  <button onClick={()=>removeDraftNode(n)}>取消新增章节</button>
+ </>:<strong>{n.title}</strong>):<><div className="entry-lock-status">{owner&&<span className="lock-hint">{owner.owner} 正在编辑 · 已锁定</span>}{!lease&&<button disabled={!!acquiring||!!owner&&review.proposing} onClick={()=>void enter(n)}>{acquiring===n.id?'正在取得权限…':owner&&!review.proposing?'接管编辑':'编辑此项'}</button>}{lease&&<small>正在编辑</small>}</div><fieldset disabled={!lease}><NodeFields node={n} original={originals.current.get(n.id)??n} onChange={updateNode}/></fieldset></>}
+ <div className="scope-insert-actions">{n.type==='entry'&&<>{chapter&&<><button onClick={()=>void insert(i)}>在前面插入</button><button onClick={()=>void insert(i+1)}>在后面插入</button></>}<button disabled={!lease} onClick={()=>removeDraftNode(n)}>删除条目</button></>}{n.type==='heading'&&n.id!==sibling?.id&&<button onClick={()=>void insert(i+1)}>章节开头插入条目</button>}</div></div>;})}{[...originals.current.values()].filter(n=>n.type==='entry'&&!nodes.some(v=>v.id===n.id)).map(n=><div className="entry-edit-row" key={'deleted-'+n.id}><del>{n.type==='entry'?n.key:''} · 待删除</del>{n.type==='entry'&&<p>{n.value}</p>}{!locks.get(targetFor(n))&&<button onClick={()=>void enter(n)}>重新取得删除权限</button>}<button onClick={()=>{const next=[...local.current];const index=initial.findIndex(v=>v.id===n.id);next.splice(Math.min(index,next.length-(sibling?1:0)),0,n);update(next);void locks.release(targetFor(n));}}>恢复条目</button></div>)}{chapter&&<><button disabled={!!acquiring} onClick={()=>void insert(local.current.length-(sibling?1:0))}>章节末尾插入条目</button>{!sibling&&<button disabled={!!acquiring} onClick={()=>void insertSibling()}>新增同级章节</button>}</>}</fieldset>
  </section>;
 }
 export type {Review};

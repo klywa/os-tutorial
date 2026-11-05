@@ -30,9 +30,9 @@ export default function JsonReading({body,nodes,note,onNote,interactive=true,sur
  }}),[note,onNote]);
  const headingComponents=useMemo(()=>({...components,p:({children}:{children?:ReactNode})=><>{children}</>}),[components]);
  const draftId=localDraft?.id;
- return useMemo(()=><>{nodes.filter(n=>!hidden.has(n.id)).map(n=>draftId===n.id?<div key={n.id} id={surface==='body'?n.id:surface+'-'+n.id} data-node={n.id}><InlineReviewEditor/></div>:n.type==='heading'?<div key={n.id} className="json-heading" data-section={n.level===2?n.title:undefined} id={n.id}>
+ return useMemo(()=><>{nodes.filter(n=>!hidden.has(n.id)).map(n=>draftId===n.id?<div key={n.id} id={surface==='body'?n.id:surface+'-'+n.id} data-node={n.id} data-reading-surface={surface}><InlineReviewEditor/></div>:n.type==='heading'?<div key={n.id} className="json-heading" data-node={n.id} data-reading-surface={surface} data-section={n.level===2?n.title:undefined} id={n.id}>
   {n.level===1?null:<CopyHeading node={n} body={body} interactive={interactive}><Markdown components={headingComponents}>{n.title}</Markdown></CopyHeading>}
- <ProposalOverlay nodeId={n.id} items={proposals}/></div>:<article key={n.id} className={'json-entry '+(n.show_key?'keyed':'unkeyed')} data-node={n.id}>
+ <ProposalOverlay nodeId={n.id} items={proposals}/></div>:<article key={n.id} className={'json-entry '+(n.show_key?'keyed':'unkeyed')} data-node={n.id} data-reading-surface={surface}>
   {n.show_key?<>{/^(?:[-*+] |\d+[.)] )/.test(n.prefix??'')&&<span className="entry-bullet" aria-hidden="true">{n.prefix?.match(/^\d+[.)]/)?.[0]??'•'} </span>}<CopyButton text={()=>copyEntry(n,body,note.title)} label={'复制条目：'+n.key} className="entry-key">{n.key}：</CopyButton><div className="entry-value prose"><Markdown components={components}>{n.value}</Markdown></div><CopyButton text={()=>copyEntry(n,body,note.title)} label={'复制段落：'+n.key} className="anonymous-copy"/></>:<><div className="prose"><Markdown components={components}>{n.value}</Markdown></div><CopyButton text={()=>copyEntry(n,body,note.title)} label="复制条目：正文" className="anonymous-copy"/></>}{interactive&&<NodeActions node={n} surface={surface}/>}
  <ProposalOverlay nodeId={n.id} items={proposals}/></article>)}</>,[body,nodes,note,components,headingComponents,draftId,interactive,surface,proposals]);
 }
