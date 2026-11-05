@@ -6598,71 +6598,11 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1tU8q6FEkw:p1",
-          "start": 218.59,
-          "end": 274.22
-        },
-        {
-          "type": "video",
-          "source": "BV1n5af6SE4F:p1",
-          "start": 217.04,
-          "end": 271.99
-        },
-        {
-          "type": "video",
-          "source": "BV1tU8q6FEkw:p1",
-          "start": 564.44,
-          "end": 677.15
-        },
-        {
-          "type": "video",
-          "source": "BV12Ba16dEmw:p1",
-          "start": 85.66,
-          "end": 173.06
-        },
-        {
-          "type": "video",
-          "source": "BV1WPap6DEa9:p1",
-          "start": 63.74,
-          "end": 85.25
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 217,
-          "paragraph_end": 217
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 89,
-          "paragraph_end": 89
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 223,
-          "paragraph_end": 223
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 247,
-          "paragraph_end": 247
-        },
-        {
-          "type": "video",
-          "source": "BV1WPap6DEa9:p1",
-          "start": 7.1,
-          "end": 35.86
-        }
-      ],
+      "inference": false,
+      "evidence": [],
       "derived_from": [],
-      "display_ref": "n-90029e6a0980ca563f90"
+      "display_ref": "n-90029e6a0980ca563f90",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-c28281b16474f626",
@@ -11337,8 +11277,8 @@
       "display_ref": "cx26-08ec990660db70e7"
     }
   ],
-  "body_sha256": "289f0e20edc46fefba4287636434f0f03d3c9211d5c998b1dc40fd6f799af681",
-  "revision": "ed474b96bd9314c9d6d1",
+  "body_sha256": "53a08b9cf0004a696bcaf48e22277a594ba2149dfc984de72cbb79b6f59d69f4",
+  "revision": "eafa92bab72de1917a0c",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -28536,8 +28476,12 @@
     "n-0bdad0311c3d902d4ef0": {
       "origin": "manual",
       "section": "阵容组成与运营节奏"
+    },
+    "n-90029e6a0980ca563f90": {
+      "origin": "manual",
+      "section": "阵容组成与运营节奏"
     }
   },
-  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/6a4cf9511ed31f7618ccd665874651c9d7ec10a40d7553dc08ed5df8a0615b54.json",
-  "history_count": 54
+  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/e4629913317f8f3b0b2ec6d0dc8c412b0b8c6eb0013386ba314fc8c881c60b10.json",
+  "history_count": 55
 }
