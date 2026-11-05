@@ -83,14 +83,14 @@ export default function SourceStaging({selected,sources,catalog,onAdded,onProjec
   <div className="section-heading"><h2>{editingTemplate?'编辑通用模板':'编辑prompt'}</h2><button onClick={()=>{if(editingTemplate)setEditingTemplate(false);else{setTemplateDraft(template);setEditingTemplate(true);}}}>{editingTemplate?'返回本次 Prompt':'编辑模板'}</button></div>
   {activity.prompt&&<p className="notice" role="status">{activity.mutation?'正在等待暂存更新，将包含本次加入的内容；可先编辑模板。':'正在核对暂存资料，可先编辑模板。'}</p>}
   {editingTemplate?<>
-   <label>通用模板<textarea aria-label="通用模板" rows={14} value={templateDraft} onChange={e=>setTemplateDraft(e.target.value)}/></label>
+   <label>通用模板<textarea data-card-completion aria-label="通用模板" rows={14} value={templateDraft} onChange={e=>setTemplateDraft(e.target.value)}/></label>
    <p className="muted">{'{阵容名} 与 {内容列表} 在生成时自动填入。模板按项目保存在当前浏览器，保存后本次草稿保留。'}</p>
    <div className="action-line"><button className="primary" disabled={!templateDraft.trim()||!basket.project_key} onClick={saveTemplate}>保存模板</button><button onClick={()=>setEditingTemplate(false)}>取消</button></div>
   </>:<>
-   <label>阵容名<input aria-label="Prompt阵容名" list="prompt-lineups" value={draft.name} onChange={e=>{const name=e.target.value;setDraft(old=>({...old,name,...(!old.edited&&old.text&&promptData&&promptData.fingerprint===old.fingerprint?{text:buildSourcePrompt(name,promptData.items,old.template)}:{})}));}}/></label>
+   <label>阵容名<input data-card-completion aria-label="Prompt阵容名" list="prompt-lineups" value={draft.name} onChange={e=>{const name=e.target.value;setDraft(old=>({...old,name,...(!old.edited&&old.text&&promptData&&promptData.fingerprint===old.fingerprint?{text:buildSourcePrompt(name,promptData.items,old.template)}:{})}));}}/></label>
    <datalist id="prompt-lineups">{catalog.topic_lineups.map(r=><option key={r.id} value={lineupLabel(r)}/>)}</datalist>
    {stagedChange&&<p className="notice">暂存、标题、备注或文件状态已变化，已保留编辑内容；请按当前暂存重新生成。</p>}
-   <label>完整prompt<textarea aria-label="完整prompt" rows={14} readOnly={activity.prompt} value={draft.text} onChange={e=>setDraft({...draft,text:e.target.value,edited:true})}/></label>
+   <label>完整prompt<textarea data-card-completion aria-label="完整prompt" rows={14} readOnly={activity.prompt} value={draft.text} onChange={e=>setDraft({...draft,text:e.target.value,edited:true})}/></label>
    <p className="muted">本次草稿会保留；仅复制文本，不自动执行知识整理。{promptData?` 共 ${promptData.items.length} 条内容；无文字稿时使用网页链接。`:''}</p>
    {draft.template!==template&&<p className="notice">模板已更新；按当前暂存重新生成后应用。</p>}
    <div className="action-line"><button disabled={activity.prompt} onClick={()=>void regenerate()}>按当前暂存重新生成</button><button className="primary" disabled={activity.prompt||!draft.text.trim()} onClick={()=>void action('prompt',async()=>{const data=await promptSnapshot();const current=draftRef.current;if(data.fingerprint!==current.fingerprint)throw Error('暂存内容或文件状态已变化，请重新生成后复制。');await copyText(current.text);setMessage('prompt已复制。');})}>复制</button><button onClick={()=>setPrompt(false)}>关闭</button></div>

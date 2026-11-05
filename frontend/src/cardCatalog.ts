@@ -3,6 +3,8 @@ import {onSessionReset,requestGeneration,assertRequestGeneration} from './sessio
 import {api} from './model';
 import type {CardSummary} from './types';
 
+export const cardCategories:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
+
 const pending=new Map<string,Promise<CardSummary[]>>();
 const versions=new Map<string,string>();
 const statusRequests=new Map<string,Promise<CardStatus>>();

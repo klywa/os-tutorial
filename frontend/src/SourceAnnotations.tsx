@@ -62,7 +62,7 @@ export default function SourceAnnotations({source,choices,onSave}:{source:Source
  return <div className="source-annotations">{([['tags','标签',tags],['notes','备注',notes]] as const).map(([field,label,state])=>
   <div className={'source-annotation '+field} key={field} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node|null))finishBlur(e.currentTarget,()=>state.commit());}} onKeyDown={e=>{if(e.key==='Escape'&&state.editing){e.preventDefault();e.stopPropagation();state.cancel();}}}>
    <span className="annotation-label">{label}</span>
-   {state.editing?(field==='tags'?<TagInput value={state.value as string[]} choices={choices} onChange={state.change}/>:<textarea autoFocus aria-label="编辑备注" rows={3} value={state.value as string} onChange={e=>state.change(e.target.value)}/>):
+   {state.editing?(field==='tags'?<TagInput value={state.value as string[]} choices={choices} onChange={state.change}/>:<textarea data-card-completion autoFocus aria-label="编辑备注" rows={3} value={state.value as string} onChange={e=>state.change(e.target.value)}/>):
     <button type="button" className="annotation-display" aria-label={'编辑'+label} onClick={state.begin}>{field==='tags'?(state.value as string[]).length?(state.value as string[]).map(tag=><span className="badge" key={tag}>{tag}</span>):'添加标签':(state.value as string)||'添加备注'}</button>}
    {!!state.pending&&<small role="status">保存中…</small>}
    {state.error&&<div className="annotation-error" role="alert">{state.error}；草稿已保留，请核对后重试。<button type="button" onClick={()=>void state.commit(true)}>重试</button><button type="button" onClick={state.cancel}>放弃修改</button></div>}

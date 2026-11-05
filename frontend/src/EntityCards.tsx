@@ -6,7 +6,7 @@ import type {ReactNode,ReactElement} from 'react';
 import {createPortal} from 'react-dom';
 import {api} from './model';
 import {activeWorkspace,cachedEntry} from './readerCache';
-import {loadCardCatalog,cardPath,cardVersion,checkCardVersion} from './cardCatalog';
+import {loadCardCatalog,cardPath,cardVersion,checkCardVersion,cardCategories as categoryNames} from './cardCatalog';
 import type {CardDetail,CardSummary} from './types';
 import {splitEntities,resolveCandidates,selectedCandidate,heroVersions,cardIndex} from './entityText';
 import {DockSelection} from './dockSelection';
@@ -27,7 +27,7 @@ export function ReadingCards({children}:{children:ReactNode}){
  const dock=useMemo(()=>({wide,target,selection}),[wide,target,selection]);
  return <DockContext.Provider value={dock}><div ref={container} className={'reading-body '+(wide?'with-card-dock':'')}>{children}{wide&&<aside className="card-dock" aria-label="卡牌详情栏"><DockHeading selection={selection}/><div ref={setTarget}/></aside>}</div></DockContext.Provider>;
 }
-export const categoryNames:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
+export {categoryNames};
 export function getCard(id:string,version=cardVersion()){const key=cardPath(id,version);if(!details.has(key)){const request=api<CardDetail>(key).catch(e=>{if(details.get(key)===request)details.delete(key);throw e;});details.set(key,request);}return details.get(key)!;}
 export function CardProvider({children,enabled=true}:{children:ReactNode;enabled?:boolean}){
  const publicMode=useAuth().session.mode==='public';

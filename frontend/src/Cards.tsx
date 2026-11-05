@@ -1,12 +1,11 @@
 import {useEffect,useMemo,useState,useRef} from 'react';
 import {api,cardMatches} from './model';
 import {CardImage,useCards} from './EntityCards';
-import {loadCardCatalog,checkCardVersion,cardPath,cardVersion} from './cardCatalog';
+import {loadCardCatalog,checkCardVersion,cardPath,cardVersion,cardCategories as categories} from './cardCatalog';
 import type {CardStatus} from './cardCatalog';
 import {useAuth,useCapabilities} from './auth';
 import OfficialSync from './OfficialSync';
 import type {CardDetail,CardSummary,CardFilters} from './types';
-const categories:Record<string,string>={heroes:'英雄',players:'棋手',equipment:'装备',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
 const initial:CardFilters={query:'',category:'',faction:'',tier:'',awakened:''};
 export default function Cards(){
   const {session}=useAuth(),capabilities=useCapabilities(),isPublic=session.mode==='public';

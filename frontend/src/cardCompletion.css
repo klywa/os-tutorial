@@ -1,0 +1,48 @@
+.card-completion {
+ position: fixed;
+ inset: auto;
+ z-index: 120;
+ margin: 0;
+ padding: 4px;
+ box-sizing: border-box;
+ overflow: auto;
+ overscroll-behavior: contain;
+ background: var(--panel, #203249);
+ color: var(--text, #e4edf4);
+ border: 1px solid var(--line, #496a80);
+ border-radius: 7px;
+ box-shadow: 0 8px 24px #0006;
+ font: inherit;
+ text-align: left;
+}
+.card-completion-option {
+ min-height: 44px;
+ box-sizing: border-box;
+ padding: 6px 9px;
+ border: 1px solid transparent;
+ border-radius: 4px;
+ cursor: pointer;
+}
+.card-completion-option[aria-selected="true"] {
+ background: #20484e;
+ border-color: var(--jade, #83cfb5);
+}
+.card-completion-option:hover { background: #24483f; }
+.card-completion-heading {
+ display: flex;
+ align-items: baseline;
+ flex-wrap: wrap;
+ gap: 2px 8px;
+}
+.card-completion-heading strong { font-size: 14px; }
+.card-completion-heading small { color: var(--jade, #83cfb5); font-size: 11px; }
+.card-completion-effect, .card-completion-status {
+ color: var(--muted, #b4c7d8);
+ font-size: 12px;
+}
+.card-completion-effect {
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+.card-completion-status { padding: 8px; }

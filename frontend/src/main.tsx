@@ -25,6 +25,7 @@ import Sources from './Sources';
 import Crawler from './Crawler';
 import GlobalActivity from './GlobalActivity';
 import Cards from './Cards';
+import CardCompletion from './CardCompletion';
 import {CardProvider,EntityScope,EntityText,EntityChip,ReadingCards} from './EntityCards';
 import LineupOverview from './LineupOverview';
 import NoteDirectory from './NoteDirectory';
@@ -225,7 +226,7 @@ function MetaView({note,name}:{note:Note;name:(id:string)=>string}){
  const chips=(ids:string[],empty='待确认')=>ids.length?ids.map(id=><EntityChip key={id} ids={[id]} label={name(id)}/>):empty;
  return <section className="meta-view"><EntityText><h2>阵容信息</h2><p>必须阵营：{meta.required_factions.map(name).join('、')||(meta.late_variants?.length?'随组合查看':'待确认')}</p><p>适用棋手：{chips(meta.players)}</p><p>{meta.late_variants?.length?'共用核心英雄':'核心英雄'}：{chips(meta.core_heroes,meta.late_variants?.length?'随组合查看':'待确认')}</p>{(['early','middle','late'] as const).map((stage,i)=><div key={stage}><h3>{['前期','中期','后期'][i]}组成</h3>{meta.compositions[stage].length?meta.compositions[stage].map((m,j)=><p key={j}><EntityChip ids={[m.hero]} label={name(m.hero)}/>（{m.necessity==='required'?'必需':'可选'}）：{m.role}{m.replaces&&<>；替换 <EntityChip ids={[m.replaces]} label={name(m.replaces)}/></>} <EntityText>{m.replacement_note}</EntityText></p>):<p className="muted">待确认</p>}</div>)}{meta.ban_conditions.map(c=><p key={c.faction}>{name(c.faction)}被禁：{({playable:'可玩',unplayable:'不可玩',unknown:'待确认'})[c.status]} {c.reason}</p>)}</EntityText></section>;
 }
-createRoot(document.getElementById('root')!).render(<AuthProvider><App/></AuthProvider>);
+createRoot(document.getElementById('root')!).render(<AuthProvider><App/><CardCompletion/></AuthProvider>);
 
 import './mobileReading.css';
 

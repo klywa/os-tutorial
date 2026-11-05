@@ -8,5 +8,5 @@ export default function KnowledgeFactsEditor({value,onChange,name='知识属性'
   return <details className="fact-field"><summary>{name}</summary>{Object.entries(data).map(([key,v])=><KnowledgeFactsEditor key={key} name={labels[key]??key} value={v} onChange={next=>onChange({...data,[key]:next})}/>)}</details>;
  }
  if(typeof value==='boolean')return <label><input type="checkbox" checked={value} onChange={e=>onChange(e.target.checked)}/>{name}</label>;
- return <label>{name}<textarea rows={2} value={value==null?'':String(value)} onChange={e=>onChange(typeof value==='number'?Number(e.target.value):e.target.value)}/></label>;
+ return <label>{name}<textarea data-card-completion={typeof value==='number'?undefined:true} rows={2} value={value==null?'':String(value)} onChange={e=>onChange(typeof value==='number'?Number(e.target.value):e.target.value)}/></label>;
 }
