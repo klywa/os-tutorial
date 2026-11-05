@@ -11,6 +11,23 @@ import json_store
 
 
 class StoreTests(unittest.TestCase):
+    def test_commit_accepts_play_tips_placeholder_without_fabricated_evidence(self):
+        json_store.save(self.root, [self.record])
+        incoming = json_store.records(self.root)[0]
+        original = incoming['body']['nodes'].copy()
+        incoming['body']['nodes'].extend([
+            {'id':'tips','type':'heading','level':2,'title':'打法要点','separator':'\n\n'},
+            {'id':'tips-body','type':'entry','key':'正文','show_key':True,'value':'待补充','separator':'\n\n'},
+        ])
+        json_store.commit(self.root, [incoming])
+        saved = json_store.records(self.root)[0]
+        self.assertEqual(saved['body']['nodes'][:-2], original)
+        self.assertEqual(saved['body']['nodes'][-1]['value'], '待补充')
+        self.assertFalse(saved['metadata'].get('claim_annotations'))
+        saved['body']['nodes'][-1]['value'] = '待补充：未经核实的规则'
+        with self.assertRaisesRegex(ValueError, '新增或改义条目必须直接关联来源证据'):
+            json_store.commit(self.root, [saved])
+
     def test_import_archives_replaced_body_and_removed_evidence(self):
         import copy
         record=self.record
