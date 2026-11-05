@@ -1,7 +1,6 @@
 """Versioned official cards, independent of code releases and knowledge saves."""
 from datetime import datetime, timedelta, timezone
 import hashlib
-import os
 from pathlib import Path
 import re
 import shutil
@@ -13,8 +12,20 @@ import wxq
 CLOCK = '09:00'
 
 
+class CardVersionChanged(KeyError):
+    pass
+
+
 def home(state):
     return Path(state)/'cards'
+
+
+def prune_versions(state):
+    folder=home(state);current=store.read(folder/'current.json',{}).get('version')
+    if not isinstance(current,str) or not re.fullmatch('[0-9a-f]{64}',current) or not (folder/'versions'/current).is_dir():return
+    for old in (folder/'versions').iterdir():
+        if old.name!=current and re.fullmatch('[0-9a-f]{64}',old.name) and old.is_dir() and not old.is_symlink():
+            shutil.rmtree(old)
 
 
 def verify(folder):
@@ -64,21 +75,16 @@ def publish(workspace, state, *, bundled=False):
         else:stage.rename(destination)
         # Rename moved the TemporaryDirectory; recreating it lets its cleanup be harmless.
         stage.mkdir(exist_ok=True)
-        prior=store.read(folder/'current.json',{}).get('version')
-        if prior and prior!=version and re.fullmatch('[0-9a-f]{64}',prior) and (versions/prior).is_dir():
-            os.utime(versions/prior,None)
         wxq.atomic_json(folder/'current.json',{'version':version})
-    # Keep historical image/detail URLs usable for at least seven days.
-    cutoff=datetime.now(timezone.utc)-timedelta(days=7)
-    for old in versions.iterdir():
-        if old.name!=version and re.fullmatch('[0-9a-f]{64}',old.name) and datetime.fromtimestamp(old.stat().st_mtime,timezone.utc)<cutoff:
-            shutil.rmtree(old)
+    prune_versions(state)
     return version
 
 
 def resolve(root,state,version=None):
     folder=home(state)
     current=store.read(folder/'current.json',{}).get('version')
+    if current and version and version!=current and re.fullmatch('[0-9a-f]{64}',version):
+        raise CardVersionChanged('卡牌资料已更新，请重新载入')
     wanted=version or current
     if wanted:
         if not re.fullmatch('[0-9a-f]{64}',wanted):raise KeyError('卡牌版本不存在')

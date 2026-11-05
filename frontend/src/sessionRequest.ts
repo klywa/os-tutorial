@@ -11,6 +11,6 @@ export async function sessionFetch(input:RequestInfo|URL,init?:RequestInit){
  assertRequestGeneration(epoch);
  if(response.status===401)sessionExpired();
  const parse=response.json.bind(response);
- response.json=async()=>{assertRequestGeneration(epoch);const value=await parse();assertRequestGeneration(epoch);return value;};
+ response.json=async()=>{assertRequestGeneration(epoch);const value=await parse();assertRequestGeneration(epoch);if(response.status===409&&value?.reason==='cards_version_changed'&&typeof window!=='undefined')window.dispatchEvent(new Event('cards-version-changed'));return value;};
  return response;
 }

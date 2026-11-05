@@ -31,7 +31,8 @@ class CardPublicationTests(unittest.TestCase):
         first = self.publish()
         second = self.publish('新英雄')
         self.assertNotEqual(first, second)
-        self.assertEqual(json_store.read(cards.resolve(self.root,self.state,first)[0]/'cards.json')[0]['name'],'英雄')
+        with self.assertRaises(cards.CardVersionChanged):cards.resolve(self.root,self.state,first)
+        self.assertEqual([p.name for p in (self.state/'cards/versions').iterdir()],[second])
         with patch('website_data.export_cards', side_effect=ValueError('bad image')):
             with self.assertRaises(ValueError): cards.publish(self.root,self.state)
         self.assertEqual(cards.resolve(self.root/'new-release',self.state)[1],second)
@@ -42,15 +43,14 @@ class CardPublicationTests(unittest.TestCase):
         for value in ('../escape','x'*64,'a'*64):
             with self.assertRaises(KeyError):cards.resolve(self.root,self.state,value)
 
-    def test_initial_bundled_version_remains_readable_after_daily_sync_and_new_release(self):
+    def test_initial_bundled_version_is_replaced_by_daily_sync(self):
         folder=self.root/'website-data';folder.mkdir()
         json_store.write_file(folder/'cards.json',[{'id':'hero:1','name':'随附快照','sources':[]}])
         json_store.write_file(folder/'images.json',{'entities':{},'assets':{}})
         _,version=cards.resolve(self.root,self.state)
         self.assertEqual(cards.publish(self.root,self.state,bundled=True),version)
         self.publish('官网新数据')
-        old,_=cards.resolve(self.root/'next-release',self.state,version)
-        self.assertEqual(json_store.read(old/'cards.json')[0]['name'],'随附快照')
+        with self.assertRaises(cards.CardVersionChanged):cards.resolve(self.root/'next-release',self.state,version)
 
     def test_status_is_public_safe_and_uses_publication_failure(self):
         self.publish()

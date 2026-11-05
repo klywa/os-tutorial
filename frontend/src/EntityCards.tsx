@@ -41,14 +41,15 @@ export function CardProvider({children,enabled=true}:{children:ReactNode;enabled
   };
   const catalog=(event:Event)=>{const value=(event as CustomEvent<{cards:CardSummary[];workspace:string;epoch:number;version:string}>).detail;if(alive&&value.workspace===activeWorkspace()&&value.epoch===requestGeneration()&&value.version===cardVersion(value.workspace))setCards(value.cards);};
   window.addEventListener('cards-catalog',catalog);
+  window.addEventListener('cards-version-changed',refresh);
   refresh();window.addEventListener('reader-workspace',refresh);
-  return()=>{alive=false;window.removeEventListener('reader-workspace',refresh);window.removeEventListener('cards-catalog',catalog);};
+  return()=>{alive=false;window.removeEventListener('reader-workspace',refresh);window.removeEventListener('cards-catalog',catalog);window.removeEventListener('cards-version-changed',refresh);};
  },[active,publicMode]);
  return <CardContext.Provider value={cards}>{children}</CardContext.Provider>;
 }
 export function EntityScope({references,children}:{references:string[];children:ReactNode}){return <ReferenceContext.Provider value={references}>{children}</ReferenceContext.Provider>;}
 export function useCards(){return useContext(CardContext);}
-export function CardImage({card,large=false}:{card?:CardSummary;large?:boolean}){const [bad,setBad]=useState(false);const url=large?card?.image_url||card?.thumb_url:card?.thumb_url||card?.image_url;useEffect(()=>setBad(false),[url]);return url&&!bad?<img className={large?'official-card-image':'official-card-thumb'} src={appUrl(url)} alt={card?.name??'卡牌'} loading="lazy" onError={()=>setBad(true)}/>:<span className={large?'card-image-placeholder large':'card-image-placeholder'}>{card?.name??'未配置'}</span>;}
+export function CardImage({card,large=false}:{card?:CardSummary;large?:boolean}){const [bad,setBad]=useState(false);const url=large?card?.image_url||card?.thumb_url:card?.thumb_url||card?.image_url;useEffect(()=>setBad(false),[url]);return url&&!bad?<img className={large?'official-card-image':'official-card-thumb'} src={appUrl(url)} alt={card?.name??'卡牌'} loading="lazy" onError={()=>{setBad(true);const version=card?.catalog_version;if(version)void checkCardVersion().then(state=>{if(state.version!==version)window.dispatchEvent(new Event("cards-version-changed"));}).catch(()=>{});}}/>:<span className={large?'card-image-placeholder large':'card-image-placeholder'}>{card?.name??'未配置'}</span>;}
 export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:string;portrait?:boolean}){
  const dock=useContext(DockContext),token=useId();
  const cards=useCards(),references=useContext(ReferenceContext);const candidates=resolveCandidates(ids,references);

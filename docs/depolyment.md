@@ -125,7 +125,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\pull-local.ps1 -Port 8877
 
 打开网站后先使用已有账号登录；未登录不能浏览内容，`/os-tutorial/admin` 兼容相同登录页。管理员可在右上角切换管理员、编写员和浏览者身份；编写员提交提案供管理员审核，浏览者（viewer）仅可阅读、复制和导出。笔记标题右侧“导出json”按章节层级导出整篇阅读正文。本地服务继续免登录，本地调试不会自动上传，上传需明确运行发布脚本。
 
-公网所有已登录角色均可访问“卡牌库”；官网同步控制只在本地管理员界面提供。服务器通过独立的 `os-tutorial-cards.timer` 每五分钟检查是否到期，北京时间每天 09:00 抓取官网，错过时补检，失败按原同步引擎退避重试。工作区、同步状态和不可变卡牌版本保存在 `/var/lib/os-tutorial/cards`，不会写回 Git 或修改正式笔记；代码发布也不会覆盖已同步版本。失败继续提供上次完整数据，旧版本从切换起至少保留七天。
+公网所有已登录角色均可访问“卡牌库”；官网同步控制只在本地管理员界面提供。服务器通过独立的 `os-tutorial-cards.timer` 每五分钟检查是否到期，北京时间每天 09:00 抓取官网，错过时补检，失败按原同步引擎退避重试。工作区、同步状态和不可变卡牌版本保存在 `/var/lib/os-tutorial/cards`，不会写回 Git 或修改正式笔记；代码发布也不会覆盖已同步版本。失败继续提供上次完整数据；成功切换后仅保留当前卡牌快照，已打开的页面遇到过期版本会自动重新载入。
 
 首次启用或更新这两个单元时，在新代码部署完成后备份现有同名单元，将 `deploy/os-tutorial-cards.service`、`deploy/os-tutorial-cards.timer` 安装到 `/etc/systemd/system/`，运行 `systemd-analyze verify`，再执行 `systemctl daemon-reload` 和 `systemctl enable --now os-tutorial-cards.timer`。首次验收执行 `systemctl start os-tutorial-cards.service`，核对 service 的退出结果、timer 的下次检查时间及登录后 `/os-tutorial/api/cards/status`。日更过程不持有笔记保存或代码切换锁；不需要重启网站服务。
 

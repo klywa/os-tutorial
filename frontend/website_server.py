@@ -12,6 +12,7 @@ import workspace
 from website_auth import Auth, Unconfigured
 from website_data import sanitize
 from edit_locks import EditLocked
+from card_publication import CardVersionChanged
 
 
 def public_catalog(root):
@@ -163,13 +164,19 @@ def handler_class(base):
                 if path=='/api/cards' or re.fullmatch(r'/api/cards/[^/]+',path):
                     from card_publication import resolve
                     folder,version=resolve(root,self.server.state_dir,query.get('version',[None])[0])
-                    cards=store.read(folder/'cards.json',[])
-                    images=store.read(folder/'images.json',{}).get('entities',{})
+                    try:
+                        cards=store.read(folder/'cards.json',[])
+                        images=store.read(folder/'images.json',{}).get('entities',{})
+                    except OSError:
+                        resolve(root,self.server.state_dir,version)
+                        raise
+                    resolve(root,self.server.state_dir,version)
                     cards=[{**c,'image_status':'ready' if c['id'] in images else 'missing',
                         **{kind+'_url':f'/api/cards/{c["id"]}/images/{kind}?version={version}' if kind in images.get(c['id'],{}) else None for kind in ('thumb','image')}} for c in cards]
                     if path!='/api/cards':
                         cards=next((c for c in cards if c['id']==path.split('/')[-1]),None)
                         if cards is None:raise KeyError('卡牌不存在')
+                    resolve(root,self.server.state_dir,version)
                     return self.response(200,cards,etag=True,headers={'X-Cards-Version':version})
                 if path.startswith('/api/'):raise KeyError('接口不存在')
                 dist=self.server.dist.resolve()
@@ -184,6 +191,7 @@ def handler_class(base):
             except EditLocked as exc:self.response(423,{'error':str(exc),'reason':exc.reason,'resource':exc.resource})
             except (workspace.Conflict,workspace.Busy) as exc:self.response(423,{'error':str(exc)})
             except PermissionError as exc:self.response(403,{'error':str(exc)})
+            except CardVersionChanged:self.response(409,{'error':'卡牌资料已更新，请重新载入','reason':'cards_version_changed'})
             except KeyError:self.response(404,{'error':'页面或接口不存在'})
             except (ValueError,TypeError) as exc:self.response(400,{'error':str(exc)})
             except OSError:self.response(503,{'error':'网站资料暂时不可用'})

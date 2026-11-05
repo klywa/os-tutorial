@@ -1,4 +1,4 @@
-import {useEffect,useMemo,useState} from 'react';
+import {useEffect,useMemo,useState,useRef} from 'react';
 import {api,cardMatches} from './model';
 import {CardImage,useCards} from './EntityCards';
 import {loadCardCatalog,checkCardVersion,cardPath,cardVersion} from './cardCatalog';
@@ -10,19 +10,20 @@ const categories:Record<string,string>={heroes:'英雄',players:'棋手',equipme
 const initial:CardFilters={query:'',category:'',faction:'',tier:'',awakened:''};
 export default function Cards(){
   const {session}=useAuth(),capabilities=useCapabilities(),isPublic=session.mode==='public';
+  const loadEpoch=useRef(0);
   const [status,setStatus]=useState<CardStatus|null>(null),[version,setVersion]=useState(cardVersion);
   const shared=useCards();
   const [cards,setCards]=useState<CardSummary[]>(shared),[filters,setFilters]=useState(initial);
   const [selected,setSelected]=useState(''),[detail,setDetail]=useState<CardDetail|null>(null);
   const [error,setError]=useState(''),[loading,setLoading]=useState(!shared.length),[detailLoading,setDetailLoading]=useState(false);
-  async function load(){setLoading(true);setError('');try{if(isPublic){const state=await checkCardVersion();setStatus(state);}const result=await loadCardCatalog();setVersion(result[0]?.catalog_version??cardVersion());setCards(result);}catch(e){setError((e as Error).message);}finally{setLoading(false);}}
-  useEffect(()=>{void load();},[]);
+  async function load(){const epoch=++loadEpoch.current;setLoading(true);setError('');try{const state=isPublic?await checkCardVersion():null;const result=await loadCardCatalog();if(epoch!==loadEpoch.current)return;setStatus(state);setVersion(result[0]?.catalog_version??cardVersion());setCards(result);}catch(e){if(epoch===loadEpoch.current)setError((e as Error).message);}finally{if(epoch===loadEpoch.current)setLoading(false);}}
+  useEffect(()=>{void load();const refresh=()=>void load();if(isPublic)window.addEventListener('cards-version-changed',refresh);return()=>{loadEpoch.current++;window.removeEventListener('cards-version-changed',refresh);};},[]);
   useEffect(()=>{if(!isPublic&&shared.length)setCards(shared);},[shared,isPublic]);
   const visible=useMemo(()=>cards.filter(c=>cardMatches(c,filters)),[cards,filters]);
   const active=loading?'':visible.find(c=>c.id===selected)?.id??visible[0]?.id??'';
   const factions=useMemo(()=>Array.from(new Map(cards.map(c=>[c.faction.id||'none',c.faction.name])).entries()),[cards]);
   useEffect(()=>{let current=true;setDetail(null);if(!active){setDetailLoading(false);return;}
-    setDetailLoading(true);setError('');void api<CardDetail>(cardPath(active,version)).then(c=>{if(current)setDetail(c);}).catch(e=>{if(current)setError((e as Error).message);}).finally(()=>{if(current)setDetailLoading(false);});
+    setDetailLoading(true);setError('');void api<CardDetail>(cardPath(active,version)).then(c=>{if(current)setDetail({...c,catalog_version:version});}).catch(e=>{if(current)setError((e as Error).message);}).finally(()=>{if(current)setDetailLoading(false);});
     return()=>{current=false;};},[active,cards,version]);
   const patch=(p:Partial<CardFilters>)=>setFilters(f=>({...f,...p}));
   return <div className="cards-page"><div className="page-heading"><div><h1>卡牌库</h1><p>查询卡牌效果、英雄技能与成长节点。</p></div><span className="count">{visible.length} / {cards.length} 项</span></div>

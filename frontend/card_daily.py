@@ -10,7 +10,7 @@ import wxq
 import json_store as store
 from processing_lock import file_lock
 from workspace import Busy,store_lock
-from card_publication import home, publish, CLOCK
+from card_publication import home, publish, prune_versions, CLOCK
 
 
 def tick(state,force=False,bundle_root=None):
@@ -23,7 +23,9 @@ def tick(state,force=False,bundle_root=None):
         # Failed publication retries independently of a successful upstream fetch.
         needed=force or official_sync.due(workspace,CLOCK)
         if not needed and official_sync.status(workspace,CLOCK).get('state')=='failed':return previous
-        if not needed and previous.get('state')=='success' and (folder/'current.json').exists():return previous
+        if not needed and previous.get('state')=='success' and (folder/'current.json').exists():
+            prune_versions(state)
+            return previous
         value={**previous,'state':'running','last_check':wxq.now(),'error':None}
         wxq.atomic_json(folder/'status.json',value)
         try:
