@@ -728,7 +728,7 @@ def commit(root, incoming, *, retire=None):
             old_claims = project(previous)['claims'] if previous else []
             old_visible = {n['id']:n for n in previous['body']['nodes']} if previous else {}
             annotated = {c['text_ref'] for c in meta.get('claim_annotations',[]) if c.get('kind') in wxq.KNOWLEDGE_KINDS and c.get('evidence')}
-            placeholders = {'暂无已确认的通用策略','暂无已确认结论','未提供','待确认'}
+            placeholders = {'暂无已确认的通用策略','暂无已确认结论','未提供','待确认','待补充'}
             for node in record['body']['nodes']:
                 if node['type']!='entry':continue
                 old_node=old_visible.get(node['id'],{})
