@@ -6572,47 +6572,11 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1tU8q6FEkw:p1",
-          "start": 218.59,
-          "end": 274.22
-        },
-        {
-          "type": "video",
-          "source": "BV1n5af6SE4F:p1",
-          "start": 217.04,
-          "end": 271.99
-        },
-        {
-          "type": "video",
-          "source": "BV1WPap6DEa9:p1",
-          "start": 235.92,
-          "end": 323.06
-        },
-        {
-          "type": "video",
-          "source": "BV1hUeF6uE8A:p1",
-          "start": 91.39,
-          "end": 144.18
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 220,
-          "paragraph_end": 220
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 229,
-          "paragraph_end": 229
-        }
-      ],
+      "inference": false,
+      "evidence": [],
       "derived_from": [],
-      "display_ref": "n-0bdad0311c3d902d4ef0"
+      "display_ref": "n-0bdad0311c3d902d4ef0",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-aca3104437fe7d79",
@@ -11373,8 +11337,8 @@
       "display_ref": "cx26-08ec990660db70e7"
     }
   ],
-  "body_sha256": "2a3498162edf6d7b90a9575a9235f7694dbf3f5796bec2e82c0cb07afda42a14",
-  "revision": "334ef5c043ad7ea3d78e",
+  "body_sha256": "289f0e20edc46fefba4287636434f0f03d3c9211d5c998b1dc40fd6f799af681",
+  "revision": "ed474b96bd9314c9d6d1",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -28568,8 +28532,12 @@
     "changxiaoe-general-play-play-tips-body": {
       "origin": "manual",
       "section": "打法要点"
+    },
+    "n-0bdad0311c3d902d4ef0": {
+      "origin": "manual",
+      "section": "阵容组成与运营节奏"
     }
   },
-  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/d2f64c91a5c109e8e107bedbe725581e4a89bb0b6c7f32cd23d9a11d5dcc1e5a.json",
-  "history_count": 53
+  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/6a4cf9511ed31f7618ccd665874651c9d7ec10a40d7553dc08ed5df8a0615b54.json",
+  "history_count": 54
 }
