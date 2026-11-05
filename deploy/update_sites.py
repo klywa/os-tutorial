@@ -7,6 +7,7 @@ import json
 import logging
 import os
 from pathlib import Path
+import re
 import shlex
 import shutil
 import sqlite3
@@ -234,6 +235,16 @@ def snapshot_os_images(current, destination):
     if source.exists():shutil.copytree(source,Path(destination)/'website-data/images')
 
 
+def retain_os_snapshot(latest):
+    """Remove older update snapshots after all parts of the new one are copied."""
+    directory=latest.parent.resolve()
+    for path in directory.iterdir():
+        if (path.name != latest.name
+                and re.fullmatch(r'(?:release-)?\d{8}T\d{6}Z-[0-9a-f]{8}', path.name)
+                and path.is_dir() and not path.is_symlink() and path.resolve().parent == directory):
+            shutil.rmtree(path)
+
+
 def wait_role_capability():
     for _ in range(30):
         try:
@@ -246,10 +257,7 @@ def wait_role_capability():
     raise RuntimeError('万象棋新版服务角色能力检查失败')
 
 
-def update_os(*, runner=subprocess.run, base=Path('/opt/os-tutorial'), state_dir=Path('/var/lib/os-tutorial'),
-              auth=Path('/etc/os-tutorial/admins.json')):
-    sys.path.insert(0, str(base / 'current/frontend'))
-    from website_sync import sync_lock, SyncBusy
+def update_os(*, runner=subprocess.run, auth=Path('/etc/os-tutorial/admins.json')):
     # systemctl start joins an already active oneshot job rather than killing it.
     # A second start after waiting performs the usual no-change check safely.
     deadline = time.monotonic() + 1900
@@ -261,19 +269,6 @@ def update_os(*, runner=subprocess.run, base=Path('/opt/os-tutorial'), state_dir
             raise RuntimeError('等待万象棋自动更新超时，未停止原任务')
         logging.info('等待正在执行的万象棋自动更新…')
         time.sleep(3)
-    backup = state_dir / 'update-backups' / stamp()
-    while True:
-        try:
-            with sync_lock(state_dir):
-                snapshot_root=(base/'current').resolve()
-                snapshot_os(snapshot_root, state_dir, backup,include_images=False)
-            break
-        except SyncBusy:
-            if time.monotonic() >= deadline:
-                raise RuntimeError('等待万象棋保存/审核锁超时')
-            time.sleep(1)
-    snapshot_os_images(snapshot_root,backup)
-    logging.info('万象棋正文和提案一致快照：%s', backup)
     command(['systemctl','start','os-tutorial-update.service'], runner=runner, timeout=1900)
     # Run the helper from the activated release, never migrate before role support.
     changed = migrate(auth, wait_role_capability())
@@ -281,7 +276,7 @@ def update_os(*, runner=subprocess.run, base=Path('/opt/os-tutorial'), state_dir
         command(['systemctl','restart','os-tutorial.service'], runner=runner, timeout=90)
         wait_role_capability()  # startup/endpoint failures propagate; do not continue Pokilot.
     logging.info('万象棋更新完成（无新提交时发布器自动跳过构建）')
-    return {'state':'completed','backup':str(backup)}
+    return {'state':'completed'}
 
 
 def update_selected(os_tutorial, pokilot, os_update=update_os, pokilot_update=None):

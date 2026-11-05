@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build independent releases and atomically switch the Linux public service.
 
-No serving checkout reset, force push, automatic cleanup, or active-tree merge.
+Retain the latest complete update snapshot for rollback.
 Run as the service user (or a shared group) with narrowly scoped restart rights.
 """
 import argparse
@@ -17,7 +17,7 @@ import uuid
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'frontend'))
 from website_sync import SyncManager, git, wait_sync_lock
-from update_sites import snapshot_os, snapshot_os_images, stamp
+from update_sites import retain_os_snapshot, snapshot_os, snapshot_os_images, stamp
 
 
 class StaleRelease(RuntimeError):
@@ -166,6 +166,7 @@ class ReleaseManager:
                 backup=self.state_dir/'update-backups'/('release-'+stamp())
                 snapshot_os(active,self.state_dir,backup,include_images=False)
             snapshot_os_images(active,backup)
+            retain_os_snapshot(backup)
         release_stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         candidate = self.releases / f'{release_stamp}-{uuid.uuid4().hex[:8]}'
         self.clone_candidate(candidate,upstream,Path(snapshot['root']) if snapshot else None)

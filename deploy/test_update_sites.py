@@ -213,8 +213,6 @@ class UpdateTests(unittest.TestCase):
 
     def test_os_migration_waits_until_publisher_finishes_and_releases_sync_lock(self):
         import json
-        base = self.parent / 'os'
-        (base / 'current').mkdir(parents=True)
         state = self.parent / 'state'
         state.mkdir()
         auth = self.parent / 'admins.json'
@@ -230,10 +228,10 @@ class UpdateTests(unittest.TestCase):
                 self.assertEqual(json.loads(auth.read_text())['schema_version'], 2)
             return subprocess.CompletedProcess(args, 0, 'inactive' if 'show' in args else '', '')
         with patch.object(update, 'capability', return_value={'account_role':'guest'}):
-            update.update_os(runner=runner, base=base, state_dir=state, auth=auth)
+            update.update_os(runner=runner, auth=auth)
         self.assertEqual(actions[-2:], [['systemctl','start','os-tutorial-update.service'],
                                         ['systemctl','restart','os-tutorial.service']])
-        self.assertTrue(list((state / 'update-backups').glob('*/release.txt')))
+        self.assertFalse((state / 'update-backups').exists())
 
     @unittest.skipUnless(hasattr(os, 'geteuid') and os.geteuid() == 0, 'Linux root ownership integration')
     def test_root_snapshots_keep_parent_writable_for_service_owner(self):

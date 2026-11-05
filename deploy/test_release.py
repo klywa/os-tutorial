@@ -34,6 +34,12 @@ class ReleaseTests(unittest.TestCase):
     def test_release_probes_and_bulk_image_backup_allow_saves(self):
         from website_sync import sync_lock
         manager=self.manager();other=self.other()
+        backup_dir=manager.state_dir/'update-backups'
+        old=backup_dir/'release-20260101T000000Z-01234567'
+        old.mkdir(parents=True)
+        (old/'release.txt').write_text('previous')
+        unrelated=backup_dir/'manual-archive'
+        unrelated.mkdir()
         images=self.root/'website-data/images';images.mkdir(parents=True);(images/'test.img').write_bytes(b'image bytes')
         # These are immutable published files in the fixture, not a dirty user edit.
         git(self.root,'add','website-data');git(self.root,'commit','-m','images');git(self.root,'push')
@@ -45,12 +51,15 @@ class ReleaseTests(unittest.TestCase):
             return probe(root)
         def bulk(root,destination):
             with sync_lock(manager.state_dir):calls.append('images')
+            self.assertTrue(old.is_dir())
             return copy(root,destination)
         manager.remote_head=remote;manager.build=lambda _:None;manager.restart=lambda:None;manager.healthy=lambda:True
         with patch.object(module,'snapshot_os_images',side_effect=bulk):
             self.assertEqual(manager.update()['state'],'deployed')
         self.assertIn('images',calls);self.assertGreaterEqual(calls.count('probe'),2)
         backups=list((manager.state_dir/'update-backups').glob('release-*'))
+        self.assertEqual(len(backups),1)
+        self.assertTrue(unrelated.is_dir())
         self.assertEqual((backups[0]/'website-data/images/test.img').read_bytes(),b'image bytes')
 
     setUp = fixtures.SyncTests.setUp
