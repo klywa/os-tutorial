@@ -114,6 +114,10 @@ class LocalService:
     def healthy(self):
         if not self.running():
             return False
+        with urllib.request.urlopen(self.url+'/api/auth/me',timeout=3) as response:
+            return json.load(response).get('mode')=='local'
+
+    def assets_healthy(self):
         with urllib.request.urlopen(self.url+'/',timeout=3) as response:
             if response.status!=200 or 'text/html' not in response.headers.get_content_type():
                 return False
@@ -160,10 +164,14 @@ class LocalService:
         self.stopping = False
         logging.info('本项目本地服务已停止')
 
+    def command(self):
+        return [sys.executable,str(self.root/'frontend/server.py'),'--root',str(self.root),'--port',str(self.port)],self.root
+
     def launch(self):
         directory=self.root/'raw/local-sync'; directory.mkdir(parents=True,exist_ok=True)
-        logfile=directory/('server-'+datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:6]+'.log')
-        options={'cwd':self.root,'stdin':subprocess.DEVNULL,'stderr':subprocess.STDOUT,
+        logfile=directory/(f'server-{self.port}-'+datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:6]+'.log')
+        command,cwd=self.command()
+        options={'cwd':cwd,'stdin':subprocess.DEVNULL,'stderr':subprocess.STDOUT,
                  'env':child_environment()}
         if os.name=='nt':
             # Detaching the console alone still inherits a kill-on-close job.
@@ -175,8 +183,7 @@ class LocalService:
             output.write(f'[launcher] parent_pid={os.getpid()} executable={sys.executable}\n'.encode('utf-8'))
             output.flush()
             try:
-                process=subprocess.Popen([sys.executable,str(self.root/'frontend/server.py'),
-                    '--root',str(self.root),'--port',str(self.port)],stdout=output,**options)
+                process=subprocess.Popen(command,stdout=output,**options)
             except OSError as exc:
                 raise RuntimeError(f'无法独立启动本地服务：{self.url} 父PID={os.getpid()} 日志：{logfile}；{exc}') from exc
         self.process=process
@@ -238,6 +245,82 @@ class LocalService:
                     existing=False;process=None
                 self.sleep(.25)
         raise RuntimeError(f'本地服务重启失败（已重试 {self.retries} 次）：{self.url} {last_error} 日志：{logfile}')
+
+
+class LocalFrontend(LocalService):
+    control='/__wxq_local_frontend'
+
+    def __init__(self, root):
+        super().__init__(root,5173)
+
+    def command(self):
+        node=shutil.which('node')
+        frontend=self.root/'frontend'
+        vite=frontend/'node_modules/vite/bin/vite.js'
+        if not node or not vite.is_file():
+            raise RuntimeError('缺少 Node.js 或 Vite，请先安装前端依赖')
+        return [node,str(vite)],frontend
+
+    def running(self):
+        try:
+            with urllib.request.urlopen(self.url+self.control,timeout=3) as response:
+                status=json.load(response)
+        except (OSError,ValueError):
+            if not self.occupied():
+                return False
+            raise ForeignService('5173 已被占用，未识别到本项目的 Vite 前端；原进程保留') from None
+        if (not isinstance(status,dict) or not isinstance(status.get('root'),str)
+                or Path(status['root']).resolve()!=self.root/'frontend'):
+            raise ForeignService('5173 已被其他项目占用；原进程保留')
+        return True
+
+    def healthy(self):
+        if not self.running() or not self.assets_healthy():
+            return False
+        for path,key,expected in (('/api/auth/me','mode','local'),('/api/notes/catalog','ready',True)):
+            with urllib.request.urlopen(self.url+path,timeout=8) as response:
+                if json.load(response).get(key)!=expected:
+                    return False
+        return True
+
+    def refresh(self):
+        request=urllib.request.Request(self.url+self.control,method='POST',data=b'',headers={'X-WXQ-Refresh':'1'})
+        with urllib.request.urlopen(request,timeout=3) as response:
+            if response.status!=204:
+                raise RuntimeError('5173 未确认刷新请求')
+
+
+def ensure_local_frontend(root,backend,*,refresh=True):
+    frontend=LocalFrontend(root)
+    if not backend.healthy():
+        backend.restart()
+    try:
+        ready=frontend.healthy()
+    except (OSError,ValueError,HTTPException):
+        ready=False
+    if not ready:
+        frontend.restart()
+    if refresh:
+        frontend.refresh()
+
+
+def run_local_sync(manager,action):
+    original=None
+    try:
+        result=getattr(manager,action)()
+        logging.info('Git 同步结果：%s',json.dumps(result,ensure_ascii=False))
+        return result
+    except Exception as exc:
+        original=exc
+        raise
+    finally:
+        try:
+            ensure_local_frontend(manager.root,manager.service,refresh=original is None)
+            logging.info('本地前端验收通过：http://127.0.0.1:5173/')
+        except Exception as recovery:
+            logging.exception('本地 5173 验收失败：%s',recovery)
+            if original is None:
+                raise
 
 
 class LocalSync:
@@ -444,10 +527,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action',choices=('publish','pull'))
     parser.add_argument('--root',type=Path,default=ROOT)
-    parser.add_argument('--port',type=int,default=8765)
+    parser.add_argument('--port',type=int,choices=(8765,),default=8765)
     parser.add_argument('--stop-timeout',type=float,default=600,help='安全停服等待秒数（默认600，不强制杀进程）')
     args=parser.parse_args()
-    if not 1<=args.port<=65535: parser.error('port 必须在 1..65535')
     if args.stop_timeout<=0: parser.error('stop-timeout 必须为正数')
     directory=args.root/'raw/local-sync'; directory.mkdir(parents=True,exist_ok=True)
     logfile=directory/(args.action+'-'+datetime.now().strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:6]+'.log')
@@ -457,7 +539,7 @@ def main():
     try:
         manager=LocalSync(args.root,args.port,stop_timeout=args.stop_timeout)
         with sync_lock(directory):
-            result=getattr(manager,args.action)()
+            result=run_local_sync(manager,args.action)
         logging.info('同步结束：%s',json.dumps(result,ensure_ascii=False))
         return 0
     except SyncBusy:

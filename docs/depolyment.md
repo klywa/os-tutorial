@@ -56,7 +56,7 @@ Set-Location D:\GameProjects\os-tutorial
 powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1
 ```
 
-完成后再更新服务器。本机原来运行的服务会按需自动停止并恢复；原来没运行则保持关闭。
+完成后再更新服务器。本机统一使用 `http://127.0.0.1:5173/`。发布和拉取脚本会恢复缺失的本机服务，验收 5173 的首页、静态资源及 API，并通知已连接的 5173 页面刷新。
 
 万象棋服务器已启用 `os-tutorial-update.timer`，每五分钟检查 Git 更新；有新提交时通过现有发布器构建、校验并切换版本，没有新提交则跳过构建。若要立即更新，仍可执行 `update-sites --os-tutorial`。
 
@@ -68,7 +68,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1
 
 代码目录的 JavaScript 文件支持 `.js`、`.cjs` 和 `.mjs`。若提示“待上传提交含白名单外文件”，检查列出的路径并修复原因，再重跑同一条发布命令。检查范围包括尚未推送的提交历史，工作区干净或后来删除文件不会跳过历史检查；私有资料和凭据仍禁止上传。
 
-发布成功或失败后都会恢复原来运行的服务；恢复后检查 API、首页及前端 JS/CSS，连续稳定 5 秒才报告完成。每次启动最长等待 120 秒，进程退出时最多自动重试 3 次；仍在启动的进程不会重复启动。后台服务独立于发布窗口，关闭发布窗口后仍可访问 `http://127.0.0.1:8765/`。若恢复失败，输出会分别保留发布错误与恢复错误，并显示进程信息和日志路径。
+发布成功或失败后都会检查本机前端。每次启动最长等待 120 秒，进程退出时最多自动重试 3 次。后台服务独立于发布窗口，关闭发布窗口后仍可访问 `http://127.0.0.1:5173/`。若恢复失败，输出会分别记录 Git 同步结果与本机验收错误，并显示进程信息和日志路径。
 
 ## 2. GitHub → 线上网站
 
@@ -114,16 +114,9 @@ Set-Location D:\GameProjects\os-tutorial
 powershell -NoProfile -ExecutionPolicy Bypass -File .\pull-local.ps1
 ```
 
-本机有未提交改动时先用发布脚本处理。无更新不会重启；有更新时按需构建，并恢复原来运行的本地服务。
+本机有未提交改动时先用发布脚本处理。无更新时复用正在运行的服务；有更新时按需构建并恢复服务。两种情形都验收 5173。更新脚本使用 8765 作为本机 API 端口。
 
-默认本地端口为 `8765`。如果启动时使用其他端口，传相同端口：
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1 -Port 8877
-powershell -NoProfile -ExecutionPolicy Bypass -File .\pull-local.ps1 -Port 8877
-```
-
-首次升级遇到“不支持安全停止”时，在原服务窗口按一次 `Ctrl+C`，再运行脚本；升级完成后可用原 `start.ps1` 启动。脚本不会结束其他项目或不明 Python 进程。本地同步与后台服务日志位于 `raw/local-sync/`。
+首次升级遇到“不支持安全停止”时，在原服务窗口按一次 `Ctrl+C`，再运行脚本。脚本会保留其他项目的进程。本地同步与后台服务日志位于 `raw/local-sync/`。
 
 打开网站后先使用已有账号登录；未登录不能浏览内容，`/os-tutorial/admin` 兼容相同登录页。管理员可在右上角切换管理员、编写员和浏览者身份；编写员提交提案供管理员审核，浏览者（viewer）仅可阅读、复制和导出。笔记标题右侧“导出json”按章节层级导出整篇阅读正文。本地服务继续免登录，本地调试不会自动上传，上传需明确运行发布脚本。
 

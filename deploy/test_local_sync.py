@@ -7,7 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 from io import BytesIO
 import urllib.error
 import local_sync as sync
@@ -378,6 +378,36 @@ class LocalPathTests(unittest.TestCase):
 
 
 class LocalServiceTests(unittest.TestCase):
+    def test_local_frontend_recovers_missing_services_and_reuses_running_ones(self):
+        root=Path(__file__).parents[1]
+        backend=Mock()
+        frontend=Mock()
+        backend.healthy.side_effect=[False,True]
+        frontend.healthy.side_effect=[False,True]
+        with patch.object(sync,'LocalFrontend',return_value=frontend):
+            sync.ensure_local_frontend(root,backend)
+            sync.ensure_local_frontend(root,backend)
+        backend.restart.assert_called_once()
+        frontend.restart.assert_called_once()
+        self.assertEqual(frontend.refresh.call_count,2)
+
+    def test_failed_sync_still_restores_frontend(self):
+        manager=Mock()
+        manager.publish.side_effect=RuntimeError('push failed')
+        with patch.object(sync,'ensure_local_frontend') as ensure:
+            with self.assertRaisesRegex(RuntimeError,'push failed'):
+                sync.run_local_sync(manager,'publish')
+        ensure.assert_called_once_with(manager.root,manager.service,refresh=False)
+
+    def test_frontend_port_conflict_preserves_listener(self):
+        frontend=sync.LocalFrontend(Path(__file__).parents[1])
+        with patch.object(frontend,'occupied',return_value=True), \
+                patch.object(sync.urllib.request,'urlopen',side_effect=urllib.error.URLError('missing')), \
+                patch.object(frontend,'launch') as launch:
+            with self.assertRaisesRegex(RuntimeError,'5173'):
+                frontend.restart()
+        launch.assert_not_called()
+
     def test_foreign_workspace_never_receives_stop_request(self):
         service=sync.LocalService(Path(__file__).parents[1])
         response=BytesIO(json.dumps({'mode':'local','root':str(Path(__file__).parent),'port':8765}).encode())

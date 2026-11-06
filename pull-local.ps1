@@ -1,4 +1,4 @@
-param([ValidateRange(1,65535)][int]$Port = 8765)
+param([ValidateSet(8765)][int]$Port = 8765)
 $ErrorActionPreference = 'Stop'
 $syncArgs = @((Join-Path $PSScriptRoot 'deploy/local_sync.py'), 'pull', '--root', $PSScriptRoot, '--port', "$Port")
 $localPython = Join-Path $PSScriptRoot '.wxq-runtime/Scripts/python.exe'

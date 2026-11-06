@@ -19,14 +19,14 @@
 在项目根目录运行：
 
 ```powershell
-powershell -NoProfile -File frontend/start.ps1
+powershell -NoProfile -File frontend/start.ps1 -NoBrowser
 ```
 
-脚本安装锁定依赖、构建前端，并在 http://127.0.0.1:8765 启动本地服务。首次需可用 Node.js/npm 及项目 `.wxq-runtime`。终端 Ctrl+C 停止服务。`-NoBrowser` 不打开浏览器；`-Port 8766` 更改端口。
+脚本安装锁定依赖、构建前端，并在 8765 启动本地 API。首次需可用 Node.js/npm 及项目 `.wxq-runtime`。终端 Ctrl+C 停止服务。
 
-开发：先运行 `..\.wxq-runtime\Scripts\python.exe server.py`，另开终端在此目录运行 `npm run dev`。生产使用同源页面，开发端口 5173 通过 Vite 代理 API。
+在另一个终端进入 `frontend` 并运行 `npm run dev`，启动本地页面。生产使用同源页面。
 
-Vite 默认代理到 `http://127.0.0.1:8765`。若本机 `frontend/.env.development.local` 配置了 `WXQ_API_TARGET`，会覆盖默认地址，须与后端实际 `--port` 一致。出现 `ECONNREFUSED 127.0.0.1:8767` 时，检查是否遗留临时端口配置；使用默认后端时将其改为 `WXQ_API_TARGET=http://127.0.0.1:8765`。修改环境文件后 Vite 会自动重启并重新加载配置。
+本地使用 `http://127.0.0.1:5173/`，Vite 固定代理 API 到本机后端 8765。5173 被占用时 Vite 会报错。发布和拉取脚本会在结束时恢复并验收这个入口。
 
 笔记编辑会同步索引、中文 Markdown 和阵容 JSON。人工修订保留，技能导入冲突显示待核对。meta 缺失是待确认，禁用条件缺失不会被当作可玩。
 

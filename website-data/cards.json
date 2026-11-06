@@ -123,47 +123,6 @@
     "sources": []
   },
   {
-    "id": "card:1133",
-    "name": "庄周",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "登场：自身等级+4并获得1张高阶招募战术。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 4,
-    "awakened": true,
-    "skills": [
-      {
-        "id": 11300,
-        "name": "天人合一",
-        "effect": "庄周幻化梦域保护队友和自身，驱散自身和左右两边2格内友军，并获得200点护盾，持续5秒。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "护盾提升至300点"
-          },
-          {
-            "level": 40,
-            "effect": "在护盾持续时间内免控"
-          },
-          {
-            "level": 100,
-            "effect": "技能范围扩大至全体友军"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1131",
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:1141",
     "name": "刘禅",
     "category": "heroes",
@@ -343,47 +302,6 @@
       }
     ],
     "skills_source": "card:1161",
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1193",
-    "name": "扁鹊",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "友方单位护盾被击破时，对周围敌人造成该英雄最大生命值20%的法术伤害（冷却1秒）。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 4,
-    "awakened": true,
-    "skills": [
-      {
-        "id": 11900,
-        "name": "万变灵药",
-        "effect": "扁鹊朝场上生命值比例最低的3个单位扔出药瓶，药瓶触地后破碎留下药液，持续5秒。处于药液中的友军每秒恢复20+60%法术攻击力的生命值，处于药液中的敌人每秒受到20+60%法术攻击力的法术伤害，效果可叠加。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "药液伤害提升至20+90%法术攻击力，生命值恢复提升至20+90%法术攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "药瓶数量提升至5个"
-          },
-          {
-            "level": 100,
-            "effect": "药液可提升友军40%攻速，降低敌人40%攻速"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1191",
     "stats": {},
     "attributes": {},
     "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
@@ -797,47 +715,6 @@
       }
     ],
     "skills_source": "card:1311",
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1323",
-    "name": "马可波罗",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "登场：自身及阿科米亚核心等级+4。",
-    "faction": {
-      "id": "faction:riluohai",
-      "name": "日落海",
-      "official_id": 314
-    },
-    "tier": 2,
-    "awakened": true,
-    "skills": [
-      {
-        "id": 13200,
-        "name": "华丽左轮",
-        "effect": "马可波罗掏出华丽左轮朝当前方向连续射出8颗子弹，每颗子弹造成25+15%物理攻击力的物理伤害，通过技能击败敌人后，下1次技能额外增加8发子弹。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "子弹伤害提升至40+30%物理攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "子弹数量提升至16发"
-          },
-          {
-            "level": 100,
-            "effect": "被马可波罗子弹命中的敌人将被永久打上标记，友军攻击标记敌人会提升50%攻击速度"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1321",
     "stats": {},
     "attributes": {},
     "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
@@ -1433,47 +1310,6 @@
     "sources": []
   },
   {
-    "id": "card:1663",
-    "name": "亚瑟",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "每当你使用【日落海】英雄牌时，阿科米亚核心等级+6。",
-    "faction": {
-      "id": "faction:riluohai",
-      "name": "日落海",
-      "official_id": 314
-    },
-    "tier": 3,
-    "awakened": true,
-    "skills": [
-      {
-        "id": 16600,
-        "name": "誓约之盾",
-        "effect": "亚瑟召唤圣盾围绕自身旋转，持续5秒。每秒对1格内敌人造成50%物理攻击力的物理伤害并获得15%伤害减免，亚瑟每次参与击杀获得30点最大生命值。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "圣盾伤害提升至80%物理攻击力，伤害减免提高至25%"
-          },
-          {
-            "level": 40,
-            "effect": "减伤持续时间延长至8秒"
-          },
-          {
-            "level": 100,
-            "effect": "举起圣剑跃向敌方人群密集处，额外造成自身15%最大生命的法术伤害并禁止范围内所有敌人恢复法力值，持续3秒"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1661",
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:1673",
     "name": "孙悟空",
     "category": "heroes",
@@ -1962,47 +1798,6 @@
       }
     ],
     "skills_source": "card:1831",
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1843",
-    "name": "蔡文姬",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "每当你使用【三分】英雄牌时，等级最低的其他3名【三分】英雄等级+2。",
-    "faction": {
-      "id": "faction:sanfen",
-      "name": "三分",
-      "official_id": 309
-    },
-    "tier": 2,
-    "awakened": true,
-    "skills": [
-      {
-        "id": 18400,
-        "name": "思无邪",
-        "effect": "被动：蔡文姬施放琴音每秒为自身周围1格的友军恢复30点生命值。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "为范围内的友军增加6点物理防御力和法术防御力"
-          },
-          {
-            "level": 40,
-            "effect": "恢复生命值提升至80点，双防数值提升为12点"
-          },
-          {
-            "level": 100,
-            "effect": "技能效果范围扩大至周围2格，恢复生命值提升至150点"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1841",
     "stats": {},
     "attributes": {},
     "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
@@ -6489,31 +6284,6 @@
     "sources": []
   },
   {
-    "id": "card:7542",
-    "name": "机关匣",
-    "category": "equipment",
-    "aliases": [],
-    "effect": "唯一。可穿戴给【逐鹿】英雄，使其获得效果：战斗开始时，召唤2个拥有你等级最高英雄一半等级的“故障机器人”。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "装备分类": "特殊装备",
-      "装备类型": "通用装备",
-      "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:613002",
     "name": "保持进步",
     "category": "talents",
@@ -10232,32 +10002,6 @@
     "sources": []
   },
   {
-    "id": "card:636313",
-    "name": "控制感应",
-    "category": "talents",
-    "aliases": [],
-    "effect": "你的英雄施加控制效果时，你的【三分】英雄获得20点法术攻击力。",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": 0
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "天赋包一",
-      "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
-      "拍卖轮次（官网原文）": "第八轮拍卖",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:636314",
     "name": "锦囊妙计",
     "category": "talents",
@@ -10601,32 +10345,6 @@
     "category": "talents",
     "aliases": [],
     "effect": "获得1张庄周，【逐鹿】英雄每释放6次技能，庄周会吞噬敌方等级最低的1名英雄，永久获得其30%的生命值上限（每场战斗最多吞噬1次）。若庄周觉醒，吞噬上限变为3次。",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": 0
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "天赋包四",
-      "解锁条件": "万象大赛达到2170分",
-      "拍卖轮次（官网原文）": "第八轮拍卖",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:636413",
-    "name": "乘胜追击",
-    "category": "talents",
-    "aliases": [],
-    "effect": "战斗胜利时，获得1张高阶推演战术。",
     "faction": {
       "id": "",
       "name": "未提供",
@@ -13221,32 +12939,6 @@
     "sources": []
   },
   {
-    "id": "card:671020",
-    "name": "厉兵秣马",
-    "category": "talents",
-    "aliases": [],
-    "effect": "随机获得1张普通装备牌。接下来5个回合若你的棋手等级没有变化，再获得2张。",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": 0
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "天赋包三",
-      "解锁条件": "万象大赛达到1820分",
-      "拍卖轮次（官网原文）": "第八轮拍卖",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:671021",
     "name": "绝境逆袭",
     "category": "talents",
@@ -14367,60 +14059,6 @@
     "sources": []
   },
   {
-    "id": "card:32301",
-    "name": "故障机器人",
-    "category": "derivatives",
-    "aliases": [],
-    "effect": "404 Error，出厂设置故障，无法攻击敌人。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 0,
-        "name": "出厂故障",
-        "effect": "404 Error，出厂设置故障，无法攻击敌人。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": ""
-          },
-          {
-            "level": 40,
-            "effect": ""
-          },
-          {
-            "level": 100,
-            "effect": ""
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:32301",
-    "stats": {
-      "最大生命值": 300,
-      "物理攻击力": 0,
-      "法术攻击力": 0,
-      "物理防御": 10,
-      "法术防御": 10,
-      "攻击距离": 0,
-      "法力值（初始／最大）": "0/0",
-      "攻击速度": 0.0,
-      "暴击率": "0%",
-      "暴击效果": "100%"
-    },
-    "attributes": {
-      "获得途径": "来源: 该卡牌通过商店购买、拍卖等渠道获得"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:33001",
     "name": "猛虎擂台",
     "category": "derivatives",
@@ -14888,31 +14526,6 @@
     "category": "effect-cards",
     "aliases": [],
     "effect": "转瞬\n3选1【逐鹿】英雄牌。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "效果牌包三",
-      "解锁条件": "万象大赛达到1820分",
-      "获得途径": "该卡通过词条效果等渠道获得。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:313011",
-    "name": "推演战术",
-    "category": "effect-cards",
-    "aliases": [],
-    "effect": "转瞬\n指定1名【逐鹿】英雄，使其本回合法力值上限{推演战术:-5}（每次使用此牌都会提升效果，上限20点）。",
     "faction": {
       "id": "faction:zhulu",
       "name": "逐鹿",
@@ -15874,31 +15487,6 @@
     "attributes": {
       "所属分组": "初始效果牌",
       "解锁条件": "万象大赛达到1200分",
-      "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:7105",
-    "name": "四人同行",
-    "category": "effect-cards",
-    "aliases": [],
-    "effect": "卡牌5选1，并将选中的卡牌一分为四。",
-    "faction": {
-      "id": "",
-      "name": "通用",
-      "official_id": 0
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "效果牌包一",
-      "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
       "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
     },
     "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
@@ -17731,29 +17319,6 @@
     "sources": []
   },
   {
-    "id": "card:92299",
-    "name": "温柔呼唤",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "使用技能，随机获得1张2-5阶的转瞬英雄牌。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:92410",
     "name": "小菟送福",
     "category": "player-skills",
@@ -19113,29 +18678,6 @@
     "sources": []
   },
   {
-    "id": "card:94302",
-    "name": "投资增值",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "棋手升级时获得2能量，满级后每回合获得2次临时刷新。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:94303",
     "name": "风险对冲",
     "category": "player-skills",
@@ -19624,29 +19166,6 @@
     "category": "player-skills",
     "aliases": [],
     "effect": "回合开始时，获得0能量。每在当前棋手等级停留1回合，额外获得1能量，至多4能量。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:94352",
-    "name": "并购红利",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "合成英雄时，获得1能量，每回合限3次。",
     "faction": {
       "id": "faction:none",
       "name": "无阵营",
@@ -21160,29 +20679,6 @@
     "sources": []
   },
   {
-    "id": "card:95153",
-    "name": "“攻速加持”模块",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "飞行器继承连接英雄25%的攻击速度。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:95154",
     "name": "“技能加持”模块",
     "category": "player-skills",
@@ -21326,29 +20822,6 @@
     "category": "player-skills",
     "aliases": [],
     "effect": "攻击蹭蹭涨每1点神秘力量提供的法术攻击力提升至8。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:95163",
-    "name": "“打扫战场”模块",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "开战后15秒内，飞行器继承连接英雄100%的法术攻击力。",
     "faction": {
       "id": "faction:none",
       "name": "无阵营",
@@ -21617,58 +21090,6 @@
     "stats": {},
     "attributes": {},
     "retrieved_at": "2026-10-25T09:17:16.663505+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1051",
-    "name": "廉颇",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "廉颇释放技能时，你的其他英雄获得 5点护盾值。每次使用战术牌会提升该护盾值。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 2,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 10500,
-        "name": "勇士之魂",
-        "effect": "廉颇用臂甲砸向目标敌人，获得持续4秒的100点护盾，造成50+80%物理攻击力的物理伤害。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "技能伤害提升至120+120%物理攻击力，护盾提升至250点"
-          },
-          {
-            "level": 40,
-            "effect": "每次施法护盾值额外提升40点，最多5次"
-          },
-          {
-            "level": 100,
-            "effect": "施法直接获得最大护盾值（不再需要多次施法提升）并恢复10%最大生命值"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1051",
-    "stats": {
-      "最大生命值": 330,
-      "物理攻击力": 32,
-      "法术攻击力": 0,
-      "物理防御": 20,
-      "法术防御": 20,
-      "攻击距离": 1,
-      "法力值（初始／最大）": "20/50",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
     "version": null,
     "sources": []
   },
@@ -21952,58 +21373,6 @@
     "sources": []
   },
   {
-    "id": "card:1121",
-    "name": "鲁班七号",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "你的英雄每合成3次，随机获得1张战术牌。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 5,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 11200,
-        "name": "空中支援",
-        "effect": "鲁班七号呼唤河豚飞艇朝战场投掷4枚炸弹。炸弹对命中敌人造成50+80%物理攻击力的物理伤害并留下弹坑。弹坑中的敌人每秒受到80%物理攻击力的物理伤害，并降低70%生命恢复效果，持续4秒，效果不可叠加。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "炸弹伤害提升至50+100%物理攻击力，弹坑伤害提升至100%物理攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "投掷炸弹数量提升至8个"
-          },
-          {
-            "level": 100,
-            "effect": "飞艇会在投掷完炸弹后坠毁，对所有敌人造成200+300%物理攻击力的物理伤害"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1121",
-    "stats": {
-      "最大生命值": 210,
-      "物理攻击力": 40,
-      "法术攻击力": 0,
-      "物理防御": 14,
-      "法术防御": 14,
-      "攻击距离": 5,
-      "法力值（初始／最大）": "30/45",
-      "攻击速度": 1.0,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:1123",
     "name": "鲁班七号",
     "category": "heroes",
@@ -22045,58 +21414,6 @@
     "sources": []
   },
   {
-    "id": "card:1131",
-    "name": "庄周",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "登场：自身等级+2并获得1张招募战术。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 4,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 11300,
-        "name": "天人合一",
-        "effect": "庄周幻化梦域保护队友和自身，驱散自身和左右两边2格内友军，并获得200点护盾，持续5秒。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "护盾提升至300点"
-          },
-          {
-            "level": 40,
-            "effect": "在护盾持续时间内免控"
-          },
-          {
-            "level": 100,
-            "effect": "技能范围扩大至全体友军"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1131",
-    "stats": {
-      "最大生命值": 330,
-      "物理攻击力": 24,
-      "法术攻击力": 20,
-      "物理防御": 20,
-      "法术防御": 20,
-      "攻击距离": 1,
-      "法力值（初始／最大）": "40/60",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:1183",
     "name": "孙膑",
     "category": "heroes",
@@ -22134,58 +21451,6 @@
     "stats": {},
     "attributes": {},
     "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1191",
-    "name": "扁鹊",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "友方单位护盾被击破时，对周围敌人造成该英雄最大生命值10%的法术伤害（冷却1秒）。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 4,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 11900,
-        "name": "万变灵药",
-        "effect": "扁鹊朝场上生命值比例最低的3个单位扔出药瓶，药瓶触地后破碎留下药液，持续5秒。处于药液中的友军每秒恢复20+60%法术攻击力的生命值，处于药液中的敌人每秒受到20+60%法术攻击力的法术伤害，效果可叠加。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "药液伤害提升至20+90%法术攻击力，生命值恢复提升至20+90%法术攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "药瓶数量提升至5个"
-          },
-          {
-            "level": 100,
-            "effect": "药液可提升友军40%攻速，降低敌人40%攻速"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1191",
-    "stats": {
-      "最大生命值": 270,
-      "物理攻击力": 24,
-      "法术攻击力": 20,
-      "物理防御": 18,
-      "法术防御": 18,
-      "攻击距离": 4,
-      "法力值（初始／最大）": "35/50",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
     "version": null,
     "sources": []
   },
@@ -22335,58 +21600,6 @@
     "sources": []
   },
   {
-    "id": "card:1321",
-    "name": "马可波罗",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "登场：自身及阿科米亚核心等级+2。",
-    "faction": {
-      "id": "faction:riluohai",
-      "name": "日落海",
-      "official_id": 314
-    },
-    "tier": 2,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 13200,
-        "name": "华丽左轮",
-        "effect": "马可波罗掏出华丽左轮朝当前方向连续射出8颗子弹，每颗子弹造成25+15%物理攻击力的物理伤害，通过技能击败敌人后，下1次技能额外增加8发子弹。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "子弹伤害提升至40+30%物理攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "子弹数量提升至16发"
-          },
-          {
-            "level": 100,
-            "effect": "被马可波罗子弹命中的敌人将被永久打上标记，友军攻击标记敌人会提升50%攻击速度"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1321",
-    "stats": {
-      "最大生命值": 210,
-      "物理攻击力": 40,
-      "法术攻击力": 0,
-      "物理防御": 14,
-      "法术防御": 14,
-      "攻击距离": 4,
-      "法力值（初始／最大）": "30/45",
-      "攻击速度": 1.0,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:1331",
     "name": "狄仁杰",
     "category": "heroes",
@@ -22473,99 +21686,6 @@
       }
     ],
     "skills_source": "card:1331",
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1361",
-    "name": "武则天",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "古币牌提升的等级+1。\n登场：获得1张精致古币。",
-    "faction": {
-      "id": "faction:heluo",
-      "name": "河洛",
-      "official_id": 319
-    },
-    "tier": 5,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 13600,
-        "name": "君命无二",
-        "effect": "武则天以女帝权威施行制裁，持续吟唱8秒，每隔0.75秒随机选择1名敌人，在其脚下召唤法阵并引爆，命中时造成100+75%法术攻击力的法术伤害，并使其生命恢复效果降低50%，持续6秒（不可叠加）。法阵在3秒内连续命中相同敌人时，伤害将衰减15%，最多45%。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "法阵伤害提升至100+100%法术攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "吟唱结束时还会生成1个额外巨型法阵对所有敌人造成100+125%法术攻击力的法术伤害"
-          },
-          {
-            "level": 100,
-            "effect": "持续吟唱到回合结束，并且每造成5次伤害后生成巨型法阵，对所有敌人造成100+125%法术攻击力的法术伤害"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1361",
-    "stats": {
-      "最大生命值": 240,
-      "物理攻击力": 24,
-      "法术攻击力": 40,
-      "物理防御": 14,
-      "法术防御": 14,
-      "攻击距离": 4,
-      "法力值（初始／最大）": "30/50",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1363",
-    "name": "武则天",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "古币牌提升的等级+2。\n登场：获得2张精致古币。",
-    "faction": {
-      "id": "faction:heluo",
-      "name": "河洛",
-      "official_id": 319
-    },
-    "tier": 5,
-    "awakened": true,
-    "skills": [
-      {
-        "id": 13600,
-        "name": "君命无二",
-        "effect": "武则天以女帝权威施行制裁，持续吟唱8秒，每隔0.75秒随机选择1名敌人，在其脚下召唤法阵并引爆，命中时造成100+75%法术攻击力的法术伤害，并使其生命恢复效果降低50%，持续6秒（不可叠加）。法阵在3秒内连续命中相同敌人时，伤害将衰减15%，最多45%。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "法阵伤害提升至100+100%法术攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "吟唱结束时还会生成1个额外巨型法阵对所有敌人造成100+125%法术攻击力的法术伤害"
-          },
-          {
-            "level": 100,
-            "effect": "持续吟唱到回合结束，并且每造成5次伤害后生成巨型法阵，对所有敌人造成100+125%法术攻击力的法术伤害"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1361",
     "stats": {},
     "attributes": {},
     "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
@@ -23153,58 +22273,6 @@
     "sources": []
   },
   {
-    "id": "card:1661",
-    "name": "亚瑟",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "每当你使用【日落海】英雄牌时，阿科米亚核心等级+3。",
-    "faction": {
-      "id": "faction:riluohai",
-      "name": "日落海",
-      "official_id": 314
-    },
-    "tier": 3,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 16600,
-        "name": "誓约之盾",
-        "effect": "亚瑟召唤圣盾围绕自身旋转，持续5秒。每秒对1格内敌人造成50%物理攻击力的物理伤害并获得15%伤害减免，亚瑟每次参与击杀获得30点最大生命值。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "圣盾伤害提升至80%物理攻击力，伤害减免提高至25%"
-          },
-          {
-            "level": 40,
-            "effect": "减伤持续时间延长至8秒"
-          },
-          {
-            "level": 100,
-            "effect": "举起圣剑跃向敌方人群密集处，额外造成自身15%最大生命的法术伤害并禁止范围内所有敌人恢复法力值，持续3秒"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1661",
-    "stats": {
-      "最大生命值": 330,
-      "物理攻击力": 32,
-      "法术攻击力": 0,
-      "物理防御": 20,
-      "法术防御": 20,
-      "攻击距离": 1,
-      "法力值（初始／最大）": "20/40",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:1671",
     "name": "孙悟空",
     "category": "heroes",
@@ -23539,58 +22607,6 @@
       "法术防御": 20,
       "攻击距离": 1,
       "法力值（初始／最大）": "50/80",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:1841",
-    "name": "蔡文姬",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "每当你使用【三分】英雄牌时，等级最低的其他3名【三分】英雄等级+1。",
-    "faction": {
-      "id": "faction:sanfen",
-      "name": "三分",
-      "official_id": 309
-    },
-    "tier": 2,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 18400,
-        "name": "思无邪",
-        "effect": "被动：蔡文姬施放琴音每秒为自身周围1格的友军恢复30点生命值。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "为范围内的友军增加6点物理防御力和法术防御力"
-          },
-          {
-            "level": 40,
-            "effect": "恢复生命值提升至80点，双防数值提升为12点"
-          },
-          {
-            "level": 100,
-            "effect": "技能效果范围扩大至周围2格，恢复生命值提升至150点"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:1841",
-    "stats": {
-      "最大生命值": 270,
-      "物理攻击力": 24,
-      "法术攻击力": 20,
-      "物理防御": 18,
-      "法术防御": 18,
-      "攻击距离": 2,
-      "法力值（初始／最大）": "0/0",
       "攻击速度": 0.6,
       "暴击率": "0%",
       "暴击效果": "140%"
@@ -24489,58 +23505,6 @@
     },
     "attributes": {},
     "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:5231",
-    "name": "西施",
-    "category": "heroes",
-    "aliases": [],
-    "effect": "整备：获得1张推演战术。",
-    "faction": {
-      "id": "faction:zhulu",
-      "name": "逐鹿",
-      "official_id": 320
-    },
-    "tier": 3,
-    "awakened": false,
-    "skills": [
-      {
-        "id": 52300,
-        "name": "幻纱之灵",
-        "effect": "西施随机向1个敌人所在位置释放持续3秒的能量球造成50+100%法术攻击力的法术伤害，3秒后能量球爆炸对这些单位造成100+100%法术攻击力的法术伤害。",
-        "enhancements": [
-          {
-            "level": 10,
-            "effect": "能量球出现的伤害提升至100+120%法术攻击力，爆炸伤害提升至100+150%法术攻击力"
-          },
-          {
-            "level": 40,
-            "effect": "期间若目标走出能量球所处阵位，会被牵引回该阵位，到达时能量球将立即爆炸并消散，造成100+150%法术攻击力的法术伤害并眩晕周围的敌方单位2秒"
-          },
-          {
-            "level": 100,
-            "effect": "眩晕时间延长至3.5秒"
-          }
-        ]
-      }
-    ],
-    "skills_source": "card:5231",
-    "stats": {
-      "最大生命值": 240,
-      "物理攻击力": 24,
-      "法术攻击力": 40,
-      "物理防御": 14,
-      "法术防御": 14,
-      "攻击距离": 4,
-      "法力值（初始／最大）": "10/50",
-      "攻击速度": 0.6,
-      "暴击率": "0%",
-      "暴击效果": "140%"
-    },
-    "attributes": {},
-    "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
     "version": null,
     "sources": []
   },
@@ -25993,27 +24957,6 @@
     "sources": []
   },
   {
-    "id": "player:20",
-    "name": "阿离",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-27T01:17:19.470347+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "player:25",
     "name": "玉环",
     "category": "players",
@@ -26035,92 +24978,8 @@
     "sources": []
   },
   {
-    "id": "player:32",
-    "name": "马可",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-27T01:17:19.470347+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "player:34",
-    "name": "昭君",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-27T01:17:19.470347+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "player:35",
-    "name": "班叔",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-27T01:17:19.470347+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "player:39",
     "name": "明先生",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-10-27T01:17:19.470347+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "player:50",
-    "name": "香香",
     "category": "players",
     "aliases": [],
     "effect": "未提供",
@@ -26976,29 +25835,6 @@
     "sources": []
   },
   {
-    "id": "card:94362",
-    "name": "贷款协议",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "能量可用至-15。回合开始时若能量为负，则本回合获得的能量-2。决策颁布者额外特权：能量下限为-20且不受到惩罚。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-10-27T01:17:15.283006+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:94363",
     "name": "资源再分配",
     "category": "player-skills",
@@ -27047,27 +25883,6 @@
   {
     "id": "player:40",
     "name": "闹闹",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-11-01T07:39:39.495333+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "player:51",
-    "name": "安琪拉",
     "category": "players",
     "aliases": [],
     "effect": "未提供",
@@ -27439,32 +26254,6 @@
     "sources": []
   },
   {
-    "id": "card:662206",
-    "name": "潮起潮落",
-    "category": "talents",
-    "aliases": [],
-    "effect": "战斗开始时，随机传送1个4-5阶临时等级为回合数×12的英雄进入战场（不含卡牌效果），并携带3件适配装备。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "初始天赋",
-      "解锁条件": "万象大赛达到1200分",
-      "拍卖轮次（官网原文）": "初始阵容",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-11-01T07:39:37.565420+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:662001",
     "name": "惊鸿游龙",
     "category": "player-skills",
@@ -27562,29 +26351,6 @@
     "category": "player-skills",
     "aliases": [],
     "effect": "若枫叶舞英雄被移除，其真实等级的25%会保留给下一个枫叶舞英雄，若为被出售，则保留75%真实等级，限一次。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-11-01T07:39:29.280588+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:92210",
-    "name": "潮汐的交响",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "场上随机英雄等级+5，触发3次，若对象为温柔呼唤的英雄则额外等级+5，每次使用后，触发次数+2。",
     "faction": {
       "id": "faction:none",
       "name": "无阵营",
@@ -27729,6 +26495,1356 @@
       "获得途径": "来源: 棋手升级时概率选择获取天赋。"
     },
     "retrieved_at": "2026-11-01T07:39:37.565420+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:20",
+    "name": "阿离",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:32",
+    "name": "马可",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:34",
+    "name": "昭君",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:35",
+    "name": "班叔",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:50",
+    "name": "香香",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:51",
+    "name": "安琪拉",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1051",
+    "name": "廉颇",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "廉颇释放技能时，你的其他英雄获得 5点护盾值。每次使用战术牌会提升该护盾值。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 2,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 10500,
+        "name": "勇士之魂",
+        "effect": "廉颇用臂甲砸向目标敌人，获得持续4秒的100点护盾，造成50+80%物理攻击力的物理伤害。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "技能伤害提升至120+120%物理攻击力，护盾提升至250点"
+          },
+          {
+            "level": 40,
+            "effect": "每次施法护盾值额外提升40点，最多5次"
+          },
+          {
+            "level": 100,
+            "effect": "施法直接获得最大护盾值（不再需要多次施法提升）并恢复10%最大生命值"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1051",
+    "stats": {
+      "最大生命值": 330,
+      "物理攻击力": 32,
+      "法术攻击力": 0,
+      "物理防御": 20,
+      "法术防御": 20,
+      "攻击距离": 1,
+      "法力值（初始／最大）": "20/50",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1121",
+    "name": "鲁班七号",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "你的英雄每合成3次，随机获得1张战术牌。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 5,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 11200,
+        "name": "空中支援",
+        "effect": "鲁班七号呼唤河豚飞艇朝战场投掷4枚炸弹。炸弹对命中敌人造成50+80%物理攻击力的物理伤害并留下弹坑。弹坑中的敌人每秒受到80%物理攻击力的物理伤害，并降低70%生命恢复效果，持续4秒，效果不可叠加。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "炸弹伤害提升至50+100%物理攻击力，弹坑伤害提升至100%物理攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "投掷炸弹数量提升至8个"
+          },
+          {
+            "level": 100,
+            "effect": "飞艇会在投掷完炸弹后坠毁，对所有敌人造成200+300%物理攻击力的物理伤害"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1121",
+    "stats": {
+      "最大生命值": 210,
+      "物理攻击力": 40,
+      "法术攻击力": 0,
+      "物理防御": 14,
+      "法术防御": 14,
+      "攻击距离": 5,
+      "法力值（初始／最大）": "30/45",
+      "攻击速度": 1.0,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1131",
+    "name": "庄周",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "登场：自身等级+2并获得1张招募战术。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 4,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 11300,
+        "name": "天人合一",
+        "effect": "庄周幻化梦域保护队友和自身，对自身和左右两边2格内友军施加驱散，并获得200点护盾，持续5秒。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "护盾提升至300点"
+          },
+          {
+            "level": 40,
+            "effect": "在护盾持续时间内免控"
+          },
+          {
+            "level": 100,
+            "effect": "技能范围扩大至全体友军"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1131",
+    "stats": {
+      "最大生命值": 330,
+      "物理攻击力": 24,
+      "法术攻击力": 20,
+      "物理防御": 20,
+      "法术防御": 20,
+      "攻击距离": 1,
+      "法力值（初始／最大）": "40/60",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1133",
+    "name": "庄周",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "登场：自身等级+4并获得1张高阶招募战术。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 4,
+    "awakened": true,
+    "skills": [
+      {
+        "id": 11300,
+        "name": "天人合一",
+        "effect": "庄周幻化梦域保护队友和自身，对自身和左右两边2格内友军施加驱散，并获得200点护盾，持续5秒。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "护盾提升至300点"
+          },
+          {
+            "level": 40,
+            "effect": "在护盾持续时间内免控"
+          },
+          {
+            "level": 100,
+            "effect": "技能范围扩大至全体友军"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1131",
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-10-29T05:00:59.403683+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1191",
+    "name": "扁鹊",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "友方单位护盾被击破时，对周围敌人造成该英雄最大生命值10%的法术伤害（冷却1秒）。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 4,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 11900,
+        "name": "万变灵药",
+        "effect": "扁鹊朝场上生命值比例最低的3个单位扔出药瓶，药瓶触地后破碎留下药液，持续5秒。处于药液中的友军每秒恢复20+60%法术攻击力的生命值，处于药液中的敌人每秒受到20+60%法术攻击力的法术伤害，效果可叠加。单位离开药液区域后，效果仍然会持续3秒。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "药液伤害提升至20+90%法术攻击力，生命值恢复提升至20+90%法术攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "药瓶数量提升至5个"
+          },
+          {
+            "level": 100,
+            "effect": "药液可提升友军40%攻速，降低敌人40%攻速"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1191",
+    "stats": {
+      "最大生命值": 270,
+      "物理攻击力": 24,
+      "法术攻击力": 20,
+      "物理防御": 18,
+      "法术防御": 18,
+      "攻击距离": 4,
+      "法力值（初始／最大）": "35/50",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1193",
+    "name": "扁鹊",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "友方单位护盾被击破时，对周围敌人造成该英雄最大生命值20%的法术伤害（冷却1秒）。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 4,
+    "awakened": true,
+    "skills": [
+      {
+        "id": 11900,
+        "name": "万变灵药",
+        "effect": "扁鹊朝场上生命值比例最低的3个单位扔出药瓶，药瓶触地后破碎留下药液，持续5秒。处于药液中的友军每秒恢复20+60%法术攻击力的生命值，处于药液中的敌人每秒受到20+60%法术攻击力的法术伤害，效果可叠加。单位离开药液区域后，效果仍然会持续3秒。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "药液伤害提升至20+90%法术攻击力，生命值恢复提升至20+90%法术攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "药瓶数量提升至5个"
+          },
+          {
+            "level": 100,
+            "effect": "药液可提升友军40%攻速，降低敌人40%攻速"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1191",
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-10-29T05:00:59.403683+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1321",
+    "name": "马可波罗",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "登场：自身及阿科米亚核心等级+3。",
+    "faction": {
+      "id": "faction:riluohai",
+      "name": "日落海",
+      "official_id": 314
+    },
+    "tier": 2,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 13200,
+        "name": "华丽左轮",
+        "effect": "马可波罗掏出华丽左轮朝当前方向连续射出8颗子弹，每颗子弹造成25+15%物理攻击力的物理伤害，通过技能击败敌人后，下1次技能额外增加8发子弹。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "子弹伤害提升至40+30%物理攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "子弹数量提升至16发，每颗子弹减少敌人2点物理防御，持续5秒（可叠加）"
+          },
+          {
+            "level": 100,
+            "effect": "被马可波罗子弹命中的敌人将被永久打上标记，友军攻击标记敌人会提升50%攻击速度"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1321",
+    "stats": {
+      "最大生命值": 210,
+      "物理攻击力": 40,
+      "法术攻击力": 0,
+      "物理防御": 14,
+      "法术防御": 14,
+      "攻击距离": 4,
+      "法力值（初始／最大）": "30/45",
+      "攻击速度": 1.0,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1323",
+    "name": "马可波罗",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "登场：自身及阿科米亚核心等级+6。",
+    "faction": {
+      "id": "faction:riluohai",
+      "name": "日落海",
+      "official_id": 314
+    },
+    "tier": 2,
+    "awakened": true,
+    "skills": [
+      {
+        "id": 13200,
+        "name": "华丽左轮",
+        "effect": "马可波罗掏出华丽左轮朝当前方向连续射出8颗子弹，每颗子弹造成25+15%物理攻击力的物理伤害，通过技能击败敌人后，下1次技能额外增加8发子弹。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "子弹伤害提升至40+30%物理攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "子弹数量提升至16发，每颗子弹减少敌人2点物理防御，持续5秒（可叠加）"
+          },
+          {
+            "level": 100,
+            "effect": "被马可波罗子弹命中的敌人将被永久打上标记，友军攻击标记敌人会提升50%攻击速度"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1321",
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:49:39.899639+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1361",
+    "name": "武则天",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "古币牌提升的等级+1。\n登场：获得1张精致古币。",
+    "faction": {
+      "id": "faction:heluo",
+      "name": "河洛",
+      "official_id": 319
+    },
+    "tier": 5,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 13600,
+        "name": "君命无二",
+        "effect": "武则天以女帝权威施行制裁，持续吟唱8秒，每隔0.75秒随机选择1名敌人，在其脚下召唤法阵并引爆，命中时造成100+75%法术攻击力的法术伤害，并使其生命恢复效果降低50%，持续6秒（不可叠加）。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "法阵伤害提升至100+100%法术攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "吟唱结束时还会生成1个额外巨型法阵对所有敌人造成100+125%法术攻击力的法术伤害"
+          },
+          {
+            "level": 100,
+            "effect": "持续吟唱到回合结束，并且每造成5次伤害后生成巨型法阵，对所有敌人造成100+125%法术攻击力的法术伤害"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1361",
+    "stats": {
+      "最大生命值": 240,
+      "物理攻击力": 24,
+      "法术攻击力": 40,
+      "物理防御": 14,
+      "法术防御": 14,
+      "攻击距离": 4,
+      "法力值（初始／最大）": "30/50",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1363",
+    "name": "武则天",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "古币牌提升的等级+2。\n登场：获得2张精致古币。",
+    "faction": {
+      "id": "faction:heluo",
+      "name": "河洛",
+      "official_id": 319
+    },
+    "tier": 5,
+    "awakened": true,
+    "skills": [
+      {
+        "id": 13600,
+        "name": "君命无二",
+        "effect": "武则天以女帝权威施行制裁，持续吟唱8秒，每隔0.75秒随机选择1名敌人，在其脚下召唤法阵并引爆，命中时造成100+75%法术攻击力的法术伤害，并使其生命恢复效果降低50%，持续6秒（不可叠加）。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "法阵伤害提升至100+100%法术攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "吟唱结束时还会生成1个额外巨型法阵对所有敌人造成100+125%法术攻击力的法术伤害"
+          },
+          {
+            "level": 100,
+            "effect": "持续吟唱到回合结束，并且每造成5次伤害后生成巨型法阵，对所有敌人造成100+125%法术攻击力的法术伤害"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1361",
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1661",
+    "name": "亚瑟",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "每当你使用【日落海】英雄牌时，阿科米亚核心等级+3。",
+    "faction": {
+      "id": "faction:riluohai",
+      "name": "日落海",
+      "official_id": 314
+    },
+    "tier": 3,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 16600,
+        "name": "誓约之盾",
+        "effect": "亚瑟召唤圣盾围绕自身旋转，持续5秒。每秒对1格内敌人造成50%物理攻击力的物理伤害并获得15%伤害减免，亚瑟每次参与击杀获得50点最大生命值。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "圣盾伤害提升至80%物理攻击力，伤害减免提高至25%"
+          },
+          {
+            "level": 40,
+            "effect": "减伤持续时间延长至8秒"
+          },
+          {
+            "level": 100,
+            "effect": "举起圣剑跃向敌方人群密集处，额外造成自身15%最大生命的法术伤害并禁止范围内所有敌人恢复法力值，持续3秒"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1661",
+    "stats": {
+      "最大生命值": 330,
+      "物理攻击力": 32,
+      "法术攻击力": 0,
+      "物理防御": 20,
+      "法术防御": 20,
+      "攻击距离": 1,
+      "法力值（初始／最大）": "20/40",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1663",
+    "name": "亚瑟",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "每当你使用【日落海】英雄牌时，阿科米亚核心等级+6。",
+    "faction": {
+      "id": "faction:riluohai",
+      "name": "日落海",
+      "official_id": 314
+    },
+    "tier": 3,
+    "awakened": true,
+    "skills": [
+      {
+        "id": 16600,
+        "name": "誓约之盾",
+        "effect": "亚瑟召唤圣盾围绕自身旋转，持续5秒。每秒对1格内敌人造成50%物理攻击力的物理伤害并获得15%伤害减免，亚瑟每次参与击杀获得50点最大生命值。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "圣盾伤害提升至80%物理攻击力，伤害减免提高至25%"
+          },
+          {
+            "level": 40,
+            "effect": "减伤持续时间延长至8秒"
+          },
+          {
+            "level": 100,
+            "effect": "举起圣剑跃向敌方人群密集处，额外造成自身15%最大生命的法术伤害并禁止范围内所有敌人恢复法力值，持续3秒"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1661",
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1841",
+    "name": "蔡文姬",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "每当你使用【三分】英雄牌时，等级最低的其他3名【三分】英雄等级+1。",
+    "faction": {
+      "id": "faction:sanfen",
+      "name": "三分",
+      "official_id": 309
+    },
+    "tier": 2,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 18400,
+        "name": "思无邪",
+        "effect": "被动：蔡文姬施放琴音每秒为自身周围1格的友军恢复30点生命值。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "为范围内的友军增加6点物理防御力和法术防御力"
+          },
+          {
+            "level": 40,
+            "effect": "恢复生命值提升至80点"
+          },
+          {
+            "level": 100,
+            "effect": "技能效果范围扩大至周围2格，恢复生命值提升至150点，双防数值提升为12点"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1841",
+    "stats": {
+      "最大生命值": 270,
+      "物理攻击力": 24,
+      "法术攻击力": 20,
+      "物理防御": 18,
+      "法术防御": 18,
+      "攻击距离": 2,
+      "法力值（初始／最大）": "0/0",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:1843",
+    "name": "蔡文姬",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "每当你使用【三分】英雄牌时，等级最低的其他3名【三分】英雄等级+2。",
+    "faction": {
+      "id": "faction:sanfen",
+      "name": "三分",
+      "official_id": 309
+    },
+    "tier": 2,
+    "awakened": true,
+    "skills": [
+      {
+        "id": 18400,
+        "name": "思无邪",
+        "effect": "被动：蔡文姬施放琴音每秒为自身周围1格的友军恢复30点生命值。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "为范围内的友军增加6点物理防御力和法术防御力"
+          },
+          {
+            "level": 40,
+            "effect": "恢复生命值提升至80点"
+          },
+          {
+            "level": 100,
+            "effect": "技能效果范围扩大至周围2格，恢复生命值提升至150点，双防数值提升为12点"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:1841",
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:5231",
+    "name": "西施",
+    "category": "heroes",
+    "aliases": [],
+    "effect": "整备：获得1张推演战术。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": 3,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 52300,
+        "name": "幻纱之灵",
+        "effect": "西施随机向1个敌人所在位置释放持续3秒的能量球造成50+100%法术攻击力的法术伤害，3秒后能量球爆炸对这些单位造成100+100%法术攻击力的法术伤害。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": "能量球出现的伤害提升至100+120%法术攻击力，爆炸伤害提升至100+150%法术攻击力"
+          },
+          {
+            "level": 40,
+            "effect": "期间若目标走出能量球所处阵位，会被牵引回该阵位，到达时能量球将立即爆炸并消散，造成100+150%法术攻击力的法术伤害并眩晕周围的敌方单位2秒"
+          },
+          {
+            "level": 100,
+            "effect": "眩晕时间延长至3.5秒"
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:5231",
+    "stats": {
+      "最大生命值": 240,
+      "物理攻击力": 24,
+      "法术攻击力": 40,
+      "物理防御": 14,
+      "法术防御": 14,
+      "攻击距离": 4,
+      "法力值（初始／最大）": "10/50",
+      "攻击速度": 0.6,
+      "暴击率": "0%",
+      "暴击效果": "140%"
+    },
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:7542",
+    "name": "机关匣",
+    "category": "equipment",
+    "aliases": [],
+    "effect": "可穿戴给【逐鹿】英雄，使其获得效果：战斗开始时，召唤2个拥有你等级最高英雄一半等级的“故障机器人”。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "装备分类": "特殊装备",
+      "装备类型": "通用装备",
+      "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+    },
+    "retrieved_at": "2026-11-06T01:49:55.322948+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:636313",
+    "name": "控制感应",
+    "category": "talents",
+    "aliases": [],
+    "effect": "你的英雄施加控制效果时，你的【三分】英雄获得20点法术攻击力且临时等级+1。",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "天赋包一",
+      "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+      "拍卖轮次（官网原文）": "第八轮拍卖",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:636413",
+    "name": "乘胜追击",
+    "category": "talents",
+    "aliases": [],
+    "effect": "回合开始时，获得1张推演战术。战斗胜利时，改为获得1张高阶推演战术。",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "天赋包四",
+      "解锁条件": "万象大赛达到2170分",
+      "拍卖轮次（官网原文）": "第八轮拍卖",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:662206",
+    "name": "潮起潮落",
+    "category": "talents",
+    "aliases": [],
+    "effect": "战斗开始时，随机传送1个4-5阶临时等级为回合数×16的英雄进入战场（不含卡牌效果），并携带3件适配装备。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "初始天赋",
+      "解锁条件": "万象大赛达到1200分",
+      "拍卖轮次（官网原文）": "初始阵容",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:671020",
+    "name": "厉兵秣马",
+    "category": "talents",
+    "aliases": [],
+    "effect": "随机获得1张基础装备牌。接下来4个回合若你的棋手等级没有变化，再获得1个珍品宝箱。",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "天赋包三",
+      "解锁条件": "万象大赛达到1820分",
+      "拍卖轮次（官网原文）": "第八轮拍卖",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:32301",
+    "name": "故障机器人",
+    "category": "derivatives",
+    "aliases": [],
+    "effect": "404 Error，出厂设置故障，无法攻击敌人。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [
+      {
+        "id": 0,
+        "name": "出厂故障",
+        "effect": "404 Error，出厂设置故障，无法攻击敌人。",
+        "enhancements": [
+          {
+            "level": 10,
+            "effect": ""
+          },
+          {
+            "level": 40,
+            "effect": ""
+          },
+          {
+            "level": 100,
+            "effect": ""
+          }
+        ]
+      }
+    ],
+    "skills_source": "card:32301",
+    "stats": {
+      "最大生命值": 300,
+      "物理攻击力": 0,
+      "法术攻击力": 0,
+      "物理防御": 20,
+      "法术防御": 20,
+      "攻击距离": 0,
+      "法力值（初始／最大）": "0/0",
+      "攻击速度": 0.0,
+      "暴击率": "0%",
+      "暴击效果": "100%"
+    },
+    "attributes": {
+      "获得途径": "来源: 该卡牌通过商店购买、拍卖等渠道获得"
+    },
+    "retrieved_at": "2026-11-06T01:49:55.322948+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:313011",
+    "name": "推演战术",
+    "category": "effect-cards",
+    "aliases": [],
+    "effect": "转瞬\n指定1名【逐鹿】英雄，使其本回合法力值上限{推演战术:-5}（每次使用此牌都会提升效果，上限20点）。",
+    "faction": {
+      "id": "faction:zhulu",
+      "name": "逐鹿",
+      "official_id": 320
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "效果牌包三",
+      "解锁条件": "万象大赛达到1820分",
+      "获得途径": "该卡通过词条效果等渠道获得。"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:7105",
+    "name": "四人同行",
+    "category": "effect-cards",
+    "aliases": [],
+    "effect": "3-5阶英雄牌5选1，并将选中的卡牌一分为四。",
+    "faction": {
+      "id": "",
+      "name": "通用",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "效果牌包一",
+      "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分",
+      "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+    },
+    "retrieved_at": "2026-11-06T01:49:55.322948+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:92210",
+    "name": "潮汐的交响",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "场上随机英雄等级+5，触发4次，若对象为温柔呼唤的英雄则额外等级+5，每次使用后，触发次数+2（优先随机温柔呼唤的英雄）。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:92299",
+    "name": "温柔呼唤",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "使用技能，随机获得1张3-5阶的转瞬英雄牌。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:94302",
+    "name": "投资增值",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "棋手升级时获得3能量，满级后每回合获得2次临时刷新。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:94352",
+    "name": "并购红利",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "合成英雄时，获得1能量，每回合限3次。达到上限时随机获得1张场上英雄的复制。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:94362",
+    "name": "贷款协议",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "能量可用至-15。回合结束时若能量为负，则下回合获得的能量-2。决策颁布者额外特权：不受到惩罚，回合结束时每有1名其他玩家能量为负，则下回合获得2能量。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:95153",
+    "name": "“攻速加持”模块",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "飞行器继承连接英雄30%的攻击速度。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:95163",
+    "name": "“打扫战场”模块",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "开战后15秒内，飞行器继承连接英雄125%的法术攻击力。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:8",
+    "name": "武凤",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:610005",
+    "name": "万鸟朝凤",
+    "category": "talents",
+    "aliases": [],
+    "effect": "随机从3个棋手的秘技卡中选1张。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "初始天赋",
+      "解锁条件": "万象大赛达到1200分",
+      "拍卖轮次（官网原文）": "初始阵容",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:90810",
+    "name": "为我所用",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "随机获得本局其它棋手的1张秘技牌。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:660801",
+    "name": "众心所归",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "每使用45能量，获得1张秘技牌为我所用。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:90899",
+    "name": "门庭赫奕",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "武凤在比赛开始时，额外拥有3能量，每次拍卖后，再次获得3能量。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
     "version": null,
     "sources": []
   }
