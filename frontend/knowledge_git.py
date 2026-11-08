@@ -45,6 +45,18 @@ def _immutable_paths(root,ref):
     result=_git(root,'ls-tree','-r','--name-only','-z',ref,'--','knowledge-history','knowledge-sync')
     return [p for p in result.stdout.split('\0') if p]
 
+def _resolve_archive_conflicts(root,unmerged):
+    """Resolve serialization-only conflicts after validating both Git stages."""
+    import knowledge_conflicts as conflicts
+    for relative in sorted(unmerged):
+        if not relative.startswith(('knowledge-history/','knowledge-sync/')):continue
+        left=_blob(root,':2',relative);right=_blob(root,':3',relative)
+        validate=history.validate_archive if relative.startswith('knowledge-history/') else conflicts.validate_event
+        validate(relative,left);validate(relative,right)
+        if left!=right:raise ValueError('Immutable archive collision: '+relative)
+        store.write_file(Path(root)/relative,left)
+
+
 def _import_archives(root,refs):
     import knowledge_conflicts as conflicts
     for ref in dict.fromkeys(refs):
@@ -138,6 +150,7 @@ def _merge_branches(root,left,right,*,preferred='right',origin='local'):
     if code_conflicts:raise RuntimeError('代码文件仍有冲突，未选择任一方：'+', '.join(sorted(code_conflicts)))
     if merge.returncode and not unmerged:raise RuntimeError(merge.stderr.strip() or merge.stdout.strip())
 
+    _resolve_archive_conflicts(root,unmerged)
     _import_archives(root,(base_ref,left,right))
     # Restore a consistent baseline pair in this disposable directory. The live
     # checkout is never rewritten here, even if its incoming index has markers.
