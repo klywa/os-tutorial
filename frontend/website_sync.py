@@ -116,11 +116,14 @@ def sync_lock(state_dir):
 @contextmanager
 def wait_sync_lock(state_dir,timeout=300):
     """Publisher waits for a running save/sync without cancelling that job."""
-    deadline=time.monotonic()+timeout
+    started=time.monotonic()
+    deadline=started+timeout
     acquired=False
     while True:
         try:
             with sync_lock(state_dir):
+                from save_timing import record
+                record('sync_lock',(time.monotonic()-started)*1000)
                 acquired=True
                 yield
                 return
@@ -146,10 +149,18 @@ def git(root, *args, check=True):
 
 
 def allowed_path(path):
-    return (path in {'knowledge/index.meta.json', 'website-data/usage-matches.json'}
+    from templates_sync import allowed_path as allowed_template_path
+    return (allowed_template_path(path) or path in {'knowledge/index.meta.json', 'website-data/usage-matches.json'}
             or bool(re.fullmatch(r'knowledge/(players|lineups|other)/[^/]+\.json', path))
             or bool(re.fullmatch(r'knowledge-history/[0-9a-f]{32}/(audit|versions|migrations)/[0-9a-f]{64}\.json',path))
             or bool(re.fullmatch(r'knowledge-sync/(requests/[0-9a-f]{64}|resolutions/[0-9a-f]{32}/[0-9a-f]{64})\.json',path)))
+
+
+def recover_template_approval(root,state_dir):
+    database=Path(state_dir)/'template-proposals.sqlite3'
+    if database.with_name(database.name+'.approval.json').exists():
+        from templates_proposals import TemplateProposals
+        TemplateProposals(root,database).recover()
 
 @contextmanager
 def candidate_checkout(state_dir):
@@ -208,6 +219,9 @@ class SyncManager:
                 'waiting-retry':'同步失败，正文已保存，等待重试'}
         message=phases.get(value.get('phase')) if value.get('state')=='pending' else None
         result={**value,'message':message or messages.get(value.get('state'),'同步状态需要管理员检查。')}
+        from templates_sync import list_conflicts
+        template_ids=[row['id'] for row in list_conflicts(self.root)['items']]
+        result.update(conflict_template_ids=template_ids,template_conflict_count=len(template_ids))
         from knowledge_git import canonical,pending_ids
         if canonical(self.root):
             ids=pending_ids(self.root)
@@ -288,10 +302,12 @@ class SyncManager:
             if proposal_db.with_name(proposal_db.name+'.approval.json').exists():
                 from proposals import ProposalStore
                 ProposalStore(self.root,proposal_db).recover()
+            recover_template_approval(self.root,self.state_dir)
             paths_before=self._changed()
             journal=self.root/'raw/knowledge/pending-json-save.json'
             if (state.get('state')=='synced' and state.get('published_head')==self._head()
-                    and not any(allowed_path(path) for path in paths_before) and not journal.exists()):
+                    and not any(allowed_path(path) for path in paths_before) and not journal.exists()
+                    and not (self.root/'raw/templates/pending.json').exists()):
                 return self.status()
             # Durable journals are not tracked. Replay them before selecting the
             # files to commit, otherwise a valid overlay can hide missing disk writes.
@@ -367,6 +383,7 @@ class SyncManager:
                     if proposal_db.with_name(proposal_db.name+'.approval.json').exists():
                         from proposals import ProposalStore
                         ProposalStore(self.root,proposal_db).recover()
+                    recover_template_approval(self.root,self.state_dir)
                     # Recover only durable writes here. Full package/image/history
                     # validation belongs to the immutable candidate below, so an
                     # unrelated HTTP field save never waits on a whole-library scan.
@@ -444,8 +461,9 @@ class SyncWorker:
         if receipt.exists():
             from proposals import ProposalStore
             ProposalStore(manager.root,manager.state_dir/'proposals.sqlite3').recover()
+        recover_template_approval(manager.root,manager.state_dir)
         journal=manager.root/'raw/knowledge/pending-json-save.json'
-        if journal.exists():
+        if journal.exists() or (manager.root/'raw/templates/pending.json').exists():
             from website_data import recover
             recover(manager.root)
         dirty=any(allowed_path(path) for path in manager._changed())

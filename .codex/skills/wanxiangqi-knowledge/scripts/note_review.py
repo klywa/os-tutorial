@@ -4,6 +4,7 @@ from pathlib import Path
 import uuid
 from datetime import datetime, timezone
 import json_store as store
+from save_timing import timed
 
 COMMENTS = 'raw/knowledge/annotations.json'
 
@@ -15,8 +16,7 @@ def version_folder(root, nid):
 def _version_rows(root, nid):
     import knowledge_history as history
     if history.enabled(root):
-        rows=[{**{k:v for k,v in row.items() if k!='record'}, 'snapshot_sha256':store.digest(row['record'])} for row in history.version_entries(root,nid)]
-        return sorted(rows,key=lambda r:(r['at'],r['id']),reverse=True)
+        return history.version_summaries(root,nid)
     folder = version_folder(root, nid)
     index = folder / 'index.meta.json'
     pending = store.pending_save(root)
@@ -64,6 +64,7 @@ def version(root, nid, vid):
     return row
 
 
+@timed('history')
 def version_writes(root, old, new, origin='save', review_refs=None):
     import wxq
     import knowledge_history as history
@@ -82,12 +83,13 @@ def version_writes(root, old, new, origin='save', review_refs=None):
         for item, source, refs in candidates:
             vid = uuid.uuid4().hex
             snap = store.snapshot(item)
-            if external and any(row.get('snapshot_sha256')==store.digest(snap) for row in existing):
+            snapshot_sha256 = store.digest(snap)
+            if external and any(row.get('snapshot_sha256')==snapshot_sha256 for row in existing):
                 continue
             value = {'id': vid, 'note_id': nid, 'at': datetime.now(timezone.utc).isoformat(), 'origin': source,
                      'body_sha256': store.digest(item['body']), 'review_refs': refs, 'record':snap}
             if external:
-                value['id']=store.digest(snap)[:32]
+                value['id']=snapshot_sha256[:32]
                 result.append(history.version_write(value))
                 continue
             result.append({'path': str((version_folder(root, nid) / (vid + '.json')).relative_to(Path(root))).replace('\\', '/'),

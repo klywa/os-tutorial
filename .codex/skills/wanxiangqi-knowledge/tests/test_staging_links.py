@@ -78,15 +78,20 @@ class StagingLinksTests(unittest.TestCase):
   self.store.finish_task(bv,'failed','Downloaded 2 bytes, expected 3 bytes',generation=task['generation'])
   self.store.adopt_network_failures()
   self.assertIsNone(Store(self.root).claim())
-  for expected in [1,2,3]:
+  for expected in range(1,7):
    with self.store.db() as db:
     row=db.execute('SELECT * FROM network_retries').fetchone();self.assertEqual(row['attempt'],expected)
+    durable=db.execute("SELECT attempt,next_retry_at FROM acquisition_retries WHERE kind='task' AND target=?",(bv,)).fetchone()
+    self.assertEqual(durable['attempt'],expected);self.assertEqual(durable['next_retry_at'],row['next_retry_at'])
     db.execute("UPDATE network_retries SET next_retry_at='2000-01-01'")
+    db.execute("UPDATE acquisition_retries SET next_retry_at='2000-01-01' WHERE kind='task' AND target=?",(bv,))
    task=self.store.claim();self.assertIsNotNone(task)
    self.store.finish_task(bv,'failed','Downloaded 2 bytes, expected 3 bytes',generation=task['generation']);self.store.adopt_network_failures()
-  self.assertEqual(self.store.tasks()[0]['state'],'failed')
+  self.assertEqual(self.store.tasks()[0]['state'],'queued')
+  self.assertEqual(Store(self.root).retry_status('task',bv)['attempt'],7)
   self.store.retry(job['id']);self.assertIsNotNone(self.store.claim())
-  self.store.control_task(bv,'delete');self.store.adopt_network_failures();self.assertEqual(self.store.tasks()[0]['state'],'cancelled')
+  self.store.control_task(bv,'delete');restarted=Store(self.root);restarted.adopt_network_failures()
+  self.assertEqual(restarted.tasks()[0]['state'],'cancelled');self.assertIsNone(restarted.claim())
  def test_resume_guard_quarantines_changed_object_and_bad_range(self):
   from download_resume import ResumeGuard,ObjectChanged
   folder=self.root/'download';folder.mkdir();partial=folder/'audio.m4a.part'

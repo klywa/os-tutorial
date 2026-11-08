@@ -20,6 +20,7 @@ import wxq
 import workspace
 from bilibili import Bilibili, BJ, creator_uid
 from reference_store import transcript_artifacts
+from save_timing import timed
 
 
 def now():
@@ -681,6 +682,7 @@ def _transcript_has_segments(path, modified_ns, size):
     return bool(wxq.read_json(Path(path), {}).get('segments'))
 
 
+@timed('read')
 def source_rows(root, store, source_ids=None):
     projections = store.projections()
     rows = workspace.sources(root, source_ids=source_ids)

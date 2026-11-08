@@ -1,5 +1,6 @@
 """Three-way synchronization uses disposable Git repos and canonical schema6 pairs."""
 from copy import deepcopy
+import json
 from pathlib import Path
 import subprocess,sys,tempfile,unittest
 
@@ -63,6 +64,35 @@ class KnowledgeGitTests(unittest.TestCase):
         self.assertEqual(self.text(candidate,'a'),'本地修改');self.assertEqual(self.text(candidate,'b'),'网站修改')
         self.assertEqual(store.validate(candidate)['errors'],[])
         self.assertEqual(git(candidate,'status','--porcelain'),'')
+
+    def test_identical_history_with_different_json_format_merges(self):
+        import knowledge_history as history
+        record=store.load_record(self.left,'a')
+        archive=history.archive_record(record,origin='test')
+        entry=archive['writes'][0]
+        for root,indent in ((self.left,2),(self.right,None)):
+            path=root/entry['path'];path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(json.dumps(entry['value'],ensure_ascii=False,indent=indent)+'\n',encoding='utf-8')
+            git(root,'add','knowledge-history');git(root,'commit','-m','same history, different serialization')
+        self.change(self.left,'a','本地修改');self.change(self.right,'b','网站修改')
+        candidate,result=self.merge()
+        self.assertEqual(result['conflict_note_ids'],[])
+        self.assertEqual(self.text(candidate,'a'),'本地修改')
+        self.assertEqual(self.text(candidate,'b'),'网站修改')
+        self.assertEqual(json.loads((candidate/entry['path']).read_text(encoding='utf-8')),entry['value'])
+        self.assertEqual(git(candidate,'status','--porcelain'),'')
+
+    def test_history_format_conflict_does_not_accept_tampered_archive(self):
+        import knowledge_history as history
+        entry=history.archive_record(store.load_record(self.left,'a'),origin='test')['writes'][0]
+        for root in (self.left,self.right):
+            value=deepcopy(entry['value'])
+            if root==self.right:value['origin']='tampered'
+            path=root/entry['path'];path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+            git(root,'add','knowledge-history');git(root,'commit','-m','archive')
+        with self.assertRaisesRegex(ValueError,'History integrity mismatch'):
+            self.merge()
 
     def test_different_paragraphs_in_one_note_merge(self):
         self.change(self.left,'a','本地原理');self.change(self.right,'a','网站运营','e-a-2')

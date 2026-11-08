@@ -51,8 +51,11 @@ class Handler(BaseHTTPRequestHandler):
                 for key,value in (headers or {}).items():self.send_header(key,value)
                 self.send_header('Cache-Control',cache);self.send_header('Content-Length','0');self.end_headers();return
         else:tag=None
-        body = json.dumps(data, ensure_ascii=False).encode('utf-8')
+        from save_timing import finish,stage
+        with stage('assemble'):body = json.dumps(data, ensure_ascii=False).encode('utf-8')
+        timing=finish(status)
         self.send_response(status)
+        if timing:self.send_header('Server-Timing',timing)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(body)))
         self.send_header('Cache-Control', cache if tag else 'no-store')
@@ -82,6 +85,16 @@ class Handler(BaseHTTPRequestHandler):
         identity=actor(self.server,self.headers.get('Cookie'))
         if path == '/api/auth/me':
             return self.response(200, session(self.server,self.headers.get('Cookie')))
+        if path=='/api/templates' or path.startswith('/api/templates/'):
+            try:
+                import templates_http
+                return self.response(200,templates_http.get(self.server,identity,path,self.path))
+            except PermissionError as exc:return self.response(403,{'error':str(exc)})
+            except workspace.Conflict as exc:return self.response(409,{'error':str(exc)})
+            except workspace.Busy as exc:return self.response(423,{'error':str(exc)})
+            except KeyError as exc:return self.response(404,{'error':str(exc)})
+            except (ValueError,TypeError) as exc:return self.response(400,{'error':str(exc)})
+            except OSError:return self.response(503,{'error':'模板资料暂时不可用，请重试'})
         if path=='/api/sync-conflicts' or re.fullmatch(r'/api/sync-conflicts/[^/]+',path):
             try:
                 from site_access import get_sync_conflicts
@@ -91,7 +104,11 @@ class Handler(BaseHTTPRequestHandler):
             except (ValueError,TypeError) as exc:return self.response(400,{'error':str(exc)})
         if path=='/api/local-service/status':
             if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
-            return self.response(200,{'mode':'local','root':str(Path(self.server.root).resolve()),'port':self.server.server_port})
+            data={'mode':'local','root':str(Path(self.server.root).resolve()),'port':self.server.server_port,
+                  'pid':os.getpid(),'instance_id':getattr(self.server,'local_instance_id',None)}
+            module=local_supervisor_module(self.server)
+            if module:data['supervisor']=module.stored_status(self.server.root)
+            return self.response(200,data)
         if path=='/api/edit-locks':
             try:
                 from site_access import get_locks
@@ -283,6 +300,8 @@ class Handler(BaseHTTPRequestHandler):
         self.mutate()
 
     def mutate(self):
+        from save_timing import begin
+        begin()
         from site_access import actor,payload,is_proposal_path,mutate_proposal,state_dir,session
         from website_sync import sync_lock,SyncBusy,SyncBlocked
         from proposals import ProposalForbidden
@@ -294,6 +313,8 @@ class Handler(BaseHTTPRequestHandler):
             if path=='/api/local-service/stop' and self.command=='POST':
                 if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
                 if payload(self):raise ValueError('停止服务不接受额外参数')
+                module=local_supervisor_module(self.server)
+                if module:module.notify_stop(self.server.root,supervisor_instance=self.headers.get('X-WXQ-Supervisor'))
                 self.response(202,{'ok':True,'message':'本地服务正在安全停止'})
                 import threading
                 threading.Thread(target=self.server.shutdown,daemon=True,name='local-service-stop').start()
@@ -316,6 +337,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200,mutate_locks(self.server,identity,path,payload(self)))
             if is_proposal_path(path):
                 return self.response(200,mutate_proposal(self.server,identity,path,self.command,payload(self)))
+            if path=='/api/templates' or path.startswith('/api/templates/'):
+                import templates_http
+                return self.response(200,templates_http.mutate(self.server,identity,path,self.command,payload(self)))
             if identity and identity['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
             if re.fullmatch(r'/api/notes/[^/]+/entries',path) and self.command=='PUT':
                 from site_access import proposal_store
@@ -503,7 +527,7 @@ class Handler(BaseHTTPRequestHandler):
                 from source_edit import save_metadata
                 result = save_metadata(self.server.root, path.split('/')[-1], payload, store)
                 from source_staging import Staging
-                Staging(self.server.root).prune()
+                Staging(self.server.root).prune(source_ids=[path.split('/')[-1]])
             else:
                 return self.response(404, {'error': '接口不存在'})
             self.response(200, result)
@@ -517,6 +541,16 @@ class Handler(BaseHTTPRequestHandler):
             self.response(400, {'error': str(exc), **({'row_errors':exc.row_errors} if hasattr(exc,'row_errors') else {})})
         except OSError:
             self.response(500, {'error': '保存失败，草稿已保留；请检查文件权限并重试'})
+
+
+def local_supervisor_module(server):
+    if hasattr(server,'public_origin'):return None
+    filename=Path(server.root)/'deploy/local_supervisor.py'
+    if not filename.is_file():return None
+    import importlib.util
+    specification=importlib.util.spec_from_file_location('wxq_local_supervisor',filename)
+    module=importlib.util.module_from_spec(specification);specification.loader.exec_module(module)
+    return module
 
 
 class LocalServer(ThreadingHTTPServer):
@@ -560,6 +594,8 @@ def create_server(root=ROOT, port=8765, start_worker=False, *, public=False,
     import crawler
     server = LocalServer(('127.0.0.1', port), Handler)
     server.root = Path(root)
+    import uuid
+    server.local_instance_id=uuid.uuid4().hex
     from site_access import initialize_local
     initialize_local(server)
     server.crawler = crawler.Runtime(root)

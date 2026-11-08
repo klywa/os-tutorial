@@ -11,6 +11,7 @@ import re
 import uuid
 from functools import lru_cache
 import json_document as document
+from save_timing import timed
 
 INDEX = 'knowledge/index.meta.json'
 JOURNAL = 'raw/knowledge/pending-json-save.json'
@@ -87,10 +88,12 @@ def initialize(root):
         save(root,[])
 
 
+@timed('write')
 def write_file(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    text = (json.dumps(value, ensure_ascii=False, separators=(',', ':')) if path.name == Path(JOURNAL).name
+    compact = path.name == Path(JOURNAL).name or 'knowledge-history' in path.parts or path.parent.name=='history-summaries'
+    text = (json.dumps(value, ensure_ascii=False, separators=(',', ':')) if compact
             else json.dumps(value, ensure_ascii=False, indent=2)) + '\n'
     if path.exists() and path.read_text('utf-8') == text:
         return
@@ -318,6 +321,7 @@ def preserve_deferred_baselines(root, journal):
         write_file(deferred_baseline_path(root, row), baseline)
 
 
+@timed('read')
 def load_record(root, nid, *, clone=True):
     """Read one logical record, including the published transaction overlay."""
     root = Path(root)
@@ -361,6 +365,7 @@ def resolve_value(value, texts):
     return value
 
 
+@timed('assemble')
 def project(record, public=False):
     body = deepcopy(record['body'])
     source = record['metadata']

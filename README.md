@@ -104,13 +104,35 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\start.ps1
 
 脚本自动创建 `.wxq-runtime`、安装 Python 和前端依赖、下载主题模型、构建并启动。无需手动激活 Python 环境。
 
+## 本地开发服务与恢复
+
+完成首次安装后，在项目根目录执行以下命令，启动或恢复后端与开发前端：
+
+```powershell
+.\.wxq-runtime\Scripts\python.exe deploy/ensure_local.py
+```
+
+后端入口为 [http://127.0.0.1:8765/](http://127.0.0.1:8765/)，开发前端为 [http://127.0.0.1:5173/](http://127.0.0.1:5173/)。管理器独立于启动终端持续运行，不安装系统服务，也不设置开机启动。它先核对项目身份，遇到其他程序占用端口时报告错误，不结束该程序。
+
+前端修改后加 `--build` 更新 8765 使用的静态页面；后端修改后加 `--restart-backend` 安全重启。完整交付命令为：
+
+```powershell
+.\.wxq-runtime\Scripts\python.exe deploy/ensure_local.py --build --restart-backend
+```
+
+查看状态使用 `--status`；明确停止两个服务使用 `--stop`。停止后保持暂停，再次执行恢复命令才会启动。正常发布流程暂停后端，完成后按原状态恢复，保留后台任务与检查点。
+
+管理器对意外退出按 1、5、15、60 秒退避恢复，之后每 60 秒重试；稳定运行一分钟后重置退避。`raw/local-services/manager.log` 记录停启原因，`status.json` 保存 PID、最近退出时间、退出码及十六进制退出码，`backend.stdout.log`、`backend.stderr.log`、`frontend.stdout.log`、`frontend.stderr.log` 保存服务输出。接管已有服务时无法追溯其真实退出码，会明确记录为空。`control.json` 是本机控制凭据，不应分享。
+
+模板库顶栏的【帮助】提供当前 JSON 协议和可复制、下载的示例；仓库文档见 [模板库 JSON 协议](docs/template-library.md)。
+
 ## 使用
 
 Git 只管理代码与正式知识。外部采集、官网同步、运行状态及来源标题、标签和备注均保存在被忽略的本地资料中。请额外备份 `raw/`、`entities/`、`knowledge/cards/`、`personal/` 及 `knowledge/source-registry.meta.json`、`knowledge/document-sources.meta.json`；只克隆 Git 仓库无法恢复这些数据。
 
 启动、后台任务和网页官网检查不会自动改写正式笔记。需要把官网资料应用到棋手笔记时，明确执行 `.wxq-runtime/Scripts/python.exe .codex/skills/wanxiangqi-knowledge/scripts/wxq.py sync-entities --apply-notes`（macOS 使用虚拟环境中的 `bin/python`）。默认 `sync-entities` 只更新本地缓存。外网阵容名称留在本地快照中，正式搜索别名通过笔记编辑保存。
 
-浏览器自动打开 [http://127.0.0.1:8765](http://127.0.0.1:8765)。**一个服务同时提供前端、后台 API、采集与定时任务**，不需要另开 `npm run dev` 或后台进程。保持终端打开，按 `Ctrl+C` 停止；关闭网页不会停止后台。
+使用上述 `start.ps1` / `start.zsh` 安装入口时，浏览器自动打开 [http://127.0.0.1:8765](http://127.0.0.1:8765)，后端同时提供构建后的前端、API、采集与定时任务。该前台入口需保持终端打开，按 `Ctrl+C` 停止。需要脱离终端持续运行并同时提供 5173 开发前端时，安装完成后使用前文的 `deploy/ensure_local.py`；由 `--stop` 安全停止，关闭网页不会停止后台。
 
 首次安装需联网，主题模型约 2GB；语音转写首次使用时还会下载 large-v3 模型。Mac 转写使用 CPU，耗时取决于硬件。后续启动复用依赖，仍会构建前端。
 

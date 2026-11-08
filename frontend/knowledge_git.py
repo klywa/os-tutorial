@@ -45,6 +45,18 @@ def _immutable_paths(root,ref):
     result=_git(root,'ls-tree','-r','--name-only','-z',ref,'--','knowledge-history','knowledge-sync')
     return [p for p in result.stdout.split('\0') if p]
 
+def _resolve_archive_conflicts(root,unmerged):
+    """Resolve serialization-only conflicts after validating both Git stages."""
+    import knowledge_conflicts as conflicts
+    for relative in sorted(unmerged):
+        if not relative.startswith(('knowledge-history/','knowledge-sync/')):continue
+        left=_blob(root,':2',relative);right=_blob(root,':3',relative)
+        validate=history.validate_archive if relative.startswith('knowledge-history/') else conflicts.validate_event
+        validate(relative,left);validate(relative,right)
+        if left!=right:raise ValueError('Immutable archive collision: '+relative)
+        store.write_file(Path(root)/relative,left)
+
+
 def _import_archives(root,refs):
     import knowledge_conflicts as conflicts
     for ref in dict.fromkeys(refs):
@@ -75,6 +87,8 @@ def _pending_ids(root,signature):
 def adopt_events(source,destination):
     """Copy only immutable data; never install candidate code or note bodies."""
     import knowledge_conflicts as conflicts
+    import templates_sync
+    templates_sync.adopt_events(source,destination)
     for folder in ('knowledge-history','knowledge-sync'):
         for path in (Path(source)/folder).rglob('*.json'):
             relative=path.relative_to(source).as_posix()
@@ -114,10 +128,12 @@ def _merge_branches(root,left,right,*,preferred='right',origin='local'):
     site; callers must recheck its live snapshot before activation.
     """
     import knowledge_conflicts as conflicts
+    import templates_sync
     from knowledge_merge import merge_record
     root=Path(root)
     if canonical(root) and (left==right or _git(root,'merge-base','--is-ancestor',right,left,check=False).returncode==0):
-        return {'handled':True,'conflict_note_ids':pending_ids(root),'new_conflict_note_ids':[],'head':left}
+        return {'handled':True,'conflict_note_ids':pending_ids(root),'new_conflict_note_ids':[],
+                'conflict_template_ids':[row['id'] for row in templates_sync.list_conflicts(root)['items']],'head':left}
     li,ls=_tree(root,left);ri,rs=_tree(root,right)
     if li is None or ri is None:return {'handled':False,'conflict_note_ids':[]}
     base_ref=_git(root,'merge-base',left,right).stdout.strip()
@@ -127,12 +143,14 @@ def _merge_branches(root,left,right,*,preferred='right',origin='local'):
         for record in records.values():
             path=record['metadata']['path'];known.update((path,store.meta_path(path)))
     for ref in (base_ref,left,right):known.update(_immutable_paths(root,ref))
+    known.update(templates_sync.known_paths(root,base_ref,left,right))
     merge=_git(root,'merge','--no-edit','--no-commit',right,check=False)
     unmerged={p for p in _git(root,'diff','--name-only','--diff-filter=U','-z').stdout.split('\0') if p}
     code_conflicts=unmerged-known
     if code_conflicts:raise RuntimeError('代码文件仍有冲突，未选择任一方：'+', '.join(sorted(code_conflicts)))
     if merge.returncode and not unmerged:raise RuntimeError(merge.stderr.strip() or merge.stdout.strip())
 
+    _resolve_archive_conflicts(root,unmerged)
     _import_archives(root,(base_ref,left,right))
     # Restore a consistent baseline pair in this disposable directory. The live
     # checkout is never rewritten here, even if its incoming index has markers.
@@ -180,12 +198,13 @@ def _merge_branches(root,left,right,*,preferred='right',origin='local'):
         store.write_file(root/store.JOURNAL,journal);store.recover(root)
     else:
         for entry in archives:history.immutable(root,entry['path'],entry['value'])
+    template_result=templates_sync.integrate(root,base_ref,left,right,preferred=preferred,origin=origin)
     validation=store.validate(root)
     if validation['errors']:raise ValueError('知识合并校验失败：'+'; '.join(validation['errors']))
-    paths=[p for p in ('knowledge','knowledge-history','knowledge-sync') if (root/p).exists()]
+    paths=[p for p in ('knowledge','knowledge-history','knowledge-sync','templates') if (root/p).exists()]
     if paths:_git(root,'add','--all','--',*paths)
     staged=_git(root,'diff','--cached','--name-only').stdout.strip()
     merging=_git(root,'rev-parse','-q','--verify','MERGE_HEAD',check=False).returncode==0
     if staged or merging:_git(root,'commit','-m','sync: merge knowledge by stable node identity')
-    return {'handled':True,'conflict_note_ids':pending_ids(root),
+    return {'handled':True,**template_result,'conflict_note_ids':pending_ids(root),
             'new_conflict_note_ids':new_conflicts,'head':_git(root,'rev-parse','HEAD').stdout.strip()}

@@ -46,7 +46,7 @@ def allowed_local_path(path):
         return True
     if parts[0] == 'knowledge':
         return path == 'knowledge/index.meta.json' or (len(parts)==3 and parts[1] in {'players','lineups','other'} and basename.endswith('.json'))
-    if parts[0] in {'knowledge-history','knowledge-sync'}:
+    if parts[0] in {'knowledge-history','knowledge-sync','templates'}:
         from website_sync import allowed_path
         return allowed_path(path)
     if parts[0] == 'website-data':
@@ -65,6 +65,15 @@ class ServiceNotReady(RuntimeError):
     """The listener has not yet provided a usable status endpoint."""
 
 
+def local_manager(root):
+    """Optional on older release clones and isolated legacy test fixtures."""
+    if not (Path(root)/'deploy/local_supervisor.py').is_file():return None
+    import importlib.util
+    specification=importlib.util.spec_from_file_location('wxq_local_supervisor',Path(root)/'deploy/local_supervisor.py')
+    module=importlib.util.module_from_spec(specification);specification.loader.exec_module(module)
+    return module if module.status(root)['available'] else None
+
+
 class FrontendAssets(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -79,6 +88,7 @@ class FrontendAssets(HTMLParser):
 
 
 class LocalService:
+    stop_endpoint='/api/local-service/stop'
     def __init__(self, root, port=8765, *, stop_timeout=600, clock=time.monotonic, sleep=time.sleep):
         self.root, self.port = Path(root).resolve(), port
         self.url = f'http://127.0.0.1:{port}'
@@ -142,7 +152,14 @@ class LocalService:
         return True
 
     def stop(self):
-        request=urllib.request.Request(self.url+'/api/local-service/stop', data=b'{}', method='POST',
+        manager=local_manager(self.root) if self.port in (8765,5173) else None
+        if manager:
+            self.stopping=True
+            manager.stop(self.root,('frontend' if isinstance(self,LocalFrontend) else 'backend',),timeout=self.stop_timeout)
+            self.stopping=False
+            return
+        if not self.running():return
+        request=urllib.request.Request(self.url+self.stop_endpoint, data=b'{}', method='POST',
             headers={'Origin':self.url,'Content-Type':'application/json'})
         with urllib.request.urlopen(request,timeout=5) as response:
             if response.status!=202:
@@ -199,6 +216,13 @@ class LocalService:
         return process,logfile
 
     def restart(self):
+        manager=local_manager(self.root) if self.port in (8765,5173) else None
+        if manager:
+            if self.stopping:self.wait_stopped()
+            name='frontend' if isinstance(self,LocalFrontend) else 'backend'
+            manager.resume(self.root,(name,));manager.wait_ready(self.root,(name,),timeout=self.start_timeout)
+            if not self.healthy():raise RuntimeError('本地管理器启动后健康检查失败')
+            return
         if self.stopping:
             self.wait_stopped()
         existing=self.running()  # Foreign services must fail before launching.
@@ -249,6 +273,7 @@ class LocalService:
 
 class LocalFrontend(LocalService):
     control='/__wxq_local_frontend'
+    stop_endpoint=control+'/stop'
 
     def __init__(self, root):
         super().__init__(root,5173)
@@ -270,7 +295,8 @@ class LocalFrontend(LocalService):
                 return False
             raise ForeignService('5173 已被占用，未识别到本项目的 Vite 前端；原进程保留') from None
         if (not isinstance(status,dict) or not isinstance(status.get('root'),str)
-                or Path(status['root']).resolve()!=self.root/'frontend'):
+                or Path(status['root']).resolve()!=self.root/'frontend'
+                or status.get('mode')!='local' or status.get('port')!=self.port):
             raise ForeignService('5173 已被其他项目占用；原进程保留')
         return True
 
@@ -306,6 +332,9 @@ def ensure_local_frontend(root,backend,*,refresh=True):
 
 def run_local_sync(manager,action):
     original=None
+    supervisor=local_manager(manager.root) if isinstance(getattr(manager,'service',None),LocalService) else None
+    desired=supervisor.status(manager.root)['services'] if supervisor else None
+    restore=tuple(name for name in ('backend','frontend') if desired and desired[name]['desired']=='running')
     try:
         result=getattr(manager,action)()
         logging.info('Git 同步结果：%s',json.dumps(result,ensure_ascii=False))
@@ -315,8 +344,23 @@ def run_local_sync(manager,action):
         raise
     finally:
         try:
-            ensure_local_frontend(manager.root,manager.service,refresh=original is None)
-            logging.info('本地前端验收通过：http://127.0.0.1:5173/')
+            if not supervisor or len(restore)==2:
+                ensure_local_frontend(manager.root,manager.service,refresh=original is None)
+                logging.info('本地前端验收通过：http://127.0.0.1:5173/')
+            elif restore:
+                # Preserve each service's explicit prior stop independently.
+                # A running Vite can serve its assets while backend is paused;
+                # its proxy APIs are intentionally unavailable in that state.
+                supervisor.resume(manager.root,restore)
+                supervisor.wait_ready(manager.root,restore)
+                if 'backend' in restore and not manager.service.healthy():
+                    raise RuntimeError('本地后端恢复后健康检查失败')
+                if 'frontend' in restore:
+                    frontend=LocalFrontend(manager.root)
+                    if not frontend.assets_healthy():raise RuntimeError('本地前端恢复后静态资源验收失败')
+                    if original is None:frontend.refresh()
+            else:
+                logging.info('保留本地服务的明确停止状态')
         except Exception as recovery:
             logging.exception('本地 5173 验收失败：%s',recovery)
             if original is None:
@@ -369,6 +413,8 @@ class LocalSync:
         if proposal_db.with_name(proposal_db.name+'.approval.json').exists():
             from proposals import ProposalStore
             ProposalStore(self.root,proposal_db).recover()
+        from website_sync import recover_template_approval
+        recover_template_approval(self.root,self.state)
         self.run([sys.executable,self.root/'frontend/website_data.py','recover','--root',self.root])
 
     def validate_data(self,root,export=False):
@@ -399,18 +445,24 @@ class LocalSync:
 
     @contextmanager
     def stopped_service(self):
-        was_running=self.service.running()
+        manager=local_manager(self.root) if isinstance(self.service,LocalService) else None
+        managed_state=manager.status(self.root)['services']['backend'] if manager else None
+        managed_running=bool(managed_state and managed_state['desired']=='running')
+        if manager:manager.pause(self.root,('backend',),reason='publish')
+        was_running=managed_state['state'] in ('running','starting','stopping') if managed_state else self.service.running()
+        restore_running=managed_running if manager else was_running
         original=None
         try:
-            if was_running:
-                self.service.stop()
+            if manager and (managed_running or was_running):
+                manager.stop(self.root,('backend',),reason='publish',timeout=self.service.stop_timeout)
+            elif was_running:self.service.stop()
             # Do not hold the sync lock while waiting for server shutdown/restart.
             yield
         except BaseException as exc:
             original=exc
             raise
         finally:
-            if was_running:
+            if restore_running:
                 try:
                     self.service.restart()
                 except Exception as recovery:

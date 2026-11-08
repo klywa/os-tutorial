@@ -5,6 +5,8 @@ from http.server import BaseHTTPRequestHandler
 import os
 import socket
 import sys
+import json
+from pathlib import Path
 import threading
 import unittest
 from types import SimpleNamespace
@@ -43,6 +45,30 @@ class LifecycleTests(unittest.TestCase):
         code,logs=self.run_server(KeyboardInterrupt())
         self.assertEqual(code,130)
         self.assertIn('exit_code=130',logs)
+
+
+class LocalControlTests(unittest.TestCase):
+    def test_direct_stop_persists_pause_before_acknowledging_safe_shutdown(self):
+        events=[]
+        module=SimpleNamespace(notify_stop=lambda root,**kwargs:events.append(('paused',kwargs)))
+        listener=server.LocalServer(('127.0.0.1',0),server.Handler)
+        listener.root=Path(__file__).parent/'isolated-control-fixture'
+        thread=threading.Thread(target=listener.serve_forever,daemon=True)
+        try:
+            with patch('site_access.actor',return_value={'role':'admin'}),patch.object(server,'local_supervisor_module',return_value=module):
+                thread.start()
+                connection=http.client.HTTPConnection('127.0.0.1',listener.server_port,timeout=3)
+                connection.request('POST','/api/local-service/stop',body='{}',headers={'Content-Type':'application/json'})
+                response=connection.getresponse();self.assertEqual(response.status,202)
+                self.assertTrue(json.loads(response.read())['ok']);connection.close()
+                self.assertEqual(events,[('paused',{'supervisor_instance':None})])
+                thread.join(timeout=3);self.assertFalse(thread.is_alive())
+        finally:
+            if thread.is_alive():listener.shutdown()
+            listener.server_close()
+
+    def test_public_server_never_loads_local_supervisor(self):
+        self.assertIsNone(server.local_supervisor_module(SimpleNamespace(public_origin='https://example.test')))
 
 
 @unittest.skipUnless(os.name=='nt','Windows local listener binding')

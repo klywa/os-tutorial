@@ -65,6 +65,10 @@ def export(root=ROOT):
     root=Path(root).resolve()
     with store_lock(root):
         if (root/store.JOURNAL).exists():raise ValueError('存在未恢复的保存事务，请先执行 website_data.py recover')
+        if (root/'raw/templates/pending.json').exists():raise ValueError('存在未恢复的模板事务，请先执行 website_data.py recover')
+        import templates_store
+        templates=templates_store._load(root)[0]
+        templates_store.validate(root,templates['events'],templates['groups'])
         # Stage the whole export; errors never destroy an existing usable package.
         with tempfile.TemporaryDirectory(prefix='website-export-',dir=root) as temporary:
             staging=Path(temporary)
@@ -132,6 +136,7 @@ def _prepare_verified(root,manifest):
 def validate(root=ROOT):
     root=Path(root)
     if (root/store.JOURNAL).exists():raise ValueError('存在未恢复的保存事务，请先执行 website_data.py recover')
+    if (root/'raw/templates/pending.json').exists():raise ValueError('存在未恢复的模板事务，请先执行 website_data.py recover')
     verify_package(root)
     return _validate_records(root)
 
@@ -154,12 +159,19 @@ def _validate_records(root):
         if path.is_file() and path.suffix!='.json':
             raise ValueError('知识库含非JSON文件：'+str(path))
     # Validate against published entities without requiring previously hydrated caches.
-    categories=[row for category in wxq.CATEGORIES for row in store.read(root/FOLDER/'entities'/(category+'.json'),[])]
+    categories=[{**row,'category':category} for category in wxq.CATEGORIES for row in store.read(root/FOLDER/'entities'/(category+'.json'),[])]
     from unittest.mock import patch
     with patch.object(wxq,'entities',return_value=categories):
         for record in records:store.validate_semantics(root,record)
     from usage_matches import read
     read(root)
+    import templates_store,templates_sync
+    templates=templates_store._load(root)[0]
+    cards=store.read(root/FOLDER/'cards.json',[])
+    entities={row['id']:row for row in categories}
+    entities.update({row['id']:row for row in cards})
+    templates_store.validate(root,templates['events'],templates['groups'],entities=entities)
+    templates_sync.validate_events(root)
     return {'valid':True,'notes':len(records)}
 
 
@@ -175,12 +187,15 @@ def recover(root=ROOT):
     """Replay only a durable manual save, never import automatic online content."""
     from workspace import store_lock
     root=Path(root)
-    if not (root/store.JOURNAL).exists():return {'recovered':False}
+    if not (root/store.JOURNAL).exists() and not (root/'raw/templates/pending.json').exists():return {'recovered':False}
     with store_lock(root,wait=True):
-        if not (root/store.JOURNAL).exists():return {'recovered':False}
-        if not store.pending_save(root):raise ValueError('存在自动任务事务，请在本机恢复后重新发布')
-        store.recover(root,official=False)
-    return {'recovered':True}
+        recovered=False
+        if (root/store.JOURNAL).exists():
+            if not store.pending_save(root):raise ValueError('存在自动任务事务，请在本机恢复后重新发布')
+            store.recover(root,official=False);recovered=True
+        import templates_store
+        recovered=templates_store._recover_locked(root) or recovered
+    return {'recovered':recovered}
 
 
 if __name__=='__main__':

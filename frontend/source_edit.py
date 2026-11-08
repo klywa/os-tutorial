@@ -64,14 +64,21 @@ def save_metadata(root, sid, payload, store):
         for k in restore:row['manual_values'].pop(k,None)
         row['manual_revision']=uuid.uuid4().hex
         row['manual_updated_at']=wxq.now()
-        wxq.atomic_json(path,rows)
-        updated=next(iter(source_rows(root,store,source_ids=[sid])))
+        from save_timing import stage
+        with stage('write'):wxq.atomic_json(path,rows)
+        # Keep the acquisition/knowledge snapshot read at the start of this save.
+        # Only human metadata changed; rebuilding it would scan notes/tasks again.
+        updated={**current,'manual_values':dict(row['manual_values']),
+                 'manual_revision':row['manual_revision'],'manual_updated_at':row['manual_updated_at'],
+                 'revision':row['manual_revision']}
+        updated.update(row['manual_values'])
+        from topics import TopicStore
+        topics=TopicStore(root)
         # Invalidate in-flight chunks promptly; periodic worker scans recover an enqueue failure.
         try:
             if set(changes)-{'tags','notes'} or restore:
-                from topics import TopicStore
-                TopicStore(root).sync([updated])
+                topics.sync([updated])
         except Exception:
             import logging
             logging.getLogger(__name__).exception('资料已保存，主题队列等待后台补查')
-        return updated
+        return topics.project([updated])[0]
