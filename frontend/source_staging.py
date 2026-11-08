@@ -21,8 +21,10 @@ class Staging:
    ids=[r['id'] for r in db.execute('SELECT id FROM source_staging ORDER BY position,id')]
    revision=db.execute('SELECT value FROM staging_revision WHERE id=1').fetchone()[0]
   return self.basket(ids,revision,self.sources(ids))
- def prune(self):
+ def prune(self,source_ids=None):
   with self.store.db() as db:ids=[r['id'] for r in db.execute('SELECT id FROM source_staging')]
+  if source_ids is not None:ids=[sid for sid in ids if sid in set(source_ids)]
+  if not ids:return
   valid=self.sources(ids)
   with self.store.db() as db:
    db.execute('BEGIN IMMEDIATE');changed=0

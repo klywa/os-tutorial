@@ -60,6 +60,35 @@ class LocalSyncTests(unittest.TestCase):
         manager=sync.LocalSync(self.root,service=self.service,validate=validate,build=lambda paths,root:self.builds.append(paths))
         manager.recover=lambda: None
         return manager
+
+    def test_recover_finishes_private_template_approval_before_data_recovery(self):
+        import templates_store as library
+        from templates_proposals import TemplateProposals
+        admin={'username':'admin','role':'admin'};writer={'username':'writer','role':'annotator'}
+        manager=sync.LocalSync(self.root,service=self.service)
+        proposals=TemplateProposals(self.root,manager.state/'template-proposals.sqlite3')
+        group={'id':'g','name':'已审批模板','event_id':'shop_refresh','scope':{'player_id':None,'lineup_note_id':None},
+               'conditions':[],'utterances':[{'id':'u','text':'刷新'}]}
+        item=proposals.submit(writer,{'revision':library.snapshot(self.root)['revision'],
+            'changes':[{'kind':'group','action':'put','id':'g','value':group}]})
+        with patch.object(proposals,'_finish_receipt',side_effect=OSError('power loss')):
+            with self.assertRaises(OSError):
+                proposals.action(admin,item['id'],'approve',{'proposal_revision':item['proposal_revision']})
+        self.assertTrue(proposals.receipt.exists())
+        self.assertEqual(proposals.list(admin)[0]['status'],'pending')
+        # The child data recovery command must only start after both canonical
+        # content and the durable private approval status have been recovered.
+        commands=[]
+        def data_recovery(args,**kwargs):
+            commands.append(args)
+            self.assertFalse(proposals.receipt.exists())
+            self.assertEqual(proposals.list(admin)[0]['status'],'approved')
+            self.assertEqual(library.snapshot(self.root)['groups'][0]['name'],'已审批模板')
+        manager.run=data_recovery
+        manager.recover()
+        self.assertEqual(len(commands),1)
+        self.assertEqual(commands[0][-3:],['recover','--root',self.root])
+
     def test_publish_merges_remote_and_pushes_only_formal_files(self):
         self.remote_note('online')
         (self.root/'frontend/server.py').write_text('# local code\n')
@@ -378,6 +407,58 @@ class LocalPathTests(unittest.TestCase):
 
 
 class LocalServiceTests(unittest.TestCase):
+    def setUp(self):
+        # These unit cases emulate HTTP and time, so they must not consult the
+        # user's actual persistent manager. Integration is tested separately.
+        manager=patch.object(sync,'local_manager',return_value=None)
+        manager.start();self.addCleanup(manager.stop)
+
+    def test_publish_preserves_explicit_stop_already_draining(self):
+        root=Path(__file__).parents[1];service=sync.LocalService(root);supervisor=Mock()
+        supervisor.status.return_value={'services':{'backend':{'desired':'paused','state':'stopping'}}}
+        manager=sync.LocalSync(root,service=service)
+        with patch.object(sync,'local_manager',return_value=supervisor),patch.object(service,'restart') as restart:
+            with manager.stopped_service():pass
+        supervisor.stop.assert_called_once_with(root,('backend',),reason='publish',timeout=600)
+        restart.assert_not_called()
+
+    def test_publish_restores_prior_running_intent_during_backoff(self):
+        root=Path(__file__).parents[1];service=sync.LocalService(root);supervisor=Mock()
+        supervisor.status.return_value={'services':{'backend':{'desired':'running','state':'backoff'}}}
+        manager=sync.LocalSync(root,service=service)
+        with patch.object(sync,'local_manager',return_value=supervisor),patch.object(service,'restart') as restart:
+            with manager.stopped_service():pass
+        supervisor.stop.assert_called_once_with(root,('backend',),reason='publish',timeout=600)
+        restart.assert_called_once_with()
+
+    def test_sync_wrapper_preserves_all_explicitly_paused_services(self):
+        root=Path(__file__).parents[1];service=sync.LocalService(root);supervisor=Mock()
+        supervisor.status.return_value={'services':{'backend':{'desired':'paused'},'frontend':{'desired':'paused'}}}
+        manager=sync.LocalSync(root,service=service)
+        with patch.object(sync,'local_manager',return_value=supervisor),patch.object(manager,'pull',return_value={'state':'unchanged'}), \
+                patch.object(sync,'ensure_local_frontend') as ensure:
+            sync.run_local_sync(manager,'pull')
+        ensure.assert_not_called();supervisor.resume.assert_not_called()
+
+    def test_sync_wrapper_restores_only_prior_running_frontend_when_backend_paused(self):
+        root=Path(__file__).parents[1];service=sync.LocalService(root);supervisor=Mock()
+        supervisor.status.return_value={'services':{'backend':{'desired':'paused'},'frontend':{'desired':'running'}}}
+        manager=sync.LocalSync(root,service=service);frontend=Mock();frontend.assets_healthy.return_value=True
+        with patch.object(sync,'local_manager',return_value=supervisor),patch.object(manager,'pull',return_value={'state':'unchanged'}), \
+                patch.object(sync,'ensure_local_frontend') as ensure,patch.object(sync,'LocalFrontend',return_value=frontend):
+            sync.run_local_sync(manager,'pull')
+        ensure.assert_not_called();supervisor.resume.assert_called_once_with(root,('frontend',))
+        frontend.assets_healthy.assert_called_once_with();frontend.refresh.assert_called_once_with()
+
+    def test_sync_wrapper_keeps_full_validation_for_prior_running_services_in_backoff(self):
+        root=Path(__file__).parents[1];service=sync.LocalService(root);supervisor=Mock()
+        supervisor.status.return_value={'services':{'backend':{'desired':'running','state':'backoff'},'frontend':{'desired':'running','state':'running'}}}
+        manager=sync.LocalSync(root,service=service)
+        with patch.object(sync,'local_manager',return_value=supervisor),patch.object(manager,'pull',return_value={'state':'unchanged'}), \
+                patch.object(sync,'ensure_local_frontend') as ensure:
+            sync.run_local_sync(manager,'pull')
+        ensure.assert_called_once_with(root,service,refresh=True)
+
     def test_local_frontend_recovers_missing_services_and_reuses_running_ones(self):
         root=Path(__file__).parents[1]
         backend=Mock()
@@ -426,7 +507,7 @@ class LocalServiceTests(unittest.TestCase):
         clock=[0.0]
         service=sync.LocalService(Path(__file__).parents[1],stop_timeout=600,clock=lambda:clock[0],sleep=lambda seconds:clock.__setitem__(0,clock[0]+seconds))
         response=BytesIO(b''); response.status=202
-        with patch.object(sync.urllib.request,'urlopen',return_value=response), patch.object(service,'occupied',side_effect=lambda:clock[0]<25):
+        with patch.object(service,'running',return_value=True), patch.object(sync.urllib.request,'urlopen',return_value=response), patch.object(service,'occupied',side_effect=lambda:clock[0]<25):
             service.stop()
         self.assertGreaterEqual(clock[0],25)
         self.assertFalse(service.stopping)
@@ -435,7 +516,7 @@ class LocalServiceTests(unittest.TestCase):
         clock=[0.0]
         service=sync.LocalService(Path(__file__).parents[1],stop_timeout=2,clock=lambda:clock[0],sleep=lambda seconds:clock.__setitem__(0,clock[0]+seconds))
         response=BytesIO(b''); response.status=202
-        with patch.object(sync.urllib.request,'urlopen',return_value=response), patch.object(service,'occupied',return_value=True):
+        with patch.object(service,'running',return_value=True), patch.object(sync.urllib.request,'urlopen',return_value=response), patch.object(service,'occupied',return_value=True):
             with self.assertRaisesRegex(RuntimeError,'超时'): service.stop()
         self.assertTrue(service.stopping)
         with patch.object(service,'occupied',return_value=False):
@@ -446,5 +527,21 @@ class LocalServiceTests(unittest.TestCase):
         service=sync.LocalService(Path(__file__).parents[1])
         with patch.object(sync.urllib.request,'urlopen',side_effect=urllib.error.URLError('refused')), patch.object(service,'occupied',return_value=False):
             self.assertFalse(service.running())
+
+    def test_managed_frontend_stop_pauses_frontend_before_correct_stop_endpoint(self):
+        frontend=sync.LocalFrontend(Path(__file__).parents[1]);events=[]
+        response=BytesIO(b'{}');response.status=202
+        def send(request,**kwargs):
+            events.append(request.full_url);return response
+        with patch.object(sync,'local_manager',return_value=None),patch.object(frontend,'running',return_value=True), \
+                patch.object(frontend,'occupied',return_value=False),patch.object(sync.urllib.request,'urlopen',side_effect=send):
+            frontend.stop()
+        self.assertEqual(events,['http://127.0.0.1:5173/__wxq_local_frontend/stop'])
+
+    def test_managed_stop_during_startup_does_not_depend_on_listener_readiness(self):
+        frontend=sync.LocalFrontend(Path(__file__).parents[1]);manager=Mock()
+        with patch.object(sync,'local_manager',return_value=manager),patch.object(frontend,'running',side_effect=AssertionError('must delegate pending child')):
+            frontend.stop()
+        manager.stop.assert_called_once_with(frontend.root,('frontend',),timeout=600)
 
 if __name__=='__main__': unittest.main()

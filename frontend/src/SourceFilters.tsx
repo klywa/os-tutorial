@@ -1,4 +1,5 @@
 import TopicPicker from './TopicPicker';
+import SearchSelect from './SearchSelect';
 import {useRef,useState} from 'react';
 import type {Source,TopicCatalog} from './types';
 import type {SourceFilters as Filters} from './acquisition';
@@ -8,7 +9,7 @@ export default function SourceFilters({sources,filters,onChange,onReset,catalog}
  const count=Object.entries(filters).filter(([k,v])=>k!=='query'&&(Array.isArray(v)?v.length>0:!!v)).length;
  const extras=[['date_from','发布起始日期','date'],['date_to','发布结束日期','date'],['min_views','最低播放量','number'],['max_views','最高播放量','number'],['min_duration','最短时长（秒）','number'],['max_duration','最长时长（秒）','number'],['collected_from','采集起始日期','date'],['collected_to','采集结束日期','date']] as const;
  const extraCount=extras.filter(([k])=>!!filters[k]).length+(['topic_players','topic_lineups','topic_heroes','topic_cards'] as const).filter(k=>filters[k]?.length).length;
- function select(key:keyof Filters,label:string,values:{value:string;label:string}[]){return <label>{label}<select aria-label={label} value={String(filters[key]??'')} onChange={e=>onChange(key,e.target.value)}><option value="">全部{label}</option>{values.map(v=><option value={v.value} key={v.value}>{v.label}</option>)}</select></label>;}
+ function select(key:keyof Filters,label:string,values:{value:string;label:string}[]){return <SearchSelect key={key} label={label} value={String(filters[key]??'')} choices={values} onChange={value=>onChange(key,value)}/>;}
  function choices(field:'keywords'|'batches'|'author'){return [...new Set(sources.flatMap(s=>field==='author'?[s.author||'']:s[field]??[]).filter(Boolean))].sort().map(value=>({value,label:value}));}
  const selects=<>{select('keyword','关键词',choices('keywords'))}{select('author','UP主',choices('author'))}{select('batch','批次',choices('batches'))}{select('stage','处理状态',['registered','preview','queued','running','downloading','transcribing','ready','prepared','complete','failed'].map(value=>({value,label:taskNames[value]||value})))}{select('deposit','沉淀状态',[{value:'unprocessed',label:'未沉淀'},{value:'submitted',label:'已提交待核对'},{value:'deposited',label:'已沉淀'}])}</>;
  function open(narrow:boolean){setMobile(narrow);dialog.current?.showModal();}

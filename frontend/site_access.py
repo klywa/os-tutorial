@@ -45,6 +45,10 @@ def initialize_local(server):
     proposals=proposal_store(server)
     if proposals.recovery_pending():
         with sync_lock(server.state_dir):proposals.recover()
+    from templates_http import proposal_store as template_proposal_store
+    templates=template_proposal_store(server)
+    if templates.receipt.exists():
+        with sync_lock(server.state_dir):templates.recover()
 
 
 def payload(handler):
@@ -195,6 +199,9 @@ def mutate_locks(server,identity,path,data):
 def edit_note(server,identity,nid,data):
     """Legacy admin editor: revision first, then revoke only affected entries."""
     import workspace
+    import json_store
+    if not json_store.enabled(server.root):
+        return workspace.edit(server.root,nid,data)
     service=proposal_store(server);service.recover()
     record=service._note(nid)
     if data.get('revision')!=record['metadata']['revision']:raise workspace.Conflict('笔记已更新，请重新载入后合并草稿')

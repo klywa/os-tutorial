@@ -1,0 +1,27 @@
+{
+  "kind": "speech-template-library",
+  "schema_version": 2,
+  "events": [
+    {
+      "id": "help_minimal_event_v1",
+      "name": "示例：回合提醒",
+      "parameters": [],
+      "category": "未分类"
+    }
+  ],
+  "groups": [
+    {
+      "id": "help_minimal_group_v1",
+      "name": "示例：通用提醒",
+      "event_id": "help_minimal_event_v1",
+      "scope": {
+        "player_id": null,
+        "lineup_note_id": null
+      },
+      "conditions": [],
+      "utterances": [
+        "确认当前回合的安排。"
+      ]
+    }
+  ]
+}

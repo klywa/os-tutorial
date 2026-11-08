@@ -1,0 +1,93 @@
+{
+  "kind": "speech-template-library",
+  "schema_version": 2,
+  "events": [
+    {
+      "id": "help_complete_event_v1",
+      "name": "示例：战前检查",
+      "category": "帮助示例",
+      "parameters": [
+        {
+          "key": "stage",
+          "name": "阶段",
+          "type": "text",
+          "suggestions": [
+            "前期",
+            "后期"
+          ]
+        },
+        {
+          "key": "health",
+          "name": "血量",
+          "type": "number",
+          "suggestions": [
+            30,
+            60
+          ],
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "ready",
+          "name": "已准备",
+          "type": "boolean",
+          "suggestions": [
+            true,
+            false
+          ]
+        },
+        {
+          "key": "hero",
+          "name": "目标英雄",
+          "type": "entity",
+          "entity_categories": [
+            "heroes"
+          ],
+          "suggestions": [
+            "小乔"
+          ]
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "help_complete_group_v1",
+      "name": "示例：检查英雄与血量",
+      "event_id": "help_complete_event_v1",
+      "scope": {
+        "player_id": null,
+        "lineup_note_id": null
+      },
+      "conditions": [
+        {
+          "parameter_key": "stage",
+          "operator": "eq",
+          "value": "前期"
+        },
+        {
+          "parameter_key": "health",
+          "operator": "between",
+          "value": [
+            30,
+            60
+          ]
+        },
+        {
+          "parameter_key": "ready",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "parameter_key": "hero",
+          "operator": "eq",
+          "value": "小乔"
+        }
+      ],
+      "utterances": [
+        "{stage}留意{hero}，当前血量{health}，准备状态：{ready}。",
+        "先核对{hero}的站位；{{提示}}：当前血量{health}。"
+      ]
+    }
+  ]
+}

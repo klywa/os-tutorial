@@ -43,7 +43,13 @@ class ReleaseManager:
             return None
         root = self.current.resolve()
         sync = self.sync_class(root, self.state_dir, self.branch)
-        return {'root': str(root), **sync.status()}
+        # The uploaded publisher can run against the previous serving release,
+        # which has no templates module during the first feature rollout.
+        revision=None
+        if (root/'templates').exists() or (root/'raw/templates/pending.json').exists():
+            from templates_sync import fingerprint
+            revision=fingerprint(root)
+        return {'root': str(root), **sync.status(), 'templates_revision':revision}
 
     def assert_unchanged(self, snapshot):
         now = self.snapshot()

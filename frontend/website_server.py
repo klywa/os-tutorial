@@ -96,6 +96,9 @@ def handler_class(base):
                 if path=='/api/auth/me':return self.response(200,self.who())
                 if path.startswith('/api/') and not self.actor():
                     return self.response(401,{'error':'请先登录'})
+                if path=='/api/templates' or path.startswith('/api/templates/'):
+                    import templates_http
+                    return self.response(200,templates_http.get(self.server,self.actor(),path,self.path))
                 if path=='/api/edit-locks':
                     if not self.actor():return self.response(401,{'error':'请先登录'})
                     from site_access import get_locks
@@ -206,6 +209,8 @@ def handler_class(base):
             self.send_header('X-Content-Type-Options','nosniff');self.end_headers();self.wfile.write(body)
 
         def mutate(self):
+            from save_timing import begin
+            begin()
             from website_sync import SyncBusy, SyncBlocked, save_lock
             from site_access import is_proposal_path,mutate_proposal
             from proposals import ProposalForbidden
@@ -220,7 +225,8 @@ def handler_class(base):
                 proposal=is_proposal_path(path)
                 lockpath=path.startswith('/api/edit-locks/') and self.command=='POST'
                 entries=bool(re.fullmatch(r'/api/notes/[^/]+/entries',path)) and self.command=='PUT'
-                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving):
+                templatepath=(path=='/api/templates' or path.startswith('/api/templates/')) and self.command=='POST'
+                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving or templatepath):
                     self.discard_small_body()
                     raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
@@ -244,6 +250,9 @@ def handler_class(base):
                     cookie=self.server.auth.switch_role(self.headers.get('Cookie'),data.get('role'))
                     from site_access import session
                     return self.auth_reply(200,session(self.server,cookie,public=True),cookie)
+                if templatepath:
+                    import templates_http
+                    return self.response(200,templates_http.mutate(self.server,self.actor(),path,self.command,data,public=True))
                 if lockpath:
                     from site_access import mutate_locks
                     return self.response(200,mutate_locks(self.server,self.actor(),path,data))
@@ -310,6 +319,10 @@ def configure(server,base_path,origin,config,state_dir):
     proposals=proposal_store(server)
     if proposals.recovery_pending():
         with sync_lock(server.state_dir):proposals.recover()
+    from templates_http import proposal_store as template_proposal_store
+    templates=template_proposal_store(server)
+    if templates.receipt.exists():
+        with sync_lock(server.state_dir):templates.recover()
     server.dist=Path(__file__).resolve().parent/'dist'
     # Clean staged releases start while the publisher holds its activation lock.
     # Only an interrupted existing release needs to acquire it for recovery.

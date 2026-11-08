@@ -1,0 +1,10 @@
+.template-help{padding:8px 24px 24px;min-width:0;line-height:1.75;overflow-wrap:anywhere}
+.template-help h1{font-size:24px}.template-help h2{font-size:20px;margin:28px 0 12px}.template-help h3{font-size:17px;margin:20px 0 10px}
+.template-help p,.template-help ul,.template-help ol{margin:12px 0}.template-help a{color:var(--jade,#72d5b5);text-decoration:underline}
+.template-help code{font-family:Consolas,"Cascadia Code",monospace;font-size:.9em;background:#091621;padding:2px 4px;border-radius:3px}
+.template-help-table{overflow-x:auto;margin:14px 0;border:1px solid #2b4153;border-radius:6px;max-width:100%}
+.template-help table{width:100%;border-collapse:collapse;font-size:13px;min-width:530px}.template-help th,.template-help td{padding:9px 12px;border-bottom:1px solid #2b4153;text-align:left;vertical-align:top}.template-help th{background:#172b3b}
+.template-help-example{scroll-margin:16px;padding-top:12px;border-top:1px solid #2b4153;margin-top:24px;min-width:0}
+.template-help-example label{display:grid;gap:8px;font-size:14px}.template-help-example textarea{display:block;box-sizing:border-box;width:100%;min-width:0;min-height:260px;max-height:50dvh;resize:vertical;white-space:pre;overflow:auto;tab-size:2;font:13px/1.65 Consolas,"Cascadia Code",monospace}
+.template-help-actions,.template-help footer{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.template-help-example [role=status]{color:var(--jade,#72d5b5)}
+@media(max-width:760px){.template-help{padding:6px 16px 20px}.template-help h1{font-size:21px}.template-help h2{font-size:18px}.template-help-example textarea{font-size:12px}.template-help th,.template-help td{padding:8px}}

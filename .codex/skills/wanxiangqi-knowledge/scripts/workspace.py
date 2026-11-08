@@ -1,6 +1,7 @@
 """Single-writer knowledge workspace shared by the CLI and local web UI."""
 from contextlib import contextmanager, nullcontext
 from copy import deepcopy
+from functools import lru_cache
 import hashlib
 import json
 import os
@@ -26,6 +27,7 @@ class Busy(ValueError):
 
 @contextmanager
 def store_lock(root, wait=False):
+    lock_started = time.perf_counter()
     # OS byte-range locks release on process exit, including abnormal exits.
     path = Path(root) / 'raw/knowledge/.write.lock'
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -43,6 +45,8 @@ def store_lock(root, wait=False):
                 else:
                     import fcntl
                     fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                from save_timing import record
+                record('lock', (time.perf_counter()-lock_started)*1000)
                 break
             except OSError as exc:
                 if time.monotonic() >= deadline:
@@ -508,6 +512,12 @@ def merge_note(previous, incoming):
     return result
 
 
+@lru_cache(maxsize=8)
+def _validation_entities(root, signature):
+    # Validation only reads these dictionaries; callers never receive the cache.
+    return wxq.entities(root)
+
+
 def validate_meta(root, meta):
     if not isinstance(meta, dict):
         raise ValueError('阵容信息必须为对象')
@@ -516,7 +526,15 @@ def validate_meta(root, meta):
         raise ValueError('阵容信息缺失必需字段或阶段')
     if not isinstance(meta['ban_conditions'], list) or not isinstance(meta['matchups'], list):
         raise ValueError('适用条件和针对策略须为列表')
-    known = {e['id'] for e in wxq.entities(root)}
+    root=Path(root)
+    signature=[]
+    for category in wxq.CATEGORIES:
+        path=root/'entities'/(category+'.json')
+        try:
+            stat=path.stat();signature.append((stat.st_mtime_ns,stat.st_ctime_ns,stat.st_size))
+        except FileNotFoundError:signature.append(None)
+    entity_rows=_validation_entities(root.resolve(),tuple(signature))
+    known = {e['id'] for e in entity_rows}
     def reference(value):
         if not isinstance(value, str) or not value or len(value) > 160:
             raise ValueError('实体引用无效')
@@ -524,7 +542,7 @@ def validate_meta(root, meta):
             raise ValueError('未知实体，请选择已有实体或以 pending: 标记待确认名称')
     from tactics import validate as validate_tactics
     from overview import validate as validate_overview
-    validate_overview(meta, wxq.entities(root))
+    validate_overview(meta, entity_rows)
     validate_tactics(meta, reference)
     for b in meta.get('player_branches',[]):
         local={k:deepcopy(meta[k]) for k in expected};local['players']=[b['player']]
@@ -788,6 +806,21 @@ def _source_notes(root):
             for record in json_store.records(root,clone=False))
 
 
+@lru_cache(maxsize=8)
+def _source_evidence(root, signature):
+    # The canonical index is atomically replaced after every committed note save.
+    linked, references = {}, {}
+    for note in _source_notes(root):
+        claims = [*note.get('claims', [])]
+        for history in note.get('history', []):
+            claims.extend(history.get('previous', {}).get('claims', []))
+        for claim in claims:
+            for evidence in claim.get('evidence', []):
+                linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
+                references.setdefault(evidence['source'], []).append(evidence)
+    return linked, references
+
+
 def sources(root, source_ids=None, *, include_knowledge=True):
     root = Path(root)
     selected = set(source_ids) if source_ids is not None else None
@@ -797,22 +830,19 @@ def sources(root, source_ids=None, *, include_knowledge=True):
         # Generic URL IDs may have been replaced by an imported platform ID.
         return [row for row in sources(root, include_knowledge=include_knowledge) if row['id'] in selected]
     rows = {r['id']: dict(r) for r in wxq.read_json(root / 'knowledge/source-registry.json', [])}
-    selected_folders = {sid.replace(':', '_') for sid in selected} if selected is not None else None
     linked = {}
     references = {}
-    for note in _source_notes(root) if include_knowledge else ():
-        for claim in note.get('claims', []):
-            for evidence in claim.get('evidence', []):
-                linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
-                references.setdefault(evidence['source'], []).append(evidence)
-        for history in note.get('history', []):
-            for claim in history.get('previous', {}).get('claims', []):
-                for evidence in claim.get('evidence', []):
-                    linked.setdefault(evidence['source'], {})[note['id']] = {'id': note['id'], 'title': note['title']}
-                    references.setdefault(evidence['source'], []).append(evidence)
-    for path in (root / 'raw/sources').glob('*/metadata.json'):
-        if selected_folders is not None and path.parent.name not in selected_folders:
-            continue
+    if include_knowledge:
+        index = root / 'knowledge/index.meta.json'
+        if index.exists():
+            stat = index.stat()
+            linked, references = _source_evidence(root.resolve(), (stat.st_mtime_ns, stat.st_ctime_ns, stat.st_size))
+        else:
+            # Legacy stores do not have a single commit signature.
+            linked, references = _source_evidence.__wrapped__(root, None)
+    paths = ((wxq.source_dir(root,sid)/'metadata.json') for sid in selected) if selected is not None else (root/'raw/sources').glob('*/metadata.json')
+    for path in paths:
+        if not path.is_file():continue
         metadata = wxq.read_json(path)
         sid = metadata['id']
         url, registry_id = canonical_url(metadata['url'])
@@ -846,6 +876,6 @@ def sources(root, source_ids=None, *, include_knowledge=True):
     for sid, row in rows.items():
         row.setdefault('stage', 'registered')
         if include_knowledge:
-            row['linked_notes'] = list(linked.get(sid, {}).values())
+            row['linked_notes'] = deepcopy(list(linked.get(sid, {}).values()))
             row['knowledge_status'] = 'deposited' if row['linked_notes'] and row['stage'] == 'complete' and row.get('reviewed') else 'submitted' if row['linked_notes'] else 'unprocessed'
     return sorted(rows.values(), key=lambda r: r.get('updated_at', r.get('collected_at', '')), reverse=True)

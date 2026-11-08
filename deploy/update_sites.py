@@ -213,15 +213,15 @@ def snapshot_os(current, state_dir, destination, *, include_images=True):
             os.chown(destination.parent, state_owner.st_uid, state_owner.st_gid)
     destination.mkdir(parents=True, exist_ok=False)
     os.chmod(destination, 0o700)
-    for name in ('knowledge','knowledge-history','knowledge-sync','website-data'):
+    for name in ('knowledge','knowledge-history','knowledge-sync','templates','website-data'):
         source = current / name
         if source.exists():
             shutil.copytree(source, destination / name,
                             ignore=shutil.ignore_patterns('images') if name=='website-data' else None)
     for source in state_dir.iterdir():
-        if source.name in ('sync.lock', 'proposals.sqlite3-wal', 'proposals.sqlite3-shm'):
+        if source.name=='sync.lock' or source.name.endswith(('.sqlite3-wal','.sqlite3-shm')):
             continue
-        if source.name == 'proposals.sqlite3':
+        if source.name.endswith('.sqlite3'):
             sqlite_snapshot(source, destination / source.name)
         elif source.is_file():
             shutil.copy2(source, destination / source.name)

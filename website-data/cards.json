@@ -27416,32 +27416,6 @@
     "sources": []
   },
   {
-    "id": "card:662206",
-    "name": "潮起潮落",
-    "category": "talents",
-    "aliases": [],
-    "effect": "战斗开始时，随机传送1个4-5阶临时等级为回合数×16的英雄进入战场（不含卡牌效果），并携带3件适配装备。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "初始天赋",
-      "解锁条件": "万象大赛达到1200分",
-      "拍卖轮次（官网原文）": "初始阵容",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:671020",
     "name": "厉兵秣马",
     "category": "talents",
@@ -27568,29 +27542,6 @@
       "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
     },
     "retrieved_at": "2026-11-06T01:49:55.322948+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:92210",
-    "name": "潮汐的交响",
-    "category": "player-skills",
-    "aliases": [],
-    "effect": "场上随机英雄等级+5，触发4次，若对象为温柔呼唤的英雄则额外等级+5，每次使用后，触发次数+2（优先随机温柔呼唤的英雄）。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "获得途径": "来源: 初始获得卡牌"
-    },
-    "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
     "version": null,
     "sources": []
   },
@@ -27845,6 +27796,55 @@
       "获得途径": "来源: 初始获得卡牌"
     },
     "retrieved_at": "2026-11-06T01:49:51.453466+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:662206",
+    "name": "潮起潮落",
+    "category": "talents",
+    "aliases": [],
+    "effect": "战斗开始时，随机传送1个4-5阶临时等级为回合数×12的英雄进入战场（不含卡牌效果），并携带3件适配装备。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "初始天赋",
+      "解锁条件": "万象大赛达到1200分",
+      "拍卖轮次（官网原文）": "初始阵容",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-07T07:47:33.966345+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:92210",
+    "name": "潮汐的交响",
+    "category": "player-skills",
+    "aliases": [],
+    "effect": "场上随机英雄等级+5，触发2次，若对象为温柔呼唤的英雄则额外等级+3，每次使用后，触发次数+2（优先随机温柔呼唤的英雄）。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "获得途径": "来源: 初始获得卡牌"
+    },
+    "retrieved_at": "2026-11-07T07:47:23.950945+00:00",
     "version": null,
     "sources": []
   }
