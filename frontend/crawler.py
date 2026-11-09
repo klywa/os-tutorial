@@ -602,6 +602,10 @@ class Store(MonitorMixin,TagMixin,RetryMixin):
             raise ValueError('UP主名称或关键词格式无效')
         if any(not isinstance(k, str) for k in payload.get('keywords', [])):
             raise ValueError('关键词须为文字')
+        if 'min_duration' in payload:
+            duration = payload['min_duration']
+            if duration is not None and (type(duration) is not int or not 0 <= duration <= 10**15):
+                raise ValueError('最短时长须为非负整数秒')
         if 'tags' in payload:payload={**payload,'tags':normalize_tags(payload['tags'])}
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
@@ -613,7 +617,7 @@ class Store(MonitorMixin,TagMixin,RetryMixin):
             if not create and not old:
                 raise KeyError('UP主监听已删除，请刷新列表')
             row = {**(json.loads(old['data']) if old else {}), **{k: payload[k] for k in
-                   ['name', 'date_from', 'enabled', 'keywords','tags'] if k in payload},
+                   ['name', 'date_from', 'enabled', 'keywords','tags', 'min_duration'] if k in payload},
                    'uid': uid, 'url': f'https://space.bilibili.com/{uid}'}
             row.setdefault('enabled', True)
             row.setdefault('keywords', [])
