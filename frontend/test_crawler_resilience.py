@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+from threading import Event
 import unittest
 from unittest.mock import patch
 
@@ -10,7 +11,7 @@ sys.path[:0] = [str(ROOT / 'frontend'), str(ROOT / '.codex/skills/wanxiangqi-kno
 import wxq
 import workspace
 from acquisition_errors import describe_error
-from crawler import Store
+from crawler import Runtime, Store
 
 
 class ClassificationTests(unittest.TestCase):
@@ -54,6 +55,33 @@ class ResilienceTests(unittest.TestCase):
         self.assertIsNotNone(task)
         self.store.finish_task(task['bvid'], 'failed', message, progress=progress, generation=task['generation'])
         return task
+
+    def test_creator_min_duration_persists_and_filters_scan(self):
+        uid = '123'
+        creator = self.store.create_creator({
+            'url': 'https://space.bilibili.com/123', 'date_from': '2026-09-10',
+        })
+        jid = self.store.creators()[0]['job_id']
+        self.assertIsNone(self.store.job(jid)['config']['min_duration'])
+        self.store.update_creator(uid, {'url': creator['url'], 'date_from': creator['date_from'], 'min_duration': 601})
+        store = Store(self.root)
+        self.assertEqual(store.creators()[0]['min_duration'], 601)
+        job = store.check_creator(uid)
+        runtime = Runtime.__new__(Runtime)
+        runtime.store, runtime.root, runtime.closed = store, self.root, Event()
+        rows = [
+            {'bvid': bvid, 'title': '赛事回放', 'description': '', 'published': '2026-11-01',
+             'view_count': 10, 'duration': duration}
+            for bvid, duration in [('BV1234567800', 600), ('BV1234567801', 601)]
+        ]
+        with patch('crawler.Bilibili') as adapter, patch('crawler.register_discovered'):
+            adapter.return_value.creator_page.return_value = (rows, False)
+            runtime.scan(job)
+        self.assertEqual(store.job(jid)['scanned'], 2)
+        self.assertEqual(store.job(jid)['matched'], 1)
+        self.assertEqual({t['bvid'] for t in store.tasks()} & {r['bvid'] for r in rows}, {'BV1234567801'})
+        store.update_creator(uid, {'url': creator['url'], 'date_from': creator['date_from'], 'min_duration': None})
+        self.assertIsNone(store.job(jid)['config']['min_duration'])
 
     def test_network_retry_does_not_stop_after_three_and_restart_keeps_deadline(self):
         for attempt in range(1, 7):

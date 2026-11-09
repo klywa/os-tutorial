@@ -20,7 +20,8 @@ class MonitorMixin:
             jobs=db.execute("SELECT id,state FROM jobs WHERE creator=? AND state!='deleted' ORDER BY CASE state WHEN 'scanning' THEN 0 WHEN 'pending' THEN 1 ELSE 2 END,created,id",(uid,)).fetchall()
             jid=row.get('job_id')
             if jid not in {j['id'] for j in jobs}:jid=jobs[0]['id'] if jobs else uuid.uuid4().hex[:12]
-            filters=config({'date_from':row['date_from'],'keywords':row.get('keywords',[]),'tags':row.get('tags',[]),'mode':'auto','scan_limit':10000,'process_limit':10000})
+            filters=config({'date_from':row['date_from'],'keywords':row.get('keywords',[]),'tags':row.get('tags',[]),
+                            'min_duration':row.get('min_duration'),'mode':'auto','scan_limit':10000,'process_limit':10000})
             db.execute("INSERT OR IGNORE INTO jobs(id,config,state,created,creator) VALUES(?,?,'scanned',?,?)",(jid,encode(filters),now(),uid))
             # A running scan keeps its immutable filter snapshot until the next round.
             db.execute("UPDATE jobs SET config=? WHERE id=? AND state!='scanning'",(encode(filters),jid))
