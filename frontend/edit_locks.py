@@ -222,10 +222,11 @@ class EditLocks:
     @staticmethod
     def recover_receipt(conn,receipt):
         """Replay exact old lease IDs without allocating a new server epoch."""
-        for lid in receipt.get('revoked_leases',[]):
+        released=receipt.get('released_lease')
+        for lid in [*receipt.get('revoked_leases',[]), *([released] if released else [])]:
             raw=conn.execute('SELECT data FROM edit_locks WHERE id=?',(lid,)).fetchone()
             if raw:
-                row=json.loads(raw[0]);row.update(status='revoked',reason='admin_takeover',updated_at=time.time())
+                row=json.loads(raw[0]);row.update(status='revoked',reason='released' if lid==released else 'admin_takeover',updated_at=time.time())
                 EditLocks._put(conn,row)
         if receipt.get('kind')=='entry-save':
             EditLocks.remember(conn,receipt['request_key'],receipt['payload'],{'saved':True})

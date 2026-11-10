@@ -23,7 +23,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-2129555de1f4d5070b83"
     },
     {
       "id": "g-0a98cc2dae59496c1a52",
@@ -41,11 +42,127 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-d68ac9bbb4de17aabcb2"
+    },
+    {
+      "id": "claim-rw-simple-game-macro",
+      "text_ref": "rw-simple-game-macro",
+      "display_ref": "rw-simple-game-macro",
+      "section": "后期收束",
+      "condition": "",
+      "version": null,
+      "kind": "general_strategy",
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 180.97,
+          "end": 210.33
+        },
+        {
+          "source": "BV1t6Jv6hEEN:p1",
+          "start": 318.75,
+          "end": 347.73
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 306.93,
+          "end": 335.89
+        }
+      ]
+    },
+    {
+      "id": "claim-rw-simple-draft-game-macro",
+      "text_ref": "rw-simple-draft-game-macro",
+      "display_ref": "rw-simple-draft-game-macro",
+      "section": "前期目标",
+      "kind": "general_strategy",
+      "condition": "",
+      "version": null,
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV14j4F61Eh1:p1",
+          "start": 241.18,
+          "end": 267.92
+        },
+        {
+          "source": "BV14j4F61Eh1:p1",
+          "start": 353.72,
+          "end": 400.67
+        },
+        {
+          "source": "BV14j4F61Eh1:p1",
+          "start": 520.7,
+          "end": 572.19
+        },
+        {
+          "source": "BV14j4F61Eh1:p1",
+          "start": 735,
+          "end": 762.68
+        },
+        {
+          "source": "BV1LonA6WEhL:p1",
+          "start": 132.51,
+          "end": 160.91
+        },
+        {
+          "source": "BV1LonA6WEhL:p1",
+          "start": 189.82,
+          "end": 243.28
+        },
+        {
+          "source": "BV1LonA6WEhL:p1",
+          "start": 350.86,
+          "end": 385.93
+        }
+      ]
+    },
+    {
+      "id": "claim-rw-simple-midgame-evaluation",
+      "text_ref": "rw-simple-midgame-evaluation",
+      "display_ref": "rw-simple-midgame-evaluation",
+      "section": "中期发展",
+      "kind": "general_strategy",
+      "condition": "",
+      "version": null,
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1p9nC6mErs:p1",
+          "start": 0,
+          "end": 27.92
+        },
+        {
+          "source": "BV1p9nC6mErs:p1",
+          "start": 28.33,
+          "end": 85.65
+        },
+        {
+          "source": "BV1p9nC6mErs:p1",
+          "start": 86.22,
+          "end": 106.6
+        }
+      ]
     }
   ],
   "manual_sections": [],
   "conflicts": [],
-  "body_sha256": "31fcf9a3d388242071357971da0177c2d27d508dac92c410aa52416b2fcce69a",
-  "revision": "5112758b448590b4e99b"
+  "body_sha256": "ad0ed93fddb4bf8bbe292a804fd8ea1d779dfdca0a071e6dca093e28895d59de",
+  "revision": "2645b3463bf30593a96d",
+  "review_receipts": [],
+  "retired_claim_annotations": [],
+  "history_head": "knowledge-history/c45a161186ea10376849ef8e04eb0059/audit/35d2d88bbdc2f107291f45c1d6409f9d4437f0af10b34700a9bf713db01c6a4f.json",
+  "history_count": 6,
+  "node_annotations": {
+    "n-0eb1de62a6360866bf1b": {
+      "origin": "manual",
+      "section": "知识内容"
+    }
+  },
+  "manual_semantics": true
 }

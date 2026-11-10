@@ -49,7 +49,8 @@
           "paragraph_start": 13,
           "paragraph_end": 13
         }
-      ]
+      ],
+      "display_ref": "common-tips-inherit"
     },
     {
       "id": "claim-common-tips-legacy",
@@ -73,7 +74,8 @@
           "paragraph_start": 10,
           "paragraph_end": 10
         }
-      ]
+      ],
+      "display_ref": "common-tips-legacy"
     },
     {
       "id": "claim-common-tips-swap",
@@ -113,7 +115,8 @@
           "end": 97.93,
           "frame": "frames/70-0.jpg"
         }
-      ]
+      ],
+      "display_ref": "common-tips-swap"
     },
     {
       "id": "claim-common-tips-awaken",
@@ -142,7 +145,8 @@
           "end": 97.93,
           "frame": "frames/83-0.jpg"
         }
-      ]
+      ],
+      "display_ref": "common-tips-awaken"
     },
     {
       "id": "claim-common-tips-double-swap",
@@ -171,7 +175,8 @@
           "end": 104.85,
           "frame": "frames/96-0.jpg"
         }
-      ]
+      ],
+      "display_ref": "common-tips-double-swap"
     },
     {
       "id": "claim-common-tips-two-inherit",
@@ -201,7 +206,8 @@
           "end": 90,
           "frame": "frames/84-0.jpg"
         }
-      ]
+      ],
+      "display_ref": "common-tips-two-inherit"
     },
     {
       "id": "claim-common-tips-dual-core",
@@ -231,7 +237,8 @@
           "end": 159.99,
           "frame": "frames/156-0.jpg"
         }
-      ]
+      ],
+      "display_ref": "common-tips-dual-core"
     },
     {
       "id": "claim-common-tips-many-sanfen",
@@ -261,7 +268,8 @@
           "end": 256,
           "frame": "frames/248-0.jpg"
         }
-      ]
+      ],
+      "display_ref": "common-tips-many-sanfen"
     },
     {
       "id": "claim-common-tips-awakening-supply",
@@ -321,7 +329,8 @@
           "paragraph_start": 4,
           "paragraph_end": 4
         }
-      ]
+      ],
+      "display_ref": "common-tips-awakening-supply"
     },
     {
       "id": "claim-common-tips-tiger-gold",
@@ -387,7 +396,8 @@
           "paragraph_start": 2,
           "paragraph_end": 2
         }
-      ]
+      ],
+      "display_ref": "common-tips-tiger-gold"
     },
     {
       "id": "claim-common-tips-command-copy",
@@ -417,7 +427,8 @@
           "paragraph_start": 9,
           "paragraph_end": 9
         }
-      ]
+      ],
+      "display_ref": "common-tips-command-copy"
     },
     {
       "id": "claim-common-tips-gold-pool",
@@ -453,9 +464,67 @@
           "paragraph_start": 8,
           "paragraph_end": 8
         }
+      ],
+      "display_ref": "common-tips-gold-pool"
+    },
+    {
+      "id": "claim-rw-simple-common-tips",
+      "text_ref": "rw-simple-common-tips",
+      "display_ref": "rw-simple-common-tips",
+      "section": "等级集中技巧",
+      "condition": "",
+      "version": null,
+      "kind": "conditional_strategy",
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1WFn56wELQ:p1",
+          "start": 280.72,
+          "end": 308.22
+        }
+      ]
+    },
+    {
+      "id": "claim-rw-simple-hand-management",
+      "text_ref": "rw-simple-hand-management",
+      "display_ref": "rw-simple-hand-management",
+      "section": "连续出牌与手牌整理",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1kvnH6nED7:p1",
+          "start": 183.8,
+          "end": 212.98
+        },
+        {
+          "source": "BV1kvnH6nED7:p1",
+          "start": 213.36,
+          "end": 241.5
+        },
+        {
+          "source": "BV1kvnH6nED7:p1",
+          "start": 241.79,
+          "end": 271.17
+        }
       ]
     }
   ],
-  "body_sha256": "10077a531e1ab022462e1308f8aa66e658b873fdf31b2b0c5334a6659b8766ee",
-  "revision": "1377badcaffa9676f4d0"
+  "body_sha256": "858663dbd635ef977d7bb91a8740a3458cd180edd206bab557dad4ba3e0ca88c",
+  "revision": "29df23837a23114ad559",
+  "review_receipts": [],
+  "retired_claim_annotations": [],
+  "history_head": "knowledge-history/a96c20ea0af185c4fc771f14ace4ecd6/audit/0a0ca9c91171038c92dcc902c63275185556720562d2f842b699942499feabda.json",
+  "history_count": 5,
+  "node_annotations": {
+    "n-d075ead0b0a954994250": {
+      "origin": "manual",
+      "section": "知识内容"
+    }
+  },
+  "manual_semantics": true
 }

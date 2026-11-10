@@ -63,6 +63,29 @@ class ProposalTests(unittest.TestCase):
         self.assertEqual(self.action(items[2])['status'],'approved')
         self.assertNotIn('b',[n['id'] for n in self.note()['body']['nodes']])
 
+    def test_approve_current_draft_without_saving_proposal_first(self):
+        from edit_locks import EditLocked, EditLocks
+        item=self.submit()[0]
+        self.store.edit_locks=EditLocks(self.store)
+        lease=self.store.edit_locks.acquire(ADMIN,{'note_id':'n','client_id':'draft-tab',
+            'resource':{'kind':'entry','id':'a'}})
+        payload={'revision':item['revision'],'proposed_node':entry('a','reviewed draft'),
+            'client_id':'draft-tab','lease':{k:lease[k] for k in ('id','token')}}
+        with self.assertRaises(ProposalForbidden):
+            self.store.action(AUTHOR,item['id'],'approve',payload)
+        with self.assertRaises(Conflict):
+            self.store.action(ADMIN,item['id'],'approve',{**payload,'revision':0})
+        with self.assertRaises(EditLocked):
+            self.store.action(ADMIN,item['id'],'approve',{**payload,'lease':{'id':lease['id'],'token':'invalid'}})
+        self.assertEqual(self.store.get(ADMIN,item['id'])['proposed_node']['value'],'new')
+        result=self.store.action(ADMIN,item['id'],'approve',payload)
+        self.assertEqual(result['status'],'approved')
+        self.assertEqual(result['proposed_node']['value'],'reviewed draft')
+        self.assertEqual(self.note()['body']['nodes'][2]['value'],'reviewed draft')
+        self.assertEqual(self.store.action(ADMIN,item['id'],'approve',payload)['status'],'approved')
+        with self.assertRaises(Conflict):
+            self.store.action(ADMIN,item['id'],'approve',{**payload,'proposed_node':entry('a','different')})
+
     def test_private_list_reuses_one_readonly_record_and_get_never_scans(self):
         items=self.submit([self.nodes[1],entry('a','new'),entry('x','insert')])
         original=json_store.load_record
