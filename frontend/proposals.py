@@ -309,6 +309,16 @@ class ProposalStore:
             for item in items:self._put(conn,item)
             return {'items':[self._public(i,record) for i in items]}
 
+    @staticmethod
+    def _set_proposed_node(item, proposed):
+        if item['kind']=='delete':
+            if proposed is not None:raise ValueError('删除提案不接受正文')
+            return
+        if not isinstance(proposed,dict) or proposed.get('id')!=item['node_id']:
+            raise ValueError('提案节点ID不可变')
+        item['proposed_node'] = (sibling_heading(proposed, item['proposed_node']['level'])
+                                 if item['_context'].get('sibling_of') else _entry(proposed, item['base_node']))
+
     def update(self,actor,pid,payload,*,_recover=True):
         _authority(actor)
         if set(payload)-{'revision','proposed_node','rebase','client_id','lease'}:raise ValueError('不支持的提案字段')
@@ -333,13 +343,7 @@ class ProposalStore:
                     base=next((n for n in nodes if n['id']==item['node_id']),None)
                     if base is None or base['type']!='entry':raise Conflict('原条目已删除')
                     item['base_node']=deepcopy(base);item['_context']['section']=_section(nodes,item['node_id'])
-            proposed=payload.get('proposed_node')
-            if item['kind']=='delete':
-                if proposed is not None:raise ValueError('删除提案不接受正文')
-            else:
-                if not isinstance(proposed,dict) or proposed.get('id')!=item['node_id']:raise ValueError('提案节点ID不可变')
-                item['proposed_node'] = (sibling_heading(proposed, item['proposed_node']['level'])
-                                         if sibling else _entry(proposed, item['base_node']))
+            self._set_proposed_node(item,payload.get('proposed_node'))
             item.update(revision=item['revision']+1,updated_at=_now())
             self._put(conn,item)
             if locks:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
@@ -383,11 +387,20 @@ class ProposalStore:
         role=_authority(actor)
         if action not in ('approve','reject','withdraw'):raise ValueError('未知提案操作')
         if action in ('approve','reject') and role!='admin':raise ProposalForbidden('当前身份不能审核提案')
+        with_draft=action=='approve' and 'proposed_node' in payload
+        if with_draft and set(payload)!={'revision','proposed_node','client_id','lease'}:
+            raise ValueError('确认改稿需要提案版本及条目锁')
         if _recover:self.recover()
         with self._db() as conn:
             if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item)
-            if action=='approve' and item['status']=='approved':return self._public(item)
+            if action=='approve' and item['status']=='approved':
+                if with_draft:
+                    replay=deepcopy(item)
+                    self._set_proposed_node(replay,payload['proposed_node'])
+                    if replay['proposed_node']!=item['proposed_node']:
+                        raise Conflict('提案已确认，当前改稿未应用')
+                return self._public(item)
             self._revision(item,payload)
             if item['status']!='pending':raise Conflict('提案已经处理')
             if action=='withdraw' and actor['username']!=item['author']:raise ProposalForbidden('只有作者可撤回')
@@ -395,6 +408,11 @@ class ProposalStore:
                 record=self._note(item['note_id'])
                 if self._conflict(item,record):raise Conflict('正文或插入锚点已变化，请重新合并')
                 locks=getattr(self,'edit_locks',None);revoked=[]
+                if with_draft:
+                    if not locks or item['kind']=='delete':raise ValueError('当前提案无法直接确认改稿')
+                    from entry_changes import target
+                    locks.validate(conn,actor,payload['client_id'],payload['lease'],item['note_id'],target=target(item),record=record)
+                    self._set_proposed_node(item,payload['proposed_node'])
                 if locks:
                     from entry_changes import target
                     revoked=locks.revoke_annotators(conn,item['note_id'],[target(item)])
@@ -403,9 +421,15 @@ class ProposalStore:
                     'post_body':body,'pre_revision':record['metadata']['revision'],
                     'history_index':record['metadata'].get('history_count',0)+len(record['metadata'].get('history',[])),'note_id':item['note_id'],
                     'workspace':str(self.root.resolve())}
-                self._write_receipt(receipt)
-                result=json_store.edit(self.root,item['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True)
-                item['result_revision']=result['revision']
+                if with_draft:
+                    receipt['proposed_node']=item['proposed_node']
+                    receipt['released_lease']=payload['lease']['id']
+                if body!=record['body']:
+                    self._write_receipt(receipt)
+                    result=json_store.edit(self.root,item['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True)
+                    item['result_revision']=result['revision']
+                else:item['result_revision']=record['metadata']['revision']
+                if with_draft:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
             item.update(status={'approve':'approved','reject':'rejected','withdraw':'withdrawn'}[action],
                 reviewed_by=actor['username'],revision=item['revision']+1,updated_at=_now())
             self._put(conn,item)
@@ -437,6 +461,7 @@ class ProposalStore:
             if applied and receipt.get('kind')!='entry-save':
                 item=self._get(conn,receipt['proposal_id'])
                 if item['status']!='approved':
+                    if 'proposed_node' in receipt:item['proposed_node']=receipt['proposed_node']
                     item.update(status='approved',reviewed_by=receipt['reviewed_by'],revision=item['revision']+1,
                         result_revision=after['metadata']['revision'],updated_at=_now())
                     self._put(conn,item)

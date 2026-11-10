@@ -23,7 +23,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-9586605d633ba43aa90f"
     },
     {
       "id": "g-217a8fb9695b2e8cf4c3",
@@ -41,7 +42,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-41847a0c30afcc0dd7d9"
     },
     {
       "id": "g-51360b39cb75f7ee77d4",
@@ -59,7 +61,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-3b739ca62b3791293594"
     },
     {
       "id": "g-840c08056be8664418dc",
@@ -77,7 +80,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-3f1116eca2772e6245cc"
     },
     {
       "id": "g-99eb64aa3ce8a2e464bf",
@@ -95,7 +99,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-8abf76d41baa0487d183"
     },
     {
       "id": "g-caf63c274e55f3bb5b7d",
@@ -113,7 +118,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-989a9fd9e8757c5a8ee0"
     },
     {
       "id": "g-78a11296443c3245e891",
@@ -131,7 +137,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-123faf1acde873683473"
     },
     {
       "id": "g-e8da18a6ff49f55b5d47",
@@ -149,7 +156,8 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-4673084b24137787becd"
     },
     {
       "id": "g-7bc112ea702fd7b36fa0",
@@ -167,11 +175,79 @@
         }
       ],
       "condition": "",
-      "version": null
+      "version": null,
+      "display_ref": "g-7edb29ea258a5da9ba94"
+    },
+    {
+      "id": "claim-rw-simple-game-common-sense",
+      "text_ref": "rw-simple-game-common-sense",
+      "display_ref": "rw-simple-game-common-sense",
+      "section": "经济与购买",
+      "condition": "",
+      "version": null,
+      "kind": "general_strategy",
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 104.64,
+          "end": 162.13
+        },
+        {
+          "source": "BV1SyJt6yEjS:p1",
+          "start": 191.17,
+          "end": 220.32
+        },
+        {
+          "source": "BV1WFn56wELQ:p1",
+          "start": 208.7,
+          "end": 235.38
+        }
+      ]
+    },
+    {
+      "id": "claim-rw-simple-equipment-game-common-sense",
+      "text_ref": "rw-simple-equipment-game-common-sense",
+      "display_ref": "rw-simple-equipment-game-common-sense",
+      "section": "装备使用",
+      "kind": "conditional_strategy",
+      "condition": "",
+      "version": null,
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1ukHK6sEQC:p1",
+          "start": 25.5,
+          "end": 54.6
+        },
+        {
+          "source": "BV1ukHK6sEQC:p1",
+          "start": 289.7,
+          "end": 316.84
+        },
+        {
+          "source": "BV1ukHK6sEQC:p1",
+          "start": 608.54,
+          "end": 658.96
+        }
+      ]
     }
   ],
   "manual_sections": [],
   "conflicts": [],
-  "body_sha256": "c820f99fe95fd115a66293ad1eec2e82473d599c9458ecc4cc708586f802c26a",
-  "revision": "502c9c146c3fcc1a23c7"
+  "body_sha256": "423e9eb2a5dcbd4f7a458ec8c93e4c48944e0a29d2e0949f74ebed5c3c73e572",
+  "revision": "5c26b69a3418379d88e1",
+  "review_receipts": [],
+  "retired_claim_annotations": [],
+  "history_head": "knowledge-history/33cc6df85c791dfa8358cfc8ba47a76d/audit/f54aac45d33c1bcf6e681a5538863d87863569b0d1f936f9e71278ff0b6ca5b0.json",
+  "history_count": 5,
+  "node_annotations": {
+    "n-557bd7d75bc2eff08f27": {
+      "origin": "manual",
+      "section": "知识内容"
+    }
+  },
+  "manual_semantics": true
 }

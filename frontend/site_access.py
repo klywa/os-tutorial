@@ -160,12 +160,14 @@ def mutate_proposal(server,identity,path,command,data,public=False):
         if identity['role']!='admin':raise PermissionError('只有管理员可以确认提案')
         existing=service.get(identity,match[1])
         if existing['status']=='approved':
+            if 'proposed_node' in data:existing=service.action(identity,match[1],'approve',data)
             return {**existing,**({'sync':sync_status(server)} if public else {})}
         with save_lock(state_dir(server)),formal_save(server) if public else nullcontext():
             if public:getattr(server.sync,'_assert_active',lambda:None)()
             service.recover()
             existing=service.get(identity,match[1])
             if existing['status']=='approved':
+                if 'proposed_node' in data:existing=service.action(identity,match[1],'approve',data)
                 return {**existing,**({'sync':sync_status(server)} if public else {})}
             assert_formal_write(server,existing['note_id'],public=public)
             result=service.action(identity,match[1],'approve',data)

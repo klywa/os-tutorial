@@ -1535,14 +1535,37 @@
       "origin": "document",
       "text_ref": "n-a01d061676aa3392aae3",
       "display_ref": "n-a01d061676aa3392aae3"
+    },
+    {
+      "id": "claim-rw-simple-mechanics-rules",
+      "text_ref": "rw-simple-mechanics-rules",
+      "display_ref": "rw-simple-mechanics-rules",
+      "section": "英雄与合成",
+      "condition": "",
+      "version": null,
+      "kind": "conditional_strategy",
+      "origin": "video",
+      "inference": true,
+      "evidence": [
+        {
+          "source": "BV1WFn56wELQ:p1",
+          "start": 28.84,
+          "end": 45.64
+        },
+        {
+          "source": "BV1WFn56wELQ:p1",
+          "start": 70.57,
+          "end": 99.87
+        }
+      ]
     }
   ],
-  "body_sha256": "802fa530ff07e107cda67fd7f765eb4bcf58660ebf0fd464eed422f69918d536",
-  "revision": "768c2a180c2de50f7b34",
+  "body_sha256": "7ca4eebf787232e0f1d15f2df9d36212b4a21c9682a92a2ecdfd78709bcf42e0",
+  "revision": "38b381e13d11cd0ce3dd",
   "review_receipts": [],
   "retired_claim_annotations": [],
-  "history_head": "knowledge-history/9c4fb5ca482da740f2982b31db52c2d9/audit/c648fc2f64e746880df76f3f260e3122582d19a9b077b0a86d9d4d7c1d80be81.json",
-  "history_count": 4,
+  "history_head": "knowledge-history/9c4fb5ca482da740f2982b31db52c2d9/audit/c1b076b704b302949c0686c9f688db5aa406365ab86e19a66c581034f856faa4.json",
+  "history_count": 10,
   "consolidated_from": [
     {
       "id": "mechanics-auction",
@@ -1589,6 +1612,10 @@
     "n-462feb01d619b68afde3": {
       "origin": "manual",
       "section": "回合与胜负"
+    },
+    "n-8dbcd358aae65081b81e": {
+      "origin": "manual",
+      "section": "知识内容"
     }
   }
 }
