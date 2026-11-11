@@ -495,7 +495,61 @@ def validate_semantics(root, record):
     except (TypeError,AttributeError,KeyError) as exc:raise ValueError('阵容结构格式无效，请检查阶段成员与运营条件') from exc
 
 
-def edit(root, nid, payload, *, _review=None, public=False):
+def entry_claims(record, node_id):
+    return [claim for claim in record['metadata'].get('claim_annotations', [])
+            if claim['text_ref']==node_id]
+
+
+def prepare_entry_evidence(root, record, node_id, changes, *, inserting=False):
+    import math
+    import re
+
+    claims = entry_claims(record, node_id)
+    allowed = {claim['id'] for claim in claims}
+    if inserting:
+        claim_id=node_id+'-claim'
+        if (any(node['id']==node_id for key in ('nodes','supporting_nodes')
+                for node in record['body'].get(key,[]))
+                or any(claim['id']==claim_id for key in ('claim_annotations','retired_claim_annotations')
+                       for claim in record['metadata'].get(key,[]))):
+            raise ValueError('新增条目或结论的 ID 已存在')
+        allowed={claim_id}
+    seen = set()
+    if not isinstance(changes, list) or not changes:
+        raise ValueError('请提供条目的证据变更')
+    for change in changes:
+        if (not isinstance(change, dict) or set(change) != {'claim_id', 'evidence', 'inference'}
+                or not isinstance(change['claim_id'], str)
+                or change['claim_id'] not in allowed or change['claim_id'] in seen
+                or type(change['inference']) is not bool
+                or not isinstance(change['evidence'], list) or not change['evidence']):
+            raise ValueError('证据必须关联本条目的已有结论')
+        seen.add(change['claim_id'])
+        for evidence in change['evidence']:
+            if not isinstance(evidence, dict):
+                raise ValueError('无效的证据')
+            source = evidence.get('source')
+            if evidence.get('type') == 'document':
+                if (set(evidence) != {'type', 'source', 'paragraph_start', 'paragraph_end'}
+                        or not isinstance(source, str) or not re.fullmatch(r'doc-[0-9a-f]{64}', source)):
+                    raise ValueError('无效的文档证据')
+            else:
+                start, end = evidence.get('start'), evidence.get('end')
+                frame = evidence.get('frame', '')
+                if (set(evidence) - {'type', 'source', 'start', 'end', 'frame'}
+                        or evidence.get('type', 'video') != 'video'
+                        or not isinstance(source, str) or not re.fullmatch(r'BV[A-Za-z0-9]{10}:p[1-9]\d*', source)
+                        or not all(type(t) in (int, float) and 0 <= t <= 86400 and math.isfinite(t) for t in (start, end))
+                        or end < start or not isinstance(frame, str)
+                        or (frame and not re.fullmatch(r'frames/[\w.-]+\.(?:jpg|jpeg|png|webp)', frame))):
+                    raise ValueError('无效的视频证据定位')
+            check_evidence(root, evidence, check_duration=True)
+    if any(claim.get('evidence') and claim['id'] not in seen for claim in claims):
+        raise ValueError('请一并提交本条目仍适用的结论证据')
+    return deepcopy(changes), deepcopy(claims)
+
+
+def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False):
     from workspace import Conflict, store_lock
     with store_lock(root, wait=True):
         recover(root)
@@ -534,7 +588,8 @@ def edit(root, nid, payload, *, _review=None, public=False):
             # Keep display identity across text edits without rewriting evidence.
             display_refs = document.claim_display_refs(body, project(record, public=True)['claims'])
             for annotation in meta.get('claim_annotations', []):
-                if annotation['id'] in display_refs:
+                if annotation['id'] in display_refs and (
+                        not _entry_evidence or annotation['text_ref'] == _entry_evidence[0]):
                     annotation['display_ref'] = display_refs[annotation['id']]
         title = payload.get('title', meta['title'])
         if title != meta['title']:
@@ -577,7 +632,23 @@ def edit(root, nid, payload, *, _review=None, public=False):
                 for annotation in meta.get('claim_annotations', []):
                     if annotation['text_ref'] == n['id']:
                         annotation.update(origin='manual', evidence=[], inference=False)
-        if incoming != body or payload.get('aliases', meta.get('aliases', [])) != meta.get('aliases', []):
+        if _entry_evidence:
+            node_id, base_claims, changes = _entry_evidence
+            if entry_claims(before, node_id) != base_claims:
+                raise Conflict('正式证据已变化，请重新提交提案')
+            inserting=not base_claims and node_id not in old_nodes
+            prepare_entry_evidence(root, before, node_id, changes,inserting=inserting)
+            if inserting:
+                if node_id not in new_nodes or new_nodes[node_id]['type']!='entry':
+                    raise ValueError('新增结论必须关联新增正文条目')
+                meta.setdefault('claim_annotations',[]).append({
+                    'id':node_id+'-claim','text_ref':node_id,'kind':'conditional_strategy',
+                    'origin':'manual','section':meta['node_annotations'][node_id]['section']})
+            by_id = {claim['id']: claim for claim in entry_claims(record, node_id)}
+            for change in changes:
+                by_id[change['claim_id']].update(evidence=deepcopy(change['evidence']),
+                                                 inference=change['inference'])
+        if incoming != body or _entry_evidence or payload.get('aliases', meta.get('aliases', [])) != meta.get('aliases', []):
             import wxq
             meta.setdefault('history', []).append({'at': wxq.now(), 'origin': 'manual', 'previous': snapshot(before)})
             meta['aliases'] = payload.get('aliases', meta.get('aliases', []))
@@ -761,7 +832,7 @@ def commit(root, incoming, *, retire=None):
         return {'notes': changed, 'schema_version': 6}
 
 
-def check_evidence(root, evidence):
+def check_evidence(root, evidence, *, check_duration=False):
     import wxq
     if evidence.get('type') == 'document':
         from document_sources import validate_evidence
@@ -771,6 +842,10 @@ def check_evidence(root, evidence):
     from reference_store import transcript_artifacts
     if not transcript_artifacts(folder)[0].exists() or not (folder / 'metadata.json').exists():
         raise ValueError('来源转写或档案不存在：' + evidence['source'])
+    if check_duration:
+        duration = read(folder / 'metadata.json', {}).get('duration')
+        if type(duration) in (int, float) and duration > 0 and evidence['end'] > duration + 1:
+            raise ValueError('证据位置超出视频时长：' + evidence['source'])
     if evidence.get('frame') and not (folder / evidence['frame']).exists():
         raise ValueError('引用画面不存在：' + evidence['frame'])
 

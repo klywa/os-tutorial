@@ -12,7 +12,7 @@ def target(item):
             if item['kind']=='insert' else {'kind':'entry','id':item['node_id']})
 
 
-def prepare(store, conn, actor, payload):
+def prepare(store, conn, actor, payload, *, for_proposal=False):
     locks=store.edit_locks
     if set(payload)-{'note_id','client_id','request_id','changes'}:raise ValueError('不支持的条目字段')
     changes=payload.get('changes')
@@ -21,7 +21,9 @@ def prepare(store, conn, actor, payload):
     batch=locks.request_key(actor,payload['client_id'],payload['request_id'],'entries')
     has_sibling = False
     for index,change in enumerate(changes):
-        if not isinstance(change,dict) or set(change)-{'kind','lease','node','sibling_of'}:raise ValueError('无效的条目修改')
+        fields={'kind','lease','node','sibling_of'}
+        if for_proposal:fields.add('evidence_changes')
+        if not isinstance(change,dict) or set(change)-fields:raise ValueError('无效的条目修改')
         kind=change.get('kind')
         if kind not in ('update','insert','delete'):raise ValueError('无效的修改类型')
         lease=locks.validate(conn,actor,payload['client_id'],change.get('lease'),payload['note_id'],record=record)
@@ -53,6 +55,23 @@ def prepare(store, conn, actor, payload):
             'after_id':left,'base_node':deepcopy(base),'proposed_node':proposed,'revision':1,'status':'pending',
             'created_at':_now(),'updated_at':_now(),'reviewed_by':None,'result_revision':None,'order':index,
             '_batch':batch,'_context':context})
+        if 'evidence_changes' in change:
+            evidence=change['evidence_changes']
+            if kind=='insert' and proposed['type']=='entry':
+                if (not isinstance(evidence,list) or len(evidence)!=1
+                        or not isinstance(evidence[0],dict) or set(evidence[0])!={'evidence','inference'}):
+                    raise ValueError('新增条目须提供一条结论证据')
+                evidence=[{**evidence[0],'claim_id':nid+'-claim'}]
+            elif kind!='update':
+                raise ValueError('仅正文条目可提交证据')
+            evidence,claims=json_store.prepare_entry_evidence(
+                store.root,record,nid,evidence,inserting=kind=='insert')
+            if proposed==base:
+                baseline={claim['id']:claim for claim in claims}
+                if all(row['evidence']==baseline[row['claim_id']].get('evidence',[])
+                       and row['inference']==baseline[row['claim_id']].get('inference',False) for row in evidence):
+                    raise ValueError('正文与证据均未变化')
+            items[-1].update(evidence_changes=evidence,_base_claims=claims)
         refs.append(change['lease'])
     return record,items,refs
 
@@ -64,7 +83,7 @@ def submit(store,actor,payload):
         prior=locks.replay(conn,key,payload)
         if prior is not None:
             return {'items':[store._public(store._get(conn,pid)) for pid in prior['ids']]}
-        record,items,refs=prepare(store,conn,actor,payload)
+        record,items,refs=prepare(store,conn,actor,payload,for_proposal=True)
         for item in items:store._put(conn,item)
         locks.remember(conn,key,payload,{'ids':[i['id'] for i in items]})
         locks.release_in(conn,actor,payload['client_id'],refs)

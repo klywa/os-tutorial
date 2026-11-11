@@ -26,7 +26,24 @@ if __name__=='__main__':
   def submit(nid,scope,nodes):
    return store.submit(author,{'note_id':nid,'scope_id':scope,'revision':store._note(nid)['metadata']['revision'],'nodes':nodes})['items'][0]
   first=submit('one','one-a',[entry('one-a','当前条目','提案修改内容')])
-  for i in range(16):submit('one','long-'+str(i),[entry('long-'+str(i),'运营'+str(i),'待审建议 '+str(i))])
+  for i in range(1,16):submit('one','long-'+str(i),[entry('long-'+str(i),'运营'+str(i),'待审建议 '+str(i))])
+  from edit_locks import EditLocks
+  record=store._note('one')
+  record['metadata']['claim_annotations']=[{'id':'fixture-claim','text_ref':'long-0',
+      'kind':'conditional_strategy','origin':'manual','evidence':[]}]
+  json_store.save(root,[record],partial=True)
+  source=root/'raw/sources/BV1cZpA66E98_p1'
+  source.mkdir(parents=True)
+  (source/'metadata.json').write_text(json.dumps({'duration':30}),encoding='utf-8')
+  (source/'asr.raw.json').write_text(json.dumps({'segments':[{'text':'browser evidence fixture'}]}),encoding='utf-8')
+  store.edit_locks=EditLocks(store)
+  lease=store.edit_locks.acquire(author,{'note_id':'one','client_id':'fixture-tab',
+      'resource':{'kind':'entry','id':'long-0'}})
+  evidence=store.submit_delta(author,{'note_id':'one','client_id':'fixture-tab','request_id':'fixture-evidence',
+      'changes':[{'kind':'update','node':entry('long-0','运营0','带证据的原始提案'),
+                  'lease':{k:lease[k] for k in ('id','token')},
+                  'evidence_changes':[{'claim_id':'fixture-claim','inference':True,
+                      'evidence':[{'source':'BV1cZpA66E98:p1','start':10,'end':20}]}]}]})['items'][0]
   changed=submit('two','source:target',[entry('source:target','目标原文','尚未确认的改动')])
   approved=submit('two','final-chapter',[*store._note('two')['body']['nodes'][-4:-2],entry('fresh','已确认新增','新增正式内容')])
   store.action(admin,approved['id'],'approve',{'revision':1})
@@ -43,6 +60,6 @@ if __name__=='__main__':
   http=server.create_server(root,0,start_worker=False) if '--local' in sys.argv else server.create_server(root,0,public=True,base_path='',auth_config=config,state_dir=root/'state')
   http.auth.secure=False
   http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda:{'state':'synced'})
-  print(json.dumps({'port':http.server_port,'root':str(root),'ids':{k:v['id'] for k,v in [('first',first),('changed',changed),('approved',approved),('inserted',inserted),('removed',removed),('orphan',orphan)]},'approvedNode':approved['node_id']}),flush=True)
+  print(json.dumps({'port':http.server_port,'root':str(root),'ids':{k:v['id'] for k,v in [('first',first),('evidence',evidence),('changed',changed),('approved',approved),('inserted',inserted),('removed',removed),('orphan',orphan)]},'approvedNode':approved['node_id']}),flush=True)
   try:http.serve_forever()
   finally:http.server_close()

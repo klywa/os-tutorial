@@ -178,6 +178,8 @@ class ProposalStore:
         context=item['_context']
         if item['kind']!='insert':
             if byid.get(item['node_id'])!=item['base_node']:return True
+            if '_base_claims' in item and json_store.entry_claims(record,item['node_id'])!=item['_base_claims']:
+                return True
             return _section(nodes,item['node_id'])!=context['section']
         if item['node_id'] in byid:return True
         if source := context.get('sibling_of'):
@@ -319,18 +321,41 @@ class ProposalStore:
         item['proposed_node'] = (sibling_heading(proposed, item['proposed_node']['level'])
                                  if item['_context'].get('sibling_of') else _entry(proposed, item['base_node']))
 
+    def _confirm_draft_evidence(self,item,payload,record=None):
+        if 'evidence_changes' not in item:
+            if 'evidence_changes' in payload:raise ValueError('普通提案不接受证据变更')
+            return
+        if payload.get('rebase') or payload.get('evidence_changes')!=item['evidence_changes']:
+            raise Conflict('请核对本次改稿的完整证据；需要更换证据时请重新提交提案')
+        if record is not None:
+            if self._conflict(item,record):raise Conflict('正式正文或证据已变化，请重新提交提案')
+            json_store.prepare_entry_evidence(self.root,record,item['node_id'],item['evidence_changes'],
+                                              inserting=item['kind']=='insert')
+
+    @staticmethod
+    def _check_evidence_draft_change(item):
+        if 'evidence_changes' not in item or item['proposed_node']!=item['base_node']:return
+        baseline={claim['id']:claim for claim in item['_base_claims']}
+        if all(change['evidence']==baseline[change['claim_id']].get('evidence',[])
+               and change['inference']==baseline[change['claim_id']].get('inference',False)
+               for change in item['evidence_changes']):
+            raise ValueError('正文与证据均未变化')
+
     def update(self,actor,pid,payload,*,_recover=True):
         _authority(actor)
-        if set(payload)-{'revision','proposed_node','rebase','client_id','lease'}:raise ValueError('不支持的提案字段')
+        if set(payload)-{'revision','proposed_node','rebase','client_id','lease','evidence_changes'}:raise ValueError('不支持的提案字段')
         if _recover:self.recover()
         with self._db() as conn:
             if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item);self._revision(item,payload)
             if item['status']!='pending':raise Conflict('已处理提案不能修改')
+            record=self._note(item['note_id']) if 'evidence_changes' in item else None
+            self._confirm_draft_evidence(item,payload,record)
             locks=getattr(self,'edit_locks',None)
+            if record is not None and not locks:raise ValueError('改稿需要条目锁')
             if locks:
                 from entry_changes import target
-                locks.validate(conn,actor,payload.get('client_id'),payload.get('lease'),item['note_id'],target=target(item))
+                locks.validate(conn,actor,payload.get('client_id'),payload.get('lease'),item['note_id'],target=target(item),record=record)
             sibling = item['_context'].get('sibling_of')
             if sibling and self._conflict(item, self._note(item['note_id'])):
                 raise Conflict('章节插入位置已变化，请重新提交')
@@ -344,6 +369,7 @@ class ProposalStore:
                     if base is None or base['type']!='entry':raise Conflict('原条目已删除')
                     item['base_node']=deepcopy(base);item['_context']['section']=_section(nodes,item['node_id'])
             self._set_proposed_node(item,payload.get('proposed_node'))
+            self._check_evidence_draft_change(item)
             item.update(revision=item['revision']+1,updated_at=_now())
             self._put(conn,item)
             if locks:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
@@ -388,14 +414,17 @@ class ProposalStore:
         if action not in ('approve','reject','withdraw'):raise ValueError('未知提案操作')
         if action in ('approve','reject') and role!='admin':raise ProposalForbidden('当前身份不能审核提案')
         with_draft=action=='approve' and 'proposed_node' in payload
-        if with_draft and set(payload)!={'revision','proposed_node','client_id','lease'}:
+        fields={'revision','proposed_node','client_id','lease'}
+        if with_draft and set(payload)-{'evidence_changes'}!=fields:
             raise ValueError('确认改稿需要提案版本及条目锁')
+        if not with_draft and 'evidence_changes' in payload:raise ValueError('证据确认必须和改稿一并提交')
         if _recover:self.recover()
         with self._db() as conn:
             if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item)
             if action=='approve' and item['status']=='approved':
                 if with_draft:
+                    self._confirm_draft_evidence(item,payload)
                     replay=deepcopy(item)
                     self._set_proposed_node(replay,payload['proposed_node'])
                     if replay['proposed_node']!=item['proposed_node']:
@@ -409,10 +438,12 @@ class ProposalStore:
                 if self._conflict(item,record):raise Conflict('正文或插入锚点已变化，请重新合并')
                 locks=getattr(self,'edit_locks',None);revoked=[]
                 if with_draft:
+                    self._confirm_draft_evidence(item,payload)
                     if not locks or item['kind']=='delete':raise ValueError('当前提案无法直接确认改稿')
                     from entry_changes import target
                     locks.validate(conn,actor,payload['client_id'],payload['lease'],item['note_id'],target=target(item),record=record)
                     self._set_proposed_node(item,payload['proposed_node'])
+                    self._check_evidence_draft_change(item)
                 if locks:
                     from entry_changes import target
                     revoked=locks.revoke_annotators(conn,item['note_id'],[target(item)])
@@ -424,9 +455,13 @@ class ProposalStore:
                 if with_draft:
                     receipt['proposed_node']=item['proposed_node']
                     receipt['released_lease']=payload['lease']['id']
-                if body!=record['body']:
+                options={}
+                if 'evidence_changes' in item:
+                    options['_entry_evidence']=(item['node_id'],item['_base_claims'],item['evidence_changes'])
+                    receipt['entry_evidence']=options['_entry_evidence']
+                if body!=record['body'] or options:
                     self._write_receipt(receipt)
-                    result=json_store.edit(self.root,item['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True)
+                    result=json_store.edit(self.root,item['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True,**options)
                     item['result_revision']=result['revision']
                 else:item['result_revision']=record['metadata']['revision']
                 if with_draft:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
@@ -455,6 +490,14 @@ class ProposalStore:
             # accepting an identical body that happened to exist long ago.
             applied=(transition.get('metadata',{}).get('revision')==receipt['pre_revision']
                 and transition.get('body')==receipt['pre_body'] and after.get('body')==receipt['post_body'])
+            if applied and 'entry_evidence' in receipt:
+                node_id, base_claims, changes=receipt['entry_evidence']
+                by_id={claim['id']:claim for claim in json_store.entry_claims(after,node_id)}
+                applied=(json_store.entry_claims(transition,node_id)==base_claims and all(
+                    change['claim_id'] in by_id
+                    and by_id[change['claim_id']].get('evidence')==change['evidence']
+                    and by_id[change['claim_id']].get('inference')==change['inference']
+                    for change in changes))
             if applied:
                 from edit_locks import EditLocks
                 EditLocks.recover_receipt(conn,receipt)

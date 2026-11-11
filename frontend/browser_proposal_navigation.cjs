@@ -9,14 +9,15 @@ async function fetchRoute(route,options){if(requests>=4)await new Promise(resolv
  let output='';const fixture=await new Promise((resolve,reject)=>{const t=setTimeout(()=>reject(Error('fixture startup '+output)),30000);child.stdout.on('data',b=>{output+=b;try{const f=JSON.parse(output.split('\n')[0]);clearTimeout(t);resolve(f);}catch{}});child.stderr.on('data',b=>process.stderr.write(b));child.on('exit',c=>{if(c)reject(Error('fixture exit '+c));});});
  const base='http://127.0.0.1:'+fixture.port,headers={host:'klywa.xyz',origin:'https://klywa.xyz'};
  browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH||'C:/Users/klywa/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe'});
- async function page(width=1440,role='admin',local=false,long=false,zoom=1){
+ async function page(width=1440,role='admin',local=false,long=false,zoom=1,beforeOpen){
   const endpoint=local?localBase:base,requestHeaders=local?{origin:endpoint}:headers;
   const c=await browser.newContext({viewport:{width:Math.round(width/zoom),height:Math.round(1000/zoom)},deviceScaleFactor:zoom});
   if(!local)await c.request.post(endpoint+'/api/auth/login',{headers:requestHeaders,data:{username:role==='admin'?'reviewer':'alice',password:'fixture'}});
   await c.addInitScript(()=>localStorage.setItem('wxq.preferences',JSON.stringify({view:'notes',selected:'one',mode:'full'})));
   const p=await c.newPage();last=p;p.on('pageerror',e=>errors.push(e.message));
   await p.route(endpoint+'/**',async route=>{try{const response=await fetchRoute(route,{headers:{...route.request().headers(),...requestHeaders}});if(route.request().url().endsWith('/api/auth/me')&&(local||long)){const value=await response.json();if(local)value.mode='local';if(long){value.username='这是用于检查顶栏裁切的很长用户名'.repeat(4);value.sync={state:'pending',phase:'custom',message:'这是很长的同步状态说明'.repeat(12)};}await route.fulfill({response,json:value});}else await route.fulfill({response});}catch(e){await route.abort('failed').catch(()=>{});}});
-  await p.goto(endpoint);await p.locator('.json-entry').first().waitFor();return p;
+  await beforeOpen?.(p,endpoint);
+  await p.goto(endpoint);if(!beforeOpen)await p.locator('.json-entry').first().waitFor();return p;
  }
  async function open(p){if(await p.getByRole('dialog',{name:'提案审核'}).isVisible())return;if(!await p.locator('.account-items').getByRole('button',{name:'提案',exact:true}).isVisible())await p.getByRole('button',{name:'账号菜单',exact:true}).click();await p.locator('.account-items').getByRole('button',{name:'提案',exact:true}).click();await p.getByRole('dialog',{name:'提案审核'}).waitFor();}
  const card=(p,id)=>p.locator(`[data-proposal-id="${id}"]`);
@@ -34,9 +35,9 @@ async function fetchRoute(route,options){if(requests>=4)await new Promise(resolv
  await p.route(base+'/api/notes/two',route=>fail?route.fulfill({status:404,json:{error:'笔记不存在'}}):route.fallback());
  const before=await p.locator('.compact-note-heading h1').textContent();await card(p,fixture.ids.changed).getByRole('button',{name:'定位到原文',exact:true}).click();await drawer.getByText('无法定位：笔记不存在',{exact:true}).waitFor();assert.equal(await p.locator('.compact-note-heading h1').textContent(),before);fail=false;
  // An unsaved proposal anywhere blocks another card's navigation and keeps its lease.
- await card(p,fixture.ids.first).getByRole('button',{name:'修改提案',exact:true}).click();await card(p,fixture.ids.first).getByLabel('正文',{exact:true}).fill('未保存提案改稿');
+ await card(p,fixture.ids.first).getByLabel('正文',{exact:true}).click();await card(p,fixture.ids.first).getByLabel('正文',{exact:true}).fill('未保存提案改稿');
  const locksUrl=base+'/api/edit-locks?note_id=one&client_id=browser-check';const held=await p.request.get(locksUrl,{headers}).then(r=>r.json());
- await card(p,fixture.ids.changed).getByRole('button',{name:'定位到原文',exact:true}).click();await drawer.getByText('提案改稿尚未保存，请先保存或取消后定位。',{exact:true}).first().waitFor();assert.equal(await card(p,fixture.ids.first).getByLabel('正文',{exact:true}).inputValue(),'未保存提案改稿');const kept=await p.request.get(locksUrl,{headers}).then(r=>r.json());assert.deepEqual(kept.leases.map(l=>l.id),held.leases.map(l=>l.id));await card(p,fixture.ids.first).getByRole('button',{name:'取消改稿',exact:true}).click();
+ await card(p,fixture.ids.changed).getByRole('button',{name:'定位到原文',exact:true}).click();await drawer.getByText('提案改稿尚未保存，请先保存或撤销改动后定位。',{exact:true}).first().waitFor();assert.equal(await card(p,fixture.ids.first).getByLabel('正文',{exact:true}).textContent(),'未保存提案改稿');const kept=await p.request.get(locksUrl,{headers}).then(r=>r.json());assert.deepEqual(kept.leases.map(l=>l.id),held.leases.map(l=>l.id));await card(p,fixture.ids.first).getByRole('button',{name:'撤销改动',exact:true}).click();
  // Repeated clicks while the latest pair loads submit only one navigation.
  let release,seen;const gate=new Promise(r=>release=r),started=new Promise(r=>seen=r);let holding=true,loads=0;
  await p.route(base+'/api/notes/two',async route=>{if(!holding)return route.fallback();loads++;const response=await fetchRoute(route,{headers:{...route.request().headers(),...headers}});seen();await gate;await route.fulfill({response});});
@@ -50,6 +51,61 @@ async function fetchRoute(route,options){if(requests>=4)await new Promise(resolv
  await p.getByRole('button',{name:'编辑段落：当前条目',exact:true}).click();await p.locator('[data-entry=one-a]').getByLabel('正文',{exact:true}).fill('请求期间新建的正文草稿');late=false;releaseLate();
  await drawer.getByText('定位已取消，请先保存或取消当前修改。',{exact:true}).waitFor();assert.equal(await p.locator('[data-entry=one-a]').getByLabel('正文',{exact:true}).inputValue(),'请求期间新建的正文草稿');await drawer.getByRole('button',{name:'关闭',exact:true}).click();await p.locator('.review-toolbar').getByRole('button',{name:'取消',exact:true}).click();
  console.log('Same/cross-note, data-node, insert/delete/closed fallbacks, highlight/focus, saved filters/offset, errors, dirty leases and repeated clicks: PASS');
+ let loadReading,readingRequested;
+ const readingGate=new Promise(resolve=>loadReading=resolve);
+ const readingStarted=new Promise(resolve=>readingRequested=resolve);
+ const cold=await page(390,'admin',false,false,1,(tab,endpoint)=>tab.route(endpoint+'/api/notes/one',async route=>{
+  readingRequested();
+  await readingGate;
+  await route.fallback();
+ }));
+ await readingStarted;
+ await open(cold);
+ const coldCard=card(cold.getByRole('dialog',{name:'提案审核'}),fixture.ids.first);
+ const coldText=coldCard.getByRole('textbox',{name:'正文',exact:true});
+ await coldText.click();await coldText.fill('首篇笔记加载前输入的改稿');
+ await coldCard.getByRole('button',{name:'撤销改动',exact:true}).waitFor();
+ loadReading();await cold.locator('.json-entry').first().waitFor();
+ assert.equal(await coldText.textContent(),'首篇笔记加载前输入的改稿');
+ await coldCard.getByRole('button',{name:'撤销改动',exact:true}).click();
+ await cold.context().close();
+ await open(p);
+ const ordinary=card(drawer,fixture.ids.first);
+ const ordinaryText=ordinary.getByRole('region',{name:'拟修改'}).getByRole('textbox',{name:'正文',exact:true});
+ await ordinary.getByRole('textbox',{name:'名称',exact:true}).focus();
+ await p.keyboard.press('Tab');
+ assert(await ordinaryText.evaluate(el=>el===document.activeElement));
+ await ordinaryText.fill('已保存的提案改稿');
+ assert.equal(await ordinaryText.locator('ins').textContent(),'已保存的提案改稿');
+ await p.keyboard.press('End');await p.keyboard.press('Enter');await p.keyboard.insertText('换行');
+ assert.equal(await ordinaryText.textContent(),'已保存的提案改稿\n换行');
+ await ordinaryText.fill('已保存的提案改稿');
+ await ordinary.getByRole('button',{name:'保存改稿',exact:true}).click();
+ await ordinary.getByRole('button',{name:'撤销改动',exact:true}).waitFor({state:'hidden'});
+ await ordinaryText.click();await ordinaryText.fill('待撤销的第二次改稿');
+ await drawer.getByRole('button',{name:'关闭',exact:true}).click();
+ assert(await drawer.isVisible());
+ await drawer.getByRole('textbox',{name:'笔记',exact:true}).fill('隐藏当前提案');
+ assert(await ordinary.isVisible());
+ await ordinary.getByRole('button',{name:'撤销改动',exact:true}).click();
+ assert.equal(await ordinaryText.textContent(),'已保存的提案改稿');
+ const supported=card(drawer,fixture.ids.evidence);
+ const supportedText=supported.getByRole('textbox',{name:'正文',exact:true});
+ await supportedText.click();await supportedText.fill('证据仍适用的改稿');
+ const confirmation=supported.getByRole('checkbox',{name:'我已核对证据，仍支持本次改稿'});
+ const approve=supported.getByRole('button',{name:'确认此条',exact:true});
+ assert(await approve.isDisabled());
+ await confirmation.check();assert(await approve.isEnabled());
+ await supportedText.dispatchEvent('compositionstart');
+ assert(await approve.isDisabled());
+ await supportedText.fill('再次修改后核对的正文');
+ await supportedText.dispatchEvent('compositionend');
+ assert(!(await confirmation.isChecked()));assert(await approve.isDisabled());
+ await confirmation.check();await approve.click();
+ await supported.waitFor({state:'hidden'});
+ const accepted=await p.request.get(base+'/api/proposals?status=approved&note_id=one',{headers}).then(r=>r.json());
+ assert.equal(accepted.items.find(item=>item.id===fixture.ids.evidence).proposed_node.value,'再次修改后核对的正文');
+ console.log('Direct keyboard and mouse editing, save and undo, drawer guards and evidence approval: PASS');
  for(const width of [375,390,430,760,768,1024,1440])for(const role of ['admin','annotator']){
   const v=await page(width,role,false,true);await v.waitForTimeout(100);
   if(width<=760)await v.getByRole('button',{name:'账号菜单',exact:true}).click();
