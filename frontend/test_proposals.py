@@ -49,6 +49,173 @@ class ProposalTests(unittest.TestCase):
     def action(self, item, action='approve', actor=ADMIN):
         return self.store.action(actor,item['id'],action,{'revision':item['revision']})
 
+    def evidence_request(self):
+        from edit_locks import EditLocks
+        self.store.edit_locks=EditLocks(self.store)
+        record=self.note()
+        record['metadata']['claim_annotations']=[
+            {'id':'claim-a','text_ref':'a','kind':'conditional_strategy','origin':'manual','evidence':[]},
+            {'id':'claim-b','text_ref':'b','kind':'mechanic','origin':'manual','evidence':[]},
+        ]
+        with store_lock(self.root):
+            json_store.save(self.root,[record])
+        lease=self.store.edit_locks.acquire(AUTHOR,{'note_id':'n','client_id':'source-tab',
+            'resource':{'kind':'entry','id':'a'}})
+        evidence={'source':'BV1cZpA66E98:p1','start':10,'end':20}
+        return {'note_id':'n','client_id':'source-tab','request_id':'source-review','changes':[
+            {'kind':'update','node':entry('a','new'),'lease':{k:lease[k] for k in ('id','token')},
+             'evidence_changes':[{'claim_id':'claim-a','evidence':[evidence],'inference':True}]}
+        ]}
+
+    @patch('json_store.check_evidence')
+    def test_insert_with_evidence_and_recover_approval(self, check):
+        from edit_locks import EditLocks
+        self.store.edit_locks=EditLocks(self.store)
+        lease=self.store.edit_locks.acquire(AUTHOR,{'note_id':'n','client_id':'source-tab',
+            'resource':{'kind':'slot','section_id':'h','left_id':'a'}})
+        delta={'kind':'insert','node':entry('client-node','new strategy'),
+               'lease':{k:lease[k] for k in ('id','token')},
+               'evidence_changes':[{'evidence':[{'source':'BV1cZpA66E98:p1','start':10,'end':20}],
+                                    'inference':False}]}
+        request={'note_id':'n','client_id':'source-tab','request_id':'new-strategy','changes':[delta]}
+        before=self.note()
+        with self.assertRaises(ValueError):
+            self.store.submit_delta(AUTHOR,{**request,'changes':[{**delta,'evidence_changes':[]}]})
+        item=self.store.submit_delta(AUTHOR,request)['items'][0]
+        self.assertEqual(self.note(),before)
+        self.assertEqual(item['evidence_changes'][0]['claim_id'],item['node_id']+'-claim')
+        edit=json_store.edit
+        def interrupt(*args,**kwargs):
+            edit(*args,**kwargs)
+            raise OSError('interrupted')
+        with patch('json_store.edit',side_effect=interrupt),self.assertRaises(OSError):
+            self.action(item)
+        self.store.recover()
+        claim,=json_store.entry_claims(self.note(),item['node_id'])
+        self.assertEqual(claim['kind'],'conditional_strategy')
+        self.assertEqual(claim['evidence'],item['evidence_changes'][0]['evidence'])
+        self.assertEqual(self.store.get(ADMIN,item['id'])['status'],'approved')
+
+    @patch('json_store.check_evidence')
+    def test_evidenced_insert_conflict_rejection_and_withdrawal_leave_no_claim(self, check):
+        from edit_locks import EditLocks
+        self.store.edit_locks=EditLocks(self.store)
+        def submit(request_id):
+            lease=self.store.edit_locks.acquire(AUTHOR,{'note_id':'n','client_id':'source-tab',
+                'resource':{'kind':'slot','section_id':'h','left_id':'a'}})
+            return self.store.submit_delta(AUTHOR,{'note_id':'n','client_id':'source-tab','request_id':request_id,
+                'changes':[{'kind':'insert','node':entry('client-node','new strategy'),
+                            'lease':{k:lease[k] for k in ('id','token')},
+                            'evidence_changes':[{'evidence':[{'source':'BV1cZpA66E98:p1','start':10,'end':20}],
+                                                 'inference':False}]}]})['items'][0]
+        rejected=submit('reject-insert')
+        self.action(rejected,'reject')
+        conflicted=submit('withdraw-insert')
+        note=self.note()
+        note['body']['nodes']=[n for n in note['body']['nodes'] if n['id']!='a']
+        json_store.edit(self.root,'n',{'revision':note['metadata']['revision'],'document':note['body']})
+        with self.assertRaises(Conflict):
+            self.action(conflicted)
+        self.action(conflicted,'withdraw',AUTHOR)
+        for item in (rejected,conflicted):
+            self.assertFalse(json_store.entry_claims(self.note(),item['node_id']))
+
+    @patch('json_store.check_evidence')
+    def test_evidence_waits_for_review_and_survives_approval_recovery(self, check):
+        request=self.evidence_request()
+        before=self.note()
+        item=self.store.submit_delta(AUTHOR,request)['items'][0]
+        self.assertEqual(self.store.submit_delta(AUTHOR,request)['items'][0]['id'],item['id'])
+        self.assertEqual(self.note(),before)
+        self.assertTrue(item['evidence_changes'][0]['inference'])
+        self.assertEqual(self.store.list(OTHER)['items'],[])
+        edit=json_store.edit
+        def interrupt(*args,**kwargs):
+            edit(*args,**kwargs)
+            raise OSError('interrupted')
+        with patch('json_store.edit',side_effect=interrupt):
+            with self.assertRaises(OSError):
+                self.action(item)
+        self.store.recover()
+        after=self.note()
+        self.assertEqual(after['body']['nodes'][2]['value'],'new')
+        self.assertEqual(after['metadata']['claim_annotations'][0]['evidence'],
+            item['evidence_changes'][0]['evidence'])
+        self.assertEqual(after['metadata']['claim_annotations'][1],before['metadata']['claim_annotations'][1])
+        self.assertEqual(self.store.get(ADMIN,item['id'])['status'],'approved')
+
+    @patch('json_store.check_evidence')
+    def test_evidence_is_scoped_and_cannot_be_rebased(self, check):
+        request=self.evidence_request()
+        change=request['changes'][0]['evidence_changes'][0]
+        change['claim_id']='claim-b'
+        with self.assertRaises(ValueError):
+            self.store.submit_delta(AUTHOR,request)
+        change['claim_id']='claim-a'
+        item=self.store.submit_delta(AUTHOR,request)['items'][0]
+        before=self.note()
+        lease=self.store.edit_locks.acquire(AUTHOR,{'note_id':'n','client_id':'revision-tab',
+            'resource':{'kind':'entry','id':'a'}})
+        payload={'revision':1,'proposed_node':entry('a','different'),'client_id':'revision-tab',
+                 'lease':{k:lease[k] for k in ('id','token')}}
+        with self.assertRaises(Conflict):
+            self.store.update(AUTHOR,item['id'],payload)
+        confirmed={**payload,'evidence_changes':item['evidence_changes']}
+        with self.assertRaises(Conflict):
+            self.store.update(AUTHOR,item['id'],{**confirmed,'rebase':True})
+        saved=self.store.update(AUTHOR,item['id'],confirmed)
+        self.assertEqual(saved['proposed_node']['value'],'different')
+        self.assertEqual(saved['evidence_changes'],item['evidence_changes'])
+        self.action(saved,'reject')
+        self.assertEqual(self.note(),before)
+
+    @patch('json_store.check_evidence')
+    def test_approve_evidence_draft_recovers_reviewed_body_and_evidence(self, check):
+        item=self.store.submit_delta(AUTHOR,self.evidence_request())['items'][0]
+        lease=self.store.edit_locks.acquire(ADMIN,{'note_id':'n','client_id':'approval-tab',
+            'resource':{'kind':'entry','id':'a'}})
+        payload={'revision':item['revision'],'proposed_node':entry('a','reviewed'),
+            'client_id':'approval-tab','lease':{k:lease[k] for k in ('id','token')},
+            'evidence_changes':item['evidence_changes']}
+        with self.assertRaises(Conflict):
+            self.store.action(ADMIN,item['id'],'approve',{**payload,'evidence_changes':[]})
+        edit=json_store.edit
+        def interrupt(*args,**kwargs):
+            edit(*args,**kwargs)
+            raise OSError('interrupted')
+        with patch('json_store.edit',side_effect=interrupt), self.assertRaises(OSError):
+            self.store.action(ADMIN,item['id'],'approve',payload)
+        self.store.recover()
+        result=self.store.action(ADMIN,item['id'],'approve',payload)
+        self.assertEqual(result['status'],'approved')
+        self.assertEqual(result['proposed_node']['value'],'reviewed')
+        self.assertEqual(json_store.entry_claims(self.note(),'a')[0]['evidence'],
+                         item['evidence_changes'][0]['evidence'])
+
+    @patch('json_store.check_evidence')
+    def test_evidence_change_conflicts_even_when_body_is_unchanged(self, check):
+        request=self.evidence_request()
+        item=self.store.submit_delta(AUTHOR,request)['items'][0]
+        record=self.note()
+        record['metadata']['claim_annotations'][0]['inference']=True
+        with store_lock(self.root):
+            json_store.save(self.root,[record])
+        self.assertTrue(self.store.get(ADMIN,item['id'])['conflict'])
+        with self.assertRaises(Conflict):
+            self.action(item)
+        self.action(item,'withdraw',AUTHOR)
+        self.assertEqual(self.note()['body'],record['body'])
+
+    def test_evidence_range_must_fit_its_video(self):
+        request=self.evidence_request()
+        folder=self.root/'raw/sources/BV1cZpA66E98_p1'
+        folder.mkdir(parents=True)
+        (folder/'metadata.json').write_text(json.dumps({'duration':15}),encoding='utf-8')
+        (folder/'asr.raw.json').write_text(json.dumps({'segments':[{'text':'source'}]}),encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'视频时长'):
+            self.store.submit_delta(AUTHOR,request)
+        self.assertEqual(self.store.list(ADMIN)['items'],[])
+
     def test_submission_private_diff_and_partial_approval(self):
         items = self.submit([self.nodes[1],entry('a','new'),entry('x','insert')])
         self.assertEqual([i['kind'] for i in items],['update','insert','delete'])

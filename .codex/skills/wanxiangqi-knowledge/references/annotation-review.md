@@ -18,23 +18,11 @@
 
 ## 修改与提交
 
-纯措辞、语病、命名修订且不新增或改变事实时，可用 `annotations --apply-editorial --file 请求.json`。请求包含 `note_id`、最新正文 `revision`、完整 `document` 和 `review_refs`。该入口仅允许批注绑定节点的标题、名称、正文文字变化，不能新增、删除、重排节点或修改其他结构化知识；按可信人工编辑路径归档旧证据，新话术不冒用旧证据。事实性要求必须使用下述证据提交路径，不能借措辞入口绕过核查。
-
-同一笔记的兼容批注可同批提交。保留稳定节点 ID，按知识契约核对来源和条件，相关摘要同步更新。歧义、矛盾和缺证据不编造结论；需要新事实时仍须直接证据，不能把批注当作事实来源。
-
-提交文件保留原有 body、metadata 和最新 metadata.revision，在对应记录外层加入：
-
-```json
-{"notes":[{"body":{},"metadata":{},"review_refs":[{"id":"批注ID","revision":"本次读取的批注revision"}]}]}
-```
-
-body 和 metadata 须填实际完整对象，示例空对象不能提交。`review_refs` 只允许更新这些批注绑定范围内的人工保护节点；范围外人工内容仍进入冲突。不能伪造 origin=manual，也不能清除人工保护字段规避冲突。纯措辞修订如需保留原结论证据，先核对新旧含义一致并保留真实来源；改义需重新核查证据。
-
-执行标准 `wxq.py commit 提交文件` 后，读回正文与附件并运行 `wxq.py validate`。确认每条要求实际完成，不能只看 commit 的 notes 列表，因为受保护冲突也可能出现在返回列表中。
+所有已有笔记的批注修订按 [前端提案规则](../SKILL.md#已有笔记必须提交前端提案) 送审。以最新正文、附件和批注 revision 核对目标，保留稳定节点 ID。同一笔记的兼容批注可同批送审。事实性修订须提交相应直接证据或有据推导，批注仅界定修改范围。提案待审期间保留批注为未处理。
 
 ## 记录结果与重试
 
-保存成功后写一个请求 JSON，包含批注原 revision、实际读回的正文 result_revision 和具体 result，然后执行：
+用户批准并读回验证后，核对完成入口能关联提案审批回执，再写完成请求 JSON。禁止为取得回执再次写正文。请求包含批注原 revision、实际读回的正文 result_revision 和具体 result，然后执行：
 
 ```powershell
 .wxq-runtime/Scripts/python.exe .codex/skills/wanxiangqi-knowledge/scripts/wxq.py annotations --complete 批注ID --file raw/reports/批注完成请求.json

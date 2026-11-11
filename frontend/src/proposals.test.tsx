@@ -26,7 +26,7 @@ it('annotator inline UI offers proposals without old comments or title fields',(
 });
 it('private proposal card names the author and distinguishes pending insertions without canonical mutation',()=>{
  const html=renderToStaticMarkup(<ProposalCard item={{id:'1',note_id:'n',note_title:'笔记',author:'writer',kind:'insert',node_id:'p',section_id:'h',after_id:'h',base_node:null,proposed_node:{id:'p',type:'entry',key:'新增',show_key:true,value:'候选正文'},revision:1,status:'pending',created_at:'',updated_at:''}} onChanged={()=>{}}/>);
- expect(html).toContain('writer');expect(html).toContain('暂存待确认');expect(html).toContain('<ins');
+ expect(html).toContain('writer');expect(html).toContain('暂存待确认');expect(html).toContain('proposal-body-diff');
  expect(html).toContain('无原文');expect(html).toContain('proposal-split-diff');
 });
 it('separates the old and new text for a long Chinese proposal',()=>{
@@ -34,8 +34,11 @@ it('separates the old and new text for a long Chinese proposal',()=>{
  const node={id:'p',type:'entry' as const,key:'正文',show_key:false,value:context+'保留'};
  const item={id:'1',note_id:'n',note_title:'笔记',author:'writer',kind:'update' as const,node_id:'p',section_id:'h',after_id:'h',base_node:node,proposed_node:{...node,value:context+'删除'},revision:1,status:'pending',created_at:'',updated_at:''};
  const html=renderToStaticMarkup(<ProposalCard item={item} onChanged={()=>{}}/>);
- expect(html).toContain('<del>保留</del>');expect(html).toContain('<ins>删除</ins>');
- expect(html.split(context)).toHaveLength(3);
+ expect(html).toContain('<del>保留</del>');
+ expect(html).toContain('proposal-name-row');
+ expect(html).toContain('proposal-body-diff');
+ expect(html).not.toContain('<textarea');
+ expect(html).not.toContain('查看改动对照');
  expect(renderToStaticMarkup(<ProposalCard item={{...item,kind:'delete',proposed_node:null}} onChanged={()=>{}}/>)).toContain('将删除');
 });
 it('topbar exposes both role directions only for an admin account',()=>{

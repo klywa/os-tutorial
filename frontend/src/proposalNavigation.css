@@ -13,6 +13,12 @@
 .mobile-account-trigger{max-width:min(52vw,18rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .proposal-location-action{display:flex;justify-content:flex-end;margin:8px 0}
 .proposal-location-action button{white-space:nowrap;min-height:36px}
+.proposal-split-diff section:has(.proposal-name-row)>h4{float:left;margin:0 .5rem .45rem 0;line-height:1.8}
+.proposal-name-row{display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem}
+.proposal-name-row label{display:flex;align-items:center;gap:.3rem;white-space:nowrap;margin:0;color:inherit}
+.proposal-name-row input[type=checkbox]{flex:none;margin:0}
+.proposal-name-row input:not([type=checkbox]){min-width:0;flex:1;padding:.2rem .4rem}
+.proposal-body-diff{clear:both;min-height:2rem;white-space:pre-wrap;overflow-wrap:anywhere;cursor:text;line-height:1.65}
 .proposal-location-target{outline:2px solid #72d5b5!important;outline-offset:-2px;background-color:#72d5b51a;scroll-margin-block:20px}
 @media(min-width:761px) and (max-width:1120px){.account-items>.account-name{max-width:7rem}.account-items>small{max-width:7rem}}
 @media(max-width:760px){

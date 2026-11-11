@@ -22,7 +22,7 @@ json_document.parse(text)与markdown(body)无损往返；导出格式与剪贴�
 
 ## 附件与事务
 
-官网采集默认仅更新本地缓存，明确使用 `sync-entities --apply-notes` 才可修改官方绑定节点及知识索引。新事务记录 origin；旧官网笔记事务在启动恢复时归档至 raw/official-sync/pending-notes，不自动重放，也不作为当前正文读取。明确应用时从最新笔记及官网资料重新生成事务，不能直接覆盖归档快照。
+官网采集默认仅更新本地缓存。已有笔记及官方绑定节点的变化按 [前端提案规则](../SKILL.md#已有笔记必须提交前端提案) 送审。旧官网笔记事务在启动恢复时归档至 raw/official-sync/pending-notes，不能当作正文或直接重放。
 claim_annotations保留原结论ID、kind、section、condition、version、inference、evidence，以text_ref关联正文/支撑节点，附件不保存当前结论text。证据使用真实视频source/start/end/frame或document/source/paragraph_start/paragraph_end，沿用文件和来源校验。
 
 人工编辑保留旧文及旧证据，不为新话术沿用旧来源。旧存储仍读写 history；index.meta.json 显式启用 storage_version=2 后，完整历史移至 Git 跟踪的 knowledge-history/<身份摘要>/{audit,versions,migrations}/<内容摘要>.json，当前附件只保留 history_head/history_count。统一保存事务先写不可变历史再写正文、附件和索引；不得自行内嵌旧正文或按历史累计计算 revision。旧版本ID、history_index 和证据通过统一历史接口读取。node_annotations 记录人工节点，后续导入不能自动覆盖。
