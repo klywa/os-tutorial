@@ -570,40 +570,9 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "origin": "ming_pool_20261102_review",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1dcnb6oEtn:p1",
-          "start": 27.6,
-          "end": 167.9
-        },
-        {
-          "type": "video",
-          "source": "BV1dcnb6oEtn:p1",
-          "start": 501.1,
-          "end": 781.5
-        },
-        {
-          "type": "document",
-          "source": "doc-adae0c8392b43d02fbd0b68d9a8b7c2d60157bba26527ebcb242a1c343f5752f",
-          "paragraph_start": 1,
-          "paragraph_end": 1
-        },
-        {
-          "type": "document",
-          "source": "doc-adae0c8392b43d02fbd0b68d9a8b7c2d60157bba26527ebcb242a1c343f5752f",
-          "paragraph_start": 2,
-          "paragraph_end": 2
-        },
-        {
-          "type": "document",
-          "source": "doc-351da37c116e609c1e72bbb93aab220b5f564c51b64b3de5cfc958d4e7dc1fad",
-          "paragraph_start": 99,
-          "paragraph_end": 99
-        }
-      ],
+      "inference": false,
+      "origin": "manual",
+      "evidence": [],
       "review_basis": {
         "report": "raw/reports/ming-pool-20261102/delivery.json",
         "basis": "本轮四来源逐段全文、按需关键帧、实体机制及用户裁决；未确认细节未补造"
@@ -2576,28 +2545,9 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "origin": "batch77_second_fulltext_review",
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1hvJq6kEEF:p1",
-          "start": 158.62,
-          "end": 187.04
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 86,
-          "paragraph_end": 86
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 87,
-          "paragraph_end": 87
-        }
-      ],
+      "inference": false,
+      "origin": "manual",
+      "evidence": [],
       "review_basis": {
         "report": "raw/reports/batch77/review-b-extra3.json",
         "basis": "本次逐段全文＋精确官方document；未知字段不算有据覆盖"
@@ -6058,14 +6008,14 @@
     }
   ],
   "editorial_defaults": [],
-  "body_sha256": "c2ae6e744f717bab014ad2c6e323a91852ac46e6966cfaa1870388164746fa86",
+  "body_sha256": "499e82abfa9191f6b6689bf1c222c3700d7164050b3035b72e5e9e444c087b78",
   "draft_omissions": [
     {
       "text_ref": "be2-4919c82c18f08abec4",
       "reason": "无真正第二轮拍卖依据；教学默认不满足schema6新增非placeholder必须直接注证的提交约束，改契约placeholder，不挂无关视频或伪造manual"
     }
   ],
-  "revision": "8fa15851718d11262022",
+  "revision": "13619bd17fb212549502",
   "retired_claim_annotations": [
     {
       "id": "b3-7ff2b001dd6f3ee228-b3-claim",
@@ -6240,14 +6190,18 @@
       "scope": "四份笔记的正文与棋手摘要；以明确对象、自然动作与不改条件为准"
     }
   ],
-  "history_head": "knowledge-history/6237a6932cdae8c53bbf35ceba7ec94f/audit/1bd309cf7fe9b111b2e92d3e0ad794f5dd106ae79bc142434d69128fc978c9f7.json",
-  "history_count": 7,
+  "history_head": "knowledge-history/6237a6932cdae8c53bbf35ceba7ec94f/audit/0da0ad1a367f3ff34d65a92727581b4ae660cc1774d0e8e97ba92de63b930dc0.json",
+  "history_count": 8,
   "node_annotations": {
     "be2-9e11c23817810f5213": {
       "origin": "manual",
       "section": "英雄"
     },
     "be2-6435bca4ce51493c43": {
+      "origin": "manual",
+      "section": "英雄"
+    },
+    "be2-92ba9b80e64d1773aa": {
       "origin": "manual",
       "section": "英雄"
     }
