@@ -8893,33 +8893,9 @@
       "section": "关键装备",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV12DeX6mE61:p1",
-          "start": 1013.49,
-          "end": 1046.24
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 195,
-          "paragraph_end": 195
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 196,
-          "paragraph_end": 196
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 496,
-          "paragraph_end": 496
-        }
-      ],
-      "origin": "reviewed_synthesis",
+      "inference": false,
+      "evidence": [],
+      "origin": "manual",
       "review_basis": {
         "review": "raw/reports/batch77/review-a.json",
         "candidate_id": "a-028",
@@ -9425,8 +9401,8 @@
       "origin": "manual"
     }
   ],
-  "body_sha256": "1cf13db2202a08dbacc24cdfb0538a503fe60f8494d5dabd3e78f068980241e9",
-  "revision": "a0db3b40ac1e2d641c2b",
+  "body_sha256": "952c0c5108da365ca08a85288068d7ce69ff7420a6e01850a2d4aa17e008f9a8",
+  "revision": "ec6745419ee554d0ee35",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -26676,8 +26652,12 @@
     "n-d34b6fb49b9bd4322a49": {
       "origin": "manual",
       "section": "英雄"
+    },
+    "n-957bdc109c8509a6a732": {
+      "origin": "manual",
+      "section": "关键装备"
     }
   },
-  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/a2e3bdcbed49f52548fe475311cffba6117ae53fc1f43392d031b593e17a1332.json",
-  "history_count": 76
+  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/d30d361d8002dcbcd8e53076cf135f460f870c0de22670afa024548e44927110.json",
+  "history_count": 77
 }
