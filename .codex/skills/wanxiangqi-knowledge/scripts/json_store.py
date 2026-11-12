@@ -549,6 +549,12 @@ def prepare_entry_evidence(root, record, node_id, changes, *, inserting=False):
     return deepcopy(changes), deepcopy(claims)
 
 
+def entry_evidence_batches(value):
+    if not value:
+        return []
+    return [value] if isinstance(value[0], str) else value
+
+
 def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False):
     from workspace import Conflict, store_lock
     with store_lock(root, wait=True):
@@ -584,12 +590,14 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
             for key in set(body) | set(incoming):
                 if key != 'nodes' and body.get(key, [] if key == 'supporting_nodes' else {} if key == 'semantics' else None) != incoming.get(key):
                     raise ValueError('措辞修改不能修改结构化知识或支撑节点')
+        evidence_batches=entry_evidence_batches(_entry_evidence)
+        evidence_node_ids={row[0] for row in evidence_batches}
         if incoming != body:
             # Keep display identity across text edits without rewriting evidence.
             display_refs = document.claim_display_refs(body, project(record, public=True)['claims'])
             for annotation in meta.get('claim_annotations', []):
                 if annotation['id'] in display_refs and (
-                        not _entry_evidence or annotation['text_ref'] == _entry_evidence[0]):
+                        not evidence_batches or annotation['text_ref'] in evidence_node_ids):
                     annotation['display_ref'] = display_refs[annotation['id']]
         title = payload.get('title', meta['title'])
         if title != meta['title']:
@@ -632,8 +640,7 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
                 for annotation in meta.get('claim_annotations', []):
                     if annotation['text_ref'] == n['id']:
                         annotation.update(origin='manual', evidence=[], inference=False)
-        if _entry_evidence:
-            node_id, base_claims, changes = _entry_evidence
+        for node_id, base_claims, changes in evidence_batches:
             if entry_claims(before, node_id) != base_claims:
                 raise Conflict('正式证据已变化，请重新提交提案')
             inserting=not base_claims and node_id not in old_nodes

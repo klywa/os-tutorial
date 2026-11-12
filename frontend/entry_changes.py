@@ -22,7 +22,7 @@ def prepare(store, conn, actor, payload, *, for_proposal=False):
     has_sibling = False
     for index,change in enumerate(changes):
         fields={'kind','lease','node','sibling_of'}
-        if for_proposal:fields.add('evidence_changes')
+        if for_proposal:fields.update(('evidence_changes','section_entries'))
         if not isinstance(change,dict) or set(change)-fields:raise ValueError('无效的条目修改')
         kind=change.get('kind')
         if kind not in ('update','insert','delete'):raise ValueError('无效的修改类型')
@@ -72,6 +72,22 @@ def prepare(store, conn, actor, payload, *, for_proposal=False):
                        and row['inference']==baseline[row['claim_id']].get('inference',False) for row in evidence):
                     raise ValueError('正文与证据均未变化')
             items[-1].update(evidence_changes=evidence,_base_claims=claims)
+        if 'section_entries' in change:
+            entries=change['section_entries']
+            if 'sibling_of' not in change or not isinstance(entries,list) or not 1<=len(entries)<=100:
+                raise ValueError('整章提案须包含章节标题和正文')
+            section_entries=[]
+            for index_in_section, entry in enumerate(entries):
+                if not isinstance(entry,dict) or set(entry)!={'node','evidence','inference'}:
+                    raise ValueError('章节条目须提供正文和证据')
+                child_id=f'{nid}-{index_in_section+1}'
+                child=_entry(entry['node'])
+                child['id']=child_id
+                evidence, claims=json_store.prepare_entry_evidence(store.root,record,child_id,[{
+                    'claim_id':child_id+'-claim','evidence':entry['evidence'],'inference':entry['inference'],
+                }],inserting=True)
+                section_entries.append({'node':child,'evidence_changes':evidence})
+            items[-1]['section_entries']=section_entries
         refs.append(change['lease'])
     return record,items,refs
 

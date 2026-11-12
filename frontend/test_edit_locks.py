@@ -164,6 +164,26 @@ class EditLockTests(unittest.TestCase):
         with self.assertRaises(Conflict):
             self.store.action(ADMIN,other['id'],'approve',{'revision':1})
 
+    @patch('json_store.check_evidence')
+    def test_chapter_approval_saves_all_entries_with_evidence(self, check_evidence):
+        payload, _ = self.sibling_payload(A,'client-a','h','b','h',2,'new-chapter')
+        evidence={'source':'BV1cZpA66E98:p1','start':10,'end':20}
+        payload['changes'][0]['section_entries']=[
+            {'node':{'id':str(i),'type':'entry','key':f'Tip {i}','show_key':True,'value':'Text'},
+             'evidence':[evidence],'inference':True} for i in range(3)
+        ]
+        proposal, = self.store.submit_delta(A,payload)['items']
+        self.assertEqual(self.store._note('n')['body']['nodes'],self.nodes)
+        self.store.action(ADMIN,proposal['id'],'approve',{'revision':1})
+        record=self.store._note('n')
+        self.assertEqual(record['body']['nodes'][-4:],[
+            proposal['proposed_node'],*(entry['node'] for entry in proposal['section_entries'])
+        ])
+        for entry in proposal['section_entries']:
+            claim, = json_store.entry_claims(record,entry['node']['id'])
+            self.assertEqual(claim['evidence'],[evidence])
+            self.assertTrue(claim['inference'])
+
     def test_sibling_of_empty_third_level_chapter_stays_inside_parent(self):
         note = self.store._note('n')
         nodes = [*note['body']['nodes'], {'id':'empty','type':'heading','level':3,'title':'Empty'},

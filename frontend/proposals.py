@@ -393,7 +393,8 @@ class ProposalStore:
             body['nodes']=[deepcopy(item['proposed_node']) if n['id']==nid else n for n in nodes]
         elif source := item['_context'].get('sibling_of'):
             position, _ = sibling_boundary(nodes, source)
-            nodes.insert(position, deepcopy(item['proposed_node']))
+            chapter=[item['proposed_node'],*(entry['node'] for entry in item.get('section_entries',[]))]
+            nodes[position:position]=deepcopy(chapter)
         else:
             ctx=item['_context'];ids=[n['id'] for n in nodes]
             siblings=[r for r in self._rows(conn) if r['_batch']==item['_batch'] and r['kind']=='insert'
@@ -459,6 +460,11 @@ class ProposalStore:
                 if 'evidence_changes' in item:
                     options['_entry_evidence']=(item['node_id'],item['_base_claims'],item['evidence_changes'])
                     receipt['entry_evidence']=options['_entry_evidence']
+                if item.get('section_entries'):
+                    options['_entry_evidence']=[
+                        (entry['node']['id'],[],entry['evidence_changes']) for entry in item['section_entries']
+                    ]
+                    receipt['entry_evidence']=options['_entry_evidence']
                 if body!=record['body'] or options:
                     self._write_receipt(receipt)
                     result=json_store.edit(self.root,item['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True,**options)
@@ -491,13 +497,13 @@ class ProposalStore:
             applied=(transition.get('metadata',{}).get('revision')==receipt['pre_revision']
                 and transition.get('body')==receipt['pre_body'] and after.get('body')==receipt['post_body'])
             if applied and 'entry_evidence' in receipt:
-                node_id, base_claims, changes=receipt['entry_evidence']
-                by_id={claim['id']:claim for claim in json_store.entry_claims(after,node_id)}
-                applied=(json_store.entry_claims(transition,node_id)==base_claims and all(
-                    change['claim_id'] in by_id
-                    and by_id[change['claim_id']].get('evidence')==change['evidence']
-                    and by_id[change['claim_id']].get('inference')==change['inference']
-                    for change in changes))
+                for node_id, base_claims, changes in json_store.entry_evidence_batches(receipt['entry_evidence']):
+                    by_id={claim['id']:claim for claim in json_store.entry_claims(after,node_id)}
+                    applied=applied and json_store.entry_claims(transition,node_id)==base_claims and all(
+                        change['claim_id'] in by_id
+                        and by_id[change['claim_id']].get('evidence')==change['evidence']
+                        and by_id[change['claim_id']].get('inference')==change['inference']
+                        for change in changes)
             if applied:
                 from edit_locks import EditLocks
                 EditLocks.recover_receipt(conn,receipt)

@@ -12,7 +12,7 @@ type EvidenceLocation={source:string}&(
  {type?:'video';start:number;end:number;frame?:string}
 );
 type EvidenceChange={claim_id:string;evidence:EvidenceLocation[];inference:boolean};
-export type Proposal={id:string;note_id:string;note_title:string;author:string;kind:'insert'|'update'|'delete';node_id:string;section_id:string;after_id:string|null;base_node:KnowledgeNode|null;proposed_node:KnowledgeNode|null;revision:number;status:string;created_at:string;updated_at:string;reviewed_by?:string|null;result_revision?:string|null;conflict?:unknown;current_node?:KnowledgeNode|null;evidence_changes?:EvidenceChange[]};
+export type Proposal={id:string;note_id:string;note_title:string;author:string;kind:'insert'|'update'|'delete';node_id:string;section_id:string;after_id:string|null;base_node:KnowledgeNode|null;proposed_node:KnowledgeNode|null;revision:number;status:string;created_at:string;updated_at:string;reviewed_by?:string|null;result_revision?:string|null;conflict?:unknown;current_node?:KnowledgeNode|null;evidence_changes?:EvidenceChange[];section_entries?:{node:KnowledgeNode;evidence_changes:EvidenceChange[]}[]};
 function ProposalEvidence({changes}:{changes:EvidenceChange[]}){
  return <details><summary>证据 · {changes.reduce((total,change)=>total+change.evidence.length,0)} 处</summary>
   {changes.map(change=><section key={change.claim_id}>
@@ -132,6 +132,10 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
   <header><strong>{item.author}</strong> · {item.note_title} · {pending?'暂存待确认':({approved:'已确认',rejected:'已拒绝',withdrawn:'已撤回'}[item.status]??item.status)}</header>
   <DiffText before={nodeText(item.base_node)} after={nodeText(node)} composing={composing} split={pending||dirty} editor={editor}/>
   {item.evidence_changes&&<ProposalEvidence changes={item.evidence_changes}/>}
+  {item.section_entries?.map(entry=><section key={entry.node.id}>
+   <DiffText before="" after={nodeText(entry.node)} composing={false} split={false}/>
+   <ProposalEvidence changes={entry.evidence_changes}/>
+  </section>)}
   {item.evidence_changes&&dirty&&<label className="inline">
    <input type="checkbox" checked={!!edit?.confirmed} disabled={blocked||stale||composing}
     onChange={e=>{const checked=e.target.checked;setEdit(current=>current&&({...current,confirmed:checked}));}}/> 我已核对证据，仍支持本次改稿
