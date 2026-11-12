@@ -2256,139 +2256,13 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 17,
-          "paragraph_end": 17
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 18,
-          "paragraph_end": 18
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 35,
-          "paragraph_end": 35
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 36,
-          "paragraph_end": 36
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 37,
-          "paragraph_end": 37
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 38,
-          "paragraph_end": 38
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 50,
-          "paragraph_end": 50
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 51,
-          "paragraph_end": 51
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 94,
-          "paragraph_end": 94
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 131,
-          "paragraph_end": 131
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 135,
-          "paragraph_end": 135
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 647,
-          "paragraph_end": 647
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 655,
-          "paragraph_end": 655
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 656,
-          "paragraph_end": 656
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 659,
-          "paragraph_end": 659
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 660,
-          "paragraph_end": 660
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 696,
-          "paragraph_end": 696
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 701,
-          "paragraph_end": 701
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 143,
-          "paragraph_end": 143
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 207,
-          "paragraph_end": 207
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 259,
-          "paragraph_end": 259
-        }
-      ],
+      "inference": false,
+      "evidence": [],
       "derived_from": [
         "acq-c63ceb7fc903637f00b4"
       ],
-      "display_ref": "n-10dfa0ad95579bd6b094"
+      "display_ref": "n-10dfa0ad95579bd6b094",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-04db5a3c95808783",
@@ -9677,8 +9551,8 @@
       "origin": "manual"
     }
   ],
-  "body_sha256": "25b429b4d47c3b30c92df08d022d09b4e8a15fa46ea3803f48ddbed81dbc1f22",
-  "revision": "69f555015e88819f64b1",
+  "body_sha256": "ea0f624821ec84b4b63b1b3569e13bac45641bb969b8eaa68609544ed6d3257d",
+  "revision": "aedb35c41c7256049593",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -26920,8 +26794,12 @@
     "n-219fa399daec8ec0fc3a": {
       "origin": "manual",
       "section": "英雄"
+    },
+    "n-10dfa0ad95579bd6b094": {
+      "origin": "manual",
+      "section": "英雄"
     }
   },
-  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/fac5d91ea2938b90c0a40586765776ebd325f407bf934e5252c73f85e2bdcfdd.json",
-  "history_count": 74
+  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/fbe9caf30f4724b914654ae66ae15aba99cfe69cda6773a15c2597536ced366b.json",
+  "history_count": 75
 }
