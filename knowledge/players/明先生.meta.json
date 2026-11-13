@@ -3573,23 +3573,10 @@
       "kind": "conditional_strategy",
       "section": "其他已知方向",
       "inference": false,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 35.33,
-          "end": 69,
-          "frame": "frames/46-0.jpg"
-        },
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 35.33,
-          "end": 69
-        }
-      ],
+      "evidence": [],
       "plain_language_review": "raw\\reports\\ming-plain-language-20261103\\review.json",
-      "display_ref": "ming-flex-other-liubang"
+      "display_ref": "ming-flex-other-liubang",
+      "origin": "manual"
     },
     {
       "id": "ming-flex-other-hanxin-claim",
@@ -3597,57 +3584,30 @@
       "kind": "conditional_strategy",
       "section": "其他已知方向",
       "inference": false,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 35.33,
-          "end": 69,
-          "frame": "frames/48-0.jpg"
-        },
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 35.33,
-          "end": 69
-        }
-      ],
+      "evidence": [],
       "plain_language_review": "raw\\reports\\ming-plain-language-20261103\\review.json",
-      "display_ref": "ming-flex-other-hanxin"
+      "display_ref": "ming-flex-other-hanxin",
+      "origin": "manual"
     },
     {
       "id": "ming-flex-other-lixin-claim",
       "text_ref": "ming-flex-other-lixin",
       "kind": "conditional_strategy",
       "section": "其他已知方向",
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 116.59,
-          "end": 153,
-          "frame": "frames/125-0.jpg"
-        }
-      ],
-      "display_ref": "ming-flex-other-lixin"
+      "inference": false,
+      "evidence": [],
+      "display_ref": "ming-flex-other-lixin",
+      "origin": "manual"
     },
     {
       "id": "ming-flex-other-libai-claim",
       "text_ref": "ming-flex-other-libai",
       "kind": "conditional_strategy",
       "section": "其他已知方向",
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 116.59,
-          "end": 153,
-          "frame": "frames/125-0.jpg"
-        }
-      ],
-      "display_ref": "ming-flex-other-libai"
+      "inference": false,
+      "evidence": [],
+      "display_ref": "ming-flex-other-libai",
+      "origin": "manual"
     },
     {
       "id": "ming-flex-other-mazhao-claim",
@@ -3655,30 +3615,10 @@
       "kind": "conditional_strategy",
       "section": "其他已知方向",
       "inference": false,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 35.33,
-          "end": 69,
-          "frame": "frames/54-0.jpg"
-        },
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 84,
-          "end": 92,
-          "frame": "frames/85-0.jpg"
-        },
-        {
-          "type": "video",
-          "source": "BV1cZpA66E98:p1",
-          "start": 84,
-          "end": 92
-        }
-      ],
+      "evidence": [],
       "plain_language_review": "raw\\reports\\ming-plain-language-20261103\\review.json",
-      "display_ref": "ming-flex-other-mazhao"
+      "display_ref": "ming-flex-other-mazhao",
+      "origin": "manual"
     },
     {
       "id": "selection26-ming-selection26-huamulan-resource",
@@ -3750,8 +3690,8 @@
       "display_ref": "entry-6c566e01abc47653ae3081e4e1a0286b"
     }
   ],
-  "body_sha256": "ae5d4206c3e8c25ae42418896a958a8725b374492d236d39b5e99d68cd902264",
-  "revision": "ff0cec8225602e1228eb",
+  "body_sha256": "4a17efa046e1bf981e232a72ac27d166060d163f12cf7018a0aee365ec7ec96e",
+  "revision": "857aaa86991f7013eac7",
   "legacy_layout": {
     "version": 4
   },
@@ -4260,8 +4200,8 @@
       "scope": "十套打法的定阵条件、转入转出归位及选阵技巧；只改明先生"
     }
   ],
-  "history_head": "knowledge-history/ecc822adc3754d8d93492229a4cdc75b/audit/af5a00f388e4cbe438e9d4d7650d4656fe87e31a4703b60f7d39fac375581b8b.json",
-  "history_count": 29,
+  "history_head": "knowledge-history/ecc822adc3754d8d93492229a4cdc75b/audit/1df5c3b070d3d7dc258223ecc908014cce56b4ad2eda129a03d725b80b08ae96.json",
+  "history_count": 34,
   "node_annotations": {
     "n-360216a8de7ec4d88b11": {
       "origin": "manual",
@@ -4288,6 +4228,26 @@
       "section": "适用打法与选择"
     },
     "pf28-883f19c3742263b8b7c0": {
+      "origin": "manual",
+      "section": "适用打法与选择"
+    },
+    "ming-flex-other-liubang": {
+      "origin": "manual",
+      "section": "适用打法与选择"
+    },
+    "ming-flex-other-lixin": {
+      "origin": "manual",
+      "section": "适用打法与选择"
+    },
+    "ming-flex-other-hanxin": {
+      "origin": "manual",
+      "section": "适用打法与选择"
+    },
+    "ming-flex-other-libai": {
+      "origin": "manual",
+      "section": "适用打法与选择"
+    },
+    "ming-flex-other-mazhao": {
       "origin": "manual",
       "section": "适用打法与选择"
     }
