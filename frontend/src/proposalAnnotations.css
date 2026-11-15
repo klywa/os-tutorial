@@ -1,0 +1,21 @@
+.proposal-field-actions { display: flex; flex-wrap: wrap; gap: .4rem .8rem; }
+.proposal-annotation-tools { margin-block: .4rem; }
+.proposal-annotation-tools:has(form) { flex-basis: 100%; }
+.proposal-annotation-tools small { margin-inline-start: .45rem; }
+.proposal-annotation-tools form,
+.proposal-annotation { border-inline-start: 2px solid #6287a5; background: #f0f5fa; color: #274965; padding: .65rem .8rem; }
+.proposal-annotations h3 { font-size: .95rem; margin-block: .8rem .4rem; }
+.proposal-annotation { margin-block: .55rem; overflow-wrap: anywhere; }
+.proposal-annotation header,
+.proposal-annotation small { color: #365a75; }
+.proposal-annotation time { display: inline-block; margin-inline-start: .35rem; }
+.proposal-annotation p { margin-block: .45rem; white-space: pre-wrap; }
+.proposal-annotation-response { padding-inline-start: .7rem; border-inline-start: 1px solid #86a0b4; }
+.proposal-annotation-tools form textarea,
+.proposal-annotation textarea { display: block; width: 100%; min-height: 4rem; margin-block: .35rem; resize: vertical; }
+.proposal-annotation-tools form button + button { margin-inline-start: .45rem; }
+.proposal-annotation-tools :focus-visible,
+.proposal-annotation :focus-visible { outline: 2px solid #335e80; outline-offset: 2px; }
+@media (max-width: 600px) {
+ .proposal-annotation-tools button, .proposal-annotation button { min-height: 44px; }
+}

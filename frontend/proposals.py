@@ -15,6 +15,7 @@ import uuid
 
 import json_document
 import json_store
+import proposal_annotations as feedback
 from workspace import Conflict, store_lock
 
 
@@ -132,6 +133,7 @@ class ProposalStore:
                 conn.execute('PRAGMA journal_mode=WAL')
                 conn.execute('PRAGMA synchronous=FULL')
                 conn.execute('CREATE TABLE IF NOT EXISTS proposals (id TEXT PRIMARY KEY, data TEXT NOT NULL)')
+                conn.execute('CREATE TABLE IF NOT EXISTS proposal_audit (id TEXT PRIMARY KEY, note_id TEXT, proposal_id TEXT, kind TEXT, created_at TEXT, data TEXT NOT NULL)')
                 conn.commit()
                 conn.execute('BEGIN IMMEDIATE')
             else:
@@ -198,6 +200,15 @@ class ProposalStore:
 
     def _public(self,item,record=None):
         result={k:deepcopy(v) for k,v in item.items() if not k.startswith('_')}
+        result.setdefault('annotations', [])
+        result.setdefault('annotation_revision', 0)
+        available = feedback.fields(item)
+        for annotation in result['annotations']:
+            field = annotation['field']
+            annotation['anchor_state'] = (
+                'current' if field is None else 'missing' if field not in available else
+                'current' if available[field] == annotation['snapshot'] else 'changed'
+            )
         if item['status']=='pending':
             try:
                 record=record or self._note(item['note_id'])
@@ -229,6 +240,58 @@ class ProposalStore:
             item=self._get(conn,pid)
             self._access(actor,item)
             return self._public(item)
+
+    def annotate(self, actor, pid, payload, annotation_id=None):
+        role = _authority(actor)
+        if annotation_id and role != 'admin':
+            raise ProposalForbidden('只有管理员可以关闭批注')
+        with self._db() as conn:
+            self._private_ready()
+            item = self._get(conn, pid)
+            self._access(actor, item)
+            if item['status'] != 'pending':
+                raise Conflict('已结束提案的批注仅供查看')
+            now = _now()
+            before = None
+            if annotation_id:
+                annotation = feedback.annotation_at(item, annotation_id, payload.get('revision'))
+                before = deepcopy(annotation)
+                annotation.update(status='closed', revision=annotation['revision'] + 1,
+                                  closed_at=now, closed_by=actor['username'])
+            else:
+                self._revision(item, payload)
+                annotation = feedback.add(item, actor, payload, now)
+            if role == 'admin':
+                kind = 'annotation_close' if annotation_id else 'annotation_create'
+                feedback.record(conn, feedback.audit(item, actor, kind, now, before, annotation))
+            item['annotation_revision'] = item.get('annotation_revision', 0) + 1
+            self._put(conn, item)
+            return self._public(item)
+
+    def audit_history(self, actor, **filters):
+        if _authority(actor) != 'admin':
+            raise ProposalForbidden('只有管理员可以查询改动历史')
+        clauses, values = [], []
+        for key, operator, column in (
+            ('note_id', '=', 'note_id'), ('proposal_id', '=', 'proposal_id'), ('kind', '=', 'kind'),
+            ('from_date', '>=', 'created_at'), ('through_date', '<', 'created_at'),
+        ):
+            value = filters.get(key)
+            if value:
+                if key.endswith('_date'):
+                    from datetime import date, timedelta
+                    day = date.fromisoformat(value)
+                    value = (day + timedelta(days=key == 'through_date')).isoformat()
+                clauses.append(f'{column} {operator} ?')
+                values.append(value)
+        if not self.db_path.exists():
+            return {'items': []}
+        with self._db(write=False) as conn:
+            if not conn.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='proposal_audit'").fetchone():
+                return {'items': []}
+            where = ' WHERE ' + ' AND '.join(clauses) if clauses else ''
+            rows = conn.execute('SELECT data FROM proposal_audit' + where + ' ORDER BY created_at DESC, rowid DESC', values)
+            return {'items': [json.loads(row[0]) for row in rows]}
 
     def _private_ready(self):
         # Called only after BEGIN IMMEDIATE: an approval cannot create its
@@ -321,6 +384,17 @@ class ProposalStore:
         item['proposed_node'] = (sibling_heading(proposed, item['proposed_node']['level'])
                                  if item['_context'].get('sibling_of') else _entry(proposed, item['base_node']))
 
+    def _set_proposed_entries(self, item, entries):
+        existing = item.get('section_entries', [])
+        if not existing or not isinstance(entries, list) or len(entries) != len(existing):
+            raise ValueError('请提交同一章节的完整条目改稿')
+        record = self._note(item['note_id'])
+        for entry, node in zip(existing, entries):
+            original = entry['node']
+            entry['node'] = _entry(node, original)
+            json_store.prepare_entry_evidence(
+                self.root, record, original['id'], entry['evidence_changes'], inserting=True)
+
     def _confirm_draft_evidence(self,item,payload,record=None):
         if 'evidence_changes' not in item:
             if 'evidence_changes' in payload:raise ValueError('普通提案不接受证据变更')
@@ -343,12 +417,13 @@ class ProposalStore:
 
     def update(self,actor,pid,payload,*,_recover=True):
         _authority(actor)
-        if set(payload)-{'revision','proposed_node','rebase','client_id','lease','evidence_changes'}:raise ValueError('不支持的提案字段')
+        if set(payload)-{'revision','proposed_node','rebase','client_id','lease','evidence_changes','annotation_responses','section_nodes'}:raise ValueError('不支持的提案字段')
         if _recover:self.recover()
         with self._db() as conn:
             if not _recover:self._private_ready()
             item=self._get(conn,pid);self._access(actor,item);self._revision(item,payload)
             if item['status']!='pending':raise Conflict('已处理提案不能修改')
+            before = deepcopy(item)
             record=self._note(item['note_id']) if 'evidence_changes' in item else None
             self._confirm_draft_evidence(item,payload,record)
             locks=getattr(self,'edit_locks',None)
@@ -369,8 +444,33 @@ class ProposalStore:
                     if base is None or base['type']!='entry':raise Conflict('原条目已删除')
                     item['base_node']=deepcopy(base);item['_context']['section']=_section(nodes,item['node_id'])
             self._set_proposed_node(item,payload.get('proposed_node'))
+            if 'section_nodes' in payload:
+                self._set_proposed_entries(item, payload['section_nodes'])
             self._check_evidence_draft_change(item)
             item.update(revision=item['revision']+1,updated_at=_now())
+            responses = payload.get('annotation_responses', [])
+            if not isinstance(responses, list):
+                raise ValueError('回应必须是列表')
+            response_ids = set()
+            for response in responses:
+                if not isinstance(response, dict) or not isinstance(response.get('id'), str):
+                    raise ValueError('批注回应缺少有效 ID')
+                if response['id'] in response_ids:
+                    raise ValueError('不能重复回应同一批注')
+                response_ids.add(response['id'])
+                annotation = feedback.annotation_at(item, response['id'], response.get('revision'))
+                previous = deepcopy(annotation)
+                annotation['responses'].append({
+                    'text': feedback.message(response.get('text')), 'author': actor['username'],
+                    'created_at': item['updated_at'], 'proposal_revision': item['revision'],
+                })
+                annotation.update(status='responded', revision=annotation['revision'] + 1)
+                if actor['role'] == 'admin':
+                    feedback.record(conn, feedback.audit(item, actor, 'annotation_response',
+                                                        item['updated_at'], previous, annotation))
+            if responses:
+                item['annotation_revision'] = item.get('annotation_revision', 0) + 1
+            feedback.record(conn, feedback.draft_audit(before, item, actor, item['updated_at']))
             self._put(conn,item)
             if locks:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
             return self._public(item)
@@ -435,6 +535,7 @@ class ProposalStore:
             if item['status']!='pending':raise Conflict('提案已经处理')
             if action=='withdraw' and actor['username']!=item['author']:raise ProposalForbidden('只有作者可撤回')
             if action=='approve':
+                before = deepcopy(item)
                 record=self._note(item['note_id'])
                 if self._conflict(item,record):raise Conflict('正文或插入锚点已变化，请重新合并')
                 locks=getattr(self,'edit_locks',None);revoked=[]
@@ -456,6 +557,8 @@ class ProposalStore:
                 if with_draft:
                     receipt['proposed_node']=item['proposed_node']
                     receipt['released_lease']=payload['lease']['id']
+                    receipt['draft_audit'] = feedback.draft_audit(
+                        before, {**item, 'revision': item['revision'] + 1}, actor, _now())
                 options={}
                 if 'evidence_changes' in item:
                     options['_entry_evidence']=(item['node_id'],item['_base_claims'],item['evidence_changes'])
@@ -471,6 +574,7 @@ class ProposalStore:
                     item['result_revision']=result['revision']
                 else:item['result_revision']=record['metadata']['revision']
                 if with_draft:locks.release_in(conn,actor,payload['client_id'],[payload['lease']])
+                feedback.record(conn, receipt.get('draft_audit'))
             item.update(status={'approve':'approved','reject':'rejected','withdraw':'withdrawn'}[action],
                 reviewed_by=actor['username'],revision=item['revision']+1,updated_at=_now())
             self._put(conn,item)
@@ -514,6 +618,7 @@ class ProposalStore:
                     item.update(status='approved',reviewed_by=receipt['reviewed_by'],revision=item['revision']+1,
                         result_revision=after['metadata']['revision'],updated_at=_now())
                     self._put(conn,item)
+                    feedback.record(conn, receipt.get('draft_audit'))
         # A receipt before canonical preparation is harmless: leave pending and
         # let the next explicit approval compare the current target again.
         self._clear_receipt()

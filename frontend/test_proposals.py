@@ -49,6 +49,59 @@ class ProposalTests(unittest.TestCase):
     def action(self, item, action='approve', actor=ADMIN):
         return self.store.action(actor,item['id'],action,{'revision':item['revision']})
 
+    def test_proposal_feedback_and_private_history(self):
+        item, = self.submit()
+        pid, revision = item['id'], item['revision']
+        self.assertEqual(item['annotations'], [])
+        with self.assertRaises(ProposalForbidden):
+            self.store.annotate(OTHER, pid, {'revision': revision, 'text': 'forbidden'})
+        annotated = self.store.annotate(ADMIN, pid, {'revision': revision, 'field': 'a:name', 'text': 'Remove name'})
+        comment, = annotated['annotations']
+        self.assertEqual(annotated['revision'], revision)
+        self.assertEqual(comment['snapshot'], '说明')
+        changed = self.store.update(AUTHOR, pid, {
+            'revision': revision, 'proposed_node': {**entry('a', 'new'), 'show_key': False, 'key': '正文'},
+            'annotation_responses': [{'id': comment['id'], 'revision': comment['revision'], 'text': 'Removed'}],
+        })
+        comment, = changed['annotations']
+        self.assertEqual((comment['anchor_state'], comment['status']), ('missing', 'responded'))
+        with self.assertRaises(Conflict):
+            self.store.annotate(ADMIN, pid, {'revision': 1}, comment['id'])
+        closed = self.store.annotate(ADMIN, pid, {'revision': comment['revision']}, comment['id'])
+        changed = self.store.update(ADMIN, pid, {'revision': closed['revision'], 'proposed_node': entry('a', 'final')})
+        self.action(changed)
+        self.assertEqual(self.store.get(AUTHOR, pid)['annotations'][0]['status'], 'closed')
+        with self.assertRaises(Conflict):
+            self.store.annotate(ADMIN, pid, {'revision': changed['revision'] + 1, 'text': 'closed'})
+        with self.assertRaises(ProposalForbidden):
+            self.store.audit_history(AUTHOR)
+        events = self.store.audit_history(ADMIN, proposal_id=pid, note_id='n')['items']
+        self.assertEqual([event['kind'] for event in events], ['draft_edit', 'annotation_close', 'annotation_create'])
+        day = events[0]['created_at'][:10]
+        self.assertEqual(self.store.audit_history(ADMIN, kind='draft_edit', from_date=day, through_date=day)['items'], events[:1])
+        self.assertEqual(events[0]['after']['proposed_node']['value'], 'final')
+
+    def test_recovered_direct_approval_audits_draft_once(self):
+        from edit_locks import EditLocks
+        item, = self.submit()
+        self.store.edit_locks = EditLocks(self.store)
+        lease = self.store.edit_locks.acquire(ADMIN, {'note_id': 'n', 'client_id': 'reviewer',
+            'resource': {'kind': 'entry', 'id': 'a'}})
+        payload = {'revision': item['revision'], 'proposed_node': entry('a', 'final'),
+                   'client_id': 'reviewer', 'lease': {key: lease[key] for key in ('id', 'token')}}
+        edit = json_store.edit
+        def interrupt(*args, **kwargs):
+            edit(*args, **kwargs)
+            raise OSError('interrupted')
+        with patch('json_store.edit', side_effect=interrupt), self.assertRaises(OSError):
+            self.store.action(ADMIN, item['id'], 'approve', payload)
+        self.store.recover()
+        self.store.recover()
+        self.store.action(ADMIN, item['id'], 'approve', payload)
+        event, = self.store.audit_history(ADMIN, proposal_id=item['id'])['items']
+        self.assertEqual((event['before']['proposed_node']['value'], event['after']['proposed_node']['value']),
+                         ('new', 'final'))
+
     def evidence_request(self):
         from edit_locks import EditLocks
         self.store.edit_locks=EditLocks(self.store)

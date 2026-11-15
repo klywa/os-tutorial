@@ -13,8 +13,8 @@
       "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/e582576458eb2f1a3585582d53e4e2f7.png",
       "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/e582576458eb2f1a3585582d53e4e2f7.png",
       "desc": "从3种机关强化方案中选择1个。",
-      "jumpID": 0,
-      "jumpType": 0,
+      "jumpID": 35,
+      "jumpType": 5,
       "previewCardIDs": [
         93505,
         93506,
@@ -47,7 +47,7 @@
     "category": "talents",
     "name": "万鸟朝凤",
     "aliases": [],
-    "description": "随机从3个棋手的秘技卡中选1张。",
+    "description": "随机从3个棋手的秘技牌中选1张。",
     "properties": {
       "id": 610005,
       "name": "万鸟朝凤",
@@ -55,7 +55,7 @@
       "quality": 5,
       "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/331a607e53226af66e6704ff82e8ba62.png",
       "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/331a607e53226af66e6704ff82e8ba62.png",
-      "desc": "随机从3个棋手的秘技卡中选1张。",
+      "desc": "随机从3个棋手的秘技牌中选1张。",
       "jumpID": 8,
       "jumpType": 5,
       "previewCardIDs": [],
@@ -6614,6 +6614,59 @@
     }
   },
   {
+    "id": "card:636202",
+    "category": "talents",
+    "name": "以物易物",
+    "aliases": [],
+    "description": "每出售3张古币牌，获得1张不屈意志。",
+    "properties": {
+      "id": 636202,
+      "name": "以物易物",
+      "type": 6,
+      "quality": 2,
+      "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/a61da978e1837a491d4f6716ce1f48b9.png",
+      "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/a61da978e1837a491d4f6716ce1f48b9.png",
+      "desc": "每<color=#FFE897>出售3张古币牌</color>，获得1张<color=#FFE897>不屈意志</color>。",
+      "jumpID": 0,
+      "jumpType": 0,
+      "previewCardIDs": [
+        641023
+      ],
+      "relationID": 0,
+      "relationName": "",
+      "heroCard": null,
+      "effectCard": null,
+      "equipCard": null,
+      "talentCard": {
+        "grpID": 3,
+        "grpName": "天赋包二",
+        "grpDesc": "万象大赛达到1520分",
+        "unlockScore": {
+          "UnlockScore": 8,
+          "OSGEloScore": 1520,
+          "OSOEloScore": 0,
+          "OSHMaxCoin": 0,
+          "OSHEloScore": 0
+        },
+        "bg": "https://game-1255653016.file.myqcloud.com/manage/custom_os_common/c22d5a3c38cf872abbe81cb4d31381f5.png"
+      },
+      "effectTypeDesc": "",
+      "imageBg": "",
+      "faceType": 10,
+      "shopBuyCost": {
+        "Type": 1,
+        "Count": 1
+      },
+      "levelIcon": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_hero_level/33ecc5d7134c01247996ef4eef09f0b1.png",
+      "cardGetDesc": "来源: 棋手升级时概率选择获取天赋。",
+      "cardImage": "https://staticimage-prod.osgame.qq.com/CardCapture/publish/release/Texture/0a27709437c94cc3a113dfde7963652253d6e37923530f30a291d6e4241ddd2a.png",
+      "isShowGuideBook": false,
+      "levelIconV2": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_ui_libraries_auto/34dd92a5b0b39f7384bfe41d492fad9f.png",
+      "talentStageType": 8,
+      "talentStageDesc": "第八轮拍卖"
+    }
+  },
+  {
     "id": "card:636203",
     "category": "talents",
     "name": "升值",
@@ -9357,7 +9410,7 @@
     "category": "talents",
     "name": "熊魂附甲",
     "aliases": [],
-    "description": "你至少穿戴2件装备的【大河】英雄阵亡获得牺牲：召唤1只与该英雄等级相同的熊灵。",
+    "description": "你至少穿戴2件装备的【大河】英雄获得牺牲：召唤1只与该英雄等级相同的熊灵。",
     "properties": {
       "id": 636508,
       "name": "熊魂附甲",
@@ -9365,7 +9418,7 @@
       "quality": 3,
       "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/e482f8df45a4d5f183f9d9125e0fcae6.png",
       "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/e482f8df45a4d5f183f9d9125e0fcae6.png",
-      "desc": "你<color=#FFE897>至少穿戴2件装备的【大河】英雄阵亡</color>获得牺牲：召唤1只与该英雄等级相同的<color=#FFE897>熊灵</color>。",
+      "desc": "你<color=#FFE897>至少穿戴2件装备的【大河】英雄</color>获得牺牲：召唤1只与该英雄等级相同的<color=#FFE897>熊灵</color>。",
       "jumpID": 0,
       "jumpType": 0,
       "previewCardIDs": [],
@@ -10679,7 +10732,7 @@
     "category": "talents",
     "name": "帝临",
     "aliases": [],
-    "description": "获得1张嬴政和1张武则天。备战开始时，若嬴政和武则天同时在场，二选一种统治方案，每种方案选择后会得到强化。",
+    "description": "获得1张嬴政和1张武则天。备战开始时，若嬴政和武则天同时在场，二选一统治方案，每种方案选择后会得到强化。",
     "properties": {
       "id": 637018,
       "name": "帝临",
@@ -10687,7 +10740,7 @@
       "quality": 3,
       "thumb": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/537b02e3367af6afc59e62fe779f5395.png",
       "image": "https://game-os-cos.kohsocialapp.qq.com/manage/custom_os_talent_auto/537b02e3367af6afc59e62fe779f5395.png",
-      "desc": "获得1张嬴政和1张武则天。备战开始时，若<color=#FFE897>嬴政和武则天同时在场</color>，二选一种<color=#FFE897>统治方案</color>，每种方案选择后会得到强化。",
+      "desc": "获得1张嬴政和1张武则天。备战开始时，若<color=#FFE897>嬴政和武则天同时在场</color>，二选一<color=#FFE897>统治方案</color>，每种方案选择后会得到强化。",
       "jumpID": 0,
       "jumpType": 0,
       "previewCardIDs": [

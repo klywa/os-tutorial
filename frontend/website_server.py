@@ -103,10 +103,10 @@ def handler_class(base):
                     if not self.actor():return self.response(401,{'error':'请先登录'})
                     from site_access import get_locks
                     return self.response(200,get_locks(self.server,self.actor(),self.path))
-                if path=='/api/proposals':
+                if path=='/api/proposals' or re.fullmatch(r'/api/proposals/[^/]+',path):
                     if not self.actor():return self.response(401,{'error':'请先登录'})
                     from site_access import get_proposals
-                    return self.response(200,get_proposals(self.server,self.actor(),self.path))
+                    return self.response(200,get_proposals(self.server,self.actor(),self.path,path))
                 if path=='/api/sync-conflicts' or re.fullmatch(r'/api/sync-conflicts/[^/]+',path):
                     if not self.actor():return self.response(401,{'error':'请先登录管理员'})
                     from site_access import get_sync_conflicts

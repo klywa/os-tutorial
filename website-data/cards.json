@@ -4807,31 +4807,6 @@
     "sources": []
   },
   {
-    "id": "card:641023",
-    "name": "不屈意志",
-    "category": "equipment",
-    "aliases": [],
-    "effect": "唯一。战斗开始及之后每3秒获得场上友军穿戴不屈意志数量x2的临时等级。阵亡时，将自身等级的30%平均分配给穿戴不屈意志的友军。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "装备分类": "天赋装备",
-      "装备类型": "通用装备",
-      "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:643100",
     "name": "风暴巨剑",
     "category": "equipment",
@@ -10605,32 +10580,6 @@
     "category": "talents",
     "aliases": [],
     "effect": "获得1张始祖熊灵，其被视为【大河】英雄且不占人口。战斗开始时，我方每比敌方多1个单位，始祖熊灵永久增加2级。",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": 0
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "初始天赋",
-      "解锁条件": "万象大赛达到1200分",
-      "拍卖轮次（官网原文）": "第八轮拍卖",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "card:636508",
-    "name": "熊魂附甲",
-    "category": "talents",
-    "aliases": [],
-    "effect": "你至少穿戴2件装备的【大河】英雄阵亡获得牺牲：召唤1只与该英雄等级相同的熊灵。",
     "faction": {
       "id": "",
       "name": "未提供",
@@ -26421,32 +26370,6 @@
     "sources": []
   },
   {
-    "id": "card:637018",
-    "name": "帝临",
-    "category": "talents",
-    "aliases": [],
-    "effect": "获得1张嬴政和1张武则天。备战开始时，若嬴政和武则天同时在场，二选一种统治方案，每种方案选择后会得到强化。",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": 0
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "天赋包三",
-      "解锁条件": "万象大赛达到1820分",
-      "拍卖轮次（官网原文）": "第八轮拍卖",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-11-01T07:39:37.565420+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:637018021",
     "name": "大同",
     "category": "talents",
@@ -26522,27 +26445,6 @@
   {
     "id": "player:32",
     "name": "马可",
-    "category": "players",
-    "aliases": [],
-    "effect": "未提供",
-    "faction": {
-      "id": "",
-      "name": "未提供",
-      "official_id": null
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {},
-    "retrieved_at": "2026-11-06T01:50:24.504362+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
-    "id": "player:34",
-    "name": "昭君",
     "category": "players",
     "aliases": [],
     "effect": "未提供",
@@ -27705,32 +27607,6 @@
     "sources": []
   },
   {
-    "id": "card:610005",
-    "name": "万鸟朝凤",
-    "category": "talents",
-    "aliases": [],
-    "effect": "随机从3个棋手的秘技卡中选1张。",
-    "faction": {
-      "id": "faction:none",
-      "name": "无阵营",
-      "official_id": 307
-    },
-    "tier": null,
-    "awakened": false,
-    "skills": [],
-    "skills_source": null,
-    "stats": {},
-    "attributes": {
-      "所属分组": "初始天赋",
-      "解锁条件": "万象大赛达到1200分",
-      "拍卖轮次（官网原文）": "初始阵容",
-      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
-    },
-    "retrieved_at": "2026-11-06T01:50:19.750749+00:00",
-    "version": null,
-    "sources": []
-  },
-  {
     "id": "card:90810",
     "name": "为我所用",
     "category": "player-skills",
@@ -27845,6 +27721,156 @@
       "获得途径": "来源: 初始获得卡牌"
     },
     "retrieved_at": "2026-11-07T07:47:23.950945+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "player:34",
+    "name": "昭君",
+    "category": "players",
+    "aliases": [],
+    "effect": "未提供",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": null
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {},
+    "retrieved_at": "2026-11-13T01:27:08.422437+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:641023",
+    "name": "不屈意志",
+    "category": "equipment",
+    "aliases": [],
+    "effect": "唯一。战斗开始及之后每3秒获得场上友军穿戴不屈意志数量x2的临时等级。阵亡时，将自身等级的30%平均分配给穿戴不屈意志的友军。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "装备分类": "天赋装备",
+      "装备类型": "通用装备",
+      "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。"
+    },
+    "retrieved_at": "2026-11-13T01:27:04.888572+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:610005",
+    "name": "万鸟朝凤",
+    "category": "talents",
+    "aliases": [],
+    "effect": "随机从3个棋手的秘技牌中选1张。",
+    "faction": {
+      "id": "faction:none",
+      "name": "无阵营",
+      "official_id": 307
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "初始天赋",
+      "解锁条件": "万象大赛达到1200分",
+      "拍卖轮次（官网原文）": "初始阵容",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-13T01:27:04.888572+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:636508",
+    "name": "熊魂附甲",
+    "category": "talents",
+    "aliases": [],
+    "effect": "你至少穿戴2件装备的【大河】英雄获得牺牲：召唤1只与该英雄等级相同的熊灵。",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "初始天赋",
+      "解锁条件": "万象大赛达到1200分",
+      "拍卖轮次（官网原文）": "第八轮拍卖",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-13T01:27:04.888572+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:637018",
+    "name": "帝临",
+    "category": "talents",
+    "aliases": [],
+    "effect": "获得1张嬴政和1张武则天。备战开始时，若嬴政和武则天同时在场，二选一统治方案，每种方案选择后会得到强化。",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "天赋包三",
+      "解锁条件": "万象大赛达到1820分",
+      "拍卖轮次（官网原文）": "第八轮拍卖",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-13T01:27:04.888572+00:00",
+    "version": null,
+    "sources": []
+  },
+  {
+    "id": "card:636202",
+    "name": "以物易物",
+    "category": "talents",
+    "aliases": [],
+    "effect": "每出售3张古币牌，获得1张不屈意志。",
+    "faction": {
+      "id": "",
+      "name": "未提供",
+      "official_id": 0
+    },
+    "tier": null,
+    "awakened": false,
+    "skills": [],
+    "skills_source": null,
+    "stats": {},
+    "attributes": {
+      "所属分组": "天赋包二",
+      "解锁条件": "万象大赛达到1520分",
+      "拍卖轮次（官网原文）": "第八轮拍卖",
+      "获得途径": "来源: 棋手升级时概率选择获取天赋。"
+    },
+    "retrieved_at": "2026-11-13T01:27:04.888572+00:00",
     "version": null,
     "sources": []
   }
