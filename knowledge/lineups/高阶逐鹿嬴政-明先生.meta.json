@@ -187,6 +187,12 @@
           "source": "BV1tvYS6MEHf:p1",
           "start": 623.36,
           "end": 760.81
+        },
+        {
+          "type": "video",
+          "source": "BV1xXhR65ESC:p1",
+          "start": 23.66,
+          "end": 99.93
         }
       ],
       "review_basis": {
@@ -4951,10 +4957,20 @@
       ],
       "plain_language_review": "raw\\reports\\ming-plain-language-20261103\\review.json",
       "display_ref": "n-9666389ecf9fffdcbd76"
+    },
+    {
+      "id": "entry-718e08521661b438caf58a13ef419361-claim",
+      "text_ref": "entry-718e08521661b438caf58a13ef419361",
+      "kind": "conditional_strategy",
+      "origin": "manual",
+      "section": "关键效果牌",
+      "evidence": [],
+      "inference": false,
+      "display_ref": "entry-718e08521661b438caf58a13ef419361"
     }
   ],
-  "body_sha256": "b4d7df5acb4e25a2fe3c64ce94685b4f77b85683ebc7179611542bad70b5a131",
-  "revision": "8f0bf706a5e531d7324b",
+  "body_sha256": "2200afcb1a0ddb069cdd9c2291f0f60a8470e0165d42a33cc34ebf0706452af9",
+  "revision": "dd166c68b8804bb15c15",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -5808,12 +5824,16 @@
       "scope": "四份笔记的正文与棋手摘要；以明确对象、自然动作与不改条件为准"
     }
   ],
-  "history_head": "knowledge-history/8ad1b8b930d3af78d19c1e87dca0ae58/audit/6ffa1be6889be90af352a7b88dbedcc34b1bda927965378642351539cd70f276.json",
-  "history_count": 14,
+  "history_head": "knowledge-history/8ad1b8b930d3af78d19c1e87dca0ae58/audit/183a13cf5ac35baa442430a1e07e11f660ea168b386c200a981e178b4ccadd47.json",
+  "history_count": 17,
   "node_annotations": {
     "b22-high-zhulu-yingzheng-play-tips-body": {
       "origin": "manual",
       "section": "打法要点"
+    },
+    "entry-718e08521661b438caf58a13ef419361": {
+      "origin": "manual",
+      "section": "关键效果牌"
     }
   }
 }

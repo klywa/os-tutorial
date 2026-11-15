@@ -3,7 +3,7 @@ import json
 from contextlib import contextmanager,nullcontext
 from pathlib import Path
 import re
-from urllib.parse import parse_qs,urlsplit
+from urllib.parse import parse_qs,unquote,urlsplit
 
 from website_sync import SyncBlocked,sync_lock,save_lock
 
@@ -62,7 +62,8 @@ def payload(handler):
 
 
 def is_proposal_path(path):
-    return path=='/api/proposals' or bool(re.fullmatch(r'/api/proposals/[^/]+(?:/(approve|reject|withdraw))?',path))
+    return path=='/api/proposals' or bool(re.fullmatch(
+        r'/api/proposals/[^/]+(?:/(?:approve|reject|withdraw|annotations(?:/[^/]+/close)?))?', path))
 
 
 def require_identity(identity):
@@ -70,10 +71,22 @@ def require_identity(identity):
     if identity['role'] not in ('admin','annotator'):raise PermissionError('浏览者没有编辑权限')
 
 
-def get_proposals(server,identity,request_url):
+def get_proposals(server,identity,request_url,path=None):
     require_identity(identity)
-    query=parse_qs(urlsplit(request_url).query)
-    return proposal_store(server).list(identity,**{key:query.get(key,[None])[0] for key in ('note_id','status','author')})
+    from proposals import ProposalForbidden
+    url = urlsplit(request_url)
+    path = path or url.path
+    query = parse_qs(url.query)
+    service = proposal_store(server)
+    try:
+        if path == '/api/proposals/history':
+            return service.audit_history(identity, **{key: query.get(key, [None])[0]
+                for key in ('note_id', 'proposal_id', 'kind', 'from_date', 'through_date')})
+        if path != '/api/proposals':
+            return service.get(identity, unquote(path.rsplit('/', 1)[-1]))
+        return service.list(identity,**{key:query.get(key,[None])[0] for key in ('note_id','status','author')})
+    except ProposalForbidden as exc:
+        raise PermissionError(str(exc)) from exc
 
 
 SYNC_FIELDS=('state','phase','message','job_id','updated_at','next_retry_at','attempts','conflict_note_ids','conflict_count')
@@ -178,6 +191,9 @@ def mutate_proposal(server,identity,path,command,data,public=False):
     if service.recovery_pending():
         with save_lock(state_dir(server)):service.recover()
     if path=='/api/proposals' and command=='POST':return service.submit_delta(identity,data,_recover=False)
+    feedback = re.fullmatch(r'/api/proposals/([^/]+)/annotations(?:/([^/]+)/close)?', path)
+    if feedback and command == 'POST':
+        return service.annotate(identity, unquote(feedback[1]), data, feedback[2])
     if not match:raise KeyError('提案接口不存在')
     item_id,action=match.groups()
     if action is None and command=='PUT':return service.update(identity,item_id,data,_recover=False)

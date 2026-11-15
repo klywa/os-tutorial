@@ -1,0 +1,34 @@
+.quick-video-search { max-width: 72rem; padding-block: 1rem; }
+.acquisition-page > .acquisition-tabs { flex-wrap: wrap; }
+.quick-video-form { display: grid; grid-template-columns: minmax(12rem,1fr) auto auto; gap: .75rem; align-items: end; }
+.quick-video-form label, .quick-video-search > label { display: grid; gap: .35rem; }
+.quick-video-toolbar { position: sticky; top: 0; z-index: 1; background: var(--panel, Canvas); display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding-block: .75rem; }
+.quick-video-header, .quick-video-rows li {
+  display: grid; grid-template-columns: 4rem minmax(0,1fr) minmax(6rem,11rem) 7rem 6rem;
+  align-items: center; gap: .65rem; padding-inline: .5rem;
+  border-block-end: 1px solid var(--line, #73809655);
+}
+.quick-video-header { font-weight: 600; min-height: 2.75rem; }
+.quick-video-search .quick-video-form label,
+.quick-video-search .quick-video-header label,
+.quick-video-search .quick-video-check { margin: 0; }
+.quick-video-search .quick-video-header label, .quick-video-search .quick-video-check { display: flex; align-items: center; gap: .3rem; }
+.quick-video-rows { padding: 0; margin: 0; list-style: none; }
+.quick-video-rows li { min-height: 3rem; padding-block: .3rem; }
+.quick-video-rows li[data-checked="true"] { background: color-mix(in srgb, var(--jade, #4e8edc) 13%, transparent); }
+.quick-video-rows a, .quick-video-rows span { overflow-wrap: anywhere; }
+.quick-video-header > :last-child, .quick-video-rows li > :last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.quick-video-check input, .quick-video-header input { inline-size: 1.2rem; block-size: 1.2rem; margin: .25rem; cursor: pointer; }
+.quick-video-pagination { padding-top: .75rem; }
+.quick-video-pagination p:empty { display: none; }
+@media (max-width: 700px) {
+  .quick-video-form { grid-template-columns: minmax(0,1fr) auto; }
+  .quick-video-form label:first-child { grid-column: 1/-1; }
+  .quick-video-form input { min-width: 0; width: 100%; }
+  .quick-video-header { display: flex; }
+  .quick-video-header > span { display: none; }
+  .quick-video-rows li { grid-template-columns: 2rem repeat(3,minmax(0,auto)); justify-content: start; column-gap: .5rem; row-gap: .2rem; }
+  .quick-video-rows li > label { grid-row: span 2; }
+  .quick-video-rows li > a { grid-column: 2/-1; }
+  .quick-video-rows li > span, .quick-video-rows time { font-size: .8rem; }
+}

@@ -116,7 +116,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200,get_locks(self.server,identity,self.path))
             except EditLocked as exc:return self.response(423,{'error':str(exc),'reason':exc.reason})
             except (ValueError,PermissionError) as exc:return self.response(403,{'error':str(exc)})
-        if path=='/api/proposals':
+        if path=='/api/proposals' or re.fullmatch(r'/api/proposals/[^/]+',path):
             try:return self.response(200,get_proposals(self.server,identity,self.path))
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
             except (ValueError,KeyError) as exc:return self.response(400,{'error':str(exc)})
@@ -139,6 +139,19 @@ class Handler(BaseHTTPRequestHandler):
             if path.startswith('/api/crawler/'):
                 suffix = path.removeprefix('/api/crawler/')
                 store = self.server.crawler.store
+                if suffix == 'quick-search':
+                    from bilibili import Bilibili, BilibiliError
+                    from quick_search import parameters, search
+                    query = parse_qs(urlsplit(self.path).query)
+                    args = tuple(query.get(key, [''])[0] for key in ('q', 'date_from', 'cursor'))
+                    parameters(*args)
+                    try:
+                        adapter = Bilibili(store.settings()['cookies'], root=self.server.root)
+                        return self.response(200, search(adapter, *args))
+                    except BilibiliError as exc:
+                        return self.response(502, {'error': str(exc)})
+                    except Exception:
+                        return self.response(502, {'error': '暂时无法从 B 站获取搜索结果，请稍后重试'})
                 if suffix == 'settings' or suffix == 'searches':
                     return self.response(200, store.settings())
                 if suffix == 'jobs':

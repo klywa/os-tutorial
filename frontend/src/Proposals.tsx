@@ -7,12 +7,14 @@ import ProposalDiffEditor from './ProposalDiffEditor';
 import type {KnowledgeNode} from './types';
 import {syncLabel} from './syncStatus';
 import {useEditLocks,leaseRef,type Resource} from './editLocks';
+import {AnnotationForm,AnnotationSummary,proposalFields,type ProposalAnnotation,type ResponseDraft} from './ProposalAnnotations';
+import './proposalAnnotations.css';
 type EvidenceLocation={source:string}&(
  {type:'document';paragraph_start:number;paragraph_end:number}|
  {type?:'video';start:number;end:number;frame?:string}
 );
 type EvidenceChange={claim_id:string;evidence:EvidenceLocation[];inference:boolean};
-export type Proposal={id:string;note_id:string;note_title:string;author:string;kind:'insert'|'update'|'delete';node_id:string;section_id:string;after_id:string|null;base_node:KnowledgeNode|null;proposed_node:KnowledgeNode|null;revision:number;status:string;created_at:string;updated_at:string;reviewed_by?:string|null;result_revision?:string|null;conflict?:unknown;current_node?:KnowledgeNode|null;evidence_changes?:EvidenceChange[];section_entries?:{node:KnowledgeNode;evidence_changes:EvidenceChange[]}[]};
+export type Proposal={id:string;note_id:string;note_title:string;author:string;kind:'insert'|'update'|'delete';node_id:string;section_id:string;after_id:string|null;base_node:KnowledgeNode|null;proposed_node:KnowledgeNode|null;revision:number;status:string;created_at:string;updated_at:string;reviewed_by?:string|null;result_revision?:string|null;conflict?:unknown;current_node?:KnowledgeNode|null;evidence_changes?:EvidenceChange[];section_entries?:{node:KnowledgeNode;evidence_changes:EvidenceChange[]}[];annotations?:ProposalAnnotation[];annotation_revision?:number};
 function ProposalEvidence({changes}:{changes:EvidenceChange[]}){
  return <details><summary>证据 · {changes.reduce((total,change)=>total+change.evidence.length,0)} 处</summary>
   {changes.map(change=><section key={change.claim_id}>
@@ -32,13 +34,21 @@ export function proposalEditPayload(item:Proposal,draft:KnowledgeNode|null,draft
 export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,onDraft}:{item:Proposal;onChanged:()=>void;onLocate?:(item:Proposal)=>void;locating?:boolean;onDraft?:(id:string,active:boolean)=>void}){
  const {session}=useAuth();
  const [saved,setSaved]=useState<Proposal|null>(null);
- const item=saved&&saved.revision>incoming.revision?saved:incoming;
+ const item=saved&&(saved.revision>incoming.revision||
+  saved.revision===incoming.revision&&(saved.annotation_revision??0)>(incoming.annotation_revision??0))?saved:incoming;
+ const [responses,setResponses]=useState<Record<string,ResponseDraft>>({});
+ const [sectionDraft,setSectionDraft]=useState<Record<string,KnowledgeNode>>({});
  const [edit,setEdit]=useState<{base:KnowledgeNode;node:KnowledgeNode;revision:number;confirmed:boolean}|null>(null);
  const [error,setError]=useState(''),[busy,setBusy]=useState(false),[acquiring,setAcquiring]=useState(false),[composing,setComposing]=useState(false);
  const pendingRequest=useRef(false), acquiringLock=useRef(false),releasingLock=useRef(false);
  const admin=session.role==='admin',own=session.role==='annotator'&&session.username===item.author,pending=item.status==='pending';
  const canEdit=pending&&(admin||own)&&item.kind!=='delete'&&!!item.proposed_node;
- const dirty=!!edit&&!equalValue(edit.node,edit.base);
+ const responseList=Object.values(responses).filter(response=>response.text.trim());
+ const hasResponses=responseList.length>0;
+ const sectionNodes=item.section_entries?.map(entry=>sectionDraft[entry.node.id]??entry.node);
+ const sectionDirty=!!sectionNodes?.some((node,index)=>!equalValue(node,item.section_entries?.[index].node));
+ const staleResponse=responseList.some(response=>item.annotations?.find(a=>a.id===response.id)?.revision!==response.revision);
+ const dirty=!!edit&&(!equalValue(edit.node,edit.base)||hasResponses||sectionDirty);
  const stale=!!edit&&edit.revision!==item.revision;
  const noteEditable=useCanEditNote(item.note_id);
  const target:Resource=item.kind==='insert'?{kind:'slot',section_id:item.section_id,left_id:item.after_id??item.section_id}:{kind:'entry',id:item.node_id};
@@ -46,7 +56,7 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
  const lease=locks.get(target),owner=locks.owner(target);
  const blocked=busy||acquiring||locating;
  const confirmed=!item.evidence_changes||!!edit?.confirmed;
- const canSave=dirty&&!stale&&!!lease&&locks.online&&!composing&&confirmed&&(!item.evidence_changes||!item.conflict);
+ const canSave=dirty&&!stale&&!staleResponse&&!!lease&&locks.online&&!composing&&confirmed&&(!item.evidence_changes||!item.conflict);
 
  useEffect(()=>{
   if(!dirty&&!composing)return;
@@ -67,7 +77,7 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
 
  async function reset(){
   releasingLock.current=true;
-  setEdit(null);setError('');setComposing(false);
+  setEdit(null);setResponses({});setSectionDraft({});setError('');setComposing(false);
   try{await locks.release();}finally{releasingLock.current=false;}
  }
  async function begin(rebase=false,takeover=false){
@@ -90,6 +100,8 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
    const data=withEdit?{
     ...proposalEditPayload(item,edit?.node??null,edit?.revision??item.revision,!!edit,rebase),
     client_id:locks.clientId,lease:acquired?leaseRef(acquired):undefined,
+    ...(action==='edit'&&!rebase&&hasResponses?{annotation_responses:responseList}:{}),
+    ...(action==='edit'&&!rebase&&sectionDirty?{section_nodes:sectionNodes}:{}),
     ...(item.evidence_changes&&edit?.confirmed?{evidence_changes:item.evidence_changes}:{})
    }:{revision:item.revision};
    const result=await api<Proposal>('proposals/'+encodeURIComponent(item.id)+(action==='edit'?'':'/'+action),action==='edit'?'PUT':'POST',data);
@@ -98,8 +110,35 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
    window.dispatchEvent(new Event('wxq:proposals-changed'));
    if(action==='approve')window.dispatchEvent(new Event('wxq:knowledge-saved'));
    onChanged();
-  }catch(e){setError((e as Error).message);}
+  }catch(e){setError((e as Error).message);onChanged();}
   finally{pendingRequest.current=false;setBusy(false);}
+ }
+
+ async function annotate(field:string|null,text:string,annotation?:ProposalAnnotation){
+  if(pendingRequest.current)return false;
+  pendingRequest.current=true;setBusy(true);setError('');
+  try{
+   const path='proposals/'+encodeURIComponent(item.id)+'/annotations';
+   const result=await api<Proposal>(annotation?path+'/'+encodeURIComponent(annotation.id)+'/close':path,'POST',
+    annotation?{revision:annotation.revision}:{revision:item.revision,field,text});
+   setSaved(result);
+   window.dispatchEvent(new Event('wxq:proposals-changed'));
+   onChanged();
+   return true;
+  }catch(e){setError((e as Error).message);onChanged();return false;}
+  finally{pendingRequest.current=false;setBusy(false);}
+ }
+ function annotationForm(field:string|null){
+  return <AnnotationForm key={field??'proposal'} field={field} annotations={item.annotations??[]}
+   canComment={pending&&(admin||own)} busy={blocked} onAdd={annotate}/>;
+ }
+ function changeResponse(annotation:ProposalAnnotation,text:string){
+  setResponses(previous=>{
+   const next={...previous};
+   if(text)next[annotation.id]={id:annotation.id,revision:annotation.revision,text};
+   else delete next[annotation.id];
+   return next;
+  });
  }
 
  const node=edit?.node??item.proposed_node;
@@ -131,11 +170,35 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
  return <article className="proposal-card" data-proposal-id={item.id} aria-label={'提案 '+item.author} aria-busy={blocked}>
   <header><strong>{item.author}</strong> · {item.note_title} · {pending?'暂存待确认':({approved:'已确认',rejected:'已拒绝',withdrawn:'已撤回'}[item.status]??item.status)}</header>
   <DiffText before={nodeText(item.base_node)} after={nodeText(node)} composing={composing} split={pending||dirty} editor={editor}/>
-  {item.evidence_changes&&<ProposalEvidence changes={item.evidence_changes}/>}
-  {item.section_entries?.map(entry=><section key={entry.node.id}>
-   <DiffText before="" after={nodeText(entry.node)} composing={false} split={false}/>
+  <div className="proposal-field-actions">
+   {proposalFields(item.kind==='delete'?item.base_node:item.proposed_node).map(field=>annotationForm(item.node_id+':'+field))}
+  </div>
+  {item.evidence_changes&&<><ProposalEvidence changes={item.evidence_changes}/>{annotationForm(item.node_id+':evidence')}</>}
+  {item.section_entries?.map(entry=>{
+   const child=sectionDraft[entry.node.id]??entry.node;
+   return <section key={entry.node.id}>
+   <DiffText before="" after={nodeText(child)} composing={composing} split={false}/>
+   {canEdit&&child.type==='entry'&&<div onFocusCapture={()=>{if(!edit)void begin();}}
+    onCompositionStart={()=>setComposing(true)} onCompositionEnd={()=>setComposing(false)}>
+    <label><input type="checkbox" checked={child.show_key} disabled={readOnly} onChange={e=>{
+     const show_key=e.target.checked;
+     setSectionDraft(previous=>({...previous,[child.id]:{...child,show_key,
+      key:show_key&&entry.node.type==='entry'?entry.node.key:'正文'}}));
+    }}/>显示条目名称</label>
+    {child.show_key&&<label>条目名称<input value={child.key} readOnly={readOnly}
+     onChange={e=>setSectionDraft(previous=>({...previous,[child.id]:{...child,key:e.target.value}}))}/></label>}
+    <label>条目正文<textarea value={child.value} readOnly={readOnly}
+     onChange={e=>setSectionDraft(previous=>({...previous,[child.id]:{...child,value:e.target.value}}))}/></label>
+   </div>}
    <ProposalEvidence changes={entry.evidence_changes}/>
-  </section>)}
+   <div className="proposal-field-actions">
+    {proposalFields(entry.node).map(field=>annotationForm(entry.node.id+':'+field))}
+    {!!entry.evidence_changes.length&&annotationForm(entry.node.id+':evidence')}
+   </div>
+  </section>;})}
+  {annotationForm(null)}
+  <AnnotationSummary item={item} admin={admin} canRespond={canEdit&&!!edit} busy={blocked} responses={responses}
+   onResponse={changeResponse} onClose={annotation=>void annotate(null,'',annotation)}/>
   {item.evidence_changes&&dirty&&<label className="inline">
    <input type="checkbox" checked={!!edit?.confirmed} disabled={blocked||stale||composing}
     onChange={e=>{const checked=e.target.checked;setEdit(current=>current&&({...current,confirmed:checked}));}}/> 我已核对证据，仍支持本次改稿
@@ -150,7 +213,7 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
    {canEdit&&dirty&&<button disabled={!canSave} onClick={()=>void mutate('edit')}>保存改稿</button>}
    {(dirty||stale)&&<button disabled={composing} onClick={()=>void reset()}>撤销改动</button>}
    {admin&&!item.evidence_changes&&!!item.conflict&&<button disabled={stale||composing} onClick={()=>void begin(true)}>按当前正文重新对齐</button>}
-   {admin?<><button disabled={!noteEditable||!!item.conflict||stale||composing||(dirty&&!canSave)} onClick={()=>void mutate('approve')}>{busy?'正在保存…':'确认此条'}</button>
+   {admin?<><button disabled={!noteEditable||!!item.conflict||stale||composing||hasResponses||sectionDirty||(dirty&&!canSave)} onClick={()=>void mutate('approve')}>{busy?'正在保存…':'确认此条'}</button>
     <button disabled={dirty||composing} onClick={()=>void mutate('reject')}>拒绝此条</button></>:
     <button disabled={dirty||composing} onClick={()=>void mutate('withdraw')}>撤回此条</button>}
   </fieldset></div>}

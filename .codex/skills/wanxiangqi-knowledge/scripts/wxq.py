@@ -470,9 +470,11 @@ def validate_store(root):
 
 
 def main():
+    import proposal_review
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
     sub = parser.add_subparsers(dest='command', required=True)
+    proposal_review.add_parser(sub)
     sub.add_parser('init')
     p = sub.add_parser('sync-entities')
     p.add_argument('--apply-notes', action='store_true', help='明确将官网资料应用到正式棋手笔记；默认只更新本地缓存')
@@ -514,7 +516,11 @@ def main():
     p.add_argument('kind', choices=['audio', 'video'])
     p.add_argument('url', help='Exact public media URL observed in the browser')
     args = parser.parse_args()
-    if args.command == 'init':
+    if args.command == 'proposal-review':
+        if args.root.resolve() != ROOT.resolve():
+            parser.error('proposal-review 使用当前项目的本地运行服务，不能指定其他 --root')
+        result = proposal_review.run(args)
+    elif args.command == 'init':
         if (args.root/'knowledge/index.json').exists():
             init_store(args.root)  # Legacy stores require explicit migrate-json --apply.
         else:
