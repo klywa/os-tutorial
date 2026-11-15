@@ -14,7 +14,7 @@ index.meta.json 的 schema_version=6，notes 仅包含 id/type/title/path/player
 
 无标题段落固定key=正文、show_key=false，多段以不同ID区分。英雄整段一个条目，五个行动字段及有据的可选获得途径、其他作用保留于value。列表、表格、代码、链接等在对应value保留Markdown语法，不能把全文当唯一字符串。
 
-棋手笔记的适用打法与适用技巧使用命名entry，具体格式见[player-notes](player-notes.md#适用打法与技巧的段落格式)。阵容九项“标题：内容”保存在value内，不加【】等装饰括号；每个阵容、每条技巧各占一段，不使用换行或子列表。
+棋手笔记的适用打法与适用技巧使用命名entry，具体格式见[player-notes](player-notes.md#适用打法与技巧的段落格式)。每套打法的十项“标题：内容”保存在value内，不加【】等装饰括号；每个阵容、每条技巧各占一段，不使用换行或子列表。
 
 semantics保存组成、路线、禁用和替换条件等知识，重复文本用 {"$text":"节点ID"} 引用；supporting_nodes保存已审核但不重复显示的支撑知识；adaptations保存棋手适配知识。当前知识不在附件保留第二份可编辑文本。
 
