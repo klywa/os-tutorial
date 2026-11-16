@@ -234,8 +234,9 @@ def handler_class(base):
                 proposal=is_proposal_path(path)
                 lockpath=path.startswith('/api/edit-locks/') and self.command=='POST'
                 entries=bool(re.fullmatch(r'/api/notes/[^/]+/entries',path)) and self.command=='PUT'
+                transfer=re.fullmatch(r'/api/notes/([^/]+)/section-sync/(preview|apply)',path) if self.command=='POST' else None
                 templatepath=(path=='/api/templates' or path.startswith('/api/templates/')) and self.command=='POST'
-                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving or templatepath):
+                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving or templatepath or transfer):
                     self.discard_small_body()
                     raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
@@ -274,6 +275,17 @@ def handler_class(base):
                     from site_access import resolve_sync_conflict
                     return self.response(200,resolve_sync_conflict(self.server,self.actor(),path.split('/')[-2],data,public=True))
                 from site_access import enqueue_sync,formal_save
+                if transfer:
+                    import section_sync
+                    if transfer[2]=='preview':
+                        value=section_sync.run(self.server,self.actor(),transfer[1],data,season,public=True)
+                    else:
+                        with save_lock(self.server.state_dir),formal_save(self.server):
+                            getattr(self.server.sync,'_assert_active',lambda:None)()
+                            value=section_sync.run(self.server,self.actor(),transfer[1],data,season,apply=True,public=True)
+                            if any(row['status'] in ('saved','unknown') for row in value['results']):
+                                value['sync']=enqueue_sync(self.server)
+                    return self.response(200,sanitize(value))
                 if retry:
                     with save_lock(self.server.state_dir):value=enqueue_sync(self.server,force=True)
                     return self.response(202,value)

@@ -564,9 +564,10 @@ def reader_index(root):
     return read(Path(root) / INDEX, {'notes': []})['notes']
 
 
-def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False):
+def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False, _locked=False):
+    from contextlib import nullcontext
     from workspace import Conflict, store_lock
-    with store_lock(root, wait=True):
+    with nullcontext() if _locked else store_lock(root, wait=True):
         recover(root)
         before = load_record(root, nid, clone=False)
         record = editable_record(before) if before is not None else None

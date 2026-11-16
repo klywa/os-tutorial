@@ -374,6 +374,14 @@ class Handler(BaseHTTPRequestHandler):
                 import templates_http
                 return self.response(200,templates_http.mutate(self.server,identity,path,self.command,payload(self)))
             if identity and identity['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
+            transfer=re.fullmatch(r'/api/notes/([^/]+)/section-sync/(preview|apply)',path)
+            if transfer and self.command=='POST':
+                import section_sync
+                data=payload(self)
+                if transfer[2]=='preview':
+                    return self.response(200,section_sync.run(self.server,identity,transfer[1],data,season))
+                with sync_lock(state_dir(self.server)):
+                    return self.response(200,section_sync.run(self.server,identity,transfer[1],data,season,apply=True))
             if re.fullmatch(r'/api/notes/[^/]+/entries',path) and self.command=='PUT':
                 from site_access import proposal_store
                 data=payload(self)
