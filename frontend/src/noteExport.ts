@@ -22,7 +22,7 @@ export function noteJsonExport(note:Note,reading:ReadingDocument){
   for(const row of reading.sections??[])sections.push({...section(row.title,2),items:[{title:'',text:row.markdown}]});
   if(!sections.length&&reading.markdown)intro().items.push({title:'',text:reading.markdown});
  }
- return {schema_version:1 as const,note:{id:note.id,title:note.title,type:note.type},sections};
+ return {schema_version:1 as const,note:{id:note.id,title:note.title,type:note.type,...(note.seasons?{seasons:note.seasons}:{})},sections};
 }
 
 export function downloadNoteJson(note:Note,reading:ReadingDocument){

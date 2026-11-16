@@ -27,6 +27,7 @@ export default function JsonReading({body,nodes,note,onNote,interactive=true,sur
   const link=note.guide_related?.find(x=>x.href===href);
   const related=note.related.find(n=>n.path&&href&&n.path.split('/').at(-1)===href.split('/').at(-1));
   if(link||related)return <button className="link-button" onClick={()=>onNote(link?.note??related!.id,link?.player)}>{children}</button>;
+  if(href&&/^(?![a-z][a-z\d+.-]*:|\/\/).*\.(?:md|json)(?:[#?].*)?$/i.test(href))return <span>{children}</span>;
   return <a href={href} target="_blank" rel="noreferrer">{children}</a>;
  }}),[note,onNote]);
  const headingComponents=useMemo(()=>({...components,p:({children}:{children?:ReactNode})=><>{children}</>}),[components]);

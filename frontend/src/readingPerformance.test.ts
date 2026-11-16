@@ -15,6 +15,20 @@ it('does not notify on unchanged selection and unsubscribes discarded anchors',(
  const store=new DockSelection(),listener=vi.fn();const off=store.subscribe('a',listener);
  store.select('a',false);store.select('a',false);off();store.close();expect(listener).toHaveBeenCalledTimes(1);
 });
+it('clears a locked card and rejects delayed or explicit selections during search',()=>{
+ const store=new DockSelection();
+ const pending=store.preview('old');
+ store.select('locked',true);
+ store.setSearching(true);
+ store.select('delayed',false);
+ store.select('clicked',true);
+ expect(store.snapshot()).toEqual({active:'',pinned:false});
+ store.setSearching(false);
+ pending();
+ expect(store.snapshot().active).toBe('');
+ store.select('next',false);
+ expect(store.snapshot().active).toBe('next');
+});
 it('indexes hero versions once and invalidates on a new card collection',()=>{
  const cards=[{id:'a',name:'李信',category:'heroes',awakened:false},{id:'b',name:'李信',category:'heroes',awakened:true}] as CardSummary[];
  const index=cardIndex(cards);expect(index.byId.get('a')?.name).toBe('李信');expect(index.heroes.get('李信')?.map(c=>c.id)).toEqual(['a','b']);

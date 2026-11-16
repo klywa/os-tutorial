@@ -59,3 +59,6 @@
 .reader-cache-status{display:flex;align-items:center;gap:12px;padding:6px 20px;font-size:12px;color:var(--muted);background:var(--panel)}.reader-edit-fieldset{border:0;padding:0;margin:0;min-width:0}
 .admin-access{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid var(--line,#ddd);background:var(--paper,#fffdf7)}
 .admin-access label{display:flex;align-items:center;gap:8px}.admin-access input{max-width:220px}.admin-access small{color:var(--muted,#68685f)}
+
+.app-header nav .season-select{width:auto;flex:none;min-width:64px;font-weight:650;color:var(--gold);align-self:stretch;margin-right:4px}
+.season-fields{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:6px;margin:8px 0 14px;padding:6px 12px}.season-fields label{display:inline-flex;align-items:center;gap:5px;margin:0}.season-fields input{width:auto}.note-seasons{font-size:12px;white-space:nowrap}

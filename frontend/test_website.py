@@ -62,6 +62,24 @@ class PublicHttpTests(unittest.TestCase):
         self.assertEqual(self.call('/os-tutorial/api/notes/n', 'PUT', {})[0], 401)
         self.assertEqual(self.call('/api/notes/catalog')[0], 404)
 
+    def test_season_catalog_and_independent_empty_datasets(self):
+        import json_store
+        self.login()
+        a=json_store.create(self.root, {'type':'other','title':'甲攻略','request_id':'season-aa'})
+        b=json_store.create(self.root, {'type':'other','title':'乙攻略','request_id':'season-bb','seasons':['S2']})
+        api='/os-tutorial/api/'
+        for season, included, excluded in (('S1',a,b),('S2',b,a)):
+            query='?season='+season
+            code, catalog, _=self.call(api+'notes/catalog'+query)
+            self.assertEqual(code,200)
+            self.assertEqual([n['id'] for n in catalog['notes']],[included['id']])
+            self.assertEqual(self.call(api+'notes/search'+query)[1]['ids'],[included['id']])
+            self.assertEqual(self.call(api+'notes/'+included['id']+'/reading'+query)[0],200)
+            self.assertEqual(self.call(api+'notes/'+excluded['id']+'/revision'+query)[0],404)
+        self.assertEqual(self.call(api+'cards?season=S2')[1],[])
+        self.assertEqual(self.call(api+'templates?season=S2')[1]['groups'],[])
+        self.assertEqual(self.call(api+'templates/changes?season=S2','POST',{})[0],400)
+
     def test_public_unix_listener_enables_address_reuse(self):
         with patch.object(server.sys,'platform','linux'):
             http=server.create_server(self.root,0,public=True,auth_config=self.config,

@@ -132,7 +132,8 @@ def _read(path, label):
         raise ValueError(f'看板读取失败：{label}（{exc}）') from exc
 
 
-def _all_snapshot(root):
+def _all_snapshot(root,season='S1'):
+    from seasons import matches
     root = Path(root).resolve()
     with store_lock(root):
         if (root / store.JOURNAL).exists():
@@ -142,12 +143,12 @@ def _all_snapshot(root):
             index = _read(root / store.INDEX, store.INDEX)
             if not isinstance(index.get('notes'), list):
                 raise ValueError('看板读取失败：知识索引缺少笔记列表')
-            rows = list({r['id']: r for r in index['notes'] if r['type'] in ('player', 'lineup')}.values())
+            rows = list({r['id']: r for r in index['notes'] if r['type'] in ('player', 'lineup') and matches(r,season)}.values())
             try:
                 stamp = fingerprint(root, rows)
                 if signature(root / store.INDEX) != index_stamp:
                     continue
-                cache_key = str(root)
+                cache_key = (str(root),season)
                 with _guard:
                     cached = _cache.get(cache_key)
                 if cached and cached[0] == stamp and fingerprint(root, rows) == stamp:
@@ -197,9 +198,15 @@ def _all_snapshot(root):
     raise Busy('知识库正在更新，请稍后刷新看板')
 
 
-def snapshot(root,scope='all'):
+def snapshot(root,scope='all',season='S1'):
     if scope not in ('all','usage_top10','usage_top20','usage_top50'):raise ValueError('未知看板筛选范围')
-    result=_all_snapshot(root)
+    result=_all_snapshot(root,season)
+    if season!='S1' and scope!='all':
+        from seasons import dataset
+        view=dataset(root,season,'dashboard-'+scope,None)
+        return view if view is not None else {**result,'scope':scope,'notes':[],
+            'summary':{'covered':0,'total':0,'rate':None},'usage':{'ready':False,'state':'empty'},
+            'fields':[{**field,'covered':0,'total':0,'rate':None} for field in result['fields']]}
     if scope!='all':
         from lineup_usage import project
         return project(root,result,scope)

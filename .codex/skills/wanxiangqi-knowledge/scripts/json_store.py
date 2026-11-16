@@ -148,6 +148,9 @@ def check_record(record):
         raise ValueError('阵容适用棋手必须与笔记绑定一致')
 
 
+from note_seasons import membership, normalize as normalize_seasons
+
+
 def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=False, prepare_only=False, storage_version=None, retire_ids=()):
     """Caller holds store_lock. Publish changed pairs and a complete light index."""
     root = Path(root)
@@ -169,13 +172,14 @@ def save(root, items, aliases=None, origin='save', review_refs=None, *, partial=
             continue
         record = editable_record(incoming)
         if record['metadata']['type']=='lineup':record['metadata'].setdefault('aliases',[])
+        record['metadata']['seasons'] = normalize_seasons(record['metadata'].get('seasons', membership(old['metadata']) if old else ['S1']))
         check_record(record)
         m = record['metadata']; target(root, m['path'])
         m['body_sha256'] = digest(record['body'])
         if external: archives.extend(history_store.extract(record))
         ignored = {'revision', 'history', 'history_head', 'history_count'} if external else {'revision'}
         m['revision'] = digest({'body': record['body'], 'metadata': {k:v for k,v in m.items() if k not in ignored}})[:20]
-        rows.append({k:m.get(k) for k in ('id','type','title','path','player_id','revision')})
+        rows.append({k:m.get(k) for k in ('id','type','title','path','player_id','revision','seasons')})
         changed.append(record)
         if old is not None: before.append(old)
     if partial:
@@ -382,6 +386,7 @@ def project(record, public=False):
         ref = c['text_ref']
         formatted = c.pop('text_format',None)=='markdown'
         claims.append({**c, 'text': texts[ref+(':markdown' if formatted else '')]})
+    meta['seasons'] = membership(meta)
     meta.pop('body_sha256', None)
     meta.pop('claims', None)
     result = {**meta, 'schema_version': 6, 'document': body, 'claims': claims, 'meta': semantics,
@@ -555,6 +560,10 @@ def entry_evidence_batches(value):
     return [value] if isinstance(value[0], str) else value
 
 
+def reader_index(root):
+    return read(Path(root) / INDEX, {'notes': []})['notes']
+
+
 def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False):
     from workspace import Conflict, store_lock
     with store_lock(root, wait=True):
@@ -566,7 +575,7 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
         meta, body = record['metadata'], record['body']
         if payload.get('revision') != meta['revision']:
             raise Conflict('笔记已更新，请重新载入后合并草稿')
-        if set(payload) - {'revision', 'document', 'aliases', 'title', 'restore_version'}:
+        if set(payload) - {'revision', 'document', 'aliases', 'title', 'restore_version', 'seasons'}:
             raise ValueError('请通过结构化JSON正文编辑知识')
         incoming = document.clean_labels(payload.get('document', body))
         document.validate(incoming)
@@ -655,9 +664,15 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
             for change in changes:
                 by_id[change['claim_id']].update(evidence=deepcopy(change['evidence']),
                                                  inference=change['inference'])
-        if incoming != body or _entry_evidence or payload.get('aliases', meta.get('aliases', [])) != meta.get('aliases', []):
+        seasons = normalize_seasons(payload.get('seasons', membership(meta)))
+        if seasons != membership(meta):
+            from workspace import Conflict
+            if any(r['id'] != nid and r['type'] == meta['type'] and (r['title'] == title or (meta['type'] == 'player' and r.get('player_id') == meta.get('player_id'))) and set(seasons).intersection(membership(r)) for r in reader_index(root)):
+                raise Conflict('该赛季已有同名笔记，请先调整其适用赛季')
+        if seasons != membership(meta) or incoming != body or _entry_evidence or payload.get('aliases', meta.get('aliases', [])) != meta.get('aliases', []):
             import wxq
             meta.setdefault('history', []).append({'at': wxq.now(), 'origin': 'manual', 'previous': snapshot(before)})
+            meta['seasons'] = seasons
             meta['aliases'] = payload.get('aliases', meta.get('aliases', []))
             record['body'] = incoming
         if payload.get('restore_version'):
@@ -694,16 +709,27 @@ def create(root, payload):
     with store_lock(root, wait=True):
         recover(root)
         items = records(root)
-        fingerprint = digest({k: payload.get(k) for k in ('type', 'title', 'aliases', 'player_id')})
+        seasons = normalize_seasons(payload.get('seasons', ['S1']))
+        creation = {k: payload.get(k) for k in ('type', 'title', 'aliases', 'player_id')}
+        if seasons != ['S1']:
+            creation['seasons'] = seasons
+        fingerprint = digest(creation)
         old = next((r for r in items if r['metadata'].get('creation', {}).get('request_id') == request), None)
         if old:
             if old['metadata']['creation']['payload_hash'] != fingerprint:
                 raise Conflict('请求标识已用于不同内容')
             return project(old)
-        if any(r['metadata']['type'] == kind and (r['metadata']['title'] == title or (kind == 'player' and r['metadata'].get('player_id') == player)) for r in items):
-            raise Conflict('该笔记已存在，请打开已有笔记')
+        same = [r['metadata'] for r in items if r['metadata']['type'] == kind and (r['metadata']['title'] == title or (kind == 'player' and r['metadata'].get('player_id') == player))]
+        if any(set(seasons).intersection(membership(m)) for m in same):
+            raise Conflict('该赛季已有同名笔记，请打开已有笔记')
+        stem = filename(title)
+        folder = f'knowledge/{wxq.FOLDERS[kind]}'
+        paths = {r['metadata']['path'].casefold() for r in items}
+        path = f'{folder}/{stem}.json'
+        if path.casefold() in paths:
+            path = f'{folder}/{stem}-{seasons[0]}-{fingerprint[:8]}.json'
         metadata = {'id': 'note-' + hashlib.sha256(request.encode()).hexdigest()[:24], 'type': kind, 'title': title,
-                    'path': f'knowledge/{wxq.FOLDERS[kind]}/{filename(title)}.json', 'aliases': payload.get('aliases', []),
+                    'path': path, 'seasons': seasons, 'aliases': payload.get('aliases', []),
                     'player_id': player, 'creation': {'request_id': request, 'payload_hash': fingerprint}}
         item = from_legacy({**metadata, 'meta': {'players': [player]} if kind == 'lineup' else {}}, '# ' + title + '\n')
         items.append(item)

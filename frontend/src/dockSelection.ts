@@ -1,6 +1,8 @@
 /** A reading instance owns this store; only affected anchors receive updates. */
 export class DockSelection {
  private value={active:'',pinned:false};
+ private searching=false;
+ private searchEpoch=0;
  private listeners=new Map<string,Set<()=>void>>();
  snapshot=()=>this.value;
  subscribe=(token:string,listener:()=>void)=>{
@@ -12,7 +14,17 @@ export class DockSelection {
   this.value={active,pinned};
   for(const token of new Set(['',previous.active,active]))this.listeners.get(token)?.forEach(run=>run());
  }
- select=(token:string,pin:boolean)=>{if(this.value.pinned&&!pin)return;this.update(token,pin);};
+ setSearching=(searching:boolean)=>{
+  if(this.searching===searching)return;
+  this.searching=searching;
+  this.searchEpoch++;
+  if(searching)this.close();
+ };
+ preview=(token:string)=>{
+  const epoch=this.searchEpoch;
+  return ()=>{if(epoch===this.searchEpoch)this.select(token,false);};
+ };
+ select=(token:string,pin:boolean)=>{if(this.searching||(this.value.pinned&&!pin))return;this.update(token,pin);};
  close=()=>this.update('',false);
  toggle=()=>this.update(this.value.active,!this.value.pinned);
 }

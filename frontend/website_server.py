@@ -8,6 +8,7 @@ from urllib.parse import parse_qs, unquote, urlsplit
 
 import json_store as store
 import reader_store
+import seasons
 import workspace
 from website_auth import Auth, Unconfigured
 from website_data import sanitize
@@ -15,17 +16,19 @@ from edit_locks import EditLocked
 from card_publication import CardVersionChanged
 
 
-def public_catalog(root):
+def public_catalog(root, season='S1'):
     index=reader_store.index(root)
     projections=[]
+    allowed=seasons.ids(root,season)
     for row in index.get('notes',[]):
+        if not seasons.matches(row,season):continue
         value=reader_store.cached(root,row)
         if value is None:
             record=store.load_record(root,row['id'],clone=False)
             reader_store.write_record(root,record)
             value=reader_store.cached(root,row) or reader_store.projection(record)
-        projections.append(value)
-    return {'workspace_id':reader_store.workspace_id(root),'format':1,'revision':store.digest(index),
+        projections.append({**value,'summary':seasons.filter_links(value['summary'],allowed)})
+    return {'workspace_id':reader_store.workspace_id(root),'format':1,'revision':store.digest([index,season]),
             'ready':True,'notes':[p['summary'] for p in projections]},projections
 
 
@@ -96,7 +99,9 @@ def handler_class(base):
                 if path=='/api/auth/me':return self.response(200,self.who())
                 if path.startswith('/api/') and not self.actor():
                     return self.response(401,{'error':'请先登录'})
+                season=seasons.selected(self.path)
                 if path=='/api/templates' or path.startswith('/api/templates/'):
+                    if season!='S1':return self.response(200,seasons.template_read(root,season,path))
                     import templates_http
                     return self.response(200,templates_http.get(self.server,self.actor(),path,self.path))
                 if path=='/api/edit-locks':
@@ -117,25 +122,27 @@ def handler_class(base):
                     return self.response(200,sync_status(self.server)) if self.actor()['role']=='admin' else self.response(403,{'error':'只有管理员可以查看同步状态'})
                 if path=='/api/dashboard':
                     import dashboard
-                    return self.response(200,sanitize(dashboard.snapshot(root,scope=query.get('scope',['all'])[0])),etag=True)
+                    return self.response(200,sanitize(dashboard.snapshot(root,scope=query.get('scope',['all'])[0],season=season)),etag=True)
                 if path=='/api/dashboard/usage/matches':
+                    if season!='S1':raise KeyError('暂无该赛季的匹配资料')
                     if not self.identity():return self.response(401,{'error':'请先登录管理员'})
                     if self.actor()['role']!='admin':return self.response(403,{'error':'只有管理员可以管理匹配'})
                     import usage_matches
                     return self.response(200,sanitize(usage_matches.editor(root)))
                 if path in ('/api/notes/catalog','/api/notes/search','/api/notes'):
-                    cat,projections=public_catalog(root)
+                    cat,projections=public_catalog(root,season)
                     if path=='/api/notes/search':
                         wanted=query.get('q',[''])[0].lower().split()
-                        labels={e['id']:' '.join([e.get('name') or '',*(e.get('aliases') or [])]).lower() for e in reader_store.entities(root)}
+                        labels={e['id']:' '.join([e.get('name') or '',*(e.get('aliases') or [])]).lower() for e in (reader_store.entities(root) if season=='S1' else seasons.dataset(root,season,'entities',[]))}
                         ids=[p['summary']['id'] for p in projections if all(term in p['text']+' '+' '.join(labels.get(ref,'') for ref in p['refs']) for term in wanted)]
                         return self.response(200,{'ready':True,'revision':cat['revision'],'ids':ids},etag=True)
                     return self.response(200,sanitize(cat if path.endswith('catalog') else cat['notes']),etag=True)
                 if path=='/api/options':
                     import wxq
                     from tactics import faction_references
+                    if season!='S1':return self.response(200,sanitize(seasons.options(root,season,wxq.SECTIONS)),etag=True)
                     factions={f['id']:dict(f) for f in workspace.FACTIONS}
-                    cat,_=public_catalog(root)
+                    cat,_=public_catalog(root,season)
                     for row in cat['notes']:
                         for ref in faction_references(row.get('meta',{})):
                             if ref.startswith('pending:'):factions[ref]={'id':ref,'name':ref[8:]+'（待确认）'}
@@ -143,7 +150,7 @@ def handler_class(base):
                 match=re.fullmatch(r'/api/notes/([^/]+)(?:/(reading|revision))?',path)
                 if match:
                     nid,kind=match.groups()
-                    note=store.resolve_note(root,nid,query.get('player',[None])[0])
+                    note=seasons.note(root,nid,season,query.get('player',[None])[0])
                     if not note:raise KeyError('笔记不存在')
                     if kind=='revision':value={'revision':note['revision']}
                     elif kind=='reading':
@@ -151,6 +158,8 @@ def handler_class(base):
                         value=reading_document(note,query.get('player',[None])[0])
                     else:value=note
                     return self.response(200,sanitize(value),etag=True)
+                if season!='S1' and (path=='/api/cards' or path.startswith('/api/cards/')):
+                    return self.response(200,sanitize(seasons.cards(root,season,path)),etag=True)
                 if path=='/api/cards/status':
                     from card_publication import status
                     return self.response(200,status(root,self.server.state_dir))
@@ -241,6 +250,8 @@ def handler_class(base):
                 self._body_read=True
                 data=json.loads(self.rfile.read(length))
                 if not isinstance(data,dict):raise ValueError('请求必须为对象')
+                season=seasons.selected(self.path)
+                if season!='S1' and seasons.protected_write(path):raise ValueError('该赛季暂不支持维护此资料')
                 if path=='/api/auth/login':
                     status,cookie=self.server.auth.login(data.get('username'),data.get('password'),self.login_peer())
                     return self.auth_reply(status,{'ok':True} if status==200 else {'error':'登录尝试过多，请15分钟后重试' if status==429 else '账号或密码不正确'},cookie)

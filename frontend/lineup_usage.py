@@ -265,10 +265,11 @@ def match_pair(pair,catalog,notes):
 def project(root,base,scope='usage_top10'):
     import dashboard
     import usage_matches
+    from seasons import matches
     root=Path(root)
     with store_lock(root):
         index=store.read(root/store.INDEX,{'notes':[]})
-        rows=list({r['id']:r for r in index['notes'] if r['type'] in ('player','lineup')}.values())
+        rows=list({r['id']:r for r in index['notes'] if r['type'] in ('player','lineup') and matches(r,'S1')}.values())
         if store.digest(dashboard.fingerprint(root,rows))!=base['revision']:
             raise Busy('知识库正在更新，请稍后刷新看板')
         value=status(root);source=cached_snapshot(root)

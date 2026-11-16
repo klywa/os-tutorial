@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / '.codex/skills/wanxiangqi-knowledge/scripts'))
 sys.path.insert(0, str(ROOT / 'frontend'))
 import wxq
 import workspace
+import seasons
 
 
 def recover_before_read(root):
@@ -85,8 +86,15 @@ class Handler(BaseHTTPRequestHandler):
         identity=actor(self.server,self.headers.get('Cookie'))
         if path == '/api/auth/me':
             return self.response(200, session(self.server,self.headers.get('Cookie')))
+        try:
+            season=seasons.selected(self.path)
+        except ValueError as exc:
+            return self.response(400,{'error':str(exc)})
         if path=='/api/templates' or path.startswith('/api/templates/'):
             try:
+                if season!='S1':
+                    if not identity:raise PermissionError('请先登录')
+                    return self.response(200,seasons.template_read(self.server.root,season,path))
                 import templates_http
                 return self.response(200,templates_http.get(self.server,identity,path,self.path))
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
@@ -127,12 +135,13 @@ class Handler(BaseHTTPRequestHandler):
         player = parse_qs(urlsplit(self.path).query).get('player', [None])[0]
         try:
             if path == '/api/dashboard/usage/matches':
+                if season!='S1':raise KeyError('暂无该赛季的匹配资料')
                 import usage_matches
                 return self.response(200,usage_matches.editor(self.server.root))
             if path == '/api/dashboard':
                 import dashboard
                 scope=parse_qs(urlsplit(self.path).query).get('scope',['all'])[0]
-                return self.response(200, dashboard.snapshot(self.server.root,scope=scope), etag=True)
+                return self.response(200, dashboard.snapshot(self.server.root,scope=scope,season=season), etag=True)
             if path in ('/api/official-sync/status','/api/official-sync/settings'):
                 import official_sync
                 return self.response(200,official_sync.status(self.server.root,self.server.crawler.store.settings()['clock']))
@@ -182,6 +191,7 @@ class Handler(BaseHTTPRequestHandler):
                 if suffix=='candidates':return self.response(200,topics.pending())
                 return self.response(404,{'error':'主题接口不存在'})
             if path == '/api/cards' or path.startswith('/api/cards/'):
+                if season!='S1':return self.response(200,seasons.cards(self.server.root,season,path),etag=True)
                 recover_before_read(self.server.root)
                 from card_images import image_fields, image_file
                 if '/images/' in path:
@@ -220,14 +230,19 @@ class Handler(BaseHTTPRequestHandler):
                 recover_before_read(self.server.root)
                 if path in ('/api/notes/catalog','/api/notes/search'):
                     import reader_store
-                    if path.endswith('/catalog'):return self.response(200,reader_store.catalog(self.server.root),etag=True)
+                    cat=seasons.catalog(reader_store.catalog(self.server.root),season)
+                    if path.endswith('/catalog'):
+                        cat['notes']=seasons.rows(self.server.root,cat['notes'],season)
+                        return self.response(200,cat,etag=True)
                     query=parse_qs(urlsplit(self.path).query).get('q',[''])[0]
-                    return self.response(200,reader_store.search(self.server.root,query),etag=True)
+                    return self.response(200,seasons.search(self.server.root,query,season,cat),etag=True)
                 if path == '/api/annotations':
                     import note_review
                     query = parse_qs(urlsplit(self.path).query)
                     return self.response(200, note_review.annotations(self.server.root, query.get('note_id', [None])[0], query.get('status', [None])[0]))
                 if path.startswith('/api/notes/') and '/versions' in path:
+                    nid=seasons.scoped_note_id(path)
+                    if nid and seasons.store.enabled(self.server.root) and nid not in seasons.ids(self.server.root,season):raise KeyError('笔记不存在')
                     import note_review
                     parts = path.split('/')
                     if len(parts) == 5 and parts[4] == 'versions':
@@ -245,24 +260,24 @@ class Handler(BaseHTTPRequestHandler):
                         index=json_store.read(self.server.root/json_store.INDEX,{})
                         nid=path.split('/')[-2]
                         nid=index.get('aliases',{}).get(nid,nid)
-                        row=next((n for n in index.get('notes',[]) if n['id']==nid),None)
+                        row=next((n for n in index.get('notes',[]) if n['id']==nid and seasons.matches(n,season)),None)
                         return self.response(200,{'revision':row['revision']}) if row else self.response(404,{'error':'笔记不存在'})
                     note=next((n for n in workspace.notes(self.server.root) if n['id']==path.split('/')[-2]),None)
                     return self.response(200,{'revision':note['revision']}) if note else self.response(404,{'error':'笔记不存在'})
                 if path == '/api/notes':
                     from lineup_catalog import LineupCatalog
                     from note_links import project_notes
-                    return self.response(200, project_notes(self.server.root))
+                    return self.response(200, seasons.rows(self.server.root,project_notes(self.server.root),season))
                 if path.startswith('/api/notes/') and path.endswith('/reading'):
                     from lineup_layout import reading_document
                     parts = path.split('/')
                     import json_store
-                    note = (json_store.resolve_note(self.server.root, parts[-2], player) if json_store.enabled(self.server.root) else next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None)) if len(parts) == 5 else None
+                    note = (seasons.note(self.server.root, parts[-2],season,player) if json_store.enabled(self.server.root) else next((n for n in workspace.notes(self.server.root) if n['id'] == parts[-2]), None)) if len(parts) == 5 else None
                     return self.response(200, reading_document(note,player),etag=True) if note else self.response(404, {'error': '笔记不存在'})
                 if path.startswith('/api/notes/'):
                     import json_store
                     if json_store.enabled(self.server.root):
-                        note=json_store.resolve_note(self.server.root,path.split('/')[-1],player)
+                        note=seasons.note(self.server.root,path.split('/')[-1],season,player)
                         return self.response(200 if note else 404,note or {'error':'笔记不存在'},etag=True if note else None)
                     from note_links import project_notes
                     note = next((n for n in project_notes(self.server.root) if n['id'] == path.split('/')[-1]), None)
@@ -272,7 +287,8 @@ class Handler(BaseHTTPRequestHandler):
                     return self.response(200 if note else 404, note or {'error': '笔记不存在'})
                 if path == '/api/options':
                     import json_store,reader_store
-                    if json_store.enabled(self.server.root):return self.response(200,reader_store.options(self.server.root),etag=True)
+                    if season!='S1':return self.response(200,seasons.options(self.server.root,season,wxq.SECTIONS),etag=True)
+                    if json_store.enabled(self.server.root):return self.response(200,reader_store.options(self.server.root,seasons.catalog(reader_store.catalog(self.server.root),season)['notes']),etag=True)
                     entities = [{**{k: e.get(k) for k in ['id', 'name', 'category', 'aliases']},
                                  'properties': {'type': e.get('properties', {}).get('type')}} for e in wxq.entities(self.server.root)]
                     return self.response(200, {'entities': entities, 'factions': workspace.factions(self.server.root), 'sections': wxq.SECTIONS})
@@ -323,6 +339,10 @@ class Handler(BaseHTTPRequestHandler):
         identity=actor(self.server,self.headers.get('Cookie'))
         try:
             if not self.trusted():return self.response(403,{'error':'请求来源无效'})
+            season=seasons.selected(self.path)
+            if season!='S1' and seasons.protected_write(path):
+                payload(self)
+                raise ValueError('该赛季暂不支持维护此资料')
             if path=='/api/local-service/stop' and self.command=='POST':
                 if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
                 if payload(self):raise ValueError('停止服务不接受额外参数')

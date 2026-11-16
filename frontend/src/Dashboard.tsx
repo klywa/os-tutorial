@@ -1,3 +1,4 @@
+import type {Season} from './seasons';
 import {useCapabilities} from './auth';
 import {useEffect,useRef,useState} from 'react';
 import {api} from './model';
@@ -6,18 +7,19 @@ import {formatRate,sortNotes,startDashboardPolling,readDashboard,type DashboardD
 import './dashboard.css';
 
 type OpenNote=(id:string,nodeId?:string|null,section?:string|null)=>void;
-type ViewProps={publicMode?:boolean;canManageMatches?:boolean;data:DashboardData|null;error:string;busy:boolean;checkedAt:string;order:CoverageOrder;onOrder:(order:CoverageOrder)=>void;onRefresh:()=>void;onOpen:OpenNote;scope?:CoverageScope;onScope?:(scope:CoverageScope)=>void;usageBusy?:boolean;usageError?:string;onUsageRefresh?:()=>void;onMatch?:(id?:string)=>void};
+type ViewProps={season?:Season;publicMode?:boolean;canManageMatches?:boolean;data:DashboardData|null;error:string;busy:boolean;checkedAt:string;order:CoverageOrder;onOrder:(order:CoverageOrder)=>void;onRefresh:()=>void;onOpen:OpenNote;scope?:CoverageScope;onScope?:(scope:CoverageScope)=>void;usageBusy?:boolean;usageError?:string;onUsageRefresh?:()=>void;onMatch?:(id?:string)=>void};
 const timeLabel=(value:string)=>new Date(value).toLocaleTimeString('zh-CN',{hour12:false});
 const dateLabel=(value:string)=>new Date(value).toLocaleString('zh-CN',{hour12:false});
 
-export function DashboardView({data,error,busy,checkedAt,order,onOrder,onRefresh,onOpen,scope:requestedScope,onScope,usageBusy=false,usageError='',onUsageRefresh,onMatch,publicMode=false,canManageMatches=true}:ViewProps){
+export function DashboardView({data,error,busy,checkedAt,order,onOrder,onRefresh,onOpen,scope:requestedScope,onScope,usageBusy=false,usageError='',onUsageRefresh,onMatch,publicMode=false,canManageMatches=true,season='S1'}:ViewProps){
  const scope=requestedScope??data?.scope??'all',top=scope!=='all',topLabel='Top-'+scope.replace('usage_top',''),usage=data?.usage;
  const updating=usageBusy||['running','queued'].includes(usage?.state??'');
  const ready=!top||usage?.ready;
  return <main className="dashboard" aria-label="知识看板">
   <header className="dashboard-heading"><div><h1>看板</h1><p>当前仓库的笔记数量与内容覆盖情况</p></div><div className="dashboard-refresh"><span role="status">{busy?'正在更新…':checkedAt?`最近检查 ${timeLabel(checkedAt)}`:''}</span><button onClick={onRefresh} disabled={busy}>刷新看板</button></div></header>
-  <div className="dashboard-scope"><div role="group" aria-label="阵容范围">{([['all','全部阵容'],['usage_top10','使用率 Top-10'],['usage_top20','使用率 Top-20'],['usage_top50','使用率 Top-50']] as const).map(([value,label])=><button key={value} aria-pressed={scope===value} className={scope===value?'selected':''} onClick={()=>onScope?.(value)}>{label}</button>)}</div>{top&&<div className="dashboard-scope-actions">{canManageMatches&&<button onClick={()=>onMatch?.()} disabled={!data?.notes.length}>管理匹配</button>}{!publicMode&&<button onClick={onUsageRefresh} disabled={updating}>{updating?'正在更新使用率…':'更新使用率'}</button>}</div>}</div>
-  {top&&<section className="dashboard-usage" aria-label="使用率来源与更新状态"><div><strong>{usage?.scope?.version??'最新版本'}</strong><span>万象大赛 · 最近7天 · 每个组合至少50场</span><a href="https://www.datawxq.com/lineups" target="_blank" rel="noreferrer">查看统计来源</a></div><p>{publicMode?'数据由本地发布，每小时更新。':'每天北京时间09:00更新，服务重新启动后补刷。'}{usage?.last_success&&` 上次成功：${dateLabel(usage.last_success)}。`}</p>{!usage?.ready&&<p role="status">使用率数据尚未就绪{updating?'，正在获取完整榜单及棋手分布…':publicMode?'，等待下一次本地发布。':'，请更新使用率。'}</p>}{(usageError||usage?.error)&&<p className="dashboard-usage-warning" role="alert">使用率更新失败：{usageError||usage?.error}。{usage?.ready?'保留上次成功榜单。':'请重试。'}</p>}{usage?.stale&&usage.ready&&<p className="dashboard-usage-warning">当前为上次成功数据，榜单尚未更新至本次刷新周期。</p>}</section>}
+  <div className="dashboard-scope"><div role="group" aria-label="阵容范围">{([['all','全部阵容'],['usage_top10','使用率 Top-10'],['usage_top20','使用率 Top-20'],['usage_top50','使用率 Top-50']] as const).map(([value,label])=><button key={value} aria-pressed={scope===value} className={scope===value?'selected':''} onClick={()=>onScope?.(value)}>{label}</button>)}</div>{top&&<div className="dashboard-scope-actions">{canManageMatches&&<button onClick={()=>onMatch?.()} disabled={!data?.notes.length}>管理匹配</button>}{season==='S1'&&!publicMode&&<button onClick={onUsageRefresh} disabled={updating}>{updating?'正在更新使用率…':'更新使用率'}</button>}</div>}</div>
+  {top&&season!=='S1'&&!usage?.ready&&<p className="empty" role="status">暂无 {season} 对局统计数据</p>}
+  {top&&season==='S1'&&<section className="dashboard-usage" aria-label="使用率来源与更新状态"><div><strong>{usage?.scope?.version??'最新版本'}</strong><span>万象大赛 · 最近7天 · 每个组合至少50场</span><a href="https://www.datawxq.com/lineups" target="_blank" rel="noreferrer">查看统计来源</a></div><p>{publicMode?'数据由本地发布，每小时更新。':'每天北京时间09:00更新，服务重新启动后补刷。'}{usage?.last_success&&` 上次成功：${dateLabel(usage.last_success)}。`}</p>{!usage?.ready&&<p role="status">使用率数据尚未就绪{updating?'，正在获取完整榜单及棋手分布…':publicMode?'，等待下一次本地发布。':'，请更新使用率。'}</p>}{(usageError||usage?.error)&&<p className="dashboard-usage-warning" role="alert">使用率更新失败：{usageError||usage?.error}。{usage?.ready?'保留上次成功榜单。':'请重试。'}</p>}{usage?.stale&&usage.ready&&<p className="dashboard-usage-warning">当前为上次成功数据，榜单尚未更新至本次刷新周期。</p>}</section>}
   {error&&<div className="dashboard-error" role="alert">更新失败：{error}。{data?'以下保留上次成功结果。':'请刷新重试。'}</div>}
   {!data?<p className="empty">{error?'暂时无法读取看板。':'正在汇总笔记…'}</p>:<>
    <dl className="dashboard-totals"><div><dt>棋手笔记</dt><dd>{data.counts.player}<span>篇</span></dd></div><div><dt>阵容笔记</dt><dd>{data.counts.lineup}<span>篇</span></dd></div><div className="dashboard-overall"><dt>{top?`${topLabel} 已确认覆盖率`:'整体覆盖率'}</dt><dd>{ready?formatRate(data.summary.rate):'—'}</dd><small>{ready?`${data.summary.covered} / ${data.summary.total} 项已覆盖`:'等待使用率数据'}</small></div></dl>
@@ -35,8 +37,9 @@ export function DashboardView({data,error,busy,checkedAt,order,onOrder,onRefresh
  </main>;
 }
 
-const lastSnapshots:Partial<Record<CoverageScope,DashboardData>>={};
-export default function Dashboard({onOpen}:{onOpen:OpenNote}){
+const seasonSnapshots:Record<Season,Partial<Record<CoverageScope,DashboardData>>>={S1:{},S2:{}};
+export default function Dashboard({onOpen,season='S1'}:{onOpen:OpenNote;season?:Season}){
+ const lastSnapshots=seasonSnapshots[season];
  const capabilities=useCapabilities();
  const [scope,setScope]=useState<CoverageScope>('all');
  const [data,setData]=useState<DashboardData|null>(lastSnapshots.all??null),[error,setError]=useState(''),[busy,setBusy]=useState(false),[checkedAt,setCheckedAt]=useState('');
@@ -57,5 +60,5 @@ export default function Dashboard({onOpen}:{onOpen:OpenNote}){
   catch(e){if(mounted.current)setUsageError((e as Error).message);}
   finally{if(mounted.current)setUsageBusy(false);}
  }
- return <><DashboardView publicMode={!capabilities.localTools} canManageMatches={capabilities.manageMatches} data={data} error={error} busy={busy} checkedAt={checkedAt} order={order} onOrder={setOrder} onRefresh={()=>void polling.current?.refresh()} onOpen={onOpen} scope={scope} onScope={changeScope} usageBusy={usageBusy} usageError={usageError} onUsageRefresh={()=>void refreshUsage()} onMatch={id=>setMatchingPair(id??data?.notes.find(n=>n.match_status!=='matched')?.id??data?.notes[0]?.id??'')}/>{capabilities.manageMatches&&matchingPair!==null&&<UsageMatchDialog initialPairId={matchingPair} onClose={()=>setMatchingPair(null)} onSaved={()=>void polling.current?.refresh()}/>}</>;
+ return <><DashboardView season={season} publicMode={!capabilities.localTools} canManageMatches={season==='S1'&&capabilities.manageMatches} data={data} error={error} busy={busy} checkedAt={checkedAt} order={order} onOrder={setOrder} onRefresh={()=>void polling.current?.refresh()} onOpen={onOpen} scope={scope} onScope={changeScope} usageBusy={usageBusy} usageError={usageError} onUsageRefresh={()=>void refreshUsage()} onMatch={id=>setMatchingPair(id??data?.notes.find(n=>n.match_status!=='matched')?.id??data?.notes[0]?.id??'')}/>{capabilities.manageMatches&&matchingPair!==null&&<UsageMatchDialog initialPairId={matchingPair} onClose={()=>setMatchingPair(null)} onSaved={()=>void polling.current?.refresh()}/>}</>;
 }

@@ -30,7 +30,7 @@ def index(root):
 
 
 def basic(row):
-    return {**row,'summary':True,'schema_version':6,'aliases':[],'entities':[],'core':[],
+    return {'seasons':['S1'],**row,'summary':True,'schema_version':6,'aliases':[],'entities':[],'core':[],
             'claims':[],'manual_sections':[],'conflicts':[],'related':[]}
 
 
@@ -53,7 +53,7 @@ def projection(record):
             refs.extend([member.get('hero',''),member.get('replaces','')]);fields.append(member.get('role','')+' '+member.get('replacement_note',''))
     fields.extend(r[8:] for r in refs if r.startswith('pending:'))
     summary=basic({k:m.get(k) for k in ('id','type','title','path','player_id','revision')})
-    summary.update({k:deepcopy(m[k]) for k in ('aliases','entities','migration','lineup_links','lineup_ids') if k in m})
+    summary.update({k:deepcopy(m[k]) for k in ('seasons','aliases','entities','migration','lineup_links','lineup_ids') if k in m})
     summary['core']=meta.get('core_heroes',[])
     if m['type']=='lineup':
         slim={k:deepcopy(v) for k,v in meta.items() if k not in ('operation_routes',)}
@@ -144,10 +144,10 @@ def entities(root):
     return _entity_rows(paths)
 
 
-def options(root):
+def options(root, notes=None):
     from workspace import FACTIONS
     factions={x['id']:dict(x) for x in FACTIONS}
-    for row in catalog(root)['notes']:
+    for row in (catalog(root)['notes'] if notes is None else notes):
         meta=row.get('meta',{})
         from tactics import faction_references
         for ref in faction_references(meta):

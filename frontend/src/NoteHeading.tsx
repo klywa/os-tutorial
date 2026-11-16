@@ -8,7 +8,7 @@ type Props={note:Note;reading?:ReadingDocument|null;name:(id:string)=>string;dir
 export default function NoteHeading({note,reading,name,dirty,editing,onEdit,onPlayer,onExport}:Props){
  const editNotes=useCanEditNote(note.id);
  return <header className="note-heading compact-note-heading">
-  <div className="note-title-row"><div className="note-title"><span className="note-kind">{note.type==='lineup'?'◈ 阵容战术':note.type==='player'?'♙ 棋手指南':'▤ 实用知识'}</span><h1>{note.title}</h1></div><div className="note-actions">
+  <div className="note-title-row"><div className="note-title"><span className="note-kind">{note.type==='lineup'?'◈ 阵容战术':note.type==='player'?'♙ 棋手指南':'▤ 实用知识'}</span><h1>{note.title}</h1><span className="muted note-seasons">适用赛季：{(note.seasons??['S1']).join('、')}</span></div><div className="note-actions">
    {(editNotes||editing)&&<button className={editing?'selected':'edit-button'} onClick={onEdit}>{editing?'退出编辑':'编辑笔记'}</button>}
    {!editing&&<HistoryButton/>}
    {!!reading?.markdown&&<CopyButton text={reading.document?documentClipboard(reading.document):reading.markdown} label="复制整篇"/>}

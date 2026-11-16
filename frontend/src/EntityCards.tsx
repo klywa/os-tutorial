@@ -2,7 +2,7 @@ import {appUrl} from './urls';
 import {onSessionReset,requestGeneration} from './sessionRequest';
 import {useAuth} from './auth';
 import {Children,cloneElement,createContext,isValidElement,useContext,useEffect,useRef,useState,useId,useMemo,useCallback,useSyncExternalStore} from 'react';
-import type {ReactNode,ReactElement} from 'react';
+import type {ClipboardEvent, ReactNode,ReactElement} from 'react';
 import {createPortal} from 'react-dom';
 import {api} from './model';
 import {activeWorkspace,cachedEntry} from './readerCache';
@@ -10,22 +10,88 @@ import {loadCardCatalog,cardPath,cardVersion,checkCardVersion,cardCategories as 
 import type {CardDetail,CardSummary} from './types';
 import {splitEntities,resolveCandidates,selectedCandidate,heroVersions,cardIndex} from './entityText';
 import {DockSelection} from './dockSelection';
+import {rankCards} from './cardCompletionSearch';
 const CardContext=createContext<CardSummary[]>([]),ReferenceContext=createContext<string[]>([]);
 const details=new Map<string,Promise<CardDetail>>();
 onSessionReset(()=>details.clear());
-type Dock={wide:boolean;target:HTMLDivElement|null;selection:DockSelection};
+type Dock={wide:boolean;noteTools:boolean;target:HTMLDivElement|null;selection:DockSelection};
 const DockContext=createContext<Dock|null>(null);
 function DockHeading({selection}:{selection:DockSelection}){
  const state=useSyncExternalStore(useCallback(run=>selection.subscribe('',run),[selection]),selection.snapshot,selection.snapshot);
  return <><div className="dock-heading"><strong>卡牌详情</strong>{state.active&&<button onClick={selection.toggle}>{state.pinned?'解锁':'锁定'}</button>}</div>{!state.active&&<p className="muted">悬浮或聚焦正文中的卡牌查看详情，点击可锁定。</p>}</>;
 }
-export function ReadingCards({children}:{children:ReactNode}){
+function DockSearch({selection,children}:{selection:DockSelection;children:ReactNode}){
+ const cards=useCards();
+ const input=useRef<HTMLInputElement>(null);
+ const composing=useRef(false);
+ const [query,setQuery]=useState('');
+ const [selectedId,setSelectedId]=useState('');
+ const text=query.trim();
+ const matches=useMemo(()=>text?rankCards(cards,text).slice(0,8):[],[cards,text]);
+ const selected=matches.find(card=>card.id===selectedId);
+ function change(value:string){
+  selection.setSearching(Boolean(value));
+  setQuery(value);
+  setSelectedId('');
+ }
+ useEffect(()=>()=>selection.setSearching(false),[selection]);
+ return <>
+  <form className="dock-search" role="search" aria-label="在笔记中查找卡牌" onSubmit={e=>{
+   e.preventDefault();
+   if(!composing.current&&matches[0])setSelectedId(matches[0].id);
+  }}>
+   <div className="dock-search-input">
+    <input ref={input} value={query} aria-label="搜索卡牌" placeholder="搜索卡牌"
+     onChange={e=>change(e.target.value)}
+     onCompositionStart={()=>{composing.current=true;}}
+     onCompositionEnd={()=>{composing.current=false;}}
+     onKeyDown={e=>{if(e.key==='Enter'&&(composing.current||e.nativeEvent.isComposing||e.keyCode===229))e.preventDefault();}}/>
+    {query&&<button type="button" aria-label="清空卡牌搜索" onClick={()=>{change('');input.current?.focus();}}>×</button>}
+   </div>
+   <button type="submit" disabled={!matches.length}>确定</button>
+  </form>
+  {!query?children:<>
+   {text&&!matches.length&&<p className="muted" role="status">未找到卡牌</p>}
+   {matches.length>0&&<ul className="dock-matches" aria-label="卡牌候选">{matches.map(card=><li key={card.id}>
+    <button type="button" aria-pressed={card.id===selectedId} onClick={()=>setSelectedId(card.id)}>
+     <span>{card.name}</span><small>{categoryNames[card.category]}{card.category==='heroes'&&(card.awakened?' · 觉醒':' · 普通')}</small>
+    </button>
+   </li>)}</ul>}
+   {selected&&<div className="entity-popover docked-card" aria-label="搜索到的卡牌详情">
+    <div className="popover-heading"><strong>{selected.name}{selected.awakened?'（觉醒）':''}</strong></div>
+    <CardVersion key={selected.id} card={selected}/>
+   </div>}
+  </>}
+ </>;
+}
+function copyNoteEntities(event:ClipboardEvent<HTMLDivElement>){
+ const selection=event.currentTarget.ownerDocument.getSelection();
+ if(!selection||selection.isCollapsed||!selection.rangeCount)return;
+ const range=selection.getRangeAt(0);
+ const node=range.commonAncestorContainer;
+ const element=node.nodeType===Node.ELEMENT_NODE?node as Element:node.parentElement;
+ if(!element?.closest('.content-scroll'))return;
+ const entity=element.closest('.entity-inline');
+ if(!entity&&![...element.querySelectorAll('.entity-inline')].some(chip=>range.intersectsNode(chip)))return;
+ event.clipboardData.setData('text/plain',selection.toString());
+ event.preventDefault();
+}
+export function ReadingCards({children,noteTools=false}:{children:ReactNode;noteTools?:boolean}){
  const container=useRef<HTMLDivElement>(null);const [wide,setWide]=useState(false),[target,setTarget]=useState<HTMLDivElement|null>(null);
  const [selection]=useState(()=>new DockSelection());
  useEffect(()=>{const el=container.current;if(!el)return;const observer=new ResizeObserver(([entry])=>setWide(entry.contentRect.width>=1160));observer.observe(el);return()=>observer.disconnect();},[]);
  useEffect(()=>selection.close(),[wide,selection]);
- const dock=useMemo(()=>({wide,target,selection}),[wide,target,selection]);
- return <DockContext.Provider value={dock}><div ref={container} className={'reading-body '+(wide?'with-card-dock':'')}>{children}{wide&&<aside className="card-dock" aria-label="卡牌详情栏"><DockHeading selection={selection}/><div ref={setTarget}/></aside>}</div></DockContext.Provider>;
+ const dock=useMemo(()=>({wide,noteTools,target,selection}),[wide,noteTools,target,selection]);
+ const detail=<div ref={setTarget}/>;
+ return <DockContext.Provider value={dock}>
+  <div ref={container} className={'reading-body '+(wide?'with-card-dock':'')} onCopy={noteTools?copyNoteEntities:undefined}>
+   {children}
+   {wide&&<aside className="card-dock" aria-label="卡牌详情栏">
+    <DockHeading selection={selection}/>
+    {noteTools?<DockSearch selection={selection}>{detail}</DockSearch>:detail}
+   </aside>}
+  </div>
+ </DockContext.Provider>;
 }
 export {categoryNames};
 export function getCard(id:string,version=cardVersion()){const key=cardPath(id,version);if(!details.has(key)){const request=api<CardDetail>(key).catch(e=>{if(details.get(key)===request)details.delete(key);throw e;});details.set(key,request);}return details.get(key)!;}
@@ -58,7 +124,8 @@ export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:strin
  const snapshot=useCallback(()=>dock?.selection.snapshot().active===token,[dock?.selection,token]);
  const selected=useSyncExternalStore(subscribe,snapshot,snapshot);
  const open=dock?.wide?selected:localOpen;
- const anchor=useRef<HTMLButtonElement>(null),panel=useRef<HTMLDivElement>(null),timer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);
+ const anchor=useRef<HTMLElement|null>(null),panel=useRef<HTMLDivElement>(null),timer=useRef<ReturnType<typeof setTimeout>|undefined>(undefined);
+ const setAnchor=useCallback((el:HTMLElement|null)=>{anchor.current=el;},[]);
  const [position,setPosition]=useState({top:0,left:0});const id=selectedCandidate(candidates,chosen),versions=heroVersions(cards,id?[id]:candidates),card=cardIndex(cards).byId.get(id)||versions[0];
  function clear(){clearTimeout(timer.current);}function close(){clear();if(dock?.wide)dock.selection.close();setOpen(false);setPinned(false);setChosen('');}
  function show(pin=false){clear();if(dock?.wide){dock.selection.select(token,pin);return;}const rect=anchor.current?.getBoundingClientRect();if(rect)setPosition({top:Math.min(rect.bottom+6,window.innerHeight-280),left:Math.max(8,Math.min(rect.left,window.innerWidth-368))});setOpen(true);}
@@ -66,7 +133,18 @@ export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:strin
  useEffect(()=>()=>clear(),[]);
  useEffect(()=>{if(!open){setChosen('');return;}const key=(e:KeyboardEvent)=>{if(e.key==='Escape'){close();anchor.current?.focus();clear();}};const outside=(e:PointerEvent)=>{if(!dock?.wide&&!anchor.current?.contains(e.target as Node)&&!panel.current?.contains(e.target as Node))close();};document.addEventListener('keydown',key);document.addEventListener('pointerdown',outside);return()=>{document.removeEventListener('keydown',key);document.removeEventListener('pointerdown',outside);};},[open,dock?.wide]);
  useEffect(()=>{if(!open)return;const resize=()=>close();window.addEventListener('resize',resize);return()=>window.removeEventListener('resize',resize);},[open]);
- return <><button type="button" ref={anchor} className={portrait?'entity-portrait':'entity-chip'} aria-haspopup="dialog" aria-expanded={open} onMouseEnter={()=>{clear();timer.current=setTimeout(show,200);}} onMouseLeave={leave} onFocus={()=>{clear();timer.current=setTimeout(show,200);}} onBlur={e=>{if(!panel.current?.contains(e.relatedTarget as Node))leave();}} onClick={()=>{if(!dock?.wide&&open&&pinned)close();else{show(true);setPinned(true);}}}>{portrait&&<CardImage card={card}/>}<span>{label||card?.name||ids[0]?.replace('pending:','')}{!label&&card?.awakened?'（觉醒）':''}</span></button>
+ function schedule(){clear();timer.current=setTimeout(dock?.wide?dock.selection.preview(token):show,200);}
+ function activate(){if(!dock?.wide&&open&&pinned)close();else{show(true);if(!dock?.wide)setPinned(true);}}
+ const title=(label||card?.name||ids[0]?.replace('pending:','')||'')+(!label&&card?.awakened?'（觉醒）':'');
+ const anchorEvents={
+  'aria-haspopup':'dialog' as const,'aria-expanded':open,onMouseEnter:schedule,onMouseLeave:leave,onFocus:schedule,
+  onBlur:(event:React.FocusEvent<HTMLElement>)=>{if(!panel.current?.contains(event.relatedTarget as Node))leave();},
+  onClick:activate,
+ };
+ return <>{dock?.noteTools&&!portrait?
+  <span ref={setAnchor} className="entity-chip entity-inline" role="button" tabIndex={0} {...anchorEvents}
+    onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}}}>{title}</span>:
+  <button type="button" ref={setAnchor} className={portrait?'entity-portrait':'entity-chip'} {...anchorEvents}>{portrait&&<CardImage card={card}/>}<span>{title}</span></button>}
  {open&&createPortal(<div ref={panel} className={'entity-popover '+(dock?.wide?'docked-card':'')} role="dialog" aria-label={`${label||card?.name||'实体'}卡牌详情`} style={dock?.wide?undefined:{top:Math.max(8,position.top),left:position.left,maxHeight:`calc(100dvh - ${Math.max(8,position.top)+8}px)`}} onMouseEnter={clear} onMouseLeave={leave} onFocus={clear} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget as Node)&&e.relatedTarget!==anchor.current)leave();}}><div className="popover-heading"><strong>{card?.name||label}</strong><button onClick={close} aria-label="关闭卡牌详情">×</button></div>
  {!versions.length&&candidates.length>1&&<label>同名卡牌<select aria-label="同名卡牌" value={id} onChange={e=>setChosen(e.target.value)}><option value="">请选择要查看的同名卡牌</option>{candidates.map(cid=>{const c=cardIndex(cards).byId.get(cid);return <option key={cid} value={cid}>{categoryNames[c?.category??'']} · {c?.name}{c?.awakened?'（觉醒）':''} · {cid}</option>;})}</select></label>}
  {versions.length?versions.map(c=><CardVersion key={c.id} card={c} hero/>):id?<CardVersion key={id} card={card}/>:<p className="muted">此名称对应多张卡牌，请选择具体卡牌。</p>}

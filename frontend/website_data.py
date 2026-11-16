@@ -86,6 +86,8 @@ def export(root=ROOT):
                     'heroes':deepcopy(s.get('heroes') or s.get('raw',{}).get('heroes',[]))} for s in item['sources'] if isinstance(s,dict)]
                 catalog.append(item)
             write(staging/'catalog.json',catalog)
+            seasonal=root/FOLDER/'seasons'
+            if seasonal.is_dir():shutil.copytree(seasonal,staging/'seasons')
             files={p.relative_to(staging).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(staging.rglob('*')) if p.is_file()}
             write(staging/'manifest.json',{'schema_version':1,'files':files})
             destination=root/FOLDER
