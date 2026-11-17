@@ -342,46 +342,11 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1tU8q6FEkw:p1",
-          "start": 218.59,
-          "end": 274.22
-        },
-        {
-          "type": "video",
-          "source": "BV1n5af6SE4F:p1",
-          "start": 217.04,
-          "end": 271.99
-        },
-        {
-          "type": "video",
-          "source": "BV1tU8q6FEkw:p1",
-          "start": 564.44,
-          "end": 677.15
-        },
-        {
-          "source": "BV1WPap6DEa9:p1",
-          "start": 639.1,
-          "end": 666.8
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 119,
-          "paragraph_end": 119
-        },
-        {
-          "type": "video",
-          "source": "BV1ydeE6jEE8:p1",
-          "start": 1417.52,
-          "end": 1573.87
-        }
-      ],
+      "inference": false,
+      "evidence": [],
       "derived_from": [],
-      "display_ref": "cx26-8bb470b865db3e73"
+      "display_ref": "cx26-8bb470b865db3e73",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-e9a996f36ebdaadc",
@@ -390,23 +355,11 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1tU8q6FEkw:p1",
-          "start": 218.59,
-          "end": 274.22
-        },
-        {
-          "type": "video",
-          "source": "BV1n5af6SE4F:p1",
-          "start": 217.04,
-          "end": 271.99
-        }
-      ],
+      "inference": false,
+      "evidence": [],
       "derived_from": [],
-      "display_ref": "n-863e049a64149efb6cfc"
+      "display_ref": "n-863e049a64149efb6cfc",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-527c3ee4015a3e9c",
@@ -416,34 +369,10 @@
       "condition": "",
       "version": null,
       "inference": false,
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 855,
-          "paragraph_end": 855
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 854,
-          "paragraph_end": 854
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 635,
-          "paragraph_end": 635
-        },
-        {
-          "type": "video",
-          "source": "BV12Ba16dEmw:p1",
-          "start": 0,
-          "end": 114.06
-        }
-      ],
+      "evidence": [],
       "derived_from": [],
-      "display_ref": "n-467c23f11fa427e06ac2"
+      "display_ref": "n-467c23f11fa427e06ac2",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-643a5baa2dfbcb17",
@@ -9401,8 +9330,8 @@
       "origin": "manual"
     }
   ],
-  "body_sha256": "581304a9682cf39b8ac39f4a7df7812116379213eca2156bd8a964f938e4a1dc",
-  "revision": "aaa5b2a5e72ed3b71780",
+  "body_sha256": "2da1979deabab424d8fcb548afa8ffe05c05b86565b1aaed21c4e1a4e0613e7c",
+  "revision": "756231a8779e456891f4",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -26660,10 +26589,22 @@
     "n-597652b6b782ff3662dc": {
       "origin": "manual",
       "section": "关键装备"
+    },
+    "n-863e049a64149efb6cfc": {
+      "origin": "manual",
+      "section": "定阵条件"
+    },
+    "n-467c23f11fa427e06ac2": {
+      "origin": "manual",
+      "section": "核心机制"
+    },
+    "cx26-8bb470b865db3e73": {
+      "origin": "manual",
+      "section": "英雄"
     }
   },
-  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/514e8d544756ff9fe1225a897f628fb14facc064d90a3c800ad9d9df30d586d8.json",
-  "history_count": 80,
+  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/59b71e7c3933d2415e52e8b4792823867088889535bb4c0db94868ce9f624e4e.json",
+  "history_count": 90,
   "seasons": [
     "S1"
   ]
