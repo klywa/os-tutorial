@@ -404,34 +404,10 @@
       "condition": "",
       "version": null,
       "inference": false,
-      "evidence": [
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 855,
-          "paragraph_end": 855
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 854,
-          "paragraph_end": 854
-        },
-        {
-          "type": "document",
-          "source": "doc-bbd159aeedd7df4bbf0f271a91461a3cae4fa3946986beda4fbc393ecf5afe39",
-          "paragraph_start": 635,
-          "paragraph_end": 635
-        },
-        {
-          "type": "video",
-          "source": "BV12Ba16dEmw:p1",
-          "start": 0,
-          "end": 114.06
-        }
-      ],
+      "evidence": [],
       "derived_from": [],
-      "display_ref": "n-467c23f11fa427e06ac2"
+      "display_ref": "n-467c23f11fa427e06ac2",
+      "origin": "manual"
     },
     {
       "id": "cx26-claim-643a5baa2dfbcb17",
@@ -9389,8 +9365,8 @@
       "origin": "manual"
     }
   ],
-  "body_sha256": "1756be426e19e1302f5a41282241adb4ec16d1db800d2ccd9caaad3766c8ecf5",
-  "revision": "52ee8a8e5da1fb4c11fb",
+  "body_sha256": "e2a178484cf3939f60d1b0fe17e9e85253aa3feb2fb5a285a500df69cfee3e65",
+  "revision": "a4f5bbfee55006dd97ae",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -26652,10 +26628,14 @@
     "n-863e049a64149efb6cfc": {
       "origin": "manual",
       "section": "定阵条件"
+    },
+    "n-467c23f11fa427e06ac2": {
+      "origin": "manual",
+      "section": "核心机制"
     }
   },
-  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/b35c232f8cab9fc9d575ada03fd850a0509eba1df54b355232240e5964190821.json",
-  "history_count": 83,
+  "history_head": "knowledge-history/a141678fe16ed5490b59f915a93aa2e4/audit/b70589dea573e8bacd1f9ad08c4e4118417f9953810a9359c259f5c58d223fac.json",
+  "history_count": 85,
   "seasons": [
     "S1"
   ]
