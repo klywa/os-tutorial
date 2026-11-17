@@ -5,7 +5,7 @@ import type {KnowledgeDocument,KnowledgeNode,Note} from './types';
 import {copyEntry,sectionClipboard} from './jsonDocument';
 import {NodeActions,InlineReviewEditor,useReview} from './NoteReview';
 import {scopeNodes} from './noteReviewModel';
-import {lineupReadingFields,playerReadingFields} from './readingFields';
+import {lineupReadingFields,otherReadingFields,playerReadingFields} from './readingFields';
 
 export function CopyButton({text,label,children,className=''}:{text:string|(()=>string);label:string;children?:ReactNode;className?:string}){
  const [state,setState]=useState('');
@@ -32,7 +32,7 @@ export default function JsonReading({body,nodes,note,onNote,interactive=true,sur
  }}),[note,onNote]);
  const headingComponents=useMemo(()=>({...components,p:({children}:{children?:ReactNode})=><>{children}</>}),[components]);
  const draftId=localDraft?.id;
- const fields=note.type==='player'?playerReadingFields:note.type==='lineup'?lineupReadingFields:undefined;
+ const fields=note.type==='player'?playerReadingFields:note.type==='lineup'?lineupReadingFields:otherReadingFields;
  return useMemo(()=><>{nodes.filter(n=>!hidden.has(n.id)).map(n=>draftId===n.id?<div key={n.id} id={surface==='body'?n.id:surface+'-'+n.id} data-node={n.id} data-reading-surface={surface}><InlineReviewEditor/></div>:n.type==='heading'?<div key={n.id} className="json-heading" data-node={n.id} data-reading-surface={surface} data-section={n.level===2?n.title:undefined} id={n.id}>
   {n.level===1?null:<CopyHeading node={n} body={body} interactive={interactive}><Markdown components={headingComponents}>{n.title}</Markdown></CopyHeading>}
  <ProposalOverlay nodeId={n.id} items={proposals}/></div>:<article key={n.id} className={'json-entry '+(n.show_key?'keyed':'unkeyed')} data-node={n.id} data-reading-surface={surface}>

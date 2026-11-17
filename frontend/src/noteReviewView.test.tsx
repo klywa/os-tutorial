@@ -14,7 +14,8 @@ it('highlights structured fields in reading without changing Markdown or clipboa
  const render=(type:Note['type'],text=value)=>renderToStaticMarkup(<JsonReading body={body} nodes={[{...entry,value:text}]} note={{...note,type}} onNote={()=>{}}/>);
  const html=render('lineup');
  for(const field of ['觉醒需求：','等级投入:','购买策略：','获得途径：'])expect(html).toContain('<strong>'+field+'</strong>');
- for(const field of ['比例：','出售时机：','上阵时机：'])expect(html).not.toContain('<strong>'+field+'</strong>');
+ expect(html).toContain('<strong>比例：</strong>');
+ for(const field of ['出售时机：','上阵时机：'])expect(html).not.toContain('<strong>'+field+'</strong>');
  expect(html).toContain('<code>上阵时机：示例</code>');
  expect(html.match(/<strong>获得途径：<\/strong>/g)).toHaveLength(1);
  const player=render('player','必须阵营：三分 定阵条件：曹操到位；阶段强度：条件明确。');
@@ -29,9 +30,21 @@ it('highlights structured fields in reading without changing Markdown or clipboa
   expect(render(type,'定阵条件：核心到位')).toContain('<strong>定阵条件：</strong>');
  }
  const other=render('other','作用：正文；**使用技巧：** 正文');
- expect(other).not.toContain('<strong>作用：</strong>');
+ expect(other).toContain('<strong>作用：</strong>');
  expect(other).toContain('<strong>使用技巧：</strong>');
  expect(copyEntry(entry,body,note.title)).toContain('觉醒需求：普通卡可用。等级投入:定向培养');
+});
+
+it('bolds full condition keys in a tactics paragraph and leaves the actions plain',()=>{
+ const first='场上只有1名要转等级的三分英雄，目标三分主C尚未吃等级，手中有1张换帅且主C至少有1张：';
+ const second='场上有4名供级英雄，其中至少2名三分英雄可以留到遗志前，目标主C够觉醒且还能额外上场1张：';
+ const entry={id:'p',type:'entry' as const,key:'传承、遗志、换帅的使用技巧',show_key:true,value:first+'上主C。'+second+'先传承。'};
+ const body:KnowledgeDocument={schema_version:6,nodes:[entry]};
+ const note={id:'n',title:'常用技巧',type:'other',related:[],document:body} as unknown as Note;
+ const html=renderToStaticMarkup(<JsonReading body={body} nodes={body.nodes} note={note} onNote={()=>{}}/>);
+ expect(html).toContain('<strong>'+first+'</strong>上主C。');
+ expect(html).toContain('<strong>'+second+'</strong>先传承。');
+ expect(copyEntry(entry,body,note.title)).toContain(first+'上主C。'+second+'先传承。');
 });
 
 it('renders edit and annotation beside copy for deep headings and named paragraphs',()=>{

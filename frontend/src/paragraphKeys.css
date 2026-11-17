@@ -1,0 +1,12 @@
+.paragraph-key-input{display:block;position:relative;min-width:0}
+.paragraph-key-viewport{position:absolute;overflow:hidden;pointer-events:none;color:transparent}
+.paragraph-key-text{display:block;box-sizing:border-box;min-height:100%;width:100%}
+.paragraph-key-text mark{color:transparent}
+.paragraph-key-text mark,.proposal-paragraph-key{background:color-mix(in srgb,var(--jade,#83cfb5) 24%,transparent);border-radius:2px}
+.paragraph-key-input:has(textarea:disabled) .paragraph-key-viewport{opacity:.5}
+@media(forced-colors:active){
+ .paragraph-key-viewport{forced-color-adjust:none}
+ .paragraph-key-text mark,.proposal-paragraph-key{forced-color-adjust:none;background:Highlight}
+ .paragraph-key-text mark{opacity:.4}
+ .proposal-paragraph-key{color:HighlightText}
+}

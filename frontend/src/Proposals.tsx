@@ -4,6 +4,7 @@ import {api} from './model';
 import {equalValue} from './noteReviewModel';
 import {DiffText} from './ReviewFields';
 import ProposalDiffEditor from './ProposalDiffEditor';
+import {ParagraphTextarea} from './ParagraphTextarea';
 import type {KnowledgeNode} from './types';
 import {syncLabel} from './syncStatus';
 import {useEditLocks,leaseRef,type Resource} from './editLocks';
@@ -187,7 +188,7 @@ export function ProposalCard({item:incoming,onChanged,onLocate,locating=false,on
     }}/>显示条目名称</label>
     {child.show_key&&<label>条目名称<input value={child.key} readOnly={readOnly}
      onChange={e=>setSectionDraft(previous=>({...previous,[child.id]:{...child,key:e.target.value}}))}/></label>}
-    <label>条目正文<textarea value={child.value} readOnly={readOnly}
+    <label>条目正文<ParagraphTextarea value={child.value} readOnly={readOnly}
      onChange={e=>setSectionDraft(previous=>({...previous,[child.id]:{...child,value:e.target.value}}))}/></label>
    </div>}
    <ProposalEvidence changes={entry.evidence_changes}/>

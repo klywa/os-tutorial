@@ -1,5 +1,7 @@
 import {useEffect,useLayoutEffect,useRef} from 'react';
 import {textDiff} from './noteReviewModel';
+import {paragraphKeyParts,paragraphKeyRanges} from './paragraphKeys';
+import './paragraphKeys.css';
 
 function selectionOffset(root:HTMLElement,node:Node|null,offset:number){
  if(!node||!root.contains(node))return null;
@@ -37,11 +39,21 @@ export default function ProposalDiffEditor({before,value,readOnly,onChange,onCom
   const anchor=selectionOffset(editor,selection?.anchorNode??null,selection?.anchorOffset??0);
   const focus=selectionOffset(editor,selection?.focusNode??null,selection?.focusOffset??0);
   const content=document.createDocumentFragment();
+  const keys=paragraphKeyRanges(value);
+  let offset=0;
   for(const part of textDiff(before,value)){
    if(part.kind==='remove')continue;
-   if(part.kind==='add'){
-    const mark=document.createElement('ins');mark.textContent=part.text;content.append(mark);
-   }else content.append(part.text);
+   const container=part.kind==='add'?document.createElement('ins'):content;
+   for(const segment of paragraphKeyParts(part.text,keys,offset)){
+    if(segment.highlight){
+     const mark=document.createElement('span');
+     mark.className='proposal-paragraph-key';
+     mark.textContent=segment.text;
+     container.append(mark);
+    }else container.append(segment.text);
+   }
+   if(container!==content)content.append(container);
+   offset+=part.text.length;
   }
   if(value.endsWith('\n'))content.append(document.createElement('br'));
   editor.replaceChildren(content);

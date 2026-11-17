@@ -3,6 +3,7 @@ import type {ReactNode} from 'react';
 import type {KnowledgeNode} from './types';
 import {displayValue,textDiff} from './noteReviewModel';
 import {createDiffDebouncer} from './diffDebounce';
+import {ParagraphTextarea} from './ParagraphTextarea';
 
 const RenderedDiff=memo(function RenderedDiff({before,after,split,editor}:{before:string;after:string;split:boolean;editor?:ReactNode}){
  const parts=useMemo(()=>textDiff(before,after),[before,after]);
@@ -26,7 +27,7 @@ export const NodeFields=memo(function NodeFields({node,original,onChange,showDif
  return <div className="review-node-fields">{node.type==='heading'?<label>章节标题<input data-card-completion aria-label="章节标题" {...composition} value={node.title} readOnly={readOnly||node.level===1} onChange={e=>onChange({...node,title:e.target.value})}/>{showDiff&&<DiffText composing={composing} before={String(before.title??'')} after={node.title}/>}</label>:<>
  <label className="inline"><input type="checkbox" disabled={readOnly} checked={node.show_key} onChange={e=>onChange({...node,show_key:e.target.checked,key:e.target.checked&&original.type==='entry'?original.key:'正文'})}/>显示名称</label>
  {node.show_key&&<label>名称<input data-card-completion aria-label="名称" readOnly={readOnly} {...composition} value={node.key} onChange={e=>onChange({...node,key:e.target.value})}/>{showDiff&&<DiffText composing={composing} before={String(before.key??'')} after={node.key}/>}</label>}
- <label>正文<textarea data-card-completion aria-label="正文" readOnly={readOnly} {...composition} rows={Math.max(3,Math.min(14,Math.ceil(node.value.length/70)))} value={node.value} onChange={e=>onChange({...node,value:e.target.value})}/></label>{showDiff&&<DiffText composing={composing} before={String(before.value??'')} after={node.value}/>}</>}</div>;
+ <label>正文<ParagraphTextarea data-card-completion aria-label="正文" readOnly={readOnly} {...composition} rows={Math.max(3,Math.min(14,Math.ceil(node.value.length/70)))} value={node.value} onChange={e=>onChange({...node,value:e.target.value})}/></label>{showDiff&&<DiffText composing={composing} before={String(before.value??'')} after={node.value}/>}</>}</div>;
 });
 export function ValueEditor({value,onChange,label,onValidity,onComposing,disabled=false}:{value:unknown;onChange:(value:unknown)=>void;label:string;onValidity?:(valid:boolean)=>void;onComposing?:(composing:boolean)=>void;disabled?:boolean}){
  const [text,setText]=useState(displayValue(value)),[error,setError]=useState('');
