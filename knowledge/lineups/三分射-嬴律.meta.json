@@ -115,7 +115,8 @@
           "end": 372.15
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-core"
     },
     {
       "id": "d10-s-adopt-d10-claim",
@@ -242,7 +243,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-adopt"
     },
     {
       "id": "d10-s-avoid-d10-claim",
@@ -270,7 +272,8 @@
           "end": 1329
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-avoid"
     },
     {
       "id": "d10-s-faction-d10-claim",
@@ -322,7 +325,8 @@
           "paragraph_end": 140
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-faction"
     },
     {
       "id": "d10-s-hero-1991-d10-claim",
@@ -401,7 +405,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-hero-1991"
     },
     {
       "id": "d10-s-hero-1281-d10-claim",
@@ -480,7 +485,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-hero-1281"
     },
     {
       "id": "d10-s-hero-1841-d10-claim",
@@ -559,7 +565,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-hero-1841"
     },
     {
       "id": "d10-s-hero-1111-d10-claim",
@@ -599,7 +606,8 @@
           "end": 917.75
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-hero-1111"
     },
     {
       "id": "d10-s-hero-1071-d10-claim",
@@ -678,7 +686,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-hero-1071"
     },
     {
       "id": "d10-s-hero-5111-d10-claim",
@@ -757,7 +766,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-hero-5111"
     },
     {
       "id": "d10-s-hero-1231-d10-claim",
@@ -836,7 +846,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-hero-1231"
     },
     {
       "id": "d10-s-hero-1971-d10-claim",
@@ -864,7 +875,8 @@
           "paragraph_end": 406
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-hero-1971"
     },
     {
       "id": "d10-s-early-buy-d10-claim",
@@ -910,7 +922,8 @@
           "paragraph_end": 385
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-early-buy"
     },
     {
       "id": "d10-s-early-d10-claim",
@@ -1001,7 +1014,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-early"
     },
     {
       "id": "d10-s-middle-buy-d10-claim",
@@ -1065,7 +1079,8 @@
           "end": 1329
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-middle-buy"
     },
     {
       "id": "d10-s-middle-d10-claim",
@@ -1192,7 +1207,8 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-middle"
     },
     {
       "id": "d10-s-late-buy-d10-claim",
@@ -1244,7 +1260,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-late-buy"
     },
     {
       "id": "d10-s-late-d10-claim",
@@ -1371,53 +1388,18 @@
           ],
           "reason": "本批新来源有据教学补全；旧文和旧证据保留"
         }
-      ]
+      ],
+      "display_ref": "d10-s-late"
     },
     {
       "id": "d10-s-improve-d10-claim",
       "text_ref": "d10-s-improve",
       "section": "教学",
       "kind": "conditional_strategy",
-      "inference": true,
-      "evidence": [
-        {
-          "type": "video",
-          "source": "BV1wdaf6QEVz:p1",
-          "start": 1116.06,
-          "end": 1148.59
-        },
-        {
-          "type": "video",
-          "source": "BV1wdaf6QEVz:p1",
-          "start": 1393.37,
-          "end": 1511.76
-        },
-        {
-          "type": "document",
-          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
-          "paragraph_start": 181,
-          "paragraph_end": 181
-        },
-        {
-          "type": "document",
-          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
-          "paragraph_start": 201,
-          "paragraph_end": 201
-        },
-        {
-          "type": "video",
-          "source": "BV1wdaf6QEVz:p1",
-          "start": 1539.18,
-          "end": 1560.02
-        },
-        {
-          "type": "document",
-          "source": "doc-f068ce0ebfd531443c651c8b51bfcfbb85c7573288a9b6c9f254b8a4a6dfdcb2",
-          "paragraph_start": 228,
-          "paragraph_end": 228
-        }
-      ],
-      "origin": "batch77_stage10_d"
+      "inference": false,
+      "evidence": [],
+      "origin": "manual",
+      "display_ref": "d10-s-improve"
     },
     {
       "id": "d10-s-card-94353-d10-claim",
@@ -1439,7 +1421,8 @@
           "paragraph_end": 406
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-94353"
     },
     {
       "id": "d10-s-card-94322-d10-claim",
@@ -1461,7 +1444,8 @@
           "paragraph_end": 399
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-94322"
     },
     {
       "id": "d10-s-card-681024-d10-claim",
@@ -1483,7 +1467,8 @@
           "paragraph_end": 900
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-681024"
     },
     {
       "id": "d10-s-card-681022-d10-claim",
@@ -1505,7 +1490,8 @@
           "paragraph_end": 898
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-681022"
     },
     {
       "id": "d10-s-card-7041-d10-claim",
@@ -1527,7 +1513,8 @@
           "paragraph_end": 181
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-7041"
     },
     {
       "id": "d10-s-card-7083-d10-claim",
@@ -1549,7 +1536,8 @@
           "paragraph_end": 201
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-7083"
     },
     {
       "id": "d10-s-card-7505-d10-claim",
@@ -1571,7 +1559,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-card-7505"
     },
     {
       "id": "d10-s-op-d10-claim",
@@ -1623,7 +1612,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-op"
     },
     {
       "id": "d10-s-pos-d10-claim",
@@ -1657,7 +1647,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_stage10_d"
+      "origin": "batch77_stage10_d",
+      "display_ref": "d10-s-pos"
     },
     {
       "id": "ying4-d10-s-adopt-claim",
@@ -1696,7 +1687,8 @@
           "paragraph_end": 406
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-adopt"
     },
     {
       "id": "ying4-d10-s-early-claim",
@@ -1735,7 +1727,8 @@
           "paragraph_end": 406
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-early"
     },
     {
       "id": "ying4-d10-s-middle-claim",
@@ -1798,7 +1791,8 @@
           "paragraph_end": 900
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-middle"
     },
     {
       "id": "ying4-d10-s-late-claim",
@@ -1843,7 +1837,8 @@
           "paragraph_end": 403
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-late"
     },
     {
       "id": "ying4-d10-s-auction-1-claim",
@@ -1864,7 +1859,8 @@
           "end": 118.48
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-auction-1"
     },
     {
       "id": "ying4-d10-s-auction-2-claim",
@@ -1891,7 +1887,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-auction-2"
     },
     {
       "id": "ying4-d10-s-auction-3-claim",
@@ -1924,7 +1921,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-auction-3"
     },
     {
       "id": "ying4-d10-s-hero-1991-claim",
@@ -1981,7 +1979,8 @@
           "paragraph_end": 140
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-hero-1991"
     },
     {
       "id": "ying4-d10-s-hero-5111-claim",
@@ -2038,7 +2037,8 @@
           "end": 917.75
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-hero-5111"
     },
     {
       "id": "ying4-d10-s-hero-1281-claim",
@@ -2095,7 +2095,8 @@
           "end": 917.75
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-hero-1281"
     },
     {
       "id": "ying4-d10-s-hero-1841-claim",
@@ -2152,7 +2153,8 @@
           "end": 917.75
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-hero-1841"
     },
     {
       "id": "ying4-d10-s-hero-1071-claim",
@@ -2209,7 +2211,8 @@
           "end": 917.75
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-hero-1071"
     },
     {
       "id": "ying4-d10-s-hero-1231-claim",
@@ -2266,7 +2269,8 @@
           "paragraph_end": 228
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "d10-s-hero-1231"
     },
     {
       "id": "ying4-s-hero-1861-claim",
@@ -2293,7 +2297,8 @@
           "paragraph_end": 97
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "ying4-s-hero-1861"
     },
     {
       "id": "ying4-s-hero-5051-claim",
@@ -2320,7 +2325,8 @@
           "paragraph_end": 133
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "ying4-s-hero-5051"
     },
     {
       "id": "ying4-s-hero-1751-claim",
@@ -2347,7 +2353,8 @@
           "paragraph_end": 85
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "ying4-s-hero-1751"
     },
     {
       "id": "ying4-s-hero-1141-claim",
@@ -2374,7 +2381,8 @@
           "paragraph_end": 22
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "ying4-s-hero-1141"
     },
     {
       "id": "ying4-s-hero-5011-claim",
@@ -2401,16 +2409,23 @@
           "paragraph_end": 125
         }
       ],
-      "origin": "batch77_ying4"
+      "origin": "batch77_ying4",
+      "display_ref": "ying4-s-hero-5011"
     }
   ],
-  "body_sha256": "67fabbc0c31a392e37e0d729f84e12cfd8fe40ea29b1af90098bf11ac0121c66",
-  "revision": "36ee6e5a0c68ff3500d6",
+  "body_sha256": "f41f369676cb020cd3f35b25100a78b04f64201536b44888c3033d49afa180ba",
+  "revision": "1f3d1fe2a6e572ce6e21",
   "retired_claim_annotations": [],
-  "history_head": "knowledge-history/d4384d623b4c262a03684cbedbc089ac/audit/20caa911cffb4af2320768d079e9bec0461ae183decea8b0f43c26c8944cb08c.json",
-  "history_count": 3,
+  "history_head": "knowledge-history/d4384d623b4c262a03684cbedbc089ac/audit/bc731b1cbcf389cd3d485c3384af41cb045c419fb1838aded8959e2deebcc677.json",
+  "history_count": 4,
   "review_receipts": [],
   "seasons": [
     "S1"
-  ]
+  ],
+  "node_annotations": {
+    "d10-s-improve": {
+      "origin": "manual",
+      "section": "后期提升思路"
+    }
+  }
 }
