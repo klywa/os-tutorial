@@ -602,7 +602,14 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
                     raise ValueError('措辞修改不能修改结构化知识或支撑节点')
         evidence_batches=entry_evidence_batches(_entry_evidence)
         evidence_node_ids={row[0] for row in evidence_batches}
-        if incoming != body:
+        old_nodes = {n['id']: n for n in [*body['nodes'], *body.get('supporting_nodes', [])]}
+        new_nodes = {n['id']: n for n in [*incoming['nodes'], *incoming.get('supporting_nodes', [])]}
+        # Same nodes and heading positions mean the paragraphs only changed
+        # order within their sections. Their existing display bindings stand.
+        reordered_entries = old_nodes == new_nodes and (
+            [(i, n['id']) for i, n in enumerate(body['nodes']) if n['type'] == 'heading']
+            == [(i, n['id']) for i, n in enumerate(incoming['nodes']) if n['type'] == 'heading'])
+        if incoming != body and (evidence_batches or not reordered_entries):
             # Keep display identity across text edits without rewriting evidence.
             display_refs = document.claim_display_refs(body, project(record, public=True)['claims'])
             for annotation in meta.get('claim_annotations', []):
@@ -612,8 +619,6 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
         title = payload.get('title', meta['title'])
         if title != meta['title']:
             raise ValueError('笔记身份名称通过新建与迁移维护；正文编辑不能改绑棋手或阵容')
-        old_nodes = {n['id']: n for n in [*body['nodes'], *body.get('supporting_nodes', [])]}
-        new_nodes = {n['id']: n for n in [*incoming['nodes'], *incoming.get('supporting_nodes', [])]}
         deleted = old_nodes.keys() - new_nodes.keys()
         if deleted:
             active = []

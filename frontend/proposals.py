@@ -480,13 +480,17 @@ class ProposalStore:
         body.setdefault('supporting_nodes',[])
         body.setdefault('semantics',{})
         if item['kind']=='delete':
-            # Canonical edit detaches references on deletion. Review must never
-            # silently mutate semantics, evidence associations or hidden nodes.
+            # The store archives claims owned by the deleted entry. References
+            # from other entries or structured knowledge still block deletion.
+            claims=record['metadata'].get('claim_annotations',[])
+            owned_claims={claim['id'] for claim in claims if claim.get('text_ref')==nid}
             def refers(value):
                 if isinstance(value,dict):return any((k in ('$text','text_ref','display_ref') and v==nid) or refers(v) for k,v in value.items())
-                if isinstance(value,list):return any(refers(v) for v in value)
+                if isinstance(value,list):return any(
+                    v in owned_claims if isinstance(v,str) else refers(v) for v in value)
                 return False
-            if refers(body.get('semantics',{})) or refers(body.get('supporting_nodes',[])) or refers(record['metadata'].get('claim_annotations',[])):
+            other_claims=[claim for claim in claims if claim.get('text_ref')!=nid]
+            if refers(body.get('semantics',{})) or refers(body.get('supporting_nodes',[])) or refers(other_claims):
                 raise ValueError('条目仍被结构化知识或证据引用，不能删除')
             body['nodes']=[n for n in nodes if n['id']!=nid]
         elif item['kind']=='update':
