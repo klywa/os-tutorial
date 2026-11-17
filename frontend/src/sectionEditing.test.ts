@@ -1,5 +1,16 @@
 import {describe,it,expect} from 'vitest';
 import {insertKnowledgeNode,changeHeadingLevel,removeNode,moveNode,documentClipboard,sectionClipboard,copyEntry} from './jsonDocument';
+
+it('paragraph moves exchange adjacent entries and stop at every heading',()=>{
+ const title={id:'title',type:'heading',level:1,title:'Title'} as const;
+ const child={id:'child',type:'heading',level:3,title:'Child'} as const;
+ const entry=(id:string)=>({id,type:'entry',key:id,show_key:true,value:id} as const);
+ const nodes=[title,entry('a'),entry('b'),child,entry('c')];
+ expect(moveNode(nodes,1,1).map(node=>node.id)).toEqual(['title','b','a','child','c']);
+ expect(moveNode(nodes,2,1)).toBe(nodes);
+ expect(moveNode(nodes,4,-1)).toBe(nodes);
+ expect(moveNode(nodes,1,3)).toBe(nodes);
+});
 import type {KnowledgeNode} from './types';
 const h=(id:string,level:number):KnowledgeNode=>({id,type:'heading',level,title:id});
 const e=(id:string):KnowledgeNode=>({id,type:'entry',key:id,show_key:true,value:'内容'});

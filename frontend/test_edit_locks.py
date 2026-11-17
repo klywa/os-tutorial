@@ -103,6 +103,41 @@ class EditLockTests(unittest.TestCase):
         self.assertEqual(second['node_id'],'b')
         self.assertEqual(json_store.load_record(self.root,'n')['body']['nodes'][2]['value'],'new')
 
+    def test_adjacent_move_is_atomic_idempotent_and_keeps_node_content(self):
+        from entry_changes import apply
+        record=json_store.load_record(self.root,'n')
+        claim={'id':'claim-a','text_ref':'a','kind':'mechanic','section':'Chapter','evidence':[]}
+        record['metadata']['claim_annotations']=[claim]
+        json_store.save(self.root,[record])
+        before_claims=json_store.load_record(self.root,'n')['metadata']['claim_annotations']
+        leases=[self.acquire(ADMIN,'order-tab',node) for node in ('a','b')]
+        swap={'kind':'move','leases':[{k:lease[k] for k in ('id','token')} for lease in leases]}
+        payload={'note_id':'n','client_id':'order-tab','request_id':'order-request','changes':[swap,swap]}
+        with self.assertRaises(Conflict):
+            apply(self.store,ADMIN,payload)
+        self.assertEqual(json_store.load_record(self.root,'n')['body']['nodes'],self.nodes)
+        payload['changes']=[swap]
+        apply(self.store,ADMIN,payload)
+        apply(self.store,ADMIN,payload)
+        after=json_store.load_record(self.root,'n')
+        self.assertEqual(after['body']['nodes'],[*self.nodes[:2],self.nodes[3],self.nodes[2]])
+        self.assertEqual(after['metadata']['claim_annotations'],before_claims)
+
+    def test_move_cannot_cross_subheading_or_use_expired_lease(self):
+        from entry_changes import apply
+        self.nodes.insert(3,{'id':'child','type':'heading','level':3,'title':'Child'})
+        record=json_store.load_record(self.root,'n')
+        json_store.edit(self.root,'n',{'revision':record['metadata']['revision'],
+                                      'document':{**record['body'],'nodes':self.nodes}})
+        leases=[self.acquire(ADMIN,'order-tab',node) for node in ('a','b')]
+        payload={'note_id':'n','client_id':'order-tab','request_id':'order-request','changes':[
+            {'kind':'move','leases':[{k:lease[k] for k in ('id','token')} for lease in leases]}]}
+        with self.assertRaises(Conflict):
+            apply(self.store,ADMIN,payload)
+        self.now[0]+=100
+        with self.assertRaises(EditLocked):
+            apply(self.store,ADMIN,payload)
+
     def test_slot_submission_is_idempotent_and_releases_lease(self):
         lease=self.locks.acquire(A,{'note_id':'n','client_id':'client-a',
             'resource':{'kind':'slot','section_id':'h','left_id':'a'}})

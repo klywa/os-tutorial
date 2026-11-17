@@ -445,6 +445,23 @@ class ProposalTests(unittest.TestCase):
         json_store.edit(self.root,'n',{'revision':note['metadata']['revision'],'document':body})
         with self.assertRaises(Conflict):self.action(item)
 
+    @patch('json_store.check_evidence')
+    def test_delete_approved_entry_retires_its_evidence(self, check):
+        request=self.evidence_request()
+        record=self.note()
+        evidence=request['changes'][0]['evidence_changes'][0]['evidence']
+        record['metadata']['claim_annotations'][0]['evidence']=evidence
+        with store_lock(self.root):
+            json_store.save(self.root,[record])
+        request['changes']=[{'kind':'delete','lease':request['changes'][0]['lease']}]
+        item=self.store.submit_delta(AUTHOR,request)['items'][0]
+        self.action(item)
+        after=self.note()
+        self.assertNotIn('a',[node['id'] for node in after['body']['nodes']])
+        self.assertEqual([claim['id'] for claim in after['metadata']['claim_annotations']],['claim-b'])
+        retired,=after['metadata']['retired_claim_annotations']
+        self.assertEqual((retired['id'],retired['evidence']),('claim-a',evidence))
+
     def test_delete_referenced_entry_cannot_detach_semantics(self):
         note=self.note();body=note['body'];body['semantics']={'overview':{'$text':'a'}}
         json_store.edit(self.root,'n',{'revision':note['metadata']['revision'],'document':body})

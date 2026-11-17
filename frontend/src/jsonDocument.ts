@@ -59,9 +59,15 @@ export function changeHeadingLevel(nodes:KnowledgeNode[],index:number,level:numb
  if(nodes.slice(index,end).some(n=>n.type==='heading'&&n.level+delta>6))return nodes;
  return nodes.map((n,i)=>i>=index&&i<end&&n.type==='heading'?{...n,level:n.level+delta}:n);
 }
+export function canMoveEntry(nodes:KnowledgeNode[],index:number,offset:number){
+ return Math.abs(offset)===1&&nodes[index]?.type==='entry'&&nodes[index+offset]?.type==='entry';
+}
 export function moveNode(nodes:KnowledgeNode[],index:number,offset:number){
- const node=nodes[index];if(node.type!=='heading'){
-  const target=index+offset;if(target<1||target>=nodes.length)return nodes;
+ const node=nodes[index];
+ if(!node||Math.abs(offset)!==1)return nodes;
+ if(node.type==='entry'){
+  if(!canMoveEntry(nodes,index,offset))return nodes;
+  const target=index+offset;
   const next=[...nodes];[next[index],next[target]]=[next[target],next[index]];return next;
  }
  if(node.level===1)return nodes;

@@ -119,166 +119,13 @@
       "display_ref": "common-tips-swap"
     },
     {
-      "id": "claim-common-tips-awaken",
-      "section": "等级集中技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "mechanic",
-      "origin": "import",
-      "text_ref": "common-tips-awaken",
-      "evidence": [
-        {
-          "source": "BV1E7ht6WE2f:p1",
-          "start": 33.28,
-          "end": 63.74
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 12,
-          "end": 38,
-          "frame": "frames/32-0.jpg"
-        },
-        {
-          "source": "BV1E7ht6WE2f:p1",
-          "start": 64.24,
-          "end": 97.93,
-          "frame": "frames/83-0.jpg"
-        }
-      ],
-      "display_ref": "common-tips-awaken"
-    },
-    {
-      "id": "claim-common-tips-double-swap",
-      "section": "等级集中技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "origin": "import",
-      "text_ref": "common-tips-double-swap",
-      "evidence": [
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 12,
-          "end": 38,
-          "frame": "frames/25-0.jpg"
-        },
-        {
-          "source": "BV1E7ht6WE2f:p1",
-          "start": 64.24,
-          "end": 104.85
-        },
-        {
-          "source": "BV1E7ht6WE2f:p1",
-          "start": 64.24,
-          "end": 104.85,
-          "frame": "frames/96-0.jpg"
-        }
-      ],
-      "display_ref": "common-tips-double-swap"
-    },
-    {
-      "id": "claim-common-tips-two-inherit",
-      "section": "等级集中技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "origin": "import",
-      "text_ref": "common-tips-two-inherit",
-      "evidence": [
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 38,
-          "end": 90,
-          "frame": "frames/62-0.jpg"
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 57.32,
-          "end": 86.74,
-          "frame": "frames/74-0.jpg"
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 80,
-          "end": 90,
-          "frame": "frames/84-0.jpg"
-        }
-      ],
-      "display_ref": "common-tips-two-inherit"
-    },
-    {
-      "id": "claim-common-tips-dual-core",
-      "section": "等级集中技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "origin": "import",
-      "text_ref": "common-tips-dual-core",
-      "evidence": [
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 90,
-          "end": 159.99,
-          "frame": "frames/128-0.jpg"
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 130,
-          "end": 145.6,
-          "frame": "frames/135-0.jpg"
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 146.1,
-          "end": 159.99,
-          "frame": "frames/156-0.jpg"
-        }
-      ],
-      "display_ref": "common-tips-dual-core"
-    },
-    {
-      "id": "claim-common-tips-many-sanfen",
-      "section": "等级集中技巧",
-      "version": null,
-      "condition": "",
-      "inference": false,
-      "kind": "conditional_strategy",
-      "origin": "import",
-      "text_ref": "common-tips-many-sanfen",
-      "evidence": [
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 176.7,
-          "end": 204.06,
-          "frame": "frames/200-0.jpg"
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 204.67,
-          "end": 232.64,
-          "frame": "frames/218-0.jpg"
-        },
-        {
-          "source": "BV14oxj6bEJ1:p1",
-          "start": 233.22,
-          "end": 256,
-          "frame": "frames/248-0.jpg"
-        }
-      ],
-      "display_ref": "common-tips-many-sanfen"
-    },
-    {
       "id": "claim-common-tips-awakening-supply",
       "section": "等级集中技巧",
       "version": null,
       "condition": "",
       "inference": false,
       "kind": "conditional_strategy",
-      "origin": "import",
+      "origin": "manual",
       "text_ref": "common-tips-awakening-supply",
       "evidence": [
         {
@@ -406,7 +253,7 @@
       "condition": "",
       "inference": false,
       "kind": "conditional_strategy",
-      "origin": "import",
+      "origin": "manual",
       "text_ref": "common-tips-command-copy",
       "evidence": [
         {
@@ -437,7 +284,7 @@
       "condition": "",
       "inference": false,
       "kind": "conditional_strategy",
-      "origin": "import",
+      "origin": "manual",
       "text_ref": "common-tips-gold-pool",
       "evidence": [
         {
@@ -542,14 +389,394 @@
       "evidence": [],
       "inference": false,
       "display_ref": "entry-79649b9519bceab2a68a2cf496aabcdb-3"
+    },
+    {
+      "id": "entry-9bac18a47fc0c5dfd8237de582999e43-claim",
+      "text_ref": "entry-9bac18a47fc0c5dfd8237de582999e43",
+      "kind": "conditional_strategy",
+      "origin": "manual",
+      "section": "等级集中技巧",
+      "evidence": [
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 57.32,
+          "end": 86.74,
+          "frame": "frames/68-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-f61f279f543a0f6c3c26f0410855f89fdadb85b1e50f382230afe511a21412ec",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 146.1,
+          "end": 159.99,
+          "frame": "frames/156-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-f61f279f543a0f6c3c26f0410855f89fdadb85b1e50f382230afe511a21412ec",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 38,
+          "end": 90,
+          "frame": "frames/62-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 57.32,
+          "end": 86.74,
+          "frame": "frames/74-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 80,
+          "end": 90,
+          "frame": "frames/84-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 176.7,
+          "end": 204.06,
+          "frame": "frames/200-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 204.67,
+          "end": 232.64,
+          "frame": "frames/218-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 233.22,
+          "end": 256,
+          "frame": "frames/248-0.jpg"
+        }
+      ],
+      "inference": true,
+      "display_ref": "entry-9bac18a47fc0c5dfd8237de582999e43"
+    },
+    {
+      "id": "entry-a05c2b41f2c65d965159720738ba743e-claim",
+      "text_ref": "entry-a05c2b41f2c65d965159720738ba743e",
+      "kind": "conditional_strategy",
+      "origin": "manual",
+      "section": "等级集中技巧",
+      "evidence": [
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 57.32,
+          "end": 86.74,
+          "frame": "frames/68-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-f61f279f543a0f6c3c26f0410855f89fdadb85b1e50f382230afe511a21412ec",
+          "paragraph_start": 13,
+          "paragraph_end": 13
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 146.1,
+          "end": 159.99,
+          "frame": "frames/156-0.jpg"
+        },
+        {
+          "type": "document",
+          "source": "doc-f61f279f543a0f6c3c26f0410855f89fdadb85b1e50f382230afe511a21412ec",
+          "paragraph_start": 10,
+          "paragraph_end": 10
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 218,
+          "end": 232.64,
+          "frame": "frames/230-0.jpg"
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 23,
+          "end": 32.12
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 97.93
+        },
+        {
+          "type": "document",
+          "source": "doc-f61f279f543a0f6c3c26f0410855f89fdadb85b1e50f382230afe511a21412ec",
+          "paragraph_start": 16,
+          "paragraph_end": 16
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 97.93,
+          "frame": "frames/70-0.jpg"
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 33.28,
+          "end": 63.74
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 12,
+          "end": 38,
+          "frame": "frames/32-0.jpg"
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 97.93,
+          "frame": "frames/83-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 12,
+          "end": 38,
+          "frame": "frames/25-0.jpg"
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 104.85
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 104.85,
+          "frame": "frames/96-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 38,
+          "end": 90,
+          "frame": "frames/62-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 57.32,
+          "end": 86.74,
+          "frame": "frames/74-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 80,
+          "end": 90,
+          "frame": "frames/84-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 90,
+          "end": 159.99,
+          "frame": "frames/128-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 130,
+          "end": 145.6,
+          "frame": "frames/135-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 176.7,
+          "end": 204.06,
+          "frame": "frames/200-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 204.67,
+          "end": 232.64,
+          "frame": "frames/218-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 233.22,
+          "end": 256,
+          "frame": "frames/248-0.jpg"
+        },
+        {
+          "source": "BV1WFn56wELQ:p1",
+          "start": 280.72,
+          "end": 308.22
+        }
+      ],
+      "inference": true,
+      "display_ref": "entry-a05c2b41f2c65d965159720738ba743e"
     }
   ],
-  "body_sha256": "0cb6c8b8864136adee32de97c70b6e63bcd262ca39620a9dfe899c84394e69ba",
-  "revision": "3c182c6c191909f03436",
+  "body_sha256": "ca4192f69e80e4414770bfcabbcc9a854cd34251b9f364da3366bd55d6db6148",
+  "revision": "52052e97beeb7865f543",
   "review_receipts": [],
-  "retired_claim_annotations": [],
-  "history_head": "knowledge-history/a96c20ea0af185c4fc771f14ace4ecd6/audit/20c3676acaad535e4fd8f39b86cc2b0b63824c9deaa432b622b803a5d6e38c6d.json",
-  "history_count": 13,
+  "retired_claim_annotations": [
+    {
+      "id": "claim-common-tips-many-sanfen",
+      "section": "等级集中技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "origin": "import",
+      "text_ref": "common-tips-many-sanfen",
+      "evidence": [
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 176.7,
+          "end": 204.06,
+          "frame": "frames/200-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 204.67,
+          "end": 232.64,
+          "frame": "frames/218-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 233.22,
+          "end": 256,
+          "frame": "frames/248-0.jpg"
+        }
+      ],
+      "display_ref": "common-tips-many-sanfen",
+      "history_index": 18
+    },
+    {
+      "id": "claim-common-tips-dual-core",
+      "section": "等级集中技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "origin": "import",
+      "text_ref": "common-tips-dual-core",
+      "evidence": [
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 90,
+          "end": 159.99,
+          "frame": "frames/128-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 130,
+          "end": 145.6,
+          "frame": "frames/135-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 146.1,
+          "end": 159.99,
+          "frame": "frames/156-0.jpg"
+        }
+      ],
+      "display_ref": "common-tips-dual-core",
+      "history_index": 19
+    },
+    {
+      "id": "claim-common-tips-two-inherit",
+      "section": "等级集中技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "origin": "import",
+      "text_ref": "common-tips-two-inherit",
+      "evidence": [
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 38,
+          "end": 90,
+          "frame": "frames/62-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 57.32,
+          "end": 86.74,
+          "frame": "frames/74-0.jpg"
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 80,
+          "end": 90,
+          "frame": "frames/84-0.jpg"
+        }
+      ],
+      "display_ref": "common-tips-two-inherit",
+      "history_index": 20
+    },
+    {
+      "id": "claim-common-tips-double-swap",
+      "section": "等级集中技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "conditional_strategy",
+      "origin": "import",
+      "text_ref": "common-tips-double-swap",
+      "evidence": [
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 12,
+          "end": 38,
+          "frame": "frames/25-0.jpg"
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 104.85
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 104.85,
+          "frame": "frames/96-0.jpg"
+        }
+      ],
+      "display_ref": "common-tips-double-swap",
+      "history_index": 21
+    },
+    {
+      "id": "claim-common-tips-awaken",
+      "section": "等级集中技巧",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "origin": "import",
+      "text_ref": "common-tips-awaken",
+      "evidence": [
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 33.28,
+          "end": 63.74
+        },
+        {
+          "source": "BV14oxj6bEJ1:p1",
+          "start": 12,
+          "end": 38,
+          "frame": "frames/32-0.jpg"
+        },
+        {
+          "source": "BV1E7ht6WE2f:p1",
+          "start": 64.24,
+          "end": 97.93,
+          "frame": "frames/83-0.jpg"
+        }
+      ],
+      "display_ref": "common-tips-awaken",
+      "history_index": 22
+    }
+  ],
+  "history_head": "knowledge-history/a96c20ea0af185c4fc771f14ace4ecd6/audit/de4902465446a3fc93209f8af7c3ac0ea67b8e191ba7a034c24aafbb0169f681.json",
+  "history_count": 33,
   "node_annotations": {
     "n-d075ead0b0a954994250": {
       "origin": "manual"
@@ -572,6 +799,41 @@
     "entry-79649b9519bceab2a68a2cf496aabcdb-1": {
       "origin": "manual",
       "section": "终局技巧"
+    },
+    "entry-9bac18a47fc0c5dfd8237de582999e43": {
+      "origin": "manual",
+      "section": "等级集中技巧"
+    },
+    "entry-a05c2b41f2c65d965159720738ba743e": {
+      "origin": "manual",
+      "section": "等级集中技巧"
+    },
+    "common-tips-gold-pool": {
+      "origin": "manual",
+      "section": "等级集中技巧"
+    },
+    "common-tips-command-copy": {
+      "origin": "manual",
+      "section": "等级集中技巧"
+    },
+    "common-tips-awakening-supply": {
+      "origin": "manual",
+      "section": "等级集中技巧"
+    },
+    "common-tips-many-sanfen": {
+      "origin": "manual"
+    },
+    "common-tips-dual-core": {
+      "origin": "manual"
+    },
+    "common-tips-two-inherit": {
+      "origin": "manual"
+    },
+    "common-tips-double-swap": {
+      "origin": "manual"
+    },
+    "common-tips-awaken": {
+      "origin": "manual"
     }
   },
   "manual_semantics": true,

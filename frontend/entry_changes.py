@@ -106,6 +106,54 @@ def submit(store,actor,payload):
         return {'items':[store._public(i,record) for i in items]}
 
 
+def apply_moves(store, conn, actor, payload):
+    if set(payload) != {'note_id', 'client_id', 'request_id', 'changes'}:
+        raise ValueError('不支持的排序字段')
+    changes = payload['changes']
+    if not 0 < len(changes) <= 1000:
+        raise ValueError('排序操作数量无效')
+    record = store._note(payload['note_id'])
+    body = deepcopy(record['body'])
+    nodes = body['nodes']
+    positions = {node['id']: i for i, node in enumerate(nodes)}
+    refs = []
+    for change in changes:
+        if not isinstance(change, dict) or set(change) != {'kind', 'leases'} or change['kind'] != 'move':
+            raise ValueError('请单独保存段落排序')
+        pair = change['leases']
+        if not isinstance(pair, list) or len(pair) != 2:
+            raise ValueError('交换段落需要两个编辑凭证')
+        leases = [store.edit_locks.validate(conn, actor, payload['client_id'], ref,
+                                            payload['note_id'], record=record) for ref in pair]
+        left, right = (lease['resource'] for lease in leases)
+        if left['kind'] != 'entry' or right['kind'] != 'entry':
+            raise ValueError('只能交换正文段落')
+        i, j = positions[left['id']], positions[right['id']]
+        if (j != i + 1 or leases[0]['baseline']['section'] != leases[1]['baseline']['section']):
+            raise Conflict('相邻段落或顺序已变化，请刷新后核对')
+        nodes[i], nodes[j] = nodes[j], nodes[i]
+        positions[left['id']], positions[right['id']] = j, i
+        refs.extend(pair)
+    return record, body, refs
+
+
+def apply_entry_edits(store, conn, actor, payload):
+    record,items,refs=prepare(store,conn,actor,payload)
+    current={**record,'body':deepcopy(record['body'])};last={}
+    for item in sorted(items, key=lambda item: bool(item['_context'].get('sibling_of'))):
+        if item['_context'].get('sibling_of'):
+            current['body'] = store._apply_body(conn, item, current)
+            continue
+        if item['kind']=='insert':
+            anchor=item['_context']['left'];ids=[n['id'] for n in current['body']['nodes']]
+            current['body']['nodes'].insert(ids.index(last.get(anchor,anchor))+1,deepcopy(item['proposed_node']))
+            last[anchor]=item['node_id']
+        else:current['body']=store._apply_body(conn,item,current)
+    current['body'].setdefault('supporting_nodes',[])
+    current['body'].setdefault('semantics',{})
+    return record, current['body'], refs
+
+
 def apply(store,actor,payload):
     if actor['role']!='admin':raise PermissionError('只有管理员可以保存正式正文')
     locks=store.edit_locks;store.recover()
@@ -114,25 +162,17 @@ def apply(store,actor,payload):
         locks.check_epoch(conn)
         prior=locks.replay(conn,key,payload)
         if prior is not None:return json_store.resolve_note(store.root,payload['note_id'])
-        record,items,refs=prepare(store,conn,actor,payload)
-        current={**record,'body':deepcopy(record['body'])};last={}
-        for item in sorted(items, key=lambda item: bool(item['_context'].get('sibling_of'))):
-            if item['_context'].get('sibling_of'):
-                current['body'] = store._apply_body(conn, item, current)
-                continue
-            if item['kind']=='insert':
-                anchor=item['_context']['left'];ids=[n['id'] for n in current['body']['nodes']]
-                current['body']['nodes'].insert(ids.index(last.get(anchor,anchor))+1,deepcopy(item['proposed_node']))
-                last[anchor]=item['node_id']
-            else:current['body']=store._apply_body(conn,item,current)
-        current['body'].setdefault('supporting_nodes',[])
-        current['body'].setdefault('semantics',{})
+        changes=payload.get('changes')
+        sorting=(isinstance(changes,list) and any(isinstance(change,dict) and change.get('kind')=='move'
+                                                 for change in changes))
+        apply_changes=apply_moves if sorting else apply_entry_edits
+        record,body,refs=apply_changes(store,conn,actor,payload)
         receipt={'kind':'entry-save','request_key':key,'payload':payload,'actor':actor,'refs':refs,
-            'pre_body':record['body'],'post_body':current['body'],'pre_revision':record['metadata']['revision'],
+            'pre_body':record['body'],'post_body':body,'pre_revision':record['metadata']['revision'],
             'history_index':record['metadata'].get('history_count',0)+len(record['metadata'].get('history',[])),'note_id':payload['note_id'],
             'workspace':str(store.root.resolve())}
         store._write_receipt(receipt)
-        result=json_store.edit(store.root,payload['note_id'],{'revision':record['metadata']['revision'],'document':current['body']},public=True)
+        result=json_store.edit(store.root,payload['note_id'],{'revision':record['metadata']['revision'],'document':body},public=True)
         locks.remember(conn,key,payload,{'saved':True})
         locks.release_in(conn,actor,payload['client_id'],refs)
     store._clear_receipt()

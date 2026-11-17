@@ -57,3 +57,20 @@ it.each(['admin','annotator','guest'] as const)('only admin has sync conflict ac
  if(role==='admin')expect(html).toMatch(/disabled=""[^>]*aria-label="编辑段落/);
  if(role==='annotator')expect(html).not.toContain('disabled=""');
 });
+
+it.each(['admin','annotator','viewer'] as const)('shows reading reorder controls only to admins (%s)',role=>{
+ const session:Session={mode:'local',role,username:'a',base_path:'/'};
+ const before={id:'before',type:'entry',key:'第一段',show_key:true,value:'正文'} as const;
+ const after={...before,id:'after',key:'第二段'};
+ const document={...body,nodes:[{id:'chapter',type:'heading' as const,title:'章节',level:2},before,after]};
+ const note={id:'n',title:'笔记',revision:'r',type:'other',document} as Note;
+ const auth={session,refresh:async()=>{},login:async()=>{},logout:async()=>{}};
+ const html=renderToStaticMarkup(<AuthContext.Provider value={auth}><ReviewProvider note={note} onSaved={()=>{}} onDirty={()=>{}}><NodeActions node={before}/><NodeActions node={after}/></ReviewProvider></AuthContext.Provider>);
+ expect(html.includes('aria-label="上移：第一段"')).toBe(role==='admin');
+ if(role==='admin'){
+  expect(html).toMatch(/aria-label="上移：第一段" disabled=""/);
+  expect(html).toMatch(/aria-label="下移：第一段">/);
+  expect(html).toMatch(/aria-label="下移：第二段" disabled=""/);
+  expect(html.indexOf('批注：第一段')).toBeLessThan(html.indexOf('上移：第一段'));
+ }
+});
