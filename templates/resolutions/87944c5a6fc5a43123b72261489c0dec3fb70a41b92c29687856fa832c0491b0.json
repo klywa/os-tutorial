@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_5139d2e5c349417d8a91902d9faa00bf",
+  "request_ids": [
+    "ce0347d219c8d19333ddab21768056b840087a7e056c5bf7354b58aaf844c669"
+  ],
+  "revision": "1984b8272b409a7aeaf0a058286a68dab0a1478605f0b6dc8a4de4c85fb1bbb6",
+  "value": {
+    "name": "铸造霸者重铠的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为霸者重铠时适用。霸者重铠帮助高血量英雄承受第一轮伤害。依据为《常小娥灵活变阵-常小娥》「霸者重铠」及官方装备「霸者重铠」。",
+    "utterances": [
+      {
+        "text": "铸造霸者重铠能在生命值高于七成时减少四成所受伤害。",
+        "id": "utterances_4d6ed27438cb4e2483f43ee90dc39245"
+      },
+      {
+        "text": "霸者重铠帮助高血量英雄承受第一轮伤害。",
+        "id": "utterances_82c7ade7c68f478596ba4a4a3dc622b7"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_5139d2e5c349417d8a91902d9faa00bf",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"霸者重铠\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "87944c5a6fc5a43123b72261489c0dec3fb70a41b92c29687856fa832c0491b0"
+}

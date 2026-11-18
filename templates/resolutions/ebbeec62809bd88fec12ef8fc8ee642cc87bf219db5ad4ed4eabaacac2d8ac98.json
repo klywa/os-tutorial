@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_773e6b0553f74b80b9212bad2f2b4a5c",
+  "request_ids": [
+    "a71f7c8329178ceab678079bd09a8fb570c0b5580000f582049f9477dfaed42f"
+  ],
+  "revision": "8433bb00d95c37f099296c06558edfb57013035c4a0baf20094ac8a4f0327794",
+  "value": {
+    "name": "出售多余蒙犽留住手牌空间",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "出售重复的蒙犽能腾出手牌位置，又保留了获得特训战术的机会。",
+        "id": "utterances_e413cd5db1304f46b10bc6bcf4a457e3"
+      },
+      {
+        "text": "手牌紧张时卖掉多余的蒙犽，可以给其他牌留位置。",
+        "id": "utterances_83a950c5fdb241ca824bc00adfb05b81"
+      }
+    ],
+    "explanation": "卖出蒙犽后还有至少10张手牌，且手中保留另一张蒙犽。出售重复牌能腾出手牌位置，又保留了登场拿特训战术的机会。依据《常小娥灵活变阵-常小娥》「蒙犽」、蒙犽的登场效果及《OS解释》从手牌出售英雄条目。",
+    "event_id": "os_3c9ad01b4880b566",
+    "id": "group_773e6b0553f74b80b9212bad2f2b4a5c",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:313007",
+        "name": "特训战术"
+      },
+      {
+        "id": "card:5241",
+        "name": "蒙犽"
+      },
+      {
+        "id": "card:5243",
+        "name": "蒙犽"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"蒙犽\" and 玩家.手牌数 >= 10 and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"蒙犽\"}",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "ebbeec62809bd88fec12ef8fc8ee642cc87bf219db5ad4ed4eabaacac2d8ac98"
+}

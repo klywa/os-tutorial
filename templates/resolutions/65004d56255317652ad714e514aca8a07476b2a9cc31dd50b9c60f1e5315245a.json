@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_5932e9595615432caf1a40a2deef6087",
+  "request_ids": [
+    "d93fa6c24f9e0d3e4701cb528032a526c2ea032d4882e415b6f5c01308b244f4"
+  ],
+  "revision": "b46ab446296d050d9447961d1b71635f9fb8be8b0a6d4511f8c2395b6e7ee2f6",
+  "value": {
+    "name": "用朵莉亚配合整备英雄",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "有朵莉亚在场，己方英雄触发整备就能为阿科米亚核心提升等级。",
+        "id": "utterances_237d3c012c13485c90b2bc3d7cef0b32"
+      },
+      {
+        "text": "朵莉亚与狂铁同场时，狂铁触发整备就能让队友获得等级。",
+        "id": "utterances_9e8c452b94e14807a255e51c580f4e22"
+      }
+    ],
+    "explanation": "买到朵莉亚时，这组话说明朵莉亚在队伍中的作用。己方英雄触发整备后，朵莉亚能给队友与阿科米亚核心提供等级，适合配合狂铁等有整备效果的英雄。依据《常小娥灵活变阵-常小娥》「朵莉亚」及朵莉亚的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_5932e9595615432caf1a40a2deef6087",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1591",
+        "name": "朵莉亚"
+      },
+      {
+        "id": "card:1593",
+        "name": "朵莉亚"
+      },
+      {
+        "id": "card:5031",
+        "name": "狂铁"
+      },
+      {
+        "id": "card:5033",
+        "name": "狂铁"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"朵莉亚\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "65004d56255317652ad714e514aca8a07476b2a9cc31dd50b9c60f1e5315245a"
+}

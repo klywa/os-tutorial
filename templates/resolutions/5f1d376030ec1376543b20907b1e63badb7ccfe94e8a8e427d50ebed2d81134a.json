@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_70ed799ebc2340fa9115567733fba690",
+  "request_ids": [
+    "7f122a320402ab8578f533558bead6d9eadee4c258f76849572f0449f2911b97"
+  ],
+  "revision": "153c1326b5a95959be07dfb5d40c8eeaa173b279b0fb5ace2d835ef2908b1b74",
+  "value": {
+    "name": "觉醒杨玉环退场取妙音",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "觉醒杨玉环退场能拿到妙音，方便给高阶英雄补觉醒。",
+        "id": "utterances_00a7c1e7485e4c379b439693fbce9ee8"
+      },
+      {
+        "text": "卖掉觉醒的杨玉环能拿一张妙音，用来帮高阶英雄觉醒。",
+        "id": "utterances_83beac56cf5d4959b3bc141bfc40f915"
+      }
+    ],
+    "explanation": "从战场卖出已觉醒的杨玉环时，说明这项操作的战斗或资源收益。觉醒杨玉环退场能拿到妙音，方便给高阶英雄补觉醒。依据《常小娥灵活变阵-常小娥》「杨玉环」和杨玉环的官方卡面、技能。",
+    "event_id": "os_02f23dfd4155737d",
+    "id": "group_70ed799ebc2340fa9115567733fba690",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:307002",
+        "name": "妙音"
+      },
+      {
+        "id": "card:1761",
+        "name": "杨玉环"
+      },
+      {
+        "id": "card:1763",
+        "name": "杨玉环"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"杨玉环\" and arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "5f1d376030ec1376543b20907b1e63badb7ccfe94e8a8e427d50ebed2d81134a"
+}

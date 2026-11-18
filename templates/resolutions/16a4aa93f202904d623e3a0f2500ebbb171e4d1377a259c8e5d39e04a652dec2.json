@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_e12876270ca942ec894f3d02c78465f4",
+  "request_ids": [
+    "77b60f6dccb91cdab6d2697dc55a2ede7265f4267a24e9d32ba38254ce7b41c4"
+  ],
+  "revision": "9528461383483a5709beb52acbd3501ff8f0bfa96e2ac2333911fad7dd64e983",
+  "value": {
+    "name": "选月之特调",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": null
+    },
+    "explanation": "在“选择天赋”事件中，选中月之特调时适用。选月之特调后，小菟助力每累计提供65级还能获得小菟送福。依据为《常小娥灵活变阵-常小娥》「月之特调与送福循环」及官方天赋「月之特调」。",
+    "utterances": [
+      {
+        "text": "月之特调让小菟每提供5级额外增加一项随机属性。",
+        "id": "utterances_e5ab40a66ce34ddf8910216311286ff7"
+      },
+      {
+        "text": "选月之特调后，小菟助力每累计提供65级还能获得小菟送福。",
+        "id": "utterances_65a9be3f0beb4e748ea2b2379fff4c52"
+      }
+    ],
+    "event_id": "os_2b69e500a5c8036a",
+    "id": "group_e12876270ca942ec894f3d02c78465f4",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"月之特调\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "16a4aa93f202904d623e3a0f2500ebbb171e4d1377a259c8e5d39e04a652dec2"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_eae8d01989ef4325a2b0591bbd27204c",
+  "request_ids": [
+    "072539a6bb2d0dd827919fbbb83a9c294caf5876ff6dd610bcc7772bdf9b6c09"
+  ],
+  "revision": "90d4bee43db525c49e7c58ce807a4f63a22ba3850b08c4a0a20cdb44e7611c9e",
+  "value": {
+    "name": "让裴擒虎通过整备获得临时等级",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "裴擒虎整备时能从随机一名队友身上获得临时等级。",
+        "id": "utterances_3cd0f26e3bce4048b414d07f22c16b83"
+      },
+      {
+        "text": "队友等级越高，裴擒虎整备选中他时能获得的临时等级越多。",
+        "id": "utterances_34aeac18040c4a678125b7749ceff367"
+      }
+    ],
+    "explanation": "买到裴擒虎时，这组话说明裴擒虎在队伍中的作用。裴擒虎每次整备随机选择一名其他英雄，按其等级取得临时等级。目标等级越高，这次整备的收益越高。依据《常小娥灵活变阵-常小娥》「裴擒虎」及裴擒虎的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_eae8d01989ef4325a2b0591bbd27204c",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5023",
+        "name": "裴擒虎"
+      },
+      {
+        "id": "card:5021",
+        "name": "裴擒虎"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"裴擒虎\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "679a48c9735557f42538fd30b36ad082090ff852e116f13cdab41cb15f6ce9c4"
+}

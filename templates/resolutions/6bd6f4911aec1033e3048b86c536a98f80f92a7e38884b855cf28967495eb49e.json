@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_078999e97ef24cabbb11cb0783387ebe",
+  "request_ids": [
+    "271ad592e5e3716c5336e682322d23bc05d02737619ccc101c66f994213ab391"
+  ],
+  "revision": "300b373184250e76513ec5b8c1f633f274380cc383c4154209107eb13262e858",
+  "value": {
+    "name": "选紧急救援",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“选择天赋”事件中，选中紧急救援时适用。紧急救援能恢复棋手血量，并用装备箱和五阶兑换券补充战力。依据为《常小娥灵活变阵-常小娥》「紧急救援」及官方天赋「紧急救援」。",
+    "utterances": [
+      {
+        "text": "紧急救援立即恢复15点棋手生命值，还能获得装备箱。",
+        "id": "utterances_44fb2d2acadd42bc88bda5ed089dc5f4"
+      },
+      {
+        "text": "紧急救援能恢复棋手血量，并用装备箱和五阶兑换券补充战力。",
+        "id": "utterances_73b171fbed38443e9cfc9279fe3d1cde"
+      }
+    ],
+    "event_id": "os_2b69e500a5c8036a",
+    "id": "group_078999e97ef24cabbb11cb0783387ebe",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"紧急救援\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "6bd6f4911aec1033e3048b86c536a98f80f92a7e38884b855cf28967495eb49e"
+}

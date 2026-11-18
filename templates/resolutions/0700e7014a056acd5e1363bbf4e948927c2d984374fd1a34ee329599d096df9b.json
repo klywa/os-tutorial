@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_9ef867f893c8445bae5614f91e4390cd",
+  "request_ids": [
+    "a6ddae2bc0db2c595672a2d24c2364673121cd2a2a59f5e25d48a0c6aef7c496"
+  ],
+  "revision": "406dc1e252741639bf8be3490143bbf428ef347895f1956bb7fcaa64d012b630",
+  "value": {
+    "name": "特训战术培养指定英雄",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，使用特训战术时适用。特训战术有转瞬，本轮使用才能把等级给到要培养的英雄。依据为《常小娥灵活变阵-常小娥》「后期提升思路」及官方效果牌「特训战术」。",
+    "utterances": [
+      {
+        "text": "特训战术能让指定英雄提升4级，立即增加他的战力。",
+        "id": "utterances_0ba7520bb392404887bebdf974156c69"
+      },
+      {
+        "text": "特训战术有转瞬，本轮使用才能把等级给到要培养的英雄。",
+        "id": "utterances_d3aa98c2e48d4f7496853f09ab7c79e2"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_9ef867f893c8445bae5614f91e4390cd",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"特训战术\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "0700e7014a056acd5e1363bbf4e948927c2d984374fd1a34ee329599d096df9b"
+}

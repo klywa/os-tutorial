@@ -1,0 +1,25 @@
+{
+  "name": "铸造贤者之书的基础收益",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，铸造成品为贤者之书时适用。贤者之书能在施法后提高法术攻击，最多叠加六层。依据为《常小娥灵活变阵-常小娥》「贤者之书」及官方装备「贤者之书」。",
+  "utterances": [
+    {
+      "text": "贤者之书降低法力值上限，让穿戴者更快释放技能。",
+      "id": "utterances_649fdbf612bb4e268bd8f690113659a9"
+    },
+    {
+      "text": "贤者之书能在施法后提高法术攻击，最多叠加六层。",
+      "id": "utterances_b27e8ada0e7c447cb691d77d4a6298cd"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_5abc818a3009454bbbc8fcbcde55b666",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg3 is \"贤者之书\"",
+  "editor_mode": "text"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_38b07d7cf0884cb1a361ff53b44debb4",
+  "request_ids": [
+    "260f9adf540af9383aaf7e74522c35cd502228ee8f728a26366b64a4237ab547"
+  ],
+  "revision": "0c6d7cd8861846d61d3ebcf45b003db04235b982010990d4798f5a96c6597287",
+  "value": {
+    "name": "苏烈首次被击败能够复生",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "苏烈已经能在战斗中首次被击败后复生，适合承担前排。",
+        "id": "utterances_2b8584af01f7492da0b046a5ebd251da"
+      },
+      {
+        "text": "苏烈达到40级就有一次复生，可以为后排多承受一轮伤害。",
+        "id": "utterances_9e3a91b5ec1b4eb6aa28d7175729c211"
+      }
+    ],
+    "explanation": "上阵40级及以上的苏烈时，说明这项操作的战斗或资源收益。苏烈已经能在战斗中首次被击败后复生，适合承担前排。依据《常小娥灵活变阵-常小娥》「苏烈」和苏烈的官方卡面、技能。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_38b07d7cf0884cb1a361ff53b44debb4",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1941",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:1943",
+        "name": "苏烈"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"苏烈\" and arg1.等级 >= 40",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "8220562c22ea9db0f7dcd20b5dcd4e6dfdb8344d949c127e69a1062eb0707c0e"
+}

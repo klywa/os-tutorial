@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_6cd89cf97cf44b5fa07337925b95742c",
+  "request_ids": [
+    "afc93fe95a2bdb09e69261e9adf02f378aea6caa6652f96b8c143fd198c3a534"
+  ],
+  "revision": "5372ef90596461ea5ddbd4668fae1c932860f6a9e33e25477404f453c762da24",
+  "value": {
+    "name": "盾山牺牲配合李信",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "盾山在前排牺牲时既能拿到古币，也能让李信获得临时等级。",
+        "id": "utterances_a9f29d99ee8b459385377fb572b70515"
+      },
+      {
+        "text": "把盾山放在李信前面，盾山阵亡时的牺牲还能让李信成长。",
+        "id": "utterances_c0e0a5f646414230af6faf589cd24182"
+      }
+    ],
+    "explanation": "李信在场，上阵盾山时，说明这项操作的战斗或资源收益。盾山在前排牺牲时既能拿到古币，也能让李信获得临时等级。依据《常小娥灵活变阵-常小娥》「盾山」和盾山的官方卡面、技能。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_6cd89cf97cf44b5fa07337925b95742c",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:311002",
+        "name": "古币"
+      },
+      {
+        "id": "card:5073",
+        "name": "李信"
+      },
+      {
+        "id": "card:5071",
+        "name": "李信"
+      },
+      {
+        "id": "card:5091",
+        "name": "盾山"
+      },
+      {
+        "id": "card:5093",
+        "name": "盾山"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"盾山\" and 玩家.战场 has \"李信\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "228a32ca3900aa5b084f62dc8cd15bf0095a57445a5305e174af2e91ac502e63"
+}

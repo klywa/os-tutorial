@@ -1,0 +1,25 @@
+{
+  "name": "单挂苏烈时使用小菟助力",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "在“使用棋手技能”事件中，使用小菟助力，场上只有一名英雄，苏烈在场时适用。趁苏烈单独在场使用小菟助力，随机提升等级不会选到别人。依据为《常小娥灵活变阵-常小娥》「苏烈」及官方棋手技能「小菟助力」。",
+  "utterances": [
+    {
+      "text": "场上只有苏烈，小菟助力提供的等级会集中给他。",
+      "id": "utterances_ab06c1e456f142d7b1175b9f09bd872d"
+    },
+    {
+      "text": "趁苏烈单独在场使用小菟助力，随机提升等级不会选到别人。",
+      "id": "utterances_2d94a8f9c0184768b834f588d6ebe7f1"
+    }
+  ],
+  "event_id": "os_b59f8bd6d43110d4",
+  "id": "group_0ae69a95c7374928a6e134faef1461a9",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"",
+  "editor_mode": "text"
+}

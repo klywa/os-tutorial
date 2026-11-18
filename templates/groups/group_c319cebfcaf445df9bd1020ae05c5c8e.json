@@ -1,0 +1,25 @@
+{
+  "name": "使用招募战术补逐鹿英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“使用无目标效果牌”事件中，使用招募战术时适用。招募战术有转瞬，现在用就能把本轮机会换成一张逐鹿英雄牌。依据为《常小娥灵活变阵-常小娥》「庄周」及官方效果牌「招募战术」。",
+  "utterances": [
+    {
+      "text": "招募战术可随机获得一张逐鹿英雄牌，补充手里的英雄选择。",
+      "id": "utterances_2803779f0b1540c5b494958bc1d10b28"
+    },
+    {
+      "text": "招募战术有转瞬，现在用就能把本轮机会换成一张逐鹿英雄牌。",
+      "id": "utterances_018943ae57f94a4abc666c032db4cdc4"
+    }
+  ],
+  "event_id": "os_1c33df3b1a2b43f5",
+  "id": "group_c319cebfcaf445df9bd1020ae05c5c8e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"招募战术\"",
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "换帅交换三分英雄等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“对目标使用效果牌”事件中，使用换帅时适用。换帅能把已有等级交给另一名三分英雄，省去重新培养的时间。依据为《常小娥灵活变阵-常小娥》「换帅」及官方效果牌「换帅」。",
+  "utterances": [
+    {
+      "text": "换帅让指定英雄和最近的三分队友交换等级，能调整战力分配。",
+      "id": "utterances_9557a6405b06493d8379a2711cb0bf2d"
+    },
+    {
+      "text": "换帅能把已有等级交给另一名三分英雄，省去重新培养的时间。",
+      "id": "utterances_2989f58513dc415191b59ed939a02c2d"
+    }
+  ],
+  "event_id": "os_bfcc2eec6def94c8",
+  "id": "group_daf3005c1980428dbc858c463d8b5303",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"换帅\"",
+  "editor_mode": "text"
+}

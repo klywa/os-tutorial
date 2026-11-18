@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_b9316ddea8ee4b47af475bda10ddd89f",
+  "request_ids": [
+    "19905d31238a25123c27a155b920054261ba056b8b6d26c449de29cb1c412952"
+  ],
+  "revision": "14f193d70466f873f4bc56ea624679b29c8ab3d442d615e5da050c4ecc4c6540",
+  "value": {
+    "name": "合成姜子牙补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "姜子牙觉醒后，打出无阵营英雄牌时能给受益英雄升2级。",
+        "id": "utterances_39c649da2c404d29935cd3502ef972fa"
+      },
+      {
+        "text": "姜子牙觉醒后，打出场上没有的阵营的英雄牌也能获得双倍成长。",
+        "id": "utterances_779879d79e454b70a708d7bcd418f9c2"
+      }
+    ],
+    "explanation": "合成后姜子牙还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「你每次使用不在场的阵营以及无阵营的英雄牌时，姜子牙和随机3名其他不同阵营的英雄等级+1。」与「你每次使用不在场的阵营以及无阵营的英雄牌时，姜子牙和随机3名其他不同阵营的英雄等级+2。」。依据《常小娥灵活变阵-常小娥》「姜子牙」和姜子牙的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_b9316ddea8ee4b47af475bda10ddd89f",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1481",
+        "name": "姜子牙"
+      },
+      {
+        "id": "card:1483",
+        "name": "姜子牙"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"姜子牙\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "6859fd9f95dabe43826bf7b1aa1bcc084e742220f6c2c81ec865c318f4894070"
+}

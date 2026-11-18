@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_efe3a2c82dea435385b1afe7d3d54c92",
+  "request_ids": [
+    "f57783ae6c671158e708deadf5b74947f8336a70b29385f7221ce845692995a3"
+  ],
+  "revision": "fea8bc08a9829a4776ed6f47c5917093c16276e014646e4da010643690890d78",
+  "value": {
+    "name": "露娜到场后传承李元芳",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "explanation": "在“对目标使用效果牌”事件中，使用传承，目标为李元芳，露娜在场时适用。对李元芳用传承，能在调整阵容时保留他积累的等级。依据为《常小娥灵活变阵-常小娥》「李元芳」及官方效果牌「传承」。",
+    "utterances": [
+      {
+        "text": "露娜已经上阵，用传承可把李元芳积累的等级分给低等级队友。",
+        "id": "utterances_ac3bcd800c6a4c91b932523e19757db7"
+      },
+      {
+        "text": "对李元芳用传承，能在调整阵容时保留他积累的等级。",
+        "id": "utterances_9d79a45d0b3547c88282897c84af8875"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_efe3a2c82dea435385b1afe7d3d54c92",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"传承\" and arg1 is \"李元芳\" and 玩家.战场 has \"露娜\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "58ba65c04568a6315c969e04b003da5a1922b52abff4fc5ee34f846bd9e5aa61"
+}

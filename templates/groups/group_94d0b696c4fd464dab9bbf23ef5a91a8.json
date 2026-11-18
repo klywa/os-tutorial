@@ -1,0 +1,25 @@
+{
+  "name": "前期单挂时给苏烈分配装备",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "棋手还未升六，苏烈是唯一在场英雄且本次给苏烈穿戴装备，说明为什么把装备优先分给当前战斗成员。依据为《常小娥灵活变阵-常小娥》「苏烈」「前期运营思路」。",
+  "utterances": [
+    {
+      "text": "场上只有苏烈，把装备优先交给他，是为了提升本轮战力。",
+      "id": "utterances_f15ff2d4734a4c819c4ba8fc6ec4dada"
+    },
+    {
+      "text": "单挂苏烈时，装备分给正在作战的英雄更有利于稳住血量。",
+      "id": "utterances_81672af0ee1649c0a49147ac2b13f9d4"
+    }
+  ],
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_94d0b696c4fd464dab9bbf23ef5a91a8",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"",
+  "editor_mode": "text"
+}

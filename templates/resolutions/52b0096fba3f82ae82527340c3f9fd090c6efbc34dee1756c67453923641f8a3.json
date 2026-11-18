@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_7b25bab944c44dc5aa35f0b439105f5e",
+  "request_ids": [
+    "c4a15bf537256e0dc7ee00e9cb1100db314bd97bae832cb475909e81b3f13d0e"
+  ],
+  "revision": "aba49a859072d5ab795545421697710e572ad24a01708c7e85e9dac2435d51ca",
+  "value": {
+    "name": "合成裴擒虎补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "裴擒虎觉醒后，整备能按随机队友的全部等级获得临时等级。",
+        "id": "utterances_822fb456eec54274b4e4831bb3b66260"
+      },
+      {
+        "text": "裴擒虎觉醒后，整备选中的队友等级越高，他获得的临时等级越多。",
+        "id": "utterances_56aaba40f8f34ff9afe00921147279e1"
+      }
+    ],
+    "explanation": "合成后裴擒虎还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「闪现 整备：随机获得1名其他英雄等级数一半的临时等级，不可叠加。」与「闪现 整备：随机获得1名其他英雄等级数的临时等级，不可叠加。」。依据《常小娥灵活变阵-常小娥》「裴擒虎」和裴擒虎的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_7b25bab944c44dc5aa35f0b439105f5e",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5023",
+        "name": "裴擒虎"
+      },
+      {
+        "id": "card:5021",
+        "name": "裴擒虎"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"裴擒虎\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "52b0096fba3f82ae82527340c3f9fd090c6efbc34dee1756c67453923641f8a3"
+}

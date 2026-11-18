@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_64632c318e07418e8fdfee76ce2eea5e",
+  "request_ids": [
+    "e6078c9fc6820db5ae9843c9d9e1e9e03926160f0be8602b377c4cc21a7e745e"
+  ],
+  "revision": "adf698fcb9bb9ec7cb0294234bf5fa4e16e9d21b14be8b61bf7feb695ef38706",
+  "value": {
+    "name": "用吕布补范围控制与吸血",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "吕布会跳进敌人密集处打出范围击飞，能给后排争取输出时间。",
+        "id": "utterances_f4f7c6fbcadd48bf9dbdfd600763c0b5"
+      },
+      {
+        "text": "吕布开团能让高等级的三分英雄获得吸血，帮他们持续作战。",
+        "id": "utterances_8c32cde39b6340d198b8f2ebf098966c"
+      }
+    ],
+    "explanation": "买到吕布时，这组话说明吕布在队伍中的作用。吕布技能可击飞范围内的敌人，开团能为等级最高的若干三分英雄提供物理和法术吸血。依据《常小娥灵活变阵-常小娥》「吕布」及吕布的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_64632c318e07418e8fdfee76ce2eea5e",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1231",
+        "name": "吕布"
+      },
+      {
+        "id": "card:1233",
+        "name": "吕布"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"吕布\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "bd5f341a0aabe300f71370d7bc2bb22ee665a58af34b05273b42aee9f18bf24c"
+}

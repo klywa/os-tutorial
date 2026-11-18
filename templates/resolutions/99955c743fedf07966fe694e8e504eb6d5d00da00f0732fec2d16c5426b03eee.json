@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_91c428184da04f1b94d8eaf645c734fa",
+  "request_ids": [
+    "1a27b40db905db8243725ff16aea054ba0b9d9736b90fa6d52d395c888ddfc96"
+  ],
+  "revision": "6269c5438bddddfbf8b01762bf0eb6986c68643c2e530fa34d341de957585eff",
+  "value": {
+    "name": "合成孙膑补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "孙膑觉醒后，每名己方英雄每施法三次就能永久升2级。",
+        "id": "utterances_4ebabed1923e413aab2578450781cc08"
+      },
+      {
+        "text": "孙膑觉醒后，队友每累计三次施法就能永久升两级。",
+        "id": "utterances_d351c9c3e1bb4adf80109818eb9e9aa0"
+      }
+    ],
+    "explanation": "合成后孙膑还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「你的英雄每释放3次技能，该英雄等级永久+1。」与「你的英雄每释放3次技能，该英雄等级永久+2。」。依据《常小娥灵活变阵-常小娥》「孙膑」和孙膑的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_91c428184da04f1b94d8eaf645c734fa",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1183",
+        "name": "孙膑"
+      },
+      {
+        "id": "card:1181",
+        "name": "孙膑"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"孙膑\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "99955c743fedf07966fe694e8e504eb6d5d00da00f0732fec2d16c5426b03eee"
+}

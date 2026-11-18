@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_da92698ff0bc4dda832bbb83b6214229",
+  "request_ids": [
+    "7b831ca894812c7c1a3ed5ade7fbff7df5982c8701fb2d7802d17d82ceb83443"
+  ],
+  "revision": "8a775fff46d1169b07dc2e48777489a1474ab1a6dd4c6cf6e26acc1d02e724d5",
+  "value": {
+    "name": "上王维开团供牌",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "王维开团能拿到空山人语和水穷云起，自己还有击飞控制。",
+        "id": "utterances_90d9a7cd66014e94b2a30ce5f2d43899"
+      },
+      {
+        "text": "王维能击飞敌人，开团还可以给手里补两张效果牌。",
+        "id": "utterances_bfbb4925ac4247059d23f8c967f30fa3"
+      }
+    ],
+    "explanation": "上阵王维时，说明这项操作的战斗或资源收益。王维开团能拿到空山人语和水穷云起，自己还有击飞控制。依据《常小娥灵活变阵-常小娥》「王维」和王维的官方卡面、技能。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_da92698ff0bc4dda832bbb83b6214229",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1381",
+        "name": "王维"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"王维\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "ecaef860b57c4cd34be2e353313f86cf7fcb470d2a367a0f7ce8355b3700e7fb"
+}

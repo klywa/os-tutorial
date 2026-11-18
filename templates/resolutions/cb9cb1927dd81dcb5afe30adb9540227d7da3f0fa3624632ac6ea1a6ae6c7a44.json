@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_6ea95ac632d743dfb4b61fed640774b8",
+  "request_ids": [
+    "73c57f091f45795913120e74c546256e3efc10e34637ddd2f23f69a071a772d2"
+  ],
+  "revision": "2af54a0fdb7295447c8c4f101a16bbaa9e713b322030b29dbc740808c04c1f27",
+  "value": {
+    "name": "选特训战术靠近送福门槛",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": null
+    },
+    "explanation": "在“选择效果牌”事件中，选中特训战术时适用。特训战术提高场上英雄总等级，有助于兔飞猛进提供小菟送福。依据为《常小娥灵活变阵-常小娥》「距离下一次兔飞猛进门槛只差少量等级时」及官方效果牌「特训战术」。",
+    "utterances": [
+      {
+        "text": "特训战术能给指定英雄提升4级，帮助队伍接近兔飞猛进的门槛。",
+        "id": "utterances_c22e3f1907c9430bb6c5a9b4bbd52c90"
+      },
+      {
+        "text": "特训战术提高场上英雄总等级，有助于兔飞猛进提供小菟送福。",
+        "id": "utterances_352972bb2e1c4af3927c75b40608858b"
+      }
+    ],
+    "event_id": "os_b9276a29aaffc6ba",
+    "id": "group_6ea95ac632d743dfb4b61fed640774b8",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"特训战术\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "cb9cb1927dd81dcb5afe30adb9540227d7da3f0fa3624632ac6ea1a6ae6c7a44"
+}

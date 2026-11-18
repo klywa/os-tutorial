@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_fdadb1e6ef4e43759b752b9a970c8d3d",
+  "request_ids": [
+    "3436764440be6e1397de7cf1a27e9d8b0a0ba49fc696eba0c7dff90fda0c888c"
+  ],
+  "revision": "196eb6a0a5d5fba206bf2e956764141ed7a201e3465a31202b3439594640d9cf",
+  "value": {
+    "name": "集体唤醒触发甄姬登场",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“使用无目标效果牌”事件中，使用集体唤醒，甄姬在场时适用。集体唤醒让场上英雄再次触发登场，甄姬能补充英雄牌。依据为《常小娥灵活变阵-常小娥》「甄姬」及官方效果牌「集体唤醒」、英雄「甄姬」。",
+    "utterances": [
+      {
+        "text": "集体唤醒能再次触发甄姬登场，获得其他登场英雄牌。",
+        "id": "utterances_1ee3d7e850db4f19b3a42237b90b8f01"
+      },
+      {
+        "text": "集体唤醒让场上英雄再次触发登场，甄姬能补充英雄牌。",
+        "id": "utterances_6c5c468526ec4d9aa88bcbbf82fad090"
+      }
+    ],
+    "event_id": "os_1c33df3b1a2b43f5",
+    "id": "group_fdadb1e6ef4e43759b752b9a970c8d3d",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"集体唤醒\" and 玩家.战场 has \"甄姬\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "5c2e9314e0507d9b671b3b1f88709615af61e19fa0e353063b3f9c008547e562"
+}

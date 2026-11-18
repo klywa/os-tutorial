@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_adeafde302ef4c418f5fea0de19b2892",
+  "request_ids": [
+    "a6718c9ca78b7a040d713a7d4bffec35b3b62c00e6260306ebd8b78fbad4a940"
+  ],
+  "revision": "4229dd02c85e8d237e41efa8738641f4d1bc3a55ef1f805de24ee63e1d6cd09a",
+  "value": {
+    "name": "铸造痛苦面具的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为痛苦面具时适用。单次法伤超过目标生命上限的8%，痛苦面具就能点燃目标。依据为《常小娥灵活变阵-常小娥》「痛苦面具」及官方装备「痛苦面具」。",
+    "utterances": [
+      {
+        "text": "痛苦面具能让大额单次法术伤害点燃敌人，追加真实伤害。",
+        "id": "utterances_f9e9aa387615417989ae98668ea259ec"
+      },
+      {
+        "text": "单次法伤超过目标生命上限的8%，痛苦面具就能点燃目标。",
+        "id": "utterances_776aa0a026114c6fb3d428662f25e625"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_adeafde302ef4c418f5fea0de19b2892",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"痛苦面具\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "755d7f254b9fa577610182926766b5476e2f52695576f77050e0c08200c7ed81"
+}

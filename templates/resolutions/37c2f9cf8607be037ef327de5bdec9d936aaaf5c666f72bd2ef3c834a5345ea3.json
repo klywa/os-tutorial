@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_eb1bddc54ed44aaa9e287f826ac2dc1d",
+  "request_ids": [
+    "8f8c141c978a92ce06120b7a93a70a9d765807db7843260bf992ddb8acaa9b15"
+  ],
+  "revision": "5b2c0bd4e4ffc81e037b343f42997fb8b905f00140557296281eae8c9ca04bb1",
+  "value": {
+    "name": "临阵磨枪触发孙悟空的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为孙悟空，使用临阵磨枪时适用。临阵磨枪让孙悟空再整备一次，能同时培养场上的闪现英雄。依据为《常小娥灵活变阵-常小娥》「孙悟空」及官方效果牌「临阵磨枪」、英雄「孙悟空」。",
+    "utterances": [
+      {
+        "text": "临阵磨枪触发孙悟空整备，让拥有闪现的英雄获得等级。",
+        "id": "utterances_1d607d3174554321b5b2ae9dbec21456"
+      },
+      {
+        "text": "临阵磨枪让孙悟空再整备一次，能同时培养场上的闪现英雄。",
+        "id": "utterances_844c4d3425e3467dba5ec85f18a593ff"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_eb1bddc54ed44aaa9e287f826ac2dc1d",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"孙悟空\" and arg2 is \"临阵磨枪\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "37c2f9cf8607be037ef327de5bdec9d936aaaf5c666f72bd2ef3c834a5345ea3"
+}

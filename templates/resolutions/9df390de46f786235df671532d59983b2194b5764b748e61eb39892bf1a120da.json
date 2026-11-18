@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_1c43e7d6906e479e8b02e96687029677",
+  "request_ids": [
+    "4b412b617de36edf102443d63eedaca19242b41a6c92714c27c15157956111b3"
+  ],
+  "revision": "d408378cac5d38f43a593713a0150ad89c0c11c65faa322c487d74845480a7e5",
+  "value": {
+    "name": "用狂铁过渡日落海",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "狂铁能在前排承伤，每次整备还会提升阿科米亚核心等级。",
+        "id": "utterances_3e3428556ba2442b8ed7726496c77855"
+      },
+      {
+        "text": "想留日落海英雄做输出，可以先用狂铁整备培养阿科米亚核心。",
+        "id": "utterances_790c2941de764d169329cd663e0d5852"
+      }
+    ],
+    "explanation": "买到狂铁时，这组话说明狂铁在队伍中的作用。狂铁既能前排承伤，又能在整备时提升阿科米亚核心等级，为之后上阵的日落海英雄积累等级。依据《常小娥灵活变阵-常小娥》「狂铁」及狂铁的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_1c43e7d6906e479e8b02e96687029677",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5031",
+        "name": "狂铁"
+      },
+      {
+        "id": "card:5033",
+        "name": "狂铁"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"狂铁\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "9df390de46f786235df671532d59983b2194b5764b748e61eb39892bf1a120da"
+}

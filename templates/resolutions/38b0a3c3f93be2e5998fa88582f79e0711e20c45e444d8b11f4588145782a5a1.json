@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_a6abdd6f883547ad8ef8322dab4ab8de",
+  "request_ids": [
+    "9a233ddf13beddf4ef06e7f69f1bb5a852b1fa9e64da5a2affe8f4af59ee4eb9"
+  ],
+  "revision": "dabde350ded4d46b28870b9dd6cdafda16664a4130d7f240d622b2ee931b1ac5",
+  "value": {
+    "name": "为诸葛亮补治疗和施法队友",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "杨玉环能给队伍补治疗，她施法还能让诸葛亮回蓝。",
+        "id": "utterances_64eec27f2a3a49a4a106464731afc660"
+      },
+      {
+        "text": "选杨玉环作辅助，既能治疗队友，也能通过施法给诸葛亮回复法力。",
+        "id": "utterances_d6ebdfdafa224e1f9dd73a013caf3051"
+      }
+    ],
+    "explanation": "诸葛亮在场，选中杨玉环时，说明这项操作的战斗或资源收益。杨玉环能给队伍补治疗，她施法还能让诸葛亮回蓝。依据《常小娥灵活变阵-常小娥》「杨玉环」和杨玉环的官方卡面、技能。",
+    "event_id": "os_dcef166d05efe08e",
+    "id": "group_a6abdd6f883547ad8ef8322dab4ab8de",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1761",
+        "name": "杨玉环"
+      },
+      {
+        "id": "card:1763",
+        "name": "杨玉环"
+      },
+      {
+        "id": "card:1903",
+        "name": "诸葛亮"
+      },
+      {
+        "id": "card:1901",
+        "name": "诸葛亮"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg2 is \"杨玉环\" and 玩家.战场 has \"诸葛亮\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "38b0a3c3f93be2e5998fa88582f79e0711e20c45e444d8b11f4588145782a5a1"
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_d3d60b13c72b46c08ea5592a91238de9",
+  "request_ids": [
+    "e6e87b9c4f64dba443c7f0a8992e8f3fdb8dc11706c79924345ae1978d74024d"
+  ],
+  "revision": "d680d79b2dd68cc9ce1f91b70f1b5df4e5969f444b266637ef991fb8e2defa88",
+  "value": {
+    "name": "诸葛亮用自然法杖限制李信",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“穿戴装备”事件中，穿戴者为诸葛亮，装备为自然法杖，对手以李信为主力输出时适用。诸葛亮频繁施法能多次触发自然法杖，增加控制李信的机会。依据为《常小娥灵活变阵-常小娥》「频繁施法的远程输出需要限制李信时」及官方装备「自然法杖」。",
+    "utterances": [
+      {
+        "text": "自然法杖有机会把李信变成小猪，暂时打断他的输出。",
+        "id": "utterances_498e997ef88d49da857b1d6b9deb77f8"
+      },
+      {
+        "text": "诸葛亮频繁施法能多次触发自然法杖，增加控制李信的机会。",
+        "id": "utterances_8517e7a4b4d74cc6a177f46b08becdcb"
+      }
+    ],
+    "id": "group_d3d60b13c72b46c08ea5592a91238de9",
+    "event_id": "os_5dfcb4835e1e1513",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1903",
+        "name": "诸葛亮"
+      },
+      {
+        "id": "card:1901",
+        "name": "诸葛亮"
+      },
+      {
+        "id": "card:643208",
+        "name": "自然法杖"
+      },
+      {
+        "id": "card:5073",
+        "name": "李信"
+      },
+      {
+        "id": "card:5071",
+        "name": "李信"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"诸葛亮\" and arg2 is \"自然法杖\" and 对局.当前对手.主C is \"李信\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "3120737ab7003a9cf313053d0d26494d35e125b8a51230375aa6b791bddf4354"
+}

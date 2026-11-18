@@ -1,0 +1,25 @@
+{
+  "name": "铸造寒霜侵袭的基础收益",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，铸造成品为寒霜侵袭时适用。寒霜侵袭叠满五层后，目标受到的伤害还会提高。依据为《常小娥灵活变阵-常小娥》「寒霜侵袭」及官方装备「寒霜侵袭」。",
+  "utterances": [
+    {
+      "text": "寒霜侵袭让普通攻击减慢敌人移速，连续攻击还能叠加减速。",
+      "id": "utterances_93694f8864ff4ec3bcf65458435019ae"
+    },
+    {
+      "text": "寒霜侵袭叠满五层后，目标受到的伤害还会提高。",
+      "id": "utterances_7872ae2dd1fe403c8afcd9e9344c76c6"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_dc385920d11e4a9baae83415838be02f",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg3 is \"寒霜侵袭\"",
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "选随机成长",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“选择天赋”事件中，选中随机成长时适用。选随机成长能持续培养高品阶英雄，每轮开战永久提升4级。依据为《常小娥灵活变阵-常小娥》「随机成长」及官方天赋「随机成长」。",
+  "utterances": [
+    {
+      "text": "随机成长每次开战能给品阶最高的一名英雄永久提升4级。",
+      "id": "utterances_e496eb3ff9054f0287966f7c66ab8bc2"
+    },
+    {
+      "text": "选随机成长能持续培养高品阶英雄，每轮开战永久提升4级。",
+      "id": "utterances_1038eedc605c40e188e22b8049923f5c"
+    }
+  ],
+  "event_id": "os_2b69e500a5c8036a",
+  "id": "group_062574d9458e4af09de4c76425a40443",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"随机成长\"",
+  "editor_mode": "text"
+}

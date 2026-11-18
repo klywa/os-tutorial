@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_29c4586cdf754fadad8348b023f030c7",
+  "request_ids": [
+    "05fc7379f013eda36f343e348e2d71efcc2c055ade80d49b49c2b0dbddc109b1"
+  ],
+  "revision": "808e9474d52a1986359c16074b2464be6b602d837522a9f5497016eeb5b8c0e8",
+  "value": {
+    "name": "唤醒触发庄周的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为庄周，使用唤醒时适用。唤醒庄周能再次获得招募英雄的机会，不必为了登场再买庄周。依据为《常小娥灵活变阵-常小娥》「庄周」及官方效果牌「唤醒」、英雄「庄周」。",
+    "utterances": [
+      {
+        "text": "唤醒让庄周再次触发登场，既提高自身等级又能获得招募战术。",
+        "id": "utterances_7ec6133b47a946dca8bcc943baf26431"
+      },
+      {
+        "text": "唤醒庄周能再次获得招募英雄的机会，不必为了登场再买庄周。",
+        "id": "utterances_d00c0deab79f4324be201e0b7d2e7af7"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_29c4586cdf754fadad8348b023f030c7",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"庄周\" and arg2 is \"唤醒\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "179d7614d8c65d8fced4f91ebf9cc695847516b37b274665c591969f4cc1c945"
+}

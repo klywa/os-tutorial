@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_106ea4ee542f4386a9b74825d23e0622",
+  "request_ids": [
+    "fdf9a3eafc95d4304dcaf5a4dd25420614b1320e4b81c0b6aa8299e486c52558"
+  ],
+  "revision": "c70a580212b668d00b6b21fb01f960f3b473d3b882e1baeb5807b288ef302ae0",
+  "value": {
+    "name": "开神兵天降补五阶候选",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“使用无目标效果牌”事件中，使用神兵天降时适用。神兵天降给出四次五阶英雄三选一，有机会补到缺少的战斗成员。依据为《常小娥灵活变阵-常小娥》「英雄购买清单」及官方效果牌「神兵天降」、效果牌「5阶英雄兑换券」。",
+    "utterances": [
+      {
+        "text": "神兵天降提供四张五阶英雄兑换券，能多次选择五阶英雄。",
+        "id": "utterances_d43dc8ca1fa041f4bbbc01f0dc2e8894"
+      },
+      {
+        "text": "神兵天降给出四次五阶英雄三选一，有机会补到缺少的战斗成员。",
+        "id": "utterances_28528affb27c46cf9d8b1b118078d69f"
+      }
+    ],
+    "event_id": "os_1c33df3b1a2b43f5",
+    "id": "group_106ea4ee542f4386a9b74825d23e0622",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"神兵天降\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "c76b946a0a090d35b925e88bb6b765f80f9314d616723cd1734ca2519a7da177"
+}

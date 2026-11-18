@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_245b6f279a9a4763ac106352d71cd189",
+  "request_ids": [
+    "4c1cb691b311d0bbc3214736d82cc2348c0ee2aa0cffc7023c237bb7a541cf88"
+  ],
+  "revision": "fb466afd8cbc3d67a2952711ef6c0056d7ade40541c75ab61d5ba6f852448682",
+  "value": {
+    "name": "吕布穿戴百锻刀",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“穿戴装备”事件中，穿戴者为吕布，装备为百锻刀时适用。百锻刀让吕布的击败转为永久物攻，赢下战斗时收益翻倍。依据为《常小娥灵活变阵-常小娥》「百锻刀」及官方装备「百锻刀」。",
+    "utterances": [
+      {
+        "text": "吕布每击败一名英雄，百锻刀就永久增加5点物攻。",
+        "id": "utterances_2ef74c8dce9a47d38dd167c370161aac"
+      },
+      {
+        "text": "百锻刀让吕布的击败转为永久物攻，赢下战斗时收益翻倍。",
+        "id": "utterances_a4371ee28cec465c911b2c9a25f6586a"
+      }
+    ],
+    "event_id": "os_5dfcb4835e1e1513",
+    "id": "group_245b6f279a9a4763ac106352d71cd189",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"吕布\" and arg2 is \"百锻刀\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "bf0939d11d1a8f44dc0991e84dcbafd3bc4c4220dcf7227b5f06c863c4a74e75"
+}

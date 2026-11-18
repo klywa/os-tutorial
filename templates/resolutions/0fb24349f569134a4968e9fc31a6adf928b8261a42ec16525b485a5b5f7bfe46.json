@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_832c9f4501ec4d5588c339955b179481",
+  "request_ids": [
+    "79add0882b1aa8459fcad7b1e2c770a8b5eff32c80d9647a5ba030bd34980b7d"
+  ],
+  "revision": "8c5e1ba05374f825049a22944c63959c900124bde5df2a6c494512bd37175c5c",
+  "value": {
+    "name": "保留备用太乙真人避免分走小菟助力",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "手里还有太乙真人，卖掉场上这张能避免小菟助力选中他。",
+        "id": "utterances_2b5bd91c479942abbabc4a53448d5808"
+      },
+      {
+        "text": "太乙真人离场后不会分走小菟助力，手里的太乙真人还能补复生。",
+        "id": "utterances_17daa5310567420f8eee468d97106805"
+      }
+    ],
+    "explanation": "卖出后场上已无太乙真人，手里仍有一张太乙真人。临时保护英雄离场能避免分走小菟助力；手中的备用牌还能在需要时提供复生。依据《常小娥灵活变阵-常小娥》「保护位需要每轮避开随机成长时」及太乙真人开团效果。",
+    "event_id": "os_02f23dfd4155737d",
+    "id": "group_832c9f4501ec4d5588c339955b179481",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1861",
+        "name": "太乙真人"
+      },
+      {
+        "id": "card:1863",
+        "name": "太乙真人"
+      },
+      {
+        "id": "card:92499",
+        "name": "小菟助力"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"太乙真人\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"太乙真人\"} and not (玩家.战场 has \"太乙真人\")",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "0fb24349f569134a4968e9fc31a6adf928b8261a42ec16525b485a5b5f7bfe46"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_24e35616314c4705966dccf15ecd7710",
+  "request_ids": [
+    "b564f7cffb8601153aff3790cd594d426d11f89f46ffd5795a2fb7c777cb0638"
+  ],
+  "revision": "1540629fcde1b810a7d8e0996fac5ed6234dc23fce14048e3ae27633174e6abc",
+  "value": {
+    "name": "用传承分配等级",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，使用传承时适用。传承能够分配等级并保留原英雄，原英雄还能继续作战。依据为《常小娥灵活变阵-常小娥》「传承」及官方效果牌「传承」。",
+    "utterances": [
+      {
+        "text": "传承可以把等级分给其他英雄中等级最低的三人，提升队伍战力。",
+        "id": "utterances_a27ca79cc72d4d889601892e502edc2a"
+      },
+      {
+        "text": "传承能够分配等级并保留原英雄，原英雄还能继续作战。",
+        "id": "utterances_2b00feb1f93e4ec29bb9aa6a033db65a"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_24e35616314c4705966dccf15ecd7710",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"传承\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "8b936705bbeb45a45ac2778ba09518fcf625e5b0fc2feddea8d9fbb351ae788c"
+}

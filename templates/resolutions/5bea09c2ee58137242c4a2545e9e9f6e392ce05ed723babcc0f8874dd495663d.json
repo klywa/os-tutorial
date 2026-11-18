@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_125078772deb47c7bfa345fff7df461e",
+  "request_ids": [
+    "b526748d53f380443aa7df5e2aaa06bda1b674d4526c76cbfa0d550cec8bfc1a"
+  ],
+  "revision": "db4f78283cc18d4a340979ab498ca0aae5fe671506acd9b5c69c59dd4310b69f",
+  "value": {
+    "name": "开局找苏烈或狂铁",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "explanation": "在“刷新商店”事件中，第一回合刷新商店，手牌和战场都没有苏烈、狂铁时适用。开局还缺单挂英雄，刷新商店有机会找到苏烈或狂铁。依据为《常小娥灵活变阵-常小娥》「前期运营思路」及官方英雄「苏烈」、英雄「狂铁」。",
+    "utterances": [
+      {
+        "text": "开局刷新商店是为找苏烈或狂铁，两人都能单独上场承担伤害。",
+        "id": "utterances_9285cf45b6da45d7afdb47cf3ac48b48"
+      },
+      {
+        "text": "开局还缺单挂英雄，刷新商店有机会找到苏烈或狂铁。",
+        "id": "utterances_b0e678610a8843b09f91992116dd3efb"
+      }
+    ],
+    "event_id": "os_a43279f749f4872b",
+    "id": "group_125078772deb47c7bfa345fff7df461e",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "5bea09c2ee58137242c4a2545e9e9f6e392ce05ed723babcc0f8874dd495663d"
+}

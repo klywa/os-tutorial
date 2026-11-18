@@ -1,0 +1,25 @@
+{
+  "name": "选择武装重构",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“选择效果牌”事件中，选中武装重构时适用。武装重构返还的基础装备比摧毁件数多一件，方便重新分配。依据为《常小娥灵活变阵-常小娥》「英雄购买清单」及官方效果牌「武装重构」。",
+  "utterances": [
+    {
+      "text": "武装重构能把当前装备换成随机基础装备，重新选择铸造方向。",
+      "id": "utterances_1c86f4e9b277472eb8794d7ff93c398c"
+    },
+    {
+      "text": "武装重构返还的基础装备比摧毁件数多一件，方便重新分配。",
+      "id": "utterances_b92cf93d26b74e488bf240e7abee1266"
+    }
+  ],
+  "event_id": "os_b9276a29aaffc6ba",
+  "id": "group_a3b16e180fe6424b8ebe56b20ed3d62d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"武装重构\"",
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "艾琳铸造寒霜侵袭",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，穿戴者为艾琳，铸造成品为寒霜侵袭时适用。艾琳穿寒霜侵袭能靠连续普攻减速敌人，叠满还能增加伤害。依据为《常小娥灵活变阵-常小娥》「寒霜侵袭」及官方装备「寒霜侵袭」、装备「大棒」。",
+  "utterances": [
+    {
+      "text": "寒霜侵袭让艾琳的普攻减慢敌人移速，方便飞行时拉开距离。",
+      "id": "utterances_941998894ae74201a62e0d58be4dce7a"
+    },
+    {
+      "text": "艾琳穿寒霜侵袭能靠连续普攻减速敌人，叠满还能增加伤害。",
+      "id": "utterances_31400f3d7e9c488a848c130528fc2af2"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_445d4f5ebbad4c9db5e63c5bba7ee7fc",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"艾琳\" and arg3 is \"寒霜侵袭\"",
+  "editor_mode": "text"
+}

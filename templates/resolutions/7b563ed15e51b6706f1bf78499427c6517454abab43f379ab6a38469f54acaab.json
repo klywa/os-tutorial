@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_23f43ca6d8a24a76859f74b2e6a42da5",
+  "request_ids": [
+    "68677ef90774b7465ef1e6ab1aa8b3e73fa049d11cd9c30d3c80d2a73fa543fc"
+  ],
+  "revision": "7755d3bc866a906df7c03da69544658fc52b9c4a9794889be1d0de58df62dd9b",
+  "value": {
+    "name": "弈星在场时升级多得经验",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "让弈星在场，棋手升级时能拿到额外经验。",
+        "id": "utterances_994c26773ed4475392bd43918e2dc629"
+      },
+      {
+        "text": "如果打算连续升级，弈星能给下一次升级补经验。",
+        "id": "utterances_4bd4c95bc88a4090ae2c3b9e57152d1d"
+      }
+    ],
+    "explanation": "上阵弈星时，说明这项操作的战斗或资源收益。让弈星在场，棋手升级时能拿到额外经验。依据《常小娥灵活变阵-常小娥》「弈星」和弈星的官方卡面、技能。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_23f43ca6d8a24a76859f74b2e6a42da5",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1971",
+        "name": "弈星"
+      },
+      {
+        "id": "card:1973",
+        "name": "弈星"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"弈星\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "7b563ed15e51b6706f1bf78499427c6517454abab43f379ab6a38469f54acaab"
+}

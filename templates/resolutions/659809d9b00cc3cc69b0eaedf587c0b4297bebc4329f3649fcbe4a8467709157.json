@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_aefbfa802d674e8e8280ad4c90a5d15f",
+  "request_ids": [
+    "0c55ee30d55290202769cdcae2ce65b20de57e0b141db7acf2b351ea1a84fd80"
+  ],
+  "revision": "9b14f77c668dc9b4144f299df1477c0914df66d95b861ebdf0085ae3f95da1df",
+  "value": {
+    "name": "选呼风唤雨",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "explanation": "在“选择效果牌”事件中，选中呼风唤雨时适用。呼风唤雨有机会提供传承，方便把过渡英雄的等级分给队友。依据为《常小娥灵活变阵-常小娥》「第三轮拍卖」及官方效果牌「呼风唤雨」。",
+    "utterances": [
+      {
+        "text": "选择呼风唤雨能获得四张随机五阶效果牌，有机会找到传承。",
+        "id": "utterances_d55cd52de4e14c748c87be54badfad38"
+      },
+      {
+        "text": "呼风唤雨有机会提供传承，方便把过渡英雄的等级分给队友。",
+        "id": "utterances_a4bceb4473eb4e8b9f7b91b779124759"
+      }
+    ],
+    "event_id": "os_b9276a29aaffc6ba",
+    "id": "group_aefbfa802d674e8e8280ad4c90a5d15f",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"呼风唤雨\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "659809d9b00cc3cc69b0eaedf587c0b4297bebc4329f3649fcbe4a8467709157"
+}

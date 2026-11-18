@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_878bd4879f3f4702bb4fa4625b95514f",
+  "request_ids": [
+    "2bd199ff4cc71a2a570b113f5cdd3b9f7bfd66c07821bedde85229a0a4de78fa"
+  ],
+  "revision": "d0e5f077de7bf5298a5168de20cf46d8446145ca51f1bcdf5ce215069bfd9513",
+  "value": {
+    "name": "给苏烈分配装备",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "explanation": "在常小娥灵活变阵里，穿戴者是苏烈就可以解释给前排分配装备的目的。不同装备的伤害、防护和功能各异，基础装备还需铸造，因此只说明投入对象，不预设具体属性。依据为阵容笔记「苏烈」「前期运营思路」和《装备》中的基础装备说明。",
+    "utterances": [
+      {
+        "text": "把装备交给苏烈，是为了提升这名前排的作战能力。",
+        "id": "utterances_fb30f1312bd345c5a9948745891cdbd8"
+      },
+      {
+        "text": "苏烈要在前排承伤，给他分配合适的装备有助于稳住战力。",
+        "id": "utterances_4ba59c89b8734871a866b8ec1ca0c785"
+      }
+    ],
+    "event_id": "os_5dfcb4835e1e1513",
+    "id": "group_878bd4879f3f4702bb4fa4625b95514f",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"苏烈\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "410bfe485ab359538bcca70bf5df03846fa473a5ae568f38072a1df05315d5ee"
+}

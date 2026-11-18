@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_aaefbe265e1a41fdb7134bd1148840d0",
+  "request_ids": [
+    "87b17fa1232a0bb0fae728ce1f8e0315a41ceeb88a45b0edae14bf28fa751b10"
+  ],
+  "revision": "c15c433c232c8f5dcf2e919356f1236069834fbf60985b405d9956a787b85131",
+  "value": {
+    "name": "临阵磨枪触发亚连的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为亚连，使用临阵磨枪时适用。用临阵磨枪触发亚连整备，既能培养队友也能提高核心等级。依据为《常小娥灵活变阵-常小娥》「亚连」及官方效果牌「临阵磨枪」、英雄「亚连」。",
+    "utterances": [
+      {
+        "text": "临阵磨枪触发亚连整备，装备最多的一名英雄能获得等级。",
+        "id": "utterances_6ee7d9bf21264091b5655d55303f4566"
+      },
+      {
+        "text": "用临阵磨枪触发亚连整备，既能培养队友也能提高核心等级。",
+        "id": "utterances_b4638de4e6b545bd9632ffe50fd9c231"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_aaefbe265e1a41fdb7134bd1148840d0",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"亚连\" and arg2 is \"临阵磨枪\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "963414be2c1dce5e3ac6a24265f32c894a523c9587145a42188fb9e64df57026"
+}

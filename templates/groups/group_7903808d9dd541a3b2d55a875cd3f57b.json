@@ -1,0 +1,50 @@
+{
+  "name": "撤下小乔集中姜子牙的三分成长",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "小乔离场后，姜子牙给三分英雄提升等级时就少一个候选。",
+      "id": "utterances_9006be8747064ffea7d61c7e071c1a55"
+    },
+    {
+      "text": "卖掉同属三分的小乔，吕布就少一个分走姜子牙成长的队友。",
+      "id": "utterances_9e534470ef544576ba6ebacaff6ea9ea"
+    }
+  ],
+  "explanation": "姜子牙、吕布仍在场，卖掉小乔后场上已无小乔。解释出售如何减少三分成长候选。《常小娥灵活变阵-常小娥》「姜子牙」说明小乔可能分走吕布的等级；姜子牙卡面限定不同阵营的随机队友。",
+  "event_id": "os_02f23dfd4155737d",
+  "id": "group_7903808d9dd541a3b2d55a875cd3f57b",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1063",
+      "name": "小乔"
+    },
+    {
+      "id": "card:1061",
+      "name": "小乔"
+    },
+    {
+      "id": "card:1231",
+      "name": "吕布"
+    },
+    {
+      "id": "card:1233",
+      "name": "吕布"
+    },
+    {
+      "id": "card:1481",
+      "name": "姜子牙"
+    },
+    {
+      "id": "card:1483",
+      "name": "姜子牙"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")",
+  "editor_mode": "text"
+}

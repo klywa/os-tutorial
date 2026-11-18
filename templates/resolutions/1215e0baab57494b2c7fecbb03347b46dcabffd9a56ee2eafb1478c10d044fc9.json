@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_d41e99885e7142e7aeeca485042d0917",
+  "request_ids": [
+    "8f4b8aae0a59555ad13d806a7c3f307386510153e71e1fa1a55043ad5c978959"
+  ],
+  "revision": "ee0881a15c959dd410e16fa486b695878a8e7553cd1df4bbf1b65f6464e2303d",
+  "value": {
+    "name": "选苏烈单挂过渡",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "苏烈牺牲能提升自己的永久等级，适合前期单挂。",
+        "id": "utterances_86afcab3ecae409ca3f253ff91de8f23"
+      },
+      {
+        "text": "需要能一直成长的前排时，苏烈能靠牺牲提升自己的等级。",
+        "id": "utterances_9054be8121e94efa997411b899df6f82"
+      }
+    ],
+    "explanation": "选中苏烈时，说明这项操作的战斗或资源收益。苏烈牺牲能提升自己的永久等级，适合前期单挂。依据《常小娥灵活变阵-常小娥》「苏烈」和苏烈的官方卡面、技能。",
+    "event_id": "os_dcef166d05efe08e",
+    "id": "group_d41e99885e7142e7aeeca485042d0917",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1941",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:1943",
+        "name": "苏烈"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg2 is \"苏烈\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "1215e0baab57494b2c7fecbb03347b46dcabffd9a56ee2eafb1478c10d044fc9"
+}

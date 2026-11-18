@@ -1,0 +1,25 @@
+{
+  "name": "铸造法源之杯的基础收益",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，铸造成品为法源之杯时适用。法源之杯持续回蓝，让依赖技能的英雄更快放出下一次技能。依据为《常小娥灵活变阵-常小娥》「法源之杯」及官方装备「法源之杯」。",
+  "utterances": [
+    {
+      "text": "铸造法源之杯每秒能回复5点法力，缩短施法间隔。",
+      "id": "utterances_e9176feb19c94ee089c32e55acf97ca6"
+    },
+    {
+      "text": "法源之杯持续回蓝，让依赖技能的英雄更快放出下一次技能。",
+      "id": "utterances_12def0e36eef4e5ab691989cd8c006d7"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_0bce3c2ee7e84ab98cfcb384c665d4c9",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg3 is \"法源之杯\"",
+  "editor_mode": "text"
+}

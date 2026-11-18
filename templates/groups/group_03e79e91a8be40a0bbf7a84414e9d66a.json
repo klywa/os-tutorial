@@ -1,0 +1,42 @@
+{
+  "name": "雅典娜开团再触发狂铁整备",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "雅典娜开团有机会触发狂铁整备，再次提升阿科米亚核心的等级。",
+      "id": "utterances_140b618b4f384731b64023c98bcf0cdb"
+    },
+    {
+      "text": "让雅典娜上场，狂铁的整备效果也有机会在开团时触发。",
+      "id": "utterances_816dbb9d8012477983ae2cbbd8f1e00f"
+    }
+  ],
+  "explanation": "狂铁在场，上阵雅典娜时，说明这项操作的战斗或资源收益。雅典娜开团有机会触发狂铁整备，再次提升阿科米亚核心的等级。依据《常小娥灵活变阵-常小娥》「雅典娜」和雅典娜的官方卡面、技能。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_03e79e91a8be40a0bbf7a84414e9d66a",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1833",
+      "name": "雅典娜"
+    },
+    {
+      "id": "card:1831",
+      "name": "雅典娜"
+    },
+    {
+      "id": "card:5031",
+      "name": "狂铁"
+    },
+    {
+      "id": "card:5033",
+      "name": "狂铁"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"",
+  "editor_mode": "text"
+}

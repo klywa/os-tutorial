@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_e1b0ff8389be4ad88ec48e113bf0208e",
+  "request_ids": [
+    "c3ce5ce972af11f6dda11f5433f47b56a1a53921a05a62e7a342d773643f6686"
+  ],
+  "revision": "64b590469436a4c1914e82c8a4398c7f7d112c6fcf503c1f6dbe164b249e9c07",
+  "value": {
+    "name": "用弈星补棋手经验",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "弈星在场时，棋手每次升级都能获得额外经验。",
+        "id": "utterances_2f0d68b73a3a4d84b9d52cfbaae92550"
+      },
+      {
+        "text": "打算连续升级棋手时，弈星给的经验能帮忙升下一级。",
+        "id": "utterances_b1f7835c8be04c7696391547e1a3b890"
+      }
+    ],
+    "explanation": "买到弈星时，这组话说明弈星在队伍中的作用。弈星在场时，棋手升级能额外获得经验，可在计划连续升级时降低下一次升级的经验缺口。依据《常小娥灵活变阵-常小娥》「弈星」及弈星的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_e1b0ff8389be4ad88ec48e113bf0208e",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1971",
+        "name": "弈星"
+      },
+      {
+        "id": "card:1973",
+        "name": "弈星"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"弈星\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "a30b35700cb6e39d30654f55db10bc44db3e2be029bc3f21ed9944228d360192"
+}

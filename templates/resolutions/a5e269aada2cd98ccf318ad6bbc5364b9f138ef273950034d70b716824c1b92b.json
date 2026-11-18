@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_124bb793b36443caab6b247141be2112",
+  "request_ids": [
+    "3bc6a84b8a8bab01cd915d7b866681a1b89eaca3a4449da5c88d4f3097d48e8a"
+  ],
+  "revision": "649108f6a57e5f4c1d5dfd621308f491cfaf130ca5c085c52f1bc79672793272",
+  "value": {
+    "name": "用苏烈承担前排伤害",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "苏烈每次牺牲都能永久提升等级，适合单挂过渡。",
+        "id": "utterances_40b82d5dbc1943429c43ab185c5aca73"
+      },
+      {
+        "text": "苏烈达到40级后，战斗中首次被击败时能复生，继续承担伤害。",
+        "id": "utterances_b4ab203c3d674287935d16dc8637dd0e"
+      }
+    ],
+    "explanation": "买到苏烈时，这组话说明苏烈在队伍中的作用。苏烈靠牺牲积累永久等级，40级起首次被击败后还能复生，单挂时能兼顾眼前的承伤和后续成长。依据《常小娥灵活变阵-常小娥》「苏烈」及苏烈的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_124bb793b36443caab6b247141be2112",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1941",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:1943",
+        "name": "苏烈"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"苏烈\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "a5e269aada2cd98ccf318ad6bbc5364b9f138ef273950034d70b716824c1b92b"
+}

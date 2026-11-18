@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_f1bd76d5ecaf459ea91a571a3fbd8a3f",
+  "request_ids": [
+    "cbc555a3c918883c34ba91bc952d4aa2229a57a3558b7a21aa2befdf458d8231"
+  ],
+  "revision": "3c6a09f898dc9a8a574140759cd416b595d23f7abee12b5aef882d923715b361",
+  "value": {
+    "name": "两种技能都有时先送福",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": null
+    },
+    "explanation": "在“使用棋手技能”事件中，使用小菟送福，手中有小菟助力，剩余至少一点能量时适用。小菟送福能先触发助力，提高同回合使用小菟助力的收益。依据为《常小娥灵活变阵-常小娥》「助力次数与等级门槛」及官方棋手技能「小菟送福」。",
+    "utterances": [
+      {
+        "text": "先用小菟送福累积助力次数，手中的小菟助力就能提供更多等级。",
+        "id": "utterances_e8d5192d579a4011b9db38122e5a4f67"
+      },
+      {
+        "text": "小菟送福能先触发助力，提高同回合使用小菟助力的收益。",
+        "id": "utterances_1c8781418b364611822ae3d83b03d8b0"
+      }
+    ],
+    "id": "group_f1bd76d5ecaf459ea91a571a3fbd8a3f",
+    "event_id": "os_b59f8bd6d43110d4",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:92499",
+        "name": "小菟助力"
+      },
+      {
+        "id": "card:92410",
+        "name": "小菟送福"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"小菟送福\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟助力\"} and 玩家.剩余能量 >= 1",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "a6a0d4dd213b4518ade13ff57ddb0cc5c09cc8c77a03d9c72a8a62764a146178"
+}

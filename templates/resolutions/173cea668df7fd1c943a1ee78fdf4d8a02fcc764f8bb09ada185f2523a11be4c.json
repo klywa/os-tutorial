@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_8ffdd3f57f4341a5a06a66932775b078",
+  "request_ids": [
+    "edab812509ed30b3ebe22237964b4e77a8acf13fa1aee4f4931b1de9a6fd202d"
+  ],
+  "revision": "72d21d74b407e46a70b88d9b92aa2c00f3f766338535b6b4ca7f7610491f7512",
+  "value": {
+    "name": "临阵磨枪触发狂铁的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为狂铁，使用临阵磨枪时适用。现在对狂铁用临阵磨枪，可以多拿一次整备提供的核心等级。依据为《常小娥灵活变阵-常小娥》「狂铁」及官方效果牌「临阵磨枪」、英雄「狂铁」。",
+    "utterances": [
+      {
+        "text": "临阵磨枪能立即触发狂铁整备，提高阿科米亚核心等级。",
+        "id": "utterances_13535b3b51504cdbb05d6323469e60fe"
+      },
+      {
+        "text": "现在对狂铁用临阵磨枪，可以多拿一次整备提供的核心等级。",
+        "id": "utterances_42a7c5fc186747198bb1087e1e28bf12"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_8ffdd3f57f4341a5a06a66932775b078",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"狂铁\" and arg2 is \"临阵磨枪\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "173cea668df7fd1c943a1ee78fdf4d8a02fcc764f8bb09ada185f2523a11be4c"
+}

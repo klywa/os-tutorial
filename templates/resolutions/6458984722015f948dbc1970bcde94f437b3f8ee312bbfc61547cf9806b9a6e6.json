@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_fcbd4e181fa0487586382632ddca2371",
+  "request_ids": [
+    "a79e57bd1c6e9f474c84bc94be01fba970fb9ba04fad595943fbb48b653ffeec"
+  ],
+  "revision": "44a76da78e99da7634edffd6bdb2cbc92e251ae717cb58bb95e8f9b484e35613",
+  "value": {
+    "name": "合成诸葛亮补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "诸葛亮觉醒后，队友每次施法都能让他回30点法力。",
+        "id": "utterances_5fe443e47f224ba09d41e13b005bf7de"
+      },
+      {
+        "text": "诸葛亮觉醒后，队友施法给他的临时等级会从4级增至8级。",
+        "id": "utterances_ad25a81692334f2a9227c09394be4aba"
+      }
+    ],
+    "explanation": "合成后诸葛亮还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。」与「你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。」。依据《常小娥灵活变阵-常小娥》「诸葛亮」和诸葛亮的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_fcbd4e181fa0487586382632ddca2371",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1903",
+        "name": "诸葛亮"
+      },
+      {
+        "id": "card:1901",
+        "name": "诸葛亮"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"诸葛亮\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "6458984722015f948dbc1970bcde94f437b3f8ee312bbfc61547cf9806b9a6e6"
+}

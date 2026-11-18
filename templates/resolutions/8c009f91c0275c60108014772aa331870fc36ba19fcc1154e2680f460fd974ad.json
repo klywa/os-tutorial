@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_9fbc61b80a6d4c17b5c0e5f7ced5bfbe",
+  "request_ids": [
+    "e94ee9e27ac5fc6f35b64f5ae52d2cc3b1b2c5dab8f4b7d859722b0a65883e28"
+  ],
+  "revision": "811b06d727ece685932d4874c4ae1f0e1f780e5a288359d7b5033d77c6f2e400",
+  "value": {
+    "name": "合成艾琳补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "艾琳觉醒后，开团时每级提供的攻速翻倍。",
+        "id": "utterances_7f42cd61a33544cca666173bed9d89d4"
+      },
+      {
+        "text": "想让艾琳开团时攻速更高，合成补觉醒能放大她的等级收益。",
+        "id": "utterances_168988ec988f44d09e1a48d178a73663"
+      }
+    ],
+    "explanation": "合成后艾琳还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「开团：艾琳获得自身等级×1%的攻击速度。」与「开团：艾琳获得自身等级×2%的攻击速度。」。依据《常小娥灵活变阵-常小娥》「艾琳」和艾琳的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_9fbc61b80a6d4c17b5c0e5f7ced5bfbe",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:3551",
+        "name": "艾琳"
+      },
+      {
+        "id": "card:3553",
+        "name": "艾琳"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"艾琳\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "8c009f91c0275c60108014772aa331870fc36ba19fcc1154e2680f460fd974ad"
+}

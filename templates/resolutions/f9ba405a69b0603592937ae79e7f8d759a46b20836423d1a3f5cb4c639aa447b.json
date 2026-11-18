@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_26d273e014654919a1b7ca7e81b6242f",
+  "request_ids": [
+    "d073f2bbff94e3d1800e55dabd52ae86150106cafed2bfe24b5de892e40cd7f1"
+  ],
+  "revision": "c4577f149bd8fb3462b7b30ba640987e826d36e4121e90825557ef6c8f51baaf",
+  "value": {
+    "name": "苏烈铸造红莲炎甲",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，穿戴者为苏烈，铸造成品为红莲炎甲时适用。红莲炎甲持续灼烧苏烈身边的敌人，还能削弱治疗与护盾。依据为《常小娥灵活变阵-常小娥》「红莲炎甲」及官方装备「红莲炎甲」、装备「力量腰带」。",
+    "utterances": [
+      {
+        "text": "苏烈的生命值越高，红莲炎甲对身边敌人的伤害就越高。",
+        "id": "utterances_9e9fbafaee124556ba8c6a09f23456ec"
+      },
+      {
+        "text": "红莲炎甲持续灼烧苏烈身边的敌人，还能削弱治疗与护盾。",
+        "id": "utterances_9f58423dcfcd46b58ce007f6f6dcb607"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_26d273e014654919a1b7ca7e81b6242f",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"苏烈\" and arg3 is \"红莲炎甲\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "f9ba405a69b0603592937ae79e7f8d759a46b20836423d1a3f5cb4c639aa447b"
+}

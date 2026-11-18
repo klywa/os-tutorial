@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_d1bcc06559964b6fb3c1ff71682aeaf9",
+  "request_ids": [
+    "efe42f5da41deae2a744800f49d964f93d92e1845ea407be46d157cb65f30dab"
+  ],
+  "revision": "ae30dfe926c585b841825efa0de01c93fefd5fbd415c82a4eba082131b6e6761",
+  "value": {
+    "name": "唤醒触发蒙犽的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为蒙犽，使用唤醒时适用。用唤醒触发蒙犽的效果，能给想培养的英雄再争取一次成长。依据为《常小娥灵活变阵-常小娥》「蒙犽」及官方效果牌「唤醒」、英雄「蒙犽」。",
+    "utterances": [
+      {
+        "text": "唤醒能再次触发蒙犽登场，获得可指定英雄提升等级的战术牌。",
+        "id": "utterances_a8bddb83753d437e90b48a0a5c149489"
+      },
+      {
+        "text": "用唤醒触发蒙犽的效果，能给想培养的英雄再争取一次成长。",
+        "id": "utterances_154d8fa01a6545dea8435dac7b1ef8fe"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_d1bcc06559964b6fb3c1ff71682aeaf9",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"蒙犽\" and arg2 is \"唤醒\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "76fe6d4dae2827a3adfa57bf6d7c1d36fb34790174f8c894131f823ef411bc9e"
+}

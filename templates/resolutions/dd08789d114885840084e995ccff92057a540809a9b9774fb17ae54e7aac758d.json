@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_5d27713eec98404baf91905c437a2b2a",
+  "request_ids": [
+    "876ef4186416c97b14ab2f0317e0f8f4cb14cb876d770c878fc69d5aee6d461c"
+  ],
+  "revision": "6d36d67614b3bff3264078d96aa3de70c4f491b09352082094a7e74354ded1f5",
+  "value": {
+    "name": "铸造反伤重甲的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为反伤重甲时适用。反伤重甲让穿戴者承受攻击时，也能对攻击者造成真实伤害。依据为《常小娥灵活变阵-常小娥》「反伤重甲」及官方装备「反伤重甲」。",
+    "utterances": [
+      {
+        "text": "铸造反伤重甲能把所受伤害的三成以真实伤害还给攻击者。",
+        "id": "utterances_bd76636ec44b4e6ba944f0cb6de8618a"
+      },
+      {
+        "text": "反伤重甲让穿戴者承受攻击时，也能对攻击者造成真实伤害。",
+        "id": "utterances_ae4132499a0a45ebbf5fc853efd6a494"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_5d27713eec98404baf91905c437a2b2a",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"反伤重甲\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "dd08789d114885840084e995ccff92057a540809a9b9774fb17ae54e7aac758d"
+}

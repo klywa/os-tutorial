@@ -1,0 +1,38 @@
+{
+  "name": "队友穿驱雷让落雷命中司空震",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“穿戴装备”事件中，装备为驱雷，穿戴者是司空震以外的队友，司空震在场时适用。队友穿戴驱雷后，落雷若命中司空震，就能让他快速攻击四次。依据为《常小娥灵活变阵-常小娥》「司空震队伍拿到驱雷时」及官方装备「驱雷」、英雄「司空震」。",
+  "utterances": [
+    {
+      "text": "驱雷不会击中穿戴者，给队友装备才能让落雷击中司空震。",
+      "id": "utterances_ba623f72c8cc40f596b73a6bd1361bb0"
+    },
+    {
+      "text": "队友穿戴驱雷后，落雷若命中司空震，就能让他快速攻击四次。",
+      "id": "utterances_c2beca71a9e245f9b20165f2d0a6b882"
+    }
+  ],
+  "id": "group_a489acb55961475793e0c97b56b39545",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:644113",
+      "name": "驱雷"
+    },
+    {
+      "id": "card:5371",
+      "name": "司空震"
+    },
+    {
+      "id": "card:5373",
+      "name": "司空震"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg2 is \"驱雷\" and not (arg1 is \"司空震\") and 玩家.战场 has \"司空震\"",
+  "editor_mode": "text"
+}

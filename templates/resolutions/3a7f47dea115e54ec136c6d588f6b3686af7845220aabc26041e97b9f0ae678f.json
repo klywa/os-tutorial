@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_afe30efad91b432cbcec9f540e43b415",
+  "request_ids": [
+    "8a2abf60b5c7b0e263e1f1a58450b3bd924f5420f7e5f9086f84f978fcf11ce6"
+  ],
+  "revision": "8b77f0b70f0d6eeb2c1cb77b6ff01b66b284b807c2529fd87b021d275f9050fb",
+  "value": {
+    "name": "单挂选随机进化",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "选中随机进化时场上只有一名英雄。若开战时仍为单挂，他就是品阶最高的唯一候选，可永久提升6级。依据为《常小娥灵活变阵-常小娥》「随机进化」及官方天赋「随机进化」。",
+    "utterances": [
+      {
+        "text": "若保持单人上阵，随机进化能在开战时给这名英雄永久提升6级。",
+        "id": "utterances_77481cc62fb5488d904ab0f23e45d72a"
+      },
+      {
+        "text": "保持单挂到开战，随机进化的永久等级就能集中给当前英雄。",
+        "id": "utterances_bd226ebdabfc44888ffcb36519a0e9e0"
+      }
+    ],
+    "event_id": "os_2b69e500a5c8036a",
+    "id": "group_afe30efad91b432cbcec9f540e43b415",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"随机进化\" and 玩家.场上英雄数 == 1",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "3a7f47dea115e54ec136c6d588f6b3686af7845220aabc26041e97b9f0ae678f"
+}

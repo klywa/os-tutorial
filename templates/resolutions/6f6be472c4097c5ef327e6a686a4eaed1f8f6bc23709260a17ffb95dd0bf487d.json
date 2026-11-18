@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_ddb73e6d346d40df9733268e5cad37b6",
+  "request_ids": [
+    "0b4dd2f72f2f4678f4c9c8d039eff16e2ecfdaf17c8d301d09e3efca5aea425e"
+  ],
+  "revision": "44e535877aa16fe629177f1102430ad7af0dafa1e74ca0143cca31aaba0b1ede",
+  "value": {
+    "name": "用百里玄策培养闪现英雄",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "上轮闪现英雄击败的敌人越多，百里玄策整备能分的等级越多。",
+        "id": "utterances_3c1ce3f9c2634a4ea050788f8d2b9e46"
+      },
+      {
+        "text": "百里玄策根据上轮闪现英雄的击败数，给随机闪现英雄提升等级。",
+        "id": "utterances_e7f880f94c734123bd1df042a5453271"
+      }
+    ],
+    "explanation": "买到百里玄策时，这组话说明百里玄策在队伍中的作用。百里玄策整备时，根据上回合己方闪现英雄击败敌方英雄的次数，为随机闪现英雄提升等级。依据《常小娥灵活变阵-常小娥》「百里玄策」及百里玄策的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_ddb73e6d346d40df9733268e5cad37b6",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1951",
+        "name": "百里玄策"
+      },
+      {
+        "id": "card:1953",
+        "name": "百里玄策"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"百里玄策\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "6f6be472c4097c5ef327e6a686a4eaed1f8f6bc23709260a17ffb95dd0bf487d"
+}

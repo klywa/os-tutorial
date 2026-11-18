@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_fdcc1e20495d43769f9febc525a6e300",
+  "request_ids": [
+    "da9e435573ab05dcf23f28dc0556f0b7f68d8fb25846803bce5fc32024c326e1"
+  ],
+  "revision": "3e57f5ff2974407d4b55ec1f2aa20512e2898055c1cecb279a9c798a9b3c9c22",
+  "value": {
+    "name": "开呼风唤雨找传承",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "explanation": "在“使用无目标效果牌”事件中，使用呼风唤雨时适用。想把英雄积累的等级分给队友时，呼风唤雨有机会提供传承。依据为《常小娥灵活变阵-常小娥》「第三轮拍卖」及官方效果牌「呼风唤雨」。",
+    "utterances": [
+      {
+        "text": "呼风唤雨提供四张随机五阶效果牌，其中有机会出现传承。",
+        "id": "utterances_781c2a9eceba433e8d4bfc8805166e57"
+      },
+      {
+        "text": "想把英雄积累的等级分给队友时，呼风唤雨有机会提供传承。",
+        "id": "utterances_ac8a0876b82f4c7c827ffe7b9043fb49"
+      }
+    ],
+    "event_id": "os_1c33df3b1a2b43f5",
+    "id": "group_fdcc1e20495d43769f9febc525a6e300",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"呼风唤雨\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "617ee92f9739f0150270ce99432442765083c92a734b91b434dfc01660c7962d"
+}

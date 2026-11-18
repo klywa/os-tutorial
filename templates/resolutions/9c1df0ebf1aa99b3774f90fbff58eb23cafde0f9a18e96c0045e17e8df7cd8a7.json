@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_408e96aab973404893fe0aabeae10a52",
+  "request_ids": [
+    "75e783ea73d74de7914a58be061dba37da2153dda554d00091b4b90ac5585563"
+  ],
+  "revision": "98d4e4cee32fbd8ab4ea636b6248f65aca35fd145ae1d455790771cdf22c7e1f",
+  "value": {
+    "name": "选大明星",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“选择天赋”事件中，选中大明星时适用。大明星提供的五阶英雄等级是棋手等级的七倍，能补充即战力。依据为《常小娥灵活变阵-常小娥》「大明星」及官方天赋「大明星」。",
+    "utterances": [
+      {
+        "text": "大明星提供效果牌，可以随机上阵一名场上没有的五阶英雄。",
+        "id": "utterances_f116152238a94dadb49e492bab5e51d9"
+      },
+      {
+        "text": "大明星提供的五阶英雄等级是棋手等级的七倍，能补充即战力。",
+        "id": "utterances_1278b91a66b94813a77841944dc5bb77"
+      }
+    ],
+    "event_id": "os_2b69e500a5c8036a",
+    "id": "group_408e96aab973404893fe0aabeae10a52",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"大明星\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "9c1df0ebf1aa99b3774f90fbff58eb23cafde0f9a18e96c0045e17e8df7cd8a7"
+}

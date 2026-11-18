@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_ca113a97746c4c71af0a05a156f55dbb",
+  "request_ids": [
+    "da2206839fa3f7827f024c531f53911b7db1c3e3dc32e107086af7c151349442"
+  ],
+  "revision": "f76e9033501109ab50c92fbe22a6dcfe28f62b80d108eb131dc12f9bd96f527f",
+  "value": {
+    "name": "吕布配合马超控制回蓝",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "吕布能击飞一片敌人，触发马超的回蓝和暴击率提升。",
+        "id": "utterances_e1afc9d4c6de4fff828acba7e9b492e4"
+      },
+      {
+        "text": "让吕布提供范围控制，马超就有机会更快再放技能。",
+        "id": "utterances_cee7553d41454ea98e056bbc36139e0b"
+      }
+    ],
+    "explanation": "马超在场，上阵吕布时，说明这项操作的战斗或资源收益。吕布能击飞一片敌人，触发马超的回蓝和暴击率提升。依据《常小娥灵活变阵-常小娥》「吕布」和吕布的官方卡面、技能。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_ca113a97746c4c71af0a05a156f55dbb",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1231",
+        "name": "吕布"
+      },
+      {
+        "id": "card:1233",
+        "name": "吕布"
+      },
+      {
+        "id": "card:5183",
+        "name": "马超"
+      },
+      {
+        "id": "card:5181",
+        "name": "马超"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"吕布\" and 玩家.战场 has \"马超\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "f95174be8dca4d8bc06d7c598ac35af9dcbafc7eaee1356f5676bedb39a9df5b"
+}

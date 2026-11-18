@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_f052796b987f4bdab8a4223c3e9d0340",
+  "request_ids": [
+    "0d5b3056bf63b9a45a67f0db2836c6f26f138f7312c47ca5fbd81a5cb51b5e9c"
+  ],
+  "revision": "e0c3d2c0f618651aba517c724fec53d706733cef9fb7ba34085399263081b177",
+  "value": {
+    "name": "把寒霜侵袭转给艾琳",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“转移装备”事件中，转移的装备为寒霜侵袭，接收者为艾琳时适用。艾琳穿寒霜侵袭能靠连续普攻减速敌人，叠满还能增加伤害。依据为《常小娥灵活变阵-常小娥》「寒霜侵袭」及官方装备「寒霜侵袭」。",
+    "utterances": [
+      {
+        "text": "寒霜侵袭让艾琳的普攻减慢敌人移速，方便飞行时拉开距离。",
+        "id": "utterances_adc92f5ada94401d80f5cb163039f64b"
+      },
+      {
+        "text": "艾琳穿寒霜侵袭能靠连续普攻减速敌人，叠满还能增加伤害。",
+        "id": "utterances_c637d501ac0846e2bff008b248f89a94"
+      }
+    ],
+    "event_id": "os_f5a416d50e37a948",
+    "id": "group_f052796b987f4bdab8a4223c3e9d0340",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"寒霜侵袭\" and arg3 is \"艾琳\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "4fdf17b044705dbb4e33a9e37c2e39b705ddfce4243400dd72652edea4926571"
+}

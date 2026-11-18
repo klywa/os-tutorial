@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_ae0cc62b6fad48569e139a5053641f97",
+  "request_ids": [
+    "ea9f45c48f79b4c2f6c2ad254e1ad8f65ba18ee2fe195902643f93b490a7f1ff"
+  ],
+  "revision": "25e11d033d592ae520e1c0da173e750da57fd823753212f8780f098fa187b8c8",
+  "value": {
+    "name": "用安琪拉补整备与范围输出",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "安琪拉整备时能提升自己和阿科米亚核心的等级。",
+        "id": "utterances_8c090e7240cb4fc0a833d7879f787f82"
+      },
+      {
+        "text": "安琪拉能朝敌人密集处持续施法，队伍缺范围输出时可以用她过渡。",
+        "id": "utterances_197ea1fc636e4853b45df97b4e1261a2"
+      }
+    ],
+    "explanation": "买到安琪拉时，这组话说明安琪拉在队伍中的作用。英雄卡安琪拉整备时提升自身和阿科米亚核心等级，技能可对一条路径上的敌人持续造成法术伤害。依据《常小娥灵活变阵-常小娥》「安琪拉」及安琪拉的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_ae0cc62b6fad48569e139a5053641f97",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1421",
+        "name": "安琪拉"
+      },
+      {
+        "id": "card:1423",
+        "name": "安琪拉"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"安琪拉\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "2e0b3d81d6a4dbdaa5729ca141c5fe1e43ca71a3d47d8c9f995ef4c2eb50efe1"
+}

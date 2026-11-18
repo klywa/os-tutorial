@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_947c7c8f70734fd1a015d5f336b17f5e",
+  "request_ids": [
+    "887938e53e9ba1aa203b0f488af2412926cda259802fabfe05436d99784d8417"
+  ],
+  "revision": "a00b09ee9ca735918bb1b2ba1d484e9ddd10e2c4c2220a401cdb76f3bf868058",
+  "value": {
+    "name": "合成苏烈补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "苏烈觉醒后，每次牺牲的永久成长会从2级提高到4级。",
+        "id": "utterances_657f92ba44f640f1afd795bae7cd852a"
+      },
+      {
+        "text": "单挂苏烈时补觉醒，每次牺牲就能比原来多得2级永久等级。",
+        "id": "utterances_047b083dc4f3422795654e48dd2a74d7"
+      }
+    ],
+    "explanation": "合成后苏烈还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「牺牲：苏烈的等级永久+2。」与「牺牲：苏烈的等级永久+4。」。依据《常小娥灵活变阵-常小娥》「苏烈」和苏烈的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_947c7c8f70734fd1a015d5f336b17f5e",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1941",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:1943",
+        "name": "苏烈"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"苏烈\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "3e6efbe008e9596fa1ea965bbce77fd9ce7c436ee9d90f4258d620a0f6fbad87"
+}

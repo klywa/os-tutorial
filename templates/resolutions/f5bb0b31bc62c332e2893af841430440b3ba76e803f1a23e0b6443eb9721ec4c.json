@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_74635d1c2f9a459fa461e41dd69a2f82",
+  "request_ids": [
+    "670dd4ea97c350ea726f8555cc49fd53da1546c3348511cbf18d18d23f805059"
+  ],
+  "revision": "62b563597b5c2867bd348dc7ff84e67425216ac48a2c1556dd3acbd23be5b39d",
+  "value": {
+    "name": "选狂铁准备日落海过渡",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "狂铁整备就能培养阿科米亚核心，后面还可以接日落海输出。",
+        "id": "utterances_1e971dfa861c43fba0d43903a0659aa5"
+      },
+      {
+        "text": "想留艾琳打后期，可以先选狂铁积累阿科米亚核心等级。",
+        "id": "utterances_d1d1a138d85743ef9060f78bac9192ed"
+      }
+    ],
+    "explanation": "选中狂铁时，说明这项操作的战斗或资源收益。狂铁整备就能培养阿科米亚核心，后面还可以接日落海输出。依据《常小娥灵活变阵-常小娥》「狂铁」和狂铁的官方卡面、技能。",
+    "event_id": "os_dcef166d05efe08e",
+    "id": "group_74635d1c2f9a459fa461e41dd69a2f82",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:3551",
+        "name": "艾琳"
+      },
+      {
+        "id": "card:3553",
+        "name": "艾琳"
+      },
+      {
+        "id": "card:5031",
+        "name": "狂铁"
+      },
+      {
+        "id": "card:5033",
+        "name": "狂铁"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg2 is \"狂铁\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "f5bb0b31bc62c332e2893af841430440b3ba76e803f1a23e0b6443eb9721ec4c"
+}

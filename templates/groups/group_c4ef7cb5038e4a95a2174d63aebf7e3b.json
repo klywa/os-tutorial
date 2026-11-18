@@ -1,0 +1,25 @@
+{
+  "name": "精密协作培养指定英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“对目标使用效果牌”事件中，使用精密协作时适用。精密协作能让目标提升4级，同时让一名随机英雄提升3级。依据为《常小娥灵活变阵-常小娥》「后期提升思路」及官方效果牌「精密协作」。",
+  "utterances": [
+    {
+      "text": "精密协作能让指定英雄提升4级，立即增加他的战力。",
+      "id": "utterances_5df136567d67453287fe39c5147fef0a"
+    },
+    {
+      "text": "精密协作能让目标提升4级，同时让一名随机英雄提升3级。",
+      "id": "utterances_05f133751da34488993de6ff76291c86"
+    }
+  ],
+  "event_id": "os_bfcc2eec6def94c8",
+  "id": "group_c4ef7cb5038e4a95a2174d63aebf7e3b",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"精密协作\"",
+  "editor_mode": "text"
+}

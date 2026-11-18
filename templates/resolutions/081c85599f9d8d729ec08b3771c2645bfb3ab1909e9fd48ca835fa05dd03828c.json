@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_3ff5a83737974bd3a0fd453c0a10e339",
+  "request_ids": [
+    "2facd7c6b2308698bb7dd4d08b0b3a1564c9405982b2efea92314137004fba84"
+  ],
+  "revision": "c536bc3e55d9ff61011a1b3b31d201b4275bc76a667679cde94c67a679dd13e3",
+  "value": {
+    "name": "用李元芳给最近的河洛英雄供币",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "李元芳整备时会给最近的河洛英雄使用古币。",
+        "id": "utterances_4375641ffbac4199864fe67039b19728"
+      },
+      {
+        "text": "想用古币培养苏烈时，可以让他成为离李元芳最近的河洛英雄。",
+        "id": "utterances_063e9ef57dd54aa2b93e9f84e218b8c2"
+      }
+    ],
+    "explanation": "买到李元芳时，这组话说明李元芳在队伍中的作用。李元芳整备时，对距离最近的河洛英雄使用古币。准备培养苏烈时，要确认他就是最近的河洛英雄。依据《常小娥灵活变阵-常小娥》「李元芳」及李元芳的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_3ff5a83737974bd3a0fd453c0a10e339",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:311002",
+        "name": "古币"
+      },
+      {
+        "id": "card:1731",
+        "name": "李元芳"
+      },
+      {
+        "id": "card:1733",
+        "name": "李元芳"
+      },
+      {
+        "id": "card:1941",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:1943",
+        "name": "苏烈"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"李元芳\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "081c85599f9d8d729ec08b3771c2645bfb3ab1909e9fd48ca835fa05dd03828c"
+}

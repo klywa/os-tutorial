@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_81b8122a8e6944529e64117a2c37ec3f",
+  "request_ids": [
+    "a9b47dd7dcfc262d567143cc1ca3a070cea4eaa2b734fca1b377db96c8c14f61"
+  ],
+  "revision": "bbfd7bc7fbd32e59805facb8cfa2c806fdf13c7be53da9b19e3a1cdb14ac57a7",
+  "value": {
+    "name": "用雅典娜触发日落海整备",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "雅典娜开团时能随机触发日落海英雄的整备效果。",
+        "id": "utterances_123ec45b304f49dda2df324e6a26fab1"
+      },
+      {
+        "text": "想让狂铁多一次整备，可以用雅典娜开团争取触发。",
+        "id": "utterances_aee28ff45a8943d9ac2cf008c442921e"
+      }
+    ],
+    "explanation": "买到雅典娜时，这组话说明雅典娜在队伍中的作用。雅典娜的开团随机触发日落海英雄的整备，可与狂铁配合，增加阿科米亚核心的成长机会。依据《常小娥灵活变阵-常小娥》「雅典娜」及雅典娜的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_81b8122a8e6944529e64117a2c37ec3f",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1833",
+        "name": "雅典娜"
+      },
+      {
+        "id": "card:1831",
+        "name": "雅典娜"
+      },
+      {
+        "id": "card:5031",
+        "name": "狂铁"
+      },
+      {
+        "id": "card:5033",
+        "name": "狂铁"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"雅典娜\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "2f2e819549032bde13f94d04972b316f2e803096e9eaa67e0bd642b83c364e1e"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_d2e69b88e1154a06a0e2d7ddfef27269",
+  "request_ids": [
+    "1473eaa6fc902f64be274bb03591b94aa09235be871d84e43ad6e39f52d3a8da"
+  ],
+  "revision": "edb55d8698c6b2c12b2d13b8cb6584e970fa162b2d2107e212ae2658260d8021",
+  "value": {
+    "name": "铸造无尽巨剑的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为无尽巨剑时适用。无尽巨剑提高三成暴击率，让物理输出更容易打出暴击。依据为《常小娥灵活变阵-常小娥》「无尽巨剑」及官方装备「无尽巨剑」。",
+    "utterances": [
+      {
+        "text": "铸造无尽巨剑能同时提高暴击率与暴击伤害。",
+        "id": "utterances_9a6e78f72aa344f08bbda8932c2e2586"
+      },
+      {
+        "text": "无尽巨剑提高三成暴击率，让物理输出更容易打出暴击。",
+        "id": "utterances_cb4c37a9e7d04473a346b018d3c5fd10"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_d2e69b88e1154a06a0e2d7ddfef27269",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"无尽巨剑\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "5d0bc55575e669ead021300ade412de48e804177e5654d6ac35f5ea1a1e1c40d"
+}

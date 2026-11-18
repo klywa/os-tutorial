@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_2cf759a902a5481c8012acd802c8b7ec",
+  "request_ids": [
+    "2e48f7ff2d7697dd645fac3db81d25a10bdcb16e82a67b04502849d3d26f8129"
+  ],
+  "revision": "cd6e46215c748a8c3b5bda873418ba1e5269f88f72e5a0bcb9c494ccacf7b967",
+  "value": {
+    "name": "用刘禅补前排与施法成长",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "utterances": [
+      {
+        "text": "刘禅施法时自己获得护盾，还能眩晕敌人，适合在前排承伤。",
+        "id": "utterances_b1fa7308ad1b43dfb1e221c297b19abf"
+      },
+      {
+        "text": "刘禅在场时，队友每次放技能都能获得临时等级。",
+        "id": "utterances_7a345b929704413188149eefd54fc478"
+      }
+    ],
+    "explanation": "买到刘禅时，这组话说明刘禅在队伍中的作用。刘禅通过技能眩晕目标并为自身提供护盾。在场时，己方英雄施法还能获得临时等级。依据《常小娥灵活变阵-常小娥》「刘禅」及刘禅的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_2cf759a902a5481c8012acd802c8b7ec",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1141",
+        "name": "刘禅"
+      },
+      {
+        "id": "card:1143",
+        "name": "刘禅"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"刘禅\"",
+    "editor_mode": "text"
+  },
+  "actor": "deployment-recovery",
+  "id": "db2bc4fb9d038b6e8fb84fe15e07f209b8eef54092d92539495ef7f4c0e7df4d"
+}
