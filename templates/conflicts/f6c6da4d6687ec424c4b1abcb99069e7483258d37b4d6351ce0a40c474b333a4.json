@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_fd75dc1574bf41e0ad1887e392f65860",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "给海月补复生搭档",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "让海月成为离太乙真人最近的队友，她就有机会复生后再次牺牲。",
+        "id": "utterances_c491a9c1cd934b7ab15ecf70913242dd"
+      },
+      {
+        "text": "太乙真人给最近的队友复生，可以用来多触发一次海月的牺牲。",
+        "id": "utterances_9f37081962074fb79abd0138b457a059"
+      }
+    ],
+    "explanation": "海月在场，选中太乙真人时，说明这项操作的战斗或资源收益。让海月成为离太乙真人最近的队友，她就有机会复生后再次牺牲。依据《常小娥灵活变阵-常小娥》「太乙真人」和太乙真人的官方卡面、技能。",
+    "event_id": "os_dcef166d05efe08e",
+    "id": "group_fd75dc1574bf41e0ad1887e392f65860",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1861",
+        "name": "太乙真人"
+      },
+      {
+        "id": "card:1863",
+        "name": "太乙真人"
+      },
+      {
+        "id": "card:5211",
+        "name": "海月"
+      },
+      {
+        "id": "card:5213",
+        "name": "海月"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg2 is \"太乙真人\" and 玩家.战场 has \"海月\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "f6c6da4d6687ec424c4b1abcb99069e7483258d37b4d6351ce0a40c474b333a4"
+}

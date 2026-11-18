@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_e56ea9be47ac4eadb37385cf9a241312",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "唤醒触发周瑜的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为周瑜，使用唤醒时适用。场上多名英雄需要成长时，唤醒周瑜能同时提高全队等级。依据为《常小娥灵活变阵-常小娥》「周瑜」及官方效果牌「唤醒」、英雄「周瑜」。",
+    "utterances": [
+      {
+        "text": "唤醒再次触发周瑜登场，能为全体英雄提高等级。",
+        "id": "utterances_c25490dbf4b0452abb928b2e561cc392"
+      },
+      {
+        "text": "场上多名英雄需要成长时，唤醒周瑜能同时提高全队等级。",
+        "id": "utterances_c8d7e8aedcf04614a2b038905ce08165"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_e56ea9be47ac4eadb37385cf9a241312",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"周瑜\" and arg2 is \"唤醒\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "39f76eda8cf335effbcfe3c1241748cfaf88df52903decd2427bbd1ed9391a74"
+}

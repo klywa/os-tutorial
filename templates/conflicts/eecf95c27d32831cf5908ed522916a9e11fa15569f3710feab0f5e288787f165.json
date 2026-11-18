@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_2452e0f1bf094ee0b2b01f19d450949a",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "杨玉环铸造贤者之书",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，穿戴者为杨玉环，铸造成品为贤者之书时适用。贤者之书降低杨玉环的法力值上限，让她更快放出治疗技能。依据为《常小娥灵活变阵-常小娥》「贤者之书」及官方装备「贤者之书」、装备「圣者法典」。",
+    "utterances": [
+      {
+        "text": "贤者之书让杨玉环每次施法都能提高法攻，后续治疗量更高。",
+        "id": "utterances_33ca2b3e682d443c9c2245304d400d6a"
+      },
+      {
+        "text": "贤者之书降低杨玉环的法力值上限，让她更快放出治疗技能。",
+        "id": "utterances_075d0c20408b4fa2a04ecc0c7afa22a1"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_2452e0f1bf094ee0b2b01f19d450949a",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"杨玉环\" and arg3 is \"贤者之书\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "eecf95c27d32831cf5908ed522916a9e11fa15569f3710feab0f5e288787f165"
+}

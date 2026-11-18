@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_2b3283eb1ad5466f8fe639e94c0e8eeb",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用孙膑积累施法成长",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "孙膑在场时，己方英雄每施法三次就能提升自己的永久等级。",
+        "id": "utterances_0fcee333f01f4ebe898e605a6cb88a1a"
+      },
+      {
+        "text": "队友越常放技能，越能利用孙膑的效果提高自己的永久等级。",
+        "id": "utterances_24d7e894548b47a8a4ccfdfc9c2c85da"
+      }
+    ],
+    "explanation": "买到孙膑时，这组话说明孙膑在队伍中的作用。有孙膑在场，己方每名英雄独立累计施法次数，每三次施法提升自己的永久等级。依据《常小娥灵活变阵-常小娥》「孙膑」及孙膑的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_2b3283eb1ad5466f8fe639e94c0e8eeb",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1183",
+        "name": "孙膑"
+      },
+      {
+        "id": "card:1181",
+        "name": "孙膑"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"孙膑\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "3d6e1b3e5b7eba6ca4a6d20263e5870ba4d1951ec3fd5d915a4a8c9495c36425"
+}

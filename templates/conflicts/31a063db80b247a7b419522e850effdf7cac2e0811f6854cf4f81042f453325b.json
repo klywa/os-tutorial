@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_2d2896961324484d89c32033faf5be12",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "诸葛亮穿戴魔律之刃",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“穿戴装备”事件中，穿戴者为诸葛亮，装备为魔律之刃时适用。诸葛亮等级越高，魔律之刃触发重复施法的概率就越高。依据为《常小娥灵活变阵-常小娥》「魔律之刃」及官方装备「魔律之刃」。",
+    "utterances": [
+      {
+        "text": "魔律之刃让诸葛亮施法时有机会重复释放同一个技能。",
+        "id": "utterances_888f1397a9474ac3af2f970a25f1f588"
+      },
+      {
+        "text": "诸葛亮等级越高，魔律之刃触发重复施法的概率就越高。",
+        "id": "utterances_2a8487cc175849b689ccac159bf97ebd"
+      }
+    ],
+    "event_id": "os_5dfcb4835e1e1513",
+    "id": "group_2d2896961324484d89c32033faf5be12",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"诸葛亮\" and arg2 is \"魔律之刃\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "31a063db80b247a7b419522e850effdf7cac2e0811f6854cf4f81042f453325b"
+}

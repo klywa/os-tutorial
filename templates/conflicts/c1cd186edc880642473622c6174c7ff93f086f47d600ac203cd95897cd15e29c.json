@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_ff0589857fa3493dbee55442a8c79dfd",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "刘禅穿戴不祥征兆",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“穿戴装备”事件中，穿戴者为刘禅，装备为不祥征兆时适用。不祥征兆能减少刘禅在战斗前15秒受到的普通攻击伤害。依据为《常小娥灵活变阵-常小娥》「不祥征兆」及官方装备「不祥征兆」。",
+    "utterances": [
+      {
+        "text": "刘禅穿不祥征兆能格挡开场的普攻伤害，对高攻速敌人更有效。",
+        "id": "utterances_01ce5cd352c148c2b36fd3e2f9fe550c"
+      },
+      {
+        "text": "不祥征兆能减少刘禅在战斗前15秒受到的普通攻击伤害。",
+        "id": "utterances_8450084ce1274db1b3f84ec9a8a98d15"
+      }
+    ],
+    "event_id": "os_5dfcb4835e1e1513",
+    "id": "group_ff0589857fa3493dbee55442a8c79dfd",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"刘禅\" and arg2 is \"不祥征兆\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "c1cd186edc880642473622c6174c7ff93f086f47d600ac203cd95897cd15e29c"
+}

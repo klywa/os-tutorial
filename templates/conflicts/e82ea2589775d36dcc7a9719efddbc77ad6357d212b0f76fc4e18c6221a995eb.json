@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_b369ad13d5a4411281840e1f0ee949a2",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "开一线生机",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“使用无目标效果牌”事件中，使用一线生机时适用。一线生机既提供两件名刀·司命，也能让棋手首次零血免遭淘汰。依据为《常小娥灵活变阵-常小娥》「第三轮拍卖」及官方效果牌「一线生机」。",
+    "utterances": [
+      {
+        "text": "一线生机能在棋手首次降至零血时保留一点生命值。",
+        "id": "utterances_d58a642d59664b2489b7f7a7c410abd6"
+      },
+      {
+        "text": "一线生机既提供两件名刀·司命，也能让棋手首次零血免遭淘汰。",
+        "id": "utterances_516de0d6a56748718d8640c7c8ddce0b"
+      }
+    ],
+    "event_id": "os_1c33df3b1a2b43f5",
+    "id": "group_b369ad13d5a4411281840e1f0ee949a2",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"一线生机\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "e82ea2589775d36dcc7a9719efddbc77ad6357d212b0f76fc4e18c6221a995eb"
+}

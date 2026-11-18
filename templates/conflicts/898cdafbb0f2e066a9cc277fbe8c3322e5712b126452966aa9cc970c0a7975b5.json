@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_a712951c027842548dc6a3cd6c9b5504",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "升六解锁月之特调",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": null
+    },
+    "explanation": "在“棋手升级”事件中，棋手刚升到六级时适用。升六可获得选择月之特调的机会，增加小菟送福的获取途径。依据为《常小娥灵活变阵-常小娥》「月之特调与送福循环」及官方天赋「月之特调」。",
+    "utterances": [
+      {
+        "text": "棋手升六可争取月之特调，让小菟每提供五级就多给一项属性。",
+        "id": "utterances_a440e99eea604fcea9e4cb48d1c49478"
+      },
+      {
+        "text": "升六可获得选择月之特调的机会，增加小菟送福的获取途径。",
+        "id": "utterances_fd9294986aa84715898c32ffa4874e78"
+      }
+    ],
+    "id": "group_a712951c027842548dc6a3cd6c9b5504",
+    "event_id": "os_474ce7597b626c02",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:662407",
+        "name": "月之特调"
+      },
+      {
+        "id": "card:92499",
+        "name": "小菟助力"
+      },
+      {
+        "id": "card:92410",
+        "name": "小菟送福"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 == 6",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "898cdafbb0f2e066a9cc277fbe8c3322e5712b126452966aa9cc970c0a7975b5"
+}

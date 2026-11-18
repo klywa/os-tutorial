@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_149076b36a284c97b4200b7497d41e01",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "米莱狄补远端伤害",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "米莱狄能在远处的敌人身边召唤机械仆从，和狂铁配合打过渡。",
+        "id": "utterances_a4e1abeb8e1e4a03b1dec0e0e7baed36"
+      },
+      {
+        "text": "狂铁在前排承伤时，米莱狄可以靠机械仆从攻击远处的敌人。",
+        "id": "utterances_211ff24505184e54ad0a9f90c894c459"
+      }
+    ],
+    "explanation": "狂铁、朵莉亚在场，上米莱狄补充远端输出。《常小娥灵活变阵-常小娥》「施法过渡遇到跳后排刺客时」记录这三名英雄过渡；米莱狄技能会在最远敌人附近召唤机械仆从。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_149076b36a284c97b4200b7497d41e01",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1591",
+        "name": "朵莉亚"
+      },
+      {
+        "id": "card:1593",
+        "name": "朵莉亚"
+      },
+      {
+        "id": "card:5031",
+        "name": "狂铁"
+      },
+      {
+        "id": "card:5033",
+        "name": "狂铁"
+      },
+      {
+        "id": "card:5041",
+        "name": "米莱狄"
+      },
+      {
+        "id": "card:5043",
+        "name": "米莱狄"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\" and 玩家.战场 has \"朵莉亚\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "28374ec0c85dc4be6ae0132b48af7af54a44fa592bd980115180c4f8cbadba05"
+}

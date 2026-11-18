@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_1b13d7b49a844f98a46182857818cba2",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用露娜补整备与百分比伤害",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "露娜登场能随机触发整备，还能提高阿科米亚核心等级。",
+        "id": "utterances_42a8f0ebbb5246da85491ae5ce089bc1"
+      },
+      {
+        "text": "露娜消耗标记时按目标最大生命值造成伤害，适合打血厚的敌人。",
+        "id": "utterances_c4ec823b468b421ea2c50e7cb152991d"
+      }
+    ],
+    "explanation": "买到露娜时，这组话说明露娜在队伍中的作用。露娜登场会提升阿科米亚核心等级并随机触发整备。战斗中消耗标记可按目标最大生命值造成额外伤害。依据《常小娥灵活变阵-常小娥》「露娜」及露娜的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_1b13d7b49a844f98a46182857818cba2",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1463",
+        "name": "露娜"
+      },
+      {
+        "id": "card:1461",
+        "name": "露娜"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"露娜\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "c63e0d53353e68a86f58cd870995c88444e24a09f76165d45cbf752efffefb82"
+}

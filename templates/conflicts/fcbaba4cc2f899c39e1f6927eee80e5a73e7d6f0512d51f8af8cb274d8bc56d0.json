@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_1318d80fd9c84fa0a411db87100def75",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用海诺继续培养日落海核心",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "海诺在场时，阿科米亚核心每次提升等级都能再多升一些。",
+        "id": "utterances_1849d24ae9c1454493a51272899a8214"
+      },
+      {
+        "text": "想继续培养阿科米亚核心，又缺范围法术输出时，可以用海诺。",
+        "id": "utterances_7ac66c0d2f0141918edaf94b5e5ccc18"
+      }
+    ],
+    "explanation": "买到海诺时，这组话说明海诺在队伍中的作用。阿科米亚核心提升等级时，海诺会让核心额外获得等级；海诺本身可以用法术攻击目标及附近敌人。依据《常小娥灵活变阵-常小娥》「海诺」及海诺的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_1318d80fd9c84fa0a411db87100def75",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5631",
+        "name": "海诺"
+      },
+      {
+        "id": "card:5633",
+        "name": "海诺"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"海诺\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "fcbaba4cc2f899c39e1f6927eee80e5a73e7d6f0512d51f8af8cb274d8bc56d0"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_ec7b965a918b4dd8b3bc495adf33c179",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "露娜到场后用遗志换李元芳",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "explanation": "在“对目标使用效果牌”事件中，使用遗志，目标为李元芳，露娜在场时适用。遗志可以转移李元芳积累的非临时等级，减少换人的损失。依据为《常小娥灵活变阵-常小娥》「李元芳」及官方效果牌「遗志」。",
+    "utterances": [
+      {
+        "text": "露娜已能参战，用遗志换下李元芳能把非临时等级转给随机队友。",
+        "id": "utterances_d7f9b9602726450fbeedc4b42c92cbf4"
+      },
+      {
+        "text": "遗志可以转移李元芳积累的非临时等级，减少换人的损失。",
+        "id": "utterances_b8596b0d6ef7423290bf3616d83f097b"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_ec7b965a918b4dd8b3bc495adf33c179",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"遗志\" and arg1 is \"李元芳\" and 玩家.战场 has \"露娜\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "7c2cdccb6f28d665b48f9f30596805df2f81884739d8af6ca06c2585cd5c1ea5"
+}

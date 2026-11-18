@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_479d22a0ee654bd6909f450c4bac5ab8",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "把反伤重甲转给苏烈",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“转移装备”事件中，转移的装备为反伤重甲，接收者为苏烈时适用。反伤重甲让苏烈承受攻击时也有机会击败敌方输出。依据为《常小娥灵活变阵-常小娥》「反伤重甲」及官方装备「反伤重甲」。",
+    "utterances": [
+      {
+        "text": "苏烈穿反伤重甲，能把所受伤害的三成以真实伤害还给攻击者。",
+        "id": "utterances_90b077a535c04fef9327913f0f7bd4c8"
+      },
+      {
+        "text": "反伤重甲让苏烈承受攻击时也有机会击败敌方输出。",
+        "id": "utterances_185fad653fdf4e09a8b3b7e40a7fcffd"
+      }
+    ],
+    "event_id": "os_f5a416d50e37a948",
+    "id": "group_479d22a0ee654bd6909f450c4bac5ab8",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"反伤重甲\" and arg3 is \"苏烈\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "e19744f0e43ece05749bc3874bcf4130c7570d9c432df04db952bdaa0fb403db"
+}

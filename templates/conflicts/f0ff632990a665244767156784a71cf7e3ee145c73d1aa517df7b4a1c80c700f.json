@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_8922bd4cdcf942d9881b69a8691d2d1b",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "铸造自然法杖的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为自然法杖时适用。铸造自然法杖能补法攻，连续施法还可限制敌人行动。依据为《常小娥灵活变阵-常小娥》「自然法杖」及官方装备「自然法杖」。",
+    "utterances": [
+      {
+        "text": "自然法杖能把消耗的法力转为控制，让随机敌人变成小猪。",
+        "id": "utterances_e4bb0c3b860242c2a77a62cb6e8ca3b2"
+      },
+      {
+        "text": "铸造自然法杖能补法攻，连续施法还可限制敌人行动。",
+        "id": "utterances_f25671a898c443178cfb46765d4f2a52"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_8922bd4cdcf942d9881b69a8691d2d1b",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"自然法杖\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "f0ff632990a665244767156784a71cf7e3ee145c73d1aa517df7b4a1c80c700f"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_9fa03bf855b841c184fa4e26d4f86267",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用遗志换人保留等级",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，使用遗志时适用。用遗志换下英雄仍能保留他的非临时等级，减少换人的损失。依据为《常小娥灵活变阵-常小娥》「遗志」及官方效果牌「遗志」。",
+    "utterances": [
+      {
+        "text": "遗志移除目标英雄时，能把非临时等级交给一名随机队友。",
+        "id": "utterances_570141d3005c46e4878f5aced9e230ee"
+      },
+      {
+        "text": "用遗志换下英雄仍能保留他的非临时等级，减少换人的损失。",
+        "id": "utterances_c6bd6cbda9b24c2da15d0c2187976a66"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_9fa03bf855b841c184fa4e26d4f86267",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"遗志\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "956c7f4251586ea325d174287cd5c52b41071d33911d5b0a66d24819449fced9"
+}

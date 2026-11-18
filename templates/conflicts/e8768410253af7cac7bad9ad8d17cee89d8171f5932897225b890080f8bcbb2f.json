@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_f3fc6d7b97a14804885d9da3473ed240",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "选艾琳做后期射手",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "艾琳的等级越高，开团拿到的攻速越高，值得作为输出培养。",
+        "id": "utterances_b9de10042fbd4a909a468a424b51d135"
+      },
+      {
+        "text": "如果能把艾琳提升到100级，她就可以绕场飞行，持续输出。",
+        "id": "utterances_1de747a8f5ad4c99a6189d4d287a75d2"
+      }
+    ],
+    "explanation": "选中艾琳时，说明这项操作的战斗或资源收益。艾琳的等级越高，开团拿到的攻速越高，值得作为输出培养。依据《常小娥灵活变阵-常小娥》「艾琳」和艾琳的官方卡面、技能。",
+    "event_id": "os_dcef166d05efe08e",
+    "id": "group_f3fc6d7b97a14804885d9da3473ed240",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:3551",
+        "name": "艾琳"
+      },
+      {
+        "id": "card:3553",
+        "name": "艾琳"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg2 is \"艾琳\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "e8768410253af7cac7bad9ad8d17cee89d8171f5932897225b890080f8bcbb2f"
+}

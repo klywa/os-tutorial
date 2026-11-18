@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_8a4967cfaeca4513bdddc0c9326f953d",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "使用武装分解",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，使用武装分解时适用。武装分解拆一件换4能量，拆两件换妙音，三件换珍品宝箱。依据为《常小娥灵活变阵-常小娥》「英雄购买清单」及官方效果牌「武装分解」。",
+    "utterances": [
+      {
+        "text": "武装分解可以把用不上的装备换成能量或效果牌。",
+        "id": "utterances_26571a0bb5ed492486c82ac1f14b8b67"
+      },
+      {
+        "text": "武装分解拆一件换4能量，拆两件换妙音，三件换珍品宝箱。",
+        "id": "utterances_413aac8f6af840419d0900b484ba1a2b"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_8a4967cfaeca4513bdddc0c9326f953d",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"武装分解\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "8ff5c9b94e90ae7c42fce6ce60499e94a51bde6139d70c8af356275deaeb1b17"
+}

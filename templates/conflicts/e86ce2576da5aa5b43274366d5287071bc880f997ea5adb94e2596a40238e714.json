@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_5bbffb75645a46949809f436ac1b6621",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "合成韩信补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "韩信觉醒后，己方每次触发整备或开团效果都能让他永久升4级。",
+        "id": "utterances_385cef8a9d3c4966981bd6e4df6ad34d"
+      },
+      {
+        "text": "韩信觉醒后，整备或开团给他的永久等级就从2级提高到4级。",
+        "id": "utterances_cf2947b8aee54af5afaf83afa5dc5b2a"
+      }
+    ],
+    "explanation": "合成后韩信还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「闪现 每当你的英雄触发整备或开团效果时，韩信等级永久+2。」与「闪现 每当你的英雄触发整备或开团效果时，韩信等级永久+4。」。依据《常小娥灵活变阵-常小娥》「韩信」和韩信的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_5bbffb75645a46949809f436ac1b6621",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1501",
+        "name": "韩信"
+      },
+      {
+        "id": "card:1503",
+        "name": "韩信"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"韩信\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "e86ce2576da5aa5b43274366d5287071bc880f997ea5adb94e2596a40238e714"
+}

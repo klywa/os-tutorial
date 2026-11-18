@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_a64b83b39d0b483bb80cb1ddc949c7f9",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "云中君在场时装备促进成长",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“穿戴装备”事件中，云中君在场时适用。云中君在场，每多穿一件装备，开团时穿戴者就能多获得等级。依据为《常小娥灵活变阵-常小娥》「云中君」及官方英雄「云中君」。",
+    "utterances": [
+      {
+        "text": "云中君开团时按装备件数提升等级，现在穿装备能增加永久成长。",
+        "id": "utterances_0ffc135b160b493c874184d32fec8a3d"
+      },
+      {
+        "text": "云中君在场，每多穿一件装备，开团时穿戴者就能多获得等级。",
+        "id": "utterances_2a2dbe57180046e5b60469acf1afec1b"
+      }
+    ],
+    "event_id": "os_5dfcb4835e1e1513",
+    "id": "group_a64b83b39d0b483bb80cb1ddc949c7f9",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "玩家.战场 has \"云中君\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "b60e20a6318d0ba738fd755e9421ef12160efe866f8fb556e63c0afc662fa590"
+}
