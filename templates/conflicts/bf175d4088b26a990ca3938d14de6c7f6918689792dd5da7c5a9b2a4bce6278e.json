@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_6c41acb978f3451c840ba22f131aefbc",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "铸造破晓的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为破晓时适用。破晓首次将目标物防降到零时，能追加目标生命上限15%的伤害。依据为《常小娥灵活变阵-常小娥》「破晓」及官方装备「破晓」。",
+    "utterances": [
+      {
+        "text": "破晓能让普攻逐次降低物理防御，持续攻击同一目标更有效。",
+        "id": "utterances_9d186f729bad4c0088d93382d1326663"
+      },
+      {
+        "text": "破晓首次将目标物防降到零时，能追加目标生命上限15%的伤害。",
+        "id": "utterances_c32ed6652b0b47889b74f2d424f11ec5"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_6c41acb978f3451c840ba22f131aefbc",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"破晓\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "bf175d4088b26a990ca3938d14de6c7f6918689792dd5da7c5a9b2a4bce6278e"
+}

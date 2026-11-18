@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_74ad8a93d17d4c41b2eca6e7030e3acf",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "铸造金色圣剑的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为金色圣剑时适用。法术攻击越高，金色圣剑提供的攻速和普通攻击附伤就越高。依据为《常小娥灵活变阵-常小娥》「金色圣剑」及官方装备「金色圣剑」。",
+    "utterances": [
+      {
+        "text": "金色圣剑能提高攻速，让每次普通攻击附带额外法术伤害。",
+        "id": "utterances_0d6bcec469354c3681d9a33b68d5869d"
+      },
+      {
+        "text": "法术攻击越高，金色圣剑提供的攻速和普通攻击附伤就越高。",
+        "id": "utterances_946775a7f4f142e69913c46f228d7156"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_74ad8a93d17d4c41b2eca6e7030e3acf",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"金色圣剑\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "2ea6ad82809e35caadb73e6e2ea7c8dc566e77f5d1447275ff644947cb5ade77"
+}

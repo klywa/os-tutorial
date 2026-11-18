@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_a95d0a0a1a15422cbad41edc8a4c4ff6",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "选海月限制敌方高等级主力",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "海月牺牲时专门控制敌方等级最高的英雄，适合打高等级单核。",
+        "id": "utterances_2e458b48c310436c8e748cf7d5546201"
+      },
+      {
+        "text": "想给输出争取时间，可以选海月困住对方等级最高的英雄。",
+        "id": "utterances_0b6d327124d04de487804b5daa080fd6"
+      }
+    ],
+    "explanation": "选中海月时，说明这项操作的战斗或资源收益。海月牺牲时专门控制敌方等级最高的英雄，适合打高等级单核。依据《常小娥灵活变阵-常小娥》「海月」和海月的官方卡面、技能。",
+    "event_id": "os_dcef166d05efe08e",
+    "id": "group_a95d0a0a1a15422cbad41edc8a4c4ff6",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5211",
+        "name": "海月"
+      },
+      {
+        "id": "card:5213",
+        "name": "海月"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg2 is \"海月\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "54068a72eea1e6b9dde0ca6e199ff0532342736051d9152ebd47ce80d7e53931"
+}

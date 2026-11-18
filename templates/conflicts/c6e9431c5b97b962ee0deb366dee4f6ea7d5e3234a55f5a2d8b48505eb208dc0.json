@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_06baa6203ab1443681c6eb39410be902",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "钟馗用相邻队友的牺牲压低敌人等级",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "钟馗左右相邻的队友牺牲时，能让击败者暂时掉等级。",
+        "id": "utterances_c8824036f9a34b9e8860066ddb8f5911"
+      },
+      {
+        "text": "钟馗自己或左右一格的队友牺牲，都能临时降低击败者的等级。",
+        "id": "utterances_3cc385d41029450eb4b9292563e0b5e9"
+      }
+    ],
+    "explanation": "上阵钟馗时，说明这项操作的战斗或资源收益。钟馗左右相邻的队友牺牲时，能让击败者暂时掉等级。依据《常小娥灵活变阵-常小娥》「钟馗」和钟馗的官方卡面、技能。",
+    "event_id": "os_e5391e165361858d",
+    "id": "group_06baa6203ab1443681c6eb39410be902",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1751",
+        "name": "钟馗"
+      },
+      {
+        "id": "card:1753",
+        "name": "钟馗"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"钟馗\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "c6e9431c5b97b962ee0deb366dee4f6ea7d5e3234a55f5a2d8b48505eb208dc0"
+}

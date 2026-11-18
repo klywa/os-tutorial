@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_7ccad934b38e434b9bd7640c221a7c4c",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "把霸者重铠转给刘禅",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“转移装备”事件中，转移的装备为霸者重铠，接收者为刘禅时适用。霸者重铠帮高血量的刘禅抵挡伤害，给后排争取输出时间。依据为《常小娥灵活变阵-常小娥》「霸者重铠」及官方装备「霸者重铠」。",
+    "utterances": [
+      {
+        "text": "刘禅生命值高于七成时，霸者重铠能让他少受四成伤害。",
+        "id": "utterances_f348639c7dc94c97a73c930990828468"
+      },
+      {
+        "text": "霸者重铠帮高血量的刘禅抵挡伤害，给后排争取输出时间。",
+        "id": "utterances_43dac001835c4519b5978041e12bc94c"
+      }
+    ],
+    "event_id": "os_f5a416d50e37a948",
+    "id": "group_7ccad934b38e434b9bd7640c221a7c4c",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg2 is \"霸者重铠\" and arg3 is \"刘禅\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "8341aaa21273d99b8651e9b720c219e3d3881a39cb28bcb855067adf8d2dc5ff"
+}

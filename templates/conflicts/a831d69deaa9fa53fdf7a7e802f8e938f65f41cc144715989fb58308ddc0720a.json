@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_d1d6174b1dcf4298a829bbf52d55c618",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用瑶保护输出英雄",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "瑶开战时会附身离她最近的队友，给队友一层护盾。",
+        "id": "utterances_1272129734444721bd9dae7f983f8144"
+      },
+      {
+        "text": "瑶能把首件普通装备分享给队友，也能靠附身保护输出。",
+        "id": "utterances_c6b426110151437fb8c81939ad02ceb4"
+      }
+    ],
+    "explanation": "买到瑶时，这组话说明瑶在队伍中的作用。瑶开战时附身最近队友并提供护盾，开团还会向随机友方英雄分享首件普通装备。依据《常小娥灵活变阵-常小娥》「瑶」及瑶的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_d1d6174b1dcf4298a829bbf52d55c618",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5051",
+        "name": "瑶"
+      },
+      {
+        "id": "card:5053",
+        "name": "瑶"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"瑶\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "a831d69deaa9fa53fdf7a7e802f8e938f65f41cc144715989fb58308ddc0720a"
+}

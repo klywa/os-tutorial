@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_c4eb3297dc4c4e8f88d722eb5d8151ed",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用云中君提升装备持有者的等级",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "云中君开团时，己方英雄身上每件装备都能给穿戴者提升永久等级。",
+        "id": "utterances_d73f671addc04718b250634c9a28275f"
+      },
+      {
+        "text": "主力身上的装备越多，云中君开团时给他的永久等级就越多。",
+        "id": "utterances_b20c89066faa419984b7ed30c7c00dad"
+      }
+    ],
+    "explanation": "买到云中君时，这组话说明云中君在队伍中的作用。云中君开团按己方英雄各自穿戴的装备数量为穿戴者增加永久等级，主力装备越多越能获益。依据《常小娥灵活变阵-常小娥》「云中君」及云中君的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_c4eb3297dc4c4e8f88d722eb5d8151ed",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5063",
+        "name": "云中君"
+      },
+      {
+        "id": "card:5061",
+        "name": "云中君"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"云中君\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "38bdace1686b5f29b30c618a41dd04741c75c1fd40e565a4dd4b5aaeacc8a603"
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_620fe65ba76f43c5a1b2a597411ebb28",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "id": "group_620fe65ba76f43c5a1b2a597411ebb28",
+    "name": "刘禅用弦音补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "买下刘禅能给诸葛亮配个前排，杨玉环的弦音也能帮刘禅觉醒。",
+        "id": "utterances_023c25a1e73d41b78765a7bac9af1bb4"
+      },
+      {
+        "text": "未觉醒的刘禅也能承伤，拿到杨玉环的弦音还能为他补觉醒。",
+        "id": "utterances_48c6cf3070284cd089b745c5b5caa0cb"
+      }
+    ],
+    "explanation": "诸葛亮是主C，杨玉环在场，买到的刘禅尚未觉醒。普通刘禅可以靠技能的护盾承伤，并能利用杨玉环提供的弦音补觉醒。依据《常小娥灵活变阵-常小娥》「施法队伍准备补刘禅觉醒时」及刘禅、杨玉环、弦音卡面。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1141",
+        "name": "刘禅"
+      },
+      {
+        "id": "card:1143",
+        "name": "刘禅"
+      },
+      {
+        "id": "card:1761",
+        "name": "杨玉环"
+      },
+      {
+        "id": "card:1763",
+        "name": "杨玉环"
+      },
+      {
+        "id": "card:307001",
+        "name": "弦音"
+      },
+      {
+        "id": "card:1903",
+        "name": "诸葛亮"
+      },
+      {
+        "id": "card:1901",
+        "name": "诸葛亮"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.主C is \"诸葛亮\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "3d12c4add317643a4af6f5d6485f718561a57cbc00fef50142d487bd45719ab2"
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_b6b0a28c14f143889b0f341c26f1dc7d",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用太乙真人提供复生保护",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "太乙真人开团能让最近的队友复生，多给主力一次作战机会。",
+        "id": "utterances_5e207f8dc0594e5baa14773677b0d140"
+      },
+      {
+        "text": "想让海月再次触发牺牲，可以留太乙真人给她复生。",
+        "id": "utterances_cc0f19f46f064caab7b31be54f361cb0"
+      }
+    ],
+    "explanation": "买到太乙真人时，这组话说明太乙真人在队伍中的作用。太乙真人开团让距离最近的一名英雄获得复生，可保护主力，也可让海月在复生后再次触发牺牲。依据《常小娥灵活变阵-常小娥》「太乙真人」及太乙真人的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_b6b0a28c14f143889b0f341c26f1dc7d",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1861",
+        "name": "太乙真人"
+      },
+      {
+        "id": "card:1863",
+        "name": "太乙真人"
+      },
+      {
+        "id": "card:5211",
+        "name": "海月"
+      },
+      {
+        "id": "card:5213",
+        "name": "海月"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"太乙真人\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "bd87561cdbc3953f0bd657e5fedda697a0ccebafccf3bc40a1ea796464c4343d"
+}

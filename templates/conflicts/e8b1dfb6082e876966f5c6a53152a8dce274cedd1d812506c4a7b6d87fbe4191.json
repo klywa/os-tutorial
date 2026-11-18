@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_450c127ee6564b1fa9df66000695a379",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "铸造破茧之衣的基础收益",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“铸造装备”事件中，铸造成品为破茧之衣时适用。铸造破茧之衣能补开场法力，还能限制一名高等级敌人。依据为《常小娥灵活变阵-常小娥》「破茧之衣」及官方装备「破茧之衣」。",
+    "utterances": [
+      {
+        "text": "破茧之衣能在开场时眩晕敌方等级最高的三人中的一人。",
+        "id": "utterances_b3a5f79f50b54213869c2796a8dc56ec"
+      },
+      {
+        "text": "铸造破茧之衣能补开场法力，还能限制一名高等级敌人。",
+        "id": "utterances_b27850cd02c74400891d0057fee8632c"
+      }
+    ],
+    "event_id": "os_db70e56ec24636b5",
+    "id": "group_450c127ee6564b1fa9df66000695a379",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg3 is \"破茧之衣\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "e8b1dfb6082e876966f5c6a53152a8dce274cedd1d812506c4a7b6d87fbe4191"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_1744ab756b25457490bc0f702220a38f",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "唤醒触发露娜的效果",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“对目标使用效果牌”事件中，目标为露娜，使用唤醒时适用。唤醒露娜有机会再次触发队友整备，同时为阿科米亚核心升级。依据为《常小娥灵活变阵-常小娥》「露娜」及官方效果牌「唤醒」、英雄「露娜」。",
+    "utterances": [
+      {
+        "text": "唤醒触发露娜登场，能提高阿科米亚核心等级并随机触发整备。",
+        "id": "utterances_8d1b93044bc94f5f81949430cc09b094"
+      },
+      {
+        "text": "唤醒露娜有机会再次触发队友整备，同时为阿科米亚核心升级。",
+        "id": "utterances_f077e76aa40442988c5e6a6ae33afe65"
+      }
+    ],
+    "event_id": "os_bfcc2eec6def94c8",
+    "id": "group_1744ab756b25457490bc0f702220a38f",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"露娜\" and arg2 is \"唤醒\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "5e74d379196838cbc3de3812ac95d04c1c5bd6963120c99a2637a9eac59b4ab6"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_b4b33f07f5264093b522204d8ca4d755",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用李信配合牺牲英雄",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "己方有牺牲效果的英雄阵亡时，李信就能获得临时等级。",
+        "id": "utterances_f211e7de56b145598192d3296b3845e6"
+      },
+      {
+        "text": "队伍里有人能复生又有牺牲效果，李信就有机会多次提升临时等级。",
+        "id": "utterances_78a56921127c465183d73cc016fc51d1"
+      }
+    ],
+    "explanation": "买到李信时，这组话说明李信在队伍中的作用。己方具有牺牲效果的英雄阵亡时，李信获得临时等级。能复生的牺牲英雄有机会在同一场战斗多次触发。依据《常小娥灵活变阵-常小娥》「李信」及李信的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_b4b33f07f5264093b522204d8ca4d755",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5073",
+        "name": "李信"
+      },
+      {
+        "id": "card:5071",
+        "name": "李信"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"李信\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "71b198c24f3df962478ea002c8b47730a669ed43b762ae637549a8e348898b38"
+}

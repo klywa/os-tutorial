@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_98f36b3fde7844f78890c292057ac9a9",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "用明世隐保留临时等级",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "明世隐能把最近队友的一部分临时等级转为永久等级。",
+        "id": "utterances_c5e6f27452bb414d971b3d2ab4b47c90"
+      },
+      {
+        "text": "明世隐能治疗连接的队友，队友有临时等级时还能留下其中一部分。",
+        "id": "utterances_bfdc690a7f7444d087eadc493e966f94"
+      }
+    ],
+    "explanation": "买到明世隐时，这组话说明明世隐在队伍中的作用。明世隐连接最近的队友，能治疗该队友，并把他获得的一部分临时等级转成永久等级。依据《常小娥灵活变阵-常小娥》「明世隐」及明世隐的官方卡面、技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "id": "group_98f36b3fde7844f78890c292057ac9a9",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5011",
+        "name": "明世隐"
+      },
+      {
+        "id": "card:5013",
+        "name": "明世隐"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"明世隐\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "b54d23b98343b752757453562dbae92feef377fe7b36b87d1331be1c25da4b02"
+}

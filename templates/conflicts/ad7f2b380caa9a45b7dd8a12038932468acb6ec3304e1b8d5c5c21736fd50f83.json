@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_570d589817a341e4a073998f97777cea",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "全军动员触发狂铁整备",
+    "scope": {
+      "player_id": null,
+      "lineup_note_id": null
+    },
+    "explanation": "在“使用无目标效果牌”事件中，使用全军动员，狂铁在场时适用。全军动员让狂铁再整备一次，队里的其他整备英雄也能受益。依据为《常小娥灵活变阵-常小娥》「狂铁」及官方效果牌「全军动员」、英雄「狂铁」。",
+    "utterances": [
+      {
+        "text": "全军动员能立即触发狂铁整备，增加阿科米亚核心等级。",
+        "id": "utterances_55985ddc01a9409b8effcbcb8ac61764"
+      },
+      {
+        "text": "全军动员让狂铁再整备一次，队里的其他整备英雄也能受益。",
+        "id": "utterances_3d2ed9a9a64344a9afa9c3b471130324"
+      }
+    ],
+    "event_id": "os_1c33df3b1a2b43f5",
+    "id": "group_570d589817a341e4a073998f97777cea",
+    "conditions": [],
+    "related_entities": [],
+    "priority": 0,
+    "expression": "arg1 is \"全军动员\" and 玩家.战场 has \"狂铁\"",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "ad7f2b380caa9a45b7dd8a12038932468acb6ec3304e1b8d5c5c21736fd50f83"
+}

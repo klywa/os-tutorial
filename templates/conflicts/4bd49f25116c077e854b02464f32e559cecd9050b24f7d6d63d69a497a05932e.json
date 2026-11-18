@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_ef848ba2364640379bdd495e6008f6eb",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "id": "group_ef848ba2364640379bdd495e6008f6eb",
+    "name": "前期买苏烈单挂",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "想单挂苏烈，可以靠牺牲提升永久等级，达到40级还能复生。",
+        "id": "utterances_4df55a54c255474a9bb852706362a964"
+      },
+      {
+        "text": "前期单挂苏烈时，牺牲和小菟助力都能帮他提升等级。",
+        "id": "utterances_a460200fd85e4eb98bb32d595a05991d"
+      }
+    ],
+    "explanation": "棋手未满6级，场上还没有苏烈，此时买到苏烈可以考虑前期单挂。苏烈牺牲会永久提升等级，40级时战斗中首次被击败后可以复生。依据《常小娥灵活变阵-常小娥》「苏烈」及苏烈的官方卡面、40级技能。",
+    "event_id": "os_2406b1c2f3572ad9",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:1941",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:1943",
+        "name": "苏烈"
+      },
+      {
+        "id": "card:92499",
+        "name": "小菟助力"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and not (玩家.战场 has \"苏烈\")",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "4bd49f25116c077e854b02464f32e559cecd9050b24f7d6d63d69a497a05932e"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "kind": "group",
+  "record_id": "group_92a92d985474425c9aaafc8b5becf34e",
+  "base": null,
+  "current": null,
+  "incoming": {
+    "name": "合成马超补觉醒",
+    "scope": {
+      "player_id": "player:24",
+      "lineup_note_id": "changxiaoe-general-play"
+    },
+    "utterances": [
+      {
+        "text": "马超觉醒后，己方控制敌人时能给他回30点法力。",
+        "id": "utterances_8abc11d9437b40b6b1c32f3c5a349fa2"
+      },
+      {
+        "text": "给马超补觉醒，己方打出控制时给他的回蓝和暴击率都会翻倍。",
+        "id": "utterances_b6a3537f40214a77a3e088a3aa7ee43b"
+      }
+    ],
+    "explanation": "合成后马超还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「己方施加控制效果时，马超获得15点法力值及5%暴击率。」与「己方施加控制效果时，马超获得30点法力值及10%暴击率。」。依据《常小娥灵活变阵-常小娥》「马超」和马超的官方卡面、技能。",
+    "event_id": "os_d12194463340a8ec",
+    "id": "group_92a92d985474425c9aaafc8b5becf34e",
+    "conditions": [],
+    "related_entities": [
+      {
+        "id": "card:5183",
+        "name": "马超"
+      },
+      {
+        "id": "card:5181",
+        "name": "马超"
+      }
+    ],
+    "priority": 0,
+    "expression": "arg1 is \"马超\" and not arg1.已觉醒",
+    "editor_mode": "text"
+  },
+  "conflicts": [
+    "/dependency"
+  ],
+  "id": "d6012c726621b769c3b9445c9623708eb8f12cf3704f89bc5b0e52bc0610ad99"
+}
