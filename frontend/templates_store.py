@@ -13,9 +13,11 @@ import uuid
 import json_store
 from workspace import Conflict, store_lock
 import templates_schema as schema
+import template_rules as rules
 
 META = 'templates/library.meta.json'
 JOURNAL = 'raw/templates/pending.json'
+PUBLISHED = 'raw/templates/published.json'
 FOLDERS = {'event':'events','group':'groups'}
 
 
@@ -41,6 +43,10 @@ def _path(kind, uid):
 def _safe_path(root, relative):
     """Recovery journals may only target the canonical template domain."""
     if not isinstance(relative,str):raise ValueError('事务路径无效')
+    if relative==PUBLISHED:
+        target=(Path(root)/relative).resolve()
+        if target.is_relative_to(Path(root).resolve()):return target
+        raise ValueError('发布路径无效')
     parts=Path(relative).parts
     allowed=(relative==META or len(parts)==3 and parts[0]=='templates' and parts[1] in (*FOLDERS.values(),'resolutions')
              and parts[2].endswith('.json') and schema.ID.fullmatch(parts[2][:-5]))
@@ -76,7 +82,7 @@ def recover(root):
     with store_lock(root,wait=True):return _recover_locked(root)
 
 
-def _load(root):
+def _load(root,*,renamed=None,migrate_events=False):
     """Read public arrays and tracked metadata; pending committed after-image wins.
 
     This helper never writes, so proposal/import previews are strictly read-only.
@@ -90,6 +96,7 @@ def _load(root):
     public={'schema_version':1,'events':[],'groups':[]}
     for kind,folder in FOLDERS.items():
         values={e['id']:e for e in schema.builtin_events()} if kind=='event' else {}
+        defaults=dict(values)
         for uid in meta['tombstones'].get(kind,{}):values.pop(uid,None)
         relatives={p.relative_to(root).as_posix() for p in (root/'templates'/folder).glob('*.json')}
         relatives.update(p for p in overlay if p.startswith(f'templates/{folder}/'))
@@ -97,15 +104,25 @@ def _load(root):
             path=_safe_path(root,relative)
             value=deepcopy(overlay[relative]) if relative in overlay else json_store.read(path)
             if not isinstance(value,dict) or value.get('id')!=path.stem:raise ValueError('模板文件身份与路径不一致')
+            default=values.get(value['id'],{})
+            if kind=='event' and (default or migrate_events):
+                updated=rules.explanation_event(value)
+                if default.get('name') == updated['name'] + '（旧版）':
+                    updated={**updated,'name':default['name']}
+                if renamed is not None and updated!=value:renamed[value['id']]=updated
+                value=updated
             if value['id'] not in meta['tombstones'].get(kind,{}):values[value['id']]=value
+        if kind=='event':
+            changes=rules.disambiguate_existing(values.values(),defaults)
+            if renamed is not None:renamed.update(changes)
         public[folder]=schema.order_events(values.values()) if kind=='event' else sorted(values.values(),key=lambda row:row['id'])
     # A writer that started after the first journal read owns the complete logical
     # after-image; retry instead of exposing a partially replaced file batch.
-    if journal is None and (root/JOURNAL).exists():return _load(root)
+    if journal is None and (root/JOURNAL).exists():return _load(root,renamed=renamed,migrate_events=migrate_events)
     latest=json_store.read(root/META,_meta()) if journal is None else meta
     if isinstance(latest,dict):
         for key,default in _meta().items():latest.setdefault(key,deepcopy(default))
-    if journal is None and latest!=meta:return _load(root)
+    if journal is None and latest!=meta:return _load(root,renamed=renamed,migrate_events=migrate_events)
     return public,meta
 
 
@@ -277,6 +294,8 @@ def _bindings(group,events,catalog,previous=None):
 
 def _references(group,events,catalog=None,bindings=None):
     refs={}
+    if 'expression' in group:
+        refs.update({r['id']:r['name'] for r in group.get('related_entities',[])})
     player=group['scope'].get('player_id')
     if player:refs[player]=player
     event=events.get(group['event_id'],{})
@@ -359,20 +378,24 @@ def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=No
     _baseline(newmeta,before,after,_catalog(root,entities)[0])
     newmeta['audit'].append({'id':uuid.uuid4().hex,'actor':actor,'at':_now(),'changes':deepcopy(changed),
                              'before':deepcopy(before),'after':deepcopy(after)})
-    return _persist_locked(root,before,after,newmeta,extra_writes=extra_writes)
+    return _persist_locked(root,before,after,newmeta,extra_writes=extra_writes,entities=entities)
 
 
-def _persist_locked(root,before,after,meta,*,extra_writes=None):
+def _persist_locked(root,before,after,meta,*,extra_writes=None,entities=None):
     root=Path(root);writes={META:meta};deletes=[]
     for relative,value in (extra_writes or {}).items():
         if not relative.startswith('templates/resolutions/'):
             raise ValueError('附加模板事务只能写入冲突解决记录')
         _safe_path(root,relative);writes[relative]=deepcopy(value)
     for kind,folder in FOLDERS.items():
-        for value in after[folder]:writes[_path(kind,value['id'])]=value
+        old={record['id']:record for record in before[folder]}
+        for value in after[folder]:
+            if old.get(value['id'])!=value:writes[_path(kind,value['id'])]=value
         surviving={v['id'] for v in after[folder]}
         for value in before[folder]:
             if value['id'] not in surviving:deletes.append(_path(kind,value['id']))
+    from template_package import encode
+    writes[PUBLISHED]=encode(_exportable(after),_catalog(root,entities)[0],_notes(root),meta,all_groups=after['groups'])
     json_store.write_file(root/JOURNAL,{'schema_version':1,'writes':writes,'deletes':deletes})
     _recover_locked(root)
     return _snapshot(after,meta)
@@ -385,17 +408,52 @@ def apply(root,revision,changes,actor='admin',*,entities=None,_allow_conflicts=F
         return _commit(root,public,after,meta,actor,changes,entities=entities)
 
 
-def export_library(root,group_ids=None):
-    public=snapshot(root)
+def _exportable(public):
+    groups = []
+    for group in public['groups']:
+        if group.get('ignored'):
+            continue
+        utterances = [row for row in group['utterances'] if not row.get('ignored')]
+        if utterances:
+            groups.append({**group, 'utterances': utterances})
+    return {'events': public['events'], 'groups': groups}
+
+
+def export_library(root,group_ids=None,*,rules_format=False,entities=None):
+    recover(root)
+    public,meta=_load(root)
     if group_ids is not None:
         if not isinstance(group_ids,list) or any(not isinstance(uid,str) for uid in group_ids):raise ValueError('导出组身份必须为列表')
         wanted=set(group_ids);available={g['id'] for g in public['groups']}
         if wanted-available:raise ValueError('导出组不存在')
         groups=[g for g in public['groups'] if g['id'] in wanted]
-        event_ids={g['event_id'] for g in groups};events=[e for e in public['events'] if e['id'] in event_ids]
-    else:groups=public['groups'];events=public['events']
+    else:groups=public['groups']
+    projected=_exportable({'events':public['events'],'groups':groups})
+    groups=projected['groups']
+    event_ids={g['event_id'] for g in groups}
+    events=[e for e in public['events'] if group_ids is None or e['id'] in event_ids]
+    if rules_format or any('expression' in group for group in groups):
+        from template_package import encode
+        return encode({'events':events,'groups':groups},_catalog(root,entities)[0],_notes(root),meta,all_groups=public['groups'])
     from templates_portable import encode
     return encode({'events':events,'groups':groups})
+
+
+def refresh_published(root,entities=None,*,migrate_events=False):
+    """Reconcile the derived runtime file after startup or an external sync."""
+    from template_package import encode
+    with store_lock(root,wait=True):
+        _recover_locked(root)
+        renamed={}
+        public,meta=_load(root,renamed=renamed,migrate_events=migrate_events)
+        result=encode(_exportable(public),_catalog(root,entities)[0],_notes(root),meta,all_groups=public['groups'])
+        if renamed:
+            writes={_path('event',uid):row for uid,row in renamed.items() if row in public['events']}
+            writes[PUBLISHED]=result
+            json_store.write_file(Path(root)/JOURNAL,{'schema_version':1,'writes':writes,'deletes':[]})
+            _recover_locked(root)
+        else:json_store.write_file(_safe_path(root,PUBLISHED),result)
+        return result
 
 
 def preview_import(root,document,*,entities=None):
@@ -458,5 +516,5 @@ def confirm_warning(root,group_id,revision,actor='admin',*,entities=None):
                 newmeta.setdefault('entity_archive',{}).setdefault(group_id,{}).setdefault(entity['id'],deepcopy(entity['before']))
             newmeta['baselines'][group_id][entity['id']]=deepcopy(entity['after'])
         newmeta['audit'].append({'id':uuid.uuid4().hex,'actor':actor,'at':_now(),'action':'confirm_warning','group_id':group_id,'warning_revision':revision})
-        result=_persist_locked(root,public,public,newmeta)
+        result=_persist_locked(root,public,public,newmeta,entities=entities)
         return {'confirmed':True,'group_id':group_id,'revision':result['revision']}

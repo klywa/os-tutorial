@@ -1,12 +1,11 @@
-import {memo,useEffect,useMemo,useState} from 'react';
+import {memo,useLayoutEffect,useState} from 'react';
 import type {ReactNode} from 'react';
 import type {KnowledgeNode} from './types';
-import {displayValue,textDiff} from './noteReviewModel';
-import {createDiffDebouncer} from './diffDebounce';
+import {displayValue,type DiffPart} from './noteReviewModel';
+import {calculateReviewDiff,initialDiff} from './reviewDiff';
 import {ParagraphTextarea} from './ParagraphTextarea';
 
-const RenderedDiff=memo(function RenderedDiff({before,after,split,editor}:{before:string;after:string;split:boolean;editor?:ReactNode}){
- const parts=useMemo(()=>textDiff(before,after),[before,after]);
+const RenderedDiff=memo(function RenderedDiff({before,after,parts,split,editor}:{before:string;after:string;parts:DiffPart[];split:boolean;editor?:ReactNode}){
  const proposed=<div>{after?parts.map((p,i)=>p.kind==='remove'?null:p.kind==='add'?<ins key={i}>{p.text}</ins>:<span key={i}>{p.text}</span>):<em>将删除</em>}</div>;
  if(split)return <div className="proposal-split-diff" aria-label="实时差异">
   <section aria-label="原文"><h4>原文</h4><div>{before?parts.map((p,i)=>p.kind==='add'?null:p.kind==='remove'?<del key={i}>{p.text}</del>:<span key={i}>{p.text}</span>):<em>无原文</em>}</div></section>
@@ -15,10 +14,18 @@ const RenderedDiff=memo(function RenderedDiff({before,after,split,editor}:{befor
  return <div className="review-diff" aria-label="实时差异">{parts.map((p,i)=>p.kind==='remove'?<del key={i}><span className="diff-mark" aria-label="删除">−</span>{p.text}</del>:p.kind==='add'?<ins key={i}><span className="diff-mark" aria-label="增加">+</span>{p.text}</ins>:<span key={i}>{p.text}</span>)}</div>;
 });
 export const DiffText=memo(function DiffText({before,after,composing=false,split=false,editor}:{before:string;after:string;composing?:boolean;split?:boolean;editor?:ReactNode}){
- const [display,setDisplay]=useState(()=>({before,after}));
- const timer=useMemo(()=>createDiffDebouncer(setDisplay),[]);
- useEffect(()=>{timer.update({before,after},composing);return timer.cancel;},[before,after,composing,timer]);
- return <RenderedDiff before={display.before} after={display.after} split={split} editor={editor}/>;
+ const [display,setDisplay]=useState(()=>({before,after,parts:initialDiff(before,after)}));
+ useLayoutEffect(()=>{
+  if(composing)return;
+  if(before===after){
+   setDisplay(current=>current.before===before&&current.after===after?current:{before,after,parts:initialDiff(before,after)});
+   return;
+  }
+  let cancel:()=>void=()=>{};
+  const timer=setTimeout(()=>{cancel=calculateReviewDiff(before,after,parts=>setDisplay({before,after,parts}));},2000);
+  return ()=>{clearTimeout(timer);cancel();};
+ },[before,after,composing]);
+ return <RenderedDiff {...display} split={split} editor={editor}/>;
 });
 export const NodeFields=memo(function NodeFields({node,original,onChange,showDiff=true,onComposing,readOnly=false}:{node:KnowledgeNode;original:KnowledgeNode;onChange:(node:KnowledgeNode)=>void;showDiff?:boolean;onComposing?:(value:boolean)=>void;readOnly?:boolean}){
  const [composing,setComposing]=useState(false);

@@ -116,7 +116,7 @@ export function CardProvider({children,enabled=true}:{children:ReactNode;enabled
 export function EntityScope({references,children}:{references:string[];children:ReactNode}){return <ReferenceContext.Provider value={references}>{children}</ReferenceContext.Provider>;}
 export function useCards(){return useContext(CardContext);}
 export function CardImage({card,large=false}:{card?:CardSummary;large?:boolean}){const [bad,setBad]=useState(false);const url=large?card?.image_url||card?.thumb_url:card?.thumb_url||card?.image_url;useEffect(()=>setBad(false),[url]);return url&&!bad?<img className={large?'official-card-image':'official-card-thumb'} src={appUrl(url)} alt={card?.name??'卡牌'} loading="lazy" onError={()=>{setBad(true);const version=card?.catalog_version;if(version)void checkCardVersion().then(state=>{if(state.version!==version)window.dispatchEvent(new Event("cards-version-changed"));}).catch(()=>{});}}/>:<span className={large?'card-image-placeholder large':'card-image-placeholder'}>{card?.name??'未配置'}</span>;}
-export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:string;portrait?:boolean}){
+export function EntityChip({ids,label,portrait=false,inline=false}:{ids:string[];label?:string;portrait?:boolean;inline?:boolean}){
  const dock=useContext(DockContext),token=useId();
  const cards=useCards(),references=useContext(ReferenceContext);const candidates=resolveCandidates(ids,references);
  const [localOpen,setOpen]=useState(false),[pinned,setPinned]=useState(false),[chosen,setChosen]=useState('');
@@ -141,7 +141,7 @@ export function EntityChip({ids,label,portrait=false}:{ids:string[];label?:strin
   onBlur:(event:React.FocusEvent<HTMLElement>)=>{if(!panel.current?.contains(event.relatedTarget as Node))leave();},
   onClick:activate,
  };
- return <>{dock?.noteTools&&!portrait?
+ return <>{(inline||dock?.noteTools)&&!portrait?
   <span ref={setAnchor} className="entity-chip entity-inline" role="button" tabIndex={0} {...anchorEvents}
     onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}}}>{title}</span>:
   <button type="button" ref={setAnchor} className={portrait?'entity-portrait':'entity-chip'} {...anchorEvents}>{portrait&&<CardImage card={card}/>}<span>{title}</span></button>}
@@ -160,4 +160,4 @@ function CardVersion({card,hero=false}:{card?:CardSummary;hero?:boolean}){
  {error?<p className="error" role="alert">{error}</p>:!detail?<p className="muted">正在载入技能…</p>:<>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单列本卡技能，以下来自对应普通英雄。</p>}{detail.skills.slice(0,full?undefined:1).map(s=><section key={s.id}><strong>{s.name}</strong><p>{s.effect}</p>{full&&s.enhancements.map((e,i)=><p key={i}>{e.level}级：{e.effect}</p>)}</section>)}{full&&<dl>{Object.entries(detail.stats).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}<button className="link-button" onClick={()=>setFull(!full)}>{full?'收起完整详情':'查看完整卡牌详情'}</button></>}
  </section>;
 }
-export function EntityText({children}:{children:ReactNode}){const cards=useCards();function transform(node:ReactNode):ReactNode{return Children.map(node,child=>{if(typeof child==='string')return splitEntities(child,cards).map((t,i)=>t.ids?<EntityChip key={i} ids={t.ids} label={t.text}/>:t.text);if(isValidElement(child)&&typeof child.type==='string'&&!['a','code','pre','button','input','textarea'].includes(child.type)){const el=child as ReactElement<{children?:ReactNode}>;return cloneElement(el,{},transform(el.props.children));}return child;});}return <>{transform(children)}</>;}
+export function EntityText({children,inline=false}:{children:ReactNode;inline?:boolean}){const cards=useCards();function transform(node:ReactNode):ReactNode{return Children.map(node,child=>{if(typeof child==='string')return splitEntities(child,cards).map((t,i)=>t.ids?<EntityChip key={i} ids={t.ids} label={t.text} inline={inline}/>:t.text);if(isValidElement(child)&&typeof child.type==='string'&&!['a','code','pre','button','input','textarea'].includes(child.type)){const el=child as ReactElement<{children?:ReactNode}>;return cloneElement(el,{},transform(el.props.children));}return child;});}return <>{transform(children)}</>;}

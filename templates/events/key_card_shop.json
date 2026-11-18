@@ -1,0 +1,30 @@
+{
+  "id": "key_card_shop",
+  "name": "商店刷出关键卡牌",
+  "category": "关键局势",
+  "parameters": [
+    {
+      "id": "p_situation",
+      "key": "situation",
+      "name": "场上情况",
+      "type": "text"
+    },
+    {
+      "id": "p_stage",
+      "key": "stage",
+      "name": "对局阶段",
+      "type": "text",
+      "suggestions": [
+        "前期",
+        "中期",
+        "后期"
+      ]
+    },
+    {
+      "id": "p_card",
+      "key": "card",
+      "name": "关键卡牌",
+      "type": "entity"
+    }
+  ]
+}

@@ -1,7 +1,26 @@
 import {describe,it,expect} from 'vitest';
-import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
-const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题不参与值搜索'}],related_entities:[]};
+import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
+const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题参与话术搜索'}],related_entities:[]};
 describe('template filtering and editing',()=>{
+ it('reviews explanations independently and treats legacy missing text as empty',()=>{
+  const next={...common,name:'改名',explanation:'第一行\n依据'};
+  expect(groupDiffKeys(common,next)).toEqual(['explanation','name']);
+  expect(groupDiffKeys(common,{...common,explanation:''})).toEqual([]);
+  expect(selectedGroupChange(common,next,['explanation'])).toEqual({...common,explanation:next.explanation});
+  expect(selectedGroupChange(next,common,['explanation'])).toStrictEqual({...common,name:next.name});
+  expect(selectedGroupChange(common,next,['name']).explanation).toBeUndefined();
+  expect(describeTemplateRecord(next)).toContain('说明与依据：第一行\n依据');
+ });
+ it('preserves the proposed JSON representation on full approval',()=>{
+  const explicitEmpty={...common,explanation:''};
+  expect(selectedGroupChange(common,explicitEmpty,[])).toStrictEqual(explicitEmpty);
+  expect(selectedGroupChange(explicitEmpty,common,['record'])).toStrictEqual(common);
+  const renamed={...common,name:'更新'};
+  expect(selectedGroupChange(explicitEmpty,renamed,['name'])).toStrictEqual(renamed);
+  expect(selectedGroupChange(renamed,explicitEmpty,['name'])).toStrictEqual(explicitEmpty);
+  const moreChanges={...renamed,priority:2};
+  expect(selectedGroupChange(explicitEmpty,moreChanges,['name'])).toStrictEqual({...explicitEmpty,name:renamed.name});
+ });
  it('shows only unseen warning changes in the login popup while preserving the full badge list',()=>{
   const seen:TemplateWarning={group_id:'seen',group_name:'已知变化',revision:'a',entities:[]},unseen={...seen,group_id:'unseen',group_name:'新增变化'};
   const snapshot={items:[seen,unseen],unseen_items:[unseen],notification_revision:'both',unseen:true};
@@ -29,7 +48,7 @@ describe('template filtering and editing',()=>{
   const g={...common,conditions:[...common.conditions,{id:'b',parameter_key:'round',operator:'between' as const,value:[3,7]},{id:'t',parameter_key:'ready',operator:'eq' as const,value:true}]};
   expect(filterTemplateGroups([g],{event:'buy',player:'',lineup:'',query:'虞姬，7,true'})).toHaveLength(1);
   expect(filterTemplateGroups([g],{event:'buy',player:'',lineup:'',query:'虞姬,9'})).toHaveLength(0);
-  expect(filterTemplateGroups([g],{event:'',player:'',lineup:'',query:'标题'})).toHaveLength(0);
+  expect(filterTemplateGroups([g],{event:'',player:'',lineup:'',query:'标题'})).toHaveLength(1);
  });
  it('matches entity IDs and aliases alongside another AND value',()=>{
   const group={...common,conditions:[...common.conditions,{id:'n',parameter_key:'round',operator:'eq' as const,value:4}]};

@@ -30,9 +30,10 @@ export default function TemplateHelp({onClose}:{onClose:()=>void}){
   link.href=url;link.download='template-library-help.md';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
  }
  return <TemplateDialog title="话术模板库帮助" onClose={onClose} wide><div className="template-help">
-  <div className="template-help-actions"><button onClick={exportDocument}>导出帮助文档</button><span className="muted">下载完整协议和两份 JSON 示例（Markdown）</span></div>
+  <div className="template-help-actions"><button onClick={exportDocument}>导出帮助文档</button><span className="muted">下载事件与条件语法参考（Markdown）</span></div>
   <div className="template-help-markdown"><ReactMarkdown remarkPlugins={[remarkGfm]} skipHtml components={{a:({href,children})=><a href={helpExampleLink(href)} tabIndex={0}>{children}</a>,table:({children})=><div className="template-help-table" role="region" aria-label="协议字段表" tabIndex={0}><table>{children}</table></div>}}>{helpMarkdown}</ReactMarkdown></div>
-  {helpExamples.map(example=><HelpExample key={example.id} example={example}/>)}
+  <section aria-label="模板导入示例"><h3>模板导入示例</h3><nav className="template-help-actions">{helpExamples.map(example=><a key={example.id} href={'#template-help-'+example.id}>{example.title}</a>)}</nav>
+  {helpExamples.map(example=><HelpExample key={example.id} example={example}/>)}</section>
   <footer><button onClick={onClose}>关闭帮助</button></footer>
  </div></TemplateDialog>;
 }

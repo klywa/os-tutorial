@@ -1,0 +1,31 @@
+{
+  "id": "dangerous_opponent",
+  "name": "高危对手",
+  "category": "关键局势",
+  "parameters": [
+    {
+      "id": "p_situation",
+      "key": "situation",
+      "name": "场上情况",
+      "type": "text"
+    },
+    {
+      "id": "p_stage",
+      "key": "stage",
+      "name": "对局阶段",
+      "type": "text",
+      "suggestions": [
+        "前期",
+        "中期",
+        "后期"
+      ]
+    },
+    {
+      "id": "p_health",
+      "key": "health",
+      "name": "血量",
+      "type": "number",
+      "min": 0
+    }
+  ]
+}

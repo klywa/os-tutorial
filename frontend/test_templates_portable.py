@@ -41,6 +41,18 @@ class EntityTests(unittest.TestCase):
 
 
 class PortableTests(unittest.TestCase):
+    def test_explanation_roundtrip_and_codepoint_limit(self):
+        original = library()
+        for value in ('', '💬' * 300):
+            original['groups'][0]['explanation'] = value
+            external = portable.encode(original)
+            self.assertEqual(external['groups'][0]['explanation'], value)
+            self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'], original['groups'])
+        for value in ('💬' * 301, None, True, []):
+            external['groups'][0]['explanation'] = value
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, '说明'):
+                portable.decode(external, original, CATALOG, {})
+
     def test_roundtrip_preserves_canonical_ids_and_archive(self):
         original = library()
         external = portable.encode(original)

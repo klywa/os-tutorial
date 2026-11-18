@@ -1,26 +1,19 @@
 {
   "kind": "speech-template-library",
-  "schema_version": 2,
-  "events": [
-    {
-      "id": "help_minimal_event_v1",
-      "name": "示例：回合提醒",
-      "parameters": [],
-      "category": "未分类"
-    }
-  ],
+  "schema_version": 3,
+  "events": [],
   "groups": [
     {
-      "id": "help_minimal_group_v1",
-      "name": "示例：通用提醒",
-      "event_id": "help_minimal_event_v1",
+      "name": "刷新商店提醒",
+      "event_name": "解释为何刷新商店",
       "scope": {
-        "player_id": null,
-        "lineup_note_id": null
+        "player": null,
+        "lineup": null
       },
-      "conditions": [],
+      "expression": "",
+      "priority": 0,
       "utterances": [
-        "确认当前回合的安排。"
+        "看看刷新后的商店。"
       ]
     }
   ]

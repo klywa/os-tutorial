@@ -63,7 +63,7 @@ class TemplateTests(unittest.TestCase):
 
     def test_seed_and_preview_do_not_write_and_cover_all_event_families(self):
         before=self.files(); snap=store.snapshot(self.root)
-        self.assertEqual(len(snap['events']),29)
+        self.assertEqual(len([e for e in snap['events'] if e['id'].startswith('os_')]),23)
         self.assertIn('auction_start',{x['id'] for x in snap['events']})
         preview=store.preview_import(self.root,{'kind':'speech-template-library','schema_version':1,'events':[event()],'groups':[group()]})
         self.assertEqual(preview['errors'],[])
@@ -81,6 +81,32 @@ class TemplateTests(unittest.TestCase):
         self.assertEqual(preview['errors'],[])
         self.assertEqual(preview['changes'],[])
         self.assertEqual(len(store.snapshot(self.root)['groups']),2)
+
+    def test_exports_omit_ignored_records_and_reimport_keeps_them(self):
+        saved = self.saved()
+        active = group()
+        first = active['utterances'][0]
+        first['ignored'] = True
+        active['utterances'].append({'id': 'active', 'text': '正常话术'})
+        ignored_group = group('g2')
+        ignored_group.update(name='忽略整组', ignored=True)
+        ignored_lines = group('g3')
+        ignored_lines['name'] = '忽略全部话术'
+        for row in ignored_lines['utterances']:
+            row['ignored'] = True
+        store.apply(self.root, saved['revision'], [
+            put('group', active), put('group', ignored_group), put('group', ignored_lines),
+        ])
+        for rules_format in (False, True):
+            exported = store.export_library(self.root, ['g1', 'g2', 'g3'], rules_format=rules_format)
+            self.assertEqual([row['utterances'] for row in exported['groups']], [['正常话术']])
+            preview = store.preview_import(self.root, exported)
+            self.assertEqual(preview['errors'], [])
+            surviving = next((row['value'] for row in preview['changes'] if row['kind'] == 'group'), active)
+            self.assertEqual(surviving['utterances'], active['utterances'])
+        published = store.refresh_published(self.root)
+        self.assertEqual([row['utterances'] for row in published['groups']], [['正常话术']])
+        self.assertEqual(len(store.snapshot(self.root)['groups']), 3)
 
     def test_atomic_reject_and_stale_revision_never_overwrite(self):
         saved=self.saved();bad=group();bad['utterances'][0]['text']='{unknown}'
@@ -330,12 +356,12 @@ class TemplateTests(unittest.TestCase):
 
     def test_builtin_sidebar_follows_requested_event_order_and_categories(self):
         snap=store.snapshot(self.root)
-        self.assertEqual([e['id'] for e in snap['events'][:3]],['hero_buy','hero_deploy','hero_merge'])
+        self.assertEqual([e['name'] for e in snap['events'][:3]],['解释为何购买英雄','解释为何上阵英雄','解释为何合成英雄'])
         self.assertEqual(list(dict.fromkeys(e['category'] for e in snap['events'])),
-                         ['英雄','效果牌','装备','技能牌','商店','升级','战场','准备战斗','关键局势','拍卖开始'])
+                         ['解释类','针对与提醒'])
         saved=self.saved()
         self.assertEqual(saved['revision'],store.snapshot(self.root)['revision'])
-        self.assertEqual(saved['events'][0]['id'],'hero_buy')
+        self.assertEqual(saved['events'][0]['name'],'解释为何购买英雄')
 
 
 if __name__=='__main__':unittest.main()

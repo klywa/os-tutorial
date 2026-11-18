@@ -1,0 +1,31 @@
+{
+  "id": "opponent_streak",
+  "name": "对手连胜",
+  "category": "关键局势",
+  "parameters": [
+    {
+      "id": "p_situation",
+      "key": "situation",
+      "name": "场上情况",
+      "type": "text"
+    },
+    {
+      "id": "p_stage",
+      "key": "stage",
+      "name": "对局阶段",
+      "type": "text",
+      "suggestions": [
+        "前期",
+        "中期",
+        "后期"
+      ]
+    },
+    {
+      "id": "p_streak",
+      "key": "streak",
+      "name": "连胜数",
+      "type": "number",
+      "min": 0
+    }
+  ]
+}
