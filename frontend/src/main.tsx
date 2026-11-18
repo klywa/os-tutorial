@@ -63,7 +63,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
   const navigationEpoch=useRef(0),locatingRequest=useRef(0),clearHighlight=useRef<(()=>void)|null>(null);
   const pendingLocation=useRef<((success:boolean)=>void)|null>(null);
   const [proposalTarget,setProposalTarget]=useState<Proposal|null>(null);
-  const [inlineReturn,setInlineReturn]=useState<(InlineSaveLocation&{noteId:string;offset:number;scrollTop:number})|null>(null);
+  const [inlineReturn,setInlineReturn]=useState<(InlineSaveLocation&{noteId:string;revision?:string;offset:number;scrollTop:number})|null>(null);
   function cancelProposalLocation(){navigationEpoch.current++;pendingLocation.current?.(false);pendingLocation.current=null;setProposalTarget(null);setInlineReturn(null);}
   const {session}=useAuth();
   useEffect(()=>{cancelProposalLocation();proposalPanel.setOpen(false);proposalPanel.setLocating('');proposalPanel.scrollTop.current=0;setDirty(false);setEditing(false);},[session.role,session.username]);
@@ -121,7 +121,8 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
   function leave(){if(!window.dispatchEvent(new Event('wxq:before-proposal-view-change',{cancelable:true})))return false;const {dirty,editing}=navigationState.current;if(dirty&&!editing){setToast('修改未保存，请保存或取消');return false;}if(dirty&&!confirm('有未保存修改，确定放弃这些修改吗？'))return false;setEditing(false);setDirty(false);return true;}
   function changeSeason(next:Season){if(next===season||!leave())return;onSeason(next,{...prefs,query:'',hero:'',player:'',banned:[],type:''});}
   function select(id:string,view=prefs.view){if(!leave())return;cancelProposalLocation();patch({selected:id,view});setOpponent('');setDirectoryOpen(false);}
-  const navigateReading=useCallback((id:string,player?:string)=>{if(!notes.some(n=>n.id===id)){setToast('当前赛季没有关联笔记');return;}if(!leave())return;cancelProposalLocation();setPrefs(p=>({...p,selected:id,view:'notes',...(player?{branchPlayers:{...p.branchPlayers,[id]:player}}:{})}));setOpponent('');setDirectoryOpen(false);},[dirty,editing,notes]);
+  const noteListRef=useRef(notes);noteListRef.current=notes;
+  const navigateReading=useCallback((id:string,player?:string)=>{if(!noteListRef.current.some(n=>n.id===id)){setToast('当前赛季没有关联笔记');return;}if(!leave())return;cancelProposalLocation();setPrefs(p=>({...p,selected:id,view:'notes',...(player?{branchPlayers:{...p.branchPlayers,[id]:player}}:{})}));setOpponent('');setDirectoryOpen(false);},[]);
   function changeView(view:Prefs['view']){if(!capabilities.localTools&&view!=='notes'&&view!=='dashboard'&&view!=='cards'&&view!=='templates')return;if(leave()){cancelProposalLocation();patch({view,...(view==='play'&&!notes.some(n=>n.id===prefs.selected&&n.type==='lineup')?{selected:notes.find(n=>n.type==='lineup')?.id??''}:{})});}}
   function changeSection(section:string){patch({section});requestAnimationFrame(()=>content.current?.querySelector(`[data-section="${CSS.escape(section)}"]`)?.scrollIntoView({block:'start'}));}
   useEffect(()=>{if(!mobile)return;const button=document.querySelector<HTMLElement>('.phase-nav .selected');if(!button)return;const bar=button.parentElement!;if(button.offsetLeft<bar.scrollLeft)bar.scrollLeft=button.offsetLeft;else if(button.offsetLeft+button.offsetWidth>bar.scrollLeft+bar.clientWidth)bar.scrollLeft=button.offsetLeft+button.offsetWidth-bar.clientWidth;},[prefs.section,mobile]);
@@ -131,7 +132,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
     const returning=inlineReturn?.noteId===active?.id?inlineReturn:null;
     const restore=requestAnimationFrame(()=>{
       if(!returning){element.scrollTop=scroll.current[readingKey]??0;return;}
-      if(!reading)return;
+      if(!reading||(returning.revision&&reading.revision!==returning.revision&&!loader.verified))return;
       const anchor=readingAnchor(element,returning.id,returning.surface)
         ??(returning.sectionId?readingAnchor(element,returning.sectionId,'body'):null);
       element.scrollTop=anchor
@@ -210,7 +211,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
     if(element&&active){
       const anchor=readingAnchor(element,location.id,location.surface);
       const offset=anchor?anchor.getBoundingClientRect().top-element.getBoundingClientRect().top:0;
-      setInlineReturn({...location,noteId:active.id,offset:Math.max(0,Math.min(offset,element.clientHeight-32)),scrollTop:element.scrollTop});
+      setInlineReturn({...location,noteId:active.id,revision:note?.revision,offset:Math.max(0,Math.min(offset,element.clientHeight-32)),scrollTop:element.scrollTop});
     }
     if(note)saved(note);
   }

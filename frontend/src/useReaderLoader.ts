@@ -13,13 +13,16 @@ export function useReaderLoader({selected,player,dirty,onSelect,lineupsOnly=fals
  const [loading,setLoading]=useState(true),[error,setError]=useState(''),[readerError,setReaderError]=useState(''),[verified,setVerified]=useState(false),[checking,setChecking]=useState(true),[ready,setReady]=useState(false),[pending,setPending]=useState(false),[catalogRevision,setCatalogRevision]=useState('');
  const preparedScope=useRef<{scope:string;note:Note;view:ReadingDocument}|null>(null);
  const acceptedScope=useRef<{scope:string;note:Note}|null>(null),acceptedGeneration=useRef(0);
+ const catalogKey=useRef('');
  const [catalogEpoch,bumpCatalog]=useState(0),[noteEpoch,bumpNote]=useState(0),[workspace,setWorkspace]=useState(activeWorkspace);
  const dirtyRef=useRef(dirty),selectedRef=useRef(selected),selectRef=useRef(onSelect),detailRef=useRef(detail),freshCatalog=useRef(false),scopeRef=useRef(''),workspaceRef=useRef(workspace),verifiedRef=useRef(verified);
  dirtyRef.current=dirty;selectedRef.current=selected;selectRef.current=onSelect;detailRef.current=detail;workspaceRef.current=workspace;verifiedRef.current=verified;
  useEffect(()=>{let live=true;const controller=new AbortController();
   function apply(cat:Catalog,fresh:boolean){if(!live||!cat||!Array.isArray(cat.notes)||typeof cat.workspace_id!=='string')return;if(!fresh&&freshCatalog.current)return;
    if(fresh&&workspaceRef.current&&workspaceRef.current!==cat.workspace_id&&dirtyRef.current){setVerified(false);setPending(true);setError('工作区已变化；现有草稿保留，请取消或导出草稿后重试。');return;}if(fresh)freshCatalog.current=true;
-   setWorkspace(cat.workspace_id);setCatalogRevision(cat.revision);setNotes(cat.notes);setReady(cat.ready);setLoading(false);
+   setWorkspace(cat.workspace_id);setCatalogRevision(cat.revision);setReady(cat.ready);setLoading(false);
+   const key=JSON.stringify([cat.workspace_id,cat.revision,cat.ready]);
+   if(catalogKey.current!==key){catalogKey.current=key;setNotes(cat.notes);}
    const next=restoreNoteSelection(lineupRef.current?cat.notes.filter(n=>n.type==='lineup'):cat.notes,selectedRef.current,player);
    if(!dirtyRef.current&&next!==selectedRef.current)selectRef.current(next);
    if(fresh)void forgetMissingNotes(new Set(cat.notes.map(n=>n.id)),cat.workspace_id);
@@ -40,18 +43,30 @@ export function useReaderLoader({selected,player,dirty,onSelect,lineupsOnly=fals
   if(prepared){setDetail(prepared.note);setReader(prepared.view);setVerified(true);}
   if(!same&&!prepared){setDetail(undefined);setReader(null);setVerified(false);}setChecking(!prepared);setReaderError('');setPending(false);
   if(prepared)networkDone=true;
-  if(!prepared)void Promise.all([cachedEntry<Note>(notePath,workspace),cachedEntry<ReadingDocument>(viewPath,workspace)]).then(([n,v])=>{if(!live||generation!==acceptedGeneration.current||networkDone||dirtyRef.current)return;if(n?.value?.id&&v?.value?.note_id===n.value.id&&v.value.revision===n.value.revision&&Array.isArray(v.value.sections)){setDetail(n.value);setReader(v.value);setVerified(false);}});
-  const refresh=async()=>{const saved=accepted;accepted=null;try{let [note,view]=await Promise.all([saved?Promise.resolve(saved.note):cachedGet<Note>(notePath,{workspace,signal:controller.signal}),cachedGet<ReadingDocument>(viewPath,{workspace,signal:controller.signal})]);if(note.revision!==view.revision){[note,view]=await Promise.all([cachedGet<Note>(notePath,{workspace,signal:controller.signal}),cachedGet<ReadingDocument>(viewPath,{workspace,signal:controller.signal})]);}
+  if(!prepared&&!accepted)void Promise.all([cachedEntry<Note>(notePath,workspace),cachedEntry<ReadingDocument>(viewPath,workspace)]).then(([n,v])=>{if(!live||generation!==acceptedGeneration.current||networkDone||dirtyRef.current)return;if(n?.value?.id&&v?.value?.note_id===n.value.id&&v.value.revision===n.value.revision&&Array.isArray(v.value.sections)){setDetail(n.value);setReader(v.value);setVerified(false);}});
+  let inFlight=false;
+  const refresh=async()=>{if(inFlight)return;inFlight=true;const saved=accepted;accepted=null;try{let [note,view]=await Promise.all([saved?Promise.resolve(saved.note):cachedGet<Note>(notePath,{workspace,signal:controller.signal}),cachedGet<ReadingDocument>(viewPath,{workspace,signal:controller.signal})]);if(note.revision!==view.revision){[note,view]=await Promise.all([cachedGet<Note>(notePath,{workspace,signal:controller.signal}),cachedGet<ReadingDocument>(viewPath,{workspace,signal:controller.signal})]);}
    if(!live||generation!==acceptedGeneration.current)return;networkDone=true;if(workspace&&activeWorkspace()&&workspace!==activeWorkspace())throw new Error('工作区已变化，草稿已保留');if(note.revision!==view.revision)throw new Error('笔记正在更新，请重试');
    if(dirtyRef.current){if(note.revision!==detailRef.current?.revision)setPending(true);setVerified(true);return;}
-   setDetail(note);setReader(view);setVerified(true);setReaderError('');
-  }catch(e){if(live&&generation===acceptedGeneration.current&&!controller.signal.aborted){networkDone=true;setVerified(false);setReaderError((e as Error).message+'；缓存可继续阅读，确认最新版本后可编辑。');}}finally{if(live&&generation===acceptedGeneration.current)setChecking(false);}};
+   setDetail(current=>same&&current?.id===note.id&&current.revision===note.revision?current:note);
+   setReader(current=>current?.note_id===view.note_id&&current.revision===view.revision&&current.player===view.player?current:view);
+   setVerified(true);setReaderError('');
+  }catch(e){if(live&&generation===acceptedGeneration.current&&!controller.signal.aborted){networkDone=true;setVerified(false);setReaderError((e as Error).message+'；缓存可继续阅读，确认最新版本后可编辑。');}}finally{inFlight=false;if(live&&generation===acceptedGeneration.current)setChecking(false);}};
   if(!prepared)void refresh();const timer=setInterval(()=>{void api<{revision:string}>('notes/'+encodeURIComponent(selected)+'/revision').then(row=>{if(!live)return;if(row.revision!==detailRef.current?.revision){if(dirtyRef.current)setPending(true);else void refresh();}else if(!verifiedRef.current){void refresh();}else{setReaderError('');}}).catch(()=>{if(live){setVerified(false);setReaderError('连接中断，缓存可继续阅读；请重试后编辑。');}});},3000);
   return()=>{live=false;controller.abort();clearInterval(timer);};
- },[selected,player,workspace,noteEpoch,readable,catalogRevision]);
- useEffect(()=>{const saved=(event:Event)=>{const detail=(event as CustomEvent<{noteId:string;revision:string}>).detail;if(detail&&detail.noteId===detailRef.current?.id&&detail.revision===detailRef.current?.revision)return;bumpCatalog(n=>n+1);bumpNote(n=>n+1);};window.addEventListener('wxq:knowledge-saved',saved);return()=>window.removeEventListener('wxq:knowledge-saved',saved);},[]);
+ },[selected,player,workspace,noteEpoch,readable]);
+ useEffect(()=>{const saved=(event:Event)=>{const detail=(event as CustomEvent<{noteId:string;revision:string}>).detail;const latest=acceptedScope.current?.note??detailRef.current;if(detail&&detail.noteId===latest?.id&&detail.revision===latest?.revision)return;bumpCatalog(n=>n+1);if(!detail||detail.noteId===selectedRef.current)bumpNote(n=>n+1);};window.addEventListener('wxq:knowledge-saved',saved);return()=>window.removeEventListener('wxq:knowledge-saved',saved);},[]);
  useEffect(()=>{if(!dirty&&pending){bumpCatalog(n=>n+1);bumpNote(n=>n+1);}},[dirty,pending]);
- function accept(note:Note){scopeRef.current=workspace+'|'+note.id+'|'+(note.id===selected?(player??''):'');acceptedGeneration.current++;acceptedScope.current={scope:scopeRef.current,note};detailRef.current=note;setDetail(note);setVerified(true);setPending(false);setNotes(rows=>rows.some(n=>n.id===note.id)?rows.map(n=>n.id===note.id?note:n):[...rows,note]);void putCached(detailPath(note.id,note.id===selected?player:undefined),note,workspace);bumpNote(n=>n+1);bumpCatalog(n=>n+1);}
+ function accept(note:Note){
+  const selectedPlayer=note.id===selected?player:undefined;
+  const scope=workspace+'|'+note.id+'|'+(selectedPlayer??'');
+  acceptedGeneration.current++;acceptedScope.current={scope,note};
+  if(detailRef.current?.id!==note.id){scopeRef.current=scope;detailRef.current=note;setDetail(note);}
+  setVerified(false);setPending(false);
+  setNotes(rows=>rows.some(n=>n.id===note.id)?rows:[...rows,note]);
+  void putCached(detailPath(note.id,selectedPlayer),note,workspace);
+  bumpNote(n=>n+1);bumpCatalog(n=>n+1);
+ }
  function acceptLocation(note:Note,view:ReadingDocument,targetPlayer?:string){
   const scope=workspace+'|'+note.id+'|'+(targetPlayer??'');
   preparedScope.current={scope,note,view};bumpNote(n=>n+1);

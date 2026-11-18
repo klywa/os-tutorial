@@ -1,0 +1,42 @@
+{
+  "id": "group_2cc330b9ae674a2298e136d3474151e0",
+  "name": "瑶给马超护盾和控制",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "瑶可以附身马超提供护盾，控制敌人时还能为马超回复法力。",
+      "id": "utterances_ea84ed5f50d04a6abcbad49c29b74fe5"
+    },
+    {
+      "text": "瑶从40级起可以控制敌人，帮助马超回复法力。",
+      "id": "utterances_7eeb35d1e36e4287881d12d157375e3c"
+    }
+  ],
+  "explanation": "上阵至少40级的瑶时，马超是场上的主C。《常小娥灵活变阵-常小娥》「瑶」和两张英雄卡的效果表明，瑶附身最近的队友提供护盾，40级解锁控制，触发控制可使马超回复法力。",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:5051",
+      "name": "瑶"
+    },
+    {
+      "id": "card:5053",
+      "name": "瑶"
+    },
+    {
+      "id": "card:5183",
+      "name": "马超"
+    },
+    {
+      "id": "card:5181",
+      "name": "马超"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"瑶\" and 玩家.主C is \"马超\" and 玩家.战场 has \"马超\" and arg1.等级 >= 40",
+  "editor_mode": "text"
+}

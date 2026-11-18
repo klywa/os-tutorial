@@ -2,6 +2,7 @@
 from copy import deepcopy
 import math
 import re
+import template_rules as rules
 
 ID = re.compile(r'[A-Za-z0-9_-]{1,128}\Z')
 KEY = re.compile(r'[a-z][a-z0-9_]{0,63}\Z')
@@ -73,8 +74,10 @@ def validate_event(event, entities, *, retired_suggestions=None):
     identity(event['id']);text(event['name']);text(event.get('category','未分类'),'事件分类')
     unique(event['parameters'],'参数');keys=set()
     for p in event['parameters']:
-        fields(p,{'id','key','name','type','entity_categories','suggestions','min','max'},{'id','key','name','type'})
+        fields(p,{'id','key','name','type','dsl_type','entity_categories','suggestions','min','max'},{'id','key','name','type'})
+        if 'dsl_type' in p:rules.check_type(p['dsl_type'],rules.catalog())
         if not isinstance(p['key'],str) or not KEY.fullmatch(p['key']) or p['key'] in keys:raise ValueError('参数英文键无效或重复')
+        if p['key'] in {'and','or','not','true','false','in','is','has'}:raise ValueError('条件关键词不能作为事件参数：'+p['key'])
         keys.add(p['key']);text(p['name'],'参数名称')
         if p['type'] not in ('text','number','boolean','entity'):raise ValueError('未知参数类型')
         if 'entity_categories' in p:
@@ -90,11 +93,18 @@ def validate_event(event, entities, *, retired_suggestions=None):
 
 
 def validate_group(group, events, entities, notes):
-    fields(group,{'id','name','event_id','scope','conditions','utterances','related_entities'},
+    fields(group,{'id','name','explanation','ignored','event_id','scope','conditions','utterances','related_entities'} | rules.RULE_FIELDS,
            {'id','name','event_id','scope','conditions','utterances'})
     identity(group['id']);text(group['name'])
+    if 'ignored' in group and type(group['ignored']) is not bool:
+        raise ValueError('模板组忽略状态必须是布尔值')
+    if 'explanation' in group:
+        explanation = group['explanation']
+        if not isinstance(explanation, str) or len(explanation) > 300:
+            raise ValueError('模板组说明必须为不超过 300 个字符的文本')
     event=events.get(group['event_id']) if isinstance(group['event_id'],str) else None
     if event is None:raise ValueError('话术组引用的事件不存在')
+    rules.validate_rule(group,event)
     scope=group['scope'];fields(scope,{'player_id','lineup_note_id'},{'player_id','lineup_note_id'})
     player,lineup=scope['player_id'],scope['lineup_note_id']
     if player is not None:
@@ -120,7 +130,9 @@ def validate_group(group, events, entities, notes):
     unique(group['utterances'],'话术')
     if not group['utterances']:raise ValueError('每组至少需要一条话术')
     for u in group['utterances']:
-        fields(u,{'id','text'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],params)
+        fields(u,{'id','text','ignored'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],params)
+        if 'ignored' in u and type(u['ignored']) is not bool:
+            raise ValueError('话术忽略状态必须是布尔值')
     refs=group.get('related_entities',[])
     if not isinstance(refs,list):raise ValueError('关联实体必须为列表')
     seen=set()
@@ -128,6 +140,8 @@ def validate_group(group, events, entities, notes):
         entity_ref(ref,entities)
         if ref['id'] in seen:raise ValueError('关联实体重复')
         seen.add(ref['id'])
+    if 'expression' not in group and group['conditions']:
+        rules.validate_rule(rules.editor_rule(group,event,entities),event)
 
 
 def validate_library(document, entities=None, notes=None, *, retired_entities=None, retired_suggestions=None):
@@ -137,6 +151,8 @@ def validate_library(document, entities=None, notes=None, *, retired_entities=No
     unique(document['events'],'事件');unique(document['groups'],'话术组')
     entities=entities or {};notes=notes or {}
     for event in document['events']:validate_event(event,entities,retired_suggestions=(retired_suggestions or {}).get(event['id']))
+    if len({e['name'] for e in document['events']})!=len(document['events']):
+        raise ValueError('事件名称重复，请为事件使用唯一名称')
     events={e['id']:e for e in document['events']}
     for group in document['groups']:
         # Retired references are scoped to an existing canonical record. Never
@@ -151,6 +167,16 @@ def validate_library(document, entities=None, notes=None, *, retired_entities=No
 
 
 def builtin_events():
+    current=rules.workbook_events()
+    names={e['name'] for e in current}
+    legacy=legacy_events()
+    for event in legacy:
+        event.update(rules.explanation_event(event))
+        if event['name'] in names:event['name']+='（旧版）'
+    return current+legacy
+
+
+def legacy_events():
     definitions=[
         ('hero_buy','购买英雄','英雄','hero','heroes'),('hero_deploy','上阵英雄','英雄','hero','heroes'),
         ('hero_merge','合成英雄','英雄','hero','heroes'),('hero_sell_hand','从手牌出售英雄','英雄','hero','heroes'),

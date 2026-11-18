@@ -1,0 +1,42 @@
+{
+  "name": "用花木兰补重剑控制与牺牲",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "花木兰能用重剑击飞前方敌人，队伍缺控制时可以留她。",
+      "id": "utterances_2ab1e5ebe7314d3f8cf0e13bb7e7f94f"
+    },
+    {
+      "text": "花木兰有牺牲效果，她阵亡时也能帮在场的李信获得临时等级。",
+      "id": "utterances_6a34b99f77a649c3b805af8f3031b182"
+    }
+  ],
+  "explanation": "买到花木兰时，这组话说明花木兰在队伍中的作用。花木兰能用重剑击飞前方敌人，也具有牺牲效果；搭配李信时，她阵亡能让李信获得临时等级。依据《常小娥灵活变阵-常小娥》「花木兰」及花木兰的官方卡面、技能。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_4617b5883f274aeca23fd100fdab9f6a",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1541",
+      "name": "花木兰"
+    },
+    {
+      "id": "card:1543",
+      "name": "花木兰"
+    },
+    {
+      "id": "card:5073",
+      "name": "李信"
+    },
+    {
+      "id": "card:5071",
+      "name": "李信"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"花木兰\"",
+  "editor_mode": "text"
+}

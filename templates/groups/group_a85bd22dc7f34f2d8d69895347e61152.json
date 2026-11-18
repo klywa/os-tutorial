@@ -1,0 +1,25 @@
+{
+  "name": "四级开高级人才",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“使用无目标效果牌”事件中，使用高级人才，棋手四级时适用。高级人才提供比棋手等级高一阶的英雄，四级使用正好能拿五阶。依据为《常小娥灵活变阵-常小娥》「单挂刚觉醒并拿到高级人才时」及官方效果牌「高级人才」。",
+  "utterances": [
+    {
+      "text": "棋手四级时使用高级人才，能随机获得一张五阶英雄牌。",
+      "id": "utterances_50130840b3864958b783da62bfcee0ff"
+    },
+    {
+      "text": "高级人才提供比棋手等级高一阶的英雄，四级使用正好能拿五阶。",
+      "id": "utterances_523f432fe2aa4ae7b356d45a0a4d75c3"
+    }
+  ],
+  "event_id": "os_1c33df3b1a2b43f5",
+  "id": "group_a85bd22dc7f34f2d8d69895347e61152",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"高级人才\" and 玩家.等级 == 4",
+  "editor_mode": "text"
+}

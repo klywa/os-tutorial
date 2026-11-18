@@ -1,0 +1,25 @@
+{
+  "name": "狂铁铸造红莲炎甲",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，穿戴者为狂铁，铸造成品为红莲炎甲时适用。狂铁穿红莲炎甲，可降低身边敌人的治疗和护盾效果。依据为《常小娥灵活变阵-常小娥》「红莲炎甲」及官方装备「红莲炎甲」、装备「力量腰带」。",
+  "utterances": [
+    {
+      "text": "红莲炎甲持续灼烧狂铁身边一格的敌人，能补近身伤害。",
+      "id": "utterances_b33a098468664e88bd046993355d78d4"
+    },
+    {
+      "text": "狂铁穿红莲炎甲，可降低身边敌人的治疗和护盾效果。",
+      "id": "utterances_4cb3c7a8e617471d85e490af07736f7a"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_4df53f67dfdf493fbd2b1c11b64d8599",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"狂铁\" and arg3 is \"红莲炎甲\"",
+  "editor_mode": "text"
+}

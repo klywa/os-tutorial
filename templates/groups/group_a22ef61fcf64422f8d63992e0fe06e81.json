@@ -1,0 +1,38 @@
+{
+  "name": "合成干将莫邪补觉醒",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "干将莫邪觉醒后，在场还能获得双剑·雌。",
+      "id": "utterances_32e17b202e4f4ba981d657b3c14a25a3"
+    },
+    {
+      "text": "想让干将莫邪同时拿到双剑·雄和双剑·雌，值得合成补觉醒。",
+      "id": "utterances_f79d651c64014edc9657b314306f82a5"
+    }
+  ],
+  "explanation": "合成后干将莫邪还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「干将莫邪在场时，获得普通装备双剑·雄。」与「干将莫邪在场时，获得普通装备双剑·雄及双剑·雌。」。依据《常小娥灵活变阵-常小娥》「干将莫邪」和干将莫邪的官方卡面、技能。",
+  "event_id": "os_d12194463340a8ec",
+  "id": "group_a22ef61fcf64422f8d63992e0fe06e81",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:42102",
+      "name": "双剑·雄"
+    },
+    {
+      "id": "card:1821",
+      "name": "干将莫邪"
+    },
+    {
+      "id": "card:1823",
+      "name": "干将莫邪"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"干将莫邪\" and not arg1.已觉醒",
+  "editor_mode": "text"
+}

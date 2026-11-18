@@ -1,0 +1,46 @@
+{
+  "name": "普通杨玉环退场取弦音",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "未觉醒的杨玉环退场能拿到弦音，可以给低阶英雄补觉醒。",
+      "id": "utterances_491835e41e5b43c58480775b1d37ec39"
+    },
+    {
+      "text": "卖掉未觉醒的杨玉环能拿弦音，刘禅可以用它补觉醒。",
+      "id": "utterances_275c1f19749a45c28110f132a5722839"
+    }
+  ],
+  "explanation": "从战场卖出未觉醒的杨玉环时，说明这项操作的战斗或资源收益。未觉醒的杨玉环退场能拿到弦音，可以给低阶英雄补觉醒。依据《常小娥灵活变阵-常小娥》「杨玉环」和杨玉环的官方卡面、技能。",
+  "event_id": "os_02f23dfd4155737d",
+  "id": "group_d05d18cfe9744835993ef0e4ced87c7e",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:307001",
+      "name": "弦音"
+    },
+    {
+      "id": "card:1141",
+      "name": "刘禅"
+    },
+    {
+      "id": "card:1143",
+      "name": "刘禅"
+    },
+    {
+      "id": "card:1761",
+      "name": "杨玉环"
+    },
+    {
+      "id": "card:1763",
+      "name": "杨玉环"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"杨玉环\" and not arg1.已觉醒",
+  "editor_mode": "text"
+}

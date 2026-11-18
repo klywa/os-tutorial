@@ -1,7 +1,7 @@
 import {useProposals,type Proposal} from './Proposals';
 import {useCapabilities,useCanEditNote} from './auth';
 import {useEditLocks,leaseRef,type Resource,type Lease} from './editLocks';
-import {createContext,useContext,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
+import {createContext,memo,useCallback,useContext,useEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import type {KnowledgeDocument,KnowledgeNode,Note} from './types';
 import {api} from './model';
 import {equalValue,scopeNodes} from './noteReviewModel';
@@ -13,11 +13,11 @@ import SectionSync from './SectionSync';
 import './noteReview.css';
 
 export type Annotation={id:string;note_id:string;node_id:string;text:string;status:'open'|'resolved';revision:string;created_at:string;result?:string;result_revision?:string;anchor_state:'current'|'changed'|'missing';target:KnowledgeNode[]};
-type Draft={surface?:string;id:string;base:Note;body:KnowledgeDocument};
+type Draft={surface?:string;id:string;base:Note;body:KnowledgeDocument;hidden:ReadonlySet<string>};
 export type InlineSaveLocation={id:string;surface:string;sectionId?:string};
-type Review={canSave:boolean;canSync:boolean;canShowReadingMoves:boolean;canMoveInReading:boolean;syncDisabled:boolean;proposals:Proposal[];proposing:boolean;legacyReviews:boolean;readOnly?:boolean;note:Note;locks:ReturnType<typeof useEditLocks>;loss:{lease:Lease;reason:string;at:number}[];draft:Draft|null;dirty:boolean;busy:boolean;uncertain:boolean;error:string;comments:Annotation[];commentNode:string|null;
+type Review={canSave:boolean;canSync:boolean;canShowReadingMoves:boolean;canMoveInReading:boolean;syncDisabled:boolean;proposals:Proposal[];proposing:boolean;legacyReviews:boolean;readOnly?:boolean;note:Note;positions:ReadonlyMap<string,number>;locks:ReturnType<typeof useEditLocks>;loss:{lease:Lease;reason:string;at:number}[];draft:Draft|null;dirty:boolean;busy:boolean;uncertain:boolean;error:string;comments:Annotation[];commentNode:string|null;
  moveInReading:(id:string,direction:-1|1,surface?:string)=>Promise<void>;
- startEdit:(id:string,surface?:string)=>void;startComment:(id:string)=>void;openHistory:()=>void;updateNodes:(nodes:KnowledgeNode[],changed:boolean)=>void;
+ startEdit:(id:string,surface?:string)=>void;startComment:(id:string)=>void;openHistory:()=>void;updateDirty:(changed:boolean)=>void;
  cancel:()=>void;save:(changes?:unknown[])=>Promise<void>;warn:()=>void;reloadComments:()=>Promise<void>;setExtraDirty:(dirty:boolean)=>void;closeComments:()=>void};
 const Context=createContext<Review|null>(null);
 export const useReview=()=>useContext(Context);
@@ -33,19 +33,20 @@ export function ReviewProvider({note,children,onSaved,onInlineSaved,onDirty,exte
  const [uncertain,setUncertain]=useState(false);
  const [draft,setDraft]=useState<Draft|null>(null),[extraDirty,setExtra]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const [comments,setComments]=useState<Annotation[]>([]),[commentNode,setCommentNode]=useState<string|null>(null),[history,setHistory]=useState(false);
- const pendingNodes=useRef<KnowledgeNode[]>([]),dirtyRef=useRef(false),savingRef=useRef(false);
+ const dirtyRef=useRef(false),savingRef=useRef(false);
  const [inlineDirty,setInlineDirty]=useState(false);
  const dirty=inlineDirty||extraDirty;
+ const positions=useMemo(()=>new Map(note?.document?.nodes.map((node,index)=>[node.id,index])),[note?.document]);
  async function reloadComments(){if(reviews&&note)setComments(await api<Annotation[]>('annotations?note_id='+encodeURIComponent(note.id)));}
  useEffect(()=>{let live=true;if(reviews&&note)void api<Annotation[]>('annotations?note_id='+encodeURIComponent(note.id)).then(rows=>{if(live)setComments(rows);}).catch(e=>{if(live)setError('批注载入失败：'+e.message);});return()=>{live=false;};},[note?.id,note?.revision,reviews]);
  if(!inlineEdit||!note?.document)return <>{children}</>;
  function warn(){if(!savingRef.current)setError('修改未保存，请保存或取消');}
  function guard(){if(savingRef.current||uncertain)return false;if(readOnly){setError('请先确认最新版本后编辑');return false;}if(dirty||externalDirty){warn();return false;}setError('');return true;}
  function changeDirty(value:boolean){setExtra(value);if(!value&&!inlineDirty)setError(error=>error==='修改未保存，请保存或取消'?'':error);onDirty(value||inlineDirty);}
- const review:Review={canSave:!readOnly&&(proposeNotes||editNotes),canShowReadingMoves:!proposeNotes,canMoveInReading:editNotes&&!readOnly&&!dirty&&!externalDirty&&!busy&&!uncertain&&!draft&&!commentNode&&!history&&locks.online,canSync:editNotes&&!proposeNotes&&note.type==='lineup'&&!!note.player_id&&!!(note.lineup_ids?.length||note.lineup_links?.length||note.lineup_name||note.title.lastIndexOf('-')>0),syncDisabled:readOnly||dirty||externalDirty||busy||!!draft,proposals,proposing:proposeNotes,legacyReviews:reviews,readOnly,note,locks,loss,draft,dirty,busy,uncertain,error,comments,commentNode,
+ const review:Review={canSave:!readOnly&&(proposeNotes||editNotes),canShowReadingMoves:!proposeNotes,canMoveInReading:editNotes&&!readOnly&&!dirty&&!externalDirty&&!busy&&!uncertain&&!draft&&!commentNode&&!history&&locks.online,canSync:editNotes&&!proposeNotes&&note.type==='lineup'&&!!note.player_id&&!!(note.lineup_ids?.length||note.lineup_links?.length||note.lineup_name||note.title.lastIndexOf('-')>0),syncDisabled:readOnly||dirty||externalDirty||busy||!!draft,proposals,proposing:proposeNotes,legacyReviews:reviews,readOnly,note,positions,locks,loss,draft,dirty,busy,uncertain,error,comments,commentNode,
   moveInReading:async(id,direction,surface='body')=>{
    if(!review.canMoveInReading||savingRef.current)return;
-   const nodes=note.document!.nodes,index=nodes.findIndex(n=>n.id===id);
+   const nodes=note.document!.nodes,index=positions.get(id)??-1;
    if(!canMoveEntry(nodes,index,direction))return;
    const left=Math.min(index,index+direction);
    const headings=nodes.slice(0,left).reverse().filter(n=>n.type==='heading');
@@ -69,10 +70,10 @@ export function ReviewProvider({note,children,onSaved,onInlineSaved,onDirty,exte
    readingMove.current={id,surface,sectionId};
    await review.save([{kind:'move',leases:pair.map(leaseRef)}]);
   },
-  startEdit:(id,surface)=>{if(!guard())return;setCommentNode(null);pendingNodes.current=scopeNodes(note.document!,id);dirtyRef.current=false;setInlineDirty(false);setDraft({id,surface,base:note,body:note.document!});},
+  startEdit:(id,surface)=>{if(!guard())return;setCommentNode(null);dirtyRef.current=false;setInlineDirty(false);const body=note.document!;setDraft({id,surface,base:note,body,hidden:new Set(scopeNodes(body,id).slice(1).map(n=>n.id))});},
   startComment:id=>{if(!guard())return;setDraft(null);setCommentNode(id);},
   openHistory:()=>{if(!guard())return;setDraft(null);setCommentNode(null);setHistory(true);},
-  updateNodes:(nodes,changed)=>{if(!draft)return;pendingNodes.current=nodes;if(changed!==dirtyRef.current){dirtyRef.current=changed;setInlineDirty(changed);onDirty(changed||extraDirty);}},
+  updateDirty:changed=>{if(!draft)return;if(changed!==dirtyRef.current){dirtyRef.current=changed;setInlineDirty(changed);onDirty(changed||extraDirty);}},
   cancel:()=>{setUncertain(false);requestRef.current=null;void locks.release();setDraft(null);setInlineDirty(false);dirtyRef.current=false;setError('');onDirty(extraDirty);},
   save:async(changes)=>{
    const direct=readingMove.current;
@@ -107,7 +108,7 @@ export function NodeActions({node,surface}:{node:KnowledgeNode;surface?:string})
  const owner=node.type==='entry'?review.locks.owner({kind:'entry',id:node.id}):undefined;
  const count=review.comments.filter(c=>c.node_id===node.id&&c.status==='open').length;
  const nodes=review.note.document!.nodes;
- const index=node.type==='entry'&&review.canShowReadingMoves?nodes.findIndex(n=>n.id===node.id):-1;
+ const index=node.type==='entry'&&review.canShowReadingMoves?(review.positions.get(node.id)??-1):-1;
  return <span className="node-review-actions"><button type="button" disabled={review.readOnly||review.busy||!!owner&&review.proposing} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id,surface)}>{owner&&!review.proposing?'接管编辑':'编辑'}</button>{review.canSync&&<SectionSync key={review.note.revision} note={review.note} nodeId={node.id} disabled={review.syncDisabled}/>} {owner&&<small className="lock-hint">{owner.owner} 正在编辑 · 已锁定</small>}{review.legacyReviews&&<button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button>}
  {index>=0&&([-1,1] as const).map(direction=>{
   const label=direction===-1?'上移':'下移';
@@ -122,22 +123,39 @@ export function InlineReviewEditor(){
  const review=useReview();if(!review?.draft)return null;
  return <LocalInlineEditor key={review.draft.id+'|'+review.draft.surface} review={review} draft={review.draft}/>;
 }
+const DraftFields=memo(function DraftFields({source,original,onChange}:{
+ source:KnowledgeNode;original:KnowledgeNode;onChange:(node:KnowledgeNode,source:KnowledgeNode)=>void;
+}){
+ const [draft,setDraft]=useState({source,value:source});
+ if(draft.source!==source)setDraft({source,value:source});
+ return <NodeFields node={draft.source===source?draft.value:source} original={original} onChange={value=>{
+  setDraft({source,value});onChange(value,source);
+ }}/>;
+});
 function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
  const initial=useMemo(()=>scopeNodes(draft.base.document!,draft.id),[draft.base,draft.id]);
  const originals=useRef(new Map(initial.map(n=>[n.id,n]))),targets=useRef(new Map<string,Resource>());
  const [nodes,setNodes]=useState(initial),[message,setMessage]=useState(''),[acquiring,setAcquiring]=useState('');
  const local=useRef(nodes),chapter=initial[0]?.type==='heading';
+ const edits=useRef(new Map<string,KnowledgeNode>()),structureDirty=useRef(false);
+ const dirtyChanged=useRef(review.updateDirty);dirtyChanged.current=review.updateDirty;
+ const edited=useRef(new Set<string>());
  const swaps=useRef<[string,string][]>([]);
  const sorting=swaps.current.length>0;
- const contentDirty=!sorting&&!equalValue(nodes,[...originals.current.values()]);
+ const contentDirty=!sorting&&review.dirty;
  const editor=useRef<HTMLElement>(null);
  const locks=review.locks,processed=useRef(review.loss.length);
- function update(next:KnowledgeNode[]){local.current=next;setNodes(next);review.updateNodes(next,!equalValue(next,[...originals.current.values()]));}
+ function update(next:KnowledgeNode[]){local.current=next;setNodes(next);structureDirty.current=!equalValue(next.map(n=>n.id),[...originals.current.keys()]);review.updateDirty(structureDirty.current||!!edited.current.size);}
  function targetFor(n:KnowledgeNode):Resource{return targets.current.get(n.id)??{kind:'entry',id:n.id};}
- function updateNode(node:KnowledgeNode){update(local.current.map(current=>current.id===node.id?node:current));}
+ const updateNode=useCallback((node:KnowledgeNode,source:KnowledgeNode)=>{
+  if(equalValue(node,source))edits.current.delete(node.id);else edits.current.set(node.id,node);
+  if(equalValue(node,originals.current.get(node.id)))edited.current.delete(node.id);else edited.current.add(node.id);
+  dirtyChanged.current(structureDirty.current||!!edited.current.size);
+ },[]);
  function removeDraftNode(node:KnowledgeNode){
   const target=targetFor(node);
   const next=local.current.filter(current=>current.id!==node.id);
+  edits.current.delete(node.id);edited.current.delete(node.id);
   update(next);
   if(!originals.current.has(node.id)&&!next.some(current=>JSON.stringify(targetFor(current))===JSON.stringify(target))){
    targets.current.delete(node.id);
@@ -152,7 +170,16 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
    setMessage('段落已更新，请重新载入后调整顺序。');
    return;
   }
-  if(fresh&&!equalValue(fresh,originals.current.get(n.id))){const prior=originals.current.get(n.id),current=local.current.find(v=>v.id===n.id),changed=!equalValue(current,prior);originals.current.set(n.id,fresh);update(local.current.map(v=>v.id!==n.id?v:changed&&v.type==='entry'&&fresh.type==='entry'?{...fresh,key:v.key,value:v.value,show_key:v.show_key}:fresh));setMessage(changed?'最新正文已变化，草稿保留并显示与最新正文的差异；请核对后保存。':'条目已有更新，已载入最新内容，请核对后编辑。');}
+  if(fresh&&!equalValue(fresh,originals.current.get(n.id))){
+   const changed=edited.current.has(n.id),current=edits.current.get(n.id)??local.current.find(v=>v.id===n.id);
+   originals.current.set(n.id,fresh);
+   edits.current.delete(n.id);edited.current.delete(n.id);
+   // Preserve the draft while rebasing its editable fields onto refreshed metadata.
+   const rebased=changed&&current?.type==='entry'&&fresh.type==='entry'?{...fresh,key:current.key,value:current.value,show_key:current.show_key}:fresh;
+   if(!equalValue(rebased,fresh))edited.current.add(n.id);
+   update(local.current.map(v=>v.id===n.id?rebased:v));
+   setMessage(changed?'最新正文已变化，草稿保留并显示与最新正文的差异；请核对后保存。':'条目已有更新，已载入最新内容，请核对后编辑。');
+  }
  }catch(e){setMessage((e as Error).message);}finally{setAcquiring('');}}
  useEffect(()=>{if(!chapter&&initial[0])void enter(initial[0]);return()=>{void locks.release();};},[]);
  useEffect(()=>{const losses=review.loss.slice(processed.current);processed.current=review.loss.length;for(const loss of losses){const affected=[...targets.current].filter(([,t])=>JSON.stringify(t)===JSON.stringify(loss.lease.resource)).map(([id])=>id);
@@ -162,7 +189,7 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
   }
   if(loss.reason==='admin_takeover'){
    let next=local.current.filter(n=>!affected.includes(n.id)||originals.current.has(n.id));
-   for(const id of affected){const original=originals.current.get(id);if(original){const index=next.findIndex(n=>n.id===id);if(index>=0)next=next.map(n=>n.id===id?original:n);else {const position=initial.findIndex(n=>n.id===id);next.splice(Math.min(position,next.length),0,original);}}targets.current.delete(id);}
+   for(const id of affected){const original=originals.current.get(id);if(original){const index=next.findIndex(n=>n.id===id);if(index>=0)next=next.map(n=>n.id===id?original:n);else {const position=initial.findIndex(n=>n.id===id);next.splice(Math.min(position,next.length),0,original);}}edits.current.delete(id);edited.current.delete(id);targets.current.delete(id);}
    update(next);setMessage('管理员已接管或确认此条，该条未提交草稿已清空。其他修改保留。');
   }else setMessage('编辑权限已暂停，草稿已保留。请重新取得编辑权限并核对正文。');}
  },[review.loss]);
@@ -191,7 +218,7 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
  function blur(n:KnowledgeNode,e:React.FocusEvent){
   if(e.currentTarget.contains(e.relatedTarget as Node|null)||acquiring||
      swaps.current.some(pair=>pair.includes(n.id)))return;
-  if(equalValue(n,originals.current.get(n.id)))void locks.release(targetFor(n));
+  if(equalValue(edits.current.get(n.id)??n,originals.current.get(n.id)))void locks.release(targetFor(n));
  }
  async function move(index:number,direction:-1|1){
   const current=local.current,next=moveNode(current,index,direction);
@@ -237,13 +264,14 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
    void review.save(changes);
    return;
   }
-  for(const n of nodes){if(n.type!=='entry'||equalValue(n,originals.current.get(n.id)))continue;const lease=locks.get(targetFor(n));if(!lease){setMessage('请重新取得所有已修改条目的编辑权限后再保存。');return;}changes.push({kind:originals.current.has(n.id)?'update':'insert',node:n,lease:leaseRef(lease)});}
+  for(const source of nodes){const n=edits.current.get(source.id)??source;if(n.type!=='entry'||equalValue(n,originals.current.get(n.id)))continue;const lease=locks.get(targetFor(n));if(!lease){setMessage('请重新取得所有已修改条目的编辑权限后再保存。');return;}changes.push({kind:originals.current.has(n.id)?'update':'insert',node:n,lease:leaseRef(lease)});}
   for(const n of originals.current.values()){if(n.type!=='entry'||nodes.some(v=>v.id===n.id))continue;const lease=locks.get(targetFor(n));if(!lease){setMessage('删除条目的权限已暂停，请先恢复条目并重新取得权限。');return;}changes.push({kind:'delete',lease:leaseRef(lease)});}
   if(sibling){
    const lease=locks.get(targetFor(sibling));
    if(!lease){setMessage('请重新取得章节插入位置的编辑权限。');return;}
-   if(sibling.type!=='heading'||!sibling.title.trim()){setMessage('请输入新章节标题。');return;}
-   changes.push({kind:'insert',node:sibling,sibling_of:draft.id,lease:leaseRef(lease)});
+   const node=edits.current.get(sibling.id)??sibling;
+   if(node.type!=='heading'||!node.title.trim()){setMessage('请输入新章节标题。');return;}
+   changes.push({kind:'insert',node,sibling_of:draft.id,lease:leaseRef(lease)});
   }
   void review.save(changes);
  }
@@ -256,9 +284,9 @@ function LocalInlineEditor({review,draft}:{review:Review;draft:Draft}){
  <fieldset disabled={review.readOnly||review.busy||review.uncertain}>{nodes.map((n,i)=>{const target=targetFor(n),lease=locks.get(target),owner=locks.owner(target);return <div key={n.id} className="entry-edit-row" data-entry={n.id} tabIndex={-1} onBlur={e=>blur(n,e)}>
  {n.type==='heading'?(n.id===sibling?.id?<>
   {!lease&&<button disabled={!!acquiring} onClick={()=>void enter(n)}>重新取得编辑权限</button>}
-  <fieldset disabled={!lease}><NodeFields node={n} original={{...n,title:''}} onChange={updateNode}/></fieldset>
+  <fieldset disabled={!lease}><DraftFields source={n} original={n} onChange={updateNode}/></fieldset>
   <button onClick={()=>removeDraftNode(n)}>取消新增章节</button>
- </>:<strong>{n.title}</strong>):<><div className="entry-lock-status">{owner&&<span className="lock-hint">{owner.owner} 正在编辑 · 已锁定</span>}{!lease&&<button disabled={!!acquiring||!!owner&&review.proposing} onClick={()=>void enter(n)}>{acquiring===n.id?'正在取得权限…':owner&&!review.proposing?'接管编辑':'编辑此项'}</button>}{lease&&<small>正在编辑</small>}</div><fieldset disabled={!lease||sorting||acquiring==='move'}><NodeFields node={n} original={originals.current.get(n.id)??n} onChange={updateNode}/></fieldset></>}
+ </>:<strong>{n.title}</strong>):<><div className="entry-lock-status">{owner&&<span className="lock-hint">{owner.owner} 正在编辑 · 已锁定</span>}{!lease&&<button disabled={!!acquiring||!!owner&&review.proposing} onClick={()=>void enter(n)}>{acquiring===n.id?'正在取得权限…':owner&&!review.proposing?'接管编辑':'编辑此项'}</button>}{lease&&<small>正在编辑</small>}</div><fieldset disabled={!lease||sorting||acquiring==='move'}><DraftFields source={n} original={originals.current.get(n.id)??n} onChange={updateNode}/></fieldset></>}
  <div className="scope-insert-actions">{n.type==='entry'&&<>
  {chapter&&!review.proposing&&([-1,1] as const).map(direction=><button key={direction} type="button" data-move={direction}
   disabled={!!acquiring||!locks.online||contentDirty||!canMoveEntry(nodes,i,direction)}

@@ -1,0 +1,38 @@
+{
+  "name": "用干将莫邪补前期输出",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "干将莫邪在场就能拿到双剑·雄，前期可以单挂打输出。",
+      "id": "utterances_0b41c44160ca410f9dcf439b071ea513"
+    },
+    {
+      "text": "手里有回蓝装备时，干将莫邪能更快放技能，帮前期少掉血。",
+      "id": "utterances_bf61f3d328e24a0d939a7e10b27641e6"
+    }
+  ],
+  "explanation": "买到干将莫邪时，这组话说明干将莫邪在队伍中的作用。干将莫邪在场能获得双剑·雄；配回蓝装备还可增加施法频率，在前期提供过渡伤害。依据《常小娥灵活变阵-常小娥》「干将莫邪」及干将莫邪的官方卡面、技能。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_0b947014a4734e8ca3f6beb89a0e899c",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:42102",
+      "name": "双剑·雄"
+    },
+    {
+      "id": "card:1821",
+      "name": "干将莫邪"
+    },
+    {
+      "id": "card:1823",
+      "name": "干将莫邪"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"干将莫邪\"",
+  "editor_mode": "text"
+}

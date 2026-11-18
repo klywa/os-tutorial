@@ -6,8 +6,9 @@ import test_website as fixtures
 from test_templates_proposals import group
 
 def portable_group():
-    return {'id':'example','name':'开局提醒','event_id':'battle_prepare',
-            'scope':{'player_id':None,'lineup_note_id':None},'conditions':[],'utterances':['先稳住。']}
+    return {'name':'开局提醒','event_name':'准备战斗（旧版）','scope':{'player':None,'lineup':None},
+            'expression':'','priority':0,'editor_mode':'tree','condition_tree':{'kind':'all','children':[]},
+            'utterances':['先稳住。']}
 
 
 class TemplateHttpTests(unittest.TestCase):
@@ -52,8 +53,8 @@ class TemplateHttpTests(unittest.TestCase):
         code,result,_=self.call('/os-tutorial/api/templates/proposals/'+pid+'/approve','POST',{'proposal_revision':proposal['proposal_revision']})
         self.assertEqual(code,200,result)
         exported=self.call('/os-tutorial/api/templates/export')[1]
-        self.assertEqual(exported['schema_version'],2)
-        self.assertEqual(exported['groups'],[portable_group()])
+        self.assertEqual(exported['schema_version'],3)
+        self.assertEqual(exported['groups'],[{**portable_group(), 'event_name':'解释为何准备战斗（旧版）'}])
         self.assertEqual(self.call('/os-tutorial/api/templates/changes','POST',data)[0],409)
 
     def test_import_preview_does_not_write_and_commit_rechecks(self):
@@ -64,7 +65,8 @@ class TemplateHttpTests(unittest.TestCase):
         self.assertEqual(self.call('/os-tutorial/api/templates')[1]['groups'],[])
         code,result,_=self.call('/os-tutorial/api/templates/import/commit','POST',preview)
         self.assertEqual(code,200,result)
-        self.assertEqual(self.call('/os-tutorial/api/templates/export?group_ids=example')[1]['groups'],[portable_group()])
+        gid=preview['changes'][0]['id']
+        self.assertEqual(self.call('/os-tutorial/api/templates/export?group_ids='+gid)[1]['groups'],[{**portable_group(), 'event_name':'解释为何准备战斗（旧版）'}])
         self.assertEqual(self.call('/os-tutorial/api/templates/import/commit','POST',preview)[0],409)
 
 

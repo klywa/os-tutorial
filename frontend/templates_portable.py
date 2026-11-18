@@ -5,6 +5,7 @@ import json
 import uuid
 
 import templates_schema as schema
+import template_rules as rules
 from templates_entities import resolve
 
 
@@ -100,6 +101,9 @@ def _v1(document, catalog, notes, *, retired_entities=None, retired_suggestions=
 
 
 def decode(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
+    if isinstance(document,dict) and type(document.get('schema_version')) is int and document['schema_version']==3 and document.get('kind')=='speech-template-library':
+        from template_package import decode as decode_rules
+        return decode_rules(document,public,catalog,notes,retired_entities=retired_entities,retired_suggestions=retired_suggestions)
     schema.fields(document, {'kind', 'schema_version', 'events', 'groups'}, {'kind', 'schema_version', 'events', 'groups'})
     if document['kind'] != 'speech-template-library' or type(document['schema_version']) is not int or document['schema_version'] not in (1, 2):
         raise ValueError('模板库格式或版本无效')
@@ -113,9 +117,13 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         event = deepcopy(external); event.setdefault('id', _id('event'))
         schema.identity(event['id'])
         previous = old_events.get(event['id'], {})
+        if previous and previous['name'] != event['name']:
+            matched = rules.resolve_event(old_events.values(),event['name'],event['id'])
+            if matched and matched['id']==event['id']:
+                event.update(name=previous['name'],category=previous['category'])
         old_parameters = {p['key']: p for p in previous.get('parameters', [])}
         for parameter in _list(event['parameters']):
-            schema.fields(parameter, {'id', 'key', 'name', 'type', 'entity_categories', 'suggestions', 'min', 'max'}, {'key', 'name', 'type'})
+            schema.fields(parameter, {'id', 'key', 'name', 'type', 'dsl_type','entity_categories', 'suggestions', 'min', 'max'}, {'key', 'name', 'type'})
             if not isinstance(parameter['key'], str) or not schema.KEY.fullmatch(parameter['key']): raise ValueError('参数英文键无效或重复')
             parameter.setdefault('id', old_parameters.get(parameter['key'], {}).get('id', _id('parameters')))
             if parameter['type'] == 'entity' and 'suggestions' in parameter:
@@ -138,7 +146,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
     for event in events: names[event['name']].append(event)
     groups = []; archives = {}
     for external in _list(document['groups']):
-        schema.fields(external, {'id', 'name', 'event_id', 'event_name', 'scope', 'conditions', 'utterances'},
+        schema.fields(external, {'id', 'name', 'explanation', 'event_id', 'event_name', 'scope', 'conditions', 'utterances'},
                       {'name', 'scope', 'conditions', 'utterances'})
         group = deepcopy(external); group.setdefault('id', _id('group'))
         schema.identity(group['id'])
@@ -147,11 +155,16 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         if event_id is None:
             schema.text(event_name, '事件名称')
             found = names.get(event_name, [])
+            if not found:
+                match = rules.resolve_event(event_map.values(),event_name)
+                if match: found = [match]
             if len(found) != 1: raise ValueError('事件名称不存在或重名：' + event_name)
             event_id = found[0]['id']
         event = event_map.get(event_id) if isinstance(event_id, str) else None
         if event is None: raise ValueError('话术组引用的事件不存在')
-        if event_name is not None and event_name != event['name']: raise ValueError('事件 ID 与名称不一致')
+        if event_name is not None:
+            match = rules.resolve_event(event_map.values(),event_name,event_id)
+            if not match or match['id']!=event_id: raise ValueError('事件 ID 与名称不一致')
         group['event_id'] = event_id
         parameters = {p['key']: p for p in event['parameters']}
         previous = old_groups.get(group['id'], {})
@@ -170,7 +183,13 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         utterances = []
         for value in _list(group['utterances']):
             schema.text(value, '话术'); utterances.append({'text': value})
-        group['utterances'] = _stable_rows(utterances, previous.get('utterances', []), 'utterances')
+        prior_utterances = previous.get('utterances', [])
+        group['utterances'] = _stable_rows(utterances, [row for row in prior_utterances if not row.get('ignored')], 'utterances')
+        for index, row in enumerate(prior_utterances):
+            if row.get('ignored'):
+                group['utterances'].insert(index, deepcopy(row))
+        if 'ignored' in previous:
+            group['ignored'] = previous['ignored']
         archives[group['id']] = deepcopy(previous.get('related_entities', []))
         group['related_entities'] = []
         groups.append(group)
@@ -200,6 +219,8 @@ def encode(public):
     groups = []
     for original in public['groups']:
         group = {key: deepcopy(original[key]) for key in ('id', 'name', 'event_id', 'scope')}
+        if 'explanation' in original:
+            group['explanation'] = original['explanation']
         group['conditions'] = [{key: deepcopy(value) for key, value in condition.items() if key != 'id'}
                                for condition in original['conditions']]
         for condition in group['conditions']:

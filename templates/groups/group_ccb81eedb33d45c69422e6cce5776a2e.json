@@ -1,0 +1,25 @@
+{
+  "name": "刘禅铸造霸者重铠",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，穿戴者为刘禅，铸造成品为霸者重铠时适用。霸者重铠帮高血量的刘禅抵挡伤害，给后排争取输出时间。依据为《常小娥灵活变阵-常小娥》「霸者重铠」及官方装备「霸者重铠」、装备「力量腰带」。",
+  "utterances": [
+    {
+      "text": "刘禅生命值高于七成时，霸者重铠能让他少受四成伤害。",
+      "id": "utterances_e2767e22d8e64681a9c8915a38ccbdd9"
+    },
+    {
+      "text": "霸者重铠帮高血量的刘禅抵挡伤害，给后排争取输出时间。",
+      "id": "utterances_8e9d17ed7c7f47f4b51ec70b32afcb36"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_ccb81eedb33d45c69422e6cce5776a2e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"刘禅\" and arg3 is \"霸者重铠\"",
+  "editor_mode": "text"
+}

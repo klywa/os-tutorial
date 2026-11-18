@@ -56,3 +56,19 @@
 .dock-search :focus-visible,.dock-matches button:focus-visible { outline: 2px solid var(--jade); outline-offset: -2px; }
 
 .entity-popover .card-version{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line)}.entity-popover .card-version-heading{margin:0;color:var(--jade);font-size:15px}
+
+.overview-description,.overview-reserves{
+  box-sizing:border-box;
+  max-height:min(32rem,60dvh);
+  overflow-y:auto;
+  padding-inline-end:12px;
+}
+.overview-description:focus-visible,.overview-reserves:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+
+@media(min-width:1001px){
+  .full .overview-opening{--overview-column-max-height:clamp(26rem,60dvh,32rem)}
+  .full .overview-positioning,.full .overview-description{max-height:var(--overview-column-max-height)}
+  .full .overview-positioning{display:flex;flex-direction:column;min-width:0}
+  .full .overview-positioning>:not(.overview-reserves){flex:none}
+  .full .overview-positioning>.overview-reserves{flex:1 1 auto;min-height:0;max-height:none}
+}

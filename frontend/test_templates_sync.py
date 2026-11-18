@@ -58,6 +58,16 @@ class TemplateMergeTests(unittest.TestCase):
         result = sync.merge_record(base, None, right, preferred='left')
         self.assertTrue(result['conflicts']); self.assertIsNone(result['record'])
 
+    def test_explanation_merges_independently_and_competing_edits_conflict(self):
+        base = self.record()
+        left = dict(base, explanation='网站说明')
+        right = dict(base, name='新名')
+        self.assertEqual(sync.merge_record(base, left, right)['record'], dict(right, explanation='网站说明'))
+        right['explanation'] = '本地说明'
+        result = sync.merge_record(base, left, right, preferred='left')
+        self.assertTrue(result['conflicts'])
+        self.assertEqual(result['record'], left)
+
     def test_parameter_keys_merge_and_competing_order_is_conflict(self):
         base = {'id':'e','parameters':[{'key':'a','name':'甲'},{'key':'b','name':'乙'},{'key':'c','name':'丙'}]}
         left = deepcopy(base); right = deepcopy(base)

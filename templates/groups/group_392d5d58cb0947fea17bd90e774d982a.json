@@ -1,0 +1,25 @@
+{
+  "name": "司空震铸造金色圣剑",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，穿戴者为司空震，铸造成品为金色圣剑时适用。司空震靠普攻输出，金色圣剑能让他打得更快、每次伤害更高。依据为《常小娥灵活变阵-常小娥》「金色圣剑」及官方装备「金色圣剑」、装备「大棒」。",
+  "utterances": [
+    {
+      "text": "金色圣剑提高司空震的攻速，每次普通攻击还会附带法术伤害。",
+      "id": "utterances_49bb598916c04b68a8ec18013f245ec2"
+    },
+    {
+      "text": "司空震靠普攻输出，金色圣剑能让他打得更快、每次伤害更高。",
+      "id": "utterances_85f3b8f9fa8c41bb83951eadbe31d38e"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_392d5d58cb0947fea17bd90e774d982a",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"司空震\" and arg3 is \"金色圣剑\"",
+  "editor_mode": "text"
+}

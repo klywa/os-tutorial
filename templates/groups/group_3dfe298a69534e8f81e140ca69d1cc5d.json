@@ -1,0 +1,38 @@
+{
+  "name": "庄周登场取得招募战术",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "庄周上阵会提升自己的等级，还能提供招募战术继续找英雄。",
+      "id": "utterances_6b13c13223b848e79b524a9bfd46dd51"
+    },
+    {
+      "text": "庄周登场能拿招募战术，手里就多一次招募英雄的机会。",
+      "id": "utterances_ffb0a24e884d4aecb3c7f6b5d97f1c11"
+    }
+  ],
+  "explanation": "上阵庄周时，说明这项操作的战斗或资源收益。庄周上阵会提升自己的等级，还能提供招募战术继续找英雄。依据《常小娥灵活变阵-常小娥》「庄周」和庄周的官方卡面、技能。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_3dfe298a69534e8f81e140ca69d1cc5d",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:313003",
+      "name": "招募战术"
+    },
+    {
+      "id": "card:1131",
+      "name": "庄周"
+    },
+    {
+      "id": "card:1133",
+      "name": "庄周"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"庄周\"",
+  "editor_mode": "text"
+}

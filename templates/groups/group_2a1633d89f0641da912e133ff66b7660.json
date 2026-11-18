@@ -1,0 +1,42 @@
+{
+  "name": "露娜登场触发狂铁整备",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "露娜登场能提高阿科米亚核心等级，还可能再触发狂铁整备。",
+      "id": "utterances_bbba375a5b474235964504b7c61eaae3"
+    },
+    {
+      "text": "上露娜有机会再触发狂铁的整备，让阿科米亚核心多得等级。",
+      "id": "utterances_b97717e2108a4896b0ee9b9c458489d5"
+    }
+  ],
+  "explanation": "狂铁在场，上阵露娜时，说明这项操作的战斗或资源收益。露娜登场能提高阿科米亚核心等级，还可能再触发狂铁整备。依据《常小娥灵活变阵-常小娥》「露娜」和露娜的官方卡面、技能。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_2a1633d89f0641da912e133ff66b7660",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1463",
+      "name": "露娜"
+    },
+    {
+      "id": "card:1461",
+      "name": "露娜"
+    },
+    {
+      "id": "card:5031",
+      "name": "狂铁"
+    },
+    {
+      "id": "card:5033",
+      "name": "狂铁"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"露娜\" and 玩家.战场 has \"狂铁\"",
+  "editor_mode": "text"
+}

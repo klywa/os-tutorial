@@ -1,0 +1,42 @@
+{
+  "name": "孙悟空整备培养露娜",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "露娜有闪现，孙悟空整备时可以给她提升等级。",
+      "id": "utterances_ff2175a1f86340368db46a36c4179bbf"
+    },
+    {
+      "text": "孙悟空能提高闪现英雄的等级，露娜也能跟着成长。",
+      "id": "utterances_93d24135b41d4ee29f66e536885bb357"
+    }
+  ],
+  "explanation": "露娜在场，上阵孙悟空时，说明这项操作的战斗或资源收益。露娜有闪现，孙悟空整备时可以给她提升等级。依据《常小娥灵活变阵-常小娥》「孙悟空」和孙悟空的官方卡面、技能。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_a584934c7d21495bb29d1e722329a11e",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1463",
+      "name": "露娜"
+    },
+    {
+      "id": "card:1461",
+      "name": "露娜"
+    },
+    {
+      "id": "card:1673",
+      "name": "孙悟空"
+    },
+    {
+      "id": "card:1671",
+      "name": "孙悟空"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"",
+  "editor_mode": "text"
+}

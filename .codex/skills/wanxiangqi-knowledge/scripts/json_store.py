@@ -37,9 +37,13 @@ def digest(value):
     return hashlib.sha256(json.dumps(value, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
+def snapshot_view(record):
+    return {'body':record['body'],
+            'metadata':{k:v for k,v in record['metadata'].items() if k not in ('history','history_head','history_count','conflicts')}}
+
+
 def snapshot(record):
-    return {'body':deepcopy(record['body']),
-            'metadata':deepcopy({k:v for k,v in record['metadata'].items() if k not in ('history','history_head','history_count','conflicts')})}
+    return deepcopy(snapshot_view(record))
 
 
 def editable_record(record):

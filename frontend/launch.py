@@ -45,9 +45,10 @@ def main():
     run([python, '-c', 'import sys; assert (3,11)<=sys.version_info[:2]<=(3,12), "Recreate the virtual environment with Python 3.12"'])
     requirements = ROOT / '.codex/skills/wanxiangqi-knowledge/scripts/requirements.txt'
     stamp = runtime / 'launcher-requirements.sha256'
-    signature = hashlib.sha256(requirements.read_bytes()).hexdigest()
+    condition_requirements = ROOT / 'src/python/condition/requirements.txt'
+    signature = hashlib.sha256(requirements.read_bytes() + b'\0' + condition_requirements.read_bytes()).hexdigest()
     if not stamp.exists() or stamp.read_text().strip() != signature:
-        run([python, '-m', 'pip', 'install', '-r', requirements])
+        run([python, '-m', 'pip', 'install', '-r', requirements, '-r', condition_requirements])
         stamp.write_text(signature, encoding='utf-8')
     if not args.skip_topic_model:
         run([python, FRONTEND / 'install_topic_model.py'])

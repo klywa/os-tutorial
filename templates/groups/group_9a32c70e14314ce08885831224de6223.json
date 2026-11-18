@@ -1,0 +1,25 @@
+{
+  "name": "刘禅铸造不祥征兆",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，穿戴者为刘禅，铸造成品为不祥征兆时适用。不祥征兆能减少刘禅在战斗前15秒受到的普通攻击伤害。依据为《常小娥灵活变阵-常小娥》「不祥征兆」及官方装备「不祥征兆」、装备「守护者之铠」。",
+  "utterances": [
+    {
+      "text": "刘禅穿不祥征兆能格挡开场的普攻伤害，对高攻速敌人更有效。",
+      "id": "utterances_ba0fb22946a14994845951a8b0ba7c8e"
+    },
+    {
+      "text": "不祥征兆能减少刘禅在战斗前15秒受到的普通攻击伤害。",
+      "id": "utterances_8617e9c5c2c34cc6aa6bcba4dac2cb6b"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_9a32c70e14314ce08885831224de6223",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"刘禅\" and arg3 is \"不祥征兆\"",
+  "editor_mode": "text"
+}

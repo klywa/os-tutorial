@@ -1,0 +1,25 @@
+{
+  "name": "花木兰铸造无尽巨剑",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，穿戴者为花木兰，铸造成品为无尽巨剑时适用。无尽巨剑让花木兰更容易暴击，暴击时也能造成更高伤害。依据为《常小娥灵活变阵-常小娥》「无尽巨剑」及官方装备「无尽巨剑」、装备「风暴巨剑」。",
+  "utterances": [
+    {
+      "text": "无尽巨剑提高花木兰的暴击率和暴击伤害，能增强物理输出。",
+      "id": "utterances_a678404dd77b4eeea6036d7e6c28cdf4"
+    },
+    {
+      "text": "无尽巨剑让花木兰更容易暴击，暴击时也能造成更高伤害。",
+      "id": "utterances_0c3b0cb5c7fa46e1b8238d9ea5413239"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_4040532269294327b2177925d559769d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"花木兰\" and arg3 is \"无尽巨剑\"",
+  "editor_mode": "text"
+}

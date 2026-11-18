@@ -1,0 +1,47 @@
+{
+  "id": "group_452f2c8085374b369b9158692d306280",
+  "name": "卖弈星避免分走助力",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "出售弈星，是为了把后续小菟助力留给继续作战的英雄。",
+      "id": "utterances_21b96bfab30441ecabd433b6496f9522"
+    },
+    {
+      "text": "弈星离场后，这名弈星就不会再分走小菟助力提供的等级。",
+      "id": "utterances_2e4f9f33b8d44f37a882749f0f2ae6ff"
+    }
+  ],
+  "explanation": "在常小娥灵活变阵中从战场出售弈星时，解释为何要收回这名过渡英雄的位置。《常小娥灵活变阵-常小娥》「前期运营思路」说明弈星在场可帮助棋手升级，后续助力应集中在继续作战的英雄身上。官方棋手技能「小菟助力」随机选取一名在场英雄提升等级。",
+  "event_id": "os_02f23dfd4155737d",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1971",
+      "name": "弈星"
+    },
+    {
+      "id": "card:1973",
+      "name": "弈星"
+    },
+    {
+      "id": "card:1941",
+      "name": "苏烈"
+    },
+    {
+      "id": "card:1943",
+      "name": "苏烈"
+    },
+    {
+      "id": "card:92499",
+      "name": "小菟助力"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"弈星\"",
+  "editor_mode": "text",
+  "ignored": true
+}

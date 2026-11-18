@@ -77,24 +77,26 @@ def version_writes(root, old, new, origin='save', review_refs=None):
             continue
         existing = versions(root, nid, _locked=True)
         candidates = []
-        if before and (not existing or existing[0]['snapshot_sha256'] != store.digest(store.snapshot(before))):
-            candidates.append((before, 'baseline', []))
-        candidates.append((record, origin, review_refs or []))
-        for item, source, refs in candidates:
+        if before:
+            baseline=store.snapshot_view(before)
+            baseline_digest=store.digest(baseline)
+            if not existing or existing[0]['snapshot_sha256'] != baseline_digest:
+                candidates.append((baseline, baseline_digest, 'baseline', []))
+        current=store.snapshot_view(record)
+        candidates.append((current, store.digest(current), origin, review_refs or []))
+        for snap, snapshot_sha256, source, refs in candidates:
             vid = uuid.uuid4().hex
-            snap = store.snapshot(item)
-            snapshot_sha256 = store.digest(snap)
             if external and any(row.get('snapshot_sha256')==snapshot_sha256 for row in existing):
                 continue
             value = {'id': vid, 'note_id': nid, 'at': datetime.now(timezone.utc).isoformat(), 'origin': source,
-                     'body_sha256': store.digest(item['body']), 'review_refs': refs, 'record':snap}
+                     'body_sha256': store.digest(snap['body']), 'review_refs': refs, 'record':deepcopy(snap)}
             if external:
                 value['id']=snapshot_sha256[:32]
                 result.append(history.version_write(value))
                 continue
             result.append({'path': str((version_folder(root, nid) / (vid + '.json')).relative_to(Path(root))).replace('\\', '/'),
                            'value': value})
-            existing.insert(0, {**{k:v for k,v in value.items() if k!='record'}, 'snapshot_sha256':store.digest(snap)})
+            existing.insert(0, {**{k:v for k,v in value.items() if k!='record'}, 'snapshot_sha256':snapshot_sha256})
         if external: continue
         result.append({'path':(version_folder(root,nid) / 'index.meta.json').relative_to(Path(root)).as_posix(),
                        'value':{'versions':existing}})

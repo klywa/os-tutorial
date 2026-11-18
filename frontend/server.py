@@ -685,6 +685,9 @@ def main():
             from player_identity import migrate as migrate_players
             migrate_players(args.root)
             server = create_server(args.root, args.port, start_worker=True)
+        import templates_http
+        import templates_store
+        templates_store.refresh_published(args.root,entities=templates_http.effective_entities(server),migrate_events=True)
         print(f'万象棋工具：http://127.0.0.1:{args.port}', flush=True)
         if args.open_browser:
             import webbrowser

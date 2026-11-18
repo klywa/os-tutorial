@@ -1,0 +1,42 @@
+{
+  "name": "用铠补复生和牺牲",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "铠既有复生又有牺牲，一场战斗里有机会两次给河洛英雄临时等级。",
+      "id": "utterances_edbccc527a77457aa560258af822a4b1"
+    },
+    {
+      "text": "想让李信多次获得临时等级，可以用能复生的铠在前排承伤。",
+      "id": "utterances_5f52c81086944b4bbfd8f2ba39207fa3"
+    }
+  ],
+  "explanation": "买到铠时，这组话说明铠在队伍中的作用。铠具备复生和牺牲，能通过阵亡为己方河洛英雄提供临时等级，也能配合李信的牺牲成长。依据《常小娥灵活变阵-常小娥》「铠」及铠的官方卡面、技能。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_e5e4420159e04f09a5fd1fe4aeaae0d5",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1933",
+      "name": "铠"
+    },
+    {
+      "id": "card:1931",
+      "name": "铠"
+    },
+    {
+      "id": "card:5073",
+      "name": "李信"
+    },
+    {
+      "id": "card:5071",
+      "name": "李信"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"铠\"",
+  "editor_mode": "text"
+}

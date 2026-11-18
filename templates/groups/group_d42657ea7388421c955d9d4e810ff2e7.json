@@ -1,0 +1,25 @@
+{
+  "name": "集体唤醒触发周瑜登场",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“使用无目标效果牌”事件中，使用集体唤醒，周瑜在场时适用。集体唤醒能让周瑜的全队成长生效一次，同时触发其他登场效果。依据为《常小娥灵活变阵-常小娥》「周瑜」及官方效果牌「集体唤醒」、英雄「周瑜」。",
+  "utterances": [
+    {
+      "text": "集体唤醒再次触发周瑜登场，全队都能提升等级。",
+      "id": "utterances_3190cda99e1e4f1084a67fdbbdf8ba3b"
+    },
+    {
+      "text": "集体唤醒能让周瑜的全队成长生效一次，同时触发其他登场效果。",
+      "id": "utterances_8349c91ec8fa442ca0ea6188b3b064c5"
+    }
+  ],
+  "event_id": "os_1c33df3b1a2b43f5",
+  "id": "group_d42657ea7388421c955d9d4e810ff2e7",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"集体唤醒\" and 玩家.战场 has \"周瑜\"",
+  "editor_mode": "text"
+}

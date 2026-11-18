@@ -1,0 +1,34 @@
+{
+  "name": "用周瑜的登场效果提升全队等级",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "周瑜一登场就能给场上的全队英雄提升等级。",
+      "id": "utterances_b19b764dccfc4cc5b424f47b22f87969"
+    },
+    {
+      "text": "想补本轮战力时，周瑜既能登场提升全队等级，也能打范围伤害。",
+      "id": "utterances_435c58af4a5349c996660863ffb3b6b1"
+    }
+  ],
+  "explanation": "买到周瑜时，这组话说明周瑜在队伍中的作用。周瑜登场给全体英雄提升等级。需要立即增强战力时，他还能通过火焰和焦土提供范围伤害。依据《常小娥灵活变阵-常小娥》「周瑜」及周瑜的官方卡面、技能。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_b8186280b44c4c2498d135af8b83e781",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1241",
+      "name": "周瑜"
+    },
+    {
+      "id": "card:1243",
+      "name": "周瑜"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"周瑜\"",
+  "editor_mode": "text"
+}

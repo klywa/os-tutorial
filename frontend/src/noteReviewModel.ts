@@ -3,14 +3,14 @@ import {blockEnd} from './jsonDocument';
 
 export function scopeNodes(body:KnowledgeDocument,id:string){const i=body.nodes.findIndex(n=>n.id===id);return i<0?[]:body.nodes.slice(i,blockEnd(body.nodes,i));}
 export type DiffPart={kind:'same'|'add'|'remove';text:string};
-export function textDiff(before:string,after:string):DiffPart[]{
+export function textDiff(before:string,after:string,maxCells=1_000_000):DiffPart[]{
  const a=Array.from(before),b=Array.from(after);let prefix=0,suffix=0;
  while(prefix<a.length&&prefix<b.length&&a[prefix]===b[prefix])prefix++;
  while(suffix<a.length-prefix&&suffix<b.length-prefix&&a[a.length-1-suffix]===b[b.length-1-suffix])suffix++;
  const x=a.slice(prefix,a.length-suffix),y=b.slice(prefix,b.length-suffix),out:DiffPart[]=[];
  function push(kind:DiffPart['kind'],text:string){if(!text)return;const last=out.at(-1);if(last?.kind===kind)last.text+=text;else out.push({kind,text});}
  push('same',a.slice(0,prefix).join(''));
- if(x.length*y.length>1_000_000){push('remove',x.join(''));push('add',y.join(''));}
+ if(!x.length||!y.length||x.length*y.length>maxCells){push('remove',x.join(''));push('add',y.join(''));}
  else{
   const dp=Array.from({length:x.length+1},()=>new Uint32Array(y.length+1));
   for(let i=x.length-1;i>=0;i--)for(let j=y.length-1;j>=0;j--)dp[i][j]=x[i]===y[j]?dp[i+1][j+1]+1:Math.max(dp[i+1][j],dp[i][j+1]);

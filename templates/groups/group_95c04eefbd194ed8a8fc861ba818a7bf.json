@@ -1,0 +1,42 @@
+{
+  "name": "诸葛亮搭配杨玉环施法",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "杨玉环施法时，诸葛亮能同时获得法力和临时等级。",
+      "id": "utterances_fdb8bad124ac49d9b2bc4d081f7b0375"
+    },
+    {
+      "text": "杨玉环施法频繁，选诸葛亮能利用她的施法更快回蓝。",
+      "id": "utterances_b1a3468884d2452ab34bdad99e49f0a7"
+    }
+  ],
+  "explanation": "杨玉环在场，选中诸葛亮时，说明这项操作的战斗或资源收益。杨玉环施法时，诸葛亮能同时获得法力和临时等级。依据《常小娥灵活变阵-常小娥》「诸葛亮」和诸葛亮的官方卡面、技能。",
+  "event_id": "os_dcef166d05efe08e",
+  "id": "group_95c04eefbd194ed8a8fc861ba818a7bf",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:1761",
+      "name": "杨玉环"
+    },
+    {
+      "id": "card:1763",
+      "name": "杨玉环"
+    },
+    {
+      "id": "card:1903",
+      "name": "诸葛亮"
+    },
+    {
+      "id": "card:1901",
+      "name": "诸葛亮"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\"",
+  "editor_mode": "text"
+}

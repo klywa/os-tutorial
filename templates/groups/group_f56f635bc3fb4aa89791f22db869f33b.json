@@ -1,0 +1,34 @@
+{
+  "name": "合成狂铁补觉醒",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "狂铁觉醒后整备会触发两次，阿科米亚核心成长得更快。",
+      "id": "utterances_9c94a7a3444c4924980727d4479cd430"
+    },
+    {
+      "text": "合成狂铁补觉醒，是为了让一次整备能给阿科米亚核心升两次等级。",
+      "id": "utterances_486937783a4e466382b7706e331ba251"
+    }
+  ],
+  "explanation": "合成后狂铁还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「整备：阿科米亚核心的等级+2。」与「整备：阿科米亚核心的等级+2，触发2次。」。依据《常小娥灵活变阵-常小娥》「狂铁」和狂铁的官方卡面、技能。",
+  "event_id": "os_d12194463340a8ec",
+  "id": "group_f56f635bc3fb4aa89791f22db869f33b",
+  "conditions": [],
+  "related_entities": [
+    {
+      "id": "card:5031",
+      "name": "狂铁"
+    },
+    {
+      "id": "card:5033",
+      "name": "狂铁"
+    }
+  ],
+  "priority": 0,
+  "expression": "arg1 is \"狂铁\" and not arg1.已觉醒",
+  "editor_mode": "text"
+}

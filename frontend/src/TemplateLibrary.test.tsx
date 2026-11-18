@@ -15,6 +15,10 @@ describe('template group reading',()=>{
   const html=renderToStaticMarkup(<TemplateGroupCard group={group} event={event} scopeName={()=>'通用'} editable={false} onEdit={()=>{}} onDelete={()=>{}}/>);
   for(const text of ['开局拿牌','虞姬','回合','≥','第一条完整话术','第二条完整话术','等概率','同时满足'])expect(html).toContain(text);
   expect(html).toContain('entity-chip');expect(html).not.toContain('编辑模板');expect(html).not.toContain('删除模板');
+  expect(html).not.toContain('说明与依据');
+  const explained=renderToStaticMarkup(<TemplateGroupCard group={{...group,explanation:'换牌依据\n<纯文本>'}} event={event} scopeName={()=>'通用'} editable={false} onEdit={()=>{}} onDelete={()=>{}}/>);
+  expect(explained).toContain('说明与依据</button>');
+  expect(explained).toContain('role="tooltip" hidden="">换牌依据\n&lt;纯文本&gt;');
   expect(html).toContain('导出json');
   const left=html.match(/<section[^>]*aria-label="卡牌与条件"[^>]*>([\s\S]*?)<\/section>/)?.[1];
   expect(left).toContain('关联卡牌');expect(left).toContain('虞姬');expect(left).toContain('回合');

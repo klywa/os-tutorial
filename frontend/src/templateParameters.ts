@@ -1,6 +1,6 @@
 import type {ParameterType,TemplateParameter} from './templates';
 
-export type ParameterDraft={id:string;name:string;key:string;type:ParameterType;categories:string[];suggestions:string;min:string;max:string};
+export type ParameterDraft={id:string;name:string;key:string;type:ParameterType;dsl_type?:string;categories:string[];suggestions:string;min:string;max:string};
 export function nextParameterKey(parameters:TemplateParameter[]){let n=1;while(parameters.some(p=>p.key==='parameter_'+n))n++;return 'parameter_'+n;}
 export function buildTemplateParameter(draft:ParameterDraft,existing:TemplateParameter[]):TemplateParameter{
  const name=draft.name.trim(),key=draft.key.trim();
@@ -8,6 +8,7 @@ export function buildTemplateParameter(draft:ParameterDraft,existing:TemplatePar
  if(!/^[a-z][a-z0-9_]{0,63}$/.test(key))throw new Error('参数标识须以小写字母开头，只能包含小写字母、数字和下划线，最多64位');
  if(existing.some(p=>p.key===key))throw new Error('该参数标识已存在，请使用其他标识');
  const parameter:TemplateParameter={id:draft.id,name,key,type:draft.type};
+ if(draft.dsl_type?.trim())parameter.dsl_type=draft.dsl_type.trim();
  if(draft.type==='entity'&&draft.categories.length)parameter.entity_categories=[...new Set(draft.categories)];
  if(draft.type==='text'||draft.type==='number'){
   const values=draft.suggestions.split(/[,，]/).map(s=>s.trim()).filter(Boolean);

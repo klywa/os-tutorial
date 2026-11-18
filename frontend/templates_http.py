@@ -76,13 +76,24 @@ def get(server,actor,path,request_url):
     _identity(actor)
     query=parse_qs(urlsplit(request_url).query,keep_blank_values=True)
     if path==PREFIX:
-        data=library.snapshot(server.root)
-        data.update(library.entity_link_projection(server.root,entities=effective_entities(server)))
+        library.recover(server.root)
+        public,meta=library._load(server.root)
+        data=library._snapshot(public,meta)
+        events={e['id']:e for e in data['events']}
+        data['condition_catalog']=library.rules.library_catalog(events.values())
+        active=effective_entities(server)
+        entities={row['id']:row for row in active['items']}
+        for group in data['groups']:
+            refs={**meta.get('entity_archive',{}).get(group['id'],{}),**entities}
+            group.update(library.rules.editor_rule(group,events[group['event_id']],refs))
+        data.update(library.entity_link_projection(server.root,entities=active))
         return data
     if path==PREFIX+'/export':
         ids=None
         if 'group_ids' in query:ids=[s for s in query['group_ids'][0].split(',') if s]
-        return library.export_library(server.root,ids)
+        return library.export_library(server.root,ids,rules_format=True,entities=effective_entities(server))
+    if path==PREFIX+'/published':
+        return library.refresh_published(server.root,entities=effective_entities(server))
     if path==PREFIX+'/proposals':
         _identity(actor,editor=True)
         return proposal_store(server).list(actor)

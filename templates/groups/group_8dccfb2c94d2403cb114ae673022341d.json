@@ -1,0 +1,25 @@
+{
+  "name": "施法队用换帅调整吕布等级",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "在“对目标使用效果牌”事件中，使用换帅，目标为吕布，诸葛亮在场时适用。换帅可以直接调整吕布和三分队友的等级，无需从头培养。依据为《常小娥灵活变阵-常小娥》「换帅」及官方效果牌「换帅」。",
+  "utterances": [
+    {
+      "text": "换帅让吕布和最近的三分队友交换等级，便于调整前排战力。",
+      "id": "utterances_2238c7d31395406c8feb5e072d178514"
+    },
+    {
+      "text": "换帅可以直接调整吕布和三分队友的等级，无需从头培养。",
+      "id": "utterances_7c92d8a2d67a4e2d928dc492499885bd"
+    }
+  ],
+  "event_id": "os_bfcc2eec6def94c8",
+  "id": "group_8dccfb2c94d2403cb114ae673022341d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"换帅\" and arg1 is \"吕布\" and 玩家.战场 has \"诸葛亮\"",
+  "editor_mode": "text"
+}

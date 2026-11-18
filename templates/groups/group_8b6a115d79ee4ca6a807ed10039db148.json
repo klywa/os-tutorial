@@ -1,0 +1,25 @@
+{
+  "name": "铸造炽热支配者的基础收益",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“铸造装备”事件中，铸造成品为炽热支配者时适用。炽热支配者在首次受控后提供15秒免控，压制除外。依据为《常小娥灵活变阵-常小娥》「炽热支配者」及官方装备「炽热支配者」。",
+  "utterances": [
+    {
+      "text": "铸造炽热支配者能在首次受控时获得300点护盾。",
+      "id": "utterances_17f6c02fd8df49369b2430f645f2aef8"
+    },
+    {
+      "text": "炽热支配者在首次受控后提供15秒免控，压制除外。",
+      "id": "utterances_e32af21d428241cd8c068cb8cda24b7c"
+    }
+  ],
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_8b6a115d79ee4ca6a807ed10039db148",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg3 is \"炽热支配者\"",
+  "editor_mode": "text"
+}

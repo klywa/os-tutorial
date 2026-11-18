@@ -1,0 +1,25 @@
+{
+  "name": "干将莫邪穿戴法源之杯",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "在“穿戴装备”事件中，穿戴者为干将莫邪，装备为法源之杯时适用。干将莫邪靠技能输出，法源之杯能缩短两次释放飞剑的间隔。依据为《常小娥灵活变阵-常小娥》「法源之杯」及官方装备「法源之杯」。",
+  "utterances": [
+    {
+      "text": "法源之杯每秒回复5点法力，干将莫邪能更快释放飞剑。",
+      "id": "utterances_67b48eccdcb7455c9eb3925689499272"
+    },
+    {
+      "text": "干将莫邪靠技能输出，法源之杯能缩短两次释放飞剑的间隔。",
+      "id": "utterances_79b25412e840456ebfc38265e7297d0f"
+    }
+  ],
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_fa956d8fcc1a455a9abb19be60461c61",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"干将莫邪\" and arg2 is \"法源之杯\"",
+  "editor_mode": "text"
+}
