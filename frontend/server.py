@@ -228,6 +228,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
             if path.startswith('/api/'):
                 recover_before_read(self.server.root)
+                if path == '/api/notes/export.zip':
+                    from note_export import send_archive
+                    return send_archive(self,self.server.root,season)
                 if path in ('/api/notes/catalog','/api/notes/search'):
                     import reader_store
                     cat=seasons.catalog(reader_store.catalog(self.server.root),season)

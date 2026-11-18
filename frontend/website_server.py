@@ -100,6 +100,9 @@ def handler_class(base):
                 if path.startswith('/api/') and not self.actor():
                     return self.response(401,{'error':'请先登录'})
                 season=seasons.selected(self.path)
+                if path=='/api/notes/export.zip':
+                    from note_export import send_archive
+                    return send_archive(self,root,season)
                 if path=='/api/templates' or path.startswith('/api/templates/'):
                     if season!='S1':return self.response(200,seasons.template_read(root,season,path))
                     import templates_http
