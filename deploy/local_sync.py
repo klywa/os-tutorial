@@ -51,13 +51,19 @@ def allowed_local_path(path):
         return allowed_path(path)
     if parts[0] == 'website-data':
         return basename.endswith(('.json','.img'))
-    if path in {'src/condition/catalog.json','src/condition/cases.json','src/go/condition/go.mod',
+    if path in {'src/condition/catalog.json','src/condition/cases.json','src/condition/card-tags.json','src/go/condition/go.mod',
                 'src/python/condition/requirements.txt'}:
         return True
     if len(parts)==4 and parts[:3]==('src','go','condition'):
         return basename.endswith('.go')
     if len(parts)==4 and parts[:3]==('src','python','condition'):
         return basename.endswith('.py')
+    if parts[:3] == ('.codex', 'skills', 'wanxiangqi-template'):
+        return '/'.join(parts[3:]) in {
+            'SKILL.md', 'references/banned-terms.md', 'references/editorial-feedback.md',
+            'references/event-angles.md', 'references/game-decisions.md', 'references/golden-examples.md',
+            'scripts/check_batch.py', 'scripts/check_scenarios.py', 'scripts/read_feedback.py',
+        }
     if parts[0] in {'frontend','deploy','docs'} or path.startswith('.codex/skills/wanxiangqi-knowledge/'):
         return basename.endswith(('.py','.ts','.tsx','.js','.cjs','.mjs','.jsx','.json','.css','.html','.md','.txt','.ps1','.sh','.zsh',
                                   '.yml','.yaml','.toml','.service','.timer','.sudoers','.fragment'))

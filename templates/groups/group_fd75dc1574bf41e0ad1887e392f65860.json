@@ -4,19 +4,19 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「太乙真人」「海月」。场上已有海月时，选太乙真人可用最近队友复生来争取第二次牺牲。海月的普通卡牺牲控制敌方等级最高英雄4秒，造成相当于自身生命值的真实伤害。两次牺牲不保证击败同一目标。",
   "utterances": [
     {
-      "text": "让海月成为离太乙真人最近的队友，她就有机会复生后再次牺牲。",
+      "text": "选太乙后让海月贴他最近，复生能让海月再争取一次控制。",
       "id": "utterances_c491a9c1cd934b7ab15ecf70913242dd"
     },
     {
-      "text": "太乙真人给最近的队友复生，可以用来多触发一次海月的牺牲。",
+      "text": "选太乙给最近队友复生，海月能借这个位置再触发牺牲。",
       "id": "utterances_9f37081962074fb79abd0138b457a059"
     }
   ],
-  "explanation": "海月在场，选中太乙真人时，说明这项操作的战斗或资源收益。让海月成为离太乙真人最近的队友，她就有机会复生后再次牺牲。依据《常小娥灵活变阵-常小娥》「太乙真人」和太乙真人的官方卡面、技能。",
-  "event_id": "os_dcef166d05efe08e",
   "id": "group_fd75dc1574bf41e0ad1887e392f65860",
+  "event_id": "os_dcef166d05efe08e",
   "conditions": [],
   "related_entities": [
     {
@@ -37,6 +37,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg2 is \"太乙真人\" and 玩家.战场 has \"海月\"",
+  "expression": "(arg2 is \"太乙真人\" and 玩家.战场 has \"海月\") and arg1 has \"太乙真人\"",
   "editor_mode": "text"
 }

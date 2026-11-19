@@ -1,0 +1,25 @@
+{
+  "name": "前期单挂干将莫邪集中助力",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》单挂过渡；干将普通在场给雄剑，觉醒再给雌剑。BV1eeWF6pESY:p1 04:30–04:58、BV13gxz6FEZJ:p1 00:29–00:58明确觉醒后的击败成长。干将莫邪须亲自击败敌人才能提高等级，不能保证单挂必定成长。",
+  "utterances": [
+    {
+      "text": "让干将单吃小菟助力，养到觉醒后，他拿击败还能再升级。",
+      "id": "utterances_25cdea177046488589969d5bca017132"
+    },
+    {
+      "text": "单挂能把助力全给干将，觉醒后拿到击败就能接着长等级。",
+      "id": "utterances_e43851391c664c6aae51af39246e56ba"
+    }
+  ],
+  "id": "group_edfbf836ffe54a1881f53a7ebcd039a0",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"干将莫邪\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"干将莫邪\"",
+  "editor_mode": "text"
+}

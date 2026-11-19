@@ -1,9 +1,10 @@
 {
   "name": "用阿轲的登场效果提升等级",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到阿轲时，这组话说明阿轲在队伍中的作用。阿轲登场为自己及随机一名英雄提升等级。棋手生命值每降低10点，效果重复一次。依据《常小娥灵活变阵-常小娥》「阿轲」及阿轲的官方卡面、技能。",
   "utterances": [
     {
       "text": "阿轲登场能提升自己和一名随机英雄的等级。",
@@ -14,9 +15,8 @@
       "id": "utterances_3e03feec2d914673b9491c2c649a28bc"
     }
   ],
-  "explanation": "买到阿轲时，这组话说明阿轲在队伍中的作用。阿轲登场为自己及随机一名英雄提升等级。棋手生命值每降低10点，效果重复一次。依据《常小娥灵活变阵-常小娥》「阿轲」及阿轲的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_ff29656002c94e88a9cc914a393f5b95",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "阿轲"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"阿轲\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"阿轲\""
 }

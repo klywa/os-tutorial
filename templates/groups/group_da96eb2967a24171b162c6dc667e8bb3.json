@@ -1,0 +1,25 @@
+{
+  "name": "手里有武装重构时选干将莫邪",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "可以选干将，上场拿到雄剑，手里的重构就有材料了。",
+      "id": "utterances_c08eca0e4d0e48c18fa09766d26a6440"
+    },
+    {
+      "text": "选干将莫邪能省一件重构材料，普通干将上场就带雄剑。",
+      "id": "utterances_bb81c9f1b2dc4168bf2fe11cf1f8876d"
+    }
+  ],
+  "explanation": "干将莫邪普通英雄在场给双剑·雄，觉醒才加雌剑。武装重构摧毁目标全部装备，给件数加一的随机基础装备。《常用技巧》换下干将前先处理自带双剑记有自带剑可以重构。干将可从一阶英雄兑换券三选一获得。选牌本身不给装备。",
+  "event_id": "os_dcef166d05efe08e",
+  "id": "group_da96eb2967a24171b162c6dc667e8bb3",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"干将莫邪\" and arg1 has \"干将莫邪\" and 玩家.手牌 has {\"类型\":\"效果牌\",\"名称\":\"武装重构\"}",
+  "editor_mode": "text",
+  "priority": 0
+}

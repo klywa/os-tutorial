@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》钟馗。上阵留作针对手段，自己或左右一格队友牺牲时能压低击败者的等级；敌方主C等级明确的局面另有细分组。",
   "utterances": [
     {
-      "text": "钟馗左右相邻的队友牺牲时，能让击败者暂时掉等级。",
+      "text": "钟馗能让击败他或左右队友的敌人暂时掉级。",
       "id": "utterances_c8824036f9a34b9e8860066ddb8f5911"
     },
     {
-      "text": "钟馗自己或左右一格的队友牺牲，都能临时降低击败者的等级。",
+      "text": "上钟馗能把前排的牺牲变成压低敌人等级的机会。",
       "id": "utterances_3cc385d41029450eb4b9292563e0b5e9"
+    },
+    {
+      "text": "钟馗自己阵亡也能让击败者掉级，可以牵制对方主力。",
+      "id": "utterances_1e5a2a6b7be04fc7a2773185d5d23db4"
     }
   ],
-  "explanation": "上阵钟馗时，说明这项操作的战斗或资源收益。钟馗左右相邻的队友牺牲时，能让击败者暂时掉等级。依据《常小娥灵活变阵-常小娥》「钟馗」和钟馗的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_06baa6203ab1443681c6eb39410be902",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +32,7 @@
       "name": "钟馗"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"钟馗\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

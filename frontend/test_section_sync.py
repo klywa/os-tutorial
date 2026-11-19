@@ -58,10 +58,12 @@ class SectionSyncTests(unittest.TestCase):
         next(node for node in record['body']['nodes'] if node['id'] == node_id)['value'] = value
         json_store.edit(self.root, nid, {'revision': record['metadata']['revision'], 'document': record['body']})
 
-    def request(self, targets=None, actor=ADMIN, node='e'):
+    def request(self, targets=None, actor=ADMIN, node='e', draft=None):
         data = {'node_id': node, 'revision': self.record('src')['metadata']['revision']}
         if targets is not None:
             data['targets'] = targets
+        if draft is not None:
+            data['draft'] = draft
         return section_sync.run(self.server, actor, 'src', data, 'S1', apply=targets is not None)
 
     def test_preview_and_apply_use_previous_content_and_insert_missing_path(self):
@@ -71,6 +73,7 @@ class SectionSyncTests(unittest.TestCase):
                          {'same': 'same', 'conflict': 'conflict', 'missing': 'missing'})
         self.assertTrue(preview['historical'])
         self.assertEqual(preview['baseline'], '旧内容')
+        self.assertEqual(preview['source_text'], '新内容')
         self.assertEqual(rows['conflict']['text'], '独立内容')
         result = self.request({nid: rows[nid]['revision'] for nid in ('same', 'missing')})
         self.assertTrue(all(row['status'] == 'saved' for row in result['results']))
@@ -84,7 +87,7 @@ class SectionSyncTests(unittest.TestCase):
         self.assertTrue(next(row for row in self.request()['candidates'] if row['id'] == 'same')['latest'])
 
     def test_stale_or_locked_target_prevents_all_writes(self):
-        targets = {row['id']: row['revision'] for row in self.request()['candidates']}
+        targets = {row['id']: row['revision'] for row in self.request()['candidates'] if row['id'] != 'conflict'}
         self.change('same', 'e2', '并发修改')
         with self.assertRaises(Conflict):
             self.request(targets)
@@ -94,8 +97,8 @@ class SectionSyncTests(unittest.TestCase):
         service.edit_locks.acquire(ADMIN, {'note_id': 'same', 'client_id': 'other-tab',
             'resource': {'kind': 'entry', 'id': 'e2'}})
         with self.assertRaises(EditLocked):
-            self.request(targets)
-        self.assertEqual(self.record('conflict')['metadata']['revision'], targets['conflict'])
+            self.request({'same': targets['same']}, draft='确认稿')
+        self.assertEqual(self.record('same')['body']['nodes'][-1], entry('e2', '并发修改'))
         with self.assertRaises(PermissionError):
             self.request(actor={'role': 'annotator', 'username': 'writer'})
 
@@ -103,10 +106,28 @@ class SectionSyncTests(unittest.TestCase):
         self.add('ambiguous', '己', [heading('ha', '运营', 2), heading('hb', '运营', 2)])
         rows = {row['id']: row for row in self.request(node='h')['candidates']}
         self.assertEqual(rows['ambiguous']['status'], 'ambiguous')
-        self.request({'conflict': rows['conflict']['revision']}, node='h')
+        self.request({'conflict': rows['conflict']['revision']}, node='h', draft='### 前期\n\n策略：合并内容\n\n**新增：** 补充说明')
         nodes = self.record('conflict')['body']['nodes']
         self.assertEqual([node['id'] for node in nodes[:4]], ['title', 'h3', 's3', 'e3'])
-        self.assertEqual([node['value'] for node in nodes[3:]], ['新内容', '不要复制'])
+        self.assertEqual([node['value'] for node in nodes[3:]], ['合并内容', '补充说明'])
+
+    def test_conflict_requires_explicit_draft_for_one_target(self):
+        rows = {row['id']: row for row in self.request()['candidates']}
+        targets = {nid: rows[nid]['revision'] for nid in ('same', 'conflict')}
+        with self.assertRaises(Conflict):
+            self.request(targets)
+        with self.assertRaises(ValueError):
+            self.request(targets, draft='仅给一篇')
+        result = self.request({'conflict': targets['conflict']}, draft='合并稿')
+        self.assertEqual(result['results'], [{'id':'conflict', 'status':'saved'}])
+        self.assertEqual(self.record('conflict')['body']['nodes'][-1], entry('e3', '合并稿'))
+        self.assertEqual(self.record('same')['body']['nodes'][-1], entry('e2', '旧内容'))
+
+    def test_chapter_draft_cannot_escape_target_scope(self):
+        row = next(row for row in self.request(node='h')['candidates'] if row['id'] == 'conflict')
+        with self.assertRaisesRegex(ValueError, '子章节'):
+            self.request({'conflict': row['revision']}, node='h', draft='## 另一个章节\n\n覆盖')
+        self.assertEqual(self.record('conflict')['metadata']['revision'], row['revision'])
 
     def test_missing_entry_stays_in_parent_before_unrelated_subheading(self):
         self.add('nested', '庚', [heading('nh', '运营', 2), heading('ns', '前期', 3),

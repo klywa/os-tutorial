@@ -515,10 +515,11 @@ def prepare_entry_evidence(root, record, node_id, changes, *, inserting=False):
 
     claims = entry_claims(record, node_id)
     allowed = {claim['id'] for claim in claims}
-    if inserting:
-        claim_id=node_id+'-claim'
-        if (any(node['id']==node_id for key in ('nodes','supporting_nodes')
-                for node in record['body'].get(key,[]))
+    claim_id = node_id+'-claim'
+    existing_entry = any(n['id']==node_id and n['type']=='entry' for n in record['body']['nodes'])
+    if inserting or (not claims and existing_entry):
+        if ((inserting and any(node['id']==node_id for key in ('nodes','supporting_nodes')
+                              for node in record['body'].get(key,[])))
                 or any(claim['id']==claim_id for key in ('claim_annotations','retired_claim_annotations')
                        for claim in record['metadata'].get(key,[]))):
             raise ValueError('新增条目或结论的 ID 已存在')
@@ -664,12 +665,18 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
                 raise Conflict('正式证据已变化，请重新提交提案')
             inserting=not base_claims and node_id not in old_nodes
             prepare_entry_evidence(root, before, node_id, changes,inserting=inserting)
-            if inserting:
+            if not base_claims:
                 if node_id not in new_nodes or new_nodes[node_id]['type']!='entry':
-                    raise ValueError('新增结论必须关联新增正文条目')
+                    raise ValueError('新增结论必须关联正文条目')
+                section = '知识内容'
+                for node in incoming['nodes']:
+                    if node['id']==node_id:
+                        break
+                    if node['type']=='heading' and node['level']==2:
+                        section=node['title']
                 meta.setdefault('claim_annotations',[]).append({
                     'id':node_id+'-claim','text_ref':node_id,'kind':'conditional_strategy',
-                    'origin':'manual','section':meta['node_annotations'][node_id]['section']})
+                    'origin':'manual','section':section})
             by_id = {claim['id']: claim for claim in entry_claims(record, node_id)}
             for change in changes:
                 by_id[change['claim_id']].update(evidence=deepcopy(change['evidence']),

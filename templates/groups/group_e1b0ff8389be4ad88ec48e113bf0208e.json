@@ -1,22 +1,26 @@
 {
   "name": "用弈星补棋手经验",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到弈星时，这组话说明弈星在队伍中的作用。弈星在场时，棋手升级能额外获得经验，可在计划连续升级时降低下一次升级的经验缺口。依据《常小娥灵活变阵-常小娥》「弈星」及弈星的官方卡面、技能。 棋手仍可升级时适用；是否能够立即升级还需另行判断。",
   "utterances": [
     {
-      "text": "弈星在场时，棋手每次升级都能获得额外经验。",
+      "text": "买弈星是为了升本时多拿经验。",
       "id": "utterances_2f0d68b73a3a4d84b9d52cfbaae92550"
     },
     {
-      "text": "打算连续升级棋手时，弈星给的经验能帮忙升下一级。",
+      "text": "弈星能在棋手升级时补经验，减少后续升本的开销。",
       "id": "utterances_b1f7835c8be04c7696391547e1a3b890"
+    },
+    {
+      "text": "弈星可以先留在手里，升本那轮上场吃经验。",
+      "id": "utterances_9141f672c9f549228a104a9a35442708"
     }
   ],
-  "explanation": "买到弈星时，这组话说明弈星在队伍中的作用。弈星在场时，棋手升级能额外获得经验，可在计划连续升级时降低下一次升级的经验缺口。依据《常小娥灵活变阵-常小娥》「弈星」及弈星的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_e1b0ff8389be4ad88ec48e113bf0208e",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +32,7 @@
       "name": "弈星"
     }
   ],
-  "priority": 0,
-  "expression": "arg1 is \"弈星\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0",
+  "editor_mode": "text",
+  "priority": 0
 }

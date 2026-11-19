@@ -72,6 +72,8 @@ def placeholders(value, keys):
 def validate_event(event, entities, *, retired_suggestions=None):
     fields(event,{'id','name','category','parameters'},{'id','name','parameters'})
     identity(event['id']);text(event['name']);text(event.get('category','未分类'),'事件分类')
+    if event['name'].endswith('（旧版）'):
+        raise ValueError('该旧版事件已停用：'+event['name'])
     unique(event['parameters'],'参数');keys=set()
     for p in event['parameters']:
         fields(p,{'id','key','name','type','dsl_type','entity_categories','suggestions','min','max'},{'id','key','name','type'})
@@ -130,9 +132,11 @@ def validate_group(group, events, entities, notes):
     unique(group['utterances'],'话术')
     if not group['utterances']:raise ValueError('每组至少需要一条话术')
     for u in group['utterances']:
-        fields(u,{'id','text','ignored'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],params)
+        fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],params)
         if 'ignored' in u and type(u['ignored']) is not bool:
             raise ValueError('话术忽略状态必须是布尔值')
+        if 'fixed' in u and type(u['fixed']) is not bool:
+            raise ValueError('话术固定状态必须是布尔值')
     refs=group.get('related_entities',[])
     if not isinstance(refs,list):raise ValueError('关联实体必须为列表')
     seen=set()
@@ -166,36 +170,30 @@ def validate_library(document, entities=None, notes=None, *, retired_entities=No
     return result
 
 
+# Legacy groups could reference a virtual built-in without an event file.
+RETIRED_BUILTIN_IDS = {
+    'battle_prepare','effect_buy','effect_select','equipment_equip','equipment_transfer',
+    'hero_buy','hero_deploy','hero_merge','hero_sell_hand','player_level','shop_lock',
+    'shop_refresh','skill_select','skill_use','talent_select','effect_use','equipment_merge',
+}
+
+
 def builtin_events():
-    current=rules.workbook_events()
-    names={e['name'] for e in current}
-    legacy=legacy_events()
-    for event in legacy:
-        event.update(rules.explanation_event(event))
-        if event['name'] in names:event['name']+='（旧版）'
-    return current+legacy
+    return rules.workbook_events() + [rules.explanation_event(event) for event in legacy_events()]
 
 
 def legacy_events():
     definitions=[
-        ('hero_buy','购买英雄','英雄','hero','heroes'),('hero_deploy','上阵英雄','英雄','hero','heroes'),
-        ('hero_merge','合成英雄','英雄','hero','heroes'),('hero_sell_hand','从手牌出售英雄','英雄','hero','heroes'),
-        ('hero_sell_board','从场上出售英雄','英雄','hero','heroes'),('hero_select','选择英雄牌','英雄','hero','heroes'),
-        ('effect_use','使用效果牌','效果牌','effect','effect-cards'),('effect_buy','购买效果牌','效果牌','effect','effect-cards'),
-        ('effect_select','选择效果牌','效果牌','effect','effect-cards'),
-        ('equipment_equip','穿戴装备','装备','equipment','equipment'),('equipment_merge','合成装备','装备','equipment','equipment'),
-        ('equipment_transfer','转移装备','装备','equipment','equipment'),
-        ('skill_use','使用棋手技能','技能牌','skill','player-skills'),('skill_select','选择棋手技能','技能牌','skill','player-skills'),
-        ('shop_refresh','刷新商店','商店',None,None),('shop_lock','锁定商店','商店',None,None),
-        ('player_level','棋手升级','升级',None,None),('talent_select','选择天赋','升级','talent','talents'),
-        ('unit_move','移动单位','战场','unit','heroes'),('battle_prepare','准备战斗','准备战斗',None,None),
+        ('hero_sell_board','从场上出售英雄','英雄','hero','heroes'),
+        ('hero_select','选择英雄牌','英雄','hero','heroes'),
+        ('unit_move','移动单位','战场','unit','heroes'),
         ('lineup_ready','阵容成型','关键局势',None,None),('health_crisis','血量危机','关键局势',None,None),
         ('player_streak','玩家连胜','关键局势',None,None),('opponent_streak','对手连胜','关键局势',None,None),
         ('dangerous_opponent','高危对手','关键局势',None,None),('opponent_equipment','对手关键装备','关键局势','equipment','equipment'),
         ('key_card_acquired','获得关键卡牌','关键局势','card',None),('key_card_shop','商店刷出关键卡牌','关键局势','card',None),
         ('auction_start','拍卖开始','拍卖开始',None,None)]
     result=[]
-    names={'hero':'英雄','effect':'效果牌','equipment':'装备','skill':'棋手技能','talent':'天赋','unit':'单位','card':'关键卡牌'}
+    names={'hero':'英雄','effect':'效果牌','equipment':'装备','unit':'单位','card':'关键卡牌'}
     for eid,name,category,key,entity_category in definitions:
         params=[{'id':'p_situation','key':'situation','name':'场上情况','type':'text'},
                 {'id':'p_stage','key':'stage','name':'对局阶段','type':'text','suggestions':['前期','中期','后期']}]
@@ -203,9 +201,7 @@ def legacy_events():
             p={'id':'p_'+key,'key':key,'name':names[key],'type':'entity'}
             if entity_category:p['entity_categories']=[entity_category]
             params.append(p)
-        if eid in ('hero_merge','player_level'):
-            params.append({'id':'p_level','key':'level','name':'等级','type':'number','min':1})
-        if eid in ('health_crisis','battle_prepare','dangerous_opponent'):
+        if eid in ('health_crisis','dangerous_opponent'):
             params.append({'id':'p_health','key':'health','name':'血量','type':'number','min':0})
         if eid in ('player_streak','opponent_streak'):
             params.append({'id':'p_streak','key':'streak','name':'连胜数','type':'number','min':0})

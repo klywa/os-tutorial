@@ -1,22 +1,22 @@
 {
   "name": "选露娜应对高生命前排",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "选中露娜时，说明这项操作的战斗或资源收益。露娜消耗标记时按目标最大生命值造成伤害，适合应对高血量前排。依据《常小娥灵活变阵-常小娥》「露娜」和露娜的官方卡面、技能。",
   "utterances": [
     {
       "text": "露娜消耗标记时按目标最大生命值造成伤害，适合应对高血量前排。",
       "id": "utterances_4151182f6f0d4e23831e8e4ea094217a"
     },
     {
-      "text": "想打血厚的目标，露娜突击后还能补上按最大生命值算的伤害。",
+      "text": "露娜能打出按最大生命值计算的伤害，对付血厚前排。",
       "id": "utterances_2c508bddc64844a39a65b840232c7248"
     }
   ],
-  "explanation": "选中露娜时，说明这项操作的战斗或资源收益。露娜消耗标记时按目标最大生命值造成伤害，适合应对高血量前排。依据《常小娥灵活变阵-常小娥》「露娜」和露娜的官方卡面、技能。",
-  "event_id": "os_dcef166d05efe08e",
   "id": "group_2937f0f02eb748038ce68ebacec0cd16",
+  "event_id": "os_dcef166d05efe08e",
   "conditions": [],
   "related_entities": [
     {
@@ -29,6 +29,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg2 is \"露娜\"",
+  "expression": "(arg2 is \"露娜\") and arg1 has \"露娜\"",
   "editor_mode": "text"
 }

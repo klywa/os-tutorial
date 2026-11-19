@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》李元芳及闪现培养。购买留作供币工具，整备给最近的河洛英雄用古币；目标由之后实际站位决定。",
   "utterances": [
     {
-      "text": "李元芳整备时会给最近的河洛英雄使用古币。",
+      "text": "买李元芳是为了用整备给河洛英雄供古币。",
       "id": "utterances_4375641ffbac4199864fe67039b19728"
     },
     {
-      "text": "想用古币培养苏烈时，可以让他成为离李元芳最近的河洛英雄。",
+      "text": "李元芳能把古币留给站得最近的河洛英雄。",
       "id": "utterances_063e9ef57dd54aa2b93e9f84e218b8c2"
+    },
+    {
+      "text": "李元芳能靠整备持续供币，培养指定站位的河洛前排。",
+      "id": "utterances_52959368031d49f195ae837d80ae9557"
     }
   ],
-  "explanation": "买到李元芳时，这组话说明李元芳在队伍中的作用。李元芳整备时，对距离最近的河洛英雄使用古币。准备培养苏烈时，要确认他就是最近的河洛英雄。依据《常小娥灵活变阵-常小娥》「李元芳」及李元芳的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_3ff5a83737974bd3a0fd453c0a10e339",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -40,7 +44,7 @@
       "name": "苏烈"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"李元芳\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

@@ -1,0 +1,25 @@
+{
+  "name": "用精选武装补基础装备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「后期提升思路」。本组解释用精选武装补基础装备的收益。官方精选武装（card:7082）的卡牌效果是依据。",
+  "utterances": [
+    {
+      "text": "精选武装能从四件基础装备中挑一件补给主力。",
+      "id": "utterances_8ab31d837a2045cb9a0648180457328d"
+    },
+    {
+      "text": "精选武装给四个基础装备候选，可以按当前材料挑。",
+      "id": "utterances_3f0945d35a364772b2bd2586d3b1154b"
+    }
+  ],
+  "id": "group_ce928ab7deac4cb9a8fdd215b0ceb9df",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"精选武装\"",
+  "editor_mode": "text",
+  "priority": 0
+}

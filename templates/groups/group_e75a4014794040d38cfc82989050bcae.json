@@ -1,0 +1,29 @@
+{
+  "name": "用遗志给唯一剩下的英雄留永久等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "遗志会移除供级者，把永久等级给剩下那名英雄。",
+      "id": "utterances_a78ef26a4ead4024b3464d47a14b1756"
+    },
+    {
+      "text": "场上只留一名接收者，遗志能把永久等级集中给他。",
+      "id": "utterances_9bece117d58c4658977f1e9b95e7935f"
+    },
+    {
+      "text": "这次用遗志换人，留下来的英雄能接住原来的永久等级。",
+      "id": "utterances_ed71c68d5a0748c081657d8566a0981d"
+    }
+  ],
+  "explanation": "《常用技巧》遗志和先数传承的接收者。动作结束后供级者已移除，场上只剩一名实际接收候选。遗志将永久等级给唯一剩下的英雄。",
+  "event_id": "os_bfcc2eec6def94c8",
+  "id": "group_e75a4014794040d38cfc82989050bcae",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"遗志\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has arg1)",
+  "editor_mode": "text",
+  "priority": 0
+}

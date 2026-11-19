@@ -1,9 +1,10 @@
 {
   "name": "用东皇太一承伤和压制",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到东皇太一时，这组话说明东皇太一在队伍中的作用。东皇太一能够压制一名敌人。能量球触碰敌人时会造成伤害并为自身恢复生命，适合对付近身敌人。依据《常小娥灵活变阵-常小娥》「东皇太一」及东皇太一的官方卡面、技能。",
   "utterances": [
     {
       "text": "东皇太一能压制敌人，让后排有时间集火。",
@@ -14,9 +15,8 @@
       "id": "utterances_45ca66200db249c0ab5cf94db7f5f190"
     }
   ],
-  "explanation": "买到东皇太一时，这组话说明东皇太一在队伍中的作用。东皇太一能够压制一名敌人。能量球触碰敌人时会造成伤害并为自身恢复生命，适合对付近身敌人。依据《常小娥灵活变阵-常小娥》「东皇太一」及东皇太一的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_a40a7f67b7444e1887570536442bbdd7",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "东皇太一"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"东皇太一\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"东皇太一\""
 }

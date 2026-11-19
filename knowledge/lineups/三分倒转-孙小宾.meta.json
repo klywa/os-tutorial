@@ -35,40 +35,14 @@
       "kind": "conditional_strategy",
       "condition": "",
       "version": null,
-      "inference": true,
-      "evidence": [
-        {
-          "source": "BV1rmpM6QEjn:p1",
-          "start": 0,
-          "end": 112.47
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 245.26,
-          "end": 308.29
-        },
-        {
-          "source": "BV1EfYQ68EsM:p1",
-          "start": 511.6,
-          "end": 539.3
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 643,
-          "paragraph_end": 643
-        },
-        {
-          "type": "document",
-          "source": "doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b",
-          "paragraph_start": 663,
-          "paragraph_end": 663
-        }
-      ],
+      "inference": false,
+      "evidence": [],
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-2",
+      "origin": "manual"
     },
     {
       "id": "sun-n-4-claim",
@@ -106,7 +80,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-4"
     },
     {
       "id": "sun-n-5-claim",
@@ -136,7 +111,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "本地曹操随机触发1名/觉醒2名三分登场的机制；孙尚香经济收益与甄姬稳定供牌分开。"
-      }
+      },
+      "display_ref": "sun-n-5"
     },
     {
       "id": "sun-n-7-claim",
@@ -166,7 +142,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-7"
     },
     {
       "id": "sun-n-8-claim",
@@ -186,7 +163,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-8"
     },
     {
       "id": "sun-n-9-claim",
@@ -233,7 +211,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-9"
     },
     {
       "id": "sun-n-10-claim",
@@ -280,7 +259,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-10"
     },
     {
       "id": "sun-n-11-claim",
@@ -327,7 +307,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-11"
     },
     {
       "id": "sun-n-12-claim",
@@ -381,7 +362,8 @@
           "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
           "report": "raw/reports/batch77/review-sun.json"
         }
-      }
+      },
+      "display_ref": "sun-n-12"
     },
     {
       "id": "sun-n-13-claim",
@@ -416,7 +398,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-13"
     },
     {
       "id": "sun-n-14-claim",
@@ -446,7 +429,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-14"
     },
     {
       "id": "sun-n-15-claim",
@@ -493,7 +477,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-15"
     },
     {
       "id": "sun-n-16-claim",
@@ -518,7 +503,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-16"
     },
     {
       "id": "sun-n-17-claim",
@@ -543,7 +529,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-17"
     },
     {
       "id": "sun-n-18-claim",
@@ -569,7 +556,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-18"
     },
     {
       "id": "sun-n-19-claim",
@@ -595,7 +583,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-19"
     },
     {
       "id": "sun-n-20-claim",
@@ -620,7 +609,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-20"
     },
     {
       "id": "sun-n-21-claim",
@@ -645,7 +635,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-21"
     },
     {
       "id": "sun-n-22-claim",
@@ -699,7 +690,8 @@
           "conditional_application": "曹操、甄姬、小乔等三分成长成员；露娜、孙悟空不能用换帅供级。",
           "limits": "不依赖特定棋手；仅在已确认的吕布终局分支增加可选操作，不表示每局必须变阵；无新帧引用"
         }
-      }
+      },
+      "display_ref": "sun-n-22"
     },
     {
       "id": "sun-n-23-claim",
@@ -731,7 +723,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "视频动作建议＋本地英雄当前description/skillList；具体依赖见review-sun.entity_reads，未知行动字段留缺"
-      }
+      },
+      "display_ref": "sun-n-23"
     },
     {
       "id": "sun-n-26-claim",
@@ -761,7 +754,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-26"
     },
     {
       "id": "sun-n-27-claim",
@@ -791,7 +785,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-27"
     },
     {
       "id": "sun-n-29-claim",
@@ -821,7 +816,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-29"
     },
     {
       "id": "sun-n-30-claim",
@@ -851,7 +847,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-30"
     },
     {
       "id": "sun-n-32-claim",
@@ -888,7 +885,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-32"
     },
     {
       "id": "sun-n-33-claim",
@@ -919,7 +917,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-33"
     },
     {
       "id": "sun-n-35-claim",
@@ -962,7 +961,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-35"
     },
     {
       "id": "sun-n-37-claim",
@@ -987,7 +987,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-37"
     },
     {
       "id": "sun-n-38-claim",
@@ -1012,7 +1013,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-38"
     },
     {
       "id": "sun-n-39-claim",
@@ -1032,7 +1034,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-39"
     },
     {
       "id": "sun-n-40-claim",
@@ -1057,7 +1060,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-40"
     },
     {
       "id": "sun-n-41-claim",
@@ -1077,7 +1081,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-41"
     },
     {
       "id": "sun-n-42-claim",
@@ -1097,7 +1102,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-42"
     },
     {
       "id": "sun-n-43-claim",
@@ -1117,7 +1123,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-43"
     },
     {
       "id": "sun-n-45-claim",
@@ -1142,7 +1149,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-45"
     },
     {
       "id": "sun-n-46-claim",
@@ -1162,7 +1170,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-46"
     },
     {
       "id": "sun-n-47-claim",
@@ -1182,7 +1191,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-47"
     },
     {
       "id": "sun-n-48-claim",
@@ -1207,7 +1217,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-48"
     },
     {
       "id": "sun-n-49-claim",
@@ -1232,7 +1243,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-49"
     },
     {
       "id": "sun-n-50-claim",
@@ -1252,7 +1264,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-50"
     },
     {
       "id": "sun-n-51-claim",
@@ -1272,7 +1285,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-51"
     },
     {
       "id": "sun-n-53-claim",
@@ -1297,7 +1311,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-53"
     },
     {
       "id": "sun-n-54-claim",
@@ -1334,7 +1349,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-54"
     },
     {
       "id": "sun-n-55-claim",
@@ -1371,7 +1387,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-55"
     },
     {
       "id": "sun-n-57-claim",
@@ -1396,7 +1413,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-57"
     },
     {
       "id": "sun-n-58-claim",
@@ -1421,7 +1439,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-58"
     },
     {
       "id": "sun-n-59-claim",
@@ -1446,7 +1465,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-59"
     },
     {
       "id": "sun-n-60-claim",
@@ -1471,7 +1491,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-60"
     },
     {
       "id": "sun-n-61-claim",
@@ -1507,7 +1528,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-61"
     },
     {
       "id": "sun-n-62-claim",
@@ -1538,7 +1560,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-62"
     },
     {
       "id": "sun-n-63-claim",
@@ -1569,7 +1592,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-63"
     },
     {
       "id": "sun-n-64-claim",
@@ -1594,7 +1618,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-64"
     },
     {
       "id": "sun-n-65-claim",
@@ -1614,7 +1639,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-65"
     },
     {
       "id": "sun-n-66-claim",
@@ -1634,7 +1660,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-66"
     },
     {
       "id": "sun-n-68-claim",
@@ -1734,7 +1761,8 @@
           "basis": "用户经主控明确裁决；高压保留有新视频依据，低压重取分支保留原文档路线并增加用户要求的使用条件。",
           "report": "raw/reports/batch77/review-sun.json"
         }
-      }
+      },
+      "display_ref": "sun-n-68"
     },
     {
       "id": "sun-n-69-claim",
@@ -1754,7 +1782,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-69"
     },
     {
       "id": "sun-n-70-claim",
@@ -1826,7 +1855,8 @@
           "conditional_application": "曹操、甄姬、小乔等三分成长成员；露娜、孙悟空不能用换帅供级。",
           "limits": "不依赖特定棋手；仅在已确认的吕布终局分支增加可选操作，不表示每局必须变阵；无新帧引用"
         }
-      }
+      },
+      "display_ref": "sun-n-70"
     },
     {
       "id": "sun-n-72-claim",
@@ -1886,7 +1916,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-72"
     },
     {
       "id": "sun-n-75-claim",
@@ -1916,7 +1947,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-75"
     },
     {
       "id": "sun-n-77-claim",
@@ -1941,7 +1973,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-77"
     },
     {
       "id": "sun-n-79-claim",
@@ -1971,7 +2004,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "逐段阅读全文；具体回合受路线、来牌、血量约束"
-      }
+      },
+      "display_ref": "sun-n-79"
     },
     {
       "id": "sun-double-awaken-example-claim",
@@ -2022,7 +2056,8 @@
       "review_basis": {
         "report": "raw/reports/batch77/review-sun.json",
         "basis": "本agent实际逐帧查看320/325/330/335/340/345秒，与全文核对；不把第二回合口述的觉醒理解为即时动作。"
-      }
+      },
+      "display_ref": "sun-double-awaken-example"
     }
   ],
   "editorial_decisions": [
@@ -2034,13 +2069,19 @@
       "report": "raw/reports/batch77/review-sun.json"
     }
   ],
-  "body_sha256": "abc78d48e816e4a06e1d89027f08d356361da79afcd93ead274fa3fe4f3532d7",
-  "revision": "ba12366176ed06b1d8e6",
+  "body_sha256": "598d6f16e267c04122be51c5b754a09337934379f719c910d785615c3c0b2ac0",
+  "revision": "c32892325fa0d23194e7",
   "retired_claim_annotations": [],
-  "history_head": "knowledge-history/9dd3bbe2ef942dd686f894bf0a089c43/audit/063485b85a30634bca321bf9ac23ff2d292467391b05e0dbeb52a2e9a210d1cf.json",
-  "history_count": 3,
+  "history_head": "knowledge-history/9dd3bbe2ef942dd686f894bf0a089c43/audit/dfb38fc4ef6c8591a6e5d837738c6dc02b66e8939dc6c999922313f1dc041863.json",
+  "history_count": 4,
   "review_receipts": [],
   "seasons": [
     "S1"
-  ]
+  ],
+  "node_annotations": {
+    "sun-n-2": {
+      "origin": "manual",
+      "section": "核心原理"
+    }
+  }
 }

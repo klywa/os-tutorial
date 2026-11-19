@@ -1,0 +1,25 @@
+{
+  "name": "手里有化铁为金时用临阵磨枪触发裴擒虎的整备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常用技巧》裴擒虎与化铁为金。临阵磨枪立即触发指定英雄的整备；普通虎得到随机一名其他英雄等级一半的临时等级，觉醒才取全部，不能叠加。化铁为金保留当前等级；人数不足两人时没有可提供临时等级的其他英雄。",
+  "utterances": [
+    {
+      "text": "临阵磨枪触发裴擒虎整备，化铁为金变身能留下这份临时等级。",
+      "id": "utterances_4fb4327f90f84ad0b94efabaafe2ee5e"
+    },
+    {
+      "text": "先让裴擒虎整备获得临时等级，再用化铁为金就能随变身保留。",
+      "id": "utterances_3423f99e5398459eb94aedacdcc6d9f3"
+    }
+  ],
+  "id": "group_619973c49efc4e5c94ba0278db79ed3f",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"裴擒虎\" and arg2 is \"临阵磨枪\" and 玩家.场上英雄数 >= 2 and 玩家.手牌 has {\"类型\":\"效果牌\",\"名称\":\"化铁为金\"}",
+  "editor_mode": "text"
+}

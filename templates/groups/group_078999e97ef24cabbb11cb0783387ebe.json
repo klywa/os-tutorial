@@ -15,11 +15,11 @@
       "id": "utterances_73b171fbed38443e9cfc9279fe3d1cde"
     }
   ],
-  "event_id": "os_2b69e500a5c8036a",
   "id": "group_078999e97ef24cabbb11cb0783387ebe",
+  "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg2 is \"紧急救援\"",
+  "expression": "(arg2 is \"紧急救援\") and arg1 has \"紧急救援\"",
   "editor_mode": "text"
 }

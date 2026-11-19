@@ -4,19 +4,28 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》狂铁。前期可单独承伤，靠整备培养阿科米亚核心，后续日落海输出可用已积累的核心等级。",
   "utterances": [
     {
-      "text": "狂铁能在前排承伤，每次整备还会提升阿科米亚核心等级。",
+      "text": "狂铁前期能自己扛，整备还会养阿科米亚核心。",
       "id": "utterances_3e3428556ba2442b8ed7726496c77855"
     },
     {
       "text": "想留日落海英雄做输出，可以先用狂铁整备培养阿科米亚核心。",
-      "id": "utterances_790c2941de764d169329cd663e0d5852"
+      "id": "utterances_790c2941de764d169329cd663e0d5852",
+      "ignored": true
+    },
+    {
+      "text": "买狂铁能先稳住前排，顺便给日落海攒核心等级。",
+      "id": "utterances_51f3d1bb1af14bacb4d44686b4f7a58f"
+    },
+    {
+      "text": "狂铁能单挂过渡，后续日落海输出也能用核心等级。",
+      "id": "utterances_1a893106228642bd809c7eaebad9ba05"
     }
   ],
-  "explanation": "买到狂铁时，这组话说明狂铁在队伍中的作用。狂铁既能前排承伤，又能在整备时提升阿科米亚核心等级，为之后上阵的日落海英雄积累等级。依据《常小娥灵活变阵-常小娥》「狂铁」及狂铁的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_1c43e7d6906e479e8b02e96687029677",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +37,7 @@
       "name": "狂铁"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"狂铁\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

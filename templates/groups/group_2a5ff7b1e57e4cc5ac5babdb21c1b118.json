@@ -1,0 +1,29 @@
+{
+  "name": "用古币培养河洛英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》河洛古币相关操作与古币卡面。古币直接给选中的河洛英雄升级。事件目标须为河洛英雄。",
+  "utterances": [
+    {
+      "text": "古币可以直接给这名河洛英雄升级。",
+      "id": "utterances_3ea6456103584ec5bf2cde05860bcd3b"
+    },
+    {
+      "text": "这枚古币能把等级留给指定的河洛英雄。",
+      "id": "utterances_d1c0b87b933247fd88cf5c2e17f06f20"
+    },
+    {
+      "text": "把古币用在这名河洛英雄身上，成长能定向给他。",
+      "id": "utterances_73ab9915c41a4a87885aa30544e46af8"
+    }
+  ],
+  "id": "group_2a5ff7b1e57e4cc5ac5babdb21c1b118",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"古币\" and arg1.阵营 is \"河洛\"",
+  "editor_mode": "text",
+  "priority": 0
+}

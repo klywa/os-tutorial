@@ -15,6 +15,28 @@ EVENT = {"事件": "上阵英雄", "参数": {"arg1": "弈星"}}
 
 
 class ConditionTests(unittest.TestCase):
+    def test_each_card_form_has_reviewable_tags(self):
+        tags = json.loads((CATALOG_DIR / "card-tags.json").read_text(encoding="utf-8"))
+        cards = json.loads((CATALOG_DIR.parents[1] / "website-data/cards.json").read_text(encoding="utf-8"))
+        kinds = {"heroes": "英雄", "equipment": "装备", "effect-cards": "效果牌", "talents": "天赋"}
+        expected = {c["id"]: c for c in cards if c["category"] in kinds}
+        self.assertEqual(set(expected), set(tags))
+        for key, row in tags.items():
+            with self.subTest(card=key):
+                card = expected[key]
+                self.assertEqual((row["name"], row["type"], row["awakened"]),
+                                 (card["name"], kinds[card["category"]], bool(card.get("awakened"))))
+                self.assertTrue(row["tags"])
+                self.assertEqual(len(row["tags"]), len(set(row["tags"])))
+                self.assertTrue(all(isinstance(tag, str) and tag == tag.strip() and tag for tag in row["tags"]))
+
+    def test_portable_card_tags_follow_the_export(self):
+        catalog = json.loads((CATALOG_DIR / "catalog.json").read_text(encoding="utf-8"))
+        catalog["card_tags"] = {"fixture": {"name": "弈星", "type": "英雄", "awakened": False,
+                                             "tags": ["审核后的标签"]}}
+        self.assertTrue(evaluate_condition(EVENT, 'arg1.标签 has "审核后的标签"', {}, {"condition_catalog": catalog}))
+        self.assertFalse(evaluate_condition(EVENT, 'arg1.标签 has "提供棋手经验"', {}, {"condition_catalog": catalog}))
+
     def test_shared_examples(self):
         cases = json.loads((CATALOG_DIR / "cases.json").read_text(encoding="utf-8"))
         for case in cases:
@@ -92,7 +114,7 @@ class ConditionTests(unittest.TestCase):
                 return items[0]
 
         event = {"事件":"上阵英雄","参数":{"arg1":{"名称":"弈星","等级":10,"已觉醒":True}}}
-        state = {"玩家":{"剩余能量":2,"主C":{"名称":"弈星"},"战场":["弈星"]}}
+        state = {"玩家":{"剩余能量":2,"主C":{"名称":"弈星"},"战场":[{"名称":"弈星","等级":10}]}}
         def check(expressions, expected, priorities=None):
             groups = [dict(event_name="上阵英雄",expression=expr,utterances=[str(i)],
                            priority=(priorities or [0]*len(expressions))[i])
@@ -101,6 +123,7 @@ class ConditionTests(unittest.TestCase):
             choose_utterance({"groups":groups},event,state,rng=rng)
             self.assertEqual(rng.labels,[str(i) for i in expected])
 
+        check(["玩家.战场.求和(等级) >= 5", "玩家.战场.求和(等级) >= 10"], [1])
         cap = "玩家.剩余能量 <= 2"
         hero = 'arg1.名称 is "弈星"'
         check(["",cap,"玩家.剩余能量 <= 3",cap+" and "+hero],[3])

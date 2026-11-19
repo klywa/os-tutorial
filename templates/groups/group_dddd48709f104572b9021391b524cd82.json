@@ -1,0 +1,25 @@
+{
+  "name": "给主力穿戴名刀争取输出时间",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "名刀·司命能挡下首次致命伤害，争取继续输出的时间。",
+      "id": "utterances_eeaba7e157b54bb583ee0a01efd5e33b"
+    },
+    {
+      "text": "首次受到致命伤害时，名刀·司命会让穿戴者无敌1.5秒。",
+      "id": "utterances_46ad5e68196748e7bd1b6a823e8594b3"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》「后期提升思路」。本组解释给主力穿戴名刀争取输出时间的收益。官方名刀·司命（card:643703）的卡牌效果是依据。",
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_dddd48709f104572b9021391b524cd82",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"名刀·司命\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》单挂过渡；干将普通在场给雄剑，觉醒再给雌剑。BV1eeWF6pESY:p1 04:30–04:58、BV13gxz6FEZJ:p1 00:29–00:58明确觉醒后的击败成长。干将莫邪须亲自击败敌人才能提高等级，不能保证单挂必定成长。",
   "utterances": [
     {
-      "text": "干将莫邪在场就能拿到双剑·雄，前期可以单挂打输出。",
+      "text": "买干将能先用飞剑打伤害，觉醒后拿击败还能升级。",
       "id": "utterances_0b41c44160ca410f9dcf439b071ea513"
     },
     {
-      "text": "手里有回蓝装备时，干将莫邪能更快放技能，帮前期少掉血。",
+      "text": "干将能先补飞剑输出，觉醒后拿到击败还能提升自己的等级。",
       "id": "utterances_bf61f3d328e24a0d939a7e10b27641e6"
+    },
+    {
+      "text": "买干将先用雄剑降低法力上限，觉醒后还能靠击败升级。",
+      "id": "utterances_03196d342ad24146b021c4e0ae379c72"
     }
   ],
-  "explanation": "买到干将莫邪时，这组话说明干将莫邪在队伍中的作用。干将莫邪在场能获得双剑·雄；配回蓝装备还可增加施法频率，在前期提供过渡伤害。依据《常小娥灵活变阵-常小娥》「干将莫邪」及干将莫邪的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_0b947014a4734e8ca3f6beb89a0e899c",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -33,6 +37,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg1 is \"干将莫邪\"",
+  "expression": "arg1 is \"干将莫邪\" and 对局.当前回合数 <= 3",
   "editor_mode": "text"
 }

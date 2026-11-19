@@ -1,0 +1,26 @@
+{
+  "name": "用特训战术培养敖隐",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「蒙犽」。蒙犽条目明确列举敖隐为战术牌目标。官方特训战术指定英雄提升4级。",
+  "utterances": [
+    {
+      "text": "特训战术能直接给敖隐升四级，等级集中到输出身上。",
+      "id": "utterances_3e0f7ce210724cd780ce3ee04c3575bc"
+    },
+    {
+      "text": "特训战术能把等级指定给敖隐，补他的输出。",
+      "id": "utterances_8cc2cfb11f104b73a3c91309dcd7fe80"
+    }
+  ],
+  "id": "group_946dc4bfd2744e41ac103d3b366e3405",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"敖隐\" and arg2 is \"特训战术\"",
+  "editor_mode": "text",
+  "priority": 0,
+  "ignored": true
+}

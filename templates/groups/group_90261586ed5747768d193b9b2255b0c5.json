@@ -15,11 +15,11 @@
       "id": "utterances_03dc8f19c8d848749b2f4b92703744dd"
     }
   ],
-  "event_id": "os_2b69e500a5c8036a",
   "id": "group_90261586ed5747768d193b9b2255b0c5",
+  "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg2 is \"泉水\"",
+  "expression": "(arg2 is \"泉水\") and arg1 has \"泉水\"",
   "editor_mode": "text"
 }

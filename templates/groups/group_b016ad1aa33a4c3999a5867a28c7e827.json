@@ -1,0 +1,25 @@
+{
+  "name": "给短蓝条队友铸杯帮诸葛亮回蓝",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "给法力上限低的队友铸法源之杯，队友多施法能帮诸葛亮回蓝。",
+      "id": "utterances_11871625b7f74d2abed4b097f402efe3"
+    },
+    {
+      "text": "杯子每秒回五蓝，队友更快再施法，诸葛亮也能跟着回蓝。",
+      "id": "utterances_dfd6f9500b3c4644b2cbbfef4007a0d0"
+    }
+  ],
+  "explanation": "普通英雄卡镜、貂蝉、花木兰、孙膑和杨玉环最大法力均20，干将25。法源之杯每秒回5蓝；诸葛亮由其他友方英雄施法触发回蓝和临时升级。仅引用基础蓝量明确、具有主动法力技能的普通卡，不假设实际施法次数。",
+  "id": "group_b016ad1aa33a4c3999a5867a28c7e827",
+  "event_id": "os_db70e56ec24636b5",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 1,
+  "expression": "arg3 is \"法源之杯\" and (arg1 is \"镜\" or arg1 is \"貂蝉\" or arg1 is \"花木兰\" or arg1 is \"孙膑\" or arg1 is \"干将莫邪\" or arg1 is \"杨玉环\") and not arg1.已觉醒 and 玩家.战场 has \"诸葛亮\"",
+  "editor_mode": "text"
+}

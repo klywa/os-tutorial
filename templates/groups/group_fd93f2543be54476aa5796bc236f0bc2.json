@@ -1,0 +1,25 @@
+{
+  "name": "太乙真人在场时选海月",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "选海月放在太乙最近处，复生后还能再困敌方最高级英雄。",
+      "id": "utterances_a8015499ce2c4ab5865b5b306bd2d302"
+    },
+    {
+      "text": "场上有太乙，选海月能用复生多争取一次控制对面主力的机会。",
+      "id": "utterances_47f7b981f38d4899a3155eff99e42e31"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》海月以及太乙真人普通／觉醒开团令最近队友复生，海月牺牲困住敌方最高等级英雄4秒并造成真实伤害。选择海月可从五阶兑换券候选拿；两人都在不保证复生目标，需把海月放最近。",
+  "event_id": "os_dcef166d05efe08e",
+  "id": "group_fd93f2543be54476aa5796bc236f0bc2",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"海月\" and arg1 has \"海月\" and 玩家.战场 has \"太乙真人\"",
+  "editor_mode": "text",
+  "priority": 0
+}

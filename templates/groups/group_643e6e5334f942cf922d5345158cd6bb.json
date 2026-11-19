@@ -1,0 +1,25 @@
+{
+  "name": "用过登场后卖周瑜集中小菟助力",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "卖掉周瑜只留一人，小菟助力就能集中给场上的英雄。",
+      "id": "utterances_a08193aa62024c32b95c22219a58d39c"
+    },
+    {
+      "text": "周瑜退场不影响登场已给的等级，还能避免分走小菟助力。",
+      "id": "utterances_29991c86fdcd47feb3eb66b2533397cd"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》「周瑜」、「前期运营思路」。前期单挂时在两次助力之间借用登场工具。出售后只剩一名其他英雄，下次助力的随机候选由此收窄；不预设当轮技能已经使用。",
+  "event_id": "os_02f23dfd4155737d",
+  "id": "group_643e6e5334f942cf922d5345158cd6bb",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"周瑜\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"周瑜\")",
+  "priority": 0,
+  "editor_mode": "text"
+}

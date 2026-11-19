@@ -4,6 +4,7 @@ import mimetypes
 import ipaddress
 from pathlib import Path
 import re
+import sqlite3
 from urllib.parse import parse_qs, unquote, urlsplit
 
 import json_store as store
@@ -100,6 +101,13 @@ def handler_class(base):
                 if path.startswith('/api/') and not self.actor():
                     return self.response(401,{'error':'请先登录'})
                 season=seasons.selected(self.path)
+                if path=='/api/notes/export.zip':
+                    from note_export import send_archive
+                    return send_archive(self,root,season)
+                import card_tags
+                if card_tags.matches(path):
+                    if season!='S1':raise KeyError('该赛季暂无标签')
+                    return self.response(200,card_tags.read(root,self.actor(),path))
                 if path=='/api/templates' or path.startswith('/api/templates/'):
                     if season!='S1':return self.response(200,seasons.template_read(root,season,path))
                     import templates_http
@@ -236,7 +244,9 @@ def handler_class(base):
                 entries=bool(re.fullmatch(r'/api/notes/[^/]+/entries',path)) and self.command=='PUT'
                 transfer=re.fullmatch(r'/api/notes/([^/]+)/section-sync/(preview|apply)',path) if self.command=='POST' else None
                 templatepath=(path=='/api/templates' or path.startswith('/api/templates/')) and self.command=='POST'
-                if not (authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving or templatepath or transfer):
+                import card_tags
+                tagpath=self.command=='POST' and card_tags.matches(path)
+                if not (tagpath or authpath or noteedit or matching or proposal or retry or lockpath or entries or resolving or templatepath or transfer):
                     self.discard_small_body()
                     raise KeyError('接口不存在')
                 if not self.trusted() or self.headers.get('Origin')!=self.server.public_origin:
@@ -262,6 +272,8 @@ def handler_class(base):
                     cookie=self.server.auth.switch_role(self.headers.get('Cookie'),data.get('role'))
                     from site_access import session
                     return self.auth_reply(200,session(self.server,cookie,public=True),cookie)
+                if tagpath:
+                    return self.response(200,card_tags.submit(self.server,self.actor(),path,data))
                 if templatepath:
                     import templates_http
                     return self.response(200,templates_http.mutate(self.server,self.actor(),path,self.command,data,public=True))
@@ -321,7 +333,7 @@ def handler_class(base):
             except workspace.Conflict as exc:self.response(409,{'error':str(exc)})
             except KeyError:self.response(404,{'error':'接口或笔记不存在'})
             except (ValueError,TypeError) as exc:self.response(400,{'error':str(exc)})
-            except OSError:self.response(503,{'error':'保存或同步暂时不可用，请确认同步状态后重试'})
+            except (OSError,sqlite3.OperationalError):self.response(503,{'error':'保存或同步暂时不可用，请确认同步状态后重试'})
 
     return PublicHandler
 
@@ -337,6 +349,8 @@ def configure(server,base_path,origin,config,state_dir):
     server.public_origin=origin.rstrip('/')
     server.auth=Auth(config,base_path)
     server.state_dir=Path(state_dir)
+    from card_tags import configure_public_database
+    configure_public_database(server.root,server.state_dir)
     server.sync=SyncManager(server.root,server.state_dir)
     from site_access import proposal_store
     proposals=proposal_store(server)

@@ -1,0 +1,25 @@
+{
+  "name": "选程咬金用古币培养河洛英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「露娜」。本组解释选程咬金用古币培养河洛英雄的收益。官方程咬金（card:1441）的卡牌效果是依据。触发条件限定普通卡，觉醒后的数量或战术牌品种不同。",
+  "utterances": [
+    {
+      "text": "程咬金整备时给自己用古币，还能留一张给队友。",
+      "id": "utterances_660907ad7bb0493480257dd185607b27"
+    },
+    {
+      "text": "需要古币时可以选程咬金，他每次整备都能供币。",
+      "id": "utterances_a4fbbc35211d4493abaeae32689648ec"
+    }
+  ],
+  "id": "group_667f2ccc0a9f481c8c6f058b642955c1",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"程咬金\" and not arg2.已觉醒) and arg1 has \"程咬金\"",
+  "editor_mode": "text"
+}

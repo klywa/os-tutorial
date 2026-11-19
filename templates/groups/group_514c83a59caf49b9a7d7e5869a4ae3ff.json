@@ -1,0 +1,29 @@
+{
+  "name": "买海月针对当前对手的百级主力",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "对面百级主力也是最高等级，海月牺牲有机会把他困住。",
+      "id": "utterances_fb821092f9d344c8bb5539b58fc025ff"
+    },
+    {
+      "text": "海月能困住最高等级的敌人，可以针对这家的百级主力。",
+      "id": "utterances_ede73f0cee43458fbb096cd8a7ed9bf7"
+    },
+    {
+      "text": "买海月能针对对面的百级主力，靠牺牲争取四秒输出时间。",
+      "id": "utterances_2240ffb4df514404ad689b0ac2bf899a"
+    }
+  ],
+  "explanation": "海月普通／觉醒的牺牲均困住敌方最高等级英雄4秒并造成真实伤害。核对《基础知识》等级节点、《冷门知识》海月针对最高等级英雄；若战斗中等级变化或并列，不保证困住特定敌人。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_514c83a59caf49b9a7d7e5869a4ae3ff",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "用高阶特训战术培养指定英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「蒙犽」。本组解释用高阶特训战术培养指定英雄的收益。官方高阶特训战术（card:313009）的卡牌效果是依据。",
+  "utterances": [
+    {
+      "text": "高阶特训战术能给指定英雄升八级。",
+      "id": "utterances_0ccb6a0dd28f4bcd88e697ca46218b19"
+    },
+    {
+      "text": "高阶特训战术能把八级一次给同一名英雄。",
+      "id": "utterances_0f15d2a0a2744ac1a828b4f622822d6f"
+    }
+  ],
+  "id": "group_9c11148b74f3492ca239ddf6d5dd1105",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"高阶特训战术\"",
+  "editor_mode": "text",
+  "priority": 0
+}

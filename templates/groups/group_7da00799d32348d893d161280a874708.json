@@ -1,0 +1,25 @@
+{
+  "name": "用登场人物找登场英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「甄姬」列出登场人物。官方登场人物（card:7512）只给相应效果类别的英雄，甄姬符合条件，不能保证一定获得。",
+  "utterances": [
+    {
+      "text": "登场人物给两张带登场的英雄牌，有机会拿到甄姬。",
+      "id": "utterances_ac92a7476cbe425bbc4fa422c2202ae6"
+    },
+    {
+      "text": "登场人物有机会找到能继续补牌的甄姬。",
+      "id": "utterances_73146b27fb8443caa08a9b8a5db03a95"
+    }
+  ],
+  "id": "group_7da00799d32348d893d161280a874708",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"登场人物\"",
+  "editor_mode": "text",
+  "priority": 0
+}

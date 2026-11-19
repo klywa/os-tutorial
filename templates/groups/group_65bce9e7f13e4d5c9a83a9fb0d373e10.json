@@ -15,11 +15,11 @@
       "id": "utterances_30620aafd012491f971a429b653c6338"
     }
   ],
-  "event_id": "os_bfcc2eec6def94c8",
   "id": "group_65bce9e7f13e4d5c9a83a9fb0d373e10",
+  "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg1 is \"刘禅\" and arg2 is \"弦音\"",
+  "expression": "(arg1 is \"刘禅\" and arg2 is \"弦音\") and not arg1.已觉醒",
   "editor_mode": "text"
 }

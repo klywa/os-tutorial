@@ -9,6 +9,7 @@ export type ConditionCatalog = {
  aliases:Record<string,string>;
  operations:Record<string,string[]>;
  enums?:Record<string,string[]>;
+ card_tags?:Record<string,{type:string;tags:string[]}>;
 };
 export type PathOption={path:string;type:string;operations?:string[];choices?:string[]};
 export const emptyTree=():ConditionNode=>({kind:'all',children:[]});
@@ -36,13 +37,31 @@ export function listPaths(event:TemplateEvent|undefined,catalog?:ConditionCatalo
  const params=Object.fromEntries((event?.parameters??[]).map(p=>[p.key,parameterType(p)]));
  const roots={...params,...catalog?.events[event?.name??'']?.parameters,...catalog?.roots};
  const paths:PathOption[]=[];
+ const tagsByType=new Map<string,Set<string>>();
+ for(const {type,tags} of Object.values(catalog?.card_tags??{})){
+  const values=tagsByType.get(type)??new Set<string>();
+  for(const tag of tags)values.add(tag);
+  tagsByType.set(type,values);
+ }
+ function tagChoices(owners:string[]){
+  return [...new Set(owners.flatMap(t=>[...(tagsByType.get(t)??[])]))].sort();
+ }
  function walk(path:string,declared:string,ancestors:string[],operations?:string[],choices?:string[]){
   const type=catalog?.aliases[declared]??declared;
   paths.push({path,type,operations,choices});
-  if(ancestors.includes(type)||members(type).length)return;
+  const memberTypes=members(type).map(t=>catalog?.aliases[t]??t);
+  if(memberTypes.length){
+   for(const key of Object.keys(catalog?.types[memberTypes[0]]??{})){
+    const types=memberTypes.map(t=>catalog?.types[t]?.[key]);
+    if(types.every(t=>t==='int'||t==='number'))paths.push({path:path+'.求和('+key+')',type:types.every(t=>t==='int')?'int':'number'});
+   }
+   if(memberTypes.every(t=>catalog?.types[t]?.['标签']==='Array<string>'))paths.push({path:path+'.标签',type:'Array<string>',operations:['has'],choices:tagChoices(memberTypes)});
+   return;
+  }
+  if(ancestors.includes(type))return;
   const variants=type.split('|').map(t=>catalog?.aliases[t]??t);
   for(const [key,child] of Object.entries(catalog?.types[variants[0]]??{})){
-   if(variants.every(t=>catalog?.types[t]?.[key]===child))walk(path+'.'+key,child,[...ancestors,type],variants.map(t=>catalog?.operations[t+'.'+key]).find(Boolean),catalog?.enums?.[variants[0]+'.'+key]);
+   if(variants.every(t=>catalog?.types[t]?.[key]===child))walk(path+'.'+key,child,[...ancestors,type],variants.map(t=>catalog?.operations[t+'.'+key]).find(Boolean),key==='标签'?tagChoices(variants):catalog?.enums?.[variants[0]+'.'+key]);
   }
  }
  for(const [path,type] of Object.entries(roots))walk(path,type,[]);
@@ -64,7 +83,7 @@ export function compatibleRight(left:string,right:string,operator:string,aliases
  return same(left,right);
 }
 export function newLeaf(paths:PathOption[]):ConditionNode{
- const first=paths.find(p=>p.path.endsWith('.名称'))??paths[0];
+ const first=paths.find(p=>p.path==='arg1.阵容名')??paths.find(p=>p.path.endsWith('.名称'))??paths[0];
  return {kind:'leaf',left:first?.path??'',operator:first?operatorsFor(first)[0]:'is',right:''};
 }
 

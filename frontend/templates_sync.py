@@ -73,6 +73,8 @@ def _tree(root, ref):
 def _effective(tree):
     """Virtual built-ins are ancestors too; a tombstone is an explicit deletion."""
     import templates_schema
+    # Preserve raw historical definitions through the merge. The store archives
+    # dependent groups and their definitions together on publication.
     result=deepcopy(tree)
     retired=tree.get('templates/library.meta.json',{}).get('tombstones',{}).get('event',{})
     for event in templates_schema.builtin_events():
@@ -131,12 +133,51 @@ def _merge(base, left, right, path, issues):
     return _clone(left)
 
 
+def concurrent_fixed(base, left, right, preferred, *, competing_only=False):
+    def utterances(group):
+        return {row['id']: row for row in (group or {}).get('utterances', [])}
+    ancestors = utterances(base)
+    sides = (left, right) if preferred == 'left' else (right, left)
+    protected = {}
+    for group, other in (sides, sides[::-1]):
+        counterparts = utterances(other)
+        for uid, row in utterances(group).items():
+            old, rival = ancestors.get(uid, {}), counterparts.get(uid)
+            newly_fixed = row.get('fixed') and (not old.get('fixed') or old.get('text') != row['text'])
+            competing = (rival or {}).get('text') not in (old.get('text'), row['text'])
+            if newly_fixed and (not competing_only or competing):
+                protected.setdefault(uid, (group, row))
+    return protected
+
+
+def retain_fixed(value, protected):
+    if not protected:
+        return value
+    if value is None:
+        value = next(iter(protected.values()))[0]
+    value = deepcopy(value)
+    rows = value['utterances']
+    positions = {row['id']: index for index, row in enumerate(rows)}
+    for uid, (group, fixed) in protected.items():
+        if uid in positions:
+            row = rows[positions[uid]]
+            row.update(text=fixed['text'], fixed=True)
+        else:
+            index = next(i for i,row in enumerate(group['utterances']) if row['id'] == uid)
+            rows.insert(index, deepcopy(fixed))
+            positions = {row['id']: i for i,row in enumerate(rows)}
+    return value
+
+
 def merge_record(base, left, right, *, preferred='left'):
     issues=[]
     value=_merge(_MISSING if base is None else base, _MISSING if left is None else left,
                  _MISSING if right is None else right, '', issues)
+    competing = concurrent_fixed(base,left,right,preferred,competing_only=True)
+    issues.extend('/utterances/'+uid+'/fixed' for uid in competing)
     if issues:value=left if preferred=='left' else right
-    return {'record':None if value is _MISSING else deepcopy(value), 'conflicts':issues}
+    value = None if value is _MISSING else deepcopy(value)
+    return {'record':retain_fixed(value,concurrent_fixed(base,left,right,preferred)) if issues else value, 'conflicts':issues}
 
 
 def _validate_event(path, value):
@@ -246,6 +287,14 @@ def resolve_conflict(root, conflict_id, revision, value, actor, *, entities=None
         templates_store.validate(root,after['events'],after['groups'],entities=entities)
         changes=[{'kind':item['kind'],'action':'delete' if value is None else 'put','id':item['record_id'],**({'value':value} if value is not None else {})}]
         receipt=_resolution(item,value,actor)
+        if item['kind'] == 'group':
+            previous = next((g for g in before['groups'] if g['id'] == item['record_id']), None)
+            meta['audit'].append({
+                'id': receipt['id'], 'actor': receipt['actor'], 'at': templates_store._now(),
+                'action': 'resolve_conflict', 'group_id': item['record_id'],
+                'before_group': previous, 'after_group': value, 'batch_id': conflict_id,
+                'changes': [],
+            })
         templates_store._commit(root,before,after,meta,actor,changes,
                                 entities=entities,extra_writes={'templates/resolutions/'+receipt['id']+'.json':receipt})
     return templates_store.snapshot(root)
@@ -302,6 +351,8 @@ def _pin_dependencies(root, trees, meta, preferred):
         path='templates/'+('events' if kind=='event' else 'groups')+'/'+rid+'.json'
         b,l,r=(tree.get(path) for tree in trees)
         value=l if preferred=='left' else r
+        if kind == 'group':
+            value = retain_fixed(value, concurrent_fixed(b,l,r,preferred))
         if _read(Path(root)/path)==value:return False
         request={'schema_version':1,'kind':kind,'record_id':rid,'base':b,'current':l if preferred=='left' else r,
                  'incoming':r if preferred=='left' else l,'conflicts':['/dependency']}
@@ -372,7 +423,9 @@ def integrate(root, base_ref, left_ref, right_ref, *, preferred='left', origin='
         covered=bool(resolutions)
         if not covered and ((merged['conflicts'] and not pending) or unseen):_immutable(root,'conflicts',request)
         if covered:merged['record']=deepcopy(resolutions[-1]['value'])
-        if is_blocked(root,kind,rid):merged['record']=deepcopy(l if preferred=='left' else r)
+        if is_blocked(root,kind,rid):
+            serving = deepcopy(l if preferred=='left' else r)
+            merged['record'] = retain_fixed(serving,concurrent_fixed(b,l,r,preferred))
         value=merged['record'];target=root/path
         if value is None:target.unlink(missing_ok=True)
         else:

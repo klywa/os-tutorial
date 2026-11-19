@@ -4,22 +4,22 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "棋手还未升六，苏烈是唯一在场英雄且本次给苏烈穿戴装备，说明为什么把装备优先分给当前战斗成员。依据为《常小娥灵活变阵-常小娥》「苏烈」「前期运营思路」。",
+  "explanation": "《常小娥灵活变阵-常小娥》苏烈单挂保血。仅涵盖有格挡、法术防护、物防反伤或减伤的四件防装；只知道苏烈是穿戴者不足以解释任意装备。",
   "utterances": [
     {
-      "text": "场上只有苏烈，把装备优先交给他，是为了提升本轮战力。",
+      "text": "把防装给唯一在场的苏烈，这轮就能帮前排多扛伤。",
       "id": "utterances_f15ff2d4734a4c819c4ba8fc6ec4dada"
     },
     {
-      "text": "单挂苏烈时，装备分给正在作战的英雄更有利于稳住血量。",
+      "text": "苏烈单挂时给他补防装，开打就有用，能争取少掉血。",
       "id": "utterances_81672af0ee1649c0a49147ac2b13f9d4"
     }
   ],
-  "event_id": "os_5dfcb4835e1e1513",
   "id": "group_94d0b696c4fd464dab9bbf23ef5a91a8",
+  "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"",
+  "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\" and (arg2 is \"霸者重铠\" or arg2 is \"反伤重甲\" or arg2 is \"魔女斗篷\" or arg2 is \"不祥征兆\")",
   "editor_mode": "text"
 }

@@ -1,0 +1,25 @@
+{
+  "name": "对手以法术主力输出时穿魔女斗篷",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "这家主力打法伤，魔女斗篷能补法防和开场法术护盾。",
+      "id": "utterances_3b4e727ecb9547c2b2dc5f67a1a8ce26"
+    },
+    {
+      "text": "魔女斗篷能挡对面主力的法伤，穿戴者等级越高，法盾越厚。",
+      "id": "utterances_a2e7353505514150b4a096e1656ed5b7"
+    }
+  ],
+  "explanation": "《装备》魔女斗篷与普通装备卡面：加30法防，开战时按穿戴者等级获得法术护盾。依据当前对手主C的伤害类型选装，不假设敌方只有法伤。",
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_3be7421478fc4fe191516f2c9b0424f0",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"魔女斗篷\" and 对局.当前对手.主C.伤害类型 is \"法术\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

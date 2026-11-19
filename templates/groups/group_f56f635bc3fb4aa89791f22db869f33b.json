@@ -1,9 +1,10 @@
 {
   "name": "合成狂铁补觉醒",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "合成后狂铁还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「整备：阿科米亚核心的等级+2。」与「整备：阿科米亚核心的等级+2，触发2次。」。依据《常小娥灵活变阵-常小娥》「狂铁」和狂铁的官方卡面、技能。",
   "utterances": [
     {
       "text": "狂铁觉醒后整备会触发两次，阿科米亚核心成长得更快。",
@@ -14,9 +15,8 @@
       "id": "utterances_486937783a4e466382b7706e331ba251"
     }
   ],
-  "explanation": "合成后狂铁还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「整备：阿科米亚核心的等级+2。」与「整备：阿科米亚核心的等级+2，触发2次。」。依据《常小娥灵活变阵-常小娥》「狂铁」和狂铁的官方卡面、技能。",
-  "event_id": "os_d12194463340a8ec",
   "id": "group_f56f635bc3fb4aa89791f22db869f33b",
+  "event_id": "os_d12194463340a8ec",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "狂铁"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"狂铁\" and not arg1.已觉醒",
-  "editor_mode": "text"
+  "expression": "arg1 is \"狂铁\" and not arg1.已觉醒"
 }

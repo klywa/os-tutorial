@@ -1,9 +1,10 @@
 {
   "name": "用庄周获取招募战术",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到庄周时，这组话说明庄周在队伍中的作用。庄周登场提升自己的等级并获得招募战术，战斗中还能保护自己和左右一定范围内的队友。依据《常小娥灵活变阵-常小娥》「庄周」及庄周的官方卡面、技能。",
   "utterances": [
     {
       "text": "庄周登场能拿到招募战术，给队伍多一次找英雄的机会。",
@@ -14,9 +15,8 @@
       "id": "utterances_237668aa37044b6e823b32ccd58fce67"
     }
   ],
-  "explanation": "买到庄周时，这组话说明庄周在队伍中的作用。庄周登场提升自己的等级并获得招募战术，战斗中还能保护自己和左右一定范围内的队友。依据《常小娥灵活变阵-常小娥》「庄周」及庄周的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_09f41713aea84cb4b475183142e118d1",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -32,7 +32,7 @@
       "name": "庄周"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"庄周\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"庄周\""
 }

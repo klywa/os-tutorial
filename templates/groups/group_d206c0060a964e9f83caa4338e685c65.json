@@ -1,0 +1,25 @@
+{
+  "name": "用驱雷削减猪八戒的高生命值",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "驱雷有机会劈中猪八戒，按他的生命上限造成伤害。",
+      "id": "utterances_215bac5f85d745428790a32316f7c6a4"
+    },
+    {
+      "text": "猪八戒血量越高，驱雷击中他时造成的伤害越高。",
+      "id": "utterances_b9ac1e3ac59d43b488a6e977baee2adf"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》「驱雷」。官方驱雷随机落雷，造成相当于目标生命上限30%的法术伤害。对手主C为猪八戒，按生命上限计伤有利于处理血厚前排。",
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_d206c0060a964e9f83caa4338e685c65",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"驱雷\" and 对局.当前对手.主C is \"猪八戒\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

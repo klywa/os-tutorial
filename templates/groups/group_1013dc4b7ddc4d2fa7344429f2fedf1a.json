@@ -1,0 +1,29 @@
+{
+  "name": "首轮拍卖后用河洛前排起步",
+  "scope": {
+    "player_id": "player:39",
+    "lineup_note_id": null
+  },
+  "explanation": "《明先生》河洛花木兰定向信号。第3回合已经拥有程咬金或盾山，可先把他们作为河洛过渡资源，后续寻找花木兰与上官婉儿。本条件无法识别获得渠道，话术只讲已持有。。每句均点明建议发展的具体阵容。",
+  "utterances": [
+    {
+      "text": "建议走河洛花木兰，现有河洛前排能先保血。",
+      "id": "utterances_de81b1583834423a8206afedc6b96aee"
+    },
+    {
+      "text": "可以往河洛花木兰发展，前排已有人，接着找木兰。",
+      "id": "utterances_1af99295552e432aab81099480853423"
+    },
+    {
+      "text": "河洛花木兰可以留，先用手边的河洛前排撑到木兰来。",
+      "id": "utterances_30368ebe4f4648cabf47f5b94047345b"
+    }
+  ],
+  "id": "group_1013dc4b7ddc4d2fa7344429f2fedf1a",
+  "event_id": "os_98aee9aae8b9d41d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})",
+  "priority": 0,
+  "editor_mode": "text"
+}

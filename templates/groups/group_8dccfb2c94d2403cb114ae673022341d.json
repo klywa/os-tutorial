@@ -1,25 +1,29 @@
 {
-  "name": "施法队用换帅调整吕布等级",
+  "name": "两人同场时用换帅调整吕布与诸葛亮",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "在“对目标使用效果牌”事件中，使用换帅，目标为吕布，诸葛亮在场时适用。换帅可以直接调整吕布和三分队友的等级，无需从头培养。依据为《常小娥灵活变阵-常小娥》「换帅」及官方效果牌「换帅」。",
+  "explanation": "《常用技巧》换帅与《常小娥灵活变阵-常小娥》吕布。结算后场上只有吕布和诸葛亮，可以确认交换对象。等级已经互换后的前后差额无法同时观测，因此解释重分配作用。",
   "utterances": [
     {
-      "text": "换帅让吕布和最近的三分队友交换等级，便于调整前排战力。",
+      "text": "场上只有两人，换帅能交换吕布和诸葛亮的等级。",
       "id": "utterances_2238c7d31395406c8feb5e072d178514"
     },
     {
-      "text": "换帅可以直接调整吕布和三分队友的等级，无需从头培养。",
+      "text": "用换帅在吕布前排和诸葛亮输出之间重排等级。",
       "id": "utterances_7c92d8a2d67a4e2d928dc492499885bd"
+    },
+    {
+      "text": "换帅能把诸葛亮原有的等级交给吕布，同时换出吕布的等级。",
+      "id": "utterances_7dd0f51ac809412c9df498e6cd752bd7"
     }
   ],
-  "event_id": "os_bfcc2eec6def94c8",
   "id": "group_8dccfb2c94d2403cb114ae673022341d",
+  "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
-  "priority": 0,
-  "expression": "arg2 is \"换帅\" and arg1 is \"吕布\" and 玩家.战场 has \"诸葛亮\"",
-  "editor_mode": "text"
+  "expression": "arg2 is \"换帅\" and arg1 is \"吕布\" and arg1.阵营 is \"三分之地\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"吕布\" and 玩家.战场 has \"诸葛亮\"",
+  "editor_mode": "text",
+  "priority": 0
 }

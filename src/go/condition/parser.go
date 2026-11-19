@@ -2,6 +2,7 @@ package condition
 
 import (
 	"encoding/json"
+	"math/big"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -141,11 +142,19 @@ func (p *parser) primary() value {
 			reject("expected field")
 		}
 		p.take(field)
+		if field == "求和" && p.take("(") {
+			v = p.sumField(v)
+			continue
+		}
 		if field == "name" {
 			field = "名称"
 		}
 		t = ""
-		for _, owner := range strings.Split(v.domain(), "|") {
+		domain := v.domain()
+		if element, list := elements(domain); list && field == "标签" {
+			domain = element
+		}
+		for _, owner := range strings.Split(domain, "|") {
 			option, exists := p.c.Types[p.c.canonical(owner)][field]
 			if !exists || (t != "" && option != t) {
 				reject("unknown or ambiguous field %s.%s", v.domain(), field)
@@ -165,9 +174,49 @@ func (p *parser) primary() value {
 				raw = x
 			}
 		}
+		if field == "标签" {
+			raw = p.c.cardTags(v)
+		}
 		key := v.typ + "." + field
+		if field == "标签" {
+			key = p.c.canonical(strings.Split(domain, "|")[0]) + "." + field
+		}
 		v = p.c.read(t, raw)
 		v.field = key
 	}
 	return v
+}
+
+func (p *parser) sumField(v value) value {
+	element, ok := elements(v.domain())
+	if !ok {
+		reject("sum requires an array")
+	}
+	field := p.peek()
+	if field == "" || !p.take(field) || !p.take(")") {
+		reject("sum requires one numeric field")
+	}
+	typ := "int"
+	for _, owner := range strings.Split(element, "|") {
+		fieldType := p.c.Types[p.c.canonical(owner)][field]
+		if !numeric(fieldType) {
+			reject("sum requires numeric field %s on every element type", field)
+		}
+		if fieldType == "number" {
+			typ = "number"
+		}
+	}
+	if v.raw == nil {
+		return scalar(typ, nil)
+	}
+	total := new(big.Rat)
+	for _, item := range v.raw.([]value) {
+		obj, _ := item.raw.(map[string]any)
+		if obj[field] == nil {
+			return scalar(typ, nil)
+		}
+		n := p.c.read(typ, obj[field])
+		total.Add(total, n.raw.(*big.Rat))
+	}
+	return scalar(typ, total)
 }

@@ -1,22 +1,22 @@
 {
   "name": "选海月限制敌方高等级主力",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "选中海月时，说明这项操作的战斗或资源收益。海月牺牲时专门控制敌方等级最高的英雄，适合打高等级单核。依据《常小娥灵活变阵-常小娥》「海月」和海月的官方卡面、技能。",
   "utterances": [
     {
       "text": "海月牺牲时专门控制敌方等级最高的英雄，适合打高等级单核。",
       "id": "utterances_2e458b48c310436c8e748cf7d5546201"
     },
     {
-      "text": "想给输出争取时间，可以选海月困住对方等级最高的英雄。",
+      "text": "海月能困住敌方等级最高的英雄，给队友争取时间。",
       "id": "utterances_0b6d327124d04de487804b5daa080fd6"
     }
   ],
-  "explanation": "选中海月时，说明这项操作的战斗或资源收益。海月牺牲时专门控制敌方等级最高的英雄，适合打高等级单核。依据《常小娥灵活变阵-常小娥》「海月」和海月的官方卡面、技能。",
-  "event_id": "os_dcef166d05efe08e",
   "id": "group_a95d0a0a1a15422cbad41edc8a4c4ff6",
+  "event_id": "os_dcef166d05efe08e",
   "conditions": [],
   "related_entities": [
     {
@@ -29,6 +29,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg2 is \"海月\"",
+  "expression": "(arg2 is \"海月\") and arg1 has \"海月\"",
   "editor_mode": "text"
 }

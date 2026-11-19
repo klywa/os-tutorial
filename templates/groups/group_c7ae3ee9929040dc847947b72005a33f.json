@@ -1,0 +1,25 @@
+{
+  "name": "选曹操再触发三分登场",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「明世隐」。本组解释选曹操再触发三分登场的收益。官方曹操（card:1281）的卡牌效果是依据。",
+  "utterances": [
+    {
+      "text": "选曹操能在整备时随机再触发一次三分英雄的登场效果。",
+      "id": "utterances_c6714677ad374b41827ce8ce7107cede"
+    },
+    {
+      "text": "给曹操配甄姬这类三分登场英雄，整备就有机会再拿牌。",
+      "id": "utterances_9ab41eb19bc24efd93d15f99e37c0a86"
+    }
+  ],
+  "id": "group_c7ae3ee9929040dc847947b72005a33f",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"曹操\") and arg1 has \"曹操\"",
+  "editor_mode": "text"
+}

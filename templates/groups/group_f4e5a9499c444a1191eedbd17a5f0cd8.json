@@ -1,0 +1,25 @@
+{
+  "name": "选日落海来客取得雅典娜",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「雅典娜」「最终四人的候选」确认她可作为四人前排。官方天赋给予雅典娜及3能量。",
+  "utterances": [
+    {
+      "text": "终局四人缺前排时，日落海来客能直接补雅典娜。",
+      "id": "utterances_643dfd95498b4abfb2cf1584239fad27"
+    },
+    {
+      "text": "选日落海来客可拿雅典娜扛伤，还能留三点能量找牌。",
+      "id": "utterances_152c9c98bcaa4567a83ae5b3f955c65e"
+    }
+  ],
+  "id": "group_f4e5a9499c444a1191eedbd17a5f0cd8",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"日落海来客\") and arg1 has \"日落海来客\"",
+  "editor_mode": "text"
+}

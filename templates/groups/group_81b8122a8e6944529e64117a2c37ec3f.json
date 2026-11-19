@@ -1,22 +1,26 @@
 {
   "name": "用雅典娜触发日落海整备",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
   "utterances": [
     {
-      "text": "雅典娜开团时能随机触发日落海英雄的整备效果。",
+      "text": "已有日落海整备英雄，买雅典娜能靠开团再养阿科米亚核心。",
       "id": "utterances_123ec45b304f49dda2df324e6a26fab1"
     },
     {
-      "text": "想让狂铁多一次整备，可以用雅典娜开团争取触发。",
+      "text": "让雅典娜配合现有的日落海整备英雄，开战还能再养核心。",
       "id": "utterances_aee28ff45a8943d9ac2cf008c442921e"
+    },
+    {
+      "text": "买雅典娜补前排，还能给日落海队友多一次整备机会。",
+      "id": "utterances_9e2b14a903bc485d85befeba7f57a398"
     }
   ],
-  "explanation": "买到雅典娜时，这组话说明雅典娜在队伍中的作用。雅典娜的开团随机触发日落海英雄的整备，可与狂铁配合，增加阿科米亚核心的成长机会。依据《常小娥灵活变阵-常小娥》「雅典娜」及雅典娜的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
+  "explanation": "雅典娜开团随机触发2名日落海英雄的整备。狂铁和米莱狄的整备都能给阿科米亚核心升等级。只要其中一名在场就存在额外成长机会，不承诺指定对象。",
   "id": "group_81b8122a8e6944529e64117a2c37ec3f",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -36,7 +40,7 @@
       "name": "狂铁"
     }
   ],
+  "expression": "arg1 is \"雅典娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"米莱狄\")",
   "priority": 0,
-  "expression": "arg1 is \"雅典娜\"",
   "editor_mode": "text"
 }

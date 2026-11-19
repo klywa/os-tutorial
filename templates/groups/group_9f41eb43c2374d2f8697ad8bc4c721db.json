@@ -1,9 +1,10 @@
 {
   "name": "狂铁整备触发朵莉亚成长",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "狂铁在场，上阵朵莉亚时，说明这项操作的战斗或资源收益。狂铁触发整备时，朵莉亚能给队友和阿科米亚核心提升等级。依据《常小娥灵活变阵-常小娥》「朵莉亚」和朵莉亚的官方卡面、技能。",
   "utterances": [
     {
       "text": "狂铁触发整备时，朵莉亚能给队友和阿科米亚核心提升等级。",
@@ -14,9 +15,8 @@
       "id": "utterances_9cd674553520402fbf81ef50102a467f"
     }
   ],
-  "explanation": "狂铁在场，上阵朵莉亚时，说明这项操作的战斗或资源收益。狂铁触发整备时，朵莉亚能给队友和阿科米亚核心提升等级。依据《常小娥灵活变阵-常小娥》「朵莉亚」和朵莉亚的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_9f41eb43c2374d2f8697ad8bc4c721db",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -36,7 +36,7 @@
       "name": "狂铁"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"朵莉亚\" and 玩家.战场 has \"狂铁\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"朵莉亚\" and 玩家.战场 has \"狂铁\""
 }

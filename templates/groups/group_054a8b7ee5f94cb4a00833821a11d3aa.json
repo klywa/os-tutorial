@@ -1,9 +1,10 @@
 {
   "name": "合成露娜补觉醒",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "合成后露娜还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「闪现 登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。」与「闪现 登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。」。依据《常小娥灵活变阵-常小娥》「露娜」和露娜的官方卡面、技能。",
   "utterances": [
     {
       "text": "露娜觉醒后，登场时随机触发整备的英雄数从两名增加到四名。",
@@ -14,9 +15,8 @@
       "id": "utterances_2cdcb2b36ecd4caab0d13ed316b1dd92"
     }
   ],
-  "explanation": "合成后露娜还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「闪现 登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。」与「闪现 登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。」。依据《常小娥灵活变阵-常小娥》「露娜」和露娜的官方卡面、技能。",
-  "event_id": "os_d12194463340a8ec",
   "id": "group_054a8b7ee5f94cb4a00833821a11d3aa",
+  "event_id": "os_d12194463340a8ec",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "露娜"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"露娜\" and not arg1.已觉醒",
-  "editor_mode": "text"
+  "expression": "arg1 is \"露娜\" and not arg1.已觉醒"
 }

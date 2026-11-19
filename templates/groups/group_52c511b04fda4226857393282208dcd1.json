@@ -1,0 +1,29 @@
+{
+  "name": "五级遇百级主力时先用小菟送福",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》核心原理与五级低容错提前启动。第二次拍卖起，场上已齐四人、己方至多一次容错、当前对手主C已达100级。用送福提高本轮战力；无对手信息时保留原五级低容错组。",
+  "utterances": [
+    {
+      "text": "对面主力已到百级，先让四人升级争取保住这轮。",
+      "id": "utterances_f32f5451fa804195aa2f2701b5d52a89"
+    },
+    {
+      "text": "现在等六级风险太高，送福能让四人立刻涨战力。",
+      "id": "utterances_c4dbe80bda184e7499d472f327751a9c"
+    },
+    {
+      "text": "容错已经见底，四人先吃送福迎战对面的百级主力。",
+      "id": "utterances_34716a65fdad4a0e92a3e0486ec67633"
+    }
+  ],
+  "id": "group_52c511b04fda4226857393282208dcd1",
+  "event_id": "os_b59f8bd6d43110d4",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"小菟送福\" and 玩家.等级 == 5 and 玩家.场上英雄数 == 4 and 玩家.容错数 <= 1 and 对局.当前回合数 >= 7 and 对局.当前对手.主C.等级 >= 100",
+  "editor_mode": "text"
+}

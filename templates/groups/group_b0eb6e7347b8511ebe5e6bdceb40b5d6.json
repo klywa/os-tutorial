@@ -1,0 +1,25 @@
+{
+  "name": "前期单挂孙膑靠自身施法成长",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「孙膑」。上阵后的孙膑是场上唯一英雄。回蓝装备有助于连续施法，无须假定此时已有回蓝装或其他队友。",
+  "utterances": [
+    {
+      "text": "单挂孙膑时，每三次施法都能给他自己增加永久等级。",
+      "id": "utterances_601b107d1a6348b8adedcdf51d6fba3d"
+    },
+    {
+      "text": "场上只有孙膑，他能靠施法永久升级，也能独享小菟助力。",
+      "id": "utterances_0b155e3ea2c14e6b853664cb2efdcf10"
+    }
+  ],
+  "id": "group_b0eb6e7347b8511ebe5e6bdceb40b5d6",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "editor_mode": "text",
+  "expression": "arg1 is \"孙膑\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\""
+}

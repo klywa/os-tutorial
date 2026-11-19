@@ -1,22 +1,26 @@
 {
-  "name": "用海诺继续培养日落海核心",
+  "name": "买海诺给四人组补范围法伤",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》海诺。海诺是条件范围输出，可作为四人组法系输出候选；已有等级和前排时更容易发挥。",
   "utterances": [
     {
-      "text": "海诺在场时，阿科米亚核心每次提升等级都能再多升一些。",
+      "text": "买海诺能给四人组补上范围法伤。",
       "id": "utterances_1849d24ae9c1454493a51272899a8214"
     },
     {
-      "text": "想继续培养阿科米亚核心，又缺范围法术输出时，可以用海诺。",
+      "text": "海诺的子杖能打到目标附近，适合做四人组输出。",
       "id": "utterances_7ac66c0d2f0141918edaf94b5e5ccc18"
+    },
+    {
+      "text": "海诺值得留作后排，养起来能同时打到多个敌人。",
+      "id": "utterances_15dfcdc0d182416d9960e5437f66c758"
     }
   ],
-  "explanation": "买到海诺时，这组话说明海诺在队伍中的作用。阿科米亚核心提升等级时，海诺会让核心额外获得等级；海诺本身可以用法术攻击目标及附近敌人。依据《常小娥灵活变阵-常小娥》「海诺」及海诺的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_1318d80fd9c84fa0a411db87100def75",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +32,7 @@
       "name": "海诺"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"海诺\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

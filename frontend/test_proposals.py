@@ -49,6 +49,16 @@ class ProposalTests(unittest.TestCase):
     def action(self, item, action='approve', actor=ADMIN):
         return self.store.action(actor,item['id'],action,{'revision':item['revision']})
 
+    def test_note_filtered_list_respects_author_visibility(self):
+        mine, = self.submit()
+        theirs, = self.submit(actor=OTHER)
+        def ids(actor, **filters):
+            return [row['id'] for row in self.store.list(actor,**filters)['items']]
+        self.assertEqual(ids(ADMIN,note_id='n',status='pending'),[mine['id'],theirs['id']])
+        self.assertEqual(ids(AUTHOR,note_id='n'),[mine['id']])
+        self.assertEqual(ids(AUTHOR,note_id='n',author=OTHER['username']),[])
+        self.assertEqual(ids(ADMIN,note_id='another-note'),[])
+
     def test_proposal_feedback_and_private_history(self):
         item, = self.submit()
         pid, revision = item['id'], item['revision']

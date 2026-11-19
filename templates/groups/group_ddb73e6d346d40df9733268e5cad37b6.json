@@ -1,22 +1,22 @@
 {
-  "name": "用百里玄策培养闪现英雄",
+  "name": "买百里玄策补闪现输出",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「百里玄策」。仅在灵泉法杖等闪现培养路线考虑他，先养能保血的苏烈，再投入输出。官方卡面按上轮闪现英雄的击败数给随机闪现英雄升级；运行时未提供击败数，句内保留条件。",
   "utterances": [
     {
-      "text": "上轮闪现英雄击败的敌人越多，百里玄策整备能分的等级越多。",
+      "text": "百里玄策能靠闪现队友上轮的击败数成长。",
       "id": "utterances_3c1ce3f9c2634a4ea050788f8d2b9e46"
     },
     {
-      "text": "百里玄策根据上轮闪现英雄的击败数，给随机闪现英雄提升等级。",
+      "text": "前排能靠闪现击败敌人时，百里玄策既能补输出也能培养闪现英雄。",
       "id": "utterances_e7f880f94c734123bd1df042a5453271"
     }
   ],
-  "explanation": "买到百里玄策时，这组话说明百里玄策在队伍中的作用。百里玄策整备时，根据上回合己方闪现英雄击败敌方英雄的次数，为随机闪现英雄提升等级。依据《常小娥灵活变阵-常小娥》「百里玄策」及百里玄策的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_ddb73e6d346d40df9733268e5cad37b6",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "百里玄策"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"百里玄策\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

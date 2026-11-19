@@ -1,9 +1,10 @@
 {
   "name": "用亚连培养装备最多的英雄",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到亚连时，这组话说明亚连在队伍中的作用。亚连整备时，为穿戴装备最多的一名己方英雄提升等级，并提升阿科米亚核心等级。依据《常小娥灵活变阵-常小娥》「亚连」及亚连的官方卡面、技能。",
   "utterances": [
     {
       "text": "亚连整备时能给装备最多的一名己方英雄提升等级。",
@@ -14,9 +15,8 @@
       "id": "utterances_7ffc500d8ed24ce488e8454cfb6c6c19"
     }
   ],
-  "explanation": "买到亚连时，这组话说明亚连在队伍中的作用。亚连整备时，为穿戴装备最多的一名己方英雄提升等级，并提升阿科米亚核心等级。依据《常小娥灵活变阵-常小娥》「亚连」及亚连的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_c292e2e2d8f24d609683910a770fada9",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "亚连"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"亚连\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"亚连\""
 }

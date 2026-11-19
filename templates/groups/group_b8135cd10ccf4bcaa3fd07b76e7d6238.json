@@ -15,11 +15,11 @@
       "id": "utterances_57ffc0cbf03a45d4839d87b20fa83875"
     }
   ],
-  "event_id": "os_b9276a29aaffc6ba",
   "id": "group_b8135cd10ccf4bcaa3fd07b76e7d6238",
+  "event_id": "os_b9276a29aaffc6ba",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg2 is \"武装分解\"",
+  "expression": "(arg2 is \"武装分解\") and arg1 has \"武装分解\"",
   "editor_mode": "text"
 }

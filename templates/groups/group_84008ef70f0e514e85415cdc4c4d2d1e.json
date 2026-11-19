@@ -1,0 +1,25 @@
+{
+  "name": "场上已有刘禅时买孙膑补施法成长",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「孙膑」「刘禅」。购买时仅刘禅在场。孙膑提供的是上阵后每三次施法的永久等级，刘禅提供的是每次施法的临时等级。",
+  "utterances": [
+    {
+      "text": "有刘禅扛伤，孙膑上场后两人都能靠反复施法永久升级。",
+      "id": "utterances_19d92d0466be4ba79d07ae450309444f"
+    },
+    {
+      "text": "刘禅已能给施法者临时等级，买孙膑能再补永久成长。",
+      "id": "utterances_daa82f98c9e54ac384c4fa90d7d91c51"
+    }
+  ],
+  "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "editor_mode": "text",
+  "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\""
+}

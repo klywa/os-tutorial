@@ -1,0 +1,29 @@
+{
+  "name": "开局买孙膑靠自身施法成长",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》孙膑及开局运营。开局空场可留孙膑作过渡，独自施法也能积累成长，单挂时独享小菟助力。",
+  "utterances": [
+    {
+      "text": "孙膑一个人施法也能攒永久等级，可以先单挂。",
+      "id": "utterances_931094d9dd274f25942446a735402bcc"
+    },
+    {
+      "text": "开局用孙膑单挂，他能独享小菟助力。",
+      "id": "utterances_e0edad7258204f1d8b709b5265691b28"
+    },
+    {
+      "text": "孙膑能靠自己施法成长，先上一个也有后续收益。",
+      "id": "utterances_1fec0d79052242389b364adc0f1b4acd"
+    }
+  ],
+  "id": "group_382ef0c7b8e55b0d97f0769c28d96fb8",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "editor_mode": "text",
+  "priority": 0
+}

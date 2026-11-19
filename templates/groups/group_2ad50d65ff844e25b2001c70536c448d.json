@@ -1,0 +1,29 @@
+{
+  "name": "上弈星为后续升本存经验",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "弈星在场时升本能拿额外经验。",
+      "id": "utterances_daa8aec793004ab3b81ea1784b22fa5c"
+    },
+    {
+      "text": "上弈星能给下一次升本准备额外经验。",
+      "id": "utterances_d5c5a81cc03543e3951c3c94005894e3"
+    },
+    {
+      "text": "弈星能帮后续升级省下一些补经验的能量。",
+      "id": "utterances_e447158076ea473abeebdca53734e009"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》弈星。上阵留作升级工具，升级后提供经验。预算明确足够时另有即时升本组。 棋手仍可升级时适用；是否能够立即升级还需另行判断。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_2ad50d65ff844e25b2001c70536c448d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0",
+  "editor_mode": "text",
+  "priority": 0
+}

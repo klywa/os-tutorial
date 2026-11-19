@@ -1,0 +1,29 @@
+{
+  "name": "上钟馗压制当前对手的百级主力",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《冷门知识》钟馗和官方普通／觉醒牺牲：击败钟馗或其左右一格队友的英雄临时降低10%／20%等级，每场战斗限1次。对手主C已达100级且也是最高级英雄，可用钟馗针对，不据此认定场上只有一核。",
+  "utterances": [
+    {
+      "text": "对面主力已到百级，击败钟馗或他左右的队友就会临时掉级。",
+      "id": "utterances_26a7b145cc22412daccebe07d51af1bf"
+    },
+    {
+      "text": "让钟馗盯这家百级主力，有机会用前排的牺牲压低他的等级。",
+      "id": "utterances_1cf24a4285f447de9a78194adae58c8b"
+    },
+    {
+      "text": "钟馗能牵制这家的百级主力，主力收掉他时会暂时掉级。",
+      "id": "utterances_4869738c588a405784dbb260507a4a87"
+    }
+  ],
+  "id": "group_8441b2b341d646d5bdb8b34425f3af30",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"钟馗\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称",
+  "editor_mode": "text",
+  "priority": 1
+}

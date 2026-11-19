@@ -25,7 +25,7 @@ export function ReviewProvider({note,children,onSaved,onInlineSaved,onDirty,exte
  const {reviews,inlineEdit,proposeNotes}=useCapabilities();
  const editNotes=useCanEditNote(note?.id);
  readOnly=readOnly||(!proposeNotes&&!editNotes);
- const {items:proposals}=useProposals(note?.id);
+ const {items:proposals}=useProposals(note?.id,!!note?.id&&inlineEdit);
  const [loss,setLoss]=useState<{lease:Lease;reason:string;at:number}[]>([]);
  const locks=useEditLocks(note?.id,(lease,reason)=>setLoss(rows=>[...rows,{lease,reason,at:Date.now()}]));
  const requestRef=useRef<{note_id:string;client_id:string;request_id:string;changes:unknown[]}|null>(null);
@@ -109,7 +109,7 @@ export function NodeActions({node,surface}:{node:KnowledgeNode;surface?:string})
  const count=review.comments.filter(c=>c.node_id===node.id&&c.status==='open').length;
  const nodes=review.note.document!.nodes;
  const index=node.type==='entry'&&review.canShowReadingMoves?(review.positions.get(node.id)??-1):-1;
- return <span className="node-review-actions"><button type="button" disabled={review.readOnly||review.busy||!!owner&&review.proposing} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id,surface)}>{owner&&!review.proposing?'接管编辑':'编辑'}</button>{review.canSync&&<SectionSync key={review.note.revision} note={review.note} nodeId={node.id} disabled={review.syncDisabled}/>} {owner&&<small className="lock-hint">{owner.owner} 正在编辑 · 已锁定</small>}{review.legacyReviews&&<button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button>}
+ return <span className="node-review-actions"><button type="button" disabled={review.readOnly||review.busy||!!owner&&review.proposing} aria-label={(node.type==='heading'?'编辑章节：':'编辑段落：')+title} onClick={()=>review.startEdit(node.id,surface)}>{owner&&!review.proposing?'接管编辑':'编辑'}</button>{review.canSync&&<SectionSync key={review.note.id} note={review.note} nodeId={node.id} disabled={review.syncDisabled}/>} {owner&&<small className="lock-hint">{owner.owner} 正在编辑 · 已锁定</small>}{review.legacyReviews&&<button type="button" aria-label={'批注：'+title} onClick={()=>review.startComment(node.id)}>批注{count>0&&<span className="annotation-count">{count}</span>}</button>}
  {index>=0&&([-1,1] as const).map(direction=>{
   const label=direction===-1?'上移':'下移';
   return <button key={direction} type="button" aria-label={label+'：'+title}

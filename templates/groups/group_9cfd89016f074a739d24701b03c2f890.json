@@ -1,9 +1,10 @@
 {
   "name": "李信利用苏烈牺牲",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "苏烈在场，上阵李信时，说明这项操作的战斗或资源收益。苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。依据《常小娥灵活变阵-常小娥》「李信」和李信的官方卡面、技能。",
   "utterances": [
     {
       "text": "苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。",
@@ -14,9 +15,8 @@
       "id": "utterances_c6b12eb96feb438595e9c9d9f6ba5f11"
     }
   ],
-  "explanation": "苏烈在场，上阵李信时，说明这项操作的战斗或资源收益。苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。依据《常小娥灵活变阵-常小娥》「李信」和李信的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_9cfd89016f074a739d24701b03c2f890",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -36,7 +36,7 @@
       "name": "李信"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"李信\" and 玩家.战场 has \"苏烈\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"李信\" and 玩家.战场 has \"苏烈\""
 }

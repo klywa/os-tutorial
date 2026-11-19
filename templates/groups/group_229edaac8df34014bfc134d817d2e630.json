@@ -1,0 +1,25 @@
+{
+  "name": "把噬神之书从过渡英雄转给嬴政",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《装备》噬神之书列举弈星、芈月作为过渡持有人，并未限定转移者；吸血和法攻的受益者是接收装备的嬴政。官方噬神之书及嬴政飞剑。",
+  "utterances": [
+    {
+      "text": "让嬴政接过噬神之书，飞剑能多打法伤，也能靠伤害回血。",
+      "id": "utterances_d772dc725b364eb58746576ed5d81f25"
+    },
+    {
+      "text": "噬神之书转给嬴政，法攻和法术吸血都能用在飞剑上。",
+      "id": "utterances_b96b4003bf5143129ab2d93ef26891bd"
+    }
+  ],
+  "id": "group_229edaac8df34014bfc134d817d2e630",
+  "event_id": "os_f5a416d50e37a948",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"噬神之书\" and arg3 is \"嬴政\"",
+  "editor_mode": "text"
+}

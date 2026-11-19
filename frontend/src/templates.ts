@@ -1,17 +1,26 @@
 import type {ConditionCatalog,ConditionNode} from './templateRules';
 export type ParameterType='text'|'number'|'boolean'|'entity';
+export function effectiveExpression(player:string|null,lineup:string|null,expression:string){
+ const clauses:string[]=[];
+ if(player!==null)clauses.push('玩家.使用棋手 is '+JSON.stringify(player));
+ if(lineup!==null)clauses.push('玩家.使用阵容 is '+JSON.stringify(lineup));
+ if(!clauses.length)return expression;
+ if(expression.trim())clauses.push('('+expression+')');
+ return clauses.join(' and ');
+}
+
 export type TemplateEntity={id:string;name:string};
 export type TemplateParameter={id:string;key:string;name:string;type:ParameterType;dsl_type?:string;entity_categories?:string[];suggestions?:unknown[];min?:number;max?:number};
 export type TemplateEvent={id:string;name:string;category?:string;parameters:TemplateParameter[]};
 export type ConditionOperator='eq'|'ne'|'gt'|'gte'|'lt'|'lte'|'between';
 export type TemplateCondition={id:string;parameter_key:string;operator:ConditionOperator;value:unknown};
 export const templateExplanationLimit=300;
-export type TemplateGroup={id:string;name:string;explanation?:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean}[];related_entities:TemplateEntity[]};
-export type TemplateSnapshot={schema_version:number;condition_catalog?:ConditionCatalog;revision:string;events:TemplateEvent[];groups:TemplateGroup[];entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>};
+export type TemplateGroup={id:string;name:string;explanation?:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
+export type TemplateSnapshot={schema_version:number;condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>};
 // Portable JSON is a separate contract from the canonical editor/proposal model.
 export type PortableTemplateParameter=Omit<TemplateParameter,'id'|'suggestions'>&{id?:string;suggestions?:Array<string|number|boolean>};
 export type PortableTemplateEvent=Omit<TemplateEvent,'id'|'parameters'>&{id?:string;parameters:PortableTemplateParameter[]};
-export type PortableTemplateGroup={id?:string;name:string;explanation?:string;event_name:string;scope:{player:string|null;lineup:string|null};expression:string;priority:number;editor_mode:'tree'|'text';condition_tree?:ConditionNode|null;utterances:string[]};
+export type PortableTemplateGroup={id?:string;name:string;explanation?:string;event_name:string;scope:{player:string|null;lineup:string|null};expression:string;effective_expression?:string;priority:number;editor_mode:'tree'|'text';condition_tree?:ConditionNode|null;utterances:string[]};
 export type PortableTemplateLibrary={kind:'speech-template-library';schema_version:3;condition_catalog:ConditionCatalog;events:(PortableTemplateEvent&{signature:string})[];groups:PortableTemplateGroup[]};
 type TemplateCatalogEntity=TemplateEntity&{category?:string;aliases?:string[]};
 export function resolveTemplateEntities(name:string,catalog:TemplateCatalogEntity[],categories?:string[]):TemplateEntity[]{
@@ -46,7 +55,9 @@ export function deriveTemplateEntities(group:TemplateGroup,event:TemplateEvent|u
  return [...result.values()];
 }
 export type TemplateChange={kind:'event'|'group';action:'put'|'delete';id:string;value?:TemplateEvent|TemplateGroup};
-export type TemplateProposal={id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
+type TemplateVersions=Record<string,TemplateEvent|TemplateGroup|null>;
+export type TemplateReview={action?:string;at:string;by:string;changes?:TemplateChange[];before?:TemplateVersions;after?:TemplateVersions};
+export type TemplateProposal={discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
 export type TemplateWarning={group_id:string;group_name:string;revision:string;entities:{id:string;name:string;before:unknown;after:unknown}[]};
 export type WarningSnapshot={items:TemplateWarning[];unseen_items?:TemplateWarning[];notification_revision:string;unseen:boolean};
 export function loginWarningItems(snapshot:WarningSnapshot){return snapshot.unseen_items??(snapshot.unseen?snapshot.items:[]);}
@@ -58,9 +69,19 @@ export function valueText(value:unknown):string{if(Array.isArray(value))return v
 export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>}={}){
  const compatible=(value:string|null,filter:string)=>!filter||(filter==='common'?value===null:value===null||value===filter);
  const terms=filters.query.toLocaleLowerCase().split(/[,，]/).map(v=>v.trim()).filter(Boolean);
+ const scoped=groups.filter(group=>(!filters.event||group.event_id===filters.event)&&compatible(group.scope.player_id,filters.player)&&compatible(group.scope.lineup_note_id,filters.lineup));
+ if(!terms.length)return scoped;
  const entities=new Map<string,{name:string;aliases:string[]}>();for(const e of catalog){const previous=entities.get(e.id);entities.set(e.id,{name:e.name,aliases:[...new Set([...(previous?.aliases??[]),...(e.aliases??[]),...(previous?.name&&previous.name!==e.name?[previous.name]:[])])]});}
  const searchValue=(value:unknown)=>{const ref=value as TemplateEntity|null;if(ref&&typeof ref==='object'&&!Array.isArray(ref)&&ref.id){const entity=entities.get(ref.id);return [ref.id,ref.name,entity?.name,...entity?.aliases??[]].filter(Boolean).join(' ').toLocaleLowerCase();}return valueText(value).toLocaleLowerCase();};
- return groups.filter(group=>(!filters.event||group.event_id===filters.event)&&compatible(group.scope.player_id,filters.player)&&compatible(group.scope.lineup_note_id,filters.lineup)&&terms.every(term=>[group.name,group.expression,...group.utterances.map(u=>u.text),labels.events?.find(e=>e.id===group.event_id)?.name,labels.scopeName?.(group.scope.player_id),labels.scopeName?.(group.scope.lineup_note_id),...[...group.related_entities,...labels.links?.[group.id]??[]].map(searchValue),...group.conditions.flatMap(c=>[c.parameter_key,searchValue(c.value)])].some(v=>v?.toLocaleLowerCase().includes(term))));
+ return scoped.filter(group=>{
+  const {player_id:player,lineup_note_id:lineup}=group.scope;
+  const playerName=player&&(labels.scopeName?.(player)??player),lineupName=lineup&&(labels.scopeName?.(lineup)??lineup);
+  const values=[group.name,effectiveExpression(playerName,lineupName,group.expression??''),...group.utterances.map(u=>u.text),
+   labels.events?.find(e=>e.id===group.event_id)?.name,labels.scopeName?.(player),labels.scopeName?.(lineup),
+   ...[...group.related_entities,...labels.links?.[group.id]??[]].map(searchValue),
+   ...group.conditions.flatMap(c=>[c.parameter_key,searchValue(c.value)])].map(value=>value?.toLocaleLowerCase()??'');
+  return terms.every(term=>values.some(value=>value.includes(term)));
+ });
 }
 export function lineupPlayer(note:{player_id?:string;meta?:{players:string[]}}){return note.player_id??null;}
 export function selectTemplateScope(scope:TemplateGroup['scope'],field:'player'|'lineup',value:string,notes:{id:string;player_id?:string;meta?:{players:string[]}}[]):TemplateGroup['scope']{
@@ -103,6 +124,18 @@ export function semanticChanges(before:unknown,after:unknown):{label:string;befo
  return [{label:'资料内容',before:readableValue(before),after:readableValue(after)}];
 }
 export function describeTemplateRecord(record:TemplateGroup|TemplateEvent|null|undefined,event?:TemplateEvent,scopeName:(id:string|null)=>string=id=>id??'通用'):string{
- if(!record)return '无记录';if('parameters' in record)return record.name+'\n分类：'+(record.category??'未分类')+'\n'+record.parameters.map(p=>p.name+' {'+p.key+'}，'+typeNames[p.type]+(p.entity_categories?.length?'，实体类别：'+p.entity_categories.join('、'):'')).join('\n');
+ if(!record)return '无记录';
+ if('parameters' in record){
+  const parameters=record.parameters.map(p=>{
+   const fields=[p.name+' {'+p.key+'}',typeNames[p.type]];
+   if(p.dsl_type)fields.push('条件数据类型：'+p.dsl_type);
+   if(p.entity_categories?.length)fields.push('实体类别：'+p.entity_categories.join('、'));
+   if(p.min!=null)fields.push('建议下限：'+p.min);
+   if(p.max!=null)fields.push('建议上限：'+p.max);
+   if(p.suggestions?.length)fields.push('建议值：'+p.suggestions.map(valueText).join('、'));
+   return fields.join('，');
+  });
+  return [record.name,'分类：'+(record.category??'未分类'),...parameters].join('\n');
+ }
  return record.name+'\n说明与依据：'+(record.explanation||'无')+'\n优先级：'+(record.priority??0)+'\n事件：'+(event?.name??record.event_id)+'\n棋手：'+scopeName(record.scope.player_id)+'\n阵容棋手组合：'+scopeName(record.scope.lineup_note_id)+'\n条件：\n'+(record.expression||record.conditions.map(c=>(event?.parameters.find(p=>p.key===c.parameter_key)?.name??c.parameter_key)+' '+operators[c.operator]+' '+valueText(c.value)).join('\n')||'不限制条件')+'\n全部话术：\n'+record.utterances.map(u=>u.text).join('\n')+'\n关联卡牌：'+record.conditions.flatMap(c=>{const p=event?.parameters.find(p=>p.key===c.parameter_key);return p?.type==='entity'?[valueText(c.value)]:[];}).join('、');
 }

@@ -41,6 +41,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg2 is \"传承\" and arg1 is \"裴擒虎\" and 玩家.战场 has \"司空震\" and 玩家.场上英雄数 == 4",
+  "expression": "(arg2 is \"传承\" and arg1 is \"裴擒虎\" and 玩家.战场 has \"司空震\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10",
   "editor_mode": "text"
 }

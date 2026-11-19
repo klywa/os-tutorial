@@ -1,0 +1,32 @@
+{
+  "name": "手握武装重构时买干将莫邪",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "手里有武装重构，对干将使用可以多获得1件装备。",
+      "id": "utterances_4d72a26486b3469681cf3d7377b9d28c",
+      "fixed": true
+    },
+    {
+      "text": "买干将能给手里的武装重构备材料，普通干将上场就有雄剑。",
+      "id": "utterances_ace955f30a304d11bd279fcba4294ca3",
+      "ignored": true
+    },
+    {
+      "text": "手里的重构能回收干将自带的雄剑，能多随机1件装备。",
+      "id": "utterances_74ffe0372448439c87d6e19b094e50e7",
+      "fixed": true
+    }
+  ],
+  "explanation": "《常用技巧》换下干将前先处理自带双剑、《冷门知识》干将重构；干将普通在场给雄剑，觉醒另给雌剑。武装重构摧毁目标所有装备，返还件数加一的随机基础装备。买牌尚未取得武器。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_611c2daf36624a90a36d37cddf31caea",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"干将莫邪\" and 玩家.手牌 has {\"类型\":\"效果牌\",\"名称\":\"武装重构\"}",
+  "priority": 1,
+  "editor_mode": "text"
+}

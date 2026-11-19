@@ -1,0 +1,25 @@
+{
+  "name": "选嬴政补持续法术输出",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「庄周」列出高阶招募战术候选嬴政，「魔女斗篷」记有对其法术输出的防守。普通与觉醒嬴政的技能锁定最近敌人，路径上没有敌人时转向其他目标。此组在实际选择英雄时解释输出职责。",
+  "utterances": [
+    {
+      "text": "嬴政能靠飞剑连续攻击，为队伍补法术输出。",
+      "id": "utterances_6f3b63fb557842cd824363f0f14a3985"
+    },
+    {
+      "text": "嬴政的飞剑能持续打出法伤，路径上没敌人时还能转向。",
+      "id": "utterances_709b33e1e19c46a7840c5ed8a861651a"
+    }
+  ],
+  "id": "group_103ab71329e24e269f21d060672d9e0b",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"嬴政\") and arg1 has \"嬴政\"",
+  "editor_mode": "text"
+}

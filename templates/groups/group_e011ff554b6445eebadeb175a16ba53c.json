@@ -1,0 +1,25 @@
+{
+  "name": "买太乙真人让海月再次限制敌方主力",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「太乙真人」、「海月」。太乙真人开团给最近队友复生。海月牺牲控制当时敌方等级最高英雄4秒，并按自身生命造成真实伤害。再触发能帮己方争取输出时间，能否击败目标仍看实际伤害。",
+  "utterances": [
+    {
+      "text": "买太乙后把海月放他最近，海月才有机会再次牺牲控人。",
+      "id": "utterances_150054b113184a57804d99ecc8d97122"
+    },
+    {
+      "text": "太乙给最近队友复生，把海月放过去能多争取一次控制。",
+      "id": "utterances_690a3f66e4b049b9aa616d603c46c0a1"
+    }
+  ],
+  "id": "group_e011ff554b6445eebadeb175a16ba53c",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"太乙真人\" and 玩家.战场 has \"海月\"",
+  "editor_mode": "text"
+}

@@ -15,11 +15,11 @@
       "id": "utterances_1278b91a66b94813a77841944dc5bb77"
     }
   ],
-  "event_id": "os_2b69e500a5c8036a",
   "id": "group_408e96aab973404893fe0aabeae10a52",
+  "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg2 is \"大明星\"",
+  "expression": "(arg2 is \"大明星\") and arg1 has \"大明星\"",
   "editor_mode": "text"
 }

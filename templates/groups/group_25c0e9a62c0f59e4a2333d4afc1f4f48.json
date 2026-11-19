@@ -1,0 +1,29 @@
+{
+  "name": "前期买孙膑补单挂觉醒",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》孙膑及前期过渡。场上唯一英雄是尚未觉醒的孙膑，用已确认身份的在场主C读取觉醒状态。买同名牌为这名单挂英雄推进觉醒。",
+  "utterances": [
+    {
+      "text": "买同名孙膑补觉醒，让单挂的施法成长更快。",
+      "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb"
+    },
+    {
+      "text": "这张孙膑能给场上那张补觉醒，后续施法多拿等级。",
+      "id": "utterances_05445b17692b4907a7fd4ce9a2ee6c64"
+    },
+    {
+      "text": "先给单挂孙膑推进觉醒，后面能靠施法攒更多等级。",
+      "id": "utterances_386671db86b54812a4389d7b9dfb47ce"
+    }
+  ],
+  "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒",
+  "editor_mode": "text",
+  "priority": 0
+}

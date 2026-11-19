@@ -82,7 +82,7 @@ def recover(root):
     with store_lock(root,wait=True):return _recover_locked(root)
 
 
-def _load(root,*,renamed=None,migrate_events=False):
+def _load(root,*,renamed=None,retired=None,migrate_events=False):
     """Read public arrays and tracked metadata; pending committed after-image wins.
 
     This helper never writes, so proposal/import previews are strictly read-only.
@@ -90,9 +90,12 @@ def _load(root,*,renamed=None,migrate_events=False):
     """
     root=Path(root);journal=_journal(root)
     overlay=journal['writes'] if journal else {};deleted=set(journal['deletes']) if journal else set()
-    meta=deepcopy(overlay.get(META,json_store.read(root/META,_meta())))
+    meta=deepcopy(overlay[META]) if META in overlay else json_store.read(root/META,_meta())
     if not isinstance(meta,dict) or meta.get('schema_version')!=1:raise ValueError('模板元数据版本无效')
     for key,default in _meta().items():meta.setdefault(key,deepcopy(default))
+    unavailable = set(schema.RETIRED_BUILTIN_IDS)
+    unavailable.update(uid for uid,entry in meta['tombstones']['event'].items()
+                       if entry.get('actor') == '事件目录迁移')
     public={'schema_version':1,'events':[],'groups':[]}
     for kind,folder in FOLDERS.items():
         values={e['id']:e for e in schema.builtin_events()} if kind=='event' else {}
@@ -104,25 +107,34 @@ def _load(root,*,renamed=None,migrate_events=False):
             path=_safe_path(root,relative)
             value=deepcopy(overlay[relative]) if relative in overlay else json_store.read(path)
             if not isinstance(value,dict) or value.get('id')!=path.stem:raise ValueError('模板文件身份与路径不一致')
+            if kind == 'event' and value['name'].endswith('（旧版）'):
+                unavailable.add(value['id'])
+                values.pop(value['id'],None)
+                if retired is not None:
+                    retired[relative] = value
+                continue
+            if kind == 'group' and value['event_id'] in unavailable:
+                if retired is not None and value['id'] not in meta['tombstones']['group']:
+                    retired[relative] = value
+                continue
             default=values.get(value['id'],{})
             if kind=='event' and (default or migrate_events):
                 updated=rules.explanation_event(value)
-                if default.get('name') == updated['name'] + '（旧版）':
-                    updated={**updated,'name':default['name']}
                 if renamed is not None and updated!=value:renamed[value['id']]=updated
                 value=updated
             if value['id'] not in meta['tombstones'].get(kind,{}):values[value['id']]=value
         if kind=='event':
+            unavailable.difference_update(values)
             changes=rules.disambiguate_existing(values.values(),defaults)
             if renamed is not None:renamed.update(changes)
         public[folder]=schema.order_events(values.values()) if kind=='event' else sorted(values.values(),key=lambda row:row['id'])
     # A writer that started after the first journal read owns the complete logical
     # after-image; retry instead of exposing a partially replaced file batch.
-    if journal is None and (root/JOURNAL).exists():return _load(root,renamed=renamed,migrate_events=migrate_events)
+    if journal is None and (root/JOURNAL).exists():return _load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
     latest=json_store.read(root/META,_meta()) if journal is None else meta
     if isinstance(latest,dict):
         for key,default in _meta().items():latest.setdefault(key,deepcopy(default))
-    if journal is None and latest!=meta:return _load(root,renamed=renamed,migrate_events=migrate_events)
+    if journal is None and latest!=meta:return _load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
     return public,meta
 
 
@@ -226,6 +238,17 @@ def event_validation_context(root, *, before=None, metadata=None):
     return result
 
 
+def check_fixed_utterances(before, after, toggle=None):
+    def rows(library):
+        return {(group['id'], row['id']): row for group in library['groups'] for row in group['utterances']}
+    previous, current = rows(before), rows(after)
+    for key in previous.keys() | current.keys():
+        old, new = previous.get(key, {}), current.get(key, {})
+        if key != toggle and (bool(old.get('fixed')) != bool(new.get('fixed'))
+                or old.get('fixed') and old['text'] != new.get('text')):
+            raise Conflict('固定话术不能修改或删除，请先取消固定')
+
+
 def _project(root, public, revision, meta, changes, entities=None, allow_conflicts=False):
     if revision!=_revision(public,meta):raise Conflict('模板库已更新，请刷新；草稿已保留')
     if not isinstance(changes,list) or len(changes)>5000:raise ValueError('模板修改必须为列表，且不能超过 5000 项')
@@ -250,6 +273,7 @@ def _project(root, public, revision, meta, changes, entities=None, allow_conflic
             maps[kind][uid]=deepcopy(change['value'])
     projected=validate(root,[maps['event'][uid] for uid in sorted(maps['event'])],
                        [maps['group'][uid] for uid in sorted(maps['group'])],entities=entities,before=public,metadata=meta)
+    check_fixed_utterances(public,projected)
     return projected
 
 
@@ -311,7 +335,12 @@ def _references(group,events,catalog=None,bindings=None):
 
 def entity_link_projection(root,entities=None):
     """Read-only projection; derived fields never contaminate editable records."""
-    public,meta=_load(root);catalog,_=_catalog(root,entities);events={e['id']:e for e in public['events']}
+    public,meta=_load(root);catalog,_=_catalog(root,entities)
+    return project_entity_links(public,meta,catalog)
+
+
+def project_entity_links(public,meta,catalog):
+    events={e['id']:e for e in public['events']}
     result={};conditions={}
     for group in public['groups']:
         archive={**meta.get('baselines',{}).get(group['id'],{}),**meta.get('entity_archive',{}).get(group['id'],{})}
@@ -359,10 +388,11 @@ def _baseline(meta,before,after,catalog):
     meta['event_entity_archive']=event_archive
 
 
-def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=None):
+def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=None,manual=None,fixed_toggle=None):
     """Caller holds workspace lock. Validate before journal (the commit point)."""
     root=Path(root);actor=_actor(actor)
     after=validate(root,after['events'],after['groups'],entities=entities,before=before,metadata=meta)
+    check_fixed_utterances(before,after,fixed_toggle)
     newmeta=deepcopy(meta)
     changed=[]
     for kind,folder in FOLDERS.items():
@@ -376,7 +406,7 @@ def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=No
             else:newmeta['tombstones'].setdefault(kind,{})[uid]={'actor':actor,'at':_now(),'revision':_revision(before,meta)}
     if not changed and newmeta==_load(root)[1] and not extra_writes:return _snapshot(before,meta)
     _baseline(newmeta,before,after,_catalog(root,entities)[0])
-    newmeta['audit'].append({'id':uuid.uuid4().hex,'actor':actor,'at':_now(),'changes':deepcopy(changed),
+    newmeta['audit'].append({'id':uuid.uuid4().hex,'actor':actor,'at':_now(),'changes':deepcopy(changed),**({'manual':manual} if manual else {}),
                              'before':deepcopy(before),'after':deepcopy(after)})
     return _persist_locked(root,before,after,newmeta,extra_writes=extra_writes,entities=entities)
 
@@ -395,17 +425,42 @@ def _persist_locked(root,before,after,meta,*,extra_writes=None,entities=None):
         for value in before[folder]:
             if value['id'] not in surviving:deletes.append(_path(kind,value['id']))
     from template_package import encode
-    writes[PUBLISHED]=encode(_exportable(after),_catalog(root,entities)[0],_notes(root),meta,all_groups=after['groups'])
+    writes[PUBLISHED]=encode(_exportable(after),_catalog(root,entities)[0],_notes(root),meta,all_groups=after['groups'],root=root)
     json_store.write_file(root/JOURNAL,{'schema_version':1,'writes':writes,'deletes':deletes})
     _recover_locked(root)
     return _snapshot(after,meta)
 
 
-def apply(root,revision,changes,actor='admin',*,entities=None,_allow_conflicts=False):
+def apply(root,revision,changes,actor='admin',*,entities=None,_allow_conflicts=False,manual=None):
     with store_lock(root,wait=True):
         _recover_locked(root);public,meta=_load(root)
         after=_project(root,public,revision,meta,changes,entities,_allow_conflicts)
-        return _commit(root,public,after,meta,actor,changes,entities=entities)
+        return _commit(root,public,after,meta,actor,changes,entities=entities,manual=manual)
+
+
+def set_utterance_fixed(root, revision, group_id, utterance_id, fixed, actor, *, entities=None):
+    from templates_sync import is_blocked
+    schema.identity(group_id)
+    schema.identity(utterance_id)
+    if type(fixed) is not bool:
+        raise ValueError('话术固定状态必须是布尔值')
+    with store_lock(root,wait=True):
+        _recover_locked(root)
+        before, meta = _load(root)
+        if revision != _revision(before,meta):
+            raise Conflict('模板库已更新，请刷新后重试')
+        if is_blocked(root,'group',group_id):
+            raise Conflict('该模板记录存在同步冲突，请先解决')
+        after = deepcopy(before)
+        group = next((g for g in after['groups'] if g['id'] == group_id), None)
+        row = next((u for u in (group or {}).get('utterances',[]) if u['id'] == utterance_id), None)
+        if row is None:
+            raise Conflict('话术已不存在，请刷新后重试')
+        if bool(row.get('fixed')) == fixed:
+            return _snapshot(before,meta)
+        row['fixed'] = fixed
+        return _commit(root,before,after,meta,actor,[],entities=entities,manual={'source':'manual'},
+                       fixed_toggle=(group_id,utterance_id))
 
 
 def _exportable(public):
@@ -434,7 +489,7 @@ def export_library(root,group_ids=None,*,rules_format=False,entities=None):
     events=[e for e in public['events'] if group_ids is None or e['id'] in event_ids]
     if rules_format or any('expression' in group for group in groups):
         from template_package import encode
-        return encode({'events':events,'groups':groups},_catalog(root,entities)[0],_notes(root),meta,all_groups=public['groups'])
+        return encode({'events':events,'groups':groups},_catalog(root,entities)[0],_notes(root),meta,all_groups=public['groups'],root=root)
     from templates_portable import encode
     return encode({'events':events,'groups':groups})
 
@@ -445,12 +500,21 @@ def refresh_published(root,entities=None,*,migrate_events=False):
     with store_lock(root,wait=True):
         _recover_locked(root)
         renamed={}
-        public,meta=_load(root,renamed=renamed,migrate_events=migrate_events)
-        result=encode(_exportable(public),_catalog(root,entities)[0],_notes(root),meta,all_groups=public['groups'])
-        if renamed:
+        retired={}
+        public,meta=_load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
+        result=encode(_exportable(public),_catalog(root,entities)[0],_notes(root),meta,all_groups=public['groups'],root=root)
+        if renamed or retired:
             writes={_path('event',uid):row for uid,row in renamed.items() if row in public['events']}
+            if retired:
+                revision = _revision(public,meta)
+                for relative,record in retired.items():
+                    kind = 'event' if Path(relative).parent.name == 'events' else 'group'
+                    entry = meta['tombstones'][kind].setdefault(record['id'],
+                            {'actor':'事件目录迁移','at':_now(),'revision':revision})
+                    entry.setdefault('record',record)
+                writes[META]=meta
             writes[PUBLISHED]=result
-            json_store.write_file(Path(root)/JOURNAL,{'schema_version':1,'writes':writes,'deletes':[]})
+            json_store.write_file(Path(root)/JOURNAL,{'schema_version':1,'writes':writes,'deletes':sorted(retired)})
             _recover_locked(root)
         else:json_store.write_file(_safe_path(root,PUBLISHED),result)
         return result
@@ -458,7 +522,7 @@ def refresh_published(root,entities=None,*,migrate_events=False):
 
 def preview_import(root,document,*,entities=None):
     public,meta=_load(root);revision=_revision(public,meta)
-    result={'revision':revision,'changes':[],'summary':{'created':0,'updated':0,'unchanged':0},'errors':[]}
+    result={'revision':revision,'changes':[],'summary':{'created':0,'updated':0,'unchanged':0},'errors':[],'preserved_fixed':[]}
     try:
         from templates_portable import decode
         catalog,notes,retired=validation_context(root,entities=entities,before=public,metadata=meta)
@@ -468,12 +532,17 @@ def preview_import(root,document,*,entities=None):
             current={v['id']:v for v in public[folder]}
             for value in doc[folder]:
                 old=current.get(value['id'])
+                if kind=='group' and old:
+                    result['preserved_fixed'].extend(
+                        {'group_id':old['id'],'group_name':old['name'],'utterance_id':row['id'],'text':row['text']}
+                        for row in old['utterances'] if row.get('fixed'))
                 if value==old:result['summary']['unchanged']+=1;continue
                 result['summary']['created' if old is None else 'updated']+=1
                 result['changes'].append({'kind':kind,'action':'put','id':value['id'],'value':value})
         _project(root,public,revision,meta,result['changes'],entities)
     except (ValueError,TypeError,KeyError) as exc:
         result['errors']=[str(exc)];result['changes']=[]
+        result['preserved_fixed']=[]
         result['summary']={'created':0,'updated':0,'unchanged':0}
     return result
 

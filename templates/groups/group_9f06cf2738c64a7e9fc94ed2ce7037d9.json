@@ -1,0 +1,25 @@
+{
+  "name": "用逐鹿征召令补英雄牌",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「庄周」将逐鹿征召令列为获得途径。官方逐鹿征召令（card:7508）给两张对应阵营的英雄，可能拿到庄周以补充这项职责。",
+  "utterances": [
+    {
+      "text": "逐鹿征召令给两张逐鹿英雄牌，有机会拿到庄周。",
+      "id": "utterances_12a8e24ef971425386079fa9626be20f"
+    },
+    {
+      "text": "逐鹿征召令有机会找到能补招募战术的庄周。",
+      "id": "utterances_e48dd8cd19e84b86b213c43bf5853ca0"
+    }
+  ],
+  "id": "group_9f06cf2738c64a7e9fc94ed2ce7037d9",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"逐鹿征召令\"",
+  "editor_mode": "text",
+  "priority": 0
+}

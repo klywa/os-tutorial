@@ -14,6 +14,11 @@ SOURCE = ROOT / 'src/condition/catalog.json'
 RULE_FIELDS = {'expression', 'condition_tree', 'editor_mode', 'priority'}
 EXPLANATION_PREFIX = '解释为何'
 REMINDER_CATEGORY = '针对与提醒'
+REMINDER_EVENT_IDS = {
+    'lineup_ready', 'health_crisis', 'player_streak', 'opponent_streak',
+    'dangerous_opponent', 'opponent_equipment', 'key_card_acquired',
+    'key_card_shop', 'auction_start',
+}
 CATEGORY_TYPES = {'heroes':'英雄', 'equipment':'装备', 'effect-cards':'效果牌',
                   'players':'棋手', 'talents':'天赋', 'player-skills':'棋手技能', 'derivatives':'衍生物'}
 
@@ -23,6 +28,9 @@ def catalog():
 
 
 def explanation_event(event):
+    if event['id'] in REMINDER_EVENT_IDS:
+        name = event['name'].removeprefix(EXPLANATION_PREFIX)
+        return {**event, 'name': name, 'category': REMINDER_CATEGORY}
     if event.get('category') == REMINDER_CATEGORY:
         return event
     name = EXPLANATION_PREFIX + event['name'].removeprefix(EXPLANATION_PREFIX)
@@ -31,13 +39,12 @@ def explanation_event(event):
 
 def resolve_event(events, name, event_id=None):
     """Resolve an old portable name without guessing between competing events."""
-    prefixed = EXPLANATION_PREFIX + name.removeprefix(EXPLANATION_PREFIX)
+    unprefixed = name.removeprefix(EXPLANATION_PREFIX)
     exact = [e for e in events if e['name'] == name]
-    candidates = exact or [e for e in events if e['name'] == prefixed or
-                           e['name'].removeprefix(EXPLANATION_PREFIX) == name]
+    candidates = exact or [e for e in events if e['name'].removeprefix(EXPLANATION_PREFIX) == unprefixed]
     if event_id:
         by_id = next((e for e in events if e['id'] == event_id), None)
-        if by_id and (by_id in candidates or by_id['name'] == prefixed + '（旧版）'):
+        if by_id and by_id in candidates:
             return by_id
     if len(candidates) > 1:
         raise ValueError('事件名称有歧义：'+name)
@@ -62,8 +69,12 @@ def definition(event):
             'parameters':{p['key']:parameter_type(p) for p in event['parameters']}}
 
 
-def library_catalog(events):
+def library_catalog(events, *, root=None):
     result = catalog()
+    result.pop('card_tags_file', None)
+    if root is not None:
+        from card_tags import effective_tags
+        result['card_tags'] = effective_tags(root)
     result['events'] = {event['name']:definition(event) for event in events}
     return result
 

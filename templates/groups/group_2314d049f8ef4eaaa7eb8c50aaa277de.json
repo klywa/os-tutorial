@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》艾琳。四人组后期持续普攻输出，100级后可绕场飞行。此时购买是为留培养方向，飞行属于到达节点后的收益。",
   "utterances": [
     {
-      "text": "艾琳开团时按自身等级提高攻速，适合集中培养。",
+      "text": "艾琳能做四人组的持续输出，等级越高攻速越快。",
       "id": "utterances_47fa099c452f4a0abadb49456d659c84"
     },
     {
-      "text": "艾琳达到100级就能绕场飞行，拥有无限攻击距离。",
+      "text": "买艾琳是为了留个能靠等级提升攻速的后排。",
       "id": "utterances_d65f0c28f3c44658b189357511bec4e2"
+    },
+    {
+      "text": "艾琳练到100级能绕场飞行，持续普攻牵制近战。",
+      "id": "utterances_78c7e11f00ad40bfa7a69931a87f9109"
     }
   ],
-  "explanation": "买到艾琳时，这组话说明艾琳在队伍中的作用。艾琳开团时按自身等级提高攻速，达到100级后开战绕场飞行，拥有无限攻击距离。依据《常小娥灵活变阵-常小娥》「艾琳」及艾琳的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_2314d049f8ef4eaaa7eb8c50aaa277de",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +32,7 @@
       "name": "艾琳"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"艾琳\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

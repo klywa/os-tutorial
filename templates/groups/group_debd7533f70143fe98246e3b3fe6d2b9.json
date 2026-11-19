@@ -1,0 +1,29 @@
+{
+  "name": "米莱狄和朵莉亚到手后发展泳池派对",
+  "scope": {
+    "player_id": "player:39",
+    "lineup_note_id": null
+  },
+  "explanation": "《明先生》适用打法与适用技巧「泳池派对」。两名核心均已取得，可围绕朵莉亚水域回蓝与米莱狄反复召唤发展。。每句均点明建议发展的具体阵容。",
+  "utterances": [
+    {
+      "text": "建议走泳池派对，朵莉亚能给米莱狄回蓝召仆从。",
+      "id": "utterances_7f4cabd506fe4dc88cb7d8372a8082e1"
+    },
+    {
+      "text": "泳池派对可以走，两名主力都有了，水域能帮米莱狄施法。",
+      "id": "utterances_098010a628dc48f29938b77746803f3e"
+    },
+    {
+      "text": "可以往泳池派对发展，用朵莉亚的水域支持米莱狄召唤。",
+      "id": "utterances_015d51bb416b4d7d81eb404eda2ca962"
+    }
+  ],
+  "id": "group_debd7533f70143fe98246e3b3fe6d2b9",
+  "event_id": "os_98aee9aae8b9d41d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "(arg1.阵容名 has \"泳池派对\" or arg1.阵容名 has \"泳池派对-明先生\") and (玩家.战场 has \"米莱狄\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"米莱狄\"}) and (玩家.战场 has \"朵莉亚\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"朵莉亚\"})",
+  "priority": 0,
+  "editor_mode": "text"
+}

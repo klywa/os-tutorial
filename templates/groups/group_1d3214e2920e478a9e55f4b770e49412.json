@@ -1,9 +1,10 @@
 {
   "name": "百级艾琳飞行输出",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "上阵100级及以上的艾琳时，说明这项操作的战斗或资源收益。百级艾琳能在开战时绕场飞行，从远处持续输出。依据《常小娥灵活变阵-常小娥》「艾琳」和艾琳的官方卡面、技能。",
   "utterances": [
     {
       "text": "百级艾琳能在开战时绕场飞行，从远处持续输出。",
@@ -14,9 +15,8 @@
       "id": "utterances_199655140d5a45908a9f8ec188810889"
     }
   ],
-  "explanation": "上阵100级及以上的艾琳时，说明这项操作的战斗或资源收益。百级艾琳能在开战时绕场飞行，从远处持续输出。依据《常小娥灵活变阵-常小娥》「艾琳」和艾琳的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_1d3214e2920e478a9e55f4b770e49412",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "艾琳"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"艾琳\" and arg1.等级 >= 100",
-  "editor_mode": "text"
+  "expression": "arg1 is \"艾琳\" and arg1.等级 >= 100"
 }

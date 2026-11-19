@@ -1,0 +1,25 @@
+{
+  "name": "太乙真人在场时买海月",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "买海月放在太乙最近处，复生后还能再困敌方最高级英雄。",
+      "id": "utterances_29e3d8434d81461caa7007ab059b7a27"
+    },
+    {
+      "text": "场上有太乙，买海月能用复生多争取一次控制对面主力的机会。",
+      "id": "utterances_d04e15bd5b594099913703462f92176f"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》海月以及太乙真人普通／觉醒开团令最近队友复生，海月牺牲困住敌方最高等级英雄4秒并造成真实伤害。选择海月可从五阶兑换券候选拿；两人都在不保证复生目标，需把海月放最近。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_59dbca4097854fd2a0dd93727ecff61d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"海月\" and 玩家.战场 has \"太乙真人\"",
+  "editor_mode": "text",
+  "priority": 0
+}

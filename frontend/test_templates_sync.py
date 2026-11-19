@@ -50,6 +50,34 @@ class TemplateMergeTests(unittest.TestCase):
         self.assertEqual([c['value'] for c in result['record']['conditions']], [3, 4])
         self.assertEqual(result['record']['utterances'][0]['text'], '新话')
 
+    def test_concurrent_pin_wins_against_text_edit_and_deletion(self):
+        base = self.record()
+        pinned = deepcopy(base)
+        pinned['utterances'][0]['fixed'] = True
+        edit = deepcopy(base)
+        edit['utterances'][0]['text'] = '同时改稿'
+        for other in (edit, None):
+            result = sync.merge_record(base, other, pinned, preferred='left')
+            self.assertIn('/utterances/u/fixed', result['conflicts'])
+            self.assertEqual(result['record']['utterances'][0], pinned['utterances'][0])
+        unlocked = deepcopy(pinned)
+        unlocked['utterances'][0].update(text='手动取消固定后编辑', fixed=False)
+        result = sync.merge_record(pinned, pinned, unlocked, preferred='left')
+        self.assertEqual(result, {'conflicts': [], 'record': unlocked})
+
+    def test_integrated_conflict_keeps_fixed_rows_on_the_serving_side(self):
+        path = 'templates/groups/g.json'
+        base = self.record()
+        left = deepcopy(base)
+        left['utterances'][0]['text'] = '另一端的改稿'
+        right = deepcopy(base)
+        right['utterances'][0]['fixed'] = True
+        with patch.object(sync,'_tree',side_effect=[{path:base},{path:left},{path:right}]):
+            sync.integrate(self.root,'base','left','right',preferred='left',validate=False)
+        saved = json.loads((self.root/path).read_text(encoding='utf8'))
+        self.assertEqual(saved['utterances'], right['utterances'])
+        self.assertTrue(sync.is_blocked(self.root,'group','g'))
+
     def test_same_field_and_delete_edit_keep_current_whole_record(self):
         base = self.record(); left = deepcopy(base); right = deepcopy(base)
         left['name'] = '网站'; right['name'] = '本地'
@@ -141,7 +169,7 @@ class TemplateMergeTests(unittest.TestCase):
     def test_resolution_is_revision_fenced_and_only_target_record_is_locked(self):
         import templates_store as library
         from workspace import Conflict
-        group={'id':'g','name':'网站','event_id':'shop_refresh','scope':{'player_id':None,'lineup_note_id':None},'conditions':[],'utterances':[{'id':'u','text':'刷新'}]}
+        group={'id':'g','name':'网站','event_id':'auction_start','scope':{'player_id':None,'lineup_note_id':None},'conditions':[],'utterances':[{'id':'u','text':'刷新'}]}
         library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'group','action':'put','id':'g','value':group}],actor='admin')
         incoming={**group,'name':'本地'}
         request={'schema_version':1,'kind':'group','record_id':'g','base':{**group,'name':'原名'},'current':group,'incoming':incoming,'conflicts':['/name']}
@@ -154,6 +182,11 @@ class TemplateMergeTests(unittest.TestCase):
         with self.assertRaises(Conflict):sync.resolve_conflict(self.root,item['id'],'stale',incoming,'admin')
         result=sync.resolve_conflict(self.root,item['id'],item['revision'],incoming,'admin')
         self.assertEqual(next(g['name'] for g in result['groups'] if g['id']=='g'),'本地')
+        audit=json.loads((self.root/library.META).read_text(encoding='utf-8'))['audit']
+        resolved=[row for row in audit if row.get('action')=='resolve_conflict']
+        self.assertEqual([(row['group_id'],row['actor'],row['before_group']['name'],
+                           row['after_group']['name'],row['batch_id']) for row in resolved],
+                         [('g','admin','网站','本地',item['id'])])
         self.assertFalse(sync.is_blocked(self.root,'group','g'))
         with self.assertRaises(Conflict):sync.resolve_conflict(self.root,item['id'],item['revision'],group,'admin')
 
@@ -165,7 +198,7 @@ class TemplateMergeTests(unittest.TestCase):
     def test_resolution_content_and_receipt_recover_together_after_power_loss(self):
         import templates_store as library
         import json_store
-        group={'id':'g','name':'网站','event_id':'shop_refresh','scope':{'player_id':None,'lineup_note_id':None},'conditions':[],'utterances':[{'id':'u','text':'刷新'}]}
+        group={'id':'g','name':'网站','event_id':'auction_start','scope':{'player_id':None,'lineup_note_id':None},'conditions':[],'utterances':[{'id':'u','text':'刷新'}]}
         library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'group','action':'put','id':'g','value':group}],actor='admin')
         incoming={**group,'name':'本地'}
         request={'schema_version':1,'kind':'group','record_id':'g','base':{**group,'name':'原名'},'current':group,'incoming':incoming,'conflicts':['/name']}
@@ -188,7 +221,7 @@ class TemplateMergeTests(unittest.TestCase):
         import templates_store as library
         git(self.root,'init','-b','master');git(self.root,'config','user.name','Test');git(self.root,'config','user.email','test@example.invalid')
         (self.root/'.gitignore').write_text('raw/\nentities/\n*.bak\n*.tmp\n',encoding='utf-8');json_store.initialize(self.root)
-        group={'id':'g','name':'原名','event_id':'shop_refresh','scope':{'player_id':None,'lineup_note_id':None},'conditions':[{'id':'c','parameter_key':'stage','operator':'eq','value':'前期'}],'utterances':[{'id':'u','text':'刷新'}]}
+        group={'id':'g','name':'原名','event_id':'auction_start','scope':{'player_id':None,'lineup_note_id':None},'conditions':[{'id':'c','parameter_key':'stage','operator':'eq','value':'前期'}],'utterances':[{'id':'u','text':'刷新'}]}
         library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'group','action':'put','id':'g','value':group}],actor='admin')
         git(self.root,'add','.');git(self.root,'commit','-m','base');base=git(self.root,'rev-parse','HEAD')
         left=deepcopy(group);left['conditions'][0]['value']='中期'
@@ -230,16 +263,16 @@ class TemplateMergeTests(unittest.TestCase):
         git(self.root,'init','-b','master');git(self.root,'config','user.name','Test');git(self.root,'config','user.email','test@example.invalid')
         (self.root/'.gitignore').write_text('raw/\n*.bak\n*.tmp\n',encoding='utf-8')
         git(self.root,'add','.');git(self.root,'commit','-m','unseeded base');base=git(self.root,'rev-parse','HEAD')
-        library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'event','action':'delete','id':'hero_buy'}],actor='admin')
+        library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'event','action':'delete','id':'hero_select'}],actor='admin')
         git(self.root,'add','templates');git(self.root,'commit','-m','website delete builtin');lref=git(self.root,'rev-parse','HEAD')
         git(self.root,'checkout','-b','incoming',base)
-        event=next(e for e in library.snapshot(self.root)['events'] if e['id']=='hero_buy');event['name']='本地新名'
-        library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'event','action':'put','id':'hero_buy','value':event}],actor='admin')
+        event=next(e for e in library.snapshot(self.root)['events'] if e['id']=='hero_select');event['name']='本地新名'
+        library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'event','action':'put','id':'hero_select','value':event}],actor='admin')
         git(self.root,'add','templates');git(self.root,'commit','-m','local edit builtin');rref=git(self.root,'rev-parse','HEAD')
         git(self.root,'checkout','master')
         sync.integrate(self.root,base,lref,rref,preferred='left')
-        self.assertNotIn('hero_buy',[e['id'] for e in library.snapshot(self.root)['events']])
-        self.assertTrue(sync.is_blocked(self.root,'event','hero_buy'))
+        self.assertNotIn('hero_select',[e['id'] for e in library.snapshot(self.root)['events']])
+        self.assertTrue(sync.is_blocked(self.root,'event','hero_select'))
 
     def test_new_conflict_versions_are_causally_ordered_even_with_lower_hash(self):
         first={'schema_version':1,'kind':'group','record_id':'g','base':None,'current':{'id':'g','name':'网站'},'incoming':{'id':'g','name':'旧本地'},'conflicts':['/name']}
@@ -315,7 +348,7 @@ class TemplateMergeTests(unittest.TestCase):
         json_store.initialize(self.root)
         hero={'id':'hero:retired','name':'旧英雄','category':'heroes','effect':'旧技能'}
         json_store.write_file(self.root/'entities/heroes.json',[hero])
-        group={'id':'g','name':'旧关联组','event_id':'hero_buy','scope':{'player_id':None,'lineup_note_id':None},
+        group={'id':'g','name':'旧关联组','event_id':'hero_select','scope':{'player_id':None,'lineup_note_id':None},
                'conditions':[{'id':'hero-condition','parameter_key':'hero','operator':'eq','value':{'id':hero['id'],'name':hero['name']}}],
                'utterances':[{'id':'u','text':'刷新'}],'related_entities':[{'id':hero['id'],'name':hero['name']}]}
         library.apply(self.root,library.snapshot(self.root)['revision'],[{'kind':'group','action':'put','id':'g','value':group}],actor='admin')

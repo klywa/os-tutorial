@@ -1,0 +1,25 @@
+{
+  "name": "选卧龙威势补诸葛亮与法力",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「诸葛亮」把卧龙威势列为获得途径；本人通过队友施法回复法力、获得临时等级。两句都解释直接取得施法输出的价值。",
+  "utterances": [
+    {
+      "text": "打算靠队友频繁施法培养诸葛亮，卧龙威势能直接给他。",
+      "id": "utterances_65251b1a57e6488eb62e646fe07b629c"
+    },
+    {
+      "text": "输出位缺诸葛亮时，选卧龙威势就能拿到他。",
+      "id": "utterances_cdd11ce14fcf484e84987f9d56b4ed80"
+    }
+  ],
+  "id": "group_2bcfe052ec5e4fcab927b65ca14a95f3",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"卧龙威势\") and arg1 has \"卧龙威势\"",
+  "editor_mode": "text"
+}

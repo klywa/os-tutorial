@@ -1,0 +1,25 @@
+{
+  "name": "上刘禅和孙膑组成双人前排与成长配合",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「刘禅」「孙膑」。上阵完成后正好两人，孙膑给每三次施法的英雄永久等级，刘禅让每次施法的英雄获得临时等级。",
+  "utterances": [
+    {
+      "text": "刘禅能用护盾替孙膑扛伤，给孙膑争取多次施法的时间。",
+      "id": "utterances_2eea2dabf97a42e88f198e5ce0a4316e"
+    },
+    {
+      "text": "刘禅和孙膑同场，两人施法能临时升级，每三次还能永久升级。",
+      "id": "utterances_87f87da10541430c97f3291cd764eabb"
+    }
+  ],
+  "id": "group_a0abac40d8255b68bec38fe3f22e0920",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "editor_mode": "text",
+  "expression": "arg1 is \"刘禅\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\""
+}

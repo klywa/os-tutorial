@@ -1,9 +1,10 @@
 {
   "name": "合成钟馗补觉醒",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "合成后钟馗还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。」与「自身及左右1格的英雄获得牺牲：击败者等级临时降低20%（每场战斗限1次）。」。依据《常小娥灵活变阵-常小娥》「钟馗」和钟馗的官方卡面、技能。",
   "utterances": [
     {
       "text": "钟馗觉醒后，自己牺牲能让击败者的等级临时降低20%。",
@@ -14,9 +15,8 @@
       "id": "utterances_477696fab4d541c7919388122c1b3214"
     }
   ],
-  "explanation": "合成后钟馗还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。」与「自身及左右1格的英雄获得牺牲：击败者等级临时降低20%（每场战斗限1次）。」。依据《常小娥灵活变阵-常小娥》「钟馗」和钟馗的官方卡面、技能。",
-  "event_id": "os_d12194463340a8ec",
   "id": "group_b91fd01e5da04c36ad89abb3b2d45a0b",
+  "event_id": "os_d12194463340a8ec",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "钟馗"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"钟馗\" and not arg1.已觉醒",
-  "editor_mode": "text"
+  "expression": "arg1 is \"钟馗\" and not arg1.已觉醒"
 }

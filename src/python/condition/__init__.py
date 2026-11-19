@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from decimal import Decimal
+from fractions import Fraction
 import json
 import os
 import operator
@@ -326,6 +327,49 @@ class _Evaluator:
                 raise ConditionError(f"实体标签与声明类型 {t} 不匹配")
         return Value(types, raw, domain=domain)
 
+    def card_tags(self, value):
+        raw = value.value
+        if isinstance(raw, list):
+            tags = []
+            for item in raw:
+                resolved = self.card_tags(item)
+                tags.extend([None] if resolved is _UNKNOWN else resolved)
+            return tags
+        if raw is _UNKNOWN:
+            return _UNKNOWN
+        obj = raw if isinstance(raw, dict) else {}
+        name = obj.get("名称", obj.get("name")) if isinstance(raw, dict) else raw
+        identity = obj.get("id")
+        if type(identity) is int:
+            identity = f"card:{identity}"
+        awake = obj.get("已觉醒")
+        catalog = self.catalog.get("card_tags", {})
+        candidates = catalog.values()
+        if identity is not None:
+            row = catalog.get(identity) if isinstance(identity, str) else None
+            if not row or (name is not None and name != row["name"]) or row["type"] not in value.types:
+                return _UNKNOWN
+            name = row["name"]
+            if row["type"] != "英雄":
+                candidates = [row]
+        matching = [set(row["tags"]) for row in candidates
+                    if row["type"] in value.types and (name is None or row["name"] == name)
+                    and (name is not None or identity is not None)
+                    and (awake is None or row["type"] != "英雄" or row["awakened"] == awake)]
+        return sorted(set.intersection(*matching)) if matching else _UNKNOWN
+
+    def sum_field(self, array_type):
+        self.take("(")
+        field = self.take("id")
+        self.take(")")
+        if not array_type.startswith("Array<"):
+            raise ConditionError("求和需要实体数组")
+        owners = [self.canonical(t) for t in array_type[6:-1].split("|")]
+        types = {self.catalog["types"].get(t, {}).get(field) for t in owners}
+        if not all(_numeric(t) for t in types):
+            raise ConditionError(f"求和需要每个数组元素都声明数值属性 {field}")
+        return field, "int" if types == {"int"} else "number"
+
     def path(self, root):
         if root in self.params:
             result = self.declared(self.params[root], self.args.get(root, _UNKNOWN))
@@ -335,17 +379,37 @@ class _Evaluator:
             raise ConditionError(f"未声明路径 {root}")
         while self.accept("."):
             attr = self.take("id")
+            if attr == "求和" and self.token[0] == "(":
+                field, typ = self.sum_field(result.types[0])
+                total = 0
+                if result.value is _UNKNOWN:
+                    total = _UNKNOWN
+                else:
+                    for item in result.value:
+                        raw = item.value.get(field) if isinstance(item.value, dict) else None
+                        if raw is None:
+                            total = _UNKNOWN
+                            break
+                        total += Fraction(str(raw))
+                result = Value((typ,), total)
+                continue
             if attr == "name":
                 attr = "名称"
-            options = [self.catalog["types"].get(t, {}).get(attr) for t in result.domain or result.types]
+            owners = result.domain or result.types
+            if attr == "标签" and len(owners) == 1 and owners[0].startswith("Array<"):
+                owners = tuple(self.canonical(t) for t in owners[0][6:-1].split("|"))
+            options = [self.catalog["types"].get(t, {}).get(attr) for t in owners]
             if not options or None in options or len(set(options)) != 1:
                 raise ConditionError(f"未声明属性 {root}.{attr}")
             raw = result.value
-            if isinstance(raw, dict):
+            if attr == "标签":
+                raw = self.card_tags(result)
+            elif isinstance(raw, dict):
                 raw = raw.get(attr, raw.get("name", _UNKNOWN) if attr == "名称" else _UNKNOWN)
             elif not (isinstance(raw, str) and attr == "名称"):
                 raw = _UNKNOWN
-            field = f"{result.types[0]}.{attr}"
+            owner = owners[0] if attr == "标签" else result.types[0]
+            field = f"{owner}.{attr}"
             ops = self.catalog.get("operations", {}).get(field)
             result = self.declared(options[0], raw)
             result.ops = ops
@@ -426,6 +490,9 @@ def _catalog(catalog):
         try:
             with open(filename, encoding="utf-8") as file:
                 catalog = json.load(file)
+            if catalog.get("card_tags_file") == "card-tags.json":
+                with open(Path(filename).with_name("card-tags.json"), encoding="utf-8") as file:
+                    catalog["card_tags"] = json.load(file)
         except (OSError, ValueError) as exc:
             raise ConditionError(f"无法读取条件目录 {filename}") from exc
     catalog = _object(catalog, "目录")

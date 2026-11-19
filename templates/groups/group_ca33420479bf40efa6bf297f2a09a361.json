@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "买到钟馗时，这组话说明钟馗在队伍中的作用。钟馗让自己和左右一格的队友获得牺牲效果，每场战斗各限一次，能临时降低击败者等级。依据《常小娥灵活变阵-常小娥》「钟馗」及钟馗的官方卡面、技能。",
   "utterances": [
     {
-      "text": "钟馗能让自己和左右相邻的队友在牺牲时临时降低击败者的等级。",
+      "text": "买钟馗能留个对策位，牺牲时会让击败者暂时掉级。",
       "id": "utterances_150383ec1f47463ebfef8e5aeb378b86"
     },
     {
-      "text": "对面靠一名高等级英雄输出时，如果他击败钟馗，就会暂时掉等级。",
+      "text": "钟馗能让左右队友的牺牲也压低击败者等级。",
       "id": "utterances_b86bd17de24d4044be718fe50ad61f13"
+    },
+    {
+      "text": "钟馗能用牺牲牵制对方输出，压低击败者等级。",
+      "id": "utterances_17c84b78b7fd454cafd118c9e6b0720d"
     }
   ],
-  "explanation": "买到钟馗时，这组话说明钟馗在队伍中的作用。钟馗让自己和左右一格的队友获得牺牲效果，每场战斗各限一次，能临时降低击败者等级。依据《常小娥灵活变阵-常小娥》「钟馗」及钟馗的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_ca33420479bf40efa6bf297f2a09a361",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +32,7 @@
       "name": "钟馗"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"钟馗\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

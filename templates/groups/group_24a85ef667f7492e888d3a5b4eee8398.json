@@ -1,0 +1,25 @@
+{
+  "name": "选敖隐用图腾强化持续输出",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「蒙犽」提到敖隐是跨阵容培养目标。核对敖隐普通、觉醒卡，战斗中图腾每4秒提供攻速和临时等级。选择英雄时说明可利用的图腾配合，未将敖隐列为常小娥常驻主力。",
+  "utterances": [
+    {
+      "text": "场上有图腾时，敖隐能不断获得攻速和临时等级。",
+      "id": "utterances_886e70bcd8034c818a2ae5027373809a"
+    },
+    {
+      "text": "敖隐能借图腾提高攻速，持续打出更多普攻。",
+      "id": "utterances_7005179929da496aa6bd75401a4db481"
+    }
+  ],
+  "id": "group_24a85ef667f7492e888d3a5b4eee8398",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"敖隐\") and arg1 has \"敖隐\"",
+  "editor_mode": "text"
+}

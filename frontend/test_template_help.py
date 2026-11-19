@@ -28,12 +28,14 @@ class TemplateHelpTests(unittest.TestCase):
                 exported = store.export_library(root, [g['id'] for g in stored['groups']], rules_format=True)
                 self.assertEqual(exported['schema_version'], 3)
                 self.assertEqual(len(exported['groups']), len(document['groups']))
-                for input_group, output_group in zip(document['groups'], exported['groups']):
+                exported_groups = {group['name']: group for group in exported['groups']}
+                for input_group in document['groups']:
+                    output_group = exported_groups[input_group['name']]
                     for key, value in input_group.items():
                         self.assertEqual(output_group[key], value, key)
                     event = input_group['event_name']
                     self.assertIn(event, exported['condition_catalog']['events'])
-                    self.assertEqual(exported['events'][0]['name'], event)
+                    self.assertIn(event, {row['name'] for row in exported['events']})
                 again = store.preview_import(root, exported)
                 self.assertEqual(again['errors'], [])
                 self.assertEqual(again['changes'], [])

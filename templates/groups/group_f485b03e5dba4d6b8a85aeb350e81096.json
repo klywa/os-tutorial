@@ -1,9 +1,10 @@
 {
   "name": "用诸葛亮配合频繁施法的队友",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到诸葛亮时，这组话说明诸葛亮在队伍中的作用。其他己方英雄每次释放技能，诸葛亮都能获得法力值和临时等级，适合有频繁施法队友的阵容。依据《常小娥灵活变阵-常小娥》「诸葛亮」及诸葛亮的官方卡面、技能。",
   "utterances": [
     {
       "text": "其他己方英雄施法时，诸葛亮能回蓝，还能获得临时等级。",
@@ -14,9 +15,8 @@
       "id": "utterances_77e6dcb7a5014c5ea8f630d793ec001b"
     }
   ],
-  "explanation": "买到诸葛亮时，这组话说明诸葛亮在队伍中的作用。其他己方英雄每次释放技能，诸葛亮都能获得法力值和临时等级，适合有频繁施法队友的阵容。依据《常小娥灵活变阵-常小娥》「诸葛亮」及诸葛亮的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_f485b03e5dba4d6b8a85aeb350e81096",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "诸葛亮"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"诸葛亮\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"诸葛亮\""
 }

@@ -1,25 +1,29 @@
 {
   "name": "弈星在场时升级拿经验",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
-  "explanation": "在“棋手升级”事件中，弈星在场时适用。趁弈星在场提升棋手等级，能够触发弈星提供经验的效果。依据为《常小娥灵活变阵-常小娥》「准备借弈星连续升级时」及官方英雄「弈星」。",
+  "explanation": "《常小娥灵活变阵-常小娥》弈星及官方普通、觉醒效果。弈星已在场，此时棋手升级能兑现额外经验。",
   "utterances": [
     {
-      "text": "弈星在场时升级棋手能额外获得经验，更快接近下一级。",
+      "text": "弈星在场，现在升本还能多拿经验。",
       "id": "utterances_a1a4759287d64199ab22547a0a3a2d0e"
     },
     {
-      "text": "趁弈星在场提升棋手等级，能够触发弈星提供经验的效果。",
+      "text": "趁弈星在场升级，能少花后续补经验的能量。",
       "id": "utterances_bfe623d443e44df0abf34a2242d7c974"
+    },
+    {
+      "text": "这次升本能触发弈星的效果，再拿一份经验。",
+      "id": "utterances_fe9f9b0c32a84eb09c4144d658f01406"
     }
   ],
-  "event_id": "os_474ce7597b626c02",
   "id": "group_f2727f626f9248c2ac35e75d9e5c5cc8",
+  "event_id": "os_474ce7597b626c02",
   "conditions": [],
   "related_entities": [],
-  "priority": 0,
   "expression": "玩家.战场 has \"弈星\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

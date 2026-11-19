@@ -221,9 +221,15 @@ class ProposalStore:
         role=_authority(actor)
         if not self.db_path.exists():return {'items':[]}
         with self._db(write=False) as conn:
-            rows=[r for r in self._rows(conn) if (role=='admin' or r['author']==actor['username'])
-                and (note_id is None or r['note_id']==note_id) and (status is None or r['status']==status)
-                and (author is None or r['author']==author)]
+            filters={'note_id':note_id,'status':status,'author':author}
+            if role!='admin':
+                if author is not None and author!=actor['username']:return {'items':[]}
+                filters['author']=actor['username']
+            active=[(key,value) for key,value in filters.items() if value is not None]
+            sql='SELECT data FROM proposals'
+            if active:
+                sql+=' WHERE '+' AND '.join("json_extract(data,'$."+key+"')=?" for key,_ in active)
+            rows=(json.loads(row[0]) for row in conn.execute(sql+' ORDER BY rowid',[v for _,v in active]))
             records={}
             result=[]
             for item in rows:
@@ -410,8 +416,8 @@ class ProposalStore:
     def _check_evidence_draft_change(item):
         if 'evidence_changes' not in item or item['proposed_node']!=item['base_node']:return
         baseline={claim['id']:claim for claim in item['_base_claims']}
-        if all(change['evidence']==baseline[change['claim_id']].get('evidence',[])
-               and change['inference']==baseline[change['claim_id']].get('inference',False)
+        if all(change['evidence']==baseline.get(change['claim_id'],{}).get('evidence',[])
+               and change['inference']==baseline.get(change['claim_id'],{}).get('inference',False)
                for change in item['evidence_changes']):
             raise ValueError('正文与证据均未变化')
 

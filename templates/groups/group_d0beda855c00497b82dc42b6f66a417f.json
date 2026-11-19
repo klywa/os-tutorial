@@ -1,0 +1,29 @@
+{
+  "name": "给东皇太一穿不死鸟之眼提高续航",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "不死鸟之眼帮东皇抬高血量，也能放大治疗。",
+      "id": "utterances_783cb088c8e444d792446bf5ff320c6e"
+    },
+    {
+      "text": "东皇换血后仍能用上不死鸟的恢复加成。",
+      "id": "utterances_47fce3efb92647cfb45acc1a37a10ce2"
+    },
+    {
+      "text": "东皇带不死鸟能提高续航，血线变化也不影响加成。",
+      "id": "utterances_bb7e1c85858046cebc731fb1390ffcdc"
+    }
+  ],
+  "explanation": "《装备》不死鸟之眼。东皇太一的血线可能在交换生命时变化；不死鸟之眼提供基础生命并增强恢复和护盾，作用不依赖高血线。",
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_d0beda855c00497b82dc42b6f66a417f",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"东皇太一\" and arg2 is \"不死鸟之眼\"",
+  "editor_mode": "text",
+  "priority": 0
+}

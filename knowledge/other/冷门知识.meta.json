@@ -23,6 +23,11 @@
           "source": "doc-fd8bda53121eda1dc7a6174d671a857ce6a6a54d69a025df535c0f8cf619a2f3",
           "paragraph_start": 1,
           "paragraph_end": 1
+        },
+        {
+          "source": "BV1gtan64Ed8:p1",
+          "start": 0,
+          "end": 27.66
         }
       ],
       "origin": "document",
@@ -935,6 +940,11 @@
           "source": "doc-063a06178f409c5aa50e946782c407a3f9bc96aebdaf54b8e23afc3b42849634",
           "paragraph_start": 8,
           "paragraph_end": 8
+        },
+        {
+          "source": "BV1gtan64Ed8:p1",
+          "start": 0,
+          "end": 27.66
         }
       ],
       "origin": "document",
@@ -1091,10 +1101,105 @@
           "end": 346.59
         }
       ]
+    },
+    {
+      "id": "claim-mechanics-cold-knowledge-inherit-recipients",
+      "section": "卡牌效果与特殊用法",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "origin": "video",
+      "evidence": [
+        {
+          "source": "BV1VnaE6WEPx:p1",
+          "start": 13.62,
+          "end": 55.64
+        },
+        {
+          "source": "BV1VnaE6WEPx:p1",
+          "start": 56.12,
+          "end": 81.82
+        }
+      ],
+      "text_ref": "mechanics-cold-knowledge-inherit-recipients",
+      "display_ref": "mechanics-cold-knowledge-inherit-recipients"
+    },
+    {
+      "id": "claim-evidence-3d24fd263eb6775f3579",
+      "section": "装备与护盾",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "origin": "video",
+      "evidence": [
+        {
+          "source": "BV1ADhj6wEcW:p1",
+          "start": 60.82,
+          "end": 89.58
+        },
+        {
+          "type": "document",
+          "source": "doc-37af84bc3fe0b32a0ded37577ac6f854f055f6d2346e1c84d64f217b54948d09",
+          "paragraph_start": 27,
+          "paragraph_end": 27
+        },
+        {
+          "source": "BV1ukHK6sEQC:p1",
+          "start": 317,
+          "end": 347
+        }
+      ],
+      "text_ref": "evidence-3d24fd263eb6775f3579",
+      "display_ref": "evidence-3d24fd263eb6775f3579"
+    },
+    {
+      "id": "claim-cold-auction-seats",
+      "section": "拍卖观察",
+      "version": null,
+      "condition": "",
+      "inference": false,
+      "kind": "mechanic",
+      "origin": "video",
+      "evidence": [
+        {
+          "source": "BV1gtan64Ed8:p1",
+          "start": 27.98,
+          "end": 55.94
+        }
+      ],
+      "text_ref": "cold-auction-seats",
+      "display_ref": "cold-auction-seats"
+    },
+    {
+      "id": "claim-decision-n-99456f64778f7b96cb15",
+      "text_ref": "n-99456f64778f7b96cb15",
+      "display_ref": "n-99456f64778f7b96cb15",
+      "kind": "conditional_strategy",
+      "section": "简易协作效果卡",
+      "origin": "document",
+      "version": null,
+      "condition": "",
+      "evidence": [
+        {
+          "type": "document",
+          "source": "doc-85253f4182dd97f77c9443caddf3d21499f80a86c923ed2ddab70588986dee1f",
+          "paragraph_start": 3,
+          "paragraph_end": 3
+        },
+        {
+          "type": "document",
+          "source": "doc-85253f4182dd97f77c9443caddf3d21499f80a86c923ed2ddab70588986dee1f",
+          "paragraph_start": 4,
+          "paragraph_end": 4
+        }
+      ],
+      "inference": true
     }
   ],
-  "body_sha256": "c6722f40f5d3040c715660c10d0436bad8b128380a84e42e2b8a3102fe67e0c3",
-  "revision": "4c56f03e5e016c30f9af",
+  "body_sha256": "28f685be2472106c767e987e7c6193eed373fcd31e4374feafd9101f45b39cc0",
+  "revision": "b0178af8e53f27b6cb8c",
   "node_annotations": {
     "n-5f98ab7a623a616fba50": {
       "origin": "manual",
@@ -1122,8 +1227,8 @@
     }
   },
   "review_receipts": [],
-  "history_head": "knowledge-history/7f30c11f5073cdb10da89b3495534e69/audit/f66f598f8439fa3d529f89af6f71a746297d5311b8a50ec22dcc66e63787ce41.json",
-  "history_count": 4,
+  "history_head": "knowledge-history/7f30c11f5073cdb10da89b3495534e69/audit/19dcc79998df64ad20c89b824803747e1c26ad0bef68c40e2aede221a3bc5a7c.json",
+  "history_count": 8,
   "retired_claim_annotations": [],
   "seasons": [
     "S1"

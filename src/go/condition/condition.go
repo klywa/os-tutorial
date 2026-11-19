@@ -21,12 +21,75 @@ type EventDefinition struct {
 }
 
 type Catalog struct {
-	Events     map[string]EventDefinition
-	Types      map[string]map[string]string
-	Roots      map[string]string
-	Aliases    map[string]string
-	Operations map[string][]string
-	Enums      map[string][]string
+	Events       map[string]EventDefinition
+	Types        map[string]map[string]string
+	Roots        map[string]string
+	Aliases      map[string]string
+	Operations   map[string][]string
+	Enums        map[string][]string
+	CardTags     map[string]CardTagRecord `json:"card_tags"`
+	CardTagsFile string                   `json:"card_tags_file"`
+}
+
+type CardTagRecord struct {
+	Type     string
+	Name     string
+	Awakened bool
+	Tags     []string
+}
+
+func (c *Catalog) cardTags(v value) any {
+	if v.raw == nil {
+		return nil
+	}
+	if list, ok := v.raw.([]value); ok {
+		result := []any{}
+		for _, item := range list {
+			if tags, ok := c.cardTags(item).([]any); ok {
+				result = append(result, tags...)
+			} else {
+				result = append(result, nil)
+			}
+		}
+		return result
+	}
+	name, _ := nameOf(v).(string)
+	obj, _ := v.raw.(map[string]any)
+	rawID, hasID := obj["id"]
+	id, _ := rawID.(string)
+	if number, ok := rawID.(json.Number); ok {
+		id = "card:" + number.String()
+	}
+	if hasID {
+		row, ok := c.CardTags[id]
+		if !ok || row.Type != v.typ || (name != "" && name != row.Name) {
+			return nil
+		}
+		name = row.Name
+	}
+	awake, hasForm := obj["已觉醒"].(bool)
+	var shared []string
+	found := false
+	for key, row := range c.CardTags {
+		if row.Type != v.typ || name != row.Name || (hasID && row.Type != "英雄" && id != key) ||
+			(row.Type == "英雄" && hasForm && row.Awakened != awake) {
+			continue
+		}
+		if !found {
+			shared = slices.Clone(row.Tags)
+			found = true
+		} else {
+			shared = slices.DeleteFunc(shared, func(s string) bool { return !slices.Contains(row.Tags, s) })
+		}
+	}
+	if !found {
+		return nil
+	}
+	tags := make([]any, len(shared))
+	for i, tag := range shared {
+		tags[i] = tag
+	}
+	return tags
 }
 
 // EvaluateCondition uses WXQ_CONDITION_CATALOG, catalog.json beside the executable,
@@ -64,6 +127,15 @@ func EvaluateCondition(eventJSON []byte, expression string, stateJSON []byte) (b
 	var c Catalog
 	if err := json.Unmarshal(data, &c); err != nil {
 		return false, err
+	}
+	if c.CardTagsFile == "card-tags.json" {
+		data, err = os.ReadFile(filepath.Join(filepath.Dir(path), "card-tags.json"))
+		if err != nil {
+			return false, err
+		}
+		if err := json.Unmarshal(data, &c.CardTags); err != nil {
+			return false, err
+		}
 	}
 	return c.EvaluateCondition(eventJSON, expression, stateJSON)
 }

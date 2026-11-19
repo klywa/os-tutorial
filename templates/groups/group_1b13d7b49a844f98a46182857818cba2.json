@@ -1,22 +1,26 @@
 {
-  "name": "用露娜补整备与百分比伤害",
+  "name": "买露娜给四人组补范围输出",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「最终四人的候选」「露娜」。选作终局法系刺客时需要等级和装备。官方技能会突击并对路径上的敌人造成法术伤害，消耗标记额外造成目标最大生命值百分比伤害。",
   "utterances": [
     {
-      "text": "露娜登场能随机触发整备，还能提高阿科米亚核心等级。",
+      "text": "买露娜给四人组留个闪现输出，她能突进敌阵。",
       "id": "utterances_42a8f0ebbb5246da85491ae5ce089bc1"
     },
     {
-      "text": "露娜消耗标记时按目标最大生命值造成伤害，适合打血厚的敌人。",
+      "text": "露娜能扫到突进路径上的多个敌人，适合做四人组输出。",
       "id": "utterances_c4ec823b468b421ea2c50e7cb152991d"
+    },
+    {
+      "text": "露娜耗掉标记还能按敌人最大生命值补伤害。",
+      "id": "utterances_10cc99f1aa4546fba3ffdbc0ca77ddfb"
     }
   ],
-  "explanation": "买到露娜时，这组话说明露娜在队伍中的作用。露娜登场会提升阿科米亚核心等级并随机触发整备。战斗中消耗标记可按目标最大生命值造成额外伤害。依据《常小娥灵活变阵-常小娥》「露娜」及露娜的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_1b13d7b49a844f98a46182857818cba2",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +32,7 @@
       "name": "露娜"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"露娜\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 0
 }

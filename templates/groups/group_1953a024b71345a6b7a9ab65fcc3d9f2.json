@@ -1,0 +1,25 @@
+{
+  "name": "觉醒干将单挂靠击败接着长等级",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "单挂觉醒干将能独吃助力，他自己拿到击败还能升级。",
+      "id": "utterances_531b10be228547e5a22f6859e66046f2"
+    },
+    {
+      "text": "觉醒干将单挂能独吃助力，飞剑击败敌人还能再升等级。",
+      "id": "utterances_c87f4710bc594033a8ce1afa1c6867de"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》单挂过渡；干将普通在场给雄剑，觉醒再给雌剑。BV1eeWF6pESY:p1 04:30–04:58、BV13gxz6FEZJ:p1 00:29–00:58明确觉醒后的击败成长。干将莫邪须亲自击败敌人才能提高等级，不能保证单挂必定成长。",
+  "id": "group_1953a024b71345a6b7a9ab65fcc3d9f2",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"干将莫邪\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"干将莫邪\" and arg1.已觉醒",
+  "editor_mode": "text"
+}

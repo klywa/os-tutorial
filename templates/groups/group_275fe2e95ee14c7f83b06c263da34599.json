@@ -1,0 +1,25 @@
+{
+  "name": "选兄妹让铠与露娜共战",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「露娜」。天赋「兄妹」直接提供两张英雄牌。选择时不能断言队伍正好同时缺前排和输出。此天赋的供牌和同场施法机制可以通用。",
+  "utterances": [
+    {
+      "text": "选兄妹能同时拿到铠和露娜，铠能扛伤，露娜能补输出。",
+      "id": "utterances_96d2d5bdcf8e497da893f149cc49dbf1"
+    },
+    {
+      "text": "选兄妹能让铠扛前排，也让同场的露娜在铠首次施法后连续施法。",
+      "id": "utterances_1e5ba7108f4a45fc832f698705b7518e"
+    }
+  ],
+  "id": "group_275fe2e95ee14c7f83b06c263da34599",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"兄妹\") and arg1 has \"兄妹\"",
+  "editor_mode": "text"
+}

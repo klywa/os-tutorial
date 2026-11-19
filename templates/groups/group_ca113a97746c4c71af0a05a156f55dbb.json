@@ -1,9 +1,10 @@
 {
   "name": "吕布配合马超控制回蓝",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "马超在场，上阵吕布时，说明这项操作的战斗或资源收益。吕布能击飞一片敌人，触发马超的回蓝和暴击率提升。依据《常小娥灵活变阵-常小娥》「吕布」和吕布的官方卡面、技能。",
   "utterances": [
     {
       "text": "吕布能击飞一片敌人，触发马超的回蓝和暴击率提升。",
@@ -14,9 +15,8 @@
       "id": "utterances_cee7553d41454ea98e056bbc36139e0b"
     }
   ],
-  "explanation": "马超在场，上阵吕布时，说明这项操作的战斗或资源收益。吕布能击飞一片敌人，触发马超的回蓝和暴击率提升。依据《常小娥灵活变阵-常小娥》「吕布」和吕布的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_ca113a97746c4c71af0a05a156f55dbb",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -36,7 +36,7 @@
       "name": "马超"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"吕布\" and 玩家.战场 has \"马超\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"吕布\" and 玩家.战场 has \"马超\""
 }

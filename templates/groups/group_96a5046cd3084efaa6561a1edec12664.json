@@ -1,0 +1,26 @@
+{
+  "name": "手中苏烈可为常小娥单挂过渡",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "手里有苏烈，单挂能集中吃小菟助力，先养好前排。",
+      "id": "utterances_a984a7248c7d4a4480f540137699f6af"
+    },
+    {
+      "text": "苏烈适合单挂承伤，小菟助力可以集中给他加级。",
+      "id": "utterances_a24712ab8eaf4c789ef96df5acd9ce1f"
+    }
+  ],
+  "explanation": "推荐该阵容且手里有苏烈、场上还没有其他英雄时，说明已有来牌能支持单挂过渡。依据《常小娥灵活变阵-常小娥》核心原理、打法要点第1条及苏烈条目。",
+  "event_id": "os_98aee9aae8b9d41d",
+  "id": "group_96a5046cd3084efaa6561a1edec12664",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 1,
+  "expression": "arg1.阵容名 has \"常小娥灵活变阵\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"} and 玩家.场上英雄数 == 0",
+  "editor_mode": "text",
+  "ignored": true
+}

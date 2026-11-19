@@ -1,0 +1,25 @@
+{
+  "name": "保留备用钟馗避免分走小菟成长",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "钟馗留在手中，小菟助力就不会选中已经离场的这张钟馗。",
+      "id": "utterances_0aab382f13b5437c8098a1116176d357"
+    },
+    {
+      "text": "卖掉钟馗能避免他分走小菟助力，手里的钟馗还能补控制。",
+      "id": "utterances_4459847030294430b73bafbd3830d312"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》「钟馗」、「挂件与工具英雄」。工具英雄有备用牌时，可分次上阵提供控制并避开随机成长。条件要求已出售场上钟馗且手中仍有同名英雄。",
+  "event_id": "os_02f23dfd4155737d",
+  "id": "group_592547f0705345269c14357b78773544",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"钟馗\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"钟馗\"} and not (玩家.战场 has \"钟馗\")",
+  "priority": 0,
+  "editor_mode": "text"
+}

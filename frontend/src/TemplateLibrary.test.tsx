@@ -2,8 +2,27 @@ import {describe,it,expect} from 'vitest';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {TemplateGroupCard} from './TemplateLibrary';
 import {ConditionInput} from './TemplateEditor';
+import {effectiveExpression} from './templates';
 import type {TemplateEvent,TemplateGroup} from './templates';
 describe('template group reading',()=>{
+ it('shows fixed and ignored independently and guards fixed deletion and editing',()=>{
+  const group:TemplateGroup={id:'g',name:'固定示例',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[],
+   utterances:[{id:'u',text:'固定原句',fixed:true,ignored:true},{id:'v',text:'其他原句'}],related_entities:[]};
+  const html=renderToStaticMarkup(<TemplateGroupCard group={group} scopeName={()=>'通用'} editable onEdit={()=>{}} onDelete={()=>{}}
+   onToggleFixed={()=>{}} onToggleIgnored={()=>{}} onSaveUtterances={async()=>{}}/>);
+  expect(html).toContain('已固定');
+  expect(html).toContain('已忽略');
+  expect(html).toMatch(/aria-label="取消固定话术2" aria-pressed="true"/);
+  expect(html).toMatch(/aria-label="编辑话术2" disabled=""/);
+  expect(html).toMatch(/aria-label="删除模板固定示例" disabled=""/);
+  expect(html).not.toMatch(/aria-label="取消忽略话术2" disabled=""/);
+ });
+ it('keeps bindings independent of the event target and quotes the complete condition',()=>{
+  const body='arg1.阵容名 has "目标队" or 玩家.等级 >= 10';
+  expect(effectiveExpression('甲"棋手','当前队',body)).toBe('玩家.使用棋手 is "甲\\"棋手" and 玩家.使用阵容 is "当前队" and ('+body+')');
+  expect(effectiveExpression(null,null,body)).toBe(body);
+  expect(effectiveExpression('新棋手',null,'')).toBe('玩家.使用棋手 is "新棋手"');
+ });
  it('retains a retired entity as the selected option without offering it as a new choice',()=>{
   const html=renderToStaticMarkup(<ConditionInput condition={{id:'c',parameter_key:'hero',operator:'eq',value:{id:'retired-hero',name:'旧版英雄'}}} parameter={{id:'p',key:'hero',name:'英雄',type:'entity'}} onChange={()=>{}}/>);
   expect(html).toContain('旧版英雄（资料暂缺/已下架）');

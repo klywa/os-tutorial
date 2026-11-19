@@ -1,0 +1,29 @@
+{
+  "name": "狂铁和朵莉亚在场时上米莱狄",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "米莱狄补后排伤害，朵莉亚还能借整备继续养核心。",
+      "id": "utterances_cb9a8fecbb1343cdbc42e291d4abced6"
+    },
+    {
+      "text": "狂铁顶前面，米莱狄补远端输出，朵莉亚继续养核心。",
+      "id": "utterances_12a1740197c44674a35168cb9c0ef4c4"
+    },
+    {
+      "text": "上米莱狄补过渡伤害，也能用到日落海积累的等级。",
+      "id": "utterances_bdba27f1e6ad4e0bbe366d7b6584dd07"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》日落海过渡与朵莉亚。狂铁在场承伤、米莱狄提供远端输出，朵莉亚能利用阵容之后的整备提高阿科米亚核心的等级。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_bc9570373f2e46b195d4db0ce326b834",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\" and 玩家.战场 has \"朵莉亚\"",
+  "editor_mode": "text",
+  "priority": 0
+}

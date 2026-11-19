@@ -4,19 +4,19 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「孙膑」。普通三次施法永久加一级，觉醒提高到两级。各英雄分别计数，单挂也能获得这份成长。",
   "utterances": [
     {
       "text": "孙膑觉醒后，每名己方英雄每施法三次就能永久升2级。",
       "id": "utterances_4ebabed1923e413aab2578450781cc08"
     },
     {
-      "text": "孙膑觉醒后，队友每累计三次施法就能永久升两级。",
+      "text": "孙膑觉醒后，自己每施法三次获得的永久等级也会翻倍。",
       "id": "utterances_d351c9c3e1bb4adf80109818eb9e9aa0"
     }
   ],
-  "explanation": "合成后孙膑还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「你的英雄每释放3次技能，该英雄等级永久+1。」与「你的英雄每释放3次技能，该英雄等级永久+2。」。依据《常小娥灵活变阵-常小娥》「孙膑」和孙膑的官方卡面、技能。",
-  "event_id": "os_d12194463340a8ec",
   "id": "group_91c428184da04f1b94d8eaf645c734fa",
+  "event_id": "os_d12194463340a8ec",
   "conditions": [],
   "related_entities": [
     {
@@ -29,6 +29,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg1 is \"孙膑\" and not arg1.已觉醒",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "expression": "arg1 is \"孙膑\" and not arg1.已觉醒"
 }

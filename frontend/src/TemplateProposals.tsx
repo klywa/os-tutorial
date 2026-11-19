@@ -1,7 +1,9 @@
 import {useEffect,useState} from 'react';
+import TemplateSettings from './TemplateSettings';
+import type {Entity,Note} from './types';
 import {api} from './model';
-import {TemplateDialog} from './TemplateEditor';
-import {describeTemplateRecord,groupDiffKeys,operators,readableValue,selectedGroupChange,valueText,type TemplateChange,type TemplateGroup,type TemplateProposal,type TemplateSnapshot} from './templates';
+import TemplateEditor,{TemplateDialog} from './TemplateEditor';
+import {describeTemplateRecord,groupDiffKeys,operators,readableValue,selectedGroupChange,valueText,type TemplateChange,type TemplateEvent,type TemplateGroup,type TemplateProposal,type TemplateSnapshot} from './templates';
 const statuses:Record<string,string>={pending:'待审核',approved:'已采纳',partially_approved:'部分采纳',rejected:'已拒绝',withdrawn:'已撤回'};
 function changeFields(proposal:TemplateProposal,change:TemplateChange){if(change.kind==='group'&&change.action==='put'){const base=proposal.base.groups.find(g=>g.id===change.id);if(base){const fields=groupDiffKeys(base,change.value as TemplateGroup);if(fields.length)return fields;}}return ['record'];}
 function describeValue(value:unknown):string{return readableValue(value);}
@@ -13,10 +15,105 @@ function FieldDiff({proposal,change,field,scopeName}:{proposal:TemplateProposal;
  const label:Record<string,string>={ignored:'忽略状态',explanation:'说明与依据',rule:'条件表达式及树稿',priority:'优先级',name:'名称',event_id:'事件',scope:'适用范围',related_entities:'关联实体',condition:'条件',utterance:'话术',record:'完整记录'};
  return <details className="template-diff" open><summary>{label[kind]??field}{id?' · '+id:''}</summary><div><section><strong>修改前</strong><pre>{describe(base)}</pre></section><section><strong>修改后</strong><pre>{change.action==='delete'?'删除此记录':describe(next)}</pre></section></div></details>;
 }
-export default function TemplateProposals({admin,onClose,onChanged,scopeName}:{admin:boolean;onClose:()=>void;onChanged:()=>void;scopeName:(id:string|null)=>string}){
- const [rows,setRows]=useState<TemplateProposal[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(false),[loaded,setLoaded]=useState(false),[selections,setSelections]=useState<Record<string,string[]>>({});
- async function load(){try{const data=await api<TemplateProposal[]>('templates/proposals');setRows(data);setLoaded(true);setSelections(previous=>{const next={...previous};for(const p of data)for(const [i,c] of p.changes.entries()){const key=p.id+':'+i;if(!next[key])next[key]=changeFields(p,c);}return next;});}catch(e){setError((e as Error).message);}}
+type ReviewProps={
+ admin:boolean;snapshot:TemplateSnapshot;players:Entity[];lineups:Note[];
+ onClose:()=>void;onChanged:()=>void;scopeName:(id:string|null)=>string;
+};
+function rowKey(proposal:TemplateProposal,change:TemplateChange){
+ return [proposal.id,proposal.proposal_revision,change.kind,change.id].join(':');
+}
+function ReviewHistory({proposal,scopeName}:{proposal:TemplateProposal;scopeName:ReviewProps['scopeName']}){
+ const recordText=(record:TemplateEvent|TemplateGroup|null|undefined)=>describeTemplateRecord(record,
+  record&&'event_id' in record?proposal.base.events.find(event=>event.id===record.event_id):undefined,scopeName);
+ return <>{proposal.submission&&<details><summary>原始提案</summary>{proposal.submission.changes.map(change=><div key={change.kind+change.id}>
+  <strong>{change.value?.name??change.id}</strong><p>提交前</p><pre>{recordText(proposal.submission!.before[change.kind+':'+change.id])}</pre>
+  <p>编辑员提交稿</p><pre>{change.action==='delete'?'删除此记录':recordText(change.value)}</pre></div>)}</details>}
+  {proposal.reviews?.map((review,index)=><details key={index}><summary>{{approve:'确认记录',edit:'修改提案',reject:'拒绝记录',withdraw:'撤回记录'}[review.action??'approve']} · {review.by} · {review.at}</summary>
+   {review.changes?.map(change=><section key={change.kind+change.id}><strong>{change.value?.name??change.id}</strong>
+    <pre>{change.action==='delete'?'删除此记录':recordText(change.value)}</pre></section>)}</details>)}</>;
+}
+export default function TemplateProposals({admin,snapshot,players,lineups,onClose,onChanged,scopeName}:ReviewProps){
+ const [rows,setRows]=useState<TemplateProposal[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(false),[loaded,setLoaded]=useState(false);
+ const [messages,setMessages]=useState<Record<string,string>>({});
+ async function discuss(proposal:TemplateProposal){
+  setBusy(true);setError('');
+  try{await api('templates/proposals/'+proposal.id+'/comments','POST',{proposal_revision:proposal.proposal_revision,body:messages[proposal.id]});setMessages(m=>({...m,[proposal.id]:''}));await load();onChanged();}
+  catch(e){setError((e as Error).message);await load();}finally{setBusy(false);}
+ }
+ const [selections,setSelections]=useState<Record<string,string[]>>({});
+ const [editing,setEditing]=useState<{proposal:TemplateProposal;index:number}|null>(null);
+ async function load(){
+  try{const data=await api<TemplateProposal[]>('templates/proposals');setRows(data);setLoaded(true);}
+  catch(e){setError((e as Error).message);}
+ }
  useEffect(()=>{void load();},[]);
- async function act(proposal:TemplateProposal,action:string){if(action!=='approve'&&!confirm('确定'+(action==='withdraw'?'撤回':'拒绝')+'此提案吗？'))return;setBusy(true);setError('');try{let payload:unknown={proposal_revision:proposal.proposal_revision};if(action==='approve'){const ids:number[]=[],changes:TemplateChange[]=[];for(const [i,change] of proposal.changes.entries()){const selected=selections[proposal.id+':'+i]??[];if(!selected.length)continue;ids.push(i);const base=change.kind==='group'?proposal.base.groups.find(g=>g.id===change.id):undefined;changes.push(base&&change.action==='put'?{...change,value:selectedGroupChange(base,change.value as TemplateGroup,selected)}:change);}if(!ids.length)throw new Error('请先选择需要采纳的修改');payload={proposal_revision:proposal.proposal_revision,change_ids:ids,changes};}await api<TemplateSnapshot>('templates/proposals/'+encodeURIComponent(proposal.id)+'/'+action,'POST',payload);await load();onChanged();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
- return <TemplateDialog title={admin?'模板提案审核':'我的模板提案'} onClose={onClose} wide><div className="template-proposals">{error&&<p className="error" role="alert">{error}</p>}{!loaded&&!error&&<p role="status">正在载入提案…</p>}{loaded&&!rows.length&&<p className="empty">暂无模板提案。</p>}{rows.map(proposal=><article key={proposal.id} className="template-proposal"><header><strong>{proposal.author}</strong><time>{proposal.created_at}</time><span className="badge">{statuses[proposal.status]??proposal.status}</span></header>{proposal.changes.map((change,i)=>{const key=proposal.id+':'+i,fields=changeFields(proposal,change),selected=selections[key]??[];return <section key={i}><h3>{change.action==='delete'?'删除':'修改'}{change.kind==='event'?'事件':'模板组'}：{change.value?.name??change.id}</h3>{fields.map(field=><div key={field}>{admin&&proposal.status==='pending'&&<label className="template-approve-choice"><input type="checkbox" checked={selected.includes(field)} onChange={e=>setSelections(s=>({...s,[key]:e.target.checked?[...(s[key]??[]),field]:(s[key]??[]).filter(v=>v!==field)}))}/>采纳此项{field.startsWith('condition:')?'条件修改':field.startsWith('utterance:')?'话术修改':''}</label>}<FieldDiff proposal={proposal} change={change} field={field} scopeName={scopeName}/></div>)}</section>;})}{proposal.status==='pending'&&<footer>{admin?<><button disabled={busy} onClick={()=>void act(proposal,'reject')}>拒绝提案</button><button disabled={busy} className="primary" onClick={()=>void act(proposal,'approve')}>采纳勾选修改</button></>:<button disabled={busy} onClick={()=>void act(proposal,'withdraw')}>撤回提案</button>}</footer>}</article>)}</div></TemplateDialog>;
+ function selection(proposal:TemplateProposal,change:TemplateChange){return selections[rowKey(proposal,change)]??changeFields(proposal,change);}
+ async function revise(proposal:TemplateProposal,index:number,change:TemplateChange){
+  const key=change.kind+':'+change.id,conflict=proposal.conflicts?.[key];
+  await api('templates/proposals/'+encodeURIComponent(proposal.id)+'/edit','POST',{
+   proposal_revision:proposal.proposal_revision,change_ids:[index],changes:[change],
+   ...(conflict?{rebase:{[key]:conflict.revision}}:{})
+  });
+  setError('');await load();
+ }
+ async function rebase(proposal:TemplateProposal,index:number,change:TemplateChange){
+  if(!confirm('将当前正式版本作为审批依据，并保留此提案内容？'))return;
+  setBusy(true);
+  try{await revise(proposal,index,change);}
+  catch(e){setError((e as Error).message);await load();}
+  finally{setBusy(false);}
+ }
+ async function act(proposal:TemplateProposal,action:string){
+  if(action!=='approve'&&!confirm('确定'+(action==='withdraw'?'撤回':'拒绝')+'此提案的待审修改吗？'))return;
+  setBusy(true);setError('');
+  try{
+   let payload:unknown={proposal_revision:proposal.proposal_revision};
+   if(action==='approve'){
+    const ids:number[]=[],changes:TemplateChange[]=[];
+    for(const [i,change] of proposal.changes.entries()){
+     const selected=selection(proposal,change);if(!selected.length)continue;
+     if(proposal.conflicts?.[change.kind+':'+change.id])throw new Error('请先核对已变化的正式版本');
+     ids.push(i);
+     const base=change.kind==='group'?proposal.base.groups.find(g=>g.id===change.id):undefined;
+     changes.push(base&&change.action==='put'?{...change,value:selectedGroupChange(base,change.value as TemplateGroup,selected)}:change);
+    }
+    if(!ids.length)throw new Error('请先选择需要采纳的修改');
+    payload={proposal_revision:proposal.proposal_revision,change_ids:ids,changes};
+   }
+   await api('templates/proposals/'+encodeURIComponent(proposal.id)+'/'+action,'POST',payload);await load();onChanged();
+  }catch(e){setError((e as Error).message);await load();}finally{setBusy(false);}
+ }
+ if(editing){
+  const {proposal,index}=editing,change=proposal.changes[index],close=()=>setEditing(null);
+  if(change.kind==='event')return <TemplateSettings review annotator={!admin} events={[change.value as TemplateEvent]}
+   onClose={close} onSave={async changes=>{if(changes[0])await revise(proposal,index,changes[0]);}}/>;
+  const events=new Map(snapshot.events.map(event=>[event.id,event]));
+  for(const c of proposal.changes)if(c.kind==='event'){if(c.action==='delete')events.delete(c.id);else events.set(c.id,c.value as TemplateEvent);}
+  return <TemplateEditor review group={change.value as TemplateGroup} events={[...events.values()]} players={players} lineups={lineups}
+   entities={snapshot.entity_links?.[change.id]} conditionLinks={snapshot.entity_condition_links?.[change.id]} catalog={snapshot.condition_catalog}
+   annotator={!admin} onClose={close} onSave={async value=>revise(proposal,index,{...change,value})}/>;
+ }
+ return <TemplateDialog title={admin?'模板提案审核':'我的模板提案'} onClose={onClose} wide><div className="template-proposals">
+  {error&&<p className="error" role="alert">{error} <button onClick={()=>void load()}>刷新提案</button></p>}
+  {!loaded&&!error&&<p role="status">正在载入提案…</p>}{loaded&&!rows.length&&<p className="empty">暂无模板提案。</p>}
+  {rows.map(proposal=><article key={proposal.id} className="template-proposal"><header><strong>{proposal.author}</strong><time>{proposal.created_at}</time>
+   <span className="badge">{proposal.status==='pending'&&proposal.reviews?.some(r=>(r.action??'approve')==='approve')?'部分已采纳 · 待继续审核':statuses[proposal.status]??proposal.status}</span></header>
+   <p>来源 {proposal.source??'proposal'} · 批次 {proposal.batch_id??proposal.id}</p>
+   <details><summary>提案讨论（{proposal.discussion?.length??0}）</summary>{proposal.discussion?.map(m=><p key={m.id}><strong>{m.by}</strong> <time>{new Date(m.at).toLocaleString()}</time> {m.body}</p>)}<label>讨论内容<textarea maxLength={4000} value={messages[proposal.id]??''} onChange={e=>setMessages({...messages,[proposal.id]:e.target.value})}/></label><button disabled={busy||!messages[proposal.id]?.trim()} onClick={()=>void discuss(proposal)}>发表讨论</button></details>
+   <ReviewHistory proposal={proposal} scopeName={scopeName}/>
+   {proposal.changes.map((change,i)=>{
+    const key=rowKey(proposal,change),fields=changeFields(proposal,change),selected=selection(proposal,change);
+    const conflict=proposal.conflicts?.[change.kind+':'+change.id],canReview=admin&&proposal.status==='pending';
+    return <section key={key}><h3>{change.action==='delete'?'删除':'修改'}{change.kind==='event'?'事件':'模板组'}：{change.value?.name??change.id}</h3>
+     {conflict&&<div className="template-diff"><strong>正式版本已变化</strong><pre>{describeTemplateRecord(conflict.current,undefined,scopeName)}</pre>
+      {canReview?<button disabled={busy} onClick={()=>void rebase(proposal,i,change)}>已核对当前版本，保留提案内容</button>:<p>等待管理员核对正式版本。</p>}</div>}
+     {fields.map(field=><div key={field}>{canReview&&<label className="template-approve-choice"><input type="checkbox" checked={selected.includes(field)}
+      onChange={e=>setSelections(s=>({...s,[key]:e.target.checked?[...selected,field]:selected.filter(v=>v!==field)}))}/>采纳此项{field.startsWith('condition:')?'条件修改':field.startsWith('utterance:')?'话术修改':''}</label>}
+      <FieldDiff proposal={proposal} change={change} field={field} scopeName={scopeName}/></div>)}
+     {proposal.status==='pending'&&change.action==='put'&&(!conflict||admin)&&<button disabled={busy} onClick={()=>setEditing({proposal,index:i})}>{conflict?'核对并修改提案':admin?'修改审核稿':'修改我的提案'}</button>}
+    </section>;
+   })}
+   {proposal.status==='pending'&&<footer>{admin?<><button disabled={busy} onClick={()=>void act(proposal,'reject')}>拒绝待审修改</button>
+    <button disabled={busy} className="primary" onClick={()=>void act(proposal,'approve')}>采纳勾选修改</button></>:<button disabled={busy} onClick={()=>void act(proposal,'withdraw')}>撤回提案</button>}</footer>}
+  </article>)}</div></TemplateDialog>;
 }

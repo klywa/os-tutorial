@@ -26,6 +26,109 @@ class TemplateRuleTests(unittest.TestCase):
         player['人口上限'] = 'string'
         self.assertTrue(store.preview_import(self.root, package)['errors'])
 
+    def test_retired_events_stay_removed_and_history_is_preserved(self):
+        saved = self.save_legacy()
+        history = store._load(self.root)[1]['audit']
+        for uid,name in [('hero_buy','解释为何购买英雄（旧版）'), ('extra','自定义（旧版）')]:
+            fixtures.TemplateTests.write(self,'templates/events/'+uid+'.json',
+                                         {'id':uid,'name':name,'parameters':[]})
+        for _ in range(2):
+            published = store.refresh_published(self.root,migrate_events=True)
+            self.assertFalse(any(name.endswith('（旧版）') for name in published['condition_catalog']['events']))
+            self.assertFalse((self.root/'templates/events/hero_buy.json').exists())
+            self.assertFalse((self.root/'templates/events/extra.json').exists())
+            self.assertEqual(store.snapshot(self.root)['groups'], saved['groups'])
+            self.assertEqual(store._load(self.root)[1]['audit'], history)
+            self.assertIn('解释为何选择英雄牌',published['condition_catalog']['events'])
+
+    def test_fresh_library_preserves_every_unmarked_legacy_seed(self):
+        events = store.snapshot(self.root)['events']
+        expected = {'auction_start','dangerous_opponent',
+                    'health_crisis','hero_select','hero_sell_board','key_card_acquired',
+                    'key_card_shop','lineup_ready','opponent_equipment','opponent_streak',
+                    'player_streak','unit_move'}
+        self.assertEqual({e['id'] for e in events if not e['id'].startswith('os_')},expected)
+        sale = next(e for e in events if e['id']=='hero_sell_board')
+        self.assertEqual(sale['name'],'解释为何从场上出售英雄')
+        self.assertEqual([p['key'] for p in sale['parameters']],['situation','stage','hero'])
+        self.assertIn('解释为何从战场出售英雄',{e['name'] for e in events})
+
+    def test_reminders_preserve_ids_and_accept_prior_portable_names(self):
+        names = dict(lineup_ready='阵容成型', health_crisis='血量危机', player_streak='玩家连胜',
+                     opponent_streak='对手连胜', dangerous_opponent='高危对手',
+                     opponent_equipment='对手关键装备', key_card_acquired='获得关键卡牌',
+                     key_card_shop='商店刷出关键卡牌', auction_start='拍卖开始')
+        events = {e['id']:e for e in store.snapshot(self.root)['events']}
+        for event_id, name in names.items():
+            event = events[event_id]
+            self.assertEqual((event['name'], event['category']), (name, '针对与提醒'))
+            fixtures.TemplateTests.write(self, 'templates/events/'+event_id+'.json',
+                                         {**event,'name':'解释为何'+name,'category':'解释类'})
+        package = store.refresh_published(self.root)
+        catalog = package['condition_catalog']['events']
+        for event in package['events']:
+            if event['name'] not in names.values():
+                continue
+            name = event['name']
+            self.assertEqual(catalog[name]['category'], '针对与提醒')
+            event['name'] = '解释为何'+name
+            event['category'] = '解释类'
+            if 'signature' in event:
+                event['signature'] = '解释为何'+event['signature']
+            catalog[event['name']] = {**catalog.pop(name),'category':'解释类'}
+        preview = store.preview_import(self.root, package)
+        self.assertEqual(preview['errors'], [])
+        self.assertEqual(preview['changes'], [])
+
+    def test_archive_dependent_groups_atomically_on_old_library_upgrade(self):
+        saved = self.save_legacy()
+        event = {**fixtures.event(),'id':'obsolete','name':'测试用事件（旧版）'}
+        fixtures.TemplateTests.write(self,'templates/events/obsolete.json',event)
+        groups = [{**fixtures.group(uid),'event_id':eid} for uid,eid in
+                  [('file_group','obsolete'),('virtual_group','hero_buy')]]
+        for group in groups:
+            fixtures.TemplateTests.write(self,'templates/groups/'+group['id']+'.json',group)
+        self.assertEqual(self.get('/api/templates')['groups'][0]['id'],saved['groups'][0]['id'])
+        self.assertEqual(len(store.export_library(self.root,rules_format=True)['groups']),1)
+        with patch.object(store,'_recover_locked',side_effect=[False,OSError('interrupted')]):
+            with self.assertRaises(OSError):
+                store.refresh_published(self.root,migrate_events=True)
+        recovered = store.snapshot(self.root)
+        self.assertEqual(recovered['groups'],saved['groups'])
+        archive = store._load(self.root)[1]['tombstones']
+        self.assertEqual(archive['event']['obsolete']['record'],event)
+        for group in groups:
+            self.assertEqual(archive['group'][group['id']]['record'],group)
+            self.assertFalse((self.root/'templates/groups'/(group['id']+'.json')).exists())
+        self.assertEqual(store.refresh_published(self.root),self.published())
+        self.assertEqual(store.snapshot(self.root),recovered)
+
+    def test_custom_active_event_using_retired_id_keeps_groups(self):
+        custom = {**fixtures.event(),'id':'hero_buy'}
+        group = {**fixtures.group(),'event_id':'hero_buy'}
+        snapshot = store.apply(self.root,store.snapshot(self.root)['revision'],
+                               [fixtures.put('event',custom),fixtures.put('group',group)])
+        store.refresh_published(self.root)
+        self.assertEqual(store.snapshot(self.root)['groups'],snapshot['groups'])
+
+    def test_pre_lineup_catalog_still_imports(self):
+        package = store.refresh_published(self.root)
+        catalog = package['condition_catalog']
+        catalog['types'].pop('阵容')
+        catalog['types']['玩家'].pop('当前阵容')
+        catalog['operations'].pop('阵容.阵容名')
+        name = '解释为何建议向某阵容发展'
+        catalog['events'].pop(name)
+        package['events'] = [event for event in package['events'] if event['name'] != name]
+        old_name = '解释为何准备战斗（旧版）'
+        package['events'].append({'name':old_name,'category':'解释类','parameters':[]})
+        catalog['events'][old_name] = {'category':'解释类','parameters':{}}
+        preview = store.preview_import(self.root, package)
+        self.assertEqual(preview['errors'], [])
+        self.assertEqual(preview['changes'], [])
+        package['groups'] = [{'name':'旧提醒','event_name':old_name,'expression':'','utterances':['提示']}]
+        self.assertTrue(store.preview_import(self.root, package)['errors'])
+
     def test_upgrade_keeps_existing_event_collisions_addressable(self):
         for uid,name in [('mine','准备战斗'),('other','准备战斗'),('suffix','准备战斗（兼容 1）')]:
             fixtures.TemplateTests.write(self,'templates/events/'+uid+'.json',{'id':uid,'name':name,'parameters':[]})
@@ -102,6 +205,8 @@ class TemplateRuleTests(unittest.TestCase):
         self.assertEqual(view['editor_mode'], 'tree')
         self.assertEqual(group['condition_tree']['kind'], 'all')
         self.assertEqual(group['expression'], view['expression'])
+        self.assertIn('玩家.使用棋手 is "棋手甲"', group['effective_expression'])
+        self.assertIn('玩家.使用阵容 is "阵容甲"', group['effective_expression'])
         self.assertNotIn('card:1', group['expression'])
         state = {'玩家':{'使用棋手':'棋手甲', '使用阵容':'阵容甲'}}
         for name, number, expected in [('英雄甲',2,True), ('英雄甲',3,True),
@@ -109,6 +214,8 @@ class TemplateRuleTests(unittest.TestCase):
             event = {'事件':'自定义', '参数':{'card':{'名称':name}, 'count':number}}
             with self.subTest(name=name, number=number):
                 self.assertEqual(evaluate_condition(event, group['expression'], state, document), expected)
+                self.assertEqual(evaluate_condition(event, group['effective_expression'], state, document), expected)
+                self.assertFalse(evaluate_condition(event, group['effective_expression'], {}, document))
                 self.assertEqual(choose_utterance(document, event, state) is not None, expected)
 
     def test_filtered_v3_roundtrip_resolves_names_and_preserves_editor_fields(self):
@@ -125,8 +232,26 @@ class TemplateRuleTests(unittest.TestCase):
         self.assertEqual(stored['scope'], fixtures.group()['scope'])
         self.assertEqual(stored['expression'], '玩家.等级 >= count')
         again = store.export_library(self.root, ['g1'], rules_format=True)
+        self.assertNotEqual(document['groups'][0]['effective_expression'], again['groups'][0]['effective_expression'])
+        document['groups'][0]['effective_expression'] = again['groups'][0]['effective_expression']
         self.assertEqual(again, document)
         self.assertEqual(store.preview_import(self.root, again)['changes'], [])
+
+    def test_read_cache_revalidates_external_files_and_warning_entities(self):
+        self.save_legacy()
+        before = self.get('/api/templates')
+        self.assertEqual(before['scope_names']['lineup1'], '阵容甲')
+        self.assertEqual(self.get('/api/templates/warnings')['items'], [])
+        with patch.object(store,'_load',side_effect=AssertionError('unchanged files reread')):
+            self.assertEqual(self.get('/api/templates'), before)
+            self.assertEqual(self.get('/api/templates/warnings')['items'], [])
+        record = self.root/'templates/groups/g1.json'
+        group = json.loads(record.read_text('utf8'))
+        fixtures.TemplateTests.write(self, 'templates/groups/g1.json', {**group,'name':'同步后的新组名'})
+        self.assertEqual(self.get('/api/templates')['groups'][0]['name'], '同步后的新组名')
+        fixtures.TemplateTests.write(self, 'entities/heroes.json', [
+            {'id':'card:1','name':'英雄甲','category':'heroes','description':'同步后的技能'}])
+        self.assertEqual(self.get('/api/templates/warnings')['items'][0]['group_id'], 'g1')
 
     def test_multicategory_legacy_alias_uses_canonical_name_and_category(self):
         event = fixtures.event()

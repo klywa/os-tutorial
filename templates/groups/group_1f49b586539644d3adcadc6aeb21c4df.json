@@ -1,9 +1,10 @@
 {
   "name": "出售梦奇兑现兑换券",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "从战场卖出梦奇时，说明这项操作的战斗或资源收益。卖掉梦奇触发退场，就能拿到英雄兑换券。依据《常小娥灵活变阵-常小娥》「梦奇」和梦奇的官方卡面、技能。",
   "utterances": [
     {
       "text": "卖掉梦奇触发退场，就能拿到英雄兑换券。",
@@ -14,9 +15,8 @@
       "id": "utterances_e0c45b645c4a4f849502b6fd8469f337"
     }
   ],
-  "explanation": "从战场卖出梦奇时，说明这项操作的战斗或资源收益。卖掉梦奇触发退场，就能拿到英雄兑换券。依据《常小娥灵活变阵-常小娥》「梦奇」和梦奇的官方卡面、技能。",
-  "event_id": "os_02f23dfd4155737d",
   "id": "group_1f49b586539644d3adcadc6aeb21c4df",
+  "event_id": "os_02f23dfd4155737d",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "梦奇"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"梦奇\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"梦奇\""
 }

@@ -1,0 +1,25 @@
+{
+  "name": "用过登场后卖阿轲集中小菟助力",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "卖掉阿轲只留一人，小菟助力就能集中给场上的英雄。",
+      "id": "utterances_7cf10ba03aee436ea4ccaa00b57c2422"
+    },
+    {
+      "text": "阿轲退场不影响已经拿到的登场等级，还能避免分走小菟助力。",
+      "id": "utterances_9c0d7ea174154110afa131afaf5e00f3"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》「阿轲」、「前期运营思路」。前期单挂时在两次助力之间借用登场工具。出售后只剩一名其他英雄，下次助力的随机候选由此收窄；不预设当轮技能已经使用。",
+  "event_id": "os_02f23dfd4155737d",
+  "id": "group_9c64fde5fa0a4292aab5ea2c34babc78",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"阿轲\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"阿轲\")",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "单挂孙膑时买刘禅补前排",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「刘禅」「孙膑」。买入刘禅时场上只有孙膑，购买并不等于已上阵。刘禅施法获得护盾并眩晕目标，和孙膑同场后两种成长可以并用。",
+  "utterances": [
+    {
+      "text": "刘禅能替孙膑扛伤，两人同场后各自施法也能涨临时等级。",
+      "id": "utterances_361fafd9d39f446987b17b80abde999d"
+    },
+    {
+      "text": "买刘禅能补前排，和孙膑同场时施法兼有临时和永久成长。",
+      "id": "utterances_2e19a6c9d9dc4c188c22a61a1857cd6c"
+    }
+  ],
+  "id": "group_8456f86d52e65bbfb05d30b10bb3fe63",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "editor_mode": "text",
+  "expression": "arg1 is \"刘禅\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\""
+}

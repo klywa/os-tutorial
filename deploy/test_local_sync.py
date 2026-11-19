@@ -380,7 +380,8 @@ class LocalSyncTests(unittest.TestCase):
 class LocalPathTests(unittest.TestCase):
     def test_condition_runtime_sources_are_publishable(self):
         for path in ('src/go/condition/condition.go','src/go/condition/go.mod',
-                     'src/python/condition/__init__.py','src/condition/catalog.json','src/condition/cases.json'):
+                     'src/python/condition/__init__.py','src/condition/catalog.json','src/condition/cases.json',
+                     'src/condition/card-tags.json'):
             self.assertTrue(sync.allowed_local_path(path),path)
         self.assertFalse(sync.allowed_local_path('src/condition/credentials.json'))
 

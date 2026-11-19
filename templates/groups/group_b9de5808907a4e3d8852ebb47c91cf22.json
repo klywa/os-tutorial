@@ -1,9 +1,10 @@
 {
   "name": "用梦奇获取英雄兑换券",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到梦奇时，这组话说明梦奇在队伍中的作用。梦奇退场会提供英雄兑换券，败阵会提高兑换券品阶。兑换券提供新的候选英雄，不能保证拿到指定牌。依据《常小娥灵活变阵-常小娥》「梦奇」及梦奇的官方卡面、技能。",
   "utterances": [
     {
       "text": "梦奇能在退场时提供英雄兑换券，多一次挑英雄的机会。",
@@ -14,9 +15,8 @@
       "id": "utterances_7d9f209381be4a6fabc1d18d3ce66cca"
     }
   ],
-  "explanation": "买到梦奇时，这组话说明梦奇在队伍中的作用。梦奇退场会提供英雄兑换券，败阵会提高兑换券品阶。兑换券提供新的候选英雄，不能保证拿到指定牌。依据《常小娥灵活变阵-常小娥》「梦奇」及梦奇的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_b9de5808907a4e3d8852ebb47c91cf22",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "梦奇"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"梦奇\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"梦奇\""
 }

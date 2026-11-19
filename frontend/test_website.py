@@ -1,5 +1,6 @@
 """Public HTTP boundaries, signed sessions and offline dataset publishing."""
 import http.client
+from io import BytesIO
 import json
 import socket
 from pathlib import Path
@@ -9,6 +10,7 @@ import threading
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/'frontend'), str(ROOT/'.codex/skills/wanxiangqi-knowledge/scripts')]
@@ -43,7 +45,8 @@ class PublicHttpTests(unittest.TestCase):
         conn.request(method, path, body=None if data is None else json.dumps(data), headers=headers)
         res = conn.getresponse()
         body = res.read()
-        out = (res.status, json.loads(body) if body else {}, dict(res.getheaders()))
+        value = body if res.getheader('Content-Type') == 'application/zip' else json.loads(body) if body else {}
+        out = (res.status, value, dict(res.getheaders()))
         conn.close()
         return out
 
@@ -79,6 +82,57 @@ class PublicHttpTests(unittest.TestCase):
         self.assertEqual(self.call(api+'cards?season=S2')[1],[])
         self.assertEqual(self.call(api+'templates?season=S2')[1]['groups'],[])
         self.assertEqual(self.call(api+'templates/changes?season=S2','POST',{})[0],400)
+
+    def test_note_zip_matches_formal_season_and_single_note_markdown(self):
+        import json_store
+        from note_export import note_markdown
+
+        url = '/os-tutorial/api/notes/export.zip'
+        self.assertEqual(self.call(url)[0], 401)
+        self.login()
+        self.assertEqual(self.call(url)[0], 400)
+        self.assertEqual(self.call(url+'?season=unknown')[0], 400)
+        notes = [
+            json_store.create(self.root, {'type':'other','title':'甲/攻略','request_id':'export-1'}),
+            json_store.create(self.root, {'type':'other','title':'甲?攻略','request_id':'export-2'}),
+            json_store.create(self.root, {'type':'other','title':'共用攻略','request_id':'export-3','seasons':['S1','S2']}),
+            json_store.create(self.root, {'type':'other','title':'第二赛季','request_id':'export-4','seasons':['S2']}),
+        ]
+        for season, expected in (('S1', notes[:3]), ('S2', notes[2:])):
+            status, body, headers = self.call(url+'?season='+season)
+            self.assertEqual(status, 200, body)
+            self.assertEqual(headers['Cache-Control'], 'no-store')
+            self.assertIn(season+'.zip', headers['Content-Disposition'])
+            with ZipFile(BytesIO(body)) as archive:
+                self.assertEqual(len(archive.namelist()), len(expected))
+                self.assertTrue(all('/' not in name and '?' not in name and name.endswith('.md')
+                                    for name in archive.namelist()))
+                if season == 'S1':
+                    self.assertEqual(sum(name.startswith('甲_攻略') for name in archive.namelist()), 2)
+                originals = []
+                for note in expected:
+                    path = '/os-tutorial/api/notes/'+note['id']+'/reading?season='+season
+                    reading = self.call(path)[1]
+                    originals.append(note_markdown(note['title'], reading))
+                self.assertCountEqual([archive.read(name).decode('utf-8') for name in archive.namelist()], originals)
+
+    def test_note_zip_includes_each_legacy_player_branch(self):
+        from note_export import build_archive
+
+        note = {'title':'灵活变阵','revision':'revision-a','seasons':['S1']}
+        readings = {
+            None: {'player_options':[{'id':'p1','name':'棋手甲'},{'id':'p2','name':'棋手乙'}]},
+            'p1': {'opening':'甲的开头','sections':[{'title':'打法要点','markdown':'甲的正文'}]},
+            'p2': {'opening':'乙的开头','sections':[{'title':'打法要点','markdown':'乙的正文'}]},
+        }
+        with patch('note_export.seasons.members',return_value={'lineup-a':{'revision':'revision-a'}}), \
+             patch('note_export.json_store.resolve_note',return_value=note), \
+             patch('note_export.reading_document',side_effect=lambda note, player=None:readings[player]):
+            body = build_archive(self.root,'S1')
+        with ZipFile(BytesIO(body)) as archive:
+            self.assertEqual(archive.namelist(),['灵活变阵 - 棋手甲.md','灵活变阵 - 棋手乙.md'])
+            self.assertIn('甲的开头\n\n## 打法要点\n\n甲的正文',archive.read(archive.namelist()[0]).decode('utf-8'))
+            self.assertIn('乙的正文',archive.read(archive.namelist()[1]).decode('utf-8'))
 
     def test_public_unix_listener_enables_address_reuse(self):
         with patch.object(server.sys,'platform','linux'):

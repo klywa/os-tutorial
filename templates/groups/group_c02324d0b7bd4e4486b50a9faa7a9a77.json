@@ -1,0 +1,29 @@
+{
+  "name": "已有法源之杯时发展泳池派对",
+  "scope": {
+    "player_id": "player:39",
+    "lineup_note_id": null
+  },
+  "explanation": "《明先生》适用打法「泳池派对」和朵莉亚装备技巧。前两轮拍卖期间手里已有法源之杯，可为朵莉亚准备回蓝装备。条件仅覆盖未穿戴的装备。。每句均点明建议发展的具体阵容。",
+  "utterances": [
+    {
+      "text": "建议走泳池派对，手里的法源之杯能帮朵莉亚尽早开水域。",
+      "id": "utterances_35002fb674724452a0826ff2cb4ed189"
+    },
+    {
+      "text": "可以往泳池派对发展，朵莉亚需要的回蓝装备已经有了。",
+      "id": "utterances_828b1d0895a5497bb4585cd6d554d89b"
+    },
+    {
+      "text": "泳池派对可以留，法源之杯能帮朵莉亚启动，接着找米莱狄。",
+      "id": "utterances_fdc271323c26486f926e7c13b6542eaf"
+    }
+  ],
+  "id": "group_c02324d0b7bd4e4486b50a9faa7a9a77",
+  "event_id": "os_98aee9aae8b9d41d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "(arg1.阵容名 has \"泳池派对\" or arg1.阵容名 has \"泳池派对-明先生\") and 对局.当前回合数 <= 7 and 玩家.手牌 has {\"类型\":\"装备\",\"名称\":\"法源之杯\"}",
+  "priority": 0,
+  "editor_mode": "text"
+}

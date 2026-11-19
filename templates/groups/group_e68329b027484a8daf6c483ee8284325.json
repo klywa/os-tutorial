@@ -1,9 +1,10 @@
 {
   "name": "用马超配合队友的控制",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "买到马超时，这组话说明马超在队伍中的作用。己方施加控制时，马超会获得法力和暴击率；更频繁的施法又能带来生命回复。依据《常小娥灵活变阵-常小娥》「马超」及马超的官方卡面、技能。",
   "utterances": [
     {
       "text": "己方控住敌人时，马超能回复法力，还能提高暴击率。",
@@ -14,9 +15,8 @@
       "id": "utterances_e55f7471cd5e42638ecb99957e770227"
     }
   ],
-  "explanation": "买到马超时，这组话说明马超在队伍中的作用。己方施加控制时，马超会获得法力和暴击率；更频繁的施法又能带来生命回复。依据《常小娥灵活变阵-常小娥》「马超」及马超的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_e68329b027484a8daf6c483ee8284325",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "马超"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"马超\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"马超\""
 }

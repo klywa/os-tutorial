@@ -1,0 +1,25 @@
+{
+  "name": "用2阶英雄兑换券找同阶英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「百里玄策」列出此券为获得途径。官方2阶英雄兑换券（card:7052）从三名同阶候选中选一名，可找百里玄策培养闪现英雄，候选未必包含目标。",
+  "utterances": [
+    {
+      "text": "二阶兑换券有机会找到能配闪现英雄的百里玄策。",
+      "id": "utterances_083f7a796bdb400c8754fed5b071c963"
+    },
+    {
+      "text": "用2阶英雄兑换券能从三名同阶候选里挑一张需要的英雄牌。",
+      "id": "utterances_2d9aeebb10e64c1ca523a2d3c5157cce"
+    }
+  ],
+  "id": "group_681cdd7d1fc44b9a9ff025ee454fd8c1",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"2阶英雄兑换券\"",
+  "editor_mode": "text",
+  "priority": 0
+}

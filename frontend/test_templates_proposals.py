@@ -18,7 +18,7 @@ BOB={'username':'bob','role':'annotator'}
 
 
 def group(gid='example',text='先稳住。'):
-    return {'id':gid,'name':'开局提醒','event_id':'battle_prepare',
+    return {'id':gid,'name':'开局提醒','event_id':'os_4ef8f267133d9810',
         'scope':{'player_id':None,'lineup_note_id':None},'conditions':[],
         'utterances':[{'id':'line','text':text}],'related_entities':[]}
 
@@ -37,6 +37,41 @@ class TemplateProposalTests(unittest.TestCase):
     def action(self,actor,pid,action,data):
         item=next(p for p in self.proposals.list(ADMIN) if p['id']==pid)
         return self.proposals.action(actor,pid,action,{'proposal_revision':item['proposal_revision'],**data})
+
+    def test_comment_edits_preserve_versions_authorship_and_direct_counts(self):
+        import template_feedback as feedback
+        gid = group()['id']
+        library.apply(self.root, library.snapshot(self.root)['revision'],
+                      [{'kind':'group','action':'put','id':gid,'value':group()}])
+        create = lambda actor, **data: feedback.annotate(self.proposals, actor, {'group_id':gid,**data})
+        thread = create(ALICE, body='原始留言')
+        line = create(BOB, utterance_id='line', body='话术讨论')
+        def post(actor, action, **data):
+            return feedback.annotate(self.proposals, actor, data, thread['id'], action)
+        post(BOB, 'reply', body='补充')
+        edit = dict(message_index=0, message_revision=0, body='修订')
+        with self.assertRaises(PermissionError): post(ADMIN, 'edit', **edit)
+        current = post(ALICE, 'edit', **edit)
+        self.assertEqual(current['messages'][0]['body'], '修订')
+        self.assertEqual(current['messages'][0]['revisions'][0]['body'], '原始留言')
+        with self.assertRaises(Conflict): post(ALICE, 'edit', **{**edit, 'body':'过期草稿'})
+        post(BOB, 'edit', message_index=1, message_revision=0, body='修订后的回复')
+        post(ADMIN, 'close')
+        self.assertCountEqual(feedback.comment_counts(self.proposals), [
+            {'group_id':gid,'utterance_id':None,'count':1},
+            {'group_id':gid,'utterance_id':line['utterance_id'],'count':1},
+        ])
+
+    def test_preexisting_proposal_cannot_change_a_later_fixed_utterance(self):
+        saved=library.apply(self.root,library.snapshot(self.root)['revision'],
+            [{'kind':'group','action':'put','id':'example','value':group()}])
+        candidate=self.submit(group(text='提案覆盖'))
+        fixed=library.set_utterance_fixed(self.root,saved['revision'],'example','line',True,'admin')
+        with self.assertRaises(Conflict):
+            self.action(ADMIN,candidate['id'],'approve',{'changes':candidate['changes']})
+        with self.assertRaises(Conflict):
+            self.submit(group(text='新提案覆盖'))
+        self.assertEqual(library.snapshot(self.root)['groups'],fixed['groups'])
 
     def test_private_submit_and_admin_approval(self):
         item=self.submit()
@@ -96,6 +131,53 @@ class TemplateProposalTests(unittest.TestCase):
         with self.assertRaises(Conflict):self.proposals.action(ADMIN,item['id'],'approve',{})
         with self.assertRaises(Conflict):self.proposals.action(ALICE,item['id'],'withdraw',{'proposal_revision':'old'})
 
+    def test_reviewed_draft_partial_approval_history_and_retry(self):
+        base=group()
+        def put(value):return {'kind':'group','action':'put','id':value['id'],'value':value}
+        library.apply(self.root,library.snapshot(self.root)['revision'],[put(base)])
+        suggested={**group(text='编辑员建议。'),'name':'新名称'}
+        item=self.submit(suggested)
+        final={**suggested,'utterances':[{'id':'line','text':'审核后话术。'}]}
+        data={'proposal_revision':item['proposal_revision'],'changes':[put(final)]}
+        with self.assertRaises(PermissionError):self.proposals.action(BOB,item['id'],'edit',data)
+        edited=self.proposals.action(ADMIN,item['id'],'edit',data)
+        self.assertEqual(library.snapshot(self.root)['groups'],[base])
+        first={'proposal_revision':edited['proposal_revision'],'changes':[put({**base,'name':final['name']})]}
+        partial=self.proposals.action(ADMIN,item['id'],'approve',first)
+        self.assertEqual(partial['status'],'pending')
+        self.assertEqual(self.proposals.action(ADMIN,item['id'],'approve',first),partial)
+        result=self.action(ADMIN,item['id'],'approve',{})
+        self.assertEqual(library.snapshot(self.root)['groups'],[final])
+        self.assertEqual(result['submission'],{'before':{'group:example':base},'changes':[put(suggested)]})
+        self.assertEqual([r['action'] for r in result['reviews']],['edit','approve','approve'])
+        self.assertEqual(result['reviews'][-1]['after'],{'group:example':final})
+
+    def test_rebase_requires_version_actually_reviewed(self):
+        item=self.submit()
+        current=group(text='正式修改。')
+        change={'kind':'group','action':'put','id':current['id'],'value':current}
+        library.apply(self.root,library.snapshot(self.root)['revision'],[change])
+        conflict=self.proposals.list(ADMIN)[0]['conflicts']['group:example']
+        self.assertEqual(conflict['current'],current)
+        with self.assertRaises(PermissionError):
+            self.action(ALICE,item['id'],'edit',{'rebase':{'group:example':conflict['revision']}})
+        self.assertEqual(self.proposals.list(ADMIN)[0]['conflicts']['group:example'],conflict)
+        with self.assertRaises(Conflict):self.action(ADMIN,item['id'],'edit',{'rebase':{'group:example':'old'}})
+        self.action(ADMIN,item['id'],'edit',{'rebase':{'group:example':conflict['revision']}})
+        self.assertEqual(self.proposals.list(ADMIN)[0]['conflicts'],{})
+        self.action(ADMIN,item['id'],'approve',{})
+        self.assertEqual(library.snapshot(self.root)['groups'],[group()])
+
+    def test_author_can_revise_pending_draft_but_stale_reviewer_cannot_overwrite_it(self):
+        item=self.submit()
+        value=group(text='编辑员补充说明。')
+        change={**item['changes'][0],'value':value}
+        updated=self.action(ALICE,item['id'],'edit',{'changes':[change]})
+        self.assertEqual(updated['changes'],[change])
+        with self.assertRaises(Conflict):
+            self.proposals.action(ADMIN,item['id'],'approve',{'proposal_revision':item['proposal_revision']})
+        self.assertEqual(library.snapshot(self.root)['groups'],[])
+
     def test_warning_seen_tracks_entity_changes_not_summary_shape(self):
         from types import SimpleNamespace
         import json_store
@@ -104,7 +186,7 @@ class TemplateProposalTests(unittest.TestCase):
         path=self.root/'entities/heroes.json';json_store.write_file(path,[hero])
         groups=[group('one'),group('two')]
         for value in groups:
-            value['event_id']='hero_buy'
+            value['event_id']='hero_select'
             value['conditions']=[{'id':'hero-condition','parameter_key':'hero','operator':'eq','value':{'id':hero['id'],'name':hero['name']}}]
         library.apply(self.root,library.snapshot(self.root)['revision'],[
             {'kind':'group','action':'put','id':g['id'],'value':g} for g in groups])
@@ -120,7 +202,12 @@ class TemplateProposalTests(unittest.TestCase):
             {'kind':'group','action':'put','id':'one','value':groups[0]}])
         self.assertFalse(warnings()['unseen'])
         second=next(w for w in warnings()['items'] if w['group_id']=='two')
-        library.confirm_warning(self.root,'two',second['revision'])
+        confirmation={'group_id':'two','revision':second['revision']}
+        with self.assertRaises(PermissionError):
+            templates_http.mutate(server,ALICE,'/api/templates/warnings/confirm','POST',confirmation)
+        self.assertIn('two',[w['group_id'] for w in warnings()['items']])
+        templates_http.mutate(server,ADMIN,'/api/templates/warnings/confirm','POST',confirmation)
+        self.assertNotIn('two',[w['group_id'] for w in warnings()['items']])
         self.assertFalse(warnings()['unseen'])
         json_store.write_file(path,[{**hero,'effect':'第三次机制'}])
         self.assertTrue(warnings()['unseen'])
@@ -133,7 +220,7 @@ class TemplateProposalTests(unittest.TestCase):
         path=self.root/'entities/heroes.json';json_store.write_file(path,heroes)
         groups=[group('one'),group('two')]
         for value,hero in zip(groups,heroes):
-            value['event_id']='hero_buy'
+            value['event_id']='hero_select'
             value['conditions']=[{'id':'hero-condition','parameter_key':'hero','operator':'eq','value':{'id':hero['id'],'name':hero['name']}}]
         library.apply(self.root,library.snapshot(self.root)['revision'],[
             {'kind':'group','action':'put','id':g['id'],'value':g} for g in groups])

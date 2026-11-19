@@ -1,10 +1,10 @@
 {
-  "id": "group_2577e84db49f4453ab311db38ac7d1de",
   "name": "上阵司空震继承裴擒虎的临时等级",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "裴擒虎在场，刚上阵的司空震还未觉醒。裴擒虎整备获得临时等级时，普通司空震可继承其中一半，上限为司空震自身真实等级的一倍。依据《常小娥灵活变阵-常小娥》「司空震」「裴擒虎」及两名英雄卡面。",
   "utterances": [
     {
       "text": "司空震能从裴擒虎身上继承临时等级，上限取决于自身真实等级。",
@@ -15,7 +15,7 @@
       "id": "utterances_0911b3506d6346e792efc7b111705397"
     }
   ],
-  "explanation": "裴擒虎在场，刚上阵的司空震还未觉醒。裴擒虎整备获得临时等级时，普通司空震可继承其中一半，上限为司空震自身真实等级的一倍。依据《常小娥灵活变阵-常小娥》「司空震」「裴擒虎」及两名英雄卡面。",
+  "id": "group_2577e84db49f4453ab311db38ac7d1de",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
@@ -36,7 +36,7 @@
       "name": "裴擒虎"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"司空震\" and 玩家.战场 has \"裴擒虎\" and not arg1.已觉醒",
-  "editor_mode": "text"
+  "expression": "arg1 is \"司空震\" and 玩家.战场 has \"裴擒虎\" and not arg1.已觉醒"
 }

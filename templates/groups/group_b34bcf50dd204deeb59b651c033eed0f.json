@@ -1,0 +1,25 @@
+{
+  "name": "上露娜帮花木兰争取复生",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「露娜」、「花木兰」。最多还能承受一次失败，花木兰和上官婉儿在场。露娜普通卡登场随机触发两名英雄整备；上官婉儿整备对河洛英雄使用古币，花木兰当回合每用五币增加一次复生。《河洛花木兰-嬴律》核心原理也列有这条联动。能否补足次数取决于随机结果及已用币数。",
+  "utterances": [
+    {
+      "text": "露娜登场可能触发上官婉儿用币，帮花木兰凑够五币多复生一次。",
+      "id": "utterances_79bf4522235b4ecba20392f752531549"
+    },
+    {
+      "text": "急需保命时，露娜有机会触发上官婉儿整备，帮花木兰多一次复生。",
+      "id": "utterances_df14de2789fa43e898ed9ce24718ffa5"
+    }
+  ],
+  "id": "group_b34bcf50dd204deeb59b651c033eed0f",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 2,
+  "editor_mode": "text",
+  "expression": "arg1 is \"露娜\" and 玩家.容错数 <= 1 and 玩家.战场 has \"上官婉儿\" and 玩家.战场 has \"花木兰\""
+}

@@ -1,0 +1,25 @@
+{
+  "name": "干将莫邪穿双剑·雄降低法力上限",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "干将莫邪穿双剑·雄后，攒十点法力就能再放飞剑。",
+      "id": "utterances_97ebd9435883456196a61a07dbf5a1bc"
+    },
+    {
+      "text": "双剑·雄让干将莫邪的法力上限降到十点，更容易频繁施法。",
+      "id": "utterances_b8f811e554704e6cb88c33b8b88b4110"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》「干将莫邪」说明用回蓝配合频繁施法。官方快照doc-e3f88e42a8af2f5acc7c40d5a7424eba275d7dbe6f78dde4b6ea929f38d3155b第88、89、152段：普通及觉醒干将在场可获双剑·雄，穿戴者为干将莫邪时法力值上限降至10。取得装备与实际穿戴分开解释。",
+  "event_id": "os_5dfcb4835e1e1513",
+  "id": "group_b9cd0f8b1490444a9057607706e10bba",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"干将莫邪\" and arg2 is \"双剑·雄\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》诸葛亮与杨玉环。杨玉环已在场，施法为诸葛亮提供法力和临时等级，诸葛亮可负责施法队的范围输出。",
   "utterances": [
     {
-      "text": "杨玉环施法时，诸葛亮能同时获得法力和临时等级。",
+      "text": "选诸葛亮补范围伤害，杨玉环施法还能给他回蓝。",
       "id": "utterances_fdb8bad124ac49d9b2bc4d081f7b0375"
     },
     {
-      "text": "杨玉环施法频繁，选诸葛亮能利用她的施法更快回蓝。",
+      "text": "杨玉环每次施法都能帮诸葛亮拿法力和临时等级。",
       "id": "utterances_b1a3468884d2452ab34bdad99e49f0a7"
+    },
+    {
+      "text": "诸葛亮能借杨玉环的施法更快启动，接上范围输出。",
+      "id": "utterances_d2b00e14d6e94b9d92c96b3b576da494"
     }
   ],
-  "explanation": "杨玉环在场，选中诸葛亮时，说明这项操作的战斗或资源收益。杨玉环施法时，诸葛亮能同时获得法力和临时等级。依据《常小娥灵活变阵-常小娥》「诸葛亮」和诸葛亮的官方卡面、技能。",
-  "event_id": "os_dcef166d05efe08e",
   "id": "group_95c04eefbd194ed8a8fc861ba818a7bf",
+  "event_id": "os_dcef166d05efe08e",
   "conditions": [],
   "related_entities": [
     {
@@ -37,6 +41,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\"",
+  "expression": "(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"",
   "editor_mode": "text"
 }

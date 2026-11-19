@@ -62,7 +62,7 @@ def payload(handler):
 
 
 def is_proposal_path(path):
-    return path=='/api/proposals' or bool(re.fullmatch(
+    return path in ('/api/proposals','/api/proposals/note-import/preview','/api/proposals/note-import/submit') or bool(re.fullmatch(
         r'/api/proposals/[^/]+(?:/(?:approve|reject|withdraw|annotations(?:/[^/]+/close)?))?', path))
 
 
@@ -190,6 +190,9 @@ def mutate_proposal(server,identity,path,command,data,public=False):
     # approval receipt alone requires the canonical/global lock for recovery.
     if service.recovery_pending():
         with save_lock(state_dir(server)):service.recover()
+    if command=='POST' and path in ('/api/proposals/note-import/preview','/api/proposals/note-import/submit'):
+        from note_import import request
+        return request(service,identity,path.rsplit('/',1)[-1],data)
     if path=='/api/proposals' and command=='POST':return service.submit_delta(identity,data,_recover=False)
     feedback = re.fullmatch(r'/api/proposals/([^/]+)/annotations(?:/([^/]+)/close)?', path)
     if feedback and command == 'POST':

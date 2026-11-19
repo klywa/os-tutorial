@@ -1,0 +1,29 @@
+{
+  "name": "铸造近卫荣耀保护前排附近队友",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "近卫荣耀能给穿戴者和邻近队友补双防。",
+      "id": "utterances_ac56a120f3fe4fb4be02752e73c333ca"
+    },
+    {
+      "text": "铸近卫荣耀能让相邻队友开战时更耐打。",
+      "id": "utterances_1532191c51f7403193d70b6084e0a55e"
+    },
+    {
+      "text": "近卫荣耀给穿戴者的双防加成是附近队友的两倍。",
+      "id": "utterances_3230c27e211447c58f26e6c04cf141a0"
+    }
+  ],
+  "explanation": "《装备》近卫荣耀。开战时给周围一格友军提供双防，穿戴者获得双倍效果。解释装备铸造提供的用途，具体队友需进入开战时范围。",
+  "event_id": "os_db70e56ec24636b5",
+  "id": "group_4052af30a32a480faa21a52c49f3dc87",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg3 is \"近卫荣耀\"",
+  "editor_mode": "text",
+  "priority": 0
+}

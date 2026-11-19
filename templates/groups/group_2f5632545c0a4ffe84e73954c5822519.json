@@ -15,11 +15,11 @@
       "id": "utterances_cb23bab53eb9450bb87891ded5c06624"
     }
   ],
-  "event_id": "os_bfcc2eec6def94c8",
   "id": "group_2f5632545c0a4ffe84e73954c5822519",
+  "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
   "priority": 0,
-  "expression": "arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.场上英雄数 == 4",
+  "expression": "(arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10",
   "editor_mode": "text"
 }

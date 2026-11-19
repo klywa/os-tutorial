@@ -23,6 +23,18 @@ def _scope_name(identity, rows, key):
     return row[key]
 
 
+def effective_expression(scope, expression):
+    """Include binding clauses for display and standalone DSL consumers."""
+    clauses = ['玩家.' + field + ' is ' + rules.operand(scope[key])
+               for key, field in (('player', '使用棋手'), ('lineup', '使用阵容'))
+               if scope.get(key) is not None]
+    if not clauses:
+        return expression
+    if expression.strip():
+        clauses.append('(' + expression + ')')
+    return ' and '.join(clauses)
+
+
 def _related_key(row):
     return row['name'], rules.CATEGORY_TYPES[row['category']]
 
@@ -70,9 +82,9 @@ def _scope_match(rows, previous_id, field, name, label):
     return matched['id']
 
 
-def encode(public, entities, notes, metadata=None, *, all_groups=None):
+def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None):
     from templates_portable import encode as old_encode
-    runtime_catalog = rules.library_catalog(public['events'])
+    runtime_catalog = rules.library_catalog(public['events'],root=root or rules.ROOT)
     if len(runtime_catalog['events'])!=len(public['events']):
         raise ValueError('事件名称重复，请为事件使用唯一名称')
     data = old_encode(public)
@@ -93,6 +105,7 @@ def encode(public, entities, notes, metadata=None, *, all_groups=None):
         group['scope'] = {'player':_scope_name(original['scope']['player_id'],refs,'name'),
                           'lineup':_scope_name(original['scope']['lineup_note_id'],notes,'title')}
         group.update(rules.editor_rule(original,event,refs))
+        group['effective_expression'] = effective_expression(group['scope'], group['expression'])
         group.setdefault('priority',0)
         if not group['conditions']: group.pop('conditions')
         if original.get('related_entities'):
@@ -111,14 +124,26 @@ def decode(document, public, entities, notes, **kwargs):
     imported_catalog = doc.pop('condition_catalog', None)
     if imported_catalog is not None:
         current = rules.catalog()
-        # Older v3 exports predate the two population fields. All other
-        # declarations must still agree with the installed runtime catalog.
-        old_types = deepcopy(current['types'])
+        # Previous v3 catalogs may lack fields introduced in later releases.
+        if not isinstance(imported_catalog,dict) or not isinstance(imported_catalog.get('events'),dict):
+            raise ValueError('配置的类型目录与当前项目不一致')
+        types = imported_catalog.get('types')
+        expected = deepcopy(current['types'])
+        previous_lineups = isinstance(types,dict) and '阵容' not in types
+        operations = dict(current['operations'])
+        if isinstance(types,dict) and '标签' not in types.get('英雄', {}):
+            for owner in ('英雄','装备','效果牌','天赋'):
+                expected[owner].pop('标签',None)
+                operations.pop(owner+'.标签',None)
+        if previous_lineups:
+            expected.pop('阵容')
+            expected['玩家'].pop('当前阵容')
+            operations.pop('阵容.阵容名')
+        old_population = deepcopy(expected)
         for field in ('场上英雄数', '人口上限'):
-            old_types['玩家'].pop(field, None)
-        if (not isinstance(imported_catalog,dict) or not isinstance(imported_catalog.get('events'),dict)
-                or imported_catalog.get('types') not in (current['types'], old_types)
-                or any(imported_catalog.get(k)!=current[k] for k in ('roots','aliases','operations','enums'))):
+            old_population['玩家'].pop(field)
+        if (types not in (expected, old_population) or imported_catalog.get('operations') != operations
+                or any(imported_catalog.get(k)!=current[k] for k in ('roots','aliases','enums'))):
             raise ValueError('配置的类型目录与当前项目不一致')
     if not isinstance(doc['events'],list) or not isinstance(doc['groups'],list):
         raise ValueError('事件与模板组必须为列表')
@@ -164,8 +189,10 @@ def decode(document, public, entities, notes, **kwargs):
         group['event_name'] = event['name']
         group_names[(event['name'],schema.text(group.get('name')))] += 1
     for group in doc['groups']:
-        schema.fields(group,{'id','name','explanation','event_name','scope','conditions','utterances','related_entities'}|rules.RULE_FIELDS,
+        schema.fields(group,{'id','name','explanation','event_name','scope','conditions','utterances','related_entities','effective_expression'}|rules.RULE_FIELDS,
                       {'name','event_name','expression','utterances'})
+        # A copied preview can be stale after hand-editing the scope or expression.
+        group.pop('effective_expression', None)
         event = _find(all_events.values(),'name',group['event_name'],'事件')
         if event is None:raise ValueError('未知事件：'+str(group['event_name']))
         group['event_id'] = event['id']

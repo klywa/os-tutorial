@@ -1,0 +1,25 @@
+{
+  "name": "选混沌次元召唤满装备英雄",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "混沌次元卡面。裂隙吞噬指定阵位上的英雄，开战召唤一名满足品阶限制的满装备英雄。选择天赋时无法指定召唤到苏烈。",
+  "utterances": [
+    {
+      "text": "选混沌次元能开战召唤一个满装备英雄，补上场面战力。",
+      "id": "utterances_bfeb50547cf44f73a2cab2f7886c797a"
+    },
+    {
+      "text": "用混沌裂隙吞掉工具人攒等级，开战还能召来满装英雄。",
+      "id": "utterances_ebf6e4af733e46ef92e80533e6836423"
+    }
+  ],
+  "id": "group_5dd89439a22d4bac912a80c218ec5bd9",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"混沌次元\") and arg1 has \"混沌次元\"",
+  "editor_mode": "text"
+}

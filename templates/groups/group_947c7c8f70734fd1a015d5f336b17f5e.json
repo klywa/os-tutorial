@@ -4,19 +4,19 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「苏烈」。加快牺牲的永久成长属于固有卡面；单人和多人作战都能生效。",
   "utterances": [
     {
       "text": "苏烈觉醒后，每次牺牲的永久成长会从2级提高到4级。",
       "id": "utterances_657f92ba44f640f1afd795bae7cd852a"
     },
     {
-      "text": "单挂苏烈时补觉醒，每次牺牲就能比原来多得2级永久等级。",
+      "text": "补觉醒能让苏烈每次牺牲多得2级，以后每次牺牲都算。",
       "id": "utterances_047b083dc4f3422795654e48dd2a74d7"
     }
   ],
-  "explanation": "合成后苏烈还未觉醒时，解释继续补觉醒能提升哪一项效果。普通卡与觉醒卡的效果分别为「牺牲：苏烈的等级永久+2。」与「牺牲：苏烈的等级永久+4。」。依据《常小娥灵活变阵-常小娥》「苏烈」和苏烈的官方卡面、技能。",
-  "event_id": "os_d12194463340a8ec",
   "id": "group_947c7c8f70734fd1a015d5f336b17f5e",
+  "event_id": "os_d12194463340a8ec",
   "conditions": [],
   "related_entities": [
     {
@@ -29,6 +29,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg1 is \"苏烈\" and not arg1.已觉醒",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "expression": "arg1 is \"苏烈\" and not arg1.已觉醒"
 }

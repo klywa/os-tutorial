@@ -1,0 +1,29 @@
+{
+  "name": "只有一名接收者时用传承留住原英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "传承能留住供级英雄，另一人只分到随机一份。",
+      "id": "utterances_4930d2d7aec34a2bbf8da4dbf5206382"
+    },
+    {
+      "text": "这张传承能保留原英雄，另一人只接一部分等级。",
+      "id": "utterances_908897ac2f184d0a9b24135f13453de0"
+    },
+    {
+      "text": "传承可以保留原英雄，单人接收也会浪费部分等级。",
+      "id": "utterances_1963225c0e17433495d1a901df9afaab"
+    }
+  ],
+  "explanation": "《冷门知识》传承只保留实际分到的份额；大年小方实测 BV1VnaE6WEPx 13.62–55.64 秒。场上只有供级者和一个接收者，原英雄仍可留场，但仅分到随机份额，其余等级浪费。",
+  "event_id": "os_bfcc2eec6def94c8",
+  "id": "group_2d3d38ea48564d009ffd18f0df703ebf",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"传承\" and arg1.等级 >= 10 and 玩家.场上英雄数 == 2",
+  "editor_mode": "text",
+  "priority": 0
+}

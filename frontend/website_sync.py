@@ -462,6 +462,11 @@ class SyncWorker:
             from proposals import ProposalStore
             ProposalStore(manager.root,manager.state_dir/'proposals.sqlite3').recover()
         recover_template_approval(manager.root,manager.state_dir)
+        if (manager.state_dir/'template-proposals.sqlite3.pending-sync.json').exists() and value['state']!='conflict':
+            from templates_proposals import TemplateProposals
+            service=TemplateProposals(manager.root,manager.state_dir/'template-proposals.sqlite3')
+            service.enqueue_pending(manager.enqueue)
+            value=manager.status(light=True)
         journal=manager.root/'raw/knowledge/pending-json-save.json'
         if journal.exists() or (manager.root/'raw/templates/pending.json').exists():
             from website_data import recover
@@ -480,6 +485,9 @@ class SyncWorker:
         if self.stop_event.is_set():return False
         manager=self.manager
         value=manager.status(light=True)
+        if value['state']!='conflict' and any((manager.state_dir/name).exists() for name in
+                ('template-proposals.sqlite3.approval.json','template-proposals.sqlite3.pending-sync.json')):
+            self.initialized=False
         if self.initialized and (value['state']!='pending' or (value.get('next_retry_at') or 0)>self.clock()):
             return False
         try:

@@ -1,0 +1,25 @@
+{
+  "name": "钟馗十级上阵用开场钩打乱后排",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "钟馗已到十级，开场就能把最远的敌人钩到跟前。",
+      "id": "utterances_83991c33a18448faa44c5f67757ce94a"
+    },
+    {
+      "text": "钟馗开局满蓝，钩到最远的敌人后能让队友优先集火。",
+      "id": "utterances_c9083e7658eb4707a35840ef046af15e"
+    }
+  ],
+  "explanation": "钟馗普通英雄技能钩锁拉回距离最远的一名敌人，设为友军优先攻击目标，10级开战充满法力。未观察站位时不承诺钩中指定主力。",
+  "event_id": "os_e5391e165361858d",
+  "id": "group_f3a550308d9e48de9a3aff11e59b95c3",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"钟馗\" and arg1.等级 >= 10",
+  "priority": 0,
+  "editor_mode": "text"
+}

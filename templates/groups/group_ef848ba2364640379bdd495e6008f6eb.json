@@ -1,21 +1,25 @@
 {
-  "id": "group_ef848ba2364640379bdd495e6008f6eb",
   "name": "前期买苏烈单挂",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「前期运营思路」「苏烈」。在空场买入首位过渡候选，苏烈可以独享助力并靠牺牲成长，40级能复生。场上已有其他英雄时不把这笔购买当成单挂。",
   "utterances": [
     {
-      "text": "想单挂苏烈，可以靠牺牲提升永久等级，达到40级还能复生。",
+      "text": "苏烈一个人也能靠牺牲永久升级，适合单挂。",
       "id": "utterances_4df55a54c255474a9bb852706362a964"
     },
     {
-      "text": "前期单挂苏烈时，牺牲和小菟助力都能帮他提升等级。",
+      "text": "先单挂苏烈，让他独享小菟助力，尽快练到40级。",
       "id": "utterances_a460200fd85e4eb98bb32d595a05991d"
+    },
+    {
+      "text": "开局买苏烈能扛伤，牺牲也能给自己攒等级。",
+      "id": "utterances_d589e0d51dbb490a8d950fc402b9e740"
     }
   ],
-  "explanation": "棋手未满6级，场上还没有苏烈，此时买到苏烈可以考虑前期单挂。苏烈牺牲会永久提升等级，40级时战斗中首次被击败后可以复生。依据《常小娥灵活变阵-常小娥》「苏烈」及苏烈的官方卡面、40级技能。",
+  "id": "group_ef848ba2364640379bdd495e6008f6eb",
   "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
@@ -32,7 +36,7 @@
       "name": "小菟助力"
     }
   ],
-  "priority": 0,
-  "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and not (玩家.战场 has \"苏烈\")",
-  "editor_mode": "text"
+  "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "editor_mode": "text",
+  "priority": 0
 }

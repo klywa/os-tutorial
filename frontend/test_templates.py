@@ -61,9 +61,42 @@ class TemplateTests(unittest.TestCase):
     def files(self):
         return {p.relative_to(self.root).as_posix():p.read_bytes() for p in self.root.rglob('*') if p.is_file()}
 
+    def test_fixed_utterance_protects_identity_and_text_on_all_normal_writes(self):
+        saved = self.saved()
+        fixed = store.set_utterance_fixed(self.root, saved['revision'], 'g1', 'u1', True, 'admin')
+        original = fixed['groups'][0]['utterances'][0]
+        self.assertTrue(original['fixed'])
+        changed = deepcopy(fixed['groups'][0])
+        changed['utterances'][0]['text'] = '改写固定句'
+        with self.assertRaises(Conflict):
+            store.preview_changes(self.root, fixed['revision'], [put('group', changed)])
+        with self.assertRaises(Conflict):
+            store.apply(self.root, fixed['revision'], [{'kind':'group','id':'g1','action':'delete'}])
+        changed['utterances'][0] = {**original, 'ignored':True}
+        ignored = store.apply(self.root, fixed['revision'], [put('group', changed)])
+        with self.assertRaises(Conflict):
+            store.apply(self.root, ignored['revision'], [put('group', group())])
+        unfixed = store.set_utterance_fixed(self.root, ignored['revision'], 'g1', 'u1', False, 'admin')
+        changed = deepcopy(unfixed['groups'][0])
+        changed['utterances'][0]['text'] = '解固定后编辑'
+        self.assertEqual(store.apply(self.root, unfixed['revision'], [put('group', changed)])['groups'][0], changed)
+
+    def test_import_preserves_fixed_rows_and_reports_them(self):
+        saved = self.saved()
+        store.set_utterance_fixed(self.root, saved['revision'], 'g1', 'u1', True, 'admin')
+        for rules_format in (False, True):
+            document = store.export_library(self.root, ['g1'], rules_format=rules_format)
+            document['groups'][0]['utterances'] = ['新话术']
+            preview = store.preview_import(self.root, document)
+            self.assertEqual(preview['errors'], [])
+            self.assertEqual(preview['preserved_fixed'][0]['utterance_id'], 'u1')
+            rows = preview['changes'][0]['value']['utterances']
+            self.assertEqual([(r['id'],r['text']) for r in rows if r.get('fixed')], [('u1',group()['utterances'][0]['text'])])
+            self.assertIn('新话术', [r['text'] for r in rows])
+
     def test_seed_and_preview_do_not_write_and_cover_all_event_families(self):
         before=self.files(); snap=store.snapshot(self.root)
-        self.assertEqual(len([e for e in snap['events'] if e['id'].startswith('os_')]),23)
+        self.assertEqual(len([e for e in snap['events'] if e['id'].startswith('os_')]),24)
         self.assertIn('auction_start',{x['id'] for x in snap['events']})
         preview=store.preview_import(self.root,{'kind':'speech-template-library','schema_version':1,'events':[event()],'groups':[group()]})
         self.assertEqual(preview['errors'],[])

@@ -1,4 +1,5 @@
-import {useEffect,useId,useRef,useState} from 'react';
+import {TemplateConditionPreview} from './TemplateConditionPreview';
+import {useEffect,useId,useMemo,useRef,useState} from 'react';
 import {compatibleRight,completeTree,emptyTree,listPaths,members,newLeaf,numeric,operatorsFor,renderRule,switchToText,type ConditionCatalog,type ConditionNode,type PathOption} from './templateRules';
 import type {TemplateEvent,TemplateGroup} from './templates';
 
@@ -39,7 +40,7 @@ function Branch({node,paths,aliases,onChange,onRemove}:{node:ConditionNode;paths
   {node.children.map((child,i)=><Branch key={i} node={child} paths={paths} aliases={aliases} onChange={value=>onChange({...node,children:node.children.map((old,j)=>i===j?value:old)})} onRemove={()=>onChange({...node,children:node.children.filter((_,j)=>i!==j)})}/>)}
   {canAdd&&<div className="rule-tools"><button type="button" disabled={!paths.length} onClick={()=>append(newLeaf(paths))}>＋ 添加条件</button><button type="button" onClick={()=>append(emptyTree())}>＋ 添加条件组</button></div>}</fieldset>;
 }
-export default function TemplateRuleEditor({draft,event,catalog,patch}:{draft:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;patch:(p:Partial<TemplateGroup>)=>void}){
+export default function TemplateRuleEditor({draft,event,catalog,patch,preview}:{preview:string;draft:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;patch:(p:Partial<TemplateGroup>)=>void}){
  const [restoring,setRestoring]=useState(false),[confirmPartial,setConfirmPartial]=useState(false);
  const lastComplete=useRef<ConditionNode|null>(null);
  useEffect(()=>{
@@ -47,14 +48,16 @@ export default function TemplateRuleEditor({draft,event,catalog,patch}:{draft:Te
  },[draft.condition_tree]);
  const saved=draft.condition_tree??emptyTree();
  const tree:ConditionNode=saved.kind==='leaf'?{kind:'all',children:[saved]}:saved,treeText=renderRule(tree),text=draft.expression??treeText;
- const paths=listPaths(event,catalog),isText=draft.editor_mode==='text';
+ const paths=useMemo(()=>listPaths(event,catalog),[event,catalog]),isText=draft.editor_mode==='text';
  function update(tree:ConditionNode){patch({condition_tree:tree,expression:renderRule(tree),editor_mode:'tree',conditions:[]});setRestoring(false);setConfirmPartial(false);}
  function enterText(){patch(switchToText(tree,lastComplete.current,text));setConfirmPartial(false);}
  return <section><h3>触发条件</h3><div className="rule-tools">
   <button type="button" aria-pressed={!isText} onClick={()=>{if(isText){if(treeText!==text)setRestoring(true);else update(tree);}}}>可视化树</button>
   <button type="button" aria-pressed={isText} onClick={()=>{if(!isText){if(completeTree(tree))enterText();else setConfirmPartial(true);}}}>文本编辑</button></div>
   {confirmPartial&&!isText&&<div className="rule-restore"><p>条件树还有未填完的节点。切换后可继续编辑当前文本，恢复树稿时将使用最近一份完整条件树。</p><button type="button" onClick={enterText}>保留完整树稿并切换到文本</button><button type="button" onClick={()=>setConfirmPartial(false)}>继续填写条件树</button></div>}
-  {isText?<label>正式条件表达式<textarea value={text} rows={4} spellCheck={false} onChange={e=>patch({expression:e.target.value,conditions:[]})}/></label>:<><Branch node={tree} paths={paths} aliases={catalog?.aliases??{}} onChange={update}/><label>实时条件表达式<output className="rule-expression">{text||'无条件限制'}</output></label></>}
+  {isText?<label>正式条件表达式<textarea value={text} rows={4} spellCheck={false} onChange={e=>patch({expression:e.target.value,conditions:[]})}/></label>:<Branch node={tree} paths={paths} aliases={catalog?.aliases??{}} onChange={update}/>}
+  <TemplateConditionPreview expression={preview}/>
+  {text.includes('.标签')&&<p className="muted">请逐一核对命中标签的卡牌和形态，确认提供者、受益者和触发时机都符合整句话。</p>}
   {restoring&&<div className="rule-restore"><h4>恢复最近的树稿？</h4><p>恢复后将使用树稿生成的表达式。</p><div><section><strong>当前正式文本</strong><pre>{text||'无条件限制'}</pre></section><section><strong>恢复后的条件</strong><pre>{treeText||'无条件限制'}</pre></section></div><button type="button" onClick={()=>update(tree)}>确认恢复树稿</button><button type="button" onClick={()=>setRestoring(false)}>保留当前文本</button></div>}
  </section>;
 }

@@ -141,6 +141,16 @@ def markdown(item, *, root=True):
     return '\n\n'.join(lines + [markdown(child, root=False) for child in item.children])
 
 
+def edited_replacement(item, target, draft):
+    if item.node['type'] == 'entry':
+        return [{**target.node, 'value': draft}]
+    children = json_document.parse(draft)['nodes']
+    if any(node['type'] == 'heading' and node['level'] <= target.node['level'] for node in children):
+        raise ValueError('编辑稿的子章节标题必须低于当前章节')
+    root, _ = tree([target.node, *children])
+    return replacement(root.children[0], target)
+
+
 def previous_scope(root, note_id, item):
     current = content(item)
     if knowledge_history.enabled(root):
@@ -223,11 +233,15 @@ def transfer(server, service, note_id, data, season, *, public, conn=None):
     source_root, paths = tree(source['body']['nodes'])
     path = paths[node_id][0]
     item = path[-1]
-    previous = previous_scope(root, note_id, item) if not apply else None
+    previous = previous_scope(root, note_id, item)
     baseline = previous or item
+    source_text = markdown(item)
     selected = data.get('targets')
+    draft = data.get('draft')
     if apply and (not isinstance(selected, dict) or not selected or len(selected) > len(rows)):
         raise ValueError('请选择要同步的笔记')
+    if 'draft' in data and (not apply or len(selected) != 1 or not isinstance(draft, str)):
+        raise ValueError('编辑稿只能同步到一篇目标笔记')
     candidates = []
     changes = {}
     players = {} if apply else player_catalog(root)
@@ -257,17 +271,32 @@ def transfer(server, service, note_id, data, season, *, public, conn=None):
         latest = target is not None and content(target) == content(item)
         if target is None:
             candidate['status'] = 'missing'
-        elif content(target) == content(baseline):
-            candidate['status'] = 'same'
         else:
-            candidate.update(status='conflict', text=markdown(target))
+            candidate.update(status='same' if latest or content(target) == content(baseline) else 'conflict',
+                             text=markdown(target))
         candidate['latest'] = latest
-        if apply and not latest:
+        if not apply:
+            continue
+        if candidate['status'] == 'conflict' and not latest and draft is None:
+            raise Conflict('目标段落存在冲突，请打开冲突浮窗确认编辑稿')
+        if draft is not None:
+            if target is None:
+                raise Conflict('目标段落已不存在，请刷新同步列表')
+            if draft == markdown(target):
+                continue
+            if draft != source_text:
+                try:
+                    nodes = edited_replacement(item, target, draft)
+                except Ambiguous as exc:
+                    raise Conflict(str(exc)) from exc
+        if not latest or draft is not None:
             after = {**deepcopy(before), 'nodes': [*before['nodes'][:start], *nodes, *before['nodes'][end:]]}
             json_document.validate(after)
-            changes[nid] = (before, after)
+            if before != after:
+                changes[nid] = (before, after)
     if not apply:
-        return {'historical': previous is not None, 'baseline': markdown(baseline), 'candidates': candidates}
+        return {'historical': previous is not None, 'baseline': markdown(baseline),
+                'source_text': source_text, 'candidates': candidates}
     if set(selected) != {row['id'] for row in candidates}:
         raise Conflict('目标笔记的阵容或赛季关联已变化，请重新打开同步列表')
     results = []

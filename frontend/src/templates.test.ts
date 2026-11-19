@@ -2,6 +2,14 @@ import {describe,it,expect} from 'vitest';
 import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
 const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题参与话术搜索'}],related_entities:[]};
 describe('template filtering and editing',()=>{
+ it('distinguishes event parameter changes in review and history',()=>{
+  const event={id:'custom',name:'自定义事件',parameters:[{id:'p',name:'参数',key:'arg1',type:'text' as const,dsl_type:'string'}]};
+  const previous=describeTemplateRecord(event);
+  expect(previous).toContain('条件数据类型：string');
+  expect(describeTemplateRecord({...event,parameters:[{...event.parameters[0],dsl_type:'阵容'}]})).toContain('条件数据类型：阵容');
+  const numeric=describeTemplateRecord({...event,parameters:[{id:'n',name:'等级',key:'level',type:'number',min:0,max:6,suggestions:[0,3]}]});
+  for(const value of ['建议下限：0','建议上限：6','建议值：0、3'])expect(numeric).toContain(value);
+ });
  it('reviews explanations independently and treats legacy missing text as empty',()=>{
   const next={...common,name:'改名',explanation:'第一行\n依据'};
   expect(groupDiffKeys(common,next)).toEqual(['explanation','name']);

@@ -150,8 +150,14 @@ class SymbolicExpression(_Evaluator):
         term = self.model.path(parts,typ,self.model.true)
         while self.accept("."):
             attr = self.take("id")
+            if attr == "求和" and self.token[0] == "(":
+                field, typ = self.sum_field(typ)
+                parts += (f"求和({field})",)
+                term = self.model.path(parts, typ, term.present)
+                continue
             attr = "名称" if attr == "name" else attr
-            owner = self.model.canonical(typ.split("|")[0])
+            owners = typ[6:-1] if attr == "标签" and typ.startswith("Array<") else typ
+            owner = self.model.canonical(owners.split("|")[0])
             typ = self.catalog["types"][owner][attr]
             parts += (attr,)
             term = self.model.path(parts,typ,term.present,owner+"."+attr)
@@ -211,5 +217,6 @@ def _dominated(expressions, event, catalog_json):
 def most_specific(groups, event, catalog):
     expressions = tuple(sorted({g.get("expression","").strip() for g in groups}))
     relevant = {**catalog,"events":{event:catalog["events"][event]}}
+    relevant.pop("card_tags", None)
     dominated = _dominated(expressions,event,json.dumps(relevant,sort_keys=True,ensure_ascii=False))
     return [g for g in groups if g.get("expression","").strip() not in dominated]

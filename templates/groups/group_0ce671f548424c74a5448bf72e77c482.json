@@ -1,0 +1,25 @@
+{
+  "name": "目标差最后一点时用妙音觉醒",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "utterances": [
+    {
+      "text": "就差一点就觉醒了，用妙音可以省下找最后一张同名牌。",
+      "id": "utterances_8f4e886bb0cd44a9b5ec389418a00054"
+    },
+    {
+      "text": "妙音补齐这名英雄最后一点进度，这轮就能拿到觉醒牌。",
+      "id": "utterances_2f716471ace740d58af6b69d084da335"
+    }
+  ],
+  "explanation": "《基础知识》英雄合成与觉醒、《常用技巧》缺觉醒进度时，用妙音补目标英雄。妙音增加1点进度，不限英雄品阶。新觉醒英雄会回手，不说已留场作战。动作前的目标进度以事件参数为准。",
+  "event_id": "os_bfcc2eec6def94c8",
+  "id": "group_0ce671f548424c74a5448bf72e77c482",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"妙音\" and not arg1.已觉醒 and arg1.觉醒进度 == 2",
+  "editor_mode": "text",
+  "priority": 0
+}

@@ -1,0 +1,29 @@
+{
+  "name": "买到河洛骨架后向花木兰发展",
+  "scope": {
+    "player_id": "player:39",
+    "lineup_note_id": null
+  },
+  "explanation": "《明先生》适用打法「河洛花木兰」。前两轮拍卖期间核心花木兰已在场或手牌中，已有靠复生作战的主力。第7回合为前两轮拍卖完毕的边界，用于限定早拿核心的解释。。每句均点明建议发展的具体阵容。",
+  "utterances": [
+    {
+      "text": "建议走河洛花木兰，木兰已到手，可以围绕她补古币。",
+      "id": "utterances_a9d0908cab5a43bcba8fdd278c41398c"
+    },
+    {
+      "text": "可以往河洛花木兰发展，核心已有，接着找婉儿供币。",
+      "id": "utterances_1ad5d8e6eeba4dcf830cb34edf492d32"
+    },
+    {
+      "text": "花木兰已经来了，走河洛花木兰能围绕她的复生补牌。",
+      "id": "utterances_56fa875f4ada4226a06362cd0df359dc"
+    }
+  ],
+  "id": "group_e62444cae8d34f55bf73ef41439e02df",
+  "event_id": "os_98aee9aae8b9d41d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 <= 7 and (玩家.战场 has \"花木兰\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"花木兰\"})",
+  "priority": 0,
+  "editor_mode": "text"
+}

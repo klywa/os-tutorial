@@ -1,0 +1,29 @@
+{
+  "name": "用武装重构回收干将的自带装备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《冷门知识》干将莫邪武器与《常用技巧》换下干将前先处理自带双剑；BV1gtan64Ed8 0–27.66 秒与武装重构卡面。干将自带双剑可当重构材料，摧毁当前装备并随机返还基础装备。条件无法读取实际装备槽，话术保留“可以”的适用含义。",
+  "utterances": [
+    {
+      "text": "干将身上还留着自带剑时，重构能把它换成队友能用的装备。",
+      "id": "utterances_f5be5a8546a843ed8db9b3e61c534703"
+    },
+    {
+      "text": "给干将用重构能回收剩下的装备，连还没拆的自带剑也算。",
+      "id": "utterances_92be2cfd33fc4bf98472a11296110c7b"
+    },
+    {
+      "text": "还留着自带剑，就在干将离场前重构，换给队友用。",
+      "id": "utterances_fddf1683754f469e8f18d13cca052631"
+    }
+  ],
+  "id": "group_1e44b79a1ffe44e4b17f9897bc7b9ad3",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"干将莫邪\" and arg2 is \"武装重构\"",
+  "editor_mode": "text"
+}

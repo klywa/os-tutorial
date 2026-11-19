@@ -1,0 +1,29 @@
+{
+  "name": "早拿上官婉儿后保留花木兰路线",
+  "scope": {
+    "player_id": "player:39",
+    "lineup_note_id": null
+  },
+  "explanation": "《明先生》适用打法「河洛花木兰」。前两次拍卖期间较早拿到上官婉儿，是补复生配套的定向信号，后续仍要找到花木兰。。每句均点明建议发展的具体阵容。",
+  "utterances": [
+    {
+      "text": "建议走河洛花木兰，婉儿的整备能给木兰送古币。",
+      "id": "utterances_7c5508e1c26741ea82155357355d0404"
+    },
+    {
+      "text": "可以往河洛花木兰发展，先留婉儿给木兰攒复生。",
+      "id": "utterances_f6a7c0b4a8344649a9d4567b26a83abc"
+    },
+    {
+      "text": "婉儿已到手，走河洛花木兰能提早准备古币来源。",
+      "id": "utterances_bbf3235059cd43519125c10e9d1e350b"
+    }
+  ],
+  "id": "group_1ba9359bd1a546e1bde898c5ffd940ee",
+  "event_id": "os_98aee9aae8b9d41d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 <= 7 and (玩家.战场 has \"上官婉儿\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"上官婉儿\"})",
+  "priority": 0,
+  "editor_mode": "text"
+}

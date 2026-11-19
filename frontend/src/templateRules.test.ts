@@ -5,6 +5,20 @@ const catalog:ConditionCatalog=JSON.parse(rawCatalog);
 const paths=listPaths({id:'deploy',name:'解释为何上阵英雄',parameters:[]},catalog);
 function leaf(left:string,operator:string,right:string):ConditionNode{return {kind:'leaf',left,operator,right};}
 describe('visual condition editor',()=>{
+ it('offers sums only for numeric fields shared by every array member type',()=>{
+  const sum=paths.find(p=>p.path==='玩家.战场.求和(等级)')!;
+  expect(sum.type).toBe('int');
+  expect(operatorsFor(sum)).toContain('>');
+  expect(paths.some(p=>p.path==='玩家.手牌.求和(等级)'||p.path==='玩家.战场.求和(名称)')).toBe(false);
+ });
+ it('offers card tags on event objects, board collections and nested heroes',()=>{
+  const withTags={...catalog,card_tags:{card1:{type:'英雄',tags:['提供友军护盾']},card2:{type:'天赋',tags:['提供能量']}}};
+  const paths=listPaths({id:'deploy',name:'解释为何上阵英雄',parameters:[]},withTags);
+  for(const path of ['arg1.标签','玩家.战场.标签','对局.当前对手.主C.标签']){
+   expect(paths.find(p=>p.path===path)).toMatchObject({type:'Array<string>',operations:['has'],choices:['提供友军护盾']});
+   expect(renderRule(leaf(path,'has','"提供友军护盾"'))).toBe(path+' has "提供友军护盾"');
+  }
+ });
  it('offers the two hero name paths and builds the three-part acceptance rule',()=>{
   const main=paths.find(p=>p.path==='玩家.主C.名称')!,arg=paths.find(p=>p.path==='arg1.名称')!;
   expect(compatibleRight(main.type,arg.type,'is')).toBe(true);
@@ -12,6 +26,15 @@ describe('visual condition editor',()=>{
   const rule:ConditionNode={kind:'all',children:[leaf(main.path,'is',arg.path),leaf('玩家.主C.等级','>=','10'),leaf('玩家.剩余能量','<=','3')]};
   expect(renderRule(rule)).toBe('(玩家.主C.名称 is arg1.名称 and 玩家.主C.等级 >= 10 and 玩家.剩余能量 <= 3)');
   expect(completeTree(rule)).toBe(true);
+ });
+ it('offers the same lineup-name membership condition on arguments and intermediate objects',()=>{
+  const options=listPaths({id:'lineup',name:'解释为何建议向某阵容发展',parameters:[]},catalog);
+  for(const path of ['arg1.阵容名','对局.当前对手.当前阵容.阵容名']){
+   const option=options.find(p=>p.path===path)!;
+   expect(option.type).toBe('Array<string>');
+   expect(operatorsFor(option)).toEqual(['has']);
+   expect(compatibleRight(option.type,'string','has')).toBe(true);
+  }
  });
  it('honors grouping, boolean leaves, and empty root semantics',()=>{
   const tree:ConditionNode={kind:'not',children:[{kind:'any',children:[leaf('arg1.已觉醒','',''),leaf('玩家.等级','==','5')]}]};

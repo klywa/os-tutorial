@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》日落海过渡。此处解释狂铁承伤、米莱狄以仆从接触远端敌人的职责，只需判断狂铁在场。",
   "utterances": [
     {
-      "text": "米莱狄能在远处的敌人身边召唤机械仆从，和狂铁配合打过渡。",
+      "text": "狂铁在前面扛伤，米莱狄用仆从去打远处敌人。",
       "id": "utterances_a4e1abeb8e1e4a03b1dec0e0e7baed36"
     },
     {
-      "text": "狂铁在前排承伤时，米莱狄可以靠机械仆从攻击远处的敌人。",
+      "text": "上米莱狄能补日落海过渡的后排伤害。",
       "id": "utterances_211ff24505184e54ad0a9f90c894c459"
+    },
+    {
+      "text": "狂铁拖住近处敌人，米莱狄的机械仆从能去打远处。",
+      "id": "utterances_d66ac4a8a77e45b7a6b32355bce110ee"
     }
   ],
-  "explanation": "狂铁、朵莉亚在场，上米莱狄补充远端输出。《常小娥灵活变阵-常小娥》「施法过渡遇到跳后排刺客时」记录这三名英雄过渡；米莱狄技能会在最远敌人附近召唤机械仆从。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_149076b36a284c97b4200b7497d41e01",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -44,7 +48,7 @@
       "name": "米莱狄"
     }
   ],
-  "priority": 0,
-  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\" and 玩家.战场 has \"朵莉亚\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\"",
+  "editor_mode": "text",
+  "priority": 0
 }

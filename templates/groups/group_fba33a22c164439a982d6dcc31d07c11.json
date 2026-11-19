@@ -4,19 +4,20 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“穿戴装备”事件中，穿戴者为干将莫邪，装备为法源之杯，诸葛亮在场时适用。干将莫邪靠法源之杯多放技能，诸葛亮也能获得法力和临时等级。依据为《常小娥灵活变阵-常小娥》「法源之杯」及官方装备「法源之杯」。",
+  "explanation": "诸葛亮普通／觉醒卡面：其他英雄施法让他获得法力与临时等级；法源之杯每秒回5蓝。干将普通卡15/25，双剑·雄可进一步降低上限。固定点名句留在干将这组。",
   "utterances": [
     {
-      "text": "法源之杯让干将莫邪更快施法，能触发诸葛亮的回蓝效果。",
-      "id": "utterances_26b3c0a7477b4274965ea40fca75c618"
+      "text": "法源之杯让干将莫邪更快施法，频繁触发诸葛亮的回蓝效果。",
+      "id": "utterances_26b3c0a7477b4274965ea40fca75c618",
+      "fixed": true
     },
     {
-      "text": "干将莫邪靠法源之杯多放技能，诸葛亮也能获得法力和临时等级。",
+      "text": "给干将法源之杯能加快出剑，他每次施法还能给诸葛亮回蓝。",
       "id": "utterances_63d3da9bc14d4657a0a70434ca0e515d"
     }
   ],
-  "event_id": "os_5dfcb4835e1e1513",
   "id": "group_fba33a22c164439a982d6dcc31d07c11",
+  "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
   "priority": 0,

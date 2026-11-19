@@ -1,0 +1,25 @@
+{
+  "name": "用化铁为金让裴擒虎的等级随变身保留",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常用技巧》利用裴擒虎的临时等级及化铁为金前先排除不想变出的5阶英雄。化铁为金指定一至三阶英雄，随机变为不在场的觉醒五阶，保留当前等级（含临时）。普通虎只借一半，未整备不产生临时等级。",
+  "utterances": [
+    {
+      "text": "裴擒虎变成随机觉醒五阶，当前等级照留，有临时等级也算。",
+      "id": "utterances_18758af9d78748d5a1c7c0f05b0f90fb"
+    },
+    {
+      "text": "裴擒虎变成随机五阶时，整备获得的临时等级也会保留。",
+      "id": "utterances_ca3154bd1ffd48c88c4a1a38209615f7"
+    }
+  ],
+  "id": "group_fd29b29b11ea464997d24fc604333ab8",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg1 is \"裴擒虎\" and arg2 is \"化铁为金\"",
+  "editor_mode": "text"
+}

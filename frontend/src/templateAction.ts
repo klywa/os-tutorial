@@ -1,4 +1,4 @@
-import type {TemplateEvent, TemplateGroup} from './templates';
+import {resolveTemplateEntities,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter} from './templates';
 
 // Only unconditional equalities identify an action's participants. Other facts
 // (including entities mentioned under negation) belong in the trigger conditions.
@@ -25,6 +25,8 @@ export function fixedArguments(group: TemplateGroup) {
   }
   if(parts.length) {parts.push(source.slice(start));parts.forEach(visit);return;}
   if(source.startsWith('(') && outerEnd===source.length-1) {visit(source.slice(1,-1));return;}
+  const lineup=/^([a-z][a-z0-9_]*)\.阵容名\s+has\s+("(?:\\.|[^"\\])*")$/u.exec(source);
+  if(lineup){remember(lineup[1],JSON.parse(lineup[2]));return;}
   const comparison=/^([a-z][a-z0-9_]*)(?:\.(?:名称|name))?\s*(?:\bis\b|==)\s*("(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?)$/u.exec(source);
   if(comparison) remember(comparison[1],comparison[2].startsWith('"')?JSON.parse(comparison[2]):comparison[2]);
  }
@@ -45,6 +47,7 @@ export function templateAction(group:TemplateGroup,event?:TemplateEvent,values=f
  const [a,b,c]=['arg1','arg2','arg3'].map(key=>values.get(key));
  const actionName=event.name.replace(/^解释为何/,'');
  switch(actionName) {
+  case '建议向某阵容发展': return '向'+(a??'建议的阵容')+'方向发展';
   case '上阵英雄': return '上阵'+(a??'英雄');
   case '合成英雄': return '合成'+(a??'英雄');
   case '购买英雄': return '购买'+(a??'英雄');
@@ -63,6 +66,7 @@ export function templateAction(group:TemplateGroup,event?:TemplateEvent,values=f
  }
 }
 const parameterRoles:Record<string,readonly string[]>={
+ '建议向某阵容发展':['建议发展的阵容'],
  '上阵英雄':['本次上阵的英雄'], '合成英雄':['本次合成的英雄'],
  '购买英雄':['买下的英雄','商店中未选择的牌'], '购买效果牌':['买下的效果牌','商店中未选择的牌'],
  '从手牌出售英雄':['从手牌卖出的英雄'], '从战场出售英雄':['从战场卖出的英雄'],
@@ -78,4 +82,14 @@ export function parameterRole(event:TemplateEvent,parameter:TemplateEvent['param
  const match=/^arg([1-9]\d*)$/.exec(parameter.key);
  const role=match && parameterRoles[event.name.replace(/^解释为何/,'')]?.[Number(match[1])-1];
  return parameter.name!==parameter.key ? parameter.name : role || '';
+}
+
+// A literal inherits the type of its argument. Only one catalogue category
+// can supply a portrait, including when the event admits several categories.
+export function argumentCardIds(parameter:TemplateParameter,value:string,cards:(TemplateEntity&{category:string;aliases?:string[]})[]){
+ if(parameter.type!=='entity')return [];
+ const refs=resolveTemplateEntities(value,cards,parameter.entity_categories);
+ const ids=new Set(refs.map(ref=>ref.id));
+ const categories=new Set(cards.filter(card=>ids.has(card.id)).map(card=>card.category));
+ return categories.size===1?[...ids]:[];
 }

@@ -86,8 +86,16 @@ def _condition_anchors(current, previous):
     return {new: previous[old]['value'] for new, old in assigned.items()}
 
 
-def _v1(document, catalog, notes, *, retired_entities=None, retired_suggestions=None):
+def _insert_retained(rows, previous, keep):
+    for index, row in enumerate(previous):
+        if keep(row):
+            rows.insert(index, deepcopy(row))
+    return rows
+
+
+def _v1(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
     doc = deepcopy(document)
+    prior_groups = {group['id']: group for group in public['groups']}
     for folder in ('events', 'groups'):
         for record in _list(doc[folder]):
             if not isinstance(record, dict): raise ValueError('导入记录格式无效')
@@ -96,11 +104,21 @@ def _v1(document, catalog, notes, *, retired_entities=None, retired_suggestions=
                 for item in _list(record.get(field)):
                     if not isinstance(item, dict): raise ValueError('导入条目格式无效')
                     item.setdefault('id', _id(field))
+            if folder == 'groups':
+                previous = prior_groups.get(record['id'], {}).get('utterances', [])
+                fixed_ids = {row['id'] for row in previous if row.get('fixed')}
+                editable = [row for row in record['utterances'] if row['id'] not in fixed_ids]
+                record['utterances'] = _insert_retained(editable, previous, lambda row: row.get('fixed'))
     return schema.validate_library(doc, catalog, notes,
                                    retired_entities=retired_entities, retired_suggestions=retired_suggestions)
 
 
 def decode(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
+    # Whole-library exports from earlier releases carry unused retired events.
+    if isinstance(document,dict) and isinstance(document.get('events'),list):
+        document = {**document,'events':[event for event in document['events']
+                    if not (isinstance(event,dict) and isinstance(event.get('name'),str)
+                            and event['name'].endswith('（旧版）'))]}
     if isinstance(document,dict) and type(document.get('schema_version')) is int and document['schema_version']==3 and document.get('kind')=='speech-template-library':
         from template_package import decode as decode_rules
         return decode_rules(document,public,catalog,notes,retired_entities=retired_entities,retired_suggestions=retired_suggestions)
@@ -108,7 +126,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
     if document['kind'] != 'speech-template-library' or type(document['schema_version']) is not int or document['schema_version'] not in (1, 2):
         raise ValueError('模板库格式或版本无效')
     if document['schema_version'] == 1:
-        return _v1(document, catalog, notes, retired_entities=retired_entities, retired_suggestions=retired_suggestions)
+        return _v1(document, public, catalog, notes, retired_entities=retired_entities, retired_suggestions=retired_suggestions)
     old_events = {e['id']: e for e in public.get('events', [])}
     old_groups = {g['id']: g for g in public.get('groups', [])}
     events = []
@@ -184,10 +202,13 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         for value in _list(group['utterances']):
             schema.text(value, '话术'); utterances.append({'text': value})
         prior_utterances = previous.get('utterances', [])
-        group['utterances'] = _stable_rows(utterances, [row for row in prior_utterances if not row.get('ignored')], 'utterances')
-        for index, row in enumerate(prior_utterances):
-            if row.get('ignored'):
-                group['utterances'].insert(index, deepcopy(row))
+        def retained(row):
+            return row.get('ignored') or row.get('fixed')
+        for row in prior_utterances:
+            if row.get('fixed') and not row.get('ignored') and {'text': row['text']} in utterances:
+                utterances.remove({'text': row['text']})
+        editable = _stable_rows(utterances, [row for row in prior_utterances if not retained(row)], 'utterances')
+        group['utterances'] = _insert_retained(editable, prior_utterances, retained)
         if 'ignored' in previous:
             group['ignored'] = previous['ignored']
         archives[group['id']] = deepcopy(previous.get('related_entities', []))

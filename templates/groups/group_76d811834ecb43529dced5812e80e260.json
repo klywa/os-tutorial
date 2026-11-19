@@ -1,9 +1,10 @@
 {
   "name": "太乙真人给最近队友复生",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "上阵太乙真人时，说明这项操作的战斗或资源收益。太乙真人开团会给最近的队友复生，能给主力多一次作战机会。依据《常小娥灵活变阵-常小娥》「太乙真人」和太乙真人的官方卡面、技能。",
   "utterances": [
     {
       "text": "太乙真人开团会给最近的队友复生，能给主力多一次作战机会。",
@@ -14,9 +15,8 @@
       "id": "utterances_274e8a8e041847c0b1f8cb3b84e865d7"
     }
   ],
-  "explanation": "上阵太乙真人时，说明这项操作的战斗或资源收益。太乙真人开团会给最近的队友复生，能给主力多一次作战机会。依据《常小娥灵活变阵-常小娥》「太乙真人」和太乙真人的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_76d811834ecb43529dced5812e80e260",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -28,7 +28,7 @@
       "name": "太乙真人"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"太乙真人\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"太乙真人\""
 }

@@ -1,22 +1,26 @@
 {
   "name": "弈星在场时升级多得经验",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
+  "explanation": "《基础知识》棋手经验和升级：主动升级消耗与经验差额等量的能量。弈星普通／觉醒卡在棋手升级时分别补2／4经验。等额可升一次，不从剩余能量单独推断连升。",
   "utterances": [
     {
-      "text": "让弈星在场，棋手升级时能拿到额外经验。",
+      "text": "能量够这次升本，先上弈星就能顺手给下一级攒经验。",
       "id": "utterances_994c26773ed4475392bd43918e2dc629"
     },
     {
-      "text": "如果打算连续升级，弈星能给下一次升级补经验。",
+      "text": "弈星这轮上场能赶上升本，下一次补经验时就能少花钱。",
       "id": "utterances_4bd4c95bc88a4090ae2c3b9e57152d1d"
+    },
+    {
+      "text": "现在升得起一级，先上弈星能把这次升级换成额外经验。",
+      "id": "utterances_99c3a041017d4af59495502e835acb4d"
     }
   ],
-  "explanation": "上阵弈星时，说明这项操作的战斗或资源收益。让弈星在场，棋手升级时能拿到额外经验。依据《常小娥灵活变阵-常小娥》「弈星」和弈星的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_23f43ca6d8a24a76859f74b2e6a42da5",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -29,6 +33,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg1 is \"弈星\"",
+  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验",
   "editor_mode": "text"
 }

@@ -226,35 +226,15 @@
       "section": "核心原理",
       "version": null,
       "condition": "",
-      "inference": true,
+      "inference": false,
       "kind": "conditional_strategy",
-      "evidence": [
-        {
-          "source": "BV1R7hx6yEVK:p1",
-          "start": 346,
-          "end": 419
-        },
-        {
-          "source": "BV1R7hx6yEVK:p1",
-          "start": 880,
-          "end": 920
-        },
-        {
-          "source": "BV1R7hx6yEVK:p1",
-          "start": 1078,
-          "end": 1295
-        },
-        {
-          "source": "BV16cpm64E3K:p1",
-          "start": 512.16,
-          "end": 732.41
-        }
-      ],
+      "evidence": [],
       "review_basis": {
         "snapshot": "knowledge/reviews/三分倒转与大河龙蛇-2026-10-21.json"
       },
       "text_ref": "n-856517f9a847d4d00489",
-      "display_ref": "n-856517f9a847d4d00489"
+      "display_ref": "n-856517f9a847d4d00489",
+      "origin": "manual"
     },
     {
       "id": "sf-chain",
@@ -14069,8 +14049,8 @@
       "display_ref": "n-e3ab54aca6bd90f1688a"
     }
   ],
-  "body_sha256": "76eb4a93331843d3703c60cabaf7af4dc8c6f56732e94c3ca5381ab6b6cba51d",
-  "revision": "0df47fa21620d4788822",
+  "body_sha256": "d129f064875fbe5f4dc8ff53c22733a8a30bdfb52643dca6ab30ec12b62d7c40",
+  "revision": "e5ee152a98d4dc5d8798",
   "legacy_layout": {
     "version": 4,
     "requires_principle": true,
@@ -16200,12 +16180,16 @@
       "history_index": 10
     }
   ],
-  "history_head": "knowledge-history/0f457bb1aacb2bad4b1dcb49df0113db/audit/ec0e8bf49d891a6b948c2a8a311208985d253579f437fb1e742f095724b98e3b.json",
-  "history_count": 16,
+  "history_head": "knowledge-history/0f457bb1aacb2bad4b1dcb49df0113db/audit/3c21ce078c53c0ed108faadd62e1595dbb7229f7e327142aeba2219a3dc3ee81.json",
+  "history_count": 17,
   "node_annotations": {
     "n-5bcb46060a832bb8239b": {
       "origin": "manual",
       "section": "阵容组成与运营节奏"
+    },
+    "n-856517f9a847d4d00489": {
+      "origin": "manual",
+      "section": "核心原理"
     }
   },
   "review_receipts": [],

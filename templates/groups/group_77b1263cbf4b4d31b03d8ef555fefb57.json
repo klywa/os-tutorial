@@ -1,0 +1,29 @@
+{
+  "name": "上钟馗接百里玄策的闪现切入",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常用技巧》让钟馗承接切入的主力，BV1DchC6JEpv 与 BV1LshE6oESg。百里玄策拥有闪现。钟馗可留作接切入的对策位，实际掉级者必须完成击败，局面字段未记录站位。",
+  "utterances": [
+    {
+      "text": "钟馗能留在后排，给切入的玄策制造掉级风险。",
+      "id": "utterances_a4b11049114d4abbab3d767602d9004c"
+    },
+    {
+      "text": "上钟馗能提防玄策切后排，牺牲时压低击败者等级。",
+      "id": "utterances_0e535f13dc4f4af5a1a659d86746c108"
+    },
+    {
+      "text": "钟馗能接玄策的切入，玄策击败他就会暂时掉级。",
+      "id": "utterances_e51c6185967649eea85df203c8c14d54"
+    }
+  ],
+  "event_id": "os_e5391e165361858d",
+  "id": "group_77b1263cbf4b4d31b03d8ef555fefb57",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"钟馗\" and 对局.当前对手.主C is \"百里玄策\"",
+  "editor_mode": "text",
+  "priority": 0
+}

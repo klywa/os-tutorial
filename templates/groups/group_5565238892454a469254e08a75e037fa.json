@@ -4,19 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》大司命。四人组可选择的前排方向，牺牲队友可为往生图腾增加法力和永久等级。买首张仅表示保留该方向。",
   "utterances": [
     {
-      "text": "大司命在场能召唤往生图腾，己方触发牺牲还能给图腾回蓝。",
+      "text": "大司命是四人组的前排备选，能接苏烈的牺牲收益。",
       "id": "utterances_3ad6b953b9ba48889373bf3d3254d19b"
     },
     {
-      "text": "队友触发牺牲时，大司命的往生图腾能提升永久等级。",
+      "text": "大司命能用往生图腾补前排，配牺牲队友还能养图腾。",
       "id": "utterances_70393760a3944047bf1129b73b3c5197"
+    },
+    {
+      "text": "买大司命给四人组留个前排，牺牲配套能帮图腾回蓝。",
+      "id": "utterances_79474970996e48edabef63ba1743c5fe"
     }
   ],
-  "explanation": "买到大司命时，这组话说明大司命在队伍中的作用。大司命在场时召唤往生图腾；己方触发牺牲会提升图腾的永久等级并使它获得50点法力。依据《常小娥灵活变阵-常小娥》「大司命」及大司命的官方卡面、技能。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_5565238892454a469254e08a75e037fa",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [
     {
@@ -32,7 +36,7 @@
       "name": "大司命"
     }
   ],
-  "priority": 0,
   "expression": "arg1 is \"大司命\"",
-  "editor_mode": "text"
+  "editor_mode": "text",
+  "priority": 1
 }

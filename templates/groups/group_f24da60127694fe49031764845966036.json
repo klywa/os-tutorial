@@ -1,0 +1,25 @@
+{
+  "name": "选老夫子补招募战术",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「庄周」。本组解释选老夫子补招募战术的收益。官方老夫子（card:1391）的卡牌效果是依据。触发条件限定普通卡，觉醒后的数量或战术牌品种不同。",
+  "utterances": [
+    {
+      "text": "老夫子让每回合首次合成多拿一张招募战术。",
+      "id": "utterances_25d1db7578b540a3b0dcc7351b5a2171"
+    },
+    {
+      "text": "打算合成英雄时，老夫子能帮你拿招募战术找逐鹿英雄。",
+      "id": "utterances_6fecec4c8db74452bbc0ace81d2abfd6"
+    }
+  ],
+  "id": "group_f24da60127694fe49031764845966036",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"老夫子\" and not arg2.已觉醒) and arg1 has \"老夫子\"",
+  "editor_mode": "text"
+}

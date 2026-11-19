@@ -1,0 +1,25 @@
+{
+  "name": "用1阶英雄兑换券找同阶英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「苏烈」列出此券为获得途径。官方1阶英雄兑换券（card:7051）从三名同阶候选中选一名，可找苏烈补前排，候选未必包含目标。",
+  "utterances": [
+    {
+      "text": "一阶兑换券有机会找到苏烈，为队伍补前排。",
+      "id": "utterances_fe34cc69bd5e451ca9daabb680688f91"
+    },
+    {
+      "text": "用1阶英雄兑换券能从三名同阶候选里挑一张需要的英雄牌。",
+      "id": "utterances_3b27c49c409d4bf8a61649949a970abf"
+    }
+  ],
+  "id": "group_2c03d66dbf904db588dafec13475f299",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"1阶英雄兑换券\"",
+  "editor_mode": "text",
+  "priority": 0
+}

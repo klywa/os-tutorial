@@ -1,0 +1,25 @@
+{
+  "name": "用4阶英雄兑换券找同阶英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「艾琳」列出此券为获得途径。官方4阶英雄兑换券（card:7054）从三名同阶候选中选一名，可找艾琳补后排输出，候选未必包含目标。",
+  "utterances": [
+    {
+      "text": "四阶兑换券有机会找到能补后排输出的艾琳。",
+      "id": "utterances_96d1532c120348c3a189f1ce2f07ee57"
+    },
+    {
+      "text": "用4阶英雄兑换券能从三名同阶候选里挑一张需要的英雄牌。",
+      "id": "utterances_6eded16700ba45efbb80921638ef7973"
+    }
+  ],
+  "id": "group_9f58819f482244dab53414d4aa41d0c2",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"4阶英雄兑换券\"",
+  "editor_mode": "text",
+  "priority": 0
+}

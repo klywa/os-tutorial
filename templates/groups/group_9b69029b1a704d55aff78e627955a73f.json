@@ -1,0 +1,25 @@
+{
+  "name": "选河洛来客取得李信",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「李信」列此天赋为来源，李信从己方牺牲获得临时等级，可补输出。官方天赋同时给3能量。",
+  "utterances": [
+    {
+      "text": "河洛来客给李信，能借前排的牺牲培养输出。",
+      "id": "utterances_2c3d1387b70f48a89ee1e80b88cb20ca"
+    },
+    {
+      "text": "河洛来客能拿李信打牺牲输出，还补三点能量。",
+      "id": "utterances_57a4b79f5b3a41789e080ba44050d76a"
+    }
+  ],
+  "id": "group_9b69029b1a704d55aff78e627955a73f",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"河洛来客\") and arg1 has \"河洛来客\"",
+  "editor_mode": "text"
+}

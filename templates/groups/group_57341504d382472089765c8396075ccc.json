@@ -1,0 +1,29 @@
+{
+  "name": "已有芈月和嬴政转向高阶逐鹿",
+  "scope": {
+    "player_id": "player:39",
+    "lineup_note_id": null
+  },
+  "explanation": "《明先生》适用打法「高阶逐鹿嬴政」。芈月与嬴政已到手，芈月负责培养而嬴政飞剑负责持续输出。装备需要随后实际调整。。每句均点明建议发展的具体阵容。",
+  "utterances": [
+    {
+      "text": "建议走高阶逐鹿嬴政，芈月能提高嬴政的等级。",
+      "id": "utterances_f4a5b9de183042e3a5e74de28bd6c254"
+    },
+    {
+      "text": "高阶逐鹿嬴政可以走，芈月负责养级，嬴政负责输出。",
+      "id": "utterances_691381da8fb84ab2ada6938a72e1dd08"
+    },
+    {
+      "text": "可以往高阶逐鹿嬴政发展，飞剑主力和养他的芈月都齐了。",
+      "id": "utterances_b89ca2a2e80e4e98a55c653f46d08d7d"
+    }
+  ],
+  "id": "group_57341504d382472089765c8396075ccc",
+  "event_id": "os_98aee9aae8b9d41d",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg1.阵容名 has \"高阶逐鹿嬴政\" or arg1.阵容名 has \"高阶逐鹿嬴政-明先生\") and (玩家.战场 has \"芈月\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"芈月\"}) and (玩家.战场 has \"嬴政\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"嬴政\"})",
+  "editor_mode": "text"
+}

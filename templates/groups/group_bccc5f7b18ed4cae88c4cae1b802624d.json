@@ -1,0 +1,25 @@
+{
+  "name": "选孙尚香补刷新",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「甄姬」。本组解释选孙尚香补刷新的收益。官方孙尚香（card:1111）的卡牌效果是依据。触发条件限定普通卡，觉醒后的数量或战术牌品种不同。",
+  "utterances": [
+    {
+      "text": "孙尚香登场送一次免费刷新，方便继续找牌。",
+      "id": "utterances_93a26d243eda47109b1390cad35a3feb"
+    },
+    {
+      "text": "孙尚香给一次免费刷新，能省下一次刷店的能量。",
+      "id": "utterances_2a26ad5173a74f788b960908bb74891a"
+    }
+  ],
+  "id": "group_bccc5f7b18ed4cae88c4cae1b802624d",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "(arg2 is \"孙尚香\" and not arg2.已觉醒) and arg1 has \"孙尚香\"",
+  "editor_mode": "text"
+}

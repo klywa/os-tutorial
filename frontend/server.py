@@ -90,6 +90,13 @@ class Handler(BaseHTTPRequestHandler):
             season=seasons.selected(self.path)
         except ValueError as exc:
             return self.response(400,{'error':str(exc)})
+        import card_tags
+        if card_tags.matches(path):
+            try:
+                if season!='S1':raise KeyError('该赛季暂无标签')
+                return self.response(200,card_tags.read(self.server.root,identity,path))
+            except KeyError as exc:return self.response(404,{'error':str(exc)})
+            except PermissionError as exc:return self.response(403,{'error':str(exc)})
         if path=='/api/templates' or path.startswith('/api/templates/'):
             try:
                 if season!='S1':
@@ -228,6 +235,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200, crawler.source_rows(self.server.root, self.server.crawler.store))
             if path.startswith('/api/'):
                 recover_before_read(self.server.root)
+                if path == '/api/notes/export.zip':
+                    from note_export import send_archive
+                    return send_archive(self,self.server.root,season)
                 if path in ('/api/notes/catalog','/api/notes/search'):
                     import reader_store
                     cat=seasons.catalog(reader_store.catalog(self.server.root),season)
@@ -343,6 +353,9 @@ class Handler(BaseHTTPRequestHandler):
             if season!='S1' and seasons.protected_write(path):
                 payload(self)
                 raise ValueError('该赛季暂不支持维护此资料')
+            import card_tags
+            if self.command=='POST' and card_tags.matches(path):
+                return self.response(200,card_tags.submit(self.server,identity,path,payload(self)))
             if path=='/api/local-service/stop' and self.command=='POST':
                 if identity['role']!='admin':return self.response(403,{'error':'只有本地管理员可以管理服务'})
                 if payload(self):raise ValueError('停止服务不接受额外参数')

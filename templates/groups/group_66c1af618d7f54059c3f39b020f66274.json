@@ -1,0 +1,29 @@
+{
+  "name": "四人阵上海诺补范围法伤",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「海诺」。海诺是四人组输出候选，范围法伤来自主动技能。只在上阵后有四人且海诺已在场时解释他在四人队的职责。",
+  "utterances": [
+    {
+      "text": "上海诺给四人组补范围法伤，子杖能波及旁边的敌人。",
+      "id": "utterances_299f8b498654425bbaf8b1729773d400"
+    },
+    {
+      "text": "海诺负责后排输出，能一次打到目标和附近的敌人。",
+      "id": "utterances_bfe109e054494c838c7184e3433011df"
+    },
+    {
+      "text": "四人组靠海诺打范围法伤，敌人扎堆时也能一起打。",
+      "id": "utterances_8e45de6092fb4635a9b5c635d6ba3723"
+    }
+  ],
+  "id": "group_66c1af618d7f54059c3f39b020f66274",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"海诺\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"海诺\"",
+  "editor_mode": "text",
+  "priority": 0
+}

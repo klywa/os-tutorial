@@ -1,0 +1,29 @@
+{
+  "name": "开局买狂铁单挂攒核心",
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "utterances": [
+    {
+      "text": "狂铁能先自己扛，整备还能养阿科米亚核心。",
+      "id": "utterances_7b111e48b262441e84c9ad2140de5ec8"
+    },
+    {
+      "text": "先单挂狂铁，让小菟和核心等级都帮他稳住前期。",
+      "id": "utterances_0db3e52b53d9431bb48612e5959f7dc3"
+    },
+    {
+      "text": "开局拿狂铁是为了早些攒核心等级，兼顾本轮前排。",
+      "id": "utterances_d8f56e34fdf94f28a2e09e61a393b01c"
+    }
+  ],
+  "explanation": "《常小娥灵活变阵-常小娥》开局运营及狂铁。开局空场准备单挂，先靠狂铁承伤和整备成长，后续的日落海前排或输出可用核心等级。",
+  "event_id": "os_2406b1c2f3572ad9",
+  "id": "group_af7002e675924aa3a008d9211daa058c",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"狂铁\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "editor_mode": "text",
+  "priority": 0
+}

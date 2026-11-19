@@ -4,9 +4,10 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「苏烈」。选择场合可能已经有多人，前期单挂只是有条件的用途。",
   "utterances": [
     {
-      "text": "苏烈牺牲能提升自己的永久等级，适合前期单挂。",
+      "text": "前期想单挂保血，可以选能靠牺牲永久升级的苏烈。",
       "id": "utterances_86afcab3ecae409ca3f253ff91de8f23"
     },
     {
@@ -14,9 +15,8 @@
       "id": "utterances_9054be8121e94efa997411b899df6f82"
     }
   ],
-  "explanation": "选中苏烈时，说明这项操作的战斗或资源收益。苏烈牺牲能提升自己的永久等级，适合前期单挂。依据《常小娥灵活变阵-常小娥》「苏烈」和苏烈的官方卡面、技能。",
-  "event_id": "os_dcef166d05efe08e",
   "id": "group_d41e99885e7142e7aeeca485042d0917",
+  "event_id": "os_dcef166d05efe08e",
   "conditions": [],
   "related_entities": [
     {
@@ -29,6 +29,6 @@
     }
   ],
   "priority": 0,
-  "expression": "arg2 is \"苏烈\"",
+  "expression": "(arg2 is \"苏烈\") and arg1 has \"苏烈\"",
   "editor_mode": "text"
 }

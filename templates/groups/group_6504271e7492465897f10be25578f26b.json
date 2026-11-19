@@ -1,0 +1,25 @@
+{
+  "name": "单人场用精密协作集中等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《冷门知识》简易协作效果卡确认指定目标本人可获随机一份，单人场两份归一。精密协作官方卡面对指定英雄+4级、随机英雄+3级。精密协作的随机目标未排除本人，按同一目标规则推导。使用时校验指定英雄仍在战场；选／购时不假定已经打出。获牌渠道以对应效果牌所属分组为据。",
+  "utterances": [
+    {
+      "text": "精密协作的两份等级都归场上这一人，一共加7级。",
+      "id": "utterances_f48c2d6e3d274835aa732980911c05e7"
+    },
+    {
+      "text": "场上只有指定英雄，精密协作的随机提供的等级也都归他。",
+      "id": "utterances_cb084af9ebdc4d2b88bdcd2a063f9396"
+    }
+  ],
+  "id": "group_6504271e7492465897f10be25578f26b",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "expression": "arg2 is \"精密协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1",
+  "editor_mode": "text"
+}

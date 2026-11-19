@@ -1,0 +1,25 @@
+{
+  "name": "用日落海征召令补英雄牌",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《常小娥灵活变阵-常小娥》「狂铁」将日落海征召令列为获得途径。官方日落海征召令（card:7509）给两张对应阵营的英雄，可能拿到狂铁以补充这项职责。",
+  "utterances": [
+    {
+      "text": "日落海征召令给两张日落海英雄牌，有机会拿到狂铁。",
+      "id": "utterances_53fd0723387b439881d08ad51b92bf1b"
+    },
+    {
+      "text": "日落海征召令有机会找到能养核心等级的狂铁。",
+      "id": "utterances_f89c5c8ae11440a897450e8a8c1d8f20"
+    }
+  ],
+  "id": "group_8f954273d4df497b832651cfad6d9530",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"日落海征召令\"",
+  "editor_mode": "text",
+  "priority": 0
+}

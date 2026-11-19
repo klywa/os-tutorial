@@ -1,0 +1,29 @@
+{
+  "name": "用精致古币培养河洛英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "《游戏机制》与《常小娥灵活变阵-常小娥》河洛古币相关操作。目标必须是河洛英雄，精致古币直接提升指定英雄的等级。",
+  "utterances": [
+    {
+      "text": "精致古币能给选中的河洛英雄升四级。",
+      "id": "utterances_13480d4a221f41cc9149a1a838e614c5"
+    },
+    {
+      "text": "这四级能直接给指定的河洛英雄。",
+      "id": "utterances_c6a70f8aac8f402eaf915f2699b7f6d1"
+    },
+    {
+      "text": "用精致古币把等级集中到这名河洛英雄身上。",
+      "id": "utterances_e77f2283b3064680879257304e286ac1"
+    }
+  ],
+  "id": "group_317d820c9ec648c1aad80e906d9c18b9",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"精致古币\" and arg1.阵营 is \"河洛\"",
+  "editor_mode": "text",
+  "priority": 0
+}
