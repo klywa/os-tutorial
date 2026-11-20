@@ -1,0 +1,25 @@
+{
+  "name": "英雄安琪拉穿纯净苍穹",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第16行「使用技巧」。装备持续提供法术攻击力且定期净化，光辉是持续法术技能，播报仅说法术攻击力。",
+  "utterances": [
+    {
+      "text": "纯净苍穹能持续叠法攻，让安琪拉的光辉越打越痛。",
+      "id": "utterances_2cc0907d0157440fbabf99fb8dcf6548"
+    },
+    {
+      "text": "安琪拉穿纯净苍穹积攒法攻，增强后续的范围输出。",
+      "id": "utterances_de45e8c714a84e08a6fd051c4065b150"
+    }
+  ],
+  "id": "group_d8f593dae13a5148bd10972824603987",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"安琪拉\" and arg2 is \"纯净苍穹\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

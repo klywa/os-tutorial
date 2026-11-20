@@ -1,0 +1,25 @@
+{
+  "name": "用使绊子压猪八戒的血量和治疗",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第101行「使用技巧」。使绊子降低飞行器命中目标的生命上限和治疗。猪八戒是所列对象中以高生命成长为特点的样板，只承诺命中后发挥。",
+  "utterances": [
+    {
+      "text": "对面主力是猪八戒，使绊子命中就能压血量和治疗。",
+      "id": "utterances_4e78027bd3b54f389cd7e8d52f8cc666"
+    },
+    {
+      "text": "选使绊子，飞行器打到猪八戒可削低生命上限。",
+      "id": "utterances_67623b9f08504984aaa037e8cdb50462"
+    }
+  ],
+  "id": "group_9243b0491ac25ab49611c8dd4fe35507",
+  "event_id": "os_7be319d5c5ce8554",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"“使绊子”模块\" and arg1 has \"“使绊子”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.主C is \"猪八戒\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

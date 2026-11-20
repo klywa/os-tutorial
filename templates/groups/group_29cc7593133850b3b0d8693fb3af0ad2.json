@@ -1,0 +1,25 @@
+{
+  "name": "小妲己用节能商店加快购买",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第55行「使用技巧」。官方节能商店为每次手动刷新后有一张牌减费。能让合适的买牌更省能量，小妲己的被动按购买计数。",
+  "utterances": [
+    {
+      "text": "小妲己选节能商店，刷出低价牌时能更省地攒进度。",
+      "id": "utterances_61befab6e1ca40b7ab9058949c185f70"
+    },
+    {
+      "text": "节能商店让手动刷新后有牌便宜，买牌顺带攒被动。",
+      "id": "utterances_b307ed817da64b13a2cda0dd7a23b915"
+    }
+  ],
+  "id": "group_29cc7593133850b3b0d8693fb3af0ad2",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"节能商店\" and arg1 has \"节能商店\" and 玩家.使用棋手 is \"小妲己\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

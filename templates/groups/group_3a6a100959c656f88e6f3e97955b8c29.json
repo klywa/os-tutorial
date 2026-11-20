@@ -1,0 +1,25 @@
+{
+  "name": "有曹操孙悟空与小乔时上露娜",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第17行「使用技巧」。露娜随机触发整备。曹操和孙悟空是整备候选，小乔在露娜登场触发时独立响应。不能把孙悟空的整备写成会直接触发小乔。",
+  "utterances": [
+    {
+      "text": "有小乔和曹操在，上露娜能带动登场，也能抽到曹操整备。",
+      "id": "utterances_8fef7231a18f4f9d8644e3a564a78687"
+    },
+    {
+      "text": "上露娜能触发小乔，还有机会让曹操或孙悟空整备。",
+      "id": "utterances_fe7476cd7d884577949807299720e855"
+    }
+  ],
+  "id": "group_3a6a100959c656f88e6f3e97955b8c29",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"露娜\" and 玩家.战场 has \"曹操\" and 玩家.战场 has \"孙悟空\" and 玩家.战场 has \"小乔\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

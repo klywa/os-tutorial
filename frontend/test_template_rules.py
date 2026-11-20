@@ -17,6 +17,54 @@ from src.python.condition import evaluate_condition, choose_utterance
 
 
 class TemplateRuleTests(unittest.TestCase):
+    def test_numeric_reference_roundtrips_without_display_substitution(self):
+        count = '玩家.战场.计数(阵营, "无阵营")'
+        line = f'场上有{{{count}}}名无阵营英雄。'
+        group = {'event_name':'解释为何选择天赋','name':'无阵营人数',
+                 'expression':f'arg2 is "协同一致" and {count} >= 2','utterances':[line]}
+        document = {'kind':'speech-template-library','schema_version':3,'events':[],'groups':[group]}
+        preview = store.preview_import(self.root, document)
+        self.assertEqual(preview['errors'], [])
+        store.apply(self.root, preview['revision'], preview['changes'])
+        saved = self.get('/api/templates')
+        self.assertEqual(saved['groups'][0]['utterances'][0]['text'], line)
+        self.assertNotIn(saved['groups'][0]['id'], saved['utterance_bindings'])
+        self.assertEqual(self.get('/api/templates/published')['groups'][0]['utterances'], [line])
+        group['expression'] = f'{count} >= 2 or arg2 is "协同一致"'
+        self.assertTrue(store.preview_import(self.root, document)['errors'])
+
+    def test_literal_membership_references_roundtrip_and_project_choices(self):
+        event = '解释为何选择天赋'
+        expression = 'arg2 is "穷兵黩武" and 玩家.主C in ["嬴政","蒙犽","孙膑"]'
+        line = '选穷兵黩武，{玩家.主C}施法能召唤玄雍士兵。'
+        group = {'event_name':event,'name':'主力施法', 'expression':expression,'utterances':[line]}
+        document = {'kind':'speech-template-library','schema_version':3,'events':[],'groups':[group]}
+        preview = store.preview_import(self.root, document)
+        self.assertEqual(preview['errors'], [])
+        store.apply(self.root, preview['revision'], preview['changes'])
+        saved = self.get('/api/templates')
+        uid = saved['groups'][0]['id']
+        self.assertEqual(saved['utterance_bindings'][uid], {'玩家.主C':['嬴政','蒙犽','孙膑']})
+        self.assertEqual(saved['groups'][0]['utterances'][0]['text'], line)
+        self.assertEqual(self.get('/api/templates/published')['groups'][0]['utterances'], [line])
+        group['expression'] = '玩家.主C in ["嬴政"] or arg2 is "穷兵黩武"'
+        self.assertRegex(store.preview_import(self.root, document)['errors'][0], '玩家.主C')
+
+    def test_unit_alias_catalog_still_imports(self):
+        package = store.refresh_published(self.root)
+        catalog = package['condition_catalog']
+        catalog.pop('unit_types')
+        catalog['types'].pop('单位')
+        catalog['types']['玩家'].pop('已选天赋')
+        catalog['types']['英雄'].pop('已穿装备')
+        catalog['operations'].pop('单位.标签')
+        catalog['aliases'] = {'单位': '英雄'}
+        preview = store.preview_import(self.root, package)
+        self.assertEqual(preview['errors'], [])
+        self.assertEqual(preview['changes'], [])
+        catalog['aliases']['单位'] = '天赋'
+        self.assertTrue(store.preview_import(self.root, package)['errors'])
+
     def test_previous_population_catalog_roundtrip(self):
         package = store.refresh_published(self.root, migrate_events=True)
         player = package['condition_catalog']['types']['玩家']

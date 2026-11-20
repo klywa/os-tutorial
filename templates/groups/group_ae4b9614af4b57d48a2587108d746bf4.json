@@ -1,0 +1,25 @@
+{
+  "name": "有零钱兑换时选丝绸之路攒河洛牌",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "丝绸之路按出售古币给河洛英雄，零钱兑换把一张普通古币换成两张破损古币。只说明可以产生更多河洛英雄机会，普通/破损古币出售交互见原技巧。 来源：personal/knowledge_tips.jsonl 第179行；本地官方卡面 card:636214。",
+  "utterances": [
+    {
+      "text": "已有零钱兑换，选丝绸之路可以把更多古币换成河洛牌。",
+      "id": "utterances_dcb11f5b06e246ad98f4a3fe37b298f7"
+    },
+    {
+      "text": "零钱兑换让古币更多，丝绸之路就有更多换牌机会。",
+      "id": "utterances_8ad08c0936a04970af4b79f0bc8c0c0d"
+    }
+  ],
+  "id": "group_ae4b9614af4b57d48a2587108d746bf4",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"丝绸之路\" and 玩家.已选天赋 has \"零钱兑换\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

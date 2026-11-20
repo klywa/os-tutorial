@@ -1,0 +1,25 @@
+{
+  "name": "刘禅配貂蝉靠施法获得临时等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第4行「使用技巧」。刘禅按队友施法次数为施法者叠临时等级。貂蝉法力值上限较低，可反复触发这个收益。",
+  "utterances": [
+    {
+      "text": "上刘禅，貂蝉每次放技能都能获得临时等级。",
+      "id": "utterances_1706dd69d7654c7ba418442167857bdb"
+    },
+    {
+      "text": "貂蝉施法多，上刘禅能把这些施法变成临时等级。",
+      "id": "utterances_55b6d4da1d9546b9b220744a988e2b60"
+    }
+  ],
+  "id": "group_ae9be56520905e69919d954673b28d36",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

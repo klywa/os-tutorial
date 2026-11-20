@@ -12,11 +12,14 @@ def read(path):
 
 class PreferGroup:
     """Observe whether the runtime offers this group's lines at its final draw."""
-    def __init__(self, lines):
+    def __init__(self, lines, line_index=0):
         self.lines = lines
+        self.line_index = line_index
         self.offered = False
 
     def choice(self, choices):
+        if choices is self.lines:
+            return choices[self.line_index]
         for item in choices:
             if item is self.lines:
                 self.offered = True
@@ -24,7 +27,7 @@ class PreferGroup:
         return choices[0]
 
 
-def check(config, cases):
+def check(config, cases, *, require_all=True):
     from src.python.condition import choose_utterance, evaluate_condition
 
     catalog = config["condition_catalog"]
@@ -52,17 +55,34 @@ def check(config, cases):
                        for dim, field in (("player", "使用棋手"), ("lineup", "使用阵容"))) and
                    evaluate_condition(event, group["expression"], state, catalog))
         probe = PreferGroup(group["utterances"])
-        choose_utterance(config, event, state, rng=probe)
+        first_utterance = choose_utterance(config, event, state, rng=probe)
         won = case.get("can_win", expected)
         if type(won) is not bool or (won and not expected):
             raise ValueError(f"{key}：最终可播预期无效")
+        expected_utterances = case.get("expected_utterances")
+        if "expected_utterances" in case and (
+            not won or not isinstance(expected_utterances, list)
+            or len(expected_utterances) != len(group["utterances"])
+            or not all(isinstance(line, str) for line in expected_utterances)
+        ):
+            raise ValueError(f"{key}：请按配置顺序填写所有预期可播话术")
         if matches != expected or probe.offered != won:
             errors.append(f"{key} / {case.get('reason', kind)}：实际命中 {matches}，实际可播 {probe.offered}")
-        else:
-            coverage[key].add(kind)
-            if probe.offered:
-                coverage[key].add("winner")
-    for key in groups:
+            continue
+        if expected_utterances is not None:
+            actual_utterances = [first_utterance]
+            actual_utterances.extend(
+                choose_utterance(config, event, state, rng=PreferGroup(group["utterances"], index))
+                for index in range(1, len(expected_utterances))
+            )
+            if actual_utterances != expected_utterances:
+                errors.append(f"{key} / {case.get('reason', kind)}：实际可播话术 {actual_utterances}")
+                continue
+        coverage[key].add(kind)
+        if probe.offered:
+            coverage[key].add("winner")
+    required = groups if require_all else dict.fromkeys(tuple(case["group"]) for case in cases)
+    for key in required:
         missing = {"positive", "winner", "negative", "missing"} - coverage[key]
         if missing:
             errors.append(f"{key}：缺少通过的用例 {', '.join(sorted(missing))}")
@@ -74,11 +94,12 @@ if __name__ == "__main__":
     parser.add_argument("published", type=Path, help="GET /api/templates/published 的完整结果")
     parser.add_argument("cases", type=Path)
     parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--groups-in-cases", action="store_true", help="仅要求用例中列出的组有完整覆盖")
     args = parser.parse_args()
     sys.path.insert(0, str(args.root.resolve()))
     config = read(args.published)
     cases = read(args.cases)
-    errors = check(config, cases)
+    errors = check(config, cases, require_all=not args.groups_in_cases)
     if errors:
         parser.exit(1, "\n".join(errors) + "\n")
     print(f"已核对 {len(config['groups'])} 个可播组、{len(cases)} 项用例")

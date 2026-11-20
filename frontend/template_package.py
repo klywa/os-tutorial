@@ -131,6 +131,15 @@ def decode(document, public, entities, notes, **kwargs):
         expected = deepcopy(current['types'])
         previous_lineups = isinstance(types,dict) and '阵容' not in types
         operations = dict(current['operations'])
+        aliases = current['aliases']
+        unit_types = current['unit_types']
+        if isinstance(types,dict) and '单位' not in types:
+            expected.pop('单位')
+            expected['玩家'].pop('已选天赋')
+            expected['英雄'].pop('已穿装备')
+            operations.pop('单位.标签')
+            aliases = {**aliases, '单位': '英雄'}
+            unit_types = None
         if isinstance(types,dict) and '标签' not in types.get('英雄', {}):
             for owner in ('英雄','装备','效果牌','天赋'):
                 expected[owner].pop('标签',None)
@@ -143,7 +152,9 @@ def decode(document, public, entities, notes, **kwargs):
         for field in ('场上英雄数', '人口上限'):
             old_population['玩家'].pop(field)
         if (types not in (expected, old_population) or imported_catalog.get('operations') != operations
-                or any(imported_catalog.get(k)!=current[k] for k in ('roots','aliases','enums'))):
+                or imported_catalog.get('aliases') != aliases
+                or imported_catalog.get('unit_types') != unit_types
+                or any(imported_catalog.get(k)!=current[k] for k in ('roots','enums'))):
             raise ValueError('配置的类型目录与当前项目不一致')
     if not isinstance(doc['events'],list) or not isinstance(doc['groups'],list):
         raise ValueError('事件与模板组必须为列表')
@@ -227,9 +238,10 @@ def decode(document, public, entities, notes, **kwargs):
         extras[group['id']] = restored
         group.setdefault('conditions',[])
     doc['schema_version'] = 2
-    result = old_decode(doc,public,entities,notes,**kwargs)
+    rule_fields = {uid: {key:value for key,value in fields.items() if key in rules.RULE_FIELDS}
+                   for uid,fields in extras.items()}
+    result = old_decode(doc,public,entities,notes,rule_fields=rule_fields,**kwargs)
     for group in result['groups']:
         group.update(extras[group['id']])
-        rules.validate_rule(group,all_events[group['event_id']])
     return result
 

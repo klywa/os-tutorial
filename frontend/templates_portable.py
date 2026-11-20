@@ -113,7 +113,7 @@ def _v1(document, public, catalog, notes, *, retired_entities=None, retired_sugg
                                    retired_entities=retired_entities, retired_suggestions=retired_suggestions)
 
 
-def decode(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
+def decode(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None, rule_fields=None):
     # Whole-library exports from earlier releases carry unused retired events.
     if isinstance(document,dict) and isinstance(document.get('events'),list):
         document = {**document,'events':[event for event in document['events']
@@ -213,6 +213,8 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
             group['ignored'] = previous['ignored']
         archives[group['id']] = deepcopy(previous.get('related_entities', []))
         group['related_entities'] = []
+        if rule_fields:
+            group.update(rule_fields.get(group['id'], {}))
         groups.append(group)
     # Validation needs referenced existing events, but return only imported rows.
     referenced = {group['event_id'] for group in groups}

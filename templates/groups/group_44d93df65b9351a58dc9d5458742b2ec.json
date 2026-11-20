@@ -1,0 +1,25 @@
+{
+  "name": "三分不超过三人时上吕布补吸血",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第9行「使用技巧」。普通吕布开团覆盖最高三名三分英雄，觉醒覆盖六名。不超过三名三分且吕布确实在场时，吕布一定在候选内，自身吸血翻倍。",
+  "utterances": [
+    {
+      "text": "这三分队上吕布能让他吃到翻倍吸血。",
+      "id": "utterances_a638d9e3271c44098cb0e2793ea49930"
+    },
+    {
+      "text": "场上三分不多，上吕布就能让他吃到双倍吸血。",
+      "id": "utterances_db9f41242a784fa9860eaff5cfffdde3"
+    }
+  ],
+  "id": "group_44d93df65b9351a58dc9d5458742b2ec",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"吕布\" and 玩家.战场.计数(阵营, \"三分之地\") <= 3 and 玩家.战场 has \"吕布\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

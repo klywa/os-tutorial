@@ -1,0 +1,25 @@
+{
+  "name": "场上多名无阵营英雄时用逍遥自在",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "所有无阵营英雄各获得两倍场上无阵营英雄数的等级；至少两名无阵营英雄时解释群体收益。 来源：personal/knowledge_tips.jsonl 第222行；本地官方卡面 card:7535。",
+  "utterances": [
+    {
+      "text": "场上有{玩家.战场.计数(阵营, \"无阵营\")}名无阵营英雄，用逍遥自在能一起升级。",
+      "id": "utterances_dc54189774ad4048bc69b4dc34d02132"
+    },
+    {
+      "text": "无阵营英雄越多，逍遥自在给每人的等级也越多。",
+      "id": "utterances_8a2bc4bd9fe94887a282d82db2fba12e"
+    }
+  ],
+  "id": "group_659c58e1d5d45427a288519121464b5c",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"逍遥自在\" and 玩家.战场.计数(阵营, \"无阵营\") >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

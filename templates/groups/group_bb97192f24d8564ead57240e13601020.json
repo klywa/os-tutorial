@@ -1,0 +1,25 @@
+{
+  "name": "日落海英雄穿星源狩枪收残血",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "装备限定日落海。技能直接击败生命值低于10%的敌方单位，包含符合条件的非英雄。不能保证覆盖大范围。 来源：personal/knowledge_tips.jsonl 第107行；本地官方卡面 card:41125。",
+  "utterances": [
+    {
+      "text": "星源狩枪让日落海英雄用技能斩杀残血敌人。",
+      "id": "utterances_5784d4769ba0456ea0012791598cc0b2"
+    },
+    {
+      "text": "给日落海英雄穿星源狩枪，技能也能斩杀残血召唤物。",
+      "id": "utterances_50e8abb24ce24103ba5235093a9998fb"
+    }
+  ],
+  "id": "group_bb97192f24d8564ead57240e13601020",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"星源狩枪\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

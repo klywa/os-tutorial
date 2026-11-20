@@ -1,0 +1,25 @@
+{
+  "name": "艾琳穿噬神之书",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第37行「使用技巧」。噬神之书提高法术攻击力及法术吸血，艾琳的法术技能命中后可恢复生命，同时受益于法攻。",
+  "utterances": [
+    {
+      "text": "艾琳穿噬神之书，技能打出伤害还能回血。",
+      "id": "utterances_3556a305c3094a24b98dd12565dc5f26"
+    },
+    {
+      "text": "噬神之书给艾琳补法攻和法术吸血，兼顾输出续航。",
+      "id": "utterances_2d8d8a850f8a42b8b2927e223f7040b0"
+    }
+  ],
+  "id": "group_83546eec99b457fbba547fbb69d9dce6",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"艾琳\" and arg2 is \"噬神之书\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

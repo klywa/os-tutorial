@@ -1,0 +1,25 @@
+{
+  "name": "破损古币照样触发河洛英雄古币联动",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "官方牌要求指定河洛英雄且不提供等级。限定材料点名的三名古币联动目标，并在话术保留能触发而非立即达到各自次数门槛。 来源：personal/knowledge_tips.jsonl 第226行；本地官方卡面 card:3110023。",
+  "utterances": [
+    {
+      "text": "给{arg1}用破损古币，照样能触发古币联动。",
+      "id": "utterances_a48e87a157364d1c9da9a4b3fd07d36f"
+    },
+    {
+      "text": "用破损古币把古币使用次数算进去，接着凑联动。",
+      "id": "utterances_105a6813ae134cc8941898d4873f3087"
+    }
+  ],
+  "id": "group_a807fe57f0705badb69ab6959e555a6b",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"破损古币\" and arg1 in [\"花木兰\", \"狄仁杰\", \"李白\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

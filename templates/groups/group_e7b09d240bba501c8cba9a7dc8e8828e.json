@@ -1,0 +1,25 @@
+{
+  "name": "拿静谧之铃限制高等级诸葛亮施法",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "官方选取敌方等级最高两名。用当前对手最高等级英雄是诸葛亮确认其进入目标集合；禁止回蓝不属于控制。 来源：personal/knowledge_tips.jsonl 第114行；本地官方卡面 card:641009。",
+  "utterances": [
+    {
+      "text": "静谧之铃让敌方高等级诸葛亮施法后五秒不能回蓝。",
+      "id": "utterances_dcc1f37ec3e1488391f2529abea10aad"
+    },
+    {
+      "text": "敌方诸葛亮等级最高，静谧之铃能拖慢他下一次施法。",
+      "id": "utterances_ad98c94f4cf34f78850d1ed09bac0d87"
+    }
+  ],
+  "id": "group_e7b09d240bba501c8cba9a7dc8e8828e",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"静谧之铃\" and 对局.当前对手.最高等级英雄 is \"诸葛亮\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

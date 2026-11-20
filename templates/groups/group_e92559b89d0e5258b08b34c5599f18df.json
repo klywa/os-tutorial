@@ -1,0 +1,25 @@
+{
+  "name": "武则天在场时用古币多升等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第12行「使用技巧」。武则天提高古币提供的等级，普通额外一级，觉醒额外两级。李白也在场时，需让既有或联合理由负责解释，不把临时等级混作永久等级。",
+  "utterances": [
+    {
+      "text": "武则天在场，用{arg2}能让目标多升等级。",
+      "id": "utterances_5d0117aad1a04cdeb835319b68452a36"
+    },
+    {
+      "text": "先上了武则天，再用{arg2}能多升等级。",
+      "id": "utterances_f5b56bcf574f44ab9b6f250e6929a583"
+    }
+  ],
+  "id": "group_e92559b89d0e5258b08b34c5599f18df",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"武则天\" and not (玩家.战场 has \"李白\")",
+  "priority": 0,
+  "editor_mode": "text"
+}

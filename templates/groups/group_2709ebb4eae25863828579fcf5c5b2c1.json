@@ -1,0 +1,25 @@
+{
+  "name": "单挂时用万镜复制场上英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第75行「使用技巧」。万镜从在场的不同英雄中随机复制。单挂在场主C时，池里没有其他英雄可分走复制。不承诺由一张变四张。可覆盖镜与取得万镜的武凤。",
+  "utterances": [
+    {
+      "text": "只留了一个英雄，用万镜就不会复制到其他英雄。",
+      "id": "utterances_1a76bc61bd4540a3b736379eb3d39433"
+    },
+    {
+      "text": "单挂时打万镜，可以把复制集中到这个场上英雄。",
+      "id": "utterances_b8df1a4a23834c86b0d385c8e1df4ce8"
+    }
+  ],
+  "id": "group_2709ebb4eae25863828579fcf5c5b2c1",
+  "event_id": "os_b59f8bd6d43110d4",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"万镜\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场",
+  "priority": 0,
+  "editor_mode": "text"
+}

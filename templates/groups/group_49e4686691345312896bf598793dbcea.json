@@ -1,0 +1,25 @@
+{
+  "name": "蒙犽穿炽热支配者",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第48行「使用技巧」。炽热支配者在首次受控制时提供护盾并免疫后续可免疫控制，帮助蒙犽维持输出窗口。",
+  "utterances": [
+    {
+      "text": "蒙犽穿炽热支配者，免控生效后更容易持续输出。",
+      "id": "utterances_7324c270c2494d03a898369684145289"
+    },
+    {
+      "text": "炽热支配者能帮蒙犽在受控后保住输出时间。",
+      "id": "utterances_a3b31247e5b24c23a943e41118d3f658"
+    }
+  ],
+  "id": "group_49e4686691345312896bf598793dbcea",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"蒙犽\" and arg2 is \"炽热支配者\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

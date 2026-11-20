@@ -1,0 +1,25 @@
+{
+  "name": "用破茧之衣争取开局控住嬴政",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第2行「使用技巧」。装备会在敌方等级最高三名英雄中随机选一名。当前嬴政同时是主C和最高等级英雄，因此属于候选；播报保留概率。",
+  "utterances": [
+    {
+      "text": "破茧之衣有机会开局晕住嬴政，打乱他的输出。",
+      "id": "utterances_b50bf6c088d0456bb5da1d6900cb1337"
+    },
+    {
+      "text": "嬴政等级最高，破茧之衣开局有机会控住他。",
+      "id": "utterances_c72ac72d7b574869a0304bd2feef62bb"
+    }
+  ],
+  "id": "group_0ae42a2e51fe5c9296d5450abb406064",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"破茧之衣\" and 对局.当前对手.主C is \"嬴政\" and 对局.当前对手.最高等级英雄 is \"嬴政\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

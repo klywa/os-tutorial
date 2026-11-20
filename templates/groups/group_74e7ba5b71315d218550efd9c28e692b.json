@@ -1,0 +1,25 @@
+{
+  "name": "集体唤醒同时触发至少两名登场英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "集体唤醒立刻触发场上英雄的登场效果。过滤真正有登场效果的英雄，以多名同场区别于单一英雄专用组。 来源：personal/knowledge_tips.jsonl 第208行；本地官方卡面 card:7079。",
+  "utterances": [
+    {
+      "text": "场上有{玩家.战场.计数(标签, \"具有登场效果\")}名登场英雄，集体唤醒能一起触发。",
+      "id": "utterances_b3e846e308de45deb11e2f10d22785ec"
+    },
+    {
+      "text": "等登场英雄都上场，再用集体唤醒一次触发多次登场。",
+      "id": "utterances_740f27e09663472f9db2d81083fbb407"
+    }
+  ],
+  "id": "group_74e7ba5b71315d218550efd9c28e692b",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"集体唤醒\" and 玩家.战场.计数(标签, \"具有登场效果\") >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "对在场李白用古币多拿临时等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第10行「使用技巧」。古币命中李白时，李白卡面给所有古币的临时等级加成会再提高；必须确认李白在场。",
+  "utterances": [
+    {
+      "text": "把{arg2}给在场的李白，他能拿到更多临时等级。",
+      "id": "utterances_f687de08117c47b4a6e1f7d5f49f137e"
+    },
+    {
+      "text": "{arg2}给在场的李白，他还能多拿临时等级。",
+      "id": "utterances_2d9ff877917a4ef2948fee32ab3a42cb"
+    }
+  ],
+  "id": "group_25326918fc655399a77618ea9d1ff9a2",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

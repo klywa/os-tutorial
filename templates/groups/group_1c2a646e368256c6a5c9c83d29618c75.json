@@ -1,0 +1,25 @@
+{
+  "name": "鲸吞庄周用名刀争取存活",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第3行「使用技巧」。名刀在首次致命伤害时短时无敌。官网将鲸吞登记为天赋，要求逐鹿英雄每释放六次技能才吞噬，名刀为庄周争取时间。",
+  "utterances": [
+    {
+      "text": "给庄周穿名刀，挨到致命伤害还有机会等到鲸吞。",
+      "id": "utterances_7e6b479e5a0d4bbabc526c0b1ae4642f"
+    },
+    {
+      "text": "庄周穿名刀先保命，撑住才有机会触发鲸吞。",
+      "id": "utterances_e62f98666a25421394560fafb643840b"
+    }
+  ],
+  "id": "group_1c2a646e368256c6a5c9c83d29618c75",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"庄周\" and arg2 is \"名刀·司命\" and 玩家.已选天赋 has \"鲸吞\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

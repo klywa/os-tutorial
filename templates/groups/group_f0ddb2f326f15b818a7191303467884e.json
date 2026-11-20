@@ -1,0 +1,25 @@
+{
+  "name": "亚连在场时让主C成为满装候选",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第45行「使用技巧」。亚连整备选择已穿装备最多的一名英雄。第三件令主C达到装备上限，因此必属最多候选；如果并列则仍不能保证亚连选主C。",
+  "utterances": [
+    {
+      "text": "给主力补到{arg1.已穿装备.计数()}件装备，就能争取吃到亚连的整备等级。",
+      "id": "utterances_49321804ab1646ffb251e2443f5203f1"
+    },
+    {
+      "text": "主力满装后进入亚连的升级候选，装备可以集中给他。",
+      "id": "utterances_b26f99bcd7634015a6c7ceddc0cb2bb3"
+    }
+  ],
+  "id": "group_f0ddb2f326f15b818a7191303467884e",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is 玩家.主C and arg1.已穿装备.计数() == 3 and 玩家.战场 has \"亚连\" and arg1 in 玩家.战场",
+  "priority": 0,
+  "editor_mode": "text"
+}

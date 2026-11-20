@@ -1,0 +1,25 @@
+{
+  "name": "韩信用无尽巨剑补暴击",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第20行「使用技巧」。无尽巨剑提高暴击率和暴击效果。韩信战斗技能触发与普攻有关，暴击面向普通攻击伤害。",
+  "utterances": [
+    {
+      "text": "韩信穿无尽巨剑提高暴击，补普攻连段的伤害。",
+      "id": "utterances_4097030223c8406fa441822140f1b487"
+    },
+    {
+      "text": "无尽巨剑让韩信更容易打暴击，普攻输出更高。",
+      "id": "utterances_7dcdc916f7f94cd992267bc2febfdc35"
+    }
+  ],
+  "id": "group_082e752ab6245b8a98a945ba1f408e27",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"韩信\" and arg2 is \"无尽巨剑\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

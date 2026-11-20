@@ -1,5 +1,6 @@
 import {describe,it,expect} from 'vitest';
-import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
+import * as templates from './templates';
+import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,renderUtterance,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
 const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题参与话术搜索'}],related_entities:[]};
 describe('template filtering and editing',()=>{
  it('distinguishes event parameter changes in review and history',()=>{
@@ -66,6 +67,47 @@ describe('template filtering and editing',()=>{
   expect(filterTemplateGroups([group],{event:'',player:'',lineup:'',query:'虞美人,4'},[...catalog,{id:'hero:1',name:'虞姬',aliases:[]}])).toHaveLength(1);
   expect(filterTemplateGroups([group],{event:'',player:'',lineup:'',query:'虞美人,5'},catalog)).toHaveLength(0);
  });
+ it('finds spoken text and the displayed legacy condition in the same group',()=>{
+  const group={...common,conditions:[{id:'n',parameter_key:'round',operator:'gte' as const,value:4}]};
+  const events=[{id:'buy',name:'购买英雄',parameters:[{id:'round',key:'round',name:'当前回合',type:'number' as const}]}];
+  const find=(query:string,event='buy')=>filterTemplateGroups([group],{event,player:'',lineup:'',query},[],{events});
+  expect(find('参与话术')).toEqual([group]);
+  expect(find('当前回合 ≥ 4，参与话术')).toEqual([group]);
+  expect(find('当前回合 ≥ 5，参与话术')).toEqual([]);
+  expect(find('当前回合','sell')).toEqual([]);
+ });
+ it('finds both rendered utterance text and the authored slot reference',()=>{
+  const group={...common,conditions:[],utterances:[{id:'u',text:'先留{arg1.名称}，下轮再换'}]};
+  const labels={utteranceBindings:{common:{'arg1.名称':['虞姬','李白']}}};
+  const find=(query:string)=>filterTemplateGroups([group],{query,event:'',player:'',lineup:''},[],labels);
+  expect(find('先留虞姬/李白')).toEqual([group]);
+  expect(find('先留{arg1.名称}')).toEqual([group]);
+  expect(find('先留赵云')).toEqual([]);
+ });
+ it('keeps condition bindings through text edits and clears them when the rule changes',()=>{
+  const group={...common,expression:'arg1.名称 in ["虞姬","李白"]'};
+  const bindings={common:{'arg1.名称':['虞姬','李白']}};
+  const current={schema_version:3,revision:'original',events:[],groups:[group],utterance_bindings:bindings};
+  const result={schema_version:3,revision:'changed',events:[],groups:[{...group,utterances:[{id:'u',text:'保留{arg1.名称}'}]}]};
+  expect(templates.mergeTemplateWriteSnapshot(current,result,['common']).utterance_bindings).toEqual(bindings);
+  result.groups[0]={...group,expression:'arg1.名称 in ["亚瑟"]'};
+  expect(templates.mergeTemplateWriteSnapshot(current,result,['common']).utterance_bindings?.common).toBeUndefined();
+ });
+ it('keeps commas inside copied conditions and splits only top-level search terms',()=>{
+  const target=JSON.stringify({类型:'单位',名称:'甲"，乙'});
+  const expression='玩家.战场.计数(标签, "登场") >= 2 and arg1 in ["电磁弹簧","等离子屏障"] and arg2 is '+target;
+  const group={...common,conditions:[],expression,scope:{player_id:'p1',lineup_note_id:'n1'}};
+  const filters={event:'buy',player:'p1',lineup:'n1'};
+  const labels={scopeName:(id:string|null)=>id==='p1'?'班叔':id==='n1'?'机关队':''};
+  const find=(query:string)=>filterTemplateGroups([group],{...filters,query},[],labels);
+  expect(find('玩家.使用棋手 is "班叔" and 玩家.使用阵容 is "机关队" and ('+expression+')')).toEqual([group]);
+  expect(find('计数(标签, "登场") >= 2，参与话术')).toEqual([group]);
+  expect(find('arg1 in ["电磁弹簧","等离子屏障"]')).toEqual([group]);
+  expect(find('arg2 is '+target+',参与话术')).toEqual([group]);
+  expect(find('计数(标签, "整备") >= 2，参与话术')).toEqual([]);
+  const splitOnly={...group,expression:'玩家.战场.计数(标签, "整备") >= 2 and 玩家.战场.计数(阵营, "登场") >= 2'};
+  expect(filterTemplateGroups([splitOnly],{...filters,query:'计数(标签, "登场") >= 2'},[],labels)).toEqual([]);
+ });
  it('rejects invalid typed numbers and preserves explicit false and entity ids',()=>{
   expect(parseConditionValue('number','between','2','5')).toEqual([2,5]);
   expect(()=>parseConditionValue('number','between','9','2')).toThrow();
@@ -75,6 +117,13 @@ describe('template filtering and editing',()=>{
  });
  it('ignores double brace literals while finding parameter references',()=>{
   expect(placeholderKeys('花费{cost}，{{不是参数}}，{hero}，{cost}')).toEqual(['cost','hero']);
+ });
+ it('preserves numeric references and only expands named candidates in the preview',()=>{
+  const number='{玩家.战场.计数(阵营, "{hero}")}';
+  const text='给{hero}装备，目前在场有'+number+'名。';
+  expect(placeholderKeys(text)).toEqual(['hero']);
+  expect(placeholderKeys(number)).toEqual([]);
+  expect(renderUtterance(text,{hero:['蒙恬','刘禅']})).toBe('给蒙恬/刘禅装备，目前在场有'+number+'名。');
  });
  it('keeps unapproved condition and utterance changes at their base values',()=>{
   const next={...common,name:'新组名',conditions:[{...common.conditions[0],value:{id:'hero:2',name:'李白'}}],utterances:[{id:'u',text:'新话术'},{id:'u2',text:'增加'}]};

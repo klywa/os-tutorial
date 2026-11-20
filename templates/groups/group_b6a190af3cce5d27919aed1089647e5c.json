@@ -1,0 +1,25 @@
+{
+  "name": "让前排穿红莲炎甲限制猪八戒恢复",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "红莲炎甲的减益只作用于穿戴者周围1格。官方本地描述明确同时降低生命恢复和护盾，第130行温馨提示宣称不减护盾与其冲突，本组只说证据一致的生命恢复。 来源：personal/knowledge_tips.jsonl 第130行；本地官方卡面 card:643504。",
+  "utterances": [
+    {
+      "text": "给我方{arg1}戴红莲炎甲，贴住对面猪八戒就能减回血。",
+      "id": "utterances_95fdaeceb6334f3e965a91dd132101cf"
+    },
+    {
+      "text": "红莲炎甲要贴近才有用，拿它限制猪八戒的回复。",
+      "id": "utterances_80edc8e24cb842caa28fd08d369cecf8"
+    }
+  ],
+  "id": "group_b6a190af3cce5d27919aed1089647e5c",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"红莲炎甲\" and 对局.当前对手.主C is \"猪八戒\" and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

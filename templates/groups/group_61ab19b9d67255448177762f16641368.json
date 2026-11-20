@@ -1,0 +1,25 @@
+{
+  "name": "沈梦溪用法源之杯加速施法",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第36行「使用技巧」。法源之杯稳定回蓝，沈梦溪用效果牌可在当回合再降低法力值上限。播报只说明穿戴的持续回蓝，不假定当前已叠降低效果。",
+  "utterances": [
+    {
+      "text": "沈梦溪穿法源之杯持续回蓝，能更频繁放技能。",
+      "id": "utterances_37bb1753b34a4387938ebedf767b123e"
+    },
+    {
+      "text": "给沈梦溪补法源之杯，少等一会儿就能再放技能。",
+      "id": "utterances_fd404466f71640a8b7c19acb1d5ab814"
+    }
+  ],
+  "id": "group_61ab19b9d67255448177762f16641368",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"沈梦溪\" and arg2 is \"法源之杯\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

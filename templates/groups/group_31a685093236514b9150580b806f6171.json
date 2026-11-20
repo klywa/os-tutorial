@@ -1,0 +1,25 @@
+{
+  "name": "双人阵让裴擒虎从高等级队友取临时等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第39行「使用技巧」。场上只有阿轲和裴擒虎，阿轲已达四十级。整备从唯一其他英雄取得临时等级，不会降低阿轲等级。40级取机制的明确成长节点，只作识别高等级搭档的门槛。",
+  "utterances": [
+    {
+      "text": "阿轲有{玩家.最高等级英雄.等级}级，裴擒虎整备能从他获得临时等级。",
+      "id": "utterances_26955bf1699240f5888e8ca8d4c7b701"
+    },
+    {
+      "text": "让裴擒虎跟高等级阿轲同场，整备就能获得临时等级。",
+      "id": "utterances_1773e2e4e4084b82b1fb2d1d6332ecd6"
+    }
+  ],
+  "id": "group_31a685093236514b9150580b806f6171",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"裴擒虎\" and 玩家.场上英雄数 == 2 and 玩家.最高等级英雄 is \"阿轲\" and 玩家.最高等级英雄.等级 >= 40 and 玩家.战场 has \"裴擒虎\" and 玩家.战场 has \"阿轲\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

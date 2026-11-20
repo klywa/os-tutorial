@@ -1,0 +1,25 @@
+{
+  "name": "普攻或回蓝依赖英雄穿魂祭绝刃",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "装备加50%攻速与30%物理法术吸血，但开战扣除一半最大生命。普攻回蓝成立的英雄才写攻速可提高常规回蓝频率。 来源：personal/knowledge_tips.jsonl 第146行；本地官方卡面 card:646007。",
+  "utterances": [
+    {
+      "text": "给{arg1}穿魂祭绝刃，开场扣半血换攻速和吸血。",
+      "id": "utterances_c66627f6650a46d1991d93d4f82cf285"
+    },
+    {
+      "text": "魂祭绝刃开战扣半血，打得更快后能靠吸血续航。",
+      "id": "utterances_6178ac28c4bb41cab9189cfbc0719069"
+    }
+  ],
+  "id": "group_7039031d38ba5253a3d836eb66ccc0eb",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"魂祭绝刃\" and arg1 in [\"艾琳\", \"敖隐\", \"安琪拉\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

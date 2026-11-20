@@ -1,0 +1,25 @@
+{
+  "name": "选结伴补能量和两张三阶兑换券",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "结伴给2能量和2张3阶英雄兑换券，可以继续找3阶拼图。卡面没有说兑换券能保证指定英雄，或固定折现成能量。 来源：personal/knowledge_tips.jsonl 第166行；本地官方卡面 card:633002。",
+  "utterances": [
+    {
+      "text": "选结伴能拿两点能量和两张三阶券，接着找三阶英雄。",
+      "id": "utterances_3610e8c798ec45b69f9d1b8a61a35da0"
+    },
+    {
+      "text": "结伴马上补能量，还能用两张券找三阶拼图。",
+      "id": "utterances_f4478c8be2474040855bc64393dd641e"
+    }
+  ],
+  "id": "group_1332e182a9665c2085913941850e3ad8",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"结伴\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

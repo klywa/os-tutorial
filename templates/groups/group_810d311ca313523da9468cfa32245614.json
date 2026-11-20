@@ -1,0 +1,25 @@
+{
+  "name": "多名英雄在场时用众星拱月集中等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "众星拱月让指定英雄夺取其他英雄各10级。用至少四名在场英雄区分多来源，当前等级和可夺数未知，不保证拿足30。 来源：personal/knowledge_tips.jsonl 第223行；本地官方卡面 card:10404。",
+  "utterances": [
+    {
+      "text": "场上英雄多，众星拱月能让选中英雄集中多份等级。",
+      "id": "utterances_14aac7671df047529f8087c30606c52b"
+    },
+    {
+      "text": "用众星拱月，让这一名英雄从多名队友身上夺取等级。",
+      "id": "utterances_c0864ddad789437a88f39cc723ef0f47"
+    }
+  ],
+  "id": "group_810d311ca313523da9468cfa32245614",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"众星拱月\" and 玩家.场上英雄数 >= 4",
+  "priority": 0,
+  "editor_mode": "text"
+}

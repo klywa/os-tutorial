@@ -1,0 +1,25 @@
+{
+  "name": "蒙犽穿无尽巨剑",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第48行「使用技巧」。蒙犽的主要输出来自物理技能，装备提高暴击率及暴击效果。只有确认技能可按规则暴击时才声称技能直接吃暴击。",
+  "utterances": [
+    {
+      "text": "蒙犽穿无尽巨剑提高暴击率和暴击伤害。",
+      "id": "utterances_dcc57f3df4554c44b85bc4d106504405"
+    },
+    {
+      "text": "给蒙犽穿无尽巨剑，增加他打出高额暴击的机会。",
+      "id": "utterances_a41425ca7b4c4613b072d28a9241e7b7"
+    }
+  ],
+  "id": "group_d05dc611c7c150518f5752f2cdd5fb12",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"蒙犽\" and arg2 is \"无尽巨剑\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

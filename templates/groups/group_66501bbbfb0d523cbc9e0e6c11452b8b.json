@@ -1,0 +1,25 @@
+{
+  "name": "血线紧时切丰卦找牌",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第65行「使用技巧」。当只剩一轮左右容错时，丰卦提供当回合可用的临时刷新，适合用速度换经济。卡面也扣每回合获取能量，不假设已经刷到目标。",
+  "utterances": [
+    {
+      "text": "容错快用完，选丰卦多几次刷新，尽快找能上场的牌。",
+      "id": "utterances_6aec1dd5d224423680f63a8bd0468ac9"
+    },
+    {
+      "text": "血线紧时切丰卦，少拿能量换几次刷新找战力。",
+      "id": "utterances_1b66074a055f48f7b091c9d4f85a13c4"
+    }
+  ],
+  "id": "group_66501bbbfb0d523cbc9e0e6c11452b8b",
+  "event_id": "os_7be319d5c5ce8554",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"卦象·丰\" and arg1 has \"卦象·丰\" and 玩家.使用棋手 is \"明先生\" and 玩家.容错数 <= 1",
+  "priority": 0,
+  "editor_mode": "text"
+}

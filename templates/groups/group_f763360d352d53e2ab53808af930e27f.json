@@ -1,0 +1,25 @@
+{
+  "name": "敖隐戴自然法杖用施法频率补控制",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "远程英雄每消耗40点法力值随机把一名敌人变成小猪2秒，敖隐能靠攻速经由普攻回蓝；措辞不指定目标。 来源：personal/knowledge_tips.jsonl 第122行；本地官方卡面 card:643208。",
+  "utterances": [
+    {
+      "text": "敖隐每花四十点法力，自然法杖就能变猪控住一人。",
+      "id": "utterances_7e146e8b08c847e3afce084f9369c7ea"
+    },
+    {
+      "text": "敖隐戴自然法杖，回蓝施法越频繁，变猪越频繁。",
+      "id": "utterances_b5fb337092cf4e3a8f1984ab60e971e8"
+    }
+  ],
+  "id": "group_f763360d352d53e2ab53808af930e27f",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"自然法杖\" and arg1 is \"敖隐\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

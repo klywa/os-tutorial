@@ -1,0 +1,25 @@
+{
+  "name": "司空震穿名刀留输出时间",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第49行「使用技巧」。名刀给予首次致命伤害后的短无敌和不可选中，能为需要持续出手的司空震争取额外时间。",
+  "utterances": [
+    {
+      "text": "司空震穿名刀，挨到致命伤害还有时间继续输出。",
+      "id": "utterances_44ec14906d48479893504a33c49f1eca"
+    },
+    {
+      "text": "名刀让司空震多撑一段，争取再打一轮。",
+      "id": "utterances_5248453b022a4d78aafba3e613a313e2"
+    }
+  ],
+  "id": "group_235d314a73c251c49b7bd4555bf427f2",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"司空震\" and arg2 is \"名刀·司命\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

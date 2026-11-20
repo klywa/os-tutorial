@@ -1,0 +1,25 @@
+{
+  "name": "蒙犽穿法源之杯",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第48行「使用技巧」。法源之杯持续回蓝，帮助蒙犽更快达到施法所需法力。",
+  "utterances": [
+    {
+      "text": "给蒙犽穿法源之杯，持续回蓝能更早放出技能。",
+      "id": "utterances_b00b3d13ddb8445ca84ad9c75d150d41"
+    },
+    {
+      "text": "法源之杯让蒙犽少等一会儿，就能再开一轮技能。",
+      "id": "utterances_cc57bdf715f04ad4b37144ac885350a8"
+    }
+  ],
+  "id": "group_d4a18378202755698fdbc792d16060bb",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"蒙犽\" and arg2 is \"法源之杯\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

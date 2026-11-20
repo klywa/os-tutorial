@@ -1,0 +1,25 @@
+{
+  "name": "用红莲炎甲压低芈月治疗",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第8行「使用技巧」。红莲炎甲削减周围一格被命中敌人的恢复。只说明命中时的收益，不假定双方站位。",
+  "utterances": [
+    {
+      "text": "红莲炎甲贴到芈月时，能压低她的回血。",
+      "id": "utterances_673404674aff402e9c72a3351a0d901b"
+    },
+    {
+      "text": "用红莲炎甲打近身，烧到芈月就能削弱她的回血。",
+      "id": "utterances_9f102ae5e8044528a8e8ad3c0dd07a80"
+    }
+  ],
+  "id": "group_b5b72323006c58b3b83be1c2480c8bef",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"红莲炎甲\" and 对局.当前对手.主C is \"芈月\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

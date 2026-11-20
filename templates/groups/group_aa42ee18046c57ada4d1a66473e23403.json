@@ -1,0 +1,25 @@
+{
+  "name": "分解两件装备换妙音",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "目标明确有两件装备时武装分解获得妙音，可以给仍未觉醒的英雄推进觉醒。 来源：personal/knowledge_tips.jsonl 第214行；本地官方卡面 card:7089。",
+  "utterances": [
+    {
+      "text": "分解这两件装备换一张妙音，给需要觉醒的英雄用。",
+      "id": "utterances_410198aeddcf4eb5aa8e3bdf90c26850"
+    },
+    {
+      "text": "这名英雄有两件装备，拆完能拿妙音推进觉醒。",
+      "id": "utterances_87ac6984bf6d48adbb275a839ef733bd"
+    }
+  ],
+  "id": "group_aa42ee18046c57ada4d1a66473e23403",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"武装分解\" and arg1.已穿装备.计数() == 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "手中有登场英雄时先上小乔",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第1行「使用技巧」。小乔卡面注明己方英雄触发登场效果时给队友等级。手中有明确写有登场的英雄时，可先让小乔在场，形成下一张牌的联动。本组收窄到已核实的登场英雄。",
+  "utterances": [
+    {
+      "text": "先上小乔，接着打出登场英雄，就能带动队友升级。",
+      "id": "utterances_dd7784ce3f8444dfba1b02af84d15611"
+    },
+    {
+      "text": "手上还有登场英雄，先上小乔能接住下一次登场。",
+      "id": "utterances_3c65b545a96f4f8f8ab7a1122680c291"
+    }
+  ],
+  "id": "group_54afe0ed3e4a5cb39448a8d716edbafc",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"小乔\" and (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"貂蝉\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"蒙犽\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"甄姬\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"明世隐\"})",
+  "priority": 0,
+  "editor_mode": "text"
+}

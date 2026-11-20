@@ -1,0 +1,25 @@
+{
+  "name": "化铁为金取回原英雄的不可拆卸装备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "合法目标为1–3阶。技巧明确变身使原装备回手，包含不可拆卸装备。这里要求目标已穿三件例子之一，只讲这类装备回手，不承诺特定随机5阶。 来源：personal/knowledge_tips.jsonl 第218行；本地官方卡面 card:7113。",
+  "utterances": [
+    {
+      "text": "用化铁为金变身，原来不能拆的装备也能回到手里。",
+      "id": "utterances_b145f108e2d147b389d6c72783ace8cf"
+    },
+    {
+      "text": "这名英雄的不可拆卸装备，也会在化铁为金后回手。",
+      "id": "utterances_1177110f44c94ae194a869a9201c1990"
+    }
+  ],
+  "id": "group_87202ef756535e798bb75321563ea4d8",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"化铁为金\" and (arg1.已穿装备 has \"百锻刀\" or arg1.已穿装备 has \"盛华\" or arg1.已穿装备 has \"聚灵法杖\")",
+  "priority": 0,
+  "editor_mode": "text"
+}

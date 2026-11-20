@@ -1,0 +1,25 @@
+{
+  "name": "露娜用纯净苍穹清负面并叠法攻",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "每2秒提高10点法术攻击力，同时清除负面。持续作战能反复受益，但负面可在两次之间重新施加。 来源：personal/knowledge_tips.jsonl 第120行；本地官方卡面 card:643105。",
+  "utterances": [
+    {
+      "text": "纯净苍穹让露娜每两秒清一次负面，还能叠法攻。",
+      "id": "utterances_cb170620f158414da76439e759289a23"
+    },
+    {
+      "text": "露娜戴纯净苍穹，持续施法时能定期清负面并叠法攻。",
+      "id": "utterances_e5dd1ea1fb8d479ab2e0e1b4db06601d"
+    }
+  ],
+  "id": "group_d2586f505c6256908c84303ef04bd6b3",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"纯净苍穹\" and arg1 is \"露娜\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

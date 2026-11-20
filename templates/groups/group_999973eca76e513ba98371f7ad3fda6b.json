@@ -1,0 +1,25 @@
+{
+  "name": "单河洛上李元芳给自己用古币",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第26行「使用技巧」。整备选择最近河洛英雄；卡文配合技巧注明仅剩李元芳一名河洛时自己可接古币，不推断觉醒古币种类。",
+  "utterances": [
+    {
+      "text": "场上只有李元芳一个河洛，他整备时能给自己用古币。",
+      "id": "utterances_51c9a1312db445a982e95f47e2eda2a2"
+    },
+    {
+      "text": "单挂河洛李元芳，他是整备古币唯一的河洛候选。",
+      "id": "utterances_0468513e9a4748f2bedfa30eac02d3c7"
+    }
+  ],
+  "id": "group_999973eca76e513ba98371f7ad3fda6b",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"李元芳\" and 玩家.战场 has \"李元芳\" and 玩家.战场.计数(阵营, \"河洛\") == 1",
+  "priority": 0,
+  "editor_mode": "text"
+}

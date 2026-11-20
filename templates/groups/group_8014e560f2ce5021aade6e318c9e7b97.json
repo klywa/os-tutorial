@@ -1,0 +1,25 @@
+{
+  "name": "孙膑配貂蝉把施法变为永久等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第5行「使用技巧」。孙膑让英雄每累计释放三次技能增加永久等级。貂蝉的小法力值上限适合频繁施法。",
+  "utterances": [
+    {
+      "text": "上孙膑，貂蝉多放几次技能就能攒永久等级。",
+      "id": "utterances_039e5925a5dd4b03a1417eaaf0e35bbe"
+    },
+    {
+      "text": "貂蝉每放三次技能，孙膑就能让她永久升级。",
+      "id": "utterances_01f9473e153e456187413591c2457a96"
+    }
+  ],
+  "id": "group_8014e560f2ce5021aade6e318c9e7b97",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"孙膑\" and 玩家.战场 has \"貂蝉\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

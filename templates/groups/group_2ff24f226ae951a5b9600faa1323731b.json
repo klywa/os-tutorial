@@ -1,0 +1,25 @@
+{
+  "name": "用制裁之剑压低对方主力回复和护盾",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "制裁之剑造成伤害时降低目标生命恢复与护盾，普攻触发的削弱更强。猪八戒回恢复强，海月能产生护盾。受目标命中范围影响，不保证打到指定主力。 来源：personal/knowledge_tips.jsonl 第119行；本地官方卡面 card:643104。",
+  "utterances": [
+    {
+      "text": "用制裁之剑普攻{对局.当前对手.主C}，能多削一些回血和护盾。",
+      "id": "utterances_216ec074b90b408d9690f9a3d7d23477"
+    },
+    {
+      "text": "打到对面的{对局.当前对手.主C}，制裁之剑就能削弱回血和护盾。",
+      "id": "utterances_b4beb51cf784429bba64d61dff14b23e"
+    }
+  ],
+  "id": "group_2ff24f226ae951a5b9600faa1323731b",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"制裁之剑\" and 对局.当前对手.主C in [\"猪八戒\", \"海月\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

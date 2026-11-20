@@ -1,0 +1,25 @@
+{
+  "name": "单挂百里玄策集中整备等级",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第34行与本地官方卡面。只在百里玄策为己方唯一在场英雄时解释集中收益。卡面要求上场战斗有闪现击败，话术保留此前提。",
+  "utterances": [
+    {
+      "text": "单挂百里玄策，若有闪现击败，整备等级都归他。",
+      "id": "utterances_24bcdf2973734f24ac4f4f4d5716b76c"
+    },
+    {
+      "text": "只留玄策在场，闪现击败带来的整备等级就集中给他。",
+      "id": "utterances_bd913f99a0eb4f9ea7892fd2b42cf672"
+    }
+  ],
+  "id": "group_d71f4fae10665c869fbbec1a069af797",
+  "event_id": "os_4ef8f267133d9810",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "玩家.场上英雄数 == 1 and 玩家.战场 has {\"类型\":\"英雄\",\"名称\":\"百里玄策\"}",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "月之特调生效后先送福再助力",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第58、79、80行「使用技巧」。需要月之特调实际已选、仍有助力与至少一点能量且场上有目标。先通过送福触发助力提升后续主动助力的等级，只有主动部分计入月之特调的65级进度。适配既有通用组并严格收窄。",
+  "utterances": [
+    {
+      "text": "先送福抬高下次小菟助力，主动用时能多攒特调进度。",
+      "id": "utterances_c6c669548e0043ccb5231e69c4d50d20"
+    },
+    {
+      "text": "送福先强化助力，再主动助力就能更快攒到下一张送福。",
+      "id": "utterances_1381a71942e549668f1ae1771d0520d5"
+    }
+  ],
+  "id": "group_5d3a1c828580577ca0aa703ac7f4a7ee",
+  "event_id": "os_b59f8bd6d43110d4",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"小菟送福\" and 玩家.使用棋手 is \"常小娥\" and 玩家.已选天赋 has \"月之特调\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟助力\"} and 玩家.剩余能量 >= 1 and 玩家.场上英雄数 >= 1",
+  "priority": 0,
+  "editor_mode": "text"
+}

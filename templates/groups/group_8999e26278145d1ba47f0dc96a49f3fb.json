@@ -1,0 +1,25 @@
+{
+  "name": "手中有三分时先上蔡文姬",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第30行「使用技巧」。蔡文姬在场响应三分英雄牌，给其他等级最低的三分英雄升级。确认另有当前受益者与后续可打的已知三分牌，避免把蔡文姬本身当受益者。",
+  "utterances": [
+    {
+      "text": "还有三分牌要打，先上蔡文姬能给队友多拿等级。",
+      "id": "utterances_9057501e8bc24d4e92e4447ab54c43de"
+    },
+    {
+      "text": "先上蔡文姬，接着打三分牌能让其他三分英雄升级。",
+      "id": "utterances_d268f4b88915471ca200a268667d146c"
+    }
+  ],
+  "id": "group_8999e26278145d1ba47f0dc96a49f3fb",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"蔡文姬\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2 and (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"曹操\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"貂蝉\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"吕布\"})",
+  "priority": 0,
+  "editor_mode": "text"
+}

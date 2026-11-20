@@ -1,0 +1,25 @@
+{
+  "name": "有朵莉亚时上安琪拉做整备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第16行「使用技巧」。安琪拉的整备能触发场上朵莉亚的等级效果，后者还给阿科米亚核心等级。",
+  "utterances": [
+    {
+      "text": "朵莉亚在场，上安琪拉能靠整备再给队友和核心升级。",
+      "id": "utterances_68e1a82a83e54eb3ad7c90c4ba861605"
+    },
+    {
+      "text": "安琪拉每次整备都可触发朵莉亚，让队友再多拿等级。",
+      "id": "utterances_e65c44a1b38341a4b0b3e7982eb17f3d"
+    }
+  ],
+  "id": "group_f1f4aa17b7825f6e95acbbe6e00add4a",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"安琪拉\" and 玩家.战场 has \"朵莉亚\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

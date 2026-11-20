@@ -1,0 +1,25 @@
+{
+  "name": "有法源之杯再穿贤者之书加快叠层",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "法源之杯每秒回5点法力，贤者之书压低法力上限并在施法后叠法强。组合有稳定回蓝并减少每轮所需法力。 来源：personal/knowledge_tips.jsonl 第138行；本地官方卡面 card:643802。",
+  "utterances": [
+    {
+      "text": "已有法源之杯，加贤者之书能更快攒满蓝叠法强。",
+      "id": "utterances_744f0d0347064ddc9e8b57171aa29417"
+    },
+    {
+      "text": "法源之杯持续回蓝，配贤者之书更容易多叠几层法强。",
+      "id": "utterances_af76d4907794438080cc6e6da79ad555"
+    }
+  ],
+  "id": "group_98cab06dece45c83aa986936f9ada1c7",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"贤者之书\" and arg1.已穿装备 has \"法源之杯\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

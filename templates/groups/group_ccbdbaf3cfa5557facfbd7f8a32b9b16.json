@@ -1,0 +1,25 @@
+{
+  "name": "持续普攻射手用热血拳套叠攻速",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "装备提供初始攻速并将攻速上限改为5.0；战斗中每获得2点法力值再增加1%攻速。配合能持续普攻的名单。 来源：personal/knowledge_tips.jsonl 第113行；本地官方卡面 card:641007。",
+  "utterances": [
+    {
+      "text": "热血拳套提高攻速上限，战斗中回蓝还能继续叠攻速。",
+      "id": "utterances_d7c35510a6fd404b814c8f2a9aee65e9"
+    },
+    {
+      "text": "给{arg1}穿热血拳套，战斗中回蓝就能叠攻速。",
+      "id": "utterances_d3a2f26e95b4480a84fa66578f946c6f"
+    }
+  ],
+  "id": "group_ccbdbaf3cfa5557facfbd7f8a32b9b16",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"热血拳套\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "英雄安琪拉穿炽热支配者",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第16行「使用技巧」。首次受可免疫控制后的护盾及免疫会降低后续被打断风险。不能担保首次控制、压制或超过时长的控制。",
+  "utterances": [
+    {
+      "text": "安琪拉穿炽热支配者，触发免控后更容易放完光辉。",
+      "id": "utterances_af55217bc1994bbe873f1acd5a477a40"
+    },
+    {
+      "text": "炽热支配者免控生效时，可以减少光辉被打断。",
+      "id": "utterances_7b4148942a274cb3a9b017c7d06e8a81"
+    }
+  ],
+  "id": "group_35d75f16243d51ab8d69d802a6daad2e",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"安琪拉\" and arg2 is \"炽热支配者\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

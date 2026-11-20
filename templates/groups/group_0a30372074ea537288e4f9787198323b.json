@@ -1,0 +1,25 @@
+{
+  "name": "逐鹿盾前排用霸者重铠延长高血减伤",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "装备只在生命值高于70%时减伤40%。廉颇和曜技能护盾能延缓生命下降，具体覆盖时间依敌伤害而定。 来源：personal/knowledge_tips.jsonl 第127行；本地官方卡面 card:643501。",
+  "utterances": [
+    {
+      "text": "有盾时，{arg1}穿霸者重铠能让高血减伤撑得更久。",
+      "id": "utterances_af6a7f0b2936477ea552f4c17ed93846"
+    },
+    {
+      "text": "霸者重铠只在生命高于七成时减伤，护盾能护住血线。",
+      "id": "utterances_7931fa2b5c784191af80b45665e740cb"
+    }
+  ],
+  "id": "group_0a30372074ea537288e4f9787198323b",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"霸者重铠\" and arg1 in [\"廉颇\", \"曜\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

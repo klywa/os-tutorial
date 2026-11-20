@@ -1,0 +1,25 @@
+{
+  "name": "全军动员一起触发多名整备英雄",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "全军动员立即触发场上所有英雄的整备效果。至少两名有该效果的英雄时解释集体收益。 来源：personal/knowledge_tips.jsonl 第209行；本地官方卡面 card:7080。",
+  "utterances": [
+    {
+      "text": "场上有{玩家.战场.计数(标签, \"具有整备效果\")}名整备英雄，用全军动员能一起触发整备。",
+      "id": "utterances_d54caffb1cea4999b2c88c174b7e702e"
+    },
+    {
+      "text": "现在用全军动员，一张牌就能立刻触发多个整备效果。",
+      "id": "utterances_1245e276c271481b951059ee3fda6d37"
+    }
+  ],
+  "id": "group_c36d4b272f82557483f181d4922fcd94",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"全军动员\" and 玩家.战场.计数(标签, \"具有整备效果\") >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

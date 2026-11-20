@@ -1,0 +1,25 @@
+{
+  "name": "有贤者之书再穿法源之杯加快施法",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "贤者之书降低10点法力上限，法源之杯每秒回复5点法力；两者同时穿戴才有组合收益。 来源：personal/knowledge_tips.jsonl 第124行；本地官方卡面 card:643402。",
+  "utterances": [
+    {
+      "text": "贤者之书已压低法力上限，加法源之杯能更快攒满。",
+      "id": "utterances_dfe444d2c8734963aae1b294160c9a36"
+    },
+    {
+      "text": "已有贤者之书，再戴法源之杯能更快回满蓝。",
+      "id": "utterances_ab618ca83f634355b3f1a12714f114f6"
+    }
+  ],
+  "id": "group_620717ac40d151aa8fcbd9b49496c9d9",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"法源之杯\" and arg1.已穿装备 has \"贤者之书\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

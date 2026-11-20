@@ -1,0 +1,25 @@
+{
+  "name": "让深入战场的英雄戴红魔以承伤增伤",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "红魔按自身承受的伤害比例增加伤害。周围1格没有友军才额外增加25%伤害，因此不保证孤立效果。 来源：personal/knowledge_tips.jsonl 第137行；本地官方卡面 card:643704。",
+  "utterances": [
+    {
+      "text": "红魔能把战斗中的承伤换成增伤，适合深入敌阵。",
+      "id": "utterances_f32affb070434af2b3f3b7a71e8e2cbb"
+    },
+    {
+      "text": "让{arg1}戴红魔，进敌阵后能把承伤变成增伤。",
+      "id": "utterances_86c7b4df829047ea8258d4afbbb659b6"
+    }
+  ],
+  "id": "group_a62f7954cbaa5a8d8df8e76c2be609e4",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"红魔\" and arg1 in [\"猪八戒\", \"裴擒虎\", \"百里玄策\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "容错见底时选绝处逢生",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "仅当局势已无容错才解释风险可承受；使用后棋手玩家生命变1，随机获10张效果牌，不保证解决场面。 来源：personal/knowledge_tips.jsonl 第217行；本地官方卡面 card:7112。",
+  "utterances": [
+    {
+      "text": "已经没有容错，选绝处逢生可以赌十张随机效果牌。",
+      "id": "utterances_92e3645eb9e64a6a9fde671849a0dac7"
+    },
+    {
+      "text": "绝处逢生会把生命变成一点，换十张牌搏一次翻盘。",
+      "id": "utterances_d71e37f94ae845a99b86f347abea34c5"
+    }
+  ],
+  "id": "group_513dbb24696c5b828bacbd8c8fa48657",
+  "event_id": "os_b9276a29aaffc6ba",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"绝处逢生\" and 玩家.容错数 <= 0",
+  "priority": 0,
+  "editor_mode": "text"
+}

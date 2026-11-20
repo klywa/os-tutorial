@@ -1,0 +1,25 @@
+{
+  "name": "有护盾的前排用不死鸟之眼增厚护盾",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "装备将生命恢复和护盾效果提升30%；限定技能确能提供护盾的英雄，避免把装备本身误说成会直接产盾。 来源：personal/knowledge_tips.jsonl 第128行；本地官方卡面 card:643502。",
+  "utterances": [
+    {
+      "text": "给{arg1}戴不死鸟之眼，拿到的护盾能更厚。",
+      "id": "utterances_342a5683d962443a9ed99f7b7392209d"
+    },
+    {
+      "text": "{arg1}有护盾时，不死鸟之眼能让盾多扛些伤害。",
+      "id": "utterances_765d0ad1a0404984b20afcab31815f4f"
+    }
+  ],
+  "id": "group_7813a00a483358b99b1e60db49ce5be7",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"不死鸟之眼\" and arg1 in [\"廉颇\", \"曜\", \"刘邦\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

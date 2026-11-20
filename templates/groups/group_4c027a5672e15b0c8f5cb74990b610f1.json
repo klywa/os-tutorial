@@ -1,0 +1,25 @@
+{
+  "name": "合成白起为高阶援护战术",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第7行「使用技巧」。普通白起每回合第一次使用效果牌给援护战术，觉醒后换成高阶援护战术，逐鹿英雄可获得更厚的护盾。只解释普通形态向觉醒推进。",
+  "utterances": [
+    {
+      "text": "合成白起追觉醒，高阶援护能给逐鹿更厚的护盾。",
+      "id": "utterances_964986068bc0419da1ba89d611047e51"
+    },
+    {
+      "text": "白起觉醒后能拿高阶援护战术，给逐鹿多一层保护。",
+      "id": "utterances_9ad1f87f7dce4297a825e8a6e09285f6"
+    }
+  ],
+  "id": "group_4c027a5672e15b0c8f5cb74990b610f1",
+  "event_id": "os_d12194463340a8ec",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"白起\" and not arg1.已觉醒",
+  "priority": 0,
+  "editor_mode": "text"
+}

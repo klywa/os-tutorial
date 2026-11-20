@@ -1,0 +1,25 @@
+{
+  "name": "英雄安琪拉穿虚无法杖",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第16行「使用技巧」。法术防御穿透提高光辉命中时的输出。",
+  "utterances": [
+    {
+      "text": "安琪拉穿虚无法杖提升法穿，让光辉打得更痛。",
+      "id": "utterances_d5abd21119f2487295c11668efb740b1"
+    },
+    {
+      "text": "虚无法杖给安琪拉法穿，扫到多个敌人都能增伤。",
+      "id": "utterances_e1144776255a4ec19fac8eda24f0e4c6"
+    }
+  ],
+  "id": "group_e45fc7519cd4578c8a18333acaf300b3",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"安琪拉\" and arg2 is \"虚无法杖\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

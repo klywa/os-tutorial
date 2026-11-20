@@ -1,0 +1,25 @@
+{
+  "name": "已有赵云主力时选一身是胆",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "天赋给予一张赵云，并使其在释放技能前额外放惊雷之龙；血量经过70%和30%档回满蓝。 来源：personal/knowledge_tips.jsonl 第181行；本地官方卡面 card:636306。",
+  "utterances": [
+    {
+      "text": "赵云是主力，一身是胆再给一张，还能强化他的施法。",
+      "id": "utterances_42efb02a1d764ed5a540e39ef51cad33"
+    },
+    {
+      "text": "一身是胆让赵云经过血线时回满蓝，能更快再放技能。",
+      "id": "utterances_44ea8a5e53a44d928fd83325e6308e86"
+    }
+  ],
+  "id": "group_4b130161c2ba5c20b51aedb75ab9e701",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"一身是胆\" and 玩家.主C is \"赵云\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

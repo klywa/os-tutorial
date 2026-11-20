@@ -1,0 +1,25 @@
+{
+  "name": "容错见底时选一线生机保命",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "一线生机在本局首次生命降到0时避免淘汰并保留1血，同时获得2张名刀·司命。不影响对手血量或容错。 来源：personal/knowledge_tips.jsonl 第219行；本地官方卡面 card:7115。",
+  "utterances": [
+    {
+      "text": "已经没容错，一线生机能让首次掉到零血时撑住。",
+      "id": "utterances_bc179c65262440f7ade3a8350a307411"
+    },
+    {
+      "text": "残血拿一线生机可多挡一次淘汰，还能拿两把名刀。",
+      "id": "utterances_7628b1ccac9d4e41ba28523504409046"
+    }
+  ],
+  "id": "group_cd976b94878b56fe9d2171192f879f07",
+  "event_id": "os_b9276a29aaffc6ba",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"一线生机\" and 玩家.容错数 <= 0",
+  "priority": 0,
+  "editor_mode": "text"
+}

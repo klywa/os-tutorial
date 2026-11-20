@@ -1,0 +1,25 @@
+{
+  "name": "已有崛起后用双生突袭强化两名核心",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "本地官方双生突袭 card:637008 证实马可波罗和百里守约共战时，施法会创造分身对敌施法。此前已选崛起提供两张核心英雄。只说明共战收益。 来源：personal/knowledge_tips.jsonl 第206行；本地官方卡面 card:63700801。",
+  "utterances": [
+    {
+      "text": "已有崛起，再选双生突袭让马可和守约共战时分身施法。",
+      "id": "utterances_1ecf5700cbad46ffba6bca5306c6f8ef"
+    },
+    {
+      "text": "双生突袭强化崛起双人组，一起上场可多打出分身技能。",
+      "id": "utterances_92ef2eaa45f447b48434f183ddb3b6a4"
+    }
+  ],
+  "id": "group_0bfde6edf117546fa5be6c2d81ad7887",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"双生突袭\" and 玩家.已选天赋 has \"崛起\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

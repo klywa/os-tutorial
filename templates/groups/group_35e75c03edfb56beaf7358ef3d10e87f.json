@@ -1,0 +1,25 @@
+{
+  "name": "空装备英雄用武装重构拿一件基础装备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "摧毁N件旧装备，随机获得N+1件基础装备。目标初始已穿装备数组明确为空时，无需损失装备即可随机拿1件基础装。 来源：personal/knowledge_tips.jsonl 第210行；本地官方卡面 card:7081。",
+  "utterances": [
+    {
+      "text": "对空装备英雄用武装重构，可以白拿一件基础装备。",
+      "id": "utterances_2d2bc99bd5e741ce996098b124568295"
+    },
+    {
+      "text": "这名英雄没穿装备，武装重构能直接给一件基础装。",
+      "id": "utterances_c1ae4125659749b79e1d1bde0a43c06c"
+    }
+  ],
+  "id": "group_35e75c03edfb56beaf7358ef3d10e87f",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"武装重构\" and arg1.已穿装备.计数() == 0",
+  "priority": 0,
+  "editor_mode": "text"
+}

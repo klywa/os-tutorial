@@ -1,0 +1,25 @@
+{
+  "name": "艾琳穿虚无法杖",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第37行「使用技巧」。艾琳有法术伤害技能，虚无法杖提供法术防御穿透。",
+  "utterances": [
+    {
+      "text": "艾琳穿虚无法杖提高法穿，让技能更好打高法防。",
+      "id": "utterances_d81df07ea2c14224b70a846867669907"
+    },
+    {
+      "text": "虚无法杖给艾琳补法穿，提高技能打高法防的伤害。",
+      "id": "utterances_01265573b46d4c85b585614dbdf4844c"
+    }
+  ],
+  "id": "group_6a3794f1bb705f28849ec28fe9861b44",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"艾琳\" and arg2 is \"虚无法杖\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

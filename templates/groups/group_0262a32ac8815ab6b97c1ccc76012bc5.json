@@ -1,0 +1,25 @@
+{
+  "name": "有孙悟空时上韩信吃整备成长",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第20行「使用技巧」。孙悟空整备本身也提高闪现英雄等级，同时韩信的被动为友方整备奖励永久等级。",
+  "utterances": [
+    {
+      "text": "有孙悟空在，上韩信可同时吃整备和自身被动的等级。",
+      "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+    },
+    {
+      "text": "孙悟空每次整备都能给韩信叠两路等级。",
+      "id": "utterances_0245c783a40241dda68398a4b6490768"
+    }
+  ],
+  "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

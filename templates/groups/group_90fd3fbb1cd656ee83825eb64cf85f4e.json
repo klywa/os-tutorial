@@ -1,0 +1,25 @@
+{
+  "name": "狄仁杰用征服之剑补反伤对局续航",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第11行「使用技巧」。反伤重甲回敬一部分所受伤害。对面最高等级英雄确认穿反伤重甲，征服之剑的物理吸血可缓冲狄仁杰连续普攻可能遭到的反伤。取同属吸血类但没有开局扣血的征服之剑。",
+  "utterances": [
+    {
+      "text": "对面有反伤重甲，狄仁杰穿征服之剑能靠吸血缓冲。",
+      "id": "utterances_d000e488b4bc4bab99cf8b470941cf0c"
+    },
+    {
+      "text": "狄仁杰穿征服之剑补吸血，减轻普攻的反伤压力。",
+      "id": "utterances_67e0f29fdbe448c89160c62d3abb0375"
+    }
+  ],
+  "id": "group_90fd3fbb1cd656ee83825eb64cf85f4e",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"狄仁杰\" and arg2 is \"征服之剑\" and 对局.当前对手.最高等级英雄.已穿装备 has \"反伤重甲\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

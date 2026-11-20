@@ -1,0 +1,25 @@
+{
+  "name": "多大河英雄时选化为熊灵",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "首名大河英雄阵亡才触发，熊灵等级是场上大河英雄等级之和且不计临时等级；多名在场可体现聚合收益。 来源：personal/knowledge_tips.jsonl 第188行；本地官方卡面 card:636509。",
+  "utterances": [
+    {
+      "text": "场上{玩家.战场.计数(阵营, \"大河\")}名大河英雄，化为熊灵能汇集他们的非临时等级。",
+      "id": "utterances_c2ab928e8b2d495fb5f20da9e0738bf3"
+    },
+    {
+      "text": "首名大河英雄倒下后，熊灵能带着多名大河英雄的等级出场。",
+      "id": "utterances_10d9c20a660c4712b8eb595debdeaa6a"
+    }
+  ],
+  "id": "group_6f80c731081d55b584e92f203708d7da",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"化为熊灵\" and 玩家.战场.计数(阵营, \"大河\") >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "双装备韩信选天赋补承伤",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第20行「使用技巧」。官网重装上阵和全副武装都让至少穿两件的英雄获得15%伤害加成与减免。主力韩信已在场且达到门槛，该次天赋直接为其前排持续作战增加减伤。",
+  "utterances": [
+    {
+      "text": "韩信已达装备门槛，选{arg2}能增伤也能减伤。",
+      "id": "utterances_4bfbfcff5bb94601997e10e6ccdc2233"
+    },
+    {
+      "text": "韩信穿了{玩家.主C.已穿装备.计数()}件装备，选{arg2}能减伤。",
+      "id": "utterances_b4d36364997c43249d9ddf261c6f6cbd"
+    }
+  ],
+  "id": "group_070ea16d3ef457249008c53768f1fda5",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 in [\"重装上阵\",\"全副武装\"] and arg2 in arg1 and 玩家.主C is \"韩信\" and 玩家.主C in 玩家.战场 and 玩家.主C.已穿装备.计数() >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

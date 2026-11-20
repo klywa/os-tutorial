@@ -1,0 +1,25 @@
+{
+  "name": "貂蝉用法源之杯完成施法组合",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第15行「使用技巧」。法源之杯每秒回蓝，貂蝉已穿贤者之书降低法力值上限时，可更快补满释放技能。",
+  "utterances": [
+    {
+      "text": "貂蝉已有贤者之书，补法源之杯能更快接下次技能。",
+      "id": "utterances_de4a01b550bb4579a5dfc74654a64df9"
+    },
+    {
+      "text": "法源之杯持续给貂蝉回蓝，配贤者之书缩短施法间隔。",
+      "id": "utterances_c0d70616142f424ba93123a724992c35"
+    }
+  ],
+  "id": "group_5615d42cd7ff51beac0bd044a4f0ccd1",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"貂蝉\" and arg2 is \"法源之杯\" and arg1.已穿装备 has \"贤者之书\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

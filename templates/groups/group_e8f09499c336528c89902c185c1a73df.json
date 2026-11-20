@@ -1,0 +1,25 @@
+{
+  "name": "满装主力在场时上云中君",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第41行「使用技巧」。云中君开团让在场英雄按其实际穿戴装备件数获得永久等级，满装主力可吃到三件收益。普通与觉醒数值不同，播报不混用。",
+  "utterances": [
+    {
+      "text": "主力已穿{玩家.主C.已穿装备.计数()}件装备，上云中君能按件给他永久等级。",
+      "id": "utterances_a124117ae5c34dcfbd15e9bf6bc73754"
+    },
+    {
+      "text": "上云中君，满装主力开战能按每件装备提高等级。",
+      "id": "utterances_fd053ea99808490ebef6ce4b9c10a692"
+    }
+  ],
+  "id": "group_e8f09499c336528c89902c185c1a73df",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"云中君\" and 玩家.主C.已穿装备.计数() == 3 and 玩家.主C in 玩家.战场",
+  "priority": 0,
+  "editor_mode": "text"
+}

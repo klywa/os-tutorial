@@ -1,0 +1,25 @@
+{
+  "name": "撤下刘邦保留图腾",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第19行「使用技巧」。刘邦开团先摧毁阵营图腾。出售后刘邦确实离场且图腾搭档仍在，可以解释为阻止刘邦主动摧毁，不能保证图腾必定留到结算。",
+  "utterances": [
+    {
+      "text": "先卖刘邦，图腾能留给场上的队友发挥。",
+      "id": "utterances_8db628dcd58945649e1aa3c07b45bdaa"
+    },
+    {
+      "text": "把刘邦撤下，开战就不会被他抢先摧毁图腾。",
+      "id": "utterances_fa199b39c65347d3ba1ed72e6bfc1e84"
+    }
+  ],
+  "id": "group_b16a2ce226165176b6c1c328149e4cb5",
+  "event_id": "os_02f23dfd4155737d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"刘邦\" and not (玩家.战场 has \"刘邦\") and (玩家.战场 has \"虞姬\" or 玩家.战场 has \"东皇太一\")",
+  "priority": 0,
+  "editor_mode": "text"
+}

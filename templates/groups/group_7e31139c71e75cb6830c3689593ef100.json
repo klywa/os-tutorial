@@ -1,0 +1,25 @@
+{
+  "name": "让非日落海搭档参与核心等级分配",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第153行与本地官方卡面。用穿戴事件判断装备已经给到目标。场上有日落海队友且穿戴者是其他阵营时，解释卡面明确的分配资格。",
+  "utterances": [
+    {
+      "text": "给外援穿阿科米亚之子，就能参与核心等级分配。",
+      "id": "utterances_0e491b8e132741498a5a2349cd670510"
+    },
+    {
+      "text": "阿科米亚之子让这名非日落海英雄也能分到核心等级。",
+      "id": "utterances_769d7f4f963f43cb87a348104dec84cc"
+    }
+  ],
+  "id": "group_7e31139c71e75cb6830c3689593ef100",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"阿科米亚之子\" and not (arg1.阵营 is \"日落海\") and 玩家.战场.计数(阵营, \"日落海\") >= 1",
+  "priority": 0,
+  "editor_mode": "text"
+}

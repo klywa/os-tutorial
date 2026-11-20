@@ -1,0 +1,25 @@
+{
+  "name": "切入英雄穿冥王利用贴身敌人",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "冥王按周围1格每名敌方单位提高物防和基础物攻。限定会切入/接近敌方的例子；邻敌人数取决于战斗实际位置。 来源：personal/knowledge_tips.jsonl 第135行；本地官方卡面 card:643702。",
+  "utterances": [
+    {
+      "text": "给{arg1}戴冥王，贴到的敌人越多，物防就越高。",
+      "id": "utterances_fbeb4cf366454fad9cdac8aaca01d684"
+    },
+    {
+      "text": "等{arg1}切进敌阵，冥王就能按贴身敌人数加物防和物攻。",
+      "id": "utterances_7400ee32a4e84e0d9dc5a0767cfc8781"
+    }
+  ],
+  "id": "group_5c747a58d90657a39657dcc3ce6e9c91",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"冥王\" and arg1 in [\"裴擒虎\", \"露娜\", \"百里玄策\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

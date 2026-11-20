@@ -1,0 +1,25 @@
+{
+  "name": "已有搏战时选膨化生命",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "场上须已有三分英雄。膨化生命只将最大生命翻倍而不增加当时血量；搏战仅前两排三分英雄在卡面生命阈值内获得效果。满血时翻倍后恰50%，不承诺立即触发。 来源：personal/knowledge_tips.jsonl 第183行；本地官方卡面 card:636317。",
+  "utterances": [
+    {
+      "text": "已有搏战，膨化生命只抬上限，三分前排更容易进半血线。",
+      "id": "utterances_159a7a15bee34d538ba0e63c5db9237b"
+    },
+    {
+      "text": "搏战配膨化生命，三分前排掉进半血后能回血和加攻速。",
+      "id": "utterances_2b3bd5e94df74688af14f6819a537d48"
+    }
+  ],
+  "id": "group_c2c08a65fc3f5e2cb5cc8d81852f320a",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"膨化生命\" and 玩家.已选天赋 has \"搏战\" and 玩家.战场.计数(阵营, \"三分之地\") >= 1",
+  "priority": 0,
+  "editor_mode": "text"
+}

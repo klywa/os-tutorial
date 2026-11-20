@@ -1,0 +1,25 @@
+{
+  "name": "李白穿掠魂爪续航",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第10行「使用技巧」。李白缺少自带恢复，掠魂爪可为能命中敌人的李白补物理和法术吸血，争取活到下一次施法。",
+  "utterances": [
+    {
+      "text": "给李白穿掠魂爪，靠吸血争取再放一次技能。",
+      "id": "utterances_ffa599f854274ca587a3ac099d01ff54"
+    },
+    {
+      "text": "李白打出伤害就能吸血，掠魂爪帮他维持血量。",
+      "id": "utterances_38214a45b4684a4bb0b8aa22997c5ee5"
+    }
+  ],
+  "id": "group_538a54dfac465edeb6cc457f766e06a9",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"李白\" and arg2 is \"掠魂爪\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

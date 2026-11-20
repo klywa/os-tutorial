@@ -1,0 +1,25 @@
+{
+  "name": "坦克戴银莲庇佑接过怒莲的伤害",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "银莲庇佑增加物法防御。其伤害转移必须有怒莲之刺持有者，所以各话术仅说该装备可以承担对方伤害。 来源：personal/knowledge_tips.jsonl 第151行；本地官方卡面 card:644115。",
+  "utterances": [
+    {
+      "text": "队友穿怒莲之刺时，银莲庇佑能替他承伤。",
+      "id": "utterances_f56c6017534f4023b78881b774bfa129"
+    },
+    {
+      "text": "给{arg1}戴银莲庇佑，能替穿怒莲之刺的队友承伤。",
+      "id": "utterances_f966d8e8b4c644988bae1ccafd9afe47"
+    }
+  ],
+  "id": "group_04e4cf4c1b94564fb66a4ff12373599c",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"银莲庇佑\" and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

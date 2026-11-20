@@ -1,0 +1,25 @@
+{
+  "name": "三分队伍穿鼓舞之戒提高生命上限",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "戒指提升和穿戴者同阵营英雄的最大生命值，以实际在场至少两名三分英雄及三分穿戴者限制。物理第191行重复指出无阵营不受益。 来源：personal/knowledge_tips.jsonl 第112行；本地官方卡面 card:646015。",
+  "utterances": [
+    {
+      "text": "场上有{玩家.战场.计数(阵营, \"三分之地\")}名三分英雄，戴鼓舞之戒能一起提高生命上限。",
+      "id": "utterances_432e975667444e029c56fc742ed74701"
+    },
+    {
+      "text": "把鼓舞之戒给三分英雄，在场同阵营队友也能提高生命上限。",
+      "id": "utterances_71f6076a731349b9b39538efb2e59ff7"
+    }
+  ],
+  "id": "group_5fc711ca2d28533daa288d02dc0f47c6",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"鼓舞之戒\" and arg1.阵营 is \"三分之地\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "切后英雄用灵泉法杖连锁闪现",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "装备赋予闪现。每次闪现后普攻重击并眩晕敌人，击败敌方任一单位再次触发闪现。只说有击败才续接。 来源：personal/knowledge_tips.jsonl 第140行；本地官方卡面 card:646013。",
+  "utterances": [
+    {
+      "text": "灵泉法杖让{arg1}闪现后打出重击，击败还能再闪。",
+      "id": "utterances_265bf1129831489797d380dc9bbea8ce"
+    },
+    {
+      "text": "给{arg1}戴灵泉法杖，击败敌人还能再闪现追击。",
+      "id": "utterances_95e53479cac44b4b910664983207dcca"
+    }
+  ],
+  "id": "group_bdf0f81f307558ef8929077d8794b9c1",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"灵泉法杖\" and arg1 in [\"裴擒虎\", \"百里玄策\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

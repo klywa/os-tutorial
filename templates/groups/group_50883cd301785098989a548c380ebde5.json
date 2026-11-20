@@ -1,0 +1,25 @@
+{
+  "name": "全军动员多次触发朵莉亚的整备联动",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "朵莉亚在场会响应英雄触发整备，全军动员同时触发多个整备英雄，能在一回合内多次响应。 来源：personal/knowledge_tips.jsonl 第209行；本地官方卡面 card:7080。",
+  "utterances": [
+    {
+      "text": "全军动员能让{玩家.战场.计数(标签, \"具有整备效果\")}名英雄整备，朵莉亚能多次响应。",
+      "id": "utterances_de9f607e863240f9910323cbae68c458"
+    },
+    {
+      "text": "朵莉亚在场，开全军动员能让她接连响应多次整备。",
+      "id": "utterances_66d39f52bf1c486b960cc837dfe6529d"
+    }
+  ],
+  "id": "group_50883cd301785098989a548c380ebde5",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"全军动员\" and 玩家.战场 has \"朵莉亚\" and 玩家.战场.计数(标签, \"具有整备效果\") >= 2",
+  "priority": 0,
+  "editor_mode": "text"
+}

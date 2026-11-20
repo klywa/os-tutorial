@@ -1,0 +1,25 @@
+{
+  "name": "合成太乙真人追完美复生",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第31行「使用技巧」。太乙真人觉醒后把开团复生升级为完美复生，受益仍取最近的一名英雄。",
+  "utterances": [
+    {
+      "text": "合成太乙真人追觉醒，最近的队友能满血复生。",
+      "id": "utterances_849db9f14bcd4721b2c4c184199705c7"
+    },
+    {
+      "text": "太乙真人觉醒后，开团给最近队友的是完美复生。",
+      "id": "utterances_ff5af701410a4c12972406901b2c63e3"
+    }
+  ],
+  "id": "group_8814c569917159f092641e36f6541eb4",
+  "event_id": "os_d12194463340a8ec",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"太乙真人\" and not arg1.已觉醒",
+  "priority": 0,
+  "editor_mode": "text"
+}

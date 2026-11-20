@@ -1,0 +1,25 @@
+{
+  "name": "高频普攻主力选破败神威",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "破败神威让普攻附带按敌方最大生命值计的法术伤害，靠持续普攻输出的主C每次攻击都可触发。 来源：personal/knowledge_tips.jsonl 第170行；本地官方卡面 card:634032。",
+  "utterances": [
+    {
+      "text": "{玩家.主C}普攻频繁，破败神威能反复打出额外伤害。",
+      "id": "utterances_7dd5df8710d640af8bb0d7a79ee5e53a"
+    },
+    {
+      "text": "选破败神威，{玩家.主C}普攻附带按目标生命上限算的伤害。",
+      "id": "utterances_6f716d3a2c6c4096af5217e05abb36d8"
+    }
+  ],
+  "id": "group_c5131713e9315a54939aaa69a20c847e",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"破败神威\" and 玩家.主C in [\"敖隐\", \"艾琳\", \"公孙离\", \"狄仁杰\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "唤醒武则天再拿精致古币",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第12行「使用技巧」。武则天的精致古币来自登场效果，唤醒触发指定英雄登场。普通和觉醒形态均会得到精致古币。",
+  "utterances": [
+    {
+      "text": "对武则天用唤醒，再触发登场拿精致古币。",
+      "id": "utterances_5aa33170e0ca40cdacc0e02a501cbbcd"
+    },
+    {
+      "text": "唤醒武则天能让她再给精致古币，接着养河洛英雄。",
+      "id": "utterances_a663fb9bfa984f0a912c096e8b081e6f"
+    }
+  ],
+  "id": "group_2303d829958452999e3b451e61a6664a",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is {\"类型\": \"英雄\", \"名称\": \"武则天\"} and arg2 is \"唤醒\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

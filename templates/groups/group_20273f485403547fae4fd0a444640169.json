@@ -1,0 +1,25 @@
+{
+  "name": "韩信用铸梦逐风加快普攻",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第20行「使用技巧」。铸梦逐风令韩信周期性打出四次快速普攻，能更快推进卡面按普攻次数触发的击飞。",
+  "utterances": [
+    {
+      "text": "铸梦·逐风让韩信多打几次普攻，更快推进击飞。",
+      "id": "utterances_47b41b86b6f94d06bbf5c4d3be749983"
+    },
+    {
+      "text": "韩信穿铸梦·逐风，连续普攻更容易打出下一次击飞。",
+      "id": "utterances_81ed61b67a864403b0ccd0915aa38fa2"
+    }
+  ],
+  "id": "group_20273f485403547fae4fd0a444640169",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"韩信\" and arg2 is \"铸梦·逐风\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

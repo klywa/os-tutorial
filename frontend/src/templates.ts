@@ -16,7 +16,8 @@ export type ConditionOperator='eq'|'ne'|'gt'|'gte'|'lt'|'lte'|'between';
 export type TemplateCondition={id:string;parameter_key:string;operator:ConditionOperator;value:unknown};
 export const templateExplanationLimit=300;
 export type TemplateGroup={id:string;name:string;explanation?:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
-export type TemplateSnapshot={schema_version:number;condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>};
+export type UtteranceBindings=Record<string,string[]>;
+export type TemplateSnapshot={schema_version:number;condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>;utterance_bindings?:Record<string,UtteranceBindings>};
 // Portable JSON is a separate contract from the canonical editor/proposal model.
 export type PortableTemplateParameter=Omit<TemplateParameter,'id'|'suggestions'>&{id?:string;suggestions?:Array<string|number|boolean>};
 export type PortableTemplateEvent=Omit<TemplateEvent,'id'|'parameters'>&{id?:string;parameters:PortableTemplateParameter[]};
@@ -66,20 +67,54 @@ export const operators:Record<ConditionOperator,string>={eq:'等于',ne:'不等�
 export const typeNames:Record<ParameterType,string>={text:'文本',number:'数字',boolean:'是/否',entity:'实体卡牌'};
 export function templateId(prefix:string){return prefix+'_'+crypto.randomUUID();}
 export function valueText(value:unknown):string{if(Array.isArray(value))return value.map(valueText).join(' 至 ');if(typeof value==='object'&&value)return String((value as TemplateEntity).name??(value as TemplateEntity).id??'');if(typeof value==='boolean')return value?'是 true':'否 false';return String(value??'');}
-export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>}={}){
+const utteranceTokens=/\{\{|\}\}|\{((?:[^{}"]|"(?:[^"\\]|\\.)*")+)\}/g;
+export function renderUtterance(text:string,bindings?:UtteranceBindings):string{
+ if(!bindings)return text;
+ return text.replace(utteranceTokens,(token,path:string|undefined)=>{
+  const candidates=path&&Object.hasOwn(bindings,path)?bindings[path]:undefined;
+  return candidates?.length?candidates.join('/'):token;
+ });
+}
+function templateSearchTerms(query:string):string[]{
+ const terms:string[]=[],closing:string[]=[];
+ const delimiters:Record<string,string>={'(':')','[':']','{':'}'};
+ let start=0,inString=false;
+ for(let i=0;i<query.length;i++){
+  const char=query[i];
+  if(inString&&char==='\\'){i++;continue;}
+  if(char==='"'){inString=!inString;continue;}
+  if(inString)continue;
+  if(delimiters[char])closing.push(delimiters[char]);
+  else if(char===closing.at(-1))closing.pop();
+  else if(!closing.length&&(char===','||char==='，')){
+   terms.push(query.slice(start,i));
+   start=i+1;
+  }
+ }
+ terms.push(query.slice(start));
+ return terms.map(term=>term.trim().toLocaleLowerCase()).filter(Boolean);
+}
+export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>;utteranceBindings?:Record<string,UtteranceBindings>}={}){
  const compatible=(value:string|null,filter:string)=>!filter||(filter==='common'?value===null:value===null||value===filter);
- const terms=filters.query.toLocaleLowerCase().split(/[,，]/).map(v=>v.trim()).filter(Boolean);
+ const terms=templateSearchTerms(filters.query);
  const scoped=groups.filter(group=>(!filters.event||group.event_id===filters.event)&&compatible(group.scope.player_id,filters.player)&&compatible(group.scope.lineup_note_id,filters.lineup));
  if(!terms.length)return scoped;
  const entities=new Map<string,{name:string;aliases:string[]}>();for(const e of catalog){const previous=entities.get(e.id);entities.set(e.id,{name:e.name,aliases:[...new Set([...(previous?.aliases??[]),...(e.aliases??[]),...(previous?.name&&previous.name!==e.name?[previous.name]:[])])]});}
  const searchValue=(value:unknown)=>{const ref=value as TemplateEntity|null;if(ref&&typeof ref==='object'&&!Array.isArray(ref)&&ref.id){const entity=entities.get(ref.id);return [ref.id,ref.name,entity?.name,...entity?.aliases??[]].filter(Boolean).join(' ').toLocaleLowerCase();}return valueText(value).toLocaleLowerCase();};
  return scoped.filter(group=>{
+  const event=labels.events?.find(e=>e.id===group.event_id);
   const {player_id:player,lineup_note_id:lineup}=group.scope;
   const playerName=player&&(labels.scopeName?.(player)??player),lineupName=lineup&&(labels.scopeName?.(lineup)??lineup);
-  const values=[group.name,effectiveExpression(playerName,lineupName,group.expression??''),...group.utterances.map(u=>u.text),
-   labels.events?.find(e=>e.id===group.event_id)?.name,labels.scopeName?.(player),labels.scopeName?.(lineup),
+  const bindings=labels.utteranceBindings?.[group.id];
+  const values=[group.name,effectiveExpression(playerName,lineupName,group.expression??''),
+   ...group.utterances.flatMap(({text})=>bindings?[text,renderUtterance(text,bindings)]:[text]),
+   event?.name,labels.scopeName?.(player),labels.scopeName?.(lineup),
    ...[...group.related_entities,...labels.links?.[group.id]??[]].map(searchValue),
-   ...group.conditions.flatMap(c=>[c.parameter_key,searchValue(c.value)])].map(value=>value?.toLocaleLowerCase()??'');
+   ...group.conditions.flatMap(c=>{
+    const name=event?.parameters.find(p=>p.key===c.parameter_key)?.name??c.parameter_key;
+    const displayed=[name,operators[c.operator],valueText(c.value)].join(' ');
+    return [c.parameter_key,displayed,searchValue(c.value)];
+   })].map(value=>value?.toLocaleLowerCase()??'');
   return terms.every(term=>values.some(value=>value.includes(term)));
  });
 }
@@ -94,13 +129,34 @@ export function parseConditionValue(type:ParameterType,operator:ConditionOperato
  if(type==='entity'){if(!raw||!extra)throw new Error('请选择有效实体');return {id:raw,name:extra};}
  if(!raw.trim())throw new Error('条件值不能为空');return raw;
 }
-export function placeholderKeys(text:string){return [...new Set(Array.from(text.replace(/\{\{[\s\S]*?\}\}/g,'' ).matchAll(/\{([a-zA-Z_][a-zA-Z0-9_]*)\}/g),m=>m[1]))];}
+export function placeholderKeys(text:string){
+ return [...new Set(Array.from(text.matchAll(utteranceTokens),match=>match[1])
+  .filter(path=>path&&/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(path)))];
+}
 export function groupDiffKeys(base:TemplateGroup,next:TemplateGroup){
  const keys:string[]=[];
  if((base.explanation??'')!==(next.explanation??''))keys.push('explanation');
  if(['expression','condition_tree','editor_mode'].some(key=>JSON.stringify(base[key as keyof TemplateGroup])!==JSON.stringify(next[key as keyof TemplateGroup])))keys.push('rule');for(const key of ['name','event_id','scope','related_entities','priority','ignored'] as const)if(JSON.stringify(base[key])!==JSON.stringify(next[key]))keys.push(key);
  for(const [field,prefix] of [['conditions','condition'],['utterances','utterance']] as const){const ids=new Set([...base[field],...next[field]].map(v=>v.id));for(const id of ids)if(!(field==='conditions'&&keys.includes('rule'))&&JSON.stringify(base[field].find(v=>v.id===id))!==JSON.stringify(next[field].find(v=>v.id===id)))keys.push(prefix+':'+id);}
  return keys;
+}
+export function mergeTemplateWriteSnapshot(current:TemplateSnapshot,result:TemplateSnapshot,groupIds:string[]):TemplateSnapshot{
+ // The read projection carries legacy editor rules needed for untouched groups.
+ const previous=new Map(current.groups.map(group=>[group.id,group]));
+ const changed=new Set(groupIds);
+ const groups=result.groups.map(group=>changed.has(group.id)?group:previous.get(group.id)??group);
+ const merged={...current,...result,groups};
+ if(result.utterance_bindings||!current.utterance_bindings)return merged;
+ // A write returns canonical groups. Wait for the fresh read projection on rule edits.
+ const bindings=current.utterance_bindings;
+ merged.utterance_bindings=Object.fromEntries(groups.flatMap(group=>{
+  if(!Object.hasOwn(bindings,group.id))return [];
+  const old=previous.get(group.id);
+  if(old&&old!==group&&groupDiffKeys(old,group).some(key=>
+   key==='rule'||key==='event_id'||key==='scope'||key.startsWith('condition:')))return [];
+  return [[group.id,bindings[group.id]]];
+ }));
+ return merged;
 }
 export function selectedGroupChange(base:TemplateGroup,next:TemplateGroup,selected:string[]):TemplateGroup{
  // The server compares the full accepted record with the proposal to close it.

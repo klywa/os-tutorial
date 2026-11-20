@@ -1,0 +1,25 @@
+{
+  "name": "日落海输出穿星源装甲",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "官方装备仅日落海可穿，施法后免控2秒，物理和法术吸血均提升20%。 来源：personal/knowledge_tips.jsonl 第106行；本地官方卡面 card:41124。",
+  "utterances": [
+    {
+      "text": "给{arg1}穿星源装甲，施法后有两秒免控。",
+      "id": "utterances_b53c09f1b13c4f14af08fb0111ad64ec"
+    },
+    {
+      "text": "给{arg1}穿星源装甲能吸血，施法后还能短暂免控。",
+      "id": "utterances_de01ee2c40b24e31ab25838cb4199def"
+    }
+  ],
+  "id": "group_246272edf97a51a89b737b6d8a6ba93e",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"星源装甲\" and arg1 in [\"艾琳\", \"安琪拉\", \"海诺\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

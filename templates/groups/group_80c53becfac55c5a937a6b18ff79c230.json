@@ -1,0 +1,25 @@
+{
+  "name": "普攻暴击主力选小身体大能量",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "天赋使英雄获得60%攻速及40%暴击率，牺牲20%最大生命值。本组明确这项代价并限定普攻主力。 来源：personal/knowledge_tips.jsonl 第193行；本地官方卡面 card:671002。",
+  "utterances": [
+    {
+      "text": "{玩家.主C}靠暴击输出，小身体大能量用生命上限换攻速和暴击。",
+      "id": "utterances_d3d80cf36b3c48bf8cc1737d1a97c611"
+    },
+    {
+      "text": "小身体大能量让{玩家.主C}攻速和暴击率更高，代价是少两成生命上限。",
+      "id": "utterances_9d3b3dc844b341f5b3f1fea582a5da2b"
+    }
+  ],
+  "id": "group_80c53becfac55c5a937a6b18ff79c230",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"小身体大能量\" and 玩家.主C in [\"敖隐\", \"艾琳\", \"公孙离\", \"狄仁杰\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

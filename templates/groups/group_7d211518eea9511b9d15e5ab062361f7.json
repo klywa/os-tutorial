@@ -1,0 +1,25 @@
+{
+  "name": "有日落海与整备英雄时选积极整备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "每触发5次整备随机得件日落海专属装备，上限3件。只在盘面有至少两名日落海和可触发整备的英雄时解释。 来源：personal/knowledge_tips.jsonl 第174行；本地官方卡面 card:636106。",
+  "utterances": [
+    {
+      "text": "场上有日落海英雄，整备够五次就能拿他们穿的装备。",
+      "id": "utterances_5db643d0b53342ae84161659bd7f130f"
+    },
+    {
+      "text": "选积极整备，把之后的整备次数攒成日落海装备。",
+      "id": "utterances_b22d665353aa438bb64ed1c454a68258"
+    }
+  ],
+  "id": "group_7d211518eea9511b9d15e5ab062361f7",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"积极整备\" and 玩家.战场.计数(阵营, \"日落海\") >= 2 and 玩家.战场.计数(标签, \"具有整备效果\") >= 1",
+  "priority": 0,
+  "editor_mode": "text"
+}

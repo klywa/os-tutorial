@@ -1,0 +1,25 @@
+{
+  "name": "小妲己用危险数字补买牌能量",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第55行「使用技巧」。危险数字在商店购买每三张牌返一点能量。小妲己本就通过买牌触发被动，返还能继续用于后续买牌。",
+  "utterances": [
+    {
+      "text": "小妲己常买牌，危险数字返的能量还能接着买。",
+      "id": "utterances_89841628621a4ca690034b2d0bb4a847"
+    },
+    {
+      "text": "危险数字每买三张回一点能量，能多留买牌预算。",
+      "id": "utterances_103c42e93c694d0fbc82ad23e9f2f224"
+    }
+  ],
+  "id": "group_34fcf71325bd5528a399874c0e189e6e",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"危险数字\" and arg1 has \"危险数字\" and 玩家.使用棋手 is \"小妲己\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

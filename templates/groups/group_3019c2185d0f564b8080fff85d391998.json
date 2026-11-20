@@ -1,0 +1,25 @@
+{
+  "name": "升五前选里程碑兑现能量和装备",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "卡面奖励在棋手到达5级时触发。选择发生在升5之前；未确认5级以后会追补奖励。 来源：personal/knowledge_tips.jsonl 第156行；本地官方卡面 card:613003。",
+  "utterances": [
+    {
+      "text": "现在选里程碑，升到五级时就能领能量和装备箱。",
+      "id": "utterances_3e0d94d9124b4daea181a75b3747f9e7"
+    },
+    {
+      "text": "先拿里程碑，尽早升到五级把奖励领出来。",
+      "id": "utterances_abab6dff32ab49f0898e388d35f916ce"
+    }
+  ],
+  "id": "group_3019c2185d0f564b8080fff85d391998",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"里程碑\" and 玩家.等级 < 5",
+  "priority": 0,
+  "editor_mode": "text"
+}

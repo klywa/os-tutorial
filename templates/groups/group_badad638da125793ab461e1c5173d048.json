@@ -1,0 +1,25 @@
+{
+  "name": "主力穿驱雷时撤下钟馗",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第27行「使用技巧」。驱雷会伤及友方，钟馗赋予牺牲会降低击败者等级；技巧指出驱雷击败该单位也会降穿戴者等级。只有钟馗离场且主C装备驱雷时解释避免误伤风险。",
+  "utterances": [
+    {
+      "text": "主力穿着驱雷，撤钟馗能避免落雷误触发降级。",
+      "id": "utterances_7883abd48bbf4dbebcc51b6052fc279c"
+    },
+    {
+      "text": "撤掉钟馗，防止主力的驱雷误杀队友后自己降级。",
+      "id": "utterances_698951a93a434657a5c02f150c4d66a5"
+    }
+  ],
+  "id": "group_badad638da125793ab461e1c5173d048",
+  "event_id": "os_02f23dfd4155737d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"钟馗\" and not (玩家.战场 has \"钟馗\") and 玩家.主C.已穿装备 has \"驱雷\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

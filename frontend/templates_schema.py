@@ -57,16 +57,10 @@ def typed(value, parameter, entities):
 
 
 def placeholders(value, keys):
-    """Accept {key}, {{ and }} while rejecting every unmatched literal brace."""
-    i=0
-    while i<len(value):
-        if value.startswith('{{',i) or value.startswith('}}',i):i+=2;continue
-        if value[i]=='{':
-            end=value.find('}',i+1)
-            if end<0 or value[i+1:end] not in keys:raise ValueError('话术引用了未知参数或花括号未闭合')
-            i=end+1;continue
-        if value[i]=='}':raise ValueError('话术包含未配对的花括号')
-        i+=1
+    from src.python.condition import utterance_references
+    unknown = [path for path in utterance_references(value) if path not in keys]
+    if unknown:
+        raise ValueError('话术引用需要已声明参数、必选的 in 字面量条件或数值比较：'+'、'.join(unknown))
 
 
 def validate_event(event, entities, *, retired_suggestions=None):
@@ -131,8 +125,15 @@ def validate_group(group, events, entities, notes):
         else:raise ValueError('参数不支持该比较方式')
     unique(group['utterances'],'话术')
     if not group['utterances']:raise ValueError('每组至少需要一条话术')
+    allowed = set(params)
+    expression = group.get('expression', '')
+    if expression and any('{' in u['text'] for u in group['utterances'] if isinstance(u.get('text'),str)):
+        from src.python.condition import literal_in_bindings, numeric_utterance_bindings
+        catalog = rules.library_catalog([event])
+        allowed.update(literal_in_bindings(expression,event['name'],catalog))
+        allowed.update(numeric_utterance_bindings(expression,event['name'],catalog))
     for u in group['utterances']:
-        fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],params)
+        fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],allowed)
         if 'ignored' in u and type(u['ignored']) is not bool:
             raise ValueError('话术忽略状态必须是布尔值')
         if 'fixed' in u and type(u['fixed']) is not bool:

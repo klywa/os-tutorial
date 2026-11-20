@@ -1,0 +1,25 @@
+{
+  "name": "用破妄之刃应对寒霜侵袭射手",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "对局当前对手主C实际穿寒霜侵袭时，破妄之刃的移速和免减速提供接近空间；不承诺一定接近或击败。 来源：personal/knowledge_tips.jsonl 第141行；本地官方卡面 card:646001。",
+  "utterances": [
+    {
+      "text": "对面主力带寒霜侵袭，破妄之刃能免掉它的减速。",
+      "id": "utterances_bb426b06a640448ea736a62b2560ef0d"
+    },
+    {
+      "text": "穿破妄之刃可以免减速，更容易追上寒霜射手。",
+      "id": "utterances_516cade5faa94215bc6ef83329c63dda"
+    }
+  ],
+  "id": "group_8bbd7deb4a1a5e3d9e3b18c1c2a55a97",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"破妄之刃\" and 对局.当前对手.主C.已穿装备 has \"寒霜侵袭\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "对付普攻射手时穿不祥征兆",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "本装备前15秒格挡50%普攻伤害；攻击者攻速不低于1.5时为70%。场上主力的名字能提示普攻打法，但不能证实实战攻速，阈值不写成已经达到。 来源：personal/knowledge_tips.jsonl 第131行；本地官方卡面 card:643601。",
+  "utterances": [
+    {
+      "text": "穿不祥征兆，能挡掉对面{对局.当前对手.主C}部分开场普攻伤害。",
+      "id": "utterances_9489812a6f7b4a99811f1a75f4989c5d"
+    },
+    {
+      "text": "不祥征兆开场挡掉部分普攻，遇到高攻速对手挡得更多。",
+      "id": "utterances_35e48c96603644d996b4edcb173cdb35"
+    }
+  ],
+  "id": "group_b5cb6e62292f510db23531362afb790e",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"不祥征兆\" and 对局.当前对手.主C in [\"艾琳\", \"狄仁杰\", \"公孙离\", \"敖隐\"] and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "远程普攻触发日渊攻击残血",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "正式装备限定远程穿戴。一次普攻向生命值最低的两名敌人发射物理飞箭。 来源：personal/knowledge_tips.jsonl 第116行；本地官方卡面 card:641015。",
+  "utterances": [
+    {
+      "text": "日渊让远程英雄每次普攻顺带打两个低血敌人。",
+      "id": "utterances_03ea8b6a910f4f51b44dd979e8f6d205"
+    },
+    {
+      "text": "远程英雄戴日渊，普攻时能用飞箭补打残血。",
+      "id": "utterances_0f9bd7e142e24a9e8015f8e33c69d608"
+    }
+  ],
+  "id": "group_1d85b1861672541c88bcd20d2240f06d",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"日渊\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

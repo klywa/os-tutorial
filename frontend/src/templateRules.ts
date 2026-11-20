@@ -7,11 +7,13 @@ export type ConditionCatalog = {
  roots:Record<string,string>;
  types:Record<string,Record<string,string>>;
  aliases:Record<string,string>;
+ unit_types?:string[];
  operations:Record<string,string[]>;
  enums?:Record<string,string[]>;
  card_tags?:Record<string,{type:string;tags:string[]}>;
 };
-export type PathOption={path:string;type:string;operations?:string[];choices?:string[]};
+type CountFilter={source:string;field:'标签'|'阵营';choices?:string[]};
+export type PathOption={path:string;type:string;operations?:string[];choices?:string[];filter?:CountFilter};
 export const emptyTree=():ConditionNode=>({kind:'all',children:[]});
 export function renderRule(node:ConditionNode):string{
  if(node.kind==='leaf')return [node.left,node.operator,node.right].filter(Boolean).join(' ');
@@ -21,7 +23,7 @@ export function renderRule(node:ConditionNode):string{
  return '('+children.join(node.kind==='all'?' and ':' or ')+')';
 }
 export function completeTree(node:ConditionNode,root=true):boolean{
- if(node.kind==='leaf')return !!node.left&&(!node.operator||!!node.right);
+ if(node.kind==='leaf')return !!node.left&&readCountFilter(node.left)?.value!==''&&(!node.operator||(!!node.right&&readCountFilter(node.right)?.value!==''));
  if(node.kind==='not'&&node.children.length!==1)return false;
  return (node.children.length>0||(root&&node.kind==='all'))&&node.children.every(child=>completeTree(child,false));
 }
@@ -30,6 +32,20 @@ export function switchToText(tree:ConditionNode,lastComplete:ConditionNode|null,
 }
 const primitiveTypes={text:'string',number:'number',boolean:'bool',entity:'实体'};
 const entityType:Record<string,string>={heroes:'英雄',equipment:'装备',players:'棋手',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
+export function countPath({source,field}:CountFilter,value:string){
+ return `${source}.计数(${field}, ${JSON.stringify(value)})`;
+}
+export function readCountFilter(path:string):{source:string;field:CountFilter['field'];value:string}|undefined{
+ const match=path.match(/^(.+)\.计数\s*\(\s*(标签|阵营)\s*,\s*("(?:[^"\\]|\\.)*")\s*\)$/);
+ if(!match)return;
+ const [,source,field,literal]=match;
+ try{return {source,field:field as CountFilter['field'],value:JSON.parse(literal)};}catch{return;}
+}
+export function findPathOption(paths:PathOption[],path:string){
+ const filter=readCountFilter(path);
+ const key=filter?countPath(filter,''):path;
+ return paths.find(p=>p.path===key);
+}
 export function parameterType(p:TemplateParameter){
  return p.dsl_type||(p.type==='entity'&&p.entity_categories?.map(c=>entityType[c]).filter(Boolean).join('|'))||primitiveTypes[p.type];
 }
@@ -44,13 +60,18 @@ export function listPaths(event:TemplateEvent|undefined,catalog?:ConditionCatalo
   tagsByType.set(type,values);
  }
  function tagChoices(owners:string[]){
-  return [...new Set(owners.flatMap(t=>[...(tagsByType.get(t)??[])]))].sort();
+  return [...new Set(owners.flatMap(t=>[...(tagsByType.get(t==='单位'?'英雄':t)??[])]))].sort();
  }
  function walk(path:string,declared:string,ancestors:string[],operations?:string[],choices?:string[]){
   const type=catalog?.aliases[declared]??declared;
   paths.push({path,type,operations,choices});
   const memberTypes=members(type).map(t=>catalog?.aliases[t]??t);
   if(memberTypes.length){
+   paths.push({path:path+'.计数()',type:'int'});
+   if(memberTypes.length===1&&['英雄','单位'].includes(memberTypes[0])){
+    const filters:CountFilter[]=[{source:path,field:'标签',choices:tagChoices(['英雄'])},{source:path,field:'阵营'}];
+    for(const filter of filters)paths.push({path:countPath(filter,''),type:'int',filter});
+   }
    for(const key of Object.keys(catalog?.types[memberTypes[0]]??{})){
     const types=memberTypes.map(t=>catalog?.types[t]?.[key]);
     if(types.every(t=>t==='int'||t==='number'))paths.push({path:path+'.求和('+key+')',type:types.every(t=>t==='int')?'int':'number'});
@@ -76,18 +97,22 @@ export function operatorsFor(path:PathOption){
  if(path.type==='bool')return ['','==','in'];
  return ['is','in'];
 }
-export function compatibleRight(left:string,right:string,operator:string,aliases:Record<string,string>={}){
- const same=(a:string,b:string)=>a.split('|').some(x=>b.split('|').some(y=>(aliases[x]??x)===(aliases[y]??y)||(numeric(x)&&numeric(y))));
- if(operator==='has')return members(left).some(t=>same(t,right));
- if(operator==='in')return members(right).some(t=>same(t,left));
- return same(left,right);
+export function compatibleRight(left:string,right:string,operator:string,aliases:Record<string,string>={},unitTypes:string[]=[]){
+ const leftTypes=operator==='has'?members(left):left.split('|');
+ const rightTypes=operator==='in'?members(right):right.split('|');
+ const unitCompatible=(x:string,y:string)=>x==='单位'&&(unitTypes.includes(y)||
+  (y==='string'&&leftTypes.length===1&&rightTypes.length===1));
+ return leftTypes.some(first=>rightTypes.some(second=>{
+  const x=aliases[first]??first,y=aliases[second]??second;
+  return x===y||(numeric(x)&&numeric(y))||unitCompatible(x,y)||unitCompatible(y,x);
+ }));
 }
 export function newLeaf(paths:PathOption[]):ConditionNode{
  const first=paths.find(p=>p.path==='arg1.阵容名')??paths.find(p=>p.path.endsWith('.名称'))??paths[0];
  return {kind:'leaf',left:first?.path??'',operator:first?operatorsFor(first)[0]:'is',right:''};
 }
 
-export function treeEntities(tree:ConditionNode,paths:PathOption[],cards:(TemplateEntity&{category:string;aliases?:string[]})[]):TemplateEntity[]{
+export function treeEntities(tree:ConditionNode,paths:PathOption[],cards:(TemplateEntity&{category:string;aliases?:string[]})[],unitTypes:string[]=[]):TemplateEntity[]{
  const found=new Map<string,TemplateEntity>();
  const types=new Map(paths.map(p=>[p.path,p.type]));
  function visit(node:ConditionNode){
@@ -95,14 +120,15 @@ export function treeEntities(tree:ConditionNode,paths:PathOption[],cards:(Templa
   if(!['is','has','in'].includes(node.operator))return;
   let literal:unknown;
   try{literal=JSON.parse(node.right);}catch{return;}
-  const type=node.left.endsWith('.名称')?types.get(node.left.slice(0,-3)):types.get(node.left);
+  const leftType=node.left.endsWith('.名称')?types.get(node.left.slice(0,-3)):types.get(node.left);
+  const typesForName=leftType?(node.operator==='has'?members(leftType):leftType.split('|')):[];
   for(const value of Array.isArray(literal)?literal:[literal]){
    const typed=typeof value==='object'&&value!==null;
-   const targetType=typed?value.类型:type;
    const name=typed?value.名称:value;
    if(typeof name!=='string')continue;
-   const categories=Object.keys(entityType).filter(c=>typeof targetType==='string'&&targetType.split('|').includes(entityType[c]));
-   if(!categories.length&&targetType!=='实体')continue;
+   const targetTypes=typed?[value.类型]:typesForName.flatMap(t=>t==='单位'?unitTypes:[t]);
+   const categories=Object.keys(entityType).filter(c=>targetTypes.includes(entityType[c]));
+   if(!categories.length&&!targetTypes.includes('实体'))continue;
    for(const ref of resolveTemplateEntities(name,cards,categories))found.set(ref.id,ref);
   }
  }

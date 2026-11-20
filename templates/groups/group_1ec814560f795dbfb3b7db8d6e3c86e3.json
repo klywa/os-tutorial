@@ -1,0 +1,25 @@
+{
+  "name": "姜子牙在场时用无阵营裴擒虎",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第18行「使用技巧」。裴擒虎是无阵营英雄。姜子牙响应无阵营牌，提高自身和随机其他不同阵营英雄的等级，未确认其他英雄人数时只说明必定受益的姜子牙。",
+  "utterances": [
+    {
+      "text": "姜子牙在场，打出无阵营的裴擒虎能让他涨等级。",
+      "id": "utterances_ac4faec0caa24e3ca0ebd44fcb9044ce"
+    },
+    {
+      "text": "上无阵营裴擒虎，可顺手触发姜子牙的升级效果。",
+      "id": "utterances_aa7bce671472494bb7bd69299c04085e"
+    }
+  ],
+  "id": "group_1ec814560f795dbfb3b7db8d6e3c86e3",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"裴擒虎\" and 玩家.战场 has \"姜子牙\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

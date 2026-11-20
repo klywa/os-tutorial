@@ -1,0 +1,25 @@
+{
+  "name": "对猪八戒上貂蝉压回血",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第15行「使用技巧」。貂蝉花球命中会降低生命恢复。当前对手的主C确认为猪八戒，播报只断言命中时可压制恢复。",
+  "utterances": [
+    {
+      "text": "上貂蝉压猪八戒回血，花球打到他就能减治疗。",
+      "id": "utterances_4dfdeffe9bdc4a90886db9a35e5b3b5d"
+    },
+    {
+      "text": "对面主C是猪八戒，貂蝉的花球命中能压他回血。",
+      "id": "utterances_f209e2b4e69748509380ca04ca57a4b5"
+    }
+  ],
+  "id": "group_526cf963305c598a9b9cc63deb2a29dc",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"貂蝉\" and 对局.当前对手.主C is \"猪八戒\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "分解三件装备换珍品宝箱",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "分解三件已穿装备时得珍品宝箱，之后在特殊或天赋装备的三选一中再选，不保证拿到理想的那件。 来源：personal/knowledge_tips.jsonl 第214行；本地官方卡面 card:7089。",
+  "utterances": [
+    {
+      "text": "把这三件装备分解成珍品宝箱，再挑一件新装备。",
+      "id": "utterances_c9c46a47f7c7480e98a140a1e741d534"
+    },
+    {
+      "text": "这名英雄有三件装备，分解后能换一次珍品装备选择。",
+      "id": "utterances_ab9171930c3140e892faae216db7b8e0"
+    }
+  ],
+  "id": "group_72bd831640fc562389dbdff5069863c2",
+  "event_id": "os_bfcc2eec6def94c8",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"武装分解\" and arg1.已穿装备.计数() == 3",
+  "priority": 0,
+  "editor_mode": "text"
+}

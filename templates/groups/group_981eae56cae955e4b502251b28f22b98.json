@@ -1,0 +1,25 @@
+{
+  "name": "给关键英雄穿磐石之心抗单次高爆发",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "磐石之心把每次承伤压到不超过15%最大生命值。当前对手主C是能打高额单次伤害的例子时侧重爆发反制。 来源：personal/knowledge_tips.jsonl 第155行；本地官方卡面 card:644119。",
+  "utterances": [
+    {
+      "text": "对面{对局.当前对手.主C}单次伤害高，磐石之心能把伤害封顶。",
+      "id": "utterances_9f282a37ec97429986b98d2ad00e04a0"
+    },
+    {
+      "text": "戴磐石之心，能限制对面{对局.当前对手.主C}的单次伤害。",
+      "id": "utterances_d6caaa2861d24d93867ce0112951c534"
+    }
+  ],
+  "id": "group_981eae56cae955e4b502251b28f22b98",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"磐石之心\" and 对局.当前对手.主C in [\"诸葛亮\", \"百里守约\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

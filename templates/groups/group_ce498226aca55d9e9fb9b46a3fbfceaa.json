@@ -1,0 +1,25 @@
+{
+  "name": "高频射手穿套娃枪增加分身机会",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "每次普攻30%概率产生2秒分身，分身继承该效果，能继续尝试再生成分身。不保证实际生成。 来源：personal/knowledge_tips.jsonl 第154行；本地官方卡面 card:644118。",
+  "utterances": [
+    {
+      "text": "给{arg1}穿套娃枪，每次普攻都有机会打出分身。",
+      "id": "utterances_be978714b8994d2f84303d6b2f5c83f7"
+    },
+    {
+      "text": "套娃枪的分身还能继续造分身，普攻越多机会越多。",
+      "id": "utterances_55e00133d3e24e0e818af67a6fb628b4"
+    }
+  ],
+  "id": "group_ce498226aca55d9e9fb9b46a3fbfceaa",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"套娃枪\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

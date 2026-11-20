@@ -99,9 +99,16 @@ def _read_projection(server, part, known_generation=None):
                     data['condition_catalog'] = library.rules.library_catalog(events.values(),root=server.root)
                     notes = library._notes(server.root)
                     scope_names = {}
+                    utterance_bindings = {}
+                    from src.python.condition import literal_in_bindings
                     for group in data['groups']:
                         refs = {**meta.get('entity_archive',{}).get(group['id'],{}),**catalog}
-                        group.update(library.rules.editor_rule(group,events[group['event_id']],refs))
+                        event = events[group['event_id']]
+                        group.update(library.rules.editor_rule(group,event,refs))
+                        if 'in' in group['expression']:
+                            bindings = literal_in_bindings(group['expression'],event['name'],data['condition_catalog'])
+                            if bindings:
+                                utterance_bindings[group['id']] = bindings
                         player = group['scope']['player_id']
                         lineup = group['scope']['lineup_note_id']
                         if player in refs:
@@ -109,6 +116,7 @@ def _read_projection(server, part, known_generation=None):
                         if lineup in notes:
                             scope_names[lineup] = notes[lineup]['title']
                     data['scope_names'] = scope_names
+                    data['utterance_bindings'] = utterance_bindings
                     data.update(library.project_entity_links(public,meta,catalog))
                     cached[part] = data
                 if _read_generation(server) != generation:

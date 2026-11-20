@@ -1,0 +1,25 @@
+{
+  "name": "用驭势复制当前对手的同名主C",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第89行「使用技巧」。驭势在开战时复制对手所有场上英雄。当前对手有与己方未觉醒主C同名的主C，此时用技能可争取同名牌；战前对手换人或手牌不足时不保证到手。",
+  "utterances": [
+    {
+      "text": "对面也有同名主力，用驭势有机会补一张合成牌。",
+      "id": "utterances_2fc9e79ca1a74ef0ba205ef6a547cdf4"
+    },
+    {
+      "text": "驭势会复制开战时的敌方阵容，可找同名主力追觉醒。",
+      "id": "utterances_3ed9160690a248d1b1051f67f40e0b83"
+    }
+  ],
+  "id": "group_a1405d1d6d3052d58f62384041de7560",
+  "event_id": "os_b59f8bd6d43110d4",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场",
+  "priority": 0,
+  "editor_mode": "text"
+}

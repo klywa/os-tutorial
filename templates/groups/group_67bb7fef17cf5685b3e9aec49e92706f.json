@@ -1,0 +1,25 @@
+{
+  "name": "单挂时用即兴创作拿同名牌",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第85行「使用技巧」。即兴创作复制一名场上英雄。保留单名实际在场主力时，材料说明即使牌库已空，也会在全空的候选中随机；唯一候选仍是这名英雄。",
+  "utterances": [
+    {
+      "text": "场上只留一个英雄，即兴创作就能拿他的同名牌。",
+      "id": "utterances_47b5b043c3784dfb8a7537d10da8f6c5"
+    },
+    {
+      "text": "用即兴创作复制单挂英雄，少了其他人在场分走机会。",
+      "id": "utterances_d2ded5cd71b445b6b05158a76e4cf068"
+    }
+  ],
+  "id": "group_67bb7fef17cf5685b3e9aec49e92706f",
+  "event_id": "os_b59f8bd6d43110d4",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"即兴创作\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场",
+  "priority": 0,
+  "editor_mode": "text"
+}

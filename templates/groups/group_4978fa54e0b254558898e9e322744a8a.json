@@ -1,0 +1,25 @@
+{
+  "name": "用穷兵黩武让逐鹿施法召唤士兵",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "逐鹿英雄每次施法召唤等效等级的玄雍士兵，最多同时3名。只为经核对的逐鹿主力解释，不把高等级或持续存活说成每局必定。 来源：personal/knowledge_tips.jsonl 第185行；本地官方卡面 card:636404。",
+  "utterances": [
+    {
+      "text": "选穷兵黩武，{玩家.主C}施法能召唤玄雍士兵。",
+      "id": "utterances_2784161289934236b430d9674afcc0c8"
+    },
+    {
+      "text": "{玩家.主C}等级越高，穷兵黩武召出的士兵等级也越高。",
+      "id": "utterances_7976c608c25c462e9f36166bde7a4f6a"
+    }
+  ],
+  "id": "group_4978fa54e0b254558898e9e322744a8a",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"穷兵黩武\" and 玩家.主C in [\"嬴政\", \"蒙犽\", \"孙膑\"]",
+  "priority": 0,
+  "editor_mode": "text"
+}

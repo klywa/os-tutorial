@@ -1,0 +1,25 @@
+{
+  "name": "棋手低血时选拾荒者回血",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "卡面选取即恢复10棋手生命，50以下是第195行的软建议阈值。后续被淘汰者还会给5阶兑换券，非本细分主因。 来源：personal/knowledge_tips.jsonl 第195行；本地官方卡面 card:671008。",
+  "utterances": [
+    {
+      "text": "只剩{玩家.血量}血，选拾荒者马上回10血。",
+      "id": "utterances_01aafb63451d4f6e8e0628b06c5a3d47"
+    },
+    {
+      "text": "选拾荒者马上回十点棋手生命，能多留些容错。",
+      "id": "utterances_ca4a7110d4884f8eba1875c9f3c2650c"
+    }
+  ],
+  "id": "group_d8d692df0c67506e834b7acb02a52886",
+  "event_id": "os_2b69e500a5c8036a",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"拾荒者\" and 玩家.血量 < 50",
+  "priority": 0,
+  "editor_mode": "text"
+}

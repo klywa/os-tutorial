@@ -1,0 +1,25 @@
+{
+  "name": "奇才给未觉醒主C补同名牌",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第84行「使用技巧」。官方奇才选一名英雄获得其四张同名牌。目标现在是未觉醒主C，得到同名素材可用于后续合成，不保证已完成觉醒。",
+  "utterances": [
+    {
+      "text": "对未觉醒的主力用奇才，先补四张同名牌再追觉醒。",
+      "id": "utterances_07d3e31598754fc286588aa020c9eca7"
+    },
+    {
+      "text": "奇才给主力补四张同名牌，可以继续合成追觉醒。",
+      "id": "utterances_1d9bf0f0148a407391b6fe4d4f4d3056"
+    }
+  ],
+  "id": "group_4669dbc45d27513a80898865dcb66447",
+  "event_id": "os_92e4c04d94fc1b51",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg2 is \"奇才\" and arg1 is 玩家.主C and not arg1.已觉醒",
+  "priority": 0,
+  "editor_mode": "text"
+}

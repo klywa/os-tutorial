@@ -1,0 +1,25 @@
+{
+  "name": "存款利息下保留至少一档能量",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第194行与本地官方卡面。官方牌面表明回合结束每有7能量额外获得1能量，话术只解释已有天赋和当前留存余额的确定收益。",
+  "utterances": [
+    {
+      "text": "手里有{玩家.剩余能量}点能量，存款利息每留7点就多赚1点。",
+      "id": "utterances_3fcc9b41286745dfb8137b92b30c3ab9"
+    },
+    {
+      "text": "有存款利息，每留下七点能量，结算就多一点。",
+      "id": "utterances_efcbfa722bad4d529f652a6de3d1d09b"
+    }
+  ],
+  "id": "group_25ca0e48596f5f9ea059a2f3c9d64b28",
+  "event_id": "os_4ef8f267133d9810",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7",
+  "priority": 0,
+  "editor_mode": "text"
+}

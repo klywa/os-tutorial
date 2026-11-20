@@ -5,6 +5,12 @@ import {ConditionInput} from './TemplateEditor';
 import {effectiveExpression} from './templates';
 import type {TemplateEvent,TemplateGroup} from './templates';
 describe('template group reading',()=>{
+ it('shows condition slot candidates while preserving escaped and event parameter references',()=>{
+  const group:TemplateGroup={id:'g',name:'槽位示例',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[],
+   utterances:[{id:'u',text:'保留{arg1.名称}，原样{{arg1.名称}}，提示{hero}，括号{{{arg1.名称}}}'}],related_entities:[]};
+  const html=renderToStaticMarkup(<TemplateGroupCard group={group} utteranceBindings={{'arg1.名称':['虞姬','李白']}} scopeName={()=>'通用'} editable={false} onEdit={()=>{}} onDelete={()=>{}}/>);
+  expect(html).toContain('保留虞姬/李白，原样{{arg1.名称}}，提示{hero}，括号{{虞姬/李白}}');
+ });
  it('shows fixed and ignored independently and guards fixed deletion and editing',()=>{
   const group:TemplateGroup={id:'g',name:'固定示例',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[],
    utterances:[{id:'u',text:'固定原句',fixed:true,ignored:true},{id:'v',text:'其他原句'}],related_entities:[]};

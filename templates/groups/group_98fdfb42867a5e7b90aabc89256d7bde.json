@@ -1,0 +1,25 @@
+{
+  "name": "李信在场时上钟馗增加牺牲来源",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第42行「使用技巧」。钟馗给自身和左右一格英雄牺牲，自己也是牺牲来源。李信从有牺牲效果的友方阵亡获得临时等级；不承诺相邻对象。",
+  "utterances": [
+    {
+      "text": "上钟馗补一个牺牲来源，阵亡时能给李信临时等级。",
+      "id": "utterances_7985fd4705214e92926b2fb215061413"
+    },
+    {
+      "text": "李信在场，上钟馗能让更多牺牲阵亡带来临时等级。",
+      "id": "utterances_f43902c4731d48fab7eeccca91685fad"
+    }
+  ],
+  "id": "group_98fdfb42867a5e7b90aabc89256d7bde",
+  "event_id": "os_e5391e165361858d",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"钟馗\" and 玩家.战场 has \"李信\"",
+  "priority": 0,
+  "editor_mode": "text"
+}

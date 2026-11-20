@@ -1,0 +1,25 @@
+{
+  "name": "敖隐用自然法杖用法力消耗补变猪控制",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation": "依据 personal/knowledge_tips.jsonl 第46行「使用技巧」。自然法杖按远程英雄消耗的法力触发随机变猪。敖隐的普攻回蓝及随图腾增加的攻速有助于更快推进消耗。",
+  "utterances": [
+    {
+      "text": "敖隐穿自然法杖，把频繁施法变成额外的变猪控制。",
+      "id": "utterances_6829dbc0fe8e4a42b6ede4a6bad0fd3c"
+    },
+    {
+      "text": "敖隐靠普攻攒蓝，穿自然法杖能更频繁触发变猪。",
+      "id": "utterances_1e0d848606114479b33809d6b484c2d4"
+    }
+  ],
+  "id": "group_2062716749655ab7b97838a340c9dfba",
+  "event_id": "os_5dfcb4835e1e1513",
+  "conditions": [],
+  "related_entities": [],
+  "expression": "arg1 is \"敖隐\" and arg2 is \"自然法杖\"",
+  "priority": 0,
+  "editor_mode": "text"
+}
