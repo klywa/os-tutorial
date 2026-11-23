@@ -1,29 +1,60 @@
 {
-  "name": "换帅交换三分英雄等级",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
   "explanation": "",
-  "explanation_after": "事件与条件复核：解释为何对目标使用效果牌，核对了换帅目标在战场且至少有两名三分英雄。单项反例：只剩目标本人时，不能给另一名三分英雄交换等级。话术复核：句子围绕已有另一名三分英雄可接这次等级交换，避免从零培养，沿用来源支持的动作和结果，删去旁支卡面效果。",
-  "explanation_before": "原始内容：品阶：3阶。来源：商店购买等渠道。效果：指定1名三分英雄，与最近的三分英雄交换等级。施法队伍准备改由吕布承伤或控制时，先确认交换双方、最近目标以及交换后的战力，再使用换帅；它不能给任意阵营的英雄转移等级。\n知识或技巧详解：已有另一名三分英雄可接这次等级交换，避免从零培养。\n自然语言适用条件：解释为何对目标使用效果牌时，换帅目标在战场且至少有两名三分英雄。\n正式条件：(arg2 is \"换帅\" and arg1.阵营 is \"三分之地\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2) and arg1 in 玩家.战场\n30 字表达取舍：播报保留「场上另有三分队友，用换帅可让他接过目标已有的等级。」，以入库前的独立复核为准。",
+  "explanation_after": "换帅在场上至少有两名三分英雄时交换目标和最近的三分队友等级，不是净增等级。\n完整候选池通过 3 项。正例可播：两名以上三分，但无人名专属组；单项反例不命中：只有一名三分；缺值检查：另一个英雄阵营未知。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上还有三分队友，换帅能让目标与最近的队友换等级。\n原始依据：换帅为3阶效果牌，可指定1名三分英雄与最近的三分英雄交换等级，不能给任意阵营转移等级。当前取舍：换帅选择距离最近的另一名三分英雄，战场至少两名三分英雄可证明存在交换对象，不点名具体英雄且不表述为全队净增等级。自然语言适用条件：使用效果牌换帅，目标在玩家战场上且属于三分之地阵营，同时玩家战场上的三分之地阵营英雄不少于2名。正式条件：(arg2 is \"换帅\" and arg1.阵营 is \"三分之地\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2) and arg1 in 玩家.战场。取舍后的播报重点：说明场上另有三分队友，换帅能让目标与最近的三分队友交换等级。",
   "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「换帅」 · n-d3f53da039d9dc3cb608",
+  "expression": "(arg2 is \"换帅\" and arg1.阵营 is \"三分之地\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2) and arg1 in 玩家.战场",
+  "id": "group_daf3005c1980428dbc858c463d8b5303",
   "mode": "万象大赛",
+  "name": "换帅交换三分英雄等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "场上另有三分队友，用换帅可让他接过目标已有的等级。",
-      "id": "utterances_9557a6405b06493d8379a2711cb0bf2d"
+      "id": "utterances_9557a6405b06493d8379a2711cb0bf2d",
+      "text": "场上另有三分队友，换帅能让目标与最近的三分队友换等级。"
     }
   ],
-  "id": "group_daf3005c1980428dbc858c463d8b5303",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "(arg2 is \"换帅\" and arg1.阵营 is \"三分之地\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2) and arg1 in 玩家.战场",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7505": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过商店购买等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名【三分】英雄与其最近的【三分】英雄交换等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:7505",
+        "name": "换帅",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

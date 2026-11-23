@@ -1,29 +1,147 @@
 {
-  "name": "有低阶牌时选基层提拔",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_7be319d5c5ce8554",
   "explanation": "",
+  "explanation_after": "孙膑为低阶英雄并已在手，选中基层提拔后要实际打出他才加三级。\n完整候选池通过 3 项。正例可播：手持孙膑可直接接成长；单项反例不命中：手里无孙膑；缺值检查：缺少 玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：手里有孙膑，选基层提拔后打出他能多升三级。\n原始依据：手上有未使用的战略决策时，先使用再打出1-3阶英雄牌，有可能选到基层提拔，再打出英雄可获得额外等级。当前取舍：嬴律持有孙膑且当前能选基层提拔，可选择它为后续低阶登场的明确对象加级。自然语言适用条件：使用棋手为嬴律、手牌中有孙膑，且技能备选包含并选择了基层提拔。正式条件：arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}。取舍后的播报重点：手里有孙膑，选基层提拔后打出他能多升三级。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第94行「战略决策_嬴律_效果・使用技巧」",
+  "expression": "arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}",
+  "id": "group_f064f05adbc3559a8f0311e5c6ed68e3",
   "mode": "万象大赛",
+  "name": "有低阶牌时选基层提拔",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "手里有孙膑，选基层提拔后再打出他，就能多升三级。",
-      "id": "utterances_c902937c1d46497aae3c3fef287c6d97"
+      "id": "utterances_c902937c1d46497aae3c3fef287c6d97",
+      "text": "手牌有孙膑，选基层提拔后再打出他能多升三级。"
     }
   ],
-  "id": "group_f064f05adbc3559a8f0311e5c6ed68e3",
-  "event_id": "os_7be319d5c5ce8554",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}",
-  "explanation_before": "原始内容：手上有未使用的战略决策时，先使用再打出1-3阶英雄牌，有可能选到基层提拔，再打出英雄可获得额外等级。\n知识或技巧详解：拿天赋后打出这张已经持有的牌可兑现等级奖励。\n自然语言适用条件：解释为何选择棋手技能时，嬴律手里已有低阶孙膑，基层提拔可选。\n正式条件：arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}\n30 字表达取舍：播报保留「手里有孙膑，选基层提拔后再打出他，就能多升三级。」，以入库前的独立复核为准。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第94行「战略决策_嬴律_效果・使用技巧」",
-  "explanation_after": "事件与条件复核：解释为何选择棋手技能，核对了嬴律手里已有低阶孙膑，基层提拔可选。单项反例：拿走手里的孙膑，无法给出这个具体跟进行动。话术复核：句子围绕拿天赋后打出这张已经持有的牌可兑现等级奖励，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1181": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1181",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "10/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+        "skills_source": "card:1181"
+      },
+      "card:1183": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1183",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1181"
+      },
+      "card:94306": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "打出1-3阶英雄牌时其等级+3。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:94306",
+        "name": "基层提拔",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

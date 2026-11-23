@@ -1,30 +1,79 @@
 {
-  "name": "买精密协作补送福门槛",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_39863c58ae5736cd",
+  "explanation_after": "二稿交代买牌后给在场英雄实际使用；第二句以常小娥送福与最大七级为具体理由。\n完整候选池通过 4 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：队伍最多差七级，买精密协作给场上英雄用可补足。 / 常小娥接近送福档位，买精密协作可补这七级以内的差额。\n原始依据：精密协作指定1名英雄等级+4、随机1名英雄等级+3，在场上有人可指定时可使总等级提高七级，好过只按指定四级计算送福门槛，适用于距离下一次兔飞猛进门槛只差少量等级时。当前取舍：领取记录不在事件中，条件核准门槛差额，口播只说能补足等级。自然语言适用条件：买精密协作补送福门槛。正式条件：arg1 is \"精密协作\" and ((玩家.战场.求和(等级) >= 43 and 玩家.战场.求和(等级) < 50) or (玩家.战场.求和(等级) >= 143 and 玩家.战场.求和(等级) < 150) or (玩家.战场.求和(等级) >= 368 and 玩家.战场.求和(等级) < 375))。取舍后的播报重点：说明队伍差七级以内且常小娥接近送福档位时，买精密协作给场上英雄使用可补足等级差额。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「距离下一次兔飞猛进门槛只差少量等级时」 · cx26-b3b4dd5773cc33e0\nknowledge/lineups/常小娥灵活4人组-常小娥.json「助力次数与等级门槛」 · n-d74e53e18cea3a7192ed\n正式卡牌库「精密协作」 · card:7062\n正式卡牌库：兔飞猛进（card:662401）",
+  "expression": "arg1 is \"精密协作\" and ((玩家.战场.求和(等级) >= 43 and 玩家.战场.求和(等级) < 50) or (玩家.战场.求和(等级) >= 143 and 玩家.战场.求和(等级) < 150) or (玩家.战场.求和(等级) >= 368 and 玩家.战场.求和(等级) < 375))",
+  "id": "group_4c94b45b31fe4585a6e8fc7afdbe02df",
   "mode": "万象大赛",
+  "name": "买精密协作补送福门槛",
+  "priority": 2,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "队伍只差少量等级，买精密协作可补够送福门槛。",
-      "id": "utterances_186b2d822ff3419aa0c77075d0d83b6c"
+      "id": "utterances_186b2d822ff3419aa0c77075d0d83b6c",
+      "text": "队伍最多差七级，买精密协作给场上英雄用可补足。"
     },
     {
-      "text": "常小娥接近送福门槛，买精密协作给场上英雄正合适。",
-      "id": "utterances_5f60b3e311a84cc8bc62bee64689ef33"
+      "id": "utterances_5f60b3e311a84cc8bc62bee64689ef33",
+      "text": "常小娥接近送福档位，买精密协作可补足最多七级的差额。"
     }
   ],
-  "id": "group_4c94b45b31fe4585a6e8fc7afdbe02df",
-  "event_id": "os_39863c58ae5736cd",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 2,
-  "expression": "arg1 is \"精密协作\" and ((玩家.战场.求和(等级) >= 43 and 玩家.战场.求和(等级) < 50) or (玩家.战场.求和(等级) >= 143 and 玩家.战场.求和(等级) < 150) or (玩家.战场.求和(等级) >= 368 and 玩家.战场.求和(等级) < 375))",
-  "explanation_before": "原始内容：指定1名英雄等级+4，随机1名英雄等级+3。\n「距离下一次兔飞猛进门槛只差少量等级时」\n知识或技巧详解：常小娥兔飞猛进以场上总等级的五十、一百五十和三百七十五为门槛。将精密协作用于仍在场的英雄时，按卡面可增加全队总计七级。跨过门槛和首次领取对应奖励是两件事。\n自然语言适用条件：购买精密协作，棋手为常小娥，场上总等级不足某一档且只差七级以内。之后仍需把牌给场上英雄。\n正式条件：arg1 is \"精密协作\" and ((玩家.战场.求和(等级) >= 43 and 玩家.战场.求和(等级) < 50) or (玩家.战场.求和(等级) >= 143 and 玩家.战场.求和(等级) < 150) or (玩家.战场.求和(等级) >= 368 and 玩家.战场.求和(等级) < 375))\n30 字表达取舍：保留所处的成长区间和取得该牌的理由，不声称后续用牌或领取已经发生。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「距离下一次兔飞猛进门槛只差少量等级时」 · cx26-b3b4dd5773cc33e0\nknowledge/lineups/常小娥灵活4人组-常小娥.json「助力次数与等级门槛」 · n-d74e53e18cea3a7192ed\n正式卡牌库「精密协作」 · card:7062",
-  "explanation_after": "在区间内可说明补足门槛的数值关系。相差超过七级、已经过线或总等级未知时退出。条件没有领取历史，候选只说补线，不说必定发牌。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:7062": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄等级+4，随机1名英雄等级+3。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7062",
+        "name": "精密协作",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

@@ -1,29 +1,58 @@
 {
-  "name": "用驭势复制当前对手的同名主C",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b59f8bd6d43110d4",
   "explanation": "",
+  "explanation_after": "保留参战方主C同名、己方还未觉醒、对手确实在场和开战时才复制，机会措辞准确。\n完整候选池通过 3 项。正例可播：当前对手续留与弈星未觉醒主力同名的阿轲；单项反例不命中：改变必要前提：当前对手续留与弈星未觉醒主力同名的阿轲；缺值检查：缺少关键观测：当前对手续留与弈星未觉醒主力同名的阿轲。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：对手也有同名主力，用驭势有机会补一张觉醒材料。\n原始依据：战斗开始时将敌方场上所有英雄复制进你的手牌；对手同名主力须确在对手场上，且驭势到开战才复制，仍受对手换阵及手牌情况影响。当前取舍：逐字保留受保护句，保留对手同名主力局面与补觉醒材料的非必然收益，不附加额外条件。自然语言适用条件：弈星使用驭势，己方主力尚未觉醒，当前对手主力同名且确实在对手场上。正式条件：arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场。取舍后的播报重点：点明对手有同名主力且用驭势有机会补一张觉醒材料，体现概率收益。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第89行「使用技巧」，正式卡牌库 card:93610。",
+  "expression": "arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场",
+  "id": "group_a1405d1d6d3052d58f62384041de7560",
   "mode": "万象大赛",
+  "name": "用驭势复制当前对手的同名主C",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "对手也有同名主力，用驭势有机会补一张觉醒材料。",
-      "id": "utterances_2fc9e79ca1a74ef0ba205ef6a547cdf4"
+      "id": "utterances_2fc9e79ca1a74ef0ba205ef6a547cdf4",
+      "text": "对手也有同名主力，用驭势有机会补一张觉醒材料。"
     }
   ],
-  "id": "group_a1405d1d6d3052d58f62384041de7560",
-  "event_id": "os_b59f8bd6d43110d4",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场",
-  "explanation_source": "personal/knowledge_tips.jsonl 第89行「使用技巧」，正式卡牌库 card:93610。",
-  "explanation_before": "原始内容：战斗开始时，将敌方场上所有英雄复制进你的手牌。\n知识详解：若对方在开战时仍有与己方未觉醒主力同名的英雄，驭势能复制同名牌供后续合成。战斗名单由开战时采样。\n适用条件：弈星使用驭势，己方主力尚未觉醒。当前对手主力同名，且确实在对手场上。\n条件语法：arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场\n30 字表达取舍：保留同名主力与追觉醒机会，省去战场整队复制的其他用途。",
-  "explanation_after": "对手开战前可能换人，话术不保证复制到手或立即觉醒。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:93610": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "战斗开始时，将敌方场上所有英雄复制进你的手牌。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:93610",
+        "name": "驭势",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

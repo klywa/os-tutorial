@@ -1,29 +1,216 @@
 {
-  "name": "李信在场时上钟馗增加牺牲来源",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
   "explanation": "",
-  "explanation_after": "无站位条件时不能指定另一名队友也获得牺牲。首句仅说明钟馗自身阵亡可贡献临时等级。",
-  "explanation_before": "原始内容：每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。 自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。\n知识详解：李信从有牺牲效果的己方英雄阵亡中拿临时等级。钟馗为自身提供牺牲，也可能给左右相邻英雄提供。\n适用条件：上阵钟馗，李信已在场。\n条件语法：arg1 is \"钟馗\" and 玩家.战场 has \"李信\"\n30 字表达取舍：说明钟馗成为一名新的牺牲来源，不依赖旁边有队友。",
+  "explanation_after": "返修省略李信仅普通形态的数值，继续以钟馗本人的牺牲和实际阵亡为触发条件。\n完整候选池通过 3 项。正例可播：所有必要盘面事实齐备；单项反例不命中：只改变一项必要事实；缺值检查：缺少同一必要信息。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：李信已在场，上钟馗可让他在钟馗阵亡时获得临时等级。\n原始依据：拥有牺牲效果的英雄阵亡时李信可获得临时等级，钟馗自身带牺牲且能触发该收益，邻位是否被赋予牺牲不参与本句断言。当前取舍：仅保留当前局面、上阵动作与李信在钟馗阵亡时获得临时等级的直接收益，不提及邻位牺牲效果。自然语言适用条件：上阵钟馗，李信已在场。正式条件：arg1 is \"钟馗\" and 玩家.战场 has \"李信\"。取舍后的播报重点：说明李信在场时上阵钟馗，钟馗阵亡可让李信获得临时等级。",
   "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「李信」「钟馗」，正式卡牌库 card:5071、card:5073、card:1751、card:1753。",
+  "expression": "arg1 is \"钟馗\" and 玩家.战场 has \"李信\"",
+  "id": "group_98fdfb42867a5e7b90aabc89256d7bde",
   "mode": "万象大赛",
+  "name": "李信在场时上钟馗增加牺牲来源",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "李信已在场，上钟馗能多一名阵亡时给他加级的英雄。",
-      "id": "utterances_7985fd4705214e92926b2fb215061413"
+      "id": "utterances_7985fd4705214e92926b2fb215061413",
+      "text": "李信在场时上钟馗，钟馗阵亡可让李信获得临时等级。"
     }
   ],
-  "id": "group_98fdfb42867a5e7b90aabc89256d7bde",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"钟馗\" and 玩家.战场 has \"李信\""
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5071": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5071",
+        "name": "李信",
+        "skills": [
+          {
+            "effect": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "剑气伤害提升至100+220%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "剑气数量增加至3道",
+                "level": 40
+              },
+              {
+                "effect": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+                "level": 100
+              }
+            ],
+            "id": 50700,
+            "name": "力量觉醒"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "40/80",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5071"
+      },
+      "card:5073": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当你拥有牺牲效果的英雄阵亡时，李信临时等级+14。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5073",
+        "name": "李信",
+        "skills": [
+          {
+            "effect": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "剑气伤害提升至100+220%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "剑气数量增加至3道",
+                "level": 40
+              },
+              {
+                "effect": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+                "level": 100
+              }
+            ],
+            "id": 50700,
+            "name": "力量觉醒"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5071"
+      },
+      "card:1751": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1751",
+        "name": "钟馗",
+        "skills": [
+          {
+            "effect": "钟馗投出钩锁，将距离自己最远的1名敌人拉到身边，造成50+100%法术攻击力的法术伤害，并使其成为友军的优先攻击目标。",
+            "enhancements": [
+              {
+                "effect": "战斗开始时充满法力值",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至50+150%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "减少50点最大法力值",
+                "level": 100
+              }
+            ],
+            "id": 17500,
+            "name": "湮灭之锁"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "60/100",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1751"
+      },
+      "card:1753": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "自身及左右1格的英雄获得牺牲：击败者等级临时降低20%（每场战斗限1次）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1753",
+        "name": "钟馗",
+        "skills": [
+          {
+            "effect": "钟馗投出钩锁，将距离自己最远的1名敌人拉到身边，造成50+100%法术攻击力的法术伤害，并使其成为友军的优先攻击目标。",
+            "enhancements": [
+              {
+                "effect": "战斗开始时充满法力值",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至50+150%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "减少50点最大法力值",
+                "level": 100
+              }
+            ],
+            "id": 17500,
+            "name": "湮灭之锁"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1751"
+      }
+    }
+  }
 }

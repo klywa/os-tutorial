@@ -1,0 +1,210 @@
+{
+  "id": "4c08403b1edc4e29ae6a876dac3f94c4",
+  "actor": "local",
+  "at": "2026-11-23T14:18:46.505383+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_03f4a202c3c85630884bedc3ac089b5c",
+      "value": {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_7be319d5c5ce8554",
+        "explanation_after": "受保护两句逐字保留。前置明确安琪拉、对方单挂百级、飞行器必须持续攻击同一目标，保留召唤物影响。\n完整候选池通过 3 项。正例可播：当前实际值为100，满足比较条件。；单项反例不命中：当前值为99，越过该组边界到不命中一侧。；缺值检查：缺少占位符引用的实际数值，无法判定该条件。。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：对手只上了一个百级英雄，杠上了连续命中就能增伤。 / 对手单挂高等级英雄，选杠上了可提高连续攻击伤害。\n原始依据：杠上了只累计飞行器连续攻击同一目标的伤害，对手仅一名百级英雄时持续攻击同一英雄较有价值，但召唤物或目标切换仍会影响实际连击，对手改为两名英雄或未到百级时退出。当前取舍：播报保留原人工改稿，适用范围以复核后的生效条件为准，表达上点出当下收益并保留可能与命中限定。自然语言适用条件：安琪拉从本次候选中选中该模块，对手只有一名在场英雄，且主力至少一百级。正式条件：arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100。取舍后的播报重点：说明对手单挂百级或高等级英雄时选择杠上了，在连续命中或连续攻击下可提高伤害，不把连击增伤写成必然。",
+        "explanation_source": "personal/knowledge_tips.jsonl 第100行「“杠上了”模块_安琪拉_效果・使用技巧」\n正式卡牌库：“杠上了”模块（card:95139）",
+        "expression": "arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100",
+        "id": "group_03f4a202c3c85630884bedc3ac089b5c",
+        "mode": "万象大赛",
+        "name": "用杠上了针对单挂高等级对手",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [
+          "技巧"
+        ],
+        "utterances": [
+          {
+            "id": "utterances_822e0c3222554869a616c5f837ba292d",
+            "text": "选择“杠上了“模块，适合应对敌方高等级单核。"
+          },
+          {
+            "id": "utterances_2160c3192cd4449895ec401502aad8aa",
+            "text": "对手单挂高等级英雄，选杠上了可提高连续攻击伤害。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:95139": {
+              "aliases": [],
+              "attributes": {
+                "获得途径": "来源: 初始获得卡牌"
+              },
+              "awakened": false,
+              "category": "player-skills",
+              "effect": "飞行器在连续攻击同一目标时，造成的伤害会逐渐提升至250%。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:95139",
+              "name": "“杠上了”模块",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_7be319d5c5ce8554",
+        "explanation_after": "受保护两句逐字保留。前置明确安琪拉、对方单挂百级、飞行器必须持续攻击同一目标，保留召唤物影响。\n完整候选池通过 3 项。正例可播：当前实际值为100，满足比较条件。；单项反例不命中：当前值为99，越过该组边界到不命中一侧。；缺值检查：缺少占位符引用的实际数值，无法判定该条件。。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：对手只上了一个百级英雄，杠上了连续命中就能增伤。 / 对手单挂高等级英雄，选杠上了可提高连续攻击伤害。\n原始依据：杠上了只累计飞行器连续攻击同一目标的伤害，对手仅一名百级英雄时持续攻击同一英雄较有价值，但召唤物或目标切换仍会影响实际连击，对手改为两名英雄或未到百级时退出。当前取舍：播报保留原人工改稿，适用范围以复核后的生效条件为准，表达上点出当下收益并保留可能与命中限定。自然语言适用条件：安琪拉从本次候选中选中该模块，对手只有一名在场英雄，且主力至少一百级。正式条件：arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100。取舍后的播报重点：说明对手单挂百级或高等级英雄时选择杠上了，在连续命中或连续攻击下可提高伤害，不把连击增伤写成必然。",
+        "explanation_source": "personal/knowledge_tips.jsonl 第100行「“杠上了”模块_安琪拉_效果・使用技巧」\n正式卡牌库：“杠上了”模块（card:95139）",
+        "expression": "arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100",
+        "id": "group_03f4a202c3c85630884bedc3ac089b5c",
+        "mode": "万象大赛",
+        "name": "用杠上了针对单挂高等级对手",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [
+          "技巧"
+        ],
+        "utterances": [
+          {
+            "id": "utterances_822e0c3222554869a616c5f837ba292d",
+            "text": "对手只上了一个百级英雄，杠上了连续命中就能增伤。"
+          },
+          {
+            "id": "utterances_2160c3192cd4449895ec401502aad8aa",
+            "text": "对手单挂高等级英雄，选杠上了可提高连续攻击伤害。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "ai_generated",
+        "last_modified_by": {
+          "kind": "ai"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:95139": {
+              "aliases": [],
+              "attributes": {
+                "获得途径": "来源: 初始获得卡牌"
+              },
+              "awakened": false,
+              "category": "player-skills",
+              "effect": "飞行器在连续攻击同一目标时，造成的伤害会逐渐提升至250%。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:95139",
+              "name": "“杠上了”模块",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_7be319d5c5ce8554",
+        "explanation_after": "受保护两句逐字保留。前置明确安琪拉、对方单挂百级、飞行器必须持续攻击同一目标，保留召唤物影响。\n完整候选池通过 3 项。正例可播：当前实际值为100，满足比较条件。；单项反例不命中：当前值为99，越过该组边界到不命中一侧。；缺值检查：缺少占位符引用的实际数值，无法判定该条件。。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：对手只上了一个百级英雄，杠上了连续命中就能增伤。 / 对手单挂高等级英雄，选杠上了可提高连续攻击伤害。\n原始依据：杠上了只累计飞行器连续攻击同一目标的伤害，对手仅一名百级英雄时持续攻击同一英雄较有价值，但召唤物或目标切换仍会影响实际连击，对手改为两名英雄或未到百级时退出。当前取舍：播报保留原人工改稿，适用范围以复核后的生效条件为准，表达上点出当下收益并保留可能与命中限定。自然语言适用条件：安琪拉从本次候选中选中该模块，对手只有一名在场英雄，且主力至少一百级。正式条件：arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100。取舍后的播报重点：说明对手单挂百级或高等级英雄时选择杠上了，在连续命中或连续攻击下可提高伤害，不把连击增伤写成必然。",
+        "explanation_source": "personal/knowledge_tips.jsonl 第100行「“杠上了”模块_安琪拉_效果・使用技巧」\n正式卡牌库：“杠上了”模块（card:95139）",
+        "expression": "arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100",
+        "id": "group_03f4a202c3c85630884bedc3ac089b5c",
+        "mode": "万象大赛",
+        "name": "用杠上了针对单挂高等级对手",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [
+          "技巧"
+        ],
+        "utterances": [
+          {
+            "id": "utterances_822e0c3222554869a616c5f837ba292d",
+            "text": "选择“杠上了“模块，适合应对敌方高等级单核。"
+          },
+          {
+            "id": "utterances_2160c3192cd4449895ec401502aad8aa",
+            "text": "对手单挂高等级英雄，选杠上了可提高连续攻击伤害。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:95139": {
+              "aliases": [],
+              "attributes": {
+                "获得途径": "来源: 初始获得卡牌"
+              },
+              "awakened": false,
+              "category": "player-skills",
+              "effect": "飞行器在连续攻击同一目标时，造成的伤害会逐渐提升至250%。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:95139",
+              "name": "“杠上了”模块",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

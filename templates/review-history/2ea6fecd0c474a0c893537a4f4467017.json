@@ -1,0 +1,1155 @@
+{
+  "id": "2ea6fecd0c474a0c893537a4f4467017",
+  "actor": "local",
+  "at": "2026-11-23T14:25:45.227818+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_620fe65ba76f43c5a1b2a597411ebb28",
+      "value": {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_2406b1c2f3572ad9",
+        "explanation_after": "路线里先买未觉醒刘禅作诸葛亮前排，后续再用杨玉环取得的弦音或妙音补觉醒，两阶段交代清楚。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：杨玉环在场，买刘禅先护住诸葛亮，之后可用她供的牌补觉醒。 / 先给诸葛亮买个刘禅顶前排，再用杨玉环供的牌补觉醒。\n原始依据：该常小娥打法让未觉醒刘禅先承担前排并给施法队友提供临时等级，杨玉环在场时可通过在场等待或退场获得弦音或妙音，之后给低阶刘禅补觉醒。当前取舍：口播只承诺之后可补觉醒，因杨玉环普通与觉醒形态供牌不同，不具体指定牌名。自然语言适用条件：刘禅用弦音补觉醒。正式条件：arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.主C is \"诸葛亮\"。取舍后的播报重点：说明杨玉环在场时先买刘禅替诸葛亮护住前排，之后可用杨玉环供的牌补觉醒。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「施法队伍准备补刘禅觉醒时」 · b77-ae4-014\n正式卡牌库「刘禅」 · card:1141\n正式卡牌库「刘禅（觉醒）」 · card:1143\n正式卡牌库「杨玉环」 · card:1761\n正式卡牌库「杨玉环（觉醒）」 · card:1763\n正式卡牌库「弦音」 · card:307001\n正式卡牌库「妙音」 · card:307002",
+        "expression": "arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.战场 has \"诸葛亮\"",
+        "id": "group_620fe65ba76f43c5a1b2a597411ebb28",
+        "mode": "万象大赛",
+        "name": "刘禅用弦音补觉醒",
+        "priority": 0,
+        "related_entities": [
+          {
+            "id": "card:1141",
+            "name": "刘禅"
+          },
+          {
+            "id": "card:1143",
+            "name": "刘禅"
+          },
+          {
+            "id": "card:1761",
+            "name": "杨玉环"
+          },
+          {
+            "id": "card:1763",
+            "name": "杨玉环"
+          },
+          {
+            "id": "card:307001",
+            "name": "弦音"
+          },
+          {
+            "id": "card:1903",
+            "name": "诸葛亮"
+          },
+          {
+            "id": "card:1901",
+            "name": "诸葛亮"
+          }
+        ],
+        "scope": {
+          "lineup_note_id": "changxiaoe-general-play",
+          "player_id": "player:24"
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_023c25a1e73d41b78765a7bac9af1bb4",
+            "text": "杨玉环在场，买刘禅先护诸葛亮，之后可用她供牌补觉醒。"
+          },
+          {
+            "id": "utterances_48c6cf3070284cd089b745c5b5caa0cb",
+            "text": "先买刘禅给诸葛亮顶前排，之后可用杨玉环供牌补觉醒。"
+          }
+        ],
+        "version": "s1",
+        "ignored": true,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1141": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1141",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/30",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1143": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1143",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1761": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "杨玉环在场时，每过3个回合获得1张弦音。\n退场：获得1张弦音。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1761",
+              "name": "杨玉环",
+              "skills": [
+                {
+                  "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 10
+                    },
+                    {
+                      "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                      "level": 40
+                    },
+                    {
+                      "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 100
+                    }
+                  ],
+                  "id": 17600,
+                  "name": "惊鸿调"
+                }
+              ],
+              "stats": {
+                "攻击距离": 5,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "0/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 5,
+              "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
+              "skills_source": "card:1761"
+            },
+            "card:1763": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "杨玉环在场时，每过3个回合获得1张妙音。\n退场：获得1张妙音。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1763",
+              "name": "杨玉环",
+              "skills": [
+                {
+                  "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 10
+                    },
+                    {
+                      "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                      "level": 40
+                    },
+                    {
+                      "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 100
+                    }
+                  ],
+                  "id": 17600,
+                  "name": "惊鸿调"
+                }
+              ],
+              "stats": {},
+              "tier": 5,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1761"
+            },
+            "card:307001": {
+              "aliases": [],
+              "attributes": {
+                "所属分组": "初始效果牌",
+                "获得途径": "该卡通过词条效果等渠道获得。",
+                "解锁条件": "万象大赛达到1200分"
+              },
+              "awakened": false,
+              "category": "effect-cards",
+              "effect": "指定1名1-3阶英雄，使其觉醒进度+1。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:307001",
+              "name": "弦音",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            },
+            "card:1903": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1903",
+              "name": "诸葛亮",
+              "skills": [
+                {
+                  "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "元气弹伤害提升至150+200%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19000,
+                  "name": "元气弹"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1901"
+            },
+            "card:1901": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1901",
+              "name": "诸葛亮",
+              "skills": [
+                {
+                  "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "元气弹伤害提升至150+200%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19000,
+                  "name": "元气弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 6,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "35/55",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1901"
+            },
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_2406b1c2f3572ad9",
+        "explanation_after": "路线里先买未觉醒刘禅作诸葛亮前排，后续再用杨玉环取得的弦音或妙音补觉醒，两阶段交代清楚。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：杨玉环在场，买刘禅先护住诸葛亮，之后可用她供的牌补觉醒。 / 先给诸葛亮买个刘禅顶前排，再用杨玉环供的牌补觉醒。\n原始依据：该常小娥打法让未觉醒刘禅先承担前排并给施法队友提供临时等级，杨玉环在场时可通过在场等待或退场获得弦音或妙音，之后给低阶刘禅补觉醒。当前取舍：口播只承诺之后可补觉醒，因杨玉环普通与觉醒形态供牌不同，不具体指定牌名。自然语言适用条件：刘禅用弦音补觉醒。正式条件：arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.主C is \"诸葛亮\"。取舍后的播报重点：说明杨玉环在场时先买刘禅替诸葛亮护住前排，之后可用杨玉环供的牌补觉醒。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「施法队伍准备补刘禅觉醒时」 · b77-ae4-014\n正式卡牌库「刘禅」 · card:1141\n正式卡牌库「刘禅（觉醒）」 · card:1143\n正式卡牌库「杨玉环」 · card:1761\n正式卡牌库「杨玉环（觉醒）」 · card:1763\n正式卡牌库「弦音」 · card:307001\n正式卡牌库「妙音」 · card:307002",
+        "expression": "arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.战场 has \"诸葛亮\"",
+        "id": "group_620fe65ba76f43c5a1b2a597411ebb28",
+        "mode": "万象大赛",
+        "name": "刘禅用弦音补觉醒",
+        "priority": 0,
+        "related_entities": [
+          {
+            "id": "card:1141",
+            "name": "刘禅"
+          },
+          {
+            "id": "card:1143",
+            "name": "刘禅"
+          },
+          {
+            "id": "card:1761",
+            "name": "杨玉环"
+          },
+          {
+            "id": "card:1763",
+            "name": "杨玉环"
+          },
+          {
+            "id": "card:307001",
+            "name": "弦音"
+          },
+          {
+            "id": "card:1903",
+            "name": "诸葛亮"
+          },
+          {
+            "id": "card:1901",
+            "name": "诸葛亮"
+          }
+        ],
+        "scope": {
+          "lineup_note_id": "changxiaoe-general-play",
+          "player_id": "player:24"
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_023c25a1e73d41b78765a7bac9af1bb4",
+            "text": "杨玉环在场，买刘禅先护诸葛亮，之后可用她供牌补觉醒。"
+          },
+          {
+            "id": "utterances_48c6cf3070284cd089b745c5b5caa0cb",
+            "text": "先买刘禅给诸葛亮顶前排，之后可用杨玉环供牌补觉醒。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1141": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1141",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/30",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1143": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1143",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1761": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "杨玉环在场时，每过3个回合获得1张弦音。\n退场：获得1张弦音。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1761",
+              "name": "杨玉环",
+              "skills": [
+                {
+                  "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 10
+                    },
+                    {
+                      "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                      "level": 40
+                    },
+                    {
+                      "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 100
+                    }
+                  ],
+                  "id": 17600,
+                  "name": "惊鸿调"
+                }
+              ],
+              "stats": {
+                "攻击距离": 5,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "0/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 5,
+              "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
+              "skills_source": "card:1761"
+            },
+            "card:1763": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "杨玉环在场时，每过3个回合获得1张妙音。\n退场：获得1张妙音。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1763",
+              "name": "杨玉环",
+              "skills": [
+                {
+                  "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 10
+                    },
+                    {
+                      "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                      "level": 40
+                    },
+                    {
+                      "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 100
+                    }
+                  ],
+                  "id": 17600,
+                  "name": "惊鸿调"
+                }
+              ],
+              "stats": {},
+              "tier": 5,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1761"
+            },
+            "card:307001": {
+              "aliases": [],
+              "attributes": {
+                "所属分组": "初始效果牌",
+                "获得途径": "该卡通过词条效果等渠道获得。",
+                "解锁条件": "万象大赛达到1200分"
+              },
+              "awakened": false,
+              "category": "effect-cards",
+              "effect": "指定1名1-3阶英雄，使其觉醒进度+1。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:307001",
+              "name": "弦音",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            },
+            "card:1903": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1903",
+              "name": "诸葛亮",
+              "skills": [
+                {
+                  "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "元气弹伤害提升至150+200%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19000,
+                  "name": "元气弹"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1901"
+            },
+            "card:1901": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1901",
+              "name": "诸葛亮",
+              "skills": [
+                {
+                  "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "元气弹伤害提升至150+200%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19000,
+                  "name": "元气弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 6,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "35/55",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1901"
+            },
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_2406b1c2f3572ad9",
+        "explanation_after": "路线里先买未觉醒刘禅作诸葛亮前排，后续再用杨玉环取得的弦音或妙音补觉醒，两阶段交代清楚。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：杨玉环在场，买刘禅先护住诸葛亮，之后可用她供的牌补觉醒。 / 先给诸葛亮买个刘禅顶前排，再用杨玉环供的牌补觉醒。\n原始依据：该常小娥打法让未觉醒刘禅先承担前排并给施法队友提供临时等级，杨玉环在场时可通过在场等待或退场获得弦音或妙音，之后给低阶刘禅补觉醒。当前取舍：口播只承诺之后可补觉醒，因杨玉环普通与觉醒形态供牌不同，不具体指定牌名。自然语言适用条件：刘禅用弦音补觉醒。正式条件：arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.主C is \"诸葛亮\"。取舍后的播报重点：说明杨玉环在场时先买刘禅替诸葛亮护住前排，之后可用杨玉环供的牌补觉醒。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「施法队伍准备补刘禅觉醒时」 · b77-ae4-014\n正式卡牌库「刘禅」 · card:1141\n正式卡牌库「刘禅（觉醒）」 · card:1143\n正式卡牌库「杨玉环」 · card:1761\n正式卡牌库「杨玉环（觉醒）」 · card:1763\n正式卡牌库「弦音」 · card:307001\n正式卡牌库「妙音」 · card:307002",
+        "expression": "arg1 is \"刘禅\" and not arg1.已觉醒 and 玩家.战场 has \"杨玉环\" and 玩家.战场 has \"诸葛亮\"",
+        "id": "group_620fe65ba76f43c5a1b2a597411ebb28",
+        "mode": "万象大赛",
+        "name": "刘禅用弦音补觉醒",
+        "priority": 0,
+        "related_entities": [
+          {
+            "id": "card:1141",
+            "name": "刘禅"
+          },
+          {
+            "id": "card:1143",
+            "name": "刘禅"
+          },
+          {
+            "id": "card:1761",
+            "name": "杨玉环"
+          },
+          {
+            "id": "card:1763",
+            "name": "杨玉环"
+          },
+          {
+            "id": "card:307001",
+            "name": "弦音"
+          },
+          {
+            "id": "card:1903",
+            "name": "诸葛亮"
+          },
+          {
+            "id": "card:1901",
+            "name": "诸葛亮"
+          }
+        ],
+        "scope": {
+          "lineup_note_id": "changxiaoe-general-play",
+          "player_id": "player:24"
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_023c25a1e73d41b78765a7bac9af1bb4",
+            "text": "杨玉环在场，买刘禅先护诸葛亮，之后可用她供牌补觉醒。"
+          },
+          {
+            "id": "utterances_48c6cf3070284cd089b745c5b5caa0cb",
+            "text": "先买刘禅给诸葛亮顶前排，之后可用杨玉环供牌补觉醒。"
+          }
+        ],
+        "version": "s1",
+        "ignored": true,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1141": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1141",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/30",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1143": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1143",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1761": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "杨玉环在场时，每过3个回合获得1张弦音。\n退场：获得1张弦音。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1761",
+              "name": "杨玉环",
+              "skills": [
+                {
+                  "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 10
+                    },
+                    {
+                      "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                      "level": 40
+                    },
+                    {
+                      "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 100
+                    }
+                  ],
+                  "id": 17600,
+                  "name": "惊鸿调"
+                }
+              ],
+              "stats": {
+                "攻击距离": 5,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "0/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 5,
+              "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
+              "skills_source": "card:1761"
+            },
+            "card:1763": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "杨玉环在场时，每过3个回合获得1张妙音。\n退场：获得1张妙音。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1763",
+              "name": "杨玉环",
+              "skills": [
+                {
+                  "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 10
+                    },
+                    {
+                      "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                      "level": 40
+                    },
+                    {
+                      "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                      "level": 100
+                    }
+                  ],
+                  "id": 17600,
+                  "name": "惊鸿调"
+                }
+              ],
+              "stats": {},
+              "tier": 5,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1761"
+            },
+            "card:307001": {
+              "aliases": [],
+              "attributes": {
+                "所属分组": "初始效果牌",
+                "获得途径": "该卡通过词条效果等渠道获得。",
+                "解锁条件": "万象大赛达到1200分"
+              },
+              "awakened": false,
+              "category": "effect-cards",
+              "effect": "指定1名1-3阶英雄，使其觉醒进度+1。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:307001",
+              "name": "弦音",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            },
+            "card:1903": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1903",
+              "name": "诸葛亮",
+              "skills": [
+                {
+                  "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "元气弹伤害提升至150+200%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19000,
+                  "name": "元气弹"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1901"
+            },
+            "card:1901": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1901",
+              "name": "诸葛亮",
+              "skills": [
+                {
+                  "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "元气弹伤害提升至150+200%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19000,
+                  "name": "元气弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 6,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "35/55",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1901"
+            },
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,29 +1,61 @@
 {
-  "name": "升五前选里程碑兑现能量和装备",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "condition_tree": null,
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation_after": "当前确为四级、尚需经验且剩余能量足够，选里程碑后升五才兑现，原播报逐字保持。\n完整候选池通过 3 项。正例可播：四级且预算恰好够升五；单项反例不命中：玩家不处于升5前；缺值检查：缺玩家等级。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：能量够升五，选里程碑后升级就能领能量和装备箱。\n原始依据：里程碑在达到五级时返六能量和一装备箱，需己方当前四级且此时剩余能量覆盖升五才能用当下兑现来解释，低一能量不能沿用。当前取舍：以行动和当下收益为主，场上状态或必要资源连接原因与结果。自然语言适用条件：目前四级，尚需经验升到五级，但剩余能量至少足够补齐经验。正式条件：arg2 is \"里程碑\" and 玩家.等级 == 4 and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验。取舍后的播报重点：点明能量够升五，说明选里程碑后升级就能立即领取能量和装备箱，原句逐字保留。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第156行「里程碑・使用技巧」\n正式卡牌库 里程碑（card:613003）\n正式卡牌库：里程碑（card:613003）",
+  "expression": "arg2 is \"里程碑\" and 玩家.等级 == 4 and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验",
+  "id": "group_3019c2185d0f564b8080fff85d391998",
   "mode": "万象大赛",
+  "name": "升五前选里程碑兑现能量和装备",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "能量够升五，选里程碑后升级就能领能量和装备箱。",
-      "id": "utterances_3e0d94d9124b4daea181a75b3747f9e7"
+      "id": "utterances_3e0d94d9124b4daea181a75b3747f9e7",
+      "text": "能量够升五，选里程碑后升级就能领能量和装备箱。"
     }
   ],
-  "id": "group_3019c2185d0f564b8080fff85d391998",
-  "event_id": "os_2b69e500a5c8036a",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"里程碑\" and 玩家.等级 == 4 and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验",
-  "condition_tree": null,
-  "explanation_source": "personal/knowledge_tips.jsonl 第156行「里程碑・使用技巧」\n正式卡牌库 里程碑（card:613003）\n正式卡牌库：里程碑（card:613003）",
-  "explanation_before": "原始内容：里程碑在棋手到达五级时奖励能量和装备箱，越早升级越早兑现。\n知识或技巧详解：棋手当前四级且有填补剩余经验的能量时，选里程碑后具备本轮升级条件。能量和装备箱要实际升五才获得。\n自然语言适用条件：目前四级，尚需经验升到五级，但剩余能量至少足够补齐经验。\n正式条件：arg2 is \"里程碑\" and 玩家.等级 == 4 and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验\n30 字表达取舍：具体交代现在升得起五级，因此天赋可较早兑现。",
-  "explanation_after": "能量比经验差少一点就不说本轮能兑现。选择之后若改变消费也要等实际升级。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:613003": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始天赋",
+          "拍卖轮次（官网原文）": "初始阵容",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "棋手到达5级时，获得6能量、1张装备箱。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:613003",
+        "name": "里程碑",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

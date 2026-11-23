@@ -1,29 +1,150 @@
 {
-  "name": "狄仁杰穿破晓打单体",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
   "explanation": "",
+  "explanation_after": "穿戴事件无法确认狄仁杰会对同一目标连续攻击，现有记录继续暂停。\n正式发布投影中已核对，本组保持暂停，原话术保留供追溯。",
+  "explanation_before": "刷新前正式话术原句：狄仁杰连续普攻同一目标，适合用破晓叠减防。\n原始依据：狄仁杰常携带破晓、寒霜侵袭等装备用于快速击杀单个目标，敌方带反伤重甲等反伤时高攻速普攻易被反伤击杀，需携魂祭绝刃等吸血来源抵消，控制多可补免控装备。当前取舍：同一目标连续受击是破晓叠物防削减的前提，穿戴事件只给出狄仁杰与装备，无法确认连续目标，故当前已暂停。自然语言适用条件：狄仁杰穿戴破晓时。正式条件：arg1 is \"狄仁杰\" and arg2 is \"破晓\"。播报重点：暂停播报，待补可观测条件；受保护原句说明狄仁杰连续普攻同一目标适合用破晓叠减防。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第11行「狄仁杰・使用技巧」",
+  "expression": "arg1 is \"狄仁杰\" and arg2 is \"破晓\"",
+  "id": "group_cd457696c5b15254b14434ab3147d14a",
+  "ignored": true,
   "mode": "万象大赛",
+  "name": "狄仁杰穿破晓打单体",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "狄仁杰连续普攻同一目标，适合用破晓叠减防。",
-      "id": "utterances_688741af62bd4401b97ebdd7d719314e"
+      "id": "utterances_688741af62bd4401b97ebdd7d719314e",
+      "text": "狄仁杰连续普攻同一目标，适合用破晓叠减防。"
     }
   ],
-  "id": "group_cd457696c5b15254b14434ab3147d14a",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"狄仁杰\" and arg2 is \"破晓\"",
-  "explanation_before": "原始内容：常携带破晓、寒霜侵袭等装备，用于快速击杀单个目标。敌方带有反伤重甲等反伤时，高攻速普攻易被反伤击杀，需携带魂祭绝刃等吸血来源抵消；敌方控制多可补免控装备。\n知识或技巧详解：同一目标多次承受普攻时更容易积累破晓的减防。\n自然语言适用条件：解释为何穿戴装备时，破晓交给常连续攻击同一目标的狄仁杰。\n正式条件：arg1 is \"狄仁杰\" and arg2 is \"破晓\"\n30 字表达取舍：播报保留「狄仁杰连续普攻同一目标，适合用破晓叠减防。」，以入库前的独立复核为准。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第11行「狄仁杰・使用技巧」",
-  "explanation_after": "事件与条件复核：解释为何穿戴装备，核对了破晓交给常连续攻击同一目标的狄仁杰。单项反例：频繁改打新目标时，减防不易集中在单个目标。话术复核：句子围绕同一目标多次承受普攻时更容易积累破晓的减防，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1331": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "对狄仁杰使用古币时，其攻击速度永久+5%。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1331",
+        "name": "狄仁杰",
+        "skills": [
+          {
+            "effect": "狄仁杰激发潜能，获得1层迅捷效果，增加自身40%基础攻击速度，持续5秒，若已经达到攻速上限，则获得3%物理攻击力，最多叠加3次。",
+            "enhancements": [
+              {
+                "effect": "基础攻速增益提升至90%",
+                "level": 10
+              },
+              {
+                "effect": "每3次普攻抽出1张蓝牌，对目标造成150%物理攻击力的物理伤害",
+                "level": 40
+              },
+              {
+                "effect": "普攻全部换为蓝牌，并且每10次普攻抽出1张黄牌，额外造成0.5秒眩晕效果",
+                "level": 100
+              }
+            ],
+            "id": 13300,
+            "name": "迅捷"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 1.0,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 210,
+          "法力值（初始／最大）": "10/70",
+          "法术攻击力": 0,
+          "法术防御": 14,
+          "物理攻击力": 36,
+          "物理防御": 14
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1331"
+      },
+      "card:1333": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "对狄仁杰使用古币时，其攻击速度永久+10%。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1333",
+        "name": "狄仁杰",
+        "skills": [
+          {
+            "effect": "狄仁杰激发潜能，获得1层迅捷效果，增加自身40%基础攻击速度，持续5秒，若已经达到攻速上限，则获得3%物理攻击力，最多叠加3次。",
+            "enhancements": [
+              {
+                "effect": "基础攻速增益提升至90%",
+                "level": 10
+              },
+              {
+                "effect": "每3次普攻抽出1张蓝牌，对目标造成150%物理攻击力的物理伤害",
+                "level": 40
+              },
+              {
+                "effect": "普攻全部换为蓝牌，并且每10次普攻抽出1张黄牌，额外造成0.5秒眩晕效果",
+                "level": 100
+              }
+            ],
+            "id": 13300,
+            "name": "迅捷"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1331"
+      },
+      "card:643302": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "物理装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "每次普通攻击降低目标3点物防，持续5秒。目标物防首次降为0时，附加1次目标15%最大生命值的物理伤害。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643302",
+        "name": "破晓",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

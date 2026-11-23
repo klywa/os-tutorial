@@ -1,26 +1,231 @@
 {
-  "name": "开局找苏烈或狂铁",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_a43279f749f4872b",
+  "explanation_after": "刷新商店仍是动作，苏烈和狂铁各自在商店、战场和手牌里的缺失都有依据，补前排用有机会。\n完整候选池通过 3 项。正例可播：商店.商店列表是已知空列表或仅列其他牌；负例分别加入苏烈或狂铁。；单项反例不命中：改变本次新验证的必要前提。商店.商店列表是已知空列表或仅列其他牌；负例分别加入苏烈或狂铁。；缺值检查：省略本次新验证的必要字段。商店.商店列表是已知空列表或仅列其他牌；负例分别加入苏烈或狂铁。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：开局还没拿到苏烈或狂铁，刷新有机会补到前排。\n原始依据：原稿指出开局还没拿到苏烈或狂铁，刷新有机会补到前排；依据核对要求刷新前需确认商店没有苏烈或狂铁且自己手牌和战场均未持有，否则会跳过当前前排，同时维持第1回合前期作用域。当前取舍：以刷新行动和当下补前排的机会收益为主，用未见目标牌的状态连接原因与结果，保持不确定语气并精简至30字内。自然语言适用条件：刷新前先判断商店没有苏烈或狂铁，同时自己手牌和战场未持有。正式条件：对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"}) and not (商店.商店列表 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (商店.商店列表 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})。取舍后的播报重点：点明开局未见苏烈或狂铁的状态，说明刷新商店有机会补到前排。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：狂铁（card:5031）",
+  "expression": "对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"}) and not (商店.商店列表 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (商店.商店列表 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})",
+  "id": "group_125078772deb47c7bfa345fff7df461e",
   "mode": "万象大赛",
+  "name": "开局找苏烈或狂铁",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "开局还没拿到苏烈或狂铁，刷新有机会补到前排。",
-      "id": "utterances_9285cf45b6da45d7afdb47cf3ac48b48"
+      "id": "utterances_9285cf45b6da45d7afdb47cf3ac48b48",
+      "text": "开局未见苏烈或狂铁，刷新商店有机会补到前排。"
     }
   ],
-  "id": "group_125078772deb47c7bfa345fff7df461e",
-  "event_id": "os_a43279f749f4872b",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：狂铁（card:5031）",
-  "explanation_before": "原始内容：常小娥开局可优先找苏烈或狂铁作为过渡前排。\n知识或技巧详解：两人可以在前期单独上阵。苏烈靠牺牲成长，狂铁可整备培养阿科米亚核心。手牌和场上都没有两人时，这些选项尚未到手。\n自然语言适用条件：常小娥灵活4人组第一回合，手里和场上均没有苏烈或狂铁。\n正式条件：对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})\n30 字表达取舍：保留查找具体前排的目的和尚未到手的事实。",
-  "explanation_after": "不声称场上没有其他可用前排，也不保证一次刷新必能找到两人。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1941": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1941",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/40",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:1943": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+4。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1943",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:5031": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5031",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "card:5033": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5033",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      }
+    }
+  }
 }

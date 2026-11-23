@@ -1,22 +1,16 @@
 {
-  "name": "升六解锁月之特调",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": null
-  },
-  "explanation": "",
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "常小娥升到六级，就有机会选月之特调强化助力。",
-      "id": "utterances_a440e99eea604fcea9e4cb48d1c49478"
-    }
-  ],
-  "id": "group_a712951c027842548dc6a3cd6c9b5504",
-  "event_id": "os_474ce7597b626c02",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_474ce7597b626c02",
+  "explanation": "",
+  "explanation_after": "返修明确由主动使用小菟助力累计提供65级而触发送福，不把所有小菟触发混为同一计数。\n完整候选池通过 3 项。正例可播：常小娥棋手刚升到六级；单项反例不命中：改变必要前提：常小娥棋手刚升到六级；缺值检查：缺少关键观测：常小娥棋手刚升到六级。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：常小娥升到六级，就有机会选月之特调强化助力。\n原始依据：常小娥六级可接触专属月之特调，小菟提供等级时每5级额外获得随机属性（15%攻速/2%物理和法术吸血/2点物理和法术防御力），每通过主动使用小菟助力累计提供65级获1张小菟送福。当前取舍：逐字保留受保护句，保留升级六级后的局面与强化助力的潜在收益，维持“有机会”的不确定表述。自然语言适用条件：当前使用常小娥，棋手升级后达到六级。正式条件：arg1 == 6。取舍后的播报重点：点明常小娥升至六级后有机会选择月之特调强化助力。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「月之特调与送福循环」，正式卡牌库 card:662407。",
+  "expression": "arg1 == 6",
+  "id": "group_a712951c027842548dc6a3cd6c9b5504",
+  "mode": "万象大赛",
+  "name": "升六解锁月之特调",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:662407",
@@ -31,10 +25,106 @@
       "name": "小菟送福"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 == 6",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「月之特调与送福循环」，正式卡牌库 card:662407。",
-  "explanation_before": "原始内容：小菟提供等级时，每5级使其额外获得1项随机属性：15%攻速/2%物理和法术吸血/2点物理和法术防御力。且每通过小菟助力提供65级时，获得1张小菟送福。\n知识详解：常小娥升至六级后有机会选月之特调。该天赋增加小菟供级附加属性，并在小菟助力累计供级到门槛时提供送福。\n适用条件：当前使用常小娥，棋手升级后达到六级。\n条件语法：arg1 == 6\n30 字表达取舍：保留棋手、六级与天赋候选机会，省去属性与两套触发数值。",
-  "explanation_after": "未得到实际选择事件时，不能说已经选了天赋。其他棋手升六不适用。"
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_a440e99eea604fcea9e4cb48d1c49478",
+      "text": "常小娥升到六级，就有机会选月之特调强化助力。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:662407": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始天赋",
+          "拍卖轮次（官网原文）": "初始阵容",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "小菟提供等级时，每5级使其额外获得1项随机属性：15%攻速/2%物理和法术吸血/2点物理和法术防御力。且每通过小菟助力提供65级时，获得1张小菟送福。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:662407",
+        "name": "月之特调",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-27T01:17:15.283006+00:00"
+      },
+      "card:92499": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92499",
+        "name": "小菟助力",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:92410": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "对场上的随机4名英雄各触发1次小菟助力，使其等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92410",
+        "name": "小菟送福",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  }
 }

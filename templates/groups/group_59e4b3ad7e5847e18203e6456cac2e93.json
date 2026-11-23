@@ -1,30 +1,61 @@
 {
-  "name": "用援护战术补上新护盾",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "explanation_after": "两句原话保留；多人同场提升一次护盾的覆盖范围，说明限定为当回合的全体逐鹿英雄。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上已有多名逐鹿英雄，用援护战术能一起补护盾。 / 这轮有多名逐鹿英雄，援护战术能同时保护他们。\n原始依据：援护战术对全体逐鹿英雄提供当回合护盾，多名逐鹿英雄同场时能在一个动作内同时保护多名现有单位。当前取舍：口播保留触发事实、行动及当下收益，具体机制留在说明。自然语言适用条件：用援护战术补上新护盾。正式条件：arg1 is \"援护战术\" and 玩家.战场.计数(阵营, \"逐鹿\") >= 2。取舍后的播报重点：直接点出场上有多名逐鹿英雄，使用援护战术即可一起补护盾或同时保护他们。",
+  "explanation_source": "正式卡牌库 援护战术（card:313001）\n正式卡牌库「援护战术」 · card:313001",
+  "expression": "arg1 is \"援护战术\" and 玩家.战场.计数(阵营, \"逐鹿\") >= 2",
+  "id": "group_59e4b3ad7e5847e18203e6456cac2e93",
   "mode": "万象大赛",
+  "name": "用援护战术补上新护盾",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "场上已有多名逐鹿英雄，用援护战术能一起补护盾。",
-      "id": "utterances_5a15bd59a1044d248dd3c964d21e221b"
+      "id": "utterances_5a15bd59a1044d248dd3c964d21e221b",
+      "text": "场上已有多名逐鹿英雄，用援护战术能一起补护盾。"
     },
     {
-      "text": "这轮有多名逐鹿英雄，援护战术能同时保护他们。",
-      "id": "utterances_f173c150f18e4c6fb93b5c14f6ddc441"
+      "id": "utterances_f173c150f18e4c6fb93b5c14f6ddc441",
+      "text": "这轮有多名逐鹿英雄，援护战术能同时保护他们。"
     }
   ],
-  "id": "group_59e4b3ad7e5847e18203e6456cac2e93",
-  "event_id": "os_1c33df3b1a2b43f5",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"援护战术\" and 玩家.战场.计数(阵营, \"逐鹿\") >= 2",
-  "explanation_before": "原始内容：转瞬\n全体【逐鹿】英雄本回合获得50（+25×战术牌打出次数，当前：75）点护盾。\n知识或技巧详解：援护战术给当回合在场的逐鹿英雄加护盾。场上有多名逐鹿英雄时，用一次就能保护多人，比在仅有一名受益者时具有更大的群体收益。\n自然语言适用条件：使用援护战术，场上逐鹿英雄至少两名。\n正式条件：arg1 is \"援护战术\" and 玩家.战场.计数(阵营, \"逐鹿\") >= 2\n30 字表达取舍：把群体受益条件放在话术前半，省去随战术次数变化的实时盾量。",
-  "explanation_source": "正式卡牌库 援护战术（card:313001）\n正式卡牌库「援护战术」 · card:313001",
-  "explanation_after": "改用阵营计数限制多目标场景，避免只用牌名朗读效果。仅一名逐鹿时不能播多名一起受益；留两句即可。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:313001": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包三",
+          "获得途径": "该卡通过词条效果等渠道获得。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "转瞬\n全体【逐鹿】英雄本回合获得50（+25×战术牌打出次数，当前：75）点护盾。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:313001",
+        "name": "援护战术",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

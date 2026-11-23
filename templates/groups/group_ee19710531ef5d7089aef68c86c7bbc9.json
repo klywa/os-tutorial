@@ -1,29 +1,61 @@
 {
-  "name": "主力两件装备时选重装上阵",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
   "explanation": "",
+  "explanation_after": "主力当前装备数量已经达到门槛，槽位保留，战斗开始后同时增伤减伤。\n完整候选池通过 3 项。正例可播：主力穿着三件装备；单项反例不命中：主力只穿一件不能触发；缺值检查：缺少 玩家.主C.已穿装备。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：主力已有{玩家.主C.已穿装备.计数()}件装备，重装上阵能给他增伤减伤。\n原始依据：重装上阵在战斗开始时使至少穿戴2件装备的英雄获得15%伤害加成和15%伤害减免，适合主C至少有2件装备时选择。当前取舍：主力已达装备门槛才有当下的增伤减伤收益，缺装备数量不得推断达标。自然语言适用条件：选择天赋重装上阵，且玩家主C已穿装备数量不少于2件。正式条件：arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2。取舍后的播报重点：点明主力已拥有的装备件数，说明选择重装上阵能为其带来增伤和减伤效果。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第167行「重装上阵・使用技巧」\n正式卡牌库 重装上阵（card:633017）",
+  "expression": "arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2",
+  "id": "group_ee19710531ef5d7089aef68c86c7bbc9",
   "mode": "万象大赛",
+  "name": "主力两件装备时选重装上阵",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "主力已有{玩家.主C.已穿装备.计数()}件装备，选重装上阵能让他增伤减伤。",
-      "id": "utterances_bf0b99b43b464694b2c87a6221d5ad89"
+      "id": "utterances_bf0b99b43b464694b2c87a6221d5ad89",
+      "text": "主力已有{玩家.主C.已穿装备.计数()}件装备，选重装上阵能给他增伤减伤。"
     }
   ],
-  "id": "group_ee19710531ef5d7089aef68c86c7bbc9",
-  "event_id": "os_2b69e500a5c8036a",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2",
-  "explanation_before": "原始内容：需要目标英雄至少穿满2件装备才能触发15%增伤和15%减伤，适合主C有至少2件装备时使用。\n重装上阵：战斗开始时，你至少穿戴2件装备的英雄获得15%伤害加成和15%伤害减免。\n知识或技巧详解：换成重装上阵即可满足主力的开战增减伤门槛。\n自然语言适用条件：解释为何选择天赋时，主力已穿至少两件装备。\n正式条件：arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2\n30 字表达取舍：播报保留「主力已有{玩家.主C.已穿装备.计数()}件装备，选重装上阵能让他增伤减伤。」，以入库前的独立复核为准。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第167行「重装上阵・使用技巧」\n正式卡牌库 重装上阵（card:633017）",
-  "explanation_after": "事件与条件复核：解释为何选择天赋，核对了主力已穿至少两件装备。单项反例：少于两件时主力无法实际受益。话术复核：句子围绕换成重装上阵即可满足主力的开战增减伤门槛，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:633017": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始天赋",
+          "拍卖轮次（官网原文）": "第三轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "战斗开始时，你至少穿戴2件装备的英雄获得15%伤害加成和15%伤害减免。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:633017",
+        "name": "重装上阵",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

@@ -1,30 +1,150 @@
 {
-  "name": "唤醒触发阿轲的效果",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "低血量只增加一次唤醒所触发的登场重复结算，收益给阿轲自己与随机英雄；说明保留普通、觉醒数值不同。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：棋手已是低血量，唤醒阿轲能多次结算她的登场。 / 血量较低，唤醒阿轲能多次给自己和随机英雄升级。\n原始依据：唤醒可指定1名英雄触发其登场效果；阿轲的登场可使自身及随机1名英雄升级，且棋手生命值每降低10点重复结算1次（普通与觉醒形态每份等级不同，队友随机）。当前取舍：在30字内说明低血量与额外结算的联系，避免误听成唤醒多次打出。自然语言适用条件：唤醒指定的目标是阿轲，棋手生命值不超过30。正式条件：arg1 is \"阿轲\" and arg2 is \"唤醒\" and 玩家.血量 <= 30。取舍后的播报重点：点出当前低血量状态下，唤醒阿轲可让她的登场多结算几次，从而多次给自己和随机英雄升级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「阿轲」 · n-a56fec115d906cf0619d\n正式卡牌库「唤醒」 · card:7074\n正式卡牌库「阿轲」 · card:1161\n正式卡牌库「阿轲（觉醒）」 · card:1163",
+  "expression": "arg1 is \"阿轲\" and arg2 is \"唤醒\" and 玩家.血量 <= 30",
+  "id": "group_3fab2b3970364739beb027c98e7404b0",
   "mode": "万象大赛",
+  "name": "唤醒触发阿轲的效果",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "棋手血量已低，用唤醒能多触发阿轲的登场加级。",
-      "id": "utterances_c0cd93632419422ea6b34932f3af8409"
+      "id": "utterances_c0cd93632419422ea6b34932f3af8409",
+      "text": "当前已是低血量，唤醒阿轲能让登场多结算几次。"
     },
     {
-      "text": "血量较低时唤醒阿轲，她能为自己和随机队友多次加级。",
-      "id": "utterances_561a51de596c42fba6392e94eefb5d74"
+      "id": "utterances_561a51de596c42fba6392e94eefb5d74",
+      "text": "现在血量较低，唤醒阿轲能多次给自己和随机英雄升级。"
     }
   ],
-  "id": "group_3fab2b3970364739beb027c98e7404b0",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"阿轲\" and arg2 is \"唤醒\" and 玩家.血量 <= 30",
-  "explanation_before": "原始内容：指定1名英雄，触发其登场效果。\n闪现\n登场：自身及随机1名英雄等级+1，棋手生命值每降低10点，重复1次。\n知识或技巧详解：唤醒将已上阵阿轲的登场再触发一次。棋手生命值已经较低时，阿轲每损失十点生命值的重复结算能给自己和随机队友追加等级。三十点是本组采用的保守低血量阈值。\n自然语言适用条件：使用唤醒的目标是阿轲，棋手的当前生命值至多三十点。\n正式条件：arg1 is \"阿轲\" and arg2 is \"唤醒\" and 玩家.血量 <= 30\n30 字表达取舍：只说明低血量能放大阿轲的额外成长，省去觉醒数值和随机队友的身份。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「阿轲」 · n-a56fec115d906cf0619d\n正式卡牌库「唤醒」 · card:7074\n正式卡牌库「阿轲」 · card:1161\n正式卡牌库「阿轲（觉醒）」 · card:1163",
-  "explanation_after": "条件新增棋手血量。三十一点及未知血量时退出低血量专门解释。仍需要阿轲作为实际目标，新话术不承诺指定别人得到等级。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1161": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：自身及随机1名英雄等级+1，棋手生命值每降低10点，重复1次。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1161",
+        "name": "阿轲",
+        "skills": [
+          {
+            "effect": "阿轲挥动双刺发动2次攻击，每次造成30+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "单次伤害提升至30+130%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战后20秒内自身不会被优先攻击",
+                "level": 40
+              },
+              {
+                "effect": "战斗过程中不会被优先攻击，技能必定暴击",
+                "level": 100
+              }
+            ],
+            "id": 11600,
+            "name": "弧光"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "30/35",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1161"
+      },
+      "card:1163": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：自身及随机1名英雄等级+2，棋手生命值每降低10点，重复1次。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1163",
+        "name": "阿轲",
+        "skills": [
+          {
+            "effect": "阿轲挥动双刺发动2次攻击，每次造成30+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "单次伤害提升至30+130%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战后20秒内自身不会被优先攻击",
+                "level": 40
+              },
+              {
+                "effect": "战斗过程中不会被优先攻击，技能必定暴击",
+                "level": 100
+              }
+            ],
+            "id": 11600,
+            "name": "弧光"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1161"
+      },
+      "card:7074": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，触发其登场效果。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7074",
+        "name": "唤醒",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

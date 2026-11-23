@@ -1,31 +1,147 @@
 {
-  "name": "前期单挂孙膑靠自身施法成长",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
   "explanation": "",
+  "explanation_after": "终稿第二句恢复为小菟助力集中，第一句独立描述孙膑本人的每三次施法永久成长，没有将施法归因于单挂独享。\n完整候选池通过 3 项。正例可播：常小娥五级，孙膑上阵后单挂；单项反例不命中：改变必要前提：常小娥五级，孙膑上阵后单挂；缺值检查：缺少关键观测：常小娥五级，孙膑上阵后单挂。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：前期单挂孙膑可自攒永久等级，小菟助力也只给他。 / 孙膑单挂时只有他能吃到小菟助力，等级更集中。\n原始依据：每名施法者独立累计施法次数，每释放3次技能该英雄等级永久提升（普通形态+1，觉醒形态+2）。当前取舍：孙膑单挂时可用自身施法获得永久成长，小菟助力则只有他一名候选，第一句需说出单挂取舍如何影响自我成长。自然语言适用条件：常小娥灵活4人组，棋手低于六级，上阵孙膑后场上只有孙膑。正式条件：arg1 is \"孙膑\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\"。取舍后的播报重点：第一句点明前期单挂孙膑可用自身施法攒永久等级且小菟助力只给他，第二句强调孙膑单挂时只有他能吃到小菟助力，等级更集中。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」「打法要点」「孙膑」，正式卡牌库 card:1181、card:1183、card:92499。",
+  "expression": "arg1 is \"孙膑\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\"",
+  "id": "group_b0eb6e7347b8511ebe5e6bdceb40b5d6",
   "mode": "万象大赛",
+  "name": "前期单挂孙膑靠自身施法成长",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "前期只上孙膑，他能靠自己施法积攒永久等级。",
-      "id": "utterances_601b107d1a6348b8adedcdf51d6fba3d"
+      "id": "utterances_601b107d1a6348b8adedcdf51d6fba3d",
+      "text": "前期单挂孙膑可用自身施法攒永久等级，小菟助力也只给他。"
     },
     {
-      "text": "孙膑单挂时只有他能吃到小菟助力，等级更集中。",
-      "id": "utterances_0b155e3ea2c14e6b853664cb2efdcf10"
+      "id": "utterances_0b155e3ea2c14e6b853664cb2efdcf10",
+      "text": "孙膑单挂时只有他能吃到小菟助力，等级更集中。"
     }
   ],
-  "id": "group_b0eb6e7347b8511ebe5e6bdceb40b5d6",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"孙膑\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」「打法要点」「孙膑」，正式卡牌库 card:1181、card:1183、card:92499。",
-  "explanation_before": "原始内容：你的英雄每释放3次技能，该英雄等级永久+1。\n知识详解：孙膑自己的施法也受其卡面成长机制影响。棋手早期让孙膑单挂，还能将小菟助力的随机候选缩到孙膑一人。\n适用条件：常小娥灵活4人组，棋手低于六级，上阵孙膑后场上只有孙膑。\n条件语法：arg1 is \"孙膑\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\"\n30 字表达取舍：保留独自在场及两条有意义的成长用途，不假设装备与本场施法次数。",
-  "explanation_after": "施法成长按该英雄单独计数。没有保证当轮实际能施法三次，助力要在实际使用时结算。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1181": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1181",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "10/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+        "skills_source": "card:1181"
+      },
+      "card:1183": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1183",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1181"
+      }
+    }
+  }
 }

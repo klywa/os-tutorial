@@ -1,32 +1,87 @@
 {
-  "name": "白歌用资深猎头准备四阶合成",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation_after": "三稿两句自然。说明明确到四级获得天赋牌，使用后四阶二选一，一分为四以备合成。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：白歌选资深猎头，四级可攒四张同名四阶牌来做合成。 / 白歌要靠合成拿即兴创作，资深猎头可在四级补同名牌。\n原始依据：棋手4级时获得1张天赋牌资深猎头，可进行4阶卡牌2选1并将选中卡牌一分为四；白歌依赖累计合成次数取得即兴创作，该牌有助于后续同名合成。当前取舍：透露牌的获得时点与同名性，避免说一定刷到想要的目标。自然语言适用条件：白歌用资深猎头准备四阶合成。正式条件：arg2 is \"资深猎头\" and arg1 has \"资深猎头\" and 玩家.使用棋手 is \"白歌\" and 玩家.等级 <= 4。取舍后的播报重点：说明白歌需要靠合成获取即兴创作，选择资深猎头可在四级拿到天赋牌后手动从两张四阶牌中选一张并一分为四，攒四张同名四阶牌来助合成，不保证拿到特定目标牌。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第61行「白歌・使用技巧」\n正式卡牌库「资深猎头」 · card:614001\n正式卡牌库「资深猎头」 · card:651002",
+  "expression": "arg2 is \"资深猎头\" and arg1 has \"资深猎头\" and 玩家.使用棋手 is \"白歌\" and 玩家.等级 <= 4",
+  "id": "group_7bb697fae4ba56b38714528a5ba5d025",
   "mode": "万象大赛",
+  "name": "白歌用资深猎头准备四阶合成",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "白歌选资深猎头，可为后续的合成攒同名四阶牌。",
-      "id": "utterances_468db0a2940b4f6ca94be972b62a6e56"
+      "id": "utterances_468db0a2940b4f6ca94be972b62a6e56",
+      "text": "白歌选资深猎头，四级可攒四张同名四阶牌来做合成。"
     },
     {
-      "text": "白歌选资深猎头，凑到同名四阶牌后可推进合成。",
-      "id": "utterances_a6ded3c4ea484ea7b72ce0037bdef919"
+      "id": "utterances_a6ded3c4ea484ea7b72ce0037bdef919",
+      "text": "白歌要靠合成拿即兴创作，资深猎头可在四级补同名牌。"
     }
   ],
-  "id": "group_7bb697fae4ba56b38714528a5ba5d025",
-  "event_id": "os_2b69e500a5c8036a",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"资深猎头\" and arg1 has \"资深猎头\" and 玩家.使用棋手 is \"白歌\" and 玩家.等级 <= 4",
-  "explanation_before": "原始内容：棋手4级时，获得1张天赋牌资深猎头：4阶卡牌2选1，并将选中的卡牌一分为四。\n4阶卡牌2选1，并将选中的卡牌一分为四。\n知识或技巧详解：白歌依赖同名合成推进专属技能进度。资深猎头在四级提供四阶候选，所选的一张牌能复制成同名素材，让之后的合成更容易集中完成。\n自然语言适用条件：由白歌选资深猎头，候选池包含它，当前棋手等级不超过四。\n正式条件：arg2 is \"资深猎头\" and arg1 has \"资深猎头\" and 玩家.使用棋手 is \"白歌\" and 玩家.等级 <= 4\n30 字表达取舍：说明白歌如何利用多张同名四阶牌，为合成和个人收益做准备。省去不确定的英雄名字。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第61行「白歌・使用技巧」\n正式卡牌库「资深猎头」 · card:614001\n正式卡牌库「资深猎头」 · card:651002",
-  "explanation_after": "超过四级不播按达到四级取牌的理由。话术不说一定找到想要的棋子，也不说取得素材就等于叠好合成进度。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:614001": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包三",
+          "拍卖轮次（官网原文）": "初始阵容",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "棋手4级时，获得1张天赋牌资深猎头：4阶卡牌2选1，并将选中的卡牌一分为四。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:614001",
+        "name": "资深猎头",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:651002": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始天赋",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "4阶卡牌2选1，并将选中的卡牌一分为四。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:651002",
+        "name": "资深猎头",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

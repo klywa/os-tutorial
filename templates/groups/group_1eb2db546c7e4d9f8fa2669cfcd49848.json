@@ -1,30 +1,61 @@
 {
-  "name": "单人场用简易协作集中等级",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "单独在场且恰为目标时，两份等级都归同一名英雄，普通牌效三级与两级相加为五，原句不改。\n完整候选池通过 3 项。正例可播：目标是唯一英雄，两份等级都归他；单项反例不命中：存在第二名英雄时不能保证随机等级；缺值检查：快照缺少玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上只有选中的英雄，简易协作能让他独得五级。 / 趁目标单独在场用简易协作，两份等级就会都给他。\n原始依据：简易协作分别给指定目标三级和随机英雄两级，场上只有目标时两次收益落入同一人，把唯一上场者换成另一人会破坏集中前提。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接原因与结果，且本组两条原稿均逐字保留。自然语言适用条件：正在使用简易协作，指定对象正好是场上唯一英雄。正式条件：arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1。取舍后的播报重点：点明目标单独在场这一前提，在使用简易协作的行动下使其独得五级或集中获得两份等级。",
+  "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库：简易协作（card:7040）",
+  "expression": "arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1",
+  "id": "group_1eb2db546c7e4d9f8fa2669cfcd49848",
   "mode": "万象大赛",
+  "name": "单人场用简易协作集中等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "场上只有选中的英雄，简易协作能让他独得五级。",
-      "id": "utterances_91e5ffd4af0640f09b5ceb4f0eb64d88"
+      "id": "utterances_91e5ffd4af0640f09b5ceb4f0eb64d88",
+      "text": "场上只有选中的英雄，简易协作能让他独得五级。"
     },
     {
-      "text": "趁目标单独在场用简易协作，两份等级就会都给他。",
-      "id": "utterances_7a85723384294773b68987dcd3aaea19"
+      "id": "utterances_7a85723384294773b68987dcd3aaea19",
+      "text": "趁目标单独在场用简易协作，两份等级就会都给他。"
     }
   ],
-  "id": "group_1eb2db546c7e4d9f8fa2669cfcd49848",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1",
-  "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库：简易协作（card:7040）",
-  "explanation_before": "原始内容：把简易协作用于单人场，可使定向与随机的两段等级落在同一个英雄身上。\n知识或技巧详解：简易协作给指定英雄加三级，另给一名随机英雄加两级。目标是场上唯一英雄时两段都由他获得。\n自然语言适用条件：正在使用简易协作，指定对象正好是场上唯一英雄。\n正式条件：arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1\n30 字表达取舍：说明为什么此时可以集中共五级。",
-  "explanation_after": "再上任意队友，随机两级仍可能给他，也可能给别人；不再播保证集中。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7040": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄等级+3，随机1名英雄等级+2。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7040",
+        "name": "简易协作",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

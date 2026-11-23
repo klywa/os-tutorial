@@ -1,0 +1,732 @@
+{
+  "id": "fd15e92c98da4176a43b6600992c0bbc",
+  "actor": "local",
+  "at": "2026-11-23T13:10:09.124832+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_1013dc4b7ddc4d2fa7344429f2fedf1a",
+      "value": {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_98aee9aae8b9d41d",
+        "explanation_after": "明先生第三回合已有程咬金或盾山的前提完整，对应目标河洛花木兰且保留两条原人工句。\n完整候选池通过 3 项。正例可播：第三回合已有可用河洛前排；单项反例不命中：替换成非河洛前排；缺值检查：快照缺少玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：建议走河洛花木兰，已有河洛前排可以先过渡。 / 已有河洛前排，可以走河洛花木兰，再找木兰。\n原始依据：明先生的河洛花木兰路线能用程咬金或盾山撑过开局，两牌分别靠整备或牺牲提供古币，手牌持有表示可部署。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接原因与结果，且本组两条原句均为受保护句需逐字保留。自然语言适用条件：明先生第三回合拟走河洛花木兰，且程咬金或盾山已上场或在手。正式条件：(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})。播报重点：结合已有河洛前排先过渡的状态，给出走河洛花木兰并后续找木兰的行动建议。",
+        "explanation_source": "knowledge/players/明先生.json「河洛花木兰」 · pf28-868c8c4cb851c43d3ca4",
+        "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})",
+        "id": "group_1013dc4b7ddc4d2fa7344429f2fedf1a",
+        "mode": "万象大赛",
+        "name": "首轮拍卖后用河洛前排起步",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": "player:39"
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_de81b1583834423a8206afedc6b96aee",
+            "text": "建议走河洛花木兰，已有河洛前排可以先过渡。"
+          },
+          {
+            "id": "utterances_1af99295552e432aab81099480853423",
+            "text": "现在场上的英雄很适合河洛花木兰阵容。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:39": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:39",
+              "name": "明先生",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-27T01:17:19.470347+00:00"
+            },
+            "card:1441": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "整备：获得1张古币，对自身使用1张古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1441",
+              "name": "程咬金",
+              "skills": [
+                {
+                  "effect": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+                  "enhancements": [
+                    {
+                      "effect": "恢复效果提升至60+10%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能持续期间获得15%伤害减免",
+                      "level": 40
+                    },
+                    {
+                      "effect": "施法立即恢复25%已损失生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 14400,
+                  "name": "正义潜能"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "30/60",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1441"
+            },
+            "card:1443": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "整备：获得1张精致古币，对自身使用1张精致古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1443",
+              "name": "程咬金",
+              "skills": [
+                {
+                  "effect": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+                  "enhancements": [
+                    {
+                      "effect": "恢复效果提升至60+10%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能持续期间获得15%伤害减免",
+                      "level": 40
+                    },
+                    {
+                      "effect": "施法立即恢复25%已损失生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 14400,
+                  "name": "正义潜能"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1441"
+            },
+            "card:5091": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：获得1张古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:5091",
+              "name": "盾山",
+              "skills": [
+                {
+                  "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                      "level": 10
+                    },
+                    {
+                      "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                      "level": 40
+                    },
+                    {
+                      "effect": "开战后立即进入防御形态，持续至回合结束",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50900,
+                  "name": "不动如山"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "25/45",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 2,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:5091"
+            },
+            "card:5093": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：获得1张精致古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:5093",
+              "name": "盾山",
+              "skills": [
+                {
+                  "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                      "level": 10
+                    },
+                    {
+                      "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                      "level": 40
+                    },
+                    {
+                      "effect": "开战后立即进入防御形态，持续至回合结束",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50900,
+                  "name": "不动如山"
+                }
+              ],
+              "stats": {},
+              "tier": 2,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:5091"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_98aee9aae8b9d41d",
+        "explanation_after": "明先生第三回合已有程咬金或盾山的前提完整，对应目标河洛花木兰且保留两条原人工句。\n完整候选池通过 3 项。正例可播：第三回合已有可用河洛前排；单项反例不命中：替换成非河洛前排；缺值检查：快照缺少玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：建议走河洛花木兰，已有河洛前排可以先过渡。 / 已有河洛前排，可以走河洛花木兰，再找木兰。\n原始依据：明先生的河洛花木兰路线能用程咬金或盾山撑过开局，两牌分别靠整备或牺牲提供古币，手牌持有表示可部署。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接原因与结果，且本组两条原句均为受保护句需逐字保留。自然语言适用条件：明先生第三回合拟走河洛花木兰，且程咬金或盾山已上场或在手。正式条件：(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})。播报重点：结合已有河洛前排先过渡的状态，给出走河洛花木兰并后续找木兰的行动建议。",
+        "explanation_source": "knowledge/players/明先生.json「河洛花木兰」 · pf28-868c8c4cb851c43d3ca4",
+        "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})",
+        "id": "group_1013dc4b7ddc4d2fa7344429f2fedf1a",
+        "mode": "万象大赛",
+        "name": "首轮拍卖后用河洛前排起步",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": "player:39"
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_de81b1583834423a8206afedc6b96aee",
+            "text": "建议走河洛花木兰，已有河洛前排可以先过渡。"
+          },
+          {
+            "id": "utterances_1af99295552e432aab81099480853423",
+            "text": "已有河洛前排，可以走河洛花木兰，再找木兰。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "ai_generated",
+        "last_modified_by": {
+          "kind": "ai"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:39": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:39",
+              "name": "明先生",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-27T01:17:19.470347+00:00"
+            },
+            "card:1441": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "整备：获得1张古币，对自身使用1张古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1441",
+              "name": "程咬金",
+              "skills": [
+                {
+                  "effect": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+                  "enhancements": [
+                    {
+                      "effect": "恢复效果提升至60+10%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能持续期间获得15%伤害减免",
+                      "level": 40
+                    },
+                    {
+                      "effect": "施法立即恢复25%已损失生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 14400,
+                  "name": "正义潜能"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "30/60",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1441"
+            },
+            "card:1443": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "整备：获得1张精致古币，对自身使用1张精致古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1443",
+              "name": "程咬金",
+              "skills": [
+                {
+                  "effect": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+                  "enhancements": [
+                    {
+                      "effect": "恢复效果提升至60+10%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能持续期间获得15%伤害减免",
+                      "level": 40
+                    },
+                    {
+                      "effect": "施法立即恢复25%已损失生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 14400,
+                  "name": "正义潜能"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1441"
+            },
+            "card:5091": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：获得1张古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:5091",
+              "name": "盾山",
+              "skills": [
+                {
+                  "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                      "level": 10
+                    },
+                    {
+                      "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                      "level": 40
+                    },
+                    {
+                      "effect": "开战后立即进入防御形态，持续至回合结束",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50900,
+                  "name": "不动如山"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "25/45",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 2,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:5091"
+            },
+            "card:5093": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：获得1张精致古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:5093",
+              "name": "盾山",
+              "skills": [
+                {
+                  "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                      "level": 10
+                    },
+                    {
+                      "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                      "level": 40
+                    },
+                    {
+                      "effect": "开战后立即进入防御形态，持续至回合结束",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50900,
+                  "name": "不动如山"
+                }
+              ],
+              "stats": {},
+              "tier": 2,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:5091"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_98aee9aae8b9d41d",
+        "explanation_after": "明先生第三回合已有程咬金或盾山的前提完整，对应目标河洛花木兰且保留两条原人工句。\n完整候选池通过 3 项。正例可播：第三回合已有可用河洛前排；单项反例不命中：替换成非河洛前排；缺值检查：快照缺少玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：建议走河洛花木兰，已有河洛前排可以先过渡。 / 已有河洛前排，可以走河洛花木兰，再找木兰。\n原始依据：明先生的河洛花木兰路线能用程咬金或盾山撑过开局，两牌分别靠整备或牺牲提供古币，手牌持有表示可部署。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接原因与结果，且本组两条原句均为受保护句需逐字保留。自然语言适用条件：明先生第三回合拟走河洛花木兰，且程咬金或盾山已上场或在手。正式条件：(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})。播报重点：结合已有河洛前排先过渡的状态，给出走河洛花木兰并后续找木兰的行动建议。",
+        "explanation_source": "knowledge/players/明先生.json「河洛花木兰」 · pf28-868c8c4cb851c43d3ca4",
+        "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 == 3 and (玩家.战场 has \"程咬金\" or 玩家.战场 has \"盾山\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"程咬金\"} or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"盾山\"})",
+        "id": "group_1013dc4b7ddc4d2fa7344429f2fedf1a",
+        "mode": "万象大赛",
+        "name": "首轮拍卖后用河洛前排起步",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": "player:39"
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_de81b1583834423a8206afedc6b96aee",
+            "text": "建议走河洛花木兰，已有河洛前排可以先过渡。"
+          },
+          {
+            "id": "utterances_1af99295552e432aab81099480853423",
+            "text": "现在场上的英雄很适合河洛花木兰阵容。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:39": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:39",
+              "name": "明先生",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-27T01:17:19.470347+00:00"
+            },
+            "card:1441": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "整备：获得1张古币，对自身使用1张古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1441",
+              "name": "程咬金",
+              "skills": [
+                {
+                  "effect": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+                  "enhancements": [
+                    {
+                      "effect": "恢复效果提升至60+10%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能持续期间获得15%伤害减免",
+                      "level": 40
+                    },
+                    {
+                      "effect": "施法立即恢复25%已损失生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 14400,
+                  "name": "正义潜能"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "30/60",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1441"
+            },
+            "card:1443": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "整备：获得1张精致古币，对自身使用1张精致古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1443",
+              "name": "程咬金",
+              "skills": [
+                {
+                  "effect": "程咬金迸发出自身的正义热情，3秒内恢复35+10%最大生命值的生命值。",
+                  "enhancements": [
+                    {
+                      "effect": "恢复效果提升至60+10%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能持续期间获得15%伤害减免",
+                      "level": 40
+                    },
+                    {
+                      "effect": "施法立即恢复25%已损失生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 14400,
+                  "name": "正义潜能"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1441"
+            },
+            "card:5091": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：获得1张古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:5091",
+              "name": "盾山",
+              "skills": [
+                {
+                  "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                      "level": 10
+                    },
+                    {
+                      "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                      "level": 40
+                    },
+                    {
+                      "effect": "开战后立即进入防御形态，持续至回合结束",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50900,
+                  "name": "不动如山"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "25/45",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 2,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:5091"
+            },
+            "card:5093": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：获得1张精致古币。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:5093",
+              "name": "盾山",
+              "skills": [
+                {
+                  "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                      "level": 10
+                    },
+                    {
+                      "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                      "level": 40
+                    },
+                    {
+                      "effect": "开战后立即进入防御形态，持续至回合结束",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50900,
+                  "name": "不动如山"
+                }
+              ],
+              "stats": {},
+              "tier": 2,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:5091"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

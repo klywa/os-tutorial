@@ -1,32 +1,85 @@
 {
-  "name": "有贤者之书再穿法源之杯加快施法",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation_after": "两条原句保留，贤者之书降低达到施法所需的法力，杯子再提供持续回法，组合收益准确。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：英雄已有贤者之书，再穿法源之杯可更快攒满法力。 / 贤者之书已降低法力上限，法源之杯能更快将法力补满。\n原始依据：法源之杯唯一效果为每秒回复5点法力值，贤者之书唯一效果为法力值上限-10且释放技能后可叠加基础法术攻击力；已穿戴贤者之书时法力上限下降，再穿法源之杯每秒提供持续法力，能更快填足达到施法所需的较低数值。当前取舍：本组针对不限英雄的装备互补场景，不涉及具体英雄专属组合（貂蝉另有具体施法组合，需与同事件候选一起核对）。自然语言适用条件：有贤者之书再穿法源之杯加快施法。正式条件：arg2 is \"法源之杯\" and arg1.已穿装备 has \"贤者之书\"。取舍后的播报重点：两条原句均受保护需逐字保留，重点传达已有贤者之书降低法力上限后，再穿法源之杯能更快攒满、补满法力。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第124行「法源之杯・使用技巧」\n正式卡牌库 法源之杯（card:643402）\n正式卡牌库「法源之杯」 · card:643402\n正式卡牌库「贤者之书」 · card:643802",
+  "expression": "arg2 is \"法源之杯\" and arg1.已穿装备 has \"贤者之书\"",
+  "id": "group_620717ac40d151aa8fcbd9b49496c9d9",
   "mode": "万象大赛",
+  "name": "有贤者之书再穿法源之杯加快施法",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "英雄已有贤者之书，再穿法源之杯可更快攒满法力。",
-      "id": "utterances_dfe444d2c8734963aae1b294160c9a36"
+      "id": "utterances_dfe444d2c8734963aae1b294160c9a36",
+      "text": "英雄已有贤者之书，再穿法源之杯可更快攒满法力。"
     },
     {
-      "text": "贤者之书已降低法力上限，法源之杯能更快将法力补满。",
-      "id": "utterances_ab618ca83f634355b3f1a12714f114f6"
+      "id": "utterances_ab618ca83f634355b3f1a12714f114f6",
+      "text": "贤者之书已降低法力上限，法源之杯能更快将法力补满。"
     }
   ],
-  "id": "group_620717ac40d151aa8fcbd9b49496c9d9",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"法源之杯\" and arg1.已穿装备 has \"贤者之书\"",
-  "explanation_before": "原始内容：唯一。每秒回复5点法力值。\n唯一。法力值上限-10。释放技能后获得20%基础法术攻击力，最多叠加6层。\n知识或技巧详解：贤者之书已经在该英雄身上。法源之杯连续供给法力，贤者之书减少十点法力上限。现在配齐两件装备，可以减少达到施法门槛所用的时间。\n自然语言适用条件：给目标英雄穿法源之杯时，目标已穿贤者之书。\n正式条件：arg2 is \"法源之杯\" and arg1.已穿装备 has \"贤者之书\"\n30 字表达取舍：用现有装备说明为何此时补另一件，保留回蓝与较低法力上限两项依据。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第124行「法源之杯・使用技巧」\n正式卡牌库 法源之杯（card:643402）\n正式卡牌库「法源之杯」 · card:643402\n正式卡牌库「贤者之书」 · card:643802",
-  "explanation_after": "移走贤者之书时只剩新增装备的通用收益，专门搭配组不播。不承诺两次施法的固定间隔或场上一定能放第二次。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:643802": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "法术装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。法力值上限-10。释放技能后获得20%基础法术攻击力，最多叠加6层。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643802",
+        "name": "贤者之书",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:643402": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每秒回复5点法力值。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643402",
+        "name": "法源之杯",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

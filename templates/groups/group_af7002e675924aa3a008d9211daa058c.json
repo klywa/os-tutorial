@@ -1,27 +1,143 @@
 {
-  "name": "开局买狂铁单挂攒核心",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2406b1c2f3572ad9",
   "explanation": "",
+  "explanation_after": "返修正确列出狂铁普觉整备差异，说明购买后才上阵，且补回一阶券与拍卖事件边界。\n完整候选池通过 3 项。正例可播：前三回合己方还没上英雄，买狂铁准备单挂；单项反例不命中：改变必要前提：前三回合己方还没上英雄，买狂铁准备单挂；缺值检查：缺少关键观测：前三回合己方还没上英雄，买狂铁准备单挂。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：开局场上还没人，买狂铁可单挂并靠整备养核心。\n原始依据：狂铁普通效果为整备使阿科米亚核心的等级+2，觉醒同样+2但触发两次；空场前三回合买狂铁可填补早期单挂位置，买后须上阵才能在之后整备抬阿科米亚核心等级，沿用常小娥灵活四人组早期策略。当前取舍：受30字上限及逐字保留约束，只留共同机制并沿用原稿，围绕开局空场局面与买狂铁上阵单挂、整备养核心的当前收益组织表达；同用途选择中一阶英雄兑换券可出现狂铁，前三回合空场可择，但当前无对应选择组，现有拍卖只有开始事件。自然语言适用条件：常小娥灵活4人组，前三回合空场时购买狂铁。正式条件：arg1 is \"狂铁\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0。取舍后的播报重点：简明点出开局场上无人、购买狂铁单挂并靠整备养核心。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「开局运营」「狂铁」，正式卡牌库 card:5031、card:5033。",
+  "expression": "arg1 is \"狂铁\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "id": "group_af7002e675924aa3a008d9211daa058c",
   "mode": "万象大赛",
+  "name": "开局买狂铁单挂攒核心",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "开局场上还没人，买狂铁可单挂并靠整备养核心。",
-      "id": "utterances_7b111e48b262441e84c9ad2140de5ec8"
+      "id": "utterances_7b111e48b262441e84c9ad2140de5ec8",
+      "text": "开局场上还没人，买狂铁可单挂并靠整备养核心。"
     }
   ],
-  "id": "group_af7002e675924aa3a008d9211daa058c",
-  "event_id": "os_2406b1c2f3572ad9",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"狂铁\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「开局运营」「狂铁」，正式卡牌库 card:5031、card:5033。",
-  "explanation_before": "原始内容：整备：阿科米亚核心的等级+2。\n知识详解：常小娥在尚无上阵单位的早期可以买狂铁作为单挂前排。上阵参与战斗并触发整备后，能提高阿科米亚核心等级。\n适用条件：常小娥灵活4人组，前三回合空场时购买狂铁。\n条件语法：arg1 is \"狂铁\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0\n30 字表达取舍：保留开局空场、买狂铁及准备整备成长。省去实际开战能否保血。",
-  "explanation_after": "购买时还未上阵。不得断言当下已获得等级，或尚未选择的下一名英雄已上阵。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:5031": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5031",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "card:5033": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5033",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      }
+    }
+  }
 }

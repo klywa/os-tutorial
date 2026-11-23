@@ -1,29 +1,82 @@
 {
-  "name": "用破妄之刃应对寒霜侵袭射手",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
   "explanation": "",
+  "explanation_after": "准确区分寒霜侵袭移速削减与其他效果；正式边界是主C持有装备，无需擅加敌方职业假设。\n完整候选池通过 3 项。正例可播：对手主力已经穿寒霜侵袭；单项反例不命中：改变必要前提：对手主力已经穿寒霜侵袭；缺值检查：缺少关键观测：对手主力已经穿寒霜侵袭。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：对手主力带寒霜侵袭，破妄之刃能免掉它的减速。\n原始依据：破妄之刃唯一效果包含免疫减速（另有移速提升60%与50%伤害转真伤），寒霜侵袭造成移动减速，其余效果另行结算。当前取舍：围绕对手主力带寒霜侵袭时破妄之刃能免除其减速展开，保留所需局面与当前收益。自然语言适用条件：给己方英雄穿破妄之刃，当前对手主力已穿寒霜侵袭。正式条件：arg2 is \"破妄之刃\" and 对局.当前对手.主C.已穿装备 has \"寒霜侵袭\"。取舍后的播报重点：说明对手主力已穿寒霜侵袭，穿戴破妄之刃可免掉它的减速。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第141行「使用技巧」，正式卡牌库 card:644101、card:643205。",
+  "expression": "arg2 is \"破妄之刃\" and 对局.当前对手.主C.已穿装备 has \"寒霜侵袭\"",
+  "id": "group_8bbd7deb4a1a5e3d9e3b18c1c2a55a97",
   "mode": "万象大赛",
+  "name": "用破妄之刃应对寒霜侵袭射手",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "对手主力带寒霜侵袭，破妄之刃能免掉它的减速。",
-      "id": "utterances_bb426b06a640448ea736a62b2560ef0d"
+      "id": "utterances_bb426b06a640448ea736a62b2560ef0d",
+      "text": "对手主力带寒霜侵袭，破妄之刃能免掉它的减速。"
     }
   ],
-  "id": "group_8bbd7deb4a1a5e3d9e3b18c1c2a55a97",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"破妄之刃\" and 对局.当前对手.主C.已穿装备 has \"寒霜侵袭\"",
-  "explanation_source": "personal/knowledge_tips.jsonl 第141行「使用技巧」，正式卡牌库 card:644101、card:643205。",
-  "explanation_before": "原始内容：唯一。移动速度提升60%，造成伤害的50%会转化为真实伤害。免疫减速效果。\n知识详解：寒霜侵袭的普攻移速削减会拖慢接近目标；破妄之刃免疫减速。\n适用条件：给己方英雄穿破妄之刃，当前对手主力已穿寒霜侵袭。\n条件语法：arg2 is \"破妄之刃\" and 对局.当前对手.主C.已穿装备 has \"寒霜侵袭\"\n30 字表达取舍：直说免除对方当前装备的减速，不推定主力职业和实际距离。",
-  "explanation_after": "对方换装备则失去针对性。未声称也免疫寒霜侵袭叠满的增伤。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:644101": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "天赋装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。移动速度提升60%，造成伤害的50%会转化为真实伤害。免疫减速效果。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:644101",
+        "name": "破妄之刃",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:643205": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "物理装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。普通攻击减少目标15%移速，持续5秒，最多叠加5层。叠满后目标受到的伤害提高20%，持续5秒，冷却时间10秒。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643205",
+        "name": "寒霜侵袭",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

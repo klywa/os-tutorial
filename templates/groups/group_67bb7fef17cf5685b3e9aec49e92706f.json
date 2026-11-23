@@ -1,32 +1,61 @@
 {
-  "name": "单挂时用即兴创作拿同名牌",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b59f8bd6d43110d4",
+  "explanation_after": "两条原句保留，单挂主力锁定即兴创作复制对象，只承诺同名副本，不承诺立即合成。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：只留主力在场，即兴创作就能拿到他的同名牌。 / 主力单独在场，正好用即兴创作补一张他的同名牌。\n原始依据：卡牌效果为随机获得场上1名英雄的复制，主力是唯一在场英雄时，同名牌候选集中到主力，多人时可能受牌库剩余牌影响。自然语言适用条件：使用即兴创作时，场上仅有主力一名英雄。正式条件：arg1 is \"即兴创作\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场。当前取舍：只说拿同名牌，不断言可与普通牌立即合成。取舍后的播报重点：围绕主力单独在场时用即兴创作拿或补一张他的同名牌，两句均按要求逐字保留。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第85行「即兴创作_白歌_效果・使用技巧」\n正式卡牌库「即兴创作」 · card:93300",
+  "expression": "arg1 is \"即兴创作\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场",
+  "id": "group_67bb7fef17cf5685b3e9aec49e92706f",
   "mode": "万象大赛",
+  "name": "单挂时用即兴创作拿同名牌",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "只留主力在场，即兴创作就能拿到他的同名牌。",
-      "id": "utterances_47b5b043c3784dfb8a7537d10da8f6c5"
+      "id": "utterances_47b5b043c3784dfb8a7537d10da8f6c5",
+      "text": "只留主力在场，即兴创作就能拿到他的同名牌。"
     },
     {
-      "text": "主力单独在场，正好用即兴创作补一张他的同名牌。",
-      "id": "utterances_d2ded5cd71b445b6b05158a76e4cf068"
+      "id": "utterances_d2ded5cd71b445b6b05158a76e4cf068",
+      "text": "主力单独在场，正好用即兴创作补一张他的同名牌。"
     }
   ],
-  "id": "group_67bb7fef17cf5685b3e9aec49e92706f",
-  "event_id": "os_b59f8bd6d43110d4",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"即兴创作\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场",
-  "explanation_before": "原始内容：随机获得场上1名英雄的复制。\n知识或技巧详解：即兴创作从场上英雄中随机获取复制。当前只让主力上阵时，没有其他在场英雄能进入候选，可把同名牌集中给实际想培养的人。\n自然语言适用条件：使用即兴创作，己方场上只有一名英雄，该英雄就是主C。\n正式条件：arg1 is \"即兴创作\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场\n30 字表达取舍：保留单挂主力和得到该英雄的同名牌两个事实。牌库边界不影响这条明示对象的教学。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第85行「即兴创作_白歌_效果・使用技巧」\n正式卡牌库「即兴创作」 · card:93300",
-  "explanation_after": "主力未在场、多人在场或当前队伍人数未知时退出。两句均写清同名牌的受益目标，未承诺随后成功觉醒。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:93300": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "随机获得场上1名英雄的复制。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:93300",
+        "name": "即兴创作",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

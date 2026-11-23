@@ -1,27 +1,147 @@
 {
-  "name": "苏烈穿戴反伤重甲",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "condition_tree": null,
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation_after": "恢复清楚说反弹部分承受伤害的原句，单挂且已解锁复生提供配装局面依据。\n完整候选池通过 3 项。正例可播：单挂苏烈具有复生，能继续承担伤害；单项反例不命中：三十九级还没有复生，不能说明该组合收益；缺值检查：快照缺少参数.arg1.等级。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：单挂苏烈已能复生，穿反伤重甲可把部分伤害反给敌人。\n原始依据：苏烈在40级获得首次击败后的复生，单挂时主要由他承伤，反伤重甲按所受伤害反击，在场只由苏烈承担伤害的局面才能突出这一配装理由。当前取舍：以行动和当下收益为主，用场上状态与必要资源连接因果。自然语言适用条件：当前只有处在复生等级段的苏烈上场，给他穿反伤重甲。正式条件：arg1 is \"苏烈\" and arg1.等级 >= 40 and arg2 is \"反伤重甲\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"。取舍后的播报重点：点明单挂苏烈已能复生，穿反伤重甲可把部分伤害反给敌人。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「反伤重甲」 · n-597652b6b782ff3662dc\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：苏烈（card:1943）\n正式卡牌库：反伤重甲（card:643604）",
+  "expression": "arg1 is \"苏烈\" and arg1.等级 >= 40 and arg2 is \"反伤重甲\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"",
+  "id": "group_2e2038f81d7c40f793f1aeca3a2b2ec1",
   "mode": "万象大赛",
+  "name": "苏烈穿戴反伤重甲",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "单挂苏烈已能复生，穿反伤重甲可借承伤反击。",
-      "id": "utterances_313d4962f00640938935d4fa251d636b"
+      "id": "utterances_313d4962f00640938935d4fa251d636b",
+      "text": "单挂苏烈已能复生，穿反伤重甲可把部分伤害反给敌人。"
     }
   ],
-  "id": "group_2e2038f81d7c40f793f1aeca3a2b2ec1",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"苏烈\" and arg1.等级 >= 40 and arg2 is \"反伤重甲\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"",
-  "condition_tree": null,
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「反伤重甲」 · n-597652b6b782ff3662dc\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：苏烈（card:1943）\n正式卡牌库：反伤重甲（card:643604）",
-  "explanation_before": "原始内容：反伤重甲适合承担伤害且具有复生能力的单挂苏烈。\n知识或技巧详解：单挂时苏烈是唯一英雄，承受的攻击为反伤重甲提供反伤机会；四十级苏烈首次被击败可复生，仍可继续承担伤害。\n自然语言适用条件：当前只有处在复生等级段的苏烈上场，给他穿反伤重甲。\n正式条件：arg1 is \"苏烈\" and arg1.等级 >= 40 and arg2 is \"反伤重甲\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"\n30 字表达取舍：保留单挂、可复生及将承伤转成反击这项可证实的收益。",
-  "explanation_after": "敌方高频输出和没吸血均没有加入此组的假设。未保证反伤能击败敌方输出。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1941": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1941",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/40",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:1943": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+4。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1943",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:643604": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。将受到伤害的30%以真实伤害回敬给目标。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643604",
+        "name": "反伤重甲",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

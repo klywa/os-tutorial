@@ -1,27 +1,236 @@
 {
-  "name": "杨玉环回蓝带动诸葛亮施法",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
   "explanation": "",
+  "explanation_after": "终稿区分杯给杨玉环回法、杨玉环须在场并施法、诸葛亮随后得法力值和临时等级，删掉未限定形态的数值，保留受保护播报。\n完整候选池通过 3 项。正例可播：杨玉环穿法源之杯时诸葛亮已在场；单项反例不命中：改变必要前提：杨玉环穿法源之杯时诸葛亮已在场；缺值检查：缺少关键观测：杨玉环穿法源之杯时诸葛亮已在场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：诸葛亮已在场，给杨玉环穿法源之杯可借她施法回蓝。\n原始依据：法源之杯提供唯一效果每秒回复5点法力值，己方其他英雄释放技能时，诸葛亮获得法力值和临时等级。当前取舍：受限于30字篇幅，围绕杨玉环穿法源之杯增蓝并借她施法为在场诸葛亮回蓝的核心联动组织表述，略去具体数值与阶段差异，并明确杨玉环仍须上场并实际施法，本次穿戴并非立即回复诸葛亮技能法力，两者仍各有技能门槛。自然语言适用条件：杨玉环穿法源之杯，己方已有诸葛亮在场。正式条件：arg1 is \"杨玉环\" and arg2 is \"法源之杯\" and 玩家.战场 has \"诸葛亮\"。播报重点：突出诸葛亮已在场的局面条件，以及给杨玉环穿法源之杯后可借她施法回蓝的联动收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「杨玉环」「诸葛亮」「法源之杯」，正式卡牌库 card:643402、card:1901、card:1903。",
+  "expression": "arg1 is \"杨玉环\" and arg2 is \"法源之杯\" and 玩家.战场 has \"诸葛亮\"",
+  "id": "group_bcfe926c555f4d248229ba75b587a0f2",
   "mode": "万象大赛",
+  "name": "杨玉环回蓝带动诸葛亮施法",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "诸葛亮已在场，给杨玉环穿法源之杯可借她施法回蓝。",
-      "id": "utterances_aa81eef8967b4a10b99ef7077c5adc0c"
+      "id": "utterances_aa81eef8967b4a10b99ef7077c5adc0c",
+      "text": "诸葛亮已在场，给杨玉环穿法源之杯可借她施法回蓝。"
     }
   ],
-  "id": "group_bcfe926c555f4d248229ba75b587a0f2",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"杨玉环\" and arg2 is \"法源之杯\" and 玩家.战场 has \"诸葛亮\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「杨玉环」「诸葛亮」「法源之杯」，正式卡牌库 card:643402、card:1901、card:1903。",
-  "explanation_before": "原始内容：唯一。每秒回复5点法力值。 你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。\n知识详解：法源之杯给杨玉环稳定回复法力，杨玉环每次施法可触发在场诸葛亮的法力及临时等级成长。\n适用条件：杨玉环穿法源之杯，己方已有诸葛亮在场。\n条件语法：arg1 is \"杨玉环\" and arg2 is \"法源之杯\" and 玩家.战场 has \"诸葛亮\"\n30 字表达取舍：点名两位英雄和法源之杯，保留更容易从队友施法获法力这条链。",
-  "explanation_after": "装备当前效果帮助杨玉环积累法力，实际施法次数未知。不说此时已给诸葛亮回蓝。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1901": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1901",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 6,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "35/55",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:1903": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1903",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:643402": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每秒回复5点法力值。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643402",
+        "name": "法源之杯",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:1761": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "杨玉环在场时，每过3个回合获得1张弦音。\n退场：获得1张弦音。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1761",
+        "name": "杨玉环",
+        "skills": [
+          {
+            "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 10
+              },
+              {
+                "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 100
+              }
+            ],
+            "id": 17600,
+            "name": "惊鸿调"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "0/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
+        "skills_source": "card:1761"
+      },
+      "card:1763": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "杨玉环在场时，每过3个回合获得1张妙音。\n退场：获得1张妙音。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1763",
+        "name": "杨玉环",
+        "skills": [
+          {
+            "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 10
+              },
+              {
+                "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 100
+              }
+            ],
+            "id": 17600,
+            "name": "惊鸿调"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1761"
+      }
+    }
+  }
 }

@@ -1,29 +1,127 @@
 {
-  "name": "满装主力在场时上云中君",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
   "explanation": "",
+  "explanation_after": "主C已穿三件装备且在场，云中君开团按装备数加级。\n完整候选池通过 3 项。正例可播：主力满装且在场；单项反例不命中：只有两件装备；缺值检查：缺少 玩家.主C.已穿装备。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：主力已穿满三件，云中君开团能按装备数给他加级。\n原始依据：开团时每件已穿戴装备都会使穿戴装备的英雄永久+1级，故尽量让主C主坦带满装备，云中君为刺客需注意对位后排。当前取舍：聚焦满装主力在场时三件装备可计入收益，云中君于开团结算按其装备数为该主力加级。自然语言适用条件：上阵英雄为云中君，且玩家主C已穿戴3件装备并在战场上。正式条件：arg1 is \"云中君\" and 玩家.主C.已穿装备.计数() == 3 and 玩家.主C in 玩家.战场。取舍后的播报重点：点明主力已穿满三件且在场，云中君开团能按装备数给他加级。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第41行「云中君・使用技巧」",
+  "expression": "arg1 is \"云中君\" and 玩家.主C.已穿装备.计数() == 3 and 玩家.主C in 玩家.战场",
+  "id": "group_e8f09499c336528c89902c185c1a73df",
   "mode": "万象大赛",
+  "name": "满装主力在场时上云中君",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "主力已经穿满装备，上云中君能按三件装备给他升等级。",
-      "id": "utterances_a124117ae5c34dcfbd15e9bf6bc73754"
+      "id": "utterances_a124117ae5c34dcfbd15e9bf6bc73754",
+      "text": "主力穿满三件且在场，云中君开团能按装备数给他加级。"
     }
   ],
-  "id": "group_e8f09499c336528c89902c185c1a73df",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"云中君\" and 玩家.主C.已穿装备.计数() == 3 and 玩家.主C in 玩家.战场",
-  "explanation_before": "原始内容：开团时每件已穿戴装备都会使穿戴装备的英雄永久+1级，所以尽量让主C主坦带满装备。云中君自身是刺客英雄，注意对位对方后排。\n知识或技巧详解：上云中君后每件装备都为当前主力贡献一份开团成长。\n自然语言适用条件：解释为何上阵英雄时，主力在场并且已经穿了三件装备。\n正式条件：arg1 is \"云中君\" and 玩家.主C.已穿装备.计数() == 3 and 玩家.主C in 玩家.战场\n30 字表达取舍：播报保留「主力已经穿满装备，上云中君能按三件装备给他升等级。」，以入库前的独立复核为准。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第41行「云中君・使用技巧」",
-  "explanation_after": "事件与条件复核：解释为何上阵英雄，核对了主力在场并且已经穿了三件装备。单项反例：主力不在场时不能分到这一轮的等级收益。话术复核：句子围绕上云中君后每件装备都为当前主力贡献一份开团成长，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5061": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n开团：你的英雄每穿戴1件装备，该英雄等级永久+1。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:5061",
+        "name": "云中君",
+        "skills": [
+          {
+            "effect": "云中君展翅舞蹈向周围1格射出羽箭，对命中的敌人造成50+80%物理攻击力的物理伤害，并施加2层撕裂效果。\n\n\n撕裂：每秒造成目标敌人当前生命值2%的物理伤害，持续5秒，最多叠加5层。",
+            "enhancements": [
+              {
+                "effect": "羽箭伤害提升至50+120%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "普攻对目标施加1层撕裂",
+                "level": 40
+              },
+              {
+                "effect": "羽箭伤害范围+1格",
+                "level": 100
+              }
+            ],
+            "id": 50600,
+            "name": "若英·华彩"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5061"
+      },
+      "card:5063": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n开团：你的英雄每穿戴1件装备，该英雄等级永久+2。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:5063",
+        "name": "云中君",
+        "skills": [
+          {
+            "effect": "云中君展翅舞蹈向周围1格射出羽箭，对命中的敌人造成50+80%物理攻击力的物理伤害，并施加2层撕裂效果。\n\n\n撕裂：每秒造成目标敌人当前生命值2%的物理伤害，持续5秒，最多叠加5层。",
+            "enhancements": [
+              {
+                "effect": "羽箭伤害提升至50+120%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "普攻对目标施加1层撕裂",
+                "level": 40
+              },
+              {
+                "effect": "羽箭伤害范围+1格",
+                "level": 100
+              }
+            ],
+            "id": 50600,
+            "name": "若英·华彩"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5061"
+      }
+    }
+  }
 }

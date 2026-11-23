@@ -1,30 +1,146 @@
 {
-  "name": "用过登场后卖周瑜集中小菟助力",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_02f23dfd4155737d",
+  "explanation_after": "群体登场的说明去掉单一形态的+1，售后剩一人是下次集中助力的必要前提。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：周瑜用完登场后离场，下次小菟助力可以给唯一队友。 / 周瑜登场已让队友升级，卖掉后助力可集中给剩下这位。\n原始依据为常小娥攻略中临时打工牌在两次小菟助力间打出生效并出售的思路，以及周瑜登场使全体英雄等级提升、小菟每次随机助力1名英雄的机制。当前取舍是助力发生前若再新增英雄会改变随机结算，因此播报只表述为可以或可集中给唯一队友，不写成必然。自然语言适用条件：用过登场后卖周瑜集中小菟助力。正式条件：arg1 is \"周瑜\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"周瑜\")。取舍后的播报重点为点明周瑜群体登场已结算，从战场卖掉他使场上仅剩一位英雄后，下一次小菟助力可集中给该队友。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「周瑜」 · n-893fdc61d2e9cd34e0f8\n正式卡牌库「周瑜」 · card:1241\n正式卡牌库「小菟助力」 · card:92499",
+  "expression": "arg1 is \"周瑜\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"周瑜\")",
+  "id": "group_643e6e5334f942cf922d5345158cd6bb",
   "mode": "万象大赛",
+  "name": "用过登场后卖周瑜集中小菟助力",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "卖掉周瑜只留一人，下次小菟助力就能集中给这一人。",
-      "id": "utterances_a08193aa62024c32b95c22219a58d39c"
+      "id": "utterances_a08193aa62024c32b95c22219a58d39c",
+      "text": "周瑜登场已结算，卖掉后下次小菟助力可集中给唯一队友。"
     },
     {
-      "text": "留场的只有一人，卖出周瑜可把小菟助力集中给他。",
-      "id": "utterances_29991c86fdcd47feb3eb66b2533397cd"
+      "id": "utterances_29991c86fdcd47feb3eb66b2533397cd",
+      "text": "周瑜登场已让队友升级，卖掉他后助力可集中给剩下这位。"
     }
   ],
-  "id": "group_643e6e5334f942cf922d5345158cd6bb",
-  "event_id": "os_02f23dfd4155737d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"周瑜\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"周瑜\")",
-  "explanation_before": "原始内容：「前期单挂成长英雄，其他临时打工牌在两次小菟助力之间打出、生效、出售。」\n登场：全体英雄等级+1。\n使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。\n知识或技巧详解：将周瑜作为临时上阵的登场工具。先结算登场获取资源，再从可接受小菟助力的场上英雄中退出，出售后只剩一名队友，下次使用时能把成长给这名队友。\n自然语言适用条件：常小娥灵活4人组，从战场卖出周瑜。场上已没有周瑜，且恰余一名英雄。\n正式条件：arg1 is \"周瑜\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"周瑜\")\n30 字表达取舍：保留出售动作与小菟助力候选范围。省略获取途径或不受影响的历史登场收益。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「周瑜」 · n-893fdc61d2e9cd34e0f8\n正式卡牌库「周瑜」 · card:1241\n正式卡牌库「小菟助力」 · card:92499",
-  "explanation_after": "若卖出后另一名周瑜仍在，不能播排除同名英雄的理由。场上人数未知时不根据这组断定剩余候选；话术说明下次助力，不把助力说成已使用。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1241": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "登场：全体英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1241",
+        "name": "周瑜",
+        "skills": [
+          {
+            "effect": "周瑜召唤火焰，对周围2格范围内敌人造成100+50%法术攻击力的法术伤害并恢复自身100+50%法术攻击力生命值，同时会留下焦土，持续至周瑜被击败。焦土内的敌人每秒受到其1%最大生命值的法术伤害，而周瑜每秒恢复10%法术攻击力+2%最大生命值的生命值。",
+            "enhancements": [
+              {
+                "effect": "火焰伤害提升至100+120%法术攻击力，火焰恢复提升至100+120%法术攻击力，焦土恢复提升至20%法术攻击力+2%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "施放技能时会对焦土内的敌人唤出火焰风暴，造成100+150%法术攻击力的法术伤害和1.5秒眩晕",
+                "level": 40
+              },
+              {
+                "effect": "战斗开始时，将整个战场化为焦土",
+                "level": 100
+              }
+            ],
+            "id": 12400,
+            "name": "烽火赤壁"
+          }
+        ],
+        "stats": {
+          "攻击距离": 2,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "60/100",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1241"
+      },
+      "card:1243": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "登场：全体英雄等级+2。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1243",
+        "name": "周瑜",
+        "skills": [
+          {
+            "effect": "周瑜召唤火焰，对周围2格范围内敌人造成100+50%法术攻击力的法术伤害并恢复自身100+50%法术攻击力生命值，同时会留下焦土，持续至周瑜被击败。焦土内的敌人每秒受到其1%最大生命值的法术伤害，而周瑜每秒恢复10%法术攻击力+2%最大生命值的生命值。",
+            "enhancements": [
+              {
+                "effect": "火焰伤害提升至100+120%法术攻击力，火焰恢复提升至100+120%法术攻击力，焦土恢复提升至20%法术攻击力+2%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "施放技能时会对焦土内的敌人唤出火焰风暴，造成100+150%法术攻击力的法术伤害和1.5秒眩晕",
+                "level": 40
+              },
+              {
+                "effect": "战斗开始时，将整个战场化为焦土",
+                "level": 100
+              }
+            ],
+            "id": 12400,
+            "name": "烽火赤壁"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1241"
+      }
+    }
+  }
 }

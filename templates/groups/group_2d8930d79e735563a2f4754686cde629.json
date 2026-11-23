@@ -1,26 +1,320 @@
 {
-  "name": "四人组外临时上露娜触发整备",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "露娜加入后场上多于四名，狂铁或亚连至少一人在场。逐字保留原句并保留随机触发。\n完整候选池通过 3 项。正例可播：露娜是已有四名队友之外的额外登场者；单项反例不命中：只有四人，不能承诺是四人组之外；缺值检查：快照缺少玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：四人组外可多上露娜，争取触发狂铁或亚连整备。\n原始依据：四人以上时可额外上露娜争取再次触发整备，狂铁与亚连任选其一即提供可辨识收益，不保证触发两者，两者都不在场时退出。当前取舍：本句逐字保留，点出当下收益并保留“争取”这一不确定限定，不把可能写成必然，也不新增事实。自然语言适用条件：常小娥灵活4人组，上露娜后多于四名英雄，已有狂铁或亚连在场。正式条件：arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")。取舍后的播报重点：说明四人组外可多上露娜，并点出争取触发狂铁或亚连整备的收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：露娜（card:1461）\n正式卡牌库：露娜（card:1463）\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：亚连（card:5141）",
+  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")",
+  "id": "group_2d8930d79e735563a2f4754686cde629",
   "mode": "万象大赛",
+  "name": "四人组外临时上露娜触发整备",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "四人组外可多上露娜，争取触发狂铁或亚连整备。",
-      "id": "utterances_dfcdc099f5e343d68d293c524dc9af69"
+      "id": "utterances_dfcdc099f5e343d68d293c524dc9af69",
+      "text": "四人组外可多上露娜，争取触发狂铁或亚连整备。"
     }
   ],
-  "id": "group_2d8930d79e735563a2f4754686cde629",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：露娜（card:1461）\n正式卡牌库：露娜（card:1463）\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：亚连（card:5141）",
-  "explanation_before": "原始内容：已有四人战斗组时，可额外打出露娜利用登场触发有收益的队友整备。\n知识或技巧详解：场上多于四名英雄时可用额外露娜的登场效果。狂铁或亚连在场，提供真实可利用的整备候选。\n自然语言适用条件：常小娥灵活4人组，上露娜后多于四名英雄，已有狂铁或亚连在场。\n正式条件：arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")\n30 字表达取舍：说明这次额外上阵的理由是争取已有队友的整备。",
-  "explanation_after": "不知最终留下谁，不必说要卖掉露娜。随机整备保留概率，只说有机会。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1461": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:5141": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：你穿戴装备最多的1名英雄等级+2，且阿科米亚核心等级+1。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5141",
+        "name": "亚连",
+        "skills": [
+          {
+            "effect": "被动：亚连使用“赤影”攻击时造成法术伤害，使用“守心”攻击时造成物理伤害，双剑合击时造成真实伤害。且普攻和技能伤害可以暴击。\n亚连对敌人造成伤害时会获得怒气层数，每层为自身提供2%的伤害减免，最多10层。\n主动：亚连挥舞双剑，对前方目标进行3次快速斩击，分别造成65%法术攻击力的法术伤害和2次65%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能提升至5段，还会击飞目标敌人",
+                "level": 10
+              },
+              {
+                "effect": "技能提升至7段，物理伤害提升至115%；施放技能后怒气层数上限提高至20层",
+                "level": 40
+              },
+              {
+                "effect": "技能变为大范围圆形",
+                "level": 100
+              }
+            ],
+            "id": 51400,
+            "name": "流星斩"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/60",
+          "法术攻击力": 30,
+          "法术防御": 18,
+          "物理攻击力": 32,
+          "物理防御": 18
+        },
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5141"
+      },
+      "card:5143": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：你穿戴装备最多的1名英雄等级+2，且阿科米亚核心等级+1，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5143",
+        "name": "亚连",
+        "skills": [
+          {
+            "effect": "被动：亚连使用“赤影”攻击时造成法术伤害，使用“守心”攻击时造成物理伤害，双剑合击时造成真实伤害。且普攻和技能伤害可以暴击。\n亚连对敌人造成伤害时会获得怒气层数，每层为自身提供2%的伤害减免，最多10层。\n主动：亚连挥舞双剑，对前方目标进行3次快速斩击，分别造成65%法术攻击力的法术伤害和2次65%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能提升至5段，还会击飞目标敌人",
+                "level": 10
+              },
+              {
+                "effect": "技能提升至7段，物理伤害提升至115%；施放技能后怒气层数上限提高至20层",
+                "level": 40
+              },
+              {
+                "effect": "技能变为大范围圆形",
+                "level": 100
+              }
+            ],
+            "id": 51400,
+            "name": "流星斩"
+          }
+        ],
+        "stats": {},
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5141"
+      },
+      "card:5031": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5031",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "card:5033": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5033",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      }
+    }
+  }
 }

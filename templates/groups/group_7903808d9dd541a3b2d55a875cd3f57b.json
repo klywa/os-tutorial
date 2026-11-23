@@ -1,26 +1,16 @@
 {
-  "name": "撤下小乔集中姜子牙的三分成长",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "姜子牙和吕布都在，撤小乔可少一个三分加级候选。",
-      "id": "utterances_9006be8747064ffea7d61c7e071c1a55"
-    },
-    {
-      "text": "卖掉小乔后，姜子牙为三分加级时，吕布少一个候选对手。",
-      "id": "utterances_9e534470ef544576ba6ebacaff6ea9ea"
-    }
-  ],
-  "id": "group_7903808d9dd541a3b2d55a875cd3f57b",
-  "event_id": "os_02f23dfd4155737d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_02f23dfd4155737d",
+  "explanation_after": "二稿保留忽略与原历史话术，说明区分了姜子牙普通/觉醒等级，并写明小乔已离场、吕布和姜子牙仍在。\n正式发布投影中已核对，本组保持暂停，原话术保留供追溯。",
+  "explanation_before": "刷新前正式话术原句：姜子牙和吕布都在，撤小乔可少一个三分加级候选。 / 卖掉小乔后，姜子牙为三分加级时，吕布少一个候选对手。\n原始依据：避免临时三分小乔分走吕布等级；每次使用不在场阵营及无阵营英雄牌时，姜子牙和随机3名其他不同阵营英雄提升等级（普通每位+1、觉醒每位+2）。当前取舍：历史批注明确指出此操作不应提取为常见教学，本组已人工忽略，沿用忽略状态、不恢复匹配，保留该裁定和两条历史句。自然语言适用条件：售出小乔后小乔已离场、姜子牙及吕布仍在场，仅少一个潜在三分受益者，以撤下小乔集中姜子牙的三分成长。正式条件：arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")。取舍后的播报重点：原样保留两条受保护历史句，点明姜子牙和吕布在场时撤下小乔可减少三分加级的候选对手。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「姜子牙」 · n-5658af04ec0d74380dda\n正式卡牌库「姜子牙」 · card:1481\n正式卡牌库「姜子牙（觉醒）」 · card:1483\n正式卡牌库「小乔」 · card:1061\n正式卡牌库「吕布」 · card:1231",
+  "expression": "arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")",
+  "id": "group_7903808d9dd541a3b2d55a875cd3f57b",
   "ignored": true,
+  "mode": "万象大赛",
+  "name": "撤下小乔集中姜子牙的三分成长",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:1063",
@@ -47,10 +37,314 @@
       "name": "姜子牙"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")",
-  "explanation_before": "原始内容：「避免临时三分小乔分走吕布等级」\n你每次使用不在场的阵营以及无阵营的英雄牌时，姜子牙和随机3名其他不同阵营的英雄等级+1。\n知识或技巧详解：小乔与吕布都是三分。老笔记指出临时上阵的小乔可能分享下一次姜子牙的三分成长，卖出后只至少排除这一名三分候选，不能保证这份等级归吕布。\n自然语言适用条件：常小娥灵活4人组，从战场卖小乔。卖后场上没有小乔，姜子牙和吕布仍在。\n正式条件：arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")\n30 字表达取舍：强调移除的对象和希望保留的三分受益者，省去姜子牙每次打牌触发对象的完整范围。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「姜子牙」 · n-5658af04ec0d74380dda\n正式卡牌库「姜子牙」 · card:1481\n正式卡牌库「姜子牙（觉醒）」 · card:1483\n正式卡牌库「小乔」 · card:1061\n正式卡牌库「吕布」 · card:1231",
-  "explanation_after": "小乔售后仍在场或吕布、姜子牙任一不在时，不适用这一解释。触发需要以后打符合条件的英雄牌，未确定唯一接收者。本组保持忽略。"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_9006be8747064ffea7d61c7e071c1a55",
+      "text": "姜子牙和吕布都在，撤小乔可少一个三分加级候选。"
+    },
+    {
+      "id": "utterances_9e534470ef544576ba6ebacaff6ea9ea",
+      "text": "卖掉小乔后，姜子牙为三分加级时，吕布少一个候选对手。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1063": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当你的英雄触发登场效果时，所有英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1063",
+        "name": "小乔",
+        "skills": [
+          {
+            "effect": "小乔持续引导1道旋风吹起最近的敌人，使其浮空并每0.2秒受到10%法术攻击力的法术伤害，最多3秒。",
+            "enhancements": [
+              {
+                "effect": "旋风伤害提升至15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "再额外吹起1名附近敌人",
+                "level": 40
+              },
+              {
+                "effect": "额外吹起1名最远的敌人",
+                "level": 100
+              }
+            ],
+            "id": 10600,
+            "name": "甜蜜恋风"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1061"
+      },
+      "card:1061": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当你的英雄触发登场效果时，随机3名英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1061",
+        "name": "小乔",
+        "skills": [
+          {
+            "effect": "小乔持续引导1道旋风吹起最近的敌人，使其浮空并每0.2秒受到10%法术攻击力的法术伤害，最多3秒。",
+            "enhancements": [
+              {
+                "effect": "旋风伤害提升至15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "再额外吹起1名附近敌人",
+                "level": 40
+              },
+              {
+                "effect": "额外吹起1名最远的敌人",
+                "level": 100
+              }
+            ],
+            "id": 10600,
+            "name": "甜蜜恋风"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1061"
+      },
+      "card:1231": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "开团：等级最高的3名【三分】英雄获得20%物理和法术吸血，若目标为吕布，效果翻倍。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1231",
+        "name": "吕布",
+        "skills": [
+          {
+            "effect": "被动：吕布的普通攻击能对身前敌人造成范围伤害。\n主动：吕布跃入敌人密集区域，将2格内敌人击飞1秒并造成120+120%物理攻击力的物理伤害，降低其70%生命恢复效果，持续5秒。每命中1名敌人恢复5%最大生命值并在接下来的5秒内提升20%物理吸血。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至120+200%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "5秒内还会提高自身100%攻击速度",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至整个战场",
+                "level": 100
+              }
+            ],
+            "id": 12300,
+            "name": "魔神降世"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "60/100",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1231"
+      },
+      "card:1233": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "开团：等级最高的6名【三分】英雄获得20%物理和法术吸血，若目标为吕布，效果翻倍。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1233",
+        "name": "吕布",
+        "skills": [
+          {
+            "effect": "被动：吕布的普通攻击能对身前敌人造成范围伤害。\n主动：吕布跃入敌人密集区域，将2格内敌人击飞1秒并造成120+120%物理攻击力的物理伤害，降低其70%生命恢复效果，持续5秒。每命中1名敌人恢复5%最大生命值并在接下来的5秒内提升20%物理吸血。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至120+200%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "5秒内还会提高自身100%攻击速度",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至整个战场",
+                "level": 100
+              }
+            ],
+            "id": 12300,
+            "name": "魔神降世"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1231"
+      },
+      "card:1481": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你每次使用不在场的阵营以及无阵营的英雄牌时，姜子牙和随机3名其他不同阵营的英雄等级+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1481",
+        "name": "姜子牙",
+        "skills": [
+          {
+            "effect": "姜子牙变为天人形态，获得免控并朝最远的敌方汇聚天地能量2秒，发射1道冲击波对路径上的敌人造成80+80%法术攻击力的法术伤害。同一单位被多道冲击波命中时，伤害每次衰减15%，至多60%。",
+            "enhancements": [
+              {
+                "effect": "冲击波伤害增加至140+140%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "额外发射2道冲击波，并降低敌人50%生命恢复效果，持续5秒（不可叠加）",
+                "level": 40
+              },
+              {
+                "effect": "冲击波改为向周围8个方向散射",
+                "level": 100
+              }
+            ],
+            "id": 14800,
+            "name": "天人法则"
+          }
+        ],
+        "stats": {
+          "攻击距离": 6,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "60/70",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1481"
+      },
+      "card:1483": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你每次使用不在场的阵营以及无阵营的英雄牌时，姜子牙和随机3名其他不同阵营的英雄等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1483",
+        "name": "姜子牙",
+        "skills": [
+          {
+            "effect": "姜子牙变为天人形态，获得免控并朝最远的敌方汇聚天地能量2秒，发射1道冲击波对路径上的敌人造成80+80%法术攻击力的法术伤害。同一单位被多道冲击波命中时，伤害每次衰减15%，至多60%。",
+            "enhancements": [
+              {
+                "effect": "冲击波伤害增加至140+140%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "额外发射2道冲击波，并降低敌人50%生命恢复效果，持续5秒（不可叠加）",
+                "level": 40
+              },
+              {
+                "effect": "冲击波改为向周围8个方向散射",
+                "level": 100
+              }
+            ],
+            "id": 14800,
+            "name": "天人法则"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1481"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  }
 }

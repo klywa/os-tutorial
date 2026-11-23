@@ -1,30 +1,235 @@
 {
-  "name": "场上已有刘禅时买孙膑补施法成长",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2406b1c2f3572ad9",
+  "explanation_after": "返修区分刘禅普通2/觉醒4临时等级，以及孙膑按同一施法者每三次普通1/觉醒2永久等级，并记录选择一阶券及拍卖事件缺口。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：现在单挂刘禅，买孙膑可为之后施法增加永久成长。 / 刘禅给临时等级，买孙膑可为同场后的施法添永久成长。\n原始依据：你的英雄释放技能时，刘禅可为该英雄提供普通2/觉醒4临时等级；你的英雄每释放3次技能，孙膑可为该英雄提供普通+1/觉醒+2永久等级，均按施法者个人累计，单挂刘禅时缺少永久施法成长来源。当前取舍：购买孙膑是为同场后的成长做准备，单次施法只必然兑现刘禅的临时等级部分。相邻动作与同配合角度：一阶英雄兑换券候选可含孙膑，若在单挂刘禅时选中孙膑同样指向后续永久施法成长，但正式库当前没有该选择组；现有拍卖事件只有拍卖开始，无法确认实际选中的英雄。自然语言适用条件：常小娥灵活4人组买孙膑，且当前场上只有1名英雄并是刘禅。正式条件：arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"。播报重点：分别交代当前单挂刘禅以及刘禅提供临时等级的现状，并说明买孙膑可为同场后续施法补充永久成长。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库「刘禅」 · card:1141\n正式卡牌库「刘禅（觉醒）」 · card:1143\n正式卡牌库「孙膑」 · card:1181\n正式卡牌库「孙膑（觉醒）」 · card:1183",
+  "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"",
+  "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
   "mode": "万象大赛",
+  "name": "场上已有刘禅时买孙膑补施法成长",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "现在单挂刘禅，买孙膑可以为施法再补一条永久成长。",
-      "id": "utterances_19d92d0466be4ba79d07ae450309444f"
+      "id": "utterances_19d92d0466be4ba79d07ae450309444f",
+      "text": "当前单挂刘禅，买孙膑可为后续施法补永久成长。"
     },
     {
-      "text": "刘禅单挂已能给临时等级，留孙膑可为施法增加永久成长。",
-      "id": "utterances_daa82f98c9e54ac384c4fa90d7d91c51"
+      "id": "utterances_daa82f98c9e54ac384c4fa90d7d91c51",
+      "text": "刘禅提供临时等级，买孙膑可为同场后的施法添永久成长。"
     }
   ],
-  "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
-  "event_id": "os_2406b1c2f3572ad9",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"",
-  "explanation_before": "原始内容：你的英雄释放技能时，该英雄获得2临时等级。\n你的英雄每释放3次技能，该英雄等级永久+1。\n知识或技巧详解：常小娥现在单挂刘禅。刘禅可给施法者增加临时等级，而买到孙膑可以形成另一条永久成长路径；孙膑需上阵，且实际发生每三次施法才取得永久等级。\n自然语言适用条件：常小娥灵活4人组，买孙膑。现在场上只有一人且为刘禅。\n正式条件：arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"\n30 字表达取舍：讲单挂刘禅时为什么值得留孙膑，保留一临时一永久的差别，不把未来上阵当作已经发生。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库「刘禅」 · card:1141\n正式卡牌库「刘禅（觉醒）」 · card:1143\n正式卡牌库「孙膑」 · card:1181\n正式卡牌库「孙膑（觉醒）」 · card:1183",
-  "explanation_after": "只有刘禅可证明已有施法临时等级。换掉刘禅或多一位在场者时退出单挂购买组。两句不保证二人各自完成一定施法次数。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1141": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1141",
+        "name": "刘禅",
+        "skills": [
+          {
+            "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+            "enhancements": [
+              {
+                "effect": "护盾提升至300点",
+                "level": 10
+              },
+              {
+                "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                "level": 40
+              },
+              {
+                "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                "level": 100
+              }
+            ],
+            "id": 11400,
+            "name": "机关魔爪"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/30",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1141"
+      },
+      "card:1143": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1143",
+        "name": "刘禅",
+        "skills": [
+          {
+            "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+            "enhancements": [
+              {
+                "effect": "护盾提升至300点",
+                "level": 10
+              },
+              {
+                "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                "level": 40
+              },
+              {
+                "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                "level": 100
+              }
+            ],
+            "id": 11400,
+            "name": "机关魔爪"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1141"
+      },
+      "card:1181": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1181",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "10/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+        "skills_source": "card:1181"
+      },
+      "card:1183": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1183",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1181"
+      }
+    }
+  }
 }

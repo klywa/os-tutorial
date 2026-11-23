@@ -1,32 +1,89 @@
 {
-  "name": "白歌用点兵点将补合成牌",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation_after": "在场未觉醒主力能从点兵点将补同名牌；说明区分获得天赋牌和真正用牌，保留主力至用牌才可兑现。\n完整候选池通过 3 项。正例可播：历史玩家白歌补战场蒙犽，玩家.主C填蒙犽、已觉醒=false。；单项反例不命中：仅把主C变化为已觉醒；；缺值检查：删觉醒字段。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：白歌主力还没觉醒，选点兵点将可给他准备一张同名牌。 / 主力已上场，点兵点将可补他的同名牌，供白歌做合成。\n原始依据：点兵点将先获得天赋牌，再取场上所有英雄牌各1张；白歌每合成四次可获即兴创作，在场主力仍需觉醒时可为其准备同名牌。当前取舍：领取再使用时须保留在场主力，以副本提供合成素材，控制在30字内传达。自然语言适用条件：白歌选择点兵点将，主力当前在场且尚未觉醒。正式条件：arg2 is \"点兵点将\" and arg1 has \"点兵点将\" and 玩家.使用棋手 is \"白歌\" and 玩家.战场 has 玩家.主C and not 玩家.主C.已觉醒。取舍后的播报重点：交代白歌主力在场且未觉醒的前提，突出点兵点将可补同名牌供合成准备。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第61行「白歌・使用技巧」\n正式卡牌库「点兵点将」 · card:635023\n正式卡牌库「点兵点将」 · card:635046",
+  "expression": "arg2 is \"点兵点将\" and arg1 has \"点兵点将\" and 玩家.使用棋手 is \"白歌\"",
+  "id": "group_70f9f98386755326bafb94915f0b822a",
   "mode": "万象大赛",
+  "name": "白歌用点兵点将补合成牌",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "白歌场上已有英雄，选点兵点将能补同名合成牌。",
-      "id": "utterances_c1d32f3cceed4b938bcf79940e79672a"
+      "id": "utterances_c1d32f3cceed4b938bcf79940e79672a",
+      "text": "点兵点将可以稳定打出合成，更快获得即兴创作。"
     },
     {
-      "text": "白歌可用点兵点将复制在场英雄，给之后的合成留材料。",
-      "id": "utterances_38179e1d42c34e8e8d7a939ad679f2d6"
+      "id": "utterances_38179e1d42c34e8e8d7a939ad679f2d6",
+      "text": "主力已上场，点兵点将可补他的同名牌，供白歌合成。",
+      "ignored": true
     }
   ],
-  "id": "group_70f9f98386755326bafb94915f0b822a",
-  "event_id": "os_2b69e500a5c8036a",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"点兵点将\" and arg1 has \"点兵点将\" and 玩家.使用棋手 is \"白歌\" and 玩家.场上英雄数 >= 1",
-  "explanation_before": "原始内容：获得场上所有英雄牌各1张。\n获得1张天赋牌点兵点将：获得场上英雄牌各1张。\n知识或技巧详解：白歌通过同名合成推进自己的即兴创作进度。点兵点将复制场上英雄牌；已有在场英雄时选择此天赋，能为接下来的合成准备匹配牌。两条卡牌记录分别给直接效果与牌的入口。\n自然语言适用条件：白歌选择点兵点将，候选包含该天赋，当前至少有一名场上英雄。\n正式条件：arg2 is \"点兵点将\" and arg1 has \"点兵点将\" and 玩家.使用棋手 is \"白歌\" and 玩家.场上英雄数 >= 1\n30 字表达取舍：用“白歌”和在场英雄说明为什么要补同名牌，省去各棋手都可用的复制规则详解。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第61行「白歌・使用技巧」\n正式卡牌库「点兵点将」 · card:635023\n正式卡牌库「点兵点将」 · card:635046",
-  "explanation_after": "白歌身份缺失或战场为空时退出这组。选天赋阶段只说备后续合成材料，不将候选结果等同于已经完成合成。"
+  "version": "s1",
+  "review_status": "initial_reviewed",
+  "last_modified_by": {
+    "kind": "user",
+    "username": "local"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:635023": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始天赋",
+          "拍卖轮次（官网原文）": "第六轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "获得场上所有英雄牌各1张。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:635023",
+        "name": "点兵点将",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:635046": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包三",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "获得1张天赋牌点兵点将：获得场上英雄牌各1张。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:635046",
+        "name": "点兵点将",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

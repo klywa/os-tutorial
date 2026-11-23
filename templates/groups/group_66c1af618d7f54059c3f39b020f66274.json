@@ -1,30 +1,235 @@
 {
-  "name": "四人阵上海诺补范围法伤",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "二稿明确四十级解锁连续两次施法，把已有狂铁前排与核心成长和海诺的四人组输出相连。\n完整候选池通过 3 项。正例可播：历史四人场含狂铁，给上阵海诺的arg1等级40并设玩家.主C海诺，保留常小娥和阵容范围。；单项反例不命中：仅将等级改为39；；缺值检查：删等级。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：已有狂铁在场，四十级海诺可给四人组补双重范围法术。 / 狂铁能提高核心等级，上海诺可接过四人队的范围输出。\n原始依据：海诺技能可掷命运神杖并借子杖对目标及近旁敌人造成范围法伤，常小娥日落海四人组已有狂铁承担前排并提供核心增长时，可安排海诺担任范围法术主力，其四十级能连续施放两次。当前取舍：人数仅界定阶段；前排和狂铁保证配队理由，四十级门槛支持双施法。自然语言适用条件：狂铁已经上场，四十级以上主力海诺补进四人组。正式条件：arg1 is \"海诺\" and arg1.等级 >= 40 and 玩家.场上英雄数 == 4 and 玩家.战场 has \"海诺\" and 玩家.战场 has \"狂铁\" and 玩家.主C is \"海诺\"。取舍后的播报重点：强调四人阶段下狂铁提供前排与核心增长的前提，突出四十级以上海诺可连续两次施放范围法术并接过四人队范围输出。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库「海诺」 · card:5631\n正式卡牌库「海诺（觉醒）」 · card:5633\nknowledge/lineups/常小娥灵活4人组-常小娥.json「海诺」 · n-5776f1aa465354fe70ef\nknowledge/lineups/常小娥灵活4人组-常小娥.json「狂铁」 · n-9ed7d90eed07560cdd8e\n正式卡牌库：狂铁（card:5031、card:5033）",
+  "expression": "arg1 is \"海诺\" and arg1.等级 >= 40 and 玩家.场上英雄数 == 4 and 玩家.战场 has \"海诺\" and 玩家.战场 has \"狂铁\" and 玩家.主C is \"海诺\"",
+  "id": "group_66c1af618d7f54059c3f39b020f66274",
   "mode": "万象大赛",
+  "name": "四人阵上海诺补范围法伤",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "四人组已成，把海诺放上场能用子杖补范围法伤。",
-      "id": "utterances_299f8b498654425bbaf8b1729773d400"
+      "id": "utterances_299f8b498654425bbaf8b1729773d400",
+      "text": "狂铁已上场，四十级海诺能连续两次施放范围法术。"
     },
     {
-      "text": "常小娥四人组可让海诺负责法伤，子杖还能打到附近敌人。",
-      "id": "utterances_bfe109e054494c838c7184e3433011df"
+      "id": "utterances_bfe109e054494c838c7184e3433011df",
+      "text": "狂铁能提高核心等级，上海诺可接过四人队的范围输出。"
     }
   ],
-  "id": "group_66c1af618d7f54059c3f39b020f66274",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"海诺\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"海诺\"",
-  "explanation_before": "原始内容：海诺朝目标方向掷出能量化的命运神杖，对命中的敌人造成100+200%法术攻击力的法术伤害并朝目标敌人附近2名敌人掷出子杖，造成100+150%法术攻击力的法术伤害。\n知识或技巧详解：常小娥完成四人队时，需要让已经上阵的海诺兑现范围法术输出。主杖命中后可向附近其他敌人掷出子杖，合适时能处理同一区域内的多个目标。\n自然语言适用条件：常小娥灵活4人组，本次上阵海诺，上阵后战场恰为四名英雄且海诺确实在场。\n正式条件：arg1 is \"海诺\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"海诺\"\n30 字表达取舍：点明已成四人队中的海诺负责范围法伤，省去不属于当前选择的核心升级机制。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库「海诺」 · card:5631\n正式卡牌库「海诺（觉醒）」 · card:5633",
-  "explanation_after": "少于四人时不把他当作这套四人完成组。站位和实际敌人数量未被确定，用“能波及”描述子杖，不保证每次打满三个目标。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:5631": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当阿科米亚核心等级提升时，核心等级额外+1。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5631",
+        "name": "海诺",
+        "skills": [
+          {
+            "effect": "海诺朝目标方向掷出能量化的命运神杖，对命中的敌人造成100+200%法术攻击力的法术伤害并朝目标敌人附近2名敌人掷出子杖，造成100+150%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "神杖伤害提升至100+300%法术攻击力；子杖伤害提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "会连续施放2次技能",
+                "level": 40
+              },
+              {
+                "effect": "对场上至多14名敌人投掷子杖",
+                "level": 100
+              }
+            ],
+            "id": 56300,
+            "name": "追芒"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/60",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:5631"
+      },
+      "card:5633": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当阿科米亚核心等级提升时，核心等级额外+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5633",
+        "name": "海诺",
+        "skills": [
+          {
+            "effect": "海诺朝目标方向掷出能量化的命运神杖，对命中的敌人造成100+200%法术攻击力的法术伤害并朝目标敌人附近2名敌人掷出子杖，造成100+150%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "神杖伤害提升至100+300%法术攻击力；子杖伤害提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "会连续施放2次技能",
+                "level": 40
+              },
+              {
+                "effect": "对场上至多14名敌人投掷子杖",
+                "level": 100
+              }
+            ],
+            "id": 56300,
+            "name": "追芒"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:5631"
+      },
+      "card:5031": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5031",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "card:5033": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5033",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      }
+    }
+  }
 }

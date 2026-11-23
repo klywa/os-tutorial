@@ -1,29 +1,216 @@
 {
-  "name": "刘禅配貂蝉靠施法获得临时等级",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
   "explanation": "",
+  "explanation_after": "返修移除刘禅普通形态的未限定数值，貂蝉实际施法才兑现临时等级，保留原句。\n完整候选池通过 3 项。正例可播：上阵刘禅前已有貂蝉在场；单项反例不命中：改变必要前提：上阵刘禅前已有貂蝉在场；缺值检查：缺少关键观测：上阵刘禅前已有貂蝉在场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：貂蝉已在场，上刘禅能让她每次施法都获临时等级。\n原始依据：刘禅在场后己方施法者释放技能时会获得临时等级，貂蝉普通形态的法力上限为20，可直接讲每次施法能兑现临时等级。当前取舍：不展开具体法力上限和数值细节，围绕“貂蝉已在场，上刘禅能让她每次施法都获临时等级。”组织，保留局面与当前收益。自然语言适用条件：正在上阵刘禅，己方已有貂蝉。正式条件：arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"。取舍后的播报重点：说明貂蝉已在场的局面及上阵刘禅后她每次施法都能获得临时等级的当前收益，并逐字保留原句。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第4行「使用技巧」，正式卡牌库 card:1141、card:1143、card:1411、card:1413。",
+  "expression": "arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"",
+  "id": "group_ae9be56520905e69919d954673b28d36",
   "mode": "万象大赛",
+  "name": "刘禅配貂蝉靠施法获得临时等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "貂蝉已在场，上刘禅能让她每次施法都获临时等级。",
-      "id": "utterances_1706dd69d7654c7ba418442167857bdb"
+      "id": "utterances_1706dd69d7654c7ba418442167857bdb",
+      "text": "貂蝉已在场，上刘禅能让她每次施法都获临时等级。"
     }
   ],
-  "id": "group_ae9be56520905e69919d954673b28d36",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"",
-  "explanation_source": "personal/knowledge_tips.jsonl 第4行「使用技巧」，正式卡牌库 card:1141、card:1143、card:1411、card:1413。",
-  "explanation_before": "原始内容：你的英雄释放技能时，该英雄获得2临时等级。\n知识详解：貂蝉在场，刘禅上线后能使她每次施法获得临时等级。貂蝉的施法频率影响最后取得多少等级。\n适用条件：正在上阵刘禅，己方已有貂蝉。\n条件语法：arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"\n30 字表达取舍：保留在场的貂蝉及每次施法可以得级，不宣称本轮会放几次。",
-  "explanation_after": "没有貂蝉时，本组的点名理由不成立。普通和觉醒刘禅给的级数不同，本句不报固定数值。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1141": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1141",
+        "name": "刘禅",
+        "skills": [
+          {
+            "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+            "enhancements": [
+              {
+                "effect": "护盾提升至300点",
+                "level": 10
+              },
+              {
+                "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                "level": 40
+              },
+              {
+                "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                "level": 100
+              }
+            ],
+            "id": 11400,
+            "name": "机关魔爪"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/30",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1141"
+      },
+      "card:1143": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1143",
+        "name": "刘禅",
+        "skills": [
+          {
+            "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+            "enhancements": [
+              {
+                "effect": "护盾提升至300点",
+                "level": 10
+              },
+              {
+                "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                "level": 40
+              },
+              {
+                "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                "level": 100
+              }
+            ],
+            "id": 11400,
+            "name": "机关魔爪"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1141"
+      },
+      "card:1411": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "登场：【三分】英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1411",
+        "name": "貂蝉",
+        "skills": [
+          {
+            "effect": "貂蝉向周围2格的随机敌人施放5朵花球，每朵花球造成50+40%法术攻击力的法术伤害并降低敌人70%生命恢复效果，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "花球伤害提升至50+60%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "花球数量+4",
+                "level": 40
+              },
+              {
+                "effect": "施法时会远离敌人",
+                "level": 100
+              }
+            ],
+            "id": 14100,
+            "name": "语·花印"
+          }
+        ],
+        "stats": {
+          "攻击距离": 2,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "5/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1411"
+      },
+      "card:1413": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "登场：【三分】英雄等级+2。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1413",
+        "name": "貂蝉",
+        "skills": [
+          {
+            "effect": "貂蝉向周围2格的随机敌人施放5朵花球，每朵花球造成50+40%法术攻击力的法术伤害并降低敌人70%生命恢复效果，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "花球伤害提升至50+60%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "花球数量+4",
+                "level": 40
+              },
+              {
+                "effect": "施法时会远离敌人",
+                "level": 100
+              }
+            ],
+            "id": 14100,
+            "name": "语·花印"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1411"
+      }
+    }
+  }
 }

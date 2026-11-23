@@ -1,28 +1,255 @@
 {
-  "name": "露娜到场后传承李元芳",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
   "explanation": "",
-  "explanation_after": "事件与条件复核：解释为何对目标使用效果牌，核对了常小娥阵容中露娜已在场，同时考虑从李元芳转出培养价值。单项反例：露娜尚未到场时不应播这个换人节点的理由。话术复核：句子围绕传承能把李元芳积累的永久等级分给其他队友，避免浪费等级，沿用来源支持的动作和结果，删去旁支卡面效果。",
-  "explanation_before": "原始内容：定位是灵泉法杖闪现培养中的供币工具；大河被禁且已有灵泉法杖时，利用整备给最近的河洛英雄使用古币，先培养佩戴灵泉法杖的苏烈，再考虑培养百里玄策。觉醒需求：普通可供古币，未确认本分支专门追求觉醒的优先级；等级投入：不专门分走输出英雄的加级资源；换人前查看他已有多少永久等级；购买策略：仅在该供币和闪现培养条件成立时买一张，未确认重复牌的固定投入及拍卖出价上限；上阵时机：先完成本轮小菟技能，再上额外工具并让箭头指向准备培养的河洛英雄；出售时机：后期露娜等战斗成员已能接替时，可以用传承把李元芳的永久等级分给其他英雄中等级最低的3名，再出售他；也可以用遗志移除李元芳，将永久等级转给随机1名英雄，不能保证给指定输出；\n知识或技巧详解：传承能把李元芳积累的永久等级分给其他队友，避免浪费等级。\n自然语言适用条件：解释为何对目标使用效果牌时，常小娥阵容中露娜已在场，同时考虑从李元芳转出培养价值。\n正式条件：arg2 is \"传承\" and arg1 is \"李元芳\" and 玩家.战场 has \"露娜\"\n30 字表达取舍：播报保留「露娜已经上阵，用传承能把李元芳的永久等级留给队友。」，以入库前的独立复核为准。",
+  "explanation_after": "只确认露娜在场，不能确认李元芳满足传承等级门槛或已经完成换核，继续暂停。\n正式发布投影中已核对，本组保持暂停，原话术保留供追溯。",
+  "explanation_before": "刷新前正式话术原句：露娜已上阵，传承李元芳可把永久等级留给队友。\n本组仍暂停播报。原始依据：李元芳定位为供币工具，后期露娜等战斗成员已能接替时，可用传承把李元芳的永久等级分给其他英雄中等级最低的3名再出售。当前取舍：只有露娜在场不能写成已证明接班，且条件未确认具体接受者；当前在露娜已上阵时对李元芳使用传承可把永久等级留给队友。适用范围与自然语言适用条件：适用范围含常小娥（player:24）及常小娥灵活4人组-常小娥（changxiaoe-general-play），原 DSL 保持；玩家战场上有露娜时，对李元芳使用传承（该表达式不核对李元芳是否满足传承等级门槛，也不能确认实际等级受益人）。正式条件：arg2 is \"传承\" and arg1 is \"李元芳\" and 玩家.战场 has \"露娜\"。播报重点：露娜已上阵，传承李元芳可把永久等级留给队友。",
   "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「李元芳」 · cx26-076eedda4ae122ff",
+  "expression": "arg2 is \"传承\" and arg1 is \"李元芳\" and 玩家.战场 has \"露娜\"",
+  "id": "group_efe3a2c82dea435385b1afe7d3d54c92",
+  "ignored": true,
   "mode": "万象大赛",
+  "name": "露娜到场后传承李元芳",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "露娜已经上阵，用传承能把李元芳的永久等级留给队友。",
-      "id": "utterances_ac3bcd800c6a4c91b932523e19757db7"
+      "id": "utterances_ac3bcd800c6a4c91b932523e19757db7",
+      "text": "露娜已上阵，传承李元芳可把永久等级留给队友。"
     }
   ],
-  "id": "group_efe3a2c82dea435385b1afe7d3d54c92",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "ignored": true,
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"传承\" and arg1 is \"李元芳\" and 玩家.战场 has \"露娜\""
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1461": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:7083": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定场上1名10级以上的英雄，将其等级随机分配给其他英雄中等级最低的3名（不会分配给同一英雄）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7083",
+        "name": "传承",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:1731": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：对距离最近的【河洛】英雄使用1张古币。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1731",
+        "name": "李元芳",
+        "skills": [
+          {
+            "effect": "被动：李元芳技能造成伤害会叠加印记，叠满3层引爆印记造成100%物理攻击力的物理伤害。\n主动：李元芳丢出飞镖造成150%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "印记引爆伤害提升至150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "普攻也会叠加1层印记",
+                "level": 40
+              },
+              {
+                "effect": "印记引爆后，提升25%攻击速度，最多叠加5层",
+                "level": 100
+              }
+            ],
+            "id": 17300,
+            "name": "谍影重重"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 1.0,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 210,
+          "法力值（初始／最大）": "20/60",
+          "法术攻击力": 0,
+          "法术防御": 14,
+          "物理攻击力": 36,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1731"
+      },
+      "card:1733": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：对距离最近的【河洛】英雄使用2张古币。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1733",
+        "name": "李元芳",
+        "skills": [
+          {
+            "effect": "被动：李元芳技能造成伤害会叠加印记，叠满3层引爆印记造成100%物理攻击力的物理伤害。\n主动：李元芳丢出飞镖造成150%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "印记引爆伤害提升至150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "普攻也会叠加1层印记",
+                "level": 40
+              },
+              {
+                "effect": "印记引爆后，提升25%攻击速度，最多叠加5层",
+                "level": 100
+              }
+            ],
+            "id": 17300,
+            "name": "谍影重重"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1731"
+      }
+    }
+  }
 }

@@ -1,30 +1,150 @@
 {
-  "name": "全军动员触发亚连整备",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "explanation_after": "同场亚连与触发其整备的动作已交代，装备数最多者及核心两类受益者分句表述，装备并列仍不点名。\n完整候选池通过 3 项。正例可播：场上亚连有对应的装备最多者加级；单项反例不命中：替换亚连后原成长理由不成立；缺值检查：快照缺少玩家.战场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：有亚连在，全军动员还能给装备最多的一名英雄升级。 / 亚连在场，用全军动员触发整备，核心也能升级。\n原始依据：亚连在场时，使用全军动员可触发其整备，为装备数最多的一名英雄与核心升级；并列时不点名具体英雄，不同形态触发次数不同且不承诺具体数值，移走亚连则失去该额外结算。当前取舍：以使用全军动员的行动和当下升级收益为主，用亚连在场的状态连接原因与结果。自然语言适用条件：使用全军动员时，己方场上已有亚连。正式条件：arg1 is \"全军动员\" and 玩家.战场 has \"亚连\"。取舍后的播报重点：首句点明亚连在场时用全军动员能额外给装备最多的一名英雄升级，次句点明借此触发整备让核心也能升级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「亚连」 · n-020fbad7424a0badea41\n正式卡牌库：全军动员（card:7080）\n正式卡牌库：亚连（card:5141）\n正式卡牌库：亚连（card:5143）",
+  "expression": "arg1 is \"全军动员\" and 玩家.战场 has \"亚连\"",
+  "id": "group_0ba16212d07844d3be5b2311b45de3bf",
   "mode": "万象大赛",
+  "name": "全军动员触发亚连整备",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "亚连在场，全军动员能给装备最多的英雄升级。",
-      "id": "utterances_28deaf533f204c1e8a6209809f25cdb2"
+      "id": "utterances_28deaf533f204c1e8a6209809f25cdb2",
+      "text": "亚连在场，用全军动员还能给装备最多的一名英雄升级。"
     },
     {
-      "text": "全军动员触发亚连整备，阿科米亚核心也能升级。",
-      "id": "utterances_f47ac974fd544f8d8dcad33e5b8b945a"
+      "id": "utterances_f47ac974fd544f8d8dcad33e5b8b945a",
+      "text": "有亚连在场，用全军动员触发整备，核心也能升级。"
     }
   ],
-  "id": "group_0ba16212d07844d3be5b2311b45de3bf",
-  "event_id": "os_1c33df3b1a2b43f5",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"全军动员\" and 玩家.战场 has \"亚连\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「亚连」 · n-020fbad7424a0badea41\n正式卡牌库：全军动员（card:7080）\n正式卡牌库：亚连（card:5141）\n正式卡牌库：亚连（card:5143）",
-  "explanation_before": "原始内容：亚连有定向成长作用，整备会给装备最多者升级，也会提升阿科米亚核心等级。\n知识或技巧详解：全军动员立即触发场上英雄整备；亚连当场提供一次或两次加级，受益者由穿戴装备数量决定。\n自然语言适用条件：使用全军动员时，己方场上已有亚连。\n正式条件：arg1 is \"全军动员\" and 玩家.战场 has \"亚连\"\n30 字表达取舍：讲有亚连时能多拿哪种收益，不提前认定主力。",
-  "explanation_after": "移除亚连就失去该项成长。并列最多时未锁定具体英雄，候选句只说可确定的受益范围。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5141": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：你穿戴装备最多的1名英雄等级+2，且阿科米亚核心等级+1。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5141",
+        "name": "亚连",
+        "skills": [
+          {
+            "effect": "被动：亚连使用“赤影”攻击时造成法术伤害，使用“守心”攻击时造成物理伤害，双剑合击时造成真实伤害。且普攻和技能伤害可以暴击。\n亚连对敌人造成伤害时会获得怒气层数，每层为自身提供2%的伤害减免，最多10层。\n主动：亚连挥舞双剑，对前方目标进行3次快速斩击，分别造成65%法术攻击力的法术伤害和2次65%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能提升至5段，还会击飞目标敌人",
+                "level": 10
+              },
+              {
+                "effect": "技能提升至7段，物理伤害提升至115%；施放技能后怒气层数上限提高至20层",
+                "level": 40
+              },
+              {
+                "effect": "技能变为大范围圆形",
+                "level": 100
+              }
+            ],
+            "id": 51400,
+            "name": "流星斩"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/60",
+          "法术攻击力": 30,
+          "法术防御": 18,
+          "物理攻击力": 32,
+          "物理防御": 18
+        },
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5141"
+      },
+      "card:5143": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：你穿戴装备最多的1名英雄等级+2，且阿科米亚核心等级+1，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5143",
+        "name": "亚连",
+        "skills": [
+          {
+            "effect": "被动：亚连使用“赤影”攻击时造成法术伤害，使用“守心”攻击时造成物理伤害，双剑合击时造成真实伤害。且普攻和技能伤害可以暴击。\n亚连对敌人造成伤害时会获得怒气层数，每层为自身提供2%的伤害减免，最多10层。\n主动：亚连挥舞双剑，对前方目标进行3次快速斩击，分别造成65%法术攻击力的法术伤害和2次65%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能提升至5段，还会击飞目标敌人",
+                "level": 10
+              },
+              {
+                "effect": "技能提升至7段，物理伤害提升至115%；施放技能后怒气层数上限提高至20层",
+                "level": 40
+              },
+              {
+                "effect": "技能变为大范围圆形",
+                "level": 100
+              }
+            ],
+            "id": 51400,
+            "name": "流星斩"
+          }
+        ],
+        "stats": {},
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5141"
+      },
+      "card:7080": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "立即触发所有英雄的整备效果。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7080",
+        "name": "全军动员",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

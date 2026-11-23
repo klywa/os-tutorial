@@ -1,30 +1,61 @@
 {
-  "name": "只有一名接收者时用传承留住原英雄",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
-  "explanation_after": "加入一名候选后便不再是单接收者。未判断实际随机份额，不声称一半或全给。",
-  "explanation_before": "原始内容：只剩一名接收者时，他仍只获得随机份额，其余份额会浪费。\n知识或技巧详解：传承让供级者继续留场。若只有一名其他英雄，他也只分到一份，继续保留供级人需要接受这部分损失。\n自然语言适用条件：传承目标至少十级，场上只有目标及另一名可接收英雄。\n正式条件：arg2 is \"传承\" and arg1.等级 >= 10 and 玩家.场上英雄数 == 2\n30 字表达取舍：每句保留可留人但不能保全可分配等级这项取舍。",
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "前置现在写场上正好两名及十级目标；两句均说原英雄仍可留场、另一人只拿一份。\n完整候选池通过 3 项。正例可播：战场两人名单明确含arg1。；单项反例不命中：改变本次新验证的必要前提。战场两人名单明确含arg1。；缺值检查：省略本次新验证的必要字段。战场两人名单明确含arg1。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上只剩一名接收者，传承可留原英雄，但只分出一份。 / 两人场用传承能留住供级英雄，另一人只分到一份等级。\n原始依据为冷门知识和实录证明：场上只有一位接收人时只拿随机一份，其他份额浪费，原供级者仍在，且供级目标须属于场上两人，三人场不应套用。当前取舍是以行动和当下收益为主，用场上状态连接原因与结果。自然语言适用条件为使用传承时场上恰好两名英雄，指定其中十级以上的英雄。正式条件为：arg2 is \"传承\" and 玩家.战场 has arg1 and arg1.等级 >= 10 and 玩家.场上英雄数 == 2。取舍后的播报重点为点明两人场或仅剩一名接收者的状态，说明使用传承可留住原英雄，但代价是另一人只分到一份等级。",
   "explanation_source": "knowledge/other/冷门知识.json · mechanics-cold-knowledge-inherit-recipients\nBV1VnaE6WEPx 13.62–55.64 秒\n正式卡牌库：传承（card:7083）",
+  "expression": "arg2 is \"传承\" and 玩家.战场 has arg1 and arg1.等级 >= 10 and 玩家.场上英雄数 == 2",
+  "id": "group_2d3d38ea48564d009ffd18f0df703ebf",
   "mode": "万象大赛",
+  "name": "只有一名接收者时用传承留住原英雄",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "传承能留下原英雄，但另一人只分到一份等级。",
-      "id": "utterances_4930d2d7aec34a2bbf8da4dbf5206382"
+      "id": "utterances_4930d2d7aec34a2bbf8da4dbf5206382",
+      "text": "场上仅一名接收者，用传承能留住原英雄，但只分出一份。"
     },
     {
-      "text": "想保留这名英雄，可以用传承，但只能转走部分等级。",
-      "id": "utterances_908897ac2f184d0a9b24135f13453de0"
+      "id": "utterances_908897ac2f184d0a9b24135f13453de0",
+      "text": "两人场用传承能留住原英雄，但另一人只分到一份等级。"
     }
   ],
-  "id": "group_2d3d38ea48564d009ffd18f0df703ebf",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"传承\" and arg1.等级 >= 10 and 玩家.场上英雄数 == 2"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7083": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定场上1名10级以上的英雄，将其等级随机分配给其他英雄中等级最低的3名（不会分配给同一英雄）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7083",
+        "name": "传承",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

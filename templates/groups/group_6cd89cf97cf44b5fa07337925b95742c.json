@@ -1,25 +1,15 @@
 {
-  "name": "盾山牺牲配合李信",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "李信在场，上盾山可让他通过盾山阵亡获得临时等级。",
-      "id": "utterances_a9f29d99ee8b459385377fb572b70515"
-    },
-    {
-      "text": "盾山可给场上的李信补一处牺牲来源，阵亡时还能拿古币。",
-      "id": "utterances_c0e0a5f646414230af6faf589cd24182"
-    }
-  ],
-  "id": "group_6cd89cf97cf44b5fa07337925b95742c",
-  "event_id": "os_e5391e165361858d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "二稿准确区分古币形态和李信临时等级的普通、觉醒数值，先阵亡仅作为操作计划。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：李信在场，上盾山先扛伤，盾山阵亡能给李信临时等级。 / 上盾山补李信的牺牲触发，让盾山先阵亡可帮李信升级。\n原始依据为盾山拥有牺牲效果（普通获得古币、觉醒获得精致古币），拥有牺牲效果的英雄阵亡时李信触发临时等级提升（普通+7、觉醒+14），在盾山先阵亡且李信仍能受益时可同时提供李信成长与古币资源。当前取舍是因阵亡时序无法用事件锁定，30字内把盾山先阵亡表述为先扛伤或先阵亡的站位计划。自然语言适用条件为：盾山牺牲配合李信。正式条件为：arg1 is \"盾山\" and 玩家.战场 has \"李信\"。取舍后的播报重点是说明李信在场时上阵盾山补充牺牲触发，通过先扛伤或让盾山先阵亡来为李信争取临时等级提升。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「盾山」 · n-e9d2d6261c42a3fa3894\n正式卡牌库「盾山」 · card:5091\n正式卡牌库「盾山（觉醒）」 · card:5093\n正式卡牌库「李信」 · card:5071\n正式卡牌库「李信（觉醒）」 · card:5073",
+  "expression": "arg1 is \"盾山\" and 玩家.战场 has \"李信\"",
+  "id": "group_6cd89cf97cf44b5fa07337925b95742c",
+  "mode": "万象大赛",
+  "name": "盾山牺牲配合李信",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:311002",
@@ -42,10 +32,247 @@
       "name": "盾山"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"盾山\" and 玩家.战场 has \"李信\"",
-  "explanation_before": "原始内容：牺牲：获得1张古币。\n每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。\n知识或技巧详解：在这套常小娥策略中，李信已有位置，盾山提供一个新的牺牲触发者。盾山阵亡时可拿古币，并使仍能受益的李信得到临时等级，分别提供资源和战斗成长。\n自然语言适用条件：常小娥灵活4人组，这次上阵盾山，李信已在战场。\n正式条件：arg1 is \"盾山\" and 玩家.战场 has \"李信\"\n30 字表达取舍：点明李信已在场和盾山会作为牺牲来源，不承诺场上前后排或李信的具体等级增量。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「盾山」 · n-e9d2d6261c42a3fa3894\n正式卡牌库「盾山」 · card:5091\n正式卡牌库「盾山（觉醒）」 · card:5093\n正式卡牌库「李信」 · card:5071\n正式卡牌库「李信（觉醒）」 · card:5073",
-  "explanation_after": "李信不在场时不能播这条配合。两句只承诺盾山阵亡且李信受益时，未假定哪人先倒下。省去古币形态差异。"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_a9f29d99ee8b459385377fb572b70515",
+      "text": "李信在场时上盾山先扛伤，阵亡可为李信涨临时等级。"
+    },
+    {
+      "id": "utterances_c0e0a5f646414230af6faf589cd24182",
+      "text": "上盾山补李信的牺牲触发，让盾山先阵亡可帮李信升级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:311002": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包一",
+          "获得途径": "该卡通过词条效果等渠道获得。",
+          "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "转瞬\n指定1名【河洛】英雄等级+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:311002",
+        "name": "古币",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:5073": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当你拥有牺牲效果的英雄阵亡时，李信临时等级+14。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5073",
+        "name": "李信",
+        "skills": [
+          {
+            "effect": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "剑气伤害提升至100+220%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "剑气数量增加至3道",
+                "level": 40
+              },
+              {
+                "effect": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+                "level": 100
+              }
+            ],
+            "id": 50700,
+            "name": "力量觉醒"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5071"
+      },
+      "card:5071": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5071",
+        "name": "李信",
+        "skills": [
+          {
+            "effect": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "剑气伤害提升至100+220%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "剑气数量增加至3道",
+                "level": 40
+              },
+              {
+                "effect": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+                "level": 100
+              }
+            ],
+            "id": 50700,
+            "name": "力量觉醒"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "40/80",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5071"
+      },
+      "card:5091": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：获得1张古币。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5091",
+        "name": "盾山",
+        "skills": [
+          {
+            "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+            "enhancements": [
+              {
+                "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                "level": 10
+              },
+              {
+                "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                "level": 40
+              },
+              {
+                "effect": "开战后立即进入防御形态，持续至回合结束",
+                "level": 100
+              }
+            ],
+            "id": 50900,
+            "name": "不动如山"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "25/45",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 2,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5091"
+      },
+      "card:5093": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：获得1张精致古币。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5093",
+        "name": "盾山",
+        "skills": [
+          {
+            "effect": "盾山架盾进入防御形态获得25%伤害减免，持续3秒。期间每秒对身前敌人造成50点法术伤害。",
+            "enhancements": [
+              {
+                "effect": "伤害减免提升至35%，持续时间延长至8秒",
+                "level": 10
+              },
+              {
+                "effect": "石盾范围扩大并降低接触敌人35%攻击速度",
+                "level": 40
+              },
+              {
+                "effect": "开战后立即进入防御形态，持续至回合结束",
+                "level": 100
+              }
+            ],
+            "id": 50900,
+            "name": "不动如山"
+          }
+        ],
+        "stats": {},
+        "tier": 2,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:5091"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  }
 }

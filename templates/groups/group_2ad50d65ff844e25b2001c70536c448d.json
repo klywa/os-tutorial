@@ -1,31 +1,129 @@
 {
-  "name": "上弈星为后续升本存经验",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "condition_tree": null,
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "两句都强调本轮能量不足、弈星要留场到下次升级才能取得额外经验，当前没有提前兑现。\n完整候选池通过 3 项。正例可播：当前还差一点能量才能升级；单项反例不命中：能量够升级时由即时兑现组解释；缺值检查：快照缺少玩家.剩余能量。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：这轮能量不够，先上弈星，留到下次升级可多拿经验。 / 这轮还升不起，先上弈星可为下次升级多拿经验。\n原始依据：原句指出这轮能量不足以升级，先上弈星可为下次升级准备额外经验；机制上需弈星留场至下次确实升级才给额外经验，移除或未升级均不给经验，若能量恰好补齐则由本轮可升级组承接。当前取舍：以行动和必要资源连接因果，突出当前能量不足、先上弈星留场及下次升级时可多拿经验，避免用“存经验”暗示上场即兑现，也不把条件收益写成必然。自然语言适用条件：上阵弈星时，下一次升级仍需经验，当前剩余能量小于经验差。正式条件：arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 < 玩家.升到下一级所需经验。取舍后的播报重点：交代本轮能量不够升级的状态，引导先上弈星并留场，明确需到下次升级时才可多拿经验。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「弈星」 · n-f44abfb5b2009a59d743\n正式卡牌库：弈星（card:1971）\n正式卡牌库：弈星（card:1973）",
+  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 < 玩家.升到下一级所需经验",
+  "id": "group_2ad50d65ff844e25b2001c70536c448d",
   "mode": "万象大赛",
+  "name": "上弈星为后续升本存经验",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "这轮能量还不够升一级，可以先上弈星等下次升级。",
-      "id": "utterances_daa8aec793004ab3b81ea1784b22fa5c"
+      "id": "utterances_daa8aec793004ab3b81ea1784b22fa5c",
+      "text": "这轮能量不够，先上弈星留场，下次升级可多拿经验。"
     },
     {
-      "text": "现在升不起，先上弈星可为下次升级准备额外经验。",
-      "id": "utterances_d5c5a81cc03543e3951c3c94005894e3"
+      "id": "utterances_d5c5a81cc03543e3951c3c94005894e3",
+      "text": "现在升不起，先上弈星留着，下次升级可多拿经验。"
     }
   ],
-  "id": "group_2ad50d65ff844e25b2001c70536c448d",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 < 玩家.升到下一级所需经验",
-  "condition_tree": null,
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「弈星」 · n-f44abfb5b2009a59d743\n正式卡牌库：弈星（card:1971）\n正式卡牌库：弈星（card:1973）",
-  "explanation_before": "原始内容：弈星为后续升级提供额外经验，能量不够立即升级时仍可为下一次升级准备。\n知识或技巧详解：弈星利益在棋手升级时兑现。现在仍可升级但不够填经验差，可先备好弈星，不当成这轮已能升级。\n自然语言适用条件：上阵弈星时，下一次升级仍需经验，当前剩余能量小于经验差。\n正式条件：arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 < 玩家.升到下一级所需经验\n30 字表达取舍：交代这轮升不起但现在上能服务后续。",
-  "explanation_after": "能量足够时改由立即升级组解释，缺少经验差或能量时不确认等待。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1971": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1971",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/60",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      },
+      "card:1973": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+4。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1973",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      }
+    }
+  }
 }

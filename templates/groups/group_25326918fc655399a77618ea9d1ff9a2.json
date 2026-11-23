@@ -1,28 +1,170 @@
 {
-  "name": "对在场李白用古币多拿临时等级",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "已上场的李白受其古币额外临时等级和本人加成，一并保留古币、精致古币槽位。\n完整候选池通过 3 项。正例可播：arg2为古币时，按实际命中的卡牌或件数播报。；单项反例不命中：目标换成另一位河洛，只有李白的通用加成。；缺值检查：关键条件缺值，无法确认该项收益。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：李白在场，把{arg2}给他比给别人多添临时等级。\n原始依据：古币和精致古币都能给河洛英雄永久等级，李白在场时额外给临时等级，给李白本人还再增加，换给其他英雄则失去自吃额外收益。当前取舍：保留更易识别动作对象的名称槽位{arg2}，按最长正式名称“精致古币”核对不超过30字。自然语言适用条件：对场上李白使用古币或精致古币。正式条件：arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"。取舍后的播报重点：点明李白在场时把{arg2}给他比给别人多拿临时等级。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第10行「李白・使用技巧」\n正式卡牌库：李白（card:1311）\n正式卡牌库：李白（card:1313）\n正式卡牌库：古币（card:311002）\n正式卡牌库：精致古币（card:311003）",
+  "expression": "arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"",
+  "id": "group_25326918fc655399a77618ea9d1ff9a2",
   "mode": "万象大赛",
+  "name": "对在场李白用古币多拿临时等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "李白已在场，把{arg2}给他还能多拿一份临时等级。",
-      "id": "utterances_f687de08117c47b4a6e1f7d5f49f137e"
+      "id": "utterances_f687de08117c47b4a6e1f7d5f49f137e",
+      "text": "李白在场，把{arg2}给他比给别人多拿临时等级。"
     }
   ],
-  "id": "group_25326918fc655399a77618ea9d1ff9a2",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"",
-  "explanation_source": "personal/knowledge_tips.jsonl 第10行「李白・使用技巧」\n正式卡牌库：李白（card:1311）\n正式卡牌库：李白（card:1313）\n正式卡牌库：古币（card:311002）\n正式卡牌库：精致古币（card:311003）",
-  "explanation_before": "原始内容：李白在场时古币额外给临时等级，李白本人作为目标时还会多给一份。\n知识或技巧详解：古币牌通常为河洛英雄增加永久等级；在场李白额外提供临时等级，且直接给李白时临时等级更多，具体数值取决于觉醒。\n自然语言适用条件：对场上李白使用古币或精致古币。\n正式条件：arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"\n30 字表达取舍：保留已在场的李白本人拿币能获得较多临时等级。",
-  "explanation_after": "离场的李白不适用。与给其他目标的李白在场组分开，不说固定加级量。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1311": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n古币牌会额外提供4临时等级。若目标为李白，该临时等级会额外+3。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1311",
+        "name": "李白",
+        "skills": [
+          {
+            "effect": "被动：李白施放技能时会积累1道剑气，最多4道。每道剑气提升10%基础物理攻击力。\n主动：李白施展剑阵，降低目标敌人及其相邻敌人6点物理防御。随后化身剑气施展6次斩击，每次造成80%物理攻击力的物理伤害，伤害由范围内的敌人平均分摊。",
+            "enhancements": [
+              {
+                "effect": "斩击伤害提升至120%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "斩击伤害提升至150%物理攻击力",
+                "level": 40
+              },
+              {
+                "effect": "斩击期间不可选中",
+                "level": 100
+              }
+            ],
+            "id": 13100,
+            "name": "青莲剑歌"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "30/55",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1311"
+      },
+      "card:1313": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n古币牌会额外提供8临时等级。若目标为李白，该临时等级会额外+6。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1313",
+        "name": "李白",
+        "skills": [
+          {
+            "effect": "被动：李白施放技能时会积累1道剑气，最多4道。每道剑气提升10%基础物理攻击力。\n主动：李白施展剑阵，降低目标敌人及其相邻敌人6点物理防御。随后化身剑气施展6次斩击，每次造成80%物理攻击力的物理伤害，伤害由范围内的敌人平均分摊。",
+            "enhancements": [
+              {
+                "effect": "斩击伤害提升至120%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "斩击伤害提升至150%物理攻击力",
+                "level": 40
+              },
+              {
+                "effect": "斩击期间不可选中",
+                "level": 100
+              }
+            ],
+            "id": 13100,
+            "name": "青莲剑歌"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1311"
+      },
+      "card:311003": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包一",
+          "获得途径": "该卡通过词条效果等渠道获得。",
+          "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "转瞬\n指定1名【河洛】英雄等级+4。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:311003",
+        "name": "精致古币",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:311002": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包一",
+          "获得途径": "该卡通过词条效果等渠道获得。",
+          "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "转瞬\n指定1名【河洛】英雄等级+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:311002",
+        "name": "古币",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

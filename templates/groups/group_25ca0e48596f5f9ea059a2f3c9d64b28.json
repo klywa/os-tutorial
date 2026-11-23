@@ -1,28 +1,60 @@
 {
-  "name": "存款利息下保留至少一档能量",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_4ef8f267133d9810",
+  "explanation_after": "准备时已选存款利息并留七点以上才能说明回合结束利息，原句没有说只返一点。\n完整候选池通过 3 项。正例可播：当前实际值为7，满足比较条件。；单项反例不命中：当前值为6，越过该组边界到不命中一侧。；缺值检查：缺少占位符引用的实际数值，无法判定该条件。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：留住至少七点能量，这轮结算就能拿到利息。\n原始依据：存款利息在回合结束每保留七点能量返一点，没有声称当前一定只获得一点；六点或无天赋时不说明这档利息。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接原因与结果。自然语言适用条件：准备战斗时已经选了存款利息，且剩余能量不少于七点。正式条件：玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7。取舍后的播报重点：该句受保护需逐字保留，已清晰点明留住至少七点能量的行动与本轮结算拿利息的当下收益。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第194行「存款利息・使用技巧」\n正式卡牌库：存款利息（card:671003）",
+  "expression": "玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7",
+  "id": "group_25ca0e48596f5f9ea059a2f3c9d64b28",
   "mode": "万象大赛",
+  "name": "存款利息下保留至少一档能量",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "留住至少七点能量，这轮结算就能拿到利息。",
-      "id": "utterances_3fcc9b41286745dfb8137b92b30c3ab9"
+      "id": "utterances_3fcc9b41286745dfb8137b92b30c3ab9",
+      "text": "留住至少七点能量，这轮结算就能拿到利息。"
     }
   ],
-  "id": "group_25ca0e48596f5f9ea059a2f3c9d64b28",
-  "event_id": "os_4ef8f267133d9810",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7",
-  "explanation_source": "personal/knowledge_tips.jsonl 第194行「存款利息・使用技巧」\n正式卡牌库：存款利息（card:671003）",
-  "explanation_before": "原始内容：存款利息需要在回合结束时每保留七点能量，额外多领一点。\n知识或技巧详解：备战结束前已跨过七点门槛，继续消费可能跌破档位；当前存款至少能产生一档利息。\n自然语言适用条件：准备战斗时已经选了存款利息，且剩余能量不少于七点。\n正式条件：玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7\n30 字表达取舍：讲保留当前预算为什么值得，不讲选天赋时给多少。",
-  "explanation_after": "少于七点时不播，避免把未满足的利息说成到账；如果继续用能量会改变结果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:671003": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包三",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "获得3能量。回合结束时，你每有7能量，额外获得1能量。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:671003",
+        "name": "存款利息",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

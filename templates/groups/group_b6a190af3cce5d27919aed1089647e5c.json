@@ -1,29 +1,327 @@
 {
-  "name": "让前排穿红莲炎甲限制猪八戒恢复",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
   "explanation": "",
+  "explanation_after": "对应猪八戒作为对手主力与己方前排拿甲，保留靠近一格才能削弱恢复的关键限制。\n完整候选池通过 3 项。正例可播：对手主力为猪八戒，我方给刘禅穿红莲炎甲；单项反例不命中：改变必要前提：对手主力为猪八戒，我方给刘禅穿红莲炎甲；缺值检查：缺少关键观测：对手主力为猪八戒，我方给刘禅穿红莲炎甲。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：对面主力是猪八戒，前排穿红莲炎甲贴近后可减回血。\n原始依据：红莲炎甲每2秒对周围1格敌人造成法术伤害并降低目标50%生命恢复和护盾效果，对面主力猪八戒技能具有恢复，前排须带甲贴到一格内才可降低其恢复和护盾效果。当前取舍：本条原稿受保护需逐字保留，保留局面与当前收益的表述。自然语言适用条件：给名单内前排穿红莲炎甲，当前对手主力为猪八戒。正式条件：arg2 is \"红莲炎甲\" and 对局.当前对手.主C is \"猪八戒\" and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]。取舍后的播报重点：点明对面主力是猪八戒，前排穿红莲炎甲贴近后可减回血。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第130行「使用技巧」，正式卡牌库 card:643504、card:5111、card:5113。",
+  "expression": "arg2 is \"红莲炎甲\" and 对局.当前对手.主C is \"猪八戒\" and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]",
+  "id": "group_b6a190af3cce5d27919aed1089647e5c",
   "mode": "万象大赛",
+  "name": "让前排穿红莲炎甲限制猪八戒恢复",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "对面主力是猪八戒，前排穿红莲炎甲贴近后可减回血。",
-      "id": "utterances_95fdaeceb6334f3e965a91dd132101cf"
+      "id": "utterances_95fdaeceb6334f3e965a91dd132101cf",
+      "text": "对面主力是猪八戒，前排穿红莲炎甲贴近后可减回血。"
     }
   ],
-  "id": "group_b6a190af3cce5d27919aed1089647e5c",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"红莲炎甲\" and 对局.当前对手.主C is \"猪八戒\" and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]",
-  "explanation_source": "personal/knowledge_tips.jsonl 第130行「使用技巧」，正式卡牌库 card:643504、card:5111、card:5113。",
-  "explanation_before": "原始内容：唯一。每2秒对周围1格敌人造成20（+5%穿戴者最大生命值）点法术伤害，并降低目标50%生命恢复和护盾效果，持续3秒。\n知识详解：对面猪八戒是主力时，可把红莲炎甲给能近身的前排。装备只对穿戴者一格内的敌人产生恢复削减。\n适用条件：给名单内前排穿红莲炎甲。当前对手主力为猪八戒。\n条件语法：arg2 is \"红莲炎甲\" and 对局.当前对手.主C is \"猪八戒\" and arg1 in [\"蒙恬\", \"猪八戒\", \"刘禅\"]\n30 字表达取舍：保留猪八戒和近身条件。只讲两份证据一致的减恢复。",
-  "explanation_after": "无当前站位，不能说已经贴住。条件只支持装备选择，实际要灼烧到猪八戒才减恢复。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5111": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "夺取\n每当3阶及以下英雄合成时，与其同阶的英雄等级+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5111",
+        "name": "猪八戒",
+        "skills": [
+          {
+            "effect": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。\n主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至10%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "最大生命值叠层提升至60层",
+                "level": 40
+              },
+              {
+                "effect": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+                "level": 100
+              }
+            ],
+            "id": 51100,
+            "name": "肉弹蹦床"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5111"
+      },
+      "card:5113": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "夺取\n每当3阶及以下英雄合成时，与其同阶的英雄等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5113",
+        "name": "猪八戒",
+        "skills": [
+          {
+            "effect": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。\n主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至10%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "最大生命值叠层提升至60层",
+                "level": 40
+              },
+              {
+                "effect": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+                "level": 100
+              }
+            ],
+            "id": 51100,
+            "name": "肉弹蹦床"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5111"
+      },
+      "card:643504": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每2秒对周围1格敌人造成20（+5%穿戴者最大生命值）点法术伤害，并降低目标50%生命恢复和护盾效果，持续3秒。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643504",
+        "name": "红莲炎甲",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:1141": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1141",
+        "name": "刘禅",
+        "skills": [
+          {
+            "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+            "enhancements": [
+              {
+                "effect": "护盾提升至300点",
+                "level": 10
+              },
+              {
+                "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                "level": 40
+              },
+              {
+                "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                "level": 100
+              }
+            ],
+            "id": 11400,
+            "name": "机关魔爪"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/30",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1141"
+      },
+      "card:1143": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1143",
+        "name": "刘禅",
+        "skills": [
+          {
+            "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+            "enhancements": [
+              {
+                "effect": "护盾提升至300点",
+                "level": 10
+              },
+              {
+                "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                "level": 40
+              },
+              {
+                "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                "level": 100
+              }
+            ],
+            "id": 11400,
+            "name": "机关魔爪"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1141"
+      },
+      "card:5271": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：召唤2名与自身等级相同的玄雍士兵。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:5271",
+        "name": "蒙恬",
+        "skills": [
+          {
+            "effect": "蒙恬召唤出1名玄雍士兵列阵作战（持续20秒，至多2名）。每名士兵会分担蒙恬5%受到的伤害。",
+            "enhancements": [
+              {
+                "effect": "士兵分担伤害提升至12%",
+                "level": 10
+              },
+              {
+                "effect": "每次召唤2名士兵（至多4名）",
+                "level": 40
+              },
+              {
+                "effect": "每次召唤4名士兵",
+                "level": 100
+              }
+            ],
+            "id": 52700,
+            "name": "玄雍众将"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "0/60",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 2,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5271"
+      },
+      "card:5273": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：召唤4名与自身等级相同的玄雍士兵。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:5273",
+        "name": "蒙恬",
+        "skills": [
+          {
+            "effect": "蒙恬召唤出1名玄雍士兵列阵作战（持续20秒，至多2名）。每名士兵会分担蒙恬5%受到的伤害。",
+            "enhancements": [
+              {
+                "effect": "士兵分担伤害提升至12%",
+                "level": 10
+              },
+              {
+                "effect": "每次召唤2名士兵（至多4名）",
+                "level": 40
+              },
+              {
+                "effect": "每次召唤4名士兵",
+                "level": 100
+              }
+            ],
+            "id": 52700,
+            "name": "玄雍众将"
+          }
+        ],
+        "stats": {},
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5271"
+      }
+    }
+  }
 }

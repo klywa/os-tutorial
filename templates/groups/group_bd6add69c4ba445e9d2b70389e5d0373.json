@@ -1,27 +1,78 @@
 {
-  "name": "选扶摇直上",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b9276a29aaffc6ba",
   "explanation": "",
+  "explanation_after": "棋手未到六级、选择扶摇直上，说明实际使用后只增加一级；没有把选择当成已升级或六级以下立即达到六级。\n完整候选池通过 3 项。正例可播：常小娥五级且候选有扶摇直上；单项反例不命中：改变必要前提：常小娥五级且候选有扶摇直上；缺值检查：缺少关键观测：常小娥五级且候选有扶摇直上。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：常小娥还未到六级，选扶摇直上可省一级所需经验。\n原始依据：扶摇直上原始效果为棋手等级提升1，若已满级则改为获得10能量；常小娥未到六级时使用该牌增加棋手一级，可节省升六所需一级经验，且选到时还需实际用牌。当前取舍：受30字上限约束，舍弃满级替代效果等补充说明，聚焦当前局面与收益。自然语言适用条件：常小娥未到六级，本次从效果牌候选池选扶摇直上。正式条件：(arg2 is \"扶摇直上\" and 玩家.等级 < 6) and arg1 has \"扶摇直上\"。取舍后的播报重点：保留常小娥未到六级的局面判断，点明选扶摇直上可省一级升级经验。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「第三轮拍卖」「月之特调与送福循环」，正式卡牌库 card:7120。",
+  "expression": "(arg2 is \"扶摇直上\" and 玩家.等级 < 6) and arg1 has \"扶摇直上\"",
+  "id": "group_bd6add69c4ba445e9d2b70389e5d0373",
   "mode": "万象大赛",
+  "name": "选扶摇直上",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "常小娥还未到六级，选扶摇直上可少投入一级的升级经验。",
-      "id": "utterances_79cbe90d61d5492a9a207354da32ecf1"
+      "id": "utterances_79cbe90d61d5492a9a207354da32ecf1",
+      "text": "常小娥未到六级，选扶摇直上可省一级升级经验。"
     }
   ],
-  "id": "group_bd6add69c4ba445e9d2b70389e5d0373",
-  "event_id": "os_b9276a29aaffc6ba",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "(arg2 is \"扶摇直上\" and 玩家.等级 < 6) and arg1 has \"扶摇直上\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「第三轮拍卖」「月之特调与送福循环」，正式卡牌库 card:7120。",
-  "explanation_before": "原始内容：棋手等级提升1。如果已满级，改为获得10能量。\n知识详解：扶摇直上在低于满级时提供一级，帮常小娥减少到六级需要的经验投入。选到该效果牌以后仍须使用。\n适用条件：常小娥未到六级，本次从效果牌候选池选扶摇直上。\n条件语法：(arg2 is \"扶摇直上\" and 玩家.等级 < 6) and arg1 has \"扶摇直上\"\n30 字表达取舍：同时交代棋手未到六级和少投入经验的原因，避免说取得即升级。",
-  "explanation_after": "在五级时使用可以直接到六级，等级更低时只进一级。没有把选择事件误作拍卖胜出或用牌。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:7120": {
+        "aliases": [
+          "富饶之上"
+        ],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "棋手等级提升1。如果已满级，改为获得10能量。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7120",
+        "name": "扶摇直上",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

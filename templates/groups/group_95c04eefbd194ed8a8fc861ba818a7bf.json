@@ -1,26 +1,16 @@
 {
-  "name": "诸葛亮搭配杨玉环施法",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "explanation": "",
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "杨玉环已在场，选诸葛亮能用她的施法帮他回蓝。",
-      "id": "utterances_fdb8bad124ac49d9b2bc4d081f7b0375"
-    },
-    {
-      "text": "已有杨玉环，选诸葛亮可借她施法积累临时等级。",
-      "id": "utterances_b1a3468884d2452ab34bdad99e49f0a7"
-    }
-  ],
-  "id": "group_95c04eefbd194ed8a8fc861ba818a7bf",
-  "event_id": "os_dcef166d05efe08e",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_dcef166d05efe08e",
+  "explanation": "",
+  "explanation_after": "返修省略普觉数值，明确仍须诸葛亮上阵、杨玉环实际施法，并记商店与拍卖边界。\n完整候选池通过 3 项。正例可播：杨玉环在场，诸葛亮确实可选；单项反例不命中：改变必要前提：杨玉环在场，诸葛亮确实可选；缺值检查：缺少关键观测：杨玉环在场，诸葛亮确实可选。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：杨玉环已在场，选诸葛亮能用她的施法帮他回蓝。 / 已有杨玉环，选诸葛亮可借她施法积累临时等级。\n原始依据：己方其他英雄释放技能时，诸葛亮获得法力值与临时等级；场上已有杨玉环时选诸葛亮，选择后仍需诸葛亮上阵且杨玉环实际施法，才可将她的后续施法转为诸葛亮的法力或临时等级。当前取舍：保留批注认可的打法方向，在30字内分两条聚焦局面前提与当前收益；同配合购买角度上，商店可买诸葛亮，场上已有杨玉环可作为条件另建购买组，现无对应购买组，且拍卖只有开始事件而无法确认实际选中的英雄。自然语言适用条件：常小娥灵活4人组，实际从候选池选到诸葛亮且场上有杨玉环，选择后仍需诸葛亮上阵、杨玉环实际施法。正式条件：(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"。取舍后的播报重点：两条均点明杨玉环已在场并选择诸葛亮，分别说明借她施法帮诸葛亮回蓝和积累临时等级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「杨玉环」「诸葛亮」，正式卡牌库 card:1761、card:1763、card:1901、card:1903。",
+  "expression": "(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"",
+  "id": "group_95c04eefbd194ed8a8fc861ba818a7bf",
+  "mode": "万象大赛",
+  "name": "诸葛亮搭配杨玉环施法",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:1761",
@@ -39,10 +29,225 @@
       "name": "诸葛亮"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「杨玉环」「诸葛亮」，正式卡牌库 card:1761、card:1763、card:1901、card:1903。",
-  "explanation_before": "原始内容：你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。\n知识详解：杨玉环在场并施法，可给之后上阵的诸葛亮供法力和临时等级。觉醒诸葛亮的数值更高。\n适用条件：常小娥灵活4人组，实际从候选池选到诸葛亮，场上有杨玉环。\n条件语法：(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"\n30 字表达取舍：保留已在场搭档、选择及后续供法力，不硬报普通形态数值。",
-  "explanation_after": "选择后不等于立即施法，条件和话术都避免先后误导。"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_fdb8bad124ac49d9b2bc4d081f7b0375",
+      "text": "杨玉环已在场，选诸葛亮能用她的施法帮他回蓝。"
+    },
+    {
+      "id": "utterances_b1a3468884d2452ab34bdad99e49f0a7",
+      "text": "已有杨玉环，选诸葛亮可借她施法积累临时等级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1761": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "杨玉环在场时，每过3个回合获得1张弦音。\n退场：获得1张弦音。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1761",
+        "name": "杨玉环",
+        "skills": [
+          {
+            "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 10
+              },
+              {
+                "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 100
+              }
+            ],
+            "id": 17600,
+            "name": "惊鸿调"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "0/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:10.381324+00:00",
+        "skills_source": "card:1761"
+      },
+      "card:1763": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "杨玉环在场时，每过3个回合获得1张妙音。\n退场：获得1张妙音。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1763",
+        "name": "杨玉环",
+        "skills": [
+          {
+            "effect": "杨玉环弹奏琵琶，循环激活以下乐曲效果之一：\n清平：为3名血量最低的友军恢复100+80%法术攻击力的生命值。\n破阵：对当前血量百分比最高的3名敌人造成100+80%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "每第3次技能会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 10
+              },
+              {
+                "effect": "清平恢复提升至150+125%法术攻击力；破阵伤害提升至100+125%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "每次技能都会同时激活清平和破阵两种效果，并作用于全场",
+                "level": 100
+              }
+            ],
+            "id": 17600,
+            "name": "惊鸿调"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1761"
+      },
+      "card:1903": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1903",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:1901": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1901",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 6,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "35/55",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1901"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  }
 }

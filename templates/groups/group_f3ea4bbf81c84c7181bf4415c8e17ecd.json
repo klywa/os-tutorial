@@ -1,27 +1,74 @@
 {
-  "name": "四人未齐暂留小菟送福",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_4ef8f267133d9810",
   "explanation": "",
+  "explanation_after": "送福可覆盖四名英雄，当前未满四人且仍有容错才建议保留。\n完整候选池通过 3 项。正例可播：场上不足四人且还能等；单项反例不命中：容错不足不应等；缺值检查：缺少 玩家.容错数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：还有容错却未凑齐四人，送福可以留到人齐再打。\n原始依据：中期运营需评估现有战力与剩余血量能承受的失败次数再决定小菟送福使用时机。当前取舍：送福最多四个目标，场上不足四人且尚有容错时等待有助减少空耗，人数或容错变化后不再建议等。自然语言适用条件：场上英雄数少于4人、手牌中有棋手技能小菟送福且容错数大于1。正式条件：玩家.场上英雄数 < 4 and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟送福\"} and 玩家.容错数 > 1。取舍后的播报重点：场上未满四人且尚有容错时，送福可以先留到人齐再打。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-e1b6062b68d57ec10e8e「中期运营思路」",
+  "expression": "玩家.场上英雄数 < 4 and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟送福\"} and 玩家.容错数 > 1",
+  "id": "group_f3ea4bbf81c84c7181bf4415c8e17ecd",
   "mode": "万象大赛",
+  "name": "四人未齐暂留小菟送福",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "还有容错且场上未满四人，小菟送福可以等人齐再用。",
-      "id": "utterances_50fd47beecb2451d9afafec2db3935ef"
+      "id": "utterances_50fd47beecb2451d9afafec2db3935ef",
+      "text": "场上未满四人且尚有容错，送福可以先留到人齐再打。"
     }
   ],
-  "id": "group_f3ea4bbf81c84c7181bf4415c8e17ecd",
-  "event_id": "os_4ef8f267133d9810",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "玩家.场上英雄数 < 4 and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟送福\"} and 玩家.容错数 > 1",
-  "explanation_before": "原始内容：中期继续在尽可能保血的基础上升级：根据下一轮对手补能立即作战的临时英雄，用自然来牌、拍卖和已存免费刷新预留终局四人的候选，不为找指定英雄投入能量拖慢升级节奏。每轮先判断现有输出、前排和保护能否减少掉血，以及剩余血量还能承受几次失败，再决定小菟送福的使用时机。如果当前战力能撑到棋手6级，且升级后仍留有买牌和小菟技能费用，就继续升级，领取月之特调后再让四名有效战斗成员集中成长；如果继续等待可能被淘汰，或必须增加等级才能应付下一轮，就在6级前从已取得的英雄中确定能立即作战的四人，先使用小菟送福、再用小菟助力提升战力保命，稳住后再补棋手6级。理想候选未到时，用已有且能承担相应职责的成员启动；已凑齐四人却仍缺装备、关键等级或承伤时，先提升即时战力。\n知识或技巧详解：有等待空间，可以把送福留到四人，增加实际被培养人数。\n自然语言适用条件：解释为何准备战斗时，常小娥手有送福，己方场上不足四人且容错大于一。\n正式条件：玩家.场上英雄数 < 4 and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟送福\"} and 玩家.容错数 > 1\n30 字表达取舍：播报保留「还有容错且场上未满四人，小菟送福可以等人齐再用。」，以入库前的独立复核为准。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-e1b6062b68d57ec10e8e「中期运营思路」",
-  "explanation_after": "事件与条件复核：解释为何准备战斗，核对了常小娥手有送福，己方场上不足四人且容错大于一。单项反例：只剩一次容错时，应重新考虑现在加强战力。话术复核：句子围绕有等待空间，可以把送福留到四人，增加实际被培养人数，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:92410": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "对场上的随机4名英雄各触发1次小菟助力，使其等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92410",
+        "name": "小菟送福",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

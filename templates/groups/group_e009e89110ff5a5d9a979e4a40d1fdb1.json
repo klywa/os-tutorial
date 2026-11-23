@@ -1,29 +1,175 @@
 {
-  "name": "重构干将的双剑为基础装备",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
   "explanation": "",
+  "explanation_after": "普通干将只给雄剑，觉醒给双剑。非主力的两把剑均已穿戴才用重构随机换三件基础装备。\n完整候选池通过 3 项。正例可播：过渡干将仍穿着两把自带剑；单项反例不命中：只剩一把剑；缺值检查：缺少 参数.arg1.已穿装备。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：干将不是主力，双剑都在时重构能换三件基础装备。\n原始依据：普通干将莫邪只提供双剑·雄，觉醒形态才提供双剑·雄及双剑·雌，且所提供装备仅在干将在场时存在；若干将仅用来过渡，可用武装重构敲掉这两件装备换成三件普通装备。当前取舍：两剑必须正在目标身上且确实只有两件，同时目标不是主力才有牺牲这两件的合理依据；表达式直接验证已穿的是这两把。自然语言适用条件：玩家战场上有干将莫邪且其不是主C，对干将莫邪使用武装重构，且其已穿装备共计2件并包含双剑·雄与双剑·雌。正式条件：arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\") ；播报重点：干将不是主力，双剑都在时重构能换三件基础装备。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第29行「干将莫邪・使用技巧」",
+  "expression": "arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\")",
+  "id": "group_e009e89110ff5a5d9a979e4a40d1fdb1",
   "mode": "万象大赛",
+  "name": "重构干将的双剑为基础装备",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "干将不是主力，趁双剑都在时重构，能换来三件基础装备。",
-      "id": "utterances_27bb4003e9eb4646a2bbd056aa4e7194"
+      "id": "utterances_27bb4003e9eb4646a2bbd056aa4e7194",
+      "text": "干将不是主力，双剑都在时重构能换三件基础装备。"
     }
   ],
-  "id": "group_e009e89110ff5a5d9a979e4a40d1fdb1",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\")",
-  "explanation_before": "原始内容：干将的两件装备可以用武装重构敲掉换成三件普通装备的，如果干将只是用来过渡的，可以采取这种方法获得更多装备。温馨提示：干将莫邪提供的双剑·雄及双剑·雌两件装备，只有干将在场时才存在。当干将离场后，提供的装备也会消失。\n知识或技巧详解：趁过渡英雄仍在把双剑换成三件基础装备，避免离场后消失。\n自然语言适用条件：解释为何对目标使用效果牌时，干将在场穿齐雄雌双剑且不是本局主力。\n正式条件：arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\")\n30 字表达取舍：播报保留「干将不是主力，趁双剑都在时重构，能换来三件基础装备。」，以入库前的独立复核为准。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第29行「干将莫邪・使用技巧」",
-  "explanation_after": "事件与条件复核：解释为何对目标使用效果牌，核对了干将在场穿齐雄雌双剑且不是本局主力。单项反例：少一把剑时得不到三件，干将是主力时换装有额外代价。话术复核：句子围绕趁过渡英雄仍在把双剑换成三件基础装备，避免离场后消失，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1821": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "干将莫邪在场时，获得普通装备双剑·雄。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1821",
+        "name": "干将莫邪",
+        "skills": [
+          {
+            "effect": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至150+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第2次施法会额外释放1对飞剑",
+                "level": 40
+              },
+              {
+                "effect": "飞剑伤害提升至150+200%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 18200,
+            "name": "雌雄双剑"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "15/25",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1821"
+      },
+      "card:1823": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "干将莫邪在场时，获得普通装备双剑·雄及双剑·雌。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1823",
+        "name": "干将莫邪",
+        "skills": [
+          {
+            "effect": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至150+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第2次施法会额外释放1对飞剑",
+                "level": 40
+              },
+              {
+                "effect": "飞剑伤害提升至150+200%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 18200,
+            "name": "雌雄双剑"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1821"
+      },
+      "card:42102": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "攻击速度+30%。若穿戴者为干将莫邪，其法力值上限降低至10。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:42102",
+        "name": "双剑·雄",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "equipment:双剑·雌": {
+        "name": "双剑·雌",
+        "missing": true
+      },
+      "card:7081": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，摧毁其所有装备，随机获得对应数量+1的基础装备。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7081",
+        "name": "武装重构",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

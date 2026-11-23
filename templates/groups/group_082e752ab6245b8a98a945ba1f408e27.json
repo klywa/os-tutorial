@@ -1,32 +1,152 @@
 {
-  "name": "韩信用无尽巨剑补暴击",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation_after": "现在以已参战且为主力的韩信为穿戴者，按卡面将收益限定在普攻暴击。\n完整候选池通过 3 项。正例可播：玩家.主C=韩信，战场包含韩信。；单项反例不命中：改变本次新验证的必要前提。玩家.主C=韩信，战场包含韩信。；缺值检查：省略本次新验证的必要字段。玩家.主C=韩信，战场包含韩信。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：韩信在场负责输出，给他无尽巨剑可提高普攻伤害。 / 韩信是主力，给他无尽巨剑能让普攻更容易暴击。\n原始依据：在场主力韩信的输出依赖持续普攻，无尽巨剑提高暴击率和暴击效果，不把第三次普攻的独立技能伤害算入暴击收益。当前取舍：以行动和当下收益为主，用场上状态连接穿戴装备与收益结果，不展开第三段独立技能伤害细节。自然语言适用条件：为已经在场并担任主力的韩信穿戴无尽巨剑。正式条件：arg1 is \"韩信\" and arg2 is \"无尽巨剑\" and 玩家.主C is \"韩信\" and 玩家.主C in 玩家.战场。取舍后的播报重点：点明韩信在场担任主力且靠普攻输出，说明给他无尽巨剑可提高普攻伤害或让普攻更容易暴击。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：无尽巨剑（card:643103）；韩信（card:1501、card:1503）",
+  "expression": "arg1 is \"韩信\" and arg2 is \"无尽巨剑\" and 玩家.主C is \"韩信\" and 玩家.主C in 玩家.战场",
+  "id": "group_082e752ab6245b8a98a945ba1f408e27",
   "mode": "万象大赛",
+  "name": "韩信用无尽巨剑补暴击",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "韩信靠普攻连段，无尽巨剑能提高这部分伤害。",
-      "id": "utterances_4097030223c8406fa441822140f1b487"
+      "id": "utterances_4097030223c8406fa441822140f1b487",
+      "text": "在场主力韩信靠普攻输出，给他无尽巨剑可提高普攻伤害。"
     },
     {
-      "text": "给韩信无尽巨剑，能让连段里的普攻暴击更有威力。",
-      "id": "utterances_7dcdc916f7f94cd992267bc2febfdc35"
+      "id": "utterances_7dcdc916f7f94cd992267bc2febfdc35",
+      "text": "韩信在场当主力，给他无尽巨剑能让普攻更容易暴击。"
     }
   ],
-  "id": "group_082e752ab6245b8a98a945ba1f408e27",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"韩信\" and arg2 is \"无尽巨剑\"",
-  "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」",
-  "explanation_before": "原始内容：韩信可携带铸梦·逐风提升攻速、无尽巨剑提升暴击。\n知识或技巧详解：韩信的普攻既用于连段也承担伤害；无尽巨剑提高暴击率和暴击效果，可加强连段中的普攻伤害。\n自然语言适用条件：正在给韩信穿戴无尽巨剑。\n正式条件：arg1 is \"韩信\" and arg2 is \"无尽巨剑\"\n30 字表达取舍：只说普攻连段伤害，省去装备面板和其他对手因素。",
-  "explanation_after": "英雄身份在这里决定是否有频繁普攻连段的用途；不说暴击会增加击飞频率。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1501": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+2。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1501",
+        "name": "韩信",
+        "skills": [
+          {
+            "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至100+150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                "level": 40
+              },
+              {
+                "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                "level": 100
+              }
+            ],
+            "id": 15000,
+            "name": "国士无双"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "55/65",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1501"
+      },
+      "card:1503": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+4。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1503",
+        "name": "韩信",
+        "skills": [
+          {
+            "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至100+150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                "level": 40
+              },
+              {
+                "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                "level": 100
+              }
+            ],
+            "id": 15000,
+            "name": "国士无双"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1501"
+      },
+      "card:643103": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "物理装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "暴击率+30%，暴击效果+60%。暴击效果不可叠加。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643103",
+        "name": "无尽巨剑",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

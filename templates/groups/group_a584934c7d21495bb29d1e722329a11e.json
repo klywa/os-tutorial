@@ -1,22 +1,16 @@
 {
-  "name": "孙悟空整备培养露娜",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
-  "explanation": "",
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "露娜已在场，上孙悟空能借他的整备给露娜加级。",
-      "id": "utterances_ff2175a1f86340368db46a36c4179bbf"
-    }
-  ],
-  "id": "group_a584934c7d21495bb29d1e722329a11e",
-  "event_id": "os_e5391e165361858d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation": "",
+  "explanation_after": "返修省略不共通的普通+2数值，区分上孙悟空和之后整备，保留露娜双形态闪现及永久等级收益。\n完整候选池通过 3 项。正例可播：上阵孙悟空前已有露娜在场；单项反例不命中：改变必要前提：上阵孙悟空前已有露娜在场；缺值检查：缺少关键观测：上阵孙悟空前已有露娜在场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：露娜有闪现，上孙悟空可在整备时提高她的等级。\n原始依据：露娜两种形态均有闪现，孙悟空两种形态的整备效果均为拥有闪现的英雄提供永久等级。当前取舍：在30字内围绕露娜有闪现与孙悟空整备加等级组织播报，保留局面依据与当前收益。自然语言适用条件：正在上阵孙悟空，露娜在场。正式条件：arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"。取舍后的播报重点：点明露娜有闪现，上孙悟空可在整备时提高她的等级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙悟空」「露娜」，正式卡牌库 card:1671、card:1673、card:1461、card:1463。",
+  "expression": "arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"",
+  "id": "group_a584934c7d21495bb29d1e722329a11e",
+  "mode": "万象大赛",
+  "name": "孙悟空整备培养露娜",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:1463",
@@ -35,10 +29,203 @@
       "name": "孙悟空"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙悟空」「露娜」，正式卡牌库 card:1671、card:1673、card:1461、card:1463。",
-  "explanation_before": "原始内容：闪现，夺取\n整备：拥有闪现效果的英雄等级+2。\n知识详解：普通与觉醒孙悟空整备时都给拥有闪现效果的英雄加级，已在场的露娜也是对应受益者。\n适用条件：正在上阵孙悟空，露娜在场。\n条件语法：arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"\n30 字表达取舍：保留两者和整备时点，不报形态对应数值。",
-  "explanation_after": "换成不具有闪现的队友就没有相同收益。不把上阵说成整备已触发。"
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_ff2175a1f86340368db46a36c4179bbf",
+      "text": "露娜有闪现，上孙悟空可在整备时提高她的等级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1461": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1673": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+4。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1673",
+        "name": "孙悟空",
+        "skills": [
+          {
+            "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至100+500%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至4格",
+                "level": 100
+              }
+            ],
+            "id": 16700,
+            "name": "大圣神威"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1671"
+      },
+      "card:1671": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1671",
+        "name": "孙悟空",
+        "skills": [
+          {
+            "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至100+500%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至4格",
+                "level": 100
+              }
+            ],
+            "id": 16700,
+            "name": "大圣神威"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "25/45",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1671"
+      }
+    }
+  }
 }

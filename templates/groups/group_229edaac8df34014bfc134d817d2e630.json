@@ -1,27 +1,325 @@
 {
-  "name": "把噬神之书从过渡英雄转给嬴政",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "condition_tree": null,
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_f5a416d50e37a948",
+  "explanation_after": "受保护句维持主力嬴政由飞剑伤害获得吸血的条件；弈星和芈月均是原穿戴者，转移接收者保持嬴政。\n完整候选池通过 3 项。正例可播：嬴政已经是场上主力；单项反例不命中：本局嬴政未承担最需要培养的输出位；缺值检查：快照缺少玩家.主C。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：嬴政已是主力，转给他噬神之书可用飞剑伤害回血。\n原始依据：噬神之书的吸血可从嬴政持续飞剑造成的伤害兑现，他是在场输出主力才值得从过渡持有人转交，弈星和芈月都可以是来源，句子只评价接收者。当前取舍：以行动和当下收益为主，场上状态或必要资源连接原因与结果。自然语言适用条件：从弈星或芈月身上把噬神之书转给当前在场的主力嬴政。正式条件：arg1 in [\"弈星\", \"芈月\"] and arg2 is \"噬神之书\" and arg3 is \"嬴政\" and 玩家.主C is \"嬴政\" and 玩家.主C in 玩家.战场。取舍后的播报重点：原句为受保护句需逐字保留，已清晰点明嬴政作为主力的状态、转交噬神之书的行动及飞剑伤害回血的收益。",
+  "explanation_source": "knowledge/other/装备.json「噬神之书」 · equipment-card-643801\n正式卡牌库：噬神之书（card:643801）\n正式卡牌库：嬴政（card:1101）\n正式卡牌库：嬴政（card:1103）",
+  "expression": "arg1 in [\"弈星\", \"芈月\"] and arg2 is \"噬神之书\" and arg3 is \"嬴政\" and 玩家.主C is \"嬴政\" and 玩家.主C in 玩家.战场",
+  "id": "group_229edaac8df34014bfc134d817d2e630",
   "mode": "万象大赛",
+  "name": "把噬神之书从过渡英雄转给嬴政",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "嬴政已是主力，转给他噬神之书可用飞剑伤害回血。",
-      "id": "utterances_d772dc725b364eb58746576ed5d81f25"
+      "id": "utterances_d772dc725b364eb58746576ed5d81f25",
+      "text": "嬴政已是主力，转给他噬神之书可用飞剑伤害回血。"
     }
   ],
-  "id": "group_229edaac8df34014bfc134d817d2e630",
-  "event_id": "os_f5a416d50e37a948",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 in [\"弈星\", \"芈月\"] and arg2 is \"噬神之书\" and arg3 is \"嬴政\" and 玩家.主C is \"嬴政\" and 玩家.主C in 玩家.战场",
-  "condition_tree": null,
-  "explanation_source": "knowledge/other/装备.json「噬神之书」 · equipment-card-643801\n正式卡牌库：噬神之书（card:643801）\n正式卡牌库：嬴政（card:1101）\n正式卡牌库：嬴政（card:1103）",
-  "explanation_before": "原始内容：可先将噬神之书交给弈星或芈月，找到嬴政后再决定是否转交。\n知识或技巧详解：噬神之书的法术攻击和法术吸血可同时服务嬴政的飞剑。当前在场主力已换成嬴政，可把原给弈星或芈月的装备资源集中给他。\n自然语言适用条件：从弈星或芈月身上把噬神之书转给当前在场的主力嬴政。\n正式条件：arg1 in [\"弈星\", \"芈月\"] and arg2 is \"噬神之书\" and arg3 is \"嬴政\" and 玩家.主C is \"嬴政\" and 玩家.主C in 玩家.战场\n30 字表达取舍：保留主力变更后飞剑伤害与续航都受益这项取舍。",
-  "explanation_after": "来源和去向均精确限定。缺少在场主力时不能把这个转移解释为培养当前核心。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:643801": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "法术装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "法术攻击力+100，法术吸血+60%。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643801",
+        "name": "噬神之书",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:1211": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当你使用效果牌时，己方穿戴装备最多的1名【逐鹿】英雄等级+1。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1211",
+        "name": "芈月",
+        "skills": [
+          {
+            "effect": "芈月为等级最高的近战友军召唤1只暗影仆从协助战斗，持续10秒。仆从每次攻击造成80%芈月法术攻击力的法术伤害并为友军恢复80%芈月法术攻击力的生命值，同时窃取目标1点物理防御和法术防御转移给友军（最多30层，持续至回合结束）。",
+            "enhancements": [
+              {
+                "effect": "仆从伤害提升至120%法术攻击力，生命值恢复提升至120%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "仆从数量提升至5只",
+                "level": 40
+              },
+              {
+                "effect": "窃取的双防提升至2点",
+                "level": 100
+              }
+            ],
+            "id": 12100,
+            "name": "幻翼仆从"
+          }
+        ],
+        "stats": {
+          "攻击距离": 2,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 2,
+        "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+        "skills_source": "card:1211"
+      },
+      "card:1213": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当你使用效果牌时，己方穿戴装备最多的1名【逐鹿】英雄等级+2。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1213",
+        "name": "芈月",
+        "skills": [
+          {
+            "effect": "芈月为等级最高的近战友军召唤1只暗影仆从协助战斗，持续10秒。仆从每次攻击造成80%芈月法术攻击力的法术伤害并为友军恢复80%芈月法术攻击力的生命值，同时窃取目标1点物理防御和法术防御转移给友军（最多30层，持续至回合结束）。",
+            "enhancements": [
+              {
+                "effect": "仆从伤害提升至120%法术攻击力，生命值恢复提升至120%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "仆从数量提升至5只",
+                "level": 40
+              },
+              {
+                "effect": "窃取的双防提升至2点",
+                "level": 100
+              }
+            ],
+            "id": 12100,
+            "name": "幻翼仆从"
+          }
+        ],
+        "stats": {},
+        "tier": 2,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1211"
+      },
+      "card:1971": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1971",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/60",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      },
+      "card:1973": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+4。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1973",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      },
+      "card:1101": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "开团：法术攻击力+ 7。每次使用战术牌会提升该加成。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1101",
+        "name": "嬴政",
+        "skills": [
+          {
+            "effect": "嬴政展示王权，锁定最近的敌人，在5秒内号令80把飞剑朝其冲击，每把飞剑造成10+10%法术攻击力的法术伤害。若当前路径上没有敌人，嬴政会立即转向下个目标。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至15+15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "飞剑基础数量增加到100把，并且每击败1名敌人延长2秒技能持续时间",
+                "level": 40
+              },
+              {
+                "effect": "飞剑基础数量增加到120把，每击败1名敌人范围增加2格，最多增加4格",
+                "level": 100
+              }
+            ],
+            "id": 11000,
+            "name": "至尊王权"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "0/40",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-11-01T07:39:37.565420+00:00",
+        "skills_source": "card:1101"
+      },
+      "card:1103": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "开团：法术攻击力+ 14。每次使用战术牌会提升该加成。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1103",
+        "name": "嬴政",
+        "skills": [
+          {
+            "effect": "嬴政展示王权，锁定最近的敌人，在5秒内号令80把飞剑朝其冲击，每把飞剑造成10+10%法术攻击力的法术伤害。若当前路径上没有敌人，嬴政会立即转向下个目标。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至15+15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "飞剑基础数量增加到100把，并且每击败1名敌人延长2秒技能持续时间",
+                "level": 40
+              },
+              {
+                "effect": "飞剑基础数量增加到120把，每击败1名敌人范围增加2格，最多增加4格",
+                "level": 100
+              }
+            ],
+            "id": 11000,
+            "name": "至尊王权"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1101"
+      }
+    }
+  }
 }

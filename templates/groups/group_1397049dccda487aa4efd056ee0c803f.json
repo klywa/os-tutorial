@@ -1,30 +1,61 @@
 {
-  "name": "终局用传承给在场四人分配等级",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
-  "explanation_after": "不说使用之后必然保血。少一名队友时不能承诺三名接收者。",
-  "explanation_before": "原始内容：需要把等级分给三名拟留场英雄时，让他们成为场上等级最低的三名。\n知识或技巧详解：终局容错低时，传承让供级成员留场，同时分配其可转出的等级。四人场只留下另外三名接收者。\n自然语言适用条件：第十一回合起，玩家至多再输一轮，场上四人，供级者至少十级。\n正式条件：arg2 is \"传承\" and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4\n30 字表达取舍：专讲此轮压力和三人分配，省去原角色强弱。",
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "自然条件已列第11回合起、容错至多一、四人在场且传承目标至少十级，播报将其余三名与保留原英雄分别讲清。\n完整候选池通过 3 项。正例可播：战场四人名单明确含arg1。；单项反例不命中：改变本次新验证的必要前提。战场四人名单明确含arg1。；缺值检查：省略本次新验证的必要字段。战场四人名单明确含arg1。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：终局容错低，用传承可把永久等级分给另外三人。 / 终局四人都在，用传承分出等级，原英雄还能留场。\n原始依据：传承牌本身要求目标在场，原动作条件未证明目标属于四人因此追加在场关系；目标至少10级为玩法证据，场上共四人时其余三名为受益候选且随机分配不保证等分，终局低容错下分出永久等级后原英雄仍可留场。当前取舍：以行动和当下收益为主，场上状态或必要资源连接原因与结果。自然语言适用条件：第11回合起，容错数至多1，场上正有四名英雄，传承目标是其中至少10级的一名。正式条件：arg2 is \"传承\" and 玩家.战场 has arg1 and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4。取舍后的播报重点：第一句突出终局四人在场时用传承将永久等级分给另外三人的行动收益；第二句突出终局四人在场时分出等级后原英雄仍可留场的场上状态与结果。",
   "explanation_source": "knowledge/other/常用技巧.json · common-tips-inherit / common-tips-inherit-recipients\nknowledge/other/基础知识.json · 后期分段与等级分配\n正式卡牌库：传承（card:7083）",
+  "expression": "arg2 is \"传承\" and 玩家.战场 has arg1 and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4",
+  "id": "group_1397049dccda487aa4efd056ee0c803f",
   "mode": "万象大赛",
+  "name": "终局用传承给在场四人分配等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "这轮容错低，用传承能把永久等级分给另外三人。",
-      "id": "utterances_a93774d631494b5db963e31d8da7e252"
+      "id": "utterances_a93774d631494b5db963e31d8da7e252",
+      "text": "终局四人在场，用传承可把永久等级分给另外三人。"
     },
     {
-      "text": "终局四人都在，传承分级后原英雄仍可留场。",
-      "id": "utterances_804566d2f44c4484a91cdb4025dc6e9a"
+      "id": "utterances_804566d2f44c4484a91cdb4025dc6e9a",
+      "text": "终局四人在场，传承分出等级后原英雄仍可留场。"
     }
   ],
-  "id": "group_1397049dccda487aa4efd056ee0c803f",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"传承\" and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7083": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定场上1名10级以上的英雄，将其等级随机分配给其他英雄中等级最低的3名（不会分配给同一英雄）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7083",
+        "name": "传承",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

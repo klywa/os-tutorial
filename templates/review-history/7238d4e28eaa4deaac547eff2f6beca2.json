@@ -1,0 +1,213 @@
+{
+  "id": "7238d4e28eaa4deaac547eff2f6beca2",
+  "actor": "local",
+  "at": "2026-11-23T14:56:17.364632+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_5398b8a3ddec4938a6ec256204b8d53f",
+      "value": {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_b9276a29aaffc6ba",
+        "explanation_after": "两句人工原话保留，用牌时仍须单挂，指定三级与随机两级才都结算给同一人。\n完整候选池通过 4 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：场上只有一人，选简易协作给他用，两份等级就都归他。 / 单人场选简易协作，留给场上这一位，一次可加五级。\n原始依据为简易协作具有指定1名英雄等级+3与随机1名英雄等级+2两次结算，场上只有一名英雄并对其用牌时，两份成长都会给同一名英雄，合计五级。当前取舍为明确选牌提供的是后续用牌机会，挑牌后仍须把牌给场上唯一英雄，播报保留原人工改稿，适用范围以复核后的生效条件为准。自然语言适用条件：单人场选简易协作集中等级。正式条件：arg2 is \"简易协作\" and arg1 has \"简易协作\" and 玩家.场上英雄数 == 1。取舍后的播报重点是点明单人场选简易协作并留给场上唯一英雄使用，可集中获得两份成长、一次加五级。",
+        "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库「简易协作」 · card:7040",
+        "expression": "arg2 is \"简易协作\" and arg1 has \"简易协作\" and 玩家.场上英雄数 == 1",
+        "id": "group_5398b8a3ddec4938a6ec256204b8d53f",
+        "mode": "万象大赛",
+        "name": "单人场选简易协作集中等级",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_955e029dc90243ddbd5b14aa305b9148",
+            "text": "场上只有1名英雄时，简易协作可以对TA生效两次！"
+          },
+          {
+            "id": "utterances_f3d5d3c6d7d8407c8eeff136c870d120",
+            "text": "单人场选简易协作，留给场上这一位，一次可加五级。",
+            "ignored": true
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:7040": {
+              "aliases": [],
+              "attributes": {
+                "所属分组": "初始效果牌",
+                "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                "解锁条件": "万象大赛达到1200分"
+              },
+              "awakened": false,
+              "category": "effect-cards",
+              "effect": "指定1名英雄等级+3，随机1名英雄等级+2。",
+              "faction": {
+                "id": "",
+                "name": "通用",
+                "official_id": 0
+              },
+              "id": "card:7040",
+              "name": "简易协作",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_b9276a29aaffc6ba",
+        "explanation_after": "两句人工原话保留，用牌时仍须单挂，指定三级与随机两级才都结算给同一人。\n完整候选池通过 4 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：场上只有一人，选简易协作给他用，两份等级就都归他。 / 单人场选简易协作，留给场上这一位，一次可加五级。\n原始依据为简易协作具有指定1名英雄等级+3与随机1名英雄等级+2两次结算，场上只有一名英雄并对其用牌时，两份成长都会给同一名英雄，合计五级。当前取舍为明确选牌提供的是后续用牌机会，挑牌后仍须把牌给场上唯一英雄，播报保留原人工改稿，适用范围以复核后的生效条件为准。自然语言适用条件：单人场选简易协作集中等级。正式条件：arg2 is \"简易协作\" and arg1 has \"简易协作\" and 玩家.场上英雄数 == 1。取舍后的播报重点是点明单人场选简易协作并留给场上唯一英雄使用，可集中获得两份成长、一次加五级。",
+        "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库「简易协作」 · card:7040",
+        "expression": "arg2 is \"简易协作\" and arg1 has \"简易协作\" and 玩家.场上英雄数 == 1",
+        "id": "group_5398b8a3ddec4938a6ec256204b8d53f",
+        "mode": "万象大赛",
+        "name": "单人场选简易协作集中等级",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_955e029dc90243ddbd5b14aa305b9148",
+            "text": "场上只有1名英雄时，简易协作可以对TA生效两次！"
+          },
+          {
+            "id": "utterances_f3d5d3c6d7d8407c8eeff136c870d120",
+            "text": "单人场选简易协作，留给场上这一位，一次可加五级。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:7040": {
+              "aliases": [],
+              "attributes": {
+                "所属分组": "初始效果牌",
+                "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                "解锁条件": "万象大赛达到1200分"
+              },
+              "awakened": false,
+              "category": "effect-cards",
+              "effect": "指定1名英雄等级+3，随机1名英雄等级+2。",
+              "faction": {
+                "id": "",
+                "name": "通用",
+                "official_id": 0
+              },
+              "id": "card:7040",
+              "name": "简易协作",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_b9276a29aaffc6ba",
+        "explanation_after": "两句人工原话保留，用牌时仍须单挂，指定三级与随机两级才都结算给同一人。\n完整候选池通过 4 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：场上只有一人，选简易协作给他用，两份等级就都归他。 / 单人场选简易协作，留给场上这一位，一次可加五级。\n原始依据为简易协作具有指定1名英雄等级+3与随机1名英雄等级+2两次结算，场上只有一名英雄并对其用牌时，两份成长都会给同一名英雄，合计五级。当前取舍为明确选牌提供的是后续用牌机会，挑牌后仍须把牌给场上唯一英雄，播报保留原人工改稿，适用范围以复核后的生效条件为准。自然语言适用条件：单人场选简易协作集中等级。正式条件：arg2 is \"简易协作\" and arg1 has \"简易协作\" and 玩家.场上英雄数 == 1。取舍后的播报重点是点明单人场选简易协作并留给场上唯一英雄使用，可集中获得两份成长、一次加五级。",
+        "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库「简易协作」 · card:7040",
+        "expression": "arg2 is \"简易协作\" and arg1 has \"简易协作\" and 玩家.场上英雄数 == 1",
+        "id": "group_5398b8a3ddec4938a6ec256204b8d53f",
+        "mode": "万象大赛",
+        "name": "单人场选简易协作集中等级",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_955e029dc90243ddbd5b14aa305b9148",
+            "text": "场上只有1名英雄时，简易协作可以对TA生效两次！"
+          },
+          {
+            "id": "utterances_f3d5d3c6d7d8407c8eeff136c870d120",
+            "text": "单人场选简易协作，留给场上这一位，一次可加五级。",
+            "ignored": true
+          }
+        ],
+        "version": "s1",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:7040": {
+              "aliases": [],
+              "attributes": {
+                "所属分组": "初始效果牌",
+                "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+                "解锁条件": "万象大赛达到1200分"
+              },
+              "awakened": false,
+              "category": "effect-cards",
+              "effect": "指定1名英雄等级+3，随机1名英雄等级+2。",
+              "faction": {
+                "id": "",
+                "name": "通用",
+                "official_id": 0
+              },
+              "id": "card:7040",
+              "name": "简易协作",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

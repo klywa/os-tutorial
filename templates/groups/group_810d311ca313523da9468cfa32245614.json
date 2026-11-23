@@ -1,32 +1,63 @@
 {
-  "name": "多名英雄在场时用众星拱月集中等级",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "沿用受保护原句，说明明确只夺永久可夺等级、每人最多十级且至少留一级，四人只是提供更多候选，并未承诺人人都失去等级。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上已有四人以上，众星拱月可让主力夺取多名队友的等级。 / 主力在多人场上，用众星拱月可集中队友可夺取的等级。\n原始依据：众星拱月指定1名英雄，夺取其他英雄各10级，且只夺永久可用等级，每人至多10级并至少留1级；场上四人以上时有更多潜在等级来源，但正式状态及接口暂未识别永久与临时等级，无法保证每名队友的实际可夺额度。当前取舍：保留可夺等级限定，避免每名队友都实际损失十级的保证，播报保留原人工改稿，适用范围以复核后的生效条件为准。自然语言适用条件：多名英雄在场时用众星拱月集中等级。正式条件：arg2 is \"众星拱月\" and arg1 is 玩家.主C and 玩家.战场 has arg1 and 玩家.场上英雄数 >= 4。取舍后的播报重点：说明场上四人以上或多人场上主力使用众星拱月可夺取并集中队友可夺取的等级，不保证具体夺取级数。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第223行「众星拱月・使用技巧」\n正式卡牌库 众星拱月（card:10404）\n正式卡牌库「众星拱月」 · card:10404",
+  "expression": "arg2 is \"众星拱月\" and arg1 is 玩家.主C and 玩家.战场 has arg1 and 玩家.场上英雄数 >= 4",
+  "id": "group_810d311ca313523da9468cfa32245614",
   "mode": "万象大赛",
+  "name": "多名英雄在场时用众星拱月集中等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "场上已有四人以上，众星拱月可让主力夺取多名队友的等级。",
-      "id": "utterances_14aac7671df047529f8087c30606c52b"
+      "id": "utterances_14aac7671df047529f8087c30606c52b",
+      "text": "场上已有四人以上，众星拱月可让主力夺取多名队友的等级。"
     },
     {
-      "text": "主力在多人场上，用众星拱月可集中队友可夺取的等级。",
-      "id": "utterances_c0864ddad789437a88f39cc723ef0f47"
+      "id": "utterances_c0864ddad789437a88f39cc723ef0f47",
+      "text": "主力在多人场上，用众星拱月可集中队友可夺取的等级。"
     }
   ],
-  "id": "group_810d311ca313523da9468cfa32245614",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"众星拱月\" and arg1 is 玩家.主C and 玩家.战场 has arg1 and 玩家.场上英雄数 >= 4",
-  "explanation_before": "原始内容：指定1名英雄，夺取其他英雄各10级。\n知识或技巧详解：至少四名英雄在场且选择其中主力为目标时，众星拱月能把其他在场队友的可夺取等级集中给主力。辅助失去等级也是代价，供级量取决于各队友实况。\n自然语言适用条件：用众星拱月，当前场上至少四人，指定的英雄是其中的己方主C。\n正式条件：arg2 is \"众星拱月\" and arg1 is 玩家.主C and 玩家.战场 has arg1 and 玩家.场上英雄数 >= 4\n30 字表达取舍：保留“主力、至少四人、多来源”三件事，不承诺每个人一定提供足额十级。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第223行「众星拱月・使用技巧」\n正式卡牌库 众星拱月（card:10404）\n正式卡牌库「众星拱月」 · card:10404",
-  "explanation_after": "补足指定英雄必须是在场主力的条件，三人或目标是其他英雄时退出。话术保留“夺取”以反映来源队友的代价。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:10404": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，夺取其他英雄各10级。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:10404",
+        "name": "众星拱月",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

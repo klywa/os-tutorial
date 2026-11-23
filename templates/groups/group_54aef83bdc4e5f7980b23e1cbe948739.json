@@ -1,32 +1,63 @@
 {
-  "name": "分解一件装备换四能量",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "二稿明确是唯一一件而非有「唯一」词条的装备，目标为非主力，收益为四点能量。\n完整候选池通过 3 项。正例可播：历史目标马超有一件风暴巨剑，玩家战场加入马超及诸葛亮；玩家.主C填诸葛亮；；单项反例不命中：主C改马超；；缺值检查：删主C。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：这个非主力只穿一件装备，拆掉可换四点能量。 / 拆掉这名队友的唯一一件装备，可换四点能量。\n原始依据：武装分解摧毁目标英雄所有装备，摧毁1件得4能量，由非主力承受拆除代价，所得可用于补充本轮预算。当前取舍：给出动作、牺牲对象及资源去向，未知主力归属时不按辅位分解解释。自然语言适用条件：将在场非主力唯一穿戴的一件装备换成能量。正式条件：arg2 is \"武装分解\" and 玩家.战场 has arg1 and not (arg1 is 玩家.主C) and arg1.已穿装备.计数() == 1。取舍后的播报重点：交代清楚非主力仅有一件装备，并点明拆掉这件装备可换取四点能量。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第214行「武装分解・使用技巧」\n正式卡牌库 武装分解（card:7089）\n正式卡牌库「武装分解」 · card:7089",
+  "expression": "arg2 is \"武装分解\" and 玩家.战场 has arg1 and not (arg1 is 玩家.主C) and arg1.已穿装备.计数() == 1",
+  "id": "group_54aef83bdc4e5f7980b23e1cbe948739",
   "mode": "万象大赛",
+  "name": "分解一件装备换四能量",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [
     "技巧"
   ],
-  "version": "s1",
   "utterances": [
     {
-      "text": "这个英雄只穿了一件，武装分解能摧毁它换四点能量。",
-      "id": "utterances_fde05b50a9384695886473de0eba880f"
+      "id": "utterances_fde05b50a9384695886473de0eba880f",
+      "text": "这名非主力只穿一件装备，拆掉可换四点能量。"
     },
     {
-      "text": "武装分解正好能拿这一件装备换四点能量。",
-      "id": "utterances_1b3e9b1c39a444bb8f7a6026fa3e3e65"
+      "id": "utterances_1b3e9b1c39a444bb8f7a6026fa3e3e65",
+      "text": "拆掉这名队友的唯一一件装备，可换四点能量。"
     }
   ],
-  "id": "group_54aef83bdc4e5f7980b23e1cbe948739",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg2 is \"武装分解\" and arg1.已穿装备.计数() == 1",
-  "explanation_before": "原始内容：指定1名英雄，摧毁其所有装备：\n摧毁1件获得4能量；2件获得1张妙音；3件获得1张珍品宝箱。\n知识或技巧详解：武装分解会摧毁所选英雄身上的全部装备。该英雄已穿一件，本次结算对应四能量。实际净收益还要扣掉使用这张牌的费用。\n自然语言适用条件：正在用武装分解，并选中恰有一件已穿装备的英雄。\n正式条件：arg2 is \"武装分解\" and arg1.已穿装备.计数() == 1\n30 字表达取舍：在同一句话里交代目前件数、分解动作与本档收益，省去其他档。",
-  "explanation_source": "personal/knowledge_tips.jsonl 第214行「武装分解・使用技巧」\n正式卡牌库 武装分解（card:7089）\n正式卡牌库「武装分解」 · card:7089",
-  "explanation_after": "一件是本组的实际收益分界。件数不同或未知时不得播本组。话术说明摧毁和所得，不将所得写作必然净收益或指定装备。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7089": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包三",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，摧毁其所有装备：\n摧毁1件获得4能量；2件获得1张妙音；3件获得1张珍品宝箱。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7089",
+        "name": "武装分解",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

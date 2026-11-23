@@ -1,21 +1,15 @@
 {
-  "name": "上露娜给日落海四人组补输出",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "狂铁能留在前排，上露娜可给四人组补范围输出。",
-      "id": "utterances_bbba375a5b474235964504b7c61eaae3"
-    }
-  ],
-  "id": "group_2a1633d89f0641da912e133ff66b7660",
-  "event_id": "os_e5391e165361858d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "修订列出四人场、40级露娜及在场狂铁，实际播报突出狂铁留前排与露娜突进范围伤害。\n完整候选池通过 3 项。正例可播：arg1露娜等级为40或以上，留现有四人场。；单项反例不命中：改变本次新验证的必要前提。arg1露娜等级为40或以上，留现有四人场。；缺值检查：省略本次新验证的必要字段。arg1露娜等级为40或以上，留现有四人场。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：狂铁留在前排，上露娜能给四人组补突进范围伤害。\n原始依据：狂铁能留在前排时，已有40级的露娜可沿突进路径打范围输出，给四人组补输出，不将随机整备列为主因。当前取舍：以行动和当下收益为主，用场上状态连接原因与结果，不涉及未成型或人数超四时的工具策略。自然语言适用条件：常小娥灵活四人组，上阵至少40级的露娜，场上恰有四位英雄且包含露娜和狂铁。正式条件：arg1 is \"露娜\" and arg1.等级 >= 40 and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"。取舍后的播报重点：说明狂铁留在前排的状态，以及上露娜能为四人组补充突进的范围伤害的当下收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：露娜（card:1461）\n正式卡牌库：狂铁（card:5031）",
+  "expression": "arg1 is \"露娜\" and arg1.等级 >= 40 and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"",
+  "id": "group_2a1633d89f0641da912e133ff66b7660",
+  "mode": "万象大赛",
+  "name": "上露娜给日落海四人组补输出",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:1463",
@@ -34,10 +28,221 @@
       "name": "狂铁"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：露娜（card:1461）\n正式卡牌库：狂铁（card:5031）",
-  "explanation_before": "原始内容：露娜补日落海四人组的闪现范围输出，狂铁可继续承担前排。\n知识或技巧详解：已有狂铁上场时无需让露娜承担近端承伤；露娜的闪现和范围输出能补队伍不同接敌位置。\n自然语言适用条件：常小娥灵活4人组中，露娜上阵后场上四名英雄，且狂铁仍在场。\n正式条件：arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"\n30 字表达取舍：只讲已有前排与新增输出的互补。",
-  "explanation_after": "未读对位，不说露娜必然闪到敌方主力。未读她的等级，不说双突进已经解锁。"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_bbba375a5b474235964504b7c61eaae3",
+      "text": "狂铁留在前排，上露娜可给四人组补突进的范围伤害。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1461": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:5031": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5031",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "card:5033": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5033",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  }
 }

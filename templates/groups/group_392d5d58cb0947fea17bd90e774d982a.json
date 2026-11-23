@@ -1,27 +1,151 @@
 {
-  "name": "司空震铸造金色圣剑",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_db70e56ec24636b5",
+  "explanation_after": "条件包含 至少40 级且是参战主力，恢复能更快打闪电链的正式技能事实。\n完整候选池通过 3 项。正例可播：arg1司空震等级设40或100，另用39验证阈值。；单项反例不命中：改变本次新验证的必要前提。arg1司空震等级设40或100，另用39验证阈值。；缺值检查：省略本次新验证的必要字段。arg1司空震等级设40或100，另用39验证阈值。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：主力司空震已能变身，铸金色圣剑可让他更快打闪电链。\n原始依据：司空震在场担任主力且40级解锁施法变身（100级变身时点有所不同），金色圣剑提供攻速与普攻附伤，可强化其普攻并让当前主力更快打出变身普攻，39级尚未解锁该收益。当前取舍：以铸造金色圣剑的行动和当下收益为主，用主力已能变身的状态连接原因与结果，保留正式技能卡确认的变身普攻为闪电链细节。自然语言适用条件：为已在场、担任主力且至少40级的司空震铸造金色圣剑（40级解锁施法变身，100级变身时点有所不同）。正式条件：arg1 is \"司空震\" and arg3 is \"金色圣剑\" and 玩家.主C is \"司空震\" and 玩家.主C in 玩家.战场 and arg1.等级 >= 40。取舍后的播报重点：点明主力司空震已能变身，铸金色圣剑可让他更快打闪电链。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「金色圣剑」 · n-bbeb200218a7aaf67916\n正式卡牌库：金色圣剑（card:643207）\n正式卡牌库：司空震（card:5371）\n正式卡牌库：司空震（card:5373）",
+  "expression": "arg1 is \"司空震\" and arg3 is \"金色圣剑\" and 玩家.主C is \"司空震\" and 玩家.主C in 玩家.战场 and arg1.等级 >= 40",
+  "id": "group_392d5d58cb0947fea17bd90e774d982a",
   "mode": "万象大赛",
+  "name": "司空震铸造金色圣剑",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
   "tags": [],
-  "version": "s1",
   "utterances": [
     {
-      "text": "司空震在场担任主力，铸金色圣剑可强化他的普攻。",
-      "id": "utterances_49bb598916c04b68a8ec18013f245ec2"
+      "id": "utterances_49bb598916c04b68a8ec18013f245ec2",
+      "text": "主力司空震已能变身，铸金色圣剑可让他更快打闪电链。"
     }
   ],
-  "id": "group_392d5d58cb0947fea17bd90e774d982a",
-  "event_id": "os_db70e56ec24636b5",
-  "conditions": [],
-  "related_entities": [],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"司空震\" and arg3 is \"金色圣剑\" and 玩家.主C is \"司空震\" and 玩家.主C in 玩家.战场",
-  "condition_tree": null,
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「金色圣剑」 · n-bbeb200218a7aaf67916\n正式卡牌库：金色圣剑（card:643207）\n正式卡牌库：司空震（card:5371）\n正式卡牌库：司空震（card:5373）",
-  "explanation_before": "原始内容：司空震作为输出时可以穿金色圣剑提高攻速与普攻附加法伤。\n知识或技巧详解：司空震承担场上主力时，需要通过高频普通攻击持续输出，金色圣剑改善攻速并令每次普攻附带法伤。\n自然语言适用条件：铸造金色圣剑给当前在场的主力司空震。\n正式条件：arg1 is \"司空震\" and arg3 is \"金色圣剑\" and 玩家.主C is \"司空震\" and 玩家.主C in 玩家.战场\n30 字表达取舍：保留主力普攻的输出需求，说明铸造选择。",
-  "explanation_after": "只确认以司空震为主的局面。没有攻速面板，不保证实际每秒攻击次数的增量。"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5371": {
+        "aliases": [
+          "司宫镇",
+          "司工阵",
+          "司空镇",
+          "四龙阵"
+        ],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄获得临时等级时，司空震获得一半效果（不超过自身真实等级的1倍）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5371",
+        "name": "司空震",
+        "skills": [
+          {
+            "effect": "司空震升入空中，使用雷鼓轰击全场敌人，造成50+65%法术攻击力的法术伤害。\n雷霆之王：基础攻击速度增加15%。普攻能产生可传导3次的闪电链，造成75+50%法术攻击力的法术伤害，伤害逐次递减25%。闪电链伤害的40%会转化为自身护盾，上限300点。",
+            "enhancements": [
+              {
+                "effect": "雷鼓伤害提升至50+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "轰击后化身雷霆之王，持续8秒",
+                "level": 40
+              },
+              {
+                "effect": "战斗开始时，变身雷霆之王并轰击全场造成法术伤害，持续到回合结束",
+                "level": 100
+              }
+            ],
+            "id": 53700,
+            "name": "雷霆万钧"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "50/75",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5371"
+      },
+      "card:5373": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄获得临时等级时，司空震获得全部效果（不超过自身真实等级的2倍）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5373",
+        "name": "司空震",
+        "skills": [
+          {
+            "effect": "司空震升入空中，使用雷鼓轰击全场敌人，造成50+65%法术攻击力的法术伤害。\n雷霆之王：基础攻击速度增加15%。普攻能产生可传导3次的闪电链，造成75+50%法术攻击力的法术伤害，伤害逐次递减25%。闪电链伤害的40%会转化为自身护盾，上限300点。",
+            "enhancements": [
+              {
+                "effect": "雷鼓伤害提升至50+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "轰击后化身雷霆之王，持续8秒",
+                "level": 40
+              },
+              {
+                "effect": "战斗开始时，变身雷霆之王并轰击全场造成法术伤害，持续到回合结束",
+                "level": 100
+              }
+            ],
+            "id": 53700,
+            "name": "雷霆万钧"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5371"
+      },
+      "card:643207": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "法术装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。获得30%（+15%法术攻击力）攻击速度。每次普通攻击附带20（+30%法术攻击力）点法术伤害。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643207",
+        "name": "金色圣剑",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  }
 }

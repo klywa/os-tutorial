@@ -1,22 +1,16 @@
 {
-  "name": "两种技能都有时先送福",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": null
-  },
-  "explanation": "",
-  "mode": "万象大赛",
-  "tags": [],
-  "version": "s1",
-  "utterances": [
-    {
-      "text": "手里也有小菟助力，先用送福能让下一次助力多升几级。",
-      "id": "utterances_e8d5192d579a4011b9db38122e5a4f67"
-    }
-  ],
-  "id": "group_f1bd76d5ecaf459ea91a571a3fbd8a3f",
-  "event_id": "os_b59f8bd6d43110d4",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b59f8bd6d43110d4",
+  "explanation": "",
+  "explanation_after": "手牌仍有小菟助力且送福有目标，先送福累计次数可提高下一次助力收益。\n完整候选池通过 5 项。正例可播：仍有能量打手里助力；单项反例不命中：剩余能量不足；缺值检查：缺少 玩家.剩余能量。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：手里还有小菟助力，先送福能提高下一次助力的等级。\n原始依据：小菟助力每助力一次后续提升效果加1级，小菟送福能触发多次助力，同时持有两张牌时通常先送福再助力以吃到更多累计收益。当前取舍：常小娥同时有送福与助力且能量足够时，优先打送福叠加次数来提高后续助力的成长。自然语言适用条件：当前使用小菟送福，手牌中有小菟助力，剩余能量不少于1且场上至少有1名己方英雄。正式条件：(arg1 is \"小菟送福\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟助力\"} and 玩家.剩余能量 >= 1) and 玩家.场上英雄数 >= 1。取舍后的播报重点：指出手里还有小菟助力，先送福能提高后续助力的等级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「助力次数与等级门槛」 · n-d74e53e18cea3a7192ed",
+  "expression": "(arg1 is \"小菟送福\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟助力\"} and 玩家.剩余能量 >= 1) and 玩家.场上英雄数 >= 1",
+  "id": "group_f1bd76d5ecaf459ea91a571a3fbd8a3f",
+  "mode": "万象大赛",
+  "name": "两种技能都有时先送福",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:92499",
@@ -27,10 +21,83 @@
       "name": "小菟送福"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"小菟送福\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟助力\"} and 玩家.剩余能量 >= 1",
-  "explanation_before": "原始内容：小菟助力随机给一名英雄加级，每助力一次，后续提升效果增加1级；单挂能把这份成长集中到当前战斗英雄。小菟送福对随机四名英雄各触发一次助力，因此保留四名主要受益者可避免漏掉主力。己方英雄等级总和达到50、150、375级时各领取一次送福；同时持有两种牌时，通常先送福、后助力，让后续助力吃到更多累计次数收益。\n知识或技巧详解：先送福可增加累计助力次数，再把成长兑现到后打出的助力。\n自然语言适用条件：解释为何使用棋手技能时，手上还有助力且打完送福后有至少一点能量。\n正式条件：arg1 is \"小菟送福\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟助力\"} and 玩家.剩余能量 >= 1\n30 字表达取舍：播报保留「手里也有小菟助力，先用送福能让下一次助力多升几级。」，以入库前的独立复核为准。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「助力次数与等级门槛」 · n-d74e53e18cea3a7192ed",
-  "explanation_after": "事件与条件复核：解释为何使用棋手技能，核对了手上还有助力且打完送福后有至少一点能量。单项反例：没有手里的助力就没有当下排序收益。话术复核：句子围绕先送福可增加累计助力次数，再把成长兑现到后打出的助力，沿用来源支持的动作和结果，删去旁支卡面效果。"
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_e8d5192d579a4011b9db38122e5a4f67",
+      "text": "手里还有小菟助力，先送福能提高下次助力的等级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:92499": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92499",
+        "name": "小菟助力",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:92410": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "对场上的随机4名英雄各触发1次小菟助力，使其等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92410",
+        "name": "小菟送福",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  }
 }
