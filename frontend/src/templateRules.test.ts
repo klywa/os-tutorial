@@ -72,11 +72,15 @@ describe('visual condition editor',()=>{
   }
   expect(targeted.find(p=>p.path==='玩家.战场.计数(标签, "")')).toMatchObject({type:'int',filter:{field:'标签',choices:['登场']}});
   expect(targeted.find(p=>p.path==='对局.当前对手.战场.计数(阵营, "")')).toMatchObject({type:'int',filter:{field:'阵营'}});
+  expect(targeted.find(p=>p.path==='玩家.战场.计数(英雄, [])')).toMatchObject({type:'int',filter:{field:'英雄'}});
   expect(targeted.some(p=>p.path.startsWith('玩家.手牌.计数(标签,'))).toBe(false);
  });
  it('keeps visual drafts incomplete until their count filter has a value',()=>{
   expect(completeTree(leaf('玩家.战场.计数(标签, "")','>=','2'))).toBe(false);
   expect(completeTree(leaf('玩家.战场.计数(标签, "登场")','>=','2'))).toBe(true);
+  expect(completeTree(leaf('玩家.战场.计数(英雄, [])','>=','2'))).toBe(false);
+  expect(completeTree(leaf('玩家.战场.计数(英雄, [)','>=','2'))).toBe(false);
+  expect(completeTree(leaf('玩家.战场.计数(英雄, ["小乔",{"类型":"英雄","名称":"弈星","已觉醒":true}])','>=','2'))).toBe(true);
  });
  it('allows name comparisons and entity membership for nominal units',()=>{
   const compatible=(left:string,right:string,op:string)=>compatibleRight(left,right,op,{},['单位','英雄','衍生物']);

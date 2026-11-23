@@ -1,9 +1,133 @@
 """Check editorial limits for newly generated v3 groups before import."""
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
+
+if __name__ == "__main__":
+    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
+
+from src.python.condition import _Evaluator, _catalog, _event_name
+
+
+_ARG = re.compile(r"(arg[1-9][0-9]*)(?:\s*\.\s*名称)?")
+_FORM = re.compile(r"(arg[1-9][0-9]*)\s*\.\s*已觉醒")
+_CONTEXT = ("context",)
+
+
+def _name(value):
+    if isinstance(value, dict):
+        return value.get("名称", value.get("name"))
+    return value if isinstance(value, str) else None
+
+
+def _node(value):
+    return getattr(value, "editorial_node", _CONTEXT)
+
+
+class _ConditionShape(_Evaluator):
+    """Reuse the formal parser while retaining identities and boolean structure."""
+
+    def __init__(self, source, event_name, catalog):
+        super().__init__(source, event_name, {}, {}, catalog)
+        self.source = source
+
+    def primary(self):
+        kind, _, start = self.token
+        value = super().primary()
+        if kind == "id":
+            path = self.source[start - 1:self.token[2] - 1].strip()
+            arg = _ARG.fullmatch(path)
+            if arg:
+                value.editorial_arg = arg[1]
+            form = _FORM.fullmatch(path)
+            if form:
+                value.editorial_node = ("form", form[1])
+        elif kind in ("true", "false"):
+            value.editorial_node = ("constant", value.value)
+        return value
+
+    def compare(self, op, left, right):
+        result = super().compare(op, left, right)
+        if op in ("is", "==") and "form" in (_node(left)[0], _node(right)[0]):
+            if isinstance(right.value, bool):
+                result.editorial_node = _node(left)
+            elif isinstance(left.value, bool):
+                result.editorial_node = _node(right)
+        if op == "is" and getattr(right, "editorial_arg", None):
+            left, right = right, left
+        arg = getattr(left, "editorial_arg", None)
+        if arg and op == "in" and right.types == ("Array<?>",):
+            names = tuple(_name(item.value) for item in right.value)
+            if names and all(names):
+                result.editorial_node = ("identity", arg, frozenset(names))
+        elif arg and op == "is" and _name(right.value):
+            result.editorial_node = ("identity", arg, frozenset((_name(right.value),)))
+        elif op in ("has", "in"):
+            array, member = (left, right) if op == "has" else (right, left)
+            candidate = getattr(array, "editorial_arg", None)
+            selected_arg = getattr(member, "editorial_arg", None)
+            if candidate and (_name(member.value) or selected_arg):
+                result.editorial_node = ("candidate", candidate, _name(member.value), selected_arg)
+        return result
+
+    def logic(self, op, left, right=None):
+        result = super().logic(op, left, right)
+        result.editorial_node = (op, _node(left)) if op == "not" else (op, _node(left), _node(right))
+        return result
+
+
+def _branches(node, negated=False):
+    kind, *parts = node
+    if kind == "not":
+        return _branches(parts[0], not negated)
+    if kind in ("or", "and"):
+        left, right = (_branches(part, negated) for part in parts)
+        if (kind == "or") != negated:
+            return left | right
+        return {a | b for a in left for b in right}
+    if kind == "candidate" and negated:
+        node = _CONTEXT
+    if kind == "identity" and negated:
+        node = (kind, parts[0], frozenset())
+    if kind == "constant":
+        return {frozenset()} if parts[0] != negated else set()
+    if node == _CONTEXT:
+        return set()  # Only branches without a separate condition can be trivial.
+    return {frozenset((node,))}
+
+
+def trivial_condition(group, condition_catalog=None):
+    event_name = group.get("event_name", "")
+    if not event_name.startswith("解释为何"):
+        return None
+    scope = group.get("scope", {})
+    if scope.get("player") or scope.get("lineup"):
+        return None  # The independent review verifies that the binding has decision value.
+    expression = group.get("expression", "")
+    if not expression.strip():
+        return "解释组缺少有局面依据的生效条件"
+    catalog = _catalog(condition_catalog)
+    shape = _ConditionShape(expression, _event_name(event_name, catalog), catalog)
+    for branch in _branches(_node(shape.parse())):
+        if not branch:
+            return "解释组存在无局面限制的生效分支"
+        identities = [term for term in branch if term[0] == "identity"]
+        core_args = {term[1] for term in branch if term[0] in ("identity", "form")}
+        if len(core_args) != 1:
+            continue
+        core_arg = next(iter(core_args))
+        candidates = [term for term in branch if term[0] == "candidate"]
+        if not candidates:
+            return "生效分支只识别一个事件参数或限定其形态"
+        positive_names = [set(term[2]) for term in identities if term[2]]
+        names = set.intersection(*positive_names) if positive_names else set()
+        if all(arg != core_arg and (reference == core_arg or bool(name) and names == {name})
+               for _, arg, name, reference in candidates):
+            return "生效分支仅重复确认候选列表含所选对象"
+    return None
 
 
 def _longest_slot_values(group, catalog, references, cases):
@@ -56,15 +180,19 @@ def check(document, *, scenarios=()):
             cases_by_group[tuple(case["group"])].append(case)
     for index, group in enumerate(document["groups"], 1):
         name = group.get("name") or str(index)
-        explanation = group.get("explanation")
-        if not isinstance(explanation, str) or not explanation.strip() or len(explanation) > 300:
-            raise ValueError(f"{name}：请填写 300 字以内的说明与依据")
+        for field in ("explanation_before", "explanation_source", "explanation_after"):
+            value = group.get(field)
+            if not isinstance(value, str) or not value.strip():
+                raise ValueError(f"{name}：缺少 {field}")
         lines = group.get("utterances")
-        if not isinstance(lines, list) or len(lines) < 2:
-            raise ValueError(f"{name}：需要多条可独立使用的话术")
+        if not isinstance(lines, list) or not lines:
+            raise ValueError(f"{name}：至少需要一条可独立使用的话术")
         if any(not isinstance(line, str) or not line.strip() for line in lines):
             raise ValueError(f"{name}：每句须完整且不超过 30 字")
         try:
+            problem = trivial_condition(group, document.get("condition_catalog"))
+            if problem:
+                raise ValueError(problem)
             references = dict.fromkeys(path for line in lines for path in utterance_references(line))
             values = _longest_slot_values(
                 group, document.get("condition_catalog"), references,
@@ -79,7 +207,6 @@ def check(document, *, scenarios=()):
 
 
 if __name__ == "__main__":
-    sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("package", type=Path)
     parser.add_argument("--scenarios", type=Path, help="含数字槽位时提供实际命中各组的正例")

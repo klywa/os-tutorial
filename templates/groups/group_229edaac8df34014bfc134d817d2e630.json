@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "《装备》噬神之书列举弈星、芈月作为过渡持有人，并未限定转移者；吸血和法攻的受益者是接收装备的嬴政。官方噬神之书及嬴政飞剑。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "让嬴政接过噬神之书，飞剑能多打法伤，也能靠伤害回血。",
+      "text": "嬴政已是主力，转给他噬神之书可用飞剑伤害回血。",
       "id": "utterances_d772dc725b364eb58746576ed5d81f25"
-    },
-    {
-      "text": "噬神之书转给嬴政，法攻和法术吸血都能用在飞剑上。",
-      "id": "utterances_b96b4003bf5143129ab2d93ef26891bd"
     }
   ],
   "id": "group_229edaac8df34014bfc134d817d2e630",
   "event_id": "os_f5a416d50e37a948",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg2 is \"噬神之书\" and arg3 is \"嬴政\"",
-  "editor_mode": "text"
+  "expression": "arg1 in [\"弈星\", \"芈月\"] and arg2 is \"噬神之书\" and arg3 is \"嬴政\" and 玩家.主C is \"嬴政\" and 玩家.主C in 玩家.战场",
+  "condition_tree": null,
+  "explanation_source": "knowledge/other/装备.json「噬神之书」 · equipment-card-643801\n正式卡牌库：噬神之书（card:643801）\n正式卡牌库：嬴政（card:1101）\n正式卡牌库：嬴政（card:1103）",
+  "explanation_before": "原始内容：可先将噬神之书交给弈星或芈月，找到嬴政后再决定是否转交。\n知识或技巧详解：噬神之书的法术攻击和法术吸血可同时服务嬴政的飞剑。当前在场主力已换成嬴政，可把原给弈星或芈月的装备资源集中给他。\n自然语言适用条件：从弈星或芈月身上把噬神之书转给当前在场的主力嬴政。\n正式条件：arg1 in [\"弈星\", \"芈月\"] and arg2 is \"噬神之书\" and arg3 is \"嬴政\" and 玩家.主C is \"嬴政\" and 玩家.主C in 玩家.战场\n30 字表达取舍：保留主力变更后飞剑伤害与续航都受益这项取舍。",
+  "explanation_after": "来源和去向均精确限定。缺少在场主力时不能把这个转移解释为培养当前核心。"
 }

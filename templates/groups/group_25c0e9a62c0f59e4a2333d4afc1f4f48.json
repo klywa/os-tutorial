@@ -4,26 +4,27 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》孙膑及前期过渡。场上唯一英雄是尚未觉醒的孙膑，用已确认身份的在场主C读取觉醒状态。买同名牌为这名单挂英雄推进觉醒。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "买同名孙膑补觉醒，让单挂的施法成长更快。",
+      "text": "给单挂孙膑买同名牌补觉醒，后续施法可多获得等级。",
       "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb"
     },
     {
-      "text": "这张孙膑能给场上那张补觉醒，后续施法多拿等级。",
+      "text": "给场上的孙膑补觉醒，后续施法能留下更多等级。",
       "id": "utterances_05445b17692b4907a7fd4ce9a2ee6c64"
-    },
-    {
-      "text": "先给单挂孙膑推进觉醒，后面能靠施法攒更多等级。",
-      "id": "utterances_386671db86b54812a4389d7b9dfb47ce"
     }
   ],
   "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
   "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998\n正式卡牌库：孙膑（card:1181）\n正式卡牌库：孙膑（card:1183）",
+  "explanation_before": "原始内容：孙膑可作为前期单挂；使用免费的来牌补觉醒可提高每次施法成长。\n知识或技巧详解：孙膑单独施法也能触发永久成长，觉醒后该成长提高。购买当前同名孙膑是为已有单挂孙膑补进度。\n自然语言适用条件：前期只上孙膑，且作为主力的孙膑还未觉醒，正购买同名牌。\n正式条件：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒\n30 字表达取舍：保留买重复卡的即时目的和后续收益。",
+  "explanation_after": "原有孙膑觉醒后不播。仅说明推进觉醒，未读取当前进度，不保证立即觉醒。"
 }

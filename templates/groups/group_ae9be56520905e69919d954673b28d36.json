@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第4行「使用技巧」。刘禅按队友施法次数为施法者叠临时等级。貂蝉法力值上限较低，可反复触发这个收益。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "上刘禅，貂蝉每次放技能都能获得临时等级。",
+      "text": "貂蝉已在场，上刘禅能让她每次施法都获临时等级。",
       "id": "utterances_1706dd69d7654c7ba418442167857bdb"
-    },
-    {
-      "text": "貂蝉施法多，上刘禅能把这些施法变成临时等级。",
-      "id": "utterances_55b6d4da1d9546b9b220744a988e2b60"
     }
   ],
   "id": "group_ae9be56520905e69919d954673b28d36",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第4行「使用技巧」，正式卡牌库 card:1141、card:1143、card:1411、card:1413。",
+  "explanation_before": "原始内容：你的英雄释放技能时，该英雄获得2临时等级。\n知识详解：貂蝉在场，刘禅上线后能使她每次施法获得临时等级。貂蝉的施法频率影响最后取得多少等级。\n适用条件：正在上阵刘禅，己方已有貂蝉。\n条件语法：arg1 is \"刘禅\" and 玩家.战场 has \"貂蝉\"\n30 字表达取舍：保留在场的貂蝉及每次施法可以得级，不宣称本轮会放几次。",
+  "explanation_after": "没有貂蝉时，本组的点名理由不成立。普通和觉醒刘禅给的级数不同，本句不报固定数值。"
 }

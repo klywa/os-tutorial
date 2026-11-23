@@ -1,25 +1,27 @@
 {
-  "name": "用过登场后卖阿轲集中小菟助力",
+  "name": "卖阿轲后只留一人集中小菟助力",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "卖掉阿轲只留一人，小菟助力就能集中给场上的英雄。",
+      "text": "卖掉阿轲后场上只剩一人，小菟助力就能集中给他。",
       "id": "utterances_7cf10ba03aee436ea4ccaa00b57c2422"
-    },
-    {
-      "text": "阿轲退场不影响已经拿到的登场等级，还能避免分走小菟助力。",
-      "id": "utterances_9c0d7ea174154110afa131afaf5e00f3"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》「阿轲」、「前期运营思路」。前期单挂时在两次助力之间借用登场工具。出售后只剩一名其他英雄，下次助力的随机候选由此收窄；不预设当轮技能已经使用。",
-  "event_id": "os_02f23dfd4155737d",
   "id": "group_9c64fde5fa0a4292aab5ea2c34babc78",
+  "event_id": "os_02f23dfd4155737d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"阿轲\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"阿轲\")",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"阿轲\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"阿轲\")",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「阿轲」「前期运营思路」，正式卡牌库 card:1161、card:1163、card:92499。",
+  "explanation_before": "原始内容：使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。\n知识详解：在单挂培养中可先借阿轲登场提升等级，再卖掉她回到单人战场。实际有小菟助力时，其目标只有现存的一名英雄。\n适用条件：常小娥灵活4人组，从战场出售阿轲后只剩一名英雄且再无阿轲。\n条件语法：arg1 is \"阿轲\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"阿轲\")\n30 字表达取舍：保留售后只剩一名与助力对象，省去无法确认的已领取登场收益。",
+  "explanation_after": "未要求助力即刻可用，也未声称此次出售前已触发任何次数。"
 }

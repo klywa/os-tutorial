@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第42行「使用技巧」。钟馗给自身和左右一格英雄牺牲，自己也是牺牲来源。李信从有牺牲效果的友方阵亡获得临时等级；不承诺相邻对象。",
+  "explanation": "",
+  "explanation_after": "无站位条件时不能指定另一名队友也获得牺牲。首句仅说明钟馗自身阵亡可贡献临时等级。",
+  "explanation_before": "原始内容：每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。 自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。\n知识详解：李信从有牺牲效果的己方英雄阵亡中拿临时等级。钟馗为自身提供牺牲，也可能给左右相邻英雄提供。\n适用条件：上阵钟馗，李信已在场。\n条件语法：arg1 is \"钟馗\" and 玩家.战场 has \"李信\"\n30 字表达取舍：说明钟馗成为一名新的牺牲来源，不依赖旁边有队友。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「李信」「钟馗」，正式卡牌库 card:5071、card:5073、card:1751、card:1753。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "上钟馗补一个牺牲来源，阵亡时能给李信临时等级。",
+      "text": "李信已在场，上钟馗能多一名阵亡时给他加级的英雄。",
       "id": "utterances_7985fd4705214e92926b2fb215061413"
-    },
-    {
-      "text": "李信在场，上钟馗能让更多牺牲阵亡带来临时等级。",
-      "id": "utterances_f43902c4731d48fab7eeccca91685fad"
     }
   ],
   "id": "group_98fdfb42867a5e7b90aabc89256d7bde",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"钟馗\" and 玩家.战场 has \"李信\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"钟馗\" and 玩家.战场 has \"李信\""
 }

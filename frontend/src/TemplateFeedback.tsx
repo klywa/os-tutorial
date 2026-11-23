@@ -2,7 +2,7 @@ import {useEffect,useState} from 'react';
 import {useAuth} from './auth';
 import {api} from './model';
 import {TemplateDialog} from './TemplateEditor';
-import type {TemplateGroup} from './templates';
+import {templateMetadataLabels,type TemplateGroup} from './templates';
 
 export type FeedbackTarget={group?:TemplateGroup;utteranceId?:string};
 type Message={action:string;by:string;at:string;body?:string;revisions?:{body:string;at:string}[];edited_at?:string};
@@ -16,7 +16,7 @@ function ChangeSummary({record}:{record:Activity}){
  if(!before||!after)return null;
  const rows=new Map(before.utterances.map(row=>[row.id,row]));
  const newRows=new Map(after.utterances.map(row=>[row.id,row]));
- const fields={name:'组名',scope:'适用范围',conditions:'条件',expression:'表达式',explanation:'说明',priority:'优先级',ignored:'忽略状态',event_id:'事件'} as const;
+ const fields={name:'组名',scope:'适用范围',conditions:'条件',expression:'表达式',explanation:'说明',priority:'优先级',ignored:'忽略状态',event_id:'事件',...templateMetadataLabels} as const;
  return <ul>{(Object.keys(fields) as (keyof typeof fields)[]).filter(k=>JSON.stringify(before[k])!==JSON.stringify(after[k])).map(k=><li key={k}>{fields[k]}：{JSON.stringify(before[k])??'无'} → {JSON.stringify(after[k])??'无'}</li>)}{Array.from(new Set([...rows.keys(),...newRows.keys()])).filter(id=>JSON.stringify(rows.get(id))!==JSON.stringify(newRows.get(id))).map(id=><li key={id}>话术：{rows.get(id)?.text??'无'} → {newRows.get(id)?.text??'无'}{newRows.get(id)?.ignored?'（忽略）':''}</li>)}</ul>;
 }
 

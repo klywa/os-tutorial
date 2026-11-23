@@ -26,7 +26,7 @@ def build(root):
             old_title = text.splitlines()[0][2:]
             if branch:
                 player = branch['player']
-                family = '常小娥灵活变阵' if original['id'] == 'changxiaoe-general-play' else original['title']
+                family = '常小娥灵活4人组' if original['id'] == 'changxiaoe-general-play' else original['title']
                 title = family + '-' + players[player]
                 nid = original['id'] if len(variants) == 1 else original['id'] + '--' + branch['id']
                 note.update(id=nid, title=title, player_id=player, lineup_name=family,

@@ -4,22 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“使用无目标效果牌”事件中，使用全军动员，亚连在场时适用。全军动员让亚连再次整备，同时为英雄和阿科米亚核心升级。依据为《常小娥灵活变阵-常小娥》「亚连」及官方效果牌「全军动员」、英雄「亚连」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "全军动员触发亚连整备，能提高装备最多的一名英雄的等级。",
+      "text": "亚连在场，全军动员能给装备最多的英雄升级。",
       "id": "utterances_28deaf533f204c1e8a6209809f25cdb2"
     },
     {
-      "text": "全军动员让亚连再次整备，同时为英雄和阿科米亚核心升级。",
+      "text": "全军动员触发亚连整备，阿科米亚核心也能升级。",
       "id": "utterances_f47ac974fd544f8d8dcad33e5b8b945a"
     }
   ],
-  "event_id": "os_1c33df3b1a2b43f5",
   "id": "group_0ba16212d07844d3be5b2311b45de3bf",
+  "event_id": "os_1c33df3b1a2b43f5",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"全军动员\" and 玩家.战场 has \"亚连\"",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「亚连」 · n-020fbad7424a0badea41\n正式卡牌库：全军动员（card:7080）\n正式卡牌库：亚连（card:5141）\n正式卡牌库：亚连（card:5143）",
+  "explanation_before": "原始内容：亚连有定向成长作用，整备会给装备最多者升级，也会提升阿科米亚核心等级。\n知识或技巧详解：全军动员立即触发场上英雄整备；亚连当场提供一次或两次加级，受益者由穿戴装备数量决定。\n自然语言适用条件：使用全军动员时，己方场上已有亚连。\n正式条件：arg1 is \"全军动员\" and 玩家.战场 has \"亚连\"\n30 字表达取舍：讲有亚连时能多拿哪种收益，不提前认定主力。",
+  "explanation_after": "移除亚连就失去该项成长。并列最多时未锁定具体英雄，候选句只说可确定的受益范围。"
 }

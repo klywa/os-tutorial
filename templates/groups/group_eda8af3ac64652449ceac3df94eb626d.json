@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "人才济济使升级所需经验-2，每次升级还获人才搜寻。棋手3级及以下至少可向更高等级援用多次，与接近满级的场景区分。 来源：personal/knowledge_tips.jsonl 第157行；本地官方卡面 card:613004。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "现在等级低，人才济济能帮后续多次升级省经验。",
+      "text": "棋手等级还低，选人才济济能为后续多次升级省经验。",
       "id": "utterances_b10540eb5bf64e599f67b357e5822b8e"
-    },
-    {
-      "text": "提早选人才济济，后续每次升级还能多拿一张人才搜寻。",
-      "id": "utterances_9454ec5be3944ae8ba8aef303718dd4a"
     }
   ],
   "id": "group_eda8af3ac64652449ceac3df94eb626d",
   "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"人才济济\" and 玩家.等级 <= 3",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"人才济济\" and 玩家.等级 <= 3",
+  "explanation_before": "原始内容：越早拿到、后续升级次数越多，收益越高，接近满级时拿到收益有限。\n人才济济：升级所需棋手经验-2，每次升级时获得1张天赋牌人才搜寻。\n知识或技巧详解：人才济济减轻每一次后续升级的经验要求，低等级有多次利用机会。\n自然语言适用条件：解释为何选择天赋时，棋手当前三级或更低。\n正式条件：arg2 is \"人才济济\" and 玩家.等级 <= 3\n30 字表达取舍：播报保留「棋手等级还低，选人才济济能为后续多次升级省经验。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第157行「人才济济・使用技巧」\n正式卡牌库 人才济济（card:613004）",
+  "explanation_after": "事件与条件复核：解释为何选择天赋，核对了棋手当前三级或更低。单项反例：接近满级时可利用的升级次数变少。话术复核：句子围绕人才济济减轻每一次后续升级的经验要求，低等级有多次利用机会，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

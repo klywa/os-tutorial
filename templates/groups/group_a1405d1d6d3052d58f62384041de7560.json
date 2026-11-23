@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第89行「使用技巧」。驭势在开战时复制对手所有场上英雄。当前对手有与己方未觉醒主C同名的主C，此时用技能可争取同名牌；战前对手换人或手牌不足时不保证到手。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "对面也有同名主力，用驭势有机会补一张合成牌。",
+      "text": "对手也有同名主力，用驭势有机会补一张觉醒材料。",
       "id": "utterances_2fc9e79ca1a74ef0ba205ef6a547cdf4"
-    },
-    {
-      "text": "驭势会复制开战时的敌方阵容，可找同名主力追觉醒。",
-      "id": "utterances_3ed9160690a248d1b1051f67f40e0b83"
     }
   ],
   "id": "group_a1405d1d6d3052d58f62384041de7560",
   "event_id": "os_b59f8bd6d43110d4",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场",
+  "explanation_source": "personal/knowledge_tips.jsonl 第89行「使用技巧」，正式卡牌库 card:93610。",
+  "explanation_before": "原始内容：战斗开始时，将敌方场上所有英雄复制进你的手牌。\n知识详解：若对方在开战时仍有与己方未觉醒主力同名的英雄，驭势能复制同名牌供后续合成。战斗名单由开战时采样。\n适用条件：弈星使用驭势，己方主力尚未觉醒。当前对手主力同名，且确实在对手场上。\n条件语法：arg1 is \"驭势\" and 玩家.使用棋手 is \"弈星\" and 玩家.主C is 对局.当前对手.主C and not 玩家.主C.已觉醒 and 玩家.主C in 对局.当前对手.战场\n30 字表达取舍：保留同名主力与追觉醒机会，省去战场整队复制的其他用途。",
+  "explanation_after": "对手开战前可能换人，话术不保证复制到手或立即觉醒。"
 }

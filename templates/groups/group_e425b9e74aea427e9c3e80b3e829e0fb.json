@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "选武装分解可补主力最后一点进度，要拆同一人身上正好两件装备。",
+      "text": "主力差一点觉醒，武装分解拆两件能拿妙音补上。",
       "id": "utterances_a0a6d60c431c4d20ac37c28fa2f8d6c4"
-    },
-    {
-      "text": "主力还差一次觉醒，分解同一英雄身上正好两件装备就能拿妙音。",
-      "id": "utterances_7cfd84a2a7c84e74998f2c800e912110"
     }
   ],
-  "explanation": "《常用技巧》缺觉醒进度时，用妙音补目标英雄；《基础知识》三次合成觉醒。武装分解官方卡：1件得4能量，恰好2件得妙音，3件得珍品宝箱。需愿意放弃同一人身上的全部两件装备；条件不能读取槽位，不承诺现有两件。卡面明确商店／拍卖渠道。",
-  "event_id": "os_b9276a29aaffc6ba",
   "id": "group_e425b9e74aea427e9c3e80b3e829e0fb",
+  "event_id": "os_b9276a29aaffc6ba",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"武装分解\" and arg1 has \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg2 is \"武装分解\" and arg1 has \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2",
+  "explanation_before": "原始内容：目标英雄缺觉醒进度时，可以用4阶效果牌妙音补1点。觉醒杨玉环每过3回合或退场时会提供妙音，5阶效果牌武装分解摧毁恰好2件装备时也会给妙音。武装分解可通过商店、效果锦囊、拍卖等渠道获得。先确认愿意失去这两件装备。摧毁1件给能量，摧毁3件给珍品宝箱。普通杨玉环提供的2阶效果牌弦音只适用于1至3阶英雄，可给裴擒虎补进度。目标英雄达到4阶及以上时，准备妙音。\n知识或技巧详解：现在取牌，之后分解恰好两件才能获得补进度用的妙音。\n自然语言适用条件：解释为何选择效果牌时，主力还差一点觉醒且武装分解可选。\n正式条件：arg2 is \"武装分解\" and arg1 has \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2\n30 字表达取舍：播报保留「主力差一点觉醒，武装分解拆两件能拿妙音补上。」，以入库前的独立复核为准。",
+  "explanation_source": "knowledge/other/常用技巧.json「缺觉醒进度时，用妙音补目标英雄」 · common-tips-awakening-supply\nknowledge/other/基础知识.json",
+  "explanation_after": "事件与条件复核：解释为何选择效果牌，核对了主力还差一点觉醒且武装分解可选。单项反例：主力已有觉醒或还差两点时不能靠一张妙音补完。话术复核：句子围绕现在取牌，之后分解恰好两件才能获得补进度用的妙音，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

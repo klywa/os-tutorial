@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "下场战斗由随机一名己方英雄获得敌方当前等级最高英雄一半等级，包含临时等级。以100级为保守教材门槛；不保证分给主C或本场获胜。 来源：personal/knowledge_tips.jsonl 第213行；本地官方卡面 card:7085。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "对面最高{对局.当前对手.最高等级英雄.等级}级，移花接木随机给一人一半等级。",
+      "text": "对手最高已达百级，移花接木能随机给一人一半等级。",
       "id": "utterances_e1b33d40d20d4c99acbc4f1ae3bb56aa"
-    },
-    {
-      "text": "这场对手有高等级英雄，移花接木能取他的一半等级。",
-      "id": "utterances_610c700bce34410c97bf90f20f57c87b"
     }
   ],
   "id": "group_ace388e267f851c686efef590329c50d",
   "event_id": "os_1c33df3b1a2b43f5",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"移花接木\" and 对局.当前对手.最高等级英雄.等级 >= 100",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"移花接木\" and 对局.当前对手.最高等级英雄.等级 >= 100",
+  "explanation_source": "personal/knowledge_tips.jsonl 第213行「使用技巧」，正式卡牌库 card:7085。",
+  "explanation_before": "原始内容：在下场战斗中，随机1名英雄获得敌方当前等级最高英雄的一半等级（包含临时等级）。\n知识详解：下场战斗中随机一名己方英雄获得对手最高等级英雄一半等级。对方等级更高时，这项收益也更高。\n适用条件：正在使用移花接木，当前对手最高等级英雄达到一百级。\n条件语法：arg1 is \"移花接木\" and 对局.当前对手.最高等级英雄.等级 >= 100\n30 字表达取舍：保留对手已达百级及随机获得等级。不要宣称某名己方英雄会得到。",
+  "explanation_after": "对手下一场的最高等级若改变，以实际结算时的状态为准。删除未经条件保证的接收者。"
 }

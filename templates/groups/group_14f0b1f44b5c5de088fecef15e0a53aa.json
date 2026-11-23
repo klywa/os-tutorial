@@ -4,14 +4,16 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「孙膑」「刘禅」。上阵后的两名英雄分别是孙膑、刘禅。刘禅担任前排，每名英雄独立计算施法次数。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "孙膑和刘禅各自施法三次，都能给自己留下永久等级。",
+      "text": "上孙膑配刘禅，两人各自施法三次就能永久升级。",
       "id": "utterances_69485b15f57241ddaa9f7ac381da53d4"
     },
     {
-      "text": "刘禅靠护盾扛伤，孙膑能让两人的反复施法换来永久等级。",
+      "text": "刘禅在场，配孙膑可把反复施法的收益留到下回合。",
       "id": "utterances_f60341f2679948e794db2b4f78dc3714"
     }
   ],
@@ -19,7 +21,10 @@
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\""
+  "priority": 0,
+  "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · 孙膑／刘禅\n正式卡牌库：刘禅（card:1141）\n正式卡牌库：孙膑（card:1181）\n正式卡牌库：孙膑（card:1183）",
+  "explanation_before": "原始内容：孙膑、刘禅可同场，分别靠反复施法成长；刘禅可承担前排。\n知识或技巧详解：刘禅让施法者获得临时等级。孙膑则让每个施法者独立计次，每满三次后获得永久等级。\n自然语言适用条件：常小娥阵容上孙膑，结算后场上仅孙膑、刘禅。\n正式条件：arg1 is \"孙膑\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\"\n30 字表达取舍：说明刘禅提供的临时成长也能配合孙膑的长线收益。",
+  "explanation_after": "三次按每名英雄分别统计。不能说两人合计三次就升永久等级，也不承诺每场必然施法三次。"
 }

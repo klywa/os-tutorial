@@ -4,19 +4,13 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》日落海过渡。此处解释狂铁承伤、米莱狄以仆从接触远端敌人的职责，只需判断狂铁在场。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "狂铁在前面扛伤，米莱狄用仆从去打远处敌人。",
+      "text": "狂铁可留前排，上米莱狄能用仆从攻击远处敌人。",
       "id": "utterances_a4e1abeb8e1e4a03b1dec0e0e7baed36"
-    },
-    {
-      "text": "上米莱狄能补日落海过渡的后排伤害。",
-      "id": "utterances_211ff24505184e54ad0a9f90c894c459"
-    },
-    {
-      "text": "狂铁拖住近处敌人，米莱狄的机械仆从能去打远处。",
-      "id": "utterances_d66ac4a8a77e45b7a6b32355bce110ee"
     }
   ],
   "id": "group_149076b36a284c97b4200b7497d41e01",
@@ -48,7 +42,10 @@
       "name": "米莱狄"
     }
   ],
-  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\"",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · 日落海过渡／狂铁／米莱狄\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：米莱狄（card:5041）",
+  "explanation_before": "原始内容：日落海前期由狂铁承担前排；米莱狄可用机械仆从补远处伤害。\n知识或技巧详解：两者的战斗职责不同。狂铁可留在前排，米莱狄的仆从向较远目标输出，弥补只有近身成员时的接敌距离。\n自然语言适用条件：常小娥灵活4人组中，狂铁已在场，正在上阵米莱狄。\n正式条件：arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\"\n30 字表达取舍：点明当前前排与新增远端攻击的互补。",
+  "explanation_after": "不能从英雄存在推出实际站位，话术用“可”说明搭配用途，不声称命中敌方主力。"
 }

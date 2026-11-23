@@ -4,26 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "explanation": "",
+  "explanation_after": "事件与条件复核：解释为何对目标使用效果牌，核对了遗志移除供级英雄后场上只剩一名英雄。单项反例：再多一个在场接收者，永久等级不保证落给原目标。话术复核：句子围绕唯一候选会接收供级者的非临时等级，沿用来源支持的动作和结果，删去旁支卡面效果。",
+  "explanation_before": "原始内容：3阶效果牌，可通过效果锦囊等渠道获得。移除指定英雄，把其等级转给1名随机英雄，临时等级不转移。想稳定交给某名主力，就先让场上只剩供级英雄和该主力，再使用遗志；其他英雄晚些上场，避免分走等级。\n知识或技巧详解：唯一候选会接收供级者的非临时等级。\n自然语言适用条件：解释为何对目标使用效果牌时，遗志移除供级英雄后场上只剩一名英雄。\n正式条件：arg2 is \"遗志\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has arg1)\n30 字表达取舍：播报保留「遗志移除目标后只剩一名队友，永久等级就全给他。」，以入库前的独立复核为准。",
+  "explanation_source": "knowledge/other/常用技巧.json「遗志」 · common-tips-legacy",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "遗志会移除供级者，把永久等级给剩下那名英雄。",
+      "text": "遗志移除目标后只剩一名队友，永久等级就全给他。",
       "id": "utterances_a78ef26a4ead4024b3464d47a14b1756"
-    },
-    {
-      "text": "场上只留一名接收者，遗志能把永久等级集中给他。",
-      "id": "utterances_9bece117d58c4658977f1e9b95e7935f"
-    },
-    {
-      "text": "这次用遗志换人，留下来的英雄能接住原来的永久等级。",
-      "id": "utterances_ed71c68d5a0748c081657d8566a0981d"
     }
   ],
-  "explanation": "《常用技巧》遗志和先数传承的接收者。动作结束后供级者已移除，场上只剩一名实际接收候选。遗志将永久等级给唯一剩下的英雄。",
-  "event_id": "os_bfcc2eec6def94c8",
   "id": "group_e75a4014794040d38cfc82989050bcae",
+  "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
+  "priority": 0,
   "expression": "arg2 is \"遗志\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has arg1)",
-  "editor_mode": "text",
-  "priority": 0
+  "editor_mode": "text"
 }

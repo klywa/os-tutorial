@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第94行「使用技巧」。基层提拔给打出的1至3阶英雄加三级。条件使用官方确认为一阶的手牌孙膑，使选择后有可执行的跟进。战略决策并不保证能刷到该选项。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "手里有孙膑，选基层提拔后打他还能多升三级。",
+      "text": "手里有孙膑，选基层提拔后再打出他，就能多升三级。",
       "id": "utterances_c902937c1d46497aae3c3fef287c6d97"
-    },
-    {
-      "text": "先选基层提拔，再打手里的孙膑就有额外三级。",
-      "id": "utterances_4ab06a83e8544ca1b2e75f05fbce3c88"
     }
   ],
   "id": "group_f064f05adbc3559a8f0311e5c6ed68e3",
   "event_id": "os_7be319d5c5ce8554",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}",
+  "explanation_before": "原始内容：手上有未使用的战略决策时，先使用再打出1-3阶英雄牌，有可能选到基层提拔，再打出英雄可获得额外等级。\n知识或技巧详解：拿天赋后打出这张已经持有的牌可兑现等级奖励。\n自然语言适用条件：解释为何选择棋手技能时，嬴律手里已有低阶孙膑，基层提拔可选。\n正式条件：arg2 is \"基层提拔\" and arg1 has \"基层提拔\" and 玩家.使用棋手 is \"嬴律\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"孙膑\"}\n30 字表达取舍：播报保留「手里有孙膑，选基层提拔后再打出他，就能多升三级。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第94行「战略决策_嬴律_效果・使用技巧」",
+  "explanation_after": "事件与条件复核：解释为何选择棋手技能，核对了嬴律手里已有低阶孙膑，基层提拔可选。单项反例：拿走手里的孙膑，无法给出这个具体跟进行动。话术复核：句子围绕拿天赋后打出这张已经持有的牌可兑现等级奖励，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

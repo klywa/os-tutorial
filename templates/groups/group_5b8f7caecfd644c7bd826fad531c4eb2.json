@@ -4,22 +4,27 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "在“使用棋手技能”事件中，使用小菟助力，场上只有一名英雄时适用。单挂时使用小菟助力，可以让当前战斗英雄集中成长。依据为《常小娥灵活变阵-常小娥》「助力次数与等级门槛」及官方棋手技能「小菟助力」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "场上只有一名英雄，小菟助力提供的等级都能给他。",
+      "text": "场上只留一人，小菟助力的等级就能全给他。",
       "id": "utterances_5769cc7a0b504b028bc48dbb36f9e1e1"
     },
     {
-      "text": "单挂时使用小菟助力，可以让当前战斗英雄集中成长。",
+      "text": "单人场用小菟助力，可以把本次成长集中给这名英雄。",
       "id": "utterances_2a675d7757a04deeb9f634c7c1a0615b"
     }
   ],
-  "event_id": "os_b59f8bd6d43110d4",
   "id": "group_5b8f7caecfd644c7bd826fad531c4eb2",
+  "event_id": "os_b59f8bd6d43110d4",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1",
-  "editor_mode": "text"
+  "explanation_before": "原始内容：使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。\n知识或技巧详解：小菟助力从在场英雄中随机选一人。常小娥只留一人承担本轮战斗时，随机候选只剩他，成长就不会分散。\n自然语言适用条件：常小娥采用灵活变阵，正在使用小菟助力，场上只有一名英雄。\n正式条件：arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1\n30 字表达取舍：说明集中成长的原因，保留单人场和牌名，省去未来等级加成的累计。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「助力次数与等级门槛」 · n-d74e53e18cea3a7192ed\n正式卡牌库「小菟助力」 · card:92499",
+  "explanation_after": "两人或更多时不宜保证由特定英雄获得；未知人数也不判断单人场。话术说清小菟助力当前只能选中场上这一人。"
 }

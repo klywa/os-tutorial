@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第75行「使用技巧」。万镜从在场的不同英雄中随机复制。单挂在场主C时，池里没有其他英雄可分走复制。不承诺由一张变四张。可覆盖镜与取得万镜的武凤。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "只留了一个英雄，用万镜就不会复制到其他英雄。",
+      "text": "场上只有主力，现在用万镜不会复制到其他英雄。",
       "id": "utterances_1a76bc61bd4540a3b736379eb3d39433"
     },
     {
-      "text": "单挂时打万镜，可以把复制集中到这个场上英雄。",
+      "text": "趁主力单独上场用万镜，可以锁定复制对象。",
       "id": "utterances_b8df1a4a23834c86b0d385c8e1df4ce8"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_b59f8bd6d43110d4",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"万镜\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"万镜\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场",
+  "explanation_source": "personal/knowledge_tips.jsonl 第75行「万镜_镜_秘技・使用技巧」\n正式卡牌库：万镜（card:92110）",
+  "explanation_before": "原始内容：单挂主力时用万镜可以避免复制到其他在场英雄。\n知识或技巧详解：万镜随机复制场上不同的英雄牌，玩家可以缩小类别候选，不能从单人场推断会复制四张同名牌。\n自然语言适用条件：场上只有作为主力的那名英雄，正在使用万镜。\n正式条件：arg1 is \"万镜\" and 玩家.场上英雄数 == 1 and 玩家.主C in 玩家.战场\n30 字表达取舍：只承诺复制对象唯一，省略随机上限。",
+  "explanation_after": "多上一人就可能复制其他人，原组收束到真正单挂局面。"
 }

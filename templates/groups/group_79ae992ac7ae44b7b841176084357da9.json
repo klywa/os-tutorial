@@ -4,22 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "选精密协作可以集中养单挂英雄，单人用能一次加7级。",
+      "text": "场上只有一人，选精密协作给他用，一次能加七级。",
       "id": "utterances_d0fc13dcda2d4a6a878bdd05e0b8e545"
     },
     {
-      "text": "现在是单人场，选精密协作给他用，两份等级都能拿到。",
+      "text": "只有一名场上英雄，选精密协作能把两份等级留给他。",
       "id": "utterances_3e464982d73743d4b5745fba956d94ab"
     }
   ],
-  "explanation": "《冷门知识》简易协作效果卡确认指定目标本人可获随机一份，单人场两份归一。精密协作官方卡面对指定英雄+4级、随机英雄+3级。精密协作的随机目标未排除本人，按同一目标规则推导。使用时校验指定英雄仍在战场；选／购时不假定已经打出。获牌渠道以对应效果牌所属分组为据。",
-  "event_id": "os_b9276a29aaffc6ba",
   "id": "group_79ae992ac7ae44b7b841176084357da9",
+  "event_id": "os_b9276a29aaffc6ba",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"精密协作\" and arg1 has \"精密协作\" and 玩家.场上英雄数 == 1",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg2 is \"精密协作\" and arg1 has \"精密协作\" and 玩家.场上英雄数 == 1",
+  "explanation_before": "原始内容：指定1名英雄等级+4，随机1名英雄等级+3。\n知识或技巧详解：两部分加级分别给指定英雄和随机英雄。只保留一名英雄时，将牌给他可把两部分合到同一目标，一共增加七级。\n自然语言适用条件：选中精密协作且候选中有这张牌，场上只有一名英雄。该牌只有实际指定这名英雄后才结算加级。\n正式条件：arg2 is \"精密协作\" and arg1 has \"精密协作\" and 玩家.场上英雄数 == 1\n30 字表达取舍：交代牌名、单人场和合并成长，把效果牌取得后的用法紧跟在已有局面后。",
+  "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库「精密协作」 · card:7062",
+  "explanation_after": "两人以上就不能保证随机部分归同一英雄。使用类需要目标仍在战场，选牌类只说明若继续保留单人场的后续收益。每句都可独立听懂。"
 }

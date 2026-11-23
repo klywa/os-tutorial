@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "官方选取敌方等级最高两名。用当前对手最高等级英雄是诸葛亮确认其进入目标集合；禁止回蓝不属于控制。 来源：personal/knowledge_tips.jsonl 第114行；本地官方卡面 card:641009。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "静谧之铃让敌方高等级诸葛亮施法后五秒不能回蓝。",
+      "text": "诸葛亮是对面最高级的英雄，静谧之铃能限制他施法后回蓝。",
       "id": "utterances_dcc1f37ec3e1488391f2529abea10aad"
-    },
-    {
-      "text": "敌方诸葛亮等级最高，静谧之铃能拖慢他下一次施法。",
-      "id": "utterances_ad98c94f4cf34f78850d1ed09bac0d87"
     }
   ],
   "id": "group_e7b09d240bba501c8cba9a7dc8e8828e",
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"静谧之铃\" and 对局.当前对手.最高等级英雄 is \"诸葛亮\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"静谧之铃\" and 对局.当前对手.最高等级英雄 is \"诸葛亮\"",
+  "explanation_before": "原始内容：后期可携带用于压制敌方依赖频繁释放大招的核心英雄（如诸葛亮），使其无法快速回蓝再次施放技能。非控制效果，免控装备解不了。\n静谧之铃：唯一。敌方等级最高的两名英雄释放技能后5秒内无法恢复法力值，在此期间每0.5秒受到穿戴者20%法术攻击力的法术伤害。\n知识或技巧详解：静谧之铃能让依赖连续施法的诸葛亮在一次施法后暂缓回蓝。\n自然语言适用条件：解释为何穿戴装备时，对手最高等级英雄为诸葛亮。\n正式条件：arg2 is \"静谧之铃\" and 对局.当前对手.最高等级英雄 is \"诸葛亮\"\n30 字表达取舍：播报保留「诸葛亮是对面最高级的英雄，静谧之铃能限制他施法后回蓝。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第114行「静谧之铃・使用技巧」\n正式卡牌库 静谧之铃（card:641009）",
+  "explanation_after": "事件与条件复核：解释为何穿戴装备，核对了对手最高等级英雄为诸葛亮。单项反例：若诸葛亮不在等级最高目标范围，则不能断定他受影响。话术复核：句子围绕静谧之铃能让依赖连续施法的诸葛亮在一次施法后暂缓回蓝，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

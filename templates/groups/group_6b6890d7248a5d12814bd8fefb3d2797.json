@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第65行「使用技巧」。正式卦象·节每回合获得额外能量，同时提高刷新费用。收窄到前期，句子只说明储能升级的收益，不承诺已经升到目标等级。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "前期选节卦多攒能量，刷新贵了就先把钱留着升级。",
+      "text": "明先生前期可选节卦，少刷新，把多出的能量留给升级。",
       "id": "utterances_d15abc53427c4678b96ad66dd5c8cdfc"
     },
     {
-      "text": "节卦多给能量，这几回合能先少刷新、攒着升级。",
+      "text": "前三回合选节卦，能攒更多能量来提高棋手等级。",
       "id": "utterances_12941fd0e65a4722b7490f95478766eb"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_7be319d5c5ce8554",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"卦象·节\" and arg1 has \"卦象·节\" and 玩家.使用棋手 is \"明先生\" and 对局.当前回合数 <= 3",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"卦象·节\" and arg1 has \"卦象·节\" and 玩家.使用棋手 is \"明先生\" and 对局.当前回合数 <= 3",
+  "explanation_before": "原始内容：刷新费用+1，每回合能量+2，持续3个回合。\n知识或技巧详解：前期的明先生可以牺牲便宜的刷新机会换额外能量，把能量投入棋手经验，更早推进人口与商店上限的阶段。节卦同时使刷新更贵。\n自然语言适用条件：明先生在前三回合，候选含卦象·节且本次选择它。\n正式条件：arg2 is \"卦象·节\" and arg1 has \"卦象·节\" and 玩家.使用棋手 is \"明先生\" and 对局.当前回合数 <= 3\n30 字表达取舍：说清前三回合用多出来的能量准备升级，同时说明少刷新的取舍。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第65行「明先生・使用技巧」\n正式卡牌库「卦象·节」 · card:93997",
+  "explanation_after": "过了第三回合不再播前期升级理由。玩家经验和剩余能量未知，所以不说现在能升几级。使用规范的“刷新”和“能量”。"
 }

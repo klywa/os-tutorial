@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第29行「使用技巧」。武装重构摧毁指定英雄的装备，产出对应件数加一的基础装备。两把剑须都在干将莫邪身上；不能只凭在场断定两把都穿着。条件排除当前主C，不假定后续去向。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "重构干将的两把剑，换三件基础装备给队伍用。",
+      "text": "干将不是主力，趁双剑都在时重构，能换来三件基础装备。",
       "id": "utterances_27bb4003e9eb4646a2bbd056aa4e7194"
-    },
-    {
-      "text": "干将的双剑能重构成三件基础装备，给其他英雄配装。",
-      "id": "utterances_05dc319dae5147b283654fcb9bd7b4d7"
     }
   ],
   "id": "group_e009e89110ff5a5d9a979e4a40d1fdb1",
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\")",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\")",
+  "explanation_before": "原始内容：干将的两件装备可以用武装重构敲掉换成三件普通装备的，如果干将只是用来过渡的，可以采取这种方法获得更多装备。温馨提示：干将莫邪提供的双剑·雄及双剑·雌两件装备，只有干将在场时才存在。当干将离场后，提供的装备也会消失。\n知识或技巧详解：趁过渡英雄仍在把双剑换成三件基础装备，避免离场后消失。\n自然语言适用条件：解释为何对目标使用效果牌时，干将在场穿齐雄雌双剑且不是本局主力。\n正式条件：arg1 is \"干将莫邪\" and arg2 is \"武装重构\" and 玩家.战场 has \"干将莫邪\" and arg1.已穿装备.计数() == 2 and arg1.已穿装备 has \"双剑·雄\" and arg1.已穿装备 has \"双剑·雌\" and not (玩家.主C is \"干将莫邪\")\n30 字表达取舍：播报保留「干将不是主力，趁双剑都在时重构，能换来三件基础装备。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第29行「干将莫邪・使用技巧」",
+  "explanation_after": "事件与条件复核：解释为何对目标使用效果牌，核对了干将在场穿齐雄雌双剑且不是本局主力。单项反例：少一把剑时得不到三件，干将是主力时换装有额外代价。话术复核：句子围绕趁过渡英雄仍在把双剑换成三件基础装备，避免离场后消失，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

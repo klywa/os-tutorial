@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第65行「使用技巧」。当只剩一轮左右容错时，丰卦提供当回合可用的临时刷新，适合用速度换经济。卡面也扣每回合获取能量，不假设已经刷到目标。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "容错快用完，选丰卦多几次刷新，尽快找能上场的牌。",
+      "text": "容错不足时可选丰卦，多刷几次，先找能上阵的牌。",
       "id": "utterances_6aec1dd5d224423680f63a8bd0468ac9"
     },
     {
-      "text": "血线紧时切丰卦，少拿能量换几次刷新找战力。",
+      "text": "明先生容错见底时，丰卦可以少拿能量、多刷新找战力。",
       "id": "utterances_1b66074a055f48f7b091c9d4f85a13c4"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_7be319d5c5ce8554",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"卦象·丰\" and arg1 has \"卦象·丰\" and 玩家.使用棋手 is \"明先生\" and 玩家.容错数 <= 1",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"卦象·丰\" and arg1 has \"卦象·丰\" and 玩家.使用棋手 is \"明先生\" and 玩家.容错数 <= 1",
+  "explanation_before": "原始内容：每回合获得4次临时刷新，每回合能量-2，持续3个回合。\n知识或技巧详解：明先生临近淘汰时，更难等待以后慢慢积攒能量。丰卦放弃部分每回合能量，换来临时刷新机会，可先从商店找当前能上场的资源。\n自然语言适用条件：棋手为明先生，候选中含丰卦且选中，己方容错最多一次。\n正式条件：arg2 is \"卦象·丰\" and arg1 has \"卦象·丰\" and 玩家.使用棋手 is \"明先生\" and 玩家.容错数 <= 1\n30 字表达取舍：每句交代容错紧及换刷新找战力的行动。省去之后持续回合和实际能量数字。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第65行「明先生・使用技巧」\n正式卡牌库「卦象·丰」 · card:93998",
+  "explanation_after": "若还有两次容错，则退出这条立即找战力的理由。没有声称刷新必得目标牌；“少拿能量”只描述策略代价。"
 }

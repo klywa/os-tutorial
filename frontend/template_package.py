@@ -200,7 +200,7 @@ def decode(document, public, entities, notes, **kwargs):
         group['event_name'] = event['name']
         group_names[(event['name'],schema.text(group.get('name')))] += 1
     for group in doc['groups']:
-        schema.fields(group,{'id','name','explanation','event_name','scope','conditions','utterances','related_entities','effective_expression'}|rules.RULE_FIELDS,
+        schema.fields(group,{'id','name','event_name','scope','conditions','utterances','related_entities','effective_expression'}|schema.GROUP_METADATA|rules.RULE_FIELDS,
                       {'name','event_name','expression','utterances'})
         # A copied preview can be stale after hand-editing the scope or expression.
         group.pop('effective_expression', None)

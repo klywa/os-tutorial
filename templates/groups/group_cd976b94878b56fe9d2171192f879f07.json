@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "一线生机在本局首次生命降到0时避免淘汰并保留1血，同时获得2张名刀·司命。不影响对手血量或容错。 来源：personal/knowledge_tips.jsonl 第219行；本地官方卡面 card:7115。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "已经没容错，一线生机能让首次掉到零血时撑住。",
+      "text": "已经没有容错，选一线生机能挡住首次零血淘汰。",
       "id": "utterances_bc179c65262440f7ade3a8350a307411"
-    },
-    {
-      "text": "残血拿一线生机可多挡一次淘汰，还能拿两把名刀。",
-      "id": "utterances_7628b1ccac9d4e41ba28523504409046"
     }
   ],
   "id": "group_cd976b94878b56fe9d2171192f879f07",
   "event_id": "os_b9276a29aaffc6ba",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"一线生机\" and 玩家.容错数 <= 0",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"一线生机\" and 玩家.容错数 <= 0",
+  "explanation_before": "原始内容：残血时最该抢的保命6阶牌，会额外获得1次容错，同时减少对手容错，用于争夺更高名次。附带的2张名刀·司命也能提升战力。温馨提示：没有容错时适合拿一线生机，提供一波容错。\n一线生机：获得2张名刀·司命。你的棋手生命值本局第一次降至0时，不会被淘汰，并保留1棋手生命值。\n知识或技巧详解：选一线生机，首次血量归零可避免淘汰。\n自然语言适用条件：解释为何选择效果牌时，棋手已无容错。\n正式条件：arg2 is \"一线生机\" and 玩家.容错数 <= 0\n30 字表达取舍：播报保留「已经没有容错，选一线生机能挡住首次零血淘汰。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第219行「一线生机・使用技巧」\n正式卡牌库 一线生机（card:7115）",
+  "explanation_after": "事件与条件复核：解释为何选择效果牌，核对了棋手已无容错。单项反例：换成仍有多次容错的局面，这次保命的紧迫性降低。话术复核：句子围绕选一线生机，首次血量归零可避免淘汰，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

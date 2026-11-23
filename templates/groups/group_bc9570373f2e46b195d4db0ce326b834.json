@@ -4,26 +4,24 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "米莱狄补后排伤害，朵莉亚还能借整备继续养核心。",
+      "text": "狂铁和朵莉亚都在场，上米莱狄能补远端输出和整备。",
       "id": "utterances_cb9a8fecbb1343cdbc42e291d4abced6"
-    },
-    {
-      "text": "狂铁顶前面，米莱狄补远端输出，朵莉亚继续养核心。",
-      "id": "utterances_12a1740197c44674a35168cb9c0ef4c4"
-    },
-    {
-      "text": "上米莱狄补过渡伤害，也能用到日落海积累的等级。",
-      "id": "utterances_bdba27f1e6ad4e0bbe366d7b6584dd07"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》日落海过渡与朵莉亚。狂铁在场承伤、米莱狄提供远端输出，朵莉亚能利用阵容之后的整备提高阿科米亚核心的等级。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_bc9570373f2e46b195d4db0ce326b834",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\" and 玩家.战场 has \"朵莉亚\"",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\" and 玩家.战场 has \"朵莉亚\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「狂铁」「朵莉亚」「米莱狄」，正式卡牌库 card:5041、card:5043、card:1591。",
+  "explanation_before": "原始内容：召唤单位获得 3临时等级。\n整备：该临时等级及阿科米亚核心等级额外+3。 每当你的英雄触发整备效果时，随机3名英雄及阿科米亚核心等级+1。\n知识详解：米莱狄提供远端输出，其整备可养召唤物和阿科米亚核心，朵莉亚与目前同场的整备英雄能够继续提供后续成长。\n适用条件：常小娥灵活4人组，狂铁和朵莉亚已在场，本次上阵米莱狄。\n条件语法：arg1 is \"米莱狄\" and 玩家.战场 has \"狂铁\" and 玩家.战场 has \"朵莉亚\"\n30 字表达取舍：点名当前两名队友及米莱狄的后排职责与整备用途。",
+  "explanation_after": "原候选只说米莱狄泛用输出时没利用局面，改为同场阵容。没有承诺本次上阵立即触发整备。"
 }

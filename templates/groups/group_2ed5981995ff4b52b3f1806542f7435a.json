@@ -4,22 +4,28 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“转移装备”事件中，原穿戴者为司空震，转移的装备为驱雷，由另一名队友接收时适用。驱雷不会命中穿戴者，转走才能触发司空震的快速攻击。依据为《常小娥灵活变阵-常小娥》「司空震队伍拿到驱雷时」及官方装备「驱雷」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "把驱雷转给队友，落雷才有机会命中司空震。",
+      "text": "司空震仍在场，转走驱雷才有机会用落雷触发快攻。",
       "id": "utterances_bbaece099ee14a53bd154282c1dc9143"
     },
     {
-      "text": "驱雷不会命中穿戴者，转走才能触发司空震的快速攻击。",
+      "text": "驱雷不会打中持有者，交给队友才可能触发司空震快攻。",
       "id": "utterances_12c3bb5ffc844a698773861e3ba9cbe9"
     }
   ],
-  "event_id": "os_f5a416d50e37a948",
   "id": "group_2ed5981995ff4b52b3f1806542f7435a",
+  "event_id": "os_f5a416d50e37a948",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"司空震\" and arg2 is \"驱雷\" and not (arg3 is \"司空震\")",
-  "editor_mode": "text"
+  "expression": "arg1 is \"司空震\" and arg2 is \"驱雷\" and not (arg3 is \"司空震\") and 玩家.战场 has \"司空震\"",
+  "condition_tree": null,
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「司空震队伍拿到驱雷时」 · cx26-cc9efc4d1d92cf6a\n正式卡牌库：驱雷（card:644113）",
+  "explanation_before": "原始内容：驱雷应交给司空震之外的一名队友，使落雷有机会命中司空震。\n知识或技巧详解：驱雷不会命中持有者。移到另一名英雄身上并让司空震留在战场，落雷才有机会触发司空震的四次快速攻击。\n自然语言适用条件：从司空震把驱雷转给不同英雄，司空震仍在战场。\n正式条件：arg1 is \"司空震\" and arg2 is \"驱雷\" and not (arg3 is \"司空震\") and 玩家.战场 has \"司空震\"\n30 字表达取舍：点明持有者不能自吃落雷，交给其他人才能配合。",
+  "explanation_after": "未断言落雷必定命中。司空震不在战场时不再播这一收益。"
 }

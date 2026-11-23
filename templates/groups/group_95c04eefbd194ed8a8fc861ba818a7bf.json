@@ -4,19 +4,18 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》诸葛亮与杨玉环。杨玉环已在场，施法为诸葛亮提供法力和临时等级，诸葛亮可负责施法队的范围输出。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "选诸葛亮补范围伤害，杨玉环施法还能给他回蓝。",
+      "text": "杨玉环已在场，选诸葛亮能用她的施法帮他回蓝。",
       "id": "utterances_fdb8bad124ac49d9b2bc4d081f7b0375"
     },
     {
-      "text": "杨玉环每次施法都能帮诸葛亮拿法力和临时等级。",
+      "text": "已有杨玉环，选诸葛亮可借她施法积累临时等级。",
       "id": "utterances_b1a3468884d2452ab34bdad99e49f0a7"
-    },
-    {
-      "text": "诸葛亮能借杨玉环的施法更快启动，接上范围输出。",
-      "id": "utterances_d2b00e14d6e94b9d92c96b3b576da494"
     }
   ],
   "id": "group_95c04eefbd194ed8a8fc861ba818a7bf",
@@ -40,7 +39,10 @@
       "name": "诸葛亮"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「杨玉环」「诸葛亮」，正式卡牌库 card:1761、card:1763、card:1901、card:1903。",
+  "explanation_before": "原始内容：你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。\n知识详解：杨玉环在场并施法，可给之后上阵的诸葛亮供法力和临时等级。觉醒诸葛亮的数值更高。\n适用条件：常小娥灵活4人组，实际从候选池选到诸葛亮，场上有杨玉环。\n条件语法：(arg2 is \"诸葛亮\" and 玩家.战场 has \"杨玉环\") and arg1 has \"诸葛亮\"\n30 字表达取舍：保留已在场搭档、选择及后续供法力，不硬报普通形态数值。",
+  "explanation_after": "选择后不等于立即施法，条件和话术都避免先后误导。"
 }

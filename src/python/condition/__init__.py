@@ -415,9 +415,23 @@ class _Evaluator:
         self.take(",")
         value = self.take("literal")
         self.take(")")
-        if (array_type not in ("Array<单位>", "Array<英雄>") or field not in ("阵营", "标签")
-                or not isinstance(value, str) or not value):
-            raise ConditionError("条件计数需要英雄或单位列表及非空的阵营或标签名称")
+        if array_type not in ("Array<单位>", "Array<英雄>"):
+            raise ConditionError("条件计数需要英雄或单位列表")
+        if field == "英雄":
+            if not isinstance(value, list) or not value:
+                raise ConditionError("英雄计数需要非空的英雄名单")
+            for item in value:
+                if isinstance(item, str) and item.strip():
+                    continue
+                if (isinstance(item, dict) and self.literal(item).types == ("英雄",)
+                        and set(item) <= {"类型", "名称", "name", "已觉醒"}
+                        and item.get("名称", item.get("name")).strip()
+                        and ("已觉醒" not in item or type(item["已觉醒"]) is bool)):
+                    continue
+                raise ConditionError("英雄名单成员须为名称或带觉醒状态的英雄")
+            return field, value
+        if field not in ("阵营", "标签") or not isinstance(value, str) or not value:
+            raise ConditionError("条件计数需要非空的阵营或标签名称")
         if field == "标签":
             value = _COUNT_TAG_ALIASES.get(value, value)
         return field, value
@@ -437,12 +451,36 @@ class _Evaluator:
                     if len(matches) != 1:
                         return _UNKNOWN
                     total += matches.pop()
+                elif field == "英雄":
+                    matches = self.matches_hero_list(item.value, expected)
+                    if matches is _UNKNOWN:
+                        return _UNKNOWN
+                    total += matches
                 else:
                     faction = item.value.get("阵营") if isinstance(item.value, dict) else None
                     if faction is None:
                         return _UNKNOWN
                     total += faction == expected
         return total
+
+    @staticmethod
+    def matches_hero_list(raw, candidates):
+        name = raw.get("名称", raw.get("name")) if isinstance(raw, dict) else raw
+        if not name:
+            return _UNKNOWN
+        forms = set()
+        for candidate in candidates:
+            if isinstance(candidate, str):
+                if name == candidate:
+                    return True
+            elif name == candidate.get("名称", candidate.get("name")):
+                if "已觉醒" not in candidate:
+                    return True
+                forms.add(candidate["已觉醒"])
+        if not forms or len(forms) == 2:
+            return bool(forms)
+        awake = raw.get("已觉醒") if isinstance(raw, dict) else None
+        return _UNKNOWN if awake is None else awake in forms
 
     def path(self, root):
         if root in self.params:
@@ -646,8 +684,11 @@ def _reference_path(fragment):
     if function == "计数":
         if not tokens:
             return f"{path}()"
-        if kinds == ["id", ",", "literal"] and isinstance(tokens[2][1], str):
-            return f"{path}({tokens[0][1]}, {json.dumps(tokens[2][1], ensure_ascii=False)})"
+        if kinds == ["id", ",", "literal"]:
+            field, value = tokens[0][1], tokens[2][1]
+            if isinstance(value, str) or (field == "英雄" and isinstance(value, list)):
+                literal = json.dumps(value, ensure_ascii=False, sort_keys=True)
+                return f"{path}({field}, {literal})"
     return None
 
 
@@ -737,11 +778,11 @@ def _utterance_slots(text):
         elif text[start] == "{":
             end = start + 1
             while end < len(text) and text[end] != "}":
-                if text[end] == '"':
+                if text[end] in '"[':
                     try:
                         _, end = _DECODER.raw_decode(text, end)
                     except ValueError as error:
-                        raise ConditionError("话术引用中的引号未闭合") from error
+                        raise ConditionError("话术引用中的 JSON 字面量无效") from error
                 else:
                     end += 1
             if end == len(text):

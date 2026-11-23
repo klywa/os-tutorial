@@ -12,7 +12,7 @@ export type ConditionCatalog = {
  enums?:Record<string,string[]>;
  card_tags?:Record<string,{type:string;tags:string[]}>;
 };
-type CountFilter={source:string;field:'标签'|'阵营';choices?:string[]};
+type CountFilter={source:string;field:'标签'|'阵营'|'英雄';choices?:string[]};
 export type PathOption={path:string;type:string;operations?:string[];choices?:string[];filter?:CountFilter};
 export const emptyTree=():ConditionNode=>({kind:'all',children:[]});
 export function renderRule(node:ConditionNode):string{
@@ -23,9 +23,23 @@ export function renderRule(node:ConditionNode):string{
  return '('+children.join(node.kind==='all'?' and ':' or ')+')';
 }
 export function completeTree(node:ConditionNode,root=true):boolean{
- if(node.kind==='leaf')return !!node.left&&readCountFilter(node.left)?.value!==''&&(!node.operator||(!!node.right&&readCountFilter(node.right)?.value!==''));
+ if(node.kind==='leaf')return completeOperand(node.left)&&(!node.operator||completeOperand(node.right));
  if(node.kind==='not'&&node.children.length!==1)return false;
  return (node.children.length>0||(root&&node.kind==='all'))&&node.children.every(child=>completeTree(child,false));
+}
+function completeOperand(path:string):boolean{
+ if(!path)return false;
+ const filter=readCountFilter(path);
+ if(!filter)return true;
+ if(filter.field!=='英雄')return !!filter.value;
+ try{
+  const heroes=JSON.parse(filter.value);
+  return Array.isArray(heroes)&&heroes.length>0&&heroes.every(hero=>
+   typeof hero==='string'?!!hero.trim():
+    hero?.类型==='英雄'&&typeof (hero.名称??hero.name)==='string'&&!!(hero.名称??hero.name).trim()
+    &&Object.keys(hero).every(key=>['类型','名称','name','已觉醒'].includes(key))
+    &&(!('已觉醒' in hero)||typeof hero.已觉醒==='boolean'));
+ }catch{return false;}
 }
 export function switchToText(tree:ConditionNode,lastComplete:ConditionNode|null,expression:string){
  return {editor_mode:'text' as const,expression,condition_tree:completeTree(tree)?tree:lastComplete};
@@ -33,9 +47,11 @@ export function switchToText(tree:ConditionNode,lastComplete:ConditionNode|null,
 const primitiveTypes={text:'string',number:'number',boolean:'bool',entity:'实体'};
 const entityType:Record<string,string>={heroes:'英雄',equipment:'装备',players:'棋手',talents:'天赋','effect-cards':'效果牌','player-skills':'棋手技能',derivatives:'衍生物'};
 export function countPath({source,field}:CountFilter,value:string){
- return `${source}.计数(${field}, ${JSON.stringify(value)})`;
+ return `${source}.计数(${field}, ${field==='英雄'?value||'[]':JSON.stringify(value)})`;
 }
 export function readCountFilter(path:string):{source:string;field:CountFilter['field'];value:string}|undefined{
+ const heroes=path.match(/^(.+)\.计数\s*\(\s*英雄\s*,\s*(.*)\)$/s);
+ if(heroes)return {source:heroes[1],field:'英雄',value:heroes[2]};
  const match=path.match(/^(.+)\.计数\s*\(\s*(标签|阵营)\s*,\s*("(?:[^"\\]|\\.)*")\s*\)$/);
  if(!match)return;
  const [,source,field,literal]=match;
@@ -69,7 +85,7 @@ export function listPaths(event:TemplateEvent|undefined,catalog?:ConditionCatalo
   if(memberTypes.length){
    paths.push({path:path+'.计数()',type:'int'});
    if(memberTypes.length===1&&['英雄','单位'].includes(memberTypes[0])){
-    const filters:CountFilter[]=[{source:path,field:'标签',choices:tagChoices(['英雄'])},{source:path,field:'阵营'}];
+    const filters:CountFilter[]=[{source:path,field:'标签',choices:tagChoices(['英雄'])},{source:path,field:'阵营'},{source:path,field:'英雄'}];
     for(const filter of filters)paths.push({path:countPath(filter,''),type:'int',filter});
    }
    for(const key of Object.keys(catalog?.types[memberTypes[0]]??{})){

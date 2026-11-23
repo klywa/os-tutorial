@@ -4,15 +4,14 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "苏烈在场，上阵李信时，说明这项操作的战斗或资源收益。苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。依据《常小娥灵活变阵-常小娥》「李信」和李信的官方卡面、技能。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。",
+      "text": "苏烈已经在场，上李信能从苏烈阵亡时获得临时等级。",
       "id": "utterances_7a5a0fd8df874249a732bd9612e072fc"
-    },
-    {
-      "text": "把李信和苏烈放在一起，苏烈牺牲也能提高李信这场的等级。",
-      "id": "utterances_c6b12eb96feb438595e9c9d9f6ba5f11"
     }
   ],
   "id": "group_9cfd89016f074a739d24701b03c2f890",
@@ -38,5 +37,8 @@
   ],
   "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"李信\" and 玩家.战场 has \"苏烈\""
+  "expression": "arg1 is \"李信\" and 玩家.战场 has \"苏烈\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「苏烈」「李信」，正式卡牌库 card:1941、card:1943、card:5071、card:5073。",
+  "explanation_before": "原始内容：每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。\n知识详解：苏烈普通和觉醒均有牺牲。上阵李信后，一旦苏烈阵亡，李信可得到与自身形态对应的临时等级。\n适用条件：正在上阵李信，苏烈已经在场。\n条件语法：arg1 is \"李信\" and 玩家.战场 has \"苏烈\"\n30 字表达取舍：保留两名英雄及阵亡触发的成长，省去依赖觉醒状态的具体级数。",
+  "explanation_after": "上阵不等于触发，苏烈未阵亡时无本次加成。两种形态均有联动。"
 }

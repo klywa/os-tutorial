@@ -1,21 +1,19 @@
 {
-  "id": "group_2cc330b9ae674a2298e136d3474151e0",
   "name": "瑶给马超护盾和控制",
   "scope": {
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "瑶可以附身马超提供护盾，控制敌人时还能为马超回复法力。",
+      "text": "马超已在场，上四十级的瑶能用控制帮他回蓝。",
       "id": "utterances_ea84ed5f50d04a6abcbad49c29b74fe5"
-    },
-    {
-      "text": "瑶从40级起可以控制敌人，帮助马超回复法力。",
-      "id": "utterances_7eeb35d1e36e4287881d12d157375e3c"
     }
   ],
-  "explanation": "上阵至少40级的瑶时，马超是场上的主C。《常小娥灵活变阵-常小娥》「瑶」和两张英雄卡的效果表明，瑶附身最近的队友提供护盾，40级解锁控制，触发控制可使马超回复法力。",
+  "id": "group_2cc330b9ae674a2298e136d3474151e0",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
@@ -36,7 +34,10 @@
       "name": "马超"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"瑶\" and 玩家.主C is \"马超\" and 玩家.战场 has \"马超\" and arg1.等级 >= 40",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「瑶」 · n-c1235b6d66098f23db47",
+  "explanation_before": "原始内容：瑶到四十级解锁控制，能触发马超回蓝与成长。\n知识或技巧详解：瑶的控制帮助已经在场的马超获得法力；附身要看最近队友，尚无站位条件，不能保证护盾给马超。\n自然语言适用条件：上阵至少四十级的瑶时，马超是已经在场的主力。\n正式条件：arg1 is \"瑶\" and 玩家.主C is \"马超\" and 玩家.战场 has \"马超\" and arg1.等级 >= 40\n30 字表达取舍：只说达到等级门槛后，既有主力能受益于瑶的控制。",
+  "explanation_after": "三十九级的瑶不触发该控制收益。没有站位数据，删除保证附身马超的一句。"
 }

@@ -72,3 +72,8 @@
   .full .overview-positioning>:not(.overview-reserves){flex:none}
   .full .overview-positioning>.overview-reserves{flex:1 1 auto;min-height:0;max-height:none}
 }
+.card-tag-editor{display:flex;align-items:end;flex-wrap:wrap;gap:8px 12px}
+.card-tag-editor label{display:grid;gap:4px;min-width:0}
+.card-tag-editor label:first-child{flex:1 1 20rem}
+.card-tag-editor input,.card-tag-editor select{min-width:0;max-width:100%}
+.card-tag-editor small{width:100%;color:var(--muted)}

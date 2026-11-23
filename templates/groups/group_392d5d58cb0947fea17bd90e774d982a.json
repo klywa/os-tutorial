@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“铸造装备”事件中，穿戴者为司空震，铸造成品为金色圣剑时适用。司空震靠普攻输出，金色圣剑能让他打得更快、每次伤害更高。依据为《常小娥灵活变阵-常小娥》「金色圣剑」及官方装备「金色圣剑」、装备「大棒」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "金色圣剑提高司空震的攻速，每次普通攻击还会附带法术伤害。",
+      "text": "司空震在场担任主力，铸金色圣剑可强化他的普攻。",
       "id": "utterances_49bb598916c04b68a8ec18013f245ec2"
-    },
-    {
-      "text": "司空震靠普攻输出，金色圣剑能让他打得更快、每次伤害更高。",
-      "id": "utterances_85f3b8f9fa8c41bb83951eadbe31d38e"
     }
   ],
-  "event_id": "os_db70e56ec24636b5",
   "id": "group_392d5d58cb0947fea17bd90e774d982a",
+  "event_id": "os_db70e56ec24636b5",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"司空震\" and arg3 is \"金色圣剑\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"司空震\" and arg3 is \"金色圣剑\" and 玩家.主C is \"司空震\" and 玩家.主C in 玩家.战场",
+  "condition_tree": null,
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「金色圣剑」 · n-bbeb200218a7aaf67916\n正式卡牌库：金色圣剑（card:643207）\n正式卡牌库：司空震（card:5371）\n正式卡牌库：司空震（card:5373）",
+  "explanation_before": "原始内容：司空震作为输出时可以穿金色圣剑提高攻速与普攻附加法伤。\n知识或技巧详解：司空震承担场上主力时，需要通过高频普通攻击持续输出，金色圣剑改善攻速并令每次普攻附带法伤。\n自然语言适用条件：铸造金色圣剑给当前在场的主力司空震。\n正式条件：arg1 is \"司空震\" and arg3 is \"金色圣剑\" and 玩家.主C is \"司空震\" and 玩家.主C in 玩家.战场\n30 字表达取舍：保留主力普攻的输出需求，说明铸造选择。",
+  "explanation_after": "只确认以司空震为主的局面。没有攻速面板，不保证实际每秒攻击次数的增量。"
 }

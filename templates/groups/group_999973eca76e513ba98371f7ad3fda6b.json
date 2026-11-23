@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第26行「使用技巧」。整备选择最近河洛英雄；卡文配合技巧注明仅剩李元芳一名河洛时自己可接古币，不推断觉醒古币种类。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "场上只有李元芳一个河洛，他整备时能给自己用古币。",
+      "text": "李元芳是场上唯一的河洛英雄，整备时会给自己用古币。",
       "id": "utterances_51c9a1312db445a982e95f47e2eda2a2"
-    },
-    {
-      "text": "单挂河洛李元芳，他是整备古币唯一的河洛候选。",
-      "id": "utterances_0468513e9a4748f2bedfa30eac02d3c7"
     }
   ],
   "id": "group_999973eca76e513ba98371f7ad3fda6b",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"李元芳\" and 玩家.战场 has \"李元芳\" and 玩家.战场.计数(阵营, \"河洛\") == 1",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"李元芳\" and 玩家.战场 has \"李元芳\" and 玩家.战场.计数(阵营, \"河洛\") == 1",
+  "explanation_source": "personal/knowledge_tips.jsonl 第26行「使用技巧」，正式卡牌库 card:1731、card:1733。",
+  "explanation_before": "原始内容：整备：对距离最近的【河洛】英雄使用1张古币。\n知识详解：李元芳整备选择最近的河洛英雄。在只有李元芳属于河洛时，其他阵营英雄不参与这次选择。\n适用条件：上阵后李元芳已经在场，河洛英雄总数等于一。\n条件语法：arg1 is \"李元芳\" and 玩家.战场 has \"李元芳\" and 玩家.战场.计数(阵营, \"河洛\") == 1\n30 字表达取舍：保留唯一河洛与整备对象，不说触发发生于上阵的当刻。",
+  "explanation_after": "若又上一名河洛英雄，唯一对象的解释不再成立。普通和觉醒使用古币张数不同，本句省略。"
 }

@@ -4,22 +4,24 @@
     "player_id": "player:24",
     "lineup_note_id": null
   },
-  "explanation": "在“选择效果牌”事件中，选中扶摇直上，棋手未到六级时适用。扶摇直上提供棋手等级，可把升级的能量留给买牌和小菟助力。依据为《常小娥灵活变阵-常小娥》「第三轮拍卖」及官方效果牌「扶摇直上」。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "棋手还未到六级，扶摇直上能直接提升一级。",
+      "text": "常小娥还未到六级，选扶摇直上可少投入一级的升级经验。",
       "id": "utterances_79cbe90d61d5492a9a207354da32ecf1"
-    },
-    {
-      "text": "扶摇直上提供棋手等级，可把升级的能量留给买牌和小菟助力。",
-      "id": "utterances_73d765647bed4060bc5dda8ba760905e"
     }
   ],
   "id": "group_bd6add69c4ba445e9d2b70389e5d0373",
   "event_id": "os_b9276a29aaffc6ba",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "(arg2 is \"扶摇直上\" and 玩家.等级 < 6) and arg1 has \"扶摇直上\"",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「第三轮拍卖」「月之特调与送福循环」，正式卡牌库 card:7120。",
+  "explanation_before": "原始内容：棋手等级提升1。如果已满级，改为获得10能量。\n知识详解：扶摇直上在低于满级时提供一级，帮常小娥减少到六级需要的经验投入。选到该效果牌以后仍须使用。\n适用条件：常小娥未到六级，本次从效果牌候选池选扶摇直上。\n条件语法：(arg2 is \"扶摇直上\" and 玩家.等级 < 6) and arg1 has \"扶摇直上\"\n30 字表达取舍：同时交代棋手未到六级和少投入经验的原因，避免说取得即升级。",
+  "explanation_after": "在五级时使用可以直接到六级，等级更低时只进一级。没有把选择事件误作拍卖胜出或用牌。"
 }

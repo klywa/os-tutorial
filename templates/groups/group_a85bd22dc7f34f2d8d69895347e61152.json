@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“使用无目标效果牌”事件中，使用高级人才，棋手四级时适用。高级人才提供比棋手等级高一阶的英雄，四级使用正好能拿五阶。依据为《常小娥灵活变阵-常小娥》「单挂刚觉醒并拿到高级人才时」及官方效果牌「高级人才」。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "棋手四级时使用高级人才，能随机获得一张五阶英雄牌。",
+      "text": "棋手现在四级，开高级人才能随机拿一张五阶英雄。",
       "id": "utterances_50130840b3864958b783da62bfcee0ff"
-    },
-    {
-      "text": "高级人才提供比棋手等级高一阶的英雄，四级使用正好能拿五阶。",
-      "id": "utterances_523f432fe2aa4ae7b356d45a0a4d75c3"
     }
   ],
-  "event_id": "os_1c33df3b1a2b43f5",
   "id": "group_a85bd22dc7f34f2d8d69895347e61152",
+  "event_id": "os_1c33df3b1a2b43f5",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"高级人才\" and 玩家.等级 == 4",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「单挂刚觉醒并拿到高级人才时」，正式卡牌库 card:7002。",
+  "explanation_before": "原始内容：随机获得1张特定品阶（棋手等级+1）的英雄牌。\n知识详解：高级人才在棋手等级基础上加一确定品阶，随后随机给一张对应品阶英雄牌。四级使用可以拿到五阶。\n适用条件：本次使用高级人才时棋手仍处于四级。\n条件语法：arg1 is \"高级人才\" and 玩家.等级 == 4\n30 字表达取舍：把棋手等级和五阶收益连接，省去未知英雄名。",
+  "explanation_after": "若提前在三级开只能得到四阶。在四级也不能保证变成某个指定英雄。"
 }

@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第5行「使用技巧」。孙膑让英雄每累计释放三次技能增加永久等级。貂蝉的小法力值上限适合频繁施法。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "上孙膑，貂蝉多放几次技能就能攒永久等级。",
+      "text": "貂蝉已在场，上孙膑可让她每施法三次永久升级。",
       "id": "utterances_039e5925a5dd4b03a1417eaaf0e35bbe"
     },
     {
-      "text": "貂蝉每放三次技能，孙膑就能让她永久升级。",
+      "text": "场上有貂蝉，上孙膑可用她反复施法来积累永久等级。",
       "id": "utterances_01f9473e153e456187413591c2457a96"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"孙膑\" and 玩家.战场 has \"貂蝉\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"孙膑\" and 玩家.战场 has \"貂蝉\"",
+  "explanation_before": "原始内容：你的英雄每释放3次技能，该英雄等级永久+1。\n你的英雄每释放3次技能，该英雄等级永久+2。\n知识或技巧详解：貂蝉的法力值上限低，战斗中有机会较快重复放技能。已经有貂蝉时，孙膑的被动可让她每完成三次实际施法取得永久等级。\n自然语言适用条件：这次上孙膑，场上已经有貂蝉。\n正式条件：arg1 is \"孙膑\" and 玩家.战场 has \"貂蝉\"\n30 字表达取舍：点出已在场的现成施法者，交代“每完成三次”可永久成长，省去不同形态加几级。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第5行「孙膑・使用技巧」\n正式卡牌库「孙膑」 · card:1181\n正式卡牌库「孙膑（觉醒）」 · card:1183\n正式卡牌库「貂蝉」 · card:1411",
+  "explanation_after": "没有貂蝉时不能播这个搭档的收益。每三次实际施法计一次，未预测这场战斗一定达到次数。"
 }

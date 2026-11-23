@@ -4,22 +4,25 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第10行「使用技巧」。古币命中李白时，李白卡面给所有古币的临时等级加成会再提高；必须确认李白在场。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "把{arg2}给在场的李白，他能拿到更多临时等级。",
+      "text": "李白已在场，把{arg2}给他还能多拿一份临时等级。",
       "id": "utterances_f687de08117c47b4a6e1f7d5f49f137e"
-    },
-    {
-      "text": "{arg2}给在场的李白，他还能多拿临时等级。",
-      "id": "utterances_2d9ff877917a4ef2948fee32ab3a42cb"
     }
   ],
   "id": "group_25326918fc655399a77618ea9d1ff9a2",
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第10行「李白・使用技巧」\n正式卡牌库：李白（card:1311）\n正式卡牌库：李白（card:1313）\n正式卡牌库：古币（card:311002）\n正式卡牌库：精致古币（card:311003）",
+  "explanation_before": "原始内容：李白在场时古币额外给临时等级，李白本人作为目标时还会多给一份。\n知识或技巧详解：古币牌通常为河洛英雄增加永久等级；在场李白额外提供临时等级，且直接给李白时临时等级更多，具体数值取决于觉醒。\n自然语言适用条件：对场上李白使用古币或精致古币。\n正式条件：arg1 is {\"类型\":\"英雄\",\"名称\":\"李白\"} and arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"李白\"\n30 字表达取舍：保留已在场的李白本人拿币能获得较多临时等级。",
+  "explanation_after": "离场的李白不适用。与给其他目标的李白在场组分开，不说固定加级量。"
 }

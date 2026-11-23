@@ -4,22 +4,27 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "在“使用棋手技能”事件中，使用小菟助力，场上只有一名英雄，苏烈在场时适用。趁苏烈单独在场使用小菟助力，随机提升等级不会选到别人。依据为《常小娥灵活变阵-常小娥》「苏烈」及官方棋手技能「小菟助力」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "场上只有苏烈，小菟助力提供的等级会集中给他。",
+      "text": "场上只有苏烈，小菟助力的等级就能全给他。",
       "id": "utterances_ab06c1e456f142d7b1175b9f09bd872d"
     },
     {
-      "text": "趁苏烈单独在场使用小菟助力，随机提升等级不会选到别人。",
+      "text": "让苏烈单独在场，小菟助力的等级就不会分给别人。",
       "id": "utterances_2d94a8f9c0184768b834f588d6ebe7f1"
     }
   ],
-  "event_id": "os_b59f8bd6d43110d4",
   "id": "group_0ae69a95c7374928a6e134faef1461a9",
+  "event_id": "os_b59f8bd6d43110d4",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「苏烈」 · n-11623aa33415cc60f559\n正式卡牌库：小菟助力（card:92499）",
+  "explanation_before": "原始内容：前期把小菟助力集中给苏烈；苏烈也能靠牺牲提升等级。\n知识或技巧详解：小菟助力随机选一名英雄；场上只有苏烈时，随机池只有苏烈，能集中这次成长。\n自然语言适用条件：常小娥灵活4人组中，使用小菟助力且仅苏烈在场。\n正式条件：arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\"\n30 字表达取舍：突出先保持单挂再用技能的原因。",
+  "explanation_after": "加入第二名英雄后不保证苏烈得等级；不说明要等额外的觉醒或复生条件。"
 }

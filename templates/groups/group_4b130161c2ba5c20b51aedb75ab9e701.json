@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "天赋给予一张赵云，并使其在释放技能前额外放惊雷之龙；血量经过70%和30%档回满蓝。 来源：personal/knowledge_tips.jsonl 第181行；本地官方卡面 card:636306。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "赵云是主力，一身是胆再给一张，还能强化他的施法。",
+      "text": "主力是赵云，选一身是胆能补同名牌并强化他的施法。",
       "id": "utterances_42efb02a1d764ed5a540e39ef51cad33"
     },
     {
-      "text": "一身是胆让赵云经过血线时回满蓝，能更快再放技能。",
+      "text": "赵云是主力，一身是胆能让他跨过血量档位时回满法力。",
       "id": "utterances_44ea8a5e53a44d928fd83325e6308e86"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"一身是胆\" and 玩家.主C is \"赵云\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"一身是胆\" and 玩家.主C is \"赵云\"",
+  "explanation_before": "原始内容：获得1张赵云，赵云在释放技能前，会额外释放1个技能惊雷之龙，且赵云生命值每次经过70%/30%档位时，会恢复全部法力值。\n知识或技巧详解：一身是胆取得一张赵云，另外改变已有赵云的战斗循环。技能释放前追加惊雷之龙，跨过两条生命值档位时补满法力。玩家已有赵云主力，可以集中吃到这些收益。\n自然语言适用条件：选取一身是胆，当前的己方主C是赵云。\n正式条件：arg2 is \"一身是胆\" and 玩家.主C is \"赵云\"\n30 字表达取舍：一句讲同名牌和强化施法，一句只讲赵云在战斗中跨血线后的法力收益。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第181行「一身是胆・使用技巧」\n正式卡牌库 一身是胆（card:636306）\n正式卡牌库「一身是胆」 · card:636306\n正式卡牌库「惊雷之龙」 · card:6363061",
+  "explanation_after": "赵云只在候选或只作陪衬时退出这组。实际跨过血量档才回满，不把阈值条件省成“低血时一直回满法力”。"
 }

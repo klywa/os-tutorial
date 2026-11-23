@@ -4,14 +4,19 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "在“对目标使用效果牌”事件中，使用传承，目标为苏烈，场上正好四人时适用。传承能让队友分享苏烈的等级，同时保留苏烈继续承伤。依据为《常小娥灵活变阵-常小娥》「苏烈」及官方效果牌「传承」。",
+  "explanation_after": "三人场无法保证三人分配；不保证苏烈作为前排会撑多久。",
+  "explanation_before": "原始内容：组成四人队伍后，苏烈仍可上场承伤并通过牺牲增加永久等级。\n知识或技巧详解：传承在四人场把可分配等级交给另外三名队友，苏烈仍留在战场，继续触发自己的成长。\n自然语言适用条件：常小娥灵活4人组，正对至少十级的苏烈用传承，场上一共四名英雄。\n正式条件：(arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10\n30 字表达取舍：同时点明等级给队友与保留苏烈。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「苏烈」 · n-11623aa33415cc60f559\n正式卡牌库：传承（card:7083）\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：苏烈（card:1943）",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "四人都在场，传承能把苏烈积累的等级分给另外三人。",
+      "text": "四人都在场，传承能把苏烈的等级分给另外三人。",
       "id": "utterances_dad01ce2213643a596ffe3d924e5cc15"
     },
     {
-      "text": "传承能让队友分享苏烈的等级，同时保留苏烈继续承伤。",
+      "text": "用传承分出苏烈的等级，他留场后仍能靠牺牲升级。",
       "id": "utterances_cb23bab53eb9450bb87891ded5c06624"
     }
   ],
@@ -19,7 +24,7 @@
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "(arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10",
-  "editor_mode": "text"
+  "expression": "(arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10"
 }

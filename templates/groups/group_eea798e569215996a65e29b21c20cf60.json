@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第2行「使用技巧」。装备卡面只覆盖敌方等级最高两名英雄，故收窄到当前对手主C且被标为最高等级英雄的嬴政。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "静谧之铃能让对面最高级的嬴政施法后暂时回不了蓝。",
+      "text": "对面最高级的是嬴政，静谧之铃能限制他放完飞剑后回蓝。",
       "id": "utterances_29acec16b3f84e74a542b4ea1d6b216d"
-    },
-    {
-      "text": "静谧之铃限制嬴政回蓝，压住他的连续施法。",
-      "id": "utterances_05dd015fff8240bea76efaf1d09fa813"
     }
   ],
   "id": "group_eea798e569215996a65e29b21c20cf60",
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"静谧之铃\" and 对局.当前对手.主C is \"嬴政\" and 对局.当前对手.最高等级英雄 is \"嬴政\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"静谧之铃\" and 对局.当前对手.主C is \"嬴政\" and 对局.当前对手.最高等级英雄 is \"嬴政\"",
+  "explanation_before": "原始内容：当敌方主C为嬴政时的克制方法：1、静谧之铃使敌方等级最高的两名英雄释放技能后5秒内无法回蓝，嬴政处于其中时可限制嬴政连续放技能；2、破茧之衣开战眩晕敌方等级最高3名英雄中的随机1名，嬴政在其中时有机会被控住；3、嬴政飞剑数量多，穿戴反伤重甲会使飞剑持续受到反弹伤害。\n知识或技巧详解：静谧之铃能让他的连续飞剑受到回蓝限制。\n自然语言适用条件：解释为何穿戴装备时，当前对手的主力且等级最高者为嬴政。\n正式条件：arg2 is \"静谧之铃\" and 对局.当前对手.主C is \"嬴政\" and 对局.当前对手.最高等级英雄 is \"嬴政\"\n30 字表达取舍：播报保留「对面最高级的是嬴政，静谧之铃能限制他放完飞剑后回蓝。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第2行「嬴政・使用技巧」",
+  "explanation_after": "事件与条件复核：解释为何穿戴装备，核对了当前对手的主力且等级最高者为嬴政。单项反例：嬴政不是最高等级的已观测目标时，不能保证点到他。话术复核：句子围绕静谧之铃能让他的连续飞剑受到回蓝限制，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

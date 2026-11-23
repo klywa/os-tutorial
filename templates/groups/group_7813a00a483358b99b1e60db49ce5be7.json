@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "装备将生命恢复和护盾效果提升30%；限定技能确能提供护盾的英雄，避免把装备本身误说成会直接产盾。 来源：personal/knowledge_tips.jsonl 第128行；本地官方卡面 card:643502。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "给{arg1}戴不死鸟之眼，拿到的护盾能更厚。",
+      "text": "给{arg1}穿不死鸟之眼，可放大他技能产生的护盾。",
       "id": "utterances_342a5683d962443a9ed99f7b7392209d"
     },
     {
-      "text": "{arg1}有护盾时，不死鸟之眼能让盾多扛些伤害。",
+      "text": "{arg1}已能靠技能产盾，不死鸟之眼可以增加护盾值。",
       "id": "utterances_765d0ad1a0404984b20afcab31815f4f"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"不死鸟之眼\" and arg1 in [\"廉颇\", \"曜\", \"刘邦\"]",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"不死鸟之眼\" and arg1 in [\"廉颇\", \"曜\", \"刘邦\"] and arg1.等级 >= 10",
+  "explanation_before": "原始内容：唯一。增加15%基础生命值，生命恢复和护盾效果提升30%。\n施放技能额外获得100+100%物理攻击力的护盾，持续4秒\n知识或技巧详解：不死鸟之眼能放大原有护盾。廉颇和刘邦已有产盾技能，曜至少十级才获得施法护盾。因此将护盾适配收窄到同一等级门槛，三人都能形成组合。\n自然语言适用条件：给至少十级的廉颇、曜或刘邦穿不死鸟之眼。\n正式条件：arg2 is \"不死鸟之眼\" and arg1 in [\"廉颇\", \"曜\", \"刘邦\"] and arg1.等级 >= 10\n30 字表达取舍：保留当前穿戴者能产生护盾这条适配原因。省去宝物的生命恢复加成和护盾数值。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第128行「不死鸟之眼・使用技巧」\n正式卡牌库 不死鸟之眼（card:643502）\n正式卡牌库「不死鸟之眼」 · card:643502\n正式卡牌库「廉颇」 · card:1051\n正式卡牌库「曜」 · card:5221\n正式卡牌库「刘邦」 · card:1491",
+  "explanation_after": "九级曜没有十级的护盾技能，现已排除。十级以上三种候选都能在技能作用时产盾，两句不说盾在穿上装备时立即生成。"
 }

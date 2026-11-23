@@ -4,22 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "卖掉甄姬只留一人，小菟助力就能集中给场上的英雄。",
+      "text": "卖掉甄姬只留一人，下次小菟助力就能给剩下的队友。",
       "id": "utterances_7c64e1956520406d944b9deb9d97e19d"
-    },
-    {
-      "text": "甄姬退场保留登场给的牌，还能避免分走小菟助力。",
-      "id": "utterances_50ef87a43b58470eb33390093148235c"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》「甄姬」、「前期运营思路」。前期单挂时在两次助力之间借用登场工具。出售后只剩一名其他英雄，下次助力的随机候选由此收窄；不预设当轮技能已经使用。",
-  "event_id": "os_02f23dfd4155737d",
   "id": "group_50a3d2f837e94411863761ec8e0fec53",
+  "event_id": "os_02f23dfd4155737d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"甄姬\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"甄姬\")",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"甄姬\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"甄姬\")",
+  "explanation_before": "原始内容：「拿到本轮提供的英雄牌后可以出售」\n登场：获得1张其他的登场英雄牌。\n使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。\n知识或技巧详解：将甄姬作为临时上阵的登场工具。先结算登场获取资源，再从可接受小菟助力的场上英雄中退出，出售后只剩一名队友，下次使用时能把成长给这名队友。\n自然语言适用条件：常小娥灵活4人组，从战场卖出甄姬。场上已没有甄姬，且恰余一名英雄。\n正式条件：arg1 is \"甄姬\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"甄姬\")\n30 字表达取舍：保留出售动作与小菟助力候选范围。省略获取途径或不受影响的历史登场收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「甄姬」 · n-2be2ea1702e921efd8c1\n正式卡牌库「甄姬」 · card:1271\n正式卡牌库「小菟助力」 · card:92499",
+  "explanation_after": "若卖出后另一名甄姬仍在，不能播排除同名英雄的理由。场上人数未知时不根据这组断定剩余候选；话术说明下次助力，不把助力说成已使用。"
 }

@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“穿戴装备”事件中，穿戴者为诸葛亮，装备为自然法杖时适用。诸葛亮每消耗40点法力，自然法杖就把一名随机敌人变成小猪。依据为《常小娥灵活变阵-常小娥》「自然法杖」及官方装备「自然法杖」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "诸葛亮频繁消耗法力，自然法杖能多次把随机敌人变成小猪。",
+      "text": "有杨玉环施法回蓝，诸葛亮用自然法杖可多控敌人。",
       "id": "utterances_f0485e196974456f8b6c1a22fd87120e"
-    },
-    {
-      "text": "诸葛亮每消耗40点法力，自然法杖就把一名随机敌人变成小猪。",
-      "id": "utterances_f51d11cd7a7c42d0bbd23f088d977d41"
     }
   ],
-  "event_id": "os_5dfcb4835e1e1513",
   "id": "group_0fe7a5ba8de24a9d9835aa4d8e5d07b2",
+  "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"诸葛亮\" and arg2 is \"自然法杖\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"诸葛亮\" and arg2 is \"自然法杖\" and 玩家.战场 has \"杨玉环\"",
+  "condition_tree": null,
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「自然法杖」 · n-9ea1be2f4449de7b9f79\n正式卡牌库：诸葛亮（card:1901）\n正式卡牌库：诸葛亮（card:1903）\n正式卡牌库：自然法杖（card:643208）",
+  "explanation_before": "原始内容：诸葛亮可以频繁施法触发变猪；给杨玉环回法力可带动诸葛亮更快施法。\n知识或技巧详解：杨玉环施法给场上的诸葛亮补法力。远程的诸葛亮消耗法力时，可以借自然法杖将随机敌人变成小猪。\n自然语言适用条件：正在给诸葛亮穿自然法杖，并且杨玉环已在场。\n正式条件：arg1 is \"诸葛亮\" and arg2 is \"自然法杖\" and 玩家.战场 has \"杨玉环\"\n30 字表达取舍：从已有施法搭档讲到额外控制，省去具体消耗量。",
+  "explanation_after": "杨玉环离场后不再播这组。只说搭配可以多创造变形机会，避免保障一定触发几次。"
 }

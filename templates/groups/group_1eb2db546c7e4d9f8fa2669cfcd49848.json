@@ -4,14 +4,16 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "《冷门知识》简易协作效果卡确认指定目标本人可获随机一份，单人场两份归一。简易协作官方卡面对指定英雄+3级、随机英雄+2级。使用时校验指定英雄仍在战场；选／购时不假定已经打出。获牌渠道以对应效果牌所属分组为据。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "简易协作的两份等级都归场上这一人，一共加5级。",
+      "text": "场上只有选中的英雄，简易协作能让他独得五级。",
       "id": "utterances_91e5ffd4af0640f09b5ceb4f0eb64d88"
     },
     {
-      "text": "场上只有指定英雄，简易协作的随机提供的等级也都归他。",
+      "text": "趁目标单独在场用简易协作，两份等级就会都给他。",
       "id": "utterances_7a85723384294773b68987dcd3aaea19"
     }
   ],
@@ -19,7 +21,10 @@
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库：简易协作（card:7040）",
+  "explanation_before": "原始内容：把简易协作用于单人场，可使定向与随机的两段等级落在同一个英雄身上。\n知识或技巧详解：简易协作给指定英雄加三级，另给一名随机英雄加两级。目标是场上唯一英雄时两段都由他获得。\n自然语言适用条件：正在使用简易协作，指定对象正好是场上唯一英雄。\n正式条件：arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1\n30 字表达取舍：说明为什么此时可以集中共五级。",
+  "explanation_after": "再上任意队友，随机两级仍可能给他，也可能给别人；不再播保证集中。"
 }

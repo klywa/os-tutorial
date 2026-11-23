@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "所有无阵营英雄各获得两倍场上无阵营英雄数的等级；至少两名无阵营英雄时解释群体收益。 来源：personal/knowledge_tips.jsonl 第222行；本地官方卡面 card:7535。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "场上有{玩家.战场.计数(阵营, \"无阵营\")}名无阵营英雄，用逍遥自在能一起升级。",
+      "text": "已有{玩家.战场.计数(阵营, \"无阵营\")}名无阵营英雄，用逍遥自在可一起升级。",
       "id": "utterances_dc54189774ad4048bc69b4dc34d02132"
     },
     {
-      "text": "无阵营英雄越多，逍遥自在给每人的等级也越多。",
+      "text": "场上无阵营英雄已有多人，逍遥自在给每人的等级也更多。",
       "id": "utterances_8a2bc4bd9fe94887a282d82db2fba12e"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_1c33df3b1a2b43f5",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"逍遥自在\" and 玩家.战场.计数(阵营, \"无阵营\") >= 2",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"逍遥自在\" and 玩家.战场.计数(阵营, \"无阵营\") >= 2",
+  "explanation_before": "原始内容：所有无阵营英雄获得2×场上无阵营英雄数量的等级。\n知识或技巧详解：这张效果牌只提高无阵营英雄的等级，并且每名受益者所得随无阵营人数增长。至少已有两名明确受益者时，可以立即兑现群体收益。\n自然语言适用条件：使用逍遥自在，场上至少两名无阵营英雄。\n正式条件：arg1 is \"逍遥自在\" and 玩家.战场.计数(阵营, \"无阵营\") >= 2\n30 字表达取舍：一条讲当前多人升级，另一条用已有多名无阵营英雄说明同一次成长为何更高。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第222行「逍遥自在・使用技巧」\n正式卡牌库 逍遥自在（card:7535）\n正式卡牌库「逍遥自在」 · card:7535",
+  "explanation_after": "仅一名无阵营英雄时没有多人收益。条件无须知道具体英雄姓名。带数字槽位的句子保留无阵营和明确牌名。"
 }

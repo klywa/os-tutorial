@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第27行「使用技巧」。驱雷会伤及友方，钟馗赋予牺牲会降低击败者等级；技巧指出驱雷击败该单位也会降穿戴者等级。只有钟馗离场且主C装备驱雷时解释避免误伤风险。",
+  "explanation": "",
+  "explanation_after": "驱雷是否命中、谁被击败和谁受到降级均未预知。用“减少风险”保留不确定性。",
+  "explanation_before": "原始内容：唯一。每2秒召唤2道雷电轰击敌我双方任意2名单位（穿戴者除外）。造成目标30%最大生命值的法术伤害（命中友军不触发吸血）。若命中司空震则改为使其快速攻击4次。 自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。\n知识详解：驱雷会伤到己方单位，若误杀钟馗或拥有其牺牲效果的友方，驱雷穿戴者会因击败者效果临时掉级。撤下最后一名钟馗可去掉这项来源。\n适用条件：从战场卖出钟馗，售后没有其他钟馗，己方主力仍穿驱雷。\n条件语法：arg1 is \"钟馗\" and not (玩家.战场 has \"钟馗\") and 玩家.主C.已穿装备 has \"驱雷\"\n30 字表达取舍：保留主力装备与撤钟馗降低误杀触发掉级的风险。",
+  "explanation_source": "正式卡牌库 card:644113、card:1751、card:1753；knowledge/lineups/常小娥灵活4人组-常小娥.json「钟馗」「司空震队伍拿到驱雷时」。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "主力穿着驱雷，撤钟馗能避免落雷误触发降级。",
+      "text": "主力穿着驱雷，撤下钟馗可减少误杀友军后的掉级风险。",
       "id": "utterances_7883abd48bbf4dbebcc51b6052fc279c"
-    },
-    {
-      "text": "撤掉钟馗，防止主力的驱雷误杀队友后自己降级。",
-      "id": "utterances_698951a93a434657a5c02f150c4d66a5"
     }
   ],
   "id": "group_badad638da125793ab461e1c5173d048",
   "event_id": "os_02f23dfd4155737d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"钟馗\" and not (玩家.战场 has \"钟馗\") and 玩家.主C.已穿装备 has \"驱雷\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"钟馗\" and not (玩家.战场 has \"钟馗\") and 玩家.主C.已穿装备 has \"驱雷\""
 }

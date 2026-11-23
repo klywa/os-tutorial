@@ -4,26 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "《常用技巧》让钟馗承接切入的主力，BV1DchC6JEpv 与 BV1LshE6oESg。百里玄策拥有闪现。钟馗可留作接切入的对策位，实际掉级者必须完成击败，局面字段未记录站位。",
+  "explanation_after": "不把钟馗已经摆在后排或玄策一定切到他说成已知。玄策若未完成击败则没有这条降级。保留完整卡名以让听众确认对手。",
+  "explanation_before": "原始内容：「把钟馗或他左右一格的队友摆在预期会被切的位置」\n自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。\n知识或技巧详解：百里玄策拥有闪现并是当前对手主力。钟馗上阵后可在预期切入点附近安排自己或左右一格的友军承担牺牲，令实际击败者受到临时降级。\n自然语言适用条件：上阵钟馗，当前对手主C是百里玄策。未观察本轮实际闪现落点。\n正式条件：arg1 is \"钟馗\" and 对局.当前对手.主C is \"百里玄策\"\n30 字表达取舍：两条分别交代站位建议和玄策本人需要完成击败的条件，省去特定英雄站哪格的推断。",
+  "explanation_source": "knowledge/other/常用技巧.json「让钟馗承接切入的主力」 · evidence-f915599902bdf4c849a1\nBV1DchC6JEpv\nBV1LshE6oESg\n正式卡牌库「钟馗」 · card:1751\n正式卡牌库「钟馗（觉醒）」 · card:1753\n正式卡牌库「百里玄策」 · card:1951\n正式卡牌库「百里玄策（觉醒）」 · card:1953",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "钟馗能留在后排，给切入的玄策制造掉级风险。",
+      "text": "上阵钟馗防百里玄策切入，若玄策击败他就可能暂时掉级。",
       "id": "utterances_a4b11049114d4abbab3d767602d9004c"
     },
     {
-      "text": "上钟馗能提防玄策切后排，牺牲时压低击败者等级。",
+      "text": "用钟馗迎百里玄策的切入，实际击败牺牲目标才会掉级。",
       "id": "utterances_0e535f13dc4f4af5a1a659d86746c108"
-    },
-    {
-      "text": "钟馗能接玄策的切入，玄策击败他就会暂时掉级。",
-      "id": "utterances_e51c6185967649eea85df203c8c14d54"
     }
   ],
-  "event_id": "os_e5391e165361858d",
   "id": "group_77b1263cbf4b4d31b03d8ef555fefb57",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"钟馗\" and 对局.当前对手.主C is \"百里玄策\"",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"钟馗\" and 对局.当前对手.主C is \"百里玄策\""
 }

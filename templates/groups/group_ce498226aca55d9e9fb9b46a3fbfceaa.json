@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "每次普攻30%概率产生2秒分身，分身继承该效果，能继续尝试再生成分身。不保证实际生成。 来源：personal/knowledge_tips.jsonl 第154行；本地官方卡面 card:644118。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "给{arg1}穿套娃枪，每次普攻都有机会打出分身。",
+      "text": "{arg1}普攻频繁，穿套娃枪能多争取几次分身机会。",
       "id": "utterances_be978714b8994d2f84303d6b2f5c83f7"
-    },
-    {
-      "text": "套娃枪的分身还能继续造分身，普攻越多机会越多。",
-      "id": "utterances_55e00133d3e24e0e818af67a6fb628b4"
     }
   ],
   "id": "group_ce498226aca55d9e9fb9b46a3fbfceaa",
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"套娃枪\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"套娃枪\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]",
+  "explanation_before": "原始内容：与天赋装备【不屈意志】有联动。套娃枪适配英雄：狄仁杰、公孙离、敖隐、艾琳。\n套娃枪：唯一。每次普攻30%概率产生1个无法释放技能的分身，持续2秒。造成50%伤害，承受500%的伤害（分身继承此效果）。\n知识或技巧详解：每次普攻都有分身概率，攻速越快尝试次数越多。\n自然语言适用条件：解释为何穿戴装备时，套娃枪交给名单中的高频普攻英雄。\n正式条件：arg2 is \"套娃枪\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]\n30 字表达取舍：播报保留「{arg1}普攻频繁，穿套娃枪能多争取几次分身机会。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第154行「套娃枪・使用技巧」\n正式卡牌库 套娃枪（card:644118）",
+  "explanation_after": "事件与条件复核：解释为何穿戴装备，核对了套娃枪交给名单中的高频普攻英雄。单项反例：换成普攻稀少的英雄，频繁触发的依据不在。话术复核：句子围绕每次普攻都有分身概率，攻速越快尝试次数越多，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

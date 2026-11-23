@@ -4,26 +4,24 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「露娜」。上阵后四人、露娜在场且已被指定为主力输出。临时登场触发整备不会单凭人数命中本组。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "这四人由露娜打输出，她的突进能打伤一路上的敌人。",
+      "text": "四人队用露娜当主力，她能突进并打伤沿路的敌人。",
       "id": "utterances_e98ae6267b574d67809863f6a641ab0d"
-    },
-    {
-      "text": "露娜担任主力后，还能消耗标记打出按生命上限算的伤害。",
-      "id": "utterances_f9b83fe8859e4a4b874fd69d18a15522"
-    },
-    {
-      "text": "上露娜让四人组有个能闪进敌阵打范围伤害的主力。",
-      "id": "utterances_e38711e566ed4b9bba674982c2f27ca6"
     }
   ],
   "id": "group_a1d40852dad75b40bf950eb064c59527",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.主C is \"露娜\" and 玩家.战场 has \"露娜\"",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.主C is \"露娜\" and 玩家.战场 has \"露娜\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」「打法要点」「露娜」，正式卡牌库 card:1461、card:1463。",
+  "explanation_before": "原始内容：露娜向最远端标记目标突击，对路径上的敌人造成法术伤害。\n知识详解：四人阵选择露娜做主力时，她的远距离突击提供范围输出，区别于临时借用露娜登场来触发整备。\n适用条件：常小娥灵活4人组，露娜本次上阵后在四人队中被指定为主力。\n条件语法：arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.主C is \"露娜\" and 玩家.战场 has \"露娜\"\n30 字表达取舍：保留四人队、露娜主力和路径输出，不承诺命中人数。",
+  "explanation_after": "主力变成其他英雄、人数不足四人或露娜没在场都不命中。删去单独背诵技能伤害的候选。"
 }

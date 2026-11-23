@@ -4,23 +4,25 @@
     "player_id": "player:24",
     "lineup_note_id": null
   },
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "手里有苏烈，单挂能集中吃小菟助力，先养好前排。",
+      "text": "手里有苏烈，常小娥可以先单挂他集中小菟助力。",
       "id": "utterances_a984a7248c7d4a4480f540137699f6af"
-    },
-    {
-      "text": "苏烈适合单挂承伤，小菟助力可以集中给他加级。",
-      "id": "utterances_a24712ab8eaf4c789ef96df5acd9ce1f"
     }
   ],
-  "explanation": "推荐该阵容且手里有苏烈、场上还没有其他英雄时，说明已有来牌能支持单挂过渡。依据《常小娥灵活变阵-常小娥》核心原理、打法要点第1条及苏烈条目。",
-  "event_id": "os_98aee9aae8b9d41d",
   "id": "group_96a5046cd3084efaa6561a1edec12664",
+  "event_id": "os_98aee9aae8b9d41d",
   "conditions": [],
+  "ignored": true,
   "related_entities": [],
-  "priority": 1,
-  "expression": "arg1.阵容名 has \"常小娥灵活变阵\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"} and 玩家.场上英雄数 == 0",
   "editor_mode": "text",
-  "ignored": true
+  "priority": 1,
+  "expression": "arg1.阵容名 has \"常小娥灵活4人组\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"} and 玩家.场上英雄数 == 0",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」「打法要点」「苏烈」，正式卡牌库 card:1941、card:92499。",
+  "explanation_before": "原始内容：苏烈可在前期单挂，让小菟助力只在一名英雄中选。\n知识详解：手里已有苏烈且场上未投放其他英雄时，有条件以苏烈承伤和成长作为常小娥灵活4人组的过渡。\n适用条件：玩家使用常小娥，推荐目标为灵活变阵，手上有苏烈且目前空场。\n条件语法：arg1.阵容名 has \"常小娥灵活4人组\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"} and 玩家.场上英雄数 == 0\n30 字表达取舍：说明手里的苏烈和过渡方式，省去后续战力与胜负推断。",
+  "explanation_after": "推荐事件说明打法机会，未承诺玩家已上阵或下一次助力已可用。该组仍忽略。"
 }

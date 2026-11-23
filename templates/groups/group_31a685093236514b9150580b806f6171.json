@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第39行「使用技巧」。场上只有阿轲和裴擒虎，阿轲已达四十级。整备从唯一其他英雄取得临时等级，不会降低阿轲等级。40级取机制的明确成长节点，只作识别高等级搭档的门槛。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "阿轲有{玩家.最高等级英雄.等级}级，裴擒虎整备能从他获得临时等级。",
+      "text": "场上只有裴擒虎和高等级阿轲，整备会选中阿轲。",
       "id": "utterances_26955bf1699240f5888e8ca8d4c7b701"
     },
     {
-      "text": "让裴擒虎跟高等级阿轲同场，整备就能获得临时等级。",
+      "text": "上裴擒虎配高等级阿轲，整备可稳定获得临时等级。",
       "id": "utterances_1773e2e4e4084b82b1fb2d1d6332ecd6"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"裴擒虎\" and 玩家.场上英雄数 == 2 and 玩家.最高等级英雄 is \"阿轲\" and 玩家.最高等级英雄.等级 >= 40 and 玩家.战场 has \"裴擒虎\" and 玩家.战场 has \"阿轲\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"裴擒虎\" and 玩家.场上英雄数 == 2 and 玩家.最高等级英雄 is \"阿轲\" and 玩家.最高等级英雄.等级 >= 40 and 玩家.战场 has \"裴擒虎\" and 玩家.战场 has \"阿轲\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第39行「裴擒虎・使用技巧」\n正式卡牌库：裴擒虎（card:5021）\n正式卡牌库：裴擒虎（card:5023）",
+  "explanation_before": "原始内容：高等级少人数阵容，可以上裴擒虎从一名高等级搭档取得临时等级。\n知识或技巧详解：裴擒虎整备随机选择另一名英雄，普通得到其一半等级，觉醒得到等量；双人场里的另一名英雄是已达四十级的阿轲。\n自然语言适用条件：上阵裴擒虎后只有他与阿轲，阿轲是等级最高且至少四十级的另一名英雄。\n正式条件：arg1 is \"裴擒虎\" and 玩家.场上英雄数 == 2 and 玩家.最高等级英雄 is \"阿轲\" and 玩家.最高等级英雄.等级 >= 40 and 玩家.战场 has \"裴擒虎\" and 玩家.战场 has \"阿轲\"\n30 字表达取舍：保留不是随机抽到低级工具的确定搭档。",
+  "explanation_after": "有第三名候选后不能承诺获得阿轲的等级。不能从记录保证立即整备，也不应说阿轲损失等级。"
 }

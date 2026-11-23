@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第15行「使用技巧」。貂蝉花球命中会降低生命恢复。当前对手的主C确认为猪八戒，播报只断言命中时可压制恢复。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "上貂蝉压猪八戒回血，花球打到他就能减治疗。",
+      "text": "上貂蝉针对猪八戒，花球打中他就能降低生命恢复。",
       "id": "utterances_4dfdeffe9bdc4a90886db9a35e5b3b5d"
     },
     {
-      "text": "对面主C是猪八戒，貂蝉的花球命中能压他回血。",
+      "text": "对手的主力是猪八戒，貂蝉可用花球限制他的恢复。",
       "id": "utterances_f209e2b4e69748509380ca04ca57a4b5"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"貂蝉\" and 对局.当前对手.主C is \"猪八戒\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"貂蝉\" and 对局.当前对手.主C is \"猪八戒\"",
+  "explanation_before": "原始内容：貂蝉向周围2格的随机敌人施放5朵花球，每朵花球造成50+40%法术攻击力的法术伤害并降低敌人70%生命恢复效果，持续5秒。\n知识或技巧详解：貂蝉施法会向随机敌人放花球，命中可压制生命恢复。当前猪八戒就是对手主力，因而这项减疗可以帮助队友继续处理大体量目标。\n自然语言适用条件：本次上阵貂蝉，当前对手的主C为猪八戒。\n正式条件：arg1 is \"貂蝉\" and 对局.当前对手.主C is \"猪八戒\"\n30 字表达取舍：点明当前对手，并以花球命中为前提说明限制恢复。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第15行「貂蝉・使用技巧」\n正式卡牌库「貂蝉」 · card:1411\n正式卡牌库「貂蝉（觉醒）」 · card:1413\n正式卡牌库「猪八戒」 · card:5111",
+  "explanation_after": "花球会在范围内随机选人，条件不能证明一定命中猪八戒。没有把猪八戒说成自带某个恢复技能，去掉不规范的“压回血”。"
 }

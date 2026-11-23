@@ -4,26 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "援护战术让场上所有逐鹿英雄在本回合获得护盾。",
+      "text": "场上已有多名逐鹿英雄，用援护战术能一起补护盾。",
       "id": "utterances_5a15bd59a1044d248dd3c964d21e221b"
     },
     {
-      "text": "场上的逐鹿英雄都能获得护盾，本回合可以用来抵挡伤害。",
+      "text": "这轮有多名逐鹿英雄，援护战术能同时保护他们。",
       "id": "utterances_f173c150f18e4c6fb93b5c14f6ddc441"
-    },
-    {
-      "text": "打出援护战术可保护逐鹿英雄，护盾数值随战术牌打出次数提高。",
-      "id": "utterances_40d96efcd33f40d4872d7ce709f6a897"
     }
   ],
-  "explanation": "援护战术（card:313001）写明全体逐鹿英雄本回合获得护盾，护盾数值随战术牌打出次数提高。本组用于无目标效果牌事件，要求场上至少有一名卡牌库登记的逐鹿英雄。",
-  "event_id": "os_1c33df3b1a2b43f5",
   "id": "group_59e4b3ad7e5847e18203e6456cac2e93",
+  "event_id": "os_1c33df3b1a2b43f5",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"援护战术\" and (玩家.战场 has \"墨子\" or 玩家.战场 has \"嬴政\" or 玩家.战场 has \"孙膑\" or 玩家.战场 has \"庄周\" or 玩家.战场 has \"廉颇\" or 玩家.战场 has \"扁鹊\" or 玩家.战场 has \"曜\" or 玩家.战场 has \"白起\" or 玩家.战场 has \"老夫子\" or 玩家.战场 has \"芈月\" or 玩家.战场 has \"蒙恬\" or 玩家.战场 has \"蒙犽\" or 玩家.战场 has \"西施\" or 玩家.战场 has \"镜\" or 玩家.战场 has \"鲁班七号\" or 玩家.战场 has \"鲁班大师\")",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"援护战术\" and 玩家.战场.计数(阵营, \"逐鹿\") >= 2",
+  "explanation_before": "原始内容：转瞬\n全体【逐鹿】英雄本回合获得50（+25×战术牌打出次数，当前：75）点护盾。\n知识或技巧详解：援护战术给当回合在场的逐鹿英雄加护盾。场上有多名逐鹿英雄时，用一次就能保护多人，比在仅有一名受益者时具有更大的群体收益。\n自然语言适用条件：使用援护战术，场上逐鹿英雄至少两名。\n正式条件：arg1 is \"援护战术\" and 玩家.战场.计数(阵营, \"逐鹿\") >= 2\n30 字表达取舍：把群体受益条件放在话术前半，省去随战术次数变化的实时盾量。",
+  "explanation_source": "正式卡牌库 援护战术（card:313001）\n正式卡牌库「援护战术」 · card:313001",
+  "explanation_after": "改用阵营计数限制多目标场景，避免只用牌名朗读效果。仅一名逐鹿时不能播多名一起受益；留两句即可。"
 }

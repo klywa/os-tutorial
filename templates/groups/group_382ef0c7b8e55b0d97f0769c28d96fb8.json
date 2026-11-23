@@ -4,26 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》孙膑及开局运营。开局空场可留孙膑作过渡，独自施法也能积累成长，单挂时独享小菟助力。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "孙膑一个人施法也能攒永久等级，可以先单挂。",
+      "text": "开局还没人，买孙膑可先单挂，靠自己施法攒等级。",
       "id": "utterances_931094d9dd274f25942446a735402bcc"
-    },
-    {
-      "text": "开局用孙膑单挂，他能独享小菟助力。",
-      "id": "utterances_e0edad7258204f1d8b709b5265691b28"
-    },
-    {
-      "text": "孙膑能靠自己施法成长，先上一个也有后续收益。",
-      "id": "utterances_1fec0d79052242389b364adc0f1b4acd"
     }
   ],
   "id": "group_382ef0c7b8e55b0d97f0769c28d96fb8",
   "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998\n正式卡牌库：孙膑（card:1181）\n正式卡牌库：孙膑（card:1183）",
+  "explanation_before": "原始内容：孙膑也可作前期单挂英雄；独自反复施法可获得永久等级。\n知识或技巧详解：常小娥空场时还可选孙膑过渡。单独上阵可独享助力，并从他自己的施法积累永久等级。\n自然语言适用条件：常小娥前期，场上尚无人，当前购买孙膑。\n正式条件：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0\n30 字表达取舍：保留当前空场与购买后可以单挂的取舍。",
+  "explanation_after": "购买时还没上场，不说已经独享助力。来源只是可行过渡，不宣称比苏烈或狂铁更好。"
 }

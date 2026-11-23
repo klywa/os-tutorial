@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "丝绸之路按出售古币给河洛英雄，零钱兑换把一张普通古币换成两张破损古币。只说明可以产生更多河洛英雄机会，普通/破损古币出售交互见原技巧。 来源：personal/knowledge_tips.jsonl 第179行；本地官方卡面 card:636214。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "已有零钱兑换，选丝绸之路可以把更多古币换成河洛牌。",
+      "text": "已有零钱兑换，再选丝绸之路可卖古币换河洛牌。",
       "id": "utterances_dcb11f5b06e246ad98f4a3fe37b298f7"
-    },
-    {
-      "text": "零钱兑换让古币更多，丝绸之路就有更多换牌机会。",
-      "id": "utterances_8ad08c0936a04970af4b79f0bc8c0c0d"
     }
   ],
   "id": "group_ae4b9614af4b57d48a2587108d746bf4",
   "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"丝绸之路\" and 玩家.已选天赋 has \"零钱兑换\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"丝绸之路\" and 玩家.已选天赋 has \"零钱兑换\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第179行「使用技巧」，正式卡牌库 card:636214、card:636215。",
+  "explanation_before": "原始内容：每出售4名场上英雄获得1张古币，每出售1张古币获得1张【河洛】英雄牌。 你获得的古币会自动兑换为2张无法提供等级的破损古币，精致古币则兑换为4张。\n知识详解：零钱兑换使获得的古币成为数量更多的破损古币。丝绸之路能把出售古币的动作与河洛英雄供牌联动。\n适用条件：选择丝绸之路，零钱兑换已生效。\n条件语法：arg2 is \"丝绸之路\" and 玩家.已选天赋 has \"零钱兑换\"\n30 字表达取舍：保留已选的前置天赋和卖币换牌，避免说选完就产英雄。",
+  "explanation_after": "只说明两者组合的收益。当前没有古币或没有出售时，不能保证已经收到英雄。"
 }

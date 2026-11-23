@@ -271,7 +271,9 @@ class TemplateRuleTests(unittest.TestCase):
         document = store.export_library(self.root, ['g1'], rules_format=True)
         self.assertEqual([e['name'] for e in document['events']], ['自定义'])
         group = document['groups'][0]
-        group.update(editor_mode='text', expression='玩家.等级 >= count', priority=7, explanation='等级满足事件要求时使用')
+        group.update(editor_mode='text', expression='玩家.等级 >= count', priority=7, explanation='等级满足事件要求时使用',
+                     version='s1', mode='万象大赛', tags=['技巧'], explanation_before='区分触发时点',
+                     explanation_source='笔记原文', explanation_after='核对等级阈值')
         preview = store.preview_import(self.root, document)
         self.assertEqual(preview['errors'], [])
         saved = store.apply(self.root, preview['revision'], preview['changes'])

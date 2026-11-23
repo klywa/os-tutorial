@@ -4,22 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“铸造装备”事件中，穿戴者为杨玉环，铸造成品为贤者之书时适用。贤者之书降低杨玉环的法力值上限，让她更快放出治疗技能。依据为《常小娥灵活变阵-常小娥》「贤者之书」及官方装备「贤者之书」、装备「圣者法典」。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "贤者之书让杨玉环每次施法都能提高法攻，后续治疗量更高。",
+      "text": "给杨玉环铸贤者之书，她施法叠法攻后能提高治疗量。",
       "id": "utterances_33ca2b3e682d443c9c2245304d400d6a"
     },
     {
-      "text": "贤者之书降低杨玉环的法力值上限，让她更快放出治疗技能。",
+      "text": "贤者之书能缩短杨玉环的施法间隔，也能缩短治疗间隔。",
       "id": "utterances_075d0c20408b4fa2a04ecc0c7afa22a1"
     }
   ],
-  "event_id": "os_db70e56ec24636b5",
   "id": "group_2452e0f1bf094ee0b2b01f19d450949a",
+  "event_id": "os_db70e56ec24636b5",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"杨玉环\" and arg3 is \"贤者之书\"",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「贤者之书」 · n-f466f5fb13f33ab73734\n正式卡牌库：贤者之书（card:643802）\n正式卡牌库：杨玉环（card:1761）",
+  "explanation_before": "原始内容：需要提高治疗量时可把贤者之书交给杨玉环。\n知识或技巧详解：贤者之书降低法力上限，使杨玉环更快施法，并在施法后提供可累计的法术攻击力，提高治疗乐曲的收益。\n自然语言适用条件：铸造贤者之书时，穿戴者是轮流施放治疗乐曲和伤害乐曲的杨玉环。\n正式条件：arg1 is \"杨玉环\" and arg3 is \"贤者之书\"\n30 字表达取舍：保留杨玉环的治疗收益，避免照搬书的通用法攻面板。",
+  "explanation_after": "不能确定下一曲究竟为治疗还是伤害。只说后续治疗来得更快或效果提高。"
 }

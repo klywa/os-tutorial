@@ -4,19 +4,21 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "让明世隐连接裴擒虎，就能把他的一部分临时等级变成永久等级。",
+      "text": "场上只留裴擒虎和明世隐，能把部分临时等级留下。",
       "id": "utterances_2226305a14b74a978e69fb75ad8dfc9e"
     },
     {
-      "text": "裴擒虎整备会获得临时等级，连上明世隐就有机会留下一部分。",
+      "text": "明世隐只会连到裴擒虎，可把他的部分临时等级转为永久等级。",
       "id": "utterances_0c0b6b2d6c7f4357b55fdbaa34707dbb"
     }
   ],
-  "explanation": "裴擒虎在场，上阵明世隐时，说明这项操作的战斗或资源收益。让明世隐连接裴擒虎，就能把他的一部分临时等级变成永久等级。依据《常小娥灵活变阵-常小娥》「明世隐」和明世隐的官方卡面、技能。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_12f766be59f644d6a6ee634bb2c2dccd",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [
     {
@@ -36,7 +38,11 @@
       "name": "裴擒虎"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"明世隐\" and 玩家.战场 has \"裴擒虎\"",
-  "editor_mode": "text"
+  "expression": "arg1 is \"明世隐\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"明世隐\" and 玩家.战场 has \"裴擒虎\"",
+  "condition_tree": null,
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「明世隐」 · n-203a398ed4ac44a04a5e\n正式卡牌库：明世隐（card:5011）\n正式卡牌库：明世隐（card:5013）\n正式卡牌库：裴擒虎（card:5021）\n正式卡牌库：裴擒虎（card:5023）",
+  "explanation_before": "原始内容：明世隐适合搭配能获得临时等级的裴擒虎。\n知识或技巧详解：裴擒虎整备取得其他英雄的临时等级。明世隐可把距离最近英雄的一部分临时等级转为永久等级，两人同场可安排连接。\n自然语言适用条件：上阵明世隐时，场上已有裴擒虎，且上阵之后只有他们两名英雄。\n正式条件：arg1 is \"明世隐\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"明世隐\" and 玩家.战场 has \"裴擒虎\"\n30 字表达取舍：保留唯一连接及临时转永久的收益。",
+  "explanation_after": "两人时排除了其他英雄抢连接。裴擒虎仍须确实获得临时等级，不能把上阵明世隐当作已经兑现。"
 }

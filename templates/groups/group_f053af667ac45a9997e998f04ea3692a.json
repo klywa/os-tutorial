@@ -1,0 +1,27 @@
+{
+  "name": "对手百级主力等级最高时选海月",
+  "scope": {
+    "player_id": null,
+    "lineup_note_id": null
+  },
+  "explanation_after": "事件与条件：选中的英雄取 arg2；实际候选用于呈现本次选择。反例：百级主力并非等级最高，不解释这项取舍。话术说明可争取的入场收益，保留局面前提和因果，未承诺已经触发卡面效果。",
+  "explanation_before": "原始内容：牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值的真实伤害。\n知识或技巧详解：海月牺牲优先限制敌方最高等级英雄，能针对已经观察到的百级单核。同一收益可从商店购买或选择英雄进入；兑换券只提供三选一机会，选择动作本身未触发入场。\n自然语言适用条件：对方主力是等级最高的百级英雄，且在正式选择英雄事件中选中海月。\n正式条件：arg2 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称\n30 字表达取舍：保留当前已确认的局面事实和入场后能争取的收益。\n购买事件已有「买海月针对当前对手的百级主力」。拍卖选择没有可辨认所选英雄的正式解释事件。",
+  "explanation_source": "knowledge/other/基础知识.json\nknowledge/other/冷门知识.json\nknowledge/other/基础知识.json「等级节点与临时成长」 · game-basics-231\nknowledge/other/冷门知识.json · n-8cd5e478f15ef91e9aa5\n正式卡牌库「海月」 · card:5211\n正式卡牌库「海月（觉醒）」 · card:5213\n正式卡牌库 5阶英雄兑换券（card:7055）",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
+  "utterances": [
+    {
+      "id": "utterances_1e72006a96785e478d005b47c4d62fda",
+      "text": "对面百级主力等级最高，选海月能靠牺牲限制他。"
+    }
+  ],
+  "id": "group_f053af667ac45a9997e998f04ea3692a",
+  "event_id": "os_dcef166d05efe08e",
+  "conditions": [],
+  "related_entities": [],
+  "editor_mode": "text",
+  "priority": 0,
+  "expression": "arg2 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称",
+  "explanation": ""
+}

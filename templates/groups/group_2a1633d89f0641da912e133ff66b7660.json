@@ -4,19 +4,13 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》核心原理及露娜。场上四人且露娜已经上阵。先解释她提供的闪现范围输出，额外触发狂铁整备属于附带收益。四人组外临时挂露娜另有专门组。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "露娜补进四人组，能从敌阵里打出范围法伤。",
+      "text": "狂铁能留在前排，上露娜可给四人组补范围输出。",
       "id": "utterances_bbba375a5b474235964504b7c61eaae3"
-    },
-    {
-      "text": "露娜能闪进敌阵打范围伤害，狂铁留在前面扛。",
-      "id": "utterances_b97717e2108a4896b0ee9b9c458489d5"
-    },
-    {
-      "text": "上露娜给四人组补输出，突进还能扫到沿途的敌人。",
-      "id": "utterances_3f2fbc181a064333a58351538e8e7d61"
     }
   ],
   "id": "group_2a1633d89f0641da912e133ff66b7660",
@@ -40,7 +34,10 @@
       "name": "狂铁"
     }
   ],
-  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：露娜（card:1461）\n正式卡牌库：狂铁（card:5031）",
+  "explanation_before": "原始内容：露娜补日落海四人组的闪现范围输出，狂铁可继续承担前排。\n知识或技巧详解：已有狂铁上场时无需让露娜承担近端承伤；露娜的闪现和范围输出能补队伍不同接敌位置。\n自然语言适用条件：常小娥灵活4人组中，露娜上阵后场上四名英雄，且狂铁仍在场。\n正式条件：arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.战场 has \"露娜\" and 玩家.战场 has \"狂铁\"\n30 字表达取舍：只讲已有前排与新增输出的互补。",
+  "explanation_after": "未读对位，不说露娜必然闪到敌方主力。未读她的等级，不说双突进已经解锁。"
 }

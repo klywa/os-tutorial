@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第20行「使用技巧」。官网重装上阵和全副武装都让至少穿两件的英雄获得15%伤害加成与减免。主力韩信已在场且达到门槛，该次天赋直接为其前排持续作战增加减伤。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "韩信已达装备门槛，选{arg2}能增伤也能减伤。",
+      "text": "韩信已穿至少两件装备，选{arg2}能增伤和减伤。",
       "id": "utterances_4bfbfcff5bb94601997e10e6ccdc2233"
     },
     {
-      "text": "韩信穿了{玩家.主C.已穿装备.计数()}件装备，选{arg2}能减伤。",
+      "text": "韩信的装备已达门槛，选{arg2}能减伤。",
       "id": "utterances_b4d36364997c43249d9ddf261c6f6cbd"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 in [\"重装上阵\",\"全副武装\"] and arg2 in arg1 and 玩家.主C is \"韩信\" and 玩家.主C in 玩家.战场 and 玩家.主C.已穿装备.计数() >= 2",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 in [\"重装上阵\",\"全副武装\"] and arg2 in arg1 and 玩家.主C is \"韩信\" and 玩家.主C in 玩家.战场 and 玩家.主C.已穿装备.计数() >= 2",
+  "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：重装上阵（card:633017）\n正式卡牌库：全副武装（card:633020）",
+  "explanation_before": "原始内容：韩信可通过重装上阵、全副武装等天赋补充续航。\n知识或技巧详解：两项天赋都让穿了至少两件装备的英雄在开战获得伤害加成与减免；在场主力韩信已经满足门槛。\n自然语言适用条件：在候选中选到两项之一，韩信是装备至少两件且已经上阵的主力。\n正式条件：arg2 in [\"重装上阵\",\"全副武装\"] and arg2 in arg1 and 玩家.主C is \"韩信\" and 玩家.主C in 玩家.战场 and 玩家.主C.已穿装备.计数() >= 2\n30 字表达取舍：在场主力与两件门槛先交代，天赋额外给装备的区别省去。",
+  "explanation_after": "脱下一件使两件门槛不成立时不播。能承诺增伤和减伤，不能承诺随后获胜。"
 }

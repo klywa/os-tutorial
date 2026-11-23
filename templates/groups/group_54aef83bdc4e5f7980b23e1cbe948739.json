@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "武装分解销毁全部已穿装备。目标仅穿一件时奖励是4能量，和卡的费用及实际净收益分开。 来源：personal/knowledge_tips.jsonl 第214行；本地官方卡面 card:7089。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "只分解这一件装备，就能换回四点能量。",
+      "text": "这个英雄只穿了一件，武装分解能摧毁它换四点能量。",
       "id": "utterances_fde05b50a9384695886473de0eba880f"
     },
     {
-      "text": "这个英雄只穿了一件，武装分解会给四点能量。",
+      "text": "武装分解正好能拿这一件装备换四点能量。",
       "id": "utterances_1b3e9b1c39a444bb8f7a6026fa3e3e65"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"武装分解\" and arg1.已穿装备.计数() == 1",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"武装分解\" and arg1.已穿装备.计数() == 1",
+  "explanation_before": "原始内容：指定1名英雄，摧毁其所有装备：\n摧毁1件获得4能量；2件获得1张妙音；3件获得1张珍品宝箱。\n知识或技巧详解：武装分解会摧毁所选英雄身上的全部装备。该英雄已穿一件，本次结算对应四能量。实际净收益还要扣掉使用这张牌的费用。\n自然语言适用条件：正在用武装分解，并选中恰有一件已穿装备的英雄。\n正式条件：arg2 is \"武装分解\" and arg1.已穿装备.计数() == 1\n30 字表达取舍：在同一句话里交代目前件数、分解动作与本档收益，省去其他档。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第214行「武装分解・使用技巧」\n正式卡牌库 武装分解（card:7089）\n正式卡牌库「武装分解」 · card:7089",
+  "explanation_after": "一件是本组的实际收益分界。件数不同或未知时不得播本组。话术说明摧毁和所得，不将所得写作必然净收益或指定装备。"
 }

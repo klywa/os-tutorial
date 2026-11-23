@@ -4,22 +4,27 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "单挂觉醒干将能独吃助力，他自己拿到击败还能升级。",
+      "text": "前期单挂觉醒干将能集中助力，击败敌人还能升级。",
       "id": "utterances_531b10be228547e5a22f6859e66046f2"
     },
     {
-      "text": "觉醒干将单挂能独吃助力，飞剑击败敌人还能再升等级。",
+      "text": "只上觉醒干将，助力会给他；他亲自击败敌人还能升级。",
       "id": "utterances_c87f4710bc594033a8ce1afa1c6867de"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》单挂过渡；干将普通在场给雄剑，觉醒再给雌剑。BV1eeWF6pESY:p1 04:30–04:58、BV13gxz6FEZJ:p1 00:29–00:58明确觉醒后的击败成长。干将莫邪须亲自击败敌人才能提高等级，不能保证单挂必定成长。",
   "id": "group_1953a024b71345a6b7a9ab65fcc3d9f2",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"干将莫邪\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"干将莫邪\" and arg1.已觉醒",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · 干将莫邪／前期单挂过渡\nBV1eeWF6pESY:p1 04:30–04:58\nBV13gxz6FEZJ:p1 00:29–00:58",
+  "explanation_before": "原始内容：觉醒干将能单挂，自己击败敌人后可以永久提高等级。\n知识或技巧详解：常小娥前期集中助力给单名英雄；觉醒干将在获得助力之外，还能靠自己的击败继续成长。\n自然语言适用条件：棋手未到六级，觉醒干将上阵后是场上唯一英雄。\n正式条件：arg1 is \"干将莫邪\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"干将莫邪\" and arg1.已觉醒\n30 字表达取舍：保留前期独吃助力和本人击败的两个来源。",
+  "explanation_after": "两条都不把团队取得击败视为干将亲自击败，也不保证单挂一定赢。"
 }

@@ -34,6 +34,10 @@ function Literal({node,type,choices,unitTypes,onChange}:{node:Leaf;type:string;c
 function FilterInput({filter,path,label,onChange}:{filter:NonNullable<PathOption['filter']>;path:string;label:string;onChange:(path:string)=>void}){
  const id=useId();
  const {field,choices}=filter;
+ if(field==='英雄')return <label htmlFor={id}>{label}英雄名单
+  <input id={id} value={readCountFilter(path)?.value??''} placeholder='["小乔", {"类型":"英雄","名称":"弈星","已觉醒":true}]'
+   onChange={e=>onChange(countPath(filter,e.target.value))}/>
+ </label>;
  return <label htmlFor={id}>{label}{field}<input id={id} list={choices?.length?id+'-choices':undefined} value={readCountFilter(path)?.value??''} onChange={e=>onChange(countPath(filter,e.target.value))}/>
   {!!choices?.length&&<datalist id={id+'-choices'}>{choices.map(choice=><option key={choice} value={choice}/>)}</datalist>}
  </label>;

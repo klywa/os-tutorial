@@ -4,20 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "小乔离场后，姜子牙给三分英雄提升等级时就少一个候选。",
+      "text": "姜子牙和吕布都在，撤小乔可少一个三分加级候选。",
       "id": "utterances_9006be8747064ffea7d61c7e071c1a55"
     },
     {
-      "text": "卖掉同属三分的小乔，吕布就少一个分走姜子牙成长的队友。",
+      "text": "卖掉小乔后，姜子牙为三分加级时，吕布少一个候选对手。",
       "id": "utterances_9e534470ef544576ba6ebacaff6ea9ea"
     }
   ],
-  "explanation": "姜子牙、吕布仍在场，卖掉小乔后场上已无小乔。解释出售如何减少三分成长候选。《常小娥灵活变阵-常小娥》「姜子牙」说明小乔可能分走吕布的等级；姜子牙卡面限定不同阵营的随机队友。",
-  "event_id": "os_02f23dfd4155737d",
   "id": "group_7903808d9dd541a3b2d55a875cd3f57b",
+  "event_id": "os_02f23dfd4155737d",
   "conditions": [],
+  "ignored": true,
   "related_entities": [
     {
       "id": "card:1063",
@@ -44,8 +47,10 @@
       "name": "姜子牙"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")",
-  "editor_mode": "text",
-  "ignored": true
+  "explanation_before": "原始内容：「避免临时三分小乔分走吕布等级」\n你每次使用不在场的阵营以及无阵营的英雄牌时，姜子牙和随机3名其他不同阵营的英雄等级+1。\n知识或技巧详解：小乔与吕布都是三分。老笔记指出临时上阵的小乔可能分享下一次姜子牙的三分成长，卖出后只至少排除这一名三分候选，不能保证这份等级归吕布。\n自然语言适用条件：常小娥灵活4人组，从战场卖小乔。卖后场上没有小乔，姜子牙和吕布仍在。\n正式条件：arg1 is \"小乔\" and 玩家.战场 has \"姜子牙\" and 玩家.战场 has \"吕布\" and not (玩家.战场 has \"小乔\")\n30 字表达取舍：强调移除的对象和希望保留的三分受益者，省去姜子牙每次打牌触发对象的完整范围。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「姜子牙」 · n-5658af04ec0d74380dda\n正式卡牌库「姜子牙」 · card:1481\n正式卡牌库「姜子牙（觉醒）」 · card:1483\n正式卡牌库「小乔」 · card:1061\n正式卡牌库「吕布」 · card:1231",
+  "explanation_after": "小乔售后仍在场或吕布、姜子牙任一不在时，不适用这一解释。触发需要以后打符合条件的英雄牌，未确定唯一接收者。本组保持忽略。"
 }

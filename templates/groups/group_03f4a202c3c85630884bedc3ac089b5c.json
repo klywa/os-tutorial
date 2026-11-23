@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第100行「使用技巧」。杠上了按飞行器连续命中同一个目标提高伤害。当前对手只上了一名英雄且其达到百级，较适合围绕连续输出。但对方衍生物与切换目标仍可干扰，话术明确以连续命中为前提。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "对手单挂{对局.当前对手.主C.等级}级英雄，杠上了连续命中能越打越疼。",
+      "text": "对手只上了一个百级英雄，杠上了连续命中就能增伤。",
       "id": "utterances_822e0c3222554869a616c5f837ba292d"
     },
     {
-      "text": "对付单挂大核，选杠上了能叠高连续攻击的伤害。",
+      "text": "对手单挂高等级英雄，选杠上了可提高连续攻击伤害。",
       "id": "utterances_2160c3192cd4449895ec401502aad8aa"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_7be319d5c5ce8554",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100",
+  "explanation_source": "personal/knowledge_tips.jsonl 第100行「“杠上了”模块_安琪拉_效果・使用技巧」\n正式卡牌库：“杠上了”模块（card:95139）",
+  "explanation_before": "原始内容：飞行器连续攻击同一目标时伤害逐渐提高，适合用于对付敌方大核。\n知识或技巧详解：杠上了模块奖励飞行器连续攻击同一目标；对手仅上一个百级英雄，通常更容易集中攻击，但仍可能有衍生物。\n自然语言适用条件：安琪拉从本次候选中选中该模块。对手只有一名在场英雄，且主力至少一百级。\n正式条件：arg2 is \"“杠上了”模块\" and arg1 has \"“杠上了”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.场上英雄数 == 1 and 对局.当前对手.主C.等级 >= 100\n30 字表达取舍：保留敌方单挂与本模块奖励连续攻击的关系。",
+  "explanation_after": "缺少敌方英雄人数或主力等级不能推断。话术以能连续命中为前提，避免保证不会转火。"
 }

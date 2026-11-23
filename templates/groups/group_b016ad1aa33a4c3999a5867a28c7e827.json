@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "给法力上限低的队友铸法源之杯，队友多施法能帮诸葛亮回蓝。",
+      "text": "诸葛亮在场，给短法力条队友铸法源之杯可帮他回蓝。",
       "id": "utterances_11871625b7f74d2abed4b097f402efe3"
-    },
-    {
-      "text": "杯子每秒回五蓝，队友更快再施法，诸葛亮也能跟着回蓝。",
-      "id": "utterances_dfd6f9500b3c4644b2cbbfef4007a0d0"
     }
   ],
-  "explanation": "普通英雄卡镜、貂蝉、花木兰、孙膑和杨玉环最大法力均20，干将25。法源之杯每秒回5蓝；诸葛亮由其他友方英雄施法触发回蓝和临时升级。仅引用基础蓝量明确、具有主动法力技能的普通卡，不假设实际施法次数。",
   "id": "group_b016ad1aa33a4c3999a5867a28c7e827",
   "event_id": "os_db70e56ec24636b5",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 1,
   "expression": "arg3 is \"法源之杯\" and (arg1 is \"镜\" or arg1 is \"貂蝉\" or arg1 is \"花木兰\" or arg1 is \"孙膑\" or arg1 is \"干将莫邪\" or arg1 is \"杨玉环\") and not arg1.已觉醒 and 玩家.战场 has \"诸葛亮\"",
-  "editor_mode": "text"
+  "explanation_source": "正式卡牌库 card:643402、card:1901、card:1903及镜、貂蝉、花木兰、孙膑、干将莫邪、杨玉环普通卡基础属性。",
+  "explanation_before": "原始内容：你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。 唯一。每秒回复5点法力值。\n知识详解：名单内普通英雄的法力上限为二十或二十五。法源之杯帮助这些友军达到施法门槛，诸葛亮在场可借其施法为自身额外取得法力。\n适用条件：给名单内未觉醒英雄铸造法源之杯，诸葛亮已在场。\n条件语法：arg3 is \"法源之杯\" and (arg1 is \"镜\" or arg1 is \"貂蝉\" or arg1 is \"花木兰\" or arg1 is \"孙膑\" or arg1 is \"干将莫邪\" or arg1 is \"杨玉环\") and not arg1.已觉醒 and 玩家.战场 has \"诸葛亮\"\n30 字表达取舍：同时说明法源之杯、短法力友军与在场诸葛亮，不逐个报英雄名及回蓝数。",
+  "explanation_after": "排除技能形态未核对的单位。用“可”说明实际触发要等队友施法，不保证具体频率。"
 }

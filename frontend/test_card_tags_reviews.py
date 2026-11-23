@@ -1,7 +1,10 @@
+from contextlib import closing
 import json
 from pathlib import Path
+import sqlite3
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import test_templates_http  # Initialize project imports.
 import card_tags
@@ -9,6 +12,55 @@ from workspace import Conflict
 
 
 class CardTagReviewTests(unittest.TestCase):
+    def test_taxonomy_switch_preserves_history_but_expires_old_pending_and_approved_overrides(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            folder = root/'src/condition'
+            folder.mkdir(parents=True)
+            cards_path = folder/'card-tags.json'
+            cards = {
+                'a': dict(name='英雄',type='英雄',awakened=False,tags=['旧标签']),
+                'b': dict(name='英雄',type='英雄',awakened=True,tags=['旧标签']),
+                'c': dict(name='装备',type='装备',awakened=False,tags=['独有装备标签']),
+            }
+            cards_path.write_text(json.dumps(cards), encoding='utf8')
+            writer = dict(username='作者',role='annotator')
+            admin = dict(username='审核人',role='admin')
+            a, b = '/api/cards/a/tags', '/api/cards/b/tags'
+            review = '/api/cards/tag-reviews/'
+            database = card_tags.database(root)
+            database.parent.mkdir(parents=True)
+            with closing(sqlite3.connect(database)) as conn:
+                conn.execute("""CREATE TABLE tag_reviews (
+                    id TEXT PRIMARY KEY, card_id TEXT NOT NULL, card_name TEXT NOT NULL, base TEXT NOT NULL,
+                    before_tags TEXT NOT NULL, after_tags TEXT NOT NULL, author TEXT NOT NULL,
+                    created TEXT NOT NULL, status TEXT NOT NULL, reviewer TEXT, reviewed TEXT)""")
+            with patch.object(card_tags, 'TAXONOMY_VERSION', 1):
+                old_revision = card_tags.read(root, writer, a)['revision']
+                approved = card_tags.mutate(root, writer, a, {'revision':old_revision,'tags':['历史通过']})
+                card_tags.mutate(root, admin, review+approved['id']+'/approve', {})
+                pending = card_tags.mutate(root, writer, b, {'revision':card_tags.read(root, writer, b)['revision'],'tags':['历史待审']})
+            cards['a']['tags'] = ['治疗']
+            cards['b']['tags'] = ['控制']
+            cards_path.write_text(json.dumps(cards), encoding='utf8')
+            self.assertEqual(card_tags.effective_tags(root), cards)
+            state = card_tags.read(root, writer, a)
+            self.assertEqual(state['items'][0]['status'], 'approved')
+            self.assertNotIn('历史通过', state['suggestions'])
+            self.assertNotIn('独有装备标签', state['suggestions'])
+            self.assertEqual(card_tags.read(root, admin, b)['items'][0]['status'], 'expired')
+            self.assertEqual(card_tags.read(root, admin, review.rstrip('/'))['items'], [])
+            with self.assertRaises(Conflict):
+                card_tags.mutate(root, admin, review+pending['id']+'/approve', {})
+            with self.assertRaises(Conflict):
+                card_tags.mutate(root, writer, a, {'revision':old_revision, 'tags':['恢复旧标签']})
+            fresh = card_tags.mutate(root, writer, a, {'revision':state['revision'], 'tags':['新词']})
+            duplicate = card_tags.mutate(root, writer, a, {'revision':state['revision'], 'tags':['新词','新词']})
+            self.assertEqual(duplicate['id'], fresh['id'])
+            self.assertNotIn('新词', card_tags.read(root, writer, b)['suggestions'])
+            card_tags.mutate(root, admin, review+fresh['id']+'/approve', {})
+            self.assertIn('新词', card_tags.read(root, writer, b)['suggestions'])
+
     def test_public_reviews_and_effective_tags_follow_site_to_new_release(self):
         with tempfile.TemporaryDirectory() as temp:
             base = Path(temp)
@@ -45,6 +97,8 @@ class CardTagReviewTests(unittest.TestCase):
             change = dict(revision=initial['revision'], tags=['获得护盾受益'])
             with self.assertRaises(PermissionError):
                 card_tags.mutate(root, viewer, path, change)
+            with self.assertRaisesRegex(ValueError, '分隔符'):
+                card_tags.mutate(root, writer, path, {**change, 'tags':['治疗、控制']})
             first = card_tags.mutate(root, writer, path, change)
             second = card_tags.mutate(root, writer, path, {**change,'tags':[]})
             review = '/api/cards/tag-reviews/' + first['id'] + '/approve'

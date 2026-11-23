@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第16行「使用技巧」。安琪拉的整备能触发场上朵莉亚的等级效果，后者还给阿科米亚核心等级。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "朵莉亚在场，上安琪拉能靠整备再给队友和核心升级。",
+      "text": "朵莉亚已经在场，上安琪拉能多触发她的整备联动。",
       "id": "utterances_68e1a82a83e54eb3ad7c90c4ba861605"
-    },
-    {
-      "text": "安琪拉每次整备都可触发朵莉亚，让队友再多拿等级。",
-      "id": "utterances_e65c44a1b38341a4b0b3e7982eb17f3d"
     }
   ],
   "id": "group_f1f4aa17b7825f6e95acbbe6e00add4a",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"安琪拉\" and 玩家.战场 has \"朵莉亚\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"安琪拉\" and 玩家.战场 has \"朵莉亚\"",
+  "explanation_before": "原始内容：觉醒后整备触发次数翻倍。搭配朵莉亚，每次整备还能再给场上英雄和阿科米亚核心加等级。装备搭配法源之杯、虚无法杖、纯净苍穹等回蓝及法术装备。可以造成大量范围伤害。面对敌方安琪拉时，携带凝渊能加快近身。光辉为持续技能，携带炽热支配者可降低被控制打断的风险；若敌方有英雄安琪拉，使用控制可打断敌方安琪拉的光辉技能释放。温馨提示：安琪拉技能会朝敌人最多的方向释放，注意站位。\n知识或技巧详解：安琪拉整备能额外触发朵莉亚收益，为英雄和核心加级。\n自然语言适用条件：解释为何上阵英雄时，朵莉亚已在场，且现在打出安琪拉。\n正式条件：arg1 is \"安琪拉\" and 玩家.战场 has \"朵莉亚\"\n30 字表达取舍：播报保留「朵莉亚已经在场，上安琪拉能多触发她的整备联动。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第16行「安琪拉・使用技巧」",
+  "explanation_after": "事件与条件复核：解释为何上阵英雄，核对了朵莉亚已在场，且现在打出安琪拉。单项反例：移走朵莉亚时只剩安琪拉自己的整备。话术复核：句子围绕安琪拉整备能额外触发朵莉亚收益，为英雄和核心加级，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

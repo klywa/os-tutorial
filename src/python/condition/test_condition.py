@@ -15,6 +15,12 @@ CATALOG_DIR = Path(__file__).resolve().parents[2] / "condition"
 EVENT = {"事件": "上阵英雄", "参数": {"arg1": "弈星"}}
 
 
+def fixture_catalog():
+    catalog = json.loads((CATALOG_DIR / "catalog.json").read_text(encoding="utf-8"))
+    catalog["card_tags"] = json.loads((CATALOG_DIR / "test-card-tags.json").read_text(encoding="utf-8"))
+    return catalog
+
+
 class ConditionTests(unittest.TestCase):
     def test_numeric_slots_read_actual_count_and_required_numeric_operands(self):
         name = "解释为何选择天赋"
@@ -75,7 +81,7 @@ class ConditionTests(unittest.TestCase):
                 card = expected[key]
                 self.assertEqual((row["name"], row["type"], row["awakened"]),
                                  (card["name"], kinds[card["category"]], bool(card.get("awakened"))))
-                self.assertTrue(row["tags"])
+                self.assertIsInstance(row["tags"], list)
                 self.assertEqual(len(row["tags"]), len(set(row["tags"])))
                 self.assertTrue(all(isinstance(tag, str) and tag == tag.strip() and tag for tag in row["tags"]))
 
@@ -91,9 +97,10 @@ class ConditionTests(unittest.TestCase):
         for case in cases:
             with self.subTest(name=case["name"]):
                 args = (json.dumps(case["event"]).encode(), case["expression"], json.dumps(case["state"]))
-                if "parameters" in case:
-                    catalog = json.loads((CATALOG_DIR / "catalog.json").read_text(encoding="utf-8"))
-                    catalog["events"]["自定义事件"] = {"parameters": case["parameters"]}
+                if "parameters" in case or ".标签" in case["expression"]:
+                    catalog = fixture_catalog()
+                    if "parameters" in case:
+                        catalog["events"]["自定义事件"] = {"parameters": case["parameters"]}
                     args += (catalog,)
                 if case.get("error"):
                     with self.assertRaises(ConditionError) as raised:
@@ -149,13 +156,35 @@ class ConditionTests(unittest.TestCase):
         rule = ('arg1.已穿装备.计数() == 0 and 玩家.已选天赋 has "搏战"'
                 ' and 玩家.战场.计数(阵营, "三分之地") == 2'
                 ' and 玩家.战场.计数(标签, "登场") >= 0')
-        self.assertTrue(evaluate_condition(event, rule, state))
+        catalog = fixture_catalog()
+        self.assertTrue(evaluate_condition(event, rule, state, catalog))
         del state["玩家"]["战场"][0]["阵营"]
-        self.assertFalse(evaluate_condition(event, "not (" + rule + ")", state))
+        self.assertFalse(evaluate_condition(event, "not (" + rule + ")", state, catalog))
         del event["参数"]["arg1"]["已穿装备"]
         self.assertFalse(evaluate_condition(event, "arg1.已穿装备.计数() == 0", state))
         with self.assertRaises(ConditionError):
             validate_expression(event["事件"], '玩家.战场.计数(等级, "10") == 1')
+
+    def test_hero_array_count_filters_names_and_forms(self):
+        count = '玩家.战场.计数(英雄, ["小乔", {"类型":"英雄","名称":"弈星","已觉醒":true}])'
+        rule = count + " >= 2"
+        state = {"玩家": {"战场": [
+            "小乔", {"名称": "小乔", "已觉醒": False},
+            {"类型": "衍生物", "名称": "小乔"},
+            {"名称": "弈星", "已觉醒": False},
+            {"名称": "弈星", "已觉醒": True},
+        ]}}
+        self.assertTrue(evaluate_condition(EVENT, count + " == 3", state))
+        self.assertTrue(evaluate_condition(EVENT, count + " == 0", {"玩家": {"战场": []}}))
+        self.assertFalse(evaluate_condition(EVENT, rule, {"玩家": {"战场": ["小乔"]}}))
+        for battlefield in ([{"名称": "弈星"}], [None], [{}]):
+            self.assertFalse(evaluate_condition(EVENT, f"not ({rule})", {"玩家": {"战场": battlefield}}))
+        self.assertFalse(evaluate_condition(EVENT, f"not ({rule})", {"玩家": {}}))
+        group = {"event_name": EVENT["事件"], "expression": rule, "utterances": [f"有{{{count}}}名。"]}
+        self.assertEqual(choose_utterance({"groups": [group]}, EVENT, state), "有3名。")
+        for invalid in ('[]', '[""]', '[{"类型":"装备","名称":"剑"}]', '[{"类型":"英雄","名称":"弈星","已觉醒":null}]'):
+            with self.assertRaises(ConditionError):
+                validate_expression(EVENT["事件"], f"玩家.战场.计数(英雄, {invalid}) >= 1")
 
     def test_tag_count_requires_enough_information_to_decide_each_hero(self):
         catalog = json.loads((CATALOG_DIR / "catalog.json").read_text(encoding="utf-8"))

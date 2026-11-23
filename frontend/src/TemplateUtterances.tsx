@@ -29,6 +29,10 @@ function copyUtteranceText(event:ClipboardEvent<HTMLUListElement>){
 }
 type Draft={id:string;text:string;creating:boolean};
 
+export function UtteranceLength({text}:{text:string}){
+ return <small className="template-utterance-length" title="按当前显示的文本计数，包含标点符号">{Array.from(text).length} 字</small>;
+}
+
 export default function TemplateUtterances({commentCounts,onFeedback,utterances,editable,annotator=false,parameters=[],bindings,disabled=false,savingIgnoreIds,onSave,onToggleIgnored,onToggleFixed,onDirty}:{commentCounts?:Record<string,number>;onFeedback?:(id:string)=>void;utterances:Utterances;editable:boolean;annotator?:boolean;parameters?:TemplateParameter[];bindings?:UtteranceBindings;disabled?:boolean;savingIgnoreIds?:string[];onToggleIgnored?:(id:string)=>void;onToggleFixed?:(id:string)=>void;onSave?:(change:UtteranceChange)=>Promise<void>;onDirty?:(dirty:boolean)=>void}){
  const [draft,setDraft]=useState<Draft|null>(null),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const dirtyRef=useRef(onDirty);dirtyRef.current=onDirty;
@@ -54,12 +58,16 @@ export default function TemplateUtterances({commentCounts,onFeedback,utterances,
  }
  function editor(){return draft&&<form className="template-inline-editor" onSubmit={e=>{e.preventDefault();void save();}}>
   <label>{draft.creating?'新增话术内容':'修改话术内容'}<textarea autoFocus rows={3} value={draft.text} disabled={busy} onChange={e=>setDraft({...draft,text:e.target.value})}/></label>
+  <UtteranceLength text={draft.text}/>
   {parameters.length>0&&<div className="template-inline-parameters" aria-label="插入话术参数">{parameters.map(p=><button key={p.id} type="button" disabled={busy} onClick={()=>setDraft({...draft,text:draft.text+'{'+p.key+'}'})}>{p.name}</button>)}</div>}
   <div className="template-inline-actions"><button type="button" disabled={busy} onClick={cancel}>取消</button><button className="primary" disabled={busy}>{busy?'保存中…':annotator?'提交话术提案':'保存话术'}</button></div>
  </form>;}
  return <section className="template-read-utterances" aria-label="模板话术"><div className="template-utterance-heading"><h3>全部话术 <small>每条等概率 · 共 {utterances.length} 条</small></h3>{editable&&onSave&&<button disabled={locked||!!draft} onClick={()=>start()}>＋ 新增话术</button>}</div>
-  <ul onCopy={copyUtteranceText}>{[...utterances.filter(u=>!u.ignored),...utterances.filter(u=>u.ignored)].map((u,i)=><li key={u.id} tabIndex={-1} data-feedback-utterance={u.id} className={u.ignored?"template-utterance-ignored":undefined}>{draft?.id===u.id&&!draft.creating?editor():<><div className="template-utterance-text"><EntityText inline>{renderUtterance(u.text,bindings)}</EntityText></div>{u.ignored&&<span className="template-ignored">已忽略</span>}{u.fixed&&<span className="template-fixed">已固定</span>}{editable&&onSave&&<div className="template-row-actions">{onFeedback&&<button aria-label={'批注话术'+(i+1)} disabled={locked||!!draft} onClick={()=>onFeedback(u.id)}>批注 <span className="template-comment-count">{commentCounts?.[u.id]??0}</span></button>}<button aria-label={'编辑话术'+(i+1)} disabled={locked||!!draft||!!u.fixed||savingIgnoreIds?.includes(u.id)} title={u.fixed?"先取消固定再编辑":undefined} onClick={()=>start(u)}>编辑</button>{onToggleIgnored&&<button aria-label={(u.ignored?"取消忽略话术":"忽略话术")+(i+1)} disabled={locked||!!draft||savingIgnoreIds?.includes(u.id)} onClick={()=>onToggleIgnored(u.id)}>{savingIgnoreIds?.includes(u.id)?"保存中…":u.ignored?"取消忽略":"忽略"}</button>}{onToggleFixed&&<button type="button" aria-label={(u.fixed?'取消固定话术':'固定话术')+(i+1)} aria-pressed={!!u.fixed}
-      disabled={locked||!!draft||savingIgnoreIds?.includes(u.id)} onClick={()=>onToggleFixed(u.id)}>{u.fixed?'取消固定':'固定'}</button>}<button aria-label={'删除话术'+(i+1)} disabled={locked||!!draft||!!u.fixed||savingIgnoreIds?.includes(u.id)||utterances.length<=1} title={u.fixed?'先取消固定再删除':utterances.length<=1?'每组至少保留一条话术':undefined} onClick={()=>void remove(u.id)}>删除</button></div>}</>}</li>)}</ul>
+  <ul onCopy={copyUtteranceText}>{[...utterances.filter(u=>!u.ignored),...utterances.filter(u=>u.ignored)].map((u,i)=>{
+   const text=renderUtterance(u.text,bindings);
+   return <li key={u.id} tabIndex={-1} data-feedback-utterance={u.id} className={u.ignored?"template-utterance-ignored":undefined}>{draft?.id===u.id&&!draft.creating?editor():<><div className="template-utterance-text"><EntityText inline>{text}</EntityText></div><UtteranceLength text={text}/>{u.ignored&&<span className="template-ignored">已忽略</span>}{u.fixed&&<span className="template-fixed">已固定</span>}{editable&&onSave&&<div className="template-row-actions">{onFeedback&&<button aria-label={'批注话术'+(i+1)} disabled={locked||!!draft} onClick={()=>onFeedback(u.id)}>批注 <span className="template-comment-count">{commentCounts?.[u.id]??0}</span></button>}<button aria-label={'编辑话术'+(i+1)} disabled={locked||!!draft||!!u.fixed||savingIgnoreIds?.includes(u.id)} title={u.fixed?"先取消固定再编辑":undefined} onClick={()=>start(u)}>编辑</button>{onToggleIgnored&&<button aria-label={(u.ignored?"取消忽略话术":"忽略话术")+(i+1)} disabled={locked||!!draft||savingIgnoreIds?.includes(u.id)} onClick={()=>onToggleIgnored(u.id)}>{savingIgnoreIds?.includes(u.id)?"保存中…":u.ignored?"取消忽略":"忽略"}</button>}{onToggleFixed&&<button type="button" aria-label={(u.fixed?'取消固定话术':'固定话术')+(i+1)} aria-pressed={!!u.fixed}
+      disabled={locked||!!draft||savingIgnoreIds?.includes(u.id)} onClick={()=>onToggleFixed(u.id)}>{u.fixed?'取消固定':'固定'}</button>}<button aria-label={'删除话术'+(i+1)} disabled={locked||!!draft||!!u.fixed||savingIgnoreIds?.includes(u.id)||utterances.length<=1} title={u.fixed?'先取消固定再删除':utterances.length<=1?'每组至少保留一条话术':undefined} onClick={()=>void remove(u.id)}>删除</button></div>}</>}</li>;
+  })}</ul>
   {draft?.creating&&editor()}{error&&<p className="template-inline-error" role="alert">{error}</p>}
  </section>;
 }

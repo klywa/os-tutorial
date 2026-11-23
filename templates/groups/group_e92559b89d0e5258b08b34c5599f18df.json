@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第12行「使用技巧」。武则天提高古币提供的等级，普通额外一级，觉醒额外两级。李白也在场时，需让既有或联合理由负责解释，不把临时等级混作永久等级。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "武则天在场，用{arg2}能让目标多升等级。",
+      "text": "武则天在场，给目标用{arg2}能多升等级。",
       "id": "utterances_5d0117aad1a04cdeb835319b68452a36"
-    },
-    {
-      "text": "先上了武则天，再用{arg2}能多升等级。",
-      "id": "utterances_f5b56bcf574f44ab9b6f250e6929a583"
     }
   ],
   "id": "group_e92559b89d0e5258b08b34c5599f18df",
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"武则天\" and not (玩家.战场 has \"李白\")",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"武则天\" and not (玩家.战场 has \"李白\")",
+  "explanation_before": "原始内容：登场效果只在使用时触发1次，不会每回合自动触发，需要反复打出或配合触发登场类效果牌再次触发。温馨提示：古币提升的等级额外+1。\n知识或技巧详解：武则天让眼下的古币多提供等级。\n自然语言适用条件：解释为何对目标使用效果牌时，武则天在场且李白不在场，对目标使用古币类牌。\n正式条件：arg2 in [\"古币\",\"精致古币\"] and 玩家.战场 has \"武则天\" and not (玩家.战场 has \"李白\")\n30 字表达取舍：播报保留「武则天在场，给目标用{arg2}能多升等级。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第12行「武则天・使用技巧」",
+  "explanation_after": "事件与条件复核：解释为何对目标使用效果牌，核对了武则天在场且李白不在场，对目标使用古币类牌。单项反例：移走武则天后，就只剩古币自身的等级收益。话术复核：句子围绕武则天让眼下的古币多提供等级，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

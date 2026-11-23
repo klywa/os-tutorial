@@ -4,22 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「前期运营思路」。开局只检查苏烈和狂铁是否在手或在场，其他可单挂的英雄可能已在场。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "开局刷新商店是为找苏烈或狂铁，两人都能单独上场承担伤害。",
+      "text": "开局还没拿到苏烈或狂铁，刷新有机会补到前排。",
       "id": "utterances_9285cf45b6da45d7afdb47cf3ac48b48"
-    },
-    {
-      "text": "开局还没拿到苏烈或狂铁时，刷新商店有机会找到这两名前排。",
-      "id": "utterances_b0e678610a8843b09f91992116dd3efb"
     }
   ],
   "id": "group_125078772deb47c7bfa345fff7df461e",
   "event_id": "os_a43279f749f4872b",
   "conditions": [],
   "related_entities": [],
-  "priority": 0,
   "editor_mode": "text",
-  "expression": "对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})"
+  "priority": 0,
+  "expression": "对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：狂铁（card:5031）",
+  "explanation_before": "原始内容：常小娥开局可优先找苏烈或狂铁作为过渡前排。\n知识或技巧详解：两人可以在前期单独上阵。苏烈靠牺牲成长，狂铁可整备培养阿科米亚核心。手牌和场上都没有两人时，这些选项尚未到手。\n自然语言适用条件：常小娥灵活4人组第一回合，手里和场上均没有苏烈或狂铁。\n正式条件：对局.当前回合数 == 1 and not (玩家.战场 has \"苏烈\") and not (玩家.战场 has \"狂铁\") and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"苏烈\"}) and not (玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"狂铁\"})\n30 字表达取舍：保留查找具体前排的目的和尚未到手的事实。",
+  "explanation_after": "不声称场上没有其他可用前排，也不保证一次刷新必能找到两人。"
 }

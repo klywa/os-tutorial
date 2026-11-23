@@ -4,26 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "《基础知识》后期分段与等级分配，《常用技巧》传承。末次拍卖所在阶段起，剩余容错至多一次，四人在场。传承把供级者的永久等级分给其他三人，供级者保留。",
+  "explanation_after": "不说使用之后必然保血。少一名队友时不能承诺三名接收者。",
+  "explanation_before": "原始内容：需要把等级分给三名拟留场英雄时，让他们成为场上等级最低的三名。\n知识或技巧详解：终局容错低时，传承让供级成员留场，同时分配其可转出的等级。四人场只留下另外三名接收者。\n自然语言适用条件：第十一回合起，玩家至多再输一轮，场上四人，供级者至少十级。\n正式条件：arg2 is \"传承\" and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4\n30 字表达取舍：专讲此轮压力和三人分配，省去原角色强弱。",
+  "explanation_source": "knowledge/other/常用技巧.json · common-tips-inherit / common-tips-inherit-recipients\nknowledge/other/基础知识.json · 后期分段与等级分配\n正式卡牌库：传承（card:7083）",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "这轮要保血，传承能把永久等级分给另外三人。",
+      "text": "这轮容错低，用传承能把永久等级分给另外三人。",
       "id": "utterances_a93774d631494b5db963e31d8da7e252"
     },
     {
-      "text": "四人已经上齐，传承能把永久等级分给另外三人。",
+      "text": "终局四人都在，传承分级后原英雄仍可留场。",
       "id": "utterances_804566d2f44c4484a91cdb4025dc6e9a"
-    },
-    {
-      "text": "终局把等级分给另外三人，原英雄还能留场作战。",
-      "id": "utterances_1b8b860da3ca4593a5b5d7b92cde8ebd"
     }
   ],
   "id": "group_1397049dccda487aa4efd056ee0c803f",
   "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg2 is \"传承\" and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4",
-  "editor_mode": "text"
+  "expression": "arg2 is \"传承\" and arg1.等级 >= 10 and 对局.当前回合数 >= 11 and 玩家.容错数 <= 1 and 玩家.场上英雄数 == 4"
 }

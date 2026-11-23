@@ -4,19 +4,13 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》单挂过渡；干将普通在场给雄剑，觉醒再给雌剑。BV1eeWF6pESY:p1 04:30–04:58、BV13gxz6FEZJ:p1 00:29–00:58明确觉醒后的击败成长。干将莫邪须亲自击败敌人才能提高等级，不能保证单挂必定成长。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "买干将能先用飞剑打伤害，觉醒后拿击败还能升级。",
+      "text": "开局空场，有法源之杯，买干将可先靠飞剑补输出。",
       "id": "utterances_0b41c44160ca410f9dcf439b071ea513"
-    },
-    {
-      "text": "干将能先补飞剑输出，觉醒后拿到击败还能提升自己的等级。",
-      "id": "utterances_bf61f3d328e24a0d939a7e10b27641e6"
-    },
-    {
-      "text": "买干将先用雄剑降低法力上限，觉醒后还能靠击败升级。",
-      "id": "utterances_03196d342ad24146b021c4e0ae379c72"
     }
   ],
   "id": "group_0b947014a4734e8ca3f6beb89a0e899c",
@@ -36,7 +30,11 @@
       "name": "干将莫邪"
     }
   ],
+  "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"干将莫邪\" and 对局.当前回合数 <= 3",
-  "editor_mode": "text"
+  "expression": "arg1 is \"干将莫邪\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0 and 玩家.手牌 has {\"类型\":\"装备\",\"名称\":\"法源之杯\"}",
+  "condition_tree": null,
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-98200a238bbc8ec69ca0／n-3bf70000a0fdfa895d9c\n正式卡牌库：干将莫邪（card:1821）\n正式卡牌库：双剑·雄（card:42102）\n正式卡牌库：法源之杯（card:643402）",
+  "explanation_before": "原始内容：有回蓝装备、准备让干将莫邪过渡时，可以先买一张。\n知识或技巧详解：法源之杯持续补法力，干将可用上阵自带的雄剑配合施法。前期还没上任何英雄，准备让干将单挂时，现有回蓝装使他成为可用的早期输出。\n自然语言适用条件：常小娥阵容前三回合，场上无人，手中有法源之杯，当前购买干将莫邪。\n正式条件：arg1 is \"干将莫邪\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0 and 玩家.手牌 has {\"类型\":\"装备\",\"名称\":\"法源之杯\"}\n30 字表达取舍：只交代已有回蓝装为什么能支撑首名英雄过渡。",
+  "explanation_after": "购买后仍要上阵和装备，未声称本轮已经穿上或单挂一定赢。未读取觉醒进度，不说击败永久增长已解锁。"
 }

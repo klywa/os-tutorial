@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第19行「使用技巧」。刘邦开团先摧毁阵营图腾。出售后刘邦确实离场且图腾搭档仍在，可以解释为阻止刘邦主动摧毁，不能保证图腾必定留到结算。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "先卖刘邦，图腾能留给场上的队友发挥。",
+      "text": "同阵营队友还在，卖掉刘邦可防他开团摧毁图腾。",
       "id": "utterances_8db628dcd58945649e1aa3c07b45bdaa"
-    },
-    {
-      "text": "把刘邦撤下，开战就不会被他抢先摧毁图腾。",
-      "id": "utterances_fa199b39c65347d3ba1ed72e6bfc1e84"
     }
   ],
   "id": "group_b16a2ce226165176b6c1c328149e4cb5",
   "event_id": "os_02f23dfd4155737d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"刘邦\" and not (玩家.战场 has \"刘邦\") and (玩家.战场 has \"虞姬\" or 玩家.战场 has \"东皇太一\")",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"刘邦\" and not (玩家.战场 has \"刘邦\") and (玩家.战场 has \"虞姬\" or 玩家.战场 has \"东皇太一\")",
+  "explanation_source": "personal/knowledge_tips.jsonl 第19行「使用技巧」，正式卡牌库 card:1491、card:1493、card:1741、card:1871。",
+  "explanation_before": "原始内容：开团：摧毁你所有的图腾，每摧毁1个，刘邦等级永久+5。\n知识详解：刘邦上阵会在开团摧毁图腾。若队友虞姬或东皇太一仍在场，撤下最后一名刘邦可排除这一主动消耗来源。\n适用条件：正在出售场上刘邦。售后再无刘邦，场上有虞姬或东皇太一。\n条件语法：arg1 is \"刘邦\" and not (玩家.战场 has \"刘邦\") and (玩家.战场 has \"虞姬\" or 玩家.战场 has \"东皇太一\")\n30 字表达取舍：保留利用图腾的队友仍在及撤下刘邦的作用，不断言当前图腾数量。",
+  "explanation_after": "从在场队友不能推断实际每个图腾仍存活，话术只说明不会被已离场的刘邦主动摧毁。"
 }

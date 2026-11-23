@@ -4,22 +4,25 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第17行「使用技巧」。露娜随机触发整备。曹操和孙悟空是整备候选，小乔在露娜登场触发时独立响应。不能把孙悟空的整备写成会直接触发小乔。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "有小乔和曹操在，上露娜能带动登场，也能抽到曹操整备。",
+      "text": "露娜登场能触发小乔，还可能引出曹操或孙悟空的整备。",
       "id": "utterances_8fef7231a18f4f9d8644e3a564a78687"
-    },
-    {
-      "text": "上露娜能触发小乔，还有机会让曹操或孙悟空整备。",
-      "id": "utterances_fe7476cd7d884577949807299720e855"
     }
   ],
   "id": "group_3a6a100959c656f88e6f3e97955b8c29",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"露娜\" and 玩家.战场 has \"曹操\" and 玩家.战场 has \"孙悟空\" and 玩家.战场 has \"小乔\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"露娜\" and 玩家.战场 has \"曹操\" and 玩家.战场 has \"孙悟空\" and 玩家.战场 has \"小乔\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第17行「露娜・使用技巧」\n正式卡牌库：露娜（card:1461）\n正式卡牌库：露娜（card:1463）\n正式卡牌库：小乔（card:1061）\n正式卡牌库：小乔（card:1063）\n正式卡牌库：曹操（card:1281）\n正式卡牌库：孙悟空（card:1671）",
+  "explanation_before": "原始内容：三分倒转可让露娜登场联动小乔、曹操和孙悟空。\n知识或技巧详解：露娜的登场直接使小乔响应，并随机触发其他英雄整备。曹操可带来额外登场，孙悟空则直接给闪现英雄升级，两者路径不同。\n自然语言适用条件：场上已有曹操、孙悟空与小乔，此时打出露娜上阵。\n正式条件：arg1 is \"露娜\" and 玩家.战场 has \"曹操\" and 玩家.战场 has \"孙悟空\" and 玩家.战场 has \"小乔\"\n30 字表达取舍：讲直接触发和可能引出额外整备，省去随机分支的数量。",
+  "explanation_after": "不能承诺曹操或孙悟空必被选中。小乔普通与觉醒受益范围不同，不讲全队一定升级。"
 }

@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第20行「使用技巧」。铸梦逐风令韩信周期性打出四次快速普攻，能更快推进卡面按普攻次数触发的击飞。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "铸梦·逐风让韩信多打几次普攻，更快推进击飞。",
+      "text": "韩信每三次普攻能击飞，铸梦·逐风能加快计数。",
       "id": "utterances_47b41b86b6f94d06bbf5c4d3be749983"
     },
     {
-      "text": "韩信穿铸梦·逐风，连续普攻更容易打出下一次击飞。",
+      "text": "铸梦·逐风能让韩信连打普攻，更快打出下一次击飞。",
       "id": "utterances_81ed61b67a864403b0ccd0915aa38fa2"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"韩信\" and arg2 is \"铸梦·逐风\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"韩信\" and arg2 is \"铸梦·逐风\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：铸梦·逐风（card:643304）\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）",
+  "explanation_before": "原始内容：韩信技能含多段击飞，攻速和增加普攻次数可提高击飞频率。\n知识或技巧详解：韩信每第三次普攻触发击飞；铸梦·逐风会在开战及定时快速进行四次普通攻击，可更快达到所需普攻次数。\n自然语言适用条件：正在给韩信穿铸梦·逐风。\n正式条件：arg1 is \"韩信\" and arg2 is \"铸梦·逐风\"\n30 字表达取舍：保留装备新增普攻与韩信的击飞计数。",
+  "explanation_after": "不把装备描述成常驻攻速增加，不保证击飞某个目标。"
 }

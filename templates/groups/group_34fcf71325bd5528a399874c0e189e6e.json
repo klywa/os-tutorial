@@ -4,22 +4,25 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第55行「使用技巧」。危险数字在商店购买每三张牌返一点能量。小妲己本就通过买牌触发被动，返还能继续用于后续买牌。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "小妲己常买牌，危险数字返的能量还能接着买。",
+      "text": "小妲己靠买牌攒进度，危险数字返的能量还可再买牌。",
       "id": "utterances_89841628621a4ca690034b2d0bb4a847"
-    },
-    {
-      "text": "危险数字每买三张回一点能量，能多留买牌预算。",
-      "id": "utterances_103c42e93c694d0fbc82ad23e9f2f224"
     }
   ],
   "id": "group_34fcf71325bd5528a399874c0e189e6e",
   "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"危险数字\" and arg1 has \"危险数字\" and 玩家.使用棋手 is \"小妲己\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"危险数字\" and arg1 has \"危险数字\" and 玩家.使用棋手 is \"小妲己\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第55行「小妲己・使用技巧」\n正式卡牌库：危险数字（card:681023）",
+  "explanation_before": "原始内容：小妲己的怦然心动依靠购买卡牌，危险数字能提高买牌效率。\n知识或技巧详解：危险数字每买三张商店牌可返还一点能量；小妲己通过购买推进技能，返还能做下一次购买预算。\n自然语言适用条件：小妲己在本次候选中选中危险数字。\n正式条件：arg2 is \"危险数字\" and arg1 has \"危险数字\" and 玩家.使用棋手 is \"小妲己\"\n30 字表达取舍：讲返还能支持棋手的既定成长方式，省去品阶之和奖励。",
+  "explanation_after": "选中后还要实际买牌，不说现在立刻返能量。"
 }

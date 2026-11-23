@@ -4,15 +4,14 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "狂铁在场，上阵朵莉亚时，说明这项操作的战斗或资源收益。狂铁触发整备时，朵莉亚能给队友和阿科米亚核心提升等级。依据《常小娥灵活变阵-常小娥》「朵莉亚」和朵莉亚的官方卡面、技能。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "狂铁触发整备时，朵莉亚能给队友和阿科米亚核心提升等级。",
+      "text": "狂铁已经在场，上朵莉亚可借他的整备给队友加级。",
       "id": "utterances_c0842c897f71421fb56ea1823b405383"
-    },
-    {
-      "text": "朵莉亚能利用狂铁的整备，把等级也分给队友。",
-      "id": "utterances_9cd674553520402fbf81ef50102a467f"
     }
   ],
   "id": "group_9f41eb43c2374d2f8697ad8bc4c721db",
@@ -38,5 +37,8 @@
   ],
   "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"朵莉亚\" and 玩家.战场 has \"狂铁\""
+  "expression": "arg1 is \"朵莉亚\" and 玩家.战场 has \"狂铁\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「狂铁」「朵莉亚」，正式卡牌库 card:5031、card:5033、card:1591、card:1593。",
+  "explanation_before": "原始内容：每当你的英雄触发整备效果时，随机3名英雄及阿科米亚核心等级+1。\n知识详解：狂铁整备给阿科米亚核心加级，朵莉亚在场时还能响应这次整备。不同形态改变狂铁次数、朵莉亚分配对象。\n适用条件：上阵朵莉亚时，己方已有狂铁在场。\n条件语法：arg1 is \"朵莉亚\" and 玩家.战场 has \"狂铁\"\n30 字表达取舍：直说已有狂铁提供整备，而朵莉亚能把一次整备变为更多成长。",
+  "explanation_after": "不声称朵莉亚上阵即触发狂铁整备，也不保证固定受益英雄。"
 }

@@ -3,7 +3,7 @@ import TemplateSettings from './TemplateSettings';
 import type {Entity,Note} from './types';
 import {api} from './model';
 import TemplateEditor,{TemplateDialog} from './TemplateEditor';
-import {describeTemplateRecord,groupDiffKeys,operators,readableValue,selectedGroupChange,valueText,type TemplateChange,type TemplateEvent,type TemplateGroup,type TemplateProposal,type TemplateSnapshot} from './templates';
+import {describeTemplateRecord,groupDiffKeys,templateMetadataLabels,operators,readableValue,selectedGroupChange,valueText,type TemplateChange,type TemplateEvent,type TemplateGroup,type TemplateProposal,type TemplateSnapshot} from './templates';
 const statuses:Record<string,string>={pending:'待审核',approved:'已采纳',partially_approved:'部分采纳',rejected:'已拒绝',withdrawn:'已撤回'};
 function changeFields(proposal:TemplateProposal,change:TemplateChange){if(change.kind==='group'&&change.action==='put'){const base=proposal.base.groups.find(g=>g.id===change.id);if(base){const fields=groupDiffKeys(base,change.value as TemplateGroup);if(fields.length)return fields;}}return ['record'];}
 function describeValue(value:unknown):string{return readableValue(value);}
@@ -12,7 +12,7 @@ function FieldDiff({proposal,change,field,scopeName}:{proposal:TemplateProposal;
  const [kind,id]=field.split(':');const get=(record:Record<string,unknown>|undefined)=>id?((record?.[kind==='condition'?'conditions':'utterances']??[]) as {id:string}[]).find(v=>v.id===id):field==='record'?record:record?.[field];
  const event=proposal.base.events.find(e=>e.id===next?.event_id||e.id===base?.event_id);
  const describe=(record:Record<string,unknown>|undefined)=>{const value=get(record);if(field==='explanation')return String(value||'无');if(field==='rule')return String(record?.expression||'不限制条件');if(field==='record')return describeTemplateRecord(record as never,event,scopeName);if(kind==='condition'&&value){const c=value as {parameter_key:string;operator:keyof typeof operators;value:unknown};return (event?.parameters.find(p=>p.key===c.parameter_key)?.name??c.parameter_key)+' '+operators[c.operator]+' '+valueText(c.value);}if(kind==='utterance'){const row=value as TemplateGroup['utterances'][number]|undefined;return row?(row.ignored?'已忽略 · ':'')+row.text:'无';}if(field==='ignored')return value?'已忽略':'参与导出';if(field==='scope'){const v=value as {player_id:string|null;lineup_note_id:string|null}|undefined;return '棋手：'+scopeName(v?.player_id??null)+'\n阵容棋手组合：'+scopeName(v?.lineup_note_id??null);}return describeValue(value);};
- const label:Record<string,string>={ignored:'忽略状态',explanation:'说明与依据',rule:'条件表达式及树稿',priority:'优先级',name:'名称',event_id:'事件',scope:'适用范围',related_entities:'关联实体',condition:'条件',utterance:'话术',record:'完整记录'};
+ const label:Record<string,string>={...templateMetadataLabels,ignored:'忽略状态',explanation:'说明与依据',rule:'条件表达式及树稿',priority:'优先级',name:'名称',event_id:'事件',scope:'适用范围',related_entities:'关联实体',condition:'条件',utterance:'话术',record:'完整记录'};
  return <details className="template-diff" open><summary>{label[kind]??field}{id?' · '+id:''}</summary><div><section><strong>修改前</strong><pre>{describe(base)}</pre></section><section><strong>修改后</strong><pre>{change.action==='delete'?'删除此记录':describe(next)}</pre></section></div></details>;
 }
 type ReviewProps={

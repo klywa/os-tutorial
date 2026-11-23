@@ -4,22 +4,24 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》苏烈单挂保血。仅涵盖有格挡、法术防护、物防反伤或减伤的四件防装；只知道苏烈是穿戴者不足以解释任意装备。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "把防装给唯一在场的苏烈，这轮就能帮前排多扛伤。",
+      "text": "前期只有苏烈在场，防装给他能补这轮的承伤。",
       "id": "utterances_f15ff2d4734a4c819c4ba8fc6ec4dada"
-    },
-    {
-      "text": "苏烈单挂时给他补防装，开打就有用，能争取少掉血。",
-      "id": "utterances_81672af0ee1649c0a49147ac2b13f9d4"
     }
   ],
   "id": "group_94d0b696c4fd464dab9bbf23ef5a91a8",
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\" and (arg2 is \"霸者重铠\" or arg2 is \"反伤重甲\" or arg2 is \"魔女斗篷\" or arg2 is \"不祥征兆\")",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」、n-f210bbd7021f4f89d8d4「前期运营思路」，正式卡牌库 card:1941、card:1943。",
+  "explanation_before": "原始内容：「开局选能自动成长的单挂英雄（河洛阵营未禁用则用苏烈、河洛禁用则用狂铁），让每回合小菟助力集中给他，并用免费刷新和自动刷新补觉醒，装备优先选择可以提升即时战力的。」\n知识详解：只有苏烈在场，防装给他可以强化当轮唯一的承伤单位。根据指定装备的防护面向发挥。\n适用条件：常小娥灵活4人组，棋手未到六级，场上只有苏烈，装备是霸者重铠、反伤重甲、魔女斗篷或不祥征兆。\n条件语法：arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\" and (arg2 is \"霸者重铠\" or arg2 is \"反伤重甲\" or arg2 is \"魔女斗篷\" or arg2 is \"不祥征兆\")\n30 字表达取舍：只讲单挂时把防装给当前承伤英雄，省去未确认的敌方伤害类型。",
+  "explanation_after": "未断言必然少掉血。换成输出装或有其他在场英雄，不再用本组理由。"
 }

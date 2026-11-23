@@ -4,14 +4,18 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第84行「使用技巧」。官方奇才选一名英雄获得其四张同名牌。目标现在是未觉醒主C，得到同名素材可用于后续合成，不保证已完成觉醒。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "对未觉醒的主力用奇才，先补四张同名牌再追觉醒。",
+      "text": "主力还没觉醒，用奇才给他补四张同名合成牌。",
       "id": "utterances_07d3e31598754fc286588aa020c9eca7"
     },
     {
-      "text": "奇才给主力补四张同名牌，可以继续合成追觉醒。",
+      "text": "用奇才给未觉醒的主力补四张同名牌，留作合成。",
       "id": "utterances_1d9bf0f0148a407391b6fe4d4f4d3056"
     }
   ],
@@ -19,7 +23,10 @@
   "event_id": "os_92e4c04d94fc1b51",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"奇才\" and arg1 is 玩家.主C and not arg1.已觉醒",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"奇才\" and arg1 is 玩家.主C and not arg1.已觉醒",
+  "explanation_before": "原始内容：指定1名英雄，获得4张该英雄牌。\n知识或技巧详解：把奇才用于尚未觉醒的主力时，四张同名牌能补后续合成素材。取得素材、逐次合成及觉醒返回手牌各有不同的时点。\n自然语言适用条件：正在用奇才，指定的是当前主C，且主C未觉醒。\n正式条件：arg2 is \"奇才\" and arg1 is 玩家.主C and not arg1.已觉醒\n30 字表达取舍：保留目标是当前未觉醒主力及拿到四张合成材料。省略之后每一次合成操作。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第84行「奇才_白歌_资源・使用技巧」\nknowledge/other/基础知识.json「同名合成与觉醒」 · game-basics-193\n正式卡牌库「奇才」 · card:663308",
+  "explanation_after": "目标若是其他英雄或已经觉醒，就缺少这一组的主力培养理由。两条候选说补素材与后续觉醒机会，未说使用奇才即可觉醒。"
 }

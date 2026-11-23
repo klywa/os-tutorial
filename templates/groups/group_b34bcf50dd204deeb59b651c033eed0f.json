@@ -4,22 +4,24 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「露娜」、「花木兰」。最多还能承受一次失败，花木兰和上官婉儿在场。露娜普通卡登场随机触发两名英雄整备；上官婉儿整备对河洛英雄使用古币，花木兰当回合每用五币增加一次复生。《河洛花木兰-嬴律》核心原理也列有这条联动。能否补足次数取决于随机结果及已用币数。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "露娜登场可能触发上官婉儿用币，帮花木兰凑够五币多复生一次。",
+      "text": "花木兰在场，上露娜或能借上官婉儿用币帮她攒复生。",
       "id": "utterances_79bf4522235b4ecba20392f752531549"
-    },
-    {
-      "text": "急需保命时，露娜有机会触发上官婉儿整备，帮花木兰多一次复生。",
-      "id": "utterances_df14de2789fa43e898ed9ce24718ffa5"
     }
   ],
   "id": "group_b34bcf50dd204deeb59b651c033eed0f",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "priority": 2,
   "editor_mode": "text",
-  "expression": "arg1 is \"露娜\" and 玩家.容错数 <= 1 and 玩家.战场 has \"上官婉儿\" and 玩家.战场 has \"花木兰\""
+  "priority": 2,
+  "expression": "arg1 is \"露娜\" and 玩家.容错数 <= 1 and 玩家.战场 has \"上官婉儿\" and 玩家.战场 has \"花木兰\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「露娜」「花木兰」；knowledge/lineups/河洛花木兰-嬴律.json「核心原理」，正式卡牌库 card:1461、card:1463、card:5131、card:1541。",
+  "explanation_before": "原始内容：闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。 整备：随机对3名不同【河洛】英雄使用1张古币。 本回合每使用5张古币牌，获得1次复生（总复生次数： 1）。 \n牺牲：临时等级+10。\n知识详解：露娜登场有机会触发上官婉儿整备，进而使用古币。花木兰在场时，这些用币次数可向本轮复生门槛推进。\n适用条件：常小娥灵活4人组，上阵露娜。容错至多一次，且上官婉儿、花木兰均在场。\n条件语法：arg1 is \"露娜\" and 玩家.容错数 <= 1 and 玩家.战场 has \"上官婉儿\" and 玩家.战场 has \"花木兰\"\n30 字表达取舍：保留关键三名英雄及累计复生这一收益。省去随机触发人数及未观测用币数。",
+  "explanation_after": "没有哪段随机链路被条件保证，当前复生进度也未知。只说明有机会积累，不说一定多一次复生。"
 }

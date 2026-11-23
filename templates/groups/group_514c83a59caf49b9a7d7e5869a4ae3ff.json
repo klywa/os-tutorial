@@ -4,26 +4,27 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "explanation_after": "当前对手的主C与最高等级英雄必须同名且主C至少百级。三位等级槽位展开仍在上限内。实际牺牲时若敌方最高等级改变，目标随之改变，故只说争取。",
+  "explanation_before": "原始内容：牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值的真实伤害。\n知识或技巧详解：现在观察到的对手主力达到百级，并且同时被识别为最高等级英雄。购买海月是为下一次作战增加牺牲控制。真正的目标按牺牲当时的敌方等级重新计算。\n自然语言适用条件：购买海月。当前对手主C等级至少一百，且主C与当前对手最高等级英雄同名。\n正式条件：arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称\n30 字表达取舍：保留现场等级和买牌取得控制机会的因果。并列、战斗中等级变化及四秒目标约束放进依据。",
+  "explanation_source": "knowledge/other/基础知识.json\nknowledge/other/冷门知识.json\nknowledge/other/基础知识.json「等级节点与临时成长」 · game-basics-231\nknowledge/other/冷门知识.json · n-8cd5e478f15ef91e9aa5\n正式卡牌库「海月」 · card:5211\n正式卡牌库「海月（觉醒）」 · card:5213",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "对面主力有{对局.当前对手.主C.等级}级，买海月有机会用牺牲控住他。",
+      "text": "敌方主力有{对局.当前对手.主C.等级}级，买海月可争取用牺牲控住他。",
       "id": "utterances_fb821092f9d344c8bb5539b58fc025ff"
     },
     {
-      "text": "海月能困住最高等级的敌人，可以针对这家的百级主力。",
+      "text": "对手最高等级的英雄是百级主力，可买海月来针对。",
       "id": "utterances_ede73f0cee43458fbb096cd8a7ed9bf7"
-    },
-    {
-      "text": "买海月能针对对面的百级主力，靠牺牲争取四秒输出时间。",
-      "id": "utterances_2240ffb4df514404ad689b0ac2bf899a"
     }
   ],
-  "explanation": "海月普通／觉醒的牺牲均困住敌方最高等级英雄4秒并造成真实伤害。核对《基础知识》等级节点、《冷门知识》海月针对最高等级英雄；若战斗中等级变化或并列，不保证困住特定敌人。",
-  "event_id": "os_2406b1c2f3572ad9",
   "id": "group_514c83a59caf49b9a7d7e5869a4ae3ff",
+  "event_id": "os_2406b1c2f3572ad9",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称"
 }

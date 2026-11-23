@@ -7,6 +7,8 @@ import template_rules as rules
 ID = re.compile(r'[A-Za-z0-9_-]{1,128}\Z')
 KEY = re.compile(r'[a-z][a-z0-9_]{0,63}\Z')
 CATEGORIES = {'players','heroes','equipment','talents','derivatives','effect-cards','player-skills'}
+GROUP_METADATA = {'version', 'mode', 'tags', 'explanation', 'explanation_before',
+                  'explanation_source', 'explanation_after'}
 
 
 def fields(value, allowed, required=()):
@@ -89,7 +91,7 @@ def validate_event(event, entities, *, retired_suggestions=None):
 
 
 def validate_group(group, events, entities, notes):
-    fields(group,{'id','name','explanation','ignored','event_id','scope','conditions','utterances','related_entities'} | rules.RULE_FIELDS,
+    fields(group,{'id','name','ignored','event_id','scope','conditions','utterances','related_entities'} | GROUP_METADATA | rules.RULE_FIELDS,
            {'id','name','event_id','scope','conditions','utterances'})
     identity(group['id']);text(group['name'])
     if 'ignored' in group and type(group['ignored']) is not bool:
@@ -98,6 +100,18 @@ def validate_group(group, events, entities, notes):
         explanation = group['explanation']
         if not isinstance(explanation, str) or len(explanation) > 300:
             raise ValueError('模板组说明必须为不超过 300 个字符的文本')
+    for key, label in (('version','版本'), ('mode','模式')):
+        if key in group and (not isinstance(group[key], str) or len(group[key]) > 80 or group[key] != group[key].strip()):
+            raise ValueError(label+'须为不超过 80 字的文本')
+    if 'tags' in group:
+        tags = group['tags']
+        if (not isinstance(tags, list) or any(not isinstance(tag, str) or not 0 < len(tag) <= 40
+                                              or tag != tag.strip() for tag in tags)
+                or len(set(tags)) != len(tags)):
+            raise ValueError('标签须为互不重复的 1 至 40 字文本')
+    for key in ('explanation_before', 'explanation_source', 'explanation_after'):
+        if key in group and (not isinstance(group[key], str) or len(group[key]) > 100000):
+            raise ValueError('说明与依据分项格式无效或过长')
     event=events.get(group['event_id']) if isinstance(group['event_id'],str) else None
     if event is None:raise ValueError('话术组引用的事件不存在')
     rules.validate_rule(group,event)

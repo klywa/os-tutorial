@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "买武装分解可补主力最后一点进度，要拆同一人身上正好两件装备。",
+      "text": "主力差一点觉醒，武装分解可拆同一人的两件装备换妙音。",
       "id": "utterances_788015643b1b441cab5ac777177e826d"
-    },
-    {
-      "text": "主力还差一次觉醒，分解同一英雄身上正好两件装备就能拿妙音。",
-      "id": "utterances_b8e0f5e8e8764d6fba1bb4a23157e0d6"
     }
   ],
-  "explanation": "《常用技巧》缺觉醒进度时，用妙音补目标英雄；《基础知识》三次合成觉醒。武装分解官方卡：1件得4能量，恰好2件得妙音，3件得珍品宝箱。需愿意放弃同一人身上的全部两件装备；条件不能读取槽位，不承诺现有两件。卡面明确商店／拍卖渠道。",
-  "event_id": "os_39863c58ae5736cd",
   "id": "group_b1ff606d8c244513a2210e2275f105ae",
+  "event_id": "os_39863c58ae5736cd",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2",
+  "explanation_source": "knowledge/other/常用技巧.json · common-tips-awakening-supply，正式卡牌库 card:7089、card:307002。",
+  "explanation_before": "原始内容：指定1名英雄，摧毁其所有装备：\n摧毁1件获得4能量；2件获得1张妙音；3件获得1张珍品宝箱。 指定1名英雄，使其觉醒进度+1。\n知识详解：主力尚未觉醒且只差一点时，武装分解可通过拆掉同一目标恰好两件装备换妙音，再对主力使用妙音。\n适用条件：正在购买武装分解，主力尚未觉醒且进度为二。\n条件语法：arg1 is \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2\n30 字表达取舍：保留主力的具体缺口及拆装门槛，不假定此刻已有可牺牲的装备。",
+  "explanation_after": "购买没有取得妙音。使用时拆除的是指定英雄全部装备，得妙音须刚好两件。"
 }

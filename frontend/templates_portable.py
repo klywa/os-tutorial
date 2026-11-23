@@ -93,6 +93,11 @@ def _insert_retained(rows, previous, keep):
     return rows
 
 
+def _retain_metadata(record, previous):
+    for key in sorted(schema.GROUP_METADATA & previous.keys() - record.keys()):
+        record[key] = deepcopy(previous[key])
+
+
 def _v1(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
     doc = deepcopy(document)
     prior_groups = {group['id']: group for group in public['groups']}
@@ -105,7 +110,9 @@ def _v1(document, public, catalog, notes, *, retired_entities=None, retired_sugg
                     if not isinstance(item, dict): raise ValueError('导入条目格式无效')
                     item.setdefault('id', _id(field))
             if folder == 'groups':
-                previous = prior_groups.get(record['id'], {}).get('utterances', [])
+                previous_group = prior_groups.get(record['id'], {})
+                _retain_metadata(record, previous_group)
+                previous = previous_group.get('utterances', [])
                 fixed_ids = {row['id'] for row in previous if row.get('fixed')}
                 editable = [row for row in record['utterances'] if row['id'] not in fixed_ids]
                 record['utterances'] = _insert_retained(editable, previous, lambda row: row.get('fixed'))
@@ -164,7 +171,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
     for event in events: names[event['name']].append(event)
     groups = []; archives = {}
     for external in _list(document['groups']):
-        schema.fields(external, {'id', 'name', 'explanation', 'event_id', 'event_name', 'scope', 'conditions', 'utterances'},
+        schema.fields(external, {'id', 'name', 'event_id', 'event_name', 'scope', 'conditions', 'utterances'} | schema.GROUP_METADATA,
                       {'name', 'scope', 'conditions', 'utterances'})
         group = deepcopy(external); group.setdefault('id', _id('group'))
         schema.identity(group['id'])
@@ -186,6 +193,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         group['event_id'] = event_id
         parameters = {p['key']: p for p in event['parameters']}
         previous = old_groups.get(group['id'], {})
+        _retain_metadata(group, previous)
         for condition in _list(group['conditions']):
             schema.fields(condition, {'parameter_key', 'operator', 'value'}, {'parameter_key', 'operator', 'value'})
         prior_conditions = _condition_anchors(group['conditions'], previous.get('conditions', []))
@@ -242,8 +250,7 @@ def encode(public):
     groups = []
     for original in public['groups']:
         group = {key: deepcopy(original[key]) for key in ('id', 'name', 'event_id', 'scope')}
-        if 'explanation' in original:
-            group['explanation'] = original['explanation']
+        group.update({key: deepcopy(original[key]) for key in sorted(schema.GROUP_METADATA & original.keys())})
         group['conditions'] = [{key: deepcopy(value) for key, value in condition.items() if key != 'id'}
                                for condition in original['conditions']]
         for condition in group['conditions']:

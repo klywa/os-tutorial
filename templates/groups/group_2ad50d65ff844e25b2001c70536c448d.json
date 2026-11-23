@@ -4,26 +4,28 @@
     "player_id": null,
     "lineup_note_id": null
   },
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "弈星在场时升本能拿额外经验。",
+      "text": "这轮能量还不够升一级，可以先上弈星等下次升级。",
       "id": "utterances_daa8aec793004ab3b81ea1784b22fa5c"
     },
     {
-      "text": "上弈星能给下一次升本准备额外经验。",
+      "text": "现在升不起，先上弈星可为下次升级准备额外经验。",
       "id": "utterances_d5c5a81cc03543e3951c3c94005894e3"
-    },
-    {
-      "text": "弈星能帮后续升级省下一些补经验的能量。",
-      "id": "utterances_e447158076ea473abeebdca53734e009"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》弈星。上阵留作升级工具，升级后提供经验。预算明确足够时另有即时升本组。 棋手仍可升级时适用；是否能够立即升级还需另行判断。",
-  "event_id": "os_e5391e165361858d",
   "id": "group_2ad50d65ff844e25b2001c70536c448d",
+  "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 < 玩家.升到下一级所需经验",
+  "condition_tree": null,
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「弈星」 · n-f44abfb5b2009a59d743\n正式卡牌库：弈星（card:1971）\n正式卡牌库：弈星（card:1973）",
+  "explanation_before": "原始内容：弈星为后续升级提供额外经验，能量不够立即升级时仍可为下一次升级准备。\n知识或技巧详解：弈星利益在棋手升级时兑现。现在仍可升级但不够填经验差，可先备好弈星，不当成这轮已能升级。\n自然语言适用条件：上阵弈星时，下一次升级仍需经验，当前剩余能量小于经验差。\n正式条件：arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 < 玩家.升到下一级所需经验\n30 字表达取舍：交代这轮升不起但现在上能服务后续。",
+  "explanation_after": "能量足够时改由立即升级组解释，缺少经验差或能量时不确认等待。"
 }

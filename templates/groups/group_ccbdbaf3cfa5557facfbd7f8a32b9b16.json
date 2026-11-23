@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "装备提供初始攻速并将攻速上限改为5.0；战斗中每获得2点法力值再增加1%攻速。配合能持续普攻的名单。 来源：personal/knowledge_tips.jsonl 第113行；本地官方卡面 card:641007。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "热血拳套提高攻速上限，战斗中回蓝还能继续叠攻速。",
+      "text": "{arg1}靠普攻输出，热血拳套能把战斗回蓝变成攻速。",
       "id": "utterances_d7c35510a6fd404b814c8f2a9aee65e9"
-    },
-    {
-      "text": "给{arg1}穿热血拳套，战斗中回蓝就能叠攻速。",
-      "id": "utterances_d3a2f26e95b4480a84fa66578f946c6f"
     }
   ],
   "id": "group_ccbdbaf3cfa5557facfbd7f8a32b9b16",
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"热血拳套\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"热血拳套\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]",
+  "explanation_before": "原始内容：适配英雄：狄仁杰、公孙离、敖隐、艾琳。\n热血拳套：唯一。攻击速度+30%。攻速上限改为5.0。战斗期间，每获得2点法力值，提升1%攻击速度。\n知识或技巧详解：战斗回蓝带来的攻速对持续普攻的输出方式有用。\n自然语言适用条件：解释为何穿戴装备时，热血拳套交给名单中的普攻输出英雄。\n正式条件：arg2 is \"热血拳套\" and arg1 in [\"狄仁杰\", \"公孙离\", \"敖隐\", \"艾琳\"]\n30 字表达取舍：播报保留「{arg1}靠普攻输出，热血拳套能把战斗回蓝变成攻速。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第113行「热血拳套・使用技巧」\n正式卡牌库 热血拳套（card:641007）",
+  "explanation_after": "事件与条件复核：解释为何穿戴装备，核对了热血拳套交给名单中的普攻输出英雄。单项反例：换成主要不靠普攻的英雄，叠攻速的收益理由变弱。话术复核：句子围绕战斗回蓝带来的攻速对持续普攻的输出方式有用，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

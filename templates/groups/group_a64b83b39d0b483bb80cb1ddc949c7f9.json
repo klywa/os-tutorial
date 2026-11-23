@@ -4,22 +4,24 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "在“穿戴装备”事件中，云中君在场时适用。云中君在场，每多穿一件装备，开团时穿戴者就能多获得等级。依据为《常小娥灵活变阵-常小娥》「云中君」及官方英雄「云中君」。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "云中君开团时按装备件数提升等级，现在穿装备能增加永久成长。",
+      "text": "云中君已在场，穿戴者能在他开团时按装备件数升级。",
       "id": "utterances_0ffc135b160b493c874184d32fec8a3d"
-    },
-    {
-      "text": "云中君在场，每多穿一件装备，开团时穿戴者就能多获得等级。",
-      "id": "utterances_2a2dbe57180046e5b60469acf1afec1b"
     }
   ],
-  "event_id": "os_5dfcb4835e1e1513",
   "id": "group_a64b83b39d0b483bb80cb1ddc949c7f9",
+  "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
+  "editor_mode": "text",
   "priority": 0,
   "expression": "玩家.战场 has \"云中君\"",
-  "editor_mode": "text"
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「云中君」，正式卡牌库 card:5061、card:5063。",
+  "explanation_before": "原始内容：闪现\n开团：你的英雄每穿戴1件装备，该英雄等级永久+1。\n知识详解：云中君在开团时按穿戴者的装备件数给该英雄永久加级。同样的装备在没有云中君的队伍中没有这项额外收益。\n适用条件：正在给己方英雄穿戴装备，云中君已经在场。\n条件语法：玩家.战场 has \"云中君\"\n30 字表达取舍：保留在场云中君以及承接成长的穿戴者，省去具体级数及留场预测。",
+  "explanation_after": "只说明云中君实际开团时装备件数的作用，不保证这一件是净增加或穿戴者一定留场。"
 }

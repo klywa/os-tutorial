@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第45行「使用技巧」。亚连整备选择已穿装备最多的一名英雄。第三件令主C达到装备上限，因此必属最多候选；如果并列则仍不能保证亚连选主C。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "给主力补到{arg1.已穿装备.计数()}件装备，就能争取吃到亚连的整备等级。",
+      "text": "亚连在场，给主力穿满三件装备，能争取吃到整备加级。",
       "id": "utterances_49321804ab1646ffb251e2443f5203f1"
-    },
-    {
-      "text": "主力满装后进入亚连的升级候选，装备可以集中给他。",
-      "id": "utterances_b26f99bcd7634015a6c7ceddc0cb2bb3"
     }
   ],
   "id": "group_f0ddb2f326f15b818a7191303467884e",
   "event_id": "os_5dfcb4835e1e1513",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is 玩家.主C and arg1.已穿装备.计数() == 3 and 玩家.战场 has \"亚连\" and arg1 in 玩家.战场",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is 玩家.主C and arg1.已穿装备.计数() == 3 and 玩家.战场 has \"亚连\" and arg1 in 玩家.战场",
+  "explanation_before": "原始内容：将装备集中在需要培养的英雄身上，使其能够吃到亚连的整备效果。\n知识或技巧详解：主力必定属于装备最多的整备候选，但可能并列。\n自然语言适用条件：解释为何穿戴装备时，亚连在场，目标是装备已达三件的场上主力。\n正式条件：arg1 is 玩家.主C and arg1.已穿装备.计数() == 3 and 玩家.战场 has \"亚连\" and arg1 in 玩家.战场\n30 字表达取舍：播报保留「亚连在场，给主力穿满三件装备，能争取吃到整备加级。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第45行「亚连・使用技巧」",
+  "explanation_after": "事件与条件复核：解释为何穿戴装备，核对了亚连在场，目标是装备已达三件的场上主力。单项反例：没有亚连便没有用装备数量争取整备的收益。话术复核：句子围绕主力必定属于装备最多的整备候选，但可能并列，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

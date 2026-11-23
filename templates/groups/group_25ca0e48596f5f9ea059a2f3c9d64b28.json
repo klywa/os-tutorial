@@ -4,22 +4,25 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第194行与本地官方卡面。官方牌面表明回合结束每有7能量额外获得1能量，话术只解释已有天赋和当前留存余额的确定收益。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "手里有{玩家.剩余能量}点能量，存款利息每留7点就多赚1点。",
+      "text": "留住至少七点能量，这轮结算就能拿到利息。",
       "id": "utterances_3fcc9b41286745dfb8137b92b30c3ab9"
-    },
-    {
-      "text": "有存款利息，每留下七点能量，结算就多一点。",
-      "id": "utterances_efcbfa722bad4d529f652a6de3d1d09b"
     }
   ],
   "id": "group_25ca0e48596f5f9ea059a2f3c9d64b28",
   "event_id": "os_4ef8f267133d9810",
   "conditions": [],
   "related_entities": [],
-  "expression": "玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7",
+  "explanation_source": "personal/knowledge_tips.jsonl 第194行「存款利息・使用技巧」\n正式卡牌库：存款利息（card:671003）",
+  "explanation_before": "原始内容：存款利息需要在回合结束时每保留七点能量，额外多领一点。\n知识或技巧详解：备战结束前已跨过七点门槛，继续消费可能跌破档位；当前存款至少能产生一档利息。\n自然语言适用条件：准备战斗时已经选了存款利息，且剩余能量不少于七点。\n正式条件：玩家.已选天赋 has \"存款利息\" and 玩家.剩余能量 >= 7\n30 字表达取舍：讲保留当前预算为什么值得，不讲选天赋时给多少。",
+  "explanation_after": "少于七点时不播，避免把未满足的利息说成到账；如果继续用能量会改变结果。"
 }

@@ -119,7 +119,9 @@ func (c *Catalog) compatible(t, needle string) bool {
 		part = c.canonical(part)
 		for _, candidate := range strings.Split(needle, "|") {
 			candidate = c.canonical(candidate)
-			if part == candidate || numeric(part) && numeric(candidate) || c.entity(part) && candidate == "string" || part == "string" && c.entity(candidate) {
+			if part == candidate || part == "单位" && slices.Contains(c.UnitTypes, candidate) ||
+				candidate == "单位" && slices.Contains(c.UnitTypes, part) ||
+				numeric(part) && numeric(candidate) || c.entity(part) && candidate == "string" || part == "string" && c.entity(candidate) {
 				return true
 			}
 		}

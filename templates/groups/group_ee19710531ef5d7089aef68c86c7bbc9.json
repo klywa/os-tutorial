@@ -4,22 +4,26 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "重装类天赋只在开战时让至少穿两件装备的英雄获得15%增伤和减伤。配合当前明确有两件装备的主C。全副武装另送1张基础装备牌。 来源：personal/knowledge_tips.jsonl 第167行；本地官方卡面 card:633017。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "主力穿了{玩家.主C.已穿装备.计数()}件，选重装上阵能增伤也能减伤。",
+      "text": "主力已有{玩家.主C.已穿装备.计数()}件装备，选重装上阵能让他增伤减伤。",
       "id": "utterances_bf0b99b43b464694b2c87a6221d5ad89"
-    },
-    {
-      "text": "选重装上阵，已经穿够两件的主力能打能扛。",
-      "id": "utterances_78720391f3f943fc9cf3b50ddbb184b0"
     }
   ],
   "id": "group_ee19710531ef5d7089aef68c86c7bbc9",
   "event_id": "os_2b69e500a5c8036a",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2",
+  "explanation_before": "原始内容：需要目标英雄至少穿满2件装备才能触发15%增伤和15%减伤，适合主C有至少2件装备时使用。\n重装上阵：战斗开始时，你至少穿戴2件装备的英雄获得15%伤害加成和15%伤害减免。\n知识或技巧详解：换成重装上阵即可满足主力的开战增减伤门槛。\n自然语言适用条件：解释为何选择天赋时，主力已穿至少两件装备。\n正式条件：arg2 is \"重装上阵\" and 玩家.主C.已穿装备.计数() >= 2\n30 字表达取舍：播报保留「主力已有{玩家.主C.已穿装备.计数()}件装备，选重装上阵能让他增伤减伤。」，以入库前的独立复核为准。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第167行「重装上阵・使用技巧」\n正式卡牌库 重装上阵（card:633017）",
+  "explanation_after": "事件与条件复核：解释为何选择天赋，核对了主力已穿至少两件装备。单项反例：少于两件时主力无法实际受益。话术复核：句子围绕换成重装上阵即可满足主力的开战增减伤门槛，沿用来源支持的动作和结果，删去旁支卡面效果。"
 }

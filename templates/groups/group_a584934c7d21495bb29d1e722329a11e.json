@@ -4,15 +4,14 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "露娜在场，上阵孙悟空时，说明这项操作的战斗或资源收益。露娜有闪现，孙悟空整备时可以给她提升等级。依据《常小娥灵活变阵-常小娥》「孙悟空」和孙悟空的官方卡面、技能。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "露娜有闪现，孙悟空整备时可以给她提升等级。",
+      "text": "露娜已在场，上孙悟空能借他的整备给露娜加级。",
       "id": "utterances_ff2175a1f86340368db46a36c4179bbf"
-    },
-    {
-      "text": "孙悟空能提高闪现英雄的等级，露娜也能跟着成长。",
-      "id": "utterances_93d24135b41d4ee29f66e536885bb357"
     }
   ],
   "id": "group_a584934c7d21495bb29d1e722329a11e",
@@ -38,5 +37,8 @@
   ],
   "editor_mode": "text",
   "priority": 0,
-  "expression": "arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\""
+  "expression": "arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙悟空」「露娜」，正式卡牌库 card:1671、card:1673、card:1461、card:1463。",
+  "explanation_before": "原始内容：闪现，夺取\n整备：拥有闪现效果的英雄等级+2。\n知识详解：普通与觉醒孙悟空整备时都给拥有闪现效果的英雄加级，已在场的露娜也是对应受益者。\n适用条件：正在上阵孙悟空，露娜在场。\n条件语法：arg1 is \"孙悟空\" and 玩家.战场 has \"露娜\"\n30 字表达取舍：保留两者和整备时点，不报形态对应数值。",
+  "explanation_after": "换成不具有闪现的队友就没有相同收益。不把上阵说成整备已触发。"
 }

@@ -3,6 +3,33 @@ import * as templates from './templates';
 import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,renderUtterance,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
 const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题参与话术搜索'}],related_entities:[]};
 describe('template filtering and editing',()=>{
+ it('copies a template into an independent editable draft and reserves a name in its event',()=>{
+  const original:TemplateGroup={...common,ignored:true,version:'s1',mode:'万象大赛',tags:['技巧'],
+   utterances:[{id:'u1',text:'第一句。',fixed:true},{id:'u2',text:'第二句。',ignored:true}],
+   explanation_source:'正式卡牌库',condition_tree:{kind:'all',children:[]}};
+  const draft=templates.copyTemplateGroup(original,[
+   original,{...common,name:'通用（副本）'},{...common,event_id:'sell',name:'通用（副本 2）'},
+  ]);
+  expect(draft.name).toBe('通用（副本 2）');
+  expect(draft.id).not.toBe(original.id);
+  expect(draft.conditions[0].id).not.toBe(original.conditions[0].id);
+  expect(draft.utterances.map(({id,...row})=>row)).toEqual([{text:'第一句。'},{text:'第二句。',ignored:true}]);
+  expect(draft.utterances.map(row=>row.id)).not.toEqual(original.utterances.map(row=>row.id));
+  expect(draft.ignored).toBe(true);
+  expect(draft.explanation_source).toBe('正式卡牌库');
+  draft.tags?.push('新增标签');
+  draft.scope.player_id='p1';
+  expect(original.tags).toEqual(['技巧']);
+  expect(original.scope.player_id).toBeNull();
+ });
+ it('combines event, version, mode, every selected tag and fuzzy search',()=>{
+  const group={...common,version:'s1',mode:'万象大赛',tags:['技巧','阵容']};
+  const filters={event:'buy',player:'',lineup:'',query:'虞姬',version:'s1',mode:'万象大赛',tags:['阵容','技巧']};
+  expect(filterTemplateGroups([group,{...group,id:'partial',tags:['技巧']},common],filters)).toEqual([group]);
+  expect(filterTemplateGroups([group],{...filters,mode:'其他模式'})).toEqual([]);
+  expect(groupDiffKeys(common,group)).toEqual(['version','mode','tags']);
+  expect(selectedGroupChange(common,group,['tags'])).toEqual({...common,tags:group.tags});
+ });
  it('distinguishes event parameter changes in review and history',()=>{
   const event={id:'custom',name:'自定义事件',parameters:[{id:'p',name:'参数',key:'arg1',type:'text' as const,dsl_type:'string'}]};
   const previous=describeTemplateRecord(event);

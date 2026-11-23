@@ -4,22 +4,24 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「刘禅」「孙膑」。上阵完成后正好两人，孙膑给每三次施法的英雄永久等级，刘禅让每次施法的英雄获得临时等级。",
+  "explanation": "",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "刘禅能用护盾替孙膑扛伤，给孙膑争取多次施法的时间。",
+      "text": "孙膑与刘禅两人同场，施法能兼顾临时和永久成长。",
       "id": "utterances_2eea2dabf97a42e88f198e5ce0a4316e"
-    },
-    {
-      "text": "刘禅和孙膑同场，两人施法能临时升级，每三次还能永久升级。",
-      "id": "utterances_87f87da10541430c97f3291cd764eabb"
     }
   ],
   "id": "group_a0abac40d8255b68bec38fe3f22e0920",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"刘禅\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\""
+  "priority": 0,
+  "expression": "arg1 is \"刘禅\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\"",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」「刘禅」「孙膑」，正式卡牌库 card:1141、card:1143、card:1181、card:1183。",
+  "explanation_before": "原始内容：你的英雄释放技能时，该英雄获得2临时等级。 你的英雄每释放3次技能，该英雄等级永久+1。\n知识详解：刘禅让己方英雄每次施法获得临时等级，孙膑让各英雄分别每三次施法获得永久等级。阵容笔记还让刘禅扛前排。\n适用条件：常小娥灵活4人组中本次上阵刘禅，完成后恰好只有刘禅和孙膑在场。\n条件语法：arg1 is \"刘禅\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"孙膑\" and 玩家.战场 has \"刘禅\"\n30 字表达取舍：用刘禅、孙膑的组合与施法成长讲清上阵用途，不报各形态的加级数。",
+  "explanation_after": "临时和永久成长分别由两张卡提供。两句都未保证施法次数、眩晕的对象或胜负。"
 }

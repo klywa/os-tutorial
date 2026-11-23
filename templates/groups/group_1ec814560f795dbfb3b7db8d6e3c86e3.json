@@ -4,22 +4,25 @@
     "player_id": null,
     "lineup_note_id": null
   },
-  "explanation": "依据 personal/knowledge_tips.jsonl 第18行「使用技巧」。裴擒虎是无阵营英雄。姜子牙响应无阵营牌，提高自身和随机其他不同阵营英雄的等级，未确认其他英雄人数时只说明必定受益的姜子牙。",
+  "mode": "万象大赛",
+  "tags": [
+    "技巧"
+  ],
+  "version": "s1",
   "utterances": [
     {
-      "text": "姜子牙在场，打出无阵营的裴擒虎能让他涨等级。",
+      "text": "姜子牙在场，打出无阵营的裴擒虎就能给他升级。",
       "id": "utterances_ac4faec0caa24e3ca0ebd44fcb9044ce"
-    },
-    {
-      "text": "上无阵营裴擒虎，可顺手触发姜子牙的升级效果。",
-      "id": "utterances_aa7bce671472494bb7bd69299c04085e"
     }
   ],
   "id": "group_1ec814560f795dbfb3b7db8d6e3c86e3",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"裴擒虎\" and 玩家.战场 has \"姜子牙\"",
+  "editor_mode": "text",
   "priority": 0,
-  "editor_mode": "text"
+  "expression": "arg1 is \"裴擒虎\" and 玩家.战场 has \"姜子牙\"",
+  "explanation_source": "personal/knowledge_tips.jsonl 第18行「姜子牙・使用技巧」\n正式卡牌库：姜子牙（card:1481）\n正式卡牌库：姜子牙（card:1483）\n正式卡牌库：裴擒虎（card:5021）",
+  "explanation_before": "原始内容：姜子牙会从打出无阵营英雄牌获得成长；裴擒虎属无阵营。\n知识或技巧详解：姜子牙在场时，使用无阵营英雄牌可触发该牌效果，使姜子牙与部分其他阵营队友升级。普通或觉醒的裴擒虎均为无阵营。\n自然语言适用条件：打出裴擒虎上阵时，场上已有姜子牙。\n正式条件：arg1 is \"裴擒虎\" and 玩家.战场 has \"姜子牙\"\n30 字表达取舍：突出为何打无阵营的裴擒虎也能培养在场姜子牙。",
+  "explanation_after": "有姜子牙且裴擒虎由使用英雄牌而上阵时成立。队友分配随机，话术只确认姜子牙自身成长。"
 }

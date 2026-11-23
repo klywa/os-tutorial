@@ -4,26 +4,23 @@
     "player_id": "player:24",
     "lineup_note_id": "changxiaoe-general-play"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「露娜」「挂件与工具英雄」。有第五名或更多英雄时只解释临时登场的用途；普通随机触发两名英雄整备，觉醒四名。未断言整备命中指定对象、已用技能或应立即卖出。",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "text": "四人组外多上露娜，能借登场争取触发队友整备。",
+      "text": "四人组外可多上露娜，争取触发狂铁或亚连整备。",
       "id": "utterances_dfcdc099f5e343d68d293c524dc9af69"
-    },
-    {
-      "text": "露娜可以临时打出，用登场再争取一次整备。",
-      "id": "utterances_27ebb72749e840b6a2f5823a88f60e47"
-    },
-    {
-      "text": "这次上露娜是借登场触发整备，四人组还可以保留。",
-      "id": "utterances_e846efa13b3a46c28fd4efb4c94d623c"
     }
   ],
   "id": "group_2d8930d79e735563a2f4754686cde629",
   "event_id": "os_e5391e165361858d",
   "conditions": [],
   "related_entities": [],
-  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")",
   "editor_mode": "text",
-  "priority": 0
+  "priority": 0,
+  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」 · n-362afd85fa4dcd25aa03\n正式卡牌库：露娜（card:1461）\n正式卡牌库：露娜（card:1463）\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：亚连（card:5141）",
+  "explanation_before": "原始内容：已有四人战斗组时，可额外打出露娜利用登场触发有收益的队友整备。\n知识或技巧详解：场上多于四名英雄时可用额外露娜的登场效果。狂铁或亚连在场，提供真实可利用的整备候选。\n自然语言适用条件：常小娥灵活4人组，上露娜后多于四名英雄，已有狂铁或亚连在场。\n正式条件：arg1 is \"露娜\" and 玩家.场上英雄数 > 4 and 玩家.战场 has \"露娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"亚连\")\n30 字表达取舍：说明这次额外上阵的理由是争取已有队友的整备。",
+  "explanation_after": "不知最终留下谁，不必说要卖掉露娜。随机整备保留概率，只说有机会。"
 }

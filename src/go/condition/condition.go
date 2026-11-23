@@ -29,6 +29,7 @@ type Catalog struct {
 	Enums        map[string][]string
 	CardTags     map[string]CardTagRecord `json:"card_tags"`
 	CardTagsFile string                   `json:"card_tags_file"`
+	UnitTypes    []string                 `json:"unit_types"`
 }
 
 type CardTagRecord struct {
@@ -53,6 +54,22 @@ func (c *Catalog) cardTags(v value) any {
 		}
 		return result
 	}
+	options := c.cardTagOptions(v)
+	if len(options) == 0 {
+		return nil
+	}
+	shared := slices.Clone(options[0])
+	for _, tags := range options[1:] {
+		shared = slices.DeleteFunc(shared, func(s string) bool { return !slices.Contains(tags, s) })
+	}
+	tags := make([]any, len(shared))
+	for i, tag := range shared {
+		tags[i] = tag
+	}
+	return tags
+}
+
+func (c *Catalog) cardTagOptions(v value) [][]string {
 	name, _ := nameOf(v).(string)
 	obj, _ := v.raw.(map[string]any)
 	rawID, hasID := obj["id"]
@@ -68,28 +85,15 @@ func (c *Catalog) cardTags(v value) any {
 		name = row.Name
 	}
 	awake, hasForm := obj["已觉醒"].(bool)
-	var shared []string
-	found := false
+	var options [][]string
 	for key, row := range c.CardTags {
 		if row.Type != v.typ || name != row.Name || (hasID && row.Type != "英雄" && id != key) ||
 			(row.Type == "英雄" && hasForm && row.Awakened != awake) {
 			continue
 		}
-		if !found {
-			shared = slices.Clone(row.Tags)
-			found = true
-		} else {
-			shared = slices.DeleteFunc(shared, func(s string) bool { return !slices.Contains(row.Tags, s) })
-		}
+		options = append(options, row.Tags)
 	}
-	if !found {
-		return nil
-	}
-	tags := make([]any, len(shared))
-	for i, tag := range shared {
-		tags[i] = tag
-	}
-	return tags
+	return options
 }
 
 // EvaluateCondition uses WXQ_CONDITION_CATALOG, catalog.json beside the executable,
@@ -332,6 +336,23 @@ func (c *Catalog) read(t string, raw any) value {
 		v := c.read(tag, raw)
 		v.union = t
 		return v
+	}
+	if t == "单位" && len(c.UnitTypes) > 0 {
+		tag := "英雄"
+		if obj, ok := raw.(map[string]any); ok {
+			if value, exists := obj["类型"]; exists {
+				name, _ := value.(string)
+				tag = c.canonical(name)
+			}
+		}
+		if !slices.Contains(c.UnitTypes, tag) {
+			reject("incompatible unit type %q", tag)
+		}
+		if tag != t {
+			v := c.read(tag, raw)
+			v.union = t
+			return v
+		}
 	}
 	switch t {
 	case "int", "number":

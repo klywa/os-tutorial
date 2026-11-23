@@ -1,0 +1,2228 @@
+diff --git a/.codex/skills/wanxiangqi-knowledge/SKILL.md b/.codex/skills/wanxiangqi-knowledge/SKILL.md
+index 20d93bd93c434b9a8935fa71565dc482e75f732b..313518917f46574f3776b6c611928124b4d7b558 100644
+--- a/.codex/skills/wanxiangqi-knowledge/SKILL.md
++++ b/.codex/skills/wanxiangqi-knowledge/SKILL.md
+@@ -76,7 +76,7 @@ description: 维护王者万象棋知识和数据，包括导入攻略、补证
+ 
+ 正文不引用其他笔记、卡牌库、模板库或外部资料，也不以链接或“以某处为准”代替必要说明。卡名可用作实例，须就地说明相关效果和用途。核验时可以查阅这些资料，来源和证据依照 schema6 保存在附件及审阅记录中。提交前逐篇脱离其他资料通读，检查读者能否仅凭本篇理解关键规则、执行步骤和取舍依据。
+ 
+-生成、补充、改写或审阅中文知识正文时，默认调用 **humanizer-zh**：先读取该技能的 `SKILL.md`，用其流程润色拟送审正文，再执行本技能的[说人话 review](references/teaching-v4.md#提交前说人话-review)。本机位置为 `C:/Users/klywa/.agents/skills/humanizer-zh/SKILL.md`；其他环境按技能名称发现。它负责自然表达，本技能负责卡名、机制、条件和证据；不让润色改动 JSON 结构、ID、链接目标、人工保护或原始资料。技能不可用时明确说明，不声称已调用，不用禁词替换代替它。
++生成、补充、改写或审阅中文知识正文时，默认调用 **humanizer-zh**：先读取该技能的 `SKILL.md`，用其流程润色拟送审正文，再执行本技能的[说人话 review](references/teaching-v4.md#提交前说人话-review)。按技能名称发现。它负责自然表达，本技能负责卡名、机制、条件和证据；不让润色改动 JSON 结构、ID、链接目标、人工保护或原始资料。技能不可用时明确说明，不声称已调用，不用禁词替换代替它。
+ 
+ 写作、润色与提质前，先读[用玩家会说的话写操作](references/teaching-v4.md#用玩家会说的话写操作)及其中六组用户对照例。逐段检查自然表达、具体动作和必要原因；保留已经清楚的人工措辞，不能只做六句替换或把格式校验当成内容验收。
+ 
+diff --git a/.codex/skills/wanxiangqi-knowledge/scripts/proposal_review.py b/.codex/skills/wanxiangqi-knowledge/scripts/proposal_review.py
+index 4b48fe2e169f48b0458e1091cef4b73a94f3f582..845e64e8f11e696b8bd31363cf10194642e400b1 100644
+--- a/.codex/skills/wanxiangqi-knowledge/scripts/proposal_review.py
++++ b/.codex/skills/wanxiangqi-knowledge/scripts/proposal_review.py
+@@ -23,10 +23,17 @@ def add_parser(subparsers):
+ 
+ 
+ def request(path, method='GET', payload=None):
+-    origin = 'http://127.0.0.1:8765'
++    import os
++    from urllib.parse import urlsplit
++    origin = os.environ.get('WXQ_ORIGIN', '').rstrip('/')
++    cookie = os.environ.get('WXQ_SESSION_COOKIE', '')
++    if not origin or not cookie:
++        raise ValueError('请设置 WXQ_ORIGIN 和当前登录账号的 WXQ_SESSION_COOKIE')
++    if urlsplit(origin).scheme not in ('http', 'https'):
++        raise ValueError('WXQ_ORIGIN 必须是内网站点地址')
+     body = None if payload is None else json.dumps(payload, ensure_ascii=False).encode('utf-8')
+     req = Request(origin + '/api/' + path, method=method, data=body,
+-                  headers={'Content-Type': 'application/json', 'Origin': origin})
++                  headers={'Content-Type': 'application/json', 'Origin': origin, 'Cookie': cookie})
+     try:
+         with urlopen(req, timeout=20) as response:
+             return json.load(response)
+diff --git a/.codex/skills/wanxiangqi-template/scripts/read_feedback.py b/.codex/skills/wanxiangqi-template/scripts/read_feedback.py
+index 00cc58a3ee2452bb6d097e754a003c5ed4c6a3c5..b99fb21aedab66d8017e39624d5c71c05523592c 100644
+--- a/.codex/skills/wanxiangqi-template/scripts/read_feedback.py
++++ b/.codex/skills/wanxiangqi-template/scripts/read_feedback.py
+@@ -1,9 +1,10 @@
+ """Read formal template feedback from the project's local API."""
+ import argparse
+ import json
++import os
+ from urllib.error import HTTPError, URLError
+ from urllib.parse import urlencode
+-from urllib.request import urlopen
++from urllib.request import Request, urlopen
+ 
+ 
+ def main():
+@@ -22,9 +23,13 @@ def main():
+         filters["status"] = args.status
+     elif args.latest:
+         filters["latest"] = "1"
+-    url = "http://127.0.0.1:8765/api/templates/" + args.command + "?" + urlencode(filters)
++    origin = os.environ.get("WXQ_ORIGIN", "").rstrip("/")
++    cookie = os.environ.get("WXQ_SESSION_COOKIE")
++    if not origin or not cookie:
++        parser.error("请设置 WXQ_ORIGIN 和当前账号的 WXQ_SESSION_COOKIE")
++    url = origin + "/api/templates/" + args.command + "?" + urlencode(filters)
+     try:
+-        with urlopen(url, timeout=45) as response:
++        with urlopen(Request(url, headers={"Cookie": cookie}), timeout=45) as response:
+             result = json.load(response)
+     except HTTPError as error:
+         parser.exit(1, f"反馈接口 HTTP {error.code}：{error.reason}\n")
+diff --git a/.gitattributes b/.gitattributes
+index 11efa96bc8af2142e0729f29fc7af36c72219783..1dfa9681519ec79f139c126903c968447d0ce6e9 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -1,3 +1,6 @@
+ deploy/*.sh text eol=lf
+ # The manifest hashes exact bytes, including line endings.
+ website-data/** -text
++*.sh text eol=lf
++*.zsh text eol=lf
++*.service text eol=lf
+diff --git a/.gitignore b/.gitignore
+index cce138324e5a13bee606f789e38775bf69dfc250..84cbfba9eca3d0b7a491aef342c5b2d42e0f2f62 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -39,3 +39,5 @@ exports/
+ /task_plan.md
+ /findings.md
+ /progress.md
++
++/.wxq-runtime-engine/
+diff --git a/README.md b/README.md
+index 381571414ab82561cbededa4bfb68ad4bc480286..b1967ffb1acb75e51cd3dde102597e22b8b6a3d8 100644
+--- a/README.md
++++ b/README.md
+@@ -1,149 +1,90 @@
+-# 万象棋战术手册
++# 万象棋内网战术手册
+ 
+-## 公网部署
++团队通过同一网址使用笔记、对局助手、模板库、卡牌库、看板和采集工具。正式资料随包提供。安装、官网同步和 B 站采集需要服务器联网。
+ 
+-双站更新脚本的执行方法见 [docs/depolyment.md](docs/depolyment.md)。网站地址为 `https://klywa.xyz/os-tutorial/`，登录入口为 `/os-tutorial/admin`；Pokilot 地址为 `/pokilot/`。
++## 首次启动
+ 
+-本地修改代码或笔记后，在项目根目录执行 `./publish-local.ps1` 上传 GitHub，再在服务器执行 `update-sites --os-tutorial` 发布。线上管理员确认的笔记会自动同步 GitHub；本地执行 `./pull-local.ps1` 拉取并按原运行状态重启服务。私有提案不上传 Git；本地编辑和调试不会自行提交。
++准备 Python 3.12（也支持 3.11）、Node.js 24 和 npm。进入项目根目录，将下面的 wiki.lan 换成用户能够访问的内网 IP 或服务器名。WXQ_ORIGIN 必须与浏览器访问地址一致。WXQ_BIND 指定监听网卡，默认 0.0.0.0。默认端口 8765，换端口需同时更新访问地址与启动参数。使用 HTTPS 时由反向代理终止 TLS 并保留 Host。
+ 
+-顶栏可切换管理员和编写员身份；编写员的正文增改删仅暂存为淡红色提案，由管理员逐条确认。服务器安装脚本初始化 `test1 / aa2025` 为编写员，本地默认管理员，支持切换调试。
++### Linux
+ 
+-公网只提供笔记和看板，不创建采集运行时；现有服务器的更新命令见部署文档。本机启动方式见下方。
++需要 Python venv、Git、curl、CMake、C/C++ 编译器和 make。使用预装的 llama-server 时，请确认其 CPU 动态库齐全；Ubuntu 上可用 libgomp1 提供 OpenMP。确认 python3、node、npm 可用。
+ 
+-## 每次更新服务器
++    python3 deploy/add_account.py admin manager
++    export WXQ_ORIGIN=http://wiki.lan:8765
++    bash start.sh
+ 
+-更新万象棋时，直接按下面三步操作。
++按照提示设置密码。脚本会创建虚拟环境、安装依赖并构建生产页面。找不到 llama-server 时会下载固定版本 llama.cpp 为本机编译。主题模型下载约 1.71 GiB，转写模型在首次使用时另行下载。可用 PYTHON 指定解释器；传入 --skip-topic-model 可先启动知识库，下次完整启动补装。
+ 
+-1. 在 **Windows 本机 PowerShell** 发布代码和正式笔记：
++**常驻服务。** 将目录放置于 /opt/os-tutorial-internal。创建名为 os-tutorial 的专用系统账号并授予项目读写权限，以该账号完成建号及首次启动。在 /etc/os-tutorial-internal.env 写入 WXQ_ORIGIN=http://实际服务器地址:8765。使用非系统 Python 或 Node 时，在此文件设置 PYTHON 和含 node、npm、cmake 的 PATH。
+ 
+-   ```powershell
+-   Set-Location D:\GameProjects\os-tutorial
+-   powershell -NoProfile -ExecutionPolicy Bypass -File .\publish-local.ps1
+-   ```
++    sudo install -m 0644 deploy/os-tutorial-internal.service /etc/systemd/system/
++    sudo systemctl daemon-reload
++    sudo systemctl enable --now os-tutorial-internal
++    systemctl status os-tutorial-internal
++    journalctl -u os-tutorial-internal -f
+ 
+-   等到发布成功，再执行第 2 步；如果报错，先保留完整输出。
++使用 sudo systemctl stop os-tutorial-internal 停止，restart 重启。
+ 
+-2. 在 **同一个 PowerShell 窗口** 登录服务器：
++### Windows PowerShell
+ 
+-   ```powershell
+-   ssh root@klywa.xyz
+-   ```
++安装 Python 3.12 和 Node.js 24，在项目目录运行：
+ 
+-   如果提示密码，输入服务器 root 密码并按回车；输入时不显示字符是正常的。
++    py -3.12 deploy/add_account.py admin manager
++    $env:WXQ_ORIGIN = 'http://wiki.lan:8765'
++    .\start.ps1 -NoBrowser
+ 
+-3. 登录成功后，在 **当前服务器 root SSH 窗口** 执行：
++-Port 可更换端口。使用公网或域策略管控的机器时，请按团队要求设置运行账号与内网防火墙规则。
+ 
+-   ```bash
+-   update-sites --os-tutorial
+-   ```
++### macOS
+ 
+-   保持窗口打开，等显示“更新结束”且没有报错，再刷新 [万象棋网站](https://klywa.xyz/os-tutorial/)。
++安装 Homebrew 后运行：
+ 
+-每次更新都执行以上三步，无需重新安装更新命令或上传恢复脚本。首次安装及克隆超时的恢复步骤见 [部署文档](docs/depolyment.md)。
++    brew install python@3.12
++    python3.12 deploy/add_account.py admin manager
++    export WXQ_ORIGIN=http://wiki.lan:8765
++    zsh start.zsh --no-browser
+ 
+-## 增加管理员或编写员账号
++脚本通过 Homebrew 检查 Node.js 和 llama.cpp。交互运行时按 Ctrl+C 停止，再次执行同一命令会复用依赖与数据。
+ 
+-1. 首次使用新增账号脚本前，先执行上方“每次更新服务器”的三步，将此脚本发布到服务器。
++## 账号与权限
+ 
+-2. 在 **服务器 root SSH 窗口** 执行对应命令。每条命令最后三个参数依次是：角色、用户名、密码。
++在服务器执行 python deploy/add_account.py 角色 用户名，按提示输入密码。首次必须创建 admin。配置文件位于 raw/internal/accounts.json。仅向服务和管理员操作系统账号开放该目录权限。重复的用户名会被拒绝。
+ 
+-   新增管理员（将 `admin2` 和 `换成你的密码` 改为需要的用户名、密码）：
++| 角色 | 能力 |
++| --- | --- |
++| viewer 浏览者 | 阅读、搜索、查看看板和卡牌、复制和导出 |
++| annotator 编写员 | 浏览，提交笔记、模板等修改提案，查看自己的提案 |
++| admin 管理员 | 直接编辑、审核提案、处理冲突、运行采集及维护资料 |
+ 
+-   ```bash
+-   python3 /opt/os-tutorial/current/deploy/add_account.py admin admin2 '换成你的密码'
+-   ```
++右上角可退出登录。管理员可切换到低权限身份查看效果。多人编辑时遵循界面上的编辑锁和版本冲突提示。
+ 
+-   新增编写员（将 `writer2` 和 `换成你的密码` 改为需要的用户名、密码）：
++## 功能与入口
+ 
+-   ```bash
+-   python3 /opt/os-tutorial/current/deploy/add_account.py annotator writer2 '换成你的密码'
+-   ```
++| 入口 | 使用方式 |
++| --- | --- |
++| 对局助手 | 按棋手、阵容和实体定位战术笔记，切换侧栏和完整阅读。 |
++| 全部笔记 | 选择赛季、目录或搜索条件，沿卡牌和相关笔记链接阅读。编辑者可新增、导入、修改条目或提交提案，管理员可同步章节、处理批注、查看部署后的修订版本。使用导出按钮下载笔记归档。 |
++| 模板库 | 管理事件、条件、话术组和实体关联，使用导入预览、导出、提案审核与卡牌变更提醒。详见[模板使用手册](docs/template-library.md)。 |
++| 看板 | 按赛季与范围查看阵容使用情况；管理员可刷新数据、修订阵容匹配。 |
++| 卡牌库 | 按类别和阵营查找卡牌、查看图片、效果与技能。管理员可维护标签、配置官网检查时间、执行更新或重试。 |
++| 外部内容 | 登记来源、编辑转写稿、管理标签，选取资料暂存并复制提示。新部署的来源和提案从空库开始。 |
++| 爬取 | 在连接设置配置 B 站 cookies，添加链接或搜索任务，设置 UP 主监听；在任务详情查看下载、字幕、转写及重试进度。 |
++| 主题和阵容维护 | 使用本机主题模型提取棋手和阵容候选，检查证据、确认分类、名称与变体。 |
++| 提案与协作 | 编写员提交修改；管理员在提案面板逐项确认或退回，必要时处理编辑锁和同步冲突。 |
+ 
+-3. 显示“账号已新增”后，直接在网站右上角点击“登录”，使用新账号登录；无需重启服务或再次更新网站。
++## 可选 Git 同步
+ 
+-管理员可以直接保存和审核提案；编写员的修改需要管理员确认。新增只读浏览者使用同一脚本，将角色设为 `viewer`；浏览者可阅读、搜索、复制及导出 Markdown/JSON，不能修改或提交提案。公网所有内容均须登录，本地继续免登录。脚本自动备份服务器账号配置、保留已有账号；用户名重复会拒绝新增，不覆盖原密码和角色。密码用英文单引号包住；若密码包含单引号，将该字符写成 `'"'"'`。账号保存在服务器 `/etc/os-tutorial/admins.json`，不上传 Git。本地调试继续使用网页中的身份切换。
++默认保存于内网服务器。需要远端同步时，在项目中创建全新仓库，检查 .gitignore 后建立基线提交，配置自有 origin 并推送同名分支。给服务账号配置 Git 凭据，设置 WXQ_SYNC_BRANCH 为该分支名并重启。管理员界面提供状态和冲突处理。取消该变量并重启恢复仅在服务器保存。
+ 
+-## UP 主监听自动重试
++## 备份、恢复与诊断
+ 
+-本地服务保持运行即可；临时故障会自动重试，无需反复点击。重启服务后会接着处理，保留重试次数、冷却时间、下载分片和转写检查点。
++停止服务后可运行 `python deploy/backup.py 项目外的新目录`，生成数据副本和一致的 SQLite 备份。恢复时将备份中的目录复制到同版本项目根目录。手工备份应覆盖 knowledge、templates、website-data、src/condition 及运行生成的 raw、entities、knowledge-history、knowledge-sync 等数据目录，另存服务配置。raw 包含账号、会话密钥、数据库和采集设置，应限制备份访问权限。恢复到相同版本和目录结构后再启动，验证笔记、模板和待审提案。跨系统迁移时重新安装依赖。
+ 
+-- 资料正在保存或临时文件占用：5、15、30、60 秒重试，之后每 60 秒重试。
+-- 网络中断、页面解析失败、暂时缺少格式：1、5、15、30 分钟重试，之后每 30 分钟重试。
+-- 工作进程异常退出：1、5、15 分钟重试，之后每 60 分钟重试。
+-- B站访问限制：按共享冷却时间重试；“立即重试”也不会绕过风控冷却。
++- 首页打不开：检查端口、防火墙和 WXQ_ORIGIN。反向代理应保留原 Host。
++- 登录异常：检查配置文件权限、HTTP/HTTPS 地址。连续错误登录会短暂限流。
++- 下载中断：恢复联网后重新启动，主题模型会断点续传并校验摘要。
++- 采集失败：在任务详情或 raw/crawler 日志中核对 cookies、目录权限和网络状态。
++- 校验知识库：在项目 Python 环境运行 python frontend/website_data.py validate，检查发布包、正式笔记、实体和模板。
+ 
+-监听卡片和视频任务显示“等待自动重试”、次数及下次时间。单个视频失败不影响其他任务。暂停、停用或删除后不会由自动重试恢复；共享视频仍有其他有效处理需求时继续处理。
+-
+-需要手动处理时，页面会说明原因：登录失效请在“B站连接设置”更新 cookies；视频删除、目录权限不足或材料校验失败请先处理对应问题，再点击重试。程序不会自行升级依赖或改写你提供的 cookies 文件。
+-
+-查看失败任务的“技术详情”；每次视频处理的独立日志和诊断保存在 `raw/crawler/attempts/视频BV号/`，最新日志仍可在 `raw/crawler/视频BV号.log` 查看。诊断包含阶段、设备、版本和退出码，不包含 cookies 内容。若确认是 GPU 转写崩溃，下一次使用相同 `large-v3` 模型的 CPU 保守配置恢复，不降低模型。
+-
+-## 在另一台电脑准备项目
+-
+-复制整个项目，**包含隐藏目录 `.codex`，以及 `knowledge/`、`entities/`、`raw/`**。其中部分数据被 Git 忽略，只克隆仓库不能带走完整资料。迁移前先停止旧电脑上的服务，避免复制到写入一半的数据库。
+-
+-不要复制 `.wxq-runtime/`、`frontend/node_modules/` 和 `frontend/dist/`；脚本会在新电脑重建。若已复制虚拟环境，先将 `.wxq-runtime` 移到项目目录之外再启动。原电脑的 cookies 路径等本机设置需在新电脑重新配置。
+-
+-## macOS
+-
+-先安装 [Homebrew](https://brew.sh/)，然后在项目根目录的终端运行：
+-
+-```zsh
+-zsh ./start.zsh
+-```
+-
+-脚本通过 Homebrew 补装 Python 3.12、Node.js 24（未安装 Node 时）及 llama.cpp，再自动创建 Python 虚拟环境、安装依赖、下载主题模型、构建页面并启动整个项目。已有过旧 Node.js 时请先执行 `brew install node@24`，再重试脚本。
+-
+-## Windows
+-
+-先安装 [Python 3.12](https://www.python.org/downloads/)（勾选加入 PATH）和 [Node.js 24](https://nodejs.org/)，然后在项目根目录打开 PowerShell：
+-
+-```powershell
+-powershell -NoProfile -ExecutionPolicy Bypass -File .\start.ps1
+-```
+-
+-脚本自动创建 `.wxq-runtime`、安装 Python 和前端依赖、下载主题模型、构建并启动。无需手动激活 Python 环境。
+-
+-## 本地开发服务与恢复
+-
+-完成首次安装后，在项目根目录执行以下命令，启动或恢复后端与开发前端：
+-
+-```powershell
+-.\.wxq-runtime\Scripts\python.exe deploy/ensure_local.py
+-```
+-
+-后端入口为 [http://127.0.0.1:8765/](http://127.0.0.1:8765/)，开发前端为 [http://127.0.0.1:5173/](http://127.0.0.1:5173/)。管理器独立于启动终端持续运行，不安装系统服务，也不设置开机启动。它先核对项目身份，遇到其他程序占用端口时报告错误，不结束该程序。
+-
+-前端修改后加 `--build` 更新 8765 使用的静态页面；后端修改后加 `--restart-backend` 安全重启。完整交付命令为：
+-
+-```powershell
+-.\.wxq-runtime\Scripts\python.exe deploy/ensure_local.py --build --restart-backend
+-```
+-
+-查看状态使用 `--status`；明确停止两个服务使用 `--stop`。停止后保持暂停，再次执行恢复命令才会启动。正常发布流程暂停后端，完成后按原状态恢复，保留后台任务与检查点。
+-
+-管理器对意外退出按 1、5、15、60 秒退避恢复，之后每 60 秒重试；稳定运行一分钟后重置退避。`raw/local-services/manager.log` 记录停启原因，`status.json` 保存 PID、最近退出时间、退出码及十六进制退出码，`backend.stdout.log`、`backend.stderr.log`、`frontend.stdout.log`、`frontend.stderr.log` 保存服务输出。接管已有服务时无法追溯其真实退出码，会明确记录为空。`control.json` 是本机控制凭据，不应分享。
+-
+-模板库顶栏的【帮助】提供当前 JSON 协议和可复制、下载的示例；仓库文档见 [模板库 JSON 协议](docs/template-library.md)。
+-
+-## 使用
+-
+-Git 只管理代码与正式知识。外部采集、官网同步、运行状态及来源标题、标签和备注均保存在被忽略的本地资料中。请额外备份 `raw/`、`entities/`、`knowledge/cards/`、`personal/` 及 `knowledge/source-registry.meta.json`、`knowledge/document-sources.meta.json`；只克隆 Git 仓库无法恢复这些数据。
+-
+-启动、后台任务和网页官网检查不会自动改写正式笔记。需要把官网资料应用到棋手笔记时，明确执行 `.wxq-runtime/Scripts/python.exe .codex/skills/wanxiangqi-knowledge/scripts/wxq.py sync-entities --apply-notes`（macOS 使用虚拟环境中的 `bin/python`）。默认 `sync-entities` 只更新本地缓存。外网阵容名称留在本地快照中，正式搜索别名通过笔记编辑保存。
+-
+-使用上述 `start.ps1` / `start.zsh` 安装入口时，浏览器自动打开 [http://127.0.0.1:8765](http://127.0.0.1:8765)，后端同时提供构建后的前端、API、采集与定时任务。该前台入口需保持终端打开，按 `Ctrl+C` 停止。需要脱离终端持续运行并同时提供 5173 开发前端时，安装完成后使用前文的 `deploy/ensure_local.py`；由 `--stop` 安全停止，关闭网页不会停止后台。
+-
+-首次安装需联网，主题模型约 2GB；语音转写首次使用时还会下载 large-v3 模型。Mac 转写使用 CPU，耗时取决于硬件。后续启动复用依赖，仍会构建前端。
+-
+-可选参数：
+-
+-| 用途 | PowerShell | zsh |
+-| --- | --- | --- |
+-| 更换端口 | `-Port 8766` | `--port 8766` |
+-| 不自动打开浏览器 | `-NoBrowser` | `--no-browser` |
+-| 暂不安装主题模型 | `-SkipTopicModel` | `--skip-topic-model` |
+-
+-跳过主题模型不影响阅读、编辑、采集和转写，但自动主题识别需安装模型后才能使用。端口被占用时，关闭旧服务或更换端口。首次依赖下载失败可直接重跑脚本。
+-
+-macOS 的安装命令依据 [Python](https://formulae.brew.sh/formula/python@3.12)、[Node.js](https://formulae.brew.sh/formula/node@24) 和 [llama.cpp](https://formulae.brew.sh/formula/llama.cpp) 的 Homebrew 配方。macOS 启动入口已补齐，尚未在真实 Mac 上验收。
++自动化提案审阅工具读取 WXQ_ORIGIN 和 WXQ_SESSION_COOKIE；请按当前用户会话临时提供，仅在可信服务器终端使用。首次启动也可先打开网页，按初始化提示在服务器建号后刷新。
+diff --git a/deploy/add_account.py b/deploy/add_account.py
+index 4e0c988fd5aac01714cb68fba6b8ed25a6db75e0..f8b697a650a08e658c3026f73e4156f9cd50aec6 100644
+--- a/deploy/add_account.py
++++ b/deploy/add_account.py
+@@ -10,9 +10,9 @@ import sys
+ import uuid
+ 
+ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'frontend'))
+-from website_auth import Auth
++from website_auth import Auth, password_digest
+ 
+-CONFIG = Path('/etc/os-tutorial/admins.json')
++CONFIG = Path(__file__).resolve().parents[1] / 'raw/internal/accounts.json'
+ 
+ 
+ @contextmanager
+@@ -53,7 +53,22 @@ def add_account(path, role, username, password):
+     path = Path(path)
+     if path.is_symlink():
+         raise ValueError('账号配置不能是符号链接')
++    path.parent.mkdir(parents=True, exist_ok=True)
+     with account_lock(path):
++        if not path.exists():
++            if role != 'admin':
++                raise ValueError('首个账号必须为管理员')
++            import secrets
++            data = {'schema_version': 2, 'sessionSecret': secrets.token_urlsafe(48),
++                    'accounts': [{'username': username, 'role': role, 'password': password_digest(password)}]}
++            temporary = path.with_suffix('.' + uuid.uuid4().hex + '.tmp')
++            try:
++                with os.fdopen(os.open(temporary, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600), 'w', encoding='utf-8') as handle:
++                    json.dump(data, handle, ensure_ascii=False)
++                os.replace(temporary, path)
++            finally:
++                temporary.unlink(missing_ok=True)
++            return None
+         original = path.read_bytes()
+         value = json.loads(original.decode('utf-8'))
+         if value.get('schema_version') != 2:
+@@ -61,7 +76,7 @@ def add_account(path, role, username, password):
+         _, accounts, _ = Auth(path, '/os-tutorial').config()
+         if username in accounts:
+             raise ValueError('用户名已存在，未修改已有账号')
+-        value['accounts'].append({'username': username, 'password': password, 'role': role})
++        value['accounts'].append({'username': username, 'password': password_digest(password), 'role': role})
+         metadata = path.stat()
+         suffix = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ') + '-' + uuid.uuid4().hex[:8]
+         backup = path.with_name(path.name + '.backup-' + suffix)
+@@ -94,16 +109,16 @@ def main(argv=None):
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('role', choices=('admin', 'annotator', 'viewer'), help='账号角色')
+     parser.add_argument('username', help='新账号用户名')
+-    parser.add_argument('password', help='新账号密码')
++    from getpass import getpass
+     args = parser.parse_args(argv)
+     try:
+-        backup = add_account(CONFIG, args.role, args.username, args.password)
++        backup = add_account(CONFIG, args.role, args.username, getpass('密码: '))
+     except (OSError, ValueError, TypeError, KeyError):
+         # Do not include exception details: JSON/parser errors can contain credentials.
+         print('新增失败：请检查配置有效、角色正确、用户名未重复且非空、密码非空，'
+               '并在服务器 root 窗口执行；如有其他账号操作，请等待后重试。', file=sys.stderr)
+         return 1
+-    print(f'账号已新增（{args.role}），立即生效，无需重启。原配置备份：{backup}')
++    print(f'账号已新增（{args.role}），立即生效。')
+     return 0
+ 
+ 
+diff --git a/deploy/backup.py b/deploy/backup.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..b9c50ecc693660f1bdddfbd06eeb0727eccc2cff
+--- /dev/null
++++ b/deploy/backup.py
+@@ -0,0 +1,45 @@
++"""Make a private data backup of a stopped internal installation."""
++import argparse
++from contextlib import closing
++from pathlib import Path
++import os
++import shutil
++import sqlite3
++import tempfile
++
++DATA = ('knowledge', 'templates', 'website-data', 'entities', 'raw',
++        'knowledge-history', 'knowledge-sync', 'src/condition')
++
++
++def snapshot(root, destination):
++    root, destination = Path(root).resolve(), Path(destination).resolve()
++    if destination.is_relative_to(root) or destination.exists():
++        raise ValueError('请选择项目外尚不存在的备份目录')
++    destination.parent.mkdir(parents=True, exist_ok=True)
++    with tempfile.TemporaryDirectory(dir=destination.parent) as temporary:
++        stage = Path(temporary) / 'data'
++        stage.mkdir(mode=0o700)
++        for relative in DATA:
++            source = root / relative
++            if not source.is_dir():
++                continue
++            target = stage / relative
++            target.parent.mkdir(parents=True, exist_ok=True)
++            shutil.copytree(source, target, symlinks=True,
++                            ignore=shutil.ignore_patterns('*.sqlite3', '*.sqlite3-shm', '*.sqlite3-wal'))
++            for database in source.rglob('*.sqlite3'):
++                if database.is_symlink() or not database.resolve().is_relative_to(root):
++                    raise ValueError('数据库必须位于项目目录内')
++                output = target / database.relative_to(source)
++                with closing(sqlite3.connect(database.as_uri()+'?mode=ro', uri=True)) as src:
++                    with closing(sqlite3.connect(output)) as dst:
++                        src.backup(dst)
++                os.chmod(output, 0o600)
++        stage.rename(destination)
++
++
++if __name__ == '__main__':
++    parser=argparse.ArgumentParser(description='停止服务后，将运行数据备份到新的目录')
++    parser.add_argument('destination', type=Path)
++    args=parser.parse_args()
++    snapshot(Path(__file__).resolve().parents[1], args.destination)
+diff --git a/deploy/os-tutorial-internal.service b/deploy/os-tutorial-internal.service
+new file mode 100644
+index 0000000000000000000000000000000000000000..b3be635ea4401bc6854a3147938b75e2a1e427fe
+--- /dev/null
++++ b/deploy/os-tutorial-internal.service
+@@ -0,0 +1,17 @@
++[Unit]
++Description=OS Tutorial internal service
++After=network-online.target
++Wants=network-online.target
++
++[Service]
++Type=simple
++User=os-tutorial
++WorkingDirectory=/opt/os-tutorial-internal
++EnvironmentFile=/etc/os-tutorial-internal.env
++ExecStart=/bin/bash /opt/os-tutorial-internal/start.sh
++Restart=on-failure
++RestartSec=10
++UMask=0077
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/frontend/card_publication.py b/frontend/card_publication.py
+index 99c500c7a31d3b2dc91ffb737da5522f67203477..c70d9afcf0ac22c5e103e95e6004f56a323df846 100644
+--- a/frontend/card_publication.py
++++ b/frontend/card_publication.py
+@@ -98,6 +98,15 @@ def resolve(root,state,version=None):
+     return fallback,digest
+ 
+ 
++def internal_status(root,state):
++    import official_sync
++    worker = official_sync.status(root, official_sync.configured_clock(root))
++    _, version = resolve(root, state)
++    value = {key: worker.get(key) for key in ('state','last_check','last_success','next_check')}
++    value.update(version=version, error='官网同步暂未完成，将保留上次成功数据。' if worker.get('state')=='failed' else None)
++    return value
++
++
+ def status(root,state):
+     import official_sync
+     from processing_lock import file_lock
+diff --git a/frontend/crawler.py b/frontend/crawler.py
+index 19e89d053f7c8e025c65eda3fdb4ba352ba991c8..66de293620c3dc5bfecec2b648c3f1f66574b6b6 100644
+--- a/frontend/crawler.py
++++ b/frontend/crawler.py
+@@ -784,6 +784,12 @@ def batch_paths(root, ids):
+ 
+ 
+ class Runtime:
++    def refresh_official_cards(self, clock):
++        import official_sync
++        from card_publication import publish
++        official_sync.run(self.root, clock)
++        publish(self.root, self.root / 'raw/internal')
++
+     def __init__(self, root):
+         self.root = Path(root)
+         self.store = Store(root)
+@@ -874,7 +880,7 @@ class Runtime:
+                 try:self.official_future.result()
+                 except Exception:pass
+             if official_sync.due(self.root,settings['clock']):
+-                self.official_future=self.official_pool.submit(official_sync.run,self.root,settings['clock'])
++                self.official_future=self.official_pool.submit(self.refresh_official_cards, settings['clock'])
+         self.store.adopt_risk_failures(scanning=self.scans, working=self.workers)
+         self.store.adopt_network_failures()
+         current = datetime.now(BJ)
+diff --git a/frontend/install_topic_model.py b/frontend/install_topic_model.py
+index 8524abcb369c173906a93569dae4918a76b47a8c..7d3cd5f7979534cb92a86e95e27d989d9e1201f9 100644
+--- a/frontend/install_topic_model.py
++++ b/frontend/install_topic_model.py
+@@ -24,7 +24,7 @@ def install(verify_only=False):
+  folder=ROOT/'.wxq-runtime/llm';model=folder/'Qwen3-1.7B-Q8_0.gguf';archive=folder/'llama-b11712-win-cpu.zip'
+  if sys.platform != 'win32':
+   executable=shutil.which('llama-server')
+-  if not executable:raise RuntimeError('请先安装本机 llama.cpp：brew install llama.cpp')
++  if not executable:raise RuntimeError('请先安装 llama.cpp 并将 llama-server 加入 PATH，见 README.md')
+   if verify_only:
+    if not model.is_file() or digest(model)!=MODEL_SHA:raise ValueError('缺失或校验失败：'+model.name)
+   else:download(MODEL_URL,model,MODEL_SHA)
+diff --git a/frontend/internal_service.py b/frontend/internal_service.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..d0ebddaaee84642ff237ff41723686f740c6e29a
+--- /dev/null
++++ b/frontend/internal_service.py
+@@ -0,0 +1,134 @@
++"""Authenticated LAN service with shared collaboration routes and administrator tools."""
++import os
++import socket
++import subprocess
++from pathlib import Path
++from urllib.parse import urlsplit
++
++from website_server import configure, handler_class
++
++
++class OfflineSync:
++    def status(self, light=False):
++        return {'state': 'synced', 'message': '仅保存在内网服务器'}
++
++    def enqueue(self, force=False):
++        return self.status()
++
++
++def admin_route(path):
++    return (path in ('/api/annotations', '/api/sources', '/api/markdown-sync', '/api/dashboard/usage/refresh')
++            or path.startswith(('/api/crawler/', '/api/sources/', '/api/topics/', '/api/official-sync/',
++                                '/api/annotations/', '/api/markdown-sync/'))
++            or (path.startswith('/api/notes/') and '/versions' in path))
++
++
++def prepare_bundle(root):
++    """Restore omitted operational indexes from the verified distribution on first boot."""
++    import hashlib
++    import shutil
++    import json_store as store
++    from reference_store import normalize_cards, save_json_cards
++    from website_data import verify_package
++    from workspace import store_lock
++
++    manifest = verify_package(root)
++    bundle = root / 'website-data'
++    with store_lock(root, wait=True):
++        entity_paths = [p for p in manifest['files'] if p.startswith('entities/')]
++        for path in entity_paths:
++            if not (root / path).exists():
++                store.write_file(root / path, store.read(bundle / path))
++        snapshot = root / 'raw/lineup-usage/snapshot.json'
++        if not snapshot.exists():
++            store.write_file(snapshot, store.read(bundle / 'usage.json'))
++        card_index = root / 'knowledge/cards/index.meta.json'
++        image_index = root / 'entities/assets/index.json'
++        if card_index.exists() and image_index.exists():
++            return
++        entities = [item for path in entity_paths for item in store.read(bundle / path)]
++        if not card_index.exists():
++            published = {card['id']: card for card in store.read(bundle / 'cards.json')}
++            cards = [{**card, **published[card['id']]} for card in normalize_cards(entities)]
++            save_json_cards(root, cards)
++        if image_index.exists():
++            return
++        images = store.read(bundle / 'images.json')
++        index = {'version': 1, 'entities': {}, 'assets': {}}
++        image_index.parent.mkdir(parents=True, exist_ok=True)
++        for entity in entities:
++            props = entity.get('properties', {})
++            urls = {'thumb': props.get('thumb') or props.get('icon'),
++                    'image': props.get('cardImage') or props.get('image') or props.get('icon')}
++            for kind, digest in images['entities'].get(entity['id'], {}).items():
++                url = urls.get(kind)
++                key = hashlib.sha256(url.encode()).hexdigest() if url else digest
++                source_path = images['assets'][digest]['path']
++                if source_path not in manifest['files']:
++                    raise ValueError('卡牌图片不在已校验的发布清单中')
++                target = image_index.parent / (key + '.img')
++                if not target.exists():
++                    try:
++                        os.link(bundle / source_path, target)
++                    except OSError:
++                        temporary = target.with_suffix('.tmp')
++                        shutil.copyfile(bundle / source_path, temporary)
++                        os.replace(temporary, target)
++                index['assets'][key] = {'url': url or '', 'path': target.name}
++                index['entities'].setdefault(entity['id'], {})[kind] = key
++        store.write_file(image_index, index)
++
++
++def configure_server(root, port, start_worker, server_type, base):
++    from crawler import Runtime
++    import templates_http
++    import templates_store
++    from website_sync import SyncManager, SyncWorker
++
++    root = Path(root).resolve()
++    state = root / 'raw' / 'internal'
++    config = state / 'accounts.json'
++    origin = os.environ.get('WXQ_ORIGIN', f'http://{socket.gethostname()}:{port}').rstrip('/')
++    class InternalHandler(handler_class(base)):
++        def dispatch_admin(self, write):
++            if not self.trusted() or (write and self.headers.get('Origin') != self.server.public_origin):
++                return self.response(403, {'error': '请求来源无效'})
++            actor = self.actor()
++            if not actor:
++                return self.response(401, {'error': '请先登录'})
++            if actor['role'] != 'admin':
++                return self.response(403, {'error': '需要管理员权限'})
++            return base.mutate(self) if write else base.do_GET(self)
++
++        def do_GET(self):
++            if admin_route(urlsplit(self.path).path):
++                return self.dispatch_admin(False)
++            return super().do_GET()
++
++        def mutate(self):
++            if admin_route(urlsplit(self.path).path):
++                return self.dispatch_admin(True)
++            return super().mutate()
++
++    server = server_type((os.environ.get('WXQ_BIND', '0.0.0.0'), port), InternalHandler)
++    server.root = root
++    try:
++        prepare_bundle(root)
++        configure(server, '', origin, config, state)
++        branch = os.environ.get('WXQ_SYNC_BRANCH')
++        if branch:
++            checkout = subprocess.run(['git', '-C', str(root), 'rev-parse', '--show-toplevel'],
++                                      capture_output=True, text=True, check=True).stdout.strip()
++            if Path(checkout).resolve() != root:
++                raise ValueError('请先在内网项目目录建立独立 Git 仓库，再启用同步')
++        server.sync = SyncManager(root, state, branch) if branch else OfflineSync()
++        server.crawler = Runtime(root)
++        templates_store.refresh_published(root, entities=templates_http.effective_entities(server), migrate_events=True)
++        if start_worker:
++            if branch:
++                server.sync_worker = SyncWorker(server.sync).start()
++            server.crawler.start()
++        return server
++    except BaseException:
++        server.server_close()
++        raise
+diff --git a/frontend/launch.py b/frontend/launch.py
+index 26ad5c172fa01172ee2d2b12265313a1cbf5135c..eafc38e9704c0f50e49e4ca988a1524a3dfb9868 100644
+--- a/frontend/launch.py
++++ b/frontend/launch.py
+@@ -63,7 +63,7 @@ def main():
+     command = [python, FRONTEND / 'server.py', '--port', args.port]
+     if not args.no_browser:
+         command.append('--open-browser')
+-    print(f'Frontend + API + background jobs: http://127.0.0.1:{args.port} (Ctrl+C to stop)', flush=True)
++    print('正在启动内网服务，按 Ctrl+C 停止。', flush=True)
+     if os.name != 'nt':
+         os.execv(str(python), [str(item) for item in command])
+     run(command)
+diff --git a/frontend/server.py b/frontend/server.py
+index d779d5ee9bef105fbeb9fb6fef0faa9878a85910..ede9efeca3719ec9a6aded23a8c5c7f6eed6cb6f 100644
+--- a/frontend/server.py
++++ b/frontend/server.py
+@@ -627,103 +627,49 @@ class LocalServer(ThreadingHTTPServer):
+         super().server_close()
+ 
+ 
+-def create_server(root=ROOT, port=8765, start_worker=False, *, public=False,
+-                  base_path='/os-tutorial', origin='https://klywa.xyz',
+-                  auth_config='/etc/os-tutorial/admins.json', state_dir='/var/lib/os-tutorial'):
+-    if public:
+-        from website_server import handler_class, configure
+-        server = LocalServer(('127.0.0.1', port), handler_class(Handler), bind_and_activate=False)
+-        server.root = Path(root)
+-        # POSIX restarts may encounter connections in TIME_WAIT. Windows and
+-        # local debug listeners retain exclusive binding to protect port checks.
+-        server.allow_reuse_address = sys.platform != 'win32'
+-        try:
+-            server.server_bind()
+-            server.server_activate()
+-            configure(server,base_path,origin,auth_config,state_dir)
+-        except Exception:
+-            server.server_close();raise
+-        return server
++def create_server(root=ROOT, port=8765, start_worker=False):
++    from internal_service import configure_server
+     global crawler
+     import crawler
+-    server = LocalServer(('127.0.0.1', port), Handler)
+-    server.root = Path(root)
+-    import uuid
+-    server.local_instance_id=uuid.uuid4().hex
+-    from site_access import initialize_local
+-    initialize_local(server)
+-    server.crawler = crawler.Runtime(root)
+-    import json_store
+-    if not json_store.enabled(root):
+-        import markdown_sync
+-        server.markdown_watcher = markdown_sync.Watcher(root)
+-        server.markdown_watcher.start()
+-    from source_staging import Staging
+-    Staging(root).prune()
+-    if start_worker:
+-        from note_links import auto_link
+-        auto_link(root)
+-        server.crawler.start()
+-    return server
++    return configure_server(root, port, start_worker, LocalServer, Handler)
+ 
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+     parser.add_argument('--port', type=int, default=8765)
+-    parser.add_argument('--root', type=Path, default=ROOT)
+     parser.add_argument('--open-browser', action='store_true')
+-    parser.add_argument('--public', action='store_true')
+-    parser.add_argument('--base-path', default='/os-tutorial')
+-    parser.add_argument('--origin', default='https://klywa.xyz')
+-    parser.add_argument('--auth-config', type=Path, default=Path('/etc/os-tutorial/admins.json'))
+-    parser.add_argument('--state-dir', type=Path, default=Path('/var/lib/os-tutorial'))
+     args = parser.parse_args()
+-    logger=logging.getLogger('local-server')
+-    logger.info('starting pid=%s parent_pid=%s root=%s port=%s',os.getpid(),os.getppid(),args.root.resolve(),args.port)
+-    server=None;exit_code=0
++    import signal
++
++    def stop(signum, frame):
++        raise KeyboardInterrupt
++
++    signal.signal(signal.SIGTERM, stop)
++    log = logging.getLogger('local-server')
++    server = None
++    code = 0
+     try:
+-        if args.public:
+-            from website_data import validate, recover
+-            from website_sync import sync_lock
+-            import json_store
+-            if (args.root/json_store.JOURNAL).exists():
+-                with sync_lock(args.state_dir):recover(args.root)
+-            validate(args.root)
+-            server = create_server(args.root,args.port,public=True,base_path=args.base_path,
+-                origin=args.origin,auth_config=args.auth_config,state_dir=args.state_dir)
+-            from website_sync import SyncWorker
+-            server.sync_worker=SyncWorker(server.sync).start()
+-        else:
+-            workspace.migrate(args.root)
+-            from player_identity import migrate as migrate_players
+-            migrate_players(args.root)
+-            server = create_server(args.root, args.port, start_worker=True)
+-        import templates_http
+-        import templates_store
+-        templates_store.refresh_published(args.root,entities=templates_http.effective_entities(server),migrate_events=True)
+-        print(f'万象棋工具：http://127.0.0.1:{args.port}', flush=True)
+-        if args.open_browser:
++        log.info('starting pid=%s port=%s', os.getpid(), args.port)
++        server = create_server(ROOT, args.port, start_worker=True)
++        origin = getattr(server, 'public_origin', None)
++        if origin:
++            print(f'万象棋内网入口 {origin}', flush=True)
++        if args.open_browser and origin:
+             import webbrowser
+-            webbrowser.open(f'http://127.0.0.1:{args.port}')
++            webbrowser.open(origin)
+         server.serve_forever()
+     except KeyboardInterrupt:
+-        exit_code=130
+-        logger.info('keyboard interrupt pid=%s',os.getpid())
++        code = 130
+     except Exception:
+-        exit_code=1
+-        logger.exception('server failed pid=%s',os.getpid())
++        log.exception('service failed pid=%s', os.getpid())
++        code = 1
+     finally:
+         if server is not None:
+-            try:
+-                server.server_close()
+-            except Exception:
+-                exit_code=1
+-                logger.exception('server cleanup failed pid=%s',os.getpid())
+-        logger.info('stopped pid=%s exit_code=%s',os.getpid(),exit_code)
+-    return exit_code
++            server.server_close()
++        log.info('stopped pid=%s exit_code=%s', os.getpid(), code)
++    return code
+ 
+ 
+ if __name__ == '__main__':
+-    logging.basicConfig(level=logging.INFO,format='%(asctime)s %(name)s %(levelname)s %(message)s')
+-    faulthandler.enable()
++    logging.basicConfig(level=logging.INFO)
+     raise SystemExit(main())
+diff --git a/frontend/site_access.py b/frontend/site_access.py
+index 21713f45ddfad810666fac3e1096a5cc3052cf42..8bdb022e29fef8330674b80215028de60999b156 100644
+--- a/frontend/site_access.py
++++ b/frontend/site_access.py
+@@ -15,7 +15,7 @@ def state_dir(server):
+ def actor(server,cookie):
+     auth=getattr(server,'auth',None)
+     if auth:return auth.actor(cookie)
+-    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':['admin','annotator','viewer']}
++    return None
+ 
+ 
+ def session(server,cookie,public=False):
+diff --git a/frontend/src/LineupOverview.test.tsx b/frontend/src/LineupOverview.test.tsx
+index edcc80c58f511beb95f1bc19edc4806916fb5c80..797a1458cf574abf511d3dc45e1ddc925bcb3557 100644
+--- a/frontend/src/LineupOverview.test.tsx
++++ b/frontend/src/LineupOverview.test.tsx
+@@ -1,5 +1,5 @@
+ import {it,expect} from 'vitest';
+-import {renderToStaticMarkup} from 'react-dom/server';
++import {renderToStaticMarkup as renderMarkup} from 'react-dom/server';
+ import LineupOverview from './LineupOverview';
+ import {newPreset} from './overview';
+ import type {Note} from './types';
+@@ -32,3 +32,12 @@ it('keeps each stage role attached to its hero, including optional members',()=>
+  const explicit=renderToStaticMarkup(<LineupOverview note={note}/>);
+  expect(explicit).toContain('完整阶段建议');expect(explicit).not.toContain('速五开局可单挂');
+ });
++
++import {AuthContext as TestAuthContext} from './auth';
++import type {ReactNode as TestNode} from 'react';
++function renderToStaticMarkup(children: TestNode) {
++  return renderMarkup(<TestAuthContext.Provider value={{
++    session: {mode:'public', role:'admin', username:'admin', base_path:'/'},
++    refresh:async()=>{}, login:async()=>{}, logout:async()=>{}
++  }}>{children}</TestAuthContext.Provider>);
++}
+diff --git a/frontend/src/NoteHeading.test.tsx b/frontend/src/NoteHeading.test.tsx
+index def03feac5fcd466aad0fd507ea783f749228c0b..4be9825a4f7b3aff001f9202030db3e791dc8353 100644
+--- a/frontend/src/NoteHeading.test.tsx
++++ b/frontend/src/NoteHeading.test.tsx
+@@ -1,5 +1,5 @@
+ import {it,expect} from 'vitest';
+-import {renderToStaticMarkup} from 'react-dom/server';
++import {renderToStaticMarkup as renderMarkup} from 'react-dom/server';
+ import NoteHeading from './NoteHeading';
+ import type {Note,ReadingDocument} from './types';
+ it('keeps title, selected player, dependencies and all actions in one compact header',()=>{
+@@ -10,3 +10,12 @@ it('keeps title, selected player, dependencies and all actions in one compact he
+  expect(html).not.toContain('关联阵容');
+  for(const label of ['编辑笔记','导出当前棋手'])expect(html.match(new RegExp(label,'g'))).toHaveLength(1);
+ });
++
++import {AuthContext as TestAuthContext} from './auth';
++import type {ReactNode as TestNode} from 'react';
++function renderToStaticMarkup(children: TestNode) {
++  return renderMarkup(<TestAuthContext.Provider value={{
++    session: {mode:'public', role:'admin', username:'admin', base_path:'/'},
++    refresh:async()=>{}, login:async()=>{}, logout:async()=>{}
++  }}>{children}</TestAuthContext.Provider>);
++}
+diff --git a/frontend/src/auth.tsx b/frontend/src/auth.tsx
+index ff3085b6f415a74397d754b5b833ddf77d9eedb1..bd984c63d6f580429748e7138bafb0ec567522da 100644
+--- a/frontend/src/auth.tsx
++++ b/frontend/src/auth.tsx
+@@ -4,9 +4,9 @@ import {apiUrl} from './urls';
+ import {syncPollMs,type SyncStatus} from './syncStatus';
+ import {configureReaderCache} from './readerCache';
+ export type Role='guest'|'admin'|'annotator'|'viewer';
+-export type Session={mode:'local'|'public';role:Role;account_role?:Role;allowed_roles?:Role[];username:string|null;base_path:string;sync?:SyncStatus;capabilities?:Record<string,boolean>};
+-const local:Session={mode:'local',role:'admin',username:null,base_path:'/'};
+-export function capabilitiesFor(session:Session){const admin=session.role==='admin',localTools=session.mode==='local'&&admin,writable=admin&&(session.mode==='local'||!session.sync||session.sync.state!=='conflict');return {localTools,editNotes:writable,manageMatches:writable,reviews:localTools,inlineEdit:admin||session.role==='annotator',proposeNotes:session.role==='annotator'};}
++export type Session={setup_required?:boolean;mode:'local'|'public';role:Role;account_role?:Role;allowed_roles?:Role[];username:string|null;base_path:string;sync?:SyncStatus;capabilities?:Record<string,boolean>};
++const local:Session={mode:'public',role:'guest',username:null,base_path:'/'};
++export function capabilitiesFor(session:Session){const admin=session.role==='admin',localTools=admin,writable=admin&&(session.mode==='local'||!session.sync||session.sync.state!=='conflict');return {localTools,editNotes:writable,manageMatches:writable,reviews:localTools,inlineEdit:admin||session.role==='annotator',proposeNotes:session.role==='annotator'};}
+ 
+ export function canEditNote(session:Session,noteId?:string){return capabilitiesFor(session).editNotes&&(!noteId||!session.sync?.conflict_note_ids?.includes(noteId));}
+ export function useCanEditNote(noteId?:string){return canEditNote(useAuth().session,noteId);}
+@@ -38,7 +38,8 @@ export function AuthProvider({children}:{children:ReactNode}){
+  return <AuthContext.Provider value={{session,refresh,openLogin,closeLogin,loginOpen,login:async(username,password)=>{transition.current=true;sequence.current++;try{await request('login',{username,password});}finally{transition.current=false;}await refresh();closeLogin();},logout:async()=>{transition.current=true;sequence.current++;setSession(null);await configureReaderCache('public',null);try{await request('logout',{});}finally{transition.current=false;await refresh();}},switchRole:async(role)=>{transition.current=true;const epoch=++sequence.current;setSession(null);await configureReaderCache(session.mode,null);try{await accept(await request('role',{role}),epoch);}catch(e){transition.current=false;await refresh();throw e;}finally{transition.current=false;}}}}><SessionGate key={session.mode+'|'+session.username+'|'+session.role} session={session}>{children}</SessionGate></AuthContext.Provider>;
+ }
+ export function SessionGate({session,children}:{session:Session;children:ReactNode}){
+- return session.mode==='public'&&session.role==='guest'?<LoginScreen/>:<>{children}</>;
++ if(session.setup_required)return <main className="login-screen"><section><h1>设置首个管理员</h1><p>请在服务器项目目录运行 <code>python deploy/add_account.py admin 用户名</code>，设置密码后刷新本页。</p></section></main>;
++ return session.role==='guest'?<LoginScreen/>:<>{children}</>;
+ }
+ // Kept for existing app composition; public access is now gated before App mounts.
+ export function AdminAccess(){return null;}
+diff --git a/frontend/src/main.tsx b/frontend/src/main.tsx
+index 2bca8e313ff1de07e2c9a54d1952c005f02b779b..06a60c0d400a6da7dac77e6b6d193233232e8230 100644
+--- a/frontend/src/main.tsx
++++ b/frontend/src/main.tsx
+@@ -69,7 +69,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+   const {session}=useAuth();
+   useEffect(()=>{cancelProposalLocation();proposalPanel.setOpen(false);proposalPanel.setLocating('');proposalPanel.scrollTop.current=0;setDirty(false);setEditing(false);},[session.role,session.username]);
+   useEffect(()=>()=>{navigationEpoch.current++;pendingLocation.current?.(false);clearHighlight.current?.();},[]);
+-  const [prefs,setPrefs]=useState<Prefs>(()=>{const value=initialPrefs??preferences();return capabilities.localTools?value:{...value,view:['dashboard','cards','templates'].includes(value.view)?value.view:'notes'};}),[sources,setSources]=useState<Source[]>([]);
++  const [prefs,setPrefs]=useState<Prefs>(()=>{const value=initialPrefs??preferences();return capabilities.localTools?value:{...value,view:['play','dashboard','cards','templates'].includes(value.view)?value.view:'notes'};}),[sources,setSources]=useState<Source[]>([]);
+   const [editing,setEditing]=useState(false),[dirty,setDirty]=useState(false),[toast,setToast]=useState(''),[opponent,setOpponent]=useState('');
+   const navigationState=useRef({dirty,editing});navigationState.current={dirty,editing};
+   const [creatorSeed,setCreatorSeed]=useState<Partial<Creator>|undefined>(undefined);
+@@ -95,7 +95,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+   const refreshSources=useRef(singleFlight(async()=>{const epoch=sourceEpoch.current;try{const rows=await api<Source[]>('sources');if(epoch===sourceEpoch.current){setSources(rows);setSourcesLoaded(true);}setSourcesError('');}catch(e){setSourcesError((e as Error).message);throw e;}})).current;
+   async function load(){loader.reload();}
+   useEffect(()=>{if(!capabilities.localTools)return;void api('crawler/creators/resume','POST',{}).catch(e=>setToast('UP监听恢复失败：'+e.message));},[]);
+-  useEffect(()=>{if(!capabilities.localTools)setPrefs(p=>({...p,view:['dashboard','cards','templates'].includes(p.view)?p.view:'notes'}));},[capabilities.localTools]);
++  useEffect(()=>{if(!capabilities.localTools)setPrefs(p=>({...p,view:['play','dashboard','cards','templates'].includes(p.view)?p.view:'notes'}));},[capabilities.localTools]);
+   useEffect(()=>{if(capabilities.localTools&&prefs.view==='sources')void refreshSources().catch(()=>{});},[prefs.view]);
+   useEffect(()=>localStorage.setItem('wxq.preferences',JSON.stringify(prefs)),[prefs]);
+   useEffect(()=>{const handler=(e:BeforeUnloadEvent)=>{if(dirty){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler);},[dirty]);
+@@ -124,7 +124,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+   function select(id:string,view=prefs.view){if(!leave())return;cancelProposalLocation();patch({selected:id,view});setOpponent('');setDirectoryOpen(false);}
+   const noteListRef=useRef(notes);noteListRef.current=notes;
+   const navigateReading=useCallback((id:string,player?:string)=>{if(!noteListRef.current.some(n=>n.id===id)){setToast('当前赛季没有关联笔记');return;}if(!leave())return;cancelProposalLocation();setPrefs(p=>({...p,selected:id,view:'notes',...(player?{branchPlayers:{...p.branchPlayers,[id]:player}}:{})}));setOpponent('');setDirectoryOpen(false);},[]);
+-  function changeView(view:Prefs['view']){if(!capabilities.localTools&&view!=='notes'&&view!=='dashboard'&&view!=='cards'&&view!=='templates')return;if(leave()){cancelProposalLocation();patch({view,...(view==='play'&&!notes.some(n=>n.id===prefs.selected&&n.type==='lineup')?{selected:notes.find(n=>n.type==='lineup')?.id??''}:{})});}}
++  function changeView(view:Prefs['view']){if(!capabilities.localTools&&view!=='play'&&view!=='notes'&&view!=='dashboard'&&view!=='cards'&&view!=='templates')return;if(leave()){cancelProposalLocation();patch({view,...(view==='play'&&!notes.some(n=>n.id===prefs.selected&&n.type==='lineup')?{selected:notes.find(n=>n.type==='lineup')?.id??''}:{})});}}
+   function changeSection(section:string){patch({section});requestAnimationFrame(()=>content.current?.querySelector(`[data-section="${CSS.escape(section)}"]`)?.scrollIntoView({block:'start'}));}
+   useEffect(()=>{if(!mobile)return;const button=document.querySelector<HTMLElement>('.phase-nav .selected');if(!button)return;const bar=button.parentElement!;if(button.offsetLeft<bar.scrollLeft)bar.scrollLeft=button.offsetLeft;else if(button.offsetLeft+button.offsetWidth>bar.scrollLeft+bar.clientWidth)bar.scrollLeft=button.offsetLeft+button.offsetWidth-bar.clientWidth;},[prefs.section,mobile]);
+   const readingKey=(active?.id??'')+'|'+(reading?.player??'');
+@@ -218,7 +218,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+   }
+   function created(note:Note){setNewNote(false);if(!(note.seasons??['S1']).includes(season)){setToast('笔记已创建，请切换至其适用赛季查看');return;}loader.accept(note);patch({selected:note.id,view:'notes',type:normalizeDirectoryType(note.type),query:'',player:'',hero:''});setEditing(true);setDirty(false);setToast('空白笔记已创建');}
+   function noteList(entries:typeof visible){return entries.map(({note,status})=><button key={note.id} className={'note-option '+(active?.id===note.id?'active':'')} onClick={()=>select(note.id)}><span className="note-icon">{note.type==='lineup'?'◈':note.type==='player'?'♙':'▤'}</span><span><strong>{note.title}</strong><small>{note.meta?.core_heroes.map(name).join('、')||({lineup:'阵容攻略',player:'棋手笔记',other:'知识笔记'}[note.type])}</small></span>{status==='unknown'&&<span className="badge gold">待确认</span>}</button>);}
+-  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><TemplateWarnings ready={!loading&&(!!reader||!notes.length||!['play','notes'].includes(prefs.view))}/><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航"><select className="season-select" aria-label="赛季" value={season} onChange={e=>changeSeason(e.target.value as Season)}>{seasons.map(s=><option key={s} value={s}>{s}</option>)}</select>{(['play','notes','templates','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='notes'||v==='dashboard'||v==='cards'||v==='templates').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',templates:'模板库',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions">{prefs.view==='notes'&&<NoteZipExport key={season} season={season}/>}<SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
++  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><TemplateWarnings ready={!loading&&(!!reader||!notes.length||!['play','notes'].includes(prefs.view))}/><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航"><select className="season-select" aria-label="赛季" value={season} onChange={e=>changeSeason(e.target.value as Season)}>{seasons.map(s=><option key={s} value={s}>{s}</option>)}</select>{(['play','notes','templates','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='play'||v==='notes'||v==='dashboard'||v==='cards'||v==='templates').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',templates:'模板库',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions">{prefs.view==='notes'&&<NoteZipExport key={season} season={season}/>}<SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
+     <ReviewProvider key={session.role+'|'+(prefs.view==='templates'?'templates':prefs.view==='dashboard'?'dashboard':active?.id??'none')} note={prefs.view==='templates'?undefined:active} onSaved={saved} onInlineSaved={inlineSaved} onDirty={setDirty} externalDirty={dirty} readOnly={!loader.verified}><AdminAccess/>{capabilities.localTools&&<GlobalActivity expanded={activityExpanded} onExpandedChange={setActivityExpanded}/>}
+     {capabilities.editNotes&&newNote&&<NewNoteDialog season={season} entities={options.authoring_players??options.entities} notes={notes} onOpen={id=>select(id)} defaultType={prefs.view==='play'?'lineup':prefs.type} onClose={()=>setNewNote(false)} onCreated={created}/>}
+     {prefs.view!=='templates'&&(loader.checking||!!family&&!loader.verified||loader.pending||!loader.ready)&&<div className="reader-cache-status" role="status">{loader.pending?'笔记已有新版本；现有草稿保留，保存或取消后重新比较。':loader.checking?'正在检查更新…':!loader.verified?'缓存阅读中，确认最新版本后可编辑。':!loader.ready?'正在建立搜索和筛选索引…':''}<button className="quiet" onClick={()=>loader.reload()}>重试</button></div>}
+diff --git a/frontend/src/noteReviewView.test.tsx b/frontend/src/noteReviewView.test.tsx
+index f84f51e73d0cbc819d143b1c6da8e22b44d55247..d86200fdada1995446c3976fc101062241f87a2a 100644
+--- a/frontend/src/noteReviewView.test.tsx
++++ b/frontend/src/noteReviewView.test.tsx
+@@ -1,5 +1,5 @@
+ import {it,expect} from 'vitest';
+-import {renderToStaticMarkup} from 'react-dom/server';
++import {renderToStaticMarkup as renderMarkup} from 'react-dom/server';
+ import {ReviewProvider} from './NoteReview';
+ import JsonReading from './JsonReading';
+ import {DiffText,ValueEditor} from './ReviewFields';
+@@ -62,3 +62,12 @@ it('disables history text input while a save is in flight',()=>{
+  const html=renderToStaticMarkup(<ValueEditor value="正文" label="合并结果" onChange={()=>{}} disabled/>);
+  expect(html).toContain('disabled');
+ });
++
++import {AuthContext as TestAuthContext} from './auth';
++import type {ReactNode as TestNode} from 'react';
++function renderToStaticMarkup(children: TestNode) {
++  return renderMarkup(<TestAuthContext.Provider value={{
++    session: {mode:'public', role:'admin', username:'admin', base_path:'/'},
++    refresh:async()=>{}, login:async()=>{}, logout:async()=>{}
++  }}>{children}</TestAuthContext.Provider>);
++}
+diff --git a/frontend/src/proposals.test.tsx b/frontend/src/proposals.test.tsx
+index 1a63825f1ed9a65cf0dc1ad9f86d32688096a645..ba348c51f5d702727c7255c54e403a6b71960bf6 100644
+--- a/frontend/src/proposals.test.tsx
++++ b/frontend/src/proposals.test.tsx
+@@ -12,7 +12,7 @@ it('scoped replacement retains insertions and deletions without touching outside
+  const result=replaceScope(body,'h',[body.nodes[0],added]);
+  expect(result.nodes.map(n=>n.id)).toEqual(['h','new','h2']);expect(result.semantics).toBe(body.semantics);expect(result.supporting_nodes).toBe(body.supporting_nodes);expect(body.nodes[1].id).toBe('a');
+ });
+-import {renderToStaticMarkup} from 'react-dom/server';
++import {renderToStaticMarkup as renderMarkup} from 'react-dom/server';
+ import {AuthContext} from './auth';
+ import {ReviewProvider} from './NoteReview';
+ import JsonReading from './JsonReading';
+@@ -77,3 +77,12 @@ it('preserves an active draft revision so a remote edit produces a conflict inst
+  const draft={...latest.proposed_node!,value:'本地正在编辑的改稿'};
+  expect(proposalEditPayload(latest,draft,2,true,true)).toEqual({revision:2,proposed_node:draft,rebase:true});
+ });
++
++import {AuthContext as TestAuthContext} from './auth';
++import type {ReactNode as TestNode} from 'react';
++function renderToStaticMarkup(children: TestNode) {
++  return renderMarkup(<TestAuthContext.Provider value={{
++    session: {mode:'public', role:'admin', username:'admin', base_path:'/'},
++    refresh:async()=>{}, login:async()=>{}, logout:async()=>{}
++  }}>{children}</TestAuthContext.Provider>);
++}
+diff --git a/frontend/src/publicAccess.test.tsx b/frontend/src/publicAccess.test.tsx
+index 47a4236970de118a8a86cbb71f95054185c91c83..25e0aaf623644d8c73c0ce4599c7283c32fc7f22 100644
+--- a/frontend/src/publicAccess.test.tsx
++++ b/frontend/src/publicAccess.test.tsx
+@@ -7,7 +7,7 @@ import {appUrl} from './urls';
+ describe('public access',()=>{
+  it('limits guests and administrators to authorized capabilities',()=>{
+   expect(capabilitiesFor({mode:'public',role:'guest',username:null,base_path:'/os-tutorial'})).toMatchObject({editNotes:false,reviews:false,localTools:false,manageMatches:false});
+-  expect(capabilitiesFor({mode:'public',role:'admin',username:'admin',base_path:'/os-tutorial'})).toMatchObject({editNotes:true,reviews:false,localTools:false,manageMatches:true});
++  expect(capabilitiesFor({mode:'public',role:'admin',username:'admin',base_path:'/os-tutorial'})).toMatchObject({editNotes:true,reviews:true,localTools:true,manageMatches:true});
+  });
+  it('hides guest editing while preserving copy and export',()=>{
+   const html=renderToStaticMarkup(<AuthContext.Provider value={{session:{mode:'public',role:'guest',username:null,base_path:'/os-tutorial'},refresh:async()=>{},login:async()=>{},logout:async()=>{}}}><NoteHeading note={{id:'one',type:'other',title:'公开笔记',meta:null} as any} reading={{markdown:'正文',document:{nodes:[]}} as any} name={s=>s} dirty={false} editing={false} onEdit={()=>{}} onPlayer={()=>{}} onExport={()=>{}}/></AuthContext.Provider>);
+diff --git a/frontend/src/publicCards.test.tsx b/frontend/src/publicCards.test.tsx
+index 0ba5dc559b22367afec3eebf03bdab2adc0d2901..8d50a605858ced3580e5f5e6bce8de701ce95dfe 100644
+--- a/frontend/src/publicCards.test.tsx
++++ b/frontend/src/publicCards.test.tsx
+@@ -18,10 +18,10 @@ it('renders thumb and full card images under the published site base path',()=>{
+  expect(renderToStaticMarkup(<CardImage card={card}/>)).toContain('src="/os-tutorial/api/card-images/image/thumb"');
+  expect(renderToStaticMarkup(<CardImage card={card} large/>)).toContain('src="/os-tutorial/api/card-images/image/image"');
+ });
+-it('keeps official sync controls exclusive to local administrators',()=>{
++it('keeps official sync controls exclusive to administrators',()=>{
+  for(const mode of ['local','public'] as const)for(const role of ['admin','annotator','viewer'] as const){
+   const session={mode,role,username:'test',allowed_roles:[role]} as Session;
+   const html=renderToStaticMarkup(<AuthContext.Provider value={{session,refresh:async()=>{},login:async()=>{},logout:async()=>{}}}><Cards/></AuthContext.Provider>);
+-  expect(html).toContain('卡牌库');expect(html.includes('每日自动检查官网')).toBe(mode==='local'&&role==='admin');
++  expect(html).toContain('卡牌库');expect(html.includes('每日自动检查官网')).toBe(role==='admin');
+  }
+ });
+diff --git a/frontend/test_card_http.py b/frontend/test_card_http.py
+index 8c9ebf2b9fadccb6613dbf4637c0fa0e78563eb2..bbcb065675511c3b5077dee8d4e569ebcf8299ac 100644
+--- a/frontend/test_card_http.py
++++ b/frontend/test_card_http.py
+@@ -61,10 +61,10 @@ class CardHttpTests(unittest.TestCase):
+         self.assertEqual(code,409);self.assertEqual(data['reason'],'cards_version_changed')
+         self.assertEqual(self.call('/os-tutorial/api/cards/heroes:1')[1]['name'],'新英雄')
+         conn=http.client.HTTPConnection('127.0.0.1',self.http.server_port)
+-        conn.request('GET','/os-tutorial/api/cards/heroes:1/images/thumb?version='+first,headers={'Host':'klywa.xyz','Cookie':self.cookie})
++        conn.request('GET','/os-tutorial/api/cards/heroes:1/images/thumb?version='+first,headers={'Host':'internal.example','Cookie':self.cookie})
+         response=conn.getresponse();self.assertEqual(response.status,409);response.read();conn.close()
+         conn=http.client.HTTPConnection('127.0.0.1',self.http.server_port)
+-        conn.request('GET','/os-tutorial/api/cards',headers={'Host':'klywa.xyz','If-None-Match':headers['ETag']})
++        conn.request('GET','/os-tutorial/api/cards',headers={'Host':'internal.example','If-None-Match':headers['ETag']})
+         response=conn.getresponse();self.assertEqual(response.status,401);response.read();conn.close()
+ 
+ 
+diff --git a/frontend/test_card_publication.py b/frontend/test_card_publication.py
+index d4467ec4a9847ebf38d464fe20163a05a1b75cb1..04dae06a70b500d8295496c7f4119b8e9ca54bba 100644
+--- a/frontend/test_card_publication.py
++++ b/frontend/test_card_publication.py
+@@ -86,8 +86,6 @@ class CardPublicationTests(unittest.TestCase):
+ 
+     def test_real_worker_pipeline_keeps_notes_separate_and_retains_last_good_on_fetch_failure(self):
+         import card_daily,official,wxq
+-        sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'.codex/skills/wanxiangqi-knowledge/tests'))
+-        from test_official_profiles import sample
+         buckets=official.normalize(sample(),'https://official.test/data','today')
+         protected=self.root/'knowledge/other/manual.json'
+         json_store.write_file(protected,{'manual':'人工笔记'})
+@@ -127,4 +125,14 @@ class CardPublicationTests(unittest.TestCase):
+             publish.assert_not_called()
+ 
+ 
++
++
++def sample():
++    child={'id':12,'name':'选项乙','type':7,'desc':'第8回合获得奖励。','previewCardIDs':[10],'previewCards':[],'sourceCards':[]}
++    main={'id':10,'name':'基础技能','type':7,'desc':'第5/8回合选择。','previewCardIDs':[11,12],
++          'previewCards':[{'id':11,'name':'选项甲','type':7,'desc':'甲效果','previewCardIDs':[],'previewCards':[]}], 'sourceCards':[]}
++    talent={'id':20,'name':'专属天赋','type':6,'desc':'专属效果','previewCardIDs':[],'previewCards':[]}
++    return {'lords':[{'lordId':1,'name':'棋手甲','talent':[{'name':'技能','level':1,'cards':[main]},
++           {'name':'专属','level':6,'cards':[talent]}],'lordCards':[child,talent]}]}
++
+ if __name__=='__main__':unittest.main()
+diff --git a/frontend/test_card_tags_reviews.py b/frontend/test_card_tags_reviews.py
+index 99e12c948442cea7e2ae99735c60b40dad2dff2d..5fbc9bc042773315c32b7f263d6d4a5d9070aed7 100644
+--- a/frontend/test_card_tags_reviews.py
++++ b/frontend/test_card_tags_reviews.py
+@@ -82,7 +82,7 @@ class CardTagHttpReviewTests(unittest.TestCase):
+         review = base + 'cards/tag-reviews/' + item['id'] + '/approve'
+         self.assertEqual(self.call(review,'POST',{})[0],403)
+         self.assertEqual(self.call(base+'templates')[1]['condition_catalog']['card_tags']['a']['tags'],['治疗'])
+-        self.user('klywa')
++        self.user('internal.example')
+         code,result,_ = self.call(review,'POST',{})
+         self.assertEqual(code,200,result)
+         for suffix in ('templates','templates/published'):
+diff --git a/frontend/test_crawler_resilience.py b/frontend/test_crawler_resilience.py
+index b22d7a770035ff3e269b274c734e9a79429191e1..c8d43e516cb579f72d4c26bd28c57248d6befe50 100644
+--- a/frontend/test_crawler_resilience.py
++++ b/frontend/test_crawler_resilience.py
+@@ -40,7 +40,7 @@ class ClassificationTests(unittest.TestCase):
+ 
+ class ResilienceTests(unittest.TestCase):
+     def setUp(self):
+-        self.tmp = tempfile.TemporaryDirectory(dir=ROOT / 'temp')
++        self.tmp = tempfile.TemporaryDirectory()
+         self.addCleanup(self.tmp.cleanup)
+         self.root = Path(self.tmp.name)
+         clock=patch('crawler.now',return_value='2026-11-02T09:00:00+08:00')
+@@ -265,7 +265,7 @@ class DownloadFallbackTests(unittest.TestCase):
+ 
+     def test_worker_crash_has_independent_diagnostic_before_imports(self):
+         import worker_diagnostics
+-        with tempfile.TemporaryDirectory(dir=ROOT / 'temp') as folder:
++        with tempfile.TemporaryDirectory() as folder:
+             record = worker_diagnostics.Diagnostic(Path(folder), 'BV1234567890', 7)
+             record.event('starting', dependencies=False)
+             record.event('transcribing', device='cuda', source='BV1234567890:p1')
+@@ -279,7 +279,7 @@ class DownloadFallbackTests(unittest.TestCase):
+         import media
+         from types import SimpleNamespace
+         from unittest.mock import Mock
+-        with tempfile.TemporaryDirectory(dir=ROOT / 'temp') as folder:
++        with tempfile.TemporaryDirectory() as folder:
+             root=Path(folder);wxq.init_store(root)
+             model=Mock()
+             pipeline=Mock()
+diff --git a/frontend/test_edit_locks.py b/frontend/test_edit_locks.py
+index b58898754a0f555c1c708f6ffdc30b73b5e53d63..fb369df159c124e1b510244675fee46beb0c9c1c 100644
+--- a/frontend/test_edit_locks.py
++++ b/frontend/test_edit_locks.py
+@@ -19,7 +19,7 @@ ADMIN={'username':'admin','role':'admin','account_role':'admin'}
+ 
+ class EditLockTests(unittest.TestCase):
+     def setUp(self):
+-        self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'temp');self.addCleanup(self.tmp.cleanup)
++        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+         self.root=Path(self.tmp.name)
+         self.nodes=[{'id':'t','type':'heading','level':1,'title':'Lease note'},
+                     {'id':'h','type':'heading','level':2,'title':'Chapter'},
+diff --git a/frontend/test_internal_auth.py b/frontend/test_internal_auth.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..1e725fb3f1ffca91a3c7208c72b282c6f4f38174
+--- /dev/null
++++ b/frontend/test_internal_auth.py
+@@ -0,0 +1,35 @@
++"""Account initialization and the authentication boundary shared by all clients."""
++import json
++from pathlib import Path
++import sys
++import tempfile
++import unittest
++
++ROOT = Path(__file__).resolve().parents[1]
++sys.path.insert(0, str(ROOT / 'deploy'))
++from add_account import add_account
++from website_auth import Auth
++
++
++class InternalAccountTests(unittest.TestCase):
++    def test_roles_password_storage_and_logout(self):
++        with tempfile.TemporaryDirectory() as folder:
++            path = Path(folder) / 'private/accounts.json'
++            auth = Auth(path, '', secure=False)
++            self.assertIsNone(auth.actor(''))
++            with self.assertRaises(ValueError):
++                add_account(path, 'viewer', 'reader', 'start-with-admin')
++            for role in ('admin', 'annotator', 'viewer'):
++                password = 'temporary-test-password-' + role
++                add_account(path, role, role, password)
++                self.assertNotIn(password, path.read_text(encoding='utf-8'))
++                code, cookie = auth.login(role, password, 'localhost')
++                self.assertEqual(code, 200)
++                self.assertEqual(auth.actor(cookie)['role'], role)
++                if role != 'admin':
++                    with self.assertRaises(PermissionError):
++                        auth.switch_role(cookie, 'admin')
++                auth.logout(cookie)
++                self.assertIsNone(Auth(path, '').actor(cookie))
++            self.assertTrue(all(row['password'].startswith('scrypt$')
++                                for row in json.loads(path.read_text(encoding='utf-8'))['accounts']))
+diff --git a/frontend/test_knowledge_git.py b/frontend/test_knowledge_git.py
+index fed887cb88f264d2a2bc071dd8a1585668d55091..cdf08b5652b8b77ff386e92ff2ae0230ae5e123c 100644
+--- a/frontend/test_knowledge_git.py
++++ b/frontend/test_knowledge_git.py
+@@ -17,8 +17,7 @@ def git(root,*args):
+ 
+ class KnowledgeGitTests(unittest.TestCase):
+     def setUp(self):
+-        folder=ROOT/'raw/reports/knowledge-sync-20261103/test-temp';folder.mkdir(parents=True,exist_ok=True)
+-        self.tmp=tempfile.TemporaryDirectory(dir=folder);self.addCleanup(self.tmp.cleanup)
++        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+         self.base=Path(self.tmp.name);self.left=self.base/'left';self.left.mkdir()
+         git(self.left,'init','-b','master');self.identity(self.left)
+         (self.left/'.gitignore').write_text('raw/\nentities/\n',encoding='utf-8')
+diff --git a/frontend/test_launch.py b/frontend/test_launch.py
+index 0181cc2857c5fb48b745cc6b940cc1ec8e4344f7..5de5989dc1180349577f036551dd54fcbcb0ad1f 100644
+--- a/frontend/test_launch.py
++++ b/frontend/test_launch.py
+@@ -1,5 +1,6 @@
+ import importlib.util
+ import os
++import sys
+ from pathlib import Path
+ import tempfile
+ import socket
+@@ -23,7 +24,7 @@ class LaunchTests(unittest.TestCase):
+         with socket.socket() as sock:
+             sock.bind(('127.0.0.1', 0))
+             sock.listen()
+-            result = subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', str(HERE.parent / 'start.ps1'), '-Port', str(sock.getsockname()[1]), '-NoBrowser', '-SkipTopicModel'], cwd=HERE, capture_output=True, text=True, timeout=30)
++            result = subprocess.run(['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', str(HERE.parent / 'start.ps1'), '-Port', str(sock.getsockname()[1]), '-NoBrowser', '-SkipTopicModel'], cwd=HERE, env={**os.environ, "PYTHON":sys.executable}, capture_output=True, text=True, timeout=30)
+         self.assertNotEqual(result.returncode, 0)
+         self.assertIn('occupied', result.stderr)
+ 
+@@ -39,7 +40,7 @@ class LaunchTests(unittest.TestCase):
+ 
+     def test_fresh_install_then_reuse_and_no_browser(self):
+         launcher = load('launch')
+-        with tempfile.TemporaryDirectory(dir=HERE.parent / 'raw') as folder:
++        with tempfile.TemporaryDirectory() as folder:
+             root = Path(folder)
+             frontend = root / 'frontend'
+             frontend.mkdir()
+@@ -47,19 +48,22 @@ class LaunchTests(unittest.TestCase):
+             requirements = root / '.codex/skills/wanxiangqi-knowledge/scripts/requirements.txt'
+             requirements.parent.mkdir(parents=True)
+             requirements.write_text('example==1')
++            condition = root / 'src/python/condition/requirements.txt'
++            condition.parent.mkdir(parents=True)
++            condition.write_text('solver==1')
+             commands = []
+ 
+             def fake_run(command, cwd=None):
+                 command = list(map(str, command))
+                 commands.append(command)
+                 if 'venv' in command:
+-                    python = root / '.wxq-runtime/Scripts/python.exe'
++                    python = root / ('.wxq-runtime/Scripts/python.exe' if os.name=='nt' else '.wxq-runtime/bin/python')
+                     python.parent.mkdir(parents=True)
+                     python.touch()
+                 if 'ci' in command:
+                     (frontend / 'node_modules').mkdir()
+ 
+-            with patch('sys.argv', ['launch', '--port', '0']), patch.object(launcher, 'ROOT', root), patch.object(launcher, 'FRONTEND', frontend), patch.object(launcher.shutil, 'which', return_value='tool'), patch.object(launcher, 'run', side_effect=fake_run), patch.object(launcher.subprocess, 'check_output', return_value='win32/x64/24'), patch.object(launcher.os, 'name', 'nt'):
++            with patch('sys.argv', ['launch', '--port', '0']), patch.object(launcher, 'ROOT', root), patch.object(launcher, 'FRONTEND', frontend), patch.object(launcher.shutil, 'which', return_value='tool'), patch.object(launcher, 'run', side_effect=fake_run), patch.object(launcher.subprocess, 'check_output', return_value='win32/x64/24'), patch.object(launcher.os, 'execv', side_effect=lambda exe,args: fake_run(args)):
+                 # Choose a free port without starting the actual service.
+                 with socket.socket() as sock:
+                     sock.bind(('127.0.0.1', 0))
+@@ -77,7 +81,7 @@ class LaunchTests(unittest.TestCase):
+ 
+     def test_mac_model_uses_native_server_and_checks_model(self):
+         installer = load('install_topic_model')
+-        with tempfile.TemporaryDirectory(dir=HERE.parent / 'raw') as folder:
++        with tempfile.TemporaryDirectory() as folder:
+             with patch.object(installer, 'ROOT', Path(folder)), patch.object(installer.sys, 'platform', 'darwin'), patch.object(installer.shutil, 'which', return_value='/opt/homebrew/bin/llama-server'), patch.object(installer, 'download') as download:
+                 result = installer.install()
+                 self.assertEqual(result['runtime_executable'], '/opt/homebrew/bin/llama-server')
+diff --git a/frontend/test_private_access.py b/frontend/test_private_access.py
+index 4dda2736cd7fba5d55a924c827a65aa1afd24cd6..cb956013900042865d9ac30a3676c197f3364f15 100644
+--- a/frontend/test_private_access.py
++++ b/frontend/test_private_access.py
+@@ -15,7 +15,7 @@ class PrivateAccessTests(fixtures.PublicHttpTests):
+                 ('assets/index-Ab12Cd34.css','public, max-age=31536000, immutable'),
+                 ('assets/unhashed.js','no-cache'),('','no-cache')]:
+             connection=http.client.HTTPConnection('127.0.0.1',self.http.server_port)
+-            connection.request('GET','/os-tutorial/'+path,headers={'Host':'klywa.xyz'})
++            connection.request('GET','/os-tutorial/'+path,headers={'Host':'internal.example'})
+             response=connection.getresponse();response.read();connection.close()
+             self.assertEqual(response.status,200)
+             self.assertEqual(response.headers['Cache-Control'],expected)
+@@ -23,7 +23,7 @@ class PrivateAccessTests(fixtures.PublicHttpTests):
+     def setUp(self):
+         super().setUp()
+         self.config.write_text(json.dumps({'schema_version': 2, 'sessionSecret': 's'*48,
+-            'accounts': [{'username': 'klywa', 'password': 'aa2025', 'role': 'admin'},
++            'accounts': [{'username': 'internal.example', 'password': 'fixture-only-passphrase', 'role': 'admin'},
+                          {'username': 'reader', 'password': 'test-password', 'role': 'viewer'}]}))
+ 
+     def test_every_content_route_requires_login(self):
+@@ -34,7 +34,7 @@ class PrivateAccessTests(fixtures.PublicHttpTests):
+                 self.assertEqual(self.call('/os-tutorial/api/'+path)[0], 401)
+         conn = http.client.HTTPConnection('127.0.0.1', self.http.server_port)
+         conn.request('GET', '/os-tutorial/api/notes/catalog', headers={
+-            'Host': 'klywa.xyz', 'If-None-Match': '"cached"'})
++            'Host': 'internal.example', 'If-None-Match': '"cached"'})
+         response = conn.getresponse()
+         self.assertEqual(response.status, 401)
+         response.read(); conn.close()
+diff --git a/frontend/test_proposals.py b/frontend/test_proposals.py
+index dfdb912568955aafef5ffae636024abd6eeb6ef6..b1ca2a912923a006df6657880b93510950e4683a 100644
+--- a/frontend/test_proposals.py
++++ b/frontend/test_proposals.py
+@@ -27,7 +27,7 @@ def entry(nid, value='old'):
+ class ProposalTests(unittest.TestCase):
+     def setUp(self):
+         (ROOT/'temp').mkdir(exist_ok=True)
+-        self.tmp = tempfile.TemporaryDirectory(dir=ROOT/'temp')
++        self.tmp = tempfile.TemporaryDirectory()
+         self.addCleanup(self.tmp.cleanup)
+         self.root = Path(self.tmp.name)
+         self.nodes = [{'id':'t','type':'heading','level':1,'title':'Title'},
+diff --git a/frontend/test_role_http.py b/frontend/test_role_http.py
+index 825cac8b1e43fc1d06dd661d29d74d9dbd66013d..f3bad1d716b791b9cd810c41f5836aba32bb6cc3 100644
+--- a/frontend/test_role_http.py
++++ b/frontend/test_role_http.py
+@@ -52,8 +52,8 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+     def setUp(self):
+         super().setUp()
+         self.config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,'sessionTtlHours':168,
+-            'accounts':[{'username':'klywa','password':'aa2025','role':'admin'},
+-                        {'username':'test1','password':'aa2025','role':'annotator'}]}),encoding='utf-8')
++            'accounts':[{'username':'internal.example','password':'fixture-only-passphrase','role':'admin'},
++                        {'username':'fixture-writer','password':'fixture-only-passphrase','role':'annotator'}]}),encoding='utf-8')
+ 
+     def acquire(self,nid,target,client='http-test-tab',takeover=False):
+         code,data,_=self.call('/os-tutorial/api/edit-locks/acquire','POST',{'note_id':nid,'client_id':client,'resource':target,'takeover':takeover})
+@@ -83,7 +83,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+         self.assertEqual(self.switch('admin')[0],200)
+ 
+     def test_true_annotator_cannot_elevate_or_read_admin_sync(self):
+-        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test1','password':'aa2025'})
++        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'fixture-writer','password':'fixture-only-passphrase'})
+         self.assertEqual(code,200)
+         self.cookie=headers['Set-Cookie'].split(';')[0]
+         data=self.call('/os-tutorial/api/auth/me')[1]
+@@ -108,7 +108,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+         with fixtures.workspace.store_lock(self.root):
+             json_store.save(self.root,[{'body':{'schema_version':6,'nodes':nodes},
+                 'metadata':{'id':'locked-note','type':'other','title':'Locks','path':'knowledge/other/locks.json'}}],partial=True)
+-        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test1','password':'aa2025'})
++        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'fixture-writer','password':'fixture-only-passphrase'})
+         self.assertEqual(code,200);self.cookie=headers['Set-Cookie'].split(';')[0];author=self.cookie
+         lease=self.acquire('locked-note',{'kind':'entry','id':'a'})
+         code,_,_=self.call('/os-tutorial/api/edit-locks/acquire','POST',{'note_id':'locked-note','client_id':'other-tab',
+@@ -147,10 +147,10 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+         with fixtures.workspace.store_lock(self.root):json_store.save(self.root,[record],partial=True)
+         note=json_store.resolve_note(self.root,'review-note')
+         self.config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,'accounts':[
+-            {'username':'klywa','password':'aa2025','role':'admin'},
+-            {'username':'test1','password':'aa2025','role':'annotator'},
+-            {'username':'test2','password':'aa2025','role':'annotator'}]}),encoding='utf-8')
+-        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test1','password':'aa2025'})
++            {'username':'internal.example','password':'fixture-only-passphrase','role':'admin'},
++            {'username':'fixture-writer','password':'fixture-only-passphrase','role':'annotator'},
++            {'username':'fixture-reviewer','password':'fixture-only-passphrase','role':'annotator'}]}),encoding='utf-8')
++        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'fixture-writer','password':'fixture-only-passphrase'})
+         self.assertEqual(code,200);self.cookie=headers['Set-Cookie'].split(';')[0]
+         changed={**body['nodes'][2],'value':'编写员建议'}
+         fresh={'id':'fresh','type':'entry','key':'补充','show_key':True,'value':'尚未确认'}
+@@ -160,7 +160,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+         inserted=next(i for i in data['items'] if i['kind']=='insert')
+         self.assertEqual(json_store.resolve_note(self.root,note['id'])['revision'],note['revision'])
+         self.assertEqual(self.call('/os-tutorial/api/proposals/'+edited['id']+'/approve','POST',{'revision':1})[0],403)
+-        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test2','password':'aa2025'})
++        code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'fixture-reviewer','password':'fixture-only-passphrase'})
+         self.assertEqual(code,200);self.cookie=headers['Set-Cookie'].split(';')[0]
+         self.assertEqual(self.call('/os-tutorial/api/proposals')[1]['items'],[])
+         self.assertEqual(self.call('/os-tutorial/api/proposals/'+edited['id'],'PUT',{'revision':1,'proposed_node':changed})[0],403)
+@@ -190,7 +190,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+             json_store.save(self.root,[{'body':{'schema_version':6,'nodes':nodes},
+                 'metadata':{'id':'async-note','type':'other','title':'异步审核','path':'knowledge/other/异步审核.json'}}],partial=True)
+         service=proposal_store(self.http)
+-        author={'username':'test1','role':'annotator','account_role':'annotator'}
++        author={'username':'fixture-writer','role':'annotator','account_role':'annotator'}
+         record=json_store.load_record(self.root,'async-note')
+         item=service.submit(author,{'note_id':'async-note','revision':record['metadata']['revision'],
+             'scope_id':'h','nodes':[nodes[1],{**nodes[2],'value':'确认正文'}]})['items'][0]
+@@ -217,7 +217,7 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+                 self.assertEqual(self.call('/os-tutorial/api/notes/catalog')[0],200)
+                 self.assertEqual(self.call('/os-tutorial/api/notes/async-note','PUT',
+                     {'revision':record['metadata']['revision'],'document':record['body']})[0],409)
+-                code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'test1','password':'aa2025'})
++                code,_,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':'fixture-writer','password':'fixture-only-passphrase'})
+                 self.cookie=headers['Set-Cookie'].split(';')[0]
+                 note=json_store.resolve_note(self.root,'async-note')
+                 code,pending,_=self.submit_entries('async-note',[('update',{'kind':'entry','id':'e'},{**nodes[2],'value':'下一份建议'})])
+@@ -243,41 +243,27 @@ class PublicRoleHttpTests(fixtures.PublicHttpTests):
+         self.assertEqual(result['phase'],'queued')
+ 
+ 
+-class LocalRoleHttpTests(unittest.TestCase):
+-    def setUp(self):
+-        self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'temp');self.addCleanup(self.tmp.cleanup)
+-        self.root=Path(self.tmp.name);(self.root/'knowledge').mkdir()
+-        (self.root/'knowledge/index.meta.json').write_text('{"notes":[]}',encoding='utf-8')
+-        self.http=server.create_server(self.root,0,start_worker=False)
+-        threading.Thread(target=self.http.serve_forever,daemon=True).start()
+-        self.addCleanup(self.http.server_close);self.addCleanup(self.http.shutdown)
+-
+-    def call(self,path,method='GET',data=None,cookie=''):
+-        origin=f'http://127.0.0.1:{self.http.server_port}'
+-        conn=http.client.HTTPConnection('127.0.0.1',self.http.server_port,timeout=10)
+-        conn.request(method,path,None if data is None else json.dumps(data),{'Content-Type':'application/json','Origin':origin,'Cookie':cookie})
+-        res=conn.getresponse();body=res.read();out=(res.status,json.loads(body),dict(res.getheaders()));conn.close();return out
+-
+-    def test_debug_role_is_browser_scoped_and_never_grants_formal_writer(self):
+-        self.assertEqual(self.call('/api/auth/me')[1]['role'],'admin')
+-        code,data,headers=self.call('/api/auth/role','POST',{'role':'annotator'})
+-        self.assertEqual(code,200,data);cookie=headers['Set-Cookie'].split(';')[0]
+-        self.assertEqual(self.call('/api/auth/me',cookie=cookie)[1]['role'],'annotator')
+-        self.assertEqual(self.call('/api/notes/catalog',cookie=cookie)[0],200)
+-        self.assertEqual(self.call('/api/notes/search?q=sample',cookie=cookie)[0],200)
+-        self.assertEqual(self.call('/api/notes/n','PUT',{},cookie)[0],403)
+-        self.assertEqual(self.call('/api/auth/me')[1]['role'],'admin')
+-        self.assertEqual(self.call('/api/auth/role','POST',{'role':'admin'},cookie)[0],200)
+-
+-    def test_local_sync_identifies_exact_workspace_and_stops_only_local_admin(self):
+-        code,data,_=self.call('/api/local-service/status')
+-        self.assertEqual(code,200,data)
+-        self.assertEqual(Path(data['root']).resolve(),self.root.resolve())
+-        self.assertEqual((data['mode'],data['port']),('local',self.http.server_port))
+-        _,_,headers=self.call('/api/auth/role','POST',{'role':'annotator'})
+-        cookie=headers['Set-Cookie'].split(';')[0]
+-        self.assertEqual(self.call('/api/local-service/stop','POST',{},cookie)[0],403)
+-        self.assertEqual(self.call('/api/local-service/stop','POST',{})[0],202)
+-
+-
+-if __name__=='__main__':unittest.main()
++class LoopbackRoleTests(unittest.TestCase):
++    def test_first_boot_has_no_implicit_administrator(self):
++        import website_data
++        import json_store
++        with tempfile.TemporaryDirectory() as folder:
++            root = Path(folder)
++            json_store.initialize(root)
++            website_data.export(root)
++            with patch.dict('os.environ', WXQ_ORIGIN='http://internal.test', WXQ_BIND='127.0.0.1'):
++                with server.create_server(root, 0) as listener:
++                    thread = threading.Thread(target=listener.serve_forever, daemon=True)
++                    thread.start()
++                    try:
++                        conn = http.client.HTTPConnection('127.0.0.1', listener.server_port, timeout=10)
++                        conn.request('GET','/api/auth/me',headers={'Host':'internal.test'})
++                        state=json.loads(conn.getresponse().read());conn.close()
++                        self.assertTrue(state['setup_required'])
++                        self.assertEqual(state['role'],'guest')
++                        conn = http.client.HTTPConnection('127.0.0.1', listener.server_port, timeout=10)
++                        conn.request('GET','/api/notes',headers={'Host':'internal.test'})
++                        self.assertEqual(conn.getresponse().status,401);conn.close()
++                    finally:
++                        listener.shutdown()
++                        thread.join()
+diff --git a/frontend/test_roles.py b/frontend/test_roles.py
+index 5fabe170b08e383dc393818acef0756c4cdb151e..bd1194f1c692b39496360779eaf94320b280aa65 100644
+--- a/frontend/test_roles.py
++++ b/frontend/test_roles.py
+@@ -13,55 +13,52 @@ from website_auth import Auth, Unconfigured
+ class RoleTests(unittest.TestCase):
+     def setUp(self):
+         (ROOT/'temp').mkdir(exist_ok=True)
+-        self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'temp');self.addCleanup(self.tmp.cleanup)
++        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+         self.path=Path(self.tmp.name)/'accounts.json'
+         self.value={'schema_version':2,'sessionSecret':'s'*48,'sessionTtlHours':168,'accounts':[
+-            {'username':'klywa','password':'aa2025','role':'admin'},
+-            {'username':'test1','password':'aa2025','role':'annotator'}]}
++            {'username':'internal.example','password':'fixture-only-passphrase','role':'admin'},
++            {'username':'fixture-writer','password':'fixture-only-passphrase','role':'annotator'}]}
+         self.write();self.auth=Auth(self.path,'/os-tutorial')
+ 
+     def write(self):self.path.write_text(json.dumps(self.value),encoding='utf-8')
+     def login(self,name):
+-        status,cookie=self.auth.login(name,'aa2025','test')
++        status,cookie=self.auth.login(name,'fixture-only-passphrase','test')
+         self.assertEqual(status,200)
+         return cookie.split(';')[0]
+ 
+     def test_admin_switches_down_and_back_without_elevating_annotator(self):
+-        cookie=self.login('klywa')
++        cookie=self.login('internal.example')
+         self.assertEqual(self.auth.actor(cookie)['role'],'admin')
+         lowered=self.auth.switch_role(cookie,'annotator').split(';')[0]
+         self.assertEqual(self.auth.actor(lowered)['account_role'],'admin')
+         self.assertEqual(self.auth.actor(lowered)['role'],'annotator')
+         restored=self.auth.switch_role(lowered,'admin').split(';')[0]
+         self.assertEqual(self.auth.actor(restored)['role'],'admin')
+-        writer=self.login('test1')
++        writer=self.login('fixture-writer')
+         self.assertEqual(self.auth.actor(writer)['allowed_roles'],['annotator'])
+         with self.assertRaises(PermissionError):self.auth.switch_role(writer,'admin')
+ 
+     def test_config_role_or_password_change_revokes_sessions(self):
+-        cookie=self.login('klywa')
++        cookie=self.login('internal.example')
+         self.value['accounts'][0]['role']='annotator';self.write()
+         self.assertIsNone(self.auth.actor(cookie))
+-        cookie=self.login('test1')
++        cookie=self.login('fixture-writer')
+         self.value['accounts'][1]['password']='changed';self.write()
+         self.assertIsNone(self.auth.actor(cookie))
+ 
+     def test_legacy_users_are_administrators_and_invalid_role_fails_closed(self):
+         self.value.pop('schema_version');self.value['users']=self.value.pop('accounts')[:1]
+         self.value['users'][0].pop('role');self.write()
+-        self.assertEqual(self.auth.actor(self.login('klywa'))['role'],'admin')
++        self.assertEqual(self.auth.actor(self.login('internal.example'))['role'],'admin')
+         self.value['users'][0]['role']='superuser';self.write()
+         with self.assertRaises(Unconfigured):self.auth.config()
+ 
+-    def test_browser_local_switch_does_not_change_another_browser(self):
+-        from website_auth import LocalAuth
+-        local=LocalAuth(Path(self.tmp.name)/'local.json')
+-        self.assertEqual(local.actor(None)['role'],'admin')
+-        cookie=local.switch_role(None,'annotator').split(';')[0]
+-        self.assertEqual(local.actor(cookie)['role'],'annotator')
+-        self.assertEqual(local.actor(None)['role'],'admin')
+-        self.assertNotIn('Secure',cookie)
+-        self.assertEqual(local.actor(local.switch_role(cookie,'admin').split(';')[0])['role'],'admin')
+-
+-
+-if __name__=='__main__':unittest.main()
++    def test_role_switch_requires_a_signed_session_and_is_browser_scoped(self):
++        first = self.login('internal.example')
++        second = self.login('internal.example')
++        switched = self.auth.switch_role(first, 'annotator').split(';')[0]
++        self.assertEqual(self.auth.actor(switched)['role'], 'annotator')
++        self.assertEqual(self.auth.actor(second)['role'], 'admin')
++        self.assertIsNone(self.auth.actor(None))
++        with self.assertRaises(PermissionError):
++            self.auth.switch_role(None, 'admin')
+diff --git a/frontend/test_save_performance.py b/frontend/test_save_performance.py
+index 8ab62af6f2c88e6ad419c866deedc837d5007538..d1b946836b4d0189cbac0bcb8933e390453b4db0 100644
+--- a/frontend/test_save_performance.py
++++ b/frontend/test_save_performance.py
+@@ -11,7 +11,7 @@ from source_staging import Staging
+ 
+ class SavePerformanceTests(unittest.TestCase):
+  def setUp(self):
+-  self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'temp');self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name)
++  self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup);self.root=Path(self.tmp.name)
+   store.write_file(self.root/store.INDEX,{'schema_version':6,'storage_version':2,'notes':[],'aliases':{}})
+   self.sid='BV1234567890:p1'
+   self.record={'body':{'schema_version':6,'nodes':[{'id':'h','type':'heading','level':1,'title':'Sample'}, {'id':'e','type':'entry','key':'Text','show_key':True,'value':'Original'}]},'metadata':{'id':'sample','type':'other','title':'Sample','path':'knowledge/other/sample.json','claim_annotations':[{'id':'c','text_ref':'e','evidence':[{'source':self.sid,'start':0,'end':1}]}]}}
+@@ -81,38 +81,32 @@ class SavePerformanceTests(unittest.TestCase):
+   wxq.atomic_json(self.root/'entities/heroes.json',[{'id':'new','name':'New','category':'heroes'}])
+   with self.assertRaises(ValueError):workspace.validate_meta(self.root,meta)
+ 
+- def test_local_and_public_http_saves_publish_timings_and_keep_conflicts(self):
+-  import server
+-  for public in (False,True):
+-   with self.subTest(public=public):
+-    config=self.root/'admins.json'
+-    store.write_file(config,{'sessionSecret':'s'*48,'sessionTtlHours':168,'users':[{'username':'tester','password':'never-log-this-secret'}]})
+-    http_server=server.create_server(self.root,0,public=public,origin='https://example.test',auth_config=config,state_dir=self.root/'site-state')
+-    http_server.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda:{'state':'pending'})
+-    thread=threading.Thread(target=http_server.serve_forever,daemon=True);thread.start()
+-    cookie='';prefix='/os-tutorial' if public else '';origin='https://example.test' if public else f'http://127.0.0.1:{http_server.server_port}'
+-    def call(path,method='GET',data=None):
+-     conn=http.client.HTTPConnection('127.0.0.1',http_server.server_port,timeout=10)
+-     conn.request(method,prefix+'/api/'+path,None if data is None else json.dumps(data),{'Content-Type':'application/json','Origin':origin,'Host':'example.test' if public else f'127.0.0.1:{http_server.server_port}','Cookie':cookie})
+-     res=conn.getresponse();result=(res.status,json.loads(res.read()),dict(res.getheaders()));conn.close();return result
+-    try:
+-     if public:
+-      status,_,headers=call('auth/login','POST',{'username':'tester','password':'never-log-this-secret'});self.assertEqual(status,200);cookie=headers['Set-Cookie'].split(';')[0]
+-     record=store.load_record(self.root,'sample');record['body']['nodes'][-1]['value']+=' changed'
+-     payload={'revision':record['metadata']['revision'],'document':record['body']}
+-     with self.assertLogs('save-performance',level='INFO') as logs:status,result,headers=call('notes/sample','PUT',payload)
+-     self.assertEqual(status,200,result)
+-     for stage in ('lock;dur=','read;dur=','history;dur=','write;dur=','assemble;dur=','total;dur='):self.assertIn(stage,headers['Server-Timing'])
+-     self.assertNotIn('Original',' '.join(logs.output));self.assertNotIn('never-log-this-secret',' '.join(logs.output))
+-     self.assertEqual(call('notes/sample','PUT',payload)[0],409)
+-     client='timing-client';status,lease,_=call('edit-locks/acquire','POST',{'note_id':'sample','client_id':client,'resource':{'kind':'entry','id':'e'}})
+-     self.assertEqual(status,200,lease)
+-     record=store.load_record(self.root,'sample');node={**record['body']['nodes'][-1],'value':'entry changed'}
+-     status,result,headers=call('notes/sample/entries','PUT',{'note_id':'sample','client_id':client,'request_id':uuid.uuid4().hex,'changes':[{'kind':'update','lease':{'id':lease['id'],'token':lease['token']},'node':node}]})
+-     self.assertEqual(status,200,result);self.assertIn('total;dur=',headers['Server-Timing'])
+-     if not public:
+-      status,result,headers=call('sources/'+self.sid,'PUT',{'revision':'','ignored':True})
+-      self.assertEqual(status,200,result);self.assertTrue(result['ignored']);self.assertIn('read;dur=',headers['Server-Timing'])
+-    finally:http_server.shutdown();thread.join();http_server.server_close()
++ def test_authenticated_http_saves_publish_timings_and_keep_conflicts(self):
++  from test_website import authenticated_listener
++  config=self.root/'admins.json'
++  store.write_file(config,{'sessionSecret':'s'*48,'sessionTtlHours':168,'users':[{'username':'tester','password':'never-log-this-secret'}]})
++  http_server=authenticated_listener(self.root,0,origin='https://example.test',auth_config=config,state_dir=self.root/'site-state')
++  http_server.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda:{'state':'pending'})
++  thread=threading.Thread(target=http_server.serve_forever,daemon=True);thread.start()
++  cookie='';prefix='/os-tutorial';origin='https://example.test'
++  def call(path,method='GET',data=None):
++   conn=http.client.HTTPConnection('127.0.0.1',http_server.server_port,timeout=10)
++   conn.request(method,prefix+'/api/'+path,None if data is None else json.dumps(data),{'Content-Type':'application/json','Origin':origin,'Host':'example.test','Cookie':cookie})
++   res=conn.getresponse();result=(res.status,json.loads(res.read()),dict(res.getheaders()));conn.close();return result
++  try:
++   status,_,headers=call('auth/login','POST',{'username':'tester','password':'never-log-this-secret'});self.assertEqual(status,200);cookie=headers['Set-Cookie'].split(';')[0]
++   record=store.load_record(self.root,'sample');record['body']['nodes'][-1]['value']+=' changed'
++   payload={'revision':record['metadata']['revision'],'document':record['body']}
++   with self.assertLogs('save-performance',level='INFO') as logs:status,result,headers=call('notes/sample','PUT',payload)
++   self.assertEqual(status,200,result)
++   for stage in ('lock;dur=','read;dur=','history;dur=','write;dur=','assemble;dur=','total;dur='):self.assertIn(stage,headers['Server-Timing'])
++   self.assertNotIn('Original',' '.join(logs.output));self.assertNotIn('never-log-this-secret',' '.join(logs.output))
++   self.assertEqual(call('notes/sample','PUT',payload)[0],409)
++   client='timing-client';status,lease,_=call('edit-locks/acquire','POST',{'note_id':'sample','client_id':client,'resource':{'kind':'entry','id':'e'}})
++   self.assertEqual(status,200,lease)
++   record=store.load_record(self.root,'sample');node={**record['body']['nodes'][-1],'value':'entry changed'}
++   status,result,headers=call('notes/sample/entries','PUT',{'note_id':'sample','client_id':client,'request_id':uuid.uuid4().hex,'changes':[{'kind':'update','lease':{'id':lease['id'],'token':lease['token']},'node':node}]})
++   self.assertEqual(status,200,result);self.assertIn('total;dur=',headers['Server-Timing'])
++  finally:http_server.shutdown();thread.join();http_server.server_close()
+ 
+ if __name__=='__main__':unittest.main()
+diff --git a/frontend/test_seasons.py b/frontend/test_seasons.py
+index 6deb394ac826993d439ed8416b06340ede970c85..2544753a1e209cab6972eb27dca41d7d781e6c24 100644
+--- a/frontend/test_seasons.py
++++ b/frontend/test_seasons.py
+@@ -69,6 +69,9 @@ class SeasonTests(unittest.TestCase):
+             reader_store.rebuild(root)
+             http = ThreadingHTTPServer(('127.0.0.1', 0), server.Handler)
+             http.root = root
++            from unittest.mock import Mock
++            http.auth = Mock()
++            http.auth.actor.return_value = {'username':'reviewer','role':'admin','allowed_roles':['admin']}
+             thread = threading.Thread(target=http.serve_forever, daemon=True)
+             thread.start()
+             try:
+diff --git a/frontend/test_section_sync.py b/frontend/test_section_sync.py
+index 866bd91ff28a6a21da16a8e524ebe1d5b749160c..140b689bb837fb69e5e3bbfafc9f8afb755d8eee 100644
+--- a/frontend/test_section_sync.py
++++ b/frontend/test_section_sync.py
+@@ -28,7 +28,7 @@ def entry(nid, value, key='策略'):
+ 
+ class SectionSyncTests(unittest.TestCase):
+     def setUp(self):
+-        tmp = tempfile.TemporaryDirectory(dir=ROOT/'temp')
++        tmp = tempfile.TemporaryDirectory()
+         self.addCleanup(tmp.cleanup)
+         self.server = SimpleNamespace(root=Path(tmp.name))
+         self.root = self.server.root
+diff --git a/frontend/test_sync_conflict_http.py b/frontend/test_sync_conflict_http.py
+index 8bd70cd2bdd0f93ead59df49be8f4a04cfc24a59..d6e352de4a3bff458366aa9612de8c356c37a6f3 100644
+--- a/frontend/test_sync_conflict_http.py
++++ b/frontend/test_sync_conflict_http.py
+@@ -68,7 +68,7 @@ class SyncConflictHttpTests(unittest.TestCase):
+         self.assertEqual(code,200,value);self.assertFalse(conflicts.is_blocked(self.root,'n'))
+         self.assertEqual(store.load_record(self.root,'n')['body']['nodes'][1]['value'],'incoming')
+         self.assertEqual(value['sync']['state'],'pending')
+-        self.assertNotIn('klywa',''.join(p.read_text('utf-8') for p in (self.root/'knowledge-sync/resolutions').glob('*/*.json')))
++        self.assertNotIn('internal.example',''.join(p.read_text('utf-8') for p in (self.root/'knowledge-sync/resolutions').glob('*/*.json')))
+         self.assertEqual(value['sync']['conflict_count'],0)
+ 
+     def test_conflicted_entries_block_but_proposal_drafts_continue(self):
+@@ -88,7 +88,7 @@ class SyncConflictHttpTests(unittest.TestCase):
+         self.login()
+         code,value,_=self.call('/os-tutorial/api/proposals/'+item['id']+'/approve','POST',{'revision':item['revision']})
+         self.assertEqual(code,423,value);self.assertEqual(value['resource'],{'note_id':'n'})
+-        self.assertEqual(proposal_store(self.http).get({'username':'klywa','role':'admin'},item['id'])['status'],'pending')
++        self.assertEqual(proposal_store(self.http).get({'username':'internal.example','role':'admin'},item['id'])['status'],'pending')
+ 
+     def test_other_note_entry_save_and_approval_continue_while_pending(self):
+         from site_access import proposal_store
+@@ -110,6 +110,9 @@ class SyncConflictHttpTests(unittest.TestCase):
+         import server,threading
+         self.seed()
+         local=server.ThreadingHTTPServer(('127.0.0.1',0),server.Handler);local.root=self.root
++        from unittest.mock import Mock
++        local.auth = Mock()
++        local.auth.actor.return_value = {"role":"admin","account_role":"admin","username":"reviewer","allowed_roles":["admin"]}
+         self.addCleanup(local.server_close)
+         thread=threading.Thread(target=local.serve_forever,daemon=True);thread.start();self.addCleanup(local.shutdown)
+         import http.client
+diff --git a/frontend/test_template_help.py b/frontend/test_template_help.py
+index 3a5c7534037316ef043edbcbf617934585be217a..079f165200f941fcea84112992a53197e87556a9 100644
+--- a/frontend/test_template_help.py
++++ b/frontend/test_template_help.py
+@@ -17,7 +17,7 @@ EXAMPLES = ('speech-template-library-minimal.json', 'speech-template-library.jso
+ class TemplateHelpTests(unittest.TestCase):
+     def test_examples_validate_preview_apply_export_and_roundtrip(self):
+         for filename in EXAMPLES:
+-            with self.subTest(filename=filename), tempfile.TemporaryDirectory(dir=ROOT / 'temp') as folder:
++            with self.subTest(filename=filename), tempfile.TemporaryDirectory() as folder:
+                 root = Path(folder)
+                 document = json.loads((ROOT / 'docs/examples' / filename).read_text(encoding='utf-8'))
+                 self.assertEqual(document['schema_version'], 3)
+diff --git a/frontend/test_template_rules.py b/frontend/test_template_rules.py
+index 657b08f1e6d7dd0c789e1b743c2365ad61d5a829..6f5cbd57a63bcb258715d4c1d0cfd92dce401356 100644
+--- a/frontend/test_template_rules.py
++++ b/frontend/test_template_rules.py
+@@ -165,7 +165,7 @@ class TemplateRuleTests(unittest.TestCase):
+                              '弈星上阵。')
+ 
+     def setUp(self):
+-        self.temp = tempfile.TemporaryDirectory(dir=fixtures.ROOT / 'temp')
++        self.temp = tempfile.TemporaryDirectory()
+         self.addCleanup(self.temp.cleanup)
+         self.root = Path(self.temp.name)
+         self.server = SimpleNamespace(root=self.root)
+diff --git a/frontend/test_templates.py b/frontend/test_templates.py
+index 307a75be6098efc256b7a1810999b1a58b4bb837..5590d52aa16e589940d94359c4bde0145335ca69 100644
+--- a/frontend/test_templates.py
++++ b/frontend/test_templates.py
+@@ -41,7 +41,7 @@ def put(kind, value):
+ class TemplateTests(unittest.TestCase):
+     def setUp(self):
+         self.assertIsNotNone(store, 'template persistence domain is not implemented')
+-        self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'temp')
++        self.tmp=tempfile.TemporaryDirectory()
+         self.addCleanup(self.tmp.cleanup)
+         self.root=Path(self.tmp.name)
+         self.catalog=[{'id':'card:1','name':'英雄甲','category':'heroes','description':'旧技能','retrieved_at':'old','image_url':'old.png'},
+diff --git a/frontend/test_templates_http.py b/frontend/test_templates_http.py
+index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31bf5392702 100644
+--- a/frontend/test_templates_http.py
++++ b/frontend/test_templates_http.py
+@@ -18,14 +18,14 @@ class TemplateHttpTests(unittest.TestCase):
+     def setUp(self):
+         fixtures.PublicHttpTests.setUp(self)
+         self.config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,'accounts':[
+-            {'username':'klywa','password':'aa2025','role':'admin'},
+-            {'username':'alice','password':'aa2025','role':'annotator'},
+-            {'username':'bob','password':'aa2025','role':'annotator'},
+-            {'username':'reader','password':'aa2025','role':'viewer'}]}))
++            {'username':'internal.example','password':'fixture-only-passphrase','role':'admin'},
++            {'username':'alice','password':'fixture-only-passphrase','role':'annotator'},
++            {'username':'bob','password':'fixture-only-passphrase','role':'annotator'},
++            {'username':'reader','password':'fixture-only-passphrase','role':'viewer'}]}))
+         self.http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda **kw:{'state':'pending'})
+ 
+     def user(self,name):
+-        code,data,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':name,'password':'aa2025'})
++        code,data,headers=self.call('/os-tutorial/api/auth/login','POST',{'username':name,'password':'fixture-only-passphrase'})
+         self.assertEqual(code,200,data);self.cookie=headers['Set-Cookie'].split(';')[0]
+ 
+     def test_guests_viewers_and_origin(self):
+@@ -36,12 +36,12 @@ class TemplateHttpTests(unittest.TestCase):
+         self.assertEqual(self.call('/os-tutorial/api/templates/proposals')[0],403)
+         for suffix in ('changes','import/preview','import/commit','warnings/confirm','warnings/seen'):
+             self.assertEqual(self.call('/os-tutorial/api/templates/'+suffix,'POST',{})[0],403)
+-        self.user('klywa')
++        self.user('internal.example')
+         self.assertEqual(self.call('/os-tutorial/api/templates/changes','POST',{},origin='https://evil.example')[0],403)
+ 
+     def test_only_admin_can_toggle_fixed_and_direct_import_cannot_unfix(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         _, state, _=self.call(api)
+         code, saved, _=self.call(api+'/changes','POST',{'revision':state['revision'],
+             'changes':[{'kind':'group','action':'put','id':'example','value':group()}]})
+@@ -49,7 +49,7 @@ class TemplateHttpTests(unittest.TestCase):
+         request={'revision':saved['revision'],'group_id':'example','utterance_id':'line','fixed':True}
+         self.user('alice')
+         self.assertEqual(self.call(api+'/utterances/fixed','POST',request)[0],403)
+-        self.user('klywa')
++        self.user('internal.example')
+         code, fixed, _=self.call(api+'/utterances/fixed','POST',request)
+         self.assertEqual(code,200,fixed)
+         self.assertTrue(fixed['groups'][0]['utterances'][0]['fixed'])
+@@ -72,7 +72,7 @@ class TemplateHttpTests(unittest.TestCase):
+         self.user('bob');self.assertEqual(self.call('/os-tutorial/api/templates/proposals')[1],[])
+         self.assertEqual(self.call('/os-tutorial/api/templates/proposals/'+pid+'/approve','POST',{})[0],403)
+         self.assertEqual(self.call('/os-tutorial/api/templates/proposals/'+pid+'/edit','POST',{})[0],403)
+-        self.user('klywa')
++        self.user('internal.example')
+         proposal=self.call('/os-tutorial/api/templates/proposals')[1][0]
+         proposal['changes'][0]['value']['utterances'][0]['text']='管理员确认用语。'
+         code,edited,_=self.call('/os-tutorial/api/templates/proposals/'+pid+'/edit','POST',
+@@ -99,7 +99,7 @@ class TemplateHttpTests(unittest.TestCase):
+         state=self.call('/os-tutorial/api/templates')[1]
+         data={'revision':state['revision'],'changes':[{'kind':'group','action':'put','id':'example','value':group()}]}
+         item=self.call('/os-tutorial/api/templates/changes','POST',data)[1]['proposal']
+-        self.user('klywa')
++        self.user('internal.example')
+         url='/os-tutorial/api/templates/proposals/'+item['id']+'/approve'
+         accept={'proposal_revision':item['proposal_revision']}
+         service=proposal_store(self.http)
+@@ -117,7 +117,7 @@ class TemplateHttpTests(unittest.TestCase):
+         self.assertEqual(len(self.call('/os-tutorial/api/templates/export')[1]['groups']),1)
+ 
+     def test_import_preview_does_not_write_and_commit_rechecks(self):
+-        self.user('klywa')
++        self.user('internal.example')
+         document=self.call('/os-tutorial/api/templates/export')[1];document['groups']=[portable_group()]
+         code,preview,_=self.call('/os-tutorial/api/templates/import/preview','POST',{'document':document})
+         self.assertEqual(code,200,preview);self.assertFalse(preview['errors'])
+@@ -131,7 +131,7 @@ class TemplateHttpTests(unittest.TestCase):
+         self.assertEqual(self.call(url,'POST',direct)[0],400)
+         self.user('alice')
+         self.assertEqual(self.call(url,'POST',{**direct,'reason':'测试'})[0],403)
+-        self.user('klywa')
++        self.user('internal.example')
+         code,result,_=self.call(url,'POST',{**direct,'reason':'已独立核对'})
+         self.assertEqual(code,200,result)
+         gid=preview['changes'][0]['id']
+@@ -142,7 +142,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_formal_comments_survive_delete_and_capture_admin_decisions(self):
+         prefix='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         state=self.call(prefix)[1]
+         row=group()
+         code,state,_=self.call(prefix+'/changes','POST',{'revision':state['revision'],'changes':[{'kind':'group','action':'put','id':row['id'],'value':row}]})
+@@ -157,7 +157,7 @@ class TemplateHttpTests(unittest.TestCase):
+         self.user('bob');self.assertEqual(self.call(path+'/reply','POST',{'body':'已复核'})[0],200)
+         self.assertEqual(self.call(path+'/close','POST',{})[0],403)
+         self.user('reader');self.assertEqual(self.call(prefix+'/comments')[0],403)
+-        self.user('klywa');self.assertEqual(self.call(path+'/close','POST',{})[0],200)
++        self.user('internal.example');self.assertEqual(self.call(path+'/close','POST',{})[0],200)
+         self.assertEqual(self.call(prefix+'/comments')[1]['items'],[])
+         self.assertEqual(self.call(path+'/reopen','POST',{})[0],200)
+         code,state,_=self.call(prefix+'/changes','POST',{'revision':state['revision'],'changes':[{'kind':'group','action':'delete','id':row['id']}]})
+diff --git a/frontend/test_templates_proposals.py b/frontend/test_templates_proposals.py
+index 2a89fa2e492884034666f61b24cbb0fa617f2fd4..136fb1e75825c5a97923c2cb248ff6a37423cc00 100644
+--- a/frontend/test_templates_proposals.py
++++ b/frontend/test_templates_proposals.py
+@@ -25,7 +25,7 @@ def group(gid='example',text='先稳住。'):
+ 
+ class TemplateProposalTests(unittest.TestCase):
+     def setUp(self):
+-        self.tmp=tempfile.TemporaryDirectory(dir=ROOT/'temp');self.addCleanup(self.tmp.cleanup)
++        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+         self.root=Path(self.tmp.name)
+         self.proposals=TemplateProposals(self.root,self.root/'raw/private.sqlite3')
+ 
+diff --git a/frontend/test_templates_sync.py b/frontend/test_templates_sync.py
+index c942e006c24e2de83d33a0e735f099bc37caefc2..83e207dc636416bfead69c8aa4ad2d97b0d2b977 100644
+--- a/frontend/test_templates_sync.py
++++ b/frontend/test_templates_sync.py
+@@ -132,28 +132,30 @@ class TemplateMergeTests(unittest.TestCase):
+ 
+     def test_public_whitelist_excludes_private_and_traversal(self):
+         from website_sync import allowed_path
+-        from deploy.local_sync import allowed_local_path
+         for path in ('templates/events/e.json','templates/groups/g.json','templates/library.meta.json','templates/conflicts/'+('a'*64)+'.json'):
+-            self.assertTrue(allowed_path(path),path);self.assertTrue(allowed_local_path(path),path)
++            self.assertTrue(allowed_path(path),path)
+         for path in ('raw/templates/pending.json','templates/../raw/a.json','templates/groups/a/b.json','templates/proposals/private.json'):
+-            self.assertFalse(allowed_path(path),path);self.assertFalse(allowed_local_path(path),path)
++            self.assertFalse(allowed_path(path),path)
+ 
+     def test_backup_preserves_templates_and_private_proposal_wal(self):
+         import sqlite3
+         from contextlib import closing
+-        from deploy.update_sites import snapshot_os
+-        state=self.root/'state';state.mkdir()
++        import sys
++        sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'deploy'))
++        from backup import snapshot
++        state=self.root/'raw/internal';state.mkdir(parents=True)
+         group=self.root/'templates/groups/g.json';group.parent.mkdir(parents=True);group.write_text('{"id":"g"}',encoding='utf-8')
+         with closing(sqlite3.connect(state/'template-proposals.sqlite3')) as connection:
+             connection.execute('pragma journal_mode=WAL')
+             connection.execute('create table proposals(body text)')
+             connection.execute("insert into proposals values ('私有草稿')");connection.commit()
+-            destination=self.root/'backup'
+-            snapshot_os(self.root,state,destination)
+-            self.assertEqual(json.loads((destination/'templates/groups/g.json').read_text(encoding='utf-8')),{'id':'g'})
+-            with closing(sqlite3.connect(destination/'template-proposals.sqlite3')) as backup:
+-                self.assertEqual(backup.execute('select body from proposals').fetchall(),[('私有草稿',)])
+-            self.assertFalse((destination/'template-proposals.sqlite3-wal').exists())
++            with tempfile.TemporaryDirectory() as outside:
++                destination=Path(outside)/'backup'
++                snapshot(self.root,destination)
++                self.assertEqual(json.loads((destination/'templates/groups/g.json').read_text(encoding='utf-8')),{'id':'g'})
++                with closing(sqlite3.connect(destination/'raw/internal/template-proposals.sqlite3')) as backup:
++                    self.assertEqual(backup.execute('select body from proposals').fetchall(),[('私有草稿',)])
++                self.assertFalse((destination/'raw/internal/template-proposals.sqlite3-wal').exists())
+ 
+     def test_formal_fingerprint_detects_same_path_edits_and_pending_journal(self):
+         first=sync.fingerprint(self.root)
+diff --git a/frontend/test_website.py b/frontend/test_website.py
+index 893abbbcf41d01fa34e651b9a1d7d186b7c9430d..96642c012e7fe05d9e7cfef9253db17218b1375f 100644
+--- a/frontend/test_website.py
++++ b/frontend/test_website.py
+@@ -18,6 +18,24 @@ import server
+ import workspace
+ 
+ 
++def authenticated_listener(root, port, *, base_path='/os-tutorial',
++                           origin='https://internal.example', auth_config=None, state_dir=None):
++    """Exercise the shared authenticated HTTP handler without background jobs."""
++    from website_server import handler_class, configure
++    listener = server.LocalServer(('127.0.0.1', port), handler_class(server.Handler), bind_and_activate=False)
++    listener.root = Path(root)
++    listener.allow_reuse_address = sys.platform != 'win32'
++    try:
++        listener.server_bind()
++        listener.server_activate()
++        configure(listener, base_path, origin, auth_config or listener.root/'admins.json',
++                  state_dir or listener.root/'state')
++        return listener
++    except BaseException:
++        listener.server_close()
++        raise
++
++
+ class PublicHttpTests(unittest.TestCase):
+     def setUp(self):
+         self.tmp = tempfile.TemporaryDirectory()
+@@ -27,19 +45,19 @@ class PublicHttpTests(unittest.TestCase):
+         (self.root/'knowledge/index.meta.json').write_text('{"notes":[]}', encoding='utf-8')
+         self.config = self.root/'admins.json'
+         self.config.write_text(json.dumps({'sessionSecret':'s'*48,'sessionTtlHours':168,
+-            'users':[{'username':'klywa','password':'aa2025'}]}), encoding='utf-8')
++            'users':[{'username':'internal.example','password':'fixture-only-passphrase'}]}), encoding='utf-8')
+         with patch('crawler.Runtime', side_effect=AssertionError('public must not create crawler')):
+-            self.http = server.create_server(self.root, 0, public=True, base_path='/os-tutorial',
+-                origin='https://klywa.xyz', auth_config=self.config, state_dir=self.root/'state')
++            self.http = authenticated_listener(self.root, 0,  base_path='/os-tutorial',
++                origin='https://internal.example', auth_config=self.config, state_dir=self.root/'state')
+         self.addCleanup(self.http.server_close)
+         self.thread = threading.Thread(target=self.http.serve_forever, daemon=True)
+         self.thread.start()
+         self.addCleanup(self.http.shutdown)
+         self.cookie = ''
+ 
+-    def call(self, path, method='GET', data=None, origin='https://klywa.xyz', cookie=None, forwarded=None):
++    def call(self, path, method='GET', data=None, origin='https://internal.example', cookie=None, forwarded=None):
+         conn = http.client.HTTPConnection('127.0.0.1', self.http.server_port, timeout=10)
+-        headers = {'Host':'klywa.xyz','Content-Type':'application/json','Origin':origin,
++        headers = {'Host':'internal.example','Content-Type':'application/json','Origin':origin,
+                    'Cookie':self.cookie if cookie is None else cookie}
+         if forwarded:headers['X-Forwarded-For']=forwarded
+         conn.request(method, path, body=None if data is None else json.dumps(data), headers=headers)
+@@ -52,7 +70,7 @@ class PublicHttpTests(unittest.TestCase):
+ 
+     def login(self):
+         code, data, headers = self.call('/os-tutorial/api/auth/login', 'POST',
+-                                      {'username':'klywa','password':'aa2025'})
++                                      {'username':'internal.example','password':'fixture-only-passphrase'})
+         self.assertEqual(code, 200, data)
+         self.cookie = headers['Set-Cookie'].split(';')[0]
+         return headers['Set-Cookie']
+@@ -136,16 +154,17 @@ class PublicHttpTests(unittest.TestCase):
+ 
+     def test_public_unix_listener_enables_address_reuse(self):
+         with patch.object(server.sys,'platform','linux'):
+-            http=server.create_server(self.root,0,public=True,auth_config=self.config,
++            http=authenticated_listener(self.root,0,auth_config=self.config,
+                                       state_dir=self.root/'state')
+         try:
+             self.assertEqual(http.socket.getsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR),1)
+         finally:
+             http.server_close()
+ 
++    @unittest.skipUnless(hasattr(socket, "SO_EXCLUSIVEADDRUSE"), "requires Windows socket option")
+     def test_public_windows_listener_keeps_exclusive_binding(self):
+         with patch.object(server.sys,'platform','win32'):
+-            http=server.create_server(self.root,0,public=True,auth_config=self.config,
++            http=authenticated_listener(self.root,0,auth_config=self.config,
+                                       state_dir=self.root/'state')
+         try:
+             self.assertEqual(http.socket.getsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR),0)
+@@ -157,12 +176,12 @@ class PublicHttpTests(unittest.TestCase):
+         port=self.http.server_port
+         self.assertEqual(self.call('/os-tutorial/api/health')[0],200)
+         self.http.shutdown(); self.thread.join(); self.http.server_close()
+-        restarted=server.create_server(self.root,port,public=True,auth_config=self.config,
++        restarted=authenticated_listener(self.root,port,auth_config=self.config,
+                                        state_dir=self.root/'state')
+         restarted.server_close()
+ 
+     def test_login_cookie_tampering_origin_and_logout(self):
+-        self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'klywa','password':'bad'})[0],401)
++        self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'internal.example','password':'bad'})[0],401)
+         cookie = self.login()
+         for attribute in ('HttpOnly','Secure','SameSite=Lax','Path=/os-tutorial'):
+             self.assertIn(attribute,cookie)
+@@ -184,7 +203,7 @@ class PublicHttpTests(unittest.TestCase):
+         self.login()
+         self.config.write_text('{}',encoding='utf-8')
+         self.assertEqual(self.call('/os-tutorial/api/auth/me')[1]['role'],'guest')
+-        self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'klywa','password':'aa2025'})[0],503)
++        self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'internal.example','password':'fixture-only-passphrase'})[0],503)
+ 
+     def test_login_rate_limit(self):
+         codes=[self.call('/os-tutorial/api/auth/login','POST',{'username':'x','password':'x'})[0] for _ in range(12)]
+@@ -192,7 +211,7 @@ class PublicHttpTests(unittest.TestCase):
+ 
+     def test_proxy_client_rate_limit_does_not_lock_other_visitors(self):
+         for _ in range(10):self.call('/os-tutorial/api/auth/login','POST',{'username':'x','password':'x'},forwarded='198.51.100.10')
+-        self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'klywa','password':'aa2025'},forwarded='203.0.113.20')[0],200)
++        self.assertEqual(self.call('/os-tutorial/api/auth/login','POST',{'username':'internal.example','password':'fixture-only-passphrase'},forwarded='203.0.113.20')[0],200)
+ 
+     def test_admin_save_revision_and_pending_sync_keep_content(self):
+         import json_store
+@@ -224,7 +243,7 @@ class PublicHttpTests(unittest.TestCase):
+         # Header/body packets may arrive separately. Closing with unread payload
+         # can reset the connection on Windows before the client reads its404.
+         with socket.create_connection(('127.0.0.1',self.http.server_port),timeout=3) as connection:
+-            connection.sendall(b'POST /os-tutorial/api/sources HTTP/1.0\r\nHost: klywa.xyz\r\nContent-Length: 2\r\n\r\n')
++            connection.sendall(b'POST /os-tutorial/api/sources HTTP/1.0\r\nHost: internal.example\r\nContent-Length: 2\r\n\r\n')
+             connection.settimeout(.1)
+             with self.assertRaises(TimeoutError):connection.recv(1)
+             connection.sendall(b'{}');connection.settimeout(3)
+@@ -234,7 +253,7 @@ class PublicHttpTests(unittest.TestCase):
+     def test_clean_release_can_start_while_publisher_holds_activation_lock(self):
+         from website_sync import sync_lock
+         with sync_lock(self.root/'state'):
+-            http=server.create_server(self.root,0,public=True,state_dir=self.root/'state')
++            http=authenticated_listener(self.root,0,state_dir=self.root/'state')
+             http.server_close()
+ 
+ 
+@@ -251,7 +270,7 @@ class DatasetTests(unittest.TestCase):
+             json_store.write_file(root/json_store.JOURNAL,journal)
+             self.assertFalse((root/record['metadata']['path']).exists())
+             with self.assertRaises(ValueError):website_data.validate(root)
+-            http=server.create_server(root,0,public=True,state_dir=root/'state')
++            http=authenticated_listener(root,0,state_dir=root/'state')
+             http.server_close()
+             self.assertTrue((root/record['metadata']['path']).exists())
+             self.assertFalse((root/json_store.JOURNAL).exists())
+diff --git a/frontend/vite.config.ts b/frontend/vite.config.ts
+index 38ad1dc6df46f6180234da26b34affafa7f34ffd..8ed2724ddbf7901d86466b23b05090897fb11cf3 100644
+--- a/frontend/vite.config.ts
++++ b/frontend/vite.config.ts
+@@ -1,53 +1,5 @@
+ import {defineConfig} from 'vite';
+-import {readFileSync} from 'node:fs';
+-import {resolve} from 'node:path';
+-import {randomUUID} from 'node:crypto';
+-
+-const instanceId=randomUUID();
+ 
+ export default defineConfig({
+-  server: {
+-    host: '127.0.0.1',
+-    port: 5173,
+-    strictPort: true,
+-    open: false,
+-    proxy: {'/api': 'http://127.0.0.1:8765'},
+-  },
+-  plugins: [{
+-    name: 'wxq-local-frontend',
+-    configureServer(server) {
+-      server.middlewares.use('/__wxq_local_frontend', async (request, response, next) => {
+-        if (request.method === 'GET') {
+-          response.setHeader('Content-Type', 'application/json');
+-          response.end(JSON.stringify({root: server.config.root,mode:'local',port:server.config.server.port,
+-            pid:process.pid,instance_id:instanceId}));
+-        } else if (request.method === 'POST' && request.url === '/stop'
+-          && request.headers.host === `127.0.0.1:${server.config.server.port}`
+-          && (!request.headers.origin || request.headers.origin === `http://127.0.0.1:${server.config.server.port}`)) {
+-          try {
+-            let control;
+-            try {control=JSON.parse(readFileSync(resolve(server.config.root,'../raw/local-services/control.json'),'utf8'));}
+-            catch(error) {if((error as NodeJS.ErrnoException).code!=='ENOENT')throw error;}
+-            if(control && request.headers['x-wxq-supervisor']!==control.instance_id) {
+-              const result=await fetch(`http://127.0.0.1:${control.port}/pause`,{method:'POST',
+-                headers:{Authorization:`Bearer ${control.token}`,'Content-Type':'application/json'},
+-                body:JSON.stringify({services:['frontend'],reason:'explicit_stop'})});
+-              if(!result.ok)throw new Error('manager pause failed');
+-            }
+-            response.statusCode=202;response.end('{}');
+-            setTimeout(()=>{void server.close().then(()=>process.exit(0));},50);
+-          } catch {
+-            response.statusCode=503;response.end('{}');
+-          }
+-        } else if (request.method === 'POST' && request.headers.host === '127.0.0.1:5173'
+-          && !request.headers.origin && request.headers['x-wxq-refresh'] === '1') {
+-          server.ws.send({type: 'full-reload', path: '*'});
+-          response.statusCode = 204;
+-          response.end();
+-        } else {
+-          next();
+-        }
+-      });
+-    },
+-  }],
++  server: {host: '127.0.0.1', port: 5173, strictPort: true},
+ });
+diff --git a/frontend/website_auth.py b/frontend/website_auth.py
+index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f04de684f 100644
+--- a/frontend/website_auth.py
++++ b/frontend/website_auth.py
+@@ -5,6 +5,8 @@ import hmac
+ from http.cookies import SimpleCookie, CookieError
+ import json
+ from pathlib import Path
++import sqlite3
++from contextlib import closing
+ import secrets
+ import os
+ import threading
+@@ -13,6 +15,24 @@ import time
+ COOKIE = 'os_tutorial_session'
+ 
+ 
++def password_digest(password, salt=None):
++    salt = salt or secrets.token_hex(16)
++    digest = hashlib.scrypt(password.encode(), salt=bytes.fromhex(salt), n=16384, r=8, p=1)
++    return 'scrypt$' + salt + '$' + digest.hex()
++
++
++def password_matches(password, encoded):
++    if encoded.startswith('scrypt$'):
++        try:
++            _, salt, _ = encoded.split('$')
++            return hmac.compare_digest(encoded, password_digest(password, salt))
++        except ValueError:
++            return False
++    # Read older configurations supplied by an operator.
++    return hmac.compare_digest(hashlib.sha256(password.encode()).digest(),
++                               hashlib.sha256(encoded.encode()).digest())
++
++
+ class Unconfigured(ValueError):
+     pass
+ 
+@@ -70,10 +90,32 @@ class Auth:
+             role=value.get('role',user['role'])
+             allowed=['admin','annotator','viewer'] if user['role']=='admin' else [user['role']]
+             if role not in allowed or not hmac.compare_digest(expected,value['v']):return None
++            if self.revoked(value['nonce']):
++                return None
+             return value,{'username':username,'account_role':user['role'],'role':role,'allowed_roles':allowed}
+-        except (Unconfigured,ValueError,TypeError,KeyError,CookieError):
++        except (Unconfigured,ValueError,TypeError,KeyError,CookieError,sqlite3.Error):
+             return None
+ 
++    @property
++    def revocation_db(self):
++        return self.path.with_suffix('.revoked.sqlite3')
++
++    def revoked(self, nonce):
++        if not self.revocation_db.exists():
++            return False
++        with closing(sqlite3.connect(self.revocation_db)) as db:
++            return bool(db.execute('SELECT 1 FROM revoked WHERE nonce=?', (nonce,)).fetchone())
++
++    def logout(self, cookie):
++        token = self._token(cookie)
++        if token:
++            session, _ = token
++            with self.lock, closing(sqlite3.connect(self.revocation_db)) as db, db:
++                db.execute('CREATE TABLE IF NOT EXISTS revoked(nonce TEXT PRIMARY KEY, expires REAL)')
++                db.execute('DELETE FROM revoked WHERE expires<=?', (time.time(),))
++                db.execute('INSERT OR IGNORE INTO revoked VALUES (?,?)', (session['nonce'], session['exp']))
++        return self.cookie()
++
+     def actor(self,cookie):
+         token=self._token(cookie)
+         return token[1] if token else None
+@@ -107,8 +149,8 @@ class Auth:
+             failures=[t for t in self.attempts.get(peer,[]) if now-t<900]
+             self.attempts[peer]=failures
+             if len(failures)>=10:return 429,None
+-            if not isinstance(username,str) or not isinstance(password,str) or not hmac.compare_digest(
+-                    hashlib.sha256(password.encode()).digest(),hashlib.sha256(users.get(username,{'password':secrets.token_hex(32)})['password'].encode()).digest()):
++            user = users.get(username) if isinstance(username, str) else None
++            if not isinstance(password, str) or not user or not password_matches(password, user['password']):
+                 failures.append(now);return 401,None
+             self.attempts.pop(peer,None)
+         return 200,self.issue(secret,username,users[username],ttl)
+@@ -117,20 +159,3 @@ class Auth:
+         return f'{self.cookie_name}={token}; Path={self.base_path}; Max-Age={ttl}; HttpOnly;'+(' Secure;' if self.secure else '')+' SameSite=Lax'
+ 
+ 
+-class LocalAuth(Auth):
+-    """Loopback-only role simulation; missing cookies keep existing local admin behavior."""
+-    def __init__(self,path):
+-        path=Path(path)
+-        if not path.exists():
+-            path.parent.mkdir(parents=True,exist_ok=True)
+-            secret=secrets.token_urlsafe(48)
+-            value={'schema_version':2,'sessionSecret':secret,'sessionTtlHours':168,
+-                   'accounts':[{'username':'local','password':secrets.token_urlsafe(48),'role':'admin'}]}
+-            temporary=path.with_name(path.name+'.'+secrets.token_hex(6)+'.tmp')
+-            temporary.write_text(json.dumps(value),encoding='utf-8')
+-            os.chmod(temporary,0o600);os.replace(temporary,path)
+-        super().__init__(path,'/',secure=False,cookie_name='os_tutorial_local_session')
+-
+-    def actor(self,cookie):
+-        return super().actor(cookie) or {'username':'local','account_role':'admin','role':'admin',
+-                                       'allowed_roles':['admin','annotator','viewer']}
+diff --git a/frontend/website_server.py b/frontend/website_server.py
+index 81e3a534105b03cd4fdf11fd76da1f9e93112300..8e0c3d3ccd8124b59871f12279cfda0cc07be720 100644
+--- a/frontend/website_server.py
++++ b/frontend/website_server.py
+@@ -73,7 +73,10 @@ def handler_class(base):
+ 
+         def who(self):
+             from site_access import session
+-            return session(self.server,self.headers.get('Cookie'),public=True)
++            result = session(self.server,self.headers.get('Cookie'),public=True)
++            if not self.server.auth.path.exists():
++                result['setup_required'] = True
++            return result
+ 
+         def discard_small_body(self):
+             if getattr(self,'_body_read',False):return
+@@ -165,12 +168,13 @@ def handler_class(base):
+                         from lineup_layout import reading_document
+                         value=reading_document(note,query.get('player',[None])[0])
+                     else:value=note
+-                    return self.response(200,sanitize(value),etag=True)
++                    details = value if self.actor()['role'] == 'admin' else sanitize(value)
++                    return self.response(200,details,etag=True)
+                 if season!='S1' and (path=='/api/cards' or path.startswith('/api/cards/')):
+                     return self.response(200,sanitize(seasons.cards(root,season,path)),etag=True)
+                 if path=='/api/cards/status':
+-                    from card_publication import status
+-                    return self.response(200,status(root,self.server.state_dir))
++                    from card_publication import internal_status
++                    return self.response(200,internal_status(root,self.server.state_dir))
+                 match=re.fullmatch(r'/api/cards/([^/]+)/images/(thumb|image)',path)
+                 if match:
+                     from card_publication import resolve
+@@ -266,7 +270,7 @@ def handler_class(base):
+                 if path=='/api/auth/login':
+                     status,cookie=self.server.auth.login(data.get('username'),data.get('password'),self.login_peer())
+                     return self.auth_reply(status,{'ok':True} if status==200 else {'error':'登录尝试过多，请15分钟后重试' if status==429 else '账号或密码不正确'},cookie)
+-                if path=='/api/auth/logout':return self.auth_reply(200,{'ok':True},self.server.auth.cookie())
++                if path=='/api/auth/logout':return self.auth_reply(200,{'ok':True},self.server.auth.logout(self.headers.get('Cookie')))
+                 if not self.identity():return self.response(401,{'error':'请先登录管理员'})
+                 if path=='/api/auth/role':
+                     cookie=self.server.auth.switch_role(self.headers.get('Cookie'),data.get('role'))
+@@ -342,12 +346,14 @@ def configure(server,base_path,origin,config,state_dir):
+     from website_sync import SyncManager,sync_lock
+     from website_data import recover
+     parsed=urlsplit(origin)
+-    if parsed.scheme!='https' or not parsed.netloc or parsed.path not in ('','/') or parsed.query or parsed.fragment:
++    if parsed.scheme not in ('http','https') or not parsed.netloc or parsed.path not in ('','/') or parsed.query or parsed.fragment:
+         raise ValueError('公网origin必须为HTTPS域名且不含路径')
+     if not re.fullmatch(r'(?:/[A-Za-z0-9_-]+)*',base_path):raise ValueError('无效的公网路径前缀')
+     server.base_path=base_path
+     server.public_origin=origin.rstrip('/')
+-    server.auth=Auth(config,base_path)
++    server.auth=Auth(config,base_path,secure=parsed.scheme=='https')
++    if Path(config).exists():
++        server.auth.config()
+     server.state_dir=Path(state_dir)
+     from card_tags import configure_public_database
+     configure_public_database(server.root,server.state_dir)
+diff --git a/start.ps1 b/start.ps1
+index fa2d012d48df2e4546b5d365800e59a9b40319e7..b79c84e833eac33c0f02b670e456966ffada7de7 100644
+--- a/start.ps1
++++ b/start.ps1
+@@ -6,8 +6,12 @@ if ($SkipTopicModel) { $launchArgs += '--skip-topic-model' }
+ $localPython = Join-Path $PSScriptRoot '.wxq-runtime/Scripts/python.exe'
+ if (Test-Path -LiteralPath $localPython) {
+     & $localPython @launchArgs
++} elseif ($env:PYTHON) {
++    & $env:PYTHON @launchArgs
+ } elseif (Get-Command py -ErrorAction SilentlyContinue) {
+     & py -3.12 @launchArgs
++} elseif ($env:PYTHON) {
++    & $env:PYTHON @launchArgs
+ } elseif (Get-Command python -ErrorAction SilentlyContinue) {
+     & python @launchArgs
+ } else {
+diff --git a/start.sh b/start.sh
+new file mode 100644
+index 0000000000000000000000000000000000000000..2561e834373c5cf5a14556010d214b44bc059a0c
+--- /dev/null
++++ b/start.sh
+@@ -0,0 +1,19 @@
++#!/usr/bin/env bash
++set -euo pipefail
++cd "$(dirname "$0")"
++python_bin="${PYTHON:-python3}"
++if [[ -x .wxq-runtime/bin/python ]]; then python_bin=.wxq-runtime/bin/python; fi
++if ! command -v llama-server >/dev/null; then
++  for arg in "$@"; do
++    if [[ "$arg" == "--skip-topic-model" ]]; then exec "$python_bin" frontend/launch.py --no-browser "$@"; fi
++  done
++  engine=.wxq-runtime-engine
++  mkdir -p "$engine"
++  if [[ ! -d "$engine/source" ]]; then
++    git clone --branch b11712 --depth 1 https://github.com/ggml-org/llama.cpp.git "$engine/source"
++  fi
++  cmake -S "$engine/source" -B "$engine/build" -DCMAKE_BUILD_TYPE=Release -DGGML_NATIVE=OFF -DLLAMA_CURL=OFF
++  cmake --build "$engine/build" --config Release --target llama-server -j 2
++  export PATH="$PWD/$engine/build/bin:$PATH"
++fi
++exec "$python_bin" frontend/launch.py --no-browser "$@"
