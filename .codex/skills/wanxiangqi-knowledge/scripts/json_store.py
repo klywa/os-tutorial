@@ -15,6 +15,7 @@ from save_timing import timed
 
 INDEX = 'knowledge/index.meta.json'
 JOURNAL = 'raw/knowledge/pending-json-save.json'
+NOTE_IMPORT_MAX_BYTES = 2_000_000
 
 
 def read(path, default=None):
@@ -509,9 +510,30 @@ def entry_claims(record, node_id):
             if claim['text_ref']==node_id]
 
 
-def prepare_entry_evidence(root, record, node_id, changes, *, inserting=False):
+def validate_entry_evidence(root, evidence):
     import math
-    import re
+
+    if not isinstance(evidence, dict):
+        raise ValueError('无效的证据')
+    source = evidence.get('source')
+    if evidence.get('type') == 'document':
+        if (set(evidence) != {'type', 'source', 'paragraph_start', 'paragraph_end'}
+                or not isinstance(source, str) or not re.fullmatch(r'doc-[0-9a-f]{64}', source)):
+            raise ValueError('无效的文档证据')
+    else:
+        start, end = evidence.get('start'), evidence.get('end')
+        frame = evidence.get('frame', '')
+        if (set(evidence) - {'type', 'source', 'start', 'end', 'frame'}
+                or evidence.get('type', 'video') != 'video'
+                or not isinstance(source, str) or not re.fullmatch(r'BV[A-Za-z0-9]{10}:p[1-9]\d*', source)
+                or not all(type(t) in (int, float) and 0 <= t <= 86400 and math.isfinite(t) for t in (start, end))
+                or end < start or not isinstance(frame, str)
+                or (frame and not re.fullmatch(r'frames/[\w.-]+\.(?:jpg|jpeg|png|webp)', frame))):
+            raise ValueError('无效的视频证据定位')
+    check_evidence(root, evidence, check_duration=True)
+
+
+def prepare_entry_evidence(root, record, node_id, changes, *, inserting=False):
 
     claims = entry_claims(record, node_id)
     allowed = {claim['id'] for claim in claims}
@@ -536,24 +558,7 @@ def prepare_entry_evidence(root, record, node_id, changes, *, inserting=False):
             raise ValueError('证据必须关联本条目的已有结论')
         seen.add(change['claim_id'])
         for evidence in change['evidence']:
-            if not isinstance(evidence, dict):
-                raise ValueError('无效的证据')
-            source = evidence.get('source')
-            if evidence.get('type') == 'document':
-                if (set(evidence) != {'type', 'source', 'paragraph_start', 'paragraph_end'}
-                        or not isinstance(source, str) or not re.fullmatch(r'doc-[0-9a-f]{64}', source)):
-                    raise ValueError('无效的文档证据')
-            else:
-                start, end = evidence.get('start'), evidence.get('end')
-                frame = evidence.get('frame', '')
-                if (set(evidence) - {'type', 'source', 'start', 'end', 'frame'}
-                        or evidence.get('type', 'video') != 'video'
-                        or not isinstance(source, str) or not re.fullmatch(r'BV[A-Za-z0-9]{10}:p[1-9]\d*', source)
-                        or not all(type(t) in (int, float) and 0 <= t <= 86400 and math.isfinite(t) for t in (start, end))
-                        or end < start or not isinstance(frame, str)
-                        or (frame and not re.fullmatch(r'frames/[\w.-]+\.(?:jpg|jpeg|png|webp)', frame))):
-                    raise ValueError('无效的视频证据定位')
-            check_evidence(root, evidence, check_duration=True)
+            validate_entry_evidence(root, evidence)
     if any(claim.get('evidence') and claim['id'] not in seen for claim in claims):
         raise ValueError('请一并提交本条目仍适用的结论证据')
     return deepcopy(changes), deepcopy(claims)
@@ -702,6 +707,76 @@ def edit(root, nid, payload, *, _review=None, _entry_evidence=None, public=False
         return project(saved[0] if saved else record, public=public)
 
 
+def unpack_note(document):
+    if not isinstance(document, dict):
+        raise ValueError('请选择知识笔记 JSON 对象')
+    if 'notes' in document:
+        notes = document['notes']
+        if not isinstance(notes, list) or len(notes) != 1 or not isinstance(notes[0], dict) or 'body' not in notes[0]:
+            raise ValueError('上传包必须只含一篇知识笔记')
+        document = notes[0]
+    if 'body' not in document:
+        return document, {}
+    metadata = document.get('metadata', {})
+    if not isinstance(metadata, dict):
+        raise ValueError('笔记附件必须为对象')
+    return document['body'], metadata
+
+
+def _import_new_note(root, stored_metadata, uploaded):
+    import wxq
+
+    body, metadata = unpack_note(uploaded)
+    document.validate(body)
+    if (not isinstance(body.get('supporting_nodes', []), list)
+            or not isinstance(body.get('semantics', {}), dict)
+            or not isinstance(body.get('leading', ''), str)):
+        raise ValueError('正文的支撑节点、语义或前导文本格式无效')
+    body = deepcopy(body)
+    headings = [node for node in body['nodes'] if node['type'] == 'heading' and node['level'] == 1]
+    if len(headings) != 1:
+        raise ValueError('正文必须包含唯一的一级标题')
+    headings[0]['title'] = stored_metadata['title']
+    if stored_metadata['type'] == 'lineup':
+        body.setdefault('semantics', {}).setdefault('players', [stored_metadata['player_id']])
+
+    claims = metadata.get('claim_annotations', [])
+    if not isinstance(claims, list):
+        raise ValueError('结论证据格式无效')
+    record = {'body': body, 'metadata': stored_metadata}
+    check_record(record)
+    valid_refs = {node['id'] for node in [*body['nodes'], *body.get('supporting_nodes', [])] if node['type'] == 'entry'}
+    visible_refs = {node['id'] for node in body['nodes'] if node['type'] == 'entry'}
+    seen = set()
+    annotations = []
+    for claim in claims:
+        if not isinstance(claim, dict):
+            raise ValueError('结论证据格式无效')
+        identity, ref, kind = (claim.get(key) for key in ('id', 'text_ref', 'kind'))
+        if (not isinstance(identity, str) or not identity or identity in seen
+                or not isinstance(ref, str) or ref not in valid_refs
+                or not isinstance(kind, str) or kind not in wxq.KNOWLEDGE_KINDS
+                or type(claim.get('inference', False)) is not bool
+                or not isinstance(claim.get('evidence', []), list)):
+            raise ValueError('结论证据的身份、节点或类别无效')
+        seen.add(identity)
+        annotation = {key: claim[key] for key in ('text_ref', 'kind', 'inference', 'evidence',
+                      'section', 'condition', 'version', 'text_format', 'display_ref') if key in claim}
+        if any(not isinstance(annotation[key], str) for key in ('section', 'condition', 'text_format', 'display_ref') if key in annotation) or (
+                annotation.get('version') is not None and not isinstance(annotation['version'], str)):
+            raise ValueError('结论附加字段格式无效')
+        if 'display_ref' in annotation and annotation['display_ref'] not in visible_refs:
+            raise ValueError('证据显示节点不存在')
+        for evidence in annotation.get('evidence', []):
+            validate_entry_evidence(root, evidence)
+        if annotation.get('evidence'):
+            annotations.append({**annotation, 'id': 'claim-' + digest([stored_metadata['id'], identity])[:24]})
+    if annotations:
+        stored_metadata['claim_annotations'] = annotations
+    validate_semantics(root, record)
+    return record
+
+
 def create(root, payload):
     import wxq
     from workspace import filename, store_lock, Conflict
@@ -723,6 +798,9 @@ def create(root, payload):
     request = payload.get('request_id', '')
     if not re.fullmatch(r'[A-Za-z0-9_-]{8,128}', request):
         raise ValueError('新建请求标识无效')
+    if ('document' in payload and len(json.dumps(payload['document'], ensure_ascii=False,
+            separators=(',', ':')).encode('utf-8')) > NOTE_IMPORT_MAX_BYTES):
+        raise ValueError('JSON 文件超过 2 MB')
     with store_lock(root, wait=True):
         recover(root)
         items = records(root)
@@ -730,6 +808,8 @@ def create(root, payload):
         creation = {k: payload.get(k) for k in ('type', 'title', 'aliases', 'player_id')}
         if seasons != ['S1']:
             creation['seasons'] = seasons
+        if 'document' in payload:
+            creation['document'] = payload['document']
         fingerprint = digest(creation)
         old = next((r for r in items if r['metadata'].get('creation', {}).get('request_id') == request), None)
         if old:
@@ -748,7 +828,12 @@ def create(root, payload):
         metadata = {'id': 'note-' + hashlib.sha256(request.encode()).hexdigest()[:24], 'type': kind, 'title': title,
                     'path': path, 'seasons': seasons, 'aliases': payload.get('aliases', []),
                     'player_id': player, 'creation': {'request_id': request, 'payload_hash': fingerprint}}
-        item = from_legacy({**metadata, 'meta': {'players': [player]} if kind == 'lineup' else {}}, '# ' + title + '\n')
+        if 'document' in payload:
+            if not isinstance(metadata['aliases'], list) or any(not isinstance(value, str) for value in metadata['aliases']):
+                raise ValueError('别名须为文字列表')
+            item = _import_new_note(root, metadata, payload['document'])
+        else:
+            item = from_legacy({**metadata, 'meta': {'players': [player]} if kind == 'lineup' else {}}, '# ' + title + '\n')
         items.append(item)
         save(root, items)
         return next(n for n in notes(root) if n['id'] == metadata['id'])

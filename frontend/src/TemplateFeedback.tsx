@@ -9,7 +9,7 @@ type Message={action:string;by:string;at:string;body?:string;revisions?:{body:st
 type Thread={id:string;group_id:string;group_name:string;utterance_id?:string;original_text:string;original_group?:TemplateGroup;status:string;messages:Message[]};
 export type Activity={id:string;original_submission?:TemplateGroup|null;group_id:string;action:string;at:string;by:string;source?:string;batch_id?:string;reason?:string;original_text?:string;body?:string;before?:TemplateGroup|null;submitted?:TemplateGroup|null;reviewed?:TemplateGroup|null;after?:TemplateGroup|null};
 const labels:Record<string,string>={fix_utterance:'固定话术',unfix_utterance:'取消固定话术',resolve_conflict:'处理同步冲突',submit:'提交导入提案',proposal_comment:'回复提案讨论',create:'新建模板组',edit_group:'编辑模板组',add_utterance:'增加话术',edit_utterance:'修改话术',delete_utterance:'删除话术',delete:'删除模板组',ignore:'忽略模板组',unignore:'取消忽略模板组',ignore_utterance:'忽略话术',unignore_utterance:'取消忽略话术',approve:'采纳提案',approve_partial:'部分采纳',edit:'修改提案',reject:'拒绝提案',confirm_warning:'确认关联资料',comment_edit:'编辑批注',comment_create:'添加批注',comment_reply:'回复批注',comment_close:'关闭批注',comment_reopen:'重开批注'};
-export function activityLabel(row:Activity){return `${labels[row.action]??row.action} · ${row.by} · ${new Date(row.at).toLocaleString()}`;}
+export function activityLabel(row:Activity){return `${row.action==='review_status'?'切换审核状态':labels[row.action]??row.action} · ${row.by} · ${new Date(row.at).toLocaleString()}`;}
 
 function ChangeSummary({record}:{record:Activity}){
  const before=record.before,after=record.after??record.reviewed??record.submitted;

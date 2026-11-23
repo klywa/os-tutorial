@@ -23,7 +23,7 @@ EXCLUDED_TREES = (
     '.github/', '.planning/', 'deploy/', 'docs/superpowers/', 'docs/reports/',
     '.codex/skills/wanxiangqi-knowledge/tests/', 'frontend/browser_',
     'knowledge-history/', 'knowledge-sync/', 'templates/conflicts/',
-    'templates/resolutions/', 'templates/history/', 'raw/', 'personal/',
+    'templates/resolutions/', 'templates/history/', 'templates/review-history/', 'raw/', 'personal/',
 )
 PRIVATE_FIELDS = {
     'history', 'history_head', 'history_count', 'conflicts', 'review_receipts',

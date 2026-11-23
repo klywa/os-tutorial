@@ -48,7 +48,22 @@ class TemplateRuleTests(unittest.TestCase):
         self.assertEqual(saved['groups'][0]['utterances'][0]['text'], line)
         self.assertEqual(self.get('/api/templates/published')['groups'][0]['utterances'], [line])
         group['expression'] = '玩家.主C in ["嬴政"] or arg2 is "穷兵黩武"'
-        self.assertRegex(store.preview_import(self.root, document)['errors'][0], '玩家.主C')
+        self.assertEqual(store.preview_import(self.root, document)['errors'], [])
+
+    def test_direct_entity_names_roundtrip_without_membership(self):
+        line = '{玩家.主C}对上{对局.当前对手.主C.名称}，可走{玩家.当前阵容}。'
+        group = {'event_name':'解释为何上阵英雄','name':'实体名称',
+                 'expression':'arg1 is "韩信"','utterances':[line]}
+        document = {'kind':'speech-template-library','schema_version':3,'events':[],'groups':[group]}
+        preview = store.preview_import(self.root, document)
+        self.assertEqual(preview['errors'], [])
+        store.apply(self.root, preview['revision'], preview['changes'])
+        published = self.get('/api/templates/published')
+        self.assertEqual(published['groups'][0]['utterances'], [line])
+        self.assertEqual(store.preview_import(self.root, published)['errors'], [])
+        for path in ('玩家.战场','玩家.不存在','对局','玩家.当前阵容.阵容名'):
+            group['utterances'] = ['{' + path + '}。']
+            self.assertIn(path,store.preview_import(self.root, document)['errors'][0])
 
     def test_unit_alias_catalog_still_imports(self):
         package = store.refresh_published(self.root)

@@ -266,7 +266,7 @@ export function AccountControls({beforeChange,onLocate,panel:externalPanel}:{bef
  useLayoutEffect(()=>{if(open&&items.length&&drawer.current)drawer.current.scrollTop=panel.scrollTop.current;},[open,items.length]);
  const [accountOpen,setAccountOpen]=useState(false);const account=useRef<HTMLDivElement>(null);
  useEffect(()=>{const close=(e:Event)=>{if(e instanceof KeyboardEvent?e.key==='Escape':!account.current?.contains(e.target as Node))setAccountOpen(false);};document.addEventListener('pointerdown',close);document.addEventListener('keydown',close);return()=>{document.removeEventListener('pointerdown',close);document.removeEventListener('keydown',close);};},[]);
- const names:Record<Role,string>={admin:'管理员',annotator:'编写员',guest:'访客',viewer:'浏览者'};
+ const names:Record<Role,string>={admin:'管理员',annotator:'编写员',quality:'质检员',guest:'访客',viewer:'浏览者'};
  const allowed=session.allowed_roles??((session.account_role??session.role)==='admin'?['admin','annotator','viewer']:[session.role]);
  function canChange(){return beforeChange()&&window.dispatchEvent(new Event('wxq:before-role-change',{cancelable:true}));}
  function canChangeView(){return window.dispatchEvent(new Event('wxq:before-proposal-view-change',{cancelable:true}));}

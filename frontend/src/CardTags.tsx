@@ -14,7 +14,11 @@ export function CardTagQueue({select,epoch}:{select:(id:string)=>void;epoch:numb
  return error?<p role="alert">{error}</p>:rows.length?<details><summary>待审核标签（{rows.length}）</summary>{rows.map(r=><button key={r.id} onClick={()=>select(r.card_id)}>{r.card_name} · {r.author}</button>)}</details>:null;
 }
 
-export function CardTags({id,updated}:{id:string;updated:()=>void}){
+export function canShowCardTags(season:string,category:string){
+ return season==='S1'&&['heroes','equipment','effect-cards','talents'].includes(category);
+}
+
+export function CardTags({id,updated}:{id:string;updated?:()=>void}){
  const {session}=useAuth();
  const editor=session.role==='admin'||session.role==='annotator';
  const [data,setData]=useState<Detail|null>(null),[draft,setDraft]=useState<string|null>(null);
@@ -28,7 +32,7 @@ export function CardTags({id,updated}:{id:string;updated:()=>void}){
   try{
    await api(url,'POST',body);
    if(url===path){setDraft(null);setNotice('标签修改已提交审核。');}
-   setEpoch(i=>i+1);updated();
+   setEpoch(i=>i+1);updated?.();
   }
   catch(e){setError((e as Error).message);}
   finally{saving.current=false;setBusy(false);}

@@ -760,14 +760,68 @@ def numeric_utterance_bindings(expression, event_name, catalog=None):
     return tuple(path for path, (names, _) in parser.sources().items() if names is None)
 
 
-def utterance_values(expression, event_json, state_json, catalog=None):
+def _read_utterance_path(path, name, catalog, args=None, state=None):
+    parser = _Evaluator(path, name, args or {}, state or {}, catalog)
+    return parser.path(parser.take("id"))
+
+
+def _entity_name_field(kind, catalog):
+    fields = catalog["types"].get(kind, {})
+    if fields.get("名称") == "string":
+        return "名称"
+    if kind == "阵容" and fields.get("阵容名") in ("string", "Array<string>"):
+        return "阵容名"
+    return None
+
+
+def entity_utterance_references(references, event_name, catalog=None):
+    """Identify direct references to a named entity or its scalar name field."""
+    catalog = _catalog(catalog)
+    name = _event_name(event_name, catalog)
+    parameters = catalog["events"][name]["parameters"]
+    result = set()
+    for path in references:
+        if path in parameters or not _SIMPLE_PATH.fullmatch(path):
+            continue
+        owner, _, field = path.rpartition(".")
+        explicit_name = field in ("名称", "name", "阵容名") and bool(owner)
+        try:
+            value = _read_utterance_path(owner if explicit_name else path, name, catalog)
+        except ConditionError:
+            continue
+        fields = [_entity_name_field(kind, catalog) for kind in (value.domain or value.types)]
+        if fields and all(fields) and (
+            not explicit_name or all(
+                ("名称" if field == "name" else field) == key
+                and catalog["types"][kind][key] == "string"
+                for kind, key in zip(value.domain or value.types, fields)
+            )
+        ):
+            result.add(path)
+    return result
+
+
+def utterance_values(expression, event_json, state_json, catalog=None, *, references=()):
     """Resolve the actual values for the current event and snapshot."""
     event = _object(event_json, "事件")
     state = _object(state_json, "局势")
     catalog = _catalog(catalog)
     name = _event_name(event.get("事件"), catalog)
-    parser = _BindingEvaluator(expression, name, event.get("参数", {}), state, catalog)
-    return {path: selected for path, (_, selected) in parser.sources().items() if selected is not None}
+    args = event.get("参数", {})
+    parser = _BindingEvaluator(expression, name, args, state, catalog)
+    values = {path: selected for path, (_, selected) in parser.sources().items() if selected is not None}
+    for path in entity_utterance_references(references, name, catalog) - values.keys():
+        value = _read_utterance_path(path, name, catalog, args, state)
+        raw = value.value
+        if isinstance(raw, dict):
+            field = _entity_name_field(value.types[0], catalog)
+            raw = raw.get(field, raw.get("name") if field == "名称" else None)
+            if field == "阵容名" and isinstance(raw, list):
+                names = {entry.strip() for entry in raw if entry.strip()}
+                raw = next(iter(names)) if len(names) == 1 else None
+        if isinstance(raw, str) and raw.strip():
+            values[path] = raw.strip()
+    return values
 
 
 def _utterance_slots(text):
@@ -830,6 +884,7 @@ def choose_utterance(config, event_json, state_json, *, rng=None):
     event = {**event, "事件": name}
     evaluate_condition(event, "", state, catalog)
     eligible = []
+    playable = {}
     best = None
     for group in groups:
         if not isinstance(group, dict):
@@ -852,11 +907,28 @@ def choose_utterance(config, event_json, state_json, *, rng=None):
             raise ConditionError("命中组需要非空文案列表")
         if type(priority) is not int:
             raise ConditionError("事件组优先级应为整数")
+        if best is not None and priority < best:
+            continue
+        line_references = [utterance_references(line) if "{" in line or "}" in line else () for line in lines]
+        references = set().union(*line_references)
+        values = utterance_values(group.get("expression", ""), event, state, catalog, references=references) if references else {}
+        direct = entity_utterance_references(references, name, catalog)
+        parameters = catalog["events"][name]["parameters"]
+        candidates = []
+        for line, used in zip(lines, line_references):
+            missing = set(used) - values.keys() - parameters.keys()
+            if missing - direct:
+                raise ConditionError(f"无法解析话术引用 {min(missing - direct)}")
+            if not missing:
+                candidates.append(line)
+        if not candidates:
+            continue
         if best is None or priority > best:
             best = priority
             eligible = []
         if priority == best:
             eligible.append(group)
+            playable[id(lines)] = (candidates, values)
     picker = random if rng is None else rng
     if not eligible:
         return None
@@ -864,14 +936,7 @@ def choose_utterance(config, event_json, state_json, *, rng=None):
         from .specificity import most_specific
         eligible = most_specific(eligible, event["事件"], catalog)
     lines = picker.choice([group["utterances"] for group in eligible])
-    utterance = picker.choice(lines)
-    references = utterance_references(utterance) if "{" in utterance or "}" in utterance else ()
-    if not references:
-        return utterance
-    expression = next(group.get("expression", "") for group in eligible if group["utterances"] is lines)
-    values = utterance_values(expression, event, state, catalog)
-    for path in references:
-        if path not in values and path not in catalog["events"][name]["parameters"]:
-            raise ConditionError(f"无法解析话术引用 {path}")
-    return render_bound_utterance(utterance, values)
+    candidates, values = playable[id(lines)]
+    utterance = picker.choice(lines if len(candidates) == len(lines) else candidates)
+    return render_bound_utterance(utterance, values) if values else utterance
 

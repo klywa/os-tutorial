@@ -7,8 +7,16 @@ import template_rules as rules
 ID = re.compile(r'[A-Za-z0-9_-]{1,128}\Z')
 KEY = re.compile(r'[a-z][a-z0-9_]{0,63}\Z')
 CATEGORIES = {'players','heroes','equipment','talents','derivatives','effect-cards','player-skills'}
-GROUP_METADATA = {'version', 'mode', 'tags', 'explanation', 'explanation_before',
-                  'explanation_source', 'explanation_after'}
+WORKFLOW_METADATA = {'review_status','last_modified_by','reviewed_by','reviewed_at','entity_snapshot'}
+REVIEW_STATUSES = {'ai_generated','initial_reviewed','final_reviewed'}
+GROUP_METADATA = {'version', 'mode', 'tags', 'batch', 'explanation', 'explanation_before',
+                  'explanation_source', 'explanation_after'} | WORKFLOW_METADATA
+
+
+def group_season(group):
+    version=group.get('version') or 'S1'
+    if not isinstance(version,str):raise ValueError('模板组版本无效')
+    return version.upper()
 
 
 def fields(value, allowed, required=()):
@@ -58,13 +66,6 @@ def typed(value, parameter, entities):
     if kind=='entity':entity_ref(value,entities,parameter.get('entity_categories'))
 
 
-def placeholders(value, keys):
-    from src.python.condition import utterance_references
-    unknown = [path for path in utterance_references(value) if path not in keys]
-    if unknown:
-        raise ValueError('话术引用需要已声明参数、必选的 in 字面量条件或数值比较：'+'、'.join(unknown))
-
-
 def validate_event(event, entities, *, retired_suggestions=None):
     fields(event,{'id','name','category','parameters'},{'id','name','parameters'})
     identity(event['id']);text(event['name']);text(event.get('category','未分类'),'事件分类')
@@ -103,12 +104,30 @@ def validate_group(group, events, entities, notes):
     for key, label in (('version','版本'), ('mode','模式')):
         if key in group and (not isinstance(group[key], str) or len(group[key]) > 80 or group[key] != group[key].strip()):
             raise ValueError(label+'须为不超过 80 字的文本')
-    if 'tags' in group:
-        tags = group['tags']
-        if (not isinstance(tags, list) or any(not isinstance(tag, str) or not 0 < len(tag) <= 40
-                                              or tag != tag.strip() for tag in tags)
-                or len(set(tags)) != len(tags)):
-            raise ValueError('标签须为互不重复的 1 至 40 字文本')
+    for key, label in (('tags','标签'), ('batch','批次')):
+        if key in group:
+            values = group[key]
+            if (not isinstance(values, list) or any(not isinstance(value, str) or not 0 < len(value) <= 40
+                                                    or value != value.strip() for value in values)
+                    or len(set(values)) != len(values)):
+                raise ValueError(label+'须为互不重复的 1 至 40 字文本')
+    if group.get('review_status') is not None and (not isinstance(group['review_status'],str) or group['review_status'] not in REVIEW_STATUSES):
+        raise ValueError('模板组审核状态无效')
+    if 'last_modified_by' in group:
+        modifier=group['last_modified_by']
+        fields(modifier,{'kind','username'},{'kind'})
+        if modifier['kind'] not in ('ai','user'):raise ValueError('模板组最后修改人无效')
+        if modifier['kind']=='user':text(modifier.get('username'),'最后修改人')
+        elif 'username' in modifier:raise ValueError('AI 修改人不应包含账号')
+    for key in ('reviewed_by','reviewed_at'):
+        if key in group:text(group[key],'复核记录')
+    if 'entity_snapshot' in group:
+        snapshot=group['entity_snapshot']
+        fields(snapshot,{'season','version','entities'},{'season','entities'})
+        text(snapshot['season'],'官方资料赛季')
+        if 'version' in snapshot:text(snapshot['version'],'官方资料版本')
+        if (not isinstance(snapshot['entities'],dict) or any(not isinstance(row,dict) for row in snapshot['entities'].values())):
+            raise ValueError('模板组官方描述快照无效')
     for key in ('explanation_before', 'explanation_source', 'explanation_after'):
         if key in group and (not isinstance(group[key], str) or len(group[key]) > 100000):
             raise ValueError('说明与依据分项格式无效或过长')
@@ -139,19 +158,25 @@ def validate_group(group, events, entities, notes):
         else:raise ValueError('参数不支持该比较方式')
     unique(group['utterances'],'话术')
     if not group['utterances']:raise ValueError('每组至少需要一条话术')
-    allowed = set(params)
-    expression = group.get('expression', '')
-    if expression and any('{' in u['text'] for u in group['utterances'] if isinstance(u.get('text'),str)):
-        from src.python.condition import literal_in_bindings, numeric_utterance_bindings
-        catalog = rules.library_catalog([event])
-        allowed.update(literal_in_bindings(expression,event['name'],catalog))
-        allowed.update(numeric_utterance_bindings(expression,event['name'],catalog))
+    from src.python.condition import entity_utterance_references, literal_in_bindings, numeric_utterance_bindings, utterance_references
+    references = {}
     for u in group['utterances']:
-        fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术');placeholders(u['text'],allowed)
+        fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术')
+        references.update(dict.fromkeys(utterance_references(u['text'])))
         if 'ignored' in u and type(u['ignored']) is not bool:
             raise ValueError('话术忽略状态必须是布尔值')
         if 'fixed' in u and type(u['fixed']) is not bool:
             raise ValueError('话术固定状态必须是布尔值')
+    if references.keys() - params.keys():
+        catalog = rules.library_catalog([event])
+        expression = group.get('expression', '')
+        allowed = set(params) | entity_utterance_references(references,event['name'],catalog)
+        if expression:
+            allowed.update(literal_in_bindings(expression,event['name'],catalog))
+            allowed.update(numeric_utterance_bindings(expression,event['name'],catalog))
+        unknown = [path for path in references if path not in allowed]
+        if unknown:
+            raise ValueError('话术引用需要已声明参数、单实体路径、必选的 in 字面量条件或数值比较：'+'、'.join(unknown))
     refs=group.get('related_entities',[])
     if not isinstance(refs,list):raise ValueError('关联实体必须为列表')
     seen=set()

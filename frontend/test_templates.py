@@ -159,7 +159,8 @@ class TemplateTests(unittest.TestCase):
         self.assertNotIn('auction_start',{x['id'] for x in store.snapshot(self.root)['events']})
         meta=json_store.read(self.root/'templates/library.meta.json')
         self.assertIn('auction_start',meta['tombstones']['event'])
-        self.assertTrue(meta['audit'])
+        self.assertTrue(any({'kind':'event','action':'delete','id':'auction_start'} in entry['changes']
+                            for entry in store.review_history(self.root)))
 
     def test_definition_change_validates_all_dependents(self):
         saved=self.saved();changed=event();changed['parameters']=[p for p in changed['parameters'] if p['key']!='card']

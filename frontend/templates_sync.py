@@ -6,16 +6,22 @@ Resolution takes that lock itself; reads do not initialize the library.
 from copy import deepcopy
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
 
 _MISSING = object()
 _ID = r'[A-Za-z0-9_-]{1,128}'
+_REVIEW = r'templates/review-history/[0-9a-f]{32}\.json'
+_STATE = 'templates/library.state.json'
+_META = 'templates/library.meta.json'
+_event_cache={}
 
 
 def allowed_path(path):
-    return (path == 'templates/library.meta.json'
+    return (path in (_META,_STATE)
+            or bool(re.fullmatch(_REVIEW,path))
             or bool(re.fullmatch(r'templates/(events|groups)/'+_ID+r'\.json', path))
             or bool(re.fullmatch(r'templates/(conflicts|resolutions)/[0-9a-f]{64}\.json', path)))
 
@@ -75,14 +81,19 @@ def _effective(tree):
     import templates_schema
     # Preserve raw historical definitions through the merge. The store archives
     # dependent groups and their definitions together on publication.
-    result=deepcopy(tree)
-    retired=tree.get('templates/library.meta.json',{}).get('tombstones',{}).get('event',{})
+    result={path:deepcopy(value) for path,value in tree.items() if path not in (_STATE,_META)}
+    state=tree.get(_STATE,{})
+    if not isinstance(state,dict) or any(key not in {'tombstones','baselines','entity_archive','event_entity_archive','entity_bindings'} for key in state):
+        raise ValueError('模板状态格式无效')
+    meta={**tree.get(_META,{}),**state}
+    if meta:result[_META]=meta
+    retired=meta.get('tombstones',{}).get('event',{})
     for event in templates_schema.builtin_events():
         path='templates/events/'+event['id']+'.json'
         if event['id'] not in retired:result.setdefault(path,event)
         else:result.pop(path,None)
     for kind,folder in (('event','events'),('group','groups')):
-        for uid in tree.get('templates/library.meta.json',{}).get('tombstones',{}).get(kind,{}):
+        for uid in meta.get('tombstones',{}).get(kind,{}):
             result.pop('templates/'+folder+'/'+uid+'.json',None)
     return result
 
@@ -206,9 +217,20 @@ def _immutable(root, folder, value):
 
 
 def _events(root, folder):
+    directory=(Path(root)/'templates'/folder).resolve()
+    if not directory.is_dir():return []
+    with os.scandir(directory) as entries:
+        stamps=sorted((entry.name,st.st_ino,st.st_size,st.st_mtime_ns,st.st_ctime_ns)
+                      for entry in entries if entry.name.endswith('.json') for st in (entry.stat(),))
+    cached=_event_cache.get(directory)
+    if cached and cached[0]==stamps:return cached[1]
     result=[]
-    for path in sorted((Path(root)/'templates'/folder).glob('*.json')):
-        value=_read(path);_validate_event(path.relative_to(root).as_posix(),value);result.append(value)
+    for filename,*_ in stamps:
+        value=_read(directory/filename)
+        _validate_event(f'templates/{folder}/{filename}',value)
+        result.append(value)
+    if len(_event_cache)>=24:_event_cache.clear()
+    _event_cache[directory]=stamps,result
     return result
 
 
@@ -223,6 +245,8 @@ def validate_events(root):
     for path in (root/'templates').rglob('*'):
         if path.is_file() and path.suffix not in ('.bak','.tmp') and not allowed_path(path.relative_to(root).as_posix()):
             raise ValueError('模板包含未知公开路径：'+path.relative_to(root).as_posix())
+        if path.is_file() and re.fullmatch(_REVIEW,path.relative_to(root).as_posix()):
+            _validate_review(path,_read(path))
     return {'valid':True}
 
 
@@ -253,7 +277,13 @@ def list_conflicts(root):
 
 
 def is_blocked(root, kind, record_id):
-    return any(row['kind']==kind and row['record_id']==record_id for row in list_conflicts(root)['items'])
+    return (kind,record_id) in blocked_records(root)
+
+
+def blocked_records(root):
+    covered={(row['kind'],row['record_id'],rid) for row in _events(root,'resolutions') for rid in row['request_ids']}
+    return {(row['kind'],row['record_id']) for row in _events(root,'conflicts')
+            if (row['kind'],row['record_id'],row['id']) not in covered}
 
 
 def _resolution(conflict, value, actor):
@@ -300,9 +330,24 @@ def resolve_conflict(root, conflict_id, revision, value, actor, *, entities=None
     return templates_store.snapshot(root)
 
 
+def _validate_review(path,value):
+    if (not isinstance(value,dict) or value.get('id')!=Path(path).stem
+            or not isinstance(value.get('changes'),list)
+            or any(not isinstance(value.get(key),dict) for key in ('before','after'))):
+        raise ValueError('无效的模板审核记录：'+str(path))
+
+
+def _adopt_review(target,value):
+    _validate_review(target,value)
+    if target.is_file() and _read(target)!=value:raise ValueError('模板审核记录身份冲突：'+target.stem)
+    _write(target,value)
+
+
 def adopt_events(source, destination):
     for folder in ('conflicts','resolutions'):
         for value in _events(Path(source),folder):_immutable(destination,folder,value)
+    for path in (Path(source)/'templates/review-history').glob('*.json'):
+        _adopt_review(Path(destination)/path.relative_to(source),_read(path))
 
 
 def _metadata(trees, *, preferred='left'):
@@ -402,6 +447,8 @@ def integrate(root, base_ref, left_ref, right_ref, *, preferred='left', origin='
         for path,value in tree.items():
             if '/conflicts/' in path or '/resolutions/' in path:
                 _immutable(root,Path(path).parent.name,value)
+            elif re.fullmatch(_REVIEW,path):
+                _adopt_review(root/path,value)
     meta=_metadata(trees,preferred=preferred)
     for path in sorted(paths):
         if not re.fullmatch(r'templates/(events|groups)/'+_ID+r'\.json',path):continue
@@ -431,7 +478,9 @@ def integrate(root, base_ref, left_ref, right_ref, *, preferred='left', origin='
         else:
             _write(target,value)
             meta['tombstones'][kind].pop(rid,None)
-    if paths:_write(root/'templates/library.meta.json',meta)
+    if paths:
+        _write(root/_META,meta)
+        (root/_STATE).unlink(missing_ok=True)
     if validate and paths:
         import templates_store
         _pin_dependencies(root,trees,meta,preferred)

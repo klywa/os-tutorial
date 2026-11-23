@@ -3,6 +3,7 @@ from copy import deepcopy
 from pathlib import Path
 from types import SimpleNamespace
 import json
+import os
 import shutil
 import sys
 import tempfile
@@ -53,6 +54,8 @@ if __name__=='__main__':
             groups = [sample('forge','铸造法源之杯','铸造装备','arg3 is "法源之杯"'),
                       sample('equip','穿戴末世','穿戴装备','arg2 is "末世"'),
                       sample('talent','选择末世','选择天赋','arg2 is "末世"')]
+            groups[1]['mode']='万象大赛'
+            groups[2]['mode']='万象速决'
         if '--paginate' in sys.argv:
             for n in range(23):
                 groups.append({**deepcopy(groups[1]),'id':f'zz_group_{n:02d}', 'name':f'翻页组{n:02d}',
@@ -70,6 +73,8 @@ if __name__=='__main__':
             {'username':'bob','password':'fixture','role':'annotator'},
             {'username':'reader','password':'fixture','role':'viewer'}]}),encoding='utf-8')
         http=server.create_server(root,0,public=True,base_path='',auth_config=config,state_dir=root/'state')
+        if dist := os.environ.get('WXQ_TEMPLATE_BROWSER_DIST'):
+            http.dist=Path(dist)
         http.public_origin=f'http://127.0.0.1:{http.server_port}'
         http.auth.secure=False
         http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda **kw:{'state':'synced'})

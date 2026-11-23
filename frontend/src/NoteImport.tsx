@@ -2,6 +2,7 @@ import {useEffect,useRef,useState,type ChangeEvent} from 'react';
 import {createPortal} from 'react-dom';
 import {api} from './model';
 import {DiffText} from './ReviewFields';
+import {readNoteJson} from './noteUpload';
 import type {KnowledgeDocument,KnowledgeNode,Note} from './types';
 import './sectionSync.css';
 
@@ -46,8 +47,7 @@ function ImportDialog({note,onClose,onSubmitted}:{note:Note;onClose:()=>void;onS
   if(!file)return;
   setBusy(true);
   try{
-   if(file.size>2_000_000)throw new Error('JSON 文件超过 2 MB');
-   setUpload({document:JSON.parse((await file.text()).replace(/^\uFEFF/,'')),request_id:crypto.randomUUID()});
+   setUpload({document:await readNoteJson(file),request_id:crypto.randomUUID()});
   }catch(err){setError((err as Error).message);}
   finally{setBusy(false);}
  }

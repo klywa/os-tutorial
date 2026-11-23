@@ -41,6 +41,24 @@ export function fixedArguments(group: TemplateGroup) {
  return values;
 }
 
+export function fileTriggerChanged(before:TemplateGroup,after:TemplateGroup,oldEvent?:TemplateEvent,nextEvent?:TemplateEvent){
+ if(before.event_id!==after.event_id)return true;
+ const a=fixedArguments(before),b=fixedArguments(after);
+ if(a.size!==b.size||[...a].some(([key,value])=>b.get(key)!==value))return true;
+ const used=(group:TemplateGroup)=>{
+  const expression=(group.expression??'').replace(/"(?:[^"\\]|\\.)*"/g,'');
+  const keys=new Set(expression.match(/[\p{L}_][\p{L}\p{N}_]*/gu)??[]);
+  for(const condition of group.conditions)keys.add(condition.parameter_key);
+  for(const row of group.utterances){
+   for(const match of row.text.matchAll(/(?<!\{)\{([A-Za-z_]\w*)(?:\.[^{}]+)?\}(?!\})/g))keys.add(match[1]);
+  }
+  return keys;
+ };
+ const keys=new Set([...used(before),...used(after)]);
+ return [...keys].some(key=>JSON.stringify(oldEvent?.parameters.find(parameter=>parameter.key===key))!==
+  JSON.stringify(nextEvent?.parameters.find(parameter=>parameter.key===key)));
+}
+
 export function templateAction(group:TemplateGroup,event?:TemplateEvent,values=fixedArguments(group)):string {
  if(!event) return group.event_id;
 

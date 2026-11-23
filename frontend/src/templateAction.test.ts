@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {fixedArguments,parameterRole,templateAction} from './templateAction';
+import {fileTriggerChanged,fixedArguments,parameterRole,templateAction} from './templateAction';
 import type {TemplateGroup,TemplateEvent} from './templates';
 
 const event:TemplateEvent={id:'equip',name:'穿戴装备',parameters:[
@@ -7,6 +7,11 @@ const event:TemplateEvent={id:'equip',name:'穿戴装备',parameters:[
 ]};
 const group:TemplateGroup={id:'g',name:'装备组',event_id:event.id,scope:{player_id:null,lineup_note_id:null},conditions:[],utterances:[],related_entities:[]};
 describe('template action and parameters',()=>{
+ it('distinguishes a changed action binding from an additional condition on local edits',()=>{
+  const before={...group,expression:'arg1 is "韩信" and 玩家.等级 >= 5'};
+  expect(fileTriggerChanged(before,{...before,expression:'arg1 is "李白" and 玩家.等级 >= 5'},event,event)).toBe(true);
+  expect(fileTriggerChanged(before,{...before,expression:'arg1 is "韩信" and 玩家.等级 >= 6'},event,event)).toBe(false);
+ });
  it('uses only guaranteed participants and preserves their parameter roles',()=>{
   const expression='(arg2 is "驱雷" and not (arg1 is "司空震")) and 玩家.战场 has "司空震"';
   expect(templateAction({...group,expression},event)).toBe('给英雄穿戴驱雷');

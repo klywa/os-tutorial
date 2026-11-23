@@ -791,14 +791,15 @@ index d779d5ee9bef105fbeb9fb6fef0faa9878a85910..ede9efeca3719ec9a6aded23a8c5c7f6
 +    logging.basicConfig(level=logging.INFO)
      raise SystemExit(main())
 diff --git a/frontend/site_access.py b/frontend/site_access.py
-index 21713f45ddfad810666fac3e1096a5cc3052cf42..8bdb022e29fef8330674b80215028de60999b156 100644
+index e666b981f856a42b726eb26f86bec989a96f348a..8bdb022e29fef8330674b80215028de60999b156 100644
 --- a/frontend/site_access.py
 +++ b/frontend/site_access.py
-@@ -15,7 +15,7 @@ def state_dir(server):
+@@ -15,8 +15,7 @@ def state_dir(server):
  def actor(server,cookie):
      auth=getattr(server,'auth',None)
      if auth:return auth.actor(cookie)
--    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':['admin','annotator','viewer']}
+-    from website_auth import ACCOUNT_ROLES
+-    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':list(ACCOUNT_ROLES)}
 +    return None
  
  
@@ -852,13 +853,13 @@ index def03feac5fcd466aad0fd507ea783f749228c0b..4be9825a4f7b3aff001f9202030db3e7
 +  }}>{children}</TestAuthContext.Provider>);
 +}
 diff --git a/frontend/src/auth.tsx b/frontend/src/auth.tsx
-index ff3085b6f415a74397d754b5b833ddf77d9eedb1..bd984c63d6f580429748e7138bafb0ec567522da 100644
+index 38767c1d61c6f628940d2a2f73089a18bb99a31a..0a00c026d2cdf1307e9e31a56d54a9f342bdc236 100644
 --- a/frontend/src/auth.tsx
 +++ b/frontend/src/auth.tsx
 @@ -4,9 +4,9 @@ import {apiUrl} from './urls';
  import {syncPollMs,type SyncStatus} from './syncStatus';
  import {configureReaderCache} from './readerCache';
- export type Role='guest'|'admin'|'annotator'|'viewer';
+ export type Role='guest'|'admin'|'annotator'|'quality'|'viewer';
 -export type Session={mode:'local'|'public';role:Role;account_role?:Role;allowed_roles?:Role[];username:string|null;base_path:string;sync?:SyncStatus;capabilities?:Record<string,boolean>};
 -const local:Session={mode:'local',role:'admin',username:null,base_path:'/'};
 -export function capabilitiesFor(session:Session){const admin=session.role==='admin',localTools=session.mode==='local'&&admin,writable=admin&&(session.mode==='local'||!session.sync||session.sync.state!=='conflict');return {localTools,editNotes:writable,manageMatches:writable,reviews:localTools,inlineEdit:admin||session.role==='annotator',proposeNotes:session.role==='annotator'};}
@@ -879,45 +880,45 @@ index ff3085b6f415a74397d754b5b833ddf77d9eedb1..bd984c63d6f580429748e7138bafb0ec
  // Kept for existing app composition; public access is now gated before App mounts.
  export function AdminAccess(){return null;}
 diff --git a/frontend/src/main.tsx b/frontend/src/main.tsx
-index 2bca8e313ff1de07e2c9a54d1952c005f02b779b..06a60c0d400a6da7dac77e6b6d193233232e8230 100644
+index ab18072c3e11c241dce0b9947f32732ef8ad4fb8..82b18de29bb6542df467088448b96fb0334ed0de 100644
 --- a/frontend/src/main.tsx
 +++ b/frontend/src/main.tsx
-@@ -69,7 +69,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+@@ -74,7 +74,7 @@ function App({season,source,onSource,notesState,templateState,scroll,initialPref
    const {session}=useAuth();
    useEffect(()=>{cancelProposalLocation();proposalPanel.setOpen(false);proposalPanel.setLocating('');proposalPanel.scrollTop.current=0;setDirty(false);setEditing(false);},[session.role,session.username]);
    useEffect(()=>()=>{navigationEpoch.current++;pendingLocation.current?.(false);clearHighlight.current?.();},[]);
 -  const [prefs,setPrefs]=useState<Prefs>(()=>{const value=initialPrefs??preferences();return capabilities.localTools?value:{...value,view:['dashboard','cards','templates'].includes(value.view)?value.view:'notes'};}),[sources,setSources]=useState<Source[]>([]);
 +  const [prefs,setPrefs]=useState<Prefs>(()=>{const value=initialPrefs??preferences();return capabilities.localTools?value:{...value,view:['play','dashboard','cards','templates'].includes(value.view)?value.view:'notes'};}),[sources,setSources]=useState<Source[]>([]);
    const [editing,setEditing]=useState(false),[dirty,setDirty]=useState(false),[toast,setToast]=useState(''),[opponent,setOpponent]=useState('');
-   const navigationState=useRef({dirty,editing});navigationState.current={dirty,editing};
-   const [creatorSeed,setCreatorSeed]=useState<Partial<Creator>|undefined>(undefined);
-@@ -95,7 +95,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
-   const refreshSources=useRef(singleFlight(async()=>{const epoch=sourceEpoch.current;try{const rows=await api<Source[]>('sources');if(epoch===sourceEpoch.current){setSources(rows);setSourcesLoaded(true);}setSourcesError('');}catch(e){setSourcesError((e as Error).message);throw e;}})).current;
+   const [fileDirty,setFileDirty]=useState(false),fileDirtyRef=useRef(false),fileBusy=useRef(false);
+   const usingFileNotes=source==='file'&&prefs.view==='notes';
+@@ -105,7 +105,7 @@ function App({season,source,onSource,notesState,templateState,scroll,initialPref
    async function load(){loader.reload();}
-   useEffect(()=>{if(!capabilities.localTools)return;void api('crawler/creators/resume','POST',{}).catch(e=>setToast('UP监听恢复失败：'+e.message));},[]);
+   const resumedCreators=useRef(false);
+   useEffect(()=>{if(!capabilities.localTools||source!=='database'||resumedCreators.current)return;resumedCreators.current=true;void api('crawler/creators/resume','POST',{}).catch(e=>setToast('UP监听恢复失败：'+e.message));},[capabilities.localTools,source]);
 -  useEffect(()=>{if(!capabilities.localTools)setPrefs(p=>({...p,view:['dashboard','cards','templates'].includes(p.view)?p.view:'notes'}));},[capabilities.localTools]);
 +  useEffect(()=>{if(!capabilities.localTools)setPrefs(p=>({...p,view:['play','dashboard','cards','templates'].includes(p.view)?p.view:'notes'}));},[capabilities.localTools]);
    useEffect(()=>{if(capabilities.localTools&&prefs.view==='sources')void refreshSources().catch(()=>{});},[prefs.view]);
    useEffect(()=>localStorage.setItem('wxq.preferences',JSON.stringify(prefs)),[prefs]);
-   useEffect(()=>{const handler=(e:BeforeUnloadEvent)=>{if(dirty){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler);},[dirty]);
-@@ -124,7 +124,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+   useEffect(()=>{const handler=(e:BeforeUnloadEvent)=>{if(dirty||fileDirty||fileBusy.current){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',handler);return()=>window.removeEventListener('beforeunload',handler);},[dirty,fileDirty]);
+@@ -141,7 +141,7 @@ function App({season,source,onSource,notesState,templateState,scroll,initialPref
    function select(id:string,view=prefs.view){if(!leave())return;cancelProposalLocation();patch({selected:id,view});setOpponent('');setDirectoryOpen(false);}
    const noteListRef=useRef(notes);noteListRef.current=notes;
-   const navigateReading=useCallback((id:string,player?:string)=>{if(!noteListRef.current.some(n=>n.id===id)){setToast('当前赛季没有关联笔记');return;}if(!leave())return;cancelProposalLocation();setPrefs(p=>({...p,selected:id,view:'notes',...(player?{branchPlayers:{...p.branchPlayers,[id]:player}}:{})}));setOpponent('');setDirectoryOpen(false);},[]);
+   const navigateReading=useCallback((id:string,player?:string)=>{if(!noteListRef.current.some(n=>n.id===id)){setToast('当前赛季没有关联笔记');return;}if(!leave())return;cancelProposalLocation();onSource('database');setPrefs(p=>({...p,selected:id,view:'notes',...(player?{branchPlayers:{...p.branchPlayers,[id]:player}}:{})}));setOpponent('');setDirectoryOpen(false);},[]);
 -  function changeView(view:Prefs['view']){if(!capabilities.localTools&&view!=='notes'&&view!=='dashboard'&&view!=='cards'&&view!=='templates')return;if(leave()){cancelProposalLocation();patch({view,...(view==='play'&&!notes.some(n=>n.id===prefs.selected&&n.type==='lineup')?{selected:notes.find(n=>n.type==='lineup')?.id??''}:{})});}}
 +  function changeView(view:Prefs['view']){if(!capabilities.localTools&&view!=='play'&&view!=='notes'&&view!=='dashboard'&&view!=='cards'&&view!=='templates')return;if(leave()){cancelProposalLocation();patch({view,...(view==='play'&&!notes.some(n=>n.id===prefs.selected&&n.type==='lineup')?{selected:notes.find(n=>n.type==='lineup')?.id??''}:{})});}}
    function changeSection(section:string){patch({section});requestAnimationFrame(()=>content.current?.querySelector(`[data-section="${CSS.escape(section)}"]`)?.scrollIntoView({block:'start'}));}
    useEffect(()=>{if(!mobile)return;const button=document.querySelector<HTMLElement>('.phase-nav .selected');if(!button)return;const bar=button.parentElement!;if(button.offsetLeft<bar.scrollLeft)bar.scrollLeft=button.offsetLeft;else if(button.offsetLeft+button.offsetWidth>bar.scrollLeft+bar.clientWidth)bar.scrollLeft=button.offsetLeft+button.offsetWidth-bar.clientWidth;},[prefs.section,mobile]);
-   const readingKey=(active?.id??'')+'|'+(reading?.player??'');
-@@ -218,7 +218,7 @@ function App({season,initialPrefs,onSeason}:{season:Season;initialPrefs:Prefs|nu
+   const readingKey=season+'|'+(active?.id??'')+'|'+(reading?.player??'');
+@@ -235,7 +235,7 @@ function App({season,source,onSource,notesState,templateState,scroll,initialPref
    }
    function created(note:Note){setNewNote(false);if(!(note.seasons??['S1']).includes(season)){setToast('笔记已创建，请切换至其适用赛季查看');return;}loader.accept(note);patch({selected:note.id,view:'notes',type:normalizeDirectoryType(note.type),query:'',player:'',hero:''});setEditing(true);setDirty(false);setToast('空白笔记已创建');}
    function noteList(entries:typeof visible){return entries.map(({note,status})=><button key={note.id} className={'note-option '+(active?.id===note.id?'active':'')} onClick={()=>select(note.id)}><span className="note-icon">{note.type==='lineup'?'◈':note.type==='player'?'♙':'▤'}</span><span><strong>{note.title}</strong><small>{note.meta?.core_heroes.map(name).join('、')||({lineup:'阵容攻略',player:'棋手笔记',other:'知识笔记'}[note.type])}</small></span>{status==='unknown'&&<span className="badge gold">待确认</span>}</button>);}
--  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><TemplateWarnings ready={!loading&&(!!reader||!notes.length||!['play','notes'].includes(prefs.view))}/><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航"><select className="season-select" aria-label="赛季" value={season} onChange={e=>changeSeason(e.target.value as Season)}>{seasons.map(s=><option key={s} value={s}>{s}</option>)}</select>{(['play','notes','templates','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='notes'||v==='dashboard'||v==='cards'||v==='templates').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',templates:'模板库',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions">{prefs.view==='notes'&&<NoteZipExport key={season} season={season}/>}<SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
-+  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><TemplateWarnings ready={!loading&&(!!reader||!notes.length||!['play','notes'].includes(prefs.view))}/><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航"><select className="season-select" aria-label="赛季" value={season} onChange={e=>changeSeason(e.target.value as Season)}>{seasons.map(s=><option key={s} value={s}>{s}</option>)}</select>{(['play','notes','templates','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='play'||v==='notes'||v==='dashboard'||v==='cards'||v==='templates').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',templates:'模板库',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions">{prefs.view==='notes'&&<NoteZipExport key={season} season={season}/>}<SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button><button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button></div></header>
-     <ReviewProvider key={session.role+'|'+(prefs.view==='templates'?'templates':prefs.view==='dashboard'?'dashboard':active?.id??'none')} note={prefs.view==='templates'?undefined:active} onSaved={saved} onInlineSaved={inlineSaved} onDirty={setDirty} externalDirty={dirty} readOnly={!loader.verified}><AdminAccess/>{capabilities.localTools&&<GlobalActivity expanded={activityExpanded} onExpandedChange={setActivityExpanded}/>}
+-  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><TemplateWarnings ready={source==='database'&&!loading&&(!!reader||!notes.length||!['play','notes'].includes(prefs.view))}/><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航">{sourceSwitch}<select className="season-select" aria-label="赛季" value={season} onChange={e=>changeSeason(e.target.value as Season)}>{seasons.map(s=><option key={s} value={s}>{s}</option>)}</select>{templateModePicker}{(['play','notes','templates','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='notes'||v==='dashboard'||v==='cards'||v==='templates').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',templates:'模板库',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions">{prefs.view==='notes'&&!usingFileNotes&&<NoteZipExport key={season} season={season}/>}<SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(!allowFileLeave())return false;if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button>{!usingFileNotes&&<button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button>}</div></header>
++  return <CardProvider enabled={!loading&&(!!reader||!['play','notes'].includes(prefs.view))}><EntityScope references={active?.entities??[]}><div className={'app '+prefs.mode}><TemplateWarnings ready={source==='database'&&!loading&&(!!reader||!notes.length||!['play','notes'].includes(prefs.view))}/><header className="app-header"><button ref={directoryButton} className="mobile-directory-button" aria-label="目录" aria-controls="note-directory-drawer" aria-expanded={directoryOpen} onClick={()=>setDirectoryOpen(v=>!v)}>☰ 目录</button><div className="brand"><span className="brand-mark">象</span><div><strong>万象棋</strong><small>战术手册</small></div></div><nav aria-label="主要导航">{sourceSwitch}<select className="season-select" aria-label="赛季" value={season} onChange={e=>changeSeason(e.target.value as Season)}>{seasons.map(s=><option key={s} value={s}>{s}</option>)}</select>{templateModePicker}{(['play','notes','templates','dashboard','sources','crawler','cards'] as const).filter(v=>capabilities.localTools||v==='play'||v==='notes'||v==='dashboard'||v==='cards'||v==='templates').map(v=><button key={v} className={prefs.view===v?'selected':''} onClick={()=>changeView(v)}>{({play:'对局助手',notes:'全部笔记',templates:'模板库',dashboard:'看板',sources:'外部内容',crawler:'爬取',cards:'卡牌库'})[v]}</button>)}</nav><div className="header-actions">{prefs.view==='notes'&&!usingFileNotes&&<NoteZipExport key={season} season={season}/>}<SyncConflicts onResolved={()=>loader.reload()}/><AccountControls panel={proposalPanel} onLocate={locateProposal} beforeChange={()=>{if(!allowFileLeave())return false;if(dirty&&!confirm('有未保存修改，确定放弃并切换身份吗？'))return false;return true;}}/><button aria-label="切换阅读模式" title="切换侧栏与完整窗口" onClick={()=>patch({mode:prefs.mode==='full'?'sidebar':'full'})}>{prefs.mode==='full'?'▥ 侧栏模式':'▣ 完整模式'}</button>{!usingFileNotes&&<button className="refresh" aria-label="重新载入知识" onClick={()=>{if(leave())void load();}}>↻</button>}</div></header>
+     <ReviewProvider key={session.role+'|'+(prefs.view==='templates'?'templates':prefs.view==='dashboard'?'dashboard':usingFileNotes?'file-notes':active?.id??'none')} note={prefs.view==='templates'||usingFileNotes?undefined:active} onSaved={saved} onInlineSaved={inlineSaved} onDirty={setDirty} externalDirty={dirty} readOnly={!loader.verified}><AdminAccess/>{capabilities.localTools&&<GlobalActivity expanded={activityExpanded} onExpandedChange={setActivityExpanded}/>}
      {capabilities.editNotes&&newNote&&<NewNoteDialog season={season} entities={options.authoring_players??options.entities} notes={notes} onOpen={id=>select(id)} defaultType={prefs.view==='play'?'lineup':prefs.type} onClose={()=>setNewNote(false)} onCreated={created}/>}
-     {prefs.view!=='templates'&&(loader.checking||!!family&&!loader.verified||loader.pending||!loader.ready)&&<div className="reader-cache-status" role="status">{loader.pending?'笔记已有新版本；现有草稿保留，保存或取消后重新比较。':loader.checking?'正在检查更新…':!loader.verified?'缓存阅读中，确认最新版本后可编辑。':!loader.ready?'正在建立搜索和筛选索引…':''}<button className="quiet" onClick={()=>loader.reload()}>重试</button></div>}
+     {prefs.view!=='templates'&&!usingFileNotes&&(loader.checking||!!family&&!loader.verified||loader.pending||!loader.ready)&&<div className="reader-cache-status" role="status">{loader.pending?'笔记已有新版本；现有草稿保留，保存或取消后重新比较。':loader.checking?'正在检查更新…':!loader.verified?'缓存阅读中，确认最新版本后可编辑。':!loader.ready?'正在建立搜索和筛选索引…':''}<button className="quiet" onClick={()=>loader.reload()}>重试</button></div>}
 diff --git a/frontend/src/noteReviewView.test.tsx b/frontend/src/noteReviewView.test.tsx
 index f84f51e73d0cbc819d143b1c6da8e22b44d55247..d86200fdada1995446c3976fc101062241f87a2a 100644
 --- a/frontend/src/noteReviewView.test.tsx
@@ -2022,7 +2023,7 @@ index 38ad1dc6df46f6180234da26b34affafa7f34ffd..8ed2724ddbf7901d86466b23b0509089
 +  server: {host: '127.0.0.1', port: 5173, strictPort: true},
  });
 diff --git a/frontend/website_auth.py b/frontend/website_auth.py
-index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f04de684f 100644
+index 549467c422ef256fc3b3047371cf616a1fc305bb..13c6bb92179a1dbb2785aab9813a7b7a85e89828 100644
 --- a/frontend/website_auth.py
 +++ b/frontend/website_auth.py
 @@ -5,6 +5,8 @@ import hmac
@@ -2034,8 +2035,8 @@ index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f
  import secrets
  import os
  import threading
-@@ -13,6 +15,24 @@ import time
- COOKIE = 'os_tutorial_session'
+@@ -14,6 +16,24 @@ COOKIE = 'os_tutorial_session'
+ ACCOUNT_ROLES = ('admin','annotator','quality','viewer')
  
  
 +def password_digest(password, salt=None):
@@ -2059,9 +2060,9 @@ index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f
  class Unconfigured(ValueError):
      pass
  
-@@ -70,10 +90,32 @@ class Auth:
+@@ -71,10 +91,32 @@ class Auth:
              role=value.get('role',user['role'])
-             allowed=['admin','annotator','viewer'] if user['role']=='admin' else [user['role']]
+             allowed=list(ACCOUNT_ROLES) if user['role']=='admin' else [user['role']]
              if role not in allowed or not hmac.compare_digest(expected,value['v']):return None
 +            if self.revoked(value['nonce']):
 +                return None
@@ -2093,7 +2094,7 @@ index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f
      def actor(self,cookie):
          token=self._token(cookie)
          return token[1] if token else None
-@@ -107,8 +149,8 @@ class Auth:
+@@ -108,8 +150,8 @@ class Auth:
              failures=[t for t in self.attempts.get(peer,[]) if now-t<900]
              self.attempts[peer]=failures
              if len(failures)>=10:return 429,None
@@ -2104,7 +2105,7 @@ index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f
                  failures.append(now);return 401,None
              self.attempts.pop(peer,None)
          return 200,self.issue(secret,username,users[username],ttl)
-@@ -117,20 +159,3 @@ class Auth:
+@@ -118,20 +160,3 @@ class Auth:
          return f'{self.cookie_name}={token}; Path={self.base_path}; Max-Age={ttl}; HttpOnly;'+(' Secure;' if self.secure else '')+' SameSite=Lax'
  
  
@@ -2124,7 +2125,7 @@ index 845c765576f3cc13a0992dccab9edfdcb3b12c11..37c3736cbb78cc070d6f6ea2c70d140f
 -
 -    def actor(self,cookie):
 -        return super().actor(cookie) or {'username':'local','account_role':'admin','role':'admin',
--                                       'allowed_roles':['admin','annotator','viewer']}
+-                                       'allowed_roles':list(ACCOUNT_ROLES)}
 diff --git a/frontend/website_server.py b/frontend/website_server.py
 index 81e3a534105b03cd4fdf11fd76da1f9e93112300..8e0c3d3ccd8124b59871f12279cfda0cc07be720 100644
 --- a/frontend/website_server.py

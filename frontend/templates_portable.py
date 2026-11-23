@@ -94,7 +94,7 @@ def _insert_retained(rows, previous, keep):
 
 
 def _retain_metadata(record, previous):
-    for key in sorted(schema.GROUP_METADATA & previous.keys() - record.keys()):
+    for key in sorted((schema.GROUP_METADATA - schema.WORKFLOW_METADATA) & previous.keys() - record.keys()):
         record[key] = deepcopy(previous[key])
 
 
@@ -236,6 +236,18 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
     return validation
 
 
+def encode_group(original,*,authoring=True):
+    group = {key: deepcopy(original[key]) for key in ('id', 'name', 'event_id', 'scope')}
+    metadata=schema.GROUP_METADATA if authoring else schema.GROUP_METADATA-schema.WORKFLOW_METADATA
+    group.update({key: deepcopy(original[key]) for key in sorted(metadata & original.keys())})
+    group['conditions'] = [{key: deepcopy(value) for key, value in condition.items() if key != 'id'}
+                           for condition in original['conditions']]
+    for condition in group['conditions']:
+        if isinstance(condition['value'], dict): condition['value'] = condition['value']['name']
+    group['utterances'] = [utterance['text'] for utterance in original['utterances']]
+    return group
+
+
 def encode(public):
     events = []
     for original in public['events']:
@@ -247,14 +259,5 @@ def encode(public):
                 parameter['suggestions'] = [value['name'] for value in parameter['suggestions']]
             event['parameters'].append(parameter)
         events.append(event)
-    groups = []
-    for original in public['groups']:
-        group = {key: deepcopy(original[key]) for key in ('id', 'name', 'event_id', 'scope')}
-        group.update({key: deepcopy(original[key]) for key in sorted(schema.GROUP_METADATA & original.keys())})
-        group['conditions'] = [{key: deepcopy(value) for key, value in condition.items() if key != 'id'}
-                               for condition in original['conditions']]
-        for condition in group['conditions']:
-            if isinstance(condition['value'], dict): condition['value'] = condition['value']['name']
-        group['utterances'] = [utterance['text'] for utterance in original['utterances']]
-        groups.append(group)
+    groups = [encode_group(original) for original in public['groups']]
     return {'kind': 'speech-template-library', 'schema_version': 2, 'events': events, 'groups': groups}

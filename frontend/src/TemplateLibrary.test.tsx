@@ -5,6 +5,15 @@ import {ConditionInput} from './TemplateEditor';
 import {effectiveExpression} from './templates';
 import type {TemplateEvent,TemplateGroup} from './templates';
 describe('template group reading',()=>{
+ it('keeps editable tags and batches beside the scope and condition actions below the expression',()=>{
+  const group:TemplateGroup={id:'g',name:'示例',event_id:'buy',scope:{player_id:null,lineup_note_id:null},expression:'玩家.等级 >= 3',
+   conditions:[],utterances:[{id:'u',text:'话术'}],related_entities:[],tags:['技巧'],batch:['首批']};
+  const html=renderToStaticMarkup(<TemplateGroupCard group={group} scopeName={()=>'通用'} editable onEdit={()=>{}} onSaveMetadata={async()=>{}} onSaveExpression={async()=>{}}/>);
+  expect(html).toMatch(/<header>[\s\S]*编辑标签[\s\S]*技巧[\s\S]*编辑批次[\s\S]*首批[\s\S]*优先级[\s\S]*<\/header>/);
+  expect(html.split('</header>')[0]).not.toContain('编辑模板组');
+  expect(html).toMatch(/就地编辑完整触发条件[\s\S]*玩家\.等级 &gt;= 3[\s\S]*编辑模板组[\s\S]*复制完整条件/);
+  expect(html).not.toContain('<input');
+ });
  it('shows condition slot candidates while preserving escaped and event parameter references',()=>{
   const group:TemplateGroup={id:'g',name:'槽位示例',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[],
    utterances:[{id:'u',text:'保留{arg1.名称}，原样{{arg1.名称}}，提示{hero}，括号{{{arg1.名称}}}'}],related_entities:[]};

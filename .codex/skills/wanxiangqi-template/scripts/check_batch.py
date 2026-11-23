@@ -132,6 +132,7 @@ def trivial_condition(group, condition_catalog=None):
 
 def _longest_slot_values(group, catalog, references, cases):
     from src.python.condition import (
+        entity_utterance_references,
         evaluate_condition,
         literal_in_bindings,
         numeric_utterance_bindings,
@@ -142,10 +143,11 @@ def _longest_slot_values(group, catalog, references, cases):
     event_name = group.get("event_name")
     literal_bindings = literal_in_bindings(expression, event_name, catalog)
     numeric_paths = set(numeric_utterance_bindings(expression, event_name, catalog))
+    direct_paths = entity_utterance_references(references, event_name, catalog)
     longest = {path: max(values, key=len) for path, values in literal_bindings.items()}
     scope = group.get("scope", {})
-    used_numeric = numeric_paths.intersection(references)
-    if used_numeric:
+    used_dynamic = (numeric_paths.intersection(references) | direct_paths) - longest.keys()
+    if used_dynamic:
         for case in cases:
             event, state = case["event"], case["state"]
             player = state.get("玩家", {})
@@ -156,13 +158,15 @@ def _longest_slot_values(group, catalog, references, cases):
                 continue
             if not evaluate_condition(event, expression, state, catalog):
                 continue
-            values = utterance_values(expression, event, state, catalog)
-            for path in used_numeric.intersection(values):
+            values = utterance_values(expression, event, state, catalog, references=used_dynamic)
+            for path in used_dynamic.intersection(values):
                 longest[path] = max(longest.get(path, ""), values[path], key=len)
     for path in references:
         if path not in longest:
             if path in numeric_paths:
                 raise ValueError(f"数字槽位 {{{path}}} 缺少实际命中本组的正例")
+            if path in direct_paths:
+                raise ValueError(f"实体槽位 {{{path}}} 缺少实际命中且有名称的正例")
             raise ValueError(f"槽位 {{{path}}} 缺少可用的绑定条件")
     return longest
 
@@ -209,7 +213,7 @@ def check(document, *, scenarios=()):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("package", type=Path)
-    parser.add_argument("--scenarios", type=Path, help="含数字槽位时提供实际命中各组的正例")
+    parser.add_argument("--scenarios", type=Path, help="含动态名称或数字槽位时提供实际命中各组的正例")
     args = parser.parse_args()
     try:
         document = json.loads(args.package.read_text(encoding="utf-8-sig"))

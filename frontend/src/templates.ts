@@ -15,11 +15,20 @@ export type TemplateEvent={id:string;name:string;category?:string;parameters:Tem
 export type ConditionOperator='eq'|'ne'|'gt'|'gte'|'lt'|'lte'|'between';
 export type TemplateCondition={id:string;parameter_key:string;operator:ConditionOperator;value:unknown};
 export const templateExplanationLimit=300;
-type TemplateGroupMetadata={version?:string;mode?:string;tags?:string[];explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string};
+export type TemplateReviewStatus='ai_generated'|'initial_reviewed'|'final_reviewed';
+export const templateGameModes=['万象大赛','万象速决'] as const;
+export type TemplateGameMode=''|typeof templateGameModes[number];
+export type TemplateModifier={kind:'ai'|'user';username?:string};
+export type TemplateEntitySnapshot={season:string;version?:string;entities:Record<string,unknown>};
+type TemplateGroupMetadata={version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string};
+export const templateReviewLabels:Record<TemplateReviewStatus,string>={ai_generated:'AI生成',initial_reviewed:'初核完成',final_reviewed:'复核完成'};
+export const effectiveReviewStatus=(status:TemplateGroupMetadata['review_status'])=>status===undefined?'ai_generated':status;
+export const templateReviewLabel=(status:TemplateGroupMetadata['review_status'])=>status===null?'未标记':templateReviewLabels[status??'ai_generated'];
+export const groupSeason=(group:Pick<TemplateGroupMetadata,'version'>)=>(group.version||'S1').toUpperCase();
 export const templateExplanationFields=[
  ['explanation_before','前置思考'],['explanation_source','来源'],['explanation_after','后置校验'],
 ] as const;
-export const templateMetadataLabels={version:'版本',mode:'模式',tags:'标签',explanation_before:'说明与依据-前置思考',explanation_source:'说明与依据-来源',explanation_after:'说明与依据-后置校验'};
+export const templateMetadataLabels={version:'版本',mode:'模式',tags:'标签',batch:'批次',explanation_before:'说明与依据-前置思考',explanation_source:'说明与依据-来源',explanation_after:'说明与依据-后置校验'};
 export type TemplateGroup=TemplateGroupMetadata&{id:string;name:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
 export type UtteranceBindings=Record<string,string[]>;
 export type TemplateSnapshot={schema_version:number;condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>;utterance_bindings?:Record<string,UtteranceBindings>};
@@ -60,15 +69,24 @@ export function deriveTemplateEntities(group:TemplateGroup,event:TemplateEvent|u
  if(group.event_id===savedGroup.event_id&&group.scope.player_id===savedGroup.scope.player_id&&group.expression===savedGroup.expression&&JSON.stringify(group.related_entities)===JSON.stringify(savedGroup.related_entities)&&JSON.stringify(selectors(group,event))===JSON.stringify(selectors(savedGroup,savedEvent)))for(const ref of archive)remember(ref);
  return [...result.values()];
 }
-export type TemplateChange={kind:'event'|'group';action:'put'|'delete';id:string;value?:TemplateEvent|TemplateGroup};
+export type TemplateChange={kind:'event'|'group';action:'put'|'delete';id:string;value?:TemplateEvent|TemplateGroup;target_name?:string|null};
+export type TemplateMetadataField='tags'|'batch';
+export function appendTemplateMetadata(groups:TemplateGroup[],field:TemplateMetadataField,values:string[]):TemplateChange[]{
+ const additions=[...new Set(values)];
+ return groups.flatMap(group=>{
+  const previous=group[field]??[];
+  const missing=additions.filter(value=>!previous.includes(value));
+  return missing.length?[{kind:'group',action:'put',id:group.id,value:{...group,[field]:[...previous,...missing]}}]:[];
+ });
+}
 type TemplateVersions=Record<string,TemplateEvent|TemplateGroup|null>;
 export type TemplateReview={action?:string;at:string;by:string;changes?:TemplateChange[];before?:TemplateVersions;after?:TemplateVersions};
-export type TemplateProposal={discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
+export type TemplateProposal={history_targets?:TemplateChange[];has_history?:boolean;previously_approved?:boolean;formal_write?:{revision:string;previous_revision:string;changes:TemplateChange[]};group_review_overrides?:Record<string,TemplateReviewStatus|null>;discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
 export type TemplateWarning={group_id:string;group_name:string;revision:string;entities:{id:string;name:string;before:unknown;after:unknown}[]};
 export type WarningSnapshot={items:TemplateWarning[];unseen_items?:TemplateWarning[];notification_revision:string;unseen:boolean};
 export function loginWarningItems(snapshot:WarningSnapshot){return snapshot.unseen_items??(snapshot.unseen?snapshot.items:[]);}
-export type TemplateFilters={event:string;player:string;lineup:string;query:string;version?:string;mode?:string;tags?:string[]};
-export const emptyTemplateFilters:TemplateFilters={event:'',player:'',lineup:'',query:'',version:'',mode:'',tags:[]};
+export type TemplateFilters={event:string;player:string;lineup:string;query:string;version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|''|'unmarked';actor?:string};
+export const emptyTemplateFilters:TemplateFilters={event:'',player:'',lineup:'',query:'',version:'',mode:'',tags:[],batch:[],review_status:'',actor:''};
 export const operators:Record<ConditionOperator,string>={eq:'等于',ne:'不等于',gt:'>',gte:'≥',lt:'<',lte:'≤',between:'介于'};
 export const typeNames:Record<ParameterType,string>={text:'文本',number:'数字',boolean:'是/否',entity:'实体卡牌'};
 export function templateId(prefix:string){return prefix+'_'+crypto.randomUUID();}
@@ -116,9 +134,15 @@ function templateSearchTerms(query:string):string[]{
 export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>;utteranceBindings?:Record<string,UtteranceBindings>}={}){
  const compatible=(value:string|null,filter:string)=>!filter||(filter==='common'?value===null:value===null||value===filter);
  const terms=templateSearchTerms(filters.query);
+ const actorMatches=(group:TemplateGroup)=>{
+  const modifier=group.last_modified_by??{kind:'ai'};
+  return !filters.actor||filters.actor===modifier.kind||(modifier.kind==='user'&&filters.actor==='user:'+modifier.username);
+ };
  const scoped=groups.filter(group=>(!filters.event||group.event_id===filters.event)
   &&compatible(group.scope.player_id,filters.player)&&compatible(group.scope.lineup_note_id,filters.lineup)
-  &&(!filters.version||filters.version===group.version)&&(!filters.mode||filters.mode===group.mode)
+  &&(!filters.version||filters.version.toUpperCase()===groupSeason(group))&&(!filters.mode||filters.mode===group.mode)
+  &&(!filters.review_status||filters.review_status===(effectiveReviewStatus(group.review_status)??'unmarked'))&&actorMatches(group)
+  &&(filters.batch??[]).every(batch=>group.batch?.includes(batch))
   &&(filters.tags??[]).every(tag=>group.tags?.includes(tag)));
  if(!terms.length)return scoped;
  const entities=new Map<string,{name:string;aliases:string[]}>();for(const e of catalog){const previous=entities.get(e.id);entities.set(e.id,{name:e.name,aliases:[...new Set([...(previous?.aliases??[]),...(e.aliases??[]),...(previous?.name&&previous.name!==e.name?[previous.name]:[])])]});}
@@ -151,15 +175,18 @@ export function parseConditionValue(type:ParameterType,operator:ConditionOperato
  if(type==='entity'){if(!raw||!extra)throw new Error('请选择有效实体');return {id:raw,name:extra};}
  if(!raw.trim())throw new Error('条件值不能为空');return raw;
 }
-export function placeholderKeys(text:string){
+export function utteranceReferences(text:string){
  return [...new Set(Array.from(text.matchAll(utteranceTokens),match=>match[1])
-  .filter(path=>path&&/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(path)))];
+  .filter((path):path is string=>!!path))];
+}
+export function placeholderKeys(text:string){
+ return utteranceReferences(text).filter(path=>/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(path));
 }
 export function groupDiffKeys(base:TemplateGroup,next:TemplateGroup){
  const keys:string[]=[];
  if((base.explanation??'')!==(next.explanation??''))keys.push('explanation');
  for(const key of Object.keys(templateMetadataLabels) as (keyof typeof templateMetadataLabels)[]){
-  const empty=key==='tags'?[]:'';
+  const empty=key==='tags'||key==='batch'?[]:'';
   if(JSON.stringify(base[key]??empty)!==JSON.stringify(next[key]??empty))keys.push(key);
  }
  if(['expression','condition_tree','editor_mode'].some(key=>JSON.stringify(base[key as keyof TemplateGroup])!==JSON.stringify(next[key as keyof TemplateGroup])))keys.push('rule');for(const key of ['name','event_id','scope','related_entities','priority','ignored'] as const)if(JSON.stringify(base[key])!==JSON.stringify(next[key]))keys.push(key);
@@ -184,9 +211,14 @@ export function mergeTemplateWriteSnapshot(current:TemplateSnapshot,result:Templ
  }));
  return merged;
 }
-export function selectedGroupChange(base:TemplateGroup,next:TemplateGroup,selected:string[]):TemplateGroup{
+export function selectedGroupChange(base:TemplateGroup,next:TemplateGroup,selected:string[],includeStatus=false):TemplateGroup{
  // The server compares the full accepted record with the proposal to close it.
- if(groupDiffKeys(base,next).every(key=>selected.includes(key)))return structuredClone(next);
+ if(groupDiffKeys(base,next).every(key=>selected.includes(key))&&(!includeStatus||selected.includes('review_status')))return structuredClone(next);
+ const result=applyTemplateGroupFields(base,next,selected);
+ if(includeStatus&&selected.includes('review_status'))result.review_status=next.review_status;
+ return result;
+}
+export function applyTemplateGroupFields(base:TemplateGroup,next:TemplateGroup,selected:string[]):TemplateGroup{
  const result=structuredClone(base);
  if(selected.includes('explanation')){
   if(Object.hasOwn(next,'explanation'))result.explanation=next.explanation;

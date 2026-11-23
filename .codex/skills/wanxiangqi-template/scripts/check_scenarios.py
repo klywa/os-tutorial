@@ -16,10 +16,14 @@ class PreferGroup:
         self.lines = lines
         self.line_index = line_index
         self.offered = False
+        self.group_drawn = False
+        self.playable_count = 0
 
     def choice(self, choices):
-        if choices is self.lines:
-            return choices[self.line_index]
+        if self.group_drawn:
+            self.playable_count = len(choices) if self.offered else 0
+            return choices[self.line_index] if self.offered else choices[0]
+        self.group_drawn = True
         for item in choices:
             if item is self.lines:
                 self.offered = True
@@ -62,7 +66,6 @@ def check(config, cases, *, require_all=True):
         expected_utterances = case.get("expected_utterances")
         if "expected_utterances" in case and (
             not won or not isinstance(expected_utterances, list)
-            or len(expected_utterances) != len(group["utterances"])
             or not all(isinstance(line, str) for line in expected_utterances)
         ):
             raise ValueError(f"{key}：请按配置顺序填写所有预期可播话术")
@@ -70,6 +73,9 @@ def check(config, cases, *, require_all=True):
             errors.append(f"{key} / {case.get('reason', kind)}：实际命中 {matches}，实际可播 {probe.offered}")
             continue
         if expected_utterances is not None:
+            if len(expected_utterances) != probe.playable_count:
+                errors.append(f"{key} / {case.get('reason', kind)}：实际有 {probe.playable_count} 条可播话术")
+                continue
             actual_utterances = [first_utterance]
             actual_utterances.extend(
                 choose_utterance(config, event, state, rng=PreferGroup(group["utterances"], index))

@@ -22,6 +22,34 @@ def fixture_catalog():
 
 
 class ConditionTests(unittest.TestCase):
+    def test_direct_entity_slots_and_missing_name_fallbacks(self):
+        event = {"事件": "上阵英雄", "参数": {"arg1": "韩信"}}
+        state = {"玩家":{"主C":{"名称":"韩信"},"当前阵容":{"阵容名":["河洛花木兰"]}},
+                 "对局":{"当前对手":{"主C":{"name":"钟馗"}}}}
+        high = {"event_name":"上阵英雄","expression":"","priority":2,
+                "utterances":["{玩家.主C}对上{对局.当前对手.主C.名称}。"]}
+        low = {"event_name":"上阵英雄","expression":"","priority":1,
+               "utterances":["可以继续走{玩家.当前阵容}。"]}
+        config = {"groups":[high,low]}
+        self.assertEqual(choose_utterance(config,event,state), "韩信对上钟馗。")
+        state["对局"]["当前对手"]["主C"] = {"等级":10}
+        self.assertEqual(choose_utterance(config,event,state), "可以继续走河洛花木兰。")
+        high["utterances"].append("先观察对手。")
+        self.assertEqual(choose_utterance(config,event,state), "先观察对手。")
+        high["utterances"].pop()
+        high["expression"] = 'arg1 is "韩信"'
+        low["priority"] = high["priority"]
+        self.assertEqual(choose_utterance(config,event,state), "可以继续走河洛花木兰。")
+        state["玩家"]["当前阵容"]["阵容名"].append("另一套阵容")
+        self.assertIsNone(choose_utterance(config,event,state))
+        self.assertIsNone(choose_utterance(config,event,{}))
+
+    def test_direct_equipment_name_exposes_the_event_entity(self):
+        name = "解释为何穿戴装备"
+        event = {"事件":name, "参数":{"arg1":"韩信","arg2":{"名称":"无尽战刃"}}}
+        group = {"event_name":name, "expression":"","utterances":["可以穿戴{arg2.名称}。"]}
+        self.assertEqual(choose_utterance({"groups":[group]},event,{}), "可以穿戴无尽战刃。")
+
     def test_numeric_slots_read_actual_count_and_required_numeric_operands(self):
         name = "解释为何选择天赋"
         count = '玩家.战场.计数(阵营, "无阵营")'

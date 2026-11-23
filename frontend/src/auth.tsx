@@ -3,7 +3,7 @@ import {createContext,useContext,useEffect,useRef,useState,type ReactNode} from 
 import {apiUrl} from './urls';
 import {syncPollMs,type SyncStatus} from './syncStatus';
 import {configureReaderCache} from './readerCache';
-export type Role='guest'|'admin'|'annotator'|'viewer';
+export type Role='guest'|'admin'|'annotator'|'quality'|'viewer';
 export type Session={mode:'local'|'public';role:Role;account_role?:Role;allowed_roles?:Role[];username:string|null;base_path:string;sync?:SyncStatus;capabilities?:Record<string,boolean>};
 const local:Session={mode:'local',role:'admin',username:null,base_path:'/'};
 export function capabilitiesFor(session:Session){const admin=session.role==='admin',localTools=session.mode==='local'&&admin,writable=admin&&(session.mode==='local'||!session.sync||session.sync.state!=='conflict');return {localTools,editNotes:writable,manageMatches:writable,reviews:localTools,inlineEdit:admin||session.role==='annotator',proposeNotes:session.role==='annotator'};}

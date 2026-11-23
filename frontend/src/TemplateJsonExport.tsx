@@ -8,7 +8,7 @@ export default function TemplateJsonExport({groupId,groupName,onClose}:{groupId:
  const field=useRef<HTMLTextAreaElement>(null);
  useEffect(()=>{
   let alive=true;setLoading(true);setLoadError('');setCode('');setCopyMessage('');
-  void api<PortableTemplateLibrary>('templates/export?group_ids='+encodeURIComponent(groupId)).then(document=>{if(alive)setCode(JSON.stringify(document,null,2));}).catch(e=>{if(alive)setLoadError((e as Error).message);}).finally(()=>{if(alive)setLoading(false);});
+  void api<PortableTemplateLibrary>('templates/export?authoring=1&group_ids='+encodeURIComponent(groupId)).then(document=>{if(alive)setCode(JSON.stringify(document,null,2));}).catch(e=>{if(alive)setLoadError((e as Error).message);}).finally(()=>{if(alive)setLoading(false);});
   return()=>{alive=false;};
  },[groupId,attempt]);
  async function copy(){

@@ -109,7 +109,6 @@ def handler_class(base):
                     if season!='S1':raise KeyError('该赛季暂无标签')
                     return self.response(200,card_tags.read(root,self.actor(),path))
                 if path=='/api/templates' or path.startswith('/api/templates/'):
-                    if season!='S1':return self.response(200,seasons.template_read(root,season,path))
                     import templates_http
                     return self.response(200,templates_http.get(self.server,self.actor(),path,self.path))
                 if path=='/api/edit-locks':
@@ -257,10 +256,12 @@ def handler_class(base):
                     return self.response(415,{'error':'请求必须为JSON'})
                 if self.headers.get('Transfer-Encoding'):raise ValueError('不支持此请求格式')
                 length=int(self.headers.get('Content-Length','0'))
-                if not 0<length<=2_000_000:raise ValueError('请求大小无效')
+                note_create=path=='/api/notes' and self.command=='POST'
+                if not 0<length<=2_000_000+(16_384 if note_create else 0):raise ValueError('请求大小无效')
                 self._body_read=True
                 data=json.loads(self.rfile.read(length))
                 if not isinstance(data,dict):raise ValueError('请求必须为对象')
+                if length>2_000_000 and 'document' not in data:raise ValueError('请求大小无效')
                 season=seasons.selected(self.path)
                 if season!='S1' and seasons.protected_write(path):raise ValueError('该赛季暂不支持维护此资料')
                 if path=='/api/auth/login':

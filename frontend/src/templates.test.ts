@@ -1,8 +1,29 @@
 import {describe,it,expect} from 'vitest';
 import * as templates from './templates';
+import {projectProposalCard} from './templateProposalPreview';
 import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,renderUtterance,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
 const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题参与话术搜索'}],related_entities:[]};
 describe('template filtering and editing',()=>{
+ it('previews only fields still in the proposal and keeps deleted utterances visible for review',()=>{
+  const base={...common,tags:['基线'],utterances:[...common.utterances,{id:'remove',text:'待删'}]};
+  const formal={...base,tags:['后来正式保存'],priority:8};
+  const next={...base,name:'拟改名',utterances:common.utterances};
+  const projected=projectProposalCard(formal,{proposal_id:'p',author:'alice',created_at:'',
+   change:{kind:'group',action:'put',id:base.id,value:next},base});
+  expect(projected.group).toMatchObject({name:'拟改名',tags:['后来正式保存'],priority:8,utterances:base.utterances});
+  expect([...projected.fields]).toEqual(['name','utterance:remove']);
+  expect(projected.removedUtterances).toEqual(['remove']);
+ });
+ it('appends batch metadata to selected groups, preserving existing values and skipping unchanged groups',()=>{
+  const groups=[{...common,tags:['技巧'],batch:['原批次']},{...common,id:'other',tags:['活动']},{...common,id:'already',tags:['活动','核对']}];
+  const changes=templates.appendTemplateMetadata(groups,'tags',['活动','核对','活动']);
+  expect(changes).toEqual([
+   {kind:'group',action:'put',id:'common',value:{...groups[0],tags:['技巧','活动','核对']}},
+   {kind:'group',action:'put',id:'other',value:{...groups[1],tags:['活动','核对']}},
+  ]);
+  expect(templates.appendTemplateMetadata([groups[0]],'batch',['原批次'])).toEqual([]);
+  expect(groups[0].tags).toEqual(['技巧']);
+ });
  it('copies a template into an independent editable draft and reserves a name in its event',()=>{
   const original:TemplateGroup={...common,ignored:true,version:'s1',mode:'万象大赛',tags:['技巧'],
    utterances:[{id:'u1',text:'第一句。',fixed:true},{id:'u2',text:'第二句。',ignored:true}],

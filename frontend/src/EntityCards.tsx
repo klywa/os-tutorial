@@ -11,6 +11,8 @@ import type {CardDetail,CardSummary} from './types';
 import {splitEntities,resolveCandidates,selectedCandidate,heroVersions,cardIndex} from './entityText';
 import {DockSelection} from './dockSelection';
 import {rankCards} from './cardCompletionSearch';
+import {CardTags,canShowCardTags} from './CardTags';
+import {currentSeason} from './seasons';
 const CardContext=createContext<CardSummary[]>([]),ReferenceContext=createContext<string[]>([]);
 const details=new Map<string,Promise<CardDetail>>();
 onSessionReset(()=>details.clear());
@@ -20,7 +22,7 @@ function DockHeading({selection}:{selection:DockSelection}){
  const state=useSyncExternalStore(useCallback(run=>selection.subscribe('',run),[selection]),selection.snapshot,selection.snapshot);
  return <><div className="dock-heading"><strong>卡牌详情</strong>{state.active&&<button onClick={selection.toggle}>{state.pinned?'解锁':'锁定'}</button>}</div>{!state.active&&<p className="muted">悬浮或聚焦正文中的卡牌查看详情，点击可锁定。</p>}</>;
 }
-function DockSearch({selection,children}:{selection:DockSelection;children:ReactNode}){
+function DockSearch({selection,children,label}:{selection:DockSelection;children:ReactNode;label:string}){
  const cards=useCards();
  const input=useRef<HTMLInputElement>(null);
  const composing=useRef(false);
@@ -36,7 +38,7 @@ function DockSearch({selection,children}:{selection:DockSelection;children:React
  }
  useEffect(()=>()=>selection.setSearching(false),[selection]);
  return <>
-  <form className="dock-search" role="search" aria-label="在笔记中查找卡牌" onSubmit={e=>{
+  <form className="dock-search" role="search" aria-label={label} onSubmit={e=>{
    e.preventDefault();
    if(!composing.current&&matches[0])setSelectedId(matches[0].id);
   }}>
@@ -76,7 +78,7 @@ function copyNoteEntities(event:ClipboardEvent<HTMLDivElement>){
  event.clipboardData.setData('text/plain',selection.toString());
  event.preventDefault();
 }
-export function ReadingCards({children,noteTools=false}:{children:ReactNode;noteTools?:boolean}){
+export function ReadingCards({children,noteTools=false,cardSearch=noteTools}:{children:ReactNode;noteTools?:boolean;cardSearch?:boolean}){
  const container=useRef<HTMLDivElement>(null);const [wide,setWide]=useState(false),[target,setTarget]=useState<HTMLDivElement|null>(null);
  const [selection]=useState(()=>new DockSelection());
  useEffect(()=>{const el=container.current;if(!el)return;const observer=new ResizeObserver(([entry])=>setWide(entry.contentRect.width>=1160));observer.observe(el);return()=>observer.disconnect();},[]);
@@ -88,7 +90,7 @@ export function ReadingCards({children,noteTools=false}:{children:ReactNode;note
    {children}
    {wide&&<aside className="card-dock" aria-label="卡牌详情栏">
     <DockHeading selection={selection}/>
-    {noteTools?<DockSearch selection={selection}>{detail}</DockSearch>:detail}
+    {cardSearch?<DockSearch selection={selection} label={noteTools?'在笔记中查找卡牌':'查找卡牌'}>{detail}</DockSearch>:detail}
    </aside>}
   </div>
  </DockContext.Provider>;
@@ -151,12 +153,14 @@ export function EntityChip({ids,label,portrait=false,inline=false}:{ids:string[]
  </div>,dock?.wide&&dock.target?dock.target:document.body)}</>;
 }
 function CardVersion({card,hero=false}:{card?:CardSummary;hero?:boolean}){
+ const dock=useContext(DockContext);
  const [detail,setDetail]=useState<CardDetail|null>(null),[error,setError]=useState(''),[full,setFull]=useState(false);
  const id=card?.id,version=card?.catalog_version??'',key=id?cardPath(id,version):'';
  useEffect(()=>{if(!id)return;let alive=true;setDetail(null);setError('');void getCard(id,version).then(d=>{if(alive)setDetail(d);}).catch(e=>{if(alive)setError(e.message);});return()=>{alive=false;};},[id,key,version]);
  return <section className="card-version" aria-label={hero?(card?.awakened?'觉醒':'未觉醒'):undefined}>
  {hero&&<h3 className="card-version-heading">{card?.awakened?'觉醒':'未觉醒'}</h3>}
  <div className="popover-card"><CardImage card={card} large/><div><p className="muted">{categoryNames[card?.category??'']}{card?.tier!=null?` · ${card.tier}品阶`:''}{card?.faction?.name?` · ${card.faction.name}`:''}</p><p>{card?.effect||'资料未提供'}</p></div></div>
+ {dock?.wide&&card&&canShowCardTags(currentSeason(),card.category)&&<CardTags key={card.id} id={card.id}/>}
  {error?<p className="error" role="alert">{error}</p>:!detail?<p className="muted">正在载入技能…</p>:<>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单列本卡技能，以下来自对应普通英雄。</p>}{detail.skills.slice(0,full?undefined:1).map(s=><section key={s.id}><strong>{s.name}</strong><p>{s.effect}</p>{full&&s.enhancements.map((e,i)=><p key={i}>{e.level}级：{e.effect}</p>)}</section>)}{full&&<dl>{Object.entries(detail.stats).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}<button className="link-button" onClick={()=>setFull(!full)}>{full?'收起完整详情':'查看完整卡牌详情'}</button></>}
  </section>;
 }
