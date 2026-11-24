@@ -1,16 +1,25 @@
 {
-  "conditions": [],
-  "editor_mode": "text",
-  "event_id": "os_2406b1c2f3572ad9",
-  "explanation": "",
-  "explanation_after": "常小娥指定范围内前三回合空场时买苏烈，随后单挂才会集中获得小菟助力。\n完整候选池通过 3 项。正例可播：三回合内空场买苏烈；单项反例不命中：到第四回合已超早期窗口；缺值检查：缺少 对局.当前回合数。槽位按实测展开，播报均不超过 30 字。",
-  "explanation_before": "刷新前正式话术原句：前期空场先买苏烈，单挂后能独享小菟助力。\n原始依据：苏烈是首选的前期单挂英雄，开局优先买一张，单挂时可将前期小菟助力集中给他，配合牺牲效果获得等级成长。当前取舍：常小娥前三回合空场，苏烈到场后可集中吃助力，购买时尚未获得成长。自然语言适用条件：使用常小娥，且阵容属于常小娥灵活4人组-常小娥；购买的英雄为苏烈，当前回合数不超过3且玩家场上英雄数为0。正式条件：arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0。取舍后的播报重点：说明前期空场购买苏烈的原因在于单挂后能集中获得小菟助力。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」",
-  "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
-  "id": "group_ef848ba2364640379bdd495e6008f6eb",
-  "mode": "万象大赛",
   "name": "前期买苏烈单挂",
-  "priority": 0,
+  "scope": {
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
+  },
+  "explanation": "",
+  "explanation_after": "单挂限定助力目标，牺牲成长来自英雄自身。 购买英雄事件完整候选池实测：三回合内空场买苏烈（命中）；到第四回合已超早期窗口（未命中）；缺少 对局.当前回合数（未命中）。播报 26 个非空白字符。",
+  "explanation_before": "来源：来自「常小娥灵活4人组-常小娥」阵容笔记中「苏烈」条目，以及正式卡面「苏烈」的牺牲永久提升等级机制与「小菟助力」的随机助力提升等级机制。用途：用于棋手常小娥在「常小娥灵活4人组-常小娥」对局流派下，前期空场购买苏烈时播报购买理由。适用条件：自然语言条件为使用棋手常小娥且适用阵容范围「常小娥灵活4人组-常小娥」，购买英雄为苏烈、当前回合数不超过3且玩家场上英雄数为0；正式条件表达式为 arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0（范围 player:24、changxiaoe-general-play）。话术取舍：删去开头重复的盘面状态与购买命令，直接说明前期空场单挂苏烈能独享小菟助力，且其牺牲时还能永久提升自身等级，准确体现当前用途并控制在30字内。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」；正式卡面 card:1941「苏烈」、card:92499「小菟助力」",
+  "mode": "万象大赛",
+  "tags": [],
+  "version": "s1",
+  "utterances": [
+    {
+      "text": "苏烈的牺牲效果能实现自动成长，很适合作为前期单挂英雄。",
+      "id": "utterances_4df55a54c255474a9bb852706362a964"
+    }
+  ],
+  "id": "group_ef848ba2364640379bdd495e6008f6eb",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
   "related_entities": [
     {
       "id": "card:1941",
@@ -25,21 +34,16 @@
       "name": "小菟助力"
     }
   ],
-  "scope": {
-    "lineup_note_id": "changxiaoe-general-play",
-    "player_id": "player:24"
-  },
-  "tags": [],
-  "utterances": [
-    {
-      "id": "utterances_4df55a54c255474a9bb852706362a964",
-      "text": "前期空场买苏烈，单挂后能集中吃小菟助力。"
-    }
+  "priority": 0,
+  "editor_mode": "text",
+  "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "batch": [
+    "自回归"
   ],
-  "version": "s1",
-  "review_status": "ai_generated",
+  "review_status": "initial_reviewed",
   "last_modified_by": {
-    "kind": "ai"
+    "kind": "user",
+    "username": "local"
   },
   "entity_snapshot": {
     "season": "S1",

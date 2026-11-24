@@ -1,31 +1,35 @@
 {
-  "conditions": [],
-  "editor_mode": "text",
-  "event_id": "os_2406b1c2f3572ad9",
-  "explanation_after": "常小娥前三回合空场，孙膑单挂靠每三次施法永久成长；购买、兑换券和目前不可用的拍卖选英雄场景区分准确。\n完整候选池通过 3 项。正例可播：开局空场可买孙膑当首个过渡英雄；单项反例不命中：已有英雄，无需这套空场解释；缺值检查：快照缺少玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
-  "explanation_before": "刷新前正式话术原句：开局还没人，买孙膑可先单挂，靠自己施法攒等级。\n原始依据：前三回合空场时，孙膑单挂不依赖搭档，也能靠自身每三次施法永久成长，从商店购买可立即补足前期出战空缺（一阶兑换券也可出现该牌但需独立检查候选与早期选择组，拍卖无正式选英雄事件）。当前取舍：以行动和当下收益为主，用场上状态连接原因与结果。自然语言适用条件：常小娥前期，场上尚无人，当前购买孙膑。正式条件：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0。取舍后的播报重点：突出开局空场买孙膑可先单挂并靠自身施法攒等级，且原句逐字保留。",
-  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998\n正式卡牌库：孙膑（card:1181）\n正式卡牌库：孙膑（card:1183）",
-  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
-  "id": "group_382ef0c7b8e55b0d97f0769c28d96fb8",
-  "mode": "万象大赛",
   "name": "开局买孙膑靠自身施法成长",
-  "priority": 0,
-  "related_entities": [],
   "scope": {
-    "lineup_note_id": "changxiaoe-general-play",
-    "player_id": "player:24"
+    "player_id": "player:24",
+    "lineup_note_id": "changxiaoe-general-play"
   },
+  "explanation_after": "普通与觉醒都按每名英雄自己的施法次数计算，单挂也能兑现。 购买英雄事件完整候选池实测：开局空场可买孙膑当首个过渡英雄（命中）；已有英雄，无需这套空场解释（未命中）；快照缺少玩家.场上英雄数（未命中）。播报 27 个非空白字符。",
+  "explanation_before": "来源：阵容笔记《常小娥灵活4人组-常小娥》“孙膑”条目（n-03671a0352d5d1147998）及正式卡牌库孙膑（card:1181、card:1183），明确其可作前期单挂英雄，普通与觉醒状态均按各英雄自身施法次数分别计算，每施法3次永久提升等级（普通+1级，觉醒+2级）。用途：在购买英雄事件中播报购买孙膑单挂的即时理由。自然语言适用条件：常小娥对局前3回合且场上尚无英雄时购买孙膑。正式条件表达式：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0。话术取舍：按批注和审核要点返修，不使用假设句式并省去购买动作，直接说明孙膑单挂也按自身施法次数计算及每施法3次永久提升等级的原因与收益，兼顾普通与觉醒共同机制，控制为27个非空白字符。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998；正式卡牌库：孙膑（card:1181）；正式卡牌库：孙膑（card:1183）",
+  "mode": "万象大赛",
   "tags": [],
+  "version": "s1",
   "utterances": [
     {
-      "id": "utterances_931094d9dd274f25942446a735402bcc",
-      "text": "开局还没人，买孙膑可先单挂，靠自己施法攒等级。"
+      "text": "孙膑可以通过施法提升自生等级，可以担任前期单挂英雄。",
+      "id": "utterances_931094d9dd274f25942446a735402bcc"
     }
   ],
-  "version": "s1",
-  "review_status": "ai_generated",
+  "id": "group_382ef0c7b8e55b0d97f0769c28d96fb8",
+  "event_id": "os_2406b1c2f3572ad9",
+  "conditions": [],
+  "related_entities": [],
+  "priority": 0,
+  "editor_mode": "text",
+  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "batch": [
+    "自回归"
+  ],
+  "review_status": "initial_reviewed",
   "last_modified_by": {
-    "kind": "ai"
+    "kind": "user",
+    "username": "local"
   },
   "entity_snapshot": {
     "season": "S1",

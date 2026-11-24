@@ -30,6 +30,9 @@
     }
   ],
   "version": "s1",
+  "batch": [
+    "自回归"
+  ],
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -38,29 +41,6 @@
   "entity_snapshot": {
     "season": "S1",
     "entities": {
-      "card:636412": {
-        "aliases": [],
-        "attributes": {
-          "所属分组": "天赋包四",
-          "拍卖轮次（官网原文）": "第八轮拍卖",
-          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
-          "解锁条件": "万象大赛达到2170分"
-        },
-        "awakened": false,
-        "category": "talents",
-        "effect": "获得1张庄周，【逐鹿】英雄每释放6次技能，庄周会吞噬敌方等级最低的1名英雄，永久获得其30%的生命值上限（每场战斗最多吞噬1次）。若庄周觉醒，吞噬上限变为3次。",
-        "faction": {
-          "id": "",
-          "name": "未提供",
-          "official_id": 0
-        },
-        "id": "card:636412",
-        "name": "鲸吞",
-        "skills": [],
-        "stats": {},
-        "tier": null,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
-      },
       "card:1131": {
         "aliases": [],
         "attributes": {},
@@ -149,6 +129,29 @@
         "tier": 4,
         "retrieved_at": "2026-10-29T05:00:59.403683+00:00",
         "skills_source": "card:1131"
+      },
+      "card:636412": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包四",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "获得1张庄周，【逐鹿】英雄每释放6次技能，庄周会吞噬敌方等级最低的1名英雄，永久获得其30%的生命值上限（每场战斗最多吞噬1次）。若庄周觉醒，吞噬上限变为3次。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:636412",
+        "name": "鲸吞",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
       },
       "card:643703": {
         "aliases": [],

@@ -18,6 +18,7 @@ from templates_store import preview_import
 
 from check_batch import check as check_batch
 from check_scenarios import check as check_scenarios
+from wording import banned_pattern
 from src.python.condition import validate_expression
 
 ID = r"E\d{2}-S\d{2,}"
@@ -74,6 +75,7 @@ def check_review(group, review, events):
         raise ValueError(f"{name} 每批须包含16条候选")
     unique = set()
     accepted = []
+    banned = banned_pattern()
     for index, item in enumerate(candidates, 1):
         line = item["text"]
         key = "".join(c for c in unicodedata.normalize("NFKC", line)
@@ -87,8 +89,8 @@ def check_review(group, review, events):
         if type(item["accepted"]) is not bool:
             raise ValueError(f"{name} 第{index}句缺少入选结论")
         if item["accepted"]:
-            if re.search(r"(?:接|吃)(?:不?到|住)?(?:落)?雷|(?<!增)加级|追醒|重触发|双触发|供牌|供级|叠伤", line):
-                raise ValueError(f"{name} 第{index}句使用生造词，该句须淘汰")
+            if match := banned.search(line):
+                raise ValueError(f"{name} 第{index}句使用禁用表达「{match[0]}」（含生造词），该句须淘汰")
             if "快攻" in line and any(word in str(group) for word in ("驱雷", "司空震")):
                 raise ValueError(f"{name} 第{index}句把快速攻击缩写成快攻，该句须淘汰")
             accepted.append(line)
@@ -131,7 +133,7 @@ def verify_gemini(records, directory):
             raise ValueError(f"{name} 只使用 Gemini 首批原稿，不接收反馈改写稿")
         candidates = [c["text"] for c in row["candidates"]]
         if request.get("fields", {}).get("utterances") != "lines" or state.get("content", {}).get("utterances") != candidates:
-            raise ValueError(f"{name} 候选必须按原序来自 Gemini 成功响应，修改须送回 Gemini 重写")
+            raise ValueError(f"{name} 候选必须按原序来自 Gemini 成功响应，该批仅接受首批原句")
 
 
 def main():

@@ -18,9 +18,9 @@ export function canShowCardTags(season:string,category:string){
  return season==='S1'&&['heroes','equipment','effect-cards','talents'].includes(category);
 }
 
-export function CardTags({id,updated}:{id:string;updated?:()=>void}){
+export function CardTags({id,updated,compact=false}:{id:string;updated?:()=>void;compact?:boolean}){
  const {session}=useAuth();
- const editor=session.role==='admin'||session.role==='annotator';
+ const admin=session.role==='admin',editor=admin||session.role==='annotator';
  const [data,setData]=useState<Detail|null>(null),[draft,setDraft]=useState<string|null>(null);
  const [error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[epoch,setEpoch]=useState(0);
  const saving=useRef(false);
@@ -30,8 +30,14 @@ export function CardTags({id,updated}:{id:string;updated?:()=>void}){
   if(saving.current)return;
   saving.current=true;setBusy(true);setError('');setNotice('');
   try{
-   await api(url,'POST',body);
-   if(url===path){setDraft(null);setNotice('标签修改已提交审核。');}
+   const result=await api<Review>(url,'POST',body);
+   if(result.status==='approved'){
+    setData(current=>current&&{...current,tags:result.after_tags,revision:result.id});
+   }
+   if(url===path){
+    setDraft(null);
+    setNotice(result.status==='approved'?(compact?'':'标签已生效。'):'标签修改已提交审核。');
+   }
    setEpoch(i=>i+1);updated?.();
   }
   catch(e){setError((e as Error).message);}
@@ -51,15 +57,15 @@ export function CardTags({id,updated}:{id:string;updated?:()=>void}){
  {notice&&<p role="status">{notice}</p>}
  {data&&<><p>{editor?'已生效：':''}{label(data.tags)}</p>{editor&&<div className="card-tag-editor" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))submitDraft();}}>
  <label>标签（用顿号分隔）<input readOnly={busy} value={value} onChange={e=>setDraft(e.target.value)}/></label>
- <label>添加已有标签<select value="" disabled={busy} onChange={e=>{
+ {!compact&&<><label>添加已有标签<select value="" disabled={busy} onChange={e=>{
   const tag=e.target.value;
   if(tag)setDraft([...tags,tag].join('、'));
  }}><option value="">请选择</option>{data.suggestions?.filter(tag=>!tags.includes(tag)).map(tag=><option key={tag}>{tag}</option>)}</select></label>
- <small>离开标签编辑区后提交管理员审核。</small>
+ <small>{admin?'离开标签编辑区后保存并生效。':'离开标签编辑区后提交管理员审核。'}</small></>}
  </div>}
- {editor&&data.items.map(r=><div key={r.id}><strong>{reviewStatus[r.status]}{r.historical?'（旧标签体系）':''} · {r.author}</strong> <time dateTime={r.created}>{new Date(r.created).toLocaleString()}</time>
+ {editor&&!compact&&data.items.map(r=><div key={r.id}><strong>{reviewStatus[r.status]}{r.historical?'（旧标签体系）':''} · {r.author}</strong> <time dateTime={r.created}>{new Date(r.created).toLocaleString()}</time>
  <p>原标签　{label(r.before_tags)}<br/>提议标签　{label(r.after_tags)}</p>
  {r.reviewer&&<small>审核人　{r.reviewer}</small>}
- {session.role==='admin'&&r.status==='pending'&&<><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/approve',{})}>通过</button><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/reject',{})}>驳回</button></>}</div>)}</>}
+ {admin&&r.status==='pending'&&<><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/approve',{})}>通过</button><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/reject',{})}>驳回</button></>}</div>)}</>}
  </section>;
 }

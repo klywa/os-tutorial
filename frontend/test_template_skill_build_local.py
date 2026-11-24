@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ROOT / ".codex/skills/wanxiangqi-template/scripts"
 with patch.object(sys, "path", [str(SCRIPTS), str(ROOT), *sys.path]):
     import build_local
+    import wording
 
 
 EVENT = "解释为何上阵英雄"
@@ -128,6 +129,33 @@ class LocalBuildTests(unittest.TestCase):
                 self.review["candidates"][-1]["text"] = line
                 with self.assertRaisesRegex(ValueError, "生造词|缩写成快攻"):
                     self.validate()
+
+    def test_approved_wording_is_used_in_the_request_and_export_gate(self):
+        request = {"context": {"题面": "保留已核实的事实"}, "fields": {"utterances": "lines"}}
+        wording.add_rules(request)
+        terms = request["context"]["话术词表"]
+        for term in ("复制卡牌", "降低属性", "临时等级", "物理法术攻击", "材料"):
+            self.assertIn(term, terms)
+        self.assertEqual(request["context"]["题面"], "保留已核实的事实")
+        pattern = wording.banned_pattern()
+        for line in ("获得4级临时等级", "承接等级", "增加等级", "把驱雷转移给队友",
+                     "命中英雄后触发技能"):
+            with self.subTest(allowed=line):
+                self.assertIsNone(pattern.search(line))
+        for line in ("这件装备留作材料。", "让英雄退场。", "先借装备。", "替队友分走效果。"):
+            with self.subTest(banned=line):
+                self.group["utterances"] = [line]
+                self.review["candidates"][-1]["text"] = line
+                with self.assertRaisesRegex(ValueError, "使用禁用表达"):
+                    self.validate()
+
+    def test_rejected_candidates_do_not_block_approved_originals(self):
+        rejected = self.review["candidates"][0]
+        rejected.update(text="可以借装备。", verdict="命中禁用表达：借装备")
+        self.validate()
+        self.review["candidates"][-1]["accepted"] = False
+        with self.assertRaisesRegex(ValueError, "全部达标句"):
+            self.validate()
 
     def test_only_first_batch(self):
         self.review["attempt"] = 2

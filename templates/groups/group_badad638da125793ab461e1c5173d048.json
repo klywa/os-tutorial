@@ -26,7 +26,9 @@
     }
   ],
   "version": "s1",
-  "batch": [],
+  "batch": [
+    "自回归"
+  ],
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -35,6 +37,28 @@
   "entity_snapshot": {
     "season": "S1",
     "entities": {
+      "card:644113": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每2秒召唤2道雷电轰击敌我双方任意2名单位（穿戴者除外）。造成目标30%最大生命值的法术伤害（命中友军不触发吸血）。若命中司空震则改为使其快速攻击4次。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:644113",
+        "name": "驱雷",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
       "card:1751": {
         "aliases": [],
         "attributes": {},
@@ -123,28 +147,6 @@
         "tier": 3,
         "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
         "skills_source": "card:1751"
-      },
-      "card:644113": {
-        "aliases": [],
-        "attributes": {
-          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
-          "装备分类": "特殊装备",
-          "装备类型": "通用装备"
-        },
-        "awakened": false,
-        "category": "equipment",
-        "effect": "唯一。每2秒召唤2道雷电轰击敌我双方任意2名单位（穿戴者除外）。造成目标30%最大生命值的法术伤害（命中友军不触发吸血）。若命中司空震则改为使其快速攻击4次。",
-        "faction": {
-          "id": "faction:none",
-          "name": "无阵营",
-          "official_id": 307
-        },
-        "id": "card:644113",
-        "name": "驱雷",
-        "skills": [],
-        "stats": {},
-        "tier": null,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
       }
     }
   }

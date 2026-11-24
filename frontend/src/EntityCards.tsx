@@ -160,7 +160,7 @@ function CardVersion({card,hero=false}:{card?:CardSummary;hero?:boolean}){
  return <section className="card-version" aria-label={hero?(card?.awakened?'觉醒':'未觉醒'):undefined}>
  {hero&&<h3 className="card-version-heading">{card?.awakened?'觉醒':'未觉醒'}</h3>}
  <div className="popover-card"><CardImage card={card} large/><div><p className="muted">{categoryNames[card?.category??'']}{card?.tier!=null?` · ${card.tier}品阶`:''}{card?.faction?.name?` · ${card.faction.name}`:''}</p><p>{card?.effect||'资料未提供'}</p></div></div>
- {dock?.wide&&card&&canShowCardTags(currentSeason(),card.category)&&<CardTags key={card.id} id={card.id}/>}
+ {dock?.wide&&card&&canShowCardTags(currentSeason(),card.category)&&<CardTags key={card.id} id={card.id} compact/>}
  {error?<p className="error" role="alert">{error}</p>:!detail?<p className="muted">正在载入技能…</p>:<>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单列本卡技能，以下来自对应普通英雄。</p>}{detail.skills.slice(0,full?undefined:1).map(s=><section key={s.id}><strong>{s.name}</strong><p>{s.effect}</p>{full&&s.enhancements.map((e,i)=><p key={i}>{e.level}级：{e.effect}</p>)}</section>)}{full&&<dl>{Object.entries(detail.stats).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}<button className="link-button" onClick={()=>setFull(!full)}>{full?'收起完整详情':'查看完整卡牌详情'}</button></>}
  </section>;
 }

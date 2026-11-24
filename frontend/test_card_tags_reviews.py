@@ -122,6 +122,30 @@ class CardTagHttpReviewTests(unittest.TestCase):
     user = test_templates_http.TemplateHttpTests.user
     setUp = test_templates_http.TemplateHttpTests.setUp
 
+    def test_admin_edit_is_effective_and_recorded_without_pending_review(self):
+        base = '/os-tutorial/api/'
+        card = base + 'cards/a/tags'
+        folder = self.root / 'src/condition'
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder/'card-tags.json').write_text(json.dumps({
+            'a': dict(name='卡', type='效果牌', awakened=False, tags=['治疗']),
+        }), encoding='utf8')
+        self.user('klywa')
+        before = self.call(card)[1]
+        payload = {'tags':['控制'], 'revision':before['revision']}
+        code, item, _ = self.call(card, 'POST', payload)
+        self.assertEqual(code, 200, item)
+        self.assertEqual(item['status'], 'approved')
+        self.assertEqual(item['author'], item['reviewer'])
+        self.assertEqual(item['before_tags'], ['治疗'])
+        after = self.call(card)[1]
+        self.assertEqual(after['tags'], ['控制'])
+        self.assertEqual(after['revision'], item['id'])
+        self.assertEqual(self.call(base+'cards/tag-reviews')[1]['items'], [])
+        self.assertEqual(self.call(card, 'POST', payload)[0], 409)
+        for suffix in ('templates','templates/published'):
+            self.assertEqual(self.call(base+suffix)[1]['condition_catalog']['card_tags']['a']['tags'], ['控制'])
+
     def test_approval_refreshes_template_snapshot_and_published_catalog(self):
         base = '/os-tutorial/api/'
         card = base + 'cards/a/tags'

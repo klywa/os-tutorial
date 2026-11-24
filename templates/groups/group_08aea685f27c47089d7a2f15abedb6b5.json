@@ -27,6 +27,9 @@
     }
   ],
   "version": "s1",
+  "batch": [
+    "自回归"
+  ],
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -35,95 +38,6 @@
   "entity_snapshot": {
     "season": "S1",
     "entities": {
-      "card:1901": {
-        "aliases": [],
-        "attributes": {},
-        "awakened": false,
-        "category": "heroes",
-        "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
-        "faction": {
-          "id": "faction:sanfen",
-          "name": "三分",
-          "official_id": 309
-        },
-        "id": "card:1901",
-        "name": "诸葛亮",
-        "skills": [
-          {
-            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
-            "enhancements": [
-              {
-                "effect": "元气弹伤害提升至150+200%法术攻击力",
-                "level": 10
-              },
-              {
-                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
-                "level": 40
-              },
-              {
-                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
-                "level": 100
-              }
-            ],
-            "id": 19000,
-            "name": "元气弹"
-          }
-        ],
-        "stats": {
-          "攻击距离": 6,
-          "攻击速度": 0.6,
-          "暴击效果": "140%",
-          "暴击率": "0%",
-          "最大生命值": 240,
-          "法力值（初始／最大）": "35/55",
-          "法术攻击力": 40,
-          "法术防御": 14,
-          "物理攻击力": 24,
-          "物理防御": 14
-        },
-        "tier": 4,
-        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-        "skills_source": "card:1901"
-      },
-      "card:1903": {
-        "aliases": [],
-        "attributes": {},
-        "awakened": true,
-        "category": "heroes",
-        "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
-        "faction": {
-          "id": "faction:sanfen",
-          "name": "三分",
-          "official_id": 309
-        },
-        "id": "card:1903",
-        "name": "诸葛亮",
-        "skills": [
-          {
-            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
-            "enhancements": [
-              {
-                "effect": "元气弹伤害提升至150+200%法术攻击力",
-                "level": 10
-              },
-              {
-                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
-                "level": 40
-              },
-              {
-                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
-                "level": 100
-              }
-            ],
-            "id": 19000,
-            "name": "元气弹"
-          }
-        ],
-        "stats": {},
-        "tier": 4,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-        "skills_source": "card:1901"
-      },
       "card:1761": {
         "aliases": [],
         "attributes": {},
@@ -212,6 +126,95 @@
         "tier": 5,
         "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
         "skills_source": "card:1761"
+      },
+      "card:1901": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1901",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 6,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "35/55",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:1903": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1903",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1901"
       },
       "card:643402": {
         "aliases": [],

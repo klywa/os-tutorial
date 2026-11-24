@@ -146,9 +146,9 @@ def mutate(root, identity, path, data):
     if not identity or identity['role'] not in ('admin', 'annotator'):
         raise PermissionError('需要编写权限')
     cards = presets(root)
-    now = datetime.now(timezone.utc).isoformat()
     with closing(connect(root)) as conn, conn:
         conn.execute('BEGIN IMMEDIATE')
+        now = datetime.now(timezone.utc).isoformat()
         match = CARD_PATH.fullmatch(path)
         if match:
             card_id = match[1]
@@ -163,17 +163,21 @@ def mutate(root, identity, path, data):
             if after == sorted(before):
                 raise ValueError('标签没有变化')
             encoded_after = json.dumps(after)
-            duplicate = conn.execute("""SELECT * FROM tag_reviews WHERE card_id=? AND author=? AND base=?
-                AND after_tags=? AND status='pending' AND taxonomy_version=?""",
-                (card_id, identity['username'], base, encoded_after, TAXONOMY_VERSION)).fetchone()
-            if duplicate:
-                return public_row(duplicate)
+            direct = identity['role'] == 'admin'
+            if not direct:
+                duplicate = conn.execute("""SELECT * FROM tag_reviews WHERE card_id=? AND author=? AND base=?
+                    AND after_tags=? AND status='pending' AND taxonomy_version=?""",
+                    (card_id, identity['username'], base, encoded_after, TAXONOMY_VERSION)).fetchone()
+                if duplicate:
+                    return public_row(duplicate)
             key = uuid.uuid4().hex
             conn.execute("""INSERT INTO tag_reviews
-                (id,card_id,card_name,base,before_tags,after_tags,author,created,status,taxonomy_version)
-                VALUES(?,?,?,?,?,?,?,?,'pending',?)""",
+                (id,card_id,card_name,base,before_tags,after_tags,author,created,status,reviewer,reviewed,taxonomy_version)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (key, card_id, cards[card_id]['name'] + ('（觉醒）' if cards[card_id].get('awakened') else ''),
-                 base, json.dumps(before), encoded_after, identity['username'], now, TAXONOMY_VERSION))
+                 base, json.dumps(before), encoded_after, identity['username'], now,
+                 'approved' if direct else 'pending', identity['username'] if direct else None,
+                 now if direct else None, TAXONOMY_VERSION))
         else:
             match = REVIEW_PATH.fullmatch(path)
             if not match:

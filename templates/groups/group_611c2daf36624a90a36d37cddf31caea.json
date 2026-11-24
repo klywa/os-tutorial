@@ -29,6 +29,9 @@
     }
   ],
   "version": "s1",
+  "batch": [
+    "自回归"
+  ],
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -37,6 +40,28 @@
   "entity_snapshot": {
     "season": "S1",
     "entities": {
+      "card:7081": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，摧毁其所有装备，随机获得对应数量+1的基础装备。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7081",
+        "name": "武装重构",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
       "card:1821": {
         "aliases": [],
         "attributes": {},
@@ -125,28 +150,6 @@
         "tier": 1,
         "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
         "skills_source": "card:1821"
-      },
-      "card:7081": {
-        "aliases": [],
-        "attributes": {
-          "所属分组": "效果牌包二",
-          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
-          "解锁条件": "万象大赛达到1520分"
-        },
-        "awakened": false,
-        "category": "effect-cards",
-        "effect": "指定1名英雄，摧毁其所有装备，随机获得对应数量+1的基础装备。",
-        "faction": {
-          "id": "",
-          "name": "通用",
-          "official_id": 0
-        },
-        "id": "card:7081",
-        "name": "武装重构",
-        "skills": [],
-        "stats": {},
-        "tier": null,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
       }
     }
   }

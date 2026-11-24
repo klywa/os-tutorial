@@ -29,6 +29,9 @@
     }
   ],
   "version": "s1",
+  "batch": [
+    "自回归"
+  ],
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -126,50 +129,6 @@
         "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
         "skills_source": "card:1141"
       },
-      "card:644114": {
-        "aliases": [],
-        "attributes": {
-          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
-          "装备分类": "特殊装备",
-          "装备类型": "通用装备"
-        },
-        "awakened": false,
-        "category": "equipment",
-        "effect": "唯一。提升100%攻速，受到的全部伤害转移给穿戴银莲庇佑的单位。",
-        "faction": {
-          "id": "faction:none",
-          "name": "无阵营",
-          "official_id": 307
-        },
-        "id": "card:644114",
-        "name": "怒莲之刺",
-        "skills": [],
-        "stats": {},
-        "tier": null,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
-      },
-      "card:644115": {
-        "aliases": [],
-        "attributes": {
-          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
-          "装备分类": "特殊装备",
-          "装备类型": "通用装备"
-        },
-        "awakened": false,
-        "category": "equipment",
-        "effect": "唯一。提升10点物理及法术防御力，替穿戴怒莲之刺的英雄承担伤害。",
-        "faction": {
-          "id": "faction:none",
-          "name": "无阵营",
-          "official_id": 307
-        },
-        "id": "card:644115",
-        "name": "银莲庇佑",
-        "skills": [],
-        "stats": {},
-        "tier": null,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
-      },
       "card:5111": {
         "aliases": [],
         "attributes": {},
@@ -259,6 +218,28 @@
         "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
         "skills_source": "card:5111"
       },
+      "card:644114": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。提升100%攻速，受到的全部伤害转移给穿戴银莲庇佑的单位。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:644114",
+        "name": "怒莲之刺",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
       "card:5271": {
         "aliases": [],
         "attributes": {},
@@ -347,6 +328,28 @@
         "tier": 2,
         "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
         "skills_source": "card:5271"
+      },
+      "card:644115": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。提升10点物理及法术防御力，替穿戴怒莲之刺的英雄承担伤害。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:644115",
+        "name": "银莲庇佑",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
       }
     }
   }
