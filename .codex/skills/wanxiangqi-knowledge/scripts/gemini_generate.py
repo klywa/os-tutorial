@@ -70,7 +70,7 @@ def generate(request, state_path, *, feedback=None, phase='draft'):
     fingerprint = hashlib.sha256(_json(request).encode('utf-8')).hexdigest()
     state_path = Path(state_path)
     state = json.loads(state_path.read_text(encoding='utf-8')) if state_path.exists() else {
-        'phase':'draft','request':fingerprint,'failures':0,
+        'phase':'draft','request':fingerprint,'failures':0,'feedback_count':0,
     }
     if phase != state['phase']:
         if phase != 'post-review' or state['phase'] != 'draft' or (not state.get('content') and state['failures'] < MAX_FAILURES):
@@ -83,6 +83,7 @@ def generate(request, state_path, *, feedback=None, phase='draft'):
             raise ValueError('请提供待审稿的具体修改意见')
         state['previous_draft'] = state.pop('content')
         state['feedback'] = feedback
+        state['feedback_count'] = state.get('feedback_count', 0) + 1
         state['failures'] += 1
         _write_state(state_path, state)
     if 'content' in state:

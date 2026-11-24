@@ -202,7 +202,7 @@ def check(document, *, scenarios=()):
                 group, document.get("condition_catalog"), references,
                 cases_by_group[(group.get("event_name"), group.get("name"))],
             ) if references else {}
-            if any(len(render_bound_utterance(line, values)) > 30 for line in lines):
+            if any(len("".join(render_bound_utterance(line, values).split())) > 30 for line in lines):
                 raise ValueError("每句展开后须不超过 30 字")
         except ValueError as error:
             raise ValueError(f"{name}：{error}") from error
