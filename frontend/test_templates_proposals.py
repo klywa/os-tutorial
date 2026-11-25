@@ -207,18 +207,23 @@ class TemplateProposalTests(unittest.TestCase):
         self.action(ADMIN,item['id'],'approve',{'change_ids':[0],'group_editor':{}})
         saved=library.snapshot(self.root)['groups'][0]
         self.assertEqual(saved['review_status'],'final_reviewed')
-        self.assertEqual(saved['utterances'],draft['utterances'])
+        self.assertEqual(saved['utterances'],[{**draft['utterances'][0],'fixed':True}])
 
     def test_single_utterance_flags_do_not_read_or_validate_formal_library(self):
         item=self.submit()
-        for field,actor in [('ignore',ALICE),('fixed',ADMIN)]:
+        for field,actor,value,allowed in [('ignore',ALICE,True,True),('fixed',ADMIN,True,False),
+                ('ignore',ALICE,False,True),('fixed',ADMIN,True,True),('ignore',ALICE,True,False)]:
             data={'proposal_revision':item['proposal_revision'],'change_ids':[0],
-                  'group_editor':{field:{'id':'line','value':True}}}
+                  'group_editor':{field:{'id':'line','value':value}}}
             with patch.object(library,'snapshot',side_effect=AssertionError('loaded formal library')), \
                  patch.object(library,'preview_changes',side_effect=AssertionError('validated formal library')):
+                if not allowed:
+                    with self.assertRaisesRegex(Conflict,'只能固定或忽略'):
+                        self.proposals.action(actor,item['id'],'edit',data)
+                    continue
                 item=self.proposals.action(actor,item['id'],'edit',data)
                 self.assertEqual(self.proposals.action(actor,item['id'],'edit',data)['proposal_revision'],item['proposal_revision'])
-        self.assertTrue(item['changes'][0]['value']['utterances'][0]['ignored'])
+        self.assertFalse(item['changes'][0]['value']['utterances'][0].get('ignored',False))
         self.assertTrue(item['changes'][0]['value']['utterances'][0]['fixed'])
 
     def test_unrelated_save_allowed_but_touched_record_stale_rejected(self):

@@ -3,7 +3,7 @@ import {apiUrl} from './urls';
 import type { Entity, Note, CardSummary, CardFilters, Meta, LateVariant } from './types';
 import {documentMarkdown} from './jsonDocument';
 export function cardMatches(card:CardSummary,filters:CardFilters){
-  const text=[card.name,...card.aliases,card.effect,card.faction.name].join(' ').toLowerCase();
+  const text=[card.name,...card.aliases,card.effect,card.faction.name,...(card.keywords??[]).map(k=>k.name)].join(' ').toLowerCase();
   return filters.query.trim().toLowerCase().split(/\s+/).every(q=>text.includes(q))
     &&(!filters.category||card.category===filters.category)
     &&(!filters.faction||(card.faction.id||'none')===filters.faction)

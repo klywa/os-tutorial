@@ -12,8 +12,9 @@
   "version": "s1",
   "utterances": [
     {
-      "text": "孙膑可以通过施法提升自生等级，可以担任前期单挂英雄。",
-      "id": "utterances_931094d9dd274f25942446a735402bcc"
+      "text": "孙膑可以通过施法提升自身等级，可以担任前期单挂英雄。",
+      "id": "utterances_931094d9dd274f25942446a735402bcc",
+      "fixed": true
     }
   ],
   "id": "group_382ef0c7b8e55b0d97f0769c28d96fb8",
@@ -22,10 +23,12 @@
   "related_entities": [],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "expression": "((动作.选中.名称 == \"孙膑\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 0)",
   "batch": [
     "自回归"
   ],
+  "extra_key": "孙膑",
+  "syntax_version": "0.4",
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -50,7 +53,7 @@
         "skills": [],
         "stats": {},
         "tier": null,
-        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+        "retrieved_at": "2026-11-12T02:09:23.057839+00:00"
       },
       "card:1181": {
         "aliases": [],

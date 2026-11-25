@@ -1,8 +1,8 @@
 {
   "name": "买露娜帮花木兰争取复生",
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "player_id": null,
+    "lineup_note_id": null
   },
   "explanation": "",
   "explanation_after": "露娜随机触发整备，花木兰复生依赖本回合古币累计，不能保证。 购买英雄事件完整候选池实测：有婉儿和花木兰支撑古币复生（命中）；没有婉儿提供用币渠道（未命中）；缺少 玩家.战场（未命中）。播报 28 个非空白字符。",
@@ -14,7 +14,8 @@
   "utterances": [
     {
       "text": "露娜登场触发上官婉儿整备效果，为花木兰叠加复生次数。",
-      "id": "utterances_dffc419e33074fc2a61ebc1bcf2e0636"
+      "id": "utterances_dffc419e33074fc2a61ebc1bcf2e0636",
+      "fixed": true
     }
   ],
   "id": "group_ed2050f9a06d4f12bb83a4d47ea9dd1d",
@@ -23,10 +24,12 @@
   "related_entities": [],
   "priority": 2,
   "editor_mode": "text",
-  "expression": "arg1 is \"露娜\" and 玩家.容错数 <= 1 and 玩家.战场 has \"上官婉儿\" and 玩家.战场 has \"花木兰\"",
+  "expression": "我方.阵容名称 == \"河洛花木兰\" and (((动作.选中.名称 == \"露娜\" and any(我方.场上英雄列表, .名称 == \"上官婉儿\")) and any(我方.场上英雄列表, .名称 == \"花木兰\")))",
   "batch": [
     "自回归"
   ],
+  "extra_key": "露娜",
+  "syntax_version": "0.4",
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -35,23 +38,94 @@
   "entity_snapshot": {
     "season": "S1",
     "entities": {
-      "player:24": {
+      "card:1461": {
         "aliases": [],
         "attributes": {},
         "awakened": false,
-        "category": "players",
-        "effect": "未提供",
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
         "faction": {
-          "id": "",
-          "name": "未提供",
-          "official_id": null
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
         },
-        "id": "player:24",
-        "name": "常小娥",
-        "skills": [],
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:29:31.251390+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
         "stats": {},
-        "tier": null,
-        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1461"
       },
       "card:1541": {
         "aliases": [],
@@ -100,7 +174,7 @@
           "物理防御": 18
         },
         "tier": 5,
-        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "retrieved_at": "2026-10-25T09:29:31.251390+00:00",
         "skills_source": "card:1541"
       },
       "card:1543": {
@@ -141,95 +215,6 @@
         "tier": 5,
         "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
         "skills_source": "card:1541"
-      },
-      "card:1461": {
-        "aliases": [],
-        "attributes": {},
-        "awakened": false,
-        "category": "heroes",
-        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
-        "faction": {
-          "id": "faction:riluohai",
-          "name": "日落海",
-          "official_id": 314
-        },
-        "id": "card:1461",
-        "name": "露娜",
-        "skills": [
-          {
-            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
-            "enhancements": [
-              {
-                "effect": "突击伤害系数提升至100+200%法术攻击力",
-                "level": 10
-              },
-              {
-                "effect": "击败敌人时恢复15点法力值",
-                "level": 40
-              },
-              {
-                "effect": "可连续进行2次突击",
-                "level": 100
-              }
-            ],
-            "id": 14600,
-            "name": "新月突击"
-          }
-        ],
-        "stats": {
-          "攻击距离": 1,
-          "攻击速度": 0.8,
-          "暴击效果": "140%",
-          "暴击率": "20%",
-          "最大生命值": 240,
-          "法力值（初始／最大）": "40/70",
-          "法术攻击力": 36,
-          "法术防御": 16,
-          "物理攻击力": 28,
-          "物理防御": 16
-        },
-        "tier": 5,
-        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
-        "skills_source": "card:1461"
-      },
-      "card:1463": {
-        "aliases": [],
-        "attributes": {},
-        "awakened": true,
-        "category": "heroes",
-        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
-        "faction": {
-          "id": "faction:riluohai",
-          "name": "日落海",
-          "official_id": 314
-        },
-        "id": "card:1463",
-        "name": "露娜",
-        "skills": [
-          {
-            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
-            "enhancements": [
-              {
-                "effect": "突击伤害系数提升至100+200%法术攻击力",
-                "level": 10
-              },
-              {
-                "effect": "击败敌人时恢复15点法力值",
-                "level": 40
-              },
-              {
-                "effect": "可连续进行2次突击",
-                "level": 100
-              }
-            ],
-            "id": 14600,
-            "name": "新月突击"
-          }
-        ],
-        "stats": {},
-        "tier": 5,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
-        "skills_source": "card:1461"
       },
       "card:5131": {
         "aliases": [],
@@ -278,7 +263,7 @@
           "物理防御": 14
         },
         "tier": 4,
-        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "retrieved_at": "2026-10-29T05:01:28.928712+00:00",
         "skills_source": "card:5131"
       },
       "card:5133": {
@@ -317,7 +302,7 @@
         ],
         "stats": {},
         "tier": 4,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "retrieved_at": "2026-10-29T05:00:59.403683+00:00",
         "skills_source": "card:5131"
       }
     }

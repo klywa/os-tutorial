@@ -94,11 +94,12 @@ class WorkflowTests(unittest.TestCase):
         actor = {'username': 'writer', 'role': 'annotator'}
         self.assertEqual(self.apply(group(), actor), group())
         edited = self.apply({**group(), 'batch': ['b1', 'b2']}, actor)
-        self.assertEqual(edited['review_status'], 'initial_reviewed')
+        self.assertIsNone(edited['review_status'])
         self.assertEqual(edited['last_modified_by'], {'kind': 'user', 'username': 'writer'})
         self.assertEqual(edited['entity_snapshot']['entities']['card:1']['description'], '旧技能')
         with self.assertRaises(PermissionError):
             workflow.review_change(self.saved, 'g1', actor)
+        self.saved=store.set_review_status(self.root,self.saved['revision'],'g1',actor,{'status':'initial_reviewed'})
         change = workflow.review_change(self.saved, 'g1', {'username': 'qa', 'role': 'quality'})
         reviewed = change['value']
         self.assertEqual(reviewed['review_status'], 'final_reviewed')
@@ -108,7 +109,7 @@ class WorkflowTests(unittest.TestCase):
         imported = {**group(), 'name': '导入改稿', 'review_status': 'final_reviewed',
                     'last_modified_by': {'kind': 'user', 'username': 'original'}}
         saved = self.apply(imported, {'username': 'uploader', 'role': 'annotator'}, 'file-import')
-        self.assertEqual(saved['review_status'], 'initial_reviewed')
+        self.assertIsNone(saved['review_status'])
         self.assertEqual(saved['last_modified_by'], imported['last_modified_by'])
 
     def test_ai_edit_snapshots_text_references_and_noop_keeps_existing_provenance(self):
@@ -140,7 +141,7 @@ class WorkflowTests(unittest.TestCase):
         proposals.action({'username':'admin','role':'admin'},pending['id'],'approve',
                          {'proposal_revision':pending['proposal_revision']})
         actual=store.snapshot(self.root)['groups'][0]
-        self.assertEqual(actual['review_status'],'initial_reviewed')
+        self.assertIsNone(actual['review_status'])
         self.assertEqual(actual['last_modified_by'],{'kind':'user','username':'researcher'})
 
     def test_restore_appends_revision_and_preserves_history(self):

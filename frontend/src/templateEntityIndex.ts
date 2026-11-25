@@ -1,6 +1,7 @@
 import {cardCategories} from './cardCatalog';
 import {parameterRole} from './templateAction';
 import {members,parameterType,type ConditionCatalog} from './templateRules';
+import {catalogV04,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
 import type {TemplateEntity,TemplateEvent,TemplateGroup,TemplateParameter} from './templates';
 
 type CatalogEntity=TemplateEntity&{category?:string;aliases?:string[]};
@@ -16,7 +17,7 @@ export type TemplateEntityEntry={
 
 const comparisons=new Set(['is','has','in']);
 
-function visitComparisons(source:string,visit:(left:string,operator:string,right:string)=>void){
+function visitComparisons(source:string,visit:(left:string,operator:string,right:string)=>void,positiveOnly=false){
  const tokens=source.match(/"(?:\\.|[^"\\])*"|[\p{L}_][\p{L}\p{N}_]*|[^\s]/gu)??[];
  function walk(start:number,end:number,nesting=0){
   if(nesting>64)return;
@@ -34,7 +35,7 @@ function visitComparisons(source:string,visit:(left:string,operator:string,right
    }
   }
   if(clause!==start)walk(clause,end,nesting+1);
-  else if(tokens[start]==='not')walk(start+1,end,nesting+1);
+  else if(tokens[start]==='not'){if(!positiveOnly)walk(start+1,end,nesting+1);}
   else if(tokens[start]==='('&&firstClose===end-1)walk(start+1,end-1,nesting+1);
   else if(operator!==-1)visit(tokens.slice(start,operator).join(''),tokens[operator],tokens.slice(operator+1,end).join(''));
  }
@@ -52,7 +53,15 @@ const defaultUnitTypes=['英雄','衍生物'];
 const entityTypes=new Map(Object.entries(cardCategories).map(([category,type])=>[type,category]));
 const canonicalCategory=(category:string)=>category==='player'?'players':category;
 
-export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateEvent[],entities:CatalogEntity[],catalog?:ConditionCatalog,onMissing?:(name:string,categories:string[])=>void):TemplateEntityEntry[]{
+function actionCardType(event:string,field:string){
+ if(field.endsWith('英雄'))return '英雄';
+ if(field.endsWith('装备'))return '装备';
+ if(field==='目标')return '单位';
+ if(field!=='选中'&&field!=='卡牌')return;
+ return ['效果牌','天赋','棋手技能','英雄'].find(type=>event.includes(type));
+}
+
+export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateEvent[],entities:CatalogEntity[],catalog?:ConditionCatalog,onMissing?:(name:string,categories:string[])=>void,actionOnly=false):TemplateEntityEntry[]{
  const entries=new Map<string,TemplateEntityEntry>();
  const byId=new Map<string,TemplateEntityEntry>();
  const names=new Map<string,Set<TemplateEntityEntry>>();
@@ -89,9 +98,10 @@ export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateE
   const definition=definitions.get(group.event_id);
   if(!definition)continue;
   const {event,parameters}=definition;
-  function remember(parameter:TemplateParameter,value:unknown,array:boolean,legacy=false,nameField=false){
-   const declared=catalog?.events[event.name]?.parameters[parameter.key]??parameterType(parameter);
+  function remember(parameter:TemplateParameter,value:unknown,array:boolean,legacy=false,nameField=false,actionType?:string){
+   const declared=actionType??catalog?.events[event.name]?.parameters[parameter.key]??parameterType(parameter);
    const inner=members(declared);
+   if(actionOnly&&inner.length)return;
    if(!legacy&&((inner.length>0)!==array||array&&nameField))return;
    const types=inner.length?inner:declared.split('|');
    const allowed=categories(types);
@@ -116,6 +126,12 @@ export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateE
     if(!matches.length)matches=candidates(aliases);
     if(!matches.length&&(!explicit||allowed.has(explicit)||generic)){
      onMissing?.(name.trim(),explicit?[explicit]:[...allowed]);
+     if(actionType&&allowed.size===1){
+      const category=[...allowed][0],key=JSON.stringify([category,name.trim()]);
+      const entry=entries.get(key)??{key,id:key,name:name.trim(),category,aliases:[],groupIds:new Set<string>(),roles:new Map<string,string[]>()};
+      entries.set(key,entry);
+      matches=[entry];
+     }
     }
     // A bare name in a unit or union must identify exactly one class of card.
     if(matches.length!==1)return;
@@ -127,6 +143,34 @@ export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateE
     if(!roles.includes(role))roles.push(role);
     entry.roles.set(group.id,roles);
    }
+  }
+  if(group.syntax_version==='0.4'){
+   const action=catalogV04.events[event.name];
+   if(!action)continue;
+   const fields=catalogV04.actions[action.action],keyed=new Set<string>();
+   function record(field:string,value:string){
+    const type=actionCardType(event.name,field);
+    if(type&&fields[field]?.replace(/\?$/u,'')==='卡牌'){
+     remember({id:field,key:field,name:field,type:'entity'},value,false,false,false,type);
+    }
+   }
+   const parts=group.extra_key?.split('-')??[];
+   action.key.forEach((field,index)=>{
+    const value=parts[index];
+    if(value&&value!=='*'){keyed.add(field);record(field,value);}
+   });
+   function visit(node:ConditionNodeV04){
+    if(node.kind==='binary'&&(node.op==='and'||node.op==='or')){
+     visit(node.left);visit(node.right);return;
+    }
+    const fact=namedConditionValues(node);
+    if(fact?.path.length===3&&fact.path[0]==='动作'&&fact.path[2]==='名称'&&!keyed.has(fact.path[1])){
+     for(const value of fact.values)record(fact.path[1],value);
+    }
+   }
+   const expression=readV04Condition(group.expression);
+   if(expression)visit(expression);
+   continue;
   }
   if(group.expression?.trim()){
    visitComparisons(group.expression,(left,operator,right)=>{
@@ -142,10 +186,10 @@ export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateE
       if(Array.isArray(value))for(const item of value)remember(argument.parameter,item,array,false,argument.nameField);
      }else remember(argument.parameter,value,array,false,argument.nameField);
     }
-   });
+   },actionOnly);
   }else for(const condition of group.conditions){
    const parameter=parameters.get(condition.parameter_key);
-   if(parameter?.type==='entity'&&['eq','ne'].includes(condition.operator))remember(parameter,condition.value,false,true);
+   if(parameter?.type==='entity'&&(condition.operator==='eq'||!actionOnly&&condition.operator==='ne'))remember(parameter,condition.value,false,true);
   }
  }
  return [...entries.values()].sort((a,b)=>b.groupIds.size-a.groupIds.size||a.name.localeCompare(b.name,'zh-CN')||a.category.localeCompare(b.category));

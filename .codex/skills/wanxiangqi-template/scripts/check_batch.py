@@ -188,6 +188,11 @@ def check(document, *, scenarios=()):
             value = group.get(field)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{name}：缺少 {field}")
+        if group.get("syntax_version") == "0.4":
+            event = group["event_name"]
+            cases = cases_by_group.get((event, group.get("id")), cases_by_group[(event, group["name"])])
+            _check_v04(group, cases)
+            continue
         lines = group.get("utterances")
         if not isinstance(lines, list) or not lines:
             raise ValueError(f"{name}：至少需要一条可独立使用的话术")
@@ -208,6 +213,86 @@ def check(document, *, scenarios=()):
             raise ValueError(f"{name}：{error}") from error
         if len({line.strip() for line in lines}) != len(lines):
             raise ValueError(f"{name}：组内有重复话术")
+
+
+def _check_v04(group, cases):
+    import ast
+    from group_identity import has_awakening_guard
+    from src.python.condition.v04 import compile_expression, compile_template, render, validate_key
+    from src.python.condition.v04_legacy import adapt
+
+    event = group["event_name"]
+    key = validate_key(event, group["extra_key"])
+    expression = compile_expression(event, group["expression"]).node
+    scope = group.get("scope", {})
+    if group.get("ignored"):
+        for row in group["utterances"]:
+            compile_template(event, row["text"])
+        return
+    factions = {"三分之地", "大河流域", "逐鹿", "河洛", "日落海", "建木", "无阵营"}
+    for node in ast.walk(expression) if expression else ():
+        if not isinstance(node, ast.Compare):
+            continue
+        values = [node.left, *node.comparators]
+        if any(isinstance(value, ast.Attribute) and value.attr == "阵营" for value in values):
+            names = (literal.value for value in values for literal in ast.walk(value)
+                     if isinstance(literal, ast.Constant) and isinstance(literal.value, str))
+            if any(name not in factions for name in names):
+                raise ValueError(f"{group['name']}：条件中的阵营须使用正式全称")
+    fixed_equipment = event in {"解释为何穿戴装备", "解释为何铸造装备", "解释为何转移装备"} and key[-1] != "*"
+    fixed_recipient = fixed_equipment and key[0] != "*"
+
+    def action_field(node, field):
+        return (isinstance(node, ast.Attribute) and node.attr == field
+                and isinstance(node.value, ast.Name) and node.value.id == "动作")
+
+    def recipient_path(node):
+        return isinstance(node, ast.Attribute) and action_field(node.value, "目标英雄")
+
+    def game_context(node, negated=False):
+        if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
+            return game_context(node.operand, not negated)
+        if isinstance(node, ast.BoolOp):
+            combine = any if isinstance(node.op, ast.And) != negated else all
+            return combine(game_context(child, negated) for child in node.values)
+        if node is None:
+            return False
+        if any(isinstance(child, ast.Name) and child.id in {"我方", "对手", "对局"}
+               for child in ast.walk(node)):
+            return True
+        if negated or not isinstance(node, ast.Compare) or len(node.ops) != 1:
+            return False
+        op, other = node.ops[0], node.comparators[0]
+        if (event == "解释为何合成英雄" and action_field(node.left, "合成后等级")
+                and isinstance(op, (ast.Eq, ast.Gt, ast.GtE))
+                and isinstance(other, ast.Constant) and type(other.value) is int):
+            return True
+        # A named equipment and a recipient restriction are independent facts.
+        if not fixed_equipment:
+            return False
+        if isinstance(op, ast.Eq):
+            return ((recipient_path(node.left) and isinstance(other, ast.Constant)) or
+                    (isinstance(node.left, ast.Constant) and recipient_path(other)))
+        return (isinstance(op, ast.In) and recipient_path(node.left)
+                and isinstance(other, ast.List) and bool(other.elts))
+
+    merge_awakening = event == "解释为何合成英雄" and has_awakening_guard(group["expression"])
+    if not (scope.get("player") or scope.get("lineup") or fixed_recipient or merge_awakening
+            or game_context(expression)):
+        raise ValueError(f"{group['name']}：有生效分支缺少局面依据")
+    texts = [row["text"] for row in group["utterances"] if not row.get("ignored")]
+    if not texts or len(texts) != len(set(texts)) or any(not text.strip() for text in texts):
+        raise ValueError(f"{group['name']}：话术为空或有重复")
+    for text in texts:
+        parts = compile_template(event, text)
+        if len(parts) > 1 and not cases:
+            raise ValueError(f"{group['name']}：槽位需要可播正例")
+        rendered = [render(event, text, adapt(case["event"], case["state"])[1]
+                           if "参数" in case["event"] else case["state"]) for case in cases] if len(parts) > 1 else [text]
+        if not any(line is not None for line in rendered) or any(
+            len("".join(line.split())) > 30 for line in rendered if line is not None
+        ):
+            raise ValueError(f"{group['name']}：话术须可播，展开后不超过 30 字")
 
 
 if __name__ == "__main__":

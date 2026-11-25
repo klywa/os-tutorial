@@ -398,7 +398,7 @@ async function main(){
    revision:state.revision,changes:[{kind:'group',action:'put',id:revised.id,value:revised}],
   }});
   assert(changed.ok(),await changed.text());
-  assert.equal((await changed.json()).groups.find(group=>group.id==='equip').review_status,'initial_reviewed');
+  assert.equal((await changed.json()).groups.find(group=>group.id==='equip').review_status,null);
   await button('刷新模板库').click();
   await detail(revised.name).click();
   const revisedDetail=dialog(revised.name+' · 模板详情');
@@ -417,8 +417,11 @@ async function main(){
   const restored=(await (await page.request.get(base+'/api/templates')).json()).groups.find(group=>group.id==='equip');
   assert.equal(restored.name,original.name);
   assert.equal(restored.last_modified_by.username,'reviewer');
-  assert.equal(restored.review_status,'initial_reviewed');
+  assert.equal(restored.review_status,null);
   const currentStatus=dialog(original.name+' · 模板详情').getByRole('group',{name:'审核状态 · '+original.name});
+  await button('初核完成',currentStatus).click();
+  await page.waitForFunction(()=>Array.from(document.querySelectorAll('.template-review-statuses')).every(group=>group.getAttribute('aria-busy')!=='true'));
+  assert.equal((await (await page.request.get(base+'/api/templates')).json()).groups.find(group=>group.id==='equip').review_status,'initial_reviewed');
   const reviewRoute=url=>url.pathname.endsWith('/api/templates/groups/equip/review');
   await page.route(reviewRoute,route=>route.fulfill({status:503,json:{error:'测试保存失败'}}),{times:1});
   await button('复核完成',currentStatus).click();

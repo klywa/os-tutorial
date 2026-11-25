@@ -24,8 +24,19 @@ def faction(properties):
             'name': name, 'official_id': rid}
 
 
+def card_keywords(hero):
+    terms = {}
+    for keyword in hero.get('keywordDescription') or []:
+        name = re.sub(r'[^a-zA-Z0-9\u4e00-\u9fa5]', '', plain(keyword.get('name')))
+        if name:
+            description = plain(keyword.get('desc'))
+            terms[name] = terms.get(name) or description
+    return [{'name': name, 'description': description} for name, description in terms.items()]
+
+
 def normalize_cards(rows):
     from acquisition import build
+    from official_profiles import player_skill_groups
     acquisition = build(rows)
     base = {}; counterparts = {}
     for row in rows:
@@ -73,11 +84,13 @@ def normalize_cards(rows):
                        'aliases': row.get('aliases', []), 'effect': row.get('description') or '未提供',
                        'faction': faction(p), 'tier': p.get('quality') if row['category'] == 'heroes' else None,
                        'quality': p.get('quality'), 'awakened': p.get('type') == 9,
+                       'keywords': card_keywords(hero),
                        'skills': skills, 'skills_source': skill_owner['id'] if skills else None,
                        'stats': stats, 'attributes': extra, 'raw_attributes': raw_attributes,
                        'relations': row.get('relations', []),
                        'sources': row.get('sources', []), 'retrieved_at': row.get('retrieved_at'),
                        'version': row.get('version'), 'status': row.get('status', 'official'),
+                       **({'player_skill_groups': player_skill_groups(p)} if row['category'] == 'players' else {}),
                        **acquisition.get(row['id'], {})})
     return result
 
@@ -103,6 +116,24 @@ def render_card(card):
     lines += ['', '## 其他官方属性', '']
     lines += ([f'- {k}：{json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else v}'
                for k, v in card['attributes'].items()] or ['未提供'])
+    if card.get('keywords'):
+        lines += ['', '## 关键词', '']
+        lines += [f"- {term['name']}：{term['description']}" for term in card['keywords']]
+    if card.get('player_skill_groups'):
+        lines += ['', '## 棋手技能', '']
+        for group in card['player_skill_groups']:
+            lines += [f"### {group['name']}", '']
+            if group['level'] is not None:
+                lines += [f"官网等级标记：{group['level']}级", '']
+            if group['references']:
+                lines += ['关联卡牌：' + '、'.join(ref['name'] for ref in group['references']), '']
+            for skill in group['cards']:
+                lines += [f"#### {skill['name']}", '', skill['effect'] or '官网未提供效果说明。', '']
+                for field, label in [('acquisition', '获得方式'), ('stage', '出现阶段')]:
+                    if skill[field]:
+                        lines += [f"{label}：{skill[field]}", '']
+                if skill['options']:
+                    lines += ['后续选项：' + '、'.join(ref['name'] for ref in skill['options']), '']
     return '\n'.join(lines) + '\n'
 
 
@@ -173,6 +204,10 @@ def save_json_cards(root, cards, evidence_refs=None, writer=None, only_ids=None)
             meta['acquisition_evidence']={r['text']:[evidence_refs[i] for i in r['evidence_ids'] if i in evidence_refs] for r in card.get('routes',[])}
             if card.get('other_uses'):
                 meta['other_uses_evidence']=[evidence_refs[card['id']]] if card['id'] in evidence_refs else []
+        else:
+            for field in ('acquisition_evidence', 'other_uses_evidence'):
+                if field in previous_meta:
+                    meta[field] = previous_meta[field]
         meta.update(path=path, body_sha256=json_store.digest(body))
         write(root / path, body)
         write(root / json_store.meta_path(path), meta)

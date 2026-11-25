@@ -216,8 +216,9 @@ class Handler(BaseHTTPRequestHandler):
                 images = wxq.read_json(self.server.root / 'entities/assets/index.json', {})
                 cards = [{**c, **image_fields(self.server.root, c['id'], images)} for c in cards]
                 if path == '/api/cards':
-                    return self.response(200, [{k: c.get(k) for k in
-                        ['id', 'name', 'category', 'aliases', 'effect', 'faction', 'tier', 'awakened','thumb_url','image_url','image_status']}
+                    return self.response(200, [{**{k: c.get(k) for k in
+                        ['id', 'name', 'category', 'aliases', 'effect', 'faction', 'tier', 'awakened','thumb_url','image_url','image_status']},
+                        'keywords': c.get('keywords', [])}
                         for c in cards],etag=True)
                 card = next((c for c in cards if c['id'] == path.removeprefix('/api/cards/')), None)
                 return self.response(200 if card else 404, card or {'error': '卡牌不存在'})

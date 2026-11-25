@@ -7,6 +7,7 @@ files. Mutations acquire the existing non-reentrant workspace lock exactly once.
 from copy import deepcopy
 from datetime import datetime, timezone
 import json
+import hashlib
 import os
 from pathlib import Path
 import re
@@ -25,6 +26,7 @@ STATE = 'templates/library.state.json'
 JOURNAL = 'raw/templates/pending.json'
 GENERATION = 'raw/templates/generation.json'
 PUBLISHED = 'raw/templates/published.json'
+PUBLISHED_V3 = 'raw/templates/published-v3.json'
 REVIEW_HISTORY = 'templates/review-history'
 FOLDERS = {'event':'events','group':'groups'}
 _review_cache={}
@@ -41,7 +43,7 @@ def _now():
 
 
 def _meta():
-    return {'schema_version':1,'audit':[],'tombstones':{'event':{},'group':{}},'baselines':{},'entity_archive':{},'event_entity_archive':{},'entity_bindings':{}}
+    return {'schema_version':1,'audit':[],'tombstones':{'event':{},'group':{}},'baselines':{},'entity_archive':{},'event_entity_archive':{},'entity_bindings':{},'syntax_version':None}
 
 
 def _actor(actor):
@@ -223,6 +225,13 @@ def _load(root,*,renamed=None,retired=None,migrate_events=False,locked=False,met
         public[folder]=schema.order_events(values.values()) if kind=='event' else sorted(values.values(),key=lambda row:row['id'])
     # A writer that started after the first journal read owns the complete logical
     # after-image; retry instead of exposing a partially replaced file batch.
+    if meta.get('syntax_version')=='0.4' or any(group.get('syntax_version')=='0.4' for group in public['groups']):
+        from template_v04 import catalog
+        registered={event['name'] for event in public['events']}
+        for name in catalog()['events']:
+            if name not in registered:
+                uid='v04_'+hashlib.sha256(name.encode()).hexdigest()[:16]
+                public['events'].append({'id':uid,'name':name,'category':'解释类','parameters':[]})
     if locked:return public,meta
     if journal is None and ((root/JOURNAL).exists() or generation!=(_stamp(root/GENERATION),_stamp(root/META),_stamp(root/STATE))):
         return _load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
@@ -367,15 +376,83 @@ def event_validation_context(root, *, before=None, metadata=None):
     return result
 
 
+def check_utterance_flags(old, new):
+    if new.get('fixed') and new.get('ignored') and not (old.get('fixed') and old.get('ignored')):
+        raise Conflict('同一条话术只能固定或忽略')
+
+
 def check_fixed_utterances(before, after, toggle=None, authorized_fixed=()):
     def rows(library):
         return {(group['id'], row['id']): row for group in library['groups'] for row in group['utterances']}
     previous, current = rows(before), rows(after)
     for key in previous.keys() | current.keys():
         old, new = previous.get(key, {}), current.get(key, {})
+        check_utterance_flags(old, new)
         if key != toggle and key not in authorized_fixed and (bool(old.get('fixed')) != bool(new.get('fixed'))
                 or old.get('fixed') and old['text'] != new.get('text')):
             raise Conflict('固定话术不能修改或删除，请先取消固定')
+
+
+def editor_utterance_targets(current, changes, *, pin=False, explicit=()):
+    """Authorize text edits to existing rows, optionally fixing them on commit."""
+    if not isinstance(changes,list):
+        return set()
+    groups={group['id']:group for group in current['groups']}
+    targets=set()
+    for change in changes:
+        if not isinstance(change,dict) or change.get('kind')!='group' or change.get('action')!='put':
+            continue
+        previous=groups.get(change.get('id')) if isinstance(change.get('id'),str) else None
+        value=change.get('value')
+        rows=value.get('utterances') if isinstance(value,dict) else None
+        if not previous or not isinstance(rows,list):
+            continue
+        originals={row['id']:row for row in previous['utterances']}
+        for row in rows:
+            if (not isinstance(row,dict) or not isinstance(row.get('id'),str)
+                    or not isinstance(row.get('text'),str) or type(row.get('fixed',False)) is not bool):
+                continue
+            old=originals.get(row['id'])
+            key=(previous['id'],row['id'])
+            if old and old['text']!=row['text'] and (
+                    bool(old.get('fixed'))==bool(row.get('fixed')) or key in explicit):
+                targets.add(key)
+                if pin and not row.get('ignored'):
+                    row['fixed']=True
+    return targets
+
+
+def related_copy_changes(current, changes):
+    """Authorize inherited fixed flags only on a verified new copy."""
+    if not isinstance(changes,list) or not any(isinstance(change,dict) and 'related_copy_source' in change for change in changes):
+        return changes,set()
+    groups={group['id']:group for group in current['groups']}
+    result,authorized=[],set()
+    for change in changes:
+        if not isinstance(change,dict) or 'related_copy_source' not in change:
+            result.append(change)
+            continue
+        change=dict(change)
+        source=groups.get(schema.identity(change.pop('related_copy_source')))
+        target=change.get('value')
+        if (change.get('kind')!='group' or change.get('action')!='put' or not isinstance(target,dict)
+                or schema.identity(change.get('id')) in groups or not source
+                or source.get('syntax_version')!='0.4' or target.get('syntax_version')!='0.4'
+                or source['event_id']==target.get('event_id')):
+            raise Conflict('只能从已有模板组新建关联模板组')
+        originals=source['utterances']
+        original_ids={row['id'] for row in originals}
+        rows=target.get('utterances')
+        if (not isinstance(rows,list) or len(rows)!=len(originals)
+                or bool(source.get('ignored'))!=bool(target.get('ignored'))
+                or any(not isinstance(row,dict) or not isinstance(row.get('id'),str)
+                       or row['id'] in original_ids or row.get('text')!=original['text']
+                       or any(bool(row.get(flag))!=bool(original.get(flag)) for flag in ('fixed','ignored'))
+                       for original,row in zip(originals,rows))):
+            raise Conflict('关联模板的话术内容、顺序或状态与来源不一致')
+        authorized.update((change['id'],row['id']) for row in rows if row.get('fixed'))
+        result.append(change)
+    return result,authorized
 
 
 @timed('template_validate')
@@ -401,6 +478,9 @@ def _project(root, public, revision, meta, changes, entities=None, allow_conflic
             maps[kind].pop(uid,None)
         else:
             if not isinstance(change.get('value'),dict) or change['value'].get('id')!=uid:raise ValueError('模板修改身份不一致')
+            prior=maps[kind].get(uid,{})
+            if kind=='group' and prior.get('syntax_version')=='0.4' and change['value'].get('syntax_version')!='0.4':
+                raise Conflict('正式模板已切换至 v0.4。重新预览旧稿后再提交。')
             maps[kind][uid]=deepcopy(change['value'])
     groups=[maps['group'][uid] for uid in sorted(maps['group'])]
     if any(kind=='event' for kind,_ in seen):
@@ -425,6 +505,97 @@ def preview_changes(root,revision,changes,*,entities=None,authorized_fixed=()):
     public,meta=_load(root)
     projected=_project(root,public,revision,meta,changes,entities,authorized_fixed=authorized_fixed)
     return _snapshot(projected,meta)
+
+
+def merged_group_ids(aliases):
+    return {source: entry['merged_into'] for source, entry in aliases.items()}
+
+
+def merged_reference(tombstones, group_id, utterance_id=None):
+    groups = tombstones.get('group', {})
+    visited = set()
+    while group_id not in visited:
+        entry = groups.get(group_id, {})
+        if not entry.get('merged_into'):
+            break
+        visited.add(group_id)
+        group_id = entry['merged_into']
+        if utterance_id is not None:
+            utterance_id = entry.get('utterance_aliases', {}).get(utterance_id)
+    return group_id, utterance_id
+
+
+def _merge_projected(root, before, after, meta, changes, entities):
+    from template_group_edit import formal_merge_key, merge_formal_group
+    from templates_sync import blocked_records
+
+    touched = {row['id'] for row in changes if row['kind']=='group' and row['action']=='put'}
+    groups = {group['id']: group for group in after['groups']}
+    names = {(groups[uid]['event_id'], groups[uid]['name'].strip()) for uid in touched}
+    existing = {group['id']: group for group in before['groups']}
+    order = dict.fromkeys([*existing, *(row['id'] for row in changes if row['kind']=='group')])
+    peers = {}
+    for uid in order:
+        if uid in groups:
+            group = groups[uid]
+            key = group['event_id'], group['name'].strip()
+            if key in names:
+                peers.setdefault(key, []).append(group)
+    peers = [rows for rows in peers.values() if len(rows)>1]
+    if not peers:
+        return after, {}, set()
+
+    catalog, notes = _catalog(root, entities)[0], _notes(root)
+    events = {event['id']: event for event in after['events']}
+    blocked = blocked_records(root)
+    aliases, authorized = {}, set()
+    for rows in peers:
+        variants = {}
+        for group in rows:
+            uid = group['id']
+            archived = {**meta['baselines'].get(uid, {}), **meta['entity_archive'].get(uid, {})}
+            references = {eid: row for eid, row in archived.items() if isinstance(row, dict)}
+            key = formal_merge_key(group, events[group['event_id']], {**references, **catalog}, notes)
+            if key is not None:
+                variants.setdefault(key, []).append(group)
+        for equivalent in variants.values():
+            if len(equivalent)<2 or not any(group['id'] in touched for group in equivalent):
+                continue
+            if any(('group', group['id']) in blocked for group in equivalent):
+                raise Conflict('同名模板组存在同步冲突，请先解决')
+            winner, *duplicates = equivalent
+            target = deepcopy(winner)
+            for source in duplicates:
+                moved = merge_formal_group(target, source)
+                aliases[source['id']] = {'merged_into': target['id'], 'utterance_aliases': moved}
+                for row in existing.get(source['id'], {}).get('utterances', []):
+                    if row.get('fixed'):
+                        authorized.add((source['id'], row['id']))
+                for row in source['utterances']:
+                    if row.get('fixed'):
+                        authorized.add((target['id'], moved[row['id']]))
+                del groups[source['id']]
+            groups[target['id']] = target
+    return {**after, 'groups': [groups[uid] for uid in sorted(groups)]}, aliases, authorized
+
+
+def approval_projection(root, revision, changes, *, entities=None, authorized_fixed=(), merge_groups=False):
+    """Plan exact, replayable writes after checking the requested edits."""
+    public, meta = _load(root)
+    projected = _project(root, public, revision, meta, changes, entities, authorized_fixed=authorized_fixed)
+    if not merge_groups:
+        return projected, changes, {}, authorized_fixed
+    projected, aliases, moved_fixed = _merge_projected(root, public, projected, meta, changes, entities)
+    if not aliases:
+        return projected, changes, {}, authorized_fixed
+    old = {row['id']: row for row in public['groups']}
+    new = {row['id']: row for row in projected['groups']}
+    actual = [change for change in changes if change['kind']!='group']
+    for uid in sorted(old.keys() | new.keys()):
+        if old.get(uid) != new.get(uid):
+            actual.append({'kind': 'group', 'id': uid, 'action': 'put', 'value': new[uid]} if uid in new
+                          else {'kind': 'group', 'id': uid, 'action': 'delete'})
+    return projected, actual, aliases, set(authorized_fixed) | moved_fixed
 
 
 _SEMANTIC_KEYS={'id','name','category','aliases','description','effect','skills','options','properties','faction','tier','awakened','stats','attributes','type'}
@@ -536,7 +707,7 @@ def _baseline(meta,before,after,catalog,*,group_ids=None):
     meta['event_entity_archive']=event_archive
 
 
-def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=None,manual=None,authorized_fixed=(),validated=False):
+def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=None,manual=None,authorized_fixed=(),validated=False,aliases=None):
     """Caller holds workspace lock. Validate before journal (the commit point)."""
     root=Path(root);actor=_actor(actor)
     if not validated:
@@ -544,6 +715,8 @@ def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=No
         check_fixed_utterances(before,after,authorized_fixed=authorized_fixed)
     newmeta=deepcopy({key:value for key,value in meta.items() if key!='audit'})
     newmeta['audit']=meta['audit']
+    if any(group.get('syntax_version')=='0.4' for group in after['groups']):
+        newmeta['syntax_version']='0.4'
     changed=[]
     for kind,folder in FOLDERS.items():
         old={v['id']:v for v in before[folder]};new={v['id']:v for v in after[folder]}
@@ -553,7 +726,8 @@ def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=No
             if uid in new:change['value']=new[uid]
             changed.append(change)
             if uid in new:newmeta['tombstones'].setdefault(kind,{}).pop(uid,None)
-            else:newmeta['tombstones'].setdefault(kind,{})[uid]={'actor':actor,'at':_now(),'revision':_revision(before,meta)}
+            else:newmeta['tombstones'].setdefault(kind,{})[uid]={'actor':actor,'at':_now(),'revision':_revision(before,meta),
+                **((aliases or {}).get(uid, {}) if kind=='group' else {})}
     if not changed and newmeta==meta and not extra_writes:return _snapshot(before,meta)
     changed_ids={(item['kind'],item['id']) for item in changed}
     audit_snapshots={name:{folder:[deepcopy(record) for record in data[folder] if (kind,record['id']) in changed_ids]
@@ -658,14 +832,23 @@ def set_review_status(root,revision,group_id,actor,request):
         return {**after,'revision':_revision(after,meta,metadata_digest=digest)}
 
 
-def apply(root,revision,changes,actor='admin',*,entities=None,_allow_conflicts=False,manual=None,authorized_fixed=(),prepare=None):
+def apply(root,revision,changes,actor='admin',*,entities=None,_allow_conflicts=False,manual=None,authorized_fixed=(),prepare=None,editor=False,aliases=None):
     with store_lock(root,wait=True):
         _recover_locked(root);public,meta=_load(root)
         if prepare is not None:
             if revision!=_revision(public,meta):raise Conflict('模板库已更新，请刷新；草稿已保留')
             changes=prepare({**public,'revision':revision})
+        if editor:
+            changes, inherited=related_copy_changes(public,changes)
+            authorized_fixed=set(authorized_fixed)|inherited|editor_utterance_targets(public,changes,pin=True)
         after=_project(root,public,revision,meta,changes,entities,_allow_conflicts,authorized_fixed,revision_checked=prepare is not None)
-        return _commit(root,public,after,meta,actor,changes,entities=entities,manual=manual,authorized_fixed=authorized_fixed,validated=True)
+        if editor:
+            after,aliases,moved_fixed=_merge_projected(root,public,after,meta,changes,entities)
+            if aliases:
+                check_fixed_utterances(public,after,authorized_fixed=set(authorized_fixed)|moved_fixed)
+        saved=_commit(root,public,after,meta,actor,changes,entities=entities,manual=manual,
+                      authorized_fixed=authorized_fixed,validated=True,aliases=aliases)
+        return {**saved, 'merged_groups':merged_group_ids(aliases)} if aliases else saved
 
 
 def set_utterance_fixed(root, revision, group_id, utterance_id, fixed, actor, *, entities=None):
@@ -688,6 +871,7 @@ def set_utterance_fixed(root, revision, group_id, utterance_id, fixed, actor, *,
             raise Conflict('话术已不存在，请刷新后重试')
         if bool(row.get('fixed')) == fixed:
             return _snapshot(before,meta)
+        check_utterance_flags(row, {**row,'fixed':fixed})
         row['fixed'] = fixed
         after={**before,'groups':[group if g['id']==group_id else g for g in before['groups']]}
         return _commit(root,before,after,meta,actor,[],entities=entities,manual={'source':'manual'},
@@ -713,6 +897,9 @@ def _for_season(public,season):
 @timed('template_publish')
 def _published_document(root,public,meta,entities,season='S1'):
     from template_package import encode
+    from template_v04 import runtime_tree
+    if meta.get('syntax_version')=='0.4' or any(group.get('syntax_version')=='0.4' for group in public['groups']):
+        return runtime_tree(_exportable(_for_season(public,season)),_catalog(root,entities)[0],_notes(root),meta)
     key=Path(root).resolve(),season
     if len(_published_cache)>=8 and key not in _published_cache:_published_cache.clear()
     return encode(_exportable(_for_season(public,season)),_catalog(root,entities)[0],_notes(root),meta,
@@ -740,14 +927,33 @@ def export_library(root,group_ids=None,*,rules_format=False,entities=None,author
     return encode({'events':events,'groups':groups})
 
 
-def refresh_published(root,entities=None,*,migrate_events=False,season='S1'):
+def refresh_published(root,entities=None,*,migrate_events=False,season='S1',format=None):
     """Reconcile the derived runtime file after startup or an external sync."""
     with store_lock(root,wait=True):
         _recover_locked(root)
         renamed={}
         retired={}
-        public,meta=_load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
-        result=_published_document(root,public,meta,entities,season)
+        try:
+            public,meta=_load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
+            if format == 'v3' and meta.get('syntax_version')=='0.4':
+                if season != 'S1' or not (Path(root)/PUBLISHED_V3).is_file():
+                    raise KeyError('未保存该赛季的 v3 发布快照')
+                return json_store.read(Path(root)/PUBLISHED_V3)
+            result=_published_document(root,public,meta,entities,season)
+        except ValueError:
+            if format=='v3' or season!='S1' or not (Path(root)/PUBLISHED).is_file():
+                raise
+            import logging
+            from src.python.condition.v04 import load_library
+            logging.getLogger(__name__).exception('模板库发布校验未通过，继续使用上一版本')
+            result=json_store.read(Path(root)/PUBLISHED)
+            if '解释事件' in result:
+                load_library(result)
+            elif format=='v0.4':
+                raise
+            return result
+        if format=='v0.4' and '解释事件' not in result:
+            raise KeyError('该模板库尚未切换至 v0.4')
         if season!='S1':return deepcopy(result)
         if renamed or retired:
             writes={_path('event',uid):row for uid,row in renamed.items() if row in public['events']}

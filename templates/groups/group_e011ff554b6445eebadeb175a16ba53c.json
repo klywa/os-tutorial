@@ -14,7 +14,8 @@
   "utterances": [
     {
       "text": "太乙真人给海月复生，触发两次牺牲，有更大概率换掉对面主C。",
-      "id": "utterances_150054b113184a57804d99ecc8d97122"
+      "id": "utterances_150054b113184a57804d99ecc8d97122",
+      "ignored": true
     }
   ],
   "id": "group_e011ff554b6445eebadeb175a16ba53c",
@@ -23,11 +24,13 @@
   "related_entities": [],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"太乙真人\" and 玩家.战场 has \"海月\"",
+  "expression": "(动作.选中.名称 == \"太乙真人\" and any(我方.场上英雄列表, .名称 == \"海月\"))",
   "batch": [
     "自回归"
   ],
-  "review_status": "initial_reviewed",
+  "extra_key": "太乙真人",
+  "syntax_version": "0.4",
+  "review_status": null,
   "last_modified_by": {
     "kind": "user",
     "username": "local"
@@ -51,7 +54,7 @@
         "skills": [],
         "stats": {},
         "tier": null,
-        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+        "retrieved_at": "2026-11-12T02:09:23.057839+00:00"
       },
       "card:1861": {
         "aliases": [
@@ -103,7 +106,7 @@
           "物理防御": 20
         },
         "tier": 4,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "retrieved_at": "2026-10-29T05:00:59.403683+00:00",
         "skills_source": "card:1861"
       },
       "card:1863": {
@@ -142,7 +145,7 @@
         ],
         "stats": {},
         "tier": 4,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "retrieved_at": "2026-10-29T05:00:59.403683+00:00",
         "skills_source": "card:1861"
       },
       "card:5211": {
@@ -192,7 +195,7 @@
           "物理防御": 20
         },
         "tier": 5,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "retrieved_at": "2026-10-25T09:29:24.559287+00:00",
         "skills_source": "card:5211"
       },
       "card:5213": {
@@ -231,7 +234,7 @@
         ],
         "stats": {},
         "tier": 5,
-        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
         "skills_source": "card:5211"
       }
     }

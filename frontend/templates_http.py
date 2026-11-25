@@ -104,6 +104,8 @@ def _read_projection(server, part, known_generation=None):
                     data['read_generation'] = hashlib.sha256(repr(generation).encode()).hexdigest()
                     events = {e['id']:e for e in data['events']}
                     data['condition_catalog'] = library.rules.library_catalog(events.values(),root=server.root)
+                    if meta.get('syntax_version')=='0.4':
+                        data['syntax_version']='0.4'
                     notes = library._notes(server.root)
                     scope_names = {}
                     utterance_bindings = {}
@@ -112,7 +114,7 @@ def _read_projection(server, part, known_generation=None):
                         refs = {**meta.get('entity_archive',{}).get(group['id'],{}),**catalog}
                         event = events[group['event_id']]
                         group.update(library.rules.editor_rule(group,event,refs))
-                        if 'in' in group['expression']:
+                        if group.get('syntax_version')!='0.4' and 'in' in group['expression']:
                             bindings = literal_in_bindings(group['expression'],event['name'],data['condition_catalog'])
                             if bindings:
                                 utterance_bindings[group['id']] = bindings
@@ -224,7 +226,10 @@ def get(server,actor,path,request_url):
         return library.export_library(server.root,ids,rules_format=True,entities=effective_entities(server),
                                       authoring=query.get('authoring')==['1'])
     if path==PREFIX+'/published':
-        return library.refresh_published(server.root,entities=effective_entities(server),season=seasons.selected(request_url))
+        format=query.get('format',[None])[0]
+        if format not in (None,'v3','v0.4'):
+            raise ValueError('未知的话术库发布格式')
+        return library.refresh_published(server.root,entities=effective_entities(server),season=seasons.selected(request_url),format=format)
     if path in (PREFIX+'/comments', PREFIX+'/history'):
         _identity(actor,editor=True)
         group_id=query.get('group_id',[None])[0]
@@ -409,7 +414,7 @@ def mutate(server,actor,path,command,data,public=False):
                     raise PermissionError('触发动作变化需要新建模板组，请由有新建权限的账号处理')
                 return workflow.prepare(server.root,current,transformed,actor,source=source,entities=entities)
             result=library.apply(server.root,data['revision'],None,actor=actor['username'],entities=entities,
-                                 manual=manual,prepare=prepare)
+                                 manual=manual,prepare=prepare,editor=True)
         else:
             entities=effective_entities(server)
             current=library.snapshot(server.root)

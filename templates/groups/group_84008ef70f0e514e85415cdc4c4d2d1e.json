@@ -22,7 +22,7 @@
   "related_entities": [],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"",
+  "expression": "((动作.选中.名称 == \"孙膑\" and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"刘禅\"))",
   "ignored": true,
   "review_status": "initial_reviewed",
   "last_modified_by": {
@@ -229,5 +229,7 @@
         "skills_source": "card:1181"
       }
     }
-  }
+  },
+  "extra_key": "孙膑",
+  "syntax_version": "0.4"
 }

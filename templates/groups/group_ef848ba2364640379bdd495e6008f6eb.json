@@ -36,7 +36,7 @@
   ],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "expression": "((动作.选中.名称 == \"苏烈\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 0)",
   "batch": [
     "自回归"
   ],
@@ -176,5 +176,7 @@
         "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
       }
     }
-  }
+  },
+  "extra_key": "苏烈",
+  "syntax_version": "0.4"
 }

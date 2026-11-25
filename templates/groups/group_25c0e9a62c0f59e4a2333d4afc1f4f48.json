@@ -13,7 +13,8 @@
   "utterances": [
     {
       "text": "孙膑觉醒后，自动成长效率翻倍。",
-      "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb"
+      "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb",
+      "fixed": true
     }
   ],
   "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
@@ -22,10 +23,12 @@
   "related_entities": [],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒",
+  "expression": "(((((动作.选中.名称 == \"孙膑\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"孙膑\")) and (我方.主C != nil and 我方.主C.名称 == \"孙膑\")) and (我方.主C != nil and not 我方.主C.已觉醒))",
   "batch": [
     "自回归"
   ],
+  "extra_key": "孙膑",
+  "syntax_version": "0.4",
   "review_status": "initial_reviewed",
   "last_modified_by": {
     "kind": "user",
@@ -50,7 +53,7 @@
         "skills": [],
         "stats": {},
         "tier": null,
-        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+        "retrieved_at": "2026-11-12T02:09:23.057839+00:00"
       },
       "card:1181": {
         "aliases": [],

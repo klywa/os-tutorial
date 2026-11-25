@@ -99,6 +99,13 @@ func (c *Catalog) cardTagOptions(v value) [][]string {
 // EvaluateCondition uses WXQ_CONDITION_CATALOG, catalog.json beside the executable,
 // or the repository catalog, in that order. Both raw and exported catalogs are supported.
 func EvaluateCondition(eventJSON []byte, expression string, stateJSON []byte) (bool, error) {
+	var version struct {
+		Name   string `json:"事件"`
+		Syntax string `json:"syntax_version"`
+	}
+	if json.Unmarshal(eventJSON, &version) == nil && version.Syntax == "0.4" {
+		return EvaluateConditionV04(version.Name, expression, stateJSON)
+	}
 	path := os.Getenv("WXQ_CONDITION_CATALOG")
 	if path == "" {
 		if exe, err := os.Executable(); err == nil {
@@ -192,6 +199,9 @@ func (c *Catalog) EvaluateCondition(eventJSON []byte, expression string, stateJS
 	}()
 	event, state := decodeObject(eventJSON), decodeObject(stateJSON)
 	name, ok := event["事件"].(string)
+	if ok && event["syntax_version"] == "0.4" {
+		return EvaluateConditionV04(name, expression, stateJSON)
+	}
 	def, known := c.Events[name]
 	if ok && !known {
 		const prefix = "解释为何"

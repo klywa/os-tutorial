@@ -103,7 +103,16 @@ def _snapshot(group, events, catalog, rules_catalog):
     rows = {row['id']: row for row in catalog['items']}
     refs = store._references(group, events, catalog=rows)
     event=events.get(group['event_id'])
-    if event and group.get('expression'):
+    if event and group.get('syntax_version')=='0.4':
+        import ast
+        from src.python.condition.v04 import compile_expression
+        expression=compile_expression(event['name'],group.get('expression','')).node
+        names={node.value for node in ast.walk(expression)
+               if isinstance(node,ast.Constant) and isinstance(node.value,str)} if expression else set()
+        if group.get('extra_key'):
+            names.update(group['extra_key'].split('-'))
+        refs.update({row['id']:row['name'] for row in rows.values() if row.get('name') in names})
+    elif event and group.get('expression'):
         parser=_ReferencedCards(group['expression'],event['name'],rules_catalog)
         parser.parse()
         for name,categories,awakened in parser.cards:
@@ -159,13 +168,15 @@ def prepare(root, current, changes, actor, *, source='editor', entities=None, or
                 modifier = {'kind':'ai'}
         if operation == 'ai':
             modifier = {'kind': 'ai'}
-        status = 'ai_generated' if modifier['kind'] == 'ai' else 'initial_reviewed'
+        status = 'ai_generated' if modifier['kind'] == 'ai' else None
         if operation in ('file-import', 'import'):
             authored = supplied.get('review_status')
             if 'review_status' in supplied and authored is None:
                 status = None
-            if authored in ('initial_reviewed', 'final_reviewed'):
-                status = 'initial_reviewed'
+            if authored in ('ai_generated', 'initial_reviewed'):
+                status = authored
+            if authored == 'final_reviewed':
+                status = None
             if authored == 'final_reviewed' and origin['role'] in REVIEWERS:
                 status = 'final_reviewed'
                 value.update(reviewed_by=origin['username'], reviewed_at=store._now())
@@ -224,23 +235,27 @@ def revisions(root, group_id, *, loaded=None):
     """Project saved group revisions from legacy and current audit rows."""
     schema.identity(group_id)
     current, metadata = loaded if loaded is not None else store._load(root)
+    tombstones = metadata['tombstones']
+    group_id = store.merged_reference(tombstones, group_id)[0]
     record = _group(current, group_id)
     entries = []
+    inherited = []
     audit=[*metadata['audit'],*store.review_history(root)]
     for row in sorted(reversed(audit),key=lambda row:row.get('at') or '',reverse=True):
-        matching = next((change for change in row.get('changes', [])
-                         if change.get('kind') == 'group' and change.get('id') == group_id), None)
-        if matching is None and not (row.get('action') == 'resolve_conflict' and row.get('group_id') == group_id):
-            continue
-        before = row.get('before_group')
-        value = row.get('after_group')
-        if matching is not None:
-            before = next((group for group in row.get('before', {}).get('groups', []) if group['id'] == group_id), None)
-            value = matching.get('value')
-        entries.append({'id':row['id'], 'at':row.get('at'), 'by':row.get('actor'),
-                        'restored_from':row.get('manual', {}).get('restored_from'),
-                        'value':value, 'before':before, 'restorable':isinstance(value,dict) and
-                        {'id','event_id','scope','conditions','utterances'} <= set(value)})
+        changes = [(change['id'], next((group for group in row.get('before', {}).get('groups', [])
+                    if group['id'] == change['id']), None), change.get('value'))
+                   for change in row.get('changes', []) if change.get('kind') == 'group']
+        if not changes and row.get('action') == 'resolve_conflict':
+            changes = [(row.get('group_id'), row.get('before_group'), row.get('after_group'))]
+        for uid, before, value in changes:
+            if store.merged_reference(tombstones, uid)[0] != group_id:
+                continue
+            canonical = uid == group_id
+            entry = {'id':row['id'] if canonical else row['id']+':'+uid, 'at':row.get('at'), 'by':row.get('actor'),
+                     'restored_from':row.get('manual', {}).get('restored_from'), 'value':value, 'before':before,
+                     'restorable':canonical and isinstance(value,dict) and
+                     {'id','event_id','scope','conditions','utterances'} <= set(value)}
+            (entries if canonical else inherited).append(entry)
     if entries and isinstance(entries[-1]['before'],dict) and entries[-1]['before']!=entries[-1]['value']:
         oldest=entries[-1]
         entries.append({'id':oldest['id']+'-before','value':oldest['before'],'restorable':True})
@@ -248,7 +263,7 @@ def revisions(root, group_id, *, loaded=None):
         entries.insert(0, {'id':'current', 'at':None, 'by':None, 'value':record, 'restorable':False})
     entries[0]['current'] = True
     entries[0]['restorable'] = False
-    return entries
+    return [entries[0], *sorted([*entries[1:], *inherited], key=lambda row:row.get('at') or '', reverse=True)]
 
 
 def restore_change(root, current, group_id, revision_id):

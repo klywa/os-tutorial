@@ -1,6 +1,7 @@
 import {useEffect,useRef,useState} from 'react';
 import {api} from './model';
 import {useAuth} from './auth';
+import MetadataSuggestions,{lastMetadataTerm,replaceLastMetadataTerm} from './MetadataSuggestions';
 
 type Review={id:string;card_id:string;card_name:string;author:string;status:string;historical?:boolean;before_tags:string[];after_tags:string[];reviewer:string|null;created:string;reviewed:string|null};
 type Detail={revision:string;tags:string[];suggestions?:string[];items:Review[]};
@@ -24,6 +25,7 @@ export function CardTags({id,updated,compact=false}:{id:string;updated?:()=>void
  const [data,setData]=useState<Detail|null>(null),[draft,setDraft]=useState<string|null>(null);
  const [error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[epoch,setEpoch]=useState(0);
  const saving=useRef(false);
+ const field=useRef<HTMLInputElement>(null);
  const path='cards/'+encodeURIComponent(id)+'/tags';
  useEffect(()=>{let live=true;api<Detail>(path).then(result=>{if(live&&Array.isArray(result.tags)){setData(result);setError('');}}).catch(e=>{if(live)setError(e.message);});return()=>{live=false;};},[path,epoch]);
  async function save(url:string,body:unknown){
@@ -50,18 +52,20 @@ export function CardTags({id,updated,compact=false}:{id:string;updated?:()=>void
   void save(path,{tags,revision:data.revision});
  }
  const value=draft??data?.tags.join('、')??'';
- const tags=parseTags(value);
+ const completedTags=draft===null?data?.tags??[]:parseTags(replaceLastMetadataTerm(draft,''));
  const label=(values:string[])=>values.join('、')||'无';
  return <section><h3>当前形态标签</h3>
  {error&&<p role="alert">{error} <button onClick={()=>setEpoch(i=>i+1)}>重新读取</button></p>}
  {notice&&<p role="status">{notice}</p>}
  {data&&<><p>{editor?'已生效：':''}{label(data.tags)}</p>{editor&&<div className="card-tag-editor" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))submitDraft();}}>
- <label>标签（用顿号分隔）<input readOnly={busy} value={value} onChange={e=>setDraft(e.target.value)}/></label>
- {!compact&&<><label>添加已有标签<select value="" disabled={busy} onChange={e=>{
-  const tag=e.target.value;
-  if(tag)setDraft([...tags,tag].join('、'));
- }}><option value="">请选择</option>{data.suggestions?.filter(tag=>!tags.includes(tag)).map(tag=><option key={tag}>{tag}</option>)}</select></label>
- <small>{admin?'离开标签编辑区后保存并生效。':'离开标签编辑区后提交管理员审核。'}</small></>}
+ <label>标签（用顿号分隔）<input ref={field} readOnly={busy} value={value} onChange={e=>setDraft(e.target.value)}/></label>
+ {!busy&&<MetadataSuggestions scope="card-tags" choices={(data.suggestions??[]).filter(tag=>!completedTags.includes(tag))}
+  query={draft===null?'':lastMetadataTerm(draft)} label="匹配标签"
+  onPick={tag=>{
+   field.current?.focus();
+   setDraft(current=>current===null?[...data.tags,tag].join('、')+'、':replaceLastMetadataTerm(current,tag)+'、');
+  }}/>}
+ {!compact&&<small>{admin?'离开标签编辑区后保存并生效。':'离开标签编辑区后提交管理员审核。'}</small>}
  </div>}
  {editor&&!compact&&data.items.map(r=><div key={r.id}><strong>{reviewStatus[r.status]}{r.historical?'（旧标签体系）':''} · {r.author}</strong> <time dateTime={r.created}>{new Date(r.created).toLocaleString()}</time>
  <p>原标签　{label(r.before_tags)}<br/>提议标签　{label(r.after_tags)}</p>

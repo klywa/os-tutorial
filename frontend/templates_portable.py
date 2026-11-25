@@ -207,16 +207,27 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
                 condition['value'] = _entity(value, parameter, catalog, prior, (retired_entities or {}).get(group['id']))
         group['conditions'] = _stable_rows(group['conditions'], previous.get('conditions', []), 'conditions')
         utterances = []
-        for value in _list(group['utterances']):
-            schema.text(value, '话术'); utterances.append({'text': value})
-        prior_utterances = previous.get('utterances', [])
-        def retained(row):
-            return row.get('ignored') or row.get('fixed')
-        for row in prior_utterances:
-            if row.get('fixed') and not row.get('ignored') and {'text': row['text']} in utterances:
-                utterances.remove({'text': row['text']})
-        editable = _stable_rows(utterances, [row for row in prior_utterances if not retained(row)], 'utterances')
-        group['utterances'] = _insert_retained(editable, prior_utterances, retained)
+        syntax_fields = (rule_fields or {}).get(group['id'], {})
+        if syntax_fields.get('syntax_version')=='0.4':
+            for value in _list(group['utterances']):
+                schema.fields(value, {'id','text','fixed','ignored'}, {'id','text'})
+                schema.identity(value['id'])
+                schema.text(value['text'], '话术')
+                utterances.append(deepcopy(value))
+            present = {row['id'] for row in utterances}
+            group['utterances'] = _insert_retained(utterances, previous.get('utterances', []),
+                                                   lambda row: row['id'] not in present and (row.get('fixed') or row.get('ignored')))
+        else:
+            for value in _list(group['utterances']):
+                schema.text(value, '话术'); utterances.append({'text': value})
+            prior_utterances = previous.get('utterances', [])
+            def retained(row):
+                return row.get('ignored') or row.get('fixed')
+            for row in prior_utterances:
+                if row.get('fixed') and not row.get('ignored') and {'text': row['text']} in utterances:
+                    utterances.remove({'text': row['text']})
+            editable = _stable_rows(utterances, [row for row in prior_utterances if not retained(row)], 'utterances')
+            group['utterances'] = _insert_retained(editable, prior_utterances, retained)
         if 'ignored' in previous:
             group['ignored'] = previous['ignored']
         archives[group['id']] = deepcopy(previous.get('related_entities', []))

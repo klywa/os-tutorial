@@ -10,7 +10,7 @@ CATEGORIES = {'players','heroes','equipment','talents','derivatives','effect-car
 WORKFLOW_METADATA = {'review_status','last_modified_by','reviewed_by','reviewed_at','entity_snapshot'}
 REVIEW_STATUSES = {'ai_generated','initial_reviewed','final_reviewed'}
 GROUP_METADATA = {'version', 'mode', 'tags', 'batch', 'explanation', 'explanation_before',
-                  'explanation_source', 'explanation_after'} | WORKFLOW_METADATA
+                  'explanation_source', 'explanation_after', 'wording_brief'} | WORKFLOW_METADATA
 
 
 def group_season(group):
@@ -131,6 +131,8 @@ def validate_group(group, events, entities, notes):
     for key in ('explanation_before', 'explanation_source', 'explanation_after'):
         if key in group and (not isinstance(group[key], str) or len(group[key]) > 100000):
             raise ValueError('说明与依据分项格式无效或过长')
+    if 'wording_brief' in group and not isinstance(group['wording_brief'], str):
+        raise ValueError('话术构思须为文本')
     event=events.get(group['event_id']) if isinstance(group['event_id'],str) else None
     if event is None:raise ValueError('话术组引用的事件不存在')
     rules.validate_rule(group,event)
@@ -162,7 +164,8 @@ def validate_group(group, events, entities, notes):
     references = {}
     for u in group['utterances']:
         fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术')
-        references.update(dict.fromkeys(utterance_references(u['text'])))
+        if group.get('syntax_version') != '0.4':
+            references.update(dict.fromkeys(utterance_references(u['text'])))
         if 'ignored' in u and type(u['ignored']) is not bool:
             raise ValueError('话术忽略状态必须是布尔值')
         if 'fixed' in u and type(u['fixed']) is not bool:

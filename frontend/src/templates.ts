@@ -1,9 +1,11 @@
 import type {ConditionCatalog,ConditionNode} from './templateRules';
+import {catalogV04,lineupName} from './templateV04';
 export type ParameterType='text'|'number'|'boolean'|'entity';
-export function effectiveExpression(player:string|null,lineup:string|null,expression:string){
+export function effectiveExpression(player:string|null,lineup:string|null,expression:string,syntaxVersion?:string){
  const clauses:string[]=[];
- if(player!==null)clauses.push('玩家.使用棋手 is '+JSON.stringify(player));
- if(lineup!==null)clauses.push('玩家.使用阵容 is '+JSON.stringify(lineup));
+ const v04=syntaxVersion==='0.4';
+ if(player!==null)clauses.push((v04?'我方.棋手名称 == ':'玩家.使用棋手 is ')+JSON.stringify(player));
+ if(lineup!==null)clauses.push((v04?'我方.阵容名称 == ':'玩家.使用阵容 is ')+JSON.stringify(v04?lineupName(lineup):lineup));
  if(!clauses.length)return expression;
  if(expression.trim())clauses.push('('+expression+')');
  return clauses.join(' and ');
@@ -12,6 +14,34 @@ export function effectiveExpression(player:string|null,lineup:string|null,expres
 export type TemplateEntity={id:string;name:string};
 export type TemplateParameter={id:string;key:string;name:string;type:ParameterType;dsl_type?:string;entity_categories?:string[];suggestions?:unknown[];min?:number;max?:number};
 export type TemplateEvent={id:string;name:string;category?:string;parameters:TemplateParameter[]};
+export const relatedTemplateEventFamilies=[
+ ['解释为何购买英雄','解释为何选择英雄','解释为何竞拍目标英雄（第1次拍卖）','解释为何竞拍目标英雄（第2次拍卖）'],
+ ['解释为何购买效果牌','解释为何选择效果牌','解释为何竞拍目标效果牌（第3次拍卖）'],
+ ['解释为何穿戴装备','解释为何铸造装备','解释为何转移装备'],
+];
+const templateEventOrder=[
+ ...relatedTemplateEventFamilies[0],
+ '解释为何上阵英雄','解释为何合成英雄','解释为何从手牌出售英雄','解释为何从战场出售英雄',
+ '解释为何使用无目标效果牌','解释为何对目标使用效果牌',
+ ...relatedTemplateEventFamilies[1],
+ ...relatedTemplateEventFamilies[2],
+ '解释为何选择棋手技能','解释为何使用棋手技能','解释为何对目标使用棋手技能',
+ '解释为何棋手升级','解释为何刷新商店','解释为何锁定商店','解释为何选择天赋','解释为何准备战斗',
+ '解释为何建议向某阵容发展','解释阵容成型后的提升方向',
+];
+const eventAliases=new Map([
+ ['解释为何拍卖某张英雄','解释为何竞拍目标英雄（第1次拍卖）'],
+ ['解释为何竞拍目标英雄','解释为何竞拍目标英雄（第1次拍卖）'],
+ ['解释为何拍卖某张效果牌','解释为何竞拍目标效果牌（第3次拍卖）'],
+ ['解释为何合成装备','解释为何铸造装备'],
+ ['解释为何制造装备','解释为何铸造装备'],
+]);
+const eventRanks=new Map([...new Set([...templateEventOrder,...Object.keys(catalogV04.events),
+ '对手出现100级以上英雄','对手连败转连胜'])].map((name,index)=>[name,index]));
+export function orderTemplateEvents<T extends Pick<TemplateEvent,'name'>>(events:readonly T[]):T[]{
+ const rank=(name:string)=>eventRanks.get(eventAliases.get(name)??name)??eventRanks.size;
+ return [...events].sort((first,second)=>rank(first.name)-rank(second.name));
+}
 export type ConditionOperator='eq'|'ne'|'gt'|'gte'|'lt'|'lte'|'between';
 export type TemplateCondition={id:string;parameter_key:string;operator:ConditionOperator;value:unknown};
 export const templateExplanationLimit=300;
@@ -20,7 +50,7 @@ export const templateGameModes=['万象大赛','万象速决'] as const;
 export type TemplateGameMode=''|typeof templateGameModes[number];
 export type TemplateModifier={kind:'ai'|'user';username?:string};
 export type TemplateEntitySnapshot={season:string;version?:string;entities:Record<string,unknown>};
-type TemplateGroupMetadata={version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string};
+type TemplateGroupMetadata={version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string;wording_brief?:string};
 export const templateReviewLabels:Record<TemplateReviewStatus,string>={ai_generated:'AI生成',initial_reviewed:'初核完成',final_reviewed:'复核完成'};
 export const effectiveReviewStatus=(status:TemplateGroupMetadata['review_status'])=>status===undefined?'ai_generated':status;
 export const templateReviewLabel=(status:TemplateGroupMetadata['review_status'])=>status===null?'未标记':templateReviewLabels[status??'ai_generated'];
@@ -28,10 +58,10 @@ export const groupSeason=(group:Pick<TemplateGroupMetadata,'version'>)=>(group.v
 export const templateExplanationFields=[
  ['explanation_before','前置思考'],['explanation_source','来源'],['explanation_after','后置校验'],
 ] as const;
-export const templateMetadataLabels={version:'版本',mode:'模式',tags:'标签',batch:'批次',explanation_before:'说明与依据-前置思考',explanation_source:'说明与依据-来源',explanation_after:'说明与依据-后置校验'};
-export type TemplateGroup=TemplateGroupMetadata&{id:string;name:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
+export const templateMetadataLabels={version:'版本',mode:'模式',tags:'标签',batch:'批次',explanation_before:'说明与依据-前置思考',explanation_source:'说明与依据-来源',explanation_after:'说明与依据-后置校验',wording_brief:'话术构思'};
+export type TemplateGroup=TemplateGroupMetadata&{id:string;name:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';syntax_version?:'0.4';extra_key?:string;publication_hold?:string;scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
 export type UtteranceBindings=Record<string,string[]>;
-export type TemplateSnapshot={schema_version:number;condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>;utterance_bindings?:Record<string,UtteranceBindings>};
+export type TemplateSnapshot={schema_version:number;syntax_version?:'0.4';condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];merged_groups?:Record<string,string>;entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>;utterance_bindings?:Record<string,UtteranceBindings>};
 // Portable JSON is a separate contract from the canonical editor/proposal model.
 export type PortableTemplateParameter=Omit<TemplateParameter,'id'|'suggestions'>&{id?:string;suggestions?:Array<string|number|boolean>};
 export type PortableTemplateEvent=Omit<TemplateEvent,'id'|'parameters'>&{id?:string;parameters:PortableTemplateParameter[]};
@@ -69,7 +99,7 @@ export function deriveTemplateEntities(group:TemplateGroup,event:TemplateEvent|u
  if(group.event_id===savedGroup.event_id&&group.scope.player_id===savedGroup.scope.player_id&&group.expression===savedGroup.expression&&JSON.stringify(group.related_entities)===JSON.stringify(savedGroup.related_entities)&&JSON.stringify(selectors(group,event))===JSON.stringify(selectors(savedGroup,savedEvent)))for(const ref of archive)remember(ref);
  return [...result.values()];
 }
-export type TemplateChange={kind:'event'|'group';action:'put'|'delete';id:string;value?:TemplateEvent|TemplateGroup;target_name?:string|null};
+export type TemplateChange={kind:'event'|'group';action:'put'|'delete';id:string;value?:TemplateEvent|TemplateGroup;target_name?:string|null;related_copy_source?:string};
 export type TemplateMetadataField='tags'|'batch';
 export function appendTemplateMetadata(groups:TemplateGroup[],field:TemplateMetadataField,values:string[]):TemplateChange[]{
  const additions=[...new Set(values)];
@@ -81,22 +111,25 @@ export function appendTemplateMetadata(groups:TemplateGroup[],field:TemplateMeta
 }
 type TemplateVersions=Record<string,TemplateEvent|TemplateGroup|null>;
 export type TemplateReview={action?:string;at:string;by:string;changes?:TemplateChange[];before?:TemplateVersions;after?:TemplateVersions};
-export type TemplateProposal={history_targets?:TemplateChange[];has_history?:boolean;previously_approved?:boolean;formal_write?:{revision:string;previous_revision:string;changes:TemplateChange[]};group_review_overrides?:Record<string,TemplateReviewStatus|null>;discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
+export type TemplateProposal={history_targets?:TemplateChange[];has_history?:boolean;previously_approved?:boolean;formal_write?:{revision:string;previous_revision:string;changes:TemplateChange[];merged_groups?:Record<string,string>};group_review_overrides?:Record<string,TemplateReviewStatus|null>;discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
 export type TemplateWarning={group_id:string;group_name:string;revision:string;entities:{id:string;name:string;before:unknown;after:unknown}[]};
 export type WarningSnapshot={items:TemplateWarning[];unseen_items?:TemplateWarning[];notification_revision:string;unseen:boolean};
 export function loginWarningItems(snapshot:WarningSnapshot){return snapshot.unseen_items??(snapshot.unseen?snapshot.items:[]);}
-export type TemplateFilters={event:string;player:string;lineup:string;query:string;version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|''|'unmarked';actor?:string};
-export const emptyTemplateFilters:TemplateFilters={event:'',player:'',lineup:'',query:'',version:'',mode:'',tags:[],batch:[],review_status:'',actor:''};
+export type UtteranceVisibility={onlyFixed?:boolean;hideIgnored?:boolean};
+export type TemplateFilters=UtteranceVisibility&{event:string;player:string;lineup:string;query:string;actionQuery?:string;version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|''|'unmarked';actor?:string};
+export const emptyTemplateFilters:TemplateFilters={event:'',player:'',lineup:'',query:'',actionQuery:'',version:'',mode:'',tags:[],batch:[],review_status:'',actor:'',onlyFixed:false,hideIgnored:true};
+export function visibleTemplateUtterances(rows:TemplateGroup['utterances'],{onlyFixed,hideIgnored=true}:UtteranceVisibility){
+ return rows.filter(row=>(!onlyFixed||row.fixed)&&(!hideIgnored||!row.ignored));
+}
+export function templateGroupVisible(group:TemplateGroup,visibility:UtteranceVisibility){
+ return (!(visibility.hideIgnored??true)||!group.ignored)
+  &&(!visibility.onlyFixed||visibleTemplateUtterances(group.utterances,visibility).length>0);
+}
 export const operators:Record<ConditionOperator,string>={eq:'等于',ne:'不等于',gt:'>',gte:'≥',lt:'<',lte:'≤',between:'介于'};
 export const typeNames:Record<ParameterType,string>={text:'文本',number:'数字',boolean:'是/否',entity:'实体卡牌'};
 export function templateId(prefix:string){return prefix+'_'+crypto.randomUUID();}
-export function copyTemplateGroup(source:TemplateGroup,groups:TemplateGroup[]):TemplateGroup{
- const names=new Set(groups.filter(group=>group.event_id===source.event_id).map(group=>group.name.trim()));
- let number=1,name=source.name+'（副本）';
- while(names.has(name)){
-  number++;
-  name=source.name+'（副本 '+number+'）';
- }
+export function copyTemplateGroup(source:TemplateGroup):TemplateGroup{
+ const name=source.name+'（副本）';
  const draft=structuredClone(source);
  return {...draft,id:templateId('group'),name,
   conditions:draft.conditions.map(condition=>({...condition,id:templateId('conditions')})),
@@ -112,6 +145,66 @@ export function renderUtterance(text:string,bindings?:UtteranceBindings):string{
   return candidates?.length?candidates.join('/'):token;
  });
 }
+const orderedArguments:Record<string,string[]>={
+ 购买:['选中','候选列表'],上阵英雄:['英雄'],合成英雄:['英雄'],出售英雄:['英雄'],选择:['候选列表','选中'],
+ 使用效果牌:['卡牌'],使用棋手技能:['卡牌'],对目标使用效果牌:['目标','卡牌'],对目标使用棋手技能:['目标','卡牌'],
+ 穿戴装备:['目标英雄','装备'],铸造装备:['目标英雄','原装备','目标装备'],转移装备:['原英雄','装备','目标英雄'],
+ 升级棋手:['目标等级'],发展阵容:['阵容'],
+};
+
+// Only unconditional equalities identify an action's participants. Other facts
+// (including entities mentioned under negation) belong in the trigger conditions.
+export function fixedArguments(group: TemplateGroup,event?:TemplateEvent) {
+ const values = new Map<string,string>();
+ if(group.syntax_version==='0.4'){
+  const definition=event&&catalogV04.events[event.name];
+  if(definition){
+   const args=orderedArguments[definition.action]??[];
+   const segments=group.extra_key?.split('-')??[];
+   definition.key.forEach((field,index)=>{
+    const argument=args.indexOf(field),value=segments[index];
+    if(argument>=0&&value&&value!=='*')values.set('arg'+(argument+1),value);
+   });
+  }
+  return values;
+ }
+ const ambiguous = new Set<string>();
+ function remember(key:string, value:string) {
+  if(values.has(key) && values.get(key)!==value) ambiguous.add(key);
+  values.set(key,value);
+ }
+ function visit(expression:string) {
+  const source=expression.trim();
+  let depth=0, start=0, outerEnd=-1;
+  const parts:string[]=[];
+  for(const match of source.matchAll(/"(?:\\.|[^"\\])*"|[()[\]{}]|\b(?:and|or)\b/gu)) {
+   const token=match[0], index=match.index!;
+   if(token.startsWith('"')) continue;
+   if(['(','[','{'].includes(token)) depth++;
+   else if([')',']','}'].includes(token)) {depth--; if(depth===0 && outerEnd<0) outerEnd=index;}
+   else if(depth===0) {
+    if(token==='or') return;
+    parts.push(source.slice(start,index));start=index+token.length;
+   }
+  }
+  if(parts.length) {parts.push(source.slice(start));parts.forEach(visit);return;}
+  if(source.startsWith('(') && outerEnd===source.length-1) {visit(source.slice(1,-1));return;}
+  const lineup=/^([a-z][a-z0-9_]*)\.阵容名\s+has\s+("(?:\\.|[^"\\])*")$/u.exec(source);
+  if(lineup){remember(lineup[1],JSON.parse(lineup[2]));return;}
+  const comparison=/^([a-z][a-z0-9_]*)(?:\.(?:名称|name))?\s*(?:\bis\b|==)\s*("(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?)$/u.exec(source);
+  if(comparison) remember(comparison[1],comparison[2].startsWith('"')?JSON.parse(comparison[2]):comparison[2]);
+ }
+ if(group.expression?.trim()) visit(group.expression);
+ else for(const condition of group.conditions) {
+  if(condition.operator!=='eq') continue;
+  const value=condition.value;
+  if(typeof value==='string'||typeof value==='number') remember(condition.parameter_key,String(value));
+  else if(value && typeof value==='object' && 'name' in value) remember(condition.parameter_key,String(value.name));
+ }
+ for(const key of ambiguous) values.delete(key);
+ return values;
+}
+
 function templateSearchTerms(query:string):string[]{
  const terms:string[]=[],closing:string[]=[];
  const delimiters:Record<string,string>={'(':')','[':']','{':'}'};
@@ -134,26 +227,37 @@ function templateSearchTerms(query:string):string[]{
 export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>;utteranceBindings?:Record<string,UtteranceBindings>}={}){
  const compatible=(value:string|null,filter:string)=>!filter||(filter==='common'?value===null:value===null||value===filter);
  const terms=templateSearchTerms(filters.query);
+ const actionTerms=templateSearchTerms(filters.actionQuery??'');
  const actorMatches=(group:TemplateGroup)=>{
   const modifier=group.last_modified_by??{kind:'ai'};
   return !filters.actor||filters.actor===modifier.kind||(modifier.kind==='user'&&filters.actor==='user:'+modifier.username);
  };
  const scoped=groups.filter(group=>(!filters.event||group.event_id===filters.event)
+  &&templateGroupVisible(group,filters)
   &&compatible(group.scope.player_id,filters.player)&&compatible(group.scope.lineup_note_id,filters.lineup)
   &&(!filters.version||filters.version.toUpperCase()===groupSeason(group))&&(!filters.mode||filters.mode===group.mode)
   &&(!filters.review_status||filters.review_status===(effectiveReviewStatus(group.review_status)??'unmarked'))&&actorMatches(group)
   &&(filters.batch??[]).every(batch=>group.batch?.includes(batch))
   &&(filters.tags??[]).every(tag=>group.tags?.includes(tag)));
- if(!terms.length)return scoped;
+ if(!terms.length&&!actionTerms.length)return scoped;
  const entities=new Map<string,{name:string;aliases:string[]}>();for(const e of catalog){const previous=entities.get(e.id);entities.set(e.id,{name:e.name,aliases:[...new Set([...(previous?.aliases??[]),...(e.aliases??[]),...(previous?.name&&previous.name!==e.name?[previous.name]:[])])]});}
  const searchValue=(value:unknown)=>{const ref=value as TemplateEntity|null;if(ref&&typeof ref==='object'&&!Array.isArray(ref)&&ref.id){const entity=entities.get(ref.id);return [ref.id,ref.name,entity?.name,...entity?.aliases??[]].filter(Boolean).join(' ').toLocaleLowerCase();}return valueText(value).toLocaleLowerCase();};
  return scoped.filter(group=>{
   const event=labels.events?.find(e=>e.id===group.event_id);
+  if(actionTerms.length){
+   const values=group.syntax_version==='0.4'
+    ?[(group.extra_key??'').split('-').filter(value=>value&&value!=='*').join('-')]
+    :[...fixedArguments(group,event)].flatMap(([key,value])=>
+     (event?event.parameters.some(parameter=>parameter.key===key):/^arg\d+$/.test(key))?[value]:[]);
+   const normalized=values.map(value=>value.toLocaleLowerCase());
+   if(!actionTerms.every(term=>normalized.some(value=>value.includes(term))))return false;
+  }
+  if(!terms.length)return true;
   const {player_id:player,lineup_note_id:lineup}=group.scope;
   const playerName=player&&(labels.scopeName?.(player)??player),lineupName=lineup&&(labels.scopeName?.(lineup)??lineup);
   const bindings=labels.utteranceBindings?.[group.id];
-  const values=[group.name,effectiveExpression(playerName,lineupName,group.expression??''),
-   ...group.utterances.flatMap(({text})=>bindings?[text,renderUtterance(text,bindings)]:[text]),
+  const values=[group.name,effectiveExpression(playerName,lineupName,group.expression??'',group.syntax_version),
+   ...visibleTemplateUtterances(group.utterances,filters).flatMap(({text})=>bindings?[text,renderUtterance(text,bindings)]:[text]),
    event?.name,labels.scopeName?.(player),labels.scopeName?.(lineup),
    ...[...group.related_entities,...labels.links?.[group.id]??[]].map(searchValue),
    ...group.conditions.flatMap(c=>{
@@ -189,16 +293,16 @@ export function groupDiffKeys(base:TemplateGroup,next:TemplateGroup){
   const empty=key==='tags'||key==='batch'?[]:'';
   if(JSON.stringify(base[key]??empty)!==JSON.stringify(next[key]??empty))keys.push(key);
  }
- if(['expression','condition_tree','editor_mode'].some(key=>JSON.stringify(base[key as keyof TemplateGroup])!==JSON.stringify(next[key as keyof TemplateGroup])))keys.push('rule');for(const key of ['name','event_id','scope','related_entities','priority','ignored'] as const)if(JSON.stringify(base[key])!==JSON.stringify(next[key]))keys.push(key);
+ if(['expression','condition_tree','editor_mode','syntax_version','extra_key','publication_hold'].some(key=>JSON.stringify(base[key as keyof TemplateGroup])!==JSON.stringify(next[key as keyof TemplateGroup])))keys.push('rule');for(const key of ['name','event_id','scope','related_entities','priority','ignored'] as const)if(JSON.stringify(base[key])!==JSON.stringify(next[key]))keys.push(key);
  for(const [field,prefix] of [['conditions','condition'],['utterances','utterance']] as const){const ids=new Set([...base[field],...next[field]].map(v=>v.id));for(const id of ids)if(!(field==='conditions'&&keys.includes('rule'))&&JSON.stringify(base[field].find(v=>v.id===id))!==JSON.stringify(next[field].find(v=>v.id===id)))keys.push(prefix+':'+id);}
  return keys;
 }
 export function mergeTemplateWriteSnapshot(current:TemplateSnapshot,result:TemplateSnapshot,groupIds:string[]):TemplateSnapshot{
  // The read projection carries legacy editor rules needed for untouched groups.
  const previous=new Map(current.groups.map(group=>[group.id,group]));
- const changed=new Set(groupIds);
+ const changed=new Set([...groupIds,...Object.values(result.merged_groups??{})]);
  const groups=result.groups.map(group=>changed.has(group.id)?group:previous.get(group.id)??group);
- const merged={...current,...result,groups};
+ const merged={...current,...result,groups,merged_groups:undefined};
  if(result.utterance_bindings||!current.utterance_bindings)return merged;
  // A write returns canonical groups. Wait for the fresh read projection on rule edits.
  const bindings=current.utterance_bindings;
@@ -230,7 +334,7 @@ export function applyTemplateGroupFields(base:TemplateGroup,next:TemplateGroup,s
    else delete result[key];
   }
  }
- if(selected.includes('rule'))Object.assign(result,{expression:next.expression,condition_tree:next.condition_tree,editor_mode:next.editor_mode,conditions:next.conditions});
+ if(selected.includes('rule'))Object.assign(result,{expression:next.expression,condition_tree:next.condition_tree,editor_mode:next.editor_mode,conditions:next.conditions,syntax_version:next.syntax_version,extra_key:next.extra_key,publication_hold:next.publication_hold});
 for(const key of ['name','event_id','scope','related_entities','priority','ignored'] as const)if(selected.includes(key))Object.assign(result,{[key]:next[key]});
  for(const [field,prefix] of [['conditions','condition'],['utterances','utterance']] as const){const current=[...result[field]];for(const key of selected.filter(k=>k.startsWith(prefix+':'))){const id=key.slice(prefix.length+1),value=next[field].find(v=>v.id===id),at=current.findIndex(v=>v.id===id);if(at>=0)current.splice(at,1);if(value)current.splice(at<0?current.length:at,0,value as never);}Object.assign(result,{[field]:current});}
  return result;

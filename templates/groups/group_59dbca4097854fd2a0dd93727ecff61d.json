@@ -22,7 +22,7 @@
   "related_entities": [],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"海月\" and 玩家.战场 has \"太乙真人\"",
+  "expression": "(动作.选中.名称 == \"海月\" and any(我方.场上英雄列表, .名称 == \"太乙真人\"))",
   "ignored": true,
   "review_status": "initial_reviewed",
   "last_modified_by": {
@@ -214,5 +214,7 @@
         "skills_source": "card:1861"
       }
     }
-  }
+  },
+  "extra_key": "海月",
+  "syntax_version": "0.4"
 }

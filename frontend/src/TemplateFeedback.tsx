@@ -3,8 +3,38 @@ import {useAuth} from './auth';
 import {api} from './model';
 import {TemplateDialog} from './TemplateEditor';
 import {templateMetadataLabels,type TemplateGroup} from './templates';
+import type {LocalTemplateComment} from './templateFile';
 
 export type FeedbackTarget={group?:TemplateGroup;utteranceId?:string};
+
+export function LocalTemplateFeedback({group,utteranceId,comments,onSave,onReload,onClose}:{group:TemplateGroup;utteranceId?:string;comments:LocalTemplateComment[];onSave:(body:string)=>Promise<void>;onReload:()=>Promise<void>;onClose:()=>void}){
+ const [body,setBody]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const original=group.utterances.find(row=>row.id===utteranceId)?.text;
+ async function run(action:()=>Promise<void>){
+  setBusy(true);setError('');
+  try{await action();}catch(e){setError((e as Error).message);}finally{setBusy(false);}
+ }
+ function close(){
+  if(!busy&&(!body.trim()||confirm('放弃未发送的批注？')))onClose();
+ }
+ return <TemplateDialog title={group.name+' · 文件批注'} wide onClose={close}><div className="template-form">
+  {error&&<div><p role="alert" className="error">{error}</p>{error.includes('重新读取')&&
+   <button type="button" disabled={busy} onClick={()=>void run(onReload)}>重新读取文件</button>}</div>}
+  <form onSubmit={e=>{
+   e.preventDefault();
+   if(busy||!body.trim())return;
+   void run(async()=>{await onSave(body);setBody('');});
+  }}>
+   <label>{utteranceId?'话术批注':'模板组批注'}<textarea maxLength={4000} value={body} onChange={e=>setBody(e.target.value)} disabled={busy}/></label>
+   {utteranceId&&<blockquote>{original}</blockquote>}
+   <button disabled={busy||!body.trim()}>发布批注</button>
+  </form>
+  {comments.length?comments.map(comment=><section key={comment.id} className="template-feedback-thread">
+   {comment.original_text!==undefined&&<blockquote>{comment.original_text}</blockquote>}
+   <p><strong>{comment.by}</strong> <small>{new Date(comment.at).toLocaleString()}</small> {comment.body}</p>
+  </section>):<p>暂无批注。</p>}
+ </div></TemplateDialog>;
+}
 type Message={action:string;by:string;at:string;body?:string;revisions?:{body:string;at:string}[];edited_at?:string};
 type Thread={id:string;group_id:string;group_name:string;utterance_id?:string;original_text:string;original_group?:TemplateGroup;status:string;messages:Message[]};
 export type Activity={id:string;original_submission?:TemplateGroup|null;group_id:string;action:string;at:string;by:string;source?:string;batch_id?:string;reason?:string;original_text?:string;body?:string;before?:TemplateGroup|null;submitted?:TemplateGroup|null;reviewed?:TemplateGroup|null;after?:TemplateGroup|null};

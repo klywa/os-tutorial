@@ -15,6 +15,45 @@ def sample():
            {'name':'专属','level':6,'cards':[talent]}],'lordCards':[child,talent]}]}
 
 class OfficialProfileTests(unittest.TestCase):
+    def test_catalog_keywords_use_each_cards_own_official_descriptions(self):
+        from reference_store import normalize_cards
+        awake = {'id': 101, 'name': '英雄甲', 'type': 9, 'heroCard': {
+            'keywordDescription': [{'name': '牺牲', 'desc': '退场时触发。'}]}}
+        normal = {'id': 100, 'name': '英雄甲', 'type': 1, 'heroCard': {
+            'awakeingCard': awake, 'keywordDescription': [
+                {'name': '【登场】', 'desc': '<b>登场</b>时触发。'},
+                {'name': '整备', 'desc': '备战时触发。'},
+                {'name': '【登场】', 'desc': '<b>登场</b>时触发。'}]}}
+        blank = {'id': 102, 'name': '效果牌', 'type': 2, 'desc': '触发其他英雄的登场。'}
+        buckets = official.normalize({'cards': [normal, blank]}, 'https://official.test/data', 'today')
+        cards = {c['id']: c for c in normalize_cards([c for rows in buckets.values() for c in rows.values()])}
+        self.assertEqual(cards['card:100']['keywords'], [
+            {'name': '登场', 'description': '登场时触发。'}, {'name': '整备', 'description': '备战时触发。'}])
+        self.assertEqual(cards['card:101']['keywords'], [{'name': '牺牲', 'description': '退场时触发。'}])
+        self.assertEqual(cards['card:102']['keywords'], [])
+
+    def test_catalog_player_groups_keep_options_and_render_each_id_once(self):
+        from reference_store import normalize_cards
+        data = sample()
+        lord = data['lords'][0]
+        main = lord['talent'][0]['cards'][0]
+        main['cardGetDesc'] = '来源: <b>初始获得</b>'
+        main['talentStageDesc'] = '第5回合'
+        first = main['previewCards'][0]
+        first['previewCardIDs'] = [12]
+        first['previewCards'] = [lord['lordCards'][0]]
+        buckets = official.normalize(data, 'https://official.test/data', 'today')
+        player = normalize_cards(list(buckets['players'].values()))[0]
+        groups = player['player_skill_groups']
+        self.assertEqual([g['name'] for g in groups], ['技能', '专属天赋', '关联选项'])
+        self.assertEqual(groups[0]['level'], 1)
+        main = groups[0]['cards'][0]
+        self.assertEqual((main['effect'], main['acquisition'], main['stage']),
+                         ('第5/8回合选择。', '初始获得', '第5回合'))
+        self.assertEqual(main['options'], [{'id': 'card:11', 'name': '选项甲'}, {'id': 'card:12', 'name': '选项乙'}])
+        self.assertEqual([card['id'] for card in groups[2]['cards']], ['card:11', 'card:12'])
+        self.assertEqual(groups[2]['cards'][1]['options'], [{'id': 'card:10', 'name': '基础技能'}])
+
     def test_unbound_manual_content_and_changed_reconciliation_are_preserved(self):
         p=official.normalize(sample(),'https://official.test/data','today')['players']['player:1']
         record={'body':json_document.parse('# 棋手甲\n\n## 技能\n\n**基础技能：** 人工独有条件\n\n## 前期思路\n'),

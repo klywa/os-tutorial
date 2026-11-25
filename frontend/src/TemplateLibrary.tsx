@@ -1,6 +1,14 @@
+import TemplateRelatedCopy,{type RelatedCopyChoice} from './TemplateRelatedCopyMenu';
+import {relatedCopy,relatedDisplayRows,relatedEventDefinition,relatedTargets} from './templateRelatedCopy';
+import {templateDisplayExpression,templateDisplaySections} from './templateDisplayGroups';
+import {registeredEvent,validateV04,wildcardKey} from './templateV04';
 import {createPortal} from 'react-dom';
 import {TemplateConditionPreview} from './TemplateConditionPreview';
+import TemplateGroupName from './TemplateGroupName';
+import type {TemplateScopeOptions} from './TemplateScopeFields';
+import {resolveConditionEdit} from './templateConditionText';
 import TemplateInlineMetadata from './TemplateInlineMetadata';
+import {TemplateMetadataChoices} from './MetadataSuggestions';
 import TemplateBatchMetadata from './TemplateBatchMetadata';
 import {loadTemplateWarnings} from './TemplateWarnings';
 import {parameterType} from './templateRules';
@@ -16,19 +24,22 @@ import TemplateSettings from './TemplateSettings';
 import TemplateProposals from './TemplateProposals';
 import {newestProposalFirst,projectProposalCard,proposalCardPreview,type TemplateProposalPreview} from './templateProposalPreview';
 import TemplateConflicts from './TemplateConflicts';
-import TemplateUtterances,{applyUtteranceChange,createUtteranceDraftStore,type UtteranceChange,type UtteranceDraftStore,type UtteranceFlagFeedback} from './TemplateUtterances';
+import TemplateUtterances,{applyUtteranceChange,createUtteranceDraftStore,TemplateUtteranceVisibility,type UtteranceChange,type UtteranceDraftStore,type UtteranceFlagFeedback} from './TemplateUtterances';
 import TemplateJsonExport from './TemplateJsonExport';
 import TemplateFileExport,{type FileExportScope} from './TemplateFileExport';
 import TemplateHelp from './TemplateHelp';
-import TemplateFeedback,{activityLabel,type Activity,type FeedbackTarget} from './TemplateFeedback';
+import TemplateFeedback,{LocalTemplateFeedback,activityLabel,type Activity,type FeedbackTarget} from './TemplateFeedback';
 import TemplateBoard,{TemplateEntityList,buildTemplateEntityIndex} from './TemplateBoard';
+import TemplateLineupBoard,{buildLineupTabs,lineupBoardRows,TemplateLineupSidebar,unscopedLineup} from './TemplateLineupBoard';
+import TemplateBrowsePopup from './TemplateBrowsePopup';
 import TemplateRevisions,{TemplateOfficialDescriptions} from './TemplateRevisions';
-import {fileExportDocument,fileImportDocument,parseTemplateFile,pickTemplateFile,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeason,templateGroupVersion,withLocalEntitySnapshot,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
-import {applyTemplateGroupFields,groupDiffKeys,appendTemplateMetadata,copyTemplateGroup,effectiveExpression,deriveTemplateEntities,downloadTemplates,effectiveReviewStatus,emptyTemplateFilters,filterTemplateGroups,lineupPlayer,templateExplanationFields,templateMetadataLabels,templateReviewLabels,templateReviewLabel,mergeTemplateWriteSnapshot,operators,templateId,valueText,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateFilters,type TemplateGameMode,type TemplateGroup,type TemplateMetadataField,type TemplateProposal,type TemplateReviewStatus,type TemplateSnapshot,type PortableTemplateLibrary,type TemplateWarning,type UtteranceBindings} from './templates';
+import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateFile,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeason,templateGroupVersion,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
+import {recentTemplateFiles,rememberRecentTemplateFile,sameTemplateFile,type RecentTemplateFile} from './templateRecentFiles';
+import {applyTemplateGroupFields,groupDiffKeys,appendTemplateMetadata,copyTemplateGroup,deriveTemplateEntities,downloadTemplates,effectiveReviewStatus,emptyTemplateFilters,filterTemplateGroups,templateGroupVisible,lineupPlayer,templateExplanationFields,templateMetadataLabels,templateReviewLabels,templateReviewLabel,mergeTemplateWriteSnapshot,orderTemplateEvents,operators,templateId,valueText,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateFilters,type TemplateGameMode,type TemplateGroup,type TemplateMetadataField,type TemplateProposal,type TemplateReviewStatus,type TemplateSnapshot,type PortableTemplateLibrary,type TemplateWarning,type UtteranceBindings} from './templates';
 import type {Note,Options} from './types';
 import './templates.css';
 
-function GroupExplanation({entries}:{entries:{label?:string;text:string}[]}){
+function GroupExplanation({entries,title='说明与依据'}:{entries:{label?:string;text:string}[];title?:string}){
  const id=useId(),container=useRef<HTMLSpanElement>(null);
  const [state,setState]=useState<'closed'|'preview'|'pinned'>('closed');
  const leaveTimer=useRef<number|undefined>(undefined);
@@ -52,7 +63,7 @@ function GroupExplanation({entries}:{entries:{label?:string;text:string}[]}){
   },180);}}
   onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setState('closed');}}>
   <button type="button" aria-expanded={open} aria-controls={id} aria-describedby={open?id:undefined} onFocus={preview}
-   onClick={()=>setState(current=>current==='pinned'?'closed':'pinned')}>说明与依据</button>
+   onClick={()=>setState(current=>current==='pinned'?'closed':'pinned')}>{title}</button>
   <span id={id} className="template-explanation-popup" role="tooltip" hidden={!open}>{entries.map(({label,text})=>label?<span key={label} className="template-explanation-entry"><strong>{label}</strong>{text}</span>:text)}</span>
  </span>;
 }
@@ -90,18 +101,22 @@ type ProposalControl={rows:TemplateProposalPreview[];active?:TemplateProposalPre
  onSaveUtterance?:(change:UtteranceChange,approve:boolean)=>Promise<void>;
 };
 
-export function TemplateGroupCard({group,event,catalog,utteranceBindings,entities:archivedEntities=[],scopeName,editable,onEdit,onSaveMetadata,metadataLocked=false,onCopy,onDelete,onExport,onFeedback,commentCounts,lastActivity,onRevisions,onReviewStatus,reviewPending,canFinalReview=false,onToggleIgnored,onToggleFixed,savingIgnore,warning,onConfirm,onSaveUtterances,utteranceDrafts,onUtteranceDraftsChanged,flagFeedback,conditionEditor,onSaveExpression,annotator=false,interactionLocked=false,fileMode=false,allowExport=true,workflow,proposal,proposalControl,originalGroup}:{group:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;utteranceBindings?:UtteranceBindings;entities?:TemplateEntity[];scopeName:(id:string|null)=>string;editable:boolean;onEdit:()=>void;onSaveMetadata?:(field:'tags'|'batch',values:string[])=>Promise<void>;metadataLocked?:boolean;onCopy?:()=>void;onDelete?:()=>void;onExport?:()=>void;onFeedback?:(id?:string)=>void;commentCounts?:Record<string,number>;lastActivity?:Activity;onRevisions?:()=>void;onReviewStatus?:(status:TemplateReviewStatus|null)=>void;reviewPending?:PendingReview;canFinalReview?:boolean;onToggleIgnored?:(utteranceId?:string)=>void;onToggleFixed?:(utteranceId:string)=>void;savingIgnore?:{group:boolean;rows:string[]};warning?:TemplateWarning;onConfirm?:()=>void;onSaveUtterances?:(change:UtteranceChange)=>Promise<void>;utteranceDrafts?:UtteranceDraftStore;onUtteranceDraftsChanged?:()=>void;flagFeedback?:(id:string,field:EditFlag)=>UtteranceFlagFeedback|undefined;conditionEditor?:ReactNode;onSaveExpression?:(value:string)=>Promise<void>;annotator?:boolean;interactionLocked?:boolean;fileMode?:boolean;allowExport?:boolean;workflow?:ReactNode;proposal?:CardProposal;proposalControl?:ProposalControl;originalGroup?:TemplateGroup}){
+export function TemplateGroupCard({group,event,catalog,utteranceBindings,entities:archivedEntities=[],scopeName,editable,onEdit,onSaveName,onSaveMetadata,metadataLocked=false,onCopy,relatedCopyOptions,onRelatedCopy,onDelete,onExport,onFeedback,commentCounts,lastActivity,onRevisions,onReviewStatus,reviewPending,canFinalReview=false,onToggleIgnored,onToggleFixed,savingIgnore,warning,onConfirm,onSaveUtterances,utteranceDrafts,onUtteranceDraftsChanged,flagFeedback,conditionEditor,onSaveExpression,scopeOptions,annotator=false,interactionLocked=false,fileMode=false,allowExport=true,workflow,proposal,proposalControl,originalGroup}:{group:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;utteranceBindings?:UtteranceBindings;entities?:TemplateEntity[];scopeName:(id:string|null)=>string;editable:boolean;onEdit:()=>void;onSaveName?:(name:string)=>Promise<void>;onSaveMetadata?:(field:'tags'|'batch',values:string[])=>Promise<void>;metadataLocked?:boolean;onCopy?:()=>void;relatedCopyOptions?:()=>RelatedCopyChoice[];onRelatedCopy?:(event:string)=>void;onDelete?:()=>void;onExport?:()=>void;onFeedback?:(id?:string)=>void;commentCounts?:Record<string,number>;lastActivity?:Activity;onRevisions?:()=>void;onReviewStatus?:(status:TemplateReviewStatus|null)=>void;reviewPending?:PendingReview;canFinalReview?:boolean;onToggleIgnored?:(utteranceId?:string)=>void;onToggleFixed?:(utteranceId:string)=>void;savingIgnore?:{group:boolean;rows:string[]};warning?:TemplateWarning;onConfirm?:()=>void;onSaveUtterances?:(change:UtteranceChange)=>Promise<void>;utteranceDrafts?:UtteranceDraftStore;onUtteranceDraftsChanged?:()=>void;flagFeedback?:(id:string,field:EditFlag)=>UtteranceFlagFeedback|undefined;conditionEditor?:ReactNode;onSaveExpression?:(value:string,scope:TemplateGroup['scope'])=>Promise<void>;scopeOptions?:TemplateScopeOptions;annotator?:boolean;interactionLocked?:boolean;fileMode?:boolean;allowExport?:boolean;workflow?:ReactNode;proposal?:CardProposal;proposalControl?:ProposalControl;originalGroup?:TemplateGroup}){
  const cards=useCards(),entities=deriveTemplateEntities(group,event,cards,archivedEntities);
- const actionValues=fixedArguments(group);
+ const actionValues=fixedArguments(group,event);
  const explanations=templateExplanationFields.flatMap(([field,label])=>group[field]?.trim()?[{label,text:group[field]!}]:[]);
  const entries=explanations.length?explanations:group.explanation?.trim()?[{text:group.explanation}]:[];
- const {player_id:player,lineup_note_id:lineup}=group.scope;
- const playerName=player&&scopeName(player),lineupName=lineup&&scopeName(lineup);
- const expression=effectiveExpression(playerName,lineupName,group.expression??'');
+ const expression=templateDisplayExpression(group,scopeName);
  const expressionEdit=editable&&onSaveExpression&&(group.expression!==undefined||!group.conditions.length)?{
-  value:group.expression??'',scope:effectiveExpression(playerName,lineupName,''),save:onSaveExpression,
+  value:expression,
+  save:(value:string)=>{
+   const v04=group.syntax_version==='0.4';
+   if(v04&&event)validateV04(event.name,value);
+   const next=resolveConditionEdit(value,group,scopeName,{...scopeOptions,fileMode});
+   return onSaveExpression(next.expression,next.scope);
+  },
  }:undefined;
- const originalExpression=originalGroup&&effectiveExpression(originalGroup.scope.player_id&&scopeName(originalGroup.scope.player_id),originalGroup.scope.lineup_note_id&&scopeName(originalGroup.scope.lineup_note_id),originalGroup.expression??'');
+ const originalExpression=originalGroup&&templateDisplayExpression(originalGroup,scopeName);
  const removedExpression=!!(proposal?.fields.has('rule')&&originalExpression&&!expression);
  const changed=(...fields:string[])=>proposal&&(proposal.newGroup||fields.some(field=>proposal.fields.has(field)))?true:undefined;
  const deletedLabel=(value:string)=><><s>{value}</s> <small>拟删除</small></>;
@@ -110,8 +125,13 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
  const reviewDetails=group.reviewed_by?`复核 · ${group.reviewed_by}${group.reviewed_at?' · '+new Date(group.reviewed_at).toLocaleString():''}`:undefined;
  const Entity=fileMode?({label}:{label?:string;ids:string[];portrait?:boolean})=><span className="entity-chip">{label}</span>:EntityChip;
  return <article data-feedback-group={group.id} data-proposal-card={proposal?'preview':undefined} tabIndex={-1} className={'template-group '+(warning?'template-needs-check ':'')+(group.ignored?'template-group-ignored':'')} aria-label={group.name}>
-  <header><div><h2 data-proposal-change={changed('name')||proposal?.deleted||undefined}>{proposal?.deleted?<s>{group.name}</s>:group.name}</h2><div className="template-title-controls">
+  <header><div><div className="template-card-title">
+   {event&&<span className="template-action-badge">{event.name.replace(/^解释为何\s*/,'')}</span>}
+   <h2 data-proposal-change={changed('name')||proposal?.deleted||undefined}>{proposal?.deleted?<s>{group.name}</s>:editable&&onSaveName?
+   <TemplateGroupName name={group.name} disabled={interactionLocked} onSave={onSaveName}/>:group.name}</h2>
+   </div><div className="template-title-controls">
    {entries.length>0&&<span data-proposal-change={changed('explanation',...templateExplanationFields.map(([field])=>field))}><GroupExplanation entries={entries}/></span>}
+   {group.wording_brief?.trim()&&<span data-proposal-change={changed('wording_brief')}><GroupExplanation title="话术构思" entries={[{text:group.wording_brief}]}/></span>}
    {(workflow||proposal)&&<div className="template-review-statuses" role="group" aria-label={'审核状态 · '+group.name} aria-busy={!!reviewPending}>
     {(Object.entries(templateReviewLabels) as [TemplateReviewStatus,string][]).map(([value,label])=>{
      const selected=value===status;
@@ -126,6 +146,8 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
     {(group.mode||changed('mode')&&originalGroup?.mode)&&<span data-proposal-change={changed('mode')}>{group.mode||deletedLabel(originalGroup!.mode!)}</span>}
     <TemplateInlineMetadata label="标签" values={group.tags??[]} proposalPrevious={changed('tags')?originalGroup?.tags??[]:undefined} disabled={metadataLocked} onSave={editable&&onSaveMetadata?values=>onSaveMetadata('tags',values):undefined}/>
     <TemplateInlineMetadata label="批次" values={group.batch??[]} proposalPrevious={changed('batch')?originalGroup?.batch??[]:undefined} disabled={metadataLocked} onSave={editable&&onSaveMetadata?values=>onSaveMetadata('batch',values):undefined}/>
+    {group.syntax_version==='0.4'&&<span>额外信息键 {group.extra_key||'（空）'}</span>}
+    {group.publication_hold&&<span title={group.publication_hold}>暂停发布 · {group.publication_hold}</span>}
     <span data-proposal-change={changed('priority')}>优先级 {group.priority??0}</span>
     {(group.ignored||changed('ignored'))&&<span className="template-ignored" data-proposal-change={changed('ignored')}>{group.ignored?'已忽略':'参与导出'}</span>}
     {group.last_modified_by&&<span>最后修改 · {group.last_modified_by.kind==='ai'?'AI':group.last_modified_by.username??'人工'}</span>}
@@ -133,10 +155,11 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
    <div className="template-card-actions">
     {onRevisions&&<div className="template-history-control"><button type="button" aria-describedby={historyId} disabled={interactionLocked} onClick={onRevisions}>版本记录</button>
      <span className="template-history-tooltip" id={historyId} role="tooltip">{lastActivity?`最近操作 · ${activityLabel(lastActivity)}`:'查看修订历史'}</span></div>}
-    {onFeedback&&<button disabled={interactionLocked} onClick={()=>onFeedback()}>组批注与记录 <span className="template-comment-count">{commentCounts?.['']??0}</span></button>}
+    {onFeedback&&<button disabled={interactionLocked} onClick={()=>onFeedback()}>{fileMode?'组批注':'组批注与记录'} <span className="template-comment-count">{commentCounts?.['']??0}</span></button>}
     {allowExport&&<button aria-label={'导出json：'+group.name} disabled={interactionLocked||group.ignored||group.utterances.every(row=>row.ignored)} onClick={onExport}>导出json</button>}
     {editable&&<>
      {onCopy&&<button type="button" aria-label={'复制模板组'+group.name} disabled={interactionLocked} onClick={onCopy}>复制</button>}
+     {relatedCopyOptions&&onRelatedCopy&&<TemplateRelatedCopy disabled={interactionLocked} options={relatedCopyOptions} onChoose={onRelatedCopy}/>}
      {onToggleIgnored&&<button disabled={interactionLocked} onClick={()=>onToggleIgnored()}>{savingIgnore?.group?'保存中…':group.ignored?'取消忽略':'忽略'}</button>}
      {onDelete&&<button aria-label={'删除模板'+group.name} disabled={interactionLocked||group.utterances.some(row=>row.fixed)} title={group.utterances.some(row=>row.fixed)?'先取消固定再删除模板组':undefined} onClick={onDelete}>删除模板</button>}</>}
     {workflow}
@@ -163,17 +186,18 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
    {!!event?.parameters.length && <dl aria-label="动作参数" className="template-action-parameters" data-proposal-change={changed('rule','event_id','event')}>{event.parameters.map(p=>{
     const value=actionValues.get(p.key),ids=value?argumentCardIds(p,value,cards):[];
     return <div key={p.key}><dt><code>{p.key}</code></dt><dd>{parameterRole(event,p)} <small>（{parameterType(p)}）</small>
-     {value&&(ids.length?<Entity ids={ids} label={value} portrait/>:<strong> · {value}</strong>)}</dd></div>;
+     {value&&(ids.length?<EntityChip ids={ids} label={value} portrait={!fileMode}/>:<strong> · {value}</strong>)}</dd></div>;
    })}</dl>}
    <div className="template-condition-scopes" data-proposal-change={changed('scope')}><span>棋手：{scopeName(group.scope.player_id)}</span><span>阵容：{scopeName(group.scope.lineup_note_id)}</span></div>
    {entities.length>0&&<div className="template-chips" aria-label="关联卡牌" data-proposal-change={changed('related_entities')}>{entities.map(e=><Entity key={e.id} ids={[e.id]} label={e.name} portrait/>)}</div>}
    {group.expression===undefined&&group.conditions.length>0&&<><h3>同时满足</h3><dl>{group.conditions.map(c=>{const parameter=event?.parameters.find(p=>p.key===c.parameter_key);const entity=c.value as TemplateEntity;const removed=proposal?.removedConditions.includes(c.id);return <div key={c.id} data-proposal-change={changed('condition:'+c.id)}><dt>{parameter?.name??c.parameter_key}</dt><dd>{removed?deletedLabel(operators[c.operator]+' '+valueText(c.value)):<><span>{operators[c.operator]} </span>{parameter?.type==='entity'&&entity?.id?<Entity ids={deriveTemplateEntities({...group,scope:{player_id:null,lineup_note_id:null},conditions:[c]},event,cards).map(e=>e.id)} label={entity.name}/>:valueText(c.value)}</>}</dd></div>;})}</dl></>}{group.expression===undefined&&!expression&&!group.conditions.length&&<p className="muted">不限制条件</p>}
    {group.expression!==undefined||expression||removedExpression||expressionEdit?<div data-proposal-change={changed('rule','scope')}>
-    <TemplateConditionPreview expression={removedExpression?originalExpression!:expression} edit={conditionEdit} expressionEdit={expressionEdit} allowCopy={!proposal} removed={removedExpression}/>
+    <TemplateConditionPreview expression={removedExpression?originalExpression!:expression} edit={conditionEdit} expressionEdit={expressionEdit} allowCopy={!proposal} removed={removedExpression}
+     config={{event,catalog,v04:group.syntax_version==='0.4'}}/>
    </div>:conditionEdit&&
     <div className="template-condition-actions"><button type="button" aria-label={conditionEdit.label} disabled={conditionEdit.disabled} onClick={conditionEdit.onClick}>编辑模板组</button></div>}
    {conditionEditor}
-  </section><TemplateUtterances commentCounts={commentCounts} onFeedback={onFeedback} utterances={group.utterances} bindings={utteranceBindings} parameters={event?.parameters} event={event} catalog={catalog} localFile={fileMode}
+  </section><TemplateUtterances commentCounts={commentCounts} onFeedback={onFeedback} utterances={group.utterances} v04={group.syntax_version==='0.4'} bindings={utteranceBindings} parameters={event?.parameters} event={event} catalog={catalog} localFile={fileMode}
    editable={editable||!!proposalControl?.onSaveUtterance} annotator={annotator} disabled={false} savingIgnoreIds={savingIgnore?.rows}
    onToggleIgnored={onToggleIgnored} onToggleFixed={onToggleFixed}
    onSave={proposalControl?.onSaveUtterance?change=>proposalControl.onSaveUtterance!(change,false):onSaveUtterances}
@@ -185,6 +209,9 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
 
 import type {Season} from './seasons';
 type IgnoreChange={groupId:string;utteranceId?:string;ignored:boolean};
+function canDeliver(group:TemplateGroup){
+ return !group.ignored&&group.utterances.some(row=>!row.ignored);
+}
 function applyIgnore(group:TemplateGroup,change:IgnoreChange):TemplateGroup{
  const update=<T extends {ignored?:boolean}>(row:T)=>{
   const next={...row};
@@ -197,9 +224,12 @@ function applyIgnore(group:TemplateGroup,change:IgnoreChange):TemplateGroup{
 }
 type Preview={revision:string;changes:TemplateChange[];summary:unknown;errors:unknown[];preserved_fixed?:{group_id:string;utterance_id:string;group_name:string;text:string}[]};
 type OpenFile={handle:LocalFileHandle;raw:string};
-type View={filters:TemplateFilters;entityKey:string;byEntity:boolean;compact:boolean;selected:Set<string>};
-export type TemplateWorkspaceState={opened?:OpenFile|null;views?:Record<string,View>;scroll?:Record<string,{top:number;visible:number}>;utteranceDrafts?:Map<string,UtteranceDraftStore>;cardEditors?:Map<string,CardEditor>;fileKeys?:WeakMap<LocalFileHandle,string>};
+type LineupView={active:boolean;lineup:string;player:string;query:string;filters:Pick<TemplateFilters,'review_status'|'onlyFixed'|'hideIgnored'>};
+type BrowsePopup={key:string;title:string;ids:string[];parents:Map<string,string>;visibility:Pick<TemplateFilters,'onlyFixed'|'hideIgnored'>};
+type View={filters:TemplateFilters;entityKey:string;byEntity:boolean;compact:boolean;selected:Set<string>;lineupView?:LineupView};
+export type TemplateWorkspaceState={opened?:OpenFile|null;views?:Record<string,View>;details?:Record<string,string|null>;scroll?:Record<string,{top:number;visible:number}>;utteranceDrafts?:Map<string,UtteranceDraftStore>;cardEditors?:Map<string,CardEditor>;fileKeys?:WeakMap<LocalFileHandle,string>};
 const emptyView:View={filters:emptyTemplateFilters,entityKey:'',byEntity:false,compact:false,selected:new Set()};
+const emptyLineupView:LineupView={active:false,lineup:'',player:'',query:'',filters:{hideIgnored:true}};
 const templatePath=(season:Season,suffix='')=>'templates'+suffix+(suffix.includes('?')?'&':'?')+'season='+season;
 
 export default function TemplateLibrary({notes,options,onDirty,onBusyChange,season='S1',source='database',gameMode,workspace}:{season?:Season;source?:'database'|'file';gameMode?:TemplateGameMode;notes:Note[];options:Options;onDirty?:(dirty:boolean)=>void;onBusyChange?:(busy:boolean)=>void;workspace?:TemplateWorkspaceState}){
@@ -222,9 +252,17 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  }
  const file=opened?documentFor(opened):null;
  const snapshot=fileMode?file?.snapshot??null:legacyMode?legacy:database;
+ function localCommentCounts(groupId:string){
+  const counts:Record<string,number>=Object.create(null);
+  for(const comment of file?.comments.get(groupId)??[]){
+   const id=comment.utterance_id??'';
+   counts[id]=(counts[id]??0)+1;
+  }
+  return counts;
+ }
  const [views,setViews]=useState<Record<string,View>>(()=>workspace?.views??{});
  useEffect(()=>{if(workspace)workspace.views=views;},[workspace,views]);
- function rememberFile(file:OpenFile){
+ function rememberFile(file:OpenFile|null){
   openedFile.current=file;
   if(workspace)workspace.opened=file;
   setOpened(file);
@@ -237,7 +275,20 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   return {...current,selected:next};
  });
  const [error,setError]=useState(''),[notice,setNotice]=useState(''),[loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[editor,setEditor]=useState<TemplateGroup|null>(null),[settings,setSettings]=useState(false),[proposals,setProposals]=useState(false),[importOpen,setImportOpen]=useState(false),[importText,setImportText]=useState(''),[importSelection,setImportSelection]=useState<TemplateGroup[]|null>(null),[preview,setPreview]=useState<Preview|null>(null),[warnings,setWarnings]=useState<TemplateWarning[]>([]),[conflicted,setConflicted]=useState<string[]>([]);
- const [detailId,setDetailId]=useState<string|null>(null),[revisionGroup,setRevisionGroup]=useState<TemplateGroup|null>(null);
+ const [details,setDetails]=useState<Record<string,string|null>>(()=>workspace?.details??{});
+ const detailKey=viewKey+':'+(gameMode??''),detailId=details[detailKey]??null;
+ const [revisionGroup,setRevisionGroup]=useState<TemplateGroup|null>(null);
+ function setDetailId(update:string|null|((previous:string|null)=>string|null)){
+  setDetails(current=>({...current,[detailKey]:typeof update==='function'?update(current[detailKey]??null):update}));
+ }
+ useEffect(()=>{if(workspace)workspace.details=details;},[workspace,details]);
+ const [recentFiles,setRecentFiles]=useState<RecentTemplateFile[]>([]);
+ useEffect(()=>{
+  if(!fileMode)return;
+  let active=true;
+  void recentTemplateFiles().then(items=>{if(active)setRecentFiles(items);});
+  return ()=>{active=false;};
+ },[fileMode]);
  const [locatedDetail,setLocatedDetail]=useState<{id:string;identity:string}|null>(null);
  const [proposalRefresh,setProposalRefresh]=useState(0);
  const [proposalPreviews,setProposalPreviews]=useState<{identity:string;items:TemplateProposalPreview[];error?:string}>();
@@ -254,6 +305,21 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  const [utteranceDrafts]=useState(()=>workspace?.utteranceDrafts??new Map<string,UtteranceDraftStore>());
  const [cardEditors]=useState(()=>workspace?.cardEditors??new Map<string,CardEditor>());
  const [fileKeys]=useState(()=>workspace?.fileKeys??new WeakMap<LocalFileHandle,string>());
+ if(opened&&!fileKeys.has(opened.handle))fileKeys.set(opened.handle,templateId('file'));
+ const lineupViewKey=JSON.stringify(['lineup',viewKey,gameMode,fileMode&&opened?fileKeys.get(opened.handle):null]);
+ const lineupView=views[lineupViewKey]?.lineupView??emptyLineupView;
+ const byLineup=lineupView.active;
+ const [browsePopup,setBrowsePopup]=useState<BrowsePopup>();
+ function openBrowsePopup(title:string,ids:string[],visibility:BrowsePopup['visibility']){
+  if(!ids.length)return;
+  setError('');
+  setBrowsePopup({key:templateId('browse'),title,ids,visibility,parents:new Map()});
+ }
+ const changeLineupView=(patch:Partial<LineupView>,browse?:Partial<View>)=>setViews(current=>({
+  ...current,
+  ...(browse?{[viewKey]:{...(current[viewKey]??emptyView),...browse}}:{}),
+  [lineupViewKey]:{...emptyView,lineupView:{...(current[lineupViewKey]?.lineupView??emptyLineupView),...patch}},
+ }));
  const [,redrawEditors]=useState(0);
  const flags=useRef(new Map<string,FlagIntent>());
  const [,redrawFlags]=useState(0);
@@ -310,7 +376,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  const fileReviewWrite=useRef(false);
  const fileMetadataWrite=useRef(false);
  const reviewKey=(id:string)=>source+':'+season+':'+id;
- const [fileExport,setFileExport]=useState<{group?:TemplateGroup}>();
+ const [fileExport,setFileExport]=useState<{group?:TemplateGroup;scope?:FileExportScope}>();
  const saveFileLock=useRef(false),pickerLock=useRef(false);
  const [pendingIgnores,setPendingIgnores]=useState<IgnoreChange[]>([]);
  const [queuedWrites,setQueuedWrites]=useState(0);
@@ -375,7 +441,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   return()=>{active=false;};
  },[fileMode,season]);
  useEffect(()=>{
-  setError('');setNotice('');setDetailId(null);setLocatedDetail(null);setFocusTarget(null);setRevisionGroup(null);setEditor(null);setJsonGroup(null);setFeedback(null);
+  setError('');setNotice('');setLocatedDetail(null);setFocusTarget(null);setRevisionGroup(null);setEditor(null);setJsonGroup(null);setFeedback(null);
   setSettings(false);setProposals(false);setImportOpen(false);setImportSelection(null);setImportText('');setPreview(null);setFileExport(undefined);setBatchMetadata(null);
   onDirty?.(false);
  },[viewKey,gameMode]);
@@ -394,20 +460,46 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   return()=>{window.clearInterval(timer);window.removeEventListener('focus',check);};
  },[checkingAllowed,snapshot?.read_generation,load]);
  const players=useMemo(()=>{const map=new Map([...options.entities,...cards].filter(e=>['players','player'].includes(e.category??'')).map(e=>[e.id,{id:e.id,name:e.name}]));for(const n of notes)if(n.type==='player'&&n.player_id&&!map.has(n.player_id))map.set(n.player_id,{id:n.player_id,name:n.title});return Array.from(map.values());},[options.entities,cards,notes]);
- const lineups=lookups.lineups,scopeName=(id:string|null)=>id?(players.find(p=>p.id===id)?.name??notes.find(n=>n.id===id)?.title??snapshot?.scope_names?.[id]??id):'通用';
+ const lineups=lookups.lineups;
+ const scopeNames=useMemo(()=>new Map([...notes.map(note=>[note.id,note.title] as const),...players.map(player=>[player.id,player.name] as const)]),[notes,players]);
+ const scopeName=useCallback((id:string|null)=>id?(scopeNames.get(id)??snapshot?.scope_names?.[id]??id):'通用',
+  [scopeNames,snapshot?.scope_names]);
  const allGroups=useMemo(()=>snapshot?.groups.filter(group=>(legacyMode||templateGroupSeason(group)===season)&&(!gameMode||group.mode===gameMode))??[],[snapshot,season,legacyMode,gameMode]);
- const entityEntries=useMemo(()=>buildTemplateEntityIndex(allGroups,snapshot?.events??[],lookups.entities,snapshot?.condition_catalog),[allGroups,snapshot,lookups]);
+ const metadataChoices=useMemo(()=>({tags:[...new Set(allGroups.flatMap(group=>group.tags??[]))],batch:[...new Set(allGroups.flatMap(group=>group.batch??[]))]}),[allGroups]);
+ const entityEntries=useMemo(()=>buildTemplateEntityIndex(allGroups,snapshot?.events??[],lookups.entities,snapshot?.condition_catalog)
+  .filter(row=>!fileMode||row.groupIds.size>0),[allGroups,snapshot,lookups,fileMode]);
+ const lineupTabs=useMemo(()=>buildLineupTabs(allGroups,id=>players.find(p=>p.id===id)?.name??
+  notes.find(note=>note.id===id)?.title??snapshot?.scope_names?.[id]??id,fileMode),[allGroups,players,notes,snapshot,fileMode]);
+ const lineupNames=[...lineupTabs.keys()].filter(name=>name!==unscopedLineup).sort((a,b)=>a.localeCompare(b,'zh-CN'));
+ const selectedLineup=lineupTabs.has(lineupView.lineup)?lineupView.lineup:lineupNames[0]??(lineupTabs.has(unscopedLineup)?unscopedLineup:'');
+ const selectedLineupTabs=lineupTabs.get(selectedLineup);
+ const lineupPlayerTab=selectedLineupTabs?.has(lineupView.player)?lineupView.player:'';
+ const lineupIds=selectedLineupTabs?.get(lineupPlayerTab);
+ const lineupGroups=useMemo(()=>allGroups.filter(group=>lineupIds?.has(group.id)),[allGroups,lineupIds]);
+ const lineupEntities=useMemo(()=>buildTemplateEntityIndex(lineupGroups,snapshot?.events??[],
+  lookups.entities,snapshot?.condition_catalog,undefined,true),[lineupGroups,snapshot,lookups]);
+ const countGroups=useMemo(()=>filterTemplateGroups(byLineup?[]:allGroups,
+  {...filters,event:'',mode:gameMode===undefined?filters.mode:undefined},lookups.entities,
+  {events:snapshot?.events,scopeName,links:snapshot?.entity_links,utteranceBindings:snapshot?.utterance_bindings}),
+ [byLineup,allGroups,filters,gameMode,lookups.entities,scopeName,snapshot?.events,snapshot?.entity_links,snapshot?.utterance_bindings]);
+ const boardRows=lineupBoardRows(byLineup
+  ?filterTemplateGroups(lineupGroups,{...emptyTemplateFilters,...lineupView.filters}):[],lineupEntities);
  const allEntityIds=useMemo(()=>new Set(entityEntries.flatMap(row=>[...row.groupIds])),[entityEntries]);
  const entity=byEntity?entityEntries.find(row=>row.key===entityKey):undefined;
- const searchLabels={events:snapshot?.events,scopeName,links:snapshot?.entity_links,utteranceBindings:snapshot?.utterance_bindings};
- const countGroups=filterTemplateGroups(allGroups,{...filters,event:'',mode:gameMode===undefined?filters.mode:undefined},lookups.entities,searchLabels);
- const groups=byEntity?countGroups.filter(group=>(entity?.groupIds??allEntityIds).has(group.id)):filters.event?countGroups.filter(group=>group.event_id===filters.event):countGroups;
+ const groups=useMemo(()=>{
+  const visible=byEntity?countGroups.filter(group=>(entity?.groupIds??allEntityIds).has(group.id)):
+   filters.event?countGroups.filter(group=>group.event_id===filters.event):countGroups;
+  return templateDisplaySections(visible,snapshot?.events??[],scopeName).flatMap(section=>section.events.flatMap(event=>event.rows));
+ },[byEntity,countGroups,entity,allEntityIds,filters.event,snapshot?.events,scopeName]);
+ const lineupEvents=new Map(snapshot?.events.map(event=>[event.id,event.name]));
  const selectedGroups=allGroups.filter(group=>selected.has(group.id));
+ const importableSelection=fileMode?selectedGroups.filter(canDeliver):[];
  const currentLocation=locatedDetail?.identity===proposalIdentity?locatedDetail:undefined;
  const locatedGroup=currentLocation&&snapshot?.groups.find(group=>group.id===currentLocation.id);
  const temporaryGroup=currentLocation&&!locatedGroup?(previewsByGroup.get(currentLocation.id)?.find(row=>
   !row.base&&row.proposal_id===proposalChoices[currentLocation.id])?.change.value as TemplateGroup|undefined):undefined;
- const detailGroup=allGroups.find(group=>group.id===detailId)??(previewEnabled?locatedGroup??temporaryGroup:undefined);
+ const detailCandidate=allGroups.find(group=>group.id===detailId)??(previewEnabled?locatedGroup??temporaryGroup:undefined);
+ const detailGroup=detailCandidate&&templateGroupVisible(detailCandidate,filters)?detailCandidate:undefined;
  useEffect(()=>{
   if(!focusTarget)return;
   const selector='[data-feedback-group="'+CSS.escape(focusTarget.group)+'"]';
@@ -417,6 +509,37 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   setFocusTarget(null);
  },[focusTarget,detailGroup?.id]);
  function patch(value:Partial<TemplateFilters>){setFilters(f=>{const next={...f,...value};if(value.lineup&&value.lineup!=='common'){const n=lineups.find(n=>n.id===value.lineup);if(n)next.player=lineupPlayer(n)??next.player;}if(value.player!==undefined&&next.lineup&&next.lineup!=='common'){const n=lineups.find(n=>n.id===next.lineup);if(n&&lineupPlayer(n)!==value.player)next.lineup='';}return next;});}
+ function retargetGroups(ids:ReadonlyMap<string,string|null>,groups:TemplateGroup[]){
+  if(!ids.size)return;
+  const target=(id:string)=>ids.has(id)?ids.get(id)??null:id;
+  const targets=(previous:Iterable<string>)=>[...new Set([...previous].flatMap(id=>target(id)??[]))];
+  const parents=(previous:ReadonlyMap<string,string>)=>{
+   const next=new Map<string,string>();
+   for(const [child,parent] of previous){
+    const from=target(child),to=target(parent);
+    if(!from||!to||next.has(from))continue;
+    let ancestor:string|undefined=to;
+    while(ancestor&&ancestor!==from)ancestor=next.get(ancestor);
+    if(!ancestor)next.set(from,to);
+   }
+   return next;
+  };
+  setDetailId(id=>id?target(id):id);
+  setLocatedDetail(previous=>{
+   const id=previous&&target(previous.id);
+   return previous&&id?{...previous,id}:null;
+  });
+  changeView(current=>({...current,selected:new Set(targets(current.selected))}));
+  setBrowsePopup(previous=>{
+   if(!previous)return previous;
+   const next=targets(previous.ids);
+   if(!next.length)return undefined;
+   const renamed=previous.ids.length===1&&next[0]!==previous.ids[0]&&previous.title.endsWith(' · 模板详情')
+    ?groups.find(group=>group.id===next[0])?.name:undefined;
+   return {...previous,ids:next,parents:parents(previous.parents),title:renamed?renamed+' · 模板详情':previous.title};
+  });
+  setRelatedPlacement(previous=>previous&&({...previous,parents:parents(previous.parents)}));
+ }
  function enqueueWrite(run:(current:TemplateSnapshot,accept:(result:TemplateSnapshot)=>TemplateSnapshot)=>Promise<TemplateSnapshot|{proposal:unknown}>,notice:string|null,groupIds:string[],statusOnly=false){
   if(!snapshot)return Promise.reject(new Error('模板库尚未载入'));
   if(!statusOnly)clearTimeout(projectionTimer.current);
@@ -434,6 +557,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     epoch.current++;
     setLoading(false);
     setDatabase(next);
+    if(result.merged_groups)retargetGroups(new Map(Object.entries(result.merged_groups)),next.groups);
     return next;
    };
    try{
@@ -465,61 +589,127 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   queue.current=save.catch(()=>{});
   return save;
  }
- async function openFile(reuse=false){
-  if(pickerLock.current||saveFileLock.current)return;
+ function fileDraftKey(key:string){
+  const [,mode,handle]=JSON.parse(key);
+  const active=openedFile.current;
+  return !!active&&mode.startsWith('file:')&&handle===fileKeys.get(active.handle);
+ }
+ function allowReplaceFile(){
+  if(!openedFile.current)return true;
+  const editedUtterance=[...utteranceDrafts].some(([key,store])=>fileDraftKey(key)&&
+   Object.values(store.drafts).some(draft=>draft.text!==(draft.baseText??'')));
+  const editedGroup=[...cardEditors].some(([key,{base,scratch}])=>fileDraftKey(key)&&
+   (scratch.addedParameters?.length||scratch.parameterAdding||scratch.draft&&JSON.stringify(scratch.draft)!==JSON.stringify(base)));
+  return !(editedUtterance||editedGroup)||confirm('当前文件有未保存的修改。确定放弃这些修改吗？');
+ }
+ function resetFileView(){
+  if(openedFile.current){
+   for(const key of utteranceDrafts.keys())if(fileDraftKey(key))utteranceDrafts.delete(key);
+   for(const key of cardEditors.keys())if(fileDraftKey(key))cardEditors.delete(key);
+  }
+  setViews(current=>Object.fromEntries(Object.entries(current).filter(([key])=>!key.startsWith('file:'))));
+  setDetails(current=>Object.fromEntries(Object.entries(current).filter(([key])=>!key.startsWith('file:'))));
+  for(const key of Object.keys(scrollPositions.current))if(key.startsWith('file:'))delete scrollPositions.current[key];
+  setPaging(undefined);
+  if(groupList.current)groupList.current.scrollTop=0;
+  setEditor(null);setFeedback(null);setJsonGroup(null);setFileExport(undefined);setBatchMetadata(null);
+  setSettings(false);setImportOpen(false);setImportSelection(null);setPreview(null);
+  onDirty?.(false);
+ }
+ function closeFile(){
+  if(!openedFile.current||busy||pickerLock.current||saveFileLock.current||!allowReplaceFile())return;
+  resetFileView();
+  parsedFile.current=null;
+  rememberFile(null);
+  setError('');setNotice('');
+ }
+ async function openFile(reuse=false,reportInDialog=false,options:{recent?:RecentTemplateFile;startIn?:LocalFileHandle}={}){
+  if(busy||pickerLock.current||saveFileLock.current||!reuse&&!allowReplaceFile())return;
   pickerLock.current=true;onBusyChange?.(true);setBusy(true);setError('');
   try{
-   const handle=reuse&&opened?opened.handle:await pickTemplateFile();
+   const handle=options.recent?.handle??(reuse&&opened?opened.handle:await pickTemplateFile(options.startIn));
+   if(options.recent&&handle.requestPermission&&await handle.requestPermission({mode:'read'})!=='granted'){
+    throw new Error('未获得读取权限，请重新授权或手动选择文件。');
+   }
    const raw=await readTemplateFile(handle);
    parseTemplateFile(raw,lookups);
-   if(!reuse){
-    setViews(current=>Object.fromEntries(Object.entries(current).filter(([key])=>!key.startsWith('file:'))));
-    setDetailId(null);
-   }
-   rememberFile({handle,raw});setNotice('');
-  }catch(error){if((error as DOMException).name!=='AbortError')setError((error as Error).message);}
+   const current=openedFile.current;
+   const same=current&&await sameTemplateFile(current.handle,handle);
+   if(!same)resetFileView();
+   rememberFile({handle:same?current.handle:handle,raw});setNotice('');
+   void rememberRecentTemplateFile({id:options.recent?.id??templateId('recent'),handle,openedAt:Date.now()}).then(setRecentFiles);
+  }catch(error){
+   if(reportInDialog)throw error;
+   const {name,message}=error as Error;
+   if(name!=='AbortError')setError(options.startIn?'无法从所在文件夹选取文件：'+message+'。可用「打开模板文件」手动选择。':
+    options.recent&&name==='NotFoundError'?'找不到最近文件，可能已移动或删除。请手动选择文件。':message);
+  }
   finally{pickerLock.current=false;onBusyChange?.(false);setBusy(false);}
  }
- async function saveLocal(changes:TemplateChange[],action:'edit'|'status'='edit',destination=action==='status'?openedFile.current:opened,showNotice=true){
+ function saveFileComment(group:TemplateGroup,utteranceId:string|undefined,body:string){
+  const save=fileInlineQueue.current.then(async()=>{
+   const destination=openedFile.current;
+   if(!destination||destination.handle!==opened?.handle)throw new Error('模板文件已切换，请重新打开批注。');
+   if(saveFileLock.current||pickerLock.current)throw new Error('文件正在处理，请稍后再试。');
+   const target=utteranceId?group.utterances.find(row=>row.id===utteranceId):undefined;
+   if(utteranceId&&!target)throw new Error('话术已不存在，请重新打开批注。');
+   const next=writeLocalComment(documentFor(destination),group.id,target,{
+    id:templateId('comment'),by:session.username??'local',at:new Date().toISOString(),body,
+   });
+   saveFileLock.current=true;onBusyChange?.(true);setBusy(true);
+   try{
+    const raw=await saveTemplateFile(destination.handle,destination.raw,next);
+    rememberFile({...destination,raw});
+   }finally{saveFileLock.current=false;onBusyChange?.(false);setBusy(false);}
+  });
+  fileInlineQueue.current=save.catch(()=>{});
+  return save;
+ }
+ async function saveLocal(changes:TemplateChange[],action:'edit'|'status'|'fixed'='edit',destination=action==='status'?openedFile.current:opened,showNotice=true,merge?:{origin?:string}){
   const document=destination&&documentFor(destination);
   if(!destination||!document)throw new Error('请先打开模板文件。');
   if(saveFileLock.current||pickerLock.current)throw new Error('文件正在处理，请稍后再试。');
   saveFileLock.current=true;onBusyChange?.(true);setBusy(true);setError('');
   try{
    const at=new Date().toISOString(),user=session.username??'local';
+   const previousGroups=new Map(document.snapshot.groups.map(group=>[group.id,group]));
+   const events=new Map(document.snapshot.events.map(event=>[event.id,event]));
+   for(const change of changes)if(change.kind==='event'&&change.action==='put')events.set(change.id,change.value as TemplateEvent);
    const marked=changes.flatMap(change=>{
-    if(action==='status'||change.kind!=='group'||change.action!=='put')return [change];
-    const group=change.value as TemplateGroup;
-    const previous=document.snapshot.groups.find(row=>row.id===group.id);
+    if(action!=='edit'||change.kind!=='group'||change.action!=='put')return [change];
+    const supplied=change.value as TemplateGroup;
+    const previous=previousGroups.get(supplied.id);
+    const group=previous?fixEditedLocalUtterances(previous,supplied):supplied;
     if(JSON.stringify(previous)===JSON.stringify(group))return [];
-    const event=(changes.find(row=>row.kind==='event'&&row.id===group.event_id)?.value as TemplateEvent|undefined)??document.snapshot.events.find(row=>row.id===group.event_id);
+    const event=events.get(group.event_id);
     const references=deriveTemplateEntities(group,event,lookups.entities);
     const catalog=official?.season===templateGroupSeason(group)?official:undefined;
     const edited=reviewLocalGroup(group,user,'edit',at);
     const value=withLocalEntitySnapshot(edited,event,catalog,references,document.snapshot.condition_catalog,lookups.entities);
     return [{...change,value}];
    });
-   if(!marked.length)return;
-   const next=action==='status'?writeLocalReviewStatus(document,marked[0].value as TemplateGroup):writeTemplateDocument(document,marked,lookups);
+   const mergedIds=new Map<string,string>();
+   if(!marked.length)return mergedIds;
+   const next=action==='status'?writeLocalReviewStatus(document,marked[0].value as TemplateGroup):
+    writeTemplateDocument(document,marked,lookups,merge?mergedIds:undefined);
    const parsed=parseTemplateFile(JSON.stringify(next),lookups);
+   assertNoNewGroupErrors(document,next,parsed);
    const raw=await saveTemplateFile(destination.handle,destination.raw,next);
-   const updatedIds=new Map(marked.flatMap(change=>{
-    if(change.kind!=='group')return [];
-    if(change.action==='delete')return [[change.id,null] as const];
-    const group=change.value as TemplateGroup;
-    const event=parsed.snapshot.events.find(row=>row.name===(marked.find(row=>row.kind==='event'&&row.id===group.event_id)?.value?.name??document.snapshot.events.find(row=>row.id===group.event_id)?.name));
-    const nextGroup=parsed.snapshot.groups.find(row=>row.id===group.id)??parsed.snapshot.groups.find(row=>row.name===group.name&&row.event_id===event?.id&&templateGroupVersion(row)===templateGroupVersion(group));
-    return [[change.id,nextGroup?.id??null] as const];
-   }));
+   const updatedIds=new Map<string,string|null>(mergedIds);
+   for(const change of marked){
+    if(change.kind!=='group')continue;
+    if(change.action==='delete')updatedIds.set(change.id,null);
+    if(merge?.origin&&change.id!==merge.origin&&mergedIds.has(change.id))updatedIds.set(merge.origin,mergedIds.get(change.id)!);
+   }
    const savedFile={...destination,raw};
    parsedFile.current={opened:savedFile,lookups,value:parsed};
    rememberFile(savedFile);
-   setDetailId(id=>id&&updatedIds.has(id)?updatedIds.get(id)??null:id);
-   changeView(current=>({...current,selected:new Set([...current.selected].flatMap(id=>updatedIds.has(id)?updatedIds.get(id)??[]:id))}));
+   retargetGroups(updatedIds,parsed.snapshot.groups);
    if(action!=='status'&&showNotice)setNotice('已保存到原文件。');
+   return mergedIds;
   }finally{saveFileLock.current=false;onBusyChange?.(false);setBusy(false);}
  }
- function write(changes:TemplateChange[],original?:TemplateGroup){
+ async function write(changes:TemplateChange[],original?:TemplateGroup){
   if(fileMode){
    const localChanges=original?changes.map(change=>{
     if(change.kind!=='group'||change.action!=='put'||change.id!==original.id)return change;
@@ -531,7 +721,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     const id=templateId('group');
     return {...change,id,value:{...draft,id,utterances:draft.utterances.map(({fixed,...row})=>row)}};
    }):changes;
-   return saveLocal(localChanges);
+   await saveLocal(localChanges,'edit',undefined,true,{origin:original?.id});
+   return;
   }
   return enqueueWrite(current=>{
    if(original&&JSON.stringify(current.groups.find(row=>row.id===original.id))!==JSON.stringify(original))
@@ -549,19 +740,21 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   }catch(error){setError((error as Error).message);}
   finally{deletingGroups.current.delete(group.id);redrawDelete(value=>value+1);}
  }
- function enqueueGroupChange(groupId:string,update:(group:TemplateGroup)=>TemplateGroup,notice:string|null='模板库已保存。'){
+ function enqueueGroupChange(groupId:string,update:(group:TemplateGroup)=>TemplateGroup,notice:string|null='模板库已保存。',mergeGroups=false){
   if(fileMode)return enqueueFileMetadataChanges(groups=>{
    const group=groups.find(row=>row.id===groupId);
    if(!group)throw new Error('模板组已不存在，请重新读取文件。');
    return [{kind:'group',action:'put',id:groupId,value:update(group)}];
-  });
+  },false,'edit',mergeGroups?{}:undefined);
   return enqueueWrite(current=>{
    const group=current.groups.find(row=>row.id===groupId);
    if(!group)throw new Error('模板组已不存在，请刷新后重试');
-   return api(templatePath(season,'/changes'),'POST',{revision:current.revision,group_patches:[{id:groupId,fields:groupFields(group,update(group))}]});
+   const fields=groupFields(group,update(group));
+   if(!Object.keys(fields.set).length&&!fields.remove.length)return Promise.resolve(current);
+   return api(templatePath(season,'/changes'),'POST',{revision:current.revision,group_patches:[{id:groupId,fields}]});
   },notice,[groupId]);
  }
- function enqueueFileMetadataChanges(prepare:(groups:TemplateGroup[],events:TemplateEvent[])=>TemplateChange[],showNotice=false){
+ function enqueueFileMetadataChanges(prepare:(groups:TemplateGroup[],events:TemplateEvent[])=>TemplateChange[],showNotice=false,action:'edit'|'fixed'='edit',merge?:{origin?:string}){
   const save=fileInlineQueue.current.then(async()=>{
    const destination=openedFile.current;
    if(!destination||destination.handle!==opened?.handle)throw new Error('模板文件已切换，请重新编辑。');
@@ -570,7 +763,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    const changes=prepare(document.snapshot.groups,document.snapshot.events);
    if(!changes.length)return;
    fileMetadataWrite.current=true;
-   try{await saveLocal(changes,'edit',destination,showNotice);}
+   try{await saveLocal(changes,action,destination,showNotice,merge);}
    finally{fileMetadataWrite.current=false;}
   });
   fileInlineQueue.current=save.catch(()=>{});
@@ -600,7 +793,38 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   },'已批量添加'+templateMetadataLabels[field]+'。',[...ids]);
  }
  function saveUtterance(groupId:string,change:UtteranceChange){
-  return enqueueGroupChange(groupId,group=>applyUtteranceChange(group,change));
+  return enqueueGroupChange(groupId,group=>applyUtteranceChange(group,change),'模板库已保存。',true);
+ }
+ async function changeSelectedGroups(action:'ignore'|'delete'){
+  if(!selectedGroups.length||busy||batchConflict)return;
+  if(action==='delete'&&(!canManage||selectedGroups.some(group=>group.utterances.some(row=>row.fixed))||
+   !confirm('确定删除所选 '+selectedGroups.length+' 个模板组及其全部话术吗？')))return;
+  const ids=new Set(selectedGroups.map(group=>group.id));
+  const prepare=(current:TemplateGroup[]):TemplateChange[]=>{
+   const targets=current.filter(group=>ids.has(group.id));
+   if(targets.length!==ids.size)throw new Error('部分所选模板组已不存在，请重新选择。');
+   if(action==='delete'){
+    if(targets.some(group=>group.utterances.some(row=>row.fixed)))throw new Error('请先取消所选模板组中的固定话术。');
+    return targets.map(group=>({kind:'group',action:'delete',id:group.id}));
+   }
+   return targets.filter(group=>!group.ignored).map(group=>({
+    kind:'group',action:'put',id:group.id,value:applyIgnore(group,{groupId:group.id,ignored:true})
+   }));
+  };
+  const notice=action==='delete'?'已批量删除模板组。':'已批量忽略模板组。';
+  setError('');
+  try{
+   if(fileMode){
+    await enqueueFileMetadataChanges(prepare);
+    setNotice(notice);
+   }else{
+    await enqueueWrite(async current=>{
+     const changes=prepare(current.groups);
+     return changes.length?api(templatePath(season,'/changes'),'POST',{revision:current.revision,changes}):current;
+    },notice,[...ids]);
+   }
+   changeView(current=>({...current,selected:new Set([...current.selected].filter(id=>!ids.has(id)))}));
+  }catch(error){setError((error as Error).message);}
  }
  async function toggleIgnored(group:TemplateGroup,utteranceId?:string){
   const key=JSON.stringify([group.id,utteranceId]);
@@ -669,18 +893,19 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   }
  }
  async function confirmWarning(warning:TemplateWarning){if(!confirm('已检查“'+warning.group_name+'”的关联资料，确认无需修改？'))return;setBusy(true);setError('');try{await api(templatePath(season,'/warnings/confirm'),'POST',{group_id:warning.group_id,revision:warning.revision});await load();}catch(e){setError((e as Error).message);}finally{setBusy(false);}}
- async function exportSource(scope:FileExportScope,group?:TemplateGroup){
+ async function exportSource(scope:FileExportScope,group?:TemplateGroup,sameAsOpened=false){
   const ids=group?[group.id]:scope==='all'?undefined:(scope==='selected'?selectedGroups:groups).map(row=>row.id);
   if(ids&&!ids.length)throw new Error('当前范围没有可导出的模板。');
   if(fileMode){
    if(!file)throw new Error('请先打开模板文件。');
-   return fileExportDocument(file,ids);
+   if(sameAsOpened)throw new Error('请选择另一个文件作为导出目标。当前模板文件可直接保存。');
+   return fileDeliveryDocument(file,ids);
   }
   const suffix='/export?authoring=1'+(ids?'&group_ids='+encodeURIComponent(ids.join(',')):'');
   return api<PortableTemplateLibrary>(templatePath(season,suffix));
  }
  async function exportAll(){setError('');try{downloadTemplates(await exportSource('all'),'话术模板库.json');}catch(e){setError((e as Error).message);}}
- function beginImport(selection:TemplateGroup[]|null=null){setError('');setBypass(false);setReason('');setPreview(null);setImportText('');setImportSelection(selection);setImportOpen(true);}
+ function beginImport(selection:TemplateGroup[]|null=null){setError('');setBypass(false);setReason('');setPreview(null);setImportText('');setImportSelection(selection?.filter(canDeliver)??null);setImportOpen(true);}
  function setImport(value:string){setImportText(value);setPreview(null);onDirty?.(!!value);}
  function finishImport(){setImportOpen(false);setImportText('');setImportSelection(null);setPreview(null);onDirty?.(false);}
  function closeImport(){if(busy||importText&&!confirm('关闭后将放弃本次导入内容，继续吗？'))return;finishImport();}
@@ -704,16 +929,45 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    if(!fileMode)await load();
   }catch(e){setError((e as Error).message);}finally{if(fileMode)onBusyChange?.(false);setBusy(false);}
  }
- function copy(group:TemplateGroup){
-  if(!snapshot)return;
+ function create(){
   editorBase.current=undefined;
-  setEditor(copyTemplateGroup(group,snapshot.groups));
+  const v04=snapshot?.syntax_version==='0.4'||!!snapshot?.groups.some(group=>group.syntax_version==='0.4');
+  const events=orderTemplateEvents(snapshot?.events??[]).filter(event=>!v04||registeredEvent(event.name));
+  if(!events.length){setNotice('请先在事件与参数设置中添加事件。');setSettings(true);return;}
+  const event=events.find(row=>row.id===filters.event)??events[0];
+  setEditor({id:templateId('group'),name:'',version:filters.version||season.toLowerCase(),mode:(gameMode??filters.mode)||'万象大赛',
+   tags:filters.tags??[],event_id:event.id,scope:{player_id:filters.player&&filters.player!=='common'?filters.player:null,
+   lineup_note_id:filters.lineup&&filters.lineup!=='common'?filters.lineup:null},priority:0,
+   ...(v04?{syntax_version:'0.4' as const,extra_key:wildcardKey(event.name)}:{condition_tree:{kind:'all' as const,children:[]}}),
+   expression:'',editor_mode:v04?'text':'tree',conditions:[],utterances:[{id:templateId('utterance'),text:''}],related_entities:[]});
  }
- function create(){editorBase.current=undefined;if(!snapshot?.events.length){setNotice('请先在事件与参数设置中添加事件。');setSettings(true);return;}setEditor({id:templateId('group'),name:'',version:filters.version||season.toLowerCase(),mode:(gameMode??filters.mode)||'万象大赛',tags:filters.tags??[],event_id:snapshot.events.find(event=>event.id===filters.event)?.id??snapshot.events[0].id,scope:{player_id:filters.player&&filters.player!=='common'?filters.player:null,lineup_note_id:filters.lineup&&filters.lineup!=='common'?filters.lineup:null},priority:0,condition_tree:{kind:'all',children:[]},expression:'',editor_mode:'tree',conditions:[],utterances:[{id:templateId('utterance'),text:''}],related_entities:[]});}
  const scrollPositions=useRef(workspace?.scroll??{}),groupList=useRef<HTMLDivElement>(null);
+ const lineupScroll=useRef<HTMLDivElement>(null);
+ const lineupScrollKey=JSON.stringify([lineupViewKey,selectedLineup,lineupPlayerTab]);
+ useLayoutEffect(()=>{
+  if(byLineup){
+   for(const pane of lineupScroll.current?.querySelectorAll<HTMLElement>('[data-lineup-scroll]')??[]){
+    const saved=scrollPositions.current[lineupScrollKey+':'+pane.dataset.lineupScroll];
+    pane.scrollTop=saved?.top??0;pane.scrollLeft=saved?.visible??0;
+   }
+  }
+ },[byLineup,lineupScrollKey]);
  useEffect(()=>{if(workspace)workspace.scroll=scrollPositions.current;},[workspace]);
  const pageSize=compact?80:20;
  const scrollKey=viewKey+':'+(gameMode??'')+':'+(compact?'board:':'cards:')+(byEntity?'entity:'+entityKey:'event:'+filters.event);
+ const [relatedPlacement,setRelatedPlacement]=useState<{key:string;parents:Map<string,string>}>();
+ const relatedWriting=useRef(false);
+ const relatedParents=relatedPlacement?.key===scrollKey?relatedPlacement.parents:new Map<string,string>();
+ useEffect(()=>{setRelatedPlacement(undefined);},[scrollKey]);
+ const relatedAvailable=new Map(allGroups.map(group=>[group.id,group]));
+ for(const [id,rows] of previewsByGroup){
+  if(relatedAvailable.has(id))continue;
+  const pending=rows.find(row=>!row.base&&row.proposal_id===proposalChoices[id])?.change.value as TemplateGroup|undefined;
+  if(pending)relatedAvailable.set(id,pending);
+ }
+ const relatedDisplayRoots=relatedDisplayRows(groups,relatedAvailable,relatedParents).roots;
+ const normalRows=relatedParents.size?groups.filter(group=>
+  relatedDisplayRoots.get(group.id)?.id===group.id):groups;
  const [paging,setPaging]=useState<{key:string;visible:number}>();
  const visibleCount=paging?.key===scrollKey?paging.visible:scrollPositions.current[scrollKey]?.visible??pageSize;
  const hasGroups=groups.length>0;
@@ -721,19 +975,114 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   if(hasGroups&&groupList.current)groupList.current.scrollTop=scrollPositions.current[scrollKey]?.top??0;
  },[scrollKey,hasGroups]);
  function showMore(){
-  const visible=Math.min(visibleCount+pageSize,groups.length);
+  const visible=Math.min(visibleCount+pageSize,normalRows.length);
   scrollPositions.current[scrollKey]={top:groupList.current?.scrollTop??0,visible};
   setPaging({key:scrollKey,visible});
  }
  const useProposalEditor=!fileMode&&annotator;
  const selectionLocked=busy&&!fileMetadataWrite.current&&!fileReviewWrite.current;
  const batchConflict=!fileMode&&selectedGroups.some(group=>conflicted.includes(group.id)||conflicted.includes(group.event_id));
- const showDetail=detailGroup&&(compact||!groups.slice(0,visibleCount).some(group=>group.id===detailGroup.id))&&
+ const batchFixed=selectedGroups.some(group=>group.utterances.some(row=>row.fixed));
+ const relatedPage=relatedDisplayRows(normalRows.slice(0,visibleCount),relatedAvailable,relatedParents);
+ const showDetail=!byLineup&&detailGroup&&(compact||!relatedPage.rows.some(group=>group.id===detailGroup.id))&&
   !editor&&!settings&&!proposals&&!importOpen&&!jsonGroup&&!revisionGroup&&!feedback&&!help&&!batchMetadata&&!fileExport;
+ function placeRelated(source:string,target:string,first=false,popupKey?:string){
+  function attach(previous?:Map<string,string>){
+   const parents=new Map(previous);
+   for(let ancestor:string|undefined=source;ancestor;ancestor=parents.get(ancestor)){
+    if(ancestor===target)return parents;
+   }
+   if(!first)return parents.set(target,source);
+   parents.delete(target);
+   return new Map([[target,source],...parents]);
+  }
+  if(popupKey){
+   setBrowsePopup(previous=>previous?.key===popupKey?{...previous,ids:previous.ids.includes(target)?previous.ids:[...previous.ids,target],
+    parents:attach(previous.parents)}:previous);
+  }else setRelatedPlacement(previous=>({key:scrollKey,parents:attach(previous?.key===scrollKey?previous.parents:undefined)}));
+ }
+ function prepareRelated(current:TemplateSnapshot,sourceId:string,name:string,newId?:string){
+  const source=current.groups.find(group=>group.id===sourceId);
+  const origin=current.events.find(event=>event.id===source?.event_id);
+  if(!source||!origin)throw new Error('来源模板组已有修改，请重新打开后再试。');
+  const pending=fileMode?[]:[...previewsByGroup.values()].flat().filter(row=>
+   !row.base&&row.change.value&&(!annotator||row.author===session.username));
+  const savedEvent=current.events.find(event=>event.name===name);
+  const event=savedEvent??pending.find(row=>row.event?.name===name)?.event??relatedEventDefinition(name);
+  const copy=relatedCopy(source,origin.name,event,[...current.groups,...pending.map(row=>row.change.value as TemplateGroup)],newId);
+  return {event,savedEvent,copy,proposal:pending.find(row=>row.change.id===copy.group.id)};
+ }
+ function relatedCopyOptions(group:TemplateGroup,event:TemplateEvent){
+  return relatedTargets(event.name).map(name=>{
+   try{prepareRelated(snapshot!,group.id,name);return {event:name};}
+   catch(error){return {event:name,reason:(error as Error).message};}
+  });
+ }
+ async function createCopy(source:TemplateGroup,name?:string,anchor=source.id,popupKey?:string){
+  if(!snapshot||relatedWriting.current)return;
+  relatedWriting.current=true;
+  setError('');
+  const newId=templateId('group');
+  function changesFor(current:TemplateSnapshot){
+   if(name===undefined){
+    const group={...copyTemplateGroup(source),id:newId};
+    const changes:TemplateChange[]=[{kind:'group',action:'put',id:newId,value:group}];
+    return {copy:{kind:'new' as const,group},changes,proposal:undefined};
+   }
+   const {event,savedEvent,copy,proposal}=prepareRelated(current,source.id,name,newId);
+   const changes:TemplateChange[]=copy.kind==='existing'?[]:[
+    ...(savedEvent?[]:[{kind:'event' as const,action:'put' as const,id:event.id,value:event}]),
+    {kind:'group',action:'put',id:copy.group.id,value:copy.group,related_copy_source:source.id},
+   ];
+   return {copy,changes,proposal};
+  }
+  let targetId=newId;
+  let message=name===undefined?'已复制模板组。':'已创建关联模板组。';
+  try{
+   if(fileMode){
+    const current=opened&&documentFor(opened)?.snapshot;
+    if(!current)throw new Error('请先打开模板文件。');
+    const {copy,changes}=changesFor(current);
+    targetId=copy.group.id;
+    if(changes.length){
+     const merged=await saveLocal(changes,'edit',undefined,true,{});
+     const retained=merged.get(targetId);
+     if(retained){targetId=retained;message='已合并至同名且条件一致的模板组。';}
+    }
+    else message='已定位条件和话术一致的模板组。';
+   }else{
+    await enqueueWrite(async current=>{
+     const {copy,changes,proposal}=changesFor(current);
+     targetId=copy.group.id;
+     if(!changes.length){
+      if(proposal)chooseProposal(targetId,proposal.proposal_id);
+      message='已定位条件和话术一致的模板组。';
+      return current;
+     }
+     const result=await api<TemplateSnapshot|{proposal:TemplateProposal}>(templatePath(season,'/changes'),'POST',
+      {revision:current.revision,changes});
+     if('proposal' in result){
+      updateProposalPreview(result.proposal);
+      chooseProposal(targetId,result.proposal.id);
+      message=name===undefined?'模板组副本已提交，待审核。':'关联模板组已提交，待审核。';
+     }else{
+      const retained=result.merged_groups?.[targetId];
+      if(retained){targetId=retained;message='已合并至同名且条件一致的模板组。';}
+     }
+     return result;
+    },null,[newId]);
+   }
+   if(popupKey||!groups.some(group=>group.id===targetId))placeRelated(anchor,targetId,name===undefined,popupKey);
+   else if(relatedPage.rows.some(group=>group.id===targetId))setFocusTarget({group:targetId});
+   else setDetailId(targetId);
+   setNotice(message);
+  }catch(error){setError((error as Error).message);}
+  finally{relatedWriting.current=false;}
+ }
  function groupActions(group:TemplateGroup):ReactNode{
   return <>
-   <button type="button" disabled={selectionLocked||group.ignored||group.utterances.every(row=>row.ignored)} onClick={()=>setFileExport({group})}>导出到文件</button>
-   {fileMode&&editable&&<button type="button" disabled={selectionLocked} onClick={()=>beginImport([group])}>导入此组到数据库</button>}
+   <button type="button" disabled={selectionLocked||!canDeliver(group)} onClick={()=>setFileExport({group})}>导出到文件</button>
+   {fileMode&&editable&&<button type="button" disabled={selectionLocked||!canDeliver(group)} onClick={()=>beginImport([group])}>导入此组到数据库</button>}
   </>;
  }
  function locateProposal(proposal:TemplateProposal,id:string){
@@ -754,6 +1103,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   setProposals(false);
  }
  function reconcileApproval(write:TemplateProposal['formal_write']){
+  if(write?.merged_groups)retargetGroups(new Map(Object.entries(write.merged_groups)),
+   write.changes.flatMap(change=>change.kind==='group'&&change.action==='put'?[change.value as TemplateGroup]:[]));
   if(write&&!queueSize.current){
    epoch.current++;
    setDatabase(previous=>{
@@ -830,9 +1181,10 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     if(approve){reconcileApproval(result.formal_write);setFeedbackRevision(value=>value+1);}
     updateProposalPreview(result);
     const saved=result.reviews?.at(-1)?.changes?.find(row=>row.kind==='group');
-    if(saved?.action==='put'&&saved.id!==change.id){
-     chooseProposal(saved.id,approve?undefined:id);
-     setDetailId(null);setLocatedDetail({id:saved.id,identity:proposalIdentity});
+    const retained=result.formal_write?.merged_groups?.[change.id]??(saved?.action==='put'?saved.id:undefined);
+    if(retained&&retained!==change.id){
+     chooseProposal(retained,approve?undefined:id);
+     setLocatedDetail({id:retained,identity:proposalIdentity});
     }
    }catch(error){
     const message=(error as Error).message;
@@ -905,14 +1257,15 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    result.push({kind:'group',action:'put',id:value.id,value});
    return result;
   }
-  if(fileMode)return enqueueFileMetadataChanges(changes);
+  if(fileMode)return enqueueFileMetadataChanges(changes,false,'edit',{origin:base.id});
   return enqueueWrite(current=>{
    const edits=changes(current.groups,current.events),group=edits.pop()!.value as TemplateGroup;
    const old=current.groups.find(row=>row.id===base.id)!;
    return api(templatePath(season,'/changes'),'POST',{revision:current.revision,changes:edits,group_patches:[{id:base.id,fields:groupFields(old,group)}]});
   },null,[base.id]);
  }
- function renderGroup(group:TemplateGroup){
+ function renderGroup(group:TemplateGroup,popupKey?:string){
+  const sourceEvent=snapshot?.events.find(event=>event.id===group.event_id);
   const pending=pendingIgnores.filter(change=>change.groupId===group.id);
   const original=pending.reduce(applyIgnore,group);
   const rows=previewsByGroup.get(group.id)??[];
@@ -964,6 +1317,17 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
      if(!latest.utterances.some(row=>row.id===id))throw new Error('话术已不存在，请重新核对。');
      return field==='ignored'?{ignore:{id,value}}:{fixed:{id,value}};
     });
+    if(fileMode)return enqueueFileMetadataChanges(groups=>{
+     const latest=groups.find(candidate=>candidate.id===group.id);
+     const current=latest?.utterances.find(utterance=>utterance.id===id);
+     if(!latest||!current||latest.syntax_version!=='0.4'&&current.text!==row.text)
+      throw new Error('话术已修改或删除，请重新核对。');
+     const updated={...current};
+     if(value)updated[field]=true;else delete updated[field];
+     return [{kind:'group',action:'put',id:group.id,value:{
+      ...latest,utterances:latest.utterances.map(utterance=>utterance.id===id?updated:utterance),
+     }}];
+    },false,field==='fixed'?'fixed':'edit');
     if(field==='fixed')return enqueueWrite(current=>api(templatePath(season,'/utterances/fixed'),'POST',{
      revision:current.revision,group_id:group.id,utterance_id:id,fixed:value,
     }),null,[group.id]);
@@ -1007,13 +1371,18 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     onSaveUtterance:proposalEditable?(change,approve)=>saveProposedUtterance(previewTarget!,change,approve):undefined,
     onInspect:actionError?()=>{setInspectProposal(active.proposal_id);setProposals(true);}:undefined,
    }:undefined}
-   commentCounts={fileMode||legacyMode?undefined:commentCounts[group.id]} lastActivity={fileMode||legacyMode?undefined:lastActivity[group.id]}
-   onFeedback={!projected&&!fileMode&&editable?utteranceId=>setFeedback({group,utteranceId}):undefined}
+   commentCounts={fileMode?localCommentCounts(group.id):legacyMode?undefined:commentCounts[group.id]} lastActivity={fileMode||legacyMode?undefined:lastActivity[group.id]}
+   onFeedback={!projected&&editable?utteranceId=>setFeedback({group,utteranceId}):undefined}
    savingIgnore={{group:pending.some(change=>!change.utteranceId),rows:[]}}
    entities={ruleChanged||projected?.fields.has('related_entities')?undefined:snapshot?.entity_links?.[group.id]}
    event={(projected&&active?.event)||snapshot?.events.find(event=>event.id===displayed.event_id)} scopeName={scopeName}
    interactionLocked={selectionLocked} annotator={useProposalEditor}
    metadataLocked={selectionLocked}
+   onSaveName={async name=>{
+    const base=proposalEditable?draftGroup!:group;
+    if(proposalEditable&&previewTarget){await saveCardProposal(previewTarget,false,latest=>({group:{...latest,name}}));return;}
+    await saveGroupEditor(base,{...base,name});
+   }}
    onSaveMetadata={proposalEditable?async(field,values)=>{await saveCardProposal(previewTarget!,false,latest=>({group:{...latest,[field]:values}}));}
     :(field,values)=>saveMetadata(group.id,field,values)}
    onSaveUtterances={async change=>{if(oldUtteranceKey&&change.kind!=='delete')confirmDraftDestination();await saveUtterance(group.id,change);}}
@@ -1025,66 +1394,69 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     status=>{if(proposalEditable)saveProposal({status});else void changeReviewStatus(group,status);}:undefined}
    reviewPending={projected?undefined:pendingReviews.get(reviewKey(group.id))} canFinalReview={reviewer}
    onRevisions={!projected&&!fileMode&&!legacyMode?()=>setRevisionGroup(group):undefined}
-   onExport={()=>fileMode&&file?downloadTemplates(fileImportDocument(file,[group.id]),group.name+'.json'):setJsonGroup({id:group.id,name:group.name})}
-   onSaveExpression={value=>{
+   onExport={()=>setJsonGroup({id:group.id,name:group.name})}
+   scopeOptions={{players,lineups,scopeName,localFile:fileMode}}
+   onSaveExpression={(value,scope)=>{
     const base=proposalEditable?draftGroup!:group;
-    const draft:TemplateGroup={...base,editor_mode:'text',expression:value,conditions:[]};
+    const draft:TemplateGroup=value===(base.expression??'')?{...base,scope}:{...base,scope,editor_mode:'text',expression:value,conditions:[]};
     return proposalEditable&&previewTarget
      ?saveCardProposal(previewTarget,false,latest=>({group:mergeEditorFields(base,latest,draft)}))
      :saveGroupEditor(base,draft);
    }}
    onEdit={()=>openGroupEditor(proposalEditable?draftGroup!:group,proposalEditable?previewTarget:undefined)}
-   onCopy={canManage?()=>copy(draftGroup??group):undefined}
+    onCopy={canManage?()=>{void createCopy(draftGroup??group,undefined,group.id,popupKey);}:undefined}
+   {...(!projected&&canManage&&canEditGroup&&group.syntax_version==='0.4'&&sourceEvent&&relatedTargets(sourceEvent.name).length?{
+     relatedCopyOptions:()=>relatedCopyOptions(group,sourceEvent),onRelatedCopy:(name:string)=>{void createCopy(group,name,group.id,popupKey);},
+   }:{})}
    onDelete={canManage&&!deletingGroups.current.has(group.id)?()=>{if(!proposalEditable){void remove(group);return;}
     if(confirm('确定将「'+displayed.name+'」及其中全部话术设为拟删除？'))saveProposal({delete:true});}:undefined}
-   onToggleIgnored={fileMode?undefined:utteranceId=>{
+   onToggleIgnored={utteranceId=>{
     if(utteranceId){toggleRow(utteranceId,'ignored');return;}
     if(!proposalEditable){void toggleIgnored(group);return;}
     if(previewTarget)void saveCardProposal(previewTarget,false,latest=>({group:{...latest,ignored:!latest.ignored}})).catch(()=>{});
    }}
-   onToggleFixed={!fileMode&&admin?utteranceId=>toggleRow(utteranceId,'fixed'):undefined}
+   onToggleFixed={(fileMode?editable:admin)?utteranceId=>toggleRow(utteranceId,'fixed'):undefined}
    warning={warning} onConfirm={admin&&warning?()=>void confirmWarning(warning):undefined}
    workflow={projected||legacyMode?undefined:groupActions(group)}/>;
  }
  function renderCards(visible:TemplateGroup[]){
-  if(!byEntity)return visible.map(renderGroup);
-  const sections=new Map<string,TemplateGroup[]>();
-  for(const group of visible){
-   const section=sections.get(group.event_id);
-   if(section)section.push(group);
-   else sections.set(group.event_id,[group]);
-  }
-  return [...sections].map(([eventId,rows])=><section key={eventId} className="template-card-event">
-   <h3>{snapshot?.events.find(event=>event.id===eventId)?.name??eventId}</h3>
-   {rows.map(renderGroup)}
+  return templateDisplaySections(visible,snapshot?.events??[],scopeName).map(({key,title,events})=><section key={key} className="template-card-event" aria-label={title}>
+   <h3>{title}</h3>
+   {events.map(event=><div key={event.key} className="template-display-event" aria-label={event.title} role="group">
+    <h4>{event.title}</h4>
+    {event.rows.map(group=>renderGroup(group))}
+   </div>)}
   </section>);
  }
  const resultsList=<div className="template-group-list" ref={groupList} onScroll={event=>{
   const list=event.currentTarget;
   scrollPositions.current[scrollKey]={top:list.scrollTop,visible:visibleCount};
-  if(visibleCount<groups.length&&list.scrollHeight-list.scrollTop-list.clientHeight<200)showMore();
+  if(visibleCount<normalRows.length&&list.scrollHeight-list.scrollTop-list.clientHeight<200)showMore();
  }}>
   {!fileMode&&loading&&!snapshot?<p className="empty" role="status">正在载入模板库…</p>:!groups.length?<div className="empty"><p>{allGroups.length?'没有符合筛选的模板组。':'暂无 '+season+' 模板数据'}</p>{canManage&&snapshot&&!allGroups.length&&<button onClick={create}>新建模板组</button>}</div>:<>
-   {compact?<TemplateBoard groups={groups.slice(0,visibleCount)} events={snapshot?.events??[]} selected={selected} onSelectionChange={selectGroups} onDetail={setDetailId} byEvent={byEntity} entity={entity} selectionDisabled={selectionLocked}/>
-    :renderCards(groups.slice(0,visibleCount))}
-   {visibleCount<groups.length&&<button type="button" onClick={showMore}>显示更多模板（{visibleCount} / {groups.length}）</button>}
+   {compact?<TemplateBoard groups={relatedPage.rows} events={snapshot?.events??[]} selected={selected} onSelectionChange={selectGroups}
+    onDetail={id=>{const group=relatedAvailable.get(id);if(group)openBrowsePopup(group.name+' · 模板详情',[id],filters);}}
+    byEvent entity={entity} selectionDisabled={selectionLocked} visibility={filters} scopeName={scopeName}/>
+    :renderCards(relatedPage.rows)}
+   {visibleCount<normalRows.length&&<button type="button" onClick={showMore}>显示更多模板（{visibleCount} / {normalRows.length}）</button>}
   </>}
  </div>;
- return <main className="templates-page">
+ return <TemplateMetadataChoices.Provider value={metadataChoices}><TemplateUtteranceVisibility.Provider value={filters}><main className="templates-page">
   <div className="template-page-heading"><div><h1>话术模板库</h1>{fileMode&&opened&&<p title={opened.handle.name}>{opened.handle.name}</p>}</div>
    {(!fileMode||opened)&&<div className="template-browse-toolbar">
-    <div role="group" aria-label="模板分类方式"><button type="button" aria-pressed={!byEntity} disabled={selectionLocked} onClick={()=>changeView(current=>({...current,byEntity:false}))}>按事件</button>
-     <button type="button" aria-pressed={byEntity} disabled={selectionLocked} onClick={()=>changeView(current=>({...current,byEntity:true}))}>按实体</button></div>
-    <div role="group" aria-label="模板显示方式"><button type="button" aria-pressed={!compact} disabled={selectionLocked} onClick={()=>changeView(current=>({...current,compact:false}))}>卡片</button>
+    <div role="group" aria-label="模板分类方式"><button type="button" aria-pressed={!byLineup&&!byEntity} disabled={selectionLocked} onClick={()=>changeLineupView({active:false},{byEntity:false})}>按事件</button>
+     <button type="button" aria-pressed={!byLineup&&byEntity} disabled={selectionLocked} onClick={()=>changeLineupView({active:false},{byEntity:true})}>按实体</button>
+     <button type="button" aria-pressed={byLineup} disabled={selectionLocked} onClick={()=>{setDetailId(null);changeLineupView({active:true});}}>按阵容</button></div>
+    {!byLineup&&<><div role="group" aria-label="模板显示方式"><button type="button" aria-pressed={!compact} disabled={selectionLocked} onClick={()=>changeView(current=>({...current,compact:false}))}>卡片</button>
      <button type="button" aria-pressed={compact} disabled={selectionLocked} onClick={()=>changeView(current=>({...current,compact:true}))}>看板</button></div>
-    <TemplateFilterBar filters={filters} patch={patch} groups={allGroups} players={players} lineups={lineups} disabled={selectionLocked} showMode={gameMode===undefined}/>
-    {!legacyMode&&<button type="button" disabled={selectionLocked||(!fileMode&&loading)} onClick={()=>{if(fileMode)void openFile(true);else{refreshProposals();void load();}}} aria-label={fileMode?'重新读取模板文件':'刷新模板库'}>↻</button>}
+    <TemplateFilterBar filters={filters} patch={patch} groups={allGroups} players={players} lineups={lineups} disabled={selectionLocked} showMode={gameMode===undefined}/></>}
+    {!legacyMode&&<button type="button" disabled={selectionLocked||(!fileMode&&loading)} onClick={()=>{setRelatedPlacement(undefined);if(fileMode)void openFile(true);else{refreshProposals();void load();}}} aria-label={fileMode?'重新读取模板文件':'刷新模板库'}>↻</button>}
    </div>}
    <fieldset className="template-toolbar" disabled={selectionLocked}>
     <button onClick={()=>setHelp(true)}>帮助</button>
     {!legacyMode&&snapshot&&<button type="button" onClick={()=>setFileExport({})}>导出到文件</button>}
-    {fileMode?<><button onClick={()=>void openFile()}>{opened?'打开其他文件':'打开模板文件'}</button>
-     {editable&&opened&&<button disabled={!selectedGroups.length} onClick={()=>beginImport(selectedGroups)}>导入所选到数据库{selectedGroups.length>0?'（'+selectedGroups.length+'）':''}</button>}
+    {fileMode?<>{opened&&<><button onClick={()=>void exportAll()}>导出全库</button><button type="button" disabled={busy} onClick={closeFile}>关闭文件</button></>}<button type="button" disabled={busy} onClick={()=>void openFile()}>{opened?'打开新文件':'打开模板文件'}</button>
+     {editable&&opened&&<button disabled={!importableSelection.length} onClick={()=>beginImport(importableSelection)}>导入所选到数据库{importableSelection.length>0?'（'+importableSelection.length+'）':''}</button>}
     </>:<>
      {season==='S2'&&!!legacy?.groups.length&&<button type="button" aria-pressed={legacyMode} onClick={()=>setShowLegacy(value=>!value)}>{legacyMode?'返回数据库模板':'查看 S2 旧模板（只读）'}</button>}
      {!legacyMode&&admin&&<TemplateConflicts events={snapshot?.events??[]} scopeName={scopeName} onResolved={()=>void load()} onConflicts={setConflicted}/>}
@@ -1097,13 +1469,46 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   </div>
   {notice&&<div className="template-notice" role="status">{notice}<button aria-label="关闭提示" onClick={()=>setNotice('')}>×</button></div>}
   {error&&!importOpen&&<div role="alert" className="error template-error">{error}<button onClick={()=>fileMode?void openFile(!!opened):void load()}>重新载入</button></div>}
+  {fileMode&&!!file?.groupErrors.length&&<div role="alert" className="error template-error">
+   <details open={file.groupErrors.length===1}><summary>有 {file.groupErrors.length} 个模板组未载入</summary>
+    <ul>{file.groupErrors.map(({index,message})=><li key={index}>{message}</li>)}</ul>
+   </details>
+  </div>}
   {previewEnabled&&proposalPreviews?.identity===proposalIdentity&&proposalPreviews.error&&<div role="status" className="template-error">
    提案预览暂不可用：{proposalPreviews.error} <button type="button" onClick={refreshProposals}>重试</button>
   </div>}
   {fileMode&&officialError&&opened&&<p className="muted" role="status">官网卡牌资料读取失败：{officialError}</p>}
-  {fileMode&&!opened?<div className="empty"><p>打开话术模板库 JSON 文件，查看和编辑其中的模板组。</p></div>:<div className="template-workspace">
-   {byEntity?<TemplateEntityList entries={entityEntries} selected={entityKey} onSelect={key=>changeView(current=>({...current,entityKey:key}))} disabled={selectionLocked}/>
-    :<TemplateEventList events={snapshot?.events??[]} groups={countGroups} selected={filters.event} onSelect={event=>patch({event})} disabled={selectionLocked}/>}
+  {fileMode&&!opened?<div className="empty"><p>打开话术模板库 JSON 文件，查看和编辑其中的模板组。</p>{recentFiles.length>0&&
+   <section aria-label="最近载入的模板文件" className="template-recent-files">
+    <h2>最近载入</h2><ul>{recentFiles.map(entry=><li key={entry.id}>
+     <button type="button" disabled={busy} onClick={()=>void openFile(false,false,{recent:entry})}>{entry.handle.name}</button>
+     <button type="button" disabled={busy} aria-label={'从 '+entry.handle.name+' 所在文件夹选文件'} onClick={()=>void openFile(false,false,{startIn:entry.handle})}>从所在文件夹选文件</button>
+    </li>)}</ul>
+   </section>}</div>:byLineup?<div className="template-workspace">
+   <TemplateLineupSidebar names={lineupNames} tabs={lineupTabs} query={lineupView.query} selected={selectedLineup} player={lineupPlayerTab}
+    onQuery={query=>changeLineupView({query})} onSelect={(lineup,player)=>changeLineupView({lineup,player})}/>
+   <div className="template-lineup-results" ref={lineupScroll} onScrollCapture={event=>{
+    const pane=event.target;
+    if(pane instanceof HTMLElement&&pane.dataset.lineupScroll){
+     scrollPositions.current[lineupScrollKey+':'+pane.dataset.lineupScroll]={top:pane.scrollTop,visible:pane.scrollLeft};
+    }
+   }}>
+    <TemplateLineupBoard name={selectedLineup} players={[...(selectedLineupTabs?.keys()??[])].filter(Boolean).sort((a,b)=>a.localeCompare(b,'zh-CN'))}
+     player={lineupPlayerTab} rows={boardRows} filters={lineupView.filters} eventNames={lineupEvents}
+     onPlayer={player=>changeLineupView({player})}
+     onFilter={update=>changeLineupView({filters:{...lineupView.filters,...update}})}
+     onDrill={({kind,key,event})=>{
+      const card=kind==='entity'?boardRows.cards.find(row=>row.entity.key===key):undefined;
+      const eventName=lineupEvents.get(event??key);
+      const ids=card?(event?card.events.get(event):card.ids):boardRows.other.get(key);
+      if(ids)openBrowsePopup([card?.entity.name,eventName].filter(Boolean).join(' · '),[...ids],lineupView.filters);
+     }}/>
+   </div>
+  </div>:<div className="template-workspace">
+   {byEntity?<TemplateEntityList entries={entityEntries} selected={entityKey}
+    onSelect={key=>changeView(current=>({...current,entityKey:key}))} disabled={selectionLocked}/>
+    :<TemplateEventList events={snapshot?.events??[]} groups={countGroups} selected={filters.event}
+     onSelect={event=>patch({event})} disabled={selectionLocked}/>}
    <div className="template-results">
     <div className="template-result-heading">
      <div className="template-result-summary"><h2>{byEntity?(entity?.name??'全部实体'):snapshot?.events.find(event=>event.id===filters.event)?.name??'全部模板'}</h2>
@@ -1114,29 +1519,48 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
        <button key={field} type="button" disabled={selectionLocked||batchConflict}
         title={batchConflict?'选中的模板组包含同步冲突，请先解决冲突。':undefined}
         onClick={()=>setBatchMetadata(field)}>批量添加{templateMetadataLabels[field]}</button>)}
-      {!fileMode&&!legacyMode&&<button type="button" disabled={selectionLocked||!groups.length} onClick={()=>setFileExport({})}>导出当前筛选</button>}
+      {compact&&editable&&selectedGroups.length>0&&<>
+       <button type="button" disabled={busy||batchConflict||selectedGroups.every(group=>group.ignored)}
+        onClick={()=>void changeSelectedGroups('ignore')}>批量忽略</button>
+       {canManage&&<button type="button" className="danger" disabled={busy||batchConflict||batchFixed}
+        title={batchFixed?'请先取消所选模板组中的固定话术。':undefined}
+        onClick={()=>void changeSelectedGroups('delete')}>批量删除</button>}
+      </>}
+      {!legacyMode&&<button type="button" disabled={selectionLocked||!groups.length} onClick={()=>setFileExport({scope:'filtered'})}>导出当前筛选</button>}
       {!!selectedGroups.length&&<button type="button" disabled={selectionLocked} onClick={()=>changeView(current=>({...current,selected:new Set()}))}>清除选择（{selectedGroups.length}）</button>}
      </div>
     </div>
     {!compact&&groups.length>0?<ReadingCards cardSearch>{resultsList}</ReadingCards>:resultsList}
    </div>
   </div>}
+  {browsePopup&&<TemplateBrowsePopup key={browsePopup.key} title={browsePopup.title} error={error||undefined}
+   busy={!!(selectionLocked||revisionGroup||feedback||jsonGroup||fileExport||importOpen||proposals)}
+   onClose={()=>setBrowsePopup(undefined)}>
+   <TemplateUtteranceVisibility.Provider value={browsePopup.visibility}>
+    {relatedDisplayRows(browsePopup.ids.flatMap(id=>{
+     const group=relatedAvailable.get(id);return group?[group]:[];
+    }),relatedAvailable,browsePopup.parents).rows.map(group=>renderGroup(group,browsePopup.key))}
+   </TemplateUtteranceVisibility.Provider>
+  </TemplateBrowsePopup>}
   {showDetail&&<section className="template-detail-panel" role="dialog" aria-modal="false" aria-label={detailGroup.name+(temporaryGroup?' · 临时提案卡':' · 模板详情')}>
    <header><strong>{detailGroup.name}</strong><button type="button" aria-label={'关闭'+detailGroup.name+'详情'} onClick={()=>{
     chooseProposal(detailGroup.id,undefined);setDetailId(null);setLocatedDetail(null);
    }}>关闭</button></header>
    <div className="template-form template-detail-body">
     {error&&<p className="error" role="alert">{error}</p>}
-    <ReadingCards cardSearch><div className="template-card-stack">{renderGroup(detailGroup)}</div></ReadingCards>
+    <ReadingCards cardSearch><div className="template-card-stack">{relatedDisplayRows([detailGroup],relatedAvailable,relatedParents).rows.map(group=>renderGroup(group))}</div></ReadingCards>
    </div>
   </section>}
   {batchMetadata&&<TemplateBatchMetadata field={batchMetadata} groups={selectedGroups} proposal={useProposalEditor}
    onClose={()=>setBatchMetadata(null)} onSave={values=>saveBatchMetadata(batchMetadata,values)}/>}
-  {feedback&&<TemplateFeedback groups={allGroups} revision={snapshot?.revision} onLocate={(group,utterance)=>{setFeedback(null);setLocatedDetail(null);setDetailId(group);setFocusTarget({group,utterance});}} target={feedback} admin={admin} onClose={()=>setFeedback(null)} onChanged={()=>setFeedbackRevision(n=>n+1)}/>}
+  {feedback&&(fileMode?feedback.group&&<LocalTemplateFeedback group={feedback.group} utteranceId={feedback.utteranceId}
+   comments={(file?.comments.get(feedback.group.id)??[]).filter(comment=>comment.utterance_id===feedback.utteranceId)}
+   onSave={body=>saveFileComment(feedback.group!,feedback.utteranceId,body)} onReload={()=>openFile(true,true)} onClose={()=>setFeedback(null)}/>
+   :<TemplateFeedback groups={allGroups} revision={snapshot?.revision} onLocate={(group,utterance)=>{setFeedback(null);setLocatedDetail(null);setDetailId(group);setFocusTarget({group,utterance});}} target={feedback} admin={admin} onClose={()=>setFeedback(null)} onChanged={()=>setFeedbackRevision(n=>n+1)}/>)}
   {help&&<TemplateHelp onClose={()=>setHelp(false)}/>}
-  {jsonGroup&&<TemplateJsonExport key={jsonGroup.id} groupId={jsonGroup.id} groupName={jsonGroup.name} onClose={()=>setJsonGroup(null)}/>}
+  {jsonGroup&&<TemplateJsonExport key={jsonGroup.id} groupId={jsonGroup.id} groupName={jsonGroup.name} file={fileMode?file:undefined} onClose={()=>setJsonGroup(null)}/>}
   {fileExport&&<TemplateFileExport groupName={fileExport.group?.name} counts={{selected:selectedGroups.length,filtered:groups.length}}
-   opened={opened} loadSource={scope=>exportSource(scope,fileExport.group)} onClose={()=>setFileExport(undefined)}
+   initialScope={fileExport.scope} opened={opened} loadSource={(scope,sameAsOpened)=>exportSource(scope,fileExport.group,sameAsOpened)} onClose={()=>setFileExport(undefined)}
    onBusy={value=>{onBusyChange?.(value);setBusy(value);}}
    onSaved={(handle,raw,sameAsOpened)=>{if(sameAsOpened)rememberFile({handle,raw});setFileExport(undefined);setNotice(`已导出到「${handle.name}」。`);}}/>}
   {revisionGroup&&snapshot&&<TemplateRevisions group={revisionGroup} revision={snapshot.revision} canRestore={editable} onClose={()=>setRevisionGroup(null)} onSaved={result=>{
@@ -1170,5 +1594,5 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     </footer>
    </div>
   </TemplateDialog>}
- </main>;
+ </main></TemplateUtteranceVisibility.Provider></TemplateMetadataChoices.Provider>;
 }

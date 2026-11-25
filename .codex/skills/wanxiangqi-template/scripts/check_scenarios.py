@@ -34,6 +34,8 @@ class PreferGroup:
 def check(config, cases, *, require_all=True):
     from src.python.condition import choose_utterance, evaluate_condition
 
+    if "解释事件" in config:
+        return check_v04(config, cases, require_all=require_all)
     catalog = config["condition_catalog"]
     groups = {(g["event_name"], g["name"]): g for g in config["groups"]}
     if not groups or not isinstance(cases, list) or not cases:
@@ -95,6 +97,57 @@ def check(config, cases, *, require_all=True):
     return errors
 
 
+def check_v04(config, cases, *, require_all=True):
+    from src.python.condition.v04 import load_library, matching_keys, winning_pool
+    from src.python.condition.v04_legacy import adapt
+
+    library = load_library(config)
+    groups = {(event, group["id"]): (pattern, group, expression)
+              for event, keys in library.items() for pattern, rows in keys.items()
+              for group, expression, _ in rows}
+    legacy_names = defaultdict(list)
+    for key, (_, group, _) in groups.items():
+        legacy_names[(key[0], group["name"])].append(key)
+    errors, coverage = [], defaultdict(set)
+    checked = set()
+    for case in cases:
+        key = tuple(case["group"])
+        if key not in groups:
+            named = legacy_names.get(key, [])
+            if len(named) > 1:
+                raise ValueError(f"{key}：同事件存在重名组，请用稳定组 ID")
+            if named:
+                key = named[0]
+        checked.add(key)
+        if key not in groups:
+            errors.append(f"{key}：发布库中没有该组")
+            continue
+        pattern, group, condition = groups[key]
+        event, state = case["event"], case["state"]
+        name = event["事件"]
+        if "参数" in event:
+            name, state = adapt(event, state)
+        kind, expected = case["kind"], case["matches"]
+        if kind not in ("positive", "negative", "missing") or type(expected) is not bool:
+            raise ValueError(f"{key}：用例类别或预期命中值无效")
+        matched = name == key[0] and bool(matching_keys([pattern], name, state)) and condition.evaluate(state) is True
+        _, offered = winning_pool(library, name, state)
+        lines = [row["text"] for row in offered if row["id"] == group["id"]]
+        desired = case.get("can_win", expected)
+        if matched != expected or bool(lines) != desired or "expected_utterances" in case and lines != case["expected_utterances"]:
+            errors.append(f"{key} / {case.get('reason', kind)}：实际命中 {matched}，实际可播 {lines}")
+            continue
+        coverage[key].add(kind)
+        if lines:
+            coverage[key].add("winner")
+    required = groups if require_all else checked
+    for key in required:
+        missing = {"positive", "winner", "negative", "missing"} - coverage[key]
+        if missing:
+            errors.append(f"{key}：缺少通过的用例 {', '.join(sorted(missing))}")
+    return errors
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("published", type=Path, help="GET /api/templates/published 的完整结果")
@@ -108,6 +161,8 @@ if __name__ == "__main__":
     errors = check(config, cases, require_all=not args.groups_in_cases)
     if errors:
         parser.exit(1, "\n".join(errors) + "\n")
-    print(f"已核对 {len(config['groups'])} 个可播组、{len(cases)} 项用例")
+    count = len(config["groups"]) if "groups" in config else sum(
+        len(groups) for keys in config["解释事件"].values() for groups in keys.values())
+    print(f"已核对 {count} 个可播组、{len(cases)} 项用例")
 
 

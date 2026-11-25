@@ -2,6 +2,7 @@
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 import hashlib
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
@@ -74,6 +75,23 @@ def due(root,clock,current=None):
     return s.get('window')!=window(clock,current)
 
 
+class OfficialScripts(HTMLParser):
+    def __init__(self, homepage, base):
+        super().__init__()
+        self.base = base
+        self.urls = {}
+        self.feed(homepage)
+
+    def handle_starttag(self, tag, attrs):
+        if tag != 'script':
+            return
+        src = dict(attrs).get('src')
+        if src:
+            url = urllib.parse.urljoin(self.base, src)
+            if re.search(r'/(cards|role)\.js$', urllib.parse.urlparse(url).path):
+                self.urls[url] = None
+
+
 def fetch_bundle(root,run_dir):
     import official
     from official_profiles import merge_values
@@ -91,10 +109,9 @@ def fetch_bundle(root,run_dir):
         wxq.atomic_json(run_dir/'sources.json',sources)
         return body
     homepage=get(official.OFFICIAL);endpoints=set()
-    for src in re.findall(r'<script[^>]+src=["\']([^"\']+)',homepage):
-        if re.search(r'/(cards|role)\.js$',src):
-            body=get(urllib.parse.urljoin(official.OFFICIAL,src))
-            endpoints.update(re.findall(r'["\']((?:https?:)?//[^"\'\s]+(?:\.js|\.json))(?:\?[^"\']*)?["\']',body))
+    for url in OfficialScripts(homepage, official.OFFICIAL).urls:
+        body=get(url)
+        endpoints.update(re.findall(r'["\']((?:https?:)?//[^"\'\s]+(?:\.js|\.json))(?:\?[^"\']*)?["\']',body))
     endpoints=sorted({'https:'+u if u.startswith('//') else u for u in endpoints
                       if 'oscard_new_' in u or ('info_article_' in u and '/prod/' in u)})
     if not endpoints:raise ValueError('官网结构变化：未发现数据入口')
@@ -225,9 +242,12 @@ def publish(root,buckets,run_dir,images=None,*,apply_notes=False):
         elif apply_notes:
             for row in records:
                 if row['type']=='player':profile_revisions[row['id']]=row['revision']
-        if changed:
+        old_cards={c['id']:c for c in json_cards(root)}
+        needs_backfill = any(eid not in old_cards or 'keywords' not in old_cards[eid] or
+                             (row['category']=='players' and 'player_skill_groups' not in old_cards[eid])
+                             for eid,row in merged.items())
+        if changed or needs_backfill:
             cards=normalize_cards(list(merged.values()))
-            old_cards={c['id']:c for c in json_cards(root)}
             affected={c['id'] for c in cards if any(semantic(c.get(k))!=semantic(old_cards.get(c['id'],{}).get(k)) for k in c if k!='retrieved_at')}
             save_json_cards(root,cards,refs,writer=stage,only_ids=affected)
         if images and images.get('_manifest'):

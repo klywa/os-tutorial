@@ -7,8 +7,24 @@ import type {CardStatus} from './cardCatalog';
 import {useAuth,useCapabilities} from './auth';
 import type {Season} from './seasons';
 import OfficialSync from './OfficialSync';
-import type {CardDetail,CardSummary,CardFilters} from './types';
+import type {CardDetail,CardSummary,CardFilters,PlayerSkillGroup} from './types';
 const initial:CardFilters={query:'',category:'',faction:'',tier:'',awakened:''};
+
+function PlayerSkills({groups}:{groups:PlayerSkillGroup[]}){
+  return <section><h3>棋手技能</h3>{groups.length?groups.map((group,i)=>
+    <section key={i}><h4>{group.name}</h4>
+      {group.level!=null&&<p className="muted">官网等级标记：{group.level}级</p>}
+      {group.references.length>0&&<p>关联卡牌：{group.references.map(ref=>ref.name).join('、')}</p>}
+      {group.cards.map(skill=><div className="card-skill" key={skill.id}>
+        <h5>{skill.name}</h5><p>{skill.effect||'官网未提供效果说明。'}</p>
+        {skill.acquisition&&<p>获得方式：{skill.acquisition}</p>}
+        {skill.stage&&<p>出现阶段：{skill.stage}</p>}
+        {skill.options.length>0&&<p>后续选项：{skill.options.map(ref=>ref.name).join('、')}</p>}
+      </div>)}
+    </section>):<p className="muted">未提供</p>}
+  </section>;
+}
+
 export default function Cards({season='S1'}:{season?:Season}={}){
   const {session}=useAuth(),capabilities=useCapabilities(),isPublic=session.mode==='public';
   const [tagEpoch,setTagEpoch]=useState(0);
@@ -33,7 +49,7 @@ export default function Cards({season='S1'}:{season?:Season}={}){
     {isPublic&&season==='S1'&&status&&<p className="muted" role="status">官网资料：{status.state==='running'?'正在检查':status.state==='failed'?'更新暂未完成':status.last_success?'已更新':'使用已发布快照'} · 上次成功：{status.last_success?new Date(status.last_success).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'}):'尚未自动同步'}{status.error&&<> · {status.error}</>}</p>}
     {error&&<div className="error" role="alert">{error}<button onClick={()=>void load()}>重试</button></div>}
     {season==='S1'&&session.role==='admin'&&<CardTagQueue epoch={tagEpoch} select={id=>{setFilters(initial);setSelected(id);}}/>}
-    <div className="card-filters"><input aria-label="搜索卡牌" placeholder="搜索名称、别名或效果" value={filters.query} onChange={e=>patch({query:e.target.value})}/>
+    <div className="card-filters"><input aria-label="搜索卡牌" placeholder="搜索名称、别名、效果或关键词" value={filters.query} onChange={e=>patch({query:e.target.value})}/>
       <select aria-label="卡牌类别" value={filters.category} onChange={e=>patch({category:e.target.value})}><option value="">全部类别</option>{Object.entries(categories).map(([id,name])=><option key={id} value={id}>{name}</option>)}</select>
       <select aria-label="卡牌阵营" value={filters.faction} onChange={e=>patch({faction:e.target.value})}><option value="">全部阵营</option>{factions.map(([id,name])=><option key={id} value={id}>{name}</option>)}</select>
       <select aria-label="英雄品阶" value={filters.tier} onChange={e=>patch({tier:e.target.value})}><option value="">全部品阶</option>{[1,2,3,4,5].map(n=><option key={n} value={n}>{n}品阶英雄</option>)}</select>
@@ -41,8 +57,9 @@ export default function Cards({season='S1'}:{season?:Season}={}){
       <button className="quiet" onClick={()=>setFilters(initial)}>清除筛选</button></div>
     {loading?<p className="empty">正在载入卡牌…</p>:<div className="card-layout"><aside className="card-list" aria-label="卡牌列表">{visible.map(c=><button key={c.id} className={'card-option '+(c.id===active?'selected':'')} onClick={()=>setSelected(c.id)}><CardImage card={c}/><strong>{c.name}{c.awakened?'（觉醒）':''}</strong><small>{categories[c.category]} · {c.faction.name}{c.tier!==null?` · ${c.tier}品阶`:''}</small></button>)}{!visible.length&&<p className="empty">{season!=='S1'&&!cards.length?'暂无 '+season+' 卡牌数据':'没有符合条件的卡牌。'}</p>}</aside>
       <main className="card-detail">{detailLoading?<p className="empty">正在载入详情…</p>:detail?<><div className="chips"><span className="badge jade">{categories[detail.category]}</span><span className="badge">{detail.faction.name}</span>{detail.tier!==null&&<span className="badge">{detail.tier}品阶</span>}</div><CardImage card={detail} large/><h2>{detail.name}{detail.awakened?'（觉醒）':''}</h2><section><h3>卡牌效果</h3><p>{detail.effect}</p></section>
+        {!!detail.keywords?.length&&<section><h3>关键词</h3><dl>{detail.keywords.map(term=><div key={term.name}><dt>{term.name}</dt><dd>{term.description||'官网未提供释义'}</dd></div>)}</dl></section>}
         {canShowCardTags(season,detail.category)&&<CardTags key={detail.id} id={detail.id} updated={()=>setTagEpoch(i=>i+1)}/>}
-        <section><h3>技能与等级强化</h3>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单独提供本觉醒卡技能；以下为对应普通英雄技能，不代表额外觉醒强化。</p>}{detail.skills.length?detail.skills.map(s=><div className="card-skill" key={s.id}><h4>{s.name}</h4><p>{s.effect||'未提供'}</p>{s.enhancements.map((e,i)=><p className="card-enhancement" key={i}><strong>{e.level}级</strong> {e.effect}</p>)}</div>):<p className="muted">未提供</p>}</section>
+        {detail.category==='players'?<PlayerSkills groups={detail.player_skill_groups??[]}/>:<section><h3>技能与等级强化</h3>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单独提供本觉醒卡技能；以下为对应普通英雄技能，不代表额外觉醒强化。</p>}{detail.skills.length?detail.skills.map(s=><div className="card-skill" key={s.id}><h4>{s.name}</h4><p>{s.effect||'未提供'}</p>{s.enhancements.map((e,i)=><p className="card-enhancement" key={i}><strong>{e.level}级</strong> {e.effect}</p>)}</div>):<p className="muted">未提供</p>}</section>}
         <section><h3>基础属性</h3>{Object.keys(detail.stats).length?<dl className="card-stats">{Object.entries(detail.stats).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>:<p className="muted">未提供</p>}</section>
         <section><h3>其他官方属性</h3>{Object.keys(detail.attributes).length?<dl>{Object.entries(detail.attributes).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{typeof v==='object'?JSON.stringify(v):String(v)}</dd></div>)}</dl>:<p className="muted">未提供</p>}</section>
         <footer className="muted">同步日期：{detail.retrieved_at?.slice(0,10)||'未提供'} · 游戏版本：{detail.version||'官网未标明'}<div>{detail.sources.map((s,i)=><a key={s} href={s} target="_blank" rel="noreferrer">官网数据 {i+1}　</a>)}</div></footer>

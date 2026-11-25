@@ -64,6 +64,54 @@ describe('template entity board',()=>{
   expect(html.match(/data-template-board-row=/g)).toHaveLength(2);
   expect(html).toContain('aria-label="选择模板buy"');
   expect(html).toContain('aria-label="查看模板target详情"');
+  expect(html).toMatch(/class="template-board-review" data-review="ai_generated">\s*AI生成[\s\S]*?<strong>购买英雄<\/strong><span class="template-board-parameters">同名<\/span>[\s\S]*?class="template-board-name"/);
   expect(html).not.toContain('提及整句');
+ });
+ it('shows v0.4 key values in order and the saved review status',()=>{
+  const event={id:'transfer',name:'解释为何转移装备',parameters:[]};
+  const group={...makeGroup('transfer',event.id),syntax_version:'0.4' as const,
+   extra_key:'吕布-*-冥王',review_status:'final_reviewed' as const};
+  const html=renderToStaticMarkup(<TemplateBoard groups={[group]} events={[event]} selected={new Set()}
+   onSelectionChange={vi.fn()} onDetail={vi.fn()}/>);
+  expect(html).toMatch(/data-review="final_reviewed">\s*复核完成[\s\S]*?<strong>转移装备<\/strong><span class="template-board-parameters">吕布 · 冥王<\/span>[\s\S]*?class="template-board-name"/);
+ });
+ it('keeps sibling events together and sorts condition lengths within each event',()=>{
+  const events=[
+   {id:'buy',name:'解释为何购买英雄',parameters:[]},
+   {id:'choose',name:'解释为何选择英雄',parameters:[]},
+   {id:'use',name:'解释为何使用无目标效果牌',parameters:[]},
+  ];
+  const groups=[makeGroup('long','buy','我方.等级 >= 100'),makeGroup('short','choose',''),
+   makeGroup('first','choose','我方.等级 >= 9'),makeGroup('second','buy','我方.等级 >= 8'),
+   makeGroup('other','use','')];
+  const html=renderToStaticMarkup(<TemplateBoard groups={groups} events={events} selected={new Set()}
+   onSelectionChange={vi.fn()} onDetail={vi.fn()} byEvent/>);
+  expect(html.match(/class="template-board-section"/g)).toHaveLength(2);
+  expect([...html.matchAll(/data-template-board-row="([^"]+)"/g)].map(row=>row[1]))
+   .toEqual(['second','long','short','first','other']);
+ });
+ it('keeps all 貂蝉 variants in one card before sorting by condition length',()=>{
+  const events=[
+   {id:'buy',name:'解释为何购买英雄',parameters:[]},
+   {id:'choose',name:'解释为何选择英雄',parameters:[]},
+   {id:'auction',name:'解释为何竞拍目标英雄（第1次拍卖）',parameters:[]},
+  ];
+  const row=(id:string,event:string,extra_key:string,expression:string)=>({
+   ...makeGroup(id,event,expression),syntax_version:'0.4' as const,extra_key,
+  });
+  const groups=[
+   row('diao-long','buy','貂蝉','我方.等级 <= 4 and 对局.当前回合数 >= 3'),
+   row('zhao','buy','赵云',''),
+   row('diao-auction','auction','貂蝉',''),
+   row('diao-short','buy','貂蝉','我方.等级 <= 4'),
+   row('diao-choice','choose','*','动作.选中.名称 == "貂蝉"'),
+  ];
+  const html=renderToStaticMarkup(<TemplateBoard groups={groups} events={events} selected={new Set()}
+   onSelectionChange={vi.fn()} onDetail={vi.fn()} byEvent/>);
+  const card=html.match(/<section class="template-board-section" aria-label="貂蝉">([\s\S]*?)<\/section>/)?.[1]??'';
+  const ids=(markup:string)=>[...markup.matchAll(/data-template-board-row="([^"]+)"/g)].map(row=>row[1]);
+  expect(ids(card)).toEqual(['diao-short','diao-long','diao-choice','diao-auction']);
+  expect(card).toMatch(/class="template-display-event" aria-label="购买英雄"[\s\S]*diao-short[\s\S]*diao-long[\s\S]*aria-label="选择英雄"/);
+  expect(html).toContain('aria-label="赵云"');
  });
 });

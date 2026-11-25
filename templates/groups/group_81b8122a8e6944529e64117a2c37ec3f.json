@@ -40,7 +40,7 @@
   ],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"雅典娜\" and (玩家.战场 has \"狂铁\" or 玩家.战场 has \"米莱狄\")",
+  "expression": "(动作.选中.名称 == \"雅典娜\" and (any(我方.场上英雄列表, .名称 == \"狂铁\") or any(我方.场上英雄列表, .名称 == \"米莱狄\")))",
   "ignored": true,
   "review_status": "ai_generated",
   "last_modified_by": {
@@ -318,5 +318,7 @@
         "skills_source": "card:5041"
       }
     }
-  }
+  },
+  "extra_key": "雅典娜",
+  "syntax_version": "0.4"
 }

@@ -1,16 +1,44 @@
-import {useRef,useState} from 'react';
+import {useRef,useState,type ReactNode} from 'react';
+import ConditionTextEditor from './ConditionTextEditor';
+import {EntityText} from './EntityCards';
+import {compactCondition,conditionBracketRanges,type ConditionEditingConfig} from './conditionEditing';
 
-type ExpressionEdit={value:string;scope:string;save:(value:string)=>Promise<void>};
-export function TemplateConditionPreview({expression,edit,expressionEdit,allowCopy=true,removed=false}:{expression:string;edit?:{label:string;disabled:boolean;onClick:()=>void};expressionEdit?:ExpressionEdit;allowCopy?:boolean;removed?:boolean}){
+type ExpressionEdit={value:string;save:(value:string)=>Promise<void>};
+function ConditionRanges({value}:{value:string}){
+ const source=compactCondition(value)||'无条件限制';
+ const {ranges}=conditionBracketRanges(source);
+ const stack:{start:number;end:number;children:ReactNode[]}[]=[{start:0,end:Infinity,children:[]}];
+ let cursor=0;
+ function append(end:number){
+  if(end>cursor)stack.at(-1)?.children.push(<EntityText inline key={cursor}>{source.slice(cursor,end)}</EntityText>);
+  cursor=end;
+ }
+ function pop(){
+  const frame=stack.at(-1)!;append(frame.end+1);stack.pop();
+  stack.at(-1)?.children.push(<span key={frame.start} className="condition-bracket-range">{frame.children}</span>);
+ }
+ for(const {start,end} of ranges){
+  while(stack.length>1&&stack.at(-1)!.end<start)pop();
+  append(start);
+  stack.push({start,end,children:[]});
+ }
+ while(stack.length>1)pop();
+ append(source.length);
+ return <>{stack[0].children}</>;
+}
+export function TemplateConditionPreview({expression,edit,expressionEdit,allowCopy=true,removed=false,config={}}:{expression:string;edit?:{label:string;disabled:boolean;onClick:()=>void};expressionEdit?:ExpressionEdit;allowCopy?:boolean;removed?:boolean;config?:ConditionEditingConfig}){
  const output=useRef<HTMLDivElement>(null),trigger=useRef<HTMLButtonElement>(null),[message,setMessage]=useState('');
  const [draft,setDraft]=useState<(ExpressionEdit&{text:string})|null>(null);
  const [saving,setSaving]=useState(false),[error,setError]=useState('');
+ const formatted=<ConditionRanges value={expression}/>;
+ function begin(){if(expressionEdit&&!edit?.disabled){setMessage('');setDraft({...expressionEdit,text:expressionEdit.value});}}
  function close(){setDraft(null);setError('');requestAnimationFrame(()=>trigger.current?.focus({preventScroll:true}));}
  async function save(){
   if(!draft||saving||edit?.disabled)return;
-  if(draft.text.trim()===draft.value.trim()){close();return;}
+  const {text,value}=draft;
+  if(text.trim()===value.trim()){close();return;}
   setSaving(true);setError('');
-  try{await draft.save(draft.text.trim());close();}
+  try{await draft.save(text.trim());close();}
   catch(error){setError((error as Error).message);}
   finally{setSaving(false);}
  }
@@ -26,26 +54,28 @@ export function TemplateConditionPreview({expression,edit,expressionEdit,allowCo
   }
  }
  return <div className="template-condition-preview"><h3>完整触发条件</h3>
-  {draft?<form className="template-expression-editor" onSubmit={e=>{e.preventDefault();void save();}}>
-   {draft.scope&&<div className="rule-expression" aria-label="模板组适用范围">{draft.scope}</div>}
-   <textarea aria-label="正式条件表达式" rows={3} spellCheck={false} autoFocus value={draft.text} readOnly={saving}
-    onChange={e=>setDraft({...draft,text:e.target.value})} onKeyDown={e=>{
-     if(e.key==='Escape'&&!saving){e.stopPropagation();close();}
+  {draft?<form className="template-expression-editor" data-template-dirty={draft.text!==draft.value||saving?true:undefined} onSubmit={e=>{e.preventDefault();void save();}}>
+   <ConditionTextEditor label="正式条件表达式" rows={3} autoFocus value={draft.text} readOnly={saving} config={config}
+    onChange={text=>setDraft({...draft,text})} onEditorKeyDown={e=>{
+     if(e.key==='Escape'&&!saving){e.preventDefault();e.stopPropagation();close();}
      if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();void save();}
     }}/>
    <div className="template-condition-actions">
     <button type="button" disabled={saving} onClick={close}>取消</button>
     <button type="submit" className="primary" disabled={saving||edit?.disabled}>{saving?'保存中…':'保存条件'}</button>
+    {edit&&<button type="button" aria-label={edit.label} disabled={saving||edit.disabled} onClick={edit.onClick}>编辑模板组</button>}
    </div>
    {error&&<p role="alert" className="template-inline-error">{error}</p>}
   </form>:<div ref={output}>
-   {expressionEdit&&!removed?<button ref={trigger} type="button" className="rule-expression template-expression-edit-trigger"
-    aria-label="就地编辑完整触发条件" disabled={edit?.disabled}
-    onClick={()=>{setMessage('');setDraft({...expressionEdit,text:expressionEdit.value});}}>
-    {expression||'无条件限制'}
-   </button>:<output className="rule-expression">{removed?<><s>{expression}</s> <small>拟删除</small></>:expression||'无条件限制'}</output>}
+   {expressionEdit&&!removed?<div className="rule-expression template-expression-reading">
+    <button ref={trigger} type="button" className="template-expression-edit-trigger"
+     aria-label="就地编辑完整触发条件" disabled={edit?.disabled} onClick={begin}/>
+    <div className="template-expression-content" onClick={event=>{
+     if(event.target instanceof Element&&!event.target.closest('[role=button],button')&&window.getSelection()?.isCollapsed!==false)begin();
+    }}>{formatted}</div>
+   </div>:<output className="rule-expression">{removed?<><s>{formatted}</s> <small>拟删除</small></>:formatted}</output>}
   </div>}
-  {(edit||allowCopy&&expression)&&<div className="template-condition-actions">
+  {!draft&&(edit||allowCopy&&expression)&&<div className="template-condition-actions">
    {edit&&<button type="button" aria-label={edit.label} disabled={edit.disabled} onClick={edit.onClick}>编辑模板组</button>}
    {!draft&&allowCopy&&expression&&<button type="button" onClick={()=>void copy()}>复制完整条件</button>}
    {message&&<small role="status">{message}</small>}

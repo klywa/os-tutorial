@@ -4,6 +4,31 @@ import {projectProposalCard} from './templateProposalPreview';
 import {deriveTemplateEntities,resolveTemplateEntities,filterTemplateGroups,parseConditionValue,placeholderKeys,renderUtterance,groupDiffKeys,selectedGroupChange,semanticChanges,describeTemplateRecord,selectTemplateScope,loginWarningItems,type TemplateGroup,type TemplateWarning} from './templates';
 const common:TemplateGroup={id:'common',name:'通用',event_id:'buy',scope:{player_id:null,lineup_note_id:null},conditions:[{id:'c',parameter_key:'hero',operator:'eq',value:{id:'hero:1',name:'虞姬'}}],utterances:[{id:'u',text:'标题参与话术搜索'}],related_entities:[]};
 describe('template filtering and editing',()=>{
+ it('orders related events together and keeps custom events in their original order',()=>{
+  const events=['自定义乙','解释为何竞拍目标效果牌（第3次拍卖）','解释为何转移装备','解释为何上阵英雄',
+   '解释为何竞拍目标英雄（第2次拍卖）','解释为何穿戴装备','解释为何选择英雄','解释为何购买效果牌',
+   '解释为何购买英雄','解释为何选择效果牌','解释为何竞拍目标英雄（第1次拍卖）','解释为何铸造装备','自定义甲']
+   .map((name,index)=>({id:String(index),name,parameters:[]}));
+  expect(templates.orderTemplateEvents(events).map(event=>event.id))
+   .toEqual(['8','6','10','4','3','7','9','1','5','11','2','0','12']);
+ });
+ it('filters ignored groups and utterances by default and combines visibility with fixed and text filters',()=>{
+  const active={...common,utterances:[
+   {id:'fixed',text:'已固定话术',fixed:true},
+   {id:'normal',text:'普通话术'},
+   {id:'ignored',text:'已忽略话术',fixed:true,ignored:true},
+  ]};
+  const ignored={...active,id:'ignored-group',ignored:true};
+  const groups=[active,ignored,{...common,id:'normal-group'}];
+  const filters={event:'',player:'',lineup:'',query:''};
+  expect(filterTemplateGroups(groups,filters).map(group=>group.id)).toEqual(['common','normal-group']);
+  expect(filterTemplateGroups(groups,{...filters,onlyFixed:true})).toEqual([active]);
+  expect(filterTemplateGroups(groups,{...filters,onlyFixed:true,hideIgnored:false})).toEqual([active,ignored]);
+  expect(filterTemplateGroups(groups,{...filters,query:'已忽略话术'})).toEqual([]);
+  expect(filterTemplateGroups(groups,{...filters,query:'普通话术',onlyFixed:true})).toEqual([]);
+  expect(templates.visibleTemplateUtterances(active.utterances,{onlyFixed:true}).map(row=>row.id)).toEqual(['fixed']);
+  expect(templates.visibleTemplateUtterances(active.utterances,{onlyFixed:true,hideIgnored:false}).map(row=>row.id)).toEqual(['fixed','ignored']);
+ });
  it('previews only fields still in the proposal and keeps deleted utterances visible for review',()=>{
   const base={...common,tags:['基线'],utterances:[...common.utterances,{id:'remove',text:'待删'}]};
   const formal={...base,tags:['后来正式保存'],priority:8};
@@ -24,14 +49,12 @@ describe('template filtering and editing',()=>{
   expect(templates.appendTemplateMetadata([groups[0]],'batch',['原批次'])).toEqual([]);
   expect(groups[0].tags).toEqual(['技巧']);
  });
- it('copies a template into an independent editable draft and reserves a name in its event',()=>{
+ it('uses a stable copy name so equivalent copies can merge on save',()=>{
   const original:TemplateGroup={...common,ignored:true,version:'s1',mode:'万象大赛',tags:['技巧'],
    utterances:[{id:'u1',text:'第一句。',fixed:true},{id:'u2',text:'第二句。',ignored:true}],
    explanation_source:'正式卡牌库',condition_tree:{kind:'all',children:[]}};
-  const draft=templates.copyTemplateGroup(original,[
-   original,{...common,name:'通用（副本）'},{...common,event_id:'sell',name:'通用（副本 2）'},
-  ]);
-  expect(draft.name).toBe('通用（副本 2）');
+  const draft=templates.copyTemplateGroup(original);
+  expect(draft.name).toBe('通用（副本）');
   expect(draft.id).not.toBe(original.id);
   expect(draft.conditions[0].id).not.toBe(original.conditions[0].id);
   expect(draft.utterances.map(({id,...row})=>row)).toEqual([{text:'第一句。'},{text:'第二句。',ignored:true}]);
@@ -124,6 +147,20 @@ describe('template filtering and editing',()=>{
   expect(find('当前回合 ≥ 5，参与话术')).toEqual([]);
   expect(find('当前回合','sell')).toEqual([]);
  });
+ it('searches action values separately and combines both search fields',()=>{
+  const filters={event:'',player:'',lineup:'',query:''};
+  const group={...common,syntax_version:'0.4' as const,extra_key:'吕布-曹操-冥王',conditions:[],
+   expression:'我方.等级 >= 5',related_entities:[],utterances:[{id:'u',text:'提升承伤能力。'}]};
+  const find=(query:string,actionQuery:string)=>filterTemplateGroups([group],{...filters,query,actionQuery});
+  expect(find('承伤','曹操，冥王')).toEqual([group]);
+  expect(find('','曹操-冥王')).toEqual([group]);
+  expect(find('吕布','')).toEqual([]);
+  expect(find('','承伤')).toEqual([]);
+  expect(find('','我方.等级')).toEqual([]);
+  expect(find('输出','吕布')).toEqual([]);
+  expect(filterTemplateGroups([{...common,expression:'arg1 is "赵云"'}],{...filters,actionQuery:'赵云'})).toHaveLength(1);
+  expect(filterTemplateGroups([{...common,expression:'not (arg1 is "赵云")'}],{...filters,actionQuery:'赵云'})).toEqual([]);
+ });
  it('finds both rendered utterance text and the authored slot reference',()=>{
   const group={...common,conditions:[],utterances:[{id:'u',text:'先留{arg1.名称}，下轮再换'}]};
   const labels={utteranceBindings:{common:{'arg1.名称':['虞姬','李白']}}};
@@ -140,6 +177,15 @@ describe('template filtering and editing',()=>{
   expect(templates.mergeTemplateWriteSnapshot(current,result,['common']).utterance_bindings).toEqual(bindings);
   result.groups[0]={...group,expression:'arg1.名称 in ["亚瑟"]'};
   expect(templates.mergeTemplateWriteSnapshot(current,result,['common']).utterance_bindings?.common).toBeUndefined();
+ });
+ it('uses the latest canonical group after the formal write merges an edited source ID',()=>{
+  const untouched={...common,id:'untouched',expression:'玩家.等级 >= 4'};
+  const source={...common,id:'source',name:'待合并'};
+  const current={schema_version:3,revision:'original',events:[],groups:[common,source,untouched]};
+  const canonical={...common,utterances:[{id:'added',text:'刚合并的话术'}]};
+  const result={schema_version:3,revision:'updated',events:[],groups:[canonical,{...untouched,expression:undefined}],
+   merged_groups:{source:common.id}};
+  expect(templates.mergeTemplateWriteSnapshot(current,result,['source']).groups).toEqual([canonical,untouched]);
  });
  it('keeps commas inside copied conditions and splits only top-level search terms',()=>{
   const target=JSON.stringify({类型:'单位',名称:'甲"，乙'});

@@ -2,6 +2,7 @@ import {useMemo} from 'react';
 import rawCatalog from '../../src/condition/catalog.json?raw';
 import {listPaths,type ConditionCatalog} from './templateRules';
 import {utteranceReferences,type TemplateEvent} from './templates';
+import {v04Paths} from './templateV04';
 
 const defaultCatalog:ConditionCatalog=JSON.parse(rawCatalog);
 const commonPaths=['玩家.主C','对局.当前对手.主C'];
@@ -18,15 +19,15 @@ export function invalidDirectPaths(text:string,event?:TemplateEvent,catalog=defa
  });
 }
 
-export function TemplateUtteranceSlots({event,catalog=defaultCatalog,disabled,onInsert}:{
- event?:TemplateEvent;catalog?:ConditionCatalog;disabled?:boolean;onInsert:(path:string)=>void;
+export function TemplateUtteranceSlots({event,catalog=defaultCatalog,disabled,onInsert,v04=false}:{
+ event?:TemplateEvent;catalog?:ConditionCatalog;disabled?:boolean;onInsert:(path:string)=>void;v04?:boolean;
 }){
- const paths=useMemo(()=>listPaths(event,catalog).filter(({path,type})=>
+ const paths=useMemo(()=>v04?(event?v04Paths(event.name):[]):listPaths(event,catalog).filter(({path,type})=>
   path.includes('.')&&type.split('|').every(kind=>{
    const fields=catalog.types[catalog.aliases[kind]??kind];
    return fields?.名称==='string'||kind==='阵容'&&!!fields?.阵容名;
-  })).map(({path})=>path),[event,catalog]);
- const common=commonPaths.filter(path=>paths.includes(path));
+  })).map(({path})=>path),[event,catalog,v04]);
+ const common=(v04?['我方.主C.名称','对手.主C.名称']:commonPaths).filter(path=>paths.includes(path));
  const other=paths.filter(path=>!common.includes(path));
  return <>
   {common.map(path=><button key={path} type="button" disabled={disabled} onClick={()=>onInsert(path)}>{path}</button>)}

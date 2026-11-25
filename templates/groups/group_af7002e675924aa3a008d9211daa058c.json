@@ -14,11 +14,13 @@
   "utterances": [
     {
       "text": "狂铁每回合提升阿科米亚核心等级，是合适的单挂英雄。",
-      "id": "utterances_7b111e48b262441e84c9ad2140de5ec8"
+      "id": "utterances_7b111e48b262441e84c9ad2140de5ec8",
+      "fixed": true
     },
     {
       "id": "utterance_dbb51034-8b88-4dba-80fe-30637c9535b7",
-      "text": "狂铁效果能实现每回合自动成长，很适合作为前期单挂英雄。"
+      "text": "狂铁效果能实现每回合自动成长，很适合作为前期单挂英雄。",
+      "fixed": true
     }
   ],
   "id": "group_af7002e675924aa3a008d9211daa058c",
@@ -27,7 +29,7 @@
   "related_entities": [],
   "priority": 0,
   "editor_mode": "text",
-  "expression": "arg1 is \"狂铁\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+  "expression": "((动作.选中.名称 == \"狂铁\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 0)",
   "batch": [
     "自回归"
   ],
@@ -147,5 +149,7 @@
         "skills_source": "card:5031"
       }
     }
-  }
+  },
+  "extra_key": "狂铁",
+  "syntax_version": "0.4"
 }

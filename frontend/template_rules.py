@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 SOURCE = ROOT / 'src/condition/catalog.json'
-RULE_FIELDS = {'expression', 'condition_tree', 'editor_mode', 'priority'}
+RULE_FIELDS = {'expression', 'condition_tree', 'editor_mode', 'priority', 'syntax_version', 'extra_key', 'publication_hold'}
 EXPLANATION_PREFIX = '解释为何'
 REMINDER_CATEGORY = '针对与提醒'
 REMINDER_EVENT_IDS = {
@@ -216,6 +216,12 @@ def validate_rule(group, event):
     expr = group.get('expression')
     if not isinstance(expr,str) or len(expr)>100000 or type(group.get('priority',0)) is not int:
         raise ValueError('条件文本或优先级无效')
+    if 'publication_hold' in group and (not isinstance(group['publication_hold'],str) or not group['publication_hold'].strip()):
+        raise ValueError('暂停发布原因须为文本')
+    if group.get('syntax_version') is not None:
+        from template_v04 import validate_rule as validate_v04
+        validate_v04(group,event['name'])
+        return
     mode = group.get('editor_mode','text')
     if mode not in ('tree','text'): raise ValueError('条件编辑模式无效')
     if 'condition_tree' in group and group['condition_tree'] is not None:

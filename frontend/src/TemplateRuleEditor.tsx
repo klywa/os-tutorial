@@ -1,4 +1,5 @@
 import {TemplateConditionPreview} from './TemplateConditionPreview';
+import ConditionTextEditor from './ConditionTextEditor';
 import {useEffect,useId,useMemo,useRef,useState} from 'react';
 import {compatibleRight,completeTree,countPath,emptyTree,findPathOption,listPaths,members,newLeaf,numeric,operatorsFor,readCountFilter,renderRule,switchToText,type ConditionCatalog,type ConditionNode,type PathOption} from './templateRules';
 import type {TemplateEvent,TemplateGroup} from './templates';
@@ -77,7 +78,8 @@ export default function TemplateRuleEditor({draft,event,catalog,patch,preview}:{
   <button type="button" aria-pressed={!isText} onClick={()=>{if(isText){if(treeText!==text)setRestoring(true);else update(tree);}}}>可视化树</button>
   <button type="button" aria-pressed={isText} onClick={()=>{if(!isText){if(completeTree(tree))enterText();else setConfirmPartial(true);}}}>文本编辑</button></div>
   {confirmPartial&&!isText&&<div className="rule-restore"><p>条件树还有未填完的节点。切换后可继续编辑当前文本，恢复树稿时将使用最近一份完整条件树。</p><button type="button" onClick={enterText}>保留完整树稿并切换到文本</button><button type="button" onClick={()=>setConfirmPartial(false)}>继续填写条件树</button></div>}
-  {isText?<label>正式条件表达式<textarea value={text} rows={4} spellCheck={false} onChange={e=>patch({expression:e.target.value,conditions:[]})}/></label>:<Branch node={tree} paths={paths} catalog={catalog} onChange={update}/>}
+  {isText?<div><span>正式条件表达式</span><ConditionTextEditor key={event?.id} label="正式条件表达式" value={text}
+   config={{event,catalog}} onChange={expression=>patch({expression,conditions:[]})}/></div>:<Branch node={tree} paths={paths} catalog={catalog} onChange={update}/>}
   <TemplateConditionPreview expression={preview}/>
   {/\.标签|\.计数\s*\(\s*标签/.test(text)&&<p className="muted">请逐一核对命中标签的卡牌和形态，确认提供者、受益者和触发时机都符合整句话。</p>}
   {restoring&&<div className="rule-restore"><h4>恢复最近的树稿？</h4><p>恢复后将使用树稿生成的表达式。</p><div><section><strong>当前正式文本</strong><pre>{text||'无条件限制'}</pre></section><section><strong>恢复后的条件</strong><pre>{treeText||'无条件限制'}</pre></section></div><button type="button" onClick={()=>update(tree)}>确认恢复树稿</button><button type="button" onClick={()=>setRestoring(false)}>保留当前文本</button></div>}

@@ -1,6 +1,7 @@
 """Shared identity and merge rules for template-group editing."""
 from copy import deepcopy
 from difflib import SequenceMatcher
+import ast
 import json
 import re
 import uuid
@@ -62,8 +63,94 @@ def _expression(group, event):
     return rules.editor_rule(group, event).get('expression', '') if event else ''
 
 
+def _boolean_signature(operator, parts):
+    return operator, tuple(sorted(term for part in parts for term in (
+        part[1] if part[0] == operator else (part,))))
+
+
+def _v04_signature(node):
+    if isinstance(node, ast.BoolOp):
+        return _boolean_signature(type(node.op).__name__, map(_v04_signature, node.values))
+    return 'atom', ast.dump(node)
+
+
+def _legacy_signature(expression):
+    expression = _strip_outer(expression.strip())
+    for operator in ('or', 'and'):
+        parts = _parts(expression, operator)
+        if len(parts) > 1:
+            return _boolean_signature(operator, map(_legacy_signature, parts))
+    return 'atom', tuple((kind, repr(value)) for kind, value, _ in _tokens(expression) if kind != 'end')
+
+
+def formal_merge_key(group, event, entities, notes):
+    from template_package import effective_expression
+    from template_v04 import compile_expression, effective_expression as effective_v04
+    from templates_schema import group_season
+
+    scope = group['scope']
+    player = entities.get(scope['player_id'], {}).get('name')
+    lineup = notes.get(scope['lineup_note_id'], {}).get('title')
+    if (scope['player_id'] and not player) or (scope['lineup_note_id'] and not lineup):
+        return None
+    display = {'player': player, 'lineup': lineup}
+    if group.get('syntax_version') == '0.4':
+        condition = effective_v04(display, group['expression'])
+        node = compile_expression(event['name'], condition).node
+        rule = _v04_signature(node) if node is not None else None
+    else:
+        expression = rules.editor_rule(group, event, entities).get('expression', '')
+        rule = _legacy_signature(effective_expression(display, expression))
+    return (group['event_id'], group['name'].strip(), group.get('syntax_version'), group.get('extra_key'), rule,
+            group_season(group), group.get('mode', ''), bool(group.get('ignored')),
+            group.get('publication_hold'))
+
+
+def merge_formal_group(target, source):
+    """Keep the first group and record where each source utterance moved."""
+    from json_store import digest
+
+    if source.get('priority', 0) > target.get('priority', 0):
+        target['priority'] = source['priority']
+    rows = target['utterances']
+    ids = {row['id'] for row in rows}
+    by_text = {}
+    for row in rows:
+        by_text.setdefault(row['text'], row)
+    moved = {}
+    new_speech = False
+    for original in source['utterances']:
+        uid, text = original['id'], original['text']
+        existing = by_text.get(text)
+        if existing is not None:
+            if original.get('fixed'):
+                new_speech |= bool(existing.get('ignored'))
+                existing['fixed'] = True
+                existing.pop('ignored', None)
+            elif existing.get('ignored') and not original.get('ignored'):
+                existing.pop('ignored', None)
+                new_speech = True
+            moved[uid] = existing['id']
+            continue
+        row = deepcopy(original)
+        while row['id'] in ids:
+            row['id'] = 'utterance_' + digest([source['id'], row['id'], text])[:32]
+        ids.add(row['id'])
+        by_text[text] = row
+        rows.append(row)
+        moved[uid] = row['id']
+        new_speech |= not row.get('ignored')
+    if new_speech:
+        target['review_status'] = None
+        target.pop('reviewed_by', None)
+        target.pop('reviewed_at', None)
+        if 'last_modified_by' in source:
+            target['last_modified_by'] = deepcopy(source['last_modified_by'])
+    return moved
+
+
 def used_parameters(group, event):
-    if not event:
+    if not event or group.get('syntax_version')=='0.4':
         return set()
     tokens = list(_tokens(_expression(group, event)))
     paths = {value for index, (kind, value, _) in enumerate(tokens)
@@ -101,6 +188,8 @@ def _bindings(expression, keys):
 def identity_changed(before, after, old_event, new_event):
     if before['event_id'] != after['event_id']:
         return True
+    if before.get('syntax_version')=='0.4' or after.get('syntax_version')=='0.4':
+        return before.get('syntax_version')!=after.get('syntax_version') or before.get('extra_key')!=after.get('extra_key')
     old_parameters = {p['key']:p for p in (old_event or {}).get('parameters', [])}
     new_parameters = {p['key']:p for p in (new_event or {}).get('parameters', [])}
     used = used_parameters(before, old_event) | used_parameters(after, new_event)
@@ -150,7 +239,7 @@ def fork_direct_changes(current, changes):
 
 
 _MISSING = object()
-_RULE = ('expression','condition_tree','editor_mode','conditions')
+_RULE = ('expression','condition_tree','editor_mode','conditions','syntax_version','extra_key','publication_hold')
 _CONFLICT = '正式条件和提案修改了同一处，请对照两版条件后定稿。草稿已保留。'
 
 
@@ -218,6 +307,8 @@ def _merge_rule(base,current,draft,event,resolve):
     ancestor,saved,edited=({k:group[k] for k in _RULE if k in group} for group in (base,current,draft))
     if resolve or saved==ancestor or edited==ancestor or saved==edited:
         return edited if resolve else _merge_value(ancestor,saved,edited,_CONFLICT)
+    if any(group.get('syntax_version')=='0.4' for group in (base,current,draft)):
+        raise Conflict(_CONFLICT)
     if all('expression' not in group for group in (base,current,draft)):
         return {'conditions':_merge_sequence(base['conditions'],current['conditions'],draft['conditions'])}
     if all(group.get('editor_mode')=='tree' and group.get('condition_tree') for group in (base,current,draft)):

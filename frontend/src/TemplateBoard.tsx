@@ -1,7 +1,8 @@
 import {useEffect,useId,useRef,useState,type PointerEvent} from 'react';
 import {cardCategories} from './cardCatalog';
 import type {TemplateEntityEntry} from './templateEntityIndex';
-import type {TemplateEvent,TemplateGroup} from './templates';
+import {effectiveReviewStatus,fixedArguments,templateReviewLabel,visibleTemplateUtterances,type TemplateEvent,type TemplateGroup,type UtteranceVisibility} from './templates';
+import {templateDisplaySections} from './templateDisplayGroups';
 
 export {buildTemplateEntityIndex,type TemplateEntityEntry} from './templateEntityIndex';
 
@@ -53,7 +54,7 @@ function scrollingParent(board:HTMLElement){
  }
 }
 
-export default function TemplateBoard({groups,events,selected,onSelectionChange,onDetail,byEvent=false,selectionDisabled=false,entity}:{
+export default function TemplateBoard({groups,events,selected,onSelectionChange,onDetail,byEvent=false,selectionDisabled=false,entity,visibility={hideIgnored:false},scopeName}:{
  groups:TemplateGroup[];
  events:TemplateEvent[];
  selected:ReadonlySet<string>;
@@ -62,18 +63,13 @@ export default function TemplateBoard({groups,events,selected,onSelectionChange,
  byEvent?:boolean;
  selectionDisabled?:boolean;
  entity?:TemplateEntityEntry;
+ visibility?:UtteranceVisibility;
+ scopeName?:(id:string)=>string;
 }){
  const board=useRef<HTMLDivElement>(null),drag=useRef<Drag|null>(null),skipClick=useRef(false),scrollFrame=useRef(0);
- const eventNames=new Map(events.map(event=>[event.id,event.name]));
- const eventRows=new Map<string,TemplateGroup[]>();
- for(const group of groups){
-  const key=byEvent?group.event_id:'';
-  const rows=eventRows.get(key)??[];
-  rows.push(group);
-  eventRows.set(key,rows);
- }
- const sections=[...eventRows];
- const order=sections.flatMap(([,rows])=>rows.map(row=>row.id));
+ const eventsById=new Map(events.map(event=>[event.id,event]));
+ const sections=byEvent?templateDisplaySections(groups,events,scopeName):[{key:'',title:'',events:[{key:'',title:'',rows:groups}]}];
+ const order=sections.flatMap(section=>section.events.flatMap(event=>event.rows.map(row=>row.id)));
  const positions=new Map(order.map((id,index)=>[id,index]));
  useEffect(()=>()=>window.cancelAnimationFrame(scrollFrame.current),[]);
  function startDrag(event:PointerEvent<HTMLButtonElement>,id:string){
@@ -134,10 +130,19 @@ export default function TemplateBoard({groups,events,selected,onSelectionChange,
  }
  return <div className="template-board" ref={board} onPointerMove={moveDrag} onPointerUp={finishDrag}
   onPointerCancel={finishDrag} onLostPointerCapture={finishDrag}>
-  {sections.map(([event,rows])=><section key={event} className="template-board-section" aria-label={event?eventNames.get(event)??event:undefined}>
-   {event&&<h3>{eventNames.get(event)??event} <small>{rows.length}</small></h3>}
-   <ul>{rows.map(group=>{
+  {sections.map(({key,title,events})=>{
+   return <section key={key} className="template-board-section" aria-label={title||undefined}>
+   {title&&<h3>{title} <small>{events.reduce((count,event)=>count+event.rows.length,0)}</small></h3>}
+   {events.map(event=><div key={event.key} className="template-display-event" aria-label={event.title||undefined} role={event.title?'group':undefined}>
+   {event.title&&<h4>{event.title}</h4>}
+   <ul>{event.rows.map(group=>{
     const checked=selected.has(group.id),roles=entity?.roles.get(group.id);
+    const definition=eventsById.get(group.event_id);
+    const action=definition?.name.replace(/^解释为何\s*/u,'')??group.event_id;
+    const fixed=fixedArguments(group,definition);
+    const parameters=(group.syntax_version==='0.4'
+     ?(group.extra_key??'').split('-').filter(value=>value!=='*')
+     :definition?.parameters.map(parameter=>fixed.get(parameter.key))??[...fixed.values()]).filter(Boolean).join(' · ');
     return <li key={group.id} data-template-board-row={group.id} className={checked?'selected':undefined}>
      <button type="button" className="template-board-pick" data-template-board-pick={group.id} aria-label={'选择'+group.name}
       aria-pressed={checked} aria-description={roles?.join('、')} disabled={selectionDisabled} onPointerDown={e=>startDrag(e,group.id)}
@@ -155,15 +160,22 @@ export default function TemplateBoard({groups,events,selected,onSelectionChange,
        board.current?.querySelector<HTMLElement>('[data-template-board-pick="'+CSS.escape(next)+'"]')?.focus();
       }}>
       <span aria-hidden="true" className="template-board-check">{checked?'✓':''}</span>
+      <span className="template-board-prefix">
+       <small className="template-board-review" data-review={effectiveReviewStatus(group.review_status)??'unmarked'}>
+        {templateReviewLabel(group.review_status)}
+       </small>
+       <small className="template-board-event">
+        <strong>{action}</strong>{parameters&&<span className="template-board-parameters">{parameters}</span>}
+       </small>
+      </span>
       <span className="template-board-name" title={group.name}>{group.name}</span>
-      {!byEvent&&<small className="template-board-event">{eventNames.get(group.event_id)??group.event_id}</small>}
       {roles?.map(role=><small className="template-board-role" key={role} title={role}>{role}</small>)}
       {group.ignored&&<small className="template-ignored">已忽略</small>}
-      <small className="template-board-count">{group.utterances.length} 条话术</small>
+      <small className="template-board-count">{visibleTemplateUtterances(group.utterances,visibility).length} 条话术</small>
      </button>
      <button type="button" className="template-board-detail" aria-label={'查看'+group.name+'详情'} onClick={()=>onDetail(group.id)}>详情</button>
     </li>;
-   })}</ul>
-  </section>)}
+   })}</ul></div>)}
+  </section>;})}
  </div>;
 }

@@ -27,9 +27,11 @@ def _authority(actor):
         raise PermissionError('浏览者没有模板编辑或提案权限')
 
 
-def _records(snapshot,changes):
+def _records(snapshot,changes,aliases=None):
+    aliases=aliases or {}
     return {change['kind']+':'+change['id']:next((row for row in snapshot[change['kind']+'s']
-        if row['id']==change['id']),None) for change in changes}
+        if row['id']==(aliases.get(change['id'],change['id']) if change['kind']=='group' else change['id'])),None)
+        for change in changes}
 
 
 def _replace_base(base,change,record):
@@ -49,6 +51,18 @@ def _apply_review_status(record,status,actor):
 
 def _accepted_status(item):
     return 'partially_approved' if any(row.get('action')=='reject' for row in item['reviews']) else 'approved'
+
+
+def _approved_response(item, request):
+    review=next((row for row in item['reviews'] if row.get('request')==request), {})
+    return {**item, 'formal_write':review['formal_write']} if 'formal_write' in review else item
+
+
+def _formal_write(saved, previous_revision, changes, aliases):
+    return {'revision':saved['revision'],'previous_revision':previous_revision,
+            'changes':[{**change,**({'value':record} if record is not None else {})}
+                       for change,record in zip(changes,_records(saved,changes).values())],
+            **({'merged_groups':library.merged_group_ids(aliases)} if aliases else {})}
 
 
 def proposal_summary(item):
@@ -158,7 +172,7 @@ class TemplateProposals:
             request=json_store.digest([actor['username'],'approve',data])
             if (item['status']=='approved' and set(data)=={'proposal_revision'}
                 or any(r.get('request')==request for r in item['reviews'])):
-                return item
+                return _approved_response(item,request)
 
     def submit(self,actor,data,*,workflow_source=None,restored_from=None,prepare=None):
         _authority(actor)
@@ -169,9 +183,12 @@ class TemplateProposals:
             if prepare is not None:
                 if revision!=base['revision']:raise Conflict('模板库已更新，请刷新；草稿已保留')
                 changes=prepare(base)
+            inherited=set()
             if workflow_source=='editor':
                 changes=group_edit.fork_direct_changes(base,changes)
-            library.preview_changes(self.root,revision,changes,**self._entities())
+                changes,inherited=library.related_copy_changes(base,changes)
+            edit_targets=library.editor_utterance_targets(base,changes) if workflow_source=='editor' else set()
+            library.preview_changes(self.root,revision,changes,authorized_fixed=edit_targets|inherited,**self._entities())
             if not changes:raise ValueError('没有需要提交的模板修改')
             item={'id':uuid.uuid4().hex,'author':actor['username'],'status':'pending',
                   'created_at':_now(),'revision':revision,'changes':changes,
@@ -179,6 +196,10 @@ class TemplateProposals:
             item['author_role']=actor['role']
             if workflow_source:
                 item['workflow_source']=workflow_source
+            if inherited:
+                item['group_fixed_edits']={}
+                for gid,uid in sorted(inherited):
+                    item['group_fixed_edits'].setdefault(gid,[]).append(uid)
             if restored_from:
                 item['restored_from']=restored_from
             item['source']=text(data.get('source','proposal'),'来源',200)
@@ -204,7 +225,10 @@ class TemplateProposals:
                 'role':actor['role'],'body':text(data.get('body'),'提案讨论')})
             return self._save(conn,item)
 
-    def _finish_receipt(self,receipt):
+    def _finish_receipt(self,receipt,saved):
+        if receipt.get('aliases'):
+            latest=receipt['proposal']['reviews'][-1]
+            latest['formal_write']=_formal_write(saved,receipt['previous_revision'],receipt['changes'],receipt['aliases'])
         with closing(self._connection()) as conn:
             self._save(conn,receipt['proposal']);conn.commit()
         if receipt.get('needs_sync'):
@@ -229,9 +253,9 @@ class TemplateProposals:
             actual=_records(current,receipt['changes'])
             if actual!=receipt['after']:
                 if actual!=receipt['before']:raise Conflict('模板审批恢复发现新修改，请管理员核对')
-                library.apply(self.root,current['revision'],receipt['changes'],actor=receipt['actor'],manual=receipt.get('manual'),
-                    authorized_fixed={tuple(pair) for pair in receipt.get('authorized_fixed',[])},**self._entities())
-            self._finish_receipt(receipt)
+                current=library.apply(self.root,current['revision'],receipt['changes'],actor=receipt['actor'],manual=receipt.get('manual'),
+                    authorized_fixed={tuple(pair) for pair in receipt.get('authorized_fixed',[])},aliases=receipt.get('aliases'),**self._entities())
+            self._finish_receipt(receipt,current)
 
     def action(self,actor,pid,action,data,*,needs_sync=False):
         _authority(actor)
@@ -244,7 +268,7 @@ class TemplateProposals:
             with closing(self._connection()) as conn:item=self._read(conn,pid)
             if actor['role']!='admin' and item['author']!=actor['username']:raise PermissionError('不能操作其他人的提案')
             request=json_store.digest([actor['username'],action,data])
-            if any(r.get('request')==request for r in item['reviews']):return item
+            if any(r.get('request')==request for r in item['reviews']):return _approved_response(item,request)
             target={'approve':'approved','reject':'rejected','withdraw':'withdrawn','edit':'pending'}[action]
             if action!='edit' and item['status']==target and set(data)<= {'proposal_revision'}:return item
             if item['status']!='pending':raise Conflict('该模板提案已处理')
@@ -323,7 +347,9 @@ class TemplateProposals:
             if action=='edit':
                 edited={(c['kind'],c['id']):c for c in changes}
                 updated=[edited.get((c['kind'],c['id']),c) for c in item['changes']]
-                library.preview_changes(self.root,current['revision'],updated,**entities)
+                edit_targets=library.editor_utterance_targets(current,updated) if item.get('workflow_source')=='editor' else set()
+                edit_targets.update((gid,uid) for gid,rows in item.get('group_fixed_edits',{}).items() for uid in rows)
+                library.preview_changes(self.root,current['revision'],updated,authorized_fixed=edit_targets,**entities)
                 for change in changes:
                     key=change['kind']+':'+change['id']
                     _replace_base(item['base'],change,actual[key])
@@ -364,7 +390,12 @@ class TemplateProposals:
                         approved=deepcopy(actual['group:'+uid] or value)
                         approved_changes.append({**change,'value':approved})
                     _apply_review_status(approved,overrides[uid],actor)
-            projected=library.preview_changes(self.root,current['revision'],approved_changes,authorized_fixed=selected_fixed,**entities)
+            if item.get('workflow_source')=='editor':
+                selected_fixed.update(library.editor_utterance_targets(current,approved_changes,pin=True,explicit=selected_fixed))
+            projected,approved_changes,aliases,selected_fixed=library.approval_projection(
+                self.root,current['revision'],approved_changes,authorized_fixed=selected_fixed,
+                merge_groups=item.get('workflow_source')=='editor',**entities)
+            merged_groups=library.merged_group_ids(aliases)
             remainder=[]
             approved={(c['kind'],c['id']):c for c in changes}
             for index,original in enumerate(item['changes']):
@@ -372,7 +403,8 @@ class TemplateProposals:
                 if index not in indices or not complete_group and accepted!=original:remainder.append(original)
             updated=deepcopy(item)
             updated['reviews'].append({'action':'approve','operation':'approve_partial' if remainder else 'approve', 'role':actor['role'],'at':_now(),'by':actor['username'],'before':before,
-                'submitted':selected,'changes':merge_changes,'request':request,'after':_records(projected,merge_changes)})
+                'submitted':selected,'changes':merge_changes,'request':request,'after':_records(projected,merge_changes,merged_groups),
+                **({'merged_groups':merged_groups} if merged_groups else {})})
             # Untouched pending records retain the original ancestor: approving
             # one record must never silently rebase another stale suggestion.
             next_base=deepcopy(item['base'])
@@ -384,6 +416,7 @@ class TemplateProposals:
                 reviewed_by=actor['username'],reviewed_at=_now())
             receipt={'proposal':updated,'actor':actor['username'],'changes':approved_changes,'needs_sync':needs_sync,
                      'before':_records(current,approved_changes),'after':_records(projected,approved_changes),
+                     **({'aliases':aliases,'previous_revision':current['revision']} if aliases else {}),
                      **({'authorized_fixed':sorted(selected_fixed)} if selected_fixed else {}),
                      **({'manual':manual} if manual else {})}
             return self._apply_receipt(current,receipt,entities,include_write=data.get('return_write') is True)
@@ -392,17 +425,15 @@ class TemplateProposals:
         json_store.write_file(self.receipt,receipt)
         try:
             saved=library.apply(self.root,current['revision'],receipt['changes'],actor=receipt['actor'],manual=receipt.get('manual'),
-                authorized_fixed={tuple(pair) for pair in receipt.get('authorized_fixed',[])},**entities)
+                authorized_fixed={tuple(pair) for pair in receipt.get('authorized_fixed',[])},aliases=receipt.get('aliases'),**entities)
         except (ValueError,Busy,Conflict):
             # Validation and revision failures occur before the formal commit.
             self.receipt.unlink(missing_ok=True)
             raise
-        self._finish_receipt(receipt)
+        self._finish_receipt(receipt,saved)
         with closing(self._connection()) as conn:result=self._read(conn,receipt['proposal']['id'])
         if not include_write:return result
-        return {**result,'formal_write':{'revision':saved['revision'],'previous_revision':current['revision'],
-            'changes':[{**change,**({'value':record} if record is not None else {})}
-                       for change,record in zip(receipt['changes'],_records(saved,receipt['changes']).values())]}}
+        return {**result,'formal_write':_formal_write(saved,current['revision'],receipt['changes'],receipt.get('aliases'))}
 
     def _save_utterance_flag(self,actor,item,index,operation,request):
         import templates_schema as schema
@@ -421,6 +452,7 @@ class TemplateProposals:
         if row is None:
             raise Conflict('话术已不存在，请重新核对')
         field='ignored' if action=='ignore' else 'fixed'
+        library.check_utterance_flags(row, {**row,field:payload['value']})
         if payload['value']:row[field]=True
         elif field=='fixed':row[field]=False
         else:row.pop(field,None)
@@ -503,9 +535,12 @@ class TemplateProposals:
             if row is None:raise Conflict('话术已不存在，请重新核对')
             row['fixed']=fixed['value']
             allowed.add(row['id'])
+        editor_proposal=item.get('workflow_source')=='editor'
         if working:
+            edit_targets=library.editor_utterance_targets({'groups':[working]},
+                [{'kind':'group','action':'put','id':gid,'value':draft}]) if editor_proposal and not dropping else ()
             library.check_fixed_utterances({'groups':[working]},{'groups':[] if dropping else [draft]},
-                (gid,operation['fixed']['id']) if 'fixed' in operation else None)
+                (gid,operation['fixed']['id']) if 'fixed' in operation else None,authorized_fixed=edit_targets)
 
         resolve=operation.get('resolve_conditions')
         if resolve is not None and (actor['role']!='admin' or resolve!=current['revision']):
@@ -549,7 +584,8 @@ class TemplateProposals:
             if proposed and 'event' in operation:
                 validation_changes=[{'kind':'event','action':'put','id':proposed['id'],'value':proposed},
                                     *([change] if change else [])]
-            library.preview_changes(self.root,current['revision'],validation_changes,authorized_fixed=fixed_targets,**entities)
+            validation_targets=fixed_targets|library.editor_utterance_targets(current,validation_changes) if editor_proposal else fixed_targets
+            library.preview_changes(self.root,current['revision'],validation_changes,authorized_fixed=validation_targets,**entities)
             if proposed and 'event' in operation:
                 remaining=[row for row in remaining if not (row['kind']=='event' and row['id']==draft_event_id)]
                 remaining.append({'kind':'event','action':'put','id':draft_event_id,'value':proposed})
@@ -585,18 +621,25 @@ class TemplateProposals:
                 approved.append({**change,'value':materialized})
             if materialized is not None:
                 _apply_review_status(materialized,desired,actor)
-        projected=library.preview_changes(self.root,current['revision'],approved,authorized_fixed=fixed_targets,**entities)
+        if editor_proposal:
+            fixed_targets.update(library.editor_utterance_targets(current,approved,pin=True,explicit=fixed_targets))
+        projected,approved,aliases,fixed_targets=library.approval_projection(
+            self.root,current['revision'],approved,authorized_fixed=fixed_targets,merge_groups=editor_proposal,**entities)
+        merged_groups=library.merged_group_ids(aliases)
         for row in dependencies:
             actual_event=_records(projected,[row])['event:'+row['id']]
             pending=pending_events.get(row['id'])
             if pending and pending[1]['value']==actual_event:
                 remaining.remove(pending[1])
             _replace_base(item['base'],row,actual_event)
-        review.update(operation='approve_partial' if remaining else 'approve',after=_records(projected,changes))
+        review.update(operation='approve_partial' if remaining else 'approve',after=_records(projected,changes,merged_groups))
+        if merged_groups:
+            review['merged_groups']=merged_groups
         item['reviews'].append(review)
         item.update(changes=remaining,status='pending' if remaining else _accepted_status(item),reviewed_by=actor['username'],reviewed_at=_now())
         receipt={'proposal':item,'actor':actor['username'],'changes':approved,'needs_sync':needs_sync,
                  'before':_records(current,approved),'after':_records(projected,approved),
+                 **({'aliases':aliases,'previous_revision':current['revision']} if aliases else {}),
                  'authorized_fixed':sorted(fixed_targets)}
         return self._apply_receipt(current,receipt,entities,include_write=data.get('compact') is True)
 

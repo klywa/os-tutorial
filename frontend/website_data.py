@@ -39,7 +39,7 @@ def export_cards(root, staging):
     except (KeyError,ValueError):raise ValueError('卡牌资料无效，请先修复再发布')
     public_cards=[]
     for card in cards:
-        public_cards.append({**sanitize({k:deepcopy(card[k]) for k in ('id','name','category','aliases','effect','faction','tier','awakened','skills','skills_source','stats','attributes','retrieved_at','version') if k in card}),
+        public_cards.append({**sanitize({k:deepcopy(card[k]) for k in ('id','name','category','aliases','effect','faction','tier','awakened','keywords','player_skill_groups','skills','skills_source','stats','attributes','retrieved_at','version') if k in card}),
             'sources':[],'skills':sanitize(card.get('skills',[])),'stats':sanitize(card.get('stats',{}))})
     write(staging/'cards.json',public_cards)
     images=store.read(root/'entities/assets/index.json',{})

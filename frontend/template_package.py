@@ -115,7 +115,12 @@ def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None
         group['scope'] = {'player':_scope_name(original['scope']['player_id'],refs,'name'),
                           'lineup':_scope_name(original['scope']['lineup_note_id'],notes,'title')}
         group.update(rules.editor_rule(original,event,refs))
-        group['effective_expression'] = effective_expression(group['scope'], group['expression'])
+        if original.get('syntax_version')=='0.4':
+            from template_v04 import effective_expression as effective_v04
+            group['effective_expression'] = effective_v04(group['scope'], group['expression'])
+            group['utterances'] = deepcopy(original['utterances'])
+        else:
+            group['effective_expression'] = effective_expression(group['scope'], group['expression'])
         group.setdefault('priority',0)
         if not group['conditions']: group.pop('conditions')
         if original.get('related_entities'):
@@ -258,5 +263,12 @@ def decode(document, public, entities, notes, **kwargs):
     result = old_decode(doc,public,entities,notes,rule_fields=rule_fields,**kwargs)
     for group in result['groups']:
         group.update(extras[group['id']])
+        if any(row.get('syntax_version')=='0.4' for row in public['groups']) and not group.get('syntax_version'):
+            from template_v04 import catalog as catalog_v04, translate
+            event_name=all_events[group['event_id']]['name']
+            if event_name in catalog_v04()['events']:
+                group.update(translate(group,event_name, rules.library_catalog(all_events.values())))
+                if group.get('syntax_version')=='0.4':
+                    group.pop('condition_tree',None)
     return result
 

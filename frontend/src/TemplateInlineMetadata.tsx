@@ -1,9 +1,11 @@
-import {useRef,useState} from 'react';
+import {useContext,useRef,useState} from 'react';
+import MetadataSuggestions,{TemplateMetadataChoices,templateMetadataScope} from './MetadataSuggestions';
 
 export default function TemplateInlineMetadata({label,values,onSave,disabled=false,proposalPrevious}:{
  label:string;values:string[];onSave?:(values:string[])=>Promise<void>;disabled?:boolean;proposalPrevious?:string[];
 }){
  const [draft,setDraft]=useState<string[]|null>(null),[input,setInput]=useState('');
+ const choices=useContext(TemplateMetadataChoices)[label==='批次'?'batch':'tags'];
  const [pending,setPending]=useState<string[]|null>(null),[error,setError]=useState('');
  const trigger=useRef<HTMLButtonElement>(null),field=useRef<HTMLInputElement>(null);
  const composing=useRef(false);
@@ -45,7 +47,8 @@ export default function TemplateInlineMetadata({label,values,onSave,disabled=fal
  if(!onSave)return values.length>0||removed?.length
   ? <span className={className} role="group" aria-label={label}>{chips}{removed}</span>
   : null;
- return <span className={className} aria-busy={pending!==null}>
+ return <span className={className} aria-busy={pending!==null}
+  data-template-dirty={pending!==null||!!retry.current||draft!==null&&(!!input.trim()||JSON.stringify(draft)!==JSON.stringify(savingDraft.current?.values))?true:undefined}>
   {draft!==null?<span className="template-metadata-editor" role="group" aria-label={'编辑'+label}
    onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))void commit();}}
    onKeyDown={event=>{
@@ -61,6 +64,8 @@ export default function TemplateInlineMetadata({label,values,onSave,disabled=fal
     key={value} onClick={()=>{field.current?.focus();setDraft(draft.filter(item=>item!==value));}}>{value}<span aria-hidden="true">×</span></button>)}
    <input ref={field} autoFocus aria-label={'新增'+label} placeholder={'添加'+label} value={input} maxLength={40}
     onCompositionStart={()=>{composing.current=true;}} onCompositionEnd={()=>{composing.current=false;}} onChange={event=>setInput(event.target.value)}/>
+   <MetadataSuggestions scope={templateMetadataScope(label)} choices={choices.filter(value=>!draft.includes(value))}
+    query={input} label={'匹配'+label} onPick={value=>{setDraft([...draft,value]);setInput('');field.current?.focus();}}/>
   </span>:<button ref={trigger} type="button" className="template-metadata-trigger"
    aria-label={'编辑'+label+(shown.length?'：'+shown.join('、'):'')} title={'编辑'+label}
    disabled={disabled||pending!==null} onClick={begin}

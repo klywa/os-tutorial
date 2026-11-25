@@ -41,6 +41,19 @@ class EntityTests(unittest.TestCase):
 
 
 class PortableTests(unittest.TestCase):
+    def test_wording_brief_roundtrip_even_above_recommended_length(self):
+        original = library()
+        self.assertNotIn('wording_brief', portable.encode(original)['groups'][0])
+        original['groups'][0]['wording_brief'] = '💬' * 400
+        external = portable.encode(original)
+        self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'], original['groups'])
+        external['groups'][0]['wording_brief'] += '字'
+        self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'][0]['wording_brief'],
+                         '💬' * 400 + '字')
+        external['groups'][0]['wording_brief'] = []
+        with self.assertRaisesRegex(ValueError, '话术构思'):
+            portable.decode(external, original, CATALOG, {})
+
     def test_group_metadata_roundtrip_and_legacy_omission(self):
         original = library()
         fields = dict(version='s1', mode='万象大赛', tags=['技巧', '阵容'],

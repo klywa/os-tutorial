@@ -7,16 +7,17 @@ type Target=ReturnType<typeof previewTemplateFileExport>&{handle:LocalFileHandle
 type Props={
  groupName?:string;
  counts:{selected:number;filtered:number};
+ initialScope?:FileExportScope;
  opened?:{handle:LocalFileHandle;raw:string}|null;
- loadSource:(scope:FileExportScope)=>Promise<unknown>;
+ loadSource:(scope:FileExportScope,sameAsOpened:boolean)=>Promise<unknown>;
  onBusy:(busy:boolean)=>void;
  onClose:()=>void;
  onSaved:(handle:LocalFileHandle,raw:string,sameAsOpened:boolean)=>void;
 };
 const labels={add:'新增',replace:'覆盖',unchanged:'无变化'};
 
-export default function TemplateFileExport({groupName,counts,opened,loadSource,onBusy,onClose,onSaved}:Props){
- const [scope,setScope]=useState<FileExportScope>(counts.selected?'selected':counts.filtered?'filtered':'all');
+export default function TemplateFileExport({groupName,counts,initialScope,opened,loadSource,onBusy,onClose,onSaved}:Props){
+ const [scope,setScope]=useState<FileExportScope>(initialScope??(counts.selected?'selected':counts.filtered?'filtered':'all'));
  const [target,setTarget]=useState<Target|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
  const lock=useRef(false);
  function start(){lock.current=true;setBusy(true);setError('');onBusy(true);}
@@ -30,7 +31,7 @@ export default function TemplateFileExport({groupName,counts,opened,loadSource,o
    const expected=await readTemplateFile(handle);
    const sameAsOpened=!!opened&&(handle===opened.handle||(await handle.isSameEntry?.(opened.handle))===true);
    if(sameAsOpened&&expected!==opened?.raw)throw new Error('当前打开的文件已在其他地方修改，请重新读取后再导出。');
-   const document=await loadSource(scope);
+   const document=await loadSource(scope,sameAsOpened);
    setTarget({...previewTemplateFileExport(document,expected,mode),handle,expected,sameAsOpened});
   }catch(error){if((error as Error).name!=='AbortError')setError((error as Error).message);}
   finally{stop();}
