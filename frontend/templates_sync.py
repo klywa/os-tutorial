@@ -83,7 +83,8 @@ def _effective(tree):
     # dependent groups and their definitions together on publication.
     result={path:deepcopy(value) for path,value in tree.items() if path not in (_STATE,_META)}
     state=tree.get(_STATE,{})
-    if not isinstance(state,dict) or any(key not in {'tombstones','baselines','entity_archive','event_entity_archive','entity_bindings'} for key in state):
+    state_fields = {'tombstones', 'baselines', 'entity_archive', 'event_entity_archive', 'entity_bindings', 'syntax_version'}
+    if not isinstance(state, dict) or state.keys() - state_fields:
         raise ValueError('模板状态格式无效')
     meta={**tree.get(_META,{}),**state}
     if meta:result[_META]=meta
@@ -356,6 +357,8 @@ def _metadata(trees, *, preferred='left'):
     ordered=[trees[0],trees[2],trees[1]] if preferred=='left' else trees
     for tree in ordered:
         meta=tree.get('templates/library.meta.json',{})
+        if meta.get('syntax_version') == '0.4':
+            result['syntax_version'] = '0.4'
         for entry in meta.get('audit',[]):
             digest=_digest(entry)
             if digest not in seen:result['audit'].append(deepcopy(entry));seen.add(digest)
