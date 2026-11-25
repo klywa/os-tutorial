@@ -1,0 +1,691 @@
+{
+  "id": "4f26efaa73ca4490b5b7e3725ebc6dac",
+  "actor": "local",
+  "at": "2026-11-23T11:00:55.352170+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+      "value": {
+        "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+        "name": "有孙悟空时上韩信吃整备成长",
+        "scope": {
+          "player_id": null,
+          "lineup_note_id": null
+        },
+        "explanation_after": "移走孙悟空即失去这两项合计收益。仅承诺整备触发后的加级，普通及觉醒形态都不报固定数值。",
+        "explanation_before": "原始内容：围绕能触发整备与开团的英雄搭配，靠队友反复触发堆叠永久等级。\n知识或技巧详解：孙悟空整备提高闪现英雄等级；韩信具有闪现，且己方英雄每次触发整备或开团时，韩信另获永久等级。\n自然语言适用条件：韩信正在上场，孙悟空已经在场。\n正式条件：arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"\n30 字表达取舍：只保留孙悟空一轮整备带来两项加级的差异。",
+        "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）\n正式卡牌库：孙悟空（card:1671）\n正式卡牌库：孙悟空（card:1673）",
+        "mode": "万象大赛",
+        "tags": [
+          "技巧"
+        ],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙悟空在场，上韩信能从一次整备获得两份等级。",
+            "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+          },
+          {
+            "text": "孙悟空整备时，韩信靠闪现和自身效果各升一次级。",
+            "id": "utterances_0245c783a40241dda68398a4b6490768"
+          }
+        ],
+        "event_id": "os_e5391e165361858d",
+        "conditions": [],
+        "related_entities": [],
+        "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+        "editor_mode": "text",
+        "priority": 0,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1501": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+2。",
+              "faction": {
+                "id": "faction:dahe",
+                "name": "大河",
+                "official_id": 321
+              },
+              "id": "card:1501",
+              "name": "韩信",
+              "skills": [
+                {
+                  "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+150%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                      "level": 100
+                    }
+                  ],
+                  "id": 15000,
+                  "name": "国士无双"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "20%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "55/65",
+                "法术攻击力": 0,
+                "法术防御": 16,
+                "物理攻击力": 40,
+                "物理防御": 16
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1501"
+            },
+            "card:1503": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+4。",
+              "faction": {
+                "id": "faction:dahe",
+                "name": "大河",
+                "official_id": 321
+              },
+              "id": "card:1503",
+              "name": "韩信",
+              "skills": [
+                {
+                  "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+150%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                      "level": 100
+                    }
+                  ],
+                  "id": 15000,
+                  "name": "国士无双"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1501"
+            },
+            "card:1671": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+2。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1671",
+              "name": "孙悟空",
+              "skills": [
+                {
+                  "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+500%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围扩大至4格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 16700,
+                  "name": "大圣神威"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "20%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "25/45",
+                "法术攻击力": 0,
+                "法术防御": 16,
+                "物理攻击力": 40,
+                "物理防御": 16
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1671"
+            },
+            "card:1673": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+4。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1673",
+              "name": "孙悟空",
+              "skills": [
+                {
+                  "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+500%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围扩大至4格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 16700,
+                  "name": "大圣神威"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1671"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+        "name": "有孙悟空时上韩信吃整备成长",
+        "scope": {
+          "player_id": null,
+          "lineup_note_id": null
+        },
+        "explanation_after": "移走孙悟空即失去这两项合计收益。仅承诺整备触发后的加级，普通及觉醒形态都不报固定数值。",
+        "explanation_before": "原始内容：围绕能触发整备与开团的英雄搭配，靠队友反复触发堆叠永久等级。\n知识或技巧详解：孙悟空整备提高闪现英雄等级；韩信具有闪现，且己方英雄每次触发整备或开团时，韩信另获永久等级。\n自然语言适用条件：韩信正在上场，孙悟空已经在场。\n正式条件：arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"\n30 字表达取舍：只保留孙悟空一轮整备带来两项加级的差异。",
+        "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）\n正式卡牌库：孙悟空（card:1671）\n正式卡牌库：孙悟空（card:1673）",
+        "mode": "万象大赛",
+        "tags": [
+          "技巧"
+        ],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙悟空在场，上韩信能从一次整备获得两份等级。",
+            "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+          },
+          {
+            "text": "孙悟空整备时，韩信靠闪现和自身效果各升一次级。",
+            "id": "utterances_0245c783a40241dda68398a4b6490768"
+          },
+          {
+            "text": "1111111111",
+            "id": "utterances_44f9b3e999954bc8911acc56e9dee3ed",
+            "fixed": false,
+            "ignored": true
+          }
+        ],
+        "event_id": "os_e5391e165361858d",
+        "conditions": [],
+        "related_entities": [],
+        "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+        "editor_mode": "text",
+        "priority": 0,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1501": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+2。",
+              "faction": {
+                "id": "faction:dahe",
+                "name": "大河",
+                "official_id": 321
+              },
+              "id": "card:1501",
+              "name": "韩信",
+              "skills": [
+                {
+                  "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+150%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                      "level": 100
+                    }
+                  ],
+                  "id": 15000,
+                  "name": "国士无双"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "20%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "55/65",
+                "法术攻击力": 0,
+                "法术防御": 16,
+                "物理攻击力": 40,
+                "物理防御": 16
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1501"
+            },
+            "card:1503": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+4。",
+              "faction": {
+                "id": "faction:dahe",
+                "name": "大河",
+                "official_id": 321
+              },
+              "id": "card:1503",
+              "name": "韩信",
+              "skills": [
+                {
+                  "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+150%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                      "level": 100
+                    }
+                  ],
+                  "id": 15000,
+                  "name": "国士无双"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1501"
+            },
+            "card:1671": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+2。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1671",
+              "name": "孙悟空",
+              "skills": [
+                {
+                  "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+500%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围扩大至4格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 16700,
+                  "name": "大圣神威"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "20%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "25/45",
+                "法术攻击力": 0,
+                "法术防御": 16,
+                "物理攻击力": 40,
+                "物理防御": 16
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1671"
+            },
+            "card:1673": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+4。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1673",
+              "name": "孙悟空",
+              "skills": [
+                {
+                  "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+500%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围扩大至4格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 16700,
+                  "name": "大圣神威"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1671"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+        "name": "有孙悟空时上韩信吃整备成长",
+        "scope": {
+          "player_id": null,
+          "lineup_note_id": null
+        },
+        "explanation_after": "移走孙悟空即失去这两项合计收益。仅承诺整备触发后的加级，普通及觉醒形态都不报固定数值。",
+        "explanation_before": "原始内容：围绕能触发整备与开团的英雄搭配，靠队友反复触发堆叠永久等级。\n知识或技巧详解：孙悟空整备提高闪现英雄等级；韩信具有闪现，且己方英雄每次触发整备或开团时，韩信另获永久等级。\n自然语言适用条件：韩信正在上场，孙悟空已经在场。\n正式条件：arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"\n30 字表达取舍：只保留孙悟空一轮整备带来两项加级的差异。",
+        "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）\n正式卡牌库：孙悟空（card:1671）\n正式卡牌库：孙悟空（card:1673）",
+        "mode": "万象大赛",
+        "tags": [
+          "技巧"
+        ],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙悟空在场，上韩信能从一次整备获得两份等级。",
+            "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+          },
+          {
+            "text": "孙悟空整备时，韩信靠闪现和自身效果各升一次级。",
+            "id": "utterances_0245c783a40241dda68398a4b6490768"
+          }
+        ],
+        "event_id": "os_e5391e165361858d",
+        "conditions": [],
+        "related_entities": [],
+        "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+        "editor_mode": "text",
+        "priority": 0,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1501": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+2。",
+              "faction": {
+                "id": "faction:dahe",
+                "name": "大河",
+                "official_id": 321
+              },
+              "id": "card:1501",
+              "name": "韩信",
+              "skills": [
+                {
+                  "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+150%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                      "level": 100
+                    }
+                  ],
+                  "id": 15000,
+                  "name": "国士无双"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "20%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "55/65",
+                "法术攻击力": 0,
+                "法术防御": 16,
+                "物理攻击力": 40,
+                "物理防御": 16
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1501"
+            },
+            "card:1503": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "闪现\n每当你的英雄触发整备或开团效果时，韩信等级永久+4。",
+              "faction": {
+                "id": "faction:dahe",
+                "name": "大河",
+                "official_id": 321
+              },
+              "id": "card:1503",
+              "name": "韩信",
+              "skills": [
+                {
+                  "effect": "被动：韩信每第3次普攻击飞敌人1秒，造成160%物理攻击力的物理伤害，并且每击败1名敌军增加10%基础攻击速度。\n主动：韩信枪挑敌人造成击飞和100点物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+150%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "增加戳刺造成100+200%物理攻击力的物理伤害，若击败目标则立刻冲锋至下1个目标处并且挑飞目标，造成100+200%物理攻击力的物理伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能变为3段范围伤害，对主目标造成100+200%物理攻击力的物理伤害，对其他目标造成200点物理伤害，最后1段击飞周围1格敌人",
+                      "level": 100
+                    }
+                  ],
+                  "id": 15000,
+                  "name": "国士无双"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1501"
+            },
+            "card:1671": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+2。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1671",
+              "name": "孙悟空",
+              "skills": [
+                {
+                  "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+500%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围扩大至4格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 16700,
+                  "name": "大圣神威"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "20%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "25/45",
+                "法术攻击力": 0,
+                "法术防御": 16,
+                "物理攻击力": 40,
+                "物理防御": 16
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1671"
+            },
+            "card:1673": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+4。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:1673",
+              "name": "孙悟空",
+              "skills": [
+                {
+                  "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至100+500%物理攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围扩大至4格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 16700,
+                  "name": "大圣神威"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1671"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,723 @@
+{
+  "id": "16437de3720145339462c1c456fd0218",
+  "actor": "local",
+  "at": "2026-11-24T03:06:26.296983+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
+      "value": {
+        "name": "场上已有刘禅时买孙膑补施法成长",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation_after": "各英雄分别累计施法次数，两种等级来源不同，须同场。 购买英雄事件完整候选池实测：关键局面已满足（命中）；仅改变必要事实（未命中）；必要字段缺失（未命中）。播报 30 个非空白字符。",
+        "explanation_before": "来源：实际依据正式卡牌库「刘禅」（card:1141）、「刘禅（觉醒）」（card:1143）、「孙膑」（card:1181）、「孙膑（觉醒）」（card:1183）的卡面机制，并核对常小娥灵活4人组笔记中刘禅与孙膑的配合说明（来源定位中的「核心原理」n-362afd85fa4dcd25aa03 未提供正文，未直接使用）。用途：用于常小娥（player:24）「解释为何购买英雄」事件，在当前场上只有刘禅时向玩家播报购买孙膑的理由。自然语言条件及正式表达式：自然语言条件为常小娥灵活4人组购买孙膑，且当前场上只有1名英雄并为刘禅；正式条件为 arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"。话术取舍：仅保留一条可播放理由（30个非空白字符，控制在30字内）；按核验要点保留必要对象和因果，以「各英雄」统一主语体现分别累计施法次数，明确区分刘禅提供「临时等级」与孙膑提供「永久等级」的不同来源及「每3次」「同场后」的触发条件；省去已知的「购买」动作，因字数限制且普通/觉醒数值不同（临时等级2/4、永久等级+1/+2）未展开具体数值。",
+        "explanation_source": "正式卡牌库「刘禅」 · card:1141；正式卡牌库「刘禅（觉醒）」 · card:1143；正式卡牌库「孙膑」 · card:1181；正式卡牌库「孙膑（觉醒）」 · card:1183",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "各英雄施法从刘禅获临时等级，与孙膑同场后每3次再获永久等级。",
+            "id": "utterances_19d92d0466be4ba79d07ae450309444f"
+          }
+        ],
+        "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"",
+        "ignored": true,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            },
+            "card:1141": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1141",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/30",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1143": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1143",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1181": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1181",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 4,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "10/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 1,
+              "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+              "skills_source": "card:1181"
+            },
+            "card:1183": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1183",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1181"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "name": "场上已有刘禅时买孙膑补施法成长",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation_after": "各英雄分别累计施法次数，两种等级来源不同，须同场。 购买英雄事件完整候选池实测：关键局面已满足（命中）；仅改变必要事实（未命中）；必要字段缺失（未命中）。播报 30 个非空白字符。",
+        "explanation_before": "来源：实际依据正式卡牌库「刘禅」（card:1141）、「刘禅（觉醒）」（card:1143）、「孙膑」（card:1181）、「孙膑（觉醒）」（card:1183）的卡面机制，并核对常小娥灵活4人组笔记中刘禅与孙膑的配合说明（来源定位中的「核心原理」n-362afd85fa4dcd25aa03 未提供正文，未直接使用）。用途：用于常小娥（player:24）「解释为何购买英雄」事件，在当前场上只有刘禅时向玩家播报购买孙膑的理由。自然语言条件及正式表达式：自然语言条件为常小娥灵活4人组购买孙膑，且当前场上只有1名英雄并为刘禅；正式条件为 arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"。话术取舍：仅保留一条可播放理由（30个非空白字符，控制在30字内）；按核验要点保留必要对象和因果，以「各英雄」统一主语体现分别累计施法次数，明确区分刘禅提供「临时等级」与孙膑提供「永久等级」的不同来源及「每3次」「同场后」的触发条件；省去已知的「购买」动作，因字数限制且普通/觉醒数值不同（临时等级2/4、永久等级+1/+2）未展开具体数值。",
+        "explanation_source": "正式卡牌库「刘禅」 · card:1141；正式卡牌库「刘禅（觉醒）」 · card:1143；正式卡牌库「孙膑」 · card:1181；正式卡牌库「孙膑（觉醒）」 · card:1183",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "各英雄施法从刘禅获临时等级，与孙膑同场后每3次再获永久等级。",
+            "id": "utterances_19d92d0466be4ba79d07ae450309444f"
+          }
+        ],
+        "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            },
+            "card:1141": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1141",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/30",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1143": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1143",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1181": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1181",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 4,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "10/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 1,
+              "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+              "skills_source": "card:1181"
+            },
+            "card:1183": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1183",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1181"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "name": "场上已有刘禅时买孙膑补施法成长",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation_after": "各英雄分别累计施法次数，两种等级来源不同，须同场。 购买英雄事件完整候选池实测：关键局面已满足（命中）；仅改变必要事实（未命中）；必要字段缺失（未命中）。播报 30 个非空白字符。",
+        "explanation_before": "来源：实际依据正式卡牌库「刘禅」（card:1141）、「刘禅（觉醒）」（card:1143）、「孙膑」（card:1181）、「孙膑（觉醒）」（card:1183）的卡面机制，并核对常小娥灵活4人组笔记中刘禅与孙膑的配合说明（来源定位中的「核心原理」n-362afd85fa4dcd25aa03 未提供正文，未直接使用）。用途：用于常小娥（player:24）「解释为何购买英雄」事件，在当前场上只有刘禅时向玩家播报购买孙膑的理由。自然语言条件及正式表达式：自然语言条件为常小娥灵活4人组购买孙膑，且当前场上只有1名英雄并为刘禅；正式条件为 arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"。话术取舍：仅保留一条可播放理由（30个非空白字符，控制在30字内）；按核验要点保留必要对象和因果，以「各英雄」统一主语体现分别累计施法次数，明确区分刘禅提供「临时等级」与孙膑提供「永久等级」的不同来源及「每3次」「同场后」的触发条件；省去已知的「购买」动作，因字数限制且普通/觉醒数值不同（临时等级2/4、永久等级+1/+2）未展开具体数值。",
+        "explanation_source": "正式卡牌库「刘禅」 · card:1141；正式卡牌库「刘禅（觉醒）」 · card:1143；正式卡牌库「孙膑」 · card:1181；正式卡牌库「孙膑（觉醒）」 · card:1183",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "各英雄施法从刘禅获临时等级，与孙膑同场后每3次再获永久等级。",
+            "id": "utterances_19d92d0466be4ba79d07ae450309444f"
+          }
+        ],
+        "id": "group_84008ef70f0e514e85415cdc4c4d2d1e",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "arg1 is \"孙膑\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"刘禅\"",
+        "ignored": true,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            },
+            "card:1141": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得2临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1141",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/30",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1143": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄释放技能时，该英雄获得4临时等级。",
+              "faction": {
+                "id": "faction:sanfen",
+                "name": "三分",
+                "official_id": 309
+              },
+              "id": "card:1143",
+              "name": "刘禅",
+              "skills": [
+                {
+                  "effect": "刘禅操作机关魔爪对当前目标敌人造成50+100%物理攻击力的物理伤害并眩晕1秒，自身获得100点护盾，持续4秒。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至300点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "护盾提升至400点，持续期间减免30%所受伤害",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾提升至600+5%最大生命值，眩晕3秒",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11400,
+                  "name": "机关魔爪"
+                }
+              ],
+              "stats": {},
+              "tier": 3,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1141"
+            },
+            "card:1181": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1181",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 4,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "10/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 1,
+              "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+              "skills_source": "card:1181"
+            },
+            "card:1183": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1183",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1181"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

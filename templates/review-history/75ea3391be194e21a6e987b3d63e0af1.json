@@ -1,0 +1,124 @@
+{
+  "id": "75ea3391be194e21a6e987b3d63e0af1",
+  "actor": "local",
+  "at": "2026-11-23T07:15:46.706929+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+      "value": {
+        "name": "有孙悟空时上韩信吃整备成长",
+        "scope": {
+          "player_id": null,
+          "lineup_note_id": null
+        },
+        "mode": "万象大赛",
+        "tags": [
+          "技巧"
+        ],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙悟空在场，上韩信能从一次整备获得两份等级。",
+            "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+          },
+          {
+            "text": "孙悟空整备时，韩信靠闪现和自身效果各升一次级。",
+            "id": "utterances_0245c783a40241dda68398a4b6490768"
+          }
+        ],
+        "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+        "event_id": "os_e5391e165361858d",
+        "conditions": [],
+        "related_entities": [],
+        "editor_mode": "text",
+        "priority": 0,
+        "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+        "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）\n正式卡牌库：孙悟空（card:1671）\n正式卡牌库：孙悟空（card:1673）",
+        "explanation_before": "原始内容：围绕能触发整备与开团的英雄搭配，靠队友反复触发堆叠永久等级。\n知识或技巧详解：孙悟空整备提高闪现英雄等级；韩信具有闪现，且己方英雄每次触发整备或开团时，韩信另获永久等级。\n自然语言适用条件：韩信正在上场，孙悟空已经在场。\n正式条件：arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"\n30 字表达取舍：只保留孙悟空一轮整备带来两项加级的差异。",
+        "explanation_after": "移走孙悟空即失去这两项合计收益。仅承诺整备触发后的加级，普通及觉醒形态都不报固定数值。",
+        "review_status": "initial_reviewed"
+      }
+    }
+  ],
+  "manual": {
+    "source": "review-status"
+  },
+  "before": {
+    "groups": [
+      {
+        "name": "有孙悟空时上韩信吃整备成长",
+        "scope": {
+          "player_id": null,
+          "lineup_note_id": null
+        },
+        "mode": "万象大赛",
+        "tags": [
+          "技巧"
+        ],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙悟空在场，上韩信能从一次整备获得两份等级。",
+            "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+          },
+          {
+            "text": "孙悟空整备时，韩信靠闪现和自身效果各升一次级。",
+            "id": "utterances_0245c783a40241dda68398a4b6490768"
+          }
+        ],
+        "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+        "event_id": "os_e5391e165361858d",
+        "conditions": [],
+        "related_entities": [],
+        "editor_mode": "text",
+        "priority": 0,
+        "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+        "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）\n正式卡牌库：孙悟空（card:1671）\n正式卡牌库：孙悟空（card:1673）",
+        "explanation_before": "原始内容：围绕能触发整备与开团的英雄搭配，靠队友反复触发堆叠永久等级。\n知识或技巧详解：孙悟空整备提高闪现英雄等级；韩信具有闪现，且己方英雄每次触发整备或开团时，韩信另获永久等级。\n自然语言适用条件：韩信正在上场，孙悟空已经在场。\n正式条件：arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"\n30 字表达取舍：只保留孙悟空一轮整备带来两项加级的差异。",
+        "explanation_after": "移走孙悟空即失去这两项合计收益。仅承诺整备触发后的加级，普通及觉醒形态都不报固定数值。",
+        "review_status": "final_reviewed",
+        "reviewed_by": "local",
+        "reviewed_at": "2026-11-23T07:15:46.281596+00:00"
+      }
+    ]
+  },
+  "after": {
+    "groups": [
+      {
+        "name": "有孙悟空时上韩信吃整备成长",
+        "scope": {
+          "player_id": null,
+          "lineup_note_id": null
+        },
+        "mode": "万象大赛",
+        "tags": [
+          "技巧"
+        ],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙悟空在场，上韩信能从一次整备获得两份等级。",
+            "id": "utterances_34dfada24eec46c1af2e91c1ba9e7ca4"
+          },
+          {
+            "text": "孙悟空整备时，韩信靠闪现和自身效果各升一次级。",
+            "id": "utterances_0245c783a40241dda68398a4b6490768"
+          }
+        ],
+        "id": "group_0262a32ac8815ab6b97c1ccc76012bc5",
+        "event_id": "os_e5391e165361858d",
+        "conditions": [],
+        "related_entities": [],
+        "editor_mode": "text",
+        "priority": 0,
+        "expression": "arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"",
+        "explanation_source": "personal/knowledge_tips.jsonl 第20行「韩信・使用技巧」\n正式卡牌库：韩信（card:1501）\n正式卡牌库：韩信（card:1503）\n正式卡牌库：孙悟空（card:1671）\n正式卡牌库：孙悟空（card:1673）",
+        "explanation_before": "原始内容：围绕能触发整备与开团的英雄搭配，靠队友反复触发堆叠永久等级。\n知识或技巧详解：孙悟空整备提高闪现英雄等级；韩信具有闪现，且己方英雄每次触发整备或开团时，韩信另获永久等级。\n自然语言适用条件：韩信正在上场，孙悟空已经在场。\n正式条件：arg1 is \"韩信\" and 玩家.战场 has \"孙悟空\"\n30 字表达取舍：只保留孙悟空一轮整备带来两项加级的差异。",
+        "explanation_after": "移走孙悟空即失去这两项合计收益。仅承诺整备触发后的加级，普通及觉醒形态都不报固定数值。",
+        "review_status": "initial_reviewed"
+      }
+    ]
+  }
+}
