@@ -1,13 +1,13 @@
 diff --git a/.codex/skills/wanxiangqi-knowledge/SKILL.md b/.codex/skills/wanxiangqi-knowledge/SKILL.md
-index 20d93bd93c434b9a8935fa71565dc482e75f732b..313518917f46574f3776b6c611928124b4d7b558 100644
+index f5a18433f0510047e19f0194f0852c40c9b76165..b715d062f74561dd93e0b053ac18341abdd5c44f 100644
 --- a/.codex/skills/wanxiangqi-knowledge/SKILL.md
 +++ b/.codex/skills/wanxiangqi-knowledge/SKILL.md
-@@ -76,7 +76,7 @@ description: 维护王者万象棋知识和数据，包括导入攻略、补证
+@@ -78,7 +78,7 @@ description: 维护王者万象棋知识和数据，包括导入攻略、补证
  
- 正文不引用其他笔记、卡牌库、模板库或外部资料，也不以链接或“以某处为准”代替必要说明。卡名可用作实例，须就地说明相关效果和用途。核验时可以查阅这些资料，来源和证据依照 schema6 保存在附件及审阅记录中。提交前逐篇脱离其他资料通读，检查读者能否仅凭本篇理解关键规则、执行步骤和取舍依据。
+ 所有新写或改写的知识笔记正文，包括章节、条目和摘要，按[Gemini 撰写流程](references/gemini-generation.md)生成。先核实事实、适用条件、证据和应保留的原文，再把有条理的材料交给 Gemini。当前模型管理笔记身份、JSON 结构、节点 ID、链接、证据绑定和人工保护，并独立审核结果。没有 CLI 或三次生成失败时由默认模型撰写，沿用同一审核标准。仅核对原文且无需改写时直接审核。
  
--生成、补充、改写或审阅中文知识正文时，默认调用 **humanizer-zh**：先读取该技能的 `SKILL.md`，用其流程润色拟送审正文，再执行本技能的[说人话 review](references/teaching-v4.md#提交前说人话-review)。本机位置为 `C:/Users/klywa/.agents/skills/humanizer-zh/SKILL.md`；其他环境按技能名称发现。它负责自然表达，本技能负责卡名、机制、条件和证据；不让润色改动 JSON 结构、ID、链接目标、人工保护或原始资料。技能不可用时明确说明，不声称已调用，不用禁词替换代替它。
-+生成、补充、改写或审阅中文知识正文时，默认调用 **humanizer-zh**：先读取该技能的 `SKILL.md`，用其流程润色拟送审正文，再执行本技能的[说人话 review](references/teaching-v4.md#提交前说人话-review)。按技能名称发现。它负责自然表达，本技能负责卡名、机制、条件和证据；不让润色改动 JSON 结构、ID、链接目标、人工保护或原始资料。技能不可用时明确说明，不声称已调用，不用禁词替换代替它。
+-审阅中文正文时默认调用 **humanizer-zh**，再执行本技能的[说人话 review](references/teaching-v4.md#提交前说人话-review)。本机位置为 `C:/Users/klywa/.agents/skills/humanizer-zh/SKILL.md`，其他环境按技能名称发现。用它提出具体润色意见，Gemini 路径把意见送回生成脚本，回退路径由默认模型改稿。保留准确的卡名、机制、条件与证据。技能不可用时明确说明并按说人话清单复核。
++审阅中文正文时默认调用 **humanizer-zh**，再执行本技能的[说人话 review](references/teaching-v4.md#提交前说人话-review)。按技能名称发现。用它提出具体润色意见，Gemini 路径把意见送回生成脚本，回退路径由默认模型改稿。保留准确的卡名、机制、条件与证据。技能不可用时明确说明并按说人话清单复核。
  
  写作、润色与提质前，先读[用玩家会说的话写操作](references/teaching-v4.md#用玩家会说的话写操作)及其中六组用户对照例。逐段检查自然表达、具体动作和必要原因；保留已经清楚的人工措辞，不能只做六句替换或把格式校验当成内容验收。
  
@@ -1660,20 +1660,22 @@ index 307a75be6098efc256b7a1810999b1a58b4bb837..5590d52aa16e589940d94359c4bde014
          self.root=Path(self.tmp.name)
          self.catalog=[{'id':'card:1','name':'英雄甲','category':'heroes','description':'旧技能','retrieved_at':'old','image_url':'old.png'},
 diff --git a/frontend/test_templates_http.py b/frontend/test_templates_http.py
-index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31bf5392702 100644
+index 4609b56526f91b4dd9d38c8425c86571242de428..97cc105bed38a36f14030ccbe2dc4d5d3c9ca7ef 100644
 --- a/frontend/test_templates_http.py
 +++ b/frontend/test_templates_http.py
-@@ -18,14 +18,14 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -18,15 +18,15 @@ class TemplateHttpTests(unittest.TestCase):
      def setUp(self):
          fixtures.PublicHttpTests.setUp(self)
          self.config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,'accounts':[
 -            {'username':'klywa','password':'aa2025','role':'admin'},
 -            {'username':'alice','password':'aa2025','role':'annotator'},
 -            {'username':'bob','password':'aa2025','role':'annotator'},
+-            {'username':'reviewer','password':'aa2025','role':'quality'},
 -            {'username':'reader','password':'aa2025','role':'viewer'}]}))
 +            {'username':'internal.example','password':'fixture-only-passphrase','role':'admin'},
 +            {'username':'alice','password':'fixture-only-passphrase','role':'annotator'},
 +            {'username':'bob','password':'fixture-only-passphrase','role':'annotator'},
++            {'username':'reviewer','password':'fixture-only-passphrase','role':'quality'},
 +            {'username':'reader','password':'fixture-only-passphrase','role':'viewer'}]}))
          self.http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda **kw:{'state':'pending'})
  
@@ -1683,7 +1685,7 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          self.assertEqual(code,200,data);self.cookie=headers['Set-Cookie'].split(';')[0]
  
      def test_guests_viewers_and_origin(self):
-@@ -36,12 +36,12 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -37,12 +37,12 @@ class TemplateHttpTests(unittest.TestCase):
          self.assertEqual(self.call('/os-tutorial/api/templates/proposals')[0],403)
          for suffix in ('changes','import/preview','import/commit','warnings/confirm','warnings/seen'):
              self.assertEqual(self.call('/os-tutorial/api/templates/'+suffix,'POST',{})[0],403)
@@ -1698,7 +1700,7 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          _, state, _=self.call(api)
          code, saved, _=self.call(api+'/changes','POST',{'revision':state['revision'],
              'changes':[{'kind':'group','action':'put','id':'example','value':group()}]})
-@@ -49,7 +49,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -50,7 +50,7 @@ class TemplateHttpTests(unittest.TestCase):
          request={'revision':saved['revision'],'group_id':'example','utterance_id':'line','fixed':True}
          self.user('alice')
          self.assertEqual(self.call(api+'/utterances/fixed','POST',request)[0],403)
@@ -1707,7 +1709,124 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          code, fixed, _=self.call(api+'/utterances/fixed','POST',request)
          self.assertEqual(code,200,fixed)
          self.assertTrue(fixed['groups'][0]['utterances'][0]['fixed'])
-@@ -72,7 +72,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -62,7 +62,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_related_copy_retains_fixed_and_ignored_through_direct_and_proposal_saves(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         _,state,_=self.call(api)
+         events={event['name']:event['id'] for event in state['events']}
+         source=dict(group(),event_id=events['解释为何购买英雄'],syntax_version='0.4',
+@@ -107,7 +107,7 @@ class TemplateHttpTests(unittest.TestCase):
+         code,data,_=save(state,proposed,related_copy_source=source['id'])
+         self.assertEqual(code,200,data)
+         proposal=data['proposal']
+-        self.user('klywa')
++        self.user('internal.example')
+         code,data,_=self.call(api+'/proposals/'+proposal['id']+'/approve','POST',{
+             'proposal_revision':proposal['proposal_revision'],'change_ids':[0],'group_editor':{}})
+         self.assertEqual(code,200,data)
+@@ -122,7 +122,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def check_inline_event_move(self, *, annotator):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         state=self.call(api)[1]
+         first,second='auction-first','auction-second'
+         events=[{'kind':'event','action':'put','id':gid,'value':{'id':gid,
+@@ -150,7 +150,7 @@ class TemplateHttpTests(unittest.TestCase):
+             proposal=state['proposal']
+             self.assertTrue(proposal['inline_trigger'])
+             self.assertEqual([row['id'] for row in proposal['changes']],[row['id'] for row in rows])
+-            self.user('klywa')
++            self.user('internal.example')
+             self.assertTrue(all(row['event_id']==first for row in self.call(api)[1]['groups']))
+             path=api+'/proposals/'+proposal['id']+'/approve'
+             approval={'proposal_revision':proposal['proposal_revision']}
+@@ -169,7 +169,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_formal_rename_merges_speech_and_transfers_utterance_comments(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         state=self.call(api)[1]
+         event=next(row['id'] for row in state['events'] if row['name']=='解释为何购买英雄')
+         first=dict(group('a','保留固定句。'),event_id=event,syntax_version='0.4',
+@@ -207,7 +207,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_formal_legacy_copy_with_identical_speech_keeps_review(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         state=self.call(api)[1]
+         original=group('legacy-original')
+         code,state,_=self.call(api+'/changes','POST',{'revision':state['revision'],'changes':[
+@@ -227,7 +227,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_formal_approval_returns_canonical_group_after_copy_merge(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         state=self.call(api)[1]
+         event=next(row['id'] for row in state['events'] if row['name']=='解释为何购买英雄')
+         other_event=next(row['id'] for row in state['events'] if row['name']=='解释为何选择英雄')
+@@ -247,7 +247,7 @@ class TemplateHttpTests(unittest.TestCase):
+         item=result['proposal']
+         self.assertEqual(item['changes'][0]['id'],'copy')
+         self.assertEqual(len(self.call(api)[1]['groups']),4)
+-        self.user('klywa')
++        self.user('internal.example')
+         approval=api+'/proposals/'+item['id']+'/approve'
+         request={'proposal_revision':item['proposal_revision'],'change_ids':[0],'group_editor':{},'compact':True}
+         code,result,_=self.call(approval,'POST',request)
+@@ -263,7 +263,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_editor_fixes_changed_text_and_can_edit_it_again(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         _, state, _=self.call(api)
+         def save(state,value):
+             code,result,_=self.call(api+'/changes','POST',{'revision':state['revision'],
+@@ -280,7 +280,7 @@ class TemplateHttpTests(unittest.TestCase):
+             self.assertEqual(state['groups'][0]['utterances'][0],{'id':'line','text':text,'fixed':True})
+         request={'revision':state['revision'],'group_id':'example','utterance_id':'line','fixed':False}
+         self.assertEqual(self.call(api+'/utterances/fixed','POST',request)[0],403)
+-        self.user('klywa')
++        self.user('internal.example')
+         code, state, _=self.call(api+'/utterances/fixed','POST',request)
+         self.assertEqual(code,200,state)
+         state=save(state,state['groups'][0])
+@@ -292,7 +292,7 @@ class TemplateHttpTests(unittest.TestCase):
+         self.assertEqual(code,200,result)
+         proposal=result['proposal']
+         self.assertFalse(self.call(api)[1]['groups'][0]['utterances'][0].get('fixed',False))
+-        self.user('klywa')
++        self.user('internal.example')
+         code,result,_=self.call(api+'/proposals/'+proposal['id']+'/approve','POST',
+             {'proposal_revision':proposal['proposal_revision']})
+         self.assertEqual(code,200,result)
+@@ -301,7 +301,7 @@ class TemplateHttpTests(unittest.TestCase):
+ 
+     def test_new_utterances_are_fixed_when_formally_saved(self):
+         api='/os-tutorial/api/templates'
+-        self.user('klywa')
++        self.user('internal.example')
+         def save(value):
+             state=self.call(api)[1]
+             code,result,_=self.call(api+'/changes','POST',{'revision':state['revision'],
+@@ -321,7 +321,7 @@ class TemplateHttpTests(unittest.TestCase):
+         value['utterances'].append({'id':'proposed','text':'经审批的新增话术。'})
+         proposal=save(value)['proposal']
+         self.assertEqual(len(self.call(api)[1]['groups'][0]['utterances']),3)
+-        self.user('klywa')
++        self.user('internal.example')
+         code,result,_=self.call(api+'/proposals/'+proposal['id']+'/approve','POST',
+             {'proposal_revision':proposal['proposal_revision']})
+         self.assertEqual(code,200,result)
+@@ -340,7 +340,7 @@ class TemplateHttpTests(unittest.TestCase):
          self.user('bob');self.assertEqual(self.call('/os-tutorial/api/templates/proposals')[1],[])
          self.assertEqual(self.call('/os-tutorial/api/templates/proposals/'+pid+'/approve','POST',{})[0],403)
          self.assertEqual(self.call('/os-tutorial/api/templates/proposals/'+pid+'/edit','POST',{})[0],403)
@@ -1716,7 +1835,7 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          proposal=self.call('/os-tutorial/api/templates/proposals')[1][0]
          proposal['changes'][0]['value']['utterances'][0]['text']='管理员确认用语。'
          code,edited,_=self.call('/os-tutorial/api/templates/proposals/'+pid+'/edit','POST',
-@@ -99,7 +99,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -367,7 +367,7 @@ class TemplateHttpTests(unittest.TestCase):
          state=self.call('/os-tutorial/api/templates')[1]
          data={'revision':state['revision'],'changes':[{'kind':'group','action':'put','id':'example','value':group()}]}
          item=self.call('/os-tutorial/api/templates/changes','POST',data)[1]['proposal']
@@ -1725,16 +1844,16 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          url='/os-tutorial/api/templates/proposals/'+item['id']+'/approve'
          accept={'proposal_revision':item['proposal_revision']}
          service=proposal_store(self.http)
-@@ -117,7 +117,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -385,7 +385,7 @@ class TemplateHttpTests(unittest.TestCase):
          self.assertEqual(len(self.call('/os-tutorial/api/templates/export')[1]['groups']),1)
  
      def test_import_preview_does_not_write_and_commit_rechecks(self):
 -        self.user('klywa')
 +        self.user('internal.example')
          document=self.call('/os-tutorial/api/templates/export')[1];document['groups']=[portable_group()]
+         document['note']='只保存在文件中的随手笔记'
          code,preview,_=self.call('/os-tutorial/api/templates/import/preview','POST',{'document':document})
-         self.assertEqual(code,200,preview);self.assertFalse(preview['errors'])
-@@ -131,7 +131,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -400,7 +400,7 @@ class TemplateHttpTests(unittest.TestCase):
          self.assertEqual(self.call(url,'POST',direct)[0],400)
          self.user('alice')
          self.assertEqual(self.call(url,'POST',{**direct,'reason':'测试'})[0],403)
@@ -1743,7 +1862,7 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          code,result,_=self.call(url,'POST',{**direct,'reason':'已独立核对'})
          self.assertEqual(code,200,result)
          gid=preview['changes'][0]['id']
-@@ -142,7 +142,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -413,7 +413,7 @@ class TemplateHttpTests(unittest.TestCase):
  
      def test_formal_comments_survive_delete_and_capture_admin_decisions(self):
          prefix='/os-tutorial/api/templates'
@@ -1752,7 +1871,7 @@ index 8d375314076da68e8c907d9977347a08908888d2..71dd4266e38df1384b2b7dbb5277c31b
          state=self.call(prefix)[1]
          row=group()
          code,state,_=self.call(prefix+'/changes','POST',{'revision':state['revision'],'changes':[{'kind':'group','action':'put','id':row['id'],'value':row}]})
-@@ -157,7 +157,7 @@ class TemplateHttpTests(unittest.TestCase):
+@@ -428,7 +428,7 @@ class TemplateHttpTests(unittest.TestCase):
          self.user('bob');self.assertEqual(self.call(path+'/reply','POST',{'body':'已复核'})[0],200)
          self.assertEqual(self.call(path+'/close','POST',{})[0],403)
          self.user('reader');self.assertEqual(self.call(prefix+'/comments')[0],403)
