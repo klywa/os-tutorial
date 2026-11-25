@@ -1,0 +1,24 @@
+{
+  "id": "os_b9276a29aaffc6ba",
+  "name": "解释为何选择效果牌",
+  "category": "解释类",
+  "parameters": [
+    {
+      "key": "arg1",
+      "name": "arg1",
+      "type": "text",
+      "dsl_type": "Array<效果牌>",
+      "id": "p_arg1"
+    },
+    {
+      "key": "arg2",
+      "name": "arg2",
+      "type": "entity",
+      "dsl_type": "效果牌",
+      "entity_categories": [
+        "effect-cards"
+      ],
+      "id": "p_arg2"
+    }
+  ]
+}

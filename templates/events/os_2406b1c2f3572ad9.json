@@ -1,0 +1,24 @@
+{
+  "id": "os_2406b1c2f3572ad9",
+  "name": "解释为何购买英雄",
+  "category": "解释类",
+  "parameters": [
+    {
+      "key": "arg1",
+      "name": "arg1",
+      "type": "entity",
+      "dsl_type": "英雄",
+      "entity_categories": [
+        "heroes"
+      ],
+      "id": "p_arg1"
+    },
+    {
+      "key": "arg2",
+      "name": "arg2",
+      "type": "text",
+      "dsl_type": "Array<英雄|效果牌>",
+      "id": "p_arg2"
+    }
+  ]
+}
