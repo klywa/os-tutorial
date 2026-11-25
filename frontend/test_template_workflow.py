@@ -132,6 +132,38 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(store.refresh_published(self.root)['groups'],[])
         self.assertEqual(store.refresh_published(self.root,season='S2')['groups'][0]['version'],'S2')
 
+    def test_shared_group_is_published_once_per_applicable_season_and_mode(self):
+        actor={'username':'author','role':'admin'}
+        shared={**group(),'version':['S2','S1'],'mode':['万象大赛','万象速决']}
+        saved=self.apply(shared,actor)
+        self.assertEqual(saved['version'],shared['version'])
+        self.assertEqual(saved['mode'],shared['mode'])
+        self.assertEqual(saved['entity_snapshot']['season'],'S1')
+
+        cached=(self.root/store.PUBLISHED).read_bytes()
+        for season in ('S1','S2'):
+            for mode in ('万象大赛','万象速决'):
+                with self.subTest(season=season,mode=mode):
+                    rows=store.refresh_published(self.root,season=season,mode=mode)['groups']
+                    self.assertEqual(len(rows),1)
+                    self.assertEqual(rows[0]['version'],shared['version'])
+            self.assertEqual(store.refresh_published(self.root,season=season,mode='其他模式')['groups'],[])
+        self.assertEqual((self.root/store.PUBLISHED).read_bytes(),cached)
+
+    def test_invalid_scope_lists_are_rejected(self):
+        actor={'username':'author','role':'admin'}
+        for key,invalid in [('version',[]),('version',['S1','s1']),('version',['历史版本']),
+                            ('mode',[]),('mode',['万象大赛','万象大赛']),('mode',['万象大赛',1])]:
+            with self.subTest(key=key,invalid=invalid), self.assertRaises(ValueError):
+                self.apply({**group(),key:invalid},actor)
+
+    def test_shared_group_uses_eligible_selected_entity_catalog(self):
+        actor={'username':'author','role':'admin'}
+        saved=self.apply({**group(),'version':['S1','S2'],
+                          'entity_snapshot':{'season':'S2','entities':{}}},actor)
+        self.assertEqual(saved['entity_snapshot']['season'],'S2')
+        self.assertTrue(saved['entity_snapshot']['entities']['card:1']['missing'])
+
     def test_legacy_pending_proposal_is_attributed_to_author_on_approval(self):
         proposals=TemplateProposals(self.root,self.root/'raw'/'template-proposals.sqlite3',workflow_enabled=True)
         researcher={'username':'researcher','role':'annotator'}

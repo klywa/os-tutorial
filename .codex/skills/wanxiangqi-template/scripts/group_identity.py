@@ -164,13 +164,15 @@ def _combine_groups(first, other):
 
 def merge_duplicate_groups(groups):
     """Keep the first ID for every duplicate effective v0.4 trigger."""
+    from templates_schema import group_modes, group_versions
+
     merged = []
     indices = {}
     for group in groups:
         if group.get("syntax_version") != "0.4":
             merged.append(deepcopy(group))
             continue
-        key = template_group_trigger(group)
+        key = (template_group_trigger(group), group_versions(group), group_modes(group))
         index = indices.setdefault(key, len(merged))
         if index == len(merged):
             merged.append(deepcopy(group))

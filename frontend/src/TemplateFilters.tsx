@@ -1,7 +1,7 @@
 import {useEffect,useId,useRef,useState,type ReactNode} from 'react';
-import {emptyTemplateFilters,lineupPlayer,orderTemplateEvents,type TemplateEvent,type TemplateFilters,type TemplateGroup} from './templates';
+import {emptyTemplateFilters,lineupPlayer,orderTemplateEvents,templateRangeValues,type TemplateEvent,type TemplateFilters,type TemplateGroup} from './templates';
 import type {Note} from './types';
-import MetadataSuggestions,{templateMetadataScope} from './MetadataSuggestions';
+import MetadataSuggestions,{matchMetadataChoices,templateMetadataScope} from './MetadataSuggestions';
 
 const historyKey='wxq.templates.recent-searches';
 const reviewStatuses=[
@@ -94,6 +94,61 @@ export function TemplateFilterPopup({active,children}:{active:number;children:Re
  </div>;
 }
 
+export function TemplateLineupEventFilter({events,selected,onChange,disabled}:{
+ events:TemplateEvent[];selected:ReadonlySet<string>;onChange:(ids:string[])=>void;disabled:boolean;
+}){
+ const [open,setOpen]=useState(false),[query,setQuery]=useState('');
+ const panel=useRef<HTMLDivElement>(null),input=useRef<HTMLInputElement>(null);
+ const id=useId();
+ const choices=events.map(event=>({id:event.id,label:event.name.replace(/^解释为何\s*/u,'')}));
+ const matched=new Set(matchMetadataChoices(choices.map(event=>event.label),query,[]));
+ const results=choices.filter(event=>matched.has(event.label));
+ useEffect(()=>{
+  if(!open)return;
+  function outside(event:PointerEvent){
+   if(event.target instanceof Node&&!panel.current?.contains(event.target))close();
+  }
+  document.addEventListener('pointerdown',outside);
+  return ()=>document.removeEventListener('pointerdown',outside);
+ },[open]);
+ function close(){setOpen(false);setQuery('');}
+ function toggle(eventId:string){
+  const next=new Set(selected);
+  if(next.has(eventId))next.delete(eventId);else next.add(eventId);
+  onChange([...next]);
+ }
+ return <div className="template-lineup-event-filter" ref={panel}
+  onBlur={event=>{
+   if(event.relatedTarget&&!event.currentTarget.contains(event.relatedTarget))close();
+  }}
+  onKeyDown={event=>{
+   if(!open||event.nativeEvent.isComposing||event.key!=='Escape')return;
+   event.preventDefault();event.stopPropagation();input.current?.focus();close();
+  }}>
+  <div className="template-lineup-event-input">
+   <input ref={input} type="search" aria-label="搜索事件类型" aria-controls={id} placeholder="搜索事件类型"
+    value={query} disabled={disabled||!events.length} onFocus={()=>setOpen(true)} onClick={()=>setOpen(true)}
+    onChange={event=>{setQuery(event.target.value);setOpen(true);}}
+    onKeyDown={event=>{
+     if(event.nativeEvent.isComposing||event.key!=='Enter')return;
+     event.preventDefault();
+     if(open&&results.length===1)toggle(results[0].id);
+    }}/>
+   {selected.size>0&&<button type="button" aria-label="清除事件选择" disabled={disabled}
+    onClick={()=>{input.current?.focus();setQuery('');onChange([]);}}>清除（{selected.size}）</button>}
+  </div>
+  <fieldset className="template-filter-options template-lineup-event-options" aria-label="事件类型" id={id} hidden={!open} disabled={disabled}>
+   <div className="template-lineup-event-list">
+    {results.map(event=><label className="template-filter-toggle" key={event.id}>
+     <input type="checkbox" checked={selected.has(event.id)} onChange={()=>toggle(event.id)}/>
+     <span>{event.label}</span>
+    </label>)}
+    {!results.length&&<span className="muted">没有匹配的事件</span>}
+   </div>
+  </fieldset>
+ </div>;
+}
+
 export default function TemplateFilterBar({filters,patch,groups,players,lineups,disabled,showMode=true}:{
  filters:TemplateFilters;
  patch:(value:Partial<TemplateFilters>)=>void;
@@ -128,7 +183,7 @@ export default function TemplateFilterBar({filters,patch,groups,players,lineups,
     </select></label>
     {(['version','mode'] as const).filter(field=>showMode||field==='version').map((field,index)=><label key={field}>{index===0?'版本':'模式'}
      <select value={filters[field]??''} onChange={e=>patch({[field]:e.target.value})}>
-      <option value="">全部</option>{choices(groups,group=>[group[field]??'']).map(value=><option key={value}>{value}</option>)}
+      <option value="">全部</option>{choices(groups,group=>templateRangeValues(group[field])).map(value=><option key={value}>{value}</option>)}
      </select></label>)}
     <MetadataFilter label="标签" values={filters.tags??[]} available={choices(groups,group=>group.tags??[])} onChange={tags=>patch({tags})}/>
     <label>审核状态<select value={filters.review_status??''} onChange={e=>patch({review_status:e.target.value as TemplateFilters['review_status']})}>

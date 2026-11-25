@@ -102,7 +102,9 @@ export default function TemplateProposals({admin,snapshot,onClose,onChanged,onLo
   if(action!=='approve'&&!confirm('确定'+(action==='withdraw'?'撤回':'驳回')+'此提案的全部待审修改吗？'))return;
   await perform(proposal,action,async()=>{
    let payload:unknown={proposal_revision:proposal.proposal_revision,summary:true};
-   if(action==='approve'){
+   if(action==='approve'&&proposal.inline_trigger){
+    payload={proposal_revision:proposal.proposal_revision,return_write:true,summary:true};
+   }else if(action==='approve'){
     const ids:number[]=[],changes:TemplateChange[]=[];
     for(const [i,change] of proposal.changes.entries()){
      const selected=selection(proposal,change);if(!selected.length)continue;
@@ -157,17 +159,17 @@ export default function TemplateProposals({admin,snapshot,onClose,onChanged,onLo
      change.action==='put'&&(!conflict||admin);
     return <section key={key}>{target(proposal,change)}
      {conflict&&<div className="template-diff"><strong>正式版本已变化</strong><pre>{describeTemplateRecord(conflict.current,undefined,scopeName)}</pre>
-      {change.kind==='group'?<p>打开模板组编辑器核对正式内容。</p>:canReview?<button disabled={busy} onClick={()=>void rebase(proposal,i,change)}>已核对当前版本，保留提案内容</button>:<p>等待管理员核对正式版本。</p>}</div>}
-     {fields.map(field=><div key={field}>{canReview&&<label className="template-approve-choice"><input type="checkbox" checked={selected.includes(field)}
+      {!proposal.inline_trigger&&(change.kind==='group'?<p>打开模板组编辑器核对正式内容。</p>:canReview?<button disabled={busy} onClick={()=>void rebase(proposal,i,change)}>已核对当前版本，保留提案内容</button>:<p>等待管理员核对正式版本。</p>)}</div>}
+     {fields.map(field=><div key={field}>{canReview&&!proposal.inline_trigger&&<label className="template-approve-choice"><input type="checkbox" checked={selected.includes(field)}
       onChange={e=>setSelections(s=>({...s,[key]:e.target.checked?[...selected,field]:selected.filter(v=>v!==field)}))}/>采纳此项{field.startsWith('condition:')?'条件修改':field.startsWith('utterance:')?'话术修改':''}</label>}
       <FieldDiff proposal={proposal} change={change} field={field} scopeName={scopeName}/></div>)}
-     {proposal.status==='pending'&&editableTarget&&<button disabled={busy}
+     {proposal.status==='pending'&&!proposal.inline_trigger&&editableTarget&&<button disabled={busy}
       onClick={()=>change.kind==='group'?onEditGroup(proposal,change.id):setEditing({proposal,index:i})}>{conflict?'核对并修改提案':admin?'修改审核稿':'修改我的提案'}</button>}
     </section>;
    })}
    {historyTargets.map(change=><section key={change.kind+':'+change.id}>{target(proposal,change)}</section>)}
    {proposal.status==='pending'&&<footer>{admin?<><button disabled={busy} onClick={()=>void act(proposal,'reject')}>{action==='reject'?'驳回中…':'驳回整份提案'}</button>
-    <button disabled={busy} className="primary" onClick={()=>void act(proposal,'approve')}>{action==='approve'?'采纳中…':'采纳勾选修改'}</button></>:<button disabled={busy} onClick={()=>void act(proposal,'withdraw')}>撤回提案</button>}</footer>}
+    <button disabled={busy} className="primary" onClick={()=>void act(proposal,'approve')}>{action==='approve'?'采纳中…':proposal.inline_trigger?'采纳整份提案':'采纳勾选修改'}</button></>:<button disabled={busy} onClick={()=>void act(proposal,'withdraw')}>撤回提案</button>}</footer>}
   </article>;
  }
  const sorted=[...rows].sort(newestProposalFirst),withdrawn=sorted.filter(proposal=>proposal.status==='withdrawn');

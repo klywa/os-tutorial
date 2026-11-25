@@ -5,6 +5,12 @@ import {validateExtraKey,validateV04,validateV04Template} from './templateV04';
 const event='解释为何转移装备';
 
 describe('v0.4 template authoring',()=>{
+ it('accepts runtime lineup membership outside predicates',()=>{
+  const root='我方.阵容英雄名列表';
+  for(const op of ['in','not in'])expect(()=>validateV04(event,`动作.目标英雄.名称 ${op} ${root}`)).not.toThrow();
+  expect(()=>validateV04(event,`any(我方.场上英雄列表, .名称 in ${root})`)).toThrow(/谓词外/);
+  expect(()=>validateV04(event,'any(对局.玩家列表, "小乔" in .阵容英雄名列表)')).toThrow(/谓词外/);
+ });
  it('validates event-specific paths and nullable reads in all branches',()=>{
   expect(()=>validateV04(event,'any(我方.场上英雄列表, .名称 == 动作.目标英雄.名称)')).not.toThrow();
   expect(()=>validateV04(event,'对手 == nil or 对手.主C.等级 > 40')).toThrow(/守卫/);

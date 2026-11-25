@@ -1,8 +1,10 @@
-import {useId,useLayoutEffect,useRef,useState,type KeyboardEvent} from 'react';
+import {createContext,useContext,useId,useLayoutEffect,useRef,useState,type KeyboardEvent} from 'react';
 import {EntityChip,useCards} from './EntityCards';
 import {splitEntities} from './entityText';
 import {conditionCompletion,conditionPair,normalizeConditionInput,utteranceSlotCompletion,utteranceSlotInput,type ConditionEditingConfig} from './conditionEditing';
 import './conditionEditor.css';
+
+export const TemplateLineupName=createContext<string|undefined>(undefined);
 
 export default function ConditionTextEditor({value,onChange,config,label,rows=4,autoFocus,readOnly,disabled,slots=false,textareaRef,onFocus,dataId,onEditorKeyDown}:{
  value:string;onChange:(value:string)=>void;config:ConditionEditingConfig;label:string;rows?:number;autoFocus?:boolean;readOnly?:boolean;disabled?:boolean;
@@ -14,7 +16,9 @@ export default function ConditionTextEditor({value,onChange,config,label,rows=4,
  const [caret,setCaret]=useState<number|null>(null),[dot,setDot]=useState<number|null>(null),[active,setActive]=useState(0);
  const [hovered,setHovered]=useState<number|null>(null),[position,setPosition]=useState({left:0,top:0,above:false});
  const findChoices=slots?utteranceSlotCompletion:conditionCompletion;
- const candidate=caret===null||dot===null||readOnly||disabled?null:findChoices(value,caret,config);
+ const lineupName=useContext(TemplateLineupName);
+ const editingConfig={...config,lineupName};
+ const candidate=caret===null||dot===null||readOnly||disabled?null:findChoices(value,caret,editingConfig);
  const completion=candidate?.dot===dot?candidate:null;
  const variable=!!completion&&'variable' in completion;
  const snippet=!!completion&&'snippet' in completion;
@@ -71,7 +75,7 @@ export default function ConditionTextEditor({value,onChange,config,label,rows=4,
  function apply(next:string,index:number,offer=false,end=index){
   if(next!==input.current?.value||end!==index)pendingSelection.current={start:index,end};
   setCaret(index===end?index:null);
-  setDot(offer?findChoices(next,index,config)?.dot??null:null);
+  setDot(offer?findChoices(next,index,editingConfig)?.dot??null:null);
   setActive(0);
   onChange(next);
  }
@@ -85,9 +89,10 @@ export default function ConditionTextEditor({value,onChange,config,label,rows=4,
  function pick(index:number){
   const option=completion?.choices[index];
   if(!option||!completion)return;
-  const insert=option.insert??option.label;
+  const suffix=value.slice(completion.end);
+  const insert=(option.insert??option.label)+(snippet&&!/^\s/u.test(suffix)?' ':'');
   const start=completion.start;
-  apply(value.slice(0,start)+insert+value.slice(completion.end),
+  apply(value.slice(0,start)+insert+suffix,
    start+(option.selection?.start??insert.length),false,start+(option.selection?.end??insert.length));
  }
  function keyDown(event:KeyboardEvent<HTMLTextAreaElement>){
@@ -129,7 +134,7 @@ export default function ConditionTextEditor({value,onChange,config,label,rows=4,
    onSelect={event=>{
     const field=event.currentTarget,index=field.selectionStart;
     setCaret(index===field.selectionEnd?index:null);
-    if(dot!==null&&(index!==field.selectionEnd||findChoices(field.value,index,config)?.dot!==dot))setDot(null);
+    if(dot!==null&&(index!==field.selectionEnd||findChoices(field.value,index,editingConfig)?.dot!==dot))setDot(null);
    }}
    onBlur={()=>{setDot(null);setCaret(null);}}
    onScroll={()=>{syncMirror();positionMenu();setHovered(null);}}

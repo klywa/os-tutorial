@@ -31,11 +31,11 @@ class PreferGroup:
         return choices[0]
 
 
-def check(config, cases, *, require_all=True):
+def check(config, cases, *, require_all=True, scopes=None):
     from src.python.condition import choose_utterance, evaluate_condition
 
     if "解释事件" in config:
-        return check_v04(config, cases, require_all=require_all)
+        return check_v04(config, cases, require_all=require_all, scopes=scopes)
     catalog = config["condition_catalog"]
     groups = {(g["event_name"], g["name"]): g for g in config["groups"]}
     if not groups or not isinstance(cases, list) or not cases:
@@ -97,7 +97,7 @@ def check(config, cases, *, require_all=True):
     return errors
 
 
-def check_v04(config, cases, *, require_all=True):
+def check_v04(config, cases, *, require_all=True, scopes=None):
     from src.python.condition.v04 import load_library, matching_keys, winning_pool
     from src.python.condition.v04_legacy import adapt
 
@@ -110,6 +110,7 @@ def check_v04(config, cases, *, require_all=True):
         legacy_names[(key[0], group["name"])].append(key)
     errors, coverage = [], defaultdict(set)
     checked = set()
+    scoped_libraries = {}
     for case in cases:
         key = tuple(case["group"])
         if key not in groups:
@@ -130,8 +131,26 @@ def check_v04(config, cases, *, require_all=True):
         kind, expected = case["kind"], case["matches"]
         if kind not in ("positive", "negative", "missing") or type(expected) is not bool:
             raise ValueError(f"{key}：用例类别或预期命中值无效")
-        matched = name == key[0] and bool(matching_keys([pattern], name, state)) and condition.evaluate(state) is True
-        _, offered = winning_pool(library, name, state)
+        active = library
+        eligible = True
+        if "season" in case or "mode" in case:
+            from templates_schema import group_applies
+            if scopes is None:
+                raise ValueError(f"{key}：范围用例须提供发布前的模板组")
+            season, mode = case.get("season", "S1"), case.get("mode")
+            scope_key = season, mode
+            if scope_key not in scoped_libraries:
+                scoped_libraries[scope_key] = {
+                    event_name: {
+                        event_key: [row for row in rows if group_applies(scopes[row[0]["id"]], season, mode)]
+                        for event_key, rows in keys.items()
+                    }
+                    for event_name, keys in library.items()
+                }
+            active = scoped_libraries[scope_key]
+            eligible = group_applies(scopes[group["id"]], season, mode)
+        matched = eligible and name == key[0] and bool(matching_keys([pattern], name, state)) and condition.evaluate(state) is True
+        _, offered = winning_pool(active, name, state)
         lines = [row["text"] for row in offered if row["id"] == group["id"]]
         desired = case.get("can_win", expected)
         if matched != expected or bool(lines) != desired or "expected_utterances" in case and lines != case["expected_utterances"]:
@@ -153,12 +172,15 @@ if __name__ == "__main__":
     parser.add_argument("published", type=Path, help="GET /api/templates/published 的完整结果")
     parser.add_argument("cases", type=Path)
     parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--scopes", type=Path, help="用于赛季或模式用例的编审模板包")
     parser.add_argument("--groups-in-cases", action="store_true", help="仅要求用例中列出的组有完整覆盖")
     args = parser.parse_args()
-    sys.path.insert(0, str(args.root.resolve()))
+    root = args.root.resolve()
+    sys.path[:0] = [str(root), str(root / "frontend")]
     config = read(args.published)
     cases = read(args.cases)
-    errors = check(config, cases, require_all=not args.groups_in_cases)
+    scopes = {group["id"]: group for group in read(args.scopes)["groups"]} if args.scopes else None
+    errors = check(config, cases, require_all=not args.groups_in_cases, scopes=scopes)
     if errors:
         parser.exit(1, "\n".join(errors) + "\n")
     count = len(config["groups"]) if "groups" in config else sum(

@@ -1,6 +1,7 @@
 import catalogSource from '../../src/condition/catalog.json?raw';
 import {catalogV04,validateExtraKey,validateV04,validateV04Template,v04ConditionKey} from './templateV04';
-import {relatedTemplateEventFamilies,templateId,type TemplateEvent,type TemplateGroup} from './templates';
+import {relatedTemplateEventFamilies,templateId,templateRangeKey,templateRangeValues,templateVersionValues,type TemplateEvent,type TemplateGroup} from './templates';
+import {canonicalTemplateName} from './templateInlineTrigger';
 
 const signatures:Record<string,{category:string;parameters:Record<string,string>}>=JSON.parse(catalogSource).events;
 const semanticField=(field:string)=>field==='目标装备'?'装备':field;
@@ -50,9 +51,9 @@ export function relatedDisplayRows(
  return {rows,roots};
 }
 
-type RelatedCopy={kind:'existing'|'new';group:TemplateGroup};
-const version=(group:TemplateGroup)=>(group.version?.trim()||'S1').toUpperCase();
-const mode=(group:TemplateGroup)=>group.mode||'万象大赛';
+type RelatedCopy={kind:'existing'|'new';group:TemplateGroup;renamePeers?:TemplateGroup[]};
+const version=(group:TemplateGroup)=>templateRangeKey(templateVersionValues(group.version));
+const mode=(group:TemplateGroup)=>templateRangeKey(templateRangeValues(group.mode));
 
 export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEvent,groups:TemplateGroup[],newId?:string):RelatedCopy{
  if(source.syntax_version!=='0.4'||!relatedTargets(event).includes(target.name))
@@ -78,16 +79,21 @@ export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEve
  const expression=mapFields(source.expression??'');
  validateV04(target.name,expression);
  const conditionKey=v04ConditionKey(expression);
- const existing=groups.find(group=>group.event_id===target.id&&group.syntax_version==='0.4'&&group.name.trim()===source.name.trim()&&
+ const peers=groups.filter(group=>group.event_id===target.id&&group.syntax_version==='0.4'&&
   group.extra_key===extraKey&&version(group)===version(source)&&mode(group)===mode(source)&&
-  (group.priority??0)===(source.priority??0)&&(group.publication_hold??'')===(source.publication_hold??'')&&
+  (group.publication_hold??'')===(source.publication_hold??'')&&
   group.scope.player_id===source.scope.player_id&&group.scope.lineup_note_id===source.scope.lineup_note_id&&
-  v04ConditionKey(group.expression??'')===conditionKey&&Boolean(group.ignored)===Boolean(source.ignored)&&
+  v04ConditionKey(group.expression??'')===conditionKey&&Boolean(group.ignored)===Boolean(source.ignored));
+ const first=peers[0];
+ const renamePeers=first?peers.filter(group=>group.name.trim()!==first.name.trim())
+  .map(group=>({...group,name:first.name})):[];
+ const reconciliation=renamePeers.length?{renamePeers}:{};
+ const existing=peers.find(group=>(group.priority??0)>=(source.priority??0)&&
   group.utterances.length===source.utterances.length&&group.utterances.every((row,index)=>{
    const original=source.utterances[index];
    return row.text===original.text&&Boolean(row.fixed)===Boolean(original.fixed)&&Boolean(row.ignored)===Boolean(original.ignored);
   }));
- if(existing)return {kind:'existing',group:existing};
+ if(existing)return {kind:'existing',group:existing,...reconciliation};
 
  const utterances=source.utterances.map(row=>{
   if(row.fixed&&row.ignored)throw new Error('请先解除来源话术的固定或忽略标记');
@@ -104,6 +110,7 @@ export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEve
  delete clone.reviewed_by;
  delete clone.last_modified_by;
  delete clone.entity_snapshot;
- return {kind:'new',group:{...clone,id:newId??templateId('group'),event_id:target.id,
-  expression,extra_key:extraKey,review_status:null,editor_mode:'text',conditions:[],condition_tree:null,utterances}};
+ const prepared:TemplateGroup={...clone,id:newId??templateId('group'),event_id:target.id,
+  expression,extra_key:extraKey,review_status:null,editor_mode:'text',conditions:[],condition_tree:null,utterances};
+ return {kind:'new',group:{...prepared,name:first?.name??canonicalTemplateName(prepared,target)??target.name},...reconciliation};
 }

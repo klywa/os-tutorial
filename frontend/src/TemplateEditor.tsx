@@ -14,7 +14,7 @@ import MetadataSuggestions,{TemplateMetadataChoices,templateMetadataScope} from 
 import {categoryNames,EntityChip,useCards} from './EntityCards';
 import NewTemplateParameter from './NewTemplateParameter';
 import type {Entity,Note} from './types';
-import {deriveTemplateEntities,parseConditionValue,placeholderKeys,templateExplanationLimit,templateId,valueText,type TemplateCondition,type TemplateEvent,type TemplateGroup,type TemplateParameter} from './templates';
+import {deriveTemplateEntities,parseConditionValue,placeholderKeys,templateExplanationLimit,templateId,valueText,type TemplateCondition,type TemplateEvent,type TemplateGroup,type TemplateParameter,type TemplateRange} from './templates';
 
 export function TemplateDialog({title,onClose,children,wide=false}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean}){
  const panel=useRef<HTMLElement>(null),closeRef=useRef(onClose);closeRef.current=onClose;
@@ -46,8 +46,16 @@ function TemplateTagInput({tags,onChange,label='标签'}:{tags:string[];onChange
  </div>;
 }
 
+const rangeInput=(value:TemplateRange|undefined)=>Array.isArray(value)?value.join(','):value??'';
+const editRange=(previous:TemplateRange|undefined,value:string)=>Array.isArray(previous)||/[,，、]/.test(value)?value.split(/[,，、]/):value;
+function trimRange(value:TemplateRange|undefined):TemplateRange|undefined{
+ if(!Array.isArray(value))return value?.trim();
+ const values=value.map(item=>item.trim()).filter(Boolean);
+ return values.length?values:undefined;
+}
+
 export type TemplateEditorScratch={draft?:TemplateGroup;conditionText?:string;addedParameters?:TemplateParameter[];parameterAdding?:boolean;resolve?:boolean;error?:string;busy?:boolean;onComplete?:()=>void};
-export default function TemplateEditor({group,review=false,creating=false,localFile=false,allowEventParameters=true,scopeName,entities:archivedEntities=[],conditionLinks={},catalog,events,players,lineups,annotator,onSave,onSaveAndApprove,onClose,onDirty,formalConflict,scratch}:{group:TemplateGroup;scratch?:TemplateEditorScratch;review?:boolean;creating?:boolean;localFile?:boolean;allowEventParameters?:boolean;scopeName?:(id:string|null)=>string;catalog?:ConditionCatalog;entities?:{id:string;name:string}[];conditionLinks?:Record<string,{id:string;name:string}[]>;events:TemplateEvent[];players:Entity[];lineups:Note[];annotator:boolean;onSave:(group:TemplateGroup,event?:TemplateEvent,resolve?:boolean)=>Promise<void>;onSaveAndApprove?:(group:TemplateGroup,event?:TemplateEvent,resolve?:boolean)=>Promise<void>;formalConflict?:string;onClose:()=>void;onDirty?:(dirty:boolean)=>void}){
+export default function TemplateEditor({group,review=false,creating=false,embedded=false,localFile=false,allowEventParameters=true,scopeName,entities:archivedEntities=[],conditionLinks={},catalog,events,players,lineups,annotator,onSave,onSaveAndApprove,onClose,onDirty,formalConflict,scratch}:{group:TemplateGroup;scratch?:TemplateEditorScratch;review?:boolean;creating?:boolean;embedded?:boolean;localFile?:boolean;allowEventParameters?:boolean;scopeName?:(id:string|null)=>string;catalog?:ConditionCatalog;entities?:{id:string;name:string}[];conditionLinks?:Record<string,{id:string;name:string}[]>;events:TemplateEvent[];players:Entity[];lineups:Note[];annotator:boolean;onSave:(group:TemplateGroup,event?:TemplateEvent,resolve?:boolean)=>Promise<void>;onSaveAndApprove?:(group:TemplateGroup,event?:TemplateEvent,resolve?:boolean)=>Promise<void>;formalConflict?:string;onClose:()=>void;onDirty?:(dirty:boolean)=>void}){
  const [draft,setDraft]=useState(()=>scratch?.draft??structuredClone(group)),[busy,setBusy]=useState(!!scratch?.busy),[error,setError]=useState(scratch?.error??'');const cards=useCards(),lastText=useRef<HTMLTextAreaElement|null>(null);
  const utteranceSection=useRef<HTMLElement>(null);
  const [conditionText,setConditionText]=useState(scratch?.conditionText);
@@ -110,17 +118,17 @@ export default function TemplateEditor({group,review=false,creating=false,localF
   }
   setSaving(true);
   const condition=v04&&conditionText!==undefined?resolveConditionEdit(conditionText,draft,id=>boundName(id)??id,{fileMode:localFile,players,lineups}):{};
-  const value={...draft,...condition,name:draft.name.trim(),version:draft.version?.trim(),mode:draft.mode?.trim(),conditions};
+  const value={...draft,...condition,name:draft.name.trim(),version:trimRange(draft.version),mode:trimRange(draft.mode),conditions};
   const addedEvent=addedParameters.length?event:undefined;
   if(approve&&onSaveAndApprove)await onSaveAndApprove(value,addedEvent,!!formalConflict&&resolve);
   else await onSave(value,addedEvent,!!formalConflict&&resolve);onDirty?.(false);onClose();
  }catch(e){const message=(e as Error).message;if(scratch)scratch.error=message;setError(message);}finally{setSaving(false);}}
  const entities=deriveTemplateEntities(draft,event,cards,archivedEntities,group,conditionLinks,events.find(e=>e.id===group.event_id));
  const title=review?'修改模板提案':creating?'新建模板组':annotator?'提议修改模板':'编辑模板组';
- const form=<form className="template-form" onSubmit={e=>{e.preventDefault();void save((e.nativeEvent as SubmitEvent).submitter?.getAttribute('value')==='approve');}}><fieldset disabled={busy}><div className="template-form-grid"><label>模板组名称<input value={draft.name} onChange={e=>patch({name:e.target.value})} required/></label><label>触发事件<select value={draft.event_id} onChange={e=>{if((conditionText||draft.expression||draft.condition_tree?.kind==='leaf'||draft.conditions.length||addedParameters.length||parameterAdding)&&!confirm('切换事件会清空现有条件和本次新增参数，继续吗？'))return;setConditionText(undefined);setAddedParameters([]);setParameterAdding(false);patch({event_id:e.target.value,conditions:[],condition_tree:v04?null:emptyTree(),expression:'',editor_mode:v04?'text':'tree',extra_key:v04?wildcardKey(events.find(row=>row.id===e.target.value)?.name??''):undefined});}}><option value="">选择事件</option>{orderTemplateEvents(events).filter(e=>!v04||registeredEvent(e.name)).map(e=><option key={e.id} value={e.id}>{e.name}</option>)}</select></label>{!v04&&<TemplateScopeFields scope={draft.scope} options={{players,lineups,scopeName:id=>boundName(id)??id,localFile}} onChange={scope=>patch({scope})}/>}</div>
+ const form=<form aria-label={embedded?title:undefined} className="template-form" onSubmit={e=>{e.preventDefault();void save((e.nativeEvent as SubmitEvent).submitter?.getAttribute('value')==='approve');}}><fieldset disabled={busy}><div className="template-form-grid">{!embedded&&<><label>模板组名称<input value={draft.name} onChange={e=>patch({name:e.target.value})} required/></label><label>触发事件<select value={draft.event_id} onChange={e=>{if((conditionText||draft.expression||draft.condition_tree?.kind==='leaf'||draft.conditions.length||addedParameters.length||parameterAdding)&&!confirm('切换事件会清空现有条件和本次新增参数，继续吗？'))return;setConditionText(undefined);setAddedParameters([]);setParameterAdding(false);patch({event_id:e.target.value,conditions:[],condition_tree:v04?null:emptyTree(),expression:'',editor_mode:v04?'text':'tree',extra_key:v04?wildcardKey(events.find(row=>row.id===e.target.value)?.name??''):undefined});}}><option value="">选择事件</option>{orderTemplateEvents(events).filter(e=>!v04||registeredEvent(e.name)).map(e=><option key={e.id} value={e.id}>{e.name}</option>)}</select></label></>}{!v04&&<TemplateScopeFields scope={draft.scope} options={{players,lineups,scopeName:id=>boundName(id)??id,localFile}} onChange={scope=>patch({scope})}/>}</div>
  <div className="template-form-grid">
-  <label>版本<input value={draft.version??''} maxLength={80} list={uid+"-seasons"} onChange={e=>patch({version:e.target.value})}/></label><datalist id={uid+"-seasons"}><option value="S1"/><option value="S2"/></datalist>
-  <label>模式<input value={draft.mode??''} maxLength={80} onChange={e=>patch({mode:e.target.value})}/></label>
+  <label>版本<input value={rangeInput(draft.version)} maxLength={80} list={uid+"-seasons"} placeholder="多个值用逗号分隔" onChange={e=>patch({version:editRange(draft.version,e.target.value)})}/></label><datalist id={uid+"-seasons"}><option value="S1"/><option value="S2"/></datalist>
+  <label>模式<input value={rangeInput(draft.mode)} maxLength={80} placeholder="多个值用逗号分隔" onChange={e=>patch({mode:editRange(draft.mode,e.target.value)})}/></label>
   <TemplateTagInput tags={draft.tags??[]} onChange={tags=>patch({tags})}/>
   <TemplateTagInput label="批次" tags={draft.batch??[]} onChange={batch=>patch({batch})}/>
  </div>
@@ -135,7 +143,7 @@ export default function TemplateEditor({group,review=false,creating=false,localF
   <label><span><input type="checkbox" checked={resolve} onChange={event=>setResolve(event.target.checked)}/> 使用下方条件作为合并结果</span></label>
  </div>}
  {v04?<section>
-  <label>额外信息键<input value={draft.extra_key??''} placeholder={wildcardKey(event?.name??'')} onChange={e=>patch({extra_key:e.target.value})}/></label>
+  {!embedded&&<label>额外信息键<input value={draft.extra_key??''} placeholder={wildcardKey(event?.name??'')} onChange={e=>patch({extra_key:e.target.value})}/></label>}
   <div><span>条件表达式</span><ConditionTextEditor key={draft.event_id} label="条件表达式" rows={5} value={conditionText??preview}
    config={{event,catalog,v04:true}} onChange={value=>setConditionText(value===preview?undefined:value)}/></div>
   <TemplateConditionPreview expression={conditionText??preview}/>
@@ -150,5 +158,5 @@ export default function TemplateEditor({group,review=false,creating=false,localF
  <div className="template-chips">{draft.related_entities.map(ref=><button type="button" key={ref.id} onClick={()=>patch({related_entities:draft.related_entities.filter(r=>r.id!==ref.id)})}>移除 {ref.name}</button>)}</div></>:<p className="muted">实体名称条件和适用棋手将关联同类同名卡牌。</p>}
  <div className="template-chips">{entities.map(e=>localFile?<span key={e.id} className="entity-chip">{e.name}</span>:<EntityChip key={e.id} ids={[e.id]} label={e.name}/>)}</div></section>
  {error&&<p role="alert" className="error">{error}</p>}<footer><button type="button" onClick={close}>取消</button><button className="primary" disabled={busy}>{busy?'保存中…':review?(onSaveAndApprove?'保存提案':annotator?'保存提案修改':'保存审核稿'):annotator?'提交修改提案':'保存模板'}</button>{onSaveAndApprove&&<button type="submit" value="approve" className="primary" disabled={busy}>保存并采纳本组</button>}</footer></fieldset></form>;
- return <TemplateDialog title={title} onClose={close} wide>{form}</TemplateDialog>;
+ return embedded?form:<TemplateDialog title={title} onClose={close} wide>{form}</TemplateDialog>;
 }

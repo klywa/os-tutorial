@@ -1,5 +1,5 @@
 import {describe,expect,it} from 'vitest';
-import {buildLineupTabs,lineupBoardRows,unscopedLineup} from './TemplateLineupBoard';
+import {addLineupRosters,buildLineupTabs,lineupBoardRows,lineupRosterNames,unscopedLineup} from './TemplateLineupBoard';
 import {buildTemplateEntityIndex} from './templateEntityIndex';
 import type {TemplateEvent,TemplateGroup} from './templates';
 
@@ -9,6 +9,57 @@ const makeGroup=(id:string,event_id:string,scope:Partial<TemplateGroup['scope']>
 });
 
 describe('阵容看板',()=>{
+ it('groups unbound hero events once in the hero column and keeps other events separate',()=>{
+  const events:TemplateEvent[]=[
+   {id:'deploy',name:'解释为何上阵英雄',parameters:[]},
+   {id:'auction',name:'解释为何竞拍目标英雄（第2次拍卖）',parameters:[]},
+   {id:'ready',name:'解释为何准备战斗',parameters:[]},
+  ];
+  const groups=[makeGroup('deploy-all','deploy',{},'','*'),makeGroup('auction-all','auction',{},'','*'),
+   makeGroup('named','deploy',{},'','吕布'),makeGroup('battle','ready')];
+  const entries=buildTemplateEntityIndex(groups,events,[{id:'lu',name:'吕布',category:'heroes'}],undefined,undefined,true);
+  const rows=lineupBoardRows(groups,entries,new Set(),[],events);
+  expect(rows.generalHeroEvents).toEqual(new Map([['deploy',new Set(['deploy-all'])],['auction',new Set(['auction-all'])]]));
+  expect(rows.columnIds.get('heroes')).toEqual(new Set(['named','deploy-all','auction-all']));
+  expect(rows.other).toEqual(new Map([['ready',new Set(['battle'])]]));
+ });
+ it('uses notes to enrich an open file without creating absent lineups or player tabs',()=>{
+  const tabs=buildLineupTabs([
+   makeGroup('file-group','deploy',{lineup_note_id:'三分登场',player_id:'白歌'}),
+   makeGroup('generic','deploy'),
+  ],id=>id,true);
+  const rosters=addLineupRosters(tabs,[
+   {title:'三分登场-白歌',lineup_name:'三分登场',player_id:'白歌',lineup_heroes:['小乔','孙尚香']},
+   {title:'三分登场-镜',lineup_name:'三分登场',player_id:'镜',lineup_heroes:['吕布']},
+   {title:'常小娥灵活4人组',lineup_heroes:['刘禅']},
+  ],id=>id,false);
+  expect([...tabs.keys()]).toEqual(['三分登场',unscopedLineup]);
+  expect([...tabs.get('三分登场')!.keys()]).toEqual(['白歌']);
+  expect([...lineupRosterNames(rosters,'三分登场','白歌')]).toEqual(['小乔','孙尚香']);
+  expect([...lineupRosterNames(rosters,'三分登场','')]).toEqual(['小乔','孙尚香']);
+ });
+ it('includes roster heroes with no templates, inherits fallbacks by hero and deduplicates a column drill',()=>{
+  const events:TemplateEvent[]=[{id:'deploy',name:'解释为何上阵英雄',parameters:[]},{id:'ready',name:'解释为何准备战斗',parameters:[]}];
+  const groups=[makeGroup('shared','ready',{lineup_note_id:'三分登场'}),makeGroup('child','deploy',{lineup_note_id:'三分登场',player_id:'白歌'},'','小乔')];
+  const fallbacks=[makeGroup('dynamic','deploy',{},'动作.英雄.名称 in 我方.阵容英雄名列表','*'),
+   makeGroup('named','deploy',{},'','小乔'),makeGroup('other','deploy',{},'','吕布'),makeGroup('excluded','deploy',{},'我方.阵容名称 != "三分登场"','小乔')];
+  const tabs=buildLineupTabs([...groups,...fallbacks],id=>id,true);
+  const rosters=addLineupRosters(tabs,[{title:'三分登场-白歌',lineup_name:'三分登场',player_id:'白歌',lineup_heroes:['小乔','孙尚香']},
+   {title:'三分登场-镜',lineup_name:'三分登场',player_id:'镜',lineup_heroes:['吕布']}],id=>id);
+  const heroes=lineupRosterNames(rosters,'三分登场','白歌');
+  expect([...heroes]).toEqual(['小乔','孙尚香']);
+  expect(tabs.get('三分登场')?.get('镜')?.size).toBe(0);
+  expect(tabs.get(unscopedLineup)?.get('')).not.toContain('excluded');
+  const entities=['小乔','孙尚香','吕布'].map(name=>({id:name,name,category:'heroes'}));
+  const entries=buildTemplateEntityIndex([...groups,...fallbacks],events,entities,undefined,undefined,true,new Set(['小乔']));
+  const rows=lineupBoardRows(groups,entries,heroes,fallbacks.filter(group=>group.id!=='excluded'));
+  expect(rows.cards.find(card=>card.entity.name==='孙尚香')?.ids.size).toBe(0);
+  expect(rows.cards.some(card=>card.entity.name==='吕布')).toBe(false);
+  expect(rows.columnIds.get('heroes')).toEqual(new Set(['child','dynamic','named']));
+  expect(rows.columnIds.get('other')).toEqual(new Set(['shared']));
+  const dynamic=buildTemplateEntityIndex(fallbacks,events,entities,undefined,undefined,true,heroes);
+  expect(dynamic.filter(entry=>entry.groupIds.has('dynamic')).map(entry=>entry.name).sort()).toEqual([...heroes].sort());
+ });
  it('按明确归属归并阵容别名并保留不同棋手分支',()=>{
   const groups=[
    makeGroup('global','buy'),

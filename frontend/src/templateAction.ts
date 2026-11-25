@@ -26,6 +26,8 @@ export function templateAction(group:TemplateGroup,event?:TemplateEvent,values=f
 
  const [a,b,c]=['arg1','arg2','arg3'].map(key=>values.get(key));
  const actionName=event.name.replace(/^解释为何/,'');
+ const auction=/^竞拍目标(英雄|效果牌)(（.+）)$/u.exec(actionName);
+ if(auction)return '竞拍'+(a??auction[1])+auction[2];
  switch(actionName) {
   case '建议向某阵容发展': return '向'+(a??'建议的阵容')+'方向发展';
   case '上阵英雄': return '上阵'+(a??'英雄');

@@ -16,6 +16,19 @@ function fixture(){
 }
 
 describe('browser note files',()=>{
+ it('saves a document note without changing the knowledge content and rejects stale saves',async()=>{
+  const workspace=fixture();
+  workspace.files.set(metaPath,JSON.stringify({...metadata,review_receipts:[{id:'existing'}]}));
+  const repo=await workspace.open();const original=await repo.load('example');
+  await repo.saveNote(original,'本篇笔记\n第二行');
+  const reopened=await repo.load('example');
+  expect(reopened.body).toEqual({...original.body,note:'本篇笔记\n第二行'});
+  expect(repo.entries[0].revision).toBe(reopened.metadata.revision);
+  expect(reopened.metadata.review_receipts).toEqual([{id:'existing'}]);
+  expect(repo.entries[0]).not.toHaveProperty('seasons');
+  await expect(repo.saveNote(original,'旧草稿')).rejects.toThrow('外部');
+  expect((await repo.load('example')).body.note).toBe('本篇笔记\n第二行');
+ });
  it('writes the matching index, body and metadata without dropping extensions, numeric types or node IDs',async()=>{
   const workspace=fixture();const repo=await workspace.open();const note=await repo.load('example');
   const draft=structuredClone(note.body);draft.nodes[1]={...draft.nodes[1],value:'新正文'} as typeof draft.nodes[number];

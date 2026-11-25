@@ -24,6 +24,22 @@ def group(identifier, text, priority=0, expression=""):
 
 
 class Version04Test(unittest.TestCase):
+    def test_runtime_lineup_membership_distinguishes_missing_and_empty_lists(self):
+        event = '解释为何上阵英雄'
+        root = '我方.阵容英雄名列表'
+        included = compile_expression(event, '动作.英雄.名称 in ' + root)
+        excluded = compile_expression(event, '动作.英雄.名称 not in ' + root)
+        for player, expected in (({'阵容英雄名列表':['小乔']}, (True, False)),
+                                 ({'阵容英雄名列表':[]}, (False, True)), ({}, (False, False)),
+                                 ({'阵容英雄名列表':'小乔'}, (False, False))):
+            state = {'我方':player, '动作':{'英雄':{'名称':'小乔'}}}
+            self.assertEqual(tuple(rule.evaluate(state) is True for rule in (included, excluded)), expected)
+        with self.assertRaises(ConditionError):
+            compile_expression(event, 'any(我方.场上英雄列表, .名称 in ' + root + ')')
+        with self.assertRaises(ConditionError):
+            compile_expression(event, 'any(对局.玩家列表, "小乔" in .阵容英雄名列表)')
+        compile_expression(event, 'any(我方.场上英雄列表, .英雄阵容定位 != "非阵容英雄")')
+
     def test_merge_requires_observed_result_and_crosses_a_threshold(self):
         event = "解释为何合成英雄"
         awakening = compile_expression(event, "not 动作.英雄.已觉醒 and 动作.合成后已觉醒 != nil and 动作.合成后已觉醒")

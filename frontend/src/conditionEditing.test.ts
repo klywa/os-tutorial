@@ -5,6 +5,23 @@ import {validateV04} from './templateV04';
 const event={id:'equip',name:'解释为何穿戴装备',parameters:[]};
 const config={event,v04:true};
 
+it('limits an asterisk snippet to the query before the caret',()=>{
+ const value='我方.等级 >= 3 and *我方阵容and 我方.血量 > 10';
+ const caret=value.indexOf('and 我方.血量');
+ const match=conditionCompletion(value,caret,config);
+ expect(match).toMatchObject({snippet:true,start:value.indexOf('*'),end:caret});
+ expect(value.slice(match?.end)).toBe('and 我方.血量 > 10');
+});
+
+it('uses the current lineup in the snippet and offers the root roster only outside predicates',()=>{
+ const snippet='*我方阵容';
+ expect(conditionCompletion(snippet,snippet.length,{...config,lineupName:'三分射'})?.choices[0]?.insert).toBe('我方.阵容名称 == "三分射"');
+ const member='动作.目标英雄.名称 in 我方.阵容英雄名';
+ expect(conditionCompletion(member,member.length,config)?.choices[0]?.label).toBe('阵容英雄名列表');
+ const predicate='any(我方.场上英雄列表, .名称 in 我方.阵容英雄名';
+ expect(conditionCompletion(predicate,predicate.length,config)?.choices??[]).not.toContainEqual(expect.objectContaining({label:'阵容英雄名列表'}));
+});
+
 it('renders nested conditions compactly while keeping literals and legacy decimals intact',()=>{
  const source='(我方.等级 >= 3\n and (动作.目标英雄.名称 in ["曹操", "赵云"] or 我方.等级 == 4))';
  const formatted=compactCondition(source);

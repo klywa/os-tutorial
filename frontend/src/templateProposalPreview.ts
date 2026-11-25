@@ -2,7 +2,7 @@ import {applyTemplateGroupFields,groupDiffKeys,type TemplateChange,type Template
 
 export type TemplateProposalPreview={
  proposal_id:string;author:string;created_at:string;source?:string|null;proposal_revision?:string;change_index?:number;
- change:TemplateChange;base:TemplateGroup|null;event?:TemplateEvent;review_status_changed?:boolean;
+ change:TemplateChange;base:TemplateGroup|null;event?:TemplateEvent;review_status_changed?:boolean;inline_trigger?:boolean;
 };
 
 export function newestProposalFirst<T extends {created_at:string}>(a:T,b:T){
@@ -19,7 +19,7 @@ export function proposalCardPreview(proposal:TemplateProposal,id:string):Templat
  const event=proposal.changes.find(change=>change.kind==='event'&&change.action==='put'&&change.id===(next??base)?.event_id)?.value as TemplateEvent|undefined;
  return {proposal_id:proposal.id,author:proposal.author,created_at:proposal.created_at,source:proposal.source,
   proposal_revision:proposal.proposal_revision,change_index,change,base,event,
-  review_status_changed:Object.hasOwn(proposal.group_review_overrides??{},id)};
+  review_status_changed:Object.hasOwn(proposal.group_review_overrides??{},id),...(proposal.inline_trigger?{inline_trigger:true}:{})};
 }
 
 export function projectProposalCard(original:TemplateGroup,preview:TemplateProposalPreview){

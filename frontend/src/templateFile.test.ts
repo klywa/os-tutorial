@@ -1,5 +1,6 @@
 import {describe,expect,it,vi} from 'vitest';
 import {fileDeliveryDocument,fileImportDocument,fileTemplateScopeId,fixEditedLocalUtterances,parseTemplateFile,previewTemplateFileExport,reviewLocalGroup,saveTemplateFile,templateGroupSeason,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument} from './templateFile';
+import {emptyTemplateFilters,filterTemplateGroups} from './templates';
 
 const input={
  kind:'speech-template-library',schema_version:3,
@@ -10,6 +11,13 @@ const input={
 describe('export to a template file',()=>{
  const group={...input.groups[0],id:'group_source'};
  const source={...input,groups:[group]};
+ it('keeps a document note on full export and omits it from selected exports and imports',()=>{
+  const file=parseTemplateFile(JSON.stringify({...source,note:'整份文件的笔记'}));
+  expect(fileDeliveryDocument(file)).toHaveProperty('note','整份文件的笔记');
+  expect(fileDeliveryDocument(file,[group.id])).not.toHaveProperty('note');
+  expect(fileImportDocument(file,[group.id])).not.toHaveProperty('note');
+  expect(file.document).toHaveProperty('note','整份文件的笔记');
+ });
  it('creates a v3 document and rejects a nonempty new destination',()=>{
   expect(previewTemplateFileExport(source,'','new').document).toEqual(source);
   expect(()=>previewTemplateFileExport(source,JSON.stringify(input),'new')).toThrow('已有内容');
@@ -99,15 +107,15 @@ describe('browser template files',()=>{
   expect(reopened.snapshot.groups.map(row=>row.id)).toEqual(['first','other-scope','other-rule','other-event']);
   expect(reopened.snapshot.groups[0]).toMatchObject({review_status:'final_reviewed',reviewed_by:'audit',reviewed_at:'2026-01-01'});
  });
- it('fixes edited existing text while leaving new and unchanged utterances as supplied',()=>{
+ it('fixes added and edited speech while keeping unchanged or ignored speech as supplied',()=>{
   const file=parseTemplateFile(JSON.stringify(input));
   const group=file.snapshot.groups[0],old=group.utterances[0];
   const added={id:'new',text:'新增话术。'};
   const first=fixEditedLocalUtterances(group,{...group,utterances:[old,added]});
-  expect(first.utterances).toEqual([old,added]);
-  const next=fixEditedLocalUtterances(first,{...first,utterances:[{...old,text:'修改话术。',ignored:true},added]});
+  expect(first.utterances).toEqual([old,{...added,fixed:true}]);
+  const next=fixEditedLocalUtterances(first,{...first,utterances:[{...old,text:'修改话术。',ignored:true},first.utterances[1]]});
   const reopened=parseTemplateFile(JSON.stringify(writeTemplateDocument(file,[{kind:'group',action:'put',id:group.id,value:next}])));
-  expect(reopened.snapshot.groups[0].utterances).toMatchObject([{text:'修改话术。',ignored:true},{text:added.text}]);
+  expect(reopened.snapshot.groups[0].utterances).toMatchObject([{text:'修改话术。',ignored:true},{text:added.text,fixed:true}]);
   expect(reopened.snapshot.groups[0].utterances[0].fixed).toBeUndefined();
   const editedAgain=fixEditedLocalUtterances(next,{...next,utterances:[{...next.utterances[0],text:'再次修改。'},added]});
   expect(editedAgain.utterances[0]).toEqual({id:old.id,text:'再次修改。',ignored:true});
@@ -211,6 +219,30 @@ describe('browser template files',()=>{
   const file=parseTemplateFile(JSON.stringify({...input,groups:[{...input.groups[0],version:'历史版本'}]}));
   expect(file.snapshot.groups[0].version).toBe('历史版本');
   expect(templateGroupSeason(file.snapshot.groups[0])).toBe('S1');
+ });
+ it('keeps one group in each applicable season and mode when reading and saving list scopes',()=>{
+  const original={...input.groups[0],version:['S1','S2'],mode:['万象大赛','合作模式']};
+  const file=parseTemplateFile(JSON.stringify({...input,groups:[original]}));
+  expect(file.groupErrors).toEqual([]);
+  const [group]=file.snapshot.groups;
+  const matches=(version:string,mode:string)=>filterTemplateGroups(file.snapshot.groups,{...emptyTemplateFilters,version,mode},[]);
+  expect(matches('S1','万象大赛')).toEqual([group]);
+  expect(matches('S2','合作模式')).toEqual([group]);
+  expect(matches('S2','其他模式')).toEqual([]);
+  const updated=writeTemplateDocument(file,[{kind:'group',action:'put',id:group.id,value:{...group,name:'共享组'}}]);
+  expect(updated.groups[0]).toMatchObject({name:'共享组',version:['S1','S2'],mode:['万象大赛','合作模式']});
+  expect(withLocalEntitySnapshot(group,file.snapshot.events[0],{season:'S2',items:[]},[]).entity_snapshot?.season).toBe('S2');
+ });
+ it('rejects empty and mistyped scope lists',()=>{
+  const groups=[{...input.groups[0],version:[]},{...input.groups[1],mode:['万象大赛',42]},
+   {...input.groups[0],version:['S1','s1']},{...input.groups[1],mode:[' 万象大赛']}];
+  expect(parseTemplateFile(JSON.stringify({...input,groups})).groupErrors).toHaveLength(4);
+ });
+ it('keeps the original group identity while expanding a legacy scope',()=>{
+  const file=parseTemplateFile(JSON.stringify(input));
+  const [group]=file.snapshot.groups;
+  const updated=writeTemplateDocument(file,[{kind:'group',action:'put',id:group.id,value:{...group,version:['S1','S2'],mode:['万象大赛']}}]);
+  expect(parseTemplateFile(JSON.stringify(updated)).snapshot.groups[0]).toMatchObject({id:group.id,version:['S1','S2'],mode:['万象大赛']});
  });
  it('round-trips untouched rows while saving edited name-based data',()=>{
   const file=parseTemplateFile(JSON.stringify(input));

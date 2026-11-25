@@ -59,6 +59,21 @@ function sectionFor(group:TemplateGroup,event:TemplateEvent|undefined,family:num
  return {key:JSON.stringify(['family',family,target,equipment]),title};
 }
 
+export function templateRelatedSection(group:TemplateGroup,event:TemplateEvent|undefined){
+ const family=event&&familyOf(event);
+ if(family===undefined)return;
+ const section=sectionFor(group,event,family);
+ if(section.title!==familyLabels[family])return section;
+}
+
+export function templateConditionLength(group:TemplateGroup,event?:TemplateEvent,scopeName:ScopeName=id=>id){
+ const expression=compactCondition(templateDisplayExpression(group,scopeName));
+ const legacy=group.expression===undefined?group.conditions.map(condition=>
+  [event?.parameters.find(parameter=>parameter.key===condition.parameter_key)?.name??condition.parameter_key,
+   operators[condition.operator],valueText(condition.value)].join(' ')).join(' '):'';
+ return expression.length+legacy.length;
+}
+
 export function templateDisplaySections(groups:TemplateGroup[],events:TemplateEvent[],scopeName:ScopeName=id=>id){
  const ordered=orderTemplateEvents(events);
  const eventRanks=new Map(ordered.map((event,index)=>[event.id,index]));
@@ -83,11 +98,7 @@ export function templateDisplaySections(groups:TemplateGroup[],events:TemplateEv
     rank:eventRanks.get(group.event_id)??ordered.length,rows:[]};
    bucket.events.set(group.event_id,eventBucket);
   }
-  const expression=compactCondition(templateDisplayExpression(group,scopeName));
-  const legacy=group.expression===undefined?group.conditions.map(condition=>
-   [event?.parameters.find(parameter=>parameter.key===condition.parameter_key)?.name??condition.parameter_key,
-    operators[condition.operator],valueText(condition.value)].join(' ')).join(' '):'';
-  eventBucket.rows.push({group,length:expression.length+legacy.length});
+  eventBucket.rows.push({group,length:templateConditionLength(group,event,scopeName)});
  }
  return [...sections.values()].sort((a,b)=>a.rank-b.rank).map(({key,title,events})=>({key,title,
   events:[...events.values()].sort((a,b)=>a.rank-b.rank).map(({key,title,rows})=>({

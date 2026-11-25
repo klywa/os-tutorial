@@ -61,7 +61,7 @@ function actionCardType(event:string,field:string){
  return ['效果牌','天赋','棋手技能','英雄'].find(type=>event.includes(type));
 }
 
-export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateEvent[],entities:CatalogEntity[],catalog?:ConditionCatalog,onMissing?:(name:string,categories:string[])=>void,actionOnly=false):TemplateEntityEntry[]{
+export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateEvent[],entities:CatalogEntity[],catalog?:ConditionCatalog,onMissing?:(name:string,categories:string[])=>void,actionOnly=false,lineupHeroes?:ReadonlySet<string>):TemplateEntityEntry[]{
  const entries=new Map<string,TemplateEntityEntry>();
  const byId=new Map<string,TemplateEntityEntry>();
  const names=new Map<string,Set<TemplateEntityEntry>>();
@@ -169,7 +169,30 @@ export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateE
     }
    }
    const expression=readV04Condition(group.expression);
-   if(expression)visit(expression);
+   if(expression){
+    visit(expression);
+    if(lineupHeroes?.size){
+     function conjuncts(node:ConditionNodeV04):ConditionNodeV04[]{
+      return node.kind==='binary'&&node.op==='and'?[...conjuncts(node.left),...conjuncts(node.right)]:[node];
+     }
+     function referencesName(node:ConditionNodeV04,path:string):boolean{
+      if(node.kind==='path')return node.parts.join('.')===path;
+      if(node.kind==='binary')return referencesName(node.left,path)||referencesName(node.right,path);
+      if(node.kind==='negation')return referencesName(node.child,path);
+      return node.kind==='call'&&node.args.some(arg=>referencesName(arg,path));
+     }
+     const terms=conjuncts(expression);
+     for(const term of terms){
+      if(term.kind!=='binary'||term.op!=='in'||term.left.kind!=='path'||term.right.kind!=='path'||
+        term.right.parts.join('.')!=='我方.阵容英雄名列表')continue;
+      const [root,field,property,...rest]=term.left.parts;
+      if(root!=='动作'||property!=='名称'||rest.length||keyed.has(field)||actionCardType(event.name,field)!=='英雄')continue;
+      const path=term.left.parts.join('.');
+      if(terms.some(other=>other!==term&&referencesName(other,path)))continue;
+      for(const name of lineupHeroes)record(field,name);
+     }
+    }
+   }
    continue;
   }
   if(group.expression?.trim()){

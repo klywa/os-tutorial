@@ -1,7 +1,9 @@
 import TemplateRelatedCopy,{type RelatedCopyChoice} from './TemplateRelatedCopyMenu';
 import {relatedCopy,relatedDisplayRows,relatedEventDefinition,relatedTargets} from './templateRelatedCopy';
-import {templateDisplayExpression,templateDisplaySections} from './templateDisplayGroups';
-import {registeredEvent,validateV04,wildcardKey} from './templateV04';
+import {templateConditionLength,templateDisplayExpression,templateDisplaySections,templateRelatedSection} from './templateDisplayGroups';
+import {catalogV04,registeredEvent,validateV04,validateV04Template,wildcardKey} from './templateV04';
+import TemplateInlineChoice from './TemplateInlineChoice';
+import {canEditTemplateArgument,canonicalTemplateName,changeTemplateArgument,copyConditionExpression,moveTemplateEvent,sameCopyCondition,startTemplateEventCopy,templateCardGroups,templateTriggerParameters} from './templateInlineTrigger';
 import {createPortal} from 'react-dom';
 import {TemplateConditionPreview} from './TemplateConditionPreview';
 import TemplateGroupName from './TemplateGroupName';
@@ -13,11 +15,11 @@ import TemplateBatchMetadata from './TemplateBatchMetadata';
 import {loadTemplateWarnings} from './TemplateWarnings';
 import {parameterType} from './templateRules';
 import {argumentCardIds,fileTriggerChanged,fixedArguments,parameterRole,templateAction} from './templateAction';
-import {useCallback,useEffect,useId,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from 'react';
+import {Fragment,useCallback,useEffect,useId,useLayoutEffect,useMemo,useRef,useState,type ReactNode} from 'react';
 import {useAuth} from './auth';
 import {api} from './model';
 import {EntityChip,ReadingCards,useCards} from './EntityCards';
-import TemplateFilterBar,{TemplateEventList} from './TemplateFilters';
+import TemplateFilterBar,{TemplateEventList,TemplateLineupEventFilter} from './TemplateFilters';
 import TemplateEditor,{TemplateDialog,type TemplateEditorScratch} from './TemplateEditor';
 import type {ConditionCatalog} from './templateRules';
 import TemplateSettings from './TemplateSettings';
@@ -30,12 +32,14 @@ import TemplateFileExport,{type FileExportScope} from './TemplateFileExport';
 import TemplateHelp from './TemplateHelp';
 import TemplateFeedback,{LocalTemplateFeedback,activityLabel,type Activity,type FeedbackTarget} from './TemplateFeedback';
 import TemplateBoard,{TemplateEntityList,buildTemplateEntityIndex} from './TemplateBoard';
-import TemplateLineupBoard,{buildLineupTabs,lineupBoardRows,TemplateLineupSidebar,unscopedLineup} from './TemplateLineupBoard';
+import TemplateLineupBoard,{addLineupRosters,buildLineupTabs,generalHeroLabel,lineupBoardRows,lineupRosterName,lineupRosterNames,lineupTemplateCounts,TemplateLineupSidebar,unscopedLineup} from './TemplateLineupBoard';
+import FloatingDocumentNote from './FloatingDocumentNote';
+import {TemplateLineupName} from './ConditionTextEditor';
 import TemplateBrowsePopup from './TemplateBrowsePopup';
 import TemplateRevisions,{TemplateOfficialDescriptions} from './TemplateRevisions';
-import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateFile,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeason,templateGroupVersion,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
+import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateFile,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeasons,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
 import {recentTemplateFiles,rememberRecentTemplateFile,sameTemplateFile,type RecentTemplateFile} from './templateRecentFiles';
-import {applyTemplateGroupFields,groupDiffKeys,appendTemplateMetadata,copyTemplateGroup,deriveTemplateEntities,downloadTemplates,effectiveReviewStatus,emptyTemplateFilters,filterTemplateGroups,templateGroupVisible,lineupPlayer,templateExplanationFields,templateMetadataLabels,templateReviewLabels,templateReviewLabel,mergeTemplateWriteSnapshot,orderTemplateEvents,operators,templateId,valueText,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateFilters,type TemplateGameMode,type TemplateGroup,type TemplateMetadataField,type TemplateProposal,type TemplateReviewStatus,type TemplateSnapshot,type PortableTemplateLibrary,type TemplateWarning,type UtteranceBindings} from './templates';
+import {actionArgumentFields,applyTemplateGroupFields,groupDiffKeys,appendTemplateMetadata,copyTemplateGroup,deriveTemplateEntities,downloadTemplates,effectiveReviewStatus,emptyTemplateFilters,filterTemplateGroups,templateGroupVisible,lineupPlayer,templateExplanationFields,templateMetadataLabels,templateRangeKey,templateRangeText,templateRangeValues,templateVersionValues,templateReviewLabels,templateReviewLabel,mergeTemplateWriteSnapshot,orderTemplateEvents,operators,templateId,valueText,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateFilters,type TemplateGameMode,type TemplateGroup,type TemplateMetadataField,type TemplateParameter,type TemplateProposal,type TemplateReviewStatus,type TemplateSnapshot,type PortableTemplateLibrary,type TemplateWarning,type UtteranceBindings} from './templates';
 import type {Note,Options} from './types';
 import './templates.css';
 
@@ -101,9 +105,15 @@ type ProposalControl={rows:TemplateProposalPreview[];active?:TemplateProposalPre
  onSaveUtterance?:(change:UtteranceChange,approve:boolean)=>Promise<void>;
 };
 
-export function TemplateGroupCard({group,event,catalog,utteranceBindings,entities:archivedEntities=[],scopeName,editable,onEdit,onSaveName,onSaveMetadata,metadataLocked=false,onCopy,relatedCopyOptions,onRelatedCopy,onDelete,onExport,onFeedback,commentCounts,lastActivity,onRevisions,onReviewStatus,reviewPending,canFinalReview=false,onToggleIgnored,onToggleFixed,savingIgnore,warning,onConfirm,onSaveUtterances,utteranceDrafts,onUtteranceDraftsChanged,flagFeedback,conditionEditor,onSaveExpression,scopeOptions,annotator=false,interactionLocked=false,fileMode=false,allowExport=true,workflow,proposal,proposalControl,originalGroup}:{group:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;utteranceBindings?:UtteranceBindings;entities?:TemplateEntity[];scopeName:(id:string|null)=>string;editable:boolean;onEdit:()=>void;onSaveName?:(name:string)=>Promise<void>;onSaveMetadata?:(field:'tags'|'batch',values:string[])=>Promise<void>;metadataLocked?:boolean;onCopy?:()=>void;relatedCopyOptions?:()=>RelatedCopyChoice[];onRelatedCopy?:(event:string)=>void;onDelete?:()=>void;onExport?:()=>void;onFeedback?:(id?:string)=>void;commentCounts?:Record<string,number>;lastActivity?:Activity;onRevisions?:()=>void;onReviewStatus?:(status:TemplateReviewStatus|null)=>void;reviewPending?:PendingReview;canFinalReview?:boolean;onToggleIgnored?:(utteranceId?:string)=>void;onToggleFixed?:(utteranceId:string)=>void;savingIgnore?:{group:boolean;rows:string[]};warning?:TemplateWarning;onConfirm?:()=>void;onSaveUtterances?:(change:UtteranceChange)=>Promise<void>;utteranceDrafts?:UtteranceDraftStore;onUtteranceDraftsChanged?:()=>void;flagFeedback?:(id:string,field:EditFlag)=>UtteranceFlagFeedback|undefined;conditionEditor?:ReactNode;onSaveExpression?:(value:string,scope:TemplateGroup['scope'])=>Promise<void>;scopeOptions?:TemplateScopeOptions;annotator?:boolean;interactionLocked?:boolean;fileMode?:boolean;allowExport?:boolean;workflow?:ReactNode;proposal?:CardProposal;proposalControl?:ProposalControl;originalGroup?:TemplateGroup}){
+type InlineTriggerEditing={events:string[];saveEvent:(name:string)=>Promise<void>;saveArgument:(parameter:TemplateParameter,value:string|null,entityId?:string)=>Promise<void>};
+type CopyKind='event'|'condition';
+type CopyDraft={kind:CopyKind;source:TemplateGroup;group:TemplateGroup;view:string;popupKey?:string;target?:TemplateEvent;error?:string;busy?:boolean};
+
+export function TemplateGroupCard({group,event,catalog,utteranceBindings,entities:archivedEntities=[],scopeName,editable,onEdit,onSaveName,onSaveMetadata,metadataLocked=false,onCopy,relatedCopyOptions,onRelatedCopy,onDelete,onExport,onFeedback,commentCounts,lastActivity,onRevisions,onReviewStatus,reviewPending,canFinalReview=false,onToggleIgnored,onToggleFixed,savingIgnore,warning,onConfirm,onSaveUtterances,utteranceDrafts,onUtteranceDraftsChanged,flagFeedback,conditionEditor,onSaveExpression,scopeOptions,annotator=false,interactionLocked=false,fileMode=false,allowExport=true,workflow,proposal,proposalControl,originalGroup,inlineTrigger,conditionVariant=false}:{group:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;utteranceBindings?:UtteranceBindings;entities?:TemplateEntity[];scopeName:(id:string|null)=>string;editable:boolean;onEdit:()=>void;onSaveName?:(name:string)=>Promise<void>;onSaveMetadata?:(field:'tags'|'batch',values:string[])=>Promise<void>;metadataLocked?:boolean;onCopy?:(kind:CopyKind)=>void;relatedCopyOptions?:()=>RelatedCopyChoice[];onRelatedCopy?:(event:string)=>void;onDelete?:()=>void;onExport?:()=>void;onFeedback?:(id?:string)=>void;commentCounts?:Record<string,number>;lastActivity?:Activity;onRevisions?:()=>void;onReviewStatus?:(status:TemplateReviewStatus|null)=>void;reviewPending?:PendingReview;canFinalReview?:boolean;onToggleIgnored?:(utteranceId?:string)=>void;onToggleFixed?:(utteranceId:string)=>void;savingIgnore?:{group:boolean;rows:string[]};warning?:TemplateWarning;onConfirm?:()=>void;onSaveUtterances?:(change:UtteranceChange)=>Promise<void>;utteranceDrafts?:UtteranceDraftStore;onUtteranceDraftsChanged?:()=>void;flagFeedback?:(id:string,field:EditFlag)=>UtteranceFlagFeedback|undefined;conditionEditor?:ReactNode;onSaveExpression?:(value:string,scope:TemplateGroup['scope'])=>Promise<void>;scopeOptions?:TemplateScopeOptions;annotator?:boolean;interactionLocked?:boolean;fileMode?:boolean;allowExport?:boolean;workflow?:ReactNode;proposal?:CardProposal;proposalControl?:ProposalControl;originalGroup?:TemplateGroup;inlineTrigger?:InlineTriggerEditing;conditionVariant?:boolean}){
  const cards=useCards(),entities=deriveTemplateEntities(group,event,cards,archivedEntities);
  const actionValues=fixedArguments(group,event);
+ const parameters=event?templateTriggerParameters(group,event):[];
+ const actionPaths=event&&group.syntax_version==='0.4'?actionArgumentFields(event).map(field=>'动作.'+field):[];
  const explanations=templateExplanationFields.flatMap(([field,label])=>group[field]?.trim()?[{label,text:group[field]!}]:[]);
  const entries=explanations.length?explanations:group.explanation?.trim()?[{text:group.explanation}]:[];
  const expression=templateDisplayExpression(group,scopeName);
@@ -124,12 +134,16 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
  const status=reviewPending?reviewPending.status:effectiveReviewStatus(group.review_status),historyId=useId();
  const reviewDetails=group.reviewed_by?`复核 · ${group.reviewed_by}${group.reviewed_at?' · '+new Date(group.reviewed_at).toLocaleString():''}`:undefined;
  const Entity=fileMode?({label}:{label?:string;ids:string[];portrait?:boolean})=><span className="entity-chip">{label}</span>:EntityChip;
- return <article data-feedback-group={group.id} data-proposal-card={proposal?'preview':undefined} tabIndex={-1} className={'template-group '+(warning?'template-needs-check ':'')+(group.ignored?'template-group-ignored':'')} aria-label={group.name}>
-  <header><div><div className="template-card-title">
-   {event&&<span className="template-action-badge">{event.name.replace(/^解释为何\s*/,'')}</span>}
+ const badge=event?.name.replace(/^解释为何\s*/,'');
+ const eventField=(label:string,value:string,className?:string)=>inlineTrigger&&!conditionVariant?
+  <TemplateInlineChoice label={label} value={value} className={className} choices={inlineTrigger.events} disabled={interactionLocked} onSave={inlineTrigger.saveEvent}/>:
+  <span className={className}>{value}</span>;
+ return <article data-feedback-group={group.id} data-proposal-card={proposal?'preview':undefined} tabIndex={-1} className={'template-group '+(warning?'template-needs-check ':'')+(group.ignored?'template-group-ignored':'')+(conditionVariant?' template-condition-variant':'')} aria-label={conditionVariant?'触发条件与话术':group.name}>
+  <header><div>{!conditionVariant&&<div className="template-card-title">
+   {badge&&eventField('编辑动作徽标',badge,'template-action-badge')}
    <h2 data-proposal-change={changed('name')||proposal?.deleted||undefined}>{proposal?.deleted?<s>{group.name}</s>:editable&&onSaveName?
    <TemplateGroupName name={group.name} disabled={interactionLocked} onSave={onSaveName}/>:group.name}</h2>
-   </div><div className="template-title-controls">
+   </div>}<div className="template-title-controls">
    {entries.length>0&&<span data-proposal-change={changed('explanation',...templateExplanationFields.map(([field])=>field))}><GroupExplanation entries={entries}/></span>}
    {group.wording_brief?.trim()&&<span data-proposal-change={changed('wording_brief')}><GroupExplanation title="话术构思" entries={[{text:group.wording_brief}]}/></span>}
    {(workflow||proposal)&&<div className="template-review-statuses" role="group" aria-label={'审核状态 · '+group.name} aria-busy={!!reviewPending}>
@@ -141,9 +155,11 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
       onClick={()=>onReviewStatus?.(selected?null:value)}>{label}</button>;
     })}{status===null&&changed('review_status')&&<span className="template-proposal-mark">{templateReviewLabel(null)}</span>}
    </div>}</div>
-   <div className="template-scope"><span data-proposal-change={changed('event_id','event')}>{event?.name??group.event_id}</span>
-    {(group.version||changed('version')&&originalGroup?.version)&&<span data-proposal-change={changed('version')}>{group.version||deletedLabel(originalGroup!.version!)}</span>}
-    {(group.mode||changed('mode')&&originalGroup?.mode)&&<span data-proposal-change={changed('mode')}>{group.mode||deletedLabel(originalGroup!.mode!)}</span>}
+   <div className="template-scope">{!conditionVariant&&<span data-proposal-change={changed('event_id','event')}>{eventField('编辑事件名称',event?.name??group.event_id)}</span>}
+    {(['version','mode'] as const).map(field=>{
+     const value=templateRangeText(group[field]),original=templateRangeText(originalGroup?.[field]);
+     return (value||changed(field)&&original)&&<span key={field} data-proposal-change={changed(field)}>{value||deletedLabel(original)}</span>;
+    })}
     <TemplateInlineMetadata label="标签" values={group.tags??[]} proposalPrevious={changed('tags')?originalGroup?.tags??[]:undefined} disabled={metadataLocked} onSave={editable&&onSaveMetadata?values=>onSaveMetadata('tags',values):undefined}/>
     <TemplateInlineMetadata label="批次" values={group.batch??[]} proposalPrevious={changed('batch')?originalGroup?.batch??[]:undefined} disabled={metadataLocked} onSave={editable&&onSaveMetadata?values=>onSaveMetadata('batch',values):undefined}/>
     {group.syntax_version==='0.4'&&<span>额外信息键 {group.extra_key||'（空）'}</span>}
@@ -158,7 +174,8 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
     {onFeedback&&<button disabled={interactionLocked} onClick={()=>onFeedback()}>{fileMode?'组批注':'组批注与记录'} <span className="template-comment-count">{commentCounts?.['']??0}</span></button>}
     {allowExport&&<button aria-label={'导出json：'+group.name} disabled={interactionLocked||group.ignored||group.utterances.every(row=>row.ignored)} onClick={onExport}>导出json</button>}
     {editable&&<>
-     {onCopy&&<button type="button" aria-label={'复制模板组'+group.name} disabled={interactionLocked} onClick={onCopy}>复制</button>}
+     {onCopy&&<TemplateRelatedCopy label="复制" buttonLabel={'复制模板组'+group.name} choicesLabel="复制模板组方式"
+      disabled={interactionLocked} options={()=>[{event:'新事件'},{event:'新条件'}]} onChoose={choice=>onCopy(choice==='新事件'?'event':'condition')}/>}
      {relatedCopyOptions&&onRelatedCopy&&<TemplateRelatedCopy disabled={interactionLocked} options={relatedCopyOptions} onChoose={onRelatedCopy}/>}
      {onToggleIgnored&&<button disabled={interactionLocked} onClick={()=>onToggleIgnored()}>{savingIgnore?.group?'保存中…':group.ignored?'取消忽略':'忽略'}</button>}
      {onDelete&&<button aria-label={'删除模板'+group.name} disabled={interactionLocked||group.utterances.some(row=>row.fixed)} title={group.utterances.some(row=>row.fixed)?'先取消固定再删除模板组':undefined} onClick={onDelete}>删除模板</button>}</>}
@@ -183,10 +200,17 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
   {warning&&<div className="template-warning" role="status"><strong>关联资料已变化，待检查</strong><span>{warning.entities.map(e=>e.name).join('、')}</span>{editable&&!annotator&&onConfirm&&<button disabled={interactionLocked} onClick={onConfirm}>已检查，无需修改</button>}</div>}
   <div className="template-group-body"><section className="template-read-conditions" aria-label="卡牌与条件">
    <p className="template-action" data-proposal-change={changed('rule','event_id','event')}><strong>触发动作</strong> {templateAction(group,event,actionValues)}</p>
-   {!!event?.parameters.length && <dl aria-label="动作参数" className="template-action-parameters" data-proposal-change={changed('rule','event_id','event')}>{event.parameters.map(p=>{
+   {!!event&&!!parameters.length && <dl aria-label="动作参数" className="template-action-parameters" data-proposal-change={changed('rule','event_id','event')}>{parameters.map(p=>{
+    const position=/^arg([1-9]\d*)$/.exec(p.key);
+    const label=(position&&actionPaths[Number(position[1])-1])||p.key;
     const value=actionValues.get(p.key),ids=value?argumentCardIds(p,value,cards):[];
-    return <div key={p.key}><dt><code>{p.key}</code></dt><dd>{parameterRole(event,p)} <small>（{parameterType(p)}）</small>
-     {value&&(ids.length?<EntityChip ids={ids} label={value} portrait={!fileMode}/>:<strong> · {value}</strong>)}</dd></div>;
+    const candidates=p.type==='entity'?cards.filter(card=>!p.entity_categories?.length||p.entity_categories.includes(card.category)):[];
+    const argument=inlineTrigger&&canEditTemplateArgument(group,event,p)?<TemplateInlineChoice label={'编辑参数 '+label}
+     value={value??'未固定'} className="template-inline-argument" disabled={interactionLocked} previewIds={ids} firstChoice="未固定"
+     choices={p.type==='entity'?candidates.map(card=>card.name):(p.suggestions??[]).map(valueText)} allowText={p.type!=='entity'}
+     onSave={next=>inlineTrigger.saveArgument(p,next==='未固定'?null:next,candidates.find(card=>card.name===next)?.id)}/>:
+     value&&(ids.length?<EntityChip ids={ids} label={value} portrait={!fileMode}/>:<strong> · {value}</strong>);
+    return <div key={p.key}><dt><code>{label}</code></dt><dd>{parameterRole(event,p)} <small>（{parameterType(p)}）</small>{argument}</dd></div>;
    })}</dl>}
    <div className="template-condition-scopes" data-proposal-change={changed('scope')}><span>棋手：{scopeName(group.scope.player_id)}</span><span>阵容：{scopeName(group.scope.lineup_note_id)}</span></div>
    {entities.length>0&&<div className="template-chips" aria-label="关联卡牌" data-proposal-change={changed('related_entities')}>{entities.map(e=><Entity key={e.id} ids={[e.id]} label={e.name} portrait/>)}</div>}
@@ -224,7 +248,7 @@ function applyIgnore(group:TemplateGroup,change:IgnoreChange):TemplateGroup{
 }
 type Preview={revision:string;changes:TemplateChange[];summary:unknown;errors:unknown[];preserved_fixed?:{group_id:string;utterance_id:string;group_name:string;text:string}[]};
 type OpenFile={handle:LocalFileHandle;raw:string};
-type LineupView={active:boolean;lineup:string;player:string;query:string;filters:Pick<TemplateFilters,'review_status'|'onlyFixed'|'hideIgnored'>};
+type LineupView={active:boolean;lineup:string;player:string;query:string;eventIds?:string[];filters:Pick<TemplateFilters,'review_status'|'onlyFixed'|'hideIgnored'>};
 type BrowsePopup={key:string;title:string;ids:string[];parents:Map<string,string>;visibility:Pick<TemplateFilters,'onlyFixed'|'hideIgnored'>};
 type View={filters:TemplateFilters;entityKey:string;byEntity:boolean;compact:boolean;selected:Set<string>;lineupView?:LineupView};
 export type TemplateWorkspaceState={opened?:OpenFile|null;views?:Record<string,View>;details?:Record<string,string|null>;scroll?:Record<string,{top:number;visible:number}>;utteranceDrafts?:Map<string,UtteranceDraftStore>;cardEditors?:Map<string,CardEditor>;fileKeys?:WeakMap<LocalFileHandle,string>};
@@ -232,7 +256,7 @@ const emptyView:View={filters:emptyTemplateFilters,entityKey:'',byEntity:false,c
 const emptyLineupView:LineupView={active:false,lineup:'',player:'',query:'',filters:{hideIgnored:true}};
 const templatePath=(season:Season,suffix='')=>'templates'+suffix+(suffix.includes('?')?'&':'?')+'season='+season;
 
-export default function TemplateLibrary({notes,options,onDirty,onBusyChange,season='S1',source='database',gameMode,workspace}:{season?:Season;source?:'database'|'file';gameMode?:TemplateGameMode;notes:Note[];options:Options;onDirty?:(dirty:boolean)=>void;onBusyChange?:(busy:boolean)=>void;workspace?:TemplateWorkspaceState}){
+export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDirty,onBusyChange,season='S1',source='database',gameMode,workspace}:{season?:Season;source?:'database'|'file';gameMode?:TemplateGameMode;notes:Note[];options:Options;onDirty?:(dirty:boolean)=>void;onDocumentNoteDirty?:(dirty:boolean)=>void;onBusyChange?:(busy:boolean)=>void;workspace?:TemplateWorkspaceState}){
  const [legacy,setLegacy]=useState<TemplateSnapshot|null>(null),[showLegacy,setShowLegacy]=useState(false);
  const {session}=useAuth(),fileMode=source==='file',legacyMode=!fileMode&&season==='S2'&&showLegacy&&!!legacy?.groups.length;
  const admin=session.role==='admin',annotator=session.role==='annotator',reviewer=!legacyMode&&(admin||session.role==='quality'),editable=reviewer||!legacyMode&&annotator;
@@ -310,6 +334,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  const lineupView=views[lineupViewKey]?.lineupView??emptyLineupView;
  const byLineup=lineupView.active;
  const [browsePopup,setBrowsePopup]=useState<BrowsePopup>();
+ const [copyDraft,setCopyDraft]=useState<CopyDraft>();
  function openBrowsePopup(title:string,ids:string[],visibility:BrowsePopup['visibility']){
   if(!ids.length)return;
   setError('');
@@ -378,6 +403,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  const reviewKey=(id:string)=>source+':'+season+':'+id;
  const [fileExport,setFileExport]=useState<{group?:TemplateGroup;scope?:FileExportScope}>();
  const saveFileLock=useRef(false),pickerLock=useRef(false);
+ const documentNoteDirty=useRef(false);
+ function changeDocumentNoteDirty(dirty:boolean){documentNoteDirty.current=dirty;onDocumentNoteDirty?.(dirty);}
  const [pendingIgnores,setPendingIgnores]=useState<IgnoreChange[]>([]);
  const [queuedWrites,setQueuedWrites]=useState(0);
  const queue=useRef<Promise<void>>(Promise.resolve());
@@ -464,26 +491,92 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  const scopeNames=useMemo(()=>new Map([...notes.map(note=>[note.id,note.title] as const),...players.map(player=>[player.id,player.name] as const)]),[notes,players]);
  const scopeName=useCallback((id:string|null)=>id?(scopeNames.get(id)??snapshot?.scope_names?.[id]??id):'通用',
   [scopeNames,snapshot?.scope_names]);
- const allGroups=useMemo(()=>snapshot?.groups.filter(group=>(legacyMode||templateGroupSeason(group)===season)&&(!gameMode||group.mode===gameMode))??[],[snapshot,season,legacyMode,gameMode]);
+ const allGroups=useMemo(()=>snapshot?.groups.filter(group=>(legacyMode||templateGroupSeasons(group).includes(season))&&(!gameMode||templateRangeValues(group.mode).includes(gameMode)))??[],[snapshot,season,legacyMode,gameMode]);
+ const lineupEventOptions=useMemo(()=>{
+  if(!byLineup)return [];
+  const used=new Set(allGroups.map(group=>group.event_id));
+  return orderTemplateEvents((snapshot?.events??[]).filter(event=>used.has(event.id)));
+ },[byLineup,allGroups,snapshot?.events]);
+ const selectedLineupEvents=useMemo(()=>{
+  const selected=new Set(lineupView.eventIds);
+  return new Set(lineupEventOptions.filter(event=>selected.has(event.id)).map(event=>event.id));
+ },[lineupEventOptions,lineupView.eventIds]);
+ const lineupEventGroups=useMemo(()=>selectedLineupEvents.size
+  ?allGroups.filter(group=>selectedLineupEvents.has(group.event_id)):allGroups,[allGroups,selectedLineupEvents]);
+ const cardEvents=useMemo(()=>new Map(snapshot?.events.map(event=>[event.id,event])),[snapshot?.events]);
+ const displayNames=useMemo(()=>new Map(allGroups.map(group=>[group.id,canonicalTemplateName(group,cardEvents.get(group.event_id))??group.name])),[allGroups,cardEvents]);
  const metadataChoices=useMemo(()=>({tags:[...new Set(allGroups.flatMap(group=>group.tags??[]))],batch:[...new Set(allGroups.flatMap(group=>group.batch??[]))]}),[allGroups]);
  const entityEntries=useMemo(()=>buildTemplateEntityIndex(allGroups,snapshot?.events??[],lookups.entities,snapshot?.condition_catalog)
   .filter(row=>!fileMode||row.groupIds.size>0),[allGroups,snapshot,lookups,fileMode]);
- const lineupTabs=useMemo(()=>buildLineupTabs(allGroups,id=>players.find(p=>p.id===id)?.name??
-  notes.find(note=>note.id===id)?.title??snapshot?.scope_names?.[id]??id,fileMode),[allGroups,players,notes,snapshot,fileMode]);
+ const {lineupTabs,rosters}=useMemo(()=>{
+  const noteLineups=new Map(lineups.map(note=>[note.id,lineupRosterName(note,scopeName)]));
+  const tabs=buildLineupTabs(allGroups,id=>noteLineups.get(id)??scopeName(id),true);
+  const rosters=addLineupRosters(tabs,lineups.filter(note=>(note.seasons??['S1']).includes(season)),scopeName,!fileMode);
+  return {lineupTabs:tabs,rosters};
+ },[allGroups,lineups,season,scopeName,fileMode]);
  const lineupNames=[...lineupTabs.keys()].filter(name=>name!==unscopedLineup).sort((a,b)=>a.localeCompare(b,'zh-CN'));
  const selectedLineup=lineupTabs.has(lineupView.lineup)?lineupView.lineup:lineupNames[0]??(lineupTabs.has(unscopedLineup)?unscopedLineup:'');
  const selectedLineupTabs=lineupTabs.get(selectedLineup);
  const lineupPlayerTab=selectedLineupTabs?.has(lineupView.player)?lineupView.player:'';
- const lineupIds=selectedLineupTabs?.get(lineupPlayerTab);
- const lineupGroups=useMemo(()=>allGroups.filter(group=>lineupIds?.has(group.id)),[allGroups,lineupIds]);
- const lineupEntities=useMemo(()=>buildTemplateEntityIndex(lineupGroups,snapshot?.events??[],
-  lookups.entities,snapshot?.condition_catalog,undefined,true),[lineupGroups,snapshot,lookups]);
+ const lineupRoster=useMemo(()=>{
+  const names=new Map<string,string>();
+  for(const entity of byLineup?lookups.entities:[])if(entity.category==='heroes'){
+   names.set(entity.id,entity.name);
+   names.set(entity.name,entity.name);
+   for(const alias of entity.aliases??[])if(!names.has(alias))names.set(alias,entity.name);
+  }
+  const rosterFor=(name:string,player:string)=>new Set([...lineupRosterNames(rosters,name,player)].flatMap(ref=>{
+   const name=names.get(ref)??(ref.startsWith('pending:')?names.get(ref.slice(8))??ref.slice(8):undefined);
+   return name?[name]:[];
+  }));
+  const known=new Set(names.values());
+  const extras=(heroes:ReadonlySet<string>)=>[...heroes].filter(name=>!known.has(name)).map(name=>({id:'pending:'+name,name,category:'heroes'}));
+  return {rosterFor,extras};
+ },[byLineup,rosters,lookups.entities]);
+ const lineupSelection=useMemo(()=>{
+  if(!byLineup)return {groups:[],inherited:[],entries:[],heroes:new Set<string>()};
+  const heroes=lineupRoster.rosterFor(selectedLineup,lineupPlayerTab);
+  const shared=selectedLineupTabs?.get(''),local=selectedLineupTabs?.get(lineupPlayerTab);
+  const fallback=lineupTabs.get(unscopedLineup);
+  const groups=lineupEventGroups.filter(group=>shared?.has(group.id)||local?.has(group.id));
+  const inherited=selectedLineup===unscopedLineup?[]:lineupEventGroups.filter(group=>
+   fallback?.get('')?.has(group.id)||!!lineupPlayerTab&&fallback?.get(lineupPlayerTab)?.has(group.id));
+  const entries=buildTemplateEntityIndex([...groups,...inherited],snapshot?.events??[],
+   [...lookups.entities,...lineupRoster.extras(heroes)],snapshot?.condition_catalog,undefined,true,heroes);
+  return {groups,inherited,entries,heroes};
+ },[byLineup,lineupRoster,selectedLineup,lineupPlayerTab,lookups.entities,selectedLineupTabs,lineupTabs,lineupEventGroups,snapshot]);
  const countGroups=useMemo(()=>filterTemplateGroups(byLineup?[]:allGroups,
   {...filters,event:'',mode:gameMode===undefined?filters.mode:undefined},lookups.entities,
-  {events:snapshot?.events,scopeName,links:snapshot?.entity_links,utteranceBindings:snapshot?.utterance_bindings}),
- [byLineup,allGroups,filters,gameMode,lookups.entities,scopeName,snapshot?.events,snapshot?.entity_links,snapshot?.utterance_bindings]);
- const boardRows=lineupBoardRows(byLineup
-  ?filterTemplateGroups(lineupGroups,{...emptyTemplateFilters,...lineupView.filters}):[],lineupEntities);
+  {events:snapshot?.events,scopeName,links:snapshot?.entity_links,utteranceBindings:snapshot?.utterance_bindings,displayNames}),
+ [byLineup,allGroups,filters,gameMode,lookups.entities,scopeName,snapshot?.events,snapshot?.entity_links,snapshot?.utterance_bindings,displayNames]);
+ const boardFilters={...emptyTemplateFilters,...lineupView.filters};
+ const lineupSidebarCounts=useMemo(()=>{
+  const reviews=new Map((byLineup?filterTemplateGroups(lineupEventGroups,{...emptyTemplateFilters,...lineupView.filters}):[])
+   .map(group=>[group.id,group.review_status]));
+  const fallback=lineupTabs.get(unscopedLineup);
+  const fallbackIds=new Set([...(fallback?.values()??[])].flatMap(ids=>[...ids]));
+  const fallbackGroups=byLineup?lineupEventGroups.filter(group=>fallbackIds.has(group.id)&&reviews.has(group.id)):[];
+  const heroNames=new Set<string>();
+  if(fallbackGroups.length)for(const [name,branches] of lineupTabs){
+   if(name===unscopedLineup)continue;
+   for(const player of ['',...branches.keys()])for(const hero of lineupRoster.rosterFor(name,player))heroNames.add(hero);
+  }
+  const byHero=new Map((heroNames.size?buildTemplateEntityIndex(fallbackGroups,snapshot?.events??[],
+   [...lookups.entities,...lineupRoster.extras(heroNames)],snapshot?.condition_catalog,undefined,true,heroNames):[])
+   .filter(entity=>entity.category==='heroes').map(entity=>[entity.name,entity.groupIds]));
+  return (name:string,player:string)=>{
+   const branches=lineupTabs.get(name);
+   const ids=new Set([...(branches?.get('')??[]),...(branches?.get(player)??[])].filter(id=>reviews.has(id)));
+   if(name!==unscopedLineup)for(const hero of lineupRoster.rosterFor(name,player)){
+    for(const id of byHero.get(hero)??[]){
+     if(fallback?.get('')?.has(id)||player&&fallback?.get(player)?.has(id))ids.add(id);
+    }
+   }
+   return lineupTemplateCounts(ids,reviews);
+  };
+ },[lineupEventGroups,byLineup,lineupView.filters,lineupTabs,lineupRoster,snapshot?.events,snapshot?.condition_catalog,lookups.entities]);
+ const boardRows=lineupBoardRows(byLineup?filterTemplateGroups(lineupSelection.groups,boardFilters):[],lineupSelection.entries,
+  lineupSelection.heroes,byLineup?filterTemplateGroups(lineupSelection.inherited,boardFilters):[],byLineup?snapshot?.events:undefined);
  const allEntityIds=useMemo(()=>new Set(entityEntries.flatMap(row=>[...row.groupIds])),[entityEntries]);
  const entity=byEntity?entityEntries.find(row=>row.key===entityKey):undefined;
  const groups=useMemo(()=>{
@@ -600,7 +693,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    Object.values(store.drafts).some(draft=>draft.text!==(draft.baseText??'')));
   const editedGroup=[...cardEditors].some(([key,{base,scratch}])=>fileDraftKey(key)&&
    (scratch.addedParameters?.length||scratch.parameterAdding||scratch.draft&&JSON.stringify(scratch.draft)!==JSON.stringify(base)));
-  return !(editedUtterance||editedGroup)||confirm('当前文件有未保存的修改。确定放弃这些修改吗？');
+  return !(editedUtterance||editedGroup||documentNoteDirty.current)||confirm('当前文件有未保存的修改。确定放弃这些修改吗？');
  }
  function resetFileView(){
   if(openedFile.current){
@@ -665,6 +758,16 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   fileInlineQueue.current=save.catch(()=>{});
   return save;
  }
+ async function saveDocumentNote(text:string){
+  const destination=openedFile.current;
+  if(!destination||destination.handle!==opened?.handle)throw new Error('模板文件已切换，请重新打开笔记。');
+  if(saveFileLock.current||pickerLock.current)throw new Error('文件正在处理，请稍后再试。');
+  saveFileLock.current=true;onBusyChange?.(true);setBusy(true);
+  try{
+   const raw=await saveTemplateFile(destination.handle,destination.raw,{...documentFor(destination).document,note:text});
+   rememberFile({...destination,raw});
+  }finally{saveFileLock.current=false;onBusyChange?.(false);setBusy(false);}
+ }
  async function saveLocal(changes:TemplateChange[],action:'edit'|'status'|'fixed'='edit',destination=action==='status'?openedFile.current:opened,showNotice=true,merge?:{origin?:string}){
   const document=destination&&documentFor(destination);
   if(!destination||!document)throw new Error('请先打开模板文件。');
@@ -683,9 +786,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     if(JSON.stringify(previous)===JSON.stringify(group))return [];
     const event=events.get(group.event_id);
     const references=deriveTemplateEntities(group,event,lookups.entities);
-    const catalog=official?.season===templateGroupSeason(group)?official:undefined;
     const edited=reviewLocalGroup(group,user,'edit',at);
-    const value=withLocalEntitySnapshot(edited,event,catalog,references,document.snapshot.condition_catalog,lookups.entities);
+    const value=withLocalEntitySnapshot(edited,event,official,references,document.snapshot.condition_catalog,lookups.entities,season);
     return [{...change,value}];
    });
    const mergedIds=new Map<string,string>();
@@ -935,7 +1037,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   const events=orderTemplateEvents(snapshot?.events??[]).filter(event=>!v04||registeredEvent(event.name));
   if(!events.length){setNotice('请先在事件与参数设置中添加事件。');setSettings(true);return;}
   const event=events.find(row=>row.id===filters.event)??events[0];
-  setEditor({id:templateId('group'),name:'',version:filters.version||season.toLowerCase(),mode:(gameMode??filters.mode)||'万象大赛',
+  const version=filters.version||season;
+  setEditor({id:templateId('group'),name:'',version:/^S[12]$/i.test(version)?[version.toUpperCase()]:version,mode:[(gameMode??filters.mode)||'万象大赛'],
    tags:filters.tags??[],event_id:event.id,scope:{player_id:filters.player&&filters.player!=='common'?filters.player:null,
    lineup_note_id:filters.lineup&&filters.lineup!=='common'?filters.lineup:null},priority:0,
    ...(v04?{syntax_version:'0.4' as const,extra_key:wildcardKey(event.name)}:{condition_tree:{kind:'all' as const,children:[]}}),
@@ -966,8 +1069,11 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   if(pending)relatedAvailable.set(id,pending);
  }
  const relatedDisplayRoots=relatedDisplayRows(groups,relatedAvailable,relatedParents).roots;
- const normalRows=relatedParents.size?groups.filter(group=>
+ const rootRows=relatedParents.size?groups.filter(group=>
   relatedDisplayRoots.get(group.id)?.id===group.id):groups;
+ const wholeCards=templateCardGroups(allGroups,cardEvents);
+ const cardMembers=new Map(wholeCards.flatMap(rows=>rows.map(group=>[group.id,rows] as const)));
+ const normalRows=compact?rootRows.map(group=>[group]):templateCardGroups(rootRows,cardEvents);
  const [paging,setPaging]=useState<{key:string;visible:number}>();
  const visibleCount=paging?.key===scrollKey?paging.visible:scrollPositions.current[scrollKey]?.visible??pageSize;
  const hasGroups=groups.length>0;
@@ -983,7 +1089,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
  const selectionLocked=busy&&!fileMetadataWrite.current&&!fileReviewWrite.current;
  const batchConflict=!fileMode&&selectedGroups.some(group=>conflicted.includes(group.id)||conflicted.includes(group.event_id));
  const batchFixed=selectedGroups.some(group=>group.utterances.some(row=>row.fixed));
- const relatedPage=relatedDisplayRows(normalRows.slice(0,visibleCount),relatedAvailable,relatedParents);
+ const relatedPage=relatedDisplayRows(normalRows.slice(0,visibleCount).flat(),relatedAvailable,relatedParents);
  const showDetail=!byLineup&&detailGroup&&(compact||!relatedPage.rows.some(group=>group.id===detailGroup.id))&&
   !editor&&!settings&&!proposals&&!importOpen&&!jsonGroup&&!revisionGroup&&!feedback&&!help&&!batchMetadata&&!fileExport;
  function placeRelated(source:string,target:string,first=false,popupKey?:string){
@@ -1018,19 +1124,125 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    catch(error){return {event:name,reason:(error as Error).message};}
   });
  }
- async function createCopy(source:TemplateGroup,name?:string,anchor=source.id,popupKey?:string){
-  if(!snapshot||relatedWriting.current)return;
+ function inlineEventNames(group:TemplateGroup){
+  const names=[...cardEvents.values()].map(event=>event.name);
+  return group.syntax_version==='0.4'?[...new Set(names.filter(registeredEvent).concat(fileMode?Object.keys(catalogV04.events):[]))]:names;
+ }
+ function startCopy(source:TemplateGroup,kind:CopyKind,popupKey?:string){
+  const name=canonicalTemplateName(source,cardEvents.get(source.event_id))??source.name;
+  setCopyDraft({kind,source,group:{...copyTemplateGroup(source),name},view:lineupViewKey,popupKey});
+ }
+ function closeCopy(draft:CopyDraft){setCopyDraft(current=>current?.group.id===draft.group.id?undefined:current);}
+ function renderCopyDraft(draft:CopyDraft){
+  const {group,source,kind,popupKey,target}=draft;
+  const origin=cardEvents.get(source.event_id);
+  if(!origin)return null;
+  const event=target??origin;
+  const v04=group.syntax_version==='0.4';
+  const baseline={...group,expression:copyConditionExpression(group,event)};
+  const expression=templateDisplayExpression(baseline,scopeName);
+  function patchDraft(update:(current:CopyDraft)=>CopyDraft){
+   setCopyDraft(current=>current?.group.id===group.id?update(current):current);
+  }
+  async function chooseEvent(name:string){
+   if(name===origin!.name){closeCopy(draft);return;}
+   if(name===target?.name)return;
+   const next=[...cardEvents.values()].find(row=>row.name===name)??(fileMode?relatedEventDefinition(name):undefined);
+   if(!next)throw new Error('目标事件已不存在，请重新选择。');
+   const created=startTemplateEventCopy({...copyTemplateGroup(source),id:group.id,utterances:group.utterances},origin!,next);
+   patchDraft(current=>({...current,target:next,group:created,error:undefined}));
+  }
+  async function saveEvent(){
+   if(!target||draft.busy)return;
+   patchDraft(current=>({...current,busy:true,error:undefined}));
+   try{
+    if(v04){
+     validateV04(target.name,expression);
+     group.utterances.forEach(row=>validateV04Template(target.name,row.text));
+    }
+    await createCopy(source,undefined,source.id,popupKey,{id:group.id,prepare:current=>{
+     const existing=current.events.find(row=>row.name===target.name);
+     if(!existing&&!fileMode)throw new Error('目标事件已不存在，请重新选择。');
+     return {group:{...group,event_id:existing?.id??target.id},event:existing?undefined:target};
+    }});
+    closeCopy(draft);
+   }catch(error){patchDraft(current=>({...current,busy:false,error:(error as Error).message}));}
+  }
+  async function saveCondition(value:string){
+   if(sameCopyCondition(value,expression,v04))return;
+   if(v04)validateV04(event!.name,value);
+   const condition=resolveConditionEdit(value,baseline,scopeName,{fileMode,players,lineups});
+   const updated:TemplateGroup={...group,...condition,conditions:[],editor_mode:'text',condition_tree:null};
+   if(target){patchDraft(current=>({...current,group:updated,error:undefined}));return;}
+   await createCopy(source,undefined,source.id,popupKey,{id:group.id,prepare:()=>{
+    return {group:{...updated,name:canonicalTemplateName(updated,event)??group.name}};
+   }});
+  }
+  const eventDraft=kind==='event';
+  const parameters=target?templateTriggerParameters(group,target).filter(parameter=>canEditTemplateArgument(group,target,parameter)):[];
+  const values=fixedArguments(group,event);
+  return <article key={group.id} aria-label={eventDraft?'新事件草稿':'新条件草稿'}
+   className={'template-group template-copy-draft '+(eventDraft?'':'template-condition-variant')}>
+   <header><div>{eventDraft?<div className="template-card-title">
+    <TemplateInlineChoice key={target?.id??'source'} label="选择新事件" value={event.name} choices={inlineEventNames(group)} autoStart={!target}
+     disabled={draft.busy} onSave={chooseEvent} onCancel={target?undefined:()=>closeCopy(draft)}/><h2>{group.name}</h2>
+   </div>:<strong>新条件</strong>}</div></header>
+   <div className="template-group-body"><section className="template-read-conditions" aria-label="卡牌与条件">
+    {!!parameters.length&&<dl aria-label="新事件参数" className="template-action-parameters">{parameters.map(parameter=>{
+     const candidates=parameter.type==='entity'?cards.filter(card=>!parameter.entity_categories?.length||parameter.entity_categories.includes(card.category)):[];
+     const choices=parameter.type==='entity'?candidates.map(card=>card.name):(parameter.suggestions??[]).map(valueText);
+     return <div key={parameter.key}><dt>{parameterRole(event,parameter)||parameter.key}</dt><dd>
+      <TemplateInlineChoice label={'指定参数 '+parameter.key} value={values.get(parameter.key)??'未固定'} choices={choices} firstChoice="未固定"
+       disabled={draft.busy} allowText={parameter.type!=='entity'} className="template-inline-argument" onSave={async value=>{
+        const selected=value==='未固定'?null:value;
+        const update=changeTemplateArgument(v04?{...group,expression:undefined}:group,event,parameter,selected,candidates.find(card=>card.name===value)?.id);
+        patchDraft(current=>({...current,group:v04?{...update,expression:group.expression}:update,error:undefined}));
+       }}/></dd></div>;
+    })}</dl>}
+    <TemplateConditionPreview expression={expression} allowCopy={false} autoStart={!eventDraft}
+     onExit={eventDraft?undefined:()=>closeCopy(draft)} config={{event,catalog:snapshot?.condition_catalog,v04}}
+     expressionEdit={eventDraft&&!target||draft.busy?undefined:{value:expression,save:saveCondition}}/>
+   </section>{target?<TemplateUtterances utterances={group.utterances} event={event} parameters={event.parameters} v04={v04}
+    catalog={snapshot?.condition_catalog} localFile={fileMode} editable disabled={!!draft.busy}
+    onSave={async change=>patchDraft(current=>({...current,group:applyUtteranceChange(current.group,change),error:undefined}))}/>:
+   <section className="template-read-utterances"><h3>全部话术</h3><ul>
+    {group.utterances.map(row=><li key={row.id}>{row.text}</li>)}
+   </ul></section>}</div>
+   {target&&<footer className="template-copy-actions" data-template-dirty={true}>
+    {draft.error&&<span role="alert" className="error">{draft.error}</span>}
+    <button type="button" disabled={draft.busy} onClick={()=>closeCopy(draft)}>取消</button>
+    <button type="button" className="primary" disabled={draft.busy} onClick={()=>void saveEvent()}>{draft.busy?'保存中…':'保存新事件模板组'}</button>
+   </footer>}
+  </article>;
+ }
+ async function createCopy(source:TemplateGroup,name:string|undefined,anchor=source.id,popupKey?:string,
+   edit?:{id:string;prepare:(current:TemplateSnapshot)=>{group:TemplateGroup;event?:TemplateEvent}}){
+  if(!snapshot||relatedWriting.current){if(edit)throw new Error('模板库正在处理，请稍后重试。');return;}
   relatedWriting.current=true;
   setError('');
-  const newId=templateId('group');
+  const newId=edit?.id??templateId('group');
   function changesFor(current:TemplateSnapshot){
    if(name===undefined){
-    const group={...copyTemplateGroup(source),id:newId};
-    const changes:TemplateChange[]=[{kind:'group',action:'put',id:newId,value:group}];
-    return {copy:{kind:'new' as const,group},changes,proposal:undefined};
+    if(!edit||!current.groups.some(group=>group.id===source.id))throw new Error('来源模板组已不存在。');
+    const {group,event}=edit.prepare(current);
+    const definition=event??current.events.find(row=>row.id===group.event_id);
+    const equivalent=definition&&current.groups.find(peer=>peer.event_id===group.event_id&&
+     (canonicalTemplateName(peer,definition)??peer.name)===group.name&&peer.syntax_version===group.syntax_version&&
+     peer.extra_key===group.extra_key&&templateRangeKey(templateVersionValues(peer.version))===templateRangeKey(templateVersionValues(group.version))&&
+     templateRangeKey(templateRangeValues(peer.mode))===templateRangeKey(templateRangeValues(group.mode))&&
+     Boolean(peer.ignored)===Boolean(group.ignored)&&peer.publication_hold===group.publication_hold&&
+     sameCopyCondition(templateDisplayExpression({...peer,expression:copyConditionExpression(peer,definition)},scopeName),
+      templateDisplayExpression({...group,expression:copyConditionExpression(group,definition)},scopeName),group.syntax_version==='0.4'));
+    const value=equivalent?{...group,name:equivalent.name}:group;
+    const changes:TemplateChange[]=[...(event?[{kind:'event' as const,action:'put' as const,id:event.id,value:event}]:[]),
+     {kind:'group',action:'put',id:newId,value}];
+    return {copy:{kind:'new' as const,group:value},changes,proposal:undefined};
    }
    const {event,savedEvent,copy,proposal}=prepareRelated(current,source.id,name,newId);
-   const changes:TemplateChange[]=copy.kind==='existing'?[]:[
+   const ids=new Set(current.groups.map(group=>group.id));
+   const reconcile:TemplateChange[]=proposal?[]:(copy.renamePeers??[]).filter(group=>ids.has(group.id)).map(value=>
+    ({kind:'group',action:'put',id:value.id,value}));
+   const changes:TemplateChange[]=copy.kind==='existing'?reconcile:[...reconcile,
     ...(savedEvent?[]:[{kind:'event' as const,action:'put' as const,id:event.id,value:event}]),
     {kind:'group',action:'put',id:copy.group.id,value:copy.group,related_copy_source:source.id},
    ];
@@ -1040,14 +1252,15 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   let message=name===undefined?'已复制模板组。':'已创建关联模板组。';
   try{
    if(fileMode){
-    const current=opened&&documentFor(opened)?.snapshot;
+    const destination=openedFile.current;
+    const current=destination?.handle===opened?.handle&&destination?documentFor(destination)?.snapshot:undefined;
     if(!current)throw new Error('请先打开模板文件。');
     const {copy,changes}=changesFor(current);
     targetId=copy.group.id;
     if(changes.length){
-     const merged=await saveLocal(changes,'edit',undefined,true,{});
+     const merged=await saveLocal(changes,'edit',destination,true,{});
      const retained=merged.get(targetId);
-     if(retained){targetId=retained;message='已合并至同名且条件一致的模板组。';}
+     if(retained||merged.size){targetId=retained??targetId;message='已合并至事件和条件一致的模板组。';}
     }
     else message='已定位条件和话术一致的模板组。';
    }else{
@@ -1067,7 +1280,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
       message=name===undefined?'模板组副本已提交，待审核。':'关联模板组已提交，待审核。';
      }else{
       const retained=result.merged_groups?.[targetId];
-      if(retained){targetId=retained;message='已合并至同名且条件一致的模板组。';}
+      if(retained||Object.keys(result.merged_groups??{}).length){targetId=retained??targetId;message='已合并至事件和条件一致的模板组。';}
      }
      return result;
     },null,[newId]);
@@ -1076,7 +1289,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    else if(relatedPage.rows.some(group=>group.id===targetId))setFocusTarget({group:targetId});
    else setDetailId(targetId);
    setNotice(message);
-  }catch(error){setError((error as Error).message);}
+  }catch(error){if(edit)throw error;setError((error as Error).message);}
   finally{relatedWriting.current=false;}
  }
  function groupActions(group:TemplateGroup):ReactNode{
@@ -1177,7 +1390,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
       (dependency.parameters.length?'的参数 '+dependency.parameters.join('、'):'的事件定义')+'，是否继续？'))
       throw new Error('已取消采纳，草稿已保留。');
     }
-    const result=await api<TemplateProposal>(path,'POST',reject?request:{...request,group_editor:{...payload,...(dependency_token?{dependency_token}:{})}});
+    const result=await api<TemplateProposal>(path,'POST',target.inline_trigger?{proposal_revision,compact:true,return_write:true}:
+     reject?request:{...request,group_editor:{...payload,...(dependency_token?{dependency_token}:{})}});
     if(approve){reconcileApproval(result.formal_write);setFeedbackRevision(value=>value+1);}
     updateProposalPreview(result);
     const saved=result.reviews?.at(-1)?.changes?.find(row=>row.kind==='group');
@@ -1264,7 +1478,29 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    return api(templatePath(season,'/changes'),'POST',{revision:current.revision,changes:edits,group_patches:[{id:base.id,fields:groupFields(old,group)}]});
   },null,[base.id]);
  }
- function renderGroup(group:TemplateGroup,popupKey?:string){
+ function saveInlineTrigger(bases:TemplateGroup[],update:(group:TemplateGroup,events:TemplateEvent[])=>TemplateGroup,newEvent?:TemplateEvent){
+  function patches(groups:TemplateGroup[],events:TemplateEvent[]){
+   return bases.map(base=>{
+    const latest=groups.find(row=>row.id===base.id);
+    if(!latest||['event_id','extra_key','expression','conditions'].some(key=>
+     JSON.stringify(latest[key as keyof TemplateGroup])!==JSON.stringify(base[key as keyof TemplateGroup])))
+     throw new Error('触发条件已变化，请核对后重试。');
+    return update(latest,events);
+   });
+  }
+  const addition:TemplateChange[]=newEvent?[{kind:'event',action:'put',id:newEvent.id,value:newEvent}]:[];
+  if(fileMode)return enqueueFileMetadataChanges((groups,events)=>[
+   ...addition,...patches(groups,[...events,...(newEvent?[newEvent]:[])]).map(value=>({kind:'group' as const,action:'put' as const,id:value.id,value})),
+  ],false,'edit',{});
+  return enqueueWrite(current=>{
+   const edits=patches(current.groups,current.events).map(value=>({id:value.id,fields:groupFields(current.groups.find(row=>row.id===value.id)!,value)}))
+    .filter(({fields})=>Object.keys(fields.set).length||fields.remove.length);
+   if(!edits.length)return Promise.resolve(current);
+   return api(templatePath(season,'/changes'),'POST',{revision:current.revision,inline_trigger:true,group_patches:edits});
+  },useProposalEditor?'触发动作已保存。':null,bases.map(row=>row.id));
+ }
+
+ function renderGroup(group:TemplateGroup,popupKey?:string,conditionVariant=false){
   const sourceEvent=snapshot?.events.find(event=>event.id===group.event_id);
   const pending=pendingIgnores.filter(change=>change.groupId===group.id);
   const original=pending.reduce(applyIgnore,group);
@@ -1279,7 +1515,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   const canEditGroup=!projected&&editable&&(fileMode||!conflicted.includes(group.id)&&!conflicted.includes(group.event_id));
   const ruleChanged=projected&&(projected.newGroup||[...projected.fields].some(field=>['rule','scope','event','event_id'].includes(field)||field.startsWith('condition:')));
   const previewTarget=projected&&active?.proposal_revision?active:undefined;
-  const canEditProposal=previewTarget&&
+  const canEditProposal=previewTarget&&!previewTarget.inline_trigger&&
    (admin||previewTarget.author===session.username);
   const draftGroup=previewTarget&&((previewTarget.change.value as TemplateGroup|undefined)??previewTarget.base);
   const saveProposal=(operation:GroupEditorOperation)=>{if(previewTarget)void saveCardProposal(previewTarget,false,()=>operation).catch(()=>{});};
@@ -1303,7 +1539,9 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    const intent=flags.current.get(flagKey(id,field));
    return intent?{pending:!intent.error,confirmed:intent.confirmed,error:intent.error,retry:intent.retry}:undefined;
   };
-  const displayed={...content,utterances:content.utterances.map(row=>{
+  const event=(projected&&active?.event)||cardEvents.get(content.event_id);
+  const canonical=projected?undefined:canonicalTemplateName(content,event);
+  const displayed={...content,name:canonical??content.name,utterances:content.utterances.map(row=>{
    const ignored=flags.current.get(flagKey(row.id,'ignored')),fixed=flags.current.get(flagKey(row.id,'fixed'));
    return ignored&&!ignored.error||fixed&&!fixed.error?{...row,
     ignored:ignored&&!ignored.error?ignored.value:row.ignored,
@@ -1344,7 +1582,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
   const actionError=active&&proposalActionError?.id===active.proposal_id&&proposalActionError.groupId===group.id?proposalActionError.message:undefined;
   const editedEvent=openedEditor?.proposal?.event;
   const editorEvents=editedEvent?[...(snapshot?.events??[]).filter(event=>event.id!==editedEvent.id),editedEvent]:snapshot?.events??[];
-  const groupEditor=openedEditor&&createPortal(<TemplateEditor scratch={openedEditor.scratch}
+  const embeddedEditor=!openedEditor?.proposal;
+  const editorForm=openedEditor&&<TemplateEditor key={editorKey} embedded={embeddedEditor} scratch={openedEditor.scratch}
    review={!!openedEditor.proposal&&!oldConditionKey} group={openedEditor.base} events={editorEvents}
    players={players} lineups={lineups} scopeName={scopeName} catalog={snapshot?.condition_catalog} annotator={openedEditor.proposal?!admin:useProposalEditor}
    localFile={fileMode} allowEventParameters={canManage}
@@ -1359,7 +1598,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    }}
    onSaveAndApprove={admin&&openedEditor.proposal&&!oldConditionKey?(draft,event,resolve)=>saveCardProposal(openedEditor.proposal!,true,latest=>({
     group:mergeEditorFields(openedEditor.base,latest,draft),event,resolve_conditions:resolve?snapshot?.revision:undefined,
-   })):undefined}/>,document.body,editorKey);
+   })):undefined}/>;
+  const groupEditor=editorForm&&!embeddedEditor?createPortal(editorForm,document.body,editorKey):editorForm;
   return <TemplateGroupCard key={group.id} group={displayed} catalog={snapshot?.condition_catalog} fileMode={fileMode} allowExport={!projected&&!legacyMode} utteranceBindings={ruleChanged?undefined:snapshot?.utterance_bindings?.[group.id]}
    originalGroup={projected?.newGroup?undefined:original} proposal={projected} proposalControl={rows.length?{
     rows,active,original:showOriginal,temporary:temporaryGroup?.id===group.id,
@@ -1367,7 +1607,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     submitting:!!active&&approving.has(active.proposal_id),waiting:!!active&&waitingApprovals.has(active.proposal_id),error:actionError,
     rejecting:!!active&&rejecting.has(active.proposal_id),
     onApprove:admin&&previewTarget?()=>{void saveCardProposal(previewTarget,true).catch(()=>{});}:undefined,
-    onReject:admin&&previewTarget?()=>{if(confirm('驳回当前模板组的待审修改？'))void saveCardProposal(previewTarget,false,undefined,true).catch(()=>{});}:undefined,
+    onReject:admin&&previewTarget?()=>{if(confirm(previewTarget.inline_trigger?'驳回整个大组的待审修改？':'驳回当前模板组的待审修改？'))void saveCardProposal(previewTarget,false,undefined,true).catch(()=>{});}:undefined,
     onSaveUtterance:proposalEditable?(change,approve)=>saveProposedUtterance(previewTarget!,change,approve):undefined,
     onInspect:actionError?()=>{setInspectProposal(active.proposal_id);setProposals(true);}:undefined,
    }:undefined}
@@ -1375,10 +1615,27 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    onFeedback={!projected&&editable?utteranceId=>setFeedback({group,utteranceId}):undefined}
    savingIgnore={{group:pending.some(change=>!change.utteranceId),rows:[]}}
    entities={ruleChanged||projected?.fields.has('related_entities')?undefined:snapshot?.entity_links?.[group.id]}
-   event={(projected&&active?.event)||snapshot?.events.find(event=>event.id===displayed.event_id)} scopeName={scopeName}
+   event={event} scopeName={scopeName} conditionVariant={conditionVariant}
+   inlineTrigger={canEditGroup&&event?{
+    events:inlineEventNames(group),
+    saveEvent:async name=>{
+     if(name===event.name)return;
+     const target=[...cardEvents.values()].find(row=>row.name===name);
+     const newEvent=!target&&fileMode?relatedEventDefinition(name):undefined;
+     const nextEvent=target??newEvent;
+     if(!nextEvent)throw new Error('请选择有效事件');
+     const members=cardMembers.get(group.id)??[group];
+     await saveInlineTrigger(members,(current,events)=>{
+      const before=events.find(row=>row.id===current.event_id);
+      if(!before)throw new Error('原事件已不存在');
+      return moveTemplateEvent(current,before,nextEvent);
+     },newEvent);
+    },
+    saveArgument:(parameter,value,entityId)=>saveInlineTrigger([group],current=>changeTemplateArgument(current,event,parameter,value,entityId)),
+   }:undefined}
    interactionLocked={selectionLocked} annotator={useProposalEditor}
    metadataLocked={selectionLocked}
-   onSaveName={async name=>{
+   onSaveName={canonical?undefined:async name=>{
     const base=proposalEditable?draftGroup!:group;
     if(proposalEditable&&previewTarget){await saveCardProposal(previewTarget,false,latest=>({group:{...latest,name}}));return;}
     await saveGroupEditor(base,{...base,name});
@@ -1404,7 +1661,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
      :saveGroupEditor(base,draft);
    }}
    onEdit={()=>openGroupEditor(proposalEditable?draftGroup!:group,proposalEditable?previewTarget:undefined)}
-    onCopy={canManage?()=>{void createCopy(draftGroup??group,undefined,group.id,popupKey);}:undefined}
+    onCopy={canManage&&canEditGroup?kind=>startCopy(group,kind,popupKey):undefined}
    {...(!projected&&canManage&&canEditGroup&&group.syntax_version==='0.4'&&sourceEvent&&relatedTargets(sourceEvent.name).length?{
      relatedCopyOptions:()=>relatedCopyOptions(group,sourceEvent),onRelatedCopy:(name:string)=>{void createCopy(group,name,group.id,popupKey);},
    }:{})}
@@ -1419,12 +1676,51 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    warning={warning} onConfirm={admin&&warning?()=>void confirmWarning(warning):undefined}
    workflow={projected||legacyMode?undefined:groupActions(group)}/>;
  }
+ function groupIsIgnored(group:TemplateGroup){
+  return pendingIgnores.find(change=>change.groupId===group.id&&!change.utteranceId)?.ignored??!!group.ignored;
+ }
+ function visibleCardRows(rows:TemplateGroup[],hideIgnored=filters.hideIgnored){
+  return (hideIgnored??true)?rows.filter(group=>!groupIsIgnored(group)):rows;
+ }
+ function renderGroupList(rows:TemplateGroup[],popupKey?:string){
+  const families=new Map<string,{title?:string;eventIds:Set<string>;cards:React.ReactNode[]}>();
+  for(const members of templateCardGroups(rows,cardEvents)){
+   const ordered=[...members].sort((a,b)=>Number(groupIsIgnored(a))-Number(groupIsIgnored(b))||
+    templateConditionLength(a,cardEvents.get(a.event_id),scopeName)-
+    templateConditionLength(b,cardEvents.get(b.event_id),scopeName));
+   const draft=copyDraft?.view===lineupViewKey&&copyDraft.popupKey===popupKey&&members.some(group=>group.id===copyDraft.source.id)?copyDraft:undefined;
+   const cards=ordered.map((group,index)=>renderGroup(group,popupKey,index>0));
+   const conditionDraft=draft?.kind==='condition'?renderCopyDraft(draft):null;
+   if(conditionDraft)cards.push(conditionDraft);
+   const card=cards.length===1?cards[0]:<div className="template-card-merged">{cards}</div>;
+   const first=members[0];
+   const related=popupKey?templateRelatedSection(first,cardEvents.get(first.event_id)):undefined;
+   const key=related?.key??first.id;
+   const family=families.get(key)??{title:related?.title,eventIds:new Set<string>(),cards:[]};
+   family.eventIds.add(first.event_id);
+   family.cards.push(<Fragment key={first.id}>{card}{draft?.kind==='event'&&renderCopyDraft(draft)}</Fragment>);
+   families.set(key,family);
+  }
+  return [...families].map(([key,{title,eventIds,cards}])=>eventIds.size>1
+   ?<section key={key} className="template-card-related-family" aria-label={title+'关联事件'}>{cards}</section>
+   :<Fragment key={key}>{cards}</Fragment>);
+ }
+ function renderBrowsePopupRows(popup:BrowsePopup){
+  const roots=popup.ids.flatMap(id=>{
+   const group=relatedAvailable.get(id);
+   return group?[group]:[];
+  });
+  const rows=visibleCardRows(relatedDisplayRows(roots,relatedAvailable,popup.parents).rows,popup.visibility.hideIgnored??true);
+  return rows.length?renderGroupList(rows,popup.key):<p className="empty">没有符合筛选的模板组。</p>;
+ }
  function renderCards(visible:TemplateGroup[]){
-  return templateDisplaySections(visible,snapshot?.events??[],scopeName).map(({key,title,events})=><section key={key} className="template-card-event" aria-label={title}>
+  const clusters=templateCardGroups(visibleCardRows(visible),cardEvents);
+  const grouped=new Map(clusters.map(members=>[members[0].id,members]));
+  return templateDisplaySections(clusters.map(members=>members[0]),snapshot?.events??[],scopeName).map(({key,title,events})=><section key={key} className="template-card-event" aria-label={title}>
    <h3>{title}</h3>
    {events.map(event=><div key={event.key} className="template-display-event" aria-label={event.title} role="group">
     <h4>{event.title}</h4>
-    {event.rows.map(group=>renderGroup(group))}
+    {renderGroupList(event.rows.flatMap(group=>grouped.get(group.id)??[group]))}
    </div>)}
   </section>);
  }
@@ -1441,7 +1737,10 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    {visibleCount<normalRows.length&&<button type="button" onClick={showMore}>显示更多模板（{visibleCount} / {normalRows.length}）</button>}
   </>}
  </div>;
- return <TemplateMetadataChoices.Provider value={metadataChoices}><TemplateUtteranceVisibility.Provider value={filters}><main className="templates-page">
+ return <TemplateLineupName.Provider value={byLineup&&selectedLineup!==unscopedLineup?selectedLineup:undefined}><TemplateMetadataChoices.Provider value={metadataChoices}><TemplateUtteranceVisibility.Provider value={filters}><main className="templates-page">
+  {fileMode&&opened&&file&&<FloatingDocumentNote key={fileKeys.get(opened.handle)} title={opened.handle.name}
+   value={typeof file.document.note==='string'?file.document.note:''} editable={editable} disabled={busy}
+   onDirty={changeDocumentNoteDirty} onSave={saveDocumentNote}/>}
   <div className="template-page-heading"><div><h1>话术模板库</h1>{fileMode&&opened&&<p title={opened.handle.name}>{opened.handle.name}</p>}</div>
    {(!fileMode||opened)&&<div className="template-browse-toolbar">
     <div role="group" aria-label="模板分类方式"><button type="button" aria-pressed={!byLineup&&!byEntity} disabled={selectionLocked} onClick={()=>changeLineupView({active:false},{byEntity:false})}>按事件</button>
@@ -1451,6 +1750,8 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
      <button type="button" aria-pressed={compact} disabled={selectionLocked} onClick={()=>changeView(current=>({...current,compact:true}))}>看板</button></div>
     <TemplateFilterBar filters={filters} patch={patch} groups={allGroups} players={players} lineups={lineups} disabled={selectionLocked} showMode={gameMode===undefined}/></>}
     {!legacyMode&&<button type="button" disabled={selectionLocked||(!fileMode&&loading)} onClick={()=>{setRelatedPlacement(undefined);if(fileMode)void openFile(true);else{refreshProposals();void load();}}} aria-label={fileMode?'重新读取模板文件':'刷新模板库'}>↻</button>}
+    {byLineup&&<TemplateLineupEventFilter events={lineupEventOptions} selected={selectedLineupEvents}
+     disabled={selectionLocked} onChange={eventIds=>changeLineupView({eventIds})}/>}
    </div>}
    <fieldset className="template-toolbar" disabled={selectionLocked}>
     <button onClick={()=>setHelp(true)}>帮助</button>
@@ -1485,7 +1786,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
      <button type="button" disabled={busy} aria-label={'从 '+entry.handle.name+' 所在文件夹选文件'} onClick={()=>void openFile(false,false,{startIn:entry.handle})}>从所在文件夹选文件</button>
     </li>)}</ul>
    </section>}</div>:byLineup?<div className="template-workspace">
-   <TemplateLineupSidebar names={lineupNames} tabs={lineupTabs} query={lineupView.query} selected={selectedLineup} player={lineupPlayerTab}
+   <TemplateLineupSidebar names={lineupNames} tabs={lineupTabs} query={lineupView.query} selected={selectedLineup} player={lineupPlayerTab} counts={lineupSidebarCounts}
     onQuery={query=>changeLineupView({query})} onSelect={(lineup,player)=>changeLineupView({lineup,player})}/>
    <div className="template-lineup-results" ref={lineupScroll} onScrollCapture={event=>{
     const pane=event.target;
@@ -1500,8 +1801,10 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
      onDrill={({kind,key,event})=>{
       const card=kind==='entity'?boardRows.cards.find(row=>row.entity.key===key):undefined;
       const eventName=lineupEvents.get(event??key);
-      const ids=card?(event?card.events.get(event):card.ids):boardRows.other.get(key);
-      if(ids)openBrowsePopup([card?.entity.name,eventName].filter(Boolean).join(' · '),[...ids],lineupView.filters);
+      const ids=kind==='column'?boardRows.columnIds.get(key):kind==='generalHero'?(event?boardRows.generalHeroEvents.get(event):boardRows.generalHeroIds):
+       card?(event?card.events.get(event):card.ids):boardRows.other.get(key);
+      const columnLabel=({heroes:'英雄',talents:'天赋',equipment:'装备','effect-cards':'效果牌',other:'其他'} as Record<string,string>)[key];
+      if(ids?.size)openBrowsePopup((kind==='column'?[selectedLineup,columnLabel]:[kind==='generalHero'?generalHeroLabel:card?.entity.name,eventName]).filter(Boolean).join(' · '),[...ids],lineupView.filters);
      }}/>
    </div>
   </div>:<div className="template-workspace">
@@ -1537,9 +1840,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    busy={!!(selectionLocked||revisionGroup||feedback||jsonGroup||fileExport||importOpen||proposals)}
    onClose={()=>setBrowsePopup(undefined)}>
    <TemplateUtteranceVisibility.Provider value={browsePopup.visibility}>
-    {relatedDisplayRows(browsePopup.ids.flatMap(id=>{
-     const group=relatedAvailable.get(id);return group?[group]:[];
-    }),relatedAvailable,browsePopup.parents).rows.map(group=>renderGroup(group,browsePopup.key))}
+    {renderBrowsePopupRows(browsePopup)}
    </TemplateUtteranceVisibility.Provider>
   </TemplateBrowsePopup>}
   {showDetail&&<section className="template-detail-panel" role="dialog" aria-modal="false" aria-label={detailGroup.name+(temporaryGroup?' · 临时提案卡':' · 模板详情')}>
@@ -1548,7 +1849,7 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
    }}>关闭</button></header>
    <div className="template-form template-detail-body">
     {error&&<p className="error" role="alert">{error}</p>}
-    <ReadingCards cardSearch><div className="template-card-stack">{relatedDisplayRows([detailGroup],relatedAvailable,relatedParents).rows.map(group=>renderGroup(group))}</div></ReadingCards>
+    <ReadingCards cardSearch><div className="template-card-stack">{renderGroupList(visibleCardRows(relatedDisplayRows(cardMembers.get(detailGroup.id)??[detailGroup],relatedAvailable,relatedParents).rows))}</div></ReadingCards>
    </div>
   </section>}
   {batchMetadata&&<TemplateBatchMetadata field={batchMetadata} groups={selectedGroups} proposal={useProposalEditor}
@@ -1594,5 +1895,5 @@ export default function TemplateLibrary({notes,options,onDirty,onBusyChange,seas
     </footer>
    </div>
   </TemplateDialog>}
- </main></TemplateUtteranceVisibility.Provider></TemplateMetadataChoices.Provider>;
+ </main></TemplateUtteranceVisibility.Provider></TemplateMetadataChoices.Provider></TemplateLineupName.Provider>;
 }

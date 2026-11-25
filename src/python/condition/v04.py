@@ -122,6 +122,8 @@ class _Validator:
             raise ConditionError("未声明根对象：" + root)
         for index, field in enumerate(fields, 1):
             prefix = path[:index]
+            if field == '阵容英雄名列表' and item:
+                raise ConditionError('阵容英雄名列表只能在谓词外使用')
             if kind.endswith("?") and prefix not in guards:
                 if not self.slot or item:
                     raise ConditionError("可空对象缺少前置守卫：" + ".".join(prefix))
@@ -232,6 +234,8 @@ def _read(path, state, item):
         if value is None:
             raise ConditionError("读取了 nil 对象：" + ".".join(path))
         value = value.get(key, _UNKNOWN) if isinstance(value, dict) else _UNKNOWN
+    if keys and keys[-1] == '阵容英雄名列表' and not (isinstance(value, list) and all(isinstance(name, str) for name in value)):
+        return _UNKNOWN
     if isinstance(value, str) and (path[-1] == "阵容名称" or path == ("动作", "阵容")):
         return lineup_name(value)
     return value

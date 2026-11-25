@@ -20,7 +20,7 @@ export default function TemplateBrowsePopup({title,children,error,onClose,busy}:
    const target=event.target;
    if(!(target instanceof HTMLElement)||!node)return;
    if(node.contains(target)){lastFocused=target;return;}
-   if(target.closest('.template-overlay,.entity-popover,.card-completion'))return;
+   if(target.closest('.template-overlay,.entity-popover,.card-completion,.floating-document-note,.floating-document-note-button'))return;
    if(!dismiss())(lastFocused?.isConnected?lastFocused:node).focus({preventScroll:true});
   }
   document.addEventListener('focusin',focus);

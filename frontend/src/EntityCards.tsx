@@ -2,12 +2,12 @@ import {appUrl} from './urls';
 import {onSessionReset,requestGeneration} from './sessionRequest';
 import {useAuth} from './auth';
 import {Children,cloneElement,createContext,isValidElement,useContext,useEffect,useRef,useState,useId,useMemo,useCallback,useSyncExternalStore} from 'react';
-import type {ClipboardEvent, ReactNode,ReactElement} from 'react';
+import type {ClipboardEvent, ReactNode,ReactElement,RefObject} from 'react';
 import {createPortal} from 'react-dom';
 import {api} from './model';
 import {activeWorkspace,cachedEntry} from './readerCache';
 import {loadCardCatalog,cardPath,cardVersion,checkCardVersion,cardCategories as categoryNames} from './cardCatalog';
-import type {CardDetail,CardSummary} from './types';
+import type {CardDetail,CardKeyword,CardSummary} from './types';
 import {splitEntities,resolveCandidates,heroVersions,cardIndex} from './entityText';
 import {DockSelection} from './dockSelection';
 import {rankCards} from './cardCompletionSearch';
@@ -119,7 +119,8 @@ export function CardProvider({children,enabled=true}:{children:ReactNode;enabled
 export function EntityScope({references,children}:{references:string[];children:ReactNode}){return <ReferenceContext.Provider value={references}>{children}</ReferenceContext.Provider>;}
 export function useCards(){return useContext(CardContext);}
 export function CardImage({card,large=false}:{card?:CardSummary;large?:boolean}){const [bad,setBad]=useState(false);const url=large?card?.image_url||card?.thumb_url:card?.thumb_url||card?.image_url;useEffect(()=>setBad(false),[url]);return url&&!bad?<img className={large?'official-card-image':'official-card-thumb'} src={appUrl(url)} alt={card?.name??'卡牌'} loading="lazy" onError={()=>{setBad(true);const version=card?.catalog_version;if(version)void checkCardVersion().then(state=>{if(state.version!==version)window.dispatchEvent(new Event("cards-version-changed"));}).catch(()=>{});}}/>:<span className={large?'card-image-placeholder large':'card-image-placeholder'}>{card?.name??'未配置'}</span>;}
-export function EntityChip({ids,label,portrait=false,inline=false,mirrorHover}:{ids:string[];label?:string;portrait?:boolean;inline?:boolean;mirrorHover?:boolean}){
+type EntityPreviewButton={ref:RefObject<HTMLButtonElement|null>;className:string;ariaLabel:string;disabled:boolean;onClick:()=>void};
+export function EntityChip({ids,label,portrait=false,inline=false,mirrorHover,previewButton}:{ids:string[];label?:string;portrait?:boolean;inline?:boolean;mirrorHover?:boolean;previewButton?:EntityPreviewButton}){
  const dock=useContext(DockContext),token=useId();
  const cards=useCards(),references=useContext(ReferenceContext);const candidates=resolveCandidates(ids,references);
  const [localOpen,setOpen]=useState(false),[pinned,setPinned]=useState(false);
@@ -153,7 +154,10 @@ export function EntityChip({ids,label,portrait=false,inline=false,mirrorHover}:{
   onBlur:(event:React.FocusEvent<HTMLElement>)=>{if(!panel.current?.contains(event.relatedTarget as Node))leave();},
   onClick:activate,
  };
- return <>{mirrorHover!==undefined?<span ref={setAnchor} className="condition-mirror-entity">{title}</span>:(inline||dock?.noteTools)&&!portrait?
+ return <>{previewButton?<button type="button" ref={el=>{setAnchor(el);previewButton.ref.current=el;}}
+  className={previewButton.className} aria-label={previewButton.ariaLabel} disabled={previewButton.disabled} {...anchorEvents}
+  onClick={()=>{clear();if(open)close();previewButton.onClick();}}>{title}</button>:
+  mirrorHover!==undefined?<span ref={setAnchor} className="condition-mirror-entity">{title}</span>:(inline||dock?.noteTools)&&!portrait?
   <span ref={setAnchor} className="entity-chip entity-inline" role="button" tabIndex={0} {...anchorEvents}
     onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}}}>{title}</span>:
   <button type="button" ref={setAnchor} className={portrait?'entity-portrait':'entity-chip'} {...anchorEvents}>{portrait&&<CardImage card={card}/>}<span>{title}</span></button>}
@@ -164,6 +168,9 @@ export function EntityChip({ids,label,portrait=false,inline=false,mirrorHover}:{
   :<p className="muted">卡牌资料暂不可用。</p>}
  </div>,dock?.wide&&dock.target?dock.target:document.body)}</>;
 }
+export function CardKeywords({keywords}:{keywords?:CardKeyword[]}){
+ return keywords?.length?<section><h3>关键词</h3><dl>{keywords.map(term=><div key={term.name}><dt>{term.name}</dt><dd>{term.description||'官网未提供释义'}</dd></div>)}</dl></section>:null;
+}
 function CardVersion({card,heading}:{card?:CardSummary;heading?:string}){
  const dock=useContext(DockContext);
  const [detail,setDetail]=useState<CardDetail|null>(null),[error,setError]=useState(''),[full,setFull]=useState(false);
@@ -173,6 +180,7 @@ function CardVersion({card,heading}:{card?:CardSummary;heading?:string}){
  {heading&&<h3 className="card-version-heading">{heading}</h3>}
  <div className="popover-card"><CardImage card={card} large/><div><p className="muted">{categoryNames[card?.category??'']}{card?.tier!=null?` · ${card.tier}品阶`:''}{card?.faction?.name?` · ${card.faction.name}`:''}</p><p>{card?.effect||'资料未提供'}</p></div></div>
  {dock?.wide&&card&&canShowCardTags(currentSeason(),card.category)&&<CardTags key={card.id} id={card.id} compact/>}
+ <CardKeywords keywords={detail?.keywords??card?.keywords}/>
  {error?<p className="error" role="alert">{error}</p>:!detail?<p className="muted">正在载入技能…</p>:<>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单列本卡技能，以下来自对应普通英雄。</p>}{detail.skills.slice(0,full?undefined:1).map(s=><section key={s.id}><strong>{s.name}</strong><p>{s.effect}</p>{full&&s.enhancements.map((e,i)=><p key={i}>{e.level}级：{e.effect}</p>)}</section>)}{full&&<dl>{Object.entries(detail.stats).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>}<button className="link-button" onClick={()=>setFull(!full)}>{full?'收起完整详情':'查看完整卡牌详情'}</button></>}
  </section>;
 }

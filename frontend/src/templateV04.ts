@@ -53,7 +53,13 @@ function tokenize(source:string){
 }
 
 export function v04ConditionKey(source:string){
- return source.trim()?JSON.stringify(parse(source)):'';
+ function parts(node:Node,operator:string):string[]{
+  return node.kind==='binary'&&node.op===operator?[...parts(node.left,operator),...parts(node.right,operator)]:[signature(node)];
+ }
+ function signature(node:Node):string{
+  return node.kind==='binary'&&(node.op==='and'||node.op==='or')?JSON.stringify([node.op,parts(node,node.op).sort()]):JSON.stringify(node);
+ }
+ return source.trim()?signature(parse(source)):'';
 }
 
 const precedence:Record<string,number>={or:1,and:2,'==':4,'!=':4,'<':4,'>':4,'<=':4,'>=':4,in:4,'not in':4,'+':5,'-':5,'*':6,'%':6};
@@ -154,6 +160,7 @@ function typeOf(node:Node,event:string,slot:boolean,guards=new Set<string>(),ite
   let kind=root==='#'?(item==='英雄元素'?'卡牌':item):Object.hasOwn(catalogV04.roots,root)?catalogV04.roots[root]:undefined;
   if(!kind)throw new Error('未声明根对象：'+(root==='#'?'.':root));
   for(const [index,field] of fields.entries()){
+   if(field==='阵容英雄名列表'&&item)throw new Error('阵容英雄名列表只能在谓词外使用');
    const prefix=node.parts.slice(0,index+1).join('.');
    if(kind.endsWith('?')&&!guards.has(prefix)&&(!slot||item))throw new Error('可空路径缺少前置守卫：'+prefix);
    if(valueType(kind)==='卡牌'&&catalogV04.hero_fields.includes(field)&&

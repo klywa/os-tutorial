@@ -1,4 +1,4 @@
-import {effectiveExpression,resolveTemplateEntities,templateId,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter,type TemplateSnapshot} from './templates';
+import {effectiveExpression,resolveTemplateEntities,templateId,templateRangeKey,templateRangeValues,templateVersionValues,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter,type TemplateSnapshot} from './templates';
 import {listPaths,parameterType,renderRule,treeEntities,type ConditionCatalog,type ConditionNode} from './templateRules';
 import {buildTemplateEntityIndex} from './templateEntityIndex';
 import {validateExtraKey,validateV04,validateV04Template,v04ConditionKey} from './templateV04';
@@ -52,8 +52,19 @@ function isLocalComment(value:unknown):value is LocalTemplateComment{
  return record(value)&&validName(value.id)&&validName(value.by)&&validName(value.at)&&validName(value.body)&&
   (value.utterance_id===undefined||validName(value.utterance_id)&&typeof value.original_text==='string');
 }
-export const templateGroupVersion=(group:{version?:unknown})=>(typeof group.version==='string'&&group.version.trim()||'S1').toUpperCase();
-export const templateGroupSeason=(group:{version?:unknown})=>templateGroupVersion(group)==='S2'?'S2':'S1';
+export function templateGroupSeasons(group:{version?:unknown}):('S1'|'S2')[]{
+ return [...new Set(templateVersionValues(group.version).map(version=>version==='S2'?'S2' as const:'S1' as const))].sort();
+}
+export function templateGroupSeason(group:{version?:unknown},selected?:string):'S1'|'S2'{
+ const seasons=templateGroupSeasons(group);
+ return seasons.find(season=>season===selected)??seasons[0];
+}
+function validScopeList(value:unknown,version:boolean){
+ if(typeof value==='string')return true;
+ if(!Array.isArray(value)||!value.length||!value.every(item=>validName(item)&&item===item.trim()&&item.length<=80))return false;
+ const allowed=version?value.map(item=>item.toUpperCase()):value;
+ return new Set(allowed).size===allowed.length&&(!version||allowed.every(item=>item==='S1'||item==='S2'));
+}
 const validTree=(node:unknown):node is ConditionNode=>record(node)&&(node.kind==='leaf'
  ? typeof node.left==='string'&&typeof node.operator==='string'&&typeof node.right==='string'
  : ['all','any','not'].includes(String(node.kind))&&Array.isArray(node.children)&&node.children.every(validTree));
@@ -118,7 +129,10 @@ export function parseTemplateFile(raw:string,lookups:FileLookups={}):TemplateFil
    if(new Set(rows.map(item=>item.id)).size!==rows.length)throw new Error('话术 ID 重复。');
    for(const entry of rows)validateV04Template(event.name,entry.text);
   }
-  const id=typeof row.id==='string'?row.id:localId('group',JSON.stringify([event.name,row.name,templateGroupVersion(row)]));
+  const versions=templateVersionValues(row.version);
+  const identity=[event.name,row.name,versions.length===1?versions[0]:templateRangeKey(versions)];
+  if(Array.isArray(row.mode))identity.push(templateRangeKey(templateRangeValues(row.mode)));
+  const id=typeof row.id==='string'?row.id:localId('group',JSON.stringify(identity));
   const scope=record(row.scope)?row.scope:{};
   const player_id=readScope(scope.player,'player');
   const lineup_note_id=readScope(scope.lineup,'lineup',player_id);
@@ -138,8 +152,9 @@ export function parseTemplateFile(raw:string,lookups:FileLookups={}):TemplateFil
    const found=findEntity(value.名称,category?[category]:undefined);
    return found.length?found:[{id:localId('entity',value.类型+'|'+value.名称),name:value.名称}];
   });
-  const invalidMetadata=(['version','mode','explanation','explanation_before','explanation_source','explanation_after','reviewed_by','reviewed_at'] as const)
+  const invalidMetadata=(['explanation','explanation_before','explanation_source','explanation_after','reviewed_by','reviewed_at'] as const)
    .some(key=>Object.hasOwn(row,key)&&typeof row[key]!=='string')||
+   (['version','mode'] as const).some(key=>Object.hasOwn(row,key)&&!validScopeList(row[key],key==='version'))||
    (['batch','tags'] as const).some(key=>Object.hasOwn(row,key)&&(!Array.isArray(row[key])||!(row[key] as unknown[]).every(validName)))||
    (Object.hasOwn(row,'review_status')&&row.review_status!==null&&!['ai_generated','initial_reviewed','final_reviewed'].includes(String(row.review_status)))||
    (Object.hasOwn(row,'last_modified_by')&&(!record(row.last_modified_by)||
@@ -219,7 +234,9 @@ function deliveryGroups(file:TemplateFile,ids:Iterable<string>|undefined,include
 
 export function fileDeliveryDocument(file:TemplateFile,ids?:Iterable<string>):FileDocument{
  const groups=deliveryGroups(file,ids,true);
- return ids===undefined?{...file.document,groups}:withFileSelection(file,selectedFileDocument(file,groups));
+ if(ids===undefined)return {...file.document,groups};
+ const {note:_,...document}=withFileSelection(file,selectedFileDocument(file,groups));
+ return document;
 }
 
 export function fileImportDocument(file:TemplateFile,ids:Iterable<string>){
@@ -330,7 +347,7 @@ function fileGroupKey({value:group,row}:FileGroupRow,event:TemplateEvent|undefin
   JSON.stringify([parameter_key,operator,record(value)?value.name??value:value])).sort();
  return JSON.stringify([group.name.trim(),group.event_id,event?.name,parameters,group.syntax_version,group.extra_key,
   condition(effective),clauses,
-  templateGroupVersion(group),group.mode||'万象大赛',!!group.ignored,group.publication_hold??'']);
+  templateRangeKey(templateVersionValues(group.version)),templateRangeKey(templateRangeValues(group.mode)),!!group.ignored,group.publication_hold??'']);
 }
 
 function mergeFileGroup(target:FileGroupRow,source:FileGroupRow,original:TemplateGroup|undefined):FileGroupRow{
@@ -429,7 +446,8 @@ export function writeTemplateDocument(file:TemplateFile,changes:TemplateChange[]
    player:value.scope.player_id===null?null:lookups.entities?.find(entity=>entity.id===value.scope.player_id)?.name??file.snapshot.scope_names?.[value.scope.player_id]??((fileTemplateScopeName('player',value.scope.player_id)??value.scope.player_id).trim()||null),
    lineup:value.scope.lineup_note_id===null?null:lookups.lineups?.find(note=>note.id===value.scope.lineup_note_id)?.title??file.snapshot.scope_names?.[value.scope.lineup_note_id]??((fileTemplateScopeName('lineup',value.scope.lineup_note_id)??value.scope.lineup_note_id).trim()||null),
   };
-  const row:JsonObject={...(previous?.row??{id:value.id}),...(mergedIds?{id:value.id}:{}),
+  const scopeChanged=previous&&(['version','mode'] as const).some(field=>JSON.stringify(previous.value[field])!==JSON.stringify(value[field]));
+  const row:JsonObject={...(previous?.row??{id:value.id}),...(mergedIds||scopeChanged?{id:value.id}:{}),
    name:value.name,event_name:event.name,scope,expression:value.expression??'',effective_expression:effectiveExpression(scope.player,scope.lineup,value.expression??'',value.syntax_version),
    priority:value.priority??0,editor_mode:value.editor_mode??'text',condition_tree:value.condition_tree,
    utterances:value.syntax_version==='0.4'?value.utterances:value.utterances.map(utterance=>utterance.text),
@@ -547,8 +565,8 @@ export function writeLocalReviewStatus(file:TemplateFile,group:TemplateGroup):Fi
  })};
 }
 
-export function withLocalEntitySnapshot(group:TemplateGroup,event:TemplateEvent|undefined,official:OfficialTemplateCatalog|undefined,linked:TemplateEntity[],catalog?:ConditionCatalog,fallback:Entity[]=[]):TemplateGroup{
- const season=templateGroupSeason(group),verified=official?.season===season?official:undefined;
+export function withLocalEntitySnapshot(group:TemplateGroup,event:TemplateEvent|undefined,official:OfficialTemplateCatalog|undefined,linked:TemplateEntity[],catalog?:ConditionCatalog,fallback:Entity[]=[],selectedSeason?:string):TemplateGroup{
+ const season=templateGroupSeason(group,selectedSeason??official?.season),verified=official?.season===season?official:undefined;
  const items=verified?.items??fallback.filter((row):row is Entity&{category:string}=>typeof row.category==='string');
  const missing=new Map<string,string>();
  const treeRefs=group.condition_tree?treeEntities(group.condition_tree,listPaths(event,catalog),items,catalog?.unit_types):[];
@@ -568,7 +586,7 @@ export function withLocalEntitySnapshot(group:TemplateGroup,event:TemplateEvent|
 export function fixEditedLocalUtterances(previous:TemplateGroup,group:TemplateGroup):TemplateGroup{
  const originals=new Map(previous.utterances.map(row=>[row.id,row]));
  return {...group,utterances:group.utterances.map(row=>
-  !row.ignored&&originals.has(row.id)&&originals.get(row.id)?.text!==row.text?{...row,fixed:true}:row)};
+  !row.ignored&&originals.get(row.id)?.text!==row.text?{...row,fixed:true}:row)};
 }
 
 export async function pickTemplateFile(startIn?:LocalFileHandle){

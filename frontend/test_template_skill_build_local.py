@@ -168,6 +168,25 @@ class LocalBuildTests(unittest.TestCase):
             build_local.verify_related(groups[:2], reviews[:2])
         build_local.verify_related(groups, reviews)
 
+        auction_only = [{"sync": {"reason": "生存", "tier": "通用", "effect_card_tier": 6,
+                                 "unavailable": {purchase: "本赛季获取仅为拍卖", select: "本赛季获取仅为拍卖"}}}]
+        build_local.verify_related(groups[-1:], auction_only)
+
+
+    def test_group_dedup_respects_season_and_mode_ranges(self):
+        base = {
+            "id": "shared", "event_name": EVENT, "name": "小乔", "syntax_version": "0.4",
+            "extra_key": "小乔", "expression": "我方.等级 == 2",
+            "version": ["S1", "S2"], "mode": ["万象大赛"],
+            "utterances": [{"id": "line", "text": "先上小乔"}],
+        }
+        same_range = {**base, "id": "duplicate", "version": ["S2", "S1"], "mode": "万象大赛"}
+        s1 = {**base, "id": "s1", "version": ["S1"]}
+        s2 = {**base, "id": "s2", "version": "S2"}
+        other_mode = {**base, "id": "other", "mode": ["其他模式"]}
+        groups = build_local.merge_duplicate_groups([base, same_range, s1, s2, other_mode])
+        self.assertEqual([group["id"] for group in groups], ["shared", "s1", "s2", "other"])
+
     def test_v04_same_name_scenarios_require_group_identity(self):
         def group(key, level):
             return {
@@ -189,6 +208,16 @@ class LocalBuildTests(unittest.TestCase):
                  case("first", "missing", None, False), case("second", "positive", 3, True),
                  case("second", "negative", 2, False), case("second", "missing", None, False)]
         self.assertEqual(build_local.check_scenarios(runtime, cases), [])
+        scoped = {
+            "first": {"version": ["S1", "S2"], "mode": ["万象大赛"]},
+            "second": {"version": ["S2"], "mode": ["万象大赛"]},
+        }
+        cases.extend([
+            {**case("first", "positive", 2, True), "season": "S2", "mode": "万象大赛"},
+            {**case("second", "negative", 3, False), "season": "S1", "mode": "万象大赛"},
+            {**case("first", "negative", 2, False), "season": "S1", "mode": "其他模式"},
+        ])
+        self.assertEqual(build_local.check_scenarios(runtime, cases, scopes=scoped), [])
         cases[0]["group"][1] = "解释为何上阵甄姬"
         with self.assertRaisesRegex(ValueError, "稳定组 ID"):
             build_local.check_scenarios(runtime, cases)

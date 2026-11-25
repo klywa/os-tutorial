@@ -229,7 +229,13 @@ def get(server,actor,path,request_url):
         format=query.get('format',[None])[0]
         if format not in (None,'v3','v0.4'):
             raise ValueError('未知的话术库发布格式')
-        return library.refresh_published(server.root,entities=effective_entities(server),season=seasons.selected(request_url),format=format)
+        mode=None
+        if 'mode' in query:
+            values=query['mode']
+            if len(values)!=1 or not 0<len(values[0])<=80 or values[0]!=values[0].strip():
+                raise ValueError('适用模式须为单个非空文本')
+            mode=values[0]
+        return library.refresh_published(server.root,entities=effective_entities(server),season=seasons.selected(request_url),format=format,mode=mode)
     if path in (PREFIX+'/comments', PREFIX+'/history'):
         _identity(actor,editor=True)
         group_id=query.get('group_id',[None])[0]
@@ -264,7 +270,7 @@ def get(server,actor,path,request_url):
 
 def _proposal_ack(result):
     keys=('id','author','created_at','source','batch_id','status','proposal_revision','revision',
-          'changes','group_review_overrides','formal_write','sync')
+          'changes','group_review_overrides','formal_write','sync','inline_trigger')
     ids={change['id'] for change in result['changes'] if change['kind']=='group'}
     return {**{key:result[key] for key in keys if key in result},
             'base':{'groups':[group for group in result['base']['groups'] if group['id'] in ids],'events':[]},
@@ -297,12 +303,25 @@ def _editor_changes(data,current):
     return changes
 
 
-def mutate(server,actor,path,command,data,public=False):
+def _inline_trigger_changes(data,current):
+    changes=_editor_changes(data,current)
+    allowed={'name','event_id','extra_key','expression','conditions','condition_tree','editor_mode'}
+    patches=data.get('group_patches')
+    if not patches or data.get('changes') or len({patch['id'] for patch in patches})!=len(patches):
+        raise ValueError('触发动作编辑只接受现有模板组的字段修改')
+    if any((set(patch['fields']['set'])|set(patch['fields']['remove']))-allowed for patch in patches):
+        raise ValueError('触发动作编辑包含不支持的字段')
+    return changes
+
+
+def mutate(server,actor,path,command,data,public=False,*,request_url=None):
     _identity(actor,editor=True)
     if path==PREFIX+'/warnings/confirm' and actor['role']!='admin':
         raise PermissionError('只有管理员可以确认关联资料变更')
     if not isinstance(data,dict):raise ValueError('请求必须为JSON对象')
     if command!='POST':raise KeyError('模板接口只接受POST修改')
+    selected_season=(seasons.selected(request_url) if request_url and path==PREFIX+'/changes'
+                     and 'season' in parse_qs(urlsplit(request_url).query,keep_blank_values=True) else None)
     from site_access import state_dir,enqueue_sync,formal_save,assert_formal_write,sync_status
     from website_sync import save_lock
     service=proposal_store(server)
@@ -364,8 +383,13 @@ def mutate(server,actor,path,command,data,public=False):
         import uuid
         manual={'source':data['source'],'batch_id':feedback.text(data.get('batch_id',uuid.uuid4().hex),'批次',200),
                 'reason':feedback.text(data.get('reason'),'直接导入原因')}
+    inline_trigger=data.get('inline_trigger',False) if path==PREFIX+'/changes' else False
+    if type(inline_trigger) is not bool:
+        raise ValueError('触发动作编辑格式无效')
+    editor_changes=_inline_trigger_changes if inline_trigger else _editor_changes
     if path==PREFIX+'/changes' and actor['role']=='annotator':
-        return {'proposal':service.submit(actor,data,workflow_source='editor',prepare=lambda current:_editor_changes(data,current))}
+        return {'proposal':service.submit(actor,data,workflow_source='editor',inline_trigger=inline_trigger,
+                                          prepare=lambda current:editor_changes(data,current),selected_season=selected_season)}
     fixing = path == PREFIX+'/utterances/fixed'
     if fixing:
         _identity(actor,admin=True)
@@ -403,16 +427,17 @@ def mutate(server,actor,path,command,data,public=False):
             from template_group_edit import fork_direct_changes
             entities=effective_entities(server)
             def prepare(current):
-                changes=_editor_changes(data,current)
+                changes=editor_changes(data,current)
                 if actor['role']=='quality':
                     existing={group['id'] for group in current['groups']}
                     if not isinstance(changes,list) or any(not isinstance(change,dict) or change.get('kind')!='group'
                             or change.get('action')!='put' or change.get('id') not in existing for change in changes):
                         raise PermissionError('质检员只能编辑已有模板组')
-                transformed=fork_direct_changes(current,changes)
+                transformed=changes if inline_trigger else fork_direct_changes(current,changes)
                 if actor['role']=='quality' and transformed!=changes:
                     raise PermissionError('触发动作变化需要新建模板组，请由有新建权限的账号处理')
-                return workflow.prepare(server.root,current,transformed,actor,source=source,entities=entities)
+                return workflow.prepare(server.root,current,transformed,actor,source=source,entities=entities,
+                                        selected_season=selected_season)
             result=library.apply(server.root,data['revision'],None,actor=actor['username'],entities=entities,
                                  manual=manual,prepare=prepare,editor=True)
         else:

@@ -42,6 +42,16 @@ class GeminiGenerateTests(unittest.TestCase):
         self.assertEqual(run.call_count,1)
 
     @patch('gemini_generate.subprocess.run')
+    def test_explicit_model_is_used_and_bound_to_saved_request(self, run):
+        run.return_value = reply({'paragraph': '正文'})
+        request = {**self.request, 'model': 'gemini-flash-latest'}
+        generate(request, self.state)
+        body = json.loads(run.call_args.kwargs['input'].decode('utf-8'))
+        self.assertEqual(body['model'], 'gemini-flash-latest')
+        with self.assertRaisesRegex(ValueError, '不同的生成请求'):
+            generate(self.request, self.state)
+
+    @patch('gemini_generate.subprocess.run')
     def test_timeout_bad_schema_and_review_use_same_failure_budget(self, run):
         run.side_effect = [TimeoutExpired([],1),reply({'paragraph':[]}),reply({'paragraph':'改稿'})]
         result = generate(self.request,self.state)
@@ -60,6 +70,16 @@ class GeminiGenerateTests(unittest.TestCase):
         run.return_value = CompletedProcess([], 1, b'', b'private value')
         self.assertEqual(generate(self.request,self.state),{'status':'fallback','reason':'attempts_exhausted','failures':3})
         self.assertEqual(run.call_count,3)
+
+    @patch('gemini_generate.subprocess.run')
+    def test_monthly_spending_cap_pauses_without_spending_retry_budget(self, run):
+        error = {'status_code': 429, 'message': 'Temporarily rate-limited to prevent exceeding its monthly spending cap.'}
+        run.side_effect = [CompletedProcess([], 1, json.dumps(error).encode(), b''),
+                           reply({'paragraph': '提额后原稿'})]
+        result = generate(self.request, self.state)
+        self.assertEqual(result, {'status': 'fallback', 'reason': 'project_spending_cap', 'failures': 0})
+        self.assertEqual(run.call_count, 1)
+        self.assertEqual(generate(self.request, self.state)['content']['paragraph'], '提额后原稿')
 
     @patch('gemini_generate.subprocess.run')
     def test_feedback_and_verified_post_review_stage(self, run):

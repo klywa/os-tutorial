@@ -86,7 +86,7 @@ def _legacy_signature(expression):
 def formal_merge_key(group, event, entities, notes):
     from template_package import effective_expression
     from template_v04 import compile_expression, effective_expression as effective_v04
-    from templates_schema import group_season
+    from templates_schema import group_modes, group_versions
 
     scope = group['scope']
     player = entities.get(scope['player_id'], {}).get('name')
@@ -102,7 +102,7 @@ def formal_merge_key(group, event, entities, notes):
         expression = rules.editor_rule(group, event, entities).get('expression', '')
         rule = _legacy_signature(effective_expression(display, expression))
     return (group['event_id'], group['name'].strip(), group.get('syntax_version'), group.get('extra_key'), rule,
-            group_season(group), group.get('mode', ''), bool(group.get('ignored')),
+            group_versions(group), group_modes(group), bool(group.get('ignored')),
             group.get('publication_hold'))
 
 

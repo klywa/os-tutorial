@@ -218,7 +218,7 @@ def check(document, *, scenarios=()):
 def _check_v04(group, cases):
     import ast
     from group_identity import has_awakening_guard
-    from src.python.condition.v04 import compile_expression, compile_template, render, validate_key
+    from src.python.condition.v04 import compile_expression, compile_template, render_compiled, validate_key
     from src.python.condition.v04_legacy import adapt
 
     event = group["event_name"]
@@ -285,14 +285,15 @@ def _check_v04(group, cases):
         raise ValueError(f"{group['name']}：话术为空或有重复")
     for text in texts:
         parts = compile_template(event, text)
-        if len(parts) > 1 and not cases:
-            raise ValueError(f"{group['name']}：槽位需要可播正例")
-        rendered = [render(event, text, adapt(case["event"], case["state"])[1]
-                           if "参数" in case["event"] else case["state"]) for case in cases] if len(parts) > 1 else [text]
-        if not any(line is not None for line in rendered) or any(
-            len("".join(line.split())) > 30 for line in rendered if line is not None
+        length = sum(len("".join(part.split())) if isinstance(part, str) else 4 for part in parts)
+        if length > 30:
+            raise ValueError(f"{group['name']}：每句须不超过 30 字，槽位各计 4 字")
+        if len(parts) > 1 and not any(
+            render_compiled(parts, adapt(case["event"], case["state"])[1]
+                            if "参数" in case["event"] else case["state"]) is not None
+            for case in cases
         ):
-            raise ValueError(f"{group['name']}：话术须可播，展开后不超过 30 字")
+            raise ValueError(f"{group['name']}：槽位需要可播正例")
 
 
 if __name__ == "__main__":

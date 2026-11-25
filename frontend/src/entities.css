@@ -72,9 +72,9 @@
   .full .overview-positioning>:not(.overview-reserves){flex:none}
   .full .overview-positioning>.overview-reserves{flex:1 1 auto;min-height:0;max-height:none}
 }
-.card-tag-editor{display:flex;align-items:end;flex-wrap:wrap;gap:8px 12px}
-.card-tag-editor label{display:grid;gap:4px;min-width:0}
-.card-tag-editor label:first-child{flex:1 1 20rem}
-.card-tag-editor input,.card-tag-editor select{min-width:0;max-width:100%}
-.card-tag-editor small{width:100%;color:var(--muted)}
-.card-tag-editor .metadata-suggestions{flex:1 1 100%}
+.card-tag-editor .card-tag-inline{display:inline-block;min-width:1ch;max-width:100%;padding:0;color:inherit;font:inherit;text-align:left;overflow-wrap:anywhere}
+.card-tag-editor button.card-tag-inline{border:0;background:none;color:var(--jade);border-radius:0}
+.card-tag-editor button.card-tag-inline:hover{text-decoration:underline;text-underline-offset:3px}
+.card-tag-editing{white-space:pre-wrap;box-shadow:0 1px var(--jade);outline:none}
+.card-tag-editing:empty::before{content:attr(data-placeholder);color:var(--muted)}
+.card-tag-editor .metadata-suggestions{display:flex;flex-wrap:wrap;margin-top:4px}

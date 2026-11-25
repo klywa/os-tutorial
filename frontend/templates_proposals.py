@@ -162,7 +162,8 @@ class TemplateProposals:
                 previews.append({'proposal_id':item['id'],'author':item['author'],'created_at':item['created_at'],
                     'proposal_revision':item['proposal_revision'],'change_index':index,
                     'review_status_changed':change['id'] in item.get('group_review_overrides',{}),
-                    'source':item.get('source'),'change':change,'base':group,**({'event':event} if event else {})})
+                    'source':item.get('source'),'change':change,'base':group,
+                    **({'event':event} if event else {}),**({'inline_trigger':True} if item.get('inline_trigger') else {})})
         return previews
 
     def approved_retry(self,actor,pid,data):
@@ -174,7 +175,7 @@ class TemplateProposals:
                 or any(r.get('request')==request for r in item['reviews'])):
                 return _approved_response(item,request)
 
-    def submit(self,actor,data,*,workflow_source=None,restored_from=None,prepare=None):
+    def submit(self,actor,data,*,workflow_source=None,restored_from=None,prepare=None,inline_trigger=False,selected_season=None):
         _authority(actor)
         with self.lock:
             if self.receipt.exists():raise Conflict('上次模板审批尚未恢复，请稍后重试')
@@ -185,7 +186,8 @@ class TemplateProposals:
                 changes=prepare(base)
             inherited=set()
             if workflow_source=='editor':
-                changes=group_edit.fork_direct_changes(base,changes)
+                if not inline_trigger:
+                    changes=group_edit.fork_direct_changes(base,changes)
                 changes,inherited=library.related_copy_changes(base,changes)
             edit_targets=library.editor_utterance_targets(base,changes) if workflow_source=='editor' else set()
             library.preview_changes(self.root,revision,changes,authorized_fixed=edit_targets|inherited,**self._entities())
@@ -196,6 +198,10 @@ class TemplateProposals:
             item['author_role']=actor['role']
             if workflow_source:
                 item['workflow_source']=workflow_source
+            if selected_season:
+                item['selected_season']=selected_season
+            if inline_trigger:
+                item['inline_trigger']=True
             if inherited:
                 item['group_fixed_edits']={}
                 for gid,uid in sorted(inherited):
@@ -210,6 +216,8 @@ class TemplateProposals:
                     old=json.loads(row[0])
                     if (old['author']==item['author'] and old['status']=='pending'
                         and old['revision']==revision and old['changes']==changes and old.get('source','proposal')==item['source']
+                        and bool(old.get('inline_trigger'))==inline_trigger
+                        and old.get('selected_season')==selected_season
                         and ('batch_id' not in data or data['batch_id']==old.get('batch_id'))):return old
                 item=self._save(conn,item);conn.commit()
             return item
@@ -276,6 +284,9 @@ class TemplateProposals:
                 raise Conflict('模板提案已变化，请重新核对')
             if 'submission' not in item and not item['reviews']:
                 item['submission']={'before':_records(item['base'],item['changes']),'changes':deepcopy(item['changes'])}
+            if item.get('inline_trigger') and (action=='edit' or {'group_editor','changes'} & data.keys()
+                    or 'change_ids' in data and (action!='approve' or data['change_ids']!=list(range(len(item['changes']))))):
+                raise ValueError('触发动作提案需要整组采纳或驳回')
             if action in ('withdraw','reject'):
                 indices=data.get('change_ids')
                 selected=item['changes']
@@ -375,7 +386,8 @@ class TemplateProposals:
                 for change in changes:
                     if change['kind']=='group' and workflow.content(change.get('value'))!=workflow.content(selected_groups.get(change['id'])):
                         origins[change['id']]=(actor,'editor')
-                approved_changes=workflow.prepare(self.root,current,merge_changes,origin,source=source,origins=origins,**entities)
+                approved_changes=workflow.prepare(self.root,current,merge_changes,origin,source=source,origins=origins,
+                                                  selected_season=item.get('selected_season'),**entities)
                 if item.get('restored_from'):
                     manual={'source':'restore','restored_from':item['restored_from']}
             overrides=item.get('group_review_overrides',{})
@@ -613,7 +625,8 @@ class TemplateProposals:
                 if entry['action']=='edit' and any(row['kind']=='group' and row['id']==gid for row in entry['changes']):
                     origin={'username':entry['by'],'role':entry['role']}
                     break
-        approved=workflow.prepare(self.root,current,changes,origin,source='editor',entities=entities.get('entities'))
+        approved=workflow.prepare(self.root,current,changes,origin,source='editor',entities=entities.get('entities'),
+                                  selected_season=item.get('selected_season'))
         if explicit_status and not dropping:
             materialized=next((row['value'] for row in approved if row['kind']=='group'),None)
             if materialized is None and actual:

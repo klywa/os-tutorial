@@ -5,6 +5,19 @@ import {ConditionInput} from './TemplateEditor';
 import {effectiveExpression} from './templates';
 import type {TemplateEvent,TemplateGroup} from './templates';
 describe('template group reading',()=>{
+ it.each([[undefined,'arg1','arg2'],['0.4','动作.目标英雄','动作.装备']] as const)(
+  'shows action parameters in the syntax of the template %s', (syntax_version,hero,equipment)=>{
+  const event:TemplateEvent={id:'wear',name:'解释为何穿戴装备',parameters:[
+   {id:'p1',key:'arg1',name:'arg1',type:'entity',entity_categories:['heroes']},
+   {id:'p2',key:'arg2',name:'arg2',type:'entity',entity_categories:['equipment']}]};
+  const group:TemplateGroup={id:'g',name:'穿戴名刀·司命',event_id:event.id,scope:{player_id:null,lineup_note_id:null},
+   syntax_version,extra_key:'*-名刀·司命',conditions:[],utterances:[{id:'u',text:'话术'}],related_entities:[]};
+  const html=renderToStaticMarkup(<TemplateGroupCard group={group} event={event}
+   scopeName={()=>'通用'} editable={false} onEdit={()=>{}}/>);
+  const argumentsHtml=html.match(/<dl[^>]*aria-label="动作参数"[^>]*>(.*?)<\/dl>/)?.[1];
+  expect(argumentsHtml).toContain(`<code>${hero}</code></dt><dd>穿戴装备的英雄`);
+  expect(argumentsHtml).toContain(`<code>${equipment}</code></dt><dd>穿上的装备`);
+ });
  it.each([[false,'购买英雄'],[true,'穿戴装备']])('shows the action label before the title in file mode %s', (fileMode,action)=>{
   const group:TemplateGroup={id:'g',name:'示例标题',event_id:'event',scope:{player_id:null,lineup_note_id:null},
    conditions:[],utterances:[{id:'u',text:'话术'}],related_entities:[]};

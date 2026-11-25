@@ -82,6 +82,10 @@ def _scope_match(rows, previous_id, field, name, label):
     return matched['id']
 
 
+def _group_scope_key(group):
+    return schema.group_versions(group), schema.group_modes(group)
+
+
 def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None, authoring=True, stable_ids=False, group_cache=None):
     from templates_portable import encode as old_encode, encode_group
     runtime_catalog = rules.library_catalog(public['events'],root=root or rules.ROOT)
@@ -93,13 +97,13 @@ def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None
         event.pop('id')
         params = runtime_catalog['events'][event['name']]['parameters']
         event['signature'] = event['name']+'('+', '.join(k+': '+t for k,t in params.items())+')'
-    counts = Counter((g['event_id'],g['name'],schema.group_season(g)) for g in (public['groups'] if all_groups is None else all_groups))
+    counts = Counter((g['event_id'],g['name'],schema.group_versions(g)) for g in (public['groups'] if all_groups is None else all_groups))
     context=(public['events'],runtime_catalog,entities,notes,authoring,stable_ids)
     cached=group_cache.get('groups',{}) if group_cache is not None and group_cache.get('context')==context else {}
     encoded={}
     for original in public['groups']:
         identity=original['id']
-        omit_id=not stable_ids and counts[(original['event_id'],original['name'],schema.group_season(original))]==1
+        omit_id=not stable_ids and counts[(original['event_id'],original['name'],schema.group_versions(original))]==1
         archived = {**(metadata or {}).get('baselines',{}).get(identity,{}),
                     **(metadata or {}).get('entity_archive',{}).get(identity,{})}
         key=(original,omit_id,archived)
@@ -136,9 +140,10 @@ def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None
 
 def decode(document, public, entities, notes, **kwargs):
     from templates_portable import decode as old_decode
-    schema.fields(document,{'kind','schema_version','condition_catalog','events','groups'},
+    schema.fields(document,{'kind','schema_version','condition_catalog','events','groups','note'},
                   {'kind','schema_version','events','groups'})
     doc = deepcopy(document)
+    doc.pop('note', None)
     imported_catalog = doc.pop('condition_catalog', None)
     if imported_catalog is not None:
         current = rules.catalog()
@@ -216,7 +221,7 @@ def decode(document, public, entities, notes, **kwargs):
         event = all_events.get(imported_names.get(name)) or rules.resolve_event(all_events.values(),name,hint)
         if event is None:raise ValueError('未知事件：'+name)
         group['event_name'] = event['name']
-        group_names[(event['name'],schema.text(group.get('name')),schema.group_season(group))] += 1
+        group_names[(event['name'],schema.text(group.get('name')),_group_scope_key(group))] += 1
     for group in doc['groups']:
         schema.fields(group,{'id','name','event_name','scope','conditions','utterances','related_entities','effective_expression'}|schema.GROUP_METADATA|rules.RULE_FIELDS,
                       {'name','event_name','expression','utterances'})
@@ -226,11 +231,14 @@ def decode(document, public, entities, notes, **kwargs):
         if event is None:raise ValueError('未知事件：'+str(group['event_name']))
         group['event_id'] = event['id']
         if 'id' not in group:
-            season=schema.group_season(group)
-            if group_names[(group['event_name'],group['name'],season)] != 1:
-                raise ValueError('同一赛季同一事件下重名的模板组需要身份')
-            existing = _find([g for g in public['groups'] if g['event_id']==event['id'] and schema.group_season(g)==season],
-                             'name',group['name'],'模板组')
+            scope_key=_group_scope_key(group)
+            if group_names[(group['event_name'],group['name'],scope_key)] != 1:
+                raise ValueError('同一赛季和模式范围内同一事件下重名的模板组需要身份')
+            peers=[g for g in public['groups'] if g['event_id']==event['id'] and g['name']==group['name']]
+            exact=[g for g in peers if _group_scope_key(g)==scope_key]
+            legacy=[g for g in peers if not isinstance(g.get('mode'),list) and schema.group_versions(g)==scope_key[0]]
+            candidates=exact if exact or isinstance(group.get('mode'),list) else legacy
+            existing = _find(candidates,'name',group['name'],'模板组')
             group['id'] = existing['id'] if existing else 'group_'+uuid.uuid4().hex
         schema.identity(group['id'])
         previous = old_groups.get(group['id'], {})

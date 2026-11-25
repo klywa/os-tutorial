@@ -262,8 +262,16 @@ export class FileNotesRepository {
    }
   });
  }
+ async saveNote(note:FileNote,text:string){
+  return this.writeNote(note,{note:text});
+ }
+
  async save(note:FileNote,draft:FileNoteDraft){
-  await this.transaction(async()=>{
+  return this.writeNote(note,draft);
+ }
+
+ private writeNote(note:FileNote,draft:FileNoteDraft|{note:string}){
+  return this.transaction(async()=>{
    await this.assertNativeIdle();
    if(await readOptional(this.directory,notesJournal)!==null){this.hasPending=true;throw new Error('请先完成上次文件保存的恢复');}
    const path=localNotePath(note.metadata.path);
@@ -271,22 +279,32 @@ export class FileNotesRepository {
    const [bodyFile,metadataFile,indexFile]=await Promise.all(paths.map(file=>readOptional(this.directory,file)));
    if(bodyFile!==note.files[0]||metadataFile!==note.files[1]||indexFile!==note.files[2])throw outsideChange();
    const {value:index,tokens:indexTokens}=parse<FileNoteIndex>(indexFile);
-   const metadata={...note.metadata,title:draft.title?.trim()??note.metadata.title,seasons:seasons.filter(value=>draft.seasons.includes(value)),...(draft.aliases?{aliases:draft.aliases}:{})};
-   if(!metadata.seasons.length)throw new Error('请选择至少一个有效的适用赛季');
-   const body={...draft.document,nodes:draft.document.nodes.map(node=>node.type==='heading'&&node.level===1?{...node,title:metadata.title}:node)};
+   const metadata={...note.metadata};
+   let body:KnowledgeDocument;
+   if('note' in draft){
+    body={...note.body,note:draft.note};
+   }else{
+    metadata.title=draft.title?.trim()??metadata.title;
+    metadata.seasons=seasons.filter(value=>draft.seasons.includes(value));
+    if(!metadata.seasons.length)throw new Error('请选择至少一个有效的适用赛季');
+    if(draft.aliases)metadata.aliases=draft.aliases;
+    body={...draft.document,nodes:draft.document.nodes.map(node=>node.type==='heading'&&node.level===1?{...node,title:metadata.title}:node)};
+   }
    checkRecord(body,metadata);
-   markManualChanges(note.body,body,metadata);
+   if(!('note' in draft))markManualChanges(note.body,body,metadata);
    const bodyTokens=parse<KnowledgeDocument>(bodyFile).tokens,metaTokens=parse<FileMetadata>(metadataFile).tokens;
    metadata.body_sha256=await digest(body,bodyTokens);
    const ignored=new Set(index.storage_version===2?['revision','history','history_head','history_count']:['revision']);
    metadata.revision=(await digest({body,metadata:Object.fromEntries(Object.entries(metadata).filter(([key])=>!ignored.has(key)))},combineNumbers({prefix:['body'],tokens:bodyTokens},{prefix:['metadata'],tokens:metaTokens}))).slice(0,20);
-   const nextIndex={...index,notes:index.notes.map(row=>row.id===metadata.id?{...row,title:metadata.title,revision:metadata.revision,seasons:metadata.seasons}:row)};
+   const nextIndex={...index,notes:index.notes.map(row=>row.id===metadata.id?{...row,revision:metadata.revision,
+    ...('note' in draft?{}:{title:metadata.title,seasons:metadata.seasons})}:row)};
    const after:NoteFiles=[encode(body,bodyTokens,true),encode(metadata,metaTokens,true),encode(nextIndex,indexTokens,true)];
    const journal:Journal={version:1,paths,before:note.files,after};
    if((await Promise.all(paths.map(file=>readOptional(this.directory,file)))).some((text,i)=>text!==note.files[i]))throw outsideChange();
    try{await write(this.directory,notesJournal,JSON.stringify(journal),true);}
    finally{this.hasPending=(await readOptional(this.directory,notesJournal))!==null;}
    await this.publish(journal);
+   return {body,metadata,files:after};
   });
  }
 }

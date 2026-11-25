@@ -13,10 +13,38 @@ GROUP_METADATA = {'version', 'mode', 'tags', 'batch', 'explanation', 'explanatio
                   'explanation_source', 'explanation_after', 'wording_brief'} | WORKFLOW_METADATA
 
 
-def group_season(group):
-    version=group.get('version') or 'S1'
-    if not isinstance(version,str):raise ValueError('模板组版本无效')
-    return version.upper()
+GROUP_SEASONS = ('S1', 'S2')
+
+
+def _group_range(group, key, label, normalize, choices=None):
+    if key not in group:
+        return ()
+    value = group[key]
+    if isinstance(value, str) and len(value) <= 80 and value == value.strip():
+        return (normalize(value),) if value else ()
+    if isinstance(value, list) and value and all(
+            isinstance(item, str) and 0 < len(item) <= 80 and item == item.strip() for item in value):
+        items = {normalize(item) for item in value}
+        if len(items) == len(value) and (choices is None or items.issubset(choices)):
+            return tuple(sorted(items))
+    raise ValueError(label + '须为不超过 80 字的文本或由有效且不重复的文本组成的非空列表')
+
+
+def group_versions(group):
+    return _group_range(group, 'version', '版本', str.upper, GROUP_SEASONS) or ('S1',)
+
+
+def group_seasons(group):
+    versions = group_versions(group)
+    return versions if versions[0] in GROUP_SEASONS else ('S1',)
+
+
+def group_modes(group):
+    return _group_range(group, 'mode', '模式', str)
+
+
+def group_applies(group, season, mode=None):
+    return season in group_seasons(group) and (mode is None or mode in group_modes(group))
 
 
 def fields(value, allowed, required=()):
@@ -101,9 +129,8 @@ def validate_group(group, events, entities, notes):
         explanation = group['explanation']
         if not isinstance(explanation, str) or len(explanation) > 300:
             raise ValueError('模板组说明必须为不超过 300 个字符的文本')
-    for key, label in (('version','版本'), ('mode','模式')):
-        if key in group and (not isinstance(group[key], str) or len(group[key]) > 80 or group[key] != group[key].strip()):
-            raise ValueError(label+'须为不超过 80 字的文本')
+    group_versions(group)
+    group_modes(group)
     for key, label in (('tags','标签'), ('batch','批次')):
         if key in group:
             values = group[key]

@@ -383,7 +383,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.response(200,mutate_proposal(self.server,identity,path,self.command,payload(self)))
             if path=='/api/templates' or path.startswith('/api/templates/'):
                 import templates_http
-                return self.response(200,templates_http.mutate(self.server,identity,path,self.command,payload(self)))
+                return self.response(200,templates_http.mutate(self.server,identity,path,self.command,payload(self),request_url=self.path))
             if identity and identity['role']!='admin':return self.response(403,{'error':'编写员请通过正文编辑提交待审提案'})
             transfer=re.fullmatch(r'/api/notes/([^/]+)/section-sync/(preview|apply)',path)
             if transfer and self.command=='POST':

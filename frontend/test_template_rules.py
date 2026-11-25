@@ -6,6 +6,7 @@ from pathlib import Path
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
+from urllib.parse import urlencode
 import tempfile
 
 import test_templates as fixtures
@@ -17,6 +18,36 @@ from src.python.condition import evaluate_condition, choose_utterance
 
 
 class TemplateRuleTests(unittest.TestCase):
+    def test_v04_publication_filters_mode_and_season_before_building_runtime(self):
+        event='解释为何购买英雄'
+        common={'name':'首个配合','event_name':event,'syntax_version':'0.4','extra_key':'小乔',
+                'expression':'对局.当前回合数 >= 3','mode':['万象大赛'],
+                'utterances':[{'id':'line','text':'给后续登场留出配合。'}]}
+        document={'kind':'speech-template-library','schema_version':3,'events':[],'groups':[
+            {**common,'id':'shared','version':['S1','S2']},
+            {**common,'id':'seasonOne','version':['S1']},
+            {**common,'id':'seasonTwo','version':'S2'},
+            {**common,'id':'otherMode','version':['S1','S2'],'mode':'万象速决'},
+        ]}
+        preview=store.preview_import(self.root,document)
+        self.assertEqual(preview['errors'],[])
+        store.apply(self.root,preview['revision'],preview['changes'])
+        cached=(self.root/store.PUBLISHED).read_bytes()
+        path='/api/templates/published'
+        for season,mode,expected in [('S1','万象大赛',{'shared','seasonOne'}),
+                                     ('S2','万象大赛',{'shared','seasonTwo'}),
+                                     ('S2','万象速决',{'otherMode'}),('S2','未知模式',set())]:
+            with self.subTest(season=season,mode=mode):
+                query=urlencode({'season':season,'mode':mode})
+                document=templates_http.get(self.server,ADMIN,path,path+'?'+query)
+                groups=document['解释事件'].get(event,{}).get('小乔',[])
+                self.assertEqual({group['id'] for group in groups},expected)
+        with patch.object(store,'_published_document',side_effect=ValueError('模拟作用域发布失败')):
+            query=urlencode({'season':'S1','mode':'万象大赛'})
+            with self.assertRaisesRegex(ValueError,'模拟作用域发布失败'):
+                templates_http.get(self.server,ADMIN,path,path+'?'+query)
+        self.assertEqual((self.root/store.PUBLISHED).read_bytes(),cached)
+
     def test_numeric_reference_roundtrips_without_display_substitution(self):
         count = '玩家.战场.计数(阵营, "无阵营")'
         line = f'场上有{{{count}}}名无阵营英雄。'

@@ -114,6 +114,59 @@ class TemplateHttpTests(unittest.TestCase):
         saved=self.call(api)[1]
         self.assertEqual(next(g for g in saved['groups'] if g['id']=='proposed')['utterances'],proposed['utterances'])
 
+    def test_inline_event_move_keeps_group_ids_conditions_and_fixed_speech(self):
+        self.check_inline_event_move(annotator=False)
+
+    def test_inline_event_proposal_requires_approval_for_the_entire_group(self):
+        self.check_inline_event_move(annotator=True)
+
+    def check_inline_event_move(self, *, annotator):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        state=self.call(api)[1]
+        first,second='auction-first','auction-second'
+        events=[{'kind':'event','action':'put','id':gid,'value':{'id':gid,
+                 'name':f'解释为何竞拍目标英雄（第{number}次拍卖）','category':'解释类','parameters':[]}}
+                for number,gid in enumerate((first,second),1)]
+        rows=[dict(group('auction-'+str(level)),event_id=first,syntax_version='0.4',
+                   expression=f'我方.等级 >= {level}',extra_key='小乔') for level in (3,4)]
+        code,state,_=self.call(api+'/changes','POST',{'revision':state['revision'],'changes':events+[
+            {'kind':'group','action':'put','id':row['id'],'value':row} for row in rows]})
+        self.assertEqual(code,200,state)
+        state=self.call(api)[1]
+        code,state,_=self.call(api+'/utterances/fixed','POST',{
+            'revision':state['revision'],'group_id':rows[0]['id'],'utterance_id':'line','fixed':True})
+        self.assertEqual(code,200,state)
+        code,thread,_=self.call(api+'/comments','POST',{
+            'group_id':rows[0]['id'],'utterance_id':'line','body':'移动后仍能看到这条批注'})
+        self.assertEqual(code,200,thread)
+        if annotator:
+            self.user('alice')
+        code,state,_=self.call(api+'/changes','POST',{'revision':state['revision'],'inline_trigger':True,
+            'group_patches':[{'id':row['id'],'fields':{'set':{'event_id':second,
+                'name':'解释为何竞拍小乔（第2次拍卖）'},'remove':[]}} for row in rows]})
+        self.assertEqual(code,200,state)
+        if annotator:
+            proposal=state['proposal']
+            self.assertTrue(proposal['inline_trigger'])
+            self.assertEqual([row['id'] for row in proposal['changes']],[row['id'] for row in rows])
+            self.user('klywa')
+            self.assertTrue(all(row['event_id']==first for row in self.call(api)[1]['groups']))
+            path=api+'/proposals/'+proposal['id']+'/approve'
+            approval={'proposal_revision':proposal['proposal_revision']}
+            self.assertEqual(self.call(path,'POST',{**approval,'change_ids':[0]})[0],400)
+            code,state,_=self.call(path,'POST',approval)
+            self.assertEqual(code,200,state)
+        actual={row['id']:row for row in self.call(api)[1]['groups']}
+        self.assertEqual(set(actual),{row['id'] for row in rows})
+        for row in rows:
+            self.assertEqual(actual[row['id']]['event_id'],second)
+            self.assertEqual(actual[row['id']]['expression'],row['expression'])
+        self.assertTrue(actual[rows[0]['id']]['utterances'][0]['fixed'])
+        code,comments,_=self.call(api+'/comments?group_id='+rows[0]['id'])
+        self.assertEqual(code,200,comments)
+        self.assertIn('移动后仍能看到这条批注',json.dumps(comments,ensure_ascii=False))
+
     def test_formal_rename_merges_speech_and_transfers_utterance_comments(self):
         api='/os-tutorial/api/templates'
         self.user('klywa')
@@ -246,6 +299,34 @@ class TemplateHttpTests(unittest.TestCase):
         self.assertEqual(self.call(api)[1]['groups'][0]['utterances'][0],
                          {'id':'line','text':'经审批的修改','fixed':True})
 
+    def test_new_utterances_are_fixed_when_formally_saved(self):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        def save(value):
+            state=self.call(api)[1]
+            code,result,_=self.call(api+'/changes','POST',{'revision':state['revision'],
+                'changes':[{'kind':'group','action':'put','id':'example','value':value}]})
+            self.assertEqual(code,200,result)
+            return result
+        save(group())
+        value=self.call(api)[1]['groups'][0]
+        value['utterances'].extend([{'id':'direct','text':'人工新增的第一句。'},
+                                    {'id':'ignored','text':'暂不启用。','ignored':True}])
+        save(value)
+        rows=self.call(api)[1]['groups'][0]['utterances']
+        self.assertTrue(rows[1]['fixed'])
+        self.assertFalse(rows[2].get('fixed',False))
+        self.user('alice')
+        value=self.call(api)[1]['groups'][0]
+        value['utterances'].append({'id':'proposed','text':'经审批的新增话术。'})
+        proposal=save(value)['proposal']
+        self.assertEqual(len(self.call(api)[1]['groups'][0]['utterances']),3)
+        self.user('klywa')
+        code,result,_=self.call(api+'/proposals/'+proposal['id']+'/approve','POST',
+            {'proposal_revision':proposal['proposal_revision']})
+        self.assertEqual(code,200,result)
+        self.assertTrue(self.call(api)[1]['groups'][0]['utterances'][-1]['fixed'])
+
     def test_writer_proposal_private_and_approved_formal_export(self):
         from unittest.mock import Mock
         enqueue=Mock(return_value={'state':'pending'})
@@ -306,6 +387,7 @@ class TemplateHttpTests(unittest.TestCase):
     def test_import_preview_does_not_write_and_commit_rechecks(self):
         self.user('klywa')
         document=self.call('/os-tutorial/api/templates/export')[1];document['groups']=[portable_group()]
+        document['note']='只保存在文件中的随手笔记'
         code,preview,_=self.call('/os-tutorial/api/templates/import/preview','POST',{'document':document})
         self.assertEqual(code,200,preview);self.assertFalse(preview['errors'])
         self.assertEqual(self.call('/os-tutorial/api/templates')[1]['groups'],[])
@@ -324,7 +406,9 @@ class TemplateHttpTests(unittest.TestCase):
         gid=preview['changes'][0]['id']
         audit=self.call('/os-tutorial/api/templates/history?group_id='+gid)[1]['items'][0]
         self.assertEqual((audit['source'],audit['reason'],audit['batch_id']),('fixture','已独立核对','batch-123'))
-        self.assertEqual(self.call('/os-tutorial/api/templates/export?group_ids='+gid)[1]['groups'],[{**portable_group(), 'event_name':'解释为何准备战斗'}])
+        exported=self.call('/os-tutorial/api/templates/export?group_ids='+gid)[1]
+        self.assertEqual(exported['groups'],[{**portable_group(), 'event_name':'解释为何准备战斗'}])
+        self.assertNotIn('note',exported)
         self.assertEqual(self.call('/os-tutorial/api/templates/import/commit','POST',preview)[0],409)
 
     def test_formal_comments_survive_delete_and_capture_admin_decisions(self):

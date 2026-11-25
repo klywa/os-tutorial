@@ -503,7 +503,7 @@ async function main(){
   await button(/^编辑话术/,speechRow).click();
   await writeSpeech(beforeSlot);
   await editCondition.click();
-  await button('取消',dialog('编辑模板组')).click();
+  await button('取消',editedCard.getByRole('form',{name:'编辑模板组'})).click();
   await editedCard.waitFor();
   await button(/^编辑标签/,editedCard).click();
   const tagInput=editedCard.getByRole('textbox',{name:'新增标签',exact:true});

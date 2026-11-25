@@ -3,7 +3,7 @@ import {catalogV04,slotToken,v04Paths} from './templateV04';
 import rawCatalog from '../../src/condition/catalog.json?raw';
 import type {TemplateEvent} from './templates';
 
-export type ConditionEditingConfig={event?:TemplateEvent;catalog?:ConditionCatalog;v04?:boolean};
+export type ConditionEditingConfig={event?:TemplateEvent;catalog?:ConditionCatalog;v04?:boolean;lineupName?:string};
 type Field={label:string;type:string;guard?:boolean;insert?:string;selection?:{start:number;end:number}};
 const defaultCatalog:ConditionCatalog=JSON.parse(rawCatalog);
 const brackets:Record<string,string>={'(':')','[':']','{':'}'};
@@ -79,13 +79,13 @@ function predicateSource(value:string,dot:number){
 }
 
 function v04Fields(parent:string,value:string,dot:number,event?:TemplateEvent):Field[]{
- const source=parent.startsWith('.')||!parent?predicateSource(value,dot):undefined;
+ const source=predicateSource(value,dot);
  const item=source?v04Type(source,event).type?.match(/^Array<(.+)>$/u)?.[1]:undefined;
  const {type,guard}=parent?v04Type(parent,event,item):{type:item,guard:false};
  if(!type)return [];
  const bare=type.replace(/\?$/u,'');
  const table=bare==='动作'?own(catalogV04.actions,own(catalogV04.events,event?.name??'')?.action??''):own(catalogV04.types,bare);
- return Object.entries(table??{}).map(([label,kind])=>({label,type:kind,guard:guard||type.endsWith('?')||
+ return Object.entries(table??{}).filter(([label])=>!source||label!=='阵容英雄名列表').map(([label,kind])=>({label,type:kind,guard:guard||type.endsWith('?')||
   bare==='卡牌'&&catalogV04.hero_fields.includes(label)&&!catalogV04.hero_paths.includes(parent.split('.').at(-1)??'')&&!(item&&source?.endsWith('.场上英雄列表')&&!parent)}));
 }
 
@@ -127,7 +127,7 @@ const conditionSnippets=[
  ['商店有英雄','any(我方.商店列表, .卡牌类型 == "英雄" and .名称 == "«曹操»")','商店刷到'],
  ['手牌有效果牌','any(我方.手牌列表, .卡牌类型 == "效果牌" and .名称 == "«换帅»")','手中有效果牌'],
  ['手牌有装备','any(我方.手牌列表, .卡牌类型 == "装备" and .名称 == "«驱雷»")','手中有装备'],
- ['我方阵容名称','我方.阵容名称 == "«三分登场»"','当前阵容'],
+ ['我方阵容名称','我方.阵容名称 == "«三分登场»"','我方阵容','当前阵容'],
  ['棋手等级','我方.等级 >= «4»','玩家等级'],
  ['当前阶段','对局.当前阶段 == "«前期»"','前中后期'],
  ['当前回合数','对局.当前回合数 <= «3»','回合上限','前三回合'],
@@ -141,19 +141,23 @@ const conditionSnippets=[
  return {field,aliases};
 });
 
-function snippetCompletion(value:string,caret:number){
+function snippetCompletion(value:string,caret:number,lineupName?:string){
  const match=/[*＊]([\p{L}\p{N}_]*)$/u.exec(value.slice(0,caret));
  if(!match||inQuotedText(value,match.index))return null;
  const prefix=value.slice(0,match.index).trimEnd();
  if(prefix&&!/(?:\(|\b(?:and|or|not))$/u.test(prefix))return null;
- const query=normalize(match[1]),suffix=value.slice(caret).match(/^[\p{L}\p{N}_]*/u)?.[0]??'';
+ const query=normalize(match[1]);
  const choices=conditionSnippets.map(({field,aliases})=>({
   field,rank:Math.min(fieldRank(field.label,query),...aliases.map(alias=>fieldRank(alias,query))),
- })).filter(item=>Number.isFinite(item.rank)).sort((a,b)=>a.rank-b.rank).map(({field})=>field);
- return {start:match.index,end:caret+suffix.length,dot:match.index,choices,snippet:true};
+ })).filter(item=>Number.isFinite(item.rank)).sort((a,b)=>a.rank-b.rank).map(({field})=>{
+  if(!lineupName||field.label!=='我方阵容名称'||!field.insert||!field.selection)return field;
+  const {start,end}=field.selection,text=JSON.stringify(lineupName).slice(1,-1);
+  return {...field,insert:field.insert.slice(0,start)+text+field.insert.slice(end),selection:{start,end:start+text.length}};
+ });
+ return {start:match.index,end:caret,dot:match.index,choices,snippet:true};
 }
 export function conditionCompletion(value:string,caret:number,config:ConditionEditingConfig){
- const snippet=config.v04?snippetCompletion(value,caret):null;
+ const snippet=config.v04?snippetCompletion(value,caret,config.lineupName):null;
  if(snippet)return snippet;
  const variable=utteranceSlotCompletion(value,caret,config,false);
  if(variable)return variable;
@@ -188,7 +192,8 @@ export function utteranceSlotCompletion(value:string,caret:number,config:Conditi
  const suffix=match[2]?'':value.slice(caret).match(/^[\p{L}\p{N}_.。]*(?:\}\}|」)/u)?.[0]??'';
  const insert=(path:string)=>slots?slotToken(path,!!config.v04):path;
  const fields:Field[]=config.v04
-  ? v04Paths(config.event?.name??'').map(label=>({label,type:'',insert:insert(label)}))
+  ? v04Paths(config.event?.name??'').filter(path=>!predicateSource(value,start)||!path.endsWith('.阵容英雄名列表'))
+    .map(label=>({label,type:'',insert:insert(label)}))
   : listPaths(config.event,config.catalog??defaultCatalog).filter(({path,type})=>
    /^[\p{L}_][\p{L}\p{N}_]*(?:\.[\p{L}_][\p{L}\p{N}_]*)*$/u.test(path)&&
    !type.startsWith('Array<')&&!['对局','商店'].includes(type)).map(({path:label,type})=>({label,type,insert:insert(label)}));

@@ -277,7 +277,7 @@ def handler_class(base):
                     return self.response(200,card_tags.submit(self.server,self.actor(),path,data))
                 if templatepath:
                     import templates_http
-                    return self.response(200,templates_http.mutate(self.server,self.actor(),path,self.command,data,public=True))
+                    return self.response(200,templates_http.mutate(self.server,self.actor(),path,self.command,data,public=True,request_url=self.path))
                 if lockpath:
                     from site_access import mutate_locks
                     return self.response(200,mutate_locks(self.server,self.actor(),path,data))

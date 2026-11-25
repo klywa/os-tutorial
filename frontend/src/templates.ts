@@ -50,11 +50,21 @@ export const templateGameModes=['万象大赛','万象速决'] as const;
 export type TemplateGameMode=''|typeof templateGameModes[number];
 export type TemplateModifier={kind:'ai'|'user';username?:string};
 export type TemplateEntitySnapshot={season:string;version?:string;entities:Record<string,unknown>};
-type TemplateGroupMetadata={version?:string;mode?:string;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string;wording_brief?:string};
+export type TemplateRange=string|string[];
+type TemplateGroupMetadata={version?:TemplateRange;mode?:TemplateRange;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string;wording_brief?:string};
 export const templateReviewLabels:Record<TemplateReviewStatus,string>={ai_generated:'AI生成',initial_reviewed:'初核完成',final_reviewed:'复核完成'};
 export const effectiveReviewStatus=(status:TemplateGroupMetadata['review_status'])=>status===undefined?'ai_generated':status;
 export const templateReviewLabel=(status:TemplateGroupMetadata['review_status'])=>status===null?'未标记':templateReviewLabels[status??'ai_generated'];
-export const groupSeason=(group:Pick<TemplateGroupMetadata,'version'>)=>(group.version||'S1').toUpperCase();
+export function templateRangeValues(value:unknown):string[]{
+ if(Array.isArray(value))return value.filter((item):item is string=>typeof item==='string');
+ return typeof value==='string'&&value?[value]:[];
+}
+export function templateVersionValues(version:unknown):string[]{
+ const values=templateRangeValues(version).map(value=>value.trim().toUpperCase()).filter(Boolean);
+ return values.length?values:['S1'];
+}
+export const templateRangeKey=(values:string[])=>JSON.stringify([...new Set(values)].sort());
+export const templateRangeText=(value:TemplateRange|undefined)=>templateRangeValues(value).join('、');
 export const templateExplanationFields=[
  ['explanation_before','前置思考'],['explanation_source','来源'],['explanation_after','后置校验'],
 ] as const;
@@ -111,7 +121,7 @@ export function appendTemplateMetadata(groups:TemplateGroup[],field:TemplateMeta
 }
 type TemplateVersions=Record<string,TemplateEvent|TemplateGroup|null>;
 export type TemplateReview={action?:string;at:string;by:string;changes?:TemplateChange[];before?:TemplateVersions;after?:TemplateVersions};
-export type TemplateProposal={history_targets?:TemplateChange[];has_history?:boolean;previously_approved?:boolean;formal_write?:{revision:string;previous_revision:string;changes:TemplateChange[];merged_groups?:Record<string,string>};group_review_overrides?:Record<string,TemplateReviewStatus|null>;discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
+export type TemplateProposal={history_targets?:TemplateChange[];has_history?:boolean;previously_approved?:boolean;inline_trigger?:boolean;formal_write?:{revision:string;previous_revision:string;changes:TemplateChange[];merged_groups?:Record<string,string>};group_review_overrides?:Record<string,TemplateReviewStatus|null>;discussion?:{id:string;by:string;at:string;body:string}[];source?:string;batch_id?:string;submission?:{before:TemplateVersions;changes:TemplateChange[]};reviews?:TemplateReview[];conflicts?:Record<string,{current:TemplateEvent|TemplateGroup|null;revision:string}>;id:string;author:string;status:string;created_at:string;revision:string;proposal_revision?:string;changes:TemplateChange[];base:{events:TemplateEvent[];groups:TemplateGroup[]}};
 export type TemplateWarning={group_id:string;group_name:string;revision:string;entities:{id:string;name:string;before:unknown;after:unknown}[]};
 export type WarningSnapshot={items:TemplateWarning[];unseen_items?:TemplateWarning[];notification_revision:string;unseen:boolean};
 export function loginWarningItems(snapshot:WarningSnapshot){return snapshot.unseen_items??(snapshot.unseen?snapshot.items:[]);}
@@ -146,11 +156,15 @@ export function renderUtterance(text:string,bindings?:UtteranceBindings):string{
  });
 }
 const orderedArguments:Record<string,string[]>={
- 购买:['选中','候选列表'],上阵英雄:['英雄'],合成英雄:['英雄'],出售英雄:['英雄'],选择:['候选列表','选中'],
+ 购买:['选中','候选列表'],拍卖:['选中','候选列表'],上阵英雄:['英雄'],合成英雄:['英雄'],出售英雄:['英雄'],选择:['候选列表','选中'],
  使用效果牌:['卡牌'],使用棋手技能:['卡牌'],对目标使用效果牌:['目标','卡牌'],对目标使用棋手技能:['目标','卡牌'],
  穿戴装备:['目标英雄','装备'],铸造装备:['目标英雄','原装备','目标装备'],转移装备:['原英雄','装备','目标英雄'],
- 升级棋手:['目标等级'],发展阵容:['阵容'],
+ 升级棋手:['目标等级'],发展阵容:['阵容'],移动站位:['英雄','原位置','目标位置'],
 };
+export function actionArgumentFields(event:TemplateEvent){
+ const definition=catalogV04.events[event.name];
+ return definition?orderedArguments[definition.action]??Object.keys(catalogV04.actions[definition.action]):[];
+}
 
 // Only unconditional equalities identify an action's participants. Other facts
 // (including entities mentioned under negation) belong in the trigger conditions.
@@ -159,7 +173,7 @@ export function fixedArguments(group: TemplateGroup,event?:TemplateEvent) {
  if(group.syntax_version==='0.4'){
   const definition=event&&catalogV04.events[event.name];
   if(definition){
-   const args=orderedArguments[definition.action]??[];
+   const args=actionArgumentFields(event!);
    const segments=group.extra_key?.split('-')??[];
    definition.key.forEach((field,index)=>{
     const argument=args.indexOf(field),value=segments[index];
@@ -224,7 +238,7 @@ function templateSearchTerms(query:string):string[]{
  terms.push(query.slice(start));
  return terms.map(term=>term.trim().toLocaleLowerCase()).filter(Boolean);
 }
-export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>;utteranceBindings?:Record<string,UtteranceBindings>}={}){
+export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilters,catalog:{id:string;name:string;aliases?:string[]}[]=[],labels:{events?:TemplateEvent[];scopeName?:(id:string|null)=>string;links?:Record<string,TemplateEntity[]>;utteranceBindings?:Record<string,UtteranceBindings>;displayNames?:ReadonlyMap<string,string>}={}){
  const compatible=(value:string|null,filter:string)=>!filter||(filter==='common'?value===null:value===null||value===filter);
  const terms=templateSearchTerms(filters.query);
  const actionTerms=templateSearchTerms(filters.actionQuery??'');
@@ -235,7 +249,8 @@ export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilt
  const scoped=groups.filter(group=>(!filters.event||group.event_id===filters.event)
   &&templateGroupVisible(group,filters)
   &&compatible(group.scope.player_id,filters.player)&&compatible(group.scope.lineup_note_id,filters.lineup)
-  &&(!filters.version||filters.version.toUpperCase()===groupSeason(group))&&(!filters.mode||filters.mode===group.mode)
+  &&(!filters.version||templateVersionValues(group.version).includes(filters.version.toUpperCase()))
+  &&(!filters.mode||templateRangeValues(group.mode).includes(filters.mode))
   &&(!filters.review_status||filters.review_status===(effectiveReviewStatus(group.review_status)??'unmarked'))&&actorMatches(group)
   &&(filters.batch??[]).every(batch=>group.batch?.includes(batch))
   &&(filters.tags??[]).every(tag=>group.tags?.includes(tag)));
@@ -256,7 +271,7 @@ export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilt
   const {player_id:player,lineup_note_id:lineup}=group.scope;
   const playerName=player&&(labels.scopeName?.(player)??player),lineupName=lineup&&(labels.scopeName?.(lineup)??lineup);
   const bindings=labels.utteranceBindings?.[group.id];
-  const values=[group.name,effectiveExpression(playerName,lineupName,group.expression??'',group.syntax_version),
+  const values=[group.name,labels.displayNames?.get(group.id),effectiveExpression(playerName,lineupName,group.expression??'',group.syntax_version),
    ...visibleTemplateUtterances(group.utterances,filters).flatMap(({text})=>bindings?[text,renderUtterance(text,bindings)]:[text]),
    event?.name,labels.scopeName?.(player),labels.scopeName?.(lineup),
    ...[...group.related_entities,...labels.links?.[group.id]??[]].map(searchValue),

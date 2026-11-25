@@ -8,7 +8,7 @@ import json_document
 import wxq
 
 FORMAT=1
-PROJECTION_FORMAT=2
+PROJECTION_FORMAT=3
 FOLDER='raw/knowledge/reader'
 _building=set()
 _guard=threading.Lock()
@@ -34,6 +34,29 @@ def basic(row):
             'claims':[],'manual_sections':[],'conflicts':[],'related':[]}
 
 
+def lineup_heroes(body, meta):
+    heroes = list(meta.get('core_heroes', []))
+    for members in meta.get('compositions', {}).values():
+        for member in members:
+            heroes.extend((member.get('hero'), member.get('replaces')))
+    for variant in meta.get('late_variants', []):
+        heroes.extend(variant.get('core_heroes', []))
+        for member in variant.get('members', []):
+            heroes.extend((member.get('hero'), member.get('replaces')))
+    roster_headings = {'英雄', '阵容英雄', '核心英雄', '备选英雄', '过渡英雄', '正式成员', '备选', '过渡'}
+    level = None
+    for node in body['nodes']:
+        if node['type'] == 'heading':
+            heading_level = node.get('level', 2)
+            if node.get('title', '').strip() in roster_headings:
+                level = heading_level
+            elif level is not None and heading_level <= level:
+                level = None
+        if level is not None and node['type'] == 'entry':
+            heroes.append(node.get('key'))
+    return list(dict.fromkeys(value.strip() for value in heroes if isinstance(value, str) and value.strip()))
+
+
 def projection(record):
     body=record['body'];m=record['metadata']
     texts={n['id']:n.get('value',n.get('title','')) for n in [*body['nodes'],*body.get('supporting_nodes',[])]}
@@ -56,6 +79,9 @@ def projection(record):
     summary.update({k:deepcopy(m[k]) for k in ('seasons','aliases','entities','migration','lineup_links','lineup_ids') if k in m})
     summary['core']=meta.get('core_heroes',[])
     if m['type']=='lineup':
+        summary['lineup_heroes']=lineup_heroes(body, meta)
+        if m.get('lineup_name'):
+            summary['lineup_name']=m['lineup_name']
         slim={k:deepcopy(v) for k,v in meta.items() if k not in ('operation_routes',)}
         def member(value):return {**{k:value.get(k,'') for k in ('hero','necessity','replaces')},'role':'','replacement_note':''}
         def bans(values):return [{'faction':b['faction'],'status':b['status'],'reason':''} for b in values]

@@ -16,6 +16,7 @@ describe('举一反三',()=>{
    {id:'line3',text:'穿戴冥王能增强承伤能力。',fixed:true});
   const copy=relatedCopy(source,wear,relatedEventDefinition(forge),[]);
   expect(copy).toMatchObject({kind:'new',group:{extra_key:'吕布-*-冥王',
+   name:'解释为何将吕布的旧装备铸造成冥王',
    expression:'动作.目标装备.名称 == "动作.装备"',
    review_status:null,explanation_source:'来源'}});
   expect(copy.group.utterances.map(({id,...row})=>row)).toEqual(source.utterances.map(({id,...row})=>row));
@@ -43,7 +44,7 @@ describe('举一反三',()=>{
   const source=makeGroup(buy,'唤醒','我方.等级 >= 4','唤醒可触发登场。');
   const existing={...source,id:'already',event_id:event.id,expression:'(我方.等级>=4)'};
   expect(relatedCopy(source,buy,event,[existing])).toEqual({kind:'existing',group:existing});
-  expect(relatedCopy(source,buy,event,[{...existing,name:'另一个组名'}]).kind).toBe('new');
+  expect(relatedCopy(source,buy,event,[{...existing,name:'另一个组名'}]).kind).toBe('existing');
   expect(relatedCopy(source,buy,event,[{...existing,expression:'我方.等级 >= 5'}]).kind).toBe('new');
   for(const utterances of [[{...existing.utterances[0],ignored:true}],[{...existing.utterances[0],fixed:false}],
    [{...existing.utterances[0],text:'另一句话。'}]]){
@@ -51,6 +52,19 @@ describe('举一反三',()=>{
    expect(result.kind).toBe('new');
    expect(result.group.name).toBe(existing.name);
   }
+ });
+ it('reconciles stale related-copy titles with the existing equivalent target without altering other conditions',()=>{
+  const wear='解释为何穿戴装备',forge=relatedEventDefinition('解释为何铸造装备');
+  const rule='none(动作.目标英雄.装备列表, .名称 == "无尽巨剑")';
+  const source={...makeGroup(wear,'吕布-无尽巨剑',rule,'穿戴无尽巨剑可提升暴击。'),name:'解释为何给吕布穿戴无尽巨剑'};
+  const first={...makeGroup(forge.id,'吕布-*-无尽巨剑',rule,'铸造无尽巨剑可提升暴击。'),id:'target',name:'解释为何将吕布的旧装备铸造成无尽巨剑'};
+  const stale={...first,id:'stale',name:source.name,utterances:source.utterances};
+  const other={...stale,id:'other',expression:'我方.等级 >= 5'};
+  const prepared=relatedCopy(source,wear,forge,[first,other]);
+  expect(prepared).toMatchObject({kind:'new',group:{name:first.name}});
+  expect(prepared.renamePeers).toBeUndefined();
+  expect(relatedCopy(source,wear,forge,[first,stale,other])).toEqual({kind:'existing',group:stale,
+   renamePeers:[{...stale,name:first.name}]});
  });
  it('places a related result behind its source without duplicating an already visible row',()=>{
   const parent=makeGroup('购买','吕布','','吕布提供终局输出。');

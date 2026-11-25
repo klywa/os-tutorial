@@ -211,6 +211,14 @@ class TemplateTests(unittest.TestCase):
         doc=store.export_library(self.root);doc['groups'].append(deepcopy(doc['groups'][0]))
         self.assertTrue(store.preview_import(self.root,doc)['errors'])
 
+    def test_v3_export_keeps_ids_for_same_name_in_different_modes(self):
+        saved = self.saved()
+        tournament = {**group(), "mode": "万象大赛"}
+        quick = {**group(), "id": "g2", "mode": "万象速决"}
+        store.apply(self.root, saved["revision"], [put("group", tournament), put("group", quick)])
+        exported = store.export_library(self.root, rules_format=True)
+        self.assertEqual({row["id"] for row in exported["groups"]}, {"g1", "g2"})
+
     def test_preview_changes_does_not_write_or_confirm_warning(self):
         saved=self.saved();before=self.files();g=group();g['name']='预览'
         projected=store.preview_changes(self.root,saved['revision'],[put('group',g)])

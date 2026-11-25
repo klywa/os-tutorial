@@ -26,13 +26,13 @@ function ConditionRanges({value}:{value:string}){
  append(source.length);
  return <>{stack[0].children}</>;
 }
-export function TemplateConditionPreview({expression,edit,expressionEdit,allowCopy=true,removed=false,config={}}:{expression:string;edit?:{label:string;disabled:boolean;onClick:()=>void};expressionEdit?:ExpressionEdit;allowCopy?:boolean;removed?:boolean;config?:ConditionEditingConfig}){
+export function TemplateConditionPreview({expression,edit,expressionEdit,allowCopy=true,removed=false,config={},autoStart=false,onExit}:{expression:string;edit?:{label:string;disabled:boolean;onClick:()=>void};expressionEdit?:ExpressionEdit;allowCopy?:boolean;removed?:boolean;config?:ConditionEditingConfig;autoStart?:boolean;onExit?:()=>void}){
  const output=useRef<HTMLDivElement>(null),trigger=useRef<HTMLButtonElement>(null),[message,setMessage]=useState('');
- const [draft,setDraft]=useState<(ExpressionEdit&{text:string})|null>(null);
+ const [draft,setDraft]=useState<(ExpressionEdit&{text:string})|null>(()=>autoStart&&expressionEdit?{...expressionEdit,text:expressionEdit.value}:null);
  const [saving,setSaving]=useState(false),[error,setError]=useState('');
  const formatted=<ConditionRanges value={expression}/>;
  function begin(){if(expressionEdit&&!edit?.disabled){setMessage('');setDraft({...expressionEdit,text:expressionEdit.value});}}
- function close(){setDraft(null);setError('');requestAnimationFrame(()=>trigger.current?.focus({preventScroll:true}));}
+ function close(){setDraft(null);setError('');onExit?.();requestAnimationFrame(()=>trigger.current?.focus({preventScroll:true}));}
  async function save(){
   if(!draft||saving||edit?.disabled)return;
   const {text,value}=draft;
@@ -54,7 +54,8 @@ export function TemplateConditionPreview({expression,edit,expressionEdit,allowCo
   }
  }
  return <div className="template-condition-preview"><h3>完整触发条件</h3>
-  {draft?<form className="template-expression-editor" data-template-dirty={draft.text!==draft.value||saving?true:undefined} onSubmit={e=>{e.preventDefault();void save();}}>
+  {draft?<form className="template-expression-editor" data-template-dirty={draft.text!==draft.value||saving?true:undefined} onSubmit={e=>{e.preventDefault();void save();}}
+   onBlur={onExit?e=>{if(!saving&&draft.text.trim()===draft.value.trim()&&!e.currentTarget.contains(e.relatedTarget))close();}:undefined}>
    <ConditionTextEditor label="正式条件表达式" rows={3} autoFocus value={draft.text} readOnly={saving} config={config}
     onChange={text=>setDraft({...draft,text})} onEditorKeyDown={e=>{
      if(e.key==='Escape'&&!saving){e.preventDefault();e.stopPropagation();close();}

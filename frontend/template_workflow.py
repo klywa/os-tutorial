@@ -22,9 +22,10 @@ def equivalent(previous, incoming, events, catalog):
 
     def author_content(group):
         value=content(group)
-        for key, default in {'batch':[], 'tags':[], 'mode':'', 'version':'S1', 'ignored':False}.items():
+        for key, default in {'batch':[], 'tags':[], 'ignored':False}.items():
             value[key]=value.get(key) or default
-        if isinstance(value['version'],str):value['version']=value['version'].upper()
+        value['version']=schema.group_versions(group)
+        value['mode']=schema.group_modes(group)
         event=events.get(group.get('event_id'))
         if event and 'conditions' in group:
             projection=store.rules.editor_rule(group,event,catalog)
@@ -130,7 +131,7 @@ def _snapshot(group, events, catalog, rules_catalog):
     }}
 
 
-def prepare(root, current, changes, actor, *, source='editor', entities=None, origins=None):
+def prepare(root, current, changes, actor, *, source='editor', entities=None, origins=None, selected_season=None):
     """Resolve workflow fields once, before validation and approval receipt creation."""
     if not isinstance(changes, list):
         raise ValueError('模板修改必须为列表')
@@ -180,14 +181,19 @@ def prepare(root, current, changes, actor, *, source='editor', entities=None, or
             if authored == 'final_reviewed' and origin['role'] in REVIEWERS:
                 status = 'final_reviewed'
                 value.update(reviewed_by=origin['username'], reviewed_at=store._now())
-        season = schema.group_season(value)
+        versions = schema.group_versions(value)
+        supplied_snapshot = supplied.get('entity_snapshot')
+        snapshot_season = supplied_snapshot.get('season') if isinstance(supplied_snapshot, dict) else None
+        prior_snapshot = previous.get(change['id'], {}).get('entity_snapshot', {})
+        season = next((season for season in (selected_season, snapshot_season, prior_snapshot.get('season'))
+                       if season in versions), versions[0])
         if season not in catalogs:
             # Older custom version labels remain editable and have no assigned catalog.
             catalogs[season] = official(root, season, entities) if season in ('S1','S2') else {'season': season, 'items': []}
         value.update(review_status=status, last_modified_by=modifier)
         try:
             if rules_catalog is None:rules_catalog=store.rules.library_catalog(events.values(),root=root)
-            file_snapshot=supplied.get('entity_snapshot') if operation in ('file-import','import') else None
+            file_snapshot=supplied_snapshot if operation in ('file-import','import') else None
             if isinstance(file_snapshot,dict) and file_snapshot.get('season')==season:
                 value['entity_snapshot'] = deepcopy(file_snapshot)
             else:

@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useLayoutEffect,useRef,useState} from 'react';
 import {api} from './model';
 import {useAuth} from './auth';
 import MetadataSuggestions,{lastMetadataTerm,replaceLastMetadataTerm} from './MetadataSuggestions';
@@ -25,9 +25,20 @@ export function CardTags({id,updated,compact=false}:{id:string;updated?:()=>void
  const [data,setData]=useState<Detail|null>(null),[draft,setDraft]=useState<string|null>(null);
  const [error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[epoch,setEpoch]=useState(0);
  const saving=useRef(false);
- const field=useRef<HTMLInputElement>(null);
+ const field=useRef<HTMLSpanElement>(null),trigger=useRef<HTMLButtonElement>(null),initialDraft=useRef('');
+ const editing=draft!==null;
  const path='cards/'+encodeURIComponent(id)+'/tags';
  useEffect(()=>{let live=true;api<Detail>(path).then(result=>{if(live&&Array.isArray(result.tags)){setData(result);setError('');}}).catch(e=>{if(live)setError(e.message);});return()=>{live=false;};},[path,epoch]);
+ function showDraft(value:string){
+  const node=field.current;
+  if(!node)return;
+  node.textContent=value;
+  node.focus();
+  const selection=node.ownerDocument.getSelection(),range=node.ownerDocument.createRange();
+  range.selectNodeContents(node);range.collapse(false);
+  selection?.removeAllRanges();selection?.addRange(range);
+ }
+ useLayoutEffect(()=>{if(editing)showDraft(initialDraft.current);},[editing]);
  async function save(url:string,body:unknown){
   if(saving.current)return;
   saving.current=true;setBusy(true);setError('');setNotice('');
@@ -45,28 +56,37 @@ export function CardTags({id,updated,compact=false}:{id:string;updated?:()=>void
   catch(e){setError((e as Error).message);}
   finally{saving.current=false;setBusy(false);}
  }
- function submitDraft(){
+ function submitDraft(restoreFocus=false){
   if(!data||draft===null)return;
-  const tags=parseTags(draft);
-  if(JSON.stringify(tags)===JSON.stringify([...data.tags].sort())){setDraft(null);return;}
-  void save(path,{tags,revision:data.revision});
+  const tags=parseTags(field.current?.innerText??draft);
+  if(JSON.stringify(tags)===JSON.stringify([...data.tags].sort())){
+   setDraft(null);
+   if(restoreFocus)requestAnimationFrame(()=>trigger.current?.focus());
+   return;
+  }
+  void save(path,{tags,revision:data.revision}).then(()=>{
+   if(restoreFocus)requestAnimationFrame(()=>trigger.current?.focus());
+  });
  }
- const value=draft??data?.tags.join('、')??'';
  const completedTags=draft===null?data?.tags??[]:parseTags(replaceLastMetadataTerm(draft,''));
  const label=(values:string[])=>values.join('、')||'无';
  return <section><h3>当前形态标签</h3>
  {error&&<p role="alert">{error} <button onClick={()=>setEpoch(i=>i+1)}>重新读取</button></p>}
  {notice&&<p role="status">{notice}</p>}
- {data&&<><p>{editor?'已生效：':''}{label(data.tags)}</p>{editor&&<div className="card-tag-editor" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))submitDraft();}}>
- <label>标签（用顿号分隔）<input ref={field} readOnly={busy} value={value} onChange={e=>setDraft(e.target.value)}/></label>
- {!busy&&<MetadataSuggestions scope="card-tags" choices={(data.suggestions??[]).filter(tag=>!completedTags.includes(tag))}
-  query={draft===null?'':lastMetadataTerm(draft)} label="匹配标签"
-  onPick={tag=>{
-   field.current?.focus();
-   setDraft(current=>current===null?[...data.tags,tag].join('、')+'、':replaceLastMetadataTerm(current,tag)+'、');
-  }}/>}
- {!compact&&<small>{admin?'离开标签编辑区后保存并生效。':'离开标签编辑区后提交管理员审核。'}</small>}
- </div>}
+ {data&&<>{editor?<div className="card-tag-editor" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))submitDraft();}}>
+ <p>{editing?<span ref={field} className="card-tag-inline card-tag-editing" role="textbox" aria-label="编辑当前形态标签"
+  aria-multiline="false" aria-busy={busy} aria-readonly={busy} tabIndex={0} contentEditable={busy?false:'plaintext-only'}
+  data-placeholder="输入标签，用顿号分隔" onInput={e=>setDraft(e.currentTarget.innerText)} onKeyDown={e=>{
+   if(busy||e.nativeEvent.isComposing||e.keyCode===229)return;
+   if(e.key==='Escape'){e.preventDefault();e.stopPropagation();setDraft(null);setError('');requestAnimationFrame(()=>trigger.current?.focus());}
+   if(e.key==='Enter'){e.preventDefault();submitDraft(true);}
+  }}/>:<button type="button" ref={trigger} className="card-tag-inline" aria-label="编辑当前形态标签" onClick={()=>{
+   initialDraft.current=data.tags.join('、');setDraft(initialDraft.current);setNotice('');
+  }}>{data.tags.length?label(data.tags):'＋ 添加标签'}</button>}</p>
+ {editing&&!busy&&<MetadataSuggestions scope="card-tags" choices={(data.suggestions??[]).filter(tag=>!completedTags.includes(tag))}
+  query={lastMetadataTerm(draft)} label="匹配标签"
+  onPick={tag=>{const value=replaceLastMetadataTerm(draft,tag)+'、';showDraft(value);setDraft(value);}}/>}
+ </div>:<p>{label(data.tags)}</p>}
  {editor&&!compact&&data.items.map(r=><div key={r.id}><strong>{reviewStatus[r.status]}{r.historical?'（旧标签体系）':''} · {r.author}</strong> <time dateTime={r.created}>{new Date(r.created).toLocaleString()}</time>
  <p>原标签　{label(r.before_tags)}<br/>提议标签　{label(r.after_tags)}</p>
  {r.reviewer&&<small>审核人　{r.reviewer}</small>}

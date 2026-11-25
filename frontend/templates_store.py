@@ -394,7 +394,7 @@ def check_fixed_utterances(before, after, toggle=None, authorized_fixed=()):
 
 
 def editor_utterance_targets(current, changes, *, pin=False, explicit=()):
-    """Authorize text edits to existing rows, optionally fixing them on commit."""
+    """Authorize text edits and fix new or edited speech when committing an existing group."""
     if not isinstance(changes,list):
         return set()
     groups={group['id']:group for group in current['groups']}
@@ -414,7 +414,10 @@ def editor_utterance_targets(current, changes, *, pin=False, explicit=()):
                 continue
             old=originals.get(row['id'])
             key=(previous['id'],row['id'])
-            if old and old['text']!=row['text'] and (
+            if old is None and pin and not row.get('fixed') and not row.get('ignored'):
+                row['fixed']=True
+                targets.add(key)
+            elif old and old['text']!=row['text'] and (
                     bool(old.get('fixed'))==bool(row.get('fixed')) or key in explicit):
                 targets.add(key)
                 if pin and not row.get('ignored'):
@@ -889,20 +892,21 @@ def _exportable(public):
     return {'events': public['events'], 'groups': groups}
 
 
-def _for_season(public,season):
+def _for_scope(public,season,mode=None):
     return {**public,'groups':[group for group in public['groups']
-                              if ('S2' if schema.group_season(group)=='S2' else 'S1')==season]}
+                              if schema.group_applies(group,season,mode)]}
 
 
 @timed('template_publish')
-def _published_document(root,public,meta,entities,season='S1'):
+def _published_document(root,public,meta,entities,season='S1',mode=None):
     from template_package import encode
     from template_v04 import runtime_tree
+    projected=_exportable(_for_scope(public,season,mode))
     if meta.get('syntax_version')=='0.4' or any(group.get('syntax_version')=='0.4' for group in public['groups']):
-        return runtime_tree(_exportable(_for_season(public,season)),_catalog(root,entities)[0],_notes(root),meta)
-    key=Path(root).resolve(),season
+        return runtime_tree(projected,_catalog(root,entities)[0],_notes(root),meta)
+    key=Path(root).resolve(),season,mode
     if len(_published_cache)>=8 and key not in _published_cache:_published_cache.clear()
-    return encode(_exportable(_for_season(public,season)),_catalog(root,entities)[0],_notes(root),meta,
+    return encode(projected,_catalog(root,entities)[0],_notes(root),meta,
                   all_groups=public['groups'],root=root,authoring=False,group_cache=_published_cache.setdefault(key,{}))
 
 
@@ -927,7 +931,7 @@ def export_library(root,group_ids=None,*,rules_format=False,entities=None,author
     return encode({'events':events,'groups':groups})
 
 
-def refresh_published(root,entities=None,*,migrate_events=False,season='S1',format=None):
+def refresh_published(root,entities=None,*,migrate_events=False,season='S1',format=None,mode=None):
     """Reconcile the derived runtime file after startup or an external sync."""
     with store_lock(root,wait=True):
         _recover_locked(root)
@@ -938,10 +942,11 @@ def refresh_published(root,entities=None,*,migrate_events=False,season='S1',form
             if format == 'v3' and meta.get('syntax_version')=='0.4':
                 if season != 'S1' or not (Path(root)/PUBLISHED_V3).is_file():
                     raise KeyError('未保存该赛季的 v3 发布快照')
-                return json_store.read(Path(root)/PUBLISHED_V3)
-            result=_published_document(root,public,meta,entities,season)
+                legacy=json_store.read(Path(root)/PUBLISHED_V3)
+                return _for_scope(legacy,season,mode) if mode is not None else legacy
+            result=_published_document(root,public,meta,entities,season,mode)
         except ValueError:
-            if format=='v3' or season!='S1' or not (Path(root)/PUBLISHED).is_file():
+            if format=='v3' or season!='S1' or mode is not None or not (Path(root)/PUBLISHED).is_file():
                 raise
             import logging
             from src.python.condition.v04 import load_library
@@ -954,7 +959,7 @@ def refresh_published(root,entities=None,*,migrate_events=False,season='S1',form
             return result
         if format=='v0.4' and '解释事件' not in result:
             raise KeyError('该模板库尚未切换至 v0.4')
-        if season!='S1':return deepcopy(result)
+        if season!='S1' or mode is not None:return deepcopy(result)
         if renamed or retired:
             writes={_path('event',uid):row for uid,row in renamed.items() if row in public['events']}
             if retired:

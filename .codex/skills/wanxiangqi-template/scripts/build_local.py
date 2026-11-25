@@ -16,6 +16,7 @@ sys.path[:0] = [str(ROOT), str(ROOT / "frontend"),
                 str(SKILL.parent / "wanxiangqi-knowledge" / "scripts")]
 
 from templates_store import preview_import
+from templates_schema import group_modes, group_seasons, group_versions
 from frontend.template_v04 import effective_expression
 
 from check_batch import check as check_batch
@@ -181,10 +182,14 @@ def verify_coverage(audit, reviews, events):
         raise ValueError("存在未绑定来源和素材的模板组")
 
 
-@lru_cache(maxsize=1)
-def effect_card_tiers():
-    cards = read(ROOT / "website-data" / "entities" / "effect-cards.json")
+@lru_cache(maxsize=2)
+def effect_card_tiers(season="S1"):
+    directory = ROOT / "website-data"
+    path = (directory / "entities" / "effect-cards.json" if season == "S1"
+            else directory / "seasons" / season / "cards.json")
+    cards = read(path) if path.is_file() else []
     return {name: card["properties"]["quality"] for card in cards
+            if card.get("category") == "effect-cards" and "quality" in card.get("properties", {})
             for name in (card["name"], *card.get("aliases", []))}
 
 
@@ -200,16 +205,19 @@ def verify_related(groups, records):
         if not isinstance(sync, dict):
             raise ValueError(f"{label} 缺少关联组同步复核")
         unavailable = sync.get("unavailable", {})
-        if (not isinstance(unavailable, dict) or not set(unavailable) <= HERO_AUCTIONS.intersection(family)
+        unavailable_options = HERO_AUCTIONS.intersection(family) if family == RELATED_EVENTS[0] else set(family)
+        if (not isinstance(unavailable, dict) or not set(unavailable) <= unavailable_options
                 or not all(isinstance(evidence, str) and evidence.strip() for evidence in unavailable.values())):
-            raise ValueError(f"{label} 跳过英雄拍卖须提供有效事件和该轮不可取得的证据")
+            raise ValueError(f"{label} 跳过关联入口须提供有效事件和无法发生的证据")
         eligible = tuple(name for name in family if name not in unavailable)
         if EFFECT_AUCTION in family and group.get("syntax_version") == "0.4":
-            known_tier = effect_card_tiers().get(group["extra_key"])
-            tier = sync.get("effect_card_tier", known_tier)
+            known_tiers = {effect_card_tiers(season).get(group["extra_key"]) for season in group_seasons(group)} - {None}
+            if len(known_tiers) > 1:
+                raise ValueError(f"{label} 适用赛季的效果牌阶级不同，须按赛季核对关联入口")
+            tier = sync.get("effect_card_tier", next(iter(known_tiers), None))
             if type(tier) is not int or not 1 <= tier <= 6:
                 raise ValueError(f"{label} 须登记经过核对的效果牌阶级（1 至 6）")
-            if known_tier is not None and known_tier != tier:
+            if known_tiers and tier not in known_tiers:
                 raise ValueError(f"{label} 登记的效果牌阶级与卡面不符")
             if tier != 6:
                 eligible = tuple(name for name in eligible if name != EFFECT_AUCTION)
@@ -222,7 +230,8 @@ def verify_related(groups, records):
             continue
         if not all(isinstance(sync.get(key), str) and sync[key].strip() for key in ("reason", "tier")):
             raise ValueError(f"{label} 须登记共享理由与细分层级，或提供事件独有理由及证据")
-        expected, members, triggers = tiers.setdefault((family, sync["reason"], sync["tier"]), (eligible, {}, {}))
+        scope_key = group_versions(group), group_modes(group)
+        expected, members, triggers = tiers.setdefault((family, sync["reason"], sync["tier"], scope_key), (eligible, {}, {}))
         if expected != eligible:
             raise ValueError(f"{label} 在同一共享层级登记了不同的有效事件")
         trigger = template_group_trigger(group) if group.get("syntax_version") == "0.4" else None
@@ -241,7 +250,7 @@ def verify_related(groups, records):
             if event == "解释为何铸造装备":
                 tokens = [re.sub(r"^动作\.目标装备(?=\.|$)", "动作.装备", token) for token in tokens]
         members[event] = (key, tokens)
-    for (_, reason, tier), (eligible, members, _) in tiers.items():
+    for (_, reason, tier, _), (eligible, members, _) in tiers.items():
         missing = [event for event in eligible if event not in members]
         if missing:
             raise ValueError(f"{reason}（{tier}）缺少关联组：{'、'.join(missing)}")
@@ -279,7 +288,8 @@ def validate(package, records, cases, directory):
                 "utterances": [{"id": row["id"], "text": row["text"]}
                                for row in group["utterances"] if not row.get("ignored")],
             })
-    errors = check_scenarios(runtime, cases)
+    scopes = {group["id"]: group for group in package["groups"] if group.get("id")}
+    errors = check_scenarios(runtime, cases, scopes=scopes)
     if errors:
         raise ValueError("\n".join(errors))
 
