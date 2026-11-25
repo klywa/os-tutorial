@@ -1,16 +1,33 @@
-"""Add the approved wording rules to a Gemini request and check banned phrases."""
+"""Add the complete writing strategy to a Gemini request and check banned phrases."""
 import argparse
 import json
 from pathlib import Path
 import re
 
 REFERENCES = Path(__file__).resolve().parents[1] / "references"
-CONTEXT_KEY = "话术词表"
+CONTEXT_KEY = "完整写作策略"
+BRIEF_HEADINGS = ("生效条件", "当前事件", "局面解释", "写法与措辞", "建议话术")
+
+
+def check_wording_brief(text):
+    headings = "|".join(BRIEF_HEADINGS)
+    parts = re.split(rf"(?m)^[ \t]*(?:#{{1,4}}[ \t]*)?[「“]?({headings})[」”]?[：:]?[ \t]*$", text.strip())
+    if tuple(parts[1::2]) != BRIEF_HEADINGS or any(not content.strip() for content in parts[2::2]):
+        raise ValueError("话术构思须完整包含五段")
+    if any(phrase in text for phrase in ("围绕本次行动兑现的取舍", "先说明具体收益，必要时提兑现前提")):
+        raise ValueError("话术构思含脱离当前组的套话")
+    examples = [line.strip()[2:].strip() for line in parts[-1].splitlines() if line.strip().startswith("- ")]
+    if not 1 <= len(examples) <= 2 or any(not line or banned_pattern().search(line) or
+                                        len("".join(line.split())) > 30 for line in examples if "{{" not in line):
+        raise ValueError("话术构思须给出一到两条合规建议话术")
+
+
+def writing_strategy():
+    return (REFERENCES / "writing-strategy.md").read_text(encoding="utf-8-sig")
 
 
 def approved_rules():
-    strategy = (REFERENCES / "writing-strategy.md").read_text(encoding="utf-8-sig")
-    return strategy.split("\n## 按对象选词\n", 1)[1].strip()
+    return writing_strategy().split("\n## 按对象选词\n", 1)[1].strip()
 
 
 def banned_pattern():
@@ -26,7 +43,9 @@ def banned_pattern():
 
 
 def add_rules(request):
-    request["context"][CONTEXT_KEY] = approved_rules()
+    context = request["context"]
+    context.pop("话术词表", None)
+    context[CONTEXT_KEY] = writing_strategy()
 
 
 def main():
