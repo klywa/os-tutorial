@@ -1,29 +1,144 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_98aee9aae8b9d41d",
+  "explanation_after": "现在清楚是婉儿的整备给河洛英雄用古币，使已到手成为建议河洛花木兰的局面理由。\n完整候选池通过 3 项。正例可播：上官婉儿已到手可争取古币；单项反例不命中：未拥有该关键英雄；缺值检查：快照缺少玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：有婉儿可用古币培养河洛英雄，建议走河洛花木兰。\n原始依据：原句指出婉儿已到手时走河洛花木兰可提早准备古币，知识详解明确上官婉儿能提供古币收益且整备会将古币作用于随机河洛英雄而非囤积，同时需点名目标阵容且无婉儿时退出。当前取舍：受限于30字篇幅，以行动和当下收益为主，由场上或手牌资源状态连接原因与结果。自然语言适用条件：明先生前七回合已有上官婉儿，推荐方向为河洛花木兰。正式条件：(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 <= 7 and (玩家.战场 has \"上官婉儿\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"上官婉儿\"})。取舍后的播报重点：明确婉儿能给河洛英雄用古币的机制，结合已拿到婉儿的状态建议走河洛花木兰。",
+  "explanation_source": "knowledge/players/明先生.json\n正式卡牌库：上官婉儿（card:5131）\n正式卡牌库：上官婉儿（card:5133）",
+  "expression": "((动作.阵容 == \"河洛花木兰\" and 对局.当前回合数 <= 7) and (any(我方.场上英雄列表, .名称 == \"上官婉儿\") or any(我方.手牌列表, .卡牌类型 == \"英雄\" and .名称 == \"上官婉儿\")))",
+  "id": "group_1ba9359bd1a546e1bde898c5ffd940ee",
+  "mode": "万象大赛",
   "name": "早拿上官婉儿后保留花木兰路线",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:39",
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": "player:39"
   },
-  "explanation": "《明先生》适用打法「河洛花木兰」。前两次拍卖期间较早拿到上官婉儿，是补复生配套的定向信号，后续仍要找到花木兰。。每句均点明建议发展的具体阵容。",
+  "tags": [],
   "utterances": [
     {
-      "text": "建议走河洛花木兰，婉儿的整备能给木兰送古币。",
-      "id": "utterances_7c5508e1c26741ea82155357355d0404"
-    },
-    {
-      "text": "可以往河洛花木兰发展，先留婉儿给木兰攒复生。",
-      "id": "utterances_f6a7c0b4a8344649a9d4567b26a83abc"
-    },
-    {
-      "text": "婉儿已到手，走河洛花木兰能提早准备古币来源。",
-      "id": "utterances_bbf3235059cd43519125c10e9d1e350b"
+      "id": "utterances_7c5508e1c26741ea82155357355d0404",
+      "text": "婉儿能给河洛英雄用古币，已拿到她可走河洛花木兰。"
     }
   ],
-  "id": "group_1ba9359bd1a546e1bde898c5ffd940ee",
-  "event_id": "os_98aee9aae8b9d41d",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 <= 7 and (玩家.战场 has \"上官婉儿\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"上官婉儿\"})",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:39": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:39",
+        "name": "明先生",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-27T01:17:19.470347+00:00"
+      },
+      "card:5131": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：随机对3名不同【河洛】英雄使用1张古币。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5131",
+        "name": "上官婉儿",
+        "skills": [
+          {
+            "effect": "上官婉儿朝最远处的敌人挥出1记笔墨，对沿途敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "笔墨伤害提升至100+150%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "笔墨每命中1名敌人伤害提升50%，最多150%",
+                "level": 40
+              },
+              {
+                "effect": "笔墨伤害提升至100+240%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 51300,
+            "name": "篆法·疾势"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/40",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5131"
+      },
+      "card:5133": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：随机对6名不同【河洛】英雄使用1张古币。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5133",
+        "name": "上官婉儿",
+        "skills": [
+          {
+            "effect": "上官婉儿朝最远处的敌人挥出1记笔墨，对沿途敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "笔墨伤害提升至100+150%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "笔墨每命中1名敌人伤害提升50%，最多150%",
+                "level": 40
+              },
+              {
+                "effect": "笔墨伤害提升至100+240%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 51300,
+            "name": "篆法·疾势"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5131"
+      }
+    }
+  },
+  "extra_key": "河洛花木兰",
+  "syntax_version": "0.4"
 }

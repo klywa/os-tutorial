@@ -1,0 +1,556 @@
+{
+  "id": "43917432df8e4506a2d54f2996a93c7a",
+  "actor": "local",
+  "at": "2026-11-24T03:11:02.613502+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_ef848ba2364640379bdd495e6008f6eb",
+      "value": {
+        "name": "前期买苏烈单挂",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation": "",
+        "explanation_after": "单挂限定助力目标，牺牲成长来自英雄自身。 购买英雄事件完整候选池实测：三回合内空场买苏烈（命中）；到第四回合已超早期窗口（未命中）；缺少 对局.当前回合数（未命中）。播报 26 个非空白字符。",
+        "explanation_before": "来源：来自「常小娥灵活4人组-常小娥」阵容笔记中「苏烈」条目，以及正式卡面「苏烈」的牺牲永久提升等级机制与「小菟助力」的随机助力提升等级机制。用途：用于棋手常小娥在「常小娥灵活4人组-常小娥」对局流派下，前期空场购买苏烈时播报购买理由。适用条件：自然语言条件为使用棋手常小娥且适用阵容范围「常小娥灵活4人组-常小娥」，购买英雄为苏烈、当前回合数不超过3且玩家场上英雄数为0；正式条件表达式为 arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0（范围 player:24、changxiaoe-general-play）。话术取舍：删去开头重复的盘面状态与购买命令，直接说明前期空场单挂苏烈能独享小菟助力，且其牺牲时还能永久提升自身等级，准确体现当前用途并控制在30字内。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」；正式卡面 card:1941「苏烈」、card:92499「小菟助力」",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "苏烈的牺牲效果能实现自动成长，很适合作为前期单挂英雄。",
+            "id": "utterances_4df55a54c255474a9bb852706362a964"
+          }
+        ],
+        "id": "group_ef848ba2364640379bdd495e6008f6eb",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [
+          {
+            "id": "card:1941",
+            "name": "苏烈"
+          },
+          {
+            "id": "card:1943",
+            "name": "苏烈"
+          },
+          {
+            "id": "card:92499",
+            "name": "小菟助力"
+          }
+        ],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1941": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：苏烈的等级永久+2。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1941",
+              "name": "苏烈",
+              "skills": [
+                {
+                  "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19400,
+                  "name": "豪烈万军"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/40",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1941"
+            },
+            "card:1943": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：苏烈的等级永久+4。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1943",
+              "name": "苏烈",
+              "skills": [
+                {
+                  "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19400,
+                  "name": "豪烈万军"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1941"
+            },
+            "card:92499": {
+              "aliases": [],
+              "attributes": {
+                "获得途径": "来源: 初始获得卡牌"
+              },
+              "awakened": false,
+              "category": "player-skills",
+              "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:92499",
+              "name": "小菟助力",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            },
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "name": "前期买苏烈单挂",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation": "",
+        "explanation_after": "单挂限定助力目标，牺牲成长来自英雄自身。 购买英雄事件完整候选池实测：三回合内空场买苏烈（命中）；到第四回合已超早期窗口（未命中）；缺少 对局.当前回合数（未命中）。播报 26 个非空白字符。",
+        "explanation_before": "来源：来自「常小娥灵活4人组-常小娥」阵容笔记中「苏烈」条目，以及正式卡面「苏烈」的牺牲永久提升等级机制与「小菟助力」的随机助力提升等级机制。用途：用于棋手常小娥在「常小娥灵活4人组-常小娥」对局流派下，前期空场购买苏烈时播报购买理由。适用条件：自然语言条件为使用棋手常小娥且适用阵容范围「常小娥灵活4人组-常小娥」，购买英雄为苏烈、当前回合数不超过3且玩家场上英雄数为0；正式条件表达式为 arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0（范围 player:24、changxiaoe-general-play）。话术取舍：删去开头重复的盘面状态与购买命令，直接说明前期空场单挂苏烈能独享小菟助力，且其牺牲时还能永久提升自身等级，准确体现当前用途并控制在30字内。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」；正式卡面 card:1941「苏烈」、card:92499「小菟助力」",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "苏烈单挂能独享小菟助力，牺牲时还能永久提升自身等级。",
+            "id": "utterances_4df55a54c255474a9bb852706362a964"
+          }
+        ],
+        "id": "group_ef848ba2364640379bdd495e6008f6eb",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [
+          {
+            "id": "card:1941",
+            "name": "苏烈"
+          },
+          {
+            "id": "card:1943",
+            "name": "苏烈"
+          },
+          {
+            "id": "card:92499",
+            "name": "小菟助力"
+          }
+        ],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1941": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：苏烈的等级永久+2。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1941",
+              "name": "苏烈",
+              "skills": [
+                {
+                  "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19400,
+                  "name": "豪烈万军"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/40",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1941"
+            },
+            "card:1943": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：苏烈的等级永久+4。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1943",
+              "name": "苏烈",
+              "skills": [
+                {
+                  "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19400,
+                  "name": "豪烈万军"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1941"
+            },
+            "card:92499": {
+              "aliases": [],
+              "attributes": {
+                "获得途径": "来源: 初始获得卡牌"
+              },
+              "awakened": false,
+              "category": "player-skills",
+              "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:92499",
+              "name": "小菟助力",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            },
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "name": "前期买苏烈单挂",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation": "",
+        "explanation_after": "单挂限定助力目标，牺牲成长来自英雄自身。 购买英雄事件完整候选池实测：三回合内空场买苏烈（命中）；到第四回合已超早期窗口（未命中）；缺少 对局.当前回合数（未命中）。播报 26 个非空白字符。",
+        "explanation_before": "来源：来自「常小娥灵活4人组-常小娥」阵容笔记中「苏烈」条目，以及正式卡面「苏烈」的牺牲永久提升等级机制与「小菟助力」的随机助力提升等级机制。用途：用于棋手常小娥在「常小娥灵活4人组-常小娥」对局流派下，前期空场购买苏烈时播报购买理由。适用条件：自然语言条件为使用棋手常小娥且适用阵容范围「常小娥灵活4人组-常小娥」，购买英雄为苏烈、当前回合数不超过3且玩家场上英雄数为0；正式条件表达式为 arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0（范围 player:24、changxiaoe-general-play）。话术取舍：删去开头重复的盘面状态与购买命令，直接说明前期空场单挂苏烈能独享小菟助力，且其牺牲时还能永久提升自身等级，准确体现当前用途并控制在30字内。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」；正式卡面 card:1941「苏烈」、card:92499「小菟助力」",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "苏烈的牺牲效果能实现自动成长，很适合作为前期单挂英雄。",
+            "id": "utterances_4df55a54c255474a9bb852706362a964"
+          }
+        ],
+        "id": "group_ef848ba2364640379bdd495e6008f6eb",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [
+          {
+            "id": "card:1941",
+            "name": "苏烈"
+          },
+          {
+            "id": "card:1943",
+            "name": "苏烈"
+          },
+          {
+            "id": "card:92499",
+            "name": "小菟助力"
+          }
+        ],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "arg1 is \"苏烈\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 0",
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1941": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：苏烈的等级永久+2。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1941",
+              "name": "苏烈",
+              "skills": [
+                {
+                  "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19400,
+                  "name": "豪烈万军"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/40",
+                "法术攻击力": 0,
+                "法术防御": 20,
+                "物理攻击力": 32,
+                "物理防御": 20
+              },
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1941"
+            },
+            "card:1943": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：苏烈的等级永久+4。",
+              "faction": {
+                "id": "faction:heluo",
+                "name": "河洛",
+                "official_id": 319
+              },
+              "id": "card:1943",
+              "name": "苏烈",
+              "skills": [
+                {
+                  "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+                  "enhancements": [
+                    {
+                      "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                      "level": 10
+                    },
+                    {
+                      "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                      "level": 40
+                    },
+                    {
+                      "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 19400,
+                  "name": "豪烈万军"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1941"
+            },
+            "card:92499": {
+              "aliases": [],
+              "attributes": {
+                "获得途径": "来源: 初始获得卡牌"
+              },
+              "awakened": false,
+              "category": "player-skills",
+              "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:92499",
+              "name": "小菟助力",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+            },
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

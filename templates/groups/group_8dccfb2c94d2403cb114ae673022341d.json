@@ -1,29 +1,258 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation": "",
+  "explanation_after": "正式条件保留人数、两名英雄、主力身份、相对等级，播报讲清用换帅把较高等级移给主力。\n完整候选池通过 3 项。正例可播：常小娥灵活4人组，arg1=吕布（阵营三分之地，等级60），arg2=换帅。战场仅吕布和诸葛亮，玩家.主C=诸葛亮（等级30）。；单项反例不命中：只把诸葛亮等级改为60，另例只加第三名三分英雄。；缺值检查：去掉玩家.主C.等级。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：诸葛亮是主力，换帅可把吕布较高的等级换给他。\n原始依据：换帅可指定1名【三分】英雄与其最近的【三分】英雄交换等级。当前取舍：笔记未说明诸葛亮和吕布的等级转移方向，场上仅有两人只能证明配对，等级较高的一方与当前主力均未明确，因此限定诸葛亮为当前主力且吕布等级高于诸葛亮，此时对吕布使用换帅才可提升主力等级。自然语言适用条件：常小娥灵活4人组；场上只有三分英雄吕布和诸葛亮；选择吕布为换帅目标；当前主力诸葛亮的等级低于吕布。正式条件：arg2 is \"换帅\" and arg1 is \"吕布\" and arg1.阵营 is \"三分之地\" and 玩家.场上英雄数 == 2 and 玩家.战场 has {\"类型\":\"英雄\",\"名称\":\"吕布\"} and 玩家.战场 has {\"类型\":\"英雄\",\"名称\":\"诸葛亮\"} and 玩家.主C is \"诸葛亮\" and 玩家.主C.等级 < arg1.等级。取舍后的播报重点：说明诸葛亮是主力，以及用换帅可将吕布更高的等级换给他。",
+  "explanation_source": "knowledge/other/常用技巧.json · common-tips-swap；knowledge/lineups/常小娥灵活4人组-常小娥.json「吕布」，正式卡牌库 card:7505、card:1231、card:1901。",
+  "expression": "(((((((动作.卡牌.名称 == \"换帅\" and 动作.目标.名称 == \"吕布\") and (动作.目标英雄 != nil and 动作.目标英雄.阵营 == \"三分之地\")) and len(我方.场上英雄列表) == 2) and any(我方.场上英雄列表, .名称 == \"吕布\")) and any(我方.场上英雄列表, .名称 == \"诸葛亮\")) and (我方.主C != nil and 我方.主C.名称 == \"诸葛亮\")) and (动作.目标英雄 != nil and 我方.主C != nil and 我方.主C.等级 < 动作.目标英雄.等级))",
+  "id": "group_8dccfb2c94d2403cb114ae673022341d",
+  "mode": "万象大赛",
   "name": "两人同场时用换帅调整吕布与诸葛亮",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
-  "explanation": "《常用技巧》换帅与《常小娥灵活变阵-常小娥》吕布。结算后场上只有吕布和诸葛亮，可以确认交换对象。等级已经互换后的前后差额无法同时观测，因此解释重分配作用。",
+  "tags": [
+    "技巧"
+  ],
   "utterances": [
     {
-      "text": "场上只有两人，换帅能交换吕布和诸葛亮的等级。",
-      "id": "utterances_2238c7d31395406c8feb5e072d178514"
-    },
-    {
-      "text": "用换帅在吕布前排和诸葛亮输出之间重排等级。",
-      "id": "utterances_7c92d8a2d67a4e2d928dc492499885bd"
-    },
-    {
-      "text": "换帅能把诸葛亮原有的等级交给吕布，同时换出吕布的等级。",
-      "id": "utterances_7dd0f51ac809412c9df498e6cd752bd7"
+      "id": "utterances_2238c7d31395406c8feb5e072d178514",
+      "text": "诸葛亮是主力，用换帅可把吕布更高的等级换给他。"
     }
   ],
-  "id": "group_8dccfb2c94d2403cb114ae673022341d",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg2 is \"换帅\" and arg1 is \"吕布\" and arg1.阵营 is \"三分之地\" and 玩家.场上英雄数 == 2 and 玩家.战场 has \"吕布\" and 玩家.战场 has \"诸葛亮\"",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1231": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "开团：等级最高的3名【三分】英雄获得20%物理和法术吸血，若目标为吕布，效果翻倍。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1231",
+        "name": "吕布",
+        "skills": [
+          {
+            "effect": "被动：吕布的普通攻击能对身前敌人造成范围伤害。\n主动：吕布跃入敌人密集区域，将2格内敌人击飞1秒并造成120+120%物理攻击力的物理伤害，降低其70%生命恢复效果，持续5秒。每命中1名敌人恢复5%最大生命值并在接下来的5秒内提升20%物理吸血。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至120+200%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "5秒内还会提高自身100%攻击速度",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至整个战场",
+                "level": 100
+              }
+            ],
+            "id": 12300,
+            "name": "魔神降世"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "60/100",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1231"
+      },
+      "card:1233": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "开团：等级最高的6名【三分】英雄获得20%物理和法术吸血，若目标为吕布，效果翻倍。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1233",
+        "name": "吕布",
+        "skills": [
+          {
+            "effect": "被动：吕布的普通攻击能对身前敌人造成范围伤害。\n主动：吕布跃入敌人密集区域，将2格内敌人击飞1秒并造成120+120%物理攻击力的物理伤害，降低其70%生命恢复效果，持续5秒。每命中1名敌人恢复5%最大生命值并在接下来的5秒内提升20%物理吸血。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至120+200%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "5秒内还会提高自身100%攻击速度",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至整个战场",
+                "level": 100
+              }
+            ],
+            "id": 12300,
+            "name": "魔神降世"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1231"
+      },
+      "card:1901": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1901",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 6,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "35/55",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:1903": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1903",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:7505": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过商店购买等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名【三分】英雄与其最近的【三分】英雄交换等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:7505",
+        "name": "换帅",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "换帅",
+  "syntax_version": "0.4"
 }

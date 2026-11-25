@@ -9,6 +9,11 @@ describe('card library filters',()=>{
     expect(cardMatches(card,{...filters,query:'护盾'})).toBe(true);
     expect(cardMatches(card,{...filters,query:'复生'})).toBe(false);
   });
+  it('searches official keyword names on the selected card version',()=>{
+    const withKeyword={...card,keywords:[{name:'整备',description:'备战时触发'}]};
+    expect(cardMatches(withKeyword,{...filters,query:'扁鹊 整备'})).toBe(true);
+    expect(cardMatches(card,{...filters,query:'整备'})).toBe(false);
+  });
   it('combines faction, hero tier and awakened filters',()=>{
     expect(cardMatches(card,{...filters,faction:'faction:zhulu',tier:'4',awakened:'normal'})).toBe(true);
     expect(cardMatches(card,{...filters,tier:'5'})).toBe(false);

@@ -1,0 +1,62 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation_after": "现在明确商店每购三张返一能量，有助小妲己累计购买，未承诺选天赋时即时到账。\n完整候选池通过 3 项。正例可播：危险数字在商店购买每三张牌返一点能量。小妲己本就通过买牌触发被动，返还能继续用于后续买牌。；单项反例不命中：棋手不是该联动棋手，天赋一般效果仍在，但少了此处要解释的收益。；缺值检查：关键条件缺值，无法确认该项收益。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：小妲己要买牌攒进度，危险数字能在买满三张时返能量。\n原始依据：小妲己买牌推进怦然心动，危险数字每购买三张返一能量，额外返牌还看品阶和，需把返能量的档位讲清，不把选天赋当成立即返还能量。当前取舍：以行动和当下收益为主，场上状态或必要资源连接原因与结果。自然语言适用条件：小妲己在本次候选中选中危险数字。正式条件：arg2 is \"危险数字\" and arg1 has \"危险数字\" and 玩家.使用棋手 is \"小妲己\"。取舍后的播报重点：说明小妲己买牌攒进度，危险数字在商店每买三张返一能量，剩余能量可再买牌的推导留在说明中。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第55行「小妲己・使用技巧」\n正式卡牌库：危险数字（card:681023）\nknowledge/players/小妲己.json「危险数字」",
+  "expression": "((动作.选中.名称 == \"危险数字\" and any(动作.候选列表, .名称 == \"危险数字\")) and 我方.棋手名称 == \"小妲己\")",
+  "id": "group_34fcf71325bd5528a399874c0e189e6e",
+  "mode": "万象大赛",
+  "name": "小妲己用危险数字补买牌能量",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_89841628621a4ca690034b2d0bb4a847",
+      "text": "小妲己买牌攒进度，危险数字在商店每买三张返一能量。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:681023": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包四",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "在商店每买3张牌，获得1能量；若其品阶相加等于10，随机再获得其中1张。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:681023",
+        "name": "危险数字",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "危险数字",
+  "syntax_version": "0.4"
+}

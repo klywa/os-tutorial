@@ -1,25 +1,127 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation": "",
+  "explanation_after": "返修不硬报普通云中君数值，明确穿戴者在开团仍须在场，保留按装备件数增加永久等级。\n完整候选池通过 3 项。正例可播：给在场孙膑穿装备，场上另有云中君。；单项反例不命中：只移除战场中的孙膑，保留云中君。；缺值检查：不提供玩家.战场。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：云中君在场，穿戴者能在他开团时按装备件数升永久等级。\n原始依据为云中君开团时给在场穿戴装备的己方英雄按装备件数提供永久等级，且穿戴者需在开团场上才能兑现；当前取舍围绕云中君在场局面与按装备件数升永久等级的收益展开，保留开团在场条件、触发时机与可能性限定；自然语言适用条件为云中君已在场，这次在同一己方战场上为一名英雄穿装备；正式条件为 arg1 in 玩家.战场 and 玩家.战场 has \"云中君\"；取舍后播报重点为点明云中君在场及他开团时在场的穿戴者能按装备件数升永久等级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「云中君」，正式卡牌库 card:5061、card:5063。",
+  "expression": "(any(我方.场上英雄列表, .名称 == 动作.目标英雄.名称) and any(我方.场上英雄列表, .名称 == \"云中君\"))",
+  "id": "group_a64b83b39d0b483bb80cb1ddc949c7f9",
+  "mode": "万象大赛",
   "name": "云中君在场时装备促进成长",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "在“穿戴装备”事件中，云中君在场时适用。云中君在场，每多穿一件装备，开团时穿戴者就能多获得等级。依据为《常小娥灵活变阵-常小娥》「云中君」及官方英雄「云中君」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "云中君开团时按装备件数提升等级，现在穿装备能增加永久成长。",
-      "id": "utterances_0ffc135b160b493c874184d32fec8a3d"
-    },
-    {
-      "text": "云中君在场，每多穿一件装备，开团时穿戴者就能多获得等级。",
-      "id": "utterances_2a2dbe57180046e5b60469acf1afec1b"
+      "id": "utterances_0ffc135b160b493c874184d32fec8a3d",
+      "text": "云中君在场，他开团时在场的穿戴者能按装备件数升永久等级。"
     }
   ],
-  "event_id": "os_5dfcb4835e1e1513",
-  "id": "group_a64b83b39d0b483bb80cb1ddc949c7f9",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "玩家.战场 has \"云中君\"",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5061": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n开团：你的英雄每穿戴1件装备，该英雄等级永久+1。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:5061",
+        "name": "云中君",
+        "skills": [
+          {
+            "effect": "云中君展翅舞蹈向周围1格射出羽箭，对命中的敌人造成50+80%物理攻击力的物理伤害，并施加2层撕裂效果。\n\n\n撕裂：每秒造成目标敌人当前生命值2%的物理伤害，持续5秒，最多叠加5层。",
+            "enhancements": [
+              {
+                "effect": "羽箭伤害提升至50+120%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "普攻对目标施加1层撕裂",
+                "level": 40
+              },
+              {
+                "effect": "羽箭伤害范围+1格",
+                "level": 100
+              }
+            ],
+            "id": 50600,
+            "name": "若英·华彩"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5061"
+      },
+      "card:5063": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n开团：你的英雄每穿戴1件装备，该英雄等级永久+2。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:5063",
+        "name": "云中君",
+        "skills": [
+          {
+            "effect": "云中君展翅舞蹈向周围1格射出羽箭，对命中的敌人造成50+80%物理攻击力的物理伤害，并施加2层撕裂效果。\n\n\n撕裂：每秒造成目标敌人当前生命值2%的物理伤害，持续5秒，最多叠加5层。",
+            "enhancements": [
+              {
+                "effect": "羽箭伤害提升至50+120%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "普攻对目标施加1层撕裂",
+                "level": 40
+              },
+              {
+                "effect": "羽箭伤害范围+1格",
+                "level": 100
+              }
+            ],
+            "id": 50600,
+            "name": "若英·华彩"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5061"
+      }
+    }
+  },
+  "extra_key": "*-*",
+  "syntax_version": "0.4"
 }

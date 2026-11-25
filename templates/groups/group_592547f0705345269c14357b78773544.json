@@ -1,25 +1,148 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_02f23dfd4155737d",
+  "explanation_after": "备用钟馗在手，原在场钟馗离场后退出助力候选，剩余在场英雄均可被助力。\n完整候选池通过 3 项。正例可播：历史正例战场至少一名非钟馗，补玩家.场上英雄数=1。；单项反例不命中：仅改人数为0并清场；；缺值检查：场上英雄数与战场一起移除。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：卖掉场上钟馗，手里还有备用牌，小菟助力可先给其他人。 / 手中已有备用钟馗，卖掉场上这张可少一个助力目标。\n原始依据：有备用钟馗时可先卖旧卡，用完小菟助力和小菟送福后再上备用卡，即在场上仍有其他英雄且手里另有备用钟馗时，先卖掉场上钟馗让其退出小菟助力候选，之后仍能打出另一张钟馗。当前取舍：口播保留触发事实、行动及当下收益，具体机制留在说明。自然语言适用条件：卖出场上钟馗，手里有备用钟馗，场上至少仍有一名其他英雄。正式条件：arg1 is \"钟馗\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"钟馗\"} and 玩家.场上英雄数 >= 1 and not (玩家.战场 has \"钟馗\")。取舍后的播报重点：突出卖掉场上钟馗与留有备用牌的前提，以及小菟助力先给其他英雄或减少助力目标的当下收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「钟馗」 · n-d34b6fb49b9bd4322a49\n正式卡牌库「钟馗」 · card:1751\n正式卡牌库「钟馗（觉醒）」 · card:1753\n正式卡牌库「小菟助力」 · card:92499",
+  "expression": "(((动作.英雄.名称 == \"钟馗\" and any(我方.手牌列表, .卡牌类型 == \"英雄\" and .名称 == \"钟馗\")) and len(我方.场上英雄列表) >= 1) and not any(我方.场上英雄列表, .名称 == \"钟馗\"))",
+  "id": "group_592547f0705345269c14357b78773544",
+  "mode": "万象大赛",
   "name": "保留备用钟馗避免分走小菟成长",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
+  "tags": [],
   "utterances": [
     {
-      "text": "钟馗留在手中，小菟助力就不会选中已经离场的这张钟馗。",
-      "id": "utterances_0aab382f13b5437c8098a1116176d357"
+      "id": "utterances_0aab382f13b5437c8098a1116176d357",
+      "text": "卖掉场上钟馗，手里有备用卡，小菟助力可先给其他人。"
     },
     {
-      "text": "卖掉钟馗能避免他分走小菟助力，手里的钟馗还能补控制。",
-      "id": "utterances_4459847030294430b73bafbd3830d312"
+      "id": "utterances_4459847030294430b73bafbd3830d312",
+      "text": "手里已有备用钟馗，卖掉场上这张，可少一个助力目标。"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》「钟馗」、「挂件与工具英雄」。工具英雄有备用牌时，可分次上阵提供控制并避开随机成长。条件要求已出售场上钟馗且手中仍有同名英雄。",
-  "event_id": "os_02f23dfd4155737d",
-  "id": "group_592547f0705345269c14357b78773544",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg1 is \"钟馗\" and 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"钟馗\"} and not (玩家.战场 has \"钟馗\")",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1751": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "自身及左右1格的英雄获得牺牲：击败者等级临时降低10%（每场战斗限1次）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1751",
+        "name": "钟馗",
+        "skills": [
+          {
+            "effect": "钟馗投出钩锁，将距离自己最远的1名敌人拉到身边，造成50+100%法术攻击力的法术伤害，并使其成为友军的优先攻击目标。",
+            "enhancements": [
+              {
+                "effect": "战斗开始时充满法力值",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至50+150%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "减少50点最大法力值",
+                "level": 100
+              }
+            ],
+            "id": 17500,
+            "name": "湮灭之锁"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "60/100",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1751"
+      },
+      "card:1753": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "自身及左右1格的英雄获得牺牲：击败者等级临时降低20%（每场战斗限1次）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1753",
+        "name": "钟馗",
+        "skills": [
+          {
+            "effect": "钟馗投出钩锁，将距离自己最远的1名敌人拉到身边，造成50+100%法术攻击力的法术伤害，并使其成为友军的优先攻击目标。",
+            "enhancements": [
+              {
+                "effect": "战斗开始时充满法力值",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至50+150%法术攻击力",
+                "level": 40
+              },
+              {
+                "effect": "减少50点最大法力值",
+                "level": 100
+              }
+            ],
+            "id": 17500,
+            "name": "湮灭之锁"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1751"
+      }
+    }
+  },
+  "extra_key": "钟馗",
+  "syntax_version": "0.4"
 }

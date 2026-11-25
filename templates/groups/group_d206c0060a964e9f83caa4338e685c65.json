@@ -1,25 +1,149 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation": "",
+  "explanation_after": "驱雷的时机与战场双方相关状态均已说明，未保证一定命中或击败。\n完整候选池通过 3 项。正例可播：对手主力是高生命猪八戒；单项反例不命中：对面换成艾琳；缺值检查：缺少 对局.当前对手.主C。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：对面主力是猪八戒，驱雷劈中他能按生命上限打伤害。\n原始依据：驱雷每2秒召唤落雷攻击穿戴者以外不分敌我的单位，造成30%生命最大值的法术伤害，适合针对对方有高坦度主C（如猪八戒）的情况。当前取舍：驱雷伤害取决于被命中者的生命上限，同时可能命中己方；猪八戒是敌方主力时才突出其血量收益。自然语言适用条件：解释穿戴驱雷且当前对手主C为猪八戒时适用。正式条件：arg2 is \"驱雷\" and 对局.当前对手.主C is \"猪八戒\"。播报重点：对手主力是猪八戒，驱雷劈中他能按生命上限打伤害。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「驱雷」 · n-957bdc109c8509a6a732",
+  "expression": "(动作.装备.名称 == \"驱雷\" and (对手 != nil and 对手.主C != nil and 对手.主C.名称 == \"猪八戒\"))",
+  "id": "group_d206c0060a964e9f83caa4338e685c65",
+  "mode": "万象大赛",
   "name": "用驱雷削减猪八戒的高生命值",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
+  "tags": [],
   "utterances": [
     {
-      "text": "驱雷有机会劈中猪八戒，按他的生命上限造成伤害。",
-      "id": "utterances_215bac5f85d745428790a32316f7c6a4"
-    },
-    {
-      "text": "猪八戒血量越高，驱雷击中他时造成的伤害越高。",
-      "id": "utterances_b9ac1e3ac59d43b488a6e977baee2adf"
+      "id": "utterances_215bac5f85d745428790a32316f7c6a4",
+      "text": "对手主力是猪八戒，驱雷劈中他能按生命上限打伤害。"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》「驱雷」。官方驱雷随机落雷，造成相当于目标生命上限30%的法术伤害。对手主C为猪八戒，按生命上限计伤有利于处理血厚前排。",
-  "event_id": "os_5dfcb4835e1e1513",
-  "id": "group_d206c0060a964e9f83caa4338e685c65",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg2 is \"驱雷\" and 对局.当前对手.主C is \"猪八戒\"",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5111": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "夺取\n每当3阶及以下英雄合成时，与其同阶的英雄等级+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5111",
+        "name": "猪八戒",
+        "skills": [
+          {
+            "effect": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。\n主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至10%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "最大生命值叠层提升至60层",
+                "level": 40
+              },
+              {
+                "effect": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+                "level": 100
+              }
+            ],
+            "id": 51100,
+            "name": "肉弹蹦床"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5111"
+      },
+      "card:5113": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "夺取\n每当3阶及以下英雄合成时，与其同阶的英雄等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5113",
+        "name": "猪八戒",
+        "skills": [
+          {
+            "effect": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。\n主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至10%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "最大生命值叠层提升至60层",
+                "level": 40
+              },
+              {
+                "effect": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+                "level": 100
+              }
+            ],
+            "id": 51100,
+            "name": "肉弹蹦床"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5111"
+      },
+      "card:644113": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每2秒召唤2道雷电轰击敌我双方任意2名单位（穿戴者除外）。造成目标30%最大生命值的法术伤害（命中友军不触发吸血）。若命中司空震则改为使其快速攻击4次。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:644113",
+        "name": "驱雷",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "*-驱雷",
+  "syntax_version": "0.4"
 }

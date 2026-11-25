@@ -99,9 +99,6 @@ class Handler(BaseHTTPRequestHandler):
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
         if path=='/api/templates' or path.startswith('/api/templates/'):
             try:
-                if season!='S1':
-                    if not identity:raise PermissionError('请先登录')
-                    return self.response(200,seasons.template_read(self.server.root,season,path))
                 import templates_http
                 return self.response(200,templates_http.get(self.server,identity,path,self.path))
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
@@ -135,7 +132,7 @@ class Handler(BaseHTTPRequestHandler):
             try:return self.response(200,get_proposals(self.server,identity,self.path))
             except PermissionError as exc:return self.response(403,{'error':str(exc)})
             except (ValueError,KeyError) as exc:return self.response(400,{'error':str(exc)})
-        if identity and identity['role'] in ('annotator','viewer') and path.startswith('/api/') and not (
+        if identity and identity['role'] in ('annotator','quality','viewer') and path.startswith('/api/') and not (
                 path=='/api/dashboard' or path=='/api/options' or path=='/api/cards' or path.startswith('/api/cards/') or
                 path=='/api/notes' or re.fullmatch(r'/api/notes/[^/]+(?:/(reading|revision))?',path)):
             return self.response(403,{'error':'当前身份仅可浏览笔记、看板和卡牌'})
@@ -219,8 +216,9 @@ class Handler(BaseHTTPRequestHandler):
                 images = wxq.read_json(self.server.root / 'entities/assets/index.json', {})
                 cards = [{**c, **image_fields(self.server.root, c['id'], images)} for c in cards]
                 if path == '/api/cards':
-                    return self.response(200, [{k: c.get(k) for k in
-                        ['id', 'name', 'category', 'aliases', 'effect', 'faction', 'tier', 'awakened','thumb_url','image_url','image_status']}
+                    return self.response(200, [{**{k: c.get(k) for k in
+                        ['id', 'name', 'category', 'aliases', 'effect', 'faction', 'tier', 'awakened','thumb_url','image_url','image_status']},
+                        'keywords': c.get('keywords', [])}
                         for c in cards],etag=True)
                 card = next((c for c in cards if c['id'] == path.removeprefix('/api/cards/')), None)
                 return self.response(200 if card else 404, card or {'error': '卡牌不存在'})
@@ -422,13 +420,16 @@ class Handler(BaseHTTPRequestHandler):
         if not self.trusted() or self.headers.get('Content-Type', '').split(';')[0] != 'application/json':
             return self.response(403, {'error': '请求来源或格式无效'})
         try:
+            path = unquote(urlsplit(self.path).path)
+            note_create = self.command == 'POST' and path == '/api/notes'
             length = int(self.headers.get('Content-Length', '0'))
-            if not 0 < length <= 2_000_000:
+            if not 0 < length <= 2_000_000 + (16_384 if note_create else 0):
                 raise ValueError('请求内容大小无效')
             payload = json.loads(self.rfile.read(length))
             if not isinstance(payload, dict):
                 raise ValueError('请求应为对象')
-            path = unquote(urlsplit(self.path).path)
+            if length > 2_000_000 and 'document' not in payload:
+                raise ValueError('请求内容大小无效')
             if path == '/api/dashboard/usage/matches':
                 if self.command!='PUT':raise ValueError('匹配保存只接受PUT')
                 import usage_matches

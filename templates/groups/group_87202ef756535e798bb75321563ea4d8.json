@@ -1,0 +1,132 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation": "",
+  "explanation_after": "保留装备取回的技巧和三件确认为不可拆的目标项，没有暗示变身指定五阶英雄。\n完整候选池通过 3 项。正例可播：合法变身目标裴擒虎已经穿着不可拆卸的百锻刀；单项反例不命中：改变必要前提：合法变身目标裴擒虎已经穿着不可拆卸的百锻刀；缺值检查：缺少关键观测：合法变身目标裴擒虎已经穿着不可拆卸的百锻刀。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：目标穿着不可拆的装备，化铁为金能让装备回手。 / 有装备拆不下来，可借化铁为金变身把它取回。\n原始依据为化铁为金变身后装备回手，包括无法拆卸装备。当前取舍是确认目标确有不可拆的装备，突出变身退回装备能取回平时拆不下的装备这一稳定收益。自然语言适用条件为使用化铁为金，且目标穿戴名单中的不可拆卸装备。正式条件为 arg2 is \"化铁为金\" and (arg1.已穿装备 has \"百锻刀\" or arg1.已穿装备 has \"盛华\" or arg1.已穿装备 has \"聚灵法杖\")。取舍后的播报重点为保留局面与当前收益，分别点出目标穿着不可拆装备时化铁为金可让装备回手，以及有装备拆不下来时可借化铁为金变身取回。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第218行「使用技巧」，正式卡牌库 card:7113、card:641002、card:641003、card:641014。",
+  "expression": "(动作.卡牌.名称 == \"化铁为金\" and (((动作.目标英雄 != nil and any(动作.目标英雄.装备列表, .名称 == \"百锻刀\")) or (动作.目标英雄 != nil and any(动作.目标英雄.装备列表, .名称 == \"盛华\"))) or (动作.目标英雄 != nil and any(动作.目标英雄.装备列表, .名称 == \"聚灵法杖\"))))",
+  "id": "group_87202ef756535e798bb75321563ea4d8",
+  "mode": "万象大赛",
+  "name": "化铁为金取回原英雄的不可拆卸装备",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_b145f108e2d147b389d6c72783ace8cf",
+      "text": "目标穿着不可拆的装备，化铁为金能让装备回手。"
+    },
+    {
+      "id": "utterances_1177110f44c94ae194a869a9201c1990",
+      "text": "有装备拆不下来，可借化铁为金变身把它取回。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:641014": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一，无法拆卸。每次战斗结束后永久增加200点生命值，战斗胜利翻倍。增加生命值超过2000时，额外增加15%生命值上限。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:641014",
+        "name": "盛华",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:7113": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包四",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名1-3阶的英雄随机变为不在场的5阶英雄，觉醒并保留其当前等级（包括临时等级）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7113",
+        "name": "化铁为金",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:641003": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一，无法拆卸。法术攻击力+30，普攻附带自身70%法术攻击力。每击败1名英雄，永久获得5点法术攻击力，战斗胜利翻倍（已击败：0)。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:641003",
+        "name": "聚灵法杖",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:641002": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一，无法拆卸。物理攻击力+30。每击败1名英雄，永久获得5点物理攻击力，战斗胜利翻倍（已击败：0）。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:641002",
+        "name": "百锻刀",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "化铁为金",
+  "syntax_version": "0.4"
+}

@@ -1,29 +1,78 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_98aee9aae8b9d41d",
+  "explanation": "",
+  "explanation_after": "保留了前七回合手里有杯、明确建议的泳池派对及留杯给未来上场朵莉亚提早启水域的机会，没有夸成阵容已经成型。\n完整候选池通过 3 项。正例可播：早期已有可转泳池派对的关键资源；单项反例不命中：缺少该方向的到手资源；缺值检查：缺少 玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：已有法源之杯，可考虑泳池派对，留给朵莉亚提早开水域。\n原始依据：明先生「泳池派对」笔记指出早期获得法源之杯这类回蓝装可考虑使用该阵容，前期手中有法源之杯符合入场条件，后续需取得、上阵朵莉亚并为其佩戴以提前启动水域。当前取舍：受单句30字限制，舍弃完整核心阵容、水域召唤成长机制及短板细节，仅保留已有法源之杯的局面、可考虑该阵容的建议及留给朵莉亚早开水域的当前收益。自然语言适用条件：解释为何建议向某阵容发展时，前七回合已拿到法源之杯，且泳池派对可选。正式条件：(arg1.阵容名 has \"泳池派对\" or arg1.阵容名 has \"泳池派对-明先生\") and 对局.当前回合数 <= 7 and 玩家.手牌 has {\"类型\":\"装备\",\"名称\":\"法源之杯\"}。取舍后的播报重点：点明手中已有法源之杯，建议可考虑泳池派对并留给朵莉亚早开水域。",
+  "explanation_source": "knowledge/players/明先生.json · pf28-87bc36d0a6abddd234a8「泳池派对」",
+  "expression": "((动作.阵容 == \"泳池派对\" and 对局.当前回合数 <= 7) and any(我方.手牌列表, .卡牌类型 == \"装备\" and .名称 == \"法源之杯\"))",
+  "id": "group_c02324d0b7bd4e4486b50a9faa7a9a77",
+  "mode": "万象大赛",
   "name": "已有法源之杯时发展泳池派对",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:39",
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": "player:39"
   },
-  "explanation": "《明先生》适用打法「泳池派对」和朵莉亚装备技巧。前两轮拍卖期间手里已有法源之杯，可为朵莉亚准备回蓝装备。条件仅覆盖未穿戴的装备。。每句均点明建议发展的具体阵容。",
+  "tags": [],
   "utterances": [
     {
-      "text": "建议走泳池派对，手里的法源之杯能帮朵莉亚尽早开水域。",
-      "id": "utterances_35002fb674724452a0826ff2cb4ed189"
-    },
-    {
-      "text": "可以往泳池派对发展，朵莉亚需要的回蓝装备已经有了。",
-      "id": "utterances_828b1d0895a5497bb4585cd6d554d89b"
-    },
-    {
-      "text": "泳池派对可以留，法源之杯能帮朵莉亚启动，接着找米莱狄。",
-      "id": "utterances_fdc271323c26486f926e7c13b6542eaf"
+      "id": "utterances_35002fb674724452a0826ff2cb4ed189",
+      "text": "手中已有法源之杯，可考虑泳池派对，留给朵莉亚早开水域。"
     }
   ],
-  "id": "group_c02324d0b7bd4e4486b50a9faa7a9a77",
-  "event_id": "os_98aee9aae8b9d41d",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "(arg1.阵容名 has \"泳池派对\" or arg1.阵容名 has \"泳池派对-明先生\") and 对局.当前回合数 <= 7 and 玩家.手牌 has {\"类型\":\"装备\",\"名称\":\"法源之杯\"}",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:39": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:39",
+        "name": "明先生",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-27T01:17:19.470347+00:00"
+      },
+      "card:643402": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每秒回复5点法力值。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643402",
+        "name": "法源之杯",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "泳池派对",
+  "syntax_version": "0.4"
 }

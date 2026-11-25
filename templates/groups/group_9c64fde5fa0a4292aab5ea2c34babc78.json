@@ -1,25 +1,147 @@
 {
-  "name": "用过登场后卖阿轲集中小菟助力",
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_02f23dfd4155737d",
+  "explanation": "",
+  "explanation_after": "出售后候选只余一个仍须真正使用助力，连同累计机制准确，原句保留。\n完整候选池通过 3 项。正例可播：卖阿轲后只剩一名其他英雄；单项反例不命中：改变必要前提：卖阿轲后只剩一名其他英雄；缺值检查：缺少关键观测：卖阿轲后只剩一名其他英雄。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：卖掉阿轲后场上只剩一人，小菟助力就能集中给他。\n原始依据：使用技能后小菟随机助力1名英雄使其等级+2，且本场比赛每助力1次等级提升效果+1；出售阿轲后场上只余一名英雄，助力候选唯一但仍需实际使用小菟助力。当前取舍：围绕卖掉阿轲后场上只剩一人、小菟助力集中给他来保留局面与当前收益，本句受保护须逐字复制。自然语言适用条件：常小娥灵活4人组，从战场出售阿轲后只剩一名英雄且再无阿轲。正式条件：arg1 is \"阿轲\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"阿轲\")。取舍后的播报重点：说明卖掉阿轲后场上仅剩一人，使小菟助力能够集中给该英雄。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「阿轲」「前期运营思路」，正式卡牌库 card:1161、card:1163、card:92499。",
+  "expression": "((动作.英雄.名称 == \"阿轲\" and len(我方.场上英雄列表) == 1) and not any(我方.场上英雄列表, .名称 == \"阿轲\"))",
+  "id": "group_9c64fde5fa0a4292aab5ea2c34babc78",
+  "mode": "万象大赛",
+  "name": "卖阿轲后只留一人集中小菟助力",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
+  "tags": [],
   "utterances": [
     {
-      "text": "卖掉阿轲只留一人，小菟助力就能集中给场上的英雄。",
-      "id": "utterances_7cf10ba03aee436ea4ccaa00b57c2422"
-    },
-    {
-      "text": "阿轲退场不影响已经拿到的登场等级，还能避免分走小菟助力。",
-      "id": "utterances_9c0d7ea174154110afa131afaf5e00f3"
+      "id": "utterances_7cf10ba03aee436ea4ccaa00b57c2422",
+      "text": "卖掉阿轲后场上只剩一人，小菟助力就能集中给他。"
     }
   ],
-  "explanation": "《常小娥灵活变阵-常小娥》「阿轲」、「前期运营思路」。前期单挂时在两次助力之间借用登场工具。出售后只剩一名其他英雄，下次助力的随机候选由此收窄；不预设当轮技能已经使用。",
-  "event_id": "os_02f23dfd4155737d",
-  "id": "group_9c64fde5fa0a4292aab5ea2c34babc78",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg1 is \"阿轲\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has \"阿轲\")",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "ignored": true,
+  "review_status": "initial_reviewed",
+  "last_modified_by": {
+    "kind": "user",
+    "username": "local"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1161": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：自身及随机1名英雄等级+1，棋手生命值每降低10点，重复1次。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1161",
+        "name": "阿轲",
+        "skills": [
+          {
+            "effect": "阿轲挥动双刺发动2次攻击，每次造成30+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "单次伤害提升至30+130%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战后20秒内自身不会被优先攻击",
+                "level": 40
+              },
+              {
+                "effect": "战斗过程中不会被优先攻击，技能必定暴击",
+                "level": 100
+              }
+            ],
+            "id": 11600,
+            "name": "弧光"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "30/35",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1161"
+      },
+      "card:1163": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：自身及随机1名英雄等级+2，棋手生命值每降低10点，重复1次。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1163",
+        "name": "阿轲",
+        "skills": [
+          {
+            "effect": "阿轲挥动双刺发动2次攻击，每次造成30+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "单次伤害提升至30+130%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战后20秒内自身不会被优先攻击",
+                "level": 40
+              },
+              {
+                "effect": "战斗过程中不会被优先攻击，技能必定暴击",
+                "level": 100
+              }
+            ],
+            "id": 11600,
+            "name": "弧光"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1161"
+      }
+    }
+  },
+  "extra_key": "阿轲",
+  "syntax_version": "0.4"
 }

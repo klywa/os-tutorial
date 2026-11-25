@@ -55,7 +55,7 @@ describe('visual condition editor',()=>{
   const option=listPaths({id:'wear',name:'解释为何穿戴装备',parameters:[]},catalog).find(p=>p.path==='arg2.类型')!;
   expect(operatorsFor(option)).toEqual(['is']);
   expect(compatibleRight('Array<英雄|效果牌>','英雄','has')).toBe(true);
-  expect(compatibleRight('英雄','Array<单位>','in',catalog.aliases)).toBe(true);
+  expect(compatibleRight('英雄','Array<单位>','in',catalog.aliases,catalog.unit_types)).toBe(true);
   expect(compatibleRight('string','Array<英雄>','in')).toBe(false);
  });
  it('links literal names in matching categories and ignores path-to-path comparisons',()=>{
@@ -63,5 +63,43 @@ describe('visual condition editor',()=>{
   expect(treeEntities(leaf('arg1.名称','is','"弈星"'),paths,cards).map(e=>e.id)).toEqual(['h1','h2']);
   expect(treeEntities(leaf('arg1.名称','is','玩家.主C.名称'),paths,cards)).toEqual([]);
   expect(treeEntities(leaf('商店.商店列表','has','{"类型":"装备","名称":"弈星"}'),paths,cards).map(e=>e.id)).toEqual(['e1']);
+ });
+ it('offers numeric array counts and filters only on hero and unit arrays',()=>{
+  const withTags={...catalog,card_tags:{hero:{type:'英雄',tags:['登场']},derivative:{type:'衍生物',tags:['临时']}}};
+  const targeted=listPaths({id:'targeted',name:'解释为何对目标使用效果牌',parameters:[]},withTags);
+  for(const path of ['arg1.已穿装备.计数()','玩家.已选天赋.计数()','玩家.战场.计数()']){
+   expect(targeted.find(p=>p.path===path)?.type).toBe('int');
+  }
+  expect(targeted.find(p=>p.path==='玩家.战场.计数(标签, "")')).toMatchObject({type:'int',filter:{field:'标签',choices:['登场']}});
+  expect(targeted.find(p=>p.path==='对局.当前对手.战场.计数(阵营, "")')).toMatchObject({type:'int',filter:{field:'阵营'}});
+  expect(targeted.find(p=>p.path==='玩家.战场.计数(英雄, [])')).toMatchObject({type:'int',filter:{field:'英雄'}});
+  expect(targeted.some(p=>p.path.startsWith('玩家.手牌.计数(标签,'))).toBe(false);
+ });
+ it('keeps visual drafts incomplete until their count filter has a value',()=>{
+  expect(completeTree(leaf('玩家.战场.计数(标签, "")','>=','2'))).toBe(false);
+  expect(completeTree(leaf('玩家.战场.计数(标签, "登场")','>=','2'))).toBe(true);
+  expect(completeTree(leaf('玩家.战场.计数(英雄, [])','>=','2'))).toBe(false);
+  expect(completeTree(leaf('玩家.战场.计数(英雄, [)','>=','2'))).toBe(false);
+  expect(completeTree(leaf('玩家.战场.计数(英雄, ["小乔",{"类型":"英雄","名称":"弈星","已觉醒":true}])','>=','2'))).toBe(true);
+ });
+ it('allows name comparisons and entity membership for nominal units',()=>{
+  const compatible=(left:string,right:string,op:string)=>compatibleRight(left,right,op,{},['单位','英雄','衍生物']);
+  expect(compatible('单位','string','is')).toBe(true);
+  expect(compatible('单位','衍生物','is')).toBe(true);
+  expect(compatible('英雄','衍生物','is')).toBe(false);
+  expect(compatible('Array<单位>','string','has')).toBe(true);
+  expect(compatible('Array<单位|装备>','string','has')).toBe(false);
+  expect(compatible('单位|装备','string','is')).toBe(false);
+  expect(compatible('单位','Array<装备>','in')).toBe(false);
+ });
+ it('links untyped unit names across unit categories and typed names within the declared class',()=>{
+  const cards=[{id:'h',name:'甲',category:'heroes'},{id:'d',name:'甲',category:'derivatives'},{id:'e',name:'甲',category:'equipment'}];
+  const unitPaths=[{path:'arg1',type:'单位'},{path:'arg1.名称',type:'string'},{path:'玩家.战场',type:'Array<单位>'}];
+  const unitTypes=['单位','英雄','衍生物'];
+  const entities=(rule:ConditionNode)=>treeEntities(rule,unitPaths,cards,unitTypes).map(e=>e.id);
+  expect(entities(leaf('arg1.名称','is','"甲"'))).toEqual(['d','h']);
+  expect(entities(leaf('玩家.战场','has','"甲"'))).toEqual(['d','h']);
+  expect(entities(leaf('arg1','is','{"类型":"衍生物","名称":"甲"}'))).toEqual(['d']);
+  expect(entities(leaf('arg1','is','{"类型":"单位","名称":"甲"}'))).toEqual([]);
  });
 });

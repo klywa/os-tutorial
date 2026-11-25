@@ -1,25 +1,60 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_39863c58ae5736cd",
+  "explanation": "",
+  "explanation_after": "购买时已有单人局面，只有使用时也保持单人才能把两段等级给同一人。\n完整候选池通过 4 项。正例可播：单挂可集中两段加级；单项反例不命中：第二名英雄可能分走一段；缺值检查：缺少 玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上只有一人，买精密协作可让他拿两份等级。\n原始依据：简易协作给指定和随机一名英雄加级，场上仅一人时随机目标为自己；精密协作同分两段（指定加4级、随机加3级），按相同规则在单人场可集中7级，多人场仅能确定指定目标得第一段。当前取舍：以单人场作为两段加级合并的明确前提，因买下后使用时才结算，需未来使用时场上也仅有一人才能合并两段，不能以购买时只有一人推出以后必定两段都给他。自然语言适用条件：购买效果牌为精密协作，且己方场上仅有1名英雄。正式条件：arg1 is \"精密协作\" and 玩家.场上英雄数 == 1。取舍后的播报重点：说明场上只有一人时，买精密协作可把两段加级集中给他。",
+  "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15",
+  "expression": "(动作.选中.名称 == \"精密协作\" and len(我方.场上英雄列表) == 1)",
+  "id": "group_f9470c4fa1714c85b9c32eabeec021b6",
+  "mode": "万象大赛",
   "name": "单人场买精密协作集中等级",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
+  "tags": [],
   "utterances": [
     {
-      "text": "买精密协作可以集中养单挂英雄，单人用能一次加7级。",
-      "id": "utterances_0c0082a429ae49c98f89f6c702c84328"
-    },
-    {
-      "text": "现在是单人场，买精密协作给他用，两份等级都能拿到。",
-      "id": "utterances_9d99d926d6134bdba9478cdcdbd67924"
+      "id": "utterances_0c0082a429ae49c98f89f6c702c84328",
+      "text": "场上只有一人，买精密协作可把两段加级集中给他。"
     }
   ],
-  "explanation": "《冷门知识》简易协作效果卡确认指定目标本人可获随机一份，单人场两份归一。精密协作官方卡面对指定英雄+4级、随机英雄+3级。精密协作的随机目标未排除本人，按同一目标规则推导。使用时校验指定英雄仍在战场；选／购时不假定已经打出。获牌渠道以对应效果牌所属分组为据。",
-  "event_id": "os_39863c58ae5736cd",
-  "id": "group_f9470c4fa1714c85b9c32eabeec021b6",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg1 is \"精密协作\" and 玩家.场上英雄数 == 1",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7062": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄等级+4，随机1名英雄等级+3。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7062",
+        "name": "精密协作",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "精密协作",
+  "syntax_version": "0.4"
 }

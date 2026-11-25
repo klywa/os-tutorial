@@ -41,6 +41,32 @@ class EntityTests(unittest.TestCase):
 
 
 class PortableTests(unittest.TestCase):
+    def test_wording_brief_roundtrip_even_above_recommended_length(self):
+        original = library()
+        self.assertNotIn('wording_brief', portable.encode(original)['groups'][0])
+        original['groups'][0]['wording_brief'] = '💬' * 400
+        external = portable.encode(original)
+        self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'], original['groups'])
+        external['groups'][0]['wording_brief'] += '字'
+        self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'][0]['wording_brief'],
+                         '💬' * 400 + '字')
+        external['groups'][0]['wording_brief'] = []
+        with self.assertRaisesRegex(ValueError, '话术构思'):
+            portable.decode(external, original, CATALOG, {})
+
+    def test_group_metadata_roundtrip_and_legacy_omission(self):
+        original = library()
+        fields = dict(version='s1', mode='万象大赛', tags=['技巧', '阵容'],
+                      explanation_before='原文及条件', explanation_source='笔记条目',
+                      explanation_after='正例、反例与话术检查')
+        original['groups'][0].update(fields)
+        external = portable.encode(original)
+        for key, value in fields.items():
+            self.assertEqual(external['groups'][0].pop(key), value)
+        self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'], original['groups'])
+        external['groups'][0]['tags'] = []
+        self.assertEqual(portable.decode(external, original, CATALOG, {})['groups'][0]['tags'], [])
+
     def test_explanation_roundtrip_and_codepoint_limit(self):
         original = library()
         for value in ('', '💬' * 300):

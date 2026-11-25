@@ -1,0 +1,221 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "两条原句保持；说明把貂蝉低法力上限与孙膑每三次带来的永久成长相连，区分普通及觉醒数值。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：貂蝉已在场，上孙膑可让她每施法三次永久升级。 / 场上有貂蝉，上孙膑可用她反复施法来积累永久等级。\n原始依据：孙膑普通形态可使英雄每释放3次技能等级永久+1、觉醒形态等级永久+2，而貂蝉法力上限仅二十，具备反复施法条件，上孙膑时她每施法三次即可获得永久等级。当前取舍：以低法力上限解释选将原因，触发仍以实际三次施法为准，播报沿用人工改稿并按复核后的生效条件界定适用范围。自然语言适用条件：孙膑配貂蝉把施法变为永久等级。正式条件：arg1 is \"孙膑\" and 玩家.战场 has \"貂蝉\"。取舍后的播报重点：点明场上有貂蝉时上阵孙膑，借助她反复施法每三次获得永久升级或积累永久等级。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第5行「孙膑・使用技巧」\n正式卡牌库「孙膑」 · card:1181\n正式卡牌库「孙膑（觉醒）」 · card:1183\n正式卡牌库「貂蝉」 · card:1411",
+  "expression": "(动作.英雄.名称 == \"孙膑\" and any(我方.场上英雄列表, .名称 == \"貂蝉\"))",
+  "id": "group_8014e560f2ce5021aade6e318c9e7b97",
+  "mode": "万象大赛",
+  "name": "孙膑配貂蝉把施法变为永久等级",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_039e5925a5dd4b03a1417eaaf0e35bbe",
+      "text": "貂蝉已在场，上孙膑可让她每施法三次永久升级。"
+    },
+    {
+      "id": "utterances_01f9473e153e456187413591c2457a96",
+      "text": "场上有貂蝉，上孙膑可用她反复施法来积累永久等级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1411": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "登场：【三分】英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1411",
+        "name": "貂蝉",
+        "skills": [
+          {
+            "effect": "貂蝉向周围2格的随机敌人施放5朵花球，每朵花球造成50+40%法术攻击力的法术伤害并降低敌人70%生命恢复效果，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "花球伤害提升至50+60%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "花球数量+4",
+                "level": 40
+              },
+              {
+                "effect": "施法时会远离敌人",
+                "level": 100
+              }
+            ],
+            "id": 14100,
+            "name": "语·花印"
+          }
+        ],
+        "stats": {
+          "攻击距离": 2,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "5/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1411"
+      },
+      "card:1413": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "登场：【三分】英雄等级+2。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1413",
+        "name": "貂蝉",
+        "skills": [
+          {
+            "effect": "貂蝉向周围2格的随机敌人施放5朵花球，每朵花球造成50+40%法术攻击力的法术伤害并降低敌人70%生命恢复效果，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "花球伤害提升至50+60%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "花球数量+4",
+                "level": 40
+              },
+              {
+                "effect": "施法时会远离敌人",
+                "level": 100
+              }
+            ],
+            "id": 14100,
+            "name": "语·花印"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1411"
+      },
+      "card:1181": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1181",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "10/20",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+        "skills_source": "card:1181"
+      },
+      "card:1183": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1183",
+        "name": "孙膑",
+        "skills": [
+          {
+            "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "炸弹伤害提升至125+175%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                "level": 40
+              },
+              {
+                "effect": "炸弹附着在敌人身上时沉默该目标",
+                "level": 100
+              }
+            ],
+            "id": 11800,
+            "name": "时空爆弹"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1181"
+      }
+    }
+  },
+  "extra_key": "孙膑",
+  "syntax_version": "0.4"
+}

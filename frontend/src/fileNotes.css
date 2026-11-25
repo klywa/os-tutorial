@@ -1,0 +1,11 @@
+.full .file-notes-workspace{grid-template-columns:255px minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.file-notes-reading>.error,.file-notes-reading>.reader-cache-status{margin:12px 20px 0}
+.file-note-folder{margin:7px 0 12px;overflow-wrap:anywhere}
+.file-note-actions{display:flex;flex-wrap:wrap;gap:7px}
+.file-note-actions button{font-size:12px}
+.file-note-prompt{margin:auto;max-width:540px}
+.file-note-prompt .file-note-actions{justify-content:center}
+.app-header .workbench-source{align-self:center;display:flex;flex-shrink:0;border:1px solid var(--line);border-radius:8px;padding:2px;white-space:nowrap}
+.app .app-header .workbench-source button{padding:5px 9px;font-size:12px;border:0;border-radius:5px}
+.app .app-header .workbench-source button[aria-pressed="true"]{background:#315a5d;color:var(--jade)}
+@media(max-width:1120px){.full .file-notes-workspace{grid-template-columns:220px minmax(0,1fr)}}

@@ -1,25 +1,165 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b59f8bd6d43110d4",
+  "explanation": "",
+  "explanation_after": "狂铁是此时唯一在场的英雄兼助力唯一候选，集中永久等级的方向无误，原句保留。\n完整候选池通过 3 项。正例可播：只有狂铁可承接助力；单项反例不命中：出现第二个助力候选；缺值检查：缺少 玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：趁场上只有狂铁，用小菟助力能把等级全给他。\n原始依据：前期应将小菟助力集中给狂铁，场上只有狂铁一人时，随机单人小菟助力的受益者确定，此时使用能把永久成长集中给他。当前取舍：聚焦当前单挂狂铁的局面与将等级全给狂铁的即时收益，略去后续觉醒、传承或特定等级效果等扩展内容。自然语言适用条件：解释为何使用棋手技能时，常小娥当前只让狂铁一人上场。正式条件：arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"狂铁\"。取舍后的播报重点：点明场上只有狂铁的局面时机及用小菟助力把等级全给他的当前收益，且本句为受保护句，逐字保留。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「狂铁」 · n-9ed7d90eed07560cdd8e",
+  "expression": "((动作.卡牌.名称 == \"小菟助力\" and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"狂铁\"))",
+  "id": "group_c44e5b0988e8440580a37f492b6e076e",
+  "mode": "万象大赛",
   "name": "单挂狂铁时使用小菟助力",
+  "priority": 1,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
-  "explanation": "在“使用棋手技能”事件中，使用小菟助力，场上只有一名英雄，狂铁在场时适用。趁狂铁单独在场使用小菟助力，随机提升等级不会选到别人。依据为《常小娥灵活变阵-常小娥》「狂铁」及官方棋手技能「小菟助力」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "场上只有狂铁，小菟助力提供的等级会集中给他。",
-      "id": "utterances_77a3c76084514d57a31c3bde0f40e875"
-    },
-    {
-      "text": "趁狂铁单独在场使用小菟助力，随机提升等级不会选到别人。",
-      "id": "utterances_e6ce013b27b14a648dac72a6cac9c5cd"
+      "id": "utterances_77a3c76084514d57a31c3bde0f40e875",
+      "text": "趁场上只有狂铁，用小菟助力能把等级全给他。"
     }
   ],
-  "event_id": "os_b59f8bd6d43110d4",
-  "id": "group_c44e5b0988e8440580a37f492b6e076e",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"小菟助力\" and 玩家.场上英雄数 == 1 and 玩家.战场 has \"狂铁\"",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:92499": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92499",
+        "name": "小菟助力",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:5031": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5031",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "30/50",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      },
+      "card:5033": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:5033",
+        "name": "狂铁",
+        "skills": [
+          {
+            "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                "level": 10
+              },
+              {
+                "effect": "技能每命中1个敌人，护盾值提升100点",
+                "level": 40
+              },
+              {
+                "effect": "护盾被击破时恢复10%最大生命值",
+                "level": 100
+              }
+            ],
+            "id": 50300,
+            "name": "碎裂之击"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5031"
+      }
+    }
+  },
+  "extra_key": "小菟助力",
+  "syntax_version": "0.4"
 }

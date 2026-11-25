@@ -1,9 +1,12 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useRef,useState} from 'react';
 import {api} from './model';
 import {useAuth} from './auth';
+import MetadataSuggestions,{lastMetadataTerm,replaceLastMetadataTerm} from './MetadataSuggestions';
 
-type Review={id:string;card_id:string;card_name:string;author:string;status:string;before_tags:string[];after_tags:string[];reviewer:string|null;created:string;reviewed:string|null};
-type Detail={revision:string;tags:string[];items:Review[]};
+type Review={id:string;card_id:string;card_name:string;author:string;status:string;historical?:boolean;before_tags:string[];after_tags:string[];reviewer:string|null;created:string;reviewed:string|null};
+type Detail={revision:string;tags:string[];suggestions?:string[];items:Review[]};
+const reviewStatus:Record<string,string>={pending:'待审核',approved:'已通过',rejected:'已驳回',expired:'已失效'};
+const parseTags=(value:string)=>[...new Set(value.split(/[、，,\r\n]/u).map(tag=>tag.trim()).filter(Boolean))].sort();
 
 export function CardTagQueue({select,epoch}:{select:(id:string)=>void;epoch:number}){
  const [rows,setRows]=useState<Review[]>([]);
@@ -12,28 +15,61 @@ export function CardTagQueue({select,epoch}:{select:(id:string)=>void;epoch:numb
  return error?<p role="alert">{error}</p>:rows.length?<details><summary>待审核标签（{rows.length}）</summary>{rows.map(r=><button key={r.id} onClick={()=>select(r.card_id)}>{r.card_name} · {r.author}</button>)}</details>:null;
 }
 
-export function CardTags({id,updated}:{id:string;updated:()=>void}){
+export function canShowCardTags(season:string,category:string){
+ return season==='S1'&&['heroes','equipment','effect-cards','talents'].includes(category);
+}
+
+export function CardTags({id,updated,compact=false}:{id:string;updated?:()=>void;compact?:boolean}){
  const {session}=useAuth();
- const editor=session.role==='admin'||session.role==='annotator';
+ const admin=session.role==='admin',editor=admin||session.role==='annotator';
  const [data,setData]=useState<Detail|null>(null),[draft,setDraft]=useState<string|null>(null);
- const [error,setError]=useState(''),[busy,setBusy]=useState(false),[epoch,setEpoch]=useState(0);
+ const [error,setError]=useState(''),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false),[epoch,setEpoch]=useState(0);
+ const saving=useRef(false);
+ const field=useRef<HTMLInputElement>(null);
  const path='cards/'+encodeURIComponent(id)+'/tags';
  useEffect(()=>{let live=true;api<Detail>(path).then(result=>{if(live&&Array.isArray(result.tags)){setData(result);setError('');}}).catch(e=>{if(live)setError(e.message);});return()=>{live=false;};},[path,epoch]);
  async function save(url:string,body:unknown){
-  setBusy(true);setError('');
-  try{await api(url,'POST',body);setDraft(null);setEpoch(i=>i+1);updated();}
+  if(saving.current)return;
+  saving.current=true;setBusy(true);setError('');setNotice('');
+  try{
+   const result=await api<Review>(url,'POST',body);
+   if(result.status==='approved'){
+    setData(current=>current&&{...current,tags:result.after_tags,revision:result.id});
+   }
+   if(url===path){
+    setDraft(null);
+    setNotice(result.status==='approved'?(compact?'':'标签已生效。'):'标签修改已提交审核。');
+   }
+   setEpoch(i=>i+1);updated?.();
+  }
   catch(e){setError((e as Error).message);}
-  finally{setBusy(false);}
+  finally{saving.current=false;setBusy(false);}
  }
+ function submitDraft(){
+  if(!data||draft===null)return;
+  const tags=parseTags(draft);
+  if(JSON.stringify(tags)===JSON.stringify([...data.tags].sort())){setDraft(null);return;}
+  void save(path,{tags,revision:data.revision});
+ }
+ const value=draft??data?.tags.join('、')??'';
+ const completedTags=draft===null?data?.tags??[]:parseTags(replaceLastMetadataTerm(draft,''));
  const label=(values:string[])=>values.join('、')||'无';
  return <section><h3>当前形态标签</h3>
  {error&&<p role="alert">{error} <button onClick={()=>setEpoch(i=>i+1)}>重新读取</button></p>}
- {data&&<><p>{label(data.tags)}</p>{editor&&(draft===null?<button onClick={()=>setDraft(data.tags.join('、'))}>编辑标签</button>:<form onSubmit={e=>{e.preventDefault();void save(path,{tags:draft.split(/[、，,\n]/u).map(v=>v.trim()).filter(Boolean),revision:data.revision});}}>
- <label>标签（用顿号分隔）<input value={draft} onChange={e=>setDraft(e.target.value)}/></label>
- <button disabled={busy}>提交标签提案</button><button type="button" disabled={busy} onClick={()=>setDraft(null)}>取消</button></form>)}
- {editor&&data.items.map(r=><div key={r.id}><strong>{{pending:'待审核',approved:'已通过',rejected:'已驳回'}[r.status]} · {r.author}</strong> <time dateTime={r.created}>{new Date(r.created).toLocaleString()}</time>
+ {notice&&<p role="status">{notice}</p>}
+ {data&&<><p>{editor?'已生效：':''}{label(data.tags)}</p>{editor&&<div className="card-tag-editor" onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))submitDraft();}}>
+ <label>标签（用顿号分隔）<input ref={field} readOnly={busy} value={value} onChange={e=>setDraft(e.target.value)}/></label>
+ {!busy&&<MetadataSuggestions scope="card-tags" choices={(data.suggestions??[]).filter(tag=>!completedTags.includes(tag))}
+  query={draft===null?'':lastMetadataTerm(draft)} label="匹配标签"
+  onPick={tag=>{
+   field.current?.focus();
+   setDraft(current=>current===null?[...data.tags,tag].join('、')+'、':replaceLastMetadataTerm(current,tag)+'、');
+  }}/>}
+ {!compact&&<small>{admin?'离开标签编辑区后保存并生效。':'离开标签编辑区后提交管理员审核。'}</small>}
+ </div>}
+ {editor&&!compact&&data.items.map(r=><div key={r.id}><strong>{reviewStatus[r.status]}{r.historical?'（旧标签体系）':''} · {r.author}</strong> <time dateTime={r.created}>{new Date(r.created).toLocaleString()}</time>
  <p>原标签　{label(r.before_tags)}<br/>提议标签　{label(r.after_tags)}</p>
  {r.reviewer&&<small>审核人　{r.reviewer}</small>}
- {session.role==='admin'&&r.status==='pending'&&<><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/approve',{})}>通过</button><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/reject',{})}>驳回</button></>}</div>)}</>}
+ {admin&&r.status==='pending'&&<><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/approve',{})}>通过</button><button disabled={busy} onClick={()=>void save('cards/tag-reviews/'+r.id+'/reject',{})}>驳回</button></>}</div>)}</>}
  </section>;
 }

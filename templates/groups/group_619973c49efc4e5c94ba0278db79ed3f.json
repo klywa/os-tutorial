@@ -1,25 +1,174 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "三稿两句点名临阵磨枪先触发觉醒裴擒虎整备，之后化铁为金保留等级；不可叠加与随机结果均留在说明。\n完整候选池通过 3 项。正例可播：历史参数裴擒虎填已觉醒=true，玩家主C填马超且等级40并与裴擒虎是战场仅有两人，手里化铁为金。；单项反例不命中：只改为普通裴擒虎；；缺值检查：删觉醒字段。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：主力单独陪觉醒裴擒虎，用临阵磨枪可先取得等量临时等级。 / 先让裴擒虎整备获得临时等级，再用化铁为金保留这份等级。\n原始依据：临阵磨枪可指定1名英雄触发整备，觉醒裴擒虎的整备随机取1名其他英雄等量临时等级且不可叠加，化铁为金可将1-3阶英雄随机变为不在场的觉醒5阶英雄并保留含临时等级在内的当前等级；原笔记明确让觉醒裴擒虎与高等级主力单独留场以必取等量临时等级，随后用化铁为金保留给变出的觉醒五阶英雄。当前取舍：排除普通形态只取一半、多人时随机来源不定、主力与受术者同名以及手中无后续化铁为金的情况。自然语言适用条件：场上仅有指定的觉醒裴擒虎和至少四十级的另一位主力，手中持有化铁为金。正式条件：arg1 is \"裴擒虎\" and arg2 is \"临阵磨枪\" and arg1.已觉醒 and 玩家.战场 has arg1 and 玩家.场上英雄数 == 2 and 玩家.主C.等级 >= 40 and not (玩家.主C is \"裴擒虎\") and 玩家.战场 has 玩家.主C and 玩家.手牌 has {\"类型\":\"效果牌\",\"名称\":\"化铁为金\"}。取舍后的播报重点：先点明只留主力陪觉醒裴擒虎时用临阵磨枪让他取得等量临时等级，再点明用临阵磨枪让裴擒虎拿临时等级并用化铁为金保留。",
+  "explanation_source": "knowledge/other/常用技巧.json\nknowledge/other/常用技巧.json「裴擒虎配合化铁为金复制高等级」\n正式卡牌库「临阵磨枪」 · card:7073\n正式卡牌库「化铁为金」 · card:7113\n正式卡牌库「裴擒虎」 · card:5021\n正式卡牌库「裴擒虎（觉醒）」 · card:5023",
+  "expression": "((((((((动作.目标.名称 == \"裴擒虎\" and 动作.卡牌.名称 == \"临阵磨枪\") and (动作.目标英雄 != nil and 动作.目标英雄.已觉醒)) and ((动作.目标.卡牌类型 == \"英雄\" and any(我方.场上英雄列表, .名称 == 动作.目标.名称)) or (动作.目标.卡牌类型 == \"衍生物\" and any(我方.场上衍生物列表, .名称 == 动作.目标.名称)))) and len(我方.场上英雄列表) == 2) and (我方.主C != nil and 我方.主C.等级 >= 40)) and (我方.主C != nil and not (我方.主C.名称 == \"裴擒虎\"))) and (我方.主C != nil and any(我方.场上英雄列表, .名称 == 我方.主C.名称))) and any(我方.手牌列表, .卡牌类型 == \"效果牌\" and .名称 == \"化铁为金\"))",
+  "id": "group_619973c49efc4e5c94ba0278db79ed3f",
+  "mode": "万象大赛",
   "name": "手里有化铁为金时用临阵磨枪触发裴擒虎的整备",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "《常用技巧》裴擒虎与化铁为金。临阵磨枪立即触发指定英雄的整备；普通虎得到随机一名其他英雄等级一半的临时等级，觉醒才取全部，不能叠加。化铁为金保留当前等级；人数不足两人时没有可提供临时等级的其他英雄。",
+  "tags": [],
   "utterances": [
     {
-      "text": "临阵磨枪触发裴擒虎整备，化铁为金变身能留下这份临时等级。",
-      "id": "utterances_4fb4327f90f84ad0b94efabaafe2ee5e"
+      "id": "utterances_4fb4327f90f84ad0b94efabaafe2ee5e",
+      "text": "只留主力陪觉醒裴擒虎，用临阵磨枪让他取得等量临时等级。"
     },
     {
-      "text": "先让裴擒虎整备获得临时等级，再用化铁为金就能随变身保留。",
-      "id": "utterances_3423f99e5398459eb94aedacdcc6d9f3"
+      "id": "utterances_3423f99e5398459eb94aedacdcc6d9f3",
+      "text": "用临阵磨枪让裴擒虎拿临时等级，再用化铁为金保留。"
     }
   ],
-  "id": "group_619973c49efc4e5c94ba0278db79ed3f",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"裴擒虎\" and arg2 is \"临阵磨枪\" and 玩家.场上英雄数 >= 2 and 玩家.手牌 has {\"类型\":\"效果牌\",\"名称\":\"化铁为金\"}",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5021": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n整备：随机获得1名其他英雄等级数一半的临时等级，不可叠加。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5021",
+        "name": "裴擒虎",
+        "skills": [
+          {
+            "effect": "裴擒虎化身猛虎，提升自身20点物理攻击力以及5点物理和法术防御。\n\n若处于虎形态，则对当前目标敌人发起猛击造成120%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "猛击伤害提升至150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战立即化身猛虎，还会提升30%攻击速度和移动速度",
+                "level": 40
+              },
+              {
+                "effect": "虎形态的属性增益翻倍，猛击伤害提升至200%物理攻击力",
+                "level": 100
+              }
+            ],
+            "id": 50200,
+            "name": "虎啸生风"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5021"
+      },
+      "card:5023": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n整备：随机获得1名其他英雄等级数的临时等级，不可叠加。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5023",
+        "name": "裴擒虎",
+        "skills": [
+          {
+            "effect": "裴擒虎化身猛虎，提升自身20点物理攻击力以及5点物理和法术防御。\n\n若处于虎形态，则对当前目标敌人发起猛击造成120%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "猛击伤害提升至150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战立即化身猛虎，还会提升30%攻击速度和移动速度",
+                "level": 40
+              },
+              {
+                "effect": "虎形态的属性增益翻倍，猛击伤害提升至200%物理攻击力",
+                "level": 100
+              }
+            ],
+            "id": 50200,
+            "name": "虎啸生风"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5021"
+      },
+      "card:7113": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包四",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名1-3阶的英雄随机变为不在场的5阶英雄，觉醒并保留其当前等级（包括临时等级）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7113",
+        "name": "化铁为金",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:7073": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，触发其整备效果。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7073",
+        "name": "临阵磨枪",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "临阵磨枪",
+  "syntax_version": "0.4"
 }

@@ -115,14 +115,7 @@ func (p *parser) primary() value {
 		return v
 	}
 	if strings.ContainsAny(tok[:1], "\"[{-0123456789") || tok == "true" || tok == "false" {
-		d := json.NewDecoder(strings.NewReader(p.rest))
-		d.UseNumber()
-		var x any
-		if err := d.Decode(&x); err != nil {
-			reject("invalid JSON literal: %v", err)
-		}
-		p.rest = p.rest[d.InputOffset():]
-		return p.c.literal(x, 0)
+		return p.jsonLiteral()
 	}
 	p.take(tok)
 	t, ok := p.def.Parameters[tok]
@@ -142,6 +135,10 @@ func (p *parser) primary() value {
 			reject("expected field")
 		}
 		p.take(field)
+		if field == "计数" && p.take("(") {
+			v = p.count(v)
+			continue
+		}
 		if field == "求和" && p.take("(") {
 			v = p.sumField(v)
 			continue
@@ -185,6 +182,17 @@ func (p *parser) primary() value {
 		v.field = key
 	}
 	return v
+}
+
+func (p *parser) jsonLiteral() value {
+	d := json.NewDecoder(strings.NewReader(p.rest))
+	d.UseNumber()
+	var x any
+	if err := d.Decode(&x); err != nil {
+		reject("invalid JSON literal: %v", err)
+	}
+	p.rest = p.rest[d.InputOffset():]
+	return p.c.literal(x, 0)
 }
 
 func (p *parser) sumField(v value) value {

@@ -1,0 +1,65 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation_after": "按原句保留等级槽与五十级门槛。说明已限定为下回合开始、维持等级时超过三级保底。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：英雄已到{arg1.等级}级，戴学识宝石每轮的成长会超过三级。 / 把学识宝石给至少五十级的英雄，能超过最低加级收益。\n原始依据为学识宝石唯一效果是每回合开始时使英雄等级+8%（至少+3级）并减少2点法力值上限，现已五十级时若维持该等级至下回合，按比例计算高于保底三。当前取舍是明确表述回合开始时按等级计算的成长，装备本身不提供一次立即加级，播报保留原人工改稿并以复核后的生效条件为准。自然语言适用条件为给高等级英雄穿学识宝石，正式条件为 arg2 is \"学识宝石\" and arg1.等级 >= 50。取舍后的播报重点在于说明英雄达到对应等级后佩戴学识宝石每轮成长会超过最低的三级收益。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第109行「学识宝石・使用技巧」\n正式卡牌库 学识宝石（card:641001）\n正式卡牌库「学识宝石」 · card:641001",
+  "expression": "(动作.装备.名称 == \"学识宝石\" and 动作.目标英雄.等级 >= 50)",
+  "id": "group_55879869ef9152f9a9f70ec6f17c96c1",
+  "mode": "万象大赛",
+  "name": "给高等级英雄穿学识宝石",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_28cf580560a24b9792bd792f7d83c714",
+      "text": "英雄已到{{动作.目标英雄.等级}}级，戴学识宝石每轮的成长会超过三级。"
+    },
+    {
+      "id": "utterances_772a24b4240c4528a182327af2e39a5b",
+      "text": "把学识宝石给至少五十级的英雄，能超过最低加级收益。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:641001": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一\n每回合开始时等级+8%（至少+3级）并减少2点法力值上限。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:641001",
+        "name": "学识宝石",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "*-学识宝石",
+  "syntax_version": "0.4"
+}

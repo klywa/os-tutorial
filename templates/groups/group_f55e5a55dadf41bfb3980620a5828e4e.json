@@ -1,23 +1,16 @@
 {
-  "name": "四人阵传承裴擒虎并留场",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "explanation": "在“对目标使用效果牌”事件中，使用传承，目标为裴擒虎，司空震在场，场上正好四人时适用。传承保留裴擒虎，他仍能通过整备给司空震提供临时等级。依据为《常小娥灵活变阵-常小娥》「裴擒虎传承后仍要承担临时等级来源时」及官方效果牌「传承」。",
-  "utterances": [
-    {
-      "text": "四人在场时使用传承，裴擒虎的等级可以分给另外三人。",
-      "id": "utterances_804aa60f82b64972aa8baf33bf801311"
-    },
-    {
-      "text": "传承保留裴擒虎，他仍能通过整备给司空震提供临时等级。",
-      "id": "utterances_37d4ec252488430e9ed03e8de4e6b8b0"
-    }
-  ],
-  "id": "group_f55e5a55dadf41bfb3980620a5828e4e",
-  "event_id": "os_bfcc2eec6def94c8",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation": "",
+  "explanation_after": "确认场上四人含司空震、裴擒虎满足等级条件，传承后留场仍可整备。\n完整候选池通过 3 项。正例可播：四人场且司空震在场；单项反例不命中：等量替换司空震；缺值检查：只知道英雄数量。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：司空震在四人阵里，可传承裴擒虎，留他继续整备。\n原始依据：海陆空组合中，传承裴擒虎可把永久等级交给其他三人，随后仍可通过整备借回临时等级让司空震承接，操作前需确认四人数量、司空震真实等级上限与裴擒虎留场需求，不因其显示等级下降就直接撤掉。当前取舍：四人阵中的司空震提供具体受益环境，裴擒虎已积累等级，传承后仍可保留整备用途。自然语言适用条件：对等级不少于10级的裴擒虎使用传承，且我方场上共有4名英雄并包含司空震。正式条件：(arg2 is \"传承\" and arg1 is \"裴擒虎\" and 玩家.战场 has \"司空震\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10。取舍后的播报重点：点出四人阵中有司空震，可传承裴擒虎并留他继续整备。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「裴擒虎传承后仍要承担临时等级来源时」 · n-1d627d2f89e56e02ff32",
+  "expression": "((((动作.卡牌.名称 == \"传承\" and 动作.目标.名称 == \"裴擒虎\") and any(我方.场上英雄列表, .名称 == \"司空震\")) and len(我方.场上英雄列表) == 4) and (动作.目标英雄 != nil and 动作.目标英雄.等级 >= 10))",
+  "id": "group_f55e5a55dadf41bfb3980620a5828e4e",
+  "mode": "万象大赛",
+  "name": "四人阵传承裴擒虎并留场",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:7083",
@@ -40,7 +33,250 @@
       "name": "司空震"
     }
   ],
-  "priority": 0,
-  "expression": "(arg2 is \"传承\" and arg1 is \"裴擒虎\" and 玩家.战场 has \"司空震\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10",
-  "editor_mode": "text"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_804aa60f82b64972aa8baf33bf801311",
+      "text": "四人阵有司空震，可传承裴擒虎并留他继续整备。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7083": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定场上1名10级以上的英雄，将其等级随机分配给其他英雄中等级最低的3名（不会分配给同一英雄）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7083",
+        "name": "传承",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:5023": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n整备：随机获得1名其他英雄等级数的临时等级，不可叠加。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5023",
+        "name": "裴擒虎",
+        "skills": [
+          {
+            "effect": "裴擒虎化身猛虎，提升自身20点物理攻击力以及5点物理和法术防御。\n\n若处于虎形态，则对当前目标敌人发起猛击造成120%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "猛击伤害提升至150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战立即化身猛虎，还会提升30%攻击速度和移动速度",
+                "level": 40
+              },
+              {
+                "effect": "虎形态的属性增益翻倍，猛击伤害提升至200%物理攻击力",
+                "level": 100
+              }
+            ],
+            "id": 50200,
+            "name": "虎啸生风"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5021"
+      },
+      "card:5021": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n整备：随机获得1名其他英雄等级数一半的临时等级，不可叠加。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5021",
+        "name": "裴擒虎",
+        "skills": [
+          {
+            "effect": "裴擒虎化身猛虎，提升自身20点物理攻击力以及5点物理和法术防御。\n\n若处于虎形态，则对当前目标敌人发起猛击造成120%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "猛击伤害提升至150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "开战立即化身猛虎，还会提升30%攻击速度和移动速度",
+                "level": 40
+              },
+              {
+                "effect": "虎形态的属性增益翻倍，猛击伤害提升至200%物理攻击力",
+                "level": 100
+              }
+            ],
+            "id": 50200,
+            "name": "虎啸生风"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5021"
+      },
+      "card:5371": {
+        "aliases": [
+          "司宫镇",
+          "司工阵",
+          "司空镇",
+          "四龙阵"
+        ],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄获得临时等级时，司空震获得一半效果（不超过自身真实等级的1倍）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5371",
+        "name": "司空震",
+        "skills": [
+          {
+            "effect": "司空震升入空中，使用雷鼓轰击全场敌人，造成50+65%法术攻击力的法术伤害。\n雷霆之王：基础攻击速度增加15%。普攻能产生可传导3次的闪电链，造成75+50%法术攻击力的法术伤害，伤害逐次递减25%。闪电链伤害的40%会转化为自身护盾，上限300点。",
+            "enhancements": [
+              {
+                "effect": "雷鼓伤害提升至50+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "轰击后化身雷霆之王，持续8秒",
+                "level": 40
+              },
+              {
+                "effect": "战斗开始时，变身雷霆之王并轰击全场造成法术伤害，持续到回合结束",
+                "level": 100
+              }
+            ],
+            "id": 53700,
+            "name": "雷霆万钧"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "50/75",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5371"
+      },
+      "card:5373": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄获得临时等级时，司空震获得全部效果（不超过自身真实等级的2倍）。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5373",
+        "name": "司空震",
+        "skills": [
+          {
+            "effect": "司空震升入空中，使用雷鼓轰击全场敌人，造成50+65%法术攻击力的法术伤害。\n雷霆之王：基础攻击速度增加15%。普攻能产生可传导3次的闪电链，造成75+50%法术攻击力的法术伤害，伤害逐次递减25%。闪电链伤害的40%会转化为自身护盾，上限300点。",
+            "enhancements": [
+              {
+                "effect": "雷鼓伤害提升至50+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "轰击后化身雷霆之王，持续8秒",
+                "level": 40
+              },
+              {
+                "effect": "战斗开始时，变身雷霆之王并轰击全场造成法术伤害，持续到回合结束",
+                "level": 100
+              }
+            ],
+            "id": 53700,
+            "name": "雷霆万钧"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5371"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  },
+  "extra_key": "传承",
+  "syntax_version": "0.4"
 }

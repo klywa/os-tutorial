@@ -15,7 +15,8 @@ def state_dir(server):
 def actor(server,cookie):
     auth=getattr(server,'auth',None)
     if auth:return auth.actor(cookie)
-    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':['admin','annotator','viewer']}
+    from website_auth import ACCOUNT_ROLES
+    return {'username':'local','role':'admin','account_role':'admin','allowed_roles':list(ACCOUNT_ROLES)}
 
 
 def session(server,cookie,public=False):

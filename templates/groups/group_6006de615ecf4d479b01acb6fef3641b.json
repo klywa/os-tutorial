@@ -1,23 +1,15 @@
 {
-  "name": "特训战术到手后卖蒙犽",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "explanation": "出售蒙犽后，场上已没有蒙犽。特训战术在蒙犽登场时获得，蒙犽离场则不再参与小菟助力的随机选择。依据《常小娥灵活变阵-常小娥》「蒙犽」「小菟助力」及同名卡面。",
-  "utterances": [
-    {
-      "text": "蒙犽靠登场拿战术牌，卖掉他能少一个分小菟助力的人。",
-      "id": "utterances_bff7ee7c3a82422c9e137f4a19236215"
-    },
-    {
-      "text": "卖掉场上的蒙犽，后续小菟助力就能绕开这个工具人。",
-      "id": "utterances_671c5b8dd5f340948ba854410761d016"
-    }
-  ],
-  "id": "group_6006de615ecf4d479b01acb6fef3641b",
-  "event_id": "os_02f23dfd4155737d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_02f23dfd4155737d",
+  "explanation_after": "三稿说明改为蒙犽登场提供一张战术牌，适用于两种形态；话术保持出售后减少助力候选。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：蒙犽拿完战术就卖，下次小菟助力可以留给场上队友。 / 卖掉最后一名蒙犽，能少一个会分走小菟助力的目标。\n原始依据：蒙犽登场提供一张战术牌，而小菟助力会随机助力场上1名英雄；用完战术后移除临时蒙犽可减少一名小菟助力的潜在对象，留给场上保留单位。当前取舍：口播只说明蒙犽退出候选，不指定下次助力目标。自然语言适用条件：卖蒙犽缩小小菟助力的候选范围。正式条件：arg1 is \"蒙犽\" and 玩家.场上英雄数 >= 1 and not (玩家.战场 has \"蒙犽\")。取舍后的播报重点：点明蒙犽拿完战术即可卖出，卖掉最后一名蒙犽后，小菟助力就能少一个分走助力的目标并留给场上队友。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「蒙犽」 · n-219fa399daec8ec0fc3a\n正式卡牌库「蒙犽」 · card:5241\n正式卡牌库「小菟助力」 · card:92499",
+  "expression": "((动作.英雄.名称 == \"蒙犽\" and len(我方.场上英雄列表) >= 1) and not any(我方.场上英雄列表, .名称 == \"蒙犽\"))",
+  "id": "group_6006de615ecf4d479b01acb6fef3641b",
+  "mode": "万象大赛",
+  "name": "卖蒙犽缩小小菟助力的候选范围",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:313007",
@@ -36,7 +28,180 @@
       "name": "小菟助力"
     }
   ],
-  "priority": 0,
-  "expression": "arg1 is \"蒙犽\" and not (玩家.战场 has \"蒙犽\")",
-  "editor_mode": "text"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_bff7ee7c3a82422c9e137f4a19236215",
+      "text": "蒙犽拿完战术就卖，下次小菟助力可以留给场上队友。"
+    },
+    {
+      "id": "utterances_671c5b8dd5f340948ba854410761d016",
+      "text": "卖掉最后一名蒙犽，能少一个会分走小菟助力的目标。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:313007": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包三",
+          "获得途径": "该卡通过词条效果等渠道获得。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "转瞬\n指定1名英雄等级+4。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:313007",
+        "name": "特训战术",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:5241": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "登场：获得1张特训战术。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:5241",
+        "name": "蒙犽",
+        "skills": [
+          {
+            "effect": "蒙犽发射12枚导弹攻击随机敌人，每枚造成30+60%物理攻击力的物理伤害。多枚导弹命中同一目标时，后续伤害衰减40%。",
+            "enhancements": [
+              {
+                "effect": "导弹伤害提升至30+90%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "多枚导弹命中的伤害衰减降低至10%",
+                "level": 40
+              },
+              {
+                "effect": "导弹数量提升至20枚；每施法1次，下次技能导弹数量增加1枚（至多30枚）",
+                "level": 100
+              }
+            ],
+            "id": 52400,
+            "name": "飞弹援袭"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 1.0,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 210,
+          "法力值（初始／最大）": "35/50",
+          "法术攻击力": 0,
+          "法术防御": 14,
+          "物理攻击力": 40,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5241"
+      },
+      "card:5243": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "登场：获得1张高阶特训战术。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:5243",
+        "name": "蒙犽",
+        "skills": [
+          {
+            "effect": "蒙犽发射12枚导弹攻击随机敌人，每枚造成30+60%物理攻击力的物理伤害。多枚导弹命中同一目标时，后续伤害衰减40%。",
+            "enhancements": [
+              {
+                "effect": "导弹伤害提升至30+90%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "多枚导弹命中的伤害衰减降低至10%",
+                "level": 40
+              },
+              {
+                "effect": "导弹数量提升至20枚；每施法1次，下次技能导弹数量增加1枚（至多30枚）",
+                "level": 100
+              }
+            ],
+            "id": 52400,
+            "name": "飞弹援袭"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:5241"
+      },
+      "card:92499": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "使用技能，小菟随机助力1名英雄，使其等级+2。本场比赛中，小菟每助力过1次，等级提升效果+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92499",
+        "name": "小菟助力",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  },
+  "extra_key": "蒙犽",
+  "syntax_version": "0.4"
 }

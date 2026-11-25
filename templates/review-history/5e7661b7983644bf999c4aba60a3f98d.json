@@ -1,0 +1,731 @@
+{
+  "id": "5e7661b7983644bf999c4aba60a3f98d",
+  "actor": "local",
+  "at": "2026-11-23T14:17:12.721717+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_03e79e91a8be40a0bbf7a84414e9d66a",
+      "value": {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_e5391e165361858d",
+        "explanation_after": "两句均把狂铁在场与后续雅典娜开团相连，保留随机触发以及阿科米亚核心受益。\n完整候选池通过 3 项。正例可播：狂铁可成为雅典娜开团的有效候选；单项反例不命中：替换为没有整备效果的日落海英雄；缺值检查：快照缺少玩家.战场。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：狂铁在场，上雅典娜有机会触发他的整备，让核心升级。 / 狂铁在场，雅典娜开团若抽中他，核心就能再升级。\n原始依据：狂铁在场让雅典娜的随机整备有机会触发狂铁整备并提升阿科米亚核心等级，移走狂铁则失去该路径，且整体仍保留随机性。当前取舍：以行动和当下收益为主，用场上状态连接原因与结果。自然语言适用条件：狂铁在场，正在上阵雅典娜。正式条件：arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"。取舍后的播报重点：点明狂铁在场的前提，突出上阵或开团雅典娜有机会借其整备使核心升级或再升级，并严格保留随机触发的不确定性。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「雅典娜」 · n-adb07e60729da73f14b0\n正式卡牌库：雅典娜（card:1831）\n正式卡牌库：雅典娜（card:1833）\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：狂铁（card:5033）",
+        "expression": "arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"",
+        "id": "group_03e79e91a8be40a0bbf7a84414e9d66a",
+        "mode": "万象大赛",
+        "name": "雅典娜开团再触发狂铁整备",
+        "priority": 0,
+        "related_entities": [
+          {
+            "id": "card:1833",
+            "name": "雅典娜"
+          },
+          {
+            "id": "card:1831",
+            "name": "雅典娜"
+          },
+          {
+            "id": "card:5031",
+            "name": "狂铁"
+          },
+          {
+            "id": "card:5033",
+            "name": "狂铁"
+          }
+        ],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_140b618b4f384731b64023c98bcf0cdb",
+            "text": "狂铁在场，上雅典娜有机会借他的整备让核心升级。"
+          },
+          {
+            "id": "utterances_816dbb9d8012477983ae2cbbd8f1e00f",
+            "text": "狂铁在场，雅典娜开团若抽中他，就能让核心再升级。"
+          }
+        ],
+        "version": "s1",
+        "ignored": true,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1833": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "开团：随机触发4名【日落海】英雄的整备效果。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:1833",
+              "name": "雅典娜",
+              "skills": [
+                {
+                  "effect": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至35%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "敌人额外受到眩晕效果1.5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围增加1格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 18300,
+                  "name": "敬畏圣盾"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1831"
+            },
+            "card:1831": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "开团：随机触发2名【日落海】英雄的整备效果。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:1831",
+              "name": "雅典娜",
+              "skills": [
+                {
+                  "effect": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至35%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "敌人额外受到眩晕效果1.5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围增加1格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 18300,
+                  "name": "敬畏圣盾"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "50/80",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1831"
+            },
+            "card:5031": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "整备：阿科米亚核心的等级+2。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:5031",
+              "name": "狂铁",
+              "skills": [
+                {
+                  "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能每命中1个敌人，护盾值提升100点",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾被击破时恢复10%最大生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50300,
+                  "name": "碎裂之击"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 300,
+                "法力值（初始／最大）": "30/50",
+                "法术攻击力": 0,
+                "法术防御": 18,
+                "物理攻击力": 40,
+                "物理防御": 18
+              },
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5031"
+            },
+            "card:5033": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:5033",
+              "name": "狂铁",
+              "skills": [
+                {
+                  "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能每命中1个敌人，护盾值提升100点",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾被击破时恢复10%最大生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50300,
+                  "name": "碎裂之击"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5031"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_e5391e165361858d",
+        "explanation_after": "两句均把狂铁在场与后续雅典娜开团相连，保留随机触发以及阿科米亚核心受益。\n完整候选池通过 3 项。正例可播：狂铁可成为雅典娜开团的有效候选；单项反例不命中：替换为没有整备效果的日落海英雄；缺值检查：快照缺少玩家.战场。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：狂铁在场，上雅典娜有机会触发他的整备，让核心升级。 / 狂铁在场，雅典娜开团若抽中他，核心就能再升级。\n原始依据：狂铁在场让雅典娜的随机整备有机会触发狂铁整备并提升阿科米亚核心等级，移走狂铁则失去该路径，且整体仍保留随机性。当前取舍：以行动和当下收益为主，用场上状态连接原因与结果。自然语言适用条件：狂铁在场，正在上阵雅典娜。正式条件：arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"。取舍后的播报重点：点明狂铁在场的前提，突出上阵或开团雅典娜有机会借其整备使核心升级或再升级，并严格保留随机触发的不确定性。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「雅典娜」 · n-adb07e60729da73f14b0\n正式卡牌库：雅典娜（card:1831）\n正式卡牌库：雅典娜（card:1833）\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：狂铁（card:5033）",
+        "expression": "arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"",
+        "id": "group_03e79e91a8be40a0bbf7a84414e9d66a",
+        "mode": "万象大赛",
+        "name": "雅典娜开团再触发狂铁整备",
+        "priority": 0,
+        "related_entities": [
+          {
+            "id": "card:1833",
+            "name": "雅典娜"
+          },
+          {
+            "id": "card:1831",
+            "name": "雅典娜"
+          },
+          {
+            "id": "card:5031",
+            "name": "狂铁"
+          },
+          {
+            "id": "card:5033",
+            "name": "狂铁"
+          }
+        ],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_140b618b4f384731b64023c98bcf0cdb",
+            "text": "狂铁在场，上雅典娜有机会借他的整备让核心升级。"
+          },
+          {
+            "id": "utterances_816dbb9d8012477983ae2cbbd8f1e00f",
+            "text": "狂铁在场，雅典娜开团若抽中他，就能让核心再升级。"
+          }
+        ],
+        "version": "s1",
+        "review_status": "ai_generated",
+        "last_modified_by": {
+          "kind": "ai"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1833": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "开团：随机触发4名【日落海】英雄的整备效果。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:1833",
+              "name": "雅典娜",
+              "skills": [
+                {
+                  "effect": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至35%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "敌人额外受到眩晕效果1.5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围增加1格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 18300,
+                  "name": "敬畏圣盾"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1831"
+            },
+            "card:1831": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "开团：随机触发2名【日落海】英雄的整备效果。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:1831",
+              "name": "雅典娜",
+              "skills": [
+                {
+                  "effect": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至35%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "敌人额外受到眩晕效果1.5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围增加1格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 18300,
+                  "name": "敬畏圣盾"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "50/80",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1831"
+            },
+            "card:5031": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "整备：阿科米亚核心的等级+2。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:5031",
+              "name": "狂铁",
+              "skills": [
+                {
+                  "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能每命中1个敌人，护盾值提升100点",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾被击破时恢复10%最大生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50300,
+                  "name": "碎裂之击"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 300,
+                "法力值（初始／最大）": "30/50",
+                "法术攻击力": 0,
+                "法术防御": 18,
+                "物理攻击力": 40,
+                "物理防御": 18
+              },
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5031"
+            },
+            "card:5033": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:5033",
+              "name": "狂铁",
+              "skills": [
+                {
+                  "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能每命中1个敌人，护盾值提升100点",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾被击破时恢复10%最大生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50300,
+                  "name": "碎裂之击"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5031"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_e5391e165361858d",
+        "explanation_after": "两句均把狂铁在场与后续雅典娜开团相连，保留随机触发以及阿科米亚核心受益。\n完整候选池通过 3 项。正例可播：狂铁可成为雅典娜开团的有效候选；单项反例不命中：替换为没有整备效果的日落海英雄；缺值检查：快照缺少玩家.战场。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：狂铁在场，上雅典娜有机会触发他的整备，让核心升级。 / 狂铁在场，雅典娜开团若抽中他，核心就能再升级。\n原始依据：狂铁在场让雅典娜的随机整备有机会触发狂铁整备并提升阿科米亚核心等级，移走狂铁则失去该路径，且整体仍保留随机性。当前取舍：以行动和当下收益为主，用场上状态连接原因与结果。自然语言适用条件：狂铁在场，正在上阵雅典娜。正式条件：arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"。取舍后的播报重点：点明狂铁在场的前提，突出上阵或开团雅典娜有机会借其整备使核心升级或再升级，并严格保留随机触发的不确定性。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「雅典娜」 · n-adb07e60729da73f14b0\n正式卡牌库：雅典娜（card:1831）\n正式卡牌库：雅典娜（card:1833）\n正式卡牌库：狂铁（card:5031）\n正式卡牌库：狂铁（card:5033）",
+        "expression": "arg1 is \"雅典娜\" and 玩家.战场 has \"狂铁\"",
+        "id": "group_03e79e91a8be40a0bbf7a84414e9d66a",
+        "mode": "万象大赛",
+        "name": "雅典娜开团再触发狂铁整备",
+        "priority": 0,
+        "related_entities": [
+          {
+            "id": "card:1833",
+            "name": "雅典娜"
+          },
+          {
+            "id": "card:1831",
+            "name": "雅典娜"
+          },
+          {
+            "id": "card:5031",
+            "name": "狂铁"
+          },
+          {
+            "id": "card:5033",
+            "name": "狂铁"
+          }
+        ],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_140b618b4f384731b64023c98bcf0cdb",
+            "text": "狂铁在场，上雅典娜有机会借他的整备让核心升级。"
+          },
+          {
+            "id": "utterances_816dbb9d8012477983ae2cbbd8f1e00f",
+            "text": "狂铁在场，雅典娜开团若抽中他，就能让核心再升级。"
+          }
+        ],
+        "version": "s1",
+        "ignored": true,
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:1833": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "开团：随机触发4名【日落海】英雄的整备效果。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:1833",
+              "name": "雅典娜",
+              "skills": [
+                {
+                  "effect": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至35%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "敌人额外受到眩晕效果1.5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围增加1格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 18300,
+                  "name": "敬畏圣盾"
+                }
+              ],
+              "stats": {},
+              "tier": 4,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:1831"
+            },
+            "card:1831": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "开团：随机触发2名【日落海】英雄的整备效果。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:1831",
+              "name": "雅典娜",
+              "skills": [
+                {
+                  "effect": "雅典娜举起圣盾，获得免控以及持续6秒15%最大生命值的护盾。2秒后雅典娜将使用圣盾反击，对附近1格敌人造成30点法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "护盾提升至35%最大生命值",
+                      "level": 10
+                    },
+                    {
+                      "effect": "敌人额外受到眩晕效果1.5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "技能范围增加1格",
+                      "level": 100
+                    }
+                  ],
+                  "id": 18300,
+                  "name": "敬畏圣盾"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "50/80",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 4,
+              "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+              "skills_source": "card:1831"
+            },
+            "card:5031": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "整备：阿科米亚核心的等级+2。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:5031",
+              "name": "狂铁",
+              "skills": [
+                {
+                  "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能每命中1个敌人，护盾值提升100点",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾被击破时恢复10%最大生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50300,
+                  "name": "碎裂之击"
+                }
+              ],
+              "stats": {
+                "攻击距离": 1,
+                "攻击速度": 0.8,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 300,
+                "法力值（初始／最大）": "30/50",
+                "法术攻击力": 0,
+                "法术防御": 18,
+                "物理攻击力": 40,
+                "物理防御": 18
+              },
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5031"
+            },
+            "card:5033": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "整备：阿科米亚核心的等级+2，触发2次。",
+              "faction": {
+                "id": "faction:riluohai",
+                "name": "日落海",
+                "official_id": 314
+              },
+              "id": "card:5033",
+              "name": "狂铁",
+              "skills": [
+                {
+                  "effect": "狂铁挥舞2次武器，每次挥击对身前的敌人造成50+100%物理攻击力的物理伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "施法获得持续4秒的100+10%最大生命值的护盾",
+                      "level": 10
+                    },
+                    {
+                      "effect": "技能每命中1个敌人，护盾值提升100点",
+                      "level": 40
+                    },
+                    {
+                      "effect": "护盾被击破时恢复10%最大生命值",
+                      "level": 100
+                    }
+                  ],
+                  "id": 50300,
+                  "name": "碎裂之击"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5031"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,23 +1,16 @@
 {
-  "name": "李信利用苏烈牺牲",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
-  "explanation": "苏烈在场，上阵李信时，说明这项操作的战斗或资源收益。苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。依据《常小娥灵活变阵-常小娥》「李信」和李信的官方卡面、技能。",
-  "utterances": [
-    {
-      "text": "苏烈有牺牲效果，苏烈阵亡时李信能获得临时等级。",
-      "id": "utterances_7a5a0fd8df874249a732bd9612e072fc"
-    },
-    {
-      "text": "把李信和苏烈放在一起，苏烈牺牲也能提高李信这场的等级。",
-      "id": "utterances_c6b12eb96feb438595e9c9d9f6ba5f11"
-    }
-  ],
-  "id": "group_9cfd89016f074a739d24701b03c2f890",
-  "event_id": "os_e5391e165361858d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation": "",
+  "explanation_after": "返修区分李信普通7、觉醒14临时等级，确认苏烈双形态均有牺牲，仍以苏烈实际阵亡为前提。\n完整候选池通过 3 项。正例可播：上阵李信前已有苏烈在场；单项反例不命中：改变必要前提：上阵李信前已有苏烈在场；缺值检查：缺少关键观测：上阵李信前已有苏烈在场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：苏烈已经在场，上李信能从苏烈阵亡时获得临时等级。\n原始依据：拥有牺牲效果的英雄阵亡时普通李信临时等级+7、觉醒+14，苏烈的普卡和觉醒卡都有牺牲，上李信可利用苏烈实际阵亡增加临时等级。当前取舍：受30字限制，围绕苏烈在场与上李信能在苏烈阵亡时获得临时等级来保留局面和当前收益，并逐字保留受保护原稿。自然语言适用条件：正在上阵李信，苏烈已经在场。正式条件：arg1 is \"李信\" and 玩家.战场 has \"苏烈\"。取舍后的播报重点：说明苏烈已经在场，上阵李信能在苏烈阵亡时获得临时等级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「苏烈」「李信」，正式卡牌库 card:1941、card:1943、card:5071、card:5073。",
+  "expression": "(动作.英雄.名称 == \"李信\" and any(我方.场上英雄列表, .名称 == \"苏烈\"))",
+  "id": "group_9cfd89016f074a739d24701b03c2f890",
+  "mode": "万象大赛",
+  "name": "李信利用苏烈牺牲",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:1941",
@@ -36,7 +29,205 @@
       "name": "李信"
     }
   ],
-  "editor_mode": "text",
-  "priority": 0,
-  "expression": "arg1 is \"李信\" and 玩家.战场 has \"苏烈\""
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_7a5a0fd8df874249a732bd9612e072fc",
+      "text": "苏烈已经在场，上李信能从苏烈阵亡时获得临时等级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1941": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1941",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/40",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:1943": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+4。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1943",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:5073": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当你拥有牺牲效果的英雄阵亡时，李信临时等级+14。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5073",
+        "name": "李信",
+        "skills": [
+          {
+            "effect": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "剑气伤害提升至100+220%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "剑气数量增加至3道",
+                "level": 40
+              },
+              {
+                "effect": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+                "level": 100
+              }
+            ],
+            "id": 50700,
+            "name": "力量觉醒"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5071"
+      },
+      "card:5071": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当你拥有牺牲效果的英雄阵亡时，李信临时等级+7。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:5071",
+        "name": "李信",
+        "skills": [
+          {
+            "effect": "李信免控并短暂蓄力后当前方向挥出1道剑气，对命中的敌人造成50+180%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "剑气伤害提升至100+220%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "剑气数量增加至3道",
+                "level": 40
+              },
+              {
+                "effect": "李信阵亡后，以狂暴形态（拥有独特技能）完美复生",
+                "level": 100
+              }
+            ],
+            "id": 50700,
+            "name": "力量觉醒"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "40/80",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:5071"
+      }
+    }
+  },
+  "extra_key": "李信",
+  "syntax_version": "0.4"
 }

@@ -1,25 +1,76 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b59f8bd6d43110d4",
+  "explanation": "",
+  "explanation_after": "正好四名英雄使四名不同助力对象全覆盖，五人则会漏一名，保留原话术。\n完整候选池通过 3 项。正例可播：四人正好全拿到助力；单项反例不命中：人在场上多于触发名额；缺值检查：缺少 玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：四名英雄都在场，现在用小菟送福能让全队升级。\n原始依据：小菟送福会对四名不同英雄各触发一次助力，当前场上正好四名英雄时可全覆盖升级，若增至五人则有一名不会收到。当前取舍：围绕四人阵容全覆盖的局面与全队升级收益组织播报，同时原句标记为逐字保留，需原样输出。自然语言适用条件：解释为何使用棋手技能时，常小娥使用小菟送福且场上正好四人。正式条件：arg1 is \"小菟送福\" and 玩家.场上英雄数 == 4。取舍后的播报重点：说明四名英雄都在场的当前局面，以及此时使用小菟送福能够让全队升级的即时收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「助力次数与等级门槛」 · n-d74e53e18cea3a7192ed",
+  "expression": "(动作.卡牌.名称 == \"小菟送福\" and len(我方.场上英雄列表) == 4)",
+  "id": "group_c86bd375a4ca40eb816a0a06852a8bb4",
+  "mode": "万象大赛",
   "name": "用送福给四名英雄升等级",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": "player:24"
   },
-  "explanation": "在“使用棋手技能”事件中，使用小菟送福，场上正好四人时适用。现在使用小菟送福，场上四名英雄都能提升等级。依据为《常小娥灵活变阵-常小娥》「助力次数与等级门槛」及官方棋手技能「小菟送福」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "场上正好四名英雄，小菟送福能为每人触发一次小菟助力。",
-      "id": "utterances_081d9d11cf824c3d8b42df3851d82416"
-    },
-    {
-      "text": "现在使用小菟送福，场上四名英雄都能提升等级。",
-      "id": "utterances_6db91f467e6a4d28b323e0e30d50d711"
+      "id": "utterances_081d9d11cf824c3d8b42df3851d82416",
+      "text": "四名英雄都在场，现在用小菟送福能让全队升级。"
     }
   ],
-  "event_id": "os_b59f8bd6d43110d4",
-  "id": "group_c86bd375a4ca40eb816a0a06852a8bb4",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"小菟送福\" and 玩家.场上英雄数 == 4",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:92410": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "对场上的随机4名英雄各触发1次小菟助力，使其等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92410",
+        "name": "小菟送福",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "小菟送福",
+  "syntax_version": "0.4"
 }

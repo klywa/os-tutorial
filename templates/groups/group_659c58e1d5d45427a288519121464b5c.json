@@ -1,0 +1,65 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "explanation_after": "第一句数量槽指实际无阵营英雄数；第二句明确人数越多每人获得的等级越多，公式仍为人数两倍。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：已有{玩家.战场.计数(阵营, \"无阵营\")}名无阵营英雄，用逍遥自在可让他们一起升级。 / 无阵营英雄越多，逍遥自在给这些场上英雄的等级越多。\n原始依据为逍遥自在可让所有无阵营英雄获得两倍于场上无阵营英雄数量的等级，多人时能扩大覆盖面并提升个人收益。当前取舍是用数字槽位标明实际覆盖人数，同时保留每人成长随人数提升的策略信息。自然语言适用条件为场上多名无阵营英雄时用逍遥自在。正式条件为 arg1 is \"逍遥自在\" and 玩家.战场.计数(阵营, \"无阵营\") >= 2。取舍后的播报重点为先点出当前无阵营英雄数量及集体升级收益，再说明场上无阵营英雄越多时每人获得的等级越多。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第222行「逍遥自在・使用技巧」\n正式卡牌库 逍遥自在（card:7535）\n正式卡牌库「逍遥自在」 · card:7535",
+  "expression": "(动作.卡牌.名称 == \"逍遥自在\" and count(我方.场上英雄列表, .阵营 == \"无阵营\") >= 2)",
+  "id": "group_659c58e1d5d45427a288519121464b5c",
+  "mode": "万象大赛",
+  "name": "场上多名无阵营英雄时用逍遥自在",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_dc54189774ad4048bc69b4dc34d02132",
+      "text": "已有{{count(我方.场上英雄列表, .阵营 == \"无阵营\")}}名无阵营英雄，用逍遥自在可让他们一起升级。"
+    },
+    {
+      "id": "utterances_8a2bc4bd9fe94887a282d82db2fba12e",
+      "text": "场上无阵营英雄越多，逍遥自在给每人的等级越多。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7535": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包四",
+          "获得途径": "该卡通过商店购买等渠道获得。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "所有无阵营英雄获得2×场上无阵营英雄数量的等级。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:7535",
+        "name": "逍遥自在",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "逍遥自在",
+  "syntax_version": "0.4"
+}

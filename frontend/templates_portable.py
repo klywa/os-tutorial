@@ -93,6 +93,11 @@ def _insert_retained(rows, previous, keep):
     return rows
 
 
+def _retain_metadata(record, previous):
+    for key in sorted((schema.GROUP_METADATA - schema.WORKFLOW_METADATA) & previous.keys() - record.keys()):
+        record[key] = deepcopy(previous[key])
+
+
 def _v1(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
     doc = deepcopy(document)
     prior_groups = {group['id']: group for group in public['groups']}
@@ -105,7 +110,9 @@ def _v1(document, public, catalog, notes, *, retired_entities=None, retired_sugg
                     if not isinstance(item, dict): raise ValueError('导入条目格式无效')
                     item.setdefault('id', _id(field))
             if folder == 'groups':
-                previous = prior_groups.get(record['id'], {}).get('utterances', [])
+                previous_group = prior_groups.get(record['id'], {})
+                _retain_metadata(record, previous_group)
+                previous = previous_group.get('utterances', [])
                 fixed_ids = {row['id'] for row in previous if row.get('fixed')}
                 editable = [row for row in record['utterances'] if row['id'] not in fixed_ids]
                 record['utterances'] = _insert_retained(editable, previous, lambda row: row.get('fixed'))
@@ -113,7 +120,7 @@ def _v1(document, public, catalog, notes, *, retired_entities=None, retired_sugg
                                    retired_entities=retired_entities, retired_suggestions=retired_suggestions)
 
 
-def decode(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None):
+def decode(document, public, catalog, notes, *, retired_entities=None, retired_suggestions=None, rule_fields=None):
     # Whole-library exports from earlier releases carry unused retired events.
     if isinstance(document,dict) and isinstance(document.get('events'),list):
         document = {**document,'events':[event for event in document['events']
@@ -164,7 +171,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
     for event in events: names[event['name']].append(event)
     groups = []; archives = {}
     for external in _list(document['groups']):
-        schema.fields(external, {'id', 'name', 'explanation', 'event_id', 'event_name', 'scope', 'conditions', 'utterances'},
+        schema.fields(external, {'id', 'name', 'event_id', 'event_name', 'scope', 'conditions', 'utterances'} | schema.GROUP_METADATA,
                       {'name', 'scope', 'conditions', 'utterances'})
         group = deepcopy(external); group.setdefault('id', _id('group'))
         schema.identity(group['id'])
@@ -186,6 +193,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         group['event_id'] = event_id
         parameters = {p['key']: p for p in event['parameters']}
         previous = old_groups.get(group['id'], {})
+        _retain_metadata(group, previous)
         for condition in _list(group['conditions']):
             schema.fields(condition, {'parameter_key', 'operator', 'value'}, {'parameter_key', 'operator', 'value'})
         prior_conditions = _condition_anchors(group['conditions'], previous.get('conditions', []))
@@ -199,20 +207,33 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
                 condition['value'] = _entity(value, parameter, catalog, prior, (retired_entities or {}).get(group['id']))
         group['conditions'] = _stable_rows(group['conditions'], previous.get('conditions', []), 'conditions')
         utterances = []
-        for value in _list(group['utterances']):
-            schema.text(value, '话术'); utterances.append({'text': value})
-        prior_utterances = previous.get('utterances', [])
-        def retained(row):
-            return row.get('ignored') or row.get('fixed')
-        for row in prior_utterances:
-            if row.get('fixed') and not row.get('ignored') and {'text': row['text']} in utterances:
-                utterances.remove({'text': row['text']})
-        editable = _stable_rows(utterances, [row for row in prior_utterances if not retained(row)], 'utterances')
-        group['utterances'] = _insert_retained(editable, prior_utterances, retained)
+        syntax_fields = (rule_fields or {}).get(group['id'], {})
+        if syntax_fields.get('syntax_version')=='0.4':
+            for value in _list(group['utterances']):
+                schema.fields(value, {'id','text','fixed','ignored'}, {'id','text'})
+                schema.identity(value['id'])
+                schema.text(value['text'], '话术')
+                utterances.append(deepcopy(value))
+            present = {row['id'] for row in utterances}
+            group['utterances'] = _insert_retained(utterances, previous.get('utterances', []),
+                                                   lambda row: row['id'] not in present and (row.get('fixed') or row.get('ignored')))
+        else:
+            for value in _list(group['utterances']):
+                schema.text(value, '话术'); utterances.append({'text': value})
+            prior_utterances = previous.get('utterances', [])
+            def retained(row):
+                return row.get('ignored') or row.get('fixed')
+            for row in prior_utterances:
+                if row.get('fixed') and not row.get('ignored') and {'text': row['text']} in utterances:
+                    utterances.remove({'text': row['text']})
+            editable = _stable_rows(utterances, [row for row in prior_utterances if not retained(row)], 'utterances')
+            group['utterances'] = _insert_retained(editable, prior_utterances, retained)
         if 'ignored' in previous:
             group['ignored'] = previous['ignored']
         archives[group['id']] = deepcopy(previous.get('related_entities', []))
         group['related_entities'] = []
+        if rule_fields:
+            group.update(rule_fields.get(group['id'], {}))
         groups.append(group)
     # Validation needs referenced existing events, but return only imported rows.
     referenced = {group['event_id'] for group in groups}
@@ -226,6 +247,18 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
     return validation
 
 
+def encode_group(original,*,authoring=True):
+    group = {key: deepcopy(original[key]) for key in ('id', 'name', 'event_id', 'scope')}
+    metadata=schema.GROUP_METADATA if authoring else schema.GROUP_METADATA-schema.WORKFLOW_METADATA
+    group.update({key: deepcopy(original[key]) for key in sorted(metadata & original.keys())})
+    group['conditions'] = [{key: deepcopy(value) for key, value in condition.items() if key != 'id'}
+                           for condition in original['conditions']]
+    for condition in group['conditions']:
+        if isinstance(condition['value'], dict): condition['value'] = condition['value']['name']
+    group['utterances'] = [utterance['text'] for utterance in original['utterances']]
+    return group
+
+
 def encode(public):
     events = []
     for original in public['events']:
@@ -237,15 +270,5 @@ def encode(public):
                 parameter['suggestions'] = [value['name'] for value in parameter['suggestions']]
             event['parameters'].append(parameter)
         events.append(event)
-    groups = []
-    for original in public['groups']:
-        group = {key: deepcopy(original[key]) for key in ('id', 'name', 'event_id', 'scope')}
-        if 'explanation' in original:
-            group['explanation'] = original['explanation']
-        group['conditions'] = [{key: deepcopy(value) for key, value in condition.items() if key != 'id'}
-                               for condition in original['conditions']]
-        for condition in group['conditions']:
-            if isinstance(condition['value'], dict): condition['value'] = condition['value']['name']
-        group['utterances'] = [utterance['text'] for utterance in original['utterances']]
-        groups.append(group)
+    groups = [encode_group(original) for original in public['groups']]
     return {'kind': 'speech-template-library', 'schema_version': 2, 'events': events, 'groups': groups}

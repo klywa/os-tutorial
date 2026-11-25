@@ -105,7 +105,7 @@ def template_read(root, season, path):
 
 
 def protected_write(path):
-    return path.startswith(('/api/dashboard/usage/', '/api/templates/', '/api/cards/')) or path in ('/api/templates', '/api/cards')
+    return path.startswith(('/api/dashboard/usage/', '/api/cards/')) or path == '/api/cards'
 
 
 def scoped_note_id(path):

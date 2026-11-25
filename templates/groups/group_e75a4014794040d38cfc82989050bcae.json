@@ -1,29 +1,62 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation": "",
+  "explanation_after": "明确目标离场后按永久等级结算，未声称临时等级或多人同时继承。\n完整候选池通过 3 项。正例可播：只余一名确定的接收者；单项反例不命中：多一名接收者；缺值检查：人数确定但战场身份缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：遗志移除目标后只剩一人，永久等级全留给他。\n原始依据：3阶效果牌遗志移除指定英雄，将其等级转给1名随机英雄且不转移临时等级，若要稳定交给主力需先让场上只剩供级英雄与该主力。当前取舍：目标已从场上移除且确认仅剩唯一候选，遗志转移不含临时等级，多剩一人便无法定向。自然语言适用条件：所用效果牌为遗志、目标已不在玩家战场且玩家场上仅剩1名英雄。正式条件：arg2 is \"遗志\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has arg1)。取舍后的播报重点：遗志移除目标后场上只剩一人，永久等级全部留给他。",
+  "explanation_source": "knowledge/other/常用技巧.json「遗志」 · common-tips-legacy",
+  "expression": "((动作.卡牌.名称 == \"遗志\" and len(我方.场上英雄列表) == 1) and not ((动作.目标.卡牌类型 == \"英雄\" and any(我方.场上英雄列表, .名称 == 动作.目标.名称)) or (动作.目标.卡牌类型 == \"衍生物\" and any(我方.场上衍生物列表, .名称 == 动作.目标.名称))))",
+  "id": "group_e75a4014794040d38cfc82989050bcae",
+  "mode": "万象大赛",
   "name": "用遗志给唯一剩下的英雄留永久等级",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
+  "tags": [
+    "技巧"
+  ],
   "utterances": [
     {
-      "text": "遗志会移除供级者，把永久等级给剩下那名英雄。",
-      "id": "utterances_a78ef26a4ead4024b3464d47a14b1756"
-    },
-    {
-      "text": "场上只留一名接收者，遗志能把永久等级集中给他。",
-      "id": "utterances_9bece117d58c4658977f1e9b95e7935f"
-    },
-    {
-      "text": "这次用遗志换人，留下来的英雄能接住原来的永久等级。",
-      "id": "utterances_ed71c68d5a0748c081657d8566a0981d"
+      "id": "utterances_a78ef26a4ead4024b3464d47a14b1756",
+      "text": "用遗志移除目标，场上只剩一人，永久等级全留给他。"
     }
   ],
-  "explanation": "《常用技巧》遗志和先数传承的接收者。动作结束后供级者已移除，场上只剩一名实际接收候选。遗志将永久等级给唯一剩下的英雄。",
-  "event_id": "os_bfcc2eec6def94c8",
-  "id": "group_e75a4014794040d38cfc82989050bcae",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg2 is \"遗志\" and 玩家.场上英雄数 == 1 and not (玩家.战场 has arg1)",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7041": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定场上1名英雄将其移除，并转移其等级（临时等级除外）给1名随机英雄。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7041",
+        "name": "遗志",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "遗志",
+  "syntax_version": "0.4"
 }

@@ -170,7 +170,7 @@ def search(root,query):
 def _card_summaries(root,fingerprint):
     from reference_store import json_cards
     keys=('id','name','category','aliases','effect','faction','tier','awakened')
-    return [{k:c.get(k) for k in keys} for c in json_cards(root)]
+    return [{**{k:c.get(k) for k in keys}, 'keywords':c.get('keywords', [])} for c in json_cards(root)]
 
 
 def cards(root):

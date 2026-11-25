@@ -1,25 +1,61 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation": "",
+  "explanation_after": "保留持有该候选及单挂至开战这一前提，六级永久成长归开战时唯一英雄，未误当成随机选任意品阶。\n完整候选池通过 3 项。正例可播：单挂时有随机进化可选；单项反例不命中：改变必要前提：单挂时有随机进化可选；缺值检查：缺少关键观测：单挂时有随机进化可选。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：保持单挂到开战，随机进化的六级就会集中给一人。\n原始依据：战斗开始时品阶最高的1名英雄等级永久+6，随机进化在开战按品阶选一名，维持单挂布局时现有英雄有确定的六级永久收益。当前取舍：候选围绕保持单挂布局到开战与六级集中给一人的收益组织，本句为受保护句需逐字保留。自然语言适用条件：本次选择随机进化，候选池含该天赋，己方目前只有一名英雄在场。正式条件：(arg2 is \"随机进化\" and 玩家.场上英雄数 == 1) and arg1 has \"随机进化\"。取舍后的播报重点：点明维持单挂至开战的局面，以及随机进化六级收益集中给该英雄的结果。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「随机进化」，正式卡牌库 card:634031。",
+  "expression": "((动作.选中.名称 == \"随机进化\" and len(我方.场上英雄列表) == 1) and any(动作.候选列表, .名称 == \"随机进化\"))",
+  "id": "group_afe30efad91b432cbcec9f540e43b415",
+  "mode": "万象大赛",
   "name": "单挂选随机进化",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "选中随机进化时场上只有一名英雄。若开战时仍为单挂，他就是品阶最高的唯一候选，可永久提升6级。依据为《常小娥灵活变阵-常小娥》「随机进化」及官方天赋「随机进化」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "场上只有一人，开战时这六级能集中给他。",
-      "id": "utterances_77481cc62fb5488d904ab0f23e45d72a"
-    },
-    {
-      "text": "保持单挂到开战，随机进化的永久等级就能集中给当前英雄。",
-      "id": "utterances_bd226ebdabfc44888ffcb36519a0e9e0"
+      "id": "utterances_77481cc62fb5488d904ab0f23e45d72a",
+      "text": "保持单挂到开战，随机进化的六级就会集中给一人。"
     }
   ],
-  "id": "group_afe30efad91b432cbcec9f540e43b415",
-  "event_id": "os_2b69e500a5c8036a",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "(arg2 is \"随机进化\" and 玩家.场上英雄数 == 1) and arg1 has \"随机进化\"",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:634031": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始天赋",
+          "拍卖轮次（官网原文）": "第四轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "战斗开始时，你品阶最高的1名英雄等级永久+6。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:634031",
+        "name": "随机进化",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "随机进化",
+  "syntax_version": "0.4"
 }

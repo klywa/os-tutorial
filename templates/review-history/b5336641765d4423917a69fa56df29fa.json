@@ -1,0 +1,470 @@
+{
+  "id": "b5336641765d4423917a69fa56df29fa",
+  "actor": "local",
+  "at": "2026-11-25T01:24:40.433138+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
+      "value": {
+        "name": "前期买孙膑补单挂觉醒",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation_after": "区分补觉醒材料和已经觉醒，核对普通与觉醒的每三次施法成长。 购买英雄事件完整候选池实测：单挂普通孙膑时，同名牌可服务觉醒（命中）；已经觉醒，无需买同名牌补觉醒（未命中）；快照缺少玩家.主C.已觉醒（未命中）。播报 27 个非空白字符。",
+        "explanation_before": "来源：取材自《常小娥灵活4人组-常小娥.json》中“孙膑”笔记条目（提及前期可单挂并用重复牌补觉醒，以及普通每施法3次加1级、觉醒后加2级的成长）及正式卡牌库孙膑未觉醒与觉醒卡面（card:1181、card:1183）。用途：用于对局前期场上单挂未觉醒主力孙膑时，向玩家解释购买孙膑同名牌的原因。自然语言条件：当前处于第3回合及以前，场上仅有1名英雄且为作为主力的孙膑，孙膑处于未觉醒状态，此时购买孙膑同名牌。正式表达式：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒。话术取舍：依据审核意见返修，删去开头重复的盘面状态与购买命令，直接说明“同名孙膑可用于觉醒”，体现同名牌用于推进觉醒的当前用途；随后依据觉醒卡面（card:1183）及场上仅孙膑在场的条件，用规范用语点明“觉醒后孙膑每施法3次永久提升2级”，全句共27个非空白字符。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998；正式卡牌库：孙膑（card:1181）；正式卡牌库：孙膑（card:1183）",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙膑觉醒后，自动成长效率翻倍。",
+            "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb"
+          }
+        ],
+        "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "(((((动作.选中.名称 == \"孙膑\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"孙膑\")) and (我方.主C != nil and 我方.主C.名称 == \"孙膑\")) and (我方.主C != nil and not 我方.主C.已觉醒))",
+        "batch": [
+          "自回归"
+        ],
+        "extra_key": "孙膑",
+        "syntax_version": "0.4",
+        "review_status": null,
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-11-12T02:09:23.057839+00:00"
+            },
+            "card:1181": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1181",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 4,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "10/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 1,
+              "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+              "skills_source": "card:1181"
+            },
+            "card:1183": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1183",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1181"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "name": "前期买孙膑补单挂觉醒",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation_after": "区分补觉醒材料和已经觉醒，核对普通与觉醒的每三次施法成长。 购买英雄事件完整候选池实测：单挂普通孙膑时，同名牌可服务觉醒（命中）；已经觉醒，无需买同名牌补觉醒（未命中）；快照缺少玩家.主C.已觉醒（未命中）。播报 27 个非空白字符。",
+        "explanation_before": "来源：取材自《常小娥灵活4人组-常小娥.json》中“孙膑”笔记条目（提及前期可单挂并用重复牌补觉醒，以及普通每施法3次加1级、觉醒后加2级的成长）及正式卡牌库孙膑未觉醒与觉醒卡面（card:1181、card:1183）。用途：用于对局前期场上单挂未觉醒主力孙膑时，向玩家解释购买孙膑同名牌的原因。自然语言条件：当前处于第3回合及以前，场上仅有1名英雄且为作为主力的孙膑，孙膑处于未觉醒状态，此时购买孙膑同名牌。正式表达式：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒。话术取舍：依据审核意见返修，删去开头重复的盘面状态与购买命令，直接说明“同名孙膑可用于觉醒”，体现同名牌用于推进觉醒的当前用途；随后依据觉醒卡面（card:1183）及场上仅孙膑在场的条件，用规范用语点明“觉醒后孙膑每施法3次永久提升2级”，全句共27个非空白字符。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998；正式卡牌库：孙膑（card:1181）；正式卡牌库：孙膑（card:1183）",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙膑觉醒后，自动成长效率翻倍。",
+            "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb",
+            "ignored": true
+          }
+        ],
+        "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "(((((动作.选中.名称 == \"孙膑\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"孙膑\")) and (我方.主C != nil and 我方.主C.名称 == \"孙膑\")) and (我方.主C != nil and not 我方.主C.已觉醒))",
+        "batch": [
+          "自回归"
+        ],
+        "extra_key": "孙膑",
+        "syntax_version": "0.4",
+        "review_status": null,
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-11-12T02:09:23.057839+00:00"
+            },
+            "card:1181": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1181",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 4,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "10/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 1,
+              "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+              "skills_source": "card:1181"
+            },
+            "card:1183": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1183",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1181"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "name": "前期买孙膑补单挂觉醒",
+        "scope": {
+          "player_id": "player:24",
+          "lineup_note_id": "changxiaoe-general-play"
+        },
+        "explanation_after": "区分补觉醒材料和已经觉醒，核对普通与觉醒的每三次施法成长。 购买英雄事件完整候选池实测：单挂普通孙膑时，同名牌可服务觉醒（命中）；已经觉醒，无需买同名牌补觉醒（未命中）；快照缺少玩家.主C.已觉醒（未命中）。播报 27 个非空白字符。",
+        "explanation_before": "来源：取材自《常小娥灵活4人组-常小娥.json》中“孙膑”笔记条目（提及前期可单挂并用重复牌补觉醒，以及普通每施法3次加1级、觉醒后加2级的成长）及正式卡牌库孙膑未觉醒与觉醒卡面（card:1181、card:1183）。用途：用于对局前期场上单挂未觉醒主力孙膑时，向玩家解释购买孙膑同名牌的原因。自然语言条件：当前处于第3回合及以前，场上仅有1名英雄且为作为主力的孙膑，孙膑处于未觉醒状态，此时购买孙膑同名牌。正式表达式：arg1 is \"孙膑\" and 对局.当前回合数 <= 3 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"孙膑\" and 玩家.主C is \"孙膑\" and not 玩家.主C.已觉醒。话术取舍：依据审核意见返修，删去开头重复的盘面状态与购买命令，直接说明“同名孙膑可用于觉醒”，体现同名牌用于推进觉醒的当前用途；随后依据觉醒卡面（card:1183）及场上仅孙膑在场的条件，用规范用语点明“觉醒后孙膑每施法3次永久提升2级”，全句共27个非空白字符。",
+        "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「孙膑」 · n-03671a0352d5d1147998；正式卡牌库：孙膑（card:1181）；正式卡牌库：孙膑（card:1183）",
+        "mode": "万象大赛",
+        "tags": [],
+        "version": "s1",
+        "utterances": [
+          {
+            "text": "孙膑觉醒后，自动成长效率翻倍。",
+            "id": "utterances_10e8f16f990a4b9b9d06a77de4e638eb"
+          }
+        ],
+        "id": "group_25c0e9a62c0f59e4a2333d4afc1f4f48",
+        "event_id": "os_2406b1c2f3572ad9",
+        "conditions": [],
+        "related_entities": [],
+        "priority": 0,
+        "editor_mode": "text",
+        "expression": "(((((动作.选中.名称 == \"孙膑\" and 对局.当前回合数 <= 3) and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"孙膑\")) and (我方.主C != nil and 我方.主C.名称 == \"孙膑\")) and (我方.主C != nil and not 我方.主C.已觉醒))",
+        "batch": [
+          "自回归"
+        ],
+        "extra_key": "孙膑",
+        "syntax_version": "0.4",
+        "review_status": null,
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "player:24": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "players",
+              "effect": "未提供",
+              "faction": {
+                "id": "",
+                "name": "未提供",
+                "official_id": null
+              },
+              "id": "player:24",
+              "name": "常小娥",
+              "skills": [],
+              "stats": {},
+              "tier": null,
+              "retrieved_at": "2026-11-12T02:09:23.057839+00:00"
+            },
+            "card:1181": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+1。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1181",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {
+                "攻击距离": 4,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 240,
+                "法力值（初始／最大）": "10/20",
+                "法术攻击力": 40,
+                "法术防御": 14,
+                "物理攻击力": 24,
+                "物理防御": 14
+              },
+              "tier": 1,
+              "retrieved_at": "2026-11-01T07:39:26.808729+00:00",
+              "skills_source": "card:1181"
+            },
+            "card:1183": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "你的英雄每释放3次技能，该英雄等级永久+2。",
+              "faction": {
+                "id": "faction:zhulu",
+                "name": "逐鹿",
+                "official_id": 320
+              },
+              "id": "card:1183",
+              "name": "孙膑",
+              "skills": [
+                {
+                  "effect": "孙膑向目标敌人投掷1枚定时炸弹，2秒后爆炸对其及附近1格内的敌人造成100+100%法术攻击力的法术伤害。",
+                  "enhancements": [
+                    {
+                      "effect": "炸弹伤害提升至125+175%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "每第3次施放技能，会对生命值最高的3个敌人投掷炸弹",
+                      "level": 40
+                    },
+                    {
+                      "effect": "炸弹附着在敌人身上时沉默该目标",
+                      "level": 100
+                    }
+                  ],
+                  "id": 11800,
+                  "name": "时空爆弹"
+                }
+              ],
+              "stats": {},
+              "tier": 1,
+              "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+              "skills_source": "card:1181"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

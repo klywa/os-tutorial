@@ -10,24 +10,13 @@ from workspace import Conflict
 
 
 def unpack(document, note_id):
-    if not isinstance(document, dict):
-        raise ValueError('请选择知识笔记 JSON 对象')
-    if 'notes' in document:
-        notes = document['notes']
-        if not isinstance(notes, list) or len(notes) != 1 or not isinstance(notes[0], dict) or 'body' not in notes[0]:
-            raise ValueError('上传包必须只含当前笔记')
-        document = notes[0]
-    if 'body' not in document:
-        return document, []
-    metadata = document.get('metadata', {})
-    if not isinstance(metadata, dict):
-        raise ValueError('笔记附件必须为对象')
+    body, metadata = json_store.unpack_note(document)
     if 'id' in metadata and metadata['id'] != note_id:
         raise ValueError('上传文件属于另一篇笔记')
     claims = metadata.get('claim_annotations', [])
     if not isinstance(claims, list) or any(not isinstance(row, dict) for row in claims):
         raise ValueError('结论证据格式无效')
-    return document['body'], claims
+    return body, claims
 
 
 def changes(store, record, document, batch):

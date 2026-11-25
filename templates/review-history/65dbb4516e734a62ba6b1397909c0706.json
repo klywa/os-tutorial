@@ -1,0 +1,435 @@
+{
+  "id": "65dbb4516e734a62ba6b1397909c0706",
+  "actor": "local",
+  "at": "2026-11-25T01:25:01.587257+00:00",
+  "changes": [
+    {
+      "kind": "group",
+      "action": "put",
+      "id": "group_514c83a59caf49b9a7d7e5869a4ae3ff",
+      "value": {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_2406b1c2f3572ad9",
+        "explanation_after": "二稿点明普通、觉醒的两种伤害倍率，共同四秒控制，并保留并列最高不能保证选中的边界。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：对手主力有{对局.当前对手.主C.等级}级，买海月可用牺牲争取控住他。 / 对手最高等级的是百级主力，买海月可争取牺牲控制。\n原始依据：普通与觉醒海月牺牲均可将敌方等级最高的英雄困入水月幻境控制4秒并造成真实伤害（普通为海月100%生命值，觉醒为150%）；对手主力至少百级且为状态确认的最高等级英雄时，买海月提供阵亡后控制四秒的办法，但并列最高等级时不能保证实际选中该主力。当前取舍：先购买，仍须上阵并触发牺牲，因此说争取控制，避免指认并列者的结算结果。自然语言适用条件：买海月针对当前对手的百级主力。正式条件：arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称。取舍后的播报重点：点出对手百级或对应等级的最高等级主力，说明买海月可争取靠触发牺牲控住对方，不把触发与并列选中写成必然。",
+        "explanation_source": "knowledge/other/基础知识.json\nknowledge/other/冷门知识.json\nknowledge/other/基础知识.json「等级节点与临时成长」 · game-basics-231\nknowledge/other/冷门知识.json · n-8cd5e478f15ef91e9aa5\n正式卡牌库「海月」 · card:5211\n正式卡牌库「海月（觉醒）」 · card:5213",
+        "expression": "((动作.选中.名称 == \"海月\" and (对手 != nil and 对手.主C != nil and 对手.主C.等级 >= 100)) and (对手 != nil and 对手.主C != nil and 对手.最高等级英雄 != nil and 对手.主C.名称 == 对手.最高等级英雄.名称))",
+        "id": "group_514c83a59caf49b9a7d7e5869a4ae3ff",
+        "mode": "万象大赛",
+        "name": "买海月针对当前对手的百级主力",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_fb821092f9d344c8bb5539b58fc025ff",
+            "text": "海月的牺牲效果可以控制对方高等级主C并造成伤害。",
+            "fixed": true
+          },
+          {
+            "id": "utterances_ede73f0cee43458fbb096cd8a7ed9bf7",
+            "text": "对手最高等级的是百级主力，买海月可争取触发牺牲控制。",
+            "fixed": false,
+            "ignored": true
+          }
+        ],
+        "version": "s1",
+        "batch": [
+          "自回归"
+        ],
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:5211": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值的真实伤害。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:5211",
+              "name": "海月",
+              "skills": [
+                {
+                  "effect": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化25%护盾值为最大生命值。\n主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+                  "enhancements": [
+                    {
+                      "effect": "琉璃法球伤害提升至100+250%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "施法获得可叠加的50+10%最大生命值的护盾，持续5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和5%最大生命值的法术伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 52100,
+                  "name": "流光"
+                }
+              ],
+              "stats": {
+                "攻击距离": 2,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/50",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 5,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5211"
+            },
+            "card:5213": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值150%的真实伤害。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:5213",
+              "name": "海月",
+              "skills": [
+                {
+                  "effect": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化25%护盾值为最大生命值。\n主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+                  "enhancements": [
+                    {
+                      "effect": "琉璃法球伤害提升至100+250%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "施法获得可叠加的50+10%最大生命值的护盾，持续5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和5%最大生命值的法术伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 52100,
+                  "name": "流光"
+                }
+              ],
+              "stats": {},
+              "tier": 5,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5211"
+            }
+          }
+        },
+        "extra_key": "海月",
+        "syntax_version": "0.4"
+      }
+    }
+  ],
+  "manual": {
+    "source": "manual"
+  },
+  "before": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_2406b1c2f3572ad9",
+        "explanation_after": "二稿点明普通、觉醒的两种伤害倍率，共同四秒控制，并保留并列最高不能保证选中的边界。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：对手主力有{对局.当前对手.主C.等级}级，买海月可用牺牲争取控住他。 / 对手最高等级的是百级主力，买海月可争取牺牲控制。\n原始依据：普通与觉醒海月牺牲均可将敌方等级最高的英雄困入水月幻境控制4秒并造成真实伤害（普通为海月100%生命值，觉醒为150%）；对手主力至少百级且为状态确认的最高等级英雄时，买海月提供阵亡后控制四秒的办法，但并列最高等级时不能保证实际选中该主力。当前取舍：先购买，仍须上阵并触发牺牲，因此说争取控制，避免指认并列者的结算结果。自然语言适用条件：买海月针对当前对手的百级主力。正式条件：arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称。取舍后的播报重点：点出对手百级或对应等级的最高等级主力，说明买海月可争取靠触发牺牲控住对方，不把触发与并列选中写成必然。",
+        "explanation_source": "knowledge/other/基础知识.json\nknowledge/other/冷门知识.json\nknowledge/other/基础知识.json「等级节点与临时成长」 · game-basics-231\nknowledge/other/冷门知识.json · n-8cd5e478f15ef91e9aa5\n正式卡牌库「海月」 · card:5211\n正式卡牌库「海月（觉醒）」 · card:5213",
+        "expression": "((动作.选中.名称 == \"海月\" and (对手 != nil and 对手.主C != nil and 对手.主C.等级 >= 100)) and (对手 != nil and 对手.主C != nil and 对手.最高等级英雄 != nil and 对手.主C.名称 == 对手.最高等级英雄.名称))",
+        "id": "group_514c83a59caf49b9a7d7e5869a4ae3ff",
+        "mode": "万象大赛",
+        "name": "买海月针对当前对手的百级主力",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_fb821092f9d344c8bb5539b58fc025ff",
+            "text": "海月的牺牲效果可以控制对方高等级主C并造成伤害。"
+          },
+          {
+            "id": "utterances_ede73f0cee43458fbb096cd8a7ed9bf7",
+            "text": "对手最高等级的是百级主力，买海月可争取触发牺牲控制。",
+            "fixed": false,
+            "ignored": true
+          }
+        ],
+        "version": "s1",
+        "batch": [
+          "自回归"
+        ],
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:5211": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值的真实伤害。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:5211",
+              "name": "海月",
+              "skills": [
+                {
+                  "effect": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化25%护盾值为最大生命值。\n主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+                  "enhancements": [
+                    {
+                      "effect": "琉璃法球伤害提升至100+250%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "施法获得可叠加的50+10%最大生命值的护盾，持续5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和5%最大生命值的法术伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 52100,
+                  "name": "流光"
+                }
+              ],
+              "stats": {
+                "攻击距离": 2,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/50",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 5,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5211"
+            },
+            "card:5213": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值150%的真实伤害。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:5213",
+              "name": "海月",
+              "skills": [
+                {
+                  "effect": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化25%护盾值为最大生命值。\n主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+                  "enhancements": [
+                    {
+                      "effect": "琉璃法球伤害提升至100+250%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "施法获得可叠加的50+10%最大生命值的护盾，持续5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和5%最大生命值的法术伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 52100,
+                  "name": "流光"
+                }
+              ],
+              "stats": {},
+              "tier": 5,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5211"
+            }
+          }
+        },
+        "extra_key": "海月",
+        "syntax_version": "0.4"
+      }
+    ]
+  },
+  "after": {
+    "events": [],
+    "groups": [
+      {
+        "conditions": [],
+        "editor_mode": "text",
+        "event_id": "os_2406b1c2f3572ad9",
+        "explanation_after": "二稿点明普通、觉醒的两种伤害倍率，共同四秒控制，并保留并列最高不能保证选中的边界。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+        "explanation_before": "刷新前正式话术原句：对手主力有{对局.当前对手.主C.等级}级，买海月可用牺牲争取控住他。 / 对手最高等级的是百级主力，买海月可争取牺牲控制。\n原始依据：普通与觉醒海月牺牲均可将敌方等级最高的英雄困入水月幻境控制4秒并造成真实伤害（普通为海月100%生命值，觉醒为150%）；对手主力至少百级且为状态确认的最高等级英雄时，买海月提供阵亡后控制四秒的办法，但并列最高等级时不能保证实际选中该主力。当前取舍：先购买，仍须上阵并触发牺牲，因此说争取控制，避免指认并列者的结算结果。自然语言适用条件：买海月针对当前对手的百级主力。正式条件：arg1 is \"海月\" and 对局.当前对手.主C.等级 >= 100 and 对局.当前对手.主C.名称 is 对局.当前对手.最高等级英雄.名称。取舍后的播报重点：点出对手百级或对应等级的最高等级主力，说明买海月可争取靠触发牺牲控住对方，不把触发与并列选中写成必然。",
+        "explanation_source": "knowledge/other/基础知识.json\nknowledge/other/冷门知识.json\nknowledge/other/基础知识.json「等级节点与临时成长」 · game-basics-231\nknowledge/other/冷门知识.json · n-8cd5e478f15ef91e9aa5\n正式卡牌库「海月」 · card:5211\n正式卡牌库「海月（觉醒）」 · card:5213",
+        "expression": "((动作.选中.名称 == \"海月\" and (对手 != nil and 对手.主C != nil and 对手.主C.等级 >= 100)) and (对手 != nil and 对手.主C != nil and 对手.最高等级英雄 != nil and 对手.主C.名称 == 对手.最高等级英雄.名称))",
+        "id": "group_514c83a59caf49b9a7d7e5869a4ae3ff",
+        "mode": "万象大赛",
+        "name": "买海月针对当前对手的百级主力",
+        "priority": 0,
+        "related_entities": [],
+        "scope": {
+          "lineup_note_id": null,
+          "player_id": null
+        },
+        "tags": [],
+        "utterances": [
+          {
+            "id": "utterances_fb821092f9d344c8bb5539b58fc025ff",
+            "text": "海月的牺牲效果可以控制对方高等级主C并造成伤害。",
+            "fixed": true
+          },
+          {
+            "id": "utterances_ede73f0cee43458fbb096cd8a7ed9bf7",
+            "text": "对手最高等级的是百级主力，买海月可争取触发牺牲控制。",
+            "fixed": false,
+            "ignored": true
+          }
+        ],
+        "version": "s1",
+        "batch": [
+          "自回归"
+        ],
+        "review_status": "initial_reviewed",
+        "last_modified_by": {
+          "kind": "user",
+          "username": "local"
+        },
+        "entity_snapshot": {
+          "season": "S1",
+          "entities": {
+            "card:5211": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": false,
+              "category": "heroes",
+              "effect": "牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值的真实伤害。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:5211",
+              "name": "海月",
+              "skills": [
+                {
+                  "effect": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化25%护盾值为最大生命值。\n主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+                  "enhancements": [
+                    {
+                      "effect": "琉璃法球伤害提升至100+250%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "施法获得可叠加的50+10%最大生命值的护盾，持续5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和5%最大生命值的法术伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 52100,
+                  "name": "流光"
+                }
+              ],
+              "stats": {
+                "攻击距离": 2,
+                "攻击速度": 0.6,
+                "暴击效果": "140%",
+                "暴击率": "0%",
+                "最大生命值": 330,
+                "法力值（初始／最大）": "20/50",
+                "法术攻击力": 20,
+                "法术防御": 20,
+                "物理攻击力": 24,
+                "物理防御": 20
+              },
+              "tier": 5,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5211"
+            },
+            "card:5213": {
+              "aliases": [],
+              "attributes": {},
+              "awakened": true,
+              "category": "heroes",
+              "effect": "牺牲：将敌方等级最高的英雄困入水月幻境控制4秒，并造成等同于海月生命值150%的真实伤害。",
+              "faction": {
+                "id": "faction:none",
+                "name": "无阵营",
+                "official_id": 307
+              },
+              "id": "card:5213",
+              "name": "海月",
+              "skills": [
+                {
+                  "effect": "被动：海月的生命恢复效果大幅降低，但获得护盾时会转化25%护盾值为最大生命值。\n主动：海月发出3枚琉璃法球，第1枚对目标敌人造成100+150%法术攻击力的法术伤害。随后2枚对附近敌人造成的伤害减半。",
+                  "enhancements": [
+                    {
+                      "effect": "琉璃法球伤害提升至100+250%法术攻击力",
+                      "level": 10
+                    },
+                    {
+                      "effect": "施法获得可叠加的50+10%最大生命值的护盾，持续5秒",
+                      "level": 40
+                    },
+                    {
+                      "effect": "首次施法时制造水月幻境，每5秒为友军提供100点护盾和10点法力值，并对敌人造成0.5秒眩晕和5%最大生命值的法术伤害",
+                      "level": 100
+                    }
+                  ],
+                  "id": 52100,
+                  "name": "流光"
+                }
+              ],
+              "stats": {},
+              "tier": 5,
+              "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+              "skills_source": "card:5211"
+            }
+          }
+        },
+        "extra_key": "海月",
+        "syntax_version": "0.4"
+      }
+    ]
+  }
+}

@@ -51,7 +51,7 @@ def allowed_local_path(path):
         return allowed_path(path)
     if parts[0] == 'website-data':
         return basename.endswith(('.json','.img'))
-    if path in {'src/condition/catalog.json','src/condition/cases.json','src/condition/card-tags.json','src/go/condition/go.mod',
+    if path in {'src/condition/catalog.json','src/condition/catalog-v04.json','src/condition/cases.json','src/condition/card-tags.json','src/go/condition/go.mod',
                 'src/python/condition/requirements.txt'}:
         return True
     if len(parts)==4 and parts[:3]==('src','go','condition'):

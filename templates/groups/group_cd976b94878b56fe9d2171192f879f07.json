@@ -1,0 +1,62 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b9276a29aaffc6ba",
+  "explanation": "",
+  "explanation_after": "两把名刀和首个致死保护按各自结算条件说明，未承诺连续免死。\n完整候选池通过 3 项。正例可播：棋手已无容错；单项反例不命中：棋手仍有容错；缺值检查：缺少 玩家.容错数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：已无容错，选一线生机先拿两张名刀保命。\n原始依据为攻略建议没有容错时拿一线生机，卡牌效果为获得2张名刀·司命且本局首次棋手生命值降至0时不淘汰并保留1生命值。当前取舍为容错耗尽时立刻获得两张名刀才是可确认的即时收益，零血保护另受本局首次降至零的限制。自然语言适用条件为玩家容错数小于等于0且选择一线生机时，正式条件为：arg2 is \"一线生机\" and 玩家.容错数 <= 0。取舍后的播报重点是说明容错耗尽，选一线生机先拿两张名刀保命。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第219行「一线生机・使用技巧」\n正式卡牌库 一线生机（card:7115）",
+  "expression": "(动作.选中.名称 == \"一线生机\" and 我方.容错数 <= 0)",
+  "id": "group_cd976b94878b56fe9d2171192f879f07",
+  "mode": "万象大赛",
+  "name": "容错见底时选一线生机保命",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_bc179c65262440f7ade3a8350a307411",
+      "text": "容错耗尽，选一线生机先拿两张名刀保命。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7115": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包一",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "获得2张名刀·司命。你的棋手生命值本局第一次降至0时，不会被淘汰，并保留1棋手生命值。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7115",
+        "name": "一线生机",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "一线生机",
+  "syntax_version": "0.4"
+}

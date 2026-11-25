@@ -2,21 +2,51 @@ import {useEffect,useState} from 'react';
 import {useAuth} from './auth';
 import {api} from './model';
 import {TemplateDialog} from './TemplateEditor';
-import type {TemplateGroup} from './templates';
+import {templateMetadataLabels,type TemplateGroup} from './templates';
+import type {LocalTemplateComment} from './templateFile';
 
 export type FeedbackTarget={group?:TemplateGroup;utteranceId?:string};
+
+export function LocalTemplateFeedback({group,utteranceId,comments,onSave,onReload,onClose}:{group:TemplateGroup;utteranceId?:string;comments:LocalTemplateComment[];onSave:(body:string)=>Promise<void>;onReload:()=>Promise<void>;onClose:()=>void}){
+ const [body,setBody]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState('');
+ const original=group.utterances.find(row=>row.id===utteranceId)?.text;
+ async function run(action:()=>Promise<void>){
+  setBusy(true);setError('');
+  try{await action();}catch(e){setError((e as Error).message);}finally{setBusy(false);}
+ }
+ function close(){
+  if(!busy&&(!body.trim()||confirm('放弃未发送的批注？')))onClose();
+ }
+ return <TemplateDialog title={group.name+' · 文件批注'} wide onClose={close}><div className="template-form">
+  {error&&<div><p role="alert" className="error">{error}</p>{error.includes('重新读取')&&
+   <button type="button" disabled={busy} onClick={()=>void run(onReload)}>重新读取文件</button>}</div>}
+  <form onSubmit={e=>{
+   e.preventDefault();
+   if(busy||!body.trim())return;
+   void run(async()=>{await onSave(body);setBody('');});
+  }}>
+   <label>{utteranceId?'话术批注':'模板组批注'}<textarea maxLength={4000} value={body} onChange={e=>setBody(e.target.value)} disabled={busy}/></label>
+   {utteranceId&&<blockquote>{original}</blockquote>}
+   <button disabled={busy||!body.trim()}>发布批注</button>
+  </form>
+  {comments.length?comments.map(comment=><section key={comment.id} className="template-feedback-thread">
+   {comment.original_text!==undefined&&<blockquote>{comment.original_text}</blockquote>}
+   <p><strong>{comment.by}</strong> <small>{new Date(comment.at).toLocaleString()}</small> {comment.body}</p>
+  </section>):<p>暂无批注。</p>}
+ </div></TemplateDialog>;
+}
 type Message={action:string;by:string;at:string;body?:string;revisions?:{body:string;at:string}[];edited_at?:string};
 type Thread={id:string;group_id:string;group_name:string;utterance_id?:string;original_text:string;original_group?:TemplateGroup;status:string;messages:Message[]};
 export type Activity={id:string;original_submission?:TemplateGroup|null;group_id:string;action:string;at:string;by:string;source?:string;batch_id?:string;reason?:string;original_text?:string;body?:string;before?:TemplateGroup|null;submitted?:TemplateGroup|null;reviewed?:TemplateGroup|null;after?:TemplateGroup|null};
 const labels:Record<string,string>={fix_utterance:'固定话术',unfix_utterance:'取消固定话术',resolve_conflict:'处理同步冲突',submit:'提交导入提案',proposal_comment:'回复提案讨论',create:'新建模板组',edit_group:'编辑模板组',add_utterance:'增加话术',edit_utterance:'修改话术',delete_utterance:'删除话术',delete:'删除模板组',ignore:'忽略模板组',unignore:'取消忽略模板组',ignore_utterance:'忽略话术',unignore_utterance:'取消忽略话术',approve:'采纳提案',approve_partial:'部分采纳',edit:'修改提案',reject:'拒绝提案',confirm_warning:'确认关联资料',comment_edit:'编辑批注',comment_create:'添加批注',comment_reply:'回复批注',comment_close:'关闭批注',comment_reopen:'重开批注'};
-export function activityLabel(row:Activity){return `${labels[row.action]??row.action} · ${row.by} · ${new Date(row.at).toLocaleString()}`;}
+export function activityLabel(row:Activity){return `${row.action==='review_status'?'切换审核状态':labels[row.action]??row.action} · ${row.by} · ${new Date(row.at).toLocaleString()}`;}
 
 function ChangeSummary({record}:{record:Activity}){
  const before=record.before,after=record.after??record.reviewed??record.submitted;
  if(!before||!after)return null;
  const rows=new Map(before.utterances.map(row=>[row.id,row]));
  const newRows=new Map(after.utterances.map(row=>[row.id,row]));
- const fields={name:'组名',scope:'适用范围',conditions:'条件',expression:'表达式',explanation:'说明',priority:'优先级',ignored:'忽略状态',event_id:'事件'} as const;
+ const fields={name:'组名',scope:'适用范围',conditions:'条件',expression:'表达式',explanation:'说明',priority:'优先级',ignored:'忽略状态',event_id:'事件',...templateMetadataLabels} as const;
  return <ul>{(Object.keys(fields) as (keyof typeof fields)[]).filter(k=>JSON.stringify(before[k])!==JSON.stringify(after[k])).map(k=><li key={k}>{fields[k]}：{JSON.stringify(before[k])??'无'} → {JSON.stringify(after[k])??'无'}</li>)}{Array.from(new Set([...rows.keys(),...newRows.keys()])).filter(id=>JSON.stringify(rows.get(id))!==JSON.stringify(newRows.get(id))).map(id=><li key={id}>话术：{rows.get(id)?.text??'无'} → {newRows.get(id)?.text??'无'}{newRows.get(id)?.ignored?'（忽略）':''}</li>)}</ul>;
 }
 

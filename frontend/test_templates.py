@@ -73,12 +73,14 @@ class TemplateTests(unittest.TestCase):
         with self.assertRaises(Conflict):
             store.apply(self.root, fixed['revision'], [{'kind':'group','id':'g1','action':'delete'}])
         changed['utterances'][0] = {**original, 'ignored':True}
-        ignored = store.apply(self.root, fixed['revision'], [put('group', changed)])
         with self.assertRaises(Conflict):
-            store.apply(self.root, ignored['revision'], [put('group', group())])
-        unfixed = store.set_utterance_fixed(self.root, ignored['revision'], 'g1', 'u1', False, 'admin')
+            store.apply(self.root, fixed['revision'], [put('group', changed)])
+        with self.assertRaises(Conflict):
+            store.apply(self.root, fixed['revision'], [put('group', group())])
+        unfixed = store.set_utterance_fixed(self.root, fixed['revision'], 'g1', 'u1', False, 'admin')
         changed = deepcopy(unfixed['groups'][0])
         changed['utterances'][0]['text'] = '解固定后编辑'
+        changed['utterances'][0]['ignored'] = True
         self.assertEqual(store.apply(self.root, unfixed['revision'], [put('group', changed)])['groups'][0], changed)
 
     def test_import_preserves_fixed_rows_and_reports_them(self):
@@ -159,7 +161,8 @@ class TemplateTests(unittest.TestCase):
         self.assertNotIn('auction_start',{x['id'] for x in store.snapshot(self.root)['events']})
         meta=json_store.read(self.root/'templates/library.meta.json')
         self.assertIn('auction_start',meta['tombstones']['event'])
-        self.assertTrue(meta['audit'])
+        self.assertTrue(any({'kind':'event','action':'delete','id':'auction_start'} in entry['changes']
+                            for entry in store.review_history(self.root)))
 
     def test_definition_change_validates_all_dependents(self):
         saved=self.saved();changed=event();changed['parameters']=[p for p in changed['parameters'] if p['key']!='card']

@@ -1,25 +1,77 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b9276a29aaffc6ba",
+  "explanation_after": "补清目标须在场，等级差最多七级；只说明达到门槛数值，没有承诺重新领奖。\n完整候选池通过 4 项。正例可播：四人实际等级和为43，处于可跨档区间。；单项反例不命中：四人等级和为42，未达到可跨档的下界或已到该档。；缺值检查：缺任一在场英雄等级，无法求出总等级。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上总等级只差几级，选精密协作可补到送福门槛。\n原始依据：常小娥阵容在距离兔飞猛进（送福）50、150或375门槛只差少量等级时，选精密协作给在场英雄使用可提供总计七级的等级补充。当前取舍：以行动和当下收益为主，通过场上状态连接因果；由于只有目标在场才能把精密协作两部分计入场上等级，且现有条件仅识别当前等级差额、无法获知对应档位过去是否已领取，因此写明给在场英雄用，且只承诺达到门槛数值而不延伸承诺必然领奖。自然语言适用条件：常小娥阵容选精密协作，战场等级总和距一个兔飞猛进门槛不超过七级。正式条件：arg2 is \"精密协作\" and arg1 has \"精密协作\" and ((玩家.战场.求和(等级) >= 43 and 玩家.战场.求和(等级) < 50) or (玩家.战场.求和(等级) >= 143 and 玩家.战场.求和(等级) < 150) or (玩家.战场.求和(等级) >= 368 and 玩家.战场.求和(等级) < 375))。取舍后的播报重点：点出场上总等级只差几级，说明选精密协作给在场英雄用可补到送福门槛。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「距离下一次兔飞猛进门槛只差少量等级时」 · cx26-b3b4dd5773cc33e0\n正式卡牌库：精密协作（card:7062）\n正式卡牌库：兔飞猛进（card:662401）",
+  "expression": "((动作.选中.名称 == \"精密协作\" and any(动作.候选列表, .名称 == \"精密协作\")) and (((sum(我方.场上英雄列表, .等级) >= 43 and sum(我方.场上英雄列表, .等级) < 50) or (sum(我方.场上英雄列表, .等级) >= 143 and sum(我方.场上英雄列表, .等级) < 150)) or (sum(我方.场上英雄列表, .等级) >= 368 and sum(我方.场上英雄列表, .等级) < 375)))",
+  "id": "group_103aa3767cd04e03bf76a42adc7962bb",
+  "mode": "万象大赛",
   "name": "选精密协作靠近送福门槛",
+  "priority": 2,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": "player:24"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「距离下一次兔飞猛进门槛只差少量等级时」。兔飞猛进卡面门槛50/150/375；精密协作使用在场英雄时，场上总等级合计可加7。选牌和买牌只提供过线机会，不代表已用牌或已领到该档奖励。",
+  "tags": [],
   "utterances": [
     {
-      "text": "选精密协作给场上英雄用，这7级够跨一档总等级。",
-      "id": "utterances_39119dd327b14650b5ce94895cf1dcc9"
-    },
-    {
-      "text": "这档送福还没领过的话，选精密协作给场上英雄用就够了。",
-      "id": "utterances_e0835ea6bfb04670b9ae96d48a62a1a9"
+      "id": "utterances_39119dd327b14650b5ce94895cf1dcc9",
+      "text": "场上总等级只差几级，选精密协作给在场英雄用可补到送福门槛。"
     }
   ],
-  "id": "group_103aa3767cd04e03bf76a42adc7962bb",
-  "event_id": "os_b9276a29aaffc6ba",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 2,
-  "expression": "arg2 is \"精密协作\" and arg1 has \"精密协作\" and ((玩家.战场.求和(等级) >= 43 and 玩家.战场.求和(等级) < 50) or (玩家.战场.求和(等级) >= 143 and 玩家.战场.求和(等级) < 150) or (玩家.战场.求和(等级) >= 368 and 玩家.战场.求和(等级) < 375))",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:7062": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄等级+4，随机1名英雄等级+3。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7062",
+        "name": "精密协作",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "精密协作",
+  "syntax_version": "0.4"
 }

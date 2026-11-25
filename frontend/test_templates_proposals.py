@@ -84,6 +84,148 @@ class TemplateProposalTests(unittest.TestCase):
         self.assertEqual(library.snapshot(self.root)['groups'],[group()])
         self.assertEqual(self.action(ADMIN,item['id'],'approve',{})['status'],'approved')
 
+    def test_reject_selected_group_keeps_other_changes_pending(self):
+        groups = [group('first'), group('second')]
+        groups[1]['name'] = '第二条提醒'
+        proposal = self.proposals.submit(ALICE, {
+            'revision': library.snapshot(self.root)['revision'],
+            'changes': [{'kind':'group','action':'put','id':row['id'],'value':row} for row in groups],
+        })
+        request = {'proposal_revision':proposal['proposal_revision'],'change_ids':[0]}
+        with self.assertRaises(PermissionError):
+            self.proposals.action(ALICE,proposal['id'],'reject',request)
+        result = self.proposals.action(ADMIN,proposal['id'],'reject',request)
+        self.assertEqual(result['status'],'pending')
+        self.assertEqual([row['id'] for row in result['changes']],['second'])
+        self.assertEqual([row['id'] for row in result['reviews'][-1]['submitted']],['first'])
+        self.assertEqual(self.proposals.action(ADMIN,proposal['id'],'reject',request),result)
+        accepted = self.action(ADMIN,proposal['id'],'approve',{})
+        self.assertEqual(accepted['status'],'partially_approved')
+        self.assertEqual([row['id'] for row in library.snapshot(self.root)['groups']],['second'])
+
+    def test_card_previews_only_return_visible_pending_group_changes(self):
+        first=self.submit()
+        second=self.submit(group('another'),BOB)
+        self.assertEqual([row['proposal_id'] for row in self.proposals.card_previews(ALICE)],[first['id']])
+        self.assertCountEqual([row['proposal_id'] for row in self.proposals.card_previews(ADMIN)],[first['id'],second['id']])
+        row=self.proposals.card_previews(BOB)[0]
+        self.assertIsNone(row['base'])
+        self.assertEqual(row['change'],second['changes'][0])
+        self.assertNotIn('submission',row)
+        self.action(ALICE,first['id'],'withdraw',{})
+        self.assertEqual(self.proposals.card_previews(ALICE),[])
+        with self.assertRaises(PermissionError):self.proposals.card_previews({'role':'viewer','username':'alice'})
+
+    def test_card_edit_and_accept_completes_only_that_group_and_retries(self):
+        def put(value):return {'kind':'group','action':'put','id':value['id'],'value':value}
+        suggestions=[put(group()),put(group('another'))]
+        item=self.proposals.submit(ALICE,{'revision':library.snapshot(self.root)['revision'],'changes':suggestions})
+        preview=next(row for row in self.proposals.card_previews(ALICE) if row['change']['id']=='example')
+        self.assertEqual((preview.get('change_index'),preview.get('proposal_revision')),(0,item['proposal_revision']))
+        revised=put(group(text='管理员定稿。'))
+        request={'proposal_revision':item['proposal_revision'],'change_ids':[0],'changes':[revised],'complete_group':True}
+        with self.assertRaises(PermissionError):self.proposals.action(ALICE,item['id'],'approve',request)
+        saved=self.proposals.action(ADMIN,item['id'],'approve',request)
+        self.assertEqual(saved['status'],'pending')
+        self.assertEqual(saved['changes'],suggestions[1:])
+        self.assertEqual(saved['reviews'][-1]['submitted'],suggestions[:1])
+        self.assertEqual(saved['reviews'][-1]['changes'],[revised])
+        self.assertEqual(library.snapshot(self.root)['groups'],[revised['value']])
+        self.assertEqual(self.proposals.action(ADMIN,item['id'],'approve',request),saved)
+
+    def test_card_editor_changes_delete_into_draft_without_writing_formal_group(self):
+        put=lambda value:{'kind':'group','action':'put','id':value['id'],'value':value}
+        base=group()
+        current=library.apply(self.root,library.snapshot(self.root)['revision'],[put(base)])
+        item=self.proposals.submit(ALICE,{'revision':current['revision'],'changes':[{'kind':'group','action':'delete','id':base['id']}]})
+        edited=group(text='新的说法。')
+        saved=self.action(ALICE,item['id'],'edit',{'change_ids':[0],'group_editor':{'group':edited}})
+        self.assertEqual(saved['changes'],[put(edited)])
+        self.assertEqual(saved['submission']['changes'][0]['action'],'delete')
+        self.assertEqual(library.snapshot(self.root)['groups'],[base])
+
+    def test_card_editor_forks_action_and_publishes_only_required_parameters(self):
+        def put(value,kind='group'):return {'kind':kind,'action':'put','id':value['id'],'value':value}
+        event={'id':'custom-action','name':'测试动作参数','category':'测试','parameters':[]}
+        base={**group(),'event_id':event['id'],'expression':'','editor_mode':'text'}
+        current=library.apply(self.root,library.snapshot(self.root)['revision'],[put(event,'event'),put(base)])
+        item=self.proposals.submit(ALICE,{'revision':current['revision'],'changes':[put({**base,'name':'编辑稿'})]})
+        parameter={'id':'parameter-code','key':'arg1','type':'text','name':'动作参数'}
+        extra={'id':'parameter-unused','key':'arg2','type':'text','name':'额外参数'}
+        new_event={**event,'parameters':[parameter,extra]}
+        draft={**base,'expression':'arg1 is "李白"'}
+        saved=self.action(ALICE,item['id'],'edit',{'change_ids':[0],'group_editor':{'group':draft,'event':new_event}})
+        staged=saved['changes'][0]
+        self.assertNotEqual(staged['id'],base['id'])
+        self.assertEqual(library.snapshot(self.root)['groups'],[base])
+        preview=self.action(ADMIN,item['id'],'approve',{'change_ids':[0],'group_editor':{'preview':True}})
+        self.assertEqual(preview['parameters'],['动作参数'])
+        with self.assertRaises(Conflict):self.action(ADMIN,item['id'],'approve',{'change_ids':[0],'group_editor':{}})
+        accepted=self.action(ADMIN,item['id'],'approve',{'change_ids':[0],'group_editor':{'dependency_token':preview['dependency_token']}})
+        self.assertEqual([row['kind'] for row in accepted['changes']],['event'])
+        after=library.snapshot(self.root)
+        self.assertEqual(next(row for row in after['events'] if row['id']==event['id'])['parameters'],[parameter])
+        self.assertIn(base,after['groups'])
+        self.assertIn(staged['id'],[row['id'] for row in after['groups']])
+
+    def test_card_review_merges_independent_conditions_and_conflicts_on_the_same_condition(self):
+        put=lambda value:{'kind':'group','action':'put','id':value['id'],'value':value}
+        base={**group(),'expression':'玩家.等级 >= 3 and 玩家.血量 >= 2','editor_mode':'text'}
+        saved=library.apply(self.root,library.snapshot(self.root)['revision'],[put(base)])
+        first=self.submit({**base,'expression':'玩家.等级 >= 3 and 玩家.血量 >= 8'})
+        saved=library.apply(self.root,saved['revision'],[put({**base,'expression':'玩家.等级 >= 4 and 玩家.血量 >= 2'})])
+        self.action(ADMIN,first['id'],'approve',{})
+        merged=library.snapshot(self.root)
+        self.assertEqual(merged['groups'][0]['expression'],'(玩家.等级 >= 4 and 玩家.血量 >= 8)')
+        base=merged['groups'][0]
+        final={**base,'expression':'玩家.等级 >= 5 and 玩家.血量 >= 8'}
+        second=self.submit(final)
+        concurrent=library.apply(self.root,merged['revision'],[put({**base,'expression':'玩家.等级 >= 6 and 玩家.血量 >= 8'})])
+        with self.assertRaisesRegex(Conflict,'正式条件'):
+            self.action(ADMIN,second['id'],'approve',{'change_ids':[0],'group_editor':{}})
+        self.assertEqual(library.snapshot(self.root),concurrent)
+        self.action(ADMIN,second['id'],'approve',{'change_ids':[0],'group_editor':{'group':final,'resolve_conditions':concurrent['revision']}})
+        self.assertEqual(library.snapshot(self.root)['groups'][0]['expression'],final['expression'])
+
+    def test_card_fixed_and_status_controls_are_staged_until_approval(self):
+        from template_workflow import review_status_change
+        base=group()
+        put=lambda value:{'kind':'group','action':'put','id':value['id'],'value':value}
+        current=library.apply(self.root,library.snapshot(self.root)['revision'],[put(base)])
+        current=library.set_utterance_fixed(self.root,current['revision'],base['id'],'line',True,'admin')
+        status=review_status_change(current,base['id'],ALICE,'initial_reviewed')
+        item=self.proposals.submit(ALICE,{'revision':current['revision'],'source':'review-status','changes':[status]},workflow_source='review-status')
+        operation={'change_ids':[0],'group_editor':{'fixed':{'id':'line','value':False}}}
+        with self.assertRaises(PermissionError):self.action(ALICE,item['id'],'edit',operation)
+        unfixed=self.action(ADMIN,item['id'],'edit',operation)
+        draft=deepcopy(unfixed['changes'][0]['value'])
+        draft['utterances'][0]['text']='解除固定后的编辑。'
+        edited=self.action(ADMIN,item['id'],'edit',{'change_ids':[0],'group_editor':{'group':draft}})
+        self.assertEqual(edited['source'],'editor')
+        self.assertTrue(library.snapshot(self.root)['groups'][0]['utterances'][0]['fixed'])
+        self.action(ADMIN,item['id'],'edit',{'change_ids':[0],'group_editor':{'status':'final_reviewed'}})
+        self.action(ADMIN,item['id'],'approve',{'change_ids':[0],'group_editor':{}})
+        saved=library.snapshot(self.root)['groups'][0]
+        self.assertEqual(saved['review_status'],'final_reviewed')
+        self.assertEqual(saved['utterances'],[{**draft['utterances'][0],'fixed':True}])
+
+    def test_single_utterance_flags_do_not_read_or_validate_formal_library(self):
+        item=self.submit()
+        for field,actor,value,allowed in [('ignore',ALICE,True,True),('fixed',ADMIN,True,False),
+                ('ignore',ALICE,False,True),('fixed',ADMIN,True,True),('ignore',ALICE,True,False)]:
+            data={'proposal_revision':item['proposal_revision'],'change_ids':[0],
+                  'group_editor':{field:{'id':'line','value':value}}}
+            with patch.object(library,'snapshot',side_effect=AssertionError('loaded formal library')), \
+                 patch.object(library,'preview_changes',side_effect=AssertionError('validated formal library')):
+                if not allowed:
+                    with self.assertRaisesRegex(Conflict,'只能固定或忽略'):
+                        self.proposals.action(actor,item['id'],'edit',data)
+                    continue
+                item=self.proposals.action(actor,item['id'],'edit',data)
+                self.assertEqual(self.proposals.action(actor,item['id'],'edit',data)['proposal_revision'],item['proposal_revision'])
+        self.assertFalse(item['changes'][0]['value']['utterances'][0].get('ignored',False))
+        self.assertTrue(item['changes'][0]['value']['utterances'][0]['fixed'])
+
     def test_unrelated_save_allowed_but_touched_record_stale_rejected(self):
         item=self.submit()
         library.apply(self.root,library.snapshot(self.root)['revision'],
@@ -146,7 +288,11 @@ class TemplateProposalTests(unittest.TestCase):
         partial=self.proposals.action(ADMIN,item['id'],'approve',first)
         self.assertEqual(partial['status'],'pending')
         self.assertEqual(self.proposals.action(ADMIN,item['id'],'approve',first),partial)
+        preview=self.proposals.card_previews(ALICE)[0]
+        self.assertEqual(preview['base'],{**base,'name':final['name']})
+        self.assertEqual(preview['change']['value'],final)
         result=self.action(ADMIN,item['id'],'approve',{})
+        self.assertEqual(self.proposals.card_previews(ALICE),[])
         self.assertEqual(library.snapshot(self.root)['groups'],[final])
         self.assertEqual(result['submission'],{'before':{'group:example':base},'changes':[put(suggested)]})
         self.assertEqual([r['action'] for r in result['reviews']],['edit','approve','approve'])

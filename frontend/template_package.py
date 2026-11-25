@@ -82,35 +82,53 @@ def _scope_match(rows, previous_id, field, name, label):
     return matched['id']
 
 
-def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None):
-    from templates_portable import encode as old_encode
+def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None, authoring=True, stable_ids=False, group_cache=None):
+    from templates_portable import encode as old_encode, encode_group
     runtime_catalog = rules.library_catalog(public['events'],root=root or rules.ROOT)
     if len(runtime_catalog['events'])!=len(public['events']):
         raise ValueError('事件名称重复，请为事件使用唯一名称')
-    data = old_encode(public)
+    data = old_encode({'events':public['events'],'groups':[]})
     event_by_id = {e['id']:e for e in public['events']}
     for event in data['events']:
         event.pop('id')
         params = runtime_catalog['events'][event['name']]['parameters']
         event['signature'] = event['name']+'('+', '.join(k+': '+t for k,t in params.items())+')'
-    counts = Counter((g['event_id'],g['name']) for g in (public['groups'] if all_groups is None else all_groups))
-    for group, original in zip(data['groups'],public['groups']):
-        if counts[(original['event_id'],group['name'])]==1:
-            group.pop('id')
+    counts = Counter((g['event_id'],g['name'],schema.group_season(g)) for g in (public['groups'] if all_groups is None else all_groups))
+    context=(public['events'],runtime_catalog,entities,notes,authoring,stable_ids)
+    cached=group_cache.get('groups',{}) if group_cache is not None and group_cache.get('context')==context else {}
+    encoded={}
+    for original in public['groups']:
+        identity=original['id']
+        omit_id=not stable_ids and counts[(original['event_id'],original['name'],schema.group_season(original))]==1
+        archived = {**(metadata or {}).get('baselines',{}).get(identity,{}),
+                    **(metadata or {}).get('entity_archive',{}).get(identity,{})}
+        key=(original,omit_id,archived)
+        old=cached.get(identity)
+        if old is not None and old[0]==key:
+            encoded[identity]=old
+            data['groups'].append(old[1]);continue
+        group=encode_group(original,authoring=authoring)
+        if omit_id:group.pop('id')
         event = event_by_id[group.pop('event_id')]
         group['event_name'] = event['name']
-        archived = {**(metadata or {}).get('baselines',{}).get(original['id'],{}),
-                    **(metadata or {}).get('entity_archive',{}).get(original['id'],{})}
         refs = {**archived,**entities}
         group['scope'] = {'player':_scope_name(original['scope']['player_id'],refs,'name'),
                           'lineup':_scope_name(original['scope']['lineup_note_id'],notes,'title')}
         group.update(rules.editor_rule(original,event,refs))
-        group['effective_expression'] = effective_expression(group['scope'], group['expression'])
+        if original.get('syntax_version')=='0.4':
+            from template_v04 import effective_expression as effective_v04
+            group['effective_expression'] = effective_v04(group['scope'], group['expression'])
+            group['utterances'] = deepcopy(original['utterances'])
+        else:
+            group['effective_expression'] = effective_expression(group['scope'], group['expression'])
         group.setdefault('priority',0)
         if not group['conditions']: group.pop('conditions')
         if original.get('related_entities'):
             keys = dict.fromkeys(_related_key(refs[r['id']]) for r in original['related_entities'])
             group['related_entities'] = [{'名称':name,'类型':kind} for name,kind in keys]
+        data['groups'].append(group)
+        encoded[identity]=key,group
+    if group_cache is not None:group_cache.update(context=context,groups=encoded)
     data['schema_version'] = 3
     data['condition_catalog'] = runtime_catalog
     return data
@@ -131,6 +149,15 @@ def decode(document, public, entities, notes, **kwargs):
         expected = deepcopy(current['types'])
         previous_lineups = isinstance(types,dict) and '阵容' not in types
         operations = dict(current['operations'])
+        aliases = current['aliases']
+        unit_types = current['unit_types']
+        if isinstance(types,dict) and '单位' not in types:
+            expected.pop('单位')
+            expected['玩家'].pop('已选天赋')
+            expected['英雄'].pop('已穿装备')
+            operations.pop('单位.标签')
+            aliases = {**aliases, '单位': '英雄'}
+            unit_types = None
         if isinstance(types,dict) and '标签' not in types.get('英雄', {}):
             for owner in ('英雄','装备','效果牌','天赋'):
                 expected[owner].pop('标签',None)
@@ -143,7 +170,9 @@ def decode(document, public, entities, notes, **kwargs):
         for field in ('场上英雄数', '人口上限'):
             old_population['玩家'].pop(field)
         if (types not in (expected, old_population) or imported_catalog.get('operations') != operations
-                or any(imported_catalog.get(k)!=current[k] for k in ('roots','aliases','enums'))):
+                or imported_catalog.get('aliases') != aliases
+                or imported_catalog.get('unit_types') != unit_types
+                or any(imported_catalog.get(k)!=current[k] for k in ('roots','enums'))):
             raise ValueError('配置的类型目录与当前项目不一致')
     if not isinstance(doc['events'],list) or not isinstance(doc['groups'],list):
         raise ValueError('事件与模板组必须为列表')
@@ -187,9 +216,9 @@ def decode(document, public, entities, notes, **kwargs):
         event = all_events.get(imported_names.get(name)) or rules.resolve_event(all_events.values(),name,hint)
         if event is None:raise ValueError('未知事件：'+name)
         group['event_name'] = event['name']
-        group_names[(event['name'],schema.text(group.get('name')))] += 1
+        group_names[(event['name'],schema.text(group.get('name')),schema.group_season(group))] += 1
     for group in doc['groups']:
-        schema.fields(group,{'id','name','explanation','event_name','scope','conditions','utterances','related_entities','effective_expression'}|rules.RULE_FIELDS,
+        schema.fields(group,{'id','name','event_name','scope','conditions','utterances','related_entities','effective_expression'}|schema.GROUP_METADATA|rules.RULE_FIELDS,
                       {'name','event_name','expression','utterances'})
         # A copied preview can be stale after hand-editing the scope or expression.
         group.pop('effective_expression', None)
@@ -197,9 +226,11 @@ def decode(document, public, entities, notes, **kwargs):
         if event is None:raise ValueError('未知事件：'+str(group['event_name']))
         group['event_id'] = event['id']
         if 'id' not in group:
-            if group_names[(group['event_name'],group['name'])] != 1:
-                raise ValueError('同一事件下重名的模板组需要身份')
-            existing = _find([g for g in public['groups'] if g['event_id']==event['id']],'name',group['name'],'模板组')
+            season=schema.group_season(group)
+            if group_names[(group['event_name'],group['name'],season)] != 1:
+                raise ValueError('同一赛季同一事件下重名的模板组需要身份')
+            existing = _find([g for g in public['groups'] if g['event_id']==event['id'] and schema.group_season(g)==season],
+                             'name',group['name'],'模板组')
             group['id'] = existing['id'] if existing else 'group_'+uuid.uuid4().hex
         schema.identity(group['id'])
         previous = old_groups.get(group['id'], {})
@@ -227,9 +258,17 @@ def decode(document, public, entities, notes, **kwargs):
         extras[group['id']] = restored
         group.setdefault('conditions',[])
     doc['schema_version'] = 2
-    result = old_decode(doc,public,entities,notes,**kwargs)
+    rule_fields = {uid: {key:value for key,value in fields.items() if key in rules.RULE_FIELDS}
+                   for uid,fields in extras.items()}
+    result = old_decode(doc,public,entities,notes,rule_fields=rule_fields,**kwargs)
     for group in result['groups']:
         group.update(extras[group['id']])
-        rules.validate_rule(group,all_events[group['event_id']])
+        if any(row.get('syntax_version')=='0.4' for row in public['groups']) and not group.get('syntax_version'):
+            from template_v04 import catalog as catalog_v04, translate
+            event_name=all_events[group['event_id']]['name']
+            if event_name in catalog_v04()['events']:
+                group.update(translate(group,event_name, rules.library_catalog(all_events.values())))
+                if group.get('syntax_version')=='0.4':
+                    group.pop('condition_tree',None)
     return result
 

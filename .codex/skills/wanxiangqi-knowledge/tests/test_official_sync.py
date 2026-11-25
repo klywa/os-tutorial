@@ -7,6 +7,41 @@ import official_sync as sync
 import json_store,wxq
 
 class SyncTests(unittest.TestCase):
+    def test_active_official_scripts_ignore_comments_and_duplicates(self):
+        import official
+        homepage = ('<script src="./cards.js"></script>'
+                    '<!-- <script src="./old/role.js"></script> -->'
+                    '<script src="./cards.js"></script><script src="./role.js"></script>')
+        with patch('official.fetch', side_effect=[homepage, '', '']) as fetch:
+            with self.assertRaisesRegex(ValueError, '未发现数据入口'):
+                sync.fetch_bundle(self.root, self.root/'raw/official-sync/runs/scripts')
+        base = official.OFFICIAL.rsplit('/', 1)[0]
+        self.assertEqual([call.args[0] for call in fetch.call_args_list],
+                         [official.OFFICIAL, base+'/cards.js', base+'/role.js'])
+
+    def test_card_fields_backfill_even_when_official_entities_are_unchanged(self):
+        import official
+        from reference_store import json_cards
+        from test_official_profiles import sample
+        buckets = official.normalize(sample(), 'https://official.test/data', 'today')
+        sync.publish(self.root, buckets, self.root/'raw/official-sync/runs/first')
+        row = next(row for row in json_store.read(self.root/'knowledge/cards/index.meta.json')['cards']
+                   if row['id'] == 'player:1')
+        path = self.root/row['path']
+        body = json_store.read(path)
+        body['semantics'].pop('keywords', None)
+        body['semantics'].pop('player_skill_groups', None)
+        json_store.write_file(path, body)
+        meta_path = self.root/json_store.meta_path(row['path'])
+        meta = json_store.read(meta_path)
+        meta['body_sha256'] = json_store.digest(body)
+        json_store.write_file(meta_path, meta)
+        result = sync.publish(self.root, buckets, self.root/'raw/official-sync/runs/backfill')
+        self.assertEqual(result['changed_ids'], [])
+        player = next(card for card in json_cards(self.root) if card['id'] == 'player:1')
+        self.assertEqual(player['keywords'], [])
+        self.assertEqual(player['player_skill_groups'][0]['cards'][0]['name'], '基础技能')
+
     def test_rotating_video_signature_and_timestamps_are_not_content_changes(self):
         a={'retrieved_at':'before','properties':{'url':'http://video2.osgame.qq.com/signature/expiry/CDNResources/publish/1.mp4'}}
         b={'retrieved_at':'after','properties':{'url':'http://video2.osgame.qq.com/new-signature/new-expiry/CDNResources/publish/1.mp4'}}

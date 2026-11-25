@@ -1,0 +1,61 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "恢复直接取得一件随机基础装备的准确播报，前置区分牌消耗和不拆现有装备。\n完整候选池通过 3 项。正例可播：对无装备英雄使用武装重构直接拿1件基础装；单项反例不命中：对象已有一件装备；缺值检查：目标没有装备列表。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：目标没穿装备，用武装重构可直接拿一件随机基础装备。\n原始依据：武装重构会摧毁目标装备并返还数量加一的随机基础装备，对未穿装备的英雄使用仍会消耗该牌，但只不拆装备（零装备损失），可拿一件随机基础装备。当前取舍：以行动和当下收益为主，用场上状态连接原因与结果。自然语言适用条件：对已有明确信息、没有穿任何装备的英雄用武装重构。正式条件：arg2 is \"武装重构\" and arg1.已穿装备.计数() == 0。取舍后的播报重点：说明目标没穿装备，用武装重构不拆装备且可直接拿一件随机基础装备。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第210行「武装重构・使用技巧」\n正式卡牌库 武装重构（card:7081）\n正式卡牌库：武装重构（card:7081）",
+  "expression": "(动作.卡牌.名称 == \"武装重构\" and (动作.目标英雄 != nil and len(动作.目标英雄.装备列表) == 0))",
+  "id": "group_35e75c03edfb56beaf7358ef3d10e87f",
+  "mode": "万象大赛",
+  "name": "空装备英雄用武装重构拿一件基础装备",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_2d2bc99bd5e741ce996098b124568295",
+      "text": "目标没穿装备，用武装重构可直接拿一件随机基础装备。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7081": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，摧毁其所有装备，随机获得对应数量+1的基础装备。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7081",
+        "name": "武装重构",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "武装重构",
+  "syntax_version": "0.4"
+}

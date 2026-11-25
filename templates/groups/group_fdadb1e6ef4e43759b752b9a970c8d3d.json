@@ -1,25 +1,149 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "explanation": "",
+  "explanation_after": "甄姬已经在场，集体唤醒再次触发其登场获取其他登场英雄牌，觉醒为三选一。\n完整候选池通过 3 项。正例可播：甄姬在场且登场可供牌；单项反例不命中：甄姬不在场；缺值检查：缺少 玩家.战场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：甄姬已在场，集体唤醒能让她再给一张英雄牌。\n原始依据：甄姬登场可提供其他登场英雄牌（普通随机1张，觉醒3选1），可用唤醒或集体唤醒重触发。当前取舍：甄姬已在场，集体唤醒能复触发拿英雄牌的登场，具体所得取决于实际结算。自然语言适用条件：使用无目标效果牌集体唤醒，且玩家战场上有甄姬。正式条件：arg1 is \"集体唤醒\" and 玩家.战场 has \"甄姬\"。取舍后的播报重点：点明甄姬在场，集体唤醒能再次触发她登场拿英雄牌。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「甄姬」 · n-2be2ea1702e921efd8c1",
+  "expression": "(动作.卡牌.名称 == \"集体唤醒\" and any(我方.场上英雄列表, .名称 == \"甄姬\"))",
+  "id": "group_fdadb1e6ef4e43759b752b9a970c8d3d",
+  "mode": "万象大赛",
   "name": "集体唤醒触发甄姬登场",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "在“使用无目标效果牌”事件中，使用集体唤醒，甄姬在场时适用。集体唤醒让场上英雄再次触发登场，甄姬能补充英雄牌。依据为《常小娥灵活变阵-常小娥》「甄姬」及官方效果牌「集体唤醒」、英雄「甄姬」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "集体唤醒能再次触发甄姬登场，获得其他登场英雄牌。",
-      "id": "utterances_1ee3d7e850db4f19b3a42237b90b8f01"
-    },
-    {
-      "text": "集体唤醒让场上英雄再次触发登场，甄姬能补充英雄牌。",
-      "id": "utterances_6c5c468526ec4d9aa88bcbbf82fad090"
+      "id": "utterances_1ee3d7e850db4f19b3a42237b90b8f01",
+      "text": "甄姬在场，集体唤醒能再触发她登场拿英雄牌。"
     }
   ],
-  "event_id": "os_1c33df3b1a2b43f5",
-  "id": "group_fdadb1e6ef4e43759b752b9a970c8d3d",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"集体唤醒\" and 玩家.战场 has \"甄姬\"",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1271": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "登场：获得1张其他的登场英雄牌。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1271",
+        "name": "甄姬",
+        "skills": [
+          {
+            "effect": "甄姬施放水流冲击当前目标敌人并弹向3格内最远的敌人，最多弹射4次，每次造成30+40%法术攻击力的法术伤害。敌人在3秒内受到3次水流伤害后会被冻结1秒。若目标附近无其他敌人则直接对其造成3倍水流伤害并直接被冻结。",
+            "enhancements": [
+              {
+                "effect": "水流伤害提升至30+75%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "冻结持续时间+1秒，并在冻结结束时额外造成50+100%法术攻击力的法术伤害",
+                "level": 40
+              },
+              {
+                "effect": "弹射次数上限+4",
+                "level": 100
+              }
+            ],
+            "id": 12700,
+            "name": "叹息水流"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "10/40",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1271"
+      },
+      "card:1273": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "登场：从3张其他的登场英雄牌中选择1张。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1273",
+        "name": "甄姬",
+        "skills": [
+          {
+            "effect": "甄姬施放水流冲击当前目标敌人并弹向3格内最远的敌人，最多弹射4次，每次造成30+40%法术攻击力的法术伤害。敌人在3秒内受到3次水流伤害后会被冻结1秒。若目标附近无其他敌人则直接对其造成3倍水流伤害并直接被冻结。",
+            "enhancements": [
+              {
+                "effect": "水流伤害提升至30+75%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "冻结持续时间+1秒，并在冻结结束时额外造成50+100%法术攻击力的法术伤害",
+                "level": 40
+              },
+              {
+                "effect": "弹射次数上限+4",
+                "level": 100
+              }
+            ],
+            "id": 12700,
+            "name": "叹息水流"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1271"
+      },
+      "card:7079": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包二",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "立即触发所有英雄的登场效果。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7079",
+        "name": "集体唤醒",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "集体唤醒",
+  "syntax_version": "0.4"
 }

@@ -1,9 +1,9 @@
 """Private annotations on durable group/utterance identities and administrator activity."""
 from contextlib import closing
+from collections import Counter
 import json
 import uuid
 
-import json_store
 import templates_store as library
 from workspace import Conflict
 
@@ -17,18 +17,34 @@ def text(value, label, limit=4000):
 def comments(service, status='open', group_id=None):
     if status not in ('all', 'open', 'closed'):
         raise ValueError('批注状态无效')
+    tombstones = library._read_metadata(service.root)['tombstones']
+    target = library.merged_reference(tombstones, group_id)[0]
+    matches = []
     with closing(service._connection()) as conn:
-        rows = conn.execute('SELECT data FROM template_comments WHERE (? IS NULL OR group_id=?) ORDER BY rowid DESC', (group_id, group_id))
-        return [thread for (data,) in rows if (thread := json.loads(data))['status'] == status or status == 'all']
+        rows = conn.execute('SELECT data FROM template_comments ORDER BY rowid DESC')
+        for (raw,) in rows:
+            thread = _merged_thread(json.loads(raw), tombstones)
+            if (target is None or thread['group_id']==target) and (status=='all' or thread['status']==status):
+                matches.append(thread)
+    return matches
+
+
+def _merged_thread(thread, tombstones):
+    gid, uid = library.merged_reference(tombstones, thread['group_id'], thread['utterance_id'])
+    return {**thread, 'group_id': gid, 'utterance_id': uid}
 
 
 def comment_counts(service):
+    tombstones = library._read_metadata(service.root)['tombstones']
+    counts = Counter()
     with closing(service._connection()) as conn:
         rows = conn.execute("""
             SELECT group_id, json_extract(data, '$.utterance_id'), count(*)
             FROM template_comments GROUP BY 1, 2
         """)
-        return [{'group_id': gid, 'utterance_id': uid, 'count': count} for gid, uid, count in rows]
+        for gid, uid, count in rows:
+            counts[library.merged_reference(tombstones, gid, uid)] += count
+    return [{'group_id': gid, 'utterance_id': uid, 'count': count} for (gid, uid), count in counts.items()]
 
 
 def annotate(service, actor, data, thread_id=None, action='create'):
@@ -71,17 +87,17 @@ def annotate(service, actor, data, thread_id=None, action='create'):
             if type(data.get('message_revision')) is not int or data['message_revision'] != len(revisions):
                 raise Conflict('这条内容已有修改，请核对最新版本')
             body = text(data.get('body'), '批注内容')
-            if original['body'] == body: return thread
+            if original['body'] == body: return _merged_thread(thread, library._read_metadata(service.root)['tombstones'])
             revisions.append({'body': original['body'], 'at': original.get('edited_at', original['at'])})
             original.update(body=body, edited_at=message['at'])
             message.update(body=body, message_index=index)
         else:
             status = 'closed' if action == 'close' else 'open'
-            if thread['status'] == status: return thread
+            if thread['status'] == status: return _merged_thread(thread, library._read_metadata(service.root)['tombstones'])
             thread['status'] = status
         thread['messages'].append(message)
         conn.execute('INSERT OR REPLACE INTO template_comments VALUES(?,?,?)', (thread['id'], thread['group_id'], json.dumps(thread, ensure_ascii=False)))
-        return thread
+        return _merged_thread(thread, library._read_metadata(service.root)['tombstones'])
 
 
 def direct_action(before, after):
@@ -98,22 +114,21 @@ def direct_action(before, after):
         if u['id'] in old and bool(u.get('fixed')) != bool(old[u['id']].get('fixed')):
             return 'fix_utterance' if u.get('fixed') else 'unfix_utterance'
     if before['utterances'] != after['utterances']: return 'edit_utterance'
+    if before.get('review_status','ai_generated')!=after.get('review_status','ai_generated'): return 'review_status'
     return 'edit_group'
 
 
 def history(service, actor, group_id=None, latest=False):
     items = []
+    metadata=library._read_metadata(service.root)
+    tombstones=metadata['tombstones']
+    group_id=library.merged_reference(tombstones,group_id)[0]
     def add(gid, **entry):
+        gid=library.merged_reference(tombstones,gid)[0]
         if not group_id or gid == group_id: items.append(dict(group_id=gid, **entry))
-    meta_path = service.root / library.META
-    stamp = meta_path.stat() if meta_path.exists() else None
-    generation = (stamp.st_mtime_ns,stamp.st_size,stamp.st_ino) if stamp else None
-    with service.lock:
-        if getattr(service,'_feedback_audit_stamp',False) != generation:
-            audit_rows=json_store.read(meta_path,{}).get('audit',[])
-            service._feedback_audit=[row for row in audit_rows if row.get('manual') or row.get('action') in ('confirm_warning','resolve_conflict')]
-            service._feedback_audit_stamp=generation
-        audits=service._feedback_audit
+    audit_rows=metadata['audit']
+    audits=[*(row for row in audit_rows if row.get('manual') or row.get('action') in ('confirm_warning','resolve_conflict')),
+            *library.review_history(service.root)]
     for audit in audits:
         context = audit.get('manual')
         if audit.get('action') == 'confirm_warning':
@@ -125,41 +140,42 @@ def history(service, actor, group_id=None, latest=False):
         for change in audit['changes']:
             if change['kind'] != 'group': continue
             gid = change['id']
-            if group_id and gid != group_id: continue
             before, after = (next((g for g in audit.get(key,{}).get('groups',[]) if g['id']==gid),None) for key in ('before','after'))
             add(gid, id=f"{audit['id']}:{gid}", action=direct_action(before,after), at=audit['at'], by=audit['actor'], before=before, after=after, **context)
     with closing(service._connection()) as conn:
-        for (raw,) in conn.execute('SELECT data FROM proposals'):
-            p = json.loads(raw)
-            private = actor['role'] == 'admin' or p['author'] == actor['username']
-            original=p.get('submission',{}).get('changes',p['changes'])
-            if private:
-                for change in original:
-                    if change['kind']!='group': continue
-                    gid=change['id']
-                    common={'source':p.get('source','proposal'),'batch_id':p.get('batch_id',p['id']),'proposal_id':p['id']}
-                    if p.get('author_role')=='admin' and p.get('source')=='web-import':
-                        add(gid,id=f"{p['id']}:submit:{gid}",action='submit',at=p['created_at'],by=p['author'],submitted=change.get('value'),**common)
-                    for message in p.get('discussion',[]):
-                        if message['role']=='admin':
-                            add(gid,id=f"{p['id']}:{message['id']}:{gid}",action='proposal_comment',at=message['at'],by=message['by'],body=message['body'],**common)
-            for index,review in enumerate(p['reviews']):
-                action = review.get('action','approve')
-                if not private and action != 'approve': continue
-                if review.get('role') != 'admin' and not ('role' not in review and action in ('approve','reject')): continue
-                for change in review.get('submitted',review.get('changes',p['changes'])):
-                    if change['kind'] != 'group': continue
-                    gid = change['id']; key = 'group:'+gid
-                    record_id=f"{p['id']}:{review.get('request',index)}:{gid}"
-                    if not private:
-                        add(gid,id=record_id,action=review.get('operation',action),at=review['at'],by=review['by'],source='proposal',after=review.get('after',{}).get(key))
-                        continue
-                    changes = review.get('changes',[])
-                    suggested = next((c.get('value') for c in changes if c['kind']=='group' and c['id']==gid),None)
-                    original = next((c.get('value') for c in p.get('submission',{}).get('changes',[]) if c['kind']=='group' and c['id']==gid),None)
-                    add(gid,id=record_id, original_submission=original,action=review.get('operation',action), at=review['at'], by=review['by'],
-                        source=p.get('source','proposal'), batch_id=p.get('batch_id',p['id']), proposal_id=p['id'], author=p['author'],
-                        before=review.get('before',{}).get(key), submitted=change.get('value'), reviewed=suggested, after=review.get('after',{}).get(key))
+        proposals=conn.execute("SELECT json_remove(data,'$.base') FROM proposals").fetchall()
+    for (raw,) in proposals:
+        p = json.loads(raw)
+        private = actor['role'] == 'admin' or p['author'] == actor['username']
+        original=p.get('submission',{}).get('changes',p['changes'])
+        if private:
+            for change in original:
+                if change['kind']!='group': continue
+                gid=change['id']
+                common={'source':p.get('source','proposal'),'batch_id':p.get('batch_id',p['id']),'proposal_id':p['id']}
+                if p.get('author_role')=='admin' and p.get('source')=='web-import':
+                    add(gid,id=f"{p['id']}:submit:{gid}",action='submit',at=p['created_at'],by=p['author'],submitted=change.get('value'),**common)
+                for message in p.get('discussion',[]):
+                    if message['role']=='admin':
+                        add(gid,id=f"{p['id']}:{message['id']}:{gid}",action='proposal_comment',at=message['at'],by=message['by'],body=message['body'],**common)
+        for index,review in enumerate(p['reviews']):
+            action = review.get('action','approve')
+            if not private and action != 'approve': continue
+            if review.get('role') != 'admin' and not ('role' not in review and action in ('approve','reject')): continue
+            for change in review.get('submitted',review.get('changes',p['changes'])):
+                if change['kind'] != 'group': continue
+                gid = change['id']; key = 'group:'+gid
+                display_id = review.get('merged_groups', {}).get(gid, gid)
+                record_id=f"{p['id']}:{review.get('request',index)}:{gid}"
+                if not private:
+                    add(display_id,id=record_id,action=review.get('operation',action),at=review['at'],by=review['by'],source='proposal',after=review.get('after',{}).get(key))
+                    continue
+                changes = review.get('changes',[])
+                suggested = next((c.get('value') for c in changes if c['kind']=='group' and c['id']==gid),None)
+                original = next((c.get('value') for c in p.get('submission',{}).get('changes',[]) if c['kind']=='group' and c['id']==gid),None)
+                add(display_id,id=record_id, original_submission=original,action=review.get('operation',action), at=review['at'], by=review['by'],
+                    source=p.get('source','proposal'), batch_id=p.get('batch_id',p['id']), proposal_id=p['id'], author=p['author'],
+                    before=review.get('before',{}).get(key), submitted=change.get('value'), reviewed=suggested, after=review.get('after',{}).get(key))
     for thread in comments(service,'all',group_id):
         for index,m in enumerate(thread['messages']):
             if m['role'] == 'admin': add(thread['group_id'],id=f"{thread['id']}:{index}",action='comment_'+m['action'],at=m['at'],by=m['by'],source='comment',
@@ -177,12 +193,12 @@ def history(service, actor, group_id=None, latest=False):
 def latest_history(service, actor):
     def stamps():
         result=[]
-        for path in (service.root / library.META,service.path):
+        for path in (service.root / library.META,service.root / library.STATE,service.root / library.REVIEW_HISTORY,service.path):
             try: stat=path.stat()
             except FileNotFoundError: result.append(None)
             else: result.append((stat.st_mtime_ns,stat.st_size,stat.st_ino))
         return tuple(result)
-    with service.lock:
+    with service.history_lock:
         gen=stamps()
         if getattr(service,'_summary_stamp',None)!=gen:
             service._summary_stamp=gen
