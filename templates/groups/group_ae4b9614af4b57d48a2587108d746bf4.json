@@ -1,0 +1,86 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation": "",
+  "explanation_after": "返修正常表达破损古币由兑换增加、选丝绸之路用于后续卖币换牌，前置区分普通古币拆2和精致古币拆4。\n完整候选池通过 3 项。正例可播：已有零钱兑换再选丝绸之路；单项反例不命中：改变必要前提：已有零钱兑换再选丝绸之路；缺值检查：缺少关键观测：已有零钱兑换再选丝绸之路。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：零钱兑换会拆成更多古币，选丝绸之路可卖币换河洛牌。\n原始依据：丝绸之路每出售4名场上英雄得1张古币、每出售1张古币得1张【河洛】英雄牌；零钱兑换会把获得的古币自动拆成2张无法提供等级的破损古币，精致古币拆成4张，且破损古币仍视作古币，可把币量翻倍后逐张售卖换牌，选天赋用于开启后续换牌路线。当前取舍：受30字限制，舍去古币拆2张、精致古币拆4张及出售4名英雄得币等细节，保留拆成多张破损古币与卖币换河洛牌的核心收益。自然语言适用条件：选择丝绸之路，零钱兑换已生效。正式条件：arg2 is \"丝绸之路\" and 玩家.已选天赋 has \"零钱兑换\"。播报重点：点明零钱兑换把古币拆成多张破损古币，选丝绸之路可卖币换河洛牌。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第179行「使用技巧」，正式卡牌库 card:636214、card:636215。",
+  "expression": "(动作.选中.名称 == \"丝绸之路\" and any(我方.天赋列表, .名称 == \"零钱兑换\"))",
+  "id": "group_ae4b9614af4b57d48a2587108d746bf4",
+  "mode": "万象大赛",
+  "name": "有零钱兑换时选丝绸之路攒河洛牌",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_dcb11f5b06e246ad98f4a3fe37b298f7",
+      "text": "零钱兑换把古币拆成多张破损古币，选丝绸之路可卖币换河洛牌。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:636214": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包四",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "每出售4名场上英雄获得1张古币，每出售1张古币获得1张【河洛】英雄牌。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:636214",
+        "name": "丝绸之路",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:636215": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包二",
+          "拍卖轮次（官网原文）": "第八轮拍卖",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1520分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "你获得的古币会自动兑换为2张无法提供等级的破损古币，精致古币则兑换为4张。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:636215",
+        "name": "零钱兑换",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "丝绸之路",
+  "syntax_version": "0.4"
+}

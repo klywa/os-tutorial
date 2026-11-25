@@ -1,0 +1,69 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b9276a29aaffc6ba",
+  "explanation_after": "两句人工原话保留，说明在零容错时承担生命设为一点的代价，十张是随机效果牌且需要后续使用。\n完整候选池通过 3 项。正例可播：关键局面已满足；单项反例不命中：仅改变必要事实；缺值检查：必要字段缺失。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：容错已尽，选绝处逢生可用十张随机效果牌争取翻盘。 / 没有容错时，绝处逢生将生命设为一点，换十张随机牌。\n原始依据：绝处逢生将棋手生命值变为1并随机获得10张效果牌；低容错时已有下轮出局风险，该牌用一点生命值承受风险，提供十张随机效果牌来争取翻盘。当前取舍：效果牌要另行使用，措辞不许诺翻盘或保证牌型，播报保留原人工改稿，适用范围以复核后的生效条件为准。自然语言适用条件：容错见底时选绝处逢生。正式条件：arg2 is \"绝处逢生\" and 玩家.容错数 <= 0。取舍后的播报重点：说明容错耗尽时选绝处逢生将生命设为一点，换取十张随机效果牌来争取翻盘，保留不确定措辞，不承诺翻盘或特定牌型。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第217行「绝处逢生・使用技巧」\n正式卡牌库 绝处逢生（card:7112）\n正式卡牌库「绝处逢生」 · card:7112",
+  "expression": "(动作.选中.名称 == \"绝处逢生\" and 我方.容错数 <= 0)",
+  "id": "group_513dbb24696c5b828bacbd8c8fa48657",
+  "mode": "万象大赛",
+  "name": "容错见底时选绝处逢生",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_92e3645eb9e64a6a9fde671849a0dac7",
+      "text": "已经没有容错了，选绝处逢生搏一搏吧！"
+    },
+    {
+      "id": "utterances_d71e37f94ae845a99b86f347abea34c5",
+      "text": "没有容错了，选绝处逢生背水一战吧！"
+    }
+  ],
+  "version": "s1",
+  "batch": [
+    "自回归"
+  ],
+  "review_status": "initial_reviewed",
+  "last_modified_by": {
+    "kind": "user",
+    "username": "local"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7112": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包四",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到2170分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "棋手生命值变为1，随机获得10张效果牌。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7112",
+        "name": "绝处逢生",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "绝处逢生",
+  "syntax_version": "0.4"
+}

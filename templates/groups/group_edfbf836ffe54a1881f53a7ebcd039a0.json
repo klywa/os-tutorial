@@ -1,25 +1,145 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation": "",
+  "explanation_after": "常小娥指定范围内仅干将在场时，实际使用小菟助力就能把等级集中给他。\n完整候选池通过 3 项。正例可播：前期单挂；单项反例不命中：已达到六级；缺值检查：缺少 玩家.等级。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：前期只上干将莫邪，小菟助力的等级就全给他。\n原始依据：干将莫邪有适配装备时可单挂过渡，若新增承伤英雄上场需考虑小菟助力可能加到新英雄身上。当前取舍：常小娥前期只在使用助力且当时场上仍为干将莫邪一人时，助力的单个随机目标才保证集中给他；之后加人不再保证集中。自然语言适用条件：使用常小娥，且阵容属于常小娥灵活4人组-常小娥（独立于DSL）；玩家等级小于6，场上只有1名英雄且为干将莫邪并解释上阵干将莫邪时。正式条件：arg1 is \"干将莫邪\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"干将莫邪\"。取舍后的播报重点：前期只上干将莫邪，小菟助力的等级就全给他。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-98200a238bbc8ec69ca0「干将莫邪」",
+  "expression": "(((动作.英雄.名称 == \"干将莫邪\" and 我方.等级 < 6) and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"干将莫邪\"))",
+  "id": "group_edfbf836ffe54a1881f53a7ebcd039a0",
+  "mode": "万象大赛",
   "name": "前期单挂干将莫邪集中助力",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》单挂过渡；干将普通在场给雄剑，觉醒再给雌剑。BV1eeWF6pESY:p1 04:30–04:58、BV13gxz6FEZJ:p1 00:29–00:58明确觉醒后的击败成长。干将莫邪须亲自击败敌人才能提高等级，不能保证单挂必定成长。",
+  "tags": [],
   "utterances": [
     {
-      "text": "让干将单吃小菟助力，养到觉醒后，他拿击败还能再升级。",
-      "id": "utterances_25cdea177046488589969d5bca017132"
-    },
-    {
-      "text": "单挂能把助力全给干将，觉醒后拿到击败就能接着长等级。",
-      "id": "utterances_e43851391c664c6aae51af39246e56ba"
+      "id": "utterances_25cdea177046488589969d5bca017132",
+      "text": "前期只上干将莫邪，小菟助力的等级就全给他。"
     }
   ],
-  "id": "group_edfbf836ffe54a1881f53a7ebcd039a0",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"干将莫邪\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"干将莫邪\"",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1821": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "干将莫邪在场时，获得普通装备双剑·雄。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1821",
+        "name": "干将莫邪",
+        "skills": [
+          {
+            "effect": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至150+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第2次施法会额外释放1对飞剑",
+                "level": 40
+              },
+              {
+                "effect": "飞剑伤害提升至150+200%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 18200,
+            "name": "雌雄双剑"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "15/25",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1821"
+      },
+      "card:1823": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "干将莫邪在场时，获得普通装备双剑·雄及双剑·雌。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1823",
+        "name": "干将莫邪",
+        "skills": [
+          {
+            "effect": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至150+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第2次施法会额外释放1对飞剑",
+                "level": 40
+              },
+              {
+                "effect": "飞剑伤害提升至150+200%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 18200,
+            "name": "雌雄双剑"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1821"
+      }
+    }
+  },
+  "extra_key": "干将莫邪",
+  "syntax_version": "0.4"
 }

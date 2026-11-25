@@ -1,0 +1,27 @@
+{
+  "id": "os_5dfcb4835e1e1513",
+  "name": "解释为何穿戴装备",
+  "category": "解释类",
+  "parameters": [
+    {
+      "key": "arg1",
+      "name": "arg1",
+      "type": "entity",
+      "dsl_type": "英雄",
+      "entity_categories": [
+        "heroes"
+      ],
+      "id": "p_arg1"
+    },
+    {
+      "key": "arg2",
+      "name": "arg2",
+      "type": "entity",
+      "dsl_type": "装备",
+      "entity_categories": [
+        "equipment"
+      ],
+      "id": "p_arg2"
+    }
+  ]
+}

@@ -1,27 +1,15 @@
 {
-  "name": "弈星在场时升级多得经验",
-  "scope": {
-    "player_id": null,
-    "lineup_note_id": null
-  },
-  "explanation": "《基础知识》棋手经验和升级：主动升级消耗与经验差额等量的能量。弈星普通／觉醒卡在棋手升级时分别补2／4经验。等额可升一次，不从剩余能量单独推断连升。",
-  "utterances": [
-    {
-      "text": "能量够这次升本，先上弈星就能顺手给下一级攒经验。",
-      "id": "utterances_994c26773ed4475392bd43918e2dc629"
-    },
-    {
-      "text": "弈星这轮上场能赶上升本，下一次补经验时就能少花钱。",
-      "id": "utterances_4bd4c95bc88a4090ae2c3b9e57152d1d"
-    },
-    {
-      "text": "现在升得起一级，先上弈星能把这次升级换成额外经验。",
-      "id": "utterances_99c3a041017d4af59495502e835acb4d"
-    }
-  ],
-  "id": "group_23f43ca6d8a24a76859f74b2e6a42da5",
-  "event_id": "os_e5391e165361858d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "能量确实覆盖一次升级，先上弈星能在升级时取得额外经验，不暗示本轮连续升级。\n完整候选池通过 3 项。正例可播：当前实际值为5，满足比较条件。；单项反例不命中：升本还差5经验，但只有4点能量，不能立即升本。；缺值检查：缺少占位符引用的实际数值，无法判定该条件。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：这轮能量够升一级，先上弈星可在升级后多拿经验。 / 这轮能升本，先上弈星可以多拿棋手经验。\n原始依据：能量覆盖一次升级需求，先让弈星在场可在升级时拿额外经验，因弈星两种形态经验不同且当前条件仅保证第一次升本资源，故不提及具体经验数值或多次升级。当前取舍：按局势直接表达，以行动和当下收益为主，用当前必要资源连接先上弈星与多拿经验的结果。自然语言适用条件：上阵弈星时玩家下一等级仍需经验，且剩余能量足够补齐。正式条件：arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验。取舍后的播报重点：先说明本轮能量够升一级或升本，再强调先上弈星并在升级时获取额外棋手经验。",
+  "explanation_source": "knowledge/other/基础知识.json\n正式卡牌库：弈星（card:1971）\n正式卡牌库：弈星（card:1973）",
+  "expression": "((动作.英雄.名称 == \"弈星\" and 我方.升到下一级所需经验 > 0) and 我方.剩余能量 >= 我方.升到下一级所需经验)",
+  "id": "group_23f43ca6d8a24a76859f74b2e6a42da5",
+  "mode": "万象大赛",
+  "name": "弈星在场时升级多得经验",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:1971",
@@ -32,7 +20,125 @@
       "name": "弈星"
     }
   ],
-  "priority": 0,
-  "expression": "arg1 is \"弈星\" and 玩家.升到下一级所需经验 > 0 and 玩家.剩余能量 >= 玩家.升到下一级所需经验",
-  "editor_mode": "text"
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_994c26773ed4475392bd43918e2dc629",
+      "text": "这轮能量够升一级，先上弈星可在升级时多拿经验。"
+    },
+    {
+      "id": "utterances_4bd4c95bc88a4090ae2c3b9e57152d1d",
+      "text": "这轮能升本，先上弈星再升级可以多拿棋手经验。"
+    }
+  ],
+  "version": "s1",
+  "ignored": true,
+  "batch": [
+    "自回归"
+  ],
+  "review_status": "initial_reviewed",
+  "last_modified_by": {
+    "kind": "user",
+    "username": "local"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1971": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1971",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/60",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      },
+      "card:1973": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+4。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1973",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      }
+    }
+  },
+  "extra_key": "弈星",
+  "syntax_version": "0.4"
 }

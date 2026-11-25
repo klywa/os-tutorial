@@ -1,0 +1,24 @@
+{
+  "id": "os_bfcc2eec6def94c8",
+  "name": "解释为何对目标使用效果牌",
+  "category": "解释类",
+  "parameters": [
+    {
+      "key": "arg1",
+      "name": "arg1",
+      "type": "entity",
+      "dsl_type": "单位",
+      "id": "p_arg1"
+    },
+    {
+      "key": "arg2",
+      "name": "arg2",
+      "type": "entity",
+      "dsl_type": "效果牌",
+      "entity_categories": [
+        "effect-cards"
+      ],
+      "id": "p_arg2"
+    }
+  ]
+}

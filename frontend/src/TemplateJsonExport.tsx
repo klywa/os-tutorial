@@ -2,15 +2,17 @@ import {useEffect,useRef,useState} from 'react';
 import type {PortableTemplateLibrary} from './templates';
 import {api} from './model';
 import {TemplateDialog} from './TemplateEditor';
+import {fileDeliveryDocument,type TemplateFile} from './templateFile';
 
-export default function TemplateJsonExport({groupId,groupName,onClose}:{groupId:string;groupName:string;onClose:()=>void}){
+export default function TemplateJsonExport({groupId,groupName,file,onClose}:{groupId:string;groupName:string;file?:TemplateFile|null;onClose:()=>void}){
  const [code,setCode]=useState(''),[loading,setLoading]=useState(true),[loadError,setLoadError]=useState(''),[copyMessage,setCopyMessage]=useState(''),[copying,setCopying]=useState(false),[attempt,setAttempt]=useState(0);
  const field=useRef<HTMLTextAreaElement>(null);
  useEffect(()=>{
   let alive=true;setLoading(true);setLoadError('');setCode('');setCopyMessage('');
-  void api<PortableTemplateLibrary>('templates/export?group_ids='+encodeURIComponent(groupId)).then(document=>{if(alive)setCode(JSON.stringify(document,null,2));}).catch(e=>{if(alive)setLoadError((e as Error).message);}).finally(()=>{if(alive)setLoading(false);});
+  const request=file?Promise.resolve(fileDeliveryDocument(file,[groupId])):api<PortableTemplateLibrary>('templates/export?authoring=1&group_ids='+encodeURIComponent(groupId));
+  void request.then(document=>{if(alive)setCode(JSON.stringify(document,null,2));}).catch(e=>{if(alive)setLoadError((e as Error).message);}).finally(()=>{if(alive)setLoading(false);});
   return()=>{alive=false;};
- },[groupId,attempt]);
+ },[groupId,attempt,file]);
  async function copy(){
   if(!code||copying)return;setCopying(true);setCopyMessage('');
   try{if(!navigator.clipboard?.writeText)throw new Error('clipboard unavailable');await navigator.clipboard.writeText(code);setCopyMessage('JSON 已复制');}

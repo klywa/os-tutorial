@@ -1,0 +1,24 @@
+{
+  "id": "os_2b69e500a5c8036a",
+  "name": "解释为何选择天赋",
+  "category": "解释类",
+  "parameters": [
+    {
+      "key": "arg1",
+      "name": "arg1",
+      "type": "text",
+      "dsl_type": "Array<天赋>",
+      "id": "p_arg1"
+    },
+    {
+      "key": "arg2",
+      "name": "arg2",
+      "type": "entity",
+      "dsl_type": "天赋",
+      "entity_categories": [
+        "talents"
+      ],
+      "id": "p_arg2"
+    }
+  ]
+}

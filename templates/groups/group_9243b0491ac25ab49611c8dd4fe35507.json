@@ -1,0 +1,153 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_7be319d5c5ce8554",
+  "explanation": "",
+  "explanation_after": "两条保留飞行器实际命中猪八戒的前提，分别说生命上限和受治疗效果，正式选择参数与棋手均匹配。\n完整候选池通过 3 项。正例可播：安琪拉对上猪八戒主力时选择使绊子；单项反例不命中：改变必要前提：安琪拉对上猪八戒主力时选择使绊子；缺值检查：缺少关键观测：安琪拉对上猪八戒主力时选择使绊子。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：对面主力是猪八戒，使绊子命中他能压低血量上限。 / 使绊子若命中对手主力猪八戒，就能削弱他所受治疗。\n原始依据：飞行器命中的单位在3秒内生命值上限-30%且受到的治疗效果-50%。当前取舍：保持安琪拉持模块且对面主C为猪八戒，实际命中时分别影响生命上限和受治疗效果，每个候选只讲一项并保留条件句。自然语言适用条件：安琪拉实际选择使绊子模块，候选池中有该模块，当前对手主力是猪八戒。正式条件：arg2 is \"“使绊子”模块\" and arg1 has \"“使绊子”模块\" and 玩家.使用棋手 is \"安琪拉\" and 对局.当前对手.主C is \"猪八戒\"。取舍后的播报重点：候选分别围绕命中对手主力猪八戒时压低血量上限与削弱所受治疗组织，保留各自所需的局面与条件收益。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第101行「使用技巧」，正式卡牌库 card:95144、card:5111、card:5113。",
+  "expression": "(((动作.选中.名称 == \"“使绊子”模块\" and any(动作.候选列表, .名称 == \"“使绊子”模块\")) and 我方.棋手名称 == \"安琪拉\") and (对手 != nil and 对手.主C != nil and 对手.主C.名称 == \"猪八戒\"))",
+  "id": "group_9243b0491ac25ab49611c8dd4fe35507",
+  "mode": "万象大赛",
+  "name": "用使绊子压猪八戒的血量和治疗",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_4e78027bd3b54f389cd7e8d52f8cc666",
+      "text": "对面主力是猪八戒，使绊子命中他能压低血量上限。"
+    },
+    {
+      "id": "utterances_67623b9f08504984aaa037e8cdb50462",
+      "text": "使绊子若命中对手主力猪八戒，就能削弱他所受治疗。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5111": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "夺取\n每当3阶及以下英雄合成时，与其同阶的英雄等级+1。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5111",
+        "name": "猪八戒",
+        "skills": [
+          {
+            "effect": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。\n主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至10%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "最大生命值叠层提升至60层",
+                "level": 40
+              },
+              {
+                "effect": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+                "level": 100
+              }
+            ],
+            "id": 51100,
+            "name": "肉弹蹦床"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 20,
+          "法术防御": 20,
+          "物理攻击力": 24,
+          "物理防御": 20
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5111"
+      },
+      "card:5113": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "夺取\n每当3阶及以下英雄合成时，与其同阶的英雄等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:5113",
+        "name": "猪八戒",
+        "skills": [
+          {
+            "effect": "被动：猪八戒每承受600点伤害将永久提升45点最大生命值并增大体型，但降低1%移动速度，最多叠加30层。\n主动：猪八戒奋力跳起，落地时震击地面，对附近1格敌人造成7%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至10%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "最大生命值叠层提升至60层",
+                "level": 40
+              },
+              {
+                "effect": "叠层上限取消且不再降低移动速度，单回合最多叠加100层；施法时跳跃至敌人密集处",
+                "level": 100
+              }
+            ],
+            "id": 51100,
+            "name": "肉弹蹦床"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5111"
+      },
+      "card:95144": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "飞行器命中的单位在3秒内生命值上限-30%且受到的治疗效果-50%。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:95144",
+        "name": "“使绊子”模块",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "“使绊子”模块",
+  "syntax_version": "0.4"
+}

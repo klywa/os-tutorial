@@ -1,25 +1,170 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "自然条件已写在场且至少十级的苏烈和正好四人，传承之外的牺牲成长仍由后续阵亡触发。\n完整候选池通过 3 项。正例可播：在四人战场中显式包含苏烈。；单项反例不命中：改变本次新验证的必要前提。在四人战场中显式包含苏烈。；缺值检查：省略本次新验证的必要字段。在四人战场中显式包含苏烈。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：四人都在场，用传承可把苏烈的等级分给另外三人。 / 四人场用传承分出等级，苏烈留场仍可靠牺牲成长。\n原始依据：四人都在场时，传承可将苏烈等级分给另外三人；苏烈不会因传承离场，若之后阵亡仍可能靠牺牲加等级。当前取舍：点出当下分级的收益与三人受益范围，保留“可”“若阵亡仍可能”等触发与可能性限定，不将后续收益写成必然。自然语言适用条件：本次对已在场且至少10级的苏烈使用传承，自己恰有四人上场，四名参战者中包含供级苏烈，另外三名才是接收范围。正式条件：arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.战场 has arg1 and 玩家.场上英雄数 == 4 and arg1.等级 >= 10。取舍后的播报重点：首句说明四人在场用传承可将苏烈等级分给另三人；次句点出四人场分出等级后苏烈留场，若阵亡仍可能靠牺牲升级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「苏烈」 · n-11623aa33415cc60f559\n正式卡牌库：传承（card:7083）\n正式卡牌库：苏烈（card:1941）\n正式卡牌库：苏烈（card:1943）",
+  "expression": "((((动作.卡牌.名称 == \"传承\" and 动作.目标.名称 == \"苏烈\") and ((动作.目标.卡牌类型 == \"英雄\" and any(我方.场上英雄列表, .名称 == 动作.目标.名称)) or (动作.目标.卡牌类型 == \"衍生物\" and any(我方.场上衍生物列表, .名称 == 动作.目标.名称)))) and len(我方.场上英雄列表) == 4) and (动作.目标英雄 != nil and 动作.目标英雄.等级 >= 10))",
+  "id": "group_2f5632545c0a4ffe84e73954c5822519",
+  "mode": "万象大赛",
   "name": "四人阵传承苏烈",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
-  "explanation": "在“对目标使用效果牌”事件中，使用传承，目标为苏烈，场上正好四人时适用。传承能让队友分享苏烈的等级，同时保留苏烈继续承伤。依据为《常小娥灵活变阵-常小娥》「苏烈」及官方效果牌「传承」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "四人都在场，传承能把苏烈积累的等级分给另外三人。",
-      "id": "utterances_dad01ce2213643a596ffe3d924e5cc15"
+      "id": "utterances_dad01ce2213643a596ffe3d924e5cc15",
+      "text": "四人都在场，用传承可把苏烈的等级分给另外三人。"
     },
     {
-      "text": "传承能让队友分享苏烈的等级，同时保留苏烈继续承伤。",
-      "id": "utterances_cb23bab53eb9450bb87891ded5c06624"
+      "id": "utterances_cb23bab53eb9450bb87891ded5c06624",
+      "text": "四人场用传承分出等级，苏烈留场若阵亡仍可能牺牲升级。"
     }
   ],
-  "id": "group_2f5632545c0a4ffe84e73954c5822519",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "(arg2 is \"传承\" and arg1 is \"苏烈\" and 玩家.场上英雄数 == 4) and arg1.等级 >= 10",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1941": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1941",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/40",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:1943": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+4。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1943",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:7083": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定场上1名10级以上的英雄，将其等级随机分配给其他英雄中等级最低的3名（不会分配给同一英雄）。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7083",
+        "name": "传承",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "传承",
+  "syntax_version": "0.4"
 }

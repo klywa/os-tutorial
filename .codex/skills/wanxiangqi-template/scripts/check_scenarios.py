@@ -12,11 +12,18 @@ def read(path):
 
 class PreferGroup:
     """Observe whether the runtime offers this group's lines at its final draw."""
-    def __init__(self, lines):
+    def __init__(self, lines, line_index=0):
         self.lines = lines
+        self.line_index = line_index
         self.offered = False
+        self.group_drawn = False
+        self.playable_count = 0
 
     def choice(self, choices):
+        if self.group_drawn:
+            self.playable_count = len(choices) if self.offered else 0
+            return choices[self.line_index] if self.offered else choices[0]
+        self.group_drawn = True
         for item in choices:
             if item is self.lines:
                 self.offered = True
@@ -24,9 +31,11 @@ class PreferGroup:
         return choices[0]
 
 
-def check(config, cases):
+def check(config, cases, *, require_all=True):
     from src.python.condition import choose_utterance, evaluate_condition
 
+    if "解释事件" in config:
+        return check_v04(config, cases, require_all=require_all)
     catalog = config["condition_catalog"]
     groups = {(g["event_name"], g["name"]): g for g in config["groups"]}
     if not groups or not isinstance(cases, list) or not cases:
@@ -52,17 +61,87 @@ def check(config, cases):
                        for dim, field in (("player", "使用棋手"), ("lineup", "使用阵容"))) and
                    evaluate_condition(event, group["expression"], state, catalog))
         probe = PreferGroup(group["utterances"])
-        choose_utterance(config, event, state, rng=probe)
+        first_utterance = choose_utterance(config, event, state, rng=probe)
         won = case.get("can_win", expected)
         if type(won) is not bool or (won and not expected):
             raise ValueError(f"{key}：最终可播预期无效")
+        expected_utterances = case.get("expected_utterances")
+        if "expected_utterances" in case and (
+            not won or not isinstance(expected_utterances, list)
+            or not all(isinstance(line, str) for line in expected_utterances)
+        ):
+            raise ValueError(f"{key}：请按配置顺序填写所有预期可播话术")
         if matches != expected or probe.offered != won:
             errors.append(f"{key} / {case.get('reason', kind)}：实际命中 {matches}，实际可播 {probe.offered}")
-        else:
-            coverage[key].add(kind)
-            if probe.offered:
-                coverage[key].add("winner")
-    for key in groups:
+            continue
+        if expected_utterances is not None:
+            if len(expected_utterances) != probe.playable_count:
+                errors.append(f"{key} / {case.get('reason', kind)}：实际有 {probe.playable_count} 条可播话术")
+                continue
+            actual_utterances = [first_utterance]
+            actual_utterances.extend(
+                choose_utterance(config, event, state, rng=PreferGroup(group["utterances"], index))
+                for index in range(1, len(expected_utterances))
+            )
+            if actual_utterances != expected_utterances:
+                errors.append(f"{key} / {case.get('reason', kind)}：实际可播话术 {actual_utterances}")
+                continue
+        coverage[key].add(kind)
+        if probe.offered:
+            coverage[key].add("winner")
+    required = groups if require_all else dict.fromkeys(tuple(case["group"]) for case in cases)
+    for key in required:
+        missing = {"positive", "winner", "negative", "missing"} - coverage[key]
+        if missing:
+            errors.append(f"{key}：缺少通过的用例 {', '.join(sorted(missing))}")
+    return errors
+
+
+def check_v04(config, cases, *, require_all=True):
+    from src.python.condition.v04 import load_library, matching_keys, winning_pool
+    from src.python.condition.v04_legacy import adapt
+
+    library = load_library(config)
+    groups = {(event, group["id"]): (pattern, group, expression)
+              for event, keys in library.items() for pattern, rows in keys.items()
+              for group, expression, _ in rows}
+    legacy_names = defaultdict(list)
+    for key, (_, group, _) in groups.items():
+        legacy_names[(key[0], group["name"])].append(key)
+    errors, coverage = [], defaultdict(set)
+    checked = set()
+    for case in cases:
+        key = tuple(case["group"])
+        if key not in groups:
+            named = legacy_names.get(key, [])
+            if len(named) > 1:
+                raise ValueError(f"{key}：同事件存在重名组，请用稳定组 ID")
+            if named:
+                key = named[0]
+        checked.add(key)
+        if key not in groups:
+            errors.append(f"{key}：发布库中没有该组")
+            continue
+        pattern, group, condition = groups[key]
+        event, state = case["event"], case["state"]
+        name = event["事件"]
+        if "参数" in event:
+            name, state = adapt(event, state)
+        kind, expected = case["kind"], case["matches"]
+        if kind not in ("positive", "negative", "missing") or type(expected) is not bool:
+            raise ValueError(f"{key}：用例类别或预期命中值无效")
+        matched = name == key[0] and bool(matching_keys([pattern], name, state)) and condition.evaluate(state) is True
+        _, offered = winning_pool(library, name, state)
+        lines = [row["text"] for row in offered if row["id"] == group["id"]]
+        desired = case.get("can_win", expected)
+        if matched != expected or bool(lines) != desired or "expected_utterances" in case and lines != case["expected_utterances"]:
+            errors.append(f"{key} / {case.get('reason', kind)}：实际命中 {matched}，实际可播 {lines}")
+            continue
+        coverage[key].add(kind)
+        if lines:
+            coverage[key].add("winner")
+    required = groups if require_all else checked
+    for key in required:
         missing = {"positive", "winner", "negative", "missing"} - coverage[key]
         if missing:
             errors.append(f"{key}：缺少通过的用例 {', '.join(sorted(missing))}")
@@ -74,13 +153,16 @@ if __name__ == "__main__":
     parser.add_argument("published", type=Path, help="GET /api/templates/published 的完整结果")
     parser.add_argument("cases", type=Path)
     parser.add_argument("--root", type=Path, default=Path.cwd())
+    parser.add_argument("--groups-in-cases", action="store_true", help="仅要求用例中列出的组有完整覆盖")
     args = parser.parse_args()
     sys.path.insert(0, str(args.root.resolve()))
     config = read(args.published)
     cases = read(args.cases)
-    errors = check(config, cases)
+    errors = check(config, cases, require_all=not args.groups_in_cases)
     if errors:
         parser.exit(1, "\n".join(errors) + "\n")
-    print(f"已核对 {len(config['groups'])} 个可播组、{len(cases)} 项用例")
+    count = len(config["groups"]) if "groups" in config else sum(
+        len(groups) for keys in config["解释事件"].values() for groups in keys.values())
+    print(f"已核对 {count} 个可播组、{len(cases)} 项用例")
 
 

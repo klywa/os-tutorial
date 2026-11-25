@@ -1,25 +1,63 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "单独在场且恰为目标时，两份等级都归同一名英雄，普通牌效三级与两级相加为五，原句不改。\n完整候选池通过 3 项。正例可播：目标是唯一英雄，两份等级都归他；单项反例不命中：存在第二名英雄时不能保证随机等级；缺值检查：快照缺少玩家.场上英雄数。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上只有选中的英雄，简易协作能让他独得五级。 / 趁目标单独在场用简易协作，两份等级就会都给他。\n原始依据：简易协作分别给指定目标三级和随机英雄两级，场上只有目标时两次收益落入同一人，把唯一上场者换成另一人会破坏集中前提。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接原因与结果，且本组两条原稿均逐字保留。自然语言适用条件：正在使用简易协作，指定对象正好是场上唯一英雄。正式条件：arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1。取舍后的播报重点：点明目标单独在场这一前提，在使用简易协作的行动下使其独得五级或集中获得两份等级。",
+  "explanation_source": "knowledge/other/冷门知识.json「简易协作效果卡」 · n-99456f64778f7b96cb15\n正式卡牌库：简易协作（card:7040）",
+  "expression": "((动作.卡牌.名称 == \"简易协作\" and len(我方.场上英雄列表) == 1) and ((动作.目标.卡牌类型 == \"英雄\" and any(我方.场上英雄列表, .名称 == 动作.目标.名称)) or (动作.目标.卡牌类型 == \"衍生物\" and any(我方.场上衍生物列表, .名称 == 动作.目标.名称))))",
+  "id": "group_1eb2db546c7e4d9f8fa2669cfcd49848",
+  "mode": "万象大赛",
   "name": "单人场用简易协作集中等级",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "《冷门知识》简易协作效果卡确认指定目标本人可获随机一份，单人场两份归一。简易协作官方卡面对指定英雄+3级、随机英雄+2级。使用时校验指定英雄仍在战场；选／购时不假定已经打出。获牌渠道以对应效果牌所属分组为据。",
+  "tags": [],
   "utterances": [
     {
-      "text": "简易协作的两份等级都归场上这一人，一共加5级。",
-      "id": "utterances_91e5ffd4af0640f09b5ceb4f0eb64d88"
+      "id": "utterances_91e5ffd4af0640f09b5ceb4f0eb64d88",
+      "text": "场上只有选中的英雄，简易协作能让他独得五级。"
     },
     {
-      "text": "场上只有指定英雄，简易协作的随机提供的等级也都归他。",
-      "id": "utterances_7a85723384294773b68987dcd3aaea19"
+      "id": "utterances_7a85723384294773b68987dcd3aaea19",
+      "text": "趁目标单独在场用简易协作，两份等级就会都给他。"
     }
   ],
-  "id": "group_1eb2db546c7e4d9f8fa2669cfcd49848",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg2 is \"简易协作\" and 玩家.场上英雄数 == 1 and 玩家.战场 has arg1",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7040": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄等级+3，随机1名英雄等级+2。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7040",
+        "name": "简易协作",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "简易协作",
+  "syntax_version": "0.4"
 }

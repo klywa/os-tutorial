@@ -22,6 +22,14 @@ def git(root, *args):
 
 
 class TemplateMergeTests(unittest.TestCase):
+    def test_split_state_preserves_v04_syntax_during_merge(self):
+        legacy = sync._effective({})
+        migrated = sync._effective({'templates/library.state.json': {'syntax_version': '0.4'}})
+        for preferred in ('left', 'right'):
+            with self.subTest(preferred=preferred):
+                merged = sync._metadata([legacy, legacy, migrated], preferred=preferred)
+                self.assertEqual(merged['syntax_version'], '0.4')
+
     def test_derived_version_bindings_survive_metadata_merge(self):
         selector={'key':'hero','name':'英雄','anchor':'h1','categories':['heroes']}
         def tree(ids):return {'templates/library.meta.json':{'entity_bindings':{'g':{'c':{'selector':selector,'ids':ids}}}}}

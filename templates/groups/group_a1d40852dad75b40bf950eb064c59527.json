@@ -1,29 +1,165 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation": "",
+  "explanation_after": "返修明确手持小菟送福和保持四人，实际使用后才覆盖露娜且不把上阵解释成送福触发。\n完整候选池通过 3 项。正例可播：常小娥灵活4人组，arg1=露娜，场上恰好4人，战场与主C均有露娜，手牌含棋手技能小菟送福。；单项反例不命中：只移除手里的小菟送福。；缺值检查：不提供玩家.手牌。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：四人队上露娜打输出，手里的小菟送福也能给她升级。\n原始依据：原表述仅复述露娜向最远端标记目标突击造成法术伤害的卡面，未体现盘面配合；四人阵中露娜担任主力，且小菟送福覆盖正好四名英雄，可给主力的露娜一次助力。当前取舍：舍弃单卡机制复述，围绕四人盘面上露娜的职责，以及维持四人且实际用小菟送福后覆盖露娜来组织短播报，露娜上阵并不触发送福，手牌已持有只提供后续兑现机会。自然语言适用条件：常小娥灵活4人组，露娜本次上场后为四人队主力，手里已经有小菟送福。正式条件：arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.主C is \"露娜\" and 玩家.战场 has \"露娜\" and 玩家.手牌 has {\"类型\":\"棋手技能\",\"名称\":\"小菟送福\"}。取舍后的播报重点：强调四人队上露娜打输出，并点出手里的小菟送福能给她升级的助力机会。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「核心原理」「露娜」「助力次数与等级门槛」\n正式卡牌库「露娜」 · card:1461、card:1463；「小菟送福」 · card:92410",
+  "expression": "((((动作.英雄.名称 == \"露娜\" and len(我方.场上英雄列表) == 4) and (我方.主C != nil and 我方.主C.名称 == \"露娜\")) and any(我方.场上英雄列表, .名称 == \"露娜\")) and any(我方.手牌列表, .卡牌类型 == \"棋手牌\" and .名称 == \"小菟送福\"))",
+  "id": "group_a1d40852dad75b40bf950eb064c59527",
+  "mode": "万象大赛",
   "name": "四人阵上露娜担任主力输出",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》「核心原理」「打法要点」及「露娜」。上阵后四人、露娜在场且已被指定为主力输出。临时登场触发整备不会单凭人数命中本组。",
+  "tags": [],
   "utterances": [
     {
-      "text": "这四人由露娜打输出，她的突进能打伤一路上的敌人。",
-      "id": "utterances_e98ae6267b574d67809863f6a641ab0d"
-    },
-    {
-      "text": "露娜担任主力后，还能消耗标记打出按生命上限算的伤害。",
-      "id": "utterances_f9b83fe8859e4a4b874fd69d18a15522"
-    },
-    {
-      "text": "上露娜让四人组有个能闪进敌阵打范围伤害的主力。",
-      "id": "utterances_e38711e566ed4b9bba674982c2f27ca6"
+      "id": "utterances_e98ae6267b574d67809863f6a641ab0d",
+      "text": "四人队上露娜打输出，手里的小菟送福也能给她升级。"
     }
   ],
-  "id": "group_a1d40852dad75b40bf950eb064c59527",
-  "event_id": "os_e5391e165361858d",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg1 is \"露娜\" and 玩家.场上英雄数 == 4 and 玩家.主C is \"露娜\" and 玩家.战场 has \"露娜\"",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:1461": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:92410": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 初始获得卡牌"
+        },
+        "awakened": false,
+        "category": "player-skills",
+        "effect": "对场上的随机4名英雄各触发1次小菟助力，使其等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:92410",
+        "name": "小菟送福",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "露娜",
+  "syntax_version": "0.4"
 }

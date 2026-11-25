@@ -1,29 +1,62 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation": "",
+  "explanation_after": "换帅在场上至少有两名三分英雄时交换目标和最近的三分队友等级，不是净增等级。\n完整候选池通过 3 项。正例可播：两名以上三分，但无人名专属组；单项反例不命中：只有一名三分；缺值检查：另一个英雄阵营未知。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：场上还有三分队友，换帅能让目标与最近的队友换等级。\n原始依据：换帅为3阶效果牌，可指定1名三分英雄与最近的三分英雄交换等级，不能给任意阵营转移等级。当前取舍：换帅选择距离最近的另一名三分英雄，战场至少两名三分英雄可证明存在交换对象，不点名具体英雄且不表述为全队净增等级。自然语言适用条件：使用效果牌换帅，目标在玩家战场上且属于三分之地阵营，同时玩家战场上的三分之地阵营英雄不少于2名。正式条件：(arg2 is \"换帅\" and arg1.阵营 is \"三分之地\" and 玩家.战场.计数(阵营, \"三分之地\") >= 2) and arg1 in 玩家.战场。取舍后的播报重点：说明场上另有三分队友，换帅能让目标与最近的三分队友交换等级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「换帅」 · n-d3f53da039d9dc3cb608",
+  "expression": "(((动作.卡牌.名称 == \"换帅\" and (动作.目标英雄 != nil and 动作.目标英雄.阵营 == \"三分之地\")) and count(我方.场上英雄列表, .阵营 == \"三分之地\") >= 2) and ((动作.目标.卡牌类型 == \"英雄\" and any(我方.场上英雄列表, .名称 == 动作.目标.名称)) or (动作.目标.卡牌类型 == \"衍生物\" and any(我方.场上衍生物列表, .名称 == 动作.目标.名称))))",
+  "id": "group_daf3005c1980428dbc858c463d8b5303",
+  "mode": "万象大赛",
   "name": "换帅交换三分英雄等级",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "在“对目标使用效果牌”事件中，使用换帅时适用。换帅能把已有等级交给另一名三分英雄，省去重新培养的时间。依据为《常小娥灵活变阵-常小娥》「换帅」及官方效果牌「换帅」。",
+  "tags": [
+    "技巧"
+  ],
   "utterances": [
     {
-      "text": "换帅能让选中的英雄和最近的三分队友交换等级。",
-      "id": "utterances_9557a6405b06493d8379a2711cb0bf2d"
-    },
-    {
-      "text": "靠换帅就能重新分配两名三分英雄已有的等级。",
-      "id": "utterances_2989f58513dc415191b59ed939a02c2d"
-    },
-    {
-      "text": "换帅可以调整谁吃已有等级，交换对象取最近的三分队友。",
-      "id": "utterances_c1554360753547cebaedafa4771f6ffa"
+      "id": "utterances_9557a6405b06493d8379a2711cb0bf2d",
+      "text": "场上另有三分队友，换帅能让目标与最近的三分队友换等级。"
     }
   ],
-  "id": "group_daf3005c1980428dbc858c463d8b5303",
-  "event_id": "os_bfcc2eec6def94c8",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg2 is \"换帅\" and arg1.阵营 is \"三分之地\"",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7505": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "初始效果牌",
+          "获得途径": "该卡通过商店购买等渠道获得。",
+          "解锁条件": "万象大赛达到1200分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名【三分】英雄与其最近的【三分】英雄交换等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:7505",
+        "name": "换帅",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "换帅",
+  "syntax_version": "0.4"
 }

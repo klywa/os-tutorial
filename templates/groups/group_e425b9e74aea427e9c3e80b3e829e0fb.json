@@ -1,25 +1,60 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_b9276a29aaffc6ba",
+  "explanation": "",
+  "explanation_after": "两件装备确实参与重构才有三件基础装备的收益，未指定随机结果。\n完整候选池通过 3 项。正例可播：主力确实只差一点觉醒；单项反例不命中：差两点觉醒；缺值检查：缺少 玩家.主C.觉醒进度。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：主力只差一点觉醒，武装分解拆两件能换妙音。\n原始依据：目标英雄缺觉醒进度时可用4阶效果牌妙音补1点，5阶效果牌武装分解摧毁恰好2件装备时也会给妙音，使用前需确认愿意失去这两件装备。当前取舍：主力未觉醒且进度为二时，取得武装分解可选弃两件装备换妙音，是否愿意拆装备留作实际使用前的取舍。适用条件：当前选牌为武装分解且可选项包含武装分解，同时玩家主C未觉醒且觉醒进度等于2。正式条件：arg2 is \"武装分解\" and arg1 has \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2。播报重点：说明主力只差一点觉醒，选武装分解拆两件可换妙音。",
+  "explanation_source": "knowledge/other/常用技巧.json「缺觉醒进度时，用妙音补目标英雄」 · common-tips-awakening-supply\nknowledge/other/基础知识.json",
+  "expression": "(((动作.选中.名称 == \"武装分解\" and any(动作.候选列表, .名称 == \"武装分解\")) and (我方.主C != nil and not 我方.主C.已觉醒)) and (我方.主C != nil and 我方.主C.觉醒进度 == 2))",
+  "id": "group_e425b9e74aea427e9c3e80b3e829e0fb",
+  "mode": "万象大赛",
   "name": "主力差一次觉醒时选武装分解",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
+  "tags": [],
   "utterances": [
     {
-      "text": "选武装分解可补主力最后一点进度，要拆同一人身上正好两件装备。",
-      "id": "utterances_a0a6d60c431c4d20ac37c28fa2f8d6c4"
-    },
-    {
-      "text": "主力还差一次觉醒，分解同一英雄身上正好两件装备就能拿妙音。",
-      "id": "utterances_7cfd84a2a7c84e74998f2c800e912110"
+      "id": "utterances_a0a6d60c431c4d20ac37c28fa2f8d6c4",
+      "text": "主力只差一点觉醒，选武装分解拆两件可换妙音。"
     }
   ],
-  "explanation": "《常用技巧》缺觉醒进度时，用妙音补目标英雄；《基础知识》三次合成觉醒。武装分解官方卡：1件得4能量，恰好2件得妙音，3件得珍品宝箱。需愿意放弃同一人身上的全部两件装备；条件不能读取槽位，不承诺现有两件。卡面明确商店／拍卖渠道。",
-  "event_id": "os_b9276a29aaffc6ba",
-  "id": "group_e425b9e74aea427e9c3e80b3e829e0fb",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg2 is \"武装分解\" and arg1 has \"武装分解\" and not 玩家.主C.已觉醒 and 玩家.主C.觉醒进度 == 2",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7089": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包三",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，摧毁其所有装备：\n摧毁1件获得4能量；2件获得1张妙音；3件获得1张珍品宝箱。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7089",
+        "name": "武装分解",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "武装分解",
+  "syntax_version": "0.4"
 }

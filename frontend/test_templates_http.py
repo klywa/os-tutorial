@@ -21,6 +21,7 @@ class TemplateHttpTests(unittest.TestCase):
             {'username':'klywa','password':'aa2025','role':'admin'},
             {'username':'alice','password':'aa2025','role':'annotator'},
             {'username':'bob','password':'aa2025','role':'annotator'},
+            {'username':'reviewer','password':'aa2025','role':'quality'},
             {'username':'reader','password':'aa2025','role':'viewer'}]}))
         self.http.sync=SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda **kw:{'state':'pending'})
 
@@ -58,6 +59,192 @@ class TemplateHttpTests(unittest.TestCase):
         self.assertEqual(self.call(api+'/import/commit','POST',hand_built)[0],409)
         self.assertEqual(self.call(api+'/history?latest=1')[1]['items'][0]['action'],'fix_utterance')
         self.assertEqual(self.call(api+'/utterances/fixed','POST',{**request,'revision':fixed['revision'],'fixed':False})[0],200)
+
+    def test_related_copy_retains_fixed_and_ignored_through_direct_and_proposal_saves(self):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        _,state,_=self.call(api)
+        events={event['name']:event['id'] for event in state['events']}
+        source=dict(group(),event_id=events['解释为何购买英雄'],syntax_version='0.4',
+                    expression='',extra_key='吕布',utterances=[
+                        {'id':'line','text':'吕布可补充输出。'},
+                        {'id':'second','text':'买下吕布补充战力。','ignored':True}])
+        def save(state,value,**details):
+            return self.call(api+'/changes','POST',{'revision':state['revision'],'changes':[
+                {'kind':'group','action':'put','id':value['id'],'value':value,**details}]})
+        code,state,_=save(state,source)
+        self.assertEqual(code,200,state)
+        state=self.call(api)[1]
+        code,error,_=self.call(api+'/utterances/fixed','POST',dict(
+            revision=state['revision'],group_id=source['id'],utterance_id='second',fixed=True))
+        self.assertEqual(code,409,error)
+        self.assertIn('只能固定或忽略',error['error'])
+        code,state,_=self.call(api+'/utterances/fixed','POST',dict(
+            revision=state['revision'],group_id=source['id'],utterance_id='line',fixed=True))
+        self.assertEqual(code,200,state)
+        state=self.call(api)[1]
+        fixed_source=next(g for g in state['groups'] if g['id']==source['id'])
+        newly_ignored=dict(fixed_source,utterances=[dict(fixed_source['utterances'][0],ignored=True),fixed_source['utterances'][1]])
+        code,error,_=save(state,newly_ignored)
+        self.assertEqual(code,409,error)
+        self.assertIn('只能固定或忽略',error['error'])
+        def target(gid,name):
+            return dict(source,id=gid,name=gid,event_id=events[name],utterances=[
+                {'id':gid+'-line','text':'吕布可补充输出。','fixed':True},
+                {'id':gid+'-second','text':'买下吕布补充战力。','ignored':True}])
+        direct=target('direct','解释为何选择英雄')
+        self.assertEqual(save(state,direct)[0],409)
+        forged=dict(direct,utterances=[dict(direct['utterances'][0],text='改写固定句。'),direct['utterances'][1]])
+        code,error,_=save(state,forged,related_copy_source=source['id'])
+        self.assertEqual(code,409,error)
+        self.assertIn('话术内容',error['error'])
+        code,state,_=save(state,direct,related_copy_source=source['id'])
+        self.assertEqual(code,200,state)
+        self.assertEqual(next(g for g in state['groups'] if g['id']=='direct')['utterances'],direct['utterances'])
+        state=self.call(api)[1]
+        self.user('alice')
+        proposed=target('proposed','解释为何选择英雄')
+        code,data,_=save(state,proposed,related_copy_source=source['id'])
+        self.assertEqual(code,200,data)
+        proposal=data['proposal']
+        self.user('klywa')
+        code,data,_=self.call(api+'/proposals/'+proposal['id']+'/approve','POST',{
+            'proposal_revision':proposal['proposal_revision'],'change_ids':[0],'group_editor':{}})
+        self.assertEqual(code,200,data)
+        saved=self.call(api)[1]
+        self.assertEqual(next(g for g in saved['groups'] if g['id']=='proposed')['utterances'],proposed['utterances'])
+
+    def test_formal_rename_merges_speech_and_transfers_utterance_comments(self):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        state=self.call(api)[1]
+        event=next(row['id'] for row in state['events'] if row['name']=='解释为何购买英雄')
+        first=dict(group('a','保留固定句。'),event_id=event,syntax_version='0.4',
+                   expression='我方.等级 >= 3',extra_key='吕布')
+        second=dict(group('b','人工修改过的另一句。'),event_id=event,syntax_version='0.4',
+                    expression='(我方.等级>=3)',extra_key='吕布',name='待改名',priority=15)
+        code,state,_=self.call(api+'/changes','POST',{'revision':state['revision'],'changes':[
+            {'kind':'group','action':'put','id':row['id'],'value':row} for row in (first,second)]})
+        self.assertEqual(code,200,state)
+        state=self.call(api)[1]
+        for gid in ('a','b'):
+            code,state,_=self.call(api+'/utterances/fixed','POST',{
+                'revision':state['revision'],'group_id':gid,'utterance_id':'line','fixed':True})
+            self.assertEqual(code,200,state)
+        code,state,_=self.call(api+'/groups/a/review','POST',{'revision':state['revision'],'status':'final_reviewed'})
+        self.assertEqual(code,200,state)
+        code,thread,_=self.call(api+'/comments','POST',{'group_id':'b','utterance_id':'line','body':'原句批注'})
+        self.assertEqual(code,200,thread)
+        code,saved,_=self.call(api+'/changes','POST',{'revision':state['revision'],
+            'group_patches':[{'id':'b','fields':{'set':{'name':first['name']},'remove':[]}}]})
+        self.assertEqual(code,200,saved)
+        self.assertEqual(saved['merged_groups'],{'b':'a'})
+        survivor,=self.call(api)[1]['groups']
+        self.assertEqual(survivor['id'],'a')
+        self.assertEqual(survivor['priority'],15)
+        self.assertIsNone(survivor['review_status'])
+        self.assertNotIn('reviewed_by',survivor)
+        original,moved=survivor['utterances']
+        self.assertEqual(original,{'id':'line','text':'保留固定句。','fixed':True})
+        self.assertEqual((moved['text'],moved['fixed']),('人工修改过的另一句。',True))
+        threads=self.call(api+'/comments?group_id=a')[1]['items']
+        self.assertEqual([(row['id'],row['utterance_id']) for row in threads],[(thread['id'],moved['id'])])
+        history=self.call(api+'/groups/a/revisions')[1]['items']
+        self.assertTrue(any((entry.get('value') or {}).get('id')=='b' for entry in history))
+
+    def test_formal_legacy_copy_with_identical_speech_keeps_review(self):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        state=self.call(api)[1]
+        original=group('legacy-original')
+        code,state,_=self.call(api+'/changes','POST',{'revision':state['revision'],'changes':[
+            {'kind':'group','action':'put','id':original['id'],'value':original}]})
+        self.assertEqual(code,200,state)
+        code,state,_=self.call(api+'/groups/legacy-original/review','POST',{
+            'revision':state['revision'],'status':'final_reviewed'})
+        self.assertEqual(code,200,state)
+        reviewed=state['groups'][0]
+        draft=dict(original,id='copy',expression='',editor_mode='text',
+                   utterances=[dict(original['utterances'][0],id='copy-line')])
+        code,state,_=self.call(api+'/changes','POST',{'revision':state['revision'],'changes':[
+            {'kind':'group','action':'put','id':draft['id'],'value':draft}]})
+        self.assertEqual(code,200,state)
+        self.assertEqual(state['merged_groups'],{'copy':'legacy-original'})
+        self.assertEqual(state['groups'],[reviewed])
+
+    def test_formal_approval_returns_canonical_group_after_copy_merge(self):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        state=self.call(api)[1]
+        event=next(row['id'] for row in state['events'] if row['name']=='解释为何购买英雄')
+        other_event=next(row['id'] for row in state['events'] if row['name']=='解释为何选择英雄')
+        first=dict(group('first'),event_id=event,syntax_version='0.4',expression='',extra_key='吕布')
+        others=[dict(first,id='other-event',event_id=other_event),dict(first,id='other-key',extra_key='赵云'),
+                dict(first,id='other-condition',expression='我方.等级 >= 3')]
+        def save(revision,rows):
+            return self.call(api+'/changes','POST',{'revision':revision,'changes':[
+                {'kind':'group','action':'put','id':row['id'],'value':row} for row in rows]})
+        code,state,_=save(state['revision'],[first,*others])
+        self.assertEqual(code,200,state)
+        state=self.call(api)[1]
+        self.user('alice')
+        draft=dict(first,id='copy',utterances=[{'id':'copy-line','text':'补上另一句。'}])
+        code,result,_=save(state['revision'],[draft])
+        self.assertEqual(code,200,result)
+        item=result['proposal']
+        self.assertEqual(item['changes'][0]['id'],'copy')
+        self.assertEqual(len(self.call(api)[1]['groups']),4)
+        self.user('klywa')
+        approval=api+'/proposals/'+item['id']+'/approve'
+        request={'proposal_revision':item['proposal_revision'],'change_ids':[0],'group_editor':{},'compact':True}
+        code,result,_=self.call(approval,'POST',request)
+        self.assertEqual(code,200,result)
+        self.assertEqual(result['formal_write']['merged_groups'],{'copy':'first'})
+        self.assertEqual([row['id'] for row in result['formal_write']['changes']],['first'])
+        survivor=next(row for row in self.call(api)[1]['groups'] if row['id']=='first')
+        self.assertEqual([row['text'] for row in survivor['utterances']],['先稳住。','补上另一句。'])
+        self.assertEqual(len(self.call(api)[1]['groups']),4)
+        self.assertEqual(self.call(approval,'POST',request)[1]['formal_write'],result['formal_write'])
+        decisions=self.call(api+'/history?group_id=first')[1]['items']
+        self.assertTrue(any(row.get('proposal_id')==item['id'] and row['after']['id']=='first' for row in decisions))
+
+    def test_editor_fixes_changed_text_and_can_edit_it_again(self):
+        api='/os-tutorial/api/templates'
+        self.user('klywa')
+        _, state, _=self.call(api)
+        def save(state,value):
+            code,result,_=self.call(api+'/changes','POST',{'revision':state['revision'],
+                'changes':[{'kind':'group','action':'put','id':'example','value':value}]})
+            self.assertEqual(code,200,result)
+            return result
+        state=save(state,group())
+        self.assertFalse(state['groups'][0]['utterances'][0].get('fixed',False))
+        self.user('reviewer')
+        for text in ('第一次人工修改','第二次人工修改'):
+            value=state['groups'][0]
+            value['utterances'][0]['text']=text
+            state=save(state,value)
+            self.assertEqual(state['groups'][0]['utterances'][0],{'id':'line','text':text,'fixed':True})
+        request={'revision':state['revision'],'group_id':'example','utterance_id':'line','fixed':False}
+        self.assertEqual(self.call(api+'/utterances/fixed','POST',request)[0],403)
+        self.user('klywa')
+        code, state, _=self.call(api+'/utterances/fixed','POST',request)
+        self.assertEqual(code,200,state)
+        state=save(state,state['groups'][0])
+        self.assertFalse(state['groups'][0]['utterances'][0].get('fixed',False))
+        self.user('alice')
+        value=group(text='经审批的修改')
+        code,result,_=self.call(api+'/changes','POST',{'revision':state['revision'],
+            'changes':[{'kind':'group','action':'put','id':'example','value':value}]})
+        self.assertEqual(code,200,result)
+        proposal=result['proposal']
+        self.assertFalse(self.call(api)[1]['groups'][0]['utterances'][0].get('fixed',False))
+        self.user('klywa')
+        code,result,_=self.call(api+'/proposals/'+proposal['id']+'/approve','POST',
+            {'proposal_revision':proposal['proposal_revision']})
+        self.assertEqual(code,200,result)
+        self.assertEqual(self.call(api)[1]['groups'][0]['utterances'][0],
+                         {'id':'line','text':'经审批的修改','fixed':True})
 
     def test_writer_proposal_private_and_approved_formal_export(self):
         from unittest.mock import Mock

@@ -1,0 +1,65 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_bfcc2eec6def94c8",
+  "explanation_after": "二稿两句都明确三件装备换一个珍品宝箱，第二句同时保留主力装备。\n完整候选池通过 3 项。正例可播：历史目标马超穿三件，战场加入马超和诸葛亮并设主C诸葛亮。；单项反例不命中：仅把主C改马超；；缺值检查：删主C。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：拆掉这名非主力的三件装备，可换一份珍品宝箱。 / 这名队友已穿三件，武装分解可换特殊或天赋装备。\n原始依据：武装分解摧毁英雄身上3件装备可获1张珍品宝箱，用于非主力可在保住主力现有装备时换取主力装备备选，其他装备机会成本仍取决于其价值。当前取舍：强调能打开新的装备选择，不把副位装备价值或结果说成确定。自然语言适用条件：从非主力身上分解三件装备来换珍品宝箱，主力装备仍可保留。正式条件：arg2 is \"武装分解\" and 玩家.战场 has arg1 and not (arg1 is 玩家.主C) and arg1.已穿装备.计数() == 3。取舍后的播报重点：说明分解非主力三件装备可保住主力现有装备并换取珍品宝箱。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第214行「武装分解・使用技巧」\n正式卡牌库 武装分解（card:7089）\n正式卡牌库「武装分解」 · card:7089",
+  "expression": "(((动作.卡牌.名称 == \"武装分解\" and ((动作.目标.卡牌类型 == \"英雄\" and any(我方.场上英雄列表, .名称 == 动作.目标.名称)) or (动作.目标.卡牌类型 == \"衍生物\" and any(我方.场上衍生物列表, .名称 == 动作.目标.名称)))) and (我方.主C != nil and not (动作.目标.卡牌类型 == \"英雄\" and 动作.目标.名称 == 我方.主C.名称))) and (动作.目标英雄 != nil and len(动作.目标英雄.装备列表) == 3))",
+  "id": "group_72bd831640fc562389dbdff5069863c2",
+  "mode": "万象大赛",
+  "name": "分解三件装备换珍品宝箱",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_c9c46a47f7c7480e98a140a1e741d534",
+      "text": "分解这名非主力的三件装备，可换1张珍品宝箱。"
+    },
+    {
+      "id": "utterances_ab9171930c3140e892faae216db7b8e0",
+      "text": "分解副位的三件装备，可留住主力装备并换个珍品宝箱。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7089": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包三",
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "解锁条件": "万象大赛达到1820分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "指定1名英雄，摧毁其所有装备：\n摧毁1件获得4能量；2件获得1张妙音；3件获得1张珍品宝箱。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7089",
+        "name": "武装分解",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "武装分解",
+  "syntax_version": "0.4"
+}

@@ -1,25 +1,58 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation_after": "当前对手主力打出法术伤害，说明区分法术防御与开场法盾，原句及对象完整。\n完整候选池通过 3 项。正例可播：装备正好针对当前主力法术伤害类型；单项反例不命中：对方主力伤害类型变为物理；缺值检查：快照缺少对局.当前对手.主C.伤害类型。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：对手主力打的是法术伤害，魔女斗篷能补法防和法盾。\n原始依据为魔女斗篷兼有法防和开场法术护盾，可针对以法术为主要输出的敌人并减轻该类伤害。自然语言适用条件为对手以法术主力输出时穿魔女斗篷，正式条件为 arg2 is \"魔女斗篷\" and 对局.当前对手.主C.伤害类型 is \"法术\"。当前取舍是在30字口播中保留触发事实、行动及当下收益，将具体机制留在说明；取舍后的播报重点为点明对手主力打法术伤害，穿戴魔女斗篷可补充法防和法盾。",
+  "explanation_source": "knowledge/other/装备.json · 魔女斗篷\n正式卡牌库：魔女斗篷（card:643503）",
+  "expression": "arg2 is \"魔女斗篷\" and 对局.当前对手.主C.伤害类型 is \"法术\"",
+  "id": "group_3be7421478fc4fe191516f2c9b0424f0",
+  "mode": "万象大赛",
   "name": "对手以法术主力输出时穿魔女斗篷",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
+  "tags": [],
   "utterances": [
     {
-      "text": "这家主力打法伤，魔女斗篷能补法防和开场法术护盾。",
-      "id": "utterances_3b4e727ecb9547c2b2dc5f67a1a8ce26"
-    },
-    {
-      "text": "魔女斗篷能挡对面主力的法伤，穿戴者等级越高，法盾越厚。",
-      "id": "utterances_a2e7353505514150b4a096e1656ed5b7"
+      "id": "utterances_3b4e727ecb9547c2b2dc5f67a1a8ce26",
+      "text": "对手主力打的是法术伤害，魔女斗篷能补法防和法盾。"
     }
   ],
-  "explanation": "《装备》魔女斗篷与普通装备卡面：加30法防，开战时按穿戴者等级获得法术护盾。依据当前对手主C的伤害类型选装，不假设敌方只有法伤。",
-  "event_id": "os_5dfcb4835e1e1513",
-  "id": "group_3be7421478fc4fe191516f2c9b0424f0",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "arg2 is \"魔女斗篷\" and 对局.当前对手.主C.伤害类型 is \"法术\"",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:643503": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "法术防御力+30。战斗开始时，获得等级x5点法术护盾。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643503",
+        "name": "魔女斗篷",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "publication_hold": "待核实等价的官方伤害类型标签"
 }

@@ -1,16 +1,90 @@
 from copy import deepcopy
+import json
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import test_proposals as fixture
+import test_website as website
 from edit_locks import EditLocks
 from note_import import request
 from workspace import Conflict
+
+
+class NewNoteImportHttpTests(fixture.unittest.TestCase):
+    call = website.PublicHttpTests.call
+
+    def setUp(self):
+        website.PublicHttpTests.setUp(self)
+        fixture.json_store.initialize(self.root)
+        self.config.write_text(json.dumps({'schema_version':2,'sessionSecret':'s'*48,'accounts':[
+            {'username':'admin','password':'fixture','role':'admin'},
+            {'username':'writer','password':'fixture','role':'annotator'},
+        ]}),encoding='utf-8')
+        self.http.sync = SimpleNamespace(status=lambda **kw:{'state':'synced'},enqueue=lambda **kw:{'state':'synced'})
+
+    def test_only_admin_can_create_from_json(self):
+        route='/os-tutorial/api/notes'
+        title='导入权限测试'
+        body={'schema_version':6,'nodes':[{'id':'title','type':'heading','title':title,'level':1},fixture.entry('intro')]}
+        payload={'type':'other','title':title,'request_id':'note-import-permission','document':body}
+        self.assertEqual(self.call(route,'POST',payload)[0],401)
+        for user in ('writer','admin'):
+            code, result, headers = self.call('/os-tutorial/api/auth/login','POST',{'username':user,'password':'fixture'})
+            self.assertEqual(code,200,result)
+            self.cookie=headers['Set-Cookie'].split(';')[0]
+            status, note, _ = self.call(route,'POST',payload)
+            self.assertEqual(status,403 if user=='writer' else 200,note)
+        saved = fixture.json_store.load_record(self.root,note['id'])
+        self.assertEqual(saved['body'],body)
 
 
 class NoteImportTests(fixture.unittest.TestCase):
     setUp = fixture.ProposalTests.setUp
     note = fixture.ProposalTests.note
     action = fixture.ProposalTests.action
+
+    def test_create_from_single_note_preserves_nodes_and_evidence(self):
+        body = deepcopy(self.note()['body'])
+        evidence = {'source':'BV1cZpA66E98:p1','start':10,'end':20}
+        pack = {'notes':[{'body':body,'metadata':{'id':'n','history':['old'],'manual_semantics':True,
+                'claim_annotations':[{'id':'old-claim','text_ref':'a','kind':'mechanic','inference':False,
+                                      'origin':'manual','evidence':[evidence]}]}}]}
+        payload = {'type':'other','title':'导入笔记','request_id':'new-note-import','document':pack}
+        with patch('json_store.check_evidence') as check:
+            note = fixture.json_store.create(self.root,payload)
+            check.assert_called_once_with(self.root,evidence,check_duration=True)
+        saved = fixture.json_store.load_record(self.root,note['id'])
+        self.assertNotEqual(note['id'],'n')
+        self.assertEqual(saved['body']['nodes'][0],{**body['nodes'][0],'title':'导入笔记'})
+        self.assertEqual(saved['body']['nodes'][1:],body['nodes'][1:])
+        claim, = saved['metadata']['claim_annotations']
+        self.assertEqual((claim['text_ref'],claim['evidence']),('a',[evidence]))
+        self.assertNotIn('origin',claim)
+        self.assertNotIn('manual_semantics',saved['metadata'])
+        self.assertNotIn('history',saved['metadata'])
+        self.assertEqual(fixture.json_store.create(self.root,payload)['id'],note['id'])
+        with self.assertRaises(Conflict):
+            fixture.json_store.create(self.root,{**payload,'request_id':'another-attempt'})
+        with self.assertRaises(Conflict):
+            fixture.json_store.create(self.root,{**payload,'document':body})
+
+    def test_create_from_plain_body_and_failed_import_are_atomic(self):
+        body = deepcopy(self.note()['body'])
+        payload = {'type':'other','title':'导入正文','request_id':'new-body-import','document':body}
+        for invalid in ({**body,'schema_version':5},{**body,'semantics':{'overview':{'$text':'absent'}}},
+                        {'notes':[{'body':body},{'body':body}]}):
+            with self.assertRaises(ValueError):fixture.json_store.create(self.root,{**payload,'document':invalid})
+            self.assertEqual(len(fixture.json_store.records(self.root)),1)
+        bad = {'body':body,'metadata':{'claim_annotations':[{
+            'id':'invalid','kind':'mechanic','text_ref':'a','evidence':[{'source':'BV1cZpA66E98:p1','start':20,'end':10}],
+        }]}}
+        with self.assertRaisesRegex(ValueError,'视频证据定位'):
+            fixture.json_store.create(self.root,{**payload,'document':bad})
+        with self.assertRaisesRegex(ValueError,'2 MB'):
+            fixture.json_store.create(self.root,{**payload,'document':{**body,'leading':'x'*2_000_000}})
+        self.assertEqual(len(fixture.json_store.records(self.root)),1)
+        note = fixture.json_store.create(self.root,payload)
+        self.assertEqual(note['document']['nodes'][1:],body['nodes'][1:])
 
     def send(self, body, actor=fixture.AUTHOR, request_id='note-import-request'):
         self.store.edit_locks = EditLocks(self.store)

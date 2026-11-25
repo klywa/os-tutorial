@@ -37,6 +37,14 @@ class Model:
     def canonical(self, typ):
         return self.catalog["aliases"].get(typ, typ)
 
+    def variants(self, typ):
+        alternatives = []
+        for name in typ.split("|"):
+            concrete = self.canonical(name)
+            variants = self.catalog.get("unit_types") if concrete == "单位" else None
+            alternatives.extend(variants or (concrete,))
+        return tuple(dict.fromkeys(alternatives))
+
     def path(self, parts, typ, parent, field=None):
         if parts in self.paths:
             return self.paths[parts]
@@ -51,7 +59,7 @@ class Model:
             if enum:
                 self.solver.add(z3.Implies(known, self.any([term.value == self.string(v) for v in enum])))
         else:
-            alternatives = [self.canonical(t) for t in typ.split("|")]
+            alternatives = self.variants(typ)
             tag = self.string(alternatives[0])
             if len(alternatives) > 1:
                 tag = z3.String(symbol + ":type", self.ctx)
@@ -60,6 +68,17 @@ class Model:
             term = Term("entity", known, name.value, tag, name.present)
         self.paths[parts] = term
         return term
+
+    def count(self, parts, collection, field, expected):
+        total = self.path(parts + ("计数()",), "int", collection.present)
+        self.solver.add(z3.Implies(total.present, total.value >= 0))
+        if field is None:
+            return total
+        segment = f"计数({field},{json.dumps(expected,ensure_ascii=False)})"
+        filtered = self.path(parts + (segment,), "int", total.present)
+        self.solver.add(z3.Implies(filtered.present, z3.And(filtered.value >= 0,
+                                                          filtered.value <= total.value)))
+        return filtered
 
     def boolean(self, yes, no):
         return Term("bool", z3.Or(yes,no), yes)
@@ -97,7 +116,7 @@ class Model:
         # A list is observed only through membership. For each possible element
         # type model its keys, whether any element exists, and any missing name.
         yes, uncertain = [], []
-        types = [self.canonical(t) for t in seq.kind[6:-1].split("|")]
+        types = self.variants(seq.kind[6:-1])
         for typ in types:
             key = (seq.value,typ)
             if key not in self.collections:
@@ -150,6 +169,11 @@ class SymbolicExpression(_Evaluator):
         term = self.model.path(parts,typ,self.model.true)
         while self.accept("."):
             attr = self.take("id")
+            if attr == "计数" and self.token[0] == "(":
+                field, expected = self.count_filter(typ)
+                term = self.model.count(parts, term, field, expected)
+                typ = "int"
+                continue
             if attr == "求和" and self.token[0] == "(":
                 field, typ = self.sum_field(typ)
                 parts += (f"求和({field})",)
@@ -158,9 +182,13 @@ class SymbolicExpression(_Evaluator):
             attr = "名称" if attr == "name" else attr
             owners = typ[6:-1] if attr == "标签" and typ.startswith("Array<") else typ
             owner = self.model.canonical(owners.split("|")[0])
+            present = term.present
+            if not typ.startswith("Array<") and "单位" in [self.model.canonical(t) for t in typ.split("|")] and attr != "名称":
+                present = z3.And(present, term.tag == self.model.string("英雄"))
             typ = self.catalog["types"][owner][attr]
             parts += (attr,)
-            term = self.model.path(parts,typ,term.present,owner+"."+attr)
+            field_owner = "英雄" if owner == "单位" and attr != "名称" else owner
+            term = self.model.path(parts,typ,present,field_owner+"."+attr)
         return term
 
     def primary(self):

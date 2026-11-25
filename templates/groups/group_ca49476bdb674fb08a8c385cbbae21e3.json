@@ -1,25 +1,238 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_f5a416d50e37a948",
+  "explanation": "",
+  "explanation_after": "法源之杯转给已在场干将莫邪，通过其后续施法给同场诸葛亮回法，口播、自然条件和正式表达式一致。\n完整候选池通过 3 项。正例可播：arg2=法源之杯，arg3=干将莫邪；战场同时列出干将莫邪和诸葛亮。；单项反例不命中：只移除诸葛亮。；缺值检查：不提供玩家.战场。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：法源之杯转给干将莫邪，可让在场诸葛亮从他施法回法。\n原始依据：法源之杯每秒回复5点法力值，干将莫邪需要更频繁施法时可优先给予，以通过队友施法带动诸葛亮回蓝。当前取舍：采用队友施法为在场诸葛亮回复法力的笔记理由并补上同场条件，保留可能性表述。自然语言适用条件：从原装备持有人转移法源之杯给已在场的干将莫邪，同场还有诸葛亮。正式条件：arg2 is \"法源之杯\" and arg3 is \"干将莫邪\" and arg3 in 玩家.战场 and 玩家.战场 has \"诸葛亮\"。播报重点：说明把法源之杯转给干将莫邪后，可借其施法让在场诸葛亮回法。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「法源之杯」 · n-3bf70000a0fdfa895d9c",
+  "expression": "(((动作.装备.名称 == \"法源之杯\" and 动作.目标英雄.名称 == \"干将莫邪\") and any(我方.场上英雄列表, .名称 == 动作.目标英雄.名称)) and any(我方.场上英雄列表, .名称 == \"诸葛亮\"))",
+  "id": "group_ca49476bdb674fb08a8c385cbbae21e3",
+  "mode": "万象大赛",
   "name": "把法源之杯转给干将莫邪",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "在“转移装备”事件中，转移的装备为法源之杯，接收者为干将莫邪时适用。干将莫邪靠技能输出，法源之杯能缩短两次释放飞剑的间隔。依据为《常小娥灵活变阵-常小娥》「法源之杯」及官方装备「法源之杯」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "法源之杯每秒回复5点法力，干将莫邪能更快释放飞剑。",
-      "id": "utterances_2a58d515e1ad495b9c3ab70ec36470de"
-    },
-    {
-      "text": "干将莫邪靠技能输出，法源之杯能缩短两次释放飞剑的间隔。",
-      "id": "utterances_72599e532d144b098fedc60f3b60e935"
+      "id": "utterances_2a58d515e1ad495b9c3ab70ec36470de",
+      "text": "把法源之杯转给干将莫邪，可借他施法让在场诸葛亮回法。"
     }
   ],
-  "event_id": "os_f5a416d50e37a948",
-  "id": "group_ca49476bdb674fb08a8c385cbbae21e3",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg2 is \"法源之杯\" and arg3 is \"干将莫邪\"",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1901": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得15点法力值以及4临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1901",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {
+          "攻击距离": 6,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "35/55",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:1903": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "你的其他英雄释放技能时，诸葛亮获得30点法力值以及8临时等级。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1903",
+        "name": "诸葛亮",
+        "skills": [
+          {
+            "effect": "诸葛亮发射元气弹对当前目标造成150+100%法术攻击力的法术伤害，并对其相邻敌人造成40%伤害。",
+            "enhancements": [
+              {
+                "effect": "元气弹伤害提升至150+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "元气弹击败敌人时恢复自身70%最大法力值",
+                "level": 40
+              },
+              {
+                "effect": "元气弹伤害提升至250+300%法术攻击力，会额外发射4发小元气弹造成25%伤害",
+                "level": 100
+              }
+            ],
+            "id": 19000,
+            "name": "元气弹"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1901"
+      },
+      "card:1821": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "干将莫邪在场时，获得普通装备双剑·雄。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1821",
+        "name": "干将莫邪",
+        "skills": [
+          {
+            "effect": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至150+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第2次施法会额外释放1对飞剑",
+                "level": 40
+              },
+              {
+                "effect": "飞剑伤害提升至150+200%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 18200,
+            "name": "雌雄双剑"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "15/25",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1821"
+      },
+      "card:1823": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "干将莫邪在场时，获得普通装备双剑·雄及双剑·雌。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:1823",
+        "name": "干将莫邪",
+        "skills": [
+          {
+            "effect": "干将莫邪释放1对飞剑，对敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至150+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "每第2次施法会额外释放1对飞剑",
+                "level": 40
+              },
+              {
+                "effect": "飞剑伤害提升至150+200%法术攻击力",
+                "level": 100
+              }
+            ],
+            "id": 18200,
+            "name": "雌雄双剑"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1821"
+      },
+      "card:643402": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。每秒回复5点法力值。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643402",
+        "name": "法源之杯",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "干将莫邪-*-法源之杯",
+  "syntax_version": "0.4"
 }

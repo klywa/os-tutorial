@@ -1,29 +1,145 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_98aee9aae8b9d41d",
+  "explanation": "",
+  "explanation_after": "明先生前期已有花木兰时可转河洛找古币；接下来同回合用币满足门槛才可获复生。\n完整候选池通过 3 项。正例可播：早期已有可转河洛花木兰的关键资源；单项反例不命中：缺少该方向的到手资源；缺值检查：缺少 玩家.手牌。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：前期花木兰到手，可以走河洛找古币，争取让她复生。\n原始依据：河洛花木兰以花木兰为主核，普通与觉醒均是全队本回合每使用5张古币可给她增加1次复生，需要围绕河洛英雄产币、用币支撑。当前取舍：前期已取得花木兰，转河洛可围绕她找古币触发复生，但不能说资源已齐。自然语言适用条件：使用棋手为明先生，当前处于第7回合及以前、备选阵容为河洛花木兰或河洛花木兰-明先生，且花木兰在己方手牌或战场时适用。正式条件：(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 <= 7 and (玩家.战场 has \"花木兰\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"花木兰\"})。取舍后的播报重点：说明前期花木兰到手，可以走河洛找古币，争取让她复生，不把配套未齐写成必然。",
+  "explanation_source": "knowledge/players/明先生.json · pf28-868c8c4cb851c43d3ca4「河洛花木兰」",
+  "expression": "((动作.阵容 == \"河洛花木兰\" and 对局.当前回合数 <= 7) and (any(我方.场上英雄列表, .名称 == \"花木兰\") or any(我方.手牌列表, .卡牌类型 == \"英雄\" and .名称 == \"花木兰\")))",
+  "id": "group_e62444cae8d34f55bf73ef41439e02df",
+  "mode": "万象大赛",
   "name": "买到河洛骨架后向花木兰发展",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:39",
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": "player:39"
   },
-  "explanation": "《明先生》适用打法「河洛花木兰」。前两轮拍卖期间核心花木兰已在场或手牌中，已有靠复生作战的主力。第7回合为前两轮拍卖完毕的边界，用于限定早拿核心的解释。。每句均点明建议发展的具体阵容。",
+  "tags": [],
   "utterances": [
     {
-      "text": "建议走河洛花木兰，木兰已到手，可以围绕她补古币。",
-      "id": "utterances_a9d0908cab5a43bcba8fdd278c41398c"
-    },
-    {
-      "text": "可以往河洛花木兰发展，核心已有，接着找婉儿供币。",
-      "id": "utterances_1ad5d8e6eeba4dcf830cb34edf492d32"
-    },
-    {
-      "text": "花木兰已经来了，走河洛花木兰能围绕她的复生补牌。",
-      "id": "utterances_56fa875f4ada4226a06362cd0df359dc"
+      "id": "utterances_a9d0908cab5a43bcba8fdd278c41398c",
+      "text": "前期花木兰到手，可以走河洛找古币，争取让她复生。"
     }
   ],
-  "id": "group_e62444cae8d34f55bf73ef41439e02df",
-  "event_id": "os_98aee9aae8b9d41d",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "(arg1.阵容名 has \"河洛花木兰\" or arg1.阵容名 has \"河洛花木兰-明先生\") and 对局.当前回合数 <= 7 and (玩家.战场 has \"花木兰\" or 玩家.手牌 has {\"类型\":\"英雄\",\"名称\":\"花木兰\"})",
-  "priority": 0,
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:39": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:39",
+        "name": "明先生",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-27T01:17:19.470347+00:00"
+      },
+      "card:1541": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "本回合每使用5张古币牌，获得1次复生（总复生次数： 1）。 \n牺牲：临时等级+10。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1541",
+        "name": "花木兰",
+        "skills": [
+          {
+            "effect": "被动：花木兰可以通过战场上的剑切换形态，两种形态的基础属性不同。\n主动：轻剑形态下，挥舞双剑对目标发起7段攻击，每段造成80%物理攻击力的物理伤害。\n重剑形态下，蓄力3秒后，将前方区域内敌人击飞并眩晕1.5秒，造成80+60%物理攻击力的物理伤害。蓄力期间自身处于免控状态。",
+            "enhancements": [
+              {
+                "effect": "轻剑：伤害提升至105%物理攻击力\n重剑：眩晕延长至2.5秒",
+                "level": 10
+              },
+              {
+                "effect": "轻剑：斩击持续至目标阵亡\n重剑：蓄力期间获得40%伤害免疫",
+                "level": 40
+              },
+              {
+                "effect": "轻剑：若目标被击败，将立即回满法力值，并冲锋至随机敌人处\n重剑：技能范围扩大至全场",
+                "level": 100
+              }
+            ],
+            "id": 15400,
+            "name": "长城巡守者"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "0/20",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1541"
+      },
+      "card:1543": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "本回合每使用5张古币牌，获得1次复生（总复生次数： 1）。\n牺牲：临时等级+20。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1543",
+        "name": "花木兰",
+        "skills": [
+          {
+            "effect": "被动：花木兰可以通过战场上的剑切换形态，两种形态的基础属性不同。\n主动：轻剑形态下，挥舞双剑对目标发起7段攻击，每段造成80%物理攻击力的物理伤害。\n重剑形态下，蓄力3秒后，将前方区域内敌人击飞并眩晕1.5秒，造成80+60%物理攻击力的物理伤害。蓄力期间自身处于免控状态。",
+            "enhancements": [
+              {
+                "effect": "轻剑：伤害提升至105%物理攻击力\n重剑：眩晕延长至2.5秒",
+                "level": 10
+              },
+              {
+                "effect": "轻剑：斩击持续至目标阵亡\n重剑：蓄力期间获得40%伤害免疫",
+                "level": 40
+              },
+              {
+                "effect": "轻剑：若目标被击败，将立即回满法力值，并冲锋至随机敌人处\n重剑：技能范围扩大至全场",
+                "level": 100
+              }
+            ],
+            "id": 15400,
+            "name": "长城巡守者"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1541"
+      }
+    }
+  },
+  "extra_key": "河洛花木兰",
+  "syntax_version": "0.4"
 }

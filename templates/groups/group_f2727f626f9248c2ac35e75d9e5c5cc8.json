@@ -1,29 +1,127 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_474ce7597b626c02",
+  "explanation": "",
+  "explanation_after": "升本触发场上弈星的额外经验，收益用于后续升级，没有承诺立刻连升。\n完整候选池通过 3 项。正例可播：弈星在场可以增加升级经验；单项反例不命中：弈星不在场；缺值检查：缺少 玩家.战场。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：弈星在场，这次升本能多拿经验，帮下一次升级。\n原始依据：弈星定位为棋手升级工具，适合能连续升级且仍有预算的局面，在场可提供升级触发经验以辅助连续升级。当前取舍：只强调弈星在场升本能拿经验并帮助下一次升级，不推断当场能直接支付到下一等级。自然语言适用条件：玩家当前战场上有弈星。正式条件：玩家.战场 has \"弈星\"。取舍后的播报重点：场上有弈星时，这次升本能多拿经验，帮助下一次升级。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「弈星」 · n-f44abfb5b2009a59d743",
+  "expression": "any(我方.场上英雄列表, .名称 == \"弈星\")",
+  "id": "group_f2727f626f9248c2ac35e75d9e5c5cc8",
+  "mode": "万象大赛",
   "name": "弈星在场时升级拿经验",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "《常小娥灵活变阵-常小娥》弈星及官方普通、觉醒效果。弈星已在场，此时棋手升级能兑现额外经验。",
+  "tags": [],
   "utterances": [
     {
-      "text": "弈星在场，现在升本还能多拿经验。",
-      "id": "utterances_a1a4759287d64199ab22547a0a3a2d0e"
-    },
-    {
-      "text": "趁弈星在场升级，能少花后续补经验的能量。",
-      "id": "utterances_bfe623d443e44df0abf34a2242d7c974"
-    },
-    {
-      "text": "这次升本能触发弈星的效果，再拿一份经验。",
-      "id": "utterances_fe9f9b0c32a84eb09c4144d658f01406"
+      "id": "utterances_a1a4759287d64199ab22547a0a3a2d0e",
+      "text": "场上有弈星，这次升本能多拿经验，帮下次升级。"
     }
   ],
-  "id": "group_f2727f626f9248c2ac35e75d9e5c5cc8",
-  "event_id": "os_474ce7597b626c02",
-  "conditions": [],
-  "related_entities": [],
-  "expression": "玩家.战场 has \"弈星\"",
-  "editor_mode": "text",
-  "priority": 0
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1971": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1971",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/60",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      },
+      "card:1973": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "棋手升级时，棋手经验+4。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1973",
+        "name": "弈星",
+        "skills": [
+          {
+            "effect": "弈星选择敌人最多的1排，画出1个虚空棋盘，1.5秒后棋盘完全成型，对范围内的敌人造成100+50%法术攻击力的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "棋盘伤害提升至100+100%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "棋盘持续期间，内外的敌人无法进出",
+                "level": 40
+              },
+              {
+                "effect": "棋盘持续时间延长至5.5秒",
+                "level": 100
+              }
+            ],
+            "id": 19700,
+            "name": "万变之局"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1971"
+      }
+    }
+  },
+  "extra_key": "*",
+  "syntax_version": "0.4"
 }

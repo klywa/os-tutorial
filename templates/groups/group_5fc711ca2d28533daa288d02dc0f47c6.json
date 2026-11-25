@@ -1,0 +1,65 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation_after": "二稿次句改为提高生命上限并明确开战时，首句保留在场三分人数槽。\n完整候选池通过 3 项。正例可播：历史参数吕布和战场吕布、周瑜均填阵营三分，；单项反例不命中：仅把周瑜换作无阵营；；缺值检查：删参数吕布阵营。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：已有{玩家.战场.计数(阵营, \"三分\")}名三分英雄，鼓舞之戒可一起提高生命上限。 / 三分已有多人，鼓舞之戒给其中一人可让同阵营一起受益。\n原始依据：鼓舞之戒为唯一效果，战斗开始时与穿戴者同阵营的英雄提升30%最大生命值；指定三分英雄穿戴且当前至少有两名三分英雄时，可为多名队友提高生命上限。当前取舍：用阵营属性判断比维护固定英雄名单更直接，并将人数槽位接在群体受益理由上。自然语言适用条件：三分队伍穿鼓舞之戒提高生命上限。正式条件：arg2 is \"鼓舞之戒\" and arg1.阵营 is \"三分\" and 玩家.战场 has arg1 and 玩家.战场.计数(阵营, \"三分\") >= 2。取舍后的播报重点：紧扣三分阵营已有两名及以上英雄的场上条件，通过人数槽位与泛指多人表述说明穿戴鼓舞之戒可让同阵营一起提高生命上限。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第112行「鼓舞之戒・使用技巧」\n正式卡牌库 鼓舞之戒（card:646015）\n正式卡牌库「鼓舞之戒」 · card:641006",
+  "expression": "(((动作.装备.名称 == \"鼓舞之戒\" and 动作.目标英雄.阵营 == \"三分\") and any(我方.场上英雄列表, .名称 == 动作.目标英雄.名称)) and count(我方.场上英雄列表, .阵营 == \"三分\") >= 2)",
+  "id": "group_5fc711ca2d28533daa288d02dc0f47c6",
+  "mode": "万象大赛",
+  "name": "三分队伍穿鼓舞之戒提高生命上限",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_432e975667444e029c56fc742ed74701",
+      "text": "已有{{count(我方.场上英雄列表, .阵营 == \"三分\")}}名三分英雄，穿鼓舞之戒可一起提高生命上限。"
+    },
+    {
+      "id": "utterances_71f6076a731349b9b39538efb2e59ff7",
+      "text": "三分已有多人，鼓舞之戒可让他们开战时一起提高生命上限。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:641006": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "天赋装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。战斗开始时，与穿戴者同阵营的英雄，提升30%最大生命值。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:641006",
+        "name": "鼓舞之戒",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "*-鼓舞之戒",
+  "syntax_version": "0.4"
+}

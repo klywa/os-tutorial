@@ -9,7 +9,6 @@ export function cardIndex(cards:CardSummary[]){
  index={byId,heroes};indexes.set(cards,index);return index;
 }
 export function resolveCandidates(ids:string[],references:string[]){const scoped=ids.filter(id=>references.includes(id));return scoped.length===1?scoped:ids;}
-export function selectedCandidate(ids:string[],chosen:string){return ids.length===1?ids[0]:ids.includes(chosen)?chosen:'';}
 export function heroVersions(cards:CardSummary[],ids:string[]){
  const index=cardIndex(cards),seeds=ids.map(id=>index.byId.get(id)),first=seeds[0];
  if(!first||seeds.some(c=>!c||c.category!=='heroes'||c.name!==first.name))return [];

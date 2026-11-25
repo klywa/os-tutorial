@@ -1,0 +1,37 @@
+{
+  "id": "os_db70e56ec24636b5",
+  "name": "解释为何铸造装备",
+  "category": "解释类",
+  "parameters": [
+    {
+      "key": "arg1",
+      "name": "arg1",
+      "type": "entity",
+      "dsl_type": "英雄",
+      "entity_categories": [
+        "heroes"
+      ],
+      "id": "p_arg1"
+    },
+    {
+      "key": "arg2",
+      "name": "arg2",
+      "type": "entity",
+      "dsl_type": "装备",
+      "entity_categories": [
+        "equipment"
+      ],
+      "id": "p_arg2"
+    },
+    {
+      "key": "arg3",
+      "name": "arg3",
+      "type": "entity",
+      "dsl_type": "装备",
+      "entity_categories": [
+        "equipment"
+      ],
+      "id": "p_arg3"
+    }
+  ]
+}

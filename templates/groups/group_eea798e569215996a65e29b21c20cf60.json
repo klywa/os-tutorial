@@ -1,0 +1,151 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation": "",
+  "explanation_after": "嬴政同时是敌方主力和最高等级，说明飞剑施放后才限制回蓝。\n完整候选池通过 3 项。正例可播：嬴政是明确受静谧影响的目标；单项反例不命中：嬴政不是可确认的最高级目标；缺值检查：缺少 对局.当前对手.最高等级英雄。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：敌方最高级是嬴政，静谧之铃能限制他放飞剑后回蓝。\n原始依据表明，针对敌方主C嬴政，静谧之铃可使敌方等级最高的两名英雄在释放技能后5秒内无法回蓝，从而限制其连续施法。当前取舍立足于对手主力且等级最高为嬴政的场景，强调该限制在飞剑释放后才生效。自然语言适用条件为穿戴装备为静谧之铃、当前对手主C为嬴政且当前对手最高等级英雄为嬴政。正式条件为 arg2 is \"静谧之铃\" and 对局.当前对手.主C is \"嬴政\" and 对局.当前对手.最高等级英雄 is \"嬴政\"。取舍后的播报重点是点出敌方最高等级是嬴政，静谧之铃能限制他在放出飞剑后回蓝。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第2行「嬴政・使用技巧」",
+  "expression": "((动作.装备.名称 == \"静谧之铃\" and (对手 != nil and 对手.主C != nil and 对手.主C.名称 == \"嬴政\")) and (对手 != nil and 对手.最高等级英雄 != nil and 对手.最高等级英雄.名称 == \"嬴政\"))",
+  "id": "group_eea798e569215996a65e29b21c20cf60",
+  "mode": "万象大赛",
+  "name": "用静谧之铃限制敌方嬴政回蓝",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_29acec16b3f84e74a542b4ea1d6b216d",
+      "text": "敌方嬴政等级最高，静谧之铃能限制他放飞剑后回蓝。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:641009": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "特殊装备",
+          "装备类型": "通用装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。敌方等级最高的两名英雄释放技能后5秒内无法恢复法力值，在此期间每0.5秒受到穿戴者20%法术攻击力的法术伤害。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:641009",
+        "name": "静谧之铃",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:1101": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "开团：法术攻击力+ 7。每次使用战术牌会提升该加成。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1101",
+        "name": "嬴政",
+        "skills": [
+          {
+            "effect": "嬴政展示王权，锁定最近的敌人，在5秒内号令80把飞剑朝其冲击，每把飞剑造成10+10%法术攻击力的法术伤害。若当前路径上没有敌人，嬴政会立即转向下个目标。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至15+15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "飞剑基础数量增加到100把，并且每击败1名敌人延长2秒技能持续时间",
+                "level": 40
+              },
+              {
+                "effect": "飞剑基础数量增加到120把，每击败1名敌人范围增加2格，最多增加4格",
+                "level": 100
+              }
+            ],
+            "id": 11000,
+            "name": "至尊王权"
+          }
+        ],
+        "stats": {
+          "攻击距离": 5,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "0/40",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-11-01T07:39:37.565420+00:00",
+        "skills_source": "card:1101"
+      },
+      "card:1103": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "开团：法术攻击力+ 14。每次使用战术牌会提升该加成。",
+        "faction": {
+          "id": "faction:zhulu",
+          "name": "逐鹿",
+          "official_id": 320
+        },
+        "id": "card:1103",
+        "name": "嬴政",
+        "skills": [
+          {
+            "effect": "嬴政展示王权，锁定最近的敌人，在5秒内号令80把飞剑朝其冲击，每把飞剑造成10+10%法术攻击力的法术伤害。若当前路径上没有敌人，嬴政会立即转向下个目标。",
+            "enhancements": [
+              {
+                "effect": "飞剑伤害提升至15+15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "飞剑基础数量增加到100把，并且每击败1名敌人延长2秒技能持续时间",
+                "level": 40
+              },
+              {
+                "effect": "飞剑基础数量增加到120把，每击败1名敌人范围增加2格，最多增加4格",
+                "level": 100
+              }
+            ],
+            "id": 11000,
+            "name": "至尊王权"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:1101"
+      }
+    }
+  },
+  "extra_key": "*-静谧之铃",
+  "syntax_version": "0.4"
+}

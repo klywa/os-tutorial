@@ -1,23 +1,15 @@
 {
-  "id": "group_2cc330b9ae674a2298e136d3474151e0",
-  "name": "瑶给马超护盾和控制",
-  "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
-  },
-  "utterances": [
-    {
-      "text": "瑶可以附身马超提供护盾，控制敌人时还能为马超回复法力。",
-      "id": "utterances_ea84ed5f50d04a6abcbad49c29b74fe5"
-    },
-    {
-      "text": "瑶从40级起可以控制敌人，帮助马超回复法力。",
-      "id": "utterances_7eeb35d1e36e4287881d12d157375e3c"
-    }
-  ],
-  "explanation": "上阵至少40级的瑶时，马超是场上的主C。《常小娥灵活变阵-常小娥》「瑶」和两张英雄卡的效果表明，瑶附身最近的队友提供护盾，40级解锁控制，触发控制可使马超回复法力。",
-  "event_id": "os_e5391e165361858d",
   "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "已到40级的瑶用附身攻击眩晕敌人，因此在场主力马超获得法力，未声称瑶必定附身马超。\n完整候选池通过 3 项。正例可播：四十级瑶已能以控制帮助马超回法力；单项反例不命中：三十九级瑶未解锁所指控制；缺值检查：快照缺少参数.arg1.等级。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：瑶已解锁附身眩晕，上她可帮场上马超回蓝。\n原始依据：瑶达到40级时在附身攻击中施加眩晕，马超从任何己方控制获得法力，只要马超在场即可受益，无需附身锁定马超。当前取舍：以行动和当下收益为主，用场上状态或必要资源连接因果，按附身控制描述而不承诺附身目标。自然语言适用条件：上阵至少四十级的瑶时，马超是已经在场的主力。正式条件：arg1 is \"瑶\" and 玩家.主C is \"马超\" and 玩家.战场 has \"马超\" and arg1.等级 >= 40。取舍后的播报重点：点出瑶达40级已解锁附身眩晕与马超在场的状态，说明上阵瑶可帮马超回蓝的当下收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「瑶」 · n-c1235b6d66098f23db47\n正式卡牌库：瑶（card:5051、card:5053）、马超（card:5181、card:5183）",
+  "expression": "(((动作.英雄.名称 == \"瑶\" and (我方.主C != nil and 我方.主C.名称 == \"马超\")) and any(我方.场上英雄列表, .名称 == \"马超\")) and 动作.英雄.等级 >= 40)",
+  "id": "group_2cc330b9ae674a2298e136d3474151e0",
+  "mode": "万象大赛",
+  "name": "瑶给马超护盾和控制",
+  "priority": 0,
   "related_entities": [
     {
       "id": "card:5051",
@@ -36,7 +28,228 @@
       "name": "马超"
     }
   ],
-  "priority": 0,
-  "expression": "arg1 is \"瑶\" and 玩家.主C is \"马超\" and 玩家.战场 has \"马超\" and arg1.等级 >= 40",
-  "editor_mode": "text"
+  "scope": {
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
+  },
+  "tags": [],
+  "utterances": [
+    {
+      "id": "utterances_ea84ed5f50d04a6abcbad49c29b74fe5",
+      "text": "瑶达40级已解锁附身眩晕，上阵可帮在场马超回蓝。"
+    }
+  ],
+  "version": "s1",
+  "ignored": true,
+  "batch": [
+    "自回归"
+  ],
+  "review_status": "initial_reviewed",
+  "last_modified_by": {
+    "kind": "user",
+    "username": "local"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:5051": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "开团：自身的首件普通装备分享给随机3名友方英雄（持续15秒）。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:5051",
+        "name": "瑶",
+        "skills": [
+          {
+            "effect": "被动：瑶在备战阶段，选择最近的友方英雄作为保护目标并在开战时附身其上。附身提供200+20%瑶最大生命值的护盾，以及10点双攻和5点双防，直到目标被击败。附身期间瑶会每2秒随机攻击至多2名敌人，造成50+50%法术伤害。",
+            "enhancements": [
+              {
+                "effect": "附身额外提供30点双攻及10点双防；护盾提升至300+25%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "附身攻击会对目标造成0.5秒眩晕",
+                "level": 40
+              },
+              {
+                "effect": "瑶会分享自身30%主要属性给保护目标（最大生命、双攻、双防、攻速）",
+                "level": 100
+              }
+            ],
+            "id": 50500,
+            "name": "独立兮山之上"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 270,
+          "法力值（初始／最大）": "0/100",
+          "法术攻击力": 20,
+          "法术防御": 18,
+          "物理攻击力": 24,
+          "物理防御": 18
+        },
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5051"
+      },
+      "card:5053": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "开团：自身的首件普通装备分享给随机3名友方英雄。",
+        "faction": {
+          "id": "faction:dahe",
+          "name": "大河",
+          "official_id": 321
+        },
+        "id": "card:5053",
+        "name": "瑶",
+        "skills": [
+          {
+            "effect": "被动：瑶在备战阶段，选择最近的友方英雄作为保护目标并在开战时附身其上。附身提供200+20%瑶最大生命值的护盾，以及10点双攻和5点双防，直到目标被击败。附身期间瑶会每2秒随机攻击至多2名敌人，造成50+50%法术伤害。",
+            "enhancements": [
+              {
+                "effect": "附身额外提供30点双攻及10点双防；护盾提升至300+25%最大生命值",
+                "level": 10
+              },
+              {
+                "effect": "附身攻击会对目标造成0.5秒眩晕",
+                "level": 40
+              },
+              {
+                "effect": "瑶会分享自身30%主要属性给保护目标（最大生命、双攻、双防、攻速）",
+                "level": 100
+              }
+            ],
+            "id": 50500,
+            "name": "独立兮山之上"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:5051"
+      },
+      "card:5183": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "己方施加控制效果时，马超获得30点法力值及10%暴击率。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:5183",
+        "name": "马超",
+        "skills": [
+          {
+            "effect": "被动：马超靠近冷晖枪时会拾取回收，同时恢复自身100+75%物理攻击力的生命值，并提升10点物理攻击力。\n主动：马超立即恢复自身100点生命值，快速突袭至3格内最远的敌人身边，对其造成50+100%物理攻击力的物理伤害并留下1把冷晖枪。",
+            "enhancements": [
+              {
+                "effect": "突袭伤害提升至50+150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "突袭伤害暴击时会回收场上的冷晖枪，并对路径上的敌人造成50%物理攻击力的物理伤害",
+                "level": 40
+              },
+              {
+                "effect": "每回收3把冷晖枪，下一次技能会转而在场上连续突袭至多6次",
+                "level": 100
+              }
+            ],
+            "id": 51800,
+            "name": "魔影突袭"
+          }
+        ],
+        "stats": {},
+        "tier": 3,
+        "retrieved_at": "2026-10-25T09:17:06.686997+00:00",
+        "skills_source": "card:5181"
+      },
+      "card:5181": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "己方施加控制效果时，马超获得15点法力值及5%暴击率。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:5181",
+        "name": "马超",
+        "skills": [
+          {
+            "effect": "被动：马超靠近冷晖枪时会拾取回收，同时恢复自身100+75%物理攻击力的生命值，并提升10点物理攻击力。\n主动：马超立即恢复自身100点生命值，快速突袭至3格内最远的敌人身边，对其造成50+100%物理攻击力的物理伤害并留下1把冷晖枪。",
+            "enhancements": [
+              {
+                "effect": "突袭伤害提升至50+150%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "突袭伤害暴击时会回收场上的冷晖枪，并对路径上的敌人造成50%物理攻击力的物理伤害",
+                "level": 40
+              },
+              {
+                "effect": "每回收3把冷晖枪，下一次技能会转而在场上连续突袭至多6次",
+                "level": 100
+              }
+            ],
+            "id": 51800,
+            "name": "魔影突袭"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "20/60",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 3,
+        "retrieved_at": "2026-11-01T07:39:37.565420+00:00",
+        "skills_source": "card:5181"
+      },
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      }
+    }
+  },
+  "extra_key": "瑶",
+  "syntax_version": "0.4"
 }

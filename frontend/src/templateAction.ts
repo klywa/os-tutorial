@@ -1,47 +1,27 @@
-import {resolveTemplateEntities,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter} from './templates';
+import {fixedArguments,resolveTemplateEntities,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter} from './templates';
+export {fixedArguments} from './templates';
 
-// Only unconditional equalities identify an action's participants. Other facts
-// (including entities mentioned under negation) belong in the trigger conditions.
-export function fixedArguments(group: TemplateGroup) {
- const values = new Map<string,string>();
- const ambiguous = new Set<string>();
- function remember(key:string, value:string) {
-  if(values.has(key) && values.get(key)!==value) ambiguous.add(key);
-  values.set(key,value);
- }
- function visit(expression:string) {
-  const source=expression.trim();
-  let depth=0, start=0, outerEnd=-1;
-  const parts:string[]=[];
-  for(const match of source.matchAll(/"(?:\\.|[^"\\])*"|[()[\]{}]|\b(?:and|or)\b/gu)) {
-   const token=match[0], index=match.index!;
-   if(token.startsWith('"')) continue;
-   if(['(','[','{'].includes(token)) depth++;
-   else if([')',']','}'].includes(token)) {depth--; if(depth===0 && outerEnd<0) outerEnd=index;}
-   else if(depth===0) {
-    if(token==='or') return;
-    parts.push(source.slice(start,index));start=index+token.length;
-   }
+export function fileTriggerChanged(before:TemplateGroup,after:TemplateGroup,oldEvent?:TemplateEvent,nextEvent?:TemplateEvent){
+ if(before.event_id!==after.event_id)return true;
+ if(before.syntax_version==='0.4'||after.syntax_version==='0.4')
+  return before.syntax_version!==after.syntax_version||before.extra_key!==after.extra_key;
+ const a=fixedArguments(before),b=fixedArguments(after);
+ if(a.size!==b.size||[...a].some(([key,value])=>b.get(key)!==value))return true;
+ const used=(group:TemplateGroup)=>{
+  const expression=(group.expression??'').replace(/"(?:[^"\\]|\\.)*"/g,'');
+  const keys=new Set(expression.match(/[\p{L}_][\p{L}\p{N}_]*/gu)??[]);
+  for(const condition of group.conditions)keys.add(condition.parameter_key);
+  for(const row of group.utterances){
+   for(const match of row.text.matchAll(/(?<!\{)\{([A-Za-z_]\w*)(?:\.[^{}]+)?\}(?!\})/g))keys.add(match[1]);
   }
-  if(parts.length) {parts.push(source.slice(start));parts.forEach(visit);return;}
-  if(source.startsWith('(') && outerEnd===source.length-1) {visit(source.slice(1,-1));return;}
-  const lineup=/^([a-z][a-z0-9_]*)\.阵容名\s+has\s+("(?:\\.|[^"\\])*")$/u.exec(source);
-  if(lineup){remember(lineup[1],JSON.parse(lineup[2]));return;}
-  const comparison=/^([a-z][a-z0-9_]*)(?:\.(?:名称|name))?\s*(?:\bis\b|==)\s*("(?:\\.|[^"\\])*"|-?\d+(?:\.\d+)?)$/u.exec(source);
-  if(comparison) remember(comparison[1],comparison[2].startsWith('"')?JSON.parse(comparison[2]):comparison[2]);
- }
- if(group.expression?.trim()) visit(group.expression);
- else for(const condition of group.conditions) {
-  if(condition.operator!=='eq') continue;
-  const value=condition.value;
-  if(typeof value==='string'||typeof value==='number') remember(condition.parameter_key,String(value));
-  else if(value && typeof value==='object' && 'name' in value) remember(condition.parameter_key,String(value.name));
- }
- for(const key of ambiguous) values.delete(key);
- return values;
+  return keys;
+ };
+ const keys=new Set([...used(before),...used(after)]);
+ return [...keys].some(key=>JSON.stringify(oldEvent?.parameters.find(parameter=>parameter.key===key))!==
+  JSON.stringify(nextEvent?.parameters.find(parameter=>parameter.key===key)));
 }
 
-export function templateAction(group:TemplateGroup,event?:TemplateEvent,values=fixedArguments(group)):string {
+export function templateAction(group:TemplateGroup,event?:TemplateEvent,values=fixedArguments(group,event)):string {
  if(!event) return group.event_id;
 
  const [a,b,c]=['arg1','arg2','arg3'].map(key=>values.get(key));

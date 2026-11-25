@@ -1,25 +1,233 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_5dfcb4835e1e1513",
+  "explanation": "",
+  "explanation_after": "核对棋手未满六级、单挂唯一苏烈及四种防装，只讲本轮承伤，不推定对手伤害。\n完整候选池通过 3 项。正例可播：苏烈单挂时给他穿名单内防装；单项反例不命中：改变必要前提：苏烈单挂时给他穿名单内防装；缺值检查：缺少关键观测：苏烈单挂时给他穿名单内防装。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：前期只有苏烈在场，防装给他能补这轮的承伤。\n原始依据：开局选苏烈等能自动成长的单挂英雄时，装备优先选择提升即时战力的；霸者重铠、反伤重甲、魔女斗篷和不祥征兆虽各自补不同面向，但统一作为防装投入给单挂承伤者。当前取舍：合并各防装的细分效果，围绕前期单挂苏烈时穿戴防装可补充本轮承伤来统一表达。自然语言适用条件：常小娥灵活4人组，棋手未到六级，场上只有苏烈，装备是霸者重铠、反伤重甲、魔女斗篷或不祥征兆。正式条件：arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\" and (arg2 is \"霸者重铠\" or arg2 is \"反伤重甲\" or arg2 is \"魔女斗篷\" or arg2 is \"不祥征兆\")。取舍后的播报重点：点明前期只有苏烈在场的单挂局面，说明防装给他能补足这轮的承伤。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json · n-11623aa33415cc60f559「苏烈」、n-f210bbd7021f4f89d8d4「前期运营思路」，正式卡牌库 card:1941、card:1943。",
+  "expression": "((((动作.目标英雄.名称 == \"苏烈\" and 我方.等级 < 6) and len(我方.场上英雄列表) == 1) and any(我方.场上英雄列表, .名称 == \"苏烈\")) and (((动作.装备.名称 == \"霸者重铠\" or 动作.装备.名称 == \"反伤重甲\") or 动作.装备.名称 == \"魔女斗篷\") or 动作.装备.名称 == \"不祥征兆\"))",
+  "id": "group_94d0b696c4fd464dab9bbf23ef5a91a8",
+  "mode": "万象大赛",
   "name": "前期单挂时给苏烈分配装备",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": "player:24",
-    "lineup_note_id": "changxiaoe-general-play"
+    "lineup_note_id": "changxiaoe-general-play",
+    "player_id": "player:24"
   },
-  "explanation": "《常小娥灵活变阵-常小娥》苏烈单挂保血。仅涵盖有格挡、法术防护、物防反伤或减伤的四件防装；只知道苏烈是穿戴者不足以解释任意装备。",
+  "tags": [],
   "utterances": [
     {
-      "text": "把防装给唯一在场的苏烈，这轮就能帮前排多扛伤。",
-      "id": "utterances_f15ff2d4734a4c819c4ba8fc6ec4dada"
-    },
-    {
-      "text": "苏烈单挂时给他补防装，开打就有用，能争取少掉血。",
-      "id": "utterances_81672af0ee1649c0a49147ac2b13f9d4"
+      "id": "utterances_f15ff2d4734a4c819c4ba8fc6ec4dada",
+      "text": "前期只有苏烈在场，防装给他能补这轮的承伤。"
     }
   ],
-  "id": "group_94d0b696c4fd464dab9bbf23ef5a91a8",
-  "event_id": "os_5dfcb4835e1e1513",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"苏烈\" and 玩家.等级 < 6 and 玩家.场上英雄数 == 1 and 玩家.战场 has \"苏烈\" and (arg2 is \"霸者重铠\" or arg2 is \"反伤重甲\" or arg2 is \"魔女斗篷\" or arg2 is \"不祥征兆\")",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "player:24": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "players",
+        "effect": "未提供",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": null
+        },
+        "id": "player:24",
+        "name": "常小娥",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-25T09:17:16.663505+00:00"
+      },
+      "card:643601": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。战斗前15秒，格挡50%普通攻击伤害，若攻击者攻速不低于1.5，则格挡70%普通攻击伤害。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643601",
+        "name": "不祥征兆",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:643501": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。生命值高于70%时获得40%伤害减免。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643501",
+        "name": "霸者重铠",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:1941": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+2。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1941",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 330,
+          "法力值（初始／最大）": "20/40",
+          "法术攻击力": 0,
+          "法术防御": 20,
+          "物理攻击力": 32,
+          "物理防御": 20
+        },
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:1943": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "牺牲：苏烈的等级永久+4。",
+        "faction": {
+          "id": "faction:heluo",
+          "name": "河洛",
+          "official_id": 319
+        },
+        "id": "card:1943",
+        "name": "苏烈",
+        "skills": [
+          {
+            "effect": "苏烈旋转1周，对周围敌人造成80+80%物理攻击力的物理伤害，并降低其4点物理防御，持续5秒。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至造成80+120%物理攻击力，减少的物理防御提升至8点",
+                "level": 10
+              },
+              {
+                "effect": "战斗中首次被击败后复生，并且拥有50%最大生命值",
+                "level": 40
+              },
+              {
+                "effect": "复生后拥有100%最大生命值，击飞眩晕周围1格敌方1秒并造成10%最大生命值的物理伤害",
+                "level": 100
+              }
+            ],
+            "id": 19400,
+            "name": "豪烈万军"
+          }
+        ],
+        "stats": {},
+        "tier": 1,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1941"
+      },
+      "card:643503": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "法术防御力+30。战斗开始时，获得等级x5点法术护盾。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643503",
+        "name": "魔女斗篷",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      },
+      "card:643604": {
+        "aliases": [],
+        "attributes": {
+          "获得途径": "来源: 该卡通过商店购买、效果锦囊、拍卖等渠道获得。",
+          "装备分类": "普通装备",
+          "装备类型": "防御装备"
+        },
+        "awakened": false,
+        "category": "equipment",
+        "effect": "唯一。将受到伤害的30%以真实伤害回敬给目标。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:643604",
+        "name": "反伤重甲",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "苏烈-*",
+  "syntax_version": "0.4"
 }

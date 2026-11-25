@@ -1,0 +1,395 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_e5391e165361858d",
+  "explanation_after": "露娜登场触发小乔成长，两种形态覆盖不同；曹操和孙悟空整备仍按随机机会表述。\n完整候选池通过 3 项。正例可播：露娜随机触发整备。曹操和孙悟空是整备候选，小乔在露娜登场触发时独立响应。不能把孙悟空的整备写成会直接触发小乔。；单项反例不命中：小乔缺席，不能解释为该组的登场与整备联动。；缺值检查：关键条件缺值，无法确认该项收益。。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：上露娜能让小乔给队友升级，也可能触发曹操或孙悟空整备。\n原始依据：三分倒转可让露娜登场联动小乔、曹操和孙悟空；露娜自身登场会触发小乔成长（普通形态范围为随机三人，觉醒形态覆盖所有英雄），同时有机会引出曹操或孙悟空的整备。当前取舍：受30字篇幅限制，突出小乔带来的队友升级收益，同时保留触发曹操或孙悟空整备的不确定性。自然语言适用条件：有曹操孙悟空与小乔时上露娜。正式条件：arg1 is \"露娜\" and 玩家.战场 has \"曹操\" and 玩家.战场 has \"孙悟空\" and 玩家.战场 has \"小乔\"。取舍后的播报重点：点明上阵露娜能让小乔给队友升级，并说明同时有机会引出曹操或孙悟空整备。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第17行「露娜・使用技巧」\n正式卡牌库：露娜（card:1461）\n正式卡牌库：露娜（card:1463）\n正式卡牌库：小乔（card:1061）\n正式卡牌库：小乔（card:1063）\n正式卡牌库：曹操（card:1281）\n正式卡牌库：孙悟空（card:1671）",
+  "expression": "(((动作.英雄.名称 == \"露娜\" and any(我方.场上英雄列表, .名称 == \"曹操\")) and any(我方.场上英雄列表, .名称 == \"孙悟空\")) and any(我方.场上英雄列表, .名称 == \"小乔\"))",
+  "id": "group_3a6a100959c656f88e6f3e97955b8c29",
+  "mode": "万象大赛",
+  "name": "有曹操孙悟空与小乔时上露娜",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_8fef7231a18f4f9d8644e3a564a78687",
+      "text": "上露娜能让小乔给队友升级，同时有机会引出曹操或孙悟空整备。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:1671": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+2。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1671",
+        "name": "孙悟空",
+        "skills": [
+          {
+            "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至100+500%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至4格",
+                "level": 100
+              }
+            ],
+            "id": 16700,
+            "name": "大圣神威"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "25/45",
+          "法术攻击力": 0,
+          "法术防御": 16,
+          "物理攻击力": 40,
+          "物理防御": 16
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1671"
+      },
+      "card:1673": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现，夺取\n整备：拥有闪现效果的英雄等级+4。",
+        "faction": {
+          "id": "faction:none",
+          "name": "无阵营",
+          "official_id": 307
+        },
+        "id": "card:1673",
+        "name": "孙悟空",
+        "skills": [
+          {
+            "effect": "孙悟空挥舞金箍棒砸向前方，造成100+400%物理攻击力的物理伤害。",
+            "enhancements": [
+              {
+                "effect": "技能伤害提升至100+500%物理攻击力",
+                "level": 10
+              },
+              {
+                "effect": "技能伤害提升至100+700%物理攻击力，技能范围扩大至2格",
+                "level": 40
+              },
+              {
+                "effect": "技能范围扩大至4格",
+                "level": 100
+              }
+            ],
+            "id": 16700,
+            "name": "大圣神威"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1671"
+      },
+      "card:1061": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "每当你的英雄触发登场效果时，随机3名英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1061",
+        "name": "小乔",
+        "skills": [
+          {
+            "effect": "小乔持续引导1道旋风吹起最近的敌人，使其浮空并每0.2秒受到10%法术攻击力的法术伤害，最多3秒。",
+            "enhancements": [
+              {
+                "effect": "旋风伤害提升至15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "再额外吹起1名附近敌人",
+                "level": 40
+              },
+              {
+                "effect": "额外吹起1名最远的敌人",
+                "level": 100
+              }
+            ],
+            "id": 10600,
+            "name": "甜蜜恋风"
+          }
+        ],
+        "stats": {
+          "攻击距离": 4,
+          "攻击速度": 0.6,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "20/50",
+          "法术攻击力": 40,
+          "法术防御": 14,
+          "物理攻击力": 24,
+          "物理防御": 14
+        },
+        "tier": 4,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1061"
+      },
+      "card:1063": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "每当你的英雄触发登场效果时，所有英雄等级+1。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1063",
+        "name": "小乔",
+        "skills": [
+          {
+            "effect": "小乔持续引导1道旋风吹起最近的敌人，使其浮空并每0.2秒受到10%法术攻击力的法术伤害，最多3秒。",
+            "enhancements": [
+              {
+                "effect": "旋风伤害提升至15%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "再额外吹起1名附近敌人",
+                "level": 40
+              },
+              {
+                "effect": "额外吹起1名最远的敌人",
+                "level": 100
+              }
+            ],
+            "id": 10600,
+            "name": "甜蜜恋风"
+          }
+        ],
+        "stats": {},
+        "tier": 4,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1061"
+      },
+      "card:1461": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+2，并且随机触发2名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1461",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "20%",
+          "最大生命值": 240,
+          "法力值（初始／最大）": "40/70",
+          "法术攻击力": 36,
+          "法术防御": 16,
+          "物理攻击力": 28,
+          "物理防御": 16
+        },
+        "tier": 5,
+        "retrieved_at": "2026-10-25T09:17:14.148030+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1463": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "闪现\n登场：阿科米亚核心等级+4，并且随机触发4名英雄的整备效果。",
+        "faction": {
+          "id": "faction:riluohai",
+          "name": "日落海",
+          "official_id": 314
+        },
+        "id": "card:1463",
+        "name": "露娜",
+        "skills": [
+          {
+            "effect": "露娜用月光标记最远端的敌人并向其突击（期间不可选中），对路径上所有敌人造成100+100%法术攻击力的法术伤害，同时消耗标记额外造成目标敌人15%最大生命值的法术伤害。",
+            "enhancements": [
+              {
+                "effect": "突击伤害系数提升至100+200%法术攻击力",
+                "level": 10
+              },
+              {
+                "effect": "击败敌人时恢复15点法力值",
+                "level": 40
+              },
+              {
+                "effect": "可连续进行2次突击",
+                "level": 100
+              }
+            ],
+            "id": 14600,
+            "name": "新月突击"
+          }
+        ],
+        "stats": {},
+        "tier": 5,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1461"
+      },
+      "card:1281": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": false,
+        "category": "heroes",
+        "effect": "整备：随机触发1名【三分】英雄的登场效果。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1281",
+        "name": "曹操",
+        "skills": [
+          {
+            "effect": "曹操凝聚霸道之力立即恢复自身100+15%最大生命值，同时在5秒内提高20%基础攻击力。",
+            "enhancements": [
+              {
+                "effect": "攻击力增益提升至50%",
+                "level": 10
+              },
+              {
+                "effect": "增益时间+5秒，强化状态下普攻会施放出可穿透的剑气",
+                "level": 40
+              },
+              {
+                "effect": "技能持续期间额外获得30%物理吸血",
+                "level": 100
+              }
+            ],
+            "id": 12800,
+            "name": "霸道枭雄"
+          }
+        ],
+        "stats": {
+          "攻击距离": 1,
+          "攻击速度": 0.8,
+          "暴击效果": "140%",
+          "暴击率": "0%",
+          "最大生命值": 300,
+          "法力值（初始／最大）": "25/60",
+          "法术攻击力": 0,
+          "法术防御": 18,
+          "物理攻击力": 40,
+          "物理防御": 18
+        },
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1281"
+      },
+      "card:1283": {
+        "aliases": [],
+        "attributes": {},
+        "awakened": true,
+        "category": "heroes",
+        "effect": "整备：随机触发2名【三分】英雄的登场效果。",
+        "faction": {
+          "id": "faction:sanfen",
+          "name": "三分",
+          "official_id": 309
+        },
+        "id": "card:1283",
+        "name": "曹操",
+        "skills": [
+          {
+            "effect": "曹操凝聚霸道之力立即恢复自身100+15%最大生命值，同时在5秒内提高20%基础攻击力。",
+            "enhancements": [
+              {
+                "effect": "攻击力增益提升至50%",
+                "level": 10
+              },
+              {
+                "effect": "增益时间+5秒，强化状态下普攻会施放出可穿透的剑气",
+                "level": 40
+              },
+              {
+                "effect": "技能持续期间额外获得30%物理吸血",
+                "level": 100
+              }
+            ],
+            "id": 12800,
+            "name": "霸道枭雄"
+          }
+        ],
+        "stats": {},
+        "tier": 2,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00",
+        "skills_source": "card:1281"
+      }
+    }
+  },
+  "extra_key": "露娜",
+  "syntax_version": "0.4"
+}

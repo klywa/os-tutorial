@@ -1,25 +1,60 @@
 {
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_1c33df3b1a2b43f5",
+  "explanation": "",
+  "explanation_after": "四级用牌对应随机五阶，棋手等级与随机单张都准确，保留原句。\n完整候选池通过 3 项。正例可播：四级使用高级人才可拿五阶英雄；单项反例不命中：改变必要前提：四级使用高级人才可拿五阶英雄；缺值检查：缺少关键观测：四级使用高级人才可拿五阶英雄。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：棋手现在四级，开高级人才能随机拿一张五阶英雄。\n原始依据：高级人才可随机获得1张特定品阶（棋手等级+1）的英雄牌，四级正好能拿随机五阶英雄，这里四级是收益档位的真实局面量。当前取舍：保留局面与当前收益，因原稿为逐字保留句，直接沿用原表述。自然语言适用条件：本次使用高级人才时棋手仍处于四级。正式条件：arg1 is \"高级人才\" and 玩家.等级 == 4。取舍后的播报重点：说明当前棋手处于四级，以及开高级人才能随机拿一张五阶英雄的当前收益。",
+  "explanation_source": "knowledge/lineups/常小娥灵活4人组-常小娥.json「单挂刚觉醒并拿到高级人才时」，正式卡牌库 card:7002。",
+  "expression": "(动作.卡牌.名称 == \"高级人才\" and 我方.等级 == 4)",
+  "id": "group_a85bd22dc7f34f2d8d69895347e61152",
+  "mode": "万象大赛",
   "name": "四级开高级人才",
+  "priority": 0,
+  "related_entities": [],
   "scope": {
-    "player_id": null,
-    "lineup_note_id": null
+    "lineup_note_id": null,
+    "player_id": null
   },
-  "explanation": "在“使用无目标效果牌”事件中，使用高级人才，棋手四级时适用。高级人才提供比棋手等级高一阶的英雄，四级使用正好能拿五阶。依据为《常小娥灵活变阵-常小娥》「单挂刚觉醒并拿到高级人才时」及官方效果牌「高级人才」。",
+  "tags": [],
   "utterances": [
     {
-      "text": "棋手四级时使用高级人才，能随机获得一张五阶英雄牌。",
-      "id": "utterances_50130840b3864958b783da62bfcee0ff"
-    },
-    {
-      "text": "高级人才提供比棋手等级高一阶的英雄，四级使用正好能拿五阶。",
-      "id": "utterances_523f432fe2aa4ae7b356d45a0a4d75c3"
+      "id": "utterances_50130840b3864958b783da62bfcee0ff",
+      "text": "棋手现在四级，开高级人才能随机拿一张五阶英雄。"
     }
   ],
-  "event_id": "os_1c33df3b1a2b43f5",
-  "id": "group_a85bd22dc7f34f2d8d69895347e61152",
-  "conditions": [],
-  "related_entities": [],
-  "priority": 0,
-  "expression": "arg1 is \"高级人才\" and 玩家.等级 == 4",
-  "editor_mode": "text"
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:7002": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "效果牌包一",
+          "获得途径": "该卡通过效果锦囊等渠道获得。",
+          "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分"
+        },
+        "awakened": false,
+        "category": "effect-cards",
+        "effect": "随机获得1张特定品阶（棋手等级+1）的英雄牌。",
+        "faction": {
+          "id": "",
+          "name": "通用",
+          "official_id": 0
+        },
+        "id": "card:7002",
+        "name": "高级人才",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "高级人才",
+  "syntax_version": "0.4"
 }

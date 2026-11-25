@@ -98,6 +98,57 @@ def normalize_entities(data,url,at):
 def stable(pid,key):return 'official-'+hashlib.sha256((pid+'|'+key).encode()).hexdigest()[:20]
 
 
+def player_skill_groups(properties):
+    cards = properties.get('official_cards')
+    if cards is None:
+        cards, _ = card_graph(properties)
+    seen = set()
+
+    def reference(cid):
+        return {'id': cid, 'name': cards.get(cid, {}).get('name') or cid}
+
+    def detail(cid):
+        seen.add(cid)
+        card = cards[cid]
+        targets = dict.fromkeys('card:'+str(target) for target in card.get('previewCardIDs', []))
+        return {**reference(cid), 'effect': clean(card.get('desc')),
+                'acquisition': clean(card.get('cardGetDesc')).removeprefix('来源:').strip(),
+                'stage': clean(card.get('talentStageDesc')),
+                'options': [reference(target) for target in targets]}
+
+    groups = []
+    for group in properties.get('talent', []):
+        name = group.get('name') or '技能分组'
+        entries, references = [], []
+        for cid in dict.fromkeys('card:'+str(card['id']) for card in group.get('cards', [])):
+            if cid in seen or cid not in cards:
+                references.append(reference(cid))
+            else:
+                entries.append(detail(cid))
+        groups.append({'name': '专属天赋' if name in ('专属', '天赋') else name,
+                       'level': group.get('level') or None, 'cards': entries, 'references': references})
+
+    related = []
+
+    def visit(cid):
+        if cid in seen or cid not in cards:
+            return
+        card = detail(cid)
+        related.append(card)
+        for target in card['options']:
+            visit(target['id'])
+
+    for group in groups:
+        for card in group['cards']:
+            for target in card['options']:
+                visit(target['id'])
+    for cid in cards:
+        visit(cid)
+    if related:
+        groups.append({'name': '关联选项', 'level': None, 'cards': related, 'references': []})
+    return groups
+
+
 def profile_nodes(player):
     pid=player['id'];props=player['properties'];cards=props.get('official_cards')
     if cards is None:cards,_=card_graph(props)

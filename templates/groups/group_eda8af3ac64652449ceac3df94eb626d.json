@@ -1,0 +1,63 @@
+{
+  "conditions": [],
+  "editor_mode": "text",
+  "event_id": "os_2b69e500a5c8036a",
+  "explanation": "",
+  "explanation_after": "现有低棋手等级足以支撑后续多个升级阶段的经验减免。\n完整候选池通过 3 项。正例可播：三级仍有多次升级；单项反例不命中：已到四级；缺值检查：缺少 玩家.等级。槽位按实测展开，播报均不超过 30 字。",
+  "explanation_before": "刷新前正式话术原句：棋手等级还低，选人才济济能少花经验升后面几级。\n原始依据：越早拿到人才济济后续升级次数越多、收益越高，接近满级时收益有限；其效果为升级所需棋手经验-2，每次升级时获得1张天赋牌人才搜寻。当前取舍：低等级留下更多升级段，人才济济每段减两点经验门槛，不能替代所需资源。自然语言适用条件：选择天赋“人才济济”且玩家等级不高于3级。正式条件：arg2 is \"人才济济\" and 玩家.等级 <= 3。播报重点：棋手等级还低，选人才济济能少花经验升后面几级。",
+  "explanation_source": "personal/knowledge_tips.jsonl 第157行「人才济济・使用技巧」\n正式卡牌库 人才济济（card:613004）",
+  "expression": "(动作.选中.名称 == \"人才济济\" and 我方.等级 <= 3)",
+  "id": "group_eda8af3ac64652449ceac3df94eb626d",
+  "mode": "万象大赛",
+  "name": "低等级选人才济济吃后续升级奖励",
+  "priority": 0,
+  "related_entities": [],
+  "scope": {
+    "lineup_note_id": null,
+    "player_id": null
+  },
+  "tags": [
+    "技巧"
+  ],
+  "utterances": [
+    {
+      "id": "utterances_b10540eb5bf64e599f67b357e5822b8e",
+      "text": "等级还低，选人才济济能少花经验升后面几级。"
+    }
+  ],
+  "version": "s1",
+  "review_status": "ai_generated",
+  "last_modified_by": {
+    "kind": "ai"
+  },
+  "entity_snapshot": {
+    "season": "S1",
+    "entities": {
+      "card:613004": {
+        "aliases": [],
+        "attributes": {
+          "所属分组": "天赋包一",
+          "拍卖轮次（官网原文）": "初始阵容",
+          "获得途径": "来源: 棋手升级时概率选择获取天赋。",
+          "解锁条件": "万象大赛达到1320分或者巅峰试炼达到1000分或者钻石狂潮达到3000分"
+        },
+        "awakened": false,
+        "category": "talents",
+        "effect": "升级所需棋手经验-2，每次升级时获得1张天赋牌人才搜寻。",
+        "faction": {
+          "id": "",
+          "name": "未提供",
+          "official_id": 0
+        },
+        "id": "card:613004",
+        "name": "人才济济",
+        "skills": [],
+        "stats": {},
+        "tier": null,
+        "retrieved_at": "2026-10-19T05:24:37.594410+00:00"
+      }
+    }
+  },
+  "extra_key": "人才济济",
+  "syntax_version": "0.4"
+}
