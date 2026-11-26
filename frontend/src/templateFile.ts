@@ -589,12 +589,24 @@ export function fixEditedLocalUtterances(previous:TemplateGroup,group:TemplateGr
   !row.ignored&&originals.get(row.id)?.text!==row.text?{...row,fixed:true}:row)};
 }
 
-export async function pickTemplateFile(startIn?:LocalFileHandle){
+async function pickJsonFiles(multiple:boolean,startIn?:LocalFileHandle){
  const choose=(window as Window&{showOpenFilePicker?:(options:unknown)=>Promise<LocalFileHandle[]>}).showOpenFilePicker;
  if(!choose)throw new Error('当前浏览器无法直接打开并写回文件。请使用 Chrome 或 Edge。');
- const [handle]=await choose.call(window,{...(startIn?{startIn}:{}),multiple:false,types:[{description:'话术模板库 JSON',accept:{'application/json':['.json']}}]});
- if(!handle)throw new DOMException('未选择文件','AbortError');
- return handle;
+ const handles=await choose.call(window,{...(startIn?{startIn}:{}),multiple,types:[{description:'话术模板库 JSON',accept:{'application/json':['.json']}}]});
+ if(!handles.length)throw new DOMException('未选择文件','AbortError');
+ return handles;
+}
+
+export async function pickTemplateFile(startIn?:LocalFileHandle){
+ return (await pickJsonFiles(false,startIn))[0];
+}
+
+export async function pickTemplateLibrary(startIn?:LocalFileHandle){
+ const handles=await pickJsonFiles(true,startIn);
+ if(handles.length===1)return {handle:handles[0]};
+ const handle=handles.find(item=>handles.some(other=>other.name===item.name.replace(/\.json$/i,'')+'-detail.json'));
+ if(handles.length!==2||!handle)throw new Error('请选择一个模板库，可同时选择同名的 -detail.json。');
+ return {handle,detail:handles.find(item=>item!==handle)};
 }
 
 export async function pickNewTemplateFile(name:string){

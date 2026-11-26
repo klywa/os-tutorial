@@ -35,9 +35,11 @@ import TemplateBoard,{TemplateEntityList,buildTemplateEntityIndex} from './Templ
 import TemplateLineupBoard,{addLineupRosters,buildLineupTabs,generalHeroLabel,lineupBoardRows,lineupRosterName,lineupRosterNames,lineupTemplateCounts,TemplateLineupSidebar,unscopedLineup} from './TemplateLineupBoard';
 import FloatingDocumentNote from './FloatingDocumentNote';
 import {TemplateLineupName} from './ConditionTextEditor';
+import TemplateTraceDialog from './TemplateTraceDialog';
+import {loadTemplateTrace,type LoadedTrace} from './templateTrace';
 import TemplateBrowsePopup from './TemplateBrowsePopup';
 import TemplateRevisions,{TemplateOfficialDescriptions} from './TemplateRevisions';
-import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateFile,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeasons,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
+import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateLibrary,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeasons,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
 import {recentTemplateFiles,rememberRecentTemplateFile,sameTemplateFile,type RecentTemplateFile} from './templateRecentFiles';
 import {actionArgumentFields,applyTemplateGroupFields,groupDiffKeys,appendTemplateMetadata,copyTemplateGroup,deriveTemplateEntities,downloadTemplates,effectiveReviewStatus,emptyTemplateFilters,filterTemplateGroups,templateGroupVisible,lineupPlayer,templateExplanationFields,templateMetadataLabels,templateRangeKey,templateRangeText,templateRangeValues,templateVersionValues,templateReviewLabels,templateReviewLabel,mergeTemplateWriteSnapshot,orderTemplateEvents,operators,templateId,valueText,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateFilters,type TemplateGameMode,type TemplateGroup,type TemplateMetadataField,type TemplateParameter,type TemplateProposal,type TemplateReviewStatus,type TemplateSnapshot,type PortableTemplateLibrary,type TemplateWarning,type UtteranceBindings} from './templates';
 import type {Note,Options} from './types';
@@ -109,7 +111,7 @@ type InlineTriggerEditing={events:string[];saveEvent:(name:string)=>Promise<void
 type CopyKind='event'|'condition';
 type CopyDraft={kind:CopyKind;source:TemplateGroup;group:TemplateGroup;view:string;popupKey?:string;target?:TemplateEvent;error?:string;busy?:boolean};
 
-export function TemplateGroupCard({group,event,catalog,utteranceBindings,entities:archivedEntities=[],scopeName,editable,onEdit,onSaveName,onSaveMetadata,metadataLocked=false,onCopy,relatedCopyOptions,onRelatedCopy,onDelete,onExport,onFeedback,commentCounts,lastActivity,onRevisions,onReviewStatus,reviewPending,canFinalReview=false,onToggleIgnored,onToggleFixed,savingIgnore,warning,onConfirm,onSaveUtterances,utteranceDrafts,onUtteranceDraftsChanged,flagFeedback,conditionEditor,onSaveExpression,scopeOptions,annotator=false,interactionLocked=false,fileMode=false,allowExport=true,workflow,proposal,proposalControl,originalGroup,inlineTrigger,conditionVariant=false}:{group:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;utteranceBindings?:UtteranceBindings;entities?:TemplateEntity[];scopeName:(id:string|null)=>string;editable:boolean;onEdit:()=>void;onSaveName?:(name:string)=>Promise<void>;onSaveMetadata?:(field:'tags'|'batch',values:string[])=>Promise<void>;metadataLocked?:boolean;onCopy?:(kind:CopyKind)=>void;relatedCopyOptions?:()=>RelatedCopyChoice[];onRelatedCopy?:(event:string)=>void;onDelete?:()=>void;onExport?:()=>void;onFeedback?:(id?:string)=>void;commentCounts?:Record<string,number>;lastActivity?:Activity;onRevisions?:()=>void;onReviewStatus?:(status:TemplateReviewStatus|null)=>void;reviewPending?:PendingReview;canFinalReview?:boolean;onToggleIgnored?:(utteranceId?:string)=>void;onToggleFixed?:(utteranceId:string)=>void;savingIgnore?:{group:boolean;rows:string[]};warning?:TemplateWarning;onConfirm?:()=>void;onSaveUtterances?:(change:UtteranceChange)=>Promise<void>;utteranceDrafts?:UtteranceDraftStore;onUtteranceDraftsChanged?:()=>void;flagFeedback?:(id:string,field:EditFlag)=>UtteranceFlagFeedback|undefined;conditionEditor?:ReactNode;onSaveExpression?:(value:string,scope:TemplateGroup['scope'])=>Promise<void>;scopeOptions?:TemplateScopeOptions;annotator?:boolean;interactionLocked?:boolean;fileMode?:boolean;allowExport?:boolean;workflow?:ReactNode;proposal?:CardProposal;proposalControl?:ProposalControl;originalGroup?:TemplateGroup;inlineTrigger?:InlineTriggerEditing;conditionVariant?:boolean}){
+export function TemplateGroupCard({group,event,catalog,utteranceBindings,entities:archivedEntities=[],scopeName,editable,onEdit,onSaveName,onSaveMetadata,metadataLocked=false,onCopy,relatedCopyOptions,onRelatedCopy,onDelete,onExport,onTrace,onFeedback,commentCounts,lastActivity,onRevisions,onReviewStatus,reviewPending,canFinalReview=false,onToggleIgnored,onToggleFixed,savingIgnore,warning,onConfirm,onSaveUtterances,utteranceDrafts,onUtteranceDraftsChanged,flagFeedback,conditionEditor,onSaveExpression,scopeOptions,annotator=false,interactionLocked=false,fileMode=false,allowExport=true,workflow,proposal,proposalControl,originalGroup,inlineTrigger,conditionVariant=false}:{group:TemplateGroup;event?:TemplateEvent;catalog?:ConditionCatalog;utteranceBindings?:UtteranceBindings;entities?:TemplateEntity[];scopeName:(id:string|null)=>string;editable:boolean;onEdit:()=>void;onSaveName?:(name:string)=>Promise<void>;onSaveMetadata?:(field:'tags'|'batch',values:string[])=>Promise<void>;metadataLocked?:boolean;onCopy?:(kind:CopyKind)=>void;relatedCopyOptions?:()=>RelatedCopyChoice[];onRelatedCopy?:(event:string)=>void;onDelete?:()=>void;onExport?:()=>void;onTrace?:()=>void;onFeedback?:(id?:string)=>void;commentCounts?:Record<string,number>;lastActivity?:Activity;onRevisions?:()=>void;onReviewStatus?:(status:TemplateReviewStatus|null)=>void;reviewPending?:PendingReview;canFinalReview?:boolean;onToggleIgnored?:(utteranceId?:string)=>void;onToggleFixed?:(utteranceId:string)=>void;savingIgnore?:{group:boolean;rows:string[]};warning?:TemplateWarning;onConfirm?:()=>void;onSaveUtterances?:(change:UtteranceChange)=>Promise<void>;utteranceDrafts?:UtteranceDraftStore;onUtteranceDraftsChanged?:()=>void;flagFeedback?:(id:string,field:EditFlag)=>UtteranceFlagFeedback|undefined;conditionEditor?:ReactNode;onSaveExpression?:(value:string,scope:TemplateGroup['scope'])=>Promise<void>;scopeOptions?:TemplateScopeOptions;annotator?:boolean;interactionLocked?:boolean;fileMode?:boolean;allowExport?:boolean;workflow?:ReactNode;proposal?:CardProposal;proposalControl?:ProposalControl;originalGroup?:TemplateGroup;inlineTrigger?:InlineTriggerEditing;conditionVariant?:boolean}){
  const cards=useCards(),entities=deriveTemplateEntities(group,event,cards,archivedEntities);
  const actionValues=fixedArguments(group,event);
  const parameters=event?templateTriggerParameters(group,event):[];
@@ -169,6 +171,7 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
     {group.last_modified_by&&<span>最后修改 · {group.last_modified_by.kind==='ai'?'AI':group.last_modified_by.username??'人工'}</span>}
    </div></div>
    <div className="template-card-actions">
+    {onTrace&&<button type="button" onClick={onTrace}>溯源</button>}
     {onRevisions&&<div className="template-history-control"><button type="button" aria-describedby={historyId} disabled={interactionLocked} onClick={onRevisions}>版本记录</button>
      <span className="template-history-tooltip" id={historyId} role="tooltip">{lastActivity?`最近操作 · ${activityLabel(lastActivity)}`:'查看修订历史'}</span></div>}
     {onFeedback&&<button disabled={interactionLocked} onClick={()=>onFeedback()}>{fileMode?'组批注':'组批注与记录'} <span className="template-comment-count">{commentCounts?.['']??0}</span></button>}
@@ -247,7 +250,7 @@ function applyIgnore(group:TemplateGroup,change:IgnoreChange):TemplateGroup{
   : update(group);
 }
 type Preview={revision:string;changes:TemplateChange[];summary:unknown;errors:unknown[];preserved_fixed?:{group_id:string;utterance_id:string;group_name:string;text:string}[]};
-type OpenFile={handle:LocalFileHandle;raw:string};
+type OpenFile={handle:LocalFileHandle;raw:string;detail?:LocalFileHandle;trace?:LoadedTrace};
 type LineupView={active:boolean;lineup:string;player:string;query:string;eventIds?:string[];filters:Pick<TemplateFilters,'review_status'|'onlyFixed'|'hideIgnored'>};
 type BrowsePopup={key:string;title:string;ids:string[];parents:Map<string,string>;visibility:Pick<TemplateFilters,'onlyFixed'|'hideIgnored'>};
 type View={filters:TemplateFilters;entityKey:string;byEntity:boolean;compact:boolean;selected:Set<string>;lineupView?:LineupView};
@@ -263,6 +266,8 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
  const canManage=editable&&(fileMode||admin||annotator);
  const cards=useCards();
  const [database,setDatabase]=useState<TemplateSnapshot|null>(null),[opened,setOpened]=useState<OpenFile|null>(()=>workspace?.opened??null);
+ const [traceGroup,setTraceGroup]=useState<TemplateGroup|null>(null);
+ const [databaseTrace,setDatabaseTrace]=useState<LoadedTrace>();
  const openedFile=useRef(opened);
  const [official,setOfficial]=useState<OfficialTemplateCatalog>(),[officialError,setOfficialError]=useState('');
  const lookups=useMemo(()=>({entities:[...options.entities,...cards,...(official?.season===season?official.items:[])],lineups:notes.filter(n=>n.type==='lineup')}),[options.entities,cards,notes,official,season]);
@@ -287,6 +292,9 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
  const [views,setViews]=useState<Record<string,View>>(()=>workspace?.views??{});
  useEffect(()=>{if(workspace)workspace.views=views;},[workspace,views]);
  function rememberFile(file:OpenFile|null){
+  if(file?.trace&&openedFile.current?.handle===file.handle&&openedFile.current.raw!==file.raw&&openedFile.current.trace===file.trace){
+   file={...file,trace:{...file.trace,modified:true}};
+  }
   openedFile.current=file;
   if(workspace)workspace.opened=file;
   setOpened(file);
@@ -468,6 +476,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   return()=>{active=false;};
  },[fileMode,season]);
  useEffect(()=>{
+  setTraceGroup(null);setDatabaseTrace(undefined);
   setError('');setNotice('');setLocatedDetail(null);setFocusTarget(null);setRevisionGroup(null);setEditor(null);setJsonGroup(null);setFeedback(null);
   setSettings(false);setProposals(false);setImportOpen(false);setImportSelection(null);setImportText('');setPreview(null);setFileExport(undefined);setBatchMetadata(null);
   onDirty?.(false);
@@ -696,6 +705,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   return !(editedUtterance||editedGroup||documentNoteDirty.current)||confirm('当前文件有未保存的修改。确定放弃这些修改吗？');
  }
  function resetFileView(){
+  setTraceGroup(null);
   if(openedFile.current){
    for(const key of utteranceDrafts.keys())if(fileDraftKey(key))utteranceDrafts.delete(key);
    for(const key of cardEditors.keys())if(fileDraftKey(key))cardEditors.delete(key);
@@ -720,7 +730,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   if(busy||pickerLock.current||saveFileLock.current||!reuse&&!allowReplaceFile())return;
   pickerLock.current=true;onBusyChange?.(true);setBusy(true);setError('');
   try{
-   const handle=options.recent?.handle??(reuse&&opened?opened.handle:await pickTemplateFile(options.startIn));
+   const {handle,detail}=options.recent??(reuse&&opened?opened:await pickTemplateLibrary(options.startIn));
    if(options.recent&&handle.requestPermission&&await handle.requestPermission({mode:'read'})!=='granted'){
     throw new Error('未获得读取权限，请重新授权或手动选择文件。');
    }
@@ -729,8 +739,15 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    const current=openedFile.current;
    const same=current&&await sameTemplateFile(current.handle,handle);
    if(!same)resetFileView();
-   rememberFile({handle:same?current.handle:handle,raw});setNotice('');
-   void rememberRecentTemplateFile({id:options.recent?.id??templateId('recent'),handle,openedAt:Date.now()}).then(setRecentFiles);
+   let trace:LoadedTrace|undefined,traceError='';
+   if(detail){
+    try{trace=await loadTemplateTrace(detail,{name:handle.name,raw});}
+    catch(e){traceError='主库已打开。'+(e as Error).message;}
+   }else if(same&&current.trace){
+    trace=current.raw===raw?current.trace:{...current.trace,modified:true};
+   }
+   rememberFile({handle:same?current.handle:handle,raw,detail,trace});setNotice(traceError);
+   void rememberRecentTemplateFile({id:options.recent?.id??templateId('recent'),handle,detail,openedAt:Date.now()}).then(setRecentFiles);
   }catch(error){
    if(reportInDialog)throw error;
    const {name,message}=error as Error;
@@ -1601,6 +1618,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    })):undefined}/>;
   const groupEditor=editorForm&&!embeddedEditor?createPortal(editorForm,document.body,editorKey):editorForm;
   return <TemplateGroupCard key={group.id} group={displayed} catalog={snapshot?.condition_catalog} fileMode={fileMode} allowExport={!projected&&!legacyMode} utteranceBindings={ruleChanged?undefined:snapshot?.utterance_bindings?.[group.id]}
+   onTrace={()=>setTraceGroup(displayed)}
    originalGroup={projected?.newGroup?undefined:original} proposal={projected} proposalControl={rows.length?{
     rows,active,original:showOriginal,temporary:temporaryGroup?.id===group.id,
     disabled:selectionLocked,onChange:value=>chooseProposal(group.id,value),
@@ -1779,7 +1797,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    提案预览暂不可用：{proposalPreviews.error} <button type="button" onClick={refreshProposals}>重试</button>
   </div>}
   {fileMode&&officialError&&opened&&<p className="muted" role="status">官网卡牌资料读取失败：{officialError}</p>}
-  {fileMode&&!opened?<div className="empty"><p>打开话术模板库 JSON 文件，查看和编辑其中的模板组。</p>{recentFiles.length>0&&
+  {fileMode&&!opened?<div className="empty"><p>打开话术模板库 JSON 文件，可同时选择同名的 -detail.json 查看生成记录。</p>{recentFiles.length>0&&
    <section aria-label="最近载入的模板文件" className="template-recent-files">
     <h2>最近载入</h2><ul>{recentFiles.map(entry=><li key={entry.id}>
      <button type="button" disabled={busy} onClick={()=>void openFile(false,false,{recent:entry})}>{entry.handle.name}</button>
@@ -1852,6 +1870,11 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
     <ReadingCards cardSearch><div className="template-card-stack">{renderGroupList(visibleCardRows(relatedDisplayRows(cardMembers.get(detailGroup.id)??[detailGroup],relatedAvailable,relatedParents).rows))}</div></ReadingCards>
    </div>
   </section>}
+  {traceGroup&&<TemplateTraceDialog key={traceGroup.id} group={traceGroup} loaded={fileMode?opened?.trace:databaseTrace}
+   library={fileMode&&opened?{name:opened.handle.name,raw:opened.raw}:undefined} onLoad={trace=>{
+    if(fileMode){const current=openedFile.current;if(current&&current.handle===opened?.handle)rememberFile({...current,trace});}
+    else setDatabaseTrace(trace);
+   }} onClose={()=>setTraceGroup(null)}/>}
   {batchMetadata&&<TemplateBatchMetadata field={batchMetadata} groups={selectedGroups} proposal={useProposalEditor}
    onClose={()=>setBatchMetadata(null)} onSave={values=>saveBatchMetadata(batchMetadata,values)}/>}
   {feedback&&(fileMode?feedback.group&&<LocalTemplateFeedback group={feedback.group} utteranceId={feedback.utteranceId}
@@ -1863,7 +1886,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   {fileExport&&<TemplateFileExport groupName={fileExport.group?.name} counts={{selected:selectedGroups.length,filtered:groups.length}}
    initialScope={fileExport.scope} opened={opened} loadSource={(scope,sameAsOpened)=>exportSource(scope,fileExport.group,sameAsOpened)} onClose={()=>setFileExport(undefined)}
    onBusy={value=>{onBusyChange?.(value);setBusy(value);}}
-   onSaved={(handle,raw,sameAsOpened)=>{if(sameAsOpened)rememberFile({handle,raw});setFileExport(undefined);setNotice(`已导出到「${handle.name}」。`);}}/>}
+   onSaved={(handle,raw,sameAsOpened)=>{if(sameAsOpened&&opened)rememberFile({...opened,raw});setFileExport(undefined);setNotice(`已导出到「${handle.name}」。`);}}/>}
   {revisionGroup&&snapshot&&<TemplateRevisions group={revisionGroup} revision={snapshot.revision} canRestore={editable} onClose={()=>setRevisionGroup(null)} onSaved={result=>{
    if('proposal' in result){refreshProposals();setNotice('回退已提交，待审核。');}else setDatabase(result);
    setRevisionGroup(null);void load();

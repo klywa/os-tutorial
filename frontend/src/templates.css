@@ -555,3 +555,12 @@ button.template-inline-trigger.template-inline-argument{margin-inline-start:5px;
  .template-related-copy{display:grid;align-items:start}
  .template-related-choices{position:static;width:auto;max-width:100%}
 }
+
+.template-trace { overflow-wrap: anywhere; }
+.template-trace select { max-width: 100%; }
+.template-trace details { margin: .4rem 0; padding: .35rem .65rem; border-left: 2px solid var(--line, #d3d9de); }
+.template-trace summary { cursor: pointer; font-weight: 600; }
+.template-trace pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 40vh; overflow: auto; font-size: .88em; }
+.template-trace dl > div { display: flex; gap: .75em; }
+.template-trace dt { min-width: 4em; }
+.template-trace dd { margin: 0; }
