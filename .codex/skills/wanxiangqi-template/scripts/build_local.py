@@ -333,6 +333,25 @@ def verify_gemini(records, directory, briefs=None):
             raise ValueError(f"{name} 候选必须按原序来自 Gemini 成功响应，该批仅接受首批原句")
 
 
+def verify_generation(records, directory, briefs, *, allow_default_model=False):
+    gemini = []
+    for row in records:
+        source = row.get("generation_source", "gemini")
+        if source == "gemini":
+            gemini.append(row)
+            continue
+        if source != "default_model" or not allow_default_model:
+            raise ValueError("使用默认模型的模板组须获得本批授权")
+        key = audit_key(row["event_name"], row["name"], row.get("group_id"))
+        brief = briefs[key]
+        check_wording_brief(brief)
+        draft = read(directory / row["default_model_draft"])
+        if draft != {"kind": "local-default-model-draft", "group_id": row["group_id"],
+                     "wording_brief": brief, "candidates": [item["text"] for item in row["candidates"]]}:
+            raise ValueError(f"{row['name']} 默认模型原稿与复核记录不一致")
+    verify_gemini(gemini, directory, briefs)
+
+
 def include_referenced_events(package):
     events = package["events"]
     declared = {event.get("name") or event["signature"].rpartition("(")[0].strip() for event in events}
@@ -360,6 +379,7 @@ def main():
     for field in ("draft", "review", "scenarios", "output"):
         parser.add_argument(field, type=Path)
     parser.add_argument("--coverage", type=Path, required=True, help="逐段、素材、事件与骨架覆盖记录")
+    parser.add_argument("--allow-default-model", action="store_true", help="本批已获用户授权使用默认模型")
     args = parser.parse_args()
     target = args.output.resolve()
     if target in {p.resolve() for p in (args.draft, args.review, args.scenarios, args.coverage)}:
@@ -371,7 +391,7 @@ def main():
         reviews, keys = review_keys(package["groups"], records)
         briefs = {key: group.get("wording_brief") for group, key in zip(package["groups"], keys, strict=True)}
         verify_coverage(read(args.coverage), reviews, confirmed_events(events_directory))
-        verify_gemini(records, args.review.parent, briefs)
+        verify_generation(records, args.review.parent, briefs, allow_default_model=args.allow_default_model)
         validate(package, records, read(args.scenarios), events_directory)
         package["groups"] = merge_duplicate_groups(package["groups"])
         for group in package["groups"]:

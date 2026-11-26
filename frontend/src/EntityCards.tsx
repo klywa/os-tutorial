@@ -105,7 +105,7 @@ export function CardProvider({children,enabled=true}:{children:ReactNode;enabled
  useEffect(()=>{
   if(!active)return;let alive=true,epoch=0;
   const refresh=()=>{const current=++epoch,workspace=activeWorkspace();let fresh=false;
-   if(!publicMode)void cachedEntry<CardSummary[]>('cards',workspace).then(c=>{if(alive&&current===epoch&&!fresh&&c)setCards(c.value);});
+   if(!publicMode&&currentSeason()==='S1')void cachedEntry<CardSummary[]>('cards',workspace).then(c=>{if(alive&&current===epoch&&!fresh&&c)setCards(c.value);});
    void (publicMode?checkCardVersion().then(()=>loadCardCatalog(workspace)):loadCardCatalog(workspace)).then(c=>{if(alive&&current===epoch&&c.every(card=>(card.catalog_version??'')===cardVersion(workspace))){fresh=true;setCards(c);}}).catch(()=>{});
   };
   const catalog=(event:Event)=>{const value=(event as CustomEvent<{cards:CardSummary[];workspace:string;epoch:number;version:string}>).detail;if(alive&&value.workspace===activeWorkspace()&&value.epoch===requestGeneration()&&value.version===cardVersion(value.workspace))setCards(value.cards);};

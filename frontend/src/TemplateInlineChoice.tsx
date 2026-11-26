@@ -9,7 +9,9 @@ export default function TemplateInlineChoice({label,value,choices,onSave,disable
  const [query,setQuery]=useState<string|null>(autoStart?'':null),[active,setActive]=useState(0),[busy,setBusy]=useState(false),[error,setError]=useState('');
  const saving=useRef(false),trigger=useRef<HTMLButtonElement>(null),listId=useId();
  const options=matchMetadataChoices(choices,query??'',[]).filter(choice=>choice!==firstChoice);
- const matches=firstChoice?[firstChoice,...options.slice(0,29)]:options.slice(0,30);
+ const typed=query?.trim();
+ const manual=allowText&&typed&&typed!==firstChoice&&!choices.includes(typed)?typed:undefined;
+ const matches=[...(firstChoice?[firstChoice]:[]),...(manual?[manual]:[]),...options].slice(0,30);
  function close(focus=false){
   setQuery(null);setError('');
   if(focus)requestAnimationFrame(()=>trigger.current?.focus());
@@ -47,7 +49,7 @@ export default function TemplateInlineChoice({label,value,choices,onSave,disable
    }}/>
   {!!matches.length&&<span id={listId} className="template-inline-options" role="listbox" aria-label={label+'候选'}>
    {matches.map((choice,index)=><button key={choice} type="button" role="option" id={listId+'-'+index} tabIndex={-1} aria-selected={active===index}
-    disabled={busy} onMouseDown={event=>event.preventDefault()} onClick={()=>void save(choice)}>{choice}</button>)}
+    disabled={busy} onMouseDown={event=>event.preventDefault()} onClick={()=>void save(choice)}>{choice===manual?`使用「${choice}」`:choice}</button>)}
   </span>}
   {busy&&<span role="status" className="muted">保存中…</span>}
   {error&&<span role="alert" className="error">{error}</span>}

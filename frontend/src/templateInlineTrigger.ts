@@ -199,15 +199,17 @@ export function changeTemplateArgument(group:TemplateGroup,event:TemplateEvent,p
   }
   const valueToSave=parameter.type==='entity'?{id:entityId,name:value}:parameter.type==='number'?Number(value):value;
   if(parameter.type==='number'&&!Number.isFinite(valueToSave))throw new Error('请输入有效数字');
-  if(parameter.type==='entity'&&!entityId)throw new Error('请从候选中选择卡牌');
-  if(group.expression===undefined||!group.expression&&group.conditions.length){
+  const hasStructuredConditions=group.expression===undefined||!group.expression&&group.conditions.length>0;
+  const manualEntity=parameter.type==='entity'&&!entityId;
+  if(hasStructuredConditions&&!manualEntity){
    const existing=group.conditions.find(condition=>condition.parameter_key===parameter.key&&condition.operator==='eq');
    const condition={id:existing?.id??templateId('conditions'),parameter_key:parameter.key,operator:'eq' as const,value:valueToSave};
    next={...group,conditions:existing?group.conditions.map(row=>row.id===existing.id?condition:row):[...group.conditions,condition]};
   }else{
    const literal=parameter.type==='number'?String(valueToSave):JSON.stringify(value);
    const binding=parameter.key+(parameter.type==='entity'?'.名称':'')+' == '+literal;
-   let expression=group.expression;
+   const original=hasStructuredConditions?copyConditionExpression({...group,expression:undefined},event):group.expression??'';
+   let expression=original;
    if(old!==undefined){
     const escaped=parameter.key.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
     const term=new RegExp('\\b'+escaped+'(?:\\.(?:名称|name))?\\s*(?:is|==)\\s*("(?:[^"\\\\]|\\\\.)*"|-?\\d+(?:\\.\\d+)?)','gu');
@@ -215,9 +217,9 @@ export function changeTemplateArgument(group:TemplateGroup,event:TemplateEvent,p
      const match=[...value.matchAll(term)].find(item=>item[0]===value);
      return match&&String(JSON.parse(match[1]))===old?binding:value;
     });
-    if(expression===group.expression&&old!==value)throw new Error('请在完整触发条件中修改这个参数');
+    if(expression===original&&old!==value)throw new Error('请在完整触发条件中修改这个参数');
    }else expression=expression.trim()?'('+expression+') and '+binding:binding;
-   next={...group,expression,editor_mode:'text',condition_tree:null};
+   next={...group,expression,conditions:hasStructuredConditions?[]:group.conditions,editor_mode:'text',condition_tree:null};
   }
  }
  return {...next,name:canonicalTemplateName(next,event)??group.name};

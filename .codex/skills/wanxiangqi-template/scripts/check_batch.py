@@ -241,6 +241,7 @@ def _check_v04(group, cases):
                 raise ValueError(f"{group['name']}：条件中的阵营须使用正式全称")
     fixed_equipment = event in {"解释为何穿戴装备", "解释为何铸造装备", "解释为何转移装备"} and key[-1] != "*"
     fixed_recipient = fixed_equipment and key[0] != "*"
+    fixed_effect = event in {"解释为何对目标使用效果牌", "解释为何对目标使用棋手技能"} and key[0] != "*"
 
     def action_field(node, field):
         return (isinstance(node, ast.Attribute) and node.attr == field
@@ -248,6 +249,21 @@ def _check_v04(group, cases):
 
     def recipient_path(node):
         return isinstance(node, ast.Attribute) and action_field(node.value, "目标英雄")
+
+    def recipient_fact(node):
+        if not (fixed_equipment or fixed_effect):
+            return False
+        props = {"装备列表", "等级", "品阶", "已觉醒", "觉醒进度", "阵营",
+                 "关键词", "标签", "英雄阵容定位"}
+        def observed(part):
+            return recipient_path(part) and part.attr in props
+        if observed(node) and node.attr == "已觉醒":
+            return True
+        if isinstance(node, ast.Compare) and len(node.ops) == 1:
+            return any(isinstance(child, ast.Constant) and child.value is not None for child in ast.walk(node)) and any(
+                observed(child) for child in ast.walk(node))
+        return (isinstance(node, ast.Call) and len(node.args) == 2 and observed(node.args[0])
+                and any(isinstance(child, ast.Constant) for child in ast.walk(node.args[1])))
 
     def game_context(node, negated=False):
         if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
@@ -259,6 +275,8 @@ def _check_v04(group, cases):
             return False
         if any(isinstance(child, ast.Name) and child.id in {"我方", "对手", "对局"}
                for child in ast.walk(node)):
+            return True
+        if recipient_fact(node):
             return True
         if negated or not isinstance(node, ast.Compare) or len(node.ops) != 1:
             return False

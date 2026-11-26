@@ -67,5 +67,18 @@ class CardHttpTests(unittest.TestCase):
         conn.request('GET','/os-tutorial/api/cards',headers={'Host':'klywa.xyz','If-None-Match':headers['ETag']})
         response=conn.getresponse();self.assertEqual(response.status,401);response.read();conn.close()
 
+    def test_s2_uses_its_own_catalog_and_excludes_s1_cards(self):
+        self.package('只在 S1 的英雄')
+        self.login()
+        base='/os-tutorial/api/cards'
+        self.assertEqual(self.call(base+'?season=S2')[1],[])
+        s2=[{'id':'card:5071','name':'李信','category':'heroes','tier':5}]
+        store.write_file(self.root/'website-data/seasons/S2/cards.json',s2)
+        self.assertEqual(self.call(base+'?season=S2')[1],s2)
+        status=self.call(base+'/status?season=S2')[1]
+        self.assertEqual(status,{'state':'ready','version':store.digest(s2)})
+        code,card,_=self.call(base+'/card:5071?season=S2&version='+status['version'])
+        self.assertEqual((code,card['name'],card['tier']),(200,'李信',5))
+
 
 if __name__=='__main__':unittest.main()

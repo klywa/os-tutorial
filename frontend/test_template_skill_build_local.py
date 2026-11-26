@@ -98,6 +98,37 @@ class LocalBuildTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "缺少局面依据"):
             _check_v04(group, [])
 
+    def test_default_model_requires_authorization_and_exact_local_draft(self):
+        key = build_local.audit_key(EVENT, "默认模型例", "local-group")
+        brief = ("生效条件\n尚未购买\n当前事件\n解释当前操作\n"
+                 "局面解释\n提供等级收益\n写法与措辞\n点明受益对象\n建议话术\n- 提高受益英雄等级。")
+        draft_path = self.root / "local-draft.json"
+        draft = {"kind": "local-default-model-draft", "group_id": "local-group",
+                 "wording_brief": brief, "candidates": ["提高受益英雄等级。"]}
+        draft_path.write_text(json.dumps(draft, ensure_ascii=False), encoding="utf-8")
+        audit = {"event_name": EVENT, "name": "默认模型例", "group_id": "local-group",
+                 "generation_source": "default_model", "default_model_draft": draft_path.name,
+                 "candidates": [{"text": draft["candidates"][0]}]}
+        with self.assertRaisesRegex(ValueError, "须获得本批授权"):
+            build_local.verify_generation([audit], self.root, {key: brief})
+        build_local.verify_generation([audit], self.root, {key: brief}, allow_default_model=True)
+        audit["candidates"][0]["text"] = "擅自改了原句。"
+        with self.assertRaisesRegex(ValueError, "原稿与复核记录不一致"):
+            build_local.verify_generation([audit], self.root, {key: brief}, allow_default_model=True)
+
+    def test_named_effect_can_check_observed_target_equipment_count(self):
+        from check_batch import _check_v04
+        group = {
+            "event_name": "解释为何对目标使用效果牌", "name": "空装备目标使用武装重构",
+            "extra_key": "武装重构", "scope": {},
+            "expression": "动作.目标英雄 != nil and len(动作.目标英雄.装备列表) == 0",
+            "utterances": [{"id": "line", "text": "空装备英雄能靠武装重构获得一件装备。"}],
+        }
+        _check_v04(group, [])
+        group["expression"] = "动作.目标英雄 != nil"
+        with self.assertRaisesRegex(ValueError, "缺少局面依据"):
+            _check_v04(group, [])
+
     def test_v04_awakening_requires_both_facts_across_branches(self):
         from check_batch import _check_v04
         guard = "动作.英雄.已觉醒 and 动作.英雄.觉醒进度 == 2"

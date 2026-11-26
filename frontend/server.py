@@ -195,7 +195,8 @@ class Handler(BaseHTTPRequestHandler):
                 if suffix=='candidates':return self.response(200,topics.pending())
                 return self.response(404,{'error':'主题接口不存在'})
             if path == '/api/cards' or path.startswith('/api/cards/'):
-                if season!='S1':return self.response(200,seasons.cards(self.server.root,season,path),etag=True)
+                if season!='S1':
+                    return self.response(200,seasons.cards(self.server.root,season,path),etag=True)
                 recover_before_read(self.server.root)
                 from card_images import image_fields, image_file
                 if '/images/' in path:
@@ -212,7 +213,15 @@ class Handler(BaseHTTPRequestHandler):
                     self.wfile.write(body)
                     return
                 import reader_store,json_store
-                cards = reader_store.cards(self.server.root) if json_store.enabled(self.server.root) and path=='/api/cards' else wxq.read_json(self.server.root / 'knowledge/cards/index.json', {}).get('cards', [])
+                if not json_store.enabled(self.server.root):
+                    cards = wxq.read_json(self.server.root / 'knowledge/cards/index.json', {}).get('cards', [])
+                elif path in ('/api/cards', '/api/cards/status'):
+                    cards = reader_store.cards(self.server.root)
+                else:
+                    from reference_store import json_cards
+                    cards = json_cards(self.server.root)
+                if path == '/api/cards/status':
+                    return self.response(200, {'version':json_store.digest(cards), 'state':'ready' if cards else 'empty'}, etag=True)
                 images = wxq.read_json(self.server.root / 'entities/assets/index.json', {})
                 cards = [{**c, **image_fields(self.server.root, c['id'], images)} for c in cards]
                 if path == '/api/cards':

@@ -29,4 +29,16 @@ describe('清除模板组参数的固定值',()=>{
   ]};
   expect(changeTemplateArgument(structured,event,hero,null).conditions).toEqual([structured.conditions[1]]);
  });
+
+ it('saves a manually entered entity without requiring a catalog ID',()=>{
+  const source:TemplateGroup={...group,syntax_version:'0.4',extra_key:'*-极寒风暴'};
+  expect(changeTemplateArgument(source,event,hero,' 敖隐 ')).toMatchObject({extra_key:'敖隐-极寒风暴'});
+  const legacy:TemplateGroup={...group,conditions:[
+   {id:'fixed',parameter_key:'arg1',operator:'eq',value:{id:'hero-lc',name:'刘禅'}},
+   {id:'other',parameter_key:'arg2',operator:'gte',value:3},
+  ]};
+  expect(changeTemplateArgument(legacy,event,hero,'新英雄')).toMatchObject({
+   expression:'arg1.名称 == "新英雄" and arg2 >= 3',conditions:[],editor_mode:'text',
+  });
+ });
 });

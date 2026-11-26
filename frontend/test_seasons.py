@@ -81,6 +81,11 @@ class SeasonTests(unittest.TestCase):
                 self.assertEqual(get('notes/search?season=S2')['ids'], [b['id']])
                 self.assertEqual(get(f"notes/{b['id']}/reading?season=S2")['note_id'], b['id'])
                 self.assertEqual(get('cards?season=S2'), [])
+                s2 = [{'id':'card:5071','category':'heroes','name':'李信','tier':5}]
+                json_store.write_file(root/'website-data/seasons/S2/cards.json', s2)
+                self.assertEqual(get('cards?season=S2'), s2)
+                self.assertEqual(get('cards/card:5071?season=S2')['tier'], 5)
+                self.assertEqual(get('templates/official?season=S2')['items'][0]['tier'], 5)
                 self.assertEqual(get('templates?season=S2')['groups'], [])
                 self.assertFalse(get('dashboard?scope=usage_top10&season=S2')['usage']['ready'])
                 for path, status in ((f"notes/{a['id']}?season=S2", 404),

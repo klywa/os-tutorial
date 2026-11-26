@@ -207,7 +207,7 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
     const candidates=p.type==='entity'?cards.filter(card=>!p.entity_categories?.length||p.entity_categories.includes(card.category)):[];
     const argument=inlineTrigger&&canEditTemplateArgument(group,event,p)?<TemplateInlineChoice label={'编辑参数 '+label}
      value={value??'未固定'} className="template-inline-argument" disabled={interactionLocked} previewIds={ids} firstChoice="未固定"
-     choices={p.type==='entity'?candidates.map(card=>card.name):(p.suggestions??[]).map(valueText)} allowText={p.type!=='entity'}
+     choices={p.type==='entity'?candidates.map(card=>card.name):(p.suggestions??[]).map(valueText)} allowText
      onSave={next=>inlineTrigger.saveArgument(p,next==='未固定'?null:next,candidates.find(card=>card.name===next)?.id)}/>:
      value&&(ids.length?<EntityChip ids={ids} label={value} portrait={!fileMode}/>:<strong> · {value}</strong>);
     return <div key={p.key}><dt><code>{label}</code></dt><dd>{parameterRole(event,p)} <small>（{parameterType(p)}）</small>{argument}</dd></div>;
@@ -1193,7 +1193,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
      const choices=parameter.type==='entity'?candidates.map(card=>card.name):(parameter.suggestions??[]).map(valueText);
      return <div key={parameter.key}><dt>{parameterRole(event,parameter)||parameter.key}</dt><dd>
       <TemplateInlineChoice label={'指定参数 '+parameter.key} value={values.get(parameter.key)??'未固定'} choices={choices} firstChoice="未固定"
-       disabled={draft.busy} allowText={parameter.type!=='entity'} className="template-inline-argument" onSave={async value=>{
+       disabled={draft.busy} allowText className="template-inline-argument" onSave={async value=>{
         const selected=value==='未固定'?null:value;
         const update=changeTemplateArgument(v04?{...group,expression:undefined}:group,event,parameter,selected,candidates.find(card=>card.name===value)?.id);
         patchDraft(current=>({...current,group:v04?{...update,expression:group.expression}:update,error:undefined}));

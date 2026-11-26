@@ -44,7 +44,7 @@ export default function Cards({season='S1'}:{season?:Season}={}){
     setDetailLoading(true);setError('');void api<CardDetail>(cardPath(active,version)).then(c=>{if(current)setDetail({...c,catalog_version:version});}).catch(e=>{if(current)setError((e as Error).message);}).finally(()=>{if(current)setDetailLoading(false);});
     return()=>{current=false;};},[active,cards,version]);
   const patch=(p:Partial<CardFilters>)=>setFilters(f=>({...f,...p}));
-  return <div className="cards-page"><div className="page-heading"><div><h1>卡牌库</h1><p>查询卡牌效果、英雄技能与成长节点。</p></div><span className="count">{visible.length} / {cards.length} 项</span></div>
+  return <div className="cards-page"><div className="page-heading"><div><h1>卡牌库</h1><p>{season==='S2'?'S2 · 显示当前已收录的卡牌资料。':'查询卡牌效果、英雄技能与成长节点。'}</p></div><span className="count">{visible.length} / {cards.length} 项</span></div>
     {season==='S1'&&capabilities.localTools&&<OfficialSync onUpdated={()=>void load()}/>}
     {isPublic&&season==='S1'&&status&&<p className="muted" role="status">官网资料：{status.state==='running'?'正在检查':status.state==='failed'?'更新暂未完成':status.last_success?'已更新':'使用已发布快照'} · 上次成功：{status.last_success?new Date(status.last_success).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai'}):'尚未自动同步'}{status.error&&<> · {status.error}</>}</p>}
     {error&&<div className="error" role="alert">{error}<button onClick={()=>void load()}>重试</button></div>}
@@ -61,8 +61,10 @@ export default function Cards({season='S1'}:{season?:Season}={}){
         <CardKeywords keywords={detail.keywords}/>
         {detail.category==='players'?<PlayerSkills groups={detail.player_skill_groups??[]}/>:<section><h3>技能与等级强化</h3>{detail.skills_source&&detail.skills_source!==detail.id&&<p className="muted">官网未单独提供本觉醒卡技能；以下为对应普通英雄技能，不代表额外觉醒强化。</p>}{detail.skills.length?detail.skills.map(s=><div className="card-skill" key={s.id}><h4>{s.name}</h4><p>{s.effect||'未提供'}</p>{s.enhancements.map((e,i)=><p className="card-enhancement" key={i}><strong>{e.level}级</strong> {e.effect}</p>)}</div>):<p className="muted">未提供</p>}</section>}
         <section><h3>基础属性</h3>{Object.keys(detail.stats).length?<dl className="card-stats">{Object.entries(detail.stats).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>:<p className="muted">未提供</p>}</section>
-        <section><h3>其他官方属性</h3>{Object.keys(detail.attributes).length?<dl>{Object.entries(detail.attributes).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{typeof v==='object'?JSON.stringify(v):String(v)}</dd></div>)}</dl>:<p className="muted">未提供</p>}</section>
-        <footer className="muted">同步日期：{detail.retrieved_at?.slice(0,10)||'未提供'} · 游戏版本：{detail.version||'官网未标明'}<div>{detail.sources.map((s,i)=><a key={s} href={s} target="_blank" rel="noreferrer">官网数据 {i+1}　</a>)}</div></footer>
+        <section><h3>{season==='S2'?'其他属性':'其他官方属性'}</h3>{Object.keys(detail.attributes).length?<dl>{Object.entries(detail.attributes).map(([k,v])=><div key={k}><dt>{k}</dt><dd>{typeof v==='object'?JSON.stringify(v):String(v)}</dd></div>)}</dl>:<p className="muted">未提供</p>}</section>
+        <footer className="muted">{season==='S2'?'资料版本：'+(detail.version||'S2'):<>
+         同步日期：{detail.retrieved_at?.slice(0,10)||'未提供'} · 游戏版本：{detail.version||'官网未标明'}</>}
+         <div>{detail.sources.map((s,i)=><a key={s} href={s} target="_blank" rel="noreferrer">{season==='S2'?'来源':'官网数据'} {i+1}　</a>)}</div></footer>
       </>:<p className="empty">选择卡牌查看详情。</p>}</main></div>}
   </div>;
 }
