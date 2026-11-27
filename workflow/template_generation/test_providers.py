@@ -36,3 +36,19 @@ class ProviderTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "完整"):
                 providers.generate("openai", "model", "原文")
             self.assertEqual(post.call_args.args[2]["messages"], [{"role": "user", "content": "原文"}])
+
+    def test_explicit_endpoint_uses_only_its_own_key(self):
+        envelope = {"choices": [{"finish_reason": "stop", "message": {"content": "{}"}}]}
+        with patch.dict(os.environ, {"OPENAI_API_KEY": "global", "NODE_TOKEN": "node"}, clear=True), \
+                patch.object(providers, "_post", return_value=envelope) as post:
+            url = "http://192.168.1.10:8000/v1"
+            options = {"base_url": url, "allow_http": True}
+            providers.generate("openai", "custom", "原文", **options)
+            self.assertEqual(post.call_args.args[:2], (url + "/chat/completions", {}))
+            providers.generate("openai", "custom", "原文", api_key_env="NODE_TOKEN", **options)
+            self.assertEqual(post.call_args.args[1], {"Authorization": "Bearer node"})
+            with self.assertRaisesRegex(ValueError, "MISSING_TOKEN"):
+                providers.generate("openai", "custom", "原文", api_key_env="MISSING_TOKEN", **options)
+            with self.assertRaisesRegex(ValueError, "HTTPS"):
+                providers.generate("openai", "custom", "原文", base_url=url)
+            self.assertEqual(post.call_count, 2)

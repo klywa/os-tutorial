@@ -96,14 +96,31 @@ def _gemini(model, prompt):
     return "".join(p["text"] for p in parts if p.get("type") == "text")
 
 
-def _compatible(model, prompt):
-    base = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/")
-    key = os.getenv("OPENAI_API_KEY")
+def compatible_base_url(value, *, allow_http=False):
+    if not isinstance(value, str) or not value or any(char.isspace() for char in value):
+        raise ValueError("API 基础 URL 必须是有效地址")
+    base = value.rstrip("/")
     parts = parse.urlsplit(base)
+    if not parts.hostname or parts.username is not None or "?" in base or "#" in base or "\\" in base:
+        raise ValueError("API 基础 URL 需要主机地址，不能带用户名、密码、查询参数或片段")
     if parts.scheme != "https" and not (
-        parts.scheme == "http" and parts.hostname in {"localhost", "127.0.0.1", "::1"}
+        parts.scheme == "http" and (allow_http or parts.hostname in {"localhost", "127.0.0.1", "::1"})
     ):
         raise ValueError("OPENAI_BASE_URL 需使用 HTTPS，本地回环地址可使用 HTTP。")
+    return base
+
+
+def _compatible(model, prompt, *, base_url=None, api_key_env=None, allow_http=False):
+    default_endpoint = base_url is None
+    if default_endpoint:
+        base_url = os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1")
+    base = compatible_base_url(base_url, allow_http=allow_http)
+    if api_key_env is not None:
+        key = os.getenv(api_key_env)
+        if not key:
+            raise ValueError(f"请设置节点 API 密钥环境变量 {api_key_env}")
+    else:
+        key = os.getenv("OPENAI_API_KEY") if default_endpoint else None
     headers = {"Authorization": f"Bearer {key}"} if key else {}
     envelope = _post(base + "/chat/completions", headers,
                      {"model": model, "messages": [{"role": "user", "content": prompt}]})
@@ -113,11 +130,11 @@ def _compatible(model, prompt):
     return choices[0]["message"]["content"]
 
 
-def generate(provider, model, prompt):
+def generate(provider, model, prompt, **options):
     transports = {"codex": _codex, "gemini": _gemini, "openai": _compatible}
     if provider not in transports:
         raise ValueError("provider 应为 codex、gemini 或 openai")
-    result = transports[provider](model, prompt)
+    result = transports[provider](model, prompt, **options)
     if not isinstance(result, str) or not result.strip():
         raise RuntimeError("模型返回空正文。")
     return result

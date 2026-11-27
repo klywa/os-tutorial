@@ -37,7 +37,7 @@ $python = '.wxq-runtime/Scripts/python.exe'
 
 ## 模型配置
 
-每次运行只调用启动时选定的模型通道。所选服务会收到该节点实际使用的文字稿、卡面与规则；不会自动切换到其他服务。只在本机处理资料时，可把兼容接口指向本地模型。
+`--provider` 和 `--model` 设置默认通道。用 `--node-config <JSON 文件>` 可为指定的模型节点覆盖通道和模型，并为 Chat Completions 兼容服务单独指定地址和密钥环境变量名。恢复运行时沿用 `run.json` 中的节点配置。所选服务会收到该节点实际使用的文字稿、卡面与规则。配置示例见[项目 README](../../README.md#按节点接入自部署模型)。
 
 - `--provider codex --model default` 使用 Codex CLI 和已登录的默认模型，也可提供本机账户支持的 GPT 模型名。可用 `codex login status` 检查登录状态。脚本在临时空目录中发送固定 prompt，使用只读沙箱、关闭 shell、应用与插件。
 - `--provider gemini --model gemini-flash-latest` 优先使用环境变量 `GEMINI_API_KEY` 或 `GOOGLE_API_KEY`。没有环境变量时，调用本机已配置的 `gemini-api` CLI。

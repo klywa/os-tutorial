@@ -154,7 +154,7 @@ $initial = '.\personal\template\initial\开备韩信-姜导.json'
 
 ### 2. 配置模型并生成话术
 
-每次运行通过 `--provider` 选择调用方式，通过 `--model` 指定服务实际接受的模型 ID。要固定版本，填写供应商给出的具体版本或快照 ID。API 地址和密钥在启动工作流的终端中通过环境变量设置。
+每次运行通过 `--provider` 和 `--model` 设置默认通道和模型。要固定版本，填写供应商给出的具体版本或快照 ID。默认 API 地址和密钥通过终端环境变量设置。个别节点可以用 `--node-config` 单独配置。
 
 | 调用方式 | 参数 | URL 和凭据 |
 | --- | --- | --- |
@@ -179,6 +179,26 @@ $runDir = '.\raw\template-runs\开备韩信-姜导-01'
   --output '.\exports\开备韩信-姜导.json' `
   --provider openai --model $model
 ```
+
+#### 按节点接入自部署模型
+
+把下面的 JSON 保存为 `workflow-models.json`，并在启动命令末尾追加 `--node-config .\workflow-models.json`。这个例子将所有分支的话术生成交给本机模型，其他节点使用启动命令指定的默认通道。
+
+```json
+{
+  "phrases": {
+    "provider": "openai",
+    "model": "your-served-model-id",
+    "base_url": "http://127.0.0.1:8000/v1"
+  }
+}
+```
+
+可配置的节点有 `identify`（知识点识别）、`enrich`（知识补充）、`events`（事件框架）、`conditions`（条件生成）和 `phrases`（话术生成）。每个节点填写自己的 `provider` 和 `model`，支持 `codex`、`gemini` 和 `openai`。
+
+自部署服务用 `openai` 通道接入 Chat Completions 兼容 API，基础地址保留 `/v1` 等服务路径。若需要鉴权，可在节点中加 `"api_key_env": "PHRASES_API_KEY"`，并在终端设置该环境变量。使用独立 `base_url` 时，省略 `api_key_env` 会发送无鉴权请求。内网服务只有 HTTP 时，可在对应节点显式设置 `"allow_http": true`，请求正文和凭据会以明文传输。
+
+`resume` 从运行目录的 `run.json` 读取已保存的节点配置。密钥值从当前终端读取。要换节点模型或地址，用更新后的配置新建运行。节点配置适用于在线模型通道，`--provider local` 继续使用本地审编回复文件。
 
 `--base-library` 指向第 1 步的初始库。工作流保留已有组的事件、额外信息键和条件，为空组生成话术，并追加从笔记发现且通过校验的新组。每次 `start` 使用新的空运行目录和新的主库输出路径。可加 `--jobs 1` 降低模型调用并发（默认 4），或加 `--pause-after enrich` 在知识补充后停下来审查。
 

@@ -151,6 +151,37 @@ class RunnerTest(unittest.TestCase):
         feedback = json.loads(attempts[1]["prompt"].splitlines()[-1])
         self.assertEqual(feedback, {"error": attempts[0]["error"], "raw": attempts[0]["raw"]})
 
+    def test_node_config_routes_every_branch_and_survives_resume(self):
+        config = self.base / "models.json"
+        route = {"provider": "openai", "model": "self-hosted",
+                 "base_url": "https://model.example/v1", "api_key_env": "PHRASES_KEY"}
+        run.save(config, {"phrases": route})
+        self.invoke("start", "--node-config", config, "--pause-after", "conditions")
+        config.unlink()
+        calls = {}
+
+        def generate(provider, model, prompt, **options):
+            info = json.loads(prompt)
+            calls[info["point"]["id"]] = (provider, model, options)
+            return self.generate(provider, model, prompt)
+
+        with patch.object(run.providers, "generate", generate):
+            self.invoke("resume")
+        expected = ("openai", "self-hosted", {"base_url": "https://model.example/v1",
+                                                "api_key_env": "PHRASES_KEY"})
+        self.assertEqual(calls, {"甲": expected, "乙": expected})
+        state = run.Run(self.directory)
+        self.assertEqual(state.manifest["node_config"], {"phrases": route})
+        self.assertEqual(run.read(state.node_path("identify", None))["attempts"][0]["provider"], "codex")
+        self.assertEqual(run.read(state.node_path("phrases", "甲"))["attempts"][0]["model"], "self-hosted")
+
+    def test_node_config_rejects_code_stages_before_start(self):
+        config = self.base / "models.json"
+        run.save(config, {"split": {"provider": "openai", "model": "self-hosted"}})
+        self.assertIn("split", self.invoke("start", "--node-config", config, expected=1))
+        self.assertFalse(self.directory.exists())
+        self.assertFalse(self.calls)
+
     def test_revision_after_failed_model_reply_keeps_prompt(self):
         self.barrier = threading.Barrier(1)
         self.bad.add(("enrich", "甲"))

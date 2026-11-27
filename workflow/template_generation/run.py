@@ -109,10 +109,42 @@ def resource_versions():
     return resources
 
 
+def validate_node_config(config):
+    if not isinstance(config, dict):
+        raise ValueError("节点模型配置必须是以阶段名为键的 JSON 对象")
+    for stage, route in config.items():
+        if stage not in nodes.STAGES:
+            raise ValueError(f"不支持配置模型的阶段：{stage}")
+        if not isinstance(route, dict) or route.get("provider") not in ("codex", "gemini", "openai"):
+            raise ValueError(f"{stage} 的 provider 须为 codex、gemini 或 openai")
+        model = route.get("model")
+        if not isinstance(model, str) or not model.strip():
+            raise ValueError(f"{stage} 需要填写 model")
+        allowed = {"provider", "model"}
+        if route["provider"] == "openai":
+            allowed.update(("base_url", "api_key_env", "allow_http"))
+        if route.keys() - allowed:
+            raise ValueError(f"{stage} 含不支持的模型配置字段：{', '.join(sorted(route.keys() - allowed))}")
+        if "api_key_env" in route:
+            name = route["api_key_env"]
+            if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_]*", name):
+                raise ValueError(f"{stage} 的 api_key_env 必须是环境变量名")
+        allow_http = route.get("allow_http", False)
+        if not isinstance(allow_http, bool) or (allow_http and "base_url" not in route):
+            raise ValueError(f"{stage} 的 allow_http 须为布尔值，启用时需要填写 base_url")
+        if "base_url" in route:
+            try:
+                providers.compatible_base_url(route["base_url"], allow_http=allow_http)
+            except ValueError as error:
+                raise ValueError(f"{stage} 的 base_url 无效：{error}") from error
+    return config
+
+
 class Run:
     def __init__(self, directory):
         self.directory = directory
         self.manifest = read(directory / "run.json")
+        self.node_config = validate_node_config(self.manifest.get("node_config", {}))
         self.source = (directory / "source.txt").read_text(encoding="utf-8")
         if digest(self.source.encode()) != self.manifest["source_sha256"]:
             raise ValueError("运行目录中的原文与初始版本不一致")
@@ -139,8 +171,10 @@ class Run:
                 raise ValueError("本地节点回复和运行快照不一致")
             self.local_replies = parse_json(snapshot.decode("utf-8-sig"))
 
-    def signature(self, inputs):
+    def signature(self, inputs, stage):
         versions = [self.generation_version]
+        if stage in self.node_config:
+            versions.append(self.node_config[stage])
         if self.local_replies is not None:
             versions.append(self.manifest["local_replies_sha256"])
         if "seed" in inputs.get("previous", {}) or "base_library_sha256" in inputs:
@@ -162,7 +196,7 @@ class Run:
         key = node_key(stage, point_id)
         record = read(path) if path.exists() else dict(
             id=key, stage=stage, point_id=point_id, attempts=[], revisions=[])
-        signature = self.signature(inputs)
+        signature = self.signature(inputs, stage)
         same_input = record.get("signature") == signature
         if same_input and record.get("selected_version"):
             return record
@@ -179,7 +213,10 @@ class Run:
                 output = compute()
                 attempt["kind"] = "code"
             else:
-                attempt.update(kind="model", provider=self.manifest["provider"], model=self.manifest["model"])
+                route = self.node_config.get(stage, {
+                    "provider": self.manifest["provider"], "model": self.manifest["model"],
+                })
+                attempt.update(kind="model", **route)
                 handler = seed_nodes if "seed" in inputs["previous"] else nodes
                 prompt = handler.prepare(stage, inputs.get("source", ""), inputs.get("point"), inputs["previous"])
                 if self.local_replies is not None and stage == "phrases":
@@ -192,7 +229,7 @@ class Run:
                 attempt["prompt"] = prompt
                 save(path, record)
                 if self.local_replies is None:
-                    raw = providers.generate(attempt["provider"], attempt["model"], prompt)
+                    raw = providers.generate(prompt=prompt, **route)
                 else:
                     attempt["kind"] = "local_reply"
                     if key not in self.local_replies:
@@ -229,7 +266,7 @@ class Run:
             raise ValueError("识别节点无需 --point，分支节点必须指定 --point")
         path = self.node_path(stage, point_id)
         record = read(path)
-        if record["signature"] != self.signature(record["input"]):
+        if record["signature"] != self.signature(record["input"], stage):
             raise ValueError("节点资料已更新，请先恢复运行至该节点再修订")
         if point_id is not None:
             enrich = read(self.node_path("enrich", point_id))
@@ -574,6 +611,7 @@ def parser():
     start.add_argument("--provider", default="codex", choices=("codex", "gemini", "openai", "local"))
     start.add_argument("--local-replies", type=Path, help="使用本地审编节点回复 JSON，在本机跑同一套校验和发布")
     start.add_argument("--model", required=True)
+    start.add_argument("--node-config", type=Path, help="指定各模型阶段使用的 provider、model 和 API 设置 JSON")
     start.add_argument("--jobs", type=int, default=4)
     resume = commands.add_parser("resume", help="恢复暂停或失败的运行")
     revise = commands.add_parser("revise", help="保存人工修订的模型输出 JSON")
@@ -599,6 +637,9 @@ def main(argv=None):
             local_meta = {}
             if (args.provider == "local") != bool(args.local_replies):
                 raise ValueError("需要同时指定 --provider local 和 --local-replies")
+            if args.node_config and args.local_replies:
+                raise ValueError("--node-config 不能与 --provider local 一起使用")
+            node_config = {"node_config": validate_node_config(read(args.node_config))} if args.node_config else {}
             if args.local_replies:
                 local_snapshot = args.local_replies.read_bytes()
                 nodes._object(parse_json(local_snapshot.decode("utf-8-sig")), "本地节点回复")
@@ -644,7 +685,7 @@ def main(argv=None):
                 save(directory / "run.json", {"run_id": uuid4().hex, "status": "new", "source_name": args.source.name,
                                                "source_sha256": digest(source.encode()), "model": args.model,
                                                "provider": args.provider, "jobs": args.jobs, "output": str(output),
-                                               **base_meta, **local_meta})
+                                               **base_meta, **local_meta, **node_config})
             run = Run(directory)
             if args.command == "revise":
                 run.revise(args.stage, args.point, args.file)
