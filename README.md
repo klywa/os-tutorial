@@ -154,16 +154,18 @@ $initial = '.\personal\template\initial\开备韩信-姜导.json'
 
 ### 2. 配置模型并生成话术
 
-每次运行通过 `--provider` 选择调用方式，通过 `--model` 指定服务实际接受的模型 ID。要固定版本，填写供应商给出的具体版本或快照 ID。
+每次运行通过 `--provider` 选择调用方式，通过 `--model` 指定服务实际接受的模型 ID。要固定版本，填写供应商给出的具体版本或快照 ID。API 地址和密钥在启动工作流的终端中通过环境变量设置。
 
 | 调用方式 | 参数 | URL 和凭据 |
 | --- | --- | --- |
-| OpenAI 或 Chat Completions 兼容服务 | `--provider openai --model '供应商模型ID'` | 用 `OPENAI_BASE_URL` 指定基础 URL，例如 `https://api.openai.com/v1`。程序会追加 `/chat/completions`。默认使用 OpenAI 官方地址，远程地址需用 HTTPS，本地回环地址可用 HTTP。服务需要鉴权时设置 `OPENAI_API_KEY` |
-| Gemini API | `--provider gemini --model '供应商模型ID'` | 使用 Google 固定 API 地址。优先读取 `GEMINI_API_KEY`，其次是 `GOOGLE_API_KEY`。两者均未设置时使用本机已配置的 `gemini-api` CLI |
+| OpenAI Chat Completions 或兼容 API | `--provider openai --model '供应商模型ID'` | 用 `OPENAI_BASE_URL` 指定基础 URL，保留供应商要求的路径（例如 `/v1`）。程序自动追加 `/chat/completions`。默认使用 `https://api.openai.com/v1`，远程地址要求 HTTPS，本机回环地址可用 HTTP。服务需要鉴权时设置 `OPENAI_API_KEY`，请求使用 Bearer Token |
+| Gemini 原生 API | `--provider gemini --model '供应商模型ID'` | 使用 Google 固定地址的 `v1beta :generateContent`。优先读取 `GEMINI_API_KEY`，其次是 `GOOGLE_API_KEY`。两者均未设置时使用本机已配置的 `gemini-api` CLI |
 | Codex CLI | `--provider codex --model default` | 使用 PATH 中已登录的 `codex` CLI。可运行 `codex login status` 检查登录，或将 `default` 换成本机账号支持的模型 ID |
 | 本地审编回复 | `--provider local --model editorial --local-replies '.\节点回复.json'` | 从文件读取各节点的已审编 JSON 回复，无需模型 URL 或密钥。回复格式见下方工作流文档 |
 
-下面以兼容 API 为例。把基础 URL 和模型 ID 换成供应商提供的值，在当前 PowerShell 窗口设置密钥。也可根据上表改用其他调用方式。所选服务会收到模型节点使用的笔记和相关参考资料。
+OpenAI Responses (`/v1/responses`) 和 Anthropic Messages (`/v1/messages`) 暂未接入。供应商如果同时提供 Chat Completions 兼容入口，可以通过 `--provider openai` 接入。
+
+下面以兼容 API 为例。把基础 URL 和模型 ID 换成供应商提供的值，在当前 PowerShell 窗口设置密钥。接入 Gemini 时，在同一窗口设置 `GEMINI_API_KEY`，将启动参数改为 `--provider gemini --model '供应商模型ID'`。所选服务会收到模型节点使用的笔记和相关参考资料。
 
 ```powershell
 $env:OPENAI_BASE_URL = 'https://api.openai.com/v1'
