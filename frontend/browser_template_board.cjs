@@ -259,6 +259,7 @@ async function main(){
    window.readBoardFixtureFile=()=>JSON.parse(raw);
    window.readBoardExportFile=()=>JSON.parse(exported);
    const handle={
+    kind:'file',
     name:'浏览器验收模板.json',
     getFile:async()=>new File([raw],'浏览器验收模板.json',{type:'application/json'}),
     createWritable:async()=>{
@@ -266,9 +267,9 @@ async function main(){
      return {write:async value=>{next=value;},close:async()=>{const gate=fileWriteGate;fileWriteGate=null;if(gate)await gate;raw=next;},abort:async()=>{}};
     },
    };
-   Object.defineProperty(window,'showOpenFilePicker',{configurable:true,value:async()=>[{
-    ...handle,isSameEntry:async other=>other.name===handle.name,
-   }]});
+   Object.defineProperty(window,'showDirectoryPicker',{configurable:true,value:async()=>({
+    kind:'directory',name:'浏览器验收目录',async *values(){yield handle;},
+   })});
    Object.defineProperty(window,'showSaveFilePicker',{configurable:true,value:async()=>({
     name:'新导出模板.json',getFile:async()=>new File([exported],'新导出模板.json'),
     createWritable:async()=>{
@@ -278,7 +279,8 @@ async function main(){
    })});
   },portable);
   await chooseSource('文件');
-  await button('打开模板文件').click();
+  await button('选择模板文件夹').click();
+  await button('打开主库',dialog('选择模板文件')).click();
   await button('看板',display).click();
   await row('文件甲').waitFor();
   await mode.selectOption('万象速决');

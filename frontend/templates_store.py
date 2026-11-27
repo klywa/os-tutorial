@@ -20,6 +20,7 @@ from save_timing import timed
 from workspace import Conflict, store_lock
 import templates_schema as schema
 import template_rules as rules
+from template_v04 import CURRENT_VERSION, KEYED_SYNTAX_VERSIONS, upgrade_rule
 
 META = 'templates/library.meta.json'
 STATE = 'templates/library.state.json'
@@ -225,7 +226,7 @@ def _load(root,*,renamed=None,retired=None,migrate_events=False,locked=False,met
         public[folder]=schema.order_events(values.values()) if kind=='event' else sorted(values.values(),key=lambda row:row['id'])
     # A writer that started after the first journal read owns the complete logical
     # after-image; retry instead of exposing a partially replaced file batch.
-    if meta.get('syntax_version')=='0.4' or any(group.get('syntax_version')=='0.4' for group in public['groups']):
+    if meta.get('syntax_version') in KEYED_SYNTAX_VERSIONS or any(group.get('syntax_version') in KEYED_SYNTAX_VERSIONS for group in public['groups']):
         from template_v04 import catalog
         registered={event['name'] for event in public['events']}
         for name in catalog()['events']:
@@ -440,7 +441,7 @@ def related_copy_changes(current, changes):
         target=change.get('value')
         if (change.get('kind')!='group' or change.get('action')!='put' or not isinstance(target,dict)
                 or schema.identity(change.get('id')) in groups or not source
-                or source.get('syntax_version')!='0.4' or target.get('syntax_version')!='0.4'
+                or source.get('syntax_version') not in KEYED_SYNTAX_VERSIONS or target.get('syntax_version') not in KEYED_SYNTAX_VERSIONS
                 or source['event_id']==target.get('event_id')):
             raise Conflict('只能从已有模板组新建关联模板组')
         originals=source['utterances']
@@ -482,9 +483,16 @@ def _project(root, public, revision, meta, changes, entities=None, allow_conflic
         else:
             if not isinstance(change.get('value'),dict) or change['value'].get('id')!=uid:raise ValueError('模板修改身份不一致')
             prior=maps[kind].get(uid,{})
-            if kind=='group' and prior.get('syntax_version')=='0.4' and change['value'].get('syntax_version')!='0.4':
-                raise Conflict('正式模板已切换至 v0.4。重新预览旧稿后再提交。')
+            if (kind=='group' and prior.get('syntax_version') in KEYED_SYNTAX_VERSIONS
+                    and change['value'].get('syntax_version') not in KEYED_SYNTAX_VERSIONS):
+                raise Conflict('正式模板已使用额外信息键。重新预览旧稿后再提交。')
             maps[kind][uid]=deepcopy(change['value'])
+    for kind,uid in seen:
+        if kind=='group' and uid in maps['group']:
+            group=maps['group'][uid]
+            event=maps['event'].get(group.get('event_id'))
+            if event:
+                maps['group'][uid]=upgrade_rule(group,event['name'])
     groups=[maps['group'][uid] for uid in sorted(maps['group'])]
     if any(kind=='event' for kind,_ in seen):
         projected=validate(root,[maps['event'][uid] for uid in sorted(maps['event'])],groups,
@@ -718,8 +726,11 @@ def _commit(root,before,after,meta,actor,changes,*,entities=None,extra_writes=No
         check_fixed_utterances(before,after,authorized_fixed=authorized_fixed)
     newmeta=deepcopy({key:value for key,value in meta.items() if key!='audit'})
     newmeta['audit']=meta['audit']
-    if any(group.get('syntax_version')=='0.4' for group in after['groups']):
-        newmeta['syntax_version']='0.4'
+    versions={group.get('syntax_version') for group in after['groups']} | {meta.get('syntax_version')}
+    for version in reversed(KEYED_SYNTAX_VERSIONS):
+        if version in versions:
+            newmeta['syntax_version']=version
+            break
     changed=[]
     for kind,folder in FOLDERS.items():
         old={v['id']:v for v in before[folder]};new={v['id']:v for v in after[folder]}
@@ -902,7 +913,7 @@ def _published_document(root,public,meta,entities,season='S1',mode=None):
     from template_package import encode
     from template_v04 import runtime_tree
     projected=_exportable(_for_scope(public,season,mode))
-    if meta.get('syntax_version')=='0.4' or any(group.get('syntax_version')=='0.4' for group in public['groups']):
+    if meta.get('syntax_version') in KEYED_SYNTAX_VERSIONS or any(group.get('syntax_version') in KEYED_SYNTAX_VERSIONS for group in public['groups']):
         return runtime_tree(projected,_catalog(root,entities)[0],_notes(root),meta)
     key=Path(root).resolve(),season,mode
     if len(_published_cache)>=8 and key not in _published_cache:_published_cache.clear()
@@ -939,7 +950,7 @@ def refresh_published(root,entities=None,*,migrate_events=False,season='S1',form
         retired={}
         try:
             public,meta=_load(root,renamed=renamed,retired=retired,migrate_events=migrate_events)
-            if format == 'v3' and meta.get('syntax_version')=='0.4':
+            if format == 'v3' and meta.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
                 if season != 'S1' or not (Path(root)/PUBLISHED_V3).is_file():
                     raise KeyError('未保存该赛季的 v3 发布快照')
                 legacy=json_store.read(Path(root)/PUBLISHED_V3)
@@ -953,12 +964,12 @@ def refresh_published(root,entities=None,*,migrate_events=False,season='S1',form
             logging.getLogger(__name__).exception('模板库发布校验未通过，继续使用上一版本')
             result=json_store.read(Path(root)/PUBLISHED)
             if '解释事件' in result:
-                load_library(result)
-            elif format=='v0.4':
+                load_library(result,strict=format=='v'+CURRENT_VERSION)
+            elif format in ('v0.4','v'+CURRENT_VERSION):
                 raise
             return result
-        if format=='v0.4' and '解释事件' not in result:
-            raise KeyError('该模板库尚未切换至 v0.4')
+        if format in ('v0.4','v'+CURRENT_VERSION) and '解释事件' not in result:
+            raise KeyError('该模板库尚未切换至额外信息键格式')
         if season!='S1' or mode is not None:return deepcopy(result)
         if renamed or retired:
             writes={_path('event',uid):row for uid,row in renamed.items() if row in public['events']}

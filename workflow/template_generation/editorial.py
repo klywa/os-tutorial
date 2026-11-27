@@ -117,7 +117,11 @@ def check_group(group, positive_states):
     texts = [row["text"] for row in group["utterances"]]
     if not texts or len(texts) != len(set(texts)) or any(not text.strip() for text in texts):
         raise ValueError(f"{group['name']}：话术为空或有重复")
+    vague_references = ("这件装备", "那件装备", "这个装备", "该装备", "此装备", "这些装备",
+                        "这张牌", "那张牌", "该卡牌", "这个英雄", "那个英雄", "唯一最近")
     for text in texts:
+        if any(term in text for term in vague_references):
+            raise ValueError(f"{group['name']}：含糊指代或禁用措辞须改为明确名称或正式槽位：{text}")
         parts = compile_template(event, text)
         length = sum(len("".join(part.split())) if isinstance(part, str) else 4 for part in parts)
         if length > 30:

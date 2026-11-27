@@ -1,4 +1,4 @@
-"""Stable identities for generated v0.4 template groups."""
+"""Stable identities for generated groups with event keys."""
 
 import ast
 from copy import deepcopy
@@ -9,10 +9,13 @@ from frontend.template_v04 import effective_expression
 from src.python.condition.v04 import catalog, compile_expression, validate_key
 
 
+KEYED_SYNTAX_VERSIONS = {"0.4", "0.5"}
+
+
 def name_template_group(group):
     """Render the registered action with its fixed event parameters."""
     event = group["event_name"]
-    if group.get("syntax_version") != "0.4":
+    if group.get("syntax_version") not in KEYED_SYNTAX_VERSIONS:
         return group["name"]
     definition = catalog()["events"][event]
     arguments = dict(zip(definition["key"], validate_key(event, group["extra_key"]), strict=True))
@@ -163,13 +166,13 @@ def _combine_groups(first, other):
 
 
 def merge_duplicate_groups(groups):
-    """Keep the first ID for every duplicate effective v0.4 trigger."""
+    """Keep the first ID for every duplicate effective keyed trigger."""
     from templates_schema import group_modes, group_versions
 
     merged = []
     indices = {}
     for group in groups:
-        if group.get("syntax_version") != "0.4":
+        if group.get("syntax_version") not in KEYED_SYNTAX_VERSIONS:
             merged.append(deepcopy(group))
             continue
         key = (template_group_trigger(group), group_versions(group), group_modes(group))

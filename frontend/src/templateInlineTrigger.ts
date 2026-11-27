@@ -1,6 +1,6 @@
 import {templateAction} from './templateAction';
 import {renderRule} from './templateRules';
-import {catalogV04,readV04Condition,validateExtraKey,validateV04,validateV04Template,v04ConditionKey,wildcardKey} from './templateV04';
+import {catalogV04,currentTemplateSyntax,keyedTemplateSyntax,migrateKeyedCondition,readV04Condition,validateExtraKey,validateKeyedCondition,validateV04Template,v04ConditionKey,wildcardKey} from './templateV04';
 import {actionArgumentFields,fixedArguments,templateId,type TemplateEvent,type TemplateGroup,type TemplateParameter} from './templates';
 
 export function copyConditionExpression(group:TemplateGroup,event:TemplateEvent){
@@ -30,7 +30,7 @@ export function canonicalTemplateName(group:TemplateGroup,event?:TemplateEvent){
  const definition=catalogV04.events[event.name];
  if(!definition)return undefined;
  const values=fixedArguments(group,event);
- if(group.syntax_version==='0.4'){
+ if(keyedTemplateSyntax(group.syntax_version)){
   try{validateExtraKey(event.name,group.extra_key??'');}catch{return undefined;}
  }else if(!definition.key.length||definition.key.some(field=>!values.has('arg'+(actionArgumentFields(event).indexOf(field)+1))))return undefined;
  const action=event.name.replace(/^解释为何/u,'');
@@ -59,7 +59,7 @@ export function templateCardGroups(groups:TemplateGroup[],events:ReadonlyMap<str
 export function moveTemplateEvent(group:TemplateGroup,before:TemplateEvent,after:TemplateEvent){
  if(group.event_id===after.id)return group;
  let next={...group,event_id:after.id};
- if(group.syntax_version==='0.4'){
+ if(keyedTemplateSyntax(group.syntax_version)){
   const source=catalogV04.events[before.name],target=catalogV04.events[after.name];
   if(!source||!target)throw new Error('请选择已注册的解释事件');
   validateExtraKey(before.name,group.extra_key??'');
@@ -67,10 +67,12 @@ export function moveTemplateEvent(group:TemplateGroup,before:TemplateEvent,after
   if(source.key.some((field,index)=>values[index]!=='*'&&!target.key.includes(field)))
    throw new Error('目标事件无法保留原有固定参数');
   const extra_key=target.key.map(field=>values[source.key.indexOf(field)]??'*').join('-');
-  validateExtraKey(after.name,extra_key);
-  validateV04(after.name,group.expression??'');
-  group.utterances.forEach(row=>validateV04Template(after.name,row.text));
-  next={...next,extra_key};
+  const expression=group.syntax_version==='0.4'
+   ?migrateKeyedCondition(before.name,group.extra_key??'',group.expression??'')
+   :group.expression??'';
+  validateKeyedCondition(after.name,extra_key,expression,currentTemplateSyntax);
+  group.utterances.forEach(row=>validateV04Template(after.name,row.text,currentTemplateSyntax));
+  next={...next,extra_key,expression,syntax_version:currentTemplateSyntax};
  }else{
   const definitions=new Map(after.parameters.map(parameter=>[parameter.key,parameter]));
   const used=new Set([...group.conditions.map(condition=>condition.parameter_key),...fixedArguments(group).keys()]);
@@ -86,13 +88,13 @@ export function moveTemplateEvent(group:TemplateGroup,before:TemplateEvent,after
 }
 
 export function canEditTemplateArgument(group:TemplateGroup,event:TemplateEvent,parameter:TemplateParameter){
- if(group.syntax_version!=='0.4')return parameter.type!=='boolean'&&!parameter.dsl_type?.startsWith('Array<');
+ if(!keyedTemplateSyntax(group.syntax_version))return parameter.type!=='boolean'&&!parameter.dsl_type?.startsWith('Array<');
  const field=actionArgumentFields(event)[Number(parameter.key.slice(3))-1];
  return !!catalogV04.events[event.name]?.key.includes(field);
 }
 
 export function templateTriggerParameters(group:TemplateGroup,event:TemplateEvent):TemplateParameter[]{
- if(group.syntax_version!=='0.4')return event.parameters;
+ if(!keyedTemplateSyntax(group.syntax_version))return event.parameters;
  const definition=catalogV04.events[event.name];
  if(!definition)return event.parameters;
  const fields=actionArgumentFields(event);
@@ -138,25 +140,17 @@ function editConjuncts(source:string,edit:(term:string)=>string,removeEmpty=fals
 }
 
 export function startTemplateEventCopy(group:TemplateGroup,before:TemplateEvent,after:TemplateEvent){
- const v04=group.syntax_version==='0.4';
- const definition=catalogV04.events[before.name];
- const values=(group.extra_key??'').split('-');
+ const v04=keyedTemplateSyntax(group.syntax_version);
+ const original=copyConditionExpression(group,before);
  const fixed=fixedArguments(group,before);
- const expression=editConjuncts(copyConditionExpression(group,before),term=>{
-  if(!v04){
+ const expression=v04
+  ?migrateKeyedCondition(before.name,group.extra_key??'',original)
+  :editConjuncts(original,term=>{
    const binding=fixedArguments({...group,expression:term,conditions:[]},before);
    return [...binding].some(([key,value])=>fixed.get(key)===value)?'':term;
-  }
-  const node=readV04Condition(term);
-  if(!definition||node?.kind!=='binary'||node.op!=='==')return term;
-  const [path,literal]=node.left.kind==='path'?[node.left,node.right]:[node.right,node.left];
-  if(path.kind!=='path'||path.parts[0]!=='动作'||literal.kind!=='literal')return term;
-  const index=definition.key.indexOf(path.parts[1]);
-  const isFixedPath=path.parts.length===2||path.parts.length===3&&path.parts[2]==='名称';
-  return isFixedPath&&values[index]===literal.value?'':term;
- },true);
+  },true);
  const next:TemplateGroup={...group,event_id:after.id,extra_key:v04?wildcardKey(after.name):undefined,
-  conditions:[],expression,condition_tree:null,editor_mode:'text'};
+  syntax_version:v04?currentTemplateSyntax:group.syntax_version,conditions:[],expression,condition_tree:null,editor_mode:'text'};
  return {...next,name:canonicalTemplateName(next,after)??after.name};
 }
 
@@ -164,7 +158,7 @@ export function changeTemplateArgument(group:TemplateGroup,event:TemplateEvent,p
  const value=input?.trim()??null;
  if(value==='')throw new Error('请填写参数值');
  let next=group;
- if(group.syntax_version==='0.4'){
+ if(keyedTemplateSyntax(group.syntax_version)){
   const field=actionArgumentFields(event)[Number(parameter.key.slice(3))-1];
   const index=catalogV04.events[event.name].key.indexOf(field);
   const values=(group.extra_key??'').split('-');
@@ -182,7 +176,7 @@ export function changeTemplateArgument(group:TemplateGroup,event:TemplateEvent,p
    if(path.kind!=='path'||path.parts.join('.')!==expectedPath||literal.kind!=='literal'||literal.value!==old)return term;
    return value===null?'':expectedPath+' == '+(literal.type==='int'?value:JSON.stringify(value));
   },value===null);
-  if(expression!==undefined)validateV04(event.name,expression);
+  if(expression!==undefined)validateKeyedCondition(event.name,extra_key,expression,group.syntax_version);
   next={...group,extra_key,expression};
  }else{
   const old=fixedArguments(group).get(parameter.key);

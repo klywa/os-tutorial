@@ -1,14 +1,24 @@
 import type {ConditionCatalog,ConditionNode} from './templateRules';
-import {catalogV04,lineupName} from './templateV04';
+import {catalogV04,currentTemplateSyntax,keyedTemplateSyntax,lineupName,migrateKeyedCondition,validateKeyedCondition,validateV04Template,type KeyedTemplateSyntax} from './templateV04';
 export type ParameterType='text'|'number'|'boolean'|'entity';
 export function effectiveExpression(player:string|null,lineup:string|null,expression:string,syntaxVersion?:string){
  const clauses:string[]=[];
- const v04=syntaxVersion==='0.4';
+ const v04=keyedTemplateSyntax(syntaxVersion);
  if(player!==null)clauses.push((v04?'我方.棋手名称 == ':'玩家.使用棋手 is ')+JSON.stringify(player));
  if(lineup!==null)clauses.push((v04?'我方.阵容名称 == ':'玩家.使用阵容 is ')+JSON.stringify(v04?lineupName(lineup):lineup));
  if(!clauses.length)return expression;
  if(expression.trim())clauses.push('('+expression+')');
  return clauses.join(' and ');
+}
+
+export function upgradeKeyedGroup(group:TemplateGroup,event:string):TemplateGroup{
+ const version=group.syntax_version;
+ if(!keyedTemplateSyntax(version))return group;
+ const key=group.extra_key??'';
+ const expression=version===currentTemplateSyntax?group.expression??'':migrateKeyedCondition(event,key,group.expression??'');
+ validateKeyedCondition(event,key,expression,currentTemplateSyntax);
+ for(const row of group.utterances)validateV04Template(event,row.text,currentTemplateSyntax);
+ return {...group,expression,syntax_version:currentTemplateSyntax};
 }
 
 export type TemplateEntity={id:string;name:string};
@@ -51,7 +61,7 @@ export type TemplateGameMode=''|typeof templateGameModes[number];
 export type TemplateModifier={kind:'ai'|'user';username?:string};
 export type TemplateEntitySnapshot={season:string;version?:string;entities:Record<string,unknown>};
 export type TemplateRange=string|string[];
-type TemplateGroupMetadata={version?:TemplateRange;mode?:TemplateRange;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string;wording_brief?:string};
+type TemplateGroupMetadata={version?:TemplateRange;mode?:TemplateRange;tags?:string[];batch?:string[];review_status?:TemplateReviewStatus|null;last_modified_by?:TemplateModifier;reviewed_by?:string;reviewed_at?:string;entity_snapshot?:TemplateEntitySnapshot;explanation?:string;explanation_before?:string;explanation_source?:string;explanation_after?:string;wording_brief?:string;instruction?:string};
 export const templateReviewLabels:Record<TemplateReviewStatus,string>={ai_generated:'AI生成',initial_reviewed:'初核完成',final_reviewed:'复核完成'};
 export const effectiveReviewStatus=(status:TemplateGroupMetadata['review_status'])=>status===undefined?'ai_generated':status;
 export const templateReviewLabel=(status:TemplateGroupMetadata['review_status'])=>status===null?'未标记':templateReviewLabels[status??'ai_generated'];
@@ -69,9 +79,9 @@ export const templateExplanationFields=[
  ['explanation_before','前置思考'],['explanation_source','来源'],['explanation_after','后置校验'],
 ] as const;
 export const templateMetadataLabels={version:'版本',mode:'模式',tags:'标签',batch:'批次',explanation_before:'说明与依据-前置思考',explanation_source:'说明与依据-来源',explanation_after:'说明与依据-后置校验',wording_brief:'话术构思'};
-export type TemplateGroup=TemplateGroupMetadata&{id:string;name:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';syntax_version?:'0.4';extra_key?:string;publication_hold?:string;scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
+export type TemplateGroup=TemplateGroupMetadata&{id:string;name:string;ignored?:boolean;event_id:string;expression?:string;priority?:number;condition_tree?:ConditionNode|null;editor_mode?:'tree'|'text';syntax_version?:KeyedTemplateSyntax;extra_key?:string;publication_hold?:string;scope:{player_id:string|null;lineup_note_id:string|null};conditions:TemplateCondition[];utterances:{id:string;text:string;ignored?:boolean;fixed?:boolean}[];related_entities:TemplateEntity[]};
 export type UtteranceBindings=Record<string,string[]>;
-export type TemplateSnapshot={schema_version:number;syntax_version?:'0.4';condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];merged_groups?:Record<string,string>;entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>;utterance_bindings?:Record<string,UtteranceBindings>};
+export type TemplateSnapshot={schema_version:number;syntax_version?:KeyedTemplateSyntax;condition_catalog?:ConditionCatalog;scope_names?:Record<string,string>;read_generation?:string;revision:string;events:TemplateEvent[];groups:TemplateGroup[];merged_groups?:Record<string,string>;entity_links?:Record<string,TemplateEntity[]>;entity_condition_links?:Record<string,Record<string,TemplateEntity[]>>;utterance_bindings?:Record<string,UtteranceBindings>};
 // Portable JSON is a separate contract from the canonical editor/proposal model.
 export type PortableTemplateParameter=Omit<TemplateParameter,'id'|'suggestions'>&{id?:string;suggestions?:Array<string|number|boolean>};
 export type PortableTemplateEvent=Omit<TemplateEvent,'id'|'parameters'>&{id?:string;parameters:PortableTemplateParameter[]};
@@ -170,7 +180,7 @@ export function actionArgumentFields(event:TemplateEvent){
 // (including entities mentioned under negation) belong in the trigger conditions.
 export function fixedArguments(group: TemplateGroup,event?:TemplateEvent) {
  const values = new Map<string,string>();
- if(group.syntax_version==='0.4'){
+ if(keyedTemplateSyntax(group.syntax_version)){
   const definition=event&&catalogV04.events[event.name];
   if(definition){
    const args=actionArgumentFields(event!);
@@ -260,7 +270,7 @@ export function filterTemplateGroups(groups:TemplateGroup[],filters:TemplateFilt
  return scoped.filter(group=>{
   const event=labels.events?.find(e=>e.id===group.event_id);
   if(actionTerms.length){
-   const values=group.syntax_version==='0.4'
+   const values=keyedTemplateSyntax(group.syntax_version)
     ?[(group.extra_key??'').split('-').filter(value=>value&&value!=='*').join('-')]
     :[...fixedArguments(group,event)].flatMap(([key,value])=>
      (event?event.parameters.some(parameter=>parameter.key===key):/^arg\d+$/.test(key))?[value]:[]);

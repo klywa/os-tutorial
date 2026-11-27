@@ -11,6 +11,10 @@ type Registry = {
 };
 
 export const catalogV04:Registry=JSON.parse(source);
+export const currentTemplateSyntax='0.5' as const;
+export type KeyedTemplateSyntax='0.4'|typeof currentTemplateSyntax;
+export const keyedTemplateSyntax=(version:unknown):version is KeyedTemplateSyntax=>
+ version==='0.4'||version===currentTemplateSyntax;
 export const registeredEvent=(name:string)=>Object.hasOwn(catalogV04.events,name);
 export const lineupName=(name:string)=>catalogV04.lineup_aliases[name]??name;
 const eventKeyParts=(event:string)=>catalogV04.events[event]?.key;
@@ -220,12 +224,111 @@ export function validateV04(event:string,expression:string,slot=false){
   throw new Error(slot?'槽位必须是可播报的值，单卡请引用 .名称':'条件必须返回布尔值');
 }
 
-export function validateV04Template(event:string,text:string){
+type Literal=Extract<Node,{kind:'literal'}>;
+const comparisons=new Set(['==','!=','<','>','<=','>=','in','not in']);
+function visitKeyComparisons(event:string,key:string,expression:string,compare:(left:Literal,right:Literal,op:string)=>Node){
+ const fields=catalogV04.actions[catalogV04.events[event].action];
+ const locked=new Map<string,Literal>(eventKeyParts(event)?.flatMap((field,index)=>{
+  const value=key.split('-')[index];
+  const type=fields[field]==='int'?'int':'string';
+  return value==='*'?[]:[['动作.'+field+(valueType(fields[field])==='卡牌'?'.名称':''),{kind:'literal',type,value:field==='阵容'?lineupName(value):value}]];
+ }));
+ const substitute=(node:Node)=>node.kind==='path'?locked.get(node.parts.join('.'))??node:node;
+ function visit(node:Node):Node{
+  if(node.kind==='binary'){
+   if(comparisons.has(node.op)){
+    const left=substitute(node.left),right=substitute(node.right);
+    if(left.kind==='literal'&&right.kind==='literal'&&(left!==node.left||right!==node.right))
+     return compare(left,right,node.op);
+   }
+   const left=visit(node.left),right=visit(node.right);
+   if(left!==node.left||right!==node.right)return {...node,left,right};
+  }
+  if(node.kind==='negation'){
+   const child=visit(node.child);
+   if(child!==node.child)return {...node,child};
+  }
+  if(node.kind==='call'){
+   const args=node.args.map(visit);
+   if(args.some((arg,index)=>arg!==node.args[index]))return {...node,args};
+  }
+  return node;
+ }
+ if(!expression.trim()||!locked.size)return;
+ const original=parse(expression),updated=visit(original);
+ return updated!==original?updated:undefined;
+}
+
+export function validateKeyedCondition(event:string,key:string,expression:string,syntax:KeyedTemplateSyntax){
+ validateExtraKey(event,key);
+ validateV04(event,expression);
+ if(syntax===currentTemplateSyntax)visitKeyComparisons(event,key,expression,()=>{
+  throw new Error('额外信息键已锁定事件参数，条件中重复判断该参数');
+ });
+}
+
+export function migrateKeyedCondition(event:string,key:string,expression:string){
+ validateKeyedCondition(event,key,expression,'0.4');
+ const constant=(value:boolean):Node=>({kind:'literal',type:'keyed-constant',value:String(value)});
+ const migrated=visitKeyComparisons(event,key,expression,(left,right,op)=>{
+  if(op==='in'||op==='not in'){
+   const contained=(JSON.parse(right.value!) as string[]).includes(left.value!);
+   return constant(op==='in'?contained:!contained);
+  }
+  if(op==='=='||op==='!='){
+   const equal=left.type==='int'?BigInt(left.value!)===BigInt(right.value!):left.value===right.value;
+   return constant(op==='=='?equal:!equal);
+  }
+  const a=BigInt(left.value!),b=BigInt(right.value!);
+  return constant(op==='<'?a<b:op==='>'?a>b:op==='<='?a<=b:a>=b);
+ });
+ if(!migrated)return expression;
+ const boolean=(node:Node)=>node.kind==='literal'&&node.type==='keyed-constant'?node.value==='true':undefined;
+ function simplify(node:Node):Node{
+  if(node.kind==='negation'){
+   const child=simplify(node.child),result=boolean(child);
+   return result===undefined?{...node,child}:constant(!result);
+  }
+  if(node.kind==='call')return {...node,args:node.args.map(simplify)};
+  if(node.kind!=='binary')return node;
+  const left=simplify(node.left),right=simplify(node.right);
+  if(node.op==='and'||node.op==='or'){
+   const lhs=boolean(left),rhs=boolean(right),identity=node.op==='and';
+   if(lhs!==undefined)return lhs===identity?right:left;
+   if(rhs===identity)return left;
+  }
+  return {...node,left,right};
+ }
+ function format(node:Node,min=1):string{
+  if(node.kind==='path')return node.parts.join('.').replace(/^#/, '');
+  if(node.kind==='literal'){
+   if(node.type==='keyed-constant')return node.value==='true'?'(0 == 0)':'(0 == 1)';
+   return node.type==='string'?JSON.stringify(node.value):node.value??'nil';
+  }
+  if(node.kind==='negation'){
+   const source='not '+format(node.child,3);
+   return min>3?'('+source+')':source;
+  }
+  if(node.kind==='call')return node.name+'('+node.args.map(arg=>format(arg)).join(', ')+')';
+  const rank=precedence[node.op];
+  const source=format(node.left,rank)+' '+node.op+' '+format(node.right,rank+1);
+  return rank<min?'('+source+')':source;
+ }
+ const simplified=simplify(migrated);
+ return boolean(simplified)===true?'':format(simplified);
+}
+
+export function validateV04Template(event:string,text:string,syntax:KeyedTemplateSyntax='0.4'){
  let cursor=0;
  for(const token of text.matchAll(/\{\{(.*?)\}\}/gsu)){
   if(/\{\{|\}\}/u.test(text.slice(cursor,token.index))||/\{\{|\}\}/u.test(token[1]))
    throw new Error('槽位括号不配对或嵌套');
-  validateV04(event,token[1],true);
+  if(syntax===currentTemplateSyntax){
+   if(!registeredEvent(event))throw new Error('未注册解释类型：'+event);
+   if(token[1].length>100000)throw new Error('表达式过长');
+   const result=typeOf(parse(token[1]),event,true);
+   if(!outputs.includes(result)&&valueType(result)!=='卡牌')throw new Error('槽位必须是可播报的值');
+  }else validateV04(event,token[1],true);
   cursor=token.index+token[0].length;
  }
  if(/\{\{|\}\}/u.test(text.slice(cursor)))throw new Error('槽位括号不配对');

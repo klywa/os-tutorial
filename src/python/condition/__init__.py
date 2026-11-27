@@ -639,7 +639,9 @@ def _event_name(name, catalog):
 def evaluate_condition(event_json, expression, state_json, catalog=None):
     """Return True only when the expression evaluates to a known true value."""
     event = _object(event_json, "事件")
-    if event.get("syntax_version") == "0.4" or isinstance(catalog, dict) and catalog.get("syntax_version") == "0.4":
+    typed_versions = ("0.4", "0.5")
+    if (event.get("syntax_version") in typed_versions
+            or isinstance(catalog, dict) and catalog.get("syntax_version") in typed_versions):
         from .v04 import compile_expression
         return compile_expression(event["事件"], expression).evaluate(_object(state_json, "局势")) is True
     args = event.get("参数", {})
@@ -878,13 +880,14 @@ def choose_utterance(config, event_json, state_json, *, rng=None):
     config = _object(config, "运行时配置")
     event = _object(event_json, "事件")
     state = _object(state_json, "局势")
-    if "解释事件" in config:
+    strict = event.get("syntax_version") == "0.5"
+    if "解释事件" in config or strict and "groups" not in config:
         from .v04 import choose, load_library
         name = event["事件"]
         if "参数" in event:
             from .v04_legacy import adapt
             name, state = adapt(event, state)
-        return choose(load_library(config), name, state, rng=rng).get("text")
+        return choose(load_library(config, strict=strict), name, state, rng=rng).get("text")
     player = _object(state.get("玩家", {}), "玩家")
     groups = config.get("groups")
     if not isinstance(groups, list):

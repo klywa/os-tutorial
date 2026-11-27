@@ -172,6 +172,7 @@ def _longest_slot_values(group, catalog, references, cases):
 
 
 def check(document, *, scenarios=()):
+    from group_identity import KEYED_SYNTAX_VERSIONS
     from src.python.condition import render_bound_utterance, utterance_references
 
     if document.get("kind") != "speech-template-library" or document.get("schema_version") != 3:
@@ -188,7 +189,7 @@ def check(document, *, scenarios=()):
             value = group.get(field)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{name}：缺少 {field}")
-        if group.get("syntax_version") == "0.4":
+        if group.get("syntax_version") in KEYED_SYNTAX_VERSIONS:
             event = group["event_name"]
             cases = cases_by_group.get((event, group.get("id")), cases_by_group[(event, group["name"])])
             _check_v04(group, cases)
@@ -223,6 +224,10 @@ def _check_v04(group, cases):
 
     event = group["event_name"]
     key = validate_key(event, group["extra_key"])
+    if group.get("syntax_version") == "0.5":
+        from src.python.condition.v04 import validate_key_expression
+
+        validate_key_expression(event, group["extra_key"], group["expression"])
     expression = compile_expression(event, group["expression"]).node
     scope = group.get("scope", {})
     if group.get("ignored"):

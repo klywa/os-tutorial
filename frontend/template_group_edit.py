@@ -9,6 +9,7 @@ import uuid
 import template_rules as rules
 from src.python.condition import _tokens
 from workspace import Conflict
+from template_v04 import KEYED_SYNTAX_VERSIONS, upgrade_rule
 
 
 def apply_fields(group, patch):
@@ -94,7 +95,8 @@ def formal_merge_key(group, event, entities, notes):
     if (scope['player_id'] and not player) or (scope['lineup_note_id'] and not lineup):
         return None
     display = {'player': player, 'lineup': lineup}
-    if group.get('syntax_version') == '0.4':
+    if group.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
+        group = upgrade_rule(group,event['name'])
         condition = effective_v04(display, group['expression'])
         node = compile_expression(event['name'], condition).node
         rule = _v04_signature(node) if node is not None else None
@@ -150,7 +152,7 @@ def merge_formal_group(target, source):
 
 
 def used_parameters(group, event):
-    if not event or group.get('syntax_version')=='0.4':
+    if not event or group.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
         return set()
     tokens = list(_tokens(_expression(group, event)))
     paths = {value for index, (kind, value, _) in enumerate(tokens)
@@ -188,8 +190,10 @@ def _bindings(expression, keys):
 def identity_changed(before, after, old_event, new_event):
     if before['event_id'] != after['event_id']:
         return True
-    if before.get('syntax_version')=='0.4' or after.get('syntax_version')=='0.4':
-        return before.get('syntax_version')!=after.get('syntax_version') or before.get('extra_key')!=after.get('extra_key')
+    before_keyed = before.get('syntax_version') in KEYED_SYNTAX_VERSIONS
+    after_keyed = after.get('syntax_version') in KEYED_SYNTAX_VERSIONS
+    if before_keyed or after_keyed:
+        return before_keyed!=after_keyed or before.get('extra_key')!=after.get('extra_key')
     old_parameters = {p['key']:p for p in (old_event or {}).get('parameters', [])}
     new_parameters = {p['key']:p for p in (new_event or {}).get('parameters', [])}
     used = used_parameters(before, old_event) | used_parameters(after, new_event)
@@ -304,10 +308,12 @@ def _text_tree(expression):
 
 
 def _merge_rule(base,current,draft,event,resolve):
+    if event and all(group.get('syntax_version') in KEYED_SYNTAX_VERSIONS for group in (base,current,draft)):
+        base,current,draft=(upgrade_rule(group,event['name']) for group in (base,current,draft))
     ancestor,saved,edited=({k:group[k] for k in _RULE if k in group} for group in (base,current,draft))
     if resolve or saved==ancestor or edited==ancestor or saved==edited:
         return edited if resolve else _merge_value(ancestor,saved,edited,_CONFLICT)
-    if any(group.get('syntax_version')=='0.4' for group in (base,current,draft)):
+    if any(group.get('syntax_version') in KEYED_SYNTAX_VERSIONS for group in (base,current,draft)):
         raise Conflict(_CONFLICT)
     if all('expression' not in group for group in (base,current,draft)):
         return {'conditions':_merge_sequence(base['conditions'],current['conditions'],draft['conditions'])}

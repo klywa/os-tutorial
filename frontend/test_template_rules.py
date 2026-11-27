@@ -18,6 +18,27 @@ from src.python.condition import evaluate_condition, choose_utterance
 
 
 class TemplateRuleTests(unittest.TestCase):
+    def test_v05_import_validates_key_and_publishes_without_losing_utterance_identity(self):
+        event = '解释为何购买英雄'
+        group = {'id':'group1','name':'曹操登场','event_name':event,'syntax_version':'0.5',
+                 'extra_key':'曹操','expression':'"曹操" == 动作.选中.名称',
+                 'utterances':[{'id':'line1','text':'曹操能兑现登场收益。'}]}
+        document = {'kind':'speech-template-library','schema_version':3,'events':[],'groups':[group]}
+        invalid = store.preview_import(self.root, document)
+        self.assertTrue(invalid['errors'])
+        self.assertIn('重复', invalid['errors'][0])
+        group['expression'] = '我方.等级 > 3'
+        preview = store.preview_import(self.root, document)
+        self.assertEqual(preview['errors'], [])
+        store.apply(self.root, preview['revision'], preview['changes'])
+        snapshot = self.get('/api/templates')
+        self.assertEqual(snapshot['groups'][0]['syntax_version'], '0.5')
+        self.assertEqual(snapshot['groups'][0]['utterances'], group['utterances'])
+        published = self.get('/api/templates/published')
+        [rule] = published['解释事件'][event]['曹操']
+        self.assertEqual(rule['expression'], group['expression'])
+        self.assertEqual(rule['utterances'], group['utterances'])
+
     def test_v04_publication_filters_mode_and_season_before_building_runtime(self):
         event='解释为何购买英雄'
         common={'name':'首个配合','event_name':event,'syntax_version':'0.4','extra_key':'小乔',
@@ -317,9 +338,11 @@ class TemplateRuleTests(unittest.TestCase):
         document = store.export_library(self.root, ['g1'], rules_format=True)
         self.assertEqual([e['name'] for e in document['events']], ['自定义'])
         group = document['groups'][0]
+        self.assertNotIn('instruction', group)
         group.update(editor_mode='text', expression='玩家.等级 >= count', priority=7, explanation='等级满足事件要求时使用',
                      version='s1', mode='万象大赛', tags=['技巧'], explanation_before='区分触发时点',
-                     explanation_source='笔记原文', explanation_after='核对等级阈值')
+                     explanation_source='笔记原文', explanation_after='核对等级阈值',
+                     instruction='结合知识，解释等级如何影响本次选择。')
         preview = store.preview_import(self.root, document)
         self.assertEqual(preview['errors'], [])
         saved = store.apply(self.root, preview['revision'], preview['changes'])
@@ -327,6 +350,7 @@ class TemplateRuleTests(unittest.TestCase):
         self.assertEqual(stored['id'], 'g1')
         self.assertEqual(stored['scope'], fixtures.group()['scope'])
         self.assertEqual(stored['expression'], '玩家.等级 >= count')
+        self.assertEqual(stored['instruction'], group['instruction'])
         again = store.export_library(self.root, ['g1'], rules_format=True)
         self.assertNotEqual(document['groups'][0]['effective_expression'], again['groups'][0]['effective_expression'])
         document['groups'][0]['effective_expression'] = again['groups'][0]['effective_expression']

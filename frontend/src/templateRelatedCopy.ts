@@ -1,5 +1,5 @@
 import catalogSource from '../../src/condition/catalog.json?raw';
-import {catalogV04,validateExtraKey,validateV04,validateV04Template,v04ConditionKey} from './templateV04';
+import {catalogV04,currentTemplateSyntax,keyedTemplateSyntax,migrateKeyedCondition,validateExtraKey,validateKeyedCondition,validateV04Template,v04ConditionKey} from './templateV04';
 import {relatedTemplateEventFamilies,templateId,templateRangeKey,templateRangeValues,templateVersionValues,type TemplateEvent,type TemplateGroup} from './templates';
 import {canonicalTemplateName} from './templateInlineTrigger';
 
@@ -56,8 +56,8 @@ const version=(group:TemplateGroup)=>templateRangeKey(templateVersionValues(grou
 const mode=(group:TemplateGroup)=>templateRangeKey(templateRangeValues(group.mode));
 
 export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEvent,groups:TemplateGroup[],newId?:string):RelatedCopy{
- if(source.syntax_version!=='0.4'||!relatedTargets(event).includes(target.name))
-  throw new Error('请选择本组内的 v0.4 关联事件');
+ if(!keyedTemplateSyntax(source.syntax_version)||!relatedTargets(event).includes(target.name))
+  throw new Error('请选择本组内支持额外信息键的关联事件');
  const oldEvent=catalogV04.events[event],newEvent=catalogV04.events[target.name];
  const fields=catalogV04.actions[newEvent.action];
  const targetFields=new Map(Object.keys(fields).map(field=>[semanticField(field),field]));
@@ -76,14 +76,16 @@ export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEve
   if(!mapped)throw new Error('目标事件不提供动作.'+field);
   return mapped===field?token:'动作.'+mapped;
  });
- const expression=mapFields(source.expression??'');
- validateV04(target.name,expression);
+ const body=source.syntax_version==='0.4'?migrateKeyedCondition(event,key,source.expression??''):source.expression??'';
+ const expression=mapFields(body);
+ validateKeyedCondition(target.name,extraKey,expression,currentTemplateSyntax);
  const conditionKey=v04ConditionKey(expression);
- const peers=groups.filter(group=>group.event_id===target.id&&group.syntax_version==='0.4'&&
+ const peers=groups.filter(group=>group.event_id===target.id&&keyedTemplateSyntax(group.syntax_version)&&
   group.extra_key===extraKey&&version(group)===version(source)&&mode(group)===mode(source)&&
   (group.publication_hold??'')===(source.publication_hold??'')&&
   group.scope.player_id===source.scope.player_id&&group.scope.lineup_note_id===source.scope.lineup_note_id&&
-  v04ConditionKey(group.expression??'')===conditionKey&&Boolean(group.ignored)===Boolean(source.ignored));
+  v04ConditionKey(group.syntax_version==='0.4'?migrateKeyedCondition(target.name,extraKey,group.expression??''):group.expression??'')===conditionKey&&
+  Boolean(group.ignored)===Boolean(source.ignored));
  const first=peers[0];
  const renamePeers=first?peers.filter(group=>group.name.trim()!==first.name.trim())
   .map(group=>({...group,name:first.name})):[];
@@ -97,7 +99,7 @@ export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEve
 
  const utterances=source.utterances.map(row=>{
   if(row.fixed&&row.ignored)throw new Error('请先解除来源话术的固定或忽略标记');
-  try{validateV04Template(target.name,row.text);}
+  try{validateV04Template(target.name,row.text,currentTemplateSyntax);}
   catch(error){throw new Error('目标事件无法保留原话术槽位：'+(error as Error).message);}
   return {...row,id:templateId('utterance')};
  });
@@ -111,6 +113,6 @@ export function relatedCopy(source:TemplateGroup,event:string,target:TemplateEve
  delete clone.last_modified_by;
  delete clone.entity_snapshot;
  const prepared:TemplateGroup={...clone,id:newId??templateId('group'),event_id:target.id,
-  expression,extra_key:extraKey,review_status:null,editor_mode:'text',conditions:[],condition_tree:null,utterances};
+  expression,extra_key:extraKey,syntax_version:currentTemplateSyntax,review_status:null,editor_mode:'text',conditions:[],condition_tree:null,utterances};
  return {kind:'new',group:{...prepared,name:first?.name??canonicalTemplateName(prepared,target)??target.name},...reconciliation};
 }

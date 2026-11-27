@@ -1,7 +1,7 @@
 import TemplateRelatedCopy,{type RelatedCopyChoice} from './TemplateRelatedCopyMenu';
 import {relatedCopy,relatedDisplayRows,relatedEventDefinition,relatedTargets} from './templateRelatedCopy';
 import {templateConditionLength,templateDisplayExpression,templateDisplaySections,templateRelatedSection} from './templateDisplayGroups';
-import {catalogV04,registeredEvent,validateV04,validateV04Template,wildcardKey} from './templateV04';
+import {catalogV04,currentTemplateSyntax,keyedTemplateSyntax,registeredEvent,validateKeyedCondition,validateV04Template,wildcardKey} from './templateV04';
 import TemplateInlineChoice from './TemplateInlineChoice';
 import {canEditTemplateArgument,canonicalTemplateName,changeTemplateArgument,copyConditionExpression,moveTemplateEvent,sameCopyCondition,startTemplateEventCopy,templateCardGroups,templateTriggerParameters} from './templateInlineTrigger';
 import {createPortal} from 'react-dom';
@@ -36,10 +36,10 @@ import TemplateLineupBoard,{addLineupRosters,buildLineupTabs,generalHeroLabel,li
 import FloatingDocumentNote from './FloatingDocumentNote';
 import {TemplateLineupName} from './ConditionTextEditor';
 import TemplateTraceDialog from './TemplateTraceDialog';
-import {loadTemplateTrace,type LoadedTrace} from './templateTrace';
+import {detailFileName,loadTemplateTrace,type LoadedTrace} from './templateTrace';
 import TemplateBrowsePopup from './TemplateBrowsePopup';
 import TemplateRevisions,{TemplateOfficialDescriptions} from './TemplateRevisions';
-import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateLibrary,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateGroupSeasons,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
+import {assertNoNewGroupErrors,fileDeliveryDocument,fileImportDocument,fixEditedLocalUtterances,parseTemplateFile,pickTemplateDirectory,readTemplateFile,reviewLocalGroup,saveTemplateFile,templateFilesInDirectory,templateGroupSeasons,withLocalEntitySnapshot,writeLocalComment,writeLocalReviewStatus,writeTemplateDocument,type LocalDirectoryHandle,type LocalFileHandle,type OfficialTemplateCatalog,type TemplateFile} from './templateFile';
 import {recentTemplateFiles,rememberRecentTemplateFile,sameTemplateFile,type RecentTemplateFile} from './templateRecentFiles';
 import {actionArgumentFields,applyTemplateGroupFields,groupDiffKeys,appendTemplateMetadata,copyTemplateGroup,deriveTemplateEntities,downloadTemplates,effectiveReviewStatus,emptyTemplateFilters,filterTemplateGroups,templateGroupVisible,lineupPlayer,templateExplanationFields,templateMetadataLabels,templateRangeKey,templateRangeText,templateRangeValues,templateVersionValues,templateReviewLabels,templateReviewLabel,mergeTemplateWriteSnapshot,orderTemplateEvents,operators,templateId,valueText,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateFilters,type TemplateGameMode,type TemplateGroup,type TemplateMetadataField,type TemplateParameter,type TemplateProposal,type TemplateReviewStatus,type TemplateSnapshot,type PortableTemplateLibrary,type TemplateWarning,type UtteranceBindings} from './templates';
 import type {Note,Options} from './types';
@@ -115,15 +115,15 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
  const cards=useCards(),entities=deriveTemplateEntities(group,event,cards,archivedEntities);
  const actionValues=fixedArguments(group,event);
  const parameters=event?templateTriggerParameters(group,event):[];
- const actionPaths=event&&group.syntax_version==='0.4'?actionArgumentFields(event).map(field=>'动作.'+field):[];
+ const actionPaths=event&&keyedTemplateSyntax(group.syntax_version)?actionArgumentFields(event).map(field=>'动作.'+field):[];
  const explanations=templateExplanationFields.flatMap(([field,label])=>group[field]?.trim()?[{label,text:group[field]!}]:[]);
  const entries=explanations.length?explanations:group.explanation?.trim()?[{text:group.explanation}]:[];
  const expression=templateDisplayExpression(group,scopeName);
  const expressionEdit=editable&&onSaveExpression&&(group.expression!==undefined||!group.conditions.length)?{
   value:expression,
   save:(value:string)=>{
-   const v04=group.syntax_version==='0.4';
-   if(v04&&event)validateV04(event.name,value);
+   if(keyedTemplateSyntax(group.syntax_version)&&event)
+    validateKeyedCondition(event.name,group.extra_key??'',value,group.syntax_version);
    const next=resolveConditionEdit(value,group,scopeName,{...scopeOptions,fileMode});
    return onSaveExpression(next.expression,next.scope);
   },
@@ -164,7 +164,7 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
     })}
     <TemplateInlineMetadata label="标签" values={group.tags??[]} proposalPrevious={changed('tags')?originalGroup?.tags??[]:undefined} disabled={metadataLocked} onSave={editable&&onSaveMetadata?values=>onSaveMetadata('tags',values):undefined}/>
     <TemplateInlineMetadata label="批次" values={group.batch??[]} proposalPrevious={changed('batch')?originalGroup?.batch??[]:undefined} disabled={metadataLocked} onSave={editable&&onSaveMetadata?values=>onSaveMetadata('batch',values):undefined}/>
-    {group.syntax_version==='0.4'&&<span>额外信息键 {group.extra_key||'（空）'}</span>}
+    {keyedTemplateSyntax(group.syntax_version)&&<span>额外信息键 {group.extra_key||'（空）'}</span>}
     {group.publication_hold&&<span title={group.publication_hold}>暂停发布 · {group.publication_hold}</span>}
     <span data-proposal-change={changed('priority')}>优先级 {group.priority??0}</span>
     {(group.ignored||changed('ignored'))&&<span className="template-ignored" data-proposal-change={changed('ignored')}>{group.ignored?'已忽略':'参与导出'}</span>}
@@ -220,11 +220,11 @@ export function TemplateGroupCard({group,event,catalog,utteranceBindings,entitie
    {group.expression===undefined&&group.conditions.length>0&&<><h3>同时满足</h3><dl>{group.conditions.map(c=>{const parameter=event?.parameters.find(p=>p.key===c.parameter_key);const entity=c.value as TemplateEntity;const removed=proposal?.removedConditions.includes(c.id);return <div key={c.id} data-proposal-change={changed('condition:'+c.id)}><dt>{parameter?.name??c.parameter_key}</dt><dd>{removed?deletedLabel(operators[c.operator]+' '+valueText(c.value)):<><span>{operators[c.operator]} </span>{parameter?.type==='entity'&&entity?.id?<Entity ids={deriveTemplateEntities({...group,scope:{player_id:null,lineup_note_id:null},conditions:[c]},event,cards).map(e=>e.id)} label={entity.name}/>:valueText(c.value)}</>}</dd></div>;})}</dl></>}{group.expression===undefined&&!expression&&!group.conditions.length&&<p className="muted">不限制条件</p>}
    {group.expression!==undefined||expression||removedExpression||expressionEdit?<div data-proposal-change={changed('rule','scope')}>
     <TemplateConditionPreview expression={removedExpression?originalExpression!:expression} edit={conditionEdit} expressionEdit={expressionEdit} allowCopy={!proposal} removed={removedExpression}
-     config={{event,catalog,v04:group.syntax_version==='0.4'}}/>
+     config={{event,catalog,v04:keyedTemplateSyntax(group.syntax_version)}}/>
    </div>:conditionEdit&&
     <div className="template-condition-actions"><button type="button" aria-label={conditionEdit.label} disabled={conditionEdit.disabled} onClick={conditionEdit.onClick}>编辑模板组</button></div>}
    {conditionEditor}
-  </section><TemplateUtterances commentCounts={commentCounts} onFeedback={onFeedback} utterances={group.utterances} v04={group.syntax_version==='0.4'} bindings={utteranceBindings} parameters={event?.parameters} event={event} catalog={catalog} localFile={fileMode}
+  </section><TemplateUtterances commentCounts={commentCounts} onFeedback={onFeedback} utterances={group.utterances} v04={keyedTemplateSyntax(group.syntax_version)} syntaxVersion={group.syntax_version} bindings={utteranceBindings} parameters={event?.parameters} event={event} catalog={catalog} localFile={fileMode}
    editable={editable||!!proposalControl?.onSaveUtterance} annotator={annotator} disabled={false} savingIgnoreIds={savingIgnore?.rows}
    onToggleIgnored={onToggleIgnored} onToggleFixed={onToggleFixed}
    onSave={proposalControl?.onSaveUtterance?change=>proposalControl.onSaveUtterance!(change,false):onSaveUtterances}
@@ -250,11 +250,12 @@ function applyIgnore(group:TemplateGroup,change:IgnoreChange):TemplateGroup{
   : update(group);
 }
 type Preview={revision:string;changes:TemplateChange[];summary:unknown;errors:unknown[];preserved_fixed?:{group_id:string;utterance_id:string;group_name:string;text:string}[]};
-type OpenFile={handle:LocalFileHandle;raw:string;detail?:LocalFileHandle;trace?:LoadedTrace};
+type OpenFile={handle:LocalFileHandle;raw:string;directory:LocalDirectoryHandle};
+type FileChoice={directory:LocalDirectoryHandle;files:LocalFileHandle[];selected:string};
 type LineupView={active:boolean;lineup:string;player:string;query:string;eventIds?:string[];filters:Pick<TemplateFilters,'review_status'|'onlyFixed'|'hideIgnored'>};
 type BrowsePopup={key:string;title:string;ids:string[];parents:Map<string,string>;visibility:Pick<TemplateFilters,'onlyFixed'|'hideIgnored'>};
 type View={filters:TemplateFilters;entityKey:string;byEntity:boolean;compact:boolean;selected:Set<string>;lineupView?:LineupView};
-export type TemplateWorkspaceState={opened?:OpenFile|null;views?:Record<string,View>;details?:Record<string,string|null>;scroll?:Record<string,{top:number;visible:number}>;utteranceDrafts?:Map<string,UtteranceDraftStore>;cardEditors?:Map<string,CardEditor>;fileKeys?:WeakMap<LocalFileHandle,string>};
+export type TemplateWorkspaceState={opened?:OpenFile|null;views?:Record<string,View>;details?:Record<string,string|null>;scroll?:Record<string,{top:number;visible:number}>;utteranceDrafts?:Map<string,UtteranceDraftStore>;cardEditors?:Map<string,CardEditor>;fileKeys?:WeakMap<LocalFileHandle,string>;traces?:WeakMap<LocalFileHandle,{raw:string;result:Promise<LoadedTrace>}>};
 const emptyView:View={filters:emptyTemplateFilters,entityKey:'',byEntity:false,compact:false,selected:new Set()};
 const emptyLineupView:LineupView={active:false,lineup:'',player:'',query:'',filters:{hideIgnored:true}};
 const templatePath=(season:Season,suffix='')=>'templates'+suffix+(suffix.includes('?')?'&':'?')+'season='+season;
@@ -267,7 +268,9 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
  const cards=useCards();
  const [database,setDatabase]=useState<TemplateSnapshot|null>(null),[opened,setOpened]=useState<OpenFile|null>(()=>workspace?.opened??null);
  const [traceGroup,setTraceGroup]=useState<TemplateGroup|null>(null);
- const [databaseTrace,setDatabaseTrace]=useState<LoadedTrace>();
+ const [fileChoice,setFileChoice]=useState<FileChoice>();
+ const [traceCache]=useState<NonNullable<TemplateWorkspaceState['traces']>>(()=>workspace?.traces??new WeakMap());
+ useEffect(()=>{if(workspace)workspace.traces=traceCache;},[workspace,traceCache]);
  const openedFile=useRef(opened);
  const [official,setOfficial]=useState<OfficialTemplateCatalog>(),[officialError,setOfficialError]=useState('');
  const lookups=useMemo(()=>({entities:[...options.entities,...cards,...(official?.season===season?official.items:[])],lineups:notes.filter(n=>n.type==='lineup')}),[options.entities,cards,notes,official,season]);
@@ -280,6 +283,29 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   return value;
  }
  const file=opened?documentFor(opened):null;
+ const readTrace=useCallback((retry:boolean)=>{
+  if(!opened)return Promise.reject(new Error('请先打开模板文件。'));
+  const {handle,raw,directory}=opened,cached=traceCache.get(handle);
+  if(!retry&&cached?.raw===raw)return cached.result;
+  const document=parsedFile.current;
+  const groups=document?.opened===opened?document.value.snapshot.groups:undefined;
+  const name=detailFileName(handle.name);
+  const result=(async()=>{
+   try{
+    if(retry&&directory.requestPermission&&await directory.requestPermission({mode:'read'})!=='granted'){
+     throw new DOMException('未授权','NotAllowedError');
+    }
+    return await loadTemplateTrace(await directory.getFileHandle(name),{name:handle.name,raw,groups});
+   }catch(error){
+    if((error as Error).name==='NotFoundError')throw new Error('模板目录中找不到 '+name+'。放入生成记录后重试。');
+    if(['NotAllowedError','SecurityError'].includes((error as Error).name))throw new Error('读取模板目录的权限已取消。请重试并授权读取。');
+    throw error;
+   }
+  })();
+  traceCache.set(handle,{raw,result});
+  void result.catch(()=>{if(traceCache.get(handle)?.result===result)traceCache.delete(handle);});
+  return result;
+ },[opened,traceCache]);
  const snapshot=fileMode?file?.snapshot??null:legacyMode?legacy:database;
  function localCommentCounts(groupId:string){
   const counts:Record<string,number>=Object.create(null);
@@ -292,9 +318,6 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
  const [views,setViews]=useState<Record<string,View>>(()=>workspace?.views??{});
  useEffect(()=>{if(workspace)workspace.views=views;},[workspace,views]);
  function rememberFile(file:OpenFile|null){
-  if(file?.trace&&openedFile.current?.handle===file.handle&&openedFile.current.raw!==file.raw&&openedFile.current.trace===file.trace){
-   file={...file,trace:{...file.trace,modified:true}};
-  }
   openedFile.current=file;
   if(workspace)workspace.opened=file;
   setOpened(file);
@@ -476,7 +499,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   return()=>{active=false;};
  },[fileMode,season]);
  useEffect(()=>{
-  setTraceGroup(null);setDatabaseTrace(undefined);
+  setTraceGroup(null);setFileChoice(undefined);
   setError('');setNotice('');setLocatedDetail(null);setFocusTarget(null);setRevisionGroup(null);setEditor(null);setJsonGroup(null);setFeedback(null);
   setSettings(false);setProposals(false);setImportOpen(false);setImportSelection(null);setImportText('');setPreview(null);setFileExport(undefined);setBatchMetadata(null);
   onDirty?.(false);
@@ -726,33 +749,46 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   rememberFile(null);
   setError('');setNotice('');
  }
- async function openFile(reuse=false,reportInDialog=false,options:{recent?:RecentTemplateFile;startIn?:LocalFileHandle}={}){
-  if(busy||pickerLock.current||saveFileLock.current||!reuse&&!allowReplaceFile())return;
+ async function chooseDirectory(options:{directory?:LocalDirectoryHandle;startIn?:LocalDirectoryHandle|LocalFileHandle}={}){
+  if(busy||pickerLock.current||saveFileLock.current)return;
   pickerLock.current=true;onBusyChange?.(true);setBusy(true);setError('');
   try{
-   const {handle,detail}=options.recent??(reuse&&opened?opened:await pickTemplateLibrary(options.startIn));
-   if(options.recent&&handle.requestPermission&&await handle.requestPermission({mode:'read'})!=='granted'){
-    throw new Error('未获得读取权限，请重新授权或手动选择文件。');
+   const directory=options.directory??await pickTemplateDirectory(options.startIn);
+   if(options.directory&&directory.requestPermission&&await directory.requestPermission({mode:'read'})!=='granted'){
+    throw new Error('未获得模板目录的读取权限，请重新授权。');
+   }
+   const files=await templateFilesInDirectory(directory);
+   setFileChoice({directory,files,selected:files.find(handle=>handle.name===opened?.handle.name)?.name??files[0]?.name??''});
+  }catch(error){
+   if((error as Error).name!=='AbortError')setError((error as Error).message);
+  }
+  finally{pickerLock.current=false;onBusyChange?.(false);setBusy(false);}
+ }
+ async function openFile(reuse=false,reportInDialog=false,options:{recent?:RecentTemplateFile;selection?:{handle:LocalFileHandle;directory:LocalDirectoryHandle}}={}){
+  if(busy||pickerLock.current||saveFileLock.current||!reuse&&!allowReplaceFile())return;
+  const target=options.recent??options.selection??(reuse?openedFile.current:null);
+  if(!target)return;
+  if(!target.directory){void chooseDirectory({startIn:target.handle});return;}
+  pickerLock.current=true;onBusyChange?.(true);setBusy(true);setError('');
+  try{
+   const {handle,directory}=target;
+   if(options.recent&&directory.requestPermission&&await directory.requestPermission({mode:'read'})!=='granted'){
+    throw new Error('未获得模板目录的读取权限，请重新授权。');
    }
    const raw=await readTemplateFile(handle);
    parseTemplateFile(raw,lookups);
    const current=openedFile.current;
    const same=current&&await sameTemplateFile(current.handle,handle);
    if(!same)resetFileView();
-   let trace:LoadedTrace|undefined,traceError='';
-   if(detail){
-    try{trace=await loadTemplateTrace(detail,{name:handle.name,raw});}
-    catch(e){traceError='主库已打开。'+(e as Error).message;}
-   }else if(same&&current.trace){
-    trace=current.raw===raw?current.trace:{...current.trace,modified:true};
-   }
-   rememberFile({handle:same?current.handle:handle,raw,detail,trace});setNotice(traceError);
-   void rememberRecentTemplateFile({id:options.recent?.id??templateId('recent'),handle,detail,openedAt:Date.now()}).then(setRecentFiles);
+   const known=same||options.recent?undefined:(await Promise.all(recentFiles.map(async entry=>await sameTemplateFile(entry.handle,handle)?entry:undefined))).find(entry=>entry);
+   const activeHandle=same?current.handle:known?.handle??handle;
+   if(reuse)traceCache.delete(activeHandle);
+   rememberFile({handle:activeHandle,raw,directory});setNotice('');setFileChoice(undefined);
+   void rememberRecentTemplateFile({id:options.recent?.id??templateId('recent'),handle:activeHandle,directory,openedAt:Date.now()}).then(setRecentFiles);
   }catch(error){
    if(reportInDialog)throw error;
    const {name,message}=error as Error;
-   if(name!=='AbortError')setError(options.startIn?'无法从所在文件夹选取文件：'+message+'。可用「打开模板文件」手动选择。':
-    options.recent&&name==='NotFoundError'?'找不到最近文件，可能已移动或删除。请手动选择文件。':message);
+   if(name!=='AbortError')setError(name==='NotFoundError'?'找不到模板文件，可能已移动或删除。请重新选择文件。':message);
   }
   finally{pickerLock.current=false;onBusyChange?.(false);setBusy(false);}
  }
@@ -1050,7 +1086,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
  }
  function create(){
   editorBase.current=undefined;
-  const v04=snapshot?.syntax_version==='0.4'||!!snapshot?.groups.some(group=>group.syntax_version==='0.4');
+  const v04=keyedTemplateSyntax(snapshot?.syntax_version)||!!snapshot?.groups.some(group=>keyedTemplateSyntax(group.syntax_version));
   const events=orderTemplateEvents(snapshot?.events??[]).filter(event=>!v04||registeredEvent(event.name));
   if(!events.length){setNotice('请先在事件与参数设置中添加事件。');setSettings(true);return;}
   const event=events.find(row=>row.id===filters.event)??events[0];
@@ -1058,7 +1094,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   setEditor({id:templateId('group'),name:'',version:/^S[12]$/i.test(version)?[version.toUpperCase()]:version,mode:[(gameMode??filters.mode)||'万象大赛'],
    tags:filters.tags??[],event_id:event.id,scope:{player_id:filters.player&&filters.player!=='common'?filters.player:null,
    lineup_note_id:filters.lineup&&filters.lineup!=='common'?filters.lineup:null},priority:0,
-   ...(v04?{syntax_version:'0.4' as const,extra_key:wildcardKey(event.name)}:{condition_tree:{kind:'all' as const,children:[]}}),
+   ...(v04?{syntax_version:currentTemplateSyntax,extra_key:wildcardKey(event.name)}:{condition_tree:{kind:'all' as const,children:[]}}),
    expression:'',editor_mode:v04?'text':'tree',conditions:[],utterances:[{id:templateId('utterance'),text:''}],related_entities:[]});
  }
  const scrollPositions=useRef(workspace?.scroll??{}),groupList=useRef<HTMLDivElement>(null);
@@ -1143,7 +1179,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
  }
  function inlineEventNames(group:TemplateGroup){
   const names=[...cardEvents.values()].map(event=>event.name);
-  return group.syntax_version==='0.4'?[...new Set(names.filter(registeredEvent).concat(fileMode?Object.keys(catalogV04.events):[]))]:names;
+  return keyedTemplateSyntax(group.syntax_version)?[...new Set(names.filter(registeredEvent).concat(fileMode?Object.keys(catalogV04.events):[]))]:names;
  }
  function startCopy(source:TemplateGroup,kind:CopyKind,popupKey?:string){
   const name=canonicalTemplateName(source,cardEvents.get(source.event_id))??source.name;
@@ -1155,7 +1191,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   const origin=cardEvents.get(source.event_id);
   if(!origin)return null;
   const event=target??origin;
-  const v04=group.syntax_version==='0.4';
+  const v04=keyedTemplateSyntax(group.syntax_version);
   const baseline={...group,expression:copyConditionExpression(group,event)};
   const expression=templateDisplayExpression(baseline,scopeName);
   function patchDraft(update:(current:CopyDraft)=>CopyDraft){
@@ -1173,9 +1209,9 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    if(!target||draft.busy)return;
    patchDraft(current=>({...current,busy:true,error:undefined}));
    try{
-    if(v04){
-     validateV04(target.name,expression);
-     group.utterances.forEach(row=>validateV04Template(target.name,row.text));
+    if(keyedTemplateSyntax(group.syntax_version)){
+     validateKeyedCondition(target.name,group.extra_key??'',expression,group.syntax_version);
+     group.utterances.forEach(row=>validateV04Template(target.name,row.text,group.syntax_version));
     }
     await createCopy(source,undefined,source.id,popupKey,{id:group.id,prepare:current=>{
      const existing=current.events.find(row=>row.name===target.name);
@@ -1187,7 +1223,8 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
   }
   async function saveCondition(value:string){
    if(sameCopyCondition(value,expression,v04))return;
-   if(v04)validateV04(event!.name,value);
+   if(keyedTemplateSyntax(group.syntax_version))
+    validateKeyedCondition(event.name,group.extra_key??'',value,group.syntax_version);
    const condition=resolveConditionEdit(value,baseline,scopeName,{fileMode,players,lineups});
    const updated:TemplateGroup={...group,...condition,conditions:[],editor_mode:'text',condition_tree:null};
    if(target){patchDraft(current=>({...current,group:updated,error:undefined}));return;}
@@ -1249,7 +1286,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
      templateRangeKey(templateRangeValues(peer.mode))===templateRangeKey(templateRangeValues(group.mode))&&
      Boolean(peer.ignored)===Boolean(group.ignored)&&peer.publication_hold===group.publication_hold&&
      sameCopyCondition(templateDisplayExpression({...peer,expression:copyConditionExpression(peer,definition)},scopeName),
-      templateDisplayExpression({...group,expression:copyConditionExpression(group,definition)},scopeName),group.syntax_version==='0.4'));
+      templateDisplayExpression({...group,expression:copyConditionExpression(group,definition)},scopeName),keyedTemplateSyntax(group.syntax_version)));
     const value=equivalent?{...group,name:equivalent.name}:group;
     const changes:TemplateChange[]=[...(event?[{kind:'event' as const,action:'put' as const,id:event.id,value:event}]:[]),
      {kind:'group',action:'put',id:newId,value}];
@@ -1575,7 +1612,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
     if(fileMode)return enqueueFileMetadataChanges(groups=>{
      const latest=groups.find(candidate=>candidate.id===group.id);
      const current=latest?.utterances.find(utterance=>utterance.id===id);
-     if(!latest||!current||latest.syntax_version!=='0.4'&&current.text!==row.text)
+     if(!latest||!current||!keyedTemplateSyntax(latest.syntax_version)&&current.text!==row.text)
       throw new Error('话术已修改或删除，请重新核对。');
      const updated={...current};
      if(value)updated[field]=true;else delete updated[field];
@@ -1618,7 +1655,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    })):undefined}/>;
   const groupEditor=editorForm&&!embeddedEditor?createPortal(editorForm,document.body,editorKey):editorForm;
   return <TemplateGroupCard key={group.id} group={displayed} catalog={snapshot?.condition_catalog} fileMode={fileMode} allowExport={!projected&&!legacyMode} utteranceBindings={ruleChanged?undefined:snapshot?.utterance_bindings?.[group.id]}
-   onTrace={()=>setTraceGroup(displayed)}
+   onTrace={fileMode?()=>setTraceGroup(displayed):undefined}
    originalGroup={projected?.newGroup?undefined:original} proposal={projected} proposalControl={rows.length?{
     rows,active,original:showOriginal,temporary:temporaryGroup?.id===group.id,
     disabled:selectionLocked,onChange:value=>chooseProposal(group.id,value),
@@ -1680,7 +1717,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    }}
    onEdit={()=>openGroupEditor(proposalEditable?draftGroup!:group,proposalEditable?previewTarget:undefined)}
     onCopy={canManage&&canEditGroup?kind=>startCopy(group,kind,popupKey):undefined}
-   {...(!projected&&canManage&&canEditGroup&&group.syntax_version==='0.4'&&sourceEvent&&relatedTargets(sourceEvent.name).length?{
+   {...(!projected&&canManage&&canEditGroup&&keyedTemplateSyntax(group.syntax_version)&&sourceEvent&&relatedTargets(sourceEvent.name).length?{
      relatedCopyOptions:()=>relatedCopyOptions(group,sourceEvent),onRelatedCopy:(name:string)=>{void createCopy(group,name,group.id,popupKey);},
    }:{})}
    onDelete={canManage&&!deletingGroups.current.has(group.id)?()=>{if(!proposalEditable){void remove(group);return;}
@@ -1774,7 +1811,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    <fieldset className="template-toolbar" disabled={selectionLocked}>
     <button onClick={()=>setHelp(true)}>帮助</button>
     {!legacyMode&&snapshot&&<button type="button" onClick={()=>setFileExport({})}>导出到文件</button>}
-    {fileMode?<>{opened&&<><button onClick={()=>void exportAll()}>导出全库</button><button type="button" disabled={busy} onClick={closeFile}>关闭文件</button></>}<button type="button" disabled={busy} onClick={()=>void openFile()}>{opened?'打开新文件':'打开模板文件'}</button>
+    {fileMode?<>{opened&&<><button onClick={()=>void exportAll()}>导出全库</button><button type="button" disabled={busy} onClick={closeFile}>关闭文件</button><button type="button" disabled={busy} onClick={()=>void chooseDirectory({startIn:opened.directory})}>更换模板文件夹</button></>}<button type="button" disabled={busy} onClick={()=>void chooseDirectory({directory:opened?.directory})}>{opened?'选择其他主库':'选择模板文件夹'}</button>
      {editable&&opened&&<button disabled={!importableSelection.length} onClick={()=>beginImport(importableSelection)}>导入所选到数据库{importableSelection.length>0?'（'+importableSelection.length+'）':''}</button>}
     </>:<>
      {season==='S2'&&!!legacy?.groups.length&&<button type="button" aria-pressed={legacyMode} onClick={()=>setShowLegacy(value=>!value)}>{legacyMode?'返回数据库模板':'查看 S2 旧模板（只读）'}</button>}
@@ -1787,7 +1824,7 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    </fieldset>
   </div>
   {notice&&<div className="template-notice" role="status">{notice}<button aria-label="关闭提示" onClick={()=>setNotice('')}>×</button></div>}
-  {error&&!importOpen&&<div role="alert" className="error template-error">{error}<button onClick={()=>fileMode?void openFile(!!opened):void load()}>重新载入</button></div>}
+  {error&&!importOpen&&!fileChoice&&<div role="alert" className="error template-error">{error}<button onClick={()=>fileMode?opened?void openFile(true):void chooseDirectory():void load()}>重新载入</button></div>}
   {fileMode&&!!file?.groupErrors.length&&<div role="alert" className="error template-error">
    <details open={file.groupErrors.length===1}><summary>有 {file.groupErrors.length} 个模板组未载入</summary>
     <ul>{file.groupErrors.map(({index,message})=><li key={index}>{message}</li>)}</ul>
@@ -1797,11 +1834,11 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
    提案预览暂不可用：{proposalPreviews.error} <button type="button" onClick={refreshProposals}>重试</button>
   </div>}
   {fileMode&&officialError&&opened&&<p className="muted" role="status">官网卡牌资料读取失败：{officialError}</p>}
-  {fileMode&&!opened?<div className="empty"><p>打开话术模板库 JSON 文件，可同时选择同名的 -detail.json 查看生成记录。</p>{recentFiles.length>0&&
+  {fileMode&&!opened?<div className="empty"><p>系统窗口只显示文件夹。进入模板文件夹后，点击「选择文件夹」，再从网页列表选主库 JSON。</p>{recentFiles.length>0&&
    <section aria-label="最近载入的模板文件" className="template-recent-files">
     <h2>最近载入</h2><ul>{recentFiles.map(entry=><li key={entry.id}>
-     <button type="button" disabled={busy} onClick={()=>void openFile(false,false,{recent:entry})}>{entry.handle.name}</button>
-     <button type="button" disabled={busy} aria-label={'从 '+entry.handle.name+' 所在文件夹选文件'} onClick={()=>void openFile(false,false,{startIn:entry.handle})}>从所在文件夹选文件</button>
+     <button type="button" disabled={busy} title={entry.directory?.name} onClick={()=>void openFile(false,false,{recent:entry})}>{entry.handle.name}</button>
+     <button type="button" disabled={busy} aria-label={'从 '+entry.handle.name+' 所在文件夹选文件'} onClick={()=>void chooseDirectory({directory:entry.directory,startIn:entry.handle})}>从所在文件夹选文件</button>
     </li>)}</ul>
    </section>}</div>:byLineup?<div className="template-workspace">
    <TemplateLineupSidebar names={lineupNames} tabs={lineupTabs} query={lineupView.query} selected={selectedLineup} player={lineupPlayerTab} counts={lineupSidebarCounts}
@@ -1870,11 +1907,25 @@ export default function TemplateLibrary({notes,options,onDirty,onDocumentNoteDir
     <ReadingCards cardSearch><div className="template-card-stack">{renderGroupList(visibleCardRows(relatedDisplayRows(cardMembers.get(detailGroup.id)??[detailGroup],relatedAvailable,relatedParents).rows))}</div></ReadingCards>
    </div>
   </section>}
-  {traceGroup&&<TemplateTraceDialog key={traceGroup.id} group={traceGroup} loaded={fileMode?opened?.trace:databaseTrace}
-   library={fileMode&&opened?{name:opened.handle.name,raw:opened.raw}:undefined} onLoad={trace=>{
-    if(fileMode){const current=openedFile.current;if(current&&current.handle===opened?.handle)rememberFile({...current,trace});}
-    else setDatabaseTrace(trace);
-   }} onClose={()=>setTraceGroup(null)}/>}
+  {fileMode&&fileChoice&&<TemplateDialog title="选择模板文件" onClose={()=>{if(!busy){setFileChoice(undefined);setError('');}}}>
+   <form className="template-form" onSubmit={event=>{
+    event.preventDefault();
+    const handle=fileChoice.files.find(item=>item.name===fileChoice.selected);
+    if(handle)void openFile(false,false,{selection:{handle,directory:fileChoice.directory}});
+   }}>
+    <p>模板目录 · {fileChoice.directory.name}</p>
+    {fileChoice.files.length?<label>主库文件<select value={fileChoice.selected} disabled={busy}
+     onChange={event=>setFileChoice({...fileChoice,selected:event.target.value})}>
+     {fileChoice.files.map(item=><option key={item.name} value={item.name}>{item.name}</option>)}
+    </select></label>:<p role="status">这个目录没有可选的主库 JSON。请选择生成主库所在的目录。</p>}
+    {error&&<p className="error" role="alert">{error}</p>}
+    <footer>
+     <button type="button" disabled={busy} onClick={()=>void chooseDirectory({startIn:fileChoice.directory})}>更换目录</button>
+     <button type="submit" className="primary" disabled={busy||!fileChoice.selected}>打开主库</button>
+    </footer>
+   </form>
+  </TemplateDialog>}
+  {fileMode&&opened&&traceGroup&&<TemplateTraceDialog key={traceGroup.id} group={traceGroup} load={readTrace} onClose={()=>setTraceGroup(null)}/>}
   {batchMetadata&&<TemplateBatchMetadata field={batchMetadata} groups={selectedGroups} proposal={useProposalEditor}
    onClose={()=>setBatchMetadata(null)} onSave={values=>saveBatchMetadata(batchMetadata,values)}/>}
   {feedback&&(fileMode?feedback.group&&<LocalTemplateFeedback group={feedback.group} utteranceId={feedback.utteranceId}

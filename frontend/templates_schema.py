@@ -3,6 +3,7 @@ from copy import deepcopy
 import math
 import re
 import template_rules as rules
+from template_v04 import KEYED_SYNTAX_VERSIONS
 
 ID = re.compile(r'[A-Za-z0-9_-]{1,128}\Z')
 KEY = re.compile(r'[a-z][a-z0-9_]{0,63}\Z')
@@ -10,7 +11,7 @@ CATEGORIES = {'players','heroes','equipment','talents','derivatives','effect-car
 WORKFLOW_METADATA = {'review_status','last_modified_by','reviewed_by','reviewed_at','entity_snapshot'}
 REVIEW_STATUSES = {'ai_generated','initial_reviewed','final_reviewed'}
 GROUP_METADATA = {'version', 'mode', 'tags', 'batch', 'explanation', 'explanation_before',
-                  'explanation_source', 'explanation_after', 'wording_brief'} | WORKFLOW_METADATA
+                  'explanation_source', 'explanation_after', 'wording_brief', 'instruction'} | WORKFLOW_METADATA
 
 
 GROUP_SEASONS = ('S1', 'S2')
@@ -160,6 +161,8 @@ def validate_group(group, events, entities, notes):
             raise ValueError('说明与依据分项格式无效或过长')
     if 'wording_brief' in group and not isinstance(group['wording_brief'], str):
         raise ValueError('话术构思须为文本')
+    if 'instruction' in group:
+        text(group['instruction'], '生成指令')
     event=events.get(group['event_id']) if isinstance(group['event_id'],str) else None
     if event is None:raise ValueError('话术组引用的事件不存在')
     rules.validate_rule(group,event)
@@ -191,7 +194,7 @@ def validate_group(group, events, entities, notes):
     references = {}
     for u in group['utterances']:
         fields(u,{'id','text','ignored','fixed'},{'id','text'});text(u['text'],'话术')
-        if group.get('syntax_version') != '0.4':
+        if group.get('syntax_version') not in KEYED_SYNTAX_VERSIONS:
             references.update(dict.fromkeys(utterance_references(u['text'])))
         if 'ignored' in u and type(u['ignored']) is not bool:
             raise ValueError('话术忽略状态必须是布尔值')

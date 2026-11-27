@@ -1,5 +1,5 @@
 import {fileTemplateScopeId} from './templateFile';
-import {lineupName} from './templateV04';
+import {keyedTemplateSyntax,lineupName} from './templateV04';
 import {effectiveExpression,lineupPlayer,type TemplateGroup} from './templates';
 
 function topLevelTokens(text:string){
@@ -36,7 +36,7 @@ export function parseFileConditionText(text:string,syntaxVersion?:string){
  clauses.push(source.slice(start).trim());
  if(clauses.length>1&&clauses.some(clause=>!clause))return {...scope,expression:source};
 
- const matcher=syntaxVersion==='0.4'
+ const matcher=keyedTemplateSyntax(syntaxVersion)
   ? /^我方\s*\.\s*(棋手名称|阵容名称)\s*==\s*("(?:\\.|[^"\\])*")$/u
   : /^玩家\s*\.\s*(使用棋手|使用阵容)\s+is\s+("(?:\\.|[^"\\])*")$/u;
  const remaining=clauses.filter(clause=>{
@@ -60,7 +60,7 @@ export function resolveConditionEdit(value:string,group:TemplateGroup,name:(id:s
 }){
  const version=group.syntax_version,{player_id:player,lineup_note_id:lineup}=group.scope;
  const playerName=player&&name(player),currentLineup=lineup&&name(lineup);
- const canonicalLineup=(title:string)=>version==='0.4'?lineupName(title):title;
+ const canonicalLineup=(title:string)=>keyedTemplateSyntax(version)?lineupName(title):title;
  const original=effectiveExpression(playerName,currentLineup,group.expression??'',version);
  if(value.trim()===original.trim())return {scope:group.scope,expression:group.expression??''};
  const parsed=parseFileConditionText(value,version);

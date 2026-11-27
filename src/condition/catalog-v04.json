@@ -1,5 +1,5 @@
 {
-  "syntax_version": "0.4",
+  "syntax_version": "0.5",
   "hero_fields": ["等级", "阵营", "觉醒进度", "已觉醒", "装备列表", "英雄定位", "英雄阵容定位"],
   "hero_paths": ["英雄", "原英雄", "目标英雄", "主C", "最高等级英雄"],
   "roots": {
@@ -40,6 +40,7 @@
     "对局": {
       "当前回合数": "int",
       "当前阶段": "string",
+      "比赛阶段": "string",
       "玩家列表": "Array<玩家>"
     },
     "卡牌": {
@@ -162,12 +163,14 @@
       ]
     },
     "解释为何合成英雄": {
+      "project_extension": true,
       "action": "合成英雄",
       "key": [
         "英雄"
       ]
     },
     "解释为何从手牌出售英雄": {
+      "project_extension": true,
       "action": "出售英雄",
       "key": [
         "英雄"
@@ -303,24 +306,28 @@
       ]
     },
     "解释为何购买效果牌": {
+      "project_extension": true,
       "action": "购买",
       "key": [
         "选中"
       ]
     },
     "解释为何选择棋手技能": {
+      "project_extension": true,
       "action": "选择",
       "key": [
         "选中"
       ]
     },
     "解释为何使用棋手技能": {
+      "project_extension": true,
       "action": "使用棋手技能",
       "key": [
         "卡牌"
       ]
     },
     "解释为何对目标使用棋手技能": {
+      "project_extension": true,
       "action": "对目标使用棋手技能",
       "key": [
         "卡牌"

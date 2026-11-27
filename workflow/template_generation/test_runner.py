@@ -26,7 +26,7 @@ class RunnerTest(unittest.TestCase):
         self.bad = set()
         self.points = [
             {"id": pid, "source_refs": [{"quote": "场上搭档", "location": "第一句"}],
-             "related_ids": [], "knowledge": pid}
+             "related_refs": [], "related_ids": [], "prerequisite": pid, "type": "联动", "knowledge": pid}
             for pid in ("甲", "乙")]
         self.barrier = threading.Barrier(2, timeout=10)
         replacements = (("prepare", self.prepare), ("validate", self.validate), ("assemble", self.assemble))
@@ -64,14 +64,18 @@ class RunnerTest(unittest.TestCase):
         elif stage == "enrich":
             if self.calls.count(pair) == 1:
                 self.barrier.wait()
-            data = {"point_id": pid, "scope": "限定阵容"}
+            data = {"point_id": pid, "scope": "限定阵容", "knowledge": point["knowledge"]}
         elif stage == "events":
-            data = {"point_id": pid, "events": [{"id": "buy"}]}
+            data = {"point_id": pid, "events": [{"id": "buy", "event": "解释为何购买英雄", "expected": "说明联动"}]}
         elif stage == "conditions":
-            data = {"point_id": pid, "conditions": [{"id": "partner", "event_id": "buy",
-                                                     "scope": args["previous"]["enrich"]["scope"]}]}
+            data = {"point_id": pid, "conditions": [{
+                "id": "partner", "event_id": "buy", "scope": {}, "expression": "我方.回合数 == 1",
+                "lineup": args["previous"]["enrich"]["scope"], "reason": "第一回合有搭档",
+                "limited": "第一回合", "not_limited": "后续商店", "expected": "介绍联动", "wording": "描述机会"}]}
         else:
-            data = {"point_id": pid, "text": args["previous"]["conditions"]["conditions"][0]["scope"]}
+            data = {"point_id": pid, "text": args["previous"]["conditions"]["conditions"][0]["lineup"],
+                    "groups": [{"condition_id": "partner", "writing": {
+                        "limited": "第一回合", "not_limited": "后续商店", "expected": "介绍联动", "wording": "描述机会"}}]}
         return json.dumps(data, ensure_ascii=False)
 
     @staticmethod
@@ -104,21 +108,26 @@ class RunnerTest(unittest.TestCase):
         self.assertFalse(self.output.exists())
         invalid = self.revise("enrich", {"scope": "缺证据"}, "甲", expected=1)
         self.assertIn("scope 无效", invalid)
-        self.revise("enrich", {"point_id": "甲", "scope": "已上场搭档"}, "甲")
+        self.revise("enrich", {"point_id": "甲", "scope": "已上场搭档", "knowledge": "解释搭档如何联动"}, "甲")
         self.invoke("resume")
         detail = run.read(self.sidecar)
+        self.assertEqual(2, detail["schema_version"])
+        self.assertNotIn("nodes", detail)
         self.assertEqual(detail["library_sha256"], run.digest(self.output.read_bytes()))
-        sentence = detail["groups"]["组甲"]["sentences"]["句甲"]
-        self.assertEqual(sentence["text"], "已上场搭档")
-        self.assertEqual([detail["nodes"][k]["stage"] for k in sentence["node_ids"]], list(run.STAGES))
-        node = detail["nodes"]["enrich:甲"]
+        group = detail["groups"]["组甲"]
+        self.assertEqual(group["sentences"]["句甲"], "已上场搭档")
+        self.assertEqual(set(group["prompt_ids"]), set(run.nodes.STAGES))
+        self.assertEqual(detail["points"]["甲"]["knowledge"], "解释搭档如何联动")
+        self.assertEqual(detail["library_name"], self.output.name)
+        state = run.Run(self.directory)
+        node = run.read(state.node_path("enrich", "甲"))
         self.assertEqual(node["selected_version"], "r2")
         self.assertEqual(json.loads(node["attempts"][0]["raw"])["scope"], "限定阵容")
         self.assertIn("scope", node["revisions"][0]["error"])
-        downstream = detail["nodes"]["events:甲"]
-        self.assertIn("已上场搭档", downstream["attempts"][0]["prompt"])
+        downstream = run.read(state.node_path("events", "甲"))
+        self.assertIn("已上场搭档", detail["prompts"][group["prompt_ids"]["events"]])
         self.assertEqual(downstream["input"]["versions"]["enrich:甲"], "r2")
-        self.assertEqual(detail["groups"]["组乙"]["sentences"]["句乙"]["text"], "限定阵容")
+        self.assertEqual(detail["groups"]["组乙"]["sentences"]["句乙"], "限定阵容")
         self.assertEqual(len(self.calls), 9)
         self.invoke("resume")
         self.assertEqual(len(self.calls), 9)
@@ -127,17 +136,70 @@ class RunnerTest(unittest.TestCase):
         self.bad.add(("conditions", "甲"))
         error = self.invoke("start", expected=1)
         self.assertIn("conditions:甲", error)
+        self.assertIn(("phrases", "乙"), self.calls)
+        self.assertNotIn(("phrases", "甲"), self.calls)
         self.assertFalse(self.output.exists())
         self.bad.clear()
         self.invoke("resume")
         self.assertEqual(self.calls.count(("conditions", "乙")), 1)
-        attempts = run.read(self.sidecar)["nodes"]["conditions:甲"]["attempts"]
+        self.assertEqual(self.calls.count(("phrases", "乙")), 1)
+        attempts = run.read(run.Run(self.directory).node_path("conditions", "甲"))["attempts"]
         self.assertEqual([a["id"] for a in attempts], ["a1", "a2"])
         self.assertEqual(attempts[0]["raw"], "bad JSON")
         self.assertTrue(attempts[0]["error"])
         self.assertEqual(attempts[1]["repairs"], "a1")
         feedback = json.loads(attempts[1]["prompt"].splitlines()[-1])
         self.assertEqual(feedback, {"error": attempts[0]["error"], "raw": attempts[0]["raw"]})
+
+    def test_revision_after_failed_model_reply_keeps_prompt(self):
+        self.barrier = threading.Barrier(1)
+        self.bad.add(("enrich", "甲"))
+        self.invoke("start", expected=1)
+        self.revise("enrich", {"point_id": "甲", "scope": "已上场搭档", "knowledge": "修订知识"}, "甲")
+        self.invoke("resume")
+        trace = run.read(self.sidecar)
+        group = trace["groups"]["组甲"]
+        self.assertEqual(group["prompt_ids"]["enrich"], "enrich:甲/a1")
+        self.assertEqual(trace["points"]["甲"]["knowledge"], "修订知识")
+
+    def test_short_phrase_batch_retries_only_its_branch(self):
+        validate = run.nodes.validate
+        phrase_attempts = []
+
+        def retry_one(stage, result, previous, *, after_retry=False):
+            if stage == "phrases" and result["point_id"] == "甲":
+                phrase_attempts.append(after_retry)
+                if not after_retry:
+                    raise run.nodes.InsufficientPhrases("只筛出 5 条")
+            return validate(stage, result, previous)
+
+        with patch.object(run.nodes, "validate", retry_one):
+            self.invoke("start")
+        self.assertEqual(phrase_attempts, [False, True])
+        self.assertEqual(self.calls.count(("phrases", "甲")), 2)
+        self.assertEqual(self.calls.count(("phrases", "乙")), 1)
+        state = run.Run(self.directory)
+        attempts = run.read(state.node_path("phrases", "甲"))["attempts"]
+        self.assertEqual(attempts[-1]["repairs"], "a1")
+        trace = run.read(self.sidecar)
+        self.assertEqual(trace["groups"]["组甲"]["prompt_ids"]["phrases"], "phrases:甲/a2")
+
+    def test_missing_base_retries_conditions_with_local_feedback(self):
+        validate = run.nodes.validate
+
+        def require_base(stage, result, previous):
+            if stage == "conditions" and result["point_id"] == "甲" and self.calls.count((stage, "甲")) == 1:
+                raise run.nodes.ConditionCoverageError("具备可表达的基础收益但缺少基础组")
+            return validate(stage, result, previous)
+
+        with patch.object(run.nodes, "validate", require_base):
+            self.invoke("start")
+        state = run.Run(self.directory)
+        attempts = run.read(state.node_path("conditions", "甲"))["attempts"]
+        self.assertEqual(len(attempts), 2)
+        self.assertEqual(attempts[1]["repairs"], attempts[0]["id"])
+        self.assertIn(attempts[0]["error"], attempts[1]["prompt"])
+        self.assertEqual(self.calls.count(("conditions", "乙")), 1)
 
     def test_failed_run_retains_pending_review_barrier_on_resume(self):
         self.bad.add(("identify", None))
@@ -155,6 +217,7 @@ class RunnerTest(unittest.TestCase):
     def test_identify_revision_invalidates_only_changed_branch(self):
         self.invoke("start", "--pause-after", "conditions")
         self.points[0]["knowledge"] = "修订知识"
+        self.points[0]["prerequisite"] = "修订前提"
         self.revise("identify", {"points": self.points})
         self.assertIn("识别结果已修订", self.revise("conditions", {}, "甲", expected=1))
         self.invoke("resume")
@@ -162,8 +225,10 @@ class RunnerTest(unittest.TestCase):
             self.assertEqual(self.calls.count((stage, "甲")), 2)
             self.assertEqual(self.calls.count((stage, "乙")), 1)
         detail = run.read(self.sidecar)
-        self.assertEqual(detail["groups"]["组甲"]["sentences"]["句甲"]["node_versions"]["identify"], "r1")
-        self.assertEqual(detail["groups"]["组乙"]["sentences"]["句乙"]["node_versions"]["identify"], "a1")
+        self.assertEqual(detail["groups"]["组甲"]["knowledge_list_id"], "r1")
+        self.assertEqual(detail["groups"]["组乙"]["knowledge_list_id"], "a1")
+        self.assertEqual(detail["knowledge_lists"]["r1"][0]["prerequisite"], "修订前提")
+        self.assertEqual(detail["knowledge_lists"]["a1"][0]["prerequisite"], "甲")
 
     def test_provider_reply_wrappers_do_not_hide_prose_or_extra_objects(self):
         wrapped = '</think>\n```json\n{"point_id":"甲"}\n```'
@@ -177,9 +242,8 @@ class RunnerTest(unittest.TestCase):
         with patch.object(run, "resource_versions", return_value={"prompts/identify.md": "changed"}):
             self.invoke("resume")
         self.assertEqual(self.calls.count(("identify", None)), 2)
-        detail = run.read(self.sidecar)
-        self.assertEqual(len(detail["resource_versions"]), 2)
-        identify = detail["nodes"]["identify"]
+        self.assertEqual(len(run.read(self.directory / "run.json")["resource_versions"]), 2)
+        identify = run.read(run.Run(self.directory).node_path("identify", None))
         self.assertEqual(identify["selected_version"], "a2")
         self.assertNotEqual(*(a["resource_version"] for a in identify["attempts"]))
 

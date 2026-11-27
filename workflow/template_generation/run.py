@@ -14,10 +14,10 @@ from tempfile import NamedTemporaryFile
 from uuid import uuid4
 
 if __package__:
-    from . import nodes, providers
+    from . import base_library, nodes, providers, scenario_discovery, seed_nodes
 else:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-    from workflow.template_generation import nodes, providers
+    from workflow.template_generation import base_library, nodes, providers, scenario_discovery, seed_nodes
 
 
 BRANCH_STAGES = ("enrich", "events", "conditions", "phrases")
@@ -102,9 +102,11 @@ def now():
 
 def resource_versions():
     base = Path(__file__).resolve().parent
-    return {p.relative_to(base).as_posix(): digest(p.read_bytes())
-            for folder in ("prompts", "references", "knowledge")
-            for p in sorted((base / folder).rglob("*")) if p.is_file()}
+    resources = {p.relative_to(base).as_posix(): digest(p.read_bytes())
+                 for folder in ("prompts", "references", "knowledge")
+                 for p in sorted((base / folder).rglob("*")) if p.is_file()}
+    resources["src/condition/catalog-v04.json"] = digest(encoded(nodes.catalog()))
+    return resources
 
 
 class Run:
@@ -118,6 +120,32 @@ class Run:
         self.resource_version = digest(encoded(resources))
         self.generation_version = digest(encoded({k: v for k, v in resources.items() if k != "prompts/repair.md"}))
         self.manifest.setdefault("resource_versions", {})[self.resource_version] = resources
+        self.base = None
+        self.base_trace = None
+        if "base_library_sha256" in self.manifest:
+            snapshot = (directory / "base-library.json").read_bytes()
+            if digest(snapshot) != self.manifest["base_library_sha256"]:
+                raise ValueError("运行目录中的已有库与初始版本不一致")
+            self.base = base_library.migrate(parse_json(snapshot.decode("utf-8-sig")))
+            if "base_trace_sha256" in self.manifest:
+                trace = (directory / "base-trace.json").read_bytes()
+                if digest(trace) != self.manifest["base_trace_sha256"]:
+                    raise ValueError("运行目录中的历史溯源与初始版本不一致")
+                self.base_trace = parse_json(trace.decode("utf-8-sig"))
+        self.local_replies = None
+        if "local_replies_sha256" in self.manifest:
+            snapshot = (directory / "local-replies.json").read_bytes()
+            if digest(snapshot) != self.manifest["local_replies_sha256"]:
+                raise ValueError("本地节点回复和运行快照不一致")
+            self.local_replies = parse_json(snapshot.decode("utf-8-sig"))
+
+    def signature(self, inputs):
+        versions = [self.generation_version]
+        if self.local_replies is not None:
+            versions.append(self.manifest["local_replies_sha256"])
+        if "seed" in inputs.get("previous", {}) or "base_library_sha256" in inputs:
+            versions.extend(digest(Path(module.__file__).read_bytes()) for module in (base_library, seed_nodes))
+        return digest(encoded([inputs, *versions]))
 
     def status(self, status, **details):
         self.manifest.update(status=status, checkpoint=details)
@@ -134,7 +162,7 @@ class Run:
         key = node_key(stage, point_id)
         record = read(path) if path.exists() else dict(
             id=key, stage=stage, point_id=point_id, attempts=[], revisions=[])
-        signature = digest(encoded([inputs, self.generation_version]))
+        signature = self.signature(inputs)
         same_input = record.get("signature") == signature
         if same_input and record.get("selected_version"):
             return record
@@ -152,7 +180,10 @@ class Run:
                 attempt["kind"] = "code"
             else:
                 attempt.update(kind="model", provider=self.manifest["provider"], model=self.manifest["model"])
-                prompt = nodes.prepare(stage, inputs.get("source", ""), inputs.get("point"), inputs["previous"])
+                handler = seed_nodes if "seed" in inputs["previous"] else nodes
+                prompt = handler.prepare(stage, inputs.get("source", ""), inputs.get("point"), inputs["previous"])
+                if self.local_replies is not None and stage == "phrases":
+                    prompt += "\n\n本地审编回复直接提交 6 条已逐句审读的话术及其依据。"
                 if previous.get("error") and "raw" in previous:
                     repair = Path(__file__).with_name("prompts") / "repair.md"
                     failure = {"error": previous["error"], "raw": previous["raw"]}
@@ -160,14 +191,28 @@ class Run:
                     attempt["repairs"] = previous["id"]
                 attempt["prompt"] = prompt
                 save(path, record)
-                raw = providers.generate(attempt["provider"], attempt["model"], prompt)
+                if self.local_replies is None:
+                    raw = providers.generate(attempt["provider"], attempt["model"], prompt)
+                else:
+                    attempt["kind"] = "local_reply"
+                    if key not in self.local_replies:
+                        raise ValueError(f"缺少本地节点回复：{key}")
+                    raw = encoded(self.local_replies[key]).decode()
                 attempt["raw"] = raw
                 attempt["parsed"] = parse_reply(raw)
-                output = nodes.validate(stage, attempt["parsed"], inputs["previous"])
+                if previous.get("insufficient_phrases"):
+                    output = handler.validate(stage, attempt["parsed"], inputs["previous"], after_retry=True)
+                else:
+                    output = handler.validate(stage, attempt["parsed"], inputs["previous"])
             attempt["output"] = output
             record.update(output=output, selected_version=attempt["id"])
         except Exception as error:
             attempt["error"] = str(error)
+            if isinstance(error, nodes.InsufficientPhrases):
+                attempt["insufficient_phrases"] = True
+                raise
+            if isinstance(error, nodes.ConditionCoverageError):
+                raise
             raise ValueError(f"{key} / {attempt['id']}：{error}") from error
         finally:
             attempt["finished"] = now()
@@ -184,29 +229,32 @@ class Run:
             raise ValueError("识别节点无需 --point，分支节点必须指定 --point")
         path = self.node_path(stage, point_id)
         record = read(path)
-        if record["signature"] != digest(encoded([record["input"], self.generation_version])):
+        if record["signature"] != self.signature(record["input"]):
             raise ValueError("节点资料已更新，请先恢复运行至该节点再修订")
         if point_id is not None:
-            identify = read(self.node_path("identify", None))
-            current = {p["id"]: p for p in identify["output"]["points"]}
             enrich = read(self.node_path("enrich", point_id))
             previous = enrich["input"]["previous"]
-            if current.get(point_id) != previous["point"] or any(
-                    current.get(p["id"]) != p for p in previous["related_points"]):
-                raise ValueError("识别结果已修订，请先恢复运行至该节点再修订")
+            if "seed" not in previous:
+                identify = read(self.node_path("identify", None))
+                current = {p["id"]: p for p in identify["output"]["points"]}
+                if current.get(point_id) != previous["point"] or any(
+                        current.get(p["id"]) != p for p in previous["related_points"]):
+                    raise ValueError("识别结果已修订，请先恢复运行至该节点再修订")
             for earlier in BRANCH_STAGES[:BRANCH_STAGES.index(stage)]:
                 ancestor = read(self.node_path(earlier, point_id))
                 if record["input"]["versions"][node_key(earlier, point_id)] != ancestor["selected_version"]:
                     raise ValueError("上游结果已修订，请先恢复运行至该节点再修订")
         revision = {"id": f"r{len(record['revisions']) + 1}", "time": now(), "resource_version": self.resource_version,
-                    "replaces": record["selected_version"], "input": record["input"],
+                    "replaces": record["selected_version"] or record["attempts"][-1]["id"], "input": record["input"],
                     "raw": file.read_text(encoding="utf-8-sig")}
         if stage == "enrich":
             revision["upstream_versions"] = record["attempts"][-1]["upstream_versions"]
         record["revisions"].append(revision)
         try:
             revision["parsed"] = parse_json(revision["raw"])
-            revision["output"] = nodes.validate(stage, revision["parsed"], record["input"]["previous"])
+            previous = record["input"]["previous"]
+            handler = seed_nodes if "seed" in previous else nodes
+            revision["output"] = handler.validate(stage, revision["parsed"], previous)
             record.update(output=revision["output"], selected_version=revision["id"])
         except Exception as error:
             revision["error"] = str(error)
@@ -226,7 +274,7 @@ class Run:
             if digest(detail) == pending:
                 # Recover the exact staged pair even if the prompts changed after the first link.
                 data = json.loads(detail)
-                library = encoded(data["nodes"]["assemble"]["output"]["library"])
+                library = encoded(read(self.node_path("assemble", None))["output"]["library"])
                 if digest(library) != data["library_sha256"]:
                     raise ValueError("待发布的溯源与主库摘要不一致")
                 self.publish(library, detail)
@@ -243,81 +291,150 @@ class Run:
             return False
 
         identify_input = {"source": self.source, "previous": {"source": self.source}}
+        segments = None
+        if self.base is not None:
+            segments = scenario_discovery.source_segments(self.source)
+            identify_input["previous"]["segments"] = segments
         identify = self.evaluate("identify", None, identify_input)
         records["identify"] = identify
         if checkpoint("identify"):
             return
         points = {p["id"]: p for p in identify["output"]["points"]}
+        seeds = {}
+        base_groups = {}
+        if self.base is not None:
+            for group in self.base["groups"]:
+                base_groups[group["id"]] = {key: value for key, value in group.items() if key in {
+                    "id", "name", "event_name", "extra_key", "scope", "expression", "priority",
+                    "instruction", "ignored", "publication_hold"}}
+                if not group["utterances"]:
+                    point = base_library.seed_point(group, self.source)
+                    if point["id"] in points:
+                        raise ValueError("知识点 ID 与已有空组冲突：" + point["id"])
+                    points[point["id"]] = point
+                    seeds[point["id"]] = group
         split_input = {"run_id": self.manifest["run_id"], "versions": {"identify": identify["selected_version"]},
-                       "points": identify["output"]["points"]}
+                       "points": list(points.values())}
         split = self.evaluate("split", None, split_input, lambda: [
             {"run_id": self.manifest["run_id"], "point_id": pid,
              "knowledge_version": digest(encoded(point)), "identify_version": identify["selected_version"],
-             "source_refs": point["source_refs"]}
+             "source_refs": point["source_refs"], **({"base_group_id": seeds[pid]["id"]} if pid in seeds else {})}
             for pid, point in points.items()])
         records["split"] = split
         if checkpoint("split"):
             return
-        branches = {pid: {"point": point} for pid, point in points.items()}
+        pause_stage = self.manifest.get("pause_after")
+        branch_stages = BRANCH_STAGES
+        if pause_stage in BRANCH_STAGES:
+            branch_stages = BRANCH_STAGES[:BRANCH_STAGES.index(pause_stage) + 1]
 
-        def branch(stage, pid):
-            branch_data = branches[pid]
+        def branch(pid):
             point = points[pid]
-            previous = dict(branch_data)
-            inputs = {"point": point, "previous": previous,
-                      "versions": {node_key(s, pid): records[node_key(s, pid)]["selected_version"]
-                                   for s in BRANCH_STAGES if s in branch_data}}
-            if stage == "enrich":
-                previous["source"] = inputs["source"] = self.source
-                previous["related_points"] = [points[k] for k in point["related_ids"]]
-                # An edit to an unrelated point must not resend this branch to the model.
-                return self.evaluate(stage, pid, inputs, upstream_versions={
-                    "identify": identify["selected_version"], "split": split["selected_version"]})
-            return self.evaluate(stage, pid, inputs)
+            branch_data = {"point": point}
+            if self.local_replies is not None:
+                branch_data["local_replies"] = True
+            if pid in seeds:
+                branch_data["seed"] = seeds[pid]
+            elif self.base is not None:
+                branch_data["scenario_discovery"] = True
+            branch_records = {}
+            for stage in branch_stages:
+                previous = dict(branch_data)
+                inputs = {"point": point, "previous": previous,
+                          "versions": {key: record["selected_version"] for key, record in branch_records.items()}}
+                upstream_versions = None
+                if stage == "enrich":
+                    previous["source"] = inputs["source"] = self.source
+                    previous["related_points"] = [points[k] for k in point["related_ids"]]
+                    # An edit to an unrelated point must not resend this branch to the model.
+                    upstream_versions = {"identify": identify["selected_version"], "split": split["selected_version"]}
+                if stage == "conditions" and pid not in seeds and base_groups:
+                    event_names = {row["event"] for row in previous["events"]["events"]}
+                    branch_data["base_groups"] = previous["base_groups"] = {
+                        gid: group for gid, group in base_groups.items() if group["event_name"] in event_names}
+                try:
+                    result = self.evaluate(stage, pid, inputs, upstream_versions=upstream_versions)
+                except (nodes.InsufficientPhrases, nodes.ConditionCoverageError):
+                    result = self.evaluate(stage, pid, inputs, upstream_versions=upstream_versions)
+                except ValueError:
+                    if self.base is None:
+                        raise
+                    last = read(self.node_path(stage, pid))["attempts"][-1]
+                    if "raw" not in last:
+                        raise
+                    result = self.evaluate(stage, pid, inputs, upstream_versions=upstream_versions)
+                branch_records[result["id"]] = result
+                branch_data[stage] = result["output"]
+            return branch_data, branch_records
 
+        branches = {}
+        errors = {}
         with ThreadPoolExecutor(max_workers=self.manifest["jobs"]) as pool:
-            for stage in BRANCH_STAGES:
-                errors = []
-                futures = {pool.submit(branch, stage, pid): pid for pid in points}
-                for future in as_completed(futures):
-                    pid = futures[future]
-                    try:
-                        result = future.result()
-                    except Exception as error:
-                        errors.append(str(error))
-                        continue
-                    records[result["id"]] = result
-                    branches[pid][stage] = result["output"]
-                if errors:
-                    raise ValueError("\n".join(errors))
-                if checkpoint(stage):
-                    return
+            futures = {pool.submit(branch, pid): pid for pid in points}
+            for future in as_completed(futures):
+                pid = futures[future]
+                try:
+                    branches[pid], branch_records = future.result()
+                except Exception as error:
+                    errors[pid] = str(error)
+                    continue
+                records.update(branch_records)
+        if errors:
+            raise ValueError("\n".join(errors[pid] for pid in points if pid in errors))
+        if checkpoint(branch_stages[-1]):
+            return
+        branches = {pid: branches[pid] for pid in points}
 
         def assemble():
-            library, links = nodes.assemble(branches)
-            groups = trace_groups(library, links, branches)
-            return {"library": library, "groups": groups}
+            if self.base is None:
+                library, links = nodes.assemble(branches)
+                return {"library": library, "groups": trace_groups(library, links, branches)}
+            discovered, links, checks = nodes.assemble(
+                {pid: row for pid, row in branches.items() if pid not in seeds}, defer_playability=True)
+            fills, filled_links, fixed_checks = seed_nodes.collect({pid: branches[pid] for pid in seeds})
+            library, duplicates = base_library.merge(self.base, fills, discovered)
+            discovered_links = dict(links)
+            for gid in duplicates:
+                del links[gid]
+            refinements = {}
+            for gid, sentences in links.items():
+                link = next(iter(sentences.values()))
+                conditions = branches[link["point_id"]]["conditions"]["conditions"]
+                condition = next(row for row in conditions if row["id"] == link["condition_id"])
+                if "base_group_id" in condition:
+                    refinements[gid] = condition["base_group_id"]
+            links.update(filled_links)
+            base_library.validate_library(library)
+            base_library.check_playability(library, {**checks, **fixed_checks}, refinements)
+            retained = [g["id"] for g in self.base["groups"] if g["utterances"]]
+            groups = trace_groups(library, links, branches, retained=retained)
+            coverage = scenario_discovery.report(segments, identify["output"]["coverage"], branches, links,
+                                                 discovered_links, duplicates, refinements)
+            return {"library": library, "groups": groups, "duplicate_groups": duplicates,
+                    "retained_groups": retained, "coverage": coverage}
 
         versions = {key: records[key]["selected_version"] for key in sorted(records)}
-        result = self.evaluate("assemble", None, {"branches": branches, "versions": versions}, assemble)
+        assemble_input = {"branches": branches, "versions": versions}
+        if self.base is not None:
+            assemble_input["base_library_sha256"] = self.manifest["base_library_sha256"]
+        result = self.evaluate("assemble", None, assemble_input, assemble)
         records["assemble"] = result
         if checkpoint("assemble"):
             return
         library = encoded(result["output"]["library"])
-        groups = {}
-        for gid, group in result["output"]["groups"].items():
-            sentences = {}
-            for sid, sentence in group["sentences"].items():
-                selected = {key: records[key]["selected_version"] for key in sentence["node_ids"]}
-                enrich = records[node_key("enrich", sentence["point_id"])]
-                # Unchanged branches may still use an earlier identification/split attempt.
-                selected.update(enrich["attempts"][-1]["upstream_versions"])
-                sentences[sid] = {**sentence, "node_versions": selected}
-            groups[gid] = {"sentences": sentences}
-        detail = {"schema_version": 1, "run_id": self.manifest["run_id"],
-                  "library_sha256": digest(library), "source_name": self.manifest["source_name"],
-                  "resource_versions": self.manifest["resource_versions"], "groups": groups,
-                  "nodes": {key: records[key] for key in sorted(records)}}
+        detail = review_trace(self.manifest, library, result["output"]["groups"], branches, records)
+        if self.local_replies is not None:
+            detail["local_replies_sha256"] = self.manifest["local_replies_sha256"]
+        if self.base is not None:
+            retained_ids = set(result["output"]["retained_groups"])
+            inherited = base_library.inherit_trace(detail, self.base_trace,
+                [group for group in self.base["groups"] if group["id"] in retained_ids])
+            detail["base_library"] = {"name": self.manifest["base_library_name"],
+                                     "sha256": self.manifest["base_library_sha256"],
+                                     "duplicate_groups": result["output"]["duplicate_groups"],
+                                     "retained_with_history": sorted(inherited),
+                                     "retained_without_new_trace": sorted(retained_ids - inherited)}
+            detail["coverage"] = result["output"]["coverage"]
         detail_bytes = encoded(detail)
         self.manifest["publishing"] = digest(detail_bytes)
         self.status("publishing")
@@ -346,10 +463,12 @@ class Run:
                     raise ValueError(f"另一运行已占用输出文件：{path}")
 
 
-def trace_groups(library, links, branches):
+def trace_groups(library, links, branches, *, retained=()):
     groups = {}
     for group in library["groups"]:
         gid = group["id"]
+        if gid in retained:
+            continue
         sentences = {}
         for utterance in group["utterances"]:
             sid = utterance["id"]
@@ -360,23 +479,100 @@ def trace_groups(library, links, branches):
             condition = next((c for c in branch["conditions"]["conditions"] if c["id"] == link["condition_id"]), None)
             if not event or not condition or condition["event_id"] != event["id"] or sid in sentences:
                 raise ValueError(f"句级溯源不完整：{gid} / {sid}")
-            ids = ["identify", "split", *(node_key(s, pid) for s in BRANCH_STAGES), "assemble"]
-            sentences[sid] = {**link, "node_ids": ids, "text": utterance["text"]}
+            sentences[sid] = {**link, "text": utterance["text"]}
         if not sentences or gid in groups or sentences.keys() != links[gid].keys():
             raise ValueError(f"组级溯源不完整：{gid}")
         groups[gid] = {"sentences": sentences}
-    if not groups or groups.keys() != links.keys():
+    if (not groups and not retained) or groups.keys() != links.keys():
         raise ValueError("组目录与溯源索引不一致")
     return groups
 
 
+def review_trace(manifest, library, groups, branches, records):
+    """Project the adopted model outputs. Full attempts stay in the run directory."""
+    details = {"schema_version": 2, "run_id": manifest["run_id"],
+               "library_name": Path(manifest["output"]).name, "library_sha256": digest(library),
+               "knowledge_lists": {}, "prompts": {}, "points": {}, "groups": {}}
+
+    def version(key, version_id):
+        record = records[key]
+        return next(row for row in (*record["attempts"], *record["revisions"]) if row["id"] == version_id)
+
+    def prompt_id(key, adopted):
+        while "replaces" in adopted:
+            if adopted.get("manual_only"):
+                return None
+            adopted = version(key, adopted["replaces"])
+        if "prompt" not in adopted:
+            return None
+        ref = f"{key}/{adopted['id']}"
+        details["prompts"][ref] = adopted["prompt"]
+        return ref
+
+    def knowledge_item(point, points):
+        related = [*point["related_refs"],
+                   *(ref for pid in point["related_ids"] for ref in points[pid]["source_refs"])]
+        return {"original": "\n".join(ref["quote"] for ref in point["source_refs"]),
+                "type": point["type"], "prerequisite": point["prerequisite"],
+                "related_knowledge": "\n".join(dict.fromkeys(ref["quote"] for ref in related))}
+
+    def pick(row, *fields):
+        return {field: row[field] for field in fields}
+
+    prompts_by_point = {}
+    for pid, branch in branches.items():
+        adopted = {}
+        for stage in BRANCH_STAGES:
+            key = node_key(stage, pid)
+            adopted[stage] = version(key, records[key]["selected_version"])
+        prompts = {stage: prompt_id(node_key(stage, pid), row) for stage, row in adopted.items()}
+        if "seed" in branch:
+            identify_id = pid
+            details["knowledge_lists"][identify_id] = [knowledge_item(branch["point"], {})]
+        else:
+            identify_id = adopted["enrich"]["upstream_versions"]["identify"]
+            identification = version("identify", identify_id)
+            if identify_id not in details["knowledge_lists"]:
+                points = {point["id"]: point for point in identification["output"]["points"]}
+                details["knowledge_lists"][identify_id] = [knowledge_item(point, points) for point in points.values()]
+            prompts["identify"] = prompt_id("identify", identification)
+        prompts_by_point[pid] = identify_id, {stage: ref for stage, ref in prompts.items() if ref is not None}
+        details["points"][pid] = {
+            "type": branch["point"]["type"],
+            "knowledge": branch["enrich"]["knowledge"],
+            "events": [pick(row, "id", "event", "expected") for row in branch["events"]["events"]],
+            "conditions": [
+                {**pick(row, "id", "event_id", "reason", "limited", "not_limited", "expected", "wording"),
+                 **({"extra_key": row["extra_key"]} if "extra_key" in row else {}),
+                 "expression": nodes.effective_expression(row["scope"], row["expression"])}
+                for row in branch["conditions"]["conditions"]],
+            "rejected": branch["conditions"].get("rejected", []),
+        }
+    for gid, group in groups.items():
+        sentences = group["sentences"]
+        first = next(iter(sentences.values()))
+        pid, cid = first["point_id"], first["condition_id"]
+        identify_id, prompts = prompts_by_point[pid]
+        phrases = next(row for row in branches[pid]["phrases"]["groups"] if row["condition_id"] == cid)
+        details["groups"][gid] = {
+            **pick(first, "point_id", "event_id", "condition_id"),
+            "knowledge_list_id": identify_id,
+            "prompt_ids": prompts,
+            "writing": phrases["writing"],
+            "sentences": {sid: row["text"] for sid, row in sentences.items()},
+        }
+    return details
+
+
 def parser():
-    cli = argparse.ArgumentParser(description="生成 v0.4 话术库并保留七个节点的输入、输出和修订。")
+    cli = argparse.ArgumentParser(description="生成 v0.5 话术库并保留七个节点的输入、输出和修订。")
     commands = cli.add_subparsers(dest="command", required=True)
     start = commands.add_parser("start", help="从文字稿新建运行")
     start.add_argument("source", type=Path)
     start.add_argument("--output", type=Path, required=True)
-    start.add_argument("--provider", default="codex", choices=("codex", "gemini", "openai"))
+    start.add_argument("--base-library", type=Path, help="加载已有 v0.4 或 v0.5 模板库，补全空组并追加新发现的组")
+    start.add_argument("--provider", default="codex", choices=("codex", "gemini", "openai", "local"))
+    start.add_argument("--local-replies", type=Path, help="使用本地审编节点回复 JSON，在本机跑同一套校验和发布")
     start.add_argument("--model", required=True)
     start.add_argument("--jobs", type=int, default=4)
     resume = commands.add_parser("resume", help="恢复暂停或失败的运行")
@@ -398,11 +594,40 @@ def main(argv=None):
         if args.command == "start":
             source = args.source.read_text(encoding="utf-8-sig")
             output = args.output.resolve()
+            base_meta = {}
+            base_trace = None
+            local_meta = {}
+            if (args.provider == "local") != bool(args.local_replies):
+                raise ValueError("需要同时指定 --provider local 和 --local-replies")
+            if args.local_replies:
+                local_snapshot = args.local_replies.read_bytes()
+                nodes._object(parse_json(local_snapshot.decode("utf-8-sig")), "本地节点回复")
+                local_meta = {"local_replies_sha256": digest(local_snapshot)}
+            if args.base_library:
+                base_path = args.base_library.resolve()
+                if base_path == output:
+                    raise ValueError("已有库与输出文件须使用不同路径")
+                snapshot = base_path.read_bytes()
+                base_library.validate_library(base_library.migrate(parse_json(snapshot.decode("utf-8-sig"))), draft=True)
+                base_meta = {"base_library_name": base_path.name, "base_library_sha256": digest(snapshot)}
+                prior_path = base_path.with_name(base_path.stem + "-detail.json")
+                if prior_path.is_file():
+                    candidate = prior_path.read_bytes()
+                    try:
+                        prior = parse_json(candidate.decode("utf-8-sig"))
+                    except (ValueError, UnicodeError):
+                        prior = None
+                    if (isinstance(prior, dict) and prior.get("schema_version") == 2
+                            and prior.get("library_name") == base_path.name
+                            and prior.get("library_sha256") == base_meta["base_library_sha256"]):
+                        base_trace = candidate
+                        base_meta["base_trace_sha256"] = digest(candidate)
             if output.suffix.lower() != ".json" or output.stem.lower().endswith("-detail"):
                 raise ValueError("输出须为主库 JSON 文件")
             if not source.strip() or args.jobs < 1 or not args.model.strip():
                 raise ValueError("需要非空文字稿、模型名称和至少一个并行任务")
-            if output == directory / "run.json" or output.is_relative_to(directory / "nodes"):
+            reserved = {"run.json", "base-library.json", "base-trace.json", "local-replies.json"}
+            if (output.parent == directory and output.name in reserved) or output.is_relative_to(directory / "nodes"):
                 raise ValueError("输出文件与运行记录冲突")
             directory.mkdir(parents=True, exist_ok=True)
         with run_lock(directory):
@@ -410,9 +635,16 @@ def main(argv=None):
                 if any(p.name != ".lock" for p in directory.iterdir()):
                     raise ValueError(f"新运行需要空目录：{directory}")
                 write_bytes(directory / "source.txt", source.encode())
+                if base_meta:
+                    write_bytes(directory / "base-library.json", snapshot)
+                if base_trace is not None:
+                    write_bytes(directory / "base-trace.json", base_trace)
+                if local_meta:
+                    write_bytes(directory / "local-replies.json", local_snapshot)
                 save(directory / "run.json", {"run_id": uuid4().hex, "status": "new", "source_name": args.source.name,
                                                "source_sha256": digest(source.encode()), "model": args.model,
-                                               "provider": args.provider, "jobs": args.jobs, "output": str(output)})
+                                               "provider": args.provider, "jobs": args.jobs, "output": str(output),
+                                               **base_meta, **local_meta})
             run = Run(directory)
             if args.command == "revise":
                 run.revise(args.stage, args.point, args.file)

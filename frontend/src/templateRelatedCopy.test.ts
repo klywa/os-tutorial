@@ -11,13 +11,13 @@ const makeGroup=(event:string,extra_key:string,expression:string,text:string):Te
 describe('举一反三',()=>{
  it('maps equipment conditions while retaining every utterance in order and its flags',()=>{
   const wear='解释为何穿戴装备',forge='解释为何铸造装备';
-  const source=makeGroup(wear,'吕布-冥王','动作.装备.名称 == "动作.装备"','穿戴冥王能增强承伤能力。');
+  const source=makeGroup(wear,'吕布-冥王','"动作.装备" in 动作.装备.标签','穿戴冥王能增强承伤能力。');
   source.utterances.push({id:'line2',text:'{{动作.目标英雄.名称}}更耐打。',ignored:true},
    {id:'line3',text:'穿戴冥王能增强承伤能力。',fixed:true});
   const copy=relatedCopy(source,wear,relatedEventDefinition(forge),[]);
   expect(copy).toMatchObject({kind:'new',group:{extra_key:'吕布-*-冥王',
    name:'解释为何将吕布的旧装备铸造成冥王',
-   expression:'动作.目标装备.名称 == "动作.装备"',
+   expression:'"动作.装备" in 动作.目标装备.标签',syntax_version:'0.5',
    review_status:null,explanation_source:'来源'}});
   expect(copy.group.utterances.map(({id,...row})=>row)).toEqual(source.utterances.map(({id,...row})=>row));
   expect(copy.group.utterances.every(row=>!source.utterances.some(original=>original.id===row.id))).toBe(true);

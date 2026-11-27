@@ -1,7 +1,7 @@
 import {invalidDirectPaths,TemplateUtteranceSlots} from './TemplateUtteranceSlots';
 import {UtteranceLength} from './TemplateUtterances';
-import {effectiveExpression,orderTemplateEvents,templateExplanationFields} from './templates';
-import {registeredEvent,slotToken,validateExtraKey,validateV04,validateV04Template,wildcardKey} from './templateV04';
+import {effectiveExpression,orderTemplateEvents,templateExplanationFields,upgradeKeyedGroup} from './templates';
+import {keyedTemplateSyntax,registeredEvent,slotToken,wildcardKey} from './templateV04';
 import {TemplateConditionPreview} from './TemplateConditionPreview';
 import ConditionTextEditor from './ConditionTextEditor';
 import {resolveConditionEdit} from './templateConditionText';
@@ -16,10 +16,27 @@ import NewTemplateParameter from './NewTemplateParameter';
 import type {Entity,Note} from './types';
 import {deriveTemplateEntities,parseConditionValue,placeholderKeys,templateExplanationLimit,templateId,valueText,type TemplateCondition,type TemplateEvent,type TemplateGroup,type TemplateParameter,type TemplateRange} from './templates';
 
-export function TemplateDialog({title,onClose,children,wide=false}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean}){
+export function TemplateDialog({title,onClose,children,wide=false,className=''}:{title:string;onClose:()=>void;children:ReactNode;wide?:boolean;className?:string}){
  const panel=useRef<HTMLElement>(null),closeRef=useRef(onClose);closeRef.current=onClose;
- useEffect(()=>{const previous=document.activeElement as HTMLElement;const node=panel.current;node?.querySelector<HTMLElement>('input,button,textarea,select')?.focus();function key(e:KeyboardEvent){if(e.key==='Escape'&&!e.isComposing&&e.keyCode!==229){e.preventDefault();closeRef.current();}if(e.key==='Tab'&&node){const focusable=Array.from(node.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),textarea:not(:disabled),select:not(:disabled),[tabindex="0"]'));const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus();}}}document.addEventListener('keydown',key);return()=>{document.removeEventListener('keydown',key);previous?.focus();};},[]);
- return <div className="template-overlay"><section ref={panel} className={'template-dialog '+(wide?'template-dialog-wide':'')} role="dialog" aria-modal="true" aria-label={title}><header><h2>{title}</h2><button type="button" aria-label={'关闭'+title} onClick={onClose}>×</button></header>{children}</section></div>;
+ useEffect(()=>{
+  const previous=document.activeElement as HTMLElement,node=panel.current;
+  node?.querySelector<HTMLElement>('input,button,textarea,select')?.focus();
+  function key(event:KeyboardEvent){
+   if(event.key==='Escape'&&!event.isComposing&&event.keyCode!==229){event.preventDefault();closeRef.current();}
+   if(event.key!=='Tab'||!node)return;
+   const focusable=Array.from(node.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),textarea:not(:disabled),select:not(:disabled),summary,[tabindex="0"]'))
+    .filter(element=>{
+     const container=element.matches('details > summary')?element.parentElement?.parentElement:element;
+     return element.getClientRects().length>0&&!container?.closest('details:not([open])');
+    });
+   const first=focusable[0],last=focusable.at(-1),active=document.activeElement;
+   if(event.shiftKey&&active===first){event.preventDefault();last?.focus();}
+   else if(!event.shiftKey&&active===last){event.preventDefault();first?.focus();}
+  }
+  document.addEventListener('keydown',key);
+  return ()=>{document.removeEventListener('keydown',key);previous?.focus();};
+ },[]);
+ return <div className="template-overlay"><section ref={panel} className={['template-dialog',wide?'template-dialog-wide':'',className].filter(Boolean).join(' ')} role="dialog" aria-modal="true" aria-label={title}><header><h2>{title}</h2><button type="button" aria-label={'关闭'+title} onClick={onClose}>×</button></header>{children}</section></div>;
 }
 export function ConditionInput({condition,parameter,onChange}:{condition:TemplateCondition;parameter?:TemplateParameter;onChange:(value:unknown)=>void}){
  const cards=useCards();if(!parameter)return <span className="error">请选择参数</span>;
@@ -94,7 +111,7 @@ export default function TemplateEditor({group,review=false,creating=false,embedd
   patch({utterances:draft.utterances.map(row=>row.id===input.dataset.id?{...row,text:row.text.slice(0,start)+token+row.text.slice(end)}:row)});
   requestAnimationFrame(()=>{input.focus();input.setSelectionRange(start+token.length,start+token.length);});
  }
- const v04=draft.syntax_version==='0.4';
+ const v04=keyedTemplateSyntax(draft.syntax_version);
  const boundName=(id:string|null)=>id?(fileTemplateScopeName('player',id)??fileTemplateScopeName('lineup',id)??players.find(row=>row.id===id)?.name??lineups.find(row=>row.id===id)?.title??archivedEntities.find(row=>row.id===id)?.name??scopeName?.(id)??id):null;
  const preview=effectiveExpression(boundName(draft.scope.player_id),boundName(draft.scope.lineup_note_id),draft.expression??renderRule(draft.condition_tree??emptyTree()),draft.syntax_version);
  const wordingBriefLength=Array.from(draft.wording_brief??'').length;
@@ -106,11 +123,6 @@ export default function TemplateEditor({group,review=false,creating=false,embedd
   if(draft.editor_mode!=='text'&&draft.condition_tree&&!completeTree(draft.condition_tree))throw new Error('请填写完整的条件，并为每个子组添加条件');
   if(!Number.isSafeInteger(draft.priority??0))throw new Error('优先级必须是整数');
   const conditions=draft.conditions.map(c=>{const p=event.parameters.find(p=>p.key===c.parameter_key);if(!p)throw new Error('条件引用了不存在的参数');const v=c.value,range=Array.isArray(v)?v:[];return {...c,value:parseConditionValue(p.type,c.operator,p.type==='entity'?String((v as {id?:string})?.id??''):String(c.operator==='between'?range[0]??'':v??''),p.type==='entity'?String((v as {name?:string})?.name??''):String(range[1]??''))};});
-  if(v04){
-   validateExtraKey(event.name,draft.extra_key??'');
-   validateV04(event.name,conditionText??preview);
-   for(const u of draft.utterances)validateV04Template(event.name,u.text);
-  }
   for(const u of v04?[]:draft.utterances){const unknown=placeholderKeys(u.text).filter(k=>!event.parameters.some(p=>p.key===k));if(unknown.length)throw new Error('话术引用未知参数：'+unknown.join('、'));}
   if(localFile&&!v04){
    const invalid=draft.utterances.flatMap(({text})=>invalidDirectPaths(text,event,catalog));
@@ -118,7 +130,7 @@ export default function TemplateEditor({group,review=false,creating=false,embedd
   }
   setSaving(true);
   const condition=v04&&conditionText!==undefined?resolveConditionEdit(conditionText,draft,id=>boundName(id)??id,{fileMode:localFile,players,lineups}):{};
-  const value={...draft,...condition,name:draft.name.trim(),version:trimRange(draft.version),mode:trimRange(draft.mode),conditions};
+  const value=upgradeKeyedGroup({...draft,...condition,name:draft.name.trim(),version:trimRange(draft.version),mode:trimRange(draft.mode),conditions},event.name);
   const addedEvent=addedParameters.length?event:undefined;
   if(approve&&onSaveAndApprove)await onSaveAndApprove(value,addedEvent,!!formalConflict&&resolve);
   else await onSave(value,addedEvent,!!formalConflict&&resolve);onDirty?.(false);onClose();
@@ -143,7 +155,7 @@ export default function TemplateEditor({group,review=false,creating=false,embedd
   <label><span><input type="checkbox" checked={resolve} onChange={event=>setResolve(event.target.checked)}/> 使用下方条件作为合并结果</span></label>
  </div>}
  {v04?<section>
-  {!embedded&&<label>额外信息键<input value={draft.extra_key??''} placeholder={wildcardKey(event?.name??'')} onChange={e=>patch({extra_key:e.target.value})}/></label>}
+  {!embedded&&<label>额外信息键<input value={draft.extra_key??''} placeholder={wildcardKey(event?.name??'')} onChange={e=>patch({extra_key:e.target.value})}/><small>具体键段已锁定的参数不再写入条件。用 * 表示通配。</small></label>}
   <div><span>条件表达式</span><ConditionTextEditor key={draft.event_id} label="条件表达式" rows={5} value={conditionText??preview}
    config={{event,catalog,v04:true}} onChange={value=>setConditionText(value===preview?undefined:value)}/></div>
   <TemplateConditionPreview expression={conditionText??preview}/>

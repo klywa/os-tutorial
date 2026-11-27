@@ -1,6 +1,6 @@
 import {describe,expect,it} from 'vitest';
-import {parseTemplateFile} from './templateFile';
-import {validateExtraKey,validateV04,validateV04Template} from './templateV04';
+import {parseTemplateFile,previewTemplateFileExport} from './templateFile';
+import {catalogV04,validateExtraKey,validateV04,validateV04Template} from './templateV04';
 
 const event='解释为何转移装备';
 
@@ -40,5 +40,40 @@ describe('v0.4 template authoring',()=>{
   expect(result.groupErrors).toEqual([]);
   expect(result.snapshot.groups[0]).toMatchObject({syntax_version:'0.4',extra_key:'*-司空震-驱雷',
    utterances:[{id:'utterance1',fixed:true}]});
+ });
+});
+
+describe('v0.5 template authoring',()=>{
+ const event='解释为何购买英雄';
+ const parse=(extra_key:string,expression:string,syntax_version='0.5')=>parseTemplateFile(JSON.stringify({
+  kind:'speech-template-library',schema_version:3,events:[{name:event,parameters:[]}],
+  groups:[{id:'group1',name:'曹操登场',event_name:event,syntax_version,extra_key,expression,
+   utterances:[{id:'line1',text:'曹操可利用登场收益。',fixed:true}]}],
+ }));
+
+ it('rejects keyed names even under nesting and reversed equality',()=>{
+  for(const comparison of ['"曹操" == 动作.选中.名称','动作.选中.名称 in ["曹操"]']){
+   const result=parse('曹操',`我方.等级 > 4 or (${comparison})`);
+   expect(result.groupErrors[0]?.message).toMatch(/额外信息键.*重复/);
+  }
+ });
+
+ it('preserves IDs and flags while reading wildcard and legacy groups',()=>{
+  const expression='动作.选中.名称 == "曹操"';
+  for(const [key,version] of [['*','0.5'],['曹操','0.4']]){
+   const result=parse(key,expression,version);
+   expect(result.groupErrors).toEqual([]);
+   expect(result.snapshot.groups[0]).toMatchObject({id:'group1',syntax_version:version,expression,
+    utterances:[{id:'line1',fixed:true}]});
+  }
+ });
+
+ it('writes legacy groups as v0.5 when exporting into a keyed package',()=>{
+  const expression='动作.选中.名称 == "曹操" and 我方.等级 > 3';
+  const source=parse('曹操',expression,'0.4').document;
+  const existing=JSON.stringify({...source,groups:[],condition_catalog:catalogV04});
+  const result=previewTemplateFileExport(source,existing,'merge');
+  expect(result.document.groups).toMatchObject([{id:'group1',syntax_version:'0.5',
+   expression:'我方.等级 > 3',utterances:[{id:'line1',fixed:true}]}]);
  });
 });

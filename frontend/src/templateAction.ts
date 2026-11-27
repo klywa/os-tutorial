@@ -1,10 +1,11 @@
+import {keyedTemplateSyntax} from './templateV04';
 import {fixedArguments,resolveTemplateEntities,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter} from './templates';
 export {fixedArguments} from './templates';
 
 export function fileTriggerChanged(before:TemplateGroup,after:TemplateGroup,oldEvent?:TemplateEvent,nextEvent?:TemplateEvent){
  if(before.event_id!==after.event_id)return true;
- if(before.syntax_version==='0.4'||after.syntax_version==='0.4')
-  return before.syntax_version!==after.syntax_version||before.extra_key!==after.extra_key;
+ if(keyedTemplateSyntax(before.syntax_version)||keyedTemplateSyntax(after.syntax_version))
+  return keyedTemplateSyntax(before.syntax_version)!==keyedTemplateSyntax(after.syntax_version)||before.extra_key!==after.extra_key;
  const a=fixedArguments(before),b=fixedArguments(after);
  if(a.size!==b.size||[...a].some(([key,value])=>b.get(key)!==value))return true;
  const used=(group:TemplateGroup)=>{

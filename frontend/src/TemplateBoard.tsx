@@ -1,3 +1,4 @@
+import {keyedTemplateSyntax} from './templateV04';
 import {useEffect,useId,useRef,useState,type PointerEvent} from 'react';
 import {cardCategories} from './cardCatalog';
 import type {TemplateEntityEntry} from './templateEntityIndex';
@@ -140,7 +141,7 @@ export default function TemplateBoard({groups,events,selected,onSelectionChange,
     const definition=eventsById.get(group.event_id);
     const action=definition?.name.replace(/^解释为何\s*/u,'')??group.event_id;
     const fixed=fixedArguments(group,definition);
-    const parameters=(group.syntax_version==='0.4'
+    const parameters=(keyedTemplateSyntax(group.syntax_version)
      ?(group.extra_key??'').split('-').filter(value=>value!=='*')
      :definition?.parameters.map(parameter=>fixed.get(parameter.key))??[...fixed.values()]).filter(Boolean).join(' · ');
     return <li key={group.id} data-template-board-row={group.id} className={checked?'selected':undefined}>

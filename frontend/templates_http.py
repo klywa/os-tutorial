@@ -15,6 +15,7 @@ import template_workflow as workflow
 import templates_store as library
 from templates_proposals import TemplateProposals
 from workspace import Conflict
+from template_v04 import CURRENT_VERSION, KEYED_SYNTAX_VERSIONS
 
 
 PREFIX='/api/templates'
@@ -104,8 +105,8 @@ def _read_projection(server, part, known_generation=None):
                     data['read_generation'] = hashlib.sha256(repr(generation).encode()).hexdigest()
                     events = {e['id']:e for e in data['events']}
                     data['condition_catalog'] = library.rules.library_catalog(events.values(),root=server.root)
-                    if meta.get('syntax_version')=='0.4':
-                        data['syntax_version']='0.4'
+                    if meta.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
+                        data['syntax_version']=meta['syntax_version']
                     notes = library._notes(server.root)
                     scope_names = {}
                     utterance_bindings = {}
@@ -114,7 +115,7 @@ def _read_projection(server, part, known_generation=None):
                         refs = {**meta.get('entity_archive',{}).get(group['id'],{}),**catalog}
                         event = events[group['event_id']]
                         group.update(library.rules.editor_rule(group,event,refs))
-                        if group.get('syntax_version')!='0.4' and 'in' in group['expression']:
+                        if group.get('syntax_version') not in KEYED_SYNTAX_VERSIONS and 'in' in group['expression']:
                             bindings = literal_in_bindings(group['expression'],event['name'],data['condition_catalog'])
                             if bindings:
                                 utterance_bindings[group['id']] = bindings
@@ -227,7 +228,7 @@ def get(server,actor,path,request_url):
                                       authoring=query.get('authoring')==['1'])
     if path==PREFIX+'/published':
         format=query.get('format',[None])[0]
-        if format not in (None,'v3','v0.4'):
+        if format not in (None,'v3','v0.4','v'+CURRENT_VERSION):
             raise ValueError('未知的话术库发布格式')
         mode=None
         if 'mode' in query:

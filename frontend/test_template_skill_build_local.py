@@ -68,6 +68,28 @@ class LocalBuildTests(unittest.TestCase):
     def validate(self):
         build_local.validate(self.package, [self.review], self.cases, self.events)
 
+    def test_v05_batch_rejects_redundant_exact_key_but_accepts_wildcards_and_v04(self):
+        group = {
+            **self.group, "id": "group", "event_name": "解释为何购买英雄",
+            "syntax_version": "0.5", "extra_key": "曹操",
+            "expression": "我方.等级 == 2",
+            "utterances": [{"id": "line", "text": "曹操带动三分英雄升等级。"}],
+        }
+        package = {**self.package, "groups": [group]}
+        self.assertEqual(build_local.name_template_group(group), "解释为何购买曹操")
+        build_local.check_batch(package)
+
+        redundant = '我方.等级 == 2 and ("曹操" == 动作.选中.名称 or 我方.等级 == 3)'
+        group["expression"] = redundant
+        with self.assertRaisesRegex(ValueError, "已由额外信息键确定"):
+            build_local.check_batch(package)
+
+        group["syntax_version"] = "0.4"
+        build_local.check_batch(package)
+        group.update(syntax_version="0.5", extra_key="*",
+                     expression='我方.等级 == 2 and 动作.选中.名称 in ["曹操", "甄姬"]')
+        build_local.check_batch(package)
+
     def test_v04_equipment_affinity_can_use_recipient_and_equipment_without_scope(self):
         group = {
             "event_name": "解释为何穿戴装备", "name": "法源之杯给施法者",

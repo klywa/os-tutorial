@@ -5,6 +5,7 @@ import templates_schema as schema
 import templates_store as store
 from src.python.condition import _BindingEvaluator, _UNKNOWN
 from workspace import Conflict
+from template_v04 import KEYED_SYNTAX_VERSIONS
 
 
 REVIEWERS = ('admin', 'quality')
@@ -104,7 +105,7 @@ def _snapshot(group, events, catalog, rules_catalog):
     rows = {row['id']: row for row in catalog['items']}
     refs = store._references(group, events, catalog=rows)
     event=events.get(group['event_id'])
-    if event and group.get('syntax_version')=='0.4':
+    if event and group.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
         import ast
         from src.python.condition.v04 import compile_expression
         expression=compile_expression(event['name'],group.get('expression','')).node

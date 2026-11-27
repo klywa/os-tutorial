@@ -59,6 +59,19 @@ describe('export to a template file',()=>{
 });
 
 describe('browser template files',()=>{
+ it('preserves a group instruction through file edits, delivery and database import',()=>{
+  const instruction='结合知识，解释韩信在开备韩信中的作战能力。';
+  const source={...input,groups:[{...input.groups[0],id:'instructed-group',instruction},input.groups[1]]};
+  const file=parseTemplateFile(JSON.stringify(source));
+  const [group,legacy]=file.snapshot.groups;
+  expect(group.instruction).toBe(instruction);
+  expect(legacy).not.toHaveProperty('instruction');
+  const edited=writeTemplateDocument(file,[{kind:'group',action:'put',id:group.id,value:{...group,name:'改名'}}]);
+  const reopened=parseTemplateFile(JSON.stringify(edited));
+  expect(reopened.snapshot.groups[0].instruction).toBe(instruction);
+  expect(fileDeliveryDocument(reopened).groups[0]).toMatchObject({instruction});
+  expect(fileImportDocument(reopened,[group.id]).groups[0]).toMatchObject({instruction});
+ });
  it('merges a scope field and an equivalent inline v0.4 condition',()=>{
   const event={name:'解释为何购买英雄',signature:'解释为何购买英雄(arg1: 英雄, arg2: Array<英雄|效果牌>)'};
   const first={id:'first',name:'解释为何购买曹操',event_name:event.name,syntax_version:'0.4',extra_key:'曹操',

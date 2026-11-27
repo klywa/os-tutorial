@@ -3,7 +3,7 @@ import type {ClipboardEvent} from 'react';
 import {EntityText} from './EntityCards';
 import ConditionTextEditor from './ConditionTextEditor';
 import {placeholderKeys,renderUtterance,templateId,visibleTemplateUtterances,type TemplateEvent,type TemplateGroup,type TemplateParameter,type UtteranceBindings,type UtteranceVisibility} from './templates';
-import {slotToken,validateV04Template} from './templateV04';
+import {slotToken,validateV04Template,type KeyedTemplateSyntax} from './templateV04';
 import {invalidDirectPaths,TemplateUtteranceSlots} from './TemplateUtteranceSlots';
 import type {ConditionCatalog} from './templateRules';
 
@@ -55,12 +55,12 @@ export function UtteranceLength({text}:{text:string}){
  return <small className="template-utterance-length" title="按当前显示的文本计数，包含标点符号">{Array.from(text).length} 字</small>;
 }
 
-type Props={commentCounts?:Record<string,number>;onFeedback?:(id:string)=>void;utterances:Utterances;editable:boolean;event?:TemplateEvent;catalog?:ConditionCatalog;localFile?:boolean;v04?:boolean;
+type Props={commentCounts?:Record<string,number>;onFeedback?:(id:string)=>void;utterances:Utterances;editable:boolean;event?:TemplateEvent;catalog?:ConditionCatalog;localFile?:boolean;v04?:boolean;syntaxVersion?:KeyedTemplateSyntax;
  annotator?:boolean;parameters?:TemplateParameter[];bindings?:UtteranceBindings;disabled?:boolean;savingIgnoreIds?:string[];
  onToggleIgnored?:(id:string)=>void;onToggleFixed?:(id:string)=>void;onSave?:(change:UtteranceChange)=>Promise<void>;
  proposal?:UtteranceProposal;onSaveAndApprove?:(change:UtteranceChange)=>Promise<void>;proposalEditing?:boolean;
  draftStore?:UtteranceDraftStore;onDraftsChanged?:()=>void;flagFeedback?:(id:string,field:'ignored'|'fixed')=>UtteranceFlagFeedback|undefined};
-export default function TemplateUtterances({commentCounts,onFeedback,utterances,editable,annotator,parameters=[],bindings,disabled,event,catalog,localFile,v04=false,
+export default function TemplateUtterances({commentCounts,onFeedback,utterances,editable,annotator,parameters=[],bindings,disabled,event,catalog,localFile,v04=false,syntaxVersion,
  savingIgnoreIds,onSave,onToggleIgnored,onToggleFixed,proposal,onSaveAndApprove,proposalEditing,draftStore,onDraftsChanged,flagFeedback}:Props){
  const [local]=useState(createUtteranceDraftStore),[,redraw]=useState(0);
  const [copyFeedback,setCopyFeedback]=useState<{id:string;failed:boolean}>();
@@ -89,7 +89,7 @@ export default function TemplateUtterances({commentCounts,onFeedback,utterances,
    if(change.kind!=='delete'){
     const text=change.kind==='add'?change.row.text:change.text;
     if(!text.trim())throw new Error('请填写话术内容');
-    if(v04&&event)validateV04Template(event.name,text);
+    if(v04&&event)validateV04Template(event.name,text,syntaxVersion);
     const unknown=(v04?[]:placeholderKeys(text)).filter(key=>!parameters.some(p=>p.key===key));
     if(unknown.length)throw new Error('话术引用未知参数：'+unknown.join('、'));
     if(localFile&&!v04){

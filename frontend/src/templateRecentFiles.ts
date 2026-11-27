@@ -1,6 +1,6 @@
-import type {LocalFileHandle} from './templateFile';
+import type {LocalDirectoryHandle,LocalFileHandle} from './templateFile';
 
-export type RecentTemplateFile={id:string;handle:LocalFileHandle;detail?:LocalFileHandle;openedAt:number};
+export type RecentTemplateFile={id:string;handle:LocalFileHandle;directory?:LocalDirectoryHandle;openedAt:number};
 const storeName='history';
 let database:Promise<IDBDatabase|null>|undefined;
 let memory:RecentTemplateFile[]=[];

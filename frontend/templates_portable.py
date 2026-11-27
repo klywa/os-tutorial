@@ -7,6 +7,7 @@ import uuid
 import templates_schema as schema
 import template_rules as rules
 from templates_entities import resolve
+from template_v04 import KEYED_SYNTAX_VERSIONS
 
 
 def _id(prefix):
@@ -208,7 +209,7 @@ def decode(document, public, catalog, notes, *, retired_entities=None, retired_s
         group['conditions'] = _stable_rows(group['conditions'], previous.get('conditions', []), 'conditions')
         utterances = []
         syntax_fields = (rule_fields or {}).get(group['id'], {})
-        if syntax_fields.get('syntax_version')=='0.4':
+        if syntax_fields.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
             for value in _list(group['utterances']):
                 schema.fields(value, {'id','text','fixed','ignored'}, {'id','text'})
                 schema.identity(value['id'])

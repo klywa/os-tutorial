@@ -1,5 +1,5 @@
 import legacyMarkdown from '../../docs/template-library.md?raw';
-import currentMarkdown from '../../docs/template-library-v04.md?raw';
+import currentMarkdown from '../../workflow/template_generation/references/condition-syntax.md?raw';
 import minimal from '../../docs/examples/speech-template-library-minimal.json?raw';
 import complete from '../../docs/examples/speech-template-library.json?raw';
 

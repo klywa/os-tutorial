@@ -1,6 +1,6 @@
 import {compactCondition} from './conditionEditing';
 import {templateAction} from './templateAction';
-import {catalogV04,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
+import {keyedTemplateSyntax,catalogV04,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
 import {effectiveExpression,fixedArguments,operators,orderTemplateEvents,relatedTemplateEventFamilies,valueText,type TemplateEvent,type TemplateGroup} from './templates';
 
 type ScopeName=(id:string)=>string;
@@ -15,7 +15,7 @@ export function templateDisplayExpression(group:TemplateGroup,scopeName:ScopeNam
 
 function actionKey(group:TemplateGroup,event:TemplateEvent){
  const definition=catalogV04.events[event.name];
- if(group.syntax_version!=='0.4'||!definition)return undefined;
+ if(!keyedTemplateSyntax(group.syntax_version)||!definition)return undefined;
  const parts=group.extra_key?.split('-')??[];
  if(parts.includes('*')){
   const found=new Map<string,Set<string>>();

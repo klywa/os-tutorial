@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+from template_v04 import KEYED_SYNTAX_VERSIONS
 
 _MISSING = object()
 _ID = r'[A-Za-z0-9_-]{1,128}'
@@ -357,8 +358,8 @@ def _metadata(trees, *, preferred='left'):
     ordered=[trees[0],trees[2],trees[1]] if preferred=='left' else trees
     for tree in ordered:
         meta=tree.get('templates/library.meta.json',{})
-        if meta.get('syntax_version') == '0.4':
-            result['syntax_version'] = '0.4'
+        if meta.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
+            result['syntax_version'] = meta['syntax_version']
         for entry in meta.get('audit',[]):
             digest=_digest(entry)
             if digest not in seen:result['audit'].append(deepcopy(entry));seen.add(digest)

@@ -31,11 +31,11 @@ class PreferGroup:
         return choices[0]
 
 
-def check(config, cases, *, require_all=True, scopes=None):
+def check(config, cases, *, require_all=True, scopes=None, strict=False):
     from src.python.condition import choose_utterance, evaluate_condition
 
     if "解释事件" in config:
-        return check_v04(config, cases, require_all=require_all, scopes=scopes)
+        return check_v04(config, cases, require_all=require_all, scopes=scopes, strict=strict)
     catalog = config["condition_catalog"]
     groups = {(g["event_name"], g["name"]): g for g in config["groups"]}
     if not groups or not isinstance(cases, list) or not cases:
@@ -97,11 +97,11 @@ def check(config, cases, *, require_all=True, scopes=None):
     return errors
 
 
-def check_v04(config, cases, *, require_all=True, scopes=None):
+def check_v04(config, cases, *, require_all=True, scopes=None, strict=False):
     from src.python.condition.v04 import load_library, matching_keys, winning_pool
     from src.python.condition.v04_legacy import adapt
 
-    library = load_library(config)
+    library = load_library(config, strict=True) if strict else load_library(config)
     groups = {(event, group["id"]): (pattern, group, expression)
               for event, keys in library.items() for pattern, rows in keys.items()
               for group, expression, _ in rows}
@@ -174,13 +174,14 @@ if __name__ == "__main__":
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--scopes", type=Path, help="用于赛季或模式用例的编审模板包")
     parser.add_argument("--groups-in-cases", action="store_true", help="仅要求用例中列出的组有完整覆盖")
+    parser.add_argument("--strict", action="store_true", help="按 v0.5 校验运行树中的条件与具体键")
     args = parser.parse_args()
     root = args.root.resolve()
     sys.path[:0] = [str(root), str(root / "frontend")]
     config = read(args.published)
     cases = read(args.cases)
     scopes = {group["id"]: group for group in read(args.scopes)["groups"]} if args.scopes else None
-    errors = check(config, cases, require_all=not args.groups_in_cases, scopes=scopes)
+    errors = check(config, cases, require_all=not args.groups_in_cases, scopes=scopes, strict=args.strict)
     if errors:
         parser.exit(1, "\n".join(errors) + "\n")
     count = len(config["groups"]) if "groups" in config else sum(

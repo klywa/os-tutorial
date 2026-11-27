@@ -385,6 +385,12 @@ func (v v04TypeCheck) kind(node *v04Node, guards map[string]bool, item string) s
 type v04Missing struct{}
 
 func v04Read(path []string, state map[string]any, item any) any {
+	if len(path) == 2 && path[0] == "对局" && path[1] == "比赛阶段" {
+		if game, ok := state["对局"].(map[string]any); ok {
+			return matchStage(game)
+		}
+		return v04Missing{}
+	}
 	var value any = state
 	if path[0] == "#" {
 		value, path = item, path[1:]
@@ -409,6 +415,24 @@ func v04Read(path []string, state map[string]any, item any) any {
 		return v04Missing{}
 	}
 	return value
+}
+
+func matchStage(game map[string]any) any {
+	if raw, ok := game["当前回合数"].(json.Number); ok {
+		if round, valid := new(big.Int).SetString(string(raw), 10); valid {
+			if round.Cmp(big.NewInt(3)) <= 0 {
+				return "前期"
+			}
+			if round.Cmp(big.NewInt(11)) <= 0 {
+				return "中期"
+			}
+			return "后期"
+		}
+	}
+	if stage, ok := game["比赛阶段"].(string); ok && (stage == "前期" || stage == "中期" || stage == "后期") {
+		return stage
+	}
+	return v04Missing{}
 }
 
 func v04Value(node *v04Node, state map[string]any, item any) any {

@@ -1,6 +1,6 @@
 import unittest
 
-from . import ConditionError
+from . import ConditionError, choose_utterance
 from .v04 import compile_expression, load_library, choose, render
 from .v04_legacy import adapt
 
@@ -88,12 +88,58 @@ class Version04Test(unittest.TestCase):
         with self.assertRaises(ConditionError):
             compile_expression(EVENT, "对手 == nil or 对手.主C.等级 > 40")
 
-    def test_slots_require_explicit_card_name(self):
+    def test_card_slots_render_name_and_guard_optional_card(self):
         self.assertEqual(render(EVENT, "{{动作.装备.名称}}，还差{{40 - sum(我方.场上英雄列表, .等级)}}级", STATE),
                          "驱雷，还差4级")
         self.assertIsNone(render(EVENT, "{{对手.主C.名称}}", STATE))
+        self.assertEqual(render(EVENT, "{{动作.装备}}", STATE), "驱雷")
+        self.assertIsNone(render(EVENT, "{{对手.主C}}", {"对手": {"主C": None}}))
+        self.assertEqual(render(EVENT, "{{对手.主C}}", {"对手": {"主C": {"名称": "小乔"}}}), "小乔")
+
+    def test_match_stage_uses_round_without_changing_action_stage(self):
+        for number, stage in ((3, "前期"), (4, "中期"), (11, "中期"), (12, "后期")):
+            with self.subTest(number=number):
+                rule = compile_expression(EVENT, f'对局.比赛阶段 == "{stage}" and 对局.当前阶段 == "战斗阶段"')
+                self.assertIs(rule.evaluate({"对局": {"当前回合数": number, "当前阶段": "战斗阶段"}}), True)
+
+    def test_ignores_unknown_paths_before_validating_their_contents(self):
+        valid = group("valid", "有效")
+        del valid["explanation"]
+        with self.assertLogs("src.python.condition.v04", level="WARNING") as logs:
+            library = load_library({"未来事件": None, "解释事件": {
+                "未来解释类型": None,
+                EVENT: {"错误键": None, "花木兰-司空震-驱雷": [valid]},
+            }})
+        self.assertEqual(len(logs.records), 3)
+        self.assertEqual(choose(library, EVENT, STATE)["text"], "有效")
         with self.assertRaises(ConditionError):
-            render(EVENT, "{{动作.装备}}", STATE)
+            load_library({"解释事件": {EVENT: {"花木兰-司空震-驱雷": [
+                {**valid, "expression": "动作.未知字段 == 1"},
+            ]}}})
+
+    def test_strict_key_validation_rejects_reversed_and_nested_literal_comparisons(self):
+        rule = 'not ("花木兰" != 动作.目标英雄.名称) and 动作.装备.名称 in ["驱雷", "影牙"]'
+        document = {"解释事件": {EVENT: {"花木兰-*-驱雷": [group("known", "有效", expression=rule)]}}}
+        self.assertEqual(choose(load_library(document), EVENT, STATE)["text"], "有效")
+        with self.assertRaisesRegex(ConditionError, "已由额外信息键确定"):
+            load_library(document, strict=True)
+        with self.assertRaisesRegex(ConditionError, "已由额外信息键确定"):
+            choose_utterance(document, {"事件": EVENT, "syntax_version": "0.5"}, STATE)
+
+    def test_strips_only_determined_comparisons(self):
+        from .v04 import strip_key_redundancy, validate_key_expression
+
+        old = (
+            '(动作.原英雄.名称 == "司空震" and "花木兰" == 动作.目标英雄.名称) or '
+            '(动作.装备.名称 not in ["驱雷"] and 对手 == nil)'
+        )
+        rule = strip_key_redundancy(EVENT, "花木兰-*-驱雷", old)
+        self.assertEqual(rule, '动作.原英雄.名称 == "司空震"')
+        validate_key_expression(EVENT, "花木兰-*-驱雷", rule)
+        independent = 'any(我方.场上英雄列表, .名称 == 动作.目标英雄.名称) and 动作.目标英雄.等级 > 12'
+        self.assertEqual(strip_key_redundancy(EVENT, "花木兰-*-驱雷", independent), independent)
+        numeric = strip_key_redundancy("解释为何棋手升级", "6", '6 <= 动作.目标等级')
+        self.assertEqual(numeric, "")
 
     def test_mixed_card_guard_and_lineup_alias(self):
         with self.assertRaises(ConditionError):

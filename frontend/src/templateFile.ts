@@ -1,7 +1,7 @@
-import {effectiveExpression,resolveTemplateEntities,templateId,templateRangeKey,templateRangeValues,templateVersionValues,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter,type TemplateSnapshot} from './templates';
+import {effectiveExpression,resolveTemplateEntities,templateId,templateRangeKey,templateRangeValues,templateVersionValues,upgradeKeyedGroup,type TemplateChange,type TemplateEntity,type TemplateEvent,type TemplateGroup,type TemplateParameter,type TemplateSnapshot} from './templates';
 import {listPaths,parameterType,renderRule,treeEntities,type ConditionCatalog,type ConditionNode} from './templateRules';
 import {buildTemplateEntityIndex} from './templateEntityIndex';
-import {validateExtraKey,validateV04,validateV04Template,v04ConditionKey} from './templateV04';
+import {keyedTemplateSyntax,validateKeyedCondition,validateV04Template,v04ConditionKey} from './templateV04';
 
 type JsonObject=Record<string,unknown>;
 type FileDocument={kind:'speech-template-library';schema_version:3;events:JsonObject[];groups:unknown[]}&JsonObject;
@@ -12,6 +12,13 @@ export type LocalFileHandle={
  getFile:()=>Promise<{text:()=>Promise<string>}>;
  createWritable:(options?:{mode:'exclusive'})=>Promise<{write:(text:string)=>Promise<void>;close:()=>Promise<void>;abort:()=>Promise<void>}>;
 };
+export type LocalDirectoryHandle={
+ kind:'directory';
+ name:string;
+ requestPermission?:(options:{mode:'read'})=>Promise<PermissionState>;
+ getFileHandle:(name:string)=>Promise<LocalFileHandle>;
+ values:()=>AsyncIterable<(LocalFileHandle&{kind:'file'})|LocalDirectoryHandle>;
+};
 export type OfficialTemplateCatalog={season:string;version?:string;items:(TemplateEntity&{category:string;aliases?:string[]})[]};
 type Entity=TemplateEntity&{category?:string;aliases?:string[]};
 type FileLookups={entities?:Entity[];lineups?:{id:string;title:string;player_id?:string|null}[]};
@@ -20,7 +27,7 @@ export type LocalTemplateComment=CommentMessage&{utterance_id?:string;original_t
 export type TemplateFile={document:FileDocument;snapshot:TemplateSnapshot;groupIndexes:number[];groupErrors:{index:number;message:string}[];comments:Map<string,LocalTemplateComment[]>};
 const entityTypes:Record<string,string>={'英雄':'heroes','装备':'equipment','效果牌':'effect-cards','棋手':'players','天赋':'talents','棋手技能':'player-skills','衍生物':'derivatives'};
 const canonicalTypes=Object.fromEntries(Object.entries(entityTypes).map(([type,category])=>[category,type]));
-const metadata=['version','mode','tags','batch','explanation','explanation_before','explanation_source','explanation_after','wording_brief','review_status','last_modified_by','reviewed_by','reviewed_at','entity_snapshot'] as const;
+const metadata=['version','mode','tags','batch','explanation','explanation_before','explanation_source','explanation_after','wording_brief','instruction','review_status','last_modified_by','reviewed_by','reviewed_at','entity_snapshot'] as const;
 const record=(value:unknown):value is JsonObject=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 const validName=(value:unknown):value is string=>typeof value==='string'&&!!value.trim();
 const localId=(kind:string,identity:string)=>'file-'+kind+'-'+encodeURIComponent(identity);
@@ -112,8 +119,9 @@ export function parseTemplateFile(raw:string,lookups:FileLookups={}):TemplateFil
  const readGroup=(row:JsonObject):TemplateGroup=>{
   const event=typeof row.event_name==='string'?namedEvents.get(row.event_name):undefined;
   if(!event)throw new Error('文件中未定义事件：'+String(row.event_name??''));
-  const v04=row.syntax_version==='0.4';
-  if(row.syntax_version!==undefined&&!v04)throw new Error('不支持模板语法版本。');
+  const syntaxVersion=row.syntax_version;
+  const v04=keyedTemplateSyntax(syntaxVersion);
+  if(syntaxVersion!==undefined&&!v04)throw new Error('不支持模板语法版本。');
   const validUtterance=(value:unknown)=>v04?record(value)&&validName(value.id)&&validName(value.text)
    &&['ignored','fixed'].every(key=>value[key]===undefined||typeof value[key]==='boolean'):validName(value);
   if(!validName(row.name)||typeof row.expression!=='string'||!Array.isArray(row.utterances)||!row.utterances.length||
@@ -122,12 +130,11 @@ export function parseTemplateFile(raw:string,lookups:FileLookups={}):TemplateFil
   if(v04){
    if(typeof row.extra_key!=='string')throw new Error('模板组需要额外信息键。');
    if(row.editor_mode==='tree'||row.condition_tree||Array.isArray(row.conditions)&&row.conditions.length)
-    throw new Error('v0.4 模板使用文本条件。');
-   validateExtraKey(event.name,row.extra_key);
-   validateV04(event.name,row.expression);
+    throw new Error('使用额外信息键的模板须填写文本条件。');
+   validateKeyedCondition(event.name,row.extra_key,row.expression,syntaxVersion);
    const rows=row.utterances as {id:string;text:string}[];
    if(new Set(rows.map(item=>item.id)).size!==rows.length)throw new Error('话术 ID 重复。');
-   for(const entry of rows)validateV04Template(event.name,entry.text);
+   for(const entry of rows)validateV04Template(event.name,entry.text,syntaxVersion);
   }
   const versions=templateVersionValues(row.version);
   const identity=[event.name,row.name,versions.length===1?versions[0]:templateRangeKey(versions)];
@@ -163,12 +170,14 @@ export function parseTemplateFile(raw:string,lookups:FileLookups={}):TemplateFil
     !record(row.entity_snapshot.entities)||!Object.values(row.entity_snapshot.entities).every(record)));
   if(Object.hasOwn(row,'wording_brief')&&typeof row.wording_brief!=='string')
    throw new Error('话术构思须为文本：'+row.name);
+  if(Object.hasOwn(row,'instruction')&&(!validName(row.instruction)||Array.from(row.instruction).length>100000))
+   throw new Error('生成指令不能为空或过长：'+row.name);
   if(invalidMetadata)throw new Error('模板组的标记或审核资料无效：'+row.name);
   return {id,name:row.name,event_id:event.id,scope:{player_id,lineup_note_id},conditions,related_entities,expression:row.expression,
    ...(typeof row.ignored==='boolean'?{ignored:row.ignored}:{}),
    editor_mode:row.editor_mode==='tree'?'tree':'text',condition_tree:row.condition_tree as ConditionNode|null|undefined,
    priority:typeof row.priority==='number'?row.priority:0,
-   ...(v04?{syntax_version:'0.4' as const,extra_key:row.extra_key as string}:{}),
+   ...(v04?{syntax_version:syntaxVersion,extra_key:row.extra_key as string}:{}),
    ...(typeof row.publication_hold==='string'?{publication_hold:row.publication_hold}:{}),
    utterances:v04?row.utterances as TemplateGroup['utterances']:row.utterances.map((text,index)=>legacyUtterance(text,index,row.legacy_utterance_flags)),
    ...Object.fromEntries(metadata.filter(key=>Object.hasOwn(row,key)).map(key=>[key,row[key]])),
@@ -186,7 +195,7 @@ export function parseTemplateFile(raw:string,lookups:FileLookups={}):TemplateFil
    groupIndexes.push(index);
    const visible=storedComments(row).filter(isLocalComment).filter(comment=>!comment.detached&&
     (!comment.utterance_id||group.utterances.some(entry=>entry.id===comment.utterance_id&&
-     (group.syntax_version==='0.4'||entry.text===comment.target_text))));
+     (keyedTemplateSyntax(group.syntax_version)||entry.text===comment.target_text))));
    if(visible.length)comments.set(group.id,visible);
   }catch(error){
    const label=record(row)&&validName(row.name)?'「'+row.name+'」':'';
@@ -219,14 +228,14 @@ function deliveryGroups(file:TemplateFile,ids:Iterable<string>|undefined,include
   const {ignored:_,legacy_utterance_flags:__,file_comments:___,...row}=source;
   const live=group.utterances.filter(utterance=>!utterance.ignored);
   if(!live.length)return [];
-  const ids=new Map(live.map((utterance,index)=>[utterance.id,group.syntax_version==='0.4'?utterance.id:legacyUtteranceId(index)]));
+  const ids=new Map(live.map((utterance,index)=>[utterance.id,keyedTemplateSyntax(group.syntax_version)?utterance.id:legacyUtteranceId(index)]));
   const comments=includeComments?file.comments.get(group.id)?.flatMap(comment=>{
    if(!comment.utterance_id)return [comment];
    const id=ids.get(comment.utterance_id);
    return id?[{...comment,utterance_id:id}]:[];
   }):undefined;
-  const flags=includeComments&&group.syntax_version!=='0.4'?legacyFlags(live):undefined;
-  return [{...row,utterances:group.syntax_version==='0.4'?live:live.map(utterance=>utterance.text),
+  const flags=includeComments&&!keyedTemplateSyntax(group.syntax_version)?legacyFlags(live):undefined;
+  return [{...row,utterances:keyedTemplateSyntax(group.syntax_version)?live:live.map(utterance=>utterance.text),
    ...(flags?{legacy_utterance_flags:flags}:{}),
    ...(comments?.length?{file_comments:comments}:{})}];
  });
@@ -263,7 +272,15 @@ export function previewTemplateFileExport(source:unknown,raw:string,mode:'new'|'
  const groups=[...current];
  const positions=new Map(current.flatMap((row,index)=>record(row)&&validName(row.id)?[[row.id,index] as const]:[]));
  const replaced=new Set<number>();
- const validIncoming=incoming.document.groups.filter(record);
+ const validIncoming=incoming.snapshot.groups.map((group,index)=>{
+  const row=incoming.document.groups[incoming.groupIndexes[index]] as JsonObject;
+  if(group.syntax_version!=='0.4')return row;
+  const upgraded=upgradeKeyedGroup(group,String(row.event_name));
+  const scope=record(row.scope)?row.scope:{};
+  const player=typeof scope.player==='string'?scope.player:null,lineup=typeof scope.lineup==='string'?scope.lineup:null;
+  return {...row,syntax_version:upgraded.syntax_version,expression:upgraded.expression,
+   effective_expression:effectiveExpression(player,lineup,upgraded.expression??'',upgraded.syntax_version)};
+ });
  const changes=validIncoming.map(row=>{
   const index=validName(row.id)?positions.get(row.id):undefined;
   if(index===undefined){groups.push(row);return {name:String(row.name),action:'add' as const};}
@@ -275,8 +292,11 @@ export function previewTemplateFileExport(source:unknown,raw:string,mode:'new'|'
   groups[index]=replacement;
   return {name:String(row.name),previousName:String((current[index] as JsonObject).name??''),action:'replace' as const};
  });
- if(!target)return {document:incoming.document,changes,eventChanges:[],changed:true};
- if(Object.hasOwn(target.document,'condition_catalog')&&!target.snapshot.condition_catalog)
+ if(!target)return {document:{...incoming.document,groups},changes,eventChanges:[],changed:true};
+ const embedded=target.document.condition_catalog;
+ const keyedCatalog=record(embedded)&&record(embedded.actions)&&record(embedded.events)&&
+  record(embedded.roots)&&embedded.roots.动作==='动作';
+ if(Object.hasOwn(target.document,'condition_catalog')&&!target.snapshot.condition_catalog&&!keyedCatalog)
   throw new Error('目标文件包含无法识别的条件目录，请先修复目录后再合并。');
 
  const events=new Map(target.snapshot.events.map((event,index)=>[event.name,{event,row:target.document.events[index]}]));
@@ -329,13 +349,14 @@ export function previewTemplateFileExport(source:unknown,raw:string,mode:'new'|'
 
 type FileGroupRow={value:TemplateGroup;row:JsonObject};
 const groupMergeFamily=(group:TemplateGroup)=>JSON.stringify([group.event_id,group.name.trim()]);
-function fileGroupKey({value:group,row}:FileGroupRow,event:TemplateEvent|undefined){
+function fileGroupKey({value,row}:FileGroupRow,event:TemplateEvent|undefined){
+ const group=event?upgradeKeyedGroup(value,event.name):value;
  const scope=record(row.scope)?row.scope:{};
  const player=typeof scope.player==='string'?scope.player:null,lineup=typeof scope.lineup==='string'?scope.lineup:null;
  const expression=group.editor_mode==='tree'&&group.condition_tree?renderRule(group.condition_tree):group.expression??'';
  const effective=effectiveExpression(player,lineup,expression,group.syntax_version);
  const condition=(source:string)=>{
-  if(group.syntax_version==='0.4'){
+  if(keyedTemplateSyntax(group.syntax_version)){
    try{return v04ConditionKey(source);}
    catch{return source;}
   }
@@ -354,7 +375,7 @@ function mergeFileGroup(target:FileGroupRow,source:FileGroupRow,original:Templat
  const value={...target.value,utterances:[...target.value.utterances]},row={...target.row};
  const sourcePriority=source.value.priority??0;
  if(sourcePriority>(value.priority??0))value.priority=row.priority=sourcePriority;
- const v04=value.syntax_version==='0.4';
+ const v04=keyedTemplateSyntax(value.syntax_version);
  const texts=new Map<string,number>(),ids=new Set<string>();
  value.utterances.forEach((utterance,index)=>{
   if(!texts.has(utterance.text))texts.set(utterance.text,index);
@@ -436,12 +457,14 @@ export function writeTemplateDocument(file:TemplateFile,changes:TemplateChange[]
  for(const change of changes){
   if(change.kind!=='group')continue;
   if(change.action==='delete'){groups.delete(change.id);continue;}
-  const value=change.value as TemplateGroup,previous=groups.get(change.id);
+  let value=change.value as TemplateGroup;
+  const previous=groups.get(change.id);
   const existingDual=new Set(previous?.value.utterances.filter(row=>row.fixed&&row.ignored).map(row=>row.id));
   if(value.utterances.some(row=>row.fixed&&row.ignored&&!existingDual.has(row.id)))
    throw new Error('同一条话术只能固定或忽略。');
   const event=events.get(value.event_id)?.value;
   if(!event)throw new Error('模板组引用了文件中不存在的事件。');
+  value=upgradeKeyedGroup(value,event.name);
   const scope={
    player:value.scope.player_id===null?null:lookups.entities?.find(entity=>entity.id===value.scope.player_id)?.name??file.snapshot.scope_names?.[value.scope.player_id]??((fileTemplateScopeName('player',value.scope.player_id)??value.scope.player_id).trim()||null),
    lineup:value.scope.lineup_note_id===null?null:lookups.lineups?.find(note=>note.id===value.scope.lineup_note_id)?.title??file.snapshot.scope_names?.[value.scope.lineup_note_id]??((fileTemplateScopeName('lineup',value.scope.lineup_note_id)??value.scope.lineup_note_id).trim()||null),
@@ -450,10 +473,10 @@ export function writeTemplateDocument(file:TemplateFile,changes:TemplateChange[]
   const row:JsonObject={...(previous?.row??{id:value.id}),...(mergedIds||scopeChanged?{id:value.id}:{}),
    name:value.name,event_name:event.name,scope,expression:value.expression??'',effective_expression:effectiveExpression(scope.player,scope.lineup,value.expression??'',value.syntax_version),
    priority:value.priority??0,editor_mode:value.editor_mode??'text',condition_tree:value.condition_tree,
-   utterances:value.syntax_version==='0.4'?value.utterances:value.utterances.map(utterance=>utterance.text),
+   utterances:keyedTemplateSyntax(value.syntax_version)?value.utterances:value.utterances.map(utterance=>utterance.text),
   };
   if(value.ignored)row.ignored=true;else delete row.ignored;
-  const flags=value.syntax_version==='0.4'?undefined:legacyFlags(value.utterances);
+  const flags=keyedTemplateSyntax(value.syntax_version)?undefined:legacyFlags(value.utterances);
   if(flags)row.legacy_utterance_flags=flags;else delete row.legacy_utterance_flags;
   for(const key of ['syntax_version','extra_key','publication_hold'] as const){
    if(value[key]===undefined)delete row[key];else row[key]=value[key];
@@ -474,14 +497,14 @@ export function writeTemplateDocument(file:TemplateFile,changes:TemplateChange[]
   for(const key of metadata){
    if(value[key]===undefined)delete row[key];else row[key]=value[key];
   }
-  if(previous&&previous.value.syntax_version!=='0.4'&&Array.isArray(row.file_comments)){
+  if(previous&&!keyedTemplateSyntax(previous.value.syntax_version)&&Array.isArray(row.file_comments)){
    const oldRows=new Map(previous.value.utterances.map(utterance=>[utterance.id,utterance.text]));
    const nextRows=new Map(value.utterances.map((utterance,index)=>[utterance.id,{utterance,index}]));
    row.file_comments=row.file_comments.map(comment=>{
     if(!isLocalComment(comment)||comment.detached||!comment.utterance_id)return comment;
     const next=nextRows.get(comment.utterance_id);
     if(!next||comment.target_text!==oldRows.get(comment.utterance_id))return {...comment,detached:true};
-    return {...comment,utterance_id:value.syntax_version==='0.4'?next.utterance.id:legacyUtteranceId(next.index),target_text:next.utterance.text};
+    return {...comment,utterance_id:keyedTemplateSyntax(value.syntax_version)?next.utterance.id:legacyUtteranceId(next.index),target_text:next.utterance.text};
    });
   }
   groups.set(change.id,{value,row});
@@ -541,7 +564,7 @@ export function writeLocalComment(file:TemplateFile,groupId:string,target:Templa
  const body=message.body.trim();
  if(!body||body.length>4000)throw new Error('批注须为 1 至 4000 字。');
  const comment:LocalTemplateComment={...message,body,...(utterance?{
-  utterance_id:utterance.id,original_text:utterance.text,...(group.syntax_version==='0.4'?{}:{target_text:utterance.text}),
+  utterance_id:utterance.id,original_text:utterance.text,...(keyedTemplateSyntax(group.syntax_version)?{}:{target_text:utterance.text}),
  }:{})};
  const index=file.groupIndexes[position],row=file.document.groups[index] as JsonObject;
  const groups=[...file.document.groups];
@@ -589,24 +612,26 @@ export function fixEditedLocalUtterances(previous:TemplateGroup,group:TemplateGr
   !row.ignored&&originals.get(row.id)?.text!==row.text?{...row,fixed:true}:row)};
 }
 
-async function pickJsonFiles(multiple:boolean,startIn?:LocalFileHandle){
+export async function pickTemplateFile(startIn?:LocalFileHandle){
  const choose=(window as Window&{showOpenFilePicker?:(options:unknown)=>Promise<LocalFileHandle[]>}).showOpenFilePicker;
  if(!choose)throw new Error('当前浏览器无法直接打开并写回文件。请使用 Chrome 或 Edge。');
- const handles=await choose.call(window,{...(startIn?{startIn}:{}),multiple,types:[{description:'话术模板库 JSON',accept:{'application/json':['.json']}}]});
- if(!handles.length)throw new DOMException('未选择文件','AbortError');
- return handles;
+ const [handle]=await choose.call(window,{...(startIn?{startIn}:{}),multiple:false,types:[{description:'话术模板库 JSON',accept:{'application/json':['.json']}}]});
+ if(!handle)throw new DOMException('未选择文件','AbortError');
+ return handle;
 }
 
-export async function pickTemplateFile(startIn?:LocalFileHandle){
- return (await pickJsonFiles(false,startIn))[0];
+export async function pickTemplateDirectory(startIn?:LocalDirectoryHandle|LocalFileHandle){
+ const choose=(window as Window&{showDirectoryPicker?:(options:unknown)=>Promise<LocalDirectoryHandle>}).showDirectoryPicker;
+ if(!choose)throw new Error('请在 Chrome 或 Edge 中通过 HTTPS 或本地地址授权模板目录。');
+ return choose.call(window,{id:'template-library',mode:'read',...(startIn?{startIn}:{})});
 }
 
-export async function pickTemplateLibrary(startIn?:LocalFileHandle){
- const handles=await pickJsonFiles(true,startIn);
- if(handles.length===1)return {handle:handles[0]};
- const handle=handles.find(item=>handles.some(other=>other.name===item.name.replace(/\.json$/i,'')+'-detail.json'));
- if(handles.length!==2||!handle)throw new Error('请选择一个模板库，可同时选择同名的 -detail.json。');
- return {handle,detail:handles.find(item=>item!==handle)};
+export async function templateFilesInDirectory(directory:LocalDirectoryHandle){
+ const files:LocalFileHandle[]=[];
+ for await(const entry of directory.values()){
+  if(entry.kind==='file'&&/\.json$/i.test(entry.name)&&!/-detail\.json$/i.test(entry.name))files.push(entry);
+ }
+ return files.sort((first,second)=>first.name.localeCompare(second.name,'zh-CN',{numeric:true}));
 }
 
 export async function pickNewTemplateFile(name:string){

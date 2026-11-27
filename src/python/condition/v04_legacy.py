@@ -4,7 +4,7 @@ import json
 import re
 
 from . import ConditionError, _Evaluator, _UNKNOWN, _catalog, _event_name
-from .v04 import catalog, compile_expression, compile_template, event_fields, lineup_name
+from .v04 import catalog, compile_expression, compile_template, event_fields, lineup_name, match_stage
 
 
 ARGS = {
@@ -348,6 +348,9 @@ def adapt(event, state, legacy_catalog=None):
     if target.startswith("解释为何购买") and isinstance(action.get("候选列表"), list) and "选中" in action:
         action["候选列表"] = [action["选中"], *action["候选列表"]]
     game = state.get("对局", {})
+    stage = match_stage(game)
+    if stage is not _UNKNOWN:
+        game = {**game, "比赛阶段": stage}
     old_player = state.get("玩家", {})
     old_opponent = game.get("当前对手")
     player = _player(old_player)

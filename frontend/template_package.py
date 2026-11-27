@@ -5,6 +5,7 @@ import uuid
 
 import template_rules as rules
 import templates_schema as schema
+from template_v04 import KEYED_SYNTAX_VERSIONS, upgrade_rule
 
 
 def _find(rows, field, name, what):
@@ -119,7 +120,7 @@ def encode(public, entities, notes, metadata=None, *, all_groups=None, root=None
         group['scope'] = {'player':_scope_name(original['scope']['player_id'],refs,'name'),
                           'lineup':_scope_name(original['scope']['lineup_note_id'],notes,'title')}
         group.update(rules.editor_rule(original,event,refs))
-        if original.get('syntax_version')=='0.4':
+        if original.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
             from template_v04 import effective_expression as effective_v04
             group['effective_expression'] = effective_v04(group['scope'], group['expression'])
             group['utterances'] = deepcopy(original['utterances'])
@@ -145,6 +146,16 @@ def decode(document, public, entities, notes, **kwargs):
     doc = deepcopy(document)
     doc.pop('note', None)
     imported_catalog = doc.pop('condition_catalog', None)
+    if isinstance(imported_catalog,dict) and isinstance(imported_catalog.get('actions'),dict):
+        # Keyed groups compile against the installed registry. The package may
+        # carry an older copy of that registry, which has no legacy arg signatures.
+        rows = doc['groups']
+        roots = imported_catalog.get('roots')
+        if (not isinstance(roots,dict) or roots.get('动作')!='动作'
+                or not isinstance(imported_catalog.get('events'),dict) or not isinstance(rows,list)
+                or any(not isinstance(row,dict) or row.get('syntax_version') not in KEYED_SYNTAX_VERSIONS for row in rows)):
+            raise ValueError('配置的类型目录与当前项目不一致')
+        imported_catalog = None
     if imported_catalog is not None:
         current = rules.catalog()
         # Previous v3 catalogs may lack fields introduced in later releases.
@@ -271,12 +282,13 @@ def decode(document, public, entities, notes, **kwargs):
     result = old_decode(doc,public,entities,notes,rule_fields=rule_fields,**kwargs)
     for group in result['groups']:
         group.update(extras[group['id']])
-        if any(row.get('syntax_version')=='0.4' for row in public['groups']) and not group.get('syntax_version'):
+        event_name=all_events[group['event_id']]['name']
+        if any(row.get('syntax_version') in KEYED_SYNTAX_VERSIONS for row in public['groups']) and not group.get('syntax_version'):
             from template_v04 import catalog as catalog_v04, translate
-            event_name=all_events[group['event_id']]['name']
             if event_name in catalog_v04()['events']:
                 group.update(translate(group,event_name, rules.library_catalog(all_events.values())))
-                if group.get('syntax_version')=='0.4':
+                if group.get('syntax_version') in KEYED_SYNTAX_VERSIONS:
                     group.pop('condition_tree',None)
+        group.update(upgrade_rule(group,event_name))
     return result
 

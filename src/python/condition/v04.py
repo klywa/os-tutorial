@@ -1,14 +1,16 @@
-"""Typed v0.4 expressions and the explanation-event runtime."""
+"""Typed expressions and the explanation-event runtime for v0.4 and v0.5."""
 
 import ast
 from dataclasses import dataclass
 from functools import lru_cache
+import io
 import json
 import logging
 import operator
 from pathlib import Path
 import random
 import re
+import tokenize
 
 from . import ConditionError, _UNKNOWN
 
@@ -17,7 +19,7 @@ SOURCE = Path(__file__).resolve().parents[2] / "condition" / "catalog-v04.json"
 TOKEN = re.compile(r'\s+|"(?:[^"\\]|\\.)*"|[^\W\d]\w*|\d+|==|!=|<=|>=|[().\[\],<>+*%\-]')
 FUNCTIONS = {"len", "any", "all", "none", "count", "sum", "filter"}
 SCALARS = {"string", "int", "bool"}
-OUTPUT = SCALARS | {"Array<string>", "Array<卡牌>"}
+OUTPUT = SCALARS | {"卡牌", "Array<string>", "Array<卡牌>"}
 COMPARISON = {ast.Eq: operator.eq, ast.NotEq: operator.ne, ast.Lt: operator.lt,
               ast.LtE: operator.le, ast.Gt: operator.gt, ast.GtE: operator.ge,
               ast.In: lambda a, b: _contains(b, a),
@@ -228,6 +230,9 @@ def _contains(values, value):
 
 
 def _read(path, state, item):
+    if path == ("对局", "比赛阶段"):
+        game = state.get("对局")
+        return match_stage(game) if isinstance(game, dict) else _UNKNOWN
     root, *keys = path
     value = item if root == "_item" else state.get(root, _UNKNOWN)
     for key in keys:
@@ -239,6 +244,16 @@ def _read(path, state, item):
     if isinstance(value, str) and (path[-1] == "阵容名称" or path == ("动作", "阵容")):
         return lineup_name(value)
     return value
+
+
+def match_stage(game):
+    number = game.get("当前回合数")
+    if type(number) is int:
+        if number <= 3:
+            return "前期"
+        return "中期" if number <= 11 else "后期"
+    stage = game.get("比赛阶段")
+    return stage if stage in ("前期", "中期", "后期") else _UNKNOWN
 
 
 def _eval(node, state, item=_UNKNOWN):
@@ -324,7 +339,9 @@ def compile_expression(event, source, *, slot=False):
         kind = validator.kind(node)
         if slot:
             if kind.removesuffix("?") not in OUTPUT:
-                raise ConditionError("该占位符类型不能输出，单卡请显式引用 .名称")
+                raise ConditionError("该占位符类型不能输出")
+            if kind == "卡牌?" and isinstance(node, (ast.Name, ast.Attribute)):
+                validator.auto_guards.add(_path(node))
         elif kind != "bool":
             raise ConditionError("条件必须返回布尔值")
     except RecursionError as exc:
@@ -365,6 +382,11 @@ def render_compiled(parts, state):
                 if not all(isinstance(name, str) and name for name in names):
                     return None
                 output.append("、".join(names))
+            elif part.kind.removesuffix("?") == "卡牌":
+                name = value.get("名称") if isinstance(value, dict) else None
+                if not isinstance(name, str) or not name:
+                    return None
+                output.append(name)
             elif part.kind == "bool" and type(value) is bool:
                 output.append("是" if value else "否")
             elif part.kind == "int" and type(value) is int or part.kind == "string" and type(value) is str:
@@ -394,6 +416,119 @@ def validate_key(event, key):
     return tuple(segments)
 
 
+def key_paths(event):
+    """Return the scalar action paths used to construct the event key."""
+    fields = event_fields(event)
+    return tuple(("动作", field, "名称") if fields[field].removesuffix("?") == "卡牌" else ("动作", field)
+                 for field in catalog()["events"][event]["key"])
+
+
+def _key_facts(event, key):
+    paths = key_paths(event)
+    fields = event_fields(event)
+    values = {}
+    for path, value in zip(paths, validate_key(event, key)):
+        if value != "*":
+            field = path[1]
+            if fields[field] == "int":
+                value = int(value)
+            elif field == "阵容":
+                value = lineup_name(value)
+            values[path] = value
+    return values
+
+
+def _fixed_comparison(node, facts):
+    if not isinstance(node, ast.Compare):
+        return None
+    operands = (node.left, node.comparators[0])
+    paths = tuple(_path(part) if isinstance(part, (ast.Name, ast.Attribute)) else None for part in operands)
+    fixed_paths = tuple(path for path in paths if path in facts)
+    if not fixed_paths:
+        return None
+    values = []
+    for part, path in zip(operands, paths):
+        if path in facts:
+            values.append(facts[path])
+        elif isinstance(part, (ast.Constant, ast.List)):
+            values.append(_eval(part, {}))
+        elif isinstance(part, ast.UnaryOp) and isinstance(part.op, ast.USub) and isinstance(part.operand, ast.Constant):
+            values.append(-part.operand.value)
+        else:
+            return None
+    return fixed_paths, COMPARISON[type(node.ops[0])](*values)
+
+
+def validate_key_expression(event, key, expression):
+    """Compile a rule and reject comparisons already decided by its exact key segments."""
+    facts = _key_facts(event, key)
+    compiled = compile_expression(event, expression)
+    if facts and compiled.node is not None:
+        for node in ast.walk(compiled.node):
+            fixed = _fixed_comparison(node, facts)
+            if fixed:
+                path = ".".join(fixed[0][0])
+                raise ConditionError(f"{path} 已由额外信息键确定，请从条件中移除重复判断")
+    return compiled
+
+
+def _fold_key_facts(node, facts):
+    comparison = _fixed_comparison(node, facts)
+    if comparison:
+        return ast.Constant(comparison[1])
+    if isinstance(node, ast.BoolOp):
+        decisive = isinstance(node.op, ast.Or)
+        remaining = []
+        for child in node.values:
+            child = _fold_key_facts(child, facts)
+            if isinstance(child, ast.Constant) and type(child.value) is bool:
+                if child.value is not decisive:
+                    continue
+                remaining.append(child)
+                break
+            remaining.append(child)
+        if not remaining:
+            return ast.Constant(not decisive)
+        if len(remaining) == 1:
+            return remaining[0]
+        return ast.BoolOp(node.op, remaining)
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
+        operand = _fold_key_facts(node.operand, facts)
+        if isinstance(operand, ast.Constant) and type(operand.value) is bool:
+            return ast.Constant(not operand.value)
+        return ast.UnaryOp(node.op, operand)
+    if isinstance(node, ast.Call):
+        return ast.Call(node.func, [_fold_key_facts(arg, facts) for arg in node.args], [])
+    if isinstance(node, ast.Compare):
+        return ast.Compare(_fold_key_facts(node.left, facts), node.ops,
+                           [_fold_key_facts(part, facts) for part in node.comparators])
+    return node
+
+
+def strip_key_redundancy(event, key, expression):
+    """Migrate an older expression under the assumptions guaranteed by its key."""
+    facts = _key_facts(event, key)
+    node = compile_expression(event, expression).node
+    if not facts or node is None or not any(_fixed_comparison(part, facts) for part in ast.walk(node)):
+        return expression
+    node = _fold_key_facts(node, facts)
+    if isinstance(node, ast.Constant) and node.value is True:
+        return ""
+    source = ast.unparse(node)
+    replacements = []
+    for token in tokenize.generate_tokens(io.StringIO(source).readline):
+        if token.type == tokenize.STRING:
+            replacements.append((token.start[1], token.end[1], json.dumps(ast.literal_eval(token.string), ensure_ascii=False)))
+        elif token.type == tokenize.NAME:
+            replacement = {"_item": "", "True": "(0 == 0)", "False": "(0 == 1)"}.get(token.string)
+            if replacement is not None:
+                replacements.append((token.start[1], token.end[1], replacement))
+    for start, end, value in reversed(replacements):
+        source = source[:start] + value + source[end:]
+    validate_key_expression(event, key, source)
+    return source
+
+
 def _unique(pairs):
     result = {}
     for key, value in pairs:
@@ -403,29 +538,40 @@ def _unique(pairs):
     return result
 
 
-def load_library(data):
+def load_library(data, *, strict=False):
     if isinstance(data, (str, bytes, bytearray)):
         data = json.loads(data, object_pairs_hook=_unique)
-    if not isinstance(data, dict) or set(data) != {"解释事件"} or not isinstance(data["解释事件"], dict):
-        raise ConditionError("话术库顶层必须为解释事件")
+    if not isinstance(data, dict):
+        raise ConditionError("话术库顶层必须为对象")
+    for ignored in data.keys() - {"解释事件"}:
+        LOG.warning("忽略话术库路径 %s：未知事件类型", ignored)
+    events = data.get("解释事件", {})
+    if not isinstance(events, dict):
+        raise ConditionError("解释事件下必须是解释类型对象")
     result = {}
     groups_seen = set()
-    for event, keys in data["解释事件"].items():
-        event_fields(event)
+    for event, keys in events.items():
+        if event not in catalog()["events"]:
+            LOG.warning("忽略话术库路径 解释事件/%s：未知解释类型", event)
+            continue
         if not isinstance(keys, dict):
             raise ConditionError("解释类型下必须是额外信息键对象")
         result[event] = {}
         for key, groups in keys.items():
-            segments = validate_key(event, key)
+            try:
+                segments = validate_key(event, key)
+            except ConditionError as exc:
+                LOG.warning("忽略话术库路径 解释事件/%s/%s：%s", event, key, exc)
+                continue
             if not isinstance(groups, list):
                 raise ConditionError("额外信息键下必须是话术组数组")
             compiled = []
             for group in groups:
-                required = {"id", "name", "event_id", "priority", "expression", "explanation", "utterances"}
-                if not isinstance(group, dict) or group.keys() != required:
+                required = {"id", "name", "event_id", "priority", "expression", "utterances"}
+                if not isinstance(group, dict) or group.keys() - {"explanation"} != required:
                     raise ConditionError("话术组字段无效")
                 if (any(not isinstance(group[k], str) or not group[k].strip() for k in ("id", "name", "event_id"))
-                        or not isinstance(group["explanation"], str) or type(group["priority"]) is not int
+                        or not isinstance(group.get("explanation", ""), str) or type(group["priority"]) is not int
                         or group["id"] in groups_seen or not isinstance(group["utterances"], list) or not group["utterances"]):
                     raise ConditionError("话术组身份、优先级或话术无效")
                 groups_seen.add(group["id"])
@@ -436,7 +582,9 @@ def load_library(data):
                             or row["id"] in utterances):
                         raise ConditionError("话术身份或文本无效")
                     utterances[row["id"]] = compile_template(event, row["text"])
-                compiled.append((group, compile_expression(event, group["expression"]), utterances))
+                condition = (validate_key_expression(event, key, group["expression"]) if strict
+                             else compile_expression(event, group["expression"]))
+                compiled.append((group, condition, utterances))
             result[event][segments] = compiled
     return result
 

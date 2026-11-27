@@ -126,6 +126,66 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\start.ps1
 
 模板库顶栏的【帮助】提供当前 JSON 协议和可复制、下载的示例；仓库文档见 [模板库 JSON 协议](docs/template-library.md)。
 
+## 管线生成
+
+在项目根目录用 PowerShell 执行。流程分两步，先从阵容资料初始化 v0.5 空模板库，再把初始库和阵容笔记交给 `template_generate` 工作流补全话术。
+
+### 1. 初始化模板库
+
+| 手头资料 | 初始化输入 | 生成阶段的笔记输入 |
+| --- | --- | --- |
+| Markdown | UTF-8 阵容笔记 `.md` | 同一份 Markdown 笔记 |
+| JSON | 项目的结构化知识笔记 `.json` | 同一份 UTF-8 JSON 笔记会按文本读取，也可使用从知识页导出的 Markdown |
+| Excel | 阵容定义表 `.xlsx`，必需的工作表是「阵容英雄配置」，其中需有「打法名称」和「英雄名称」列 | 准备同一打法的 UTF-8 Markdown，保留表中的阵容配置、装备分配、天赋及打法理由。有现成的同阵容笔记也可直接使用 |
+
+「CP天赋打法」工作表仅用于补充特殊打法的天赋。所选打法列在「完全匹配打法」或「新增打法支持」中时，才会补入对应的 CP 天赋。普通阵容只准备「阵容英雄配置」即可，常规天赋直接从该表的天赋列读取。
+
+下面以仓库中的「开备韩信-姜导」JSON 笔记为例。使用 Markdown 时将 `$source` 换为对应的 `.md`。使用 Excel 时，将其换为 `.xlsx`，多阵容表需在初始化命令末尾加 `--lineup '表中的打法名称'`。
+
+```powershell
+$python = '.\.wxq-runtime\Scripts\python.exe'
+$source = '.\knowledge\lineups\开备韩信-姜导.json'
+$initial = '.\personal\template\initial\开备韩信-姜导.json'
+
+& $python -m workflow.template_generation.initialize $source --output $initial
+```
+
+命令输出初始库路径、组数及待确认项。检查各组的事件、额外信息键和 `instruction`，此时 `utterances` 均为空。跨赛季卡牌品阶有差异时，可按依据追加 `--season S1` 或 `--season S2`。Markdown 或 JSON 笔记里的装备归属可通过 `--equipment-review '.\装备归属.json'` 补充。该文件是记录数组，每条填写 `equipment`、`hero` 和笔记中的逐字引文 `quote`。重新初始化且内容有变化时，为 `--output` 指定新文件名。
+
+### 2. 配置模型并生成话术
+
+每次运行通过 `--provider` 选择调用方式，通过 `--model` 指定服务实际接受的模型 ID。要固定版本，填写供应商给出的具体版本或快照 ID。
+
+| 调用方式 | 参数 | URL 和凭据 |
+| --- | --- | --- |
+| OpenAI 或 Chat Completions 兼容服务 | `--provider openai --model '供应商模型ID'` | 用 `OPENAI_BASE_URL` 指定基础 URL，例如 `https://api.openai.com/v1`。程序会追加 `/chat/completions`。默认使用 OpenAI 官方地址，远程地址需用 HTTPS，本地回环地址可用 HTTP。服务需要鉴权时设置 `OPENAI_API_KEY` |
+| Gemini API | `--provider gemini --model '供应商模型ID'` | 使用 Google 固定 API 地址。优先读取 `GEMINI_API_KEY`，其次是 `GOOGLE_API_KEY`。两者均未设置时使用本机已配置的 `gemini-api` CLI |
+| Codex CLI | `--provider codex --model default` | 使用 PATH 中已登录的 `codex` CLI。可运行 `codex login status` 检查登录，或将 `default` 换成本机账号支持的模型 ID |
+| 本地审编回复 | `--provider local --model editorial --local-replies '.\节点回复.json'` | 从文件读取各节点的已审编 JSON 回复，无需模型 URL 或密钥。回复格式见下方工作流文档 |
+
+下面以兼容 API 为例。把基础 URL 和模型 ID 换成供应商提供的值，在当前 PowerShell 窗口设置密钥。也可根据上表改用其他调用方式。所选服务会收到模型节点使用的笔记和相关参考资料。
+
+```powershell
+$env:OPENAI_BASE_URL = 'https://api.openai.com/v1'
+$env:OPENAI_API_KEY = [System.Net.NetworkCredential]::new('', (Read-Host 'API Key' -AsSecureString)).Password
+$model = '供应商提供的模型ID或版本ID'
+$note = $source  # 如果初始化用了 Excel，换成 UTF-8 笔记路径
+$runDir = '.\raw\template-runs\开备韩信-姜导-01'
+
+& $python -m workflow.template_generation.run start $note `
+  --base-library $initial --run-dir $runDir `
+  --output '.\exports\开备韩信-姜导.json' `
+  --provider openai --model $model
+```
+
+`--base-library` 指向第 1 步的初始库。工作流保留已有组的事件、额外信息键和条件，为空组生成话术，并追加从笔记发现且通过校验的新组。每次 `start` 使用新的空运行目录和新的主库输出路径。可加 `--jobs 1` 降低模型调用并发（默认 4），或加 `--pause-after enrich` 在知识补充后停下来审查。
+
+完成后输出 `"status": "complete"`，并写出 `exports/开备韩信-姜导.json` 主库和 `exports/开备韩信-姜导-detail.json` 溯源文件。在模板库页面将内容来源切到「文件」，授权输出目录并选择主库，打开模板组的「溯源」即可读取同目录的配套文件。
+
+运行记录保存在 `$runDir`。暂停或失败后，查看 `run.json` 和 `nodes/`，处理原因并保留原服务的 URL 与凭据配置，再执行 `& $python -m workflow.template_generation.run resume --run-dir $runDir`。恢复沿用原运行记录中的 provider 和 model。
+
+节点回复格式、暂停修订和溯源字段见 [模板生成工作流](workflow/template_generation/README.md)。
+
 ## 使用
 
 Git 只管理代码与正式知识。外部采集、官网同步、运行状态及来源标题、标签和备注均保存在被忽略的本地资料中。请额外备份 `raw/`、`entities/`、`knowledge/cards/`、`personal/` 及 `knowledge/source-registry.meta.json`、`knowledge/document-sources.meta.json`；只克隆 Git 仓库无法恢复这些数据。

@@ -1,6 +1,6 @@
 import {templateReviewLabels,type TemplateEvent,type TemplateFilters,type TemplateGroup} from './templates';
 import {parseFileConditionText} from './templateConditionText';
-import {catalogV04,lineupName,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
+import {keyedTemplateSyntax,catalogV04,lineupName,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
 import type {TemplateEntityEntry} from './templateEntityIndex';
 import {TemplateFilterPopup} from './TemplateFilters';
 
@@ -66,7 +66,7 @@ export function buildLineupTabs(groups:TemplateGroup[],scopeName:(id:string)=>st
   const boundLineup=lineup?[lineupName(scopeName(lineup))]:undefined;
   const boundPlayer=player?[scopeName(player)]:undefined;
   const expression=readV04Condition(group.expression);
-  const legacy=group.syntax_version==='0.4'?undefined:parseFileConditionText(group.expression??'');
+  const legacy=keyedTemplateSyntax(group.syntax_version)?undefined:parseFileConditionText(group.expression??'');
   const clauses:Scope[]|undefined=legacy?[{lineups:legacy.lineup?[lineupName(legacy.lineup)]:undefined,
    players:legacy.player?[legacy.player]:undefined,playerRestricted:!!legacy.player||/玩家\s*\.\s*使用棋手/u.test(legacy.expression),
    lineupRestricted:/玩家\s*\.\s*使用阵容/u.test(legacy.expression)}]

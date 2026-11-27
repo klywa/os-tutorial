@@ -1,7 +1,7 @@
 import {cardCategories} from './cardCatalog';
 import {parameterRole} from './templateAction';
 import {members,parameterType,type ConditionCatalog} from './templateRules';
-import {catalogV04,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
+import {keyedTemplateSyntax,catalogV04,namedConditionValues,readV04Condition,type ConditionNodeV04} from './templateV04';
 import type {TemplateEntity,TemplateEvent,TemplateGroup,TemplateParameter} from './templates';
 
 type CatalogEntity=TemplateEntity&{category?:string;aliases?:string[]};
@@ -144,7 +144,7 @@ export function buildTemplateEntityIndex(groups:TemplateGroup[],events:TemplateE
     entry.roles.set(group.id,roles);
    }
   }
-  if(group.syntax_version==='0.4'){
+  if(keyedTemplateSyntax(group.syntax_version)){
    const action=catalogV04.events[event.name];
    if(!action)continue;
    const fields=catalogV04.actions[action.action],keyed=new Set<string>();

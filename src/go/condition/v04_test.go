@@ -2,6 +2,19 @@ package condition
 
 import "testing"
 
+func TestV05MatchStageBoundaries(t *testing.T) {
+	event := []byte(`{"事件":"解释为何准备战斗","syntax_version":"0.5"}`)
+	for _, test := range []struct{ round, stage string }{
+		{"3", "前期"}, {"4", "中期"}, {"11", "中期"}, {"12", "后期"},
+	} {
+		state := []byte(`{"对局":{"当前回合数":` + test.round + `,"当前阶段":"战斗阶段"}}`)
+		got, err := EvaluateCondition(event, `对局.比赛阶段 == "`+test.stage+`" and 对局.当前阶段 == "战斗阶段"`, state)
+		if err != nil || !got {
+			t.Fatalf("round %s: got (%v, %v)", test.round, got, err)
+		}
+	}
+}
+
 func TestV04HeroMergeResult(t *testing.T) {
 	event := []byte(`{"事件":"解释为何合成英雄","syntax_version":"0.4"}`)
 	expression := `动作.英雄.等级 < 40 and 动作.合成后等级 != nil and 动作.合成后等级 >= 40 and 动作.合成后已觉醒 != nil and not 动作.合成后已觉醒`

@@ -1,4 +1,4 @@
-"""Authoring projections for the v0.4 runtime format."""
+"""Authoring projections for the keyed runtime format."""
 
 import ast
 from collections import defaultdict
@@ -10,6 +10,8 @@ from src.python.condition.v04_legacy import Translation, literal
 
 
 VERSION = "0.4"
+CURRENT_VERSION = "0.5"
+KEYED_SYNTAX_VERSIONS = (VERSION, CURRENT_VERSION)
 
 
 def key_for(event, expression):
@@ -59,12 +61,18 @@ def effective_expression(scope, expression):
 
 
 def validate_rule(group, event):
-    if group.get("syntax_version") != VERSION:
+    version = group.get("syntax_version")
+    if version not in KEYED_SYNTAX_VERSIONS:
         raise ConditionError("不支持此模板语法版本")
-    validate_key(event, group.get("extra_key"))
-    compile_expression(event, group.get("expression"))
+    key, expression = group.get("extra_key"), group.get("expression")
+    if version == CURRENT_VERSION:
+        from src.python.condition.v04 import validate_key_expression
+        validate_key_expression(event, key, expression)
+    else:
+        validate_key(event, key)
+        compile_expression(event, expression)
     if group.get("editor_mode", "text") != "text" or group.get("condition_tree") or group.get("conditions"):
-        raise ConditionError("v0.4 模板使用文本条件")
+        raise ConditionError("使用额外信息键的模板须填写文本条件")
     for row in group["utterances"]:
         compile_template(event, row["text"])
 
@@ -90,6 +98,15 @@ def translate(group, event, legacy_catalog=None):
     return result
 
 
+def upgrade_rule(group, event):
+    """Upgrade a keyed rule without changing its authoring identity or metadata."""
+    if group.get("syntax_version") != VERSION:
+        return group.copy()
+    from src.python.condition.v04 import strip_key_redundancy
+    expression = strip_key_redundancy(event, group["extra_key"], group["expression"])
+    return {**group, "syntax_version": CURRENT_VERSION, "expression": expression}
+
+
 def runtime_tree(public, entities, notes, meta):
     import template_rules
     events = {event["id"]: event for event in public["events"]}
@@ -99,13 +116,14 @@ def runtime_tree(public, entities, notes, meta):
             continue
         definition = events[group["event_id"]]
         event = definition["name"]
-        if group.get("syntax_version") != VERSION:
+        if group.get("syntax_version") not in KEYED_SYNTAX_VERSIONS:
             if event not in catalog()["events"]:
                 continue
             group = translate({**group, **template_rules.editor_rule(group, definition, entities)}, event,
                               template_rules.library_catalog(events.values()))
             if group.get("publication_hold"):
                 continue
+        group = upgrade_rule(group, event)
         gid = group["id"]
         scope = group["scope"]
         player = scope["player_id"]
@@ -114,12 +132,15 @@ def runtime_tree(public, entities, notes, meta):
                    "lineup": notes.get(scope["lineup_note_id"], {}).get("title")}
         if (player and not display["player"]) or (scope["lineup_note_id"] and not display["lineup"]):
             raise ConditionError("模板的适用范围缺少正式名称：" + group["name"])
-        result[event][group["extra_key"]].append({
+        explanation = group.get("explanation") or group.get("explanation_before")
+        runtime = {
             "id": gid, "name": group["name"], "event_id": group["event_id"], "priority": group.get("priority", 0),
             "expression": effective_expression(display, group["expression"]),
-            "explanation": group.get("explanation", "") or group.get("explanation_before", ""),
             "utterances": [{"id": u["id"], "text": u["text"]} for u in group["utterances"]],
-        })
+        }
+        if explanation:
+            runtime["explanation"] = explanation
+        result[event][group["extra_key"]].append(runtime)
     document = {"解释事件": {event: dict(keys) for event, keys in result.items()}}
-    load_library(document)
+    load_library(document, strict=True)
     return document

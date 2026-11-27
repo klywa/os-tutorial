@@ -22,7 +22,8 @@ from frontend.template_v04 import effective_expression
 from check_batch import check as check_batch
 from check_scenarios import check as check_scenarios
 from group_identity import (
-    audit_key, has_awakening_guard, merge_duplicate_groups, name_template_group, template_group_trigger,
+    KEYED_SYNTAX_VERSIONS, audit_key, has_awakening_guard, merge_duplicate_groups, name_template_group,
+    template_group_trigger,
 )
 from wording import banned_pattern, check_wording_brief
 from src.python.condition import validate_expression
@@ -82,7 +83,8 @@ def check_review(group, review, events):
     mentioned = set(re.findall(ID, group["explanation_before"]))
     if mentioned != set(used):
         raise ValueError(f"{name} 前置思考与实际采用的骨架不一致")
-    if group.get("syntax_version") == "0.4" and "E03-S01" in used and not has_awakening_guard(group["expression"]):
+    if (group.get("syntax_version") in KEYED_SYNTAX_VERSIONS and "E03-S01" in used
+            and not has_awakening_guard(group["expression"])):
         raise ValueError(f"{name} 每个觉醒合成分支须同时判断已觉醒及觉醒进度为 2")
     for related in RELATED:
         if event_id in related:
@@ -126,7 +128,9 @@ def check_review(group, review, events):
             if "快攻" in line and any(word in str(group) for word in ("驱雷", "司空震")):
                 raise ValueError(f"{name} 第{index}句把快速攻击缩写成快攻，该句须淘汰")
             accepted.append(line)
-    actual = [row["text"] for row in group["utterances"]] if group.get("syntax_version") == "0.4" else group["utterances"]
+    actual = group["utterances"]
+    if group.get("syntax_version") in KEYED_SYNTAX_VERSIONS:
+        actual = [row["text"] for row in actual]
     if len(accepted) > 6 or max(pools.values()) > 3:
         raise ValueError(f"{name} 最多收录六条候选")
     if not accepted or accepted != actual:
@@ -210,7 +214,7 @@ def verify_related(groups, records):
                 or not all(isinstance(evidence, str) and evidence.strip() for evidence in unavailable.values())):
             raise ValueError(f"{label} 跳过关联入口须提供有效事件和无法发生的证据")
         eligible = tuple(name for name in family if name not in unavailable)
-        if EFFECT_AUCTION in family and group.get("syntax_version") == "0.4":
+        if EFFECT_AUCTION in family and group.get("syntax_version") in KEYED_SYNTAX_VERSIONS:
             known_tiers = {effect_card_tiers(season).get(group["extra_key"]) for season in group_seasons(group)} - {None}
             if len(known_tiers) > 1:
                 raise ValueError(f"{label} 适用赛季的效果牌阶级不同，须按赛季核对关联入口")
@@ -234,7 +238,7 @@ def verify_related(groups, records):
         expected, members, triggers = tiers.setdefault((family, sync["reason"], sync["tier"], scope_key), (eligible, {}, {}))
         if expected != eligible:
             raise ValueError(f"{label} 在同一共享层级登记了不同的有效事件")
-        trigger = template_group_trigger(group) if group.get("syntax_version") == "0.4" else None
+        trigger = template_group_trigger(group) if group.get("syntax_version") in KEYED_SYNTAX_VERSIONS else None
         if event in members:
             if trigger is not None and triggers[event] == trigger:
                 continue
@@ -271,10 +275,10 @@ def validate(package, records, cases, directory):
         if key[0] not in events:
             raise ValueError(f"未登记事件：{key[0]}")
         check_review(group, reviews[key], events)
-        if group.get("syntax_version") != "0.4":
+        if group.get("syntax_version") not in KEYED_SYNTAX_VERSIONS:
             validate_expression(key[0], group["expression"], package["condition_catalog"])
     runtime = package
-    if any(group.get("syntax_version") == "0.4" for group in package["groups"]):
+    if any(group.get("syntax_version") in KEYED_SYNTAX_VERSIONS for group in package["groups"]):
         runtime = {"解释事件": {}}
         for group in package["groups"]:
             if group.get("ignored"):
@@ -289,7 +293,8 @@ def validate(package, records, cases, directory):
                                for row in group["utterances"] if not row.get("ignored")],
             })
     scopes = {group["id"]: group for group in package["groups"] if group.get("id")}
-    errors = check_scenarios(runtime, cases, scopes=scopes)
+    strict = all(group.get("syntax_version") == "0.5" for group in package["groups"])
+    errors = check_scenarios(runtime, cases, scopes=scopes, strict=strict)
     if errors:
         raise ValueError("\n".join(errors))
 
