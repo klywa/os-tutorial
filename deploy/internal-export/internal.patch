@@ -89,10 +89,10 @@ index cce138324e5a13bee606f789e38775bf69dfc250..84cbfba9eca3d0b7a491aef342c5b2d4
 +
 +/.wxq-runtime-engine/
 diff --git a/README.md b/README.md
-index 381571414ab82561cbededa4bfb68ad4bc480286..b1967ffb1acb75e51cd3dde102597e22b8b6a3d8 100644
+index f7fb2a725a3dd25f8dcc632c2cb91bcfbc202d18..43a1f48ae5510b60f05ecdae806aa68b7b429776 100644
 --- a/README.md
 +++ b/README.md
-@@ -1,149 +1,90 @@
+@@ -1,134 +1,97 @@
 -# 万象棋战术手册
 +# 万象棋内网战术手册
  
@@ -279,6 +279,19 @@ index 381571414ab82561cbededa4bfb68ad4bc480286..b1967ffb1acb75e51cd3dde102597e22
 -管理器对意外退出按 1、5、15、60 秒退避恢复，之后每 60 秒重试；稳定运行一分钟后重置退避。`raw/local-services/manager.log` 记录停启原因，`status.json` 保存 PID、最近退出时间、退出码及十六进制退出码，`backend.stdout.log`、`backend.stderr.log`、`frontend.stdout.log`、`frontend.stderr.log` 保存服务输出。接管已有服务时无法追溯其真实退出码，会明确记录为空。`control.json` 是本机控制凭据，不应分享。
 -
 -模板库顶栏的【帮助】提供当前 JSON 协议和可复制、下载的示例；仓库文档见 [模板库 JSON 协议](docs/template-library.md)。
++自动化提案审阅工具读取 WXQ_ORIGIN 和 WXQ_SESSION_COOKIE；请按当前用户会话临时提供，仅在可信服务器终端使用。首次启动也可先打开网页，按初始化提示在服务器建号后刷新。
+ 
+ ## 管线生成
+ 
+-在项目根目录用 PowerShell 执行。流程分两步，先从阵容资料初始化 v0.5 空模板库，再把初始库和阵容笔记交给 `template_generate` 工作流补全话术。
++在项目根目录执行。以下使用 PowerShell，Linux 和 macOS 可使用 `.wxq-runtime/bin/python` 执行同样的 Python 模块和参数。流程分两步，先从阵容资料初始化 v0.5 空模板库，再把初始库和阵容笔记交给 `template_generate` 工作流补全话术。
+ 
+ ### 1. 初始化模板库
+ 
+@@ -185,25 +148,3 @@ $runDir = '.\raw\template-runs\开备韩信-姜导-01'
+ 运行记录保存在 `$runDir`。暂停或失败后，查看 `run.json` 和 `nodes/`，处理原因并保留原服务的 URL 与凭据配置，再执行 `& $python -m workflow.template_generation.run resume --run-dir $runDir`。恢复沿用原运行记录中的 provider 和 model。
+ 
+ 节点回复格式、暂停修订和溯源字段见 [模板生成工作流](workflow/template_generation/README.md)。
 -
 -## 使用
 -
@@ -301,7 +314,6 @@ index 381571414ab82561cbededa4bfb68ad4bc480286..b1967ffb1acb75e51cd3dde102597e22
 -跳过主题模型不影响阅读、编辑、采集和转写，但自动主题识别需安装模型后才能使用。端口被占用时，关闭旧服务或更换端口。首次依赖下载失败可直接重跑脚本。
 -
 -macOS 的安装命令依据 [Python](https://formulae.brew.sh/formula/python@3.12)、[Node.js](https://formulae.brew.sh/formula/node@24) 和 [llama.cpp](https://formulae.brew.sh/formula/llama.cpp) 的 Homebrew 配方。macOS 启动入口已补齐，尚未在真实 Mac 上验收。
-+自动化提案审阅工具读取 WXQ_ORIGIN 和 WXQ_SESSION_COOKIE；请按当前用户会话临时提供，仅在可信服务器终端使用。首次启动也可先打开网页，按初始化提示在服务器建号后刷新。
 diff --git a/deploy/add_account.py b/deploy/add_account.py
 index 4e0c988fd5aac01714cb68fba6b8ed25a6db75e0..f8b697a650a08e658c3026f73e4156f9cd50aec6 100644
 --- a/deploy/add_account.py

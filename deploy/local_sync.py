@@ -40,7 +40,7 @@ def allowed_local_path(path):
     if (basename.startswith('.env') or basename in {'admins.json','auth.json','credentials.json','id_rsa','id_ed25519'} or
             basename.endswith(('.sqlite3','.sqlite','.db','.pem','.key','.log','.pyc','.tsbuildinfo'))):
         return False
-    if path in {'.gitignore','.gitattributes','README.md','start.ps1','start.zsh','publish-local.ps1','pull-local.ps1'}:
+    if path in {'.gitignore','.gitattributes','AGENTS.md','README.md','start.ps1','start.zsh','publish-local.ps1','pull-local.ps1'}:
         return True
     if path == '.github/workflows/deploy-os-tutorial.yml':
         return True
@@ -51,19 +51,44 @@ def allowed_local_path(path):
         return allowed_path(path)
     if parts[0] == 'website-data':
         return basename.endswith(('.json','.img'))
-    if path in {'src/condition/catalog.json','src/condition/catalog-v04.json','src/condition/cases.json','src/condition/card-tags.json','src/go/condition/go.mod',
+    if path in {'src/condition/catalog.json','src/condition/catalog-v04.json','src/condition/cases.json','src/condition/card-tags.json','src/condition/test-card-tags.json','src/go/condition/go.mod',
                 'src/python/condition/requirements.txt'}:
         return True
     if len(parts)==4 and parts[:3]==('src','go','condition'):
         return basename.endswith('.go')
     if len(parts)==4 and parts[:3]==('src','python','condition'):
         return basename.endswith('.py')
+    if path in {
+        '.codex/skills/initialize-template/SKILL.md',
+        '.codex/skills/wanxiangqi-helper/SKILL.md',
+        '.codex/skills/wanxiangqi-helper/references/game-basics.md',
+        '.codex/skills/wanxiangqi-helper/references/lookup.md',
+        'deploy/internal-export/ancestors.pack',
+        'deploy/internal-export/internal.patch',
+    }:
+        return True
     if parts[:3] == ('.codex', 'skills', 'wanxiangqi-template'):
+        if len(parts) == 6 and parts[3:5] == ('references', 'events'):
+            return basename in {f'e{event:02}.md' for event in range(1, 26)}
         return '/'.join(parts[3:]) in {
-            'SKILL.md', 'references/banned-terms.md', 'references/editorial-feedback.md',
+            'SKILL.md', 'references/banned-terms.md', 'references/blind-evaluation.md', 'references/editorial-feedback.md',
             'references/event-angles.md', 'references/game-decisions.md', 'references/golden-examples.md',
-            'scripts/check_batch.py', 'scripts/check_scenarios.py', 'scripts/read_feedback.py',
+            'references/generation.md', 'references/template-review-checklist.md', 'references/writing-strategy.md',
+            'scripts/build_local.py', 'scripts/check_batch.py', 'scripts/check_scenarios.py',
+            'scripts/group_identity.py', 'scripts/read_feedback.py', 'scripts/search_videos.py', 'scripts/wording.py',
         }
+    if parts[:2] == ('workflow', 'template_generation'):
+        if len(parts) == 3:
+            return basename == 'readme.md' or basename.endswith('.py')
+        if len(parts) == 4 and parts[2] == 'knowledge':
+            return basename in {'s1.json', 's2.json', 'lineups.json'}
+        if len(parts) == 4 and parts[2] == 'prompts':
+            return basename.endswith('.md')
+        if len(parts) == 4 and parts[2] == 'references':
+            return basename in {
+                'banned-terms.md', 'catalog-v04.json', 'condition-syntax.md', 'event-examples.json',
+                'events.json', 'game-decisions.md', 'knowledge-types.json', 'sources.json', 'writing-strategy.md',
+            }
     if parts[0] in {'frontend','deploy','docs'} or path.startswith('.codex/skills/wanxiangqi-knowledge/'):
         return basename.endswith(('.py','.ts','.tsx','.js','.cjs','.mjs','.jsx','.json','.css','.html','.md','.txt','.ps1','.sh','.zsh',
                                   '.yml','.yaml','.toml','.service','.timer','.sudoers','.fragment'))
