@@ -15,7 +15,8 @@ import time
 import urllib.request
 import uuid
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'frontend'))
+ROOT = Path(__file__).resolve().parents[1]
+sys.path[:0] = [str(ROOT), str(ROOT / 'frontend')]
 from website_sync import SyncManager, git, wait_sync_lock
 from update_sites import retain_os_snapshot, snapshot_os, snapshot_os_images, stamp
 
