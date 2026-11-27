@@ -21,7 +21,7 @@ from urllib.parse import urljoin, urlsplit
 import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / 'frontend'))
+sys.path[:0] = [str(ROOT), str(ROOT / 'frontend')]
 from website_sync import SyncBusy, sync_lock
 from git_history import history_paths
 from knowledge_git import merge_branches
